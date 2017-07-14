@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost:= sci-geosciences/laszip sci-libs/libgeotiff gdal? ( sci-libs/gdal ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=C/C++ library for manipulating the LAS LiDAR format common in GIS
+EAPI=6
+HOMEPAGE=http://www.liblas.org
+IUSE=gdal
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/boost:= sci-geosciences/laszip sci-libs/libgeotiff gdal? ( sci-libs/gdal )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.osgeo.org/liblas/libLAS-1.8.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ad0f624a6da2642d293afdb8bb4d94a5

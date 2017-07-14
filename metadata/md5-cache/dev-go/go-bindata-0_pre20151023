@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=A small utility which generates Go code from any file
+EAPI=5
+HOMEPAGE=https://github.com/jteeuwen/go-bindata
+KEYWORDS=~amd64 ~arm
+LICENSE=CC-PD
+SLOT=0/0_pre20151023
+SRC_URI=https://github.com/jteeuwen/go-bindata/archive/a0ff2567cfb70903282db057e799fd826784d41d.tar.gz -> go-bindata-0_pre20151023.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:golang-build src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=dc973713e115fe7a023c8e5e5e6f9033

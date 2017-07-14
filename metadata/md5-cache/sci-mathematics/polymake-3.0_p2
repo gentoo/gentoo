@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst pretend
+DEPEND=dev-lang/perl dev-libs/gmp:0= dev-libs/mpfr:0 dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost:= ) libnormaliz? ( dev-libs/boost:= ) singular? ( >=sci-mathematics/singular-4.0.1 )
+DESCRIPTION=research tool for polyhedral geometry and combinatorics
+EAPI=6
+HOMEPAGE=http://polymake.org
+IUSE=+cdd lrs ppl bliss group +libnormaliz singular libpolymake
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-libs/gmp:0= dev-libs/mpfr:0 dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost:= ) libnormaliz? ( dev-libs/boost:= ) singular? ( >=sci-mathematics/singular-4.0.1 ) dev-perl/XML-LibXML dev-perl/XML-LibXSLT dev-perl/XML-Writer dev-perl/Term-ReadLine-Gnu
+REQUIRED_USE=group? ( cdd lrs )
+SLOT=0
+SRC_URI=https://polymake.org/lib/exe/fetch.php/download/polymake-3.0r2.tar.bz2
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=372ddd7b30376fb515534b6ed1f44bcd

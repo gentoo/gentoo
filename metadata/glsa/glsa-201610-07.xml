@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-07">
+  <title>BIND: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
+    which could cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>October 11, 2016</announced>
+  <revised>October 11, 2016: 1</revised>
+  <bug>572414</bug>
+  <bug>576902</bug>
+  <bug>588652</bug>
+  <bug>589132</bug>
+  <bug>595340</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.10.4_p3</unaffected>
+      <vulnerable range="lt">9.10.4_p3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND (Berkeley Internet Name Domain) is a Name Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition through
+      multiple attack vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BIND users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.10.4_p3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8704">CVE-2015-8704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8705">CVE-2015-8705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1285">CVE-2016-1285</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1286">CVE-2016-1286</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2088">CVE-2016-2088</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2775">CVE-2016-2775</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2776">CVE-2016-2776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6170">CVE-2016-6170</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 Jul 2016 10:56:46 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Oct 2016 18:53:41 +0000">Zlogene</metadata>
+</glsa>

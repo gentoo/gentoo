@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=static? ( >=dev-libs/skalibs-2.3.8.0[static-libs] ) !static? ( >=dev-libs/skalibs-2.3.8.0 )
+DESCRIPTION=Set of tiny linux utilities
+EAPI=6
+HOMEPAGE=http://www.skarnet.org/software/s6-linux-utils/
+IUSE=static
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=!static? ( >=dev-libs/skalibs-2.3.8.0 )
+SLOT=0
+SRC_URI=http://www.skarnet.org/software/s6-linux-utils/s6-linux-utils-2.0.2.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=b867fb42f0616c336728c83fa7529b0e

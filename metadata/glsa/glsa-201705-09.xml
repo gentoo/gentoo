@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-09">
+  <title>Apache Tomcat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Apache Tomcat, the
+    worst of which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>2017-05-18</announced>
+  <revised>2017-05-18: 1</revised>
+  <bug>575796</bug>
+  <bug>586966</bug>
+  <bug>595978</bug>
+  <bug>615868</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge">8.0.36</unaffected>
+      <unaffected range="ge">7.0.70</unaffected>
+      <vulnerable range="lt">8.0.36</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache Tomcat is a Servlet-3.0/JSP-2.2 Container.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Tomcat. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker may be able to cause a Denial of Service condition,
+      obtain sensitive information, bypass protection mechanisms and
+      authentication restrictions.
+    </p>
+    
+    <p>A local attacker, who is a tomcat’s system user or belongs to
+      tomcat’s group, could potentially escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Tomcat users have to manually check their Tomcat runscripts
+      to make sure that they don’t use an old, vulnerable runscript. In
+      addition:
+    </p>
+    
+    <p>All Apache Tomcat 7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-7.0.70:7"
+    </code>
+    
+    <p>All Apache Tomcat 8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-8.0.36:8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5174">CVE-2015-5174</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5345">CVE-2015-5345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5346">CVE-2015-5346</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5351">CVE-2015-5351</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0706">CVE-2016-0706</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0714">CVE-2016-0714</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0763">CVE-2016-0763</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1240">CVE-2016-1240</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3092">CVE-2016-3092</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8745">CVE-2016-8745</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5647">CVE-2017-5647</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5648">CVE-2017-5648</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5650">CVE-2017-5650</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5651">CVE-2017-5651</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T05:58:37Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-18T01:49:59Z">whissi</metadata>
+</glsa>

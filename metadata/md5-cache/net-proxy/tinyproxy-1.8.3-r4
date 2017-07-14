@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup test
+DEPEND=!minimal? ( app-text/asciidoc ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A lightweight HTTP/SSL proxy
+EAPI=6
+HOMEPAGE=http://www.banu.com/tinyproxy/
+IUSE=test debug +filter-proxy minimal reverse-proxy transparent-proxy +upstream-proxy +xtinyproxy-header
+KEYWORDS=alpha amd64 ~arm ia64 ppc sparc x86
+LICENSE=GPL-2
+REQUIRED_USE=test? ( xtinyproxy-header )
+SLOT=0
+SRC_URI=http://www.banu.com/pub/tinyproxy/1.8/tinyproxy-1.8.3.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=acd174c70c2bcb3b22693b5ea7b50cd8

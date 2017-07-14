@@ -1,0 +1,12 @@
+DEFINED_PHASES=install pretend setup
+DESCRIPTION=Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth
+EAPI=5
+HOMEPAGE=https://wireless.kernel.org/en/users/Drivers/iwlwifi
+KEYWORDS=~amd64 ~x86
+LICENSE=ipw3945
+RDEPEND=!sys-kernel/linux-firmware[-savedconfig]
+SLOT=0
+SRC_URI=mirror://gentoo/iwl3160-7260-bt-ucode-37.8.10_p1.tgz
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:linux-info src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=f7c85bcc35c7613656b7393ec6269177

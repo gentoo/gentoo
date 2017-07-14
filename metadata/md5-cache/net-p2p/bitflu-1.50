@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=dev-perl/Danga-Socket dev-perl/Sys-Syscall
+DESCRIPTION=BitTorrent client, written in Perl and is designed to run as a daemon
+EAPI=4
+HOMEPAGE=http://bitflu.workaround.ch
+KEYWORDS=amd64 x86
+LICENSE=Artistic-2 GPL-2
+RDEPEND=dev-perl/Danga-Socket dev-perl/Sys-Syscall
+SLOT=0
+SRC_URI=http://bitflu.workaround.ch/bitflu/bitflu-1.50.tgz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_compile:- src_install:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=889b9bfa262b576bd22a8e860768cc81

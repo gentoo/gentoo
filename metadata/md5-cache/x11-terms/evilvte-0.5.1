@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=>=dev-libs/glib-2 x11-libs/gtk+:3 x11-libs/vte:2.90 virtual/pkgconfig
+DESCRIPTION=VTE based, super lightweight terminal emulator
+EAPI=4
+HOMEPAGE=http://www.calno.com/evilvte
+IUSE=savedconfig
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:3 x11-libs/vte:2.90
+SLOT=0
+SRC_URI=http://www.calno.com/evilvte/evilvte-0.5.1.tar.xz
+_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2c31b66274d5ede1dd21513d46d22edc

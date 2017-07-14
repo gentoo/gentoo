@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst preinst prepare
+DEPEND=>=sys-libs/gdbm-1.8.0 slp? ( net-libs/openslp ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Network Information Service server
+EAPI=6
+HOMEPAGE=http://www.linux-nis.org/nis/
+IUSE=slp
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/gdbm-1.8.0 slp? ( net-libs/openslp ) || ( net-nds/rpcbind net-nds/portmap )
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/net/NIS/ypserv-2.26.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8cc7f3153e848521654733d697a5ef34

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/opencv:=[qt5(-)?] sci-libs/pcl:=[openni,vtk] sci-libs/vtk:=[qt5(-)?] sys-libs/zlib sci-libs/octomap:= ieee1394? ( media-libs/libdc1394 ) openni2? ( dev-libs/OpenNI2 ) qt5? ( dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+EAPI=5
+HOMEPAGE=http://introlab.github.io/rtabmap/
+IUSE=examples ieee1394 openni2 qt5
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=media-libs/opencv:=[qt5(-)?] sci-libs/pcl:=[openni,vtk] sci-libs/vtk:=[qt5(-)?] sys-libs/zlib sci-libs/octomap:= ieee1394? ( media-libs/libdc1394 ) openni2? ( dev-libs/OpenNI2 ) qt5? ( dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 )
+SLOT=0
+SRC_URI=https://github.com/introlab/rtabmap/archive/0.12.4.tar.gz -> rtabmap-0.12.4.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ea73ea5c016e124108fbb30fd75d9ed6

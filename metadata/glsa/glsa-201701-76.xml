@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-76">
+  <title>HarfBuzz: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in HarfBuzz, the worst of
+    which could allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">harfbuzz</product>
+  <announced>2017-01-31</announced>
+  <revised>2017-01-31: 1</revised>
+  <bug>572856</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/harfbuzz" auto="yes" arch="*">
+      <unaffected range="ge">1.0.6</unaffected>
+      <vulnerable range="lt">1.0.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>HarfBuzz is an OpenType text shaping engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in HarfBuzz. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, through the use of crafted data, could cause a Denial
+      of Service condition or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All HarfBuzz users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/harfbuzz-1.0.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8947">CVE-2015-8947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2052">CVE-2016-2052</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T02:23:28Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-31T12:22:13Z">b-man</metadata>
+</glsa>

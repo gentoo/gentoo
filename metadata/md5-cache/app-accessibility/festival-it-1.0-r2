@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=A collection of italian voices for Festival TTS
+EAPI=4
+HOMEPAGE=http://www2.pd.istc.cnr.it/FESTIVAL/home
+IUSE=mbrola
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-accessibility/festival-2.1 mbrola? ( >=app-accessibility/mbrola-3.0.1h-r4[l10n_it] )
+SLOT=0
+SRC_URI=mirror://sourceforge/it-festival/Italian-FESTIVAL.zip
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=69fee88894df5ecc12343f13dcbfe474

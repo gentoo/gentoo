@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=An interpreter for Psion 5(MX) file formats
+EAPI=5
+HOMEPAGE=http://huizen.dds.nl/~frodol/psiconv
+IUSE=static-libs
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://huizen.dds.nl/~frodol/psiconv/psiconv-0.8.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=0b0b8c87768a003448617090a5345a6b

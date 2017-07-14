@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Clean all old container revisions from registry
+EAPI=6
+HOMEPAGE=https://gitlab.com/gitlab-org/docker-distribution-pruner
+KEYWORDS=~amd64
+LICENSE=MIT
+RESTRICT=test
+SLOT=0
+SRC_URI=https://gitlab.com/gitlab-org/docker-distribution-pruner/repository/archive.tar.gz?ref=207b308c12b1717c6e3d2adf5e1ffe504c64f56e -> docker-distribution-pruner-0_p20170401.tar.gz https://github.com/go-yaml/yaml/archive/a3f3340b5840cee44f372bddb5880fcbc419b46a.tar.gz -> github.com-go-yaml-yaml-a3f3340b5840cee44f372bddb5880fcbc419b46a.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=2a895d4f21b0cebebaa800efdc2ffffb

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=>=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Official desktop client for Telegram (binary package)
+EAPI=6
+HOMEPAGE=https://desktop.telegram.org
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=telegram
+RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection >=sys-apps/dbus-1.4.20 x11-libs/libX11 >=x11-libs/libxcb-1.10[xkb]
+SLOT=0
+SRC_URI=https://github.com/telegramdesktop/tdesktop/archive/v1.1.10.tar.gz -> tdesktop-1.1.10.tar.gz amd64? ( https://updates.tdesktop.com/tlinux/tsetup.1.1.10.tar.xz ) x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.1.1.10.tar.xz )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:xdg src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=42caf54d854be42540d51a3ee2cb04ec

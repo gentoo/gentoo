@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-03">
+  <title>Roundcube: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Roundcube allowing
+    remote authenticated users to execute arbitrary code, inject arbitrary web
+    scripts, and perform cross-site scripting (XSS).
+  </synopsis>
+  <product type="ebuild">roundcube</product>
+  <announced>March 09, 2016</announced>
+  <revised>March 09, 2016: 1</revised>
+  <bug>554866</bug>
+  <bug>564476</bug>
+  <bug>570336</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/roundcube" auto="yes" arch="*">
+      <unaffected range="ge">1.1.4</unaffected>
+      <vulnerable range="lt">1.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Free and open source webmail software for the masses, written in PHP.</p>
+  </background>
+  <description>
+    <p>Remote authenticated users with certain permissions can read arbitrary
+      files or possibly execute arbitrary code via .. in the _skin parameter to
+      index.php.  Additionally, a cross-site scripting (XSS) vulnerability in
+      program/js/app.js allows remote authenticated users to inject arbitrary
+      web script or HTML via the file name in a drag-n-drop file upload.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote authenticated user could possibly execute arbitrary code with
+      the privileges of the process, inject arbitrary web scripts or HTML, read
+      arbitrary files, or perform XSS.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Roundcube users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-1.1.4”
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8105">
+      CVE-2015-8105
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8770">
+      CVE-2015-8770
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Feb 2016 20:35:16 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Mar 2016 09:28:53 +0000">b-man</metadata>
+</glsa>

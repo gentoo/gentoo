@@ -1,0 +1,65 @@
+<!-- $Header -->
+<!-- Used by [gentoo]/xml/htdocs/proj/en/overlays/repositories.xml -->
+<!--
+The source copy and history of this file is available from
+http://git.overlays.gentoo.org/gitweb/?p=proj/repositories-xml-format.git
+-->
+<!--
+    Gentoo repositories.xml DTD 1.0
+
+    Modelling by
+      Robert Buchholz <rbu@gentoo.org>
+      Sebastian Pipping <sebastian@pipping.org>
+      Mounir Lamouri <volkmar@gentoo.org>
+      Tiziano Müller <dev-zero@gentoo.org>
+
+    Copyright 1999-2015 Gentoo Foundation
+    Distributed under the terms of the GNU General Public License v2 or later
+-->
+<!ELEMENT repositories (repo)*>
+<!ATTLIST repositories
+  xmlns CDATA #FIXED ''
+  version CDATA #FIXED '1.0'>
+
+<!ELEMENT repo (name,(description)+,(longdescription)*,(homepage)?,(owner)+,(source)+,(feed)*)>
+<!ATTLIST repo
+  xmlns CDATA #FIXED ''
+  priority CDATA #IMPLIED
+  quality (core|stable|testing|experimental|graveyard) #REQUIRED
+  status (official|unofficial) #REQUIRED>
+
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST description
+  xmlns CDATA #FIXED ''
+  lang CDATA #IMPLIED>
+
+<!ELEMENT longdescription (#PCDATA)>
+<!ATTLIST longdescription
+  xmlns CDATA #FIXED ''
+  lang CDATA #IMPLIED>
+
+<!ELEMENT homepage (#PCDATA)>
+<!ATTLIST homepage
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT owner (email,(name)?)>
+<!ATTLIST owner
+  xmlns CDATA #FIXED ''
+  type (project|person) #IMPLIED>
+
+<!ELEMENT source (#PCDATA)>
+<!ATTLIST source
+  xmlns CDATA #FIXED ''
+  type (bzr|cvs|darcs|git|mercurial|rsync|svn|tar) #REQUIRED>
+
+<!ELEMENT feed (#PCDATA)>
+<!ATTLIST feed
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT email (#PCDATA)>
+<!ATTLIST email
+  xmlns CDATA #FIXED ''>

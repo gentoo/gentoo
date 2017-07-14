@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-09">
+  <title>Commons-BeanUtils: Arbitrary code execution</title>
+  <synopsis>Apache Commons BeanUtils does not properly suppress the class
+    property, which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">commons-beanutils</product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>534498</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/commons-beanutils" auto="yes" arch="*">
+      <unaffected range="ge">1.9.2</unaffected>
+      <vulnerable range="lt">1.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Commons-beanutils provides easy-to-use wrappers around Reflection and
+      Introspection APIs
+    </p>
+  </background>
+  <description>
+    <p>Apache Commons BeanUtils does not suppress the class property, which
+      allows for the manipulation of the ClassLoader.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could potentially execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Commons BeanUtils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/commons-beanutils-1.9.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0114">CVE-2014-0114</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 05 Sep 2015 19:30:11 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 08:50:29 +0000">b-man</metadata>
+</glsa>

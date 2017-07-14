@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Astronomical user routines for IDL
+EAPI=6
+HOMEPAGE=http://idlastro.gsfc.nasa.gov/
+LICENSE=BSD-2 BSD
+RDEPEND=dev-lang/gdl
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=fcdaa7774618469cc4f83ac36469d51c

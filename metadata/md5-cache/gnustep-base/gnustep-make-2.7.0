@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=sys-devel/make-3.75 libobjc2? ( gnustep-base/libobjc2 sys-devel/clang ) !libobjc2? ( !!gnustep-base/libobjc2 || ( >=sys-devel/gcc-3.3[objc] sys-devel/clang ) )
+DESCRIPTION=GNUstep Makefile Package
+EAPI=6
+HOMEPAGE=http://www.gnustep.org
+IUSE=libobjc2 native-exceptions debug doc
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=sys-devel/make-3.75 libobjc2? ( gnustep-base/libobjc2 sys-devel/clang ) !libobjc2? ( !!gnustep-base/libobjc2 || ( >=sys-devel/gcc-3.3[objc] sys-devel/clang ) )
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-2.7.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnustep-base	935cef28cb1dbb8c28e04710473453fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=466a28387d2642a7b76e6aad39b0fcfe

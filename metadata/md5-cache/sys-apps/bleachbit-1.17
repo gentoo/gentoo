@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) nls? ( sys-devel/gettext ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Clean junk to free disk space and to maintain privacy
+EAPI=6
+HOMEPAGE=https://www.bleachbit.org
+IUSE=+gtk nls python_targets_python2_7 linguas_ar linguas_ast linguas_be linguas_bg linguas_bn linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_AU linguas_en_CA linguas_en_GB linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_hy linguas_ia linguas_id linguas_it linguas_ja linguas_ko linguas_ku linguas_ky linguas_lt linguas_lv linguas_ms linguas_my linguas_nb linguas_nds linguas_nl linguas_nn linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_se linguas_si linguas_sk linguas_sl linguas_sq linguas_sr linguas_sv linguas_ta linguas_te linguas_th linguas_tr linguas_ug linguas_uk linguas_uz linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/bleachbit/bleachbit/archive/v1.17.tar.gz -> bleachbit-1.17.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=bbeff632daa9cad3d0465a548b3bedd0

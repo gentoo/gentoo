@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
+DESCRIPTION=The netkit FTP server with optional SSL support
+EAPI=6
+HOMEPAGE=http://www.hcs.harvard.edu/~dholland/computers/netkit.html
+IUSE=libressl ssl ssl
+KEYWORDS=alpha amd64 arm ia64 ppc ~ppc64 s390 sh sparc x86
+LICENSE=BSD
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) virtual/inetd !www-servers/publicfile
+SLOT=0
+SRC_URI=ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/linux-ftpd-0.17.tar.gz mirror://gentoo/linux-ftpd-0.17-ssl.patch
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=66002505d89ca07f2ea2b629e70a3991

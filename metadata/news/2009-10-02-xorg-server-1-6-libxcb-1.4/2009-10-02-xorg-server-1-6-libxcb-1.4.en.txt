@@ -1,0 +1,15 @@
+Title: Migration to X.org Server 1.6 and libxcb 1.4
+Author: Remi Cardona <remi@gentoo.org>
+Content-Type: text/plain
+Posted: 2009-10-02
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <x11-base/xorg-server-1.6
+Display-If-Installed: <x11-libs/libxcb-1.4
+
+We're pleased to announce the stabilization of xorg-server-1.6. Users
+are strongly encouraged to read the following two guides before
+upgrading:
+
+http://www.gentoo.org/proj/en/desktop/x/x11/xorg-server-1.6-upgrade-guide.xml
+http://www.gentoo.org/proj/en/desktop/x/x11/libxcb-1.4-upgrade-guide.xml 

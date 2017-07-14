@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-20">
+  <title>jq: Buffer overflow</title>
+  <synopsis>A buffer overflow in jq might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">jq</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>580606</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-misc/jq" auto="yes" arch="*">
+      <unaffected range="ge">1.5-r2</unaffected>
+      <vulnerable range="lt">1.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>jq is a lightweight and flexible command-line JSON processor.</p>
+  </background>
+  <description>
+    <p>An off-by-one error was discovered in the tokenadd function in
+      jv_parse.c which triggers a heap-based buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could trick a victim into processing a specially
+      crafted JSON file, possibly resulting in the execution of arbitrary code
+      with the privileges of the process.  Additionally, a remote attacker
+      could cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All jq users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-misc/jq-1.5-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8863">
+      CVE-2015-8863
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 20:07:39 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:09:23 +0000">whissi</metadata>
+</glsa>

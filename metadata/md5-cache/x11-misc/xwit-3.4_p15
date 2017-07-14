@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/libX11 x11-proto/xproto
+DESCRIPTION=A collection of simple routines to call some of those X11 functions
+EAPI=6
+HOMEPAGE=https://tracker.debian.org/pkg/xwit
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=public-domain HPND
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=mirror://debian/pool/main/x/xwit/xwit_3.4.orig.tar.gz mirror://debian/pool/main/x/xwit/xwit_3.4-15.debian.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=22fba3ba3b435b3c03606dff4d77b46e

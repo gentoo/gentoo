@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=High-performance C development framework. Can be used stand-alone or as a supplement to GLib
+EAPI=3
+HOMEPAGE=http://www.atheme.org/project/mowgli
+KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=http://distfiles.atheme.org/libmowgli-1.0.0.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=c9aab333b04bc8118ddbcef781b3a992

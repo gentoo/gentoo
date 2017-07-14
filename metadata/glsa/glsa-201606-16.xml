@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-16">
+  <title>PLIB: Buffer overflow vulnerability</title>
+  <synopsis>A buffer overflow in PLIB might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 26, 2016</announced>
+  <revised>June 26, 2016: 1</revised>
+  <bug>395553</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/plib" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5-r1</unaffected>
+      <vulnerable range="lt">1.8.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PLIB includes sound effects, music, a complete 3D engine, font
+      rendering, a simple Windowing library, a game scripting language, a GUI,
+      networking, 3D math library and a collection of handy utility functions.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow in PLIB allows user-assisted remote attackers to
+      execute arbitrary code via vectors involving a long error message, as
+      demonstrated by a crafted acc file for TORCS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code with the privileges of the
+      process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PLIB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --verbose --oneshot "&gt;=media-libs/plib-1.8.5-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4620">CVE-2011-4620</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 19 Mar 2016 12:41:25 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 23:59:26 +0000">b-man</metadata>
+</glsa>

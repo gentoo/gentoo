@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( >=sys-devel/gcc-4.8:* >=dev-libs/boost-1.54[nls] >=dev-cpp/yaml-cpp-0.5.1 dev-libs/openssl:* sys-apps/util-linux app-emulation/virt-what net-misc/curl !<app-admin/puppet-4.0.0 ) sys-devel/make >=dev-util/cmake-3.7.2 ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
+DESCRIPTION=A cross-platform ruby library for retrieving facts from operating systems
+EAPI=5
+HOMEPAGE=http://www.puppetlabs.com/puppet/related-projects/facter/
+IUSE=debug test elibc_FreeBSD ruby_targets_ruby21 ruby_targets_ruby22
+KEYWORDS=amd64 ~hppa ~ppc ppc64 x86
+LICENSE=Apache-2.0
+RDEPEND=>=sys-devel/gcc-4.8:* >=dev-libs/boost-1.54[nls] >=dev-cpp/yaml-cpp-0.5.1 dev-libs/openssl:* sys-apps/util-linux app-emulation/virt-what net-misc/curl !<app-admin/puppet-4.0.0 ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
+REQUIRED_USE=|| ( ruby_targets_ruby21 ruby_targets_ruby22 )
+SLOT=0
+SRC_URI=https://downloads.puppetlabs.com/facter/facter-3.1.4.tar.gz
+_eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:- src_configure:- src_compile:ruby-ng src_test:ruby-ng src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	ruby-ng	e52d9a73c7757cdc3b195bcd5cf9d389	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=18df6bf2732aadb81048743bc05321f2

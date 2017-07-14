@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-27">
+  <title>FreeRADIUS: Security bypass</title>
+  <synopsis>A vulnerability in FreeRADIUS might allow remote attackers to
+    bypass authentication.
+  </synopsis>
+  <product type="ebuild">freeradius</product>
+  <announced>2017-06-27</announced>
+  <revised>2017-06-27: 1</revised>
+  <bug>620186</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">3.0.14</unaffected>
+      <vulnerable range="lt">3.0.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeRADIUS is an open source RADIUS authentication server.</p>
+  </background>
+  <description>
+    <p>It was discovered that the implementation of TTLS and PEAP in FreeRADIUS
+      skips inner authentication when it handles a resumed TLS connection. The
+      affected versions of FreeRADIUS fails to reliably prevent the resumption
+      of unauthenticated sessions unless the TLS session cache is disabled
+      completely.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote user can bypass authentication by starting a
+      session, and then resuming an unauthenticated TLS session before inner
+      authentication has been completed successfully.
+    </p>
+  </impact>
+  <workaround>
+    <p>Set “enabled = no” in the cache subsection of eap module settings to
+      disable TLS session caching.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All FreeRADIUS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/freeradius-3.0.14"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9148">CVE-2017-9148</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-09T12:42:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-27T09:57:00Z">whissi</metadata>
+</glsa>

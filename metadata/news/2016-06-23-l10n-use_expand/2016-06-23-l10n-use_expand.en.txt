@@ -1,0 +1,49 @@
+Title: L10N USE_EXPAND variable replacing LINGUAS
+Author: Mart Raudsepp <leio@gentoo.org>
+Author: Ulrich Müller <ulm@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-06-19
+Revision: 1
+News-Item-Format: 1.0
+
+The L10N variable is replacing LINGUAS as a USE_EXPAND, to avoid a
+conceptual clash with the standard gettext LINGUAS behaviour.
+
+L10N controls which extra localization support will be installed.
+This is commonly used for downloads of additional language packs.
+
+If you have set LINGUAS in your make.conf, you most likely want to add
+its entries also to L10N. Note that while the common two letter language
+codes (like "de" or "fr") are identical, more complex entries have a
+different syntax because L10N now uses IETF language tags. (For example,
+"pt_BR" becomes "pt-BR" and "sr@latin" becomes "sr-Latn".) You can look
+up the available codes in profiles/desc/l10n.desc in the gentoo tree.
+A detailed description of language tags (aka BCP 47) can be found at:
+https://www.w3.org/International/articles/language-tags/
+
+After a transition time for packages to be converted, the LINGUAS
+environment variable will maintain the standard gettext behaviour and
+will work as expected with all package managers. It controls which
+language translations are built and installed. An unset value means all
+available, an empty value means none, and a value can be an unordered
+list of gettext language codes, with or without country codes. Usually
+two letter language codes suffice, but can be narrowed down by country
+codes with a "ll_CC" formatting, where "ll" is the language code and
+"CC" is the country code, e.g., "en_GB". Some rare languages also have
+three letter language codes. Note that LINGUAS does not only affect
+installed gettext catalog files (*.mo), but also lines of translations
+in an always shipped file (e.g., *.desktop).
+
+If you want English with a set LINGUAS, it is suggested to list it with
+the desired country code, in case the default is not the usual "en_US".
+It is also common to list "en" then, in case a package is natively
+written in a different language, but does provide an English translation
+for whichever country. A list of LINGUAS language codes is available at:
+http://www.gnu.org/software/gettext/manual/gettext.html#Language-Codes
+
+If you have per-package customizations of the LINGUAS USE_EXPAND, you
+should also rename those. This typically means changing linguas_* to
+l10n_*, and possibly updating the syntax as described above.
+
+https://wiki.gentoo.org/wiki/Localization/Guide has also been updated to
+reflect this change.

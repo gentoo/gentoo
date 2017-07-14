@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-29">
+  <title>libmms: Remote execution of arbitrary code</title>
+  <synopsis>A heap-based buffer overflow vulnerability in libmms might allow
+    remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libmms</product>
+  <announced>December 11, 2016</announced>
+  <revised>December 11, 2016: 1</revised>
+  <bug>507822</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libmms" auto="yes" arch="*">
+      <unaffected range="ge">0.6.4</unaffected>
+      <vulnerable range="lt">0.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libmms is a library for downloading (streaming) media files using the
+      mmst and mmsh protocols.
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow was discovered in the get_answer function
+      within mmsh.c of libmms.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might send a specially crafted MMS over HTTP (MMSH)
+      response, possibly resulting in the remote execution of arbitrary code
+      with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libmms users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libmms-0.6.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2892">CVE-2014-2892</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 27 Nov 2016 10:19:34 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:47:07 +0000">b-man</metadata>
+</glsa>

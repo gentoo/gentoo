@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup test unpack
+DEPEND=dev-go/go-bindata >=dev-lang/go-1.8
+DESCRIPTION=A painless self-hosted Git service, written in Go
+EAPI=6
+HOMEPAGE=https://github.com/go-gitea/gitea
+KEYWORDS=~amd64 ~arm
+LICENSE=MIT
+RDEPEND=dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/go-gitea/gitea/archive/e2c8d6fcb2c4073ed5cf164d88e7b5d44d95943c.tar.gz -> gitea-1.0.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=efc34830946421c28917679c2d232d00

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Aladdin Software's StuffIt and StuffIt Expander
+EAPI=0
+HOMEPAGE=http://www.stuffit.com/
+KEYWORDS=-* x86 amd64
+LICENSE=Stuffit
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=http://my.smithmicro.com/downloads/files/stuffit520.611linux-i386.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=c71294b020436a1efee3869b00fdbf7b

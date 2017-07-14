@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Converts Nero nrg CD-images to iso
+EAPI=0
+HOMEPAGE=http://gregory.kokanosky.free.fr/v4/linux/nrg2iso.en.html
+KEYWORDS=amd64 ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://gregory.kokanosky.free.fr/v4/linux/nrg2iso-0.4.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=706f75aea47b00b377ecb6396db482a3

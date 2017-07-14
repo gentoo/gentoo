@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst test
+DEPEND=app-arch/unzip dev-lang/perl
+DESCRIPTION=Journaling incremental deduplicating archiving compressor
+EAPI=6
+HOMEPAGE=http://mattmahoney.net/dc/zpaq.html
+IUSE=debug +jit
+KEYWORDS=~amd64 ~x86
+LICENSE=Unlicense
+SLOT=0
+SRC_URI=http://mattmahoney.net/dc/zpaq715.zip
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f16f69019a0c500a213d6ca36baa565c

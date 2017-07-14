@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-09">
+  <title>PyPAM: Arbitrary code execution</title>
+  <synopsis>A double free vulnerability in PyPAM could result in execution of
+    arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">pypam</product>
+  <announced>July 09, 2015</announced>
+  <revised>July 09, 2015: 1</revised>
+  <bug>407603</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pypam" auto="yes" arch="*">
+      <unaffected range="ge">0.5.0-r3</unaffected>
+      <vulnerable range="lt">0.5.0-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PyPAM is a PAM binding for Python.</p>
+  </background>
+  <description>
+    <p>PyPAM does not handle passwords correctly if there is NULL byte in the
+      string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PyPAM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pypam-0.5.0-r3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1502">CVE-2012-1502</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Jun 2015 03:25:05 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 09 Jul 2015 18:51:16 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=a tool to create very small elf binary from pure binary files
+EAPI=0
+HOMEPAGE=http://sed.free.fr/tinlink/
+KEYWORDS=~amd64 ~x86 ~ppc
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://sed.free.fr/tinlink/tinlink-1.0.0.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a90c2d71fb9c43e0e44a89d924c507fc

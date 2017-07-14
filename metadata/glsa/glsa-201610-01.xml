@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-01">
+  <title>Groovy: Arbitrary code execution</title>
+  <synopsis>Groovy is vulnerable to a remote execution of arbitrary code when
+    java serialization is used.
+  </synopsis>
+  <product type="ebuild">groovy</product>
+  <announced>October 06, 2016</announced>
+  <revised>October 06, 2016: 1</revised>
+  <bug>555470</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/groovy" auto="yes" arch="*">
+      <unaffected range="ge">2.4.5</unaffected>
+      <vulnerable range="lt">2.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A multi-faceted language for the Java platform</p>
+  </background>
+  <description>
+    <p>Groovy’s MethodClosure class, in runtime/MethodClosure.java, is
+      vulnerable to a crafted serialized object.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could potentially execute arbitrary code, or cause
+      Denial of Service condition
+    </p>
+  </impact>
+  <workaround>
+    <p>A workaround exists by using a custom security policy file utilizing the
+      standard Java security manager, or do not rely on serialization to
+      communicate remotely.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Groovy users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/groovy-2.4.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3253">CVE-2015-3253</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Mar 2016 09:21:07 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Thu, 06 Oct 2016 14:32:23 +0000">b-man</metadata>
+</glsa>

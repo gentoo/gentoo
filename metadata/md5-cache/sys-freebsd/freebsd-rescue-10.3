@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND=sys-devel/flex app-arch/xz-utils[static-libs] sys-libs/ncurses[static-libs] dev-libs/expat[static-libs] app-arch/bzip2[static-libs] dev-libs/libedit[static-libs] dev-libs/libxml2:2[static-libs] dev-libs/openssl:0=[static-libs] sys-libs/zlib[static-libs] sys-libs/readline[static-libs] =sys-freebsd/freebsd-lib-10.3*[atm?,netware?] =sys-freebsd/freebsd-sources-10.3* =sys-freebsd/freebsd-mk-defs-10.3* zfs? ( =sys-freebsd/freebsd-cddl-10.3* ) virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD's rescue binaries
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=atm netware nis zfs profile
+KEYWORDS=~amd64-fbsd ~x86-fbsd
+LICENSE=BSD zfs? ( CDDL )
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/10.3-RELEASE/src.txz -> freebsd-src-10.3.tar.xz
+_eclass_exported_funcs=pkg_setup:- src_unpack:freebsd src_prepare:- src_compile:- src_install:freebsd
+_eclasses_=bsdmk	f76f6fc364f04987bc60c4ea3cad594c	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	freebsd	5c58bd41462bc44369d6a11f1b98ee80	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=13002d6c50accbee77d614916040d7e3

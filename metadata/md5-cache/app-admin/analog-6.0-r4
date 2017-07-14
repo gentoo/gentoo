@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-libs/libpcre-3.4 >=media-libs/gd-1.8.4-r2[jpeg,png] sys-libs/zlib
+DESCRIPTION=A webserver log analyzer
+EAPI=4
+HOMEPAGE=http://www.c-amie.co.uk/analog/
+KEYWORDS=alpha amd64 arm hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libpcre-3.4 >=media-libs/gd-1.8.4-r2[jpeg,png] sys-libs/zlib
+SLOT=0
+SRC_URI=http://www.analog.cx/analog-6.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ca7f8d57cb08f2afa2e93d08bf9810b9

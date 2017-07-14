@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-31">
+  <title>exFAT: Multiple vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been found in exFAT allowing remote
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>December 12, 2016</announced>
+  <revised>December 12, 2016: 1</revised>
+  <bug>563936</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-fs/exfat-utils" auto="yes" arch="*">
+      <unaffected range="ge">1.2.1</unaffected>
+      <vulnerable range="lt">1.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A full-featured exFAT file system implementation for Unix-like systems.</p>
+  </background>
+  <description>
+    <p>Two vulnerabilities were found in exFAT. A malformed input can cause a
+      write heap overflow or cause an endless loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code or cause Denial of
+      Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All exFAT users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/exfat-utils-1.2.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8026">CVE-2015-8026</uri>
+    <uri link="http://blog.fuzzing-project.org/25-Heap-overflow-and-endless-loop-in-exfatfsck-exfat-utils.html">
+      Heap overflow and endless loop in exfatfsck / exfat-utils
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 02:26:18 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 12 Dec 2016 00:14:52 +0000">b-man</metadata>
+</glsa>

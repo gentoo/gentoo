@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm setup unpack
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings ) X? ( media-gfx/ebdftopcf )
+DESCRIPTION=Korean Baekmuk Font
+EAPI=0
+HOMEPAGE=http://kldp.net/projects/baekmuk/
+IUSE=unicode X X
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=http://kldp.net/download.php/1429/baekmuk-ttf-2.2.tar.gz http://kldp.net/download.php/1428/baekmuk-bdf-2.2.tar.gz unicode? ( http://chem.skku.ac.kr/~wkpark/baekmuk/iso10646/20020418.tar.bz2 )
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_unpack:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	font	82836641e7d4639329d8c195234ad0e3	font-ebdftopcf	e23db122fd578442f37e3e79267eedd8	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=700f110dc2592773d237117a1e98f0ce

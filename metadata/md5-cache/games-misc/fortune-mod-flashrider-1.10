@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=games-misc/fortune-mod
+DESCRIPTION=Quotes from Prolinux articles and comments
+EAPI=5
+HOMEPAGE=http://downloads.nanolx.org/index.php?dir=fortunes-flashrider
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=games-misc/fortune-mod
+SLOT=0
+SRC_URI=http://downloads.nanolx.org/fortunes-flashrider/fortunes-flashrider_1.10.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=68b1843f8efa9278ff366b05ecccbeef

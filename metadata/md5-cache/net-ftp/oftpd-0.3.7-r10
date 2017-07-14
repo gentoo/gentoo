@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=net-ftp/ftpbase >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Secure, small, anonymous only ftpd
+EAPI=4
+HOMEPAGE=http://www.time-travellers.org/oftpd
+IUSE=ipv6
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=BSD-2
+RDEPEND=net-ftp/ftpbase
+SLOT=0
+SRC_URI=http://www.time-travellers.org/oftpd/oftpd-0.3.7.tar.gz ftp://ftp.deepspace6.net/pub/ds6/sources/oftpd/oftpd-0.3.6-ipv6rel2.patch.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a996916d39f45303eb207c32b1cea32e

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-06">
+  <title>ImageWorsener: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in ImageWorsener, the
+    worst of which allows remote attackers to cause a Denial of Service
+    condition or have other unspecified impact.
+  </synopsis>
+  <product type="ebuild">ImageWorsener</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>618014</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imageworsener" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1</unaffected>
+      <vulnerable range="lt">1.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ImageWorsener is a cross-platform command-line utility and library for
+      image scaling and other image processing.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ImageWorsener. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      image file using ImageWorsener, possibly resulting in a Denial of Service
+      condition or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageWorsener users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/imageworsener-1.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7452">CVE-2017-7452</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7453">CVE-2017-7453</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7454">CVE-2017-7454</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7939">CVE-2017-7939</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7940">CVE-2017-7940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7962">CVE-2017-7962</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8325">CVE-2017-8325</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8326">CVE-2017-8326</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8327">CVE-2017-8327</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-18T06:32:49Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T08:33:56Z">whissi</metadata>
+</glsa>

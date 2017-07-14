@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst prepare
+DEPEND=static? ( >=dev-libs/skalibs-2.3.10.0[static-libs] ) !static? ( >=dev-libs/skalibs-2.3.10.0 )
+DESCRIPTION=Generates an init binary for s6-based init systems
+EAPI=6
+HOMEPAGE=http://www.skarnet.org/software/s6-linux-init/
+IUSE=static
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=!static? ( >=dev-libs/skalibs-2.3.10.0 )
+SLOT=0
+SRC_URI=http://www.skarnet.org/software/s6-linux-init/s6-linux-init-0.1.0.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
+_md5_=10282747b04ba87cffa875a9760b51ab

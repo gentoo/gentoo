@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=dev-libs/boost-1.41 console? ( dev-libs/libedit ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) sys-devel/bison >=sys-devel/flex-2.5.35 apache2? ( =www-servers/apache-2* ) sys-devel/make >=dev-util/cmake-3.7.2 virtual/pkgconfig
+DESCRIPTION=Distributed, general purpose, network monitoring engine
+EAPI=5
+HOMEPAGE=http://icinga.org/icinga2
+IUSE=+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins studio +vim-syntax apache2
+KEYWORDS=amd64 ~arm ~arm64 x86
+LICENSE=GPL-2
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=dev-libs/boost-1.41 console? ( dev-libs/libedit ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) mail? ( virtual/mailx ) classicui? ( net-analyzer/icinga[web] ) studio? ( x11-libs/wxGTK:3.0 ) apache2? ( =www-servers/apache-2* )
+REQUIRED_USE=!minimal? ( || ( mysql postgres ) )
+SLOT=0
+SRC_URI=https://github.com/Icinga/icinga2/archive/v2.5.4.tar.gz -> icinga2-2.5.4.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	depend.apache	0917334d570e07f9743a04ff85b3bf1b	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=c86945823050362acaa571dd45ee0c7f

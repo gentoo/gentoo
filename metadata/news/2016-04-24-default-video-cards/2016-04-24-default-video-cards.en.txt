@@ -1,0 +1,27 @@
+Title: Changes in default VIDEO_CARDS
+Author: Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-04-24
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Keyword: amd64
+Display-If-Keyword: x86
+Display-If-Installed: x11-drivers/xf86-video-dummy
+Display-If-Installed: x11-drivers/xf86-video-glint
+Display-If-Installed: x11-drivers/xf86-video-mach64
+Display-If-Installed: x11-drivers/xf86-video-mga
+Display-If-Installed: x11-drivers/xf86-video-nv
+Display-If-Installed: x11-drivers/xf86-video-r128
+Display-If-Installed: x11-drivers/xf86-video-savage
+Display-If-Installed: x11-drivers/xf86-video-tdfx
+Display-If-Installed: x11-drivers/xf86-video-trident
+Display-If-Installed: x11-drivers/xf86-video-v4l
+Display-If-Installed: x11-drivers/xf86-video-via
+Display-If-Installed: x11-drivers/xf86-video-vmware
+
+In order to better reflect the graphics chipsets present on modern
+systems, the default VIDEO_CARDS setting has been changed to
+"amdgpu fbdev intel nouveau radeon radeonsi vesa"
+
+If your graphics chipset requires a different driver, and you have not set
+VIDEO_CARDS in make.conf, it is advisable to do that now.

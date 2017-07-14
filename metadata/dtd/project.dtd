@@ -1,0 +1,56 @@
+<!ENTITY % common SYSTEM "common.dtd">
+
+%common;
+
+<!ENTITY  % body.class "%block.class;|glepindex">
+<!ELEMENT body      (%body.class;)*>
+
+<!ELEMENT project (name, longname?, date?, author*, description, longdescription, goals?, recruitment?, (dev | resource | subproject | plannedproject |extraproject | extrachapter |  herd | task | author)* )>
+<!ATTLIST project	disclaimer (draft|obsolete) #IMPLIED
+			redirect CDATA #IMPLIED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT longname (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT longdescription (%body.class;)* >
+<!ELEMENT goals (%body.class;)* >
+<!ELEMENT recruitment (job+) >
+<!ELEMENT job (summary, details, requirements, contact+) >
+<!ELEMENT details (#PCDATA|%inline.class;)*>
+<!ELEMENT requirements (#PCDATA|%inline.class;)*>
+<!ELEMENT contact (#PCDATA)>
+<!ELEMENT dev (#PCDATA)>
+<!ATTLIST dev role CDATA "member"
+	      description CDATA #IMPLIED>
+<!ELEMENT resource (#PCDATA)>
+<!ATTLIST resource link CDATA #IMPLIED>
+<!ELEMENT subproject EMPTY>
+<!ATTLIST subproject ref CDATA #REQUIRED
+	             inheritmembers ( yes | no ) "no"
+	             inheritresources ( yes | no ) "no" >
+<!ELEMENT extraproject (#PCDATA|%inline.class;)*>
+<!ATTLIST extraproject name CDATA #REQUIRED
+		       lead CDATA #IMPLIED 
+           link CDATA #IMPLIED >
+<!ELEMENT plannedproject (#PCDATA|%inline.class;)*>
+<!ATTLIST plannedproject name CDATA #REQUIRED >
+<!ELEMENT extrachapter               (title, section+)>
+<!ELEMENT section   (title?, body+)>
+
+<!ATTLIST extrachapter position ( top|bottom|subproject|goals|resources|devs|recruitment|tasks ) "bottom">
+<!ELEMENT herd EMPTY>
+<!ATTLIST herd name CDATA #REQUIRED>
+
+<!-- TASK tags declaration -->
+<!ELEMENT task ( name, description, longdescription?, startdate, enddate?, (reference | milestone | dev |depends )* )>
+<!ATTLIST task id ID #IMPLIED
+               lead CDATA #REQUIRED
+               finished (yes | no) "no">
+<!ELEMENT startdate (#PCDATA)>
+<!ELEMENT enddate (#PCDATA)>
+<!ELEMENT reference (#PCDATA | bug | mail | uri)* >
+<!ELEMENT bug (#PCDATA)>
+<!ATTLIST bug no CDATA #REQUIRED>
+<!ELEMENT milestone (enddate, description)>
+<!ATTLIST milestone finished (yes| no) "no">
+<!ELEMENT depends (#PCDATA)>
+<!ATTLIST depends ref IDREF #REQUIRED>

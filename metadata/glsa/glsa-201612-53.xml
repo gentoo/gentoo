@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-53">
+  <title>CyaSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in CyaSSL, the worst of
+    which may allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">cyassl</product>
+  <announced>December 31, 2016</announced>
+  <revised>December 31, 2016: 1</revised>
+  <bug>507418</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/cyassl" auto="yes" arch="*">
+      <vulnerable range="rle">2.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CyaSSL is a small, fast, portable implementation of TLS/SSL for embedded
+      devices to the cloud.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in CyaSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly execute arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, or conduct a
+      man-in-the-middle attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Upstream has discontinued the software in favor of wolfSSL. Therefore,
+      the CyaSSL package has been removed from the Gentoo repository and
+      current users are advised to unmerge the package.
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-libs/cyassl"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2896">CVE-2014-2896</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2897">CVE-2014-2897</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2898">CVE-2014-2898</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2899">CVE-2014-2899</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2900">CVE-2014-2900</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 15:11:37 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 14:47:50 +0000">b-man</metadata>
+</glsa>

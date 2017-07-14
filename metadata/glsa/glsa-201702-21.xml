@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-21">
+  <title>Opus: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in Opus could cause memory corruption.</synopsis>
+  <product type="ebuild">opus</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>605894</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/opus" auto="yes" arch="*">
+      <unaffected range="ge">1.1.3-r1</unaffected>
+      <vulnerable range="lt">1.1.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Opus is a totally open, royalty-free, highly versatile audio codec.</p>
+  </background>
+  <description>
+    <p>A large NLSF values could cause the stabilization code in
+      silk/NLSF_stabilize.c to wrap-around and have the last value in
+      NLSF_Q15[] to be negative, close to -32768.
+    </p>
+    
+    <p>Under normal circumstances, the code will simply read from the wrong
+      table resulting in an unstable LPC filter. The filter would then go
+      through the LPC stabilization code at the end of silk_NLSF2A().
+    </p>
+    
+    <p>Ultimately, the output audio would be garbage, but no worse than with
+      any other harmless bad packet.
+    </p>
+    
+    <p>Please see the referenced upstream patch and Debian bug report below for
+      a detailed analysis.
+    </p>
+    
+    <p>However, the original report was about a successful exploitation of
+      Android’s Mediaserver in conjunction with this vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      stream, possibly resulting in execution of arbitrary code with the
+      privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Opus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/opus-1.1.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0381">CVE-2017-0381</uri>
+    <uri link="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851612#10">
+      Debian Bug 851612
+    </uri>
+    <uri link="https://git.xiph.org/?p=opus.git;a=commitdiff;h=70a3d641b">
+      Upstream patch
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-16T12:24:20Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:45:02Z">whissi</metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-libs/zziplib >=media-libs/libpng-1.4:0= >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 app-text/poppler:=[xpdf-headers(+)] sys-libs/zlib >=dev-libs/kpathsea-6.1.0_p20120701 virtual/pkgconfig >=app-portage/elt-patches-20170317
+DESCRIPTION=An extended version of pdfTeX using Lua as an embedded scripting language
+EAPI=5
+HOMEPAGE=http://www.luatex.org/
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-libs/zziplib >=media-libs/libpng-1.4:0= >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 app-text/poppler:=[xpdf-headers(+)] sys-libs/zlib >=dev-libs/kpathsea-6.1.0_p20120701
+SLOT=0
+SRC_URI=http://foundry.supelec.fr/frs/download.php/file/15745/luatex-beta-0.76.0-source.tar.bz2 http://foundry.supelec.fr/frs/download.php/file/15747/luatex-beta-0.76.0-doc.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	texlive-common	f68a634c367f10b9fbb8fb02195ba411	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7354879a2b3e64b999fab4a701727e07

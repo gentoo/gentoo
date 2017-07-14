@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-18">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>November 22, 2016</announced>
+  <revised>November 22, 2016: 2</revised>
+  <bug>599204</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">23.0.0.207</unaffected>
+      <unaffected range="rge">11.2.202.644</unaffected>
+      <vulnerable range="lt">23.0.0.207</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player 23.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-23.0.0.207"
+    </code>
+    
+    <p>All Adobe Flash Player 11.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.644"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7857">CVE-2016-7857</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7858">CVE-2016-7858</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7859">CVE-2016-7859</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7860">CVE-2016-7860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7861">CVE-2016-7861</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7862">CVE-2016-7862</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7863">CVE-2016-7863</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7864">CVE-2016-7864</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7865">CVE-2016-7865</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Nov 2016 06:18:07 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:59:00 +0000">b-man</metadata>
+</glsa>

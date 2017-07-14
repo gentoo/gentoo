@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-02">
+  <title>RTMPDump: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in RTMPDump, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">rtmpdump</product>
+  <announced>2017-02-06</announced>
+  <revised>2017-02-06: 1</revised>
+  <bug>570242</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/rtmpdump" auto="yes" arch="*">
+      <unaffected range="ge">2.4_p20161210</unaffected>
+      <vulnerable range="lt">2.4_p20161210</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>RTMPDump is an RTMP client intended to stream audio or video flash
+      content
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in RTMPDump.</p>
+    
+    <p>The following is a list of vulnerabilities fixed:</p>
+    
+    <ul>
+      <li>Additional decode input size checks</li>
+      <li>Ignore zero-length packets</li>
+      <li>Potential integer overflow in RTMPPacket_Alloc().</li>
+      <li>Obsolete RTMPPacket_Free() call left over from original C++ to C
+        rewrite
+      </li>
+      <li>AMFProp_GetObject must make sure the prop is actually an object</li>
+    </ul>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      flash file using RTMPDump. This could possibly result in the execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RTMPDump users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-video/rtmpdump-2.4_p20161210"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://www.openwall.com/lists/oss-security/2015/12/30/1">OSS ML
+      CVE Request
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-27T06:35:09Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-02-06T02:08:12Z">BlueKnight</metadata>
+</glsa>

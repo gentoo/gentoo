@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/JSON-MaybeXS dev-perl/Params-Util virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=string munging for loggers
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/String-Flogger/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/JSON-MaybeXS dev-perl/Params-Util virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/String-Flogger-1.101245.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=8a2fcafd939810f25df51a8479ae8918

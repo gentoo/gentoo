@@ -1,0 +1,50 @@
+Title: KDE Plasma 4 and KDE profile removal
+Author: Andreas Sturmlechner <asturm@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-01-08
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: kde-plasma/kdebase-startkde
+Display-If-Installed: kde-plasma/kdm
+Display-If-Profile: default/linux/alpha/13.0/desktop/kde
+Display-If-Profile: default/linux/alpha/13.0/desktop/kde/systemd
+Display-If-Profile: default/linux/amd64/13.0/desktop/kde
+Display-If-Profile: default/linux/amd64/13.0/desktop/kde/systemd
+Display-If-Profile: default/linux/arm/13.0/desktop/kde
+Display-If-Profile: default/linux/arm/13.0/desktop/kde/systemd
+Display-If-Profile: default/linux/arm/13.0/armv4/desktop/kde
+Display-If-Profile: default/linux/arm/13.0/armv4t/desktop/kde
+Display-If-Profile: default/linux/arm/13.0/armv5te/desktop/kde
+Display-If-Profile: default/linux/arm/13.0/armv6j/desktop/kde
+Display-If-Profile: default/linux/arm/13.0/armv7a/desktop/kde
+Display-If-Profile: default/linux/ia64/13.0/desktop/kde
+Display-If-Profile: default/linux/ia64/13.0/desktop/kde/systemd
+Display-If-Profile: default/linux/m68k/13.0/desktop/kde
+Display-If-Profile: default/linux/powerpc/ppc32/13.0/desktop/kde
+Display-If-Profile: default/linux/powerpc/ppc32/13.0/desktop/kde/systemd
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland/desktop/kde
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland/desktop/kde/systemd
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/kde
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/kde/systemd
+Display-If-Profile: default/linux/sh/13.0/desktop/kde
+Display-If-Profile: default/linux/sparc/13.0/desktop/kde
+Display-If-Profile: default/linux/sparc/13.0/desktop/kde/systemd
+Display-If-Profile: default/linux/x86/13.0/desktop/kde
+Display-If-Profile: default/linux/x86/13.0/desktop/kde/systemd
+
+KDE Plasma 4 has reached end of life in Portage. Upstream dropped support
+in 2015-08-19, no security bugs have been fixed since then. It is therefore
+required for all users to upgrade to KDE Plasma 5.
+
+KDM is being removed as well. Upstream recommends x11-misc/sddm instead which
+is pulled in by plasma-meta by default.
+OpenRC users edit /etc/conf.d/xdm and update DISPLAYMANAGER.
+Systemd users run: systemctl reenable sddm.service
+
+Part of the cleanup will also be the KDE desktop profile, which is superseded
+by the Plasma desktop profile. Please follow the detailed upgrade guide.[1]
+
+KDE Plasma 4.11 packages will be moved to kde-sunset overlay.[2]
+
+[1] https://wiki.gentoo.org/wiki/KDE/Plasma_5_upgrade
+[2] https://wiki.gentoo.org/wiki/Overlay:Kde-sunset

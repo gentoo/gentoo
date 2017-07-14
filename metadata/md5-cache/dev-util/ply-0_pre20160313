@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare pretend setup
+DEPEND=>=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Dynamic instrumentation of the Linux kernel with BPF and kprobes
+EAPI=6
+HOMEPAGE=https://github.com/iovisor/ply
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/iovisor/ply/archive/cfc56c789ad1eff1080ecb0dad18d009b91ae8ea.tar.gz -> ply-0_pre20160313.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:linux-info src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=5bb0f69ae2c8cc14bd0a5e40e29eeed2

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-06">
+  <title>nghttp2: Heap-use-after-free</title>
+  <synopsis>Nghttp2 is vulnerable to a heap-use-after-free flaw in idle stream
+    handling code.
+  </synopsis>
+  <product type="ebuild">nghttp2</product>
+  <announced>December 04, 2016</announced>
+  <revised>December 04, 2016: 1</revised>
+  <bug>569518</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/nghttp2" auto="yes" arch="*">
+      <unaffected range="ge">1.6.0</unaffected>
+      <vulnerable range="lt">1.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nghttp2 is an implementation of HTTP/2 and its header compression
+      algorithm HPACK in C.
+    </p>
+  </background>
+  <description>
+    <p>A heap-use-after-free vulnerability has been discovered in nghttp2.
+      Please review the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The impact of the vulnerability is still unknown.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nghttp2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nghttp2-1.6.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8659">CVE-2015-8659</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:09:46 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 10:59:07 +0000">whissi</metadata>
+</glsa>

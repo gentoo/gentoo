@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=static? ( net-libs/libpcap[static-libs] ) !static? ( net-libs/libpcap )
+DESCRIPTION=Effectively suppresses illegal DHCP servers on the LAN
+EAPI=5
+HOMEPAGE=http://www.netpatch.ru/dhcdrop.html
+IUSE=static
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( net-libs/libpcap )
+SLOT=0
+SRC_URI=http://www.netpatch.ru/projects/dhcdrop/dhcdrop-0.5.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=cfc0e7c78a5de042d2688e45fc02f135

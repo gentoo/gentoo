@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure info install prepare unpack
+DEPEND=dev-vcs/git >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
+EAPI=4
+HOMEPAGE=https://github.com/pipelka/xbmc-addon-xvdr
+LICENSE=GPL-2
+SLOT=0
+_eclass_exported_funcs=pkg_info:- src_unpack:git-2 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-2	195a672bfaf52d868442171c9469bbb6	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=bc4f8d1dd60b9044c2cc4ba02e609c1e

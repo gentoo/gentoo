@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=app-shells/bash-4:0 net-misc/curl net-misc/wget virtual/awk compression? ( sys-libs/zlib ) nfacct? ( net-firewall/nfacct net-libs/libmnl ) nodejs? ( net-libs/nodejs ) virtual/pkgconfig virtual/pkgconfig filecaps? ( sys-libs/libcap )
+DESCRIPTION=Linux real time system monitoring, done right!
+EAPI=6
+HOMEPAGE=https://github.com/firehol/netdata https://my-netdata.io/
+IUSE=+compression nfacct nodejs +filecaps
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ MIT BSD
+RDEPEND=>=app-shells/bash-4:0 net-misc/curl net-misc/wget virtual/awk compression? ( sys-libs/zlib ) nfacct? ( net-firewall/nfacct net-libs/libmnl ) nodejs? ( net-libs/nodejs )
+SLOT=0
+SRC_URI=https://firehol.org/download/netdata/releases/v1.2.0/netdata-1.2.0.tar.xz
+_eclass_exported_funcs=pkg_postinst:fcaps pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fcaps	e80204189039ecc03f24151c518375f0	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d3fdcb3dda956c26946a954bd3112e64

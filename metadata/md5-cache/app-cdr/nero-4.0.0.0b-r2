@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst setup unpack
+DEPEND=>=sys-apps/sed-4 >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Nero Burning ROM for Linux
+EAPI=6
+HOMEPAGE=http://nerolinux.nero.com
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Nero-EULA-US
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama x11-libs/pango[X]
+RESTRICT=strip mirror test fetch
+SLOT=0
+SRC_URI=x86? ( nerolinux-4.0.0.0b-x86.rpm ) amd64? ( nero/nerolinux-4.0.0.0b-x86_64.rpm )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:rpm src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=277a29486c8cdfe299aa284d485a3843

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=virtual/pkgconfig sys-apps/systemd
+DESCRIPTION=Profile based network connection tool from Arch Linux
+EAPI=5
+HOMEPAGE=https://wiki.archlinux.org/index.php/Netctl https://www.archlinux.org/packages/core/any/netctl/ https://projects.archlinux.org/netctl.git/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=app-shells/bash-4.0 >=net-dns/openresolv-3.5.4-r1 sys-apps/iproute2 sys-apps/systemd !<net-misc/dhcpcd-6.4.0
+SLOT=0
+SRC_URI=https://sources.archlinux.org/other/packages/netctl/netctl-1.9.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e1a8f1e58ee912fa3c0ae3747a71a2ea

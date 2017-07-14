@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=>=dev-db/oracle-instantclient-basic-11.2.0.2 app-arch/unzip
+DESCRIPTION=Oracle 11g client installation for Linux: SQL*Plus
+EAPI=0
+HOMEPAGE=http://www.oracle.com/technology/tech/oci/instantclient/index.html
+KEYWORDS=~x86 ~amd64
+LICENSE=OTN
+RDEPEND=>=dev-db/oracle-instantclient-basic-11.2.0.2
+RESTRICT=fetch
+SLOT=0
+SRC_URI=x86? ( instantclient-sqlplus-linux32-11.2.0.2.0.zip ) amd64? ( instantclient-sqlplus-linux-x86-64-11.2.0.2.0.zip )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=70f175ad1e8640be4d4ed3278075c8bc

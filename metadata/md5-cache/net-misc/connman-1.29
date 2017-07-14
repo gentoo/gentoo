@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 >=net-firewall/iptables-1.4.8 bluetooth? ( net-wireless/bluez ) l2tp? ( net-dialup/xl2tpd ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wispr? ( net-libs/gnutls ) >=sys-kernel/linux-headers-2.6.39 virtual/pkgconfig
+DESCRIPTION=Provides a daemon for managing internet connections
+EAPI=5
+HOMEPAGE=https://01.org/connman
+IUSE=bluetooth debug doc examples +ethernet l2tp ofono openvpn openconnect pptp policykit tools vpnc +wifi wispr
+KEYWORDS=amd64 arm ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 >=net-firewall/iptables-1.4.8 bluetooth? ( net-wireless/bluez ) l2tp? ( net-dialup/xl2tpd ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wispr? ( net-libs/gnutls )
+SLOT=0
+SRC_URI=mirror://kernel/linux/network/connman/connman-1.29.tar.xz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:base src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f5f3537512e1cc1ed7a92f748b437e03

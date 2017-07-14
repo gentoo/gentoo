@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=General purpose Nagios/Icinga plugin for retrieving data
+EAPI=6
+HOMEPAGE=http://mathias-kettner.de/check_mk.html
+IUSE=agent-only apache_status livestatus logwatch mysql +nagios4 nfsexports oracle postgres smart wato xinetd zypper python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] wato? ( app-admin/sudo ) xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) ) !agent-only? ( www-servers/apache[apache2_modules_access_compat(+)] www-apache/mod_python[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] livestatus? ( net-analyzer/mk-livestatus[nagios4=] ) nagios4? ( >=net-analyzer/nagios-core-4 ) !nagios4? ( || ( <net-analyzer/nagios-core-4 net-analyzer/icinga ) ) ) media-libs/libpng:0 !!net-analyzer/check_mk_agent
+REQUIRED_USE=python_targets_python2_7 livestatus? ( !agent-only ) wato? ( !agent-only )
+SLOT=0
+SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.8p16.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=cfc9c75966b1e10247dee89e90b6a5d3

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=doc? ( app-text/ronn ) >=dev-lang/go-1.8
+DESCRIPTION=command line extension and specification for managing large files with Git
+EAPI=6
+HOMEPAGE=https://git-lfs.github.com/
+IUSE=+doc
+KEYWORDS=~amd64
+LICENSE=MIT BSD BSD-2 BSD-4 Apache-2.0
+RDEPEND=dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/git-lfs/git-lfs/archive/v1.5.6.tar.gz -> git-lfs-1.5.6.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=6135edc8dd995ea51f192d8222d48776

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A simple podcast aggregator, designed for cron
+EAPI=6
+HOMEPAGE=http://podracer.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-shells/bash net-misc/curl
+SLOT=0
+SRC_URI=mirror://sourceforge/podracer/podracer-1.4.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=de5b18f8b569507d2d5e75263b60e285

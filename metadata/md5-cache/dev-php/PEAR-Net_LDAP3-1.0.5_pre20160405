@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=PEAR:Net_LDAP2 successor, provides functionality for accessing LDAP
+EAPI=6
+HOMEPAGE=https://gitlab.com/roundcube/net_ldap3
+KEYWORDS=amd64 arm ~hppa ppc ~ppc64 ~sparc x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/php:*[ldap] dev-php/PEAR-Net_LDAP2
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/PEAR-Net_LDAP3-1.0.5_pre20160405.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=5bb2e6975cc39d772dcb3f06b92c3b9a

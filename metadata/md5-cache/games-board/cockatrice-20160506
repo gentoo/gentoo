@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-libs/libgcrypt:0 dev-libs/protobuf dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/linguist-tools:5 dev-qt/qtprintsupport:5 !dedicated? ( dev-qt/qtmultimedia:5 dev-qt/qtsvg:5 dev-qt/qtgui:5 ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=An open-source multiplatform software for playing card games over a network
+EAPI=5
+HOMEPAGE=https://github.com/Cockatrice/Cockatrice
+IUSE=dedicated server
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=games-misc/games-envd
+SLOT=0
+SRC_URI=https://github.com/Cockatrice/cockatrice/archive/2016-05-06-Release.tar.gz -> cockatrice-20160506.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=0369490e7a5f5e853dabbc0d5a7fea41

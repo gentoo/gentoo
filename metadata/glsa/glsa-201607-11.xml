@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-11">
+  <title>Bugzilla: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Bugzilla, the worst of
+    which could lead to the escalation of privileges.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>524316</bug>
+  <bug>537448</bug>
+  <bug>560406</bug>
+  <bug>583236</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/bugzilla" auto="yes" arch="*">
+      <unaffected range="ge">5.0.3</unaffected>
+      <unaffected range="rgt">4.4.12</unaffected>
+      <vulnerable range="lt">5.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bugzilla is the bug-tracking system from the Mozilla project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Bugzilla. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Privileged account holders could execute system level commands, and the
+      new user process could be exploited to allow for the escalation of
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bugzilla 4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/bugzilla-4.4.12"
+    </code>
+    
+    <p>All Bugzilla 5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/bugzilla-5.0.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1572">
+      CVE-2014-1572
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1573">
+      CVE-2014-1573
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8630">CVE-2014-8630</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 05:32:55 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:12:25 +0000">b-man</metadata>
+</glsa>

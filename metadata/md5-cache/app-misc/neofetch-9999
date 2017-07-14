@@ -1,0 +1,12 @@
+DEFINED_PHASES=unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Simple information system script
+EAPI=6
+HOMEPAGE=https://github.com/dylanaraps/neofetch
+IUSE=X
+LICENSE=MIT-with-advertising
+RDEPEND=sys-apps/pciutils X? ( x11-apps/xprop x11-apps/xwininfo x11-apps/xrandr www-client/w3m[imlib] media-libs/imlib2 media-gfx/imagemagick )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=f48804f79c19de305678ea4ff1fb6cf0

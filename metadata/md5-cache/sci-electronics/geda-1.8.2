@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm preinst prepare test
+DEPEND=dev-libs/glib:2 x11-libs/gtk+:2 >=x11-libs/cairo-1.2.0 >=dev-scheme/guile-1.8[deprecated] nls? ( virtual/libintl ) stroke? ( >=dev-libs/libstroke-0.5.1 ) sys-apps/groff dev-util/desktop-file-utils x11-misc/shared-mime-info virtual/pkgconfig nls? ( >=sys-devel/gettext-0.16 ) >=sys-apps/sed-4
+DESCRIPTION=GPL Electronic Design Automation (gEDA):gaf core package
+EAPI=4
+HOMEPAGE=http://www.gpleda.org/
+IUSE=debug doc examples nls stroke threads
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 >=x11-libs/cairo-1.2.0 >=dev-scheme/guile-1.8[deprecated] nls? ( virtual/libintl ) stroke? ( >=dev-libs/libstroke-0.5.1 ) sci-electronics/electronics-menu
+SLOT=0
+SRC_URI=http://ftp.geda-project.org/geda-gaf/stable/v1.8/1.8.2/geda-gaf-1.8.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_test:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=a43e0de80f236bd4d14e5c5618d2c69a

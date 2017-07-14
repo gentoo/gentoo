@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-10">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VLC, the worst of which
+    may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>619494</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">2.2.6</unaffected>
+      <vulnerable range="lt">2.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VLC. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted
+      subtitles file, could possibly execute arbitrary code with the privileges
+      of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-2.2.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8310">CVE-2017-8310</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8311">CVE-2017-8311</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8312">CVE-2017-8312</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8313">CVE-2017-8313</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-28T11:50:57Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T20:11:58Z">b-man</metadata>
+</glsa>

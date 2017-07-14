@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Generic logging layer that to log to syslog, an open file handle or a file name
+EAPI=0
+HOMEPAGE=http://horms.net/projects/vanessa/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://horms.net/projects/vanessa/download/vanessa_logger/0.0.10/vanessa_logger-0.0.10.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=79f8d0e9e6301db814bc51b1872b2e6f

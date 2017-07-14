@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/gnat-gpl dev-ada/gprbuild
+DESCRIPTION=Ada unit testing framework
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/tools/aunit/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/gnat-gpl
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/573990c6c7a447658d00e1cb -> aunit-gpl-2016-src.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c
+_md5_=4867bf2552e7692aef505ab78341ac3e

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-02">
+  <title>DavFS2: Local privilege escalation</title>
+  <synopsis>A vulnerability in DavFS2 allows local users to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">davfs2</product>
+  <announced>December 02, 2016</announced>
+  <revised>December 02, 2016: 1</revised>
+  <bug>485232</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-fs/davfs2" auto="yes" arch="*">
+      <unaffected range="ge">1.5.2</unaffected>
+      <vulnerable range="lt">1.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>DavFS2 is a file system driver that allows you to mount a WebDAV server
+      as a local disk drive.
+    </p>
+  </background>
+  <description>
+    <p>DavFS2 installs “/usr/sbin/mount.davfs” as setuid root. This utility
+      uses “system()” to call “/sbin/modprobe”.
+    </p>
+    
+    <p>While the call to “modprobe” itself cannot be manipulated, a local
+      authenticated user can set the “MODPROBE_OPTIONS” environment
+      variable to pass a user controlled path, allowing the loading of an
+      arbitrary kernel module.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local user could gain root privileges.</p>
+  </impact>
+  <workaround>
+    <p>The system administrator should ensure that all modules the
+      “mount.davfs” utility tries to load are loaded upon system boot
+      before any local user can call the utility.
+    </p>
+    
+    <p>An additional defense measure can be implemented by enabling the Linux
+      kernel module signing feature. This assists in the prevention of
+      arbitrary modules being loaded.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All DavFS2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/davfs2-1.5.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4362">CVE-2013-4362</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 07 Dec 2015 21:54:18 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 02 Dec 2016 13:32:55 +0000">whissi</metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<media-libs/quvi-0.4.0 >=dev-libs/glib-2.24.2:2 >=dev-libs/libgcrypt-1.4.5:0= >=media-libs/libquvi-scripts-0.9 >=net-libs/libproxy-0.3.1 >=net-misc/curl-7.21.0 >=dev-lang/lua-5.1[deprecated] nls? ( virtual/libintl ) app-arch/xz-utils virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library for parsing video download links
+EAPI=5
+HOMEPAGE=http://quvi.sourceforge.net/
+IUSE=examples nls static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3
+RDEPEND=!<media-libs/quvi-0.4.0 >=dev-libs/glib-2.24.2:2 >=dev-libs/libgcrypt-1.4.5:0= >=media-libs/libquvi-scripts-0.9 >=net-libs/libproxy-0.3.1 >=net-misc/curl-7.21.0 >=dev-lang/lua-5.1[deprecated] nls? ( virtual/libintl )
+SLOT=0/8
+SRC_URI=mirror://sourceforge/quvi/0.9/libquvi-0.9.3.tar.xz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f4184d41477e02369d5c1ccfff4e1c1e

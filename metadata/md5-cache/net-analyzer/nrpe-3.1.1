@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=sys-apps/tcp-wrappers ssl? ( dev-libs/openssl:0 ) virtual/pkgconfig
+DESCRIPTION=Nagios Remote Plugin Executor
+EAPI=6
+HOMEPAGE=https://github.com/NagiosEnterprises/nrpe
+IUSE=selinux ssl
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=sys-apps/tcp-wrappers ssl? ( dev-libs/openssl:0 ) || ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins ) selinux? ( sec-policy/selinux-nagios )
+SLOT=0
+SRC_URI=https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.1.1/nrpe-3.1.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=5a0fa8457633503074be7ad38d2d82a1

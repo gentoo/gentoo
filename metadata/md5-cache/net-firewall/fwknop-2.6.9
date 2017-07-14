@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=client? ( net-misc/wget[ssl] ) firewalld? ( net-firewall/firewalld[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) gdbm? ( sys-libs/gdbm ) gpg? ( app-crypt/gpgme dev-libs/libassuan dev-libs/libgpg-error ) iptables? ( net-firewall/iptables ) nfqueue? ( net-libs/libnetfilter_queue ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) server? ( !nfqueue? ( !udp-server? ( net-libs/libpcap ) ) ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Single Packet Authorization and Port Knocking application
+EAPI=6
+HOMEPAGE=https://www.cipherdyne.org/fwknop/ https://github.com/mrash/fwknop
+IUSE=client extras firewalld gdbm gpg iptables nfqueue python server udp-server python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=client? ( net-misc/wget[ssl] ) firewalld? ( net-firewall/firewalld[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) gdbm? ( sys-libs/gdbm ) gpg? ( app-crypt/gpgme dev-libs/libassuan dev-libs/libgpg-error ) iptables? ( net-firewall/iptables ) nfqueue? ( net-libs/libnetfilter_queue ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) server? ( !nfqueue? ( !udp-server? ( net-libs/libpcap ) ) )
+REQUIRED_USE=firewalld? ( server ) gdbm? ( server ) iptables? ( server ) nfqueue? ( server ) python? ( || ( python_targets_python2_7 ) ) server? ( ^^ ( firewalld iptables ) ) udp-server? ( server )
+SLOT=0
+SRC_URI=https://github.com/mrash/fwknop/archive/2.6.9.tar.gz -> fwknop-2.6.9.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=156a0183da376f9400f4e2e0dcd10ad7

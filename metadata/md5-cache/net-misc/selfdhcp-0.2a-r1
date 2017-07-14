@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/popt dev-libs/libxml2 >=net-libs/libnet-1.0.2 net-libs/libpcap
+DESCRIPTION=a small stealth network autoconfigure software
+EAPI=4
+HOMEPAGE=http://selfdhcp.sourceforge.net
+KEYWORDS=~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/selfdhcp/selfdhcp-0.2a.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=69fb01f9fc8987d358c1c9e40f3d80e4

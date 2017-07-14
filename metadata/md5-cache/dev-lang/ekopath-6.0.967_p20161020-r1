@@ -1,0 +1,15 @@
+DEFINED_PHASES=install unpack
+DEPEND=!!app-arch/rpm
+DESCRIPTION=PathScale EKOPath Compiler Suite
+EAPI=6
+HOMEPAGE=http://www.pathscale.com/ekopath-compiler-suite
+IUSE=mpich openmpi openmpi2
+KEYWORDS=~amd64
+LICENSE=all-rights-reserved
+RDEPEND=!dev-lang/ekopath:0/6.0.967
+RESTRICT=bindist mirror
+SLOT=6.0.967
+SRC_URI=http://c591116.r16.cf2.rackcdn.com/ekopath/nightly/Linux/ekopath-2016-10-20-installer.run
+_eclass_exported_funcs=src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=26c43b068bf3bb1fc76d7ca117fa37d6

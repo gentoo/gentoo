@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-04">
+  <title>Git: Security bypass</title>
+  <synopsis>A vulnerability in Git might allow remote attackers to bypass
+    security restrictions.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>618126</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/git" auto="yes" arch="*">
+      <unaffected range="ge">2.13.0</unaffected>
+      <vulnerable range="lt">2.13.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+    </p>
+  </background>
+  <description>
+    <p>Timo Schmid discovered that the Git restricted shell incorrectly
+      filtered allowed commands.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly bypass security restrictions and access
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Git users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.13.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8386">CVE-2017-8386</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-18T06:04:29Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T08:33:25Z">whissi</metadata>
+</glsa>

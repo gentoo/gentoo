@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-17">
+  <title>Kodi: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Kodi, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">kodi</product>
+  <announced>2017-06-20</announced>
+  <revised>2017-06-20: 1</revised>
+  <bug>549342</bug>
+  <bug>619492</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-tv/kodi" auto="yes" arch="*">
+      <unaffected range="ge">17.2</unaffected>
+      <vulnerable range="lt">17.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Kodi (formerly XBMC) is a free and open-source media player software
+      application.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Kodi. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using Kodi, possibly resulting in a Denial of Service condition.
+    </p>
+    
+    <p>Furthermore, a remote attacker could entice a user process a specially
+      crafted ZIP file containing subtitles using Kodi, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Kodi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-tv/kodi-17.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8314">CVE-2017-8314</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-06T16:37:32Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-20T17:18:36Z">whissi</metadata>
+</glsa>

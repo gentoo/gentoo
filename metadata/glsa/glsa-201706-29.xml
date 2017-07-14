@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-29">
+  <title>KAuth and KDELibs: Privilege escalation</title>
+  <synopsis>A vulnerability in KAuth and KDELibs allows local users to gain
+    root privileges.
+  </synopsis>
+  <product type="ebuild">kauth,kdelibs</product>
+  <announced>2017-06-27</announced>
+  <revised>2017-06-27: 1</revised>
+  <bug>618108</bug>
+  <access>local</access>
+  <affected>
+    <package name="kde-frameworks/kauth" auto="yes" arch="*">
+      <unaffected range="ge">5.29.0-r1</unaffected>
+      <vulnerable range="lt">5.29.0-r1</vulnerable>
+    </package>
+    <package name="kde-frameworks/kdelibs" auto="yes" arch="*">
+      <unaffected range="ge">4.14.32</unaffected>
+      <vulnerable range="lt">4.14.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>KAuth provides a convenient, system-integrated way to offload actions
+      that need to be performed as a privileged user (root, for example) to
+      small (hopefully secure) helper utilities.
+    </p>
+    
+    <p>The KDE libraries, basis of KDE and used by many open source projects.</p>
+  </background>
+  <description>
+    <p>KAuth and KDELibs contains a logic flaw in which the service invoking
+      D-Bus is not properly checked. This allows spoofing the identity of the
+      caller and with some carefully crafted calls can lead to gaining root
+      from an unprivileged account.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could spoof the identity of the caller invoking D-Bus,
+      possibly resulting in gaining privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KAuth users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-frameworks/kauth-5.29.0-r1"
+    </code>
+    
+    <p>All KDELibs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-frameworks/kdelibs-4.14.32"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8422">CVE-2017-8422</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-06T14:01:55Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-27T09:58:27Z">whissi</metadata>
+</glsa>

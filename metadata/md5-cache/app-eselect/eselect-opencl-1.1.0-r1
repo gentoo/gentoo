@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Utility to change the OpenCL implementation being used
+EAPI=4
+HOMEPAGE=https://www.gentoo.org/
+KEYWORDS=amd64 x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=app-admin/eselect-1.2.4
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~xarthisius/distfiles//opencl.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_platform.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_ext.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_gl.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_gl_ext.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl.hpp.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//eselect-opencl-1.1.0-r1.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=cf3a99f11df9ab171451816bf029fa6e

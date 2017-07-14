@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-25">
+  <title>libass: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libass, the worst of
+    which have unknown impacts.
+  </synopsis>
+  <product type="ebuild">libass</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>596422</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libass" auto="yes" arch="*">
+      <unaffected range="ge">0.13.4</unaffected>
+      <vulnerable range="lt">0.13.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libass is a portable subtitle renderer for the ASS/SSA (Advanced
+      Substation Alpha/Substation Alpha) subtitle format.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libass. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition or other
+      unknown impacts via unknown attack vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libass users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libass-0.13.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7969">CVE-2016-7969</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7970">CVE-2016-7970</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7971">CVE-2016-7971</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7972">CVE-2016-7972</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-05T23:35:59Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:46:16Z">whissi</metadata>
+</glsa>

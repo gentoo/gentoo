@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-17">
+  <title>hostapd and wpa_supplicant: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in hostapd and
+    wpa_supplicant, allowing remote attackers to execute arbitrary code or
+    cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">wpa_supplicant</product>
+  <announced>June 27, 2016</announced>
+  <revised>June 27, 2016: 1</revised>
+  <bug>524928</bug>
+  <bug>547492</bug>
+  <bug>548742</bug>
+  <bug>548744</bug>
+  <bug>554860</bug>
+  <bug>554862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/hostapd" auto="yes" arch="*">
+      <unaffected range="ge">2.5</unaffected>
+      <vulnerable range="lt">2.5</vulnerable>
+    </package>
+    <package name="net-wireless/wpa_supplicant" auto="yes" arch="*">
+      <unaffected range="ge">2.5-r1</unaffected>
+      <vulnerable range="lt">2.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>wpa_supplicant is a WPA Supplicant with support for WPA and WPA2 (IEEE
+      802.11i / RSN). hostapd is a user space daemon for access point and
+      authentication servers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities exist in both hostapd and wpa_supplicant. 
+      Please review the CVE identifiers for more information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code with the privileges of the
+      process or cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All hostapd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/hostapd-2.5"
+    </code>
+    
+    <p>All wpa_supplicant users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-wireless/wpa_supplicant-2.5-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3686">CVE-2014-3686</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3686">CVE-2014-3686</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1863">CVE-2015-1863</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4141">CVE-2015-4141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4142">CVE-2015-4142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4143">CVE-2015-4143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4144">CVE-2015-4144</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4145">CVE-2015-4145</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4146">CVE-2015-4146</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 30 Apr 2015 18:59:29 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Mon, 27 Jun 2016 10:31:51 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-php/PEAR-DB-1.7.6-r1
+DESCRIPTION=Cute PHP Library (cphplib)
+EAPI=4
+HOMEPAGE=http://cphplib.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/PEAR-DB-1.7.6-r1
+SLOT=0
+SRC_URI=mirror://sourceforge/cphplib/cphplib-0.51.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=bace0a188d4ab3230db7d71531367440

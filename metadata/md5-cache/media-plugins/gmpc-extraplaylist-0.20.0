@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2 virtual/pkgconfig
+DESCRIPTION=This plugin adds a second pane showing the playlist
+EAPI=3
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_EXTRA_PLAYLIST
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/gmpc-extraplaylist-0.20.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=a6044c0c4c34e2d48761df6e91a7acc5

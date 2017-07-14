@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup
+DESCRIPTION=IRTrans Server
+EAPI=5
+HOMEPAGE=http://www.irtrans.de
+IUSE=mono
+KEYWORDS=~x86 ~amd64 ~arm
+LICENSE=BSD GPL-2
+RDEPEND=mono? ( >=dev-lang/mono-2.10.5 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://ftp.disconnected-by-peer.at/irtrans/irserver-src-6.09.04.tar.gz http://ftp.disconnected-by-peer.at/irtrans/irserver-6.09.04.tar.gz http://www.irtrans.de/download/Server/Linux/irserver-src.tar.gz -> irserver-src-6.09.04.tar.gz http://www.irtrans.de/download/Server/Linux/irserver.tar.gz -> irserver-6.09.04.tar.gz
+_eclass_exported_funcs=pkg_setup:mono-env src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=1ba7be3fc6edb08f0328b7fa543918cc

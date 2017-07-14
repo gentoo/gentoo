@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install preinst setup
+DEPEND=dev-libs/crypto++ sys-libs/binutils-libs:0= sys-libs/zlib x11-libs/wxGTK:3.0[X?] stats? ( media-libs/gd:=[jpeg,png] ) geoip? ( dev-libs/geoip ) upnp? ( net-libs/libupnp:* ) remote? ( media-libs/libpng:0= unicode? ( media-libs/gd:= ) ) !net-p2p/imule
+DESCRIPTION=aMule, the all-platform eMule p2p client
+EAPI=6
+HOMEPAGE=http://www.amule.org/
+IUSE=daemon debug geoip nls remote stats unicode upnp +X
+KEYWORDS=alpha amd64 ~arm ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/crypto++ sys-libs/binutils-libs:0= sys-libs/zlib x11-libs/wxGTK:3.0[X?] stats? ( media-libs/gd:=[jpeg,png] ) geoip? ( dev-libs/geoip ) upnp? ( net-libs/libupnp:* ) remote? ( media-libs/libpng:0= unicode? ( media-libs/gd:= ) ) !net-p2p/imule
+SLOT=0
+SRC_URI=mirror://sourceforge/amule/aMule-2.3.2.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=72c8c3eef5c479f556eb4df973c3c65a

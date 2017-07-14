@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare unpack
+DEPEND=x11-apps/xcursorgen >=sys-apps/sed-4
+DESCRIPTION=A family of smoothed and shadowed cursors that resemble the standard X ones
+EAPI=6
+HOMEPAGE=https://opendesktop.org/content/show.php/Neutral?content=28310 https://opendesktop.org/content/show.php/Neutral+Plus?content=48837 https://opendesktop.org/content/show.php/Neutral%2B%2B?content=108142 https://opendesktop.org/content/show.php/Neutral%2B%2B+White?content=108143
+KEYWORDS=amd64 arm ~arm64 sparc x86 ~x86-fbsd
+LICENSE=Artistic-2
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://opendesktop.org/CONTENT/content-files/28310-neutral-1.13a.tar.gz -> Neutral-1.13a.tar.gz https://opendesktop.org/CONTENT/content-files/48837-Neutral_Plus_1.2.tar.bz2 -> Neutral_Plus-1.2.tar.bz2 https://opendesktop.org/CONTENT/content-files/108142-Neutral++-1.0.3.tar.xz -> Neutral++-1.0.3.tar.bz2 https://opendesktop.org/CONTENT/content-files/108143-Neutral++_White-1.1.1.tar.xz -> Neutral++_White-1.1.1.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=7bbc8a3c5d066766cf930089c4e74734

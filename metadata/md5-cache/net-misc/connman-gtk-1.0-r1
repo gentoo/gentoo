@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-util/intltool-0.35.0 sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GTK GUI for Connman
+EAPI=6
+HOMEPAGE=https://github.com/jgke/connman-gtk
+IUSE=openconnect
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.0:2 >=x11-libs/gtk+-3.10:3 openconnect? ( >=net-vpn/openconnect-5.99 ) net-misc/connman
+SLOT=0
+SRC_URI=https://github.com/jgke/connman-gtk/archive/v1.0.tar.gz -> connman-gtk-1.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=942c4f776dfb50bcb7cb82e0523ac225

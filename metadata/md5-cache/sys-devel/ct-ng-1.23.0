@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DESCRIPTION=crosstool-ng is a tool to build cross-compiling toolchains
+EAPI=5
+HOMEPAGE=http://crosstool-ng.org
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-misc/curl dev-util/gperf dev-vcs/cvs dev-vcs/subversion
+SLOT=0
+SRC_URI=http://ymorin.is-a-geek.org/download/crosstool-ng/crosstool-ng-1.23.0.tar.bz2
+_eclass_exported_funcs=src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f0f2d9096c5ab75e951f84c08f2524bd

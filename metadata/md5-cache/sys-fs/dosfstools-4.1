@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=udev? ( virtual/libudev ) test? ( app-editors/vim-core ) udev? ( virtual/pkgconfig )
+DESCRIPTION=DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
+EAPI=5
+HOMEPAGE=https://github.com/dosfstools/dosfstools
+IUSE=compat test +udev
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=udev? ( virtual/libudev )
+SLOT=0
+SRC_URI=https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8301f9a6e539d7869ff0213540b47a5e

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-fonts/font-misc-misc x11-libs/libX11 x11-misc/gccmakedep x11-misc/imake x11-proto/xproto
+DESCRIPTION=Famous german card game
+EAPI=6
+HOMEPAGE=http://www.xskat.de/xskat.html
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=freedist
+RDEPEND=media-fonts/font-misc-misc x11-libs/libX11
+SLOT=0
+SRC_URI=http://www.xskat.de/xskat-4.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=09c311df03f7cfd9dc4275de2a0168a2

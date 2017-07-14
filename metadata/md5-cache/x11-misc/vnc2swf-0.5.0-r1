@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXt x11-proto/xextproto x11-proto/xproto sys-apps/sed sys-libs/zlib x11vnc? ( x11-misc/x11vnc )
+DESCRIPTION=A tool for recording Flash SWF movies from VNC sessions
+EAPI=0
+HOMEPAGE=http://www.unixuser.org/~euske/vnc2swf
+IUSE=x11vnc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXt
+SLOT=0
+SRC_URI=http://www.unixuser.org/~euske/vnc2swf/vnc2swf-0.5.0.tar.gz
+_eclass_exported_funcs=src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=b2cb4691ca18fa012ad8224ab897d43c

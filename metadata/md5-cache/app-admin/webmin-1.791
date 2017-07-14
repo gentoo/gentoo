@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare prerm
+DEPEND=virtual/perl-MIME-Base64 virtual/perl-Socket virtual/perl-Sys-Syslog virtual/perl-Time-HiRes virtual/perl-Time-Local dev-perl/Authen-Libwrap dev-perl/IO-Tty dev-perl/MD5 dev-perl/Net-SSLeay dev-perl/Authen-PAM dev-perl/Sys-Hostname-Long >=net-dns/dnssec-tools-1.13 !minimal? ( mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ldap? ( dev-perl/perl-ldap ) dev-perl/XML-Generator dev-perl/XML-Parser ) ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) ) virtual/pkgconfig
+DESCRIPTION=A web-based Unix systems administration interface
+EAPI=5
+HOMEPAGE=http://www.webmin.com/
+IUSE=minimal +ssl mysql postgres ldap ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD GPL-2
+RDEPEND=virtual/perl-MIME-Base64 virtual/perl-Socket virtual/perl-Sys-Syslog virtual/perl-Time-HiRes virtual/perl-Time-Local dev-perl/Authen-Libwrap dev-perl/IO-Tty dev-perl/MD5 dev-perl/Net-SSLeay dev-perl/Authen-PAM dev-perl/Sys-Hostname-Long >=net-dns/dnssec-tools-1.13 !minimal? ( mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ldap? ( dev-perl/perl-ldap ) dev-perl/XML-Generator dev-perl/XML-Parser )
+REQUIRED_USE=minimal? ( !mysql !postgres !ldap )
+SLOT=0
+SRC_URI=minimal? ( mirror://sourceforge/webadmin/webmin-1.791-minimal.tar.gz ) !minimal? ( mirror://sourceforge/webadmin/webmin-1.791.tar.gz )
+_eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=68ad03a4c8d08f463cdfc3d6e2b30d98

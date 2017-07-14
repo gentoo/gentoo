@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=dev-scheme/gambit
+DESCRIPTION=Erlang-style concurrency for Gambit Scheme
+EAPI=3
+HOMEPAGE=https://code.google.com/p/termite/
+KEYWORDS=~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-scheme/gambit
+SLOT=0
+SRC_URI=https://termite.googlecode.com/files/termite.tar.gz -> termite-0.15.tar.gz
+_eclass_exported_funcs=src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=574fc9e03c2441d65bea988e4f02d6b4

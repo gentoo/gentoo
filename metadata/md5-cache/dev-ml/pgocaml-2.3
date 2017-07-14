@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/calendar:= dev-ml/csv:= dev-ml/ocaml-re:= camlp4? ( dev-ml/camlp4:= ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=PG'OCaml is a set of OCaml bindings for the PostgreSQL database
+EAPI=5
+HOMEPAGE=http://pgocaml.forge.ocamlcore.org/
+IUSE=+camlp4 doc +ocamlopt debug doc
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=dev-ml/calendar:= dev-ml/csv:= dev-ml/ocaml-re:= camlp4? ( dev-ml/camlp4:= ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/2.3
+SRC_URI=http://forge.ocamlcore.org/frs/download.php/1597/pgocaml-2.3.tgz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	oasis	9256ed89af74c3365ec888c00bfdfe43	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=07c41cad72c9bbb555651e26923a4b1b

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst prerm
+DESCRIPTION=bootloader for the SuperH Lantank
+EAPI=0
+HOMEPAGE=http://oss.renesas.com/
+KEYWORDS=-* sh
+LICENSE=GPL-2+ BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://gentoo/sh-lilo-sel-20040408.tar.gz
+_eclass_exported_funcs=pkg_pretend:mount-boot pkg_prerm:mount-boot pkg_preinst:mount-boot pkg_postrm:mount-boot pkg_postinst:mount-boot src_compile:- src_install:-
+_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646
+_md5_=8a0fbd2acd60520dd68490d0acc9ab29

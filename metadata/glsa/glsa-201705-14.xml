@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-14">
+  <title>Smb4K: Arbitrary command execution as root</title>
+  <synopsis>A vulnerability in Smb4K could allow local attackers to execute
+    commands as root.
+  </synopsis>
+  <product type="ebuild">smb4k</product>
+  <announced>2017-05-26</announced>
+  <revised>2017-05-26: 2</revised>
+  <bug>618106</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/smb4k" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3-r1</unaffected>
+      <vulnerable range="lt">1.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Smb4K is a SMB/CIFS (Windows) share browser for KDE.</p>
+  </background>
+  <description>
+    <p>Smb4k contains a logic flaw in which mount helper binary does not
+      properly verify the mount command it is being asked to run.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local user can execute commands with the root privilege due to the
+      mount helper being installed as suid.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Smb4K users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/smb4k-1.2.3-r1:4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8849">CVE-2017-8849</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-12T04:22:20Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-26T12:18:57Z">BlueKnight</metadata>
+</glsa>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-09">
+  <title>FFmpeg: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FFmpeg, the worst of
+    which could lead to arbitrary code execution or Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 18, 2016</announced>
+  <revised>June 18, 2016: 1</revised>
+  <bug>528554</bug>
+  <bug>553732</bug>
+  <bug>571868</bug>
+  <bug>577458</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">2.8.6</unaffected>
+      <vulnerable range="lt">2.8.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FFmpeg is a complete, cross-platform solution to record, convert and
+      stream audio and video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FFmpeg. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FFmpeg users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-2.8.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9676">CVE-2014-9676</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1897">CVE-2016-1897</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1898">CVE-2016-1898</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2213">CVE-2016-2213</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2326">CVE-2016-2326</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2327">CVE-2016-2327</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2328">CVE-2016-2328</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2329">CVE-2016-2329</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2330">CVE-2016-2330</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 Mar 2016 12:22:08 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 23:58:49 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-misc/xbitmaps x11-proto/xproto
+DESCRIPTION=Fractal terrains of snow-capped mountains near water
+EAPI=6
+HOMEPAGE=https://spbooth.github.io/xmountains/
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=HPND
+RDEPEND=x11-libs/libX11 x11-misc/xbitmaps
+SLOT=0
+SRC_URI=http://www.epcc.ed.ac.uk/~spb/xmountains/xmountains_2.9.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7856ed88dd6632b35020c30c9865545e

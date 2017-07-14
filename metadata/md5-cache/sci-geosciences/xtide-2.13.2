@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=media-libs/libpng:0 >=sci-geosciences/libtcd-2.2.5_p2 x11-libs/libX11 x11-libs/libXaw3d x11-libs/libXpm x11-libs/libXt gps? ( sci-geosciences/gpsd ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=XTide provides tide and current predictions in a wide variety of formats
+EAPI=5
+HOMEPAGE=http://www.flaterco.com/xtide/
+IUSE=gps
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=media-libs/libpng:0 >=sci-geosciences/libtcd-2.2.5_p2 x11-libs/libX11 x11-libs/libXaw3d x11-libs/libXpm x11-libs/libXt gps? ( sci-geosciences/gpsd ) media-fonts/font-schumacher-misc
+SLOT=0
+SRC_URI=ftp://ftp.flaterco.com/xtide/xtide-2.13.2.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=e3980f8abde839a1aaa92f625dadda72

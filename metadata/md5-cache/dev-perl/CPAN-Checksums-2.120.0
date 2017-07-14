@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Compress-Bzip2 dev-perl/Data-Compare virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.360.0 virtual/perl-Digest-SHA virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-IO virtual/perl-IO-Compress virtual/perl-Safe virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Path virtual/perl-Test-Simple virtual/perl-Time-HiRes ) dev-lang/perl:=
+DESCRIPTION=Write a CHECKSUMS file for a directory as on CPAN
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/CPAN-Checksums/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Compress-Bzip2 dev-perl/Data-Compare virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.360.0 virtual/perl-Digest-SHA virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-IO virtual/perl-IO-Compress virtual/perl-Safe dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AN/ANDK/CPAN-Checksums-2.12.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=77380bdccf660283e02a654de8d70050

@@ -1,0 +1,52 @@
+Title: app-emulation/wine split and slotting
+Author: NP-Hardass <NP-Hardass@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-04-10
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: app-emulation/wine:0
+
+Starting with Wine 2.0, Wine in Gentoo is transitioning away from its
+traditional packaging and toward a new, split and slotted, Wine.
+
+As many Wine users know, there are often regressions or an application
+works better on one version of wine than another.  Going forward, 
+packaging in Gentoo will allow simultaneous installation of multiple
+versions of Wine.
+
+Additionally, to expedite vanilla releases as well as permit multiple
+configurations for each Wine installation, the major patchsets have
+been split out into separate packages.
+
+Going forward, app-emulation/wine will transition to:
+app-emulation/wine-vanilla: upstream Wine with no external patchsets
+             (like if the old packaging forced USE="-staging -d3d9")
+app-emulation/wine-staging: Wine with Wine-Staging's patchset
+             (like if the old packaging forced USE="+staging -d3d9")
+app-emulation/wine-d3d9: Wine with Ixit's Gallium Nine patchset
+             (like if the old packaging forced USE="-staging +d3d9")
+app-emulation/wine-any: Wine with any of the patchsets or flags
+             (exactly like the old packaging regarding USE flags)
+
+wine-any exists to allow the user to build any combination that they'd
+like (like the old packaging).  This means the user could use wine-any
+to use both Wine-Staging and Gallium Nine.  Alternatively, the user
+could use wine-any to try out another configuration from other
+packages.  For example, the user could build wine-vanilla without
+PulseAudio, and could build wine-any with PulseAudio.  The sky is the
+limit on how a user may choose to use app-emulation/wine-any.
+
+Users may opt for any specific package, or may emerge virtual/wine,
+which is provided for dependency resolution.
+Maintainers: Please note, app-emulation/wine will be dropped, so
+please use virtual/wine going forward.
+
+Users may call each version specifically, or may call a symlink based
+on their installed patchset, for example wine-2.1, wine-staging-2.2,
+or wine-d3d9.
+
+Symlinks for wine are managed with app-eselect/eselect-wine.
+# eselect wine set wine-vanilla-2.0
+/usr/bin/wine -> /usr/bin/wine-vanilla-2.0
+# eselect wine set --staging wine-staging-2.4
+/usr/bin/wine-staging -> /usr/bin/wine-staging-2.4

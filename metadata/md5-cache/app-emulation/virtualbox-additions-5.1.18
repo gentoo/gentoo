@@ -1,0 +1,13 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=CD image containing guest additions for VirtualBox
+EAPI=6
+HOMEPAGE=http://www.virtualbox.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ LGPL-2.1+ MIT SGI-B-2.0 CDDL
+RDEPEND=!app-emulation/virtualbox-bin !=app-emulation/virtualbox-9999
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/5.1.18/VBoxGuestAdditions_5.1.18.iso
+_eclass_exported_funcs=src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7e59213a487efc1038778b93cf66aa0f

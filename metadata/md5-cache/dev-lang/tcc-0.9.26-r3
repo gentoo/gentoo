@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=A very small C compiler for ix86/amd64
+EAPI=6
+HOMEPAGE=http://bellard.org/tcc/
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=LGPL-2.1
+RDEPEND=!dev-lang/tendra
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/tinycc/tcc-0.9.26.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=77b6ad3298fc9a30bc196d54be034505

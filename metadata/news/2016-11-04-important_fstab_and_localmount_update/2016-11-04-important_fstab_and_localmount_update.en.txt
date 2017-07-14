@@ -1,0 +1,28 @@
+Title: Important fstab and localmount update
+Author: William Hubbs <williamh@gentoo.org>
+Author: Ian Stakenvicius <axs@gentoo.org>
+Display-If-Installed: <=sys-apps/openrc-0.23
+Content-Type: text/plain
+Posted: 2016-11-04
+Revision: 2
+News-Item-Format: 1.0
+
+Recent updates to service scripts in OpenRC and (e)udev have removed the
+requirement for udev to "settle" before its startup completes.  The
+result of this is that services which used to wait for udev to finish
+processing all kernel events will now start earlier.  One such service
+is localmount.
+
+If "/dev/disk/by-*" device paths are used for mount points in
+fstab, it is possible that those symbolic links  will not exist when
+localmount starts and attempts to mount them.
+
+The recommended solution is to convert fstab from using
+"/dev/disk/by-*" to the LABEL=, UUID=, PARTLABEL= or PARTUUID= syntax.
+This syntax is supported directly by both util-linux and busybox's mount
+commands and has no dependency on any device manager. More information
+on this syntax can be found in the fstab(5) and mount(8) man pages.
+
+To force the old behaviour, instead of converting fstab, you can add
+rc_want="dev-settle" to /etc/conf.d/localmount or add udev-settle to the
+sysinit runlevel.

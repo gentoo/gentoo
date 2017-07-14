@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-15">
+  <title>OCaml: Buffer overflow and information disclosure</title>
+  <synopsis>A buffer overflow in OCaml might allow remote attackers to obtain
+    sensitive information or crash an OCaml-based application.
+  </synopsis>
+  <product type="ebuild">ocaml</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>581946</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ocaml" auto="yes" arch="*">
+      <unaffected range="ge">4.04.0</unaffected>
+      <vulnerable range="lt">4.04.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OCaml is a high-level, strongly-typed, functional, and object-oriented
+      programming language from the ML family of languages.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that OCaml was vulnerable to a runtime bug that, on
+      64-bit platforms, causes size arguments to internal memmove calls to be
+      sign-extended from 32- to 64-bits before being passed to the memmove
+      function. This leads to arguments between 2GiB and 4GiB being interpreted
+      as larger than they are (specifically, a bit below 2^64), causing a
+      buffer overflow. Further, arguments between 4GiB and 6GiB are interpreted
+      as 4GiB smaller than they should be causing a possible information leak.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to interact with an OCaml-based application,
+      could possibly obtain sensitive information or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OCaml users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ocam-4.04.0"
+    </code>
+    
+    <p>Packages which depend on OCaml may need to be recompiled. Tools such as
+      qdepends (included in app-portage/portage-utils) may assist in
+      identifying these packages:
+    </p>
+    
+    <code>
+      # emerge --oneshot --ask --verbose $(qdepends -CQ dev-lang/ocaml | sed
+      's/^/=/')
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8869">CVE-2015-8869</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-13T00:59:45Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:19:06Z">whissi</metadata>
+</glsa>

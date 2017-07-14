@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=An alternative to the FLAC reference encoder
+EAPI=0
+HOMEPAGE=http://flake-enc.sourceforge.net
+IUSE=debug
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/flake-enc/flake-0.11.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=97a6a3edcfb12cd6197d38b528bdf096

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-10">
+  <title>GStreamer plug-ins: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities have been found in various GStreamer
+    plug-ins, the worst of which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gstreamer,gst-plugins</product>
+  <announced>2017-05-18</announced>
+  <revised>2017-05-18: 1</revised>
+  <bug>600142</bug>
+  <bug>601354</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/gst-plugins-bad" auto="yes" arch="*">
+      <unaffected range="ge">1.10.3</unaffected>
+      <vulnerable range="lt">1.10.3</vulnerable>
+    </package>
+    <package name="media-libs/gst-plugins-good" auto="yes" arch="*">
+      <unaffected range="ge">1.10.3</unaffected>
+      <vulnerable range="lt">1.10.3</vulnerable>
+    </package>
+    <package name="media-libs/gst-plugins-base" auto="yes" arch="*">
+      <unaffected range="ge">1.10.3</unaffected>
+      <vulnerable range="lt">1.10.3</vulnerable>
+    </package>
+    <package name="media-libs/gst-plugins-ugly" auto="yes" arch="*">
+      <unaffected range="ge">1.10.3</unaffected>
+      <vulnerable range="lt">1.10.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GStreamer plug-ins provide decoders to the GStreamer open source
+      media framework.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in various GStreamer
+      plug-ins. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system using a
+      GStreamer plug-in to process a specially crafted file, resulting in the
+      execution of arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All gst-plugins-bad users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/gst-plugins-bad-1.10.3:1.0"
+    </code>
+    
+    <p>All gst-plugins-good users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/gst-plugins-good-1.10.3:1.0"
+    </code>
+    
+    <p>All gst-plugins-base users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/gst-plugins-base-1.10.3:1.0"
+    </code>
+    
+    <p>All gst-plugins-ugly users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/gst-plugins-ugly-1.10.3:1.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10198">
+      CVE-2016-10198
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10199">
+      CVE-2016-10199
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9445">CVE-2016-9445</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9446">CVE-2016-9446</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9447">CVE-2016-9447</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9634">CVE-2016-9634</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9635">CVE-2016-9635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9636">CVE-2016-9636</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9807">CVE-2016-9807</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9808">CVE-2016-9808</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9809">CVE-2016-9809</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9810">CVE-2016-9810</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9811">CVE-2016-9811</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9812">CVE-2016-9812</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9813">CVE-2016-9813</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5837">CVE-2017-5837</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5838">CVE-2017-5838</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5839">CVE-2017-5839</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5840">CVE-2017-5840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5841">CVE-2017-5841</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5842">CVE-2017-5842</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5843">CVE-2017-5843</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5844">CVE-2017-5844</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5845">CVE-2017-5845</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5846">CVE-2017-5846</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5847">CVE-2017-5847</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5848">CVE-2017-5848</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-07T18:49:56Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-05-18T02:03:55Z">whissi</metadata>
+</glsa>

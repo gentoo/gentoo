@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=media-libs/libsdl[video] media-libs/sdl-image[png] media-libs/sdl-mixer >=sys-apps/sed-4
+DESCRIPTION=Evil army is attacking your country and tries to steal your oil
+EAPI=6
+HOMEPAGE=http://linux.softpedia.com/get/GAMES-ENTERTAINMENT/RTS/OilWar-15354.shtml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video] media-libs/sdl-image[png] media-libs/sdl-mixer
+SLOT=0
+SRC_URI=mirror://gentoo/OilWar-1.2.1.tar.gz mirror://gentoo/OilWar.png
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=5cc81f8c6f1a79819d23f7535dbf4ea5

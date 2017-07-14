@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=!sci-biology/allpaths !sci-biology/allpathslg dev-libs/boost >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Algorithm for detecting SNPs, indels, and other polymorphisms
+EAPI=6
+HOMEPAGE=http://www.broadinstitute.org/science/programs/genome-biology/crd/
+IUSE=openmp
+KEYWORDS=amd64
+LICENSE=Whitehead-MIT
+RDEPEND=!sci-biology/allpaths !sci-biology/allpathslg
+SLOT=0
+SRC_URI=ftp://ftp.broad.mit.edu/pub/crd/VAAL/latest_source_code/vaal-46233.tar.gz ftp://ftp.broad.mit.edu/pub/crd/VAAL/VAAL_manual.doc
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=93fba567a04e46611159af4ccc822131

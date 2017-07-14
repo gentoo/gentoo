@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND=dev-go/gox >=dev-lang/go-1.7.5:= >=dev-go/go-tools-0_pre20160121 >=dev-lang/go-1.8 virtual/pkgconfig
+DESCRIPTION=A tool for service discovery, monitoring and configuration
+EAPI=6
+HOMEPAGE=http://www.consul.io
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hashicorp/consul/archive/v0.8.4.tar.gz -> consul-0.8.4.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=b7e44b6f5910a119e6604b3afed9450f

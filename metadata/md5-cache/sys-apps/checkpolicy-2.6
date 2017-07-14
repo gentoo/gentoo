@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=>=sys-libs/libsepol-2.6 >=sys-libs/libsemanage-2.6 sys-devel/flex sys-devel/bison
+DESCRIPTION=SELinux policy compiler
+EAPI=6
+HOMEPAGE=http://userspace.selinuxproject.org
+IUSE=debug
+KEYWORDS=amd64 ~arm ~arm64 ~mips x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsemanage-2.6
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/checkpolicy-2.6.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ace4e6405d99b0df995890a86681e639

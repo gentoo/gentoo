@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-67">
+  <title>a2ps: Arbitrary code execution</title>
+  <synopsis>A vulnerability in a2ps' fixps script might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">a2ps</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>506352</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/a2ps" auto="yes" arch="*">
+      <unaffected range="ge">4.14-r5</unaffected>
+      <vulnerable range="lt">4.14-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>a2ps is an Any to PostScript filter.</p>
+  </background>
+  <description>
+    <p>a2ps’ fixps script does not invoke gs with the -dSAFER option.</p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to process a specially crafted
+      PostScript file, could delete arbitrary files or execute arbitrary code
+      with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All a2ps users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/a2ps-4.14-r5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0466">CVE-2014-0466</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-24T18:44:55Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:07:45Z">b-man</metadata>
+</glsa>

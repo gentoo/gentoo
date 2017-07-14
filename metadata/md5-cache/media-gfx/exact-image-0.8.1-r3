@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure prepare setup
+DEPEND=x11-libs/agg[truetype] sys-libs/zlib expat? ( dev-libs/expat ) jpeg2k? ( media-libs/jasper ) jpeg? ( virtual/jpeg ) lua? ( dev-lang/lua ) openexr? ( media-libs/openexr ) php? ( dev-lang/php ) perl? ( dev-lang/perl ) png? ( >=media-libs/libpng-1.2.43 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) X? ( x11-libs/libXext x11-libs/libXt x11-libs/libICE x11-libs/libSM ) virtual/pkgconfig swig? ( dev-lang/swig )
+DESCRIPTION=A fast, modern and generic image processing library
+EAPI=6
+HOMEPAGE=http://www.exactcode.de/site/open_source/exactimage/
+IUSE=expat jpeg jpeg2k lua openexr php perl png python ruby swig tiff truetype X python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/agg[truetype] sys-libs/zlib expat? ( dev-libs/expat ) jpeg2k? ( media-libs/jasper ) jpeg? ( virtual/jpeg ) lua? ( dev-lang/lua ) openexr? ( media-libs/openexr ) php? ( dev-lang/php ) perl? ( dev-lang/perl ) png? ( >=media-libs/libpng-1.2.43 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) X? ( x11-libs/libXext x11-libs/libXt x11-libs/libICE x11-libs/libSM )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://dl.exactcode.de/oss/exact-image/exact-image-0.8.1.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=d3b15db7ca157ed8f5139896a16c08a1

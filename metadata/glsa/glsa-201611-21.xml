@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-21">
+  <title>ImageMagick: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ImageMagick, the worst
+    of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>November 30, 2016</announced>
+  <revised>November 30, 2016: 1</revised>
+  <bug>581990</bug>
+  <bug>593526</bug>
+  <bug>593530</bug>
+  <bug>593532</bug>
+  <bug>595200</bug>
+  <bug>596002</bug>
+  <bug>596004</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.9.6.2</unaffected>
+      <vulnerable range="lt">6.9.6.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ImageMagick is a collection of tools and libraries for many image
+      formats.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ImageMagick.  Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.9.6.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3714">CVE-2016-3714</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3715">CVE-2016-3715</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3716">CVE-2016-3716</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3717">CVE-2016-3717</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3718">CVE-2016-3718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5010">CVE-2016-5010</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5842">CVE-2016-5842</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6491">CVE-2016-6491</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7799">CVE-2016-7799</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7906">CVE-2016-7906</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 11 Oct 2016 12:32:33 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Nov 2016 21:42:34 +0000">b-man</metadata>
+</glsa>

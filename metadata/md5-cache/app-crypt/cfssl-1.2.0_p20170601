@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Cloudflare's PKI and TLS toolkit
+EAPI=6
+HOMEPAGE=https://github.com/cloudflare/cfssl
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=!!dev-lang/mono
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/cloudflare/cfssl/archive/9c06c53d4dfb9c0272c983a26ea10a6a2da12392.tar.gz -> cfssl-1.2.0_p20170601.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=da33560f846141b3df5e33874f0e8c3e

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst preinst setup
+DESCRIPTION=Scripts necessary for use of vdr as a set-top-box
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/
+IUSE=nvram
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=nvram? ( sys-power/nvram-wakeup ) app-admin/sudo sys-process/wait_on_pid
+SLOT=0
+SRC_URI=mirror://gentoo/gentoo-vdr-scripts-2.7.5.tar.bz2 https://dev.gentoo.org/~hd_brummy/distfiles/gentoo-vdr-scripts-2.7.5.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_install:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=5f899d29f0559de0231f1713cffc045f

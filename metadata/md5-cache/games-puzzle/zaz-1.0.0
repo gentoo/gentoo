@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=virtual/opengl virtual/glu media-libs/libsdl[X,sound,video] media-libs/sdl-image[jpeg,png] media-libs/libvorbis media-libs/libtheora media-libs/ftgl virtual/libintl virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A puzzle game where the player has to arrange balls in triplets
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/zaz/
+IUSE=nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-3 GPL-3+ CC-BY-SA-3.0 OFL
+RDEPEND=virtual/opengl virtual/glu media-libs/libsdl[X,sound,video] media-libs/sdl-image[jpeg,png] media-libs/libvorbis media-libs/libtheora media-libs/ftgl virtual/libintl games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/zaz/zaz-1.0.0.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	games	2bb3ede665927a68ffdb7c41eec7efde	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=0ab421dd8452b11f93b7f1aa8639b3fd

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=dev-libs/libbson-1.6.2 sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) test? ( dev-db/mongodb ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A high-performance MongoDB driver for C
+EAPI=6
+HOMEPAGE=https://github.com/mongodb/mongo-c-driver
+IUSE=debug examples libressl sasl ssl static-libs test
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/libbson-1.6.2 sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=https://github.com/mongodb/mongo-c-driver/releases/download/1.6.2/mongo-c-driver-1.6.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e8d9abf0cadbfcf5fc08967a1ce2444e

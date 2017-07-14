@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-libs/expat sys-libs/zlib bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) rpm? ( app-arch/rpm ) ruby? ( ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ) tcl? ( dev-lang/tcl:0= ) perl? ( dev-lang/swig:0 ) python? ( dev-lang/swig:0 ) ruby? ( dev-lang/swig:0 ) tcl? ( dev-lang/swig:0 ) sys-devel/gettext sys-devel/make >=dev-util/cmake-3.7.2 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Library for solving packages and reading repositories
+EAPI=5
+HOMEPAGE=http://doc.opensuse.org/projects/libzypp/HEAD/ https://github.com/openSUSE/libsolv
+IUSE=bzip2 lzma perl python rpm ruby tcl python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 elibc_FreeBSD ruby_targets_ruby23
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/expat sys-libs/zlib bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) rpm? ( app-arch/rpm ) ruby? ( ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ) tcl? ( dev-lang/tcl:0= ) dev-lang/perl:=[-build(-)]
+REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 ) )
+SLOT=0
+SRC_URI=https://github.com/openSUSE/libsolv/archive/0.6.22.tar.gz -> libsolv-0.6.22.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:perl-module src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	ruby-ng	e52d9a73c7757cdc3b195bcd5cf9d389	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ab21352c2c337bcf89ee63d6e4474408

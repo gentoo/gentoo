@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=sci-libs/cfitsio:0= sci-astronomy/wcstools:0= media-libs/libpng:0= virtual/jpeg:0= >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Extract cutouts from FITS image files
+EAPI=6
+HOMEPAGE=http://acs.pha.jhu.edu/general/software/fitscut/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sci-libs/cfitsio:0= sci-astronomy/wcstools:0= media-libs/libpng:0= virtual/jpeg:0=
+SLOT=0
+SRC_URI=http://acs.pha.jhu.edu/general/software/fitscut//download/fitscut-1.4.4.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2384e665916f53c1e28073cf2694444b

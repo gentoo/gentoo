@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-proto/xproto
+DESCRIPTION=Hides mouse pointer while not in use
+EAPI=6
+HOMEPAGE=http://www.ibiblio.org/pub/X11/contrib/utilities/unclutter-8.README
+KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 ~sparc x86
+LICENSE=public-domain
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=ftp://ftp.x.org/contrib/utilities/unclutter-8.tar.Z
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=74fd78f754c2640bd028009e309e6d60

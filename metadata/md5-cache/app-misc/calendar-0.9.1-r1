@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Standard unix calendar program for Linux, ported from OpenBSD
+EAPI=6
+HOMEPAGE=http://bsdcalendar.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://bsdcalendar.sourceforge.net/calendar-0.9.1.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6eb2162413e59d8ca231a293355a4dd1

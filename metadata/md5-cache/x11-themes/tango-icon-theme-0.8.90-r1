@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=!hppa? ( !minimal? ( x11-themes/adwaita-icon-theme ) ) >=x11-themes/hicolor-icon-theme-0.12 dev-util/intltool virtual/pkgconfig >=gnome-base/librsvg-2.34 virtual/imagemagick-tools[png?] sys-devel/gettext >=x11-misc/icon-naming-utils-0.8.90 >=sys-apps/sed-4
+DESCRIPTION=SVG and PNG icon theme from the Tango project
+EAPI=4
+HOMEPAGE=http://tango.freedesktop.org
+IUSE=minimal png
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=public-domain
+RDEPEND=!hppa? ( !minimal? ( x11-themes/adwaita-icon-theme ) ) >=x11-themes/hicolor-icon-theme-0.12
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://tango.freedesktop.org/releases/tango-icon-theme-0.8.90.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=7d8fce6792f561a2069727ca81ab232b

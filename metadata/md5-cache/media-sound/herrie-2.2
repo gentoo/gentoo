@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses[unicode?] >=dev-libs/glib-2:2 ao? ( media-libs/libao ) alsa? ( media-libs/alsa-lib ) http? ( net-misc/curl ) modplug? ( media-libs/libmodplug ) mp3? ( media-libs/libmad media-libs/libid3tag ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) vorbis? ( media-libs/libvorbis ) xspf? ( >=media-libs/libxspf-1.2 ) !ao? ( !alsa? ( !pulseaudio? ( !oss? ( media-libs/alsa-lib ) ) ) ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Herrie is a command line music player
+EAPI=2
+HOMEPAGE=http://herrie.info/
+IUSE=ao alsa pulseaudio oss http modplug mp3 sndfile vorbis xspf unicode nls linguas_ca linguas_da linguas_de linguas_es linguas_fi linguas_ga linguas_nl linguas_pl linguas_pt_BR linguas_ru linguas_sv linguas_tr linguas_vi linguas_zh_CN
+KEYWORDS=amd64 ppc x86
+LICENSE=BSD-2 GPL-2
+RDEPEND=sys-libs/ncurses[unicode?] >=dev-libs/glib-2:2 ao? ( media-libs/libao ) alsa? ( media-libs/alsa-lib ) http? ( net-misc/curl ) modplug? ( media-libs/libmodplug ) mp3? ( media-libs/libmad media-libs/libid3tag ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) vorbis? ( media-libs/libvorbis ) xspf? ( >=media-libs/libxspf-1.2 ) !ao? ( !alsa? ( !pulseaudio? ( !oss? ( media-libs/alsa-lib ) ) ) )
+SLOT=0
+SRC_URI=http://herrie.info/distfiles/herrie-2.2.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8015d057b0daa653f7254296283e5d1b

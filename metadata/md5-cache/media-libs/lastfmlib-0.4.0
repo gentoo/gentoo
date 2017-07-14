@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=net-misc/curl virtual/pkgconfig
+DESCRIPTION=C++ library to scrobble tracks on Last.fm
+EAPI=2
+HOMEPAGE=https://github.com/dirkvdb/lastfmlib/releases
+IUSE=debug syslog
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2+
+RDEPEND=net-misc/curl
+SLOT=0
+SRC_URI=https://github.com/dirkvdb/lastfmlib/archive/lastfmlib-0.4.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=64678a7cf8e6156be9bd0ff9df6001bc

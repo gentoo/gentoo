@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=doc? ( app-text/asciidoc ) app-arch/unzip dev-vcs/git
+DESCRIPTION=Small footprint implementation of Tcl programming language
+EAPI=5
+HOMEPAGE=http://jim.tcl.tk/
+IUSE=doc static-libs
+LICENSE=LGPL-2
+SLOT=0
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=33a15272d7cade78e259a24ec9177742

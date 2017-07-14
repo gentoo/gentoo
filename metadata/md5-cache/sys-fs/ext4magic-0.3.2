@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=app-arch/bzip2 >=sys-apps/file-5.04 sys-apps/util-linux >=sys-fs/e2fsprogs-1.41.9 sys-libs/zlib
+DESCRIPTION=Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/ext4magic/
+IUSE=debug expert-mode file-attr
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 >=sys-apps/file-5.04 sys-apps/util-linux >=sys-fs/e2fsprogs-1.41.9 sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/ext4magic/ext4magic-0.3.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=0df9ff9a68797ee448e2281f88140d7c

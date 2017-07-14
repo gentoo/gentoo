@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.7:= >=dev-lang/go-1.8
+DESCRIPTION=Machine management for a container-centric world
+EAPI=6
+HOMEPAGE=https://docs.docker.com/machine/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/docker/machine/archive/v0.9.0.tar.gz -> docker-machine-0.9.0.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=3561bbc7495be21f1cd951992c2d0632

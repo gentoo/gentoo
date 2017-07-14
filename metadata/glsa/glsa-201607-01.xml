@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-01">
+  <title>Squid: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Squid, the worst of
+    which could lead to arbitrary code execution, or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 09, 2016</announced>
+  <revised>July 09, 2016: 1</revised>
+  <bug>536276</bug>
+  <bug>575542</bug>
+  <bug>578970</bug>
+  <bug>580656</bug>
+  <bug>582814</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">3.5.19</unaffected>
+      <vulnerable range="lt">3.5.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Squid is a full-featured Web proxy cache designed to run on Unix
+      systems. It supports proxying and caching of HTTP, FTP, and other URLs,
+      as well as SSL support, cache hierarchies, transparent caching, access
+      control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Squid. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can possibly execute arbitrary code or create a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Squid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-3.5.19"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6270">CVE-2014-6270</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6270">CVE-2014-6270</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2569">CVE-2016-2569</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2569">CVE-2016-2569</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2570">CVE-2016-2570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2570">CVE-2016-2570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2571">CVE-2016-2571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2571">CVE-2016-2571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2572">CVE-2016-2572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2572">CVE-2016-2572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3947">CVE-2016-3947</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3948">CVE-2016-3948</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4051">CVE-2016-4051</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4052">CVE-2016-4052</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4053">CVE-2016-4053</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4054">CVE-2016-4054</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4553">CVE-2016-4553</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4554">CVE-2016-4554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4555">CVE-2016-4555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4556">CVE-2016-4556</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Apr 2016 04:00:07 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 09 Jul 2016 01:46:31 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-perl/Module-Build >=sys-apps/sed-4 dev-lang/perl:=
+DESCRIPTION=A command line utility for viewing youtube-videos in Mplayer
+EAPI=6
+HOMEPAGE=https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html
+IUSE=gtk
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Data-Dump dev-perl/JSON dev-perl/libwww-perl[ssl] dev-perl/Term-ReadLine-Gnu dev-perl/LWP-Protocol-https virtual/perl-Encode virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long virtual/perl-Scalar-List-Utils virtual/perl-Term-ANSIColor virtual/perl-Term-ReadLine virtual/perl-Text-ParseWords virtual/perl-Text-Tabs+Wrap gtk? ( dev-perl/File-ShareDir >=dev-perl/Gtk2-1.244.0 virtual/freedesktop-icon-theme x11-libs/gdk-pixbuf:2[X,jpeg] ) || ( media-video/ffmpeg[openssl] media-video/ffmpeg[gnutls] ) || ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) ) dev-lang/perl:=
+SLOT=0
+SRC_URI=https://github.com/trizen/youtube-viewer/archive/3.2.8.tar.gz -> youtube-viewer-3.2.8.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:perl-module src_configure:- src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=d146894c292dc07ca3c7318406be24e6

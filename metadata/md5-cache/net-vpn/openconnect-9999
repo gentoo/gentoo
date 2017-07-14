@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare pretend setup unpack
+DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] ) ) gnutls? ( app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) virtual/pkgconfig doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) sys-apps/groff ) java? ( >=virtual/jdk-1.6 ) nls? ( sys-devel/gettext ) java? ( >=dev-java/java-config-2.2.0-r3 ) >=dev-vcs/git-1.8.2.1 >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
+EAPI=6
+HOMEPAGE=http://www.infradead.org/openconnect.html
+IUSE=doc +gnutls gssapi java libproxy libressl lz4 nls smartcard static-libs stoken elibc_FreeBSD java
+LICENSE=LGPL-2.1 GPL-2
+RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] ) ) gnutls? ( app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) sys-apps/iproute2 !<sys-apps/openrc-0.13 java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0/5
+SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20160829.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-opt-2 pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	java-pkg-opt-2	be255db325e3af8fbf3506cf63998341	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=bc0dcc8fe58b9098abf08ad17efcf7a5

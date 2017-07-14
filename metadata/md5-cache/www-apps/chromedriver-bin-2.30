@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=WebDriver for Chrome
+EAPI=6
+HOMEPAGE=https://sites.google.com/a/chromium.org/chromedriver
+KEYWORDS=~amd64
+LICENSE=google-chrome
+RDEPEND=www-client/google-chrome
+SLOT=0
+SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip ) x86? ( https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux32.zip )
+_eclass_exported_funcs=src_install:-
+_md5_=6a740b12ebb26e820563ef7b8978b53d

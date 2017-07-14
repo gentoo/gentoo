@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-15">
+  <title>ARJ: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ARJ, the worst of which
+    may allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">arj</product>
+  <announced>December 06, 2016</announced>
+  <revised>December 06, 2016: 1</revised>
+  <bug>535708</bug>
+  <bug>541500</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-arch/arj" auto="yes" arch="*">
+      <unaffected range="ge">3.10.22-r5</unaffected>
+      <vulnerable range="lt">3.10.22-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Open-source implementation of the ARJ archiver.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ARJ. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, using a specially crafted ARJ archive, could possibly
+      execute arbitrary code with the privileges of the process, or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ARJ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/arj-3.10.22-r5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0556">CVE-2015-0556</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0557">CVE-2015-0557</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2782">CVE-2015-2782</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 28 Nov 2016 01:08:04 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 06 Dec 2016 03:45:36 +0000">whissi</metadata>
+</glsa>

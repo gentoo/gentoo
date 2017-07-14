@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/boost media-libs/libsamplerate media-libs/libsndfile virtual/jack osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) virtual/pkgconfig dev-util/scons
+DESCRIPTION=An advanced command-line based metronome for JACK
+EAPI=6
+HOMEPAGE=http://das.nasophon.de/klick
+IUSE=debug osc rubberband
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/boost media-libs/libsamplerate media-libs/libsndfile virtual/jack osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband )
+SLOT=0
+SRC_URI=http://das.nasophon.de/download/klick-0.12.2.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=995d6cc169176b5147dff1efe78f4298

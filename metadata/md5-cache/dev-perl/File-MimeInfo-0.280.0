@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/File-BaseDir-0.30.0 >=dev-perl/File-DesktopEntry-0.40.0 x11-misc/shared-mime-info >=virtual/perl-ExtUtils-MakeMaker-6.300.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Determine file type
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/File-MimeInfo/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/File-BaseDir-0.30.0 >=dev-perl/File-DesktopEntry-0.40.0 x11-misc/shared-mime-info dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MI/MICHIELB/File-MimeInfo-0.28.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=fa7105d133c8fac7652484fa6625c403

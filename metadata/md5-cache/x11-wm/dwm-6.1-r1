@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=a dynamic window manager for X11
+EAPI=6
+HOMEPAGE=http://dwm.suckless.org/
+IUSE=xinerama savedconfig
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://dl.suckless.org/dwm/dwm-6.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=c564e2da3025aee8c33f419b3688ab28

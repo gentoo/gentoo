@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=app-text/asciidoc >=dev-vcs/git-1.8.2.1
+DESCRIPTION=A bash script for working with MediaCrush from a shell
+EAPI=5
+HOMEPAGE=https://github.com/MediaCrush/MediaCrush-cli
+LICENSE=MIT
+RDEPEND=net-misc/curl sys-apps/file sys-apps/sed
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=af61128360680b19be147f2caa5f8bea

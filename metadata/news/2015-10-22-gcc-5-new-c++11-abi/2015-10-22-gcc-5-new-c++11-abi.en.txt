@@ -1,0 +1,26 @@
+Title: GCC 5 Defaults to the New C++11 ABI
+Author: Mike Frysinger <vapier@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-10-22
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: >=sys-devel/gcc-5
+
+GCC 5 uses the new C++ ABI by default.  When building new code, you might run
+into link time errors that include lines similar to:
+...: undefined reference to '_ZNSt6chrono12steady_clock3nowEv@GLIBCXX_3.4.17'
+
+Or you might see linkage failures with "std::__cxx11::string" in the output.
+
+These are signs that you need to rebuild packages using the new C++ ABI.
+You can quickly do so by using revdep-rebuild (from gentoolkit).
+
+For gentoolkit-0.3.1 or higher:
+# revdep-rebuild --library 'libstdc++.so.6' -- --exclude gcc
+
+For previous versions of gentoolkit:
+# revdep-rebuild --library 'libstdc\+\+\.so\.6' -- --exclude gcc
+
+For more details, feel free to peruse:
+https://developerblog.redhat.com/2015/02/05/gcc5-and-the-c11-abi/
+https://blogs.gentoo.org/blueness/2015/03/10/the-c11-abi-incompatibility-problem-in-gentoo/

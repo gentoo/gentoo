@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare prerm test unpack
+DEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= || ( sys-apps/gawk sys-apps/mawk ) sys-apps/groff sys-devel/flex doc? ( dev-texlive/texlive-fontsrecommended virtual/latex-base ) >=app-portage/elt-patches-20170317 virtual/latex-base >=sys-apps/texinfo-4.2-r5 >=app-text/sgml-common-0.6.3-r2
+DESCRIPTION=A toolset for processing LinuxDoc DTD SGML files
+EAPI=5
+HOMEPAGE=https://gitlab.com/agmartin/linuxdoc-tools
+IUSE=doc
+KEYWORDS=amd64 ~ia64 ppc x86 ~x86-fbsd
+LICENSE=GPL-3+ MIT SGMLUG
+RDEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= || ( sys-apps/gawk sys-apps/mawk ) sys-apps/groff virtual/latex-base
+SLOT=0
+SRC_URI=https://gitlab.com/agmartin/linuxdoc-tools/repository/archive.tar.gz?ref=v0.9.72 -> linuxdoc-tools-0.9.72.tar.gz
+_eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:- pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	latex-package	79acad19b9efeec616d0ad70cd117b03	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	sgml-catalog	013e5c68335c5b4df8f1b72d7d7ad25d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=b4df6c26357a746eaabb3ba3d09c3357

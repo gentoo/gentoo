@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Provides a list of PHP built-in functions that operate on resources
+EAPI=6
+HOMEPAGE=http://phpunit.de
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
+SLOT=0
+SRC_URI=https://github.com/sebastianbergmann//resource-operations/archive/1.0.0.tar.gz -> sebastian-resource-operations-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=b77c5287599c03f27a45f4b79344f633

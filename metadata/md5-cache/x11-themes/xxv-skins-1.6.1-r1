@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Additional skins for XXV
+EAPI=5
+HOMEPAGE=http://projects.vdr-developer.org/projects/xxv
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=~www-misc/xxv-1.6.1
+SLOT=0
+SRC_URI=mirror://vdr-developerorg/719/xxv-skins-1.6.1.tgz mirror://vdr-developerorg/720/xxv-jason-1.6.1.tgz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e0557df8f278a01fb3a9a89027ee2d66

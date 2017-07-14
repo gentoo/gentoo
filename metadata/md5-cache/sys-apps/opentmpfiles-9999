@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=A standalone utility to process systemd-style tmpfiles.d files
+EAPI=6
+HOMEPAGE=https://github.com/openrc/opentmpfiles
+IUSE=selinux
+LICENSE=BSD-2
+RDEPEND=!<sys-apps/openrc-0.23 selinux? ( sec-policy/selinux-base-policy )
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=e94a0d66fdcb0703a3e1d922b67f0139

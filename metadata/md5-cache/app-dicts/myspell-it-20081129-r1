@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Italian dictionaries for myspell/hunspell
+EAPI=4
+HOMEPAGE=https://sourceforge.net/projects/linguistico/
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=AGPL-3 GPL-3 LGPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/linguistico/Dizionari.IT_20081129.oxt
+_eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
+_eclasses_=myspell-r2	f771bf8a3f42be87a117b6f96d641724
+_md5_=e5d555a3f1f2f00582e9b4075ba1ffdc

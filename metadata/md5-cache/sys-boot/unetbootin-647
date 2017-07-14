@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtgui:4
+DESCRIPTION=UNetbootin installs Linux/BSD distributions to a partition or USB drive
+EAPI=6
+HOMEPAGE=https://github.com/unetbootin/unetbootin
+IUSE=linguas_am linguas_ar linguas_ast linguas_be linguas_bg linguas_bn linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_lt linguas_lv linguas_ml linguas_ms linguas_nan linguas_nb linguas_nl linguas_nn linguas_pl linguas_pt_BR linguas_pt linguas_ro linguas_ru linguas_si linguas_sk linguas_sl linguas_sr linguas_sv linguas_sw linguas_tr linguas_uk linguas_ur linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtgui:4 app-arch/p7zip sys-boot/syslinux sys-fs/mtools
+SLOT=0
+SRC_URI=https://github.com/unetbootin/unetbootin/archive/647.tar.gz -> unetbootin-647.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8404fff2127d8b4487188b95b435f2bc

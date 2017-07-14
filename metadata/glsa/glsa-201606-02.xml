@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-02">
+  <title>Puppet Server and Agent: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Puppet Server and
+    Agent, the worst of which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 05, 2016</announced>
+  <revised>June 05, 2016: 3</revised>
+  <bug>577450</bug>
+  <bug>581372</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/puppet-agent" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2</unaffected>
+      <vulnerable range="lt">1.4.2</vulnerable>
+    </package>
+    <package name="app-admin/puppetserver" auto="yes" arch="*">
+      <unaffected range="ge">2.3.2</unaffected>
+      <vulnerable range="lt">2.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Puppet Agent contains Puppet’s main code and all of the dependencies
+      needed to run it, including Facter, Hiera, and bundled versions of Ruby
+      and OpenSSL.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Puppet Server and
+      Agent.  Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, impersonating a trusted broker, could potentially
+      execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Puppet Agent users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/puppet-agent-1.4.2"
+    </code>
+    
+    <p>All Puppet Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/puppetserver-2.3.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2785">CVE-2016-2785</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2786">CVE-2016-2786</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Mar 2016 09:09:16 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 20:14:52 +0000">b-man</metadata>
+</glsa>

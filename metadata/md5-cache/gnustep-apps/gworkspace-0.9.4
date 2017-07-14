@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=gnustep-base/gnustep-gui-0.25.0 gwmetadata? ( >=gnustep-apps/systempreferences-1.0.1_p24791 >=dev-db/sqlite-3.2.8 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DESCRIPTION=A workspace manager for GNUstep
+EAPI=6
+HOMEPAGE=http://www.gnustep.org/experience/GWorkspace.html
+IUSE=+gwmetadata debug doc
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=gnustep-base/gnustep-gui-0.25.0 gwmetadata? ( >=gnustep-apps/systempreferences-1.0.1_p24791 >=dev-db/sqlite-3.2.8 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/usr-apps/gworkspace-0.9.4.tar.gz
+_eclass_exported_funcs=pkg_postinst:gnustep-base pkg_setup:gnustep-base src_prepare:gnustep-base src_configure:- src_compile:gnustep-base src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnustep-2	08755606aae625944316a7bd6d8228f5	gnustep-base	935cef28cb1dbb8c28e04710473453fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=4d4d2d710f30c6c0282a56cda84f55e9

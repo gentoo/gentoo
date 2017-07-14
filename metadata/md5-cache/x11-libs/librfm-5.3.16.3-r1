@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=dev-libs/glib-2.22.5:2 >=dev-libs/libdbh-5.0.13 >=dev-libs/libtubo-5.0.13 >=dev-libs/libxml2-2.4.0:2 >=dev-libs/libzip-0.9:0= >=gnome-base/librsvg-2.26:2 >=x11-libs/cairo-1.12.6[X] >=x11-libs/gtk+-3.12:3[X] >=x11-libs/pango-1.28.0[X] !<x11-misc/rodent-5 virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The basic library used by some rfm applications, such as Rodent filemanager
+EAPI=6
+HOMEPAGE=http://xffm.org/libxffm.html
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/glib-2.22.5:2 >=dev-libs/libdbh-5.0.13 >=dev-libs/libtubo-5.0.13 >=dev-libs/libxml2-2.4.0:2 >=dev-libs/libzip-0.9:0= >=gnome-base/librsvg-2.26:2 >=x11-libs/cairo-1.12.6[X] >=x11-libs/gtk+-3.12:3[X] >=x11-libs/pango-1.28.0[X] !<x11-misc/rodent-5
+SLOT=0
+SRC_URI=mirror://sourceforge/xffm/librfm/librfm5-5.3.16.3.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=48737ee586377a52f34a16eb2af570e2

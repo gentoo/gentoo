@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=x11-libs/gtk+-3:3 >=gnome-base/libglade-2.3 dev-libs/popt password? ( dev-libs/openssl:* ) fam? ( virtual/fam ) x11-proto/xproto x11-libs/libX11 x11-libs/pango x11-libs/gdk-pixbuf virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A mail notification program
+EAPI=6
+HOMEPAGE=http://gnubiff.sourceforge.net/
+IUSE=debug fam nls password
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=x11-libs/gtk+-3:3 >=gnome-base/libglade-2.3 dev-libs/popt password? ( dev-libs/openssl:* ) fam? ( virtual/fam ) x11-proto/xproto x11-libs/libX11 x11-libs/pango x11-libs/gdk-pixbuf
+SLOT=0
+SRC_URI=mirror://sourceforge/gnubiff/gnubiff-2.2.17.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8c82c59329d224da46f006eb9bb7f8e6

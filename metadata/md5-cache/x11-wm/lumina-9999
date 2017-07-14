@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm dev-qt/linguist-tools:5 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Lumina desktop environment
+EAPI=6
+HOMEPAGE=http://lumina-desktop.org/
+LICENSE=BSD
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm kde-frameworks/oxygen-icons x11-misc/numlockx x11-wm/fluxbox x11-apps/xbacklight media-sound/alsa-utils sys-power/acpi app-admin/sysstat
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=985b903d675542a6eec45be642f6f2a4

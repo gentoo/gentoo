@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-libs/glib:2 net-libs/libvncserver x11-libs/libxkbfile x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 virtual/freedesktop-icon-theme ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) rdp? ( ~net-misc/freerdp-2.0.0_pre20160722 ) gnome-keyring? ( app-crypt/libsecret ) spice? ( net-misc/spice-gtk[gtk3] ) ssh? ( net-libs/libssh[sftp] x11-libs/vte:2.91 ) telepathy? ( net-libs/telepathy-glib ) webkit? ( net-libs/webkit-gtk:4 ) zeroconf? ( net-dns/avahi[gtk3] ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=A GTK+ RDP, VNC, XDMCP and SSH client
+EAPI=6
+HOMEPAGE=http://remmina.org/
+IUSE=ayatana crypt rdp gnome-keyring nls spice ssh telepathy webkit zeroconf
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/glib:2 net-libs/libvncserver x11-libs/libxkbfile x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 virtual/freedesktop-icon-theme ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) rdp? ( ~net-misc/freerdp-2.0.0_pre20160722 ) gnome-keyring? ( app-crypt/libsecret ) spice? ( net-misc/spice-gtk[gtk3] ) ssh? ( net-libs/libssh[sftp] x11-libs/vte:2.91 ) telepathy? ( net-libs/telepathy-glib ) webkit? ( net-libs/webkit-gtk:4 ) zeroconf? ( net-dns/avahi[gtk3] )
+SLOT=0
+SRC_URI=https://github.com/FreeRDP/Remmina/archive/v1.2.0-rcgit.16.tar.gz -> remmina-1.2.0_rc16.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=29c89e521123353ab1a6ff8426e08ec8

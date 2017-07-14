@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Oracle 10g client installation for Linux with SDK
+EAPI=0
+HOMEPAGE=http://www.oracle.com/technology/tech/oci/instantclient/index.html
+KEYWORDS=-* amd64 x86
+LICENSE=OTN
+RDEPEND=~virtual/libstdc++-3.3
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( instantclient-basic-linux-x86-64-10.2.0.3-20070103.zip instantclient-sdk-linux-x86-64-10.2.0.3-20070103.zip ) x86? ( instantclient-basic-linux32-10.2.0.3-20061115.zip instantclient-sdk-linux32-10.2.0.3-20061115.zip )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e2a14067d2c20c3b0fdf922af5fed79a

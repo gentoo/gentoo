@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Library for handling root privilege
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=BSD-2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/libspt-1.1.tar.bz2
+_eclass_exported_funcs=-
+_md5_=6cc5bdd425d5ec55955db108f47e71f7

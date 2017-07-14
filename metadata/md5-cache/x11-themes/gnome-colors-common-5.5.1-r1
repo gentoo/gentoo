@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Colorized icons shared between all gnome-colors iconsets
+EAPI=6
+HOMEPAGE=https://code.google.com/p/gnome-colors/
+IUSE=+branding
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 branding? ( CC-BY-SA-4.0 )
+RDEPEND=x11-themes/adwaita-icon-theme
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://gnome-colors.googlecode.com/files/gnome-colors-5.5.1.tar.gz branding? ( http://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=f90027409c0e93407bf69da04a7462bb

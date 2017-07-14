@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-05">
+  <title>Subversion, Serf: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Subversion and Serf,
+    the worst of which could lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">subversion serf</product>
+  <announced>October 11, 2016</announced>
+  <revised>October 11, 2016: 2</revised>
+  <bug>500482</bug>
+  <bug>518716</bug>
+  <bug>519202</bug>
+  <bug>545348</bug>
+  <bug>556076</bug>
+  <bug>567810</bug>
+  <bug>581448</bug>
+  <bug>586046</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/subversion" auto="yes" arch="*">
+      <unaffected range="ge">1.9.4</unaffected>
+      <unaffected range="rgt">1.8.16</unaffected>
+      <vulnerable range="lt">1.9.4</vulnerable>
+    </package>
+    <package name="net-libs/serf" auto="yes" arch="*">
+      <unaffected range="ge">1.3.7</unaffected>
+      <vulnerable range="lt">1.3.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Subversion is a version control system intended to eventually replace
+      CVS. Like CVS, it has an optional client-server architecture (where the
+      server can be an Apache server running mod_svn, or an ssh program as in
+      CVS’s :ext: method). In addition to supporting the features found in
+      CVS, Subversion also provides support for moving and copying files and
+      directories.
+    </p>
+    
+    <p>The serf library is a high performance C-based HTTP client library built
+      upon the Apache Portable Runtime (APR) library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Subversion and Serf.
+      Please review the CVE identifiers referenced below for details
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, conduct a man-in-the-middle attack, obtain
+      sensitive information, or cause a Denial of Service Condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Subversion users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/subversion-1.9.4"
+    </code>
+    
+    <p>All Serf users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/serf-1.3.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0032">CVE-2014-0032</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3504">CVE-2014-3504</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3522">CVE-2014-3522</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3528">CVE-2014-3528</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0202">CVE-2015-0202</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0248">CVE-2015-0248</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0251">CVE-2015-0251</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3184">CVE-2015-3184</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3187">CVE-2015-3187</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5259">CVE-2015-5259</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2167">CVE-2016-2167</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2168">CVE-2016-2168</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:09:05 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Oct 2016 12:44:03 +0000">b-man</metadata>
+</glsa>

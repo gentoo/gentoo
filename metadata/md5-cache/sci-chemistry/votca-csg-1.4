@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND==sci-libs/votca-tools-1.4 gromacs? ( sci-chemistry/gromacs:= ) hdf5? ( sci-libs/hdf5 ) dev-lang/perl app-shells/bash:* doc? ( app-doc/doxygen[dot] dev-texlive/texlive-latexextra virtual/latex-base dev-tex/pgf ) >=app-text/txt2tags-2.5 virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.7.2
+DESCRIPTION=Votca coarse-graining engine
+EAPI=6
+HOMEPAGE=http://www.votca.org
+IUSE=doc examples extras +gromacs hdf5
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-macos
+LICENSE=Apache-2.0
+PDEPEND=extras? ( =sci-chemistry/votca-csgapps-1.4 )
+RDEPEND==sci-libs/votca-tools-1.4 gromacs? ( sci-chemistry/gromacs:= ) hdf5? ( sci-libs/hdf5 ) dev-lang/perl app-shells/bash:*
+SLOT=0
+SRC_URI=https://github.com/votca/csg/archive/v1.4.tar.gz -> votca-csg-1.4.tar.gz doc? ( https://github.com/votca/csg-manual/releases/download/v1.4/votca-csg-manual-1.4.pdf ) examples? ( https://github.com/votca/csg-tutorials/archive/v1.4.tar.gz -> votca-csg-tutorials-1.4.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=8d981c80eb047020047e0769106f1793

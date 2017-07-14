@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Utilities for analysing and manipulating the SAM/BAM alignment formats
+EAPI=2
+HOMEPAGE=http://samtools.sourceforge.net/
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://sourceforge/samtools/samtools-0.1.12a.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=a6e636ceb88d36b5c34ddf51607ec4bf

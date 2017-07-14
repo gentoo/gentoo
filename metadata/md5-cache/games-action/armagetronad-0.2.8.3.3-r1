@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=dev-libs/libxml2 !dedicated? ( media-libs/libpng:0 media-libs/libsdl[X,opengl,video] media-libs/sdl-image[jpeg,png] virtual/glu virtual/opengl sound? ( media-libs/libsdl[sound] media-libs/sdl-mixer ) ) >=sys-apps/sed-4
+DESCRIPTION=Fast-paced 3D lightcycle game based on Tron
+EAPI=6
+HOMEPAGE=http://armagetronad.org/
+IUSE=dedicated sound
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/libxml2 !dedicated? ( media-libs/libpng:0 media-libs/libsdl[X,opengl,video] media-libs/sdl-image[jpeg,png] virtual/glu virtual/opengl sound? ( media-libs/libsdl[sound] media-libs/sdl-mixer ) )
+SLOT=0
+SRC_URI=https://launchpad.net/armagetronad/0.2.8/0.2.8.3.x/+download/armagetronad-0.2.8.3.3.src.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=ed1025c1a7bbec638251abdf4f5de167

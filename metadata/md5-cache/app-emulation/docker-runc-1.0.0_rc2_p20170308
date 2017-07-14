@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=runc container cli tools (docker fork)
+EAPI=6
+HOMEPAGE=http://runc.io
+IUSE=apparmor hardened +seccomp
+KEYWORDS=amd64 ~arm ~ppc64
+LICENSE=Apache-2.0
+RDEPEND=apparmor? ( sys-libs/libapparmor ) seccomp? ( sys-libs/libseccomp ) !app-emulation/runc
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/docker/runc/archive/54296cf40ad8143b62dbcaa1d90e520a2136ddfe.tar.gz -> docker-runc-1.0.0_rc2_p20170308.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=d6d54365c4e4f0a448cf962c606b3ec1

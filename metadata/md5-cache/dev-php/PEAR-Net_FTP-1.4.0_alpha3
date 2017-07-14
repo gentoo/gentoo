@@ -1,0 +1,13 @@
+DEFINED_PHASES=install setup
+DEPEND=dev-lang/php >=dev-php/pear-1.8.1
+DESCRIPTION=Provides an OO interface to the PHP FTP functions
+EAPI=4
+HOMEPAGE=http://pear.php.net/Net_FTP
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=PHP-3
+RDEPEND=dev-lang/php[ftp] dev-lang/php >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/Net_FTP-1.4.0a3.tgz
+_eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e4f6b7962b1f68e0a559089185b81201

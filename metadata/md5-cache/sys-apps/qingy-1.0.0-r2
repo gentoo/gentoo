@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=>=sys-libs/ncurses-5.7-r7:= opensslcrypt? ( dev-libs/openssl:0= ) crypt? ( >=dev-libs/libgcrypt-1.2.1:0= ) directfb? ( >=dev-libs/DirectFB-1.4.2[fbcon,jpeg,png,truetype] ) emacs? ( virtual/emacs ) pam? ( >=sys-libs/pam-0.75-r11 ) X? ( x11-libs/libX11:= x11-libs/libXScrnSaver:= x11-proto/scrnsaverproto ) >=sys-apps/sed-4.1.4-r1 virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=a DirectFB getty replacement
+EAPI=5
+HOMEPAGE=http://qingy.sourceforge.net/
+IUSE=consolekit crypt directfb emacs gpm opensslcrypt pam static X
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/ncurses-5.7-r7:= opensslcrypt? ( dev-libs/openssl:0= ) crypt? ( >=dev-libs/libgcrypt-1.2.1:0= ) directfb? ( >=dev-libs/DirectFB-1.4.2[fbcon,jpeg,png,truetype] ) emacs? ( virtual/emacs ) pam? ( >=sys-libs/pam-0.75-r11 ) X? ( x11-libs/libX11:= x11-libs/libXScrnSaver:= x11-proto/scrnsaverproto ) consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( sys-auth/pambase )
+SLOT=0
+SRC_URI=mirror://sourceforge/qingy/qingy-1.0.0.tar.bz2 mirror://gentoo/qingy-gentoo-theme-2.1.tar.bz2 https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/qingy-1.0.0-screensavers.patch.gz https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/qingy-1.0.0-consolekit-pam.patch.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=74ff3549d61b76e6758d2a98808fa3b1

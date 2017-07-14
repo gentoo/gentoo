@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup test
+DEPEND=>=sys-apps/util-linux-2.17.2 crypt? ( >=sys-fs/cryptsetup-1.0.6-r2 ) dev-util/intltool sys-devel/gettext
+DESCRIPTION=Policy based mounter that gives the ability to mount removable devices as a user
+EAPI=5
+HOMEPAGE=http://pmount.alioth.debian.org/
+IUSE=crypt
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/util-linux-2.17.2 crypt? ( >=sys-fs/cryptsetup-1.0.6-r2 )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/pmount/pmount_0.9.99-alpha.orig.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=3027d236ef39bc684dd6a87b5c38d022

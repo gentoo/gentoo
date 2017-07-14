@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=app-i18n/uchardet !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) virtual/pkgconfig qt5? ( dev-qt/linguist-tools:5 ) test? ( media-sound/shntool virtual/ffmpeg !qt5? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Extracts audio tracks from an audio CD image to separate tracks
+EAPI=6
+HOMEPAGE=https://flacon.github.io/
+IUSE=qt5 test linguas_cs linguas_cs_CZ linguas_de linguas_es linguas_es_MX linguas_fr linguas_gl linguas_hu linguas_it linguas_ja_JP linguas_lt linguas_nb linguas_nl linguas_pl linguas_pl_PL linguas_pt_BR linguas_pt_PT linguas_ro_RO linguas_ru linguas_sr linguas_sr@latin linguas_tr linguas_uk linguas_zh_CN test
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1+
+RDEPEND=app-i18n/uchardet !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) media-sound/shntool
+SLOT=0
+SRC_URI=https://github.com/flacon/flacon/archive/v2.1.1.tar.gz -> flacon-2.1.1.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=14731f4ba1cc4151cf016955a2ac5549

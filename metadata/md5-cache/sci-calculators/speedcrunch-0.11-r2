@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtgui:4 dev-util/ninja >=dev-util/cmake-3.7.2
+DESCRIPTION=Fast and usable calculator for power users
+EAPI=5
+HOMEPAGE=http://speedcrunch.org/
+IUSE=doc linguas_ar_JO linguas_ca_ES linguas_cs_CZ linguas_de_DE linguas_en_GB linguas_en_US linguas_es_AR linguas_es_ES linguas_et_EE linguas_eu_ES linguas_fi_FI linguas_fr_FR linguas_he_IL linguas_hu_HU linguas_id_ID linguas_it_IT linguas_ja_JP linguas_ko_KR linguas_lv_LV linguas_nb_NO linguas_nl_NL linguas_pl_PL linguas_pt_BR linguas_pt_PT linguas_ro_RO linguas_ru_RU linguas_sv_SE linguas_tr_TR linguas_uz_UZ linguas_vi_VN linguas_zh_CN
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtgui:4
+SLOT=0
+SRC_URI=https://github.com/speedcrunch/SpeedCrunch/archive/0.11.tar.gz -> speedcrunch-0.11.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a0afec8d7b57c14e590f913aeb7f7b74

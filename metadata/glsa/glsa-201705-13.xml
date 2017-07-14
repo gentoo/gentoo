@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-13">
+  <title>Teeworlds: Remote execution of arbitrary code on client</title>
+  <synopsis>Teeworlds client vulnerability in snap handling could result in
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">teeworlds</product>
+  <announced>2017-05-26</announced>
+  <revised>2017-05-26: 2</revised>
+  <bug>600178</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-action/teeworlds" auto="yes" arch="*">
+      <unaffected range="ge">0.6.4</unaffected>
+      <vulnerable range="lt">0.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Teeworlds is an online multi-player platform 2D shooter.</p>
+  </background>
+  <description>
+    <p>Teeworlds client contains a vulnerability allowing a malicious server to
+      execute arbitrary code, or write to arbitrary physical memory via the
+      CClient::ProcessServerPacket method.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote malicious server can write to arbitrary physical memory
+      locations and possibly execute arbitrary if a vulnerable client joins the
+      server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Teeworlds users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=games-action/teeworlds-0.6.4:0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9400">CVE-2016-9400</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-09T06:08:59Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-26T06:22:30Z">BlueKnight</metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup unpack
+DESCRIPTION=access remote computers via Chrome!
+EAPI=5
+HOMEPAGE=https://support.google.com/chrome/answer/1649523 https://chrome.google.com/remotedesktop
+IUSE=l10n_am l10n_ar l10n_bg l10n_bn l10n_ca l10n_cs l10n_da l10n_de l10n_el l10n_en-GB l10n_en l10n_es-419 l10n_es l10n_et l10n_fa l10n_fil l10n_fi l10n_fr l10n_gu l10n_he l10n_hi l10n_hr l10n_hu l10n_id l10n_it l10n_ja l10n_kn l10n_ko l10n_lt l10n_lv l10n_ml l10n_mr l10n_ms l10n_nb l10n_nl l10n_pl l10n_pt-BR l10n_pt-PT l10n_ro l10n_ru l10n_sk l10n_sl l10n_sr l10n_sv l10n_sw l10n_ta l10n_te l10n_th l10n_tr l10n_uk l10n_vi l10n_zh-CN l10n_zh-TW python_targets_python2_7 linguas_am
+KEYWORDS=-* ~amd64
+LICENSE=google-chrome
+RDEPEND=app-admin/sudo python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=dev-libs/expat-2 dev-libs/glib:2 dev-libs/nspr dev-libs/nss dev-python/psutil gnome-base/gconf:2 media-libs/fontconfig media-libs/freetype:2 sys-devel/gcc sys-libs/glibc sys-libs/pam x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXtst x11-libs/pango x11-base/xorg-server[xvfb]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=amd64? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_57.0.2987.37_amd64.deb )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_unpack:unpacker src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=986d43d98d12c266385edea255c196db

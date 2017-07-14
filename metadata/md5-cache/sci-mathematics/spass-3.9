@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=isabelle? ( sci-mathematics/isabelle:= )
+DESCRIPTION=An Automated Theorem Prover for First-Order Logic with Equality
+EAPI=6
+HOMEPAGE=http://www.spass-prover.org/
+IUSE=isabelle
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=isabelle? ( sci-mathematics/isabelle:= )
+SLOT=0/3.9
+SRC_URI=http://www.spass-prover.org/download/sources/spass39.tgz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=f123872570b771a621d995d6c7be73ea

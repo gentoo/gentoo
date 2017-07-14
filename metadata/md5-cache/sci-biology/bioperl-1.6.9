@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Module-Build dev-perl/libwww-perl !minimal? ( dev-perl/Algorithm-Munkres dev-perl/Array-Compare dev-perl/YAML dev-perl/Bio-ASN1-EntrezGene dev-perl/Clone dev-perl/Convert-Binary-C dev-perl/Data-Stag dev-perl/GD dev-perl/Graph >=dev-perl/HTML-Parser-3.60 dev-perl/List-MoreUtils dev-perl/Math-Random dev-perl/PostScript dev-perl/Set-Scalar dev-perl/SOAP-Lite dev-perl/Sort-Naturally dev-perl/Spreadsheet-ParseExcel >=virtual/perl-Storable-2.05 >=dev-perl/SVG-2.26 >=dev-perl/SVG-Graph-0.01 dev-perl/URI >=dev-perl/XML-DOM-XPath-0.13 dev-perl/XML-Parser >=dev-perl/XML-SAX-0.15 dev-perl/XML-Simple dev-perl/XML-Twig >=dev-perl/XML-Writer-0.4 dev-perl/XML-DOM dev-perl/XML-XPath ) graphviz? ( dev-perl/GraphViz ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl tools for bioinformatics - Core modules
+EAPI=5
+HOMEPAGE=http://www.bioperl.org/
+IUSE=-minimal graphviz sqlite +db +network +run
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+PDEPEND=db? ( >=sci-biology/bioperl-db-1.6.9 ) network? ( >=sci-biology/bioperl-network-1.6.9 ) run? ( >=sci-biology/bioperl-run-1.6.9 )
+RDEPEND=dev-perl/libwww-perl !minimal? ( dev-perl/Algorithm-Munkres dev-perl/Array-Compare dev-perl/YAML dev-perl/Bio-ASN1-EntrezGene dev-perl/Clone dev-perl/Convert-Binary-C dev-perl/Data-Stag dev-perl/GD dev-perl/Graph >=dev-perl/HTML-Parser-3.60 dev-perl/List-MoreUtils dev-perl/Math-Random dev-perl/PostScript dev-perl/Set-Scalar dev-perl/SOAP-Lite dev-perl/Sort-Naturally dev-perl/Spreadsheet-ParseExcel >=virtual/perl-Storable-2.05 >=dev-perl/SVG-2.26 >=dev-perl/SVG-Graph-0.01 dev-perl/URI >=dev-perl/XML-DOM-XPath-0.13 dev-perl/XML-Parser >=dev-perl/XML-SAX-0.15 dev-perl/XML-Simple dev-perl/XML-Twig >=dev-perl/XML-Writer-0.4 dev-perl/XML-DOM dev-perl/XML-XPath ) graphviz? ( dev-perl/GraphViz ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl:=[-build(-)]
+REQUIRED_USE=minimal? ( !graphviz )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CJ/CJFIELDS/BioPerl-1.6.901.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=be22a76392a6e5c121e4b6d388045faa

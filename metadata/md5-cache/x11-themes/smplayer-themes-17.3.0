@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-qt/qtcore:5
+DESCRIPTION=Icon themes for smplayer
+EAPI=6
+HOMEPAGE=http://www.smplayer.eu/
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 CC0-1.0 GPL-2 GPL-3+ LGPL-3
+RDEPEND=media-video/smplayer
+SLOT=0
+SRC_URI=mirror://sourceforge/smplayer/smplayer-themes-17.3.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=5c6294788d5f1b4b76b23a9ed62fdae5

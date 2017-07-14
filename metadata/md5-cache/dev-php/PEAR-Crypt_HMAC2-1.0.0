@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst setup
+DEPEND=dev-lang/php >=dev-php/pear-1.8.1
+DESCRIPTION=Implementation of Hashed Message Authentication Code for PHP5
+EAPI=4
+HOMEPAGE=http://pear.php.net/Crypt_HMAC2
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/php >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/Crypt_HMAC2-1.0.0.tgz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:php-pear-r1 src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a83b3e58313cb5be8c24adf2e9e45c44

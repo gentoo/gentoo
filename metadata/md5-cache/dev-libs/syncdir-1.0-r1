@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Provides an alternate implementation for open, link, rename, and unlink
+EAPI=4
+HOMEPAGE=http://untroubled.org/syncdir
+IUSE=static-libs
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://untroubled.org/syncdir/syncdir-1.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f1689919cb8df254c9f1db1c974af95e

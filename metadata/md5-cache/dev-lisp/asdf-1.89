@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=ASDF is Another System Definition Facility for Common Lisp
+EAPI=3
+HOMEPAGE=http://packages.debian.org/unstable/devel/cl-asdf
+IUSE=examples
+KEYWORDS=alpha amd64 ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://gentoo/cl-asdf_1.89.orig.tar.gz mirror://gentoo/cl-asdf_1.89-1.diff.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=fc9cf5bba4b754e14bebfaa9869644fa

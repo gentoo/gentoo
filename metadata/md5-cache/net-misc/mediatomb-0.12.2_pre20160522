@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare setup unpack
+DEPEND=mysql? ( virtual/mysql ) dev-libs/expat id3tag? ( media-libs/id3lib ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0 ) taglib? ( media-libs/taglib ) sqlite? ( >=dev-db/sqlite-3 ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) mp4? ( >=media-libs/libmp4v2-1.9.1_p479:0 ) ffmpeg? ( libav? ( >=media-video/libav-10:0= ) !libav? ( >=media-video/ffmpeg-2.2:0= ) ) flac? ( media-libs/flac ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) curl? ( net-misc/curl net-misc/youtube-dl ) magic? ( sys-apps/file ) sys-apps/util-linux zlib? ( sys-libs/zlib ) virtual/libiconv >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=MediaTomb is an open source UPnP MediaServer
+EAPI=5
+HOMEPAGE=http://www.mediatomb.cc/
+IUSE=curl debug +exif +ffmpeg flac id3tag +inotify +javascript lastfm libav +magic +mp4 mysql +sqlite +taglib thumbnail +zlib
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) dev-libs/expat id3tag? ( media-libs/id3lib ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0 ) taglib? ( media-libs/taglib ) sqlite? ( >=dev-db/sqlite-3 ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) mp4? ( >=media-libs/libmp4v2-1.9.1_p479:0 ) ffmpeg? ( libav? ( >=media-video/libav-10:0= ) !libav? ( >=media-video/ffmpeg-2.2:0= ) ) flac? ( media-libs/flac ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) curl? ( net-misc/curl net-misc/youtube-dl ) magic? ( sys-apps/file ) sys-apps/util-linux zlib? ( sys-libs/zlib ) virtual/libiconv
+REQUIRED_USE=|| ( mysql sqlite ) taglib? ( !id3tag ) id3tag? ( !taglib ) thumbnail? ( ffmpeg )
+SLOT=0
+SRC_URI=https://github.com/v00d00/mediatomb/archive/mediatomb-0.12.2_pre20160522.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d7354033ed7339d4d2a9291465a8939b

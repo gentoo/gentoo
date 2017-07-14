@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201605-02">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the Chromium web
+    browser, the worst of which allows remote attackers to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>May 14, 2016</announced>
+  <revised>May 14, 2016: 1</revised>
+  <bug>578200</bug>
+  <bug>579954</bug>
+  <bug>581524</bug>
+  <bug>582828</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">50.0.2661.102</unaffected>
+      <vulnerable range="lt">50.0.2661.102</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the Chromium web
+      browser. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/chromium-50.0.2661.102"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1646">CVE-2016-1646</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1647">CVE-2016-1647</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1648">CVE-2016-1648</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1649">CVE-2016-1649</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1650">CVE-2016-1650</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1651">CVE-2016-1651</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1652">CVE-2016-1652</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1653">CVE-2016-1653</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1654">CVE-2016-1654</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1655">CVE-2016-1655</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1656">CVE-2016-1656</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1657">CVE-2016-1657</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1658">CVE-2016-1658</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1659">CVE-2016-1659</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1660">CVE-2016-1660</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1661">CVE-2016-1661</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1662">CVE-2016-1662</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1663">CVE-2016-1663</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1664">CVE-2016-1664</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1665">CVE-2016-1665</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1666">CVE-2016-1666</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1667 ">
+      CVE-2016-1667 
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1668">CVE-2016-1668</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1669">CVE-2016-1669</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1670">CVE-2016-1670</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1671">CVE-2016-1671</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 25 Mar 2016 04:54:37 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 14 May 2016 23:29:20 +0000">b-man</metadata>
+</glsa>

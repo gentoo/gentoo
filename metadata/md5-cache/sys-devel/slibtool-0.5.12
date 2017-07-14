@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=A skinny libtool implementation, written in C
+EAPI=6
+HOMEPAGE=http://git.midipix.org/cgit.cgi/slibtool
+KEYWORDS=~amd64 ~arm
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://git.midipix.org/cgit.cgi/slibtool/snapshot/slibtool-0.5.12.tar.xz
+_eclass_exported_funcs=src_configure:-
+_md5_=bc6ea1e135c494813945a09cd5c5bac7

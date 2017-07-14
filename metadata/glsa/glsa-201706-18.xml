@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-18">
+  <title>mbed TLS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in mbed TLS, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mbedtls</product>
+  <announced>2017-06-20</announced>
+  <revised>2017-06-20: 1</revised>
+  <bug>562608</bug>
+  <bug>571102</bug>
+  <bug>618824</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/mbedtls" auto="yes" arch="*">
+      <unaffected range="ge">2.4.2</unaffected>
+      <vulnerable range="lt">2.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mbed TLS (previously PolarSSL) is an “easy to understand, use,
+      integrate and expand” implementation of the TLS and SSL protocols and
+      the respective cryptographic algorithms and support code required.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mbed TLS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mbed TLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/mbedtls-2.4.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5291">CVE-2015-5291</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7575">CVE-2015-7575</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2784">CVE-2017-2784</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-17T22:12:43Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-20T17:42:02Z">whissi</metadata>
+</glsa>

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/libgpg-error dev-libs/libgcrypt:0= dev-libs/openssl:0= net-libs/gnutls:= virtual/libiconv virtual/libintl fox? ( x11-libs/fox:1.6 ) gtk? ( x11-libs/gtk+:2 ) qt4? ( dev-qt/qtgui:4 ) qt5? ( dev-qt/qtgui:5 ) virtual/pkgconfig sys-devel/gettext doc? ( app-doc/doxygen )
+DESCRIPTION=A multi-platform helper library for other libraries
+EAPI=6
+HOMEPAGE=http://www.aquamaniac.de/aqbanking/
+IUSE=debug doc fox gtk qt4 qt5
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libgpg-error dev-libs/libgcrypt:0= dev-libs/openssl:0= net-libs/gnutls:= virtual/libiconv virtual/libintl fox? ( x11-libs/fox:1.6 ) gtk? ( x11-libs/gtk+:2 ) qt4? ( dev-qt/qtgui:4 ) qt5? ( dev-qt/qtgui:5 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.aquamaniac.de/sites/download/download.php?package=01&release=201&file=01&dummy=gwenhywfar-4.15.3.tar.gz -> gwenhywfar-4.15.3.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=05983f5fa6e29d7d8c26da5574d8d1f6

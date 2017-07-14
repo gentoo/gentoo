@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=x11-libs/gtk+:2 x11-libs/libX11 >=dev-lang/lazarus-1.0.4 >=dev-lang/fpc-2.6.0 >=sys-apps/sed-4
+DESCRIPTION=Planetarium for amauter astronomers
+EAPI=5
+HOMEPAGE=http://www.ap-i.net/skychart/
+KEYWORDS=amd64
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-misc/xplanet
+SLOT=0
+SRC_URI=mirror://sourceforge/skychart/1-software/version_3.10/skychart-3.10-2854-src.tar.xz mirror://sourceforge/skychart/4-source_data/data_jpleph.tgz mirror://sourceforge/skychart/4-source_data/catalog_gcvs.tgz mirror://sourceforge/skychart/4-source_data/catalog_idx.tgz mirror://sourceforge/skychart/4-source_data/catalog_tycho2.tgz mirror://sourceforge/skychart/4-source_data/catalog_wds.tgz mirror://sourceforge/skychart/4-source_data/catalog_gcm.tgz mirror://sourceforge/skychart/4-source_data/catalog_gpn.tgz mirror://sourceforge/skychart/4-source_data/catalog_lbn.tgz mirror://sourceforge/skychart/4-source_data/catalog_ngc.tgz mirror://sourceforge/skychart/4-source_data/catalog_ocl.tgz mirror://sourceforge/skychart/4-source_data/catalog_pgc.tgz mirror://sourceforge/skychart/4-source_data/pictures_sac.tgz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=35d86e029827410d7231f5507ffd0562

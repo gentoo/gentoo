@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-28">
+  <title>Docker: Privilege escalation</title>
+  <synopsis>A vulnerability in Docker could lead to the escalation of
+    privileges.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>December 11, 2016</announced>
+  <revised>December 11, 2016: 1</revised>
+  <bug>581236</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/docker" auto="yes" arch="*">
+      <unaffected range="ge">1.11.0</unaffected>
+      <vulnerable range="lt">1.11.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Docker is the world’s leading software containerization platform.</p>
+  </background>
+  <description>
+    <p>Docker does not properly distinguish between numeric UIDs and string
+      usernames.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Local attackers could possibly escalate their privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Docker users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/docker-1.11.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3697">CVE-2016-3697</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 26 Nov 2016 00:31:47 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:40:37 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=sysvinit compatibility symlinks and manpages
+EAPI=5
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/systemd
+KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=!sys-apps/sysvinit >=sys-apps/systemd-201 >=sys-apps/util-linux-2.24.1-r2
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/systemd/systemd-215.tar.xz
+_eclass_exported_funcs=src_install:-
+_md5_=7595d44ca1aaa0f53ab419e89ad7db75

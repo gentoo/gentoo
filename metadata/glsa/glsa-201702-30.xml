@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-30">
+  <title>tcpdump: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in tcpdump, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tcpdump</product>
+  <announced>2017-02-21</announced>
+  <revised>2017-02-21: 1</revised>
+  <bug>606516</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/tcpdump" auto="yes" arch="*">
+      <unaffected range="ge">4.9.0</unaffected>
+      <vulnerable range="lt">4.9.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tcpdump is a tool for network monitoring and data acquisition.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in tcpdump. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending a specially crafted network package, could
+      possibly execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tcpdump users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/tcpdump-4.9.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7922">CVE-2016-7922</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7923">CVE-2016-7923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7924">CVE-2016-7924</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7925">CVE-2016-7925</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7926">CVE-2016-7926</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7927">CVE-2016-7927</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7928">CVE-2016-7928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7929">CVE-2016-7929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7930">CVE-2016-7930</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7931">CVE-2016-7931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7932">CVE-2016-7932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7933">CVE-2016-7933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7934">CVE-2016-7934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7935">CVE-2016-7935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7936">CVE-2016-7936</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7937">CVE-2016-7937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7938">CVE-2016-7938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7939">CVE-2016-7939</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7940">CVE-2016-7940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7973">CVE-2016-7973</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7974">CVE-2016-7974</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7975">CVE-2016-7975</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7983">CVE-2016-7983</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7984">CVE-2016-7984</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7985">CVE-2016-7985</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7986">CVE-2016-7986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7992">CVE-2016-7992</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7993">CVE-2016-7993</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8574">CVE-2016-8574</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8575">CVE-2016-8575</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5202">CVE-2017-5202</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5203">CVE-2017-5203</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5204">CVE-2017-5204</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5205">CVE-2017-5205</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5341">CVE-2017-5341</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5342">CVE-2017-5342</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5482">CVE-2017-5482</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5483">CVE-2017-5483</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5484">CVE-2017-5484</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5485">CVE-2017-5485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5486">CVE-2017-5486</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-05T22:50:53Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-21T00:35:31Z">whissi</metadata>
+</glsa>

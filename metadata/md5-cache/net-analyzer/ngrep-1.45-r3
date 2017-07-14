@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure preinst prepare
+DEPEND=dev-libs/libpcre net-libs/libpcap >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A grep for network layers
+EAPI=5
+HOMEPAGE=http://ngrep.sourceforge.net/
+IUSE=ipv6
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=ngrep
+RDEPEND=dev-libs/libpcre net-libs/libpcap
+SLOT=0
+SRC_URI=mirror://sourceforge/ngrep/ngrep-1.45.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=0882a13ac18b4aba2a22697e2bfa9c49

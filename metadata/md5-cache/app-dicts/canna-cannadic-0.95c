@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm setup
+DEPEND=app-i18n/canna
+DESCRIPTION=Japanese dictionary as a supplement/replacement to Canna3.5b2
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=alpha ~amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/cannadic-0.95c.tar.gz
+_eclass_exported_funcs=pkg_postrm:cannadic pkg_postinst:cannadic pkg_setup:cannadic src_compile:- src_install:cannadic
+_eclasses_=cannadic	6d8054590c0aef2c11c567e1a815c052	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=37fcd42c02c300ce3e74b002a43d964e

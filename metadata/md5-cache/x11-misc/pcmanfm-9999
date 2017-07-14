@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm prepare unpack
+DEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.16:2 >=lxde-base/menu-cache-0.3.2 x11-misc/shared-mime-info >=x11-libs/libfm-9999:=[gtk(+)] virtual/eject virtual/freedesktop-icon-theme app-arch/xz-utils >=dev-util/intltool-0.40 virtual/pkgconfig sys-devel/gettext >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Fast lightweight tabbed filemanager
+EAPI=5
+HOMEPAGE=http://pcmanfm.sourceforge.net/
+IUSE=debug linguas_ar linguas_be linguas_bg linguas_bn linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hr linguas_hu linguas_id linguas_is linguas_it linguas_ja linguas_kk linguas_km linguas_ko linguas_lg linguas_lt linguas_lv linguas_ms linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_si linguas_sk linguas_sl linguas_sr linguas_sr@latin linguas_sv linguas_te linguas_th linguas_tr linguas_tt_RU linguas_ug linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.16:2 >=lxde-base/menu-cache-0.3.2 x11-misc/shared-mime-info >=x11-libs/libfm-9999:=[gtk(+)] virtual/eject virtual/freedesktop-icon-theme
+SLOT=0
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:readme.gentoo
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	git-r3	cbafa3261c37c7e3af44bb16a34ea390	l10n	2c2e15383ba891d642f51896a7f0ecfe	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo	589f4c6d735919e293942dd66311dc40	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=841a254c0b243fc395f91caaab262b87

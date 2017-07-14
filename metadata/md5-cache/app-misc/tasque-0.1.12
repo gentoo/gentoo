@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 sqlite? ( dev-db/sqlite:3 ) app-arch/xz-utils
+DESCRIPTION=Simple task management app (TODO list) for the Linux Desktop
+EAPI=5
+HOMEPAGE=https://live.gnome.org/Tasque
+IUSE=+rememberthemilk +sqlite hiveminder debug linguas_ca linguas_ca@valencia linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_et linguas_fi linguas_fr linguas_gl linguas_hu linguas_id linguas_it linguas_ja linguas_lv linguas_nb linguas_nds linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sl linguas_sr linguas_sr@latin linguas_sv linguas_th linguas_tr linguas_zh_CN linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 sqlite? ( dev-db/sqlite:3 )
+REQUIRED_USE=|| ( rememberthemilk sqlite hiveminder )
+SLOT=0
+SRC_URI=mirror://gnome/sources/tasque/0.1/tasque-0.1.12.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	ltprune	2770eed66a9b8ef944714cd0e968182e	mono	a59df07822fcb0dec319e09526d84c1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=4e2104b29903013797a3b25afd4e3e09

@@ -1,0 +1,40 @@
+Title: python-exec 2.3 reclaims python* symlinks
+Author: Michał Górny <mgorny@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-01-21
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <app-eselect/eselect-python-20160206
+Display-If-Installed: <dev-lang/python-exec-2.3
+
+The new versions of python-exec (2.3 and newer) are reclaiming multiple
+Python-related symlinks in /usr/bin, most notably /usr/bin/python*. This
+may result in your package manager reporting file collisions.
+
+The respective symlinks were previously either unowned and created
+dynamically by app-eselect/eselect-python, or installed by it. From now
+on, all Python-related symlinks are installed and handled
+by python-exec. This ensures that they respect the python-exec
+configuration files and variables consistently with regular Python
+packages, and improves their reliability.
+
+If you are using FEATURES=collision-protect, Portage will reject
+the upgrade. If this is the case, please temporarily switch to
+FEATURES=protect-owned for the upgrade.
+
+If you are using FEATURES=protect-owned, Portage will verbosely warn
+about the file collisions but will proceed with the upgrade once
+determining no replaced files are owned. Please disregard the warning.
+
+The potentially colliding files are:
+
+ * /usr/bin/2to3
+ * /usr/bin/idle
+ * /usr/bin/pydoc
+ * /usr/bin/python
+ * /usr/bin/python2
+ * /usr/bin/python3
+ * /usr/bin/python-config
+
+For more information on python-exec, please see:
+https://wiki.gentoo.org/wiki/Project:Python/python-exec

@@ -1,0 +1,16 @@
+DEFINED_PHASES=install postinst postrm preinst prepare prerm unpack
+DEPEND=virtual/pkgconfig >=sys-apps/sed-4 dev-libs/libxslt
+DESCRIPTION=Emulate a complete PC without the performance overhead of most emulators
+EAPI=5
+HOMEPAGE=http://www.vmware.com/products/workstation/
+IUSE=cups bundled-libs doc ovftool server vix vmware-tools
+KEYWORDS=-* ~amd64
+LICENSE=vmware GPL-2
+PDEPEND=~app-emulation/vmware-modules-304.2 vmware-tools? ( app-emulation/vmware-tools )
+RDEPEND=dev-cpp/libgnomecanvasmm dev-cpp/pangomm dev-libs/icu dev-libs/expat dev-libs/libsigc++:2 dev-libs/libxml2 dev-libs/openssl:0.9.8 dev-libs/xmlrpc-c gnome-base/libgnomecanvas gnome-base/libgtop:2 gnome-base/librsvg:2 gnome-base/orbit media-libs/libart_lgpl media-libs/libpng:1.2 media-libs/libpng media-libs/tiff:3 cups? ( net-print/cups ) sys-devel/gcc sys-libs/glibc sys-libs/zlib x11-libs/libgksu x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libxcb x11-libs/libXext x11-libs/libXi x11-libs/libXtst x11-libs/pango x11-libs/pangox-compat x11-libs/startup-notification x11-themes/hicolor-icon-theme !app-emulation/vmware-player !bundled-libs? ( x11-libs/libXau x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXfixes x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender dev-libs/libaio dev-libs/atk dev-cpp/atkmm app-accessibility/at-spi2-core x11-libs/cairo dev-cpp/cairomm net-misc/curl media-libs/fontconfig media-libs/freetype sys-fs/fuse x11-libs/gtk+:2 =dev-libs/libgcrypt-1.5* x11-libs/gdk-pixbuf:2 dev-cpp/gtkmm:2.4 dev-libs/glib:2 dev-cpp/glibmm:2 ) sys-apps/dbus
+RESTRICT=mirror strip preserve-libs
+SLOT=0
+SRC_URI=amd64? ( https://softwareupdate.vmware.com/cds/vmw-desktop/ws/11.1.2/2780323/linux/core/VMware-Workstation-11.1.2-2780323.x86_64.bundle.tar ) https://github.com/akhuettel/systemd-vmware/archive/gentoo-01.tar.gz -> vmware-systemd-gentoo-01.tgz
+_eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	readme.gentoo	589f4c6d735919e293942dd66311dc40	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	vmware-bundle	103215ad2cbe486527636cd8fec1ed3d	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=54338d8ebb8c65878bc5850303676f78

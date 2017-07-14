@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby21? ( test? ( >=dev-ruby/test-unit-2.5.1-r1[ruby_targets_ruby21] ) ) ruby_targets_ruby22? ( test? ( >=dev-ruby/test-unit-2.5.1-r1[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( test? ( >=dev-ruby/test-unit-2.5.1-r1[ruby_targets_ruby23] ) ) ruby_targets_ruby24? ( test? ( >=dev-ruby/test-unit-2.5.1-r1[ruby_targets_ruby24] ) ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) test? ( ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) )
+DESCRIPTION=All the stuff that isn't good enough for a real library
+EAPI=6
+HOMEPAGE=https://github.com/flori/tins
+IUSE=elibc_FreeBSD ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
+REQUIRED_USE=|| ( ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
+SLOT=0
+SRC_URI=mirror://rubygems/tins-1.14.0.gem
+_eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-fakegem	9652a5d6e78586973d23226d8fd77713	ruby-ng	e52d9a73c7757cdc3b195bcd5cf9d389	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ac29fb860c94e9af7ea853b7bb11eb48

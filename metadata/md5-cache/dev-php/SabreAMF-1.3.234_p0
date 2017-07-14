@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=SabreAMF is a Flash Remoting server and client for PHP
+EAPI=6
+HOMEPAGE=https://github.com/evert/SabreAMF
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/evert/SabreAMF/archive/e5521c27e9309404d7505e1e16db843fcb2202ec.tar.gz -> SabreAMF-1.3.234_p0.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_install:-
+_eclasses_=vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=dfd6eab9f168c115c878b5875068c2b1

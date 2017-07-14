@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm setup
+DEPEND=dev-libs/glib:2= dev-libs/gmp:0= dev-libs/libxml2:2= dev-libs/mpfr:0= sci-libs/fftw:3.0= sci-visualization/gnuplot virtual/lapack virtual/latex-base accessibility? ( app-accessibility/flite:= ) curl? ( net-misc/curl:0= ) emacs? ( virtual/emacs ) gtk? ( media-libs/gd:2=[png] sci-visualization/gnuplot[gd] x11-libs/gtk+:3= x11-libs/gtksourceview:3.0= ) mpi? ( virtual/mpi ) odbc? ( dev-db/unixODBC:0= ) R? ( dev-lang/R:0= ) readline? ( sys-libs/readline:0= ) virtual/pkgconfig
+DESCRIPTION=Regression, econometrics and time-series library
+EAPI=5
+HOMEPAGE=http://gretl.sourceforge.net/
+IUSE=accessibility cpu_flags_x86_avx +curl emacs gnome gtk mpi nls odbc openmp python readline cpu_flags_x86_sse2 R static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2= dev-libs/gmp:0= dev-libs/libxml2:2= dev-libs/mpfr:0= sci-libs/fftw:3.0= sci-visualization/gnuplot virtual/lapack virtual/latex-base accessibility? ( app-accessibility/flite:= ) curl? ( net-misc/curl:0= ) emacs? ( virtual/emacs ) gtk? ( media-libs/gd:2=[png] sci-visualization/gnuplot[gd] x11-libs/gtk+:3= x11-libs/gtksourceview:3.0= ) mpi? ( virtual/mpi ) odbc? ( dev-db/unixODBC:0= ) R? ( dev-lang/R:0= ) readline? ( sys-libs/readline:0= ) python? ( dev-python/numpy )
+REQUIRED_USE=emacs? ( gtk ) !curl? ( !gtk )
+SLOT=0/10
+SRC_URI=mirror://sourceforge/gretl/gretl-1.9.90.tar.xz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=9c405d95c4c46a49f4a74f7382178df8

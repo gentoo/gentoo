@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-03">
+  <title>libsndfile: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libsndfile, the worst
+    of which might allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libsndfile</product>
+  <announced>December 03, 2016</announced>
+  <revised>December 03, 2016: 1</revised>
+  <bug>533750</bug>
+  <bug>566682</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libsndfile" auto="yes" arch="*">
+      <unaffected range="ge">1.0.26</unaffected>
+      <vulnerable range="lt">1.0.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libsndfile is a C library for reading and writing files containing
+      sampled sound.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libsndfile. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file,
+      possibly resulting in the execution of arbitrary code with the privileges
+      of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libsndfile users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libsndfile-1.0.26"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9496">CVE-2014-9496</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7805">CVE-2015-7805</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:52:16 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 03 Dec 2016 10:28:00 +0000">whissi</metadata>
+</glsa>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-06">
+  <title>MySQL and MariaDB: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MySQL and MariaDB, the
+    worst of which could allow remote attackers to cause a Denial of Service
+    condition or obtain sensitive information.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>October 11, 2016</announced>
+  <revised>October 11, 2016: 1</revised>
+  <bug>546724</bug>
+  <bug>555478</bug>
+  <bug>555480</bug>
+  <bug>564170</bug>
+  <bug>564442</bug>
+  <bug>572870</bug>
+  <bug>580832</bug>
+  <bug>580834</bug>
+  <bug>589238</bug>
+  <bug>589346</bug>
+  <bug>593608</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.6.31</unaffected>
+      <vulnerable range="lt">5.6.31</vulnerable>
+    </package>
+    <package name="dev-db/mariadb" auto="yes" arch="*">
+      <unaffected range="rgt">5.5.51</unaffected>
+      <vulnerable range="lt">10.0.27</vulnerable>
+    </package>
+    <package name="dev-db/mariab" auto="yes" arch="*">
+      <unaffected range="ge">10.0.27</unaffected>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a popular multi-threaded, multi-user SQL server. MariaDB is an
+      enhanced, drop-in replacement for MySQL.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MySQL and MariaDB.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit vulnerabilities, through multiple
+      vectors, that affect the confidentiality, integrity, and availability of
+      MySQL and MariaDB.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.6.31"
+    </code>
+    
+    <p>All MariaDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-10.0.27"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2582">CVE-2015-2582</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2611">CVE-2015-2611</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2617">CVE-2015-2617</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2620">CVE-2015-2620</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2639">CVE-2015-2639</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2641">CVE-2015-2641</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2643">CVE-2015-2643</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2648">CVE-2015-2648</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2661">CVE-2015-2661</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4737">CVE-2015-4737</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4752">CVE-2015-4752</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4756">CVE-2015-4756</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4757">CVE-2015-4757</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4767">CVE-2015-4767</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4769">CVE-2015-4769</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4771">CVE-2015-4771</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4772">CVE-2015-4772</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 05:19:51 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 11 Oct 2016 13:42:31 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kguiaddons:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/menu-cache-0.3.3 ~lxqt-base/liblxqt-0.11.0 ~lxqt-base/lxqt-globalkeys-0.11.0 x11-libs/libX11 cpuload? ( sys-libs/libstatgrab ) kbindicator? ( x11-libs/libxkbcommon ) mount? ( kde-frameworks/solid:5 ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) statusnotifier? ( dev-libs/libdbusmenu-qt[qt5] ) sysstat? ( =lxqt-base/libsysstat-0.3* ) tray? ( x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) dev-qt/linguist-tools:5 sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=LXQt desktop panel and plugins
+EAPI=5
+HOMEPAGE=http://lxqt.org/
+IUSE=+alsa +clock colorpicker cpuload +desktopswitch dom +kbindicator +mainmenu +mount networkmonitor pulseaudio +quicklaunch sensors +showdesktop statusnotifier sysstat +taskbar +tray +volume worldclock
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=LGPL-2.1+
+RDEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kguiaddons:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/menu-cache-0.3.3 ~lxqt-base/liblxqt-0.11.0 ~lxqt-base/lxqt-globalkeys-0.11.0 x11-libs/libX11 cpuload? ( sys-libs/libstatgrab ) kbindicator? ( x11-libs/libxkbcommon ) mount? ( kde-frameworks/solid:5 ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) statusnotifier? ( dev-libs/libdbusmenu-qt[qt5] ) sysstat? ( =lxqt-base/libsysstat-0.3* ) tray? ( x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) dev-qt/qtsvg:5 >=lxde-base/lxmenu-data-0.1.2
+REQUIRED_USE=volume? ( || ( alsa pulseaudio ) )
+SLOT=0
+SRC_URI=https://downloads.lxqt.org/lxqt/0.11.0/lxqt-panel-0.11.0.tar.xz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d292aee616280d80ca141d45fd24cbad

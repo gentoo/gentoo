@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( curl? ( dev-python/pycurl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sftp? ( dev-python/paramiko[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) >=dev-python/pyftpdlib-0.7.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/subunit >=dev-python/testtools-0.9.5[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads,ssl,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Bazaar is a next generation distributed version control system
+EAPI=5
+HOMEPAGE=http://bazaar-vcs.org/
+IUSE=curl doc +sftp test python_targets_python2_7 linguas_ar linguas_ast linguas_bs linguas_ca linguas_cs linguas_de linguas_el linguas_en_AU linguas_en_GB linguas_es linguas_fa linguas_fo linguas_fr linguas_gl linguas_he linguas_id linguas_it linguas_ja linguas_ko linguas_ms linguas_my linguas_nb linguas_nl linguas_oc linguas_pl linguas_pt_BR linguas_ro linguas_ru linguas_sco linguas_si linguas_sk linguas_sr linguas_sv linguas_tr linguas_ug linguas_uk linguas_vi linguas_zh_CN
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=curl? ( dev-python/pycurl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sftp? ( dev-python/paramiko[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads,ssl,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://launchpad.net/bzr/2.6/2.6.0/+download/bzr-2.6.0.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=ea7c1814d68190fcd82eadabc2fe3716

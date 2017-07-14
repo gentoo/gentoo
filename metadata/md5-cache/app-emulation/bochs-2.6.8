@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure prepare
+DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= ) doc? ( app-text/docbook-sgml-utils ) X? ( x11-proto/xproto ) sys-apps/sed >=app-text/opensp-1.5
+DESCRIPTION=LGPL-ed pc emulator
+EAPI=5
+HOMEPAGE=http://bochs.sourceforge.net/
+IUSE=3dnow avx debugger doc gdb ncurses readline svga sdl +smp wxwidgets vnc X +x86-64
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= )
+REQUIRED_USE=avx? ( x86-64 ) gdb? ( !debugger !smp ) debugger? ( !gdb )
+SLOT=0
+SRC_URI=mirror://sourceforge/bochs/bochs-2.6.8.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=ad5daed33e5ce90bb40acef870b60595

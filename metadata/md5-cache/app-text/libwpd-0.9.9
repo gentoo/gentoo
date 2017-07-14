@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
+DESCRIPTION=WordPerfect Document import/export library
+EAPI=5
+HOMEPAGE=http://libwpd.sf.net
+IUSE=doc test +tools
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=|| ( LGPL-2.1 MPL-2.0 )
+RDEPEND=!<app-text/libwpd-0.8.14-r1
+SLOT=0.9
+SRC_URI=mirror://sourceforge/libwpd/libwpd-0.9.9.tar.xz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=alternatives	6c575717515f030736d1b718d507d2f9	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=10ae1d976c763f803204512148d1557f

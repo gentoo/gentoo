@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Syntax for Sam Tregar's HTML::Template
+EAPI=6
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=254
+KEYWORDS=x86 alpha ia64 sparc amd64 ppc
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/tmpl-0.1.tar.bz2 https://dev.gentoo.org/~radhermit/vim/tmpl-0.1.tar.bz2
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=91026b79f67e74751e51675c1b3c62e5

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=IE Cookie Parser
+EAPI=0
+HOMEPAGE=https://sourceforge.net/projects/odessa/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/odessa/galleta_20040505_1.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f5f542e18a783a0911f82ed437b0e6c3

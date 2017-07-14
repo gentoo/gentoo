@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lang/ocaml-4.03:= test? ( dev-ml/iTeML ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=Simple sequence (iterator) datatype and combinators
+EAPI=5
+HOMEPAGE=https://github.com/c-cube/sequence
+IUSE=+ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=>=dev-lang/ocaml-4.03:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/0.10
+SRC_URI=https://github.com/c-cube/sequence/archive/0.10.tar.gz -> sequence-0.10.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	oasis	9256ed89af74c3365ec888c00bfdfe43	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a84a8aa0a043e74973f0beebb58deced

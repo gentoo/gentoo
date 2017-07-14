@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Converter for dat files for Rom Managers
+EAPI=5
+HOMEPAGE=http://www.logiqx.com/Tools/DatUtil/
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.logiqx.com/Tools/DatUtil/dutil246.zip http://www.logiqx.com/Tools/DatLib/datlib236.zip
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=1eb2cf476f9865bf2050cfa419c4c973

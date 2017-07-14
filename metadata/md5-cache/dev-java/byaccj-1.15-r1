@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A java extension of BSD YACC-compatible parser generator
+EAPI=4
+HOMEPAGE=http://byaccj.sourceforge.net/
+KEYWORDS=amd64 ~arm ~arm64 ppc64 x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://sourceforge/byaccj/byaccj1.15_src.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a32dc1f18ef15b9ccec941d6fccbcc6d

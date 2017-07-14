@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=media-sound/jack-audio-connection-kit-0.80 x11-libs/gtk+:2 >=media-libs/libsndfile-1.0.5 media-libs/liblo lash? ( >=media-sound/lash-0.5 ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=JACK client record button remembering the last 10 seconds when pressed
+EAPI=6
+HOMEPAGE=http://plugin.org.uk/timemachine/
+IUSE=lash
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/jack-audio-connection-kit-0.80 x11-libs/gtk+:2 >=media-libs/libsndfile-1.0.5 media-libs/liblo lash? ( >=media-sound/lash-0.5 )
+SLOT=0
+SRC_URI=http://plugin.org.uk/timemachine/timemachine-0.3.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ac0f79a968a7e4ba9955d356a65d032a

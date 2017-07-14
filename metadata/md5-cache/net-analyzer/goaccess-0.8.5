@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/glib:2 sys-libs/ncurses:0=[unicode?] geoip? ( dev-libs/geoip ) btree? ( dev-db/tokyocabinet ) memhash? ( dev-db/tokyocabinet ) zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 ) virtual/pkgconfig
+DESCRIPTION=A real-time web log analyzer and interactive viewer that runs in a terminal
+EAPI=5
+HOMEPAGE=http://goaccess.io
+IUSE=btree debug geoip bzip2 memhash unicode zlib
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 sys-libs/ncurses:0=[unicode?] geoip? ( dev-libs/geoip ) btree? ( dev-db/tokyocabinet ) memhash? ( dev-db/tokyocabinet ) zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 )
+REQUIRED_USE=btree? ( !memhash )
+SLOT=0
+SRC_URI=http://tar.goaccess.io/goaccess-0.8.5.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=95ef1ffb98f0c9ff55b62c55d9a4d242

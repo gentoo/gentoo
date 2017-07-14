@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DEPEND=userland_GNU? ( sys-apps/coreutils ) >=dev-perl/Tk-804.27.0 userland_GNU? ( app-arch/sharutils )
+DESCRIPTION=A GUI front-end to dd/dc3dd
+EAPI=4
+HOMEPAGE=http://air-imager.sourceforge.net/
+IUSE=crypt
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=userland_GNU? ( sys-apps/coreutils ) app-arch/mt-st net-analyzer/netcat crypt? ( net-analyzer/cryptcat )
+SLOT=0
+SRC_URI=mirror://sourceforge/air-imager/air-2.0.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=8929f7cf967b884385d11f0f6938f42c

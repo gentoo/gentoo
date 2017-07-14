@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 >=dev-qt/qtgui-5.7:5[dbus] ) dev-qt/linguist-tools:5
+DESCRIPTION=Qt5 configuration tool, similar to qtconfig for Qt4
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/qt5ct/
+IUSE=+dbus
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 >=dev-qt/qtgui-5.7:5[dbus] )
+SLOT=0
+SRC_URI=mirror://sourceforge/qt5ct/qt5ct-0.33.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7b1621b9cd4302491bdf13e244dd61d3

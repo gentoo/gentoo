@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=media-fonts/dejavu dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 virtual/opengl sys-libs/zlib media? ( dev-qt/qtmultimedia:5[widgets] ) dev-qt/qttest:5 dev-qt/qtconcurrent:5 nls? ( dev-qt/linguist-tools:5 ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=3D photo-realistic skies in real time
+EAPI=6
+HOMEPAGE=http://www.stellarium.org/
+IUSE=debug nls media stars l10n_af l10n_am l10n_ar l10n_as l10n_ast l10n_az l10n_be l10n_bg l10n_bn l10n_bo l10n_br l10n_bs l10n_ca l10n_cs l10n_cy l10n_da l10n_de l10n_el l10n_en l10n_en-GB l10n_en-US l10n_eo l10n_es l10n_et l10n_eu l10n_fa l10n_fi l10n_fil l10n_fr l10n_ga l10n_gd l10n_gl l10n_gu l10n_he l10n_hi l10n_hr l10n_hu l10n_hy l10n_ia l10n_id l10n_is l10n_it l10n_ja l10n_ka l10n_kk l10n_kn l10n_ko l10n_ky l10n_la l10n_lb l10n_lo l10n_lt l10n_lv l10n_mk l10n_ml l10n_mn l10n_mr l10n_ms l10n_nb l10n_nl l10n_nn l10n_oc l10n_pa l10n_pl l10n_pt l10n_pt-BR l10n_ro l10n_ru l10n_se l10n_si l10n_sk l10n_sl l10n_sq l10n_sr l10n_sv l10n_sw l10n_ta l10n_te l10n_tg l10n_th l10n_tl l10n_tr l10n_tt l10n_uk l10n_uz l10n_vi l10n_zh-CN l10n_zh-HK l10n_zh-TW l10n_zu
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2+
+RDEPEND=media-fonts/dejavu dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 virtual/opengl sys-libs/zlib media? ( dev-qt/qtmultimedia:5[widgets] )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/stellarium/stellarium-0.15.0.tar.gz stars? ( mirror://sourceforge/stellarium/stars_4_1v0_1.cat mirror://sourceforge/stellarium/stars_5_2v0_1.cat mirror://sourceforge/stellarium/stars_6_2v0_1.cat mirror://sourceforge/stellarium/stars_7_2v0_1.cat mirror://sourceforge/stellarium/stars_8_2v0_1.cat )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=1d42348399164ae69652c845f09032b1

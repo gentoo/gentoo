@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=C library for high-throughput sequencing data formats
+EAPI=5
+HOMEPAGE=http://www.htslib.org/
+IUSE=static-libs
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://sourceforge/samtools/1.0/htslib-1.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f029665de5c4c81d1c5751bfa4cd30fa

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/bglibs-1.106
+DESCRIPTION=proxy program for two connections set up by a UCSPI server and a UCSPI client
+EAPI=5
+HOMEPAGE=http://untroubled.org/ucspi-proxy/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/bglibs-1.106
+SLOT=0
+SRC_URI=http://untroubled.org/ucspi-proxy/archive/ucspi-proxy-0.99.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8f97b501a71b72a5df46e7713255766f

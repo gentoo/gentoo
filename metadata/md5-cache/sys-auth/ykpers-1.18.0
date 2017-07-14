@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-auth/libyubikey-1.6 virtual/libusb:1 app-text/asciidoc virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Library and tool for personalization of Yubico's YubiKey
+EAPI=6
+HOMEPAGE=https://github.com/Yubico/yubikey-personalization
+IUSE=static-libs consolekit
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=>=sys-auth/libyubikey-1.6 virtual/libusb:1 consolekit? ( sys-auth/consolekit[acl] )
+SLOT=0
+SRC_URI=https://github.com/Yubico/yubikey-personalization/archive/v1.18.0.tar.gz -> ykpers-1.18.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=eaee86efd13704e443be8fc23c81879c
