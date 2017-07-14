@@ -96,7 +96,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa doc +encode jack oss pic static-libs test v4l
+	alsa doc +encode jack libressl oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -218,7 +218,10 @@ RDEPEND="
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+	openssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	)
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
@@ -286,6 +289,8 @@ REQUIRED_USE="
 RESTRICT="
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-3.2-libressl.patch )
 
 S=${WORKDIR}/${P/_/-}
 
