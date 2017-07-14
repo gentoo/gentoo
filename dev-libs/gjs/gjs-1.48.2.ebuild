@@ -20,7 +20,7 @@ RDEPEND="
 	dev-lang/spidermonkey:38
 	virtual/libffi
 	cairo? ( x11-libs/cairo[X] )
-	gtk? ( x11-libs/gtk+:3 )
+	gtk? ( >=x11-libs/gtk+-3.20:3 )
 "
 DEPEND="${RDEPEND}
 	gnome-base/gnome-common
