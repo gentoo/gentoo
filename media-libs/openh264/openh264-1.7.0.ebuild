@@ -25,7 +25,7 @@ DEPEND="
 DOCS=( LICENSE CONTRIBUTORS README.md )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.5.0-pkgconfig-pathfix.patch
+	epatch "${FILESDIR}"/${PN}-1.7.0-pkgconfig-pathfix.patch
 	multilib_copy_sources
 }
 
