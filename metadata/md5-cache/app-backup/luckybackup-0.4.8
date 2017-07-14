@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4
+DESCRIPTION=Powerful and flexible backup (and syncing) tool, using RSync and Qt4
+EAPI=5
+HOMEPAGE=http://luckybackup.sourceforge.net/
+IUSE=debug linguas_bs linguas_ca linguas_cs linguas_de linguas_el linguas_en linguas_es linguas_fr linguas_it linguas_nl linguas_no linguas_pl linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sl linguas_sv linguas_tr linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 net-misc/rsync
+SLOT=0
+SRC_URI=mirror://sourceforge/luckybackup/luckybackup-0.4.8.tar.gz
+_eclass_exported_funcs=src_unpack:qt4-r2 src_prepare:- src_configure:qt4-r2 src_compile:qt4-r2 src_install:qt4-r2
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	qt4-r2	b7985a3197fbc3a22d059f19904e735b	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f53c6079ecedb6f4c02e5991bbd79655

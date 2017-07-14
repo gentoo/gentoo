@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-01">
+  <title>PCSC-Lite: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PCSC-Lite, the worst of
+    which could lead to privilege escalation. 
+  </synopsis>
+  <product type="ebuild">PCSC-Lite</product>
+  <announced>2017-02-01</announced>
+  <revised>2017-02-01: 1</revised>
+  <bug>604574</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/pcsc-lite" auto="yes" arch="*">
+      <unaffected range="ge">1.8.20</unaffected>
+      <vulnerable range="lt">1.8.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PCSC-Lite is a middleware to access a smart card using the SCard API
+      (PC/SC).
+    </p>
+  </background>
+  <description>
+    <p>The SCardReleaseContext function normally releases resources associated
+      with the given handle (including “cardsList”) and clients should
+      cease using this handle. However, a malicious client can make the daemon
+      invoke SCardReleaseContext and continue issuing other commands that use
+      “cardsList”, resulting in a use-after-free. When SCardReleaseContext
+      is invoked multiple times it additionally results in a double-free of
+      “cardsList”.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could use a malicious client to connect to pcscd’s
+      Unix socket, possibly resulting in a Denial of Service condition or
+      privilege escalation since the daemon is running as root.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PCSC-Lite users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/pcsc-lite-1.8.20"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10109">
+      CVE-2016-10109
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T01:16:33Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-01T02:32:53Z">whissi</metadata>
+</glsa>

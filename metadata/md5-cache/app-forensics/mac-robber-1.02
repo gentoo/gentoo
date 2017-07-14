@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=mac-robber is a digital forensics and incident response tool that collects data
+EAPI=4
+HOMEPAGE=http://www.sleuthkit.org/mac-robber/index.php
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/mac-robber/mac-robber-1.02.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=834e1b40990a31ea86dfccadec9363fa

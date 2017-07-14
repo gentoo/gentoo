@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=xfce-base/libxfce4ui-4.8 >=xfce-base/libxfce4util-4.8 >=xfce-base/xfce4-panel-4.8 dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170317 >=sys-apps/sed-4
+DESCRIPTION=A plugin to indicate the status of the IBM Hard Drive Active Protection System
+EAPI=5
+HOMEPAGE=http://michael.orlitzky.com/code/xfce4-hdaps.php
+IUSE=debug
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=xfce-base/libxfce4ui-4.8 >=xfce-base/libxfce4util-4.8 >=xfce-base/xfce4-panel-4.8 >=app-laptop/hdapsd-20090101 >=app-laptop/tp_smapi-0.39
+SLOT=0
+SRC_URI=http://michael.orlitzky.com/code/releases/xfce4-hdaps-0.0.9.tar.bz2
+_eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:xfconf
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120	xfconf	51046a6500ce693b24ea9797eb60c973
+_md5_=ef7c3ef5473015a80f8bf3da114218f6

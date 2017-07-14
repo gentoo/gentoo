@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-cpp/eigen:3 test? ( dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Advanced molecule editor and visualizer 2 - libraries
+EAPI=6
+HOMEPAGE=http://www.openchemistry.org/
+IUSE=doc hdf5 opengl qt5 static-plugins test vtk
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD GPL-2+
+RDEPEND=>=sci-chemistry/molequeue-0.7 sci-libs/chemkit hdf5? ( sci-libs/hdf5:= ) opengl? ( dev-qt/qtopengl:5 media-libs/glew ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vtk? ( sci-libs/vtk )
+REQUIRED_USE=qt5? ( opengl )
+SLOT=0
+SRC_URI=https://github.com/OpenChemistry/avogadrolibs/archive/0.9.0.tar.gz -> avogadrolibs-0.9.0.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ada0057e624380ec4e2a74db24e75272

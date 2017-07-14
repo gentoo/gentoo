@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare test
+DEPEND=app-arch/unzip >=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/libtermcap-compat )
+DESCRIPTION=SCM is a Scheme implementation from the author of slib
+EAPI=3
+HOMEPAGE=http://swiss.csail.mit.edu/~jaffer/SCM
+IUSE=arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-macos
+LICENSE=LGPL-3
+RDEPEND=app-arch/unzip >=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/libtermcap-compat )
+SLOT=0
+SRC_URI=http://groups.csail.mit.edu/mac/ftpdir/scm/scm-5e6.zip
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=e60ead00eb4d7706e1a2014b893f4383

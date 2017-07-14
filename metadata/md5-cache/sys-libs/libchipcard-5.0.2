@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sys-libs/gwenhywfar-4.2.1 >=sys-apps/pcsc-lite-1.6.2 sys-libs/zlib virtual/libintl sys-devel/gettext doc? ( app-doc/doxygen )
+DESCRIPTION=Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
+EAPI=2
+HOMEPAGE=http://www.aquamaniac.de/aqbanking/
+IUSE=doc examples
+KEYWORDS=amd64 hppa ppc ~ppc64 ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=sys-libs/gwenhywfar-4.2.1 >=sys-apps/pcsc-lite-1.6.2 sys-libs/zlib virtual/libintl
+SLOT=0
+SRC_URI=http://www.aquamaniac.de/sites/download/download.php?package=02&release=26&file=01&dummy=libchipcard-5.0.2.tar.gz -> libchipcard-5.0.2.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=4ef4af5abf4875085e7715c727c2e7a1

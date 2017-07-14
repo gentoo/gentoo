@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/perl
+DESCRIPTION=A tool for checking backward compatibility of a C/C++ library
+EAPI=6
+HOMEPAGE=http://ispras.linuxbase.org/index.php/ABI_compliance_checker
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-util/abi-dumper dev-util/ctags
+SLOT=0
+SRC_URI=https://github.com/lvc/abi-compliance-checker/archive/2.0.tar.gz -> abi-compliance-checker-2.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=746f127384f8b797d9bed9c19be10f2c

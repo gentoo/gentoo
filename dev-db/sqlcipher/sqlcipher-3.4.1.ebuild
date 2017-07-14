@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sqlcipher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="readline libressl static-libs tcl test"
 
@@ -32,6 +32,9 @@ DOCS=( README.md )
 
 src_prepare() {
 	append-cflags -DSQLITE_HAS_CODEC
+
+	# bug #622114
+	epatch "${FILESDIR}/${P}-libressl.patch"
 
 	eapply_user
 	eautoreconf

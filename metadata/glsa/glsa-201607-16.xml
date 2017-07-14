@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-16">
+  <title>arpwatch: Privilege escalation</title>
+  <synopsis>arpwatch is vulnerable to the escalation of privileges.</synopsis>
+  <product type="ebuild"></product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>419375</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/arpwatch" auto="yes" arch="*">
+      <unaffected range="ge">2.1.15-r8</unaffected>
+      <vulnerable range="lt">2.1.15-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The ethernet monitor program; for keeping track of ethernet/ip address
+      pairings.
+    </p>
+  </background>
+  <description>
+    <p>Arpwatch does not properly drop supplementary groups.</p>
+  </description>
+  <impact type="high">
+    <p>Attackers, if able to exploit arpwatch, could escalate privileges
+      outside of the running process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All arpwatch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --verbose --oneshot "&gt;=net-analyzer/arpwatch-2.1.15-r8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2653">
+      CVE-2012-2653
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 19 Mar 2016 12:49:20 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 12:02:59 +0000">b-man</metadata>
+</glsa>

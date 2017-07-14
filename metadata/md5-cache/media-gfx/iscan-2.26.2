@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:0 X? ( x11-libs/gtk+:2 gimp? ( media-gfx/gimp ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) ) virtual/pkgconfig X? ( sys-devel/gettext ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
+EAPI=2
+HOMEPAGE=http://www.avasys.jp/english/linux_e/dl_scan.html
+IUSE=X gimp jpeg png tiff doc l10n_ja linguas_ar linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_pt linguas_zh_CN linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 AVASYS
+RDEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:0 X? ( x11-libs/gtk+:2 gimp? ( media-gfx/gimp ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://linux.avasys.jp/drivers/iscan/2.26.2/iscan_2.26.2-1.tar.gz doc? ( http://linux.avasys.jp/drivers/iscan/doc/userg_revL_e.pdf )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f9035aab5ff498a51280d305c6766c43

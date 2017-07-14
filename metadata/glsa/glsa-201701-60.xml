@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-60">
+  <title>LibRaw: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LibRaw, the worst of
+    which may allow attackers to execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">libraw</product>
+  <announced>2017-01-24</announced>
+  <revised>2017-04-30: 2</revised>
+  <bug>549338</bug>
+  <bug>567254</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libraw" auto="yes" arch="*">
+      <unaffected range="ge">0.17.1</unaffected>
+      <vulnerable range="lt">0.17.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibRaw is a library for reading RAW files obtained from digital photo
+      cameras.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibRaw. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code, cause a Denial of Service
+      condition, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibRaw users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libraw-0.17.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8366">CVE-2015-8366</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8367">CVE-2015-8367</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T08:14:05Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-04-30T20:28:16Z">b-man</metadata>
+</glsa>

@@ -1,0 +1,15 @@
+DEFINED_PHASES=prepare
+DEPEND=app-crypt/tpm-tools[pkcs11] dev-libs/opencryptoki[tpm] app-crypt/trousers !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Simple PKCS11 provider for TPM chips
+EAPI=6
+HOMEPAGE=https://github.com/ThomasHabets/simple-tpm-pk11
+IUSE=libressl
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-crypt/tpm-tools[pkcs11] dev-libs/opencryptoki[tpm] app-crypt/trousers !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-misc/openssh[-X509]
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/ThomasHabets/simple-tpm-pk11/archive/0.06.tar.gz -> simple-tpm-pk11-0.06.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=378b1a09274e9a6f38d5dd95c6245e69

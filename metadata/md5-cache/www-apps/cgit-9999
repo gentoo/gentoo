@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare prerm setup unpack
+DEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) !<www-apps/cgit-0.8.3.3 doc? ( app-text/docbook-xsl-stylesheets >=app-text/asciidoc-8.5.1 ) >=app-admin/webapp-config-1.50.15 dev-vcs/git
+DESCRIPTION=a fast web-interface for git repositories
+EAPI=4
+HOMEPAGE=http://git.zx2c4.com/cgit/about
+IUSE=doc +highlight +lua +jit vhosts
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) >=app-admin/webapp-config-1.50.15
+SLOT=0
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:- src_unpack:git-2 src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=3e60741142e206bb1329b171e124a0d7

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -80,30 +80,32 @@ IUSE+=" elibc_glibc" # system stuff
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-5:=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
-# gentoo binaries are built against ncurses-5
-RDEPEND+="
-	binary? (
-		|| (
-			sys-libs/ncurses:0/5
-			sys-libs/ncurses:5/5
-		)
-	)
+
+# This set of dependencies is needed to run
+# prebuilt ghc. We specifically avoid ncurses
+# dependency with:
+#    utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING
+PREBUILT_BINARY_DEPENDS="
+	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
+"
+# This set of dependencies is needed to install
+# ghc[binary] in system. terminfo package is linked
+# against ncurses.
+PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
+	sys-libs/ncurses:5/5
 "
 
-# force dependency on >=gmp-5, even if >=gmp-4.1 would be enough. this is due to
-# that we want the binaries to use the latest versioun available, and not to be
-# built against gmp-4
+RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
-# similar for glibc. we have bootstrapped binaries against glibc-2.17
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		>=dev-libs/libxslt-1.1.2 )
-	!ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
 PDEPEND="!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )"
 

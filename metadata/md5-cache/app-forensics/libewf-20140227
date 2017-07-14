@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/zlib bfio? ( =app-forensics/libbfio-0.0.20120425_alpha ) fuse? ( sys-fs/fuse ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib ) >=app-portage/elt-patches-20170317
+DESCRIPTION=Implementation of the EWF (SMART and EnCase) image format
+EAPI=5
+HOMEPAGE=https://github.com/libyal/libewf
+IUSE=bfio debug ewf +fuse +ssl static-libs +uuid unicode zlib
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=BSD
+RDEPEND=sys-libs/zlib bfio? ( =app-forensics/libbfio-0.0.20120425_alpha ) fuse? ( sys-fs/fuse ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib )
+SLOT=0/2
+SRC_URI=https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/libewf-20140227.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=c87d6baed3e64f2a696e25bb1049aaec

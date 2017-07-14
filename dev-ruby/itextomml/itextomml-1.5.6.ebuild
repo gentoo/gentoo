@@ -14,7 +14,7 @@ HOMEPAGE="https://golem.ph.utexas.edu/~distler/blog/itex2MML.html"
 
 LICENSE="|| ( GPL-2+ MPL-1.1 LGPL-2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 #Tests don't fail here

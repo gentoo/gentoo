@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-17">
+  <title>BeanShell: Arbitrary code execution</title>
+  <synopsis>BeanShell is vulnerable to the remote execution of arbitrary code
+    via Java serialization or XStream from an untrusted source.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 30, 2016</announced>
+  <revised>July 30, 2016: 1</revised>
+  <bug>575482</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/bsh" auto="yes" arch="*">
+      <unaffected range="ge">2.0_beta6</unaffected>
+      <vulnerable range="lt">2.0_beta6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BeanShell is a small, free, embeddable Java source interpreter with
+      object scripting language features, written in Java.
+    </p>
+  </background>
+  <description>
+    <p>An application that includes BeanShell on the classpath may be
+      vulnerable if another part of the application uses Java serialization or
+      XStream to deserialize data from an untrusted source.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code including shell commands.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BeanShell users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --verbose --oneshot "&gt;=dev-java/bsh-2.0_beta6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://github.com/beanshell/beanshell/releases/tag/2.0b6">
+      BeanShell 2.0b6 Release Information
+    </uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2510">
+      CVE-2016-2510
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Mar 2016 10:56:37 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 30 Jul 2016 00:53:17 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,330 @@
+<!-- $Header: /var/cvsroot/gentoo/xml/htdocs/dtd/glsa.dtd,v 1.17 2008/04/04 17:04:39 neysx Exp $ -->
+<!ELEMENT glsa  (title,synopsis,product,announced,revised,bug*,access?,affected,background?,description,impact,workaround,resolution,references,license?,metadata*)>
+<!ATTLIST glsa  id  CDATA   #REQUIRED>
+
+<!-- 
+    Element:      title
+    Description:  Provides a 4-5 word description about the advisory 
+    Example:      <title>Buffer overflow vulnerability found in openssl-0.9.5</title> 
+-->
+<!ELEMENT title  (#PCDATA)>
+
+<!-- 
+    Element:      synopsis
+    Description:  Small, to-the-point description about the GLSA
+
+    Example:  <synopsis>
+                  rsync has an exploitable buffer overflow that can lead to
+                  remote compromise
+              </synopsis>
+-->
+<!ELEMENT synopsis   (#PCDATA)>
+
+<!-- 
+    Element:      product
+    Description:  Defines what type of security announcement this is.
+    
+                  Valid types are:
+                  - ebuild         A Portage-provided ebuild has a security 
+                                   issue
+                  - informational  This GLSA is purely informational, no Gentoo
+                                   system is affected
+                  - infrastructure The security issue involves the Gentoo 
+                                   infrastructure
+    
+                  The text contains one keyword that defines the issue.
+                  Note: All type values but 'ebuild' are considered deprecated.
+     
+    Example: <product type="ebuild">openssl</product>
+    Example: <product type="infrastructure">rsync mirror</product>
+-->
+<!ELEMENT product   (#PCDATA)>
+<!ATTLIST product   type    (ebuild|infrastructure|informational) #REQUIRED>
+
+<!--
+    Element:      announced
+    Description:  Date when the advisory is publicised
+                  The format must be "YYYY-mm-dd"
+
+    Example: <announced>2003-11-20</announced>
+-->
+<!ELEMENT announced (#PCDATA)>
+
+<!--
+    Element:      revised
+    Description:  Last revision date of the GLSA
+    Attribute:    @count: number of revisions
+    
+    Example: <revised count="02">2003-11-20</revised>
+-->
+<!ELEMENT revised (#PCDATA)>
+<!ATTLIST revised count CDATA "01">
+
+<!--
+    Element:      bug
+    Description:  Number of the bug on bugs.gentoo.org, if any
+    Occurrence:    The bug element can occur 0, 1 or more times
+
+    Example: <bug>34200</bug>
+-->
+<!ELEMENT bug       (#PCDATA)>
+
+<!--
+    Element:      access
+    Description:  Type of access necessary to exploit the security issue
+                  This element should only be used when product@type = 'ebuild'
+    Occurrence:    The access element can occur 0 or 1 time
+    
+    Example: <access>Remote</access>
+-->
+<!ELEMENT access    (#PCDATA)>
+
+<!--
+    Element:      affected
+    Description:  Describe what the affected subjects are.
+    
+                  If product@type = 'ebuild', the child elements are 'package'
+                  If product@type = 'portage', the child elements are 'package'
+                  If product@type = 'infrastructure', the child elements are 
+                  'service'
+
+-->
+<!ELEMENT affected  (package*|service*)>
+
+<!--
+    Element:      package
+    Description:  Provide all necessary information regarded the affected 
+                  packages. It also contains information about the affected 
+                  architectures, if automatic updates can be done and the update
+
+                  The "update" attribute contains the path to the non-vulnerable
+                  version of the package
+
+                  The "auto" attribute contains either "yes" or "no" and tells 
+                  Portage that the package can be updated automatically (to be 
+                  implemented) without further user interaction
+
+                  The "arch" attribute contains either the architecture (as used
+                  by ACCEPT_KEYWORDS) or the "*" value (in case all 
+                  architectures are affected)
+
+    Occurrence:   The package element can occur 0, 1 or more times
+    Example:      <package name="dev-libs/openssl" auto="yes" arch="*">
+                    <vulnerable range="lt">0.9.6k</vulnerable>
+                    <unaffected range="gt">0.9.6k</unaffected>
+                  </package>
+-->
+<!ELEMENT package (vulnerable|unaffected)*>
+<!ATTLIST package name      CDATA           #REQUIRED
+                  auto      (yes|no)    #REQUIRED
+                  arch      CDATA           #REQUIRED>
+
+<!--
+    Element:      vulnerable
+    Description:  Version of the vulnerable package. Can be a range too
+-->
+<!ELEMENT vulnerable (#PCDATA)>
+<!ATTLIST vulnerable range      (le|lt|eq|gt|ge|rlt|rle|rgt|rge)      #REQUIRED
+                     slot       CDATA                 "*">
+
+<!--
+    Element:      unaffected
+    Description:  Version of the fixed (or unaffected) package. In case the 
+                  package is superseded by another package, you need to
+                  define that package using the "name" attribute.
+
+                  The r* range information is revision-specific. For instance, 
+                  rge foo-1.2.3-r4  ==  >=foo-1.2.3-r4 && <foo-1.2.4
+
+    Example:
+                  <unaffected range="gt" name="foobar">2.0.0</unaffected>
+-->
+<!ELEMENT unaffected (#PCDATA)>
+<!ATTLIST unaffected range      (le|lt|eq|gt|ge|rlt|rle|rgt|rge)      #REQUIRED
+                     slot       CDATA                 "*"
+                     name       CDATA                 #IMPLIED>
+
+<!--
+    Element:      service
+    Description:  Provide information about the Gentoo services that are
+                  affected by the security advisory. Portage must be able
+                  to parse this information to make decisions (for instance, 
+                  ignore an rsync server or a certain distfiles mirror).
+
+                  The type attribute can be one of "rsync", "web", "mirror".
+
+                  The fixed attribute (denoting if the problem has been solved)
+                  can be one of "yes" or "no". If not used, the default value is
+                  "no".
+                  
+    Occurrence:   The service element can occur 0, 1 or more times
+    Example: <service type="rsync">rsync://rsync.someserver.tld/gentoo-portage</service>
+-->
+<!ELEMENT service (#PCDATA)>
+<!ATTLIST service type (rsync|web|mirror) #REQUIRED
+                  fixed (yes|no)          #IMPLIED>
+
+<!--
+    Element:      uri
+    Description:  Link to the organisation involved in releasing the advisory
+    Occurrence:   The uri element can occur 0, 1 or more times
+
+    Example:      <uri link="http://www.cert.org">CERT</uri>
+-->
+<!ELEMENT uri       (#PCDATA)>
+<!ATTLIST uri     link  CDATA   #IMPLIED>
+
+<!--
+    Element:      mail
+    Description:  Mail address of the people involved in releasing the advisory
+    Occurrence:   The mail element can occur 0, 1 or more times
+
+    Example:      <mail link="some@person.com">Some Person</mail>
+-->
+<!ELEMENT mail      (#PCDATA)>
+<!ATTLIST mail    link  CDATA   #REQUIRED>
+
+<!--
+    Element:      p
+    Description:  Plain text
+    Occurrence:   The "p" element can occur 0, 1 or more times and can contain
+                  links or addresses
+
+    Example:      <p>Please update your system</p>
+-->
+<!ELEMENT p (#PCDATA|mail|uri|b|i|br)*>
+
+<!--
+    Element:      code
+    Description:  The code element contains text that should preserve whitespace
+                  and is therefore useful for code listings or commands
+
+    Example:      <code>emerge sync</code>
+-->
+<!ELEMENT code (#PCDATA)>
+
+<!--
+    Element:      background
+    Description:  Provides a background of the affected package(s)/service(s)
+                  The background element contains only "<p>"s in which the text 
+                  is placed
+
+-->
+<!ELEMENT background  (p|ul|ol)*>
+
+<!--
+    Element:      description
+    Description:  Provides a description about the security issue
+                  The description element contains only "<p>"s.
+-->
+<!ELEMENT description (p|ul|ol|code)*>
+
+<!--
+    Element:      impact
+    Description:  Provides information about the impact that the security issue 
+                  can have
+
+                  The "impact" element contains only "<p>"s.
+
+                  The type element gives a short term, such as 
+                  "Denial of Service", "Buffer Overflow", ...
+
+-->
+<!ELEMENT impact    (p|ul|ol)*>
+<!ATTLIST impact    type    CDATA   #REQUIRED>
+
+<!--
+    Element:      workaround
+    Description:  Provides information about how the security issue can be 
+                  (temporarily) resolved through a work-around
+
+                  The "workaround" element contains only "<p>"s and "<code>"s.
+-->
+<!ELEMENT workaround    (p|code|ul|ol)*>
+
+<!--
+    Element:      resolution
+    Description:  Provides information about how the security issue can be 
+                  resolved.
+
+                  The "resolution" element contains only "<p>"s and "<code>"s.
+-->
+<!ELEMENT resolution  (p|code|ul|ol)*>
+
+<!--
+    Element:      references
+    Description:  Provides links to resources / references available online.
+                  
+                  The "reference" element contains only "<uri>"s.
+-->
+<!ELEMENT references    (uri*)>
+
+<!--
+    Element:      ul
+    Description:  Add an unnumbered listing; can only contain <li>'s
+-->
+<!ELEMENT ul            (li*)>
+
+<!--
+    Element:      ol
+    Description:  Add a numbered listing; can only contain <li>'s
+-->
+<!ELEMENT ol            (li*)>
+
+<!--
+    Element:      li
+    Description:  Element of a listing 
+ 
+    Example:    <ul>
+                  <li>This is element one</li>
+                  <li>This is a second element</li>
+                </ul>
+-->
+<!ELEMENT li            (#PCDATA)>
+
+<!--
+    Element:      b
+    Description:  Bold text
+
+    Example:    <b>this is bold</b>
+-->
+<!ELEMENT b             (#PCDATA)>
+
+<!--
+    Element:      i
+    Description:  Input text (blue)
+
+    Example:      The user has to type in <i>ls</i> to see.
+-->
+<!ELEMENT i             (#PCDATA)>
+
+<!-- 
+    Element:      br
+    Description:  hard line break
+
+    Example:      And then: <br/> 
+                  KABLAM!
+-->
+<!ELEMENT br            (#PCDATA)>
+
+<!-- 
+    Element:      license
+    Description:  Add license information
+
+    Example:      <license/>
+-->
+<!ELEMENT license       (EMPTY)>
+
+<!--
+    Element:      metadata
+    Description:  Metadata information for GLSAMaker
+
+    Example:      <metadata tag="approved">Level 1</metadata>
+
+    On request of plasmaroo, metadata can contain all elements again. 
+-->
+<!ELEMENT metadata  (#PCDATA|metadata)*>
+<!ATTLIST metadata tag      CDATA #REQUIRED
+                   revision CDATA #IMPLIED
+                   author   CDATA #IMPLIED
+                   timestamp CDATA #IMPLIED>

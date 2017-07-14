@@ -1,0 +1,77 @@
+Title: New portage plug-in sync system
+Author: Brian Dolbec <dolsen@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-02-02
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: sys-apps/portage
+
+There is a new plug-in sync system in >=sys-apps/portage-2.2.16.
+This system will allow third party modules to be easily installed.  Look
+for a new layman plug-in sync module in layman's next release.  Next is
+a brief look at the changes.  See the url [1] listed below for detailed
+descriptions and usage.
+
+Changes:  /etc/portage/repos.conf/*
+    New setting for all repository types (needed):
+        auto-sync = yes/no, true/false  # default if absent: yes/true
+
+    New for git sync-type: (applies to clone only)
+        sync-depth = n  where n = {0,1,2,3,...} (optional, default = 1)
+            0 -- full history
+            1 -- shallow clone, only current state (default)
+            2,3,... number of history changes to download
+
+    New sync-type modules:
+        sync-type = svn  # sync a subversion repository
+        sync-type = websync # Perform an emerge-webrsync operation
+        sync-type = laymanator  # (if installed) runs a layman -s action
+
+    New native portage postsync hooks
+        /etc/portage/postsync.d/*
+            Runs hooks once, only after all repos have been synced.
+        /etc/portage/repo.postsync.d/*
+            Runs each script with three arguments:
+                repo name, sync-uri, location
+            Each script is run at the completion of every repo synced.
+
+Migration:
+    Edit /etc/portage/repos.conf/*.conf files, add the auto-sync option
+    to each repository definition.  Edit sync-type option to one of the
+    supported types {rsync, git, cvs, svn, websync, laymanator}.
+        [some-repo]
+        ...
+        sync-type = rsync
+        auto-sync = yes
+
+    For an existing /etc/portage/repos.conf/layman.conf file:
+        1) change/add the sync-type
+            sync-type = laymanator
+        2) Ensure you have the correct layman version installed with
+           it's laymanator module also installed.
+    Alternate method:
+        Please see the wiki page url [1] for detailed instructions.
+
+Primary control of all sync operations has been moved from emerge to
+emaint.  "emerge --sync" now just calls the emaint sync module with the
+--auto option.  The --auto option performs a sync on only those
+repositories with the auto-sync setting not set to 'no' or 'false'. If
+it is absent, then it will default to yes and "emerge --sync" will sync
+the repository.
+
+NOTE: As a result of the default auto-sync = True/Yes setting, commands
+    like "eix-sync", "esync -l", "emerge --sync && layman -S" will cause
+    many repositories to be synced multiple times in a row.  Please edit
+    your configs or scripts to adjust for the new operation.
+
+WARNING:
+    Due to the above default. For any repos that you EXPLICITLY do not
+    want to be synced. You MUST set "auto-sync = no"
+
+The 'emaint sync' module operates similar to layman.  It can sync
+single or multiple repos.  See "emaint --help" or for more details and
+examples see the wiki page listed below [1].
+
+Additional help and project API documentation can be found at:
+
+[1] https://wiki.gentoo.org/wiki/Project:Portage/Sync

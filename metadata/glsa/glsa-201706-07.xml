@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-07">
+  <title>Libtirpc and RPCBind: Denial of Service </title>
+  <synopsis>A vulnerability has been found in Libtirpc and RPCBind which may
+    allow a remote attacker to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">RPCBind,Libtirpc</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 2</revised>
+  <bug>617472</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nds/rpcbind" auto="yes" arch="*">
+      <unaffected range="ge">0.2.4-r1</unaffected>
+      <vulnerable range="lt">0.2.4-r1</vulnerable>
+    </package>
+    <package name="net-libs/libtirpc" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1-r1</unaffected>
+      <vulnerable range="lt">1.0.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The RPCBind utility is a server that converts RPC program numbers into
+      universal addresses.
+    </p>
+    
+    <p>Libtirpc is a port of Suns Transport-Independent RPC library to Linux.</p>
+  </background>
+  <description>
+    <p>It was found that due to the way RPCBind uses libtirpc (libntirpc), a
+      memory leak can occur when parsing specially crafted XDR messages.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send thousands of messages to RPCBind, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RPCBind users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-nds/rpcbind-0.2.4-r1"
+    </code>
+    
+    <p>All Libtirpc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libtirpc-1.0.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8779">CVE-2017-8779</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-21T07:26:12Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T11:58:19Z">whissi</metadata>
+</glsa>

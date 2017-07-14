@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/glib-2:2 media-libs/alsa-lib >=media-libs/freetype-2.5.1 x11-libs/cairo >=x11-libs/gdk-pixbuf-2 x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango virtual/pkgconfig doc? ( app-text/xmlto ) nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=WYSIWYG score editor for GTK+
+EAPI=5
+HOMEPAGE=http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml
+IUSE=doc debug nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 FDL-1.2 NTED_FONT
+RDEPEND=>=dev-libs/glib-2:2 media-libs/alsa-lib >=media-libs/freetype-2.5.1 x11-libs/cairo >=x11-libs/gdk-pixbuf-2 x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango
+SLOT=0
+SRC_URI=http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/sources/nted-1.10.18.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=939d8f68342e4c44fb7fb3162cb7ec02

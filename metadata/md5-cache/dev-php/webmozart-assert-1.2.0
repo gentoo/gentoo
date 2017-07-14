@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Assertions to validate method input/output with nice error messages
+EAPI=6
+HOMEPAGE=https://github.com/webmozart/assert
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
+SLOT=0
+SRC_URI=https://github.com/webmozart//assert/archive/1.2.0.tar.gz -> webmozart-assert-1.2.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=b44c80e678941623cdde362704a787cd

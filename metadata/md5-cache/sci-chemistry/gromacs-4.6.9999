@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend test unpack
+DEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 ) fftw? ( sci-libs/fftw:3.0 ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mkl? ( sci-libs/mkl ) mpi? ( virtual/mpi ) virtual/pkgconfig doc? ( app-doc/doxygen dev-texlive/texlive-latex dev-texlive/texlive-latexextra media-gfx/imagemagick sys-apps/coreutils ) doc? ( app-doc/doxygen ) dev-util/ninja >=dev-util/cmake-3.7.2 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=The ultimate molecular dynamics simulation package
+EAPI=6
+HOMEPAGE=http://www.gromacs.org/
+IUSE=X blas cuda doc -double-precision +fftw gsl lapack mkl mpi +offensive openmp +single-precision test +threads zsh-completion cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx
+LICENSE=LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 ) fftw? ( sci-libs/fftw:3.0 ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mkl? ( sci-libs/mkl ) mpi? ( virtual/mpi )
+REQUIRED_USE=|| ( single-precision double-precision ) cuda? ( single-precision ) mkl? ( !blas !fftw !lapack )
+SLOT=0/4.6.9999
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	cmake-utils	026933aff3889190eeb565b642cfe252	cuda	626969678b9c5735753d8a380c6f295b	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	cbafa3261c37c7e3af44bb16a34ea390	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=b91d2b9728a2a95f1c1641c83083800e

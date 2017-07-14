@@ -8,7 +8,7 @@ inherit multiprocessing pax-utils python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
@@ -112,6 +112,11 @@ src_configure() {
 
 src_install() {
 	qt5-build_src_install
+
+	# bug 601472
+	if [[ ! -f ${D%/}${QT5_LIBDIR}/libQt5WebEngine.so ]]; then
+		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
+	fi
 
 	pax-mark m "${D%/}${QT5_LIBEXECDIR}"/QtWebEngineProcess
 }

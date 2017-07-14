@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=media-libs/tiff:0 sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXxf86vm x11-libs/libXScrnSaver app-arch/unzip dev-util/ftjam virtual/pkgconfig
+DESCRIPTION=Open source, ICC compatible color management system
+EAPI=5
+HOMEPAGE=http://www.argyllcms.com/
+IUSE=doc
+KEYWORDS=amd64 hppa x86
+LICENSE=AGPL-3
+RDEPEND=media-libs/tiff:0 sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXxf86vm x11-libs/libXScrnSaver
+SLOT=0
+SRC_URI=http://www.argyllcms.com/Argyll_V1.7.0_src.zip
+_eclass_exported_funcs=pkg_postinst:- src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=5437ea3b6eef9c1c21d0e711efd2d308

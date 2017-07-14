@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-libs/json-c-0.11:= dev-libs/libxml2 sys-libs/ncurses:0=[unicode] dev-lang/perl virtual/pkgconfig sys-devel/gettext test? ( dev-libs/boost sys-devel/bc )
+DESCRIPTION=A RSS/Atom feed reader for the text console
+EAPI=6
+HOMEPAGE=http://www.newsbeuter.org/index.html
+IUSE=test
+KEYWORDS=amd64 ~ppc x86
+LICENSE=MIT
+RDEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-libs/json-c-0.11:= dev-libs/libxml2 sys-libs/ncurses:0=[unicode]
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.newsbeuter.org/downloads/newsbeuter-2.9.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=dd9b5ad718ed86fdf4f46b70f554337f

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=dev-games/t4k-common[svg?] dev-libs/libxml2:2 media-libs/libsdl:0 media-libs/sdl-pango media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] media-libs/sdl-net nls? ( virtual/libintl ) svg? ( gnome-base/librsvg:2 x11-libs/cairo ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=Educational arcade game where you have to solve maths problems
+EAPI=5
+HOMEPAGE=http://tux4kids.alioth.debian.org/tuxmath/
+IUSE=nls svg
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 OFL-1.1
+RDEPEND=dev-games/t4k-common[svg?] dev-libs/libxml2:2 media-libs/libsdl:0 media-libs/sdl-pango media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] media-libs/sdl-net nls? ( virtual/libintl ) svg? ( gnome-base/librsvg:2 x11-libs/cairo ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/tuxmath/tuxmath_w_fonts-2.0.1.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=0e8aef80423940fb1d4e09c928a979e9

@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for the device filesystem manager
+EAPI=5
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd
+RDEPEND=|| ( virtual/udev sys-apps/busybox[mdev] sys-fs/devfsd sys-fs/static-dev sys-freebsd/freebsd-sbin )
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=005f95aadb5fc2d53c799ea15d1fc572

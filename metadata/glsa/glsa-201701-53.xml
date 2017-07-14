@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-53">
+  <title>Lua: Buffer overflow</title>
+  <synopsis>A buffer overflow in Lua might allow context-dependent attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">lua</product>
+  <announced>2017-01-23</announced>
+  <revised>2017-01-23: 1</revised>
+  <bug>520480</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/lua" auto="yes" arch="*">
+      <unaffected range="ge">5.1.5-r4</unaffected>
+      <vulnerable range="lt">5.1.5-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Lua is a powerful, efficient, lightweight, embeddable scripting
+      language. It supports procedural programming, object-oriented
+      programming, functional programming, data-driven programming, and data
+      description.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in the vararg functions in ldo.c in
+      Lua.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Context-dependent could cause a Denial of Service condition or execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Lua users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/lua-5.1.5-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5461">CVE-2014-5461</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-19T10:51:05Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-23T03:32:26Z">b-man</metadata>
+</glsa>

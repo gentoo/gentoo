@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-04">
+  <title>GnuTLS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GnuTLS, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>2017-02-10</announced>
+  <revised>2017-02-10: 1</revised>
+  <bug>605238</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">3.3.26</unaffected>
+      <vulnerable range="lt">3.3.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is an Open Source implementation of the TLS and SSL protocols.</p>
+  </background>
+  <description>
+    <p>Multiple heap and stack overflows and double free vulnerabilities have
+      been discovered in GnuTLS by the OSS-Fuzz project. Please review the CVE
+      identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to process a
+      specially crafted certificate using an application linked against GnuTLS.
+      This could possibly result in the execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-3.3.26"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5334">CVE-2017-5334</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5335">CVE-2017-5335</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5336">CVE-2017-5336</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5337">CVE-2017-5337</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T01:21:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-10T23:04:35Z">whissi</metadata>
+</glsa>

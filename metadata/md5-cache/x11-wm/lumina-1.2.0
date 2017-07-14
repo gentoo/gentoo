@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5 dev-qt/qtdeclarative:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm dev-qt/linguist-tools:5
+DESCRIPTION=Lumina desktop environment
+EAPI=6
+HOMEPAGE=http://lumina-desktop.org/
+KEYWORDS=amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5 dev-qt/qtdeclarative:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm || ( virtual/freedesktop-icon-theme x11-themes/hicolor-icon-theme ) sys-fs/inotify-tools x11-misc/numlockx x11-wm/fluxbox x11-apps/xbacklight media-sound/alsa-utils sys-power/acpi app-admin/sysstat
+SLOT=0
+SRC_URI=https://github.com/trueos/lumina/archive/v1.2.0.tar.gz -> lumina-1.2.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=29ca5e31d8b643f2eaa45d964c6fd60c

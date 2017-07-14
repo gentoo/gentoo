@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=network connection relaying command (proxy)
+EAPI=5
+HOMEPAGE=https://bitbucket.org/gotoh/connect
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://bitbucket.org/gotoh/connect/get/ee1fbc21da4b.tar.bz2 -> connect-1.103.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=5315ec946eb669beb60064363c166f1b

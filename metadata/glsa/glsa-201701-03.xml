@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-03">
+  <title>libarchive: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libarchive, the worst
+    of which allows for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libarchive</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>548110</bug>
+  <bug>552646</bug>
+  <bug>582526</bug>
+  <bug>586086</bug>
+  <bug>586182</bug>
+  <bug>596568</bug>
+  <bug>598950</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/libarchive" auto="yes" arch="*">
+      <unaffected range="ge">3.2.2</unaffected>
+      <vulnerable range="lt">3.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libarchive is a library for manipulating different streaming archive
+      formats, including certain tar variants, several cpio formats, and both
+      BSD and GNU ar variants.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libarchive. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      archive file possibly resulting in the execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libarchive users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/libarchive-3.2.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2304">CVE-2015-2304</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8915">CVE-2015-8915</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8916">CVE-2015-8916</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8917">CVE-2015-8917</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8918">CVE-2015-8918</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8919">CVE-2015-8919</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8920">CVE-2015-8920</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8921">CVE-2015-8921</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8922">CVE-2015-8922</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8923">CVE-2015-8923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8924">CVE-2015-8924</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8925">CVE-2015-8925</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8926">CVE-2015-8926</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8927">CVE-2015-8927</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8928">CVE-2015-8928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8929">CVE-2015-8929</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8930">CVE-2015-8930</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8931">CVE-2015-8931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8932">CVE-2015-8932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8933">CVE-2015-8933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8934">CVE-2015-8934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1541">CVE-2016-1541</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4300">CVE-2016-4300</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4301">CVE-2016-4301</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4302">CVE-2016-4302</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4809">CVE-2016-4809</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5418">CVE-2016-5418</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5844">CVE-2016-5844</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6250">CVE-2016-6250</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7166">CVE-2016-7166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8687">CVE-2016-8687</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8688">CVE-2016-8688</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8689">CVE-2016-8689</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 27 Jun 2016 12:09:04 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 14:31:15 +0000">b-man</metadata>
+</glsa>

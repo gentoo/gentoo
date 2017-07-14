@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-13">
+  <title>MongoDB: Denial of Service</title>
+  <synopsis>A vulnerability in MongoDB can lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">mongodb</product>
+  <announced>November 20, 2016</announced>
+  <revised>November 20, 2016: 1</revised>
+  <bug>542880</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mongodb" auto="yes" arch="*">
+      <unaffected range="ge">2.4.13</unaffected>
+      <vulnerable range="lt">2.4.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MongoDB (from “humongous”) is a scalable, high-performance, open
+      source, schema-free, document-oriented database.
+    </p>
+  </background>
+  <description>
+    <p>MongoDB’s ‘mongod’ server fails to validate some cases of
+      malformed BSON.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted BSON request possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MongoDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mongodb-2.4.13"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1609">CVE-2015-1609</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 May 2015 20:38:27 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Nov 2016 22:09:15 +0000">b-man</metadata>
+</glsa>

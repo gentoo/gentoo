@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-misc/imake x11-misc/gccmakedep app-text/rman
+DESCRIPTION=DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
+EAPI=6
+HOMEPAGE=http://www.ctan.org/tex-archive/dviware/dvibook/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=dvibook
+SLOT=0
+SRC_URI=mirror://gentoo/dvibook-20001129.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ff145837c6ae8ec3fac2a7ec647c113e

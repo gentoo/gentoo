@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=readline? ( sys-libs/readline )
+DESCRIPTION=A Just-In-Time Compiler for the Lua programming language
+EAPI=2
+HOMEPAGE=http://luajit.org/
+IUSE=readline
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=readline? ( sys-libs/readline )
+SLOT=1
+SRC_URI=http://luajit.org/download/LuaJIT-1.1.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=pax-utils	4f95120230a315c8caaabeb2307b7eee
+_md5_=c49cb965c8d0168780f22a512f705a60

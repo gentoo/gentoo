@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-qt/qtgui:4 dev-qt/qtcore:4 archive? ( app-arch/libarchive ) !archive? ( >=dev-libs/libtar-1.2.11-r3 ) >=media-libs/libsndfile-1.0.18 alsa? ( media-libs/alsa-lib ) jack? ( virtual/jack ) ladspa? ( media-libs/liblrdf ) lash? ( media-sound/lash ) portaudio? ( >=media-libs/portaudio-19_pre ) virtual/pkgconfig dev-util/scons
+DESCRIPTION=Advanced drum machine
+EAPI=4
+HOMEPAGE=http://www.hydrogen-music.org/
+IUSE=alsa +archive jack ladspa lash oss portaudio
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2 ZLIB
+RDEPEND=dev-qt/qtgui:4 dev-qt/qtcore:4 archive? ( app-arch/libarchive ) !archive? ( >=dev-libs/libtar-1.2.11-r3 ) >=media-libs/libsndfile-1.0.18 alsa? ( media-libs/alsa-lib ) jack? ( virtual/jack ) ladspa? ( media-libs/liblrdf ) lash? ( media-sound/lash ) portaudio? ( >=media-libs/portaudio-19_pre )
+SLOT=0
+SRC_URI=mirror://sourceforge/hydrogen/hydrogen-0.9.5.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=13cadabeceee981fcc45a7eac4d68871

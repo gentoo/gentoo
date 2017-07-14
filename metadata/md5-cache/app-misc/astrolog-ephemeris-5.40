@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-misc/astrolog app-arch/unzip
+DESCRIPTION=ephemeris files for optional extended accuracy of astrolog's calculations
+EAPI=0
+HOMEPAGE=http://www.astrolog.org/astrolog.htm
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=astrolog
+RDEPEND=app-misc/astrolog
+SLOT=0
+SRC_URI=http://www.astrolog.org/ftp/ephem/ephemall.zip
+_eclass_exported_funcs=src_install:-
+_md5_=e4c8b43c3e0cb7fdba96679681eeebb9

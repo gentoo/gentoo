@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=dev-libs/mpfr-3.1.2 >=dev-libs/gmp-5.1.3 >=dev-libs/mpc-1.0.1 >=sys-libs/zlib-1.2 >=sys-libs/ncurses-5.7:0 doc? ( >=sys-apps/texinfo-5 ) >=sys-apps/sed-4 sys-devel/gnuconfig >=app-portage/elt-patches-20170317 virtual/libiconv nls? ( virtual/libintl ) >=app-eselect/eselect-gnat-1.5 >=sys-libs/glibc-2.12 >=sys-devel/binutils-2.23 sys-devel/bc >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext )
+DESCRIPTION=GNAT Ada Compiler - gcc version
+EAPI=5
+HOMEPAGE=https://gcc.gnu.org/
+IUSE=acats doc hardened nls openmp hardened multilib
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GMGPL
+PDEPEND=>=sys-libs/glibc-2.12
+RDEPEND=>=dev-libs/mpfr-3.1.2 >=dev-libs/gmp-5.1.3 >=dev-libs/mpc-1.0.1 >=sys-libs/zlib-1.2 >=sys-libs/ncurses-5.7:0 virtual/libiconv nls? ( virtual/libintl )
+SLOT=4.9
+SRC_URI=mirror://gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2 mirror://gentoo/gcc-4.9.3-patches-1.5.tar.bz2 mirror://gentoo/gcc-4.9.3-piepatches-v0.6.4.tar.bz2 hardened? ( mirror://gentoo/gcc-4.4.3-specs-0.2.0.tar.bz2 ) amd64? ( http://dev.gentoo.org/~nerdboy/files/gnatboot-4.9-amd64.tar.xz ) arm? ( http://dev.gentoo.org/~nerdboy/files/gnatboot-4.9-arm.tar.xz ) x86? ( http://dev.gentoo.org/~nerdboy/files/gnatboot-4.9-i686.tar.xz )
+_eclass_exported_funcs=pkg_postrm:gnatbuild-r1 pkg_postinst:gnatbuild-r1 pkg_setup:gnatbuild-r1 src_unpack:gnatbuild-r1 src_prepare:- src_configure:gnatbuild-r1 src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnatbuild-r1	3f4ec053f7d0c933b953c3cbf90b8db0	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1b9a9f3cb38c884c2c337eda78b0ea9d

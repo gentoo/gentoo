@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-24">
+  <title>Binutils: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Binutils, the worst of which
+    may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">binutils</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>526626</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-devel/binutils" auto="yes" arch="*">
+      <unaffected range="ge">2.25</unaffected>
+      <vulnerable range="lt">2.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Binutils are a collection of tools to create, modify and analyse
+      binary files. Many of the files use BFD, the Binary File Descriptor
+      library, to do low-level manipulation.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Binutils. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, or overwrite arbitrary
+      files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Binutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/binutils-2.25"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8484">CVE-2014-8484</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8485">CVE-2014-8485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8501">CVE-2014-8501</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8502">CVE-2014-8502</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8503">CVE-2014-8503</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8504">CVE-2014-8504</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8737">CVE-2014-8737</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8738">CVE-2014-8738</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 25 Nov 2016 00:21:44 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:14:11 +0000">whissi</metadata>
+</glsa>

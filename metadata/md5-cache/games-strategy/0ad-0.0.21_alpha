@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst setup test
+DEPEND=dev-libs/boost:= dev-libs/icu:= dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.21_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] net-libs/enet:1.3 net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:3.0[X,opengl] ) lobby? ( net-libs/gloox ) nvtt? ( media-gfx/nvidia-texture-tools ) sound? ( media-libs/libvorbis media-libs/openal ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads,ssl] ) virtual/pkgconfig test? ( dev-lang/perl ) >=sys-apps/sed-4
+DESCRIPTION=A free, real-time strategy game
+EAPI=6
+HOMEPAGE=https://play0ad.com/
+IUSE=editor +lobby nvtt pch sound test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1 MIT CC-BY-SA-3.0 ZLIB
+RDEPEND=dev-libs/boost:= dev-libs/icu:= dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.21_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] net-libs/enet:1.3 net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:3.0[X,opengl] ) lobby? ( net-libs/gloox ) nvtt? ( media-gfx/nvidia-texture-tools ) sound? ( media-libs/libvorbis media-libs/openal )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/zero-ad/0ad-0.0.21-alpha-unix-build.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=ba1b50bcfc9c3d8fa7c71f56b87829c3

@@ -1,0 +1,50 @@
+Title: GCC 4.7 Introduced the New C++11 ABI 
+Author: Anthony G. Basile <blueness@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-10-26
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: >=sys-devel/gcc-4.7.0
+Display-If-Keyword: amd64
+Display-If-Keyword: arm
+Display-If-Keyword: mips
+Display-If-Keyword: ppc
+Display-If-Keyword: ppc64
+Display-If-Keyword: x86
+Display-If-Keyword: amd64-fbsd
+Display-If-Keyword: x86-fbsd
+
+GCC 4.7 introduced the new experimental 2011 ISO C++ standard [1], along with
+its GNU variant.  This new standard is not the default in gcc-4.7, 4.8 or 4.9,
+the default is still gnu++98, but it can be enabled by passing -std=c++11 or
+-std=gnu++11 to CXXFLAGS.
+
+Users that wish to try C++11 should exercise caution because it is not
+ABI-compatible with C++98.  Nor is C++11 code compiled with gcc-4.7 guaranteed
+to be ABI-compatible with C++11 compiled with 4.8, or vice versa [2].  Thus
+linking C++98 and C++11, or C++11 compiled with different versions of gcc, is
+likely to cause breakage.  For packages which are self-contained or do not link
+against any libraries written in C++, there is no problem.  However, switching
+to C++11 and then building packages which link against any of the numerous
+libraries in an incompatible ABI can lead to a broken system.
+
+This is a precautionary news item and the typical user need not do anything.
+However, as C++11 gains in popularity and the number of packages using it
+increases, it is important that users understand these issues [3].
+
+For an ABI compliance checker, and more information about C++ ABIs, see [4].  
+
+Ref.
+
+[1] http://www.stroustrup.com/C++11FAQ.html
+
+[2] Upstream GCC does not support ABI-compatibility between gcc-4.x and 4.y for
+any x != y .  See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61758.  Even
+having different versions of gcc installed simultaneously may lead to problems,
+especially if the older version of gcc is active.  An example is
+https://bugs.gentoo.org/show_bug.cgi?id=513386.  
+
+[3] Note that some packages like www-client/chromium and net-libs/webkit-gtk
+are already using C++11 features.
+
+[4] http://ispras.linuxbase.org/index.php/ABI_compliance_checker

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=The Dylan Programming Language Compiler
+EAPI=0
+HOMEPAGE=http://www.gwydiondylan.org/
+KEYWORDS=~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/boehm-gc-6.4
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( mirror://gentoo/gwydion-dylan-bin-2.4.0-x86.tbz2 )
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=d1c8d32a3c9fb480a05a1eb1d65a8c83

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
+DEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.34:2 gnome-base/librsvg:2 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-plugins/gst-plugins-meta:1.0 dev-db/sqlite:3 >=media-libs/libtaginfo-0.2.0 x11-libs/cairo x11-libs/libX11 ayatana? ( dev-libs/libappindicator:3 ) lastfm? ( net-libs/libsoup:2.4 ) lyrics? ( net-libs/libsoup:2.4 dev-libs/libxml2:2 ) || ( dev-lang/vala:0.34 dev-lang/vala:0.32 ) dev-util/intltool virtual/pkgconfig gnome-base/gnome-common:3 >=sys-devel/autoconf-2.67:2.5 sys-devel/gettext >=sys-apps/sed-4 dev-vcs/git
+DESCRIPTION=A media player for Gtk+ with a slick GUI, great speed and lots of features
+EAPI=4
+HOMEPAGE=http://www.xnoise-media-player.com/
+IUSE=ayatana +lastfm +lyrics
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.34:2 gnome-base/librsvg:2 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-plugins/gst-plugins-meta:1.0 dev-db/sqlite:3 >=media-libs/libtaginfo-0.2.0 x11-libs/cairo x11-libs/libX11 ayatana? ( dev-libs/libappindicator:3 ) lastfm? ( net-libs/libsoup:2.4 ) lyrics? ( net-libs/libsoup:2.4 dev-libs/libxml2:2 )
+SLOT=0
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:git-2 src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	git-2	195a672bfaf52d868442171c9469bbb6	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vala	f86cd45e9ae738c40c92f990266f39a7	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=9060fd3bf3d23d86119ef357536d66ae

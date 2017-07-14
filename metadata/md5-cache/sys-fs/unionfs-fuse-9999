@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=sys-fs/fuse >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Self-syncing tree-merging file system based on FUSE
+EAPI=5
+HOMEPAGE=https://github.com/rpodgorny/unionfs-fuse
+LICENSE=BSD
+RDEPEND=sys-fs/fuse
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=3e3afd964a0f9c5159522bdb385da66d

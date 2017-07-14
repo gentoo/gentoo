@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-46">
+  <title>Xerces-C++: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xerces-C++, the worst
+    of which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xerces-c</product>
+  <announced>December 24, 2016</announced>
+  <revised>December 24, 2016: 1</revised>
+  <bug>575700</bug>
+  <bug>584506</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/xerces-c" auto="yes" arch="*">
+      <unaffected range="ge">3.1.4-r1</unaffected>
+      <vulnerable range="lt">3.1.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xerces-C++ is a validating XML parser written in a portable subset of
+      C++.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xerces-C++. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file, possibly resulting in the remote execution of arbitrary code with
+      the privileges of the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xerces-C++ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/xerces-c-3.1.4-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0729">CVE-2016-0729</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2099">CVE-2016-2099</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 15 Oct 2016 11:41:27 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 24 Dec 2016 07:11:18 +0000">whissi</metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst
+DEPEND=>=dev-libs/glib-2.32 nls? ( virtual/libintl ) >=x11-libs/gtk+-2.6:2 x11-libs/gdk-pixbuf nls? ( sys-devel/gettext ) virtual/os-headers virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
+EAPI=5
+HOMEPAGE=http://dvdisaster.net/
+IUSE=debug nls l10n_cs l10n_de l10n_it l10n_pt-BR l10n_ru l10n_sv
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3+
+RDEPEND=>=dev-libs/glib-2.32 nls? ( virtual/libintl ) >=x11-libs/gtk+-2.6:2 x11-libs/gdk-pixbuf
+SLOT=0
+SRC_URI=http://dvdisaster.net/downloads/dvdisaster-0.79.5.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=b5d3d496e6c326baa2289c11a1752636

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install preinst prepare setup test
+DEPEND=>=virtual/jdk-1.7 ~dev-java/netty-common-4.0.36:0 test? ( dev-java/easymock:3.2 dev-java/hamcrest-core:1.3 dev-java/hamcrest-library:1.3 dev-java/junit:4 ) >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+DESCRIPTION=Async event-driven framework for high performance network applications
+EAPI=5
+HOMEPAGE=http://netty.io/
+IUSE=test elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.7 ~dev-java/netty-common-4.0.36:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=https://github.com/netty/netty/archive/netty-4.0.36.Final.tar.gz
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_test:- src_install:java-pkg-simple
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1294ec9d7c0ca2590012425f7f03b85a

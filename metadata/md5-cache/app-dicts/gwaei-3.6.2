@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=>=net-misc/curl-7.20.0 >=dev-libs/glib-2.31 gtk? ( x11-libs/gtk+:3 >=app-text/gnome-doc-utils-0.14.0 ) hunspell? ( app-text/hunspell ) nls? ( virtual/libintl ) mecab? ( app-text/mecab ) test? ( app-text/docbook-xml-dtd:4.1.2 app-text/scrollkeeper-dtd ) gtk? ( x11-themes/gnome-icon-theme-symbolic >=app-text/gnome-doc-utils-0.14.0 ) nls? ( >=sys-devel/gettext-0.17 ) app-text/rarian dev-util/intltool virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Japanese-English Dictionary for GNOME
+EAPI=4
+HOMEPAGE=http://gwaei.sourceforge.net/
+IUSE=gtk hunspell nls test mecab
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=net-misc/curl-7.20.0 >=dev-libs/glib-2.31 gtk? ( x11-libs/gtk+:3 >=app-text/gnome-doc-utils-0.14.0 ) hunspell? ( app-text/hunspell ) nls? ( virtual/libintl ) mecab? ( app-text/mecab )
+SLOT=0
+SRC_URI=mirror://sourceforge/gwaei/gwaei-3.6.2.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=ac52830e0fa62b5f182435c918df8a58

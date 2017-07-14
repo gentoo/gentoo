@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Library for reading and writing ICC color profile files
+EAPI=4
+HOMEPAGE=http://freecode.com/projects/icclib
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.argyllcms.com/icclib_V2.14.zip
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=48deefc84271c66b71a3966acafa3211

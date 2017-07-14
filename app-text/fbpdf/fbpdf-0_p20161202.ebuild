@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}
 
-PATCHES=("${FILESDIR}"/${P}-format.patch)
+PATCHES=(
+	"${FILESDIR}"/${P}-format.patch
+	"${FILESDIR}"/${P}-mupdfthird.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"

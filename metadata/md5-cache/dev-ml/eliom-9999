@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/ocaml-4.03:=[ocamlopt?] >=dev-ml/js_of_ocaml-2.8.2:=[xml] >=www-servers/ocsigenserver-2.8:= >=dev-ml/tyxml-4:= >=dev-ml/deriving-0.6:= >=dev-ml/reactiveData-0.2.1:= dev-ml/ocaml-ipaddr:= dev-ml/react:= dev-ml/ocaml-ssl:= >=dev-ml/lwt-2.5.0:= dev-ml/lwt_react:= dev-ml/camlp4:= ppx? ( >=dev-ml/ppx_tools-0.99.3:= ) dev-ml/ocamlbuild dev-ml/opam >=dev-ml/findlib-1.0.4-r1 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=A web framework to program client/server applications
+EAPI=5
+HOMEPAGE=http://ocsigen.org/eliom/
+IUSE=doc +ocamlopt +ppx
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4.03:=[ocamlopt?] >=dev-ml/js_of_ocaml-2.8.2:=[xml] >=www-servers/ocsigenserver-2.8:= >=dev-ml/tyxml-4:= >=dev-ml/deriving-0.6:= >=dev-ml/reactiveData-0.2.1:= dev-ml/ocaml-ipaddr:= dev-ml/react:= dev-ml/ocaml-ssl:= >=dev-ml/lwt-2.5.0:= dev-ml/lwt_react:= dev-ml/camlp4:= ppx? ( >=dev-ml/ppx_tools-0.99.3:= )
+SLOT=0/9999
+_eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	git-r3	cbafa3261c37c7e3af44bb16a34ea390	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e284de7fc5cd8d76d9d87d46bd334bba

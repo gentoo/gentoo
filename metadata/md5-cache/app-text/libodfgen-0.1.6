@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/librevenge virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Library to generate ODF documents from libwpd and libwpg
+EAPI=6
+HOMEPAGE=http://libwpd.sf.net
+IUSE=doc
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( LGPL-2.1 MPL-2.0 )
+RDEPEND=dev-libs/librevenge
+SLOT=0
+SRC_URI=mirror://sourceforge/libwpd/libodfgen-0.1.6.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=acb7faf4139386c30ad8e54c4a0238a1

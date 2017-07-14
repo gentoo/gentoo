@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=>=dev-ml/lwt-2.5.0:=[camlp4(+)] dev-ml/lwt_react:= dev-ml/lwt_ssl:= >=dev-ml/react-0.9.3:= zlib? ( >=dev-ml/camlzip-1.03-r1:= ) dev-ml/cryptokit:= >=dev-ml/ocamlnet-3.6:=[pcre] >=dev-ml/pcre-ocaml-6.2.5:= >=dev-ml/tyxml-4:=[camlp4(+)] >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocaml-ipaddr:= postgres? ( dev-ml/pgocaml:=[camlp4(+)] ) dbm? ( dev-ml/camldbm:= ) sqlite? ( dev-ml/ocaml-sqlite3:= ) >=dev-ml/findlib-1.0.4-r1 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Ocaml-powered webserver and framework for dynamic web programming
+EAPI=5
+HOMEPAGE=http://www.ocsigen.org
+IUSE=debug doc dbm +ocamlopt +sqlite zlib postgres
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-ml/lwt-2.5.0:=[camlp4(+)] dev-ml/lwt_react:= dev-ml/lwt_ssl:= >=dev-ml/react-0.9.3:= zlib? ( >=dev-ml/camlzip-1.03-r1:= ) dev-ml/cryptokit:= >=dev-ml/ocamlnet-3.6:=[pcre] >=dev-ml/pcre-ocaml-6.2.5:= >=dev-ml/tyxml-4:=[camlp4(+)] >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocaml-ipaddr:= postgres? ( dev-ml/pgocaml:=[camlp4(+)] ) dbm? ( dev-ml/camldbm:= ) sqlite? ( dev-ml/ocaml-sqlite3:= )
+REQUIRED_USE=|| ( sqlite dbm postgres )
+RESTRICT=strip installsources
+SLOT=0/9999
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	git-r3	cbafa3261c37c7e3af44bb16a34ea390	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=3beeab21f0d1ba3ddd1bfed9742ee011

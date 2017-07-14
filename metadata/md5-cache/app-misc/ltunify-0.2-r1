@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Tool for working with Logitech Unifying receivers and devices
+EAPI=5
+HOMEPAGE=https://lekensteyn.nl/logitech-unifying.html https://git.lekensteyn.nl/ltunify/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://git.lekensteyn.nl/ltunify/snapshot/ltunify-0.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=17df96437174feeb249047a216f1633c

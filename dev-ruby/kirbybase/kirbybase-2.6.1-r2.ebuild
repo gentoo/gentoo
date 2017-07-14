@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_NAME="KirbyBase"
 
@@ -19,8 +19,10 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
+ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
+
 each_ruby_test() {
-	${RUBY} -I.:lib -S testrb test/t*.rb || die
+	${RUBY} -I.:lib -S testrb-2 test/t*.rb || die
 }
 
 all_ruby_install() {

@@ -11,7 +11,7 @@ SRC_URI="http://www.thekelleys.org.uk/dnsmasq/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 
 IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec +id idn libidn2 +inotify"
 IUSE+=" ipv6 lua nls script selinux static tftp"
@@ -24,7 +24,7 @@ done
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	idn? ( net-dns/libidn )
-	libidn2? ( net-dns/libidn2 )
+	libidn2? ( >=net-dns/libidn2-2.0 )
 	lua? ( dev-lang/lua:* )
 	conntrack? ( net-libs/libnetfilter_conntrack )
 	nls? ( sys-devel/gettext )

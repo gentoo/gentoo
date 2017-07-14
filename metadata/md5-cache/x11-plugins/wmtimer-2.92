@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/gtk+:2 x11-libs/libXpm x11-libs/libXext x11-libs/libX11 virtual/pkgconfig
+DESCRIPTION=Dockable clock which can run in alarm, countdown timer or chronograph mode
+EAPI=5
+HOMEPAGE=http://www.darkops.net/wmtimer
+KEYWORDS=amd64 ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-libs/libXpm x11-libs/libXext x11-libs/libX11
+SLOT=0
+SRC_URI=http://www.darkops.net/wmtimer/wmtimer-2.92.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=baae4e04082554aa9987c4ffcfaa7f26

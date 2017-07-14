@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) caps? ( sys-libs/libcap ) sys-libs/e2fsprogs-libs >=net-nds/rpcbind-0.2.4 net-libs/libtirpc:= libmount? ( sys-apps/util-linux ) nfsdcld? ( >=dev-db/sqlite-3.3 ) nfsv4? ( dev-libs/libevent:= >=net-libs/libnfsidmap-0.21-r1 kerberos? ( >=net-libs/libtirpc-0.2.4-r1[kerberos] app-crypt/mit-krb5 ) nfsidmap? ( >=net-libs/libnfsidmap-0.24 >=sys-apps/keyutils-1.5.9 ) ) nfsv41? ( sys-fs/lvm2 ) uuid? ( sys-apps/util-linux ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=NFS client and server daemons
+EAPI=5
+HOMEPAGE=http://linux-nfs.org/
+IUSE=caps ipv6 kerberos +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid
+LICENSE=GPL-2
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers ) caps? ( sys-libs/libcap ) sys-libs/e2fsprogs-libs >=net-nds/rpcbind-0.2.4 net-libs/libtirpc:= libmount? ( sys-apps/util-linux ) nfsdcld? ( >=dev-db/sqlite-3.3 ) nfsv4? ( dev-libs/libevent:= >=net-libs/libnfsidmap-0.21-r1 kerberos? ( >=net-libs/libtirpc-0.2.4-r1[kerberos] app-crypt/mit-krb5 ) nfsidmap? ( >=net-libs/libnfsidmap-0.24 >=sys-apps/keyutils-1.5.9 ) ) nfsv41? ( sys-fs/lvm2 ) uuid? ( sys-apps/util-linux ) !net-nds/portmap !<sys-apps/openrc-0.13.9 selinux? ( sec-policy/selinux-rpc sec-policy/selinux-rpcbind )
+REQUIRED_USE=kerberos? ( nfsv4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=snapshot;h=refs/tags/nfs-utils-2-1-2-rc3;sf=tgz -> nfs-utils-2.1.2_rc3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=e40661f2bd8a2b753f935a80e25f049a

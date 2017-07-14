@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-56">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could lead to the execution of arbitrary code on the host system.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>December 31, 2016</announced>
+  <revised>January 03, 2017: 2</revised>
+  <bug>600382</bug>
+  <bug>600662</bug>
+  <bug>601248</bug>
+  <bug>601250</bug>
+  <bug>601986</bug>
+  <bug>603420</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.7.1-r4</unaffected>
+      <vulnerable range="lt">4.7.1-r4</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.7.1-r4</unaffected>
+      <vulnerable range="lt">4.7.1-r4</vulnerable>
+    </package>
+    <package name="app-emulation/xen-pvgrub" auto="yes" arch="*">
+      <unaffected range="ge">4.7.1-r1</unaffected>
+      <vulnerable range="lt">4.7.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly execute arbitrary code with the
+      privileges of the process, could gain privileges on the host system,
+      cause a Denial of Service condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.7.1-r4"
+    </code>
+    
+    <p>All Xen Tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.7.1-r4"
+    </code>
+    
+    <p>All Xen PvGrub users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-pvgrub-4.7.1-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10024">
+      CVE-2016-10024
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9377">CVE-2016-9377</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9378">CVE-2016-9378</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9379">CVE-2016-9379</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9380">CVE-2016-9380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9381">CVE-2016-9381</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9382">CVE-2016-9382</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9383">CVE-2016-9383</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9384">CVE-2016-9384</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9385">CVE-2016-9385</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9386">CVE-2016-9386</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9637">CVE-2016-9637</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9815">CVE-2016-9815</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9816">CVE-2016-9816</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9817">CVE-2016-9817</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9818">CVE-2016-9818</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9932">CVE-2016-9932</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 26 Nov 2016 10:47:37 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 05:55:18 +0000">b-man</metadata>
+</glsa>

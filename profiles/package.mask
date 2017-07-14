@@ -29,6 +29,383 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not usable, dead since 2003, removal in a month (#24706)
+app-mobilephone/esms
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Proprietary software, fetch restricted, not actively maintained, needs to
+# be updated, with multiple QA issues, bug #622414. Removal in a month.
+sci-chemistry/icm
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't work with >=openvpn-2.3, removal in a month (#470696).
+net-vpn/kvpnc
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't work with any django version in the tree, tests fail, removal in a
+# month (#482498).
+dev-python/south
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# No reverse deps, doesn't build, bug #569068. Removal in a month.
+net-misc/jumpgate
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Lots of unresolved bugs, not compatible with QT 5.7 either, bug #574672.
+# Removal in a month.
+net-p2p/bitcoinxtd
+net-p2p/bitcoinxt-qt
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Our package is completely outdated and needs a major version bump (and
+# pkgmove). Bug #541410. Removal in a month.
+dev-util/febootstrap
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Buggy, doesn't compile for a long time, bug #575772. Removal in a month.
+dev-python/python-sipsimple
+net-voip/blink
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't compile, one of the last consumers of obsolete gnet library
+# (#579400). Removal in a month.
+net-irc/loqui
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't compile (#579948). Removal in a month.
+net-nntp/leafnode
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't compile, upstream dead, removal in a month (#584296).
+dev-util/mutrace
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# QA issues, upstreams dead, multiple alternatives, bug #587284 and bug
+# #587288. Removal in a month.
+sys-libs/libacpi
+sys-power/yacpi
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# games-engines/renpy cannot be used with its only reverse dep in the tree
+# as-is, it needs a major version bump and build fixing too, bug #587872.
+# Removal in a month.
+games-engines/renpy
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't build for a long time, bug #587942
+sci-mathematics/cado-nfs
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't build (#592992), dead since 2011 and nothing needs it in the tree.
+# Removal in a month.
+dev-libs/mozldap
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with gcc6 (#594390), also removed from other distributions
+# due it being unmaintained and buggy. Removal in a month.
+net-analyzer/nepenthes
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Upstream inactive, not buildable with gcc6, not needed by anything in the
+# tree (#594668). Removal in a month.
+app-text/mbtpdfasm
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# No reverse deps, not buildable with gcc6 (#595396). Removal in a month.
+media-libs/embree
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with QT 5.7, bug #595452. Removal in a month.
+net-p2p/litecoin-qt
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not buildable (#596602), no reverse deps, removal in a month.
+app-pda/fusepod
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not buildable for a long time (#597040). Removal in a month.
+dev-util/lorax
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Security issues (#600524), upstream dead, removal in a month.
+dev-db/recutils
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Multiple unresolved bugs (#600680), need major version bumps and a
+# maintainer, removal in a month.
+dev-libs/libRocket
+games-fps/warsow
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Fails to build, no reverse deps (#600768). Removal in a month.
+app-editors/mp
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Needs obsolete splitted dev-dotnet/gnome-sharp (#600960). Removal in a
+# month.
+media-video/gnome-subtitles
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Development stopped 4 years ago, relies on dead vte:2.90 and upstream
+# refused to even try to migrate it (#601350). Also security issues
+# (#611290). Removal in a month.
+x11-terms/evilvte
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with gcc6, nothing needs this in the tree (#603900).
+# Removal in a month.
+dev-libs/qcodeedit
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with gperf-3.1 (#604816). Removal in a month.
+app-misc/flasm
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Upstream is dead, lots of unresolved bug reports (#606154), it needs a
+# real maintainer taking care about fixing this. Removal in a month.
+sys-apps/v86d
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't build anymore (#607482). Removal in a month.
+net-irc/irssi-xmpp
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't work with current flash-player versions, bug #609016. Removal in a
+# month.
+media-libs/hal-flash
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Nothing needs this, pending to migrate to pycryptodome (#611574). Removal
+# in a month.
+app-admin/kedpm
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Needs migration to pycryptodome, also relies on many other dead libs
+# (#611584). Removal in a month.
+app-misc/relevation
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Dead, unmaintained and with multiple bugs (#614810, #611028). Removal in a
+# month.
+net-dialup/wvdial
+net-libs/wvstreams
+net-dialup/qtwvdialer
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Buggy and needs someone to take care of trying to bump it (#614860).
+# Removal in a month.
+sci-astronomy/skychart
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Wrapper not generated properly (#616330), no reverse deps, removal in a
+# month.
+dev-python/colout
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Obsolete version in the tree, nothing needs this old library,
+# unmaintained, bug #616550. Removal in a month.
+net-libs/txtorcon
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with current perl (#616900). Removal in a month.
+www-client/w3mir
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Relies on no longer available dependencies (#617236) and many other
+# obsolete libs. Removal in a month.
+dev-util/pida
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with guile2, bug #617794. Removal in a month.
+net-irc/bobotpp
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Fails to build (#618950), dead for a long time. Removal in a month.
+net-p2p/dclib
+net-p2p/valknut
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Fails to build (#619210), dead and no reverse deps. Removal in a month.
+dev-db/lib_mysqludf_xql
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with latest imagemagick, upstream dead for ages (#619454).
+# Removal in a month.
+media-plugins/vdr-tvguide
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with recent python versions (#619998). Removal in a month.
+net-misc/leapcast
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Rely on vulnerable webkit (#620698, #620728, #620816, #620830, #621554).
+# Removal in a month.
+dev-embedded/pikdev
+net-misc/clipgrab
+dev-util/ninja-ide
+app-crypt/yubikey-neo-manager
+dev-python/pywebkitgtk
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Dead for a long time and really buggy (#620772). Removal in a month.
+net-im/psimedia
+net-im/psi
+x11-themes/psi-themes
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not needed and neither compatible with current kernels, bug #621744 and
+# #621748. Removal in a month.
+net-wireless/adm8211
+net-wireless/orinoco-usb
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# More than 5 years dead, relies on a lot of dead/deprecated libraries, bug
+# #622008. Removal in a month.
+dev-util/a8
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
+# minicom. Removal in a month.
+net-dialup/gtkterm
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Relies on dead libs, it is not developed for ages, bug #622018. Removal in
+# a month.
+app-misc/gnomecatalog
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# No reverse deps, dead since 2000, bug #622154. Removal in a month.
+dev-libs/djb
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't build (#622842) and many other bugs, removal in a month.
+app-emulation/fuse
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with new perl, not needed by anything in the tree (#623214,
+# #623216), removal in a month.
+app-backup/snapback2
+app-editors/XML-XSH2
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Doesn't build (#623562). Removal in a month.
+media-plugins/vdr-skinnopacity
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not needed in the tree, upstream stopped developing it long time ago, bug
+# #623706. Removal in a month.
+net-libs/dhcpcd-dbus
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
+# Not compatible with python >= 3.5 but neither needed by anything in the
+# tree anymore, bug #624670. Removal in a month.
+=dev-python/beautifulsoup-3.1.0.1-r2
+
+# Kent Fredric <kentnl@gentoo.org> (12 Jul 2017)
+# Masked for staging purposes
+=dev-lang/perl-5.24.2*
+
+# Hans de Graaff <graaff@gentoo.org> (09 Jul 2017)
+# Upstream has removed the code and the published gem.
+# Removal in 30 days.
+dev-ruby/modernizr
+
+# Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
+# Masked until >=net-fs/samba-4.7 is in the tree and 
+# unmasked. (bug #624106)
+# See also https://bugzilla.samba.org/show_bug.cgi?id=12859
+>=sys-libs/ldb-1.1.30
+
+# Michael Palimaka <kensington@gentoo.org> (06 Jul 2017)
+# Obsolete. l10n is now included in app-office/calligra:5.
+# Masked for removal in 30 days. Exported to kde-sunset overlay.
+app-office/calligra-l10n
+
+# Lars Wendler <polynomial-c@gentoo.org> (06 Jul 2017)
+# Masked for testing due to new dependencies which
+# were not packaged in Gentoo previously.
+>=sys-fs/udisks-2.7.0
+
+# Göktürk Yüksek <gokturk@gentoo.org> (05 Jul 2017)
+# Declared dead by upstream. Removal in 30 days.
+# See: http://www.haildb.com/2015/08/19/shutting-down-haildb/
+# Bug #623654.
+dev-db/haildb
+
+# Patrice Clement <monsieurp@gentoo.org> (05 Jul 2017)
+# Part of the JRE since 1.6.
+# Masked for removal in 30 days. Bug #553188.
+java-virtual/jaf
+
+# Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
+# The snapshots got a wrong version number assigned.
+# They are from before version 2.0.0. Masking them to force
+# an update to version 2.0.0 as soon as it is added to the tree.
+=media-plugins/vdr-xineliboutput-2.0.0_p20130821
+=media-plugins/vdr-xineliboutput-2.0.0_p20150220
+
+# Michał Górny <mgorny@gentoo.org> (02 Jul 2017)
+# The eselect module has been integrated into app-shells/bash-completion
+# and all the old versions (not having it) are gone. Removal in 14 days.
+app-eselect/eselect-bashcomp
+
+# Alon Bar-Lev <alonbl@gentoo.org> (01 Jul 2017)
+# Unmaintained and segfaults.
+# Masked for removal in 30 days. Bug#623276.
+app-crypt/mdcrack
+
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
+# All revdeps have been ported to app-crypt/gpgme[cxx].
+# Masked for removal in 30 days.
+kde-apps/gpgmepp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
+# Depends on vulnerable qtwebkit:4. Dead upstream.
+# Masked for removal in 30 days. Bug #621558.
+kde-misc/krecipes
+
+# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
+# Depends on vulnerable qtwebkit:4. Dead upstream.
+# Masked for removal in 30 days. Bug #620836.
+media-gfx/picturewall
+
+# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
+# Depends on vulnerable qtwebkit:4. Dead upstream.
+# Masked for removal in 30 days. Bug #620704.
+media-gfx/smile
+
+# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
+# Depends on vulnerable qtwebkit:4. Dead upstream.
+# Masked for removal in 30 days. Bug #620700.
+kde-misc/semantik
+
+# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
+# Depends on vulnerable qtwebkit:4. Dead upstream.
+# Masked for removal in 30 days. Bug #620688.
+app-cdr/acetoneiso
+
+# Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
+# New strip feature which is enabled by default causes genkernel
+# to create unbootable kernel/initramfs images. Bug #622716
+=sys-kernel/genkernel-3.5.1.0
+
+# Mike Gilbert <floppym@gentoo.org> (24 Jun 2017)
+# Obsolete package: use sys-apps/systemd[sysv-utils] instead.
+# Removal in 30 days.
+sys-apps/systemd-sysv-utils
+
+# Hans de Graaff <graaff@gentoo.org> (23 Jun 2017)
+# Mask ruby21-only packages for removal in 30 days
+# Old slots that are ruby21-only
+dev-ruby/prawn:1
+dev-ruby/rspec:0
+# ruby21-only package that does not work with current
+# dev-ruby/parslet versions.
+dev-ruby/toml
+# ruby21-only, no maintainer, fails tests
+www-apps/jekyll-paginate
+
 # Patrice Clement <monsieurp@gentoo.org> (20 Jun 2017)
 # Fails to build with Java 8. Project is active on Github yet ebuild has never
 # been marked stable.
@@ -40,11 +417,6 @@ dev-java/jdbc-jaybird
 # No more kdelibs-4 based kparts in tree to feed it with.
 # Masked for removal in 30 days.
 www-plugins/kpartsplugin
-
-# Michael Palimamka <kensington@gentoo.org> (18 Jun 2017)
-# Fails to build with upcoming stable Qt 5.7. Dead upstream.
-# Masked for removal in 30 days. Bug #603564.
-media-sound/ams
 
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
@@ -80,58 +452,6 @@ media-sound/gejengel
 # Masked for removal in 30 days.
 kde-apps/pim-storage-service-manager
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Fails to build, nothing needs it in the tree, bug #557450. Removal in a
-# month.
-dev-libs/radlib
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Relies on lots of dead old gnome libs, relies also on berlios.de and it is
-# dead for more than 8 years, bug #537708. Removal in a month.
-app-office/rubrica
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Deprecated in favor of media-fonts/dejavu since many years ago, see bug
-# #282754. Removal in a month.
-media-fonts/ttf-bitstream-vera
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Not needed by anything in the tree, requires an obsolete texinfo version
-# and is also the last consumer of gnat-gcc, bug #620982. Removal in a
-# month.
-sci-electronics/ghdl
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Not needed by anything in the tree, unmaintained and waiting for a major
-# version bump if someone wants to take care of it, bug #474738. Removal in
-# a month.
-net-voip/gnugk
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# All consumers of this newer versions never got ported, if finally we need
-# to readd a even newer version of this packages with an hypothetical newer
-# Ekiga, we will need to work on new ebuilds anyway, bug #474740. Removal in
-# a month.
-#
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (25 Jun 2013)
-# Mask new ptlib/opal for breakage, tracked in bug #474742
-# Lars Wendler <polynomial-c@gentoo.org> (29 Apr 2014)
-# Adjusted mask so newer versions get covered as well.
->=net-libs/ptlib-2.12.0
->=net-libs/opal-3.12.0
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Not needed by anything in the tree, dead since 2006 and also needing our
-# rpm package that is buggy and unmaintained, bug # 620986. Removal in a
-# month.
-app-emulation/domi
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jun 2017)
-# Needs someone with the hardware to test how to install it (and its
-# configuration files) properly. Dead since 2007, bug #493898. Removal in a
-# month.
-dev-lang/nqc
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -148,12 +468,6 @@ media-sound/skype-call-recorder
 net-im/skype
 net-im/skypetab-ng
 
-# Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2017)
-# Dead upstream, relies on ancient and vulnerable qtwebkit
-# See bug #620690
-# Removal in 30 days
-app-editors/fb2edit
-
 # Michał Górny <mgorny@gentoo.org> (07 Jun 2017)
 # The new release changes API and *breaks* core Xfce components.
 # Upstream lists xfce-base/xfce4-settings and xfce-base/xfce4-panel
@@ -163,259 +477,11 @@ app-editors/fb2edit
 >=xfce-base/xfconf-4.13
 >=xfce-base/xfce4-settings-4.13.1
 
-# Matthias Maier <tamiko@gentoo.org> (06 Jun 2017)
-# Dead upstream, unmaintained, no homepage, no SRC_URI, x86-only, does not
-# compile, bug #620964. Removal in 30 days.
-app-text/7plus
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# Mask split *-sharp packages for removal. Replaced by combined:
-# - >=dev-dotnet/gtk-sharp-2.12.21,
-# - >=dev-dotnet/gnome-sharp-2.24.2-r1.
-# Removal in 14 days.
-<dev-dotnet/gtk-sharp-2.12.21
-dev-dotnet/atk-sharp
-dev-dotnet/gdk-sharp
-dev-dotnet/glade-sharp
-dev-dotnet/glib-sharp
-dev-dotnet/gtk-dotnet-sharp
-dev-dotnet/gtk-sharp-docs
-dev-dotnet/gtk-sharp-gapi
-dev-dotnet/pango-sharp
-<dev-dotnet/gnome-sharp-2.24.2-r1
-dev-dotnet/art-sharp
-dev-dotnet/gconf-sharp
-dev-dotnet/gnomevfs-sharp
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained since addition. Obsolete version that requires ancient
-# dev-python/mock version. No reverse dependencies.
-# Removal in 30 days. Bug #616292.
-dev-python/cassandra-driver
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained. Does not use python eclasses. Unhandled bug reports.
-# Removal in 30 days. Bug #615920.
-dev-util/rpmdevtools
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Dead upstream. No reverse dependencies. Fails to build.
-# Removal in 30 days. Bug #594384.
-dev-libs/libjit
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained upstream. Fails to build.
-# Removal in 30 days. Bug #513416.
-media-sound/pianobooster
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained library with no reverse dependencies. Last consumer
-# of unmaintained gpe.eclass.
-# Removal in 30 days. Bug #610490.
-x11-libs/libxsettings-client
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo, awfully old version. Uses obsolete
-# built_with_use.
-# Removal in 30 days. Bug #610454.
-net-misc/ser
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Abandoned upstream before Gentoo got to
-# bumping it.
-# Removal in 30 days. Bug #360767.
-www-apps/pyblosxom
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# The libgnomeuimm is long dead upstream.
-# Removal in 30 days. Bug #608948.
-dev-cpp/libgnomeuimm
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained upstream and in Gentoo. Requires old wxGTK version.
-# Removal in 30 days. Bug #564100.
-net-analyzer/fe3d
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained upstream. Already suffers heavy patching in Gentoo.
-# Multiple bugs filed, including build failures.
-# Removal in 30 days. Bug #515760.
-media-sound/rezound
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Requires old wxPython. GAMESS itself
-# is masked for removal already.
-# Removal in 30 days. Bug #564104.
-sci-chemistry/gamessq
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream. Require obsolete GNOME libraries. Multiple
-# alternatives exist. Removal in 30 days.
-# app-dicts/gjiten -- bug #608404; alternative: app-dicts/gwaei
-# app-i18n/im-ja -- bug #608418.
-# games-board/gamazons -- bug #608424.
-app-dicts/gjiten
-app-i18n/im-ja
-games-board/gamazons
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Discontinued blob driver. Fails to build against modern kernels.
-# Removal in 30 days. Bug #574026.
-net-dialup/martian-modem
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. The current version is obsolete, and the new
-# versions cause issues preventing adding.
-# Removal in 30 days. Bug #368257.
-x11-misc/etm
-
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # Unmaintained in Gentoo. The current Gentoo version no longer builds.
 # Removal in 30 days. Bug #602820.
 media-plugins/vdr-xineliboutput
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained upstream. Seems to fail at Python. Depends on multiple
-# deprecated GNOME libraries.
-# Removal in 30 days. Bug #562416.
-dev-java/java-gnome
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained upstream. Bad quality code.
-# Removal in 30 days. Bug #603562.
-dev-libs/dee
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Discontinued upstream. Plugins no longer get updates, resulting
-# in security vulnerabilities.
-# Removal in 30 days. Bug #603282.
-www-plugins/pipelight
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Does not support ffmpeg-3. Maintainer is unable to solve that,
-# and nobody seems to be interested.
-# Removal in 30 days. Bug #575138.
-media-plugins/vdr-audiorecorder
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Security vulnerability.
-# Removal in 30 days. Bug #552628.
-dev-libs/libmimedir
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned downstream and upstream. Permanently masked due to
-# a dependency on vulnerable library.
-# Removal in 30 days. Bug #337473.
-sys-block/afacli
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Reported not to work. Uses old wxPython.
-# Removal in 30 days. Bug #601192.
-sci-geosciences/cdat-lite
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Multiple bugs, including a security
-# vulnerability. Removal in 30 days. Bug #581960.
-net-irc/atheme-services
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned in Gentoo. Fail to build with gcc-6.
-# Removal in 30 days. Bugs:
-# app-backup/boxbackup - #595412
-# dev-lang/falcon - #595416
-# net-p2p/ppcoin-qt - #598366
-app-backup/boxbackup
-dev-lang/falcon
-net-p2p/ppcoin-qt
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and unmaintained in Gentoo. Requires old wxPython
-# and pycrypto. Removal in 30 days. Bug #313923.
-app-mobilephone/bitpim
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Security vulnerability.
-# Removal in 30 days. Bug #562896.
-net-irc/charybdis
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Security vulnerability. No reverse
-# dependencies. Removal in 30 days. Bug #551216.
-www-apache/mod_jk
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Multiple versions behind upstream.
-# Security vulnerabilities. No reverse dependencies anymore.
-# Removal in 30 days. Bug #512292.
-dev-db/ctdb
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. Multiple versions behind upstream. Multiple
-# security vulnerabilities. Removal in 30 days. Bug #509920.
-www-apps/egroupware
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained. Fails to build. Removal in 30 days. Bug #541702.
-net-mail/topal
-virtual/ada
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Reported not to work. CAPI flags
-# in reverse dependencies are masked for some time already.
-# Removal in 30 days. Bug #379975.
-net-dialup/capi4k-utils
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Buggy. Segfaults hard on Python
-# upgrades. Use one of the *CGI modules instead.
-# Removal in 30 days. Bug #536134.
-www-apache/mod_python
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Abandoned upstream and downstream. Buggy to the point of producing
-# corrupted media. Use the original app-cdr/cdrtools or one of the many
-# other alternatives (app-cdr/dvd+rw-tools, dev-libs/libburn...).
-# Removal in 30 days. Bugs #254312, #591778.
-app-cdr/cdrkit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (05 Jun 2017)
-# Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
-# Masked for removal in 30 days. Bugs #620792, #620796
-x11-misc/lightdm-kde
-kde-apps/plasma-runtime
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
@@ -424,20 +490,6 @@ kde-apps/plasma-runtime
 # Masked for removal in 90 days. Bug #589994.
 www-client/phantomjs
 dev-ruby/poltergeist
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
-# Package::Constants has been removed from core Perl.
-# Please depend in your ebuild directly on dev-perl/Package-Constants
-# (and if necessary remove virtual/perl-Package-Constants from
-# your system). Removal of the virtual in 30 days.
-virtual/perl-Package-Constants
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
-# ExtUtils::Command has been merged upstream into ExtUtils::MakeMaker
-# Please depend on virtual/perl-ExtUtils-MakeMaker from now on.
-# Removal in 30 days.
-virtual/perl-ExtUtils-Command
-perl-core/ExtUtils-Command
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
 # Masked for initial testing.
@@ -520,62 +572,16 @@ dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-Format-Strptime-1.710.0
 >=dev-perl/Log-Dispatch-2.590.0
 
-# Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
-# Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
-# Masked for removal in 30 days. Bug #620758.
-www-client/qtweb
-
-# Michael Palimaka <kensington@gentoo.org> (04 Jun 2017)
-# Relies on obsolete and vulnerable qtwebkit version. Dead upstream.
-# Masked for removal in 30 days. Bug #620752.
-sci-mathematics/freemat
-
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# Relies on obsolete and vulnerable webkit-gtk version and bundles some libs
-# (#597532). Removal in a month.
-x11-misc/rednotebook
-
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# This package needs a maintainer to take care of updating this to a working
-# version not requiring obsolete wxwidgets and webkit versions (#584170).
-# Removal in a month.
-x11-misc/outwiker
-
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2017)
-# Still relies on old and vulnerable webkit-gtk versions, bug #608626.
-# Removal in a month.
-www-client/xombrero
-
-# Amadeusz Żołnowski <aidecoe@gentoo.org> (29 May 2017)
-# Masked for removal. I have added it but I no longer use it.
-# If someone cares about z please take ownership. Othwerwise
-# I will remove it in 30 days.
-app-shells/z
-
-# Amadeusz Żołnowski <aidecoe@gentoo.org> (28 May 2017)
-# Masked for removal. Upstream has disappeared. Homepage is not
-# accessible anymore. There are open, long-standing bugs: #553888,
-# #532308, #548920, not worth fixing while there's active alternative.
-# Use app-admin/needrestart instead.
-app-admin/checkrestart
-
-# Pacho Ramos <pacho@gentoo.org> (28 May 2017)
-# Not compatible with python 3.5 neither 3.6, bug #388549
-# Removal in a month.
-media-libs/lv2core
-media-libs/lv2-ui
-
 # Michał Górny <mgorny@gentoo.org> (25 May 2017)
 # First GTK+3 version with known regressions:
 # https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
 # Masked (+ reverse dependencies) for opt-in testing.
 >=xfce-base/xfce4-panel-4.13
->=xfce-extra/xfce4-screenshooter-1.8.99
 
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
 # on boot. Bug #617578
-=sys-fs/lvm2-2.02.171
+>=sys-fs/lvm2-2.02.171
 
 # Michał Górny <mgorny@gentoo.org> (22 May 2017)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
@@ -609,22 +615,6 @@ net-wireless/cpyrit-cuda
 # Experimental, most consumers does not support it yet
 >=dev-games/openscenegraph-3.5.5
 >=dev-games/openscenegraph-qt-3.5.5
-
-# Thomas Deutschmann <whissi@gentoo.org> (17 May 2017)
-# Unpatched security vulnerability per bug #616700
-# Removal in 30 days.
-mail-client/squirrelmail
-
-# Eray Aslan <eras@gentoo.org> (17 May 2017)
-# Functionality merged to cyrus-imapd-2.5.x series.
-# cyrus-imapd-2.5.10 was stabilized in Jan 2017.  Upgrade
-# if you haven't already done so.  Removal in 30 days.
-net-mail/cyrus-imap-admin
-dev-libs/cyrus-imap-dev
-# Masking for end-user convenience.  Will be dropped once
-# net-mail/cyrus-imap-admin and dev-libs/cyrus-imap-dev
-# are tree cleaned.
-=net-mail/cyrus-imapd-2.4*
 
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
@@ -670,10 +660,6 @@ app-emulation/wine-any
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
-
-# Michael Palimaka <kensington@gentoo.org> (13 Mar 2017)
-# Testing x32 patch backports from 3.9
-=dev-util/cmake-3.7.2-r10
 
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
@@ -741,12 +727,6 @@ app-emulation/wine-any
 >=net-misc/rygel-0.33
 >=games-puzzle/swell-foop-3.23
 
-# Alexis Ballier <aballier@gentoo.org> (03 Mar 2017)
-# Beta release, some packages fail to build.
->=dev-lang/ocaml-4.05.0_beta2
->=dev-ml/camlp4-4.05
->=dev-ml/ppx_tools-5.0.4.05.0
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2017)
 # Mask experimental software
 =mail-mta/postfix-3.3*
@@ -756,14 +736,6 @@ app-emulation/wine-any
 # Needs full revdep testing.
 >=dev-python/qscintilla-python-2.10
 >=x11-libs/qscintilla-2.10
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (8 June 2017)
-# Dead upstream for >3 years. Closed source. Bundles outdated
-# libraries that certainly have known security issues (e.g.,
-# icu-36 (!) or curl). Does not start anymore but segfaults.
-# Removal in 30 days.
-app-text/acroread
-media-fonts/acroread-asianfonts
 
 # Michael Palimaka <kensington@gentoo.org> (19 Feb 2017)
 # Revdeps need patching.
@@ -864,10 +836,11 @@ x11-libs/gtk+:1
 # Masked for testing
 =sys-fs/fuse-3.0.0*
 
-# Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
-# Mask all unfetchable versions and those with tons of random
-# bugs and segfaults (all). Don't ask for a version bump unless
-# there is a working release.
+# Marc Schiffbauer <mschiff@gentoo.org> (14 Jul 2017)
+# Breaks often because upstream always releases new version
+# under the same filename so checksums will break every now and then.
+# Additionally, packaging this program is a pita, so use at your
+# own risk.
 sci-geosciences/googleearth
 
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
@@ -994,8 +967,6 @@ dev-libs/iniparser:4
 =dev-python/django-1.6*
 =dev-python/django-1.7*
 =dev-python/django-1.9*
-# Not supported by any django version upstream supports
-dev-python/south
 
 # Tony Vroon <chainsaw@gentoo.org> (5 Jan 2015)
 # Asterisk 13 is an LTS release but has not seen

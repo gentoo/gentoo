@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=dev-lang/tk-8.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A flexible listbox widget for Tk
+EAPI=4
+HOMEPAGE=http://tktreectrl.sourceforge.net/
+IUSE=X debug shellicon threads test
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=tcltk
+RDEPEND=>=dev-lang/tk-8.4
+SLOT=0
+SRC_URI=mirror://sourceforge/tktreectrl/tktreectrl-2.4.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	virtualx	171580f737f5aaf18fcb456548588066
+_md5_=ff9c705f6a5c8679b98a93d2035716ca

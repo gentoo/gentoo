@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND="dev-ml/result:=
 	dev-ml/ocamlbuild:=
+	dev-ml/findlib:=
 	dev-lang/ocaml:="
 DEPEND="${RDEPEND}"
 

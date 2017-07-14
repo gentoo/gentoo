@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-lang/lua:0 virtual/pkgconfig test? ( dev-libs/atf dev-util/kyua )
+DESCRIPTION=Lightweight C++ API library for Lua
+EAPI=6
+HOMEPAGE=https://github.com/jmmv/lutok
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/lua:0
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/jmmv/lutok/releases/download/lutok-0.4/lutok-0.4.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a36fa216b7e80143884e78fb81cd0698

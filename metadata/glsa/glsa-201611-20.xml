@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-20">
+  <title>TestDisk: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in TestDisk might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">testdisk</product>
+  <announced>November 22, 2016</announced>
+  <revised>November 22, 2016: 2</revised>
+  <bug>548258</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/testdisk" auto="yes" arch="*">
+      <unaffected range="ge">7.0-r2</unaffected>
+      <vulnerable range="lt">7.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TestDisk is powerful free data recovery software! It was primarily
+      designed to help recover lost partitions and/or make non-booting disks
+      bootable again when these symptoms are caused by faulty software: certain
+      types of viruses or human error (such as accidentally deleting a
+      Partition Table). Partition table recovery using TestDisk is really easy.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow can be triggered within TestDisk when a malicious disk
+      image is attempting to be recovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could coerce the victim to run TestDisk against their
+      malicious image.  This may be leveraged by an attacker to crash TestDisk
+      and gain control of program execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TestDisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/testdisk-7.0-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://www.security-assessment.com/files/documents/advisory/Testdisk%20Check_OS2MB%20Stack%20Buffer%20Overflow%20-%20Release.pdf">
+      TestDisk check_OS2MB Stack Buffer overflow
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 30 Apr 2015 18:55:08 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:59:23 +0000">b-man</metadata>
+</glsa>

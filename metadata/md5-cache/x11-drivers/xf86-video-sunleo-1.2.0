@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst unpack
+DEPEND=>=x11-base/xorg-server-1.0.99 x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/xproto >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/libtool-1.5 >=sys-devel/m4-1.4 virtual/pkgconfig >=x11-misc/util-macros-1.3.0
+DESCRIPTION=Leo video driver
+EAPI=0
+HOMEPAGE=https://www.x.org/wiki/
+IUSE=debug
+KEYWORDS=-* sparc
+LICENSE=MIT
+RDEPEND=>=x11-base/xorg-server-1.0.99 !<=x11-base/xorg-x11-6.9
+SLOT=0
+SRC_URI=https://www.x.org/releases/individual/driver/xf86-video-sunleo-1.2.0.tar.bz2
+_eclass_exported_funcs=pkg_preinst:x-modular pkg_postrm:x-modular pkg_postinst:x-modular src_unpack:x-modular src_compile:x-modular src_install:x-modular
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	x-modular	125c252037f5830def4f0eaa4b6e481c
+_md5_=8767b269890706142f25211025db5194

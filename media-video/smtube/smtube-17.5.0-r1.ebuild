@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="bg cs da de en_GB en es eu fr gl he_IL hr hu it ja ko ms nn_NO pl pt_BR pt ru sq sr tr uk zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils
+inherit eutils l10n qmake-utils
 
 DESCRIPTION="YouTube Browser for SMPlayer"
 HOMEPAGE="http://smplayer.sourceforge.net/smtube"

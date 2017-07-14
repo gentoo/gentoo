@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=a program that can sit between a serial port and an application
+EAPI=6
+HOMEPAGE=http://www.suspectclass.com/~sgifford/interceptty/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.suspectclass.com/~sgifford/interceptty/files/interceptty-0.6.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=558069e781c0320da92caa3d5980bde7

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-14">
+  <title>util-linux: Arbitrary code execution</title>
+  <synopsis>A vulnerability was discovered in util-linux, which could
+    potentially lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">util-linux</product>
+  <announced>December 06, 2016</announced>
+  <revised>December 06, 2016: 1</revised>
+  <bug>530844</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/util-linux" auto="yes" arch="*">
+      <unaffected range="ge">2.26</unaffected>
+      <vulnerable range="lt">2.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>util-linux is a suite of Linux programs including mount and umount,
+      programs used to mount and unmount filesystems.
+    </p>
+  </background>
+  <description>
+    <p>A command injection flaw was discovered in util-linux’s “blkid”
+      utility. It uses caching files (/dev/.blkid.tab or /run/blkid/blkid.tab)
+      to store info about the UUID, LABEL etc. it finds on certain devices.
+      However, it does not strip ‘”’ character, so it can be confused to
+      build variable names containing shell metacharacters, which it would
+      usually encode inside the value.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could create a specially crafted partition label
+      containing arbitrary code which would get executed when the “blkid”
+      utility processes that value.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All util-linux users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/util-linux-2.26"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9114">CVE-2014-9114</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 22 Nov 2016 22:56:21 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 06 Dec 2016 03:44:24 +0000">whissi</metadata>
+</glsa>

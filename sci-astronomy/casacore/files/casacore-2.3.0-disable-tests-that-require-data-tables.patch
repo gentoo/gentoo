@@ -1,0 +1,253 @@
+From: Benda Xu <heroxbd@gentoo.org>
+Date: Wed, 10 Sep 2014 10:00:43 +0900
+Subject: Disable tests that require data tables
+
+The data tables are not available during the build of casacore (yet).
+---
+ coordinates/Coordinates/test/CMakeLists.txt | 12 ++++-----
+ images/Images/test/CMakeLists.txt           | 40 ++++++++++++++---------------
+ images/Regions/test/CMakeLists.txt          |  8 +++---
+ lattices/LatticeMath/test/CMakeLists.txt    |  2 +-
+ meas/MeasUDF/test/CMakeLists.txt            |  2 +-
+ measures/Measures/test/CMakeLists.txt       | 37 ++++++++++++--------------
+ measures/TableMeasures/test/CMakeLists.txt  |  2 +-
+ ms/MSOper/test/CMakeLists.txt               |  6 ++---
+ ms/MeasurementSets/test/CMakeLists.txt      |  2 +-
+ 9 files changed, 53 insertions(+), 58 deletions(-)
+
+diff --git a/coordinates/Coordinates/test/CMakeLists.txt b/coordinates/Coordinates/test/CMakeLists.txt
+index bd1c996..248b395 100644
+--- a/coordinates/Coordinates/test/CMakeLists.txt
++++ b/coordinates/Coordinates/test/CMakeLists.txt
+@@ -1,18 +1,18 @@
+ set (tests
+-dCoordinates
++#dCoordinates # requires geodetic/Observatories
+ dRemoveAxes
+ dWorldMap
+ tCoordinate
+-tCoordinateSystem
+-tCoordinateUtil
++# tCoordinateSystem # requires geodetic/Observatories
++# tCoordinateUtil # requires geodetic/Observatories
+ tDirectionCoordinate
+-tFrequencyAligner
++# tFrequencyAligner # requires geodetic/Observatories
+ tGaussianConvert
+ tLinearCoordinate
+ tLinearXform
+-tObsInfo
++# tObsInfo # requires geodetic/Observatories
+ tProjection
+-tSpectralCoordinate
++# tSpectralCoordinate # requires geodetic/Observatories
+ tStokesCoordinate
+ tQualityCoordinate
+ tTabularCoordinate
+diff --git a/images/Images/test/CMakeLists.txt b/images/Images/test/CMakeLists.txt
+index 302d798..4115c29 100644
+--- a/images/Images/test/CMakeLists.txt
++++ b/images/Images/test/CMakeLists.txt
+@@ -35,39 +35,39 @@ endforeach (file)
+ 
+ set (tests
+ dImageInterface
+-dImageStatistics
+-dImageSummary
++# dImageStatistics # requires geodetic/Observatories
++# dImageSummary # requires geodetic/Observatories
+ dPagedImage
+ tExtendImage
+-tFITSErrorImage
++# tFITSErrorImage #
+ tFITSExtImage
+ tFITSExtImageII
+ tFITSImage
+ tFITSImgParser
+-tFITSQualityImage
++# tFITSQualityImage #
+ tHDF5Image
+-tImageAttrHandler
+-tImageBeamSet
+-tImageConcat
+-tImageEmpty
+-tImageExpr
+-tImageExpr2
+-tImageExpr2Gram
+-tImageExpr3Gram
++# tImageAttrHandler # requires geodetic/Observatories
++# tImageBeamSet #
++# tImageConcat # needs casacore-data
++# tImageEmpty # requires geodetic/Observatories
++# tImageExpr
++# tImageExpr2
++# tImageExpr2Gram # requires geodetic/Observatories
++# tImageExpr3Gram # requires geodetic/Observatories
+ tImageExprGram
+ tImageExprParse
+ tImageExprParse_addDir
+ tImageInfo
+-tImageProxy
+-tImageRegrid
++# tImageProxy
++# tImageRegrid # requires geodetic/Observatories
+ tImageStatistics
+-tImageStatistics2
+-tImageUtilities
+-tLELSpectralIndex
++# tImageStatistics2 # requires geodetic/Observatories
++# tImageUtilities # requires geodetic/Observatories
++# tLELSpectralIndex # requires geodetic/Observatories
+ tMIRIADImage
+-tPagedImage
+-tPagedImage2
+-tRebinImage
++# tPagedImage # requires geodetic/Observatories
++# tPagedImage2 # requires geodetic/Observatories
++# tRebinImage # requires geodetic/Observatories
+ tSubImage
+ tTempImage
+ )
+diff --git a/images/Regions/test/CMakeLists.txt b/images/Regions/test/CMakeLists.txt
+index b94c391..1201346 100644
+--- a/images/Regions/test/CMakeLists.txt
++++ b/images/Regions/test/CMakeLists.txt
+@@ -9,12 +9,12 @@ foreach (file ${datafiles})
+ endforeach (file)
+ 
+ set (tests
+-tImageRegion
++# tImageRegion
+ tRegionHandler
+-tWCBox
+-tWCEllipsoid
++# tWCBox # requires geodetic/Observatories
++# tWCEllipsoid
+ tWCExtension
+-tWCLELMask
++# tWCLELMask # requires geodetic/Observatories
+ tWCUnion
+ )
+ 
+diff --git a/lattices/LatticeMath/test/CMakeLists.txt b/lattices/LatticeMath/test/CMakeLists.txt
+index 0d869d5..47e5c76 100644
+--- a/lattices/LatticeMath/test/CMakeLists.txt
++++ b/lattices/LatticeMath/test/CMakeLists.txt
+@@ -13,7 +13,7 @@ tLatticeSlice1D
+ tLatticeStatistics
+ tLatticeStatsDataProvider
+ tLatticeTwoPtCorr
+-tLattStatsSpecialize
++# tLattStatsSpecialize
+ )
+ 
+ foreach (test ${tests})
+diff --git a/meas/MeasUDF/test/CMakeLists.txt b/meas/MeasUDF/test/CMakeLists.txt
+index a2ecd9a..b06ee99 100644
+--- a/meas/MeasUDF/test/CMakeLists.txt
++++ b/meas/MeasUDF/test/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ set (tests
+- tmeas
++# tmeas # requires casacore-data
+ )
+ 
+ foreach (test ${tests})
+diff --git a/measures/Measures/test/CMakeLists.txt b/measures/Measures/test/CMakeLists.txt
+index c10a670..261adb1 100644
+--- a/measures/Measures/test/CMakeLists.txt
++++ b/measures/Measures/test/CMakeLists.txt
+@@ -1,25 +1,25 @@
+ set (tests
+ dM1950_2000
+-dMeasure
+-tEarthField
+-tEarthMagneticMachine
+-tMBaseline
+-tMDirection
+-tMEarthMagnetic
+-tMFrequency
+-tMeasComet
+-tMeasIERS
+-tMeasJPL
++# dMeasure # geodetic/TAI_UTC
++# tEarthField # geodetic/IGRF
++# tEarthMagneticMachine # geodetic/IGRF
++# tMBaseline # geodetic/IGRF
++# tMDirection
++# tMEarthMagnetic # geodetic/IGRF
++# tMFrequency
++# tMeasComet # ephemerides/VGEO
++# tMeasIERS # geodetic/IERS*
++# tMeasJPL # ephemerides/DE200
+ tMeasMath
+-tMeasure
++# tMeasure # geodetic/TAI_UTC
+ tMeasureHolder
+-tMuvw
+-tParAngleMachine
+-tQuality
++# tMuvw # geodetic/TAI_UTC
++# tParAngleMachine # geodetic/TAI_UTC
++# tQuality
+ tRecordTransformable
+ tStokes
+ tUVWMachine
+-tVelocityMachine
++# tVelocityMachine # geodetic/TAI_UTC
+ )
+ 
+ foreach (test ${tests})
+@@ -29,9 +29,4 @@ foreach (test ${tests})
+     add_dependencies(check ${test})
+ endforeach (test)
+ 
+-if (SOFA_FOUND)
+-    add_executable (tIAU2000 SofaTest.cc tIAU2000.cc)
+-    target_link_libraries (tIAU2000 casa_measures ${SOFA_LIBRARY})
+-    add_test (tIAU2000 ${CMAKE_SOURCE_DIR}/cmake/cmake_assay ./tIAU2000)
+-    add_dependencies(check tIAU2000)
+-endif (SOFA_FOUND)
++# tIAU2000 disabled for missing geodetic/TAI_UTC
+diff --git a/measures/TableMeasures/test/CMakeLists.txt b/measures/TableMeasures/test/CMakeLists.txt
+index e7c4af1..84e7d6d 100644
+--- a/measures/TableMeasures/test/CMakeLists.txt
++++ b/measures/TableMeasures/test/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ set (tests
+ tTableQuantum
+-tTableMeasures
++# tTableMeasures # geodetic/{IERSeop{2000,97},IERSpredict{,2000},TAI_UTC}
+ dVarRefMdirCol
+ )
+ 
+diff --git a/ms/MSOper/test/CMakeLists.txt b/ms/MSOper/test/CMakeLists.txt
+index e53aec3..81912cd 100644
+--- a/ms/MSOper/test/CMakeLists.txt
++++ b/ms/MSOper/test/CMakeLists.txt
+@@ -1,9 +1,9 @@
+ set (tests
+-tMSDerivedValues
+-tMSKeys
++# tMSDerivedValues # geodetic/IERSpredict
++# tMSKeys
+ tMSMetaData
+ tMSReader
+-tMSSummary
++# tMSSummary
+ )
+ 
+ foreach (test ${tests})
+diff --git a/ms/MeasurementSets/test/CMakeLists.txt b/ms/MeasurementSets/test/CMakeLists.txt
+index 6e66aad..8150ad4 100644
+--- a/ms/MeasurementSets/test/CMakeLists.txt
++++ b/ms/MeasurementSets/test/CMakeLists.txt
+@@ -15,7 +15,7 @@ tMeasurementSet
+ tMSColumns
+ tMSDataDescBuffer
+ tMSFieldBuffer
+-tMSFieldEphem
++#tMSFieldEphem requires casacore-data
+ tMSIter
+ tMSMainBuffer
+ tMSPolBuffer

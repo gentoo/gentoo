@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-05">
+  <title>tnftp: Arbitrary code execution </title>
+  <synopsis>tnftp is vulnerable to remote code execution if output file is not
+    specified. 
+  </synopsis>
+  <product type="ebuild">tnftp</product>
+  <announced>November 15, 2016</announced>
+  <revised>November 15, 2016: 1</revised>
+  <bug>527302</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/tnftp" auto="yes" arch="*">
+      <unaffected range="ge">20141104</unaffected>
+      <vulnerable range="lt">20141104</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tnftp is a NetBSD FTP client with several advanced features.</p>
+  </background>
+  <description>
+          <p>The fetch_url function in usr.bin/ftp/fetch.c allows remote
+            attackers to execute arbitrary commands via a
+          </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tnftp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --verbose --oneshot "&gt;=net-ftp/tnftp-20141104"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8517">CVE-2014-8517</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 21 Dec 2015 19:31:36 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 06:40:01 +0000">b-man</metadata>
+</glsa>

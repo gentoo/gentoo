@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio dev-libs/userspace-rcu sys-libs/readline systemd? ( sys-apps/systemd ) virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Device mapper target autoconfig
+EAPI=6
+HOMEPAGE=http://christophe.varoqui.free.fr/
+IUSE=systemd
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio dev-libs/userspace-rcu sys-libs/readline systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=http://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=e165b73a16fc9027aa3306df40052038c175be1b;sf=tgz -> multipath-tools-0.6.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=df85f06e16ee33ac53d9cdec4099626c

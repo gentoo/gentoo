@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-util/cmake >=dev-libs/openssl-1.0 media-libs/alsa-lib media-libs/libsdl[X,sound,video,alsa] media-libs/portaudio[alsa] media-libs/sdl-mixer media-libs/sdl-sound media-libs/x264:* media-video/ffmpeg:0[X] net-libs/sofia-sip dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtmultimedia:4 dev-qt/qtwebkit:4 pulseaudio? ( media-sound/pulseaudio )
+DESCRIPTION=Homer Conferencing (short: Homer) is a free SIP softphone with advanced audio and video support
+EAPI=5
+HOMEPAGE=http://www.homer-conferencing.com
+IUSE=pulseaudio
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-util/cmake >=dev-libs/openssl-1.0 media-libs/alsa-lib media-libs/libsdl[X,sound,video,alsa] media-libs/portaudio[alsa] media-libs/sdl-mixer media-libs/sdl-sound media-libs/x264:* media-video/ffmpeg:0[X] net-libs/sofia-sip dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtmultimedia:4 dev-qt/qtwebkit:4 pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=https://github.com/Homer-Conferencing/Homer-Conferencing/archive/V0.25.tar.gz -> homer-0.25.tar.gz https://dev.gentoo.org/~hwoarang/distfiles/homer-0.25-ffmpeg2.patch
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=897dede97c8dbcfbf39844aa00d451e3

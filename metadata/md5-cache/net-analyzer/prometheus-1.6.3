@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=>=dev-lang/go-1.8 dev-util/promu >=dev-lang/go-1.8
+DESCRIPTION=Prometheus monitoring system and time series database
+EAPI=6
+HOMEPAGE=https://github.com/prometheus/prometheus
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/prometheus/prometheus/archive/v1.6.3.tar.gz -> prometheus-1.6.3.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=b33187adcea041fc3ff77c0393fd95b7

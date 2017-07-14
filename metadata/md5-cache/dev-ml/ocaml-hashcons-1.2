@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/ocaml:=[ocamlopt?] >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=OCaml hash-consing library
+EAPI=5
+HOMEPAGE=https://github.com/backtracking/ocaml-hashcons
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=dev-lang/ocaml:=[ocamlopt?]
+SLOT=0/1.2
+SRC_URI=https://github.com/backtracking/ocaml-hashcons/archive/1.2.tar.gz -> ocaml-hashcons-1.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	findlib	45d6030075064a68da8d7143726a1150	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=0d1738214c2a8dbeb35fbe1e9118c68c

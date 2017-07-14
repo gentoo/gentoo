@@ -52,9 +52,9 @@ src_install() {
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}/${PN}.sysctl.d" "${PN}.conf"
 
-	newinitd "${FILESDIR}/${PN}.init8" "${PN}"
-	newconfd "${FILESDIR}/${PN}.conf3" "${PN}"
-	systemd_newunit "${FILESDIR}"/${PN}.service6 "${PN}.service"
+	newinitd "${FILESDIR}/${PN}.init" "${PN}"
+	newconfd "${FILESDIR}/${PN}.conf" "${PN}"
+	systemd_newunit "${FILESDIR}"/${PN}.service "${PN}.service"
 }
 
 pkg_postinst() {

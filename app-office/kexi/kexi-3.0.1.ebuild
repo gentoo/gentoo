@@ -11,7 +11,7 @@ DESCRIPTION="Visual database applications creator"
 HOMEPAGE="https://www.kde.org/applications/office/kexi/ http://www.kexi-project.org/"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="marble mdb mysql postgres sqlite webkit"
 
 COMMON_DEPEND="

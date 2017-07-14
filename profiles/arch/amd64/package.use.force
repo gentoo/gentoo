@@ -18,10 +18,6 @@ sys-apps/sandbox abi_x86_32
 sys-devel/clang llvm_targets_X86
 sys-devel/llvm llvm_targets_X86
 
-# NP-Hardass <NP-Hardass@gentoo.org> (12 Mar 2016)
-# 32 bit required, 64 bit optional
-www-plugins/pipelight abi_x86_32 -abi_x86_64
-
 # Michał Górny <mgorny@gentoo.org> (02 Sep 2013)
 # Packages with optional 64-bit variant.
 app-emulation/wine -abi_x86_64

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-cpp/gtkmm:2.4 sndfile? ( >=media-libs/libsndfile-1:= ) alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= >=x11-libs/gtk+-2.20:2 ) jack? ( virtual/jack ) lash? ( media-sound/lash ) virtual/pkgconfig oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Virtual analogue synthesizer
+EAPI=5
+HOMEPAGE=https://code.google.com/p/amsynth/
+IUSE=alsa dssi jack lash oss sndfile
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:2.4 sndfile? ( >=media-libs/libsndfile-1:= ) alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= >=x11-libs/gtk+-2.20:2 ) jack? ( virtual/jack ) lash? ( media-sound/lash )
+SLOT=0
+SRC_URI=https://amsynth.googlecode.com/files/amSynth-1.3.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6a96d0f6ad7c1472af29e1a968e377f8

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201504-06">
+  <title>X.Org X Server: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org X Server,
+    allowing attackers to execute arbitrary code or cause a Denial of Service
+    condition. 
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>April 17, 2015</announced>
+  <revised>April 17, 2015: 2</revised>
+  <bug>532086</bug>
+  <bug>539692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.12.4-r4</unaffected>
+      <vulnerable range="lt">1.12.4-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org X Server. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.12.4-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8091">CVE-2014-8091</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8092">CVE-2014-8092</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8093">CVE-2014-8093</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8094">CVE-2014-8094</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8095">CVE-2014-8095</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8096">CVE-2014-8096</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8097">CVE-2014-8097</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8098">CVE-2014-8098</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8099">CVE-2014-8099</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8100">CVE-2014-8100</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8101">CVE-2014-8101</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8102">CVE-2014-8102</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8103">CVE-2014-8103</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0255">CVE-2015-0255</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 31 Jan 2015 19:25:14 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 17 Apr 2015 12:55:13 +0000">Zlogene</metadata>
+</glsa>

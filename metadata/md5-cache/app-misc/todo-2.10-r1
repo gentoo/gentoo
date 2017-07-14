@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DESCRIPTION=A CLI-based TODO list manager
+EAPI=6
+HOMEPAGE=http://todotxt.com/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=https://github.com/ginatrapani/todo.txt-cli/archive/v2.10.tar.gz -> todo-2.10.tar.gz
+_eclass_exported_funcs=src_test:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=4ce2862ccba506774e349af00b745f2f

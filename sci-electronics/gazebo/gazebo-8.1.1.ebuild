@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/openal
 	net-misc/curl
 	dev-libs/tinyxml
-	dev-libs/tinyxml2
+	dev-libs/tinyxml2:=
 	dev-libs/libtar
 	dev-cpp/tbb
 	>=dev-games/ogre-1.7.4[freeimage]

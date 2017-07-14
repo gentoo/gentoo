@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201510-04">
+  <title>tcpdump: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in tcpdump, the worst of
+    which can allow remote attackers to cause Denial of Service condition or
+    executive arbitrary code.
+  </synopsis>
+  <product type="ebuild">tcpdump</product>
+  <announced>October 31, 2015</announced>
+  <revised>October 31, 2015: 1</revised>
+  <bug>552632</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/tcpdump" auto="yes" arch="*">
+      <unaffected range="ge">4.7.4</unaffected>
+      <vulnerable range="lt">4.7.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tcpdump is a Tool for network monitoring and data acquisition.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in tcpdump. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tcpdump users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/tcpdump-4.7.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0261">CVE-2015-0261</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2153">CVE-2015-2153</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2154">CVE-2015-2154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2155">CVE-2015-2155</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Aug 2015 15:50:32 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:14:21 +0000">mrueg</metadata>
+</glsa>

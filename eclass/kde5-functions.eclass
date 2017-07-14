@@ -35,12 +35,9 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		if [[ $(get_version_component_range 2) -ge 9 ]]; then
-			: ${QT_MINIMAL:=5.7.1}
-		fi
+		: ${QT_MINIMAL:=5.7.1}
 		if [[ ${KDE_BUILD_TYPE} = live && $(get_version_component_range 2) -ne 8 ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
-			: ${QT_MINIMAL:=5.7.1}
 		fi
 		;;
 	kde-apps)
@@ -63,7 +60,7 @@ esac
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.8.6}
+: ${PLASMA_MINIMAL:=5.9.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:

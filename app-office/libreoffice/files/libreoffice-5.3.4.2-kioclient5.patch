@@ -1,0 +1,11 @@
+--- a/shell/source/unix/misc/senddoc.sh	2017-06-15 15:44:22.000000000 +0200
++++ b/shell/source/unix/misc/senddoc.sh	2017-06-25 01:00:08.525435930 +0200
+@@ -389,6 +389,8 @@
+         elif [ -n "$DESKTOP_LAUNCH" ]; then
+             # http://lists.freedesktop.org/pipermail/xdg/2004-August/002873.html
+             MAILER=${DESKTOP_LAUNCH}
++        elif [ -n "$KDE_FULL_SESSION" -a -x /usr/bin/kde-open5 ] ; then
++            MAILER=/usr/bin/kde-open5
+         elif [ -n "$KDE_FULL_SESSION" -a -x /usr/bin/kde-open ] ; then
+             MAILER=/usr/bin/kde-open
+         elif [ -x /usr/bin/xdg-open ] ; then

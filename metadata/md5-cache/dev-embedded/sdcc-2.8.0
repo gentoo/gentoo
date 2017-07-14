@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-embedded/gputils-0.13.2 boehm-gc? ( dev-libs/boehm-gc ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Small device C compiler (for various microprocessors)
+EAPI=0
+HOMEPAGE=http://sdcc.sourceforge.net/
+IUSE=boehm-gc doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=!dev-embedded/sdcc-svn
+SLOT=0
+SRC_URI=mirror://sourceforge/sdcc/sdcc-src-2.8.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-2.8.0.tar.bz2 )
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=254f96461b514798be707ba08ed81a1d

@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4} )  # 3.5 and 3.6 wait for dependencies
+PYTHON_COMPAT=( python{2_7,3_4,3_5} ) # 3.6 waiting for deps
+
 inherit distutils-r1
 
 MY_PN="Nikola"
@@ -47,14 +48,14 @@ RDEPEND="${DEPEND}
 	websocket? ( ~dev-python/ws4py-0.3.4[${PYTHON_USEDEP}] )"
 #	typography? ( >=dev-python/typogrify-2.0.4[${PYTHON_USEDEP}] ) # needs smartypants
 
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	distutils-r1_src_install
 
 	# hackish way to remove docs that ended up in the wrong place
-	rm -rf "${D}"/usr/share/doc/${PN}
+	rm -rv "${D}/usr/share/doc/${PN}" || die
 
 	dodoc AUTHORS.txt CHANGES.txt README.rst docs/*.txt
-	doman docs/man/${PN}.1.gz
+	doman "docs/man/${PN}.1.gz"
 }

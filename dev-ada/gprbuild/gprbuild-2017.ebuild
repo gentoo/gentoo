@@ -18,35 +18,27 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bootstrap +shared static static-pic"
+IUSE="bootstrap gnat_2016 gnat_2017 +shared static static-pic"
 
-DEPEND="dev-lang/gnat-gpl:=
-	!bootstrap? ( dev-ada/xmlada[static] )"
+DEPEND="!bootstrap? ( dev-ada/xmlada[static,gnat_2016=,gnat_2017=] )
+	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
+	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="bootstrap? ( !shared !static !static-pic )"
+REQUIRED_USE="bootstrap? ( !shared !static !static-pic )
+	^^ ( gnat_2016 gnat_2017 )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-pkg_setup() {
-	if use bootstrap; then
-		GCC=${ADA:-$(tc-getCC)}
-		gnatbase=$(basename ${GCC})
-		gnatpath=$(dirname ${GCC})
-
-		GNATMAKE="${gnatbase/gcc/gnatmake}"
-		if [[ ${gnatpath} != "." ]] ; then
-			GNATMAKE="${gnatpath}/${GNATMAKE}"
-		fi
-
-		if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-			eerror "You need a gcc compiler that provides the Ada Compiler:"
-			eerror "1) use gcc-config to select the right compiler or"
-			eerror "2) set ADA in make.conf"
-			die "ada compiler not available"
-		fi
+src_prepare() {
+	if use gnat_2016; then
+		GCC_PV=4.9.4
+	else
+		GCC_PV=6.3.0
 	fi
+	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
+	default
 }
 
 src_configure() {
@@ -57,7 +49,9 @@ bin_progs="gprbuild gprconfig gprclean gprinstall gprname gprls"
 lib_progs="gprlib gprbind"
 
 src_compile() {
+	GCC=${CHOST}-gcc-${GCC_PV}
 	if use bootstrap; then
+		GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 		local xmlada_src="../xmlada-gpl-${PV}-src"
 		incflags="-Isrc -Igpr/src -I${xmlada_src}/sax -I${xmlada_src}/dom \
 			-I${xmlada_src}/schema -I${xmlada_src}/unicode \
@@ -108,5 +102,7 @@ src_install() {
 		done
 		rm "${D}"usr/doinstall || die
 	fi
+	insinto /usr/share/gprconfig
+	doins gnat-${GCC_PV}.xml
 	einstalldocs
 }

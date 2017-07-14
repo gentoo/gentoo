@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects
+EAPI=0
+HOMEPAGE=http://www.tex.ac.uk/tex-archive/support/ppower4/index.html
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-arch/unzip virtual/jre virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/ppower4-0.9.6.tar.gz
+_eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:- src_compile:latex-package src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	latex-package	79acad19b9efeec616d0ad70cd117b03	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=3d6d727aedf8b062e7f451d8d94c7e29

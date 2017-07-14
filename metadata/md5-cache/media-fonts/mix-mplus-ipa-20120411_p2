@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Mixing mplus and IPA fonts
+EAPI=4
+HOMEPAGE=http://mix-mplus-ipa.sourceforge.jp/
+IUSE=X
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=mplus-fonts IPAfont
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/mix-mplus-ipa/56155/migmix-1m-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56155/migmix-1p-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56155/migmix-2m-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56155/migmix-2p-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56156/migu-1p-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56156/migu-1c-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56156/migu-1m-20120411-2.zip mirror://sourceforge.jp/mix-mplus-ipa/56156/migu-2m-20120411-2.zip
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_prepare:- src_install:font
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	font	82836641e7d4639329d8c195234ad0e3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=01c39ec80cd877a9a45d6bf89df8867b

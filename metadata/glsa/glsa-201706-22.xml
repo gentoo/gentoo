@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-22">
+  <title>libksba: Denial of Service and information disclosure</title>
+  <synopsis>Multiple vulnerabilities have been found in libksba which might
+    allow remote attackers to obtain sensitive information or crash an
+    libksba-based application.
+  </synopsis>
+  <product type="ebuild">libksba</product>
+  <announced>2017-06-22</announced>
+  <revised>2017-06-22: 1</revised>
+  <bug>592078</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libksba" auto="yes" arch="*">
+      <unaffected range="ge">1.3.5</unaffected>
+      <vulnerable range="lt">1.3.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libksba is a X.509 and CMS (PKCS#7) library.</p>
+  </background>
+  <description>
+    <p>It was found that an unproportionate amount of memory is allocated when
+      parsing crafted certificates in libskba, which may lead to Denial of
+      Service condition.
+    </p>
+    
+    <p>Moreover in libksba 1.3.4, allocated memory is uninitialized and could
+      potentially contain sensitive data left in freed memory block.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to interact with an libksba-based application,
+      could possibly obtain sensitive information or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libksba users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libksba-1.3.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4579">CVE-2016-4579</uri>
+    <uri link="http://seclists.org/oss-sec/2016/q3/343">Upstream report</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T05:51:10Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-22T17:42:08Z">whissi</metadata>
+</glsa>

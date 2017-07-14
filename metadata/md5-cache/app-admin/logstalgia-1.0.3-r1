@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Replays or streams an access_log as a retro arcade game-like simulation
+EAPI=5
+HOMEPAGE=http://logstalgia.io/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/libpcre media-libs/libsdl[opengl] media-libs/libpng:0= media-libs/sdl-image media-libs/ftgl virtual/jpeg virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=https://logstalgia.googlecode.com/files/logstalgia-1.0.3.tar.gz
+_eclass_exported_funcs=-
+_md5_=533241b0df33aae9310cf36bd0be8e0f

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Active Spam Killer: A program to filter spam
+EAPI=0
+HOMEPAGE=http://www.paganini.net/ask/index.html
+IUSE=procmail
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python virtual/mta procmail? ( >=mail-filter/procmail-3.22 )
+SLOT=0
+SRC_URI=mirror://sourceforge/a-s-k/ask-2.5.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=01dc48d4a90d642f18a7201f9c8a94f2

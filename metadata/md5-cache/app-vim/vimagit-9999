@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=vim plugin: ease your git workflow within vim
+EAPI=6
+HOMEPAGE=https://github.com/jreybert/vimagit
+LICENSE=vim
+RDEPEND=dev-vcs/git || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_unpack:git-r3 src_install:vim-plugin
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=a99c6c3c300fc94a64bfac2bc65d69cf

@@ -1,0 +1,142 @@
+From 717a19da57ec9f8fc80d4824cad47a04200fc515 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sat, 24 Jun 2017 17:27:27 +1200
+Subject: [PATCH] Backport fix for "." in @INC from 2.018
+
+2.018 has far too many changes to safely review in such a short amount
+of time. Fixing this trivial build issue gets us what is necessary
+for Perl 5.26 roll-out without lots of additional verification
+---
+ Basic/Core/Core.xs        | 2 +-
+ Basic/Core/pdl.h.PL       | 2 +-
+ Basic/Core/pdlconv.c.PL   | 4 ++--
+ Basic/Core/pdlcore.c.PL   | 4 ++--
+ Basic/Core/pdlcore.h.PL   | 4 ++--
+ Basic/Core/pdlsimple.h.PL | 2 +-
+ Makefile.PL               | 4 ++--
+ 7 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/Basic/Core/Core.xs b/Basic/Core/Core.xs
+index 5e95356..b38f14c 100644
+--- a/Basic/Core/Core.xs
++++ b/Basic/Core/Core.xs
+@@ -336,7 +336,7 @@ iscontig(x)
+ 
+ # using "perl" not $^X because that doesn't work on "perl in space"
+ # TODO: switching back to $^X since using "perl" is not a viable fix
+-INCLUDE_COMMAND: $^X -e "require q{Dev.pm}; PDL::Core::Dev::generate_core_flags()"
++INCLUDE_COMMAND: $^X -e "require q{./Dev.pm}; PDL::Core::Dev::generate_core_flags()"
+ 
+ #if 0
+ =begin windows_mmap
+diff --git a/Basic/Core/pdl.h.PL b/Basic/Core/pdl.h.PL
+index d2e9758..6e01445 100644
+--- a/Basic/Core/pdl.h.PL
++++ b/Basic/Core/pdl.h.PL
+@@ -6,7 +6,7 @@ use Config;
+ use File::Basename qw(&basename &dirname);
+ 
+ # how many variable types (ie PDL_Byte, ...) are there?
+-require 'Types.pm';
++require './Types.pm';
+ my $ntypes = $#PDL::Types::names;
+ my $PDL_DATATYPES = PDL::Types::datatypes_header();
+ 
+diff --git a/Basic/Core/pdlconv.c.PL b/Basic/Core/pdlconv.c.PL
+index 160e29b..62a57b0 100644
+--- a/Basic/Core/pdlconv.c.PL
++++ b/Basic/Core/pdlconv.c.PL
+@@ -7,9 +7,9 @@ use strict;
+ use Config;
+ use File::Basename qw(&basename &dirname);
+  
+-require 'Dev.pm'; PDL::Core::Dev->import;
++require './Dev.pm'; PDL::Core::Dev->import;
+ use vars qw( %PDL_DATATYPES );
+-require 'Types.pm'; #for typesrtkeys
++require './Types.pm'; #for typesrtkeys
+ 
+ # This forces PL files to create target in same directory as PL file.
+ # This is so that make depend always knows where to find PL derivatives.
+diff --git a/Basic/Core/pdlcore.c.PL b/Basic/Core/pdlcore.c.PL
+index a602b6e..445cfb8 100644
+--- a/Basic/Core/pdlcore.c.PL
++++ b/Basic/Core/pdlcore.c.PL
+@@ -6,7 +6,7 @@ use strict;
+ use Config;
+ use File::Basename qw(&basename &dirname);
+ 
+-require 'Dev.pm'; PDL::Core::Dev->import;
++require './Dev.pm'; PDL::Core::Dev->import;
+ use vars qw( %PDL_DATATYPES );
+ 
+ # check for bad value support
+@@ -14,7 +14,7 @@ require './Config.pm'; # to load the PDL not the Perl one
+ die "No PDL::Config found" unless %PDL::Config;
+ my $bvalflag = $PDL::Config{WITH_BADVAL};
+ my $usenan = $PDL::Config{BADVAL_USENAN};
+-require 'Types.pm';
++require './Types.pm';
+ PDL::Types->import(':All');
+ 
+ 
+diff --git a/Basic/Core/pdlcore.h.PL b/Basic/Core/pdlcore.h.PL
+index 90469f0..760e6a1 100644
+--- a/Basic/Core/pdlcore.h.PL
++++ b/Basic/Core/pdlcore.h.PL
+@@ -11,7 +11,7 @@ use strict;
+ use Config;
+ use File::Basename qw(&basename &dirname);
+ 
+-require 'Dev.pm'; PDL::Core::Dev->import;
++require './Dev.pm'; PDL::Core::Dev->import;
+ use vars qw( %PDL_DATATYPES );
+ 
+ # version 2 is for versions after PDL 2.1.1
+@@ -349,7 +349,7 @@ double NaN_double;
+ 
+     # fortunately it looks like Types.pm.PL is processed before this
+     # file
+-    require "Types.pm";  # ie PDL::Types
++    require "./Types.pm";  # ie PDL::Types
+ 
+ for (PDL::Types::typesrtkeys()) {
+    my $ctype = $PDL::Types::typehash{$_}{ctype};
+diff --git a/Basic/Core/pdlsimple.h.PL b/Basic/Core/pdlsimple.h.PL
+index e511913..43eb557 100644
+--- a/Basic/Core/pdlsimple.h.PL
++++ b/Basic/Core/pdlsimple.h.PL
+@@ -3,7 +3,7 @@
+ use Config;
+ use File::Basename qw(&basename &dirname);
+ 
+-require 'Types.pm';
++require './Types.pm';
+ my $PDL_DATATYPES = PDL::Types::datatypes_header();
+ 
+ # List explicitly here the variables you want Configure to
+diff --git a/Makefile.PL b/Makefile.PL
+index fc8d590..a94d895 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -226,7 +226,7 @@ sub check_f77conf {
+ 
+ sub make_Version_pm {
+   # Get Version from Basic/PDL.pm and generated Basic/Core/Version.pm from it
+-  require 'Basic/PDL.pm';
++  require './Basic/PDL.pm';
+   # keep version info in $PDL::Config
+   $PDL::Config{PDL_BUILD_VERSION} = "$PDL::VERSION";
+ 
+@@ -376,7 +376,7 @@ make_Types_pm();
+ # this will make PDL::Core::Dev's functions available
+ # in Makefile.PL files in all subdirectories
+ # IMPORTANT: it has to be after make_Types_pm()
+-require "Basic/Core/Dev.pm"; PDL::Core::Dev->import();
++require "./Basic/Core/Dev.pm"; PDL::Core::Dev->import();
+ 
+ # only perform one test if required modules are missing
+ # the test will print an informational message and fail
+-- 
+2.13.1
+

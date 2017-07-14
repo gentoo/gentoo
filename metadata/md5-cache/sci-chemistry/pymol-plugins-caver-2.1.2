@@ -1,0 +1,16 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Calculation of pathways of proteins from buried cavities to outside solvent
+EAPI=5
+HOMEPAGE=http://loschmidt.chemi.muni.cz/caver/
+IUSE=python_targets_python2_7 elibc_FreeBSD
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=CAVER
+RDEPEND=>=virtual/jre-1.6 sci-chemistry/pymol[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=Caver2_1_2_pymol_plugin.zip
+_eclass_exported_funcs=src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ea9626bbd9e0bdbb979e5d6058e8c5f5

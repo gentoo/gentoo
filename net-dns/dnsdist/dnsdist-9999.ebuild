@@ -19,7 +19,7 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${P}/pdns/dnsdistdist"
 else
 	SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.bz2"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"

@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # Pulls in dev-db/redis which is not keyworded on ia64.
 >=dev-python/pyzor-1.0.0 test
@@ -22,10 +27,6 @@ net-analyzer/rrdtool rados
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on ia64
 xfce-base/xfwm4 xpresent
-
-# Alexis Ballier <aballier@gentoo.org> (4 Mar 2017)
-# gst-plugins-x264 is not stable on ia64
-media-plugins/gst-plugins-meta x264
 
 # Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
 # Missing keywords, bug #559770
@@ -79,10 +80,6 @@ media-video/ffmpeg snappy
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no ia64 support in media-libs/glfw
 app-text/mupdf opengl
-
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires

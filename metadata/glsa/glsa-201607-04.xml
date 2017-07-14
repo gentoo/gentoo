@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-04">
+  <title>GD: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GD, the worst of which
+    allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 16, 2016</announced>
+  <revised>July 16, 2016: 1</revised>
+  <bug>504872</bug>
+  <bug>538686</bug>
+  <bug>581942</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/gd" auto="yes" arch="*">
+      <unaffected range="ge">2.2.2</unaffected>
+      <vulnerable range="lt">2.2.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GD is a graphic library for fast image creation.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GD. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/gd-2.2.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2497">
+      CVE-2014-2497
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9709">
+      CVE-2014-9709
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3074">CVE-2016-3074</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:19:37 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 16 Jul 2016 13:08:00 +0000">b-man</metadata>
+</glsa>

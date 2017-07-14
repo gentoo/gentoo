@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-06">
+  <title>e2fsprogs: Heap-based buffer overflow</title>
+  <synopsis>A heap-based buffer overflow in e2fsprogs might allow local
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">e2fsprogs</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>538930</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-fs/e2fsprogs" auto="yes" arch="*">
+      <unaffected range="ge">1.42.12</unaffected>
+      <vulnerable range="lt">1.42.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>e2fsprogs is a set of utilities for maintaining the ext2, ext3 and ext4
+      file systems.
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow was discovered in openfs.c in the libext2fs
+      library in e2fsprogs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to use ext2fs library (for
+      example, fsck) on a specially crafted Ext2/3/4 file system possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All e2fsprogs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/e2fsprogs-1.42.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0247">CVE-2015-0247</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 11:12:55 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 15:41:00 +0000">b-man</metadata>
+</glsa>

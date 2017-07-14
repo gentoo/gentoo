@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr x11-proto/randrproto x11-proto/xproto filecaps? ( sys-libs/libcap )
+DESCRIPTION=simple X display locker
+EAPI=6
+HOMEPAGE=http://tools.suckless.org/slock
+IUSE=+filecaps savedconfig
+KEYWORDS=amd64 hppa x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr
+SLOT=0
+SRC_URI=http://dl.suckless.org/tools/slock-1.4.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=fcaps	e80204189039ecc03f24151c518375f0	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2291aa750729519df2d16a77abdb5021

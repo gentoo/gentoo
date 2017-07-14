@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=French dictionaries for myspell/hunspell
+EAPI=4
+HOMEPAGE=http://extensions.libreoffice.org/extension-center/dictionnaires-francais
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-linux ~x86-macos
+LICENSE=GPL-2 LGPL-2.1 MPL-1.1
+SLOT=0
+SRC_URI=http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/4.5/ooo-dictionnaire-fr-moderne-v4.5.oxt http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/4.5/ooo-dictionnaire-fr-classique-v4.5.oxt http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/4.5/ooo-dictionnaire-fr-classique-reforme1990-v4.5.oxt http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/4.5/ooo-dictionnaire-fr-reforme1990-v4.5.oxt
+_eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
+_eclasses_=myspell-r2	f771bf8a3f42be87a117b6f96d641724
+_md5_=9dd9f14ba94e4b799727fee115e2df54

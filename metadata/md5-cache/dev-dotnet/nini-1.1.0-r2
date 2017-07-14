@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/mono-2 app-arch/sharutils
+DESCRIPTION=Nini - A configuration library for .NET
+EAPI=5
+HOMEPAGE=http://nini.sourceforge.net
+IUSE=debug
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/mono-2
+SLOT=0
+SRC_URI=mirror://sourceforge/nini/Nini-1.1.0.zip
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	mono	a59df07822fcb0dec319e09526d84c1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=9097438e28f52015deb6a7dca88ff194

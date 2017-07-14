@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/latex-base media-gfx/imagemagick virtual/texi2dvi test? ( dev-texlive/texlive-langgerman dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latexextra dev-tex/latex2html )
+DESCRIPTION=LaTeX to RTF converter
+EAPI=6
+HOMEPAGE=http://latex2rtf.sourceforge.net/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/latex-base media-gfx/imagemagick
+SLOT=0
+SRC_URI=mirror://sourceforge/latex2rtf/latex2rtf-2.3.15.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=35f0e0e47c2c52d103525d5027c3abfd

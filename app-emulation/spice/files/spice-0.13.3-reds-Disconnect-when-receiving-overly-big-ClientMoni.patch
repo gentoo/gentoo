@@ -1,0 +1,75 @@
+Matthias Maier <tamiko@gentoo.org>
+
+ - Ported to 0.13.3
+
+
+From 111ab38611cef5012f1565a65fa2d8a8a05cce37 Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <fziglio@redhat.com>
+Date: Mon, 15 May 2017 15:57:28 +0100
+Subject: [PATCH 1/3] reds: Disconnect when receiving overly big
+ ClientMonitorsConfig
+
+Total message size received from the client was unlimited. There is
+a 2kiB size check on individual agent messages, but the MonitorsConfig
+message can be split in multiple chunks, and the size of the
+non-chunked MonitorsConfig message was never checked. This could easily
+lead to memory exhaustion on the host.
+
+Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+---
+
+diff --git a/server/reds.c b/server/reds.c
+index 92feea1..286993b 100644
+--- a/server/reds.c
++++ b/server/reds.c
+@@ -1077,19 +1077,35 @@ static void reds_client_monitors_config_cleanup(RedsState *reds)
+ static void reds_on_main_agent_monitors_config(RedsState *reds,
+         MainChannelClient *mcc, void *message, size_t size)
+ {
++    const unsigned int MAX_MONITORS = 256;
++    const unsigned int MAX_MONITOR_CONFIG_SIZE =
++       sizeof(VDAgentMonitorsConfig) + MAX_MONITORS * sizeof(VDAgentMonConfig);
++
+     VDAgentMessage *msg_header;
+     VDAgentMonitorsConfig *monitors_config;
+     RedsClientMonitorsConfig *cmc = &reds->client_monitors_config;
+ 
++    // limit size of message sent by the client as this can cause a DoS through
++    // memory exhaustion, or potentially some integer overflows
++    if (sizeof(VDAgentMessage) + MAX_MONITOR_CONFIG_SIZE - cmc->buffer_size < size) {
++        goto overflow;
++    }
++
+     cmc->buffer_size += size;
+     cmc->buffer = realloc(cmc->buffer, cmc->buffer_size);
+     spice_assert(cmc->buffer);
+     cmc->mcc = mcc;
+     memcpy(cmc->buffer + cmc->buffer_pos, message, size);
+     cmc->buffer_pos += size;
++    if (sizeof(VDAgentMessage) > cmc->buffer_size) {
++        spice_debug("not enough data yet. %d", cmc->buffer_size);
++        return;
++    }
+     msg_header = (VDAgentMessage *)cmc->buffer;
+-    if (sizeof(VDAgentMessage) > cmc->buffer_size ||
+-            msg_header->size > cmc->buffer_size - sizeof(VDAgentMessage)) {
++    if (msg_header->size > MAX_MONITOR_CONFIG_SIZE) {
++        goto overflow;
++    }
++    if (msg_header->size > cmc->buffer_size - sizeof(VDAgentMessage)) {
+         spice_debug("not enough data yet. %d", cmc->buffer_size);
+         return;
+     }
+@@ -1097,6 +1113,12 @@ static void reds_on_main_agent_monitors_config(RedsState *reds,
+     spice_debug("%s: %d", __func__, monitors_config->num_of_monitors);
+     reds_client_monitors_config(reds, monitors_config);
+     reds_client_monitors_config_cleanup(reds);
++    return;
++
++overflow:
++    spice_warning("received invalid MonitorsConfig request from client, disconnecting");
++    red_channel_client_disconnect(RED_CHANNEL_CLIENT(mcc));
++    reds_client_monitors_config_cleanup(reds);
+ }
+ 
+ void reds_on_main_agent_data(RedsState *reds, MainChannelClient *mcc, void *message, size_t size)

@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=P2P Internet Telephony (VoiceIP) client
+EAPI=5
+HOMEPAGE=http://www.skype.com/
+IUSE=apulse pax_kernel plasma +pulseaudio selinux
+KEYWORDS=~amd64 ~x86
+LICENSE=skype-4.0.0.7-copyright BSD MIT RSA W3C regexp-UofT no-source-code
+RDEPEND=virtual/ttf-fonts dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtdbus:4[abi_x86_32(-)] dev-qt/qtgui:4[accessibility,abi_x86_32(-)] dev-qt/qtwebkit:4[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXScrnSaver[abi_x86_32(-)] x11-libs/libXv[abi_x86_32(-)] apulse? ( media-sound/apulse[abi_x86_32(-)] ) plasma? ( dev-libs/sni-qt[abi_x86_32(-)] ) pulseaudio? ( media-sound/pulseaudio[abi_x86_32(-)] ) selinux? ( sec-policy/selinux-skype )
+REQUIRED_USE=apulse? ( !pulseaudio )
+RESTRICT=mirror bindist strip
+SLOT=0
+SRC_URI=http://download.skype.com/linux/skype-4.3.0.37.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=ebc958917577499700313399164276d1

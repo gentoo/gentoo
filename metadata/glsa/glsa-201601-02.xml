@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201601-02">
+  <title>WebKitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, allowing
+    remote attackers to execute arbitrary code or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">webkit-gtk</product>
+  <announced>January 26, 2016</announced>
+  <revised>January 26, 2016: 1</revised>
+  <bug>536234</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.4.9</unaffected>
+      <vulnerable range="lt">2.4.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attack can use multiple vectors to execute arbitrary code or
+      cause a denial of service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebKitGTK+ 3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.4.9:3"
+    </code>
+    
+    <p>All WebKitGTK+ 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-libs/webkit-gtk-2.4.9-r200:2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1344">CVE-2014-1344</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1384">CVE-2014-1384</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1385">CVE-2014-1385</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1386">CVE-2014-1386</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1387">CVE-2014-1387</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1388">CVE-2014-1388</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1389">CVE-2014-1389</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1390">CVE-2014-1390</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Apr 2015 20:45:27 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 26 Jan 2016 19:47:29 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,17 @@
+Title: OpenRC-0.18 localmount and netmount changes
+Author: William Hubbs <williamh@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-10-07
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <=sys-apps/openrc-0.18
+
+The behaviour of localmount and netmount is changing on Linux systems.
+In the past, these services always started successfully. However, now they
+will fail if a file system they attempt to mount cannot be mounted.
+
+If you have file systems listed in fstab which should not be mounted at
+boot time, make sure to add noauto to the mount options. If you have
+file systems that you want to attempt to mount at boot time but failure
+should be allowed, add nofail to the mount options for these file
+systems in fstab.

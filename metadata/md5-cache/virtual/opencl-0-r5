@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for OpenCL implementations
+EAPI=6
+IUSE=video_cards_fglrx video_cards_i965 video_cards_nvidia abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm64 ~x86
+RDEPEND=app-eselect/eselect-opencl || ( >=media-libs/mesa-9.1.6[opencl,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] video_cards_fglrx? ( >=x11-drivers/ati-drivers-12.1-r1 ) video_cards_i965? ( dev-libs/beignet ) video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-290.10-r2 ) abi_x86_64? ( !abi_x86_32? ( dev-util/intel-ocl-sdk ) ) )
+SLOT=0
+_eclass_exported_funcs=-
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=dec0213ad8434b8665bceeb146d2e3d5

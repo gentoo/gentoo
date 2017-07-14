@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-i18n/scim ~app-i18n/sunpinyin-2.0.3 x11-libs/gtk+:2 dev-util/scons
+DESCRIPTION=The SunPinyin IMEngine for Smart Common Input Method (SCIM)
+EAPI=5
+HOMEPAGE=https://sunpinyin.googlecode.com
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 CDDL
+RDEPEND=app-i18n/scim ~app-i18n/sunpinyin-2.0.3 x11-libs/gtk+:2
+SLOT=0
+SRC_URI=https://sunpinyin.googlecode.com/files/scim-sunpinyin-2.0.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e945298f55a362947ecc1e049078457d

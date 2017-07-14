@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Project collaboration and tracking software for upwork.com
+EAPI=5
+HOMEPAGE=https://www.upwork.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=ODESK
+RDEPEND=dev-libs/libgcrypt:11 gnome-base/gconf media-libs/alsa-lib sys-libs/libcap virtual/udev x11-libs/gtk+:2 x11-libs/gtkglext
+SLOT=0
+SRC_URI=amd64? ( http://updates.team.odesk.com/binaries/v4_1_314_0_0bo6g5kfbj07y2x4/upwork_x86_64.rpm -> upwork-4.1.134_x86_64.rpm ) x86? ( http://updates.team.odesk.com/binaries/v4_1_314_0_0bo6g5kfbj07y2x4/upwork_i386.rpm -> upwork-4.1.134_i386.rpm )
+_eclass_exported_funcs=src_unpack:rpm src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=be4ed9d734b71f494b91e2fbc6fa82f9

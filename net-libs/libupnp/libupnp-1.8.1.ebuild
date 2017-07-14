@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mrjimenez/pupnp/archive/release-${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="1.8"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug doc reuseaddr ipv6 static-libs"
 
 DOCS="NEWS README.md ChangeLog"

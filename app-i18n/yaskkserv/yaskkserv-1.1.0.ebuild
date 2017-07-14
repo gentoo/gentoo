@@ -48,20 +48,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/${PN}.service
 }
 
-pkg_postinst() {
-	pkg_config
-
-	elog "You need to run:"
-	elog "  emerge --config =${CATEGORY}/${PF}"
-	elog "after updating app-i18n/skk-jisyo from next time."
-}
-
-pkg_postrm() {
-	rm -f "${ROOT}"/usr/share/skk/SKK-JISYO.*.${PN}
-	rmdir "${ROOT}"/usr/share/skk 2>/dev/null
-}
-
-pkg_config() {
+yaskkserv_update() {
 	local f
 	for f in "${ROOT}"/usr/share/skk/SKK-JISYO.*; do
 		case ${f} in
@@ -75,4 +62,21 @@ pkg_config() {
 			;;
 		esac
 	done
+}
+
+pkg_postinst() {
+	yaskkserv_update
+
+	elog "You need to run:"
+	elog "  emerge --config =${CATEGORY}/${PF}"
+	elog "after updating app-i18n/skk-jisyo from next time."
+}
+
+pkg_postrm() {
+	rm -f "${ROOT}"/usr/share/skk/SKK-JISYO.*.${PN}
+	rmdir "${ROOT}"/usr/share/skk 2>/dev/null
+}
+
+pkg_config() {
+	yaskkserv_update
 }

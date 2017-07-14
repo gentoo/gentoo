@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libXext x11-libs/libXpm x11-libs/libX11 x11-proto/xextproto
+DESCRIPTION=WindowMaker/AfterStep system monitor dockapp
+EAPI=0
+HOMEPAGE=http://rio.vg/asmon
+KEYWORDS=alpha amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXext x11-libs/libXpm x11-libs/libX11
+SLOT=0
+SRC_URI=http://rio.vg/asmon/asmon-0.71.tar.bz2
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8c643050f24a961d8c0a554bb4eeb2a1

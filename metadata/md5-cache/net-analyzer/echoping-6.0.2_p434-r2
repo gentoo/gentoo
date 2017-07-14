@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=idn? ( net-dns/libidn ) postgres? ( dev-db/postgresql:* ) ldap? ( net-nds/openldap ) ssl? ( gnutls? ( >=net-libs/gnutls-3.3:= ) !gnutls? ( >=dev-libs/openssl-0.9.7d:= ) ) >=sys-devel/libtool-2 >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Small program to test performances of remote servers
+EAPI=5
+HOMEPAGE=http://echoping.sourceforge.net/
+IUSE=gnutls http icp idn priority smtp ssl tos postgres ldap
+KEYWORDS=amd64 ~hppa x86
+LICENSE=GPL-2
+RDEPEND=idn? ( net-dns/libidn ) postgres? ( dev-db/postgresql:* ) ldap? ( net-nds/openldap ) ssl? ( gnutls? ( >=net-libs/gnutls-3.3:= ) !gnutls? ( >=dev-libs/openssl-0.9.7d:= ) )
+REQUIRED_USE=gnutls? ( ssl )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jer/echoping-6.0.2_p434.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=fb7ed81fddad2111866acb115bf4ffe8

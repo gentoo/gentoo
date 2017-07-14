@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201511-01">
+  <title>MirBSD Korn Shell: Arbitrary code execution</title>
+  <synopsis>An attacker who already had access to the environment could so
+    append values to parameters passed through programs.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>November 02, 2015</announced>
+  <revised>November 02, 2015: 2</revised>
+  <bug>524414</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-shells/mksh" auto="yes" arch="*">
+      <unaffected range="ge">50c</unaffected>
+      <vulnerable range="lt">50c</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MirBSD Korn Shell is an actively developed free implementation of the
+      Korn Shell programming language and a successor to the Public Domain Korn
+      Shell.
+    </p>
+  </background>
+  <description>
+    <p>Improper sanitation of environment import allows for appending of values
+      to passed parameters. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker who already had access to the environment could so append
+      values to parameters passed through programs (including sudo(8) or
+      setuid) to shell scripts, including indirectly, after those programs
+      intended to sanitise the environment, e.g. invalidating the last $PATH
+      component.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mksh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/mksh-50c"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://www.mirbsd.org/permalinks/wlog-10_e20141003-tg.htm#e20141003-tg_wlog-10">
+      mksh R50c released, security fix
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 12 Dec 2014 08:13:43 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Nov 2015 15:33:07 +0000">mrueg</metadata>
+</glsa>

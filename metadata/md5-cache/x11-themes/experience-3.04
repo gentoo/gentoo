@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-themes/gtk-engines-experience sys-apps/findutils
+DESCRIPTION=GTK+2 themes which copy and improve the look of XP Luna
+EAPI=0
+HOMEPAGE=https://art.gnome.org/themes/gtk2/1058
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-themes/gtk-engines-experience
+SLOT=0
+SRC_URI=http://freshmeat.net/redir/experience/50795/url_tgz/experience-gtk-3.04.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=75ec3fd4898d537a2f36817a50177e6b

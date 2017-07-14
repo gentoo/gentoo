@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Go packages for low-level interaction with the operating system
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/sys
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/0_pre20150729
+SRC_URI=https://github.com/golang/sys/archive/58da1121af381632b48b2843aeb16299f2e1dc50.tar.gz -> go-sys-0_pre20150729.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:golang-build
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=156432fa8ca4165281d5bc739d97ada0

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND=app-arch/zip x11-libs/wxGTK:2.8[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin ) virtual/pkgconfig
+DESCRIPTION=The open source, cross platform, free C++ IDE
+EAPI=6
+HOMEPAGE=http://www.codeblocks.org/
+IUSE=contrib debug pch static-libs
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=app-arch/zip x11-libs/wxGTK:2.8[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin )
+SLOT=0
+SRC_URI=mirror://sourceforge/codeblocks/codeblocks_16.01.tar.gz
+_eclass_exported_funcs=src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=ba7fbca221c185cef527ebf8026e90e2

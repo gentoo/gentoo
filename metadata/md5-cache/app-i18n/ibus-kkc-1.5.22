@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=app-i18n/ibus app-i18n/libkkc x11-libs/gtk+:3 nls? ( virtual/libintl ) || ( dev-lang/vala:0.34 dev-lang/vala:0.32 ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Japanese Kana Kanji conversion engine for IBus
+EAPI=6
+HOMEPAGE=https://github.com/ueno/ibus-kkc
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-i18n/ibus app-i18n/libkkc x11-libs/gtk+:3 nls? ( virtual/libintl ) app-i18n/skk-jisyo
+SLOT=0
+SRC_URI=https://github.com/ueno/ibus-kkc/releases/download/v1.5.22/ibus-kkc-1.5.22.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vala	f86cd45e9ae738c40c92f990266f39a7
+_md5_=e8b70d9131c94c73d2e58b96087f10d4

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=dev-libs/glib-2.16 dev-libs/libgee:0 dev-libs/json-glib introspection? ( >=dev-libs/gobject-introspection-0.10.8 ) nls? ( virtual/libintl ) || ( dev-lang/vala:0.34 dev-lang/vala:0.32 ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=GObject-based library to deal with Japanese kana-to-kanji conversion method
+EAPI=5
+HOMEPAGE=https://github.com/ueno/libskk
+IUSE=nls +introspection static-libs test
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/glib-2.16 dev-libs/libgee:0 dev-libs/json-glib introspection? ( >=dev-libs/gobject-introspection-0.10.8 ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=https://www.bitbucket.org/libskk/libskk/downloads/libskk-1.0.1.tar.gz
+_eclass_exported_funcs=src_prepare:vala src_configure:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vala	f86cd45e9ae738c40c92f990266f39a7	virtualx	171580f737f5aaf18fcb456548588066
+_md5_=5abe84253182afd5c3b8f7b6d01d10e5

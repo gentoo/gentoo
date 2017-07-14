@@ -1,0 +1,30 @@
+Title: LastPass package migration
+Author: Göktürk Yüksek <gokturk@gentoo.org>
+Author: Robin H. Johnson <robbat2@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-05-23
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: app-admin/lastpass
+
+LastPass-3 and earlier versions installed browser extensions along
+with the necessary binary components. LastPass-4 and later versions
+install only the binary components and leave installing the browser
+extensions to the user. Furthermore, LastPass-3 is not available
+anymore, it will be removed soon and users are required to upgrade. A
+transparent package move is not possible due to the mentioned changes
+and a manual migration is required.
+
+The currently installed package must be removed before proceeding with
+the migration:
+
+emerge --unmerge --ask app-admin/lastpass
+
+LastPass for Firefox users can safely upgrade to version 4 by visiting
+the official LastPass website and following the download instructions.
+The browser extension already contains the required binary components.
+No packages need to be installed.
+
+Users of Chrome/Chromium and Opera browsers need to switch to
+app-admin/lastpass-binary-component and follow the instructions
+displayed on the screen after the installation to complete the process.

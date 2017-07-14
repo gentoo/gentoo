@@ -58,6 +58,9 @@ PATCHES=(
 
 	# xorg-1.19 patch from opensuse (bug #602784)
 	"${FILESDIR}/${PN}-5.1.10-xorg119.patch"
+
+	# fix bug #579946
+	"${FILESDIR}/${PN}-5.1.22-sysmacros.patch"
 )
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"

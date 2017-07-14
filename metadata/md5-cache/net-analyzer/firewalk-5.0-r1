@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/libdnet net-libs/libnet:1.1 net-libs/libpcap
+DESCRIPTION=A tool for determining a firewall's rule set
+EAPI=5
+HOMEPAGE=http://packetfactory.openwall.net/projects/firewalk/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=BSD
+RDEPEND=dev-libs/libdnet net-libs/libnet:1.1 net-libs/libpcap
+SLOT=0
+SRC_URI=mirror://gentoo/firewalk-5.0.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f32a9df783c545d16285d5120bc8d0b6

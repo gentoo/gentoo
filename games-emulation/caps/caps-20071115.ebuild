@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/ipfdevlib_linux-20060612.tgz
 
 LICENSE="CAPS"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 RESTRICT="strip"
 

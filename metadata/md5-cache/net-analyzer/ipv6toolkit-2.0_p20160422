@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=net-libs/libpcap[ipv6(+)]
+DESCRIPTION=Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
+EAPI=5
+HOMEPAGE=http://www.si6networks.com/tools/ipv6toolkit/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-libs/libpcap[ipv6(+)] sys-apps/hwids
+SLOT=0
+SRC_URI=https://github.com/fgont/ipv6toolkit/archive/d14d90969e88a455e4ca8ea0ea7d88c9b7fb5c9f.tar.gz -> ipv6toolkit-2.0_p20160422.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_md5_=8caf0f18308a61c8bfe53ffdece9a273

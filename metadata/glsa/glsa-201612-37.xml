@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-37">
+  <title>Pixman: Buffer overflow</title>
+  <synopsis>A buffer overflow in Pixman might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">pixman</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 2</revised>
+  <bug>561526</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/pixman" auto="yes" arch="*">
+      <unaffected range="ge">0.32.8</unaffected>
+      <vulnerable range="lt">0.32.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pixman is a pixel manipulation library.</p>
+  </background>
+  <description>
+    <p>In pixman-general, careless computations done with the ‘dest_buffer’
+      pointer may overflow, failing the buffer upper limit check.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition, or
+      execute arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pixman users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/pixman-0.32.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://lists.x.org/archives/xorg-announce/2015-September/002637.html">
+      Pixman 0.32.8 Release Notes
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 08:11:30 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:37 +0000">whissi</metadata>
+</glsa>

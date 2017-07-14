@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst test
+DEPEND=>=dev-libs/libpcre2-10.21[pcre32] sys-libs/ncurses:0= sys-devel/bc nls? ( sys-devel/gettext )
+DESCRIPTION=fish is the Friendly Interactive SHell
+EAPI=6
+HOMEPAGE=http://fishshell.com/
+IUSE=nls
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libpcre2-10.21[pcre32] sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=http://fishshell.com/files/2.5.0/fish-2.5.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_test:-
+_md5_=e856c5be28063df912e4943d19c32955

@@ -24,7 +24,7 @@ IUSE_DAEMON="crypt samba slp tcpd experimental minimal"
 IUSE_BACKEND="+berkdb"
 IUSE_OVERLAY="overlays perl"
 IUSE_OPTIONAL="gnutls iodbc sasl ssl odbc debug ipv6 libressl +syslog selinux static-libs"
-IUSE_CONTRIB="smbkrb5passwd kerberos kinit pbkdf2"
+IUSE_CONTRIB="smbkrb5passwd kerberos kinit pbkdf2 sha2"
 IUSE_CONTRIB="${IUSE_CONTRIB} -cxx"
 IUSE="${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
 
@@ -330,7 +330,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.4.11-libldap_r.patch
 
 	# bug #233633
-	epatch "${FILESDIR}"/${PN}-2.4.17-fix-lmpasswd-gnutls-symbols.patch
+	epatch "${FILESDIR}"/${PN}-2.4.45-fix-lmpasswd-gnutls-symbols.patch
 
 	# bug #281495
 	epatch "${FILESDIR}"/${PN}-2.4.28-gnutls-gcrypt.patch
@@ -344,9 +344,14 @@ src_prepare() {
 	# bug #420959
 	epatch "${FILESDIR}"/${PN}-2.4.31-gcc47.patch
 
+	# bug #622464
+	epatch "${FILESDIR}"/${PN}-2.4.45-libressl.patch
+
 	# unbundle lmdb
 	epatch "${FILESDIR}"/${PN}-2.4.42-mdb-unbundle.patch
 	rm -rf "${S}"/libraries/liblmdb
+
+	epatch_user
 
 	cd "${S}"/build || die
 	einfo "Making sure upstream build strip does not do stripping too early"
@@ -616,6 +621,33 @@ multilib_src_compile() {
 				-rpath "${EPREFIX}"/usr/$(get_libdir)/openldap/openldap \
 				-o pw-pbkdf2.la \
 				pbkdf2.lo || die "linking pw-pbkdf2 failed"
+		fi
+
+		if use sha2 ; then
+			cd "${S}/contrib/slapd-modules/passwd/sha2" || die
+			einfo "Compiling contrib-module: pw-sha2"
+			"${lt}" --mode=compile --tag=CC \
+				"${CC}" \
+				-I"${BUILD_DIR}"/include \
+				-I../../../../include \
+				${CFLAGS} \
+				-o sha2.lo \
+				-c sha2.c || die "compiling pw-sha2 failed"
+			"${lt}" --mode=compile --tag=CC \
+				"${CC}" \
+				-I"${BUILD_DIR}"/include \
+				-I../../../../include \
+				${CFLAGS} \
+				-o slapd-sha2.lo \
+				-c slapd-sha2.c || die "compiling pw-sha2 failed"
+			einfo "Linking contrib-module: pw-sha2"
+			"${lt}" --mode=link --tag=CC \
+				"${CC}" -module \
+				${CFLAGS} \
+				${LDFLAGS} \
+				-rpath "${EPREFIX}"/usr/$(get_libdir)/openldap/openldap \
+				-o pw-sha2.la \
+				sha2.lo slapd-sha2.lo || die "linking pw-sha2 failed"
 		fi
 
 		# We could build pw-radius if GNURadius would install radlib.h

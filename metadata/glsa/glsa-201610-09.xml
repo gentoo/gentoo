@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-09">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the Chromium web
+    browser, the worst of which allows remote attackers to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>October 29, 2016</announced>
+  <revised>October 29, 2016: 1</revised>
+  <bug>589278</bug>
+  <bug>590420</bug>
+  <bug>592630</bug>
+  <bug>593708</bug>
+  <bug>595614</bug>
+  <bug>597016</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">54.0.2840.59</unaffected>
+      <vulnerable range="lt">54.0.2840.59</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the Chromium web
+      browser. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-54.0.2840.59"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5127">CVE-2016-5127</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5128">CVE-2016-5128</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5129">CVE-2016-5129</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5130">CVE-2016-5130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5131">CVE-2016-5131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5132">CVE-2016-5132</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5133">CVE-2016-5133</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5134">CVE-2016-5134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5135">CVE-2016-5135</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5136">CVE-2016-5136</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5137">CVE-2016-5137</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5138">CVE-2016-5138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5139">CVE-2016-5139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5140">CVE-2016-5140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5141">CVE-2016-5141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5142">CVE-2016-5142</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5143">CVE-2016-5143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5144">CVE-2016-5144</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5145">CVE-2016-5145</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5146">CVE-2016-5146</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5147">CVE-2016-5147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5148">CVE-2016-5148</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5149">CVE-2016-5149</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5150">CVE-2016-5150</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5151">CVE-2016-5151</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5152">CVE-2016-5152</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5153">CVE-2016-5153</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5154">CVE-2016-5154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5155">CVE-2016-5155</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5156">CVE-2016-5156</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5157">CVE-2016-5157</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5158">CVE-2016-5158</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5159">CVE-2016-5159</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5160">CVE-2016-5160</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5161">CVE-2016-5161</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5162">CVE-2016-5162</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5163">CVE-2016-5163</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5164">CVE-2016-5164</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5165">CVE-2016-5165</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5166">CVE-2016-5166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5167">CVE-2016-5167</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5170">CVE-2016-5170</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5171">CVE-2016-5171</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5172">CVE-2016-5172</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5173">CVE-2016-5173</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5174">CVE-2016-5174</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5175">CVE-2016-5175</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5177">CVE-2016-5177</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5178">CVE-2016-5178</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5181">CVE-2016-5181</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5182">CVE-2016-5182</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5183">CVE-2016-5183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5184">CVE-2016-5184</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5185">CVE-2016-5185</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5186">CVE-2016-5186</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5187">CVE-2016-5187</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5188">CVE-2016-5188</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5189">CVE-2016-5189</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5190">CVE-2016-5190</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5191">CVE-2016-5191</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5192">CVE-2016-5192</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5193">CVE-2016-5193</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5194">CVE-2016-5194</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 08 Sep 2016 13:43:22 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Oct 2016 13:09:39 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r2:=[multitarget] ) net-misc/curl virtual/libelf:0= sys-devel/make >=dev-util/cmake-3.7.2 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=a graphical disassembler for a large number of instruction sets
+EAPI=5
+HOMEPAGE=http://www.emilpro.com/
+IUSE=+system-binutils
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r2:=[multitarget] ) net-misc/curl virtual/libelf:0=
+SLOT=0
+SRC_URI=!system-binutils? ( mirror://gnu/binutils/binutils-2.23.2.tar.bz2 )
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:cmake-utils src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	cbafa3261c37c7e3af44bb16a34ea390	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=9f8ae991a4e9ca52f179e8f6828a6005

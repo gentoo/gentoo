@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Library for handling root privilege
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+IUSE=suid
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~x86
+LICENSE=BSD-2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/libspt-1.1.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=7a6fd523769b4761b95e2b9168f0235f

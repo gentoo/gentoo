@@ -572,7 +572,7 @@ tc-endian() {
 	case ${host} in
 		aarch64*be)	echo big;;
 		aarch64)	echo little;;
-		alpha*)		echo big;;
+		alpha*)		echo little;;
 		arm*b*)		echo big;;
 		arm*)		echo little;;
 		cris*)		echo little;;

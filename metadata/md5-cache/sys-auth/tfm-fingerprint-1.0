@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=sys-auth/bioapi app-arch/unzip
+DESCRIPTION=TouchChip TFM/ESS FingerPrint BSP
+EAPI=0
+HOMEPAGE=http://www.upek.com/support/dl_linux_bsp.asp
+KEYWORDS=-* x86
+LICENSE=UPEK-SDK-EULA
+RDEPEND=sys-auth/bioapi
+SLOT=0
+SRC_URI=http://www.upek.com/support/download/TFMESS_BSP_LIN_1.0.zip
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2fa6d80e81cd37e155fc0a6916bc233c

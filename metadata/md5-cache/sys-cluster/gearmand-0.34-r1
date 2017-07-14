@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=dev-libs/libevent >=dev-libs/boost-1.39:=[threads(+)] || ( >=sys-apps/util-linux-2.16 <sys-libs/e2fsprogs-libs-1.41.8 ) tcmalloc? ( dev-util/google-perftools ) memcache? ( >=dev-libs/libmemcached-0.47 ) sqlite? ( dev-db/sqlite:3 ) tokyocabinet? ( dev-db/tokyocabinet ) postgres? ( >=dev-db/postgresql-9.0:* ) virtual/pkgconfig >=sys-devel/boost-m4-0.4_p20160328 >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Generic framework to farm out work to other machines
+EAPI=5
+HOMEPAGE=http://www.gearman.org/
+IUSE=debug tcmalloc +memcache sqlite tokyocabinet postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-libs/libevent >=dev-libs/boost-1.39:=[threads(+)] || ( >=sys-apps/util-linux-2.16 <sys-libs/e2fsprogs-libs-1.41.8 ) tcmalloc? ( dev-util/google-perftools ) memcache? ( >=dev-libs/libmemcached-0.47 ) sqlite? ( dev-db/sqlite:3 ) tokyocabinet? ( dev-db/tokyocabinet ) postgres? ( >=dev-db/postgresql-9.0:* )
+SLOT=0
+SRC_URI=https://launchpad.net/gearmand/trunk/0.34/+download/gearmand-0.34.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=db2aaa5d7b1402ae861b2914292e9cec

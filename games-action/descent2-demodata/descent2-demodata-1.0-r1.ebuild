@@ -11,7 +11,7 @@ HOMEPAGE="http://www.interplay.com/games/descent.php"
 SRC_URI="ftp://ftp.funet.fi/pub/msdos/games/interplay/${DEMO}"
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 
 # <d2x-0.2.5-r3 may include the data.
 RDEPEND="!<games-action/d2x-0.2.5-r3

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=X? ( x11-libs/libXext ) gif? ( media-libs/giflib ) tiff? ( media-libs/tiff ) postscript? ( app-text/ghostscript-gpl ) X? ( x11-proto/xextproto )
+DESCRIPTION=the Utah Raster Toolkit is a library for dealing with raster images
+EAPI=5
+HOMEPAGE=http://www.cs.utah.edu/gdc/projects/urt/
+IUSE=gif postscript tiff X
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=URT gif? ( free-noncomm )
+RDEPEND=X? ( x11-libs/libXext ) gif? ( media-libs/giflib ) tiff? ( media-libs/tiff ) postscript? ( app-text/ghostscript-gpl )
+SLOT=0
+SRC_URI=ftp://ftp.iastate.edu/pub/utah-raster/urt-3.1b.tar.Z
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ec49405558f5f5326e46dd7fe1b6644b

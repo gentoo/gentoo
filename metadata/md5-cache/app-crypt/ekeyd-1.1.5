@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=!minimal? ( dev-lang/lua ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Entropy Key userspace daemon
+EAPI=4
+HOMEPAGE=http://www.entropykey.co.uk/
+IUSE=kernel_linux munin minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT GPL-2
+RDEPEND=!minimal? ( dev-lang/lua dev-lua/luasocket kernel_linux? ( virtual/udev ) munin? ( net-analyzer/munin ) ) !app-crypt/ekey-egd-linux sys-apps/openrc
+REQUIRED_USE=minimal? ( !munin )
+SLOT=0
+SRC_URI=mirror://ubuntu/pool/universe/e/ekeyd/ekeyd_1.1.5.orig.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=fa6826ad0a375a1eb18214ff83571967

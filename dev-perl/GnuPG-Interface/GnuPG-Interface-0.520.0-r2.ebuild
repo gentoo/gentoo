@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl module interface to interacting with GnuPG"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="
@@ -56,3 +56,9 @@ DIST_TEST=skip
 # t/decrypt.t              (Wstat: 0 Tests: 6 Failed: 2)
 #  Failed tests:  5-6
 # Failed 1/22 test programs. 2/56 subtests failed.
+
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}

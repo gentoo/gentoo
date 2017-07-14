@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=bind a local port and connect it to a remote socket
+EAPI=0
+HOMEPAGE=http://http.distributed.net/pub/dcti/unsupported/
+KEYWORDS=~x86 ~ppc ~arm ~amd64
+LICENSE=public-domain
+SLOT=0
+SRC_URI=ftp://ftp.distributed.net/pub/dcti/unsupported/datapipe-1.0.tar.gz http://http.distributed.net/pub/dcti/unsupported/datapipe-1.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e14abc1ef9875990cfae7eb07c48d907

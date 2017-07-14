@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-62">
+  <title>Firejail: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in Firejail, the
+    worst of which may allow privilege escalation.
+  </synopsis>
+  <product type="ebuild">firejail</product>
+  <announced>2017-01-24</announced>
+  <revised>2017-01-31: 2</revised>
+  <bug>604758</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/firejail" auto="yes" arch="*">
+      <unaffected range="ge">0.9.44.4</unaffected>
+      <vulnerable range="lt">0.9.44.4</vulnerable>
+    </package>
+    <package name="sys-apps/firejail-lts" auto="yes" arch="*">
+      <unaffected range="ge">0.9.38.8</unaffected>
+      <vulnerable range="lt">0.9.38.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A SUID program that reduces the risk of security breaches by restricting
+      the running environment of untrusted applications using Linux namespaces
+      and seccomp-bpf.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Firejail. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly bypass sandbox protection, cause a Denial of
+      Service condition, or escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firejail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/firejail-0.9.44.4"
+    </code>
+    
+    <p>All Firejail-lts users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/firejail-lts-0.9.38.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5180">CVE-2017-5180</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5206">CVE-2017-5206</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5207">CVE-2017-5207</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-13T15:06:51Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-31T03:41:42Z">whissi</metadata>
+</glsa>

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php:*[apache2,cgi,curl,gd,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/Class-Std-Fast dev-perl/Data-Dump dev-perl/Date-Manip dev-perl/Data-UUID dev-perl/DBD-mysql dev-perl/DBI dev-perl/IO-Socket-Multicast dev-perl/SOAP-WSDL dev-perl/Sys-CPU dev-perl/Sys-MemInfo dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/httpd-php:* virtual/jpeg:0 virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt:0= ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2* sys-devel/make >=dev-util/cmake-3.7.2 virtual/pkgconfig
+DESCRIPTION=Capture, analyse, record and monitor any cameras attached to your system
+EAPI=6
+HOMEPAGE=http://www.zoneminder.com/
+IUSE=curl ffmpeg gcrypt gnutls +mmap +ssl libressl vlc
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php:*[apache2,cgi,curl,gd,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/Class-Std-Fast dev-perl/Data-Dump dev-perl/Date-Manip dev-perl/Data-UUID dev-perl/DBD-mysql dev-perl/DBI dev-perl/IO-Socket-Multicast dev-perl/SOAP-WSDL dev-perl/Sys-CPU dev-perl/Sys-MemInfo dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/httpd-php:* virtual/jpeg:0 virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt:0= ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2*
+REQUIRED_USE=|| ( ssl gnutls )
+SLOT=0
+SRC_URI=https://github.com/ZoneMinder/ZoneMinder/archive/v1.30.0.tar.gz -> zoneminder-1.30.0.tar.gz https://github.com/FriendsOfCake/crud/archive/v3.0.10.tar.gz -> Crud-3.0.10.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	depend.apache	0917334d570e07f9743a04ff85b3bf1b	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	perl-functions	01e8c68d5a528bbcda4d3c60205983df	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=7c9b2780d19e62a4a5d91dae0b7a0bf5

@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit check-reqs cmake-utils flag-o-matic git-r3 llvm python-any-r1 versionator
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
+EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
@@ -56,13 +56,13 @@ pkg_setup() {
 src_unpack() {
 	if use test; then
 		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
+		git-r3_fetch "https://git.llvm.org/git/llvm.git
 			https://github.com/llvm-mirror/llvm.git"
 	fi
 	git-r3_fetch
 
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
+		git-r3_checkout https://llvm.org/git/llvm.git \
 			"${WORKDIR}"/llvm
 	fi
 	git-r3_checkout

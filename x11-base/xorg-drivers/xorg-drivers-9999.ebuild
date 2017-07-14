@@ -53,6 +53,7 @@ IUSE_VIDEO_CARDS="
 	video_cards_siliconmotion
 	video_cards_tdfx
 	video_cards_tegra
+	video_cards_vc4
 	video_cards_vesa
 	video_cards_via
 	video_cards_virtualbox
@@ -106,6 +107,7 @@ PDEPEND="
 	video_cards_siliconmotion? ( x11-drivers/xf86-video-siliconmotion )
 	video_cards_tdfx?          ( x11-drivers/xf86-video-tdfx )
 	video_cards_tegra?         ( >=x11-base/xorg-server-${PV}[glamor] )
+	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )

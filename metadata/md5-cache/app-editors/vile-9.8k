@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=>=sys-libs/ncurses-5.2 perl? ( dev-lang/perl ) sys-devel/flex app-eselect/eselect-vi
+DESCRIPTION=VI Like Emacs -- yet another full-featured vi clone
+EAPI=5
+HOMEPAGE=http://invisible-island.net/vile/
+IUSE=perl
+KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/ncurses-5.2 perl? ( dev-lang/perl )
+SLOT=0
+SRC_URI=ftp://invisible-island.net/vile/current/vile-9.8k.tgz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=94a5d350bc44b7b7a624135f93d3e440

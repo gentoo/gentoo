@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-52">
+  <title>Pillow: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Pillow, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pillow</product>
+  <announced>December 31, 2016</announced>
+  <revised>December 31, 2016: 1</revised>
+  <bug>507982</bug>
+  <bug>573958</bug>
+  <bug>599608</bug>
+  <bug>599610</bug>
+  <bug>599612</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-python/pillow" auto="yes" arch="*">
+      <unaffected range="ge">3.4.2</unaffected>
+      <vulnerable range="lt">3.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The friendly PIL fork.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pillow. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application, or obtain
+      sensitive information.
+    </p>
+    
+    <p>A remote attackers could execute arbitrary code with the privileges of
+      the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pillow users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pillow-3.4.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1932">CVE-2014-1932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1933">CVE-2014-1933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0740">CVE-2016-0740</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0775">CVE-2016-0775</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2533">CVE-2016-2533</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4009">CVE-2016-4009</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9189">CVE-2016-9189</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9190">CVE-2016-9190</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:10:45 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 14:15:38 +0000">b-man</metadata>
+</glsa>

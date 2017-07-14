@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-db/sqlite dev-vcs/git
+DESCRIPTION=static analysis tool for C
+EAPI=4
+HOMEPAGE=http://smatch.sourceforge.net/
+LICENSE=OSL-1.1
+RDEPEND=dev-db/sqlite
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ed62fc7c26e2380bd4ab416bb773ec55

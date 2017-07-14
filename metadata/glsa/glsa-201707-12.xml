@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-12">
+  <title>MAN DB: Privilege escalation</title>
+  <synopsis>A vulnerability in MAN DB allows local users to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">man-db</product>
+  <announced>2017-07-09</announced>
+  <revised>2017-07-09: 1</revised>
+  <bug>602588</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/man-db" auto="yes" arch="*">
+      <unaffected range="ge" slot="">2.7.6.1-r2</unaffected>
+      <vulnerable range="lt" slot="">2.7.6.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MAN DB is a man replacement that utilizes BerkelyDB instead of flat
+      files.
+    </p>
+  </background>
+  <description>
+    <p>The /var/cache/man directory as part of the MAN DB package has group
+      permissions set to root.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local user who does not belong to the root group, but has the ability
+      to modify the /var/cache/man directory can escalate privileges to the
+      group root.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MAN DB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/man-db-2.7.6.1-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1336">CVE-2015-1336</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T16:57:30Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-07-09T20:19:23Z">whissi</metadata>
+</glsa>

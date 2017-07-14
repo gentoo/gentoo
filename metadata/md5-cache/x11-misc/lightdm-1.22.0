@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=audit? ( sys-process/audit ) >=dev-libs/glib-2.32.3:2 dev-libs/libxml2 gnome? ( sys-apps/accountsservice ) virtual/pam x11-libs/libX11 >=x11-libs/libxklavier-5 introspection? ( >=dev-libs/gobject-introspection-1 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 ) dev-util/gtk-doc-am dev-util/intltool gnome? ( gnome-base/gnome-common ) sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A lightweight display manager
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/LightDM
+IUSE=audit +gtk +introspection qt4 qt5 +gnome
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3 LGPL-3
+PDEPEND=gtk? ( x11-misc/lightdm-gtk-greeter )
+RDEPEND=audit? ( sys-process/audit ) >=dev-libs/glib-2.32.3:2 dev-libs/libxml2 gnome? ( sys-apps/accountsservice ) virtual/pam x11-libs/libX11 >=x11-libs/libxklavier-5 introspection? ( >=dev-libs/gobject-introspection-1 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 ) >=sys-auth/pambase-20101024-r2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://launchpad.net/lightdm/1.22/1.22.0/+download/lightdm-1.22.0.tar.xz mirror://gentoo/introspection-20110205.m4.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	qmake-utils	990448b067cb3cfe1443bc25fb57239c	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=b0100a6067f70c89a49d6af2a7d9136b

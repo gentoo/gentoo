@@ -1,0 +1,196 @@
+From f76cc5a97dfa94b03abb878767c8dc15b4461685 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 14 Jul 2017 05:07:42 +0300
+Subject: [PATCH 5/5] Make printers panel optional
+
+---
+ configure.ac            | 96 ++++++++++++++++++++++++++++++-------------------
+ panels/Makefile.am      |  7 ++--
+ shell/Makefile.am       |  7 ++--
+ shell/cc-panel-loader.c |  4 +++
+ 4 files changed, 73 insertions(+), 41 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4af24d0..7629621 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -189,9 +189,59 @@ AS_IF([test "$enable_color" != "no"],
+       ])
+ AM_CONDITIONAL(BUILD_COLOR, test "$build_color" = "yes")
+ 
+-PKG_CHECK_MODULES(PRINTERS_PANEL, $COMMON_MODULES
+-                  polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION
+-                  smbclient)
++# Check for CUPS 1.4 or newer
++build_printers=no
++AC_PROG_SED
++
++AC_ARG_ENABLE([cups],
++        AS_HELP_STRING([--disable-cups], [disable printer management panel]),
++        [],
++        enable_cups=yes
++)
++
++AS_IF([test "x$enable_cups" != "xno"],
++      [
++        PKG_CHECK_MODULES(PRINTERS_PANEL, $COMMON_MODULES
++                          polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION
++                          smbclient)
++
++        AC_PATH_PROG(CUPS_CONFIG, cups-config)
++
++        if test x$CUPS_CONFIG = x; then
++          AC_MSG_ERROR([cups-config not found])
++        fi
++
++        CUPS_API_VERSION=`$CUPS_CONFIG --api-version`
++        CUPS_API_MAJOR=`echo $ECHO_N $CUPS_API_VERSION | cut -d . -f 1`
++        CUPS_API_MINOR=`echo $ECHO_N $CUPS_API_VERSION | cut -d . -f 2`
++
++        AC_CHECK_HEADERS([cups/cups.h cups/http.h cups/ipp.h cups/ppd.h],,
++                         AC_MSG_ERROR([CUPS headers not found]))
++
++        if ! test $CUPS_API_MAJOR -gt 1 -o \
++                  $CUPS_API_MAJOR -eq 1 -a $CUPS_API_MINOR -ge 4 ; then
++          AC_MSG_ERROR([CUPS 1.4 or newer not found])
++        fi
++
++        # https://bugzilla.gnome.org/show_bug.cgi?id=696766
++        CUPS_CPPFLAGS=""
++        if test $CUPS_API_MAJOR -gt 1 -o \
++                $CUPS_API_MAJOR -eq 1 -a $CUPS_API_MINOR -ge 6 ; then
++           CUPS_CPPFLAGS=-D_PPD_DEPRECATED=""
++        fi
++
++        CUPS_CFLAGS=`$CUPS_CONFIG --cflags | $SED -e 's/-O\w*//g' -e 's/-m\w*//g'`
++        CUPS_LIBS=`$CUPS_CONFIG --libs`
++
++        AC_SUBST(CUPS_CPPFLAGS)
++        AC_SUBST(CUPS_CFLAGS)
++        AC_SUBST(CUPS_LIBS)
++        build_printers=yes
++        AC_DEFINE(BUILD_PRINTERS, 1, [Define to 1 to build the Printers panel])
++      ]
++)
++AM_CONDITIONAL(BUILD_PRINTERS, test "x$build_printers" = "xyes")
++
+ PKG_CHECK_MODULES(PRIVACY_PANEL, $COMMON_MODULES)
+ PKG_CHECK_MODULES(REGION_PANEL, $COMMON_MODULES
+                   polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION
+@@ -334,40 +384,6 @@ AS_IF([test "$enable_bluetooth" = "yes"],
+       ])
+ AM_CONDITIONAL(BUILD_BLUETOOTH, [test "$have_bluetooth" = "yes"])
+ 
+-# Check for CUPS 1.4 or newer
+-AC_PROG_SED
+-
+-AC_PATH_PROG(CUPS_CONFIG, cups-config)
+-
+-if test x$CUPS_CONFIG = x; then
+-  AC_MSG_ERROR([cups-config not found])
+-fi
+-
+-CUPS_API_VERSION=`$CUPS_CONFIG --api-version`
+-CUPS_API_MAJOR=`echo $ECHO_N $CUPS_API_VERSION | cut -d . -f 1`
+-CUPS_API_MINOR=`echo $ECHO_N $CUPS_API_VERSION | cut -d . -f 2`
+-
+-AC_CHECK_HEADERS([cups/cups.h cups/http.h cups/ipp.h cups/ppd.h],,
+-                 AC_MSG_ERROR([CUPS headers not found]))
+-
+-if ! test $CUPS_API_MAJOR -gt 1 -o \
+-          $CUPS_API_MAJOR -eq 1 -a $CUPS_API_MINOR -ge 4 ; then
+-  AC_MSG_ERROR([CUPS 1.4 or newer not found])
+-fi
+-
+-# https://bugzilla.gnome.org/show_bug.cgi?id=696766
+-CUPS_CPPFLAGS=""
+-if test $CUPS_API_MAJOR -gt 1 -o \
+-        $CUPS_API_MAJOR -eq 1 -a $CUPS_API_MINOR -ge 6 ; then
+-   CUPS_CPPFLAGS=-D_PPD_DEPRECATED=""
+-fi
+-
+-CUPS_CFLAGS=`$CUPS_CONFIG --cflags | $SED -e 's/-O\w*//g' -e 's/-m\w*//g'`
+-CUPS_LIBS=`$CUPS_CONFIG --libs`
+-AC_SUBST(CUPS_CPPFLAGS)
+-AC_SUBST(CUPS_CFLAGS)
+-AC_SUBST(CUPS_LIBS)
+-
+ # Optional dependency for the user accounts panel
+ AC_ARG_WITH([cheese],
+             AS_HELP_STRING([--with-cheese], [enable cheese webcam support]),,
+@@ -671,6 +687,12 @@ else
+ 	AC_MSG_NOTICE([   Color panel disabled])
+ fi
+ 
++if test "x$build_printers" = "xyes"; then
++	AC_MSG_NOTICE([** CUPS (Printers panel)])
++else
++	AC_MSG_NOTICE([   Printers panel disabled])
++fi
++
+ 
+ if test "x$have_cheese" = "xyes"; then
+ 	AC_MSG_NOTICE([** Cheese (Users panel webcam support)])
+diff --git a/panels/Makefile.am b/panels/Makefile.am
+index 2806c45..b68561e 100644
+--- a/panels/Makefile.am
++++ b/panels/Makefile.am
+@@ -14,8 +14,11 @@ SUBDIRS= \
+ 	datetime \
+ 	search \
+ 	privacy \
+-	sharing \
+-	printers
++	sharing
++
++if BUILD_PRINTERS
++SUBDIRS += printers
++endif
+ 
+ if BUILD_COLOR
+ SUBDIRS += color
+diff --git a/shell/Makefile.am b/shell/Makefile.am
+index f3e49c7..af782ea 100644
+--- a/shell/Makefile.am
++++ b/shell/Makefile.am
+@@ -91,8 +91,11 @@ gnome_control_center_LDADD =						\
+ 	$(top_builddir)/panels/sharing/libsharing.la			\
+ 	$(top_builddir)/panels/sound/libsound.la			\
+ 	$(top_builddir)/panels/universal-access/libuniversal-access.la	\
+-	$(top_builddir)/panels/user-accounts/libuser-accounts.la	\
+-	$(top_builddir)/panels/printers/libprinters.la
++	$(top_builddir)/panels/user-accounts/libuser-accounts.la
++
++if BUILD_PRINTERS
++gnome_control_center_LDADD += $(top_builddir)/panels/printers/libprinters.la
++endif
+ 
+ if BUILD_WACOM
+ gnome_control_center_LDADD += $(top_builddir)/panels/wacom/libwacom-properties.la
+diff --git a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+index 9104b45..a713079 100644
+--- a/shell/cc-panel-loader.c
++++ b/shell/cc-panel-loader.c
+@@ -49,7 +49,9 @@ extern GType cc_notifications_panel_get_type (void);
+ extern GType cc_goa_panel_get_type (void);
+ #endif /* BUILD_ONLINE_ACCOUNTS */
+ extern GType cc_power_panel_get_type (void);
++#ifdef BUILD_PRINTERS
+ extern GType cc_printers_panel_get_type (void);
++#endif /* BUILD_PRINTERS */
+ extern GType cc_privacy_panel_get_type (void);
+ extern GType cc_region_panel_get_type (void);
+ extern GType cc_search_panel_get_type (void);
+@@ -95,7 +97,9 @@ static struct {
+   PANEL_TYPE("online-accounts",  cc_goa_panel_get_type          ),
+ #endif
+   PANEL_TYPE("power",            cc_power_panel_get_type        ),
++#ifdef BUILD_PRINTERS
+   PANEL_TYPE("printers",         cc_printers_panel_get_type     ),
++#endif
+   PANEL_TYPE("privacy",          cc_privacy_panel_get_type      ),
+   PANEL_TYPE("region",           cc_region_panel_get_type       ),
+   PANEL_TYPE("search",           cc_search_panel_get_type       ),
+-- 
+2.10.2
+

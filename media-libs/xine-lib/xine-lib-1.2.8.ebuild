@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
 else
-	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
 	SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 	NLS_IUSE="nls"
 	NLS_DEPEND="nls? ( sys-devel/gettext )"
@@ -76,7 +76,7 @@ RDEPEND="${NLS_RDEPEND}
 		media-libs/freetype:2
 		)
 	v4l? ( media-libs/libv4l )
-	vaapi? ( x11-libs/libva )
+	vaapi? ( x11-libs/libva[X,opengl] )
 	vcd? (
 		>=media-video/vcdimager-0.7.23
 		dev-libs/libcdio:0=[-minimal]

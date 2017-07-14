@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-08">
+  <title>w3m: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in w3m, the worst of which
+    could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">w3m</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>579312</bug>
+  <bug>600176</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/w3m" auto="yes" arch="*">
+      <unaffected range="ge">0.5.3-r9</unaffected>
+      <vulnerable range="lt">0.5.3-r9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>w3m is a text based WWW browser.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in w3m. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition via a maliciously
+      crafted HTML file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All w3m users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/w3m-0.5.3-r9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9422">CVE-2016-9422</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9423">CVE-2016-9423</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9424">CVE-2016-9424</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9425">CVE-2016-9425</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9426">CVE-2016-9426</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9428">CVE-2016-9428</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9429">CVE-2016-9429</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9430">CVE-2016-9430</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9431">CVE-2016-9431</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9432">CVE-2016-9432</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9433">CVE-2016-9433</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9434">CVE-2016-9434</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9435">CVE-2016-9435</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9436">CVE-2016-9436</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9437">CVE-2016-9437</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9438">CVE-2016-9438</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9439">CVE-2016-9439</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9440">CVE-2016-9440</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9441">CVE-2016-9441</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9442">CVE-2016-9442</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9443">CVE-2016-9443</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 13:18:36 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 16:15:30 +0000">b-man</metadata>
+</glsa>

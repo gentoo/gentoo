@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Spotify is a social music platform
+EAPI=6
+HOMEPAGE=https://www.spotify.com/ch-de/download/previews/
+IUSE=gnome pax_kernel pulseaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=Spotify
+RDEPEND=dev-libs/nss gnome-base/gconf gnome-extra/zenity media-libs/alsa-lib media-libs/harfbuzz media-libs/fontconfig media-libs/mesa net-misc/curl[ssl,curl_ssl_openssl] net-print/cups[ssl] x11-libs/gtk+:2 x11-libs/libXScrnSaver x11-libs/libXtst dev-python/pygobject:3 dev-python/dbus-python pulseaudio? ( media-sound/pulseaudio ) gnome? ( gnome-extra/gnome-integration-spotify )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.57.474.gca9c9538-30_amd64.deb ) x86? ( http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.57.474.gca9c9538-30_i386.deb )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:unpacker src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=f0bbfe04982da5d4985e27feb4652262

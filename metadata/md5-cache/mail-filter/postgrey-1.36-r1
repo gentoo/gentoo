@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Postgrey is a Postfix policy server implementing greylisting
+EAPI=5
+HOMEPAGE=http://postgrey.schweikert.ch/
+IUSE=targrey
+KEYWORDS=amd64 hppa ~ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6.0 dev-perl/Net-Server dev-perl/IO-Multiplex dev-perl/BerkeleyDB dev-perl/Net-DNS dev-perl/NetAddr-IP dev-perl/Net-RBLClient dev-perl/Parse-Syslog virtual/perl-Digest-SHA >=sys-libs/db-4.1
+SLOT=0
+SRC_URI=http://postgrey.schweikert.ch/pub/postgrey-1.36.tar.gz http://postgrey.schweikert.ch/pub/old/postgrey-1.36.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=f564df1c800a88af2db9dd14e38d6c7c

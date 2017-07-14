@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-24">
+  <title>jbig2dec: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in jbig2dec, the worst of
+    which might allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">jbig2dec</product>
+  <announced>2017-06-22</announced>
+  <revised>2017-06-22: 1</revised>
+  <bug>545234</bug>
+  <bug>607188</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jbig2dec" auto="yes" arch="*">
+      <unaffected range="ge">0.13-r1</unaffected>
+      <vulnerable range="lt">0.13-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>jbig2dec is a decoder implementation of the JBIG2 image compression
+      format.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in jbig2dec. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to process a
+      specially crafted JBIG2 image file using an application linked against
+      jbig2dec library, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All jbig2dec users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/jbig2dec-0.13-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9601">CVE-2016-9601</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-24T05:06:12Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-22T18:31:34Z">whissi</metadata>
+</glsa>

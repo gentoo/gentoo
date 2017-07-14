@@ -4,7 +4,7 @@
 EAPI=5
 USE_RUBY="ruby21 ruby22"
 
-inherit cmake-utils multilib ruby-ng
+inherit cmake-utils eutils multilib ruby-ng
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
@@ -18,15 +18,15 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
-	>=dev-libs/boost-1.54[nls]
 	>=dev-libs/leatherman-0.9.3
-	>=dev-cpp/yaml-cpp-0.5.1
 	dev-cpp/cpp-hocon"
 CDEPEND="
 	dev-libs/openssl:*
 	sys-apps/util-linux
 	app-emulation/virt-what
 	net-misc/curl
+	>=dev-libs/boost-1.54[nls]
+	>=dev-cpp/yaml-cpp-0.5.1
 	!<app-admin/puppet-4.0.0"
 
 RDEPEND="${CDEPEND}"
@@ -43,6 +43,7 @@ src_prepare() {
 	# make the require work
 	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
 	# patches
+	epatch "${FILESDIR}/is-integer_fact-1624_3.6.5.patch"
 	epatch_user
 }
 

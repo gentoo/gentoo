@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201602-01">
+  <title>QEMU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which may allow a remote attacker to cause a Denial of Service or gain
+    elevated privileges from a guest VM. 
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>February 04, 2016</announced>
+  <revised>February 04, 2016: 1</revised>
+  <bug>544328</bug>
+  <bug>549404</bug>
+  <bug>557206</bug>
+  <bug>558416</bug>
+  <bug>559656</bug>
+  <bug>560422</bug>
+  <bug>560550</bug>
+  <bug>560760</bug>
+  <bug>566792</bug>
+  <bug>567144</bug>
+  <bug>567828</bug>
+  <bug>567868</bug>
+  <bug>568214</bug>
+  <bug>568226</bug>
+  <bug>568246</bug>
+  <bug>569646</bug>
+  <bug>570110</bug>
+  <bug>570988</bug>
+  <bug>571562</bug>
+  <bug>571564</bug>
+  <bug>571566</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">2.5.0-r1</unaffected>
+      <vulnerable range="lt">2.5.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might cause a Denial of Service or gain escalated
+      privileges from a guest VM.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-2.5.0-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1779">CVE-2015-1779</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3456">CVE-2015-3456</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5225">CVE-2015-5225</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5278">CVE-2015-5278</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5279">CVE-2015-5279</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5745">CVE-2015-5745</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6815">CVE-2015-6815</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6855">CVE-2015-6855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7295">CVE-2015-7295</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7504">CVE-2015-7504</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7512">CVE-2015-7512</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7549">CVE-2015-7549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8345">CVE-2015-8345</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8504">CVE-2015-8504</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8556">CVE-2015-8556</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8558">CVE-2015-8558</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8567">CVE-2015-8567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8568">CVE-2015-8568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8666">CVE-2015-8666</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8701">CVE-2015-8701</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8743">CVE-2015-8743</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8744">CVE-2015-8744</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8745">CVE-2015-8745</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1568">CVE-2016-1568</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Nov 2015 21:30:41 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Thu, 04 Feb 2016 09:23:14 +0000">K_F</metadata>
+</glsa>

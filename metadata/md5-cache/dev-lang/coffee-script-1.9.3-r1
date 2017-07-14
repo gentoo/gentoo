@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DESCRIPTION=A little language that compiles into javascript
+EAPI=5
+HOMEPAGE=http://coffeescript.org/
+IUSE=doc examples
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=net-libs/nodejs
+SLOT=0
+SRC_URI=https://github.com/jashkenas/coffeescript/archive/1.9.3.tar.gz -> coffee-script-1.9.3.tar.gz
+_eclass_exported_funcs=src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=5e9e39f7692c82f7f87be54d1df1109e

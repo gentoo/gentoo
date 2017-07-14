@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt ) ncurses? ( sys-libs/ncurses:= sys-libs/readline:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-misc/xbitmaps x11-proto/xproto app-text/rman x11-apps/mkfontdir x11-apps/bdftopcf ) X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Complete 3270 access package
+EAPI=5
+HOMEPAGE=http://x3270.bgp.nu/
+IUSE=cjk doc ncurses ssl tcl X X
+KEYWORDS=~amd64 ~ppc ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt ) ncurses? ( sys-libs/ncurses:= sys-libs/readline:0= ) tcl? ( dev-lang/tcl:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/x3270/suite3270-3.5ga9-src.tgz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:font src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	font	82836641e7d4639329d8c195234ad0e3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e038496e482f8ca8420ee4338b7218d8

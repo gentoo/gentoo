@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-24">
+  <title>LibVNCServer/LibVNCClient: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in
+    LibVNCServer/LibVNCClient, the worst of which allows remote attackers to
+    execute arbitrary code when connecting to a malicious server.
+  </synopsis>
+  <product type="ebuild">libvncserver</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>605326</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libvncserver" auto="yes" arch="*">
+      <unaffected range="ge">0.9.11</unaffected>
+      <vulnerable range="lt">0.9.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibVNCServer/LibVNCClient are cross-platform C libraries that allow you
+      to easily implement VNC server or client functionality in your program.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibVNCServer and
+      LibVNCClient. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to connect to a malicious VNC
+      server or leverage Man-in-the-Middle attacks to cause the execution of
+      arbitrary code with the privileges of the user running a VNC client
+      linked against LibVNCClient.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibVNCServer/LibVNCClient users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libvncserver-0.9.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9941">CVE-2016-9941</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9942">CVE-2016-9942</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-05T22:55:00Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:45:56Z">whissi</metadata>
+</glsa>

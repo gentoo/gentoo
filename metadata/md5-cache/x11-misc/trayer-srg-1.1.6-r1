@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/gdk-pixbuf:2[X] x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXmu virtual/pkgconfig
+DESCRIPTION=trayer fork with multi monitor support and cleaned up codebase
+EAPI=6
+HOMEPAGE=https://github.com/sargon/trayer-srg
+KEYWORDS=amd64 x86
+LICENSE=MIT GPL-2+
+RDEPEND=x11-libs/gdk-pixbuf:2[X] x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXmu
+SLOT=0
+SRC_URI=https://github.com/sargon/trayer-srg/tarball/trayer-1.1.6 -> trayer-srg-1.1.6.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=417643ada2bade3b315422480cc9932b

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=!<=media-libs/libmp4v2-1.9.1:0 sys-apps/sed >=app-portage/elt-patches-20170317
+DESCRIPTION=Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
+EAPI=4
+HOMEPAGE=https://code.google.com/p/mp4v2/
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=MPL-1.1
+RDEPEND=!<=media-libs/libmp4v2-1.9.1:0
+RESTRICT=test
+SLOT=1
+SRC_URI=https://mp4v2.googlecode.com/files/mp4v2-1.9.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=3d520cf323527b29b471b48b23ce38dc

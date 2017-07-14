@@ -20,6 +20,7 @@ DEPEND="
 	dev-ml/ppx_type_conv:=
 	dev-ml/fieldslib:=
 	dev-ml/ocaml-migrate-parsetree:=
+	dev-ml/ppx_traverse_builtins:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"

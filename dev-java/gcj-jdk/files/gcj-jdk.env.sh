@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 VERSION="GCJ ${PV}"
-JAVA_HOME="${EPREFIX}/usr/lib/${P}"
-JDK_HOME="${EPREFIX}/usr/lib/${P}"
+JAVA_HOME="${EPREFIX}/usr/$(get_libdir)/${P}"
+JDK_HOME="${EPREFIX}/usr/$(get_libdir)/${P}"
 JAVAC="\${JAVA_HOME}/bin/javac"
 PATH="\${JAVA_HOME}/bin"
 ROOTPATH="\${JAVA_HOME}/bin"

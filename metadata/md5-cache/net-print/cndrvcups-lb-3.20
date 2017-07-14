@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Canon UFR II / LIPSLX Printer Driver for Linux
+EAPI=5
+HOMEPAGE=http://support-au.canon.com.au/contents/AU/EN/0100270808.html
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Canon-UFR-II
+RDEPEND=gnome-base/libglade net-print/cups ~net-print/cndrvcups-common-lb-3.20 x11-libs/gtk+:2 >=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)] virtual/jpeg:62[abi_x86_32(-)]
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODE0&cmp=ABS&lang=EN -> Linux_UFRII_PrinterDriver_V320_uk_EN.tar.gz
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=eeac61a133f961bbf8c6ed27e65d22d4

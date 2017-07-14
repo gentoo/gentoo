@@ -8,10 +8,6 @@
 # Not yet stable.
 elogind
 
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary mask to support stable bug 615818
-ruby_targets_ruby22
-
 # Andrey Grozin <grozin@gentoo.org> (16 May 2014)
 # No stable gcl
 gcl

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare pretend setup
+DEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( sys-cluster/openmpi ) misc-haskell? ( dev-lang/ghc dev-haskell/mmap ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
+EAPI=6
+HOMEPAGE=http://www.bcgsc.ca/platform/bioinfo/software/abyss/
+IUSE=+mpi openmp misc-haskell
+KEYWORDS=~amd64 ~x86
+LICENSE=abyss
+RDEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( sys-cluster/openmpi )
+SLOT=0
+SRC_URI=https://github.com/bcgsc/abyss/archive/2.0.2.tar.gz -> abyss-2.0.2.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=3b173739bd4e2f9d61a49918b3b8bc05

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-libs/expat dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) openssl? ( dev-libs/openssl:* ) !openssl? ( app-crypt/gpgme dev-libs/libgcrypt:* ) virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( >=net-libs/gnutls-2.12.0 )
+DESCRIPTION=Client library for accessing ISDS Soap services
+EAPI=5
+HOMEPAGE=http://xpisar.wz.cz/libisds/
+IUSE=+curl debug nls openssl static-libs test
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-libs/expat dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) openssl? ( dev-libs/openssl:* ) !openssl? ( app-crypt/gpgme dev-libs/libgcrypt:* ) !openssl? ( >=app-crypt/gnupg-2 )
+SLOT=0
+SRC_URI=http://xpisar.wz.cz/libisds/dist/libisds-0.10.tar.xz
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a56769944532aa9179da33d2783df17a

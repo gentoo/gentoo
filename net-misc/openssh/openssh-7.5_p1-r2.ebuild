@@ -121,7 +121,6 @@ src_prepare() {
 		fi
 		save_version X509
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
-		use libressl && epatch "${FILESDIR}"/${PN}-7.5p1-x509-libressl.patch
 	fi
 
 	if use ldap ; then

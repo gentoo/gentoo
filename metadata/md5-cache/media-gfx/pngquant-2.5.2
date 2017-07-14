@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/libpng:0= sys-libs/zlib:= lcms? ( media-libs/lcms:2 )
+DESCRIPTION=command-line utility and library for lossy compression of PNG images
+EAPI=5
+HOMEPAGE=http://pngquant.org/
+IUSE=debug lcms openmp cpu_flags_x86_sse2
+KEYWORDS=~amd64 ~x86
+LICENSE=HPND rwpng
+RDEPEND=media-libs/libpng:0= sys-libs/zlib:= lcms? ( media-libs/lcms:2 )
+SLOT=0
+SRC_URI=http://pngquant.org/pngquant-2.5.2-src.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=97d1ae2181d5abf6b9443915f6890095

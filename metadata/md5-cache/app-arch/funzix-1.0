@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=unpacker for the bogus ZIX format
+EAPI=0
+HOMEPAGE=http://funzix.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://sourceforge/funzix/funzix-1.0.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a24418ae054a1045dbc6b2c084e37586

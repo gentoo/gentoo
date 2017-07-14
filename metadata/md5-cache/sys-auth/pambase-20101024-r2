@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst test
+DEPEND=app-portage/portage-utils
+DESCRIPTION=PAM base configuration files
+EAPI=4
+HOMEPAGE=https://www.gentoo.org/proj/en/base/pam/
+IUSE=debug cracklib passwdqc consolekit gnome-keyring selinux mktemp pam_ssh +sha512 pam_krb5 minimal
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=|| ( >=sys-libs/pam-0.99.9.0-r1 ( sys-auth/openpam || ( sys-freebsd/freebsd-pam-modules sys-netbsd/netbsd-pam-modules ) ) ) cracklib? ( >=sys-libs/pam-0.99[cracklib] ) consolekit? ( >=sys-auth/consolekit-0.3[pam] ) gnome-keyring? ( >=gnome-base/gnome-keyring-2.20[pam] ) selinux? ( >=sys-libs/pam-0.99[selinux] ) passwdqc? ( >=sys-auth/pam_passwdqc-1.0.4 ) mktemp? ( sys-auth/pam_mktemp ) pam_ssh? ( sys-auth/pam_ssh ) sha512? ( >=sys-libs/pam-1.0.1 ) pam_krb5? ( || ( >=sys-libs/pam-1.1.0 sys-auth/openpam ) >=sys-auth/pam_krb5-4.3 ) !<sys-freebsd/freebsd-pam-modules-6.2-r1 !<sys-libs/pam-0.99.9.0-r1
+RESTRICT=binchecks
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~flameeyes/pambase/pambase-20101024.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=08ad49990a6ab52004a7a7ad931f6990

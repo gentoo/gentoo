@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-qt/qtgui:5[accessibility] dev-qt/qtdbus:5 dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 dev-qt/qtsingleapplication[qt5(+),X] media-libs/phonon[qt5]
+DESCRIPTION=Qt5 YouTube Client
+EAPI=5
+HOMEPAGE=http://flavio.tordini.org/minitube
+IUSE=debug download linguas_ar linguas_ca linguas_ca_ES linguas_da linguas_de_DE linguas_el linguas_en linguas_es linguas_es_AR linguas_es_ES linguas_fi linguas_fi_FI linguas_fr linguas_he_IL linguas_hr linguas_hu linguas_ia linguas_it linguas_jv linguas_nl linguas_pl linguas_pl_PL linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sl linguas_tr linguas_zh_CN
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtgui:5[accessibility] dev-qt/qtdbus:5 dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 dev-qt/qtsingleapplication[qt5(+),X] media-libs/phonon[qt5]
+SLOT=0
+SRC_URI=https://github.com/flaviotordini/minitube/archive/2.5.2.tar.gz -> minitube-2.5.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=1c3d96c740f1d0e27e3a10c353fde955

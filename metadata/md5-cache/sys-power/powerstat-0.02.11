@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile
+DESCRIPTION=Laptop power measuring tool
+EAPI=6
+HOMEPAGE=https://launchpad.net/ubuntu/+source/powerstat https://github.com/ColinIanKing/powerstat
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://github.com/ColinIanKing/powerstat/archive/V0.02.11.tar.gz -> powerstat-0.02.11.tar.gz
+_eclass_exported_funcs=src_compile:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=bca32a8d5772e9c4d23b8fff7a247e89

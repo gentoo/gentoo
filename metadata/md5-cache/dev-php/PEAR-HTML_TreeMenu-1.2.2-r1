@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Provides an API to create a HTML tree
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTML_TreeMenu
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTML_TreeMenu-1.2.2.tgz
+_eclass_exported_funcs=pkg_postrm:php-pear-r2 pkg_postinst:- src_install:-
+_eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
+_md5_=dba9ff835f5a964abfd6e2d2f95ccd79

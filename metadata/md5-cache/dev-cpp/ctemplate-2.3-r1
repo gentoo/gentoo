@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A simple but powerful template language for C++
+EAPI=6
+HOMEPAGE=https://github.com/olafvdspek/ctemplate
+IUSE=doc emacs vim-syntax static-libs test
+KEYWORDS=amd64 arm ppc x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( >=app-editors/vim-core-7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/ctemplate-2.3.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e2dab5309d927f1c938e9164a320ffc2

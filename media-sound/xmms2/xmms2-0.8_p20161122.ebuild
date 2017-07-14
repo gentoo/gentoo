@@ -12,7 +12,7 @@ inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 MY_P="${P%_p*}DrO_o-949-gca15e830"
 
 DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
-HOMEPAGE="http://xmms2.org/wiki/Main_Page"
+HOMEPAGE="https://xmms2.org/wiki/Main_Page"
 #SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"

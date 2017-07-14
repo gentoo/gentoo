@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
+EAPI=5
+HOMEPAGE=https://github.com/ftrvxmtrx/split2flac
+IUSE=enca flake imagemagick mac mp3 mp4 ogg replaygain wavpack
+LICENSE=MIT
+RDEPEND=app-cdr/cuetools media-sound/shntool[mac?] virtual/libiconv media-libs/flac enca? ( app-i18n/enca ) flake? ( media-sound/flake ) mp3? ( media-sound/lame || ( media-libs/mutagen media-libs/id3lib ) ) mp4? ( media-libs/faac media-libs/libmp4v2:0[utils] ) ogg? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) mp4? ( media-sound/aacgain ) ogg? ( media-sound/vorbisgain ) ) imagemagick? ( media-gfx/imagemagick )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-2 src_configure:- src_compile:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	git-2	195a672bfaf52d868442171c9469bbb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ec468eedc64c9af13d54b1bff0847fe6

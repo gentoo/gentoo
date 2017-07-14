@@ -6,7 +6,7 @@ EAPI=5
 KDE_HANDBOOK="optional"
 inherit kde4-base
 
-DESCRIPTION="VNC-compatible server to share KDE desktops"
+DESCRIPTION="VNC-compatible server to share Plasma desktops"
 HOMEPAGE="https://www.kde.org/applications/system/krfb/"
 SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
 
@@ -24,14 +24,14 @@ DEPEND="
 		x11-libs/libXext
 		x11-libs/libXtst
 	)
-	telepathy? ( >=net-libs/telepathy-qt-0.9 )
+	telepathy? ( >=net-libs/telepathy-qt-0.9[qt4] )
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with telepathy TelepathyQt4)
 		$(cmake-utils_use_with ktp KTp)
+		$(cmake-utils_use_with telepathy TelepathyQt4)
 	)
 
 	kde4-base_src_configure

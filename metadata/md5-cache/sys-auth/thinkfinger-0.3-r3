@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test
+DEPEND=virtual/libusb:0 pam? ( virtual/pam ) sys-devel/libtool virtual/pkgconfig >=app-portage/elt-patches-20170317
+DESCRIPTION=Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
+EAPI=4
+HOMEPAGE=http://thinkfinger.sourceforge.net/
+IUSE=debug pam static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0 pam? ( virtual/pam )
+SLOT=0
+SRC_URI=mirror://sourceforge/thinkfinger/thinkfinger-0.3.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=5ff85cad3adf0edacd461001839d3373

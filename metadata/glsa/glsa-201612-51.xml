@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-51">
+  <title>Icinga: Privilege escalation</title>
+  <synopsis>A vulnerability in Icinga could lead to privilege escalation.</synopsis>
+  <product type="ebuild">icinga</product>
+  <announced>December 31, 2016</announced>
+  <revised>December 31, 2016: 1</revised>
+  <bug>603534</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/icinga" auto="yes" arch="*">
+      <unaffected range="ge">1.13.4</unaffected>
+      <vulnerable range="lt">1.13.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Icinga is an open source computer system and network monitoring
+      application. It was originally created as a fork of the Nagios system
+      monitoring application in 2009.
+    </p>
+  </background>
+  <description>
+    <p>Icinga daemon was found to perform unsafe operations when handling the
+      log file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker, who either is already Icinga’s system user or
+      belongs to Icinga’s group, could potentially escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Icinga users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/icinga-1.13.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9566">CVE-2016-9566</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 30 Dec 2016 23:44:53 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 06:37:34 +0000">whissi</metadata>
+</glsa>

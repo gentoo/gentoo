@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/p/pathlib2/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"

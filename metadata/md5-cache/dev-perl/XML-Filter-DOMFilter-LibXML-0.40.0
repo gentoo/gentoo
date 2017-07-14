@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/XML-LibXML-1.53 virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/XML-SAX-Writer ) dev-lang/perl:=
+DESCRIPTION=SAX Filter allowing DOM processing of selected subtrees
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-Filter-DOMFilter-LibXML/
+IUSE=test
+KEYWORDS=amd64 hppa ia64 sparc x86
+LICENSE=Artistic
+RDEPEND=>=dev-perl/XML-LibXML-1.53 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CH/CHOROBA/XML-Filter-DOMFilter-LibXML-0.04.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=1aa274ab9edd708d5dff882aee23ccea

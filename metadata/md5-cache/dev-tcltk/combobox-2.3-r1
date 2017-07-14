@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=A combobox megawidget
+EAPI=5
+HOMEPAGE=http://www1.clearlight.com/~oakley/tcl/combobox/index.html
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
+LICENSE=freedist
+RDEPEND=dev-lang/tcl:0=
+SLOT=0
+SRC_URI=http://www1.clearlight.com/~oakley/tcl/combobox/combobox-2.3.tar.gz
+_eclass_exported_funcs=src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=24e3b302b9bd76f3a0fa5c85de41bd6d

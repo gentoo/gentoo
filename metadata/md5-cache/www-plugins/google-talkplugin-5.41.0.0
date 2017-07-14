@@ -1,0 +1,15 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Video chat browser plug-in for Google Talk
+EAPI=5
+HOMEPAGE=https://www.google.com/chat/video
+IUSE=libnotify selinux linguas_ar linguas_cs linguas_en linguas_et linguas_fr linguas_hu linguas_lt linguas_ms linguas_pl linguas_ru linguas_sv linguas_tl linguas_vi linguas_bg linguas_da linguas_fa linguas_gu linguas_id linguas_ja linguas_lv linguas_nl linguas_sk linguas_ta linguas_tr linguas_bn linguas_de linguas_es linguas_fi linguas_hi linguas_is linguas_kn linguas_ml linguas_no linguas_sl linguas_te linguas_uk linguas_ca linguas_el linguas_fil linguas_hr linguas_it linguas_ko linguas_mr linguas_or linguas_ro linguas_sr linguas_th linguas_ur
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Google-TOS openssl BSD
+RDEPEND=|| ( media-sound/pulseaudio media-libs/alsa-lib ) dev-libs/expat dev-libs/glib:2 sys-libs/glibc x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXrender x11-libs/pango sys-apps/lsb-release selinux? ( sec-policy/selinux-googletalk ) libnotify? ( x11-libs/libnotify )
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=x86? ( https://dl.google.com/linux/talkplugin/deb/pool/main/g/google-talkplugin/google-talkplugin_5.41.0.0-1_i386.deb ) amd64? ( https://dl.google.com/linux/talkplugin/deb/pool/main/g/google-talkplugin/google-talkplugin_5.41.0.0-1_amd64.deb )
+_eclass_exported_funcs=src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	mozextension	e5d920147bfccf4930062e462e2a417d	multilib	97f470f374f2e94ccab04a2fb21d811e	nsplugins	2049586e425364a1c5bdb004205d1758	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=ff0b7e1d94fcd926bea512e23044f738

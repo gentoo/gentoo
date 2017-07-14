@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-46">
+  <title>Mozilla Network Security Service (NSS): Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NSS, the worst of which
+    could allow remote attackers to obtain access to private key information.
+  </synopsis>
+  <product type="ebuild">mozilla, nss</product>
+  <announced>2017-01-19</announced>
+  <revised>2017-01-19: 01</revised>
+  <bug>550288</bug>
+  <bug>571086</bug>
+  <bug>604916</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.28</unaffected>
+      <vulnerable range="lt">3.28</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Mozilla Network Security Service (NSS) is a library implementing
+      security features like SSL v.2/v.3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS
+      #12, S/MIME and X.509 certificates.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NSS. Please review the
+      CVE identifiers and technical papers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could conduct man-in-the-middle attacks, obtain access
+      to private key information, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NSS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.28"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2721">CVE-2015-2721</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7575">CVE-2015-7575</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1938">CVE-2016-1938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5285">CVE-2016-5285</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8635">CVE-2016-8635</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9074">CVE-2016-9074</uri>
+    <uri link="http://www.mitls.org/pages/attacks/SLOTH">SLOTH Attack Technical
+      Paper
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-19T08:24:32Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-19T19:17:52Z">b-man</metadata>
+</glsa>

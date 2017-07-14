@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure postinst postrm setup unpack
+DEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/cairo-1.6 x11-libs/gtk+:3 archive? ( app-arch/libarchive:0= ) ffmpeg? ( !libav? ( media-video/ffmpeg:0= ) libav? ( media-video/libav:0= ) ) imagemagick? ( media-gfx/imagemagick:0= ) pdf? ( app-text/poppler:0= ) postscript? ( app-text/libspectre:0= ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=powerful GTK 3 based command-line image viewer with a minimal UI
+EAPI=6
+HOMEPAGE=https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/
+IUSE=archive ffmpeg imagemagick kernel_linux libav pdf postscript
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/cairo-1.6 x11-libs/gtk+:3 archive? ( app-arch/libarchive:0= ) ffmpeg? ( !libav? ( media-video/ffmpeg:0= ) libav? ( media-video/libav:0= ) ) imagemagick? ( media-gfx/imagemagick:0= ) pdf? ( app-text/poppler:0= ) postscript? ( app-text/libspectre:0= )
+SLOT=0
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:git-r3 src_configure:- src_compile:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	git-r3	cbafa3261c37c7e3af44bb16a34ea390	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=fd5ba7935243327d528a55ea28bc1286

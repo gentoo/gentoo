@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-61">
+  <title>WebP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in WebP, the worst of
+    which could allow a remote attacker to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">webp</product>
+  <announced>2017-01-24</announced>
+  <revised>2017-01-24: 3</revised>
+  <bug>598208</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libwebp" auto="yes" arch="*">
+      <unaffected range="ge">0.5.2</unaffected>
+      <vulnerable range="lt">0.5.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebP is an image format employing both lossy and lossless compression.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebP’s gif2webp tool.
+      Please review the CVE identifier and bug reference for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      file using WebP’s gif2webp tool, could possibly cause a Denial of
+      Service condition or other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libwebp-0.5.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9085">CVE-2016-9085</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-19T08:48:39Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-24T11:09:59Z">b-man</metadata>
+</glsa>

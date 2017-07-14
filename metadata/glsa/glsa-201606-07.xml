@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-07">
+  <title>dhcpcd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in dhcpcd allowing remote
+    attackers to possibly execute arbitrary code or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 18, 2016</announced>
+  <revised>June 18, 2016: 2</revised>
+  <bug>571152</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcpcd" auto="yes" arch="*">
+      <unaffected range="ge">6.10.0</unaffected>
+      <vulnerable range="lt">6.10.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A fully featured, yet light weight RFC2131 compliant DHCP client</p>
+  </background>
+  <description>
+    <p>A heap overflow can be triggered via malformed DHCP responses in the
+      print_option (via dhcp_envoption1) due to incorrect option length values.
+       These vulnerabilities could also allow remote attackers to trigger an
+      invalid read/crash via malformed DHCP responses.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could possibly execute arbitrary code with the
+      privileges of the process or cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All dhcpcd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcpcd-6.10.0”
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1503">CVE-2016-1503</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1504">CVE-2016-1504</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Feb 2016 20:32:46 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 19:11:50 +0000">b-man</metadata>
+</glsa>

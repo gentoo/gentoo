@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-02">
+  <title>IPython: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in IPython could result in execution of arbitrary
+    JavaScript.
+  </synopsis>
+  <product type="ebuild">ipython</product>
+  <announced>December 17, 2015</announced>
+  <revised>December 17, 2015: 1</revised>
+  <bug>560708</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/ipython" auto="yes" arch="*">
+      <unaffected range="ge">3.2.1-r1</unaffected>
+      <vulnerable range="lt">3.2.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>IPython is an advanced interactive shell for Python.</p>
+  </background>
+  <description>
+    <p>IPython does not properly check the MIME type of a file.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted text
+      file using IPython, possibly resulting in execution of arbitrary
+      JavaScript with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All IPython users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/ipython-3.2.1-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7337">CVE-2015-7337</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 24 Sep 2015 01:14:10 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Dec 2015 16:41:41 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=sophisticated graphical program which corrects your miss typing
+EAPI=6
+HOMEPAGE=http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html https://github.com/mtoyoda/sl/
+IUSE=l10n_ja
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=Toyoda
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=https://github.com/mtoyoda/sl/archive/5.02.tar.gz -> sl-5.02.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2de2e68c9c26eabe4e721b9a14f48d08

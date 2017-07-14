@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DEPEND=app-arch/p7zip
+DESCRIPTION=The bundled Shadowlords, Dreamcatcher, and Demon campaigns by Hall-of-Famer Adam Miller
+EAPI=0
+HOMEPAGE=http://www.adamandjamie.com/mod/nwn_campaign.aspx
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=games-rpg/nwn games-misc/games-envd
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://vnfiles.ign.com/nwvault.ign.com/fms/files/modules/4273/ShadowlordsDreamcatcherDemon.exe
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_compile:games src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=8ae52638eb8f4660aa9c9a6b1f46034e

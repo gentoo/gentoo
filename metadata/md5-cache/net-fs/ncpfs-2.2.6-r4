@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=nls? ( sys-devel/gettext ) pam? ( virtual/pam ) php? ( || ( dev-lang/php:* virtual/httpd-php:* ) )
+DESCRIPTION=Provides access to Netware services using the NCP protocol
+EAPI=6
+HOMEPAGE=ftp://platan.vc.cvut.cz/pub/linux/ncpfs/
+IUSE=nls pam php
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=nls? ( sys-devel/gettext ) pam? ( virtual/pam ) php? ( || ( dev-lang/php:* virtual/httpd-php:* ) )
+SLOT=0
+SRC_URI=ftp://platan.vc.cvut.cz/pub/linux/ncpfs/ncpfs-2.2.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=9f3ba2353c7c9e0e04d43002c8c3117e

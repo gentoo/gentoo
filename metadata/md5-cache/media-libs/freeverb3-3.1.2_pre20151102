@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.6 >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=High Quality Reverb and Impulse Response Convolution library including XMMS/Audacious Effect plugins
+EAPI=5
+HOMEPAGE=https://savannah.nongnu.org/projects/freeverb3
+IUSE=cpu_flags_x86_3dnow cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 audacious forcefpu jack openmp plugdouble threads
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.6 >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile )
+SLOT=0
+SRC_URI=https://www.hartwork.org/public/freeverb3-3.1.2_pre20151102.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=bf5e8bd6705904a8c1fd518adc3d838e

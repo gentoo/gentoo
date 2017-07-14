@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-lang/perl
+DESCRIPTION=General-purpose command-line pipe buffer
+EAPI=5
+HOMEPAGE=http://www.glines.org/software/bfr
+KEYWORDS=amd64 ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.glines.org/bin/pk/bfr-1.6.tar.bz2
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=15201e23625f48b9b6f302d72e3dee4a

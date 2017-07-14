@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=coin? ( media-libs/coin virtual/opengl ) dmtx? ( media-libs/libdmtx ) ffmpeg? ( virtual/ffmpeg ) gsl? ( sci-libs/gsl ) ieee1394? ( media-libs/libdc1394 ) jpeg? ( virtual/jpeg:0 ) lapack? ( virtual/lapack ) !qt4? ( motif? ( media-libs/SoXt ) ) ogre? ( dev-games/ogre[ois?] dev-libs/boost:=[threads] ) opencv? ( media-libs/opencv:= qt4? ( media-libs/opencv[-qt5(-)] ) ) png? ( media-libs/libpng:0= ) qt4? ( media-libs/SoQt dev-qt/qtgui:4 ) usb? ( virtual/libusb:1 ) v4l? ( media-libs/libv4l ) X? ( x11-libs/libX11 ) xml? ( dev-libs/libxml2 ) zbar? ( media-gfx/zbar ) zlib? ( sys-libs/zlib ) doc? ( app-doc/doxygen virtual/latex-base media-gfx/graphviz ) virtual/pkgconfig test? ( sci-misc/ViSP-images ) v4l? ( virtual/os-headers ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Visual Servoing Platform: visual tracking and visual servoing library
+EAPI=5
+HOMEPAGE=http://www.irisa.fr/lagadic/visp/visp.html
+IUSE=+coin demos +dmtx doc examples ffmpeg gsl ieee1394 jpeg lapack motif ogre ois opencv png qt4 test tutorials usb v4l X xml +zbar zlib cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-2
+RDEPEND=coin? ( media-libs/coin virtual/opengl ) dmtx? ( media-libs/libdmtx ) ffmpeg? ( virtual/ffmpeg ) gsl? ( sci-libs/gsl ) ieee1394? ( media-libs/libdc1394 ) jpeg? ( virtual/jpeg:0 ) lapack? ( virtual/lapack ) !qt4? ( motif? ( media-libs/SoXt ) ) ogre? ( dev-games/ogre[ois?] dev-libs/boost:=[threads] ) opencv? ( media-libs/opencv:= qt4? ( media-libs/opencv[-qt5(-)] ) ) png? ( media-libs/libpng:0= ) qt4? ( media-libs/SoQt dev-qt/qtgui:4 ) usb? ( virtual/libusb:1 ) v4l? ( media-libs/libv4l ) X? ( x11-libs/libX11 ) xml? ( dev-libs/libxml2 ) zbar? ( media-gfx/zbar ) zlib? ( sys-libs/zlib ) demos? ( sci-misc/ViSP-images )
+REQUIRED_USE=ffmpeg? ( opencv ) ois? ( ogre ) qt4? ( coin ) motif? ( coin )
+SLOT=0/3
+SRC_URI=http://gforge.inria.fr/frs/download.php/latestfile/475/visp-3.0.1.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=f30ce65729059b5577e8acf5073a7669

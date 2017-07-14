@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-13">
+  <title>sudo: Unauthorized privilege escalation in sudoedit</title>
+  <synopsis>sudo is vulnerable to an escalation of privileges via a symlink
+    attack.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>2016-06-26</announced>
+  <revised>2017-04-17: 2</revised>
+  <bug>564774</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.15-r1</unaffected>
+      <vulnerable range="lt">1.8.15-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo (su “do”) allows a system administrator to delegate authority
+      to give certain users (or groups of users) the ability to run some (or
+      all) commands as root or another user while providing an audit trail of
+      the commands and their arguments.
+    </p>
+  </background>
+  <description>
+    <p>sudoedit in sudo is vulnerable to the escalation of privileges by local
+      users via a symlink attack.  This can be exploited by a file whose full
+      path is defined using multiple wildcards in “/etc/sudoers”, as
+      demonstrated by “/home/*/*/file.txt”.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Local users are able to gain unauthorized privileges on the system.</p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.15-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5602">
+      CVE-2015-5602
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2015-12-23T23:28:50Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-04-17T18:04:03Z">b-man</metadata>
+</glsa>

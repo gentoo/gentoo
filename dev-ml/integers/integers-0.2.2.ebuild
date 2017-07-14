@@ -9,7 +9,7 @@ SRC_URI="https://github.com/ocamllabs/ocaml-integers/releases/download/v${PV}/${
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE=""
 
 RDEPEND="dev-lang/ocaml:="

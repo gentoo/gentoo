@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201703-06">
+  <title>Deluge: Remote execution of arbitrary code </title>
+  <synopsis>A vulnerability in Deluge might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">deluge</product>
+  <announced>2017-03-28</announced>
+  <revised>2017-03-28: 1</revised>
+  <bug>612144</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/deluge" auto="yes" arch="*">
+      <unaffected range="ge">1.3.14</unaffected>
+      <vulnerable range="lt">1.3.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Deluge is a BitTorrent client.</p>
+  </background>
+  <description>
+    <p>A CSRF vulnerability was discovered in the web UI of Deluge.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user currently logged in into Deluge
+      web UI to visit a malicious web page which uses forged requests to make
+      Deluge download and install a Deluge plug-in provided by the attacker.
+      The plug-in can then execute arbitrary code as the user running Deluge.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Deluge users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/deluge-1.3.14"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7178">CVE-2017-7178</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-18T12:56:30Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-03-28T03:08:19Z">whissi</metadata>
+</glsa>

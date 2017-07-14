@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=alsa? ( media-libs/alsa-lib ) >=dev-lang/tk-8.3 lash? ( media-sound/lash ) x11-libs/libX11 x11-proto/xf86bigfontproto x11-proto/bigreqsproto x11-proto/xextproto x11-proto/xcmiscproto
+DESCRIPTION=A virtual MIDI keyboard for X
+EAPI=2
+HOMEPAGE=http://www.alsa-project.org/~iwai/alsa.html
+IUSE=alsa lash oss
+KEYWORDS=amd64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) >=dev-lang/tk-8.3 lash? ( media-sound/lash ) x11-libs/libX11
+SLOT=0
+SRC_URI=http://ftp.suse.com/pub/people/tiwai/vkeybd/vkeybd-0.1.18d.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ed7dd2f1452cd2fc1593a08f753b1c60

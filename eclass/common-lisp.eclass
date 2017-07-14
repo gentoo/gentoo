@@ -1,8 +1,12 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-#
-# Author Matthew Kennedy <mkennedy@gentoo.org>
-#
+
+# @ECLASS: common-lisp.eclass
+# @MAINTAINER:
+# Common Lisp project <common-lisp@gentoo.org>
+# @AUTHOR: Matthew Kennedy <mkennedy@gentoo.org>
+# @BLURB: eclass for installing Common Lisp packages.
+# @DESCRIPTION:
 # This eclass supports the common-lisp-controller installation of many
 # Common Lisp libraries
 

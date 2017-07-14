@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-10">
+  <title>Pidgin: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Pidgin might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>2017-06-06</announced>
+  <revised>2017-06-06: 1</revised>
+  <bug>612188</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.12.0</unaffected>
+      <vulnerable range="lt">2.12.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pidgin is a GTK Instant Messenger client for a variety of instant
+      messaging protocols.
+    </p>
+  </background>
+  <description>
+    <p>Joseph Bisch discovered that Pidgin incorrectly handled certain xml
+      messages.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted instant message,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the Pidgin process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pidgin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.12.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2640">CVE-2017-2640</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T06:30:00Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-06T19:36:09Z">whissi</metadata>
+</glsa>

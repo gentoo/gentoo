@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201703-05">
+  <title>GNU Libtasn1: Denial of Service</title>
+  <synopsis>A vulnerability in Libtasn1 allows remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libtasn1</product>
+  <announced>2017-03-28</announced>
+  <revised>2017-03-28: 1</revised>
+  <bug>579748</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libtasn1" auto="yes" arch="*">
+      <unaffected range="ge">4.8</unaffected>
+      <vulnerable range="lt">4.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library that provides Abstract Syntax Notation One (ASN.1, as
+      specified by the X.680 ITU-T recommendation) parsing and structures
+      management, and Distinguished Encoding Rules (DER, as per X.690) encoding
+      and decoding functions.
+    </p>
+  </background>
+  <description>
+    <p>Libtasn1 does not correctly handle certain malformed DER certificates.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system to process a
+      specially crafted certificate using Libtasn1, resulting in a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libtasn1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtasn1-4.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4008">CVE-2016-4008</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-22T11:00:00Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-03-28T02:54:28Z">whissi</metadata>
+</glsa>

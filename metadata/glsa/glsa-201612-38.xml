@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-38">
+  <title>Botan: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Botan, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">botan</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 2</revised>
+  <bug>574034</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/botan" auto="yes" arch="*">
+      <unaffected range="ge">1.10.12</unaffected>
+      <vulnerable range="lt">1.10.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Botan (Japanese for peony) is a cryptography library written in C++11.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Botan. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Botan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/botan-1.10.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2194">CVE-2016-2194</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2195">CVE-2016-2195</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 22:26:17 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:50 +0000">whissi</metadata>
+</glsa>

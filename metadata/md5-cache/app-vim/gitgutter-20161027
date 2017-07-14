@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: shows a git diff in the sign column and stages/reverts hunks
+EAPI=6
+HOMEPAGE=https://github.com/airblade/vim-gitgutter/
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=dev-vcs/git || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/gitgutter-20161027.tar.bz2 https://dev.gentoo.org/~radhermit/vim/gitgutter-20161027.tar.bz2
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=bfd2dc7c9064e2c9aab1953fb5d71cdc

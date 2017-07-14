@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=virtual/libusb:1 dev-libs/glib:2 dev-libs/nss || ( virtual/imagemagick-tools x11-libs/gdk-pixbuf ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=library to add support for consumer fingerprint readers
+EAPI=5
+HOMEPAGE=https://cgit.freedesktop.org/libfprint/libfprint/
+IUSE=debug static-libs
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=virtual/libusb:1 dev-libs/glib:2 dev-libs/nss || ( virtual/imagemagick-tools x11-libs/gdk-pixbuf )
+SLOT=0
+SRC_URI=https://cgit.freedesktop.org/libfprint/libfprint/snapshot/v_0_5_1.tar.bz2 -> libfprint-0.5.1.tar.bz2 https://dev.gentoo.org/~patrick/libfprint-0.5.1-add-vfs5011-driver.patch
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=9d9e858b4673daf3e830b5940e991f0c

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-12">
+  <title>Exim: Arbitrary code execution</title>
+  <synopsis>A local attacker could execute arbitrary code by providing
+    unsanitized data to a data source or escalate privileges.
+  </synopsis>
+  <product type="ebuild">exim</product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>517934</bug>
+  <bug>576582</bug>
+  <access>local</access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.87</unaffected>
+      <vulnerable range="lt">4.87</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Exim is a message transfer agent (MTA) designed to be a a highly
+      configurable, drop-in replacement for sendmail.
+    </p>
+  </background>
+  <description>
+    <p>Vulnerabilities have been discovered in Exim’s implementation of
+      set-uid root and when using ‘perl_startup’. These vulnerabilities
+      require a user account on the Exim server and a configuration that does
+      lookups against files to which the user has edit access.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly execute arbitrary code with the
+      privileges of the process, or escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Exim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/exim-4.87"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2972">CVE-2014-2972</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 28 Mar 2015 20:38:10 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:18:46 +0000">b-man</metadata>
+</glsa>

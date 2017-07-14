@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=dev-lang/php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=PHP stats application that reads Apache log files and imports the data to a MySQL database
+EAPI=0
+HOMEPAGE=http://openwebstats.sourceforge.net/
+IUSE=vhosts
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php >=app-admin/webapp-config-1.50.15
+SLOT=1.1
+SRC_URI=mirror://sourceforge/openwebstats/openwebstats-1.1.tar.gz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=1cee00c202392b4468afb91b87033625

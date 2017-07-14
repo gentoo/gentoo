@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test unpack
+DEPEND=dedicated? ( >=net-libs/miniupnpc-1.8 ) !dedicated? ( media-libs/libpng:0 >=media-libs/libsdl-1.2.9[X,sound,joystick,video] >=media-libs/sdl-mixer-1.2.6 odalaunch? ( x11-libs/wxGTK:3.0[X] ) portmidi? ( media-libs/portmidi ) server? ( >=net-libs/miniupnpc-1.8 ) ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=An online multiplayer, free software engine for Doom and Doom II
+EAPI=5
+HOMEPAGE=http://odamex.net/
+IUSE=dedicated +odalaunch master portmidi server
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dedicated? ( >=net-libs/miniupnpc-1.8 ) !dedicated? ( media-libs/libpng:0 >=media-libs/libsdl-1.2.9[X,sound,joystick,video] >=media-libs/sdl-mixer-1.2.6 odalaunch? ( x11-libs/wxGTK:3.0[X] ) portmidi? ( media-libs/portmidi ) server? ( >=net-libs/miniupnpc-1.8 ) ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/odamex/Odamex/0.7.0/odamex-src-0.7.0.tar.bz2
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=8bdd01a75464c95027a4679360b6e33a

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rails/ruby-coffee-script https://github.com/rails/c
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x64-macos"
 
 IUSE=""
 

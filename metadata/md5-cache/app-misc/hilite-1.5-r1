@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare unpack
+DESCRIPTION=A utility which highlights stderr text in red
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/hilite
+KEYWORDS=amd64 hppa ia64 mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/hilite-1.5.c
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=fb5ffe16aa355d3e86d70c9d19f73527

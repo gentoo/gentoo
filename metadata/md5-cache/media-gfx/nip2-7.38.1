@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm preinst test
+DEPEND=>=dev-libs/glib-2.14:2 dev-libs/libxml2 x11-misc/xdg-utils =media-libs/vips-7.38*[fftw?] >=x11-libs/gtk+-2.24:2 goffice? ( x11-libs/goffice:0.8 ) graphviz? ( <media-gfx/graphviz-2.30 ) gsl? ( sci-libs/gsl ) fftw? ( sci-libs/fftw:3.0 ) sys-devel/bison sys-devel/flex test? ( media-libs/vips[jpeg,lcms,tiff] ) >=sys-apps/sed-4
+DESCRIPTION=VIPS Image Processing Graphical User Interface
+EAPI=5
+HOMEPAGE=http://vips.sourceforge.net
+IUSE=debug fftw graphviz goffice gsl test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.14:2 dev-libs/libxml2 x11-misc/xdg-utils =media-libs/vips-7.38*[fftw?] >=x11-libs/gtk+-2.24:2 goffice? ( x11-libs/goffice:0.8 ) graphviz? ( <media-gfx/graphviz-2.30 ) gsl? ( sci-libs/gsl ) fftw? ( sci-libs/fftw:3.0 )
+REQUIRED_USE=test? ( fftw )
+SLOT=0
+SRC_URI=http://www.vips.ecs.soton.ac.uk/supported/7.38/nip2-7.38.1.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=8765b7a2cb637d565dcd8b30d432519e

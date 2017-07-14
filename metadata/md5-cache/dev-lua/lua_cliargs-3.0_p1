@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/lua-5.1:= virtual/pkgconfig
+DESCRIPTION=A command-line argument parser.
+EAPI=6
+HOMEPAGE=https://github.com/amireh/lua_cliargs
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/lua-5.1:=
+SLOT=0
+SRC_URI=https://github.com/amireh/lua_cliargs/archive/v3.0-1.tar.gz -> lua_cliargs-3.0_p1.tar.gz
+_eclass_exported_funcs=src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=bb6e165c118646f0bcba0ac12ebfb346

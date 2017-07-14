@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=sys-fs/e2fsprogs-1.27:= >=sys-libs/e2fsprogs-libs-1.27:= sys-apps/util-linux bzip2? ( >=app-arch/bzip2-1.0.2:= ) zlib? ( >=sys-libs/zlib-1.1.4:= ) lzo? ( dev-libs/lzo:2= ) sqlite? ( dev-db/sqlite:3= ) ermt? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) readline? ( sys-libs/readline:0= sys-libs/ncurses:= static? ( sys-libs/ncurses:=[static-libs] ) ) virtual/pkgconfig virtual/os-headers
+DESCRIPTION=Dump/restore ext2fs backup utilities
+EAPI=5
+HOMEPAGE=http://dump.sourceforge.net/
+IUSE=bzip2 debug ermt libressl lzo readline selinux sqlite ssl static zlib
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=sys-fs/e2fsprogs-1.27:= >=sys-libs/e2fsprogs-libs-1.27:= sys-apps/util-linux bzip2? ( >=app-arch/bzip2-1.0.2:= ) zlib? ( >=sys-libs/zlib-1.1.4:= ) lzo? ( dev-libs/lzo:2= ) sqlite? ( dev-db/sqlite:3= ) ermt? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) readline? ( sys-libs/readline:0= sys-libs/ncurses:= static? ( sys-libs/ncurses:=[static-libs] ) )
+REQUIRED_USE=ermt? ( ssl ) ssl? ( zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/dump/dump-0.4b45.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_md5_=ac9d419c8cd774cc8a395eb250c018a4

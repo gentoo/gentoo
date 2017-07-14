@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=app-text/libwpd:0.10[tools] dev-libs/librevenge virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=C++ library to read and parse graphics in WPG
+EAPI=6
+HOMEPAGE=http://libwpg.sourceforge.net/libwpg.htm
+IUSE=doc static-libs
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips x86
+LICENSE=|| ( LGPL-2.1 MPL-2.0 )
+RDEPEND=app-text/libwpd:0.10[tools] dev-libs/librevenge
+SLOT=0.3
+SRC_URI=mirror://sourceforge/libwpg/libwpg-0.3.1.tar.xz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=alternatives	6c575717515f030736d1b718d507d2f9
+_md5_=6f2b5dd4044ab188310457ab3c77e638

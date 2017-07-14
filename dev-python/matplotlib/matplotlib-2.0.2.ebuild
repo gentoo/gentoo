@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 flag-o-matic virtualx toolchain-funcs
+inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="http://matplotlib.org/"
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	media-fonts/stix-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
-	media-libs/qhull
+	>=media-libs/qhull-2013
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
 		dev-libs/glib:2=
@@ -144,13 +144,13 @@ python_prepare_all() {
 		-i lib/matplotlib/{mathtext,fontconfig_pattern}.py \
 		|| die "sed pyparsing failed"
 
-	sed \
-		-e "s:/usr/:${EPREFIX}/usr/:g" \
-		-i setupext.py || die
+	hprefixify setupext.py
 
 	export XDG_RUNTIME_DIR="${T}/runtime-dir"
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
+
+	rm -r extern/qhull || die
 
 	distutils-r1_python_prepare_all
 }
@@ -169,7 +169,7 @@ python_configure() {
 	# common switches.
 	cat > "${BUILD_DIR}"/setup.cfg <<- EOF || die
 		[directories]
-		basedirlist = "${EPREFIX}/usr"
+		basedirlist = ${EPREFIX}/usr
 		[provide_packages]
 		pytz = False
 		dateutil = False
@@ -209,13 +209,10 @@ python_configure() {
 wrap_setup() {
 	local -x MPLSETUPCFG=${BUILD_DIR}/setup.cfg
 	unset DISPLAY
-
-	# Note: remove build... if switching to out-of-source build
-	"${@}" build --build-lib="${BUILD_DIR}"/build/lib
 }
 
 python_compile() {
-	wrap_setup distutils-r1_python_compile
+	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/lib
 }
 
 python_compile_all() {

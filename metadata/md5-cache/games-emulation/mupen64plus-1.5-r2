@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=virtual/opengl media-libs/freetype:2 media-libs/libpng media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu sys-libs/zlib[minizip] x11-libs/gtk+:2 libsamplerate? ( media-libs/libsamplerate ) lirc? ( app-misc/lirc ) qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 ) app-arch/xz-utils dev-lang/yasm virtual/pkgconfig
+DESCRIPTION=A fork of Mupen64 Nintendo 64 emulator
+EAPI=2
+HOMEPAGE=http://www.mupen64plus.org/
+IUSE=+gtk libsamplerate lirc qt4 cpu_flags_x86_sse
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl media-libs/freetype:2 media-libs/libpng media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu sys-libs/zlib[minizip] x11-libs/gtk+:2 libsamplerate? ( media-libs/libsamplerate ) lirc? ( app-misc/lirc ) qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 ) app-arch/xz-utils games-misc/games-envd
+SLOT=0
+SRC_URI=https://mupen64plus.googlecode.com/files/Mupen64Plus-1-5-src.tar.gz mirror://gentoo/mupen64plus-1.5-patches-20100507.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:- src_configure:games src_compile:- src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=9b18e24b2368b67a2bcb99bd17c226ec

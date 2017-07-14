@@ -1,0 +1,27 @@
+From 4200dec1afc04b1618b2e7ea916891103473a913 Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Date: Sun, 9 Jul 2017 11:59:21 -0300
+Subject: mainwindow: disable debug messages by default
+
+By default, debug messages shouldn't be displayed.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+---
+ src/mainwindow.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index c5ec7ac..7a18459 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -190,6 +190,8 @@ void MainWindow::run()
+ 	if (parser->isSet("debug")) {
+ 		QLoggingCategory::defaultCategory()->setEnabled(QtDebugMsg, true);
+ 		QLoggingCategory::setFilterRules(QStringLiteral(FILTER_RULE));
++	} else {
++		QLoggingCategory::setFilterRules(QStringLiteral("kaffeine.*.debug=false"));
+ 	}
+ 
+ 	readSettings();
+-- 
+cgit v0.11.2

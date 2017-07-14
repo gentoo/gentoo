@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-07">
+  <title>JasPer: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in JasPer, the worst of
+    which could could allow an attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">JasPer</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>559164</bug>
+  <bug>559168</bug>
+  <bug>571256</bug>
+  <bug>599430</bug>
+  <bug>602848</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jasper" auto="yes" arch="*">
+      <unaffected range="ge" slot="">2.0.12</unaffected>
+      <vulnerable range="lt" slot="">2.0.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>JasPer is a software-based implementation of the codec specified in the
+      JPEG-2000 Part-1 standard.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in JasPer. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using JasPer possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All JasPer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/jasper-2.0.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5203">CVE-2015-5203</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8751">CVE-2015-8751</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9262">CVE-2016-9262</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9591">CVE-2016-9591</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-30T19:55:35Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:06:24Z">whissi</metadata>
+</glsa>

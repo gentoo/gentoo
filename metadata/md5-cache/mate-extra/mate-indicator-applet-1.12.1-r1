@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=mate-base/mate-panel-1.8[gtk3(-)=] !gtk3? ( >=dev-libs/libindicator-0.3.90:0 >=x11-libs/gtk+-2.24:2 ) gtk3? ( >=dev-libs/libindicator-0.3.90:3 >=x11-libs/gtk+-3.0:3 ) >=dev-util/intltool-0.35.0 virtual/pkgconfig >=app-portage/elt-patches-20170317 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=mate-base/mate-common-1.12
+DESCRIPTION=MATE indicator applet
+EAPI=6
+HOMEPAGE=http://mate-desktop.org
+IUSE=gtk3
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-2 FDL-1.1 LGPL-2
+RDEPEND=>=mate-base/mate-panel-1.8[gtk3(-)=] !gtk3? ( >=dev-libs/libindicator-0.3.90:0 >=x11-libs/gtk+-2.24:2 ) gtk3? ( >=dev-libs/libindicator-0.3.90:3 >=x11-libs/gtk+-3.0:3 )
+SLOT=0
+SRC_URI=http://pub.mate-desktop.org/releases/1.12/mate-indicator-applet-1.12.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:mate pkg_postrm:mate pkg_postinst:mate src_prepare:mate src_configure:- src_compile:gnome2 src_install:mate
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	64c50579ea42fbcc77a7e220a8ae8e94	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	mate	58aa134cca4a230873e4bde7fd57233c	mate-desktop.org	e4c2fb7d55cbaf628fdc73b09e817ee4	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=becd89d668ba3aec9073556271127372

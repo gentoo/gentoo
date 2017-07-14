@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-05">
+  <title>Cacti: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Cacti, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 16, 2016</announced>
+  <revised>July 16, 2016: 1</revised>
+  <bug>519900</bug>
+  <bug>568400</bug>
+  <bug>570984</bug>
+  <bug>574412</bug>
+  <bug>582996</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">0.8.8h</unaffected>
+      <vulnerable range="lt">0.8.8h</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cacti is a complete frontend to rrdtool.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Cacti. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or remote authenticated users could bypass
+      intended access restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Cacti users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-0.8.8h"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5261">CVE-2014-5261</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5262">CVE-2014-5262</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8369">CVE-2015-8369</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8377">CVE-2015-8377</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8604">CVE-2015-8604</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2313">CVE-2016-2313</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3172">CVE-2016-3172</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3659">CVE-2016-3659</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 26 Apr 2016 06:10:39 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 16 Jul 2016 13:14:38 +0000">b-man</metadata>
+</glsa>

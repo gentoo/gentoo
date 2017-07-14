@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=app-arch/unzip || ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+DESCRIPTION=vim plugin: C/C++ omni-completion with ctags database
+EAPI=2
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=1520
+KEYWORDS=amd64 x86
+LICENSE=vim.org
+RDEPEND=>=dev-util/ctags-5.7 || ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+SLOT=0
+SRC_URI=http://www.vim.org/scripts/download_script.php?src_id=7722 -> omnicppcomplete-0.41.zip
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=2342bd6470e91ec37096497fb3c1f8f7

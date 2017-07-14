@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
+DEPEND==sys-freebsd/freebsd-lib-11.0*[usb?,bluetooth?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ssl? ( dev-libs/openssl:0= ) kerberos? ( virtual/krb5 ) ar? ( >=app-arch/libarchive-3 ) virtual/pam sys-libs/zlib >=sys-libs/ncurses-5.9:0= !sys-process/fuser-bsd !dev-util/csup !dev-libs/libiconv !sys-freebsd/freebsd-contrib sys-devel/flex !build? ( =sys-freebsd/freebsd-sources-11.0* ) =sys-freebsd/freebsd-sbin-11.0* =sys-freebsd/freebsd-mk-defs-11.0* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD's base system source for /usr/bin
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs profile abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD zfs? ( CDDL )
+RDEPEND==sys-freebsd/freebsd-lib-11.0*[usb?,bluetooth?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ssl? ( dev-libs/openssl:0= ) kerberos? ( virtual/krb5 ) ar? ( >=app-arch/libarchive-3 ) virtual/pam sys-libs/zlib >=sys-libs/ncurses-5.9:0= !sys-process/fuser-bsd !dev-util/csup !dev-libs/libiconv !sys-freebsd/freebsd-contrib >=sys-auth/pambase-20080219.1 sys-process/cronbase
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/11.0-RELEASE/src.txz -> freebsd-src-11.0.tar.xz https://security.freebsd.org/patches/EN-16:21/localedef.patch -> freebsd-ubin-EN-1621-localedef.patch
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:freebsd src_prepare:- src_compile:- src_install:-
+_eclasses_=bsdmk	f76f6fc364f04987bc60c4ea3cad594c	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	freebsd	5c58bd41462bc44369d6a11f1b98ee80	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	pam	3e788d86170dfcd5b06824d898315e18	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=43e24b33b1f4e3f7461c99b0f08bed38

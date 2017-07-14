@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst pretend setup
+DEPEND=sys-apps/dmidecode kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=IBM ThinkPad SMAPI BIOS driver
+EAPI=4
+HOMEPAGE=https://github.com/evgeni/tp_smapi/ http://tpctl.sourceforge.net/
+IUSE=hdaps kernel_linux
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/dmidecode kernel_linux? ( virtual/modutils )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://github/evgeni/tp_smapi/tp_smapi-0.41.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_compile:linux-mod src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=37577e541cad13a7a47bf8ed08d6c59b

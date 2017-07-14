@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=media-libs/libepoxy-1.3.1 virtual/opengl dev-libs/boost media-libs/glm sys-devel/libtool virtual/pkgconfig
+DESCRIPTION=C++ Library for rendering OpenGL models stored in glTF format
+EAPI=6
+HOMEPAGE=http://www.libreoffice.org https://gerrit.libreoffice.org/gitweb?p=libgltf.git
+IUSE=debug test
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-2.0
+RDEPEND=>=media-libs/libepoxy-1.3.1 virtual/opengl
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dev-www.libreoffice.org/src/libgltf/libgltf-0.1.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=a2b5f62282e80c638c040e8c39cb7167

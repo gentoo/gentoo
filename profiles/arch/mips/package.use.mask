@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested
 sys-power/upower ios
@@ -80,7 +85,7 @@ x11-libs/wxGTK webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (05 Jan 2014)
 # Perl is heavily unkeyworded on MIPS. See 497068
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (02 Sep 2013)
 # Not tested

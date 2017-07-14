@@ -1,0 +1,228 @@
+From ef3c0cdfa18a6f612e5ba84e42bcd288374669fb Mon Sep 17 00:00:00 2001
+From: Hugo Pereira Da Costa <hugo.pereira.da.costa@gmail.com>
+Date: Thu, 6 Apr 2017 17:32:51 +0200
+Subject: Patch from Matt Whitlock to fix crash in ecclipse about invalid
+ columns. BUG: 338012
+
+---
+ src/oxygengtkcellinfo.cpp | 78 +++++++++++++++++++----------------------------
+ src/oxygengtkcellinfo.h   | 22 ++++++++-----
+ 2 files changed, 46 insertions(+), 54 deletions(-)
+
+diff --git a/src/oxygengtkcellinfo.cpp b/src/oxygengtkcellinfo.cpp
+index 52e0d34..8118143 100644
+--- a/src/oxygengtkcellinfo.cpp
++++ b/src/oxygengtkcellinfo.cpp
+@@ -31,38 +31,41 @@ namespace Oxygen
+     //____________________________________________________________________________
+     Gtk::CellInfo::CellInfo( GtkTreeView* treeView, int x, int y, int w, int h ):
+         _path(0L),
+-        _column(0L)
++        _column(-1)
+     {
++        GtkTreeViewColumn *column( 0L );
+ 
+         /*
+         four attempts are made to get the path from any corner of the rectangle passed in arguments.
+         This is necessary to handle half-hidden cells
+         */
+-        gtk_tree_view_get_path_at_pos( treeView, (gint)x+1, (gint)y+1, &_path, &_column, 0L, 0L );
+-
+-        if( !_path ) gtk_tree_view_get_path_at_pos( treeView, (gint)x+1, (gint)y+h-1, &_path, &_column, 0L, 0L );
+-        else return;
+-
+-        if( !_path ) gtk_tree_view_get_path_at_pos( treeView, (gint)x+w-1, (gint)y+1, &_path, &_column, 0L, 0L );
+-        else return;
+-
+-        if( !_path ) gtk_tree_view_get_path_at_pos( treeView, (gint)x+w-1, (gint)y+h-1, &_path, &_column, 0L, 0L );
+-        else return;
++        gtk_tree_view_get_path_at_pos( treeView, (gint)x+1, (gint)y+1, &_path, &column, 0L, 0L );
++        if( !_path ) {
++            gtk_tree_view_get_path_at_pos( treeView, (gint)x+1, (gint)y+h-1, &_path, &column, 0L, 0L );
++            if( !_path ) {
++                gtk_tree_view_get_path_at_pos( treeView, (gint)x+w-1, (gint)y+1, &_path, &column, 0L, 0L );
++                if( !_path ) {
++                    gtk_tree_view_get_path_at_pos( treeView, (gint)x+w-1, (gint)y+h-1, &_path, &column, 0L, 0L );
++                    if( !_path ) return;
++                }
++            }
++        }
+ 
++        _column = indexOfColumn( treeView, column );
+     }
+ 
+     //____________________________________________________________________________
+     bool Gtk::CellInfo::isLastVisibleColumn( GtkTreeView* treeView ) const
+     {
+-        bool isLast( false );
++        bool isLast( true );
+         GList* columns( gtk_tree_view_get_columns( treeView ) );
+-        for( GList *child = g_list_last( columns ); child; child = g_list_previous( child ) )
++        for( GList *child = g_list_nth( columns, _column ); ( child = g_list_next( child ) ); )
+         {
+             if( !GTK_IS_TREE_VIEW_COLUMN( child->data ) ) continue;
+             GtkTreeViewColumn* column( GTK_TREE_VIEW_COLUMN( child->data ) );
+             if( gtk_tree_view_column_get_visible( column ) )
+             {
+-                isLast = (_column == column );
++                isLast = false;
+                 break;
+             }
+ 
+@@ -75,15 +78,15 @@ namespace Oxygen
+     //____________________________________________________________________________
+     bool Gtk::CellInfo::isFirstVisibleColumn( GtkTreeView* treeView ) const
+     {
+-        bool isFirst( false );
++        bool isFirst( true );
+         GList* columns( gtk_tree_view_get_columns( treeView ) );
+-        for( GList *child = g_list_first( columns ); child; child = g_list_next( child ) )
++        for( GList *child = g_list_nth( columns, _column ); ( child = g_list_previous( child ) ); )
+         {
+             if( !GTK_IS_TREE_VIEW_COLUMN( child->data ) ) continue;
+             GtkTreeViewColumn* column( GTK_TREE_VIEW_COLUMN( child->data ) );
+             if( gtk_tree_view_column_get_visible( column ) )
+             {
+-                isFirst= (_column == column );
++                isFirst = false;
+                 break;
+             }
+ 
+@@ -98,34 +101,7 @@ namespace Oxygen
+     {
+         // check expander column
+         GtkTreeViewColumn* expanderColumn( gtk_tree_view_get_expander_column( treeView ) );
+-        if( !expanderColumn || _column == expanderColumn ) return false;
+-
+-        bool found( false );
+-        bool isLeft( false );
+-
+-        // get all columns
+-        GList* columns( gtk_tree_view_get_columns( treeView ) );
+-        for( GList *child = g_list_first( columns ); child; child = g_list_next( child ) )
+-        {
+-            if( !GTK_IS_TREE_VIEW_COLUMN( child->data ) ) continue;
+-            GtkTreeViewColumn* column( GTK_TREE_VIEW_COLUMN( child->data ) );
+-            if( column == expanderColumn )
+-            {
+-                if( found )
+-                {
+-
+-                    isLeft = true;
+-                    break;
+-
+-                } else break;
+-
+-            } else if( found ) break;
+-            else if( column == _column ) found = true;
+-
+-        }
+-
+-        if( columns ) g_list_free( columns );
+-        return isLeft;
++        return expanderColumn && _column < indexOfColumn( treeView, expanderColumn );
+ 
+     }
+ 
+@@ -203,13 +179,23 @@ namespace Oxygen
+     {
+         GdkRectangle out( Gtk::gdk_rectangle() );
+         if( treeView && isValid() )
+-        { gtk_tree_view_get_background_area( treeView, _path, _column, &out ); }
++        { gtk_tree_view_get_background_area( treeView, _path, gtk_tree_view_get_column( treeView, _column ), &out ); }
+ 
+         return out;
+ 
+     }
+ 
+     //____________________________________________________________________________
++    gint Gtk::CellInfo::indexOfColumn( GtkTreeView* treeView, GtkTreeViewColumn* column )
++    {
++        GList* columns( gtk_tree_view_get_columns( treeView ) );
++        if( !columns ) return -1;
++        gint index( g_list_index( columns, column ) );
++        g_list_free( columns );
++        return index;
++    }
++
++    //____________________________________________________________________________
+     Gtk::CellInfoFlags::CellInfoFlags( GtkTreeView* treeView, const CellInfo& cellInfo ):
+         _depth( cellInfo.depth() ),
+         _expanderSize(0),
+diff --git a/src/oxygengtkcellinfo.h b/src/oxygengtkcellinfo.h
+index 919d020..58dd441 100644
+--- a/src/oxygengtkcellinfo.h
++++ b/src/oxygengtkcellinfo.h
+@@ -47,7 +47,7 @@ namespace Oxygen
+             //! empty constructor
+             explicit CellInfo( void ):
+                 _path( 0L ),
+-                _column( 0L )
++                _column( -1 )
+             {}
+ 
+             //! copy constructor
+@@ -60,8 +60,12 @@ namespace Oxygen
+             /*! unfortunately the path retrieval does not always work because x and y must be positive */
+             explicit CellInfo( GtkTreeView* treeView, int x, int y ):
+                 _path(0L),
+-                _column(0L)
+-            { gtk_tree_view_get_path_at_pos( treeView, x, y, &_path, &_column, 0L, 0L ); }
++                _column(-1)
++            {
++                GtkTreeViewColumn *column( 0L );
++                gtk_tree_view_get_path_at_pos( treeView, x, y, &_path, &column, 0L, 0L );
++                _column = indexOfColumn( treeView, column );
++            }
+ 
+             //! construct from tree view and rectangle
+             explicit CellInfo( GtkTreeView* treeView, int x, int y, int w, int h );
+@@ -92,7 +96,7 @@ namespace Oxygen
+             {
+                 if( _path ) gtk_tree_path_free( _path );
+                 _path = 0L;
+-                _column = 0L;
++                _column = -1;
+             }
+ 
+             //!@name accessors
+@@ -100,7 +104,7 @@ namespace Oxygen
+ 
+             //! true if valid
+             bool isValid( void ) const
+-            { return _path && _column; }
++            { return _path && _column >= 0; }
+ 
+             //! returns true if column is the last one
+             bool isLastVisibleColumn( GtkTreeView* ) const;
+@@ -110,7 +114,7 @@ namespace Oxygen
+ 
+             //! returns true if column is the one that contains expander
+             bool isExpanderColumn( GtkTreeView* treeView ) const
+-            { return _column == gtk_tree_view_get_expander_column( treeView ); }
++            { return _column >= 0 && _column == indexOfColumn( treeView, gtk_tree_view_get_expander_column( treeView ) ); }
+ 
+             //! returs true if column is let of expander column
+             bool isLeftOfExpanderColumn( GtkTreeView* ) const;
+@@ -152,8 +156,8 @@ namespace Oxygen
+             //! path
+             GtkTreePath* _path;
+ 
+-            //! column
+-            GtkTreeViewColumn* _column;
++            //! column index
++            gint _column;
+ 
+             //! streamer
+             friend std::ostream& operator << (std::ostream& out, const CellInfo& info )
+@@ -168,6 +172,8 @@ namespace Oxygen
+                 return out;
+             }
+ 
++            static gint indexOfColumn( GtkTreeView*, GtkTreeViewColumn* );
++
+         };
+ 
+         //! cell info flags
+-- 
+cgit v0.11.2

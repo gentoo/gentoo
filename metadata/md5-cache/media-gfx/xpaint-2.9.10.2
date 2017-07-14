@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=media-libs/fontconfig media-libs/freetype media-libs/libpng:0 x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib virtual/jpeg jpeg2k? ( media-libs/openjpeg:0 ) pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0 media-libs/tiff:0 ) sys-devel/flex sys-devel/bison virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Image editor with tiff, jpeg and png support
+EAPI=5
+HOMEPAGE=http://sf-xpaint.sourceforge.net/
+IUSE=jpeg2k pgf tiff
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=media-libs/fontconfig media-libs/freetype media-libs/libpng:0 x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib virtual/jpeg jpeg2k? ( media-libs/openjpeg:0 ) pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0 media-libs/tiff:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/sf-xpaint/xpaint-2.9.10.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=bd66fc48686992d811c5e55196586ddc

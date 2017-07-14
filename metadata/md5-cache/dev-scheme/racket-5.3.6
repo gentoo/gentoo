@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-db/sqlite:3 x11-libs/cairo[X?] virtual/libffi x11-libs/cairo !dev-tex/slatex
+DESCRIPTION=General purpose, multi-paradigm programming language in the Lisp-Scheme family.
+EAPI=4
+HOMEPAGE=http://racket-lang.org/
+IUSE=backtrace cairo doc futures jit places plot threads X
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-db/sqlite:3 x11-libs/cairo[X?] virtual/libffi
+SLOT=0
+SRC_URI=http://download.racket-lang.org/installers/5.3.6/racket/racket-5.3.6-src-unix.tgz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2c5aa3fc42deacb2f55f24a7ce1c2cdf

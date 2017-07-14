@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-28">
+  <title>LibreOffice: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LibreOffice, the worst
+    of which allows for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libreoffice</product>
+  <announced>2017-06-27</announced>
+  <revised>2017-06-27: 1</revised>
+  <bug>616472</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/libreoffice" auto="yes" arch="*">
+      <unaffected range="ge">5.2.7.2</unaffected>
+      <vulnerable range="lt">5.2.7.2</vulnerable>
+    </package>
+    <package name="app-office/libreoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">5.2.7.2</unaffected>
+      <vulnerable range="lt">5.2.7.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibreOffice is a powerful office suite; its clean interface and powerful
+      tools let you unleash your creativity and grow your productivity.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibreOffice. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using LibreOffice, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibreOffice users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/libreoffice-5.2.7.2"
+    </code>
+    
+    <p>All LibreOffice binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-office/libreoffice-bin-5.2.7.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10327">
+      CVE-2016-10327
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7870">CVE-2017-7870</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-08T18:53:54Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-06-27T09:57:51Z">whissi</metadata>
+</glsa>

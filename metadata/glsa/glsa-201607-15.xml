@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-15">
+  <title>NTP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NTP, the worst of which
+    could lead to Denial of Service.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>563774</bug>
+  <bug>572452</bug>
+  <bug>581528</bug>
+  <bug>584954</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.8_p8</unaffected>
+      <vulnerable range="lt">4.2.8_p8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTP contains software for the Network Time Protocol.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NTP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/ntp-4.2.8_p8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7691">CVE-2015-7691</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7692">CVE-2015-7692</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7701">CVE-2015-7701</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7702">CVE-2015-7702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7703">CVE-2015-7703</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7704">CVE-2015-7704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7705">CVE-2015-7705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7848">CVE-2015-7848</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7849">CVE-2015-7849</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7850">CVE-2015-7850</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7851">CVE-2015-7851</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7852">CVE-2015-7852</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7853">CVE-2015-7853</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7854">CVE-2015-7854</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7855">CVE-2015-7855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7871">CVE-2015-7871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7973">CVE-2015-7973</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7974">CVE-2015-7974</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7975">CVE-2015-7975</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7976">CVE-2015-7976</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7977">CVE-2015-7977</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7978">CVE-2015-7978</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7979">CVE-2015-7979</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8138">CVE-2015-8138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8139">CVE-2015-8139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8140">CVE-2015-8140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8158">CVE-2015-8158</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1547">CVE-2016-1547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1548">CVE-2016-1548</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1549">CVE-2016-1549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1550">CVE-2016-1550</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1551">CVE-2016-1551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2516">CVE-2016-2516</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2517">CVE-2016-2517</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2518">CVE-2016-2518</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2519">CVE-2016-2519</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4953">CVE-2016-4953</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4954">CVE-2016-4954</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4955">CVE-2016-4955</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4956">CVE-2016-4956</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4957">CVE-2016-4957</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 08 Feb 2016 20:28:03 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:50:31 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

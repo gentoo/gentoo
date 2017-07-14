@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) static? ( acl? ( sys-apps/acl[static-libs] ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp[static-libs] ) xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) ) ) app-arch/xz-utils
+DESCRIPTION=Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
+EAPI=4
+HOMEPAGE=https://www.gnu.org/software/coreutils/
+IUSE=acl caps gmp hostname kill multicall nls selinux static userland_BSD vanilla xattr
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) hostname? ( !sys-apps/net-tools[hostname] ) kill? ( !sys-apps/util-linux[kill] !sys-process/procps[kill] ) !app-misc/realpath !<sys-apps/util-linux-2.13 !sys-apps/stat !net-mail/base64 !sys-apps/mktemp !<app-forensics/tct-1.18-r1 !<net-fs/netatalk-2.0.3-r4
+SLOT=0
+SRC_URI=mirror://gnu/coreutils/coreutils-8.25.tar.xz mirror://gentoo/coreutils-8.25-patches-1.1.tar.xz https://dev.gentoo.org/~vapier/dist/coreutils-8.25-patches-1.1.tar.xz mirror://gentoo/coreutils-8.25-man.tar.xz https://dev.gentoo.org/~vapier/dist/coreutils-8.25-man.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=54ac1892c46b3c7194b772209a077088

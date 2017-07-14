@@ -12,9 +12,9 @@ inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
 	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/clang.git
+EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
 # Keep in sync with sys-devel/llvm
@@ -84,19 +84,19 @@ src_unpack() {
 	mkdir -p x/y || die
 	cd x/y || die
 
-	git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
+	git-r3_fetch "https://git.llvm.org/git/clang-tools-extra.git
 		https://github.com/llvm-mirror/clang-tools-extra.git"
 	if use test; then
 		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
+		git-r3_fetch "https://git.llvm.org/git/llvm.git
 			https://github.com/llvm-mirror/llvm.git"
 	fi
 	git-r3_fetch
 
-	git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
+	git-r3_checkout https://llvm.org/git/clang-tools-extra.git \
 		"${S}"/tools/extra
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
+		git-r3_checkout https://llvm.org/git/llvm.git \
 			"${WORKDIR}"/llvm
 	fi
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-libs/boost
+DESCRIPTION=an extension to the Boost.MPL library
+EAPI=6
+HOMEPAGE=http://www.organicvectory.com/index.php?option=com_content&view=article&id=75:boostmplcartesianproduct&catid=42:boost&Itemid=78
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Boost-1.0
+RDEPEND=dev-libs/boost
+SLOT=0
+SRC_URI=https://github.com/quinoacomputing/BoostMPLCartesianProduct/archive/aeb0266b3a89f32c390dff51cb73a454d5d7a745.tar.gz -> boost-mpl-cartesian_product-20161205.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:- src_test:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=c527e49ce1fd5ec3d58f8d1f58a52ca3

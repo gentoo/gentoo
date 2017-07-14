@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="+berkdb exporter nls +readline static-libs"
 
 DEPEND="
-	readline? ( sys-libs/readline:0= )
+	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/camomile:= test? ( dev-ml/ounit dev-ml/iTeML ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild
+DESCRIPTION=The community-maintained foundation library for your OCaml projects
+EAPI=5
+HOMEPAGE=https://github.com/ocaml-batteries-team/batteries-included/
+IUSE=test +ocamlopt debug
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=dev-ml/camomile:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/2.5.3
+SRC_URI=https://github.com/ocaml-batteries-team/batteries-included/archive/v2.5.3.tar.gz -> batteries-2.5.3.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	oasis	9256ed89af74c3365ec888c00bfdfe43	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6098c103cc8b7649d3738fb37774b9e9

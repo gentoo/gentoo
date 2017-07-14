@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-08">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
+    of which might allow unauthorized changes to some critical or all
+    accessible data.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>2017-02-14</announced>
+  <revised>2017-02-14: 1</revised>
+  <bug>607674</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge">5.0.32</unaffected>
+      <vulnerable range="lt">5.0.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VirtualBox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could cause a Denial of Service condition. Additionally, an
+      attacker could create, delete or modify critical or all accessible data.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VirtualBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-5.0.32"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5545">CVE-2016-5545</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3290">CVE-2017-3290</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3316">CVE-2017-3316</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3332">CVE-2017-3332</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-13T02:06:40Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-14T12:37:26Z">whissi</metadata>
+</glsa>

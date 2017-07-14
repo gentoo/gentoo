@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Crystal Clear Cross-Platform Voice Communication Server
+EAPI=6
+HOMEPAGE=https://www.teamspeak.com/
+IUSE=doc tsdns
+KEYWORDS=~amd64 ~x86
+LICENSE=teamspeak3 GPL-2
+RESTRICT=installsources fetch mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/3.0.13.6/teamspeak3-server_linux_amd64-3.0.13.6.tar.bz2 ) x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2 )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=19c6f10d256b73c5debf9dd086d0d4a1

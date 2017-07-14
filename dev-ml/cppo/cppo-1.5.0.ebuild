@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	use ocamlopt || sed -e 's/ocamlbuild_cppo.cmx/ocamlbuild_cppo.cmo/' -i Makefile
-	emake BEST="$(usex ocamlopt '.native' '.byte')"
+	emake BEST="$(usex ocamlopt '.native' '.byte')" $(usex ocamlopt opt all) ocamlbuild
 }
 
 src_install() {

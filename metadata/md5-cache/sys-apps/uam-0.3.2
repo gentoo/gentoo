@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=virtual/udev virtual/pkgconfig >=app-portage/elt-patches-20170317 virtual/pkgconfig
+DESCRIPTION=Simple udev-based automounter for removable USB media
+EAPI=5
+HOMEPAGE=https://bitbucket.org/mgorny/uam/
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=virtual/udev
+SLOT=0
+SRC_URI=https://www.bitbucket.org/mgorny/uam/downloads/uam-0.3.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=4db613a94acc8e54ac4831442e4f0468

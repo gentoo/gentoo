@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=gnome-extra/gucharmap:2.90 sys-libs/zlib !gtk3? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 gucharmap? ( gnome-extra/gucharmap:2.90 ) ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) spell? ( app-text/enchant ) dev-libs/libxml2:2 >=dev-libs/glib-2.24:2 virtual/pkgconfig x11-libs/pango nls? ( sys-devel/gettext dev-util/intltool ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A GTK HTML editor for the experienced web designer or programmer
+EAPI=6
+HOMEPAGE=http://bluefish.openoffice.nl/
+IUSE=+gtk3 gucharmap nls python spell python_targets_python2_7
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=gnome-extra/gucharmap:2.90 sys-libs/zlib !gtk3? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 gucharmap? ( gnome-extra/gucharmap:2.90 ) ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) spell? ( app-text/enchant )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.bennewitz.com/bluefish/stable/source/bluefish-2.2.9.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=be5e04427b93d0a54b639539b1f93e8f

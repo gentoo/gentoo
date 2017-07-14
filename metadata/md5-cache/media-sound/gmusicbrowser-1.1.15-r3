@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst
+DEPEND=sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=An open-source jukebox for large collections of mp3/ogg/flac files
+EAPI=6
+HOMEPAGE=http://gmusicbrowser.org/
+IUSE=dbus doc extras gstreamer libnotify mplayer
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl dev-perl/Gtk2 virtual/perl-MIME-Base64 || ( net-misc/wget dev-perl/AnyEvent-HTTP ) dbus? ( dev-perl/Net-DBus ) gstreamer? ( dev-perl/Glib-Object-Introspection ) mplayer? ( || ( media-video/mplayer media-video/mpv ) ) !gstreamer? ( !mplayer? ( media-sound/alsa-utils media-sound/flac123 || ( media-sound/mpg123 media-sound/mpg321 ) media-sound/vorbis-tools ) ) extras? ( dev-perl/gnome2-wnck ) libnotify? ( dev-perl/Gtk2-Notify )
+SLOT=0
+SRC_URI=http://gmusicbrowser.org/download/gmusicbrowser-1.1.15.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=6b09053cb69c41022e6c334a74e70802

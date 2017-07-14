@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.6:0 >=app-crypt/keybase-1.0.17 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Keybase Filesystem (KBFS)
+EAPI=6
+HOMEPAGE=https://keybase.io/docs/kbfs
+LICENSE=BSD
+RDEPEND=app-crypt/gnupg sys-fs/fuse
+SLOT=0
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=ccdaa5ab4ce7a729ba0460afaa42e51c

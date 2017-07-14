@@ -39,7 +39,7 @@ SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 src_prepare() {
 	rm -f ${MY_PN}.{wrong*,noregist,not_wrong,hukugougo,notes,requested,pubdic+}
 
-	eapply_user
+	default
 }
 
 cdb_make() {

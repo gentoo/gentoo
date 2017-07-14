@@ -1,0 +1,21 @@
+Title: Grub2 multislot default setting is changing
+Author: William Hubbs <williamh@gentoo.org>
+Author: Ian Stakenvicius <axs@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-08-11
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: >=sys-boot/grub-2
+
+The multislot use flag in sys-boot/grub-2.x is no longer enabled by
+default.
+
+When the flag is enabled, all upstream binaries and documentation are
+renamed to "grub2" so as not to collide with grub-0.  Now that the use
+flag is no longer default-enabled, these names will revert back to
+their upstream defaults.  For example, grub2-mkconfig will become
+grub-mkconfig, grub2-install will become grub-install, etc.
+
+If you wish to retain the previous naming scheme, please make sure to
+explicitly enable USE="multislot" on sys-boot/grub in the usual manner.
+

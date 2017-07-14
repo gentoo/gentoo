@@ -1,7 +1,0 @@
-XIM=im-ja-xim-server
-XIM_PROGRAM="@EPREFIX@/usr/bin/im-ja-xim-server"
-PREFERENCE_PROGRAM="@EPREFIX@/usr/bin/im-ja-conf"
-ICON=im-ja-capplet
-SHORT_DESC="im-ja"
-GTK_IM_MODULE=im-ja
-#QT_IM_MODULE=im-ja

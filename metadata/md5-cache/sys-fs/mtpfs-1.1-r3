@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst prepare
+DEPEND=dev-libs/glib:2 >=media-libs/libmtp-1.1.2 sys-fs/fuse mad? ( media-libs/libid3tag media-libs/libmad ) virtual/pkgconfig
+DESCRIPTION=A FUSE filesystem providing access to MTP devices
+EAPI=5
+HOMEPAGE=https://www.adebenham.com/mtpfs/
+IUSE=debug mad
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2 >=media-libs/libmtp-1.1.2 sys-fs/fuse mad? ( media-libs/libid3tag media-libs/libmad )
+SLOT=0
+SRC_URI=https://www.adebenham.com/files/mtp/mtpfs-1.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f2937268bb89f5181ac5741d9b009ab2

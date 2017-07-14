@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=UNIX Shell for people already familiar with the C language
+EAPI=4
+HOMEPAGE=http://ccsh.sourceforge.net/
+KEYWORDS=amd64 ppc sparc x86 ~ppc64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/ccsh/ccsh-0.0.4.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f74bc7516ad430d26cc4c15d98d86dcf

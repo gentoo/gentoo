@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Full sources including the Gentoo patchset for the 3.12 kernel tree
+EAPI=5
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches
+IUSE=deblob experimental symlink build
+LICENSE=GPL-2 freedist
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=3.12.9999
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.tar.xz
+_eclass_exported_funcs=pkg_preinst:subversion pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:- src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	kernel-2	1241c87493492a950598df999f91e603	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=c6b82ae86364741b69d813cfd03fec3b

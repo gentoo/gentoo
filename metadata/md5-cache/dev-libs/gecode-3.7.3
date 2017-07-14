@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=gist? ( dev-qt/qtcore:4 dev-qt/qtgui:4 media-libs/freetype media-libs/libpng >=dev-libs/glib-2 )
+DESCRIPTION=An environment for developing constraint-based applications
+EAPI=4
+HOMEPAGE=http://www.gecode.org/
+IUSE=doc examples gist
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=gist? ( dev-qt/qtcore:4 dev-qt/qtgui:4 media-libs/freetype media-libs/libpng >=dev-libs/glib-2 )
+SLOT=0
+SRC_URI=http://www.gecode.org/download/gecode-3.7.3.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=96b3f08ee9357aaebb5a6c8a6bbe9d5c

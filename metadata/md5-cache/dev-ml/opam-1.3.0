@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-lang/ocaml:= || ( net-misc/wget net-misc/curl ) dev-ml/extlib:= dev-ml/ocaml-re:= dev-ml/ocamlgraph:= dev-ml/cmdliner:= dev-ml/cudf:= >=dev-ml/dose3-5:= dev-ml/uutf:= dev-ml/jsonm:=
+DESCRIPTION=A source-based package manager for OCaml
+EAPI=5
+HOMEPAGE=http://opam.ocaml.org/
+KEYWORDS=~amd64 ~arm ~ppc
+LICENSE=LGPL-3-with-linking-exception
+RDEPEND=dev-lang/ocaml:= || ( net-misc/wget net-misc/curl ) dev-ml/extlib:= dev-ml/ocaml-re:= dev-ml/ocamlgraph:= dev-ml/cmdliner:= dev-ml/cudf:= >=dev-ml/dose3-5:= dev-ml/uutf:= dev-ml/jsonm:= dev-ml/findlib
+SLOT=0/1.3.0
+SRC_URI=https://github.com/ocaml/opam/archive/1.3.0.tar.gz -> opam-1.3.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=c245beb5050b37e310620113c947170e

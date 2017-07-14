@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=>=sys-libs/mtdev-1.0 x11-proto/randrproto x11-proto/videoproto x11-proto/xineramaproto >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 virtual/pkgconfig x11-proto/inputproto x11-proto/kbproto x11-proto/xproto x11-base/xorg-server[xorg]
+DESCRIPTION=Xorg Driver for Multitouch Trackpads
+EAPI=5
+HOMEPAGE=https://github.com/BlueDragonX/xf86-input-mtrack
+IUSE=debug
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/mtdev-1.0 x11-base/xorg-server:= x11-base/xorg-server[xorg]
+SLOT=0
+SRC_URI=https://github.com/BlueDragonX/xf86-input-mtrack/tarball/v0.3.1 -> xf86-input-mtrack-0.3.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:xorg-2 pkg_postinst:- pkg_setup:- src_unpack:vcs-snapshot src_prepare:xorg-2 src_configure:xorg-2 src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	xorg-2	85b1e64779a3286b1224aef7dcfbca28
+_md5_=599bd67903b18dae4a7353d210b54129

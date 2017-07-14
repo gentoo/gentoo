@@ -24,6 +24,8 @@ RDEPEND="
 DEPEND="${RDEPEND} dev-ml/cppo
 	test? ( dev-ml/iTeML dev-ml/ounit dev-ml/gen )"
 
+PATCHES=( "${FILESDIR}/qcheck.patch" )
+
 src_configure() {
 	oasis_configure_opts="
 		--enable-unix

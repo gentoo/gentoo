@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201505-01">
+  <title>Ettercap: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Ettercap, the worst of
+    which allows remote attackers to execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">ettercap</product>
+  <announced>May 13, 2015</announced>
+  <revised>May 13, 2015: 1</revised>
+  <bug>532764</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/ettercap" auto="yes" arch="*">
+      <unaffected range="ge">0.8.2</unaffected>
+      <vulnerable range="lt">0.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ettercap is a comprehensive suite for man in the middle attacks.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ettercap. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ettercap users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ettercap-0.8.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6395">CVE-2014-6395</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6396">CVE-2014-6396</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9376">CVE-2014-9376</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9377">CVE-2014-9377</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9378">CVE-2014-9378</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9379">CVE-2014-9379</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9380">CVE-2014-9380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9381">CVE-2014-9381</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 06 Apr 2015 04:38:40 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 13 May 2015 09:24:38 +0000">Zlogene</metadata>
+</glsa>

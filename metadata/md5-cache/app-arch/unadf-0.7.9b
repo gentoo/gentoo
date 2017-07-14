@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=app-arch/unzip x11-misc/makedepend
+DESCRIPTION=Extract files from Amiga adf disk images
+EAPI=0
+HOMEPAGE=http://lclevy.free.fr/adflib/
+KEYWORDS=hppa ppc x86 ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/adflib.zip
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=8682d5c5dc35d3346bee86f743e03121

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare
+DESCRIPTION=Hybrid between a make utility and a shell scripting language
+EAPI=6
+HOMEPAGE=https://fbb-git.github.io/icmake/ https://github.com/fbb-git/icmake
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/fbb-git/icmake/archive/9.00.00.tar.gz -> icmake-9.00.00.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ffcdff5a51c448012b8a2c017303f216

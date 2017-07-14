@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=>=net-misc/curl-7.9.8 dev-ml/lwt:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt] virtual/pkgconfig >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=OCaml interface to the libcurl library
+EAPI=5
+HOMEPAGE=http://forge.ocamlcore.org/projects/ocurl/ https://github.com/ygrek/ocurl
+IUSE=examples
+KEYWORDS=~amd64 ~arm ~arm64
+LICENSE=MIT
+RDEPEND=>=net-misc/curl-7.9.8 dev-ml/lwt:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt]
+SLOT=0/0.7.10
+SRC_URI=https://github.com/ygrek/ocurl/archive/0.7.10.tar.gz -> ocurl-0.7.10.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=a6cc18315f51b2fc8ca3a7a051e1cf01

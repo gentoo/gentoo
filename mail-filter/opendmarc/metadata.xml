@@ -14,5 +14,7 @@
 	<use>
 		<flag name="spf">Use the <pkg>mail-filter/libspf2</pkg>
 			for Sender Policy Framework checking</flag>
+		<flag name="reports">Install the reports binaries: expire,
+			import, reports, params</flag>
 	</use>
 </pkgmetadata>

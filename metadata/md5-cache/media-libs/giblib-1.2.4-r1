@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=media-libs/imlib2-1.0.3[X] x11-libs/libX11 x11-libs/libXext >=media-libs/freetype-2.0 >=app-portage/elt-patches-20170317 >=app-portage/elt-patches-20170317
+DESCRIPTION=a graphics library built on top of imlib2
+EAPI=4
+HOMEPAGE=http://freecode.com/projects/giblib http://www.linuxbrit.co.uk/giblib/
+IUSE=static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=feh
+RDEPEND=>=media-libs/imlib2-1.0.3[X] x11-libs/libX11 x11-libs/libXext >=media-libs/freetype-2.0
+SLOT=0
+SRC_URI=http://www.linuxbrit.co.uk/downloads/giblib-1.2.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6488607ef179a7afa7b5678cd99e3c99

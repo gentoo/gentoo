@@ -12,18 +12,28 @@ SRC_URI="mirror://sourceforge/opendmarc/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~x86 ~x86-fbsd"
-IUSE="spf"
+IUSE="spf +reports"
 
-DEPEND="dev-perl/DBI
+DEPEND="reports? ( dev-perl/DBI )
 	|| ( mail-filter/libmilter mail-mta/sendmail )"
 RDEPEND="${DEPEND}
-	dev-perl/HTTP-Message
-	dev-perl/Switch
+	reports? (
+		dev-perl/DBD-mysql
+		dev-perl/HTTP-Message
+		dev-perl/Switch
+	)
 	spf? ( mail-filter/libspf2 )"
 
 pkg_setup() {
 	enewgroup milter
 	enewuser milter -1 -1 /var/lib/milter milter
+}
+
+src_prepare() {
+	default
+	if use !reports ; then
+		sed -i -e '/^SUBDIRS =/s/reports//' Makefile.in || die
+	fi
 }
 
 src_configure() {

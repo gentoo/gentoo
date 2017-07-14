@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss] sys-libs/zlib ) module_config_sgconfig? ( dev-libs/expat ) module_store_firebird? ( >=dev-db/firebird-2.0.3.12981.0-r6 ) module_store_mysql? ( virtual/mysql ) module_store_postgres? ( dev-db/postgresql dev-libs/openssl sys-libs/zlib ) sgconf? ( dev-libs/expat ) sgconf_xml? ( dev-libs/expat ) doc? ( dev-libs/libxslt )
+DESCRIPTION=Billing system for small home and office networks
+EAPI=5
+HOMEPAGE=http://stg.dp.ua/
+IUSE=sgconv radius rscriptd sgauth sgconf sgconf_xml +stargazer debug doc examples static-libs module_auth_always_online module_auth_internet_access module_auth_freeradius module_capture_ipq module_capture_ether module_capture_netflow module_config_sgconfig module_config_rpcconfig module_other_ping module_other_smux module_other_remote_script +module_store_files module_store_firebird module_store_mysql module_store_postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss] sys-libs/zlib ) module_config_sgconfig? ( dev-libs/expat ) module_store_firebird? ( >=dev-db/firebird-2.0.3.12981.0-r6 ) module_store_mysql? ( virtual/mysql ) module_store_postgres? ( dev-db/postgresql dev-libs/openssl sys-libs/zlib ) sgconf? ( dev-libs/expat ) sgconf_xml? ( dev-libs/expat )
+REQUIRED_USE=stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )
+SLOT=0
+SRC_URI=http://stg.dp.ua/download/server/2.408/stg-2.408.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=2620736fc8746fc9bd3d67b50047f8aa
