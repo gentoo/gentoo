@@ -14073,7 +14073,7 @@ media-video/dvdbackup 0.4.1 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
 media-video/dvdrip 0.98.11-r3 0.98.11-r4: dvd::rip is a graphical frontend for transcode
 media-video/dvdstyler 2.9.6-r1 3.0.2 3.0.3: A cross-platform free DVD authoring application
-media-video/dvgrab 3.5: Digital Video (DV) grabber for GNU/Linux
+media-video/dvgrab 3.5 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
@@ -15336,7 +15336,7 @@ net-misc/nx 3.5.0.30 3.5.0.32: NX compression technology core libraries
 net-misc/nxplayer 5.0.63.3 5.1.7.6 5.1.24.1: Client for NoMachine remote servers
 net-misc/ocsync 0.90.4: A file synchronizer especially designed for you, the normal user
 net-misc/ofono 1.16 1.17 1.18 1.19 1.20: Open Source mobile telephony (GSM/UMTS) daemon
-net-misc/oidentd 2.0.8-r5: Another (RFC1413 compliant) ident daemon
+net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.0.2 0.9.6 0.9.6.1: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.1_p2: A robust, high-performance CORBA 2 ORB
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
@@ -18338,7 +18338,7 @@ www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8 3.0.2: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.1.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
-www-apps/redmine 3.2.1: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 3.2.7 3.3.4 3.4.0: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.2.12-r1 4.4.1: RT is an enterprise-grade ticketing system
