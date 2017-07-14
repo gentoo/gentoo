@@ -1,0 +1,14 @@
+# Copyright 1999-2016 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Id$
+
+# Force libc++ as the default stdlib, and compiler-rt as the default rtlib.
+sys-devel/llvm clang default-libcxx default-compiler-rt
+
+# Build libc++ and libcxxrt against libunwind instead of libgcc_s.
+sys-libs/libcxx libunwind
+sys-libs/libcxxrt libunwind
+
+# This flag frees iproute2 from depending on libmnl (<=1.0.3), which is
+# mis-compiled by clang.
+sys-apps/iproute2 minimal
