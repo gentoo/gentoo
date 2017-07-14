@@ -30,8 +30,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	# Disable broken unittests, upstream bug #????
-	"${FILESDIR}"/${PN}-1.48.2-disable-unittest.patch
+	# Disable unittest failing without pt_BR locale, upstream bug #????
+	"${FILESDIR}"/${PV}-disable-unittest.patch
 )
 
 src_configure() {
