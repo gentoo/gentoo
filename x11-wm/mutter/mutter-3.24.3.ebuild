@@ -8,7 +8,7 @@ DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
 HOMEPAGE="https://git.gnome.org/browse/mutter/"
 
 LICENSE="GPL-2+"
-SLOT="0"
+SLOT="0/0"
 
 IUSE="debug gles2 input_devices_wacom +introspection test udev wayland"
 
