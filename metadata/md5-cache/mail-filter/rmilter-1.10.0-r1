@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-libs/libpcre !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) mail-filter/libmilter >=dev-libs/glib-2.28 dkim? ( mail-filter/opendkim ) memcached? ( dev-libs/libmemcached ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Another sendmail milter for different mail checks
+EAPI=5
+HOMEPAGE=https://github.com/vstakhov/rmilter
+IUSE=dkim libressl +memcached
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/libpcre !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) mail-filter/libmilter >=dev-libs/glib-2.28 dkim? ( mail-filter/opendkim ) memcached? ( dev-libs/libmemcached )
+SLOT=0
+SRC_URI=https://github.com/vstakhov/rmilter/archive/1.10.0.tar.gz -> rmilter-1.10.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1593d8ba0a261dcb566f172811bfc9d4

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure postinst preinst
+DEPEND=dev-lang/perl ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( net-libs/gnutls ) ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] )
+DESCRIPTION=50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+EAPI=5
+HOMEPAGE=https://www.monitoring-plugins.org/
+IUSE=gnutls ipv6 ldap libressl mysql dns fping game postgres samba snmp ssh +ssl
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( net-libs/gnutls ) ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] ) !net-analyzer/nagios-plugins
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.monitoring-plugins.org/download/monitoring-plugins-2.1.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=48c6bd6cf74baba01b310489d14beb21

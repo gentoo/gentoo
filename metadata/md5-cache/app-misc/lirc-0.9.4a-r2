@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst
+DEPEND=doc? ( app-doc/doxygen ) virtual/pkgconfig
+DESCRIPTION=decode and send infra-red signals of many commonly used remote controls
+EAPI=6
+HOMEPAGE=http://www.lirc.org/
+IUSE=doc static-libs X audio irman ftdi inputlirc iguanair systemd usb
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) systemd? ( sys-apps/systemd ) audio? ( >media-libs/portaudio-18 media-libs/alsa-lib ) irman? ( media-libs/libirman ) iguanair? ( app-misc/iguanaIR ) ftdi? ( dev-embedded/libftdi:0 ) inputlirc? ( app-misc/inputlircd ) usb? ( virtual/libusb:0 )
+REQUIRED_USE=iguanair? ( irman )
+SLOT=0
+SRC_URI=mirror://sourceforge/lirc/lirc-0.9.4a.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6041ef4f7b1ca7e4f1ee8622d1d0fdbf

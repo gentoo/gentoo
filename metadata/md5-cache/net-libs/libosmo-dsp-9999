@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=sci-libs/fftw doc? ( app-doc/doxygen ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DESCRIPTION=A library with SDR DSP primitives
+EAPI=5
+HOMEPAGE=http://git.osmocom.org/libosmo-dsp/
+IUSE=doc static-libs
+LICENSE=GPL-2
+RDEPEND=sci-libs/fftw
+SLOT=0/9999
+_eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-2	195a672bfaf52d868442171c9469bbb6	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e83c40f29e58fb0c2dd8025930c8c9df

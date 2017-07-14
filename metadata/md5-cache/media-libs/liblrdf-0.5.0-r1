@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test unpack
+DEPEND=!libressl? ( >=dev-libs/openssl-1:0= ) libressl? ( dev-libs/libressl ) media-libs/raptor:2 >=media-libs/ladspa-sdk-1.12 virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A library for the manipulation of RDF file in LADSPA plugins
+EAPI=5
+HOMEPAGE=https://github.com/swh/LRDF
+IUSE=libressl static-libs
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=!libressl? ( >=dev-libs/openssl-1:0= ) libressl? ( dev-libs/libressl ) media-libs/raptor:2 >=media-libs/ladspa-sdk-1.12
+SLOT=0
+SRC_URI=https://github.com/swh/LRDF/tarball/0.5.0 -> liblrdf-0.5.0.tar.gz
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ae4c862e42b40ba339d36da503b59c8a

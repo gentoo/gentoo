@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201605-05">
+  <title>Linux-PAM: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Linux-PAM, allowing
+    remote attackers to bypass the auth process and cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">pam</product>
+  <announced>May 31, 2016</announced>
+  <revised>May 31, 2016: 1</revised>
+  <bug>493432</bug>
+  <bug>505604</bug>
+  <bug>553302</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/pam" auto="yes" arch="*">
+      <unaffected range="ge">1.2.1</unaffected>
+      <vulnerable range="lt">1.2.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Linux-PAM (Pluggable Authentication Modules) is an architecture allowing
+      the separation of the development of privilege granting software from the
+      development of secure and appropriate authentication schemes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Linux-PAM.  Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause Denial of Service, conduct brute force
+      attacks, and conduct username enumeration.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Linux-PAM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/pam-1.2.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7041">CVE-2013-7041</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2583">CVE-2014-2583</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3238">CVE-2015-3238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3238">CVE-2015-3238</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Aug 2015 14:28:31 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 31 May 2016 04:26:13 +0000">b-man</metadata>
+</glsa>

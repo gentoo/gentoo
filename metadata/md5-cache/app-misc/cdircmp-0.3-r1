@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-libs/ncurses-5.4 >=sys-apps/sed-4
+DESCRIPTION=Compare directories and select files to copy
+EAPI=2
+HOMEPAGE=http://home.hccnet.nl/paul.schuurmans/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/ncurses-5.4
+SLOT=0
+SRC_URI=http://home.hccnet.nl/paul.schuurmans/download/cdircmp-0.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e47d136e0ac2abfbb786c8ec917ba4de

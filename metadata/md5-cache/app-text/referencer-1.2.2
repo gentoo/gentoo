@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure postinst postrm prepare setup
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=app-text/poppler-0.12.3-r3:=[cairo] >=dev-cpp/gtkmm-2.8:* >=dev-cpp/libglademm-2.6.0 >=dev-cpp/gconfmm-2.14.0 >=dev-libs/boost-1.52.0-r4 >=app-text/gnome-doc-utils-0.3.2 virtual/pkgconfig >=dev-lang/perl-5.8.1 dev-perl/libxml-perl dev-util/intltool app-text/rarian
+DESCRIPTION=Application to organise documents or references, and to generate BibTeX files
+EAPI=5
+HOMEPAGE=https://launchpad.net/referencer
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=app-text/poppler-0.12.3-r3:=[cairo] >=dev-cpp/gtkmm-2.8:* >=dev-cpp/libglademm-2.6.0 >=dev-cpp/gconfmm-2.14.0 >=dev-libs/boost-1.52.0-r4
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://launchpad.net/referencer/1./1.2.2/+download/referencer-1.2.2.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=14573dae86acf758634d1e4b914e94d2

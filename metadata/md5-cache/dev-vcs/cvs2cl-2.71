@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=produces a GNU-style ChangeLog for CVS-controlled sources
+EAPI=0
+HOMEPAGE=http://www.red-bean.com/cvs2cl/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://gentoo/cvs2cl-2.71.pl.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=2087903d89987c762adeecc871537503

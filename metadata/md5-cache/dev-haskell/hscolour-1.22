@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-lang/ghc-6.10.4:= >=dev-haskell/cabal-1.6
+DESCRIPTION=Colourise Haskell code
+EAPI=5
+HOMEPAGE=http://code.haskell.org/~malcolm/hscolour/
+IUSE=doc profile
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/ghc-6.10.4:=
+SLOT=0/1.22
+SRC_URI=mirror://hackage/packages/archive/hscolour/1.22/hscolour-1.22.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ghc-package	f9cf05643e20f03876bb4807f008c80f	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=68e42f574f24caa201dc1e16abc96121

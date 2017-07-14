@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_assert:= dev-ml/ppx_compare:= dev-ml/ppx_core:= dev-ml/ppx_custom_printf:= dev-ml/ppx_driver:= dev-ml/ppx_fields_conv:= dev-ml/ppx_here:= dev-ml/ppx_inline_test:= dev-ml/ppx_metaquot:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_traverse:= dev-ml/ppx_variants_conv:= dev-ml/stdio:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ocaml-re:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Cram like framework for OCaml
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_expect
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_assert:= dev-ml/ppx_compare:= dev-ml/ppx_core:= dev-ml/ppx_custom_printf:= dev-ml/ppx_driver:= dev-ml/ppx_fields_conv:= dev-ml/ppx_here:= dev-ml/ppx_inline_test:= dev-ml/ppx_metaquot:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_traverse:= dev-ml/ppx_variants_conv:= dev-ml/stdio:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ocaml-re:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_expect/archive/v0.9.0.tar.gz -> ppx_expect-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=71a96e4fb9fff71c2d3bfd821c278117

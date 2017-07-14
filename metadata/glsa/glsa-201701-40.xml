@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-40">
+  <title>xdelta: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in xdelta might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">xdelta</product>
+  <announced>2017-01-17</announced>
+  <revised>2017-01-17: 01</revised>
+  <bug>574408</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/xdelta" auto="yes" arch="*">
+      <unaffected range="ge">3.0.10</unaffected>
+      <vulnerable range="lt">3.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xdelta is a C library and command-line tool for delta compression using
+      VCDIFF/RFC 3284 streams.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow can be triggered within xdelta when ran against a
+      malicious input file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could coerce the victim to run xdelta against a
+      malicious input file. This may be leveraged by an attacker to crash
+      xdelta and gain control of program execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All xdelta users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/xdelta-3.0.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9765">
+      CVE-2014-9765
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2016-11-25T00:33:49Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-17T03:41:05Z">b-man</metadata>
+</glsa>

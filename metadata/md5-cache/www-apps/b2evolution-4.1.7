@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=virtual/httpd-php dev-lang/php[ctype,curl,mysql,tokenizer,xml] app-arch/unzip || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Multilingual multiuser multi-blog engine
+EAPI=5
+HOMEPAGE=http://www.b2evolution.net
+IUSE=vhosts
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=virtual/httpd-php dev-lang/php[ctype,curl,mysql,tokenizer,xml] >=app-admin/webapp-config-1.50.15
+SLOT=4.1.7
+SRC_URI=mirror://sourceforge/evocms/b2evolution-4.1.7-stable-2013-04-27.zip
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=d1c726b07008c08e85d465d5635c0110

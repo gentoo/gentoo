@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install
+DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) >=dev-libs/lzo-2 virtual/yacc sys-devel/flex
+DESCRIPTION=A file viewer, editor and analyzer for text, binary, and executable files
+EAPI=6
+HOMEPAGE=http://hte.sourceforge.net/ https://github.com/sebastianbiallas/ht/
+IUSE=X
+KEYWORDS=amd64 ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) >=dev-libs/lzo-2
+SLOT=0
+SRC_URI=mirror://sourceforge/hte/ht-2.1.0.tar.bz2
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7404c7ba00d0b93951b5720565ac60cc

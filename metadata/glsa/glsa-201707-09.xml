@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-09">
+  <title>GNOME applet for NetworkManager: Arbitrary file read/write</title>
+  <synopsis>A vulnerability has been found in GNOME applet for NetworkManager
+    allowing local attackers to access the local filesystem.
+  </synopsis>
+  <product type="ebuild">nm-applet</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>613768</bug>
+  <access>local</access>
+  <affected>
+    <package name="gnome-extra/nm-applet" auto="yes" arch="*">
+      <unaffected range="ge" slot="">1.4.6-r1</unaffected>
+      <vulnerable range="lt" slot="">1.4.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNOME applet for NetworkManager is a GTK+ 3 front-end which works under
+      Xorg environments with a systray.
+    </p>
+  </background>
+  <description>
+    <p>Frederic Bardy and Quentin Biguenet discovered that GNOME applet for
+      NetworkManager incorrectly checked permissions when connecting to certain
+      wireless networks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could bypass security restrictions at the login screen
+      to access local files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNOME applet for NetworkManager users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=gnome-extra/nm-applet-1.4.6-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6590">CVE-2017-6590</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-02T12:44:50Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:07:02Z">whissi</metadata>
+</glsa>

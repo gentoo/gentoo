@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=x11-libs/gtk+-2.12:2 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=a GTK+ TCP/IP DX-cluster and ON4KST chat client
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/xdxclusterclient
+IUSE=nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.12:2
+SLOT=0
+SRC_URI=mirror://sourceforge/xdxclusterclient/xdx-2.5.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6a4f750bb73e8beeb31142401c477da7

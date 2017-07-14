@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-36">
+  <title>TigerVNC: Integer overflow</title>
+  <synopsis>An integer overflow in TigerVNC might allow remote attackers to
+    execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">tigervnc</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 2</revised>
+  <bug>534714</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tigervnc" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2</unaffected>
+      <vulnerable range="lt">1.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TigerVNC is a high-performance VNC server/client.</p>
+  </background>
+  <description>
+    <p>TigerVNC is impacted by the same vulnerability as found in
+      CVE-2014-6051. An integer overflow, leading to a heap-based buffer
+      overflow, was found in the way screen sizes were handled.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, utilizing a malicious VNC server, could execute
+      arbitrary code with the privileges of the user running the client, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TigerVNC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tigervnc-1.4.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6051">CVE-2014-6051</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8240">CVE-2014-8240</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 21:39:43 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:26 +0000">whissi</metadata>
+</glsa>

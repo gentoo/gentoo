@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-31">
+  <title>GPL Ghostscript: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GPL Ghostscript, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ghostscript</product>
+  <announced>2017-02-22</announced>
+  <revised>2017-02-22: 1</revised>
+  <bug>596576</bug>
+  <bug>607190</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">9.20-r1</unaffected>
+      <vulnerable range="lt">9.20-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ghostscript is an interpreter for the PostScript language and for PDF.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GPL Ghostscript and the
+      bundled OpenJPEG. Please review the CVE identifiers and GLSA-201612-26
+      (OpenJPEG) referenced below for additional information.
+    </p>
+    
+    <p>Note: GPL Ghostscript in Gentoo since app-text/ghostscript-gpl-9.20-r1
+      no longer bundles OpenJPEG.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted PostScript file or PDF using GPL Ghostscript possibly resulting
+      in the execution of arbitrary code with the privileges of the process or
+      a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GPL Ghostscript users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-text/ghostscript-gpl-9.20-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7976">CVE-2016-7976</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7977">CVE-2016-7977</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7978">CVE-2016-7978</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7979">CVE-2016-7979</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8602">CVE-2016-8602</uri>
+    <uri link="https://security.gentoo.org/glsa/201612-26">GLSA-201612-26</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-21T18:24:37Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-22T11:12:25Z">whissi</metadata>
+</glsa>

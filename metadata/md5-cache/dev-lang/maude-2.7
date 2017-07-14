@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/gmp:0=[cxx] dev-libs/libsigsegv dev-libs/libtecla sci-libs/buddy sys-devel/bison sys-devel/flex >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=High-level specification language for equational and logic programming
+EAPI=6
+HOMEPAGE=http://maude.cs.uiuc.edu/
+IUSE=doc examples
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/gmp:0=[cxx] dev-libs/libsigsegv dev-libs/libtecla sci-libs/buddy
+SLOT=0
+SRC_URI=http://maude.cs.illinois.edu/w/images/2/2d/Maude-2.7.tar.gz https://dev.gentoo.org/~jlec/distfiles/maude-2.6-extras.tar.xz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ef474f04cbe929eface5ca547146897a

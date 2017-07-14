@@ -1,0 +1,16 @@
+Title: Unmasking of and Upgrade to GNOME 3.2
+Author: Nirbheek Chauhan <nirbheek@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-11-26
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <gnome-base/gnome-session-3.2
+
+We are pleased to announce the addition to tree and unmasking of GNOME-3.2.
+Users are strongly encouraged to read the GNOME 3.2 Guide. GNOME 3 has
+a massively changed interface and requires working 3D drivers for use, however
+there is a fallback mode which is very similar to GNOME 2 and does not require
+3D acceleration.
+
+Please read the Gnome 3.2 Guide:
+http://gnome.gentoo.org/howtos/gnome-3.2-upgrade.xml

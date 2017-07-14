@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/librevenge dev-libs/boost virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
+EAPI=6
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libpagemaker
+IUSE=debug doc tools
+KEYWORDS=amd64 ~arm ~hppa ~ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=MPL-2.0
+RDEPEND=dev-libs/librevenge
+SLOT=0
+SRC_URI=http://dev-www.libreoffice.org/src/libpagemaker/libpagemaker-0.0.3.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=f1e702cb98eb879d7c79c4f35733bf57

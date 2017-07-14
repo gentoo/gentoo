@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-11">
+  <title>Oracle JRE/JDK: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oracle's JRE and JDK
+    software suites allowing remote attackers to remotely execute arbitrary
+    code, obtain information, and cause Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 12, 2016</announced>
+  <revised>March 12, 2016: 1</revised>
+  <bug>525472</bug>
+  <bug>540054</bug>
+  <bug>546678</bug>
+  <bug>554886</bug>
+  <bug>563684</bug>
+  <bug>572432</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.72 </unaffected>
+      <vulnerable range="lt">1.8.0.72 </vulnerable>
+    </package>
+    <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.72 </unaffected>
+      <vulnerable range="lt">1.8.0.72 </vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Java Platform, Standard Edition (Java SE) lets you develop and deploy
+      Java applications on desktops and servers, as well as in today’s
+      demanding embedded environments. Java offers the rich user interface,
+      performance, versatility, portability, and security that today’s
+      applications require.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities exist in both Oracle’s JRE and JDK.  Please
+      review the referenced CVE’s for additional information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could gain access to information, remotely execute
+      arbitrary code, and cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JRE Users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jre-bin-1.8.0.72"
+    </code>
+    
+    <p>All Oracle JDK Users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jdk-bin-1.8.0.72"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0437">CVE-2015-0437</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0437">CVE-2015-0437</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0458">CVE-2015-0458</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0459">CVE-2015-0459</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0460">CVE-2015-0460</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0469">CVE-2015-0469</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0470">CVE-2015-0470</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0477">CVE-2015-0477</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0478">CVE-2015-0478</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0480">CVE-2015-0480</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0484">CVE-2015-0484</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0486">CVE-2015-0486</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0488">CVE-2015-0488</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0491">CVE-2015-0491</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0492">CVE-2015-0492</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2590">CVE-2015-2590</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2601">CVE-2015-2601</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2613">CVE-2015-2613</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2619">CVE-2015-2619</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2621">CVE-2015-2621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2625">CVE-2015-2625</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2627">CVE-2015-2627</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2628">CVE-2015-2628</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2632">CVE-2015-2632</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2637">CVE-2015-2637</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2638">CVE-2015-2638</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2659">CVE-2015-2659</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2664">CVE-2015-2664</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4729">CVE-2015-4729</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4731">CVE-2015-4731</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4732">CVE-2015-4732</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4733">CVE-2015-4733</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4734">CVE-2015-4734</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4734">CVE-2015-4734</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4736">CVE-2015-4736</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4748">CVE-2015-4748</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4760">CVE-2015-4760</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4803">CVE-2015-4803</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4803">CVE-2015-4803</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4805">CVE-2015-4805</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4805">CVE-2015-4805</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4806">CVE-2015-4806</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4806">CVE-2015-4806</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4810">CVE-2015-4810</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4810">CVE-2015-4810</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4835">CVE-2015-4835</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4835">CVE-2015-4835</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4840">CVE-2015-4840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4840">CVE-2015-4840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4842">CVE-2015-4842</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4842">CVE-2015-4842</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4843">CVE-2015-4843</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4843">CVE-2015-4843</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4844">CVE-2015-4844</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4844">CVE-2015-4844</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4860">CVE-2015-4860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4860">CVE-2015-4860</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4868">CVE-2015-4868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4868">CVE-2015-4868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4871">CVE-2015-4871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4871">CVE-2015-4871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4872">CVE-2015-4872</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4872">CVE-2015-4872</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4881">CVE-2015-4881</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4881">CVE-2015-4881</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4882">CVE-2015-4882</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4882">CVE-2015-4882</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4883">CVE-2015-4883</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4883">CVE-2015-4883</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4893">CVE-2015-4893</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4893">CVE-2015-4893</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4901">CVE-2015-4901</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4901">CVE-2015-4901</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4902">CVE-2015-4902</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4902">CVE-2015-4902</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4903">CVE-2015-4903</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4903">CVE-2015-4903</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4906">CVE-2015-4906</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4906">CVE-2015-4906</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4908">CVE-2015-4908</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4908">CVE-2015-4908</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4911">CVE-2015-4911</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4911">CVE-2015-4911</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4916">CVE-2015-4916</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4916">CVE-2015-4916</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7840">CVE-2015-7840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7840">CVE-2015-7840</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Jul 2015 12:38:49 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 12:35:30 +0000">b-man</metadata>
+</glsa>

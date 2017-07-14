@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Network Information Service tools
+EAPI=5
+HOMEPAGE=http://www.linux-nis.org/nis/
+IUSE=nls
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-2.12.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=22fd7302ec2e477fabde83c5ca8f66ee

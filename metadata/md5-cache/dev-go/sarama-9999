@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-go/go-eapache-queue dev-go/go-resiliency dev-go/go-snappy test? ( dev-go/go-spew ) >=dev-lang/go-1.8
+DESCRIPTION=Sarama is a Go library for Apache Kafka
+EAPI=5
+HOMEPAGE=https://github.com/Shopify/sarama
+IUSE=test
+LICENSE=MIT
+SLOT=0/9999
+_eclass_exported_funcs=src_unpack:golang-vcs src_prepare:- src_compile:golang-build src_test:golang-build src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs	0b4e2a941727a19d38600d1046c8c398	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=2fe7392058cbb70046a65c686613713e

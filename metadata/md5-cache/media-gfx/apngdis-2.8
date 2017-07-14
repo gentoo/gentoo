@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-libs/zlib media-libs/libpng:0= app-arch/unzip
+DESCRIPTION=extract PNG frames from an APNG
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/apngdis/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=sys-libs/zlib media-libs/libpng:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/apngdis/2.8/apngdis-2.8-src.zip
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=c31b7c099559122263e944cbfcaffe3b

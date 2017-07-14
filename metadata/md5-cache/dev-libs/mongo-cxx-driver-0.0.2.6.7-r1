@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.50[threads(+)] >=dev-libs/libpcre-8.30[cxx] dev-util/google-perftools[-minimal] ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) kerberos? ( dev-libs/cyrus-sasl[kerberos] ) >=dev-util/scons-2.3.0
+DESCRIPTION=C++ Driver for MongoDB
+EAPI=5
+HOMEPAGE=https://github.com/mongodb/mongo-cxx-driver
+IUSE=kerberos libressl ssl static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3 Apache-2.0
+RDEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.50[threads(+)] >=dev-libs/libpcre-8.30[cxx] dev-util/google-perftools[-minimal] ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=https://github.com/mongodb/mongo-cxx-driver/archive/legacy-0.0-26compat-2.6.7.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=821ef338ee6c9f14b097ad1962b64eee

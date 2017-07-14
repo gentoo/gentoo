@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/libusb:0 doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170317 virtual/pkgconfig
+DESCRIPTION=a C library and API for communicating with the Creative Nomad JukeBox digital audio player
+EAPI=4
+HOMEPAGE=http://libnjb.sourceforge.net
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=virtual/libusb:0
+SLOT=0
+SRC_URI=mirror://sourceforge/libnjb/libnjb-2.2.7.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=bf25e12876a7691234aa3460cbc9c5af

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=X? ( x11-libs/libX11 x11-libs/libXt ) X? ( x11-proto/xproto )
+DESCRIPTION=A command-line tool for creating, editing, and getting information about GIF images and animations
+EAPI=4
+HOMEPAGE=http://www.lcdf.org/~eddietwo/gifsicle/
+IUSE=X
+KEYWORDS=~alpha amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libXt )
+SLOT=0
+SRC_URI=http://www.lcdf.org/~eddietwo/gifsicle/gifsicle-1.67.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=be16af28724519d0d6799fd8c0fffd58

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile postinst postrm preinst prepare
+DEPEND=>=gnome-base/librsvg-2.34 >=x11-misc/icon-naming-utils-0.8.90 dev-util/intltool sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=A nice and well polished icon theme
+EAPI=4
+HOMEPAGE=http://packages.ubuntu.com/lucid/human-icon-theme
+KEYWORDS=~amd64 ~x86
+LICENSE=CC-BY-SA-2.5
+RDEPEND=|| ( x11-themes/tangerine-icon-theme x11-themes/adwaita-icon-theme )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://ubuntu/pool/universe/h/human-icon-theme/human-icon-theme_0.36.tar.gz https://www.gentoo.org/images/gentoo-logo.svg
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=6464fbfb53370905f263c0a65f0de0f4

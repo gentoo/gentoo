@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/go-colortext:= >=dev-lang/go-1.8
+DESCRIPTION=Go Dependency management system similar to bundle for ruby
+EAPI=5
+HOMEPAGE=https://github.com/mattn/gom
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/mattn/gom/archive/c522e7d.tar.gz -> gom-0_pre20151110.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:golang-build src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=70a65498eb2557cbe90fb3c81aff5d61

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/astring:=[ocamlopt(+)?] dev-ml/ocaml-cohttp:=[ocamlopt(+)?,async?,lwt?] dev-ml/cppo:=[ocamlopt(+)?] dev-ml/ocplib-endian:=[ocamlopt(+)?] async? ( dev-ml/async:=[ocamlopt(+)?] ssl? ( dev-ml/async_ssl:=[ocamlopt(+)?] ) ) lwt? ( dev-ml/lwt:=[ocamlopt(+)?] ) ssl? ( dev-ml/cryptokit:=[ocamlopt(+)?] ) dev-ml/opam dev-ml/ocamlbuild
+DESCRIPTION=Websocket library for OCaml
+EAPI=6
+HOMEPAGE=https://github.com/vbmithr/ocaml-websocket
+IUSE=+ocamlopt async +ssl lwt
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/astring:=[ocamlopt(+)?] dev-ml/ocaml-cohttp:=[ocamlopt(+)?,async?,lwt?] dev-ml/cppo:=[ocamlopt(+)?] dev-ml/ocplib-endian:=[ocamlopt(+)?] async? ( dev-ml/async:=[ocamlopt(+)?] ssl? ( dev-ml/async_ssl:=[ocamlopt(+)?] ) ) lwt? ( dev-ml/lwt:=[ocamlopt(+)?] ) ssl? ( dev-ml/cryptokit:=[ocamlopt(+)?] )
+SLOT=0/2.9
+SRC_URI=https://github.com/vbmithr/ocaml-websocket/archive/2.9.tar.gz -> ocaml-websocket-2.9.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=41773b0ce43797e071680a0c681028fc

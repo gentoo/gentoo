@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-19">
+  <title>Mercurial: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mercurial, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mercurial</product>
+  <announced>December 07, 2016</announced>
+  <revised>December 07, 2016: 1</revised>
+  <bug>533008</bug>
+  <bug>544332</bug>
+  <bug>578546</bug>
+  <bug>582238</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/mercurial" auto="yes" arch="*">
+      <unaffected range="ge">3.8.4</unaffected>
+      <vulnerable range="lt">3.8.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mercurial is a distributed source control management system.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mercurial. Please
+      review the CVE identifier and bug reports referenced for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mercurial users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/mercurial-3.8.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9390">CVE-2014-9390</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9462">CVE-2014-9462</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3068">CVE-2016-3068</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3069">CVE-2016-3069</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3105">CVE-2016-3105</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3630">CVE-2016-3630</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 22:49:35 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 07 Dec 2016 10:35:02 +0000">b-man</metadata>
+</glsa>

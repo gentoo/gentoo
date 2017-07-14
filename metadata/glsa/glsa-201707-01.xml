@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-01">
+  <title>IcedTea: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in IcedTea, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">icedtea</product>
+  <announced>2017-07-05</announced>
+  <revised>2017-07-05: 1</revised>
+  <bug>607676</bug>
+  <bug>609562</bug>
+  <bug>618874</bug>
+  <bug>619458</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/icedtea-bin" auto="yes" arch="*">
+      <unaffected range="ge" slot="7">7.2.6.10</unaffected>
+      <unaffected range="ge" slot="8">3.4.0</unaffected>
+      <vulnerable range="lt">7.2.6.10</vulnerable>
+      <vulnerable range="lt">3.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>IcedTea’s aim is to provide OpenJDK in a form suitable for easy
+      configuration, compilation and distribution with the primary goal of
+      allowing inclusion in GNU/Linux distributions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in IcedTea. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+    
+    <p>Note: If the web browser plug-in provided by the dev-java/icedtea-web
+      package was installed, the issues exposed via Java applets could have
+      been exploited without user interaction if a user visited a malicious
+      website.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, gain access to information, or cause a Denial
+      of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All IcedTea binary 7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-7.2.6.10:7"
+    </code>
+    
+    <p>All IcedTea binary 3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-3.4.0:8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2183">CVE-2016-2183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5546">CVE-2016-5546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5547">CVE-2016-5547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5548">CVE-2016-5548</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5549">CVE-2016-5549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5552">CVE-2016-5552</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3231">CVE-2017-3231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3241">CVE-2017-3241</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3252">CVE-2017-3252</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3253">CVE-2017-3253</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3260">CVE-2017-3260</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3261">CVE-2017-3261</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3272">CVE-2017-3272</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3289">CVE-2017-3289</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3509">CVE-2017-3509</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3511">CVE-2017-3511</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3512">CVE-2017-3512</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3514">CVE-2017-3514</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3526">CVE-2017-3526</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3533">CVE-2017-3533</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3539">CVE-2017-3539</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3544">CVE-2017-3544</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-31T16:38:05Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-07-05T09:02:19Z">whissi</metadata>
+</glsa>

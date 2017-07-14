@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=llvm? ( >=sys-devel/llvm-3.6 ) dev-libs/openssl:0 sys-libs/ncurses sys-libs/readline:0 dev-libs/libyaml virtual/libffi sys-libs/zlib =dev-ruby/rake-10* dev-ruby/bundler
+DESCRIPTION=A re-implementation of the Ruby VM designed for speed
+EAPI=5
+HOMEPAGE=http://rubini.us
+IUSE=+llvm
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=llvm? ( >=sys-devel/llvm-3.6 ) dev-libs/openssl:0 sys-libs/ncurses sys-libs/readline:0 dev-libs/libyaml virtual/libffi sys-libs/zlib
+SLOT=0
+SRC_URI=https://rubinius-releases-rubinius-com.s3.amazonaws.com/rubinius-3.43.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=6b15db1a862525a2ee207f299458f914

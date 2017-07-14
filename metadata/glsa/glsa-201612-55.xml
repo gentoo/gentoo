@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-55">
+  <title>libjpeg-turbo: User-assisted execution of arbitrary code</title>
+  <synopsis>An out-of-bounds read in libjpeg-turbo might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libjpeg-turbo</product>
+  <announced>December 31, 2016</announced>
+  <revised>December 31, 2016: 1</revised>
+  <bug>585782</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libjpeg-turbo" auto="yes" arch="*">
+      <unaffected range="ge">1.5.0</unaffected>
+      <vulnerable range="lt">1.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX,
+      SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and
+      decompression.
+    </p>
+  </background>
+  <description>
+    <p>The accelerated Huffman decoder was previously invoked if there were 128
+      bytes in the input buffer. However, it is possible to construct a JPEG
+      image with Huffman blocks &gt; 430 bytes in length. This release simply
+      increases the minimum buffer size for the accelerated Huffman decoder to
+      512 bytes, which should accommodate any possible input.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could coerce the victim to run a specially crafted
+      image file resulting in the execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libjpeg-turbo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libjpeg-turbo-1.5.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://wiki.mozilla.org/images/7/77/Libjpeg-turbo-report.pdf">
+      LJT-01-005
+    </uri>
+    <uri link="https://github.com/libjpeg-turbo/libjpeg-turbo/commit/0463f7c9aad060fcd56e98d025ce16185279e2bc">
+      Prevent overread when decoding malformed JPEG
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 Nov 2016 06:32:59 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 15:38:15 +0000">b-man</metadata>
+</glsa>

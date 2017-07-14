@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install setup
+DEPEND=|| ( dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) test? ( sci-libs/htslib sci-biology/samtools:0 )
+DESCRIPTION=Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
+EAPI=6
+HOMEPAGE=https://bedtools.readthedocs.io/
+IUSE=test
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/arq5x/bedtools2/releases/download/v2.26.0/bedtools-2.26.0.tar.gz
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=76f5a1f39ff7b393994b8a22dc4a192f

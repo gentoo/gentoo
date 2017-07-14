@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-23">
+  <title>Dropbear: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dropbear, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">dropbear</product>
+  <announced>2017-02-20</announced>
+  <revised>2017-02-20: 1</revised>
+  <bug>605560</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dropbear" auto="yes" arch="*">
+      <unaffected range="ge">2016.74</unaffected>
+      <vulnerable range="lt">2016.74</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dropbear is an SSH server and client designed with a small memory
+      footprint.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dropbear. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with root
+      privileges if usernames containing special characters can be created on a
+      system. Also, a dbclient user who can control username or host arguments
+      could potentially run arbitrary code with the privileges of the process.
+    </p>
+    
+    <p>In addition, a remote attacker could entice a user to process a
+      specially crafted SSH key using dropbearconvert, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dropbear users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dropbear-2016.74"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7406">CVE-2016-7406</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7407">CVE-2016-7407</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7408">CVE-2016-7408</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7409">CVE-2016-7409</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-02-05T22:53:36Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-20T23:45:39Z">whissi</metadata>
+</glsa>

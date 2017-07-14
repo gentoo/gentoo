@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-02">
+  <title>Game Music Emu: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Game Music Emu, the
+    worst of which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">game-music-emu</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>603092</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/game-music-emu" auto="yes" arch="*">
+      <unaffected range="ge" slot="">0.6.1</unaffected>
+      <vulnerable range="lt" slot="">0.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Game Music Emu is a multi-purpose console music emulator and player
+      library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Game Music Emu. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted SPC
+      music file, using Game Music Emu or an application linked against the
+      Game Music Emu library, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Game Music Emu users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/game-music-emu-0.6.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9957">CVE-2016-9957</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9958">CVE-2016-9958</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9959">CVE-2016-9959</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9960">CVE-2016-9960</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9961">CVE-2016-9961</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-24T05:27:52Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:04:39Z">whissi</metadata>
+</glsa>

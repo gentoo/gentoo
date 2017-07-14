@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=>=dev-libs/bglibs-1.006 >=sys-apps/sed-4
+DESCRIPTION=Mail server network protocol front-ends
+EAPI=0
+HOMEPAGE=http://untroubled.org/mailfront/
+KEYWORDS=x86 ~sparc ~ppc
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/bglibs-1.006 net-libs/cvm virtual/qmail
+SLOT=0
+SRC_URI=http://untroubled.org/mailfront/archive/mailfront-0.88.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_install:-
+_eclasses_=fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=382af993ad5379bc7b4fee5933204440

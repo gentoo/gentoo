@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare
+DEPEND=dev-libs/openssl:0= >=dev-libs/boost-1.41:0= dev-libs/check >=sys-devel/gcc-4.4 >=dev-cpp/asio-1.10.1[ssl] dev-util/scons
+DESCRIPTION=Synchronous multi-master replication engine that provides the wsrep API
+EAPI=6
+HOMEPAGE=http://www.galeracluster.com
+IUSE=cpu_flags_x86_sse4_2 garbd test
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 BSD
+RDEPEND=dev-libs/openssl:0= >=dev-libs/boost-1.41:0=
+SLOT=0
+SRC_URI=http://releases.galeracluster.com/source/galera-3-25.3.15.tar.gz
+_eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=67d887a0774130a694d00c37ef0ff824

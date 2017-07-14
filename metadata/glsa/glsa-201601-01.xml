@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201601-01">
+  <title>OpenSSH: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSH, allowing
+    attackers to leak client memory to a server, including private keys.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>January 16, 2016</announced>
+  <revised>January 16, 2016: 1</revised>
+  <bug>571892</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">7.1_p2</unaffected>
+      <vulnerable range="lt">7.1_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSH is a complete SSH protocol implementation that includes SFTP
+      client and server support.
+    </p>
+  </background>
+  <description>
+    <p>Qualys have reported two issues in the “roaming” code included in
+      the OpenSSH client, which provides undocumented, experimental support for
+      resuming SSH connections. An OpenSSH client could be tricked into leaking
+      parts of its memory to a malicious server. Furthermore, a buffer overflow
+      can be exploited by a malicious server, but its exploitation requires
+      non-default options and is mitigated due to another bug.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to connect to a specially crafted
+      OpenSSH server, possibly resulting in the disclosure of the user’s
+      private keys. Users with private keys that are not protected by a
+      passphrase are advised to generate new keys if they have connected to an
+      SSH server they don’t fully trust.
+    </p>
+    
+    <p>Note that no special configuration is required to be vulnerable as the
+      roaming feature is enabled by default on the client.
+    </p>
+  </impact>
+  <workaround>
+    <p>The issues can be worked around by disabling the roaming code. To do so,
+      add “UseRoaming no” to the SSH client configuration, or specify “-o
+      ‘UseRoaming no’” on the command line.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSH users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-7.1_p2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0777">CVE-2016-0777</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0778">CVE-2016-0778</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 14 Jan 2016 09:15:59 +0000">a3li</metadata>
+  <metadata tag="submitter" timestamp="Sat, 16 Jan 2016 18:56:11 +0000">a3li</metadata>
+</glsa>

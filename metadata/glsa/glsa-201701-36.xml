@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-36">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Apache, the worst of
+    which could lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>2017-01-15</announced>
+  <revised>2017-01-17: 02</revised>
+  <bug>529130</bug>
+  <bug>589226</bug>
+  <bug>601736</bug>
+  <bug>603130</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.4.25</unaffected>
+      <vulnerable range="lt">2.4.25</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Apache HTTP server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache. Please review
+      the CVE identifiers, upstream Apache Software Foundation documentation,
+      and HTTPoxy website referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition via multiple
+      vectors or response splitting and cache pollution. Additionally, an
+      attacker could intercept unsecured (HTTP) transmissions via the HTTPoxy
+      vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.4.25"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://www.apache.org/security/asf-httpoxy-response.txt">Apache
+      Software Foundation Projects and "httpoxy" CERT VU #797896
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3583">CVE-2014-3583</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0736">CVE-2016-0736</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2161">CVE-2016-2161</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5387">CVE-2016-5387</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8740">CVE-2016-8740</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8743">CVE-2016-8743</uri>
+    <uri link="https://httpoxy.org/">HTTPoxy Website</uri>
+  </references>
+  <metadata tag="requester" timestamp="2016-11-01T05:14:20Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-01-17T12:28:49Z">b-man</metadata>
+</glsa>

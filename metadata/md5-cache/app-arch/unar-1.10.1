@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=gnustep-base/gnustep-base dev-libs/icu:= sys-libs/zlib app-arch/bzip2 >=gnustep-base/gnustep-make-2.6.0[native-exceptions] sys-devel/gcc[objc]
+DESCRIPTION=unpacker for various archiving formats, e.g. rar v3
+EAPI=5
+HOMEPAGE=https://unarchiver.c3.cx/
+KEYWORDS=amd64
+LICENSE=LGPL-2.1
+RDEPEND=gnustep-base/gnustep-base dev-libs/icu:= sys-libs/zlib app-arch/bzip2
+SLOT=0
+SRC_URI=https://unarchiver.c3.cx/downloads/unar1.10.1_src.zip
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e0508700d7356d176c0d0111cbd5eefa

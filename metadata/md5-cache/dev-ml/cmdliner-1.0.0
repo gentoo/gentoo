@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?] dev-ml/result:= dev-ml/topkg dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Declarative definition of command line interfaces for OCaml
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/cmdliner
+IUSE=+ocamlopt test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?] dev-ml/result:=
+SLOT=0/1.0.0
+SRC_URI=http://erratique.ch/software/cmdliner/releases/cmdliner-1.0.0.tbz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=42b729ea80916fec8f4a61263b3b2727

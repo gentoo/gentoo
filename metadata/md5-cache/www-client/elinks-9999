@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) bzip2? ( >=app-arch/bzip2-1.0.2 ) gc? ( dev-libs/boehm-gc ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) xml? ( >=dev-libs/expat-1.95.4 ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5:0= ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Advanced and well-established text-mode web browser
+EAPI=5
+HOMEPAGE=http://elinks.or.cz/
+IUSE=bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6 javascript libressl lua +mouse nls nntp perl ruby samba ssl unicode X xml zlib
+LICENSE=GPL-2
+RDEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) bzip2? ( >=app-arch/bzip2-1.0.2 ) gc? ( dev-libs/boehm-gc ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) xml? ( >=dev-libs/expat-1.95.4 ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5:0= ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=70b054e8687671cec170f0c8a5a9d5d0

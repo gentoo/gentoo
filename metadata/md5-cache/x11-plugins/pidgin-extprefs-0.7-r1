@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=virtual/pkgconfig net-im/pidgin[gtk]
+DESCRIPTION=Extra preferences that are desired but are not worthy for Pidgin
+EAPI=2
+HOMEPAGE=http://gaim-extprefs.sourceforge.net
+KEYWORDS=amd64 hppa ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=net-im/pidgin[gtk]
+SLOT=0
+SRC_URI=mirror://sourceforge/gaim-extprefs/pidgin-extprefs-0.7.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=483302546187e6f33ecd18985082abfd

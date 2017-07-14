@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Contribution database for the m17n library
+EAPI=6
+HOMEPAGE=https://savannah.nongnu.org/projects/m17n
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+RDEPEND=~dev-db/m17n-db-1.6.4
+SLOT=0
+SRC_URI=mirror://nongnu/m17n/m17n-contrib-1.1.14.tar.gz
+_eclass_exported_funcs=-
+_md5_=cec98b09778701154429a55e00354fdf

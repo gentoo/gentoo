@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-11">
+  <title>claws-mail: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in claws-mail,
+    particularly in the default SSL implementation.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 26, 2016</announced>
+  <revised>June 26, 2016: 1</revised>
+  <bug>525588</bug>
+  <bug>569010</bug>
+  <bug>570692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/claws-mail" auto="yes" arch="*">
+      <unaffected range="ge">3.13.2</unaffected>
+      <vulnerable range="lt">3.13.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Claws Mail is a GTK based e-mail client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in claws-mail. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly intercept communications due to the default
+      implementation of SSL 3.0.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All claws-mail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/claws-mail-3.13.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8614">CVE-2015-8614</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8614">CVE-2015-8614</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8708">CVE-2015-8708</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8708">CVE-2015-8708</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 26 Apr 2016 06:27:10 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 12:30:09 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-77">
+  <title>Ansible: Remote execution of arbitrary code</title>
+  <synopsis>A vulnerability in Ansible may allow rogue clients to execute
+    commands on the Ansible controller. 
+  </synopsis>
+  <product type="ebuild">ansible</product>
+  <announced>2017-01-31</announced>
+  <revised>2017-01-31: 1</revised>
+  <bug>605342</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/ansible" auto="yes" arch="*">
+      <unaffected range="ge">2.1.4.0_rc3</unaffected>
+      <unaffected range="ge">2.2.1.0_rc5</unaffected>
+      <vulnerable range="lt">2.1.4.0_rc3</vulnerable>
+      <vulnerable range="lt">2.2.1.0_rc5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ansible is a radically simple IT automation platform.</p>
+  </background>
+  <description>
+    <p>An input validation vulnerability was found in Ansible’s handling of
+      data sent from client systems.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker with control over a client system being managed by Ansible
+      and the ability to send facts back to the Ansible server could execute
+      arbitrary code on the Ansible server using the Ansible-server privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ansible 2.1.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/ansible-2.1.4.0_rc3"
+    </code>
+    
+    <p>All Ansible 2.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/ansible-2.2.1.0_rc5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9587">CVE-2016-9587</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T01:33:48Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-31T15:20:20Z">whissi</metadata>
+</glsa>

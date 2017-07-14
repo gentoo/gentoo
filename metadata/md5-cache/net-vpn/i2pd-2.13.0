@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=!static? ( >=dev-libs/boost-1.49[threads] !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl ) upnp? ( net-libs/miniupnpc ) ) static? ( >=dev-libs/boost-1.49[static-libs,threads] !libressl? ( dev-libs/openssl:0[static-libs] ) libressl? ( dev-libs/libressl[static-libs] ) upnp? ( net-libs/miniupnpc[static-libs] ) ) i2p-hardening? ( >=sys-devel/gcc-4.7 ) || ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=A C++ daemon for accessing the I2P anonymous network
+EAPI=6
+HOMEPAGE=https://github.com/PurpleI2P/i2pd
+IUSE=cpu_flags_x86_aes i2p-hardening libressl pch static +upnp
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=!static? ( >=dev-libs/boost-1.49[threads] !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl ) upnp? ( net-libs/miniupnpc ) )
+SLOT=0
+SRC_URI=https://github.com/PurpleI2P/i2pd/archive/2.13.0.tar.gz -> i2pd-2.13.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a8c1a8f8c5494709d03e72aa17a54e08

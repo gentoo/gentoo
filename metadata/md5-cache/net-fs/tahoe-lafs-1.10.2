@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Secure, decentralized, data store
+EAPI=5
+HOMEPAGE=http://tahoe-lafs.org/trac/tahoe-lafs
+IUSE=doc python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-python/characteristic-14.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/foolscap-0.8.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/nevow[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pyasn1-0.1.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyasn1-modules[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycrypto[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycryptopp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pyopenssl-0.14[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyutil[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/service_identity[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/simplejson[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/twisted-core-13.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/zbase32[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/zfec[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/zope-interface[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://tahoe-lafs.org/source/tahoe-lafs/releases/allmydata-tahoe-1.10.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=37334dd754b15b5db5339848ba8c6bd1

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=>=sys-apps/util-linux-2.24 >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
+DESCRIPTION=Tools for bcachefs
+EAPI=5
+HOMEPAGE=http://bcache.evilpiepirate.org/
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/util-linux-2.24
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	udev	d91cac2c73b94629cad2daea66e0d182
+_md5_=977caf5e701a4f3deadf704d879ed8af

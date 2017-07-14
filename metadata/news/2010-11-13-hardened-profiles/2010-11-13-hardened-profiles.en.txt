@@ -1,0 +1,51 @@
+Title: Restructuring of Hardened profiles
+Author: Anthony G. Basile <blueness@gentoo.org>
+Author: Hardened Team <hardened@gentoo.org>
+Content-Type: text/plain
+Posted: 2010-11-13
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Profile: hardened/linux/ia64/10.0
+Display-If-Profile: hardened/linux/ia64/10.0/server
+Display-If-Profile: hardened/linux/ia64/10.0/desktop
+Display-If-Profile: hardened/linux/ia64/10.0/developer
+Display-If-Profile: hardened/linux/x86/10.0
+Display-If-Profile: hardened/linux/x86/10.0/server
+Display-If-Profile: hardened/linux/x86/10.0/no-nptl
+Display-If-Profile: hardened/linux/x86/10.0/desktop
+Display-If-Profile: hardened/linux/x86/10.0/developer
+Display-If-Profile: hardened/linux/amd64/10.0
+Display-If-Profile: hardened/linux/amd64/10.0/server
+Display-If-Profile: hardened/linux/amd64/10.0/desktop
+Display-If-Profile: hardened/linux/amd64/10.0/no-multilib
+Display-If-Profile: hardened/linux/amd64/10.0/developer
+Display-If-Profile: hardened/linux/powerpc/ppc32/10.0
+Display-If-Profile: hardened/linux/powerpc/ppc32/10.0/server
+Display-If-Profile: hardened/linux/powerpc/ppc32/10.0/desktop
+Display-If-Profile: hardened/linux/powerpc/ppc32/10.0/developer
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/server
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/desktop
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/32bit-userland
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/32bit-userland/server
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/32bit-userland/desktop
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/32bit-userland/developer
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/64bit-userland
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/64bit-userland/server
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/64bit-userland/desktop
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/64bit-userland/developer
+Display-If-Profile: hardened/linux/powerpc/ppc64/10.0/developer
+
+During the next few weeks, all hardened profiles will be restructured to
+remove the version number "/10.0".  For example, if your current profile
+is "hardened/linux/amd64/10.0/no-multilib" your new profile will be
+"hardened/linux/amd64/no-multilib".
+
+We will change the profiles one arch at a time, starting with ia64, and
+proceeding in order with ppc, ppc64, x86 and amd64.  Once your arch has
+been  updated, you will receive a warning when running emerge that your
+profile has been deprecated.  When you do, use "eselect profile list" to
+get a list of the new profiles.  Then, use "eselect profile set <num>"
+to switch to your new profile with corresponding number <num>.
+
+Progress with the restructuring will be tracked in bug #344861.

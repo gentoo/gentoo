@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install preinst setup
+DEPEND=net-mail/mailbase ldap? ( net-nds/openldap ) mysql? ( >=virtual/mysql-5.0 ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 )
+DESCRIPTION=A statistical-algorithmic hybrid anti-spam filter
+EAPI=4
+HOMEPAGE=http://dspam.sourceforge.net/
+IUSE=clamav daemon debug ldap static-libs syslog virtual-users user-homedirs +hash mysql postgres sqlite small-scale +domain-scale large-scale
+KEYWORDS=amd64 ~arm ~ppc x86
+LICENSE=AGPL-3
+RDEPEND=net-mail/mailbase ldap? ( net-nds/openldap ) mysql? ( >=virtual/mysql-5.0 ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 ) clamav? ( app-antivirus/clamav ) syslog? ( virtual/logger )
+REQUIRED_USE=|| ( hash mysql postgres sqlite ) static-libs? ( ^^ ( hash mysql postgres sqlite ) ) ^^ ( small-scale domain-scale large-scale ) virtual-users? ( !user-homedirs )
+SLOT=0
+SRC_URI=mirror://sourceforge/dspam/dspam-3.10.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=dd4baf8d57e53d4d5f559a0018e0ea3c

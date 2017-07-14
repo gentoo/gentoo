@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-24">
+  <title>GnuPG, Libgcrypt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in GnuPG and
+    Libgcrypt, which may result in execution of arbitrary code, Denial of
+    Service, or the disclosure of private keys.
+  </synopsis>
+  <product type="ebuild">gnupg libgcrypt</product>
+  <announced>February 21, 2014</announced>
+  <revised>August 24, 2016: 3</revised>
+  <bug>449546</bug>
+  <bug>478184</bug>
+  <bug>484836</bug>
+  <bug>487230</bug>
+  <bug>494658</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">2.0.22</unaffected>
+      <unaffected range="rge">1.4.16</unaffected>
+      <unaffected range="rge">1.4.17</unaffected>
+      <unaffected range="rge">1.4.18</unaffected>
+      <unaffected range="rge">1.4.19</unaffected>
+      <unaffected range="rge">1.4.20</unaffected>
+      <unaffected range="rge">1.4.21</unaffected>
+      <vulnerable range="lt">2.0.22</vulnerable>
+    </package>
+    <package name="dev-libs/libgcrypt" auto="yes" arch="*">
+      <unaffected range="ge">1.5.3</unaffected>
+      <vulnerable range="lt">1.5.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite of
+      cryptographic software. Libgcrypt is a cryptographic library based on
+      GnuPG.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GnuPG and Libgcrypt.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An unauthenticated remote attacker may be able to execute arbitrary code
+      with the privileges of the user running GnuPG, cause a Denial of Service
+      condition, or bypass security restrictions. Additionally, a side-channel
+      attack may allow a local attacker to recover a private key, please review
+      “Flush+Reload: a High Resolution, Low Noise, L3 Cache Side-Channel
+      Attack” in the References section for further details.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuPG 2.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-2.0.22"
+    </code>
+    
+    <p>All GnuPG 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-1.4.16"
+    </code>
+    
+    <p>All Libgcrypt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgcrypt-1.5.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6085">CVE-2012-6085</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4242">CVE-2013-4242</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4351">CVE-2013-4351</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4402">CVE-2013-4402</uri>
+    <uri link="http://eprint.iacr.org/2013/448">Flush+Reload: a High
+      Resolution, Low Noise, L3 Cache Side-Channel Attack
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 15 Jan 2013 21:37:26 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 24 Aug 2016 12:08:25 +0000">ackle</metadata>
+</glsa>

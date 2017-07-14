@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=dev-libs/gmp:0 !bacula-clientonly? ( postgres? ( dev-db/postgresql:*[threads] ) mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !bacula-nodir? ( virtual/mta ) ) qt4? ( dev-qt/qtsvg:4 x11-libs/qwt:5 ) logwatch? ( sys-apps/logwatch ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) readline? ( sys-libs/readline:0 ) static? ( acl? ( virtual/acl[static-libs] ) sys-libs/zlib[static-libs] dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] ssl? ( dev-libs/openssl:0[static-libs] ) ) !static? ( acl? ( virtual/acl ) sys-libs/zlib dev-libs/lzo sys-libs/ncurses:= ssl? ( dev-libs/openssl:0 ) ) virtual/pkgconfig >=app-portage/elt-patches-20170317
+DESCRIPTION=Featureful client/server network backup suite
+EAPI=5
+HOMEPAGE=http://www.bacula.org/
+IUSE=acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 logwatch mysql postgres qt4 readline +sqlite ssl static tcpd vim-syntax X
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=AGPL-3
+RDEPEND=dev-libs/gmp:0 !bacula-clientonly? ( postgres? ( dev-db/postgresql:*[threads] ) mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !bacula-nodir? ( virtual/mta ) ) qt4? ( dev-qt/qtsvg:4 x11-libs/qwt:5 ) logwatch? ( sys-apps/logwatch ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) readline? ( sys-libs/readline:0 ) static? ( acl? ( virtual/acl[static-libs] ) sys-libs/zlib[static-libs] dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] ssl? ( dev-libs/openssl:0[static-libs] ) ) !static? ( acl? ( virtual/acl ) sys-libs/zlib dev-libs/lzo sys-libs/ncurses:= ssl? ( dev-libs/openssl:0 ) ) !bacula-clientonly? ( !bacula-nosd? ( sys-block/mtx app-arch/mt-st ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+REQUIRED_USE=|| ( ^^ ( mysql postgres sqlite ) bacula-clientonly ) static? ( bacula-clientonly )
+SLOT=0
+SRC_URI=mirror://sourceforge/bacula/bacula-7.0.5.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:qt4-r2 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	qt4-r2	b7985a3197fbc3a22d059f19904e735b	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=22b45b99874160c1a2ee05542c3f88bd

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Interconverts between various bibliography formats using common XML intermediate
+EAPI=2
+HOMEPAGE=http://www.scripps.edu/~cdputnam/software/bibutils/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.scripps.edu/~cdputnam/software/bibutils/bibutils_4.12_src.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=09332045f960dbf970324ac8514aa864

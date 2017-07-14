@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-lang/R:0= dev-libs/double-conversion:0= dev-libs/gmp:0= <dev-libs/libgit2-0.25:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= sci-libs/umfpack:0= sci-mathematics/glpk:0= >=sys-devel/llvm-3.9:0= >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack emacs? ( app-emacs/ess ) dev-util/patchelf virtual/pkgconfig
+DESCRIPTION=High-performance programming language for technical computing
+EAPI=6
+HOMEPAGE=http://julialang.org/
+IUSE=emacs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=dev-lang/R:0= dev-libs/double-conversion:0= dev-libs/gmp:0= <dev-libs/libgit2-0.25:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= sci-libs/umfpack:0= sci-mathematics/glpk:0= >=sys-devel/llvm-3.9:0= >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack emacs? ( app-emacs/ess )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/JuliaLang/julia/releases/download/v0.5.0/julia-0.5.0.tar.gz https://dev.gentoo.org/~tamiko/distfiles/julia-0.5.0-bundled.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=5e4fd95ba72f2b0ce67adf500e6e781c

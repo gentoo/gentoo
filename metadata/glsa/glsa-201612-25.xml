@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-25">
+  <title>CrackLib: Buffer overflow</title>
+  <synopsis>A vulnerability in CrackLib could lead to the execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">cracklib</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>591456</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/cracklib" auto="yes" arch="*">
+      <unaffected range="ge">2.9.6-r1</unaffected>
+      <vulnerable range="lt">2.9.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CrackLib is a library used to enforce strong passwords by comparing user
+      selected passwords to words in chosen word lists.
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow was discovered in the FascistGecosUser
+      function of lib/fascist.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could set a specially crafted GECOS field value in
+      “/etc/passwd”; possibly resulting in the execution of arbitrary code
+      with the privileges of the process, a Denial of Service condition, or the
+      escalation of privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CrackLib users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/cracklib-2.9.6-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6318">CVE-2016-6318</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 02:46:03 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:55:10 +0000">whissi</metadata>
+</glsa>

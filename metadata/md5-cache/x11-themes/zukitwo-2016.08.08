@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Transition package to zuki-themes
+EAPI=6
+HOMEPAGE=http://gnome-look.org/content/show.php/Zukitwo?content=140562
+IUSE=gnome-shell
+KEYWORDS=amd64 x86
+LICENSE=metapackage
+RDEPEND=x11-themes/zuki-themes[gnome-shell?]
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=fe152be07dca13b440a4a564d1d7f51b

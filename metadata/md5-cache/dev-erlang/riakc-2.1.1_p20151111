@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-erlang/riak_pb-2.1.0.7 >=dev-lang/erlang-17.1 <dev-lang/erlang-19 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=Erlang clients for Riak
+EAPI=6
+HOMEPAGE=https://github.com/basho/riak-erlang-client
+KEYWORDS=amd64 ~arm ~ia64 ppc ~sparc x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-erlang/riak_pb-2.1.0.7 >=dev-lang/erlang-17.1 <dev-lang/erlang-19 dev-lang/erlang
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/riakc/riakc-2.1.1_p20151111.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:rebar src_test:rebar src_install:rebar
+_eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
+_md5_=2c692d27120204ef75ad6f1bcf2eeb8d

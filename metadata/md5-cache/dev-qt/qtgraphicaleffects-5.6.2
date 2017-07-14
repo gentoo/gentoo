@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=~dev-qt/qtcore-5.6.2 ~dev-qt/qtdeclarative-5.6.2 ~dev-qt/qtgui-5.6.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.6.2 )
+DESCRIPTION=Set of QML types for adding visual effects to user interfaces
+EAPI=6
+HOMEPAGE=https://www.qt.io/
+IUSE=test debug test
+KEYWORDS=amd64 arm hppa ~ppc ppc64 x86
+LICENSE=|| ( LGPL-2.1 LGPL-3 ) FDL-1.3
+RDEPEND=~dev-qt/qtcore-5.6.2 ~dev-qt/qtdeclarative-5.6.2 ~dev-qt/qtgui-5.6.2 dev-qt/qtchooser
+RESTRICT=test
+SLOT=5/5.6
+SRC_URI=https://download.qt.io/official_releases/qt/5.6/5.6.2/submodules/qtgraphicaleffects-opensource-src-5.6.2.tar.xz
+_eclass_exported_funcs=pkg_postrm:qt5-build pkg_postinst:qt5-build src_unpack:qt5-build src_prepare:qt5-build src_configure:qt5-build src_compile:qt5-build src_test:qt5-build src_install:qt5-build
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qt5-build	16cbfb66f69906d4f3683bd191939f0f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
+_md5_=f910489a3009d2b4efcf9d61121600da

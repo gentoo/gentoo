@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-15">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, the worst
+    allowing remote attackers to decrypt TLS sessions.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>March 20, 2016</announced>
+  <revised>March 20, 2016: 1</revised>
+  <bug>575548</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2g-r2</unaffected>
+      <vulnerable range="lt">1.0.2g-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL, the worst
+      being a cross-protocol attack called DROWN that could lead to the
+      decryption of TLS sessions. Please review the CVE identifiers referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could decrypt TLS sessions by using a server
+      supporting SSLv2 and EXPORT cipher suites as a
+      Bleichenbacher RSA padding oracle, cause a Denial of Service condition,
+      obtain sensitive information from memory and (in rare circumstances)
+      recover RSA keys.
+    </p>
+  </impact>
+  <workaround>
+    <p>A workaround for DROWN is disabling the SSLv2 protocol on all SSL/TLS
+      servers.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2g-r2"
+    </code>
+    
+    <p>Please note that beginning with OpenSSL 1.0.2, in order to mitigate the
+      DROWN attack, the OpenSSL project disables SSLv2 by default at
+      build-time. As this change would cause severe issues with some Gentoo
+      packages that depend on OpenSSL, Gentoo still ships OpenSSL with SSLv2
+      enabled at build-time. Note that this does not mean that you are still
+      vulnerable to DROWN because the OpenSSL project has taken further
+      precautions and applications would need to explicitly request SSLv2. We
+      are working on a migration path to phase out SSLv2 that ensures that no
+      user-facing issues occur. Please reference bug 576128 for further details
+      on how this decision was made.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0702">CVE-2016-0702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0703">CVE-2016-0703</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0704">CVE-2016-0704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0705">CVE-2016-0705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0797">CVE-2016-0797</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0798">CVE-2016-0798</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0799">CVE-2016-0799</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0800">CVE-2016-0800</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 01 Mar 2016 14:45:13 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Mar 2016 13:46:37 +0000">
+    keytoaster
+  </metadata>
+</glsa>

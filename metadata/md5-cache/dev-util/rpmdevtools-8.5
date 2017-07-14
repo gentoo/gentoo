@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=app-arch/rpm[python] net-misc/curl emacs? ( app-emacs/rpm-spec-mode ) dev-util/checkbashisms dev-lang/perl =dev-lang/python-2* sys-apps/help2man
+DESCRIPTION=Collection of rpm packaging related utilities
+EAPI=5
+HOMEPAGE=https://fedorahosted.org/rpmdevtools/
+IUSE=emacs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=app-arch/rpm[python] net-misc/curl emacs? ( app-emacs/rpm-spec-mode ) dev-util/checkbashisms
+SLOT=0
+SRC_URI=https://fedorahosted.org/releases/r/p/rpmdevtools/rpmdevtools-8.5.tar.xz
+_eclass_exported_funcs=src_prepare:-
+_md5_=a2a60e70e128c1071bb2e51393a3c3c3

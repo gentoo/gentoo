@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure unpack
+DEPEND=ssl? ( dev-libs/openssl:0= ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Advanced command line hexadecimal editor and more
+EAPI=6
+HOMEPAGE=http://www.radare.org
+IUSE=ssl
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0= )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_configure:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=db5a074df21a9d6bf91eca9e904b4e24

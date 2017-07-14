@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-47">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2017-01-19</announced>
+  <revised>2017-01-19: 01</revised>
+  <bug>536014</bug>
+  <bug>573102</bug>
+  <bug>583394</bug>
+  <bug>590482</bug>
+  <bug>592974</bug>
+  <bug>593716</bug>
+  <bug>597760</bug>
+  <bug>603370</bug>
+  <bug>603574</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.52.1</unaffected>
+      <vulnerable range="lt">7.52.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a tool and libcurl is a library for transferring data with URL
+      syntax.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers and bug reports referenced for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could conduct a Man-in-the-Middle attack to obtain
+      sensitive information, cause a Denial of Service condition, or execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.52.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8150">CVE-2014-8150</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8151">CVE-2014-8151</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0755">CVE-2016-0755</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3739">CVE-2016-3739</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5419">CVE-2016-5419</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5420">CVE-2016-5420</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5421">CVE-2016-5421</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7141">CVE-2016-7141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7167">CVE-2016-7167</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8615">CVE-2016-8615</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8616">CVE-2016-8616</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8617">CVE-2016-8617</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8618">CVE-2016-8618</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8619">CVE-2016-8619</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8620">CVE-2016-8620</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8621">CVE-2016-8621</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8622">CVE-2016-8622</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8623">CVE-2016-8623</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8624">CVE-2016-8624</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8625">CVE-2016-8625</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9586">CVE-2016-9586</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9594">CVE-2016-9594</uri>
+  </references>
+  <metadata tag="requester" timestamp="2016-07-01T05:35:33Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-19T19:23:08Z">b-man</metadata>
+</glsa>

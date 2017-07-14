@@ -1,0 +1,28 @@
+Title: =mail-mta/exim-4.88 problem with chunking
+Author: Fabian Groffen <grobian@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-03-01
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: =mail-mta/exim-4.88
+
+Exim maintainers discovered that version 4.88 has some serious problems
+with its CHUNKING extension.  To quote:
+
+  There are various known problems which can result in messages stuck in
+  queues and remote servers dropping connections on larger mails.
+
+In Gentoo, Exim 4.88 is the only stable version available, hence all
+Exim users are advised to either upgrade to an unstable 4.89 release
+candidate, or patch the configuration as follows:
+
+1) in the main configuration section, add:
+
+  chunking_advertise_hosts =
+
+2) for each SMTP transport, add:
+
+  hosts_try_chunking =
+
+Please see also the announcement sent to exim-announce:
+https://lists.exim.org/lurker/message/20170301.031117.ff024aa8.en.html

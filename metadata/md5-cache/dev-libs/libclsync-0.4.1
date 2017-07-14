@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Control and monitoring library for clsync
+EAPI=5
+HOMEPAGE=http://ut.mephi.ru/oss/clsync https://github.com/xaionaro/clsync
+IUSE=debug extra-debug extra-hardened hardened static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND==app-doc/clsync-docs-0.4*
+REQUIRED_USE=extra-debug? ( debug ) extra-hardened? ( hardened )
+SLOT=0
+SRC_URI=https://github.com/xaionaro/clsync/archive/v0.4.1.tar.gz -> clsync-0.4.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=9ffdc7d35071af63550201d8aa19f42e

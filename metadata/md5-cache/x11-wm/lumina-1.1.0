@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5 dev-qt/qtdeclarative:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm dev-qt/linguist-tools:5
+DESCRIPTION=Lumina desktop environment
+EAPI=6
+HOMEPAGE=http://lumina-desktop.org/
+IUSE=linguas_af linguas_ar linguas_az linguas_bg linguas_bn linguas_bs linguas_ca linguas_cs linguas_cy linguas_da linguas_de linguas_el linguas_en_GB linguas_en_ZA linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fr linguas_fr_CA linguas_fur linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_id linguas_is linguas_it linguas_ja linguas_ka linguas_ko linguas_lt linguas_lv linguas_mk linguas_mn linguas_ms linguas_mt linguas_nb linguas_ne linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sa linguas_sk linguas_sl linguas_sr linguas_sv linguas_sw linguas_ta linguas_tg linguas_th linguas_tr linguas_uk linguas_ur linguas_uz linguas_vi linguas_zh_CN linguas_zh_HK linguas_zh_TW linguas_zu
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5 dev-qt/qtdeclarative:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm kde-frameworks/oxygen-icons x11-misc/numlockx x11-wm/fluxbox x11-apps/xbacklight media-sound/alsa-utils sys-power/acpi app-admin/sysstat
+SLOT=0
+SRC_URI=https://github.com/trueos/lumina/archive/v1.1.0.tar.gz -> lumina-1.1.0.tar.gz https://dev.gentoo.org/~grozin/lumina-i18n-161211.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=d287fe46c641f9fba7c9586100c578a0

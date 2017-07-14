@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lisp/asdf-2.33-r3 virtual/libiconv >=dev-libs/libsigsegv-2.4 >=dev-libs/ffcall-1.10 dbus? ( sys-apps/dbus ) fastcgi? ( dev-libs/fcgi ) gdbm? ( sys-libs/gdbm ) gtk? ( >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2.6 ) pari? ( <sci-mathematics/pari-2.5.0 ) postgres? ( >=dev-db/postgresql-8.0 ) readline? ( >=sys-libs/readline-5.0 <sys-libs/readline-7.0 ) pcre? ( dev-libs/libpcre ) svm? ( sci-libs/libsvm ) zlib? ( sys-libs/zlib ) X? ( x11-libs/libXpm ) hyperspec? ( dev-lisp/hyperspec ) berkdb? ( sys-libs/db:4.8 ) X? ( x11-misc/imake x11-proto/xextproto )
+DESCRIPTION=A portable, bytecode-compiled implementation of Common Lisp
+EAPI=5
+HOMEPAGE=http://clisp.sourceforge.net/
+IUSE=hyperspec X berkdb dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lisp/asdf-2.33-r3 virtual/libiconv >=dev-libs/libsigsegv-2.4 >=dev-libs/ffcall-1.10 dbus? ( sys-apps/dbus ) fastcgi? ( dev-libs/fcgi ) gdbm? ( sys-libs/gdbm ) gtk? ( >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2.6 ) pari? ( <sci-mathematics/pari-2.5.0 ) postgres? ( >=dev-db/postgresql-8.0 ) readline? ( >=sys-libs/readline-5.0 <sys-libs/readline-7.0 ) pcre? ( dev-libs/libpcre ) svm? ( sci-libs/libsvm ) zlib? ( sys-libs/zlib ) X? ( x11-libs/libXpm ) hyperspec? ( dev-lisp/hyperspec ) berkdb? ( sys-libs/db:4.8 )
+SLOT=2/2.49
+SRC_URI=mirror://sourceforge/clisp/clisp-2.49.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=1c7216514d893eb5c3841b8c0c68802e

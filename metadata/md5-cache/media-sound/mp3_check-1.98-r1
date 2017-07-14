@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=MP3 consistency checker
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/mp3check/
+KEYWORDS=~amd64 ~arm ~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/mp3check/mp3_check-1.98.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=3fda1605deac147afa57f94cfe69f9a2

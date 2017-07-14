@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-31">
+  <title>flex: Potential insecure code generation</title>
+  <synopsis>Flex might generate code with a buffer overflow making applications
+    using such scanners vulnerable to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">flex</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>589820</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-devel/flex" auto="yes" arch="*">
+      <unaffected range="ge">2.6.1</unaffected>
+      <vulnerable range="lt">2.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>flex is a programming tool used to generate scanners (programs which
+      recognize lexical patterns in text).
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow in the yy_get_next_buffer function in Flex
+      might allow context-dependent attackers to cause a denial of service or
+      possibly execute arbitrary code via vectors involving num_to_read.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Context-dependent attackers could cause a Denial of Service condition or
+      possibly execute arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All flex users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/flex-2.6.1"
+    </code>
+    
+    <p>Packages which depend on flex may need to be recompiled. Tools such as
+      qdepends (included in app-portage/portage-utils) may assist in
+      identifying these packages:
+    </p>
+    
+    <code>
+      # emerge --oneshot --ask --verbose $(qdepends -CQ sys-devel/flex | sed
+      's/^/=/')
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6354">CVE-2016-6354</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 14:07:40 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:41:44 +0000">whissi</metadata>
+</glsa>

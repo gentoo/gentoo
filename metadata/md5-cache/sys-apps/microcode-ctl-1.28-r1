@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install preinst
+DESCRIPTION=Intel processor microcode update utility
+EAPI=5
+HOMEPAGE=https://fedorahosted.org/microcode_ctl/
+IUSE=selinux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-firmware/intel-microcode-20090330[monolithic(+)] selinux? ( sec-policy/selinux-cpucontrol )
+SLOT=0
+SRC_URI=https://fedorahosted.org/released/microcode_ctl/microcode_ctl-1.28.tar.xz
+_eclass_exported_funcs=pkg_preinst:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ec1c9d59e90cee13c863b4f4fb4ba73d

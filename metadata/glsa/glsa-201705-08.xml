@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-08">
+  <title>libav: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libav, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libav</product>
+  <announced>2017-05-09</announced>
+  <revised>2017-05-09: 1</revised>
+  <bug>552320</bug>
+  <bug>571870</bug>
+  <bug>600706</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/libav" auto="yes" arch="*">
+      <unaffected range="ge">11.8</unaffected>
+      <vulnerable range="lt">11.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libav is a complete solution to record, convert and stream audio and
+      video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libav. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file in an application linked against libav, possibly resulting in
+      execution of arbitrary code with the privileges of the application, a
+      Denial of Service condition or access the content of arbitrary local
+      files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libav users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/libav-11.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3395">CVE-2015-3395</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3417">CVE-2015-3417</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1897">CVE-2016-1897</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1898">CVE-2016-1898</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2326">CVE-2016-2326</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3062">CVE-2016-3062</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T06:09:28Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-09T19:51:34Z">whissi</metadata>
+</glsa>

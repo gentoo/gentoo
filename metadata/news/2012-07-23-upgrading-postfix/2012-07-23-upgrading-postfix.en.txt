@@ -1,0 +1,13 @@
+Title: Upgrading to postfix-2.9
+Author: Eray Aslan <eras@gentoo.org>
+Content-Type: text/plain
+Posted: 2012-07-23
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <mail-mta/postfix-2.9
+
+Daemons for >=mail-mta/postfix-2.9 are installed under
+/usr/libexec/postfix.  Please do not forget to adjust your main.cf by
+running etc-update/dispatch-conf or similar and accepting the new
+daemon_directory setting.  Otherwise, postfix will not be able to find
+the binaries it is looking for.

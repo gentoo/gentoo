@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install
+DEPEND=caps? ( sys-libs/libcap ) systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) dev-libs/libconfig dev-lang/perl virtual/pkgconfig
+DESCRIPTION=Port multiplexer - accept both HTTPS and SSH connections on the same port
+EAPI=6
+HOMEPAGE=http://www.rutschle.net/tech/sslh.shtml
+IUSE=caps systemd tcpd
+KEYWORDS=amd64 ~arm ~m68k ~mips ~s390 ~sh x86
+LICENSE=GPL-2
+RDEPEND=caps? ( sys-libs/libcap ) systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) dev-libs/libconfig
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.rutschle.net/tech/sslh/sslh-v1.18.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=57515abc93b814bce937679de71ead6c

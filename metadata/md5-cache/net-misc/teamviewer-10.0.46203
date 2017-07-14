@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=>=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=All-In-One Solution for Remote Access and Support over the Internet
+EAPI=5
+HOMEPAGE=https://www.teamviewer.com
+IUSE=+system-wine
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=TeamViewer LGPL-2.1
+RDEPEND=system-wine? ( app-emulation/wine[abi_x86_32(-)] ) dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtgui:4[abi_x86_32(-)] dev-qt/qtwebkit:4[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libSM[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXau[abi_x86_32(-)] x11-libs/libXdamage[abi_x86_32(-)] x11-libs/libXdmcp[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXfixes[abi_x86_32(-)] x11-libs/libXrandr[abi_x86_32(-)] x11-libs/libXtst[abi_x86_32(-)]
+RESTRICT=bindist mirror
+SLOT=10
+SRC_URI=https://download.teamviewer.com/download/version_10x/teamviewer_10.0.46203_i386.deb
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:unpacker src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=ed05d6d7b0edd0de579a8f5abdb7f779

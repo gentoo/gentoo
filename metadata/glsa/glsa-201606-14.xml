@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-14">
+  <title>ImageMagick: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ImageMagick including
+    overflows and possible Denials of Service.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>June 26, 2016</announced>
+  <revised>June 26, 2016: 1</revised>
+  <bug>534106</bug>
+  <bug>562892</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.9.0.3</unaffected>
+      <vulnerable range="lt">6.9.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Imagemagick is a collection of tools and libraries for many image
+      formats.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ImageMagick including,
+      but not limited to, various overflows and potential Denials of Service. 
+      Please visit the references and related bug reports for additional
+      information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could potentially perform buffer overflows or conduct
+      Denials of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.9.0.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://bugs.launchpad.net/ubuntu/+source/imagemagick/+bug/1448803">
+      Double free in coders/pict.c:2000
+    </uri>
+    <uri link="https://bugs.launchpad.net/ubuntu/+source/imagemagick/+bug/1490362">
+      Double free in coders/tga.c:221
+    </uri>
+    <uri link="http://www.openwall.com/lists/oss-security/2014/12/24/1">
+      Imagemagick fuzzing bug
+    </uri>
+    <uri link="https://bugs.launchpad.net/ubuntu/+source/imagemagick/+bug/1459747">
+      Integer and Buffer overflow in coders/icon.c
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 17 Jan 2015 17:37:18 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 13:53:19 +0000">b-man</metadata>
+</glsa>

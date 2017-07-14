@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-51">
+  <title>DBD::mysql: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in DBD::mysql, the worst
+    of which might allow an attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">dbd,mysql</product>
+  <announced>2017-01-23</announced>
+  <revised>2017-01-23: 2</revised>
+  <bug>589818</bug>
+  <bug>596424</bug>
+  <bug>600180</bug>
+  <bug>601144</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-perl/DBD-mysql" auto="yes" arch="*">
+      <unaffected range="ge">4.41.0</unaffected>
+      <vulnerable range="lt">4.41.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL driver for the Perl5 Database Interface (DBI)</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in DBD::mysql. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a Denial of Service condition, execute arbitrary
+      code, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All DBD::mysql users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-perl/DBD-mysql-4.41.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8949">CVE-2015-8949</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1246">CVE-2016-1246</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1249">CVE-2016-1249</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1251">CVE-2016-1251</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-22T09:49:40Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-23T03:20:17Z">b-man</metadata>
+</glsa>

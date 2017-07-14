@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Ultraviolent and controversial game featuring the Postal Dude
+EAPI=6
+HOMEPAGE=http://www.lokigames.com/products/postal/
+KEYWORDS=~x86
+LICENSE=LOKI-EULA
+PROPERTIES=interactive
+RESTRICT=strip
+SLOT=0
+_eclass_exported_funcs=src_install:-
+_eclasses_=cdrom	593beee21fc1247ccf32244f399982a7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=006bfa01d7534938cb31a821743502d5

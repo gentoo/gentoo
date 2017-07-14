@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=dev-libs/libbulletml-0.0.3 media-libs/libsdl[video] media-libs/sdl-mixer[vorbis] virtual/glu virtual/opengl
+DESCRIPTION=Abstract shooter - defeat auto-created huge battleships
+EAPI=6
+HOMEPAGE=http://www.asahi-net.or.jp/~cs8k-cyu/windows/rr_e.html http://rrootage.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/libbulletml-0.0.3 media-libs/libsdl[video] media-libs/sdl-mixer[vorbis] virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/rrootage/rRootage-0.23a.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=47e4f970e3db634b1c953550ae1af4c6

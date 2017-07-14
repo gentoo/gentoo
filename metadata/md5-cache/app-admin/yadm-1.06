@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=test? ( dev-util/bats dev-vcs/git )
+DESCRIPTION=A dotfile manager for the config files in your home folder
+EAPI=6
+HOMEPAGE=https://github.com/TheLocehiliosan/yadm/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-vcs/git app-crypt/gnupg
+SLOT=0
+SRC_URI=https://github.com/TheLocehiliosan/yadm/archive/1.06.tar.gz -> yadm-1.06.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_md5_=3fbf568216ce7d2c9eaeabb42f9d7536

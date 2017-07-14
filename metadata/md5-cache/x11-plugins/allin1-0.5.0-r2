@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xproto
+DESCRIPTION=All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
+EAPI=6
+HOMEPAGE=http://ilpettegolo.altervista.org/linux_allin1.en.shtml
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://sourceforge/allinone/allin1-0.5.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=949cbc8679a2646bbf38f38f5c681ec2

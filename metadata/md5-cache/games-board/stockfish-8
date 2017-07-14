@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=|| ( app-arch/unzip app-arch/zip )
+DESCRIPTION=Free UCI chess engine, claimed to be the strongest in the world
+EAPI=6
+HOMEPAGE=http://stockfishchess.org/
+IUSE=armv7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug general-32 general-64 +optimize
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://stockfish.s3.amazonaws.com/stockfish-8-src.zip
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=fd2ab1d9a033354d7f2d9a577816a0e8

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=x11-libs/pango >=media-libs/libkate-0.2.0 x11-libs/cairo virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170317
+DESCRIPTION=A rendering library for Kate streams using Pango and Cairo
+EAPI=4
+HOMEPAGE=https://code.google.com/p/libtiger/
+IUSE=doc
+KEYWORDS=alpha amd64 arm ~arm64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=x11-libs/pango >=media-libs/libkate-0.2.0 x11-libs/cairo
+SLOT=0
+SRC_URI=https://libtiger.googlecode.com/files/libtiger-0.3.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=4d0cc76120056524edf55005455680b5

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-18">
+  <title>Python: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Python, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>2017-01-10</announced>
+  <revised>2017-02-24: 2</revised>
+  <bug>531002</bug>
+  <bug>585910</bug>
+  <bug>585946</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge" slot="2.7">2.7.12</unaffected>
+      <unaffected range="ge" slot="3.4">3.4.5</unaffected>
+      <vulnerable range="lt">3.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Python. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted index
+      file using Python’s dumbdbm module, possibly resulting in execution of
+      arbitrary code with the privileges of the process.
+    </p>
+    
+    <p>A remote attacker could entice a user to process a specially crafted
+      input stream using Python’s zipimporter module, possibly allowing
+      attackers to cause unspecified impact.
+    </p>
+    
+    <p>A man in the middle attacker could strip out the STARTTLS command
+      without generating an exception on the Python SMTP client application,
+      preventing the establishment of the TLS layer.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.12:2.7"
+    </code>
+    
+    <p>All Python 3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.4.5:3.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0772">CVE-2016-0772</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5636">CVE-2016-5636</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-03T06:13:03Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-02-24T10:28:53Z">whissi</metadata>
+</glsa>

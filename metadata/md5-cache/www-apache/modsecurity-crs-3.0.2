@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Core Rule Set for ModSecurity
+EAPI=6
+HOMEPAGE=https://modsecurity.org/crs/
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=www-apache/mod_security-2.9.1
+SLOT=0
+SRC_URI=https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/v3.0.2.tar.gz -> modsecurity-crs-3.0.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=e2ed14449f5bcb664e52230bd1fd6d75

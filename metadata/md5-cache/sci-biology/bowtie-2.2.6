@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install pretend
+DEPEND=dev-lang/perl app-arch/unzip tbb? ( dev-cpp/tbb )
+DESCRIPTION=Popular short read aligner for Next-generation sequencing data
+EAPI=5
+HOMEPAGE=http://bowtie-bio.sourceforge.net/bowtie2/
+IUSE=examples cpu_flags_x86_sse2 +tbb
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl
+SLOT=2
+SRC_URI=mirror://sourceforge/project/bowtie-bio/bowtie2/2.2.6/bowtie2-2.2.6-source.zip
+_eclass_exported_funcs=pkg_pretend:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=9a4ea0d94d151da708192284a1117dd7

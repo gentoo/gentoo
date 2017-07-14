@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Tool for set real compositing for windows through window's id, process' pid etc.
+EAPI=6
+HOMEPAGE=https://github.com/XVilka/set_opacity
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=6058f146099735aeb6c3383a1b34a850

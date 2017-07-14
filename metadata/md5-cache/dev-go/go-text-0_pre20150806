@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Go text processing support
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/text
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/0_pre20150806
+SRC_URI=https://github.com/golang/text/archive/1309a1875a4368c12688b9383c6bcac738c17c29.tar.gz -> go-text-0_pre20150806.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:- src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=e53dcc65cab0cfaadcf804fa94eb7230

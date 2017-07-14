@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Oracle SQLcl is the new SQL*Plus
+EAPI=6
+HOMEPAGE=http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html
+KEYWORDS=~amd64 ~x86
+LICENSE=OTN
+RDEPEND=virtual/jre:1.8 dev-java/java-config:2 dev-db/oracle-instantclient
+RESTRICT=bindist fetch mirror
+SLOT=0
+SRC_URI=sqlcl-4.2.0.16.355.0402-no-jre.zip
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=fd0e630c194e68a8839888b20df61f26

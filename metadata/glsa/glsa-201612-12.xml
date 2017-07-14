@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-12">
+  <title>Patch: Denial of Service</title>
+  <synopsis>Patch is vulnerable to a locally generated Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">patch</product>
+  <announced>December 05, 2016</announced>
+  <revised>December 05, 2016: 1</revised>
+  <bug>538658</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-devel/patch" auto="yes" arch="*">
+      <unaffected range="ge">2.7.4</unaffected>
+      <vulnerable range="lt">2.7.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Patch takes a patch file containing a difference listing produced by the
+      diff program and applies those differences to one or more original files,
+      producing patched versions.
+    </p>
+  </background>
+  <description>
+    <p>Due to a flaw in Patch, the application can enter an infinite loop when
+      processing a specially crafted diff file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could pass a specially crafted diff file to Patch,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All patch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/patch-2.7.4"
+    </code>
+    
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:47:45 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Dec 2016 01:16:43 +0000">whissi</metadata>
+</glsa>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=sys-apps/texinfo virtual/pkgconfig
+DESCRIPTION=A caching web proxy
+EAPI=5
+HOMEPAGE=http://www.pps.jussieu.fr/~jch/software/polipo/
+IUSE=systemd
+KEYWORDS=amd64 x86
+LICENSE=MIT GPL-2
+SLOT=0
+SRC_URI=http://www.pps.jussieu.fr/~jch/software/files/polipo/polipo-1.1.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=4bb7d6e1e474e7de9ad839dabd1c6bd4

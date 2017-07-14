@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201010-01">
+  <title>Libpng: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in libpng might lead to privilege
+    escalation or a Denial of Service.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>October 05, 2010</announced>
+  <revised>January 03, 2017: 9</revised>
+  <bug>307637</bug>
+  <bug>324153</bug>
+  <bug>335887</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3</unaffected>
+      <unaffected range="ge" slot="1.2">1.2.46</unaffected>
+      <vulnerable range="lt">1.4.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several programs, including web browsers
+      and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities were found in libpng:</p>
+    
+    <ul>
+      <li>The png_decompress_chunk() function in pngrutil.c does not properly
+        handle certain type of compressed data (CVE-2010-0205)
+      </li>
+      <li>A buffer overflow in pngread.c when using progressive applications
+        (CVE-2010-1205)
+      </li>
+      <li>A memory leak in pngrutil.c when dealing with a certain type of
+        chunks (CVE-2010-2249)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>An attacker could exploit these vulnerabilities to cause programs linked
+      against the library to crash or execute arbitrary code with the
+      permissions of the user running the vulnerable program, which could be
+      the root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+    
+  </workaround>
+  <resolution>
+    <p>All libpng 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.4.3"
+    </code>
+    
+    <p>All libpng 1.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.46"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0205">
+      CVE-2010-0205
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1205">
+      CVE-2010-1205
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2249">
+      CVE-2010-2249
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 22:32:46 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:37:30 +0000">system</metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Jan 2017 04:37:31 +0000">system</metadata>
+</glsa>

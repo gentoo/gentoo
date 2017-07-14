@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-23">
+  <title>socat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in socat, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">socat</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>573602</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/socat" auto="yes" arch="*">
+      <unaffected range="ge">1.7.3.1</unaffected>
+      <vulnerable range="lt">1.7.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>socat is a multipurpose bidirectional relay, similar to netcat.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in socat. Please review
+      the references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or obtain confidential information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All socat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/socat-1.7.3.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2217">
+      CVE-2016-2217
+    </uri>
+    <uri link="http://www.dest-unreach.org/socat/contrib/socat-secadv7.html">
+      Socat security advisory 7
+    </uri>
+    <uri link="http://www.dest-unreach.org/socat/contrib/socat-secadv8.html">
+      Socat security advisory 8
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 20:50:25 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:12:54 +0000">whissi</metadata>
+</glsa>

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-python/pygobject:3 python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=sys-apps/sed-4
+DESCRIPTION=simple viewer for NFO files, which are ASCII art in the CP437 codepage
+EAPI=5
+HOMEPAGE=http://home.gna.org/nfoview/
+IUSE=python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-python/pygobject:3 media-fonts/terminus-font python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+SRC_URI=http://download.gna.org/nfoview/1.15/nfoview-1.15.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=a5524406554004ae219c03e4c4a0c817

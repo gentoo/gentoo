@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=|| ( ( media-libs/mesa x11-libs/libGLw ) media-libs/mesa[motif] ) media-libs/libpng:0 media-libs/tiff:0 sys-libs/zlib virtual/glu virtual/jpeg x11-libs/libXpm x11-libs/motif:0 x11-apps/xdpyinfo
+DESCRIPTION=Publication-quality molecular visualization package
+EAPI=4
+HOMEPAGE=http://hugin.ethz.ch/wuthrich/software/molmol/index.html
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=molmol
+RDEPEND=|| ( ( media-libs/mesa x11-libs/libGLw ) media-libs/mesa[motif] ) media-libs/libpng:0 media-libs/tiff:0 sys-libs/zlib virtual/glu virtual/jpeg x11-libs/libXpm x11-libs/motif:0 x11-apps/xdpyinfo
+SLOT=0
+SRC_URI=ftp://ftp.mol.biol.ethz.ch/software/MOLMOL/unix-gzip/molmol-2k.2.0-src.tar.gz ftp://ftp.mol.biol.ethz.ch/software/MOLMOL/unix-gzip/molmol-2k.2.0-doc.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=e8c6cf092e900e6813ca56f42cf0c538

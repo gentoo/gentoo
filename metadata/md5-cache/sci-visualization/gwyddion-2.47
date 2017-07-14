@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm prerm setup
+DEPEND=media-libs/libpng:0= x11-libs/cairo x11-libs/gtk+:2 x11-libs/libXmu x11-libs/pango fits? ( sci-libs/cfitsio ) fftw? ( sci-libs/fftw:3.0= ) gnome? ( gnome-base/gconf:2 ) opengl? ( virtual/opengl x11-libs/gtkglext ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-ruby/narray ) sourceview? ( x11-libs/gtksourceview:2.0 ) xml? ( dev-libs/libxml2:2 ) virtual/pkgconfig doc? ( dev-util/gtk-doc ) >=sys-apps/sed-4
+DESCRIPTION=Framework for Scanning Mode Microscopy data analysis
+EAPI=6
+HOMEPAGE=http://gwyddion.net/
+IUSE=doc fits fftw gnome nls opengl perl python ruby sourceview xml X python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0= x11-libs/cairo x11-libs/gtk+:2 x11-libs/libXmu x11-libs/pango fits? ( sci-libs/cfitsio ) fftw? ( sci-libs/fftw:3.0= ) gnome? ( gnome-base/gconf:2 ) opengl? ( virtual/opengl x11-libs/gtkglext ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-ruby/narray ) sourceview? ( x11-libs/gtksourceview:2.0 ) xml? ( dev-libs/libxml2:2 )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://gwyddion.net/download/2.47/gwyddion-2.47.tar.xz
+_eclass_exported_funcs=pkg_prerm:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	21ef5adf81836863efa968f2a25cff64	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=211e97b907db68a07168d416f2c163ad

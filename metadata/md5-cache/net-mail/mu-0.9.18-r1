@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare test
+DEPEND=dev-libs/gmime:2.6 dev-libs/xapian dev-libs/glib:2 gui? ( x11-libs/gtk+:3 net-libs/webkit-gtk:3 ) emacs? ( >=virtual/emacs-23 ) !net-mail/mailutils >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Set of tools to deal with Maildirs, in particular, searching and indexing
+EAPI=6
+HOMEPAGE=http://www.djcbsoftware.nl/code/mu/
+IUSE=emacs gui
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/gmime:2.6 dev-libs/xapian dev-libs/glib:2 gui? ( x11-libs/gtk+:3 net-libs/webkit-gtk:3 ) emacs? ( >=virtual/emacs-23 ) !net-mail/mailutils
+SLOT=0
+SRC_URI=https://github.com/djcb/mu/archive/0.9.18.tar.gz -> mu-0.9.18.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=10f80547829fc6e04ec9d64e188fb0c3

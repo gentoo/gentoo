@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/glib:2= media-libs/libsdl:0=[joystick] sys-libs/zlib:0= x11-libs/gtk+:3= x11-libs/libX11:0= x11-libs/libXext:0= x11-libs/libXtst:0= x11-libs/libXv:0= alsa? ( media-libs/alsa-lib:0= ) cdio? ( dev-libs/libcdio:0= ) ffmpeg? ( virtual/ffmpeg:0= ) nls? ( virtual/libintl:0= ) openal? ( media-libs/openal:0= ) opengl? ( virtual/opengl:0= x11-libs/libXxf86vm:0= ) pulseaudio? ( media-sound/pulseaudio:0= ) sdl? ( media-libs/libsdl:0=[sound] ) app-arch/unzip dev-util/intltool x11-proto/videoproto nls? ( sys-devel/gettext:0 ) x86? ( dev-lang/nasm ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
+EAPI=5
+HOMEPAGE=http://pcsxr.codeplex.com
+IUSE=alsa cdio ffmpeg nls openal opengl oss pulseaudio +sdl
+KEYWORDS=~amd64
+LICENSE=GPL-2 public-domain
+RDEPEND=dev-libs/glib:2= media-libs/libsdl:0=[joystick] sys-libs/zlib:0= x11-libs/gtk+:3= x11-libs/libX11:0= x11-libs/libXext:0= x11-libs/libXtst:0= x11-libs/libXv:0= alsa? ( media-libs/alsa-lib:0= ) cdio? ( dev-libs/libcdio:0= ) ffmpeg? ( virtual/ffmpeg:0= ) nls? ( virtual/libintl:0= ) openal? ( media-libs/openal:0= ) opengl? ( virtual/opengl:0= x11-libs/libXxf86vm:0= ) pulseaudio? ( media-sound/pulseaudio:0= ) sdl? ( media-libs/libsdl:0=[sound] )
+REQUIRED_USE=?? ( alsa openal oss pulseaudio sdl )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~mgorny/dist/pcsxr-1.9.94.zip
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=e17adaf9d6ad8bea2fb34f1a1ad1a0da

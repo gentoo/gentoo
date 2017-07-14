@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201509-04">
+  <title>libtasn1: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libtasn1, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">libtasn1</product>
+  <announced>September 24, 2015</announced>
+  <revised>September 24, 2015: 1</revised>
+  <bug>544922</bug>
+  <bug>548252</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libtasn1" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5</unaffected>
+      <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libtasn1 is an ASN.1 library</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libtasn1. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libtasn1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtasn1-1.4.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2806">CVE-2015-2806</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3622">CVE-2015-3622</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 28 May 2015 20:52:49 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:57:37 +0000">mrueg</metadata>
+</glsa>

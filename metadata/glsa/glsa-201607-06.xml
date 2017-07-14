@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-06">
+  <title>CUPS: Buffer overflow</title>
+  <synopsis>A buffer overflow in CUPS might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 16, 2016</announced>
+  <revised>July 16, 2016: 1</revised>
+  <bug>539582</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r1</unaffected>
+      <vulnerable range="lt">2.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CUPS, the Common Unix Printing System, is a full-featured print server.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in CUPS concerning the handling of
+      compressed raster files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CUPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/cups-2.0.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9679">CVE-2014-9679</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 01 Jul 2016 05:48:13 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 16 Jul 2016 13:19:26 +0000">b-man</metadata>
+</glsa>

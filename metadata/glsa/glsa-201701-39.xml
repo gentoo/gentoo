@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-39">
+  <title>VLC: Buffer overflow</title>
+  <synopsis>A buffer overflow in VLC might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>2017-01-17</announced>
+  <revised>2017-01-17: 01</revised>
+  <bug>584510</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">2.2.4</unaffected>
+      <vulnerable range="lt">2.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in the DecodeAdpcmImaQT function in
+      modules/codec/adpcm.c in the VideoLAN VLC media player.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to execute a specially crafted
+      QuickTime IMA file, could cause a Denial of Service condition or possibly
+      execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-2.2.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5108">CVE-2016-5108</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-15T19:15:46Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-17T03:38:25Z">b-man</metadata>
+</glsa>

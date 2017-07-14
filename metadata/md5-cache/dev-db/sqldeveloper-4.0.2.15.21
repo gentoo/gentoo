@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup
+DEPEND=mssql? ( dev-java/jtds:1.2 ) mysql? ( dev-java/jdbc-mysql:0 ) sybase? ( dev-java/jtds:1.2 ) >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Oracle SQL Developer is a graphical tool for database development
+EAPI=2
+HOMEPAGE=http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html
+IUSE=mssql mysql sybase elibc_FreeBSD
+KEYWORDS=amd64 x86
+LICENSE=OTN
+RDEPEND=>=virtual/jdk-1.7.0 dev-java/java-config:2 mssql? ( dev-java/jtds:1.2 ) mysql? ( dev-java/jdbc-mysql:0 ) sybase? ( dev-java/jtds:1.2 ) >=dev-java/java-config-2.2.0-r3
+RESTRICT=fetch
+SLOT=0
+SRC_URI=sqldeveloper-4.0.2.15.21-no-jre.zip
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_postinst:- pkg_setup:java-pkg-2 src_prepare:- src_compile:java-pkg-2 src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1daa0e7c0ba5e74e6a947bff7262f5e5

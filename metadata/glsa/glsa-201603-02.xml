@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-02">
+  <title>OSC: Shell command injection</title>
+  <synopsis>OSC is vulnerable to the remote execution of arbitrary code.</synopsis>
+  <product type="ebuild"></product>
+  <announced>March 06, 2016</announced>
+  <revised>March 06, 2016: 1</revised>
+  <bug>553606</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-util/osc" auto="yes" arch="*">
+      <unaffected range="ge">0.152.0</unaffected>
+      <vulnerable range="lt">0.152.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OSC is the command line tool and API for the Open Build Service.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered that may allow remote attackers to
+      execute arbitrary commands via shell metacharacters in a _service file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OSC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-util/osc-0.152.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0778">CVE-2015-0778</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:51:12 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 06 Mar 2016 20:01:57 +0000">b-man</metadata>
+</glsa>

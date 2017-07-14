@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl ) =dev-libs/libsecp256k1-0.0.0_pre20151118[recovery] test? ( dev-libs/univalue >=dev-libs/boost-1.52.0[threads(+)] ) !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl ) =dev-libs/libsecp256k1-0.0.0_pre20151118[recovery] >=app-shells/bash-4.1 sys-apps/sed
+DESCRIPTION=Bitcoin Core consensus library
+EAPI=5
+HOMEPAGE=http://bitcoincore.org/
+IUSE=libressl test
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl ) =dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]
+SLOT=0
+SRC_URI=https://github.com/bitcoin/bitcoin/archive/03422e564b552c1d3c16ae854f8471f7cb39e25d.tar.gz -> bitcoin-v0.13.1.tgz http://bitcoinknots.org/files/0.13.x/0.13.1.knots20161027/bitcoin-0.13.1.knots20161027.patches.txz -> bitcoin-0.13.1.knots20161027.patches.tar.xz
+_eclass_exported_funcs=src_prepare:bitcoincore src_configure:- src_test:bitcoincore src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	bitcoincore	dfd4a0ddedf139a45de5e664ba5608d1	db-use	582140d1a711279e50ce284fc7b609f5	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=5334155e0cff4dbe15e253a3a863732c

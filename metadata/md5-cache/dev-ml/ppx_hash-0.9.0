@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_compare:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=PPX rewriter that generates hash functions from type expressions and definitions
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_hash
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_compare:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_hash/archive/v0.9.0.tar.gz -> ppx_hash-0.9.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=95c8f1a322633aa3da9c24fefcdad55e

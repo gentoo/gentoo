@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install setup
+DEPEND=python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] doc? ( sys-apps/texinfo )
+DESCRIPTION=cowsay reimplemention for ponies
+EAPI=6
+HOMEPAGE=https://github.com/erkin/ponysay
+IUSE=doc +non-free bash-completion fish-completion zsh-completion python_targets_python3_4 python_targets_python3_5 python_single_target_python3_4 python_single_target_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] fish-completion? ( app-shells/fish ) zsh-completion? ( app-shells/zsh )
+REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
+SLOT=0
+SRC_URI=https://github.com/erkin/ponysay/archive/3.0.2.tar.gz -> ponysay-3.0.2.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_compile:- src_install:-
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=22302cf70716cb7fd16d3fc14852304b

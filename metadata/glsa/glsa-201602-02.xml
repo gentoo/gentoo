@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201602-02">
+  <title>GNU C Library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the GNU C library, the
+    worst allowing for remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>February 17, 2016</announced>
+  <revised>February 17, 2016: 1</revised>
+  <bug>516884</bug>
+  <bug>517082</bug>
+  <bug>521932</bug>
+  <bug>529982</bug>
+  <bug>532874</bug>
+  <bug>538090</bug>
+  <bug>538814</bug>
+  <bug>540070</bug>
+  <bug>541246</bug>
+  <bug>541542</bug>
+  <bug>547296</bug>
+  <bug>552692</bug>
+  <bug>574880</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.21-r2</unaffected>
+      <vulnerable range="lt">2.21-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU C library is the standard C library used by Gentoo Linux
+      systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the GNU C Library:</p>
+    
+    <ul>
+      <li>The Google Security Team and Red Hat discovered a stack-based buffer
+        overflow in the send_dg() and send_vc() functions due to a buffer
+        mismanagement when getaddrinfo() is called with AF_UNSPEC
+        (CVE-2015-7547).
+      </li>
+      <li>The strftime() function access invalid memory when passed
+        out-of-range data, resulting in a crash (CVE-2015-8776).
+      </li>
+      <li>An integer overflow was found in the __hcreate_r() function
+        (CVE-2015-8778).
+      </li>
+      <li>Multiple unbounded stack allocations were found in the catopen()
+        function (CVE-2015-8779).
+      </li>
+    </ul>
+    
+    <p>Please review the CVEs referenced below for additional vulnerabilities
+      that had already been fixed in previous versions of sys-libs/glibc, for
+      which we have not issued a GLSA before.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could exploit any application which performs host name
+      resolution using getaddrinfo() in order to execute arbitrary code or
+      crash the application. The other vulnerabilities can possibly be
+      exploited to cause a Denial of Service or leak information.
+    </p>
+  </impact>
+  <workaround>
+    <p>A number of mitigating factors for CVE-2015-7547 have been identified.
+      Please review the upstream advisory and references below.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All GNU C Library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.21-r2"
+    </code>
+    
+    <p>It is important to ensure that no running process uses the old glibc
+      anymore. The easiest way to achieve that is by rebooting the machine
+      after updating the sys-libs/glibc package.
+    </p>
+    
+    <p>Note: Should you run into compilation failures while updating, please
+      see bug 574948.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7423">CVE-2013-7423</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0475">CVE-2014-0475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0475">CVE-2014-0475</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5119">CVE-2014-5119</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6040">CVE-2014-6040</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7817">CVE-2014-7817</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8121">CVE-2014-8121</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9402">CVE-2014-9402</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1472">CVE-2015-1472</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1781">CVE-2015-1781</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7547">CVE-2015-7547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8776">CVE-2015-8776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8778">CVE-2015-8778</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8779">CVE-2015-8779</uri>
+    <uri link="https://googleonlinesecurity.blogspot.de/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html">
+      Google Online Security Blog: "CVE-2015-7547: glibc getaddrinfo
+      stack-based buffer overflow"
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 16 Feb 2016 18:27:02 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 17 Feb 2016 15:37:09 +0000">
+    keytoaster
+  </metadata>
+</glsa>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.36.0:2[dbus] >=x11-libs/gtk+-3.10.0:3 media-libs/libpng:0= sys-libs/zlib x11-libs/libICE x11-libs/libSM cdr? ( >=app-cdr/brasero-3.2 ) exif? ( >=media-gfx/exiv2-0.21:= ) gnome-keyring? ( >=app-crypt/libsecret-0.11 ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) http? ( >=net-libs/libsoup-2.42.0:2.4 ) jpeg? ( virtual/jpeg:0= ) json? ( >=dev-libs/json-glib-0.15.0 ) lcms? ( >=media-libs/lcms-2.6:2 ) slideshow? ( >=media-libs/clutter-1.12.0:1.0 >=media-libs/clutter-gtk-1:1.0 ) svg? ( >=gnome-base/librsvg-2.34:2 ) tiff? ( media-libs/tiff:= ) raw? ( >=media-libs/libraw-0.14:= ) !raw? ( media-gfx/dcraw ) webkit? ( net-libs/webkit-gtk:4 ) webp? ( >=media-libs/libwebp-0.2.0 ) app-text/yelp-tools >=dev-util/intltool-0.35 sys-devel/bison sys-devel/flex virtual/pkgconfig test? ( ~app-text/docbook-xml-dtd-4.1.2 ) >=app-portage/elt-patches-20170317 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Image viewer and browser for Gnome
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Apps/gthumb
+IUSE=cdr debug exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.36.0:2[dbus] >=x11-libs/gtk+-3.10.0:3 media-libs/libpng:0= sys-libs/zlib x11-libs/libICE x11-libs/libSM cdr? ( >=app-cdr/brasero-3.2 ) exif? ( >=media-gfx/exiv2-0.21:= ) gnome-keyring? ( >=app-crypt/libsecret-0.11 ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) http? ( >=net-libs/libsoup-2.42.0:2.4 ) jpeg? ( virtual/jpeg:0= ) json? ( >=dev-libs/json-glib-0.15.0 ) lcms? ( >=media-libs/lcms-2.6:2 ) slideshow? ( >=media-libs/clutter-1.12.0:1.0 >=media-libs/clutter-gtk-1:1.0 ) svg? ( >=gnome-base/librsvg-2.34:2 ) tiff? ( media-libs/tiff:= ) raw? ( >=media-libs/libraw-0.14:= ) !raw? ( media-gfx/dcraw ) webkit? ( net-libs/webkit-gtk:4 ) webp? ( >=media-libs/libwebp-0.2.0 ) >=gnome-base/gsettings-desktop-schemas-0.1.4
+SLOT=0
+SRC_URI=mirror://gnome/sources/gthumb/3.4/gthumb-3.4.4.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	64c50579ea42fbcc77a7e220a8ae8e94	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=1aab8cbf1fd7ae6b2ad0f5d8f1245bd6

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=bd-xlator? ( sys-fs/lvm2 ) emacs? ( virtual/emacs ) fuse? ( >=sys-fs/fuse-2.7.0 ) georeplication? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* ) qemu-block? ( dev-libs/glib:2 ) systemtap? ( dev-util/systemtap ) xml? ( dev-libs/libxml2 ) sys-libs/readline:= dev-libs/libaio dev-libs/openssl:= || ( sys-libs/glibc sys-libs/argp-standalone ) virtual/pkgconfig sys-devel/bison sys-devel/flex >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GlusterFS is a powerful network/cluster filesystem
+EAPI=5
+HOMEPAGE=http://www.gluster.org/
+IUSE=bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband qemu-block rsyslog static-libs +syslog systemtap vim-syntax +xml python_targets_python2_7
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=|| ( GPL-2 LGPL-3+ )
+RDEPEND=bd-xlator? ( sys-fs/lvm2 ) emacs? ( virtual/emacs ) fuse? ( >=sys-fs/fuse-2.7.0 ) georeplication? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* ) qemu-block? ( dev-libs/glib:2 ) systemtap? ( dev-util/systemtap ) xml? ( dev-libs/libxml2 ) sys-libs/readline:= dev-libs/libaio dev-libs/openssl:= || ( sys-libs/glibc sys-libs/argp-standalone )
+REQUIRED_USE=georeplication? ( python_targets_python2_7 ) glupy? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://download.gluster.org/pub/gluster/glusterfs/3.6/3.6.5/glusterfs-3.6.5.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d03e1ec4fc36e4d031e363d078085bec

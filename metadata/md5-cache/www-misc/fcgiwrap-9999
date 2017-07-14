@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure postinst prepare unpack
+DEPEND=dev-libs/fcgi systemd? ( sys-apps/systemd ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
+EAPI=6
+HOMEPAGE=https://github.com/gnosek/fcgiwrap
+IUSE=systemd
+LICENSE=BSD
+RDEPEND=dev-libs/fcgi systemd? ( sys-apps/systemd )
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=29107bbc1325b7f047badacc0a5b40be

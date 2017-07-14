@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=A virtual for PyPy3 Python implementation
+EAPI=5
+IUSE=bzip2 gdbm ncurses sqlite tk
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+RDEPEND=|| ( >=dev-python/pypy3-5.5.0_alpha:0/55[bzip2?,gdbm(-)?,ncurses?,sqlite?,tk?] >=dev-python/pypy3-bin-5.5.0_alpha:0/55[gdbm(-)?,sqlite?,tk?] )
+SLOT=0/55
+_eclass_exported_funcs=-
+_md5_=d91c621948c5b7f8f7189f128bf3c66f

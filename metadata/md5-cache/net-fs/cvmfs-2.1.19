@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-cpp/gtest dev-db/sqlite:3= dev-libs/openssl:0 net-libs/pacparser:0= net-misc/curl:0=[adns] sys-apps/attr sys-libs/zlib:0= client? ( dev-cpp/sparsehash dev-libs/leveldb:0= sys-fs/fuse:0= ) server? ( >=dev-cpp/tbb-4.2:0= ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=HTTP read-only file system for distributing software
+EAPI=5
+HOMEPAGE=http://cernvm.cern.ch/portal/filesystem
+IUSE=+client debug doc test server
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-cpp/gtest dev-db/sqlite:3= dev-libs/openssl:0 net-libs/pacparser:0= net-misc/curl:0=[adns] sys-apps/attr sys-libs/zlib:0= client? ( dev-cpp/sparsehash dev-libs/leveldb:0= sys-fs/fuse:0= ) server? ( >=dev-cpp/tbb-4.2:0= ) client? ( net-fs/autofs ) server? ( www-servers/apache[ssl] )
+SLOT=0
+SRC_URI=https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.19/cvmfs-2.1.19.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=eef971a6dd6085705504a6b72a974710

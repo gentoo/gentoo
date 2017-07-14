@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=The Original Korn Shell, 1993 revision (ksh93)
+EAPI=6
+HOMEPAGE=http://www.kornshell.com/
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=CPL-1.0 EPL-1.0
+RDEPEND=!app-shells/pdksh
+SLOT=0
+SRC_URI=https://github.com/att/ast/archive/c506cb548d9b4bcebef92c86e948657728760e15.tar.gz -> ksh-93.20160110.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=9da5d12b3be4bfcef4d059b83762b2dc

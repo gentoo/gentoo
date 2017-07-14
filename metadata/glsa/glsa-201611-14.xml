@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-14">
+  <title>MIT Kerberos 5: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in MIT Kerberos 5,
+    the worst of which may allow remote attackers to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">mit-krb5</product>
+  <announced>November 20, 2016</announced>
+  <revised>November 20, 2016: 1</revised>
+  <bug>564304</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-crypt/mit-krb5" auto="yes" arch="*">
+      <unaffected range="ge">1.13.2-r2</unaffected>
+      <vulnerable range="lt">1.13.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MIT Kerberos 5 is a suite of applications that implement the Kerberos
+      network protocol.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MIT Kerberos 5. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MIT Kerberos 5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.13.2-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2695">CVE-2015-2695</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2696">CVE-2015-2696</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2697">CVE-2015-2697</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 22:59:55 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Nov 2016 22:10:32 +0000">b-man</metadata>
+</glsa>

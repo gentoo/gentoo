@@ -1,0 +1,17 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup unpack
+DEPEND=app-arch/innoextract cdinstall? ( app-arch/cabextract )
+DESCRIPTION=Arx Fatalis data files
+EAPI=5
+HOMEPAGE=http://www.arkane-studios.com/uk/arx.php
+IUSE=gog cdinstall
+KEYWORDS=amd64 x86
+LICENSE=cdinstall? ( ArxFatalis-EULA-JoWooD ) gog? ( GOG-EULA )
+PROPERTIES=cdinstall? ( interactive )
+RDEPEND=games-rpg/arx-libertatis games-misc/games-envd
+REQUIRED_USE=^^ ( cdinstall gog )
+RESTRICT=binchecks mirror gog? ( fetch )
+SLOT=0
+SRC_URI=cdinstall? ( http://download.zenimax.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe ) gog? ( setup_arx_fatalis.exe )
+_eclass_exported_funcs=pkg_pretend:check-reqs pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_prepare:base src_configure:games src_compile:games src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	cdrom	593beee21fc1247ccf32244f399982a7	check-reqs	bd050ce908e4637604ee604ed4b78e8f	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=06a91bd677eaf06aa5f3db7084f2f420

@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=A virtual to choose between different icon themes
+EAPI=6
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+RDEPEND=|| ( x11-themes/adwaita-icon-theme x11-themes/gnome-icon-theme x11-themes/faenza-icon-theme lxde-base/lxde-icon-theme x11-themes/tango-icon-theme kde-frameworks/oxygen-icons x11-themes/mate-icon-theme )
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=271a36fc7ec22ffeb941e4d2db07dd8e

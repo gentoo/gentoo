@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Manipulate archives of files in compressed form
+EAPI=6
+HOMEPAGE=https://packages.debian.org/sid/utils/zoo
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris ~x86-solaris
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://http.debian.net/debian/pool/main/z/zoo/zoo_2.10.orig.tar.gz http://http.debian.net/debian/pool/main/z/zoo/zoo_2.10-28.debian.tar.xz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=72125b54c8bb6e8f282306928c82bdc0

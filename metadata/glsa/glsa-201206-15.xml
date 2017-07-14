@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-15">
+  <title>libpng: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities in libpng might allow remote attackers to
+    execute arbitrary code or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>June 22, 2012</announced>
+  <revised>January 03, 2017: 5</revised>
+  <bug>373967</bug>
+  <bug>386185</bug>
+  <bug>401987</bug>
+  <bug>404197</bug>
+  <bug>410153</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.5.10</unaffected>
+      <unaffected range="ge" slot="1.2">1.2.49</unaffected>
+      <vulnerable range="lt">1.5.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several programs, including web browsers
+      and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libpng:</p>
+    
+    <ul>
+      <li>The “embedded_profile_len()” function in pngwutil.c does not
+        check for negative values, resulting in a memory leak (CVE-2009-5063).
+      </li>
+      <li>The “png_format_buffer()” function in pngerror.c contains an
+        off-by-one error (CVE-2011-2501).
+      </li>
+      <li>The “png_rgb_to_gray()” function in pngrtran.c contains an
+        integer overflow error (CVE-2011-2690).
+      </li>
+      <li>The “png_err()” function in pngerror.c contains a NULL pointer
+        dereference error (CVE-2011-2691).
+      </li>
+      <li>The “png_handle_sCAL()” function in pngrutil.c improperly handles
+        malformed sCAL chunks(CVE-2011-2692).
+      </li>
+      <li>The “png_decompress_chunk()” function in pngrutil.c contains an
+        integer overflow error (CVE-2011-3026).
+      </li>
+      <li>The “png_inflate()” function in pngrutil.c contains and out of
+        bounds error (CVE-2011-3045).
+      </li>
+      <li>The “png_set_text_2()” function in pngset.c contains an error
+        which could result in memory corruption (CVE-2011-3048).
+      </li>
+      <li>The “png_formatted_warning()” function in pngerror.c contains an
+        off-by-one error (CVE-2011-3464).
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>An attacker could exploit these vulnerabilities to execute arbitrary
+      code with the permissions of the user running the vulnerable program,
+      which could be the root user, or to cause programs linked against the
+      library to crash.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpng 1.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.10"
+    </code>
+    
+    <p>All libpng 1.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.49"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5063">CVE-2009-5063</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2501">CVE-2011-2501</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2690">CVE-2011-2690</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2691">CVE-2011-2691</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2692">CVE-2011-2692</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3026">CVE-2011-3026</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3045">CVE-2011-3045</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3048">CVE-2011-3048</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3464">CVE-2011-3464</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:07 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:38:41 +0000">ackle</metadata>
+</glsa>

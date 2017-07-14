@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure prepare unpack
+DEPEND=cairo? ( x11-libs/cairo x11-libs/pango ) gui? ( X? ( x11-libs/cairo[X] x11-libs/libX11 x11-libs/pango[X] ) !X? ( >=media-libs/glfw-3.0 ) ) leveldb? ( dev-libs/leveldb ) ncurses? ( sys-libs/ncurses:= ) sqlite? ( dev-db/sqlite:3 ) tokyocabinet? ( dev-db/tokyocabinet ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A library and suite of tools for inspecting disk usage
+EAPI=5
+HOMEPAGE=https://github.com/zevv/duc
+IUSE=cairo gui -leveldb ncurses -sqlite +tokyocabinet X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=cairo? ( x11-libs/cairo x11-libs/pango ) gui? ( X? ( x11-libs/cairo[X] x11-libs/libX11 x11-libs/pango[X] ) !X? ( >=media-libs/glfw-3.0 ) ) leveldb? ( dev-libs/leveldb ) ncurses? ( sys-libs/ncurses:= ) sqlite? ( dev-db/sqlite:3 ) tokyocabinet? ( dev-db/tokyocabinet )
+REQUIRED_USE=^^ ( tokyocabinet leveldb sqlite ) X? ( cairo gui )
+SLOT=0
+SRC_URI=https://github.com/zevv/duc/releases/download/1.4.1/duc-1.4.1.tar.gz
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f35e1dcb1ef735efb16001e324014e98

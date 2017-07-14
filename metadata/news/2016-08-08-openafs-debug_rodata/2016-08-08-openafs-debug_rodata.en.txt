@@ -1,0 +1,30 @@
+Title: OpenAFS no longer needs kernel option DEBUG_RODATA
+Author: NP-Hardass <NP-Hardass@gentoo.org>
+Author: Andrew Savchenko <bircoph@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-08-08
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <=net-fs/openafs-kernel-1.6.18.2
+Display-If-Keyword: amd64
+Display-If-Keyword: ~amd64-linux
+Display-If-Keyword: ~sparc
+Display-If-Keyword: x86
+Display-If-Keyword: ~x86-linux
+
+As a result of bug #127084 [1], it was determined that OpenAFS's
+kernel module required that the kernel's data structures be
+read-write (CONFIG_DEBUG_RODATA=n). With recent OpenAFS versions
+this limitation is no longer required. We tested the latest version
+of OpenAFS with Linux kernels from 3.4 till 4.6, and determined that
+OpenAFS kernel module works fine with CONFIG_DEBUG_RODATA=y.
+
+Starting with net-fs/openafs-kernel-1.6.18.2, this condition is no
+longer forced in the ebuild. Considering the security implications
+of having CONFIG_DEBUG_RODATA turned off, it is highly advised that
+you adjust your kernel config accordingly.  Please note that the
+default setting for CONFIG_DEBUG_RODATA is "y" and unless you have
+another reason for keeping it disabled, we highly recommend that
+you re-enable CONFIG_DEBUG_RODATA.
+
+[1] https://bugs.gentoo.org/show_bug.cgi?id=127084

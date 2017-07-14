@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=Useful set of performance and usability-oriented extensions to C
+EAPI=5
+HOMEPAGE=http://www.atheme.org/project/mowgli
+IUSE=libressl ssl
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD-2
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=2
+SRC_URI=http://atheme.org/downloads/libmowgli-2.0.0.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=a8ff2652fcd1cc8166262f0b26f851e3

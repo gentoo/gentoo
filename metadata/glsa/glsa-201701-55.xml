@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-55">
+  <title>DirectFB: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in DirectFB, all of which
+    could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">directfb</product>
+  <announced>2017-01-23</announced>
+  <revised>2017-01-23: 1</revised>
+  <bug>510472</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/DirectFB" auto="yes" arch="*">
+      <unaffected range="ge">1.7.5</unaffected>
+      <vulnerable range="lt">1.7.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>DirectFB (Direct Frame Buffer) is a set of graphics APIs implemented on
+      top of the Linux Frame Buffer (fbdev) abstraction layer.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in DirectFB. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition or execute
+      arbitrary code via the Voodoo interface.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All DirectFB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/DirectFB-1.7.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2977">CVE-2014-2977</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2978">CVE-2014-2978</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T08:12:23Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-23T03:38:25Z">b-man</metadata>
+</glsa>

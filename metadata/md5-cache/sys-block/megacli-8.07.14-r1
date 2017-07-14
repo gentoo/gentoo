@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-arch/unzip app-admin/chrpath >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=LSI Logic MegaRAID Command Line Interface management tool
+EAPI=5
+HOMEPAGE=http://www.avagotech.com/cs/Satellite?pagename=AVG2/searchLayout&SearchKeyWord=8.07&searchType=DocumentFileExtension-zip&locale=avg_en&srchradio=within&within=8.07
+KEYWORDS=~amd64 ~x86
+LICENSE=LSI
+RDEPEND==sys-libs/ncurses-5*
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/8-07-14_MegaCLI.zip
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=28cedaeab845af8954d6950525f06d86

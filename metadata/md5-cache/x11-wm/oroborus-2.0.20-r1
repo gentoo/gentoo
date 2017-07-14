@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xextproto x11-proto/xproto
+DESCRIPTION=Small and fast window manager
+EAPI=6
+HOMEPAGE=http://www.oroborus.org
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://debian/pool/main/o/oroborus/oroborus_2.0.20.tar.gz
+_eclass_exported_funcs=-
+_md5_=86ed8107cbaf7d1c9808dffbd3a5b06e

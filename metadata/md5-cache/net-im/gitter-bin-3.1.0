@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Chat and network platform
+EAPI=6
+HOMEPAGE=http://www.gitter.im/
+KEYWORDS=~amd64 ~x86 -*
+LICENSE=MIT no-source-code
+RDEPEND=dev-libs/expat:0 dev-libs/glib:2 dev-libs/nspr:0 dev-libs/nss:0 gnome-base/gconf:2 media-libs/alsa-lib:0 media-libs/fontconfig:1.0 media-libs/freetype:2 sys-apps/dbus:0 x11-libs/cairo:0 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/libnotify:0 x11-libs/libX11:0 x11-libs/libXcomposite:0 x11-libs/libXcursor:0 x11-libs/libXdamage:0 x11-libs/libXext:0 x11-libs/libXfixes:0 x11-libs/libXi:0 x11-libs/libXrandr:0 x11-libs/libXrender:0 x11-libs/libXtst:0 x11-libs/pango:0
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=amd64? ( https://update.gitter.im/linux64/gitter_3.1.0_amd64.deb ) x86? ( https://update.gitter.im/linux32/gitter_3.1.0_i386.deb )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:unpacker src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=2d9d87df1d4398711a060a8c45181c3a

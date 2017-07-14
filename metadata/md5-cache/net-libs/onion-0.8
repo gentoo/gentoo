@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= ) pam? ( virtual/pam ) png? ( media-libs/libpng:0= x11-libs/cairo ) jpeg? ( virtual/jpeg:0 ) xml? ( dev-libs/libxml2:2 sys-libs/zlib ) systemd? ( sys-apps/systemd ) sqlite? ( dev-db/sqlite:3 ) boehm-gc? ( dev-libs/boehm-gc ) libev? ( dev-libs/libev ) !libev? ( libevent? ( dev-libs/libevent ) ) redis? ( dev-libs/hiredis ) test? ( net-misc/curl ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=C library to create simple HTTP servers and Web Applications
+EAPI=5
+HOMEPAGE=http://www.coralbits.com/libonion/ https://github.com/davidmoreno/onion
+IUSE=gnutls pam png jpeg xml systemd sqlite boehm-gc test examples cxx -libev -libevent redis
+KEYWORDS=~amd64
+LICENSE=|| ( GPL-2+ Apache-2.0 ) AGPL-3
+RDEPEND=gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= ) pam? ( virtual/pam ) png? ( media-libs/libpng:0= x11-libs/cairo ) jpeg? ( virtual/jpeg:0 ) xml? ( dev-libs/libxml2:2 sys-libs/zlib ) systemd? ( sys-apps/systemd ) sqlite? ( dev-db/sqlite:3 ) boehm-gc? ( dev-libs/boehm-gc ) libev? ( dev-libs/libev ) !libev? ( libevent? ( dev-libs/libevent ) ) redis? ( dev-libs/hiredis )
+REQUIRED_USE=test? ( examples )
+SLOT=0
+SRC_URI=https://github.com/davidmoreno/onion/archive/v0.8.tar.gz -> onion-0.8.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=9cc6af95b2fb601edd373ab2216ca19c

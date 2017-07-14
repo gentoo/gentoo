@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=media-fonts/dejavu media-libs/freetype:2 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtscript:4 dev-qt/qtsvg:4 dev-qt/qttest:4 virtual/opengl sound? ( dev-qt/qtphonon:4 ) nls? ( virtual/libintl ) x11-libs/libXt nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=3D photo-realistic skies in real time
+EAPI=5
+HOMEPAGE=http://www.stellarium.org/
+IUSE=debug nls sound stars linguas_af linguas_ak linguas_am linguas_ar linguas_as linguas_ast linguas_az linguas_be linguas_bg linguas_bn linguas_bo linguas_br linguas_bs linguas_ca linguas_cs linguas_cy linguas_da linguas_de linguas_el linguas_en linguas_en_CA linguas_en_GB linguas_en_US linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fil linguas_fr linguas_ga linguas_gd linguas_gl linguas_gu linguas_he linguas_hi linguas_hr linguas_hu linguas_hy linguas_ia linguas_id linguas_is linguas_it linguas_ja linguas_ka linguas_kk linguas_kn linguas_ko linguas_ky linguas_la linguas_lb linguas_lo linguas_lt linguas_lv linguas_mk linguas_ml linguas_mn linguas_mr linguas_ms linguas_mt linguas_nan linguas_nb linguas_nl linguas_nn linguas_oc linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_se linguas_si linguas_sk linguas_sl linguas_sq linguas_sr linguas_sv linguas_sw linguas_ta linguas_te linguas_tg linguas_th linguas_tl linguas_tr linguas_tt linguas_uk linguas_uz linguas_vi linguas_zh linguas_zh_CN linguas_zh_HK linguas_zh_TW linguas_zu
+KEYWORDS=amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=media-fonts/dejavu media-libs/freetype:2 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtscript:4 dev-qt/qtsvg:4 dev-qt/qttest:4 virtual/opengl sound? ( dev-qt/qtphonon:4 ) nls? ( virtual/libintl )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/stellarium/stellarium-0.12.4.tar.gz stars? ( mirror://sourceforge/stellarium/stars_4_1v0_0.cat mirror://sourceforge/stellarium/stars_5_2v0_0.cat mirror://sourceforge/stellarium/stars_6_2v0_0.cat mirror://sourceforge/stellarium/stars_7_2v0_0.cat mirror://sourceforge/stellarium/stars_8_2v0_0.cat )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=3f5b0b7db549fde698eb1b7729ab1942

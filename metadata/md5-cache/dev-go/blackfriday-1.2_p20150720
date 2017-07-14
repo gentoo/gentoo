@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/sanitized-anchor-name >=dev-lang/go-1.8
+DESCRIPTION=a markdown processor implemented in Go
+EAPI=5
+HOMEPAGE=https://github.com/russross/blackfriday
+KEYWORDS=amd64 ~arm64
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=https://github.com/russross/blackfriday/archive/8cec3a8.tar.gz -> blackfriday-1.2_p20150720.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:golang-build src_test:golang-build src_install:golang-build
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=f79ccb72741de6ca18a6cb9acbe19b5f

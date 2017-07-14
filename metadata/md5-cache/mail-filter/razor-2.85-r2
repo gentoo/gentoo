@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=dev-lang/perl:=[-build(-)]
+DESCRIPTION=Vipul's Razor is a distributed, collaborative spam detection and filtering network
+EAPI=5
+HOMEPAGE=http://razor.sourceforge.net/
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=Artistic
+RDEPEND=dev-perl/Net-DNS virtual/perl-Net-Ping virtual/perl-Time-HiRes || ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 ) dev-perl/URI dev-perl/Digest-Nilsimsa dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://sourceforge/razor/razor-agents-2.85.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=8741b3790680c75052c6bd230e060b44

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-13">
+  <title>InspIRCd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in InspIRCd, the worst
+    allowing remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">inspircd</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>545034</bug>
+  <bug>570244</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/inspircd" auto="yes" arch="*">
+      <unaffected range="ge">2.0.20</unaffected>
+      <vulnerable range="lt">2.0.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>InspIRCd is a modular Internet Relay Chat (IRC) server written in C++
+      which was created from scratch to be stable, modern and lightweight.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in InspIRCd. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All InspIRCd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/inspircd-2.0.20"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6697">CVE-2012-6697</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6674">CVE-2015-6674</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8702">CVE-2015-8702</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 27 Sep 2015 05:28:16 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 21:15:00 +0000">mrueg</metadata>
+</glsa>

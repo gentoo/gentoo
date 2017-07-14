@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=UT2004 Hamster Bash - Cute and violent hamster cage rampage mod
+EAPI=5
+HOMEPAGE=http://www.moddb.com/mods/hamsterbash
+IUSE=dedicated opengl dedicated opengl
+KEYWORDS=amd64 x86
+LICENSE=freedist
+RDEPEND=games-misc/games-envd dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=HamsterBashFinal.zip
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games-mods pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:games-mods
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	games	2bb3ede665927a68ffdb7c41eec7efde	games-mods	03c98e6adf5bdc3f45c3e670930dca7b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=306000f3619cbbca3215eed7adb435af

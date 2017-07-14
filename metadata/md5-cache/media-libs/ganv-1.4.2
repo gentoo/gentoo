@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 x11-libs/gtk+:2 graphviz? ( media-gfx/graphviz[gtk] ) introspection? ( app-text/yelp-tools dev-libs/gobject-introspection:=[doctool] ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) nls? ( virtual/libintl )
+DESCRIPTION=A GTK+ widget for interactive graph-like environments
+EAPI=5
+HOMEPAGE=http://drobilla.net/software/ganv/
+IUSE=+fdgl +graphviz introspection nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 x11-libs/gtk+:2 graphviz? ( media-gfx/graphviz[gtk] ) introspection? ( app-text/yelp-tools dev-libs/gobject-introspection:=[doctool] )
+SLOT=0
+SRC_URI=http://download.drobilla.net/ganv-1.4.2.tar.bz2
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:waf-utils src_install:waf-utils
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=bb67a3efd7356891501b070e4d3fb709

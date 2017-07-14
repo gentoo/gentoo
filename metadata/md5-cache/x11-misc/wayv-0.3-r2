@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXtst x11-proto/inputproto x11-proto/xproto
+DESCRIPTION=Wayv is hand-writing/gesturing recognition software for X
+EAPI=5
+HOMEPAGE=http://www.stressbunny.com/wayv
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXtst
+SLOT=0
+SRC_URI=http://www.stressbunny.com/gimme/wayv/wayv-0.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=990881623fa4ab0adea37f2dfa5fa51b

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/glib:2 dev-util/intltool
+DESCRIPTION=A command line timer and stopwatch
+EAPI=6
+HOMEPAGE=http://utimer.codealpha.net/utimer
+IUSE=debug nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://utimer.codealpha.net/dl.php?file=utimer-0.4.tar.gz -> utimer-0.4.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=a1a45dce1d79c5709cacc54b9e1b6509

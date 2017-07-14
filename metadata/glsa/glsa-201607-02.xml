@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-02">
+  <title>libpcre: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libpcre, the worst of
+    which could lead to arbitrary code execution, or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 09, 2016</announced>
+  <revised>July 09, 2016: 1</revised>
+  <bug>529952</bug>
+  <bug>551240</bug>
+  <bug>553300</bug>
+  <bug>570694</bug>
+  <bug>575546</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libpcre" auto="yes" arch="*">
+      <unaffected range="ge">8.38-r1</unaffected>
+      <vulnerable range="lt">8.38-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpcre is a library providing functions for Perl-compatible regular
+      expressions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libpcre. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can possibly execute arbitrary code or create a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpcre users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libpcre-8.38-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8964">CVE-2014-8964</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8964">CVE-2014-8964</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8380">CVE-2015-8380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8381">CVE-2015-8381</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8383">CVE-2015-8383</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8384">CVE-2015-8384</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8385">CVE-2015-8385</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8386">CVE-2015-8386</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8387">CVE-2015-8387</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8388">CVE-2015-8388</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8389">CVE-2015-8389</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8390">CVE-2015-8390</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8391">CVE-2015-8391</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8392">CVE-2015-8392</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8393">CVE-2015-8393</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8394">CVE-2015-8394</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8395">CVE-2015-8395</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1283">CVE-2016-1283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1283">CVE-2016-1283</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 06:59:58 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 09 Jul 2016 02:07:37 +0000">b-man</metadata>
+</glsa>

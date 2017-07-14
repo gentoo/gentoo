@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=app-crypt/gcr dev-libs/jansson dev-libs/jemalloc dev-vcs/git virtual/pkgconfig
+DESCRIPTION=Flash-optimized, in-memory, nosql database
+EAPI=5
+HOMEPAGE=http://www.aerospike.com
+IUSE=+tools
+LICENSE=AGPL-3
+RDEPEND=app-crypt/gcr dev-libs/jansson dev-libs/jemalloc
+SLOT=0
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_prepare:- src_install:-
+_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=ba535294203551d79ec023192832c283

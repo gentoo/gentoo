@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=sys-libs/ncurses-5.7-r7:0= >=net-libs/libnetfilter_conntrack-0.0.50 virtual/pkgconfig
+DESCRIPTION=IP Tables State displays states being kept by iptables in a top-like format
+EAPI=6
+HOMEPAGE=http://www.phildev.net/iptstate/ https://github.com/jaymzh/iptstate
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=ZLIB
+RDEPEND=>=sys-libs/ncurses-5.7-r7:0= >=net-libs/libnetfilter_conntrack-0.0.50
+SLOT=0
+SRC_URI=https://github.com/jaymzh/iptstate/releases/download/v2.2.6/iptstate-2.2.6.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=5807d9bd2d02d9d3b567fec54dd076c8

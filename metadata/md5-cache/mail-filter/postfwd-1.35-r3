@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Versatile Postfix policy server with a flexible ruleset based configuration
+EAPI=5
+HOMEPAGE=http://www.postfwd.org/
+IUSE=+tools
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/perl-5.16.3 virtual/perl-Sys-Syslog dev-perl/Net-DNS dev-perl/Net-Server
+SLOT=0
+SRC_URI=http://www.postfwd.org/postfwd-1.35.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=0662748ff7f921a6e6226ceb1090ab58

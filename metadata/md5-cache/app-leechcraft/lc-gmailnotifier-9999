@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=~app-leechcraft/lc-core-9999 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtdeclarative:5[widgets] dev-qt/qtxml:5 sys-devel/make >=dev-util/cmake-3.7.2 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Notifies about new mail in a GMail inbox for LeechCraft
+EAPI=6
+HOMEPAGE=https://leechcraft.org/
+IUSE=debug notify quark
+LICENSE=Boost-1.0
+RDEPEND=~app-leechcraft/lc-core-9999 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtdeclarative:5[widgets] dev-qt/qtxml:5 quark? ( ~virtual/leechcraft-quark-sideprovider-9999 ) notify? ( ~virtual/leechcraft-notifier-9999 )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-r3	cbafa3261c37c7e3af44bb16a34ea390	leechcraft	9b4b708de7c0427a9674ad0a5c9ad742	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=c778b1b0f8b41190f22697b38b7d3515

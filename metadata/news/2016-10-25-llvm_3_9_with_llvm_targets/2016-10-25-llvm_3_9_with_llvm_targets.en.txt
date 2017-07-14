@@ -1,0 +1,41 @@
+Title: LLVM 3.9 with LLVM_TARGETS
+Author: Michał Górny <mgorny@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-10-25
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <sys-devel/llvm-3.9
+
+The newest release of LLVM 3.9 has undergone major Gentoo changes,
+and may require explicit action prior to the upgrade. In this release,
+the semi-implicit target choice has been replaced with an explicit
+LLVM_TARGETS flag set.
+
+If you did not enable USE=multitarget, no action should be required.
+The targets for your host CPU, Berkeley Packet Filter (used by some
+packages) and possibly two major GPUs (AMDGPU and NVPTX) will be enabled
+by default which is a superset of the previous default. However, you may
+want to disable some of those targets if you do not intend to install
+packages requiring them (dev-util/bcc, media-libs/mesa).
+
+If you enabled USE=multitarget, you will now need to specify all
+the requested targets explicitly. The old flag will be preserved
+for some time for compatibility reasons; however, it will only enforce
+explicitly selecting all targets.
+
+In order to enable all targets, add the following to your
+/etc/portage/package.use or equivalent file:
+
+  sys-devel/llvm LLVM_TARGETS: *
+  sys-devel/clang LLVM_TARGETS: *
+
+If you had to use USE=multitarget to enable some of the targets you
+needed, you can now disable the flag and specify those targets
+explicitly.
+
+Please also note that starting with LLVM-4.0, sys-devel/clang will be
+built as a separate package and the enabled LLVM_TARGETS for that
+package will actually enforce requested targets.
+
+Setting LLVM_TARGETS globally is discouraged as it can cause bootstrap
+issues with sys-libs/compiler-rt in the future.

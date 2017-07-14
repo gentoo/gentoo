@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201706-26">
+  <title>Vim, gVim: Remote execution of arbitrary code</title>
+  <synopsis>Multiple vulnerabilities have been found in Vim and gVim, the worst
+    of which might allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">vim,gvim</product>
+  <announced>2017-06-22</announced>
+  <revised>2017-06-22: 1</revised>
+  <bug>609150</bug>
+  <bug>611386</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-editors/vim" auto="yes" arch="*">
+      <unaffected range="ge">8.0.0386</unaffected>
+      <vulnerable range="lt">8.0.0386</vulnerable>
+    </package>
+    <package name="app-editors/gvim" auto="yes" arch="*">
+      <unaffected range="ge">8.0.0386</unaffected>
+      <vulnerable range="lt">8.0.0386</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Vim is an efficient, highly configurable improved version of the classic
+      ‘vi’ text editor. gVim is the GUI version of Vim.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Vim and gVim. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted spell
+      file using Vim or gVim, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Vim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/vim-8.0.0386"
+    </code>
+    
+    <p>All gVim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/gvim-8.0.0386"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5953">CVE-2017-5953</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6349">CVE-2017-6349</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6350">CVE-2017-6350</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-03-24T05:30:35Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-06-22T19:18:53Z">whissi</metadata>
+</glsa>

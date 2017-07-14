@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+DEPEND=>=dev-vcs/git-1.8.2.1 >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999 sys-devel/m4 >=sys-apps/checkpolicy-2.0.21
+DESCRIPTION=SELinux policy for tftp
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
+SLOT=0
+_eclass_exported_funcs=pkg_postrm:selinux-policy-2 pkg_postinst:selinux-policy-2 src_unpack:selinux-policy-2 src_prepare:selinux-policy-2 src_compile:selinux-policy-2 src_install:selinux-policy-2
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	selinux-policy-2	13977e036848e5a4beadf54a4740c407
+_md5_=84b9197e41a8255b636b858acbdd0e37

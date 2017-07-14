@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Compiz Fusion (meta)
+EAPI=0
+HOMEPAGE=http://www.compiz.org/
+IUSE=emerald gnome kde unsupported
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-wm/compiz-0.8.8 >=x11-plugins/compiz-plugins-main-0.8.8 >=x11-plugins/compiz-plugins-extra-0.8.8 unsupported? ( >=x11-plugins/compiz-plugins-unsupported-0.8.8 ) >=x11-misc/ccsm-0.8.4 emerald? ( >=x11-wm/emerald-0.8.8 ) gnome? ( >=x11-libs/compizconfig-backend-gconf-0.8.8 ) kde? ( >=x11-libs/compizconfig-backend-kconfig4-0.8.8 )
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:-
+_md5_=83dfbc664d60c996a6f1bd5f223a235c

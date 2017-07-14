@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sci-libs/fftw:3.0=
+DESCRIPTION=C++ library implementing a real-time convolution matrix
+EAPI=5
+HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/index.html
+IUSE=cpu_flags_x86_sse
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=sci-libs/fftw:3.0=
+SLOT=0
+SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-convolver-2.0.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=c5bbd07bf902af418e0ff9097a932e3a

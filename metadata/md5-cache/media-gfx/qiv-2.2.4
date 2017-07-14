@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=x11-libs/gtk+-2.12:2 media-libs/imlib2[X] !<media-gfx/pqiv-0.11 xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig
+DESCRIPTION=Quick Image Viewer
+EAPI=4
+HOMEPAGE=http://spiegl.de/qiv/
+IUSE=xinerama
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.12:2 media-libs/imlib2[X] !<media-gfx/pqiv-0.11 xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://spiegl.de/qiv/download/qiv-2.2.4.tgz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ab2c364c15717052fdb4cdbd4b980530

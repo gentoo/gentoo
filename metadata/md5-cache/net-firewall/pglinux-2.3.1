@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=net-libs/libnetfilter_queue net-libs/libnfnetlink dbus? ( sys-apps/dbus ) zlib? ( sys-libs/zlib ) qt4? ( sys-auth/polkit-qt[qt4(+)] dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 || ( kde-plasma/kde-cli-tools[kdesu] kde-apps/kdesu x11-misc/ktsuss ) ) virtual/pkgconfig sys-devel/libtool:2 >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Privacy oriented firewall application
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/peerguardian/
+IUSE=cron dbus logrotate networkmanager qt4 zlib
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=net-libs/libnetfilter_queue net-libs/libnfnetlink dbus? ( sys-apps/dbus ) zlib? ( sys-libs/zlib ) qt4? ( sys-auth/polkit-qt[qt4(+)] dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 || ( kde-plasma/kde-cli-tools[kdesu] kde-apps/kdesu x11-misc/ktsuss ) ) net-firewall/iptables sys-apps/sysvinit cron? ( virtual/cron ) logrotate? ( app-admin/logrotate ) networkmanager? ( net-misc/networkmanager:= )
+REQUIRED_USE=qt4? ( dbus )
+SLOT=0
+SRC_URI=mirror://sourceforge/peerguardian/pgl-2.3.1.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:linux-info src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=211659c2d1582bc7d273098158de0c0c

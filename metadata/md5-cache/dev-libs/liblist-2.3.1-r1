@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=doc? ( media-gfx/transfig dev-texlive/texlive-metapost virtual/latex-base )
+DESCRIPTION=This package provides generic linked-list manipulation routines, plus queues and stacks
+EAPI=3
+HOMEPAGE=http://ohnopub.net/liblist
+IUSE=doc examples static-libs
+KEYWORDS=amd64 ~ppc ~ppc64 x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=doc? ( media-gfx/transfig dev-texlive/texlive-metapost virtual/latex-base )
+SLOT=0
+SRC_URI=ftp://ohnopublishing.net/mirror/liblist-2.3.1.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=24f1a9c0257b599a353a01f3f9a5fa86

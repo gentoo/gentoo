@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) dev-libs/atk dev-libs/glib:2 media-libs/fontconfig media-libs/freetype x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/pango dev-ada/gprbuild[gnat_2016=,gnat_2017=] >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A complete Ada graphical toolkit
+EAPI=6
+HOMEPAGE=http://libre.adacore.com//tools/gtkada/
+IUSE=gnat_2016 gnat_2017 +shared static
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) dev-libs/atk dev-libs/glib:2 media-libs/fontconfig media-libs/freetype x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/pango
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5739985fc7a447658e0affae -> gtkada-gpl-2016-src.tgz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=0c39d734fd328bf602629ec832ac0d9b

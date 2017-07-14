@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=>=dev-python/libbonobo-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/libgnome-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig gnome-base/gnome-common >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info ~dev-python/gnome-python-extras-base-2.25.3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig
+DESCRIPTION=EggTrayIcon bindings for Python
+EAPI=5
+HOMEPAGE=http://pygtk.org/
+IUSE=examples python_targets_python2_7
+KEYWORDS=alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-python/libbonobo-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/libgnome-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ~dev-python/gnome-python-extras-base-2.25.3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-python-extras/2.25/gnome-python-extras-2.25.3.tar.bz2
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:gnome-python-common-r1 src_compile:gnome-python-common-r1 src_test:gnome-python-common-r1 src_install:gnome-python-common-r1
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome-python-common-r1	6357aff77fd245be07f753531dc16880	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	64c50579ea42fbcc77a7e220a8ae8e94	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=cbf3dffc6a3f944f5d7fac77a0fce5d7

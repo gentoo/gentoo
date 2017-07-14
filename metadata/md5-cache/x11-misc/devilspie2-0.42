@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=dev-lang/lua-5.1.5:0 >=dev-libs/glib-2.32.4:2 >=x11-libs/gtk+-3.4.4:3 >=x11-libs/libwnck-3.4.4:3 x11-libs/libX11 sys-devel/gettext virtual/pkgconfig x11-proto/xproto
+DESCRIPTION=Devilspie like window matching utility, using LUA for scripting
+EAPI=6
+HOMEPAGE=https://gusnan.se/devilspie2
+IUSE=debug linguas_fi linguas_fr linguas_it linguas_ja linguas_nl linguas_pt_BR linguas_ru linguas_sv
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=dev-lang/lua-5.1.5:0 >=dev-libs/glib-2.32.4:2 >=x11-libs/gtk+-3.4.4:3 >=x11-libs/libwnck-3.4.4:3 x11-libs/libX11
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/devilspie2/devilspie2_0.42-src.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=d8d6e357ef47513ec8f8cdfaf74c1697

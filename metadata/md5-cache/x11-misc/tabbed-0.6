@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=x11-proto/xproto x11-libs/libX11
+DESCRIPTION=Simple generic tabbed fronted to xembed aware applications
+EAPI=5
+HOMEPAGE=http://tools.suckless.org/tabbed
+IUSE=savedconfig
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=http://dl.suckless.org/tools/tabbed-0.6.tar.gz
+_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=9475b7a6fe2f838784eb43faccea46f2

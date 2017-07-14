@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 !gtk3? ( x11-libs/gtk+:2 x11-libs/vte:0 ) gtk3? ( x11-libs/gtk+:3 x11-libs/vte:2.90 ) virtual/pkgconfig sys-devel/gettext >=dev-util/intltool-0.40.0
+DESCRIPTION=Lightweight vte-based tabbed terminal emulator for LXDE
+EAPI=6
+HOMEPAGE=http://lxde.sf.net/
+IUSE=gtk3
+KEYWORDS=~alpha ~amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 !gtk3? ( x11-libs/gtk+:2 x11-libs/vte:0 ) gtk3? ( x11-libs/gtk+:3 x11-libs/vte:2.90 )
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/lxterminal-0.2.0.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=9d6c7e6498a107cdded94a464f8348a8

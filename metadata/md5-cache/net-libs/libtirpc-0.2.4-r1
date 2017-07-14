@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=kerberos? ( virtual/krb5 ) app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=Transport Independent RPC library (SunRPC replacement)
+EAPI=4
+HOMEPAGE=http://libtirpc.sourceforge.net/
+IUSE=ipv6 kerberos static-libs
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-2
+RDEPEND=kerberos? ( virtual/krb5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/libtirpc/libtirpc-0.2.4.tar.bz2 mirror://gentoo/libtirpc-glibc-nfs.tar.xz
+_eclass_exported_funcs=src_unpack:- src_configure:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7504b4e5d95f30a00c184f9a56d6edbe

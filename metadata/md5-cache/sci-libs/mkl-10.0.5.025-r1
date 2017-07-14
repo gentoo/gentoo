@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst prepare pretend setup test unpack
+DEPEND=app-eselect/eselect-blas app-eselect/eselect-cblas app-eselect/eselect-lapack virtual/fortran
+DESCRIPTION=Intel(R) Math Kernel Library: linear algebra, fft, math functions
+EAPI=6
+HOMEPAGE=http://developer.intel.com/software/products/mkl/
+IUSE=doc fftw fortran95 int64 mpi
+KEYWORDS=-* ~amd64 ~ia64 ~x86
+LICENSE=Intel-SDP
+RDEPEND=app-eselect/eselect-blas app-eselect/eselect-cblas app-eselect/eselect-lapack doc? ( app-doc/blas-docs app-doc/lapack-docs ) mpi? ( virtual/mpi ) virtual/fortran
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=http://registrationcenter-download.intel.com/irc_nas/1232/l_mkl_p_10.0.5.025.tgz
+_eclass_exported_funcs=pkg_pretend:check-reqs pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=check-reqs	bd050ce908e4637604ee604ed4b78e8f	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ce3a79e8c9dc869ee4a93d6333a64314

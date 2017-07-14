@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng:0= X? ( media-libs/fontconfig x11-libs/motif:0= x11-libs/libICE x11-libs/libX11 x11-libs/libXft x11-libs/libXmu x11-libs/libXt )
+DESCRIPTION=Development toolkit and applications for computational biology, including BLAST
+EAPI=5
+HOMEPAGE=http://www.ncbi.nlm.nih.gov/
+IUSE=doc static-libs X
+KEYWORDS=~alpha amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=public-domain
+RDEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng:0= X? ( media-libs/fontconfig x11-libs/motif:0= x11-libs/libICE x11-libs/libX11 x11-libs/libXft x11-libs/libXmu x11-libs/libXt )
+SLOT=0
+SRC_URI=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.26/ncbi.tar.gz -> ncbi-tools-2.2.26.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=770169ddfbcde7c5fbe57bff9b10ca14

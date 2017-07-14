@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Print out increasing, decreasing, random, or redundant data
+EAPI=5
+HOMEPAGE=http://freshmeat.net/projects/bsd-jot/
+KEYWORDS=amd64 ppc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm
+_eclass_exported_funcs=src_unpack:rpm src_prepare:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=361537c1db8665bded9fa252ef3c6033

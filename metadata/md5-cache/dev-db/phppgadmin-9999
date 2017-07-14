@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prerm setup unpack
+DEPEND=>=app-admin/webapp-config-1.50.15 dev-vcs/git
+DESCRIPTION=Web-based administration for Postgres database in php
+EAPI=2
+HOMEPAGE=http://phppgadmin.sourceforge.net/
+IUSE=vhosts
+LICENSE=GPL-2
+RDEPEND=|| ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) dev-lang/php[postgres,session] >=app-admin/webapp-config-1.50.15
+SLOT=9999
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:- src_unpack:git-2 src_install:-
+_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=22673079233ed18539f292dd986a3d6a

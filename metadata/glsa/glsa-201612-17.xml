@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-17">
+  <title>PECL HTTP: Remote execution of arbitrary code</title>
+  <synopsis>A buffer overflow in PECL HTTP might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">pecl_http</product>
+  <announced>December 07, 2016</announced>
+  <revised>December 07, 2016: 1</revised>
+  <bug>587466</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/pecl-http" auto="yes" arch="*">
+      <unaffected range="rge">2.5.6</unaffected>
+      <vulnerable range="lt">2.5.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>This HTTP extension aims to provide a convenient and powerful
+      set of functionality for one of PHPs major applications.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow can be triggered in the URL parsing functions of the
+      PECL HTTP extension. This allows overflowing
+      a buffer with data originating from an arbitrary HTTP request.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, through a specially crafted URI, could possibly
+      execute arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PECL HTTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/pecl-http-2.5.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5873">CVE-2016-5873</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 25 Nov 2016 03:43:01 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 07 Dec 2016 10:29:47 +0000">b-man</metadata>
+</glsa>

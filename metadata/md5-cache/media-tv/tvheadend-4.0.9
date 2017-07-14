@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst setup unpack
+DEPEND=dev-libs/openssl:= virtual/libiconv dbus? ( sys-apps/dbus ) ffmpeg? ( !libav? ( <media-video/ffmpeg-3:= ) libav? ( media-video/libav:= ) ) hdhomerun? ( media-libs/libhdhomerun ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( virtual/linuxtv-dvb-headers ) capmt? ( virtual/linuxtv-dvb-headers ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Tvheadend is a TV streaming server and digital video recorder
+EAPI=6
+HOMEPAGE=https://tvheadend.org/
+IUSE=capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zeroconf zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/openssl:= virtual/libiconv dbus? ( sys-apps/dbus ) ffmpeg? ( !libav? ( <media-video/ffmpeg-3:= ) libav? ( media-video/libav:= ) ) hdhomerun? ( media-libs/libhdhomerun ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) xmltv? ( media-tv/xmltv )
+SLOT=0
+SRC_URI=https://github.com/tvheadend/tvheadend/archive/v4.0.9.tar.gz -> tvheadend-4.0.9.tar.gz dvbscan? ( http://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-2015-02-08-f2053b3.tar.bz2 )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=85ab92cd61a2db3ea91b11d2eb77a27d

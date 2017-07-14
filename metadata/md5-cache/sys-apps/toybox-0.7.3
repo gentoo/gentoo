@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DESCRIPTION=Common linux commands in a multicall binary
+EAPI=5
+HOMEPAGE=http://landley.net/code/toybox/
+IUSE=savedconfig
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://landley.net/code/toybox/downloads/toybox-0.7.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=088c2251b3cb91ba4d8d02981b96a68d

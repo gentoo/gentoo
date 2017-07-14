@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-11">
+  <title>GNU C Library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the GNU C Library, the
+    worst of which allows context-dependent attackers to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>2017-02-19</announced>
+  <revised>2017-02-19: 1</revised>
+  <bug>560420</bug>
+  <bug>560526</bug>
+  <bug>572416</bug>
+  <bug>576726</bug>
+  <bug>578602</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.23-r3</unaffected>
+      <vulnerable range="lt">2.23-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU C library is the standard C library used by Gentoo Linux
+      systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in the GNU C Library.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could possibly execute arbitrary code with
+      the privileges of the process, disclose sensitive information, or cause a
+      Denial of Service condition via multiple vectors.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU C Library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.23-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9761">CVE-2014-9761</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5277">CVE-2015-5277</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8776">CVE-2015-8776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8777">CVE-2015-8777</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8778">CVE-2015-8778</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8779">CVE-2015-8779</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1234">CVE-2016-1234</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3075">CVE-2016-3075</uri>
+  </references>
+  <metadata tag="requester" timestamp="2016-11-29T21:44:07Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-19T12:31:09Z">whissi</metadata>
+</glsa>

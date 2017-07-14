@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=app-arch/zip gtk? ( x11-libs/libXrender >=x11-libs/libXtst-1.1.0 x11-proto/xproto ) >=virtual/jdk-1.5 alsa? ( media-libs/alsa-lib ) dssi? ( >=media-libs/dssi-0.9 ) gconf? ( gnome-base/gconf:2= ) gjdoc? ( >=dev-java/antlr-2.7.7-r7:0 ) gmp? ( >=dev-libs/gmp-4.2.4:0= ) gstreamer? ( >=media-libs/gstreamer-0.10.10:0.10= >=media-libs/gst-plugins-base-0.10.10:0.10= x11-libs/gtk+:2= ) gtk? ( >=x11-libs/gtk+-2.8:2= dev-libs/glib:2= media-libs/freetype:2= >=x11-libs/cairo-1.1.9:= x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/pango ) qt4? ( dev-qt/qtgui:4= ) xml? ( >=dev-libs/libxml2-2.6.8:2= >=dev-libs/libxslt-1.1.11 ) >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Free core class libraries for use with Java VMs and compilers
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/classpath
+IUSE=alsa debug doc dssi examples gconf +gjdoc gmp gtk gstreamer qt4 xml elibc_FreeBSD
+KEYWORDS=amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2-with-linking-exception
+RDEPEND=>=virtual/jre-1.5 alsa? ( media-libs/alsa-lib ) dssi? ( >=media-libs/dssi-0.9 ) gconf? ( gnome-base/gconf:2= ) gjdoc? ( >=dev-java/antlr-2.7.7-r7:0 ) gmp? ( >=dev-libs/gmp-4.2.4:0= ) gstreamer? ( >=media-libs/gstreamer-0.10.10:0.10= >=media-libs/gst-plugins-base-0.10.10:0.10= x11-libs/gtk+:2= ) gtk? ( >=x11-libs/gtk+-2.8:2= dev-libs/glib:2= media-libs/freetype:2= >=x11-libs/cairo-1.1.9:= x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/pango ) qt4? ( dev-qt/qtgui:4= ) xml? ( >=dev-libs/libxml2-2.6.8:2= >=dev-libs/libxslt-1.1.11 ) >=dev-java/java-config-2.2.0-r3
+REQUIRED_USE=doc? ( gjdoc )
+SLOT=0.98
+SRC_URI=mirror://gnu/classpath/classpath-0.98.tar.gz
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=238efa265622de7165a95188dd9f0d9c

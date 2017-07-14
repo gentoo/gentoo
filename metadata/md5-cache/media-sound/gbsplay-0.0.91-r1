@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install
+DEPEND=alsa? ( media-libs/alsa-lib:0 ) nas? ( media-libs/nas:0 ) nls? ( sys-devel/gettext:0 )
+DESCRIPTION=Nintendo Gameboy sound player for GBS format
+EAPI=5
+HOMEPAGE=http://gbsplay.berlios.de
+IUSE=+alsa nas nls oss linguas_de linguas_en
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib:0 ) nas? ( media-libs/nas:0 )
+SLOT=0
+SRC_URI=mirror://gentoo/gbsplay-0.0.91.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=1c117d52d6cae690b6a8a623166c3894

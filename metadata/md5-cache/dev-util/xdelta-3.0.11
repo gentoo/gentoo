@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=lzma? ( app-arch/xz-utils:= )
+DESCRIPTION=a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+EAPI=6
+HOMEPAGE=http://xdelta.org/
+IUSE=examples lzma
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=lzma? ( app-arch/xz-utils:= )
+SLOT=3
+SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.0.11/xdelta3-3.0.11.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
+_md5_=227e8f0b5e6774a315ba619a329a52bb

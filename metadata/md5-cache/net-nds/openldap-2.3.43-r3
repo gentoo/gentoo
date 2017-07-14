@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test
+DEPEND=sys-libs/ncurses tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) sasl? ( dev-libs/cyrus-sasl ) !minimal? ( odbc? ( dev-db/unixODBC ) slp? ( net-libs/openslp ) perl? ( || ( >=dev-lang/perl-5.16 <dev-lang/perl-5.16[-build] ) ) samba? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) berkdb? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) !berkdb? ( gdbm? ( sys-libs/gdbm ) !gdbm? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) ) smbkrb5passwd? ( dev-libs/openssl app-crypt/heimdal ) ) selinux? ( sec-policy/selinux-ldap ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
+DESCRIPTION=LDAP suite of application and development tools
+EAPI=2
+HOMEPAGE=http://www.OpenLDAP.org/
+IUSE=berkdb crypt debug gdbm ipv6 kerberos minimal odbc overlays perl samba sasl slp smbkrb5passwd ssl tcpd selinux ssl
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd
+LICENSE=OPENLDAP GPL-2
+RDEPEND=sys-libs/ncurses tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) sasl? ( dev-libs/cyrus-sasl ) !minimal? ( odbc? ( dev-db/unixODBC ) slp? ( net-libs/openslp ) perl? ( || ( >=dev-lang/perl-5.16 <dev-lang/perl-5.16[-build] ) ) samba? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) berkdb? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) !berkdb? ( gdbm? ( sys-libs/gdbm ) !gdbm? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) ) smbkrb5passwd? ( dev-libs/openssl app-crypt/heimdal ) ) selinux? ( sec-policy/selinux-ldap )
+SLOT=0
+SRC_URI=mirror://openldap/openldap-release/openldap-2.3.43.tgz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	db-use	582140d1a711279e50ce284fc7b609f5	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=cf51b2392af3c632c3386b8eabfd16aa

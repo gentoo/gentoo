@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201702-03">
+  <title>Firejail: Privilege escalation</title>
+  <synopsis>Firejail is vulnerable to the escalation of privileges due to an
+    incomplete fix for CVE-2017-5180.
+  </synopsis>
+  <product type="ebuild">firejail</product>
+  <announced>2017-02-09</announced>
+  <revised>2017-02-09: 1</revised>
+  <bug>607382</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/firejail" auto="yes" arch="*">
+      <unaffected range="ge">0.9.44.8</unaffected>
+      <vulnerable range="lt">0.9.44.8</vulnerable>
+    </package>
+    <package name="sys-apps/firejail-lts" auto="yes" arch="*">
+      <unaffected range="ge">0.9.38.10</unaffected>
+      <vulnerable range="lt">0.9.38.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A SUID program that reduces the risk of security breaches by restricting
+      the running environment of untrusted applications using Linux namespaces
+      and seccomp-bpf.
+    </p>
+  </background>
+  <description>
+    <p>The unaffected packages listed in GLSA 201612-48 had an incomplete fix
+      as reported by Sebastian Krahmer of SuSE. This has been properly patched
+      in the latest releases.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could possibly bypass sandbox protection, cause a Denial of
+      Service condition, or escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firejail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/firejail-0.9.44.8"
+    </code>
+    
+    <p>All Firejail-lts users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/firejail-lts-0.9.38.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5940">CVE-2017-5940</uri>
+    <uri link="https://firejail.wordpress.com/download-2/release-notes/">
+      Firejail Release Notes
+    </uri>
+    <uri link="https://security.gentoo.org/glsa/201612-48">GLSA 201612-48</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-30T13:28:16Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-02-09T15:35:45Z">b-man</metadata>
+</glsa>

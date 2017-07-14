@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=dev-cpp/muParser media-libs/libsdl[sound,joystick,video] sys-libs/zlib media-libs/sdl-image[png] media-libs/sdl-ttf dev-lang/nasm app-arch/unzip
+DESCRIPTION=R A I N E M680x0 Arcade Emulation
+EAPI=5
+HOMEPAGE=http://rainemu.swishparty.co.uk/
+KEYWORDS=x86
+LICENSE=Artistic
+RDEPEND=dev-cpp/muParser media-libs/libsdl[sound,joystick,video] sys-libs/zlib media-libs/sdl-image[png] media-libs/sdl-ttf games-misc/games-envd
+SLOT=0
+SRC_URI=http://rainemu.swishparty.co.uk/html/archive/raines-0.51.9.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:- src_install:-
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=2b3f57e11353d98f7c6a75ae2b15dfd0

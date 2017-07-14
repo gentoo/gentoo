@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-38">
+  <title>Pidgin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Pidgin, the worst of
+    which could lead to execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pidgin</product>
+  <announced>2017-01-17</announced>
+  <revised>2017-01-17: 01</revised>
+  <bug>586698</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/pidgin" auto="yes" arch="*">
+      <unaffected range="ge">2.11.0</unaffected>
+      <vulnerable range="lt">2.11.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pidgin is a client for a variety of instant messaging protocols.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pidgin. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might send specially crafted data using the MXit
+      protocol, possibly resulting in the remote execution of arbitrary code
+      with the privileges of the process, a Denial of Service condition, or in
+      leaking confidential information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pidgin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.11.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1000030">
+      CVE-2016-1000030
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2365">CVE-2016-2365</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2366">CVE-2016-2366</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2367">CVE-2016-2367</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2368">CVE-2016-2368</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2369">CVE-2016-2369</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2370">CVE-2016-2370</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2371">CVE-2016-2371</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2372">CVE-2016-2372</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2373">CVE-2016-2373</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2374">CVE-2016-2374</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2375">CVE-2016-2375</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2376">CVE-2016-2376</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2377">CVE-2016-2377</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2378">CVE-2016-2378</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2379">CVE-2016-2379</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2380">CVE-2016-2380</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4323">CVE-2016-4323</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-16T06:16:34Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-17T03:34:45Z">b-man</metadata>
+</glsa>

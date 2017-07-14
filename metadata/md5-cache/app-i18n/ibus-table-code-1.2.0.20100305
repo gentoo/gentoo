@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=app-i18n/ibus-table-1.2.0.20090912 !>app-i18n/ibus-table-1.3.9 virtual/pkgconfig
+DESCRIPTION=The code tables for IBus-Table
+EAPI=0
+HOMEPAGE=https://github.com/ibus/ibus/wiki
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-i18n/ibus-table-1.2.0.20090912 !>app-i18n/ibus-table-1.3.9
+SLOT=0
+SRC_URI=https://ibus.googlecode.com/files/ibus-table-code-1.2.0.20100305.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=19863312ed161f18444c7790b53c50e5

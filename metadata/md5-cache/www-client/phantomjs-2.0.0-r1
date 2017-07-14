@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-libs/icu:= !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) media-libs/fontconfig media-libs/freetype media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/libpng:0= virtual/jpeg:0 || ( dev-lang/ruby:2.2 dev-lang/ruby:2.1 ) virtual/rubygems net-misc/openssh[-bindist] app-arch/unzip virtual/pkgconfig
+DESCRIPTION=A headless WebKit scriptable with a JavaScript API
+EAPI=5
+HOMEPAGE=http://phantomjs.org/
+IUSE=examples libressl
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/icu:= !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) media-libs/fontconfig media-libs/freetype media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/libpng:0= virtual/jpeg:0
+SLOT=0
+SRC_URI=https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-source.zip
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	pax-utils	4f95120230a315c8caaabeb2307b7eee	ruby-single	af6ea0a8fe4c4faf733f4dbafae9e233	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=bc333bfac41452d014ed20f3f815b9a3

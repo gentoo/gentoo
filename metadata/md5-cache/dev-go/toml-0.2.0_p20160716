@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=TOML parser for Golang with reflection
+EAPI=6
+HOMEPAGE=http://github.com/BurntSushi/toml
+KEYWORDS=~amd64 ~ppc64
+LICENSE=WTFPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/BurntSushi/toml/archive/99064174e013895bbd9b025c31100bd1d9b590ca.tar.gz -> toml-0.2.0_p20160716.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=072e6846b668319a1f6ed99a8d147187

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-11">
+  <title>GNU Wget: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wget, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>October 29, 2016</announced>
+  <revised>October 29, 2016: 1</revised>
+  <bug>560418</bug>
+  <bug>585926</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.18</unaffected>
+      <vulnerable range="lt">1.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wget. Please review the
+      CVE identifier and bug reports referenced for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.18"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4971">CVE-2016-4971</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 02 Jul 2016 11:56:24 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 29 Oct 2016 13:29:55 +0000">b-man</metadata>
+</glsa>

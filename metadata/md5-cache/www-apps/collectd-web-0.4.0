@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=dev-perl/HTML-Parser net-analyzer/rrdtool[perl] dev-perl/JSON dev-perl/CGI dev-perl/URI virtual/perl-Time-Local virtual/ttf-fonts >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Collectd-web is a web-based front-end for RRD data collected by collectd
+EAPI=3
+HOMEPAGE=http://collectdweb.appspot.com/
+IUSE=vhosts
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/HTML-Parser net-analyzer/rrdtool[perl] dev-perl/JSON dev-perl/CGI dev-perl/URI virtual/perl-Time-Local virtual/ttf-fonts >=app-admin/webapp-config-1.50.15
+SLOT=0.4.0
+SRC_URI=https://github.com/httpdss/collectd-web/tarball/0.4.0 -> collectd-web-0.4.0.tar.gz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=5bd0b3a29201e5a5272c05bf5d521f2f

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201609-01">
+  <title>QEMU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which could lead to arbitrary code execution, or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>September 25, 2016</announced>
+  <revised>September 26, 2016: 2</revised>
+  <bug>573816</bug>
+  <bug>579734</bug>
+  <bug>580040</bug>
+  <bug>583496</bug>
+  <bug>583952</bug>
+  <bug>584094</bug>
+  <bug>584102</bug>
+  <bug>584146</bug>
+  <bug>584514</bug>
+  <bug>584630</bug>
+  <bug>584918</bug>
+  <bug>589924</bug>
+  <bug>589928</bug>
+  <bug>591242</bug>
+  <bug>591244</bug>
+  <bug>591374</bug>
+  <bug>591380</bug>
+  <bug>591678</bug>
+  <bug>592430</bug>
+  <bug>593034</bug>
+  <bug>593036</bug>
+  <bug>593038</bug>
+  <bug>593284</bug>
+  <bug>593950</bug>
+  <bug>593956</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">2.7.0-r3</unaffected>
+      <vulnerable range="lt">2.7.0-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Local users within a guest QEMU environment can execute arbitrary code
+      within the host or a cause a Denial of Service condition of the QEMU
+      guest process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-2.7.0-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2841">CVE-2016-2841</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4001">CVE-2016-4001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4002">CVE-2016-4002</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4020">CVE-2016-4020</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4439">CVE-2016-4439</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4441">CVE-2016-4441</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4453">CVE-2016-4453</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4454">CVE-2016-4454</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4964">CVE-2016-4964</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5106">CVE-2016-5106</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5107">CVE-2016-5107</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5126">CVE-2016-5126</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5238">CVE-2016-5238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5337">CVE-2016-5337</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5338">CVE-2016-5338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6490">CVE-2016-6490</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6833">CVE-2016-6833</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6834">CVE-2016-6834</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6836">CVE-2016-6836</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6888">CVE-2016-6888</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7116">CVE-2016-7116</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7156">CVE-2016-7156</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7157">CVE-2016-7157</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7421">CVE-2016-7421</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7422">CVE-2016-7422</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 01 Jul 2016 00:30:33 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Mon, 26 Sep 2016 00:34:50 +0000">b-man</metadata>
+</glsa>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-40">
+  <title>SQUASHFS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in SQUASHFS, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">squashfs-tools</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 14, 2016: 3</revised>
+  <bug>427356</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-fs/squashfs-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.3</unaffected>
+      <vulnerable range="lt">4.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Squashfs is a compressed read-only filesystem for Linux. Squashfs is
+      intended for general read-only filesystem use, for archival use (i.e. in
+      cases where a .tar.gz file may be used), and in constrained block
+      device/memory systems (e.g. embedded systems) where low overhead is
+      needed.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SQUASHFS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted .sqsh
+      file using unsquashfs; possibly resulting in the execution of arbitrary
+      code with the privileges of the process, or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All squashfs-tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/squashfs-tools-4.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4024">CVE-2012-4024</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4025">CVE-2012-4025</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 23:27:04 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Dec 2016 10:21:21 +0000">whissi</metadata>
+</glsa>

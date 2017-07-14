@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=virtual/perl-Time-HiRes
+DESCRIPTION=X10 MouseRemote
+EAPI=6
+HOMEPAGE=http://www4.pair.com/gribnif/ha/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www4.pair.com/gribnif/ha/MouseRemote.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=a74b2e868de35a20d7b5cd4c91956c8d

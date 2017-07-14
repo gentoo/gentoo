@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
+EAPI=4
+HOMEPAGE=http://www.unhide-forensics.info
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/unhide/files/unhide_20121229.tgz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=f82569f1a40f990c896277de36d1a71c

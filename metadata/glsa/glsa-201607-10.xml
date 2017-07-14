@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-10">
+  <title>Varnish: Multiple vulnerabilities</title>
+  <synopsis>Improper input validation in Varnish allows remote attackers to
+    conduct HTTP smuggling attacks, and possibly trigger a buffer overflow.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>542886</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/varnish" auto="yes" arch="*">
+      <unaffected range="ge">3.0.7</unaffected>
+      <vulnerable range="lt">3.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Varnish is a web application accelerator.</p>
+  </background>
+  <description>
+    <p>Varnish fails to properly validate input from HTTP headers, and does not
+      deny requests with multiple Content-Length headers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could conduct an HTTP response splitting attack, which
+      may further enable them to conduct Cross-Site Scripting (XSS), Cache
+      Poisoning, Defacement, and Page Hijacking.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Varnish users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/varnish-3.0.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8852">CVE-2015-8852</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 02 Jul 2016 01:59:09 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 09:01:06 +0000">b-man</metadata>
+</glsa>

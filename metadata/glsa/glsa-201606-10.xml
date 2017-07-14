@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-10">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PHP, the worst of which
+    could lead to arbitrary code execution, or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>June 19, 2016</announced>
+  <revised>June 19, 2016: 2</revised>
+  <bug>537586</bug>
+  <bug>541098</bug>
+  <bug>544186</bug>
+  <bug>544330</bug>
+  <bug>546872</bug>
+  <bug>549538</bug>
+  <bug>552408</bug>
+  <bug>555576</bug>
+  <bug>555830</bug>
+  <bug>556952</bug>
+  <bug>559612</bug>
+  <bug>562882</bug>
+  <bug>571254</bug>
+  <bug>573892</bug>
+  <bug>577376</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.6.19</unaffected>
+      <unaffected range="rge">5.5.33</unaffected>
+      <unaffected range="rge">5.5.34</unaffected>
+      <unaffected range="rge">5.5.35</unaffected>
+      <unaffected range="rge">5.5.36</unaffected>
+      <unaffected range="rge">5.5.37</unaffected>
+      <unaffected range="rge">5.5.38</unaffected>
+      <vulnerable range="lt">5.6.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is a widely-used general-purpose scripting language that is
+      especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can possibly execute arbitrary code or create a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP 5.4 users should upgrade to the latest 5.5 stable branch, as PHP
+      5.4 is now masked in Portage:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev=lang/php-5.5.33"
+    </code>
+    
+    <p>All PHP 5.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev=lang/php-5.5.33"
+    </code>
+    
+    <p>All PHP 5.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev=lang/php-5.6.19"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6501">CVE-2013-6501</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9705">CVE-2014-9705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9709">CVE-2014-9709</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0231">CVE-2015-0231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0273">CVE-2015-0273</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1351">CVE-2015-1351</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1352">CVE-2015-1352</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2301">CVE-2015-2301</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2348">CVE-2015-2348</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2783">CVE-2015-2783</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2787">CVE-2015-2787</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3329">CVE-2015-3329</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3330">CVE-2015-3330</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4021">CVE-2015-4021</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4022">CVE-2015-4022</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4025">CVE-2015-4025</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4026">CVE-2015-4026</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4147">CVE-2015-4147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4148">CVE-2015-4148</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4642">CVE-2015-4642</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4643">CVE-2015-4643</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4644">CVE-2015-4644</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6831">CVE-2015-6831</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6832">CVE-2015-6832</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6833">CVE-2015-6833</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6834">CVE-2015-6834</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6835">CVE-2015-6835</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6836">CVE-2015-6836</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6837">CVE-2015-6837</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6838">CVE-2015-6838</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7803">CVE-2015-7803</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7804">CVE-2015-7804</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 18 Apr 2015 22:36:42 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 19 Jun 2016 21:29:10 +0000">b-man</metadata>
+</glsa>

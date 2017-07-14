@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.3 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=native bindings for the FUSE kernel module
+EAPI=5
+HOMEPAGE=https://github.com/hanwen/go-fuse
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=ac2138cb721a23c35daa8e839ce371ca

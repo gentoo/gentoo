@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile unpack
+DEPEND=dev-util/dialog sys-libs/ncurses:0=[unicode]
+DESCRIPTION=Diagnostic and recovery tool for block devices
+EAPI=6
+HOMEPAGE=https://whdd.github.io
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-util/dialog sys-libs/ncurses:0=[unicode] sys-apps/smartmontools
+SLOT=0
+SRC_URI=https://github.com/whdd/whdd/tarball/3.0 -> whdd-3.0.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=ae31f5ada4a3c31d5166cfacecd7fe8e

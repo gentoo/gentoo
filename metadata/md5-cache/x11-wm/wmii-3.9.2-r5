@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-libs/libixp-0.5_p20110208-r3 x11-libs/libXft x11-libs/libXext x11-libs/libXrandr x11-libs/libXrender x11-libs/libX11 x11-libs/libXinerama >=media-libs/freetype-2 virtual/pkgconfig
+DESCRIPTION=A dynamic window manager for X11
+EAPI=6
+HOMEPAGE=http://wmii.suckless.org/
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=>=sys-libs/libixp-0.5_p20110208-r3 x11-libs/libXft x11-libs/libXext x11-libs/libXrandr x11-libs/libXrender x11-libs/libX11 x11-libs/libXinerama >=media-libs/freetype-2 x11-apps/xmessage x11-apps/xsetroot media-fonts/font-misc-misc
+SLOT=0
+SRC_URI=http://dl.suckless.org/wmii/wmii+ixp-3.9.2.tbz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=c03322d9ce1aaad5d36fd6dc268fc37d

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net? ( ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) ) !mail-client/mailx !net-mail/mailutils
+DESCRIPTION=an enhanced mailx-compatible mail client
+EAPI=3
+HOMEPAGE=http://heirloom.sourceforge.net/
+IUSE=ssl net kerberos
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=BSD
+RDEPEND=net? ( ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) ) !mail-client/mailx !net-mail/mailutils
+SLOT=0
+SRC_URI=mirror://sourceforge/project/heirloom/heirloom-mailx/12.4/mailx-12.4.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=b105384bd1c82551815f5e4a6964982a

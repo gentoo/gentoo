@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-16">
+  <title>Portage: Man-in-the-middle attack</title>
+  <synopsis>A vulnerability in Portage's urlopen function could allow a remote
+    attacker to conduct a man-in-the-middle attack. 
+  </synopsis>
+  <product type="ebuild">portage</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: 2</revised>
+  <bug>469888</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/portage" auto="yes" arch="*">
+      <unaffected range="ge">2.1.12.2</unaffected>
+      <vulnerable range="lt">2.1.12.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Portage is the package management and distribution system for Gentoo.</p>
+  </background>
+  <description>
+    <p>Portage does not verify X.509 SSL certificates properly if HTTPS is
+      used.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can spoof servers and modify binary package lists via
+      specially crafted certificates.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Portage users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/portage-2.1.12.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2100">CVE-2013-2100</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:42:59 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:59:39 +0000">Zlogene</metadata>
+</glsa>

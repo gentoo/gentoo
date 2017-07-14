@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install pretend setup
+DEPEND=app-arch/p7zip
+DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
+EAPI=6
+HOMEPAGE=http://developer.android.com/sdk/ndk/
+KEYWORDS=~amd64
+LICENSE=android
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 || ( sys-libs/ncurses:0/5 sys-libs/ncurses:5/5 )
+RESTRICT=mirror strip installsources test
+SLOT=0
+SRC_URI=https://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclasses_=check-reqs	bd050ce908e4637604ee604ed4b78e8f	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=7295a22762e548c72d0ab0e7473f105d

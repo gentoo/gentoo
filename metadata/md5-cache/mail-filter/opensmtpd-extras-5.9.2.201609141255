@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=mail-mta/opensmtpd dev-libs/libevent !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) table-sqlite? ( dev-db/sqlite:3 ) table-mysql? ( virtual/mysql ) table-postgres? ( dev-db/postgresql:* ) table-redis? ( dev-libs/hiredis ) table-python? ( dev-lang/python:2.7 ) scheduler-python? ( dev-lang/python:2.7 ) queue-python? ( dev-lang/python:2.7 ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Extra tables, filters, and various other addons for OpenSMTPD
+EAPI=5
+HOMEPAGE=https://github.com/OpenSMTPD/OpenSMTPD-extras
+IUSE=filter-monkey filter-stub filter-trace filter-void queue-null queue-python queue-ram queue-stub scheduler-python scheduler-ram scheduler-stub table-ldap table-mysql table-passwd table-postgres table-python table-redis table-socketmap table-sqlite table-stub libressl luajit
+LICENSE=ISC BSD BSD-1 BSD-2 BSD-4
+RDEPEND=mail-mta/opensmtpd dev-libs/libevent !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) table-sqlite? ( dev-db/sqlite:3 ) table-mysql? ( virtual/mysql ) table-postgres? ( dev-db/postgresql:* ) table-redis? ( dev-libs/hiredis ) table-python? ( dev-lang/python:2.7 ) scheduler-python? ( dev-lang/python:2.7 ) queue-python? ( dev-lang/python:2.7 )
+SLOT=0
+SRC_URI=https://www.opensmtpd.org/archives/opensmtpd-extras-201609141255.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=43336bff983b3c38599b9b26e6a056b2

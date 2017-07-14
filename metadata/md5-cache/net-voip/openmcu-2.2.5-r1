@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst prepare
+DEPEND=net-libs/ptlib:= net-libs/h323plus:=
+DESCRIPTION=Simple Multi Conference Unit using H.323
+EAPI=6
+HOMEPAGE=http://www.h323plus.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-1.0 GPL-2
+RDEPEND=net-libs/ptlib:= net-libs/h323plus:=
+SLOT=0
+SRC_URI=mirror://sourceforge/h323plus/h323plus-app-v1_23_0.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=0904004f864d8f5930fbd487c01655e2

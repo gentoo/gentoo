@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=>=dev-dotnet/gtk-sharp-2.12.21:2 gnome-base/gconf gnome-base/libgnomecanvas gnome-base/libgnomeui media-libs/libart_lgpl !dev-dotnet/gnomevfs-sharp !dev-dotnet/gconf-sharp !dev-dotnet/art-sharp sys-devel/automake:1.11 dev-lang/mono >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=gnome bindings for mono
+EAPI=5
+HOMEPAGE=http://www.mono-project.com/GtkSharp
+IUSE=debug
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-dotnet/gtk-sharp-2.12.21:2 gnome-base/gconf gnome-base/libgnomecanvas gnome-base/libgnomeui media-libs/libart_lgpl !dev-dotnet/gnomevfs-sharp !dev-dotnet/gconf-sharp !dev-dotnet/art-sharp
+RESTRICT=test
+SLOT=2
+SRC_URI=mirror://gnome/sources/gnome-sharp/2.24/gnome-sharp-2.24.2.tar.bz2
+_eclass_exported_funcs=pkg_setup:dotnet src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	base	df2aa567b3f0595aae0d0923889f7631	dotnet	1305f3fcce9fb96d24ddc4898e144081	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=04f6491d8cdbd602677e4aef1e672e65

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Binary plugins from Google Chrome for use in Chromium
+EAPI=5
+HOMEPAGE=https://www.google.com/chrome
+IUSE=+widevine
+KEYWORDS=-* amd64
+LICENSE=google-chrome
+RDEPEND=widevine? ( !<www-client/chromium-57[widevine(-)] ) !www-plugins/chrome-binary-plugins:0 !www-plugins/chrome-binary-plugins:beta !www-plugins/chrome-binary-plugins:unstable
+RESTRICT=bindist mirror strip
+SLOT=stable
+SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_59.0.3071.115-1_amd64.deb
+_eclass_exported_funcs=src_unpack:unpacker src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=a7a46c05b68e5c1b7d995128487bc53a

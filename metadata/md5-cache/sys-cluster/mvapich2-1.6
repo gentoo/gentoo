@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=|| ( ( sys-fabric/libibverbs sys-fabric/libibumad sys-fabric/libibmad sys-fabric/librdmacm ) sys-fabric/openib-userspace ) virtual/fortran
+DESCRIPTION=MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
+EAPI=4
+HOMEPAGE=http://mvapich.cse.ohio-state.edu/
+IUSE=debug fortran large-cluster medium-cluster romio threads
+KEYWORDS=~x86 ~amd64
+LICENSE=BSD
+RDEPEND=|| ( ( sys-fabric/libibverbs sys-fabric/libibumad sys-fabric/libibmad sys-fabric/librdmacm ) sys-fabric/openib-userspace ) virtual/fortran
+SLOT=0
+SRC_URI=http://mvapich.cse.ohio-state.edu//download/mvapich2/mvapich2-1.6.tgz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=ae306a6b79eb52f8c6f4002667125adb

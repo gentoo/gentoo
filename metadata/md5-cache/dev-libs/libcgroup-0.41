@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=pam? ( virtual/pam ) sys-devel/bison sys-devel/flex >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Tools and libraries to configure and manage kernel control groups
+EAPI=5
+HOMEPAGE=http://libcg.sourceforge.net/
+IUSE=+daemon debug pam static-libs +tools debug
+KEYWORDS=amd64 ppc ~ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=pam? ( virtual/pam )
+REQUIRED_USE=daemon? ( tools )
+SLOT=0
+SRC_URI=mirror://sourceforge/project/libcg/libcgroup/v0.41/libcgroup-0.41.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	e32ea84bf82cf8987965b574672dba93	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=f3199c21bb82f6d03b3a8227c049e28e

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201705-04">
+  <title>Mozilla Network Security Service (NSS): Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NSS, the worst of which
+    may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nss</product>
+  <announced>2017-05-07</announced>
+  <revised>2017-05-07: 1</revised>
+  <bug>616032</bug>
+  <bug>616036</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.29.5</unaffected>
+      <vulnerable range="lt">3.29.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Mozilla Network Security Service (NSS) is a library implementing
+      security features like SSL v.2/v.3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS
+      #12, S/MIME and X.509 certificates.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NSS. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or view
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NSS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.29.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5461">CVE-2017-5461</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5462">CVE-2017-5462</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-30T13:52:41Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-05-07T20:17:08Z">whissi</metadata>
+</glsa>

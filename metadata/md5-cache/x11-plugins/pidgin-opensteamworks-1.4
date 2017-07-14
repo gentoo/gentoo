@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/nss gnome-base/libgnome-keyring net-im/pidgin app-arch/unzip virtual/pkgconfig
+DESCRIPTION=Steam protocol plugin for pidgin
+EAPI=5
+HOMEPAGE=https://github.com/eionrobb/pidgin-opensteamworks
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/nss gnome-base/libgnome-keyring net-im/pidgin
+SLOT=0
+SRC_URI=https://pidgin-opensteamworks.googlecode.com/files/steam-mobile-1.4.tar.bz2 https://pidgin-opensteamworks.googlecode.com/files/icons.zip -> pidgin-opensteamworks-icons.zip
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=90ebe896d8ef310fb63ea10f7680f869

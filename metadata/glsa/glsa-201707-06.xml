@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-06">
+  <title>virglrenderer: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in virglrenderer, the
+    worst of which could allow local guest OS users to cause a Denial of
+    Service condition.
+  </synopsis>
+  <product type="ebuild">virglrenderer</product>
+  <announced>2017-07-08</announced>
+  <revised>2017-07-08: 1</revised>
+  <bug>606996</bug>
+  <bug>607022</bug>
+  <bug>608734</bug>
+  <bug>609400</bug>
+  <bug>609402</bug>
+  <bug>609492</bug>
+  <bug>609494</bug>
+  <bug>610678</bug>
+  <bug>610680</bug>
+  <bug>611378</bug>
+  <bug>611380</bug>
+  <bug>611382</bug>
+  <access>local</access>
+  <affected>
+    <package name="media-libs/virglrenderer" auto="yes" arch="*">
+      <unaffected range="ge" slot="">0.6.0</unaffected>
+      <vulnerable range="lt" slot="">0.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A virtual 3D GPU library, that allows the guest operating system to use
+      the host GPU to accelerate 3D rendering.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in virglrenderer. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All virglrenderer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/virglrenderer-0.6.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10163">
+      CVE-2016-10163
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10214">
+      CVE-2016-10214
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5580">CVE-2017-5580</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5956">CVE-2017-5956</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5957">CVE-2017-5957</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5993">CVE-2017-5993</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5994">CVE-2017-5994</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6209">CVE-2017-6209</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6210">CVE-2017-6210</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6317">CVE-2017-6317</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6355">CVE-2017-6355</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6386">CVE-2017-6386</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-05T00:14:09Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-07-08T12:06:05Z">whissi</metadata>
+</glsa>

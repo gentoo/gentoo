@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-Exporter-5.570.0 virtual/perl-Time-Local virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Produce RFC 822 date strings
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Email-Date-Format/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Exporter-5.570.0 virtual/perl-Time-Local dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Date-Format-1.005.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=bd49ef6dcffe2a0a250696673aa057ce

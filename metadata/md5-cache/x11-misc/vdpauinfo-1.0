@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=x11-libs/libX11 >=x11-libs/libvdpau-1.0 virtual/pkgconfig x11-proto/xproto
+DESCRIPTION=Displays info about your card's VDPAU support
+EAPI=5
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/VDPAU
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 >=x11-libs/libvdpau-1.0
+SLOT=0
+SRC_URI=https://people.freedesktop.org/~aplattner/vdpau/vdpauinfo-1.0.tar.gz
+_eclass_exported_funcs=-
+_md5_=c6277ba006fdbe94ac43cf1d53c67965

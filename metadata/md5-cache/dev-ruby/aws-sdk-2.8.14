@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby21? ( virtual/ruby-ssl[ruby_targets_ruby21] ~dev-ruby/aws-sdk-resources-2.8.14[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/ruby-ssl[ruby_targets_ruby22] ~dev-ruby/aws-sdk-resources-2.8.14[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/ruby-ssl[ruby_targets_ruby23] ~dev-ruby/aws-sdk-resources-2.8.14[ruby_targets_ruby23] ) ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby21? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby21] ) ) ruby_targets_ruby22? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby23] ) ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) test? ( ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) )
+DESCRIPTION=Official SDK for Amazon Web Services
+EAPI=5
+HOMEPAGE=https://aws.amazon.com/sdkforruby
+IUSE=test elibc_FreeBSD ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 doc test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=ruby_targets_ruby21? ( virtual/ruby-ssl[ruby_targets_ruby21] ~dev-ruby/aws-sdk-resources-2.8.14[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/ruby-ssl[ruby_targets_ruby22] ~dev-ruby/aws-sdk-resources-2.8.14[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/ruby-ssl[ruby_targets_ruby23] ~dev-ruby/aws-sdk-resources-2.8.14[ruby_targets_ruby23] ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] )
+REQUIRED_USE=|| ( ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 )
+SLOT=2
+SRC_URI=https://github.com/aws/aws-sdk-ruby/archive/v2.8.14.tar.gz -> aws-sdk-ruby-2.8.14.tar.gz
+_eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-fakegem	9652a5d6e78586973d23226d8fd77713	ruby-ng	e52d9a73c7757cdc3b195bcd5cf9d389	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a90c4ac7c9da2e10b831fec3b63692dc

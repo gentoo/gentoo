@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5[xcb] dev-qt/qtwidgets:5 dev-qt/qtnetwork:5 app-admin/pass net-misc/x11-ssh-askpass dev-qt/linguist-tools:5 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=multi-platform GUI for pass, the standard unix password manager
+EAPI=6
+HOMEPAGE=https://qtpass.org/
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5[xcb] dev-qt/qtwidgets:5 dev-qt/qtnetwork:5 app-admin/pass net-misc/x11-ssh-askpass
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=d20c006a4f48bbd3da3aa45fae35ed8c

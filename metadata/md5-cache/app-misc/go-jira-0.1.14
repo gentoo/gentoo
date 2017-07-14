@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=A simple JIRA commandline client in Go
+EAPI=6
+HOMEPAGE=https://github.com/Netflix-Skunkworks/go-jira
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/Netflix-Skunkworks/go-jira/archive/v0.1.14.tar.gz -> go-jira-0.1.14.tar.gz https://github.com/coryb/optigo/archive/6f3f720fe67b838bea7a8f53d9bcb58293daf590.tar.gz -> github.com-coryb-optigo-6f3f720fe67b838bea7a8f53d9bcb58293daf590.tar.gz https://github.com/howeyc/gopass/archive/bf9dde6d0d2c004a008c27aaee91170c786f6db8.tar.gz -> github.com-howeyc-gopass-bf9dde6d0d2c004a008c27aaee91170c786f6db8.tar.gz https://github.com/kballard/go-shellquote/archive/d8ec1a69a250a17bb0e419c386eac1f3711dc142.tar.gz -> github.com-kballard-go-shellquote-d8ec1a69a250a17bb0e419c386eac1f3711dc142.tar.gz https://github.com/mgutz/ansi/archive/9520e82c474b0a04dd04f8a40959027271bab992.tar.gz -> github.com-mgutz-ansi-9520e82c474b0a04dd04f8a40959027271bab992.tar.gz https://github.com/mattn/go-colorable/archive/ded68f7a9561c023e790de24279db7ebf473ea80.tar.gz -> github.com-mattn-go-colorable-ded68f7a9561c023e790de24279db7ebf473ea80.tar.gz https://github.com/tmc/keyring/archive/39227cc0349f1b69956c23aa1f679eefd17ebae0.tar.gz -> github.com-tmc-keyring-39227cc0349f1b69956c23aa1f679eefd17ebae0.tar.gz https://github.com/guelfey/go.dbus/archive/f6a3a2366cc39b8479cadc499d3c735fb10fbdda.tar.gz -> github.com-guelfey-go.dbus-f6a3a2366cc39b8479cadc499d3c735fb10fbdda.tar.gz https://github.com/coryb/yaml/archive/c82a3f4d49697aad482124182e538657091c9364.tar.gz -> github.com-coryb-yaml-c82a3f4d49697aad482124182e538657091c9364.tar.gz https://github.com/op/go-logging/archive/b2cb9fa56473e98db8caba80237377e83fe44db5.tar.gz -> github.com-op-go-logging-b2cb9fa56473e98db8caba80237377e83fe44db5.tar.gz https://github.com/golang/crypto/archive/e1a4589e7d3ea14a3352255d04b6f1a418845e5e.tar.gz -> github.com-golang-crypto-e1a4589e7d3ea14a3352255d04b6f1a418845e5e.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_md5_=1164c378eeaaa821d1e7e7c1908a53c3

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm test unpack
+DEPEND==sys-libs/db-1.85* test? ( >=dev-lang/tcl-8.4 )
+DESCRIPTION=Berkeley DB for transaction support in MySQL
+EAPI=0
+HOMEPAGE=http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
+IUSE=doc doc test examples
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=Sleepycat
+RDEPEND==sys-libs/db-1.85*
+SLOT=3
+SRC_URI=http://download.oracle.com/berkeley-db/db-3.2.9.tar.gz http://www.oracle.com/technology/products/berkeley-db/db/update/3.2.9/patch.3.2.9.1 http://www.oracle.com/technology/products/berkeley-db/db/update/3.2.9/patch.3.2.9.2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:- src_compile:- src_test:- src_install:-
+_eclasses_=db	a2bd05d5411cbfb7450f4e3cd260e8dd	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=55b53263031838dda862c8c31b766978

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-12">
+  <title>imlib2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in imlib2, the worst of
+    which allows for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">imlib2</product>
+  <announced>November 20, 2016</announced>
+  <revised>November 20, 2016: 1</revised>
+  <bug>572884</bug>
+  <bug>578810</bug>
+  <bug>580038</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/imlib2" auto="yes" arch="*">
+      <unaffected range="ge">1.4.9</unaffected>
+      <vulnerable range="lt">1.4.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>imlib2 is an advanced replacement for image manipulation libraries such
+      as libXpm. It is utilized by numerous programs, including gkrellm and
+      several window managers, to display images.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in imlib2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using an application linked against imlib2, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All imlib2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/imlib2-1.4.9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9762">CVE-2014-9762</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9763">CVE-2014-9763</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9764">CVE-2014-9764</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4024">CVE-2016-4024</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 20 Nov 2016 06:16:27 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Nov 2016 22:06:30 +0000">b-man</metadata>
+</glsa>
