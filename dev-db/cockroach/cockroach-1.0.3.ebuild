@@ -46,7 +46,7 @@ src_install() {
 insinto /etc/security/limits.d
 newins "${FILESDIR}"/cockroach-limits.conf cockroach.conf
 newconfd "${FILESDIR}"/cockroach.confd-1.0 cockroach
-newinitd "${FILESDIR}"/cockroach.initd-${PV} cockroach
+newinitd "${FILESDIR}"/cockroach.initd-1.0.1 cockroach
 dodir /var/log/cockroach
 fowners cockroach:cockroach /var/log/cockroach
 if [[ -z ${REPLACING_VERSIONS} ]]; then
