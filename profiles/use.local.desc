@@ -8274,6 +8274,7 @@ www-client/opera:gtk - Install support libraries and runtime dependencies to sup
 www-client/opera:kde - Install support libraries and runtime dependencies to support KDE desktop integration
 www-client/qupzilla:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
 www-client/qupzilla:nonblockdialogs - Enable fancy non-blocking JavaScript dialogs shown inside the page, not blocking the application window. When closing browser windows with open dialogs, this can crash the application.
+www-client/qutebrowser:webengine - Install packages required for experimental rendering support with webengine.
 www-client/seamonkey:calendar - Build Mozilla's calendar
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
