@@ -836,10 +836,11 @@ x11-libs/gtk+:1
 # Masked for testing
 =sys-fs/fuse-3.0.0*
 
-# Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
-# Mask all unfetchable versions and those with tons of random
-# bugs and segfaults (all). Don't ask for a version bump unless
-# there is a working release.
+# Marc Schiffbauer <mschiff@gentoo.org> (14 Jul 2017)
+# Breaks often because upstream always releases new version
+# under the same filename so checksums will break every now and then.
+# Additionally, packaging this program is a pita, so use at your
+# own risk.
 sci-geosciences/googleearth
 
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
