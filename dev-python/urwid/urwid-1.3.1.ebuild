@@ -23,16 +23,16 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.0-sphinx.patch
-	"${FILESDIR}"/urwid-1.3.1-test-vterm-EINTR.patch
+	"${FILESDIR}/${PN}-1.1.0-sphinx.patch"
+	"${FILESDIR}/${PN}-1.3.1-test-vterm-EINTR.patch"
 )
 
 python_compile_all() {
-	if use doc ; then
+	if use doc; then
 		if python_is_python3; then
 			2to3 -nw --no-diffs docs/conf.py || die
 		fi
-		cd docs
+		cd docs || die
 		sphinx-build . _build/html || die
 	fi
 }
