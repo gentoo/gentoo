@@ -1,0 +1,149 @@
+diff -Naur apache-tomcat-7.0.63-src.orig/build.xml apache-tomcat-7.0.63-src/build.xml
+--- apache-tomcat-7.0.63-src.orig/build.xml	2015-06-30 09:15:44.000000000 +0100
++++ apache-tomcat-7.0.63-src/build.xml	2015-08-22 21:13:12.453038827 +0100
+@@ -660,12 +660,14 @@
+       </fileset>
+     </copy>
+     <!-- Copy JSP Schemas and DTDs to be packed into servlet-api.jar -->
++<!--
+     <copy todir="${tomcat.classes}/javax/servlet/resources" encoding="ISO-8859-1">
+       <fileset dir="${tomcat.classes}/javax/servlet/jsp/resources">
+         <include name="*" />
+         <exclude name="jspxml*" />
+       </fileset>
+     </copy>
++-->
+ 
+   </target>
+ 
+@@ -721,26 +723,32 @@
+       manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
+ 
+     <!-- Servlet 3.0 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${servlet-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.servlet-api"
+       manifest="${tomcat.manifests}/servlet-api.jar.manifest"
+       notice="${tomcat.manifests}/servlet-api.jar.notice"
+       license="${tomcat.manifests}/servlet-api.jar.license" />
++-->
+ 
+     <!-- JSP 2.2 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${jsp-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.jsp-api"
+       manifest="${tomcat.manifests}/jsp-api.jar.manifest"
+       notice="${tomcat.manifests}/jsp-api.jar.notice"
+       license="${tomcat.manifests}/jsp-api.jar.license" />
++-->
+ 
+     <!-- JSP 2.2 EL Implementation JAR File -->
++<!--
+     <jarIt jarfile="${el-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.el-api"
+       manifest="${tomcat.manifests}/el-api.jar.manifest" />
++-->
+ 
+     <!-- Bootstrap JAR File -->
+     <jarIt jarfile="${bootstrap.jar}"
+@@ -986,12 +994,14 @@
+   <target name="deploy" depends="package,build-docs,compile-webapp-examples"
+           description="Default. Builds a working Tomcat instance">
+ 
++<!--
+     <copy tofile="${tomcat.build}/bin/tomcat-native.tar.gz"
+             file="${tomcat-native.tar.gz}" />
+     <copy tofile="${tomcat.build}/bin/commons-daemon-native.tar.gz"
+             file="${commons-daemon.native.src.tgz}" />
+ 
+     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
++-->
+ 
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+@@ -1051,14 +1061,15 @@
+         <exclude name="${jdt.jar.filename}"/>
+       </fileset>
+     </delete>
++<!--
+     <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
+-
++-->
+     <!-- Add sources for examples -->
+     <antcall target="examples-sources" />
+-
++<!--
+     <copy file="${tomcat-dbcp.jar}" todir="${tomcat.build}/lib"
+       failonerror="false"/>
+-
++-->
+     <!-- build the jdbc-pool jar and source jar-->
+     <echo message="Building Tomcat JDBC pool libraries"/>
+     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
+@@ -1681,7 +1692,7 @@
+ 
+   <target name="extras-webservices-prepare"
+           depends="extras-prepare"
+-          description="Prepare to build web services extras package">
++          description="Prepare to build web services extras package" unless="noget">
+ 
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
+@@ -1886,6 +1897,7 @@
+     description="Create the Tomcat javadoc" >
+     <fail unless="java.7.home"
+           message="The java.7.home property must be set for javadoc build"/>
++<!--
+     <javadoc packagenames="javax.servlet.*"
+       excludepackagenames="javax.servlet.jsp.*"
+       sourcepath="${tomcat.dist}/src/java"
+@@ -1947,6 +1959,7 @@
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
++-->
+     <javadoc packagenames="javax.websocket.*"
+       sourcepath="${tomcat.dist}/src/java"
+       destdir="${tomcat.dist}/webapps/docs/websocketapi"
+@@ -1985,9 +1998,11 @@
+         <path refid="tomcat.webservices.classpath"/>
+         <path location="${ant.core.lib}"/>
+       </classpath>
++<!--
+       <link href="../servletapi"/>
+       <link href="../jspapi"/>
+       <link href="../elapi"/>
++-->
+       <link href="../websocketapi"/>
+       <link href="http://docs.oracle.com/javase/7/docs/api/"/>
+       <link href="http://commons.apache.org/proper/commons-io/javadocs/api-release/"/>
+@@ -2642,7 +2657,7 @@
+   </target>
+ 
+   <target name="download-compile"
+-          description="Download (and build) components necessary to compile" >
++          description="Download (and build) components necessary to compile" unless="noget">
+ 
+     <antcall target="downloadfile-2">
+       <param name="sourcefile.1" value="${tomcat-native.loc.1}"/>
+@@ -2699,7 +2714,7 @@
+   </target>
+ 
+   <target name="download-test-compile"
+-          description="Download additional components for the tests" >
++          description="Download additional components for the tests" unless="noget">
+ 
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${junit.loc}"/>
+@@ -2727,7 +2742,7 @@
+   </target>
+ 
+   <target name="download-dist"
+-          description="Download additional components for a distribution" >
++          description="Download additional components for a distribution" unless="noget">
+ 
+     <antcall target="downloadzip-2">
+       <param name="sourcefile.1" value="${tomcat-native.win.1}"/>
