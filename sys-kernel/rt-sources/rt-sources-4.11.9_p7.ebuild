@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 ETYPE="sources"
 KEYWORDS="~amd64"
 
@@ -32,7 +32,7 @@ UNIPATCH_LIST="${DISTDIR}/${RT_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
 pkg_postinst() {
-
+	kernel-2_pkg_postinst
 	ewarn
 	ewarn "${PN} are *not* supported by the Gentoo Kernel Project in any way."
 	ewarn "If you need support, please contact the RT project developers directly."
