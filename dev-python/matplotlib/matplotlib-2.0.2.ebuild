@@ -209,6 +209,7 @@ python_configure() {
 wrap_setup() {
 	local -x MPLSETUPCFG=${BUILD_DIR}/setup.cfg
 	unset DISPLAY
+	"$@"
 }
 
 python_compile() {
