@@ -29,7 +29,9 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/bigstring.patch"
+	epatch "${FILESDIR}/bigstring.patch" \
+		"${FILESDIR}/tests.patch" \
+		"${FILESDIR}/testrun.patch"
 	default
 }
 
