@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit readme.gentoo-r1 user
+inherit autotools readme.gentoo-r1 user
 
 DESCRIPTION="GNU package manager (nix sibling)"
 HOMEPAGE="https://www.gnu.org/software/guix/"
@@ -96,16 +96,18 @@ pkg_setup() {
 	done
 }
 
-src_configure() {
-	# to be compatible with guix from /gnu/store
-	econf \
-		--localstatedir="${EPREFIX}"/var
-}
-
 src_prepare() {
 	copy_boot_guile_binaries
 
 	default
+	# build system is very eager to run automake itself: bug #625166
+	eautomake
+}
+
+src_configure() {
+	# to be compatible with guix from /gnu/store
+	econf \
+		--localstatedir="${EPREFIX}"/var
 }
 
 src_compile() {
