@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit udev eutils
+inherit udev
 
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/gentoo/hwids"
