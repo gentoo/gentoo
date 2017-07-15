@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit eutils toolchain-funcs python-r1 versionator gnome2-utils games distutils-r1
+inherit eutils games gnome2-utils toolchain-funcs versionator distutils-r1
 
 DESCRIPTION="Visual novel engine written in python"
 HOMEPAGE="http://www.renpy.org"
@@ -77,14 +77,17 @@ python_install() {
 }
 
 python_install_all() {
+	distutils-r1_python_install_all
 	if use development; then
 		newicon -s 32 launcher/game/images/logo32.png ${P}.png
 		make_desktop_entry ${PN}-${SLOT} "Ren'Py ${PV}" ${P}
 	fi
 
 	if use doc; then
-		dohtml -r doc
+		insinto html
+		doins -r doc
 	fi
+	newman "${FILESDIR}/${PN}.1" "${P}.1"
 
 	prepgamesdirs
 }
