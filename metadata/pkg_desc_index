@@ -535,7 +535,7 @@ app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
 app-crypt/gnupg 1.4.21 2.1.15 2.1.18 2.1.20-r1 2.1.21 2.1.21-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
-app-crypt/gnupg-pkcs11-scd 0.7.6: PKCS#11 support for GnuPG
+app-crypt/gnupg-pkcs11-scd 0.7.6 0.8.0: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
@@ -4455,7 +4455,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.4 1.2.7 1.2.8 1.2.10 1.2.12: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.77 8.0.43 8.5.11 8.5.13 8.5.14 8.5.15 9.0.0_alpha21: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.77 7.0.79 8.0.43 8.0.45 8.5.11 8.5.13 8.5.14 8.5.15 8.5.16 9.0.0_alpha22: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -18455,7 +18455,7 @@ www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.0-r1 1.7.1 1.7.2: A fast and very simple Ruby web server
 www-servers/thttpd 2.27.0 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.77 8.0.43 8.5.13 8.5.14 8.5.15 9.0.0_alpha21: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.77 7.0.79 8.0.43 8.0.45 8.5.13 8.5.14 8.5.15 8.5.16 9.0.0_alpha22: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.15: uWSGI server for Python web applications
 www-servers/varnish 4.0.3 4.1.6 5.1.2: Varnish is a state-of-the-art, high-performance HTTP accelerator
