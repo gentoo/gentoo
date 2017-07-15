@@ -670,6 +670,7 @@ app-emulation/wine-any
 >=sys-apps/baobab-3.23
 >=media-gfx/eog-3.23
 >=www-client/epiphany-3.23
+>=app-text/evince-3.23
 >=gnome-extra/evolution-data-server-3.23
 >=gnome-base/gdm-3.23
 >=sci-geosciences/geocode-glib-3.23
