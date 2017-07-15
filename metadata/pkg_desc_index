@@ -11048,7 +11048,7 @@ games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom
 games-engines/openmw 0.41.0: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0 1.0.0-r1 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
-games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
+games-engines/renpy 6.17.7 6.99.6 6.99.12.4: Visual novel engine written in python
 games-engines/residualvm 0.2.1 0.2.1-r1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 1.8.0 1.8.1-r1 1.9.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.8.0 1.8.0-r1: utilities for the SCUMM game engine
