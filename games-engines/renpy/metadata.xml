@@ -14,6 +14,10 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
 	<longdescription>
 		Ren'Py is a free and cross-platform visual novel engine that
 		helps you use words,
