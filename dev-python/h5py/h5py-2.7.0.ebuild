@@ -20,7 +20,9 @@ RDEPEND="
 	sci-libs/hdf5:=[mpi=,hl(+)]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -58,10 +60,7 @@ python_test() {
 python_install_all() {
 	DOCS=( README.rst ANN.rst )
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	if use examples; then
-		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
+	use examples && DOCS+=( examples )
 
 	distutils-r1_python_install_all
 }
