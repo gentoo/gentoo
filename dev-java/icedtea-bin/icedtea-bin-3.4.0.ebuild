@@ -81,12 +81,15 @@ pkg_pretend() {
 src_prepare() {
 	default
 
+	# I wouldn't normally use -f below but symlinks in the arm files
+	# make this fail otherwise and any other approach would be tedious.
+
 	if ! use alsa; then
-		rm -v */jre/lib/*/libjsoundalsa.* || die
+		rm -fv */jre/lib/*/libjsoundalsa.* || die
 	fi
 
 	if use headless-awt; then
-		rm -vr */jre/lib/*/lib*{[jx]awt,splashscreen}* \
+		rm -fvr */jre/lib/*/lib*{[jx]awt,splashscreen}* \
 		   */{,jre/}bin/policytool */bin/appletviewer || die
 	fi
 }
