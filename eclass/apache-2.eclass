@@ -172,7 +172,7 @@ setup_mpm() {
 		die "invalid use flag combination"
 	fi
 
-	if [[ "${MY_MPM}" = *prefork* ]] && use apache2_modules_http2 ; then
+	if [[ "${PV}" != 2.2* ]] && [[ "${MY_MPM}" = *prefork* ]] && use apache2_modules_http2 ; then
 		die "http2 does not work with prefork MPM."
 	fi
 }
