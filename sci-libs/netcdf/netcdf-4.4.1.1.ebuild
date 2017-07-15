@@ -43,6 +43,11 @@ src_configure() {
 		$(use_enable tools utilities)
 }
 
+src_test() {
+	# fails parallel tests: bug #621486
+	emake check -j1
+}
+
 src_install() {
 	default
 	use examples && dodoc -r examples
