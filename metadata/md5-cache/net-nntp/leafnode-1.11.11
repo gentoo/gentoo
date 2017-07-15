@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure install prepare
 DEPEND=>=dev-libs/libpcre-3.9
 DESCRIPTION=A USENET software package designed for small sites
 EAPI=5
@@ -9,5 +9,6 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/libpcre-3.9 virtual/inetd
 SLOT=0
 SRC_URI=mirror://sourceforge/leafnode/leafnode-1.11.11.tar.bz2
-_eclass_exported_funcs=src_configure:- src_install:-
-_md5_=66492fe9ea5ed7d4b7ce22b75929176f
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_md5_=ae5d414a1bc493cd5d27f3912d076e59
