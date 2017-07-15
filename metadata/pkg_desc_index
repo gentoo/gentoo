@@ -2011,7 +2011,7 @@ app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phon
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
-app-mobilephone/wammu 0.40: Front-end for gammu to access mobile phones easily
+app-mobilephone/wammu 0.40 0.43: Front-end for gammu to access mobile phones easily
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
 app-office/abiword 3.0.1 3.0.2 3.0.2-r1: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.1 3.0.2: Fully featured yet light and fast cross platform word processor documentation
@@ -12798,7 +12798,7 @@ media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.2 2.7.4-r1 2.8.2 2.8.3 2.8.4 2.8.5 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
-media-gfx/printrun 20140730 20150310 99999999: GUI interface for 3D printing on RepRap and other printers
+media-gfx/printrun 20140730 20150310 20150310-r1 99999999: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/psftools 1.0.7: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
