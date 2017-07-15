@@ -5402,13 +5402,13 @@ dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/sedlex 1.99.3 1.99.4: An OCaml lexer generator for Unicode
-dev-ml/sequence 0.9 0.10: Simple sequence (iterator) datatype and combinators
+dev-ml/sequence 0.10: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 0.9.1: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/spawn 0.9.0: Spawning sub-processes
 dev-ml/stdio 0.9.0: Standard IO Library for OCaml
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
 dev-ml/textutils 0.9.0: Text output utilities
-dev-ml/topkg 0.8.1 0.9.0: The transitory OCaml software packager
+dev-ml/topkg 0.9.0: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 0.9.0: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 0.9.0: Runtime types for OCaml (Extended)
