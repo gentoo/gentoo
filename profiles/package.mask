@@ -83,12 +83,6 @@ sys-libs/libacpi
 sys-power/yacpi
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# games-engines/renpy cannot be used with its only reverse dep in the tree
-# as-is, it needs a major version bump and build fixing too, bug #587872.
-# Removal in a month.
-games-engines/renpy
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't build for a long time, bug #587942
 sci-mathematics/cado-nfs
 
