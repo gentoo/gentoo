@@ -138,6 +138,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-optional-cups.patch
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${FILESDIR}"/${PV}-gentoo-paths.patch
+	# https://bugzilla.gnome.org/show_bug.cgi?id=780544
+	"${FILESDIR}"/${PV}-fix-without-gdkwayland.patch
 )
 
 src_configure() {
