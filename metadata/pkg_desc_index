@@ -7549,7 +7549,7 @@ dev-python/django-opensearch 0.2.4 0.2.5: A django reusable application to handl
 dev-python/django-openstack-auth 3.2.0: Django authentication backend for use with OpenStack Keystone Identity backend
 dev-python/django-otp 0.2.7 0.3.4: Framework for adding two-factor authentication to Django using one-time passwords
 dev-python/django-otp-yubikey 0.2.0 0.3.3: django-otp plugin that verifies YubiKey OTP tokens
-dev-python/django-phonenumber-field 0.7.2 1.1.0: Django model and form field for normalised phone numbers using python-phonenumbers
+dev-python/django-phonenumber-field 0.7.2 1.1.0 1.3.0: Django model and form field for normalised phone numbers using python-phonenumbers
 dev-python/django-picklefield 0.3.1 0.3.2: Implementation of a pickled object field for django
 dev-python/django-pipeline 1.3.26 1.6.0: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating RESTful APIs
@@ -8142,7 +8142,7 @@ dev-python/pexpect 3.3 4.2.1: Python module for spawning child applications and 
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.6: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
-dev-python/phonenumbers 7.2.3 7.2.8: Python port of Google's libphonenumber
+dev-python/phonenumbers 7.7.5 8.3.1: Python port of Google's libphonenumber
 dev-python/photutils 0.3.1 0.3.2: Python package for image astronomical photometry
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1: Pidfile featuring stale detection and file-locking
@@ -9431,7 +9431,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 3.2.6 4.1.1 4.2.0 4.2.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.12.5 1.12.6 1.13.7: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.12.5 1.12.6 1.13.7 1.14.6: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.6.3 2.6.4-r1 2.6.5 2.7.0: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
@@ -9912,7 +9912,7 @@ dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services
 dev-ruby/shotgun 0.9.1 0.9.2: Forking implementation of rackup
 dev-ruby/shoulda 2.11.3-r2 3.5.0-r2 3.5.0-r3: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.2.1 1.2.2: Context framework extracted from Shoulda
-dev-ruby/shoulda-matchers 2.8.0 2.8.0-r1 3.1.0 3.1.1 3.1.1-r1: Making tests easy on the fingers and eyes
+dev-ruby/shoulda-matchers 2.8.0-r1 3.1.1-r1 3.1.2: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
 dev-ruby/simple-rss 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
@@ -9985,7 +9985,7 @@ dev-ruby/unf_ext 0.0.7.1 0.0.7.2 0.0.7.3 0.0.7.4: Unicode Normalization Form sup
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.13 0.2.14 0.2.15: Ruby vcard support extracted from Vpim
-dev-ruby/vcr 1.11.3 2.9.3 3.0.1 3.0.3: Records your test suite's HTTP interactions and replay them during test runs
+dev-ruby/vcr 1.11.3 2.9.3 3.0.3: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.6 1.2.7: General Rack Authentication Framework
