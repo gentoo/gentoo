@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (16 Jul 2017)
+# Discontinued project with multiple vulnerabilities, removal in a month (#620802)
+media-gfx/autotrace
+
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Not usable, dead since 2003, removal in a month (#24706)
 app-mobilephone/esms
