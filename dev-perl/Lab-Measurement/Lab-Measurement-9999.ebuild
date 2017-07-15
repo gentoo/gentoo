@@ -132,20 +132,8 @@ dzil_to_distdir() {
 
 src_prepare() {
 	if [[ ${PV} == 9999 ]]; then
-		# Uses git sources in WORKDIR/rex-git
-		# to generate a CPAN-style tree in ${S}
-		# before letting perl-module.eclass do the rest
-		dzil_to_distdir "${EGIT_CHECKOUT_DIR}/Measurement" "${S}"
+		dzil_to_distdir "${EGIT_CHECKOUT_DIR}" "${S}"
 	fi
 	cd "${S}" || die "Can't enter build dir"
 	perl-module_src_prepare
-}
-
-pkg_postinst() {
-	if ( ! has_version sci-libs/linuxgpib ) && ( ! has_version dev-perl/Lab-VISA ) ; then
-		elog "You may want to install one or more backend driver modules. Supported are"
-		elog "    sci-libs/linuxgpib    Open-source GPIB hardware driver"
-		elog "    dev-perl/Lab-VISA     Bindings for the NI proprietary VISA driver"
-		elog "                          stack (dilfridge overlay)"
-	fi
 }
