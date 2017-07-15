@@ -11,7 +11,7 @@ SRC_URI="http://www.dbmail.org/download/$(get_version_component_range 1-2)/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="ldap sieve ssl static"
 
 DEPEND="dev-db/libzdb
