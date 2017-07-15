@@ -24,7 +24,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	# not needed on install
-	rm -r docs/source || die
+	rm -vr docs/source || die
 	distutils-r1_python_prepare_all
 }
 
@@ -35,9 +35,9 @@ src_compile() {
 
 python_test() {
 	echo "Beginning test phase"
-	pushd "${BUILD_DIR}"/../ &> /dev/null
+	pushd "${BUILD_DIR}"/../ &> /dev/null || die
 	mpiexec -n 2 "${PYTHON}" ./test/runtests.py -v || die "Testsuite failed under ${EPYTHON}"
-	popd &> /dev/null
+	popd &> /dev/null || die
 }
 
 python_install_all() {
