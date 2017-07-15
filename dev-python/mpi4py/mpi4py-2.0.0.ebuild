@@ -42,6 +42,6 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
-	use examples && local EXAMPLES=( demo/. )
+	use examples && local DOCS=( demo )
 	distutils-r1_python_install_all
 }
