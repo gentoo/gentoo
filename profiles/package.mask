@@ -73,10 +73,6 @@ net-voip/blink
 net-irc/loqui
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't compile (#579948). Removal in a month.
-net-nntp/leafnode
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't compile, upstream dead, removal in a month (#584296).
 dev-util/mutrace
 
