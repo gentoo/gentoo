@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit autotools-utils
+inherit autotools-utils toolchain-funcs
 
 DESCRIPTION="Transforming bitmaps into vector graphics"
 HOMEPAGE="http://potrace.sourceforge.net/"
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_configure() {
+	tc-export CC # bug 610098
 	local myeconfargs=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--enable-zlib
