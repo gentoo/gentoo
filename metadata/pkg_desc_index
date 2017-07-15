@@ -15789,6 +15789,7 @@ net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
 net-wireless/rfcat 0.0.170508 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5 0.5-r1: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
+net-wireless/rtl_433 9999: Decode OOK modulated signals
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/ubertooth 2015.10.1 2017.03.2 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.8.5 3.9.6: Universal Software Radio Peripheral (USRP) Hardware Driver
