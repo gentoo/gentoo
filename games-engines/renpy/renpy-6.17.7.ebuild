@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/fribidi
 	dev-python/pygame[X,${PYTHON_USEDEP}]
 	>=dev-lang/python-exec-0.3[${PYTHON_USEDEP}]
-	media-libs/glew
+	media-libs/glew:0
 	media-libs/libpng:0
 	media-libs/libsdl[X,video]
 	media-libs/freetype:2
