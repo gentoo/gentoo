@@ -51,7 +51,7 @@ RDEPEND+=" ${RDEPEND}
 	)
 	vim-syntax? ( >=app-vim/puppet-syntax-3.0.1 )
 	>=app-portage/eix-0.18.0"
-PDEPEND="emacs? ( app-emacs/puppet-mode )"
+PDEPEND="emacs? ( >=app-emacs/puppet-mode-0.3-r1 )"
 
 pkg_setup() {
 	enewgroup puppet

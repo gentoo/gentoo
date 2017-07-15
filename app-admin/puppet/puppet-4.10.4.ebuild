@@ -7,7 +7,7 @@ USE_RUBY="ruby21 ruby22 ruby23"
 
 #RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
-inherit elisp-common xemacs-elisp-common eutils user ruby-fakegem versionator
+inherit xemacs-elisp-common eutils user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -43,7 +43,6 @@ ruby_add_rdepend "
 # 	)"
 
 DEPEND+=" ${DEPEND}
-	emacs? ( virtual/emacs )
 	xemacs? ( app-editors/xemacs )"
 RDEPEND+=" ${RDEPEND}
 	rrdtool? ( >=net-analyzer/rrdtool-1.2.23[ruby] )
@@ -53,6 +52,7 @@ RDEPEND+=" ${RDEPEND}
 	)
 	vim-syntax? ( >=app-vim/puppet-syntax-3.0.1 )
 	>=app-portage/eix-0.18.0"
+PDEPEND="emacs? ( >=app-emacs/puppet-mode-0.3-r1 )"
 
 SITEFILE="50${PN}-mode-gentoo.el"
 
@@ -102,10 +102,6 @@ all_ruby_prepare() {
 }
 
 all_ruby_compile() {
-	if use emacs ; then
-		elisp-compile ext/emacs/puppet-mode.el
-	fi
-
 	if use xemacs ; then
 		# Create a separate version for xemacs to be able to install
 		# emacs and xemacs in parallel.
@@ -150,11 +146,6 @@ all_ruby_install() {
 	fowners -R :puppet /etc/puppetlabs
 	fowners -R :puppet /var/lib/puppet
 
-	if use emacs ; then
-		elisp-install ${PN} ext/emacs/puppet-mode.el*
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	fi
-
 	if use xemacs ; then
 		xemacs-elisp-install ${PN} ext/xemacs/puppet-mode.el*
 		xemacs-elisp-site-file-install "${FILESDIR}/${SITEFILE}"
@@ -190,11 +181,9 @@ pkg_postinst() {
 		elog
 	fi
 
-	use emacs && elisp-site-regen
 	use xemacs && xemacs-elisp-site-regen
 }
 
 pkg_postrm() {
-	use emacs && elisp-site-regen
 	use xemacs && xemacs-elisp-site-regen
 }
