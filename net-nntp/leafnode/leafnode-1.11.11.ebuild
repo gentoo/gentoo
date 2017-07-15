@@ -1,7 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+inherit epatch
 
 DESCRIPTION="A USENET software package designed for small sites"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -15,6 +17,10 @@ DEPEND=">=dev-libs/libpcre-3.9"
 RDEPEND="${DEPEND}
 	virtual/inetd"
 DOCS=( CREDITS ChangeLog FAQ.txt FAQ.pdf INSTALL NEWS README-daemontools UNINSTALL-daemontools README README-MAINTAINER README-FQDN )
+
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-${PV}-checkpeerlocal_ipv6_fix.patch"
+}
 
 src_configure() {
 	econf \
