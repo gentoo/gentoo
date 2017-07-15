@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.x
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="+introspection +modemmanager zeroconf"
 
 RDEPEND="
