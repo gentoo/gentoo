@@ -4591,7 +4591,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.2.7 2.2.7-r1 2.2.7-r2 2.3.3-r1 2.3.4 2.3.4-r1 2.3.4-r2 2.4.1 2.4.1-r1 2.4.1-r2: An object-oriented scripting language
+dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.2.7 2.2.7-r1 2.2.7-r2 2.3.3-r1 2.3.4 2.3.4-r1 2.3.4-r2 2.4.1 2.4.1-r1 2.4.1-r2 2.4.1-r3: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1 2.12.2: The Scala Programming Language
@@ -19014,6 +19014,7 @@ x11-misc/xdo 0.5: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
+x11-misc/xembedsniproxy 5.10.3: A program to use legacy Xembed tray icons with SNI-only trays
 x11-misc/xfe 1.42: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xfractint 20.04_p12: A fractal generator
