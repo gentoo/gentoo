@@ -1,0 +1,18 @@
+Make --disable-trace a build-time failure instead of link-time one.
+
+Reported-by: Toralf Förster
+Bug: https://bugs.gentoo.org/624570
+diff --git a/include/trace.h b/include/trace.h
+index f05dd0e..398e939 100644
+--- a/include/trace.h
++++ b/include/trace.h
+@@ -29,2 +29,4 @@
+ 
++#ifdef PR_USE_TRACE
++
+ #define PR_TRACE_DEFAULT_CHANNEL	"DEFAULT"
+@@ -64,2 +66,4 @@ int pr_trace_vmsg(const char *, int, const char *, va_list);
+ 
++#endif /* PR_USE_TRACE */
++
+ #endif /* PR_TRACE_H */
