@@ -4424,8 +4424,6 @@ media-sound/asunder:opus - Support for creation of Opus files
 media-sound/audacious:chardet - Try to handle non-UTF8 chinese/japanese/korean ID3 tags
 media-sound/audacious:gtk3 - Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)
 media-sound/audacity:id3tag - Enables ID3 tagging with id3tag library
-media-sound/audacity:libsamplerate - Uses media-libs/libsamplerate as audio resampling library: Higher quality than the included resampler but lower quality and much slower than libsoxr.
-media-sound/audacity:libsoxr - Uses media-libs/soxr as audio resampling library: Higher quality and much faster than both the included resampler and libsamplerate.
 media-sound/audacity:lv2 - Add support for Ladspa V2
 media-sound/audacity:midi - Enables MIDI support
 media-sound/audacity:portmixer - Enable the internal portmixer feature
