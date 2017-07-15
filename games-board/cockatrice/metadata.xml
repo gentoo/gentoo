@@ -17,6 +17,8 @@
 	</upstream>
 	<use>
 		<flag name="server">Compile server support</flag>
+		<flag name="oracle">Build with oracle</flag>
+		<flag name="client">Build with client</flag>
 	</use>
 	<longdescription lang="en">
 		Cockatrice is an open-source multiplatform software for playing card
