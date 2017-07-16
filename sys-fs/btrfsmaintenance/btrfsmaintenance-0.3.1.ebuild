@@ -18,13 +18,10 @@ RDEPEND="${DEPEND}
 	sys-fs/btrfs-progs
 	virtual/cron"
 
-src_configure() {
-	sed -i -e 's#/etc/sysconfig/btrfsmaintenance#/etc/conf.d/btrfsmaintenance#' *.sh || die
-}
-
 src_install() {
 	dodoc README.md CONTRIBUTING.md btrfsmaintenance.changes
-	newconfd sysconfig.btrfsmaintenance btrfsmaintenance
+	insinto /etc/default
+	newins sysconfig.btrfsmaintenance btrfsmaintenance
 	insinto /usr/share/btrfsmaintenance
 	doins btrfsmaintenance-functions
 	exeinto /usr/share/btrfsmaintenance
@@ -36,7 +33,7 @@ src_install() {
 pkg_postinst() {
 	elog "Installing default btrfsmaintenance scripts"
 	"${EROOT%/}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh || die
-	elog "Now edit cron periods and mount points in /etc/conf.d/btrfsmaintenance"
+	elog "Now edit cron periods and mount points in /etc/default/btrfsmaintenance"
 	elog "then run /usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh to"
 	elog "update cron symlinks"
 }
