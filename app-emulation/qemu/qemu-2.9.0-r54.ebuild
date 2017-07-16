@@ -137,7 +137,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
-	snappy? ( app-arch/snappy[static-libs(+)] )
+	snappy? ( app-arch/snappy:=[static-libs(+)] )
 	spice? (
 		>=app-emulation/spice-protocol-0.12.3
 		>=app-emulation/spice-0.12.0[static-libs(+)]
