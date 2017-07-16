@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Jul 2017)
+# Causes build to fail with ffmpeg-3, #602786
+www-plugins/gnash vaapi
+
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # system-renpy cannot be really used and it's going to be treecleaned, bug #587872
 games-misc/katawa-shoujo system-renpy
