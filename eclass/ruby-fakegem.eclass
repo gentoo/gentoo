@@ -505,7 +505,7 @@ all_fakegem_install() {
 			[[ -d ${dir} ]] || continue
 
 			pushd ${dir} &>/dev/null || die
-			dohtml -r * || die "failed to install documentation"
+			dodoc -r * || die "failed to install documentation"
 			popd &>/dev/null || die
 		done
 	fi
