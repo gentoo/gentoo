@@ -44,6 +44,12 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# Fails to build with USE="X vorbis -alsa -debug -mad -pulseaudio
+	# -sox", bug #604288
+	"${FILESDIR}"/${P}-gtkcombotext.patch
+)
+
 src_configure() {
 	gnome2_src_configure \
 		$(use_enable alsa) \
