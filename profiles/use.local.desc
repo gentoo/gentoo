@@ -3961,7 +3961,6 @@ media-gfx/gthumb:json - Compile code that uses the libjson-glib library
 media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-gfx/gthumb:webp - Enable support for webp image format
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift-C
-media-gfx/imagemagick:autotrace - Use media-gfx/autotrace to convert bitmaps into vector graphics
 media-gfx/imagemagick:corefonts - Use media-fonts/corefonts which is required by some commands
 media-gfx/imagemagick:fpx - Enable media-libs/libfpx support
 media-gfx/imagemagick:hdri - enable High Dynamic Range Images formats
