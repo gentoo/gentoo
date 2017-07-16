@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (16 Jul 2017)
+# Header package for removed x11-libs/libXevie. No dependencies. Removal in a
+# month (#615314)
+x11-proto/evieext
+
 # Thomas Deutschmann <whissi@gentoo.org> (16 Jul 2017)
 # Discontinued project with multiple vulnerabilities, removal in a month (#620802)
 media-gfx/autotrace
