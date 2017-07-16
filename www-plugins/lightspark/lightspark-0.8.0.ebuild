@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils git-r3 nsplugins toolchain-funcs
+inherit cmake-utils nsplugins vcs-snapshot toolchain-funcs
 
 DESCRIPTION="High performance flash player"
 HOMEPAGE="http://lightspark.github.io/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/lightspark/lightspark"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 curl ffmpeg gles libav nsplugin ppapi profile rtmp"
 
 # Note: code-wise llvm-4.0 is fine but due to CMake bug it can't work:
