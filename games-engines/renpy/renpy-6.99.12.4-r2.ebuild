@@ -22,7 +22,6 @@ RDEPEND="
 	dev-libs/fribidi
 	~dev-python/pygame_sdl2-${PV}[${PYTHON_USEDEP}]
 	>=dev-lang/python-exec-0.3[${PYTHON_USEDEP}]
-	!<games-engines/renpy-6.99.12-r2
 	media-libs/glew:0
 	media-libs/libpng:0
 	media-libs/libsdl2[video]
