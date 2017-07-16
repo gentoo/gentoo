@@ -19,7 +19,7 @@ IUSE="alsa cups doc debug deprecated extra-tools experimental +obex +readline se
 # change in the future, hence, this REQUIRED_USE constraint could be dropped
 # again in the future.
 REQUIRED_USE="
-	extra-tools? ( readline )
+	extra-tools? ( deprecated readline )
 	test? ( ${PYTHON_REQUIRED_USE} )
 	test-programs? ( ${PYTHON_REQUIRED_USE} )
 	user-session? ( systemd )
@@ -187,10 +187,8 @@ multilib_src_install() {
 			# http://permalink.gmane.org/gmane.linux.bluez.kernel/53115
 			# http://comments.gmane.org/gmane.linux.bluez.kernel/54564
 			# gatttool is only built with readline, bug #530776
-			if use readline; then
-				dobin attrib/gatttool
-				dobin tools/btmgmt
-			fi
+			dobin attrib/gatttool
+			dobin tools/btmgmt
 		fi
 
 		# Unittests are not that useful once installed, so make them optional
