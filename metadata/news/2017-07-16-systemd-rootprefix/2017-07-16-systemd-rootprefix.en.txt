@@ -1,0 +1,34 @@
+Title: systemd rootprefix migration
+Author: Mike Gilbert <floppym@gentoo.org>
+Posted: 2017-07-16
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: >=sys-apps/systemd-234
+
+Starting with the 234 release, Gentoo's sys-apps/systemd package will
+be built with rootprefix=/. This means most of the included programs
+and system units will be installed under /lib/systemd instead of
+/usr/lib/systemd.
+
+This change brings Gentoo into alignment with most other distros which
+still maintain a distinction between boot-critical programs in /, and
+less critical programs in /usr. This also means that users with a
+separate /usr filesystem will have an easier time booting if their
+initramfs should become corrupt or fail.
+
+Symlinks are provided for /usr/lib/systemd/systemd and
+/usr/lib/systemd/systemd-shutdown to avoid breaking bootloader configs
+and to allow the system to be shutdown/rebooted without issue. These
+symlinks will likely be removed in the 235 release, so please update
+your boot configuration to reference init=/lib/systemd/systemd.
+
+This change will be mostly transparent to typical users. You may notice
+that system units move from /usr/lib/systemd/system to
+/lib/systemd/system as you upgrade/re-install packages; this is normal.
+Units will function properly from both locations.
+
+After upgrading, please run systemctl daemon-reexec or reboot your
+system to ensure that the new version is executed. Also make sure to
+regenerate your initramfs if it includes a copy of systemd (dracut).
+
+If you encounter a problem, please report a bug.
