@@ -51,6 +51,9 @@ all_ruby_prepare() {
 		-e "/rake/ s/, '< 11'//" \
 		-e "/rack-cache/ s/, '< 1.3'//" \
 		-e "/simple_oauth/ s/, '< 0.3'//" Gemfile || die
+
+	# Avoid unneeded dependency on git
+	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_test() {
