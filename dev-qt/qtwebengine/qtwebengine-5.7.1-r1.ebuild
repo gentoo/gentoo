@@ -14,7 +14,7 @@ fi
 IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
 
 RDEPEND="
-	app-arch/snappy
+	app-arch/snappy:=
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss

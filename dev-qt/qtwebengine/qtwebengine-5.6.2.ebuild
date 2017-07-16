@@ -14,7 +14,7 @@ fi
 IUSE="bindist geolocation pax_kernel +system-ffmpeg +system-icu widgets"
 
 RDEPEND="
-	app-arch/snappy
+	app-arch/snappy:=
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
