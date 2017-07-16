@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.0/nrpe-3.2.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=19c184d49e96ebfa44bdb93e36a35b29
+_md5_=b44cb3ba17ea03e97ba2b1c3643dcd28

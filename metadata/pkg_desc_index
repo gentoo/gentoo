@@ -3198,7 +3198,7 @@ dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/cli 0_pre20160306: A small package for building command line apps in Go
 dev-go/coveraggregator 0_pre20170216: Cover profile aggregator for golang
-dev-go/delve 0.11.0_alpha 0.12.2: A source-level debugger for the Go programming language
+dev-go/delve 0.12.2 1.0.0_rc1: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20160420: ed25519 for Go
 dev-go/glide 0.12.3: Vendor Package Managment for Golang
 dev-go/go-bindata 0_pre20151023: A small utility which generates Go code from any file
@@ -14392,7 +14392,7 @@ net-analyzer/nmap 7.40 7.40-r1 7.50 9999: A utility for network discovery and se
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.04 9999: Monitor and do event correlation
-net-analyzer/nrpe 2.15-r3 3.2.0: Nagios Remote Plugin Executor
+net-analyzer/nrpe 2.15-r3 3.2.0-r1: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r3: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
