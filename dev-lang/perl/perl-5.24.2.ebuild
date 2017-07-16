@@ -9,7 +9,7 @@ PATCH_VER=1
 CROSS_VER=1.1.4
 PATCH_BASE="perl-5.24.2-patches-${PATCH_VER}"
 
-PERL_OLDVERSEN="5.24.0"
+PERL_OLDVERSEN="5.24.1 5.24.0"
 DIST_AUTHOR=SHAY
 
 SHORT_PV="${PV%.*}"
@@ -63,7 +63,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.310.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.69.1_rc          zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.273.0.100_rc     json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.701.142.400_rc  corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.707.152.400_rc  corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.250.300_rc  perldoc
 	src_remove_dual      perl-core/Test-Harness       3.360.100_rc  prove
