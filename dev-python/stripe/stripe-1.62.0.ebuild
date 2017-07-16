@@ -13,10 +13,18 @@ SRC_URI="mirror://pypi/s/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	dev-python/requests"
+RDEPEND=">=dev-python/requests-0.8.8"
+DEPEND="${RDEPEND}
+	test? (
+		dev-python/unittest2
+		dev-python/mock
+		dev-python/pycurl
+		)"
 
 DOCS="LONG_DESCRIPTION.rst"
+
+python_test() {
+	${PYTHON:-python} -Wall setup.py test || die
+}
