@@ -1431,7 +1431,7 @@ app-eselect/eselect-postgresql 1.2.1 2.0 2.1: Utility to select the default Post
 app-eselect/eselect-python 20160516 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.21 0.22 0.23: Manages Ruby on Rails symlinks
-app-eselect/eselect-renpy 0.4 0.6: Manages renpy symlink
+app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
 app-eselect/eselect-ruby 20131227 20151229 20161226: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -11048,7 +11048,7 @@ games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom
 games-engines/openmw 0.41.0: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0 1.0.0-r1 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
-games-engines/renpy 6.17.7 6.99.6 6.99.12.4 6.99.12.4-r1: Visual novel engine written in python
+games-engines/renpy 6.17.7 6.99.12.4-r1 6.99.12.4-r2: Visual novel engine written in python
 games-engines/residualvm 0.2.1 0.2.1-r1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 1.8.0 1.8.1-r1 1.9.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.8.0 1.8.0-r1: utilities for the SCUMM game engine
