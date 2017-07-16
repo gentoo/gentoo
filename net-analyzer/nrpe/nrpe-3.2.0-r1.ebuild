@@ -49,7 +49,7 @@ src_install() {
 	fperms 0640 /etc/nagios/nrpe.cfg
 
 	newinitd "${FILESDIR}/nrpe-${PV}.init" nrpe
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_newunit "startup/default-service" "${PN}.service"
 
 	insinto /etc/xinetd.d/
 	newins "${FILESDIR}/nrpe.xinetd.2" nrpe
