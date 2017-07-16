@@ -1,20 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit multiprocessing pax-utils python-any-r1 qt5-build
+inherit pax-utils python-any-r1 qt5-build
 
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="amd64 x86"
 fi
 
-IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
+IUSE="bindist geolocation pax_kernel +system-ffmpeg +system-icu widgets"
 
 RDEPEND="
-	app-arch/snappy
+	app-arch/snappy:=
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
@@ -24,10 +24,12 @@ RDEPEND="
 	~dev-qt/qtnetwork-${PV}
 	~dev-qt/qtwebchannel-${PV}[qml]
 	dev-libs/expat
+	dev-libs/jsoncpp:=
 	dev-libs/libevent:=
 	dev-libs/libxml2
 	dev-libs/libxslt
-	dev-libs/protobuf:=
+	media-libs/alsa-lib
+	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -36,13 +38,12 @@ RDEPEND="
 	media-libs/libwebp:=
 	media-libs/mesa
 	media-libs/opus
+	media-libs/speex
 	net-libs/libsrtp:0=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/libcap
 	sys-libs/zlib[minizip]
-	virtual/jpeg:0
-	virtual/libudev
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -55,9 +56,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
-	alsa? ( media-libs/alsa-lib )
 	geolocation? ( ~dev-qt/qtpositioning-${PV} )
-	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
 	system-icu? ( dev-libs/icu:= )
 	widgets? ( ~dev-qt/qtwidgets-${PV} )
@@ -70,14 +69,6 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	pax_kernel? ( sys-apps/elfix )
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-5.7.1-fix-audio-detection.patch"
-	"${FILESDIR}/${PN}-5.7.0-fix-system-ffmpeg.patch"
-	"${FILESDIR}/${PN}-5.7.0-icu58.patch"
-	"${FILESDIR}/${PN}-5.7.0-undef-madv_free.patch"
-	"${FILESDIR}/${PN}-5.7.1-gcc-7.patch"
-)
 
 src_prepare() {
 	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-paxmark-mksnapshot.patch" )
@@ -98,12 +89,9 @@ src_prepare() {
 
 src_configure() {
 	export NINJA_PATH=/usr/bin/ninja
-	export NINJAFLAGS="${NINJAFLAGS:--j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}"
 
 	local myqmakeargs=(
-		$(usex alsa 'WEBENGINE_CONFIG+=use_alsa' '')
 		$(usex bindist '' 'WEBENGINE_CONFIG+=use_proprietary_codecs')
-		$(usex pulseaudio 'WEBENGINE_CONFIG+=use_pulseaudio' '')
 		$(usex system-ffmpeg 'WEBENGINE_CONFIG+=use_system_ffmpeg' '')
 		$(usex system-icu 'WEBENGINE_CONFIG+=use_system_icu' '')
 	)
@@ -112,11 +100,6 @@ src_configure() {
 
 src_install() {
 	qt5-build_src_install
-
-	# bug 601472
-	if [[ ! -f ${D%/}${QT5_LIBDIR}/libQt5WebEngine.so ]]; then
-		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
-	fi
 
 	pax-mark m "${D%/}${QT5_LIBEXECDIR}"/QtWebEngineProcess
 }
