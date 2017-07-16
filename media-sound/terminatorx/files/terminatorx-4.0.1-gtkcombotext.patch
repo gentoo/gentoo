@@ -1,0 +1,17 @@
+Description: Fix build failure on kfreebsd
+Author: Sebastian Ramacher <sramacher@debian.org>
+Bug-Debian: https://bugs.debian.org/741623
+Forwarded: yes
+Last-Update: 2014-04-25
+
+--- a/src/tX_dialog.cc
++++ b/src/tX_dialog.cc
+@@ -244,7 +244,7 @@ void append_alsa_device_list(GtkComboBox
+ 	}
+ }
+ #else
+-void append_alsa_device_list(GtkComboBoxText *combo) {
++void append_alsa_device_list(GtkComboBoxText *combo, char* current) {
+ }
+ #endif
+ 

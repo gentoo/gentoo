@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-DATE=20150812
+DATE=20160521
 JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-ant-2 multilib systemd user
@@ -59,9 +59,11 @@ EANT_EXTRA_ARGS="-Dsuppress.gjs=true -Dlib.contrib.present=true -Dlib.bouncycast
 
 S="${WORKDIR}/fred-build0${PV#*p}"
 
+RESTRICT="test" # they're broken in the last release.
+
 MY_PATCHES=(
 	"${FILESDIR}"/0.7.5_p1321-ext.patch
-	"${FILESDIR}/${PV}-remove-git.patch"
+	"${FILESDIR}/"0.7.5_p1475-remove-git.patch
 )
 
 pkg_setup() {
@@ -78,7 +80,6 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${P}.zip seednodes-${DATE}.fref.bz2
-	mv "${WORKDIR}"/freenet-fred-* "${S}" || die
 }
 
 java_prepare() {
