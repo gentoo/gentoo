@@ -1,0 +1,14 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+DESCRIPTION="Manage default renpy version"
+MAINTAINER="bircoph@gentoo.org"
+VERSION="0.7"
+
+SYMLINK_PATH="@BINDIR@/renpy"
+SYMLINK_TARGETS=( renpy-6.99 )
+SYMLINK_DESCRIPTION='default renpy'
+SYMLINK_CRUCIAL=1
+
+inherit bin-symlink
+
