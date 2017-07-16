@@ -25,6 +25,7 @@ RDEPEND="xml? ( dev-libs/xerces-c )
 	!minimal? ( !!app-misc/pwsafe )
 	yubikey? ( sys-auth/ykpers )"
 DEPEND="${RDEPEND}
+	app-arch/zip
 	sys-devel/gettext
 	test? ( dev-cpp/gtest )"
 
