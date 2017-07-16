@@ -1291,7 +1291,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.3.3 2.4.0 2.4.1 2.5.0 2.6.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 17.03.1 17.03.2 17.06.0 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 17.03.1 17.03.2 17.06.0 17.06.0-r1 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.13.0 1.14.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0 0.12.0: Machine management for a container-centric world
@@ -2917,7 +2917,7 @@ dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database ind
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.8 3.0.17 3.1.9 3.2.0 3.2.1: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.8 3.0.17 3.1.9 3.1.10 3.2.1 3.2.3: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13 1.00.41: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -4936,7 +4936,7 @@ dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access libra
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10 2.11: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
-dev-libs/libsodium 1.0.11 1.0.12: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.11 1.0.12 1.0.13: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libsolv 0.6.22: Library for solving packages and reading repositories
 dev-libs/libspnav 0.2.2: The libspnav provides a replacement of the magellan library with cleaner and more orthogonal API
 dev-libs/libspt 1.1-r2 1.1-r3: Library for handling root privilege
@@ -5111,7 +5111,7 @@ dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an 
 dev-libs/vc 0.7.4 1.2.0 1.3.0 1.3.1 1.3.2: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.12.0 1.13.0 9999: Wayland protocol libraries
-dev-libs/wayland-protocols 1.7 1.8 9999: Wayland protocol files
+dev-libs/wayland-protocols 1.7 1.8 1.9 9999: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 1.12.0 9999: Wayland reference compositor
 dev-libs/wlc 0.0.8-r1 0.0.9 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
@@ -8305,7 +8305,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyhcl 0.2.3 0.3.5: HCL configuration parser for python
+dev-python/pyhcl 0.2.3 0.3.5 0.3.6: HCL configuration parser for python
 dev-python/pyicu 1.9.5 1.9.7: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
@@ -12825,7 +12825,7 @@ media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pa
 media-gfx/scour 0.35 0.35-r1: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2: Open source photo manager for GNOME
+media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2 0.27.0: Open source photo manager for GNOME
 media-gfx/simple-scan 3.22.0.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0-r1: Slideshow Maker In Linux Environement
@@ -15565,7 +15565,7 @@ net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
-net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2 0.7.5_p1478: An encrypted network without censorship
+net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10: go-ipfs is the main implementation of IPFS.
@@ -17550,7 +17550,7 @@ sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager an
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
-sys-cluster/zetcd 0.0.2: A ZooKeeper personality for etcd
+sys-cluster/zetcd 0.0.2 0.0.3: A ZooKeeper personality for etcd
 sys-cluster/zookeeper-bin 3.4.10: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeeper
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r3 9999: Used to create autoconfiguration files
