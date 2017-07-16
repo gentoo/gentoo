@@ -15,7 +15,7 @@ LICENSE="|| ( feh GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="spell aspell timezone translator shorturl nls figlet
-	fortune cal host toilet"
+	fortune cal host sqlite toilet"
 ILINGUAS="zh_CN zh_TW ru nl de fi fr it ja"
 RUBY_S="${PN}-${GITHUB_COMMIT}"
 
@@ -31,12 +31,16 @@ RDEPEND+="
 		!aspell? ( app-text/hunspell )
 	)
 	figlet? ( app-misc/figlet )
+	sqlite? ( dev-ruby/sqlite3 )
 	toilet? ( app-misc/toilet )
 	fortune? ( games-misc/fortune-mod )
 	cal? ( || ( sys-apps/util-linux sys-freebsd/freebsd-ubin ) )
 	host? ( net-dns/bind-tools )"
 
 ruby_add_bdepend "
+	test? (
+		dev-ruby/sqlite3
+	)
 	nls? (
 		>=dev-ruby/ruby-gettext-2
 		dev-ruby/rake
