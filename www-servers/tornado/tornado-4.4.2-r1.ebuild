@@ -20,7 +20,7 @@ IUSE="doc examples test"
 CDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
-	dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7' 'python3_4')
 	|| (
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		(	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
