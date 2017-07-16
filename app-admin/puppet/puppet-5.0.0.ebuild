@@ -9,6 +9,8 @@ USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
+RUBY_FAKEGEM_TASK_DOC="doc:all"
+
 inherit eutils user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
@@ -35,6 +37,7 @@ ruby_add_rdepend "
 	dev-ruby/hocon"
 
 ruby_add_bdepend "
+	doc? ( dev-ruby/yard )
 	test? (
 		dev-ruby/mocha
 		dev-ruby/rack
