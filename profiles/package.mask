@@ -442,11 +442,6 @@ net-voip/homer
 # ffmpeg-3 neither with latest imagemagick (#575988). Removal in a month.
 media-sound/gejengel
 
-# Andreas Sturmlechner <asturm@gentoo.org> (15 Jun 2017)
-# Last release 16.12.3, dropped upstream, never worked properly.
-# Masked for removal in 30 days.
-kde-apps/pim-storage-service-manager
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
