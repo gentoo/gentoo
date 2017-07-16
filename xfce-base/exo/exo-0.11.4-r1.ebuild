@@ -30,6 +30,9 @@ DEPEND="${RDEPEND}
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+	# installed by www-client/vivaldi, xfce4 upstream already removed
+	# it per https://bugzilla.xfce.org/show_bug.cgi?id=13712
+	rm "${ED%/}"/usr/share/xfce4/helpers/vivaldi.desktop || die
 }
 
 pkg_postinst() {
