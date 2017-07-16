@@ -428,11 +428,6 @@ app-emulation/vmware-tools
 www-plugins/gnash
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
-# Not compatible with ffmpeg-3 (#591946), neither builds without ffmpeg
-# support (#607492) and NPAPI plugins are dying. Removal in a month.
-www-plugins/lightspark
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
 # Not compatible with ffmpeg-3 (#589806) and needs vulnerable qtwebkit:4
 # (#620740). Removal in a month.
 net-voip/homer
