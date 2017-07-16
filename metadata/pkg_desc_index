@@ -9089,7 +9089,7 @@ dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 1.9.0 9999: Tools for updating dia
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.14.0-r1 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.5.46 1.5.47 1.5.48 9999: Provides a means to change node parameters at any time without having to restart the node
-dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
+dev-ros/eigen_conversions 1.11.7 1.11.8 1.11.9 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.8.1 9999: Standardized interface for processing data as a sequence of filters
@@ -9140,7 +9140,7 @@ dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.12.7 1.12.8 1.12.9 1.12.10 1.12.11 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
-dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
+dev-ros/kdl_conversions 1.11.7 1.11.8 1.11.9 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.12.10 9999: Constructs a KDL tree from an XML robot representation in URDF
 dev-ros/kdl_parser_py 1.12.10 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
@@ -9176,7 +9176,7 @@ dev-ros/nodelet_tutorial_math 0.1.8 0.1.10 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 1.11.14 1.11.15 9999: OpenCV applications for ROS
+dev-ros/opencv_apps 1.11.14 1.11.15 1.12.0 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.7-r1 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
@@ -9322,19 +9322,19 @@ dev-ros/test_rosmaster 1.12.7 1.13.0 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.13.0 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.12.7 1.13.0 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.13.0 9999: Unit tests for rospy
-dev-ros/test_tf2 0.5.12-r1 0.5.13 0.5.14 0.5.15 9999: TF2 unit tests
-dev-ros/tf 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
-dev-ros/tf2 0.5.15 9999: The second generation Transform Library in ROS
-dev-ros/tf2_bullet 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 bullet support
-dev-ros/tf2_eigen 0.5.13 0.5.14 0.5.15 9999: TF2 eigen support
-dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: The second generation Transform Library in ROS
-dev-ros/tf2_kdl 0.5.15 9999: KDL binding for tf2
-dev-ros/tf2_msgs 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 messages
-dev-ros/tf2_py 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 python bindings
-dev-ros/tf2_ros 0.5.13-r1 0.5.14 0.5.15 9999: ROS bindings for the tf2 library, for both Python and C++
-dev-ros/tf2_sensor_msgs 0.5.15 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
-dev-ros/tf2_tools 0.5.12 0.5.13 0.5.14 0.5.15 9999: TF2 tools
-dev-ros/tf_conversions 1.11.7 1.11.8 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
+dev-ros/test_tf2 0.5.12-r1 0.5.13 0.5.14 0.5.15 0.5.16 9999: TF2 unit tests
+dev-ros/tf 1.11.8 1.11.9 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
+dev-ros/tf2 0.5.15 0.5.16 9999: The second generation Transform Library in ROS
+dev-ros/tf2_bullet 0.5.12 0.5.13 0.5.14 0.5.15 0.5.16 9999: TF2 bullet support
+dev-ros/tf2_eigen 0.5.13 0.5.14 0.5.15 0.5.16 9999: TF2 eigen support
+dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 0.5.14 0.5.15 0.5.16 9999: The second generation Transform Library in ROS
+dev-ros/tf2_kdl 0.5.15 0.5.16 9999: KDL binding for tf2
+dev-ros/tf2_msgs 0.5.12 0.5.13 0.5.14 0.5.15 0.5.16 9999: TF2 messages
+dev-ros/tf2_py 0.5.12 0.5.13 0.5.14 0.5.15 0.5.16 9999: TF2 python bindings
+dev-ros/tf2_ros 0.5.13-r1 0.5.14 0.5.15 0.5.16 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_sensor_msgs 0.5.15 0.5.16 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_tools 0.5.12 0.5.13 0.5.14 0.5.15 0.5.16 9999: TF2 tools
+dev-ros/tf_conversions 1.11.7 1.11.8 1.11.9 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
 dev-ros/theora_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.13.0 9999: Tools for directing, throttling and selecting ROS topics
@@ -13261,7 +13261,7 @@ media-libs/waffle 1.5.2 9999: Library that allows selection of GL API and of win
 media-libs/webrtc-audio-processing 0.1-r1 0.2 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20160712 0.0.20170701 9999: A free library for encoding X264/AVC streams
-media-libs/x265 2.2 2.3 2.4 9999: Library for encoding video streams into the H.265/HEVC format
+media-libs/x265 2.2 2.3 2.4 2.5 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.6-r2 1.2.8 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.5 2.5.1 9999: Scaling, colorspace conversion, and dithering library
@@ -15859,8 +15859,8 @@ ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout 
 ros-meta/executive_smach 2.0.0 2.0.1 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 9999: Geographic information metapackage
-ros-meta/geometry 1.11.7 1.11.8 9999: Common geometric calculations
-ros-meta/geometry_experimental 0.5.13 0.5.14 0.5.15 9999: The second generation Transform Library in ros
+ros-meta/geometry 1.11.7 1.11.8 1.11.9 9999: Common geometric calculations
+ros-meta/geometry_experimental 0.5.13 0.5.14 0.5.15 0.5.16 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 9999: hector_mapping and related packages
@@ -17501,7 +17501,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for par
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kubectl 1.6.6 1.7.0: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.6.6 1.7.0 1.7.1: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
