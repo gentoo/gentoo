@@ -83,8 +83,8 @@ python_install_all() {
 	fi
 
 	if use doc; then
-		insinto html
-		doins -r doc
+		insinto "/usr/share/doc/${PF}/html"
+		doins -r doc/*
 	fi
 	newman "${FILESDIR}/${PN}.1" "${P}.1"
 }
