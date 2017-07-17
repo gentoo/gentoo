@@ -13989,7 +13989,7 @@ media-sound/vmpk 0.6.2a: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
 media-sound/volumeicon 0.4.6 0.5.0 0.5.1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
-media-sound/vorbis-tools 1.4.0-r2: tools for using the Ogg Vorbis sound file format
+media-sound/vorbis-tools 1.4.0-r2 1.4.0-r3: tools for using the Ogg Vorbis sound file format
 media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorbis files
 media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/waheela 0.3: Amarok Fullscreen Player
