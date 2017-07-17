@@ -16450,7 +16450,7 @@ sci-libs/lapack-reference 3.2.1-r4 3.6.0 3.7.0: Reference implementation of LAPA
 sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3-r2: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
-sci-libs/libaec 0.3.2 1.0.0: Adaptive Entropy Coding library
+sci-libs/libaec 0.3.2 1.0.0 1.0.1: Adaptive Entropy Coding library
 sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
 sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
 sci-libs/libccp4 6.4.6: The CCP4 C and F77 subroutine library
@@ -16688,7 +16688,7 @@ sci-physics/bullet 2.83.4 2.83.5 2.85 2.86: Continuous Collision Detection and P
 sci-physics/cernlib 2006-r5 2006-r6: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
 sci-physics/clhep 2.1.4.1 2.1.4.2 2.2.0.1 2.2.0.5 2.3.1.0 2.3.3.1: High Energy Physics C++ library
-sci-physics/espresso 3.3.0 3.3.1 4.0_pre20170228 9999: Extensible Simulation Package for Research on Soft matter
+sci-physics/espresso 4.0_pre20170228 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/espresso++ 1.9.4 9999: A Modern Multiscale Simulation Package for Soft Matter Systems
 sci-physics/fastjet 3.0.3-r1 3.0.6-r1: Fast implementation of several recombination jet algorithms
 sci-physics/geant 3.21.14-r4 4.9.6_p02-r1 4.10.00 4.10.00_p01 4.10.01 4.10.01_p02 4.10.02 4.10.03: Toolkit for simulation of passage of particles through matter
