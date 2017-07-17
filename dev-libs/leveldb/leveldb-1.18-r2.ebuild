@@ -16,7 +16,7 @@ IUSE="+snappy static-libs +tcmalloc kernel_FreeBSD"
 
 DEPEND="tcmalloc? ( dev-util/google-perftools )
 	snappy? (
-		app-arch/snappy
+		app-arch/snappy:=
 		static-libs? ( app-arch/snappy[static-libs] )
 	)"
 RDEPEND="${DEPEND}"
