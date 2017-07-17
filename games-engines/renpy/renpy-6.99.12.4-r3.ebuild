@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-multiple-abi.patch
 	"${FILESDIR}"/${P}-compat-window.patch #601200
 	"${FILESDIR}"/${P}-compat-style.patch
+	"${FILESDIR}"/${P}-compat-infinite-loop.patch
 )
 
 python_prepare_all() {
