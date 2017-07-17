@@ -39,7 +39,7 @@ src_compile() {
 	emake -C src spidermonkey/js/src
 	sed -e '/CC = gcc/d' \
 		-i src/spidermonkey/js/src/config/Linux_All.mk || die
-	emake -C src
+	emake -j1 -C src
 	use python && python_foreach_impl emake -C src pymod
 }
 
