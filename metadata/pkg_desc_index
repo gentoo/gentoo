@@ -4755,7 +4755,7 @@ dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Stora
 dev-libs/json-c 0.12: A JSON implementation in C
 dev-libs/json-glib 1.2.8: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.8.0 1.8.1: C++ JSON reader and writer
-dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
+dev-libs/jthread 1.3.1 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5 1.0.5-r1: A C library that implements a dynamic array
 dev-libs/kasync 0.1.1 0.2.0: C++ library for controlling asynchronous tasks
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
@@ -4986,7 +4986,7 @@ dev-libs/locked_sstream 0.0.5: tiny C++ library which wraps std::stringstream in
 dev-libs/log4cplus 1.1.3_rc7 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.0 1.1: Library of C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
-dev-libs/log4sh 1.2.5-r1 1.4.2: A flexible logging framework for shell scripts
+dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging framework
 dev-libs/ltxml 1.2.5 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
@@ -12081,7 +12081,7 @@ kde-frameworks/kcodecs 5.34.0 5.36.0: Framework for manipulating strings using v
 kde-frameworks/kcompletion 5.34.0 5.36.0: Framework for common completion tasks such as filename or URL completion
 kde-frameworks/kconfig 5.34.0 5.36.0: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.34.0 5.36.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.34.0 5.34.0-r1 5.36.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcoreaddons 5.34.0-r1 5.36.0: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.34.0 5.36.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.34.0 5.36.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.34.0 5.34.0-r1 5.36.0: Framework providing integration of QML and KDE work spaces
@@ -12367,7 +12367,7 @@ mail-mta/msmtp 1.6.6: An SMTP client and SMTP plugin for mail user agents such a
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4 1.06-r5: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.2_p1 6.0.2_p1-r1 6.0.2_p1-r2: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.1.2-r2 3.1.6 3.2.2 3.3_pre20170613: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.1.2-r2 3.1.6 3.2.2 3.3_pre20170716: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
@@ -15110,7 +15110,7 @@ net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing m
 net-mail/signify 1.14: A (semi-)random e-mail signature rotator
 net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SMTP
 net-mail/spamcup 1.09: This script does the same you would do when you report spam with your browser in Spamcop.net
-net-mail/swaks 20130209.0 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
+net-mail/swaks 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.14 1.4.15: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5: An extensible POP3 server with vmail-sql/MySQL support
