@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4"
 HOMEPAGE="http://ogmrip.sourceforge.net/"
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 		sys-devel/gettext )"
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/CFLAGS/s:-Werror::' \
 		configure || die
