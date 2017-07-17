@@ -40,7 +40,7 @@ esac
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 
-inherit ninja-utils toolchain-funcs
+inherit ninja-utils python-utils-r1 toolchain-funcs
 
 fi
 
@@ -147,6 +147,9 @@ meson_src_configure() {
 		CXX=$(tc-getBUILD_CXX)
 		STRIP=$(tc-getBUILD_STRIP)
 	fi
+
+	# https://bugs.gentoo.org/625396
+	python_export_utf8_locale
 
 	# Append additional arguments from ebuild
 	mesonargs+=("${emesonargs[@]}")
