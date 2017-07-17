@@ -1,14 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PLOCALES="fr ru"
 inherit cmake-utils l10n multilib
 
 DESCRIPTION="Graphical front-end for cuneiform and tesseract OCR tools"
-HOMEPAGE="http://symmetrica.net/cuneiform-linux/yagf-en.html"
-SRC_URI="http://symmetrica.net/cuneiform-linux/${P}.tar.gz"
+HOMEPAGE="http://sourceforge.net/projects/yagf-ocr/"
+SRC_URI="mirror://sourceforge/project/yagf-ocr/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -32,6 +32,8 @@ RDEPEND="${DEPEND}
 DOCS=( AUTHORS ChangeLog DESCRIPTION README )
 
 src_prepare() {
+	# uk translation generation is broken
+	rm src/translations/yagf_uk.ts || die
 	# respect CFLAGS and fix translations path
 	sed -i \
 		-e '/add_definitions(-Wall -g)/d' \
