@@ -69,6 +69,7 @@ dev-python/PyQt4 webkit
 dev-qt/designer:4 webkit
 dev-qt/qtdeclarative:4 webkit
 dev-python/pyside webkit
+kde-frameworks/kdelibs:4 webkit
 
 # Alexis Ballier <aballier@gentoo.org> (26 Jun 2017)
 # Needs gstreamer:0.10
