@@ -1379,12 +1379,12 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 2.0 2.1 2.2 2.3 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
-app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
+app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
+app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
 app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170614 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
@@ -8731,7 +8731,7 @@ dev-python/sparql-wrapper 1.7.6 1.8.0: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/spectral-cube 0.4.0: Manipulate astronomical data cubes with Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
-dev-python/sphinx 1.2.2-r1 1.2.3-r1 1.3.1-r2 1.3.5-r1 1.5.2 1.6.3 1.6.3-r1: Python documentation generator
+dev-python/sphinx 1.2.2-r1 1.2.3-r1 1.3.1-r2 1.3.5-r1 1.5.2 1.6.3-r1 1.6.3-r2: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-gallery 0.1.7-r1: Sphinx extension to automatically generate an examples gallery
