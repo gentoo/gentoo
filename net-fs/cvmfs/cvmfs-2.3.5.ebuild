@@ -82,21 +82,22 @@ src_prepare() {
 	sed -e "s:cvmfs-\${CernVM-FS_VERSION_STRING}:${PF}:" \
 		-i CMakeLists.txt || die
 
-	sed -e 's|${res_path}/conf.d|${res_path/modules.d|' \
-		-i cvmfs/cvmfs_server || die
-
-	# hack for bundled vjson sha2 and sha3
-	# vjson not worth unbundling, already upstream obsolete
-	# upstream replaced by gason with a new api
-	sed -e 's/g++/$(CXX)/g' \
-		-e 's/ar/$(AR)/' \
-		-e 's/ranlib/$(RANLIB)/' \
-		-i externals/vjson/src/Makefile || die
-	local d
-	for d in vjson sha2 sha3; do
-		mkdir -p "${WORKDIR}/${P}_build"/externals/build_${d}
-		cp -r externals/${d}/src/* \
-		   "${WORKDIR}/${P}_build"/externals/build_${d}/ || die
+	# hack for bundled packages
+	# not worth unbundling upstreams are flaky/dead
+	local pkg
+	for pkg in vjson sha2 sha3; do
+		# respect toolchain variables
+		sed -e 's/g++/$(CXX)/g' \
+			-e 's/gcc/$(CC)/g' \
+			-e 's/CFLAGS/MYCFLAGS/g' \
+			-e 's/-O2/$(CFLAGS)/g' \
+			-e 's/-O2/$(CXXFLAGS)/g' \
+			-e 's/ar/$(AR)/' \
+			-e 's/ranlib/$(RANLIB)/' \
+			-i externals/${pkg}/src/Makefile || die
+		mkdir -p "${WORKDIR}/${P}_build"/externals/build_${pkg}
+		cp -r externals/${pkg}/src/* \
+		   "${WORKDIR}/${P}_build"/externals/build_${pkg}/ || die
 	done
 }
 
