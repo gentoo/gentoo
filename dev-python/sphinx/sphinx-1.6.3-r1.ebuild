@@ -30,6 +30,7 @@ RDEPEND="
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
 	<dev-python/sphinx_rtd_theme-2.0[${PYTHON_USEDEP}]
+	dev-python/typing[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
@@ -51,7 +52,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
-		dev-python/typing[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
 		virtual/imagemagick-tools[jpeg,png,svg]
 		virtual/python-enum34[${PYTHON_USEDEP}]
