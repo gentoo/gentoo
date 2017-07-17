@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 linux-info multilib-minimal multiprocessing toolchain-funcs udev user versionator
+inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -16,7 +16,7 @@ else
 			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
 	fi
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -40,17 +40,15 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r7
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
-# Force new make >= -r4 to skip some parallel build issues
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=dev-util/meson-0.40.0
 	dev-util/ninja
-	dev-util/patchelf
+	>=dev-util/patchelf-0.9
 	>=sys-apps/coreutils-8.16
 	virtual/os-headers
 	virtual/pkgconfig
-	>=sys-devel/make-3.82-r4
 	>=sys-kernel/linux-headers-3.9
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
@@ -64,19 +62,6 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 
 S=${WORKDIR}/systemd-${PV}
 EGIT_CHECKOUT_DIR=${S}
-
-check_default_rules() {
-	# Make sure there are no sudden changes to upstream rules file
-	# (more for my own needs than anything else ...)
-	local udev_rules_md5=c6ee9def75c5c082bf083a7248991935
-	MD5=$(md5sum < "${S}"/rules/50-udev-default.rules)
-	MD5=${MD5/  -/}
-	if [[ ${MD5} != ${udev_rules_md5} ]]; then
-		eerror "50-udev-default.rules has been updated, please validate!"
-		eerror "md5sum: ${MD5}"
-		die "50-udev-default.rules has been updated, please validate!"
-	fi
-}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -102,7 +87,7 @@ pkg_setup() {
 src_prepare() {
 	if ! [[ ${PV} = 9999* ]]; then
 		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 30 ]]; then
+		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 27 ]]; then
 			eerror "The line count for secure_getenv() failed, see bug #443030"
 			die
 		fi
@@ -125,10 +110,6 @@ src_prepare() {
 	# apply user patches
 	eapply_user
 
-	if ! [[ ${PV} = 9999* ]]; then
-		check_default_rules
-	fi
-
 	if ! use elibc_glibc; then #443030
 		echo '#define secure_getenv(x) NULL' >> config.h.in
 		sed -i -e '/error.*secure_getenv/s:.*:#define secure_getenv(x) NULL:' src/shared/missing.h || die
@@ -144,36 +125,21 @@ meson_multilib_native_use() {
 }
 
 multilib_src_configure() {
-	local myconf=(
-		--buildtype=plain
-		--libdir="$(get_libdir)"
-		--localstatedir="${EPREFIX}/var"
-		--prefix="${EPREFIX}/usr"
-		--sysconfdir="${EPREFIX}/etc"
+	local emesonargs=(
 		-Dacl=$(meson_multilib_native_use acl)
 		-Defi=false
 		-Dkmod=$(meson_multilib_native_use kmod)
 		-Dselinux=$(meson_multilib_native_use selinux)
+		-Dlink-udev-shared=false
 		-Dsplit-usr=true
 	)
-	set -- meson "${myconf[@]}" "${S}"
-	echo "$@"
-	"$@" || die
+	meson_src_configure
 }
 
 src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 	multilib-minimal_src_configure
-}
-
-eninja() {
-	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
-	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
-	echo "$@"
-	"$@" || die
 }
 
 multilib_src_compile() {
@@ -201,7 +167,7 @@ multilib_src_compile() {
 			man/udevadm.8
 		)
 	fi
-	eninja "${targets[@]}" || die
+	eninja "${targets[@]}"
 }
 
 # meson uses an private python script for this
@@ -260,6 +226,7 @@ multilib_src_install_all() {
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
 	doins "${T}"/40-gentoo.rules
+	doins "${S}"/rules/*.rules
 
 	dobashcomp shell-completion/bash/udevadm
 
