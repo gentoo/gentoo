@@ -123,12 +123,12 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed phpdbg )
 	cli? ( ^^ ( readline libedit ) )
-	gd? ( zlib )
 	truetype? ( gd )
 	webp? ( gd )
 	cjk? ( gd )
 	exif? ( gd )
 	xpm? ( gd )
+	gd? ( zlib )
 	simplexml? ( xml )
 	soap? ( xml )
 	wddx? ( xml )
