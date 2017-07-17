@@ -17703,6 +17703,7 @@ sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.7 9999: Encrypted FUSE filesystem that conceals metadata
+sys-fs/cryptmount 5.2.2: A utility for management and user-mode mounting of encrypted filesystems
 sys-fs/cryptsetup 1.7.4 1.7.5: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
@@ -19540,7 +19541,7 @@ xfce-extra/thunar-shares-plugin 0.2.0_p20101105: Thunar plugin to share files us
 xfce-extra/thunar-vcs-plugin 0.1.4 0.1.5: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.8.1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.1.31-r1 0.1.32 0.1.92.1: A thumbnail service for Thunar
+xfce-extra/tumbler 0.1.31-r1 0.1.32 0.2.0: A thumbnail service for Thunar
 xfce-extra/xfce-theme-manager 0.3.6: An alternative theme manager for The Xfce Desktop Environment
 xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.0.5 1.1.0: A battery monitor panel plugin for the Xfce desktop environment
