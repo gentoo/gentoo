@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils gnome2-utils
 
@@ -15,25 +15,30 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
+	>=dev-db/sqlite-3.17:3
+	dev-libs/glib:2
+	media-libs/libcanberra
+	x11-libs/cairo
 	x11-libs/gtk+:2
 	x11-libs/libnotify
-	media-libs/libcanberra
-	virtual/libusb:1
-	dev-libs/dbus-glib
+	x11-libs/pango
 "
 
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="
+	${RDEPEND}
+	virtual/libgudev
+	doc? ( app-doc/doxygen )
+"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.10.0-doc.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.10.0-doc.patch
+)
 
 src_configure() {
 	mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr
 		-DDOCDIR=share/doc/${PF}
-		$(cmake-utils_use_with doc DOC)
+		-DWITH_DOC="$(usex doc)"
 	)
 	cmake-utils_src_configure
 }
