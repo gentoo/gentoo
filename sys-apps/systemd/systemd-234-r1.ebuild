@@ -151,6 +151,7 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
+		"${FILESDIR}"/234-0001-path-lookup-look-for-generators-in-usr-lib-systemd-s.patch
 	)
 
 	if ! use vanilla; then
@@ -435,6 +436,11 @@ pkg_postinst() {
 	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
 		ewarn "You should replace the resolv.conf symlink:"
 		ewarn "ln -snf ${ROOTPREFIX%/}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
+	fi
+
+	if [[ -e "${EROOT%/}"/usr/lib/systemd/system-generators ]]; then
+		ewarn "Please rebuild any packages which install system generators."
+		ewarn "  emerge --oneshot --usepkg=n /usr/lib/systemd/system-generators"
 	fi
 }
 
