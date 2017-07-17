@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Fast lightweight tabbed filemanager"
-HOMEPAGE="http://pcmanfm.sourceforge.net/"
+HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
 SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
