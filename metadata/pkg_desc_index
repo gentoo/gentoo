@@ -16444,6 +16444,7 @@ sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.1
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/jmol-acme 1.0: Portions of the Acme collection required for jMol
+sci-libs/kim-api 1.8.2: Application Programming Interface for atomistic simulations
 sci-libs/klu 1.2.1: Sparse LU factorization for circuit simulation
 sci-libs/lapack-reference 3.2.1-r4 3.6.0 3.7.0: Reference implementation of LAPACK
 sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
