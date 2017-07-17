@@ -436,6 +436,11 @@ pkg_postinst() {
 		ewarn "You should replace the resolv.conf symlink:"
 		ewarn "ln -snf ${ROOTPREFIX%/}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
+
+	if [[ -e "${EROOT%/}"/usr/lib/systemd/system-generators ]]; then
+		ewarn "Please rebuild any packages which install system generators."
+		ewarn "  emerge --oneshot --usepkg=n /usr/lib/systemd/system-generators"
+	fi
 }
 
 pkg_prerm() {
