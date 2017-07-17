@@ -15,7 +15,6 @@
 		<flag name="input_devices_roccat_skeltr">Enable support for Skeltr keyboard.</flag>
 		<flag name="input_devices_roccat_sova">Enable support for Sova keyboard.</flag>
 		<flag name="input_devices_roccat_suora">Enable support for Suora keyboard.</flag>
-		<flag name="lua">Build support for Lua scripting for RyosMKPro ripple effects</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">roccat</remote-id>
