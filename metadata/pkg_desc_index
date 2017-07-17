@@ -1556,7 +1556,7 @@ app-i18n/man-pages-ja 20130215 20131015: A collection of manual pages translated
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
 app-i18n/man-pages-pl 0_pre20070628-r2 0.6: A collection of Polish translations of Linux manual pages
 app-i18n/man-pages-ro 0.2: A somewhat comprehensive collection of Romanian Linux man pages
-app-i18n/man-pages-ru 3.81.2230.2080.20160117 4.08.2329.2269.20170309 4.08.2329.2329.20170422: A collection of Russian translations of Linux manual pages
+app-i18n/man-pages-ru 4.08.2329.2329.20170422: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.5: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mecab-skkserv 0.03: mecab-skkserv is a Kana-Kanji conversion server using MeCab
 app-i18n/mozc 1.10.1390.102-r1 1.13.1651.102 2.16.2037.102: The Mozc engine for IBus Framework
@@ -1748,7 +1748,7 @@ app-misc/colordiff 1.0.16 1.0.18: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r1 1.0.5-r2: An ISO 3166 country code finder
 app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
-app-misc/crunch 3.4 3.5 3.6: A wordlist generator
+app-misc/crunch 3.6: A wordlist generator
 app-misc/cstream 3.0.0 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
@@ -11717,43 +11717,43 @@ gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other app
 gnome-extra/zeitgeist-explorer 0.2-r1 0.2-r2: Monitor and inspect Zeitgeist's log at a low level - developer tool
 gnome-extra/zenity 3.22.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
-gnustep-apps/addresses 0.4.7 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
+gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r3: Affiche allows people to 'stick' notes
-gnustep-apps/batmon 0.7 0.8: displays the status of your laptop battery
+gnustep-apps/batmon 0.8: displays the status of your laptop battery
 gnustep-apps/cdplayer 0.6.0: Small CD Audio Player for GNUstep
-gnustep-apps/cenon 3.9.5 3.9.6 4.0.2 4.0.2-r1: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
+gnustep-apps/cenon 4.0.2-r1: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
 gnustep-apps/clipbook 0.6.0.8.3-r1: A clipboard for GNUstep that can hold things for later copy and paste
 gnustep-apps/cynthiune 1.0.0: Free software and romantic music player for GNUstep
 gnustep-apps/displaycalibrator 0.7: Frontend to xgamma
 gnustep-apps/easydiff 0.4.0: GNUstep app that lets you easily see the differences between two text files
-gnustep-apps/fisicalab 0.3.0 0.3.2 0.3.4 0.3.5: educational application to solve physics problems
+gnustep-apps/fisicalab 0.3.5: educational application to solve physics problems
 gnustep-apps/ftp 0.5: FTP client for GNUstep
-gnustep-apps/gemas 0.3 0.4: a simple code editor for GNUstep
-gnustep-apps/gmines 0.1-r2 0.2: The well-known minesweeper game
-gnustep-apps/gnumail 1.2.0 1.2.2: A fully featured mail application for GNUstep
-gnustep-apps/gorm 1.2.16 1.2.18 1.2.20 1.2.22 1.2.23: A clone of the NeXTstep Interface Builder application for GNUstep
-gnustep-apps/graphos 0.5 0.6: vector drawing application centered around bezier paths
+gnustep-apps/gemas 0.4: a simple code editor for GNUstep
+gnustep-apps/gmines 0.2: The well-known minesweeper game
+gnustep-apps/gnumail 1.2.2: A fully featured mail application for GNUstep
+gnustep-apps/gorm 1.2.23: A clone of the NeXTstep Interface Builder application for GNUstep
+gnustep-apps/graphos 0.6: vector drawing application centered around bezier paths
 gnustep-apps/gshisen 1.3.0: The first GNUstep game, similar to Mahjongg
-gnustep-apps/gspdf 0.4 0.5: Postscript and Pdf Viewer using GhostScript
-gnustep-apps/gworkspace 0.9.1 0.9.2 0.9.3 0.9.4: A workspace manager for GNUstep
+gnustep-apps/gspdf 0.5: Postscript and Pdf Viewer using GhostScript
+gnustep-apps/gworkspace 0.9.4: A workspace manager for GNUstep
 gnustep-apps/lapispuzzle 1.2: a Tetris-like game where each player is effected by the others game play
 gnustep-apps/laternamagica 0.4: an image viewer and slideshow application
 gnustep-apps/mpdcon 1.5.1: GNUstep client for the Music Player Daemon
-gnustep-apps/pictureframe 1.0.0 1.1.2 1.1.3: digital picture frame software
+gnustep-apps/pictureframe 1.1.3: digital picture frame software
 gnustep-apps/pikopixel 1.0_beta7 1.0_beta8: a free application for drawing & editing pixel-art images
-gnustep-apps/preferences 1.3.0_pre20061204-r1 1.3.0_pre20100523: Preferences is the GNUstep program with which you define your own personal user experience
-gnustep-apps/preview 0.8.5-r1 0.9: Simple image viewer
+gnustep-apps/preferences 1.3.0_pre20100523: GNUstep program to define your own personal user experience
+gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
-gnustep-apps/projectcenter 0.6.1 0.6.2: An IDE for GNUstep
+gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
 gnustep-apps/remotedesk 0.1: GNUstep remote windows access tool
-gnustep-apps/simpleagenda 0.42.2 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 3.2.6a 3.2.8 3.2.9: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
+gnustep-apps/sogo 3.2.9: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/sudoku 0.7: Sudoku generator for GNUstep
-gnustep-apps/systempreferences 1.0.2 1.1.0 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
+gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
-gnustep-apps/terminal 0.9.7 0.9.8: A terminal emulator for GNUstep
+gnustep-apps/terminal 0.9.8: A terminal emulator for GNUstep
 gnustep-apps/textedit 0.95_pre20100427 0.95_pre20100427-r1: A text editor with font, color, and style capabilities for GNUstep
-gnustep-apps/zipper 1.3 1.4 1.5: Zipper is a tool for inspecting and extracting compressed archives
+gnustep-apps/zipper 1.5: Zipper is a tool for inspecting and extracting compressed archives
 gnustep-base/gnustep-back-art 0.25.0 0.25.1: libart_lgpl back-end component for the GNUstep GUI Library
 gnustep-base/gnustep-back-cairo 0.25.0 0.25.1: Cairo back-end component for the GNUstep GUI Library
 gnustep-base/gnustep-back-xlib 0.25.0 0.25.1: Default X11 back-end component for the GNUstep GUI Library
@@ -11764,18 +11764,18 @@ gnustep-base/gnustep-updater 0.2 0.3: Helper tool to upgrade Gentoo GNUstep inst
 gnustep-base/libobjc2 1.8 1.8.1: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r1: A tool to create .nfont packages for use with gnustep-back-art
 gnustep-libs/camerakit 0.0.1.20041011-r1: A simple wrapper to libgphoto2 for GNUstep
-gnustep-libs/cenonlibrary 3.9.4 4.0.0: Default library required to run Cenon
+gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
 gnustep-libs/dbuskit 0.1.1 0.1.1-r1: framework that interfaces Objective-C applications with the D-Bus IPC service
 gnustep-libs/gsldap 0.0.1_pre20070219: GNUstep LDAP library for open ldap C libraries
-gnustep-libs/highlighterkit 0.1.2 0.1.3: Syntax highlighter framework
+gnustep-libs/highlighterkit 0.1.3: Syntax highlighter framework
 gnustep-libs/iconkit 0.4.1: framework used to create icons using different elements
 gnustep-libs/netclasses 1.06-r1 1.1.0: An asynchronous networking library for GNUstep
-gnustep-libs/pantomime 1.2.0 1.2.2: A set of Objective-C classes that model a mail system
-gnustep-libs/performance 0.4.0 0.5.0: Help improve the performance of GNUstep applications
+gnustep-libs/pantomime 1.2.2: A set of Objective-C classes that model a mail system
+gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/prefsmodule 1.1.1_pre20061204-r1: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-libs/renaissance 0.9.0: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 3.2.6a 3.2.8 3.2.9: A set of frameworks forming a complete Web application server environment
-gnustep-libs/sqlclient 1.7.0 1.8.1: GNUstep lightweight database abstraction layer
+gnustep-libs/sope 3.2.9: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sqlclient 1.8.1: GNUstep lightweight database abstraction layer
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jaf 1.1-r1: Virtual for JavaBeans Activation Framework (JAF)
