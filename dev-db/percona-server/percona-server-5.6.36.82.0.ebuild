@@ -28,7 +28,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( $(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]') )"
 RDEPEND="${COMMON_DEPEND}"
 
-REQUIRED_USE="tokudb? ( jemalloc ) tokudb-backup-plugin? ( tokudb )"
+REQUIRED_USE="tokudb-backup-plugin? ( tokudb ) tokudb? ( jemalloc !tcmalloc )"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 
