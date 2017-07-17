@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ManaPlus/ManaPlus.git"
 else
 	SRC_URI="http://download.evolonline.org/manaplus/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2+"
@@ -62,16 +62,17 @@ src_prepare() {
 }
 
 src_configure() {
-	CONFIG_SHELL=/bin/bash \
-	econf \
-		--localedir=/usr/share/locale \
-		--without-internalsdlgfx \
-		$(use_with mumble) \
-		$(use_enable nls) \
-		$(use_with opengl) \
-		--enable-libxml=$(usex pugixml pugixml libxml) \
-		$(use_with sdl2) \
+	local myeconfargs=(
+		--localedir=/usr/share/locale
+		--without-internalsdlgfx
+		$(use_with mumble)
+		$(use_enable nls)
+		$(use_with opengl)
+		--enable-libxml=$(usex pugixml pugixml libxml)
+		$(use_with sdl2)
 		$(use_enable test unittests)
+	)
+	CONFIG_SHELL=/bin/bash econf "${myeconfargs[@]}"
 }
 
 src_install() {
