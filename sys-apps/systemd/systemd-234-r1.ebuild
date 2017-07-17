@@ -151,6 +151,7 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
+		"${FILESDIR}"/234-0001-path-lookup-look-for-generators-in-usr-lib-systemd-s.patch
 	)
 
 	if ! use vanilla; then
