@@ -1007,10 +1007,6 @@ app-eselect/eselect-lua
 =dev-lang/lua-5.2.3-r1
 =dev-lang/lua-5.3.3
 
-# Sergey Popov <pinkbyte@gentoo.org> (20 Mar 2014)
-# Security mask of vulnerable versions, wrt bug #424167
-<net-nds/openldap-2.4.35
-
 # Mike Gilbert <floppym@gentoo.org> (04 Mar 2014)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
