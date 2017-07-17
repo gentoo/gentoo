@@ -33,6 +33,7 @@ all_ruby_prepare() {
 
 	# Avoid unneeded minitest-rg dependency.
 	sed -i -e '1igem "minitest", "~>5.5"' \
+		-e '/bundler/ s:^:#:' \
 		-e '/minitest\/rg/ s:^:#:' test/test_helper.rb || die
 }
 
