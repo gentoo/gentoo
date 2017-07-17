@@ -4837,7 +4837,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
-dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
+dev-libs/libgaminggear 0.13.0 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.6 1.7.7 1.7.8: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
@@ -17232,7 +17232,7 @@ sys-apps/restorecond 2.7_rc1 2.7_rc4 9999: Daemon to watch for creation and set 
 sys-apps/ripgrep 0.5.1 0.5.2: a command line search tool that combines usability with raw speed
 sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
-sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
+sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0 2.5.0.0 2.5.1.0: skarnet.org's small and secure supervision software suite
 sys-apps/s6-linux-init 0.0.1.4 0.1.0.0 0.2.0.0 0.3.0.0: Generates an init binary for s6-based init systems
