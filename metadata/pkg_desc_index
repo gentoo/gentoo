@@ -2507,7 +2507,7 @@ app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.4.2 1.5.0 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.26-r1 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8 0.4.8-r1 9999: An application for notetaking, sketching, and keeping a journal using a stylus
-app-text/yagf 0.9.2 0.9.3.2: Graphical front-end for cuneiform and tesseract OCR tools
+app-text/yagf 0.9.5: Graphical front-end for cuneiform and tesseract OCR tools
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
 app-text/yodl 3.08.01 3.08.02: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.2.9 0.3.7 9999: A highly customizable and functional document viewer
