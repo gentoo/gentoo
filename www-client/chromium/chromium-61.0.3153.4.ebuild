@@ -186,7 +186,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r10.patch"
+		"${FILESDIR}/${PN}-gn-bootstrap-r12.patch"
 	)
 
 	default
@@ -421,7 +421,7 @@ src_configure() {
 	# Never use bundled gold binary. Disable gold linker flags for now.
 	# Do not use bundled clang.
 	# Trying to use gold results in linker crash.
-	myconf_gn+=" use_gold=false use_sysroot=false linux_use_bundled_binutils=false"
+	myconf_gn+=" use_gold=false use_sysroot=false linux_use_bundled_binutils=false use_custom_libcxx=false"
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf_gn+=" proprietary_codecs=$(usex proprietary-codecs true false)"
