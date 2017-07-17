@@ -1,0 +1,57 @@
+From a63725a70ab6d5cbf419d1896007b49609ac5cfa Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Tue, 18 Jul 2017 11:06:05 +1200
+Subject: [PATCH] Add env db test controls
+
+---
+ Build.PL           | 10 +++++-----
+ t/DBTestHarness.pm | 11 ++++++-----
+ 2 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/Build.PL b/Build.PL
+index ecc402e..4d55f3a 100755
+--- a/Build.PL
++++ b/Build.PL
+@@ -97,11 +97,11 @@ sub biosql_conf {
+         or die "Error: could not write to config file '$config_file'\n";
+     
+     my %config = (driver     => $drivers[0],
+-                  host       => '127.0.0.1',
+-                  user       => 'root',
+-                  port       => 3306,
+-                  password   => '',
+-                  dbname     => 'bioseqdb',
++                  host       => $ENV{GENTOO_DB_TEST_HOST},
++                  user       => $ENV{GENTOO_DB_TEST_USER},
++                  port       => $ENV{GENTOO_DB_TEST_PORT},
++                  password   => $ENV{GENTOO_DB_TEST_PASSWORD},
++                  dbname     => $ENV{GENTOO_DB_TEST_DB},
+                   database   => 'biosql',
+                   schema_sql => '../biosql-schema/sql/biosqldb-mysql.sql');
+     
+diff --git a/t/DBTestHarness.pm b/t/DBTestHarness.pm
+index b660429..bd0b3b7 100755
+--- a/t/DBTestHarness.pm
++++ b/t/DBTestHarness.pm
+@@ -47,12 +47,13 @@ my $counter=0;
+ # Default settings as a hash
+ my $dflt = {
+     'driver'        => 'mysql',
+-    'host'          => 'localhost',
+-    'user'          => 'root',
+-    'port'          => undef,
+-    'password'      => '',
++    'host'          => $ENV{GENTOO_DB_HOST},
++    'user'          => $ENV{GENTOO_DB_TEST_USER},
++    'port'          => ( defined $ENV{GENTOO_DB_TEST_PORT} and length $ENV{GENTOO_DB_TEST_PORT} ) ?
++                       $ENV{GENTOO_DB_TEST_PORT} : undef,
++    'password'      => $ENV{GENTOO_DB_TEST_PASSWORD},
+     'schema_sql'    => ['../biosql-schema/sql/biosqldb-mysql.sql'],
+-    'database'      => 'biosql',
++    'database'      => $ENV{GENTOO_DB_TEST_DB},
+     'module'        => 'Bio::DB::BioSQL::DBAdaptor'
+     };
+ 
+-- 
+2.13.1
+
