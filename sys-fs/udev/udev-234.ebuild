@@ -41,7 +41,6 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 DEPEND="${COMMON_DEPEND}
-	app-admin/chrpath
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=dev-util/meson-0.40.0
@@ -170,16 +169,10 @@ multilib_src_compile() {
 	eninja "${targets[@]}"
 }
 
-# meson uses an private python script for this
-strip_rpath() {
-	chrpath -d "$@" || die
-}
-
 multilib_src_install() {
 	local libudev=$(readlink src/libudev/libudev.so.1)
 
 	into /
-	strip_rpath src/libudev/${libudev}
 	dolib.so src/libudev/{${libudev},libudev.so.1,libudev.so}
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
@@ -187,15 +180,12 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		into /
-		strip_rpath udevadm
 		dobin udevadm
 
 		exeinto /lib/systemd
-		strip_rpath systemd-udevd
 		doexe systemd-udevd
 
 		exeinto /lib/udev
-		strip_rpath src/udev/{ata_id,cdrom_id,collect,mtd_probe,scsi_id,v4l_id}
 		doexe src/udev/{ata_id,cdrom_id,collect,mtd_probe,scsi_id,v4l_id}
 
 		rm rules/99-systemd.rules || die
