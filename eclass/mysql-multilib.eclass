@@ -265,7 +265,7 @@ fi
 
 REQUIRED_USE="
 	${REQUIRED_USE} tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
-	 static? ( yassl )"
+	 static? ( yassl !openssl !libressl )"
 
 #
 # DEPENDENCIES:
