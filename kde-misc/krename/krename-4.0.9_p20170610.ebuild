@@ -11,7 +11,7 @@ HOMEPAGE="http://www.krename.net/"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="exif pdf taglib truetype"
 
 COMMON_DEPEND="
