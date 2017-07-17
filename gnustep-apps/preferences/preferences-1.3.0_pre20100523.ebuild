@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
@@ -6,7 +6,7 @@ inherit gnustep-2
 
 S=${WORKDIR}/${PN/p/P}
 
-DESCRIPTION="Preferences is the GNUstep program with which you define your own personal user experience"
+DESCRIPTION="GNUstep program to define your own personal user experience"
 HOMEPAGE="http://www.nongnu.org/backbone/apps.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
