@@ -27,8 +27,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_test() {
-	# bug: 619984
-	local myctestargs=( -j1 )
+	# bug: 625276
+	local myctestargs=( -E "(managertest|settingstest|activeconnectiontest)" )
 
 	kde5_src_test
 }
