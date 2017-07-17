@@ -5413,7 +5413,7 @@ dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing l
 dev-ml/typerep 0.9.0: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 0.9.0: Runtime types for OCaml (Extended)
 dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
-dev-ml/uchar 0.0.1: Uchar compatibility library
+dev-ml/uchar 0.0.1 0.0.2: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 2.0.1: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.6: OCaml module implementing 128 bits universally unique identifiers
@@ -14810,7 +14810,7 @@ net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.6 4.0.12: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.4-r1 1.7-r1 1.7.1 1.8 1.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
-net-irc/znc 1.4-r1 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
+net-irc/znc 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4 1.4-r2: Advanced, easy to use, asynchronous-capable DNS client library and utilities
