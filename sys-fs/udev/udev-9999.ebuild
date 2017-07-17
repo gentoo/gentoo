@@ -41,11 +41,11 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 DEPEND="${COMMON_DEPEND}
+	app-admin/chrpath
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=dev-util/meson-0.40.0
 	dev-util/ninja
-	>=dev-util/patchelf-0.9
 	>=sys-apps/coreutils-8.16
 	virtual/os-headers
 	virtual/pkgconfig
@@ -172,10 +172,7 @@ multilib_src_compile() {
 
 # meson uses an private python script for this
 strip_rpath() {
-	local x
-	for x; do
-		patchelf --remove-rpath "${x}" || die
-	done
+	chrpath -d "$@" || die
 }
 
 multilib_src_install() {

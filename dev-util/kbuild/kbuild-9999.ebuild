@@ -1,7 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 WANT_AUTOMAKE=1.9
 
@@ -20,14 +20,15 @@ DEPEND="sys-devel/gettext
 	virtual/yacc"
 RDEPEND=""
 
-S=${WORKDIR}/${MY_P/-src}
+S="${WORKDIR}/${MY_P/-src}"
 
 src_prepare() {
-		rm -rf "${S}/kBuild/bin"
+		default
+		rm -rf "${S}/kBuild/bin" || die
 
-		cd "${S}/src/kmk"
+		cd "${S}/src/kmk" || die
 		eautoreconf
-		cd "${S}/src/sed"
+		cd "${S}/src/sed" || die
 		eautoreconf
 }
 
