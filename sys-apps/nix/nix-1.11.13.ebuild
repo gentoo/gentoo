@@ -20,6 +20,7 @@ RDEPEND="
 	dev-db/sqlite
 	dev-libs/openssl:0=
 	net-misc/curl
+	sys-libs/libseccomp
 	sys-libs/zlib
 	gc? ( dev-libs/boehm-gc[cxx] )
 	doc? ( dev-libs/libxml2
@@ -43,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.6-per-user.patch
 	"${FILESDIR}"/${PN}-1.11.6-respect-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-1.11.6-respect-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-1.11.12-etc-fixes.patch
 )
 
 DISABLE_AUTOFORMATTING=yes
@@ -112,11 +114,15 @@ src_install() {
 	keepdir             /nix/var/nix/profiles/per-user
 	fperms 1777         /nix/var/nix/profiles/per-user
 
-	doenvd "${FILESDIR}"/60nix-remote-daemon
+	# setup directories nix-daemon: /etc/profile.d/nix-daemon.sh
+	keepdir             /nix/var/nix/gcroots/per-user
+	fperms 1777         /nix/var/nix/gcroots/per-user
+
 	newinitd "${FILESDIR}"/nix-daemon.initd nix-daemon
 
 	if ! use etc_profile; then
 		rm "${ED}"/etc/profile.d/nix.sh || die
+		rm "${ED}"/etc/profile.d/nix-daemon.sh || die
 	fi
 }
 
