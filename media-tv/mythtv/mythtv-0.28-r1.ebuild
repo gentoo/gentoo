@@ -159,6 +159,7 @@ src_prepare() {
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
 
 #	epatch "${FILESDIR}/libdir-27.patch"
+	epatch "${FILESDIR}/${PN}-gcc6.patch"
 
 	epatch_user
 }
