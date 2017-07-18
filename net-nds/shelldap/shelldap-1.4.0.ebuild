@@ -1,32 +1,34 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils perl-app
+GENTOO_DEPEND_ON_PERL=noslotop
+inherit eutils perl-module
 
 DESCRIPTION="A handy shell-like interface for browsing LDAP servers and editing their content"
-HOMEPAGE="http://projects.martini.nu/shelldap/"
-SRC_URI="http://code.martini.nu/shelldap/archive/v${PV}.tar.bz2 -> ${P}.tar.bz2"
+HOMEPAGE="https://bitbucket.org/mahlon/shelldap/"
+SRC_URI="https://bitbucket.org/mahlon/shelldap/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+IUSE="+readline sasl +ssl"
+
 DEPEND=""
 RDEPEND="dev-perl/Algorithm-Diff
+	sasl? ( dev-perl/Authen-SASL )
+	dev-perl/IO-Socket-SSL
 	dev-perl/perl-ldap
 	dev-perl/TermReadKey
-	dev-perl/Term-ReadLine-Gnu
+	readline? ( dev-perl/Term-ReadLine-Gnu )
 	dev-perl/Term-Shell
 	dev-perl/YAML-Syck
+	virtual/perl-Data-Dumper
+	virtual/perl-File-Temp
+	virtual/perl-Getopt-Long
 	virtual/perl-Digest-MD5"
-
-S="${WORKDIR}/${PN}-v${PV}"
-
-src_prepare() {
-	epatch_user
-}
 
 src_configure() { :; }
 
@@ -37,4 +39,5 @@ src_compile() {
 src_install() {
 	doman "${PN}.1"
 	dobin "${PN}"
+	dodoc USAGE
 }
