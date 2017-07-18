@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/37271/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+anthy"
 
 RDEPEND="dev-qt/qt3support:4
@@ -35,4 +35,10 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
+
+	insinto /etc/X11/xinit/xinput.d
+	sed \
+		-e "s:@EPREFIX@:${EPREFIX}:g" \
+		"${FILESDIR}"/xinput-${PN} > "${T}"/${PN}.conf
+	doins "${T}"/${PN}.conf
 }
