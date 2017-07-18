@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (18 Jul 2017)
+# Requires unavailable >=dev-lang/mujs-1.0.0, see Gentoo bug 621820.
+media-video/mpv javascript
+
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Jul 2017)
 # Causes build to fail with ffmpeg-3, #602786
 www-plugins/gnash vaapi
