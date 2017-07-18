@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
@@ -22,12 +22,12 @@ RDEPEND="${DEPEND}"
 
 DOCS="AUTHORS README*"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-underlinking.patch
+}
+
 src_configure() {
 	local myconf="target.path=/usr/$(get_libdir)/${P}"
 	use anthy || myconf="${myconf} no_anthy=1"
 	eqmake4 kimera.pro ${myconf}
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-underlinking.patch
 }
