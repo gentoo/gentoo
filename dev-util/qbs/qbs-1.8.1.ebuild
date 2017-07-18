@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit qmake-utils
 
 MY_P=${PN}-src-${PV}
 
-DESCRIPTION="Cross-platform build tool"
+DESCRIPTION="Modern build tool for software projects"
 HOMEPAGE="https://wiki.qt.io/Qbs"
 SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${MY_P}.tar.gz"
 
@@ -39,6 +39,10 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	default
 
+	# don't add /usr/include to INCLUDEPATH
+	# avoids a build failure in qt-creator with gcc-6 (bug 618424)
+	sed -i -e '/^INCLUDEPATH/ s:$${PWD}/\.\.::' src/lib/corelib/use_installed_corelib.pri || die
+
 	if ! use examples; then
 		sed -i -e '/INSTALLS +=/ s:examples::' static.pro || die
 	fi
@@ -53,12 +57,12 @@ src_prepare() {
 	sed -i \
 		-e 's/findArchiver("7z")/""/'		`# requires p7zip, fails` \
 		-e 's/findArchiver(binaryName,.*/"";/'	`# requires zip and jar` \
-		-e 's/p\.value("java\./true||&/'	`# requires jdk, fails, bug 585398` \
-		-e 's/!haveMakeNsis/true/'		`# requires nsis` \
-		-e 's/!haveWiX(profile)/true/'		`# requires wix` \
 		-e 's/p\.value("nodejs\./true||&/'	`# requires nodejs, bug 527652` \
 		-e 's/\(p\.value\|m_qbsStderr\.contains\)("typescript\./true||&/' `# requires nodejs and typescript` \
 		tests/auto/blackbox/tst_blackbox.cpp || die
+
+	# requires jdk, fails, bug 585398
+	sed -i -e '/blackbox-java\.pro/ d' tests/auto/auto.pro || die
 }
 
 src_configure() {
@@ -104,7 +108,7 @@ src_install() {
 	# install documentation
 	if use doc; then
 		emake docs
-		dodoc -r doc/html
+		dodoc -r doc/qbs/html
 		dodoc doc/qbs.qch
 		docompress -x /usr/share/doc/${PF}/qbs.qch
 	fi
