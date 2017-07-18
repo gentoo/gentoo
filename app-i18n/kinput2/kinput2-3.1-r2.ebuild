@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-headers.patch
 	"${FILESDIR}"/${PN}-ppc.patch
 	"${FILESDIR}"/${PN}-segfault.patch
+	"${FILESDIR}"/${PN}-wnn.patch
 )
 DOCS=( README NEWS doc/. )
 
