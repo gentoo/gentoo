@@ -778,7 +778,7 @@ app-i18n/ibus-unikey:gtk3 - Enable support for gtk+3
 app-i18n/imsettings:gconf - Enable GConf support
 app-i18n/imsettings:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/imsettings:xfconf - Enable integration in the Xfce desktop environment with xfce-base/xfconf
-app-i18n/kimera:anthy - Support for Anthy input method
+app-i18n/kimera:anthy - Enable support for app-i18n/anthy
 app-i18n/mozc:fcitx - Enable support for app-i18n/fcitx
 app-i18n/mozc:ibus - Enable support for app-i18n/ibus
 app-i18n/mozc:renderer - Enable native candidate window.
