@@ -91,18 +91,18 @@ COMMON_DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
-	samba? ( net-fs/samba[smbclient(+)] )
+	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	v4l? ( media-libs/libv4l )
 	vaapi? (
 		!libav? ( >=media-video/ffmpeg-3.3:0 )
 		libav? ( >=media-video/libav-13:0 )
-		>=x11-libs/libva-1.4.0[drm?,X?,wayland?]
+		x11-libs/libva[drm?,X?,wayland?]
 	)
 	vdpau? (
 		!libav? ( >=media-video/ffmpeg-3.3:0 )
 		libav? ( >=media-video/libav-13:0 )
-		>=x11-libs/libvdpau-0.2
+		x11-libs/libvdpau
 	)
 	wayland? (
 		>=dev-libs/wayland-1.6.0
