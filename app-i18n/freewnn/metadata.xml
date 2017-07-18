@@ -5,6 +5,9 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
+  <use>
+    <flag name="uum">Build uum</flag>
+  </use>
   <upstream>
     <remote-id type="sourceforge-jp">freewnn</remote-id>
   </upstream>
