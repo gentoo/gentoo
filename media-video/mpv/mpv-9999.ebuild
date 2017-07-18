@@ -28,9 +28,9 @@ DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
-	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
-	selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zlib
+	dvd +egl encode gbm +iconv jack javascript jpeg lcms +libass libav libcaca
+	libmpv +lua luajit openal +opengl oss pulseaudio raspberry-pi rubberband
+	samba sdl selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zlib
 	zsh-completion"
 
 REQUIRED_USE="
@@ -75,6 +75,7 @@ COMMON_DEPEND="
 		uchardet? ( app-i18n/uchardet )
 	)
 	jack? ( virtual/jack )
+	javascript? ( >=dev-lang/mujs-1.0.0 )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	libass? (
@@ -185,6 +186,7 @@ src_configure() {
 		$(use_enable samba libsmbclient)
 		$(use_enable lua)
 		$(usex luajit '--lua=luajit' '')
+		$(use_enable javascript)
 		$(use_enable libass)
 		$(use_enable libass libass-osd)
 		$(use_enable zlib)
