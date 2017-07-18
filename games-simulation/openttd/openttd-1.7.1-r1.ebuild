@@ -82,7 +82,7 @@ src_configure() {
 	# It's all built as C++, upstream uses CFLAGS internally.
 	CFLAGS="" ./configure \
 		--disable-strip \
-		--prefix-dir="${EPREFIX}/usr" \
+		--prefix-dir="${EPREFIX%/}/usr" \
 		--binary-dir="bin" \
 		--install-dir="${D}" \
 		--menu-group="Game;Simulation;" \
