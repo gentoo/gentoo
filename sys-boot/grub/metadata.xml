@@ -3,6 +3,8 @@
 <pkgmetadata>
 <maintainer restrict="&gt;=sys-boot/grub-2" type="person">
 	<email>floppym@gentoo.org</email>
+	<name>Mike Gilbert</name>
+	<description>GRUB2 only - do not assign bugs related to GRUB Legacy (0.97)</description>
 </maintainer>
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>
