@@ -407,12 +407,6 @@ www-apps/jekyll-paginate
 # Masked for removal in 30 days.
 dev-java/jdbc-jaybird
 
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2017)
-# No port to kf5 as nsplugin support is dropped everywhere.
-# No more kdelibs-4 based kparts in tree to feed it with.
-# Masked for removal in 30 days.
-www-plugins/kpartsplugin
-
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
 # People using VMware in Gentoo should switch to Gentoo's VMware overlay
