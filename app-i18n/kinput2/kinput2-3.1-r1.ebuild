@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
@@ -32,12 +32,15 @@ src_unpack() {
 	local mysed=""
 
 	unpack ${A}
-	epatch "${FILESDIR}/${PF}-gentoo.diff"
+	cd "${S}"
+	epatch "${FILESDIR}/${PN}-gentoo.patch"
+	epatch "${FILESDIR}/${PN}-ppc.patch"
+	epatch "${FILESDIR}/${PN}-segfault.patch"
 
 	if use freewnn; then
-		sed -i -e '/\/\* #define UseWnn/s:^:#define UseWnn\n:' "${S}/Kinput2.conf"
+		sed -i -e '/\/\* #define UseWnn/s:^:#define UseWnn\n:' Kinput2.conf
 	else
-		sed -i -e '/\/\* #define UseCanna/s:^:#define UseCanna\n:' "${S}/Kinput2.conf"
+		sed -i -e '/\/\* #define UseCanna/s:^:#define UseCanna\n:' Kinput2.conf
 	fi
 }
 

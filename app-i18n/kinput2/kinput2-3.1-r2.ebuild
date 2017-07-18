@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
@@ -30,7 +30,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-r1-gentoo.diff"
+	epatch "${FILESDIR}/${PN}-gentoo.patch"
+	epatch "${FILESDIR}/${PN}-ppc.patch"
+	epatch "${FILESDIR}/${PN}-segfault.patch"
 
 	if use freewnn; then
 		sed -i -e '/\/\* #define UseWnn/s:^:#define UseWnn\n:' Kinput2.conf || die

@@ -1,6 +1,5 @@
-diff -Naur kinput2-v3.1.orig/Kinput2.conf kinput2-v3.1/Kinput2.conf
---- kinput2-v3.1.orig/Kinput2.conf	2002-10-03 18:35:26.000000000 +0900
-+++ kinput2-v3.1/Kinput2.conf	2003-08-13 15:51:21.000000000 +0900
+--- a/Kinput2.conf
++++ b/Kinput2.conf
 @@ -17,8 +17,8 @@
  
  /* #define UseWnn */	/* define if you are going to use Wnn (v4, v6 or v7) */
@@ -17,7 +16,7 @@ diff -Naur kinput2-v3.1.orig/Kinput2.conf kinput2-v3.1/Kinput2.conf
   * are not installed in /usr/local/lib/wnn (which is the default).
   */
 -/* #define WnnLibDir /some/peculiar/directory/wnn */
-+#define WnnLibDir /usr/lib/wnn 
++#define WnnLibDir $(EPREFIX)/usr/lib/wnn 
  
  /* for convenience.. */
  #if defined(UseWnn6) && !defined(UseWnn)
@@ -26,7 +25,7 @@ diff -Naur kinput2-v3.1.orig/Kinput2.conf kinput2-v3.1/Kinput2.conf
   */
  XCOMM use installed header files
 -XCOMM WNNINCDIR = /usr/X11R6/include/wnn
-+WNNINCDIR = /usr/include/wnn
++WNNINCDIR = $(EPREFIX)/usr/include/wnn
  XCOMM use installed library
 -XCOMM WNNLIB = -lwnn
 +WNNLIB = -lwnn
@@ -51,7 +50,7 @@ diff -Naur kinput2-v3.1.orig/Kinput2.conf kinput2-v3.1/Kinput2.conf
 -XCOMM CANNAINSTDIR = /usr/local/canna
 -XCOMM CANNASRC = $(CANNAINSTDIR)/include
 -XCOMM CANNALIB = -lcanna16
-+CANNAINSTDIR = /usr
++CANNAINSTDIR = $(EPREFIX)/usr
 +CANNASRC = $(CANNAINSTDIR)/include
 +CANNALIB = -lcanna16
  
@@ -98,28 +97,3 @@ diff -Naur kinput2-v3.1.orig/Kinput2.conf kinput2-v3.1/Kinput2.conf
  
  
  /**
-diff -Naur kinput2-v3.1.orig/cmd/kinput2.c kinput2-v3.1/cmd/kinput2.c
---- kinput2-v3.1.orig/cmd/kinput2.c	2002-10-03 18:35:26.000000000 +0900
-+++ kinput2-v3.1/cmd/kinput2.c	2003-08-13 15:51:21.000000000 +0900
-@@ -644,3 +644,8 @@
-     return n;
- }
- #endif
-+
-+#if defined(linux) && defined(PPC)
-+/* avoid nusty gcc bug */
-+void _XtInherit() {}
-+#endif
-diff -Naur kinput2-v3.1.orig/lib/imlib/imconv.c kinput2-v3.1/lib/imlib/imconv.c
---- kinput2-v3.1.orig/lib/imlib/imconv.c	2002-10-03 18:35:30.000000000 +0900
-+++ kinput2-v3.1/lib/imlib/imconv.c	2003-08-13 15:55:54.000000000 +0900
-@@ -591,6 +591,9 @@
- 	}
-     }
-     IMFinishRequest(conn, offset);
-+    #ifdef STATUS_SYNC
-+	IMFlush(conn);
-+    #endif /* STATUS_SYNC */
- }
- 
- /*- preeditCaret: do actual preedit caret -*/
