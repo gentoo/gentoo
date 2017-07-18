@@ -1351,7 +1351,7 @@ app-emulation/skopeo 0.1.22: Command line utility foroperations on container ima
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.13.3-r1 0.13.3-r2 9999: SPICE server
-app-emulation/spice-protocol 0.12.12 9999: Headers defining the SPICE protocol
+app-emulation/spice-protocol 0.12.12 0.12.13 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1 8.0-r2: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
