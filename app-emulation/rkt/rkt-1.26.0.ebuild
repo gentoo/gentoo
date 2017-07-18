@@ -38,7 +38,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 # The rkt_stage1_kvm flag has been replaced by the rkt_stage1_kvm_lkvm and rkt_stage1_kvm_qemu flags
 IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src +actool systemd"
-REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src ) rkt_stage1_host? ( systemd ) !rkt_stage1_kvm"
+REQUIRED_USE="!systemd? ( !rkt_stage1_host ) || ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src ) !rkt_stage1_kvm"
 
 # Some tests fail.
 # rkt_stage1_src needs to copy /bin/mount, which requires root privileges during src_compile
