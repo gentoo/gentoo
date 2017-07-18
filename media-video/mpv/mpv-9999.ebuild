@@ -30,7 +30,8 @@ SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
-	selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zsh-completion"
+	selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zlib
+	zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -58,7 +59,6 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	!libav? ( >=media-video/ffmpeg-3.2.2:0=[encode?,threads,vaapi?,vdpau?] )
 	libav? ( >=media-video/libav-12:0=[encode?,threads,vaapi?,vdpau?] )
-	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0:= )
@@ -119,6 +119,7 @@ COMMON_DEPEND="
 		)
 		xv? ( x11-libs/libXv )
 	)
+	zlib? ( sys-libs/zlib )
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
@@ -186,6 +187,7 @@ src_configure() {
 		$(usex luajit '--lua=luajit' '')
 		$(use_enable libass)
 		$(use_enable libass libass-osd)
+		$(use_enable zlib)
 		$(use_enable encode encoding)
 		$(use_enable bluray libbluray)
 		$(use_enable dvd dvdread)
