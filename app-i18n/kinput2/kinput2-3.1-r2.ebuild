@@ -33,6 +33,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-headers.patch
 	"${FILESDIR}"/${PN}-ppc.patch
 	"${FILESDIR}"/${PN}-segfault.patch
 )
