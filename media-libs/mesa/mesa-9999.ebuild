@@ -119,7 +119,10 @@ RDEPEND="
 		video_cards_nouveau? ( !<=x11-libs/libva-vdpau-driver-0.7.4-r3 )
 	)
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
-	wayland? ( >=dev-libs/wayland-1.11.0:=[${MULTILIB_USEDEP}] )
+	wayland? (
+		 >=dev-libs/wayland-1.11.0:=[${MULTILIB_USEDEP}]
+	         >=dev-libs/wayland-protocols-1.8
+			)
 	xvmc? ( >=x11-libs/libXvMC-1.0.8:=[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
 "
