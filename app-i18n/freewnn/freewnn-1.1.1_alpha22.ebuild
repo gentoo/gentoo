@@ -16,7 +16,10 @@ IUSE="ipv6"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-parallel-build.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-parallel-build.patch
+	"${FILESDIR}"/${PN}-Wformat-security.patch
+)
 DOCS="ChangeLog* CONTRIBUTORS"
 
 src_prepare() {
