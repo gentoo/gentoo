@@ -16,6 +16,7 @@ HOMEPAGE="http://www.bioperl.org/"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="test"
 SRC_TEST="do"
 
 CDEPEND="

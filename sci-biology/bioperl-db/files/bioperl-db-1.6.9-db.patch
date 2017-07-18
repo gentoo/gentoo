@@ -1,57 +1,45 @@
-From a63725a70ab6d5cbf419d1896007b49609ac5cfa Mon Sep 17 00:00:00 2001
+From d689a1473977b0aa368590ba1f913521e4f466c7 Mon Sep 17 00:00:00 2001
 From: Kent Fredric <kentfredric@gmail.com>
-Date: Tue, 18 Jul 2017 11:06:05 +1200
-Subject: [PATCH] Add env db test controls
+Date: Tue, 18 Jul 2017 16:02:26 +1200
+Subject: [PATCH] Allow custom host/port configurations
 
 ---
- Build.PL           | 10 +++++-----
- t/DBTestHarness.pm | 11 ++++++-----
- 2 files changed, 11 insertions(+), 10 deletions(-)
+ Build.PL           | 4 ++--
+ t/DBTestHarness.pm | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/Build.PL b/Build.PL
-index ecc402e..4d55f3a 100755
+index ecc402e..a61190f 100755
 --- a/Build.PL
 +++ b/Build.PL
-@@ -97,11 +97,11 @@ sub biosql_conf {
+@@ -97,9 +97,9 @@ sub biosql_conf {
          or die "Error: could not write to config file '$config_file'\n";
      
      my %config = (driver     => $drivers[0],
 -                  host       => '127.0.0.1',
--                  user       => 'root',
++                  host       => $ENV{GENTOO_DB_HOSTNAME} || '127.0.0.1',
+                   user       => 'root',
 -                  port       => 3306,
--                  password   => '',
--                  dbname     => 'bioseqdb',
-+                  host       => $ENV{GENTOO_DB_TEST_HOST},
-+                  user       => $ENV{GENTOO_DB_TEST_USER},
-+                  port       => $ENV{GENTOO_DB_TEST_PORT},
-+                  password   => $ENV{GENTOO_DB_TEST_PASSWORD},
-+                  dbname     => $ENV{GENTOO_DB_TEST_DB},
++                  port       => $ENV{GENTOO_DB_PORT} || undef,
+                   password   => '',
+                   dbname     => 'bioseqdb',
                    database   => 'biosql',
-                   schema_sql => '../biosql-schema/sql/biosqldb-mysql.sql');
-     
 diff --git a/t/DBTestHarness.pm b/t/DBTestHarness.pm
-index b660429..bd0b3b7 100755
+index b660429..91e0c54 100755
 --- a/t/DBTestHarness.pm
 +++ b/t/DBTestHarness.pm
-@@ -47,12 +47,13 @@ my $counter=0;
+@@ -47,9 +47,9 @@ my $counter=0;
  # Default settings as a hash
  my $dflt = {
      'driver'        => 'mysql',
 -    'host'          => 'localhost',
--    'user'          => 'root',
++    'host'          => $ENV{GENTOO_DB_HOST} || 'localhost',
+     'user'          => 'root',
 -    'port'          => undef,
--    'password'      => '',
-+    'host'          => $ENV{GENTOO_DB_HOST},
-+    'user'          => $ENV{GENTOO_DB_TEST_USER},
-+    'port'          => ( defined $ENV{GENTOO_DB_TEST_PORT} and length $ENV{GENTOO_DB_TEST_PORT} ) ?
-+                       $ENV{GENTOO_DB_TEST_PORT} : undef,
-+    'password'      => $ENV{GENTOO_DB_TEST_PASSWORD},
++    'port'          => $ENV{GENTOO_DB_PORT} || undef,
+     'password'      => '',
      'schema_sql'    => ['../biosql-schema/sql/biosqldb-mysql.sql'],
--    'database'      => 'biosql',
-+    'database'      => $ENV{GENTOO_DB_TEST_DB},
-     'module'        => 'Bio::DB::BioSQL::DBAdaptor'
-     };
- 
+     'database'      => 'biosql',
 -- 
 2.13.1
 
