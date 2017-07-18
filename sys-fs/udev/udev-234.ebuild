@@ -16,7 +16,7 @@ else
 			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ia64 ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
