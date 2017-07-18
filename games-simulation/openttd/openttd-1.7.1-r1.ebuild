@@ -82,7 +82,7 @@ src_configure() {
 	# It's all built as C++, upstream uses CFLAGS internally.
 	CFLAGS="" ./configure \
 		--disable-strip \
-		--prefix-dir="${EPREFIX}/usr" \
+		--prefix-dir="${EPREFIX%/}/usr" \
 		--binary-dir="bin" \
 		--install-dir="${D}" \
 		--menu-group="Game;Simulation;" \
@@ -101,7 +101,7 @@ src_compile() {
 src_install() {
 	default
 	if use dedicated ; then
-		newinitd "${FILESDIR}"/${PN}.initd ${PN}
+		newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps}
 	fi
 	rm -f "${ED}"/usr/share/doc/${PF}/COPYING

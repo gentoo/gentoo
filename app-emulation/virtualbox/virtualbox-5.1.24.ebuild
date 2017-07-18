@@ -147,8 +147,12 @@ src_prepare() {
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
-	# Remove pointless GCC version check
-	sed -e '/^check_gcc$/d' -i configure || die
+	# Replace pointless GCC version check with something less stupid.
+	# This is needed for the qt5 version check.
+	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' -i configure || die
+
+	# Don't use "echo -n"
+	sed 's@ECHO_N="echo -n"@ECHO_N="printf"@' -i configure || die
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
@@ -193,7 +197,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--with-gcc="$(tc-getCC)"
+		--with-g++="$(tc-getCXX)"
+		--disable-dbus
+		--disable-kmods
+	)
 	use alsa       || myconf+=( --disable-alsa )
 	use debug      && myconf+=( --build-debug )
 	use doc        || myconf+=( --disable-docs )
@@ -213,21 +222,15 @@ src_configure() {
 		myconf+=( --disable-vmmraw )
 	fi
 	# not an autoconf script
-	./configure \
-		--with-gcc="$(tc-getCC)" \
-		--with-g++="$(tc-getCXX)" \
-		--disable-dbus \
-		--disable-kmods \
-		${myconf[@]} \
-		|| die "configure failed"
+	./configure ${myconf[@]} || die "configure failed"
 }
 
 src_compile() {
 	source ./env.sh || die
 
 	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
-	MAKEJOBS=$(echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+')
-	MAKELOAD=$(echo ${MAKEOPTS} | egrep -o '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+') #'
+	MAKEJOBS=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
+	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
@@ -444,9 +447,9 @@ pkg_postinst() {
 		elog ""
 		elog "WARNING!"
 		elog "Without USE=udev, USB devices will likely not work in ${PN}."
-	elif [ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
+	elif [ -e "${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
 		elog ""
-		elog "Please remove \"${ROOT}/etc/udev/rules.d/10-virtualbox.rules\""
+		elog "Please remove \"${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules\""
 		elog "or else USB in ${PN} won't work."
 	fi
 }

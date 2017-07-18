@@ -20,13 +20,12 @@ IUSE="dri"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	<x11-base/xorg-server-1.19:=[-minimal]
+	>=x11-base/xorg-server-1.7:=[-minimal]
 	x11-libs/libXcomposite
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	>=dev-lang/yasm-0.6.2
 	>=dev-util/kbuild-0.1.9998_pre20131130
-	>=sys-devel/gcc-4.9.0
 	sys-power/iasl
 	x11-proto/fontsproto
 	x11-proto/randrproto
@@ -56,6 +55,12 @@ PATCHES=(
 
 	# unset useless/problematic checks in configure
 	"${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
+
+	# xorg-1.19 patch from opensuse (bug #602784)
+	"${FILESDIR}/${PN}-5.1.10-xorg119.patch"
+
+	# fix bug #579946
+	"${FILESDIR}/${PN}-5.1.22-sysmacros.patch"
 )
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"

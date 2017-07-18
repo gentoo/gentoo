@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,15 +17,9 @@ RESTRICT="test" # needs a graphics set in order to test
 RDEPEND="!dedicated? (
 		media-libs/libsdl[sound,X,video]
 		icu? (
-			|| (
-				(
-					dev-libs/icu-layoutex
-					dev-libs/icu-le-hb
-					>=dev-libs/icu-58.1
-				)
-				<dev-libs/icu-58.1
-			)
-			dev-libs/icu:=
+			dev-libs/icu-layoutex
+			dev-libs/icu-le-hb
+			>=dev-libs/icu-58.1:=
 		)
 		truetype? (
 			media-libs/fontconfig
@@ -107,7 +101,7 @@ src_compile() {
 src_install() {
 	default
 	if use dedicated ; then
-		newinitd "${FILESDIR}"/${PN}.initd ${PN}
+		newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps}
 	fi
 	rm -f "${ED}"/usr/share/doc/${PF}/COPYING
