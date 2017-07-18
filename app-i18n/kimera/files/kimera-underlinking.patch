@@ -1,5 +1,3 @@
-diff --git a/kimera.pro b/kimera.pro
-index 0d4f0be..a2b63da 100644
 --- a/kimera.pro
 +++ b/kimera.pro
 @@ -90,7 +90,7 @@ SOURCES         = \
