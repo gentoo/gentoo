@@ -15958,7 +15958,7 @@ sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0-r2: Multithreaded tool for matching large sets of patterns against biosequence DBs
 sci-biology/biopandas 0.1.4 0.2.1: Molecular Structures in Pandas DataFrames
 sci-biology/bioperl 1.6.9 9999-r1: Perl tools for bioinformatics - Core modules
-sci-biology/bioperl-db 1.6.9 9999-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
+sci-biology/bioperl-db 1.6.9 1.6.9-r1 9999-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
 sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9 9999-r1: Perl wrapper modules for key bioinformatics applications
 sci-biology/biopython 1.68: Python modules for computational molecular biology
