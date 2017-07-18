@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit ltprune python-any-r1 vala
+inherit ltprune python-any-r1 vala xdg-utils
 
 DESCRIPTION="Japanese Kana Kanji conversion input method library"
 HOMEPAGE="https://github.com/ueno/libkkc"
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	vala_src_prepare
 	default
+	xdg_environment_reset
 }
 
 src_configure() {
