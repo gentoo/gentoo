@@ -147,12 +147,12 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed )
 	cli? ( ^^ ( readline libedit ) )
-	gd? ( zlib )
 	truetype? ( gd )
 	vpx? ( gd )
 	cjk? ( gd )
 	exif? ( gd )
 	xpm? ( gd )
+	gd? ( zlib )
 	simplexml? ( xml )
 	soap? ( xml )
 	wddx? ( xml )
