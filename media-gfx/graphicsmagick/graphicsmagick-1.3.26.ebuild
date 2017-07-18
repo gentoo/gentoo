@@ -35,7 +35,7 @@ RDEPEND="dev-libs/libltdl:0
 		media-fonts/urw-fonts
 		>=media-libs/freetype-2
 		)
-	webp? ( media-libs/libwebp )
+	webp? ( media-libs/libwebp:= )
 	wmf? ( media-libs/libwmf )
 	X? (
 		x11-libs/libSM
