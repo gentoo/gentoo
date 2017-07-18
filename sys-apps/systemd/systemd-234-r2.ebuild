@@ -332,8 +332,8 @@ multilib_src_install_all() {
 
 	if [[ ! -e "${ED%/}"/usr/lib/systemd/systemd ]]; then
 		# Avoid breaking boot/reboot
-		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
-		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
+		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
+		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
 	fi
 }
 
