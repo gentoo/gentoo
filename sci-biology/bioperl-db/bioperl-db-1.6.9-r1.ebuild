@@ -15,10 +15,11 @@ HOMEPAGE="http://www.bioperl.org/"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test"
 IUSE="test"
 
 DIST_TEST="do" # Parallelism probably bad
-
+PATCHES=( "${FILESDIR}/${PN}-1.6.9-db.patch" )
 RDEPEND="
 	>=sci-biology/bioperl-${PV}
 	dev-perl/DBD-mysql
@@ -34,20 +35,8 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
-
 src_prepare() {
-	if use test; then
-		eapply "${FILESDIR}/${PN}-1.6.9-db.patch"
-		einfo "Using the following configuration details for test database:"
-		einfo "  GENTOO_DB_TEST_HOST     : ${GENTOO_DB_TEST_HOST:=localhost}"
-		einfo "  GENTOO_DB_TEST_USER     : ${GENTOO_DB_TEST_USER:=portage}"
-		einfo "  GENTOO_DB_TEST_PORT     : ${GENTOO_DB_TEST_PORT:=3306}"
-		einfo "  GENTOO_DB_TEST_PASSWOWRD: ${GENTOO_DB_TEST_PASSWORD:=sekrit}"
-		einfo "  GENTOO_DB_TEST_DATABASE : ${GENTOO_DB_TEST_DB:=biosql_test}"
-		einfo "Please ensure the relevant mysql database is configured and/or tweak"
-		einfo "environment variables to suit"
-		export GENTOO_DB_TEST_HOST GENTOO_DB_TEST_USER GENTOO_DB_TEST_PORT GENTOO_DB_TEST_PASSWORD GENTOO_DB_TEST_DB
-	fi
+	export GENTOO_DB_HOSTNAME=localhost
 	perl-module_src_prepare
 }
 src_install() {
@@ -57,5 +46,39 @@ src_install() {
 src_test() {
 	einfo "Removing bundled test libraries t/lib"
 	rm -r "${S}/t/lib" || die "Cannot remove t/lib"
+
+	ebegin "Setting up test database"
+
+	local mysqld="${EPREFIX}/usr/sbin/mysqld"
+	local socket="${T}/mysql.sock"
+	local pidfile="${T}/mysql.pid"
+	local datadir="${T}/mysql-data-dir"
+	local mysql="${EPREFIX}/usr/bin/mysql"
+
+	mkdir -p "${datadir}" || die "Can't make mysql database dir";
+	chmod 755 "${datadir}" || die "Can't fix mysql database dir perms";
+
+	if $mysqld --help | grep -q MariaDB ; then
+		"${EPREFIX}"/usr/share/mysql/scripts/mysql_install_db \
+			--basedir="${EPREFIX}/usr" \
+			--datadir="${datadir}" \
+			--user=$(whoami) || die "Can't initalize database"
+	fi
+
+	${mysqld} --no-defaults	--user=$(whoami) --skip-networking \
+							--socket="${socket}" \
+							--pid-file="${pidfile}" \
+							--datadir="${datadir}" &
+	maxtry=20
+	while ! [[ -S "${socket}" || "${maxtry}" -lt 1 ]] ; do
+		maxtry=$((${maxtry}-1))
+		echo -n "."
+		sleep 1
+	done
+	eend $?
+	export MYSQL_UNIX_PORT="${socket}"
 	perl-module_src_test
+	ebegin "Shutting down mysql test database"
+	pkill -F "${pidfile}"
+	eend $?
 }
