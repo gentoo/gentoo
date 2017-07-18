@@ -15,13 +15,12 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="nls +ssl systemd"
 
-
 DOCS=( AUTHORS ChangeLog NEWS README RELNOTES ToDo )
 
 RDEPEND="
-	dev-libs/libgcrypt
+	dev-libs/libgcrypt:0=
 	nls? ( virtual/libintl )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd )"
 
 DEPEND="
