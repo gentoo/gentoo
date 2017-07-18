@@ -5,11 +5,11 @@ EAPI=3
 inherit qt4-r2 eutils multilib
 
 DESCRIPTION="A Japanese input method which supports the XIM protocol"
-SRC_URI="mirror://sourceforge.jp/kimera/37271/${P}.tar.gz"
-HOMEPAGE="http://kimera.sourceforge.jp/"
+HOMEPAGE="http://kimera.osdn.jp/"
+SRC_URI="mirror://sourceforge.jp/${PN}/37271/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+anthy"
 
