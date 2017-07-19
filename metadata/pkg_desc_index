@@ -8867,6 +8867,7 @@ dev-python/txaio 2.3.1 2.5.1-r1 2.7.1: Compatibility API between asyncio/Twisted
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5 0.9.5-r1: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
+dev-python/typed-ast 1.1.0: A fork of Python 2 and 3 ast modules with type comment support
 dev-python/typing 3.5.2.2 3.5.3.0: Type Hints for Python
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.3.0 2.4.1: A portable, lightweight MessagePack serializer and deserializer
@@ -18438,7 +18439,7 @@ www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that ca
 www-servers/apache 2.2.31-r1 2.2.32 2.4.25 2.4.27: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
-www-servers/caddy 0.10.0: Fast, cross-platform HTTP/2 web server with automatic HTTPS
+www-servers/caddy 0.10.0 0.10.4: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
