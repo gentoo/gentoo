@@ -7771,7 +7771,7 @@ dev-python/hacking 0.8.1 0.9.2 0.9.6 0.10.3 0.13.0: A client for the OpenStack N
 dev-python/happydoc 3.1-r2: Tool for extracting documentation from Python source code
 dev-python/hcluster 0.2.0-r1: Python hierarchical clustering package for Scipy
 dev-python/hcs-utils 1.5 2.0: A library containing some useful snippets
-dev-python/healpy 1.10.2 1.10.3: Python wrapper for healpix
+dev-python/healpy 1.10.3: Python wrapper for healpix
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 1.5 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hgtools 6.5.1: Classes and setuptools plugin for Mercurial repositories
@@ -7806,6 +7806,7 @@ dev-python/imageio 1.5 1.6 2.0.1 2.1.1: Python library for reading and writing i
 dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
 dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
+dev-python/imexam 0.7.1: Simple interactive astronomical image examination and plotting
 dev-python/iminuit 1.2: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
@@ -8332,6 +8333,7 @@ dev-python/pymediainfo 2.1.5 2.1.9: A wrapper around the mediainfo library
 dev-python/pymetar 0.21: Downloads, decodes and provides access to the weather report for a given station ID
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
+dev-python/pymoc 0.5.0: Python Multi-Order Coverage maps for Virtual Observatory
 dev-python/pymongo 2.7.2 2.9.3 3.4.0: Python driver for MongoDB
 dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.4.1 0.4.2 0.4.3 0.5: Memory profiling for Python applications
@@ -8783,7 +8785,7 @@ dev-python/subunit 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
-dev-python/sunpy 0.7.8: Software library for solar physics based on Python
+dev-python/sunpy 0.7.8 0.7.9: Software library for solar physics based on Python
 dev-python/superlance 0.14 1.0.0: A set of plugins to monitor and control supervisor
 dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and make it quick!
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
@@ -11283,7 +11285,7 @@ games-misc/yadex 1.7.0: A Doom level (wad) editor
 games-mud/circlemud 3.1: a multi-user dungeon game system server
 games-mud/crystal 0.2.4 0.2.4-r1: The crystal MUD client
 games-mud/gmudix 1.0 1.0-r1: GTK+ MUD client with ANSI color, macros, timers, triggers, variables, and an easy scripting language
-games-mud/gnome-mud 0.11.2 0.11.2-r1: GNOME MUD client
+games-mud/gnome-mud 0.11.2 0.11.2-r1 0.11.2-r2: GNOME MUD client
 games-mud/kildclient 3.0.1 3.0.1-r1: Powerful MUD client with a built-in PERL interpreter
 games-mud/kmuddy 1.0.1-r3: MUD client by KDE
 games-mud/lyntin 4.2-r1 4.2-r2: tintin mud client clone implemented in Python
@@ -14106,7 +14108,7 @@ media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using 
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3 5.1: Java subtitle editor
-media-video/kaffeine 2.0.9 2.0.10: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.9 2.0.12: Media player with digital TV support by KDE
 media-video/kamerka 0.12 0.12_p20161002: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.2 3.2.2 3.2.4: Application to take pictures and videos from your webcam by KDE
 media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
@@ -16412,6 +16414,7 @@ sci-libs/dcmtk 3.6.0: The DICOM Toolkit
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 18.7 18.15: Numerical and networking C++ library
+sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed machine learning.
 sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.3.2 0.4.0 0.5.0 9999: The Flexible Collision Library
