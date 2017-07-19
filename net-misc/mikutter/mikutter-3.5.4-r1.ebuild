@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby22 ruby23"
 
 inherit eutils ruby-ng
 
@@ -37,14 +37,14 @@ ruby_add_rdepend "dev-ruby/addressable
 	dev-ruby/httpclient
 	dev-ruby/json:0
 	dev-ruby/instance_storage
-	dev-ruby/memoist
+	<dev-ruby/memoist-0.16
 	>=dev-ruby/moneta-0.7
 	dev-ruby/nokogiri
-	>=dev-ruby/oauth-0.4.7
+	>=dev-ruby/oauth-0.5.1
 	dev-ruby/pluggaloid
 	dev-ruby/rcairo
 	>=dev-ruby/ruby-gettext-3.0.1
-	>=dev-ruby/ruby-gtk2-2.2.0
+	>=dev-ruby/ruby-gtk2-3.1.1
 	dev-ruby/ruby-hmac
 	dev-ruby/totoridipjp
 	dev-ruby/twitter-text
@@ -62,10 +62,10 @@ all_ruby_unpack() {
 each_ruby_install() {
 	local rubyversion
 
-	if use ruby_targets_ruby22; then
+	if use ruby_targets_ruby23; then
+		rubyversion=ruby23
+	elif use ruby_targets_ruby22; then
 		rubyversion=ruby22
-	elif use ruby_targets_ruby21; then
-		rubyversion=ruby21
 	fi
 
 	exeinto /usr/share/mikutter
