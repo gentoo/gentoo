@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 inherit cmake-utils eutils multilib ruby-ng
 
@@ -43,7 +43,6 @@ src_prepare() {
 	# make the require work
 	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
 	# patches
-	epatch "${FILESDIR}/is-integer_fact-1624_3.6.5.patch"
 	epatch_user
 }
 
