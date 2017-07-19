@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenvicius <axs@gentoo.org> (19 Jul 2017)
+# Mask spidermonkey:52 as it is a self-rolled release, no official
+# release has been rolled.  Is only committed to support development
+# versions of gjs.  Will unmask when gnome-3.26 is ready for testing
+# or when upstream releases an official tarball.
+dev-lang/spidermonkey:52
+
 # Matt Turner <mattst88@gentoo.org> (16 Jul 2017)
 # Header package for removed x11-libs/libXevie. No dependencies. Removal in a
 # month (#615314)
