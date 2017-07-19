@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (19 Jul 2017)
+# Old GNOME2 stack mono/dotnet packages
+gnome-extra/docky
+dev-dotnet/gnome-desktop-sharp
+dev-dotnet/gtksourceview-sharp
+dev-dotnet/rsvg-sharp
+dev-dotnet/vte-sharp
+dev-dotnet/wnck-sharp
+
 # Matt Turner <mattst88@gentoo.org> (16 Jul 2017)
 # Header package for removed x11-libs/libXevie. No dependencies. Removal in a
 # month (#615314)
