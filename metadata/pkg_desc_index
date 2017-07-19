@@ -10408,7 +10408,7 @@ dev-util/idea-ultimate 2017.1.2.171.4249.39 2017.1.3.171.4424.56: A complete too
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 3.9: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 3.9 4.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r1 0.51.0-r2: Internationalization Tool Collection
@@ -13716,7 +13716,6 @@ media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/frescobaldi 2.0.16 2.18.1 2.18.2 2.19.0 2.20.0: A LilyPond sheet music text editor
 media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r1 0.0.91-r2: Nintendo Gameboy sound player for GBS format
-media-sound/gejengel 0.1.4-r2 0.1.4-r3: Lightweight audio player
 media-sound/gigedit 0.2.0-r1: An instrument editor for gig files
 media-sound/gimmix 0.5.7.2 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
 media-sound/glmix 0.3: A 3D widget for mixing up to eight JACK audio streams down to stereo
@@ -15517,7 +15516,7 @@ net-nds/rpcbind 0.2.3-r1 0.2.3-r2 0.2.4 0.2.4-r1 9999: portmap replacement which
 net-nds/shelldap 1.3.2 1.4.0: A handy shell-like interface for browsing LDAP servers and editing their content
 net-nds/smbldap-tools 0.9.8 0.9.9 0.9.10 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
-net-nds/yp-tools 2.12-r1: Network Information Service tools
+net-nds/yp-tools 2.12-r1 4.2.2: Network Information Service tools
 net-nds/ypbind 1.37.2-r1: Multithreaded NIS bind service (ypbind-mt)
 net-nds/ypserv 2.26-r1: Network Information Service server
 net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
@@ -15687,7 +15686,6 @@ net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Interne
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
 net-voip/ekiga 4.0.1-r1: H.323 and SIP VoIP softphone
-net-voip/homer 0.25-r1 9999: Homer Conferencing (short: Homer) is a free SIP softphone with advanced audio and video support
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
 net-voip/openmcu 2.2.5-r1: Simple Multi Conference Unit using H.323
 net-voip/telepathy-gabble 0.18.3 0.18.4: A XMPP connection manager, handles single and multi user chats and voice calls
@@ -17904,7 +17902,7 @@ sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
 sys-libs/libxcrypt 2.0 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
 sys-libs/llvm-libunwind 3.8.1 3.9.0-r1 3.9.1 4.0.0 4.0.1 9999: C++ runtime stack unwinder from LLVM
 sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
-sys-libs/lwp 2.2 2.6-r1: Light-weight process library (used by Coda)
+sys-libs/lwp 2.2 2.6-r1 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.15-r2 1.1.16 9999: Light, fast and simple C library focused on standards-conformance and safety
