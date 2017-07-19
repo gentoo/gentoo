@@ -8,7 +8,6 @@ case "${PV}" in
 	KEYWORDS=""
 	VCS_ECLASS=git-r3
 	EGIT_REPO_URI="git://github.com/hydrogen-music/${PN}.git"
-	EGIT_PROJECT="${PN}.git"
 	;;
 	(*)
 	KEYWORDS="~amd64"
