@@ -47,8 +47,7 @@ src_prepare() {
 	sed -i "/DESTINATION \/etc\/init.d/,+2d" interface/vmcs_host/linux/vcfiled/CMakeLists.txt || die
 
 	# wayland egl support
-	epatch "${FILESDIR}"/next-resource-handle.patch \
-		"${FILESDIR}"/wayland-wsys.patch
+	epatch "${FILESDIR}"/next-resource-handle.patch
 }
 
 src_install() {
