@@ -18,7 +18,5 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-vcs/git"
-
 ruby_add_rdepend ">=dev-ruby/trollop-2.1.2:2
 	>=dev-ruby/paint-1.0"
