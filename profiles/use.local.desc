@@ -1324,6 +1324,7 @@ dev-db/mariadb:openssl - Enable SSL connections and crypto functions using dev-l
 dev-db/mariadb:oqgraph - Add support for the Open Query GRAPH engine
 dev-db/mariadb:pam - Enable the optional PAM authentication plugin for the server
 dev-db/mariadb:profiling - Add support for statement profiling (requires USE=community).
+dev-db/mariadb:rocksdb - Add support for RocksDB; a key/value, LSM database optimized for flash storage
 dev-db/mariadb:server - Build the server program
 dev-db/mariadb:sphinx - Add suport for the sphinx full-text search engine
 dev-db/mariadb:sst-rsync - Add tools needed to support the rsync SST method

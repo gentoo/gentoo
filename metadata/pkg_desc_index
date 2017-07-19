@@ -1321,7 +1321,7 @@ app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
 app-emulation/kompose 0.7.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libguestfs 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
+app-emulation/libguestfs 1.28.5-r3: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.1.1: Spectrum emulation library
 app-emulation/libvirt 3.2.0 3.3.0 3.4.0 9999: C toolkit to manipulate virtual machines
@@ -2951,7 +2951,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.56 10.0.29 10.0.30 10.0.31 10.1.23 10.1.24 10.1.25 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.57 10.0.29 10.0.30 10.0.31 10.1.23 10.1.24 10.1.25 10.2.1_alpha 10.2.7: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.30: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
