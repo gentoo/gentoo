@@ -3,12 +3,14 @@
 
 EAPI="5"
 
-MY_EXTRAS_VER="20170301-2020Z"
+MY_EXTRAS_VER="20170719-1630Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 
 # Build type
 BUILD="cmake"
+#fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit toolchain-funcs mysql-v2
 # only to make repoman happy. it is really set in the eclass
@@ -21,7 +23,7 @@ EGIT_REPO_URI="git://anongit.gentoo.org/proj/mysql-extras.git"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # When MY_EXTRAS is bumped, the index should be revised to exclude these.
-EPATCH_EXCLUDE='20019_all_mysql-5.5-mtr-perl-deprecation.patch'
+EPATCH_EXCLUDE=''
 
 DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )"
 RDEPEND="${RDEPEND}"
@@ -92,6 +94,10 @@ src_test() {
 			binlog.binlog_statement_insert_delayed main.information_schema \
 			main.mysqld--help-notwin main.mysqlhotcopy_archive main.mysqlhotcopy_myisam ; do
 				mysql-v2_disable_test  "$t" "False positives in Gentoo"
+		done
+
+		for t in main.mysql main.mysql_upgrade ; do
+			mysql-v2_disable_test  "$t" "Test $t broken upstream - error return value not updated"
 		done
 
 		# Run mysql tests
