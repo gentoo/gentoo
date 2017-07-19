@@ -1,15 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 WANT_LIBTOOL=latest
 WANT_AUTOMAKE=1.14
-AUTOTOOLS_IN_SOURCE_BUILD=1
 PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
-inherit python-single-r1 autotools-utils autotools versionator eutils \
-multilib linux-info perl-module base
+inherit python-single-r1 autotools versionator linux-info perl-module
 
 MY_PV_1="$(get_version_component_range 1-2)"
 MY_PV_2="$(get_version_component_range 2)"
@@ -48,53 +46,51 @@ COMMON_DEPEND="
 	>=app-admin/augeas-1.0.0
 	sys-fs/squashfs-tools:*
 	dev-libs/libconfig
-	sys-libs/readline:=
+	sys-libs/readline:0=
 	>=sys-libs/db-4.6:*
 	app-arch/xz-utils
 	app-arch/lzma
 	app-crypt/gnupg
 	app-arch/unzip[natspec]
 	perl? ( virtual/perl-ExtUtils-MakeMaker
-			>=dev-perl/Sys-Virt-0.2.4
-			virtual/perl-Getopt-Long
-			virtual/perl-Data-Dumper
-			dev-perl/libintl-perl
-			>=app-misc/hivex-1.3.1[perl?]
-			dev-perl/String-ShellQuote
-			)
+		>=dev-perl/Sys-Virt-0.2.4
+		virtual/perl-Getopt-Long
+		virtual/perl-Data-Dumper
+		dev-perl/libintl-perl
+		>=app-misc/hivex-1.3.1[perl?]
+		dev-perl/String-ShellQuote
+	)
 	python? ( ${PYTHON_DEPS} )
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:= )
 	introspection? (
 		>=dev-libs/gobject-introspection-1.30.0:=
 		dev-libs/gjs
-		)
+	)
 	selinux? ( sys-libs/libselinux  sys-libs/libsemanage )
 	systemtap? ( dev-util/systemtap )
 	ocaml? ( dev-lang/ocaml[ocamlopt]
-			dev-ml/findlib[ocamlopt]
-			dev-ml/ocaml-gettext
-			)
+		dev-ml/findlib[ocamlopt]
+		dev-ml/ocaml-gettext
+	)
 	erlang? ( dev-lang/erlang )
 	inspect-icons? ( media-libs/netpbm
-			media-gfx/icoutils
-			)
+		media-gfx/icoutils
+	)
 	virtual/acl
 	sys-libs/libcap
 	lua? ( dev-lang/lua:* )
 	>=app-shells/bash-completion-2.0
-	dev-libs/yajl"
+	dev-libs/yajl
+	"
 
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	doc? ( app-text/po4a )
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
-	${AUTOTOOLS_DEPEND}
 	"
 RDEPEND="${COMMON_DEPEND}
 	app-emulation/libguestfs-appliance
 	"
-
-PATCHES=( "${FILESDIR}/${MY_PV_1}"/*.patch  )
 
 DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 
@@ -106,14 +102,14 @@ pkg_setup () {
 }
 
 src_prepare() {
-	base_src_prepare
+	eapply "${FILESDIR}"/${MY_PV_1}
+	eapply_user
 	eaclocal
 	eautomake
 	eautoconf
 }
 
 src_configure() {
-
 	# Disable feature test for kvm for more reason
 	# i.e: not loaded module in __build__ time,
 	# build server not supported kvm, etc. ...
@@ -122,7 +118,7 @@ src_configure() {
 	# configured kernel.
 	export vmchannel_test=no
 
-	local myeconfargs=(
+	econf \
 		$(use_enable test werror)
 		--with-libvirt
 		--with-default-backend=libvirt
@@ -143,28 +139,16 @@ src_configure() {
 		$(use_enable erlang)
 		$(use_enable systemtap probes)
 		$(use_enable lua)
-	)
-	autotools-utils_src_configure
-}
-
-src_compile() {
-	autotools-utils_src_compile
-
-}
-
-src_test() {
-	autotools-utils_src_test
 }
 
 src_install() {
 	strip-linguas -i po
-	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
+	emake DESTDIR="${D}" install "LINGUAS=""${LINGUAS}"""
 
 	use perl && perl_delete_localpod
 }
 
 pkg_postinst() {
-
 	if ! use perl ; then
 		einfo "Perl based tools NOT build"
 	fi
