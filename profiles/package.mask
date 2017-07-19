@@ -185,13 +185,6 @@ app-admin/kedpm
 app-misc/relevation
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Dead, unmaintained and with multiple bugs (#614810, #611028). Removal in a
-# month.
-net-dialup/wvdial
-net-libs/wvstreams
-net-dialup/qtwvdialer
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Buggy and needs someone to take care of trying to bump it (#614860).
 # Removal in a month.
 sci-astronomy/skychart
