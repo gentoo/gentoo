@@ -39,7 +39,8 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	# uninstall symlinks
-	elog "Removing symlinks from btrfsmaintenance cron tasks"
-	"${EROOT%/}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh uninstall || die
+	if [[ -z ${REPLACED_BY_VERSION} ]] ; then
+		elog "Removing symlinks from btrfsmaintenance cron tasks"
+		"${EROOT%/}"/usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh uninstall || die
+	fi
 }
