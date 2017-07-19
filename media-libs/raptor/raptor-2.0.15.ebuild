@@ -13,7 +13,7 @@ SRC_URI="http://download.librdf.org/source/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64"
 IUSE="+curl debug json static-libs unicode"
 
 RDEPEND="dev-libs/libxml2
@@ -64,4 +64,8 @@ src_install() {
 	# https://bugs.gentoo.org/467768
 	local _rdocdir=/usr/share/doc/${PF}/html/${MY_PN}
 	[[ -d ${ED}/${_rdocdir} ]] && dosym ${_rdocdir} /usr/share/gtk-doc/html/${MY_PN}
+
+	#Needed by packages expecting this:
+	dosym /usr/include/raptor2/raptor.h /usr/include/raptor.h
+	dosym /usr/include/raptor2/raptor2.h /usr/include/raptor2.h
 }
