@@ -21,9 +21,9 @@
 		<flag name="gml">Enable support for <pkg>dev-libs/xerces-c</pkg> C++ API</flag>
 		<flag name="hdf5">Add support for the Hierarchical Data Format v5 (<pkg>sci-libs/hdf5</pkg>)</flag>
 		<flag name="mdb">Enable support for Microsoft Access database</flag>
-		<flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
-		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="ogdi">Enable support for the open geographic datastore interface (<pkg>sci-libs/ogdi</pkg>)</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
 		<flag name="xls">Add the <pkg>dev-libs/freexl</pkg> library for xls import support</flag>
 	</use>
 </pkgmetadata>
