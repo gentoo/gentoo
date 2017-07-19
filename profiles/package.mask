@@ -416,16 +416,6 @@ app-emulation/vmware-player
 app-emulation/vmware-modules
 app-emulation/vmware-tools
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
-# Not compatible with ffmpeg-3 (#589806) and needs vulnerable qtwebkit:4
-# (#620740). Removal in a month.
-net-voip/homer
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
-# Dead for ages, relies on google-code for fetching, not compatible with
-# ffmpeg-3 neither with latest imagemagick (#575988). Removal in a month.
-media-sound/gejengel
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
