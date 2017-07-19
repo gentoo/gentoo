@@ -25,6 +25,7 @@ SLOT="0"
 IUSE="+alsa +archive debug doc +extra +jack jack-session ladspa lash oss portaudio portmidi -pulseaudio rubberband static"
 REQUIRED_USE="lash? ( alsa )"
 
+# >=media-libs/liblo required to provide lo_cpp.h, required by hydrogen-9999
 RDEPEND="archive? ( app-arch/libarchive )
 	!archive? ( >=dev-libs/libtar-1.2.11-r3 )
 	dev-qt/qtgui:4 dev-qt/qtcore:4
@@ -38,7 +39,8 @@ RDEPEND="archive? ( app-arch/libarchive )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
 	rubberband? ( media-libs/rubberband )
-	extra? ( media-libs/hydrogen-drumkits )"
+	extra? ( media-libs/hydrogen-drumkits )
+	>=media-libs/liblo-0.28"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	media-libs/raptor
@@ -67,9 +69,4 @@ src_configure()
 	-DWANT_SHARED="$(usex static)"
 	)
 	cmake-utils_src_configure
-}
-
-src_install()
-{
-	default
 }
