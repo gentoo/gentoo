@@ -19,7 +19,7 @@ DEPEND="
 	app-editors/vim-core
 	>=dev-libs/boost-1.59.0:=
 	dev-libs/libaio
-	dev-libs/libedit
+	<dev-libs/libedit-20170329.3.1
 	dev-libs/libev
 	dev-libs/libevent:0=
 	dev-libs/libgcrypt:0=
