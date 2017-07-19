@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ml/jbuilder
 	dev-ml/opam
-	test? ( dev-ml/ounit dev-db/redis )"
+	test? ( dev-ml/ounit dev-db/redis dev-ml/lwt )"
 
 src_compile() {
 	jbuilder build -p redis || die
