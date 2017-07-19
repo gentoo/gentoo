@@ -6,29 +6,29 @@ inherit autotools eutils fcaps flag-o-matic multilib qmake-utils user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="
-	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 doc doc-pdf
-	geoip gtk kerberos lua +netlink nghttp2 +pcap portaudio +qt5 sbc selinux
-	smi libssh libxml2 randpkt randpktdump snappy spandsp sshdump ssl tfshark
-	zlib
+	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 crypt doc doc-pdf
+	geoip +gtk kerberos lua +netlink +pcap portaudio +qt5 sbc selinux smi
+	libssh randpkt randpktdump sshdump ssl tfshark zlib
 "
 REQUIRED_USE="
 	ciscodump? ( libssh )
 	sshdump? ( libssh )
+	ssl? ( crypt )
 "
 
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
 	>=dev-libs/glib-2.14:2
-	dev-libs/libgcrypt:0
 	netlink? ( dev-libs/libnl:3 )
 	adns? ( >=net-dns/c-ares-1.5 )
+	crypt? ( dev-libs/libgcrypt:0 )
 	caps? ( sys-libs/libcap )
 	geoip? ( dev-libs/geoip )
 	gtk? (
@@ -39,9 +39,7 @@ CDEPEND="
 	)
 	kerberos? ( virtual/krb5 )
 	libssh? ( >=net-libs/libssh-0.6 )
-	libxml2? ( dev-libs/libxml2 )
 	lua? ( >=dev-lang/lua-5.1:* )
-	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
 	qt5? (
@@ -55,8 +53,6 @@ CDEPEND="
 	)
 	sbc? ( media-libs/sbc )
 	smi? ( net-libs/libsmi )
-	snappy? ( app-arch/snappy )
-	spandsp? ( media-libs/spandsp )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
 "
@@ -152,20 +148,17 @@ src_configure() {
 		$(use_enable tfshark) \
 		$(use_with adns c-ares) \
 		$(use_with caps libcap) \
+		$(use_with crypt gcrypt) \
 		$(use_with geoip) \
 		$(use_with gtk gtk 3) \
 		$(use_with kerberos krb5) \
 		$(use_with libssh ssh) \
-		$(use_with libxml2) \
 		$(use_with lua) \
-		$(use_with nghttp2) \
 		$(use_with pcap dumpcap-group wireshark) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
 		$(use_with sbc) \
 		$(use_with smi libsmi) \
-		$(use_with snappy) \
-		$(use_with spandsp) \
 		$(use_with ssl gnutls) \
 		$(use_with zlib) \
 		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
