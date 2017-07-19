@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="Rainbows and unicorns!"
 HOMEPAGE="https://github.com/busyloop/lolcat"
 
-LICENSE="WTFPL-2"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
