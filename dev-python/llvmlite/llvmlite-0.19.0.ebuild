@@ -3,9 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit distutils-r1
+inherit distutils-r1 llvm
 
 DESCRIPTION="Python wrapper around the llvm C++ library"
 HOMEPAGE="http://llvmlite.pydata.org/"
@@ -16,9 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
+LLVM_MAX_SLOT=4
+
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
-	=sys-devel/llvm-3.9*
+	sys-devel/llvm:${LLVM_MAX_SLOT}
 	sys-libs/zlib:0=
 	virtual/python-enum34[${PYTHON_USEDEP}]
 "
@@ -30,12 +32,11 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	# remove -static-libstdc++, it makes no sense with shared LLVM
-	# add -fPIC, needed to link against shared libraries
 	# disable -flto, we do not force it against user's wishes
-	sed -e 's/-static-libstdc++/-fPIC/' \
-		-e '/^(CXX|LD)_FLTO_FLAGS/d' \
-		-i ffi/Makefile.linux || die
+	# add -fPIC, needed to link against shared libraries
+	# plus use those vars to force our CXXFLAGS/LDFLAGS in...
+	export CXX_FLTO_FLAGS="${CXXFLAGS} -fPIC"
+	export LD_FLTO_FLAGS="${LDFLAGS} -fPIC"
 	distutils-r1_python_prepare_all
 }
 
@@ -44,6 +45,10 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
+	if use examples; then
+		insinto /usr/share/doc/${PF}
+		doins -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }
