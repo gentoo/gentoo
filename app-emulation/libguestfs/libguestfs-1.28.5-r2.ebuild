@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 			dev-perl/String-ShellQuote
 			)
 	python? ( ${PYTHON_DEPS} )
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:* )
 	introspection? (
 		>=dev-libs/gobject-introspection-1.30.0:=
 		dev-libs/gjs
@@ -94,7 +94,9 @@ RDEPEND="${COMMON_DEPEND}
 	app-emulation/libguestfs-appliance
 	"
 
-PATCHES=( "${FILESDIR}/${MY_PV_1}"/*.patch  )
+PATCHES=( "${FILESDIR}/${MY_PV_1}"/ )
+
+EPATCH_SUFFIX="*.patch"
 
 DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 
