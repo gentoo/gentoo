@@ -364,11 +364,6 @@
     <name>Gentoo Bazaar Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Bazaar</url>
     <description>This project provides support for bazaar packages.</description>
-    <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>sci-biology@gentoo.org</email>
