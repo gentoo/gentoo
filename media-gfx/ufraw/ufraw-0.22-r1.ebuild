@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-jasper-automagic.patch
 	"${FILESDIR}"/${P}-crashfix.patch
 	"${FILESDIR}"/${P}-drop_superfluous_abs.patch
+	"${FILESDIR}"/${P}-fix-unsigned-char.patch
 )
 
 src_prepare() {
