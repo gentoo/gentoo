@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="acl cgroups debug doc evdev kernel_linux pam pm-utils policykit selinux test udev"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
@@ -90,6 +90,7 @@ src_configure() {
 		$(use_enable acl udev-acl) \
 		$(use_enable cgroups libcgmanager) \
 		$(use_enable selinux libselinux) \
+		$(use_enable udev libdrm) \
 		$(use_enable udev libudev) \
 		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
