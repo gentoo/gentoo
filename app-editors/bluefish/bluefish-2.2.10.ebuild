@@ -20,7 +20,6 @@ IUSE="+gtk3 gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	gnome-extra/gucharmap:2.90
 	sys-libs/zlib
 	!gtk3? ( x11-libs/gtk+:2 )
 	gtk3? (
