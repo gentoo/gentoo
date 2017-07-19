@@ -31,6 +31,7 @@ dev-db/mariadb
   <flag name="oqgraph">Add support for the Open Query GRAPH engine</flag>
   <flag name="pam">Enable the optional PAM authentication plugin for the server</flag>
   <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
+  <flag name="rocksdb">Add support for RocksDB; a key/value, LSM database optimized for flash storage</flag>
   <flag name="server">Build the server program</flag>
   <flag name="sphinx">Add suport for the sphinx full-text search engine</flag>
   <flag name="sst-rsync">Add tools needed to support the rsync SST method</flag>
