@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>proaudio@gentoo.org</email>
-    <name>Gentoo ProAudio Project</name>
-  </maintainer>
-  <use>
-    <flag name="archive">Use libarchive instead of libtar</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">hydrogen</remote-id>
-  </upstream>
+<maintainer type="person">
+	<email>webmaster@gentoostudio.org</email>
+	<name>Gentoo Studio/Damien Moody</name>
+</maintainer>
+<use>
+	<flag name="archive">Add archive support</flag>
+	<flag name="extra">Include media-libs/hydrogen-drumkits</flag>
+	<flag name="jack-session">Add support for saving/loading JACK sessions</flag>
+	<flag name="portmidi">Add portmidi support</flag>
+	<flag name="rubberband">Add time-stretching/pitch shifting support</flag>
+</use>
 </pkgmetadata>
