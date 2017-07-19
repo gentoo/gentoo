@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 RDEPEND="
-	>=dev-python/llvmlite-0.18[${PYTHON_USEDEP}]
+	>=dev-python/llvmlite-0.19[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.7[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	virtual/python-funcsigs[${PYTHON_USEDEP}]"
