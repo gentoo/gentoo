@@ -1,13 +1,17 @@
 certificate version 0.1
-pusher 0BBEEA1FEA4843A4 1500560687 -0400
-pushee ssh://git.gentoo.org/repo/gentoo.git
-nonce 1500560687-c25251dc352991610b6e
+pusher 0x74D9F74EEAC6A3B1 1500561056 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1500561057-9fc99e2c486ed75385d2
 
-824fc17c5a706eebfcbd500a7c499a12cfa157ab 3bcce9554ad60beb33e4c8efca494692574a7cbd refs/heads/master
+3bcce9554ad60beb33e4c8efca494692574a7cbd 2e2f8a2964df8be140e80249385aeed626c1de1b refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWXC9LwAKCRBHG+cz7yka
-P60CAP9HhL6OMMkSbK85SphUzbcuLcLIku9KRKswjISiu/5f1AD+MRlcSptjcDAg
-/6jeHoXbR5upYLyXOdx4FrHv1OftmWc=
-=nUUy
+iQEzBAABCAAdFiEE9NJH0U9HSNCjLMHwdNn3TurGo7EFAllwvqAACgkQdNn3TurG
+o7GQsQf/YA6jhHDEXqljLnx2p6XKP23DnA5L5V69Y/9ecIAtZPxBl0WEO6aKlXQS
+eqRkX7grr9nI4CK2lg5MW63ju9w0aKi5aqgrD+ctsSq+nxel/mtlL/EHVvj00JWy
+Nlsw9cjqK9rhrOOBZuwq4tCI5iNIvIF8Urw+oJC7uzgIBfHEdDv9+KiTUEemN9Yy
+eHuIUeK1kjxeJIxGoZIakrljnWLlEg7U4/SDToojs7F8mf9GDhiaT2KlPGiNoZ7f
+lknEr+34Y/ysYVzjMVybU6nMyPfjcHB6H9iCaVNwQU3n1lpgxQB6ouYA4XIyPb4/
+OqrEffC6O6jS0WpFyR6vIOnDT+OgPg==
+=+EE6
 -----END PGP SIGNATURE-----
