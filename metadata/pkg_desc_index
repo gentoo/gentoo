@@ -195,7 +195,7 @@ app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 9999: (R)?ex is a small script to ease 
 app-admin/rsyslog 8.19.0 8.24.0-r2 8.25.0-r2 8.26.0-r1 8.27.0-r1 8.28.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2015.5.10 2015.8.13 2016.3.6 2016.11.4 2016.11.5 9999: Salt is a remote execution and configuration manager
+app-admin/salt 2015.5.10 2015.8.13 2016.3.6 2016.11.4 2016.11.5 2016.11.6 9999: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.0 0.8.1: Service orchestration and management tool
 app-admin/setools 3.3.8-r7 4.0.1 4.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -2044,7 +2044,7 @@ app-office/libreoffice 5.2.7.2 5.3.4.2 5.3.9999 5.4.9999 9999: A full office pro
 app-office/libreoffice-bin 5.2.7.2 5.2.7.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.7.2 5.2.7.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.2.7.2 5.3.4.2: Translations for the Libreoffice suite
-app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/multitalk 1.4-r1: A new type of presentation program
@@ -10532,7 +10532,7 @@ dev-util/rr 4.5.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
-dev-util/scanmem 0.15.3: Locate and modify variables in executing processes
+dev-util/scanmem 0.15.3 0.16.1: Locate and modify variables in executing processes
 dev-util/schroot 1.6.10-r3 1.6.10-r4: Utility to execute commands in a chroot environment
 dev-util/scons 2.3.5 2.4.1 2.5.0 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4 0.08.4-r1 0.08.4-r2: A filemanager for shell scripts
