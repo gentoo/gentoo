@@ -1,0 +1,13 @@
+--- a/src/regcomp.c
++++ b/src/regcomp.c
+@@ -3619,8 +3619,8 @@
+       switch (en->type) {
+       case ENCLOSURE_MEMORY:
+         {
+-          if (env->curr_max_regnum < en->regnum)
+-            env->curr_max_regnum = en->regnum;
++          if (env->curr_max_regnum < en->m.regnum)
++            env->curr_max_regnum = en->m.regnum;
+ 
+           r = setup_comb_exp_check(NODE_ENCLOSURE_BODY(en), state, env);
+         }
