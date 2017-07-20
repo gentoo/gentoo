@@ -26,13 +26,13 @@ DEPEND="
 RDEPEND="${DEPEND}
 	|| ( dev-util/bdelta =dev-util/xdelta-1* )"
 
-src_prepare () {
-	default
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.6-ldflags.patch
+	"${FILESDIR}"/${PN}-0.4.6-cxx.patch
+)
 
 src_compile () {
-	emake CC=$(tc-getCXX)
+	emake CXX=$(tc-getCXX)
 }
 
 src_install () {
