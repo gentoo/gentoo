@@ -12,7 +12,7 @@ inherit gnome2 eutils flag-o-matic python-single-r1 cmake-utils
 MY_P="${PN}-community-${PV}-src"
 
 DESCRIPTION="MySQL Workbench"
-HOMEPAGE="http://dev.mysql.com/workbench/"
+HOMEPAGE="https://www.mysql.com/products/workbench/"
 SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz https://github.com/antlr/website-antlr3/blob/gh-pages/download/antlr-3.4-complete.jar?raw=true -> antlr-3.4-complete.jar"
 
 LICENSE="GPL-2"
