@@ -15,8 +15,7 @@
   </upstream>
   <use>
     <flag name="gtk">
-      Build the preference interfaces, based on
-      <pkg>x11-libs/gtk+</pkg> (GTK+ 2).
+      Build the preference interfaces, based on <pkg>x11-libs/gtk+</pkg>:2
     </flag>
   </use>
 </pkgmetadata>
