@@ -17,8 +17,10 @@ CDEPEND="app-i18n/ibus
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl )"
 RDEPEND="${CDEPEND}
-	dev-db/m17n-db
-	dev-db/m17n-contrib"
+	|| (
+		>=dev-db/m17n-db-1.7
+		dev-db/m17n-contrib
+	)"
 DEPEND="${CDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
