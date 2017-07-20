@@ -14508,7 +14508,7 @@ net-analyzer/vnstat 1.17 1.17-r1: Console-based network traffic monitor that kee
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.7 2.2.8 2.4.0_rc2 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.7 2.2.8 2.4.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -19035,7 +19035,7 @@ x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5_p5_p1 0.5_p6: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.20 2.21: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
-x11-misc/xlockmore 5.47 5.50 5.53 5.54: Just another screensaver application for X
+x11-misc/xlockmore 5.47 5.50 5.54 5.55_alpha: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
