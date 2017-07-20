@@ -17,5 +17,8 @@
     <flag name="gtk">
       Build the preference interfaces, based on <pkg>x11-libs/gtk+</pkg>:2
     </flag>
+    <flag name="gtk3">
+      Build the preference interfaces, based on <pkg>x11-libs/gtk+</pkg>:3
+    </flag>
   </use>
 </pkgmetadata>
