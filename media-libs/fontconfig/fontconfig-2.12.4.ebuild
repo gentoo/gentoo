@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils multilib-minimal readme.gentoo-r1
+inherit autotools multilib-minimal readme.gentoo-r1
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="http://fontconfig.org/"
@@ -28,8 +28,7 @@ PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.2-docbook.patch # 310157
-	"${FILESDIR}"/${PN}-2.11.93-latin-update.patch # 130466 + make liberation default
-	"${FILESDIR}"/${PN}-2.12.1-fix-ts18661-1-namespace-conflicts-w-glibc.patch # 608924
+	"${FILESDIR}"/${PN}-2.12.3-latin-update.patch # 130466 + make liberation default
 )
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
@@ -43,6 +42,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Revert gperf-3.1 fix as it breaks compilation
+	eapply -R "${FILESDIR}"/${PN}-2.12.2-gperf31.patch
+
 	eautoreconf
 }
 
@@ -68,10 +71,11 @@ multilib_src_configure() {
 
 	local myeconfargs=(
 		$(use_enable doc docbook)
+		$(use_enable static-libs static)
 		--enable-docs
 		--localstatedir="${EPREFIX}"/var
 		--with-default-fonts="${EPREFIX}"/usr/share/fonts
-		--with-add-fonts="${EPREFIX}/usr/local/share/fonts${addfonts}" \
+		--with-add-fonts="${EPREFIX}/usr/local/share/fonts${addfonts}"
 		--with-templatedir="${EPREFIX}"/etc/fonts/conf.avail
 	)
 
@@ -94,7 +98,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${ED}" -name "*.la" -delete || die
 
 	# fc-lang directory contains language coverage datafiles
 	# which are needed to test the coverage of fonts.
