@@ -3,14 +3,14 @@
 
 EAPI=6
 
-inherit git-r3 qmake-utils
+inherit qmake-utils
 DESCRIPTION="Lumina desktop environment"
 HOMEPAGE="https://lumina-desktop.org/"
-EGIT_REPO_URI="https://github.com/pcbsd/lumina"
+SRC_URI="https://github.com/trueos/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="desktop-utils"
 
 COMMON_DEPEND="dev-qt/qtcore:5
