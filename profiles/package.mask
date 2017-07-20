@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
+# Old mono/dotnet packages (used on GNOME2 stack)
+# also some deprecated forks used for monodevelop
+# awhile they are very unstable they will live in dotnet overlay
+gnome-extra/docky
+dev-dotnet/gnome-desktop-sharp
+dev-dotnet/gtksourceview-sharp
+dev-dotnet/rsvg-sharp
+dev-dotnet/vte-sharp
+dev-dotnet/wnck-sharp
+dev-dotnet/xdt-for-monodevelop
+dev-dotnet/nuget
+dev-dotnet/referenceassemblies-pcl
+
 # Ian Stakenvicius <axs@gentoo.org> (19 Jul 2017)
 # Mask spidermonkey:52 as it is a self-rolled release, no official
 # release has been rolled.  Is only committed to support development
