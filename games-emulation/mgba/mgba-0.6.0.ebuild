@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit fdo-mime gnome2-utils cmake-utils
+inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="A new Game Boy Advance emulator written in C."
 HOMEPAGE="https://mgba.io"
@@ -11,12 +11,13 @@ SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
-IUSE="ffmpeg imagemagick opengl qt5 +sdl"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug ffmpeg imagemagick opengl qt5 +sdl"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
 
 RDEPEND="
+	dev-db/sqlite:3
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
 	ffmpeg? ( virtual/ffmpeg )
@@ -29,19 +30,15 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		opengl? ( dev-qt/qtopengl:5 )
 	)
-	sdl? ( media-libs/libsdl2[X,sound,joystick,video,opengl?] )"
-DEPEND="${RDEPEND}
-	>=dev-util/cmake-3.2.2"
-
-PATCHES=(
-	"${FILESDIR}/${P}-imagemagick7.patch"
-)
+	sdl? ( media-libs/libsdl2[X,sound,joystick,video,opengl?] )
+"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
 
 	# Get rid of any bundled stuff we don't want
-	for pkg in libpng lzma zlib ; do
+	for pkg in libpng lzma sqlite3 zlib ; do
 		rm -r "${S}"/src/third-party/${pkg} || die
 	done
 }
@@ -49,15 +46,29 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GL="$(usex opengl)"
+		-DBUILD_GLES=OFF
+		-DBUILD_PYTHON=OFF
 		-DBUILD_QT="$(usex qt5)"
 		-DBUILD_SDL="$(usex sdl)"
-		-DUSE_FFMPEG="$(usex ffmpeg)"
-		-DUSE_MAGICK="$(usex imagemagick)"
+		-DBUILD_SHARED=ON
+		# test suite fails to build (0.6.0)
+		-DBUILD_SUITE=OFF
+		-DBUILD_TEST=OFF
+		-DM_CORE_GB=ON
+		-DM_CORE_GBA=ON
+		-DUSE_DEBUGGERS="$(usex debug)"
+		-DUSE_EDITLINE="$(usex debug)"
 		-DUSE_EPOXY=OFF
+		-DUSE_FFMPEG="$(usex ffmpeg)"
+		-DUSE_GDB_STUB="$(usex debug)"
 		-DUSE_LIBZIP=OFF
 		-DUSE_LZMA=OFF
+		-DUSE_MAGICK="$(usex imagemagick)"
 		-DUSE_MINIZIP=ON
-		-DM_CORE_GB=ON
+		-DUSE_PNG=ON
+		# build fails with sqlite being disabled (0.6.0)
+		-DUSE_SQLITE3=ON
+		-DUSE_ZLIB=ON
 	)
 	cmake-utils_src_configure
 }
@@ -91,14 +102,14 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if use qt5 ; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		gnome2_icon_cache_update
 	fi
 }
 
 pkg_postrm() {
 	if use qt5 ; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		gnome2_icon_cache_update
 	fi
 }

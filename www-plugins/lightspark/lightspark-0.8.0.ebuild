@@ -51,6 +51,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P/_rc*/}
 
+PATCHES=( "${FILESDIR}"/${P}-ffmpeg-free.patch )
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if tc-is-gcc && [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 6 || $(gcc-major-version) -lt 4 ]] ; then
