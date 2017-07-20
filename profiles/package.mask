@@ -33,6 +33,7 @@
 # Old mono/dotnet packages (used on GNOME2 stack)
 # also some deprecated forks used for monodevelop
 # awhile they are very unstable they will live in dotnet overlay
+gnome-extra/docky
 dev-dotnet/gnome-desktop-sharp
 dev-dotnet/gtksourceview-sharp
 dev-dotnet/rsvg-sharp
