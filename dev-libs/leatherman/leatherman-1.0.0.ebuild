@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 USE_RUBY="ruby21 ruby22"
 
 inherit cmake-utils multilib
@@ -20,8 +20,11 @@ DEPEND=">=dev-libs/boost-1.54[nls]
 	net-misc/curl
 	>=sys-devel/gcc-4.8:*"
 
+PATCHES=( "${FILESDIR}"/portage-sandbox-test-fix.patch )
+
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
+	default
 }
 
 src_configure() {
@@ -41,7 +44,7 @@ src_configure() {
 }
 
 src_test() {
-	cmake-utils_src_test
+	"${WORKDIR}/${P}"_build/bin/leatherman_test
 }
 
 src_install() {
