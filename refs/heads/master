@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0x8883FA56A308A8D7 1500551515 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1500551515-098e9fe2b02c6f06e38d
+pusher 0x0E2548BBC607E5AE 1500551921 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1500551921-3656fbb00585c1ca3956
 
-36569c5f9a7624c6188a6712dcb2252cb98064d8 ad5be5fa5636c6b3ea88ae8a45b7d38b37e82743 refs/heads/master
+ad5be5fa5636c6b3ea88ae8a45b7d38b37e82743 5d95bfa0a459d338eeb9ce6dd3aa4672a81d6c70 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSx3yP+V82AqODatGmIg/pWowio1wUCWXCZWwAKCRCIg/pWowio
-15/tAP0ZNsws3TlnTEWd8numunLkBxz43hX9VyorLBCZqFfddgD/clAtixahY6A9
-YfGZrvJmsxgXJA7KabusAAcx3Tzf/yE=
-=IUU/
+iHUEABEIAB0WIQSpOxaxaZikKNVNlsYOJUi7xgflrgUCWXCa8QAKCRAOJUi7xgfl
+rhv/AP97fI5wb5KgmzXpK7UsD1OA/UeBSkZhhQfSlYgalWzIBwD+NhIy2MCFm45S
+RsxTPx4Zk8KECnnjzPHKlDDB385hXCA=
+=+uZD
 -----END PGP SIGNATURE-----
