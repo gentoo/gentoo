@@ -1,0 +1,31 @@
+From 22a85a13a5c3ded942ef59522ad399eb5d9a58d9 Mon Sep 17 00:00:00 2001
+From: Mikhail Vorobyov <vorobyov.mikhail@gmail.com>
+Date: Tue, 18 Jul 2017 23:46:37 +0300
+Subject: [PATCH] Add NullVideoDecoder::switchCodec
+
+Add VideoDecoder::switchCodec implementation to NullVideoDecoder to fix
+ffmpeg-free build.
+---
+ src/backends/decoder.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/backends/decoder.h b/src/backends/decoder.h
+index 069543d0..f53288bd 100644
+--- a/src/backends/decoder.h
++++ b/src/backends/decoder.h
+@@ -140,6 +140,7 @@ class NullVideoDecoder: public VideoDecoder
+ public:
+ 	NullVideoDecoder() {status=VALID;}
+ 	~NullVideoDecoder() { while(fenceCount); }
++	void switchCodec(LS_VIDEO_CODEC codecId, uint8_t* initdata, uint32_t datalen, double frameRateHint){};
+ 	bool decodeData(uint8_t* data, uint32_t datalen, uint32_t time){return false;}
+ 	bool discardFrame(){return false;}
+ 	void skipUntil(uint32_t time){}
+@@ -305,6 +306,7 @@ class NullAudioDecoder: public AudioDecoder
+ 		sampleRate=44100;
+ 		channelCount=2;
+ 	}
++	void switchCodec(LS_AUDIO_CODEC codecId, uint8_t* initdata, uint32_t datalen){};
+ 	uint32_t decodeData(uint8_t* data, int32_t datalen, uint32_t time){return 0;}
+ };
+ 
