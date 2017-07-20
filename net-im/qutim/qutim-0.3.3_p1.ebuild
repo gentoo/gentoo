@@ -93,6 +93,7 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS INSTALL ChangeLog )
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.2-astral-migrate-qt-telepaphy.patch"
+	"${FILESDIR}/${PN}-0.3.3-fix-build-with-gcc-6.1.0-and-above.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
