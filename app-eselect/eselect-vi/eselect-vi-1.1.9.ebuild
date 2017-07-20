@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Manages the /usr/bin/vi symlink"
 HOMEPAGE="https://www.gentoo.org/"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
