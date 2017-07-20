@@ -3,35 +3,24 @@
 
 EAPI="6"
 
-inherit elisp toolchain-funcs
+inherit elisp
 
 DESCRIPTION="Yet another Canna client on Emacsen"
 HOMEPAGE="http://www.ceres.dti.ne.jp/~knak/yc.html"
-SRC_URI="http://www.ceres.dti.ne.jp/~knak/${P}.tar.gz"
+SRC_URI="http://www.ceres.dti.ne.jp/~knak/${P}.el.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ppc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="app-i18n/canna"
 
 SITEFILE="50${PN}-gentoo.el"
 
-src_prepare() {
-	sed -i '/$(CC)/s/ -o / $(CFLAGS) $(LDFLAGS) -o /' Makefile
-
-	default
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)"
-}
-
 src_install() {
 	elisp_src_install
 
-	dobin icanna
 	dodoc "${FILESDIR}"/sample.{dot.emacs,hosts.canna}
 }
 
