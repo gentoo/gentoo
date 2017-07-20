@@ -7,7 +7,7 @@ inherit font
 MY_P="Koruri-${PV}"
 DESCRIPTION="Japanese TrueType font based on M+ outline fonts and Open Sans"
 HOMEPAGE="http://sourceforge.jp/projects/koruri/"
-SRC_URI="mirror://sourceforge.jp/${PN}/62469/${MY_P}.tar.xz"
+SRC_URI="mirror://sourceforge.jp/${PN}/66647/${MY_P}.tar.xz"
 
 LICENSE="mplus-fonts Apache-2.0"
 SLOT="0"
