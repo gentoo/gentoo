@@ -796,17 +796,6 @@
     </member>
   </project>
   <project>
-    <email>desktop-effects@gentoo.org</email>
-    <name>Desktop effects</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Desktop-effects</url>
-    <description>Manage various windows managers, x11 miscellaneous applications which are commonly used for various effects on your desktop</description>
-    <member is-lead="1">
-      <email>pinkbyte@gentoo.org</email>
-      <name>Sergey Popov</name>
-      <role>Team lead</role>
-    </member>
-  </project>
-  <project>
     <email>devmanual@gentoo.org</email>
     <name>Devmanual</name>
     <url>https://wiki.gentoo.org/wiki/Project:Devmanual</url>
