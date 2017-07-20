@@ -8084,12 +8084,12 @@ dev-python/os-xenapi 0.1.1: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.17.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.18.0: library for running multi-thread, multi-process applications
-dev-python/oslo-config 3.22.0 3.22.1: Oslo Configuration API
+dev-python/oslo-config 3.22.1: Oslo Configuration API
 dev-python/oslo-context 2.12.1 2.12.2: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.17.0 4.17.1: OpenStack Common DB Code
 dev-python/oslo-i18n 3.5.0 3.9.0 3.12.0: Oslo i18n library
 dev-python/oslo-log 3.20.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 5.17.1 5.17.2: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 5.17.2: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.23.1 3.23.2: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.18.0 1.23.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.16.0: OpenStack library for privilege separation.
