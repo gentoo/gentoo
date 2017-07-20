@@ -1,0 +1,26 @@
+Fix issues caused by turning on -std=c++14 by default in gcc.6.1+.
+See Gentoo-Bug #623572.
+Upstream commit 7453ef49e8fb64b05cfe7b8c0622bf00eba3080f "Turned on -std=c++11 by default " does the same changes.
+
+diff --git a/protocols/irc/src/irccommandalias.cpp b/protocols/irc/src/irccommandalias.cpp
+index cfe8a620e..41282f15f 100644
+--- a/protocols/irc/src/irccommandalias.cpp
++++ b/protocols/irc/src/irccommandalias.cpp
+@@ -148,7 +148,7 @@ QString IrcPingAlias::generate(IrcCommandAlias::Type aliasType, const QStringLis
+ }
+ 
+ #define ADD_BAN_CMD(MODE, TYPE, NAME, TITLE, ADDITIONALCMD) \
+-	cmd = new IrcCommandAlias(NAME, "MODE %n +b "MODE ADDITIONALCMD, IrcCommandAlias::Participant); \
++	cmd = new IrcCommandAlias(NAME, "MODE %n +b " MODE ADDITIONALCMD, IrcCommandAlias::Participant); \
+ 	gen = new IrcActionGenerator(QIcon(), TITLE, cmd); \
+ 	gen->setType(TYPE); \
+ 	MenuController::addAction<IrcChannelParticipant>(gen, kickBanGroup);
+@@ -172,7 +172,7 @@ QString IrcPingAlias::generate(IrcCommandAlias::Type aliasType, const QStringLis
+ 	REGISTER_CTCP_CMD(TITLE)
+ 
+ #define ADD_MODE(MODE, PRIORITY, NAME, TITLE)\
+-	cmd = new IrcCommandAlias(NAME, "MODE %n "MODE" %o", IrcCommandAlias::Participant);\
++	cmd = new IrcCommandAlias(NAME, "MODE %n " MODE " %o", IrcCommandAlias::Participant);\
+ 	gen = new IrcActionGenerator(QIcon(), TITLE, cmd);\
+ 	gen->setPriority(PRIORITY);\
+ 	MenuController::addAction<IrcChannelParticipant>(gen, modesGroup);\
