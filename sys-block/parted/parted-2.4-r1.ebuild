@@ -34,7 +34,6 @@ PATCHES=(
 )
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )
 
-
 src_configure() {
 	econf \
 		$(use_enable debug) \
