@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 gnome2
 
 DESCRIPTION="A password manager for GNOME"
-HOMEPAGE="http://revelation.olasagasti.info/"
+HOMEPAGE="https://revelation.olasagasti.info/"
 SRC_URI="https://www.bitbucket.org/erikg/revelation/downloads/${P}.tar.xz"
 
 LICENSE="GPL-2"
