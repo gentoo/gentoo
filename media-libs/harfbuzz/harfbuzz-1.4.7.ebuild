@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	if ! use debug ; then
-		append-cppflags -DNDEBUG
 		append-cppflags -DHB_NDEBUG
 	fi
 }
