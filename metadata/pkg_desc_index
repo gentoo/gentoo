@@ -1876,7 +1876,7 @@ app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding path
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/misterhouse 2.103-r1 2.105-r1: Mister House, an open source home automation program with X10 support
 app-misc/mmv 1.01b_p18: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.4.10 1.4.11: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.4.10 1.4.11 1.4.14: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
@@ -18381,8 +18381,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.8.0 52.1.0-r1 52.2.0 53.0.3 54.0.1: Firefox Web Browser
 www-client/firefox-bin 52.2.0 54.0.1: Firefox Web Browser
 www-client/google-chrome 59.0.3071.115: The web browser from Google
-www-client/google-chrome-beta 60.0.3112.66: The web browser from Google
-www-client/google-chrome-unstable 61.0.3153.4: The web browser from Google
+www-client/google-chrome-beta 60.0.3112.72: The web browser from Google
+www-client/google-chrome-unstable 61.0.3159.5: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18431,7 +18431,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.137: Adobe Flash Player
-www-plugins/chrome-binary-plugins 59.0.3071.115 60.0.3112.66_beta 61.0.3153.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 59.0.3071.115 60.0.3112.72_beta 61.0.3159.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
