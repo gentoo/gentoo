@@ -1,0 +1,38 @@
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=612938
+
+From ae91dbad8c33b35ea564d235c8eba63adfcc0fef Mon Sep 17 00:00:00 2001
+From: Peter-Levine <plevine457@gmail.com>
+Date: Wed, 31 May 2017 04:49:36 -0400
+Subject: [PATCH] Don't allow throw() in destructors (#1182)
+
+---
+ toonz/sources/image/3gp/tiio_3gp_proxy.cpp | 2 --
+ toonz/sources/image/mov/tiio_mov_proxy.cpp | 2 --
+ 2 files changed, 4 deletions(-)
+
+diff --git a/toonz/sources/image/3gp/tiio_3gp_proxy.cpp b/toonz/sources/image/3gp/tiio_3gp_proxy.cpp
+index d1bd79717..03140f695 100644
+--- a/toonz/sources/image/3gp/tiio_3gp_proxy.cpp
++++ b/toonz/sources/image/3gp/tiio_3gp_proxy.cpp
+@@ -138,8 +138,6 @@ TLevelWriter3gp::~TLevelWriter3gp() {
+   QString res;
+ 
+   stream << (msg << QString("$closeLW3gp") << m_id);
+-  if (tipc::readMessage(stream, msg) != "ok")
+-    throw TException("Unable to write file");
+ }
+ 
+ //------------------------------------------------------------------
+diff --git a/toonz/sources/image/mov/tiio_mov_proxy.cpp b/toonz/sources/image/mov/tiio_mov_proxy.cpp
+index 260bbb196..6be067c01 100644
+--- a/toonz/sources/image/mov/tiio_mov_proxy.cpp
++++ b/toonz/sources/image/mov/tiio_mov_proxy.cpp
+@@ -206,8 +206,6 @@ TLevelWriterMov::~TLevelWriterMov() {
+   QString res;
+ 
+   stream << (msg << QString("$closeLWMov") << m_id);
+-  if (tipc::readMessage(stream, msg) != "ok")
+-    throw TException("Unable to write file");
+ }
+ 
+ //------------------------------------------------------------------
