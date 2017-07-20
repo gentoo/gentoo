@@ -2000,17 +2000,6 @@
     </member>
   </project>
   <project>
-    <email>gentoo-soc@list.gentoo.org</email>
-    <name>Gentoo Libbash Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Libbash</url>
-    <description>libbash development is devoted to maintaining and updating libbash core functionality and utilities.</description>
-    <member is-lead="1">
-      <email>betelgeuse@gentoo.org</email>
-      <name>Petteri Räty</name>
-      <role>Lead</role>
-    </member>
-  </project>
-  <project>
     <email>libressl@gentoo.org</email>
     <name>LibreSSL</name>
     <url>https://wiki.gentoo.org/wiki/Project:LibreSSL</url>
