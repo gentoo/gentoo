@@ -1,0 +1,25 @@
+From 3152f2a5056077d3e1061ac61e3ef7888ff96dc7 Mon Sep 17 00:00:00 2001
+From: Lenny Komow <lenny@lunarg.com>
+Date: Thu, 20 Jul 2017 16:07:14 -0600
+Subject: [PATCH] loader: Remove executable stack from libvulkan.so
+
+Change-Id: Id77d5560479cbbc6f5453a6362c5a20dd721fdd0
+---
+ loader/unknown_ext_chain_gas.asm | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/loader/unknown_ext_chain_gas.asm b/loader/unknown_ext_chain_gas.asm
+index e463f45be..798760bd8 100644
+--- a/loader/unknown_ext_chain_gas.asm
++++ b/loader/unknown_ext_chain_gas.asm
+@@ -108,6 +108,10 @@ vkdev_ext\num:
+ 
+ .endif
+ 
++#if defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
+ .data
+ 
+ termin_error_string:
