@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="a command line search tool that combines usability with raw speed"
+DESCRIPTION="a search tool that combines the usability of ag with the raw speed of grep"
 HOMEPAGE="https://github.com/BurntSushi/ripgrep"
 #SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # custom tarball bundling all deps and index, otherwise cargo fetches from the network
