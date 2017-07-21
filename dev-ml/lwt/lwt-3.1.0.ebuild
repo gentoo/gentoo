@@ -13,6 +13,7 @@ DEPEND="
 	>=dev-lang/ocaml-4.02:=
 	dev-ml/result:=
 	dev-ml/ocaml-migrate-parsetree:=
+	dev-ml/ppx_tools_versioned:=
 	libev? ( dev-libs/libev )
 	camlp4? ( dev-ml/camlp4:= )"
 
