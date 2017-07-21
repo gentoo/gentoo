@@ -1896,6 +1896,7 @@ dev-lang/ocaml:flambda - Enables the Flambda optimizer: A new intermediate repre
 dev-lang/ocaml:spacetime - Enables the Spacetime memory profiler. See https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html for more information.
 dev-lang/orc:pax_kernel - Apply patch needed for pax enabled kernels.
 dev-lang/perl:ithreads - Enable Perl threads, has some compatibility problems
+dev-lang/php:argon2 - Enable password hashing algorithm from app-crypt/argon2
 dev-lang/php:cli - Enable CLI SAPI
 dev-lang/php:coverage - Include gcov symbols for test coverage and lcov reports. Only useful for extension developers, and requires GCC.
 dev-lang/php:embed - Enable embed SAPI
@@ -1909,16 +1910,20 @@ dev-lang/php:intl - Enables the intl extension for extended internalization supp
 dev-lang/php:json - Enable JSON support
 dev-lang/php:ldap-sasl - Add SASL support for the PHP LDAP extension
 dev-lang/php:libmysqlclient - Use libmyslclient driver for mysql, mysqli, PDO_Mysql (not recommended)
+dev-lang/php:lmdb - Enable support for dev-db/lmdb db backend
 dev-lang/php:opcache - Enables built-in opcode cache, replacing pecl-apc et al.
 dev-lang/php:pdo - Enable the bundled PDO extensions
 dev-lang/php:phar - Enables the phar extension to provide phar archive support
 dev-lang/php:phpdbg - Enable the PHP Debug Command Line SAPI (like gdb for php)
+dev-lang/php:sodium - Enable support for crypto through libsodium
+dev-lang/php:tokyocabinet - Enable support for dev-db/tokyocabinet db backend
 dev-lang/php:vpx - Enable webp support for GD in php-5.x
 dev-lang/php:webp - Enable webp support for GD in php-7.x
 dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:xslt - Enable the XSL extension
 dev-lang/php:zip - Enable ZIP file support
+dev-lang/php:zip-encryption - Enable ZIP file encryption from dev-libs/libzip
 dev-lang/polyml:portable - Build the portable interpreter version of Poly/ML instead of native.
 dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
