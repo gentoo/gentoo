@@ -11,6 +11,9 @@
     expression object can be specified.  (Supported character encodings:
     ASCII, UTF-8, EUC-JP, Shift_JIS)
   </longdescription>
+  <slots>
+    <subslots>Reflect ABI of libonig.so.</subslots>
+  </slots>
   <use>
     <flag name="combination-explosion-check">
       enable combination explosion check
