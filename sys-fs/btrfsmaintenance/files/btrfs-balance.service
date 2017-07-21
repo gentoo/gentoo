@@ -1,0 +1,10 @@
+[Unit]
+Description=Balance block groups on a btrfs filesystem
+Documentation=man:btrfs-balance
+After=fstrim.service btrfs-trim.service btrfs-scrub.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/btrfsmaintenance/btrfs-balance.sh
+IOSchedulingClass=idle
+CPUSchedulingPolicy=idle

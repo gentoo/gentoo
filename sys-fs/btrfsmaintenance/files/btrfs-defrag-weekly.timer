@@ -1,0 +1,13 @@
+[Unit]
+Description=Defragment file data and/or directory metadata
+Documentation=man:btrfs-filesystem
+ConditionACPower=Yes
+
+[Timer]
+OnCalendar=weekly
+AccuracySec=1h
+Persistent=true
+Unit=btrfs-defrag.service
+
+[Install]
+WantedBy=timers.target
