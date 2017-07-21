@@ -1,0 +1,12 @@
+[Unit]
+Description=Discard unused blocks on a mounted filesystem
+Documentation=man:fstrim
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+Persistent=true
+Unit=btrfs-trim.service
+
+[Install]
+WantedBy=timers.target

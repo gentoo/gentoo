@@ -1,0 +1,10 @@
+[Unit]
+Description=Discard unused blocks on a mounted filesystem
+Documentation=man:fstrim
+Conflicts=fstrim.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/btrfsmaintenance/btrfs-trim.sh
+IOSchedulingClass=idle
+CPUSchedulingPolicy=idle
