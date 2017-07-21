@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlinking.patch
 	"${FILESDIR}"/${P}-tempnam.patch
 	"${FILESDIR}"/${P}-desktopvalidation.patch
+	"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_configure() {
