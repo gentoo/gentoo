@@ -6,8 +6,10 @@ WANT_AUTOCONF="2.1"
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
 # note - could not roll langpacks for: ca fi
-MOZ_LANGS=(ca cs de en-GB es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl pt-PT
-	    ru sk sv-SE tr uk zh-CN zh-TW)
+#MOZ_LANGS=(ca cs de en-GB es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl pt-PT
+#	    ru sk sv-SE tr uk zh-CN zh-TW)
+MOZ_LANGS=(cs de en-GB es-AR es-ES fr hu it ja lt nl pl pt-PT
+	    ru sk sv-SE zh-CN zh-TW)
 
 MOZ_PV="${PV/_pre*}"
 MOZ_PV="${MOZ_PV/_alpha/a}"
@@ -57,15 +59,15 @@ fi
 
 MOZCONFIG_OPTIONAL_GTK3=1
 MOZCONFIG_OPTIONAL_WIFI=1
-inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.51 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas-v2
+inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.51 multilib pax-utils xdg-utils autotools mozextension nsplugins mozlinguas-v2
 
 PATCHFF="firefox-51.0-patches-06"
 PATCH="${PN}-2.46-patches-01"
-EMVER="1.9.6.1"
+EMVER="1.9.8.1"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -411,7 +413,7 @@ pkg_postinst() {
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 
 	# Update mimedb for the new .desktop file
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	#gnome2_icon_cache_update
 
 	if ! use gmp-autoupdate ; then
