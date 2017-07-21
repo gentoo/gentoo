@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
+# app-crypt/argon2 is keyworded on amd64
+dev-lang/php -argon2
+
 # David Seifert <soap@gentoo.org> (20 May 2017)
 # cpyrit-cuda does not support GCC 4.9 or later
 net-wireless/pyrit cuda
