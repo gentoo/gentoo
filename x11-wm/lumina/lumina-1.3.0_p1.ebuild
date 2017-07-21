@@ -31,8 +31,6 @@ DEPEND="$COMMON_DEPEND
 	dev-qt/linguist-tools:5"
 
 RDEPEND="$COMMON_DEPEND
-	|| ( virtual/freedesktop-icon-theme
-	x11-themes/hicolor-icon-theme )
 	sys-fs/inotify-tools
 	x11-misc/numlockx
 	x11-wm/fluxbox
