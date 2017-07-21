@@ -159,6 +159,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}/libdir-27.patch"
 	epatch "${FILESDIR}/${PN}-0.27.6-libvpx-1.5.0.patch"
+	epatch "${FILESDIR}/${PN}-gcc6.patch"
 
 	epatch_user
 }
