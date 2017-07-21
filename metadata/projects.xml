@@ -4113,6 +4113,11 @@ developers and volunteer mentors.</description>
       <role>Member ( FFmpeg, x265, etc. )</role>
     </member>
     <member>
+      <email>beandog@gentoo.org</email>
+      <name>Steve Dibb</name>
+      <role>Member ( DVD, Blu-ray, Optical, Video )</role>
+    </member>
+    <member>
       <email>lordvan@gentoo.org</email>
       <name>Thomas R</name>
       <role>Member ( DVB )</role>
@@ -4251,6 +4256,11 @@ developers and volunteer mentors.</description>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Administrator / Blaster / Contributor</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Administrator / Breaking stuff</role>
     </member>
     <member>
       <email>polynomial-c@gentoo.org</email>
