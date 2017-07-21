@@ -1,0 +1,13 @@
+--- a/extensions/spellcheck/hunspell/glue/hunspell_alloc_hooks.h.orig	2017-04-04 18:32:38.007556606 +0200
++++ b/extensions/spellcheck/hunspell/glue/hunspell_alloc_hooks.h	2017-04-04 18:34:02.380234036 +0200
+@@ -51,8 +51,8 @@
+ #include "mozHunspellAllocator.h"
+ 
+ #define malloc(size) HunspellAllocator::CountingMalloc(size)
+-#define calloc(count, size) HunspellAllocator::CountingCalloc(count, size)
+-#define free(ptr) HunspellAllocator::CountingFree(ptr)
++//#define calloc(count, size) HunspellAllocator::CountingCalloc(count, size)
++//#define free(ptr) HunspellAllocator::CountingFree(ptr)
+ #define realloc(ptr, size) HunspellAllocator::CountingRealloc(ptr, size)
+ 
+ #endif

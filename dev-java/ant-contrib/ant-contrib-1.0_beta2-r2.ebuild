@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="A collection of tasks (and at one point maybe types and other tools) for Apache Ant"
+DESCRIPTION="A collection of tasks for Apache Ant"
 HOMEPAGE="http://ant-contrib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ant-contrib/${PN}-${PV/_beta/b}-src.tar.bz2"
 LICENSE="Apache-2.0"

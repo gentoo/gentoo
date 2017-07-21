@@ -4,7 +4,7 @@
 
 command="/bin/busybox ntpd"
 command_args="${NTPD_OPTS}"
-pidfile="/var/run/ntpd.pid"
+pidfile="/run/ntpd.pid"
 
 depend() {
 	use net dns logger

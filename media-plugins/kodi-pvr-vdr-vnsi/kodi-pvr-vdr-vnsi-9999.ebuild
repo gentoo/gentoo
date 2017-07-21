@@ -6,18 +6,18 @@ EAPI=6
 inherit cmake-utils kodi-addon
 
 DESCRIPTION="Kodi PVR addon VNSI"
-HOMEPAGE="https://github.com/kodi-pvr/pvr.vdr.vnsi"
+HOMEPAGE="https://github.com/fernetmenta/pvr.vdr.vnsi"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/kodi-pvr/pvr.vdr.vnsi.git"
+	EGIT_REPO_URI="git://github.com/fernetmenta/pvr.vdr.vnsi.git"
 	inherit git-r3
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/fernetmenta/pvr.vdr.vnsi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.vdr.vnsi-${PV}"
 	;;
 esac

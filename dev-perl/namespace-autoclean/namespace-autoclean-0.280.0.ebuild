@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Keep imports out of your namespace"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ppc ~ppc64 ~sparc x86 ~ppc-aix ~x86-fbsd ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ~ppc64 ~sparc x86 ~ppc-aix ~x86-fbsd ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND="

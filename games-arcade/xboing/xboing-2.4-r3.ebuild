@@ -12,7 +12,7 @@ SRC_URI="http://www.techrescue.org/xboing/${PN}${PV}.tar.gz
 
 LICENSE="xboing"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm"

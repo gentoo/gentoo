@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -37,7 +37,7 @@ RDEPEND="
 	x11-libs/cairo:=[svg]
 
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS}
 		>=dev-python/pygobject-3:3[${PYTHON_USEDEP}] )
 	libgda? ( gnome-extra/libgda:5[gtk] )

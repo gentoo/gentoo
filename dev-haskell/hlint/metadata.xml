@@ -1,14 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-  <email>haskell@gentoo.org</email>
-  <name>Gentoo Haskell</name>
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
 		HLint gives suggestions on how to improve your source code.
 	</longdescription>
-<use>
-  <flag name="gpl">Use GPL libraries, specifically hscolour.</flag>
-</use>
+	<use>
+		<flag name="gpl">Use GPL libraries, specifically hscolour.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ndmitchell/hlint</remote-id>
+	</upstream>
 </pkgmetadata>

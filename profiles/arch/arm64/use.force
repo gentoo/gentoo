@@ -1,2 +1,18 @@
 # Force the flag which corresponds to ARCH.
 arm64
+
+# Instruction sets that are always available
+cpu_flags_arm_v4
+cpu_flags_arm_v5
+cpu_flags_arm_v6
+cpu_flags_arm_v7
+cpu_flags_arm_v8
+
+cpu_flags_arm_edsp
+cpu_flags_arm_neon
+cpu_flags_arm_thumb
+cpu_flags_arm_thumb2
+cpu_flags_arm_vfp
+cpu_flags_arm_vfpv3
+cpu_flags_arm_vfpv4
+cpu_flags_arm_vfp-d32

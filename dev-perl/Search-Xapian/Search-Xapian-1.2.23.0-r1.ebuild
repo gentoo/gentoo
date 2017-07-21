@@ -12,7 +12,7 @@ SRC_URI+=" http://oligarchy.co.uk/xapian/${VERSION}/${P}.tar.gz"
 DESCRIPTION="Perl XS frontend to the Xapian C++ search library"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples test"
 
 RDEPEND="dev-libs/xapian:0/1.2.22

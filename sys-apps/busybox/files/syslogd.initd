@@ -4,7 +4,7 @@
 
 command="/bin/busybox syslogd"
 command_args="${SYSLOGD_OPTS}"
-pidfile="/var/run/syslogd.pid"
+pidfile="/run/syslogd.pid"
 
 depend() {
 	need clock hostname

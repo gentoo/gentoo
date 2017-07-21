@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit eutils linux-info toolchain-funcs
 
@@ -12,7 +12,6 @@ SRC_URI="http://sokrates.mimuw.edu.pl/~sebek/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="net-libs/libnet:1.1"
 RDEPEND="${DEPEND}"
@@ -20,7 +19,8 @@ RDEPEND="${DEPEND}"
 CONFIG_CHECK="~VLAN_8021Q ~VLAN_8021Q_GVRP"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-respect-ldflags.patch
+	eapply "${FILESDIR}/${PN}-respect-ldflags.patch"
+	eapply_user
 }
 
 src_compile() {

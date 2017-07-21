@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 
 RDEPEND=">=dev-libs/openssl-1:0"
 DEPEND="${RDEPEND}
@@ -25,6 +25,7 @@ src_prepare() {
 	default
 
 	sed -i -e 's|-O2 -g|$(CFLAGS)|g;s|-g -O2|$(CFLAGS)|g' util/Makefile.am* || die
+	sed -i -e 's|which rpm |which we_are_gentoo_rpm_is_a_guest |' configure.ac || die
 
 	eautoreconf
 }

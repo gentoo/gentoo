@@ -9,8 +9,18 @@
     <remote-id type="cpan">Log-Any</remote-id>
     <remote-id type="cpan-module">Log::Any</remote-id>
     <remote-id type="cpan-module">Log::Any::Adapter</remote-id>
+    <remote-id type="cpan-module">Log::Any::Adapter::Base</remote-id>
+    <remote-id type="cpan-module">Log::Any::Adapter::File</remote-id>
     <remote-id type="cpan-module">Log::Any::Adapter::Null</remote-id>
+    <remote-id type="cpan-module">Log::Any::Adapter::Stderr</remote-id>
+    <remote-id type="cpan-module">Log::Any::Adapter::Stdout</remote-id>
+    <remote-id type="cpan-module">Log::Any::Adapter::Syslog</remote-id>
     <remote-id type="cpan-module">Log::Any::Adapter::Test</remote-id>
+    <remote-id type="cpan-module">Log::Any::Adapter::Util</remote-id>
+    <remote-id type="cpan-module">Log::Any::Manager</remote-id>
+    <remote-id type="cpan-module">Log::Any::Proxy</remote-id>
+    <remote-id type="cpan-module">Log::Any::Proxy::Null</remote-id>
+    <remote-id type="cpan-module">Log::Any::Proxy::Test</remote-id>
     <remote-id type="cpan-module">Log::Any::Test</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,22 +1,25 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-DESCRIPTION="Number Field Sieve (NFS) implementation for factoring integers"
-HOMEPAGE="http://cado-nfs.gforge.inria.fr/"
-SRC_URI="https://gforge.inria.fr/frs/download.php/file/35401/${P}.tar.gz"
 
 PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="sqlite"
+
 inherit eutils cmake-utils python-r1
 
-# Fails F9_{k,m}bucket_test F9_tracektest
-RESTRICT="test"
+DESCRIPTION="Number Field Sieve (NFS) implementation for factoring integers"
+HOMEPAGE="http://cado-nfs.gforge.inria.fr/"
+SRC_URI="https://gforge.inria.fr/frs/download.php/file/35401/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+# Fails F9_{k,m}bucket_test F9_tracektest
+RESTRICT="test"
 
 RDEPEND="
 	${PYTHON_DEPS}

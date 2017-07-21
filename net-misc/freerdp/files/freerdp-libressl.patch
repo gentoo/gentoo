@@ -1,0 +1,148 @@
+From 70ab61c8e6083080093fc42e8e7172969864e2bd Mon Sep 17 00:00:00 2001
+From: Aric Belsito <lluixhi@gmail.com>
+Date: Sun, 19 Mar 2017 13:58:24 -0700
+Subject: [PATCH] Support LibreSSL
+
+Broken by the addition of OpenSSL 1.1.0 support.
+---
+ libfreerdp/crypto/opensslcompat.c | 4 ++--
+ libfreerdp/crypto/opensslcompat.h | 4 ++--
+ libfreerdp/crypto/tls.c           | 8 ++++----
+ winpr/libwinpr/crypto/hash.c      | 8 ++++----
+ winpr/libwinpr/utils/ssl.c        | 2 +-
+ 5 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/libfreerdp/crypto/opensslcompat.c b/libfreerdp/crypto/opensslcompat.c
+index bb5aff7..701902d 100644
+--- a/libfreerdp/crypto/opensslcompat.c
++++ b/libfreerdp/crypto/opensslcompat.c
+@@ -19,7 +19,7 @@
+ 
+ #include "opensslcompat.h"
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ BIO_METHOD* BIO_meth_new(int type, const char* name)
+ {
+@@ -41,4 +41,4 @@ void RSA_get0_key(const RSA* r, const BIGNUM** n, const BIGNUM** e, const BIGNUM
+ 		*d = r->d;
+ }
+ 
+-#endif /* OPENSSL < 1.1.0 */
++#endif /* OPENSSL < 1.1.0 || LIBRESSL */
+diff --git a/libfreerdp/crypto/opensslcompat.h b/libfreerdp/crypto/opensslcompat.h
+index a599863..b42d32f 100644
+--- a/libfreerdp/crypto/opensslcompat.h
++++ b/libfreerdp/crypto/opensslcompat.h
+@@ -30,7 +30,7 @@
+ 
+ #include <openssl/opensslv.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #include <openssl/bio.h>
+ #include <openssl/rsa.h>
+@@ -59,7 +59,7 @@
+ BIO_METHOD* BIO_meth_new(int type, const char* name);
+ void RSA_get0_key(const RSA* r, const BIGNUM** n, const BIGNUM** e, const BIGNUM** d);
+ 
+-#endif /* OPENSSL < 1.1.0 */
++#endif /* OPENSSL < 1.1.0 || LIBRESSL */
+ #endif /* WITH_OPENSSL */
+ 
+ #endif /* FREERDP_CRYPTO_OPENSSLCOMPAT_H */
+diff --git a/libfreerdp/crypto/tls.c b/libfreerdp/crypto/tls.c
+index 1071a2e..c415763 100644
+--- a/libfreerdp/crypto/tls.c
++++ b/libfreerdp/crypto/tls.c
+@@ -323,7 +323,7 @@ static long bio_rdp_tls_ctrl(BIO* bio, int cmd, long num, void* ptr)
+ 		case BIO_CTRL_PUSH:
+ 			if (next_bio && (next_bio != ssl_rbio))
+ 			{
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 				SSL_set_bio(tls->ssl, next_bio, next_bio);
+ 				CRYPTO_add(&(bio->next_bio->references), 1, CRYPTO_LOCK_BIO);
+ #else
+@@ -346,7 +346,7 @@ static long bio_rdp_tls_ctrl(BIO* bio, int cmd, long num, void* ptr)
+ 				if (ssl_rbio != ssl_wbio)
+ 					BIO_free_all(ssl_wbio);
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 				if (next_bio)
+ 					CRYPTO_add(&(bio->next_bio->references), -1, CRYPTO_LOCK_BIO);
+ 				tls->ssl->wbio = tls->ssl->rbio = NULL;
+@@ -384,7 +384,7 @@ static long bio_rdp_tls_ctrl(BIO* bio, int cmd, long num, void* ptr)
+ 					BIO_push(ssl_rbio, next_bio);
+ 
+ 				BIO_set_next(bio, ssl_rbio);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 				CRYPTO_add(&(ssl_rbio->references), 1, CRYPTO_LOCK_BIO);
+ #else
+ 				BIO_up_ref(ssl_rbio);
+@@ -1021,7 +1021,7 @@ BOOL tls_send_alert(rdpTls* tls)
+  *        SSL struct is opaqe now
+  */
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	if (tls->alertDescription != TLS_ALERT_DESCRIPTION_CLOSE_NOTIFY)
+ 	{
+ 		/**
+diff --git a/winpr/libwinpr/crypto/hash.c b/winpr/libwinpr/crypto/hash.c
+index 949d687..27eb434 100644
+--- a/winpr/libwinpr/crypto/hash.c
++++ b/winpr/libwinpr/crypto/hash.c
+@@ -146,7 +146,7 @@ WINPR_HMAC_CTX* winpr_HMAC_New(void)
+ 
+ #if defined(WITH_OPENSSL)
+ 	HMAC_CTX* hmac = NULL;
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 	if (!(hmac = (HMAC_CTX*) calloc(1, sizeof(HMAC_CTX))))
+ 		return NULL;
+ 	HMAC_CTX_init(hmac);
+@@ -267,7 +267,7 @@ void winpr_HMAC_Free(WINPR_HMAC_CTX* ctx)
+ 	HMAC_CTX* hmac = (HMAC_CTX*) ctx;
+ 	if (hmac)
+ 	{
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		HMAC_CTX_cleanup(hmac);
+ 		free(hmac);
+ #else
+@@ -317,7 +317,7 @@ WINPR_DIGEST_CTX* winpr_Digest_New(void)
+ 
+ #if defined(WITH_OPENSSL)
+ 	EVP_MD_CTX* mdctx;
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 	mdctx = EVP_MD_CTX_create();
+ #else
+ 	mdctx = EVP_MD_CTX_new();
+@@ -406,7 +406,7 @@ void winpr_Digest_Free(WINPR_DIGEST_CTX* ctx)
+ 	EVP_MD_CTX* mdctx = (EVP_MD_CTX*) ctx;
+ 	if (mdctx)
+ 	{
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		EVP_MD_CTX_destroy(mdctx);
+ #else
+ 		EVP_MD_CTX_free(mdctx);
+diff --git a/winpr/libwinpr/utils/ssl.c b/winpr/libwinpr/utils/ssl.c
+index 2f8100f..5fd6ac6 100644
+--- a/winpr/libwinpr/utils/ssl.c
++++ b/winpr/libwinpr/utils/ssl.c
+@@ -45,7 +45,7 @@ static BOOL g_winpr_openssl_initialized_by_winpr = FALSE;
+  * set locking callbacks to use OpenSSL in a multi-threaded environment.
+  */
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #define WINPR_OPENSSL_LOCKING_REQUIRED 1
+ 

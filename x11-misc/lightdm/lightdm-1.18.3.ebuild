@@ -13,8 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
-IUSE="audit +gtk +introspection kde qt4 qt5 +gnome"
-REQUIRED_USE="|| ( gtk kde )"
+IUSE="audit +introspection qt4 qt5 +gnome"
 
 COMMON_DEPEND="audit? ( sys-process/audit )
 	>=dev-libs/glib-2.32.3:2
@@ -42,8 +41,7 @@ DEPEND="${COMMON_DEPEND}
 	gnome? ( gnome-base/gnome-common )
 	sys-devel/gettext
 	virtual/pkgconfig"
-PDEPEND="gtk? ( x11-misc/lightdm-gtk-greeter )
-	kde? ( x11-misc/lightdm-kde )"
+PDEPEND="x11-misc/lightdm-gtk-greeter"
 
 DOCS=( NEWS )
 RESTRICT="test"

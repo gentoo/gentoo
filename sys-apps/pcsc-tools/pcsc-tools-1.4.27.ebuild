@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}
 	dev-perl/pcsc-perl
-	gtk? ( dev-perl/gtk2-perl )"
+	gtk? ( dev-perl/Gtk2 )"
 
 DOCS=(
 	README Changelog

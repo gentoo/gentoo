@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit base cmake-utils fdo-mime gnome2-utils
+inherit fdo-mime gnome2-utils cmake-utils
 
 DESCRIPTION="Qt4/C++ wrapper for ALSA sequencer"
 HOMEPAGE="http://drumstick.sourceforge.net/"
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="dbus doc"
 
-RDEPEND="media-libs/alsa-lib
+RDEPEND="
+	media-libs/alsa-lib
 	dev-qt/qtgui:4
 	dev-qt/qtsvg:4
 	x11-misc/shared-mime-info
@@ -25,29 +26,26 @@ DEPEND="${RDEPEND}
 		app-doc/doxygen
 		app-text/docbook-xsl-stylesheets
 		dev-libs/libxslt
-	)
-"
-
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-doc_automagicness.patch
 	"${FILESDIR}"/${PV}-underlinking.patch
+	"${FILESDIR}"/${PV}-gcc6-narrowing.patch
 )
 
 src_prepare() {
 	sed -i \
 		-e '/CMAKE_EXE_LINKER_FLAGS/d' \
 		CMakeLists.txt || die
-	base_src_prepare
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_use dbus)
-		$(cmake-utils_use_with doc)
+		-DUSE_DBUS=$(usex dbus)
+		-DWITH_DOC=$(usex doc)
 	)
-
 	cmake-utils_src_configure
 }
 

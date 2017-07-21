@@ -1,52 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>perl@gentoo.org</email>
-<name>Gentoo Perl Project</name>
-</maintainer>
-<maintainer type="project">
-<email>sound@gentoo.org</email>
-<name>Gentoo Sound project</name>
-</maintainer>
-<upstream>
-<remote-id type="cpan">WebService-MusicBrainz</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Artist</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Label</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Query</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Release</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::ReleaseGroup</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Alias</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::AliasList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Artist</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ArtistList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Disc</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::DiscList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ISRC</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ISRCList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Label</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::LabelList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Metadata</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Puid</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::PuidList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Rating</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Relation</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::RelationList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Release</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ReleaseEvent</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ReleaseEventList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ReleaseGroup</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ReleaseGroupList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::ReleaseList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Tag</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::TagList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::Track</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::TrackList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::UserRating</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::UserTag</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Response::UserTagList</remote-id>
-<remote-id type="cpan-module">WebService::MusicBrainz::Track</remote-id>
-</upstream>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">WebService-MusicBrainz</remote-id>
+    <remote-id type="cpan-module">WebService::MusicBrainz</remote-id>
+    <remote-id type="cpan-module">WebService::MusicBrainz::Request</remote-id>
+  </upstream>
 </pkgmetadata>

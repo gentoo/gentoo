@@ -25,7 +25,7 @@ dev-libs/efl physics
 
 # Mikle Kolyada <zlogene@gentoo.org> (11 Jan 2014)
 # too much unkeyworded dependencies (bug #497068)
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)
@@ -45,7 +45,7 @@ media-libs/mesa gallium
 
 # Alon Bar-Lev <alonbl@gentoo.org> (24 Jan 2007)
 # pkcs11-helper is not keyworded
-net-misc/openvpn pkcs11
+net-vpn/openvpn pkcs11
 
 # Christoph Mende <angelos@gentoo.org> (14 May 2008)
 # media-sound/wavpack is not keyworded

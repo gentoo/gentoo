@@ -1,0 +1,12 @@
+diff -ruN inkscape-0.92.1.orig/inkscape.desktop.in inkscape-0.92.1/inkscape.desktop.in
+--- inkscape-0.92.1.orig/inkscape.desktop.in	2017-02-14 00:46:57.000000000 +0100
++++ inkscape-0.92.1/inkscape.desktop.in	2017-05-12 21:25:01.628853033 +0200
+@@ -6,7 +6,7 @@
+ _Comment=Create and edit Scalable Vector Graphics images
+ _Keywords=image;editor;vector;drawing;
+ Type=Application
+-Categories=Graphics;VectorGraphics;GTK;
++Categories=Graphics;2DGraphics;VectorGraphics;GTK;
+ MimeType=image/svg+xml;image/svg+xml-compressed;application/vnd.corel-draw;application/pdf;application/postscript;image/x-eps;application/illustrator;image/cgm;image/x-wmf;application/x-xccx;application/x-xcgm;application/x-xcdt;application/x-xsk1;application/x-xcmx;image/x-xcdr;application/visio;application/x-visio;application/vnd.visio;application/visio.drawing;application/vsd;application/x-vsd;image/x-vsd;
+ Exec=inkscape %F
+ TryExec=inkscape

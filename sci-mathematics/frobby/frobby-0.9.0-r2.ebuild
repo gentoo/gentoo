@@ -11,7 +11,7 @@ SRC_URI="http://www.broune.com/frobby/frobby_v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc static-libs"
 
 RDEPEND="dev-libs/gmp:0=[cxx]"

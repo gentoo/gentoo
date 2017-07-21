@@ -1,0 +1,32 @@
+From 97e4d87ae8a123d5b1711ddbaba6bc0d3a0a39a8 Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Mon, 5 Dec 2016 10:15:12 +0100
+Subject: [PATCH 2/2] info: Do not crash if Renderer is not set by
+ SessionManager
+
+This regression has been introduced by commit 52da4da. The
+info panel crashes if prettify_info() returns NULL. This happens
+if Renderer property from SessionManager is empty.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=774240
+---
+ panels/info/info-cleanup.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/panels/info/info-cleanup.c b/panels/info/info-cleanup.c
+index 20243ec..bb47493 100644
+--- a/panels/info/info-cleanup.c
++++ b/panels/info/info-cleanup.c
+@@ -99,6 +99,9 @@ remove_duplicate_whitespace (const char *old)
+   GRegex *re;
+   GError *error;
+ 
++  if (old == NULL)
++    return NULL;
++
+   error = NULL;
+   re = g_regex_new ("[ \t\n\r]+", G_REGEX_MULTILINE, 0, &error);
+   if (re == NULL)
+-- 
+2.10.1
+

@@ -11,7 +11,7 @@ HOMEPAGE="http://kde-apps.org/content/show.php/KBackup?content=44998"
 SRC_URI="http://members.aon.at/m.koller/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="

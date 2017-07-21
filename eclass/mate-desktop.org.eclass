@@ -48,7 +48,7 @@ inherit versionator
 # If live ebuild, will be set to '9999'.
 : ${MATE_BRANCH:=$(get_version_component_range 1-2)}
 
-# Set SRC_URI or EGIT_REPO_URI based on whether live 
+# Set SRC_URI or EGIT_REPO_URI based on whether live
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="
 		https://github.com/mate-desktop/${MATE_DESKTOP_ORG_PN}.git

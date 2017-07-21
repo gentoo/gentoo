@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 PYTHON_COMPAT=( python2_7 pypy )
-inherit autotools-multilib flag-o-matic python-any-r1
+inherit autotools-multilib epunt-cxx flag-o-matic python-any-r1
 
 MY_P=${P/_pre/pre}
 

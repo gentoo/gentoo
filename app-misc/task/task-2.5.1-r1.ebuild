@@ -11,7 +11,7 @@ SRC_URI="http://taskwarrior.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm x86 ~x64-macos"
 IUSE="+sync vim-syntax zsh-completion"
 
 DEPEND="sys-libs/readline:0

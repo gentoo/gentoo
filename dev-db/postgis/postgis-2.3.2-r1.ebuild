@@ -124,9 +124,10 @@ src_install() {
 	emake -C topology DESTDIR="${D}" install
 	dobin ./utils/postgis_restore.pl
 
-	dodoc CREDITS TODO loader/README.* doc/*txt
+	DOCS=( CREDITS TODO loader/README.* doc/*txt )
+	use doc && local HTML_DOCS=( doc/html/{images,postgis.html,style.css} )
 
-	use doc && dohtml -r doc/html/*
+	einstalldocs
 
 	docinto topology
 	dodoc topology/{TODO,README}

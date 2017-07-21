@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,7 +30,7 @@ RDEPEND="
 	ssl? ( ${OPENSSL_DEPEND} )
 	logrotate? ( app-admin/logrotate )
 	wallet? ( ${WALLET_DEPEND} )
-	upnp? ( net-libs/miniupnpc )
+	upnp? ( net-libs/miniupnpc:0= )
 	virtual/bitcoin-leveldb
 "
 

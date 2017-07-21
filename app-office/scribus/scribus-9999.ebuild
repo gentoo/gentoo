@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,9 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
+CMAKE_MIN_VERSION=3.2.0
 
-inherit cmake-utils fdo-mime flag-o-matic multilib python-single-r1 subversion
+inherit cmake-utils eutils fdo-mime flag-o-matic gnome2 multilib python-single-r1
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="http://www.scribus.net/"
@@ -21,7 +22,7 @@ KEYWORDS=""
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts templates tk"
 
 #a=$((ls resources/translations/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'; ls resources/loremipsum/*xml | sed -e 's:\.: :g' -e 's:loremipsum\/: :g'| awk '{print $2}'; ls resources/dicts/hyph*dic | sed -e 's:\.: :g' -e 's:hyph_: :g' | awk '{print $2}'; ls resources/dicts/README_*txt | sed -e 's:_hyph::g' -e 's:\.: :g' -e 's:README_: :g' | awk '{print $2}') | sort | uniq); echo $a
-IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de@1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fi fi_FI fr gl he hr hu hu_HU ia id id_ID is is_IS it ja ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU sa sk sk_SK sl sl_SI sq sr sv sv_SE th_TH tr uk uk_UA zh_CN zh_TW"
+IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de@1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fa_IR fi fi_FI fr gl he he_IL hr hu hu_HU ia id id_ID is is_IS it ja kab kn_IN ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU sa sk sk_SK sl sl_SI so sq sr sv sv_SE te th_TH tr uk uk_UA zh_CN zh_TW"
 IUSE+=" ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
@@ -33,8 +34,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	app-text/libmspub
-	>=app-text/poppler-0.19.0:=
-	dev-libs/boost
+	app-text/poppler:=
 	dev-libs/hyphen
 	dev-libs/librevenge
 	dev-libs/libxml2
@@ -51,14 +51,14 @@ COMMON_DEPEND="
 	media-libs/lcms:2
 	media-libs/libcdr
 	media-libs/libpagemaker
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	media-libs/libvisio
 	media-libs/tiff:0
 	net-print/cups
 	sys-libs/zlib[minizip]
 	virtual/jpeg:0=
 	>=x11-libs/cairo-1.10.0[X,svg]
-	boost? ( dev-libs/boost )
+	boost? ( >=dev-libs/boost-1.62:= )
 	hunspell? ( app-text/hunspell )
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	osg? ( dev-games/openscenegraph )
@@ -74,11 +74,12 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
-	)
+	"${FILESDIR}"/${P}-fpic.patch
+)
 
 src_prepare() {
 	rm -r codegen/cheetah || die
-	cat > cmake/modules/FindZLIB.cmake <<- EOF
+	cat > cmake/modules/FindZLIB.cmake <<- EOF || die
 	find_package(PkgConfig)
 	pkg_check_modules(ZLIB minizip zlib)
 	SET( ZLIB_LIBRARY \${ZLIB_LIBRARIES} )
@@ -96,14 +97,15 @@ src_prepare() {
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
 
-	if has_version ">=dev-qt/qtcore-5.7.0" ; then
-		append-cxxflags "-std=c++11" #bug 591948
-	fi
+	edos2unix scribus/ui/propertiespalette_utils.cpp
 
 	cmake-utils_src_prepare
 }
 
 src_configure() {
+	# bug #550818
+	append-cppflags -DHAVE_MEMRCHR
+
 	local _lang lang langs
 	for lang in ${IUSE_LINGUAS}; do
 		_lang=$(translate_lang ${lang})
@@ -133,8 +135,9 @@ src_configure() {
 		-DPYTHON_INCLUDE_PATH="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DWANT_DISTROBUILD=ON
-		-DDOCDIR="/usr/share/doc/${PF}/"
+		-DDOCDIR="${EPREFIX%/}/usr/share/doc/${PF}/"
 		-DWANT_GUI_LANG="${langs#;};en"
+		-DWANT_CPP11=ON
 		-DWITH_PODOFO="$(usex pdf)"
 		-DWITH_BOOST="$(usex boost)"
 		-DWANT_GRAPHICSMAGICK="$(usex graphicsmagick)"
@@ -148,6 +151,10 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile
+}
+
 src_install() {
 	cmake-utils_src_install
 
@@ -155,41 +162,52 @@ src_install() {
 	# en_EN can be deleted always
 	for lang in ${IUSE_LINGUAS}; do
 		if ! use linguas_${lang}; then
-			_lang=$(translate_lang)
-			safe_delete "${ED}"/usr/share/man/${_lang}
+			_lang=$(translate_lang ${lang})
+			safe_delete "${ED%/}"/usr/share/man/${_lang}
 		fi
 	done
 
 	if ! use scripts; then
-		rm "${ED}"/usr/share/scribus/scripts/*.py || die
+		rm "${ED%/}"/usr/share/scribus/scripts/*.py || die
 	elif ! use tk; then
-		rm "${ED}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
+		rm "${ED%/}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
 	fi
 
 	use scripts && \
-		python_fix_shebang "${ED}"/usr/share/scribus/scripts && \
-		python_optimize "${ED}"/usr/share/scribus/scripts
+		python_fix_shebang "${ED%/}"/usr/share/scribus/scripts && \
+		python_optimize "${ED%/}"/usr/share/scribus/scripts
 
-	mv "${ED}"/usr/share/doc/${PF}/{en,html} || die
-	ln -sf html "${ED}"/usr/share/doc/${PF}/en || die
-	cat >> "${T}"/COPYING <<- EOF
+	mv "${ED%/}"/usr/share/doc/${PF}/{en,html} || die
+	ln -sf html "${ED%/}"/usr/share/doc/${PF}/en || die
+	cat >> "${T}"/COPYING <<- EOF || die
 	${PN} is licensed under the "${LICENSE}".
 	Please visit https://www.gnu.org/licenses/gpl-2.0.html for the complete license text.
 	EOF
 	dodoc "${T}"/COPYING
 	docompress -x /usr/share/doc/${PF}/en /usr/share/doc/${PF}/{AUTHORS,TRANSLATION,LINKS,COPYING}
+	local size
+	for size in 16 32 128 256; do
+		newicon -s $size resources/iconsets/artwork/icon_${size}x${size}.png scribus.png
+	done
+	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus.png
 	doicon resources/iconsets/*/scribus.png
 	domenu scribus.desktop
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
 }
 
 safe_delete () {
@@ -203,8 +221,6 @@ safe_delete () {
 			ebegin "Deleting ${x}"
 			rm "${x}" || die
 			eend $?
-		else
-			ewarn "${x} not found"
 		fi
 	done
 }

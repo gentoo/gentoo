@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit gnome2-utils distutils-r1 eutils fdo-mime
 
@@ -14,12 +14,13 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
-HOMEPAGE="http://www.qutebrowser.org/ https://github.com/The-Compiler/qutebrowser"
+DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit / QtWebEngine"
+HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="gstreamer test"
+IUSE="gstreamer test webengine +webkit"
+REQUIRED_USE="|| ( webengine webkit )"
 
 COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
@@ -30,10 +31,14 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,printsupport,webkit,widgets]
+	dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,printsupport,webengine?,webkit?,widgets]
 	dev-python/sip[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
 	gstreamer? ( dev-qt/qtwebkit:5[gstreamer] )
+	webengine? (
+		>=dev-python/PyQt5-5.7.1
+		>=dev-qt/qtwebengine-5.7.1:5
+	)
 "
 
 RESTRICT="test"

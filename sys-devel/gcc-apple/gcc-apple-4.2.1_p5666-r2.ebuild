@@ -12,7 +12,10 @@ HOMEPAGE="https://gcc.gnu.org"
 SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-${APPLE_VERS}.tar.gz
 		http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-16.tar.gz
 		http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-39.tar.gz
-		fortran? ( mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2 )"
+		fortran? (
+			mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2
+			https://dev.gentoo.org/~grobian/distfiles/${PN}-4.2.1_p5646-gfortran.patch
+		)"
 LICENSE="GPL-2 GPL-3"
 
 SLOT="42"
@@ -58,7 +61,7 @@ src_prepare() {
 		mv "${WORKDIR}"/gcc-4.2.4/gcc/fortran gcc/ || die
 		mv "${WORKDIR}"/gcc-4.2.4/libgfortran . || die
 		# from: substracted from http://r.research.att.com/tools/
-		epatch "${FILESDIR}"/${PN}-4.2.1_p5646-gfortran.patch
+		epatch "${DISTDIR}"/${PN}-4.2.1_p5646-gfortran.patch
 	fi
 
 	# move in libstdc++

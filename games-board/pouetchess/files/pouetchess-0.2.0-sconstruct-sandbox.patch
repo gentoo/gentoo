@@ -1,5 +1,5 @@
---- SConstruct
-+++ SConstruct
+--- a/SConstruct
++++ b/SConstruct
 @@ -22,14 +22,24 @@
  
  

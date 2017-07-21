@@ -1,12 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-KDE_HANDBOOK=optional
+# QT3SUPPORT_REQUIRED
+KDE_HANDBOOK="optional"
 inherit kde4-base
 
-DESCRIPTION="A program to tune a musical instrument using your computer and it's mic- or line- input"
+DESCRIPTION="Program to tune musical instruments using your computer's mic- or line- input"
 HOMEPAGE="http://wspinell.altervista.org/k4guitune/ http://www.kde-apps.org/content/show.php/K4Guitune?content=117669"
 SRC_URI="http://www.kde-apps.org/CONTENT/content-files/117669-${P}.tar.gz"
 
@@ -15,22 +16,16 @@ SLOT="4"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-DEPEND="=sci-libs/fftw-3*"
+RDEPEND="sci-libs/fftw:3.0="
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}
 
 PATCHES=( "${FILESDIR}/${P}-desktop_entry.patch" )
 
-src_prepare() {
-	kde4-base_src_prepare
-
-	sed -e '/set[[:space:]]*([[:space:]]*HTML_INSTALL_DIR/s/^/# DISABLED /' \
-		-i CMakeLists.txt || die
-}
-
 src_configure() {
-	mycmakeargs=(
-		$(cmake-utils_use_build handbook doc)
+	local mycmakeargs=(
+		-DBUILD_doc=$(usex handbook)
 	)
 
 	kde4-base_src_configure

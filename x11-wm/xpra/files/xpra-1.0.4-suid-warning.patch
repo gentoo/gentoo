@@ -1,0 +1,11 @@
+--- xpra-1.0.4/xpra/scripts/config.py
++++ xpra-1.0.4/xpra/scripts/config.py
+@@ -130,7 +130,7 @@
+                 xorg_stat = os.stat(xorg_bin)
+                 if (xorg_stat.st_mode & stat.S_ISUID)!=0:
+                     if (xorg_stat.st_mode & stat.S_IROTH)==0:
+-                        warn("%s is suid and not readable, Xdummy support unavailable" % xorg_bin)
++                        debug("%s is suid and not readable, Xdummy support unavailable" % xorg_bin)
+                         return get_Xvfb_command()
+                     debug("%s is suid and readable, using the xpra_Xdummy wrapper" % xorg_bin)
+                     use_wrapper = True

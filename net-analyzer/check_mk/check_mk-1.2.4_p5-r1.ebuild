@@ -19,7 +19,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="agent-only apache_status dmi_sysinfo livestatus logwatch mysql
 	nfsexports oracle postgres smart wato xinetd zypper"
 
-DEPEND="wato? ( app-admin/sudo )
+DEPEND="${PYTHON_DEPS}
+	wato? ( app-admin/sudo )
 	xinetd? ( sys-apps/xinetd )
 	!agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) )
 	!agent-only? ( www-servers/apache www-apache/mod_python )
@@ -28,6 +29,7 @@ DEPEND="wato? ( app-admin/sudo )
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	livestatus? ( !agent-only )
 	wato? ( !agent-only )"
 

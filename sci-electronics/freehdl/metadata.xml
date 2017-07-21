@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -18,4 +18,7 @@
    * Works with Linux. If others want to port it to other platforms they may,
      but it is not the goal of this project.
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">qucs</remote-id>
+  </upstream>
 </pkgmetadata>

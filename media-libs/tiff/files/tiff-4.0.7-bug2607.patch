@@ -1,0 +1,41 @@
+From c99f44478d6f0491da5b98c8cea14f565a021e22 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 15:44:15 +0000
+Subject: [PATCH] * tools/tiffcp.c: avoid potential division by zero is
+ BitsPerSamples tag is missing. Reported by Agostino Sarubbo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2607
+
+---
+ ChangeLog      |  7 +++++++
+ tools/tiffcp.c | 10 ++++++++--
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiffcp.c b/tools/tiffcp.c
+index c8e48c3c2bb3..142cbb0ecfc2 100644
+--- a/tools/tiffcp.c
++++ b/tools/tiffcp.c
+@@ -1569,7 +1569,7 @@ DECLAREwriteFunc(writeBufferToSeparateTiles)
+ 	uint8* bufp = (uint8*) buf;
+ 	uint32 tl, tw;
+ 	uint32 row;
+-	uint16 bps, bytes_per_sample;
++	uint16 bps = 0, bytes_per_sample;
+ 
+ 	obuf = _TIFFmalloc(TIFFTileSize(out));
+ 	if (obuf == NULL)
+@@ -1578,6 +1578,12 @@ DECLAREwriteFunc(writeBufferToSeparateTiles)
+ 	(void) TIFFGetField(out, TIFFTAG_TILELENGTH, &tl);
+ 	(void) TIFFGetField(out, TIFFTAG_TILEWIDTH, &tw);
+ 	(void) TIFFGetField(out, TIFFTAG_BITSPERSAMPLE, &bps);
++        if( bps == 0 )
++        {
++            TIFFError(TIFFFileName(out), "Error, cannot read BitsPerSample");
++            _TIFFfree(obuf);
++            return 0;
++        }
+ 	assert( bps % 8 == 0 );
+ 	bytes_per_sample = bps/8;
+ 
+-- 
+2.12.0
+

@@ -1,0 +1,17 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
+# In the 17.0 profiles we assume that our system compiler uses C++14
+# or later as default language setting. This means it has to be at
+# least GCC 6. If you need an older compiler for specific purposes,
+# feel free to unmask it, however, using it for normal emerging of
+# packages is neither recommended nor supported in any way.
+<sys-devel/gcc-6
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
+# We can unmask ICU 59 and later now we for sure have a recent GCC
+# Note: "and later" is safe here since the profiles/package.mask
+# still overrides.
+->=dev-libs/icu-59
+->=dev-libs/icu-layoutex-59

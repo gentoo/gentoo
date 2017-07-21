@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,8 +16,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="doc examples"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	>=dev-python/pygobject-2.11.3:2[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
 	>=dev-python/pycairo-1.8.4[${PYTHON_USEDEP}]

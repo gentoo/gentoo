@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ IUSE="doc examples"
 PATCHES=( "${FILESDIR}/0.8.1-python3.4.patch" )
 
 python_test() {
-	"${PYTHON}" runtests.py || die "Testing failed with ${EPYTHON}"
+	"${PYTHON}" runtests.py -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {

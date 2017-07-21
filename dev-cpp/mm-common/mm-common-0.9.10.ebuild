@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Build infrastructure and utilities for GNOME C++ bindings"
-HOMEPAGE="http://www.gtkmm.org/"
+HOMEPAGE="https://www.gtkmm.org/"
 
 LICENSE="GPL-2"
 SLOT="0"

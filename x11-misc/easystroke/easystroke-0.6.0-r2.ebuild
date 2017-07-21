@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-cpp/gtkmm:3.0
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	x11-base/xorg-server

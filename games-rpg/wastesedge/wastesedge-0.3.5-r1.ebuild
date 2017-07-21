@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ SRC_URI="https://savannah.nongnu.org/download/adonthell/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="userpriv"
 
 RDEPEND="${PYTHON_DEPS}
@@ -20,10 +21,6 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
 
 src_configure(){
 	econf \

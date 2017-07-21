@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5-meta-pkg
 
 DESCRIPTION="kdecore - merge this to pull in the most basic applications"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+handbook nls"
 
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}

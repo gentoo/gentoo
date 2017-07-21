@@ -1,8 +1,8 @@
 Defaults for xfig. Idea from Roland Rosenfeld <roland@debian.org>
 
 diff -urNad xfig~/Fig.ad xfig/Fig.ad
---- Fig.ad
-+++ Fig.ad
+--- a/Fig.ad
++++ b/Fig.ad
 @@ -10,13 +10,17 @@
  
  ! some sample settings you may want to change

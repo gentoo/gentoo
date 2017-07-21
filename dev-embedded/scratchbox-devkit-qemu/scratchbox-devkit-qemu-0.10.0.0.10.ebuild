@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 SBOX_GROUP="sbox"
@@ -6,7 +6,7 @@ SBOX_GROUP="sbox"
 MYPV=0.10.0-0sb10
 MYP=${PN}-${MYPV}
 
-DESCRIPTION="A cross-compilation toolkit designed to make embedded Linux application development easier"
+DESCRIPTION="A cross-compilation toolkit for embedded Linux application development"
 HOMEPAGE="http://www.scratchbox.org/"
 SRC_URI="http://scratchbox.org/download/files/sbox-releases/stable/tarball/${MYP}-i386.tar.gz"
 LICENSE="GPL-2"

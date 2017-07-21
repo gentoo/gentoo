@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+description="OpenTTD dedicated game server"
+pidfile="/run/${SVCNAME}.pid"
+command="/usr/bin/openttd"
+command_args="-D"
+command_background="true"
+
+depend() {
+	need net
+}

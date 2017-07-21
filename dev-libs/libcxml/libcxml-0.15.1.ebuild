@@ -19,6 +19,7 @@ IUSE=""
 RDEPEND="dev-cpp/libxmlpp:2.6
 	dev-libs/boost"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-util/waf
 	virtual/pkgconfig"
 

@@ -15,20 +15,23 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="gtk imagemagick jpeg python qt4 static-libs +threads v4l X xv"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jpeg? ( virtual/jpeg:0 )
-	python? ( ${PYTHON_DEPS}
-		gtk? ( >=dev-python/pygtk-2[${PYTHON_USEDEP}] ) )
+	python? (
+		${PYTHON_DEPS}
+		gtk? ( >=dev-python/pygtk-2[${PYTHON_USEDEP}] )
+	)
 	qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
-	X? ( x11-libs/libXext
-		xv? ( x11-libs/libXv ) )"
+	X? (
+		x11-libs/libXext
+		xv? ( x11-libs/libXv )
+	)"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

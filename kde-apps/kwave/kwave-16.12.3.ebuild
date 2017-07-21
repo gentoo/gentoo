@@ -13,10 +13,10 @@ LICENSE="
 	handbook? ( FDL-1.2 )
 	opus? ( BSD-2 )
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa flac mp3 +qtmedia opus oss pulseaudio vorbis"
 
-COMMON_DEPEND="
+RDEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -52,14 +52,11 @@ COMMON_DEPEND="
 		media-libs/libvorbis
 	)
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	$(add_kdeapps_dep poxml)
 	$(add_qt_dep qtconcurrent)
 	sys-devel/gettext
 	virtual/imagemagick-tools[png,svg]
-"
-RDEPEND="${COMMON_DEPEND}
-	!media-sound/kwave:4
 "
 
 DOCS=( AUTHORS CHANGES LICENSES README TODO )

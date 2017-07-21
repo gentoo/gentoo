@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 
 # Req'd for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=(
+	"${FILESDIR}"/${P}-dict-iter.patch
+	)
 
 python_prepare_all() {
 	# AttributeError: test_Etcd instance has no attribute 'patch'

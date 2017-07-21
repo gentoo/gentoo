@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="consolekit">Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)</flag>
+    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
   </use>
   <longdescription lang="en">
     SDDM is a modern display manager for X11 aiming to be fast, simple

@@ -1,6 +1,31 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# dev-tcltk/tcllib is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
+# Johannes Huber <johu@gentoo.org> (14 May 2017)
+# Depends on dev-qt/qtwebengine, not keyworded yet.
+kde-apps/kio-extras htmlthumbs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
+# Depends on dev-util/kdevplatform:5, not keyworded yet.
+kde-plasma/plasma-sdk plasmate
+
+# James Le Cuirot <chewi@gentoo.org> (25 Apr 2017)
+# Oracle doesn't include VisualVM on this platform.
+dev-java/oracle-jdk-bin visualvm
+
+# Patrice Clement <monsieurp@gentoo.org> (09 Apr 2017)
+# Enable MQTT support on supported architectures
+app-admin/collectd -collectd_plugins_mqtt
+
+# Michael Weber <xmw@gentoo.org> (15 Mar 2017)
+# Cannot test non-free dependency dev-libs/device-atlas-api-c
+net-proxy/haproxy device-atlas
+
 # Alon Bar-Lev <alonbl@gentoo.org> (10 Mar 2017)
 # net-firewall/ipset is not available on arm
 net-firewall/firehol ipset
@@ -48,7 +73,7 @@ sci-mathematics/octave graphicsmagick
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 location webengine
+dev-python/PyQt5 webengine
 
 # Göktürk Yüksek <gokturk@gentoo.org> (14 June 2016) on behalf of
 # Nicholas Vinson <nvinso234@gmail.com> (proxy-maint)
@@ -160,7 +185,7 @@ www-client/chromium widevine
 
 # Markus Meier <maekke@gentoo.org> (17 Jan 2015)
 # Unkeyworded deps, bug #536226
-net-misc/strongswan strongswan_plugins_unbound
+net-vpn/strongswan strongswan_plugins_unbound
 
 # Markus Meier <maekke@gentoo.org> (17 Jan 2015)
 # Unkeyworded deps, bug #533404
@@ -355,7 +380,7 @@ media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (05 Feb 2013)
 # masking all stable packages with java use flag
-net-misc/openconnect java
+net-vpn/openconnect java
 dev-util/oprofile java
 =dev-db/qdbm-1.8.78-r1 java
 dev-libs/beecrypt java
@@ -433,7 +458,7 @@ app-admin/syslog-ng json
 # Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
 # Mask the vde flag on tinc because net-misc/vde is not
 # keyworded for arm
-net-misc/tinc vde
+net-vpn/tinc vde
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
@@ -479,7 +504,6 @@ media-gfx/imagemagick autotrace
 app-admin/gkrellm ntlm
 
 # missing keywords
-media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
 
 # projectm not keyworded, bug #314969

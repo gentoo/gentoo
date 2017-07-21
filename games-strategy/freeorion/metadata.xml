@@ -2,12 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>np-hardass@gentoo.org</email>
+    <email>NP-Hardass@gentoo.org</email>
     <name>NP-hardass</name>
   </maintainer>
-  <use>
-    <flag name="cg">Add support for NVIDIA toolkit plugin</flag>
-  </use>
   <longdescription lang="en">
   FreeOrion is a free, open source, turn-based space empire and
   galactic conquest (4X) computer game being designed and built by the

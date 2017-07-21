@@ -9,7 +9,7 @@ DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 SRC_URI="https://download.qt.io/community_releases/${PV%.*}/${PV}/${PN}-opensource-src-${PV}.tar.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~arm64 ppc64 x86"
+	KEYWORDS="amd64 arm ppc64 x86"
 fi
 
 # TODO: qttestlib
@@ -66,6 +66,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.2-system-leveldb.patch"
+	"${FILESDIR}/${PN}-5.6.2-icu-59.patch" # bug 618644
 )
 
 src_prepare() {

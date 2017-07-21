@@ -1,28 +1,30 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
 
 DESCRIPTION="multimode radio decoder for rtl-sdr devices using gnuradio"
 HOMEPAGE="https://www.cgran.org/browser/projects/multimode/trunk"
+
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 if [[ ${PV} == "9999" ]] ; then
 	ESVN_REPO_URI="https://www.cgran.org/svn/projects/multimode/trunk"
 	inherit subversion
-	KEYWORDS=""
 else
 	SRC_URI="http://www.sbrac.org/files/${PN}-r${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 	S="${WORKDIR}"
 fi
 
-DEPEND=""
+DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	>=net-wireless/gr-osmosdr-0.0.1
 	<net-wireless/gnuradio-3.7:=[grc,utils,${PYTHON_USEDEP}]

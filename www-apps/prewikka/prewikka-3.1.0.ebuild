@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,10 +18,10 @@ IUSE="adns"
 
 PYTHON_REQ_USE="ssl"
 
-DEPEND="dev-python/setuptools
-	dev-python/lesscpy
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/lesscpy[${PYTHON_USEDEP}]
 	sys-devel/gettext
-	dev-python/cheetah"
+	dev-python/cheetah[${PYTHON_USEDEP}]"
 
 RDEPEND="dev-python/Babel[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]

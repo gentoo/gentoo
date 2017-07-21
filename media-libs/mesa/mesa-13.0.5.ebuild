@@ -26,7 +26,7 @@ if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -71,7 +71,6 @@ REQUIRED_USE="
 	video_cards_r600?   ( gallium )
 	video_cards_radeonsi?   ( gallium llvm )
 	video_cards_vmware? ( gallium )
-	${PYTHON_REQUIRED_USE}
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.72"
@@ -145,6 +144,7 @@ RDEPEND="${RDEPEND}
 # FIXME: kill the sys-devel/llvm[video_cards_radeon] compat once
 # LLVM < 3.9 is out of the game
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	llvm? (
 		video_cards_radeonsi? ( || (
 			sys-devel/llvm[llvm_targets_AMDGPU]
@@ -172,7 +172,6 @@ DEPEND="${RDEPEND}
 [[ ${PV} == 9999 ]] && DEPEND+="
 	sys-devel/bison
 	sys-devel/flex
-	${PYTHON_DEPS}
 	$(python_gen_any_dep ">=dev-python/mako-0.7.3[\${PYTHON_USEDEP}]")
 "
 
@@ -263,9 +262,8 @@ multilib_src_configure() {
 		gallium_enable video_cards_r600 r600
 		gallium_enable video_cards_radeonsi radeonsi
 		if ! use video_cards_r300 && \
-				! use video_cards_r600 && \
-				! use video_cards_radeonsi; then
-			gallium_enable video_cards_radeon r300 r600 radeonsi
+				! use video_cards_r600; then
+			gallium_enable video_cards_radeon r300 r600
 		fi
 
 		gallium_enable video_cards_freedreno freedreno

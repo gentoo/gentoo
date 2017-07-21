@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="vcs-snapshot"
 fi
 
-inherit python-any-r1 ${GIT_ECLASS}
+inherit python-any-r1 toolchain-funcs ${GIT_ECLASS}
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="http://libclc.llvm.org/"
@@ -29,7 +29,7 @@ fi
 
 LICENSE="|| ( MIT BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -39,8 +39,13 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 src_configure() {
+	# we need to find llvm with matching clang version, so look for
+	# clang first, and then use llvm-config from the same location
+	local clang_path=$(type -P clang) || die
+
 	./configure.py \
-		--with-llvm-config="$(type -P llvm-config)" \
+		--with-cxx-compiler="$(tc-getCXX)" \
+		--with-llvm-config="${clang_path%/*}/llvm-config" \
 		--prefix="${EPREFIX}/usr" || die
 }
 

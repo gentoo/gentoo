@@ -1,0 +1,100 @@
+--- libs/gtkmm2ext/actions.cc.old	2016-02-19 02:28:56.000000000 +0100
++++ libs/gtkmm2ext/actions.cc	2017-06-05 03:32:48.762688016 +0200
+@@ -401,7 +401,7 @@
+ 	   gtkmm2.6, so we fall back to the C level.
+ 	*/
+ 
+-	if (ui_manager == 0) {
++	if (ui_manager == (Glib::RefPtr<Gtk::UIManager>) 0) {
+ 		return RefPtr<Action> ();
+ 	}
+ 
+--- libs/gtkmm2ext/fastmeter.cc.old	2016-02-19 02:28:56.000000000 +0100
++++ libs/gtkmm2ext/fastmeter.cc	2017-06-05 05:01:57.075834979 +0200
+@@ -731,7 +731,7 @@
+ 
+ 	Glib::RefPtr<Gdk::Window> win;
+ 
+-	if ((win = get_window()) == 0) {
++	if ((win = get_window()) == (Glib::RefPtr<Gdk::Window>) 0) {
+ 		queue_draw ();
+ 		return;
+ 	}
+
+--- gtk2_ardour/editor.cc.old	2016-02-19 02:28:56.000000000 +0100
++++ gtk2_ardour/editor.cc	2017-06-05 05:38:20.971481110 +0200
+@@ -714,16 +714,16 @@
+ 	list<Glib::RefPtr<Gdk::Pixbuf> > window_icons;
+ 	Glib::RefPtr<Gdk::Pixbuf> icon;
+ 
+-	if ((icon = ::get_icon ("ardour_icon_16px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_16px")) {
+ 		window_icons.push_back (icon);
+ 	}
+-	if ((icon = ::get_icon ("ardour_icon_22px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_22px")) {
+ 		window_icons.push_back (icon);
+ 	}
+-	if ((icon = ::get_icon ("ardour_icon_32px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_32px")) {
+ 		window_icons.push_back (icon);
+ 	}
+-	if ((icon = ::get_icon ("ardour_icon_48px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_48px")) {
+ 		window_icons.push_back (icon);
+ 	}
+ 	if (!window_icons.empty()) {
+
+--- gtk2_ardour/fft_graph.cc.old	2016-02-19 02:28:56.000000000 +0100
++++ gtk2_ardour/fft_graph.cc	2017-06-05 06:21:56.644212996 +0200
+@@ -203,7 +203,7 @@
+ 
+ 
+ 
+-	if (graph_gc == 0) {
++	if (graph_gc == (Glib::RefPtr<Gdk::GC>) 0) {
+ 		graph_gc = GC::create( get_window() );
+ 	}
+ 
+@@ -213,7 +213,7 @@
+ 
+ 	graph_gc->set_rgb_fg_color( grey );
+ 
+-	if (layout == 0) {
++	if (layout == (Glib::RefPtr<Pango::Layout>) 0) {
+ 		layout = create_pango_layout ("");
+ 		layout->set_font_description (get_style()->get_font());
+ 	}
+
+--- gtk2_ardour/startup.cc.old	2016-02-19 02:28:56.000000000 +0100
++++ gtk2_ardour/startup.cc	2017-06-05 06:41:27.091051601 +0200
+@@ -79,23 +79,23 @@
+ 	set_position (WIN_POS_CENTER);
+ 	set_border_width (12);
+ 
+-	if ((icon_pixbuf = ::get_icon ("ardour_icon_48px")) == 0) {
++	if ((icon_pixbuf = ::get_icon ("ardour_icon_48px")) == (Glib::RefPtr<Gdk::Pixbuf>) 0) {
+ 		throw failed_constructor();
+ 	}
+ 
+ 	list<Glib::RefPtr<Gdk::Pixbuf> > window_icons;
+ 	Glib::RefPtr<Gdk::Pixbuf> icon;
+ 
+-	if ((icon = ::get_icon ("ardour_icon_16px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_16px")) {
+ 		window_icons.push_back (icon);
+ 	}
+-	if ((icon = ::get_icon ("ardour_icon_22px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_22px")) {
+ 		window_icons.push_back (icon);
+ 	}
+-	if ((icon = ::get_icon ("ardour_icon_32px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_32px")) {
+ 		window_icons.push_back (icon);
+ 	}
+-	if ((icon = ::get_icon ("ardour_icon_48px")) != 0) {
++	if (icon = ::get_icon ("ardour_icon_48px")) {
+ 		window_icons.push_back (icon);
+ 	}
+ 	if (!window_icons.empty ()) {
+

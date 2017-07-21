@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="provide basic hardware drivers for logic analyzers and input/output file format support"
+DESCRIPTION="basic hardware drivers for logic analyzers and input/output file format support"
 HOMEPAGE="http://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
@@ -25,7 +25,7 @@ REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} )"
 
 # We also support librevisa, but that isn't in the tree ...
 LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
-	>=dev-libs/libzip-0.8[static-libs(+)]
+	>=dev-libs/libzip-0.8:=[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
 	python? ( ${PYTHON_DEPS} >=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}] )
 	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )

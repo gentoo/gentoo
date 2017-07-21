@@ -24,9 +24,10 @@ IUSE="X debug test"
 RDEPEND="${PYTHON_DEPS}
 	>=sys-libs/libselinux-2.4:=[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.8[${PYTHON_USEDEP}]
+	virtual/python-enum34[${PYTHON_USEDEP}]
 	dev-libs/libpcre:=
 	X? (
-		dev-python/PyQt5[gui,widgets]
+		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
 
 DEPEND="${RDEPEND}

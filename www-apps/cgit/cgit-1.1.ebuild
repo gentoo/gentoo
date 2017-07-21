@@ -18,7 +18,7 @@ SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +highlight +lua +jit"
 
 RDEPEND="

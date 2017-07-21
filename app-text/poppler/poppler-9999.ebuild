@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]] ; then
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SLOT="0/66"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/67"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -35,7 +35,6 @@ COMMON_DEPEND="
 		>=x11-libs/cairo-1.10.0
 		introspection? ( >=dev-libs/gobject-introspection-1.32.1:= )
 	)
-	cairo-qt? ( >=x11-libs/cairo-1.10.0 )
 	curl? ( net-misc/curl )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -65,7 +64,7 @@ DOCS=(AUTHORS NEWS README README-XPDF TODO)
 PATCHES=(
 	"${FILESDIR}/${PN}-0.26.0-qt5-dependencies.patch"
 	"${FILESDIR}/${PN}-0.28.1-fix-multilib-configuration.patch"
-	"${FILESDIR}/${PN}-0.28.1-respect-cflags.patch"
+	"${FILESDIR}/${PN}-0.53.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
 	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
 )
@@ -79,14 +78,11 @@ src_prepare() {
 		sed -i -e 's/-fno-check-new//' cmake/modules/PopplerMacros.cmake || die
 	fi
 
-	# Enable experimental patchset for subpixel font rendering using cairo
-	# backend for poppler-qt4 from https://github.com/giddie/poppler-qt4-cairo-backend.
-	if use cairo-qt; then
-		ewarn "Enabling unsupported, experimental cairo-qt patchset. Please do not report bugs."
-		epatch "${FILESDIR}/cairo-qt-experimental/0001-Cairo-backend-added-to-Qt4-wrapper.patch"
-		epatch "${FILESDIR}/cairo-qt-experimental/0002-Setting-default-Qt4-backend-to-Cairo.patch"
-		epatch "${FILESDIR}/cairo-qt-experimental/0003-Forcing-subpixel-rendering-in-Cairo-backend.patch"
-		epatch "${FILESDIR}/cairo-qt-experimental/0004-Enabling-slight-hinting-in-Cairo-Backend.patch"
+	if ! grep -Fq 'cmake_policy(SET CMP0002 OLD)' CMakeLists.txt ; then
+		sed '/^cmake_minimum_required/acmake_policy(SET CMP0002 OLD)' \
+			-i CMakeLists.txt || die
+	else
+		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
 	fi
 }
 

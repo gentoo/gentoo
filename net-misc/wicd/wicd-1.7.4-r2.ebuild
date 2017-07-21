@@ -26,8 +26,9 @@ RDEPEND="${PYTHON_DEPS}
 		gtk? ( dev-python/pygtk[${PYTHON_USEDEP}] )
 		|| (
 			x11-misc/ktsuss
+			kde-plasma/kde-cli-tools[kdesu]
 			kde-apps/kdesu
-			)
+		)
 	)
 	|| (
 		net-misc/dhcpcd
@@ -123,17 +124,17 @@ src_install() {
 	keepdir /var/lib/wicd/configurations
 	keepdir /etc/wicd/scripts/{postconnect,disconnect,preconnect}
 	keepdir /var/log/wicd
-	use nls || rm -rf "${D}"/usr/share/locale
+	use nls || rm -rv "${D}"/usr/share/locale
 	systemd_dounit "${S}/other/wicd.service"
 
 	if use mac4lin; then
 		rm -rf "${D}"/usr/share/pixmaps/wicd || die "Failed to remove old icons"
-		mv "${WORKDIR}"/wicd "${D}"/usr/share/pixmaps/
+		mv "${WORKDIR}"/wicd "${D}"/usr/share/pixmaps/ || die
 	fi
 	if use ambiance; then
 		# Overwrite tray icons with ambiance icon
-		rm "${WORKDIR}/Icone Wicd Lucid"/signal*
-		cp "${WORKDIR}/Icone Wicd Lucid"/*.png "${D}"/usr/share/pixmaps/wicd/
+		rm "${WORKDIR}/Icone Wicd Lucid"/signal* || die
+		cp "${WORKDIR}/Icone Wicd Lucid"/*.png "${D}"/usr/share/pixmaps/wicd/ || die
 	fi
 	readme.gentoo_create_doc
 }

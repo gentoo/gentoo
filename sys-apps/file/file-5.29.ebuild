@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 DISTUTILS_OPTIONAL=1
 
 inherit eutils distutils-r1 libtool toolchain-funcs multilib-minimal
@@ -23,6 +23,7 @@ HOMEPAGE="http://www.darwinsys.com/file/ http://mx.gw.com/pipermail/file/"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="python static-libs zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	python? (

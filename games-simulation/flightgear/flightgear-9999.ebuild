@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils bash-completion-r1 git-r3
+inherit cmake-utils bash-completion-r1 toolchain-funcs git-r3
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="http://www.flightgear.org/"
@@ -12,16 +12,15 @@ EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
 EGIT_BRANCH="next"
 
 LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS=""
+SLOT="0"
 IUSE="dbus debug examples gdal openmp qt5 test +udev +utils vim-syntax"
 
 # zlib is some strange auto-dep from simgear
-# TODO openmp
 COMMON_DEPEND="
 	dev-db/sqlite:3
 	>=dev-games/openscenegraph-3.2.0[png]
-	~dev-games/simgear-${PV}
+	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
 	media-libs/speexdsp:0
@@ -33,7 +32,9 @@ COMMON_DEPEND="
 	gdal? ( >=sci-libs/gdal-2.0.0:0 )
 	qt5? (
 		>=dev-qt/qtcore-5.4.1:5
+		>=dev-qt/qtdeclarative-5.4.1:5
 		>=dev-qt/qtgui-5.4.1:5
+		>=dev-qt/qtnetwork-5.4.1:5
 		>=dev-qt/qtwidgets-5.4.1:5
 	)
 	udev? ( virtual/udev )
@@ -61,6 +62,10 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
+pkg_pretend() {
+	use openmp && tc-check-openmp
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEMCONVERT=$(usex gdal && usex utils)
@@ -87,7 +92,7 @@ src_configure() {
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
-		-DFG_BUILD_TYPE=Dev
+		-DFG_BUILD_TYPE=Nightly
 		-DFG_DATA_DIR=/usr/share/${PN}
 		-DJSBSIM_TERRAIN=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
@@ -117,7 +122,7 @@ src_install() {
 	doicon -s scalable icons/scalable/${PN}.svg
 	use utils && doicon -s scalable icons/scalable/fgcom.svg
 
-	newmenu package/${PN}.desktop ${PN}.desktop
+	domenu package/org.flightgear.FlightGear.desktop
 
 	# Install bash completion (TODO zsh)
 	# Uncomment below when scripts stops writing files...

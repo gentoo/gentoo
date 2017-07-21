@@ -8,7 +8,7 @@ inherit autotools eutils readme.gentoo versionator
 MAJOR_VER="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Lightweight X11 desktop panel for LXDE"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://wiki.lxde.org/en/LXPanel"
 SRC_URI="mirror://sourceforge/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%20${MAJOR_VER}.x/${P}.tar.xz"
 
 LICENSE="GPL-2"

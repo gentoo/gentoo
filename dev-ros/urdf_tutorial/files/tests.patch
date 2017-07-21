@@ -1,0 +1,18 @@
+commit 3c068fc166d662d1459610a56dc955f3bf22f7fe
+Author: David V. Lu <davidvlu@gmail.com>
+Date:   Sun Jul 2 16:07:37 2017 -0400
+
+    Fix launch test
+
+diff --git a/urdf_tutorial/launch/display.launch b/urdf_tutorial/launch/display.launch
+index 959946a..66a429a 100644
+--- a/urdf_tutorial/launch/display.launch
++++ b/urdf_tutorial/launch/display.launch
+@@ -1,6 +1,6 @@
+ <launch>
+ 
+-  <arg name="model" />
++  <arg name="model" default="$(find urdf_tutorial)/urdf/01-myfirst.urdf"/>
+   <arg name="gui" default="true" />
+   <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+ 

@@ -35,5 +35,4 @@ sparc32plus - userspace emulation target
 sparc64 - userspace emulation target
 sparc - userspace emulation target
 tilegx - TILE-Gx 64-bit userspace emulation target
-unicore32 - userspace emulation target
 x86_64 - userspace emulation target

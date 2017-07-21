@@ -14,12 +14,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
-IUSE="pygobject pyqt4 pyside test"
+IUSE="pygobject qt4 pyside test"
 
 RDEPEND="virtual/udev
 	dev-python/six[${PYTHON_USEDEP}]
 	pygobject? ( dev-python/pygobject:2[$(python_gen_usedep 'python2*')] )
-	pyqt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
+	qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
 	pyside? ( dev-python/pyside[$(python_gen_usedep '!(python3_3)')] )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

@@ -1,0 +1,35 @@
+diff -ur a/include/libssl_compat.h ntp-4.2.8p10/include/libssl_compat.h
+--- ntp-4.2.8p10.orig/include/libssl_compat.h	2017-03-21 06:04:20.000000000 -0700
++++ ntp-4.2.8p10/include/libssl_compat.h	2017-03-30 16:34:03.892173084 -0700
+@@ -37,7 +37,7 @@
+ #endif
+ 
+ /* ----------------------------------------------------------------- */
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L || defined LIBRESSL_VERSION_NUMBER)
+ /* ----------------------------------------------------------------- */
+ 
+ # include <openssl/objects.h>
+diff -ur ntp-4.2.8p10.orig/libntp/a_md5encrypt.c ntp-4.2.8p10/libntp/a_md5encrypt.c
+--- ntp-4.2.8p10.orig/libntp/a_md5encrypt.c	2017-02-01 01:47:13.000000000 -0800
++++ ntp-4.2.8p10/libntp/a_md5encrypt.c	2017-03-30 16:55:49.830229507 -0700
+@@ -11,6 +11,7 @@
+ #include "ntp.h"
+ #include "ntp_md5.h"	/* provides OpenSSL digest API */
+ #include "isc/string.h"
++#include "libssl_compat.h"
+ /*
+  * MD5authencrypt - generate message digest
+  *
+diff -ur ntp-4.2.8p10.orig/libntp/libssl_compat.c ntp-4.2.8p10/libntp/libssl_compat.c
+--- ntp-4.2.8p10.orig/libntp/libssl_compat.c	2017-02-01 01:47:13.000000000 -0800
++++ ntp-4.2.8p10/libntp/libssl_compat.c	2017-03-30 16:52:17.287543795 -0700
+@@ -26,7 +26,7 @@
+ /* ----------------------------------------------------------------- */
+ 
+ /* ----------------------------------------------------------------- */
+-#if defined(OPENSSL) && OPENSSL_VERSION_NUMBER < 0x10100000L
++#if defined(OPENSSL) && (OPENSSL_VERSION_NUMBER < 0x10100000L || defined LIBRESSL_VERSION_NUMBER)
+ /* ----------------------------------------------------------------- */
+ 
+ #include "libssl_compat.h"

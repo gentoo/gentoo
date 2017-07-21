@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/atk
 	dev-libs/glib:2
 	gnome-base/libglade:2.0
 	media-sound/fluidsynth
-	media-sound/jack-audio-connection-kit
+	virtual/jack
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2

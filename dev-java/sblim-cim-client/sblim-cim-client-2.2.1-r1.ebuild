@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2 eutils
 
-DESCRIPTION="A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery"
+DESCRIPTION="A WBEM services client that includes an SLP client for CIM service discovery"
 HOMEPAGE="http://sblim.wiki.sourceforge.net/CimClient"
 SRC_URI="mirror://sourceforge/sblim/${PN}2-${PV}-src.zip"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -38,7 +38,7 @@ python_install() {
 	# distutils does not provide for specifying two different script install
 	# locations. Since we only install one script here the following should
 	# be ok
-	distutils-r1_python_install --install-scripts="/usr/sbin"
+	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"
 }
 
 python_install_all() {

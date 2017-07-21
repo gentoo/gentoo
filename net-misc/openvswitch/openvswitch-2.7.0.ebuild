@@ -13,8 +13,9 @@ SRC_URI="http://openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug modules monitor +ssl"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	|| (
@@ -23,7 +24,7 @@ RDEPEND="
 	)
 	ssl? ( dev-libs/openssl:0= )
 	${PYTHON_DEPS}
-	~dev-python/ovs-${PV}
+	~dev-python/ovs-${PV}[${PYTHON_USEDEP}]
 	dev-python/twisted-core
 	dev-python/twisted-conch
 	dev-python/twisted-web

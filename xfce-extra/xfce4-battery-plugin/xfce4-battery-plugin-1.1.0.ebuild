@@ -5,7 +5,7 @@ EAPI=6
 inherit linux-info fdo-mime gnome2-utils
 
 DESCRIPTION="A battery monitor panel plugin for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-battery-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-battery-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"

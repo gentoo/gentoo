@@ -1,0 +1,21 @@
+--- a/scripts/pmcs-config
++++ b/scripts/pmcs-config
+@@ -11,15 +11,15 @@
+ 
+ # Section for power policy 'performance'
+ performance_HDTimeOff=0		# hdsetup - timeout in seconds
+-performance_HDOptions="-p"	# hdsetup
++performance_HDOptions=""	# hdsetup
+ performance_LaptopMode="stop"	# bdflush
+ 
+ # Section for power policy 'custom'
+ custom_HDTimeOff=60		# hdsetup - timeout in seconds
+-custom_HDOptions="-p"		# hdsetup
++custom_HDOptions=""		# hdsetup
+ custom_LaptopMode="start"	# bdflush
+ 
+ # Section for power policy 'powersave'
+ powersave_HDTimeOff=60		# hdsetup - timeout in seconds
+-powersave_HDOptions="-p"	# hdsetup
++powersave_HDOptions=""		# hdsetup
+ powersave_LaptopMode="start"	# bdflush

@@ -1,0 +1,11 @@
+--- xindy-2.4/make-rules/inputenc/make-inp-rules.pl
++++ xindy-2.4/make-rules/inputenc/make-inp-rules.pl
+@@ -8,7 +8,7 @@
+ 
+ 
+ while (<STDIN>) {
+-  if (/\\indexentry{(.+)--([8-9a-f][0-9a-f])\}\{1\}/) {
++  if (/\\indexentry\{(.+)--([8-9a-f][0-9a-f])\}\{1\}/) {
+     if (!($1 =~ /inputenc Error/)) {
+       $i = hex($2);
+       $macro = $1;

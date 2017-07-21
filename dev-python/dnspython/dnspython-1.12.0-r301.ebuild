@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -22,7 +22,6 @@ IUSE="examples test"
 RDEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]
 	!dev-python/dnspython:0"
 DEPEND="${RDEPEND}
-	!dev-python/dnspython:0
 	app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"

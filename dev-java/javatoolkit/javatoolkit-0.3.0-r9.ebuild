@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 python_prepare_all() {
@@ -22,7 +22,7 @@ python_prepare_all() {
 		"${FILESDIR}/${P}-python2.6.patch"
 		"${FILESDIR}/${P}-no-pyxml.patch"
 	)
-	hprefixify setup.py
+	hprefixify src/py/buildparser src/py/findclass setup.py
 
 	distutils-r1_python_prepare_all
 }

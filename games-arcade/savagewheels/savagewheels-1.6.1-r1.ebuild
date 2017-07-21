@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="debug fmod sound"
+IUSE="fmod sound"
 
 RDEPEND="
 	media-libs/libsdl
@@ -35,7 +35,7 @@ REQUIRED_USE="fmod? ( sound )"
 src_unpack() {
 	unpack ${P}.tar.gz
 
-	cp "${FILESDIR}/${PN}.in" "${S}"
+	cp "${FILESDIR}/${PN}.in" "${S}" || die
 	mkdir "${WORKDIR}/${GAMEDATA}" ||
 		die "Failed to make directory: ${WORKDIR}/${GAMEDATA}"
 	cd "${WORKDIR}/${GAMEDATA}" ||
@@ -44,26 +44,10 @@ src_unpack() {
 }
 
 src_configure() {
-	local mycmakeargs=()
-
-	if use debug; then
-		CMAKE_BUILD_TYPE=Debug
-	fi
-
-	if use sound; then
-		if use fmod; then
-			mycmakeargs+=( -DSOUND=FMOD -DFMOD_PATH=/opt/fmodex/api )
-		else
-			mycmakeargs+=( -DSOUND=YES )
-		fi
-	else
-		mycmakeargs+=( -DSOUND=NO )
-	fi
-
-	mycmakeargs+=(
-		-DCMAKE_INSTALL_DATADIR=/usr/share/${PN}
-		-DCMAKE_INSTALL_LIBEXECDIR=/usr/libexec/${PN}
-		-DCMAKE_INSTALL_PREFIX=/usr
+	local mycmakeargs=(
+		-DCMAKE_INSTALL_DATADIR=share/${PN}
+		-DCMAKE_INSTALL_LIBEXECDIR=libexec/${PN}
+		$(usex sound $(usex fmod '-DSOUND=FMOD -DFMOD_PATH=/opt/fmodex/api' '-DSOUND=YES') '-DSOUND=NO')
 	)
 	cmake-utils_src_configure
 }
@@ -71,6 +55,6 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	insinto "/usr/share/${PN}"
+	insinto /usr/share/${PN}
 	doins -r "${WORKDIR}/${GAMEDATA}/."
 }

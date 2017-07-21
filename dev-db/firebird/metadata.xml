@@ -10,18 +10,13 @@
 	</longdescription>
 	<use>
 		<flag name="superserver">Install SuperServer</flag>
+		<flag name="server">Install the server components of Firebird, not just the client</flag>
 		<flag name="xinetd">Install ClassicServer</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">firebird</remote-id>
 	</upstream>
-	<maintainer type="person">
-		<email>bear1650@mail.ru</email>
-		<name>Andrey Matrosov</name>
-		<description>Proxied maintainer, assign bugs to him</description>
-	</maintainer>
 	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>office@gentoo.org</email>
 	</maintainer>
 </pkgmetadata>

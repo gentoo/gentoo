@@ -13,5 +13,6 @@
 	<flag name="sendto">Enable the nautilus-sendto extension to send files to
 		various locations/devices</flag>
 	<flag name="tracker">Add support for <pkg>app-misc/tracker</pkg> search</flag>
+	<flag restrict="&gt;=gnome-base/nautilus-3.22" name="tracker">Add support for <pkg>app-misc/tracker</pkg> search and batch rename</flag>
 </use>
 </pkgmetadata>

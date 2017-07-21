@@ -1,0 +1,29 @@
+From 9f5536843f2ae641542bb81a3023dbc581fac184 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Tue, 20 Dec 2016 17:13:26 +0000
+Subject: [PATCH] * tools/tiff2pdf.c: fix wrong usage of memcpy() that can
+ trigger unspecified behaviour. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2638
+
+---
+ ChangeLog        | 6 ++++++
+ tools/tiff2pdf.c | 5 +++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiff2pdf.c b/tools/tiff2pdf.c
+index afea414bebf6..78ffa77d123a 100644
+--- a/tools/tiff2pdf.c
++++ b/tools/tiff2pdf.c
+@@ -3593,7 +3593,8 @@ void t2p_tile_collapse_left(
+ 	
+ 	edgescanwidth = (scanwidth * edgetilewidth + (tilewidth - 1))/ tilewidth;
+ 	for(i=0;i<tilelength;i++){
+-		_TIFFmemcpy( 
++                /* We use memmove() since there can be overlaps in src and dst buffers for the first items */
++		memmove( 
+ 			&(((char*)buffer)[edgescanwidth*i]), 
+ 			&(((char*)buffer)[scanwidth*i]), 
+ 			edgescanwidth);
+-- 
+2.12.0
+

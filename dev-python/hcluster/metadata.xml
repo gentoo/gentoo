@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -17,5 +17,6 @@
   implementation of this library is in C for efficiency.</longdescription>
 	<upstream>
 		<remote-id type="google-code">scipy-cluster</remote-id>
+		<remote-id type="pypi">hcluster</remote-id>
 	</upstream>
 </pkgmetadata>

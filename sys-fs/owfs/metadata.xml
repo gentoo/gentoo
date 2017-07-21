@@ -20,7 +20,6 @@
 		<flag name="fuse">Enable building the FUSE-based OWFS client (owfs)</flag>
 		<flag name="httpd">Enable building the OWFS web server (owhttpd)</flag>
 		<flag name="parport">Enable support for the DS1410E parallel port adapter</flag>
-		<flag name="server">Enable building the OWFS server (owserver)</flag>
 		<flag name="zeroconf">Enables support for zero-configuration networking via <pkg>net-dns/avahi</pkg></flag>
 	</use>
 </pkgmetadata>

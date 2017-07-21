@@ -12,7 +12,7 @@ inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 MY_P="${P}DrO_o"
 
 DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
-HOMEPAGE="http://xmms2.org/wiki/Main_Page"
+HOMEPAGE="https://xmms2.org/wiki/Main_Page"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
@@ -51,7 +51,7 @@ RDEPEND="server? (
 		musepack? ( media-sound/musepack-tools )
 		ofa? ( media-libs/libofa )
 		pulseaudio? ( media-sound/pulseaudio )
-		samba? ( >=net-fs/samba-4.2[client] )
+		samba? ( >=net-fs/samba-4.2 )
 		sid? ( media-sound/sidplay
 			media-libs/resid )
 		sndfile? ( media-libs/libsndfile )

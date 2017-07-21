@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Christoph Junghans <junghans@gentoo.org> (14 Feb 2017)
+# Stable-masking mpi support so Boost 1.62 stabilization can go ahead
+# (bug 590244)
+=dev-libs/boost-1.62* mpi
+
 # Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
 # Dependencies not going to stable for now
 dev-util/geany-plugins gtkspell

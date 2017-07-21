@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.cern.ch/clhep"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="doc static-libs test"
 RDEPEND=""

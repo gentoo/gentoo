@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,4 +10,7 @@
 		data to and from WAV files. It is here to help you make fast use of Audio
 		data in your Haskell programs and thus encourage many more audio projects in Haskell.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">robertmassaioli/wavy</remote-id>
+	</upstream>
 </pkgmetadata>

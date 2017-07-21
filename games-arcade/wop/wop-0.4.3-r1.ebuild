@@ -37,7 +37,8 @@ src_prepare() {
 		woprc \
 		|| die "sed failed"
 	epatch "${FILESDIR}"/${P}-Makefile.patch \
-		"${FILESDIR}"/${P}-gcc43.patch
+		"${FILESDIR}"/${P}-gcc43.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_compile() {

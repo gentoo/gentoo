@@ -10,9 +10,10 @@
      <name>Gentoo TeX Project</name>
   </maintainer>
 <longdescription lang="en">
-Support for languages not otherwise listed, including Thai,
-Vietnamese, Hebrew, Indonesian, and plenty more.  The split is
-made simply on the basis of the size of the support, to keep
-both collection sizes and the number of collections reasonable.
+Support for languages not otherwise listed, including Indic,
+Thai, Vietnamese, Hebrew, Indonesian, African languages, and
+plenty more.  The split is made simply on the basis of the size
+of the support, to keep both collection sizes and the number of
+collections reasonable.
 </longdescription>
 </pkgmetadata>

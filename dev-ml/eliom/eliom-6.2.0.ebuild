@@ -23,7 +23,7 @@ SLOT="0/${PV}"
 IUSE="doc +ocamlopt +ppx"
 
 RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]
-	>=dev-ml/js_of_ocaml-2.8.2:=
+	>=dev-ml/js_of_ocaml-2.8.2:=[xml]
 	>=www-servers/ocsigenserver-2.8:=
 	>=dev-ml/tyxml-4:=
 	>=dev-ml/deriving-0.6:=
@@ -32,11 +32,16 @@ RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]
 	dev-ml/react:=
 	dev-ml/ocaml-ssl:=
 	>=dev-ml/lwt-2.5.0:=
+	dev-ml/lwt_react:=
 	dev-ml/camlp4:=
 	ppx? ( >=dev-ml/ppx_tools-0.99.3:= )"
 DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild
 	dev-ml/opam"
+
+src_prepare() {
+	epatch "${FILESDIR}/lwt3.patch"
+}
 
 src_compile() {
 	if use ocamlopt ; then

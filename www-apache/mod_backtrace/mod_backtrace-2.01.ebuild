@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit apache-module depend.apache
 
 DESCRIPTION="Debug segmentation faults in Apache threads"
-HOMEPAGE="http://emptyhammock.com/projects/httpd/diag/"
-SRC_URI="http://emptyhammock.com/downloads/wku_bt-${PV}.zip"
+HOMEPAGE="https://emptyhammock.com/projects/httpd/diag/"
+SRC_URI="https://emptyhammock.com/downloads/wku_bt-${PV}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

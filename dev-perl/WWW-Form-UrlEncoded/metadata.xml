@@ -5,6 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="xs">Install C-Based dependieces for faster performance</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">WWW-Form-UrlEncoded</remote-id>
     <remote-id type="cpan-module">WWW::Form::UrlEncoded</remote-id>

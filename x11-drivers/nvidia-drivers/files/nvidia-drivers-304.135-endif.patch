@@ -1,0 +1,12 @@
+--- a/kernel/os-agp.c
++++ b/kernel/os-agp.c
+@@ -180,8 +180,8 @@
+     {
+         nv_mtrr_del(nv->agp.arch_phys_wc_add_token, agp_info.aper_base,
+                     agp_info.aper_size << 20);
+-#endif
+     }
++#endif
+ release:
+     NV_AGPGART_BACKEND_RELEASE(drm_agp_p, nvl->agp_bridge);
+ bailout:

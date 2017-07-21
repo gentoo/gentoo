@@ -1,20 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
+
 inherit eutils fdo-mime gnome2-utils python-single-r1
 
 MY_PV=${PV#0.}
 MY_PN=Cura
-SRC_URI="https://github.com/daid/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+
 DESCRIPTION="A mesh slicer written in python to produce gcode for 3D printers"
 HOMEPAGE="https://github.com/daid/Cura"
+SRC_URI="https://github.com/daid/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="AGPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/wxpython:3.0[opengl,${PYTHON_USEDEP}]
@@ -26,7 +30,6 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-0.6.34[${PYTHON_USEDEP}]"
 
-REQUIRED_USE="${PYTHON_REQ_USE}"
 PATCHES=( "${FILESDIR}/${P}-nopower.patch" )
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 

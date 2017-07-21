@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>sci-astronomy@gentoo.org</email>
-	<name>Gentoo Astronomy Project</name>
-</maintainer>
-<longdescription lang="en">
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
   Observatory tables, ephemerides and other software data related to
   the Common Astronomy Software Applications (CASA) suite.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="github">casacore/casacore</remote-id>
+	</upstream>
 </pkgmetadata>

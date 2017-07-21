@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
@@ -9,8 +9,7 @@ JAVA_PKG_BSFIX_NAME="build.xml common-build.xml contrib-build.xml"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="High-performance, full-featured text search engine library
-written entirely in Java"
+DESCRIPTION="High-performance, full-featured text search engine written entirely in Java"
 HOMEPAGE="http://lucene.apache.org"
 SRC_URI="mirror://apache/lucene/java/${PV}/${P}-src.tgz"
 LICENSE="Apache-2.0"

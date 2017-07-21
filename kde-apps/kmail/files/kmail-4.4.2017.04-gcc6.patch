@@ -1,0 +1,42 @@
+--- a/kmail/folderview.cpp
++++ b/kmail/folderview.cpp
+@@ -1907,7 +1907,7 @@
+            KGuiItem( i18n( "Go To" ) ),
+            KGuiItem( i18n( "Do Not Go To" ) ), // defaults
+            ":kmail_AskNextFolder",
+-           false
++           0
+          ) == KMessageBox::No
+      )
+     return true; // assume selected (do not continue looping)
+--- a/kmail/kmmainwidget.cpp
++++ b/kmail/kmmainwidget.cpp
+@@ -1588,7 +1588,7 @@
+       i18n( "Security Warning" ),
+       KGuiItem(i18n( "Use HTML" )),
+       KStandardGuiItem::cancel(),
+-      "OverrideHtmlWarning", false);
++      "OverrideHtmlWarning", 0);
+     if( result == KMessageBox::Cancel ) {
+       mPreferHtmlAction->setChecked( false );
+       return;
+@@ -1617,7 +1617,7 @@
+       i18n( "Security Warning" ),
+       KGuiItem(i18n( "Load External References" )),
+       KStandardGuiItem::cancel(),
+-      "OverrideHtmlLoadExtWarning", false);
++      "OverrideHtmlLoadExtWarning", 0);
+     if( result == KMessageBox::Cancel ) {
+       mPreferHtmlLoadExtAction->setChecked( false );
+       return;
+--- a/kmail/kmsender.cpp
++++ b/kmail/kmsender.cpp
+@@ -575,7 +575,7 @@
+         i18n( "Security Warning" ),
+         KGuiItem( i18n( "Send Unencrypted" ) ),
+         KStandardGuiItem::cancel(),
+-        "useCustomTransportWithoutAsking", false );
++        "useCustomTransportWithoutAsking", 0 );
+ 
+       if ( result == KMessageBox::Cancel ) {
+         mProgressItem->cancel();

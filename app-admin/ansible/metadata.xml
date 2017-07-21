@@ -13,14 +13,15 @@
     <email>calchan@gentoo.org</email>
     <name>Denis Dupeyron</name>
   </maintainer>
+  <maintainer type="person">
+    <email>monsieurp@gentoo.org</email>
+    <name>Patrice Clement</name>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">ansible</remote-id>
     <remote-id type="github">ansible/ansible</remote-id>
     <bugs-to>https://github.com/ansible/ansible/issues</bugs-to>
   </upstream>
-  <use>
-    <flag name="keyczar">Enable accelerated mode for old ssh clients/servers</flag>
-  </use>
   <longdescription lang="en">
 Radically simple deployment, model-driven configuration management, and 
 command execution framework.

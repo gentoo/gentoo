@@ -21,9 +21,6 @@
 	<longdescription lang="en">PyMongo is a Python distribution containing tools 
 	for working with MongoDB, and is the recommended way to work 
 	with MongoDB from Python.</longdescription>
-	<use>
-		<flag name="mod_wsgi">Disable the C extension to work with mod_wsgi.</flag>
-	</use>
 	<upstream>
 		<remote-id type="pypi">pymongo</remote-id>
 		<remote-id type="github">mongodb/mongo-python-driver</remote-id>

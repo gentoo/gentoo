@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ros/nodelet
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	media-libs/opencv
+	media-libs/opencv:=
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"

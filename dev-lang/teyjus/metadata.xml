@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>gienah@gentoo.org</email>
-  <name>Mark Wright</name>
-</maintainer>
-<longdescription lang="en">
+  <maintainer type="person">
+    <email>gienah@gentoo.org</email>
+    <name>Mark Wright</name>
+  </maintainer>
+  <longdescription lang="en">
 The Teyjus system is an efficient implementation of the higher-order
 logic programming language Lambda Prolog. The main strength of Lambda
 Prolog, a language developed by Dale Miller and Gopalan Nadathur, is
@@ -25,5 +25,8 @@ significantly improved virtual machine that has been designed by
 Xiaochu Qi as part of her doctoral dissertation work at the University
 of Minnesota. This virtual machine extensively exploits a special form
 of higher-order unification known as pattern unification.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">teyjus/teyjus</remote-id>
+  </upstream>
 </pkgmetadata>

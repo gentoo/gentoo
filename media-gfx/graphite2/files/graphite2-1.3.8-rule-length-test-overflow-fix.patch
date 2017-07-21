@@ -1,0 +1,22 @@
+From 56157cf9845d13452068c297205f96b946126cc2 Mon Sep 17 00:00:00 2001
+From: Martin Hosken <martin_hosken@sil.org>
+Date: Mon, 4 Apr 2016 16:04:16 +0700
+Subject: [PATCH] Resolve rule length test overflow
+
+---
+ src/Pass.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Pass.cpp b/src/Pass.cpp
+index 7289406..1c9c73c 100644
+--- a/src/Pass.cpp
++++ b/src/Pass.cpp
+@@ -635,7 +635,7 @@ bool Pass::testPassConstraint(Machine & m) const
+ bool Pass::testConstraint(const Rule & r, Machine & m) const
+ {
+     const uint16 curr_context = m.slotMap().context();
+-    if (unsigned(r.sort - r.preContext) > m.slotMap().size() - curr_context
++    if (unsigned(r.sort + curr_context - r.preContext) > m.slotMap().size()
+         || curr_context - r.preContext < 0) return false;
+ 
+     vm::slotref * map = m.slotMap().begin() + curr_context - r.preContext;

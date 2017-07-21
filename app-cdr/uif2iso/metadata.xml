@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <longdescription lang="en">
-    uif2iso is a program that can convert images taken with the
-    MagicISO software under Windows, with its proprietary UIF format,
-    into standard ISO9660 images.
-  </longdescription>
+<maintainer type="person">
+    <email>yegortimoshenko@gmail.com</email>
+    <name>Yegor Timoshenko</name>
+</maintainer>
+<maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+</maintainer>
 </pkgmetadata>

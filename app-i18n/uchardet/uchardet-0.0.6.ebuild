@@ -11,7 +11,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 x86"
 IUSE="static-libs test"
 
 src_prepare() {

@@ -1,0 +1,2 @@
+# arguments for clair config
+command_args="-config=/etc/clair/config.yaml"

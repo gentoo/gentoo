@@ -1,0 +1,36 @@
+From dc2834f708a6d857b1a7f9587d5a28af271103e5 Mon Sep 17 00:00:00 2001
+From: Peter-Levine <plevine457@gmail.com>
+Date: Mon, 20 Mar 2017 22:13:21 -0400
+Subject: [PATCH] Allow destructor to throw when building with >=C++11
+
+After C++11, destructors default to `noexcept(true)`.  Thus, any throw statements in destructors become calls to `std::terminate()`.  To enable the intended throw statement, the destructor must be explicitly marked `noexcept(false)`.
+---
+ src/alloc/alloc_mmap/mmap_mem.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/alloc/alloc_mmap/mmap_mem.cpp b/src/alloc/alloc_mmap/mmap_mem.cpp
+index 17c189e..2637533 100644
+--- a/src/alloc/alloc_mmap/mmap_mem.cpp
++++ b/src/alloc/alloc_mmap/mmap_mem.cpp
+@@ -21,6 +21,12 @@
+    #define MAP_FAILED -1
+ #endif
+ 
++#if __cplusplus >= 201103L
++#define NOEXCEPT noexcept(false)
++#else
++#define NOEXCEPT
++#endif
++
+ namespace Botan {
+ 
+ namespace {
+@@ -66,7 +72,7 @@ void* MemoryMapping_Allocator::alloc_block(size_t n)
+                throw MemoryMapping_Failed("Could not unlink temporary file");
+             }
+ 
+-         ~TemporaryFile()
++         ~TemporaryFile() NOEXCEPT
+             {
+             /*
+             * We can safely close here, because post-mmap the file

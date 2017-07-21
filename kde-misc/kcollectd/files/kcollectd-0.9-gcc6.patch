@@ -1,0 +1,52 @@
+Description: fix FTBFS with gcc-6
+Author: Logan Rosen <logan@ubuntu.com>
+Acked-By: Mattia Rizzolo <mattia@debian.org>
+Bug-Debian: https://bugs.debian.org/831129
+Last-Update: 2016-10-10
+
+--- a/kcollectd/graph.cc
++++ b/kcollectd/graph.cc
+@@ -564,9 +564,9 @@
+       paint.setPen(Qt::NoPen);
+       paint.setBrush(QBrush(color_minmax[color_nr++ % 8]));
+       for(int i=0; i<size; ++i) {
+-	while (i<size && (isnan(min_data[i]) || isnan(max_data[i]))) ++i;
++	while (i<size && (std::isnan(min_data[i]) || std::isnan(max_data[i]))) ++i;
+ 	int l = i;
+-	while (i<size && !isnan(min_data[i]) && !isnan(max_data[i])) ++i;
++	while (i<size && !std::isnan(min_data[i]) && !std::isnan(max_data[i])) ++i;
+ 	const int asize = i-l;
+ 	points.resize(asize*2);
+ 	int k;
+@@ -597,9 +597,9 @@
+     if (!avg_data.empty()) {
+       paint.setPen(color_line[color_nr++ % 8]);
+       for(int i=0; i<size; ++i) {
+-	while (i<size && isnan(avg_data[i])) ++i;
++	while (i<size && std::isnan(avg_data[i])) ++i;
+ 	int l = i;
+-	while (i<size && !isnan(avg_data[i])) ++i;
++	while (i<size && !std::isnan(avg_data[i])) ++i;
+ 	const int asize = i-l;
+ 	points.resize(asize);
+ 	for(int k=0; k<asize; ++k, ++l) {
+--- a/kcollectd/misc.cc
++++ b/kcollectd/misc.cc
+@@ -119,7 +119,7 @@
+   // process avg_data
+   if (!avg_data.empty()) {
+     for(std::size_t i=0; i<size; ++i) {
+-      if (isnan(avg_data[i])) continue;
++      if (std::isnan(avg_data[i])) continue;
+       valid = true;
+       if (min > avg_data[i]) min = avg_data[i];
+       if (max < avg_data[i]) max = avg_data[i];
+@@ -129,7 +129,7 @@
+   // process min/max-data
+   if (!min_data.empty() && !max_data.empty()) {  
+     for(std::size_t i=0; i<size; ++i) {
+-      if (isnan(min_data[i]) || isnan(max_data[i])) continue;
++      if (std::isnan(min_data[i]) || std::isnan(max_data[i])) continue;
+       valid = true;
+       if (min > min_data[i]) min = min_data[i];
+       if (max < min_data[i]) max = min_data[i];

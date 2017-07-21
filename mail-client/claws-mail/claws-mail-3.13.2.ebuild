@@ -22,6 +22,7 @@ REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
+	python? ( ${PYTHON_REQUIRED_USE} )
 	smime? ( pgp )"
 
 COMMONDEPEND=">=sys-devel/gettext-0.12.1

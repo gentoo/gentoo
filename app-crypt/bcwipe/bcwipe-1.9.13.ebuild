@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils versionator
+inherit versionator
 
 MY_PV="$(replace_version_separator 2 -)"
 
@@ -15,7 +15,7 @@ SRC_URI="https://www.jetico.com/linux/BCWipe-${MY_PV}.tar.gz
 LICENSE="bestcrypt"
 SLOT="0"
 IUSE="doc"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 DEPEND=""
 RDEPEND=""

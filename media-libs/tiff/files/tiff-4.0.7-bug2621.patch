@@ -1,0 +1,49 @@
+From d7045ed1501ec99c4e56174813bb1cb5c9a559ef Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 12:19:32 +0000
+Subject: [PATCH] * tools/tiffcrop.c: add 3 extra bytes at end of strip buffer
+ in readSeparateStripsIntoBuffer() to avoid read outside of heap allocated
+ buffer. Reported by Agostina Sarubo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2621
+
+---
+ ChangeLog        |  7 +++++++
+ tools/tiffcrop.c | 14 ++++++++++++--
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiffcrop.c b/tools/tiffcrop.c
+index bdcbd63ed70b..9122aab37530 100644
+--- a/tools/tiffcrop.c
++++ b/tools/tiffcrop.c
+@@ -4815,10 +4815,17 @@ static int readSeparateStripsIntoBuffer (TIFF *in, uint8 *obuf, uint32 length,
+   nstrips = TIFFNumberOfStrips(in);
+   strips_per_sample = nstrips /spp;
+ 
++  /* Add 3 padding bytes for combineSeparateSamples32bits */
++  if( (size_t) stripsize > 0xFFFFFFFFU - 3U )
++  {
++      TIFFError("readSeparateStripsIntoBuffer", "Integer overflow when calculating buffer size.");
++      exit(-1);
++  }
++
+   for (s = 0; (s < spp) && (s < MAX_SAMPLES); s++)
+     {
+     srcbuffs[s] = NULL;
+-    buff = _TIFFmalloc(stripsize);
++    buff = _TIFFmalloc(stripsize + 3);
+     if (!buff)
+       {
+       TIFFError ("readSeparateStripsIntoBuffer", 
+@@ -4827,6 +4834,9 @@ static int readSeparateStripsIntoBuffer (TIFF *in, uint8 *obuf, uint32 length,
+         _TIFFfree (srcbuffs[i]);
+       return 0;
+       }
++    buff[stripsize] = 0;
++    buff[stripsize+1] = 0;
++    buff[stripsize+2] = 0;
+     srcbuffs[s] = buff;
+     }
+ 
+-- 
+2.12.0
+

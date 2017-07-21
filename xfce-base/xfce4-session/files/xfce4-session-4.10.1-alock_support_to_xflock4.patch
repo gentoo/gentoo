@@ -1,8 +1,8 @@
 http://bugs.gentoo.org/501370
 http://bugzilla.xfce.org/show_bug.cgi?id=10679
 
---- scripts/xflock4
-+++ scripts/xflock4
+--- a/scripts/xflock4
++++ b/scripts/xflock4
 @@ -35,7 +35,8 @@
  # else run another access locking utility, if installed
  for lock_cmd in \

@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 IUSE_INPUT_DEVICES="
 	input_devices_acecad
@@ -80,6 +80,7 @@ IUSE_VIDEO_CARDS="
 	video_cards_tseng
 	video_cards_vesa
 	video_cards_via
+	video_cards_vc4
 	video_cards_virtualbox
 	video_cards_vmware
 	video_cards_voodoo
@@ -155,6 +156,7 @@ PDEPEND="
 	video_cards_tga?           ( x11-drivers/xf86-video-tga )
 	video_cards_trident?       ( x11-drivers/xf86-video-trident )
 	video_cards_tseng?         ( x11-drivers/xf86-video-tseng )
+	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )

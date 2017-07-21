@@ -1,0 +1,25 @@
+See https://bugs.gentoo.org/show_bug.cgi?id=620952
+
+From 54b5a09f00c027da280361b30d32a4ff309ba3ab Mon Sep 17 00:00:00 2001
+From: Poul-Henning Kamp <phk@FreeBSD.org>
+Date: Tue, 28 Mar 2017 18:44:12 +0000
+Subject: [PATCH] Try to confuse GCC to not doing FP brain-damage.
+
+Fixes #1875 (maybe)
+---
+ bin/varnishd/mgt/mgt_param_tweak.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/varnishd/mgt/mgt_param_tweak.c b/bin/varnishd/mgt/mgt_param_tweak.c
+index 12a7a52ef..b26581e2e 100644
+--- a/bin/varnishd/mgt/mgt_param_tweak.c
++++ b/bin/varnishd/mgt/mgt_param_tweak.c
+@@ -52,7 +52,7 @@ static int
+ tweak_generic_double(struct vsb *vsb, volatile double *dest,
+     const char *arg, const char *min, const char *max, const char *fmt)
+ {
+-	double u, minv = 0, maxv = 0;
++	volatile double u, minv = 0, maxv = 0;
+ 
+ 	if (arg != NULL) {
+ 		if (min != NULL) {

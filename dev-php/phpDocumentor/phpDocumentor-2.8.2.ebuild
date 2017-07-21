@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-DESCRIPTION="The phpDocumentor package provides automatic documenting of php api directly from the source"
+DESCRIPTION="Automatic documenting of php api directly from the source"
 HOMEPAGE="http://phpdoc.org"
 SRC_URI="https://github.com/${PN}/${PN}2/releases/download/v${PV}/${PN}.phar -> ${P}.phar"
 

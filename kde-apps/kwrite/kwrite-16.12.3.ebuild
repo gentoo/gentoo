@@ -4,12 +4,12 @@
 EAPI=6
 
 KMNAME="kate"
-KDE_HANDBOOK="true"
+KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="KDE simple text editor"
 HOMEPAGE="https://www.kde.org/applications/utilities/kwrite"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	$(add_frameworks_dep kactivities)
@@ -34,9 +34,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_addons=FALSE
 		-DBUILD_kate=FALSE
-		-DBUILD_katepart=FALSE
-		$(cmake-utils_use_find_package handbook DocTools)
 	)
+	use handbook && mycmakeargs+=( -DBUILD_katepart=FALSE )
 
 	kde5_src_configure
 }

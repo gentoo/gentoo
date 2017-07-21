@@ -73,102 +73,276 @@ UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
 
 #//------------------------------------------------------------------------------
 
-# Eblit Handling Functions
-#
-# They'll likely be superseded someday by better ideas, possibly elibs.
+err_disabled_mach() {
+	# Get args
+	local m_name="${1}"
+	local m_abbr="${2}"
+	local m_use="${3}"
+	local is_test="${4}"
 
-# eblit-core
-# Usage: <function> [version]
-# Main eblit engine
-eblit-core() {
-	local e v func=$1 ver=$2
-	for v in ${ver:+-}${ver} -${PVR} -${PV} "" ; do
-		e="${FILESDIR}/eblits/${func}${v}.eblit"
-		if [[ -e ${e} ]] ; then
-			. "${e}"
-			[[ ${func} == pkg_* ]] && eval "${func}() { eblit-run ${func} ${ver} ; }"
-			return 0
-		fi
+	# Get stable version, if exists
+	local stable_ver="SV_${m_abbr}"
+	stable_ver="${!stable_ver}"
+
+	# See if this machine needs a USE passed or skip dying
+	local has_use
+	[ ! -z "${m_use}" -a "${m_use}" != "skip" ] && has_use="USE=\"${m_use}\" "
+
+	# Print error && (maybe) die
+	echo -e ""
+	if [ "${is_test}" != "test" ]; then
+		eerror "${m_name} Support has been disabled in this ebuild"
+		eerror "revision.  If you wish to merge ${m_name} sources, then"
+		eerror "run ${has_use}emerge =mips-sources-${stable_ver}"
+		[ "${m_use}" != "skip" ] && die "${m_name} Support disabled."
+	else
+		ewarn "${m_name} Support has been marked as needing testing in this"
+		ewarn "ebuild revision.  This usually means that any patches to support"
+		ewarn "${m_name} have been forward ported and maybe even compile-tested,"
+		ewarn "but not yet booted on real hardware, possibly due to a lack of access"
+		ewarn "to such hardware.  If you happen to boot this kernel and have no"
+		ewarn "problems at all, then please inform the maintainer.  Otherwise, if"
+		ewarn "experience a bug, an oops/panic, or some other oddity, then please"
+		ewarn "file a bug at bugs.gentoo.org, and assign it to the mips team."
+	fi
+
+	return 0
+}
+
+err_only_one_mach_allowed() {
+	echo -e ""
+	eerror "A patchset for a specific machine-type has already been selected."
+	eerror "No other patches for machines-types are permitted.  You will need a"
+	eerror "separate copy of the kernel sources for each different machine-type"
+	eerror "you want to build a kernel for."
+	die "Only one machine-type patchset allowed"
+}
+
+pkg_postinst() {
+	# Symlink /usr/src/linux as appropriate
+	local my_ksrc="${S##*/}"
+	for x in {ip27,ip28,ip30}; do
+		use ${x} && my_ksrc="${my_ksrc}.${x}"
 	done
-	return 1
-}
 
-# eblit-include
-# Usage: [--skip] <function> [version]
-# Includes an "eblit" -- a chunk of common code among ebuilds in a given
-# package so that its functions can be sourced and utilized within the
-# ebuild.
-eblit-include() {
-	local skipable=false r=0
-	[[ $1 == "--skip" ]] && skipable=true && shift
-	[[ $1 == pkg_* ]] && skipable=true
-
-	[[ -z $1 ]] && die "Usage: eblit-include <function> [version]"
-	eblit-core $1 $2
-	r="$?"
-	${skipable} && return 0
-	[[ "$r" -gt "0" ]] && die "Could not locate requested eblit '$1' in ${FILESDIR}/eblits/"
-}
-
-# eblit-run-maybe
-# Usage: <function>
-# Runs a function if it is defined in an eblit
-eblit-run-maybe() {
-	[[ $(type -t "$@") == "function" ]] && "$@"
-}
-
-# eblit-run
-# Usage: <function> [version]
-# Runs a function defined in an eblit
-eblit-run() {
-	eblit-include --skip common "${*:2}"
-	eblit-include "$@"
-	eblit-run-maybe eblit-$1-pre
-	eblit-${PN}-$1
-	eblit-run-maybe eblit-$1-post
-}
-
-# eblit-pkg
-# Usage: <phase> [version]
-# Runs the pkg_* functions AND evals them so they're included in the binpkgs
-eblit-pkg() {
-	[[ -z $1 ]] && die "Usage: eblit-pkg <phase> [version]"
-	eblit-core pkg_$1 $2
-}
-
-#//------------------------------------------------------------------------------
-
-load_eblit_funcs() {
-	# This is a sanity check to avoid QA issues.  It prevents
-	# eblits from being referenced during metadata operations.
-	[ -n "${MIPS_SOURCES_EBLITS_LOADED}" ] && return
-
-	# All are in ${FILESDIR}/eblits
-	# If a message for a given machine needs to change,
-	# then we create a new eblit and increment the
-	# version and reference it here.
-	eblit-include err_disabled_mach v1
-	eblit-include err_only_one_mach_allowed v1
-	eblit-include show_ip22_info v3
-	eblit-include show_ip27_info v4
-	eblit-include show_ip28_info v1
-	eblit-include show_ip30_info v5
-	eblit-include show_ip32_info v5
-
-	# This makes sure pkg_setup & pkg_postinst gets into any binpkg.
-	# Neccessary because we can't guarantee FILESDIR is around for binpkgs.
-	eblit-pkg setup v2
-	eblit-pkg postinst v2
-
-	# Eblit load complete
-	MIPS_SOURCES_EBLITS_LOADED=1
+	if [ ! -e "${ROOT}usr/src/linux" ]; then
+		rm -f "${ROOT}usr/src/linux"
+		ln -sf "${my_ksrc}" "${ROOT}/usr/src/linux"
+	fi
 }
 
 pkg_setup() {
-	load_eblit_funcs
-	pkg_setup
+	local arch_is_selected="no"
+	local m_ip m_enable m_name
+
+	# Exclusive machine patchsets
+	# These are not allowed to be mixed together, thus only one of them may be applied
+	# to a tree per merge.
+	for x in									\
+		"ip27 SGI Origin 200/2000"						\
+		"ip28 SGI Indigo2 Impact R10000"					\
+		"ip30 SGI Octane"
+	do
+		set -- ${x}		# Set positional params
+		m_ip="${1}"		# Grab the first param (HW IP for SGI)
+		shift			# Shift the positions
+		m_name="${*}"		# Get the rest (Name)
+
+		if use ${m_ip}; then
+			# Fetch the value indiciating if the machine is enabled or not
+			m_enable="DO_${m_ip/ip/IP}"
+			m_enable="${!m_enable}"
+
+			# Make sure only one of these exclusive machine patches is selected
+			[ "${arch_is_selected}" = "no" ]				\
+				&& arch_is_selected="yes"				\
+				|| err_only_one_mach_allowed
+
+			# Is the machine support disabled or marked as needing testing?
+			[ "${m_enable}" = "test" ]					\
+				&& err_disabled_mach "${m_name}" "${m_ip/ip/IP}" "${m_ip}" "test"
+			[ "${m_enable}" = "no" ]					\
+				&& err_disabled_mach "${m_name}" "${m_ip/ip/IP}" "${m_ip}"
+
+			# Show relevant information about the machine
+			show_${m_ip}_info
+		fi
+	done
+
+	# All other systems that don't have a USE flag go here
+	# These systems have base-line support included in linux-mips git, so
+	# instead of failing, if disabled, we simply warn the user
+	if [ "${arch_is_selected}" = "no" ]; then
+		[ "${DO_IP22}" = "no" ]							\
+			&& err_disabled_mach "SGI Indy/Indigo2 R4x00" "IP22" "skip"	\
+			|| show_ip22_info
+		[ "${DO_IP32}" = "no" ]							\
+			&& err_disabled_mach "SGI O2" "IP32" "skip"			\
+			|| show_ip32_info
+
+	fi
 }
 
-src_unpack() { eblit-run src_unpack v7 ; }
+show_ip22_info() {
+	echo -e ""
+	einfo "IP22 systems with an R5000 processor should work with this release."
+	einfo "The R4x00 series of processors tend to be rather flaky, especially the"
+	einfo "R4600.  If you have to run an R4x00 processor, then try to use an R4400."
+	einfo ""
+	einfo "Some Notes:"
+	einfo "\t- Supported graphics card right now is Newport (XL)."
+	einfo "\t- A driver for Extreme (XZ) does not exist at present."
+	echo -e ""
+}
+
+show_ip27_info() {
+	echo -e ""
+	ewarn "Heavy disk I/O on recent kernels may randomly trigger a VM_BUG_ON_PAGE()"
+	ewarn "in move_freepages() in mm/page_alloc.c.  The exact trigger cause is"
+	ewarn "unknown at this time.  Please report any oops messages from this"
+	ewarn "bug to bugs.gentoo.org (assign to mips@gentoo.org)"
+	echo -e ""
+}
+
+show_ip28_info() {
+	echo -e ""
+	einfo "Support for the Indigo2 Impact R10000 is now in the mainline kernel.  However,"
+	einfo "due to the R10000 Speculative Execution issue that exists with this machine,"
+	einfo "nothing is guaranteed to work correctly.  Consider enabling ${HILITE}CONFIG_KALLSYMS${NORMAL}"
+	einfo "in your kernel so that if the machine Oopes, you'll be able to provide valuable"
+	einfo "feedback that can be used to trace down the crash."
+	echo -e ""
+}
+
+show_ip30_info() {
+	echo -e ""
+	eerror "Things that DON'T work:"
+	eerror "\t- Do not use CONFIG_SLUB, otherwise, you'll get errors when booting"
+	eerror "\t\040\040regarding duplicate /sys/kernel/slab/* entries in sysfs."
+	eerror "\t- Impact (MGRAS) Xorg driver no longer functions due to severe bitrot."
+	eerror "\t- Octane is limited to a maximum of 2GB of memory right now due to a"
+	eerror "\t\040\040hardware quirk in the BRIDGE PCI chip that limits BRIDGE DMA"
+	eerror "\t\040\040addresses to 31-bits when converted into physical addresses."
+	eerror "\t\040\040Patches that attempt to fix the issue are highly welcome."
+	echo -e ""
+	ewarn "Things that might work, but have problems, or are unknown:"
+	ewarn "\t- CONFIG_TRANSPARENT_HUGEPAGE should work now, but there may still be"
+	ewarn "\t\040\040intermittent issues.  Additionally, CONFIG_HUGETLBFS must also be"
+	ewarn "\t\040\040selected for hugepages to work.  If use of this feature continues"
+	ewarn "\t\040\040to trigger random Instruction Bus Errors (IBEs), then it is best to"
+	ewarn "\t\040\040disable the functionality and perform a cold reset of the machine"
+	ewarn "\t\040\040after powering it down for at least 30 seconds."
+	ewarn "\t- Serial support on the Octane uses a very basic UART driver that drives"
+	ewarn "\t\040\040the 16550A chip on the IOC3 directly.  It does not use interrupts,"
+	ewarn "\t\040\040only a polling routine on a timer, which makes it slow and CPU-"
+	ewarn "\t\040\040intensive.  The baud rate is limited to no more than 38.4kbps on"
+	ewarn "\t\040\040this driver.  Patches for getting the Altix IOC3 serial driver to"
+	ewarn "\t\040\040work (which uses DMA and supports faster baud rates) are welcome."
+	ewarn "\t- UHCI Cards are known to have issues, but should still function."
+	ewarn "\t\040\040This issue primarily manifests itself when using pl2303 USB->Serial"
+	ewarn "\t\040\040adapters."
+	ewarn "\t- MENET boards appear to have the four ethernet ports detected, however"
+	ewarn "\t\040\040the six serial ports don't appear to get picked up by the IOC3"
+	ewarn "\t\040\040UART driver.  The NIC part number is also not read correctly"
+	ewarn "\t\040\040from the four Number-In-a-Cans.  Additional testing would be"
+	ewarn "\t\040\040appreciated and patches welcome."
+	ewarn "\t- Other XIO-based devices, like various Impact addons, remain untested"
+	ewarn "\t\040\040and are not guaranteed to work.  This applies to various digital"
+	ewarn "\t\040\040video conversion boards as well."
+	echo -e ""
+	einfo "Things that DO work:"
+	einfo "\t- SMP works again, celebrate!"
+	einfo "\t- Impact (MGRAS) console only."
+	einfo "\t- VPro (Odyssey) console only (no X driver exists yet)."
+	einfo "\t- PCI Card Cages should work for many devices, except certain types like"
+	einfo "\t\040\040PCI-to-PCI bridges (USB hubs, USB flash card readers for example)."
+	einfo "\t- SCSI, RTC, basic PCI, IOC3 Ethernet, keyboard, and mouse.  Please"
+	einfo "\t\040\040report any problems with these devices."
+	echo -e ""
+}
+
+show_ip32_info() {
+	echo -e ""
+	einfo "IP32 systems function well, however there are some notes:"
+	einfo "\t- A sound driver now exists for IP32.  Celebrate!"
+	einfo "\t- Framebuffer console is limited to 4MB.  Anything greater"
+	einfo "\t\040\040specified when building the kernel will likely oops"
+	einfo "\t\040\040or panic the kernel."
+	einfo "\t- X support is limited to the generic fbdev driver.  No X"
+	einfo "\t\040\040gbefb driver exists for O2 yet.  Feel free to submit"
+	einfo "\t\040\040patches!"
+	echo -e ""
+
+	einfo "To Build 64bit kernels for SGI O2 (IP32) or SGI Indy/Indigo2 R4x00 (IP22)"
+	einfo "systems, you need to use the ${GOOD}vmlinux.32${NORMAL} make target."
+	einfo "Once done, boot the ${GOOD}vmlinux.32${NORMAL} file (NOT vmlinux)."
+}
+
+src_unpack() {
+	# Unpack the kernel sources, update to the latest rev (if needed),
+	# and apply the latest patch from linux-mips git.
+	kernel-2_src_unpack
+
+	# Unpack the mips-sources patchset to ${WORKDIR}/mips-patches-${BASE_KV}.
+	echo -e ""
+	cd "${WORKDIR}"
+	unpack "${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+
+	# Create a new folder called  'patch-symlinks' and create symlinks to
+	# all mips-patches in there.  If we want to exclude a patch, we'll
+	# just delete the symlink instead of the actual patch.
+	local psym="patch-symlinks"
+	mkdir "${psym}"
+	cd "${psym}"
+	for x in ../mips-patches-${BASE_KV}/*.patch; do
+		ln -s "${x}" "${x##../mips-patches-*/}"
+	done
+
+	# With symlinks created, setup the variables referencing external
+	# machine patches and if a machine USE flag is enabled, then unset
+	# its corresponding variable.
+	# See 0000_README for the patch numbers and their meanings.
+	local p_generic="51*"
+	local p_ip27="52*" p_ip28="53*" p_ip30="54*"
+	local p_xp="80*"
+	use ip27 && unset p_generic p_ip27
+	use ip28 && unset p_ip28
+	use ip30 && unset p_generic p_ip30
+	use experimental && unset p_xp
+
+	# Remove symlinks for any patches that we don't want applied.  We
+	# do this by looping through all the above variables, and deleting
+	# matching symlinks that point to the corresponding patches.
+	# The remaining symlinks will be applied to the kernel source.
+	#
+	# $P_EXCLUDE is a new var that can be set in an ebuild to exclude
+	# specific patches by wildcarding the patch number.
+	local patchlist="${p_generic} ${p_ip27} ${p_ip28} ${p_ip30} ${p_xp} ${P_EXCLUDE}"
+	for x in $patchlist;
+		do rm -f "./${x}"
+	done
+
+	# Rename the source tree to match the linux-mips git checkout date and
+	# machine type.
+	local fkv="${F_KV%-*}"
+	local v="${fkv}-${GITDATE}"
+	for x in {ip27,ip28,ip30}; do
+		use ${x} && v="${v}.${x}" && break
+	done
+	mv "${WORKDIR}/linux-${fkv/_/-}" "${WORKDIR}/linux-${v}" || die
+	S="${WORKDIR}/linux-${v}"
+
+	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
+	EXTRAVERSION="${EXTRAVERSION}-mipsgit-${GITDATE}"
+	unpack_set_extraversion
+}
+
+src_prepare() {
+	local psym="patch-symlinks"
+
+	# Now go into the kernel source and patch it.
+	cd "${S}"
+	epatch "${WORKDIR}/${psym}"/*.patch
+}
 
 #//------------------------------------------------------------------------------

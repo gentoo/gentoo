@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit autotools eutils gnome2 python-single-r1
 
@@ -14,6 +14,7 @@ LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
 KEYWORDS="~amd64 ~x86"
 IUSE="+introspection systemd"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.37.3:2[dbus]

@@ -17,10 +17,10 @@ KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="test"
 
 DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}]
-	net-misc/tor )
+	net-vpn/tor )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-RDEPEND="net-misc/tor"
+RDEPEND="net-vpn/tor"
 
 DOCS=( docs/{_static,_templates,api,tutorials,{change_log,api,contents,download,faq,index,tutorials}.rst} )
 

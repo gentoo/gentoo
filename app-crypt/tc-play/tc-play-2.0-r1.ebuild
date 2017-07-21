@@ -30,6 +30,10 @@ DOCS=(
 	README.md
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 pkg_setup() {
 	local backend="openssl"
 	use gnutls && local backend="gcrypt"

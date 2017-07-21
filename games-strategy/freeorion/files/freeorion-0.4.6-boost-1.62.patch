@@ -1,0 +1,123 @@
+From 6b971f65dbef4614cd0c9020bcc6670d3f11b961 Mon Sep 17 00:00:00 2001
+From: geoffthemedio <geoffthemedio@gmail.com>
+Date: Thu, 20 Oct 2016 13:27:23 +0200
+Subject: [PATCH] Made Boost version-specific changes more flexible, as they
+ reportedly are needed for 1.62 as well.
+
+---
+ universe/Building.h | 4 ++--
+ universe/Field.h    | 4 ++--
+ universe/Fleet.h    | 4 ++--
+ universe/Planet.h   | 4 ++--
+ universe/Ship.h     | 4 ++--
+ universe/System.h   | 4 ++--
+ 6 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/universe/Building.h b/universe/Building.h
+index 18d4810..b34f400 100644
+--- a/universe/Building.h
++++ b/universe/Building.h
+@@ -69,11 +69,11 @@ class FO_COMMON_API Building : public UniverseObject {
+     template <class T> friend void boost::python::detail::value_destroyer<false>::execute(T const volatile* p);
+     template <class T> friend void boost::checked_delete(T* x);
+ 
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ public:
+ #endif
+     ~Building() {}
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ protected:
+ #endif
+ 
+diff --git a/universe/Field.h b/universe/Field.h
+index f1d454e..5cf67c1 100644
+--- a/universe/Field.h
++++ b/universe/Field.h
+@@ -48,11 +48,11 @@ class FO_COMMON_API Field : public UniverseObject {
+     template <class T> friend void boost::python::detail::value_destroyer<false>::execute(T const volatile* p);
+     template <class T> friend void boost::checked_delete(T* x);
+ 
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ public:
+ #endif
+     ~Field() {}
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ protected:
+ #endif
+ 
+diff --git a/universe/Fleet.h b/universe/Fleet.h
+index a6a1fe0..7b5121c 100644
+--- a/universe/Fleet.h
++++ b/universe/Fleet.h
+@@ -150,11 +150,11 @@ class FO_COMMON_API Fleet : public UniverseObject {
+     template <class T> friend void boost::python::detail::value_destroyer<false>::execute(T const volatile* p);
+     template <class T> friend void boost::checked_delete(T* x);
+ 
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ public:
+ #endif
+     ~Fleet() {}
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ protected:
+ #endif
+ 
+diff --git a/universe/Planet.h b/universe/Planet.h
+index 3b3848e..267e2b1 100644
+--- a/universe/Planet.h
++++ b/universe/Planet.h
+@@ -128,11 +128,11 @@ class FO_COMMON_API Planet :
+     template <class T> friend void boost::python::detail::value_destroyer<false>::execute(T const volatile* p);
+     template <class T> friend void boost::checked_delete(T* x);
+ 
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ public:
+ #endif
+     ~Planet() {}
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ protected:
+ #endif
+ 
+diff --git a/universe/Ship.h b/universe/Ship.h
+index 4881086..db0d5d7 100644
+--- a/universe/Ship.h
++++ b/universe/Ship.h
+@@ -104,11 +104,11 @@ class FO_COMMON_API Ship : public UniverseObject {
+     template <class T> friend void boost::python::detail::value_destroyer<false>::execute(T const volatile* p);
+     template <class T> friend void boost::checked_delete(T* x);
+ 
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ public:
+ #endif
+     ~Ship() {}
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ protected:
+ #endif
+ 
+diff --git a/universe/System.h b/universe/System.h
+index 1563347..47ee4f1 100644
+--- a/universe/System.h
++++ b/universe/System.h
+@@ -134,11 +134,11 @@ class FO_COMMON_API System : public UniverseObject {
+     template <class T> friend void boost::python::detail::value_destroyer<false>::execute(T const volatile* p);
+     template <class T> friend void boost::checked_delete(T* x);
+ 
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ public:
+ #endif
+     ~System() {}
+-#if BOOST_VERSION == 106100
++#if BOOST_VERSION >= 106100
+ protected:
+ #endif
+ 

@@ -153,7 +153,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
 	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
-	tc_version_is_at_least 6.0 && IUSE+=" pie ssp +pch"
+	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
 fi
 
 IUSE+=" ${IUSE_DEF[*]/#/+}"
@@ -177,6 +177,12 @@ if tc_version_is_at_least 4 ; then
 fi
 
 tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0"
+
+if in_iuse objc-gc ; then
+	if tc_version_is_at_least 7 ; then
+		RDEPEND+=" objc-gc? ( >=dev-libs/boehm-gc-7.4.2 )"
+	fi
+fi
 
 if in_iuse graphite ; then
 	if tc_version_is_at_least 5.0 ; then
@@ -233,7 +239,8 @@ S=$(
 
 gentoo_urls() {
 	local devspace="HTTP~vapier/dist/URI HTTP~rhill/dist/URI
-	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI"
+	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI
+	HTTP~tamiko/distfiles/URI"
 	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }

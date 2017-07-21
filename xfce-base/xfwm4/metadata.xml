@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>xfce@gentoo.org</email>
-    <name>XFCE Team</name>
-  </maintainer>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="xpresent">Enable the XPresent extension for sync to vblank</flag>
+	</use>
 </pkgmetadata>

@@ -6,10 +6,10 @@
     <name>Gentoo ML Project</name>
   </maintainer>
   <use>
-	<flag name="async">Enable support of <pkg>dev-ml/async_kernel</pkg>.</flag>
+	<flag name="camlp4">Build with camlp4 syntax extensions.</flag>
     <flag name="deriving">Enable <pkg>dev-ml/deriving</pkg> support for improving the type safety.</flag>
+	<flag name="lwt">Enable <pkg>dev-ml/lwt</pkg> support.</flag>
 	<flag name="ppx">Enables the ppx syntax extension</flag>
-	<flag name="ppx-deriving">Enables deriving support through ppx syntax extensions.</flag>
 	<flag name="react">Enable functionnal reactive programming support.</flag>
   </use>
   <upstream>

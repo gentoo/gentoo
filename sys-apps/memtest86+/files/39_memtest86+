@@ -11,16 +11,14 @@ if [ -f "${memtest}" ] && [ -f "${memtestbsd}" ]; then
 fi
 
 submenu_indentation=""
-if [ "x${multiple_memtest}" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xy ]; then
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
 	submenu_indentation="${grub_tab}"
 	cat <<EOF
 submenu 'Memtest86+' {
 EOF
 fi
 
-
 if [ -f "${memtest}" ]; then
-
 	gettext_printf "Found memtest image: %s\n" "${memtest}" >&2
 
 	device="$("${grub_probe}" --target=device "${memtest}")"
@@ -29,7 +27,7 @@ if [ -f "${memtest}" ]; then
 ${submenu_indentation}menuentry 'Memtest86+' {
 EOF
 
-	if [ "x${submenu_indentation}" != "x" ]; then
+	if [ -n "{submenu_indentation}" ]; then
 		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
 	else
 		prepare_grub_to_access_device "${device}" | grub_add_tab
@@ -42,7 +40,6 @@ EOF
 fi
 
 if [ -f "${memtestbsd}" ]; then
-
 	gettext_printf "Found memtest image: %s\n" "${memtestbsd}" >&2
 
 	device="$("${grub_probe}" --target=device "${memtestbsd}")"
@@ -51,7 +48,7 @@ if [ -f "${memtestbsd}" ]; then
 ${submenu_indentation}menuentry 'Memtest86+ (netbsd)' {
 EOF
 
-	if [ "x${submenu_indentation}" != "x" ]; then
+	if [ -n "${submenu_indentation}" ]; then
 		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
 	else
 		prepare_grub_to_access_device "${device}" | grub_add_tab
@@ -63,7 +60,7 @@ ${submenu_indentation}}
 EOF
 fi
 
-if [ "x${multiple_memtest}" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xy ]; then
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
 	cat <<EOF
 }
 EOF

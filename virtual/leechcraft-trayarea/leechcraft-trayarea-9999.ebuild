@@ -4,13 +4,6 @@
 EAPI=6
 
 DESCRIPTION="Virtual for LeechCraft plugins providing a tray area"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="~app-leechcraft/lc-sb2-${PV}"
-DEPEND=""

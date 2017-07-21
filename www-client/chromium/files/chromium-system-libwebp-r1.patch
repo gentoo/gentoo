@@ -1,0 +1,9 @@
+--- a/build/linux/unbundle/libwebp.gn.orig	2017-05-17 10:12:50.147089090 +0000
++++ b/build/linux/unbundle/libwebp.gn	2017-05-17 10:13:02.763351884 +0000
+@@ -6,5 +6,6 @@
+   libs = [
+     "webp",
+     "webpdemux",
++    "webpmux",
+   ]
+ }

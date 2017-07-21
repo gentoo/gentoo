@@ -1,0 +1,10 @@
+--- dxx-rebirth_v0.59.100-src/SConstruct	2016-12-12 02:47:40.000000000 +0300
++++ dxx-rebirth_v0.59.100-src/SConstruct	2016-12-28 02:11:16.657874914 +0300
+@@ -3488,7 +3488,6 @@
+ 		env = self.env
+ 		user_settings = self.user_settings
+ 
+-		env.Prepend(CXXFLAGS = ['-g', '-O2'])
+ 		# Raspberry Pi?
+ 		if user_settings.raspberrypi:
+ 			rpi_vc_path = user_settings.rpi_vc_path

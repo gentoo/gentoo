@@ -6,7 +6,3 @@ CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
-
-# moved from 64bit-native, TODO: move it upwards
-SYMLINK_LIB="yes"
-LIBDIR_ppc64="lib64"

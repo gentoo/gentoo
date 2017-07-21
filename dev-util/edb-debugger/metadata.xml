@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -10,8 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-	<flag name="legacy-mem-write">Probe if writes to /proc/PID/mem are broken.</flag>
-	<flag name="graphviz">Add support for the Graphviz library</flag>
-	<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
+		<flag name="legacy-mem-write">Probe if writes to /proc/PID/mem are broken.</flag>
+		<flag name="graphviz">Add support for the Graphviz library</flag>
+		<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">eteran/edb-debugger</remote-id>
+	</upstream>
 </pkgmetadata>

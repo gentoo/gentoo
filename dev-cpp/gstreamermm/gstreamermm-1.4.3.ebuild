@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -38,11 +38,15 @@ DEPEND="${RDEPEND}
 # but that's okay, because the rest of dev-cpp/*mm stuff does the same
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PV}-fix-compile.patch
+
 	if ! use examples; then
 		# don't waste time building examples
 		sed -e 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' \
 			-i Makefile.am Makefile.in || die
 	fi
+
+	sed -e 's/ -Werror/ /' -i tests/Makefile.am tests/Makefile.in || die
 
 	gnome2_src_prepare
 	append-cxxflags -std=c++11 #568254 , fixed in master

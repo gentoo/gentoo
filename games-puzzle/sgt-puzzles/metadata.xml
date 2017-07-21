@@ -12,6 +12,5 @@
 	</maintainer>
 	<use>
 		<flag name="gtk3">Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2</flag>
-		<flag name="icons">Use Gentoo packaged icons instead of bundled icons</flag>
 	</use>
 </pkgmetadata>

@@ -1,5 +1,5 @@
---- kmuddy/kmuddy.desktop
-+++ kmuddy/kmuddy.desktop
+--- a/kmuddy/kmuddy.desktop
++++ b/kmuddy/kmuddy.desktop
 @@ -1,6 +1,5 @@
  [Desktop Entry]
  Version=1.0
@@ -7,8 +7,8 @@
  Name=KMuddy
  Type=Application
  Exec=kmuddy -caption "%c" %i %m
---- libs/kmuddyplugin.desktop
-+++ libs/kmuddyplugin.desktop
+--- a/libs/kmuddyplugin.desktop
++++ b/libs/kmuddyplugin.desktop
 @@ -1,6 +1,6 @@
  [Desktop Entry]
 -Encoding=UTF-8
@@ -17,16 +17,16 @@
  X-KDE-ServiceType=KMuddy/Plugin
  X-KDE-Derived=KPluginInfo
  Comment=KMuddy Plugin
---- plugins/converter/kmuddyconverterplugin.desktop
-+++ plugins/converter/kmuddyconverterplugin.desktop
+--- a/plugins/converter/kmuddyconverterplugin.desktop
++++ b/plugins/converter/kmuddyconverterplugin.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
  Name=Profile Converter
  Comment=This plug-in converts profiles from old KMuddy versions.
  ServiceTypes=KMuddy/Plugin
---- plugins/mapper/plugins/standard/kmuddymapper_standard.desktop
-+++ plugins/mapper/plugins/standard/kmuddymapper_standard.desktop
+--- a/plugins/mapper/plugins/standard/kmuddymapper_standard.desktop
++++ b/plugins/mapper/plugins/standard/kmuddymapper_standard.desktop
 @@ -1,6 +1,5 @@
  [Desktop Entry]
  Type=Service
@@ -34,48 +34,48 @@
  Name=Standard
  Comment=The standard mapper tools and views
  ServiceTypes=KMuddy/Mapper/Plugin
---- plugins/scripting/kmuddyscriptingplugin.desktop
-+++ plugins/scripting/kmuddyscriptingplugin.desktop
+--- a/plugins/scripting/kmuddyscriptingplugin.desktop
++++ b/plugins/scripting/kmuddyscriptingplugin.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
  Name=External Scripting
  Comment=Adds support for external scripting.
  ServiceTypes=KMuddy/Plugin
---- plugins/strings/kmuddystringsplugin.desktop
-+++ plugins/strings/kmuddystringsplugin.desktop
+--- a/plugins/strings/kmuddystringsplugin.desktop
++++ b/plugins/strings/kmuddystringsplugin.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
  Name=Strings
  Comment=This plug-in adds many strings functions.
  ServiceTypes=KMuddy/Plugin
---- plugins/test/kmuddytestplugin.desktop
-+++ plugins/test/kmuddytestplugin.desktop
+--- a/plugins/test/kmuddytestplugin.desktop
++++ b/plugins/test/kmuddytestplugin.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
  Name=Testing Plug-in
  Comment=Testing Plug-in
  ServiceTypes=KMuddy/Plugin
---- plugins/vartrigs/kmuddyvartrigplugin.desktop
-+++ plugins/vartrigs/kmuddyvartrigplugin.desktop
+--- a/plugins/vartrigs/kmuddyvartrigplugin.desktop
++++ b/plugins/vartrigs/kmuddyvartrigplugin.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
  Name=Variable Triggers
  Comment=Adds supports for triggers that fire off variable changes.
  ServiceTypes=KMuddy/Plugin
---- plugins/varviewer/kmuddyvarviewerplugin.desktop
-+++ plugins/varviewer/kmuddyvarviewerplugin.desktop
+--- a/plugins/varviewer/kmuddyvarviewerplugin.desktop
++++ b/plugins/varviewer/kmuddyvarviewerplugin.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
  Name=Variable Viewer
  Comment=This plug-in provides a variable viewer window.
  ServiceTypes=KMuddy/Plugin
---- template/kmuddyplugintemplate.desktop
-+++ template/kmuddyplugintemplate.desktop
+--- a/template/kmuddyplugintemplate.desktop
++++ b/template/kmuddyplugintemplate.desktop
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8

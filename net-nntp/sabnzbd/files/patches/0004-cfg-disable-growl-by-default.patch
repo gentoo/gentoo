@@ -1,4 +1,4 @@
-From 395378c67bbae92fcbb450a2353bb44e157e51e2 Mon Sep 17 00:00:00 2001
+From 6574da3da07b789a6cdbeebc8e36da8a0559924b Mon Sep 17 00:00:00 2001
 From: Justin Bronder <jsbronder@gmail.com>
 Date: Tue, 14 Jun 2016 08:38:54 -0400
 Subject: [PATCH 4/5] cfg: disable growl by default
@@ -8,10 +8,10 @@ Subject: [PATCH 4/5] cfg: disable growl by default
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/sabnzbd/cfg.py b/sabnzbd/cfg.py
-index ecfc544..115e46e 100644
+index f06b79e..c66fe91 100644
 --- a/sabnzbd/cfg.py
 +++ b/sabnzbd/cfg.py
-@@ -291,7 +291,7 @@ acenter_prio_queue_done = OptionBool('acenter', 'acenter_prio_queue_done', True)
+@@ -277,7 +277,7 @@ acenter_prio_queue_done = OptionBool('acenter', 'acenter_prio_queue_done', True)
  acenter_prio_other = OptionBool('acenter', 'acenter_prio_other', False)
  
  # [ntfosd]
@@ -20,7 +20,7 @@ index ecfc544..115e46e 100644
  ntfosd_prio_startup = OptionBool('ntfosd', 'ntfosd_prio_startup', True)
  ntfosd_prio_download = OptionBool('ntfosd', 'ntfosd_prio_download', False)
  ntfosd_prio_pp = OptionBool('ntfosd', 'ntfosd_prio_pp', False)
-@@ -305,7 +305,7 @@ ntfosd_prio_queue_done = OptionBool('ntfosd', 'ntfosd_prio_queue_done', True)
+@@ -291,7 +291,7 @@ ntfosd_prio_queue_done = OptionBool('ntfosd', 'ntfosd_prio_queue_done', True)
  ntfosd_prio_other = OptionBool('ntfosd', 'ntfosd_prio_other', False)
  
  # [growl]
@@ -30,5 +30,5 @@ index ecfc544..115e46e 100644
  growl_password = OptionPassword('growl', 'growl_password')
  growl_prio_startup = OptionBool('growl', 'growl_prio_startup', True)
 -- 
-2.7.3
+2.10.2
 

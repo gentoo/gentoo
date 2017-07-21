@@ -1,0 +1,43 @@
+diff -ruN eudev-3.2.2-orig/rules/60-persistent-storage.rules eudev-3.2.2-new/rules/60-persistent-storage.rules
+--- eudev-3.2.2-orig/rules/60-persistent-storage.rules	2016-12-11 16:41:58.000000000 +0100
++++ eudev-3.2.2-new/rules/60-persistent-storage.rules	2017-04-26 23:14:04.197109882 +0200
+@@ -83,6 +83,9 @@
+ # by-id (World Wide Name)
+ ENV{DEVTYPE}=="disk", ENV{ID_WWN_WITH_EXTENSION}=="?*", SYMLINK+="disk/by-id/wwn-$env{ID_WWN_WITH_EXTENSION}"
+ ENV{DEVTYPE}=="partition", ENV{ID_WWN_WITH_EXTENSION}=="?*", SYMLINK+="disk/by-id/wwn-$env{ID_WWN_WITH_EXTENSION}-part%n"
++#(Temporary) Compatibility rule for old broken WWNs in case some uses them:
++ENV{DEVTYPE}=="disk", ENV{ID_WWN_WITH_EXTENSION_REVERSED_DO_NOT_USE}=="?*", SYMLINK+="disk/by-id/wwn-$env{ID_WWN_WITH_EXTENSION_REVERSED_DO_NOT_USE}"
++ENV{DEVTYPE}=="partition", ENV{ID_WWN_WITH_EXTENSION_REVERSED_DO_NOT_USE}=="?*", SYMLINK+="disk/by-id/wwn-$env{ID_WWN_WITH_EXTENSION_REVERSED_DO_NOT_USE}-part%n"
+ 
+ # by-partlabel/by-partuuid links (partition metadata)
+ ENV{ID_PART_ENTRY_UUID}=="?*", SYMLINK+="disk/by-partuuid/$env{ID_PART_ENTRY_UUID}"
+diff -ruN eudev-3.2.2-orig/src/ata_id/ata_id.c eudev-3.2.2-new/src/ata_id/ata_id.c
+--- eudev-3.2.2-orig/src/ata_id/ata_id.c	2016-11-17 22:14:19.000000000 +0100
++++ eudev-3.2.2-new/src/ata_id/ata_id.c	2017-04-26 23:18:51.116127146 +0200
+@@ -645,10 +645,22 @@
+                  * All other values are reserved.
+                  */
+                 word = identify.wyde[108];
+-                if ((word & 0xf000) == 0x5000)
+-                        printf("ID_WWN=0x%1$"PRIu64"x\n"
+-                               "ID_WWN_WITH_EXTENSION=0x%1$"PRIu64"x\n",
+-                               identify.octa[108/4]);
++                if ((word & 0xf000) == 0x5000){
++			uint64_t wwn;
++
++			wwn = identify.wyde[108];
++			wwn <<= 16;
++			wwn |= identify.wyde[109];
++			wwn <<= 16;
++			wwn |= identify.wyde[110];
++			wwn <<= 16;
++			wwn |= identify.wyde[111]; /* Could possibly done nicer ? */ 
++                        printf("ID_WWN=0x%1$" PRIx64 "\n"
++                               "ID_WWN_WITH_EXTENSION=0x%1$" PRIx64 "\n",
++                               wwn);
++			printf("ID_WWN_WITH_EXTENSION_REVERSED_DO_NOT_USE=0x%" PRIu64 "x\n",
++			       identify.octa[108/4]);
++		}
+ 
+                 /* from Linux's include/linux/ata.h */
+                 if (identify.wyde[0] == 0x848a ||

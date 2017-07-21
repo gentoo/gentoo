@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils savedconfig toolchain-funcs
+inherit eutils fdo-mime gnome2-utils savedconfig toolchain-funcs
 
 DESCRIPTION="Simple (or small or suckless) X Image Viewer"
 HOMEPAGE="https://github.com/muennich/sxiv/"

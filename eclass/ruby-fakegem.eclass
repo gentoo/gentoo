@@ -206,7 +206,7 @@ ruby_fakegem_doins() {
 	) || die "failed $0 $@"
 }
 
-# @FUNCTION: ruby_fakegem_newsins()
+# @FUNCTION: ruby_fakegem_newsins
 # @USAGE: file filename
 # @DESCRIPTION:
 # Installs the specified file into the gems directory using the provided filename.
@@ -336,7 +336,7 @@ ruby_fakegem_binwrapper() {
 		# calling the script by default (see for instance the
 		# JRuby-specific commands).
 		local rubycmd=
-		for implementation in ${USE_RUBY}; do
+		for implementation in $(_ruby_get_all_impls); do
 			# ignore non-enabled implementations
 			use ruby_targets_${implementation} || continue
 			if [ -z $rubycmd ]; then
@@ -505,7 +505,7 @@ all_fakegem_install() {
 			[[ -d ${dir} ]] || continue
 
 			pushd ${dir} &>/dev/null || die
-			dohtml -r * || die "failed to install documentation"
+			dodoc -r * || die "failed to install documentation"
 			popd &>/dev/null || die
 		done
 	fi

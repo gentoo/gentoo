@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 SRC_URI="https://download.qt.io/community_releases/${PV%.*}/${PV}/${PN}-opensource-src-${PV}.tar.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 ppc64 x86"
 fi
 
 # TODO: qttestlib
@@ -66,6 +66,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.2-system-leveldb.patch"
+	"${FILESDIR}/${PN}-5.6.2-icu-59.patch" # bug 618644
 )
 
 src_prepare() {
@@ -105,4 +106,14 @@ src_prepare() {
 	sed -i -e '/SUBDIRS += examples/d' Source/QtWebKit.pro || die
 
 	qt5-build_src_prepare
+}
+
+src_install() {
+	qt5-build_src_install
+
+	# bug 572056
+	if [[ ! -f ${D%/}${QT5_LIBDIR}/libQt5WebKit.so ]]; then
+		eerror "${CATEGORY}/${PF} could not build due to a broken ruby environment."
+		die 'Check "eselect ruby" and ensure you have a working ruby in your $PATH'
+	fi
 }

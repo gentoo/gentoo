@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit gnome2-utils distutils-r1 eutils fdo-mime
 
@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
-HOMEPAGE="http://www.qutebrowser.org/ https://github.com/The-Compiler/qutebrowser"
+HOMEPAGE="http://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
 
 LICENSE="GPL-3"
 SLOT="0"

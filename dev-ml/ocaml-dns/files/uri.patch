@@ -1,0 +1,21 @@
+commit 152097361dbe987af5de4efde78ed28c720900a8
+Author: Anil Madhavapeddy <anil@recoil.org>
+Date:   Tue May 30 20:45:06 2017 +0100
+
+    zone_parser: explictly depend on uri.services
+    
+    This seems to have been pulled in implicitly before, but breaks
+    when compiled with jbuilder
+
+diff --git a/_tags b/_tags
+index b38be12..bb5d5c0 100644
+--- a/_tags
++++ b/_tags
+@@ -9,6 +9,7 @@ true : package(re re.str ipaddr uri base64 hashcons cstruct result)
+ "lwt": include
+ <lwt/*.{ml,mli}>: package(lwt mirage-profile)
+ <lwt/dig_unix.*>: package(cmdliner lwt.unix uri.services ipaddr.unix lwt)
++<lib/zone_parser.*>: package(uri.services)
+ <mirage/*.{ml,mli}>: package(lwt duration mirage-time-lwt)
+ <mirage/*.{ml,mli}>: package(mirage-stack-lwt mirage-kv-lwt)
+ 

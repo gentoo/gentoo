@@ -1,0 +1,13 @@
+Index: tools/gn/bootstrap/bootstrap.py
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 75e2eb4cce3ae9554c0a25193712683ac221f6c0..10dd512c085d6476fa40d28b04100dccec30b64f 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -472,6 +472,7 @@ def write_gn_ninja(path, root_gen_dir, options):
+       'base/task_scheduler/post_task.cc',
+       'base/task_scheduler/priority_queue.cc',
+       'base/task_scheduler/scheduler_lock_impl.cc',
++      'base/task_scheduler/scheduler_single_thread_task_runner_manager.cc',
+       'base/task_scheduler/scheduler_worker.cc',
+       'base/task_scheduler/scheduler_worker_pool_impl.cc',
+       'base/task_scheduler/scheduler_worker_pool_params.cc',

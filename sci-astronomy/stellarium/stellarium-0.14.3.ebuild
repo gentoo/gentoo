@@ -88,7 +88,7 @@ src_install() {
 
 	if use stars ; then
 		insinto /usr/share/${PN}/stars/default
-		doins "${DISTDIR}"/stars_[45678]_[12]v0_1*.cat
+		doins "${DISTDIR}"/stars_{4_1,{5,6,7,8}_2}v0_1.cat
 	fi
 	newicon doc/images/stellarium-logo.png ${PN}.png
 }

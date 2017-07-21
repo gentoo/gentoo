@@ -3,6 +3,11 @@
 
 # This is a list of USE flags that should not be used on ia64.
 
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
+# There is no luajit support on ia64. Bug #554376
+luajit
+luajittex
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
 # kwallet integration split from kde to distinct flag
 kwallet
@@ -25,7 +30,6 @@ ipod
 lirc
 pcmcia
 pda
-pkcs11
 scanner
 sms
 v4l

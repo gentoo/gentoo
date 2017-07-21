@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<longdescription>
+		Wine Mono is a package containing Mono and other projects, intended as a replacement for the .NET runtime and class libraries in Wine. It works in conjunction with Wine's builtin mscoree.dll, and it is not intended to be useful for any other purpose.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">makewokherd/wine-mono</remote-id>
+	</upstream>
+</pkgmetadata>

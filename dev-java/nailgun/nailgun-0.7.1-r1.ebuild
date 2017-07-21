@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="a client, protocol, and server for running Java apps without incurring the JVM startup overhead"
+DESCRIPTION="A client, protocol and server for running without incurring JVM startup overhead"
 HOMEPAGE="http://martiansoftware.com/nailgun/index.html"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.zip"
 

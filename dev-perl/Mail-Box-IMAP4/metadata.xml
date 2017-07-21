@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-Box-IMAP4</remote-id>
+    <remote-id type="cpan-module">Mail::Box::IMAP4</remote-id>
+    <remote-id type="cpan-module">Mail::Box::IMAP4::Head</remote-id>
+    <remote-id type="cpan-module">Mail::Box::IMAP4::Message</remote-id>
+    <remote-id type="cpan-module">Mail::Server::IMAP4</remote-id>
+    <remote-id type="cpan-module">Mail::Server::IMAP4::Fetch</remote-id>
+    <remote-id type="cpan-module">Mail::Server::IMAP4::List</remote-id>
+    <remote-id type="cpan-module">Mail::Server::IMAP4::Search</remote-id>
+    <remote-id type="cpan-module">Mail::Server::IMAP4::User</remote-id>
+    <remote-id type="cpan-module">Mail::Transport::IMAP4</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,47 @@
+From d602198f6807bbfa175b6aaaa1bdf1708fce703e Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 22 May 2017 17:37:56 +0200
+Subject: don't check for panel visible during startup
+
+if any kscreen related activities occurred
+during startup, the panel wouldn't be visible
+yet, and this would assert. This often happens
+when a screen gets disabled at startup
+
+CCBUG:377280
+---
+ shell/panelview.cpp   | 1 +
+ shell/shellcorona.cpp | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index 70d74cb..cacf0c0 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -117,6 +117,7 @@ PanelView::~PanelView()
+ 
+ KConfigGroup PanelView::panelConfig(ShellCorona *corona, Plasma::Containment *containment, QScreen *screen)
+ {
++    qWarning()<<"AAAA"<<containment<<screen;
+     if (!containment || !screen) {
+         return KConfigGroup();
+     }
+diff --git a/shell/shellcorona.cpp b/shell/shellcorona.cpp
+index e40da45..b6b5ed8 100644
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -778,7 +778,11 @@ void ShellCorona::screenInvariants() const
+         foreach (const PanelView *panel, panelsForScreen(screen)) {
+             Q_ASSERT(panel->containment());
+             Q_ASSERT(panel->containment()->screen() == id || panel->containment()->screen() == -1);
+-            Q_ASSERT(panel->isVisible());
++            //If any kscreen related activities occurred
++            //during startup, the panel wouldn't be visible yet, and this would assert
++            if (panel->containment()->isUiReady()) {
++                Q_ASSERT(panel->isVisible());
++            }
+         }
+ 
+         screens.insert(screen);
+-- 
+cgit v0.11.2

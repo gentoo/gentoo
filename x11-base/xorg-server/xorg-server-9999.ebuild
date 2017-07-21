@@ -11,8 +11,8 @@ DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 KEYWORDS=""
 
-IUSE_SERVERS="dmx kdrive xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind wayland"
+IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
+IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd +udev unwind xcsecurity"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
@@ -46,7 +46,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXtst-1.0.99.2
 	)
 	glamor? (
-		media-libs/libepoxy
+		media-libs/libepoxy[X]
 		>=media-libs/mesa-10.3.4-r1[egl,gbm]
 		!x11-libs/glamor
 	)
@@ -55,7 +55,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		x11-libs/libXv
 	)
 	xephyr? (
-		x11-libs/libxcb
+		x11-libs/libxcb[xkb]
 		x11-libs/xcb-util
 		x11-libs/xcb-util-image
 		x11-libs/xcb-util-keysyms
@@ -67,7 +67,6 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-10.3.4-r1
 	)
-	tslib? ( >=x11-libs/tslib-1.0 )
 	udev? ( >=virtual/udev-150 )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
@@ -172,7 +171,6 @@ src_configure() {
 		$(use_enable glamor)
 		$(use_enable kdrive)
 		$(use_enable suid install-setuid)
-		$(use_enable tslib)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
@@ -180,6 +178,7 @@ src_configure() {
 		$(use_enable !minimal dri)
 		$(use_enable !minimal dri2)
 		$(use_enable !minimal glx)
+		$(use_enable xcsecurity)
 		$(use_enable xephyr)
 		$(use_enable xnest)
 		$(use_enable xorg)

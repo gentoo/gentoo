@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 inherit cvs ruby-single
 
@@ -39,7 +39,7 @@ SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 src_prepare() {
 	rm -f ${MY_PN}.{wrong*,noregist,not_wrong,hukugougo,notes,requested,pubdic+}
 
-	eapply_user
+	default
 }
 
 cdb_make() {

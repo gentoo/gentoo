@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils qmake-utils
 
 DESCRIPTION="Visual process manager - Qt version of ps/top"
-HOMEPAGE="http://qps.kldp.net/projects/qps/"
+HOMEPAGE="https://kldp.net/qps/"
 SRC_URI="http://kldp.net/frs/download.php/5963/${P}.tar.bz2"
 
 LICENSE="GPL-2"

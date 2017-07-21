@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: oasis.eclass
-# @MAINTAINER: 
+# @MAINTAINER:
 # ml@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
@@ -98,7 +98,7 @@ oasis_src_configure() {
 # @DESCRIPTION:
 # Builds an oasis-based package.
 # Will build documentation if OASIS_BUILD_DOCS is defined and the doc useflag is
-# enabled. 
+# enabled.
 oasis_src_compile() {
 	${OASIS_SETUP_COMMAND:-ocaml setup.ml} -build || die
 	if [ -n "${OASIS_BUILD_DOCS}" ] && use doc; then

@@ -8,10 +8,9 @@
 	<use>
 		<flag name="api-doc-extras">Build documentation for private APIs</flag>
 		<flag name="berkdb"><pkg>sys-libs/db</pkg> support needed to migrate old (pre-3.12 evolution versions) addressbook data</flag>
-		<flag name="gnome-online-accounts">Enable using	<pkg>net-libs/gnome-online-accounts</pkg> for authorization</flag>
-		<flag name="google">Enable Google Contacts support. This will also enable the internal Google authentication support.
-			Please note this last one relies on a deprecated (and vulnerable) <pkg>net-libs/webkit-gtk</pkg> slot.
-			If you want to avoid this dependency, you can disable this support and rely on gnome-online-accounts instead</flag>
+		<flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> based Google authentication support</flag>
+		<flag name="google">Enable internal Google authentication support. If gnome-online-accounts is enabled and used, this is not necessary,
+			but both can be supported at the same time with different setup at runtime</flag>
 		<flag name="weather">Enable optional weather calendar support</flag>
 	</use>
 </pkgmetadata>

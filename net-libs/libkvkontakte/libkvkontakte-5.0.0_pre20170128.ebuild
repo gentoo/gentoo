@@ -7,7 +7,7 @@ KDE_TEST="true"
 inherit kde5
 
 DESCRIPTION="Library for accessing the features of social networking site vkontakte.ru"
-HOMEPAGE="http://www.digikam.org/"
+HOMEPAGE="https://www.digikam.org/"
 SRC_URI="https://dev.gentoo.org/~asturm/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -25,7 +25,6 @@ DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwebkit)
 	$(add_qt_dep qtwidgets)
-	>=dev-libs/qjson-0.7.0
 "
 RDEPEND="${DEPEND}"
 

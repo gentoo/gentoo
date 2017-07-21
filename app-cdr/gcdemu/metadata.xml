@@ -5,6 +5,10 @@
     <email>tetromino@gentoo.org</email>
     <name>Alexandre Rostovtsev</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <upstream>
     <remote-id type="sourceforge">cdemu</remote-id>
   </upstream>

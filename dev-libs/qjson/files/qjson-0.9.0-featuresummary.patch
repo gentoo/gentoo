@@ -1,0 +1,73 @@
+From 7288382029f30b5e6ba7ac91b3b2e5d7f96d239a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 9 Apr 2017 18:41:15 +0200
+Subject: [PATCH 2/2] Use FeatureSummary and simplify by requiring Qt-4.8
+
+---
+ CMakeLists.txt | 26 ++++++++++----------------
+ 1 file changed, 10 insertions(+), 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d0c44bb..5f1305e 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,6 +12,7 @@ if(POLICY CMP0020)
+ endif()
+ 
+ include(GNUInstallDirs)
++include(FeatureSummary)
+ 
+ set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_LIBDIR})
+ 
+@@ -42,14 +43,14 @@ SET(FRAMEWORK_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/Library/Frameworks"
+ # (This will have no effect with CMake < 2.8)
+ SET(QT_USE_IMPORTED_TARGETS TRUE)
+ 
+-option(QT4_BUILD "Force building with Qt4 even if Qt5 is found")
++option(QT4_BUILD "Force building with Qt4 even if Qt5 is found" OFF)
+ IF (NOT QT4_BUILD)
+-  FIND_PACKAGE( Qt5Core QUIET )
++  FIND_PACKAGE( Qt5Core )
++ELSE()
++  MESSAGE ("Forced build with Qt4")
+ ENDIF()
+ 
+ IF (Qt5Core_FOUND)
+-  MESSAGE ("Qt5 found")
+-
+   INCLUDE_DIRECTORIES(${Qt5Core_INCLUDE_DIRS})
+   ADD_DEFINITIONS(${Qt5Core_DEFINITIONS})
+   SET(PC_Requires "Qt5Core")
+@@ -59,20 +60,11 @@ IF (Qt5Core_FOUND)
+   # As moc files are generated in the binary dir, tell CMake
+   # to always look for includes there:
+   set(CMAKE_INCLUDE_CURRENT_DIR ON)
+-  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_USE_QSTRINGBUILDER" )
+-  MESSAGE ("Enable QStringBuilder")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_USE_QSTRINGBUILDER" )
+ ELSE()
+-  MESSAGE ("Qt5 not found, searching for Qt4")
+   # Find Qt4
+-  FIND_PACKAGE( Qt4 4.5 REQUIRED )
+-  # QStringBuilder is supported since Qt 4.8 for both QString and QByteArray
+-  IF (NOT (${QT_VERSION_MINOR} STRLESS "8"))
+-    MESSAGE ("Enable QStringBuilder")
+-    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_USE_QSTRINGBUILDER" )
+-  ELSE()
+-    MESSAGE ("Disable QStringBuilder")
+-  ENDIF()
+-
++  FIND_PACKAGE( Qt4 4.8 REQUIRED QtCore)
++  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_USE_QSTRINGBUILDER" )
+   # Include the cmake file needed to use qt4
+   INCLUDE( ${QT_USE_FILE} )
+   SET(PC_Requires "QtCore")
+@@ -131,3 +123,5 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/QJSON${QJSON_SUFFIX}Config.cmake
+ 
+ ADD_CUSTOM_TARGET(uninstall
+   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
++
++FEATURE_SUMMARY(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.12.2
+

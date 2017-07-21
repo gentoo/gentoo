@@ -1,6 +1,6 @@
-diff -purN kdelibs-4.3.80.orig/kdeui/util/kkeyserver_mac.cpp kdelibs-4.3.80/kdeui/util/kkeyserver_mac.cpp
---- a/kdelibs-4.3.80.orig/kdeui/util/kkeyserver_mac.cpp	2009-12-14 17:05:26.284881642 -0500
-+++ b/kdelibs-4.3.80/kdeui/util/kkeyserver_mac.cpp	2009-12-14 17:11:23.393094384 -0500
+diff -purN kdeui/util/kkeyserver_mac.cpp kdeui/util/kkeyserver_mac.cpp
+--- a/kdeui/util/kkeyserver_mac.cpp	2009-12-14 17:05:26.284881642 -0500
++++ b/kdeui/util/kkeyserver_mac.cpp	2009-12-14 17:11:23.393094384 -0500
 @@ -68,7 +68,7 @@ namespace KKeyServer {
  #ifdef QT_MAC_USE_COCOA
      static TISInputSourceRef lastLayout = 0;

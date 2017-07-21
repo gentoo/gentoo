@@ -31,6 +31,9 @@
     <remote-id type="cpan-module">Net::Twitter::Role::RetryOnError</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::SimulateCursors</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::WrapError</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::WrapResult</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Search</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Types</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::WrappedResult</remote-id>
   </upstream>
 </pkgmetadata>

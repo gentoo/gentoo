@@ -1,35 +1,43 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit eutils python-single-r1 systemd
 
 MY_P="${P/pyicq-t/pyicqt}"
+
 DESCRIPTION="Python based jabber transport for ICQ"
 HOMEPAGE="https://code.google.com/p/pyicqt/"
 SRC_URI="https://pyicqt.googlecode.com/files/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="webinterface"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="net-im/jabber-base"
+DEPEND="${PYTHON_DEPS}
+	net-im/jabber-base"
 RDEPEND="${DEPEND}
-	( || ( ( dev-python/twisted-core[${PYTHON_USEDEP}]
+	|| (
+		(
+			dev-python/twisted-core[${PYTHON_USEDEP}]
 			dev-python/twisted-words[${PYTHON_USEDEP}]
-			dev-python/twisted-web[${PYTHON_USEDEP}] )
-		dev-python/twisted[${PYTHON_USEDEP}] ) )
+			dev-python/twisted-web[${PYTHON_USEDEP}]
+		)
+		dev-python/twisted[${PYTHON_USEDEP}]
+	)
 	webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_USEDEP}] )
 	dev-python/pillow[${PYTHON_USEDEP}]"
 
-src_prepare() {
-	eapply "${FILESDIR}/${P}-python26-warnings.diff"
-	eapply "${FILESDIR}/${P}-pillow-imaging.patch"
-	eapply_user
-}
+S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}/${P}-python26-warnings.diff"
+	"${FILESDIR}/${P}-pillow-imaging.patch"
+)
 
 src_install() {
 	python_moduleinto ${PN}

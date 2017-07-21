@@ -1,0 +1,43 @@
+From e345ce2ad81c85eb8e469b7b959067b2681957ca Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 18 Feb 2017 20:30:26 +0000
+Subject: [PATCH] =?UTF-8?q?*=20libtiff/tif=5Fpixarlog.c:=20fix=20memory=20?=
+ =?UTF-8?q?leak=20in=20error=20code=20path=20of=20PixarLogSetupDecode().?=
+ =?UTF-8?q?=20Patch=20by=20Nicol=C3=A1s=20Pe=C3=B1a.=20Fixes=20http://bugz?=
+ =?UTF-8?q?illa.maptools.org/show=5Fbug.cgi=3Fid=3D2665?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ ChangeLog              | 6 ++++++
+ libtiff/tif_pixarlog.c | 8 +++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/libtiff/tif_pixarlog.c b/libtiff/tif_pixarlog.c
+index 9836dce63450..972ee75e0324 100644
+--- a/libtiff/tif_pixarlog.c
++++ b/libtiff/tif_pixarlog.c
+@@ -699,6 +699,9 @@ PixarLogSetupDecode(TIFF* tif)
+ 	if (sp->user_datafmt == PIXARLOGDATAFMT_UNKNOWN)
+ 		sp->user_datafmt = PixarLogGuessDataFmt(td);
+ 	if (sp->user_datafmt == PIXARLOGDATAFMT_UNKNOWN) {
++                _TIFFfree(sp->tbuf);
++                sp->tbuf = NULL;
++                sp->tbuf_size = 0;
+ 		TIFFErrorExt(tif->tif_clientdata, module,
+ 			"PixarLog compression can't handle bits depth/data format combination (depth: %d)", 
+ 			td->td_bitspersample);
+@@ -706,6 +709,9 @@ PixarLogSetupDecode(TIFF* tif)
+ 	}
+ 
+ 	if (inflateInit(&sp->stream) != Z_OK) {
++                _TIFFfree(sp->tbuf);
++                sp->tbuf = NULL;
++                sp->tbuf_size = 0;
+ 		TIFFErrorExt(tif->tif_clientdata, module, "%s", sp->stream.msg ? sp->stream.msg : "(null)");
+ 		return (0);
+ 	} else {
+-- 
+2.12.0
+

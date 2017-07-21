@@ -1,0 +1,33 @@
+From 4e86c1d61c4b8ab2cbbb31db0031b8e1d1872231 Mon Sep 17 00:00:00 2001
+From: clanmills <robin@clanmills.com>
+Date: Sun, 4 Jun 2017 07:41:03 +0100
+Subject: [PATCH] Fix https://github.com/Exiv2/exiv2/pull/6 for
+ Linux/Cygwin/MacOSX
+
+---
+ config/CMakeChecks.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/config/CMakeChecks.txt b/config/CMakeChecks.txt
+index 8c88aa27..e6100c0f 100644
+--- a/config/CMakeChecks.txt
++++ b/config/CMakeChecks.txt
+@@ -98,13 +98,16 @@ ENDIF( EXIV2_ENABLE_SHARED )
+ 
+ IF( EXIV2_ENABLE_NLS )
+     FIND_PACKAGE(Intl)
+-    if(Intl_FOUND)
++    if(Intl_FOUND AND NOT MSVC)
+         INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+         find_library(LIBINTL_LIBRARY NAMES intl libintl)
+         if(libintl_FOUND)
+             SET(LIBINTL_LIBRARIES ${LIBINTL_LIBRARY})
+         else()
+-            SET(LIBINTL_LIBRARIES -lintl)
++            SET(LIBINTL_LIBRARIES)
++            if ( APPLE OR CYGWIN )
++            	SET(LIBINTL_LIBRARIES -lintl)
++            endif()
+         endif()
+     endif()
+     IF( NOT LOCALEDIR )

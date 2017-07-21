@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>sci@gentoo.org</email>
-	<name>Gentoo Science Project</name>
-</maintainer>
-<longdescription lang="en">
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
   NetCDF (network Common Data Form) is an interface for scientific
   data access and a freely-distributed software library that provides an
   implementation of the interface.  The netCDF library also defines a
@@ -13,5 +13,8 @@
   Together, the interface, library, and format support the creation,
   access, and sharing of scientific data.
   This is the FORTRAN 77 and 90 library on top of the C library.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Unidata/netcdf-fortran</remote-id>
+	</upstream>
 </pkgmetadata>

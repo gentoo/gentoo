@@ -18,6 +18,7 @@
 	<use>
 		<flag name="command-not-found">Enable packagekit support on shell "command not found"</flag>
 		<flag name="cron">Install cron script for auto-update</flag>
+		<flag name="elogind">Enable elogind support to get user session</flag>
 		<flag name="entropy">Enable Entropy backend</flag>
 	</use>
 </pkgmetadata>

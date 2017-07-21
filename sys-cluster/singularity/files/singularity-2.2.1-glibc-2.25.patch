@@ -1,0 +1,28 @@
+ src/lib/loop-control.c  | 1 +
+ src/lib/mount/dev/dev.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/lib/loop-control.c b/src/lib/loop-control.c
+index f9ab2d6f..4bfed843 100644
+--- a/src/lib/loop-control.c
++++ b/src/lib/loop-control.c
+@@ -26,6 +26,7 @@
+ #include <sys/file.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <errno.h> 
+ #include <string.h>
+ #include <fcntl.h>
+diff --git a/src/lib/mount/dev/dev.c b/src/lib/mount/dev/dev.c
+index 547157a4..c994c264 100644
+--- a/src/lib/mount/dev/dev.c
++++ b/src/lib/mount/dev/dev.c
+@@ -25,6 +25,7 @@
+ #include <sys/mount.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ 

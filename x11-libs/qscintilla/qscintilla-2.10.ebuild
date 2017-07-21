@@ -65,33 +65,34 @@ qsci_run_in() {
 
 src_configure() {
 	use qt4 && append-cxxflags -std=gnu++0x
+
 	if use designer; then
 		# prevent building against system version (bug 466120)
 		append-cxxflags -I../Qt4Qt5
 		append-ldflags -L../Qt4Qt5
 	fi
 
-	configure() {
+	qsci_configure() {
 		qsci_run_in Qt4Qt5 eqmake${MULTIBUILD_VARIANT#qt}
 		use designer && qsci_run_in designer-Qt4Qt5 eqmake${MULTIBUILD_VARIANT#qt}
 	}
-	multibuild_foreach_variant run_in_build_dir configure
+	multibuild_foreach_variant run_in_build_dir qsci_configure
 }
 
 src_compile() {
-	compile() {
+	qsci_compile() {
 		qsci_run_in Qt4Qt5 emake
 		use designer && qsci_run_in designer-Qt4Qt5 emake
 	}
-	multibuild_foreach_variant run_in_build_dir compile
+	multibuild_foreach_variant run_in_build_dir qsci_compile
 }
 
 src_install() {
-	install() {
+	qsci_install() {
 		qsci_run_in Qt4Qt5 emake INSTALL_ROOT="${D}" install
 		use designer && qsci_run_in designer-Qt4Qt5 emake INSTALL_ROOT="${D}" install
 	}
-	multibuild_foreach_variant run_in_build_dir install
+	multibuild_foreach_variant run_in_build_dir qsci_install
 
 	DOCS=( ChangeLog NEWS )
 	use doc && HTML_DOCS=( doc/html-Qt4Qt5/. )

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -8,4 +8,7 @@
 	<longdescription>
 		Lua 5.3 lexer, parser and pretty-printer.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">glguy/language-lua</remote-id>
+	</upstream>
 </pkgmetadata>

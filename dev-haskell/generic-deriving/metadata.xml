@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -17,4 +17,7 @@
 		&lt;http://www.haskell.org/haskellwiki/Generics&gt; for more information.
 		Template Haskell code is provided for supporting GHC before version 7.2.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">dreixel/generic-deriving</remote-id>
+	</upstream>
 </pkgmetadata>

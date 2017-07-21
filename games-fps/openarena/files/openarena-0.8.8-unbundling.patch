@@ -1,6 +1,6 @@
 --- openarena-engine-source-0.8.8/Makefile
 +++ openarena-engine-source-0.8.8/Makefile
-@@ -1406,41 +1406,7 @@
+@@ -1406,41 +1406,6 @@
    $(B)/client/l_script.o \
    $(B)/client/l_struct.o \
    \
@@ -21,7 +21,7 @@
 -  $(B)/client/jcsample.o \
 -  $(B)/client/jdapimin.o \
 -  $(B)/client/jdapistd.o \
-   $(B)/client/jdatasrc.o \
+-  $(B)/client/jdatasrc.o \
 -  $(B)/client/jdcoefct.o \
 -  $(B)/client/jdcolor.o \
 -  $(B)/client/jddctmgr.o \
@@ -42,74 +42,6 @@
    \
    $(B)/client/tr_animation.o \
    $(B)/client/tr_backend.o \
---- openarena-engine-source-0.8.8/code/jpeg-6b/jdatasrc.c
-+++ openarena-engine-source-0.8.8/code/jpeg-6b/jdatasrc.c
-@@ -15,9 +15,15 @@
-  */
- 
- /* this is not a core library module, so it doesn't define JPEG_INTERNALS */
--#include "jinclude.h"
--#include "jpeglib.h"
--#include "jerror.h"
-+#include <stdio.h>
-+#include <string.h>
-+#include <jpeglib.h>
-+#include <jerror.h>
-+#undef METHODDEF
-+#define METHODDEF static
-+#undef GLOBAL
-+#define GLOBAL
-+#define SIZEOF(object)   ((size_t) sizeof(object))
- 
- #ifndef MIN
- #define MIN(a, b) ((a)<(b)?(a):(b))
-@@ -44,7 +50,7 @@
-  * before any data is actually read.
-  */
- 
--METHODDEF(void)
-+METHODDEF void
- init_source (j_decompress_ptr cinfo)
- {
-   my_src_ptr src = (my_src_ptr) cinfo->src;
-@@ -90,7 +96,7 @@
-  * the front of the buffer rather than discarding it.
-  */
- 
--METHODDEF(boolean)
-+METHODDEF boolean
- fill_input_buffer (j_decompress_ptr cinfo)
- {
-   my_src_ptr src = (my_src_ptr) cinfo->src;
-@@ -129,7 +135,7 @@
-  * buffer is the application writer's problem.
-  */
- 
--METHODDEF(void)
-+METHODDEF void
- skip_input_data (j_decompress_ptr cinfo, long num_bytes)
- {
-   my_src_ptr src = (my_src_ptr) cinfo->src;
-@@ -170,7 +176,7 @@
-  * for error exit.
-  */
- 
--METHODDEF(void)
-+METHODDEF void
- term_source (j_decompress_ptr cinfo)
- {
-   /* no work necessary here */
-@@ -183,8 +189,8 @@
-  * for closing it after finishing decompression.
-  */
- 
--GLOBAL(void)
--jpeg_mem_src (j_decompress_ptr cinfo, unsigned char *inbuf, size_t size)
-+GLOBAL void
-+jpeg_mem_src (j_decompress_ptr cinfo, unsigned char *inbuf, unsigned long size)
- {
-   my_src_ptr src;
- 
 --- openarena-engine-source-0.8.8/code/renderer/tr_image_jpg.c
 +++ openarena-engine-source-0.8.8/code/renderer/tr_image_jpg.c
 @@ -31,7 +31,7 @@

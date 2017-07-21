@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,20 +14,18 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=${P/_}
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 arm ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+dbus debug +qt5 webui +X"
-REQUIRED_USE="
-	dbus? ( X )
-"
+REQUIRED_USE="dbus? ( X )"
 
 RDEPEND="
 	dev-libs/boost:=
-	>=net-libs/rb_libtorrent-1.0.6
+	>=net-libs/libtorrent-rasterbar-1.0.6
 	sys-libs/zlib
 	!qt5? (
 		>=dev-libs/qjson-0.8.1[qt4(+)]
@@ -54,7 +52,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=(AUTHORS Changelog CONTRIBUTING.md README.md TODO)
+DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
 	# workaround build issue with older boost

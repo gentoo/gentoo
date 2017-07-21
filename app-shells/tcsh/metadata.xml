@@ -12,7 +12,4 @@
 		includes a command-line editor, programmable word completion, spelling
 		correction, a history mechanism, job control and a C-like syntax.
 	</longdescription>
-  <use>
-    <flag name="catalogs">Add support for NLS catalogs</flag>
-  </use>
 </pkgmetadata>

@@ -18,7 +18,7 @@ RESTRICT="strip mirror"
 
 RDEPEND="dev-lisp/cl-ppcre
 		sbcl?  ( >=dev-lisp/sbcl-1.0.32 )
-		sbcl? ( >=dev-lisp/clx-0.7.4 )
+		sbcl? ( >=dev-lisp/clx-0.7.3 )
 		!sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) )
 		!sbcl? ( !clisp? (  ecl? ( >=dev-lisp/ecls-10.4.1 ) ) )
 		!sbcl? (  clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) )
@@ -40,10 +40,10 @@ get_lisp() {
 	done
 }
 
-do_doc() {
+install_docs() {
 	local pdffile="${PN}.pdf"
 
-	texi2pdf -o "${pdffile}" "${PN}.texi" && dodoc "${pdffile}" || die
+	texi2pdf -o "${pdffile}" "${PN}.texi.in" && dodoc "${pdffile}" || die
 	cp "${FILESDIR}/README.Gentoo" . && sed -i "s:@VERSION@:${PV}:" README.Gentoo || die
 	dodoc AUTHORS NEWS README.md README.Gentoo
 	doinfo "${PN}.info"
@@ -52,10 +52,6 @@ do_doc() {
 
 src_prepare() {
 	default
-	# Upstream didn't change the version before packaging
-	sed -i -e 's/:version "0.9.8"/:version "0.9.9"/' "${PN}.asd" || die
-	# Bug 534592. Does not build with asdf:oos, using require to load the package
-	sed -i "load-${PN}.lisp.in" -e "s/asdf:oos 'asdf:load-op/require/" || die
 	eautoreconf
 }
 
@@ -74,11 +70,11 @@ src_install() {
 	make_session_desktop StumpWM /usr/bin/stumpwm
 
 	common-lisp-install-sources *.lisp
-	common-lisp-install-asdf ${PN}.asd
+	common-lisp-install-asdf
 	# Fix ASDF dir
 	sed -i -e "/(:directory/c\   (:directory \"${CLPKGDIR}\")" \
 		"${D}${CLPKGDIR}/load-stumpwm.lisp" || die
-	use doc && do_doc
+	use doc && install_docs
 }
 
 pkg_postinst() {

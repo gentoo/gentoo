@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer needed -->
+    <maintainer type="person">
+        <email>otakuto.gentoo@gmail.com</email>
+        <name>Takuto Yoshida</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
   <use>
     <flag name="drm">build with DRM support</flag>
     <flag name="server">Build TigerVNC server</flag>
@@ -9,6 +16,5 @@
   </use>
   <upstream>
     <remote-id type="github">TigerVNC/tigervnc</remote-id>
-    <remote-id type="sourceforge">tigervnc</remote-id>
   </upstream>
 </pkgmetadata>

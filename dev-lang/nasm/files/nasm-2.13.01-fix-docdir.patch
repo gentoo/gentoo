@@ -1,0 +1,177 @@
+From 1c369c46fd2cceeb6abe46b89fc539960a6c0c88 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sat, 1 Jul 2017 19:42:50 -0700
+Subject: [PATCH] Make buildsystem respect GNU conventions
+
+* CPPFLAGS is a user variable and should be respected
+  when compiling .c files. Think of -D_FORTIFY_SOURCE=2.
+* Pass ALL_CFLAGS when linking too. This is recommended
+  for certain edge cases (-flto)
+* Use DESTDIR instead of INSTALLROOT for staging dir
+  Every other build system (Automake, CMake, Meson) uses
+  DESTDIR. This integrates better into distro and other
+  build systems that have standard hooks for DESTDIR.
+* $(MAKE) -C <dir> is better than cd'ing into a <dir>
+* Use Autoconf's ${docdir} and ${htmldir} for installing
+  the documentation. This makes handling documentation
+  easier and respects user choice.
+---
+ Makefile.in     | 41 +++++++++++++++++++++--------------------
+ doc/Makefile.in | 13 ++++++++-----
+ 2 files changed, 29 insertions(+), 25 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index a48d980..e7f01e4 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20,6 +20,7 @@ datarootdir	= @datarootdir@
+ 
+ CC		= @CC@
+ CFLAGS		= @CFLAGS@
++CPPFLAGS	= @CPPFLAGS@
+ BUILD_CFLAGS	= $(CFLAGS) @DEFS@
+ INTERNAL_CFLAGS = -I$(srcdir) -I$(objdir) \
+ 		  -I$(srcdir)/include -I$(objdir)/include \
+@@ -72,13 +73,13 @@ endif
+ .PHONY: manpages nsis
+ 
+ .c.$(O):
+-	$(CC) -c $(ALL_CFLAGS) -o $@ $<
++	$(CC) -c $(CPPFLAGS) $(ALL_CFLAGS) -o $@ $<
+ 
+ .c.s:
+-	$(CC) -S $(ALL_CFLAGS) -o $@ $<
++	$(CC) -S $(CPPFLAGS) $(ALL_CFLAGS) -o $@ $<
+ 
+ .c.i:
+-	$(CC) -E $(ALL_CFLAGS) -o $@ $<
++	$(CC) -E $(CPPFLAGS) $(ALL_CFLAGS) -o $@ $<
+ 
+ .txt.xml:
+ 	$(ASCIIDOC) -b docbook -d manpage -o $@ $<
+@@ -88,7 +89,7 @@ endif
+ 
+ # This rule is only used for rdoff, to allow common rules
+ .$(O)$(X):
+-	$(CC) $(LDFLAGS) -o $@ $< $(RDFLIB) $(NASMLIB) $(LIBS)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $< $(RDFLIB) $(NASMLIB) $(LIBS)
+ 
+ #-- Begin File Lists --#
+ NASM =	asm/nasm.$(O)
+@@ -152,10 +153,10 @@ $(NASMLIB): $(LIBOBJ)
+ 	$(RANLIB) $(NASMLIB)
+ 
+ nasm$(X): $(NASM) $(NASMLIB)
+-	$(CC) $(LDFLAGS) -o nasm$(X) $(NASM) $(NASMLIB) $(LIBS)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o nasm$(X) $(NASM) $(NASMLIB) $(LIBS)
+ 
+ ndisasm$(X): $(NDISASM) $(NASMLIB)
+-	$(CC) $(LDFLAGS) -o ndisasm$(X) $(NDISASM) $(NASMLIB) $(LIBS)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o ndisasm$(X) $(NDISASM) $(NASMLIB) $(LIBS)
+ 
+ #-- Begin Generated File Rules --#
+ 
+@@ -335,12 +336,12 @@ nsis: nsis/nasm.nsi nsis/arch.nsh nsis/version.nsh
+ manpages: nasm.1 ndisasm.1
+ 
+ install: nasm$(X) ndisasm$(X)
+-	$(MKDIR) -p $(INSTALLROOT)$(bindir)
+-	$(INSTALL_PROGRAM) nasm$(X) $(INSTALLROOT)$(bindir)/nasm$(X)
+-	$(INSTALL_PROGRAM) ndisasm$(X) $(INSTALLROOT)$(bindir)/ndisasm$(X)
+-	$(MKDIR) -p $(INSTALLROOT)$(mandir)/man1
+-	$(INSTALL_DATA) $(srcdir)/nasm.1 $(INSTALLROOT)$(mandir)/man1/nasm.1
+-	$(INSTALL_DATA) $(srcdir)/ndisasm.1 $(INSTALLROOT)$(mandir)/man1/ndisasm.1
++	$(MKDIR) -p $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) nasm$(X) $(DESTDIR)$(bindir)/nasm$(X)
++	$(INSTALL_PROGRAM) ndisasm$(X) $(DESTDIR)$(bindir)/ndisasm$(X)
++	$(MKDIR) -p $(DESTDIR)$(mandir)/man1
++	$(INSTALL_DATA) $(srcdir)/nasm.1 $(DESTDIR)$(mandir)/man1/nasm.1
++	$(INSTALL_DATA) $(srcdir)/ndisasm.1 $(DESTDIR)$(mandir)/man1/ndisasm.1
+ 
+ clean:
+ 	for d in . $(SUBDIRS) $(XSUBDIRS); do \
+@@ -364,7 +365,7 @@ distclean: clean
+ 
+ cleaner: clean
+ 	$(RM_F) $(PERLREQ) *.1 nasm.spec
+-	cd doc && $(MAKE) clean
++	$(MAKE) -C doc clean
+ 
+ spotless: distclean cleaner
+ 	$(RM_F) doc/Makefile
+@@ -386,23 +387,23 @@ cscope:
+ 	cscope -b -f cscope.out
+ 
+ rdf_install install_rdf install_rdoff:
+-	$(MKDIR) -p $(INSTALLROOT)$(bindir)
++	$(MKDIR) -p $(DESTDIR)$(bindir)
+ 	for f in $(RDFPROGS); do \
+-		$(INSTALL_PROGRAM) "$$f" '$(INSTALLROOT)$(bindir)'/ ; \
++		$(INSTALL_PROGRAM) "$$f" '$(DESTDIR)$(bindir)'/ ; \
+ 	done
+-	cd '$(INSTALLROOT)$(bindir)' && \
++	cd '$(DESTDIR)$(bindir)' && \
+ 	for f in $(RDF2BINLINKS); do \
+ 		bn=`basename "$$f"` && $(RM_F) "$$bn" && \
+ 		$(LN_S) rdf2bin$(X) "$$bn" ; \
+ 	done
+-	$(MKDIR) -p $(INSTALLROOT)$(mandir)/man1
+-	$(INSTALL_DATA) $(srcdir)/rdoff/*.1 $(INSTALLROOT)$(mandir)/man1/
++	$(MKDIR) -p $(DESTDIR)$(mandir)/man1
++	$(INSTALL_DATA) $(srcdir)/rdoff/*.1 $(DESTDIR)$(mandir)/man1/
+ 
+ doc:
+-	cd doc && $(MAKE) all
++	$(MAKE) -C doc all
+ 
+ doc_install install_doc:
+-	cd doc && $(MAKE) install
++	$(MAKE) -C doc install
+ 
+ everything: all manpages doc rdf
+ 
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index 2ddfd1e..261a791 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -9,7 +9,8 @@ prefix		= @prefix@
+ exec_prefix	= @exec_prefix@
+ bindir		= @bindir@
+ mandir		= @mandir@
+-docdir		= $(prefix)/doc/nasm
++docdir		= @docdir@
++htmldir		= @htmldir@
+ infodir		= @infodir@
+ datarootdir	= @datarootdir@
+ 
+@@ -21,6 +22,7 @@ PERL		= perl -I$(srcdir)
+ 
+ PDFOPT		= @PDFOPT@
+ 
++MKDIR		= mkdir
+ RM_F		= rm -f
+ RM_RF		= rm -rf
+ CP_F		= cp -f
+@@ -41,7 +43,7 @@ inslist.src: inslist.pl ../x86/insns.dat
+ 
+ .PHONY: html
+ html: $(HTMLAUX)
+-	mkdir -p html
++	$(MKDIR) -p html
+ 	for f in $(HTMLAUX); do $(CP_UF) "$(srcdir)/$$f" html/; done
+ 	$(MAKE) html/nasmdoc0.html
+ 
+@@ -81,6 +83,7 @@ spotless: clean
+ 	-$(RM_F) *.hlp nasmdoc.txt *.inf *.pdf *.dvi
+ 
+ install: all
+-	mkdir -p $(INSTALLROOT)$(docdir)/html
+-	$(INSTALL_DATA) html/* $(INSTALLROOT)$(docdir)/html
+-	$(INSTALL_DATA) nasmdoc.pdf nasmdoc.txt $(INSTALLROOT)$(docdir)
++	$(MKDIR) -p $(DESTDIR)$(htmldir)
++	$(INSTALL_DATA) html/* $(DESTDIR)$(htmldir)
++	$(MKDIR) -p $(DESTDIR)$(docdir)
++	$(INSTALL_DATA) nasmdoc.pdf nasmdoc.txt $(DESTDIR)$(docdir)
+-- 
+2.13.2
+

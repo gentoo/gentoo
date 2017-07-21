@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -113,7 +113,7 @@ src_compile() {
 
 src_install() {
 	emake \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		STRIP="" \
 		prefix=/usr \
 		install
@@ -122,8 +122,8 @@ src_install() {
 
 	if use fbcon && ! use ghostscript; then
 		rm \
-			"${D}"/usr/bin/fbgs \
-			"${D}"/usr/share/man/man1/fbgs.1 \
+			"${ED}"/usr/bin/fbgs \
+			"${ED}"/usr/share/man/man1/fbgs.1 \
 			|| die
 	fi
 

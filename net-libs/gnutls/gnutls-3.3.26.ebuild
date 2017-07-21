@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools libtool eutils multilib-minimal versionator
+inherit autotools epunt-cxx libtool ltprune multilib-minimal versionator
 
 DESCRIPTION="A TLS 1.2 and SSL 3.0 implementation for the GNU project"
 HOMEPAGE="http://www.gnutls.org/"

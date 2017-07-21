@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ IUSE=""
 #SRC_TEST="do"
 
 RDEPEND="x11-libs/gtk+:2
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	dev-perl/IO-stringy
 	virtual/perl-Pod-Parser
 	virtual/perl-Pod-Simple

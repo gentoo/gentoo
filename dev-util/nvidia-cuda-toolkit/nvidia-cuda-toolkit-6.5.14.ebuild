@@ -16,7 +16,7 @@ SRC_URI="
 
 SLOT="0/${PV}"
 LICENSE="NVIDIA-CUDA"
-KEYWORDS="-* amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debugger doc eclipse profiler"
 
 DEPEND=""

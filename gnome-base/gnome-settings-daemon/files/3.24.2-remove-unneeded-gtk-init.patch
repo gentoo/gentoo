@@ -1,0 +1,77 @@
+From b567ec92d5b3004ad52fa02fb02990fcafb63373 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Mon, 27 Mar 2017 18:47:54 +0200
+Subject: [PATCH 1/3] housekeeping: Don't init GTK+
+
+We don't use it.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=780555
+---
+ plugins/housekeeping/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/housekeeping/main.c b/plugins/housekeeping/main.c
+index 5ccd83d..89c12f7 100644
+--- a/plugins/housekeeping/main.c
++++ b/plugins/housekeeping/main.c
+@@ -4,4 +4,4 @@
+ #define MANAGER GsdHousekeepingManager
+ #include "gsd-housekeeping-manager.h"
+ 
+-#include "daemon-skeleton-gtk.h"
++#include "daemon-skeleton.h"
+-- 
+2.10.2
+
+
+From 92d45cd2ce2c4f252db21993f30777433ed84623 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Mon, 27 Mar 2017 18:49:35 +0200
+Subject: [PATCH 2/3] print-notifications: Don't init GTK+
+
+We don't use it.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=780555
+---
+ plugins/print-notifications/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/print-notifications/main.c b/plugins/print-notifications/main.c
+index 57155d0..a0dd406 100644
+--- a/plugins/print-notifications/main.c
++++ b/plugins/print-notifications/main.c
+@@ -4,4 +4,4 @@
+ #define MANAGER GsdPrintNotificationsManager
+ #include "gsd-print-notifications-manager.h"
+ 
+-#include "daemon-skeleton-gtk.h"
++#include "daemon-skeleton.h"
+-- 
+2.10.2
+
+
+From e7e4b2145efebf132f1398da77790849becd7f6b Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Mon, 27 Mar 2017 18:50:01 +0200
+Subject: [PATCH 3/3] wacom: Don't init GTK+
+
+We don't use it.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=780555
+---
+ plugins/wacom/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/wacom/main.c b/plugins/wacom/main.c
+index a19a71b..ad1367c 100644
+--- a/plugins/wacom/main.c
++++ b/plugins/wacom/main.c
+@@ -4,4 +4,4 @@
+ #define MANAGER GsdWacomManager
+ #include "gsd-wacom-manager.h"
+ 
+-#include "daemon-skeleton-gtk.h"
++#include "daemon-skeleton.h"
+-- 
+2.10.2
+

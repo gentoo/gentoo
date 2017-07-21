@@ -1,8 +1,15 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -s390
 
 # Unmask ABI flags for this arch.
 -abi_s390_32
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
 
 # Stuff we don't want/not tested
 pbins
@@ -17,7 +24,6 @@ fuse
 autotrace
 lqr
 libproxy
-libvirt
 tokyocabinet
 lpsol
 openexr

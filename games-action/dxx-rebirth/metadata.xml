@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>totktonada.ru@gmail.com</email>
+		<name>Alexander Turenko</name>
+	</maintainer>
+	<longdescription>
+		Descent 1 is a classic first-person shooter released in 1995
+		by Interplay and Parallax. Descent 2 released for the PC in
+		1996. It, along with its predecessor, was one of the first
+		games with true 3-dimensional graphics, 6 degrees of freedom
+		in movement, light sourcing, and the capability to join
+		multiplayer games on-the-fly. D1X-Rebirth and DXX-Rebirth are
+		modifications of the original Descent 1 and 2 sources that was
+		released by Parallax (and are based on the D1X and D2X
+		sources). It offering OpenGL graphics, advanced multiplayer,
+		new features, and cross-platform compatibility. Now code bases
+		of D1X-Rebirth and DXX-Rebirth merged and released as
+		DXX-Rebirth.
+	</longdescription>
+	<use>
+		<flag name="data">Install data files</flag>
+		<flag name="descent1">Install Descent 1 resources and executable</flag>
+		<flag name="descent2">Install Descent 2 resources and executable</flag>
+		<flag name="l10n_de">Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign</flag>
+		<flag name="music">Enable music support</flag>
+		<flag name="opl3-musicpack">Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip</flag>
+		<flag name="sc55-musicpack">Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module</flag>
+		<flag name="textures">Include high resolution (640x480) backgrounds, briefing images and fonts (Descent 1)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dxx-rebirth/dxx-rebirth</remote-id>
+	</upstream>
+</pkgmetadata>

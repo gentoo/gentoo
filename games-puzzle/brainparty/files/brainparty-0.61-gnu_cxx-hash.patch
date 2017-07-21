@@ -1,0 +1,11 @@
+--- a/WordList.h
++++ b/WordList.h
+@@ -35,7 +35,7 @@
+ 	};
+ }
+ 
+-typedef hash_set<string, hash<string> > string_hash_set;
++typedef hash_set<string, __gnu_cxx::hash<string> > string_hash_set;
+ 
+ class WordList {
+ private:

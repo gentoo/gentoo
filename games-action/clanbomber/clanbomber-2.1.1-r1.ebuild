@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -29,6 +29,7 @@ DOCS=( AUTHORS ChangeLog ChangeLog.hg IDEAS NEWS QUOTES README TODO )
 PATCHES=(
 		"${FILESDIR}"/${P}-automake112.patch
 		"${FILESDIR}"/${P}-boost150.patch
+		"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_prepare() {

@@ -7,13 +7,13 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2 eutils
 
 MY_P=${P}-src
-DESCRIPTION="Commons-IO contains utility classes, stream implementations, file filters, and endian classes"
+DESCRIPTION="Utility classes, stream implementations, file filters, and endian classes"
 HOMEPAGE="http://commons.apache.org/io/"
 SRC_URI="mirror://apache/commons/io/source/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND=">=virtual/jre-1.6"

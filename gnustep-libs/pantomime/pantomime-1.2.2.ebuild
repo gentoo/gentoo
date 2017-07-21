@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-libs/openssl"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {

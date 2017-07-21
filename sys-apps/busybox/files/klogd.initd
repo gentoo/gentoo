@@ -4,7 +4,7 @@
 
 command="/bin/busybox klogd"
 command_args="${KLOGD_OPTS}"
-pidfile="/var/run/klogd.pid"
+pidfile="/run/klogd.pid"
 
 depend() {
 	need clock hostname

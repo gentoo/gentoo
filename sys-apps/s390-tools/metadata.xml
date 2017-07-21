@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -7,7 +7,7 @@
 	<longdescription lang="en">
 A set of user space utilities that should be used together with the
 zSeries (s390) Linux kernel and device drivers
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="fuse">build cmsfs-fuse to read files stored on a z/VM CMS disk</flag>
 		<flag name="ncurses">build hyptop monitoring program</flag>
@@ -15,4 +15,7 @@ zSeries (s390) Linux kernel and device drivers
 		<flag name="zfcpdump">build the kernel disk dumping utility</flag>
 		<flag name="zlib">build the zgetdump utility</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">e2fsprogs</remote-id>
+	</upstream>
 </pkgmetadata>

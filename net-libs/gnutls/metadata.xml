@@ -13,6 +13,9 @@
       Build libgnutls-dane, implementing DNS-based Authentication of
       Named Entities. Requires <pkg>net-dns/unbound</pkg>
     </flag>
+    <flag name="openpgp">
+	  Enable openpgp support
+    </flag>
     <flag name="openssl">
       Build openssl compatibility libraries
     </flag>

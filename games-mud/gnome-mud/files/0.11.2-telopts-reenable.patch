@@ -1,0 +1,35 @@
+From 62b043beedc14741a000e848a004ba44982b28b8 Mon Sep 17 00:00:00 2001
+From: Steven Jackson
+Date: Wed, 19 Apr 2017 10:38:18 +0000
+Subject: [PATCH] mud-telnet: Fix re-enabling disabled TELOPTS
+
+When the server disabled a TELOPT it wasn't possible for it to
+re-enable it, as it should.
+
+Enabling and disabling MSP and CHARSET in the preferences window
+doesn't control the MudTelnetHandler enabled field, so this change
+doesn't break that. Those preferences are used at a higher level,
+in mud-window-view.c.
+
+Thanks to shentino for reporting and assisting with the fix.
+
+Bug report: https://bugzilla.gnome.org/show_bug.cgi?id=781452
+---
+ src/mud-telnet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mud-telnet.c b/src/mud-telnet.c
+index 052ba04..0fe274a 100644
+--- a/src/mud-telnet.c
++++ b/src/mud-telnet.c
+@@ -939,7 +939,7 @@ mud_telnet_handle_positive_nego(MudTelnet *telnet,
+ 	// his state to YES and send DO; otherwise send DONT
+ 	// FIXME-US/HIM
+ 	// FIXME: What to do in the opposite "him" gint value case?
+-	if (mud_telnet_isenabled(telnet, opt_no, him))
++	if (mud_telnet_get_index_by_option(telnet, opt_no) != -1)
+ 	{
+ 	    mud_telnet_set_telopt_state(opt, TELOPT_STATE_YES, bitshift);
+ 	    mud_telnet_send_iac(telnet, affirmative, opt_no);
+--
+1.9.1

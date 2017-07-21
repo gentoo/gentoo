@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit linux-info xfconf
+inherit xfconf
 
 DESCRIPTION="Power manager for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/xfce4-power-manager"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-power-manager"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -40,11 +40,6 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto"
 
 pkg_setup() {
-	if use kernel_linux; then
-		CONFIG_CHECK="~TIMER_STATS"
-		linux-info_pkg_setup
-	fi
-
 	XFCONF=(
 		$(use_enable policykit polkit)
 		$(use_enable networkmanager network-manager)

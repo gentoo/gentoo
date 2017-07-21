@@ -1,0 +1,88 @@
+From a0e69617442d720c76da5ebe3323e7a977929db4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=80lex=20Fiestas?= <afiestas@kde.org>
+Date: Wed, 22 Feb 2017 15:18:27 +0100
+Subject: Make Plasma optional in exchange of disabling signalplotter
+
+Plama is a solution with lots of dependencies which makes it really
+difficult to use libksysguard in third party applications. This patch
+makes it optional by disabling signalplotter when Plasma is not found.
+
+REVIEW: 129964
+---
+ CMakeLists.txt       | 14 ++++++++++++--
+ tests/CMakeLists.txt | 25 ++++++++++++++-----------
+ 2 files changed, 26 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9660cdb..61c41c6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,7 +18,15 @@ set_package_properties(Qt5WebKitWidgets PROPERTIES
+                        PURPOSE "Used by the HTML-based GUI ksysguard library"
+                       )
+ 
+-find_package(KF5 REQUIRED COMPONENTS CoreAddons Config I18n WindowSystem Completion Auth WidgetsAddons IconThemes ConfigWidgets Service Plasma)
++find_package(KF5 REQUIRED COMPONENTS CoreAddons Config I18n WindowSystem Completion Auth WidgetsAddons IconThemes ConfigWidgets Service)
++find_package(KF5 OPTIONAL_COMPONENTS Plasma)
++set_package_properties(KF5Plasma PROPERTIES
++                       URL "https://cgit.kde.org/plasma-framework.git/"
++                       DESCRIPTION "The library of the plasma project"
++                       TYPE OPTIONAL
++                       PURPOSE "Used by signalplotter to use Plasma themes"
++                      )
++
+ find_package(ZLIB REQUIRED)
+ set_package_properties(ZLIB PROPERTIES DESCRIPTION "Support for gzip compressed files and data streams"
+                        URL "http://www.zlib.net"
+@@ -66,7 +74,9 @@ configure_file(config-ksysguard.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ksysg
+ add_subdirectory( lsofui )
+ add_subdirectory( processcore )
+ add_subdirectory( processui )
+-add_subdirectory( signalplotter )
++if (KF5Plasma_FOUND)
++    add_subdirectory( signalplotter )
++endif()
+ add_subdirectory( ksgrd )
+ 
+ if(BUILD_TESTING)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 967b03f..7ae9fec 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -7,19 +7,22 @@ if(Qt5WebKitWidgets_FOUND)
+             LINK_LIBRARIES KF5::ProcessUi Qt5::Test)
+ endif()
+ 
+-ecm_add_test(signalplotterbenchmark.cpp ${libksysguard_SOURCE_DIR}/processcore/processcore_debug.cpp ../signalplotter/ksignalplotter.cpp
+-    TEST_NAME signalplotterbenchmark
+-    LINK_LIBRARIES KF5::SignalPlotter Qt5::Test Qt5::Widgets KF5::IconThemes)
++if (KF5Plasma_FOUND)
++    ecm_add_test(signalplotterbenchmark.cpp ${libksysguard_SOURCE_DIR}/processcore/processcore_debug.cpp ../signalplotter/ksignalplotter.cpp
++        TEST_NAME signalplotterbenchmark
++        LINK_LIBRARIES KF5::SignalPlotter Qt5::Test Qt5::Widgets KF5::IconThemes
++    )
+ 
+-ecm_add_test(graphicssignalplotterbenchmark.cpp ${libksysguard_SOURCE_DIR}/processcore/processcore_debug.cpp ../signalplotter/kgraphicssignalplotter.cpp
+-    TEST_NAME graphicssignalplotterbenchmark
+-    LINK_LIBRARIES KF5::SignalPlotter Qt5::Test Qt5::Widgets KF5::IconThemes KF5::Plasma
+-)
++    ecm_add_test(graphicssignalplotterbenchmark.cpp ${libksysguard_SOURCE_DIR}/processcore/processcore_debug.cpp ../signalplotter/kgraphicssignalplotter.cpp
++        TEST_NAME graphicssignalplotterbenchmark
++        LINK_LIBRARIES KF5::SignalPlotter Qt5::Test Qt5::Widgets KF5::IconThemes KF5::Plasma
++    )
+ 
+-ecm_add_test(signalplottertest.cpp ${libksysguard_SOURCE_DIR}/processcore/processcore_debug.cpp ../signalplotter/ksignalplotter.cpp
+-    TEST_NAME signalplottertest
+-    LINK_LIBRARIES KF5::SignalPlotter Qt5::Test Qt5::Widgets KF5::IconThemes
+-)
++    ecm_add_test(signalplottertest.cpp ${libksysguard_SOURCE_DIR}/processcore/processcore_debug.cpp ../signalplotter/ksignalplotter.cpp
++        TEST_NAME signalplottertest
++        LINK_LIBRARIES KF5::SignalPlotter Qt5::Test Qt5::Widgets KF5::IconThemes
++    )
++endif()
+ 
+ ecm_add_test(chronotest.cpp
+     TEST_NAME chronotest
+-- 
+cgit v0.11.2
+

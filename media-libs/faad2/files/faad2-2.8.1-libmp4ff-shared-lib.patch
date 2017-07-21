@@ -1,0 +1,25 @@
+--- faad2-2.8.1/common/mp4ff/Makefile.am
++++ faad2-2.8.1/common/mp4ff/Makefile.am
+@@ -1,7 +1,8 @@
+-noinst_LIBRARIES = libmp4ff.a
+-noinst_HEADERS = mp4ff.h mp4ffint.h
++lib_LTLIBRARIES = libmp4ff.la
++include_HEADERS = mp4ff.h mp4ffint.h
+ 
+-libmp4ff_a_CFLAGS = -DUSE_TAGGING=1
++AM_CFLAGS = -DUSE_TAGGING=1
+ 
+-libmp4ff_a_SOURCES = mp4ff.c mp4atom.c mp4meta.c mp4sample.c mp4util.c \
++libmp4ff_la_LDFLAGS = -version-info 0:0:0
++libmp4ff_la_SOURCES = mp4ff.c mp4atom.c mp4meta.c mp4sample.c mp4util.c \
+ 		     mp4tagupdate.c mp4ff.h mp4ffint.h
+--- faad2-2.8.1/frontend/Makefile.am
++++ faad2-2.8.1/frontend/Makefile.am
+@@ -4,6 +4,6 @@
+ AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/common/mp4ff
+ 
+ faad_LDADD = $(top_builddir)/libfaad/libfaad.la \
+-	     $(top_builddir)/common/mp4ff/libmp4ff.a
++	     $(top_builddir)/common/mp4ff/libmp4ff.la
+ 
+ faad_SOURCES = main.c audio.c audio.h

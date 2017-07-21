@@ -1,0 +1,78 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="kea dhcp services"
+
+dhcp4_command="/usr/sbin/kea-dhcp4"
+dhcp6_command="/usr/sbin/kea-dhcp6"
+ddns_command="/usr/sbin/kea-dhcp-ddns"
+config_file="/etc/kea/kea.conf"
+dhcp4_pidfile="/run/kea-dhcp4.pid"
+dhcp6_pidfile="/run/kea-dhcp6.pid"
+ddns_pidfile="/run/kea-ddns.pid"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	if [ ! -f "${config_file}" ] ; then
+		eerror "Please create a ${config_file} config file."
+		return 1
+	fi
+
+	if ${DHCP4:-false} ; then
+		if ! ${dhcp4_command} -t ${config_file} 1>/dev/null 2>/dev/null ; then
+			eerror "Error in config file."
+			return 1
+		fi
+	fi
+	if ${DHCP6:-false} ; then
+		if ! ${dhcp6_command} -t ${config_file} 1>/dev/null 2>/dev/null ; then
+			eerror "Error in config file."
+			return 1
+		fi
+	fi
+	if ${DDNS:-false} ; then
+		if ! ${ddns_command} -t ${config_file} 1>/dev/null 2>/dev/null ; then
+			eerror "Error in config file."
+			return 1
+		fi
+	fi
+}
+
+start() {
+	einfo "Starting kea dhcp services"
+	if ${DHCP4:-false} ; then
+		start-stop-daemon -m -b -p ${dhcp4_pidfile} \
+			-x ${dhcp4_command} -- -c ${config_file} \
+			|| return 1
+	fi
+	if ${DHCP6:-false} ; then
+		start-stop-daemon -m -b -p ${dhcp6_pidfile} \
+			-x ${dhcp6_command} -- -c ${config_file} \
+			|| return 1
+	fi
+	if ${DDNS:-false} ; then
+		start-stop-daemon -m -b -p ${ddns_pidfile} \
+			-x ${ddns_command} -- -c ${config_file} \
+			|| return 1
+	fi
+}
+
+stop() {
+	einfo "Stopping kea dhcp services"
+	if ${DHCP4:-false} ; then
+		start-stop-daemon --stop -p ${dhcp4_pidfile} \
+			|| return 1
+	fi
+	if ${DHCP6:-false} ; then
+		start-stop-daemon --stop -p ${dhcp6_pidfile} \
+			|| return 1
+	fi
+	if ${DDNS:-false} ; then
+		start-stop-daemon --stop -p ${ddns_pidfile} \
+			|| return 1
+	fi
+}

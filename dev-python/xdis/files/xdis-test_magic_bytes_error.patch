@@ -1,0 +1,24 @@
+From 8aa4a91d664380395f08b0ccd4aa944d53a21e55 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Mon, 27 Mar 2017 18:13:00 -0700
+Subject: [PATCH] test_unit/test_magic.py: Add python-3.5.3 magic
+
+---
+ xdis/magics.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xdis/magics.py b/xdis/magics.py
+index 6a58040..571f0ea 100755
+--- a/xdis/magics.py
++++ b/xdis/magics.py
+@@ -103,6 +103,7 @@ versions = {
+     int2magic(3300): '3.4a4+',    # more changes to __qualname__ computation
+     int2magic(3310): '3.4rc2',    # alter __qualname__ computation
+     int2magic(3350): '3.5',       # 3.5.0, 3.5.1, 3.5.2
++    int2magic(3351): '3.5.3',     # 3.5.3
+     int2magic(3361): '3.6.0a1',   # 3.6.0a1
+     int2magic(3370): '3.6.0a1+1', # 3.6.0a?
+     int2magic(3370): '3.6.0a1+2', #
+-- 
+2.12.1
+

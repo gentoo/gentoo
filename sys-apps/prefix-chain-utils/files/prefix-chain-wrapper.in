@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -r /cygdrive/. ]; then
+	winpath2unix() { cygpath -u "$1"; }
+	unixpath2win() { cygpath -w "$1"; }
+fi
+
 link_dirs=()
 opts=()
 chost="@GENTOO_PORTAGE_CHOST@"

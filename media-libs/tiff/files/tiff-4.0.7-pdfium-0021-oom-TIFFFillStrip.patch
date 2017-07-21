@@ -1,0 +1,29 @@
+https://pdfium-review.googlesource.com/3811
+https://crbug.com/707431
+https://pdfium.googlesource.com/pdfium/+/master/libtiff/
+
+Author: Nicolas Pena <npm@chromium.org>
+Date:   Wed Apr 5 15:50:53 2017 -0400
+
+Libtiff: Prevent OOM in TIFFFillStrip
+
+In TIFFFillStrip, calls to TIFFReadBufferSetup may allocate large amounts of
+memory. In this CL we do sanity checks on the claimed size of the raw strip
+data before that happens, to prevent out-of-memory.
+
+--- a/libtiff/tif_read.c
++++ b/libtiff/tif_read.c
+@@ -616,6 +616,13 @@ TIFFFillStrip(TIFF* tif, uint32 strip)
+ 				TIFFErrorExt(tif->tif_clientdata,module,"Integer overflow");
+ 				return(0);
+ 			}
++                       const tmsize_t size=isMapped(tif)? tif->tif_size : (tmsize_t)TIFFGetFileSize(tif);
++                       if (bytecountm > size) {
++                               TIFFErrorExt(tif->tif_clientdata, module,
++                                       "Requested read strip size %lu is too large",
++                                       (unsigned long) strip);
++                               return (0);
++                       }
+ 			if (bytecountm > tif->tif_rawdatasize) {
+ 				tif->tif_curstrip = NOSTRIP;
+ 				if ((tif->tif_flags & TIFF_MYBUFFER) == 0) {

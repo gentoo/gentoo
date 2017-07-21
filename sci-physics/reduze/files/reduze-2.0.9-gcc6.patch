@@ -1,0 +1,58 @@
+--- a/reduze/amplitude.cpp
++++ b/reduze/amplitude.cpp
+@@ -782,7 +782,7 @@
+ 
+ 	ex resultLeadingNc = result;
+ 	for (exset::const_iterator it = found.begin(); it != found.end(); ++it) {
+-		VERIFY(is_a<function>(*it) && ex_to<function>(*it).get_name() == "Color");
++		VERIFY(is_a<GiNaC::function>(*it) && ex_to<GiNaC::function>(*it).get_name() == "Color");
+ 		VERIFY(is_a<lst>(it->op(0)));
+ 		ex res(1);
+ 		for (size_t i = 0; i < it->op(0).nops(); ++i)
+@@ -823,7 +823,7 @@
+ 	timer.restart();
+ 	exmap m;
+ 	for (exset::const_iterator it = found.begin(); it != found.end(); ++it) {
+-		VERIFY(is_a<function>(*it) && ex_to<function>(*it).get_name() == "Lorentz");
++		VERIFY(is_a<GiNaC::function>(*it) && ex_to<GiNaC::function>(*it).get_name() == "Lorentz");
+ 		VERIFY(is_a<lst>(it->op(0)));
+ 
+ 		ex res(1);
+--- a/reduze/files.cpp
++++ b/reduze/files.cpp
+@@ -420,7 +420,7 @@
+ 			get_filename_sectormappings(m.integralfamily()->name());
+ 	ofstream file(file_name.c_str());
+ 	if (!file)
+-		ABORT("Can't write to " << file);
++		ABORT("Can't write to " << file_name);
+ 	os << YAML::BeginMap << YAML::Key << "sectormappings" << YAML::Value;
+ 	os << m << YAML::EndMap;
+ 	file << os.c_str();
+@@ -617,7 +617,7 @@
+ 
+ bool is_readable_file(const string& filename) {
+ 	ifstream is(filename.c_str());
+-	bool ok = is;
++	bool ok = !is.fail();
+ 	is.close();
+ 	return ok;
+ }
+--- a/reduze/sectormappings.cpp
++++ b/reduze/sectormappings.cpp
+@@ -757,13 +757,13 @@
+ 	const Node& z_node = node["zero_sectors"];
+ 	for (Iterator n = z_node.begin(); n != z_node.end(); ++n)
+ 		for (Iterator s = n.second().begin(); s != n.second().end(); ++s)
+-			m.zero_sectors_.insert(*s);
++			m.zero_sectors_.insert((const int) *s);
+ 
+ 	if (node.FindValue("sectors_without_graph")) {
+ 		const Node& ng_node = node["sectors_without_graph"];
+ 		for (Iterator n = ng_node.begin(); n != ng_node.end(); ++n)
+ 			for (Iterator s = n.second().begin(); s != n.second().end(); ++s)
+-				m.sectors_without_graph_.insert(*s);
++				m.sectors_without_graph_.insert((const int) *s);
+ 	}
+ 
+ 	const Node& rel_node = node["sector_relations"];

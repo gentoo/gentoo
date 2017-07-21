@@ -86,7 +86,8 @@ src_prepare() {
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
 	eapply \
 		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
-		"${FILESDIR}/${PN}-disable_plugins.patch"
+		"${FILESDIR}/${PN}-disable_plugins.patch" \
+		"${FILESDIR}/${PN}-2.83.0-lzxd-bounds-error-bug-540596.patch"
 
 	eapply_user
 

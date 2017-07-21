@@ -55,6 +55,7 @@
     <remote-id type="cpan-module">Template::Stash::XS</remote-id>
     <remote-id type="cpan-module">Template::Test</remote-id>
     <remote-id type="cpan-module">Template::TieString</remote-id>
+    <remote-id type="cpan-module">Template::Toolkit</remote-id>
     <remote-id type="cpan-module">Template::VMethods</remote-id>
     <remote-id type="cpan-module">Template::View</remote-id>
     <remote-id type="cpan-module">bytes</remote-id>

@@ -8,7 +8,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE library for mathematical features"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="eigen opengl"
 
 DEPEND="
@@ -26,11 +26,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	# Nothing is installed
-	sed -i \
-		-e "/add_subdirectory(examples)/ s/^/#DONT/" \
-		analitzaplot/CMakeLists.txt || die
-
+	if ! use test; then
+		sed -i \
+			-e "/add_subdirectory(examples)/ s/^/#DONT/" \
+			analitzaplot/CMakeLists.txt || die
+	fi
 	kde5_src_prepare
 }
 

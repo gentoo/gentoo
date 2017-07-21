@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -8,4 +8,8 @@
 	<longdescription lang="en">
 		Openvsywitch python bindings
 	</longdescription>
+	<upstream>
+		<remote-id type="github">openvswitch/ovs</remote-id>
+		<remote-id type="pypi">ovs</remote-id>
+	</upstream>
 </pkgmetadata>

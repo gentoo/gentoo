@@ -1,0 +1,22 @@
+bug #616870
+
+https://lists.gnu.org/archive/html/qemu-devel/2017-04/msg05587.html
+---
+ audio/audio.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/audio/audio.c b/audio/audio.c
+index c8898d8422..beafed209b 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -2028,6 +2028,8 @@ void AUD_del_capture (CaptureVoiceOut *cap, void *cb_opaque)
+                     sw = sw1;
+                 }
+                 QLIST_REMOVE (cap, entries);
++                g_free (cap->hw.mix_buf);
++                g_free (cap->buf);
+                 g_free (cap);
+             }
+             return;
+-- 
+2.9.3

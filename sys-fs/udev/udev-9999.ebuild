@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools bash-completion-r1 linux-info multilib-minimal toolchain-funcs udev user versionator
+inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
+	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
 	patchset=
@@ -16,7 +16,7 @@ else
 			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
 	fi
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -24,7 +24,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl +kmod selinux static-libs"
+IUSE="acl +kmod selinux"
 
 RESTRICT="test"
 
@@ -40,14 +40,14 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r7
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
-# Force new make >= -r4 to skip some parallel build issues
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-util/intltool-0.50
+	>=dev-util/meson-0.40.0
+	dev-util/ninja
 	>=sys-apps/coreutils-8.16
 	virtual/os-headers
 	virtual/pkgconfig
-	>=sys-devel/make-3.82-r4
 	>=sys-kernel/linux-headers-3.9
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
@@ -60,19 +60,7 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-26"
 
 S=${WORKDIR}/systemd-${PV}
-
-check_default_rules() {
-	# Make sure there are no sudden changes to upstream rules file
-	# (more for my own needs than anything else ...)
-	local udev_rules_md5=b8ad860dccae0ca51656b33c405ea2ca
-	MD5=$(md5sum < "${S}"/rules/50-udev-default.rules)
-	MD5=${MD5/  -/}
-	if [[ ${MD5} != ${udev_rules_md5} ]]; then
-		eerror "50-udev-default.rules has been updated, please validate!"
-		eerror "md5sum: ${MD5}"
-		die "50-udev-default.rules has been updated, please validate!"
-	fi
-}
+EGIT_CHECKOUT_DIR=${S}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -98,7 +86,7 @@ pkg_setup() {
 src_prepare() {
 	if ! [[ ${PV} = 9999* ]]; then
 		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 26 ]]; then
+		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 27 ]]; then
 			eerror "The line count for secure_getenv() failed, see bug #443030"
 			die
 		fi
@@ -118,27 +106,33 @@ src_prepare() {
 	# change rules back to group uucp instead of dialout for now wrt #454556
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
-	# stub out the am_path_libcrypt function
-	echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > m4/gcrypt.m4
-
 	# apply user patches
 	eapply_user
-
-	eautoreconf
-
-	if ! [[ ${PV} = 9999* ]]; then
-		check_default_rules
-	fi
-
-	# Restore possibility of running --enable-static wrt #472608
-	sed -i \
-		-e '/--enable-static is not supported by systemd/s:as_fn_error:echo:' \
-		configure || die
 
 	if ! use elibc_glibc; then #443030
 		echo '#define secure_getenv(x) NULL' >> config.h.in
 		sed -i -e '/error.*secure_getenv/s:.*:#define secure_getenv(x) NULL:' src/shared/missing.h || die
 	fi
+}
+
+meson_multilib_native_use() {
+	if multilib_is_native_abi && use "$1"; then
+		echo true
+	else
+		echo false
+	fi
+}
+
+multilib_src_configure() {
+	local emesonargs=(
+		-Dacl=$(meson_multilib_native_use acl)
+		-Defi=false
+		-Dkmod=$(meson_multilib_native_use kmod)
+		-Dselinux=$(meson_multilib_native_use selinux)
+		-Dlink-udev-shared=false
+		-Dsplit-usr=true
+	)
+	meson_src_configure
 }
 
 src_configure() {
@@ -147,171 +141,86 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
-multilib_src_configure() {
-	tc-export CC #463846
-	export cc_cv_CFLAGS__flto=no #502950
-	export cc_cv_CFLAGS__Werror_shadow=no #554454
-	export cc_cv_LDFLAGS__Wl__fuse_ld_gold=no #573874
-
-	# Keep sorted by ./configure --help and only pass --disable flags
-	# when *required* to avoid external deps or unnecessary compile
-	local econf_args
-	econf_args=(
-		--libdir=/usr/$(get_libdir)
-		--docdir=/usr/share/doc/${PF}
-		$(multilib_native_use_enable static-libs static)
-		--disable-nls
-		--disable-dbus
-		$(multilib_native_use_enable kmod)
-		--disable-xkbcommon
-		--disable-seccomp
-		$(multilib_native_use_enable selinux)
-		--disable-xz
-		--disable-lz4
-		--disable-pam
-		$(multilib_native_use_enable acl)
-		--disable-gcrypt
-		--disable-audit
-		--disable-libcryptsetup
-		--disable-qrencode
-		--disable-microhttpd
-		--disable-gnuefi
-		--disable-gnutls
-		--disable-libcurl
-		--disable-libidn
-		--disable-quotacheck
-		--disable-logind
-		--disable-polkit
-		--disable-myhostname
-		$(multilib_is_native_abi || echo "--disable-manpages")
-		--enable-split-usr
-		--without-python
-		--with-bashcompletiondir="$(get_bashcompdir)"
-		--with-rootprefix=
-		$(multilib_is_native_abi && echo "--with-rootlibdir=/$(get_libdir)")
-		--disable-elfutils
-	)
-
-	if ! multilib_is_native_abi; then
-		econf_args+=(
-			MOUNT_{CFLAGS,LIBS}=' '
-		)
-	fi
-
-	ECONF_SOURCE=${S} econf "${econf_args[@]}"
-}
-
 multilib_src_compile() {
-	echo 'BUILT_SOURCES: $(BUILT_SOURCES)' > "${T}"/Makefile.extra
-	emake -f Makefile -f "${T}"/Makefile.extra BUILT_SOURCES
+	# meson creates this link
+	local libudev=$(readlink src/libudev/libudev.so.1)
 
-	# Most of the parallel build problems were solved by >=sys-devel/make-3.82-r4,
-	# but not everything -- separate building of the binaries as a workaround,
-	# which will force internal libraries required for the helpers to be built
-	# early enough, like eg. libsystemd-shared.la
+	local targets=(
+		src/libudev/${libudev}
+	)
 	if multilib_is_native_abi; then
-		local lib_targets=( libudev.la )
-		emake "${lib_targets[@]}"
-
-		local exec_targets=(
+		targets+=(
 			systemd-udevd
 			udevadm
-		)
-		emake "${exec_targets[@]}"
-
-		local helper_targets=(
-			ata_id
-			cdrom_id
-			collect
-			scsi_id
-			v4l_id
-			mtd_probe
-		)
-		emake "${helper_targets[@]}"
-
-		local man_targets=(
+			src/udev/ata_id
+			src/udev/cdrom_id
+			src/udev/collect
+			src/udev/mtd_probe
+			src/udev/scsi_id
+			src/udev/v4l_id
 			man/udev.conf.5
 			man/systemd.link.5
+			man/hwdb.7
 			man/udev.7
 			man/systemd-udevd.service.8
 			man/udevadm.8
 		)
-		emake "${man_targets[@]}"
-	else
-		local lib_targets=( libudev.la )
-		emake "${lib_targets[@]}"
 	fi
+	eninja "${targets[@]}"
 }
 
 multilib_src_install() {
+	local libudev=$(readlink src/libudev/libudev.so.1)
+
+	into /
+	dolib.so src/libudev/{${libudev},libudev.so.1,libudev.so}
+
+	insinto "/usr/$(get_libdir)/pkgconfig"
+	doins src/libudev/libudev.pc
+
 	if multilib_is_native_abi; then
-		local lib_LTLIBRARIES="libudev.la"
-		local pkgconfiglib_DATA="src/libudev/libudev.pc"
+		into /
+		dobin udevadm
 
-		local targets=(
-			install-libLTLIBRARIES
-			install-includeHEADERS
-			install-rootbinPROGRAMS
-			install-rootlibexecPROGRAMS
-			install-udevlibexecPROGRAMS
-			install-dist_udevconfDATA
-			install-dist_udevrulesDATA
-			install-pkgconfiglibDATA
-			install-pkgconfigdataDATA
-			install-dist_docDATA
-			libudev-install-hook
-			install-directories-hook
-			install-dist_bashcompletionDATA
-			install-dist_networkDATA
-		)
+		exeinto /lib/systemd
+		doexe systemd-udevd
 
-		# add final values of variables:
-		targets+=(
-			rootlibexec_PROGRAMS=systemd-udevd
-			rootbin_PROGRAMS=udevadm
-			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
-			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
-			pkgconfigdata_DATA="src/udev/udev.pc"
-			INSTALL_DIRS='$(sysconfdir)/udev/rules.d $(sysconfdir)/udev/hwdb.d $(sysconfdir)/systemd/network'
-			dist_bashcompletion_DATA="shell-completion/bash/udevadm"
-			dist_network_DATA="network/99-default.link"
-		)
-		emake -j1 DESTDIR="${D}" "${targets[@]}"
-		doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
-	else
-		local lib_LTLIBRARIES="libudev.la"
-		local pkgconfiglib_DATA="src/libudev/libudev.pc"
-		local include_HEADERS="src/libudev/libudev.h"
+		exeinto /lib/udev
+		doexe src/udev/{ata_id,cdrom_id,collect,mtd_probe,scsi_id,v4l_id}
 
-		local targets=(
-			install-libLTLIBRARIES
-			install-includeHEADERS
-			install-pkgconfiglibDATA
-		)
+		rm rules/99-systemd.rules || die
+		insinto /lib/udev/rules.d
+		doins rules/*.rules
 
-		targets+=(
-			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
-			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
-			include_HEADERS="${include_HEADERS}"
-			)
-		emake -j1 DESTDIR="${D}" "${targets[@]}"
+		insinto /usr/share/pkgconfig
+		doins src/udev/udev.pc
+
+		mv man/systemd-udevd.service.8 man/systemd-udevd.8 || die
+		rm man/systemd-udevd-{control,kernel}.socket.8 || die
+		doman man/*.[0-9]
 	fi
 }
 
 multilib_src_install_all() {
-	dodoc TODO
+	doheader src/libudev/libudev.h
 
-	prune_libtool_files --all
-	rm -f "${D}"/lib/udev/rules.d/99-systemd.rules
-	rm -f "${D}"/usr/share/doc/${PF}/{LICENSE.*,GVARIANT-SERIALIZATION,DIFFERENCES,PORTING-DBUS1,sd-shutdown.h}
+	insinto /etc/udev
+	doins src/udev/udev.conf
+
+	insinto /lib/systemd/network
+	doins network/99-default.link
 
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
 	doins "${T}"/40-gentoo.rules
+	doins "${S}"/rules/*.rules
 
-	# maintainer note: by not letting the upstream build-sys create the .so
-	# link, you also avoid a parallel make problem
-	mv "${D}"/usr/share/man/man8/systemd-udevd{.service,}.8
+	dobashcomp shell-completion/bash/udevadm
+
+	insinto /usr/share/zsh/site-functions
+	doins shell-completion/zsh/_udevadm
+
+	einstalldocs
 }
 
 pkg_postinst() {

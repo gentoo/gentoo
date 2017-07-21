@@ -6,7 +6,7 @@ XORG_DRI=dri
 inherit xorg-2
 
 DESCRIPTION="S3 Savage video driver"
-KEYWORDS="alpha amd64 ~ia64 ppc sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86 ~amd64-fbsd ~x86-fbsd"
 
 IUSE="dri"
 RDEPEND=">=x11-base/xorg-server-1.0.99"

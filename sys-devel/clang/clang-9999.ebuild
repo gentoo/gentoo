@@ -8,13 +8,13 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
+inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
 	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/clang.git
+EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
 # Keep in sync with sys-devel/llvm
@@ -27,11 +27,15 @@ LICENSE="UoI-NCSA"
 SLOT="5"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget
-	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+	+static-analyzer test xml z3 elibc_musl kernel_FreeBSD
+	${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
-	static-analyzer? ( dev-lang/perl:* )
+	static-analyzer? (
+		dev-lang/perl:*
+		z3? ( sci-mathematics/z3:0= )
+	)
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
@@ -70,38 +74,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
-check_space() {
-	local build_size=650
-
-	if use debug; then
-		ewarn "USE=debug is known to increase the size of package considerably"
-		ewarn "and cause the tests to fail."
-		ewarn
-
-		(( build_size *= 14 ))
-	elif is-flagq '-g?(gdb)?([1-9])'; then
-		ewarn "The C++ compiler -g option is known to increase the size of the package"
-		ewarn "considerably. If you run out of space, please consider removing it."
-		ewarn
-
-		(( build_size *= 10 ))
-	fi
-
-	# Multiply by number of ABIs :).
-	local abis=( $(multilib_get_enabled_abis) )
-	(( build_size *= ${#abis[@]} ))
-
-	local CHECKREQS_DISK_BUILD=${build_size}M
-	check-reqs_pkg_pretend
-}
-
-pkg_pretend() {
-	check_space
-}
-
 pkg_setup() {
-	check_space
-
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
@@ -111,19 +84,19 @@ src_unpack() {
 	mkdir -p x/y || die
 	cd x/y || die
 
-	git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
+	git-r3_fetch "https://git.llvm.org/git/clang-tools-extra.git
 		https://github.com/llvm-mirror/clang-tools-extra.git"
 	if use test; then
 		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
+		git-r3_fetch "https://git.llvm.org/git/llvm.git
 			https://github.com/llvm-mirror/llvm.git"
 	fi
 	git-r3_fetch
 
-	git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
+	git-r3_checkout https://llvm.org/git/clang-tools-extra.git \
 		"${S}"/tools/extra
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
+		git-r3_checkout https://llvm.org/git/llvm.git \
 			"${WORKDIR}"/llvm
 	fi
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
@@ -170,6 +143,9 @@ multilib_src_configure() {
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+		# z3 is not multilib-friendly
+		-DCLANG_ANALYZER_BUILD_Z3=$(multilib_native_usex z3)
+		-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
@@ -184,6 +160,7 @@ multilib_src_configure() {
 		)
 		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
 	else
@@ -201,6 +178,8 @@ multilib_src_configure() {
 		)
 	fi
 
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
 }
 
@@ -288,4 +267,10 @@ multilib_src_install_all() {
 	if use static-analyzer; then
 		python_optimize "${ED}"usr/lib/llvm/${SLOT}/share/scan-view
 	fi
+
+	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	# match 'html' non-compression
+	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
+	# +x for some reason; TODO: investigate
+	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
 }

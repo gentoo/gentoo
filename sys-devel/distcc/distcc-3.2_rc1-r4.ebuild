@@ -136,10 +136,6 @@ src_install() {
 
 	dobin "${T}/distcc-config" || die
 
-	# create the distccd pid directory
-	keepdir /var/run/distccd || die
-	fowners distcc:daemon /var/run/distccd || die
-
 	if use gnome || use gtk; then
 		einfo "Renaming /usr/bin/distccmon-gnome to /usr/bin/distccmon-gui"
 		einfo "This is to have a little sensability in naming schemes between distccmon programs"

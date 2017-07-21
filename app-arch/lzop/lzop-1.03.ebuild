@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,7 +17,10 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-x32.patch #575450
+	"${FILESDIR}"/${P}-gcc6.patch #594472
 )
+
+HTML_DOCS=( doc/lzop.html )
 
 src_test() {
 	einfo "compressing config.status to test"
@@ -30,5 +33,4 @@ src_test() {
 src_install() {
 	default
 	dodoc doc/lzop.{txt,ps}
-	dohtml doc/*.html
 }

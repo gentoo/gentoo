@@ -1,0 +1,92 @@
+Index: batteries-included-2.5.3/src/batGc.mliv
+===================================================================
+--- batteries-included-2.5.3.orig/src/batGc.mliv
++++ batteries-included-2.5.3/src/batGc.mliv
+@@ -182,7 +182,7 @@ external counters : unit -> float * floa
+     is as fast at [quick_stat]. *)
+ 
+ ##V>=4.4##external minor_words : unit -> (float [@unboxed])
+-##V>=4.4##  = "caml_gc_minor_words" "caml_gc_minor_words_unboxed" [@@noalloc]
++##V>=4.4##  = "caml_gc_minor_words" "caml_gc_minor_words_unboxed"
+ ##V>=4.4##(** Number of words allocated in the minor heap since the program was
+ ##V>=4.4##    started. This number is accurate in byte-code programs, but only an
+ ##V>=4.4##    approximation in programs compiled to native code.
+@@ -227,7 +227,7 @@ val allocated_bytes : unit -> float
+     started.  It is returned as a [float] to avoid overflow problems
+     with [int] on 32-bit machines. *)
+ 
+-##V>=4.3##external get_minor_free : unit -> int = "caml_get_minor_free" [@@noalloc]
++##V>=4.3##external get_minor_free : unit -> int = "caml_get_minor_free"
+ (** Return the current size of the free space inside the minor heap.
+     @since 2.5.0 and OCaml 4.03.0 *)
+ 
+Index: batteries-included-2.5.3/src/batInnerWeaktbl.ml
+===================================================================
+--- batteries-included-2.5.3.orig/src/batInnerWeaktbl.ml
++++ batteries-included-2.5.3/src/batInnerWeaktbl.ml
+@@ -107,6 +107,7 @@ module Make (H: Hashtbl.HashedType) : Ha
+     try ignore (Stack.pop (W.find tbl (dummy key))) with Not_found -> ()
+   let replace tbl key data = remove tbl key; add tbl key data
+   let mem tbl key = try ignore (find tbl key); true with Not_found -> false
++  let find_opt tbl key = if mem tbl key then Some(find tbl key) else None
+   let iter f tbl =
+     let f' (bk,v) = match unbox bk with Some k -> f k (obj v) | None -> () in
+     W.iter (Stack.iter f') tbl
+Index: batteries-included-2.5.3/src/batUnix.mliv
+===================================================================
+--- batteries-included-2.5.3.orig/src/batUnix.mliv
++++ batteries-included-2.5.3/src/batUnix.mliv
+@@ -272,6 +272,8 @@ type open_flag = Unix.open_flag =
+ ##V>=4.1##                                    descriptor returned by {!openfile}
+ ##V>=4.1##
+ ##V>=4.1##                                    Since OCaml 4.1 *)
++##V>=4.5##  | O_KEEPEXEC                  (** Clear the close-on-exec flag.
++##V>=4.5##                          This is currently the default. *)
+ (** The flags to {!Unix.openfile}. *)
+ 
+ 
+@@ -546,11 +548,11 @@ val access : string -> access_permission
+ (** {6 Operations on file descriptors} *)
+ 
+ 
+-val dup : file_descr -> file_descr
++val dup : ?cloexec:bool -> file_descr -> file_descr
+ (** Return a new file descriptor referencing the same file as
+     the given descriptor. *)
+ 
+-val dup2 : file_descr -> file_descr -> unit
++val dup2 : ?cloexec:bool -> file_descr -> file_descr -> unit
+ (** [dup2 fd1 fd2] duplicates [fd1] to [fd2], closing [fd2] if already
+     opened. *)
+ 
+@@ -615,7 +617,7 @@ val closedir : dir_handle -> unit
+ 
+ (** {6 Pipes and redirections} *)
+ 
+-val pipe : unit -> file_descr * file_descr
++val pipe : ?cloexec:bool -> unit -> file_descr * file_descr
+ (** Create a pipe. The first component of the result is opened
+     for reading, that's the exit to the pipe. The second component is
+     opened for writing, that's the entrance to the pipe. *)
+@@ -1151,7 +1153,7 @@ type sockaddr = Unix.sockaddr =
+       domain; [addr] is the Internet address of the machine, and
+       [port] is the port number. *)
+ 
+-val socket : socket_domain -> socket_type -> int -> file_descr
++val socket : ?cloexec:bool -> socket_domain -> socket_type -> int -> file_descr
+ (** Create a new socket in the given domain, and with the
+     given kind. The third argument is the protocol type; 0 selects
+     the default protocol for that kind of sockets. *)
+@@ -1160,10 +1162,10 @@ val domain_of_sockaddr: sockaddr -> sock
+ (** Return the socket domain adequate for the given socket address. *)
+ 
+ val socketpair :
+-  socket_domain -> socket_type -> int -> file_descr * file_descr
++  ?cloexec:bool -> socket_domain -> socket_type -> int -> file_descr * file_descr
+ (** Create a pair of unnamed sockets, connected together. *)
+ 
+-val accept : file_descr -> file_descr * sockaddr
++val accept : ?cloexec:bool -> file_descr -> file_descr * sockaddr
+ (** Accept connections on the given socket. The returned descriptor
+     is a socket connected to the client; the returned address is
+     the address of the connecting client. *)

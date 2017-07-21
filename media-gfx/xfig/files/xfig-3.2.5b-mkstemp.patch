@@ -3,8 +3,8 @@ Missed hunk noticed https://bugzilla.redhat.com/show_bug.cgi?id=505257#c1 is rec
 http://bugs.gentoo.org/show_bug.cgi?id=264575
 
 === modified file 'u_print.c'
---- u_print.c	2010-01-14 19:50:08 +0000
-+++ u_print.c	2010-01-14 19:54:14 +0000
+--- a/u_print.c	2010-01-14 19:50:08 +0000
++++ b/u_print.c	2010-01-14 19:54:14 +0000
 @@ -202,14 +202,22 @@
      char	    tmp_fig_file[PATH_MAX];
      char	   *outfile, *name, *real_lang;

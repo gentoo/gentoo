@@ -12,9 +12,9 @@ MY_PV3="$(get_version_component_range 6)"
 MY_P="${PN}_${MY_PV1}.svn.${MY_PV2}"
 
 DESCRIPTION="capi4hylafax adds a faxcapi modem to the hylafax enviroment"
+HOMEPAGE="https://packages.qa.debian.org/c/capi4hylafax.html"
 SRC_URI="mirror://debian/pool/main/c/capi4hylafax/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/c/capi4hylafax/${MY_P}-${MY_PV3}.debian.tar.gz"
-HOMEPAGE="http://packages.qa.debian.org/c/capi4hylafax.html"
 
 S="${WORKDIR}/${PN}-svn"
 

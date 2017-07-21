@@ -1,0 +1,13 @@
+diff --git a/old/trainer.cpp b/zinnia-0.06/trainer.cpp
+index fdb044c..8b21e6c 100644
+--- a/old/trainer.cpp
++++ b/zinnia-0.06/trainer.cpp
+@@ -103,7 +103,7 @@ class TrainerImpl: public Trainer {
+     if (!fn) {
+       return false;
+     }
+-    x_.push_back(std::make_pair<std::string, FeatureNode *>(y, fn));
++    x_.push_back(std::make_pair(y, fn));
+     return true;
+   }
+ 

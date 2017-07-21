@@ -403,12 +403,8 @@ while [[ $# -gt 0 ]] ; do
 		-d|--debug)                DEBUG="yes" ;;
 		-h|--help)                 usage 0 ;;
 		-V|--version)
-			unset Header
-			cvsver="$Id$"
-			cvsver=${cvsver##*binutils-config-}
-			bver=${cvsver%%,v *}
-			cvsver=${cvsver#* }
-			echo "binutils-config-${bver} (r${cvsver%% *})"
+			ver="@PV@"
+			echo "binutils-config-${ver/@'PV'@/git}"
 			exit 0
 			;;
 		-*)

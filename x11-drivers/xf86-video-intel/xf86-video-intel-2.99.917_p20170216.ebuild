@@ -9,7 +9,7 @@ inherit linux-info xorg-2 flag-o-matic
 
 DESCRIPTION="X.Org driver for Intel cards"
 
-KEYWORDS="amd64 x86 ~amd64-fbsd -x86-fbsd"
+KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="debug dri3 +sna tools +udev uxa xvmc"
 COMMIT_ID="860c3664fe79c1fe92095ff345068f1fc7e4e651"
 SRC_URI="https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"

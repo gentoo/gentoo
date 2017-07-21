@@ -5,16 +5,27 @@
 		<email>common-lisp@gentoo.org</email>
 		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
-	<longdescription>
-CL-PPCRE is a portable regular expression library for Common Lisp
-which has the following features: 
- 
- * compatible with Perl
- * fast (outperforms Perl) 
- * portable (ANSI Common Lisp)
- * thread-safe 
- * includes convenience features
- * well-documented.
+	<longdescription lang="en">
+    CL-PPCRE is a portable regular expression library for Common Lisp
+    which has the following features:
+
+    * compatible with Perl
+    * fast (outperforms Perl)
+    * portable (ANSI Common Lisp)
+    * thread-safe
+    * includes convenience features
+    * well-documented
+	</longdescription>
+	<longdescription lang="es">
+    CL-PPCRE es una biblioteca de expressiones regulares portable
+    para Common Lisp que tiene las siguientes características:
+
+    * Compatible con Perl
+    * Rápida (más rápida que la versión para Perl)
+    * Portable (ANSI Common Lisp)
+    * Segura en la ejecución de hilos (thread-safe)
+    * Incluye características para hacerla cómoda
+    * Bien documentada
 	</longdescription>
 	<upstream>
 		<remote-id type="github">edicl/cl-ppcre</remote-id>

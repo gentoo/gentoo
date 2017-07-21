@@ -1,0 +1,21 @@
+Index: tools/gn/bootstrap/bootstrap.py
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 9bad2b4e6eed9a0208c300079dfff34b1f8f31f2..0bc2e4fb8701f08e6f2d5306f03c17a2f63dbd4e 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -526,6 +526,7 @@ def write_gn_ninja(path, root_gen_dir, options):
+       'base/trace_event/process_memory_totals.cc',
+       'base/trace_event/trace_buffer.cc',
+       'base/trace_event/trace_config.cc',
++      'base/trace_event/trace_config_category_filter.cc',
+       'base/trace_event/trace_event_argument.cc',
+       'base/trace_event/trace_event_filter.cc',
+       'base/trace_event/trace_event_impl.cc',
+@@ -612,6 +613,7 @@ def write_gn_ninja(path, root_gen_dir, options):
+         'base/process/internal_linux.cc',
+         'base/process/memory_linux.cc',
+         'base/process/process_handle_linux.cc',
++        'base/process/process_info_linux.cc',
+         'base/process/process_iterator_linux.cc',
+         'base/process/process_linux.cc',
+         'base/process/process_metrics_linux.cc',

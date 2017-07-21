@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils cuda toolchain-funcs
+inherit cmake-utils cuda flag-o-matic toolchain-funcs
 
 DESCRIPTION="Fast approximate nearest neighbor searches in high dimensional spaces"
 HOMEPAGE="http://www.cs.ubc.ca/research/flann/"
@@ -29,13 +29,12 @@ DEPEND="${RDEPEND}
 # readd dependencies for test suite,
 # requires multiple ruby dependencies
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp; then
-		if [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp ; then
-			ewarn "OpenMP is not available in your current selected gcc"
-			die "need openmp capable gcc"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -56,6 +55,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
+
 	# python bindings are split
 	# off into dev-python/pyflann
 	local mycmakeargs=(

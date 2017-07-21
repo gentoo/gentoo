@@ -7,9 +7,10 @@
     </maintainer>
     <upstream>
         <remote-id type="cpan">MooseX-Role-Parameterized</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterised</remote-id>
         <remote-id type="cpan-module">MooseX::Role::Parameterized</remote-id>
-        <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Role::Parameterizable</remote-id>
         <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Role::Parameterized</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Trait::Parameterizable</remote-id>
         <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Trait::Parameterized</remote-id>
         <remote-id type="cpan-module">MooseX::Role::Parameterized::Parameters</remote-id>
     </upstream>

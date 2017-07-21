@@ -18,7 +18,7 @@ RDEPEND="
 	>=net-misc/networkmanager-1.1:=
 	>=dev-libs/glib-2.32:2
 	net-dialup/ppp:=
-	>=net-misc/openfortivpn-1.2.0
+	>=net-vpn/openfortivpn-1.2.0
 	gtk? (
 		>=app-crypt/libsecret-0.18
 		>=gnome-extra/nm-applet-1.2.0

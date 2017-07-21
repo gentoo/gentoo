@@ -11,4 +11,4 @@ mail-mta/exim redis
 #
 # Mask the vde flag on tinc because net-misc/vde is not
 # keyworded for sparc
-net-misc/tinc vde
+net-vpn/tinc vde

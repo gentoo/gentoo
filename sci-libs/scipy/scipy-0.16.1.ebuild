@@ -130,7 +130,7 @@ python_test() {
 
 python_install_all() {
 	if use doc; then
-		dodoc "${DISTDIR}"/${PN}*pdf
+		dodoc "${DISTDIR}"/${PN}-${DOC_PV}-ref.pdf
 		docinto html
 		dodoc -r "${WORKDIR}"/html/.
 	fi

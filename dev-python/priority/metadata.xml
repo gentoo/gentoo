@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -15,6 +15,7 @@
 			<name>Cory Benfield</name>
 		</maintainer>
 		<remote-id type="pypi">priority</remote-id>
+		<remote-id type="github">python-hyper/priority</remote-id>
 	</upstream>
 	<longdescription>Priority is a pure-Python implementation of the priority
 		logic for HTTP/2, set out in RFC 7540 Section 5.3 (Stream Priority).

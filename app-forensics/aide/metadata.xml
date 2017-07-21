@@ -5,8 +5,17 @@
 		<email>forensics@gentoo.org</email>
 		<name>Gentoo Forensics Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>itumaykin+gentoo@gmail.com</email>
+		<name>Coacher</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="prelink">Enable support for <pkg>sys-devel/prelink</pkg></flag>
+		<flag name="e2fs">Enable support for checking file attributes on ext2/ext3/ext4 filesystems</flag>
+		<flag name="prelink">Bypass prelinking when calculating checksums</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">aide</remote-id>

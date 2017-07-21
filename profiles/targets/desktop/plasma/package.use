@@ -32,7 +32,7 @@ media-gfx/exiv2 xmp
 dev-qt/qtscript scripttools
 
 # Required by kde-apps/pykde4
-dev-python/PyQt4 script sql webkit
+dev-python/PyQt4 script sql
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
@@ -51,24 +51,21 @@ dev-qt/qtgui:5 egl
 dev-qt/qtwayland:5 egl
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 kdenlive melt
+>=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
 
 # Required by app-office/libreoffice
 media-libs/phonon designer
 
-# Allow certain KDE 4 components to be coinstalled with Plasma 5
-kde-apps/solid-runtime -bluetooth
-kde-frameworks/baloo minimal
-sys-auth/polkit-kde-agent minimal
+# Required by dev-qt/qtwebengine
+media-libs/libvpx svc
+
+# Conflicts with kde-apps/audiocd-kio:5
+media-sound/amarok:4 -cdda
 
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
-<app-office/texmaker-4.5-r1 -qt4
-dev-python/qscintilla-python -qt4
+<dev-python/qscintilla-python-2.10 -qt4
 <x11-libs/qscintilla-2.10 -qt4
 
-# Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
+# FIXME: REQUIRED_USE conflicts: qt5? ( !qt4 )
 >=app-crypt/pinentry-0.9.6-r5 -qt4
->=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
 >=media-libs/opencv-2.4.12-r1 -qt4
-<media-video/smplayer-16.4.0-r2 -qt4
-<net-wireless/wpa_supplicant-2.6-r1 -qt4

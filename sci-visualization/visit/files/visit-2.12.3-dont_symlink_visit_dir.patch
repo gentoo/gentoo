@@ -1,0 +1,18 @@
+diff -ru visit2.7.1.old2/src/CMakeLists.txt visit2.7.1/src/CMakeLists.txt
+--- visit2.7.1.old2/src/CMakeLists.txt	2014-01-27 22:10:06.520297262 +0100
++++ visit2.7.1/src/CMakeLists.txt	2014-01-27 22:11:30.520298002 +0100
+@@ -807,14 +807,6 @@
+             \"${VISIT_VERSION}\"
+             \"${CMAKE_INSTALL_PREFIX}/beta\")
+         ")
+-    ELSE(VISIT_INSTALL_AS_BETA)
+-        INSTALL(CODE "
+-          MESSAGE(\"Symlinking current to ${VISIT_VERSION}\")
+-          EXECUTE_PROCESS(WORKING_DIRECTORY \${CMAKE_INSTALL_PREFIX}
+-            COMMAND \${CMAKE_COMMAND} -E create_symlink
+-            \"${VISIT_VERSION}\"
+-            \"${CMAKE_INSTALL_PREFIX}/current\")
+-        ")
+     ENDIF(VISIT_INSTALL_AS_BETA)
+ ENDIF(WIN32)
+ MARK_AS_ADVANCED(

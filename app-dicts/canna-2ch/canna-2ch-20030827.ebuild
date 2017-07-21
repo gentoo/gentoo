@@ -1,10 +1,12 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit cannadic eutils
+EAPI="6"
+
+inherit cannadic
 
 DESCRIPTION="Japanese Canna dictionary for 2channelers"
-HOMEPAGE="http://omaemona.sourceforge.net/packages/Canna/"
+HOMEPAGE="http://omaemona.sourceforge.net/packages/Canna"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 #SRC_URI="http://omaemona.sourceforge.net/packages/Canna/2ch.t"
 
@@ -14,22 +16,16 @@ KEYWORDS="alpha ~amd64 ppc ppc64 sparc x86"
 IUSE="canna"
 
 DEPEND="canna? ( app-i18n/canna )"
-RDEPEND=""
-# You cannot use 2ch.cbd as its name. Canna doesn't load dictionaries
-# if the name begins with number. (I don't know why ...)
+S="${WORKDIR}/${PN}"
+
+PATCHES=( "${FILESDIR}/"${P}-gentoo.patch )
+
 CANNADICS="2ch"
-
-S=${WORKDIR}/${PN}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-canna36p4-gentoo.patch"
-}
+DICSDIRFILE="${FILESDIR}/052ch.dics.dir"
 
 src_compile() {
 	# Anthy users do not need binary dictionary
-	if use canna ; then
+	if use canna; then
 		mkbindic nichan.ctd || die
 	fi
 }

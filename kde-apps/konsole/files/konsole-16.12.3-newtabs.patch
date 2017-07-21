@@ -1,0 +1,31 @@
+From e3de3ca72552c81bc8d7dbe5cf1568eedd33c31e Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Wed, 25 Jan 2017 22:25:48 +0100
+Subject: [PATCH] Fix opening of new tabs with multiple processes
+
+Make sure we re-use the process if the user wants a new tab.
+
+BUG: 373440
+REVIEW: 129886
+---
+ src/main.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index f4bb5af..33a2bdb 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -117,8 +117,8 @@ extern "C" int Q_DECL_EXPORT kdemain(int argc, char* argv[])
+     parser->process(*app);
+     about.processCommandLine(parser.data());
+ 
+-    // Enable user to force multiple instances
+-    if (!Konsole::KonsoleSettings::useSingleInstance()) {
++    // Enable user to force multiple instances, unless a new tab is requested
++    if (!Konsole::KonsoleSettings::useSingleInstance() && !parser->isSet(QStringLiteral("new-tab"))) {
+         startupOption = KDBusService::Multiple;
+     }
+ 
+-- 
+2.10.2
+

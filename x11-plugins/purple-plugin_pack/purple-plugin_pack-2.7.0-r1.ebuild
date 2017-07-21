@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-any-r1
+
+inherit python-any-r1
 
 MY_PN=${PN/_/-}
 MY_P=${MY_PN}-${PV}
@@ -17,16 +17,20 @@ SLOT="0"
 KEYWORDS="amd64 hppa ppc x86"
 IUSE="debug gtk ncurses spell talkfilters"
 
-RDEPEND="dev-libs/json-glib
+RDEPEND="
+	dev-libs/json-glib
 	net-im/pidgin[gtk?,ncurses?]
 	talkfilters? ( app-text/talkfilters )
-	spell? ( app-text/gtkspell:2 )"
+	spell? ( app-text/gtkspell:2 )
+"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	sed -e '/CFLAGS=/{s| -g3||}' -i configure || die
 }
 
@@ -45,7 +49,7 @@ src_configure() {
 
 	eval DISABLED_PLUGINS="\$${PN//[^a-z]/_}_DISABLED_PLUGINS"
 	# disable known broken plugins
-	DISABLED_PLUGINS+=" schedule findip"
+	DISABLED_PLUGINS+=" schedule findip xmmsremote"
 	use gtk || DISABLED_PLUGINS+=" $(list_plugins_dep pidgin)"
 	use ncurses || DISABLED_PLUGINS+=" $(list_plugins_dep finch)"
 	use spell || DISABLED_PLUGINS+=" $(list_plugins_dep gtkspell)"
@@ -60,11 +64,6 @@ src_configure() {
 	econf \
 		--with-plugins="${plugins}" \
 		$(use_enable debug)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README VERSION
 }
 
 pkg_preinst() {

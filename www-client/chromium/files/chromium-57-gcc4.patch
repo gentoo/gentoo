@@ -1,0 +1,22 @@
+--- a/chrome/browser/ui/libgtkui/gtk_ui.cc
++++ b/chrome/browser/ui/libgtkui/gtk_ui.cc
+@@ -676,7 +676,7 @@
+             : nullptr);
+   }
+ 
+-  return gtk_border;
++  return std::move(gtk_border);
+ }
+ 
+ void GtkUi::AddWindowButtonOrderObserver(
+--- a/third_party/webrtc/modules/desktop_capture/screen_capturer_x11.cc
++++ b/third_party/webrtc/modules/desktop_capture/screen_capturer_x11.cc
+@@ -412,7 +412,7 @@ std::unique_ptr<DesktopCapturer> DesktopCapturer::CreateRawScreenCapturer(
+     return nullptr;
+   }
+ 
+-  return capturer;
++  return std::move(capturer);
+ }
+ 
+ }  // namespace webrtc

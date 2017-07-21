@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit multilib python-single-r1 cmake-utils
 
@@ -13,12 +13,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 CC-BY-SA-3.0" # See README for reasoning.
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="doc cpu_flags_x86_sse cpu_flags_x86_sse2 test"
 
 RDEPEND=">=dev-libs/glib-2.28
 	media-libs/libpng:0=
-	sys-libs/zlib:="
+	sys-libs/zlib:=
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	doc? (
 		app-doc/doxygen
@@ -33,7 +34,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/html
 		-DLIBDIR="${EPREFIX}"/usr/$(get_libdir)
-		-DSETUP_PY_INSTALL_PREFIX="${ED}"/$(python_get_sitedir)
+		-DSETUP_PY_INSTALL_PREFIX="${ED}"/usr
 		-DBUILD_AUXFUN=ON
 		-DBUILD_DOC=$(usex doc ON OFF)
 		-DBUILD_FOR_SSE=$(usex cpu_flags_x86_sse ON OFF)

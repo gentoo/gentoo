@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Software Token for Linux/UNIX"
 HOMEPAGE="https://github.com/cernekee/stoken"
-SRC_URI="https://github.com/cernekee/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/cernekee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

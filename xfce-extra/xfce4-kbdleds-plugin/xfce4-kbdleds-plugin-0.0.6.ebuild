@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A panel plug-in to show state of Caps, Num and Scroll Lock keys"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-kbdleds-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-kbdleds-plugin"
 SRC_URI="http://compas.com.ua/oco/file/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"

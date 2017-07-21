@@ -1,9 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit eutils linux-info
 
-DESCRIPTION="Firmware, kernel driver and configuration instructions for Alcatel SpeedTouch USB modems"
+DESCRIPTION="Firmware and configuration instructions for Alcatel SpeedTouch USB modems"
 HOMEPAGE="http://www.speedtouch.com/"
 SRC_URI="http://www.speedtouch.com/download/drivers/USB/SpeedTouch330_firmware_${PV//./}.zip"
 
@@ -11,22 +13,11 @@ SRC_URI="http://www.speedtouch.com/download/drivers/USB/SpeedTouch330_firmware_$
 LICENSE="SpeedTouch-USB-Firmware"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 RDEPEND="net-dialup/ppp"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
-
-pkg_setup() {
-	linux-info_pkg_setup
-
-	if kernel_is lt 2 6 10 ; then
-		eerror "The kernel-space driver exists only in kernels >= 2.6.10."
-		eerror "Please upgrade the kernel."
-		die "Unsupported kernel version"
-	fi
-}
 
 src_install() {
 	local FILE_VER="${PV#*.}"
@@ -53,10 +44,10 @@ src_install() {
 	# Copy to the firmware directory
 	insinto /lib/firmware
 	insopts -m 600
-	doins speedtch-{1,2}.bin.{2,4} || die "doins firmware failed"
+	doins speedtch-{1,2}.bin.{2,4}
 
 	# Symlinks for other revisions of the modem
-	cd "${D}/lib/firmware"
+	pushd "${D}/lib/firmware" >/dev/null || die
 	for n in 1 2 ; do
 		for rev in 0 1 ; do
 			ln -sfn speedtch-${n}.bin.2 speedtch-${n}.bin.${rev}
@@ -64,9 +55,10 @@ src_install() {
 		# Seems like a reasonable guess, for revision 3
 		ln -sfn speedtch-${stub}${n}.bin.4 speedtch-${n}.bin.3
 	done
+	popd >/dev/null || die
 
 	# Documentation necessary to complete the setup
-	dodoc "${FILESDIR}/README" || die "dodoc failed"
+	dodoc "${FILESDIR}/README"
 }
 
 pkg_postinst() {
@@ -83,13 +75,13 @@ pkg_postinst() {
 	echo
 
 	# Check user-space for PPPoA support
-	if ! built_with_use net-dialup/ppp atm ; then
+	if ! has_version net-dialup/ppp[atm] ; then
 		ewarn "Run the following command if connecting via PPPoA protocol:"
 		ewarn "   euse -E atm && emerge net-dialup/ppp"
 		echo
 	fi
 	# Check user-space for PPPoE support
-	if ! has_version >=net-dialup/linux-atm-2.5.0 ; then
+	if ! has_version net-dialup/linux-atm ; then
 		ewarn "Run the following command if connecting via PPPoE protocol:"
 		ewarn "   emerge net-dialup/linux-atm"
 		echo

@@ -10,13 +10,15 @@ SRC_URI="http://www.qtfm.org/${P}.tar.gz?attredirects=0 -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # file is for LIBS += -lmagic
 RDEPEND="sys-apps/file
 	dev-qt/qtgui:4"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 
 src_prepare() {
 	default

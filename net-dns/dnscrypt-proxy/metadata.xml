@@ -16,8 +16,6 @@
 		server.
 	</longdescription>
 	<use>
-		<flag name="ldns">Use <pkg>net-libs/ldns</pkg> for DNSSEC/SSHFP
-			validation</flag>
 		<flag name="plugins">Enable plugin support to inspect and modify
 			queries and responses</flag>
 		<flag name="systemd">Use systemd's socket activation instead of

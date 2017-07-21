@@ -1,0 +1,33 @@
+From e3bdb7d17264b8d5bd9abab97c96d9c4a50e4f61 Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kf@sumptuouscapital.com>
+Date: Mon, 3 Apr 2017 23:44:56 +0300
+Subject: [PATCH] gpgscm: Use shorter socket path lengts to improve test
+ reliability
+
+--
+As socket lengths are normally restricted to 108 characters
+(UNIX_PATH_MAX variable in /usr/include/linux/un.h), using 42 characters
+by default easily results in errors.
+---
+ tests/gpgscm/tests.scm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/gpgscm/tests.scm b/tests/gpgscm/tests.scm
+index 592b36f..f54a387 100644
+--- a/tests/gpgscm/tests.scm
++++ b/tests/gpgscm/tests.scm
+@@ -273,9 +273,9 @@
+   (canonical-path (_mkdtemp (if (null? components)
+ 				(path-join
+ 				 (get-temp-path)
+-				 (string-append "gpgscm-" (get-isotime) "-"
++				 (string-append "gscm"
+ 						(basename-suffix *scriptname* ".scm")
+-						"-XXXXXX"))
++						"XXXXXX"))
+ 				(apply path-join components)))))
+ 
+ ;; Make a temporary directory and remove it at interpreter shutdown.
+-- 
+2.10.2
+

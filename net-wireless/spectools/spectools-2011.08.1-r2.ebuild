@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 		KEYWORDS=""
 else
 		SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.gz"
-		KEYWORDS="amd64 arm ppc x86"
+		KEYWORDS="amd64 arm ~ppc x86"
 fi
 
 DESCRIPTION="Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware"

@@ -31,7 +31,7 @@ src_prepare() {
 	default
 
 	# remove bundled libs
-	rm -r third_party/luajit/luajit third_party/concurrency_kit/ck third_party/cram|| die
+	rm -r third_party/luajit/luajit third_party/concurrency_kit/ck third_party/cram || die
 
 	./autogen.sh || die
 }

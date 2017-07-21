@@ -1,0 +1,15 @@
+Disable AVX2 code to prevent build failure with GCC
+
+Bug: https://bugs.gentoo.org/608640
+
+--- a/third_party/skia/include/core/SkPreConfig.h
++++ b/third_party/skia/include/core/SkPreConfig.h
+@@ -125,7 +125,7 @@
+     // These checks must be done in descending order to ensure we set the highest
+     // available SSE level.
+     #if defined(__AVX2__)
+-        #define SK_CPU_SSE_LEVEL    SK_CPU_SSE_LEVEL_AVX2
++        #define SK_CPU_SSE_LEVEL    SK_CPU_SSE_LEVEL_AVX
+     #elif defined(__AVX__)
+         #define SK_CPU_SSE_LEVEL    SK_CPU_SSE_LEVEL_AVX
+     #elif defined(__SSE4_2__)

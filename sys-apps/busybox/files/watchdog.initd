@@ -4,4 +4,4 @@
 
 command="/bin/busybox watchdog"
 command_args="${WATCHDOG_OPTS}"
-pidfile="/var/run/watchdog.pid"
+pidfile="/run/watchdog.pid"

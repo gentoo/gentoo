@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit kde4-base
 
-DESCRIPTION="Graphical Portage frontend based on KDE4/Qt4"
-HOMEPAGE="http://kuroo.sourceforge.net/"
+DESCRIPTION="Graphical Portage frontend based on KDELibs4/Qt4"
+HOMEPAGE="https://sourceforge.net/projects/kuroo/"
 SRC_URI="mirror://sourceforge/kuroo/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -18,6 +18,6 @@ DEPEND="dev-db/sqlite:3"
 
 RDEPEND="${DEPEND}
 	app-portage/gentoolkit
-	$(add_kdeapps_dep kdesu)
+	|| ( kde-plasma/kde-cli-tools[kdesu] $(add_kdeapps_dep kdesu) )
 	kde-apps/kompare:*
 "

@@ -8,5 +8,6 @@
 <use>
 	<flag name="serial">Compile with serial console support</flag>
 	<flag name="floppy">Install a script to create floppy disks containing memtest86+ binaries.</flag>
+	<flag name="iso">Compile an ISO image</flag>
 </use>
 </pkgmetadata>

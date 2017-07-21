@@ -1,5 +1,5 @@
---- parsers-orig.h	2009-11-16 23:39:49.747328066 +0200
-+++ parsers.h	2009-11-16 23:40:26.541581805 +0200
+--- a/parsers.h	2009-11-16 23:39:49.747328066 +0200
++++ b/parsers.h	2009-11-16 23:40:26.541581805 +0200
 @@ -16,6 +16,7 @@
  
  /* Add the name of any new parser definition function here */

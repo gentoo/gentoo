@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,9 @@ inherit gnome2 vala
 DESCRIPTION="Move tiles so that they reach their places"
 HOMEPAGE="https://wiki.gnome.org/Apps/Taquin"
 
-LICENSE="LGPL-2+"
+LICENSE="GPL-3+ CC-BY-SA-3.0 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

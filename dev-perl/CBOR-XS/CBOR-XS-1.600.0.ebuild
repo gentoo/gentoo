@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Concise Binary Object Representation (CBOR, RFC7049)"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

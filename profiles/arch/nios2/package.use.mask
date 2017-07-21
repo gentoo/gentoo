@@ -169,7 +169,7 @@ net-libs/webkit-gtk -jit
 # Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
 # Mask the vde flag on tinc because net-misc/vde is not
 # keyworded for arm
-net-misc/tinc vde
+net-vpn/tinc vde
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
 # libpcre jit is not supported on alpha

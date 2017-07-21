@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -22,5 +22,9 @@
 		<flag name="acl">Installs acl support</flag>
 		<flag name="cron">Installs cron file</flag>
 		<flag name="selinux">Installs Security Enhanced Linux support</flag>
+		<flag name="bzip2">Compresses rotated log files with bzip2 instead of gzip</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">logrotate/logrotate</remote-id>
+	</upstream>
 </pkgmetadata>

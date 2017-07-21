@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
 inherit eutils
 
-DESCRIPTION="tool for AVR microcontrollers which can interface to many hardware in-system programmers"
+DESCRIPTION="Tool for programming AVR microcontroller through the parallel port"
 HOMEPAGE="https://savannah.nongnu.org/projects/uisp"
 SRC_URI="https://savannah.nongnu.org/download/uisp/${P}.tar.gz"
 

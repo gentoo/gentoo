@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-libs/libnl-3.2.8:3
 	>=net-misc/networkmanager-0.9.10:=
 	>=dev-libs/dbus-glib-0.74
-	|| ( net-misc/openswan net-misc/libreswan )
+	|| ( net-misc/openswan net-vpn/libreswan )
 	gtk? (
 		app-crypt/libsecret
 		>=gnome-extra/nm-applet-0.9.10

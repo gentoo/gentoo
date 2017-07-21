@@ -5,7 +5,11 @@
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
 	</maintainer>
+	<use>
+		<flag name="webengine">Install packages required for
+		experimental rendering support with webengine.</flag>
+	</use>
 	<upstream>
-		<remote-id type="github">The-Compiler/qutebrowser</remote-id>
+		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -121,6 +121,10 @@ src_prepare() {
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 	fi
 
+	# Can be disabled with FREETYPE_PROPERTIES="pcf:no-long-family-names=1"
+	# via environment (new since v2.8)
+	enable_option PCF_CONFIG_OPTION_LONG_FAMILY_NAMES
+
 	if ! use bindist; then
 		# See http://freetype.org/patents.html
 		# ClearType is covered by several Microsoft patents in the US

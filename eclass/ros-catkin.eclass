@@ -42,34 +42,24 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
 fi
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT
-# @DESCRIPTION:
-# Tells the eclass the package has python code and forwards it to python-r1.eclass.
-PYTHON_ECLASS=""
-CATKIN_PYTHON_USEDEP=""
-if [ -n "${PYTHON_COMPAT}" ] ; then
-	PYTHON_ECLASS="python-r1 python-utils-r1"
-fi
+# This should be temporary. ROS only really works with one global python
+# version. The idea here is to have a ROS_COMPAT in the same vein as
+# PYTHON_COMPAT where packages would define what distro they can work on, then
+# we'd have ros_distro_gentoo_python_2_7 & co plus the OSRF ones (lunar, etc.).
+# Note that this uncondtionally pulls python but in the ROS world there will
+# most certainly be something pulling python anyway.
+PYTHON_COMPAT=( python2_7 )
 
-inherit ${SCM} ${PYTHON_ECLASS} cmake-utils flag-o-matic
+inherit ${SCM} python-r1 cmake-utils flag-o-matic
 
-CATKIN_DO_PYTHON_MULTIBUILD=""
-if [ -n "${PYTHON_COMPAT}" ] ; then
-	CATKIN_PYTHON_USEDEP="[${PYTHON_USEDEP}]"
-	CATKIN_DO_PYTHON_MULTIBUILD="yes"
-fi
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 IUSE="test"
-RDEPEND="
-	dev-util/catkin${CATKIN_PYTHON_USEDEP}
-	dev-python/empy${CATKIN_PYTHON_USEDEP}
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
+	dev-util/catkin[${PYTHON_USEDEP}]
+	dev-python/empy[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
-
-if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-	RDEPEND="${RDEPEND} dev-lang/python-exec:2 ${PYTHON_DEPS}"
-	DEPEND="${DEPEND} ${PYTHON_DEPS}"
-fi
 
 # @ECLASS-VARIABLE: CATKIN_HAS_MESSAGES
 # @DESCRIPTION:
@@ -80,20 +70,20 @@ fi
 # @DESCRIPTION:
 # Some messages have dependencies on other messages.
 # In that case, CATKIN_MESSAGES_TRANSITIVE_DEPS should contain a space-separated list of atoms
-# representing those dependencies. The eclass uses it to ensure proper dependencies on these packages. 
+# representing those dependencies. The eclass uses it to ensure proper dependencies on these packages.
 if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 	IUSE="${IUSE} +ros_messages_python +ros_messages_cxx ros_messages_eus ros_messages_lisp ros_messages_nodejs"
 	RDEPEND="${RDEPEND}
-		ros_messages_cxx?    ( dev-ros/gencpp:=${CATKIN_PYTHON_USEDEP}    )
-		ros_messages_eus?    ( dev-ros/geneus:=${CATKIN_PYTHON_USEDEP}    )
-		ros_messages_python? ( dev-ros/genpy:=${CATKIN_PYTHON_USEDEP}     )
-		ros_messages_lisp?   ( dev-ros/genlisp:=${CATKIN_PYTHON_USEDEP}   )
-		ros_messages_nodejs? ( dev-ros/gennodejs:=${CATKIN_PYTHON_USEDEP} )
+		ros_messages_cxx?    ( dev-ros/gencpp:=    dev-ros/gencpp[${PYTHON_USEDEP}]    )
+		ros_messages_eus?    ( dev-ros/geneus:=    dev-ros/geneus[${PYTHON_USEDEP}]    )
+		ros_messages_python? ( dev-ros/genpy:=     dev-ros/genpy[${PYTHON_USEDEP}]     )
+		ros_messages_lisp?   ( dev-ros/genlisp:=   dev-ros/genlisp[${PYTHON_USEDEP}]   )
+		ros_messages_nodejs? ( dev-ros/gennodejs:= dev-ros/gennodejs[${PYTHON_USEDEP}] )
 		dev-ros/message_runtime
 	"
 	DEPEND="${DEPEND} ${RDEPEND}
 		dev-ros/message_generation
-		dev-ros/genmsg${CATKIN_PYTHON_USEDEP}
+		dev-ros/genmsg[${PYTHON_USEDEP}]
 	"
 	if [ -n "${CATKIN_MESSAGES_TRANSITIVE_DEPS}" ] ; then
 		for i in ${CATKIN_MESSAGES_TRANSITIVE_DEPS} ; do
@@ -146,7 +136,7 @@ HOMEPAGE="http://wiki.ros.org/${PN}"
 # by installing a recursive CMakeLists.txt to handle bundles.
 ros-catkin_src_prepare() {
 	# If no multibuild, just use cmake IN_SOURCE support
-	[ -n "${CATKIN_IN_SOURCE_BUILD}" ] && [ -z "${CATKIN_DO_PYTHON_MULTIBUILD}" ] && export CMAKE_IN_SOURCE_BUILD=yes
+	[ -n "${CATKIN_IN_SOURCE_BUILD}" ] && export CMAKE_IN_SOURCE_BUILD=yes
 
 	cmake-utils_src_prepare
 
@@ -154,31 +144,20 @@ ros-catkin_src_prepare() {
 		catkin_init_workspace || die
 	fi
 
-	# If python multibuild, copy the sources
-	[ -n "${CATKIN_IN_SOURCE_BUILD}" ] && [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] && python_copy_sources
-
 	# Most packages require C++11 these days. Do it here, in src_prepare so that
 	# ebuilds can override it in src_configure.
 	append-cxxflags '-std=c++11'
 }
 
-# @FUNCTION: ros-catkin_src_configure_internal
+# @FUNCTION: ros-catkin_python_setup
 # @DESCRIPTION:
-# Internal decoration of cmake-utils_src_configure to handle multiple python installs.
-ros-catkin_src_configure_internal() {
-	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-		local sitedir="$(python_get_sitedir)"
-		local mycmakeargs=(
-			"${mycmakeargs[@]}"
-			-DPYTHON_EXECUTABLE="${PYTHON}"
-			-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
-		)
-		python_export PYTHON_SCRIPTDIR
-		if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
-			export CMAKE_USE_DIR="${BUILD_DIR}"
-		fi
-	fi
-	cmake-utils_src_configure "${@}"
+# Sets up python environment for ROS packages.
+ros-catkin_python_setup() {
+	# Todo: Need to match this with ros distro.
+	local pyimpl="${PYTHON_COMPAT[0]}"
+	python_export "${pyimpl}" EPYTHON PYTHON
+	python_wrapper_setup
+	python_export PYTHON_SCRIPTDIR
 }
 
 # @VARIABLE: mycatkincmakeargs
@@ -191,6 +170,8 @@ ros-catkin_src_configure_internal() {
 # @DESCRIPTION:
 # Configures a catkin-based package.
 ros-catkin_src_configure() {
+	ros-catkin_python_setup
+
 	export CATKIN_PREFIX_PATH="${EPREFIX}/usr"
 	export ROS_ROOT="${EPREFIX}/usr/share/ros"
 	if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
@@ -202,38 +183,42 @@ ros-catkin_src_configure() {
 		use ros_messages_nodejs || ROS_LANG_DISABLE="${ROS_LANG_DISABLE}:gennodejs"
 		export ROS_LANG_DISABLE
 	fi
+
 	local mycmakeargs=(
 		"$(cmake-utils_use test CATKIN_ENABLE_TESTING)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
 		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EROOT}}/usr"
 		"${mycatkincmakeargs[@]}"
 	)
-	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-		python_foreach_impl ros-catkin_src_configure_internal "${@}"
-	else
-		ros-catkin_src_configure_internal "${@}"
+
+	local sitedir="$(python_get_sitedir)"
+	mycmakeargs+=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
+	)
+	if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
+		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
+
+	cmake-utils_src_configure "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_compile
 # @DESCRIPTION:
 # Builds a catkin-based package.
 ros-catkin_src_compile() {
-	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-		if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
-			export CMAKE_USE_DIR="${BUILD_DIR}"
-		fi
-		python_foreach_impl cmake-utils_src_compile "${@}"
-	else
-		cmake-utils_src_compile "${@}"
-	fi
+	ros-catkin_python_setup
+	cmake-utils_src_compile "${@}"
 }
 
-# @FUNCTION: ros-catkin_src_test_internal
+# @FUNCTION: ros-catkin_src_test
 # @DESCRIPTION:
-# Decorator around cmake-utils_src_test to ensure tests are built before running them.
-ros-catkin_src_test_internal() {
+# Run the tests of a catkin-based package.
+ros-catkin_src_test() {
 	cd "${BUILD_DIR}" || die
+
+	ros-catkin_python_setup
+
 	# Regenerate env for tests, PYTHONPATH is not set properly otherwise...
 	if [ -f catkin_generated/generate_cached_setup.py ] ; then
 		einfo "Regenerating setup_cached.sh for tests"
@@ -247,25 +232,16 @@ ros-catkin_src_test_internal() {
 	cmake-utils_src_test "${@}"
 }
 
-# @FUNCTION: ros-catkin_src_test
+# @FUNCTION: ros-catkin_src_install
 # @DESCRIPTION:
-# Run the tests of a catkin-based package.
-ros-catkin_src_test() {
-	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-		python_foreach_impl ros-catkin_src_test_internal "${@}"
-	else
-		ros-catkin_src_test_internal "${@}"
-	fi
-}
+# Installs a catkin-based package.
+ros-catkin_src_install() {
+	ros-catkin_python_setup
 
-# @FUNCTION: ros-catkin_src_install_with_python
-# @DESCRIPTION:
-# Decorator around cmake-utils_src_install to ensure python scripts are properly handled w.r.t. python-exec2.
-ros-catkin_src_install_with_python() {
-	python_export PYTHON_SCRIPTDIR
 	if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
+
 	cmake-utils_src_install "${@}"
 	if [ ! -f "${T}/.catkin_python_symlinks_generated" -a -d "${D}/${PYTHON_SCRIPTDIR}" ]; then
 		dodir /usr/bin
@@ -273,17 +249,6 @@ ros-catkin_src_install_with_python() {
 			dosym ../lib/python-exec/python-exec2 "/usr/bin/${i##*/}"
 		done
 		touch "${T}/.catkin_python_symlinks_generated" || die
-	fi
-}
-
-# @FUNCTION: ros-catkin_src_install
-# @DESCRIPTION:
-# Installs a catkin-based package.
-ros-catkin_src_install() {
-	if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-		python_foreach_impl ros-catkin_src_install_with_python "${@}"
-	else
-		cmake-utils_src_install "${@}"
 	fi
 }
 

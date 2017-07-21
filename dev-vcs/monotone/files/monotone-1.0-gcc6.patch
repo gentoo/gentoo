@@ -1,0 +1,64 @@
+Bug: https://bugs.gentoo.org/594538
+
+--- a/src/cache_logger.hh
++++ b/src/cache_logger.hh
+@@ -23,7 +23,7 @@
+   // if given the empty filename, do nothing
+   explicit cache_logger(std::string const & filename, int max_size);
+ 
+-  bool logging() const { return _impl; }
++  bool logging() const { return static_cast<bool>(_impl); }
+ 
+   void log_exists(bool exists, int position, int item_count, int est_size) const;
+   void log_touch(bool exists, int position, int item_count, int est_size) const;
+--- a/src/cmd_ws_commit.cc
++++ b/src/cmd_ws_commit.cc
+@@ -1170,7 +1170,7 @@
+     {
+       for (attr_map_t::iterator i = node->attrs.begin();
+            i != node->attrs.end(); ++i)
+-        i->second = make_pair(false, "");
++        i->second = make_pair(false, attr_value(""));
+     }
+   else
+     {
+@@ -1179,7 +1179,7 @@
+       E(node->attrs.find(a_key) != node->attrs.end(), origin::user,
+         F("path '%s' does not have attribute '%s'")
+         % path % a_key);
+-      node->attrs[a_key] = make_pair(false, "");
++      node->attrs[a_key] = make_pair(false, attr_value(""));
+     }
+ 
+   cset cs;
+--- a/src/roster.cc
++++ b/src/roster.cc
+@@ -223,7 +223,7 @@
+ 
+ bool marking_map::contains(node_id nid) const
+ {
+-  return _store.get_if_present(nid);
++  return static_cast<bool>(_store.get_if_present(nid));
+ }
+ 
+ void marking_map::remove_marking(node_id nid)
+@@ -727,7 +727,7 @@
+ bool
+ roster_t::has_node(node_id n) const
+ {
+-  return nodes.get_if_present(n);
++  return static_cast<bool>(nodes.get_if_present(n));
+ }
+ 
+ bool
+@@ -1898,8 +1898,8 @@
+       node_t const &left_node = left_roster.all_nodes().get_if_present(i->first);
+       node_t const &right_node = right_roster.all_nodes().get_if_present(i->first);
+ 
+-      bool exists_in_left = (left_node);
+-      bool exists_in_right = (right_node);
++      bool exists_in_left = static_cast<bool>(left_node);
++      bool exists_in_right = static_cast<bool>(right_node);
+ 
+       if (!exists_in_left && !exists_in_right)
+         mark_new_node(new_rid, n, new_markings);

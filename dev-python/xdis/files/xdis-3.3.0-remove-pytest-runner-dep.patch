@@ -1,0 +1,33 @@
+From aabea1b295308b227bbaf4acd36f058121984791 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 28 Mar 2017 11:20:00 -0700
+Subject: [PATCH] remove-pytest-runner dep
+
+---
+ setup.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 138b769..5941951 100755
+--- a/setup.py
++++ b/setup.py
+@@ -5,7 +5,7 @@
+ from __pkginfo__ import \
+     author,           author_email,       \
+     license,          long_description,   classifiers,               \
+-    modname,          py_modules,         setup_requires,            \
++    modname,          py_modules,                     \
+     scripts,          short_desc,         tests_require,             \
+     VERSION,          web,                zip_safe
+ 
+@@ -20,7 +20,6 @@ setup(
+        name               = modname,
+        packages           = find_packages(),
+        py_modules         = py_modules,
+-       setup_requires     = setup_requires,
+        scripts            = scripts,
+        tests_require      = tests_require,
+        url                = web,
+-- 
+2.12.1
+

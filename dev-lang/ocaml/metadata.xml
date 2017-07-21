@@ -9,4 +9,7 @@
 	<flag name="flambda">Enables the Flambda optimizer: A new intermediate representation (introduced in ocaml 4.03) in the depths of the compiler designed to allow for better inlining.</flag>
 	<flag name="spacetime">Enables the Spacetime memory profiler. See https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html for more information.</flag>
   </use>
+  <upstream>
+	  <remote-id type="github">ocaml/ocaml</remote-id>
+  </upstream>
 </pkgmetadata>

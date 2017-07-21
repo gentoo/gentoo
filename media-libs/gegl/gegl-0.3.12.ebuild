@@ -93,6 +93,8 @@ src_prepare() {
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
 
+	epatch "${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
+
 	eautoreconf
 
 	gnome2_environment_reset

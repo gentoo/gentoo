@@ -1,5 +1,5 @@
---- htdig-3.2.0b6/Makefile.config.orig	2006-11-19 08:49:57.000000000 -0800
-+++ htdig-3.2.0b6/Makefile.config	2006-11-19 08:51:19.000000000 -0800
+--- a/Makefile.config	2006-11-19 08:49:57.000000000 -0800
++++ b/Makefile.config	2006-11-19 08:51:19.000000000 -0800
 @@ -22,10 +22,7 @@
  		$(LOCAL_DEFINES) $(PROFILING)
  

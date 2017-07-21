@@ -11,7 +11,7 @@ EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 inherit distutils-r1
 
 DESCRIPTION="Buildbot console-view plugin"
-HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-console-view"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-console-view"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"

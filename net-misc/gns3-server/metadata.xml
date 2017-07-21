@@ -6,6 +6,6 @@
 		<name>Aaron Bauman</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">GNS3/gns3-server</remote-id>
+		<remote-id type="sourceforge">gns-3</remote-id>
 	</upstream>
 </pkgmetadata>

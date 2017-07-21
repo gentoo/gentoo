@@ -13,7 +13,6 @@
 		<flag name="libsecret">Enable libsecret support to store login credentials</flag>
 		<flag name="opencl">Enable opencl support</flag>
 		<flag name="pax_kernel">Triggers paxmarking of main darktable binary</flag>
-		<flag name="slideshow">Build the opengl slideshow viewer</flag>
 		<flag name="webp">Enable WebP export support</flag>
 	</use>
 	<upstream>

@@ -32,6 +32,11 @@ MAJOR="2.0"
 
 DOCS=( GUILE-VERSION HACKING README )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2-snarf.patch"
+	"${FILESDIR}/${P}-darwin.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf

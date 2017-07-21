@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<longdescription lang="en">
 		Burp is a network backup and restore program. It uses librsync in order
@@ -12,6 +12,7 @@
 		snapshots when backing up Windows computers.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">grke/burp</remote-id>
 		<remote-id type="sourceforge">burp</remote-id>
 	</upstream>
 </pkgmetadata>

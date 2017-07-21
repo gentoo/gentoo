@@ -5,9 +5,6 @@
     <email>ml@gentoo.org</email>
     <name>Gentoo ML Project</name>
   </maintainer>
-  <use>
-    <flag name="camlp4">Enables camlp4 support.</flag>
-  </use>
   <upstream>
     <remote-id type="github">diml/utop</remote-id>
   </upstream>

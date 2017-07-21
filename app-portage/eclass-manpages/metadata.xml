@@ -4,6 +4,10 @@
 	<maintainer type="person">
 		<email>vapier@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>tools-portage@gentoo.org</email>
 		<name>Gentoo Portage tools team</name>

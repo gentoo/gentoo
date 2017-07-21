@@ -182,7 +182,6 @@ SRC_URI="${SERVER_URI}"
 if [[ ${MY_EXTRAS_VER} != "live" && ${MY_EXTRAS_VER} != "none" ]]; then
 	SRC_URI="${SRC_URI}
 		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
-		http://g3nt8.org/patches/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
 		https://dev.gentoo.org/~robbat2/distfiles/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
 		https://dev.gentoo.org/~jmbsvicetto/distfiles/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
 		https://dev.gentoo.org/~grknight/distfiles/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
@@ -241,9 +240,9 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]]; then
 	mysql_version_is_at_least "5.2.10" && IUSE="${IUSE} pam"
 	# 5.5.33 and 10.0.5 add TokuDB. Authors strongly recommend jemalloc or perfomance suffers
 	mysql_version_is_at_least "10.0.5" && IUSE="${IUSE} tokudb odbc xml" && \
-		REQUIRED_USE="${REQUIRED_USE} odbc? ( extraengine ) xml? ( extraengine ) tokudb? ( jemalloc )"
+		REQUIRED_USE="${REQUIRED_USE} odbc? ( extraengine ) xml? ( extraengine ) tokudb? ( jemalloc !tcmalloc )"
 	mysql_check_version_range "5.5.33 to 5.5.99" && IUSE="${IUSE} tokudb" && \
-		REQUIRED_USE="${REQUIRED_USE} tokudb? ( jemalloc )"
+		REQUIRED_USE="${REQUIRED_USE} tokudb? ( jemalloc !tcmalloc )"
 fi
 
 if mysql_version_is_at_least "5.5"; then

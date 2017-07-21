@@ -5,11 +5,10 @@ EAPI=6
 
 if [[ "${PV#9999}" != "${PV}" ]] ; then
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="git://git.videolan.org/libbluray.git"
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 	SRC_URI="http://ftp.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
 fi
 

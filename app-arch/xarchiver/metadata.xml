@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -6,6 +6,9 @@
     <name>XFCE Team</name>
   </maintainer>
   <upstream>
+    <!-- applies to 0.5.4 -->
     <remote-id type="sourceforge">xarchiver</remote-id>
+    <!-- applies to 0.5.4.8+ -->
+    <remote-id type="github">ib/xarchiver</remote-id>
   </upstream>
 </pkgmetadata>

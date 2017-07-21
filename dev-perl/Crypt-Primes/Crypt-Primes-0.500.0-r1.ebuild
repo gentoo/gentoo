@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Provable Prime Number Generator suitable for Cryptographic Applications"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ~mips sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND="dev-perl/Math-Pari

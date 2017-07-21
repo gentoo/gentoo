@@ -5,7 +5,6 @@ EAPI=6
 
 if [[ "${PV#9999}" != "${PV}" ]] ; then
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="git://git.videolan.org/libbluray.git"
 	SRC_URI=""
 else

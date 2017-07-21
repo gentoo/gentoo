@@ -1,0 +1,56 @@
+--- a/CMakeLists.txt	2016-11-10 09:27:03.866358608 +0100
++++ b/CMakeLists.txt	2016-11-10 10:28:25.384374766 +0100
+@@ -93,7 +93,7 @@
+ endif()
+ 
+ # systemd
+-if(NOT NO_SYSTEMD)
++if(NOT NO_SYSTEMD AND NOT USE_ELOGIND)
+     pkg_check_modules(SYSTEMD "systemd")
+ endif()
+ 
+@@ -127,12 +127,34 @@
+     set(REBOOT_COMMAND "/usr/bin/systemctl reboot")
+ else()
+     set(SYSTEMD_FOUND 0)
++endif()
++add_feature_info("systemd" SYSTEMD_FOUND "systemd support")
++add_feature_info("journald" JOURNALD_FOUND "journald support")
++
++# elogind
++if(NO_SYSTEMD AND USE_ELOGIND)
++    pkg_check_modules(ELOGIND "libelogind")
++endif()
++
++if(ELOGIND_FOUND)
++    add_definitions(-DHAVE_ELOGIND)
++    set(CMAKE_AUTOMOC_MOC_OPTIONS -DHAVE_ELOGIND)
++
++    set(MINIMUM_VT 7)
++    set(HALT_COMMAND "/usr/bin/loginctl poweroff")
++    set(REBOOT_COMMAND "/usr/bin/loginctl reboot")
++else()
++    set(ELOGIND_FOUND 0)
++endif()
++add_feature_info("elogind" ELOGIND_FOUND "elogind support")
++
++# Default behaviour if neither systemd nor elogind is used
++if (NOT ELOGIND_FOUND AND NOT SYSTEMD_FOUND)
+     set(MINIMUM_VT 7)
+     set(HALT_COMMAND "/sbin/shutdown -h -P now")
+     set(REBOOT_COMMAND "/sbin/shutdown -r now")
+ endif()
+-add_feature_info("systemd" SYSTEMD_FOUND "systemd support")
+-add_feature_info("journald" JOURNALD_FOUND "journald support")
++
+ 
+ # Set constants
+ set(DATA_INSTALL_DIR            "${CMAKE_INSTALL_FULL_DATADIR}/sddm"                CACHE PATH      "System application data install directory")
+--- a/services/sddm-greeter.pam	2016-06-19 12:24:42.000000000 +0200
++++ b/services/sddm-greeter.pam	2016-11-02 09:48:18.990032363 +0100
+@@ -14,4 +14,5 @@
+ 
+ # Setup session
+ session		required pam_unix.so
+ session		optional pam_systemd.so
++session		optional pam_elogind.so

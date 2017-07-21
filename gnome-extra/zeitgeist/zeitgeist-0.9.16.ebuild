@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ SRC_URI="https://launchpad.net/zeitgeist/${DIR_PV}/${PV}/+download/${P}.tar.xz
 LICENSE="LGPL-2+ LGPL-3+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE="+datahub downloads-monitor +fts icu introspection nls plugins sql-debug telepathy"
+IUSE="+datahub downloads-monitor +fts icu introspection nls sql-debug telepathy"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -45,7 +45,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
 "
-PDEPEND="plugins? ( gnome-extra/zeitgeist-datasources )"
 
 src_prepare() {
 	# pure-python module is better managed manually, see src_install

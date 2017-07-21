@@ -1,6 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tobias Klausmann <klausman@gentoo.org> (18 May 2017)
+# Stack protector code is not ported to alpha (and may not ever be)
+>=sys-devel/gcc-6 ssp
+
+# Tobias Klausmann <klausman@gentoo.org> (08 May 2017)
+# USE=test requires valgrind, which will never be ported to alpha
+app-misc/jq test
+
 # Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
 # libilbc has not been ported to alpha and likely never will be.
 media-video/ffmpeg libilbc
@@ -87,11 +95,6 @@ app-text/tesseract scrollview
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no alpha support in media-libs/glfw
 app-text/mupdf opengl
-
-# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-lang/luajit lacks alpha keyword. See bug #488318.
-media-video/mpv luajit
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires

@@ -6,7 +6,7 @@ EAUTORECONF=yes
 inherit xfconf
 
 DESCRIPTION="Adds special features for media files to the Thunar File Manager"
-HOMEPAGE="http://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin"
 SRC_URI="mirror://xfce/src/thunar-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

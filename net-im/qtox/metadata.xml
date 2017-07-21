@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -13,4 +13,7 @@
 		<flag name="gtk">Adds support for GTK and Status Notifier tray backends</flag>
 		<flag name="X">Adds support for X11</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">qTox/qTox</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,8 +1,0 @@
-# Copyright 1999-2015 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-[[ ${EAPI:-0} == [0123] ]] && source "${FILESDIR}/eblits/pkg_pretend.eblit"
-
-eblit-glibc-pkg_setup() {
-	[[ ${EAPI:-0} == [0123] ]] && eblit-glibc-pkg_pretend
-}

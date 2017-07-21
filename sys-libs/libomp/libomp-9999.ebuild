@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib git-r3 python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
-HOMEPAGE="http://openmp.llvm.org"
+HOMEPAGE="https://openmp.llvm.org"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/openmp.git
+EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
 	https://github.com/llvm-mirror/openmp.git"
 
 # Additional licenses:

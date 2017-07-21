@@ -22,8 +22,8 @@ inherit enlightenment pax-utils
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
-IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib v4l valgrind wayland webp X xim xine xpm"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -76,6 +76,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	tiff? ( media-libs/tiff:0= )
 	tslib? ( x11-libs/tslib )
+	unwind? ( sys-libs/libunwind )
 	valgrind? ( dev-util/valgrind )
 	wayland? (
 		>=dev-libs/wayland-1.8.0
@@ -176,6 +177,13 @@ src_prepare() {
 		-e '/^#### Work around bug in automake check macro$/,/^#### Info$/d' \
 		-e '/BARF_OK=/s:=.*:=:' \
 		configure || die
+
+	# Upstream doesn't offer a configure flag. #611108
+	if ! use unwind ; then
+		sed -i \
+			-e 's:libunwind libunwind-generic:xxxxxxxxxxxxxxxx:' \
+			configure || die
+	fi
 }
 
 src_configure() {
@@ -250,7 +258,6 @@ src_configure() {
 		--disable-gstreamer
 		--enable-xinput2
 		--disable-xinput22
-		--disable-multisense
 		--enable-libmount
 
 		# external lz4 support currently broken because of unstable ABI/API

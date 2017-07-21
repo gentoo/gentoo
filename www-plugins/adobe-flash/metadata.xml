@@ -9,7 +9,6 @@
 <name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
-<flag name="kde">Install a KCM plugin for configuring flash player preferences</flag>
 <flag name="nsplugin">Install the Netscape Flash API plugin (for Firefox and similar browsers)</flag>
 <flag name="ppapi">Install the Pepper Flash API plugin (for Chrome and similar browsers)</flag>
 </use>

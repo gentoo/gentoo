@@ -20,8 +20,6 @@
 		of Mumble is called Murmur, hence the name uMurmur.
 	</longdescription>
 	<use>
-		<flag name="polarssl">Use <pkg>net-libs/polarssl</pkg>
-			instead of <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="shm">Enable shared memory support</flag>
 	</use>
 	<upstream>

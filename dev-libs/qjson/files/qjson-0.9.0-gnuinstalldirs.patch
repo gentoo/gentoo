@@ -1,0 +1,123 @@
+From bec00c5c1b0a3da65de82e38bdd633ce8f284ec4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 9 Apr 2017 18:36:24 +0200
+Subject: [PATCH 1/2] Use GNUInstallDirs
+
+---
+ CMakeLists.txt       | 15 +++++----------
+ QJSONConfig.cmake.in |  2 +-
+ QJson.pc.in          |  6 +++---
+ src/CMakeLists.txt   | 12 ++++++------
+ 4 files changed, 15 insertions(+), 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fde79f..d0c44bb 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,9 @@ if(POLICY CMP0020)
+ 	cmake_policy(SET CMP0020 OLD)
+ endif()
+ 
+-set(CMAKE_INSTALL_NAME_DIR ${LIB_INSTALL_DIR})
++include(GNUInstallDirs)
++
++set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_LIBDIR})
+ 
+ IF("${CMAKE_BUILD_TYPE}" MATCHES "^Rel.*")
+   ADD_DEFINITIONS("-DQT_NO_DEBUG_OUTPUT")
+@@ -80,12 +82,7 @@ IF (NOT WIN32)
+   SET( QT_DONT_USE_QTGUI TRUE )
+ ENDIF()
+ 
+-
+-#add extra search paths for libraries and includes
+-SET (LIB_SUFFIX "" CACHE STRING "Define suffix of directory name (32/64)" )
+-SET (LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}" CACHE STRING "Directory where lib will install")
+-SET (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include" CACHE PATH "The directory the headers are installed in")
+-SET (CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/${CMAKE_PROJECT_NAME}${QJSON_SUFFIX}" CACHE PATH "Directory where to install QJSONConfig.cmake")
++SET (CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_PROJECT_NAME}${QJSON_SUFFIX}" CACHE PATH "Directory where to install QJSONConfig.cmake")
+ 
+ set(QJSON_LIB_MAJOR_VERSION "0")
+ set(QJSON_LIB_MINOR_VERSION "9")
+@@ -93,15 +90,13 @@ set(QJSON_LIB_PATCH_VERSION "0")
+ 
+ set(QJSON_LIB_VERSION_STRING "${QJSON_LIB_MAJOR_VERSION}.${QJSON_LIB_MINOR_VERSION}.${QJSON_LIB_PATCH_VERSION}")
+ 
+-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib" )
+-
+ # pkg-config
+ IF (NOT WIN32)
+   CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/QJson.pc.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/QJson${QJSON_SUFFIX}.pc
+                   @ONLY)
+   INSTALL (FILES ${CMAKE_CURRENT_BINARY_DIR}/QJson${QJSON_SUFFIX}.pc
+-           DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
++           DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ ENDIF (NOT WIN32)
+ 
+ # Subdirs
+diff --git a/QJSONConfig.cmake.in b/QJSONConfig.cmake.in
+index 0c4a1e6..22394cb 100644
+--- a/QJSONConfig.cmake.in
++++ b/QJSONConfig.cmake.in
+@@ -1,6 +1,6 @@
+ GET_FILENAME_COMPONENT(myDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+ 
+ SET(QJSON_LIBRARIES qjson)
+-SET(QJSON_INCLUDE_DIR "@INCLUDE_INSTALL_DIR@")
++SET(QJSON_INCLUDE_DIR "@CMAKE_INSTALL_INCLUDEDIR@")
+ 
+ include(${myDir}/QJSON@QJSON_SUFFIX@Targets.cmake)
+diff --git a/QJson.pc.in b/QJson.pc.in
+index 55abc28..4cb3de8 100644
+--- a/QJson.pc.in
++++ b/QJson.pc.in
+@@ -1,11 +1,11 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=@LIB_INSTALL_DIR@
+-includedir=@INCLUDE_INSTALL_DIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: QJson
+ Description: QJson is a qt-based library that maps JSON data to QVariant objects
+ Version: @QJSON_LIB_MAJOR_VERSION@.@QJSON_LIB_MINOR_VERSION@.@QJSON_LIB_PATCH_VERSION@
+ Requires: @PC_Requires@
+ Libs: -L${libdir} -lqjson
+-Cflags: -I${includedir}
+\ No newline at end of file
++Cflags: -I${includedir}
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0ae7c40..0e461f7 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -55,19 +55,19 @@ set_target_properties(qjson${QJSON_SUFFIX} PROPERTIES
+                       )
+ 
+ INSTALL(TARGETS qjson${QJSON_SUFFIX} EXPORT qjson-export
+-   LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+-   RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+-   ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    FRAMEWORK DESTINATION ${FRAMEWORK_INSTALL_DIR}
+-   PUBLIC_HEADER DESTINATION ${INCLUDE_INSTALL_DIR}/qjson${QJSON_SUFFIX}
++   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qjson${QJSON_SUFFIX}
+ )
+ 
+ if(MSVC)
+   get_target_property(LOCATION qjson LOCATION_DEBUG)
+   string(REGEX REPLACE "\\.[^.]*$" ".pdb" LOCATION "${LOCATION}")
+-  install(FILES ${LOCATION} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin CONFIGURATIONS Debug)
++  install(FILES ${LOCATION} DESTINATION ${CMAKE_INSTALL_BINDIR} CONFIGURATIONS Debug)
+ 
+   get_target_property(LOCATION qjson LOCATION_RELWITHDEBINFO)
+   string(REGEX REPLACE "\\.[^.]*$" ".pdb" LOCATION "${LOCATION}")
+-  install(FILES ${LOCATION} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin CONFIGURATIONS RelWithDebInfo)
++  install(FILES ${LOCATION} DESTINATION ${CMAKE_INSTALL_BINDIR} CONFIGURATIONS RelWithDebInfo)
+ endif(MSVC)
+-- 
+2.12.2
+

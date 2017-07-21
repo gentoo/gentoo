@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Set of controls used in conjunction with Qt Quick to build complete interfaces"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~arm64 ~hppa ~ppc ppc64 x86"
+	KEYWORDS="amd64 arm ~arm64 hppa ~ppc ppc64 x86"
 fi
 
 IUSE="+widgets"

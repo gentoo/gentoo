@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>olivier.laurantin@laposte.net</email>
 		<name>Olivier Laurantin</name>
 		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
         <changelog>http://ffdiaporama.tuxfamily.org/?page_id=7266&amp;lang=en</changelog>

@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://flacon.github.io/changelog/</changelog>
 		<remote-id type="github">flacon/flacon</remote-id>
 	</upstream>
 </pkgmetadata>

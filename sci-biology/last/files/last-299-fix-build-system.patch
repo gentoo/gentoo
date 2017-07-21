@@ -1,0 +1,74 @@
+Make build system respect user flags
+
+--- a/makefile
++++ b/makefile
+@@ -1,6 +1,5 @@
+-CXXFLAGS = -O3
+ all:
+-	@cd src && $(MAKE) CXXFLAGS="$(CXXFLAGS)"
++	$(MAKE) -C src
+ 
+ prefix = /usr/local
+ exec_prefix = $(prefix)
+@@ -10,15 +9,15 @@
+ 	cp src/last?? scripts/*.?? $(bindir)
+ 
+ clean:
+-	@cd src && $(MAKE) clean
++	$(MAKE) -C src clean
+ 
+ html:
+-	@cd doc && $(MAKE)
++	$(MAKE) -C doc
+ 
+ distdir = last-`hg id -n`
+ 
+ dist: log html
+-	@cd src && $(MAKE) version.hh
++	$(MAKE) -C src version.hh
+ 	rsync -rC --exclude 'last??' doc examples makefile s* *.txt $(distdir)
+ 	zip -qrm $(distdir) $(distdir)
+ 
+--- a/src/makefile
++++ b/src/makefile
+@@ -1,12 +1,9 @@
+-CXX = g++
+-CC  = gcc
+-
+-CXXFLAGS = -O3 -Wall -Wextra -Wcast-qual -Wswitch-enum -Wundef	\
+--Wcast-align -Wno-long-long -ansi -pedantic
++last_CXXFLAGS = -Wall -Wextra -Wcast-qual -Wswitch-enum -Wundef	\
++-Wcast-align -Wno-long-long -pedantic
+ # -Wconversion
+ # -fomit-frame-pointer ?
+ 
+-CFLAGS = -Wall
++last_CFLAGS = -Wall
+ 
+ DBSRC = Alphabet.cc MultiSequence.cc CyclicSubsetSeed.cc	\
+ SubsetSuffixArray.cc LastdbArguments.cc io.cc fileMap.cc	\
+@@ -49,17 +46,20 @@
+ 
+ all: lastdb lastal lastex
+ 
++.cpp.o:
++	$(CXX) $(CPPFLAGS) $(last_CXXFLAGS) $(CXXFLAGS) -c -o $@ $<
++
+ lastdb: $(DBSRC) $(DBINC) makefile
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(DBSRC)
++	$(CXX) $(CPPFLAGS) $(last_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(DBSRC)
+ 
+ lastal: $(ALSRC) $(ALINC) makefile $(OBJ)
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ALSRC) $(OBJ)
++	$(CXX) $(CPPFLAGS) $(last_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ALSRC) $(OBJ)
+ 
+ lastex: $(EXSRC) $(EXINC) makefile
+-	$(CXX) -Igumbel_params $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(EXSRC)
++	$(CXX) $(CPPFLAGS) -Igumbel_params $(last_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(EXSRC)
+ 
+ $(OBJ): CA_code/*.c CA_code/*.h makefile
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -c CA_code/lambda_calculator.c
++	$(CC) $(CPPFLAGS) $(last_CFLAGS) $(CFLAGS) -c -o $@ CA_code/lambda_calculator.c
+ 
+ clean:
+ 	rm -f lastdb lastal lastex $(OBJ)

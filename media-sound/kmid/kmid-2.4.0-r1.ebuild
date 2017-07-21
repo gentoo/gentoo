@@ -1,14 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="optional"
 KDE_LINGUAS="ca ca@valencia cs da de en_GB es fr gl nb nl pt pt_BR
 sr sr@ijekavian sr@ijekavianlatin sr@Latn sv tr uk zh_CN"
 inherit kde4-base
 
-DESCRIPTION="A MIDI/Karaoke player for KDE"
+DESCRIPTION="A MIDI/Karaoke player based on kdelibs"
 HOMEPAGE="https://userbase.kde.org/KMid"
 SRC_URI="mirror://sourceforge/kmid2/${P}.tar.bz2"
 

@@ -1,0 +1,86 @@
+From 22739433e98be80e46fe7d01d52a9627c1aebaae Mon Sep 17 00:00:00 2001
+From: Justus Winter <justus@g10code.com>
+Date: Mon, 8 May 2017 14:24:00 +0200
+Subject: [PATCH] gpg: Properly account for ring trust packets.
+
+* g10/keyring.c (keyring_get_keyblock): Use the parser's packet count
+instead of counting ourself.
+* g10/packet.h (struct parse_packet_ctx_s): New field
+'n_parsed_packets'.
+(init_parse_packet): Initialize new field.
+* g10/parse-packet.c (parse): Count packets.
+--
+
+The 'keyring' keystore depends on the number of packets for delete and
+update operations.  With the rework of the ring trust packets, the
+trust packets were no longer properly accounted for leading to keyring
+corruptions.
+
+The 'keybox' store was not affected.
+
+GnuPG-bug-id: 3123
+GnuPG-bug-id: 3135
+GnuPG-bug-id: 3144
+Fixes-commit: a8895c99a7d0750132477d80cd66caaf3a709113
+Signed-off-by: Justus Winter <justus@g10code.com>
+---
+ g10/keyring.c      | 4 ++--
+ g10/packet.h       | 2 ++
+ g10/parse-packet.c | 3 +++
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/g10/keyring.c b/g10/keyring.c
+index e223f0f..50f1b82 100644
+--- a/g10/keyring.c
++++ b/g10/keyring.c
+@@ -409,11 +409,11 @@ keyring_get_keyblock (KEYRING_HANDLE hd, KBNODE *ret_kb)
+     pkt = xmalloc (sizeof *pkt);
+     init_packet (pkt);
+     init_parse_packet (&parsectx, a);
+-    hd->found.n_packets = 0;;
++    hd->found.n_packets = 0;
+     lastnode = NULL;
+     save_mode = set_packet_list_mode(0);
+     while ((rc=parse_packet (&parsectx, pkt)) != -1) {
+-        hd->found.n_packets++;
++        hd->found.n_packets = parsectx.n_parsed_packets;
+         if (gpg_err_code (rc) == GPG_ERR_UNKNOWN_PACKET) {
+ 	    free_packet (pkt, &parsectx);
+ 	    init_packet (pkt);
+diff --git a/g10/packet.h b/g10/packet.h
+index d42510d..cf2121c 100644
+--- a/g10/packet.h
++++ b/g10/packet.h
+@@ -624,6 +624,7 @@ struct parse_packet_ctx_s
+   struct packet_struct last_pkt; /* The last parsed packet.  */
+   int free_last_pkt; /* Indicates that LAST_PKT must be freed.  */
+   int skip_meta;     /* Skip ring trust packets.  */
++  unsigned int n_parsed_packets;	/* Number of parsed packets.  */
+ };
+ typedef struct parse_packet_ctx_s *parse_packet_ctx_t;
+ 
+@@ -633,6 +634,7 @@ typedef struct parse_packet_ctx_s *parse_packet_ctx_t;
+     (a)->last_pkt.pkt.generic= NULL;\
+     (a)->free_last_pkt = 0;         \
+     (a)->skip_meta = 0;             \
++    (a)->n_parsed_packets = 0;      \
+   } while (0)
+ 
+ #define deinit_parse_packet(a) do { \
+diff --git a/g10/parse-packet.c b/g10/parse-packet.c
+index fa44f83..dbb7af8 100644
+--- a/g10/parse-packet.c
++++ b/g10/parse-packet.c
+@@ -764,6 +764,9 @@ parse (parse_packet_ctx_t ctx, PACKET *pkt, int onlykeypkts, off_t * retpos,
+                 partial? (new_ctb ? " partial" : " indeterminate") :"",
+                 new_ctb? " new-ctb":"");
+ 
++  /* Count it.  */
++  ctx->n_parsed_packets++;
++
+   pkt->pkttype = pkttype;
+   rc = GPG_ERR_UNKNOWN_PACKET;	/* default error */
+   switch (pkttype)
+-- 
+2.10.2
+

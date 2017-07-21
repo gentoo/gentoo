@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="berkdb bidi +clients gdbm sasl guile ipv6 kerberos kyotocabinet ldap \
 	mysql nls pam postgres python servers ssl static-libs +threads tcpd \
 	tokyocabinet"

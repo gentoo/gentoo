@@ -1,0 +1,20 @@
+--- a/puppet-mode.el.~1~	2014-03-13 16:30:50.000000000 +0100
++++ b/puppet-mode.el	2017-06-30 14:38:22.749240233 +0200
+@@ -72,8 +72,6 @@
+ 
+ 
+ ;;;; Requirements
+-(require 'pkg-info)
+-
+ (require 'cl-lib)
+ (require 'rx)
+ (require 'align)
+@@ -165,7 +163,7 @@
+ if called interactively, or if SHOW-VERSION is non-nil, otherwise
+ just return nil."
+   (interactive (list t))
+-  (let ((version (pkg-info-version-info 'puppet-mode)))
++  (let ((version "@VERSION@"))
+     (when show-version
+       (message "Puppet Mode version: %s" version))
+     version))

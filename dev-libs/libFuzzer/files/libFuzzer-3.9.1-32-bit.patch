@@ -1,0 +1,16 @@
+this code has been rewritten in newer versions so this patch can be thrown
+away when we upgrade.
+
+https://bugs.gentoo.org/612656
+
+--- a/FuzzerLoop.cpp
++++ b/FuzzerLoop.cpp
+@@ -366,7 +366,7 @@
+   double Lambda = 2.0 * log(2.0) / static_cast<double>(MaxCorpusLen);
+   std::exponential_distribution<> Dist(Lambda);
+   std::vector<double> Sizes;
+-  size_t TruncatePoints = std::max(1ul, TruncateMaxRuns / Corpus.size());
++  size_t TruncatePoints = std::max((size_t)1, TruncateMaxRuns / Corpus.size());
+   Sizes.reserve(TruncatePoints);
+   for (size_t I = 0; I < TruncatePoints; ++I) {
+     Sizes.push_back(Dist(MD.GetRand().Get_mt19937()) + 1);

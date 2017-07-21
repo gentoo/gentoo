@@ -10,7 +10,6 @@
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
 	<use>
-		<flag name="ssl">Enable SSL support.</flag>
 		<flag name="pam">Enable PAM support.</flag>
 	</use>
 	<upstream>

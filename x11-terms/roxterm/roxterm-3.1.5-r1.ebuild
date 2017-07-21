@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 inherit gnome2-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="A terminal emulator designed to integrate with the ROX environment"

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A clone of the classic Eliza program"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 ~arm ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="

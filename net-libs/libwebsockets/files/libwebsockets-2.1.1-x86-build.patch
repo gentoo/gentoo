@@ -1,0 +1,22 @@
+From f9f5a5760782b68fba190fb46d306f7c08f027c0 Mon Sep 17 00:00:00 2001
+From: Silas Parker <skyhisi@users.github.invalid>
+Date: Tue, 14 Feb 2017 17:55:13 +0800
+Subject: [PATCH] gcc-format-strings: ipv6
+
+---
+ lib/libwebsockets.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/libwebsockets.c b/lib/libwebsockets.c
+index 770cb24..8ee906a 100755
+--- a/lib/libwebsockets.c
++++ b/lib/libwebsockets.c
+@@ -670,7 +670,7 @@ lws_get_addresses(struct lws_vhost *vh, void *ads, char *name,
+ #ifdef LWS_USE_IPV6
+ 	if (LWS_IPV6_ENABLED(vh)) {
+ 		if (!lws_plat_inet_ntop(AF_INET6, &((struct sockaddr_in6 *)ads)->sin6_addr, rip, rip_len)) {
+-			lwsl_err("inet_ntop", strerror(LWS_ERRNO));
++			lwsl_err("inet_ntop: %s", strerror(LWS_ERRNO));
+ 			return -1;
+ 		}
+ 

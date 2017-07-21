@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -12,4 +12,7 @@
     files from FATx, NTFS, ext2/3, HFS+, or raw partitions. It is useful for both
     digital forensics investigation and file recovery.
   </longdescription>
+  <upstream>
+    <remote-id type="github">sleuthkit/scalpel</remote-id>
+  </upstream>
 </pkgmetadata>

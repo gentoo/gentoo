@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="editorconfig">Enable support for EditorConfig configuration files</flag>
+	</use>
 </pkgmetadata>

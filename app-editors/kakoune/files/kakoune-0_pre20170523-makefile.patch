@@ -1,0 +1,31 @@
+diff --git a/src/Makefile b/src/Makefile
+index dbef95d9..70f16b32 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,7 +6,6 @@ ifeq ($(debug),yes)
+     suffix := .debug
+ else
+     ifeq ($(debug),no)
+-        CXXFLAGS += -O3
+         suffix := .opt
+     else
+         $(error debug should be either yes or no)
+@@ -22,8 +21,6 @@ mandocs := $(docs:.asciidoc=.gz)
+ PREFIX ?= /usr/local
+ DESTDIR ?= # root dir
+ 
+-NCURSESW_INCLUDE ?= /usr/include/ncursesw
+-
+ bindir := $(DESTDIR)$(PREFIX)/bin
+ sharedir := $(DESTDIR)$(PREFIX)/share/kak
+ docdir := $(DESTDIR)$(PREFIX)/share/doc/kak
+@@ -49,8 +46,7 @@ else ifneq (,$(findstring CYGWIN,$(os)))
+     CPPFLAGS += -D_XOPEN_SOURCE=700
+     LIBS += -lncursesw -lboost_regex -ldbghelp
+ else
+-    LIBS += -lncursesw -lboost_regex
+-    CPPFLAGS += -I$(NCURSESW_INCLUDE)
++    LIBS += -lboost_regex
+     LDFLAGS += -rdynamic
+ endif
+ 

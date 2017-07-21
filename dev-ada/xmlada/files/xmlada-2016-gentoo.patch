@@ -1,0 +1,19 @@
+--- xmlada-2016-src/Makefile.in.old	2016-12-04 21:58:57.251338692 +0100
++++ xmlada-2016-src/Makefile.in	2016-12-04 21:59:31.332755615 +0100
+@@ -49,13 +49,13 @@
+ endif
+ 
+ static:
+-	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr
++	${GPRBUILD} -p -v -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
+ 
+ shared relocatable:
+-	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr
++	${GPRBUILD} -p -v -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
+ 
+ static-pic:
+-	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr
++	${GPRBUILD} -p -v -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr -cargs $(ADAFLAGS)
+ 
+ # Rebuild the tests (and not the XML/Ada code itself)
+ test: force

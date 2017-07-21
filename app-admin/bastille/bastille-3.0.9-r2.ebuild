@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}-linux/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 IUSE="X"
 
 RDEPEND="

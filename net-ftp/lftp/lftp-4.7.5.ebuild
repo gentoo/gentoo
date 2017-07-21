@@ -15,6 +15,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~spar
 IUSE="convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file"
 LFTP_LINGUAS=( cs de es fr it ja ko pl pt_BR ru uk zh_CN zh_HK zh_TW )
 IUSE+=" ${LFTP_LINGUAS[@]/#/linguas_}"
+RESTRICT="test"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:=

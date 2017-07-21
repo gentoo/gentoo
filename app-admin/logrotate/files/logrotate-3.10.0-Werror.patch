@@ -1,9 +1,0 @@
-diff -Nuar a/Makefile.am b/Makefile.am
---- a/Makefile.am	2016-08-03 12:25:47.000000000 +0200
-+++ b/Makefile.am	2016-08-03 23:28:16.420071763 +0200
-@@ -1,4 +1,4 @@
--AM_CFLAGS = -Wall -Werror
-+AM_CFLAGS = -Wall
- sbin_PROGRAMS = logrotate
- logrotate_SOURCES = basenames.c config.c log.c logrotate.c \
- 		    basenames.h config.h log.h logrotate.h queue.h

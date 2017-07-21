@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="egl">Use EGL instead of GLX for GL context creation</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">glfw</remote-id>
 	</upstream>

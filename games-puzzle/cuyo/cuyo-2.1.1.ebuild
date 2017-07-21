@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/cuyo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="+music"
 
 DEPEND="sys-libs/zlib
@@ -26,7 +26,8 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-gcc44.patch \
-		"${FILESDIR}"/${P}-gentoo.patch
+		"${FILESDIR}"/${P}-gentoo.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1 multilib
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-solaris"
 IUSE="doc examples sasl ssl"
 
 # If you need support for openldap-2.3.x, please use python-ldap-2.3.9.
@@ -67,8 +67,10 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( Demo/. )
 	use doc && local HTML_DOCS=( Doc/.build/html/. )
-
 	distutils-r1_python_install_all
+	if use examples; then
+		dodoc -r Demo
+		docompress -x /usr/share/doc/${PF}/Demo
+	fi
 }

@@ -40,9 +40,11 @@
 	<flag name="enlightenment_modules_tasks">Gadget to allow you to switch tasks</flag>
 	<flag name="enlightenment_modules_teamwork">Enable teamwork module</flag>
 	<flag name="enlightenment_modules_temperature">Temperature monitor</flag>
+	<flag name="enlightenment_modules_time">Time related gadgets</flag>
 	<flag name="enlightenment_modules_tiling">Positions/resizes your windows tilingly</flag>
 	<flag name="enlightenment_modules_winlist">A module to show the list of client applications presently running</flag>
 	<flag name="enlightenment_modules_wizard">First Run Wizard</flag>
+	<flag name="enlightenment_modules_wireless">WiFi monitoring</flag>
 	<flag name="enlightenment_modules_wl-desktop-shell">Enlightenment Wayland Desktop Shell</flag>
 	<flag name="enlightenment_modules_wl-drm">Wayland DRM (Direct Rendering Manager) compositing module</flag>
 	<flag name="enlightenment_modules_wl-text-input">Wayland text input support</flag>

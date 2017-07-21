@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -16,4 +16,7 @@
 		Plan9Port is a set of Plan 9 utilities ported to the POSIX
 		environment - also know as Plan 9 from User Space.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">9fans/plan9port</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,25 +1,27 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 ASPELL_LANG="Russian"
-ASPOSTFIX="6"
+ASPELL_VERSION=6
 
-inherit aspell-dict
-
-LICENSE="GPL-2"
-
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE=""
+inherit aspell-dict-r1
 
 # very strange filename not supported by the gentoo naming scheme
-FILENAME=aspell6-ru-0.99f7-1
+MY_P="aspell6-ru-0.99f7-1"
 
-SRC_URI="mirror://gnu/aspell/dict/ru/${FILENAME}.tar.bz2"
-S=${WORKDIR}/${FILENAME}
+SRC_URI="mirror://gnu/aspell/dict/ru/${MY_P}.tar.bz2"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	einfo "Set default dictionary to ru-yeyo."
+LICENSE="GPL-2"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+IUSE=""
+
+S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	default
+
+	einfo "Setting default dictionary to ru-yeyo"
 	cp -v ru-yeyo.multi ru.multi || die
 }

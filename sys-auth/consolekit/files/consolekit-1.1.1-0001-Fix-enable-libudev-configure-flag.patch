@@ -1,0 +1,41 @@
+From 91f517bb6e19315c3a9971b2449f2b2e049e785b Mon Sep 17 00:00:00 2001
+From: Eric Koegel <eric.koegel@gmail.com>
+Date: Wed, 10 May 2017 07:13:23 +0300
+Subject: [PATCH] Fix --enable-libudev configure flag
+
+Thanks for perfinion to pointing this out.
+---
+ configure.ac | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2d927fe..b17801a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -364,10 +364,10 @@ AM_CONDITIONAL([ENABLE_UDEV_ACL], [test "x$enable_udev_acl" = "xyes"])
+ # libudev - use udev as a device manager for ck-device-udev.c
+ have_libudev=no
+ AC_ARG_ENABLE([libudev],
+-  AS_HELP_STRING([--enable-udev], [Enable udev support @<:@default=auto@:>@]),
+-  [enable_udev=$enableval],
+-  [enable_udev=auto])
+-AS_IF([test "x$enable_udev" != "xno"], [
++  AS_HELP_STRING([--enable-libudev], [Enable udev support @<:@default=auto@:>@]),
++  [enable_libudev=$enableval],
++  [enable_libudev=auto])
++AS_IF([test "x$enable_libudev" != "xno"], [
+   PKG_CHECK_MODULES([LIBUDEV], [libudev], [have_libudev=yes], [have_libudev=no])
+   PKG_CHECK_MODULES([LIBDRM], [libdrm], [have_libdrm=yes], [have_libdrm=no])
+   AC_CHECK_LIB([prop], [prop_dictionary_get_cstring], [have_libprop=yes], [have_libprop=no])
+@@ -384,7 +384,7 @@ AS_IF([test "x$enable_udev" != "xno"], [
+     LIBUDEV_LIBS="$LIBUDEV_LIBS -lprop"
+   fi
+ 
+-  if test "x$enable_udev"  = "xyes" -a "x$have_udev" = "xno"; then
++  if test "x$enable_libudev"  = "xyes" -a "x$have_libudev" = "xno"; then
+     AC_MSG_ERROR([udev support explicitly requested but dependencies not found])
+   fi
+ ])
+-- 
+2.10.2
+

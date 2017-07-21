@@ -9,6 +9,7 @@
     <flag name="12bit">Add support for producing 12bits HEVC.</flag>
     <flag name="numa">Build with support for NUMA nodes.</flag>
     <flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
+	<flag name="power8">Enable support for Power 8 assembly optimizations.</flag>
   </use>
   <upstream>
     <remote-id type="bitbucket">multicoreware/x265</remote-id>

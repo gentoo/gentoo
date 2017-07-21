@@ -1,0 +1,112 @@
+From c2faaeaa7887c24c574297e8e2f36208df9dc229 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 11 Jan 2017 20:33:35 +0000
+Subject: [PATCH] * libtiff/tif_luv.c, tif_lzw.c, tif_packbits.c: return 0 in
+ Encode functions instead of -1 when TIFFFlushData1() fails. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2130
+
+---
+ ChangeLog              |  6 ++++++
+ libtiff/tif_luv.c      | 12 ++++++------
+ libtiff/tif_lzw.c      |  8 +++++---
+ libtiff/tif_packbits.c |  6 +++---
+ 4 files changed, 20 insertions(+), 12 deletions(-)
+
+diff --git a/libtiff/tif_luv.c b/libtiff/tif_luv.c
+index f42ac0131fee..1f6d8ba3ea5a 100644
+--- a/libtiff/tif_luv.c
++++ b/libtiff/tif_luv.c
+@@ -473,7 +473,7 @@ LogL16Encode(TIFF* tif, uint8* bp, tmsize_t cc, uint16 s)
+ 				tif->tif_rawcp = op;
+ 				tif->tif_rawcc = tif->tif_rawdatasize - occ;
+ 				if (!TIFFFlushData1(tif))
+-					return (-1);
++					return (0);
+ 				op = tif->tif_rawcp;
+ 				occ = tif->tif_rawdatasize - tif->tif_rawcc;
+ 			}
+@@ -505,7 +505,7 @@ LogL16Encode(TIFF* tif, uint8* bp, tmsize_t cc, uint16 s)
+ 					tif->tif_rawcp = op;
+ 					tif->tif_rawcc = tif->tif_rawdatasize - occ;
+ 					if (!TIFFFlushData1(tif))
+-						return (-1);
++						return (0);
+ 					op = tif->tif_rawcp;
+ 					occ = tif->tif_rawdatasize - tif->tif_rawcc;
+ 				}
+@@ -565,7 +565,7 @@ LogLuvEncode24(TIFF* tif, uint8* bp, tmsize_t cc, uint16 s)
+ 			tif->tif_rawcp = op;
+ 			tif->tif_rawcc = tif->tif_rawdatasize - occ;
+ 			if (!TIFFFlushData1(tif))
+-				return (-1);
++				return (0);
+ 			op = tif->tif_rawcp;
+ 			occ = tif->tif_rawdatasize - tif->tif_rawcc;
+ 		}
+@@ -624,7 +624,7 @@ LogLuvEncode32(TIFF* tif, uint8* bp, tmsize_t cc, uint16 s)
+ 				tif->tif_rawcp = op;
+ 				tif->tif_rawcc = tif->tif_rawdatasize - occ;
+ 				if (!TIFFFlushData1(tif))
+-					return (-1);
++					return (0);
+ 				op = tif->tif_rawcp;
+ 				occ = tif->tif_rawdatasize - tif->tif_rawcc;
+ 			}
+@@ -656,7 +656,7 @@ LogLuvEncode32(TIFF* tif, uint8* bp, tmsize_t cc, uint16 s)
+ 					tif->tif_rawcp = op;
+ 					tif->tif_rawcc = tif->tif_rawdatasize - occ;
+ 					if (!TIFFFlushData1(tif))
+-						return (-1);
++						return (0);
+ 					op = tif->tif_rawcp;
+ 					occ = tif->tif_rawdatasize - tif->tif_rawcc;
+ 				}
+diff --git a/libtiff/tif_lzw.c b/libtiff/tif_lzw.c
+index 240e19c2e058..5ba35ec1305f 100644
+--- a/libtiff/tif_lzw.c
++++ b/libtiff/tif_lzw.c
+@@ -969,7 +969,8 @@ LZWEncode(TIFF* tif, uint8* bp, tmsize_t cc, uint16 s)
+ 		 */
+ 		if (op > limit) {
+ 			tif->tif_rawcc = (tmsize_t)(op - tif->tif_rawdata);
+-			TIFFFlushData1(tif);
++			if( !TIFFFlushData1(tif) )
++                            return 0;
+ 			op = tif->tif_rawdata;
+ 		}
+ 		PutNextCode(op, ent);
+@@ -1054,7 +1055,8 @@ LZWPostEncode(TIFF* tif)
+ 
+ 	if (op > sp->enc_rawlimit) {
+ 		tif->tif_rawcc = (tmsize_t)(op - tif->tif_rawdata);
+-		TIFFFlushData1(tif);
++		if( !TIFFFlushData1(tif) )
++                    return 0;
+ 		op = tif->tif_rawdata;
+ 	}
+ 	if (sp->enc_oldcode != (hcode_t) -1) {
+diff --git a/libtiff/tif_packbits.c b/libtiff/tif_packbits.c
+index d2a0165de9dd..0495e688a6be 100644
+--- a/libtiff/tif_packbits.c
++++ b/libtiff/tif_packbits.c
+@@ -99,7 +99,7 @@ PackBitsEncode(TIFF* tif, uint8* buf, tmsize_t cc, uint16 s)
+ 				slop = (long)(op - lastliteral);
+ 				tif->tif_rawcc += (tmsize_t)(lastliteral - tif->tif_rawcp);
+ 				if (!TIFFFlushData1(tif))
+-					return (-1);
++					return (0);
+ 				op = tif->tif_rawcp;
+ 				while (slop-- > 0)
+ 					*op++ = *lastliteral++;
+@@ -107,7 +107,7 @@ PackBitsEncode(TIFF* tif, uint8* buf, tmsize_t cc, uint16 s)
+ 			} else {
+ 				tif->tif_rawcc += (tmsize_t)(op - tif->tif_rawcp);
+ 				if (!TIFFFlushData1(tif))
+-					return (-1);
++					return (0);
+ 				op = tif->tif_rawcp;
+ 			}
+ 		}
+-- 
+2.12.0
+

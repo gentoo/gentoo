@@ -1,0 +1,261 @@
+YumaWorks License Agreement
+yangcli-pro End User License Agreement
+
+YumaWorks, Inc., Licensor, ("YumaWorks") is willing to license the software contained herein
+("Licensed Software") only on the condition that you accept all of the terms in this Agreement.
+
+PLEASE READ THE TERMS CAREFULLY. BY LOADING, DOWNLOADING, MODIFYING, OR
+OTHERWISE USING THE LICENSED SOFTWARE, YOU AGREE TO BE BOUND BY THIS
+LICENSE AGREEMENT.
+
+If you do not agree to these terms, YumaWorks is unwilling to license the software to you. In
+such event, you may not use the licensed software, and you should promptly contact
+YumaWorks for instructions on erasing and/or inactivating it.
+NOTE:
+• THE LICENSED SOFTWARE IS LIMITED TO USE BY A SINGLE USER
+• THE LICENSED SOFTWARE MAY INSTALLED ON ONE COMPUTER.
+SEE EXHIBIT B.
+• THE LICENSED SOFTWARE CANNOT BE DISTRIBUTED TO OTHERS.
+• THE TEST RESULTS FROM USE OF THE LICENSED SOFTWARE TESTS CANNOT
+BE PUBLISHED IN ANY WAY.
+• THE SOFTWARE AND ACCOMPANYING USER DOCUMENTATION ARE PROTECTED
+BY UNITED STATES COPYRIGHT LAW AND INTERNATIONAL TREATY.
+UNAUTHORIZED REPRODUCTION OR DISTRIBUTION IS SUBJECT TO CIVIL AND
+CRIMINAL PENALTIES.
+• THE SOFTWARE USES EXTERNAL LIBRARIES AND OPEN-SOURCE C MODULES
+WHICH HAVE THEIR OWN LICENSE. REFER TO yumapro-legal-notices.pdf.
+
+This License Agreement (the "Agreement") is made as of the purchase date (the "Effective
+Date"), by and between YumaWorks, Inc., a California corporation that may be contacted at 685
+Cochran St., #160, Simi Valley, CA, 93065 ("YumaWorks") and you ("Licensee").
+
+RECITALS
+A. YumaWorks owns the rights to grant licenses to certain computer software modules used in
+implementing certain networking protocols described in Exhibit A.
+B. YumaWorks desires to grant and Licensee desires to receive a non- exclusive license to such
+YumaWorks computer software modules in accordance with the terms and conditions of this
+Agreement.
+NOW, THEREFORE, in consideration of the mutual promises contained herein, the parties
+agree as follows:
+
+1. DEFINITIONS
+1.1 Licensed Software means YumaWorks's computer software modules and documentation
+thereof, as specified in Exhibit A, including bug fixes and updates there to provided to
+Licensee in connection with this Agreement.
+1.2 Intellectual Property Rights means patent rights, copyright rights, trade secret rights,
+and any other intellectual property rights.
+1.3 Binary Code means the portion of the Licensed Software which is licensed to Licensee in
+machine executable binary form, as specified in Exhibit A.
+1.4 Source Code means the portion of the Licensed Software which is licensed to Licensee in
+human-readable form, as specified in Exhibit A.
+
+2. LICENSE GRANTS
+2.1 Binary Code Use License. Subject to the terms and conditions of this Agreement, and
+upon payment by Licensee to YumaWorks of the license fees set forth in Section 6.1,
+YumaWorks grants Licensee a non-exclusive, non-transferable license to use the Binary Code
+(if any) for internal use only, for the sole purpose of defining and managing networking devices
+on its own internal (enterprise) network. Licensee may use the Binary Code (if any) as
+specified in Exhibit B. Licensee agrees to comply with all reasonable monitoring requirements
+imposed by YumaWorks to ensure compliance with the license restrictions.
+2.2 No Sublicense Right. Licensee has no right to transfer, sublicense or otherwise distribute
+the Licensed Software to any third party.
+2.3 Other Restrictions in License Grants. Licensee may not: (i) disassemble, decompile or
+reverse engineer the Binary Code nor permit any third party to do so; (ii) copy the Licensed
+Software, except as necessary to use the Licensed Software in accordance with the license
+granted under Sections 2.1, and except for a reasonable number of backup copies; or (iii) use
+the Licensed Software in any manner to provide testing or other computer services to third
+parties.
+2.4 No Trademark License. Licensee has no right or license to use any trademark of
+YumaWorks or its suppliers during or after the term of this Agreement. In particular, and
+without limiting the foregoing, Licensee may not use any trademark of YumaWorks or the
+name "YumaWorks", without consent of YumaWorks, in making any statement or
+representation concerning results of testing and verification performed using the Licensed
+Software.
+2.5 Proprietary Notices. The Licensed Software is copyrighted. All proprietary notices
+incorporated in, marked on, or affixed to the Licensed Software by YumaWorks or its suppliers
+shall be duplicated by Licensee on all copies, in whole or in part, in any form and not altered,
+removed, or obliterated.
+2.6 Reservation. YumaWorks and its suppliers reserve all rights and licenses to the Licensed
+Software not expressly granted to Licensee under this Agreement. 
+
+3. DELIVERY OF LICENSED SOFTWARE
+Licensee may access the Licensed Software upon acceptance of this agreement.
+
+4. WARRANTIES
+4.1 No Warranty.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL YumaWorks, Inc. BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+4.2 Warranty Exclusion and Disclaimer. THE WARRANTY WITH RESPECT TO THE
+LICENSED SOFTWARE WILL BE VOID AND OF NO EFFECT IF LICENSEE MODIFIES THE
+SOURCE CODE. THE WARRANTIES SET FORTH IN SECTION 4.1 ARE IN LIEU OF, AND
+YumaWorks EXPRESSLY DISCLAIMS, ALL OTHER WARRANTIES, EXPRESS AND
+IMPLIED, WRITTEN AND ORAL, INCLUDING BUT NOT LIMITED TO ANY IMPLIED
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NON-INFRINGEMENT. YumaWorks DOES NOT WARRANT THAT OPERATION OF THE
+LICENSED SOFTWARE WILL BE ERROR FREE. SOME MODULES OF THE LICENSED
+SOFTWARE ARE DERIVED FROM THIRD PARTY SOFTWARE AND NO SUCH THIRD
+PARTY WARRANTS THE MODULES, ASSUMES ANY LIABILITY REGARDING USE OF
+THE MODULES, OR UNDERTAKES TO FURNISH ANY SUPPORT OR INFORMATION
+RELATING TO THE MODULES.
+
+5. MAINTENANCE AND UPDATES
+5.1 Maintenance. Subject to YumaWorks's limited resources, YumaWorks will, at no
+additional charge to Licensee, provide Licensee with reasonable technical support for the
+warranty period as specified in Section 4.1 via e-mail during YumaWorks's normal business
+hours.
+5.2 Updates. If and when YumaWorks develops updates to the Licensed Software from time
+to time, YumaWorks, at its sole discretion, may, but has no obligation to, provide Licensee with
+separately priced updates for the Licensed Software at the request of Licensee. All such
+updates will be considered "Licensed Software" and subject to all terms and conditions of this
+Agreement.
+
+6. LICENSE FEE
+6.1 License Fee. In consideration of the licenses granted in Section 2, above, Licensee shall
+pay YumaWorks a non-refundable license fee in accordance with YumaWorks's then current 
+price list within thirty (30) days after the Effective Date.
+6.2 Update Fee. In the event YumaWorks provides Licensee with an update to the Licensed
+Software in accordance with Section 5.2, Licensee shall pay YumaWorks the then-current
+YumaWorks standard update fee within thirty (30) days after receipt of such update.
+6.3 Taxes and Duties. In addition to the license and update fees set forth above, Licensee
+shall pay all sales, use, or other taxes and fees imposed as a result of payment of the fees set
+forth above, if any, other than taxes measured by YumaWorks's net income.
+
+7. INTELLECTUAL PROPERTY RIGHTS
+7.1 Title. All right, title and interest in and to the Licensed Software, and all Intellectual
+Property Rights embodied therein shall at all times remain with YumaWorks or its suppliers, as
+applicable.
+7.2 Confidential Information. Licensee acknowledges and agrees that the Licensed
+Software contains confidential, proprietary information and trade secrets of YumaWorks. For
+the longer of: (i) a period of five (5) years after the date of disclosure or (ii) the expiration or
+termination of this Agreement, Licensee shall not disclose or make available any portion of the
+Licensed Software or any information derived from the Licensed Software to any person or
+entity except to those of Licensee's employees for whom access is necessary in order to
+perform their jobs in accordance with this Agreement. The standard of care Licensee must
+exercise to meet these obligations is the standard it exercises with respect to its own
+confidential information of a similar nature, but in no event less than due care. This obligation
+does not apply to information: (a) known by Licensee prior to its receipt from YumaWorks and
+not subject to restriction on disclosure; (b) rightfully received by Licensee from a third party
+without restriction on disclosure; or (c) publicly available other than as a result of any act or
+omission of Licensee.
+7.3 Contractors. In the event that Licensee elects to have a third party contractor modify the
+Source Code pursuant to Section 2.1 above, Licensee will require such contractor to enter into
+a written confidentiality agreement with Licensee which (i) is no less restrictive than this
+Section 7, and (ii) requires such contractor to promptly deliver to Licensee all of YumaWorks
+confidential information and the Source Code upon completion of such modifications and
+certify in writing to Licensee that it has delivered all such materials.
+
+8. LIMITATION OF LIABILITY
+IN NO EVENT SHALL THE TOTAL CUMULATIVE LIABILITY OF YumaWorks IN
+CONNECTION WITH THIS AGREEMENT FOR ALL CAUSES OF ACTION OF ANY KIND,
+INCLUDING THOSE BASED UPON CONTRACT AND TORT (INCLUDING NEGLIGENCE
+AND STRICT LIABILITY), EXCEED THE LICENSE FEES RECEIVED BY YumaWorks FROM
+LICENSEE. IN NO EVENT WILL YumaWorks OR ITS SUPPLIERS BE LIABLE FOR LOSS
+OF USE, DATA, OR PROFITS, BUSINESS INTERRUPTION OR ANY SPECIAL,
+INCIDENTAL, INDIRECT, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, HOWEVER
+CAUSED, AND ON ANY THEORY OF LIABILITY, WHETHER CONTRACT OR TORT
+(INCLUDING NEGLIGENCE AND STRICT LIABILITY), ARISING IN ANY WAY OUT OF THIS
+AGREEMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE AND 
+NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY.
+
+9. TERM AND TERMINATION
+9.1 Term. The term of this Agreement shall be for a period of one (1) year from its Effective
+Date of the Agreement, unless earlier terminated or canceled in accordance with the
+provisions of this Agreement.
+9.2 Termination.
+9.2.1 Material Breach. Either party may terminate this Agreement if the other party breaches
+any material term or condition of this Agreement and fails to cure that breach within thirty (30)
+days after receiving written notice of the breach. Notwithstanding the foregoing, YumaWorks
+may terminate this Agreement effective immediately upon written notice to Licensee without
+any cure period in the event of breach of confidentiality obligation herein.
+9.2.2 Financial Difficulties. Either party may terminate this Agreement effective immediately
+upon written notice to the other party if the other party files a voluntary petition in bankruptcy
+or otherwise seeks protection under any law for the protection of debtors; has a proceeding
+instituted against it under any provision of the bankruptcy laws which is not dismissed within
+sixty (60) days; is adjudged to be bankrupt; has a court assume jurisdiction of its assets under
+a reorganization act; has a trustee or receiver appointed by a court for all or a substantial
+portion of its assets; becomes insolvent, suspends or ceases to do business; makes an
+assignment of all or a substantial portion of its assets for the benefit of its creditors; or admits
+in writing its inability to pay its debts as they become due.
+9.3 Effect of Termination/Expiration. Upon termination or expiration of this Agreement: (i)
+the rights and licenses granted to Licensee pursuant to this Agreement automatically
+terminate; (ii) Licensee shall, within thirty (30) days, ship to YumaWorks or destroy (including
+the purging from any system or storage media) all items and information in Licensee's
+possession that are confidential or proprietary to YumaWorks or its suppliers, including but not
+limited to all Licensed Software and all copies thereof, if any, and an officer of Licensee shall
+certify in writing to YumaWorks that all such confidential or proprietary items and information
+have been returned to YumaWorks or destroyed; and (iii) all outstanding invoices for amounts
+owed to YumaWorks by Licensee shall automatically accelerate and become due and payable
+on the effective date of termination.
+9.4 Survival. The provisions of Sections 2.4, 4.2, 7, 8, 9.3, 10.1, 10.5, and 10.8 shall survive
+the expiration, cancellation, or termination of this Agreement.
+
+10. GENERAL PROVISIONS
+10.1 Governing Law. This Agreement shall be governed by the internal laws of the State of
+California, excluding its conflict of laws rules. The parties consent to the personal and
+exclusive jurisdiction and venue of the northern district of California federal and state courts,
+as applicable.
+10.2 Assignment. Licensee shall not assign this Agreement or any right hereunder, or
+delegate any obligation created under this Agreement to any third party without prior written 
+consent of YumaWorks. YumaWorks, however, may assign this Agreement to any person or
+entity with which it has merged or which has otherwise succeeded to all or substantially all of
+the business and assets of YumaWorks, and which has assumed in writing or by operation of
+law its obligations under this Agreement. Any attempted assignment or delegation without the
+required written consent shall be null and void.
+10.3 Modification. No modification to this Agreement nor any waiver of any rights shall be
+effective unless consented to in writing and the waiver of any breach or default shall not
+constitute a waiver of any other right or of any subsequent breach or default.
+10.4 Force Majeure. Neither YumaWorks nor any of its suppliers shall be liable for any loss,
+expense, or damage caused by delays or failures in performance resulting from acts of God,
+supplier delay, or any other cause beyond the reasonable control of YumaWorks or its
+suppliers.
+10.5 Attorneys' Fees. In the event of any dispute resolution proceeding between the parties,
+the prevailing party shall be entitled to recover its costs and reasonable attorneys' fees. A
+"prevailing party" shall mean a party who receives all or substantially all of the relief sought by
+such party.
+10.6 Severability. If any provision of this Agreement is ruled unenforceable, it shall be
+enforced to the extent permissible, the parties shall negotiate a substitute valid provision
+which most nearly effects the parties' original intent, and the remainder of the Agreement shall
+remain in effect.
+10.7 Independent Contractor. The parties are each independent contractors and not joint
+venturers, partners, agents, or representatives of the other. Neither party has any right to
+create any obligation on the part of the other party.
+10.8 Equitable Relief. Licensee acknowledges that any breach of its obligations under this
+Agreement with respect to the intellectual property rights or confidential information of
+YumaWorks will cause YumaWorks irreparable injury for which there are inadequate remedies
+at law, and therefore, YumaWorks will be entitled to equitable relief in addition to all other
+remedies provided by this Agreement or available at law.
+10.9 Notice. All notices and requests required or authorized hereunder, shall be given in
+writing either by personal delivery to the party to whom notice is given, or by registered or
+certified airmail, postage prepaid, return receipt requested. The date upon which any such
+notice is so personally delivered, or if the notice is given by registered or certified airmail, the
+date upon which it is received as set forth on the returned receipt, shall be deemed to be the
+date of such notice, irrespective of the date appearing therein.
+If to YumaWorks :
+YumaWorks, Inc.
+685 Cochran St. #160
+Simi Valley, CA 93065
+Attn: Legal Department
+Phone: 805.397-8277 
+If to Licensee:
+Per the information on the Purchase Order.
+The address of the parties may be changed by notice given in accordance with this section.
+
+11. ENTIRE AGREEMENT. This Agreement constitutes the entire and exclusive agreement
+between the parties with respect to the subject matter hereof. All previous and
+contemporaneous discussions and oral and written agreements with respect to this subject
+matter are superseded by this Agreement.
+12. RESTRICTED RIGHTS LEGEND. This software is provided with RESTRICTED RIGHTS.
+Use, duplication, or disclosure by the U.S. Government is subject to restrictions set forth in
+subparagraph (c)(1)(ii) of the Rights in Technical Data and Computer Software clause at
+DFARS 252.227-7013 or subparagraphs (c)(1) and (2) of the Commercial Computer Software
+- Restricted Rights at 48 CFR 52.227-19, as applicable. The "Manufacturer" for purposes of
+these regulations is YumaWorks Inc, 685 Cochran St., #160, Simi Valley, CA, U.S.A

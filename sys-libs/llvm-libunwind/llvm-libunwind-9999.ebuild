@@ -6,12 +6,12 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-inherit cmake-multilib git-r3
+inherit cmake-multilib git-r3 llvm
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libunwind.git
+EGIT_REPO_URI="https://git.llvm.org/git/libunwind.git
 	https://github.com/llvm-mirror/libunwind.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"

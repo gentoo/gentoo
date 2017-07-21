@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit gnome2-utils eutils perl-module git-r3
 
@@ -21,6 +21,7 @@ RDEPEND="
 	dev-perl/JSON
 	dev-perl/libwww-perl[ssl]
 	dev-perl/Term-ReadLine-Gnu
+	media-video/ffmpeg[openssl]
 	virtual/perl-Encode
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
@@ -32,10 +33,11 @@ RDEPEND="
 	virtual/perl-Text-Tabs+Wrap
 	gtk? (
 		dev-perl/File-ShareDir
-		>=dev-perl/gtk2-perl-1.244.0
+		>=dev-perl/Gtk2-1.244.0
 		virtual/freedesktop-icon-theme
 		x11-libs/gdk-pixbuf:2[X,jpeg]
-	)"
+	)
+	|| ( media-video/mpv media-video/mplayer media-video/smplayer media-video/vlc )"
 DEPEND="dev-perl/Module-Build"
 
 SRC_TEST="do"
@@ -70,23 +72,15 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use gtk && gnome2_icon_cache_update
+	elog "Optional dependencies:"
+	optfeature "cache support" dev-perl/LWP-UserAgent-Cached
+	optfeature "better STDIN support" dev-perl/Term-ReadLine-Gnu
+	optfeature "faster JSON to HASH conversion" dev-perl/JSON-XS
+	optfeature "the case if there are SSL problems" dev-perl/Mozilla-CA
+	optfeature "printing results in a fixed-width format (--fixed-width, -W)" dev-perl/Text-CharWidth
+	optfeature "threads support" virtual/perl-threads
 	elog
-	elog "optional dependencies:"
-	elog "  dev-perl/LWP-UserAgent-Cached (cache support)"
-	elog "  dev-perl/Term-ReadLine-Gnu (for a better STDIN support)"
-	elog "  dev-perl/JSON-XS (faster JSON to HASH conversion)"
-	elog "  dev-perl/Mozilla-CA (just in case if there are SSL problems)"
-	elog "  dev-perl/Text-CharWidth (print the results in a fixed-width"
-	elog "    format (--fixed-width, -W))"
-	elog "  virtual/perl-threads (threads support)"
-	elog
-	elog "You also need a compatible video player, possible choices are:"
-	elog "  media-video/gnome-mplayer"
-	elog "  media-video/mplayer[network]"
-	elog "  media-video/mpv"
-	elog "  media-video/smplayer"
-	elog "  media-video/vlc"
-	elog "Also check the configuration file in ~/.config/youtube-viewer/"
+	elog "Check the configuration file in ~/.config/youtube-viewer/"
 	elog "and configure your video player backend."
 }
 

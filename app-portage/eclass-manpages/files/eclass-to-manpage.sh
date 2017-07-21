@@ -1,6 +1,5 @@
 #!/bin/bash
 
-: ${PORTDIR:=/usr/portage}
 : ${ECLASSDIR:=${0%/*}/../../../eclass}
 : ${FILESDIR:=${ECLASSDIR}/../app-portage/eclass-manpages/files}
 
@@ -26,8 +25,6 @@ ret=0
 for e in "$@" ; do
 	set -- \
 	${AWK} \
-		-vECLASSDIR="${ECLASSDIR}" \
-		-vPORTDIR="${PORTDIR}" \
 		-f "${FILESDIR}"/eclass-to-manpage.awk \
 		${e}
 	if [[ ${AWK} == "gawk" ]] ; then

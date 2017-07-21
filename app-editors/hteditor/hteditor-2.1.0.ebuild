@@ -27,6 +27,8 @@ DOCS=( AUTHORS ChangeLog KNOWNBUGS README TODO )
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=("${FILESDIR}"/${P}-gcc-7.patch)
+
 src_configure() {
 	econf \
 		$(use_enable X x11-textmode) \

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -12,12 +12,13 @@
   <use>
     <flag name="ifp">Enable support for iRiver iFP portable audio players</flag>
     <flag name="lua">Enable support for programmable title formatting with
-      <pkg>dev-lang/lua</pkg></flag>
+    <pkg>dev-lang/lua</pkg></flag>
     <flag name="mac">Enable support for decoding Monkey's Audio files</flag>
     <flag name="podcast">Enable podcast support</flag>
     <flag name="systray">Enable system tray support</flag>
   </use>
   <upstream>
     <remote-id type="github">jeremyevans/aqualung</remote-id>
+    <remote-id type="sourceforge">aqualung</remote-id>
   </upstream>
 </pkgmetadata>

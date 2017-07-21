@@ -19,14 +19,20 @@ DESCRIPTION="A vim-inspired file manager for the console"
 HOMEPAGE="http://ranger.nongnu.org/"
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="test"
 
 RDEPEND="virtual/pager"
+DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 src_prepare() {
 	# use versioned doc path
 	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
 
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	py.test -v || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

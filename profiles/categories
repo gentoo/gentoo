@@ -113,6 +113,7 @@ net-p2p
 net-print
 net-proxy
 net-voip
+net-vpn
 net-wireless
 perl-core
 ros-meta

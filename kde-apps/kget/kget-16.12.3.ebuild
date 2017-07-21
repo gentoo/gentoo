@@ -8,11 +8,10 @@ inherit kde4-base
 
 DESCRIPTION="Advanced download manager by KDE"
 HOMEPAGE="https://www.kde.org/applications/internet/kget/"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug bittorrent mms sqlite"
 
 RDEPEND="
-	$(add_kdeapps_dep libkonq)
 	app-crypt/qca:2[qt4]
 	bittorrent? ( >=net-libs/libktorrent-1.0.3:4 )
 	mms? ( media-libs/libmms )

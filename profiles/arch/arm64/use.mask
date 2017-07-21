@@ -2,6 +2,27 @@
 -arm64
 
 # Unmask arm specific USE flags
+-cpu_flags_arm_v4
+-cpu_flags_arm_v4
+-cpu_flags_arm_v5
+-cpu_flags_arm_v6
+-cpu_flags_arm_v7
+-cpu_flags_arm_v8
+
+-cpu_flags_arm_aes
+-cpu_flags_arm_crc32
+-cpu_flags_arm_edsp
+-cpu_flags_arm_neon
+-cpu_flags_arm_sha1
+-cpu_flags_arm_sha2
+-cpu_flags_arm_thumb
+-cpu_flags_arm_thumb2
+-cpu_flags_arm_vfp
+-cpu_flags_arm_vfpv3
+-cpu_flags_arm_vfpv4
+-cpu_flags_arm_vfp-d32
+
+# Unmask [old] arm specific USE flags
 -neon
 -armvfp
 
@@ -25,10 +46,6 @@ samba
 -systemd
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# dev-libs/wayland not tested on arm64 yet
-wayland
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # dev-util/valgrind not tested on arm64 yet
 # Upstream seems to have architecture support, however
 valgrind
@@ -36,10 +53,6 @@ valgrind
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # media-libs/portaudio not tested on arm64 yet
 portaudio
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# media-sound/pulseaudio not tested on arm64 yet
-pulseaudio
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # dev-libs/libressl not tested as an openssl alternative on arm64 yet
@@ -98,7 +111,6 @@ lasi
 schroedinger
 hardened
 frei0r
-libvirt
 pdfannotextractor
 prelude
 mssql
@@ -115,7 +127,6 @@ mercurial
 kerberos
 gpg
 gnome
-gnome-keyring
 doc
 emacs
 gphoto2
@@ -147,7 +158,6 @@ nut
 dvd
 fits
 tokyocabinet
-vaapi
 rtmp
 vpx
 plotutils
@@ -162,15 +172,22 @@ devil
 gts
 anthy
 ace
-qt4
 R
 sdl
-slang
-tk
 vim-syntax
 
 # Unmask ARM-only video-cards
+# e.g. exynos5433
+-video_cards_exynos
+# e.g. Snapdragon 410E (dragonboard)
+-video_cards_freedreno
+# e.g. Nvidia's Tegra K1 T132 Denver
+-video_cards_nouveau
+-video_cards_tegra
+# e.g. Raspeberry Pi 3
 -video_cards_vc4
+# e.g. Freescale/NXP i.MX 8
+-video_cards_vivante
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
@@ -187,7 +204,6 @@ video_cards_mach64
 video_cards_mga
 video_cards_neomagic
 video_cards_newport
-video_cards_nouveau
 video_cards_nsc
 video_cards_nv
 video_cards_r128
@@ -233,7 +249,3 @@ xine
 # libdlm and cman are not keyworded
 cman
 clvm
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
-# virtual/opencl is not keyworded
-opencl

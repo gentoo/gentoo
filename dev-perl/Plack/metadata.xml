@@ -26,6 +26,7 @@
     <remote-id type="cpan-module">Plack::Handler::Apache2</remote-id>
     <remote-id type="cpan-module">Plack::Handler::Apache2::Registry</remote-id>
     <remote-id type="cpan-module">Plack::Handler::CGI</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::CGI::Writer</remote-id>
     <remote-id type="cpan-module">Plack::Handler::FCGI</remote-id>
     <remote-id type="cpan-module">Plack::Handler::HTTP::Server::PSGI</remote-id>
     <remote-id type="cpan-module">Plack::Handler::Standalone</remote-id>
@@ -66,6 +67,7 @@
     <remote-id type="cpan-module">Plack::Middleware::Static</remote-id>
     <remote-id type="cpan-module">Plack::Middleware::XFramework</remote-id>
     <remote-id type="cpan-module">Plack::Middleware::XSendfile</remote-id>
+    <remote-id type="cpan-module">Plack::Recursive::ForwardRequest</remote-id>
     <remote-id type="cpan-module">Plack::Request</remote-id>
     <remote-id type="cpan-module">Plack::Request::Upload</remote-id>
     <remote-id type="cpan-module">Plack::Response</remote-id>
@@ -77,5 +79,7 @@
     <remote-id type="cpan-module">Plack::Test::Suite</remote-id>
     <remote-id type="cpan-module">Plack::Util</remote-id>
     <remote-id type="cpan-module">Plack::Util::Accessor</remote-id>
+    <remote-id type="cpan-module">Plack::Util::IOWithPath</remote-id>
+    <remote-id type="cpan-module">Plack::Util::Prototype</remote-id>
   </upstream>
 </pkgmetadata>

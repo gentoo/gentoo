@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ LICENSE="CC-BY-SA-4.0 CC-BY-SA-3.0 GPL-3+ public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="media-libs/glew
+RDEPEND="media-libs/glew:0
 	media-libs/libsdl2
 	media-libs/libjpeg-turbo
 	media-libs/libpng:=

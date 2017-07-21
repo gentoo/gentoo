@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE UML Modeller"
@@ -12,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/development/umbrello
 	https://umbrello.kde.org
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -44,6 +45,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_KF5=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_LLVM=ON
 		-DBUILD_unittests=$(usex test)
 	)
 

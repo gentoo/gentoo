@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=[threads]
-	media-libs/opencv
+	media-libs/opencv:=
 	x11-libs/gtk+:2
 	dev-ros/camera_calibration_parsers
 	>=dev-ros/cv_bridge-1.11.10

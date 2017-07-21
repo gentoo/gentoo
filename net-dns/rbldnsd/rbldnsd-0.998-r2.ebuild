@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs user python-single-r1
+inherit toolchain-funcs user python-any-r1
 
 DESCRIPTION="DNS server designed to serve blacklist zones"
 HOMEPAGE="https://rbldnsd.io/"
@@ -15,12 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~sparc ~x86 ~x86-fbsd"
 IUSE="ipv6 test zlib"
 
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
-
 RDEPEND="zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	test? ( ${PYTHON_DEPS}
-		dev-python/pydns:2[${PYTHON_USEDEP}] )"
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/pydns:2[${PYTHON_USEDEP}]')
+	)"
 
 PATCHES=(
 	"${FILESDIR}/rbldnsd-0.997a-robust-ipv6-test-support.patch"

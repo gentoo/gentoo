@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 WANT_AUTOCONF="2.1"
@@ -35,7 +34,7 @@ inherit flag-o-matic toolchain-funcs mozconfig-v6.45 makeedit autotools pax-util
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 
-KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist crypt hardened ldap lightning +minimal mozdom selinux"
@@ -53,7 +52,7 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 CDEPEND="
 	>=dev-libs/nss-3.21.1
 	>=dev-libs/nspr-4.12
-	crypt? ( x11-plugins/enigmail[-thunderbird(-)] )
+	crypt? ( >=x11-plugins/enigmail-1.9.6.1-r1 )
 	"
 
 DEPEND="${CDEPEND}
@@ -303,10 +302,11 @@ src_install() {
 	fi
 
 	if use crypt ; then
-		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' /usr/share/enigmail/install.rdf)
+		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EPREFIX}"/usr/share/enigmail/install.rdf)
 		if [[ -n ${emid} ]]; then
-			dosym /usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
+			dosym "${EPREFIX}"/usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
 		else
+			eerror "${EPREFIX}/usr/share/enigmail/install.rdf: No such file or directory"
 			die "<EM:ID> tag for installed enigmail could not be found!"
 		fi
 	fi
@@ -326,6 +326,25 @@ src_install() {
 
 pkg_preinst() {
 	gnome2_icon_savelist
+
+	# Because PM's dont seem to properly merge a symlink replacing a directory
+	if use crypt ; then
+		local emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EPREFIX}"/usr/share/enigmail/install.rdf)
+		if [[ -z ${emid} ]]; then
+			eerror "${EPREFIX}/usr/share/enigmail/install.rdf: No such file or directory"
+			die "Could not find enigmail on disk during pkg_preinst()"
+		fi
+		if [[ ! -h "${EPREFIX}${MOZILLA_FIVE_HOME}/extensions/${emid}" ]] && \
+		   [[ -d "${EPREFIX}${MOZILLA_FIVE_HOME}/extensions/${emid}" ]]; then
+			rm -Rf "${EPREFIX}${MOZILLA_FIVE_HOME}/extensions/${emid}" || (
+			eerror "Could not remove enigmail directory from previous installation,"
+			eerror "You must remove this by hand and rename the symbolic link yourself:"
+			eerror
+			eerror "\t cd ${EPREFIX}${MOZILLA_FIVE_HOME}/extensions"
+			eerror "\t rm -Rf ${emid}"
+			eerror "\t mv ${emid}.backup* ${emid}" )
+		fi
+	fi
 }
 
 pkg_postinst() {

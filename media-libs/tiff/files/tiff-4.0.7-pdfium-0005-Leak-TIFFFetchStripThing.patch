@@ -1,0 +1,20 @@
+https://codereview.chromium.org/2204793002
+https://crbug.com/633387
+https://pdfium.googlesource.com/pdfium/+/master/libtiff/
+
+Author: thestig <thestig@chromium.org>
+Date:   Mon Aug 1 19:36:27 2016 -0700
+
+Fix a memory leak in libtiff.
+
+--- a/libtiff/tif_dirread.c
++++ b/libtiff/tif_dirread.c
+@@ -5372,6 +5372,8 @@ TIFFFetchStripThing(TIFF* tif, TIFFDirEntry* dir, uint32 nstrips, uint64** lpp)
+ 	static const char module[] = "TIFFFetchStripThing";
+ 	enum TIFFReadDirEntryErr err;
+ 	uint64* data;
++	_TIFFfree(*lpp);
++	*lpp = 0;
+ 	err=TIFFReadDirEntryLong8Array(tif,dir,&data);
+ 	if (err!=TIFFReadDirEntryErrOk)
+ 	{

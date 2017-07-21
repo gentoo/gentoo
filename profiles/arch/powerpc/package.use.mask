@@ -1,6 +1,23 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Weber <xmw@gentoo.org> (14 Mar 2017)
+# mask unkeyworded dependency media-libs/glfw
+app-text/mupdf opengl
+
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on ppc
+xfce-base/xfwm4 xpresent
+
+# Michael Weber <xmw@gentoo.org> (06 Apr 2017)
+# mask unkeyworded dep pymongo -> mongodb
+app-portage/g-sorcery bson
+
+# Michał Górny <mgorny@gentoo.org> (24 Mar 2017)
+# libcxx fails to compile on ppc*, #595744.
+sys-devel/clang default-libcxx
+sys-devel/clang-runtime libcxx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
 # Requires dev-qt/qtwebengine, not keyworded on ppc
 sci-geosciences/gpsbabel gui
@@ -233,7 +250,7 @@ dev-ruby/rack-test test
 
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
-net-misc/tor tor-hardening
+net-vpn/tor tor-hardening
 
 # Brent Baude <ranger@gentoo.org> (06 Mar 2012)
 # masking kde on gajim

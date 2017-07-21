@@ -1,0 +1,22 @@
+From 283e9093d541b8de0ecca324fde8fd38b560dc8e Mon Sep 17 00:00:00 2001
+From: Vojtech Trefny <vtrefny@redhat.com>
+Date: Mon, 24 Apr 2017 09:14:05 +0200
+Subject: [PATCH] Fix typo in data/Makefile.am
+
+---
+ data/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index af0cce2..83af330 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -6,7 +6,7 @@ dbusservice_in_files = org.freedesktop.UDisks2.service.in
+ dbusservice_DATA     = $(dbusservice_in_files:.service.in=.service)
+ 
+ $(dbusservice_DATA): $(dbusservice_in_files) Makefile
+-	@sed -e "s|\@udisksprivdir\@|$(libexecdir)/udisks2|" $< > $@
++	@sed -e "s|\@udisksdprivdir\@|$(libexecdir)/udisks2|" $< > $@
+ 
+ dbusconfdir = $(sysconfdir)/dbus-1/system.d
+ dbusconf_in_files = org.freedesktop.UDisks2.conf.in

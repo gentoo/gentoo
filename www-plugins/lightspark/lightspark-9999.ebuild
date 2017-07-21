@@ -27,7 +27,6 @@ RDEPEND="app-arch/xz-utils:0=
 	media-libs/libsdl2:0=
 	media-libs/sdl2-mixer:0=
 	>=sys-devel/gcc-4.6.0:*[cxx]
-	<sys-devel/llvm-4:0=
 	>=sys-devel/llvm-3.4:0=
 	sys-libs/zlib:0=
 	x11-libs/cairo:0=
@@ -73,7 +72,7 @@ src_configure() {
 		-DENABLE_PROFILING=$(usex profile)
 		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
 
-		-DCOMPILE_PLUGIN=$(usex nsplugin)
+		-DCOMPILE_NPAPI_PLUGIN=$(usex nsplugin)
 		-DPLUGIN_DIRECTORY="${EPREFIX}"/usr/$(get_libdir)/${PN}/plugins
 		# TODO: install /etc/chromium file? block adobe-flash?
 		-DCOMPILE_PPAPI_PLUGIN=$(usex ppapi)

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc gnome-keyring"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # glibc: deprecated mutex functions, removed in 2.36.0
 CDEPEND="${PYTHON_DEPS}
@@ -38,7 +39,7 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-libs/libxml2-2.6.2:2
 		dev-libs/libzip
 		>=virtual/mysql-5.1
-		dev-libs/libpcre
+		dev-libs/libpcre[cxx]
 		>=sci-libs/gdal-1.11.1-r1[-mdb]
 		virtual/opengl
 		>=dev-lang/lua-5.1:0[deprecated]
@@ -74,7 +75,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-6.2.3-CMakeLists.patch" \
 		"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch" \
 		"${FILESDIR}/${PN}-6.3.3-mysql_options4.patch" \
-		"${FILESDIR}/${PN}-6.3.4-cxx11.patch"
+		"${FILESDIR}/${PN}-6.3.4-cxx11.patch" \
+		"${FILESDIR}/${PN}-6.3.4-gtk.patch"
 
 	sed -i -e '/target_link_libraries/ s/sqlparser.grt/sqlparser.grt sqlparser/' \
 		modules/db.mysql.sqlparser/CMakeLists.txt

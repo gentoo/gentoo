@@ -25,7 +25,7 @@ RDEPEND="dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	dev-qt/qtsvg:4
 	bittorrent? (
-		>=net-libs/rb_libtorrent-0.14.5
+		>=net-libs/libtorrent-rasterbar-0.14.5
 		>=dev-cpp/asio-1.1.0
 		dev-qt/qtwebkit:4
 	)

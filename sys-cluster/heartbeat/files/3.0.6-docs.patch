@@ -1,0 +1,59 @@
+diff -ru a/configure.ac b/configure.ac
+--- a/configure.ac	2015-02-04 15:57:04.000000000 +0100
++++ b/configure.ac	2017-04-25 11:57:33.706753890 +0200
+@@ -574,8 +574,14 @@
+ AC_PATH_PROGS(TEST, test)
+ PKG_PROG_PKG_CONFIG
+ 
+-dnl xsltproc is required for building the man pages
+-AC_PATH_PROGS(XSLTPROC, xsltproc)
++AC_ARG_ENABLE([doc],
++	AS_HELP_STRING([--enable-doc],[Build documentation]
++))
++AS_IF([test "x$enable_doc" = "xyes"], [
++	AC_PATH_PROGS(XSLTPROC, xsltproc)
++])
++AM_CONDITIONAL([BUILD_DOC], [test "x$enable_doc" = "xyes"] )
++AC_SUBST(XSLTPROC)
+ 
+ dnl ************************************************************************
+ dnl Check whether non-root user can chown.
+diff -ru a/doc/Makefile.am b/doc/Makefile.am
+--- a/doc/Makefile.am	2015-02-04 15:57:04.000000000 +0100
++++ b/doc/Makefile.am	2017-04-25 11:58:35.459257834 +0200
+@@ -33,11 +33,12 @@
+ 
+ doc_DATA		= $(OTHER_DOCS)
+ 
++if BUILD_DOC
+ man_MANS		= heartbeat.8 apphbd.8 cl_status.1  \
+ 			 hb_standby.1 hb_takeover.1 hb_addnode.1 hb_delnode.1 \
+ 			 ha.cf.5 authkeys.5
+ 
+-STYLESHEET_PREFIX 	?= http://docbook.sourceforge.net/release/xsl/current
++STYLESHEET_PREFIX 	?= /usr/share/sgml/docbook/xsl-stylesheets
+ MANPAGES_STYLESHEET 	?= $(STYLESHEET_PREFIX)/manpages/docbook.xsl
+ HTML_STYLESHEET 	?= $(STYLESHEET_PREFIX)/xhtml/docbook.xsl
+ FO_STYLESHEET 		?= $(STYLESHEET_PREFIX)/fo/docbook.xsl
+@@ -47,6 +48,12 @@
+ XSLTPROC_HTML_OPTIONS 	?= $(XSLTPROC_OPTIONS)
+ XSLTPROC_FO_OPTIONS 	?= $(XSLTPROC_OPTIONS)
+ 
++%.5 %.8 %.1: %.xml
++	$(XSLTPROC) \
++	$(XSLTPROC_MANPAGES_OPTIONS) \
++	$(MANPAGES_STYLESHEET) $<
++endif
++
+ EXTRA_DIST = $(txtfiles) $(htmlfiles) $(man_MANS) $(OTHER_DOCS)
+ 
+ ChangeLog: $(SPECSRC)
+@@ -55,8 +62,3 @@
+ 
+ .html.txt:
+ 	if [ "X$(HTML2TXT)" = "X" ]; then echo "Lynx or w3m or user-defined HTML2TXT required to convert $< to $@" >$@ ; else $(HTML2TXT) -dump $< >$@ ; fi
+-
+-%.5 %.8 %.1: %.xml
+-	$(XSLTPROC) \
+-	$(XSLTPROC_MANPAGES_OPTIONS) \
+-	$(MANPAGES_STYLESHEET) $<

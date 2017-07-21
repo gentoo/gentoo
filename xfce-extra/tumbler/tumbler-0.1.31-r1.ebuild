@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A thumbnail service for the filemanager of Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/thunar/"
+HOMEPAGE="https://docs.xfce.org/xfce/thunar/start"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

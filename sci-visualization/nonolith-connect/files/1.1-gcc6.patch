@@ -1,0 +1,14 @@
+--- nonolith-connect-1.1/websocketpp/src/websocket_server_session.cpp.old	2016-09-25 18:13:31.820474134 -0400
++++ nonolith-connect-1.1/websocketpp/src/websocket_server_session.cpp	2016-09-25 18:38:52.654567787 -0400
+@@ -41,8 +41,11 @@
+ #include <iostream>
+ #include <sstream>
+ #include <string>
++
++#if __cplusplus < 201103L
+ #include <ext/algorithm>
+ using __gnu_cxx::copy_n;
++#endif
+ 
+ using websocketpp::server_session;
+ 

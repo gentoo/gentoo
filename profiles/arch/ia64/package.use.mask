@@ -1,9 +1,40 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Alexis Ballier <aballier@gentoo.org> (4 Mar 2017)
-# gst-plugins-x264 is not stable on ia64
-media-plugins/gst-plugins-meta x264
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded java
+sci-libs/gdal mdb
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded lapack
+sci-libs/gdal armadillo
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
+# Pulls in dev-db/redis which is not keyworded on ia64.
+>=dev-python/pyzor-1.0.0 test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
+# dev-python/gevent requires dev-python/greenlet which has not been ported to
+# ia64 (bug #538510)
+dev-python/pyzor gevent
+
+# Sergei Trofimovich <slyfox@gentoo.org> (10 Jun 2017)
+# media-libs/libilbc has not been ported to ia64, bug #610546
+media-video/ffmpeg libilbc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (06 Jun 2017)
+# Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
+# keyworded (bug #549516)
+net-analyzer/rrdtool rados
+
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on ia64
+xfce-base/xfwm4 xpresent
 
 # Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
 # Missing keywords, bug #559770
@@ -38,10 +69,6 @@ dev-db/percona-server -numa
 # Missing keywords on media-libs/grilo - bug #521972
 media-sound/rhythmbox upnp-av
 
-# Gilles Dartiguelongue <eva@gentoo.org> (22 Aug 2016)
-# Missing keywords on dev-libs/gom - bug #521972
-media-libs/grilo test
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
@@ -61,10 +88,6 @@ media-video/ffmpeg snappy
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no ia64 support in media-libs/glfw
 app-text/mupdf opengl
-
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
@@ -125,11 +148,7 @@ media-libs/elementary sdl
 
 # Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
 # Missing ffmpeg deps, bug #510340
-media-video/ffmpeg x265 gme ssh
-
-# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
-# Missing keywords for media-libs/x265
-media-video/libav x265
+media-video/ffmpeg gme ssh
 
 # Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
 # Missing keywords
@@ -140,10 +159,6 @@ net-misc/networkmanager teamd
 dev-haskell/binary test
 dev-haskell/text test
 dev-haskell/vector test
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
-# Missing keywords, bug #523686
->=dev-libs/libgdata-0.16.1 test
 
 # Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
@@ -207,7 +222,7 @@ media-libs/phonon zeitgeist
 
 # Dirkjan Ochtman <djc@gentoo.org> (3 May 2013)
 # depends on net-libs/polarssl
->=net-misc/openvpn-2.3.1 polarssl
+>=net-vpn/openvpn-2.3.1 polarssl
 
 # Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
 # missing keyword on media-libs/tremor, bug #453200
@@ -268,10 +283,6 @@ dev-libs/libpcre jit
 # Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
 # Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
 dev-libs/libmemcached tcmalloc
-
-# Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
-# Mask numa use flag per bug #381313
-sys-apps/hwloc numa
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2011)
 # Needs sci-libs/umfpack keyworded. Bug #361947.

@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge.jp/anthy/37536/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 #KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
 IUSE="canna-2ch emacs static-libs"
 

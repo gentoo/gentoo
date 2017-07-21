@@ -11,6 +11,7 @@
     </maintainer>
     <use>
         <flag name="compression">Enable compression via zlib</flag>
+        <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
         <flag name="nfacct">Enable the nfacct plugin</flag>
         <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
     </use>

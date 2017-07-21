@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -7,12 +7,8 @@
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
-                <email>patrick@gentoo.org</email>
-                <name>Patrick Lauer</name>
-        </maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
 	</maintainer>
 	<longdescription lang="en">
 		Translate Shell (formerly Google Translate CLI) is a command-line
@@ -20,7 +16,9 @@
 		Yandex.Translate.  
 	</longdescription>
 	<use>
-		<flag name="fribidi">Enable RTL language support</flag>
 		<flag name="tts">Enable text-to-speech support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">soimort/translate-shell</remote-id>
+	</upstream>
 </pkgmetadata>

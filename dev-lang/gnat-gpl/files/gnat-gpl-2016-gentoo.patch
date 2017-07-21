@@ -1,0 +1,57 @@
+--- patch/09_all_default-ssp.patch.old	2017-01-08 16:14:09.377755019 +0100
++++ patch/09_all_default-ssp.patch	2017-01-08 16:15:48.792764201 +0100
+@@ -78,14 +78,14 @@
+  optimizing. The default value is 32.
+ --- a/gcc/cp/lang-specs.h
+ +++ b/gcc/cp/lang-specs.h
+-@@ -46,7 +46,7 @@ along with GCC; see the file COPYING3.  If not see
++@@ -46,7 +46,7 @@
+  		%(cpp_options) %2 -o %{save-temps*:%b.ii} %{!save-temps*:%g.ii} \n}\
+        cc1plus %{save-temps*|no-integrated-cpp:-fpreprocessed %{save-temps*:%b.ii} %{!save-temps*:%g.ii}}\
+  	      %{!save-temps*:%{!no-integrated-cpp:%(cpp_unique_options)}}\
+ -	%(cc1_options) %2\
+ +	%(cc1_options) %(ssp_default) %2\
+- 	%{!fsyntax-only:%{!fdump-ada-spec*:-o %g.s %{!o*:--output-pch=%i.gch}\
+-         %W{o*:--output-pch=%*}}%V}}}}",
++ 	%{!fsyntax-only:-o %g.s %{!fdump-ada-spec*:%{!fdump-xref*:%{!o*:--output-pch=%i.gch}\
++         %W{o*:--output-pch=%*}}}%V}}}}",
+       CPLUSPLUS_CPP_SPEC, 0, 0},
+ @@ -57,11 +57,11 @@ along with GCC; see the file COPYING3.  If not see
+  		%(cpp_options) %2 -o %{save-temps*:%b.ii} %{!save-temps*:%g.ii} \n}\
+@@ -151,14 +151,14 @@
+  /* This contains cpp options which are not passed when the preprocessor
+     output will be used by another program.  */
+ @@ -1015,9 +1024,9 @@ static const struct compiler default_compilers[] =
+-       %{save-temps*|traditional-cpp|no-integrated-cpp:%(trad_capable_cpp) \
++       %{save-temps*|fdump-scos|traditional-cpp|no-integrated-cpp:%(trad_capable_cpp) \
+  	  %(cpp_options) -o %{save-temps*:%b.i} %{!save-temps*:%g.i} \n\
+  	    cc1 -fpreprocessed %{save-temps*:%b.i} %{!save-temps*:%g.i} \
+ -	  %(cc1_options)}\
+ +	  %(cc1_options) %(ssp_default)}\
+-       %{!save-temps*:%{!traditional-cpp:%{!no-integrated-cpp:\
+--	  cc1 %(cpp_unique_options) %(cc1_options)}}}\
+-+	  cc1 %(cpp_unique_options) %(cc1_options) %(ssp_default)}}}\
++       %{!save-temps*:%{!fdump-scos:%{!traditional-cpp:%{!no-integrated-cpp:\
++-	  cc1 %(cpp_unique_options) %(cc1_options)}}}}\
+++	  cc1 %(cpp_unique_options) %(cc1_options) %(ssp_default)}}}}\
+        %{!fsyntax-only:%(invoke_as)}}}}", 0, 0, 1},
+    {"-",
+     "%{!E:%e-E or -x required when input is from standard input}\
+--- gcc-4.9-gpl-2016-src/gcc/ada/osint.adb.old	2017-03-10 21:58:02.600710156 +0100
++++ gcc-4.9-gpl-2016-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+@@ -2229,14 +2229,11 @@
+       for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
+          if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
+             End_Of_Prefix := J - 1;
++            Start_Of_Suffix := J + Prog'Length;
+             exit;
+          end if;
+       end loop;
+ 
+-      if End_Of_Prefix > 1 then
+-         Start_Of_Suffix := End_Of_Prefix + Prog'Length + 1;
+-      end if;
+-
+       --  Create the new program name
+ 
+       return new String'

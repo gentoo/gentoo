@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ SLOT="0"
 LICENSE="vmd"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cuda gromacs msms povray sqlite tachyon xinerama"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="fetch"
 
@@ -32,6 +33,7 @@ CDEPEND="
 	>=x11-libs/fltk-1.1.10-r2:1
 	x11-libs/libXft
 	x11-libs/libXi
+	${PYTHON_DEPS}
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= )
 	gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1[tng] )
 	sqlite? ( dev-db/sqlite:3= )

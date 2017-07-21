@@ -1,0 +1,16 @@
+--- /Makefile.orig	2016-07-11 23:34:40.299664675 +0000
++++ /Makefile	2016-07-11 23:37:00.816018727 +0000
+@@ -13,13 +13,11 @@
+ 
+ .PHONY: default
+ default:
+-	go get -t -v -d ./...
+ 	go install -v $(TAGS) $(DEBUG) ./...
+ 	@echo "LXD built successfully"
+ 
+ .PHONY: client
+ client:
+-	go get -t -v -d ./...
+ 	go install -v $(TAGS) $(DEBUG) ./lxc
+ 	@echo "LXD client built successfully"
+ 

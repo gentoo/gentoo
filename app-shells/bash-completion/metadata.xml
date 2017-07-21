@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>mgorny@gentoo.org</email>
-	<name>Michał Górny</name>
-</maintainer>
-<maintainer type="project">
-	<email>shell-tools@gentoo.org</email>
-	<name>Gentoo Shell Tools Project</name>
-</maintainer>
-<longdescription>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
+	<longdescription>
   Since v2.04, bash has allowed you to intelligently program and extend its
   standard completion behavior to achieve complex command lines with just a
   few keystrokes. Imagine typing ssh [Tab] and being able to complete on hosts
@@ -20,5 +20,9 @@
   project was conceived to produce programmable completion routines for the
   most common Linux/UNIX commands, reducing the amount of typing sysadmins and
   programmers need to do on a daily basis.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">mgorny/bashcomp2</remote-id>
+		<remote-id type="github">scop/bash-completion</remote-id>
+	</upstream>
 </pkgmetadata>

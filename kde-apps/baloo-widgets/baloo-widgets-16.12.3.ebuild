@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Widget library for baloo"
 LICENSE="LGPL-2+ LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -22,6 +22,6 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
-RDEPEND="${DEPEND}
-	!kde-base/baloo-widgets
-"
+RDEPEND="${DEPEND}"
+
+RESTRICT+=" test"

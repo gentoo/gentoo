@@ -5,7 +5,7 @@ EAPI=6
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="Smart bookmark plug-in for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-smartbookmark-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-smartbookmark-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

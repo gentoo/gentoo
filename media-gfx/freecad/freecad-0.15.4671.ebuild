@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="dev-cpp/eigen:3
 	dev-libs/boost
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib
-	dev-python/pyside[X]
-	dev-python/shiboken
+	dev-python/pyside:0[X]
+	dev-python/shiboken:0
 	dev-qt/designer:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
@@ -37,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pivy
 	dev-python/numpy"
 DEPEND="${COMMON_DEPEND}
-	dev-python/pyside-tools
+	dev-python/pyside-tools:0
 	>=dev-lang/swig-2.0.4-r1:0"
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435

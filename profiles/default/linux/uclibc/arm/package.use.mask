@@ -9,7 +9,7 @@ dev-qt/qt-creator clangcodemodel clangstaticanalyzer test webengine
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 location webengine
+dev-python/PyQt5 webengine
 
 # Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
 # Ian Delaney <idella4@gentoo.org> (25 Apr 2016)

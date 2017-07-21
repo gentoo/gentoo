@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit eutils
 
 DESCRIPTION="Hash cracker that precomputes plaintext - ciphertext pairs in advance"
@@ -28,7 +29,7 @@ DOCS=(
 )
 
 src_unpack() {
-	unpack ${A}
+	default
 	mv ${P}-linux* "${S}"
 }
 

@@ -11,7 +11,7 @@ EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER="1.0"
+PATCH_VER="1.1"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz

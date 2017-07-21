@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit python-single-r1
 
@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="+decode"
 REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND=">=dev-libs/glib-2.28.0
+RDEPEND=">=dev-libs/glib-2.32.0
 	>=sci-libs/libsigrok-0.4.0
 	decode? (
 		>=sci-libs/libsigrokdecode-0.4.0[${PYTHON_USEDEP}]

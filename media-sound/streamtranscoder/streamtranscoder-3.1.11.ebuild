@@ -1,9 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 MY_P=${PN}v3-${PV}
 
-DESCRIPTION="Command line application to transcode shoutcast/icecast streams to different bitrates"
+DESCRIPTION="Commandline program to transcode shoutcast/icecast streams to different bitrates"
 HOMEPAGE="http://www.oddsock.org/tools/streamTranscoderV3"
 SRC_URI="http://www.oddsock.org/tools/streamTranscoderV3/${MY_P}.tar.gz"
 
@@ -20,8 +22,3 @@ RDEPEND=">=media-libs/libogg-1.1
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS
-}

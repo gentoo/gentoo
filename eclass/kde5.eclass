@@ -79,6 +79,17 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # Defaults to "doc". Otherwise, use alternative KDE handbook path.
 : ${KDE_DOC_DIR:=doc}
 
+# @ECLASS-VARIABLE: KDE_QTHELP
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
+# and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
+if [[ ${CATEGORY} = kde-frameworks && ( $(get_version_component_range 2) -ge 36 || ${KDE_BUILD_TYPE} = live ) ]]; then
+	: ${KDE_QTHELP:=true}
+else
+	: ${KDE_QTHELP:=false}
+fi
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -131,7 +142,7 @@ KDE_UNRELEASED=( )
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
 elif [[ ${KDEBASE} = kdel10n ]]; then
-	HOMEPAGE="http://l10n.kde.org"
+	HOMEPAGE="https://l10n.kde.org"
 elif [[ ${KMNAME} = kdepim ]]; then
 	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 else
@@ -172,13 +183,21 @@ case ${KDE_AUTODEPS} in
 		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
-		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
-			RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
-		fi
-
-		if [[ ${KDE_BLOCK_SLOT4} = true && ${CATEGORY} = kde-apps ]]; then
-			RDEPEND+=" !kde-apps/${PN}:4"
-		fi
+		case ${CATEGORY} in
+			kde-frameworks | \
+			kde-plasma)
+				RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
+				;;
+			kde-apps)
+				[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
+				[[ $(get_version_component_range 1) -ge 17 ]] && \
+					RDEPEND+="
+						!kde-apps/kde-l10n
+						!<kde-apps/kde4-l10n-16.12.0:4
+						!kde-apps/kdepim-l10n:5
+					"
+				;;
+		esac
 		;;
 esac
 
@@ -215,6 +234,18 @@ case ${KDE_HANDBOOK} in
 		;;
 esac
 
+case ${KDE_QTHELP} in
+	false)	;;
+	*)
+		IUSE+=" doc"
+		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
+		DEPEND+=" doc? (
+			$(add_qt_dep qthelp)
+			>=app-doc/doxygen-1.8.13-r1
+		)"
+		;;
+esac
+
 case ${KDE_TEST} in
 	false)	;;
 	*)
@@ -241,9 +272,9 @@ fi
 
 if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
 	if [[ -n ${KMNAME} ]]; then
-		S=${WORKDIR}/${KMNAME}-${PV%.0}	# kdevelop missing trailing .0 in first release
+		S=${WORKDIR}/${KMNAME}-${PV}
 	else
-		S=${WORKDIR}/${PN}-${PV%.0}	# kdevelop missing trailing .0 in first release
+		S=${WORKDIR}/${P}
 	fi
 fi
 
@@ -286,6 +317,8 @@ _calculate_src_uri() {
 	case ${CATEGORY} in
 		kde-apps)
 			case ${PV} in
+				16.12.3)
+					SRC_URI="mirror://kde/Attic/applications/16.12.3/src/${_kmname}-${PV}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[6-9]? )
 					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
@@ -326,7 +359,7 @@ _calculate_src_uri() {
 				RESTRICT+=" mirror"
 				;;
 			*)
-				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV%.0}.tar.xz" ;;
+				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
 		esac
 		unset _kdebase
 	fi
@@ -528,32 +561,45 @@ kde5_src_prepare() {
 
 		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
 			punt_bogus_dep KF5 DocTools
+			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
 	# drop translations when nls is not wanted
-	if [[ -d po ]] && in_iuse nls && ! use nls ; then
-		rm -r po || die
+	if in_iuse nls && ! use nls ; then
+		if [[ -d po ]] ; then
+			rm -r po || die
+		fi
+		if [[ -d poqm ]] ; then
+			rm -r poqm || die
+		fi
 	fi
 
-	# enable only the requested translations
-	# when required
-	if [[ -d po && -v LINGUAS ]] ; then
-		pushd po > /dev/null || die
-		local lang
-		for lang in *; do
-			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
-				rm -r ${lang} || die
-				if [[ -e CMakeLists.txt ]] ; then
-					cmake_comment_add_subdirectory ${lang}
+	# enable only the requested translations when required
+	if [[ -v LINGUAS ]] ; then
+		local po
+		for po in po poqm; do
+		if [[ -d ${po} ]] ; then
+			pushd ${po} > /dev/null || die
+			local lang
+			for lang in *; do
+				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
+					case ${lang} in
+						cmake_modules | \
+						CMakeLists.txt | \
+						${PN}.pot)	;;
+						*) rm -r ${lang} || die	;;
+					esac
+					if [[ -e CMakeLists.txt ]] ; then
+						cmake_comment_add_subdirectory ${lang}
+						sed -e "/add_subdirectory([[:space:]]*${lang}\/.*[[:space:]]*)/d" \
+							-i CMakeLists.txt || die
+					fi
 				fi
-			elif [[ -f ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
-				if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
-					rm ${lang} || die
-				fi
-			fi
+			done
+			popd > /dev/null || die
+		fi
 		done
-		popd > /dev/null || die
 	fi
 
 	if [[ ${KDE_BUILD_TYPE} = release && ${CATEGORY} != kde-apps ]] ; then
@@ -624,6 +670,10 @@ kde5_src_configure() {
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
 	fi
 
+	if [[ ${KDE_QTHELP} != false ]]; then
+		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
+	fi
+
 	# install mkspecs in the same directory as qt stuff
 	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
 
@@ -681,10 +731,18 @@ kde5_src_install() {
 
 	cmake-utils_src_install
 
-	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
+	# We don't want QCH and tags files to be compressed, because then
+	# cmake can't find the tags and qthelp viewers can't find the docs
+	local p=$(best_version dev-qt/qtcore:5)
+	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
+	if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
+		docompress -x /usr/share/doc/qt-${pv}
+	fi
+
+	# We don't want /usr/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs
-	if [[ -d ${ED}/${PREFIX}/share/doc/HTML ]]; then
-		docompress -x ${PREFIX}/share/doc/HTML
+	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+		docompress -x /usr/share/doc/HTML
 	fi
 }
 
@@ -704,7 +762,9 @@ kde5_pkg_preinst() {
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	xdg_pkg_postinst
 
 	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
@@ -713,14 +773,6 @@ kde5_pkg_postinst() {
 			einfo "WARNING! This is an experimental live ebuild of ${CATEGORY}/${PN}"
 			einfo "Use it at your own risk."
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
-		fi
-		# for kf5-based applications tell user that he SHOULD NOT be using kde-plasma/plasma-workspace:4
-		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
-				has_version 'kde-plasma/plasma-workspace:4'; then
-			echo
-			ewarn "WARNING! Your system configuration still contains \"kde-plasma/plasma-workspace:4\","
-			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
-			ewarn "Please consider upgrading to Plasma 5."
 		fi
 	fi
 }

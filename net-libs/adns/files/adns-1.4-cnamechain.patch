@@ -68,14 +68,14 @@ Systems Architect | InfoInterActive Corp. | A Canadian AOL Company
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: attachment; filename="cname_chains.diff"
 
-Index: src/internal.h
+Index: adns-1.0/src/internal.h
 ===================================================================
 RCS file: /iia/cvsroot/3rdParty/gnu/adns/adns-1.0/src/internal.h,v
 retrieving revision 1.3
 retrieving revision 1.4
 diff -u -p -r1.3 -r1.4
---- src/internal.h	2 Oct 2003 17:01:46 -0000	1.3
-+++ src/internal.h	2 Oct 2003 17:14:29 -0000	1.4
+--- adns-1.0/src/internal.h	2 Oct 2003 17:01:46 -0000	1.3
++++ adns-1.0/src/internal.h	2 Oct 2003 17:14:29 -0000	1.4
 @@ -206,6 +206,9 @@ struct adns__query {
    int cname_dglen, cname_begin;
    /* If non-0, has been allocated using . */
@@ -86,14 +86,14 @@ diff -u -p -r1.3 -r1.4
    vbuf search_vb;
    int search_origlen, search_pos, search_doneabs;
    /* Used by the searching algorithm.  The query domain in textual form
-Index: src/query.c
+Index: adns-1.0/src/query.c
 ===================================================================
 RCS file: /iia/cvsroot/3rdParty/gnu/adns/adns-1.0/src/query.c,v
 retrieving revision 1.3
 retrieving revision 1.4
 diff -u -p -r1.3 -r1.4
---- src/query.c	2 Oct 2003 17:01:47 -0000	1.3
-+++ src/query.c	2 Oct 2003 17:14:29 -0000	1.4
+--- adns-1.0/src/query.c	2 Oct 2003 17:01:47 -0000	1.3
++++ adns-1.0/src/query.c	2 Oct 2003 17:14:29 -0000	1.4
 @@ -63,6 +63,8 @@ static adns_query query_alloc(adns_state
  
    qu->cname_dgram= 0;
@@ -103,14 +103,14 @@ diff -u -p -r1.3 -r1.4
  
    adns__vbuf_init(&qu->search_vb);
    qu->search_origlen= qu->search_pos= qu->search_doneabs= 0;
-Index: src/reply.c
+Index: adns-1.0/src/reply.c
 ===================================================================
 RCS file: /iia/cvsroot/3rdParty/gnu/adns/adns-1.0/src/reply.c,v
 retrieving revision 1.3
 retrieving revision 1.4
 diff -u -p -r1.3 -r1.4
---- src/reply.c	2 Oct 2003 17:01:47 -0000	1.3
-+++ src/reply.c	2 Oct 2003 17:14:30 -0000	1.4
+--- adns-1.0/src/reply.c	2 Oct 2003 17:01:47 -0000	1.3
++++ adns-1.0/src/reply.c	2 Oct 2003 17:14:30 -0000	1.4
 @@ -191,12 +191,13 @@ void adns__procdgram(adns_state ads, con
        if (qu->flags & adns_qf_cname_forbid) {
  	adns__query_fail(qu,adns_s_prohibitedcname);

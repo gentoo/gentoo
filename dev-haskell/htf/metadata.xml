@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -17,4 +17,7 @@
 		The documentation of the "Test.Framework.Tutorial" module
 		provides a tutorial for the HTF.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">skogsbaer/HTF</remote-id>
+	</upstream>
 </pkgmetadata>

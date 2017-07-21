@@ -1,0 +1,45 @@
+From: Anders F Bjorklund <afb@users.sourceforge.net>
+Date: Mon, 4 Apr 2011 21:34:20 +0200
+Subject: [PATCH] use objective-c for quartz
+
+https://bugzilla.gnome.org/show_bug.cgi?id=646743
+---
+ configure.ac    | 5 +++++
+ gtk/Makefile.am | 5 +++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 84c78f6c..27192f9c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -445,6 +445,11 @@ case $gdk_target in
+         ;;
+ esac
+ 
++if test "x$gdk_target" = "xquartz"; then
++  AM_CONDITIONAL(USE_QUARTZ, true)
++else
++  AM_CONDITIONAL(USE_QUARTZ, false)
++fi
+ 
+ dnl checks to see if numpy is installed.
+ AC_ARG_ENABLE(numpy,
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 7bb5d0c8..44d68700 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -9,6 +9,11 @@ INCLUDES = \
+ 	$(PYGOBJECT_CFLAGS) \
+ 	-I$(srcdir)/gtk
+ 
++if USE_QUARTZ
++# same as in gtk+/gdk/quartz/Makefile.am
++INCLUDES += "-xobjective-c"
++endif
++
+ # defs files
+ defsdir = $(pkgdatadir)/$(PLATFORM_VERSION)/defs
+ defs_DATA =
+-- 
+2.12.0
+

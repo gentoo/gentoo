@@ -1,0 +1,115 @@
+diff -Naur protobuf-3.3.0.orig/Makefile.am protobuf-3.3.0/Makefile.am
+--- protobuf-3.3.0.orig/Makefile.am	2017-05-01 20:04:35.448840428 -0700
++++ protobuf-3.3.0/Makefile.am	2017-05-01 20:04:48.855978898 -0700
+@@ -17,9 +17,10 @@
+ # want "make install" to recurse into gmock since we don't want to overwrite
+ # the installed version of gmock if there is one.
+ check-local:
+-	@echo "Making lib/libgmock.a lib/libgmock_main.a in gmock"
+-	@cd gmock && $(MAKE) $(AM_MAKEFLAGS) lib/libgmock.la lib/libgmock_main.la
+-	@cd gmock/gtest && $(MAKE) $(AM_MAKEFLAGS) lib/libgtest.la lib/libgtest_main.la
++	@echo "Making of gmock disabled"
++#	@echo "Making lib/libgmock.a lib/libgmock_main.a in gmock"
++#	@cd gmock && $(MAKE) $(AM_MAKEFLAGS) lib/libgmock.la lib/libgmock_main.la
++#	@cd gmock/gtest && $(MAKE) $(AM_MAKEFLAGS) lib/libgtest.la lib/libgtest_main.la
+ 
+ # We would like to clean gmock when "make clean" is invoked.  But we have to
+ # be careful because clean-local is also invoked during "make distclean", but
+diff -Naur protobuf-3.3.0.orig/configure.ac protobuf-3.3.0/configure.ac
+--- protobuf-3.3.0.orig/configure.ac	2017-05-01 20:04:35.497840933 -0700
++++ protobuf-3.3.0/configure.ac	2017-05-01 20:04:48.856978908 -0700
+@@ -203,9 +203,9 @@
+ # HACK:  Make gmock's configure script pick up our copy of CFLAGS and CXXFLAGS,
+ #   since the flags added by ACX_CHECK_SUNCC must be used when compiling gmock
+ #   too.
+-export CFLAGS
+-export CXXFLAGS
+-AC_CONFIG_SUBDIRS([gmock])
++#export CFLAGS
++#export CXXFLAGS
++#AC_CONFIG_SUBDIRS([gmock])
+ 
+ AC_CONFIG_FILES([Makefile src/Makefile benchmarks/Makefile conformance/Makefile protobuf.pc protobuf-lite.pc])
+ AC_OUTPUT
+diff -Naur protobuf-3.3.0.orig/src/Makefile.am protobuf-3.3.0/src/Makefile.am
+--- protobuf-3.3.0.orig/src/Makefile.am	2017-05-01 20:04:35.549841471 -0700
++++ protobuf-3.3.0/src/Makefile.am	2017-05-01 20:06:46.307191948 -0700
+@@ -748,11 +748,8 @@
+                  protobuf-lite-test test_plugin protobuf-lite-arena-test \
+                  no-warning-test $(GZCHECKPROGRAMS)
+ protobuf_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \
+-                      ../gmock/gtest/lib/libgtest.la              \
+-                      ../gmock/lib/libgmock.la                    \
+-                      ../gmock/lib/libgmock_main.la
+-protobuf_test_CPPFLAGS = -I$(srcdir)/../gmock/gtest/include \
+-                         -I$(srcdir)/../gmock/include
++                      -L/usr/lib -lgmock -lgmock_main -lgtest
++protobuf_test_CPPFLAGS = -I/usr/include
+ # Disable optimization for tests unless the user explicitly asked for it,
+ # since test_util.cc takes forever to compile with optimization (with GCC).
+ # See configure.ac for more info.
+@@ -837,11 +834,8 @@
+ # Run cpp_unittest again with PROTOBUF_TEST_NO_DESCRIPTORS defined.
+ protobuf_lazy_descriptor_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la \
+                       libprotoc.la                                   \
+-                      ../gmock/gtest/lib/libgtest.la                 \
+-                      ../gmock/lib/libgmock.la                       \
+-                      ../gmock/lib/libgmock_main.la
+-protobuf_lazy_descriptor_test_CPPFLAGS = -I$(srcdir)/../gmock/include       \
+-                                         -I$(srcdir)/../gmock/gtest/include \
++                      -L/usr/lib -lgmock -lgmock_main -lgtest
++protobuf_lazy_descriptor_test_CPPFLAGS = -I/usr/include \
+                                          -DPROTOBUF_TEST_NO_DESCRIPTORS
+ protobuf_lazy_descriptor_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
+ protobuf_lazy_descriptor_test_SOURCES =                        \
+@@ -862,11 +856,8 @@
+ # full runtime and we want to make sure this test builds without full
+ # runtime.
+ protobuf_lite_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la \
+-                           ../gmock/gtest/lib/libgtest.la      \
+-                           ../gmock/lib/libgmock.la            \
+-                           ../gmock/lib/libgmock_main.la
+-protobuf_lite_test_CPPFLAGS= -I$(srcdir)/../gmock/include \
+-                             -I$(srcdir)/../gmock/gtest/include
++                      -L/usr/lib -lgmock -lgmock_main -lgtest
++protobuf_lite_test_CPPFLAGS = -I/usr/include
+ protobuf_lite_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
+ protobuf_lite_test_SOURCES =                                           \
+   google/protobuf/lite_unittest.cc                                     \
+@@ -877,11 +868,8 @@
+ # gtest when building the test internally our memory sanitizer doesn't detect
+ # memory leaks (don't know why).
+ protobuf_lite_arena_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la \
+-                      ../gmock/gtest/lib/libgtest.la                 \
+-                      ../gmock/lib/libgmock.la                       \
+-                      ../gmock/lib/libgmock_main.la
+-protobuf_lite_arena_test_CPPFLAGS = -I$(srcdir)/../gmock/include       \
+-                                    -I$(srcdir)/../gmock/gtest/include
++                      -L/usr/lib -lgmock -lgmock_main -lgtest
++protobuf_lite_arena_test_CPPFLAGS = -I/usr/include
+ protobuf_lite_arena_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
+ protobuf_lite_arena_test_SOURCES =       \
+   google/protobuf/lite_arena_unittest.cc \
+@@ -890,8 +878,8 @@
+ 
+ # Test plugin binary.
+ test_plugin_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \
+-                    ../gmock/gtest/lib/libgtest.la
+-test_plugin_CPPFLAGS = -I$(srcdir)/../gmock/gtest/include
++                    -L/usr/lib -lgtest
++test_plugin_CPPFLAGS = -I/usr/include
+ test_plugin_SOURCES =                                          \
+   google/protobuf/compiler/mock_code_generator.cc              \
+   google/protobuf/testing/file.cc                              \
+@@ -920,9 +908,8 @@
+ 	echo "TEST(NoWarningTest, Empty) {}" >> no_warning_test.cc
+ 
+ no_warning_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la      \
+-                        ../gmock/gtest/lib/libgtest.la      \
+-                        ../gmock/gtest/lib/libgtest_main.la
+-no_warning_test_CPPFLAGS = -I$(srcdir)/../gmock/gtest/include
++                        -L/usr/lib -lgtest -lgtest_main
++no_warning_test_CPPFLAGS = -I/usr/include
+ no_warning_test_CXXFLAGS = $(PTHREAD_CFLAGS) $(PTHREAD_DEF) $(ZLIB_DEF) \
+                            -Wall -Werror
+ nodist_no_warning_test_SOURCES = no_warning_test.cc $(protoc_outputs)

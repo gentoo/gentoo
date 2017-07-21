@@ -6,6 +6,18 @@
 
 # SECTION: Unmask
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is supported on amd64
+-libvirt
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~amd64
+-firebird
+
 # cilk has been ported to this arch.
 -cilk
 
@@ -80,10 +92,6 @@
 # 2010/05/03 - Alex Legler <a3li@gentoo.org>
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
-
-# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
-# Add support for JRuby targets where jruby is available
-# -ruby_targets_jruby
 
 # 2011/10/21 - Hans de Graaff <graaff@gentoo.org>
 # Add support for Rubinius targets where rbx is available

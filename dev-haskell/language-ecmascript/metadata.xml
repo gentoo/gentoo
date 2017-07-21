@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -11,4 +11,7 @@
 		sophisticated tools.
 		This package used to be called WebBits.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jswebtools/language-ecmascript</remote-id>
+	</upstream>
 </pkgmetadata>

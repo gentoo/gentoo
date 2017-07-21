@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}"
 fi
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="acl caps debug doc gconf ldap nss pcre perl python rpm selinux sce sql test xattr"
 #RESTRICT="test"

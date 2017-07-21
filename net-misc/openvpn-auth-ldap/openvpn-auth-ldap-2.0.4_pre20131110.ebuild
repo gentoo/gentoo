@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-RDEPEND="net-misc/openvpn
+RDEPEND="net-vpn/openvpn
 	net-nds/openldap"
 DEPEND="dev-util/re2c
 	sys-devel/gcc[objc]

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,10 +15,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE="colorio ffmpeg gif jpeg2k opencv opengl python qt4 raw ssl +truetype"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" #431412
 
-RDEPEND="dev-libs/boost:=[python?]
+RDEPEND="
+	dev-libs/boost:=
 	dev-libs/pugixml:=
 	media-libs/ilmbase:=
 	media-libs/libpng:0=
@@ -39,7 +41,10 @@ RDEPEND="dev-libs/boost:=[python?]
 		virtual/glu
 		virtual/opengl
 	)
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
+	)
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

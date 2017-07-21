@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnustep-base eutils prefix toolchain-funcs
+inherit gnustep-base prefix toolchain-funcs
 
 DESCRIPTION="GNUstep Makefile Package"
 HOMEPAGE="http://www.gnustep.org"
@@ -32,8 +32,8 @@ pkg_setup() {
 		# Find version in active gcc
 		for ver in {2..5};
 		do
-			if $(tc-getCC) -Werror -Wl,-l:libobjc.so.${ver} \
-				"${FILESDIR}"/testlibobjc.m -o /dev/null 2> /dev/null;
+			if $(tc-getCC) -Werror -Wl,-l:libobjc.so.${ver} -x objective-c \
+				- <<<$'int main() {}' -o /dev/null 2> /dev/null;
 			then
 				libobjc_version=libobjc.so.${ver}
 			fi

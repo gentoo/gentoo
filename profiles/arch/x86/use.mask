@@ -4,16 +4,24 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is supported on x86
+-libvirt
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~x86
+-firebird
+
 # cilk has been ported to this arch.
 -cilk
 
 # Mike Gilbert <floppym@gentoo.org (19 Oct 2014)
 # sys-libs/libapparmor
 -apparmor
-
-# Alexey Shvetsov <alexxy@gentoo.org> (08 Apr 2014)
-# Cuda works here
--cuda
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # PyPy is keyworded on this arch.
@@ -87,10 +95,6 @@
 # 2010/05/03 - Alex Legler <a3li@gentoo.org>
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
-
-# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
-# Add support for JRuby targets where jruby is available
-#-ruby_targets_jruby
 
 # pbbuttonsd and macbook for KDE and pbuttonsd it
 #-pbbuttonsd
