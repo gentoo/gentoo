@@ -61,6 +61,7 @@ src_configure() {
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
 		--enable-smack \
 		--disable-kdbus \
+		--disable-lto \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \
