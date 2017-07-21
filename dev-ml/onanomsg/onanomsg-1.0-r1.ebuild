@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ml/ppx_deriving:=[ocamlopt?]
 	dev-ml/ocaml-containers:=[ocamlopt?]
 	dev-ml/ocaml-bigstring:=
-	lwt? ( dev-ml/lwt:=[ocamlopt?] )
+	lwt? ( dev-ml/lwt:=[ocamlopt(+)?] )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit )
