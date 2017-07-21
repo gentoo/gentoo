@@ -2627,7 +2627,7 @@ app-vim/pyclewn 2.0.1 2.1-r1: Pyclewn allows using vim as a front end to a debug
 app-vim/pydiction 1.2.3 1.2.3-r1: vim plugin: tab-complete your Python code
 app-vim/pydoc 2.0: vim plugin: integrates python documentation view and search tool
 app-vim/pytest 1.1.4: vim plugin: run tests with py.test from within vim
-app-vim/python-mode 0.6.18-r3 0.6.18-r4: Provide python code looking for bugs, refactoring and other useful things
+app-vim/python-mode 0.6.18-r3 0.6.18-r4 0.9.0: Provide python code looking for bugs, refactoring and other useful things
 app-vim/rails 5.1 5.2: vim plugin: aids developing Ruby on Rails applications
 app-vim/rainbow_parentheses 1.0: vim plugin: Colour parentheses to differentiate nest levels
 app-vim/recover 0.18: vim plugin: show differences for recovered files
