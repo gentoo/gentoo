@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
-SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.7.0-sharedlibs.patch
+	"${FILESDIR}"/${PN}-4.12.0-sharedlibs.patch
 	"${FILESDIR}"/${PN}-4.7.0-libxcmd-link.patch
 	"${FILESDIR}"/${PN}-4.9.0-underlinking.patch
 )
