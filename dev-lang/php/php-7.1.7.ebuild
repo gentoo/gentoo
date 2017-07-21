@@ -93,7 +93,7 @@ COMMON_DEPEND="
 	)
 	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
 	truetype? ( =media-libs/freetype-2* )
-	unicode? ( dev-libs/oniguruma )
+	unicode? ( dev-libs/oniguruma:= )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
 	webp? ( media-libs/libwebp )
 	xml? ( >=dev-libs/libxml2-2.6.8 )
