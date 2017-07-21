@@ -6971,7 +6971,7 @@ dev-perl/prefork 1.40.0-r2: Optimized module loading for forking or non-forking 
 dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.350.0: provides '$self' in OO code
-dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
+dev-perl/strictures 2.0.1 2.0.2 2.0.3: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
