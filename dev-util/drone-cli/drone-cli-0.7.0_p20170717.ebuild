@@ -4,7 +4,7 @@
 EAPI=6
 
 EGO_PN="github.com/drone/drone-cli"
-EGIT_COMMIT="9d8dd90e5ba860eecf39972f46c7d0219e575442"
+EGIT_COMMIT="4a5e8a2acb2c82c5a4e6b96b6849f59962dfb668"
 
 inherit golang-build golang-vcs-snapshot
 

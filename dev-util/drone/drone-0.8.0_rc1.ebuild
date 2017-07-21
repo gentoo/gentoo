@@ -4,8 +4,10 @@
 EAPI=6
 
 EGO_PN="github.com/drone/drone"
-EGIT_COMMIT="3ed811644f00ebe8e6ef63dc2c10fb6aae84ae84"
-EGO_VENDOR=( "github.com/drone/drone-ui 2910d0ee662816a2463d31f0988b1ecccd0410b5" )
+EGIT_COMMIT="eaa6d41699585e09bcc13651671480d0abdf684e"
+EGO_VENDOR=( "github.com/drone/drone-ui 4fbdb1a34a3fab8fa0d67507f62d5725fe73c298"
+	"github.com/golang/protobuf 0a4f71a498b7c4812f64969510bcb4eca251e33a"
+	"golang.org/x/net ab5485076ff3407ad2d02db054635913f017b0ed github.com/golang/net" )
 
 inherit golang-build golang-vcs-snapshot user
 
@@ -32,18 +34,18 @@ pkg_setup() {
 
 src_compile() {
 	pushd src || die
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"\
-		go install -ldflags "-extldflags '-static' -X github.com/drone/drone/version.VersionDev=build.${EGIT_COMMIT:0:7}" ${EGO_PN}/drone || die
+	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" go build -ldflags "-extldflags '-static' -X github.com/drone/drone/version.VersionDev=build.${PV}.${EGIT_COMMIT:0:7}" -o release/drone-server ${EGO_PN}/cmd/drone-server || die
+	GOPATH="${WORKDIR}/${P}" go build -ldflags "-X github.com/drone/drone/version.VersionDev=build.${PV}.${EGIT_COMMIT:0:7}" -o release/drone-agent ${EGO_PN}/cmd/drone-agent || die
 	popd || die
 }
 
 src_install() {
-	newbin bin/drone drone-server
+	dobin src/release/drone-{agent,server}
 	dodoc src/github.com/drone/drone/README.md
 	keepdir /var/log/drone /var/lib/drone
 	fowners -R ${PN}:${PN} /var/log/drone /var/lib/drone
-	newinitd "${FILESDIR}"/drone.initd drone
-	newconfd "${FILESDIR}"/drone.confd drone
+	newinitd "${FILESDIR}"/drone-server.initd drone-server
+	newconfd "${FILESDIR}"/drone-server.confd drone-server
 	newinitd "${FILESDIR}"/drone-agent.initd drone-agent
 	newconfd "${FILESDIR}"/drone-agent.confd drone-agent
 }
