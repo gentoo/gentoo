@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
+# Mask USE flag which has limited keywords for app-crypt/argon2
+dev-lang/php argon2
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (18 Jul 2017)
 # Requires unavailable >=dev-lang/mujs-1.0.0, see Gentoo bug 621820.
 media-video/mpv javascript
