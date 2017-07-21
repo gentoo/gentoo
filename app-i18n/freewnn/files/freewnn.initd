@@ -1,22 +1,16 @@
 #!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/Wnn4/jserver"
 
 depend() {
-	use net
-}
-
-start() {
-	ebegin "Starting up ${SERVICE}"
-	/usr/bin/Wnn4/jserver &>/dev/null
-	if [ $? -eq 15 ]; then
-		true;
-	else
-		false;
-	fi
-	eend 0
+	use logger
+	need net
 }
 
 stop() {
-	ebegin "Stopping ${SERVICE}"
-	/usr/bin/Wnn4/wnnkill &> /dev/null
-	eend $? "Failed to stop ${SERVICE}"
+	ebegin "Stopping ${name:-${RC_SVCNAME}}"
+	/usr/bin/Wnn4/wnnkill
+	eend ${?}
 }

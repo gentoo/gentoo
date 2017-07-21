@@ -1,6 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded java
+sci-libs/gdal mdb
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded lapack
+sci-libs/gdal armadillo
+
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.

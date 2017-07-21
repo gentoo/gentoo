@@ -15,6 +15,7 @@ fma4 - Use the Fused Multiply Add 4 instruction set
 mmx - Use the MMX instruction set
 mmxext - Use the Extended MMX instruction set (a subset of SSE) ([mmxext] or [sse] in cpuinfo)
 padlock - Use VIA padlock instructions ([phe] in cpuinfo)
+pclmul - Use Carry-less Multiplication instructions ([pclmulqdq] in cpuinfo)
 popcnt - Enable popcnt instruction support ([abm] or [popcnt] in cpuinfo)
 sse - Use the SSE instruction set
 sse2 - Use the SSE2 instruction set

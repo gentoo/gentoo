@@ -25,7 +25,6 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	app-crypt/gpgme
-	sys-devel/autoconf:2.63
 	sys-fs/cryptsetup
 	test? ( dev-libs/nss[utils] )
 	"

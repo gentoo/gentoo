@@ -145,12 +145,12 @@ DEPEND="${COMMON_DEPEND}
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
+	|| ( cli cgi fpm apache2 embed )
 	cli? ( ^^ ( readline libedit ) )
 	truetype? ( gd )
 	vpx? ( gd )
 	cjk? ( gd )
 	exif? ( gd )
-
 	xpm? ( gd )
 	gd? ( zlib )
 	simplexml? ( xml )
@@ -162,6 +162,7 @@ REQUIRED_USE="
 	ldap-sasl? ( ldap )
 	mhash? ( hash )
 	phar? ( hash )
+	recode? ( !imap !mysql !mysqli !libmysqlclient )
 	libmysqlclient? ( || (
 		mysql
 		mysqli
@@ -170,10 +171,8 @@ REQUIRED_USE="
 
 	qdbm? ( !gdbm )
 	readline? ( !libedit )
-	recode? ( !imap !mysql !mysqli )
 	sharedmem? ( !threads )
-
-	!cli? ( !cgi? ( !fpm? ( !apache2? ( !embed? ( cli ) ) ) ) )"
+"
 
 PHP_MV="$(get_major_version)"
 

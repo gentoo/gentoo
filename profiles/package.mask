@@ -29,6 +29,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
+# Old mono/dotnet packages (used on GNOME2 stack)
+# also some deprecated forks used for monodevelop
+# awhile they are very unstable they will live in dotnet overlay
+gnome-extra/docky
+dev-dotnet/gnome-desktop-sharp
+dev-dotnet/gtksourceview-sharp
+dev-dotnet/rsvg-sharp
+dev-dotnet/vte-sharp
+dev-dotnet/wnck-sharp
+dev-dotnet/xdt-for-monodevelop
+dev-dotnet/nuget
+dev-dotnet/referenceassemblies-pcl
+
+# Ian Stakenvicius <axs@gentoo.org> (19 Jul 2017)
+# Mask spidermonkey:52 as it is a self-rolled release, no official
+# release has been rolled.  Is only committed to support development
+# versions of gjs.  Will unmask when gnome-3.26 is ready for testing
+# or when upstream releases an official tarball.
+dev-lang/spidermonkey:52
+
 # Matt Turner <mattst88@gentoo.org> (16 Jul 2017)
 # Header package for removed x11-libs/libXevie. No dependencies. Removal in a
 # month (#615314)
@@ -183,13 +204,6 @@ app-admin/kedpm
 # Needs migration to pycryptodome, also relies on many other dead libs
 # (#611584). Removal in a month.
 app-misc/relevation
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Dead, unmaintained and with multiple bugs (#614810, #611028). Removal in a
-# month.
-net-dialup/wvdial
-net-libs/wvstreams
-net-dialup/qtwvdialer
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Buggy and needs someone to take care of trying to bump it (#614860).
@@ -407,12 +421,6 @@ www-apps/jekyll-paginate
 # Masked for removal in 30 days.
 dev-java/jdbc-jaybird
 
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2017)
-# No port to kf5 as nsplugin support is dropped everywhere.
-# No more kdelibs-4 based kparts in tree to feed it with.
-# Masked for removal in 30 days.
-www-plugins/kpartsplugin
-
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
 # People using VMware in Gentoo should switch to Gentoo's VMware overlay
@@ -421,16 +429,6 @@ app-emulation/vmware-workstation
 app-emulation/vmware-player
 app-emulation/vmware-modules
 app-emulation/vmware-tools
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
-# Not compatible with ffmpeg-3 (#589806) and needs vulnerable qtwebkit:4
-# (#620740). Removal in a month.
-net-voip/homer
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2017)
-# Dead for ages, relies on google-code for fetching, not compatible with
-# ffmpeg-3 neither with latest imagemagick (#575988). Removal in a month.
-media-sound/gejengel
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
 # Dev channel releases are only for people who are developers or want more
