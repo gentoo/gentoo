@@ -1,10 +1,10 @@
 [Unit]
-Description=Dscard unused blocks on a mounted filesystem.
+Description=Scrub btrfs filesystem, verify block checksums
 Documentation=man:fstrim
 After=fstrim.service btrfs-trim.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/share/btrfsmaintenance/btrfs-trim.sh
+ExecStart=/usr/share/btrfsmaintenance/btrfs-scrub.sh
 IOSchedulingClass=idle
 CPUSchedulingPolicy=idle

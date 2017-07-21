@@ -1,7 +1,6 @@
 [Unit]
 Description=Balance block groups on a btrfs filesystem
 Documentation=man:btrfs-balance
-ConditionACPower=Yes
 
 [Timer]
 OnCalendar=monthly

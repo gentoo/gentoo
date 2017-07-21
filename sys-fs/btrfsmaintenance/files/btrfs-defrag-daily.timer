@@ -1,7 +1,6 @@
 [Unit]
 Description=Defragment file data and/or directory metadata
 Documentation=man:btrfs-filesystem
-ConditionACPower=Yes
 
 [Timer]
 OnCalendar=daily

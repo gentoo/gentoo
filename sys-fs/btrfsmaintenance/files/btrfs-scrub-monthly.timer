@@ -1,7 +1,6 @@
 [Unit]
 Description=Scrub btrfs filesystem, verify block checksums
 Documentation=man:btrfs-scrub
-ConditionACPower=Yes
 
 [Timer]
 OnCalendar=monthly
