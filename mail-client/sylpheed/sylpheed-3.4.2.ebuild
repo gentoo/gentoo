@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ CDEPEND="x11-libs/gtk+:2
 	crypt? ( app-crypt/gpgme )
 	ldap? ( net-nds/openldap )
 	nls? ( sys-devel/gettext )
-	oniguruma? ( dev-libs/oniguruma )
+	oniguruma? ( dev-libs/oniguruma:= )
 	pda? ( app-pda/jpilot )
 	spell? ( app-text/gtkspell:2 )
 	ssl? ( dev-libs/openssl:0 )"

@@ -18,7 +18,7 @@ CDEPEND="x11-libs/gtk+:2
 	crypt? ( app-crypt/gpgme )
 	ldap? ( net-nds/openldap )
 	nls? ( sys-devel/gettext )
-	oniguruma? ( dev-libs/oniguruma )
+	oniguruma? ( dev-libs/oniguruma:= )
 	pda? ( app-pda/jpilot )
 	spell? ( app-text/gtkspell:2 )
 	ssl? (
