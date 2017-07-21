@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils
 
@@ -22,16 +22,10 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf \
 	$(use_with audiofile ) \
-	$(use_with gcrypt libgcrypt) \
-	|| die "Configure failed!"
-}
-
-src_compile() {
-	emake || die "Make failed!"
+	$(use_with gcrypt libgcrypt)
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "install failed"
-	dodoc AUTHORS ChangeLog README
+	default
 	doman man/*.1
 }

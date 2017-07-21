@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 inherit autotools eutils
 
 DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
@@ -55,6 +55,7 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog README THANKS )
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
