@@ -5684,7 +5684,7 @@ dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interf
 dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3 3.6.2: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0 1.540.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.42.0: MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.41.0-r1 4.42.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.634.0 1.636.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0 0.50.0: create a temporary database from a DBIx::Class::Schema
@@ -14595,7 +14595,7 @@ net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.1.14 4.1.15 4.1.16: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.16 4.1.17: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
