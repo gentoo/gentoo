@@ -19,13 +19,11 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 RDEPEND=">=app-arch/snappy-1.0.2:="
-DEPEND="
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
-
 
 python_test() {
 	"${EPYTHON}" test_snappy.py -v || die "Tests fail with ${EPYTHON}"
