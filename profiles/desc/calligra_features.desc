@@ -1,13 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of CALLIGRA_FEATURES USE_EXPAND flags.
 
 # Keep it sorted.
-author - CALLIGRA_FEATURES option to build minimalistic word processor application
 braindump - CALLIGRA_FEATURES option to build mindmap note collection application
 flow - CALLIGRA_FEATURES option to build flowcharting application
-gemini - CALLIGRA_FEATURES option to build touch device friendly application
 karbon - CALLIGRA_FEATURES option to build vector image editor
 kexi - CALLIGRA_FEATURES option to build database manager
 krita - CALLIGRA_FEATURES option to build raster image editor
