@@ -17811,7 +17811,7 @@ sys-fs/vhba 20140928 20170610: Virtual (SCSI) Host Bus Adapter kernel module for
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.6: xfs dump/restore utilities
-sys-fs/xfsprogs 4.5.0 4.8.0 4.9.0 4.10.0 4.11.0: xfs filesystem utilities
+sys-fs/xfsprogs 4.5.0 4.9.0 4.11.0 4.12.0: xfs filesystem utilities
 sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
