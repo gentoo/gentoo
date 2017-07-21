@@ -11634,7 +11634,7 @@ gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu 
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.22.3 3.24.1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.22.2 3.22.2-r1 3.24.2: Gnome Settings Daemon
-gnome-base/gnome-shell 3.22.3 3.22.3-r2 3.24.2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.22.3 3.22.3-r2 3.24.3: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.22.0 3.24.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.30.4: Virtual filesystem implementation for gio
@@ -15346,7 +15346,7 @@ net-misc/ofono 1.16 1.17 1.18 1.19 1.20: Open Source mobile telephony (GSM/UMTS)
 net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.0.2 0.9.6 0.9.6.1: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.1_p2: A robust, high-performance CORBA 2 ORB
-net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
+net-misc/openntpd 6.0_p1 6.2_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/openssh 7.3_p1-r7 7.3_p1-r8 7.4_p1 7.5_p1 7.5_p1-r1 7.5_p1-r2: Port of OpenBSD's free SSH release
@@ -19498,7 +19498,7 @@ x11-wm/marco 1.12.1 1.12.1-r1 1.14.2-r1 1.16.0-r1 1.18.1: MATE default window ma
 x11-wm/matwm2 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.8.5 3.0.5 3.2.0 3.2.0-r1 3.4.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.22.4-r1 3.24.3: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20 2.0.20-r1: Small and fast window manager
