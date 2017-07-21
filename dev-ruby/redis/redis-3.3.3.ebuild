@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+EAPI=6
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 MY_P="redis-rb-${PV}"
 RUBY_FAKEGEM_RECIPE_TEST="rake"
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc test"
 
-DEPEND="test? ( dev-db/redis )"
+DEPEND="test? ( >=dev-db/redis-3.2.0 )"
 
 RUBY_S="${MY_P}"
 
