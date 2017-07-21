@@ -2042,6 +2042,8 @@ dev-libs/fstrm:utils - Build fstrm utility programs
 dev-libs/gecode:gist - Enable Gist, the Gecode Interactive Search Tool
 dev-libs/gecode:gmp - Enable trigonometric and transcendental float constraints
 dev-libs/gf2x:bindist - Disable automatic fine-tuning to local processor features like pclmul or sse2.
+dev-libs/gf2x:custom-tune - Extra long compile time for tuning hardware specific low-level routines
+dev-libs/gf2x:fft - Build an FFT API for multiplication of 2 polynomials over GF(2)
 dev-libs/glib:dbus - Enable dependencies required by glib libraries using dbus service to manage settings saving
 dev-libs/glib:mime - Pull in shared MIME database that many glib-based applications require at runtime to detect or open files. Warning: do not disable this flag unless installing on a headless server.
 dev-libs/glib:systemtap - Build support for profiling and tracing using dev-util/systemtap
