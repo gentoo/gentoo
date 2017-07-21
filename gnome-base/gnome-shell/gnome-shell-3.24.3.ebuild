@@ -169,7 +169,7 @@ pkg_postinst() {
 	if ! has_version "media-libs/mesa[llvm]"; then
 		elog "llvmpipe is used as fallback when no 3D acceleration"
 		elog "is available. You will need to enable llvm USE for"
-		elog "media-libs/mesa."
+		elog "media-libs/mesa if you do not have hardware 3D setup."
 	fi
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=563084
