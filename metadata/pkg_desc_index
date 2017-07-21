@@ -14654,7 +14654,7 @@ net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.20.0_p05 2.3.5: HTTP read-only file system for distributing software
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/docker-volume-netshare 0.33_p20170318 0.34: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
-net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
+net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 2.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/minio 0_pre20170613: An Amazon S3 compatible object storage server
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.8 3.1.10 3.1.11: Open Source AFP server
@@ -15387,7 +15387,7 @@ net-misc/r8168 8.044.02: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5 3.6.9 3.6.10: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.15-r1 2.16 2.17: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
-net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
+net-misc/rancid-git 2.3.8: New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rclone 1.36 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
@@ -17825,7 +17825,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 3.12.52-r1 3.12.66 3.12.68-r1 3.12.72 3.12.9999 4.1.35 4.1.37 4.1.38 4.1.38-r1 4.1.42 4.4.52 4.4.75 4.4.76 4.4.77 4.4.78 4.9.6-r1 4.9.16 4.9.34 4.9.35 4.9.36 4.9.37 4.9.38 4.9.39 4.11.7 4.11.8 4.11.9 4.11.10 4.11.11 4.12.0 4.12.1 4.12.2: Full sources including the Gentoo patchset for the 4.12 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 3.12.52-r1 3.12.66 3.12.68-r1 3.12.72 3.12.9999 4.1.35 4.1.37 4.1.38 4.1.38-r1 4.1.42 4.4.52 4.4.75 4.4.76 4.4.77 4.4.78 4.9.6-r1 4.9.16 4.9.34 4.9.35 4.9.36 4.9.37 4.9.38 4.9.39 4.11.7 4.11.8 4.11.9 4.11.10 4.11.11 4.11.12 4.12.0 4.12.1 4.12.2: Full sources including the Gentoo patchset for the 4.12 kernel tree
 sys-kernel/git-sources 4.13_rc1: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
