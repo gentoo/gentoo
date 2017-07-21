@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
+# Masked due to serious regression that introduces widespread data
+# corruption when storing data in blobs. Masked, because any code
+# that is written to use this version is now dependent on this version
+# and older versions will corrupt your code instead.
+# However, any existing packages should not use this version.
+# See: https://github.com/perl5-dbi/DBD-mysql/issues/117
+=dev-perl/DBD-mysql-4.42.0
+
 # Brian Evans <grknight@gentoo.org> (21 Jul 2017)
 # Mask initial beta of PHP 7.2 for further testing
 >=dev-lang/php-7.2.0_beta1
