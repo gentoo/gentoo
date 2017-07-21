@@ -1,5 +1,5 @@
---- drivers/pndriv.c
-+++ drivers/pndriv.c
+--- a/drivers/pndriv.c
++++ b/drivers/pndriv.c
 @@ -222,7 +222,7 @@
  	return;
    }
