@@ -14,17 +14,19 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples test"
+IUSE="examples test"
 
 RDEPEND="
-	>=dev-python/llvmlite-0.18[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.7[${PYTHON_USEDEP}]
+	>=dev-python/llvmlite-0.19[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( virtual/python-singledispatch[${PYTHON_USEDEP}] )
+	virtual/python-funcsigs[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
-# doc building highly broken
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (	dev-python/pytest[${PYTHON_USEDEP}] )
+"
 
 python_test() {
 	cd "${BUILD_DIR}"/lib* || die
@@ -32,6 +34,10 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
+	if use examples; then
+		insinto /usr/share/doc/${PF}
+		doins -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }
