@@ -20,7 +20,8 @@ DEPEND="dev-python/pyserial
 	dev-python/wxpython:*
 	dev-python/pyglet
 	dev-python/dbus-python
-	media-gfx/cairosvg"
+	media-gfx/cairosvg
+	dev-python/numpy"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
