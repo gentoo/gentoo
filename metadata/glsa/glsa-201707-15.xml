@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201707-15">
+  <title>Adobe Flash Player: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobeflashplayer</product>
+  <announced>2017-07-21</announced>
+  <revised>2017-07-21: 1</revised>
+  <bug>621680</bug>
+  <bug>624620</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">26.0.0.137</unaffected>
+      <vulnerable range="lt">26.0.0.137</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-26.0.0.137"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3075">CVE-2017-3075</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3076">CVE-2017-3076</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3077">CVE-2017-3077</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3078">CVE-2017-3078</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3079">CVE-2017-3079</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3080">CVE-2017-3080</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3081">CVE-2017-3081</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3082">CVE-2017-3082</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3083">CVE-2017-3083</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3084">CVE-2017-3084</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3099">CVE-2017-3099</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3100">CVE-2017-3100</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-07-16T01:48:22Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-07-21T23:12:54Z">b-man</metadata>
+</glsa>
