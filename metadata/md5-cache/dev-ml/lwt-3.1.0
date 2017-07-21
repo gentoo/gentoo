@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=>=dev-lang/ocaml-4.02:= dev-ml/result:= dev-ml/ocaml-migrate-parsetree:= libev? ( dev-libs/libev ) camlp4? ( dev-ml/camlp4:= ) dev-ml/cppo dev-ml/findlib dev-ml/jbuilder dev-ml/opam
+DESCRIPTION=Cooperative light-weight thread library for OCaml
+EAPI=5
+HOMEPAGE=http://ocsigen.org/lwt
+IUSE=+camlp4 +libev
+KEYWORDS=~amd64 ~arm64 ~x86-fbsd
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4.02:= dev-ml/result:= dev-ml/ocaml-migrate-parsetree:= libev? ( dev-libs/libev ) camlp4? ( dev-ml/camlp4:= ) !<www-servers/ocsigen-1.1
+SLOT=0/3.1.0
+SRC_URI=https://github.com/ocsigen/lwt/archive/3.1.0.tar.gz -> lwt-3.1.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
+_md5_=a083ac2d66cc0cabd05db9ab0c0703b9
