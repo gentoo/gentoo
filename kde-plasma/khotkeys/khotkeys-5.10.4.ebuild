@@ -44,3 +44,5 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	x11-proto/xproto
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake-3.9.patch" )
