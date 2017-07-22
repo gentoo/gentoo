@@ -14059,6 +14059,7 @@ media-video/bino 1.6.1-r2: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/blinkentools 2.9: blinkentools is a set of commandline utilities related to Blinkenlights
+media-video/bluray_info 1.0.0: Display information about a Blu-ray disc
 media-video/camorama 0.19-r2: A webcam application featuring various image filters
 media-video/ccextractor 0.59 0.68 0.69 0.85: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites

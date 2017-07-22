@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=>=media-libs/libbluray-1.0.0
+DESCRIPTION=Display information about a Blu-ray disc
+EAPI=6
+HOMEPAGE=https://github.com/beandog/bluray_info
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libbluray-1.0.0
+SLOT=0
+SRC_URI=mirror://sourceforge/bluray-info/bluray_info-1.0.0.tar.gz
+_eclass_exported_funcs=-
+_md5_=00032e0948ee070e1046db77695582b7
