@@ -1,45 +1,35 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils webapp
 
-#BACKPORTS="4f6ac2a60b"
 # Release version
 MY_PV="${PV%_p*}"
 MY_P="mythweb-${MY_PV}"
 
 DESCRIPTION="PHP scripts intended to manage MythTV from a web browser"
-HOMEPAGE="http://www.mythtv.org"
+HOMEPAGE="https://www.mythtv.org"
+SRC_URI="https://github.com/MythTV/mythweb/archive/v${MY_PV}.tar.gz -> mythweb-${MY_PV}.tar.gz"
+
 LICENSE="GPL-2"
-SRC_URI="https://github.com/MythTV/mythweb/archive/v${MY_PV}.tar.gz -> mythweb-${MY_PV}.tar.gz
-	${BACKPORTS:+https://dev.gentoo.org/~cardoe/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
-IUSE=""
 KEYWORDS="~amd64 ~ppc ~x86"
+IUSE=""
 
-RDEPEND="dev-lang/php:*[json,mysql,session,posix]
-	virtual/httpd-php:*
-	dev-perl/DBI
+RDEPEND="
+	dev-lang/php:*[json,mysql,session,posix]
 	dev-perl/DBD-mysql
+	dev-perl/DBI
 	dev-perl/HTTP-Date
-	dev-perl/Net-UPnP"
-
+	dev-perl/Net-UPnP
+	virtual/httpd-php:*
+"
 DEPEND="${RDEPEND}"
 
 need_httpd_cgi
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	cd "${S}"/../
-
-	[[ -n ${BACKPORTS} ]] && \
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/../patches" \
-			epatch
-
-	eapply_user
-}
 
 src_configure() {
 	:

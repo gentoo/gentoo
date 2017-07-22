@@ -6,134 +6,135 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
 # git diff --relative=mythtv v0.27.6.. > ~/mythtv-0.27.6/patches/mythtv.patch
-BACKPORTS="3543e74534a39c150e956e2f07f50ed9f873a84e"
+BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit flag-o-matic multilib eutils python-single-r1 user systemd vcs-snapshot
+inherit flag-o-matic multilib eutils python-single-r1 qmake-utils user systemd vcs-snapshot
 
 MYTHTV_BRANCH="fixes/0.28"
 
 DESCRIPTION="Homebrew PVR project"
-HOMEPAGE="http://www.mythtv.org"
+HOMEPAGE="https://www.mythtv.org"
 SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0/${PV}"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
+SLOT="0/${PV}"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
-IUSE="alsa altivec libass autostart bluray cec crystalhd debug dvb dvd \
-egl fftw +hls ieee1394 jack lcd lirc +mythlogserver perl pulseaudio python systemd +theora \
+IUSE="alsa altivec autostart bluray cec crystalhd debug dvb dvd egl fftw +hls \
+ieee1394 jack lcd libass lirc +mythlogserver perl pulseaudio python systemd +theora \
 vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
 
-REQUIRED_USE="
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluray? ( xml )
-	python? ( ${PYTHON_REQUIRED_USE} )
 	theora? ( vorbis )"
 
 COMMON="
-	>=media-libs/freetype-2.0:=
+	dev-libs/glib:2
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtscript:5
+	dev-qt/qtsql:5[mysql]
+	dev-qt/qtopengl:5
+	dev-qt/qtwebkit:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	media-gfx/exiv2:=
+	media-libs/freetype:2
+	media-libs/taglib
 	>=media-sound/lame-3.93.1
-	sys-libs/zlib:=
-	x11-libs/libX11:=
-	x11-libs/libXext:=
-	x11-libs/libXinerama:=
-	x11-libs/libXv:=
-	x11-libs/libXrandr:=
-	x11-libs/libXxf86vm:=
-	dev-qt/qtcore:5=
-	dev-qt/qtdbus:5=
-	dev-qt/qtgui:5=
-	dev-qt/qtscript:5=
-	dev-qt/qtsql:5=[mysql]
-	dev-qt/qtopengl:5=
-	dev-qt/qtwebkit:5=
-	x11-misc/wmctrl:=
+	sys-libs/zlib
 	virtual/mysql
-	virtual/opengl:=
-	alsa? ( >=media-libs/alsa-lib-1.0.24:= )
+	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXinerama
+	x11-libs/libXv
+	x11-libs/libXrandr
+	x11-libs/libXxf86vm
+	x11-misc/wmctrl
+	alsa? ( >=media-libs/alsa-lib-1.0.24 )
 	bluray? (
 		dev-libs/libcdio:=
 		media-libs/libbluray:=
 		sys-fs/udisks:0
 	)
-	cec? ( dev-libs/libcec:= )
+	cec? ( dev-libs/libcec )
 	dvb? (
-		media-libs/libdvb:=
-		virtual/linuxtv-dvb-headers:=
+		media-libs/libdvb
+		virtual/linuxtv-dvb-headers
 	)
 	dvd? (
 		dev-libs/libcdio:=
 		sys-fs/udisks:0
 	)
-	egl? ( media-libs/mesa:=[egl] )
+	egl? ( media-libs/mesa[egl] )
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
-		media-libs/faac:=
-		<media-libs/libvpx-1.6.0:=
+		media-libs/faac
+		<media-libs/libvpx-1.7.0:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
-		>=sys-libs/libraw1394-1.2.0:=
-		>=sys-libs/libavc1394-0.5.3:=
-		>=media-libs/libiec61883-1.0.0:=
+		>=media-libs/libiec61883-1.0.0
+		>=sys-libs/libavc1394-0.5.3
+		>=sys-libs/libraw1394-1.2.0
 	)
 	jack? ( media-sound/jack-audio-connection-kit )
 	lcd? ( app-misc/lcdproc )
 	libass? ( >=media-libs/libass-0.9.11:= )
 	lirc? ( app-misc/lirc )
 	perl? (
+		>=dev-perl/libwww-perl-5
 		dev-perl/DBD-mysql
-		dev-perl/Net-UPnP
-		dev-perl/LWP-Protocol-https
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-INET6
-		>=dev-perl/libwww-perl-5
+		dev-perl/LWP-Protocol-https
+		dev-perl/Net-UPnP
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/mysql-python
 		dev-python/lxml
+		dev-python/mysql-python
 		dev-python/urlgrabber
 	)
-	theora? ( media-libs/libtheora:= media-libs/libogg:= )
-	vaapi? ( x11-libs/libva:=[opengl] )
-	vdpau? ( x11-libs/libvdpau:= )
-	vorbis? ( >=media-libs/libvorbis-1.0:= media-libs/libogg:= )
-	xml? ( >=dev-libs/libxml2-2.6.0:= )
-	xvid? ( >=media-libs/xvid-1.1.0:= )
-	!media-tv/mythtv-bindings
-	!x11-themes/mythtv-themes
-	media-libs/taglib:=
-	dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )
+	theora? ( media-libs/libtheora media-libs/libogg )
+	vaapi? ( x11-libs/libva[opengl] )
+	vdpau? ( x11-libs/libvdpau )
+	vorbis? ( >=media-libs/libvorbis-1.0 media-libs/libogg )
+	xml? ( >=dev-libs/libxml2-2.6.0 )
+	xvid? ( >=media-libs/xvid-1.1.0 )
 	zeroconf? (
-	        dev-libs/openssl:0=
+		dev-libs/openssl:0=
 		net-dns/avahi[mdnsresponder-compat]
 	)
 "
-
 RDEPEND="${COMMON}
+	!media-tv/mythtv-bindings
+	!x11-themes/mythtv-themes
 	media-fonts/corefonts
 	media-fonts/dejavu
 	media-fonts/liberation-fonts
 	x11-apps/xinit
 	autostart? (
 		net-dialup/mingetty
-		x11-wm/evilwm
 		x11-apps/xset
+		x11-wm/evilwm
 	)
-	dvd? ( media-libs/libdvdcss:= )
+	dvd? ( media-libs/libdvdcss )
 	xmltv? ( >=media-tv/xmltv-0.5.43 )
-	"
-
+"
 DEPEND="${COMMON}
 	dev-lang/yasm
-	x11-proto/xineramaproto
 	x11-proto/xf86vidmodeproto
-	"
+	x11-proto/xineramaproto
+"
 
 S="${WORKDIR}/${P}/mythtv"
 
@@ -157,8 +158,6 @@ src_prepare() {
 	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/EXPORTED_VERSION
 
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
-
-#	epatch "${FILESDIR}/libdir-27.patch"
 
 	epatch_user
 }
@@ -264,7 +263,7 @@ src_configure() {
 		--extra-cflags="${CFLAGS}" \
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
-		--qmake="/usr/lib/qt5/bin/qmake" \
+		--qmake=$(qt5_get_bindir)/qmake \
 		${myconf} || die "configure died"
 }
 
