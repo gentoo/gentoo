@@ -19477,7 +19477,7 @@ x11-wm/awesome 3.5.6-r2 3.5.7 3.5.8 3.5.9 4.0 4.0-r1 4.1 9999: A dynamic floatin
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.8.8-r1 0.8.9 0.9 0.9.1 0.9.2: Tiling window manager based on binary space partitioning
 x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
-x11-wm/compiz-fusion 0.8.8 0.8.8-r1: Compiz Fusion (meta)
+x11-wm/compiz-fusion 0.8.8-r1: Compiz Fusion (meta)
 x11-wm/ctwm 3.7 3.8a-r1 3.8.2 4.0.1: A clean, light window manager
 x11-wm/cwm 5.1 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1 6.1-r1 9999: a dynamic window manager for X11
