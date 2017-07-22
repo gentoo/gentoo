@@ -2273,16 +2273,6 @@ developers and volunteer mentors.</description>
     </member>
   </project>
   <project>
-    <email>mythtv@gentoo.org</email>
-    <name>MythTV</name>
-    <url>https://wiki.gentoo.org/wiki/Project:MythTV</url>
-    <description>Maintains packages related to Myth TV and associated utilities.</description>
-    <member>
-      <email>cardoe@gentoo.org</email>
-      <name>Doug Goldstein</name>
-    </member>
-  </project>
-  <project>
     <email>net-mail@gentoo.org</email>
     <name>Net-Mail</name>
     <url>https://wiki.gentoo.org/wiki/Project:Net-Mail</url>
@@ -4105,7 +4095,6 @@ developers and volunteer mentors.</description>
     <name>Gentoo Video project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Video</url>
     <description>The Video team strives to provide users with the best multimedia experience through providing encoding tools and media players. We do so by maintaining various video based applications including MPlayer, Xine, and Transcode.</description>
-    <subproject ref="mythtv@gentoo.org"/>
     <subproject ref="vdr@gentoo.org"/>
     <member>
       <email>aballier@gentoo.org</email>
