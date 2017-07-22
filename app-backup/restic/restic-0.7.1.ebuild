@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="restic is a backup program that is fast, efficient and secure"
+DESCRIPTION="A backup program that is fast, efficient and secure"
 HOMEPAGE="https://restic.github.io/"
 SRC_URI="https://github.com/restic/restic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -12,10 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DOCS=( README.md CONTRIBUTING.md doc/Design.md doc/FAQ.md doc/index.md doc/Manual.md doc/REST_backend.md )
+DOCS=( README.rst CONTRIBUTING.md doc/design.rst doc/faq.rst doc/index.rst doc/manual.rst
+	doc/rest_backend.rst doc/development.rst doc/talks.rst doc/tutorial_aws_s3.rst doc/installation.rst )
 
 DEPEND="dev-lang/go
-	test? ( sys-fs/fuse )"
+	test? ( sys-fs/fuse:0 )"
 
 RDEPEND="sys-fs/fuse:0"
 
@@ -26,6 +27,8 @@ src_compile() {
 		-x
 		-tags release
 		-ldflags "-w -X main.version=${PV}"
+		-asmflags "-trimpath=${S}/vendor -trimpath=${S}"
+		-gcflags "-trimpath=${S}/vendor -trimpath=${S}"
 		-o "${S}"/restic cmds/restic
 	)
 
