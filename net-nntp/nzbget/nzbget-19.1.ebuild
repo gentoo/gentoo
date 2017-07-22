@@ -18,9 +18,12 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug gnutls ncurses parcheck ssl test zlib"
 
 RDEPEND="dev-libs/libxml2
-	ncurses? ( sys-libs/ncurses:0 )
+	ncurses? ( sys-libs/ncurses:0= )
 	ssl? (
-		gnutls? ( net-libs/gnutls )
+		gnutls? (
+			net-libs/gnutls:=
+			dev-libs/nettle:=
+		)
 		!gnutls? ( dev-libs/openssl:0= )
 	)
 	zlib? ( sys-libs/zlib )"
@@ -30,13 +33,21 @@ DOCS=( ChangeLog README nzbget.conf )
 
 S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
 
-pkg_pretend() {
+check_compiler() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! test-flag-CXX -std=c++14; then
 		eerror "${P} requires a C++14-capable compiler. Your current compiler"
 		eerror "does not seem to support the -std=c++14 option. Please"
 		eerror "upgrade to gcc-4.9 or an equivalent version supporting C++14."
 		die "The currently active compiler does not support -std=c++14"
 	fi
+}
+
+pkg_pretend() {
+	check_compiler
+}
+
+pkg_setup() {
+	check_compiler
 }
 
 src_prepare() {
