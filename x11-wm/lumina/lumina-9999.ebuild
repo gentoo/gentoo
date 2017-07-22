@@ -44,7 +44,6 @@ S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}/1.2.0-desktop-files.patch"
-	"${FILESDIR}/1.3.0-OS-detect.patch"
 )
 
 src_prepare(){
