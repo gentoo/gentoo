@@ -28,3 +28,10 @@ RDEPEND=""
 python_test() {
 	${EPYTHON} run_tests.py || die
 }
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	insinto /usr/share/vim/vimfiles
+	doins -r syntax-highlighting/vim/{ftdetect,indent,syntax}
+}
