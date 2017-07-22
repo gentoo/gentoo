@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-ac-docbook.patch"
+)
+
 pkg_pretend() {
 	# https://bugs.gentoo.org/419257
 	local ver=4.6
