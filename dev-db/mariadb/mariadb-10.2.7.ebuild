@@ -236,9 +236,9 @@ multilib_src_install_all() {
 
 	# Convenience links
 	einfo "Making Convenience links for mysqlcheck multi-call binary"
-	dosym "/usr/bin/mysqlcheck" "/usr/bin/mysqlanalyze"
-	dosym "/usr/bin/mysqlcheck" "/usr/bin/mysqlrepair"
-	dosym "/usr/bin/mysqlcheck" "/usr/bin/mysqloptimize"
+	dosym "mysqlcheck" "/usr/bin/mysqlanalyze"
+	dosym "mysqlcheck" "/usr/bin/mysqlrepair"
+	dosym "mysqlcheck" "/usr/bin/mysqloptimize"
 
 	# INSTALL_LAYOUT=STANDALONE causes cmake to create a /usr/data dir
 	if [[ -d "${ED}/usr/data" ]] ; then
