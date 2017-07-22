@@ -44,7 +44,6 @@ S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}/1.2.0-desktop-files.patch"
-	"${FILESDIR}/1.3.0-OS-detect.patch"
 )
 
 src_prepare(){
@@ -57,9 +56,8 @@ src_prepare(){
 }
 
 src_configure(){
-	eqmake5 PREFIX="${EPREFIX}/usr" L_BINDIR="${EPREFIX}/usr/bin" \
-		L_ETCDIR="${EPREFIX}/etc" L_LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}" CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
+	eqmake5 LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" \
+		DESTDIR="${D}" CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
 }
 
 src_install(){
