@@ -17,7 +17,7 @@ EGIT_SUBMODULES=()
 LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
+IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
