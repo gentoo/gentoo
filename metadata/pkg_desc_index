@@ -5215,7 +5215,7 @@ dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
-dev-ml/camlimages 4.2.2 4.2.3: An image manipulation library for ocaml
+dev-ml/camlimages 4.2.2 4.2.3 4.2.4: An image manipulation library for ocaml
 dev-ml/camlp4 4.04_p1 4.05_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17 7.00 7.01: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
