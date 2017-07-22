@@ -716,18 +716,16 @@ multilib_src_install() {
 
 		# install our own init scripts and systemd unit files
 		einfo "Install init scripts"
-		newinitd "${FILESDIR}"/slapd-initd-2.4.40-r2 slapd
+		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd-initd-2.4.40-r2 > "${T}"/slapd || die
+		doinitd "${T}"/slapd
 		newconfd "${FILESDIR}"/slapd-confd-2.4.28-r1 slapd
+
 		einfo "Install systemd service"
-		systemd_dounit "${FILESDIR}"/slapd.service
+		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd.service > "${T}"/slapd.service || die
+		systemd_dounit "${T}"/slapd.service
 		systemd_install_serviced "${FILESDIR}"/slapd.service.conf
 		systemd_newtmpfilesd "${FILESDIR}"/slapd.tmpfilesd slapd.conf
 
-		if [[ $(get_libdir) != lib ]]; then
-			sed -e "s,/usr/lib/,/usr/$(get_libdir)/," -i \
-				"${ED}"/etc/init.d/slapd \
-				"${ED}"/usr/lib/systemd/system/slapd.service || die
-		fi
 		# If built without SLP, we don't need to be before avahi
 		use slp \
 			|| sed -i \
