@@ -146,6 +146,7 @@ src_configure() {
 	# --disable-profile-build bugs #215806, #292991, #479602
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
+		$(use dumpcap && use_with pcap dumpcap-group wireshark) \
 		$(use_enable androiddump) \
 		$(use_enable capinfos) \
 		$(use_enable captype) \
@@ -172,7 +173,6 @@ src_configure() {
 		$(use_with libxml2) \
 		$(use_with lua) \
 		$(use_with nghttp2) \
-		$(use_with pcap dumpcap-group wireshark) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
 		$(use_with sbc) \
