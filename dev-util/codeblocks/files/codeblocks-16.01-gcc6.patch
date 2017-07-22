@@ -1,0 +1,63 @@
+Bug: https://bugs.gentoo.org/625696
+Commit: https://sourceforge.net/p/codeblocks/code/10875/
+
+--- a/configure
++++ b/configure
+@@ -654,6 +654,8 @@
+ WX_GTK2_CFLAGS
+ HAVE_WX29_FALSE
+ HAVE_WX29_TRUE
++HAVE_GCC6_FALSE
++HAVE_GCC6_TRUE
+ HAVE_GCC48_FALSE
+ HAVE_GCC48_TRUE
+ GCC_PATCH_VERSION
+@@ -22857,6 +22859,14 @@
+   HAVE_GCC48_FALSE=
+ fi
+ 
++ if test $GCC_MAJOR_VERSION -ge 6; then
++  HAVE_GCC6_TRUE=
++  HAVE_GCC6_FALSE='#'
++else
++  HAVE_GCC6_TRUE='#'
++  HAVE_GCC6_FALSE=
++fi
++
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for wxWidgets >= 2.9.0" >&5
+ $as_echo_n "checking for wxWidgets >= 2.9.0... " >&6; }
+@@ -23824,6 +23834,10 @@
+   as_fn_error $? "conditional \"HAVE_GCC48\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+ fi
++if test -z "${HAVE_GCC6_TRUE}" && test -z "${HAVE_GCC6_FALSE}"; then
++  as_fn_error $? "conditional \"HAVE_GCC6\" was never defined.
++Usually this means the macro was only invoked conditionally." "$LINENO" 5
++fi
+ if test -z "${HAVE_WX29_TRUE}" && test -z "${HAVE_WX29_FALSE}"; then
+   as_fn_error $? "conditional \"HAVE_WX29\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+--- a/src/sdk/wxpropgrid/Makefile.in
++++ b/src/sdk/wxpropgrid/Makefile.in
+@@ -90,6 +90,7 @@
+ build_triplet = @build@
+ host_triplet = @host@
+ target_triplet = @target@
++@HAVE_GCC6_TRUE@am__append_1 = -fno-delete-null-pointer-checks
+ subdir = src/sdk/wxpropgrid
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
+@@ -435,10 +436,8 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AM_CPPFLAGS = $(WX_CXXFLAGS) \
+-		-I$(top_srcdir)/src/sdk/wxpropgrid/include \
+-		-DEXPORT_LIB \
+-		-DwxPG_SUPPORT_TOOLTIPS
+-
++	-I$(top_srcdir)/src/sdk/wxpropgrid/include -DEXPORT_LIB \
++	-DwxPG_SUPPORT_TOOLTIPS $(am__append_1)
+ noinst_LTLIBRARIES = libwxpropgrid.la
+ libwxpropgrid_la_SOURCES = ./src/advprops.cpp \
+ 			./src/editors.cpp \
