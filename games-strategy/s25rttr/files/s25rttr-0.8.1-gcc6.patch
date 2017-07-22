@@ -1,0 +1,84 @@
+Bug: https://bugs.gentoo.org/610972
+Commit: https://github.com/Return-To-The-Roots/mygettext/commit/3b902a46322b7e88e9d2cdf85ee0912c6565f9a2
+
+--- a/driver/audio/SDL/src/SDL.cpp
++++ b/driver/audio/SDL/src/SDL.cpp
+@@ -175,23 +175,23 @@
+ 	
+ 	char file[512];
+ 	if(!tempname(file, 512))
+-		return false;
++		return NULL;
+ 
+ 	strncat(file, ".wav", 512);
+ 	
+ 	FILE *dat = fopen(file, "wb");
+ 	if(!dat)
+-		return false;
++		return NULL;
+ 
+ 	if(fwrite(data, 1, size, dat) != size)
+-		return false;
++		return NULL;
+ 	
+ 	fclose(dat);
+ 
+ 	switch(data_type)
+ 	{
+ 	default:
+-		return false;
++		return NULL;
+ 
+ 	case AudioDriver::AD_WAVE:
+ 		{
+@@ -233,12 +233,12 @@
+ 
+ 	char file[512];
+ 	if(!tempname(file, 512))
+-		return false;
++		return NULL;
+ 
+ 	switch(data_type)
+ 	{
+ 	default:
+-		return false;
++		return NULL;
+ 
+ 	case AudioDriver::AD_MIDI:
+ 		{
+@@ -266,10 +266,10 @@
+ 
+ 	FILE *dat = fopen(file, "wb");
+ 	if(!dat)
+-		return false;
++		return NULL;
+ 
+ 	if(fwrite(data, 1, size, dat) != size)
+-		return false;
++		return NULL;
+ 
+ 	fclose(dat);
+ 
+--- a/src/VideoDriverWrapper.cpp
++++ b/src/VideoDriverWrapper.cpp
+@@ -481,7 +481,7 @@
+ 	if(videodriver == NULL)
+ 	{
+ 		fatal_error("Kein Videotreiber ausgewaehlt!\n");
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	return videodriver->GetFunction(extension);
+--- a/mygettext/src/mygettext.h
++++ b/mygettext/src/mygettext.h
+@@ -21,6 +21,9 @@
+ 
+ #pragma once
+ 
++// necessarily here
++#include <locale>
++
+ const char *mysetlocale(int category, const char *locale);
+ 
+ #undef gettext

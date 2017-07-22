@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-fpic.patch \
 		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-miniupnpc-api-14.patch \
-		"${FILESDIR}"/${P}-cmake-3.patch
+		"${FILESDIR}"/${P}-cmake-3.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_configure() {
