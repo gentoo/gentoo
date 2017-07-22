@@ -1,10 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
+
 WX_GTK_VER="2.8"
 
-inherit eutils wxwidgets
+inherit eutils flag-o-matic wxwidgets
 
 DESCRIPTION="The open source, cross platform, free C++ IDE"
 HOMEPAGE="http://www.codeblocks.org/"
@@ -29,8 +30,10 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	touch "${S}"/revision.m4 -r "${S}"/acinclude.m4
-
 	setup-wxwidgets
+
+	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
+
 	econf \
 		--with-wx-config="${WX_CONFIG}" \
 		$(use_enable debug) \
