@@ -7927,7 +7927,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 4.0.0 4.0.1 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.1.1 1.2: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.12.1 0.19.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.12.1 0.15.0 0.16.0 0.19.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
@@ -13604,7 +13604,7 @@ media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative to
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/dxcc 20080225-r1: A ham radio callsign DXCC lookup utility
 media-radio/fldigi 4.0.4 4.0.4-r1 4.0.5 4.0.6 4.0.7 4.0.8: Sound card based multimode software modem for Amateur Radio use
-media-radio/flrig 1.3.27 1.3.28 1.3.30 1.3.31 1.3.32: Transceiver control program for Amateur Radio use
+media-radio/flrig 1.3.27 1.3.28 1.3.30 1.3.31 1.3.32 1.3.33: Transceiver control program for Amateur Radio use
 media-radio/gpredict 1.3 1.3-r1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
