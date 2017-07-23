@@ -21,9 +21,7 @@ DEPEND="|| (
 RDEPEND="app-i18n/skk-jisyo[cdb]
 	sys-apps/xinetd"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-gentoo.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 DOCS="CHANGES README* *.txt"
 
 pkg_setup() {
