@@ -4,13 +4,13 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils fdo-mime flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev
+inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.18-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.24-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
@@ -182,9 +182,9 @@ src_prepare() {
 	fi
 
 	# Only add nopie patch when we're on hardened
-	if ! gcc-specs-pie ; then
-		rm "${WORKDIR}"/patches/050_${PN}-*-nopie.patch || die
-	fi
+	#if ! gcc-specs-pie ; then
+	#	rm "${WORKDIR}"/patches/050_${PN}-*-nopie.patch || die
+	#fi
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
@@ -410,7 +410,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	if use udev ; then
 		udevadm control --reload-rules \
@@ -455,5 +455,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
