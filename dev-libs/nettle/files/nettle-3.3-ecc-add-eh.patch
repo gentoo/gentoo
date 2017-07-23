@@ -1,0 +1,32 @@
+From dcda81d796de2f4a16fd7e9e7a5d07baa288f147 Mon Sep 17 00:00:00 2001
+From: Niels Möller <nisse@lysator.liu.se>
+Date: Tue, 18 Jul 2017 20:52:30 +0200
+Subject: [PATCH] Fix for in-place ecc_add_eh.
+
+* ecc-add-eh.c (ecc_add_eh): Fix in-place operation by reordering
+two multiplies. Previously, in-place operation resulted in an
+invalid call to mpn_mul with overlapping operands. Reported by
+Sergei Trofimovich.
+---
+ ChangeLog    | 7 +++++++
+ ecc-add-eh.c | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/ecc-add-eh.c b/ecc-add-eh.c
+index a16be4c..c07ff49 100644
+--- a/ecc-add-eh.c
++++ b/ecc-add-eh.c
+@@ -98,8 +98,8 @@ ecc_add_eh (const struct ecc_curve *ecc,
+   ecc_modp_mul (ecc, x3, B, z1);
+ 
+   /* y3 */
+-  ecc_modp_mul (ecc, B, F, C); /* ! */
+-  ecc_modp_mul (ecc, y3, B, z1);
++  ecc_modp_mul (ecc, B, F, z1); /* ! */
++  ecc_modp_mul (ecc, y3, B, C); /* Clobbers z1 in case r == p. */
+ 
+   /* z3 */
+   ecc_modp_mul (ecc, B, F, G);
+--
+libgit2 0.25.0
+
