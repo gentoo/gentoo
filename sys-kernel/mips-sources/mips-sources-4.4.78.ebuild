@@ -7,8 +7,8 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20161216"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="1"				# Tarball revision for patches
+GITDATE="20160123"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="2"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
@@ -19,7 +19,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.8"
+K_BASE_VER="4.3"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -27,13 +27,17 @@ ETYPE="sources"
 inherit kernel-2 eutils
 detect_version
 
+# EPATCH Vars
+# XXX: Required to properly apply Impact/Odyssey driver patches.
+EPATCH_OPTS="-F3"
+
 # Version Data
 F_KV="${PVR}"
 BASE_KV="$(get_version_component_range 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="http://www.linux-mips.org/ http://www.gentoo.org/"
+HOMEPAGE="https://www.linux-mips.org/ https://www.gentoo.org/"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""

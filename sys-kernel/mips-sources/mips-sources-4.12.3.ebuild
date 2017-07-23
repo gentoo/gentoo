@@ -33,7 +33,7 @@ BASE_KV="$(get_version_component_range 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="http://www.linux-mips.org/ http://www.gentoo.org/"
+HOMEPAGE="https://www.linux-mips.org/ https://www.gentoo.org/"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
