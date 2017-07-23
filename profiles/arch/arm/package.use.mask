@@ -10,10 +10,6 @@ app-shells/bash-completion test
 # Depends on dev-qt/qtwebengine, not keyworded yet.
 kde-apps/kio-extras htmlthumbs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2017)
-# Depends on dev-util/kdevplatform:5, not keyworded yet.
-kde-plasma/plasma-sdk plasmate
-
 # James Le Cuirot <chewi@gentoo.org> (25 Apr 2017)
 # Oracle doesn't include VisualVM on this platform.
 dev-java/oracle-jdk-bin visualvm
