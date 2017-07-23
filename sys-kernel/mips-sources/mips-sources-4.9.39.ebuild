@@ -7,7 +7,7 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20170513"			# Date of diff between kernel.org and lmo GIT
+GITDATE="20161216"			# Date of diff between kernel.org and lmo GIT
 GENPATCHREV="1"				# Tarball revision for patches
 
 # Directories
@@ -19,7 +19,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.10"
+K_BASE_VER="4.8"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -33,7 +33,7 @@ BASE_KV="$(get_version_component_range 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="http://www.linux-mips.org/ http://www.gentoo.org/"
+HOMEPAGE="https://www.linux-mips.org/ https://www.gentoo.org/"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
@@ -338,7 +338,7 @@ src_prepare() {
 
 	# Now go into the kernel source and patch it.
 	cd "${S}"
-	epatch -p1 "${WORKDIR}/${psym}"/*.patch
+	epatch "${WORKDIR}/${psym}"/*.patch
 }
 
 #//------------------------------------------------------------------------------
