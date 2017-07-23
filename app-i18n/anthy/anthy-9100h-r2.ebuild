@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit elisp-common
+inherit elisp-common ltprune
 
 DESCRIPTION="Anthy -- free and secure Japanese input system"
 HOMEPAGE="http://anthy.osdn.jp/"
@@ -18,40 +18,36 @@ RDEPEND="canna-2ch? ( app-dicts/canna-2ch )
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-anthy_context_t.patch" )
-DOCS=( AUTHORS DIARY NEWS README ChangeLog )
+PATCHES=( "${FILESDIR}"/${P}-anthy_context_t.patch )
+DOCS=( AUTHORS ChangeLog DIARY NEWS README )
+
+SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	default
 
 	if use canna-2ch; then
 		einfo "Adding nichan.ctd to anthy.dic."
-		sed -i \
-			-e "/set_input_encoding eucjp/aread ${EPREFIX}/var/lib/canna/dic/canna/nichan.ctd" \
-			mkworddic/dict.args.in || die
+		sed -i "/set_input_encoding eucjp/aread ${EPREFIX}/var/lib/canna/dic/canna/nichan.ctd" mkworddic/dict.args.in
 	fi
 }
 
 src_configure() {
-	local myconf
-
-	use emacs || myconf="EMACS=no"
-
 	econf \
 		$(use_enable static-libs static) \
-		${myconf}
+		EMACS=$(usex emacs "${EMACS}")
 }
 
 src_install() {
 	default
+	prune_libtool_files
 
 	if use emacs; then
-		elisp-site-file-install "${FILESDIR}"/50anthy-gentoo.el || die
+		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	fi
 
 	rm -f doc/Makefile*
-	docinto doc
-	dodoc doc/*
+	dodoc -r doc
 }
 
 pkg_postinst() {
