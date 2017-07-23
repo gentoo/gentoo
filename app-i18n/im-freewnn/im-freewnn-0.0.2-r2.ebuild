@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils gnome2-utils multilib
+inherit autotools eutils gnome2-utils multilib prefix
 
 DESCRIPTION="Japanese FreeWnn input method module for GTK+2"
 HOMEPAGE="http://bonobo.gnome.gr.jp/~nakai/immodule/"
@@ -30,12 +30,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-wnnrc-gentoo.diff"
+	epatch "${FILESDIR}"/${PN}-wnnenvrc.patch
 	# bug #298744
 	epatch "${FILESDIR}/${P}-as-needed.patch"
-	epatch "${FILESDIR}/${P}-implicit-declaration.patch"
+	epatch "${FILESDIR}"/${PN}-headers.patch
+	eprefixify ${PN}.c
 
-	mv configure.in configure.ac || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
