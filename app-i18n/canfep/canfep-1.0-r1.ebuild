@@ -12,13 +12,18 @@ SRC_URI="http://www.geocities.co.jp/SiliconValley-Bay/7584/${PN}/${P}.tar.gz
 
 LICENSE="canfep"
 SLOT="0"
-KEYWORDS="-alpha ~amd64 ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="unicode"
 
 RDEPEND="app-i18n/canna
 	sys-libs/ncurses:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-posix-pty.patch
+	"${FILESDIR}"/${PN}-termcap.patch
+)
 
 src_prepare() {
 	use unicode && eapply "${DISTDIR}"/${PN}_utf8.diff
