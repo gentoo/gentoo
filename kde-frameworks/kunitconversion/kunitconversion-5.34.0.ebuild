@@ -16,3 +16,12 @@ RDEPEND="
 	$(add_qt_dep qtxml)
 "
 DEPEND="${RDEPEND}"
+
+src_test() {
+	# bug 623938 - needs internet connection
+	local myctestargs=(
+		-E "(convertertest)"
+	)
+
+	kde5_src_test
+}
