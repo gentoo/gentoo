@@ -17,7 +17,8 @@ IUSE="unicode"
 
 RDEPEND="app-i18n/canna
 	sys-libs/ncurses:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
 	use unicode && eapply "${DISTDIR}"/${PN}_utf8.diff
@@ -29,7 +30,7 @@ src_prepare() {
 src_compile() {
 	emake \
 		CC="$(tc-getCXX)" \
-		LIBS="-lcanna -lncurses"
+		LIBS="-lcanna $(pkg-config --libs ncurses)"
 }
 
 src_install() {
