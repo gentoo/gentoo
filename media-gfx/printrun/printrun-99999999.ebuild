@@ -16,17 +16,19 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-python/pyserial
-	dev-python/wxpython:*
-	dev-python/pyglet
-	dev-python/dbus-python
-	media-gfx/cairosvg"
+DEPEND="
+	app-text/psutils
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+	dev-python/pyglet[${PYTHON_USEDEP}]
+	dev-python/pyserial[${PYTHON_USEDEP}]
+	dev-python/wxpython:*[${PYTHON_USEDEP}]
+	media-gfx/cairosvg[${PYTHON_USEDEP}]"
+
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1231518
 	"${FILESDIR}"/${PN}-gtk3.patch
-
-	# https://github.com/kliment/Printrun/pull/790
-	"${FILESDIR}"/${PN}-x11.patch
 )

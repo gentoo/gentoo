@@ -17,7 +17,7 @@ IUSE="oniguruma static-libs test"
 DEPEND="
 	>=sys-devel/bison-3.0
 	sys-devel/flex
-	oniguruma? ( dev-libs/oniguruma[static-libs?] )
+	oniguruma? ( dev-libs/oniguruma:=[static-libs?] )
 	test? ( dev-util/valgrind )
 "
 RDEPEND="

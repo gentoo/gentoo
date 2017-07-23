@@ -16,7 +16,7 @@ IUSE="doc test"
 
 DEPEND="
 	dev-lang/ocaml:=[ocamlopt]
-	dev-ml/lwt:=[ocamlopt]
+	dev-ml/lwt:=[ocamlopt(+)]
 	>=dev-ml/uutf-1.0:=[ocamlopt]
 "
 RDEPEND="${DEPEND}"

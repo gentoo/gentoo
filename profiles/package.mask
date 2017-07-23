@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
+# Masked due to serious regression that introduces widespread data
+# corruption when storing data in blobs. Masked, because any code
+# that is written to use this version is now dependent on this version
+# and older versions will corrupt your code instead.
+# However, any existing packages should not use this version.
+# See: https://github.com/perl5-dbi/DBD-mysql/issues/117
+=dev-perl/DBD-mysql-4.42.0
+
+# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
+# Mask initial beta of PHP 7.2 for further testing
+>=dev-lang/php-7.2.0_beta1
+=virtual/httpd-php-7.2
+
 # Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
 # Old mono/dotnet packages (used on GNOME2 stack)
 # also some deprecated forks used for monodevelop
@@ -849,13 +863,6 @@ sci-geosciences/googleearth
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
 # Use at your own risk.
 =app-text/xiphos-4.0.4-r1
-
-# Richard Freeman <rich0@gentoo.org> (16 Apr 2016)
-# Masked for extended testing, and porting of openrc scripts
-# if necessary.
->=media-tv/mythtv-0.28
->=media-plugins/mythplugins-0.28
->=www-apps/mythweb-0.28
 
 # James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
 # Masking Spring Framework for the time being as 3.2.4 is old, has

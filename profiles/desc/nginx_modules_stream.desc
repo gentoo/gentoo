@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of NGINX_MODULES_STREAM USE_EXPAND flags.
@@ -13,7 +13,6 @@ realip - This module allows to change the client's IP address to value from requ
 return - This module allows sending a specified value to the client and then closing the connection.
 split_clients - This module provides A/B testing support.
 ssl_preread - This module allows extracting information from the ClientHello message without terminating SSL/TLS.
-upstream - This module is used to define groups of servers that can be referenced by the proxy_pass directive.
 upstream_hash - This module provides the ability to distribute upstream requests based on hashed key value.
 upstream_least_conn - This module provides the ability to distribute upstream requests using load balancing methods.
 upstream_zone - This module makes it possible to define a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes.

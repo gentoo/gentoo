@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
 inherit eutils l10n qmake-utils virtualx
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
-HOMEPAGE="http://doc.qt.io/qtcreator/"
+HOMEPAGE="https://doc.qt.io/qtcreator/"
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
 
@@ -21,7 +21,7 @@ else
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-opensource-src-${MY_PV}
 	[[ ${MY_PV} == ${PV} ]] && MY_REL=official || MY_REL=development
-	SRC_URI="http://download.qt.io/${MY_REL}_releases/${PN/-}/${PV%.*}/${MY_PV}/${MY_P}.tar.gz"
+	SRC_URI="https://download.qt.io/${MY_REL}_releases/${PN/-}/${PV%.*}/${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 	S=${WORKDIR}/${MY_P}
 fi
