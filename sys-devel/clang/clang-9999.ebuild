@@ -24,7 +24,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
-SLOT="5"
+SLOT="6"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget
 	+static-analyzer test xml z3 elibc_musl kernel_FreeBSD
