@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
-inherit autotools ltprune
+inherit autotools ltprune ruby-single
 
 DESCRIPTION="GObject-based XIM protocol library"
 HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
@@ -12,7 +13,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs test"
+IUSE="${USE_RUBY//ruby/ruby_targets_ruby} static-libs test"
 
 RDEPEND="dev-libs/dbus-glib
 	dev-libs/glib:2
@@ -20,7 +21,7 @@ RDEPEND="dev-libs/dbus-glib
 	virtual/libintl
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
-	dev-lang/ruby
+	${RUBY_DEPS}
 	dev-util/intltool
 	sys-devel/autoconf-archive
 	sys-devel/gettext
@@ -37,6 +38,14 @@ src_prepare() {
 		configure.ac
 
 	sed -i "/^ACLOCAL_AMFLAGS/,/^$/d" Makefile.am
+
+	local ruby
+	for ruby in ${USE_RUBY}; do
+		if use ruby_targets_${ruby}; then
+			sed -i "1s/ruby/${ruby}/" ${PN}/mkacc.rb
+			break
+		fi
+	done
 
 	default
 	eautoreconf
