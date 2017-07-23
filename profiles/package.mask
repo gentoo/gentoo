@@ -177,7 +177,8 @@ app-mobilephone/esms
 sci-chemistry/icm
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't work with >=openvpn-2.3, removal in a month (#470696).
+# Doesn't work with >=openvpn-2.3, bug 470696
+# Fix is work in progress, see above bug. dilfridge@g.o
 net-vpn/kvpnc
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
