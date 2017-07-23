@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc static-libs"
+IUSE="static-libs"
 
 RDEPEND="dev-libs/dbus-glib
 	dev-libs/glib:2
@@ -24,8 +24,7 @@ DEPEND="${RDEPEND}
 	dev-lang/ruby
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig
-	doc? ( >=dev-util/gtk-doc-1.8 )"
+	virtual/pkgconfig"
 
 src_configure() {
 	econf $(use_enable static-libs static)
