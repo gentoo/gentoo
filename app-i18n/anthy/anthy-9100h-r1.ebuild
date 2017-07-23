@@ -19,7 +19,7 @@ RDEPEND="canna-2ch? ( app-dicts/canna-2ch )
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-anthy_context_t.patch"
+	epatch "${FILESDIR}"/${PN}-anthy_context_t.patch
 
 	if use canna-2ch; then
 		einfo "Adding nichan.ctd to anthy.dic."
