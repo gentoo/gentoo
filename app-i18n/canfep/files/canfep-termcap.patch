@@ -1,0 +1,266 @@
+--- a/pty.C
++++ b/pty.C
+@@ -4,9 +4,18 @@
+ int Pty::child = 0;
+ struct termios Pty::tt;
+ int Pty::wfd = 0;
++char Pty::buf[] = "";
++char Pty::funcstr[] = "";
+ int Pty::hs = 0;
++char* Pty::so = 0;
++char* Pty::se = 0;
++char* Pty::us = 0;
++char* Pty::ue = 0;
++char* Pty::sc = 0;
++char* Pty::rc = 0;
+ char* Pty::ce = 0;
+ char* Pty::ts = 0;
++char* Pty::fs = 0;
+ char* Pty::ds = 0;
+ char Pty::endstr[] = "";
+ char Pty::endmsg[] = "";
+@@ -14,88 +23,7 @@
+ // コンストラクタだよん
+ Pty::Pty(int ac, char** av, char* amsg, char* emsg)
+ {
+-    // 環境変数 TERM のエントリを取得
+-    char buff[BUFSIZ];
+-    char* term = getenv("TERM");
+-    if (!term)
+-        term = "vt100";
+-    int ret = tgetent(buff, term);
+-    if (ret != 1) {
+-        tgetent(buff, "vt100");
+-        putenv("TERM=vt100");
+-    }
+-
+-    // termcap から装飾用のエントリを取ってくる
+-    char funcstr[BUFSIZ];
+-    char* pt = funcstr;
+-
+-    // スタンドアウト (反転)
+-    so = tgetstr("so", &pt);
+-    adjstr(so);
+-    se = tgetstr("se", &pt);
+-    adjstr(se);
+-
+-    // アンダーライン (下線)
+-    us = tgetstr("us", &pt);
+-    adjstr(us);
+-    ue = tgetstr("ue", &pt);
+-    adjstr(ue);
+-
+-    // カーソル位置の保存，保存した位置への復帰
+-    sc = tgetstr("sc", &pt);
+-    adjstr(sc);
+-    rc = tgetstr("rc", &pt);
+-    adjstr(rc);
+-
+-    // カーソル位置から行の最後までを削除する
+-    ce = tgetstr("ce", &pt);
+-    adjstr(ce);
+-
+-    // ステータスラインを持っているかどうか
+-    hs = tgetflag("hs");
+-
+-    // kon と jfbterm ではステータスラインを使わない
+-    if (strcmp(term, "kon") == 0)
+-        hs = 0;
+-    if (strcmp(term, "jfbterm") == 0)
+-        hs = 0;
+-
+-    // ステータスラインへ移動，戻る
+-    if (hs) {
+-        ts = tgoto(tgetstr("ts", &pt), 0, 0);
+-        adjstr(ts);
+-        fs = tgetstr("fs", &pt);
+-        adjstr(fs);
+-        ds = tgetstr("ds", &pt);
+-        adjstr(ds);
+-        if (ds) {
+-            strcat(endstr, ds);
+-            strcat(endstr, ce);
+-        }
+-    }
+-    else {
+-        char* cs = tgoto(tgetstr("cs", &pt), tgetnum("li") - 2, 0);
+-        adjstr(cs);
+-        if (cs) {
+-            write(1, ce, strlen(ce));
+-            write(1, cs, strlen(cs));
+-        }
+-        char* cl = tgetstr("cl", &pt);
+-        adjstr(cl);
+-        if (cl) {
+-            write(1, cl, strlen(cl));
+-            strcat(endstr, cl);
+-        }
+-        ds = tgoto(tgetstr("cs", &pt), tgetnum("li") - 1, 0);
+-        adjstr(ds);
+-        if (ds) {
+-            strcat(endstr, ds);
+-            strcat(endstr, ce);
+-        }
+-        ts = tgoto(tgetstr("cm", &pt), 0, tgetnum("li") - 1);
+-        adjstr(ts);
+-        fs = rc;
+-    }
++    gettermcap();
+ 
+     // 開始と終了のメッセージ
+     if (amsg && ac == 1)
+@@ -209,21 +137,75 @@
+     done();
+ }
+ 
+-// termcap エントリからパディングを削除する
+ void
+-Pty::adjstr(char* str)
++Pty::gettermcap()
+ {
+-    char* sp = strdup(str);
+-    char* p = sp;
+-    while (*p != '\0') {
+-        if (strncmp(p, "$<", 2) == 0) {
+-            while (*p != '>')
+-                p++;
+-            *p = '\0';
++    // 環境変数 TERM のエントリを取得
++    char* term = getenv("TERM");
++    if (!term)
++        term = "vt100";
++    int ret = tgetent(buf, term);
++    if (ret != 1) {
++        tgetent(buf, "vt100");
++        putenv("TERM=vt100");
++    }
++
++    // termcap から装飾用のエントリを取ってくる
++    char* pt = funcstr;
++
++    // スタンドアウト (反転)
++    so = tgetstr("so", &pt);
++    se = tgetstr("se", &pt);
++
++    // アンダーライン (下線)
++    us = tgetstr("us", &pt);
++    ue = tgetstr("ue", &pt);
++
++    // カーソル位置の保存，保存した位置への復帰
++    sc = tgetstr("sc", &pt);
++    rc = tgetstr("rc", &pt);
++
++    // カーソル位置から行の最後までを削除する
++    ce = tgetstr("ce", &pt);
++
++    // ステータスラインを持っているかどうか
++    hs = tgetflag("hs");
++
++    // kon と jfbterm ではステータスラインを使わない
++    if (strcmp(term, "kon") == 0)
++        hs = 0;
++    if (strcmp(term, "jfbterm") == 0)
++        hs = 0;
++
++    // ステータスラインへ移動，戻る
++    if (hs) {
++        ts = tgoto(tgetstr("ts", &pt), 0, 0);
++        fs = tgetstr("fs", &pt);
++        ds = tgetstr("ds", &pt);
++        if (ds) {
++            strcat(endstr, ds);
++            strcat(endstr, ce);
+         }
+-        *str++ = *p++;
+     }
+-    free(sp);
++    else {
++        char* cs = tgoto(tgetstr("cs", &pt), tgetnum("li") - 2, 0);
++        if (cs) {
++            write(1, ce, strlen(ce));
++            write(1, cs, strlen(cs));
++        }
++        char* cl = tgetstr("cl", &pt);
++        if (cl) {
++            write(1, cl, strlen(cl));
++            strcat(endstr, cl);
++        }
++        ds = tgoto(tgetstr("cs", &pt), tgetnum("li") - 1, 0);
++        if (ds) {
++            strcat(endstr, ds);
++            strcat(endstr, ce);
++        }
++        ts = tgoto(tgetstr("cm", &pt), 0, tgetnum("li") - 1);
++        fs = rc;
++    }
+ }
+ 
+ // マスタデバイスを取る
+@@ -327,34 +309,7 @@
+ {
+     signal(SIGWINCH, SIG_IGN);
+ 
+-    // ステータスラインが使えない場合は cs/ds/ts を取り直す
+-    if (!hs) {
+-        char buff[BUFSIZ];
+-        char* term = getenv("TERM");
+-        tgetent(buff, term);
+-        char funcstr[BUFSIZ];
+-        char* pt = funcstr;
+-        char* cs = tgoto(tgetstr("cs", &pt), tgetnum("li") - 2, 0);
+-        adjstr(cs);
+-        if (cs) {
+-            write(1, ce, strlen(ce));
+-            write(1, cs, strlen(cs));
+-        }
+-        char* cl = tgetstr("cl", &pt);
+-        adjstr(cl);
+-        if (cl) {
+-            write(1, cl, strlen(cl));
+-            strcpy(endstr, cl);
+-        }
+-        ds = tgoto(tgetstr("cs", &pt), tgetnum("li") - 1, 0);
+-        adjstr(ds);
+-        if (ds) {
+-            strcat(endstr, ds);
+-            strcat(endstr, ce);
+-        }
+-        ts = tgoto(tgetstr("cm", &pt), 0, tgetnum("li") - 1);
+-        adjstr(ts);
+-    }
++    gettermcap();
+ 
+     // ウィンドウのサイズを設定し直す (stty -a の 行数/桁数 等)
+     struct winsize win;
+--- a/pty.H
++++ b/pty.H
+@@ -50,18 +50,21 @@
+     int rfd;
+     static int wfd;
+ private:
+-    static void adjstr(char* str);
++    static char buf[BUFSIZ];
++    static char funcstr[BUFSIZ];
++private:
++    static void gettermcap();
+ protected:
+     static int hs;
+-    char* so;
+-    char* se;
+-    char* us;
+-    char* ue;
+-    char* sc;
+-    char* rc;
++    static char* so;
++    static char* se;
++    static char* us;
++    static char* ue;
++    static char* sc;
++    static char* rc;
+     static char* ce;
+     static char* ts;
+-    char* fs;
++    static char* fs;
+     static char* ds;
+ private:
+     static void finish();
