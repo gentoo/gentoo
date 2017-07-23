@@ -8584,14 +8584,15 @@ x11-terms/gnome-terminal:gnome-shell - Integrate with gnome-base/gnome-shell sea
 x11-terms/gnome-terminal:nautilus - Build gnome-base/nautilus extension
 x11-terms/hanterm:utempter - Records user logins. Useful on multi-user systems
 x11-terms/mate-terminal:gtk3 - Build with GTK+3 instead of GTK+2
-x11-terms/mlterm:fcitx - Enable app-i18n/fcitx support
-x11-terms/mlterm:ibus - Enable app-i18n/ibus support
-x11-terms/mlterm:libssh2 - Enable net-libs/libssh2 support
-x11-terms/mlterm:regis - Enable ReGIS support
-x11-terms/mlterm:scim - Enable app-i18n/scim support
-x11-terms/mlterm:skk - Enable SKK support (virtual/skkserv or app-i18n/skk-jisyo)
-x11-terms/mlterm:uim - Enable app-i18n/uim support
-x11-terms/mlterm:utempter - Enable sys-libs/libutempter support
+x11-terms/mlterm:fcitx - Enable support for app-i18n/fcitx
+x11-terms/mlterm:gtk2 - Build with x11-libs/gtk+:2 instead of x11-libs/gtk+:3
+x11-terms/mlterm:ibus - Enable support for app-i18n/ibus
+x11-terms/mlterm:libssh2 - Enable support for net-libs/libssh2
+x11-terms/mlterm:regis - Enable support for ReGIS
+x11-terms/mlterm:scim - Enable support for app-i18n/scim
+x11-terms/mlterm:skk - Enable support for SKK (virtual/skkserv or app-i18n/skk-jisyo)
+x11-terms/mlterm:uim - Enable support for app-i18n/uim
+x11-terms/mlterm:utempter - Enable support for sys-libs/libutempter
 x11-terms/mrxvt:menubar - Enable mrxvt menubar
 x11-terms/mrxvt:utempter - REcords user logins. Useful on multi-user systems
 x11-terms/rxvt-unicode:256-color - Enable 256 color support
