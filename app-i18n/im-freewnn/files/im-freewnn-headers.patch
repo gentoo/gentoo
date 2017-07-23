@@ -1,5 +1,3 @@
-diff --git a/freewnn-utils.c b/freewnn-utils.c
-index 3cf63b3..0e871d6 100644
 --- a/freewnn-utils.c
 +++ b/freewnn-utils.c
 @@ -18,6 +18,9 @@
@@ -12,8 +10,6 @@ index 3cf63b3..0e871d6 100644
  #include "freewnn-utils.h"
  #include "kata2hkata.h"
  
-diff --git a/im-freewnn.c b/im-freewnn.c
-index b56d63c..833582e 100644
 --- a/im-freewnn.c
 +++ b/im-freewnn.c
 @@ -26,6 +26,7 @@
@@ -24,3 +20,11 @@ index b56d63c..833582e 100644
  
  #include <string.h>
  #include "keytable.h"
+@@ -33,6 +34,7 @@
+ #include <gdk/gdkkeysyms.h>
+ 
+ #include "im-freewnn-intl.h"
++#include "freewnn-utils-ui.h"
+ #include "convtable.h"
+ #include "im-freewnn.h"
+ 
