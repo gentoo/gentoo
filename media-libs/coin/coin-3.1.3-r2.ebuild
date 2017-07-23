@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc-4.7.patch
 	"${FILESDIR}"/${P}-freetype251.patch
 	"${FILESDIR}"/${P}-memhandler-initialization.patch
+	"${FILESDIR}"/${P}-gcc-7.patch
 )
 
 DOCS=(
