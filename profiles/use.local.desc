@@ -7630,6 +7630,7 @@ sys-block/fio:numa - Enable numa support
 sys-block/fio:rbd - Enable Rados block device support via sys-cluster/ceph
 sys-block/fio:rdma - Enable infiniband support via sys-fabric/librdmacm
 sys-block/gparted:btrfs - Include Btrfs support (sys-fs/btrfs-progs)
+sys-block/gparted:cryptsetup - Include LUKS volume support (sys-fs/cryptsetup)
 sys-block/gparted:dmraid - Support for dmraid devices, also known as ATA-RAID, or Fake RAID.
 sys-block/gparted:f2fs - Include F2FS support (sys-fs/f2fs-tools)
 sys-block/gparted:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
