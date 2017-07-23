@@ -63,7 +63,7 @@ if [[ ! ${_LLVM_ECLASS} ]]; then
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( 5 4 )
+declare -g -r _LLVM_KNOWN_SLOTS=( 6 5 4 )
 
 # @FUNCTION: get_llvm_prefix
 # @USAGE: [<max_slot>]
