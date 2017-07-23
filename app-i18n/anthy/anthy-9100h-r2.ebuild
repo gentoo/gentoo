@@ -18,7 +18,7 @@ RDEPEND="canna-2ch? ( app-dicts/canna-2ch )
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-anthy_context_t.patch )
+PATCHES=( "${FILESDIR}"/${PN}-anthy_context_t.patch )
 DOCS=( AUTHORS ChangeLog DIARY NEWS README )
 
 SITEFILE="50${PN}-gentoo.el"
