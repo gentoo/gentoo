@@ -3,13 +3,13 @@
 
 EAPI="6"
 
-inherit cannadic toolchain-funcs
+inherit autotools cannadic toolchain-funcs
 
 MY_P="Canna${PV//[._]/}"
 
 DESCRIPTION="A client-server based Kana-Kanji conversion system"
 HOMEPAGE="http://canna.osdn.jp/"
-SRC_URI="mirror://sourceforge.jp/canna/9565/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge.jp/${PN}/9565/${MY_P}.tar.bz2"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
@@ -23,9 +23,7 @@ RDEPEND="canuum? (
 DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
 	x11-misc/imake
-	canuum? (
-		virtual/pkgconfig
-	)
+	canuum? ( virtual/pkgconfig )
 	doc? (
 		app-text/ghostscript-gpl
 		dev-texlive/texlive-langjapanese
@@ -50,7 +48,7 @@ src_prepare() {
 	sed -i \
 		-e "/DefLibCannaDir/s:/lib$:/$(get_libdir):" \
 		-e "/UseInet6/s:0:$(usex ipv6 1 0):" \
-		Canna.conf
+		${PN^c}.conf
 
 	if use canuum; then
 		cd canuum
