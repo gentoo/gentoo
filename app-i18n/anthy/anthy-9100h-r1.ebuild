@@ -6,8 +6,8 @@ EAPI="3"
 inherit elisp-common eutils
 
 DESCRIPTION="Anthy -- free and secure Japanese input system"
-HOMEPAGE="http://anthy.sourceforge.jp/"
-SRC_URI="mirror://sourceforge.jp/anthy/37536/${P}.tar.gz"
+HOMEPAGE="http://anthy.osdn.jp/"
+SRC_URI="mirror://sourceforge.jp/${PN}/37536/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
