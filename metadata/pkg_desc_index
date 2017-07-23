@@ -2603,7 +2603,7 @@ app-vim/merginal 2.0.2: vim script: fugitive extension to manage and merge git b
 app-vim/minibufexpl 6.5.2: vim plugin: easily switch between buffers
 app-vim/multiplesearch 1.3: vim plugin: allows multiple highlighted searches
 app-vim/multvals 3.10-r1: vim plugin: library for helping with arrays
-app-vim/nagios-syntax 20050105: vim plugin: Nagios configuration files syntax
+app-vim/nagios-syntax 1.8 20050105: vim plugin: Nagios configuration files syntax
 app-vim/neocomplcache 7.1: vim plugin: ultimate auto completion system
 app-vim/nerdcommenter 2.4.0: vim plugin: easy commenting of code for many filetypes
 app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the filesystem
