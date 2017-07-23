@@ -9481,7 +9481,7 @@ dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/concurrent-ruby 1.0.4 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.0 2.2.1: Generic connection pooling for Ruby
-dev-ruby/contracts 0.14.0 0.15.0 0.16.0: provides contracts for Ruby
+dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.2 1.4.5 1.5.0: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
 dev-ruby/crack 0.4.2-r1 0.4.3 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
