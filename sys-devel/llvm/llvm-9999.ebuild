@@ -32,7 +32,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
-SLOT="5"
+SLOT="6"
 KEYWORDS=""
 IUSE="debug +doc gold libedit +libffi ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
