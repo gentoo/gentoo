@@ -17,8 +17,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-src_prepare(){
-	kde5_src_prepare
+src_test() {
 	# bug 623938 - needs internet connection
-	sed -i -e "/convertertest\.cpp/d" autotests/CMakeLists.txt || die
+	local myctestargs=(
+		-E "(convertertest)"
+	)
+
+	kde5_src_test
 }
