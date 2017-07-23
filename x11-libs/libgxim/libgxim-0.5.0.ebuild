@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
 
 DESCRIPTION="GObject-based XIM protocol library"
-HOMEPAGE="https://tagoh.bitbucket.org/libgxim/"
+HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
 SRC_URI="https://bitbucket.org/tagoh/libgxim/downloads/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
