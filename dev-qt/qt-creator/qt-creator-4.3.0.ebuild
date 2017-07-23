@@ -7,7 +7,7 @@ PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
 inherit l10n llvm qmake-utils toolchain-funcs virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
-HOMEPAGE="http://doc.qt.io/qtcreator/"
+HOMEPAGE="https://doc.qt.io/qtcreator/"
 LICENSE="GPL-3"
 SLOT="0"
 
@@ -21,7 +21,7 @@ else
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-opensource-src-${MY_PV}
 	[[ ${MY_PV} == ${PV} ]] && MY_REL=official || MY_REL=development
-	SRC_URI="http://download.qt.io/${MY_REL}_releases/${PN/-}/${PV%.*}/${MY_PV}/${MY_P}.tar.xz"
+	SRC_URI="https://download.qt.io/${MY_REL}_releases/${PN/-}/${PV%.*}/${MY_PV}/${MY_P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
