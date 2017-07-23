@@ -20,7 +20,10 @@ RDEPEND="media-libs/libsdl[X,sound,joystick,opengl,video]
 	portaudio? ( media-libs/portaudio )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-buildsystem.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-buildsystem.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
 	default

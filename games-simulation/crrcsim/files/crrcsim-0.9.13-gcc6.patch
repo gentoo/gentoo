@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/610560
+Upstream commit: https://sourceforge.net/p/crrcsim/code/ci/28ed9ba57011371cab8b637550acc716b973c47d
+
+--- a/src/mod_video/crrc_animation.cpp
++++ b/src/mod_video/crrc_animation.cpp
+@@ -84,7 +84,7 @@
+       else
+       {
+         std::cerr << "createAnimation: unknown animation type \'"
+-                  << type << "\'" << std::cerr;
++                  << type << "\'" << std::endl;
+       }
+       
+       if (anim != NULL)
