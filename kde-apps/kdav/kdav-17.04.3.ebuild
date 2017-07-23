@@ -22,3 +22,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 "
+
+src_test() {
+	# bug 616808 - DavItemFetchJobTest requires D-Bus
+	local myctestargs=(
+		-E "(kdav-davitemfetchjob)"
+	)
+
+	kde5_src_test
+}
