@@ -18,7 +18,7 @@ ECVS_PASS="guest"
 LICENSE="GPL-2 freedist public-domain"
 SLOT="0"
 KEYWORDS=""
-IUSE="cdb"
+IUSE="cdb ${USE_RUBY//ruby/ruby_targets_ruby}"
 
 DEPEND="${RUBY_DEPS}
 	app-i18n/skktools
@@ -54,7 +54,7 @@ src_compile() {
 	local ctdic="${MY_PN}.china_taiwan" ruby
 	mv ${ctdic}{.header,}
 	for ruby in ${USE_RUBY}; do
-		if has_version dev-lang/ruby:${ruby:4:1}.${ruby:5}; then
+		if use ruby_targets_${ruby}; then
 			${ruby} ${SKKTOOLS_DIR}/ctdicconv.rb csv/${ctdic##*.}.csv | skkdic-expr2 >> ${ctdic}
 			break
 		fi
