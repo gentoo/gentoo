@@ -11,7 +11,7 @@ SRC_URI="http://bonobo.gnome.gr.jp/~nakai/immodule/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="app-i18n/freewnn
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-headers.patch
 	"${FILESDIR}"/${PN}-wnnenvrc.patch
 )
