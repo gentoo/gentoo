@@ -492,7 +492,7 @@ app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD 
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.14.1 0.15.0 0.16.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.15.0 0.16.0 9999: An implementation of the ACME protocol
 app-crypt/acme-tiny 9999 20170207: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
@@ -521,7 +521,7 @@ app-crypt/crackpkcs12 0.2.9 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/debian-archive-keyring 2014.3: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.3.1 0.4.0 0.4.0-r3: a client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r1: An advanced suite for testing the randomness of RNG's
-app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1-r1: Small RSA key management package, based on OpenSSL
+app-crypt/easy-rsa 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.7.0: Tools for manipulating UEFI secure boot platforms
 app-crypt/eid-mw 4.2.0 4.2.5 4.2.8 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
@@ -1893,7 +1893,7 @@ app-misc/openastro 1.1.48 1.1.49: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6 1.7: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 3.1.1 4.0.6 4.0.7: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 3.1.1 4.0.7: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
@@ -5162,7 +5162,7 @@ dev-lua/lpeg 0.12 0.12.1 0.12.2 1.0.0 1.0.0-r1 1.0.1: Parsing Expression Grammar
 dev-lua/lua-cjson 2.1.0: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
-dev-lua/lua-zlib 0.3 0.5 1.1: Lua bindings to zlib
+dev-lua/lua-zlib 0.3 1.1: Lua bindings to zlib
 dev-lua/lua_cliargs 2.5_p5 3.0_p1: A command-line argument parser.
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
@@ -8308,7 +8308,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyhcl 0.2.3 0.3.5 0.3.6: HCL configuration parser for python
+dev-python/pyhcl 0.2.3 0.3.6: HCL configuration parser for python
 dev-python/pyicu 1.9.5 1.9.7: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
