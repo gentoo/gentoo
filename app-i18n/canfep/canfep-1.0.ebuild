@@ -1,38 +1,39 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Canna Japanese kana-kanji frontend processor on console"
 HOMEPAGE="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/"
-SRC_URI="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/${P}.tar.gz
-	unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/canfep_utf8.diff )"
+SRC_URI="http://www.geocities.co.jp/SiliconValley-Bay/7584/${PN}/${P}.tar.gz
+	unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/${PN}_utf8.diff )"
 
 LICENSE="canfep"
 SLOT="0"
 KEYWORDS="-alpha ~amd64 ppc ~sparc x86"
 IUSE="unicode"
 
-DEPEND="app-i18n/canna
-	sys-libs/ncurses"
-RDEPEND="app-i18n/canna"
+RDEPEND="app-i18n/canna
+	sys-libs/ncurses:="
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
-	use unicode && epatch "${DISTDIR}"/canfep_utf8.diff
-	sed -i "s:\$(CFLAGS):\$(CFLAGS) \$(LDFLAGS):" Makefile || die
+	use unicode && eapply "${DISTDIR}"/${PN}_utf8.diff
+	sed -i 's/$(CFLAGS)/$(CFLAGS) $(LDFLAGS)/' Makefile
+
+	default
 }
 
 src_compile() {
 	emake \
 		CC="$(tc-getCXX)" \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		LIBS="-lcanna -lncurses"
+		LIBS="-lcanna $(pkg-config --libs ncurses)"
 }
 
 src_install() {
-	dobin canfep
-	dodoc 00changes 00readme
+	dobin ${PN}
+	dodoc 00{changes,readme}
 }

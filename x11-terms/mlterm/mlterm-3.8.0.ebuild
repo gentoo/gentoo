@@ -7,12 +7,12 @@ inherit eutils
 
 DESCRIPTION="A multi-lingual terminal emulator"
 HOMEPAGE="http://mlterm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc ppc64 x86"
-IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
+IUSE="bidi cairo canna debug fcitx freewnn gtk gtk2 ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -22,7 +22,10 @@ RDEPEND="x11-libs/libICE
 	canna? ( app-i18n/canna )
 	fcitx? ( app-i18n/fcitx )
 	freewnn? ( app-i18n/freewnn )
-	gtk? ( >=x11-libs/gtk+-2:= )
+	gtk? (
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3 )
+	)
 	ibus? ( app-i18n/ibus )
 	libssh2? ( net-libs/libssh2 )
 	m17n-lib? ( dev-libs/m17n-lib )
@@ -46,6 +49,7 @@ RDEPEND="x11-libs/libICE
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
+REQUIRED_USE="gtk2? ( gtk )"
 
 DOCS=( doc/{en,ja} )
 
@@ -83,12 +87,10 @@ src_configure() {
 	local scrollbars="sample,extra"
 	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
 	if use gtk; then
-		myconf+=( --with-imagelib=gdk-pixbuf )
-		if has_version x11-libs/gtk+:3; then
-			myconf+=( --with-gtk=3.0 )
-		else
-			myconf+=( --with-gtk=2.0 )
-		fi
+		myconf+=(
+			$(use_with gtk gtk $(usex gtk2 2.0 3.0))
+			--with-imagelib=gdk-pixbuf
+		)
 		scrollbars+=",pixmap_engine"
 		tools+=",mlconfig,mlimgloader"
 	fi
