@@ -1,0 +1,35 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-moduledir = ${libdir}/gtk-2.0/2.4.0/immodules
++moduledir = ${libdir}/gtk-2.0/${GTK_BINARY_VERSION}/immodules
+ ## Makefile.am for gtk+/modules/input 
+ if PLATFORM_WIN32
+ no_undefined = -no-undefined
+@@ -6,11 +6,11 @@
+ 
+ SUBDIRS = po
+ 
+-INCLUDES = @GTK_DEP_CFLAGS@ -I/usr/include/canna -DIM_LOCALEDIR=\"${datadir}/locale\"
++INCLUDES = @GTK_DEP_CFLAGS@ -DIM_LOCALEDIR=\"${datadir}/locale\"
+ 
+ DEPS =
+ 
+-LDADDS = @GTK_DEP_LIBS@ -lcanna
++LDADDS = @GTK_DEP_LIBS@
+ 
+ EXTRA_DIST=	\
+ 	im-canna.spec \
+--- a/configure.in
++++ b/configure.in
+@@ -21,8 +21,10 @@
+ 
+ GTK_DEP_CFLAGS=`pkg-config gtk+-2.0 --cflags`
+ GTK_DEP_LIBS=`pkg-config gtk+-2.0 --libs`
++GTK_BINARY_VERSION=`pkg-config gtk+-2.0 --variable=gtk_binary_version`
+ AC_SUBST(GTK_DEP_CFLAGS)
+ AC_SUBST(GTK_DEP_LIBS)
++AC_SUBST(GTK_BINARY_VERSION)
+ 
+ LT_RELEASE=$GTK_MAJOR_VERSION.$GTK_MINOR_VERSION
+ LT_CURRENT=2
