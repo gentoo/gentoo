@@ -296,16 +296,16 @@ src_install() {
 	# NVIDIA kernel <-> userspace driver config lib
 	donvidia ${NV_OBJ}/libnvidia-cfg.so.${NV_SOVER}
 
-	# NVIDIA framebuffer capture library
-	donvidia ${NV_OBJ}/libnvidia-fbc.so.${NV_SOVER}
-
-	# NVIDIA video encode/decode <-> CUDA
-	if use kernel_linux; then
-		donvidia ${NV_OBJ}/libnvcuvid.so.${NV_SOVER}
-		donvidia ${NV_OBJ}/libnvidia-encode.so.${NV_SOVER}
-	fi
-
 	if use X; then
+		# NVIDIA framebuffer capture library
+		donvidia ${NV_OBJ}/libnvidia-fbc.so.${NV_SOVER}
+
+		# NVIDIA video encode/decode <-> CUDA
+		if use kernel_linux; then
+			donvidia ${NV_OBJ}/libnvcuvid.so.${NV_SOVER}
+			donvidia ${NV_OBJ}/libnvidia-encode.so.${NV_SOVER}
+		fi
+
 		# Xorg DDX driver
 		insinto /usr/$(get_libdir)/xorg/modules/drivers
 		doins ${NV_X11}/nvidia_drv.so
@@ -444,8 +444,18 @@ src_install-libs() {
 		nv_libdir="${NV_OBJ}"/32
 	fi
 
+	# Libraries that don't depend on X11 libraries.
+	local NV_LIBRARIES=(
+		"libOpenCL.so.1.0.0 ${CL_ROOT}"
+		"libcuda.so.${NV_SOVER}"
+		"libnvidia-compiler.so.${NV_SOVER}"
+		"libnvidia-fatbinaryloader.so.${NV_SOVER}"
+		"libnvidia-opencl.so.${NV_SOVER}"
+		"libnvidia-ptxjitcompiler.so.${NV_SOVER}"
+	)
+
 	if use X; then
-		NV_GLX_LIBRARIES=(
+		NV_LIBRARIES+=(
 			"libEGL.so.$(usex compat ${NV_SOVER} 1) ${GL_ROOT}"
 			"libEGL_nvidia.so.${NV_SOVER} ${GL_ROOT}"
 			"libGL.so.$(usex compat ${NV_SOVER} 1.0.0) ${GL_ROOT}"
@@ -456,54 +466,48 @@ src_install-libs() {
 			"libGLX.so.0 ${GL_ROOT}"
 			"libGLX_nvidia.so.${NV_SOVER} ${GL_ROOT}"
 			"libGLdispatch.so.0 ${GL_ROOT}"
-			"libOpenCL.so.1.0.0 ${CL_ROOT}"
 			"libOpenGL.so.0 ${GL_ROOT}"
-			"libcuda.so.${NV_SOVER}"
 			"libnvcuvid.so.${NV_SOVER}"
-			"libnvidia-compiler.so.${NV_SOVER}"
 			"libnvidia-eglcore.so.${NV_SOVER}"
 			"libnvidia-encode.so.${NV_SOVER}"
-			"libnvidia-fatbinaryloader.so.${NV_SOVER}"
 			"libnvidia-fbc.so.${NV_SOVER}"
 			"libnvidia-glcore.so.${NV_SOVER}"
 			"libnvidia-glsi.so.${NV_SOVER}"
 			"libnvidia-ifr.so.${NV_SOVER}"
-			"libnvidia-opencl.so.${NV_SOVER}"
-			"libnvidia-ptxjitcompiler.so.${NV_SOVER}"
 			"libvdpau_nvidia.so.${NV_SOVER}"
 		)
 
 		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
 		then
-			NV_GLX_LIBRARIES+=(
+			NV_LIBRARIES+=(
 				"libnvidia-egl-wayland.so.1.0.1"
 			)
 		fi
-
-		if use kernel_linux && has_multilib_profile && [[ ${ABI} == "amd64" ]];
-		then
-			NV_GLX_LIBRARIES+=(
-				"libnvidia-wfb.so.${NV_SOVER}"
-			)
-		fi
-
-		if use kernel_FreeBSD; then
-			NV_GLX_LIBRARIES+=(
-				"libnvidia-tls.so.${NV_SOVER}"
-			)
-		fi
-
-		if use kernel_linux; then
-			NV_GLX_LIBRARIES+=(
-				"libnvidia-ml.so.${NV_SOVER}"
-				"tls/libnvidia-tls.so.${NV_SOVER}"
-			)
-		fi
-
-		for NV_LIB in "${NV_GLX_LIBRARIES[@]}"; do
-			donvidia "${nv_libdir}"/${NV_LIB}
-		done
 	fi
+
+	if use kernel_linux && has_multilib_profile && [[ ${ABI} == "amd64" ]];
+	then
+		NV_LIBRARIES+=(
+			"libnvidia-wfb.so.${NV_SOVER}"
+		)
+	fi
+
+	if use kernel_FreeBSD; then
+		NV_LIBRARIES+=(
+			"libnvidia-tls.so.${NV_SOVER}"
+		)
+	fi
+
+	if use kernel_linux; then
+		NV_LIBRARIES+=(
+			"libnvidia-ml.so.${NV_SOVER}"
+			"tls/libnvidia-tls.so.${NV_SOVER}"
+		)
+	fi
+
+	for NV_LIB in "${NV_LIBRARIES[@]}"; do
+		donvidia "${nv_libdir}"/${NV_LIB}
+	done
 }
 
 pkg_preinst() {
