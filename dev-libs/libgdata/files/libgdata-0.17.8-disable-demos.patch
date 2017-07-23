@@ -1,0 +1,60 @@
+From 12fb11f46a7eb4054b74679a6f5ad12dcc41132d Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <g.dartiguelongue@lexfo.fr>
+Date: Sun, 23 Jul 2017 20:46:19 +0200
+Subject: [PATCH] Control build of demos
+
+Building demos is not necessary for distributions. Allow disabling it
+but keep it enabled by default.
+---
+ Makefile.am  | 2 ++
+ configure.ac | 7 +++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0e4cf631..8c0c7143 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -635,6 +635,7 @@ endif
+ CODE_COVERAGE_DIRECTORY = $(top_builddir)/gdata
+ CODE_COVERAGE_LCOV_OPTIONS = --base-directory $(abs_top_srcdir)
+ 
++if ENABLE_BUILD_DEMOS
+ # Demo programs
+ noinst_PROGRAMS = \
+ 	demos/youtube/youtube-cli \
+@@ -650,6 +651,7 @@ if HAVE_GTK
+ noinst_PROGRAMS += 			\
+ 	demos/scrapbook/scrapbook
+ endif
++endif
+ 
+ demos_docs_list_docs_list_SOURCES = \
+ 	demos/docs-list/docs-list.c \
+diff --git a/configure.ac b/configure.ac
+index 3b0530c3..1e09f277 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -152,6 +152,10 @@ AC_SUBST([GNOME_PACKAGES_PRIVATE])
+ AC_SUBST([GNOME_PACKAGES])
+ AC_SUBST([GOA_ENABLED])
+ 
++AC_ARG_ENABLE([build_demos],
++              AS_HELP_STRING([--enable-build-demos],
++                             [Enable building demos (default: yes)]),,
++              [enable_build_demos=yes])
+ AC_ARG_ENABLE([always_build_tests],
+               AS_HELP_STRING([--enable-always-build-tests],
+                              [Enable always building tests (default: yes)]),,
+@@ -161,6 +165,9 @@ AC_ARG_ENABLE([installed_tests],
+                              [Install test programs (default: no)]),,
+               [enable_installed_tests=no])
+ 
++AM_CONDITIONAL([ENABLE_BUILD_DEMOS],
++               [test "$enable_build_demos" = "yes"])
++
+ AM_CONDITIONAL([ENABLE_ALWAYS_BUILD_TESTS],
+                [test "$enable_always_build_tests" = "yes"])
+ AC_SUBST([ENABLE_ALWAYS_BUILD_TESTS],[$enable_always_build_tests])
+-- 
+2.13.2
+
