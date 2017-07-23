@@ -38,6 +38,6 @@
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
-		<doc>http://doc.qt.io/qtcreator/</doc>
+		<doc>https://doc.qt.io/qtcreator/</doc>
 	</upstream>
 </pkgmetadata>
