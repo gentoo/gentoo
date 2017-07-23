@@ -1,12 +1,17 @@
 certificate version 0.1
-pusher EC917A6D 1500812410 +0900
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1500812410-9420eeb021c6e2b3628f
+pusher 0x74D9F74EEAC6A3B1 1500812482 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1500812483-5186683d416c4c708bc1
 
-abc33f1899f63f3c2329719b7284168e15a90d2b 0218e40f773d82a335aad452a7b2af4eb8211f31 refs/heads/master
+0218e40f773d82a335aad452a7b2af4eb8211f31 bac375a05daeb0eb7b126fe6d955efa412da8740 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQTAIwhkWOZuJWLNg4Qvjqy67JF6bQUCWXSUegAKCRAvjqy67JF6
-bTz+AJ99M2apX8AgAMkGFLnjXpfvq9gKjQCfZb9IkGko+4z9KjGPC3uLU62TwAA=
-=Twop
+iQEzBAABCAAdFiEE9NJH0U9HSNCjLMHwdNn3TurGo7EFAll0lMIACgkQdNn3TurG
+o7HuSwf/bTekTLMmMLvuRKWqxaSpPg4esPVANkJg2s6pUter6sz+QLSqkseVq5Us
++OmwZS575UphCa37cHkTbOp7IPTIL59ioaLIJNgzwB5aEopldOaOezASZl5iKsk5
+2GLmqYmq/HVwdp2YAmFJl8aeAwhQ/T5Aej8xFhQdMkBC804NkeCiEZTAbu+yqVfb
+44HgJwFIVnKXgCWo8cp1087Pxf+bGSsYAMV7uJKh5EFrq1WvEntOHcZhqL41b/en
+d+qWY6wN2NFUdawgtL1moPk+44lN/Aml1slvG/ZHmqy5vyGuDtZKsSagRqWxmmbr
+80VZM05WfO5OBcIUm1Q4s7GQVbm/nQ==
+=6o+m
 -----END PGP SIGNATURE-----
