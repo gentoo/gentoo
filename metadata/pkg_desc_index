@@ -1528,7 +1528,7 @@ app-i18n/ibus-tutcode 1.0.0 1.0.1 1.0.2 1.0.2-r1: a Japanese TUT-Code input engi
 app-i18n/ibus-unikey 0.6.1 0.6.1-r1: Vietnamese Input Method Engine for IBUS using Unikey IME
 app-i18n/im-canna 0.3.2.2 0.3.2.2-r1: Japanese Canna input method module for GTK+2
 app-i18n/im-chooser 1.6.2: Desktop Input Method configuration tool
-app-i18n/im-freewnn 0.0.2-r2: Japanese FreeWnn input method module for GTK+2
+app-i18n/im-freewnn 0.0.2-r2 0.0.2-r3: Japanese FreeWnn input method module for GTK+2
 app-i18n/imhangul 2.0.0 2.1.0 3.1.1: Gtk+-3.0 Hangul Input Modules
 app-i18n/imsettings 1.6.8: Delivery framework for general Input Method configuration
 app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement with UTF-8 support
