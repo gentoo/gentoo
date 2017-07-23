@@ -385,14 +385,7 @@ case ${KDE_HANDBOOK} in
 		[[ ${PN} != kdelibs ]] && kderdepend+=" ${kdehandbookrdepend}"
 		;;
 	optional)
-		case ${PN} in
-			kcontrol | kdesu | knetattach)
-				IUSE+=" handbook"
-				;;
-			*)
-				IUSE+=" +handbook"
-				;;
-		esac
+		IUSE+=" +handbook"
 		kdedepend+=" handbook? ( ${kdehandbookdepend} )"
 		[[ ${PN} != kdelibs ]] && kderdepend+=" handbook? ( ${kdehandbookrdepend} )"
 		;;
