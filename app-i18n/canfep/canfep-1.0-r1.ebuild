@@ -20,7 +20,10 @@ RDEPEND="app-i18n/canna
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-posix-pty.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-posix-pty.patch
+	"${FILESDIR}"/${PN}-termcap.patch
+)
 
 src_prepare() {
 	use unicode && eapply "${DISTDIR}"/${PN}_utf8.diff
