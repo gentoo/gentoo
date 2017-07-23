@@ -10,13 +10,13 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gtk gtk3 nls"
+IUSE="gtk gtk2 nls"
 
 CDEPEND="app-i18n/ibus
 	dev-libs/m17n-lib
 	gtk? (
-		!gtk3? ( x11-libs/gtk+:2 )
-		gtk3? ( x11-libs/gtk+:3 )
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3 )
 	)
 	nls? ( virtual/libintl )"
 RDEPEND="${CDEPEND}
@@ -28,10 +28,10 @@ DEPEND="${CDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
-REQUIRED_USE="gtk3? ( gtk )"
+REQUIRED_USE="gtk2? ( gtk )"
 
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		$(use_with gtk gtk $(usex !gtk3 2.0 3.0))
+		$(use_with gtk gtk $(usex gtk2 2.0 3.0))
 }
