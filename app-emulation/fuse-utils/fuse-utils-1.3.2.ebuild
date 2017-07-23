@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit eutils
 
@@ -23,9 +23,4 @@ src_configure() {
 	econf \
 	$(use_with audiofile ) \
 	$(use_with gcrypt libgcrypt)
-}
-
-src_install() {
-	default
-	doman man/*.1
 }

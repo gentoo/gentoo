@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
@@ -87,9 +87,4 @@ src_configure() {
 		$(use_with xml libxml2) \
 		$(use_with png ) \
 		$(use_enable memlimit smallmem)
-}
-
-src_install() {
-	default
-	doman man/fuse.1
 }

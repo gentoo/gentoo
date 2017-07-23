@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Spectrum emulation library"
 HOMEPAGE="http://fuse-emulator.sourceforge.net/libspectrum.php"
@@ -32,5 +32,4 @@ src_configure() {
 src_install() {
 	default
 	dodoc doc/*.txt *.txt
-	doman doc/libspectrum.3
 }
