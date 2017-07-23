@@ -1,33 +1,37 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI="6"
+
+inherit ltprune
 
 DESCRIPTION="GObject-based XIM protocol library"
 HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
-SRC_URI="https://bitbucket.org/tagoh/libgxim/downloads/${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
-RDEPEND=">=dev-libs/check-0.9.4
-	>=dev-libs/dbus-glib-0.74
-	>=dev-libs/glib-2.32
-	>=sys-apps/dbus-0.23
-	>=x11-libs/gtk+-2.2:2"
+RDEPEND="dev-libs/dbus-glib
+	dev-libs/glib:2
+	sys-apps/dbus
+	virtual/libintl
+	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
+	dev-libs/check
 	dev-lang/ruby
+	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( >=dev-util/gtk-doc-1.8 )"
 
 src_configure() {
-	econf $(use_enable static-libs static) || die
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-
-	dodoc AUTHORS ChangeLog NEWS README || die
+	default
+	prune_libtool_files
 }
