@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ HOMEPAGE="http://cyberelk.net/tim/software/system-config-printer/"
 SRC_URI="http://cyberelk.net/tim/data/system-config-printer/${MY_V}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ppc64 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sh ~sparc x86"
 SLOT="0"
 
 IUSE="doc gnome-keyring policykit"
