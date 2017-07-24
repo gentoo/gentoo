@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/cfe-${PV/_/}.src/bindings/python
 
 src_test() {
-	python_foreach_impl nosetests -v
+	python_foreach_impl nosetests -v || die
 }
 
 src_install() {
