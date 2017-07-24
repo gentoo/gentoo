@@ -220,7 +220,7 @@ src_install () {
 	dobin auxiliary/rmail/rmail
 
 	# Provide another link for legacy FSH
-	dosym /usr/sbin/sendmail /usr/$(get_libdir)/sendmail
+	dosym ../sbin/sendmail /usr/$(get_libdir)/sendmail
 
 	# Install qshape, posttls-finger and collate
 	dobin auxiliary/qshape/qshape.pl
