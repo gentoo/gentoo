@@ -13,19 +13,25 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="
-	app-shells/bash
-	net-misc/curl
-"
+RDEPEND="app-shells/bash
+	net-misc/curl"
+
+src_unpack() {
+	default
+
+	# Bug 619956. Change directories first to ensure that "unpack" outputs
+	# to ${S} and not to ${WORKDIR}.
+	cd "${S}" || die
+	unpack "${S}/podracer.1.gz"
+}
 
 src_install() {
 	dobin podracer
 	sed -i -e "s:sample=/usr/share/doc/\$progname/sample.subscriptions:sample=/usr/share/doc/${PF}/sample.subscriptions:" "${D}"/usr/bin/podracer || die
 	dodoc CREDITS README ChangeLog TODO
-	doman podracer.1.gz
-	docompress -x /usr/share/doc/${PF}/sample.subscriptions
-	insinto /usr/share/doc/${PF}
-	doins sample.subscriptions
+	doman podracer.1
+	docompress -x "/usr/share/doc/${PF}/sample.subscriptions"
+	dodoc sample.subscriptions
 	insinto /etc/
 	doins podracer.conf
 }
