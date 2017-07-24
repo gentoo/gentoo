@@ -5190,7 +5190,10 @@ dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5 0.7: Module which offers basic control of ANSI compliant terminals
 dev-ml/OCaml-ImageMagick 0.34-r1: Provide the ImageMagick methods to OCaml
 dev-ml/alcotest 0.7.2 0.8.0: A lightweight and colourful test framework
-dev-ml/angstrom 0.5.1: Parser combinators built for speed and memory efficiency
+dev-ml/angstrom 0.5.1 0.6.0: Parser combinators built for speed and memory efficiency
+dev-ml/angstrom-async 0.6.0: Parser combinators built for speed and memory efficiency
+dev-ml/angstrom-lwt-unix 0.6.0: Parser combinators built for speed and memory efficiency
+dev-ml/angstrom-unix 0.6.0: Parser combinators built for speed and memory efficiency
 dev-ml/astring 0.8.3: Alternative String module for OCaml
 dev-ml/async 0.9.0: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 0.9.0: Jane Street Capital's asynchronous execution library (extra)
