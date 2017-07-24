@@ -1,0 +1,18 @@
+diff -uNr bbswitch-0.8/bbswitch.c bbswitch-0.8-new/bbswitch.c
+--- bbswitch-0.8/bbswitch.c	2013-12-04 18:22:06.000000000 -0500
++++ bbswitch-0.8-new/bbswitch.c	2017-07-08 01:11:54.588545766 -0400
+@@ -31,7 +31,14 @@
+ #include <linux/pci.h>
+ #include <linux/acpi.h>
+ #include <linux/module.h>
++#include <linux/version.h>
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++#include <linux/uaccess.h>
++#else
+ #include <asm/uaccess.h>
++#endif
++
+ #include <linux/suspend.h>
+ #include <linux/seq_file.h>
+ #include <linux/pm_runtime.h>
