@@ -1,0 +1,45 @@
+Allow libffmpeg to be built for Chromium-based browsers
+https://patchwork.ffmpeg.org/patch/4500/
+
+diff --git a/Makefile b/Makefile
+index 29870d7..1e267e7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,6 +65,7 @@ all: all-yes
+ 
+ include $(SRC_PATH)/tools/Makefile
+ include $(SRC_PATH)/ffbuild/common.mak
++include $(SRC_PATH)/ffbuild/libffmpeg.mak
+ 
+ FF_EXTRALIBS := $(FFEXTRALIBS)
+ FF_DEP_LIBS  := $(DEP_LIBS)
+diff --git a/ffbuild/libffmpeg.mak b/ffbuild/libffmpeg.mak
+new file mode 100644
+index 0000000..992cf3c
+--- /dev/null
++++ b/ffbuild/libffmpeg.mak
+@@ -0,0 +1,21 @@
++LIBFFMPEG = $(SLIBPREF)ffmpeg$(SLIBSUF)
++LIBFFMPEG_LINK = $(LD) -shared -Wl,-soname,$(LIBFFMPEG) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,relro -Wl,-z,defs -Wl,--gc-sections $(LDFLAGS) $(LDLIBFLAGS) -o $(LIBFFMPEG)
++
++libffmpeg-: libavcodec/$(LIBPREF)avcodec$(LIBSUF) libavformat/$(LIBPREF)avformat$(LIBSUF) libavutil/$(LIBPREF)avutil$(LIBSUF) libswresample/$(LIBPREF)swresample$(LIBSUF)
++	$(LIBFFMPEG_LINK) -Wl,--whole-archive $^ -Wl,--no-whole-archive $(FFEXTRALIBS)
++
++libffmpeg-yes: libavcodec/$(SLIBPREF)avcodec$(SLIBSUF) libavformat/$(SLIBPREF)avformat$(SLIBSUF) libavutil/$(SLIBPREF)avutil$(SLIBSUF)
++	$(LIBFFMPEG_LINK) -Wl,--no-as-needed -lavcodec -lavformat -lavutil
++
++$(LIBFFMPEG): libffmpeg-$(CONFIG_SHARED)
++libffmpeg: $(LIBFFMPEG)
++
++install-libffmpeg: $(LIBFFMPEG)
++	$(Q)mkdir -p "$(SHLIBDIR)/chromium"
++	$(INSTALL) -m 755 $< "$(SHLIBDIR)/chromium/$<"
++	$(STRIP) "$(SHLIBDIR)/chromium/$<"
++
++uninstall-libffmpeg:
++	$(RM) "$(SHLIBDIR)/chromium/$(LIBFFMPEG)"
++
++.PHONY: libffmpeg libffmpeg-* install-libffmpeg
+-- 
+2.13.1
+
