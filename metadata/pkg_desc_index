@@ -10309,7 +10309,7 @@ dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
-dev-util/conan 0.24.0-r1: Distributed C/C++ package manager
+dev-util/conan 0.24.0-r1 0.25.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.5.1: Command-line utility to create projects from cookiecutters (project templates)
@@ -16509,7 +16509,7 @@ sci-libs/mmdb 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 d
 sci-libs/mmtk 2.7.9: Molecular Modeling ToolKit for Python
 sci-libs/monomer-db 5.41: Monomer library used for macromolecular structure building and refinement
 sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPFR
-sci-libs/mpir 2.6.0-r2 2.7.2: Library for arbitrary precision integer arithmetic (fork of gmp)
+sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 4.10.0-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/naga 2.1: Simplified Java NIO asynchronous sockets
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
@@ -16519,6 +16519,7 @@ sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.4.2-r1: Non-linear optimization library
+sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/octomap 1.8.1 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
@@ -16533,7 +16534,7 @@ sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.8.0 9999: 2D/3D image and point cloud processing
-sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
+sci-libs/pgplot 5.2.2-r6 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/plplot 5.11.1-r1 5.12.0-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r1 0.97-r2: Small, fast library to generate primes in order
