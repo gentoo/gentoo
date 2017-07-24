@@ -400,13 +400,14 @@ pkg_preinst() {
 			die "Could not find enigmail on disk during pkg_preinst()"
 		fi
 		if [[ ! -h "${emidpath}" ]] && [[ -d "${emidpath}" ]]; then
-			rm -Rf "${emidpath}" || (
-			eerror "Could not remove enigmail directory from previous installation,"
-			eerror "You must remove this by hand and rename the symbolic link yourself:"
-			eerror
-			eerror "\t cd ${EPREFIX}${MOZILLA_FIVE_HOME}/extensions"
-			eerror "\t rm -Rf ${emid}"
-			eerror "\t mv ${emid}.backup* ${emid}" )
+			if ! rm -R --interactive=never "${emidpath}" ; then
+				eerror "Could not remove enigmail directory from previous installation,"
+				eerror "You must remove this by hand and rename the symbolic link yourself:"
+				eerror
+				eerror "\t cd ${EPREFIX%/}${MOZILLA_FIVE_HOME}/extensions"
+				eerror "\t rm -Rf ${emid}"
+				eerror "\t mv ${emid}.backup* ${emid}"
+			fi
 		fi
 	fi
 }
