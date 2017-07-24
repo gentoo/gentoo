@@ -153,16 +153,19 @@ pkg_postinst() {
 	elog "http://forge.puppetlabs.com/gentoo/portage"
 	elog
 
-	if [ "$(get_major_version $REPLACING_VERSIONS)" = "3" ]; then
-		elog
-		elog "If you're upgrading from 3.x then please move everything in /etc/puppet to"
-		elog "/etc/puppetlabs/puppet"
-		elog "Also, puppet now uses config directories for modules and manifests."
-		elog "See https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_agent.html"
-		elog "and https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_server.html"
-		elog "for more information."
-		elog
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version $v)" = "3" ]; then
+			elog
+			elog "If you're upgrading from 3.x then please move everything in /etc/puppet to"
+			elog "/etc/puppetlabs/puppet"
+			elog "Also, puppet now uses config directories for modules and manifests."
+			elog "See https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_agent.html"
+			elog "and https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_server.html"
+			elog "for more information."
+			elog
+		fi
+	done
 
 	use emacs && elisp-site-regen
 	use xemacs && xemacs-elisp-site-regen
