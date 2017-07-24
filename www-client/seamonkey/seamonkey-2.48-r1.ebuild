@@ -94,6 +94,7 @@ RDEPEND="
 			)
 		)
 		=app-crypt/gnupg-1.4* )
+		x11-plugins/enigmail
 	)
 	jack? ( virtual/jack )
 "
@@ -106,10 +107,6 @@ DEPEND="
 		virtual/opengl )
 	x86? ( ${ASM_DEPEND}
 		virtual/opengl )
-"
-
-PDEPEND="
-	crypt? ( x11-plugins/enigmail )
 "
 
 BUILD_OBJ_DIR="${S}/seamonk"
@@ -350,6 +347,16 @@ src_install() {
 		rm -rf "${ED}"/usr/include "${ED}${MOZILLA_FIVE_HOME}"/{idl,include,lib,sdk}
 	fi
 
+	if use crypt ; then
+		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EROOT%/}"/usr/share/enigmail/install.rdf)
+		if [[ -n ${emid} ]]; then
+			dosym "${EPREFIX%/}"/usr/share/enigmail ${MOZILLA_FIVE_HOME}/extensions/${emid}
+		else
+			eerror "${EPREFIX%/}/usr/share/enigmail/install.rdf: No such file or directory"
+			die "<EM:ID> tag for x11-plugins/enigmail could not be found!"
+		fi
+	fi
+
 	if use chatzilla ; then
 		local emid='{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}'
 
@@ -382,6 +389,25 @@ pkg_preinst() {
 
 	if [ -d ${MOZILLA_FIVE_HOME}/plugins ] ; then
 		rm ${MOZILLA_FIVE_HOME}/plugins -rf
+	fi
+
+	# Because PM's dont seem to properly merge a symlink replacing a directory
+	if use crypt ; then
+		local emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EROOT%/}"/usr/share/enigmail/install.rdf)
+		local emidpath="${EROOT%/}"${MOZILLA_FIVE_HOME}/extensions/${emid}
+		if [[ -z ${emid} ]]; then
+			eerror "${EROOT%/}/usr/share/enigmail/install.rdf: No such file or directory"
+			die "Could not find enigmail on disk during pkg_preinst()"
+		fi
+		if [[ ! -h "${emidpath}" ]] && [[ -d "${emidpath}" ]]; then
+			rm -Rf "${emidpath}" || (
+			eerror "Could not remove enigmail directory from previous installation,"
+			eerror "You must remove this by hand and rename the symbolic link yourself:"
+			eerror
+			eerror "\t cd ${EPREFIX}${MOZILLA_FIVE_HOME}/extensions"
+			eerror "\t rm -Rf ${emid}"
+			eerror "\t mv ${emid}.backup* ${emid}" )
+		fi
 	fi
 }
 
