@@ -133,14 +133,12 @@ pkg_postinst() {
 	elog "http://forge.puppetlabs.com/gentoo/portage"
 	elog
 
-	if [ "$(get_major_version $REPLACING_VERSIONS)" = "3" ]; then
-		elog
-		elog "If you're upgrading from 3.x then please move everything in /etc/puppet to"
-		elog "/etc/puppetlabs/puppet"
-		elog "Also, puppet now uses config directories for modules and manifests."
-		elog "See https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_agent.html"
-		elog "and https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_server.html"
-		elog "for more information."
-		elog
-	fi
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version $v)" = "4" ]; then
+			elog
+			elog "Please see the following url for the release notes for puppet-5"
+			elog "https://docs.puppet.com/puppet/5.0/release_notes.html#if-youre-upgrading-from-puppet-4x"
+			elog
+		fi
+	done
 }
