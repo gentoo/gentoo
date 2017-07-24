@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-{gcc44,scons-blows,underlinking,gcc49}.patch
+	epatch "${FILESDIR}"/${P}-{gcc{44,49,6},scons-blows,underlinking}.patch
 }
 
 src_configure() {
