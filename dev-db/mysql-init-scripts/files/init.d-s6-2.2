@@ -25,13 +25,9 @@ mysql_svcname() {
 stringContain() { [ -z "${2##*$1*}" ] && [ -z "$1" -o -n "$2" ]; }
 
 bootstrap_galera() {
-	if ! service_stopped ; then
-		eerror "The server cannot be running to perform this action"
-		return 1
-	fi
 	MY_ARGS="--wsrep-new-cluster ${MY_ARGS}"
 	mark_service_starting
-	if start ; then
+	if start_pre && start ; then
 		mark_service_started
 		return 0
 	else
@@ -41,7 +37,11 @@ bootstrap_galera() {
 }
 
 
-extra_commands="checkconfig boostrap_galera"
+extra_commands="checkconfig"
+extra_stopped_commands="boostrap_galera"
+
+description_checkconfig="Verify the server's configuration"
+description_boostrap_galera="Start a new Galera cluster with this server as the initial node"
 supervisor=s6
 name=$(mysql_svcname)
 s6_service_timeout_stop="$((1000*${STOP_TIMEOUT:-120}))"
