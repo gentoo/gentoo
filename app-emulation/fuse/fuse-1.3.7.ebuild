@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
 
 DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
 HOMEPAGE="http://fuse-emulator.sourceforge.net"
@@ -13,38 +12,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa ao fbcon gpm gtk joystick memlimit png sdl svga X xml"
 
-# This build is heavily use dependent. Fuse user interface use flags are, in
-# order of precedence: gtk, sdl, X, svga and fbcon. X version of fuse will
-# be built if no valid user interface flag is chosen.
-RDEPEND="~app-emulation/libspectrum-1.3.5
-	gtk? ( x11-libs/gtk+:2
-		alsa? ( media-libs/alsa-lib )
-		!alsa? ( ao? ( media-libs/libao ) )
-		joystick? ( media-libs/libjsw ) )
-	!gtk? (
-		sdl? ( >=media-libs/libsdl-1.2.4 )
-		!sdl? (
-			X? ( x11-libs/libX11
-				x11-libs/libXext
-				alsa? ( media-libs/alsa-lib )
-				!alsa? ( ao? ( media-libs/libao ) )
-				joystick? ( media-libs/libjsw ) )
-			!X? (
-				svga? ( media-libs/svgalib
-					alsa? ( media-libs/alsa-lib )
-					!alsa? ( ao? ( media-libs/libao ) ) )
-				!svga? (
-					fbcon? (
-						gpm? ( sys-libs/gpm )
-						alsa? ( media-libs/alsa-lib )
-						!alsa? ( ao? ( media-libs/libao ) )
-						joystick? ( media-libs/libjsw ) )
-					!fbcon? ( x11-libs/libX11
-						x11-libs/libXext
-						alsa? ( media-libs/alsa-lib )
-						!alsa? ( ao? ( media-libs/libao ) )
-						joystick? ( media-libs/libjsw ) ) ) ) ) )
+# Only one UI back-end can be enabled at a time
+REQUIRED_USE="^^ ( X fbcon gtk sdl svga )"
+
+RDEPEND="=app-emulation/libspectrum-1.3.5
 	dev-libs/glib:2
+	X? ( x11-libs/libX11
+		x11-libs/libXext )
+	alsa? ( media-libs/alsa-lib )
+	ao? ( media-libs/libao )
+	gpm? ( sys-libs/gpm )
+	gtk? ( x11-libs/gtk+:3 )
+	joystick? ( media-libs/libjsw )
+	sdl? ( media-libs/libsdl )
+	svga? ( media-libs/svgalib )
 	png? ( media-libs/libpng:0= sys-libs/zlib )
 	xml? ( dev-libs/libxml2:2 )"
 DEPEND="${RDEPEND}
@@ -53,11 +34,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog README THANKS )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local guiflag
@@ -72,8 +48,6 @@ src_configure() {
 		guiflag="--with-svgalib"
 	elif use fbcon; then
 		guiflag="--with-fb"
-	else  # We default to X user interface
-		guiflag="--without-gtk"
 	fi
 
 	econf \
