@@ -176,12 +176,15 @@ pkg_postinst() {
 		elog
 	fi
 
-	if [ "$(get_major_version $REPLACING_VERSIONS)" = "2" ]; then
-		elog
-		elog "If you're upgrading from 2.x then we strongly suggest you to read:"
-		elog "http://docs.puppetlabs.com/guides/upgrading.html"
-		elog
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version $v)" = "2" ]; then
+			elog
+			elog "If you're upgrading from 2.x then we strongly suggest you to read:"
+			elog "http://docs.puppetlabs.com/guides/upgrading.html"
+			elog
+		fi
+	done
 
 	use emacs && elisp-site-regen
 	use xemacs && xemacs-elisp-site-regen
