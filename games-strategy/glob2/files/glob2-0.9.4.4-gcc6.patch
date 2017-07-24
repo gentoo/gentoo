@@ -1,0 +1,49 @@
+Bug: https://bugs.gentoo.org/610382
+Upstream commit: https://bitbucket.org/giszmo/glob2/commits/c9dc715624318e4fea4abb24e04f0ebdd9cd8d2a
+
+# HG changeset patch
+# User Jonathan Wakely <jwakely@redhat.com>
+# Date 1485875296 0
+# Node ID c9dc715624318e4fea4abb24e04f0ebdd9cd8d2a
+# Parent  c4da01699846179d8bf21e8dae2b973158ec0775
+Fix last argument to ChooseMapScreen constructor
+
+Since C++14 'false' is not a valid null pointer constant, so cannot be passed
+to functions expecting pointer arguments.
+
+diff --git a/src/EditorMainMenu.cpp b/src/EditorMainMenu.cpp
+--- a/src/EditorMainMenu.cpp
++++ b/src/EditorMainMenu.cpp
+@@ -90,7 +90,7 @@
+ 		}
+ 		else if (par1==LOADMAP)
+ 		{
+-			ChooseMapScreen chooseMapScreen("maps", "map", false, "games", "game", false);
++			ChooseMapScreen chooseMapScreen("maps", "map", false, "games", "game", NULL);
+ 			int rc=chooseMapScreen.execute(globalContainer->gfx, 40);
+ 			if (rc==ChooseMapScreen::OK)
+ 			{
+diff --git a/src/LANMenuScreen.cpp b/src/LANMenuScreen.cpp
+--- a/src/LANMenuScreen.cpp
++++ b/src/LANMenuScreen.cpp
+@@ -62,7 +62,7 @@
+ 		}
+ 		else if(par1 == HOST)
+ 		{
+-			ChooseMapScreen cms("maps", "map", false, "games", "game", false);
++			ChooseMapScreen cms("maps", "map", false, "games", "game", NULL);
+ 			int rc = cms.execute(globalContainer->gfx, 40);
+ 			if(rc == ChooseMapScreen::OK)
+ 			{
+diff --git a/src/YOGClientLobbyScreen.cpp b/src/YOGClientLobbyScreen.cpp
+--- a/src/YOGClientLobbyScreen.cpp
++++ b/src/YOGClientLobbyScreen.cpp
+@@ -326,7 +326,7 @@
+ 
+ void YOGClientLobbyScreen::hostGame()
+ {
+-	ChooseMapScreen cms("maps", "map", false, "games", "game", false);
++	ChooseMapScreen cms("maps", "map", false, "games", "game", NULL);
+ 	int rc = cms.execute(globalContainer->gfx, 40);
+ 	if(rc == ChooseMapScreen::OK)
+ 	{
