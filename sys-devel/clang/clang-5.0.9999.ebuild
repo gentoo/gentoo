@@ -16,6 +16,7 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
+EGIT_BRANCH="release_50"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -24,7 +25,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
-SLOT="6"
+SLOT="$(get_major_version)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget
 	+static-analyzer test xml z3 elibc_musl kernel_FreeBSD

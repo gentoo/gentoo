@@ -11,6 +11,7 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
+EGIT_BRANCH="release_50"
 
 LICENSE="UoI-NCSA"
 SLOT="0"

@@ -16,6 +16,7 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
+EGIT_BRANCH="release_50"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -32,7 +33,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
-SLOT="6"
+SLOT="$(get_major_version)"
 KEYWORDS=""
 IUSE="debug +doc gold libedit +libffi ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
