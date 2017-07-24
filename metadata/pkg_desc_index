@@ -10420,7 +10420,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.46.2 2.46.3 2.57 2.60.1 2.67: Extensible continuous integration server
+dev-util/jenkins-bin 2.46.3 2.57 2.60.1 2.60.2 2.67: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
@@ -12887,7 +12887,7 @@ media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.1.2 1.1.3 1.1.4 1.1.4.1: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2-r1: The OpenAL Utility Toolkit
-media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3 3.3.1: Importer library to import assets from 3D files
+media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3 3.3.1 4.0.0: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
 media-libs/aubio 0.4.1-r1 0.4.2-r1 0.4.3-r1 0.4.4-r1 0.4.5-r1: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
