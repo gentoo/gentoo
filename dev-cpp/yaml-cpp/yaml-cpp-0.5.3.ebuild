@@ -19,6 +19,8 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-release-${PV}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
+
 src_prepare() {
 	sed -i \
 		-e 's:INCLUDE_INSTALL_ROOT_DIR:INCLUDE_INSTALL_DIR:g' \
