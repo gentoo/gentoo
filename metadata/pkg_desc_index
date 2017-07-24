@@ -5304,7 +5304,7 @@ dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
-dev-ml/ocaml-migrate-parsetree 0.7 1.0 1.0.1: Convert OCaml parsetrees between different major versions
+dev-ml/ocaml-migrate-parsetree 1.0.1: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
@@ -5385,7 +5385,7 @@ dev-ml/ppx_sexp_conv 0.9.0-r1: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.9.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.9.0: Standard library for ppx rewriters
 dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0: Tools for authors of ppx rewriters
-dev-ml/ppx_tools_versioned 5.0_beta1 5.0.1: Tools for authors of ppx rewriters
+dev-ml/ppx_tools_versioned 5.0.1: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators

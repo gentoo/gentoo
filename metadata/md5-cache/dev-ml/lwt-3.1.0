@@ -4,10 +4,10 @@ DESCRIPTION=Cooperative light-weight thread library for OCaml
 EAPI=5
 HOMEPAGE=http://ocsigen.org/lwt
 IUSE=+camlp4 +libev
-KEYWORDS=~amd64 ~arm64 ~x86-fbsd
+KEYWORDS=~amd64 ~arm ~arm64 ~x86-fbsd
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.02:= dev-ml/result:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_tools_versioned:= libev? ( dev-libs/libev ) camlp4? ( dev-ml/camlp4:= ) !<www-servers/ocsigen-1.1
 SLOT=0/3.1.0
 SRC_URI=https://github.com/ocsigen/lwt/archive/3.1.0.tar.gz -> lwt-3.1.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
-_md5_=c666440e9c5019b1b0085f1ed3698a73
+_md5_=9621d6e47985c54c5e9c98eab76a46a6
