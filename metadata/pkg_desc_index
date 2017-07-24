@@ -18403,7 +18403,7 @@ www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.0.2 2.1.1 2.1.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit / QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.46-r1 2.48: Seamonkey Web Browser
+www-client/seamonkey 2.46-r1 2.48 2.48-r1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
