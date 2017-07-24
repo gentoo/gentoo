@@ -16,6 +16,13 @@ RDEPEND="dev-lang/php:*"
 DEPEND="${RDEPEND}
 	doc? ( dev-php/phpDocumentor )"
 
+src_prepare() {
+	default
+
+	# Bug 626060 (CVE-2017-11503) temporary workaround.
+	rm examples/code_generator.phps || die
+}
+
 src_compile(){
 	if use doc; then
 		phpdoc --filename="class.*.php" \
