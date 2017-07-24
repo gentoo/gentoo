@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}/bindings/python
 
 src_test() {
-	python_foreach_impl nosetests -v
+	python_foreach_impl nosetests -v || die
 }
 
 src_install() {
