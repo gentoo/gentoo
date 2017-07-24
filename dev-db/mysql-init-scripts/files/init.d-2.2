@@ -2,7 +2,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-extra_commands="checkconfig bootstrap_galera"
+extra_commands="checkconfig"
+extra_stopped_commands="boostrap_galera"
+
+description_checkconfig="Verify the server's configuration"
+description_boostrap_galera="Start a new Galera cluster with this server as the initial node"
 
 depend() {
 	use net.lo
@@ -27,10 +31,6 @@ mysql_svcname() {
 stringContain() { [ -z "${2##*$1*}" ] && [ -z "$1" -o -n "$2" ]; }
 
 bootstrap_galera() {
-	if ! service_stopped ; then
-		eerror "The server cannot be running to perform this action"
-		return 1
-	fi
 	MY_ARGS="--wsrep-new-cluster ${MY_ARGS}"
 	mark_service_starting
 	if start ; then
