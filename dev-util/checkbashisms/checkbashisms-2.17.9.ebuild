@@ -1,12 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 MY_PN="devscripts"
 MY_P="${MY_PN}-${PV}"
-
-inherit eutils
 
 DESCRIPTION="Perl script to check for commonly used bash features not defined by POSIX"
 HOMEPAGE="https://packages.debian.org/devscripts https://anonscm.debian.org/cgit/collab-maint/devscripts.git"
@@ -26,12 +24,10 @@ RDEPEND="dev-lang/perl
 
 S="${WORKDIR}/${MY_P}/scripts"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.15.9-command-vV.patch
-)
-
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
+
+	eapply -p2 "${FILESDIR}"/${PN}-2.15.9-command-vV.patch
 
 	sed "s@###VERSION###@${PV}@" -i checkbashisms.pl || die
 }
