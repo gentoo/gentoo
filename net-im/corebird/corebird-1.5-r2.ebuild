@@ -26,7 +26,7 @@ RDEPEND="dev-db/sqlite:3
 		media-plugins/gst-plugins-libav:1.0
 		media-plugins/gst-plugins-soup:1.0
 		media-plugins/gst-plugins-hls:1.0 )
-	spellcheck? ( >=app-text/gspell-1.0 )
+	spellcheck? ( >=app-text/gspell-1.0[vala] )
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.91:0.7
 	>=x11-libs/gtk+-3.18:3"
