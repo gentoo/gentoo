@@ -1385,7 +1385,7 @@ app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 2.0 2.0.1 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 2.0 2.0.1 2.0.2 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170614 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -4099,8 +4099,8 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.4.0 7.2.6.10: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.4.0 7.2.6.10: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea 3.5.0 7.2.6.10: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea-bin 3.4.0 3.5.0 7.2.6.10: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -11722,7 +11722,7 @@ gnome-extra/sushi 3.24.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.2: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.22.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1: XSL stylesheets for yelp
-gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
+gnome-extra/zeitgeist 0.9.16 1.0: Service to log activities and present to other apps
 gnome-extra/zeitgeist-explorer 0.2-r1 0.2-r2: Monitor and inspect Zeitgeist's log at a low level - developer tool
 gnome-extra/zenity 3.22.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
@@ -17949,7 +17949,7 @@ sys-power/acpilight 1.0: Replacement for xbacklight that uses the ACPI interface
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14 3.14.14-r1: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
-sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
+sys-power/bbswitch 0.8 0.8-r1 9999: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0-r1 4.7.0-r1 4.9.0: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20140828 20160729 20161222: Intel ACPI Source Language (ASL) compiler
