@@ -1898,7 +1898,7 @@ app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4: a small utility that measures throughput between stdin and stdout
-app-misc/plod 1.9-r1: A tool designed to help administrators keep track of their daily activities
+app-misc/plod 1.9-r1 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r2 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
@@ -13882,7 +13882,7 @@ media-sound/pnmixer 0.6_pre20111213 0.7.1 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
-media-sound/podracer 1.4-r1: A simple podcast aggregator, designed for cron
+media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
 media-sound/pragha 1.3.1-r1 1.3.3: A lightweight music player (for Xfce)
