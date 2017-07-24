@@ -5064,7 +5064,7 @@ dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
 dev-libs/sdformat 5.1.0: Simulation Description Format (SDF) parser
-dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0 0.26.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
+dev-libs/serd 0.26.0 0.28.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/sink 0.1.0 0.3.0: A data access layer handling synchronization, caching and indexing
@@ -5273,7 +5273,7 @@ dev-ml/lwt_react 1.0.1: GLib integration for Lwt
 dev-ml/lwt_ssl 1.0.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.5: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20170101 20170418 20170509 20170607 20170712: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20170712: LR(1) parser generator for the OCaml language
 dev-ml/merlin 2.5.3 2.5.4 2.5.5: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
@@ -9399,7 +9399,7 @@ dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby
 dev-ruby/arel 5.0.1.20140414130214 6.0.3 6.0.4 7.1.4 8.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.3.0 2.4.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
-dev-ruby/asciidoctor 1.5.5-r1 1.5.6: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor 1.5.5-r1 1.5.6 1.5.6.1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciidoctor-diagram 1.5.4: A set of Asciidoctor extensions that enable you to add diagrams
 dev-ruby/asciimath 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0 2.3.0: A library for working with abstract syntax trees
