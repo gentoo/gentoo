@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils linux-info linux-mod python-single-r1 systemd autotools
+inherit autotools eutils linux-info linux-mod python-r1 systemd
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="http://openvswitch.org"
@@ -13,22 +13,25 @@ SRC_URI="http://openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug modules monitor +ssl"
-REQUIRED_USE="monitor? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-apps/openrc-0.10.5
+RDEPEND="
+	|| (
+		>=sys-apps/openrc-0.10.5
+		sys-apps/systemd
+	)
 	ssl? ( dev-libs/openssl:0= )
-	monitor? (
-		${PYTHON_DEPS}
-		dev-python/twisted-core
-		dev-python/twisted-conch
-		dev-python/twisted-web
-		dev-python/PyQt4[${PYTHON_USEDEP}]
-		dev-python/zope-interface[${PYTHON_USEDEP}] )
+	${PYTHON_DEPS}
+	~dev-python/ovs-2.7.0[${PYTHON_USEDEP}]
+	dev-python/twisted[conch,${PYTHON_USEDEP}]
+	dev-python/zope-interface[${PYTHON_USEDEP}]
 	debug? ( dev-lang/perl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES="${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
 
 CONFIG_CHECK="~NET_CLS_ACT ~NET_CLS_U32 ~NET_SCH_INGRESS ~NET_ACT_POLICE ~IPV6 ~TUN"
 MODULE_NAMES="openvswitch(net:${S}/datapath/linux)"
@@ -37,14 +40,13 @@ BUILD_TARGETS="all"
 pkg_setup() {
 	if use modules ; then
 		CONFIG_CHECK+=" ~!OPENVSWITCH"
-		kernel_is ge 2 6 32 || die "Linux >= 2.6.32 and <= 3.12 required for userspace modules"
-		kernel_is lt 3 12 || die "Linux >= 2.6.32 and <= 3.12 required for userspace modules"
+		kernel_is ge 3 10 0 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
+		kernel_is le 4 9 999 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
 		linux-mod_pkg_setup
 	else
 		CONFIG_CHECK+=" ~OPENVSWITCH"
 		linux-info_pkg_setup
 	fi
-	use monitor && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -52,14 +54,15 @@ src_prepare() {
 	sed -i \
 		-e '/^SUBDIRS/d' \
 		datapath/Makefile.in || die "sed failed"
-	epatch "${FILESDIR}/xcp-interface-reconfigure.patch"
-	epatch "${FILESDIR}/kernel-3.12-support.patch"
 	eautoreconf
+	default
 }
+
 src_configure() {
 	set_arch_to_kernel
+	# monitor is statically enabled for bug 596206
 	use monitor || export ovs_cv_python="no"
-	#pyside is staticly disabled
+	# pyside is staticly disabled
 	export ovs_cv_pyuic4="no"
 
 	local linux_config
@@ -77,32 +80,26 @@ src_configure() {
 src_compile() {
 	default
 
-	use monitor && python_fix_shebang \
-		utilities/ovs-{pcap,tcpundump,test,vlan-test} \
-		utilities/bugtool/ovs-bugtool
-
 	use modules && linux-mod_src_compile
 }
 
 src_install() {
 	default
 
-	if use monitor ; then
-		python_domodule "${ED}"/usr/share/openvswitch/python/*
-		rm -r "${ED}/usr/share/openvswitch/python"
-		python_optimize "${ED}/usr/share/ovsdbmonitor"
+	local SCRIPT
+	if use monitor; then
+		for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpdump,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
+			sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}"
+			python_foreach_impl python_doscript utilities/"${SCRIPT}"
+		done
+		rm -r "${ED%/}"/usr/share/openvswitch/python || die
 	fi
-	# not working without the brcompat_mod kernel module which did not get
-	# included in the kernel and we can't build it anymore
-	rm "${D}/usr/sbin/ovs-brcompatd" "${D}/usr/share/man/man8/ovs-brcompatd.8"
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
-	rm -rf "${ED}/var/run"
-	use monitor || rmdir "${ED}/usr/share/ovsdbmonitor"
-	use debug || rm "${ED}/usr/bin/ovs-parse-leaks"
+	rm -rf "${ED%/}"/var/run || die
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
@@ -122,6 +119,7 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
+	local pv
 	for pv in ${REPLACING_VERSIONS}; do
 		if ! version_is_at_least 1.9.0 ${pv} ; then
 			ewarn "The configuration database for Open vSwitch got moved in version 1.9.0 from"
@@ -140,13 +138,15 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	local db="${EPREFIX}/var/lib/openvswitch/conf.db"
-	if [ -e "${db}" ] ; then
+	local db="${EROOT%/}"/var/lib/openvswitch/conf.db
+	if [[ -e "${db}" ]] ; then
 		einfo "Database '${db}' already exists, doing schema migration..."
 		einfo "(if the migration fails, make sure that ovsdb-server is not running)"
-		"${EPREFIX}/usr/bin/ovsdb-tool" convert "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "converting database failed"
+		ovsdb-tool convert "${db}" \
+			"${EROOT%/}"/usr/share/openvswitch/vswitch.ovsschema || die "converting database failed"
 	else
 		einfo "Creating new database '${db}'..."
-		"${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
+		ovsdb-tool create "${db}" \
+			"${EROOT%/}"/usr/share/openvswitch/vswitch.ovsschema || die "creating database failed"
 	fi
 }
