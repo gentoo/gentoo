@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,8 @@ S="${WORKDIR}/${P}"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=virtual/jdk-1.6"
+
+PATCHES=( "${FILESDIR}"/${PN}-gcc6-noexcept.patch )
 
 python_compile() {
 	if ! python_is_python3; then
