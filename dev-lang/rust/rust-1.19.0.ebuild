@@ -36,9 +36,16 @@ BOOTSTRAP_DATE="2017-06-08" # found in src/stage0.txt
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
 
-SRC_URI="https://static.rust-lang.org/dist/rustc-${STAGE0_VERSION}-${TRIPLE}.tar.gz
-		https://static.rust-lang.org/dist/rust-std-${STAGE0_VERSION}-${TRIPLE}.tar.gz
-		https://static.rust-lang.org/dist/cargo-${STAGE0_VERSION_CARGO}-${TRIPLE}.tar.gz
+SRC_URI="amd64? (
+			https://static.rust-lang.org/dist/rustc-${STAGE0_VERSION}-x86_64-unknown-linux-gnu.tar.gz
+			https://static.rust-lang.org/dist/rust-std-${STAGE0_VERSION}-x86_64-unknown-linux-gnu.tar.gz
+			https://static.rust-lang.org/dist/cargo-${STAGE0_VERSION_CARGO}-x86_64-unknown-linux-gnu.tar.gz
+		)
+		x86? (
+			https://static.rust-lang.org/dist/rustc-${STAGE0_VERSION}-i686-unknown-linux-gnu.tar.gz
+			https://static.rust-lang.org/dist/rust-std-${STAGE0_VERSION}-i686-unknown-linux-gnu.tar.gz
+			https://static.rust-lang.org/dist/cargo-${STAGE0_VERSION_CARGO}-i686-unknown-linux-gnu.tar.gz
+		)
 		https://static.rust-lang.org/dist/rustc-${PV}-src.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
