@@ -56,7 +56,8 @@ PATCHES=( "${FILESDIR}/noninteractive-build.patch")
 src_install () {
 	distutils-r1_src_install
 	dodoc README.md
-	doman man/pybitmessage.1.gz
+
+	# The man page is not installed because it's basically empty.
 
 	if use qt4 ; then
 		newicon -s 24 desktop/icon24.png "${PN}.png"
