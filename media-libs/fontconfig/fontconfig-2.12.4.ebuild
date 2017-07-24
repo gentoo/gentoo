@@ -45,6 +45,7 @@ src_prepare() {
 
 	# Revert gperf-3.1 fix as it breaks compilation
 	eapply -R "${FILESDIR}"/${PN}-2.12.2-gperf31.patch
+	export GPERF=$(type -P true)
 
 	eautoreconf
 }
