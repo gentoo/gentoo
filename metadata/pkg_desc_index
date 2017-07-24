@@ -552,7 +552,7 @@ app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs 1.6.4: GUI frontend for encfs
-app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1 1.0.18 1.0.20: Client for keybase.io
+app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1 1.0.18 1.0.20 1.0.21 9999: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
@@ -18212,6 +18212,7 @@ virtual/ruby-ffi 3 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-minitest 1: Virtual ebuild for the Ruby minitest library
 virtual/ruby-ssl 8 9: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 10 11 12 13: Virtual ebuild for rubygems
+virtual/rust 1.15.1 1.16.0 1.19.0: Virtual for Rust language compiler
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
