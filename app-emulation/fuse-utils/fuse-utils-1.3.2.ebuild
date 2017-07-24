@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="audiofile gcrypt"
+IUSE="audiofile gcrypt jpeg png zlib"
 
 RDEPEND="~app-emulation/libspectrum-1.3.5[gcrypt?]
 	audiofile? ( >=media-libs/audiofile-0.3.6 )"
@@ -22,5 +22,8 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf \
 	$(use_with audiofile ) \
-	$(use_with gcrypt libgcrypt)
+	$(use_with gcrypt libgcrypt) \
+	$(use_with jpeg libjpeg) \
+	$(use_with png libpng) \
+	$(use_with zlib )
 }
