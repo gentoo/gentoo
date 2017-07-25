@@ -195,7 +195,7 @@ src_prepare() {
 
 	if ! [ -f nvidia_icd.json ]; then
 		cp nvidia_icd.json.template nvidia_icd.json || die 
-		sed -e 's:__NV_VK_ICD__:libGLX_nvidia.so.0:g' nvidia_icd.json || die
+		sed -i -e 's:__NV_VK_ICD__:libGLX_nvidia.so.0:g' nvidia_icd.json || die
 	fi
 }
 
