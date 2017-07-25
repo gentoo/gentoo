@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -43,6 +43,9 @@ all_ruby_prepare() {
 
 	# Avoid fragile ar sqlite tests. They throw ReadOnly errors every now and then.
 	sed -i -e '/works with SQLite in/,/end/ s:^:#:' spec/parallel_spec.rb || die
+
+	# Avoid spec broken on Ruby 2.1 that clearly doesn't match code and doesn't really test anything
+	sed -i -e '/doesnt use Etc.nprocessors in Ruby 2.1 and below/,/end/ s:^:#:' spec/parallel_spec.rb || die
 }
 
 each_ruby_test() {
