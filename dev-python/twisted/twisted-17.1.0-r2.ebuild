@@ -25,7 +25,9 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="conch crypt http2 serial +soap test"
 
-RDEPEND=">=dev-python/zope-interface-4.0.2[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/incremental-16.10.1[${PYTHON_USEDEP}]
+	>=dev-python/zope-interface-4.0.2[${PYTHON_USEDEP}]
 	conch? (
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
