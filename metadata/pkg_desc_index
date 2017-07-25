@@ -9717,7 +9717,7 @@ dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB
 dev-ruby/ox 2.4.11 2.4.13 2.5.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1 2.0.0: Terminal painter
-dev-ruby/parallel 1.10.0 1.11.1 1.11.2: Run any code in parallel Processes or Threads
+dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
 dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1 1.8.0: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
