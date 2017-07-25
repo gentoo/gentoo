@@ -51,5 +51,5 @@ src_install() {
 		dobin dunstify
 	fi
 
-	dodoc AUTHORS CHANGELOG.md RELEASE_NOTES
+	dodoc AUTHORS CHANGELOG.md README.md RELEASE_NOTES
 }
