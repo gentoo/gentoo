@@ -19,8 +19,12 @@ IUSE=""
 
 RDEPEND="net-misc/curl
 	dev-libs/libxml2
-	virtual/imagemagick-tools
-	media-plugins/vdr-epgsearch"
+	media-plugins/vdr-epgsearch
+	|| (
+		<media-gfx/imagemagick-7[jpeg,png,svg,tiff]
+		media-gfx/graphicsmagick[imagemagick,jpeg,png,svg,tiff]
+	)"
+
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
