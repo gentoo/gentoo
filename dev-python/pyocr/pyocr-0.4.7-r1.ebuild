@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1
 
 DESCRIPTION="An optical character recognition (OCR) tool wrapper for python"
-HOMEPAGE="https://github.com/jflesch/pyocr"
-SRC_URI="https://github.com/jflesch/pyocr/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/openpaperwork/pyocr"
+SRC_URI="https://github.com/openpaperwork/pyocr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 IUSE="cuneiform +tesseract"
