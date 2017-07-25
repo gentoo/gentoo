@@ -16599,6 +16599,7 @@ sci-mathematics/Macaulay2 1.7_pre 1.8.2.1-r1: Research tool for commutative alge
 sci-mathematics/agda 2.4.2.5-r2 2.5.2-r1: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.4.2.5 2.5.2.0.13: Agda standard library
+sci-mathematics/arb 2.11.1: C library for arbitrary-precision interval arithmetic
 sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/cado-nfs 2.2.0: Number Field Sieve (NFS) implementation for factoring integers
