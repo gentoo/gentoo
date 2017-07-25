@@ -25,11 +25,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}/src"
 
 PATCHES=(
-	"${FILESDIR}/zlib.patch"
-	"${FILESDIR}/cflags.patch"
+	"${FILESDIR}/${P}-makefile.patch"
 )
 
 src_prepare() {
-	rm -rf libpng zlib || die
 	cmake-utils_src_prepare
 }
