@@ -19,7 +19,7 @@ X-Debian-Bug: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=245341
 +
 +typedef const void* des_key;
 +typedef unsigned char DES_cblock[8];
-+typedef des_cblock des_data_block;
++typedef DES_cblock des_data_block;
 +typedef int DES_key_schedule; /* unused */
 +typedef DES_key_schedule des_context; /* unused */
 +#define des_failed(encrypted) 0
