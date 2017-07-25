@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,10 +14,10 @@ KEYWORDS="~amd64"
 IUSE="libressl nls"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:= )
+	libressl? ( dev-libs/libressl:= )
 	dev-libs/tinyxml2:0/3
-	sys-fs/fuse
+	sys-fs/fuse:=
 	sys-libs/zlib"
 DEPEND="
 	${RDEPEND}
