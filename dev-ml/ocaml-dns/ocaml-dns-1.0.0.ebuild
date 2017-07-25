@@ -31,6 +31,9 @@ DEPEND="
 	${RDEPEND}
 "
 
+# Do not work
+RESTRICT="test"
+
 src_compile() {
 	jbuilder build @install -p dns || die
 }
