@@ -166,8 +166,10 @@ src_install() {
 	EOF
 	newpamd "${T}"/fcrontab.pam fcrontab
 
-	newinitd "${FILESDIR}"/fcron.init.4 fcron
+	newinitd "${FILESDIR}"/fcron.init-r5 fcron
 	systemd_newunit "${S}/script/fcron.init.systemd" fcron.service
+
+	newconfd "${FILESDIR}"/fcron.confd fcron
 
 	local DOCS=( MANIFEST VERSION "${WORKDIR}/crontab")
 	DOCS+=( doc/en/txt/{readme,thanks,faq,todo,relnotes,changes}.txt )
