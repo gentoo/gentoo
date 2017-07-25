@@ -8403,6 +8403,7 @@ dev-python/pyserial 2.7-r1 3.2.1 3.3: Python Serial Port extension
 dev-python/pyshark 0.3.7.2: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
+dev-python/pysmi 0.1.3: Python Lex & Yacc
 dev-python/pysnmp 4.3.3 4.3.5 4.3.7 4.3.8: Python SNMP library
 dev-python/pysnmp-apps 0.4.1: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
