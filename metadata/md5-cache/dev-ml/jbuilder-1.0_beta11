@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-lang/ocaml:= dev-ml/opam test? ( dev-ml/menhir )
+DESCRIPTION=A composable build system for OCaml
+EAPI=5
+HOMEPAGE=https://github.com/janestreet/jbuilder
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:=
+SLOT=0/1.0_beta11
+SRC_URI=https://github.com/janestreet/jbuilder/archive/1.0+beta11.tar.gz -> jbuilder-1.0-beta11.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=55df15654758c0e05f92527d7158626d
