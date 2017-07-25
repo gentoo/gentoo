@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 MY_P="${P/vdr-}"
 VERSION="1743"
@@ -34,7 +34,7 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	if has_version media-gfx/graphicsmagick; then
-		sed -i -e 's:^IMAGELIB =.*:IMAGELIB = graphicsmagick:' Makefile
+		sed -i -e 's:^IMAGELIB =.*:IMAGELIB = graphicsmagick:' Makefile || die
 	fi
 }
 
