@@ -14755,7 +14755,7 @@ net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 5.3.0.1 5.4.0.1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.5.2 2.6.3: Team collaboration tool
-net-im/telegram-desktop-bin 1.1.9 1.1.10: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.1.10 1.1.15: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
