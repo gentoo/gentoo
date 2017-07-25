@@ -8676,6 +8676,7 @@ dev-python/sabyenc 3.0.2: Module providing raw yEnc encoding/decoding for SABnzb
 dev-python/safety 1.4.1: Checks your installed dependencies for known security vulnerabilities
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
+dev-python/scandir 1.5: A better directory iterator and faster os.walk()
 dev-python/scapy-python3 0.18-r1 0.21: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schedule 0.4.2: Python job scheduling for humans
 dev-python/schema 0.5.0 0.6.6: Library for validating Python data structures
