@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kio-extras"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="activities exif htmlthumbs +man mtp openexr phonon samba +sftp slp taglib"
 
 COMMON_DEPEND="
