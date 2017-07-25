@@ -49,6 +49,7 @@ DEPEND="
 "
 RDEPEND="
 	!<kde-apps/akonadi-search-17.04.1:5
+	!kde-apps/kde-l10n:5
 	!<kde-apps/khelpcenter-17.04.1:5
 	!<kde-apps/kio-extras-17.04.1:5
 	!<kde-frameworks/baloo-5.34.0:5
