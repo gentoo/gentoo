@@ -1,5 +1,6 @@
---- libs/maildrop/configure.ac	2015-06-27 17:55:08.000000000 +0000
-+++ libs/maildrop/configure.ac	2015-09-22 05:23:33.000000000 +0000
+diff -uNr maildrop-2.8.3.ORIG/libs/maildrop/configure.ac maildrop-2.8.3/libs/maildrop/configure.ac
+--- maildrop-2.8.3.ORIG/libs/maildrop/configure.ac	2017-07-25 22:49:44.044032091 +0100
++++ maildrop-2.8.3/libs/maildrop/configure.ac	2017-07-25 22:50:48.205113368 +0100
 @@ -195,6 +195,15 @@
  AC_DEFINE_UNQUOTED(MAXLONGSIZE, $MAXLONGSIZE,
  				[ Maximum character size of a long ])
@@ -16,9 +17,10 @@
  dnl Checks for library functions.
  
  AC_FUNC_CLOSEDIR_VOID
---- libs/maildrop/Makefile.am	2015-06-27 17:55:08.000000000 +0000
-+++ libs/maildrop/Makefile.am	2015-09-22 05:24:29.000000000 +0000
-@@ -75,9 +75,13 @@
+diff -uNr maildrop-2.8.3.ORIG/libs/maildrop/Makefile.am maildrop-2.8.3/libs/maildrop/Makefile.am
+--- maildrop-2.8.3.ORIG/libs/maildrop/Makefile.am	2017-07-25 22:49:44.054032259 +0100
++++ maildrop-2.8.3/libs/maildrop/Makefile.am	2017-07-25 22:51:13.335536823 +0100
+@@ -75,9 +75,11 @@
  	maildrop.lsm testsuite.txt.idn testsuite.txt.noidn testsuite2
  
  check-am:
@@ -26,14 +28,13 @@
  	@chmod +x testsuite
  	./testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
  	@SHELL@ $(srcdir)/testsuite2
-+else
-+       echo ' Need en_US.utf8 to run tests'
 +endif
  
  noinst_DATA=maildrop.html maildrop.1 maildropfilter.html maildropfilter.7 \
  	maildropgdbm.html maildropgdbm.7
---- libs/rfc2045/configure.ac	2014-02-16 09:00:13.000000000 +0000
-+++ libs/rfc2045/configure.ac	2015-09-22 05:28:18.000000000 +0000
+diff -uNr maildrop-2.8.3.ORIG/libs/rfc2045/configure.ac maildrop-2.8.3/libs/rfc2045/configure.ac
+--- maildrop-2.8.3.ORIG/libs/rfc2045/configure.ac	2017-07-25 22:49:44.054032259 +0100
++++ maildrop-2.8.3/libs/rfc2045/configure.ac	2017-07-25 22:50:48.205113368 +0100
 @@ -60,6 +60,15 @@
  AC_CHECK_FUNC(strncasecmp,,CFLAGS="$CFLAGS -Dstrncasecmp=strnicmp")
  AC_CHECK_FUNC(strcasecmp,,CFLAGS="$CFLAGS -Dstrcasecmp=stricmp")
@@ -50,9 +51,10 @@
  AC_ARG_WITH(package, [], package="$withval",
  	[
  		package="$PACKAGE"
---- libs/rfc2045/Makefile.am	2015-02-28 17:59:41.000000000 +0000
-+++ libs/rfc2045/Makefile.am	2015-09-22 05:29:08.000000000 +0000
-@@ -76,6 +76,10 @@
+diff -uNr maildrop-2.8.3.ORIG/libs/rfc2045/Makefile.am maildrop-2.8.3/libs/rfc2045/Makefile.am
+--- maildrop-2.8.3.ORIG/libs/rfc2045/Makefile.am	2017-07-25 22:49:44.054032259 +0100
++++ maildrop-2.8.3/libs/rfc2045/Makefile.am	2017-07-25 22:51:26.555759572 +0100
+@@ -76,6 +76,8 @@
  endif
  
  check-am:
@@ -60,6 +62,4 @@
  	@SHELL@ $(srcdir)/testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
  	@SHELL@ $(srcdir)/testsuitemm | cmp -s - $(srcdir)/testsuitemm.txt
  	@SHELL@ $(srcdir)/testrfc3676parsersuite | diff -U 3 $(srcdir)/testrfc3676parsersuite.txt -
-+else
-+       echo ' Need en_US.utf8 to run tests'
 +endif
