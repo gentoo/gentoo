@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,6 +30,7 @@ DOCS=( README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-cflags.patch
 	"${FILESDIR}"/${PN}-1.0.0-static.patch
+	"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_configure() {
