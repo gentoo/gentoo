@@ -12,15 +12,16 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
-IUSE="nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="gstreamer010 nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
 
 QA_PREBUILT="${ICAROOT#/}/*"
 
-RDEPEND="dev-libs/atk
+RDEPEND="
+	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libxml2
 	media-fonts/font-adobe-100dpi
@@ -31,8 +32,8 @@ RDEPEND="dev-libs/atk
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/gst-plugins-base:0.10
-	media-libs/gstreamer:0.10
+	media-libs/gst-plugins-base:1.0
+	media-libs/gstreamer:1.0
 	media-libs/libcanberra[gtk]
 	media-libs/libogg
 	media-libs/libvorbis
@@ -54,7 +55,12 @@ RDEPEND="dev-libs/atk
 	x11-libs/libXmu
 	x11-libs/libXrender
 	x11-libs/libXt
-	x11-libs/pango"
+	x11-libs/pango
+	gstreamer010? (
+		media-libs/gst-plugins-base:0.10
+		media-libs/gstreamer:0.10
+	)
+"
 DEPEND=""
 
 pkg_nofetch() {
@@ -87,7 +93,7 @@ src_install() {
 	dodir "${ICAROOT}"
 
 	exeinto "${ICAROOT}"
-	doexe *.DLL libctxssl.so libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
+	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
@@ -167,7 +173,11 @@ src_install() {
 	dosym /etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
 	exeinto "${ICAROOT}"/util
-	doexe util/{configmgr,conncenter,echo_cmd,gst_aud_play,gst_aud_read,gst_play,gst_read,hdxcheck.sh,icalicense.sh,libgstflatstm.so}
+	# echo_cmd, gst_aud_play and gst_aud_read still require gst-0.10
+	if use gstreamer010 ; then
+		doexe util/{echo_cmd,gst_aud_play,gst_aud_read,gst_play0.10,gst_read0.10,libgstflatstm0.10.so}
+	fi
+	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so}
 	doexe util/{lurdump,new_store,nslaunch,pnabrowse,storebrowse,sunraymac.sh,what,xcapture}
 
 	doenvd "${FILESDIR}"/10ICAClient
