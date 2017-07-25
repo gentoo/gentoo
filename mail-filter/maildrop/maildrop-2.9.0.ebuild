@@ -60,7 +60,7 @@ src_prepare() {
 		's~AC_MSG_ERROR(Cannot determine default mailbox)~SPOOLDIR="./.maildir"~' \
 		"${S}"/libs/maildrop/configure.ac || die "sed failed"
 
-	epatch "${FILESDIR}"/${PN}-testsuite-r2.patch
+	epatch "${FILESDIR}"/${PN}-testsuite-r3.patch
 	eapply_user
 	eautoreconf
 }
