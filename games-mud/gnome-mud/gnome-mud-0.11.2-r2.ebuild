@@ -10,7 +10,7 @@ inherit gnome2
 DESCRIPTION="GNOME MUD client"
 HOMEPAGE="https://wiki.gnome.org/Apps/GnomeMud"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~x86 ~x86-fbsd"
 IUSE="gstreamer"
