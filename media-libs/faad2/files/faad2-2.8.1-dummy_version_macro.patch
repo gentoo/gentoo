@@ -1,0 +1,13 @@
+https://sourceforge.net/p/faac/faad2/ci/f58984cbceb6dd62589069f9b7e8ae5425c3438c/
+
+--- faad2-2.8.1/include/neaacdec.h
++++ faad2-2.8.1/include/neaacdec.h
+@@ -73,7 +73,7 @@
+   #endif
+ #endif
+ 
+-#define FAAD2_VERSION PACKAGE_VERSION
++#define FAAD2_VERSION "unknown"
+ 
+ /* object types for AAC */
+ #define MAIN       1
