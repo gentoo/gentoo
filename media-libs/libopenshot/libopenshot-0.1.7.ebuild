@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit cmake-utils python-single-r1 toolchain-funcs versionator
 
@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+imagemagick libav +python test"
-# https://github.com/OpenShot/libopenshot/issues/36
+# https://github.com/OpenShot/libopenshot/issues/43
 RESTRICT="test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
 	media-libs/libopenshot-audio
-	imagemagick? ( media-gfx/imagemagick:0=[cxx] )
+	imagemagick? ( <media-gfx/imagemagick-7:0=[cxx] )
 	libav? ( media-video/libav:=[encode,x264,xvid,vpx,mp3,theora] )
 	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )
 	python? ( ${PYTHON_DEPS} )
@@ -36,6 +36,9 @@ DEPEND="
 	python? ( dev-lang/swig )
 	test? ( dev-libs/unittest++ )
 "
+
+# https://github.com/OpenShot/libopenshot/pull/45
+PATCHES=( ${FILESDIR}/${PN}-0.1.3-fix-tests.patch )
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then
@@ -71,9 +74,7 @@ src_configure() {
 }
 
 src_test() {
-	pushd "${BUILD_DIR}/tests" > /dev/null || die
-	./openshot-test || die "Tests failed"
-	popd > /dev/null || die
+	cmake-utils_src_make test
 }
 
 src_install() {

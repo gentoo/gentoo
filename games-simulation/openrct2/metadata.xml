@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jan@segre.in</email>
+		<name>Jan Segre</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>hendrik@consetetur.de</email>
+		<name>Hendrik v. Raven (lorem_ipsum)</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		An open-source re-implementation of RollerCoaster Tycoon 2. A construction and management simulation video game that simulates amusement park management.
+	</longdescription>
+	<use>
+		<flag name="multiplayer">Enable multiplayer functionality</flag>
+		<flag name="twitch">Enable Twitch support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenRCT2/OpenRCT2</remote-id>
+		<bugs-to>https://github.com/OpenRCT2/OpenRCT2/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
