@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 inherit gkrellm-plugin
 
 S=${WORKDIR}/${P/s/S}
@@ -14,4 +14,7 @@ SLOT="2"
 KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE=""
 
-RDEPEND="virtual/imagemagick-tools"
+RDEPEND="
+	app-admin/gkrellm[X]
+	virtual/imagemagick-tools
+"
