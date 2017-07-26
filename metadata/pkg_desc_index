@@ -88,7 +88,7 @@ app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.3 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
-app-admin/entr 3.6 3.7: Run arbitrary commands when files change
+app-admin/entr 3.7: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
 app-admin/eselect 1.4.8 1.4.9 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
@@ -1961,6 +1961,7 @@ app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one prog
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 1.10.5: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2 0.16.12.29 0.17.1.14: Python scripts to manipulate trash cans via the command line
+app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r1: tty recorder
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
@@ -4354,8 +4355,8 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.131 1.8.0.141: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.8.0.131 1.8.0.141: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.8.0.131 1.8.0.141 1.8.0.144: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.8.0.131 1.8.0.141 1.8.0.144: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
