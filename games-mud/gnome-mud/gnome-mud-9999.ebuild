@@ -18,8 +18,7 @@ IUSE="debug gstreamer"
 
 RDEPEND="virtual/libintl
 	>=dev-libs/glib-2.36:2
-	>=gnome-base/libglade-2.0.1:2.0
-	>=x11-libs/gtk+-2.20.0:2
+	>=x11-libs/gtk+-2.24.0:2
 	>=x11-libs/vte-0.11:0
 	dev-libs/libpcre
 	gnome-base/gconf:2
