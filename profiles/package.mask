@@ -931,10 +931,6 @@ x11-libs/gtk+:1
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
-# Mask new MariaDB alphas for testing
->=dev-db/mariadb-10.2.0
-
 # Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
 # Fails to switch cpufreq governor.
 # https://bugs.gentoo.org/590780
