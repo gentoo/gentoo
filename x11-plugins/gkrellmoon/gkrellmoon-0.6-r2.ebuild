@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,11 +10,12 @@ SRC_URI="mirror://sourceforge/gkrellmoon/${P}.tar.gz"
 HOMEPAGE="http://gkrellmoon.sourceforge.net/"
 
 DEPEND="media-libs/imlib2"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	app-admin/gkrellm[X]
+"
 
 SLOT="2"
 LICENSE="GPL-2"
-
 KEYWORDS="alpha amd64 ppc sparc x86"
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
