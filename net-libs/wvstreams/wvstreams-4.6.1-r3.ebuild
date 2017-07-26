@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -53,7 +53,7 @@ src_prepare() {
 	sed -i \
 		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \
 		-e 's:AM_PROG_CC_STDC:AC_PROG_CC:' \
-		configure.ac argp/configure.ac || die
+		argp/configure.ac || die
 
 	eautoreconf
 	pushd argp >/dev/null
