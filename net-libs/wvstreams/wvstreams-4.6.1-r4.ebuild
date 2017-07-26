@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils flag-o-matic toolchain-funcs versionator
 
 DESCRIPTION="A network programming library in C++"
@@ -10,7 +10,7 @@ SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="pam doc +ssl +dbus debug boost"
 
 #Tests fail if openssl is not compiled with -DPURIFY. Gentoo's isn't. FAIL!
@@ -20,45 +20,34 @@ RESTRICT="test"
 #It'll take a larger patching effort to get it extracted, since upstream integrated it
 #more tightly this time. Probably for the better since upstream xplc seems dead.
 
-RDEPEND="sys-libs/readline:0=
+RDEPEND="
+	<dev-libs/openssl-1.1:0=
+	sys-libs/readline:0=
 	sys-libs/zlib
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	<dev-libs/openssl-1.1:0=
-	pam? ( virtual/pam )"
-DEPEND="${RDEPEND}
+	pam? ( virtual/pam )
+"
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	boost? ( >=dev-libs/boost-1.34.1:= )"
-
+	boost? ( >=dev-libs/boost-1.34.1:= )
+"
 DOCS="ChangeLog README*"
-
-pkg_pretend() {
-	[[ ${MERGE_TYPE} == "binary" ]] && return
-
-	if ! use boost && ! version_is_at_least 4.1 "$(gcc-fullversion)"; then
-		eerror "This package requires the active gcc to be at least version 4.1"
-		eerror "or USE=boost must be installed."
-		die "Please activate >=sys-devel/gcc-4.1 with gcc-config."
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-autoconf.patch
+	"${FILESDIR}"/${P}-fix-c++14.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+	"${FILESDIR}"/${P}-glibc212.patch
+	"${FILESDIR}"/${P}-openssl-1.0.0.patch
+	"${FILESDIR}"/${P}-parallel-make.patch
+	"${FILESDIR}"/${P}-_DEFAULT_SOURCE.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-parallel-make.patch \
-		"${FILESDIR}"/${P}-openssl-1.0.0.patch \
-		"${FILESDIR}"/${P}-glibc212.patch \
-		"${FILESDIR}"/${P}-gcc47.patch \
-		"${FILESDIR}"/${P}-fix-c++14.patch
-
-	sed -i \
-		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \
-		-e 's:AM_PROG_CC_STDC:AC_PROG_CC:' \
-		argp/configure.ac || die
+	default
 
 	eautoreconf
-	pushd argp >/dev/null
-	eautoreconf
-	popd >/dev/null
 }
 
 src_configure() {
@@ -70,15 +59,16 @@ src_configure() {
 	use boost && export ac_cv_header_tr1_functional=no
 
 	econf \
-		--localstatedir=/var \
 		$(use_enable debug) \
-		--disable-optimization \
 		$(use_with dbus) \
-		--with-openssl \
 		$(use_with pam) \
-		--without-tcl \
-		--without-qt \
+		--cache-file=${T}/config.cache \
+		--disable-optimization \
+		--localstatedir=/var \
+		--with-openssl \
 		--with-zlib \
+		--without-qt \
+		--without-tcl \
 		--without-valgrind
 }
 
@@ -99,7 +89,7 @@ src_install() {
 
 	if use doc; then
 		#the list of files is too big for dohtml -r Docs/doxy-html/*
-		cd Docs/doxy-html
-		dohtml -r *
+		docinto html
+		dodoc -r Docs/doxy-html/*
 	fi
 }
