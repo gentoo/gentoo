@@ -29,6 +29,62 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Severely broken with lots of unresolved bugs, outdated, needs a dedicated
+# maintainer (#402157). Removal in a month.
+dev-lang/gnat-gcc
+virtual/gnat
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Upstream dead, cannot be bumped, buggy (#468128). Removal in a month.
+x11-apps/spotlighter
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Fails to build (#542108), relies on dead DirectFB. Removal in a month.
+dev-libs/DFB++
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Upstream dead, vulnerable (#569980), removal in a month.
+dev-scheme/stalin
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Orphan, severely outdated and vulnerable to security issues (#585940).
+# Removal in a month.
+sys-apps/pacman
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# One of the last consumers of old udisks:0, upstream dead for ages
+# (#601358). Removal in a month.
+x11-misc/tinymount
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# EOL, severely broken, impossible to bump (#624966). Removal in a month.
+sci-geosciences/googleearth
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Dead for ages, not usable at present time (#625596). Removal in a month.
+app-mobilephone/linuxsms
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Upstream dead, last consumer of obsolete cegui version (#625604). Removal
+# in a month.
+games-arcade/smc
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Dead for a long time, relies on also dead DirectFB lib (#625608). Removal
+# in a month.
+media-gfx/DFBPoint
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Upstream dead, relies on also dead DirectFB lib (#625610). Removal in a
+# month.
+media-video/dfbsee
+
+# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
+# Upstream dead, relies on also dead DirectFB lib (#625612). Removal in a
+# month.
+net-misc/directvnc
+
 # Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
 # Dropped from upstream tarball for years, removal in a month (#626106)
 gnustep-apps/clipbook
@@ -862,13 +918,6 @@ x11-libs/gtk+:1
 # Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
 # Masked for testing
 =sys-fs/fuse-3.0.0*
-
-# Marc Schiffbauer <mschiff@gentoo.org> (14 Jul 2017)
-# Breaks often because upstream always releases new version
-# under the same filename so checksums will break every now and then.
-# Additionally, packaging this program is a pita, so use at your
-# own risk.
-sci-geosciences/googleearth
 
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
 # Masked for testing, see bug #588894.
