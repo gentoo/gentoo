@@ -4,8 +4,11 @@
 EAPI=6
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
-MOZ_LANGS=(be ca cs de en-GB en-US es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl
-pt-PT ru sk sv-SE tr uk zh-CN zh-TW)
+#MOZ_LANGS=(be ca cs de en-GB en-US es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl
+#pt-PT ru sk sv-SE tr uk zh-CN zh-TW)
+
+MOZ_LANGS=(cs de en-GB en-US es-AR es-ES fr hu it ja lt nl pl
+pt-PT ru sk sv-SE zh-CN zh-TW)
 
 MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
 MOZ_PV="${MOZ_PV/_beta/b}" # Handle beta for SRC_URI
