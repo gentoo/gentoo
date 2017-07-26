@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE="vim-syntax"
 
-DEPEND="dev-util/colm"
+DEPEND="~dev-util/colm-0.13.0.4"
 RDEPEND="${DEPEND}"
 
 src_test() {
