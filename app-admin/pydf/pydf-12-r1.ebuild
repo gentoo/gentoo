@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit python-r1
@@ -12,9 +13,10 @@ SRC_URI="http://kassiopeia.juls.savba.sk/~garabik/software/pydf/${PN}_${PV}.tar.
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~arm64 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
