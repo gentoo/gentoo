@@ -8798,7 +8798,8 @@ dev-python/superlance 0.14 1.0.0: A set of plugins to monitor and control superv
 dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and make it quick!
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
-dev-python/sympy 0.7.6.1-r1 1.0-r1: Computer Algebra System in pure Python
+dev-python/symengine 0.3.0: Python wrappers to the symengine C++ library
+dev-python/sympy 0.7.6.1-r1 1.0-r1 1.1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.7: Pretty-print tabular data
 dev-python/tagpy 2013.1: Python Bindings for TagLib
@@ -16578,6 +16579,7 @@ sci-libs/suitesparseconfig 4.2.1 4.2.1-r1: Common configurations for all package
 sci-libs/sundials 2.7.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
+sci-libs/symengine 0.3.0: Fast symbolic manipulation library, written in C++
 sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
@@ -18393,9 +18395,9 @@ www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.8.0 52.1.0-r1 52.2.0 53.0.3 54.0.1: Firefox Web Browser
 www-client/firefox-bin 52.2.0 54.0.1: Firefox Web Browser
-www-client/google-chrome 59.0.3071.115: The web browser from Google
-www-client/google-chrome-beta 60.0.3112.72: The web browser from Google
-www-client/google-chrome-unstable 61.0.3159.5: The web browser from Google
+www-client/google-chrome 60.0.3112.78: The web browser from Google
+www-client/google-chrome-beta 60.0.3112.78: The web browser from Google
+www-client/google-chrome-unstable 61.0.3163.13: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18444,7 +18446,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.137: Adobe Flash Player
-www-plugins/chrome-binary-plugins 59.0.3071.115 60.0.3112.72_beta 61.0.3159.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.78_beta 60.0.3112.78 61.0.3163.13_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features

@@ -2586,6 +2586,7 @@ dev-python/sympy:imaging - Add support for dev-python/pillow
 dev-python/sympy:ipython - Add support for dev-python/ipython
 dev-python/sympy:mathml - Add support for mathml
 dev-python/sympy:pyglet - Use dev-python/pyglet for plots and print preview
+dev-python/sympy:symengine - Add support for a dev-python/symengine backend
 dev-python/sympy:texmacs - Add app-office/texmacs interface
 dev-python/sympy:theano - Add support for dev-python/theano
 dev-python/tdaemon:coverage - Enable code coverage support
@@ -7217,6 +7218,13 @@ sci-libs/sundials:hypre - Build with sci-libs/hypre conditioners
 sci-libs/sundials:sparse - Enable support for sci-libs/klu sparse solver
 sci-libs/sundials:superlumt - Build with sci-libs/superlu_mt
 sci-libs/superlu_mt:int64 - Build the 64 bits integer library
+sci-libs/symengine:arb - Add support for arb (sci-mathematics/arb)
+sci-libs/symengine:benchmarks - Build benchmarks
+sci-libs/symengine:boost - Add support for boost integers(dev-libs/boost)
+sci-libs/symengine:flint - Add support for (sci-mathematics/flint)
+sci-libs/symengine:llvm - Build with LLVM
+sci-libs/symengine:mpc - Add support for multiprecision complex arithmetic(dev-libs/mpc)
+sci-libs/symengine:mpfr - Add support for multiprecision floating point rouding(dev-libs/mpfr)
 sci-libs/taucs:cilk - Enable multithreading using dev-lang/cilk
 sci-libs/umfpack:cholmod - Use sci-libs/cholmod for matrix ordering
 sci-libs/vtk:R - Enable support for dev-lang/R
