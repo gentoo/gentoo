@@ -108,6 +108,20 @@ pkg_preinst() {
 	fi
 }
 
+pkg_postinst() {
+	mysql-multilib-r1_pkg_postinst
+
+	# Note about configuration change
+	einfo
+	elog "This version of mariadb reorganizes the configuration from a single my.cnf"
+	elog "to several files in /etc/mysql/${PN}.d."
+	elog "Please backup any changes you made to /etc/mysql/my.cnf"
+	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
+	elog "You may have as many files as needed and they are read alphabetically."
+	elog "Be sure the options have the appropitate section headers, i.e. [mysqld]."
+	einfo
+}
+
 src_prepare() {
 	java-pkg-opt-2_src_prepare
 	if use tcmalloc; then
