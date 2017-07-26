@@ -37,6 +37,7 @@ src_install() {
 	fi
 
 	newinitd "${FILESDIR}/init.d-2.2" "mysql"
+	newinitd "${FILESDIR}/init.d-supervise" "mysql-supervise"
 
 	# systemd unit installation
 	exeinto /usr/libexec
