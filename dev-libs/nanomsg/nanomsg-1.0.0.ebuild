@@ -34,3 +34,12 @@ multilib_src_configure() {
 	fi
 	cmake-utils_src_configure
 }
+
+multilib_src_test() {
+	local myctestargs=(
+		# All tests overwrite same ./test binary
+		# That causes SIGSEGV when ran in parallel
+		-j1
+	)
+	cmake-utils_src_test
+}
