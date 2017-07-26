@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ PLUGIN_SO=gkrelltop.so
 S="${WORKDIR}/${P}.orig"
 
 RDEPEND="
+	app-admin/gkrellm[X]
 	dev-libs/glib:2
 	x11-libs/gtk+:2
 "
