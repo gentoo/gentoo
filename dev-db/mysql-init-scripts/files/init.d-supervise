@@ -118,18 +118,16 @@ start() {
 	fi
 
 	local startup_timeout=${STARTUP_TIMEOUT:-900}
-	local startup_early_timeout=${STARTUP_EARLY_TIMEOUT:-1000}
+#	local startup_early_timeout=${STARTUP_EARLY_TIMEOUT:-1000}
 	local tmpnice="${NICE:+"--nicelevel "}${NICE}"
 	local tmpionice="${IONICE:+"--ionice "}${IONICE}"
-	start-stop-daemon \
+	supervise-daemon \
 		${DEBUG:+"--verbose"} \
-		--start \
-		--exec "${basedir}"/sbin/mysqld \
-		--pidfile "${pidfile}" \
-		--background \
-		--wait ${startup_early_timeout} \
+		--pidfile "/run/${SVCNAME}.pid" \
 		${tmpnice} \
 		${tmpionice} \
+		--start \
+		"${basedir}"/sbin/mysqld \
 		-- --defaults-file="${MY_CNF}" ${MY_ARGS}
 	local ret=$?
 	if [ ${ret} -ne 0 ] ; then
@@ -139,9 +137,6 @@ start() {
 
 	ewaitfile ${startup_timeout} "${socket}"
 	eend $? || return 1
-
-	save_options pidfile "${pidfile}"
-	save_options basedir "${basedir}"
 }
 
 stop() {
@@ -151,16 +146,10 @@ stop() {
 
 	ebegin "Stopping $(mysql_svcname)"
 
-	local pidfile="$(get_options pidfile)"
-	local basedir="$(get_options basedir)"
-	local stop_timeout=${STOP_TIMEOUT:-120}
-
-	start-stop-daemon \
+	supervise-daemon \
 		${DEBUG:+"--verbose"} \
 		--stop \
-		--exec "${basedir}"/sbin/mysqld \
-		--pidfile "${pidfile}" \
-		--retry ${stop_timeout}
+		--pidfile "/run/${SVCNAME}.pid"
 	eend $?
 }
 
