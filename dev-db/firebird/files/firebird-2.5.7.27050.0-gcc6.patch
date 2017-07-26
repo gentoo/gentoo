@@ -1,0 +1,35 @@
+Bug: https://bugs.gentoo.org/608294
+PR: https://github.com/FirebirdSQL/firebird/pull/104
+
+--- a/src/common/classes/alloc.h
++++ b/src/common/classes/alloc.h
+@@ -498,10 +498,14 @@ using Firebird::MemoryPool;
+
+ inline static MemoryPool* getDefaultMemoryPool() { return Firebird::MemoryPool::processMemoryPool; }
+
++#if (( ! __GNUC__ ) || ( __GNUC__ < 6 ))
++
+ // Global versions of operators new and delete
+ void* operator new(size_t s) THROW_BAD_ALLOC;
+ void* operator new[](size_t s) THROW_BAD_ALLOC;
+
++#endif
++
+ void operator delete(void* mem) throw();
+ void operator delete[](void* mem) throw();
+
+--- a/src/dudley/exe.epp
++++ b/src/dudley/exe.epp
+@@ -2884,9 +2884,9 @@ static USHORT get_prot_mask( const TEXT * relation, TEXT * field)
+ 		blr_parameter, 0, 0, 0,
+ 		blr_parameter, 0, 1, 0,
+ 		blr_parameter, 1, 0, 0,
+-		blr_end,
+-		blr_end,
+-		blr_end,
++		static_cast<SCHAR>(blr_end),
++		static_cast<SCHAR>(blr_end),
++		static_cast<SCHAR>(blr_end),
+ 		blr_eoc
+ 	};
+ 	static FB_API_HANDLE req_handle;

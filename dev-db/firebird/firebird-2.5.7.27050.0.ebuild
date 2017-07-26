@@ -35,7 +35,10 @@ RDEPEND="${CDEPEND}
 
 RESTRICT="userpriv"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.5.3.26780.0-deps-flags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.3.26780.0-deps-flags.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 S="${WORKDIR}/${MY_P}"
 
