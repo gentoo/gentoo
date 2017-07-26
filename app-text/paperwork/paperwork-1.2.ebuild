@@ -19,11 +19,11 @@ RDEPEND="~app-text/paperwork-backend-${PV}[${PYTHON_USEDEP}]
 	dev-python/libpillowfight[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
+	dev-python/pycrypto[${PYTHON_USEDEP}]
 	dev-python/pyenchant[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyinsane:2[${PYTHON_USEDEP}]
 	>=dev-python/pyocr-0.3.0[${PYTHON_USEDEP}]
 	dev-python/simplebayes[${PYTHON_USEDEP}]
-	dev-util/glade[introspection,python]
 	x11-libs/gtk+:3[introspection]"
 DEPEND="${RDEPEND}"
