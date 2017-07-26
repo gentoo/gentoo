@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5 qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+calendar geolocation gps prison qalculate +semantic-desktop"
 
 COMMON_DEPEND="
