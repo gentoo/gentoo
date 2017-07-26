@@ -18,6 +18,7 @@ DEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.1-libmp4ff-shared-lib.patch
+	"${FILESDIR}"/${P}-dummy_version_macro.patch
 )
 
 src_prepare() {

@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit gkrellm-plugin
 
-MY_P=${P/gkrellm/gkrellm2}
+MY_P="${P/gkrellm/gkrellm2}"
 
 DESCRIPTION="A Gkrellm2 plugin for displaying and manipulating CPU frequency"
 HOMEPAGE="https://github.com/sainsaar/gkrellm2-cpupower/"
@@ -18,16 +18,16 @@ IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
-# Collision with /usr/sbin/cpufreqnextgovernor
-RDEPEND="app-admin/sudo
+RDEPEND="
+	app-admin/gkrellm[X]
+	app-admin/sudo
 	sys-power/cpupower
-	!x11-plugins/gkrellm-cpufreq"
+"
 
 PLUGIN_SO="cpupower.so"
 
 src_install() {
 	gkrellm-plugin_src_install
-	dosbin cpufreqnextgovernor
 	emake DESTDIR="${D}" install-sudo
 }
 
