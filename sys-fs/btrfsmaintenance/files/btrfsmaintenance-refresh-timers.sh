@@ -17,14 +17,6 @@ export PATH
 
 SCRIPTS=/usr/share/btrfsmaintenance
 
-if [ "$1" = 'uninstall' ]; then
-	for SERVICE in btrfs-scrub btrfs-defrag btrfs-balance btrfs-trim; do
-		for PERIOD in daily weekly monthly; do
-			systemctl disable "$SERVICE-$PERIOD".timer
-		done
-	done
-	exit 0
-fi
 
 if [ -f /etc/sysconfig/btrfsmaintenance ]; then
     . /etc/sysconfig/btrfsmaintenance
@@ -34,20 +26,36 @@ if [ -f /etc/default/btrfsmaintenance ]; then
     . /etc/default/btrfsmaintenance
 fi
 
-refresh_period() {
-	EXPECTED="$1"
-	SERVICE="$2"
-	echo "Refresh script $SERVICE for $EXPECTED"
 
-	for PERIOD in daily weekly monthly; do
-	        # NOTE: debian does not allow filenames with dots in /etc/cron.*
-		if [ "$PERIOD" = "$EXPECTED" ]; then
-			systemctl enable "$SERVICE-$PERIOD".timer
-		else
-			systemctl disable "$SERVICE-$PERIOD".timer
-		fi
-	done
+refresh_period() {
+	PERIOD="$1"
+	SERVICE="$2"
+	echo "Refresh script $SERVICE for $PERIOD"
+
+	case "$PERIOD" in
+		daily|weekly|monthly)
+			mkdir -p /etc/systemd/system/"$SERVICE".timer.d/
+			cat << EOF > /etc/systemd/system/"$SERVICE".timer.d/schedule.conf
+[Timer]
+OnCalendar=$PERIOD
+EOF
+			systemctl enable "$SERVICE".timer &> /dev/null
+			systemctl start "$SERVICE".timer &> /dev/null
+			;;
+		*)
+			systemctl stop "$SERVICE".timer &> /dev/null
+			systemctl disable "$SERVICE".timer &> /dev/null
+			rm -rf /etc/systemd/system/"$SERVICE".timer.d
+			;;
+	esac
 }
+
+if [ "$1" = 'uninstall' ]; then
+	for SERVICE in btrfs-scrub btrfs-defrag btrfs-balance btrfs-trim; do
+		refresh_period uninstall $SERVICE
+	done
+	exit 0
+fi
 
 refresh_period "$BTRFS_SCRUB_PERIOD" btrfs-scrub
 refresh_period "$BTRFS_DEFRAG_PERIOD" btrfs-defrag
