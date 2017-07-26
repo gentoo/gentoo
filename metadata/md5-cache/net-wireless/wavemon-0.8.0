@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/uoaerg/wavemon/archive/v0.8.0.tar.gz -> wavemon-0.8.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=38d840981cc56dca566d2776766f1c58
+_md5_=0e1c90bee31129e2d4814807418e46a1
