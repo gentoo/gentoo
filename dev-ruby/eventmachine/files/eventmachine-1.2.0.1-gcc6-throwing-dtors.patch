@@ -1,0 +1,104 @@
+Bug: https://bugs.gentoo.org/606874
+Upstream commit: https://github.com/eventmachine/eventmachine/commit/64e04fe841b8a6d6924d7e381d891b205c6c96dd
+
+From 64e04fe841b8a6d6924d7e381d891b205c6c96dd Mon Sep 17 00:00:00 2001
+From: Peter-Levine <plevine457@gmail.com>
+Date: Mon, 13 Feb 2017 13:06:43 -0500
+Subject: [PATCH] Allow destructors to throw when compiling in >= C++11 (#767)
+
+Explicitly mark destructors that throw as "noexcept(false)" when compiling in a post C++11 dialect.
+---
+ ext/binder.cpp | 2 +-
+ ext/binder.h   | 8 +++++++-
+ ext/ed.cpp     | 2 +-
+ ext/ed.h       | 4 ++--
+ ext/pipe.cpp   | 2 +-
+ 5 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/ext/binder.cpp b/ext/binder.cpp
+index cb39fe56..bdce0551 100644
+--- a/ext/binder.cpp
++++ b/ext/binder.cpp
+@@ -116,7 +116,7 @@ Bindable_t::Bindable_t()
+ Bindable_t::~Bindable_t
+ ***********************/
+ 
+-Bindable_t::~Bindable_t()
++Bindable_t::~Bindable_t() NO_EXCEPT_FALSE
+ {
+ 	BindingBag.erase (Binding);
+ }
+diff --git a/ext/binder.h b/ext/binder.h
+index fb09902b..203bc90b 100644
+--- a/ext/binder.h
++++ b/ext/binder.h
+@@ -21,6 +21,12 @@ See the file COPYING for complete licensing information.
+ #define __ObjectBindings__H_
+ 
+ 
++#if __cplusplus >= 201103L
++#define NO_EXCEPT_FALSE noexcept(false)
++#else
++#define NO_EXCEPT_FALSE
++#endif
++
+ class Bindable_t
+ {
+ 	public:
+@@ -30,7 +36,7 @@ class Bindable_t
+ 
+ 	public:
+ 		Bindable_t();
+-		virtual ~Bindable_t();
++		virtual ~Bindable_t() NO_EXCEPT_FALSE;
+ 
+ 		const uintptr_t GetBinding() {return Binding;}
+ 
+diff --git a/ext/ed.cpp b/ext/ed.cpp
+index 1c5a1613..a3b24b50 100644
+--- a/ext/ed.cpp
++++ b/ext/ed.cpp
+@@ -126,7 +126,7 @@ EventableDescriptor::EventableDescriptor (SOCKET sd, EventMachine_t *em):
+ EventableDescriptor::~EventableDescriptor
+ *****************************************/
+ 
+-EventableDescriptor::~EventableDescriptor()
++EventableDescriptor::~EventableDescriptor() NO_EXCEPT_FALSE
+ {
+ 	if (NextHeartbeat)
+ 		MyEventMachine->ClearHeartbeat(NextHeartbeat, this);
+diff --git a/ext/ed.h b/ext/ed.h
+index 9a3f5af7..e660626c 100644
+--- a/ext/ed.h
++++ b/ext/ed.h
+@@ -37,7 +37,7 @@ class EventableDescriptor: public Bindable_t
+ {
+ 	public:
+ 		EventableDescriptor (SOCKET, EventMachine_t*);
+-		virtual ~EventableDescriptor();
++		virtual ~EventableDescriptor() NO_EXCEPT_FALSE;
+ 
+ 		SOCKET GetSocket() {return MySocket;}
+ 		void SetSocketInvalid() { MySocket = INVALID_SOCKET; }
+@@ -365,7 +365,7 @@ class PipeDescriptor: public EventableDescriptor
+ {
+ 	public:
+ 		PipeDescriptor (SOCKET, pid_t, EventMachine_t*);
+-		virtual ~PipeDescriptor();
++		virtual ~PipeDescriptor() NO_EXCEPT_FALSE;
+ 
+ 		virtual void Read();
+ 		virtual void Write();
+diff --git a/ext/pipe.cpp b/ext/pipe.cpp
+index 190734aa..a5f0d9f1 100644
+--- a/ext/pipe.cpp
++++ b/ext/pipe.cpp
+@@ -46,7 +46,7 @@ PipeDescriptor::PipeDescriptor (int fd, pid_t subpid, EventMachine_t *parent_em)
+ PipeDescriptor::~PipeDescriptor
+ *******************************/
+ 
+-PipeDescriptor::~PipeDescriptor()
++PipeDescriptor::~PipeDescriptor() NO_EXCEPT_FALSE
+ {
+ 	// Run down any stranded outbound data.
+ 	for (size_t i=0; i < OutboundPages.size(); i++)
