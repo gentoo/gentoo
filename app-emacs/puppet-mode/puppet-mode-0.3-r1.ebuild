@@ -17,8 +17,6 @@ DOCS="CHANGES.rst README.rst"
 SITEFILE="50${PN}-1-gentoo.el"
 ELISP_PATCHES=( "${FILESDIR}/${PN}-0.3-version.patch" )
 
-RDEPEND="!!<app-admin/puppet-5[emacs]"
-
 src_prepare() {
 	elisp_src_prepare
 
