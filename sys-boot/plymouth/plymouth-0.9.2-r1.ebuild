@@ -45,7 +45,7 @@ RDEPEND="${CDEPEND}
 
 DOC_CONTENTS="
 	Follow the following instructions to set up Plymouth:\n
-	https://dev.gentoo.org/~aidecoe/doc/en/plymouth.xml
+	https://wiki.gentoo.org/wiki/Plymouth#Configuration
 "
 
 PATCHES=(
