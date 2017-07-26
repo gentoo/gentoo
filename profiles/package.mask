@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
+# Its pre release so better to mask it
+=media-gfx/freecad-0.17_pre*
+
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
 # Severely broken with lots of unresolved bugs, outdated, needs a dedicated
 # maintainer (#402157). Removal in a month.
