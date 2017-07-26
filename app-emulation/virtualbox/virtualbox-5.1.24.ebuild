@@ -192,6 +192,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
 
 	eapply_user
 }
