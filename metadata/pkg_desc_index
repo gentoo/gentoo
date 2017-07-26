@@ -4893,7 +4893,7 @@ dev-libs/libmongo-client 0.1.7 0.1.8: The alternative C driver for MongoDB
 dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libmspack 0.5_alpha: A library for Microsoft compression formats
-dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
+dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.1-r1 1.7.1: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 3.2.28 3.2.29 3.3.0 3.3.9999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.5: framebuffer abstraction library, written in C
@@ -10310,7 +10310,7 @@ dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.5 1.0.6: Program matching and transformation engine
 dev-util/codeblocks 16.01 9999: The open source, cross platform, free C++ IDE
-dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
+dev-util/colm 0.13.0.4 0.13.0.5: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
@@ -11461,7 +11461,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
-games-rpg/manaplus 1.7.6.24 1.7.7.8 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.7.8 1.7.7.22 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -12723,7 +12723,7 @@ media-gfx/hp2xx 3.4.4 3.4.4-r1: Versatile tool to convert Hewlett-Packard's HP-G
 media-gfx/hugin 2016.2.0 2017.0 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc_examin 0.55-r1 9999: Viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
-media-gfx/icoutils 0.31.0 0.31.1: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
+media-gfx/icoutils 0.31.0 0.31.1 0.31.3: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.7.4 6.9.8.6 6.9.9.0 7.0.5.7-r1 7.0.6.1: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.1: Utility for image scaling and processing
@@ -14860,7 +14860,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.22.5: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.26 3.3.27 3.3.28 3.5.12 3.5.13 3.5.14: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.40 2.8.48 2.8.49: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.40 2.8.49 2.8.50: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.6.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
@@ -17117,7 +17117,7 @@ sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
-sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.1: Hard disk drive health inspection tool
+sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.1 1.0.2: Hard disk drive health inspection tool
 sys-apps/guix 0.12.0-r3 0.13.0: GNU package manager (nix sibling)
 sys-apps/habitat 0.26.1: Application automation framework
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
@@ -17799,7 +17799,7 @@ sys-fs/rar2fs 1.23.1 1.24.0 1.24.1 1.25.2: A FUSE based filesystem that can moun
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
-sys-fs/reiserfsprogs 3.6.24 3.6.25 3.6.26: Reiserfs Utilities
+sys-fs/reiserfsprogs 3.6.24 3.6.25 3.6.26 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used
@@ -17947,7 +17947,7 @@ sys-libs/tevent 0.9.28 0.9.31-r1 0.9.32 0.9.33: Samba tevent library
 sys-libs/timezone-data 2016h 2016i 2016j 2017a 2017b: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uclibc-ng 1.0.19 1.0.20 1.0.22 1.0.23 1.0.24 1.0.24-r1 1.0.25 9999: C library for developing embedded Linux systems
-sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
+sys-libs/uid_wrapper 1.2.1 1.2.4: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11: Standard (de)compression library
 sys-power/acpi 1.6 1.7 1.7-r1: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 9999: A kernel module that enables you to call ACPI methods
@@ -17978,7 +17978,7 @@ sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is 
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectures
-sys-power/upower 0.99.4 0.99.4-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
+sys-power/upower 0.99.4 0.99.4-r1 0.99.5: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1: GNU system accounting utilities
@@ -19502,7 +19502,7 @@ x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual des
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.0 9999: A manual tiling window manager for X
 x11-wm/i3 4.13-r1 9999: An improved dynamic tiling window manager
-x11-wm/icewm 1.3.8 1.3.12 1.3.12-r1: Ice Window Manager with Themes
+x11-wm/icewm 1.3.8 1.3.12-r1 1.4.0: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.2.0 1.2.0_p1 1.3.0_p1 9999: Lumina desktop environment
