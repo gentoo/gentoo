@@ -3119,6 +3119,7 @@ dev-embedded/sgpp-lite-arm-linux-bin 2010.09.50: Regular, validated releases of 
 dev-embedded/sgpp-lite-arm-uclinux-bin 2010.09.58: Regular, validated releases of the GNU Toolchain for arm processors
 dev-embedded/smdk-dltool 0.20-r3 0.20-r4: Tool to communicate with Samsung SMDK boards
 dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM load files
+dev-embedded/stlink 1.4.0 9999: stm32 discovery line linux programmer
 dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
 dev-embedded/tavrasm 1.22-r1: Compiles code written for Atmels AVR DOS assembler
 dev-embedded/tigcc 0.96_beta7 0.96_beta8-r1: Cross compiler for Texas Instruments TI-89, TI-92(+) and V200 calculators
