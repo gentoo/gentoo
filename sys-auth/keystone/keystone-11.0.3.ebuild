@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 user
 
@@ -13,18 +13,18 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+sqlite ldap memcached mongo mysql postgres test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
-CDEPEND=">=dev-python/pbr-1.6[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
-	>=dev-python/webob-1.2.3-r1[${PYTHON_USEDEP}]
+	>=dev-python/webob-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.5.0[${PYTHON_USEDEP}]
 	dev-python/paste[${PYTHON_USEDEP}]
 	>=dev-python/routes-1.12.3[${PYTHON_USEDEP}]
@@ -39,7 +39,7 @@ RDEPEND="
 		<dev-python/sqlalchemy-1.1.0[sqlite,${PYTHON_USEDEP}]
 	)
 	mysql? (
-		>=dev-python/pymysql-0.6.2[${PYTHON_USEDEP}]
+		>=dev-python/pymysql-0.7.6[${PYTHON_USEDEP}]
 		!~dev-python/pymysql-0.7.7[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		<dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
@@ -50,27 +50,23 @@ RDEPEND="
 		<dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 	)
 	>=dev-python/sqlalchemy-migrate-0.9.6[${PYTHON_USEDEP}]
-	>=dev-python/stevedore-1.16.0[${PYTHON_USEDEP}]
-	>=dev-python/passlib-1.6[${PYTHON_USEDEP}]
-	>=dev-python/python-keystoneclient-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/python-keystoneclient-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/keystonemiddleware-4.0.0[${PYTHON_USEDEP}]
-	!~dev-python/keystonemiddleware-4.1.0[${PYTHON_USEDEP}]
-	!~dev-python/keystonemiddleware-4.5.0[${PYTHON_USEDEP}]
+	>=dev-python/stevedore-1.17.1[${PYTHON_USEDEP}]
+	>=dev-python/passlib-1.7.0[${PYTHON_USEDEP}]
+	>=dev-python/python-keystoneclient-3.8.0[${PYTHON_USEDEP}]
+	>=dev-python/keystonemiddleware-4.12.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-cache-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-3.14.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-config-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-2.9.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-messaging-5.2.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-db-4.10.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-db-4.13.1[${PYTHON_USEDEP}]
-	!~dev-python/oslo-db-4.13.2[${PYTHON_USEDEP}]
+	>=dev-python/oslo-messaging-5.14.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-db-4.15.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-log-1.14.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-log-3.11.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-policy-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-policy-1.17.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.16.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/oauthlib-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/pysaml2-2.4.0[${PYTHON_USEDEP}]
 	<dev-python/pysaml2-4.0.3[${PYTHON_USEDEP}]
@@ -90,7 +86,7 @@ RDEPEND="
 		!~dev-python/pymongo-3.1[${PYTHON_USEDEP}]
 	)
 	ldap? (
-		>=dev-python/pyldap-2.4[${PYTHON_USEDEP}]
+		>=dev-python/pyldap-2.4.20[${PYTHON_USEDEP}]
 		>=dev-python/ldappool-2.0.0[${PYTHON_USEDEP}]
 	)
 	|| (
@@ -117,8 +113,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-# Ignore (naughty) test_.py files & 1 test that connect to the network
-#-I 'test_keystoneclient*' \
 python_test() {
 	nosetests -I 'test_keystoneclient*' \
 		-e test_static_translated_string_is_Message \
@@ -127,8 +121,8 @@ python_test() {
 		-e test_import --process-restartworker --process-timeout=60 || die "testsuite failed under python2.7"
 }
 
-python_install() {
-	distutils-r1_python_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	diropts -m 0750
 	keepdir /etc/keystone /var/log/keystone
