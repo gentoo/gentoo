@@ -31,3 +31,9 @@ python_test() {
 	cd "${BUILD_DIR}"
 	nosetests -v || die "tests failed with ${EPYTHON}"
 }
+
+python_install_all() {
+	distutils-r1_python_prepare_all
+	rm "${ED}"/usr/share/doc/${PF}/README.md || die
+	newdoc README.md ${PN}.py.md
+}
