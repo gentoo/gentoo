@@ -3717,6 +3717,11 @@ developers and volunteer mentors.</description>
       <role>Team lead</role>
     </member>
     <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>GLSA Coordinator</role>
+    </member>
+    <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
