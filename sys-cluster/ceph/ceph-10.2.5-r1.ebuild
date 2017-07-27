@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	radosgw? ( dev-libs/fcgi )
 	ldap? ( net-nds/openldap )
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	xfs? ( sys-fs/xfsprogs )
 	zfs? ( sys-fs/zfs )
 	gtk? (

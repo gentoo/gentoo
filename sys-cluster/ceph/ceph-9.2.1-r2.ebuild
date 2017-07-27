@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	sys-apps/util-linux
 	dev-libs/libxml2
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	libatomic? ( dev-libs/libatomic_ops )
 	xfs? ( sys-fs/xfsprogs )
 	zfs? ( sys-fs/zfs )
