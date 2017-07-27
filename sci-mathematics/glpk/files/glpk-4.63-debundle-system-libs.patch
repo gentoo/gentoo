@@ -1,0 +1,94 @@
+Remove suitesparse (camd,colamd) and zlib bundles
+bicatali - apr 2014
+Updated for 4.57 by soap (Jan 2016)
+Updated for 4.60 by bicatali (Dec 2016)
+Updated for 4.63 by bicatali (Jul 2017)
+
+diff -Nuar --exclude '*.orig' --exclude '*.rej' --exclude '*~' glpk-4.63.orig/configure.ac glpk-4.63/configure.ac
+--- glpk-4.63.orig/configure.ac	2017-07-25 00:00:00.000000000 -0700
++++ glpk-4.63/configure.ac	2017-07-27 14:10:47.986520907 -0700
+@@ -69,6 +69,11 @@
+ dnl Check for math library
+ AC_CHECK_LIB([m], [exp])
+ 
++AC_CHECK_LIB([amd], [amd_1])
++AC_CHECK_LIB([colamd], [colamd])
++AC_CHECK_HEADER([amd.h])
++AC_CHECK_LIB([z], [gzopen])
++
+ dnl Check for <sys/time.h> header
+ AC_CHECK_HEADER([sys/time.h],
+    AC_DEFINE([HAVE_SYS_TIME_H], [1], [N/A]))
+diff -Nuar --exclude '*.orig' --exclude '*.rej' --exclude '*~' glpk-4.63.orig/src/Makefile.am glpk-4.63/src/Makefile.am
+--- glpk-4.63.orig/src/Makefile.am	2017-07-25 00:00:00.000000000 -0700
++++ glpk-4.63/src/Makefile.am	2017-07-27 14:11:30.841536062 -0700
+@@ -6,18 +6,15 @@
+ 
+ libglpk_la_CPPFLAGS = \
+ -I$(srcdir) \
+--I$(srcdir)/amd \
+ -I$(srcdir)/api \
+ -I$(srcdir)/bflib \
+ -I$(srcdir)/cglib \
+--I$(srcdir)/colamd \
+ -I$(srcdir)/env \
+ -I$(srcdir)/minisat \
+ -I$(srcdir)/misc \
+ -I$(srcdir)/mpl \
+ -I$(srcdir)/proxy \
+--I$(srcdir)/simplex \
+--I$(srcdir)/zlib
++-I$(srcdir)/simplex
+ 
+ libglpk_la_LDFLAGS = \
+ -version-info 42:2:2 \
+@@ -57,18 +54,6 @@
+ glpssx01.c \
+ glpssx02.c \
+ lux.c \
+-amd/amd_1.c \
+-amd/amd_2.c \
+-amd/amd_aat.c \
+-amd/amd_control.c \
+-amd/amd_defaults.c \
+-amd/amd_dump.c \
+-amd/amd_info.c \
+-amd/amd_order.c \
+-amd/amd_post_tree.c \
+-amd/amd_postorder.c \
+-amd/amd_preprocess.c \
+-amd/amd_valid.c \
+ api/advbas.c \
+ api/asnhall.c \
+ api/asnlp.c \
+@@ -142,7 +127,6 @@
+ cglib/gmigen.c \
+ cglib/mirgen.c \
+ cglib/spv.c \
+-colamd/colamd.c \
+ env/alloc.c \
+ env/dlsup.c \
+ env/env.c \
+@@ -196,21 +180,6 @@
+ simplex/spxprob.c \
+ simplex/spychuzc.c \
+ simplex/spychuzr.c \
+-simplex/spydual.c \
+-zlib/adler32.c \
+-zlib/compress.c \
+-zlib/crc32.c \
+-zlib/deflate.c \
+-zlib/gzclose.c \
+-zlib/gzlib.c \
+-zlib/gzread.c \
+-zlib/gzwrite.c \
+-zlib/inffast.c \
+-zlib/inflate.c \
+-zlib/inftrees.c \
+-zlib/trees.c \
+-zlib/uncompr.c \
+-zlib/zio.c \
+-zlib/zutil.c
++simplex/spydual.c
+ 
+ ## eof ##
