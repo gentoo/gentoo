@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	sys-apps/util-linux
 	dev-libs/libxml2
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	libatomic? ( dev-libs/libatomic_ops )
 	xfs? ( sys-fs/xfsprogs )
 	zfs? ( sys-fs/zfs )
@@ -174,7 +174,6 @@ src_install() {
 
 	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
-	systemd_install_serviced "${FILESDIR}/ceph-mon_at.service.conf" "ceph-mon@.service"
 
 	python_fix_shebang \
 		"${ED}"/usr/sbin/{ceph-disk,ceph-create-keys} \

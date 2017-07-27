@@ -14,8 +14,8 @@ if [[ ${PV} == *9999* ]]; then
 		https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
-	SRC_URI="http://ceph.com/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+	SRC_URI="http://download.ceph.com/tarballs/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -31,43 +31,44 @@ IUSE+=" libatomic lttng +nss +radosgw static-libs +tcmalloc test xfs zfs"
 #>=dev-libs/jerasure-2.0.0-r1
 #>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
-	app-arch/snappy
+	app-arch/snappy:=
+	sys-libs/zlib:=
 	app-arch/lz4:=
-	app-arch/bzip2
+	app-arch/bzip2:=
+	app-arch/zstd:=
 	dev-libs/boost:=[threads]
-	dev-libs/libaio
-	dev-libs/leveldb[snappy]
-	nss? ( dev-libs/nss )
-	libatomic? ( dev-libs/libatomic_ops )
+	dev-libs/libaio:=
+	dev-libs/leveldb:=[snappy]
+	nss? ( dev-libs/nss:= )
+	libatomic? ( dev-libs/libatomic_ops:= )
 	cryptopp? ( dev-libs/crypto++:= )
 	sys-apps/keyutils
 	sys-apps/util-linux
-	dev-libs/libxml2
-	radosgw? ( dev-libs/fcgi )
-	ldap? ( net-nds/openldap )
+	dev-libs/libxml2:=
+	radosgw? ( dev-libs/fcgi:= )
+	ldap? ( net-nds/openldap:= )
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse )
-	xfs? ( sys-fs/xfsprogs )
-	zfs? ( sys-fs/zfs )
+	fuse? ( sys-fs/fuse:0= )
+	xfs? ( sys-fs/xfsprogs:= )
+	zfs? ( sys-fs/zfs:= )
 	gtk? (
-		x11-libs/gtk+:2
+		x11-libs/gtk+:2=
 		dev-cpp/gtkmm:2.4
-		gnome-base/librsvg
+		gnome-base/librsvg:=
 	)
 	radosgw? (
-		dev-libs/fcgi
-		dev-libs/expat
-		net-misc/curl
+		dev-libs/fcgi:=
+		dev-libs/expat:=
+		net-misc/curl:=
 	)
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	!jemalloc? ( dev-util/google-perftools )
-	lttng? ( dev-util/lttng-ust )
+	lttng? ( dev-util/lttng-ust:= )
 	${PYTHON_DEPS}
 	"
 DEPEND="${COMMON_DEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	app-arch/cpio
-	sys-apps/lsb-release
 	virtual/pkgconfig
 	dev-python/sphinx
 	test? (
@@ -94,7 +95,7 @@ REQUIRED_USE="
 # work around bug in ceph compilation (rgw/ceph_dencoder-rgw_dencoder.o... undefined reference to `vtable for RGWZoneGroup')
 REQUIRED_USE+=" radosgw"
 
-RESTRICT="test? ( userpriv )"
+#RESTRICT="test? ( userpriv )"
 
 # distribution tarball does not include everything needed for tests
 RESTRICT+=" test"
@@ -113,6 +114,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-10.2.3-build-without-openldap.patch"
 	"${FILESDIR}/${PN}-10.2.5-Make-RBD-Python-bindings-compatible-with-Python-3.patch"
 	"${FILESDIR}/${PN}-10.2.5-Make-CephFS-bindings-and-tests-compatible-with-Python-3.patch"
+	"${FILESDIR}/${PN}-10.2.7-fix-compilation-with-zstd.patch"
 )
 
 check-reqs_export_vars() {
@@ -269,12 +271,11 @@ src_install() {
 	fowners -R ceph:ceph /var/lib/ceph /var/log/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r5" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r3" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
-	systemd_install_serviced "${FILESDIR}/ceph-mon_at.service.conf" "ceph-mon@.service"
 
 	udev_dorules udev/*.rules
 
