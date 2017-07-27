@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-vtk.patch"
 	"${FILESDIR}/${P}-gcc-6.0.patch"
 	"${FILESDIR}/${PN}-3.2.0-fix_ussage_cpu_instructions.patch"
+	"${FILESDIR}/${P}-cpu-mno-sse2.patch"
 )
 
 pkg_pretend() {
