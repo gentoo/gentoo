@@ -2917,7 +2917,7 @@ dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database ind
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.8 3.0.17 3.1.9 3.1.10 3.2.1 3.2.3: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.8 3.0.17 3.1.9 3.1.10 3.2.1 3.2.3 3.2.4: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 0.91-r1 1.00 1.00.1 1.00.1-r1 1.00.13 1.00.41: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -11532,8 +11532,8 @@ games-sports/trophy 2.0.3 2.0.3-r1: 2D Racing Game
 games-sports/ultimatestunts 0.7.7 0.7.7-r1: Remake of the famous Stunts game
 games-sports/vdrift 20120722: A driving simulation made with drift racing in mind
 games-sports/xmoto 0.5.11 0.5.11-r1: A challenging 2D motocross platform game
-games-strategy/0ad 0.0.20_alpha 0.0.21_alpha: A free, real-time strategy game
-games-strategy/0ad-data 0.0.20_alpha 0.0.21_alpha: Data files for 0ad
+games-strategy/0ad 0.0.21_alpha 0.0.22_alpha: A free, real-time strategy game
+games-strategy/0ad-data 0.0.21_alpha 0.0.22_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
 games-strategy/boswars 2.7-r1: Futuristic real-time strategy game
 games-strategy/crimson 0.5.3: Tactical war game in the tradition of Battle Isle
@@ -14308,7 +14308,7 @@ net-analyzer/hexinject 1.5: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the TCP/IP protocol
-net-analyzer/hydra 8.1 8.4 8.5: Advanced parallized login hacker
+net-analyzer/hydra 8.1 8.5 8.6: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.4 1.14.0: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.0: Icinga Web - new Web Interface
@@ -15031,7 +15031,7 @@ net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
 net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.16.5 2.16.6: Open source web browser engine
-net-libs/wvstreams 4.6.1-r3 4.6.1-r4: A network programming library in C++
+net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5: A network programming library in C++
 net-libs/xrootd 4.4.0 4.5.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2 4.2.2-r1 4.2.2-r2: A brokerless kernel
 net-libs/zmqpp 4.1.2: ZeroMQ 'highlevel' C++ bindings
