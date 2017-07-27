@@ -17,7 +17,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="component-build cups gnome-keyring +gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-libvpx +tcmalloc widevine"
+IUSE="component-build cups gnome-keyring +gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.11:= )
 	dev-libs/expat:=
 	dev-libs/glib:2
-	dev-libs/icu:=
+	system-icu? ( <dev-libs/icu-59:= )
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -142,6 +142,14 @@ theme that covers the appropriate MIME types, and configure this as your
 GTK+ icon theme.
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-widevine-r1.patch"
+	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
+	"${FILESDIR}/${PN}-gcc-r1.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r14.patch"
+	"${FILESDIR}/${PN}-atk-r1.patch"
+)
+
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -183,12 +191,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/${PN}-widevine-r1.patch"
-		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r12.patch"
-	)
-
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
@@ -321,6 +323,9 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg )
 	fi
+	if ! use system-icu; then
+		keeplibs+=( third_party/icu )
+	fi
 	if ! use system-libvpx; then
 		keeplibs+=( third_party/libvpx )
 		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
@@ -377,7 +382,6 @@ src_configure() {
 	local gn_system_libraries=(
 		flac
 		harfbuzz-ng
-		icu
 		libdrm
 		libjpeg
 		libpng
@@ -392,6 +396,9 @@ src_configure() {
 	)
 	if use system-ffmpeg; then
 		gn_system_libraries+=( ffmpeg )
+	fi
+	if use system-icu; then
+		gn_system_libraries+=( icu )
 	fi
 	if use system-libvpx; then
 		gn_system_libraries+=( libvpx )
@@ -599,8 +606,9 @@ src_install() {
 	doins out/Release/*.pak
 	doins out/Release/*.so
 
-	# Needed by bundled icu
-	# doins out/Release/icudtl.dat
+	if ! use system-icu; then
+		doins out/Release/icudtl.dat
+	fi
 
 	doins -r out/Release/locales
 	doins -r out/Release/resources
