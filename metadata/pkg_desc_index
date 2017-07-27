@@ -4675,6 +4675,7 @@ dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/cryptlib 3.4.3.1-r2: Powerful security toolkit for adding encryption to software
 dev-libs/crypto++ 5.6.5 5.6.5-r1: C++ class library of cryptographic schemes
+dev-libs/cudnn 6.0: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p10: REINER SCT cyberJack pinpad/e-com USB user space driver library
@@ -13185,7 +13186,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 2.4.13-r1 3.1.0-r6 3.1.0-r7 3.2.0 3.2.0-r1: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13 2.4.13-r1 3.1.0-r6 3.1.0-r7 3.2.0 3.2.0-r2: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -16426,7 +16427,7 @@ sci-libs/cxsparse 2.2.1 2.2.6 3.1.1 3.1.2-r1: Extended sparse matrix package
 sci-libs/dcmtk 3.6.0: The DICOM Toolkit
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
-sci-libs/dlib 18.7 18.15: Numerical and networking C++ library
+sci-libs/dlib 19.4: Numerical and networking C++ library
 sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed machine learning.
 sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
