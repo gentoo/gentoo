@@ -18,7 +18,6 @@
 		<flag name="cli">Enables the CLI version of RetroShare</flag>
 		<flag name="feedreader">Enables the Feedreader plugin</flag>
 		<flag name="gui">Enables the GUI version of RetroShare</flag>
-		<flag name="links-cloud">Enables LinkClouds plugin</flag>
 		<flag name="voip">Enables VOIP plugin</flag>
 	</use>
 	<upstream>
