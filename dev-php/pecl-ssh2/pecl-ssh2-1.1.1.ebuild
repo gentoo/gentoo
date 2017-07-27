@@ -16,7 +16,8 @@ LICENSE="PHP-3.01"
 SLOT="7"
 IUSE=""
 KEYWORDS="~amd64 ~x86"
-DEPEND=">=net-libs/libssh2-1.2"
+# Upstream notes say there are errors with gcrypt backend
+DEPEND=">=net-libs/libssh2-1.2[-gcrypt]"
 RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-ssh2:0[php_targets_php5-6] )"
 
