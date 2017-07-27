@@ -9,4 +9,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=c3e7393302bc586791ffbdefa826239b
+_md5_=ce3e667faa02cb5eb5901dd9927d5c17
