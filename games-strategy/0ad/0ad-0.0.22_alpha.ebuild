@@ -1,19 +1,19 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER="3.0"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,ssl"
 
-inherit eutils wxwidgets toolchain-funcs gnome2-utils python-any-r1 games
+inherit eutils wxwidgets toolchain-funcs gnome2-utils python-any-r1
 
 MY_P=0ad-${PV/_/-}
 DESCRIPTION="A free, real-time strategy game"
 HOMEPAGE="https://play0ad.com/"
-SRC_URI="mirror://sourceforge/zero-ad/${MY_P}-unix-build.tar.xz"
+SRC_URI="http://releases.wildfiregames.com/${MY_P}-unix-build.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1 MIT CC-BY-SA-3.0 ZLIB"
 SLOT="0"
@@ -47,16 +47,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	games_pkg_setup
 	python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.0.21_alpha-gentoo.patch
+)
 
 src_configure() {
 	local myconf=(
@@ -70,9 +69,9 @@ src_configure() {
 		$(usex editor "--atlas" "")
 		$(usex lobby "" "--without-lobby")
 		--collada
-		--bindir="${GAMES_BINDIR}"
-		--libdir="$(games_get_libdir)"/${PN}
-		--datadir="${GAMES_DATADIR}"/${PN}
+		--bindir="/usr/bin"
+		--libdir="/usr/$(get_libdir)"/${PN}
+		--datadir="/usr/share/${PN}"
 		)
 
 	# stock premake4 does not work, use the shipped one
@@ -118,13 +117,13 @@ src_test() {
 }
 
 src_install() {
-	newgamesbin binaries/system/pyrogenesis 0ad
-	use editor && newgamesbin binaries/system/ActorEditor 0ad-ActorEditor
+	newbin binaries/system/pyrogenesis 0ad
+	use editor && newbin binaries/system/ActorEditor 0ad-ActorEditor
 
-	insinto "${GAMES_DATADIR}"/${PN}
+	insinto /usr/share/${PN}
 	doins -r binaries/data/l10n
 
-	exeinto "$(games_get_libdir)"/${PN}
+	exeinto /usr/$(get_libdir)/${PN}
 	doexe binaries/system/libCollada.so
 	doexe libraries/source/spidermonkey/lib/*.so
 	use editor && doexe binaries/system/libAtlasUI.so
@@ -132,17 +131,13 @@ src_install() {
 	dodoc binaries/system/readme.txt
 	doicon -s 128 build/resources/${PN}.png
 	make_desktop_entry ${PN}
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
