@@ -17985,7 +17985,7 @@ sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectu
 sys-power/upower 0.99.4 0.99.4-r1 0.99.5: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
-sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1: GNU system accounting utilities
+sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1 6.6.4: GNU system accounting utilities
 sys-process/anacron 2.3-r2 2.3-r3 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
