@@ -3039,7 +3039,7 @@ developers and volunteer mentors.</description>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
     </member>
-    <member>
+    <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Facebook (editor), G+, Twitter, Telegram (admin), Slack (admin)</role>
