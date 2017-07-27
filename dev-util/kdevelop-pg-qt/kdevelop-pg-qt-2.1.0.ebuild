@@ -3,7 +3,6 @@
 
 EAPI=6
 
-EGIT_BRANCH="2.0"
 KDEBASE="kdevelop"
 KDE_TEST="forceoptional"
 inherit kde5
