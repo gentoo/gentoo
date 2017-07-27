@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils cuda
 
 DESCRIPTION="Numerical and networking C++ library"
 HOMEPAGE="http://dlib.net/"
@@ -19,20 +19,22 @@ IUSE="cblas debug cuda examples gif jpeg lapack mkl png
 
 RDEPEND="
 	cblas? ( virtual/cblas:= )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-7 )
+	cuda? ( dev-libs/cudnn:= )
 	jpeg? ( virtual/jpeg:0= )
 	lapack? ( virtual/lapack:= )
-	mkl? ( sci-libs/mkl )
+	mkl? ( sci-libs/mkl:= )
 	png? ( media-libs/libpng:0= )
 	sqlite? ( dev-db/sqlite:3= )
-	X? ( x11-libs/libX11 )
+	X? ( x11-libs/libX11:= )
 "
 DEPEND="test? ( ${RDEPEND} )"
 
 src_prepare() {
+	use cuda && cuda_src_prepare
 	cmake-utils_src_prepare
 	sed -i -e '/LICENSE.txt/d' dlib/CMakeLists.txt || die
 }
+
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="$(get_libdir)"
