@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit fdo-mime eutils gnome2-utils
+inherit xdg-utils eutils gnome2-utils
 
 DESCRIPTION="Free, easy, personal accounting for everyone"
 HOMEPAGE="http://homebank.free.fr/index.php"
@@ -29,6 +29,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README )
 
+src_prepare(){
+	echo src/hb-payee.c >> po/POTFILES.in || die
+	eapply_user
+}
+
 src_configure() {
 	econf $(use_with ofx)
 }
@@ -38,13 +43,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

@@ -5,12 +5,6 @@
 	<email>media-video@gentoo.org</email>
 	<name>Gentoo Video project</name>
 </maintainer>
-<maintainer type="person">
-	<email>calchan@gentoo.org</email>
-	<name>Denis Dupeyron</name>
-	<description>Main maintainer for this is the herd, please CC on
-	bugs.</description>
-</maintainer>
 <longdescription lang="en">
 This library provides third generation media reception and transmission for DV,
 MPEG2-TS, and AMDTP (audio and music) using only raw1394 and not the complicated
