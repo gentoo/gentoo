@@ -16,8 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
@@ -36,7 +35,7 @@ RDEPEND="
 	>=dev-libs/libpcre2-10.23:0=[jit]
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	>=sys-devel/llvm-3.9:0=
+	>=sys-devel/llvm-3.9:=
 	>=sys-libs/libunwind-1.1:7=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
@@ -155,6 +154,11 @@ src_test() {
 }
 
 src_install() {
+	# Julia is special. It tries to find a valid git repository (that would
+	# normally be cloned during compilation/installation). Just make it
+	# happy...
+	git init && git commit -a --allow-empty -m "initial" || die "git failed"
+
 	emake install \
 		prefix="/usr" DESTDIR="${D}" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	cat > 99julia <<-EOF
