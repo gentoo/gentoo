@@ -32,6 +32,7 @@
 		<flag name="swaylock">Build 'swaylock': sway's screen locker.</flag>
 		<flag name="swaymsg">Build 'swaymsg': tool for communicating with a running sway instance.</flag>
 		<flag name="wallpapers">Install sway's default wallpaper image.</flag>
+		<flag name="tray">Enable support for StatusNotifierItem tray specification.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">SirCmpwn/sway</remote-id>
