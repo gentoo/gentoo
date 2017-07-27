@@ -9,6 +9,10 @@
     <email>chutzpah@gentoo.org</email>
     <name>Patrick McLean</name>
   </maintainer>
+  <maintainer type="person">
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+  </maintainer>
   <longdescription>OpenVPN is an easy-to-use, robust and highly
 configurable VPN daemon which can be used to securely link two or more
 networks using an encrypted tunnel.</longdescription>
