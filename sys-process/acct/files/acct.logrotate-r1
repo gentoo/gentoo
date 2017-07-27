@@ -1,0 +1,18 @@
+# Logrotate file for acct
+
+/var/account/pacct {
+	compress
+	delaycompress
+	notifempty
+	daily
+	rotate 31
+	create 0600 root root
+	missingok
+	postrotate
+		if test -d /run/systemd/system ; then
+			systemctl try-restart acct 1>/dev/null
+		else
+			/etc/init.d/acct --quiet --ifstarted restart
+		fi
+	endscript
+}
