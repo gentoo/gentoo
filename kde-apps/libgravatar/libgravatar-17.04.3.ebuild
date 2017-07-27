@@ -26,3 +26,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 "
+
+src_test() {
+	# bug 624584 - needs internet connection
+	local myctestargs=(
+		-E "(gravatar-gravatarresolvurljobtest)"
+	)
+
+	kde5_src_test
+}
