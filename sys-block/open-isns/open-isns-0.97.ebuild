@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="iSNS server and client for Linux"
 HOMEPAGE="https://github.com/open-iscsi/open-isns"
-SRC_URI="http://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
