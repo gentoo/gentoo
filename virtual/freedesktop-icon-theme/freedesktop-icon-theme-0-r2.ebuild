@@ -15,5 +15,6 @@ RDEPEND="|| (
 	x11-themes/tango-icon-theme
 	kde-frameworks/oxygen-icons
 	x11-themes/mate-icon-theme
+	x11-themes/elementary-xfce-icon-theme
 )
 "
