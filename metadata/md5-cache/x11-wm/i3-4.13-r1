@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://i3wm.org/downloads/i3-4.13.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=db6e874e8e8c655c40a21edc56bf26f3
+_md5_=bcb794451b98c1bff7c3bb89f6b7d2e2
