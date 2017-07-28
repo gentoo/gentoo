@@ -45,7 +45,7 @@ elif [[ ${PV} == *_p[0-9] ]]; then
 	INSPECTOR_VER="DOMI_2_0_17"
 	SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/source/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}.source.tar.xz
-	https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170724.tar.xz
+	https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170727.tar.xz
 	https://hg.mozilla.org/chatzilla/archive/${CHATZILLA_VER}.tar.bz2 -> chatzilla-${CHATZILLA_VER}.tar.bz2
 	https://hg.mozilla.org/dom-inspector/archive/${INSPECTOR_VER}.tar.bz2 -> dom-inspector-${INSPECTOR_VER}.tar.bz2
 	"
