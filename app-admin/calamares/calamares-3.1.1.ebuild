@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python{3_4,3_5} )
 inherit kde5 python-r1
 
 DESCRIPTION="Distribution-independent installer framework"
-HOMEPAGE="http://calamares.io"
+HOMEPAGE="https://calamares.io"
 if [[ ${KDE_BUILD_TYPE} == live ]] ; then
-	EGIT_REPO_URI="git://github.com/${PN}/${PN}"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
