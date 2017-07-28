@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 inherit ruby-fakegem
 
 DESCRIPTION="Like Pathname but a little less insane"
-HOMEPAGE="https://rubygems.org/gems/pathutil http://github.com/envygeeks/pathutils"
+HOMEPAGE="https://rubygems.org/gems/pathutil https://github.com/envygeeks/pathutils"
 
 LICENSE="MIT"
 SLOT="0"
