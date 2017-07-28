@@ -19364,7 +19364,7 @@ x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbo
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4: Fedora official background artwork
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
-x11-themes/elementary-xfce-icon-theme 0.8: Elementary icons forked from upstream, extended and maintained for Xfce
+x11-themes/elementary-xfce-icon-theme 0.8 0.8_p20170710: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/emerald-themes 0.5.2: Emerald window decorator themes
 x11-themes/ethemes 0.16.8.0.3 1.0.0 1.0.1: all the official Enlightenment themes
 x11-themes/experience 3.04: GTK+2 themes which copy and improve the look of XP Luna
