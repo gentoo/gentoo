@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
-IUSE="asterisk irc java memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
+IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
 REQUIRED_USE="cgi? ( !minimal ) apache2? ( cgi )"
 
 # Upstream's listing of required modules is NOT correct!
@@ -57,6 +57,7 @@ DEPEND_COM="
 	doc? ( dev-python/sphinx )
 	http? ( dev-perl/libwww-perl )
 	irc? ( dev-perl/Net-IRC )
+	ldap? ( dev-perl/perl-ldap )
 	kernel_linux? ( sys-process/procps )
 	memcached? ( dev-perl/Cache-Memcached )
 	mysql? (
