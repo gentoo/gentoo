@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem versionator
 
 DESCRIPTION="XML serialization for your Active Model objects and Active Record models"
-HOMEPAGE="http://github.com/rails/activemodel-serializers-xml"
+HOMEPAGE="https://github.com/rails/activemodel-serializers-xml"
 SRC_URI="https://github.com/rails/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MIT"
