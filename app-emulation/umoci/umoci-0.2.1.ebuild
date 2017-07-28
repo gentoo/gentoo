@@ -7,8 +7,8 @@ COMMIT=0465f83826bc4f52e6e3c4dbb1022ec5792c421f
 inherit golang-vcs-snapshot
 
 DESCRIPTION="Manipulation tool for OCI images"
-HOMEPAGE="http://github.com/openSUSE/umoci"
-SRC_URI="http://github.com/openSUSE/umoci/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/openSUSE/umoci"
+SRC_URI="https://github.com/openSUSE/umoci/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
