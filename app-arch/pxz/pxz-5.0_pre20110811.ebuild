@@ -6,7 +6,7 @@ EAPI="3"
 inherit flag-o-matic
 
 DESCRIPTION="Parallel implementation of the XZ compression utility"
-HOMEPAGE="http://jnovy.fedorapeople.org/pxz/"
+HOMEPAGE="https://jnovy.fedorapeople.org/pxz/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
