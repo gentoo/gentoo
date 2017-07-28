@@ -14,7 +14,7 @@ ZABBIX is software for monitoring of your applications, network and servers.
 ZABBIX supports both polling and trapping techniques to collect data from
 monitored hosts. A flexible notification mechanism allows easy and quickly
 configure different types of notifications for pre-defined events.
-	</longdescription>
+  </longdescription>
   <use>
     <flag name="agent">Enable zabbix agent (for to-be-monitored machines)</flag>
     <flag name="frontend">Enable zabbix web frontend</flag>
