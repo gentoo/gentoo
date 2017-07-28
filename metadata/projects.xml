@@ -2043,10 +2043,10 @@
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
-    <member is-lead="1">
+    <member>
       <email>pchrist@gentoo.org</email>
       <name>Panagiotis Christopoulos</name>
-      <role>Lead (General maintainer)</role>
+      <role>Developer (General maintainer)</role>
     </member>
   </project>
   <project>
