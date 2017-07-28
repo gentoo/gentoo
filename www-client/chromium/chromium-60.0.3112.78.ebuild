@@ -46,9 +46,8 @@ COMMON_DEPEND="
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
 	>=media-libs/openh264-1.6.0:=
-	media-libs/opus:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
+	system-ffmpeg? ( >=media-video/ffmpeg-3:= media-libs/opus:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	virtual/udev
@@ -319,7 +318,7 @@ src_prepare() {
 		third_party/yasm/run_yasm.py
 	)
 	if ! use system-ffmpeg; then
-		keeplibs+=( third_party/ffmpeg )
+		keeplibs+=( third_party/ffmpeg third_party/opus )
 	fi
 	if ! use system-libvpx; then
 		keeplibs+=( third_party/libvpx )
@@ -381,14 +380,13 @@ src_configure() {
 		libwebp
 		libxslt
 		openh264
-		opus
 		re2
 		snappy
 		yasm
 		zlib
 	)
 	if use system-ffmpeg; then
-		gn_system_libraries+=( ffmpeg )
+		gn_system_libraries+=( ffmpeg opus )
 	fi
 	if use system-libvpx; then
 		gn_system_libraries+=( libvpx )
