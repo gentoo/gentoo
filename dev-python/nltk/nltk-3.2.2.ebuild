@@ -4,7 +4,7 @@
 EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_4} )
-PYTHON_REQ_USE="tk?,xml(+)"
+PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
 inherit distutils-r1
 
