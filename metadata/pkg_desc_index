@@ -17116,7 +17116,7 @@ sys-apps/gentoo-functions 0.10 0.11 0.12 9999: base functions required by all Ge
 sys-apps/gentoo-systemd-integration 6 7 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.22.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
-sys-apps/gptfdisk 1.0.1: GPT partition table manipulator for Linux
+sys-apps/gptfdisk 1.0.1 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
@@ -19109,7 +19109,7 @@ x11-plugins/compiz-plugins-main 0.8.8: Compiz Fusion Window Decorator Plugins
 x11-plugins/compiz-plugins-unsupported 0.8.8: Compiz Fusion Window Decorator Unsupported Plugins
 x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 1.9.6.1-r1 1.9.7 9999: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 1.9.6.1-r1 1.9.7 1.9.8.1 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6 0.2.6-r1 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
