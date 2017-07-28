@@ -5076,7 +5076,7 @@ dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compress
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
-dev-libs/softhsm 2.2.0-r3: A software PKCS#11 implementation
+dev-libs/softhsm 2.2.0-r3 2.3.0: A software PKCS#11 implementation
 dev-libs/sord 0.12.0 0.12.2 0.14.0 0.16.0: Library for storing RDF data in memory
 dev-libs/spdlog 0.11.0 0.12.0 0.13.0 9999: Very fast, header only, C++ logging library.
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
