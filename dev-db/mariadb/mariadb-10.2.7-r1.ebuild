@@ -200,16 +200,6 @@ pkg_postinst() {
 
 	# Minimal builds don't have the MySQL server
 	if use server ; then
-		docinto "support-files"
-		dodoc support-files/magic
-
-		docinto "scripts"
-		for script in scripts/mysql* ; do
-			if [[ -f "${script}" && "${script%.sh}" == "${script}" ]]; then
-				dodoc "${script}"
-			fi
-		done
-
 		if use pam; then
 			einfo
 			elog "This install includes the PAM authentication plugin."
@@ -361,10 +351,6 @@ multilib_src_configure() {
 		mycmakeargs+=( -DWITH_SSL=bundled )
 	fi
 
-	if ! multilib_is_native_abi ; then
-		mycmakeargs+=( -DWITHOUT_TOOLS=1 )
-	fi
-
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
@@ -373,6 +359,7 @@ multilib_src_configure() {
 		)
 	else
 		mycmakeargs+=(
+			-DWITHOUT_TOOLS=1
 			-DWITH_READLINE=1
 			-DNOT_FOR_DISTRIBUTION=0
 		)
@@ -413,14 +400,13 @@ multilib_src_configure() {
 			-DWITH_LIBARCHIVE=$(usex backup ON OFF)
 			-DINSTALL_SQLBENCHDIR=share/mariadb
 			-DPLUGIN_ROCKSDB=$(usex rocksdb DYNAMIC NO)
+			# systemd is only linked to for server notification
+			-DWITH_SYSTEMD=$(usex systemd)
 		)
 		if use test ; then
 			# This is needed for the new client lib which tests a real, open server
 			mycmakeargs+=( -DSKIP_TESTS=ON )
 		fi
-
-		# systemd is only linked to for server notification
-		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
 
 		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
@@ -715,10 +701,10 @@ multilib_src_test() {
 	export MTR_PARALLEL="${MTR_PARALLEL:-auto}"
 
 	# create directories because mysqladmin might run out of order
-	mkdir -p "${T}"/var-tests{,/log}
+	mkdir -p "${T}"/var-tests{,/log} || die
 
 	# Run mysql tests
-	pushd "${TESTDIR}" || die
+	pushd "${TESTDIR}" > /dev/null || die
 
 	# These are failing in MariaDB 10.0 for now and are believed to be
 	# false positives:
@@ -741,7 +727,7 @@ multilib_src_test() {
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder
 	retstatus_tests=$?
 
-	popd || die
+	popd > /dev/null || die
 
 	# Cleanup is important for these testcases.
 	pkill -9 -f "${S}/ndb" 2>/dev/null
@@ -751,7 +737,7 @@ multilib_src_test() {
 	[[ $retstatus_unit -eq 0 ]] || failures="${failures} test-unit"
 	[[ $retstatus_tests -eq 0 ]] || failures="${failures} tests"
 
-	[[ -z "$failures" ]] || eerror "Test failures: $failures"
+	[[ -z "$failures" ]] || die "Test failures: $failures"
 	einfo "Tests successfully completed"
 }
 
