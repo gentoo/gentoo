@@ -6666,7 +6666,6 @@ net-p2p/qbittorrent:webui - Enable the Web UI
 net-p2p/retroshare:cli - Enables the CLI version of RetroShare
 net-p2p/retroshare:feedreader - Enables the Feedreader plugin
 net-p2p/retroshare:gui - Enables the GUI version of RetroShare
-net-p2p/retroshare:links-cloud - Enables LinkClouds plugin
 net-p2p/retroshare:voip - Enables VOIP plugin
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application
 net-p2p/syncthing:tools - Install stdiscosrv, strelaysrv and other tools to /usr/libexec/syncthing/.
