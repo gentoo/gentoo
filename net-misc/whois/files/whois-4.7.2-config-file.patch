@@ -2,8 +2,8 @@ Enable /etc/whois.conf support.
 
 http://bugs.gentoo.org/show_bug.cgi?id=89417
 
---- config.h
-+++ config.h
+--- a/config.h
++++ b/config.h
 @@ -13,5 +13,3 @@
  /* Configuration file */
 -/*
