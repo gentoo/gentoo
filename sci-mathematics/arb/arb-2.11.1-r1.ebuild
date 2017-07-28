@@ -21,6 +21,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-pie-ftbs.patch )
+
 src_configure() {
 	# Not an autoconf configure script.
 	# Note that it appears to have been cloned from the flint configure script
@@ -31,7 +33,8 @@ src_configure() {
 		--with-flint="${EPREFIX}/usr" \
 		--with-gmp="${EPREFIX}/usr" \
 		--with-mpfr="${EPREFIX}/usr" \
-		$(use_enable static-libs static) || die
+		$(use_enable static-libs static) \
+		CFLAGS="${CPPFLAGS} ${CFLAGS}" || die
 }
 
 src_compile() {
