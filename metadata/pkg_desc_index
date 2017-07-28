@@ -8802,7 +8802,7 @@ dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/symengine 0.3.0: Python wrappers to the symengine C++ library
-dev-python/sympy 0.7.6.1-r1 1.0-r1 1.1: Computer Algebra System in pure Python
+dev-python/sympy 0.7.6.1-r1 1.0-r1 1.1 1.1.1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.7: Pretty-print tabular data
 dev-python/tagpy 2013.1: Python Bindings for TagLib
