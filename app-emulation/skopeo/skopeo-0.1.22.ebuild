@@ -7,7 +7,7 @@ COMMIT=5d24b67
 inherit golang-vcs-snapshot
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
-HOMEPAGE="http://github.com/projectatomic/skopeo"
+HOMEPAGE="https://github.com/projectatomic/skopeo"
 SRC_URI="https://github.com/projectatomic/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
