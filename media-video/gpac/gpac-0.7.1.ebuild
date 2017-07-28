@@ -17,7 +17,8 @@ DESCRIPTION="Implementation of the MPEG-4 Systems standard developed from scratc
 HOMEPAGE="https://gpac.wp.imt.fr/"
 
 LICENSE="GPL-2"
-SLOT="0"
+# subslot == libgpac major
+SLOT="0/7"
 IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libav libressl mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
