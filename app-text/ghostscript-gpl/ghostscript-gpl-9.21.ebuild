@@ -85,6 +85,7 @@ src_prepare() {
 	# apply various patches, many borrowed from Fedora
 	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
 	eapply "${WORKDIR}/patches/"*.patch
+	eapply "${WORKDIR}/ghostscript-gpl-9.21-disable-openjpeg-build.patch"
 
 	if ! use gtk ; then
 		sed -i -e "s:\$(GSSOX)::" \

@@ -1,0 +1,73 @@
+From: Chris Liddell <chris.liddell@artifex.com>
+Date: Tue, 21 Mar 2017 12:01:02 +0000 (+0000)
+Subject: Bug 697677: fix support for --disable-openjpeg
+X-Git-Url: http://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff_plain;h=b8b1d543f
+
+Bug 697677: fix support for --disable-openjpeg
+---
+
+diff --git a/base/lib.mak b/base/lib.mak
+index 617f3ae..76023b4 100644
+--- a/base/lib.mak
++++ b/base/lib.mak
+@@ -1824,9 +1824,6 @@ $(GLOBJ)sjpx.$(OBJ) : $(GLSRC)sjpx.c $(AK) \
+  $(gdebug_h) $(strimpl_h) $(sjpx_h) $(LIB_MAK) $(MAKEDIRS)
+ 	$(GLJASCC) $(GLO_)sjpx.$(OBJ) $(C_) $(GLSRC)sjpx.c
+ 
+-$(GLD)sjpx_.dev : $(LIB_MAK) $(ECHOGS_XE) $(LIB_MAK) $(MAKEDIRS)
+-	$(SETMOD) $(GLD)sjpx_
+-
+ # luratech version
+ sjpx_luratech=$(GLOBJ)sjpx_luratech.$(OBJ)
+ $(GLD)sjpx_luratech.dev : $(LIB_MAK) $(ECHOGS_XE) \
+@@ -1856,6 +1853,16 @@ $(GLOBJ)sjpx_openjpeg.$(OBJ) : $(GLSRC)sjpx_openjpeg.c $(AK) \
+ 	$(GLJPXOPJCC) $(GLO_)sjpx_openjpeg.$(OBJ) \
+ 		$(C_) -DOPJ_STATIC $(GLSRC)sjpx_openjpeg.c
+ 
++# no jpx version
++sjpx_none=$(GLOBJ)sjpx_none.$(OBJ)
++$(GLD)sjpx_.dev : $(LIB_MAK) $(ECHOGS_XE) \
++ $(sjpx_none) $(LIB_MAK) $(MAKEDIRS)
++	$(SETMOD) $(GLD)sjpx_ $(sjpx_none)
++
++$(GLOBJ)sjpx_none.$(OBJ) : $(GLSRC)sjpx_none.c $(AK) \
++ $(memory__h) $(LIB_MAK) $(MAKEDIRS)
++	$(GLJPXOPJCC) $(GLO_)sjpx_none.$(OBJ) $(C_) $(GLSRC)sjpx_none.c
++
+ # ---------------- Pixel-difference filters ---------------- #
+ # The Predictor facility of the LZW and Flate filters uses these.
+ 
+diff --git a/base/sjpx_none.c b/base/sjpx_none.c
+new file mode 100644
+index 0000000..ee1a7a7
+--- /dev/null
++++ b/base/sjpx_none.c
+@@ -0,0 +1,28 @@
++/* Copyright (C) 2001-2012 Artifex Software, Inc.
++   All Rights Reserved.
++
++   This software is provided AS-IS with no warranty, either express or
++   implied.
++
++   This software is distributed under license and may not be copied,
++   modified or distributed except as expressly authorized under the terms
++   of the license contained in the file LICENSE in this distribution.
++
++   Refer to licensing information at http://www.artifex.com or contact
++   Artifex Software, Inc.,  7 Mt. Lassen Drive - Suite A-134, San Rafael,
++   CA  94903, U.S.A., +1(415)492-9861, for further information.
++*/
++
++/* Dummy for no JPX support */
++#include "memory_.h"
++
++
++int sjpxd_create(gs_memory_t *mem)
++{
++    return 0;
++}
++
++void sjpxd_destroy(gs_memory_t *mem)
++{
++}
++
