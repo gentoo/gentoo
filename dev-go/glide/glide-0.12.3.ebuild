@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Vendor Package Managment for Golang"
-HOMEPAGE="http://github.com/Masterminds/glide"
+HOMEPAGE="https://github.com/Masterminds/glide"
 
 LICENSE="MIT"
 SLOT="0"
