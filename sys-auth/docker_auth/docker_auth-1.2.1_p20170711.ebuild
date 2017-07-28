@@ -32,7 +32,7 @@ SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 KEYWORDS="~amd64"
 
 DESCRIPTION="Docker Registry 2 authentication server"
-HOMEPAGE="http://github.com/cesanta/docker_auth"
+HOMEPAGE="https://github.com/cesanta/docker_auth"
 
 LICENSE="Apache-2.0"
 SLOT="0"
