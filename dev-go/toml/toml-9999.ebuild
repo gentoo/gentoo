@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="TOML parser for Golang with reflection"
-HOMEPAGE="http://github.com/BurntSushi/toml"
+HOMEPAGE="https://github.com/BurntSushi/toml"
 
 LICENSE="WTFPL-2"
 SLOT="0"
