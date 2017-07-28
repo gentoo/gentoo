@@ -9,7 +9,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://www.ansible.com/"
-EGIT_REPO_URI="git://github.com/ansible/ansible.git"
+EGIT_REPO_URI="https://github.com/ansible/ansible.git"
 EGIT_BRANCH="devel"
 
 LICENSE="GPL-3"
