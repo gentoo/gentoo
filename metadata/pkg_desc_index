@@ -18056,7 +18056,7 @@ virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Em
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
-virtual/freedesktop-icon-theme 0-r1: A virtual to choose between different icon themes
+virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
 virtual/gnat 4.9: Virtual for the gnat compiler selection
 virtual/gnustep-back 0.25.0 0.25.1: Virtual for back-end component for the GNUstep GUI Library
