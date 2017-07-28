@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	epatch "${FILESDIR}/${P}-qtlibs.patch"
 	epatch "${FILESDIR}/${P}-tests.patch"
+	epatch "${FILESDIR}/${P}-mpiposix.patch"
 }
 
 src_configure() {

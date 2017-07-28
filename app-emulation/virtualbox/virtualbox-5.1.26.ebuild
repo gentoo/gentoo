@@ -4,13 +4,13 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils fdo-mime flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev
+inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.32-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.24-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
@@ -18,8 +18,8 @@ HOMEPAGE="http://www.virtualbox.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="alsa debug doc headless java libressl lvm pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+KEYWORDS="~amd64 ~x86"
+IUSE="alsa debug doc headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -38,10 +38,13 @@ RDEPEND="!app-emulation/virtualbox-bin
 		x11-libs/libXmu
 		x11-libs/libXt
 		opengl? ( virtual/opengl media-libs/freeglut )
-		qt4? (
-			dev-qt/qtgui:4
-			dev-qt/qtcore:4
-			opengl? ( dev-qt/qtopengl:4 )
+		qt5? (
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtprintsupport:5
+			dev-qt/qtwidgets:5
+			dev-qt/qtx11extras:5
+			opengl? ( dev-qt/qtopengl:5 )
 			x11-libs/libXinerama
 		)
 	)
@@ -52,7 +55,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998_pre20131130
+	>=dev-util/kbuild-0.1.9998_pre20131130-r1
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
@@ -71,7 +74,9 @@ DEPEND="${RDEPEND}
 	!headless? ( x11-libs/libXinerama )
 	java? ( >=virtual/jre-1.6:= )
 	pam? ( sys-libs/pam )
+	pax_kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
+	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
 
@@ -115,11 +120,10 @@ REQUIRED_USE="
 "
 
 pkg_setup() {
-	if ! use headless && ! use qt4 ; then
-		einfo "No USE=\"qt4\" selected, this build will not include"
-		einfo "any Qt frontend."
-	elif use headless && use qt4 ; then
-		einfo "You selected USE=\"headless qt4\", defaulting to"
+	if ! use headless && ! use qt5 ; then
+		einfo "No USE=\"qt5\" selected, this build will not include any Qt frontend."
+	elif use headless && use qt5 ; then
+		einfo "You selected USE=\"headless qt5\", defaulting to"
 		einfo "USE=\"headless\", this build will not include any X11/Qt frontend."
 	fi
 
@@ -143,8 +147,12 @@ src_prepare() {
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
-	# Remove pointless GCC version check
-	sed -e '/^check_gcc$/d' -i configure || die
+	# Replace pointless GCC version check with something less stupid.
+	# This is needed for the qt5 version check.
+	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' -i configure || die
+
+	# Don't use "echo -n"
+	sed 's@ECHO_N="echo -n"@ECHO_N="printf"@' -i configure || die
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
@@ -173,9 +181,15 @@ src_prepare() {
 		java-pkg-opt-2_src_prepare
 	fi
 
-	#if ! gcc-specs-pie ; then
-		rm "${WORKDIR}/patches/050_${PN}-5.0.2-nopie.patch" || die
-	#fi
+	# Only add nopie patch when we're on hardened
+	if  gcc-specs-pie ; then
+		eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
+	fi
+
+	# Only add paxmark patch when we're on pax_kernel
+	if use pax_kernel ; then
+		epatch "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch || die
+	fi
 
 	eapply "${WORKDIR}/patches"
 
@@ -183,7 +197,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=(
+		--with-gcc="$(tc-getCC)"
+		--with-g++="$(tc-getCXX)"
+		--disable-dbus
+		--disable-kmods
+	)
 	use alsa       || myconf+=( --disable-alsa )
 	use debug      && myconf+=( --build-debug )
 	use doc        || myconf+=( --disable-docs )
@@ -195,7 +214,7 @@ src_configure() {
 	use vboxwebsrv && myconf+=( --enable-webservice )
 	use vnc        && myconf+=( --enable-vnc )
 	if ! use headless ; then
-		use qt4 || myconf+=( --disable-qt4 )
+		use qt5 || myconf+=( --disable-qt )
 	else
 		myconf+=( --build-headless --disable-opengl )
 	fi
@@ -203,20 +222,15 @@ src_configure() {
 		myconf+=( --disable-vmmraw )
 	fi
 	# not an autoconf script
-	./configure \
-		--with-gcc="$(tc-getCC)" \
-		--with-g++="$(tc-getCXX)" \
-		--disable-dbus \
-		--disable-kmods \
-		${myconf[@]} \
-		|| die "configure failed"
+	./configure ${myconf[@]} || die "configure failed"
 }
 
 src_compile() {
 	source ./env.sh || die
 
-	MAKEJOBS=$(echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+')
-	MAKELOAD=$(echo ${MAKEOPTS} | egrep -o '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+') #'
+	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
+	MAKEJOBS=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
+	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
@@ -234,7 +248,7 @@ src_install() {
 	use debug && binpath="debug"
 	cd "${S}"/out/linux.${ARCH}/${binpath}/bin || die
 
-	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each fwfile
+	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each fwfile size ico icofile
 
 	vbox_inst() {
 		local binary="${1}"
@@ -254,10 +268,10 @@ src_install() {
 	insinto /etc/vbox
 	newins "${FILESDIR}/${PN}-4-config" vbox.cfg
 
-	# Set the right libdir
-	sed -i \
+	# Set the correct libdir
+	sed \
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
-		"${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
+		-i "${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
@@ -278,7 +292,7 @@ src_install() {
 		vbox_inst ${each}
 	done
 
-	# These binaries need to be suid root in any case.
+	# These binaries need to be suid root.
 	for each in VBox{Headless,Net{AdpCtl,DHCP,NAT}} ; do
 		vbox_inst ${each} 4750
 	done
@@ -317,14 +331,14 @@ src_install() {
 			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 		done
 
-		if use opengl && use qt4 ; then
-			vbox_inst VBoxTestOGL
-			pax-mark -m "${D}"${vbox_inst_path}/VBoxTestOGL
-		fi
-
-		if use qt4 ; then
+		if use qt5 ; then
 			vbox_inst VirtualBox 4750
 			pax-mark -m "${D}"${vbox_inst_path}/VirtualBox
+
+			if use opengl ; then
+				vbox_inst VBoxTestOGL
+				pax-mark -m "${D}"${vbox_inst_path}/VBoxTestOGL
+			fi
 
 			for each in virtualbox VirtualBox ; do
 				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
@@ -342,6 +356,16 @@ src_install() {
 		done
 		newicon ${PN}-48px.png ${PN}.png
 		doicon -s scalable ${PN}.svg
+		popd &>/dev/null || die
+		pushd "${S}"/src/VBox/Artwork/other &>/dev/null || die
+		for size in 16 24 32 48 64 72 96 128 256 512 ; do
+			for ico in hdd ova ovf vbox{,-extpack} vdi vdh vmdk ; do
+				icofile="${PN}-${ico}-${size}px.png"
+				if [[ -f "${icofile}" ]] ; then
+					newicon -s ${size} ${icofile} ${PN}-${ico}.png
+				fi
+			done
+		done
 		popd &>/dev/null || die
 	fi
 
@@ -386,14 +410,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	if use udev ; then
 		udevadm control --reload-rules \
 			&& udevadm trigger --subsystem-match=usb
 	fi
 
-	if ! use headless && use qt4 ; then
+	if ! use headless && use qt5 ; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."
 	fi
 	elog "You must be in the vboxusers group to use VirtualBox."
@@ -423,13 +447,13 @@ pkg_postinst() {
 		elog ""
 		elog "WARNING!"
 		elog "Without USE=udev, USB devices will likely not work in ${PN}."
-	elif [ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
+	elif [ -e "${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
 		elog ""
-		elog "Please remove \"${ROOT}/etc/udev/rules.d/10-virtualbox.rules\""
+		elog "Please remove \"${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules\""
 		elog "or else USB in ${PN} won't work."
 	fi
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

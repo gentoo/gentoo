@@ -182,9 +182,9 @@ src_prepare() {
 	fi
 
 	# Only add nopie patch when we're on hardened
-	#if ! gcc-specs-pie ; then
-	#	rm "${WORKDIR}"/patches/050_${PN}-*-nopie.patch || die
-	#fi
+	if gcc-specs-pie ; then
+		eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
+	fi
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
@@ -192,7 +192,6 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
-	eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
 
 	eapply_user
 }
