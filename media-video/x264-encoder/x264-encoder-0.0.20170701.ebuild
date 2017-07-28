@@ -28,7 +28,7 @@ REQUIRED_USE="ffmpegsource? ( ffmpeg )"
 RDEPEND="ffmpeg? ( virtual/ffmpeg )
 	~media-libs/x264-${PV}[10bit=,interlaced=,threads=]
 	ffmpegsource? ( media-libs/ffmpegsource )
-	mp4? ( >=media-video/gpac-0.5.2 )"
+	mp4? ( >=media-video/gpac-0.5.2:= )"
 
 ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="${RDEPEND}
