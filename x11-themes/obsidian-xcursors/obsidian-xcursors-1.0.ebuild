@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 MY_PN="Obsidian"
@@ -8,7 +8,7 @@ SRC_URI="http://www.kde-look.org/CONTENT/content-files/73135-${MY_PN}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 RDEPEND=""
