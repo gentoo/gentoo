@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="A source-level debugger for the Go programming language"
-HOMEPAGE="http://github.com/derekparker/delve"
+HOMEPAGE="https://github.com/derekparker/delve"
 
 LICENSE="MIT"
 SLOT="0"
