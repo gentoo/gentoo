@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ MY_PN="Flask-BabelEx"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Adds i18n/l10n support to Flask applications"
-HOMEPAGE="http://github.com/mrjoes/flask-babelex https://pypi.python.org/pypi/Flask-BabelEx"
+HOMEPAGE="https://github.com/mrjoes/flask-babelex https://pypi.python.org/pypi/Flask-BabelEx"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
