@@ -89,6 +89,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( README )
+PATCHES=( "${FILESDIR}"/freerdp-Fix-gstreamer-1.0-detection.patch )
 
 src_configure() {
 	local mycmakeargs=(
