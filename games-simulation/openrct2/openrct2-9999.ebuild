@@ -52,11 +52,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.1.0-remove-external-gtest.patch"
-	"${FILESDIR}/${PN}-0.1.0-respect-libdir.patch"
-)
-
 if [[ ${PV} == 9999 ]]; then
 src_unpack() {
 	default
@@ -73,6 +68,7 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
 		-DDISABLE_RCT2_TESTS=ON
+		-DSYSTEM_GTEST=ON
 	)
 
 	cmake-utils_src_configure
