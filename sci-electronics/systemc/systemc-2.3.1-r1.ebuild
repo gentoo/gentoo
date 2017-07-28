@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs autotools-utils
+inherit toolchain-funcs autotools-utils
 MY_P="${P}a"
 
 DESCRIPTION="A C++ based modeling platform for VLSI and system-level co-design"
@@ -31,8 +31,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static-libs static) CXX=$(tc-getCXX)\
-	--with-unix-layout
+	econf \
+		$(use_enable static-libs static) \
+		--with-unix-layout \
+		CXX=$(tc-getCXX) # TODO: Describe why we need to define CXX here.
 }
 
 src_install() {
