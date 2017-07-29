@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit distutils-r1 eutils qt4-r2 toolchain-funcs flag-o-matic git-r3
 
 DESCRIPTION="static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
-EGIT_REPO_URI="git://github.com/danmar/cppcheck.git"
+EGIT_REPO_URI="https://github.com/danmar/cppcheck.git"
 
 LICENSE="GPL-3"
 SLOT="0"
