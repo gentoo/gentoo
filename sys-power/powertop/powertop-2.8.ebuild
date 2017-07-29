@@ -5,7 +5,7 @@ EAPI="5"
 
 inherit eutils linux-info
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/fenrus75/powertop.git"
+	EGIT_REPO_URI="https://github.com/fenrus75/powertop.git"
 	inherit git-2 autotools
 	SRC_URI=""
 else
