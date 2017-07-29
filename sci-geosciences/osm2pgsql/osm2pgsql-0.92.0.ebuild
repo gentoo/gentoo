@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Converts OSM data to SQL and insert into PostgreSQL db"
-HOMEPAGE="http://wiki.openstreetmap.org/wiki/Osm2pgsql https://github.com/openstreetmap/osm2pgsql"
+HOMEPAGE="https://wiki.openstreetmap.org/wiki/Osm2pgsql https://github.com/openstreetmap/osm2pgsql"
 SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
