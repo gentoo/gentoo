@@ -20,9 +20,9 @@ RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		  dev-python/moto[${PYTHON_USEDEP}]
-		  dev-python/pytest[${PYTHON_USEDEP}]
-   )
+	   dev-python/moto[${PYTHON_USEDEP}]
+	   dev-python/pytest[${PYTHON_USEDEP}]
+	)
 "
 
 python_test() {
