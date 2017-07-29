@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit git-2 eutils multilib toolchain-funcs
 
 DESCRIPTION="high performance network sniffer for packet inspection"
 HOMEPAGE="http://netsniff-ng.org/"
-EGIT_REPO_URI="git://github.com/borkmann/${PN}.git"
+EGIT_REPO_URI="https://github.com/borkmann/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
