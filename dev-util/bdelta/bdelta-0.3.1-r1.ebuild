@@ -4,7 +4,7 @@
 EAPI=6
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/jjwhitney/BDelta.git"
+	EGIT_REPO_URI="https://github.com/jjwhitney/BDelta.git"
 	UNPACKER_ECLASS="git-2"
 	LIVE_EBUILD=yes
 else
