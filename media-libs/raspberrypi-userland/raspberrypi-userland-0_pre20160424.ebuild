@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/raspberrypi/userland"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	SRC_URI=""
 else
 	GIT_COMMIT="dff5760"
