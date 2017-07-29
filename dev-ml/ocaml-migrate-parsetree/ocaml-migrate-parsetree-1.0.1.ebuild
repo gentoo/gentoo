@@ -11,7 +11,7 @@ SRC_URI="https://github.com/let-def/ocaml-migrate-parsetree/archive/${PV}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE=""
 
 DEPEND="
