@@ -7,7 +7,7 @@ inherit cmake-utils systemd user
 
 DESCRIPTION="An optimized HTTP server with support for HTTP/1.x and HTTP/2"
 HOMEPAGE="https://h2o.examp1e.net"
-SRC_URI="https://github.com/h2o/h2o/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
