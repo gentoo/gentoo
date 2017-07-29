@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~mjo/distfiles/eselect-php-0.9.4.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=365b0c0920fc0eac1b7e4ea5d6ed9938
+_md5_=ae2e6fdf658aa288ce36453f78fd2026
