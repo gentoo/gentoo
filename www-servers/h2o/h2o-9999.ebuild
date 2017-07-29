@@ -7,7 +7,7 @@ inherit cmake-utils git-r3 systemd user
 
 DESCRIPTION="An optimized HTTP server with support for HTTP/1.x and HTTP/2"
 HOMEPAGE="https://h2o.examp1e.net"
-EGIT_REPO_URI=( {https,git}://github.com/h2o/h2o.git )
+EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
