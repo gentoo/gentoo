@@ -5,7 +5,7 @@ EAPI="5"
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python2_7 python3_5 )
 
-EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
+EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
