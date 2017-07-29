@@ -1015,7 +1015,7 @@ app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-do
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.6.3 1.6.4 1.6.5: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.5: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.22.0: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
@@ -1063,7 +1063,7 @@ app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C s
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/sublime-text 2.0.2-r2 3_pre3126-r3: Sophisticated text editor for code, markup and prose
-app-editors/tea 43.1.0 44.0.0: Small, lightweight Qt text editor
+app-editors/tea 43.1.0 44.0.0 44.1.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
@@ -2223,7 +2223,7 @@ app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-update
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
 app-text/calibre 2.78.0 2.85.1 3.1.1-r2 3.3.0: Ebook management application
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
-app-text/cb2bib 1.9.6 1.9.7: Tool for extracting unformatted bibliographic references
+app-text/cb2bib 1.9.7: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cherrytree 0.37.0: A hierarchical note taking application
@@ -4706,7 +4706,7 @@ dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5 1.13: foreign function call libraries
-dev-libs/flatbuffers 1.6.0: Memory efficient serialization library
+dev-libs/flatbuffers 1.6.0 1.7.1: Memory efficient serialization library
 dev-libs/folks 0.11.3 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
@@ -15542,7 +15542,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12_rc3 1.12_rc3-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r2 9999: A RSS/Atom feed reader for the text console
-net-news/quiterss 0.18.4 0.18.5 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.4 0.18.5 0.18.6 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
@@ -16672,7 +16672,7 @@ sci-mathematics/pymc 2.3.6: Markov Chain Monte Carlo sampling toolkit
 sci-mathematics/pymc3 3.1: Bayesian Modeling and Probabilistic Machine Learning in Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
-sci-mathematics/relational 2.4 2.5: Educational tool for relational algebra
+sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143 1.0.153: IDE for the R language
