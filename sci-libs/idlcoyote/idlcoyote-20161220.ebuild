@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} != 99999999 ]]; then
 else
 	inherit git-r3
 	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI=( "git://github.com/idl-coyote/coyote.git" )
+	EGIT_REPO_URI="https://github.com/idl-coyote/coyote.git"
 	KEYWORDS=""
 fi
 
