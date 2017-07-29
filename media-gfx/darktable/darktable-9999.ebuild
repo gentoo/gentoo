@@ -5,10 +5,10 @@ EAPI=6
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime git-r3 pax-utils eutils versionator
 
-EGIT_REPO_URI="git://github.com/darktable-org/darktable.git"
+EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
-HOMEPAGE="http://www.darktable.org/"
+HOMEPAGE="https://www.darktable.org/"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
