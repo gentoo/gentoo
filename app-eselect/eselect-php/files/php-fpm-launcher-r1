@@ -1,9 +1,0 @@
-#!/bin/sh
-
-source /lib/gentoo/functions.sh
-
-PHPSLOT="${1}"
-[ -z "${PHPSLOT}" ] && PHPSLOT="$(eselect php show fpm)"
-shift
-
-exec /usr/$(get_libdir)/${PHPSLOT}/bin/php-fpm "${@}"
