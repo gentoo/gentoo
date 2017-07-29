@@ -6,8 +6,8 @@ EAPI=6
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
-HOMEPAGE="http://gmusicbrowser.org/"
-SRC_URI="http://${PN}.org/download/${P}.tar.gz"
+HOMEPAGE="https://gmusicbrowser.org/"
+SRC_URI="https://${PN}.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
