@@ -9,17 +9,15 @@ inherit check-reqs autotools eutils python-r1 udev user \
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="
-		git://github.com/ceph/ceph.git
-		https://github.com/ceph/ceph.git"
+	EGIT_REPO_URI="https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
-	SRC_URI="http://download.ceph.com/tarballs/${P}.tar.gz"
+	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
-HOMEPAGE="http://ceph.com/"
+HOMEPAGE="https://ceph.com/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

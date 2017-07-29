@@ -6,15 +6,13 @@ PYTHON_COMPAT=( python2_7 )
 
 if [[ $PV = *9999* ]]; then
 	scm_eclass=git-r3
-	EGIT_REPO_URI="
-		git://github.com/ceph/ceph.git
-		https://github.com/ceph/ceph.git"
+	EGIT_REPO_URI="https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
-	SRC_URI="http://ceph.com/download/${P}.tar.gz
+	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz
 		${UPSTREAM_PATCHSET_URI}"
 fi
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
@@ -22,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 inherit check-reqs autotools eutils multilib python-single-r1 udev readme.gentoo-r1 systemd ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
-HOMEPAGE="http://ceph.com/"
+HOMEPAGE="https://ceph.com/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
