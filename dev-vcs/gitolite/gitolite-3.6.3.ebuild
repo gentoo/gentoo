@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 [[ ${PV} == *9999 ]] && SCM="git-2"
-EGIT_REPO_URI="git://github.com/sitaramc/gitolite.git"
+EGIT_REPO_URI="https://github.com/sitaramc/${PN}.git"
 EGIT_MASTER=master
 
 inherit perl-module user versionator ${SCM}
@@ -11,7 +11,7 @@ inherit perl-module user versionator ${SCM}
 DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
 if [[ ${PV} != *9999 ]]; then
-	SRC_URI="https://github.com/sitaramc/gitolite/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/sitaramc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 else
 	SRC_URI=""
@@ -85,7 +85,7 @@ pkg_postinst() {
 	if [[ "$(get_major_version $REPLACING_VERSIONS)" == "2" ]]; then
 		ewarn
 		elog "***NOTE*** This is a major upgrade and will likely break your existing gitolite-2.x setup!"
-		elog "Please read http://gitolite.com/gitolite/migr.html first!"
+		elog "Please read http://gitolite.com/gitolite/migr/index.html first!"
 	fi
 
 	# bug 352291
