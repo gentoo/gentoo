@@ -6,19 +6,19 @@ EAPI=6
 inherit eutils fdo-mime gnome2-utils
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/squentin/gmusicbrowser.git"
+	EGIT_REPO_URI="https://github.com/squentin/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
 else
 	GIT_COMMIT="853840eb9dad0b59ad2dac5d303f5929b2f09f21"
-	SRC_URI="https://github.com/squentin/gmusicbrowser/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/squentin/${PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 fi
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
-HOMEPAGE="http://gmusicbrowser.org/"
+HOMEPAGE="https://gmusicbrowser.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
