@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit cmake-utils fcaps git-r3
 DESCRIPTION="Fast network scanner designed for Internet-wide network surveys"
 HOMEPAGE="https://zmap.io/"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/zmap/zmap.git"
+EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 SLOT="0"
 LICENSE="Apache-2.0"

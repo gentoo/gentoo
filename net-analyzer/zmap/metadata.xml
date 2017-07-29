@@ -18,11 +18,11 @@ across the Internet.
   <use>
     <flag name="json">Add support to store results JSON based</flag>
     <flag name="mongo">
-		Add support for storing in a mongo DB via <pkg>dev-db/mongodb</pkg>
-	</flag>
+      Add support for storing in a mongo DB via <pkg>dev-db/mongodb</pkg>
+    </flag>
     <flag name="redis">
-		Add support for storing in a redis DB via <pkg>dev-libs/hiredis</pkg>
-	</flag>
+      Add support for storing in a redis DB via <pkg>dev-libs/hiredis</pkg>
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">zmap/zmap</remote-id>
