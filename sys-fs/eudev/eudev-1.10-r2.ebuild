@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ KV_min=2.6.39
 inherit autotools eutils linux-info multilib multilib-minimal user
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://github.com/gentoo/eudev.git"
+	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
 	inherit git-2
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"

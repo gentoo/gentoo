@@ -8,7 +8,7 @@ KV_min=2.6.39
 inherit autotools linux-info multilib multilib-minimal user
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://github.com/gentoo/eudev.git"
+	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
