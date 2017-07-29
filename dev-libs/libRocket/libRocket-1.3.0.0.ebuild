@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils eutils python-r1 multilib-minimal
 
 DESCRIPTION="A HTML/CSS User Interface library"
-HOMEPAGE="http://librocket.com/"
+HOMEPAGE="https://librocket.com/"
 SRC_URI="https://github.com/libRocket/libRocket/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
