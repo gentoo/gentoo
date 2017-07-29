@@ -7,7 +7,7 @@ PYTHON_REQ_USE="readline(+)"
 
 inherit distutils-r1 git-2
 
-EGIT_REPO_URI="git://github.com/fuzzyray/esearch.git"
+EGIT_REPO_URI="https://github.com/fuzzyray/esearch.git"
 
 DESCRIPTION="Replacement for 'emerge --search' with search-index"
 HOMEPAGE="https://github.com/fuzzyray/esearch"
