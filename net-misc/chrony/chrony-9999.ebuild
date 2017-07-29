@@ -1,17 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils git-r3 systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
-HOMEPAGE="http://chrony.tuxfamily.org/"
+HOMEPAGE="https://chrony.tuxfamily.org/"
 EGIT_REPO_URI="git://git.tuxfamily.org/gitroot/chrony/chrony.git"
 LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS=""
-IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
+IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc seccomp selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )
 "
@@ -20,6 +20,7 @@ CDEPEND="
 	caps? ( sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
+	seccomp? ( sys-libs/libseccomp )
 "
 DEPEND="
 	${CDEPEND}
@@ -62,15 +63,16 @@ src_configure() {
 	# not an autotools generated script
 	local CHRONY_CONFIGURE="
 	./configure \
+		$(use_enable seccomp scfilter) \
+		$(usex adns '' --disable-asyncdns) \
 		$(usex caps '' --disable-linuxcaps) \
 		$(usex cmdmon '' --disable-cmdmon) \
 		$(usex ipv6 '' --disable-ipv6) \
 		$(usex ntp '' --disable-ntp) \
 		$(usex phc '' --disable-phc) \
 		$(usex pps '' --disable-pps) \
-		$(usex rtc '' --disable-rtc) \
 		$(usex refclock '' --disable-refclock) \
-		$(usex adns '' --disable-asyncdns) \
+		$(usex rtc '' --disable-rtc) \
 		${CHRONY_EDITLINE} \
 		${EXTRA_ECONF} \
 		--docdir=/usr/share/doc/${PF} \
