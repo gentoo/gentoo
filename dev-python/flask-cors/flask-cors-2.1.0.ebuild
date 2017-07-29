@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/wcdolphin/${PN}.git"
+	EGIT_REPO_URI="https://github.com/wcdolphin/${PN}.git"
 	SRC_URI=""
 else
 	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
