@@ -7,7 +7,7 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 
 if [[ ${PV} == *9999 ]] ; then
 	SCM="git-2"
-	EGIT_REPO_URI="git://github.com/mstorsjo/${PN}.git"
+	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
 	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
 	AUTOTOOLS_AUTORECONF=1
 fi
