@@ -9,8 +9,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="arch testing tool"
 HOMEPAGE="https://github.com/kensington/tatt"
-EGIT_REPO_URI="https://github.com/kensington/tatt.git \
-	git://github.com/kensington/tatt.git"
+EGIT_REPO_URI="https://github.com/kensington/tatt.git"
 
 LICENSE="GPL-2"
 SLOT="0"
