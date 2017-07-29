@@ -17,4 +17,7 @@
   <upstream>
     <remote-id type="pypi">dask</remote-id>
   </upstream>
+  <use>
+    <flag name="distributed">Add support for distributed computing with <pkg>dev-python/distributed</pkg></flag>
+  </use>  
 </pkgmetadata>
