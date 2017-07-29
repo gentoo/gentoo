@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/IgnorantGuru/${PN}.git"
+EGIT_REPO_URI="https://github.com/IgnorantGuru/${PN}.git"
 EGIT_BRANCH="next"
 
 inherit fdo-mime git-r3 gnome2-utils linux-info
