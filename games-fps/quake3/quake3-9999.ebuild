@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # quake3-9999          -> latest git
@@ -15,9 +15,9 @@ MY_PV="${PV}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Quake III Arena - 3rd installment of the classic id 3D first-person shooter"
-HOMEPAGE="http://ioquake3.org/"
-[[ "${PV}" != 9999* ]] && SRC_URI="http://ioquake3.org/files/${MY_PV}/${MY_P}.tar.bz2"
-EGIT_REPO_URI="git://github.com/ioquake/ioq3.git"
+HOMEPAGE="https://ioquake3.org/"
+[[ "${PV}" != 9999* ]] && SRC_URI="https://ioquake3.org/files/${MY_PV}/${MY_P}.tar.bz2"
+EGIT_REPO_URI="https://github.com/ioquake/ioq3.git"
 
 LICENSE="GPL-2"
 SLOT="0"
