@@ -50,7 +50,7 @@ src_install() {
 	if use fpm ; then
 		systemd_dotmpfilesd "${FILESDIR}/php-fpm.conf"
 		exeinto /usr/libexec
-		newexe "${FILESDIR}/php-fpm-launcher-r1" php-fpm-launcher
+		newexe "${FILESDIR}/php-fpm-launcher-r2" php-fpm-launcher
 	fi
 }
 
