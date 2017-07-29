@@ -1,9 +1,0 @@
---- bspwm-0.9/contrib/freedesktop/bspwm.desktop
-+++ bspwm-0.9/contrib/freedesktop/bspwm.desktop
-@@ -2,5 +2,5 @@
- Encoding=UTF-8
- Name=bspwm
- Comment=Launch a bspwm session
--Exec=/usr/bin/bspwm-session
-+Exec=/etc/X11/Sessions/bspwm
- Type=XSession
