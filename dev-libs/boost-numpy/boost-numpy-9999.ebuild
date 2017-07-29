@@ -12,8 +12,7 @@ HOMEPAGE="https://github.com/ndarray/Boost.NumPy"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/ndarray/Boost.NumPy.git \
-		https://github.com/ndarray/Boost.NumPy.git"
+	EGIT_REPO_URI="https://github.com/ndarray/Boost.NumPy.git"
 else
 	SRC_URI="https://dev.gentoo.org/~heroxbd/${P}.tar.xz"
 fi
