@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF="1"
 
 inherit eutils
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/sahlberg/libnfs.git"
+	EGIT_REPO_URI="https://github.com/sahlberg/${PN}.git"
 	inherit git-2 autotools-utils
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${P}.tar.gz"
