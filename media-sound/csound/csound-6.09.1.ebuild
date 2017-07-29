@@ -102,6 +102,8 @@ fi
 # requires specific alsa settings
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/${P}-python.patch )
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
