@@ -26,12 +26,12 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS=""
-IUSE="test ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
-	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,}]
+	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
 	!sys-devel/llvm[ocaml(-)]"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
@@ -81,7 +81,7 @@ src_configure() {
 		-DLLVM_ENABLE_TERMINFO=OFF
 		-DHAVE_HISTEDIT_H=NO
 		-DWITH_POLLY=OFF
-		-DLLVM_ENABLE_ASSERTIONS=OFF
+		-DLLVM_ENABLE_ASSERTIONS=$(usex debug)
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 
@@ -97,6 +97,9 @@ src_configure() {
 		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 	)
 
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	# also: custom rules for OCaml do not work for CPPFLAGS
+	use debug || local -x CFLAGS="${CFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
 
 	local llvm_libdir=$(llvm-config --libdir)
