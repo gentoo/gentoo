@@ -9,7 +9,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library for guessing information from video filenames"
 HOMEPAGE="https://github.com/guessit-io/guessit https://pypi.python.org/pypi/guessit"
-EGIT_REPO_URI=( {https,git}://github.com/${PN}-io/${PN}.git )
+EGIT_REPO_URI="https://github.com/${PN}-io/${PN}.git"
 EGIT_BRANCH="develop"
 
 LICENSE="LGPL-3"
