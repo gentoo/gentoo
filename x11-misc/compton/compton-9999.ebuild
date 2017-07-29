@@ -10,7 +10,7 @@ DESCRIPTION="A compositor for X, and a fork of xcompmgr-dana"
 HOMEPAGE="https://github.com/chjj/compton"
 SRC_URI=""
 
-EGIT_REPO_URI="git://github.com/chjj/compton.git"
+EGIT_REPO_URI="https://github.com/chjj/compton.git"
 
 LICENSE="MIT"
 SLOT="0"
