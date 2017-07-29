@@ -9,7 +9,7 @@ inherit toolchain-funcs multilib git-2
 
 DESCRIPTION="Takes node.js' architecture and dependencies and fits it in the Lua language"
 HOMEPAGE="https://luvit.io/"
-EGIT_REPO_URI="git://github.com/luvit/luvit.git"
+EGIT_REPO_URI="https://github.com/luvit/luvit.git"
 
 KEYWORDS=""
 SLOT="0"
