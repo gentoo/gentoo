@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ DTV_SCAN_TABLES_VERSION="2015-02-08-f2053b3"
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		dvbscan? ( http://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${DTV_SCAN_TABLES_VERSION}.tar.bz2 )"
+		dvbscan? ( https://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${DTV_SCAN_TABLES_VERSION}.tar.bz2 )"
 
 LICENSE="GPL-3"
 SLOT="0"
