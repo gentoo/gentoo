@@ -9,8 +9,8 @@ inherit autotools eutils flag-o-matic perl-module toolchain-funcs
 MY_P="${P/_/-}"
 
 DESCRIPTION="A modular textUI IRC client with IPv6 support"
-HOMEPAGE="http://irssi.org/"
-SRC_URI="https://github.com/irssi/irssi/releases/download/${PV/_/-}/${MY_P}.tar.xz"
+HOMEPAGE="https://irssi.org/"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV/_/-}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
