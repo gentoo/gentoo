@@ -10,7 +10,7 @@ MY_PN="Nikola"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A static website and blog generator"
-HOMEPAGE="http://getnikola.com/"
+HOMEPAGE="https://getnikola.com/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
