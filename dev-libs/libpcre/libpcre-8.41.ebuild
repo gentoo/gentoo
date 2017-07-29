@@ -47,11 +47,12 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/pcre-config
 )
 
-#PATCHES=(
-#)
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.41-sljit_mips-label-statement-fix.patch
+)
 
 src_prepare() {
-	#epatch "${PATCHES[@]}"
+	epatch "${PATCHES[@]}"
 	sed -i -e "s:-lpcre ::" libpcrecpp.pc.in || die
 	elibtoolize
 }
