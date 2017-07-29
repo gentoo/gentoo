@@ -22,7 +22,10 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
-	dev-python/pycrypto[${PYTHON_USEDEP}]
+	|| (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
+	)
 "
 
 python_compile_all() {
