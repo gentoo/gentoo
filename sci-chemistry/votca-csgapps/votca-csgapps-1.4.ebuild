@@ -13,7 +13,7 @@ if [ "${PV}" != "9999" ]; then
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS="amd64 x86"
 fi
 

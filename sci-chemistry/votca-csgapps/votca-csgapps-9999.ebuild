@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [ "${PV}" != "9999" ]; then
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS=""
 fi
 
