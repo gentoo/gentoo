@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/kekekeks/skypetab-ng.git"
+	EGIT_REPO_URI="https://github.com/kekekeks/${PN}.git"
 	UNPACKER_ECLASS="git-2"
 	LIVE_EBUILD=yes
 else
