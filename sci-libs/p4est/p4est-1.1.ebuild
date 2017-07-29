@@ -11,7 +11,7 @@ inherit autotools eutils
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"
 SRC_URI="
-	https://github.com/cburstedde/p4est/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/cburstedde/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/cburstedde/libsc/archive/v${PV}.tar.gz -> libsc-${PV}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
