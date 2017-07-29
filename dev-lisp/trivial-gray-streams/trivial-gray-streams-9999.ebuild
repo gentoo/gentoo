@@ -7,7 +7,7 @@ inherit common-lisp-3 git-r3
 
 DESCRIPTION="A thin compatibility layer between Gray Stream Common Lisp implementations"
 HOMEPAGE="https://common-lisp.net/project/trivial-gray-streams/"
-EGIT_REPO_URI="git://github.com/${PN}/${PN}"
+EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
