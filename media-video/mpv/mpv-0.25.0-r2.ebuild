@@ -15,13 +15,13 @@ HOMEPAGE="https://mpv.io/"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="
-		https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/mpv-player/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~kensington/distfiles/${P}-patches-${PR}.tar.xz
 	"
 	KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
-	EGIT_REPO_URI=( {https,git}://github.com/mpv-player/mpv.git )
+	EGIT_REPO_URI="https://github.com/mpv-player/${PN}.git"
 	inherit git-r3
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
