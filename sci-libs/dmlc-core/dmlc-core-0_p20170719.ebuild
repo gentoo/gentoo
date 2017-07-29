@@ -9,7 +9,7 @@ DESCRIPTION="Common bricks library for building distributed machine learning."
 HOMEPAGE="https://github.com/dmlc/dmlc-core"
 
 if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="git://github.com/dmlc/dmlc-core.git"
+	EGIT_REPO_URI="https://github.com/dmlc/${PN}.git"
 	inherit git-r3
 	KEYWORDS=""
 else
