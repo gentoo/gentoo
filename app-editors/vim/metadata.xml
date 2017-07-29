@@ -11,6 +11,12 @@
     <flag name="vim-pager">Install vimpager and vimmanpager links</flag>
     <flag name="X">Link console vim against X11 libraries to enable title and
 	  clipboard features in xterm</flag>
+
+    <!-- Vim feature presets -->
+    <flag name="vim_features_tiny">Set the build feature set to tiny</flag>
+    <flag name="vim_features_small">Set the build feature set to small</flag>
+    <flag name="vim_features_normal">Set the build feature set to normal</flag>
+    <flag name="vim_features_big">Set the build feature set to big</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:vim:vim</remote-id>
