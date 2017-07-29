@@ -6,9 +6,9 @@ EAPI=6
 inherit autotools git-r3
 
 DESCRIPTION="An improved dynamic tiling window manager"
-HOMEPAGE="http://i3wm.org/"
+HOMEPAGE="https://i3wm.org/"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/i3/i3"
+EGIT_REPO_URI="https://github.com/i3/i3"
 EGIT_BRANCH="next"
 
 LICENSE="BSD"
