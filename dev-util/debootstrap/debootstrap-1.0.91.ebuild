@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="Debian/Ubuntu bootstrap scripts"
-HOMEPAGE="http://packages.qa.debian.org/d/debootstrap.html"
+HOMEPAGE="https://packages.qa.debian.org/d/debootstrap.html"
 SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.gz
 	mirror://gentoo/devices.tar.gz"
 
