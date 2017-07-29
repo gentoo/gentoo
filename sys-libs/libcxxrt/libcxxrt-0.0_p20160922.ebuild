@@ -3,7 +3,7 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/pathscale/libcxxrt.git"
+EGIT_REPO_URI="https://github.com/pathscale/libcxxrt.git"
 
 [ "${PV%9999}" != "${PV}" ] && SCM="git-2" || SCM=""
 
