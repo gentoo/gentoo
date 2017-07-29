@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
+		--disable-crypto-engine-polarssl \
+		--disable-crypto-engine-mbedtls \
 		$(use_enable doc) \
 		$(use_enable gnutls crypto-engine-gnutls) \
 		$(use_enable nss crypto-engine-nss) \
