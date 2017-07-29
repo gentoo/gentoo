@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="systemd"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/gnosek/${PN}.git"
+	EGIT_REPO_URI="https://github.com/gnosek/${PN}.git"
 else
 	SRC_URI="https://github.com/gnosek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
