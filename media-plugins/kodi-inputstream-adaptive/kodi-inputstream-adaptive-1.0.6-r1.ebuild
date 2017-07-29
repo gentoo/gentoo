@@ -12,7 +12,7 @@ SRC_URI=""
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/peak3d/inputstream.adaptive.git"
+	EGIT_REPO_URI="https://github.com/peak3d/inputstream.adaptive.git"
 	inherit git-r3
 	;;
 *)
