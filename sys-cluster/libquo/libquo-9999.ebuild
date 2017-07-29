@@ -9,16 +9,16 @@ FORTRAN_STANDARD=90
 inherit fortran-2
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://github.com/lanl/${PN}.git https://github.com/lanl/${PN}.git"
+	EGIT_REPO_URI="https://github.com/lanl/${PN}.git"
 	inherit autotools git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://lanl.github.io/${PN}/dists/${P}.tar.gz"
+	SRC_URI="https://lanl.github.io/${PN}/dists/${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="run-time tuning of process binding policies made easy"
-HOMEPAGE="http://lanl.github.io/libquo/"
+HOMEPAGE="https://lanl.github.io/libquo/"
 
 LICENSE="BSD"
 SLOT="0"
