@@ -15,7 +15,7 @@ if [ "${PV}" != "9999" ]; then
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS="amd64 x86"
 fi
 
@@ -66,6 +66,6 @@ pkg_postinst() {
 	einfo
 	einfo "Please read and cite:"
 	einfo "VOTCA-CTP, J. Chem. Theo. Comp. 7, 3335-3345 (2011)"
-	einfo "http://dx.doi.org/10.1021/ct200388s"
+	einfo "https://dx.doi.org/10.1021/ct200388s"
 	einfo
 }
