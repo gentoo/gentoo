@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ HOMEPAGE="https://sourceforge.net/apps/mediawiki/sleepyhead/index.php?title=Main
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
-EGIT_REPO_URI="git://github.com/rich0/rich0-sleepyhead.git"
+EGIT_REPO_URI="https://github.com/rich0/rich0-sleepyhead.git"
 EGIT_BRANCH="rich-test"
 
 LICENSE="GPL-2"
