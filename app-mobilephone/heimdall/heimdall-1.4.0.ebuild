@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,8 +11,7 @@ if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}/Heimdall-${PV}"
 else
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/Benjamin-Dobell/Heimdall.git
-		https://github.com/Benjamin-Dobell/Heimdall.git"
+	EGIT_REPO_URI="https://github.com/Benjamin-Dobell/Heimdall.git"
 fi
 
 DESCRIPTION="Tool suite used to flash firmware onto Samsung Galaxy S devices"
