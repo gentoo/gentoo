@@ -9,7 +9,7 @@ inherit cmake-utils git-r3 python-single-r1 vcs-snapshot
 
 DESCRIPTION="lightweight & open source microblogging client"
 HOMEPAGE="http://hotot.org"
-EGIT_REPO_URI="git://github.com/lyricat/Hotot.git"
+EGIT_REPO_URI="https://github.com/lyricat/Hotot.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
