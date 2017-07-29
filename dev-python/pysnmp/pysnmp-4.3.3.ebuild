@@ -46,5 +46,5 @@ pkg_postinst() {
 	elog "You may also be interested in the following packages: "
 	elog "dev-python/pysnmp-apps - example programs using pysnmp"
 	elog "dev-python/pysnmp-mibs - IETF and other mibs"
-	elog "net-libs/libsmi - to dump MIBs in python format"
+	elog "dev-python/pysmi - to dump MIBs in python format"
 }
