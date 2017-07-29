@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="git://github.com/mgorny/${PN}.git
-	https://github.com/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 inherit git-2
 #endif
