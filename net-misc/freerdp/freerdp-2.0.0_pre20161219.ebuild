@@ -13,8 +13,7 @@ if [[ ${PV} != 9999 ]]; then
 else
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/FreeRDP/FreeRDP.git
-		https://github.com/FreeRDP/FreeRDP.git"
+	EGIT_REPO_URI="https://github.com/FreeRDP/FreeRDP.git"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
