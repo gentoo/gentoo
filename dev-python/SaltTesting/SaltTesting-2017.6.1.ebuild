@@ -8,11 +8,11 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils distutils-r1
 
 DESCRIPTION="Required testing tools needed in the several Salt Stack projects"
-HOMEPAGE="http://saltstack.org/"
+HOMEPAGE="https://saltstack.com/community/"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/saltstack/salt-testing.git"
+	EGIT_REPO_URI="https://github.com/saltstack/salt-testing.git"
 	EGIT_BRANCH="develop"
 	SRC_URI=""
 else
