@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,11 +7,8 @@ PLOCALES="ar_SA ca_ES cs_CZ de_DE es_ES fi_FI fr_FR hr_HR hu_HU id_ID it_IT ja_J
 inherit cmake-utils git-r3 l10n multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
-HOMEPAGE="http://www.pcsx2.net"
-EGIT_REPO_URI=(
-	"https://github.com/PCSX2/pcsx2.git"
-	"git://github.com/PCSX2/pcsx2.git"
-)
+HOMEPAGE="https://www.pcsx2.net"
+EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
