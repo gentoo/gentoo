@@ -10303,6 +10303,7 @@ dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certia
 dev-util/checkbashisms 2.17.8 2.17.9: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
+dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
@@ -18981,7 +18982,7 @@ x11-misc/sunflower 0.2_alpha59: Small and highly customizable twin-panel file ma
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
-x11-misc/sxhkd 0.5.7: Simple X hotkey daemon
+x11-misc/sxhkd 0.5.7 0.5.8: Simple X hotkey daemon
 x11-misc/synergy 1.6.3 1.8.6 1.8.8: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 0.12.12 0.14.6: tint2 is a lightweight panel/taskbar for Linux.
@@ -19492,7 +19493,7 @@ x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
 x11-wm/awesome 3.5.6-r2 3.5.7 3.5.8 3.5.9 4.0 4.0-r1 4.1 4.2 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
-x11-wm/bspwm 0.8.8-r1 0.8.9 0.9 0.9.1 0.9.2: Tiling window manager based on binary space partitioning
+x11-wm/bspwm 0.9.2 0.9.3: Tiling window manager based on binary space partitioning
 x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
 x11-wm/compiz-fusion 0.8.8-r1: Compiz Fusion (meta)
 x11-wm/ctwm 3.7 3.8a-r1 3.8.2 4.0.1: A clean, light window manager
