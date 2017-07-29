@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="An improved dynamic tiling window manager"
-HOMEPAGE="http://i3wm.org/"
-SRC_URI="http://i3wm.org/downloads/${P}.tar.bz2"
+HOMEPAGE="https://i3wm.org/"
+SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
