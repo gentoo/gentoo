@@ -5,12 +5,12 @@ EAPI="4"
 
 LANGS="be bg ca cs de en eo es et fi fr hu it ja mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
-EGIT_REPO_URI="git://github.com/psi-im/psi.git"
+EGIT_REPO_URI="https://github.com/psi-im/${PN}.git"
 EGIT_HAS_SUBMODULES=1
-LANGS_REPO_URI="git://github.com/psi-plus/psi-plus-l10n.git"
+LANGS_REPO_URI="https://github.com/psi-plus/psi-plus-l10n.git"
 
-PSI_PLUS_URI="git://github.com/psi-plus/main.git"
-PSI_PLUS_RESOURCES_URI="git://github.com/psi-plus/resources.git"
+PSI_PLUS_URI="https://github.com/psi-plus/main.git"
+PSI_PLUS_RESOURCES_URI="https://github.com/psi-plus/resources.git"
 
 inherit eutils gnome2-utils qt4-r2 multilib git-2 subversion
 
