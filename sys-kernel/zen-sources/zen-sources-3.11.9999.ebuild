@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,8 +12,7 @@ CKV="${PV/99/}"
 ETYPE="sources"
 
 EGIT_BRANCH="${PV/.9999/}/master"
-EGIT_REPO_URI="git://github.com/damentz/zen-kernel.git
-	https://github.com/damentz/zen-kernel.git"
+EGIT_REPO_URI="https://github.com/damentz/zen-kernel.git"
 
 inherit kernel-2 git-2
 detect_version
