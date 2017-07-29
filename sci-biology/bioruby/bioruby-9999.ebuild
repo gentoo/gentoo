@@ -4,14 +4,13 @@
 EAPI=5
 
 USE_RUBY="ruby21"
-EGIT_REPO_URI="git://github.com/bioruby/bioruby.git
-	https://github.com/bioruby/bioruby.git"
+EGIT_REPO_URI="https://github.com/bioruby/bioruby.git"
 
 inherit git-2 ruby-fakegem
 
 DESCRIPTION="An integrated environment for bioinformatics using the Ruby language"
 LICENSE="Ruby"
-HOMEPAGE="http://www.bioruby.org/"
+HOMEPAGE="http://bioruby.org/"
 SRC_URI=""
 SLOT="0"
 IUSE=""
