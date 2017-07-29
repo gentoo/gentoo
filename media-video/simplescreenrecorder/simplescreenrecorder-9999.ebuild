@@ -10,12 +10,11 @@ if [[ ${PV} = 9999 ]]; then
 fi
 
 DESCRIPTION="A Simple Screen Recorder"
-HOMEPAGE="http://www.maartenbaert.be/simplescreenrecorder"
+HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder"
 LICENSE="GPL-3"
 PKGNAME="ssr"
 if [[ ${PV} = 9999 ]] ; then
-	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
-		https://github.com/MaartenBaert/${PKGNAME}.git"
+	EGIT_REPO_URI="https://github.com/MaartenBaert/${PKGNAME}.git"
 	EGIT_BOOTSTRAP=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz -> ${P}.tar.gz"
