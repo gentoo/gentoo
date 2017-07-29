@@ -4,7 +4,7 @@
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="Extensions, widgets and framework library with session support for the Xfce desktop environment"
+DESCRIPTION="Extensions, widgets and framework library with session support for Xfce"
 HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
