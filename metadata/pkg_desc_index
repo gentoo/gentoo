@@ -2451,7 +2451,7 @@ app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellcheckin
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
-app-text/t1utils 1.39: Type 1 Font utilities
+app-text/t1utils 1.39 1.40: Type 1 Font utilities
 app-text/tabler 2: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
@@ -5210,7 +5210,7 @@ dev-ml/atdgen 1.10.0 1.10.2 1.12.0: Generates optimized boilerplate OCaml code f
 dev-ml/base 0.9.1 0.9.2 0.9.3: Standard library for OCaml
 dev-ml/batteries 2.5.3 2.6.0: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 0.9.0: Core-flavoured wrapper around zarith's arbitrary-precision rationals
-dev-ml/bin-prot 0.9.0: Binary protocol generator
+dev-ml/bin-prot 0.9.0 0.9.1: Binary protocol generator
 dev-ml/biniou 1.0.12 1.0.13 1.1.0 1.2.0: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
 dev-ml/bos 0.1.6: Basic OS interaction for OCaml
@@ -5283,7 +5283,7 @@ dev-ml/lwt_ssl 1.0.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.5: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20170712: LR(1) parser generator for the OCaml language
-dev-ml/merlin 2.5.3 2.5.4 2.5.5 3.0.0: Context sensitive completion for OCaml in Vim and Emacs
+dev-ml/merlin 2.5.3 2.5.4 2.5.5 3.0.0 3.0.1: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
@@ -5301,7 +5301,7 @@ dev-ml/ocaml-containers 1.2: A modular standard library focused on data structur
 dev-ml/ocaml-cstruct 3.0.1 3.0.2 3.1.0 3.1.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0 0.12.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
-dev-ml/ocaml-dispatch 0.3.0: Path-based dispatching for client- and server-side applications
+dev-ml/ocaml-dispatch 0.3.0 0.4.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-dns 0.20.1 1.0.0: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
@@ -5325,7 +5325,7 @@ dev-ml/ocaml-sha 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-snappy 0.1.0: OCaml bindings to snappy fast compression/decompression library
 dev-ml/ocaml-sqlite3 4.1.2 4.1.3: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
-dev-ml/ocaml-stdint 0.3.0: Various signed and unsigned integers for OCaml
+dev-ml/ocaml-stdint 0.3.0 0.4.1: Various signed and unsigned integers for OCaml
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
@@ -5382,7 +5382,7 @@ dev-ml/ppx_fields_conv 0.9.0-r1: Generation of accessor and iteration functions 
 dev-ml/ppx_hash 0.9.0: PPX rewriter that generates hash functions from type expressions and definitions
 dev-ml/ppx_here 0.9.0 0.9.1: Expands [%here] into its location
 dev-ml/ppx_import 1.1 1.2: A syntax extension for importing declarations from interface files
-dev-ml/ppx_inline_test 0.9.0 0.9.1: Syntax extension for writing in-line tests in ocaml code
+dev-ml/ppx_inline_test 0.9.0 0.9.1 0.9.2: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 0.9.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.9.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.9.0: Monadic let-bindings
@@ -5412,7 +5412,7 @@ dev-ml/result 1.2: Compat result type
 dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/sedlex 1.99.3 1.99.4: An OCaml lexer generator for Unicode
 dev-ml/sequence 0.10: Simple sequence (iterator) datatype and combinators
-dev-ml/sexplib 0.9.1: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 0.9.1 0.9.2: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/spawn 0.9.0: Spawning sub-processes
 dev-ml/stdio 0.9.0: Standard IO Library for OCaml
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
@@ -8410,7 +8410,7 @@ dev-python/pyshark 0.3.7.2: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysmi 0.1.3: Python Lex & Yacc
-dev-python/pysnmp 4.3.3 4.3.5 4.3.7 4.3.8: Python SNMP library
+dev-python/pysnmp 4.3.3 4.3.8 4.3.9: Python SNMP library
 dev-python/pysnmp-apps 0.4.1: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
@@ -9303,7 +9303,7 @@ dev-ros/rqt_rviz 0.5.6 0.5.7 0.5.8 9999: GUI plugin embedding RViz
 dev-ros/rqt_service_caller 0.4.7 0.4.8 9999: GUI plugin for calling arbitrary services
 dev-ros/rqt_shell 0.4.7 0.4.8 9999: GUI plugin providing an interactive shell
 dev-ros/rqt_srv 0.4.7 0.4.8 9999: GUI plugin for introspecting available ROS message types
-dev-ros/rqt_tf_tree 0.5.6 0.5.7 9999: GUI plugin for visualizing the ROS TF frame tree
+dev-ros/rqt_tf_tree 0.5.6 0.5.7 0.5.8 9999: GUI plugin for visualizing the ROS TF frame tree
 dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.7 0.4.8 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
@@ -10136,7 +10136,7 @@ dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04 4.07 4.11 4.12-r1: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
-dev-tex/hevea 2.29: HeVeA is a quite complete and fast LaTeX to HTML translator
+dev-tex/hevea 2.29 2.30: HeVeA is a quite complete and fast LaTeX to HTML translator
 dev-tex/hlatex 1.0.1: HLaTeX is a LaTeX package to use Hangul with LaTeX
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425: Show hyphenations in DVI files
