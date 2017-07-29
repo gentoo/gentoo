@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/openSUSE/osc.git"
+EGIT_REPO_URI="https://github.com/openSUSE/${PN}.git"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
@@ -20,7 +20,7 @@ inherit distutils-r1 ${EXTRA_ECLASS}
 unset EXTRA_ECLASS
 
 DESCRIPTION="Command line tool for Open Build Service"
-HOMEPAGE="http://en.opensuse.org/openSUSE:OSC"
+HOMEPAGE="https://en.opensuse.org/openSUSE:OSC"
 
 [[ "${PV}" == "9999" ]] || SRC_URI="${OBS_URI}/${P}.tar.gz"
 
