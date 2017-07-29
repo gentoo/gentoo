@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -7,8 +7,7 @@ inherit webapp git-2
 
 DESCRIPTION="Web-based administration for Postgres database in php"
 HOMEPAGE="http://phppgadmin.sourceforge.net/"
-EGIT_REPO_URI="git://github.com/xzilla/${PN}.git
-	https://github.com/xzilla/${PN}.git"
+EGIT_REPO_URI="https://github.com/xzilla/${PN}.git"
 
 LICENSE="GPL-2"
 KEYWORDS=""
