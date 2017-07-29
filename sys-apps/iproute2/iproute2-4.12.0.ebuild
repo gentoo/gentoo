@@ -51,6 +51,14 @@ src_prepare() {
 		)
 	fi
 
+	# Local uclibc-ng compat fix until uclibc-ng upstream can sync
+	# netinet/in.h with glibc.  Resolves #626546.
+	if use elibc_uclibc ; then
+		PATCHES+=(
+			"${FILESDIR}"/${PN}-4.12.0-uclibc-ng-add-ipproto_mh.patch
+		)
+	fi
+
 	epatch "${PATCHES[@]}"
 
 	sed -i \
