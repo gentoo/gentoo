@@ -11,7 +11,7 @@ inherit autotools-utils fortran-2 toolchain-funcs multilib
 MY_PN=SuperLU
 
 DESCRIPTION="Sparse LU factorization library"
-HOMEPAGE="http://crd.lbl.gov/~xiaoye/SuperLU/"
+HOMEPAGE="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
 SRC_URI="${HOMEPAGE}/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
