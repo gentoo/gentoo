@@ -1,26 +1,28 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils unpacker
 
-SRC_URI_BASE="https://spideroak.com/getbuild?platform=ubuntu"
-
 DESCRIPTION="Secure free online backup, storage, and sharing system"
 HOMEPAGE="https://spideroak.com"
-SRC_URI="x86? ( ${SRC_URI_BASE}&arch=i386&version=${PV} -> ${P}_x86.deb )
-	amd64? ( ${SRC_URI_BASE}&arch=x86_64&version=${PV} -> ${P}_amd64.deb )"
+
+SRC_URI_BASE="https://spideroak.com/release/spideroak"
+SRC_URI="x86? ( ${SRC_URI_BASE}/deb_x86 -> ${P}_x86.deb )
+	amd64? ( ${SRC_URI_BASE}/deb_x64 -> ${P}_amd64.deb )"
+
 RESTRICT="mirror strip"
 
 LICENSE="spideroak"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus X"
 
 DEPEND="dev-util/patchelf"
 RDEPEND="
 	app-crypt/mit-krb5[keyutils]
+	media-libs/libpng:1.2
 	dbus? ( sys-apps/dbus )
 	X? (
 		media-libs/fontconfig
@@ -50,6 +52,15 @@ src_prepare() {
 		patchelf --set-rpath '$ORIGIN' "${x}" || \
 			die "patchelf failed on ${x}"
 	done
+
+	#Remove the libraries that break compatibility in modern systems
+	#SpiderOak will use the system libs instead
+	rm -f "${S}/opt/SpiderOakONE/lib/libstdc++.so.6"
+	rm -f "${S}/opt/SpiderOakONE/lib/libgcc_s.so.1"
+	rm -f "${S}/opt/SpiderOakONE/lib/libpng12.so.0"
+	rm -f "${S}/opt/SpiderOakONE/lib/libz.so.1"
+
+	eapply_user
 }
 
 src_install() {
