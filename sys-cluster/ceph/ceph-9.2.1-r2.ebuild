@@ -6,19 +6,17 @@ PYTHON_COMPAT=( python2_7 )
 
 if [[ $PV = *9999* ]]; then
 	scm_eclass=git-r3
-	EGIT_REPO_URI="
-		git://github.com/ceph/ceph.git
-		https://github.com/ceph/ceph.git"
+	EGIT_REPO_URI="https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
-	SRC_URI="http://ceph.com/download/${P}.tar.gz"
+	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
 fi
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 
 inherit check-reqs autotools eutils multilib python-single-r1 udev user readme.gentoo systemd versionator ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
-HOMEPAGE="http://ceph.com/"
+HOMEPAGE="https://ceph.com/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
