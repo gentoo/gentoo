@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Support for parallel scientific applications"
 HOMEPAGE="http://www.p4est.org/"
-SRC_URI="https://github.com/cburstedde/libsc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cburstedde/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
