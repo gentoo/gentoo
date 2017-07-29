@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-r1
 
 if [[ ${PV} == 9999* ]] ; then
-	EGIT_REPO_URI="git://github.com/yasm/yasm.git"
+	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
 	inherit git-2
 else
 	SRC_URI="http://www.tortall.net/projects/yasm/releases/${P}.tar.gz"
