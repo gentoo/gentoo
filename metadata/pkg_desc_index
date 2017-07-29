@@ -10425,7 +10425,7 @@ dev-util/idea-ultimate 2017.1.2.171.4249.39 2017.1.3.171.4424.56: A complete too
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 3.9 4.0: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 3.9 4.0 4.0-r1: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r1 0.51.0-r2: Internationalization Tool Collection
