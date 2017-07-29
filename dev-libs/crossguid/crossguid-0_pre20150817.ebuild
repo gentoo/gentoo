@@ -6,7 +6,7 @@ EAPI="5"
 inherit toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/graeme-hill/crossguid.git"
+	EGIT_REPO_URI="https://github.com/graeme-hill/crossguid.git"
 	inherit git-r3
 else
 	EGIT_COMMIT="8f399e8bd4252be9952f3dfa8199924cc8487ca4"
