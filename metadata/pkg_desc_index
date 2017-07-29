@@ -362,7 +362,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.20 2.4.24 2.5.10 2.5.11: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
-app-backup/duplicity 0.7.10 0.7.11 0.7.12: Secure backup system using gnupg to encrypt data
+app-backup/duplicity 0.7.10 0.7.11 0.7.12 0.7.13.1: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.6.19 0.6.24 0.8.0 0.8.1: Flexible filesystem archiver for backup and deployment tool
