@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-EGIT_REPO_URI="git://github.com/hwoarang/${PN}.git
-	https://github.com/hwoarang/${PN}.git"
+EGIT_REPO_URI="https://github.com/hwoarang/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
 
