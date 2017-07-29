@@ -6,7 +6,7 @@ inherit linux-info linux-mod
 
 DESCRIPTION="device that allows access to Linux kernel cryptographic drivers"
 HOMEPAGE="http://cryptodev-linux.org/index.html"
-SRC_URI="http://download.gna.org/cryptodev-linux/${PN}-linux-${PV}.tar.gz"
+SRC_URI="http://nwl.cc/pub/cryptodev-linux/${PN}-linux-${PV}.tar.gz"
 KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="GPL-2+"
