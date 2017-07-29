@@ -1,17 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ $PV == *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/uncrustify/uncrustify.git
-		https://github.com/uncrustify/uncrustify.git"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	KEYWORDS=""
 	SRC_URI=""
 	scm_eclass=git-r3
 else
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
-	SRC_URI="https://github.com/uncrustify/${PN}/archive/${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 	S=${WORKDIR}/${PN}-${P}
 fi
 
