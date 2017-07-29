@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gentoo.org/proj/en/base/openrc/"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git"
-	#EGIT_REPO_URI="git://github.com/gentoo/netifrc" # Alternate
+	#EGIT_REPO_URI="https://github.com/gentoo/${PN}" # Alternate
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${P}.tar.bz2"
