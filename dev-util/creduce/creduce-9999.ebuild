@@ -3,14 +3,13 @@
 
 EAPI="6"
 
-EGIT_REPO_URI="https://github.com/csmith-project/creduce
-	git://github.com/csmith-project/creduce"
+EGIT_REPO_URI="https://github.com/csmith-project/${PN}"
 
 : ${CMAKE_MAKEFILE_GENERATOR=ninja}
 inherit cmake-utils git-r3
 
 DESCRIPTION="C-Reduce - a plugin-based C program reducer"
-HOMEPAGE="http://embed.cs.utah.edu/creduce/"
+HOMEPAGE="https://embed.cs.utah.edu/creduce/"
 SRC_URI=""
 
 LICENSE="UoI-NCSA"
