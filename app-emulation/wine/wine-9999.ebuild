@@ -31,7 +31,7 @@ D3D9_P="wine-d3d9-${PV}"
 D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 WINE_GENTOO="wine-gentoo-2015.03.07"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
-HOMEPAGE="http://www.winehq.org/"
+HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	!staging? (
 		gecko? (
@@ -50,8 +50,8 @@ SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~tetromino/distfiles/${PN}/${WINE_GENTOO}.tar.bz2"
 
 if [[ ${PV} == "9999" ]] ; then
-	STAGING_EGIT_REPO_URI="git://github.com/wine-compholio/wine-staging.git"
-	D3D9_EGIT_REPO_URI="git://github.com/sarnex/wine-d3d9-patches.git"
+	STAGING_EGIT_REPO_URI="https://github.com/wine-compholio/wine-staging.git"
+	D3D9_EGIT_REPO_URI="https://github.com/sarnex/wine-d3d9-patches.git"
 else
 	SRC_URI="${SRC_URI}
 	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}${SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz )
@@ -403,7 +403,7 @@ src_prepare() {
 		sed -i '/^MimeType/d' loader/wine.desktop || die #117785
 	fi
 
-	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
+	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}"/${WINE_GENTOO}/icons/oic_winlogo.ico dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
