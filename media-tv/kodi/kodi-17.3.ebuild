@@ -130,7 +130,7 @@ DEPEND="${COMMON_DEPEND}
 "
 case ${PV} in
 9999)
-	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
+	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 	# Force java for latest git version to avoid having to hand maintain the
 	# generated addons package.  #488118
