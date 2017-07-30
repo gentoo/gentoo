@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Fast lightweight tabbed filemanager"
-HOMEPAGE="http://pcmanfm.sourceforge.net/"
+HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -40,6 +40,10 @@ DOCS=( AUTHORS )
 
 DOC_CONTENTS="PCmanFM can optionally support the menu://applications/
 	location. You should install lxde-base/lxmenu-data for that functionality."
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.5-CVE-2017-8934.patch
+)
 
 src_prepare() {
 	export LINGUAS="${LINGUAS:-${PLOCALE_BACKUP}}"
