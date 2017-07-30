@@ -10498,7 +10498,7 @@ dev-util/obs-service-update_source 20130802: Open Build Service client module - 
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/omake 0.9.8.6.0_rc1 0.10.2: Make replacement
 dev-util/open-vcdiff 0.8.4 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
-dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0_pre20161027: A transparent low-overhead system-wide profiler
+dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0_pre20161027 1.2.0: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
@@ -18865,7 +18865,7 @@ x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.3 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
-x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
+x11-misc/hsetroot 1.0.2 1.0.2_p5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.8 2.9.1: Simple screen locker
 x11-misc/i3status 2.11: generates a status bar for dzen2, xmobar or similar
