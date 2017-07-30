@@ -9,5 +9,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coredns/coredns/archive/v009.tar.gz -> coredns-009.tar.gz https://github.com/mholt/caddy/archive/6aba4a311ac1f12c762d6b54a77aedec7d42f615.tar.gz -> github.com-mholt-caddy-6aba4a311ac1f12c762d6b54a77aedec7d42f615.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
-_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	7fb5d554a7e656be19ec465fa5bb66db
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
 _md5_=ca99e4a08781199e984b7b8a07c0758d
