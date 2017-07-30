@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,34 +7,37 @@ inherit perl-module
 
 MY_PN="razor-agents"
 MY_P="${MY_PN}-${PV}"
-DESCRIPTION="Vipul's Razor is a distributed, collaborative spam detection and filtering network"
+
+DESCRIPTION="Distributed, collaborative spam detection and filtering network"
 HOMEPAGE="http://razor.sourceforge.net/"
 SRC_URI="mirror://sourceforge/razor/${MY_P}.tar.bz2"
 
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
-# This package warrants IUSE doc
-IUSE=""
 
-DEPEND=""
-
-RDEPEND="dev-perl/Net-DNS
+RDEPEND="
+	dev-perl/URI
+	dev-perl/Net-DNS
 	virtual/perl-Net-Ping
 	virtual/perl-Time-HiRes
-	|| ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 )
-	dev-perl/URI
-	dev-perl/Digest-Nilsimsa"
+	dev-perl/Digest-Nilsimsa
+	|| ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.85-use-sha-not-sha1.patch"
 	"${FILESDIR}/${PN}-2.85-cosmetic-pv-fix.patch"
-	)
+)
 
 S=${WORKDIR}/${MY_P}
+
 # Install docs/ content
 mydoc="docs/*"
 SRC_TEST="do parallel"
+
+src_compile() {
+	emake -j1
+}
 
 pkg_postinst() {
 	elog
