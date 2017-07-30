@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libav libressl neon pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libav libressl neon openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -57,6 +57,7 @@ RDEPEND="
 		x11-libs/libXrandr
 	)
 	jpeg? ( virtual/jpeg:0 )
+	openh264? ( media-libs/openh264 )
 	pulseaudio? ( media-sound/pulseaudio )
 	server? (
 		X? (
@@ -102,6 +103,7 @@ src_configure() {
 		-DWITH_GSTREAMER_1_0=$(usex gstreamer)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_NEON=$(usex neon)
+		-DWITH_OPENH264=$(usex openh264)
 		-DWITH_PULSE=$(usex pulseaudio)
 		-DWITH_SERVER=$(usex server)
 		-DWITH_PCSC=$(usex smartcard)
