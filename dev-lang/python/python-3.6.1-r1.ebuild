@@ -65,6 +65,7 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 	epatch "${FILESDIR}/3.6.1-test_socket-AEAD.patch"
+	epatch "${FILESDIR}/3.6-blake2.patch"
 
 	epatch_user
 
