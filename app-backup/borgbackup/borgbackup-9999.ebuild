@@ -30,6 +30,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	fuse? ( dev-python/llfuse[${PYTHON_USEDEP}] )
+	dev-python/pyzmq
 "
 
 DEPEND="
