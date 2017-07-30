@@ -9,7 +9,7 @@ inherit distutils-r1 python-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
-	EGIT_REPO_URI="git://github.com/dol-sen/pyDeComp.git"
+	EGIT_REPO_URI="https://github.com/dol-sen/pyDeComp.git"
 	inherit git-2
 else
 	SRC_URI="https://dev.gentoo.org/~dolsen/releases/${PN}/pyDeComp-${PV}.tar.gz -> ${P}.tar.gz"

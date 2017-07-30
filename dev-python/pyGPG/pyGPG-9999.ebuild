@@ -9,7 +9,7 @@ EGIT_BRANCH="master"
 
 inherit distutils-r1 python-r1 git-2
 
-EGIT_REPO_URI="git://github.com/dol-sen/pyGPG.git"
+EGIT_REPO_URI="https://github.com/dol-sen/pyGPG.git"
 
 DESCRIPTION="A python interface wrapper for gnupg's gpg command"
 HOMEPAGE="https://github.com/dol-sen/pyGPG"

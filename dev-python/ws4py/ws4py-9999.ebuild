@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # We could depend on dev-python/cherrypy when USE=server, but
@@ -12,7 +12,7 @@ PYTHON_REQ_USE="threads?"
 
 inherit distutils-r1
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/Lawouach/WebSocket-for-Python.git"
+	EGIT_REPO_URI="https://github.com/Lawouach/WebSocket-for-Python.git"
 	inherit git-2
 else
 	inherit vcs-snapshot

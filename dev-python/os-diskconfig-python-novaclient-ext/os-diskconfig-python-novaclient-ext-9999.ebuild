@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 git-2
 
-EGIT_REPO_URI="git://github.com/rackspace/os_diskconfig_python_novaclient_ext.git
-	https://github.com/rackspace/os_diskconfig_python_novaclient_ext.git"
+EGIT_REPO_URI="https://github.com/rackspace/os_diskconfig_python_novaclient_ext.git"
 
 DESCRIPTION="Disk Config extension for python-novaclient"
 HOMEPAGE="https://github.com/rackspace/os_diskconfig_python_novaclient_ext"

@@ -8,7 +8,7 @@ RESTRICT="test"
 inherit elisp-common eutils multilib pax-utils toolchain-funcs
 
 DESCRIPTION="High-performance programming language for technical computing"
-HOMEPAGE="http://julialang.org/"
+HOMEPAGE="https://julialang.org/"
 SRC_URI="
 	https://github.com/JuliaLang/${PN}/releases/download/v${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~tamiko/distfiles/${P}-bundled.tar.gz

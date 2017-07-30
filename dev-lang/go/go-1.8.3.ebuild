@@ -30,7 +30,7 @@ x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz )
 
 case ${PV}  in
 *9999*)
-	EGIT_REPO_URI="git://github.com/golang/go.git"
+	EGIT_REPO_URI="https://github.com/golang/go.git"
 	inherit git-r3
 	;;
 *)
@@ -52,7 +52,7 @@ esac
 SRC_URI+="!gccgo? ( ${BOOTSTRAP_URI} )"
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
-HOMEPAGE="http://www.golang.org"
+HOMEPAGE="https://golang.org"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
