@@ -32,8 +32,8 @@ diff -Naur bliss-0.72-fedora/configure.ac bliss-0.72/configure.ac
 +# Checks for libraries.
 +AC_ARG_WITH([gmp],
 +  [AS_HELP_STRING([--with-gmp], [enable support for GNU Multiple Precision Arithmetic Library @<:@default=check@:>@])],
-+  [], [with_readline=no])
-+AS_IF([test "x$with_readline" != xno],
++  [], [with_gmp=no])
++AS_IF([test "x$with_gmp" != xno],
 +  [AC_CHECK_HEADERS([gmp.h],,AC_MSG_ERROR([Cannot find gmp.h header]))
 +    AC_CHECK_LIB([gmp],_init,,AC_MSG_ERROR([Cannot find gmp library]))
 +    AC_SUBST([GMP],[-lgmp])
