@@ -28,6 +28,8 @@ RDEPEND="app-arch/zip
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
+
 src_configure() {
 	touch "${S}"/revision.m4 -r "${S}"/acinclude.m4
 	setup-wxwidgets
