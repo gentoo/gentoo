@@ -12358,7 +12358,7 @@ mail-filter/procmail 3.22-r10 3.22-r11: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108 20091202: Procmail Module Library is a collection of modules for Procmail
 mail-filter/pypolicyd-spf 2.0.1: Python-based policy daemon for Postfix SPF verification
 mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
-mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
+mail-filter/razor 2.85-r2: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 1.10.0-r2 9999: Another sendmail milter for different mail checks
 mail-filter/rspamd 1.5.7 1.5.9 1.6.0 1.6.1 9999: Rapid spam filtering system
