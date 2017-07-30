@@ -9,4 +9,4 @@ RDEPEND=sys-apps/sed app-shells/bash app-text/wdiff sys-apps/diffutils mercurial
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_install:-
 _eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
-_md5_=2831f3c931570b1ee1ad25b12b78140a
+_md5_=98a4f58804c8cd7181181fae36796e12

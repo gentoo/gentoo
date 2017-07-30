@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl dev-util/abi-dumper dev-util/ctags
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
 _eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
-_md5_=e833b7e3461d639fd59cd481f2ceb69b
+_md5_=b1c965f9ab571e90ace89c7a0cb3c3cf
