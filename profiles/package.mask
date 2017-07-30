@@ -524,12 +524,6 @@ dev-ruby/toml
 # ruby21-only, no maintainer, fails tests
 www-apps/jekyll-paginate
 
-# Patrice Clement <monsieurp@gentoo.org> (20 Jun 2017)
-# Fails to build with Java 8. Project is active on Github yet ebuild has never
-# been marked stable.
-# Masked for removal in 30 days.
-dev-java/jdbc-jaybird
-
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
 # People using VMware in Gentoo should switch to Gentoo's VMware overlay
