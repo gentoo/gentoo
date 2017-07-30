@@ -9,4 +9,4 @@ RDEPEND=alac? ( media-sound/alac_decoder net-libs/shairplay[tools] ) tools? ( de
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
-_md5_=aef5979be34a9605034cbb903456d144
+_md5_=2e791fa99eb48dfeb3659e71e2eb6fc7

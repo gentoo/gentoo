@@ -1885,7 +1885,7 @@ app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
-app-misc/openastro 1.1.48 1.1.49: A fully-featured Open Source Astrology Program
+app-misc/openastro 1.1.48 1.1.49 1.1.50: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6 1.7: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2: ELF utils that can check files for security relevant properties
