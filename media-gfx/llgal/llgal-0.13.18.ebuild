@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="Command-line static web gallery generator"
-HOMEPAGE="http://home.gna.org/llgal"
-SRC_URI="http://download.gna.org/llgal/${P}.tar.bz2"
+HOMEPAGE="http://bgoglin.free.fr/llgal/"
+SRC_URI="https://github.com/bgoglin/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
