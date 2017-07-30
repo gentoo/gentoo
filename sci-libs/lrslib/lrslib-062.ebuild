@@ -41,9 +41,9 @@ src_compile () {
 }
 
 src_install() {
-	emake DESTDIR="${D}" prefix="${EPREFIX}" install-common
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install-common
 	if use gmp; then
-		emake DESTDIR="${D}" install-shared prefix="${EPREFIX}"
+		emake DESTDIR="${D}" install-shared prefix="${EPREFIX}/usr"
 		use mpi && dobin mplrs
 	fi
 	dodoc README
