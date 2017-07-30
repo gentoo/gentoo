@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
+# Mask for removal of ancient versions of media-libs/libvisio,
+# media-libs/libcdr, app-text/libwpd and app-text/libwpg
+media-gfx/inkscape cdr visio wpg
+
 # Michael Weber <xmw@gentoo.org> (14 Mar 2017)
 # mask unkeyworded dependency media-libs/glfw
 app-text/mupdf opengl
