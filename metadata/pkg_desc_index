@@ -13196,7 +13196,7 @@ media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_beta 1.2 1.2.1: Open codec designed for
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.9.0 4.9.1-r1 9999: KDE multimedia API
+media-libs/phonon 4.9.1-r1 9999: KDE multimedia API
 media-libs/phonon-gstreamer 4.9.0-r1 9999: Phonon GStreamer backend
 media-libs/phonon-qt7 0_pre20110424: Phonon QuickTime7 backend
 media-libs/phonon-vlc 0.9.1-r1 9999: Phonon VLC backend
