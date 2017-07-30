@@ -15,9 +15,9 @@ IUSE="test"
 DOCS=( README.md CONTRIBUTING.md doc/Design.md doc/FAQ.md doc/index.md doc/Manual.md doc/REST_backend.md )
 
 DEPEND="dev-lang/go
-	test? ( sys-fs/fuse )"
+	test? ( sys-fs/fuse:0 )"
 
-RDEPEND="sys-fs/fuse"
+RDEPEND="sys-fs/fuse:0"
 
 src_compile() {
 	local mygoargs=(

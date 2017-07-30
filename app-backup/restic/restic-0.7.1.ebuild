@@ -16,9 +16,9 @@ DOCS=( README.rst CONTRIBUTING.md doc/design.rst doc/faq.rst doc/index.rst doc/m
 	doc/rest_backend.rst doc/development.rst doc/talks.rst doc/tutorial_aws_s3.rst doc/installation.rst )
 
 DEPEND="dev-lang/go
-	test? ( sys-fs/fuse )"
+	test? ( sys-fs/fuse:0 )"
 
-RDEPEND="sys-fs/fuse"
+RDEPEND="sys-fs/fuse:0"
 
 src_compile() {
 	local mygoargs=(
