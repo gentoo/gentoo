@@ -518,9 +518,6 @@ sys-apps/systemd-sysv-utils
 # Old slots that are ruby21-only
 dev-ruby/prawn:1
 dev-ruby/rspec:0
-# ruby21-only package that does not work with current
-# dev-ruby/parslet versions.
-dev-ruby/toml
 
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
