@@ -6304,6 +6304,7 @@ net-misc/eventd:websocket - Enable support for WebSocket protocol
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/libtorrent-rasterbar.
 net-misc/fatrat:webinterface - Enable builtin webinterface.
 net-misc/freerdp:client - Build client binaries
+net-misc/freerdp:openh264 - Enable H.264 support using media-libs/openh264
 net-misc/freerdp:server - Build server binaries
 net-misc/gerbera:curl - Support YouTube and external media sources (e.g. internet radio)
 net-misc/gerbera:lastfm - Enable last.fm support
