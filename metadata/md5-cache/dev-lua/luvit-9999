@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
-_md5_=2b864b9acc8da630de8254c980a82e2f
+_md5_=c3940fbc263c1b1eb4ee82e01e50a14f

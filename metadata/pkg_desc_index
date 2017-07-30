@@ -9556,7 +9556,7 @@ dev-ruby/flickraw 0.9.9: A library to access flickr api in a simple way
 dev-ruby/flog 4.4.0 4.6.1: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/font-awesome-rails 4.7.0.1 4.7.0.2: Font-awesome for the asset pipeline
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
-dev-ruby/forwardable-extended 2.6.0: Forwardable with hash, and instance variable extensions
+dev-ruby/forwardable-extended 2.6.0 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.2.0: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.10 0.26: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.5.0 1.7.2 1.8.0: FastGettext / Rails integration
@@ -9727,7 +9727,7 @@ dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0: A production-ready Ruby parser written 
 dev-ruby/parslet 1.7.1 1.8.0: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/path_expander 1.0.1 1.0.2: Pre-process CLI arguments expanding directories into their constituent files
-dev-ruby/pathutil 0.14.0: Like Pathname but a little less insane
+dev-ruby/pathutil 0.14.0 0.14.0-r1: Like Pathname but a little less insane
 dev-ruby/patron 0.4.18-r2 0.5.0-r1 0.8.0 0.9.1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.1 0.12.4: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.1 0.6.1-r1 0.7.0: Implements low level PDF features for Prawn
@@ -17233,7 +17233,7 @@ sys-apps/prefix-chain-utils 0.2-r6: Chained EPREFIX utilities and wrappers
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1 4.0.1 4.0.3 5.0.0 5.1.0: User-space implementation of chroot, mount --bind, and binfmt_misc
-sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
+sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/pyrenamer 0.6.0-r2: Mass rename files
 sys-apps/qcontrol 0.4.2-r1: Allows to send commands to some microcontrollers, for example to change leds or sound a buzzer
 sys-apps/qdirstat 1.0 1.2: Qt app to show where your disk space has gone and to help you clean it up
