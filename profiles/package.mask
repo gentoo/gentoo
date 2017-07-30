@@ -463,11 +463,6 @@ java-virtual/jaf
 =media-plugins/vdr-xineliboutput-2.0.0_p20130821
 =media-plugins/vdr-xineliboutput-2.0.0_p20150220
 
-# Michał Górny <mgorny@gentoo.org> (02 Jul 2017)
-# The eselect module has been integrated into app-shells/bash-completion
-# and all the old versions (not having it) are gone. Removal in 14 days.
-app-eselect/eselect-bashcomp
-
 # Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
 # New strip feature which is enabled by default causes genkernel
 # to create unbootable kernel/initramfs images. Bug #622716
