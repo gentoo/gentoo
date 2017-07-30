@@ -27,6 +27,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-3.5.2[${PYTHON_USEDEP}]
 		>dev-python/pytest-xdist-1.13[${PYTHON_USEDEP}]
