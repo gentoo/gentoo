@@ -14,7 +14,7 @@ SRC_URI="https://github.com/let-def/ppx_tools_versioned/archive/${MY_PV}.tar.gz 
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
 IUSE=""
 
 DEPEND="
