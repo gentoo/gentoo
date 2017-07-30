@@ -1,30 +1,33 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-multilib
 
-DESCRIPTION="C99 library providing cross-platform audio input and output"
+DESCRIPTION="C library for cross-platform real-time audio input and output"
 HOMEPAGE="http://libsound.io/"
 SRC_URI="http://libsound.io/release/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="~amd64"
-IUSE="alsa coreaudio examples pulseaudio static-libs"
+KEYWORDS="~amd64 ~x86"
+IUSE="alsa coreaudio examples jack pulseaudio static-libs"
 
 DEPEND="alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+	jack? ( || (
+		>=media-sound/jack-audio-connection-kit-0.125.0[${MULTILIB_USEDEP}]
+		>=media-sound/jack2-1.9.11_rc1[${MULTILIB_USEDEP}] ) )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
-# ENABLE_JACK does not support the current version of jack1
-# See https://github.com/andrewrk/libsoundio/issues/11
+PATCHES=( "${FILESDIR}/${P}_missing_include.patch" )
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_COREAUDIO=$(usex coreaudio)
-		-DENABLE_JACK=no
+		-DENABLE_JACK=$(usex jack)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_WASAPI=no
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
