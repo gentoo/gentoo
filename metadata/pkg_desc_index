@@ -7755,7 +7755,7 @@ dev-python/gnuplot-py 1.8-r1: A python wrapper for Gnuplot
 dev-python/google-api-python-client 1.3.1 1.4.2 1.5.0 1.5.3 1.6.2: Google API Client for Python
 dev-python/google-apitools 0.5.4: Python library to manipulate Google APIs
 dev-python/google-apputils 0.4.0-r1 0.4.2-r1 0.4.2-r2: Collection of utilities for building Python applications
-dev-python/google-auth 1.0.0: Google Authentication Library
+dev-python/google-auth 1.0.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2: httplib2 Transport for Google Auth
 dev-python/graph-tool 2.19 9999: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
@@ -19346,13 +19346,13 @@ x11-themes/arc-theme 20170302: A flat theme with transparent elements for GTK+3,
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
 x11-themes/bespin 0_p20140225: Very configurable Qt4 style derived from the Oxygen project
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
-x11-themes/chameleon-xcursors 0.5: Style neutral scalable cursor theme
+x11-themes/chameleon-xcursors 0.5 0.5-r1: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
 x11-themes/clearlooks-phenix 3.0.15 5.0.7 6.0.3 9999: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
 x11-themes/comix-xcursors 0.7.3 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
-x11-themes/constantine-backgrounds 12.1.1.4: Fedora official background artwork
+x11-themes/constantine-backgrounds 12.1.1.4 12.1.1.4-r1: Fedora official background artwork
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
 x11-themes/elementary-xfce-icon-theme 0.8 0.8_p20170710: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/emerald-themes 0.5.2: Emerald window decorator themes
@@ -19385,10 +19385,10 @@ x11-themes/gnome-icon-theme-symbolic 3.10.1 3.12.0: Symbolic icons for GNOME def
 x11-themes/gnome-themes-standard 3.22.3: Standard Themes for GNOME Applications
 x11-themes/gnustep-neos-theme 0.1: GNUstep theme closely following the original NeXT look and feel
 x11-themes/gnustep-silver-theme 2.5 3.1: a GNUstep silver theme
-x11-themes/goddard-backgrounds 13.0.0.3: Fedora official background artwork
+x11-themes/goddard-backgrounds 13.0.0.3 13.0.0.3-r1: Fedora official background artwork
 x11-themes/golden-xcursors 0.8: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/greybird 1.2.2 1.3.4 1.5.3 3.18.0 3.20.1-r2 3.22.3 9999: The default theme from Xubuntu
-x11-themes/gtk-chtheme 0.3.1-r2: GTK-2.0 Theme Switcher
+x11-themes/gtk-chtheme 0.3.1-r2 0.3.1-r3: GTK-2.0 Theme Switcher
 x11-themes/gtk-engines 2.20.2-r1 2.20.2-r2: GTK+2 standard engines and themes
 x11-themes/gtk-engines-adwaita 3.22.3: Adwaita GTK+2 theme engine
 x11-themes/gtk-engines-aurora 1.5.1: Aurora GTK+ 2.x Theme Engine
