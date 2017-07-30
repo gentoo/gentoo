@@ -22,7 +22,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="libressl +fuse"
 
-# Unformately we have a file conflict with app-office/borg, bug #580402
+# Unfortunately we have a file conflict with app-office/borg, bug #580402
 RDEPEND="
 	!!app-office/borg
 	app-arch/lz4
@@ -30,6 +30,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	fuse? ( dev-python/llfuse[${PYTHON_USEDEP}] )
+	dev-python/pyzmq[${PYTHON_USEDEP}]
 "
 
 DEPEND="
