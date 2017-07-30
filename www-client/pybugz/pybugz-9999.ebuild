@@ -6,8 +6,7 @@ PYTHON_COMPAT=( python3_4 python3_5 )
 PYTHON_REQ_USE="readline(+)"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://github.com/williamh/pybugz.git
-		https://github.com/williamh/pybugz.git"
+	EGIT_REPO_URI="https://github.com/williamh/pybugz.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/williamh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"

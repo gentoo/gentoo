@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="systemd"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/gnosek/${PN}.git"
+	EGIT_REPO_URI="https://github.com/gnosek/${PN}.git"
 else
 	MY_REV="99c942c90063c73734e56bacaa65f947772d9186"
 	MY_P="gnosek-fcgiwrap-${MY_REV:0:7}"

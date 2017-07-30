@@ -3,7 +3,7 @@ Remove version checks using pipdated.
 Patch by Marius Brehler <marbre@linux.sungazer.de>
 --- a/matplotlib2tikz/__init__.py
 +++ b/matplotlib2tikz/__init__.py
-@@ -15,7 +15,3 @@ from matplotlib2tikz.__about__ import (
+@@ -16,7 +16,3 @@ from matplotlib2tikz.__about__ import (
          )
  
  from matplotlib2tikz.save import get_tikz_code, save
@@ -19,6 +19,6 @@ Patch by Marius Brehler <marbre@linux.sungazer.de>
          'numpy',
          'Pillow >= 3.0.0',
 -        'pipdated',
+         'six',
          ],
      description='convert matplotlib figures into TikZ/PGFPlots',
-     long_description=read('README.rst'),

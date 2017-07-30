@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,13 +6,13 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="A static website and blog generator"
-HOMEPAGE="http://getnikola.com/"
+HOMEPAGE="https://getnikola.com/"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/a-study-in-scarlet.txt"
 MY_PN="Nikola"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/ralsina/${PN}.git"
+	EGIT_REPO_URI="https://github.com/ralsina/${PN}.git"
 else
 	SRC_URI+=" mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 	KEYWORDS="~amd64"

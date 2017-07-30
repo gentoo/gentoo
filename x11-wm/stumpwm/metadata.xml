@@ -29,23 +29,23 @@
     Stumpwm es un gestor de ventanas estilo mosaico gestionado por teclado
     escrito completamente en Common Lisp.
 
-	Si está cansado de cambiar de temas como navegación por canales y vagar
-	de un gestor de ventanas perfecto excepto por esa pequeña característica
-	a otro incluso más roto de alguna otra forma, entonces quizá Stumpwm
-	pueda ser de ayuda.
+    Si está cansado de cambiar de temas como navegación por canales y vagar
+    de un gestor de ventanas perfecto excepto por esa pequeña característica
+    a otro incluso más roto de alguna otra forma, entonces quizá Stumpwm
+    pueda ser de ayuda.
 
-	Stumpwm persigue ser personalizable a la vez que mínimo. No hay
-	decoración en las ventanas, ni iconos ni botones.
-	Dispone de varios enganches para realizar nuestras propias configuraciones
-	personales y variables que podemos ajustar a nuestras necesidades para:
+    Stumpwm persigue ser personalizable a la vez que mínimo. No hay
+    decoración en las ventanas, ni iconos ni botones.
+    Dispone de varios enganches para realizar nuestras propias configuraciones
+    personales y variables que podemos ajustar a nuestras necesidades para:
 
       * Cacharrear de forma correcta
       * Depurar nuestro propio cacharreo
-	  * Personalizar nuestro gestor de ventanas
+      * Personalizar nuestro gestor de ventanas
 
-	mientras está corriendo. Eso está bien. Con un gestor de ventanas escrito
-	al 100% en Common Lisp no hay forma de detener el cacharreo. ¡Simplemente
-	reevalúe y CONTINÚE!
+    mientras está corriendo. Eso está bien. Con un gestor de ventanas escrito
+    al 100% en Common Lisp no hay forma de detener el cacharreo. ¡Simplemente
+    reevalúe y CONTINÚE!
   </longdescription>
   <use>
     <flag name="contrib">Install contrib modules</flag>

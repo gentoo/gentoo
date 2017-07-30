@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,7 @@ inherit distutils-r1 linux-info
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/Datera/${PN}.git
-		https://github.com/Datera/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Datera/${PN}.git"
 	KEYWORDS=""
 else
 	MY_PV=${PV/_/-}
