@@ -10,8 +10,8 @@ MY_P="Python-${PV/_/}"
 PATCHSET_VERSION="3.4.6-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
-HOMEPAGE="http://www.python.org/"
-SRC_URI="http://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
+HOMEPAGE="https://www.python.org/"
+SRC_URI="https://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 
 LICENSE="PSF-2"
