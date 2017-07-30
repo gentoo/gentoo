@@ -2479,7 +2479,7 @@ app-text/unrtf 0.21.9: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
-app-text/wdiff 1.2.2: Create a diff disregarding formatting
+app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.4.0: A template-based static website generator
 app-text/wgetpaste 2.25-r3 2.28 2.28-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1: Tool to produce LaTeX Beamer code from wiki-like input
