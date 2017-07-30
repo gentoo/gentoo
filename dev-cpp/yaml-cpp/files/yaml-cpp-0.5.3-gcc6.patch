@@ -1,0 +1,44 @@
+Bug: https://bugs.gentoo.org/609176
+Upstream PR: https://github.com/jbeder/yaml-cpp/pull/514
+
+From a83a1b3a7bd0a5a4eb458d898b057f6a8d409b7e Mon Sep 17 00:00:00 2001
+From: Peter-Levine <plevine457@gmail.com>
+Date: Mon, 24 Jul 2017 02:00:24 -0400
+Subject: [PATCH] Fix segfault in gmock when running tests
+
+Taken from https://github.com/google/googletest/issues/705#issuecomment-235067917
+---
+ test/gmock-1.7.0/include/gmock/gmock-spec-builders.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/test/gmock-1.7.0/include/gmock/gmock-spec-builders.h b/test/gmock-1.7.0/include/gmock/gmock-spec-builders.h
+index 312fbe87..2dd733b6 100644
+--- a/test/gmock-1.7.0/include/gmock/gmock-spec-builders.h
++++ b/test/gmock-1.7.0/include/gmock/gmock-spec-builders.h
+@@ -1370,6 +1370,8 @@ class ActionResultHolder : public UntypedActionResultHolderBase {
+ template <>
+ class ActionResultHolder<void> : public UntypedActionResultHolderBase {
+  public:
++  explicit ActionResultHolder() {}
++
+   void GetValueAndDelete() const { delete this; }
+ 
+   virtual void PrintAsActionResult(::std::ostream* /* os */) const {}
+@@ -1381,7 +1383,7 @@ class ActionResultHolder<void> : public UntypedActionResultHolderBase {
+       const typename Function<F>::ArgumentTuple& args,
+       const string& call_description) {
+     func_mocker->PerformDefaultAction(args, call_description);
+-    return NULL;
++    return new ActionResultHolder();
+   }
+ 
+   // Performs the given action and returns NULL.
+@@ -1390,7 +1392,7 @@ class ActionResultHolder<void> : public UntypedActionResultHolderBase {
+       const Action<F>& action,
+       const typename Function<F>::ArgumentTuple& args) {
+     action.Perform(args);
+-    return NULL;
++    return new ActionResultHolder();
+   }
+ };
+ 
