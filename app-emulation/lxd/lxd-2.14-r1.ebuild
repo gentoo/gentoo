@@ -64,7 +64,7 @@ DEPEND="
 RDEPEND="
 	daemon? (
 		app-arch/xz-utils
-		app-emulation/lxc[seccomp]
+		>=app-emulation/lxc-2.0.7[seccomp]
 		net-dns/dnsmasq[dhcp,ipv6]
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6]
