@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm hppa ppc64 x86"
+KEYWORDS="hppa"
 IUSE="doc static-libs test tools"
 
 RDEPEND="
