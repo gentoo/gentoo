@@ -11,8 +11,7 @@ if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}/Heimdall-${PV}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/Benjamin-Dobell/Heimdall.git
-		https://github.com/Benjamin-Dobell/Heimdall.git"
+	EGIT_REPO_URI="https://github.com/Benjamin-Dobell/Heimdall.git"
 fi
 
 DESCRIPTION="Tool suite used to flash firmware onto Samsung Galaxy S devices"

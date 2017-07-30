@@ -1,13 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 if [[ $PV = *9999* ]]; then
 	eclass=git-r3
-	EGIT_REPO_URI="
-		git://github.com/JulyIGHOR/QtBitcoinTrader.git
-		https://github.com/JulyIGHOR/QtBitcoinTrader.git"
+	EGIT_REPO_URI="https://github.com/JulyIGHOR/QtBitcoinTrader.git"
 	EGIT_BRANCH="testing"
 	SRC_URI=""
 	KEYWORDS=""

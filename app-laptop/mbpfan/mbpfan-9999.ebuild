@@ -13,7 +13,7 @@ RESTRICT="test" # will fail if the hardware is unavailable, not useful
 
 if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/dgraziotin/${PN}.git"
+	EGIT_REPO_URI="https://github.com/dgraziotin/${PN}.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/dgraziotin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"

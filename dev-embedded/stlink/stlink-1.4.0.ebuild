@@ -8,7 +8,7 @@ inherit cmake-utils udev
 DESCRIPTION="stm32 discovery line linux programmer"
 HOMEPAGE="https://github.com/texane/stlink"
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/texane/stlink.git"
+	EGIT_REPO_URI="https://github.com/texane/stlink.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/texane/stlink/archive/${PV}/${P}.tar.gz"
