@@ -21,6 +21,9 @@ IUSE=""
 
 ruby_add_rdepend "=dev-ruby/tins-1*"
 
+# These packages also provide agrep, bug 626480
+RDEPEND+=" !app-misc/glimpse !app-text/agrep !dev-libs/tre"
+
 all_ruby_prepare() {
 	# mize is listed as a dependency but not actually used
 	sed -i -e '/mize/d' ${RUBY_FAKEGEM_GEMSPEC} || die
