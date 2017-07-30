@@ -8,4 +8,4 @@ RDEPEND=app-crypt/md5deep app-i18n/pology app-shells/bash:* dev-vcs/subversion k
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:-
 _eclasses_=git-2	195a672bfaf52d868442171c9469bbb6
-_md5_=839ad331155874f501cfe7c1ae682065
+_md5_=fef405d479e6d5a8110ab22abbfe8b47

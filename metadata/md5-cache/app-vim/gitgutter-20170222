@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=mirror://gentoo/gitgutter-20170222.tar.bz2 https://dev.gentoo.org/~radhermit/vim/gitgutter-20170222.tar.bz2
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
 _eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
-_md5_=c2cef02cd79f8f69cb8a139831a91a39
+_md5_=39cf91656b38baf35134aba8cc5b8853
