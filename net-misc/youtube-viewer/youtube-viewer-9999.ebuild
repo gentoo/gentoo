@@ -8,7 +8,7 @@ inherit gnome2-utils eutils perl-module git-r3
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
 HOMEPAGE="https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/trizen/${PN}.git"
+EGIT_REPO_URI="https://github.com/trizen/${PN}.git"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"

@@ -8,7 +8,7 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI="git://github.com/darkk/${PN}.git"
+	EGIT_REPO_URI="https://github.com/darkk/${PN}.git"
 fi
 
 inherit systemd toolchain-funcs user ${GIT_ECLASS}

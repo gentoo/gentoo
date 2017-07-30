@@ -8,7 +8,7 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="amd64 ~ppc x86"
 else
 	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI=( "git://github.com/euroelessar/${PN}" )
+	EGIT_REPO_URI="https://github.com/euroelessar/${PN}.git"
 fi
 
 inherit cmake-utils multibuild ${GIT_ECLASS}
