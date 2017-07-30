@@ -483,11 +483,6 @@ kde-apps/gpgmepp
 # Masked for removal in 30 days. Bug #621558.
 kde-misc/krecipes
 
-# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
-# Depends on vulnerable qtwebkit:4. Dead upstream.
-# Masked for removal in 30 days. Bug #620836.
-media-gfx/picturewall
-
 # Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
 # New strip feature which is enabled by default causes genkernel
 # to create unbootable kernel/initramfs images. Bug #622716
