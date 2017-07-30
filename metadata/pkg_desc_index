@@ -12067,7 +12067,7 @@ kde-apps/phonon-kde 16.04.3: Phonon KDE Integration
 kde-apps/picmi 16.12.3 17.04.3: Nonogram logic game by KDE
 kde-apps/pim-data-exporter 17.04.3: Assistant to backup and archive PIM data and configuration
 kde-apps/pim-sieve-editor 17.04.3: Assistant for editing IMAP Sieve filters
-kde-apps/pimcommon 17.04.3: Common PIM libraries
+kde-apps/pimcommon 17.04.3-r1: Common PIM libraries
 kde-apps/plasma-telepathy-meta 16.12.3 17.04.3: Plasma Telepathy client
 kde-apps/poxml 16.12.3 17.04.3: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 16.12.3 17.04.3: Manage print jobs and printers in Plasma
