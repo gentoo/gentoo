@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit elisp
 
 DESCRIPTION="Emacs-Wiki add-on for maintaining a weblog"
-HOMEPAGE="http://www.emacswiki.org/emacs/EmacsWikiBlog"
+HOMEPAGE="https://www.emacswiki.org/emacs/EmacsWikiBlog"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
