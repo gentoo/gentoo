@@ -11,7 +11,7 @@ SRC_URI=""
 
 if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/kodi-pvr/pvr.hts.git"
+	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.hts.git"
 	inherit git-r3
 else
 	CODENAME="Krypton"
