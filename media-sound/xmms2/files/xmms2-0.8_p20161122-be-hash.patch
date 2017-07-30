@@ -1,0 +1,39 @@
+From d97c8b8239e8b3c5ddb951d427b7d78ea7faad25 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 30 Jul 2017 23:08:02 +0100
+Subject: [PATCH] OTHER: _xmmsv_dict_hash: make hash function
+ endianness-agnostic
+
+The following code:
+    uint32_t k;
+    memcpy (&k, data, sizeof (k));
+computes different data depending on platform endianness.
+
+That causes test_xmmsv_serialize_coll_match test to fail
+as collection order is serialized in wrong order.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/lib/xmmstypes/xmmsv_dict.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/xmmstypes/xmmsv_dict.c b/src/lib/xmmstypes/xmmsv_dict.c
+index 5ebe4eb3..32533285 100644
+--- a/src/lib/xmmstypes/xmmsv_dict.c
++++ b/src/lib/xmmstypes/xmmsv_dict.c
+@@ -66,8 +66,10 @@ _xmmsv_dict_hash (const void *key, int len)
+ 
+ 	while (len >= 4)
+ 	{
+-		uint32_t k;
+-		memcpy (&k, data, sizeof (k));
++		uint32_t k = data [0]
++			| data [1] << 8
++			| data [2] << 16
++			| data [3] << 24;
+ 
+ 		k *= m;
+ 		k ^= k >> r;
+-- 
+2.13.3
+
