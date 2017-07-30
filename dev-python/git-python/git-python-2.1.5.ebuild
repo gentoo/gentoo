@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -18,22 +18,21 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-# Tests dont make sense without a git repo
+# Tests only work with the GitPython repo
 RESTRICT="test"
 
 RDEPEND="
 	dev-vcs/git
-	 >=dev-python/gitdb-0.6.4[${PYTHON_USEDEP}]"
+	 >=dev-python/gitdb2-2.0.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
+		>=dev-python/ddt-1.1.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 	)"
-# $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
-# is the correct entry for mock, however while RESTRICT="test"
-# there is little point in setting it since it is inactive
+
 S="${WORKDIR}/${MY_P}"
