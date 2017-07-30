@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install test
-DEPEND=dev-lang/go test? ( sys-fs/fuse )
+DEPEND=dev-lang/go test? ( sys-fs/fuse:0 )
 DESCRIPTION=restic is a backup program that is fast, efficient and secure
 EAPI=6
 HOMEPAGE=https://restic.github.io/
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
-RDEPEND=sys-fs/fuse
+RDEPEND=sys-fs/fuse:0
 SLOT=0
 SRC_URI=https://github.com/restic/restic/archive/v0.4.0.tar.gz -> restic-0.4.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=bbf66bcb457810848d9f9b0d9a73adce
+_md5_=aee3182fe0e36a6b867b39c93852ff60
