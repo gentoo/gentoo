@@ -6,30 +6,30 @@ EAPI=6
 inherit autotools
 
 SRC_URI="http://www.tcs.hut.fi/Software/${PN}/${P}.zip"
-DESCRIPTION="A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs"
-HOMEPAGE="http://www.tcs.hut.fi/Software/bliss/index.shtml"
+DESCRIPTION="Compute Automorphism Groups and Canonical Labelings of Graphs"
+HOMEPAGE="http://www.tcs.hut.fi/Software/bliss/"
 
-LICENSE="GPL-3"
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
+LICENSE="LGPL-3"
+SLOT="0/1"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc gmp static-libs"
 
 RDEPEND="gmp? ( dev-libs/gmp:0= )"
-
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	doc? ( app-doc/doxygen )"
 
 #patches from http://pkgs.fedoraproject.org/cgit/rpms/bliss.git/tree/
 PATCHES=(
-	"${FILESDIR}/${P}-error.patch"
-	"${FILESDIR}/${P}-rehn.patch"
-	"${FILESDIR}/${P}-autotools.patch"
+	"${FILESDIR}"/${P}-error.patch
+	"${FILESDIR}"/${P}-rehn.patch
+	"${FILESDIR}"/${P}-autotools.patch
 )
 
 src_prepare() {
+	default
 	cp "${FILESDIR}/${P}.1.in" "${PN}.1.in" || die
 	rm Makefile || die
-	default
 	eautoreconf
 }
 
@@ -42,9 +42,7 @@ src_compile() {
 }
 
 src_install() {
-	use doc && HTML_DOCS=( "${S}"/html/. )
 	default
-
-	#comes with pkg-config file
-	find "${ED}" -name '*.la' -delete || die
+	use static-libs || find "${ED}" -name '*.la' -delete
+	use doc && dodoc -r html
 }
