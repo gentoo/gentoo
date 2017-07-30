@@ -42,6 +42,7 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency
 	sed -i -e '/native-package-installer/ s:^:#:' ext/cairo/extconf.rb || die
+	sed -i -e '/native-package-installer/,/Gem::Dependency/ d' ../metadata || die
 
 	# Avoid test that requires unpackaged fixture
 	sed -i -e '/sub_test_case..FreeTypeFontFace/,/^  end/ s:^:#:' test/test_font_face.rb || die
