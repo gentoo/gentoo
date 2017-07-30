@@ -473,11 +473,6 @@ app-eselect/eselect-bashcomp
 # Masked for removal in 30 days. Bug#623276.
 app-crypt/mdcrack
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
-# All revdeps have been ported to app-crypt/gpgme[cxx].
-# Masked for removal in 30 days.
-kde-apps/gpgmepp
-
 # Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
 # New strip feature which is enabled by default causes genkernel
 # to create unbootable kernel/initramfs images. Bug #622716
