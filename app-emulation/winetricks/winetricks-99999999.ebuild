@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2-utils eutils
 
 if [[ ${PV} == "99999999" ]] ; then
-	EGIT_REPO_URI="git://github.com/Winetricks/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Winetricks/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
 else
@@ -21,7 +21,7 @@ SRC_URI="${SRC_URI}
 	kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )"
 
 DESCRIPTION="Easy way to install DLLs needed to work around problems in Wine"
-HOMEPAGE="http://winetricks.org http://wiki.winehq.org/winetricks"
+HOMEPAGE="https://github.com/Winetricks/winetricks https://wiki.winehq.org/Winetricks"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
