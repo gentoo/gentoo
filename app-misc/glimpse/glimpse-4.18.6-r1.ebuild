@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linu
 IUSE="static"
 
 RDEPEND="!dev-libs/tre
+	!dev-ruby/amatch
 	!app-text/agrep"
 
 PATCHES=( "${FILESDIR}/${PN}-4.18.6-makefile.patch" )
