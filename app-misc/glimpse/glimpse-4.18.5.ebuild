@@ -13,6 +13,7 @@ KEYWORDS="alpha amd64 ia64 ~mips ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~p
 IUSE="static"
 
 RDEPEND="!dev-libs/tre
+	!dev-ruby/amatch
 	!app-text/agrep"
 
 src_unpack() {
