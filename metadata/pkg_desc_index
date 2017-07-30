@@ -14719,7 +14719,7 @@ net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!
 net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
-net-im/corebird 0.8 1.0 1.1 1.5-r2: Native GTK+3 Twitter client
+net-im/corebird 0.8 1.0 1.1 1.5-r2 1.5.1: Native GTK+3 Twitter client
 net-im/coturn 4.5.0.4-r1 4.5.0.6 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
@@ -15297,7 +15297,7 @@ net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing
 net-misc/memcached 1.4.33 1.4.33-r1 1.4.34 1.4.35 1.4.36 1.4.37 1.4.38 1.4.39 1.5.0: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r8 2.3.13-r9 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
-net-misc/mikutter 3.4.2 3.5.4 9999: Simple, powerful and moeful twitter client
+net-misc/mikutter 3.4.2-r1 3.5.4-r1 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301 1.5.20161216: MiniSSDP Daemon
@@ -15397,11 +15397,11 @@ net-misc/rabbitmq-server 3.6.5 3.6.9 3.6.10: RabbitMQ is a high-performance AMQP
 net-misc/radvd 2.14 2.15-r1 2.16 2.17: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: New Cisco confIg Differ with git extensions and support for colorized emails!
-net-misc/rclone 1.36 9999: A program to sync files to and from various cloud storage providers
+net-misc/rclone 1.36 1.37 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc17 1.2.0_rc18: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc18 1.2.0_rc19: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
