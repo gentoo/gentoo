@@ -7,18 +7,17 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1 fdo-mime gnome2-utils
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/otsaloma/nfoview.git
-		https://github.com/otsaloma/nfoview.git"
+	EGIT_REPO_URI="https://github.com/otsaloma/${PN}.git"
 	inherit git-2
 	SRC_URI=""
 	#KEYWORDS=""
 else
-	SRC_URI="http://download.gna.org/nfoview/${PV:0:4}/${P}.tar.xz"
+	SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="simple viewer for NFO files, which are ASCII art in the CP437 codepage"
-HOMEPAGE="http://home.gna.org/nfoview/"
+HOMEPAGE="http://otsaloma.io/nfoview/"
 
 LICENSE="GPL-3"
 SLOT="0"
