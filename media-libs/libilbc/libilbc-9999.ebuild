@@ -5,10 +5,10 @@ EAPI=5
 
 if [[ ${PV} == 9999 ]] ; then
 	SCM="autotools git-2"
-	EGIT_REPO_URI="https://github.com/TimothyGu/libilbc"
+	EGIT_REPO_URI="https://github.com/TimothyGu/${PN}"
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/TimothyGu/libilbc/releases/download/v${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/TimothyGu/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
