@@ -16,7 +16,6 @@ move media-fonts/libertine-ttf media-fonts/libertine
 move dev-qt/qtdocumentation dev-qt/qt-docs
 move app-admin/eselect-audicle app-eselect/eselect-audicle
 move app-admin/eselect-awk app-eselect/eselect-awk
-move app-admin/eselect-bashcomp app-eselect/eselect-bashcomp
 move app-admin/eselect-blas app-eselect/eselect-blas
 move app-admin/eselect-cblas app-eselect/eselect-cblas
 move app-admin/eselect-cdparanoia app-eselect/eselect-cdparanoia
