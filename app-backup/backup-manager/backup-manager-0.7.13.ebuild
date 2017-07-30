@@ -8,7 +8,7 @@ inherit eutils
 MY_P=Backup-Manager-${PV}
 DESCRIPTION="Backup Manager is a command line backup tool for GNU/Linux"
 HOMEPAGE="https://github.com/sukria/Backup-Manager"
-SRC_URI="http://github.com/sukria/Backup-Manager/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sukria/Backup-Manager/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
