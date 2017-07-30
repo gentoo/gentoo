@@ -37,7 +37,7 @@ ruby_add_rdepend "dev-ruby/addressable
 	dev-ruby/httpclient
 	dev-ruby/json:0
 	dev-ruby/instance_storage
-	dev-ruby/memoist
+	<dev-ruby/memoist-0.16
 	>=dev-ruby/moneta-0.7
 	dev-ruby/nokogiri
 	>=dev-ruby/oauth-0.5.1
