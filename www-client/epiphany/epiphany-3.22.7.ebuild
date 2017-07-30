@@ -9,7 +9,7 @@ inherit flag-o-matic eutils gnome2 virtualx
 DESCRIPTION="GNOME webbrowser based on Webkit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
