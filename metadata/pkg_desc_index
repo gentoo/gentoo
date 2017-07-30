@@ -10400,7 +10400,7 @@ dev-util/geany-plugins 1.28-r1 1.30 1.31: A collection of different plugins for 
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.0: A user interface designer for GTK+ and GNOME
-dev-util/global 6.3.1: GNU Global is a tag system to find the locations of a specified object in various sources
+dev-util/global 6.3.1 6.5.7: tag system to find an object location in various sources
 dev-util/gnome-devel-docs 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/google-perftools 1.8.3 2.0-r2 2.5 2.6: Fast, multi-threaded malloc() and nifty performance analysis tools
