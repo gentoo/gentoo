@@ -18,7 +18,6 @@ RDEPEND="gmp? ( dev-libs/gmp:0=
 			  mpi? ( virtual/mpi ) )"
 DEPEND="${RDEPEND}"
 
-
 src_prepare(){
 	default
 	tc-export CC
