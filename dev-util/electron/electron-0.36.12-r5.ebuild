@@ -32,7 +32,7 @@ LIBCHROMIUMCONTENT_P="libchromiumcontent-${LIBCHROMIUMCONTENT_COMMIT}"
 ASAR_P="asar-${ASAR_VERSION}"
 
 DESCRIPTION="Cross platform application development framework based on web technologies"
-HOMEPAGE="http://electron.atom.io/"
+HOMEPAGE="https://electron.atom.io/"
 SRC_URI="
 	https://commondatastorage.googleapis.com/chromium-browser-official/${CHROMIUM_P}.tar.xz
 	https://github.com/electron/electron/archive/v${PV}.tar.gz -> ${P}.tar.gz
