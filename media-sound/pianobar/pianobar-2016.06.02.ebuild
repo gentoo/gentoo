@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,14 +6,14 @@ inherit toolchain-funcs flag-o-matic multilib
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/PromyLOPh/pianobar.git"
+	EGIT_REPO_URI="https://github.com/PromyLOPh/${PN}.git"
 else
-	SRC_URI="http://6xq.net/projects/${PN}/${P}.tar.bz2"
+	SRC_URI="https://6xq.net/${PN}/${P}.tar.bz2"
 	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="A console-based replacement for Pandora's flash player"
-HOMEPAGE="http://6xq.net/projects/pianobar/"
+HOMEPAGE="https://6xq.net/pianobar/"
 
 LICENSE="MIT"
 SLOT="0"
