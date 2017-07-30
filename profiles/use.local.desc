@@ -4587,6 +4587,7 @@ media-sound/mpg123:int-quality - Use rounding instead of fast truncation for int
 media-sound/mumble:g15 - Enable support for the Logitech G15 LCD (and compatible devices).
 media-sound/mumble:speech - Enable text-to-speech support in Mumble.
 media-sound/murmur:ice - Use dev-libs/Ice to enable remote control capabilities.
+media-sound/musescore:portmidi - Enable support for building against media-libs/portmidi
 media-sound/ncmpc:artist-screen - Enable artist screen
 media-sound/ncmpc:chat-screen - Enable the chat screen
 media-sound/ncmpc:colors - Enable color support
