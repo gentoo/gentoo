@@ -9400,7 +9400,7 @@ dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for re
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
 dev-ruby/akismet 1.0.2 2.0.0: A Ruby client for the Akismet API
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
-dev-ruby/amatch 0.3.0 0.3.1 0.4.0: Approximate Matching Extension for Ruby
+dev-ruby/amatch 0.3.1 0.4.0: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.4 1.1.4-r1: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
 dev-ruby/amq-protocol 1.9.2 2.1.0 2.2.0: An AMQP 0.9.1 serialization library for Ruby
@@ -9792,7 +9792,7 @@ dev-ruby/rbnacl 4.0.1 4.0.2 5.0.0: Provides a high-level toolkit for building cr
 dev-ruby/rbpdf 1.19.0 1.19.1 1.19.2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0-r1 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
-dev-ruby/rcairo 1.14.3 1.15.4 1.15.5 1.15.9: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.3 1.15.4 1.15.5 1.15.9-r1: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.2.2 4.3.0 5.0.0-r3 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
