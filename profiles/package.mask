@@ -508,11 +508,6 @@ app-cdr/acetoneiso
 # to create unbootable kernel/initramfs images. Bug #622716
 =sys-kernel/genkernel-3.5.1.0
 
-# Mike Gilbert <floppym@gentoo.org> (24 Jun 2017)
-# Obsolete package: use sys-apps/systemd[sysv-utils] instead.
-# Removal in 30 days.
-sys-apps/systemd-sysv-utils
-
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities
 # People using VMware in Gentoo should switch to Gentoo's VMware overlay
