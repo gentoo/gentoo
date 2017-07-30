@@ -2212,6 +2212,7 @@ dev-libs/sway:swaybg - Build 'swaybg': allows to set a desktop background image.
 dev-libs/sway:swaygrab - Build 'swaygrab': allows taking screenshots or screencasts.
 dev-libs/sway:swaylock - Build 'swaylock': sway's screen locker.
 dev-libs/sway:swaymsg - Build 'swaymsg': tool for communicating with a running sway instance.
+dev-libs/sway:tray - Enable support for StatusNotifierItem tray specification.
 dev-libs/sway:wallpapers - Install sway's default wallpaper image.
 dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
 dev-libs/tntnet:server - Enable tntnet server daemon
@@ -2236,9 +2237,9 @@ dev-libs/weston:unwind - Enable libunwind usage for backtraces
 dev-libs/weston:wayland-compositor - Enable Wayland compositor support
 dev-libs/weston:webp - Add support for the WebP image format
 dev-libs/weston:xwayland - Enable ability support native X11 applications
-dev-libs/wlc:X - Enable X11 backend and XWayland support.
+dev-libs/wlc:X - Enable X11 backend.
 dev-libs/wlc:systemd - Enable support for systemd-logind.
-dev-libs/wlc:xwayland - Enable XWayland support.
+dev-libs/wlc:xwayland - Enable XWayland application support.
 dev-libs/xapian:brass - Enabled brass backend db support
 dev-libs/xapian:chert - Enabled chert backend db support
 dev-libs/xapian:glass - Enabled glass backend db support
