@@ -83,9 +83,9 @@ src_unpack() {
 
 	default
 
-	mv clang-tools-extra-* "${S}"/tools/extra || die
+	mv clang-tools-extra-*.src "${S}"/tools/extra || die
 	if use test; then
-		mv llvm-* "${WORKDIR}"/llvm || die
+		mv llvm-*.src "${WORKDIR}"/llvm || die
 	fi
 }
 
