@@ -13,7 +13,9 @@ SRC_URI="https://github.com/SirCmpwn/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
+IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd +tray"
+
+REQUIRED_USE="tray? ( swaybar )"
 
 RDEPEND=">=dev-libs/wlc-0.0.8[systemd=]
 	dev-libs/json-c
@@ -25,6 +27,7 @@ RDEPEND=">=dev-libs/wlc-0.0.8[systemd=]
 	x11-libs/pango
 	x11-libs/cairo
 	swaylock? ( virtual/pam )
+	tray? ( sys-apps/dbus )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
@@ -45,6 +48,7 @@ src_configure() {
 		-Denable-swaygrab=$(usex swaygrab)
 		-Denable-swaylock=$(usex swaylock)
 		-Denable-swaymsg=$(usex swaymsg)
+		-Denable-tray=$(usex tray)
 
 		-Ddefault-wallpaper=$(usex wallpapers)
 
@@ -52,7 +56,7 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
-		-DGIT_COMMIT_HASH="${PVR}" # specify version info, may change in future
+		-DVERSION="${PV}"
 	)
 
 	cmake-utils_src_configure
@@ -70,5 +74,11 @@ pkg_postinst() {
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
 		optfeature "swaygrab video capture support" virtual/ffmpeg
 	fi
+	if use tray
+	then
+		optfeature "experimental xembed tray icons support" \
+			x11-misc/xembedsniproxy
+	fi
+
 	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
 }
