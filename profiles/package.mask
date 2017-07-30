@@ -463,72 +463,10 @@ java-virtual/jaf
 =media-plugins/vdr-xineliboutput-2.0.0_p20130821
 =media-plugins/vdr-xineliboutput-2.0.0_p20150220
 
-# Michał Górny <mgorny@gentoo.org> (02 Jul 2017)
-# The eselect module has been integrated into app-shells/bash-completion
-# and all the old versions (not having it) are gone. Removal in 14 days.
-app-eselect/eselect-bashcomp
-
-# Alon Bar-Lev <alonbl@gentoo.org> (01 Jul 2017)
-# Unmaintained and segfaults.
-# Masked for removal in 30 days. Bug#623276.
-app-crypt/mdcrack
-
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
-# All revdeps have been ported to app-crypt/gpgme[cxx].
-# Masked for removal in 30 days.
-kde-apps/gpgmepp
-
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Jul 2017)
-# Depends on vulnerable qtwebkit:4. Dead upstream.
-# Masked for removal in 30 days. Bug #621558.
-kde-misc/krecipes
-
-# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
-# Depends on vulnerable qtwebkit:4. Dead upstream.
-# Masked for removal in 30 days. Bug #620836.
-media-gfx/picturewall
-
-# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
-# Depends on vulnerable qtwebkit:4. Dead upstream.
-# Masked for removal in 30 days. Bug #620704.
-media-gfx/smile
-
-# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
-# Depends on vulnerable qtwebkit:4. Dead upstream.
-# Masked for removal in 30 days. Bug #620700.
-kde-misc/semantik
-
-# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
-# Depends on vulnerable qtwebkit:4. Dead upstream.
-# Masked for removal in 30 days. Bug #620688.
-app-cdr/acetoneiso
-
 # Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
 # New strip feature which is enabled by default causes genkernel
 # to create unbootable kernel/initramfs images. Bug #622716
 =sys-kernel/genkernel-3.5.1.0
-
-# Mike Gilbert <floppym@gentoo.org> (24 Jun 2017)
-# Obsolete package: use sys-apps/systemd[sysv-utils] instead.
-# Removal in 30 days.
-sys-apps/systemd-sysv-utils
-
-# Hans de Graaff <graaff@gentoo.org> (23 Jun 2017)
-# Mask ruby21-only packages for removal in 30 days
-# Old slots that are ruby21-only
-dev-ruby/prawn:1
-dev-ruby/rspec:0
-# ruby21-only package that does not work with current
-# dev-ruby/parslet versions.
-dev-ruby/toml
-# ruby21-only, no maintainer, fails tests
-www-apps/jekyll-paginate
-
-# Patrice Clement <monsieurp@gentoo.org> (20 Jun 2017)
-# Fails to build with Java 8. Project is active on Github yet ebuild has never
-# been marked stable.
-# Masked for removal in 30 days.
-dev-java/jdbc-jaybird
 
 # Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
 # Unmaintained in Gentoo repository; Multiple vulnerabilities

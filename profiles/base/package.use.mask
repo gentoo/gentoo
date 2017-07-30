@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (30 Jul 2017)
+# The Z3 backend is unstable and causes assertion failures. Mask it
+# until upstream fixes it properly.
+sys-devel/clang z3
+
 # Ulrich Müller <ulm@gentoo.org> (26 Jul 2017)
 # Disable hesiod support due to security vulnerability, bug #626242.
 app-editors/emacs hesiod
