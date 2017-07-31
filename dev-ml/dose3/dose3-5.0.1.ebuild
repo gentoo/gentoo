@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 MY_P="${P/_beta/-beta}"
-DESCRIPTION="Library and a collection of tools to perform la large spectrum of analysis on package repositories"
+DESCRIPTION="Library to perform analysis on package repositories"
 HOMEPAGE="http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose"
 SRC_URI="https://gforge.inria.fr/frs/download.php/file/36063/${P}.tar.gz"
 
