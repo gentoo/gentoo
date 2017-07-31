@@ -4,7 +4,7 @@
 EAPI=5
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/${PN}/${PN}"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/wayland.git"
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 	AUTOTOOLS_AUTORECONF=1
