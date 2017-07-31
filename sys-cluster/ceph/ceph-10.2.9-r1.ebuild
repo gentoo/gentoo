@@ -276,7 +276,7 @@ src_install() {
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}"/sysctld 90-${PN}.conf
 
-	use tcmalloc && newenvd "${FILESDIR}"/envd-tcmalloc ${PN}-tcmalloc
+	use tcmalloc && newenvd "${FILESDIR}"/envd-tcmalloc 99${PN}-tcmalloc
 
 	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
