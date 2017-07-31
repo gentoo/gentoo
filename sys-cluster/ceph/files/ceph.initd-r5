@@ -9,7 +9,7 @@ daemon_id="${daemon_id:-0}"
 : ${rundir:=/run/ceph}
 : ${user:=ceph}
 : ${group:=ceph}
-: ${rc_ulimit:=-n 32768}
+: ${rc_ulimit:=-n 131072 -u 257256}
 
 pidfile="${rundir}/supervisor-${daemon_type}.${daemon_id}.pid"
 daemon_pidfile="${rundir}/${daemon_type}.${daemon_id}.pid"
