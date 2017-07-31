@@ -9,7 +9,7 @@ XORG_MULTILIB=yes
 inherit xorg-2
 
 DESCRIPTION="X C-language Bindings sample implementations"
-HOMEPAGE="http://xcb.freedesktop.org/"
+HOMEPAGE="https://xcb.freedesktop.org/"
 SRC_URI="https://github.com/Airblader/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 KEYWORDS="amd64 ~arm x86"
