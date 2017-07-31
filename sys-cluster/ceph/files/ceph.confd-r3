@@ -4,7 +4,7 @@
 #ceph_conf="/etc/ceph/ceph.conf"
 
 # Set ulimits for Ceph services.
-#rc_ulimit="-n 32768"
+#rc_ulimit="-n 131072 -u 257256"
 
 # the directory under /run to store runtime information in
 #rundir=/run/ceph
