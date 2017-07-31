@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (31 Jul 2017)
+# Passes -mfpu=neon with neon enabled
+mail-client/thunderbird neon
+
 # Alexis Ballier <aballier@gentoo.org> (20 Jul 2017)
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
