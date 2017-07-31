@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit php-pear-r1
+inherit php-pear-r2
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 DESCRIPTION="Fast and safe little cache system"
@@ -19,6 +19,6 @@ src_test() {
 }
 
 src_install() {
-	php-pear-r1_src_install
-	find "${D}" -name LICENSE -delete || die
+	local DOCS=( README.md TODO docs/technical docs/examples )
+	php-pear-r2_src_install
 }

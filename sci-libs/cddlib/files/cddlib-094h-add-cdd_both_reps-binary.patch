@@ -1,0 +1,43 @@
+diff -up cddlib-094g/src-gmp/Makefile.am.orig cddlib-094g/src-gmp/Makefile.am
+--- cddlib-094g/src-gmp/Makefile.am.orig	2012-07-05 13:30:30.982562213 -0400
++++ cddlib-094g/src-gmp/Makefile.am	2012-07-05 13:31:14.576563881 -0400
+@@ -11,7 +11,8 @@ testcdd1_gmp \
+ testcdd2_gmp \
+ testlp1_gmp \
+ testlp2_gmp \
+-testlp3_gmp
++testlp3_gmp \
++cdd_both_reps_gmp 
+ #cddmathlink
+ 
+ scdd_gmp_SOURCES                   = simplecdd.c
+@@ -27,6 +28,7 @@ testcdd2_gmp_SOURCES               = tes
+ testlp1_gmp_SOURCES                = testlp1.c
+ testlp2_gmp_SOURCES                = testlp2.c
+ testlp3_gmp_SOURCES                = testlp3.c
++cdd_both_reps_gmp_SOURCES          = cdd_both_reps.c
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+ LDADD        = ../lib-src-gmp/libcddgmp.la
+diff -up cddlib-094g/src-gmp/Makefile.in.orig cddlib-094g/src-gmp/Makefile.in
+diff -up cddlib-094g/src/Makefile.am.orig cddlib-094g/src/Makefile.am
+--- cddlib-094g/src/Makefile.am.orig	2012-07-05 13:34:07.449570501 -0400
++++ cddlib-094g/src/Makefile.am	2012-07-05 13:34:32.128571446 -0400
+@@ -11,7 +11,8 @@ testshoot \
+ testcdd2 \
+ testlp1 \
+ testlp2 \
+-testlp3
++testlp3 \
++cdd_both_reps
+ #cddmathlink
+ 
+ scdd_SOURCES                   = simplecdd.c
+@@ -27,6 +28,7 @@ testcdd2_SOURCES               = testcdd
+ testlp1_SOURCES                = testlp1.c
+ testlp2_SOURCES                = testlp2.c
+ testlp3_SOURCES                = testlp3.c
++cdd_both_reps_SOURCES          = cdd_both_reps.c
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+ LDADD        = ../lib-src/libcdd.la
