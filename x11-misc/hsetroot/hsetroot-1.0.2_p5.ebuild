@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Tool which allows you to compose wallpapers ('root pixmaps') for X"
-HOMEPAGE="http://thegraveyard.org/hsetroot.html"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
 	mirror://debian/pool/main/h/${PN}/${PN}_${PV/_p*/}.orig.tar.gz
 	mirror://debian/pool/main/h/${PN}/${PN}_${PV/_p*/}-${PV/*_p/}.debian.tar.xz

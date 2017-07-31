@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Tool which allows you to compose wallpapers ('root pixmaps') for X"
-HOMEPAGE="http://thegraveyard.org/hsetroot.html"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://cdn.thegraveyard.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
