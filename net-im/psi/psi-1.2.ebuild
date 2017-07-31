@@ -45,7 +45,7 @@ RDEPEND="
 	enchant? ( >=app-text/enchant-1.3.0 )
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
-		>=dev-qt/qtwebchannel-5.7:5[widgets]
+		>=dev-qt/qtwebchannel-5.7:5
 		>=dev-qt/qtwebengine-5.7:5[widgets]
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
