@@ -4,7 +4,7 @@
 EAPI=4
 inherit flag-o-matic toolchain-funcs eutils multilib versionator
 
-DESCRIPTION="a simple, small, C++ XML parser that can be easily integrating into other programs"
+DESCRIPTION="Simple and small C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV//./_}.tar.gz"
 
