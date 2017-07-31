@@ -7612,6 +7612,7 @@ sys-auth/keystone:memcached - Installs dependencies needed for using memcached a
 sys-auth/keystone:mongo - Installs dependencies needed for using mongo as a backend
 sys-auth/munge:gcrypt - Use libgcrypt instead of openssl
 sys-auth/nss-mdns:search-domains - Honour search domains from /etc/resolv.conf (see bug #201948 for possible side effects)
+sys-auth/nss-pam-ldapd:pynslcd - Install the python implementation along with the standard implementation
 sys-auth/nss-pam-ldapd:utils - Install the command-line utilities
 sys-auth/oath-toolkit:pam - Build PAM module for pluggable login authentication for OATH
 sys-auth/oath-toolkit:pskc - Build tools & library for the Portable Symmetric Key Container (PSKC) format per RFC6030
