@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
-DESCRIPTION="Formatter extensions of JSON, YAML, and HTML output in programs created by the cliff framework"
+DESCRIPTION="Formatter extensions of JSON, YAML, and HTML output for the cliff framework"
 HOMEPAGE="https://github.com/dreamhost/cliff-tablib"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
