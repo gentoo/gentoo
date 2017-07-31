@@ -5,7 +5,7 @@ EAPI=4
 
 inherit autotools eutils multilib toolchain-funcs
 
-DESCRIPTION="highly optimized and portable routines for integer based number theoretic applications"
+DESCRIPTION="Optimized and portable routines for integer theoretic applications"
 HOMEPAGE="https://github.com/libtom/libtommath"
 SRC_URI="https://github.com/libtom/libtommath/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
