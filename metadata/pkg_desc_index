@@ -246,6 +246,7 @@ app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/bloscpack 0.5.0 0.6.0 0.11.0: Command line interface for Blosc compression
+app-arch/brotli 0.6.0: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r7 1.0.6-r8: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
@@ -6990,7 +6991,7 @@ dev-php/PEAR-Auth_HTTP 2.1.8-r1: Create HTTP authentication systems like Apache'
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Benchmark 1.2.9: Framework to benchmark PHP scripts or function calls
 dev-php/PEAR-Cache 1.5.6 1.5.6-r1: Framework for caching of arbitrary data
-dev-php/PEAR-Cache_Lite 1.7.16 1.8.0: Fast and safe little cache system
+dev-php/PEAR-Cache_Lite 1.7.16 1.8.0-r1: Fast and safe little cache system
 dev-php/PEAR-Calendar 0.5.5: A package for building Calendar data structures
 dev-php/PEAR-Config 1.10.12-r1 2.0.0_pre20140323: Provides multiple methods for configuration manipulation
 dev-php/PEAR-Console_Color 1.0.3: This Class allows you to easily use ANSI console colors in your application.
@@ -7400,9 +7401,9 @@ dev-python/blockdiag 1.5.3-r1: blockdiag generates block-diagram image from text
 dev-python/blosc 1.2.8 1.4.4 1.5.0 1.5.1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/bokeh 0.11.1 0.12.4 0.12.6: Statistical and interactive HTML plots for Python
-dev-python/boto 2.38.0 2.41.0 2.42.0: Amazon Web Services API
+dev-python/boto 2.38.0 2.41.0 2.42.0 2.48.0: Amazon Web Services API
 dev-python/boto3 1.3.1 1.4.0 1.4.1 1.4.4: The AWS SDK for Python
-dev-python/botocore 1.4.60 1.4.62 1.4.65 1.4.93 1.5.52: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.4.60 1.4.62 1.4.65 1.4.93 1.5.52 1.5.90: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.16 0.16-r1: Syntax highlighting and autocompletion for the Python interpreter
@@ -7501,14 +7502,14 @@ dev-python/cython 0.22 0.24.1 0.25.2 0.26: A Python to C compiler
 dev-python/cytoolz 0.8.0 0.8.2: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
-dev-python/dask 0.10.2 0.14.1 0.15.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 0.10.2 0.14.1 0.15.0 0.15.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.16.7: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.0 1.1.1: A library to multiply test cases
 dev-python/debtcollector 1.3.0 1.11.0: Python deprecation patterns and strategies that collect technical debt
-dev-python/decorator 4.0.2 4.0.10 4.0.11: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 4.0.2 4.0.10 4.0.11 4.1.2: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -7523,7 +7524,7 @@ dev-python/dirq 1.7.1: Python port of Perl module Directory::Queue
 dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.4: Distribution utilities
-dev-python/distributed 1.17.1: Python library for distributed computation
+dev-python/distributed 1.17.1 1.18.0: Python library for distributed computation
 dev-python/distro 1.0.2 1.0.4: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.4.0 0.4.2: Use Database URLs in your Django Application
 dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.18 1.9.13 1.10.7 1.11.2: High-level Python web framework
@@ -7652,7 +7653,7 @@ dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1 1.12.0: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
-dev-python/fastparquet 0.1.0: Python implementation of the parquet columnar file format
+dev-python/fastparquet 0.1.0 0.1.1: Python implementation of the parquet columnar file format
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/fedmsg 0.18.3: Fedora Messaging Client API
 dev-python/feedgenerator 1.9: Standalone version of django.utils.feedgenerator
@@ -7769,7 +7770,7 @@ dev-python/gst-python 0.10.22-r1 1.8.3 1.10.3 1.10.5: A Python Interface to GStr
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 2.1.2-r1 2.1.3-r1 2.1.4 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
-dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle
+dev-python/guzzle_sphinx_theme 0.7.10 0.7.11: Sphinx theme used by Guzzle
 dev-python/gwcs 0.7: Python for managing the World Coordinate System
 dev-python/h5py 2.3.1 2.7.0: Simple Python interface to HDF5 files
 dev-python/hachoir-core 1.3.3-r1: Core of Hachoir framework: parse and edit binary files
@@ -7999,7 +8000,7 @@ dev-python/monotonic 0.3 0.4 0.5 1.0 1.1 1.2: An implementation of time.monotoni
 dev-python/montage-wrapper 0.9.8: Python wrapper for the Montage mosaicking toolkit
 dev-python/morbid 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 2.2 2.2-r1 3.0.0: More routines for operating on iterables, beyond itertools
-dev-python/moto 0.4.22-r1 0.4.30: Mock library for boto
+dev-python/moto 0.4.22-r1 0.4.30 1.0.1: Mock library for boto
 dev-python/moviepy 0.2.2: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
@@ -8262,7 +8263,7 @@ dev-python/pycparser 2.14 2.17: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.5 3.4.6: A self-contained cryptographic library for Python
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
-dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 9999: Python wrapper for NVIDIA CUDA
+dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 2017.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.6: Set of facilities to extend Python with C++
@@ -8508,7 +8509,7 @@ dev-python/python-ldap 2.4.19-r1 2.4.32 9999: Various LDAP-related Python module
 dev-python/python-levenshtein 0.11.2 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.4 0.9.5: Tool and library for manipulating LilyPond files
-dev-python/python-lzo 1.08-r1: Python interface to lzo
+dev-python/python-lzo 1.08-r1 1.11: Python interface to lzo
 dev-python/python-magic 0.4.10 0.4.13: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.3.1: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.11.0 1.14.0: A client for the OpenStack Manila API
@@ -8569,7 +8570,7 @@ dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment f
 dev-python/pythonmagick 0.9.14 0.9.17: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2014.3.5 2016.2.6 9999: A collection of tools missing from the Python standard library
+dev-python/pytools 2014.3.5 2016.2.6 2017.4 9999: A collection of tools missing from the Python standard library
 dev-python/pytrie 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2016.3 2017.2: World timezone definitions for Python
 dev-python/pyudev 0.20.0 0.21.0: Python binding to libudev
@@ -8637,7 +8638,7 @@ dev-python/requests-mock 1.2.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.6.2 0.7.0: This project provides first-class OAuth library support for Requests
 dev-python/requests-toolbelt 0.5.1 0.7.0 0.7.1: A utility belt for advanced users of python-requests
 dev-python/requestsexceptions 1.1.3: Finds the correct path to exceptions in the requests library.
-dev-python/responses 0.5.1: A utility for mocking out the Python Requests library
+dev-python/responses 0.5.1 0.6.0: Utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/restructuredtext-lint 0.12.2: Created out of frustration, it sucks to find out your reST is invalid after uploading it.
 dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
@@ -8674,6 +8675,7 @@ dev-python/rtslib-fb 2.1.57 2.1.58 2.1.61 2.1.62: A Python object API for managi
 dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Functions
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.0 4.5 4.10: Component-based Software-defined Networking Framework
+dev-python/s3fs 0.1.2: Pythonic file interface to S3
 dev-python/s3transfer 0.1.10: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/safety 1.4.1: Checks your installed dependencies for known security vulnerabilities
@@ -16364,7 +16366,7 @@ sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/avogadrolibs 0.7.2-r1 0.8.0 0.9.0: Advanced molecule editor and visualizer 2 - libraries
 sci-libs/beagle 3.0.3-r1: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra Subprograms F77 reference implementations
-sci-libs/bliss 0.73: A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
+sci-libs/bliss 0.73-r1: Compute Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format (http://www.bmrb.wisc.edu/)
 sci-libs/btf 1.1.3 1.2.0: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
@@ -16376,7 +16378,7 @@ sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering a
 sci-libs/ccpn-data 2.3.1_p140425 2.4.0_p140425 2.4.1 2.4.2: The Collaborative Computing Project for NMR - Data
 sci-libs/cctbx 2010.03.29.2334-r7: Computational Crystallography Toolbox
 sci-libs/cdd+ 077a: Another implementation of the double description method
-sci-libs/cddlib 094g: C implementation of the Double Description Method of Motzkin et al
+sci-libs/cddlib 094g 094h: C implementation of the Double Description Method of Motzkin et al
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
 sci-libs/ceres-solver 1.11.0 1.12.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.38-r1 3.39 3.360 3.410: C and Fortran library for manipulating FITS files
@@ -16504,7 +16506,7 @@ sci-libs/libticonv 1.1.4 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.6-r1 1.1.7: Library for TI calculator files
 sci-libs/linux-gpib 4.0.3-r1 4.0.4_rc2: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
-sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
+sci-libs/lrslib 042c-r1 042c-r2 051 062: Self-contained C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.3.4: Math Graphics Library
 sci-libs/matio 1.5.1 1.5.2 1.5.10: Library for reading and writing matlab files
@@ -16599,7 +16601,7 @@ sci-libs/xdrfile 1.1.1: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
-sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
+sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.7_pre 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
 sci-mathematics/agda 2.4.2.5-r2 2.5.2-r1: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
@@ -16652,7 +16654,7 @@ sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive model
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.5.1: A GiNaC-based library for symbolic expansion of certain transcendental functions
-sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
+sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3 3.3.0: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
 sci-mathematics/octave 4.2.1: High-level interactive language for numerical computations
