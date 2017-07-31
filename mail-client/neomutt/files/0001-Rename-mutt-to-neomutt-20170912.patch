@@ -1,0 +1,265 @@
+From 3a44a22841c2d5861c8fc79391f8615d22bcd08f Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Mon, 2 Oct 2017 14:04:34 -0600
+Subject: [PATCH] Rename mutt to neomutt
+
+---
+ Makefile.am     | 28 +++++++++++++++-------------
+ configure.ac    |  6 +++---
+ contrib/pgp2.rc |  4 ++--
+ contrib/pgp5.rc |  4 ++--
+ contrib/pgp6.rc |  4 ++--
+ doc/Makefile.am | 30 +++++++++++++++---------------
+ lib/Makefile.am |  4 ++--
+ 7 files changed, 41 insertions(+), 39 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 97218b8f..859b2bcd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,7 @@
+ include $(top_srcdir)/flymake.am
+ 
+ AUTOMAKE_OPTIONS = 1.6 foreign
+-EXTRA_PROGRAMS = pgpewrap pgpring
++EXTRA_PROGRAMS = neomutt_pgpewrap neomutt_pgpring
+ 
+ # Test the .tar file by building everything
+ AM_DISTCHECK_CONFIGURE_FLAGS = \
+@@ -42,9 +42,9 @@ distdir = neo$(PACKAGE)-$(VERSION)
+ 
+ BUILT_SOURCES = conststrings.c git_ver.h
+ 
+-bin_PROGRAMS = mutt $(PGPAUX_TARGET)
++bin_PROGRAMS = neomutt $(PGPAUX_TARGET)
+ 
+-mutt_SOURCES = account.c addrbook.c address.h alias.c alias.h attach.c \
++neomutt_SOURCES = account.c addrbook.c address.h alias.c alias.h attach.c \
+ 	bcache.c body.c body.h browser.c buffy.c charset.c color.c \
+ 	commands.c complete.c compose.c compress.c content.h context.h copy.c \
+ 	curs_lib.c curs_main.c edit.c editmsg.c enter.c enter_state.h \
+@@ -59,18 +59,18 @@ mutt_SOURCES = account.c addrbook.c address.h alias.c alias.h attach.c \
+ 	smtp.c sort.c state.c state.h status.c system.c thread.c thread.h url.c \
+ 	version.c where.h
+ 
+-nodist_mutt_SOURCES = $(BUILT_SOURCES)
++nodist_neomutt_SOURCES = $(BUILT_SOURCES)
+ 
+ LIBIMAP = -Limap -limap
+ LIBIMAPDEPS = $(top_srcdir)/imap/imap.h imap/libimap.a
+ 
+-LIBMUTT = -Llib -lmutt
+-LIBMUTTDEPS = $(top_srcdir)/lib/lib.h lib/libmutt.a
++LIBMUTT = -Llib -lneomutt
++LIBMUTTDEPS = $(top_srcdir)/lib/lib.h lib/libneomutt.a
+ 
+-mutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(HCACHE_LIBS) $(NCRYPT_LIBS) \
++neomutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(HCACHE_LIBS) $(NCRYPT_LIBS) \
+ 	$(LIBIMAP) $(LIBMUTT) $(LIBICONV) $(GPGME_LIBS) $(INTLLIBS)
+ 
+-mutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
++neomutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
+ 	$(LIBMUTTDEPS) $(HCACHE_DEPS) $(NCRYPT_DEPS) $(INTLDEPS)
+ 
+ DEFS=-DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
+@@ -78,7 +78,7 @@ DEFS=-DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
+ 
+ AM_CPPFLAGS=-I. -I$(top_srcdir) $(GPGME_CFLAGS)
+ 
+-EXTRA_mutt_SOURCES = browser.h mbyte.h mutt_idna.c mutt_idna.h \
++EXTRA_neomutt_SOURCES = browser.h mbyte.h mutt_idna.c mutt_idna.h \
+ 	mutt_lua.c mutt_sasl.c mutt_notmuch.c mutt_ssl.c mutt_ssl_gnutls.c \
+ 	remailer.c remailer.h resize.c url.h
+ 
+@@ -94,11 +94,13 @@ EXTRA_DIST = account.h attach.h bcache.h browser.h buffy.h \
+ 	rfc1524.h rfc2047.h rfc2231.h rfc3676.h rfc822.h sidebar.h \
+ 	sort.h txt2c.c txt2c.sh version.h
+ 
++neomutt_pgpewrap_SOURCES = pgpewrap.c
++
+ EXTRA_SCRIPTS =
+ 
+-pgpring_SOURCES = pgppubring.c
+-pgpring_LDADD = $(LIBOBJS) $(NCRYPT_LIBS) $(INTLLIBS) $(LIBMUTT)
+-pgpring_DEPENDENCIES = $(LIBOBJS) $(NCRYPT_DEPS) $(INTLDEPS) $(LIBMUTTDEPS)
++neomutt_pgpring_SOURCES = pgppubring.c
++neomutt_pgpring_LDADD = $(LIBOBJS) $(NCRYPT_LIBS) $(INTLLIBS) $(LIBMUTT)
++neomutt_pgpring_DEPENDENCIES = $(LIBOBJS) $(NCRYPT_DEPS) $(INTLDEPS) $(LIBMUTTDEPS)
+ 
+ txt2c_SOURCES = txt2c.c
+ txt2c_LDADD =
+@@ -130,7 +132,7 @@ LDADD = $(LIBOBJS) $(INTLLIBS)
+ dist-hook:
+ 	echo $(VERSION) > $(distdir)/.tarball-version
+ 
+-git_ver.h: $(mutt_SOURCES) $(SUBDIRS)
++git_ver.h: $(neomutt_SOURCES) $(SUBDIRS)
+ 	version=`git describe --dirty --abbrev=6 --match "neomutt-*" 2> /dev/null | sed -e 's/^neomutt-[0-9]\{8\}//' -e 's/g//'`; \
+ 	echo 'const char *GitVer = "'$$version'";' > git_ver.h.tmp; \
+ 	cmp -s git_ver.h.tmp git_ver.h || mv git_ver.h.tmp git_ver.h; \
+diff --git a/configure.ac b/configure.ac
+index 1e888e86..471100b1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,7 +4,7 @@ dnl     autoreconf -i
+ CFLAGS=$CFLAGS
+ LDFLAGS=$LDFLAGS
+ 
+-AC_INIT([NeoMutt], [20170912], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
++AC_INIT([NeoMutt], [20170912], [neomutt-devel@neomutt.org], [neomutt], [https://www.neomutt.org])
+ AC_CONFIG_SRCDIR(mutt.h)
+ AC_CONFIG_AUX_DIR([.build-aux])
+ AM_INIT_AUTOMAKE
+@@ -186,7 +186,7 @@ AC_ARG_WITH(mailpath,
+ AC_ARG_WITH(docdir,
+ 	AS_HELP_STRING([--with-docdir=PATH],[Specify where to put the documentation]),
+ 	[mutt_cv_docdir=$withval],
+-	[mutt_cv_docdir='${datarootdir}/doc/mutt'])
++	[mutt_cv_docdir='${datarootdir}/doc/neomutt'])
+ 
+ AC_ARG_WITH(domain,
+ 	AS_HELP_STRING([--with-domain=DOMAIN],[Specify your DNS domain name]),
+@@ -213,7 +213,7 @@ AS_IF([test x$use_gpgme = xyes && test x$gpgme_found = xno], [
+ dnl --enable-pgp
+ AS_IF([test x$use_pgp != "xno"], [
+ 	AC_DEFINE(CRYPT_BACKEND_CLASSIC_PGP, 1, [Define if you want classic PGP Support.])
+-	PGPAUX_TARGET="pgpring\$(EXEEXT) pgpewrap\$(EXEEXT)"
++	PGPAUX_TARGET="neomutt_pgpring\$(EXEEXT) neomutt_pgpewrap\$(EXEEXT)"
+ 	build_ncrypt_pgp="yes"
+ ])
+ 
+diff --git a/contrib/pgp2.rc b/contrib/pgp2.rc
+index bd01e2d2..08b592dd 100644
+--- a/contrib/pgp2.rc
++++ b/contrib/pgp2.rc
+@@ -37,10 +37,10 @@ set pgp_export_command="pgp -kxaf +language=mutt %r"
+ set pgp_verify_key_command="pgp -kcc +language=mutt %r"
+ 
+ # read in the public key ring
+-set pgp_list_pubring_command="pgpring -2 %r"
++set pgp_list_pubring_command="neomutt_pgpring -2 %r"
+ 
+ # read in the secret key ring
+-set pgp_list_secring_command="pgpring -s -2 %r"
++set pgp_list_secring_command="neomutt_pgpring -s -2 %r"
+ 
+ # pattern for good signature
+ set pgp_good_sign="Good signature"
+diff --git a/contrib/pgp5.rc b/contrib/pgp5.rc
+index 4440d6b7..cdd85217 100644
+--- a/contrib/pgp5.rc
++++ b/contrib/pgp5.rc
+@@ -34,9 +34,9 @@ set pgp_export_command="pgpk -xa +language=mutt --OutputInformationFD=1 %r"
+ set pgp_verify_key_command="pgpk -c +batchmode +language=mutt --OutputInformationFD=1 %r"
+ 
+ # read in the public key ring
+-set pgp_list_pubring_command="pgpring -5 %r"
++set pgp_list_pubring_command="neomutt_pgpring -5 %r"
+ 
+ # read in the secret key ring
+-set pgp_list_secring_command="pgpring -5 -s %r"
++set pgp_list_secring_command="neomutt_pgpring -5 -s %r"
+ 
+ 
+diff --git a/contrib/pgp6.rc b/contrib/pgp6.rc
+index a8708042..6b1ef985 100644
+--- a/contrib/pgp6.rc
++++ b/contrib/pgp6.rc
+@@ -31,10 +31,10 @@ set pgp_export_command="pgp6 +compatible  -kxaf  %r"
+ set pgp_verify_key_command="pgp6 +compatible  -kcc  %r"
+ 
+ # read in the public key ring
+-set pgp_list_pubring_command="pgpring -5 %r"
++set pgp_list_pubring_command="neomutt_pgpring -5 %r"
+ 
+ # read in the secret key ring
+-set pgp_list_secring_command="pgpring -s -5 %r"
++set pgp_list_secring_command="neomutt_pgpring -s -5 %r"
+ 
+ # create a clearsigned message
+ set pgp_clearsign_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | pgp6 +compatible   +verbose=0 +batchmode +clearsig -afst %?a? -u %a?"
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 9bfe7ea6..dffbe5f6 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -40,11 +40,11 @@ install-data-local: makedoc-all
+ 	$(MKDIR_P) $(DESTDIR)$(mandir)/man1
+ 	$(MKDIR_P) $(DESTDIR)$(mandir)/man5
+ 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
+-	$(INSTALL) -m 644 mutt.1 $(DESTDIR)$(mandir)/man1/mutt.1
+-	$(INSTALL) -m 644 muttrc.man $(DESTDIR)$(mandir)/man5/muttrc.5
++	$(INSTALL) -m 644 mutt.1 $(DESTDIR)$(mandir)/man1/neomutt.1
++	$(INSTALL) -m 644 muttrc.man $(DESTDIR)$(mandir)/man5/neomuttrc.5
+ 	$(INSTALL) -m 644 $(srcdir)/smime_keys.1 $(DESTDIR)$(mandir)/man1/smime_keys.1
+-	$(INSTALL) -m 644 $(srcdir)/pgpewrap.1 $(DESTDIR)$(mandir)/man1/pgpewrap.1
+-	$(INSTALL) -m 644 $(srcdir)/pgpring.1 $(DESTDIR)$(mandir)/man1/pgpring.1
++	$(INSTALL) -m 644 $(srcdir)/pgpewrap.1 $(DESTDIR)$(mandir)/man1/neomutt_pgpewrap.1
++	$(INSTALL) -m 644 $(srcdir)/pgpring.1 $(DESTDIR)$(mandir)/man1/neomutt_pgpring.1
+ 	$(INSTALL) -m 644 $(srcdir)/mbox.5 $(DESTDIR)$(mandir)/man5/mbox.5
+ 	$(INSTALL) -m 644 $(srcdir)/mmdf.5 $(DESTDIR)$(mandir)/man5/mmdf.5
+ 	$(MKDIR_P) $(DESTDIR)$(docdir)
+@@ -58,28 +58,28 @@ install-data-local: makedoc-all
+ 	-for f in $(HTML_DOCFILES); do \
+ 		$(INSTALL) -m 644 $(srcdir)/$$f $(DESTDIR)$(docdir); \
+ 	done
+-	$(INSTALL) -m 644 Muttrc $(DESTDIR)$(sysconfdir)/Muttrc.dist
+-	-if [ -f $(DESTDIR)$(pkgdatadir)/Muttrc ]; then \
+-		mv $(DESTDIR)$(pkgdatadir)/Muttrc* $(DESTDIR)$(sysconfdir); \
+-	elif [ -f $(DESTDIR)$(pkgdatadir)/../Muttrc ]; then \
+-		mv $(DESTDIR)$(pkgdatadir)/../Muttrc* $(DESTDIR)$(sysconfdir); \
+-	elif [ ! -f $(DESTDIR)$(sysconfdir)/Muttrc ]; then \
+-		$(INSTALL) -m 644 Muttrc $(DESTDIR)$(sysconfdir); \
++	$(INSTALL) -m 644 Muttrc $(DESTDIR)$(sysconfdir)/neoMuttrc.dist
++	-if [ -f $(DESTDIR)$(pkgdatadir)/neoMuttrc ]; then \
++		mv $(DESTDIR)$(pkgdatadir)/neoMuttrc* $(DESTDIR)$(sysconfdir); \
++	elif [ -f $(DESTDIR)$(pkgdatadir)/../neoMuttrc ]; then \
++		mv $(DESTDIR)$(pkgdatadir)/../neoMuttrc* $(DESTDIR)$(sysconfdir); \
++	elif [ ! -f $(DESTDIR)$(sysconfdir)/neoMuttrc ]; then \
++		$(INSTALL) -m 644 neoMuttrc $(DESTDIR)$(sysconfdir); \
+ 	fi
+ 	-$(INSTALL) -m 644 $(srcdir)/neomutt-syntax.vim $(DESTDIR)$(docdir)
+ 
+ uninstall-local:
+-	for f in mutt.1 smime_keys.1 pgpewrap.1 pgpring.1; do \
++	for f in neomutt.1 smime_keys.1 neomutt_pgpewrap.1 neomutt_pgpring.1; do \
+ 		rm -f $(DESTDIR)$(mandir)/man1/$$f; \
+ 	done
+-	for f in muttrc.5 mbox.5 mmdf.5; do \
++	for f in neomuttrc.5 mbox.5 mmdf.5; do \
+ 		rm -f $(DESTDIR)$(mandir)/man5/$$f; \
+ 	done
+ 	for f in $(srcdir_DOCFILES) $(topsrcdir_DOCFILES) $(HTML_DOCFILES); do \
+ 		rm -f $(DESTDIR)$(docdir)/$$f; \
+ 	done
+ 	-rm -f $(DESTDIR)$(docdir)/manual.txt
+-	for i in Muttrc; do \
++	for i in neoMuttrc; do \
+ 		if cmp -s $(DESTDIR)$(sysconfdir)/$$i.dist $(DESTDIR)$(sysconfdir)/$$i; then \
+ 			rm $(DESTDIR)$(sysconfdir)/$$i; \
+ 		fi; \
+@@ -122,7 +122,7 @@ sortcheck: manual.xml
+ clean-local:
+ 	rm -f *.html mutt.1 muttrc.man
+ 
+-DISTCLEANFILES = manual.txt manual.html manual.xml Muttrc
++DISTCLEANFILES = manual.txt manual.html manual.xml neoMuttrc
+ 
+ muttrc.man: makedoc$(EXEEXT) $(top_srcdir)/init.h muttrc.man.head muttrc.man.tail
+ 	$(MAKEDOC_CPP) $(top_srcdir)/init.h | \
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index ac7658a9..222cbc68 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -7,7 +7,7 @@ EXTRA_DIST = lib.h base64.h buffer.h date.h debug.h exit.h file.h hash.h mapping
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)
+ 
+-noinst_LIBRARIES = libmutt.a
++noinst_LIBRARIES = libneomutt.a
+ 
+-libmutt_a_SOURCES = base64.c buffer.c date.c debug.c exit.c file.c hash.c mapping.c md5.c memory.c message.c sha1.c string.c
++libneomutt_a_SOURCES = base64.c buffer.c date.c debug.c exit.c file.c hash.c mapping.c md5.c memory.c message.c sha1.c string.c
+ 
+-- 
+2.13.6
+
