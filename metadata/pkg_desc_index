@@ -14658,7 +14658,7 @@ net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth param
 net-firewall/shorewall 5.0.15.6-r1 5.1.4.4 5.1.5 5.1.5.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
-net-firewall/xtables-addons 1.47.1 2.8 2.12 2.13: iptables extensions not yet accepted in the main kernel
+net-firewall/xtables-addons 1.47.1 2.8 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.1-r1 5.1.2 5.1.3: Kernel based automounter
 net-fs/btfs 2.11 2.12 2.13: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.4 6.6-r2 6.7: Tools for Managing Linux CIFS Client Filesystems
