@@ -1,0 +1,189 @@
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=603902
+
+--- a/qucs-core/src/components/verilog/bsim3v34nMOS.core.cpp
++++ b/qucs-core/src/components/verilog/bsim3v34nMOS.core.cpp
+@@ -8432,9 +8432,9 @@
+ fourkt=(5.5226012e-23*Temp);
+ leffx2=(leff*leff);
+ _save_flickernoise2(drainp,sourcep,((KF*pow(cdrain,AF))/(cox*leffx2)),EF,"flicker");
+-_save_whitenoise2(drainp,sourcep,(((fourkt*ueff)*abs(qinv))/leffx2),"channel");
+-_save_whitenoise2(drain,drainp,abs((fourkt*drainConductance)),"thermal");
+-_save_whitenoise2(sourcep,source,abs((fourkt*sourceConductance)),"thermal");
++_save_whitenoise2(drainp,sourcep,(((fourkt*ueff)*std::abs(qinv))/leffx2),"channel");
++_save_whitenoise2(drain,drainp,std::abs((fourkt*drainConductance)),"thermal");
++_save_whitenoise2(sourcep,source,std::abs((fourkt*sourceConductance)),"thermal");
+ }
+ 
+ /* ------------------ end of verilog analog equations --------------------- */
+--- a/qucs-core/src/components/verilog/bsim3v34pMOS.core.cpp
++++ b/qucs-core/src/components/verilog/bsim3v34pMOS.core.cpp
+@@ -8432,9 +8432,9 @@
+ fourkt=(5.5226012e-23*Temp);
+ leffx2=(leff*leff);
+ _save_flickernoise2(drainp,sourcep,((KF*pow(cdrain,AF))/(cox*leffx2)),EF,"flicker");
+-_save_whitenoise2(drainp,sourcep,(((fourkt*ueff)*abs(qinv))/leffx2),"channel");
+-_save_whitenoise2(drain,drainp,abs((fourkt*drainConductance)),"thermal");
+-_save_whitenoise2(sourcep,source,abs((fourkt*sourceConductance)),"thermal");
++_save_whitenoise2(drainp,sourcep,(((fourkt*ueff)*std::abs(qinv))/leffx2),"channel");
++_save_whitenoise2(drain,drainp,std::abs((fourkt*drainConductance)),"thermal");
++_save_whitenoise2(sourcep,source,std::abs((fourkt*sourceConductance)),"thermal");
+ }
+ 
+ /* ------------------ end of verilog analog equations --------------------- */
+--- a/qucs-core/src/components/verilog/bsim4v30nMOS.core.cpp
++++ b/qucs-core/src/components/verilog/bsim4v30nMOS.core.cpp
+@@ -13629,16 +13629,16 @@
+ {
+ fourkt=(5.5226012e-23*Temp);
+ leffx2=(leff*leff);
+-_save_whitenoise2(drainp,sourcep,((((fourkt*NTNOI)*ueff)*abs((qd+qs)))/leffx2),"channel");
++_save_whitenoise2(drainp,sourcep,((((fourkt*NTNOI)*ueff)*std::abs((qd+qs)))/leffx2),"channel");
+ }
+ if
+ (FNOIMOD==0)
+ {
+ leffx2=(leff*leff);
+-_save_flickernoise2(drainp,sourcep,((KF*pow(abs(cdrain),AF))/(cox*leffx2)),EF,"flicker");
++_save_flickernoise2(drainp,sourcep,((KF*pow(std::abs(cdrain),AF))/(cox*leffx2)),EF,"flicker");
+ }
+-_save_whitenoise2(drain,drainp,abs((fourkt*gdtot)),"thermal");
+-_save_whitenoise2(sourcep,source,abs((fourkt*gstot)),"thermal");
++_save_whitenoise2(drain,drainp,std::abs((fourkt*gdtot)),"thermal");
++_save_whitenoise2(sourcep,source,std::abs((fourkt*gstot)),"thermal");
+ 
+ /* ------------------ end of verilog analog equations --------------------- */
+ 
+--- a/qucs-core/src/components/verilog/bsim4v30pMOS.core.cpp
++++ b/qucs-core/src/components/verilog/bsim4v30pMOS.core.cpp
+@@ -13629,16 +13629,16 @@
+ {
+ fourkt=(5.5226012e-23*Temp);
+ leffx2=(leff*leff);
+-_save_whitenoise2(drainp,sourcep,((((fourkt*NTNOI)*ueff)*abs((qd+qs)))/leffx2),"channel");
++_save_whitenoise2(drainp,sourcep,((((fourkt*NTNOI)*ueff)*std::abs((qd+qs)))/leffx2),"channel");
+ }
+ if
+ (FNOIMOD==0)
+ {
+ leffx2=(leff*leff);
+-_save_flickernoise2(drainp,sourcep,((KF*pow(abs(cdrain),AF))/(cox*leffx2)),EF,"flicker");
++_save_flickernoise2(drainp,sourcep,((KF*pow(std::abs(cdrain),AF))/(cox*leffx2)),EF,"flicker");
+ }
+-_save_whitenoise2(drain,drainp,abs((fourkt*gdtot)),"thermal");
+-_save_whitenoise2(sourcep,source,abs((fourkt*gstot)),"thermal");
++_save_whitenoise2(drain,drainp,std::abs((fourkt*gdtot)),"thermal");
++_save_whitenoise2(sourcep,source,std::abs((fourkt*gstot)),"thermal");
+ 
+ /* ------------------ end of verilog analog equations --------------------- */
+ 
+--- a/qucs-core/src/components/verilog/hic2_full.core.cpp
++++ b/qucs-core/src/components/verilog/hic2_full.core.cpp
+@@ -9642,7 +9642,7 @@
+ #endif
+ d_Q=Q_pT;
+ while
+-(((abs(d_Q)>=(1.0e-5*abs(Q_pT)))&&(l_it<=100)))
++(((std::abs(d_Q)>=(1.0e-5*std::abs(Q_pT)))&&(l_it<=100)))
+ {
+ #if defined(_DYNAMIC)
+ d_Q0=d_Q;
+@@ -19895,10 +19895,10 @@
+ _save_whitenoise2(ci,ei,(twoq*it),"shot");
+ _save_whitenoise2(ci,bi,(twoq*iavl),"shot");
+ _save_whitenoise2(bi,ei,(twoq*ibei),"shot");
+-_save_whitenoise2(bi,ci,(twoq*abs(ibci)),"shot");
++_save_whitenoise2(bi,ci,(twoq*std::abs(ibci)),"shot");
+ _save_whitenoise2(bp,ei,(twoq*ibep),"shot");
+-_save_whitenoise2(bp,ci,(twoq*abs(ijbcx)),"shot");
+-_save_whitenoise2(si,ci,(twoq*abs(ijsc)),"shot");
++_save_whitenoise2(bp,ci,(twoq*std::abs(ijbcx)),"shot");
++_save_whitenoise2(si,ci,(twoq*std::abs(ijsc)),"shot");
+ }
+ 
+ /* ------------------ end of verilog analog equations --------------------- */
+--- a/qucs-core/src/components/verilog/hicumL2V2p1.core.cpp
++++ b/qucs-core/src/components/verilog/hicumL2V2p1.core.cpp
+@@ -4895,7 +4895,7 @@
+ #endif
+ d_Q=Q_pT;
+ while
+-(((abs(d_Q)>=(1.0e-5*abs(Q_pT)))&&(l_it<=100)))
++(((std::abs(d_Q)>=(1.0e-5*std::abs(Q_pT)))&&(l_it<=100)))
+ {
+ #if defined(_DYNAMIC)
+ d_Q0=d_Q;
+--- a/qucs-core/src/components/verilog/hicumL2V2p23.core.cpp
++++ b/qucs-core/src/components/verilog/hicumL2V2p23.core.cpp
+@@ -11502,7 +11502,7 @@
+ #endif
+ d_Q=Q_pT;
+ while
+-(((abs(d_Q)>=(1.0e-5*abs(Q_pT)))&&(l_it<=100)))
++(((std::abs(d_Q)>=(1.0e-5*std::abs(Q_pT)))&&(l_it<=100)))
+ {
+ #if defined(_DYNAMIC)
+ d_Q0=d_Q;
+@@ -23949,10 +23949,10 @@
+ }
+ twoq=(2.0*1.602176462e-19);
+ _save_whitenoise2(ci,bi,(twoq*iavl),"shot");
+-_save_whitenoise2(bi,ci,(twoq*abs(ibci)),"shot");
++_save_whitenoise2(bi,ci,(twoq*std::abs(ibci)),"shot");
+ _save_whitenoise2(bp,ei,(twoq*ibep),"shot");
+-_save_whitenoise2(bp,ci,(twoq*abs(ijbcx)),"shot");
+-_save_whitenoise2(si,ci,(twoq*abs(ijsc)),"shot");
++_save_whitenoise2(bp,ci,(twoq*std::abs(ijbcx)),"shot");
++_save_whitenoise2(si,ci,(twoq*std::abs(ijsc)),"shot");
+ _save_whitenoise1(n1,((2*1.602176462e-19)*ibei),"shot");
+ _load_static_residual1(n1,NP(n1));
+ #if defined(_DERIVATE)
+--- a/qucs-core/src/components/verilog/hicumL2V2p24.core.cpp
++++ b/qucs-core/src/components/verilog/hicumL2V2p24.core.cpp
+@@ -6090,7 +6090,7 @@
+ #endif
+ d_Q=Q_pT;
+ while
+-(((abs(d_Q)>=(1.0e-5*abs(Q_pT)))&&(l_it<=100)))
++(((std::abs(d_Q)>=(1.0e-5*std::abs(Q_pT)))&&(l_it<=100)))
+ {
+ #if defined(_DYNAMIC)
+ d_Q0=d_Q;
+@@ -11855,10 +11855,10 @@
+ }
+ twoq=(2.0*1.602176462e-19);
+ _save_whitenoise2(ci,bi,(twoq*iavl),"shot");
+-_save_whitenoise2(bi,ci,(twoq*abs(ibci)),"shot");
++_save_whitenoise2(bi,ci,(twoq*std::abs(ibci)),"shot");
+ _save_whitenoise2(bp,ei,(twoq*ibep),"shot");
+-_save_whitenoise2(bp,ci,(twoq*abs(ijbcx)),"shot");
+-_save_whitenoise2(si,ci,(twoq*abs(ijsc)),"shot");
++_save_whitenoise2(bp,ci,(twoq*std::abs(ijbcx)),"shot");
++_save_whitenoise2(si,ci,(twoq*std::abs(ijsc)),"shot");
+ _save_whitenoise1(n1,((2*1.602176462e-19)*ibei),"shot");
+ _load_static_residual1(n1,NP(n1));
+ #if defined(_DERIVATE)
+--- a/qucs-core/src/components/verilog/hicumL2V2p31n.core.cpp
++++ b/qucs-core/src/components/verilog/hicumL2V2p31n.core.cpp
+@@ -6726,7 +6726,7 @@
+ #endif
+ d_Q=Q_pT;
+ while
+-(((abs(d_Q)>=(1.0e-5*abs(Q_pT)))&&(l_it<=100)))
++(((std::abs(d_Q)>=(1.0e-5*std::abs(Q_pT)))&&(l_it<=100)))
+ {
+ #if defined(_DYNAMIC)
+ d_Q0=d_Q;
+@@ -12817,10 +12817,10 @@
+ }
+ twoq=(2.0*1.602176462e-19);
+ _save_whitenoise2(ci,bi,(twoq*iavl),"shot");
+-_save_whitenoise2(bi,ci,(twoq*abs(ibci)),"shot");
++_save_whitenoise2(bi,ci,(twoq*std::abs(ibci)),"shot");
+ _save_whitenoise2(bp,ei,(twoq*ibep),"shot");
+-_save_whitenoise2(bp,ci,(twoq*abs(ijbcx)),"shot");
+-_save_whitenoise2(si,ci,(twoq*abs(ijsc)),"shot");
++_save_whitenoise2(bp,ci,(twoq*std::abs(ijbcx)),"shot");
++_save_whitenoise2(si,ci,(twoq*std::abs(ijsc)),"shot");
+ if
+ (flcono==1)
+ {
