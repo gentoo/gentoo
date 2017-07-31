@@ -11,6 +11,7 @@
   </maintainer>
   <use>
     <flag name="utils">Install the command-line utilities</flag>
+    <flag name="pynslcd">Install the python implementation along with the standard implementation</flag>
   </use>
   <longdescription lang="en">
     Provides a Name Service Switch (NSS) module that allows your LDAP
