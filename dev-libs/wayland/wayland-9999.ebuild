@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/wayland/${PN}"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/wayland.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
