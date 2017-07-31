@@ -6,7 +6,7 @@ EAPI="6"
 inherit autotools eutils
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/virglrenderer"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/virglrenderer.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.xz"
