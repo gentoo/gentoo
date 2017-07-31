@@ -17,7 +17,7 @@ IUSE="ocl-icd ocl20"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://anongit.freedesktop.org/beignet"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/beignet.git"
 	KEYWORDS="amd64"
 else
 	KEYWORDS="amd64"
