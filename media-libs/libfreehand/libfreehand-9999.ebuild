@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libfreehand/"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libfreehand.git"
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library for import of FreeHand drawings"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libfreehand"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://dev-www.libreoffice.org/src/libfreehand/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
