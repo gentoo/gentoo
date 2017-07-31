@@ -81,7 +81,6 @@ multilib_src_install_all() {
 
 	newinitd "${FILESDIR}"/nslcd-init-r1 nslcd
 	newinitd "${FILESDIR}"/nslcd-init-r2 nslcd
-	newinitd "${FILESDIR}"/nslcd-init-s6 nslcd-s6
 	s6_install_service nslcd "${FILESDIR}"/nslcd-run-s6
 
 	insinto /usr/share/nss-pam-ldapd
