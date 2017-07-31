@@ -55,7 +55,8 @@ DEPEND="
 		${RDEPEND}
 		media-gfx/graphviz
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/sphinx-gallery[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.6[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-gallery-0.1.9[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}
