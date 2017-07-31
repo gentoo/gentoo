@@ -19,7 +19,7 @@ OPENGL_DIR="xorg-x11"
 MY_P="${P/_/-}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
-HOMEPAGE="https://www.mesa3d.org/"
+HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
 if [[ $PV == 9999 ]]; then
 	SRC_URI=""
