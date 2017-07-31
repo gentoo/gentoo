@@ -13,7 +13,7 @@ SRC_URI="https://github.com/omab/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc examples test"
 
 RDEPEND="
