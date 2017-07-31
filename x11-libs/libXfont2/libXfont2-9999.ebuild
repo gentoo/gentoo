@@ -4,7 +4,7 @@
 EAPI=5
 
 XORG_DOC=doc
-EGIT_REPO_URI="git://anongit.freedesktop.org/xorg/lib/libXfont"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/lib/libXfont.git"
 inherit xorg-2
 
 DESCRIPTION="X.Org Xfont library"
