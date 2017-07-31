@@ -5009,7 +5009,7 @@ dev-libs/mozldap 6.0.6-r2 6.0.7 6.0.7-r1: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
-dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficient data interchange format
+dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0 2.0.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.3-r1 3.3-r2: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
@@ -9589,7 +9589,7 @@ dev-ruby/hiera-eyaml-gpg 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hike 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set of paths
-dev-ruby/hipchat 1.5.4 1.6.0: Ruby library to interact with HipChat
+dev-ruby/hipchat 1.6.0: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.4 1.2.5: A fast, high resolution timer library
 dev-ruby/hocon 1.2.5: This is a port of the Typesafe Config library to Ruby.
 dev-ruby/hoe 3.13.0-r1 3.15.3-r2 3.16.0: Hoe extends rake to provide full project automation
