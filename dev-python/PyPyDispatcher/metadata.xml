@@ -6,7 +6,6 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">PyPyDispatcher</remote-id>
-    <remote-id type="sourceforge">pypydispatcher</remote-id>
+    <remote-id type="github">scrapy/pypydispatcher</remote-id>
   </upstream>
 </pkgmetadata>
