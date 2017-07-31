@@ -14751,7 +14751,7 @@ net-im/openmittsu 0.9.2.109: An open source chat client for Threema-style end-to
 net-im/pidgin 2.12.0: GTK Instant Messenger client
 net-im/pork 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
-net-im/psi 0.15 9999: Qt4 Jabber client, with Licq-like interface
+net-im/psi 0.15 1.2 9999: Qt XMPP client
 net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM

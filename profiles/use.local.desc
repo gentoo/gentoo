@@ -5690,13 +5690,15 @@ net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/prosody:jit - Use LuaJIT instead of vanilla Lua
 net-im/prosody:libevent - Use libevent for event handling
 net-im/prosody:zlib - Support for compressing XMPP streams with mod_compression
-net-im/psi:enchant - Use enchant spell engine instead of aspell
-net-im/psi:extras - Enables extra non official patches
+net-im/psi:aspell - Enable spellchecking using app-text/aspell
+net-im/psi:enchant - Enable spellchecking using app-text/enchant
+net-im/psi:extras - Enable Psi+ patcheset
+net-im/psi:hunspell - Enable spellchecking using app-text/hunspell
 net-im/psi:iconsets - Install additional iconsets, some of them has not clear licensing
-net-im/psi:plugins - Enable plugins support
-net-im/psi:powersave - Disable some non critical timers for much less CPU usage
+net-im/psi:sql - Enable psi-new-history extras patch
+net-im/psi:webengine - Use dev-qt/qtwebengine instead of dev-qt/qtwebkit
+net-im/psi:webkit - Enable themed, html-based chatlogs
 net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
-net-im/psi:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/psimedia:demo - build simple test application for the PsiMedia system
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface
