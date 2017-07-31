@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit php-pear-r1
+inherit php-pear-r2
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
@@ -18,6 +18,7 @@ DEPEND=""
 RDEPEND="|| ( dev-php/PEAR-MDB2 dev-php/PEAR-DB )
 	dev-php/PEAR-Date
 	!minimal? ( dev-php/PEAR-Validate )"
+DOCS=( docs/example.ini )
 
 src_prepare() {
 	# Don't install this batch file -- it winds up in ${EPREFIX}/usr/bin.
