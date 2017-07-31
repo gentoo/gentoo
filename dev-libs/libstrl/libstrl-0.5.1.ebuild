@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit autotools-utils multilib
 
-DESCRIPTION="Compat library for functions like strlcpy(), strlcat(), strnlen(), getline(), and asprintf()"
+DESCRIPTION="Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()"
 HOMEPAGE="http://ohnopub.net/~ohnobinki/libstrl/"
 SRC_URI="ftp://mirror.ohnopub.net/mirror/${P}.tar.bz2"
 
