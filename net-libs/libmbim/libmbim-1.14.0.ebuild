@@ -7,7 +7,7 @@ inherit multilib
 
 DESCRIPTION="Mobile Broadband Interface Model (MBIM) modem protocol helper library"
 HOMEPAGE="https://cgit.freedesktop.org/libmbim/"
-SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+SRC_URI="https://www.freedesktop.org/software/libmbim/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
