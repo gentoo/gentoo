@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT"
+DESCRIPTION="Abstract Data Types. Includes queue, dynamic array, hash and key value ADT"
 HOMEPAGE="http://horms.net/projects/vanessa/"
 SRC_URI="http://horms.net/projects/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
