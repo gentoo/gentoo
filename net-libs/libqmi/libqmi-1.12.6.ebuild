@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,10 +6,10 @@ EAPI="5"
 inherit multilib
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
-	EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libqmi.git"
 else
 	KEYWORDS="amd64 arm ~mips x86"
-	SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+	SRC_URI="https://www.freedesktop.org/software/libqmi/${P}.tar.xz"
 fi
 
 DESCRIPTION="QMI modem protocol helper library"
