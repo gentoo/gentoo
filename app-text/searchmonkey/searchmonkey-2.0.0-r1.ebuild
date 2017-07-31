@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit qt4-r2
+inherit eutils qmake-utils
 
 MY_PN=${PN}2
 MY_P=${PN}_v${PV}
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/S${MY_PN:1}/${PV}%20%5Bstable%5D/${M
 
 LICENSE="GPL-3"
 SLOT="2"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -30,6 +30,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc4.7.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 )
+
+src_compile() {
+	eqmake4
+}
 
 src_install() {
 	newbin ${PN} ${MY_PN}
