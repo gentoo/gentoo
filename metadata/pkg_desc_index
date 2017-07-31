@@ -4751,7 +4751,7 @@ dev-libs/injeqt 1.0.1 1.1.0 1.2.0: Dependency injection framework for Qt5
 dev-libs/intel-common 13.1.5.192 14.0.3.174 15.0.6.233: Common libraries and utilities needed for Intel compilers and libraries
 dev-libs/isl 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1 0.17.1 0.18: A library for manipulating integer points bounded by linear constraints
 dev-libs/jansson 2.9 2.10: C library for encoding, decoding and manipulating JSON data
-dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.4.0 4.5.0: Jemalloc is a general-purpose scalable concurrent allocator
+dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.4.0 4.5.0 5.0.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12: A JSON implementation in C
 dev-libs/json-glib 1.2.8: Library providing GLib serialization and deserialization for the JSON format
@@ -7487,8 +7487,8 @@ dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.15: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9: Test vectors for the cryptography package
+dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
@@ -17525,7 +17525,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for par
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kubectl 1.6.6 1.7.0 1.7.1 1.7.2: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.7.2: CLI to run commands against Kubernetes clusters
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
