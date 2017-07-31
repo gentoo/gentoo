@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Psi is a very good XMPP client that uses QT</longdescription>
+	<longdescription>Psi is a very good XMPP client that uses Qt</longdescription>
 	<use>
 		<flag name='aspell'>Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
 		<flag name='enchant'>Enable spellchecking using <pkg>app-text/enchant</pkg></flag>

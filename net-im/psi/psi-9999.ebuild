@@ -20,8 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql ssl xscreensaver
-whiteboarding webengine webkit"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql ssl webengine webkit whiteboarding xscreensaver"
 
 # qconf generates not quite compatible configure scripts
 QA_CONFIGURE_OPTIONS=".*"
@@ -35,13 +34,18 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-crypt/qca:2[qt5]
-	dev-qt/qtgui:5
-	dev-qt/qtxml:5
 	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	net-dns/libidn
 	sys-libs/zlib[minizip]
+	x11-libs/libX11
+	x11-libs/libxcb
 	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( >=app-text/enchant-1.3.0 )
@@ -49,23 +53,25 @@ RDEPEND="
 		sql? ( dev-qt/qtsql:5 )
 	)
 	hunspell? ( app-text/hunspell:= )
-	webengine? ( >=dev-qt/qtwebengine-5.7:5[widgets] )
+	webengine? (
+		>=dev-qt/qtwebchannel-5.7:5[widgets]
+		>=dev-qt/qtwebengine-5.7:5[widgets]
+	)
 	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	extras? (
-		>=sys-devel/qconf-2.3
-	)
+	extras? ( >=sys-devel/qconf-2.3 )
 "
 PDEPEND="
 	crypt? ( app-crypt/qca[gpg] )
 	ssl? ( app-crypt/qca:2[ssl] )
 "
+
 RESTRICT="test iconsets? ( bindist )"
 
 pkg_setup() {
@@ -146,7 +152,7 @@ src_configure() {
 
 	use debug && CONF+=("--debug")
 	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
-	use webkit && CONF+=("--enable-webkit" "--with-webkit=qwebkit")
+	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
 
 	econf "${CONF[@]}"
 
@@ -168,7 +174,7 @@ src_install() {
 	newdoc certs/README README.certs
 	dodoc README
 
-	local HTML_DOCS=( doc/api )
+	use doc && HTML_DOCS=( doc/api/. )
 	einstalldocs
 
 	# install translations
