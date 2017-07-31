@@ -56,7 +56,7 @@ pkg_setup()	{
 	if use modules; then
 		get_version
 		check_modules_supported
-		CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK ~CONNECTOR UNUSED_SYMBOLS"
+		CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK ~CONNECTOR"
 		ERROR_CONNECTOR="Please, enable CONFIG_CONNECTOR if you wish to receive userspace notifications from pknock through netlink/connector"
 		linux-mod_pkg_setup
 
