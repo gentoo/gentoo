@@ -1,0 +1,49 @@
+diff -Naurp libtirpc-1.0.2.orig/src/auth_time.c libtirpc-1.0.2/src/auth_time.c
+--- libtirpc-1.0.2.orig/src/auth_time.c	2017-07-05 11:02:23.000000000 -0400
++++ libtirpc-1.0.2/src/auth_time.c	2017-07-30 17:48:31.361420071 -0400
+@@ -104,7 +104,7 @@ static int uaddr_to_sockaddr(uaddr, sin)
+ 	p_bytes[1] = (unsigned char)a[5] & 0x000000FF;
+ 
+ 	sin->sin_family = AF_INET; /* always */
+-	bcopy((char *)&p_bytes, (char *)&sin->sin_port, 2);
++	memmove((char *)&sin->sin_port, (char *)&p_bytes, 2);
+ 
+ 	return (0);
+ }
+diff -Naurp libtirpc-1.0.2.orig/src/crypt_client.c libtirpc-1.0.2/src/crypt_client.c
+--- libtirpc-1.0.2.orig/src/crypt_client.c	2017-07-05 11:02:23.000000000 -0400
++++ libtirpc-1.0.2/src/crypt_client.c	2017-07-30 17:49:57.911419445 -0400
+@@ -75,8 +75,8 @@ _des_crypt_call(buf, len, dparms)
+ 	des_crypt_1_arg.desbuf.desbuf_val = buf;
+ 	des_crypt_1_arg.des_dir = dparms->des_dir;
+ 	des_crypt_1_arg.des_mode = dparms->des_mode;
+-	bcopy(dparms->des_ivec, des_crypt_1_arg.des_ivec, 8);
+-	bcopy(dparms->des_key, des_crypt_1_arg.des_key, 8);
++	memmove(des_crypt_1_arg.des_ivec, dparms->des_ivec, 8);
++	memmove(des_crypt_1_arg.des_key, dparms->des_key, 8);
+ 
+ 	result_1 = des_crypt_1(&des_crypt_1_arg, clnt);
+ 	if (result_1 == (desresp *) NULL) {
+@@ -88,8 +88,8 @@ _des_crypt_call(buf, len, dparms)
+ 
+ 	if (result_1->stat == DESERR_NONE ||
+ 	    result_1->stat == DESERR_NOHWDEVICE) {
+-		bcopy(result_1->desbuf.desbuf_val, buf, len);
+-		bcopy(result_1->des_ivec, dparms->des_ivec, 8);
++		memmove(buf, result_1->desbuf.desbuf_val, len);
++		memmove(dparms->des_ivec, result_1->des_ivec, 8);
+ 	}
+ 
+ 	clnt_freeres(clnt, (xdrproc_t)xdr_desresp, result_1);
+diff -Naurp libtirpc-1.0.2.orig/src/svc_auth_des.c libtirpc-1.0.2/src/svc_auth_des.c
+--- libtirpc-1.0.2.orig/src/svc_auth_des.c	2017-07-05 11:02:23.000000000 -0400
++++ libtirpc-1.0.2/src/svc_auth_des.c	2017-07-30 17:50:36.591419165 -0400
+@@ -145,7 +145,7 @@ _svcauth_des(rqst, msg)
+ 			return (AUTH_BADCRED);
+ 		}
+ 		cred->adc_fullname.name = area->area_netname;
+-		bcopy((char *)ixdr, cred->adc_fullname.name, 
++		memmove(cred->adc_fullname.name, (char *)ixdr,
+ 			(u_int)namelen);
+ 		cred->adc_fullname.name[namelen] = 0;
+ 		ixdr += (RNDUP(namelen) / BYTES_PER_XDR_UNIT);
