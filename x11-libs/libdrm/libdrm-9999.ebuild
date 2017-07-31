@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,9 +9,9 @@ inherit xorg-2
 DESCRIPTION="X.Org libdrm library"
 HOMEPAGE="https://dri.freedesktop.org/"
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/mesa/drm"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/drm.git"
 else
-	SRC_URI="https://dri.freedesktop.org/${PN}/${P}.tar.bz2"
+	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.bz2"
 fi
 
 KEYWORDS=""
