@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Repackage the OCaml compiler libraries so they do not expose everything at toplevel"
+DESCRIPTION="Repackage the OCaml compiler libs so they do not expose everything at toplevel"
 HOMEPAGE="https://github.com/janestreet/ocaml-compiler-libs"
 SRC_URI="https://github.com/janestreet/ocaml-compiler-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
