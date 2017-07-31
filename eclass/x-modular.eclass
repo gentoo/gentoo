@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
 # DEPRECATED
@@ -97,7 +97,7 @@ if [[ -z ${MODULE} ]]; then
 fi
 
 if [[ -n ${GIT_ECLASS} ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/xorg/${MODULE}/${PN}"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/${MODULE}/${PN}.git"
 else
 	SRC_URI="${SRC_URI} ${BASE_INDIVIDUAL_URI}/${MODULE}/${P}.tar.bz2"
 fi
