@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
@@ -273,7 +273,7 @@ systemd_enable_service() {
 # Uses doins, thus it is fatal in EAPI 4 and non-fatal in earlier
 # EAPIs.
 #
-# Doc: http://www.freedesktop.org/wiki/Software/systemd/timedated/
+# Doc: https://www.freedesktop.org/wiki/Software/systemd/timedated/
 systemd_enable_ntpunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 	if [[ ${#} -lt 2 ]]; then
@@ -357,7 +357,7 @@ systemd_with_utildir() {
 # If systemd is not installed, no operation will be done. The catalog
 # will be (re)built once systemd is installed.
 #
-# See: http://www.freedesktop.org/wiki/Software/systemd/catalog
+# See: https://www.freedesktop.org/wiki/Software/systemd/catalog
 systemd_update_catalog() {
 	debug-print-function ${FUNCNAME} "${@}"
 
