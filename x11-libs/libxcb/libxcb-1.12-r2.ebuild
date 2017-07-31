@@ -13,7 +13,7 @@ inherit python-any-r1 xorg-2
 
 DESCRIPTION="X C-language Bindings library"
 HOMEPAGE="https://xcb.freedesktop.org/"
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/libxcb"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/libxcb.git"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 
