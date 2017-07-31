@@ -7,7 +7,7 @@ SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SCM=git-r3
 	EGIT_BRANCH=master
-	EGIT_REPO_URI="https://github.com/01org/libva"
+	EGIT_REPO_URI="https://github.com/01org/libva.git"
 fi
 
 AUTOTOOLS_AUTORECONF="yes"
