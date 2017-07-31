@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools bash-completion-r1 eutils linux-info multilib multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
+	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
 	patchset=
