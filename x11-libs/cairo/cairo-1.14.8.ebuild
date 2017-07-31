@@ -7,15 +7,15 @@ inherit eutils flag-o-matic autotools multilib-minimal
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/cairo"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/cairo"
 	SRC_URI=""
 else
-	SRC_URI="http://cairographics.org/releases/${P}.tar.xz"
+	SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
-HOMEPAGE="http://cairographics.org/"
+HOMEPAGE="https://www.cairographics.org"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="X aqua debug directfb gles2 +glib opengl static-libs +svg valgrind xcb"
