@@ -3,12 +3,12 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libcdr/"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libcdr.git"
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing the Corel cdr documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://dev-www.libreoffice.org/src/libcdr/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
