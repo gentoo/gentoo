@@ -1023,7 +1023,7 @@ app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.0.0386 8.0.0386-r1 9999: GUI version of the Vim text editor
-app-editors/hexcurse 1.55: ncurses based hex editor
+app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
 app-editors/jasspa-microemacs 20091011-r2: Jasspa Microemacs
@@ -1500,7 +1500,7 @@ app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
 app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.12 1.5.15: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.12 1.5.15 1.5.16: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
