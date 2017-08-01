@@ -13,23 +13,20 @@ SRC_URI="https://github.com/ibus/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="deprecated nls"
+IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	app-i18n/anthy
 	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
-	deprecated? ( dev-python/pygtk )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	deprecated? ( dev-lang/swig )
 	nls? ( sys-devel/gettext )"
 
 src_configure() {
 	econf \
-		$(use_enable deprecated pygtk2-anthy) \
 		$(use_enable nls) \
 		--enable-private-png \
 		--with-layout=default
