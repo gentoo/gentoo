@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>jaquilina@eagleeyet.net</email>
     <name>Jonathan Aquilina</name>
-    <description>Please assign bugs</description>
   </maintainer>
   <maintainer type="person">
     <email>aballier@gentoo.org</email>
@@ -13,11 +12,6 @@
   <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
-    <description>proxy-maintainer, please CC on bugs</description>
-  </maintainer>
-  <maintainer type="person">
-    <email>gimpel@sonnenkinder.org</email>
-    <name>Thomas Kuther</name>
   </maintainer>
   <maintainer type="project">
     <email>proaudio@gentoo.org</email>
