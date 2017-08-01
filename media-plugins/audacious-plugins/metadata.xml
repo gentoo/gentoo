@@ -12,6 +12,7 @@
 <use>
 	<flag name="adplug">Build with AdPlug (Adlib sound card emulation)
 		support</flag>
+	<flag name="aosd">Enable support for Audacious OSD</flag>
 	<flag name="bs2b">Enable Bauer Bauer stereophonic-to-binaural
 		headphone filter</flag>
 	<flag name="cue">Support CUE sheets using the libcue library</flag>
