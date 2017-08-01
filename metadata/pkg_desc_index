@@ -18831,7 +18831,7 @@ x11-misc/compton 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
-x11-misc/dex 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
+x11-misc/dex 0.7 0.8.0: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 4.7 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
 x11-misc/driconf 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
