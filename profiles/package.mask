@@ -400,10 +400,6 @@ app-misc/gnomecatalog
 dev-libs/djb
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#622842) and many other bugs, removal in a month.
-app-emulation/fuse
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Not compatible with new perl, not needed by anything in the tree (#623214,
 # #623216), removal in a month.
 app-backup/snapback2
