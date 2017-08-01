@@ -16,12 +16,13 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X"
 RESTRICT="test"
-REQUIRED_USE="|| ( gtk gtk3 X )
-	deprecated? ( python )
-	vala? ( introspection )
+REQUIRED_USE="deprecated? ( python )
 	python? (
 		${PYTHON_REQUIRED_USE}
-		|| ( deprecated ( gtk3 introspection ) ) )" #342903
+		|| ( deprecated gtk3 )
+		gtk3? ( introspection )
+	)
+	vala? ( introspection )"
 
 CDEPEND="app-text/iso-codes
 	dev-libs/glib:2
