@@ -765,9 +765,8 @@ app-i18n/fcitx-configtool:gtk3 - Use GTK+3 instead of 2
 app-i18n/fcitx-libpinyin:dictmanager - Enable dictionary manager. Requires dev-qt/qtwebkit.
 app-i18n/fcitx-unikey:macro-editor - Install macro editor
 app-i18n/freewnn:uum - Build uum
-app-i18n/ibus:deprecated - install the deprecated ibus python library
 app-i18n/ibus:gconf - Enable support for gnome-base/gconf
-app-i18n/ibus:gtk3 - Enable support for gtk+3
+app-i18n/ibus:gtk2 - Enable support for x11-libs/gtk+:2
 app-i18n/ibus-handwrite:zinnia - Build with app-i18n/zinnia engine.
 app-i18n/ibus-libpinyin:boost - Compile against dev-libs/boost libraries
 app-i18n/ibus-libpinyin:opencc - Enable support for app-i18n/opencc
