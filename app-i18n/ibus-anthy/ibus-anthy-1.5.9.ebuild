@@ -19,6 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	app-i18n/anthy
 	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
