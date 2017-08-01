@@ -15600,7 +15600,7 @@ net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta 
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/litecoind 0.10.2.2-r4 0.10.4.0: Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted.
+net-p2p/litecoind 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
