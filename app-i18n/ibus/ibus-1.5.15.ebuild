@@ -68,6 +68,10 @@ DEPEND="${CDEPEND}
 
 src_prepare() {
 	vala_src_prepare --ignore-use
+	# disable emoji
+	touch \
+		tools/main.vala \
+		ui/gtk3/panel.vala
 	if ! use libnotify; then
 		touch ui/gtk3/panel.vala
 	fi
