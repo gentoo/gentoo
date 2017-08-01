@@ -768,7 +768,6 @@ app-i18n/freewnn:uum - Build uum
 app-i18n/ibus:deprecated - install the deprecated ibus python library
 app-i18n/ibus:gconf - Enable support for gnome-base/gconf
 app-i18n/ibus:gtk3 - Enable support for gtk+3
-app-i18n/ibus-anthy:deprecated - Install deprecated pygtk2 library
 app-i18n/ibus-handwrite:zinnia - Build with app-i18n/zinnia engine.
 app-i18n/ibus-libpinyin:boost - Compile against dev-libs/boost libraries
 app-i18n/ibus-libpinyin:opencc - Enable support for app-i18n/opencc
