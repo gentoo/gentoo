@@ -34,7 +34,7 @@ src_prepare() {
 
 src_configure() {
 	# We don't want the script to detect /bin/sh if it is bash.
-	export ac_cv_path_BASH=/bin/bash
+	export ac_cv_path_BASH=${BASH}
 	has_version sys-apps/util-linux || export GETOPT=getopt-long
 	econf
 }
