@@ -14,8 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE="gconf +gtk +gtk2 +introspection nls +python test vala wayland +X"
-REQUIRED_USE="python? (
+IUSE="gconf +gtk +gtk2 +introspection +libnotify nls +python test vala wayland +X"
+REQUIRED_USE="libnotify? ( gtk )
+	python? (
 		${PYTHON_REQUIRED_USE}
 		gtk
 		introspection
@@ -28,7 +29,6 @@ CDEPEND="app-text/iso-codes
 	gnome-base/dconf
 	gnome-base/librsvg:2
 	sys-apps/dbus[X?]
-	x11-libs/libnotify
 	gconf? ( gnome-base/gconf:2 )
 	gtk? (
 		x11-libs/gtk+:3
@@ -37,6 +37,7 @@ CDEPEND="app-text/iso-codes
 		gtk2? ( x11-libs/gtk+:2 )
 	)
 	introspection? ( dev-libs/gobject-introspection )
+	libnotify? ( x11-libs/libnotify )
 	nls? ( virtual/libintl )
 	python? (
 		${PYTHON_DEPS}
@@ -60,13 +61,16 @@ RDEPEND="${CDEPEND}
 		)
 	)"
 DEPEND="${CDEPEND}
+	$(vala_depend)
 	dev-util/intltool
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-	vala? ( $(vala_depend) )"
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
-	use vala && vala_src_prepare
+	vala_src_prepare --ignore-use
+	if ! use libnotify; then
+		touch ui/gtk3/panel.vala
+	fi
 	# for multiple Python implementations
 	sed -i "s/^\(PYGOBJECT_DIR =\).*/\1/" bindings/Makefile.am
 	# fix for parallel install
@@ -105,6 +109,7 @@ src_configure() {
 		$(use_enable gtk ui) \
 		$(use_enable gtk2) \
 		$(use_enable introspection) \
+		$(use_enable libnotify) \
 		$(use_enable nls) \
 		$(use_enable test tests) \
 		$(use_enable vala) \
