@@ -4,10 +4,10 @@
 EAPI=6
 
 EGO_PN="github.com/drone/drone"
-EGIT_COMMIT="aadcde2b2c3e5e9617f3f71a797e8d97ac15700e"
-EGO_VENDOR=( "github.com/drone/drone-ui 2b88ed1713f15e295b11b90d64b270ac23ff40a8"
-	"github.com/golang/protobuf 0a4f71a498b7c4812f64969510bcb4eca251e33a"
-	"golang.org/x/net ab5485076ff3407ad2d02db054635913f017b0ed github.com/golang/net" )
+EGIT_COMMIT="dba37018f4d97cc9bd3edf99664ce71efe094d3a"
+EGO_VENDOR=( "github.com/drone/drone-ui cd57afd5f7873e5fe0db2cd1b817588f87c8937a"
+	"github.com/golang/protobuf 748d386b5c1ea99658fd69fe9f03991ce86a90c1"
+	"golang.org/x/net f5079bd7f6f74e23c4d65efa0f4ce14cbd6a3c0f github.com/golang/net" )
 
 inherit golang-build golang-vcs-snapshot user
 
