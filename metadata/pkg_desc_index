@@ -1596,7 +1596,9 @@ app-i18n/translate-shell 0.9.6.2: Online command-line translator
 app-i18n/uchardet 0.0.6 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
+app-i18n/unicode-cldr 31.0.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0 10.0.0: Unicode data from unicode.org
+app-i18n/unicode-emoji 5.0: UTR #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r2 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 2.0.3-r3 2.0.4_pre20130108: The SunPinyin IMEngine Wrapper for XIM Framework
 app-i18n/xvnkb 0.2.8a-r1 0.2.9a-r1: Vietnamese input keyboard for X
@@ -17600,7 +17602,7 @@ sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for 
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.1-r100 4.0.1 5.0.9999 9999: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.0 3.9.1 4.0.1 5.0.9999 9999: Meta-ebuild for clang runtime libraries
-sys-devel/cons 2.2.0: Extensible perl-based build utility
+sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 20160602-r1 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.22.0 1.23.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
