@@ -4523,7 +4523,7 @@ dev-lang/confluence 0.10.6: Functional programming language for reactive system 
 dev-lang/crystal 0.21.1 0.22.0 0.23.0 0.23.0-r1 0.23.1: The Crystal Programming Language
 dev-lang/duktape 2.1.0: Embeddable Javascript engine
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
-dev-lang/elixir 1.3.0-r1 1.4.4 1.4.5 1.5.0: Elixir programming language
+dev-lang/elixir 1.3.0-r1 1.4.4 1.4.5 1.5.0 1.5.1: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 18.3 19.1 19.3 20.0: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
@@ -8700,7 +8700,7 @@ dev-python/scp 0.10.2: scp module for paramiko
 dev-python/scrapy 1.0.3: A high-level Python Screen Scraping framework
 dev-python/scripttest 1.2-r1 1.3.0: A very small text templating language
 dev-python/scrypt 0.8.0: Bindings for the scrypt key derivation function library
-dev-python/sdnotify 0.3.1: A pure Python implementation of systemd's service notification protocol (sd_notify)
+dev-python/sdnotify 0.3.1: Python implementation of systemd's service notification protocol (sd_notify)
 dev-python/seaborn 0.7.1: Statistical data visualization
 dev-python/secretstorage 2.3.1: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selectors34 1.1: Backport of the selectors module from Python 3.4
@@ -18409,7 +18409,7 @@ www-client/firefox 45.8.0 52.1.0-r1 52.2.0 53.0.3 54.0.1: Firefox Web Browser
 www-client/firefox-bin 52.2.0 54.0.1: Firefox Web Browser
 www-client/google-chrome 60.0.3112.78: The web browser from Google
 www-client/google-chrome-beta 60.0.3112.78: The web browser from Google
-www-client/google-chrome-unstable 61.0.3163.13: The web browser from Google
+www-client/google-chrome-unstable 61.0.3163.25: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18458,7 +18458,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.137: Adobe Flash Player
-www-plugins/chrome-binary-plugins 60.0.3112.78_beta 60.0.3112.78 61.0.3163.13_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.78_beta 60.0.3112.78 61.0.3163.25_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
