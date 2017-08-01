@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="cups dbus gtk l10n_de static-libs tiff unicode X"
+IUSE="cups dbus gtk l10n_de openjpeg static-libs tiff unicode X"
 
 COMMON_DEPEND="
 	app-text/libpaper
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	media-libs/jbig2dec
 	>=media-libs/lcms-2.6:2
 	>=media-libs/libpng-1.6.2:0=
-	>=media-libs/openjpeg-2.1.0:2=
+	openjpeg? ( >=media-libs/openjpeg-2.1.0:2= )
 	>=sys-libs/zlib-1.2.7:=
 	virtual/jpeg:0
 	cups? ( >=net-print/cups-1.3.8 )
@@ -85,6 +85,7 @@ src_prepare() {
 	# apply various patches, many borrowed from Fedora
 	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
 	eapply "${WORKDIR}/patches/"*.patch
+	eapply "${WORKDIR}/ghostscript-gpl-9.21-disable-openjpeg-build.patch"
 
 	if ! use gtk ; then
 		sed -i -e "s:\$(GSSOX)::" \
@@ -142,7 +143,6 @@ src_configure() {
 		--enable-dynamic \
 		--enable-freetype \
 		--enable-fontconfig \
-		--enable-openjpeg \
 		--disable-compile-inits \
 		--with-drivers=ALL \
 		--with-fontpath="$FONTPATH" \
@@ -153,6 +153,7 @@ src_configure() {
 		$(use_enable cups) \
 		$(use_enable dbus) \
 		$(use_enable gtk) \
+		$(use_enable openjpeg) \
 		$(use_with cups pdftoraster) \
 		$(use_with unicode libidn) \
 		$(use_with tiff system-libtiff) \

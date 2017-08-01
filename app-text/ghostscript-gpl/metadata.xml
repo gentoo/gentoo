@@ -11,5 +11,6 @@
 	</upstream>
 	<use>
 		<flag name="unicode">Add support for unicode passwords via <pkg>net-dns/libidn</pkg></flag>
+		<flag name="openjpeg">Add support for JPX decoding via <pkg>media-libs/openjpeg</pkg></flag>
 	</use>
 </pkgmetadata>
