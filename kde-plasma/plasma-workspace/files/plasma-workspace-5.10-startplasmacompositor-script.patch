@@ -1,0 +1,40 @@
+From a9b685f0dab7f21dfa3ed55011c035bab1c972d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Pekkarinen?= <koalinux@gmail.com>
+Date: Tue, 1 Aug 2017 23:09:24 +0300
+Subject: [PATCH] Source files in /etc/plasma/{startup,shutdown}
+
+---
+ startkde/startplasmacompositor.cmake | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/startkde/startplasmacompositor.cmake b/startkde/startplasmacompositor.cmake
+index 5bcf26a..e965f19 100644
+--- a/startkde/startplasmacompositor.cmake
++++ b/startkde/startplasmacompositor.cmake
+@@ -157,6 +157,11 @@ for prefix in `echo $scriptpath`; do
+   done
+ done
+
++# Gentoo part for FHS installs
++for file in "@GENTOO_PORTAGE_EPREFIX@/etc/plasma/startup/"*.sh; do
++  test -r "${file}" && . "${file}"
++done
++
+ echo 'startplasmacompositor: Starting up...'  1>&2
+
+ # Make sure that the KDE prefix is first in XDG_DATA_DIRS and that it's set at all.
+@@ -232,6 +237,11 @@ fi
+
+ echo 'startplasmacompositor: Shutting down...'  1>&2
+
++# Gentoo part for FHS installs
++for file in "@GENTOO_PORTAGE_EPREFIX@/etc/plasma/shutdown/"*.sh; do
++  test -r "${file}" && . "${file}"
++done
++
+ unset KDE_FULL_SESSION
+ xprop -root -remove KDE_FULL_SESSION
+ unset KDE_SESSION_VERSION
+--
+2.13.0
+
