@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,7 @@ IUSE="debug doc examples pedro qt4 readline threads"
 RDEPEND="
 	!dev-util/mpatch
 	!dev-util/rej
+	!games-rpg/kqlives
 	qt4? ( dev-qt/qtgui:4 )
 	pedro? ( net-misc/pedro )
 	readline? ( app-misc/rlwrap )"
