@@ -8615,6 +8615,7 @@ x11-terms/hanterm:utempter - Records user logins. Useful on multi-user systems
 x11-terms/mate-terminal:gtk3 - Build with GTK+3 instead of GTK+2
 x11-terms/mlterm:fcitx - Enable support for app-i18n/fcitx
 x11-terms/mlterm:gtk2 - Build with x11-libs/gtk+:2 instead of x11-libs/gtk+:3
+x11-terms/mlterm:harfbuzz - Enable support for OpenType Layout (media-libs/harfbuzz)
 x11-terms/mlterm:ibus - Enable support for app-i18n/ibus
 x11-terms/mlterm:libssh2 - Enable support for net-libs/libssh2
 x11-terms/mlterm:regis - Enable support for ReGIS

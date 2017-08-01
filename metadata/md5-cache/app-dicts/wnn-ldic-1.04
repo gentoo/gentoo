@@ -1,12 +1,11 @@
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=app-i18n/freewnn
 DESCRIPTION=Wnn dictionary for librarian
-EAPI=0
-HOMEPAGE=http://www.tulips.tsukuba.ac.jp/misc/export/cat/ldic/
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~amd64 ~x86
 LICENSE=HPND
-RDEPEND=app-i18n/freewnn
 SLOT=0
-SRC_URI=http://www.tulips.tsukuba.ac.jp/misc/export/cat/ldic/ldic-1.04-wnn.txt
+SRC_URI=mirror://gentoo/ldic-1.04-wnn.txt
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_install:-
-_md5_=5cd71f47441fce3d7bcb2f0e42c393e4
+_md5_=9137555a948f55afd532d8b751f4ab00
