@@ -4,8 +4,8 @@
 EAPI="5"
 
 DESCRIPTION="virtual Common Access Card (CAC) library emulator"
-HOMEPAGE="http://spice-space.org/"
-SRC_URI="http://spice-space.org/download/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.spice-space.org/"
+SRC_URI="https://www.spice-space.org/download/libcacard/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
