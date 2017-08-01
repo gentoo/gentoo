@@ -4359,8 +4359,8 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.131 1.8.0.141 1.8.0.144: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.8.0.131 1.8.0.141 1.8.0.144: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.8.0.131 1.8.0.144: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.8.0.131 1.8.0.144: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
@@ -7266,7 +7266,7 @@ dev-python/Babel 2.1.1 2.3.4 2.4.0: Collection of tools for internationalizing P
 dev-python/BitVector 3.4.4 3.4.6: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 2.0.1: Jinja2 adapter for Django
-dev-python/CommonMark 0.5.4: Python parser for the CommonMark Markdown spec
+dev-python/CommonMark 0.5.4 0.7.3: Python parser for the CommonMark Markdown spec
 dev-python/CoverageTestRunner 1.9-r1 1.10 1.11: fail Python program unit tests unless they test everything
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
