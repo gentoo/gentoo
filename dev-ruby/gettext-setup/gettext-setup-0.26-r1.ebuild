@@ -30,7 +30,8 @@ ruby_add_rdepend "
 "
 
 all_ruby_prepare() {
-	sed -i -e 's/1.1.0/1.1/' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e 's/1.1.0/1.1/' \
+		-e "s/spec.version.*$/spec.version = '${PV}'/" ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
 
