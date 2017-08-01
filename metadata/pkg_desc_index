@@ -8042,6 +8042,7 @@ dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network add
 dev-python/netcdf4-python 1.2.2: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.4 0.10.5: Portable network interface information
 dev-python/netlib 0.10 0.10.1 0.11.1 0.11.2 0.12.0: Collection of network utility classes used by pathod and mitmproxy
+dev-python/netmiko 1.4.2: Multi-vendor library to simplify Paramiko SSH connections to network devices
 dev-python/networkx 1.10-r1 1.11: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 0.0.2 0.4.0 1.1.0: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1 0.14.2: A web templating framework that provides LivePage, an automatic AJAX toolkit
