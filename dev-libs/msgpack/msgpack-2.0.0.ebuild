@@ -29,6 +29,10 @@ DEPEND="
 
 DOCS=( README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.0-gcc7-implicit-fallthrough.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 	    -DMSGPACK_ENABLE_CXX=$(usex cxx)
