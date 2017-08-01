@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="A panel plug-in to control MPRIS2 compatible players like Pragha (from the same authors)"
+DESCRIPTION="A panel plug-in to control MPRIS2 compatible players like Pragha"
 HOMEPAGE="https://github.com/matiasdelellis/xfce4-soundmenu-plugin"
 SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
