@@ -15,12 +15,14 @@ KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~sparc-solaris"
 
 RDEPEND="
 	!dev-libs/tre
+	!dev-ruby/amatch
 	!app-misc/glimpse"
 
 DOCS=( README agrep.algorithms agrep.chronicle COPYRIGHT contribution.list )
 
 src_compile() {
-	sed -i -e 's/^CFLAGS.*//' \
+	sed -i \
+		-e 's/^CFLAGS.*//' \
 		-e "s:\$(CFLAGS):& \$(LDFLAGS) :" Makefile || die
 	tc-export CC
 	emake
