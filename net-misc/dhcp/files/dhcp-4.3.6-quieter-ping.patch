@@ -1,0 +1,66 @@
+--- dhcp-4.3.6/client/scripts/bsdos
++++ dhcp-4.3.6/client/scripts/bsdos
+@@ -220,7 +220,7 @@
+   sleep 1
+   if [ "$new_routers" != "" ]; then
+     set $new_routers
+-    if ping -q -c 1 -w 1 $1; then
++    if ping -q -c 1 -w 1 $1 >/dev/null; then
+       if [ x$new_ip_address != x$alias_ip_address ] && \
+ 			[ x$alias_ip_address != x ]; then
+ 	ifconfig $interface inet alias $alias_ip_address $alias_subnet_arg
+--- dhcp-4.3.6/client/scripts/freebsd
++++ dhcp-4.3.6/client/scripts/freebsd
+@@ -287,7 +287,7 @@
+   if [ -n "$new_routers" ]; then
+     $LOGGER "New Routers: $new_routers"
+     set -- $new_routers
+-    if ping -q -c 1 $1; then
++    if ping -q -c 1 $1 >/dev/null; then
+       if [ x$new_ip_address != x$alias_ip_address ] && \
+ 			[ x$alias_ip_address != x ]; then
+ 	ifconfig $interface inet alias $alias_ip_address $alias_subnet_arg
+--- dhcp-4.3.6/client/scripts/linux
++++ dhcp-4.3.6/client/scripts/linux
+@@ -311,7 +311,7 @@
+         fi
+ 
+         # if there is no router recorded in the lease or the 1st router answers pings
+-        if [ -z "$new_routers" ] || ping -q -c 1 "${new_routers%% *}"; then
++        if [ -z "$new_routers" ] || ping -q -c 1 "${new_routers%% *}" >/dev/null; then
+ 	    # if we have $new_rfc3442_classless_static_routes then we have to
+ 	    # ignore $new_routers entirely
+ 	    if [ ! "$new_rfc3442_classless_static_routes" ]; then
+--- dhcp-4.3.6/client/scripts/netbsd
++++ dhcp-4.3.6/client/scripts/netbsd
+@@ -220,7 +220,7 @@
+   sleep 1
+   if [ "$new_routers" != "" ]; then
+     set $new_routers
+-    if ping -q -c 1 -w 1 $1; then
++    if ping -q -c 1 -w 1 $1 >/dev/null; then
+       if [ x$new_ip_address != x$alias_ip_address ] && \
+ 			[ x$alias_ip_address != x ]; then
+ 	ifconfig $interface inet alias $alias_ip_address $alias_subnet_arg
+--- dhcp-4.3.6/client/scripts/openbsd
++++ dhcp-4.3.6/client/scripts/openbsd
+@@ -214,7 +214,7 @@
+   sleep 1
+   if [ "$new_routers" != "" ]; then
+     set $new_routers
+-    if ping -q -c 1 -w 1 $1; then
++    if ping -q -c 1 -w 1 $1 >/dev/null; then
+       if [ x$new_ip_address != x$alias_ip_address ] && \
+ 			[ x$alias_ip_address != x ]; then
+ 	ifconfig $interface inet alias $alias_ip_address $alias_subnet_arg
+--- dhcp-4.3.6/client/scripts/openwrt
++++ dhcp-4.3.6/client/scripts/openwrt
+@@ -190,7 +190,7 @@
+   ifconfig $interface $new_ip_address $new_subnet_arg \
+ 					$new_broadcast_arg $mtu_arg
+   set $new_routers
+-  if ping -q -c 1 $1; then
++  if ping -q -c 1 $1 >/dev/null; then
+     if [ x$new_ip_address != x$alias_ip_address ] && \
+ 			[ x$alias_ip_address != x ]; then
+       ifconfig $interface:0 $alias_ip_address $alias_subnet_arg
