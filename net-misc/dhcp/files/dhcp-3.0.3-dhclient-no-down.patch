@@ -1,5 +1,5 @@
---- client/scripts/linux
-+++ client/scripts/linux
+--- a/client/scripts/linux
++++ b/client/scripts/linux
 @@ -118,9 +118,9 @@
  if [ x$reason = xPREINIT ]; then
    if [ x$alias_ip_address != x ]; then
