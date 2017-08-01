@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Monitors a given set of directories for new files"
-HOMEPAGE="https://github.com/l3ib/fsniper/"
+HOMEPAGE="https://github.com/l3ib/fsniper"
 SRC_URI="http://projects.l3ib.org/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/libpcre
@@ -33,6 +33,5 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
+	default
 }
