@@ -1722,7 +1722,7 @@ app-misc/binwalk 2.1.1 9999: A tool for identifying files embedded inside firmwa
 app-misc/birthday 1.6.2 1.6.2-r1: Displays a list of events happening in the near future
 app-misc/blink1 1.98: blink(1) USB RGB LED status light control suite
 app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
-app-misc/boxes 1.1.2-r1 1.1.2-r2: Draw any kind of boxes around your text
+app-misc/boxes 1.1.2-r1 1.1.2-r2 1.1.2-r3: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.116 5.119: A set of profiles for the GNU Screen console window manager (app-misc/screen)
