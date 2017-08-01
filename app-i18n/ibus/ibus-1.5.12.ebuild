@@ -71,6 +71,11 @@ pkg_setup() {
 
 src_prepare() {
 	use vala && vala_src_prepare
+	# fix for parallel install
+	sed -i \
+		-e "/^py2_compile/,/^$/d" \
+		-e "/^install-data-hook/,/^$/d" \
+		bindings/pygobject/Makefile.am
 
 	sed -i "/^bash_completion/d" tools/Makefile.am
 
