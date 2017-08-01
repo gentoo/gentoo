@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools bash-completion-r1 gnome2-utils ltprune python-single-r1 vala virtualx
+inherit autotools bash-completion-r1 gnome2-utils ltprune python-r1 vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -14,12 +14,11 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE="deprecated gconf +gtk +gtk2 +introspection nls +python test vala wayland +X"
-REQUIRED_USE="deprecated? ( python )
-	python? (
+IUSE="gconf +gtk +gtk2 +introspection nls +python test vala wayland +X"
+REQUIRED_USE="python? (
 		${PYTHON_REQUIRED_USE}
-		|| ( deprecated gtk )
-		gtk? ( introspection )
+		gtk
+		introspection
 	)
 	test? ( gtk )
 	vala? ( introspection )"
@@ -56,10 +55,6 @@ CDEPEND="app-text/iso-codes
 	)"
 RDEPEND="${CDEPEND}
 	python? (
-		deprecated? (
-			dev-python/dbus-python[${PYTHON_USEDEP}]
-			dev-python/pygtk:2[${PYTHON_USEDEP}]
-		)
 		gtk? (
 			x11-libs/gtk+:3[introspection]
 		)
@@ -70,12 +65,10 @@ DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
 	vala? ( $(vala_depend) )"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	use vala && vala_src_prepare
+	# for multiple Python implementations
+	sed -i "s/^\(PYGOBJECT_DIR =\).*/\1/" bindings/Makefile.am
 	# fix for parallel install
 	sed -i \
 		-e "/^py2_compile/,/^$/d" \
@@ -97,8 +90,8 @@ src_prepare() {
 src_configure() {
 	local python_conf=()
 	if use python; then
+		python_setup
 		python_conf+=(
-			$(use_enable deprecated python-library)
 			$(use_enable gtk setup)
 			--with-python=${EPYTHON}
 		)
@@ -128,6 +121,16 @@ src_test() {
 src_install() {
 	default
 	prune_libtool_files --modules
+
+	if use python; then
+		python_install() {
+			emake -C bindings/pygobject \
+				pyoverridesdir="$(${EPYTHON} -c 'import gi; print(gi._overridesdir)')" \
+				DESTDIR="${D}" \
+				install
+		}
+		python_foreach_impl python_install
+	fi
 
 	keepdir /usr/share/ibus/engine
 
