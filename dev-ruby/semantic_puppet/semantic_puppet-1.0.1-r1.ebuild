@@ -9,6 +9,8 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md"
 
+RUBY_FAKEGEM_EXTRAINSTALL="locales"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Library of tools for working with Semantic Versions and module dependencies"
