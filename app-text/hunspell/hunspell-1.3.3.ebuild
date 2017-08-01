@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 
 # describe properly mi
 LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id
-is it km ku lt lv mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
+is it kk km ku lt lv mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
 
 PDEPEND="app-dicts/myspell-en"
 for lang in ${LANGS}; do
