@@ -149,6 +149,7 @@ pkg_postinst() {
 	use gtk2 && gnome2_query_immodules_gtk2
 	gnome2_icon_cache_update
 	gnome2_schemas_update
+	dconf update
 }
 
 pkg_postrm() {
