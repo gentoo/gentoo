@@ -21,7 +21,11 @@ src_unpack() {
 }
 
 src_compile() {
-	/usr/bin/Wnn4/atod lib.dic < "${DISTDIR}"/${A} || die
+	local atod=atod
+	if has_version "<app-i18n/freewnn-1.1.1_alpha23"; then
+		atod="${EPREFIX}"/usr/bin/Wnn4/atod
+	fi
+	"${atod}" lib.dic < "${DISTDIR}"/${A} || die
 }
 
 src_install() {
