@@ -26,6 +26,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+src_prepare() {
+	default
+	gnome2_environment_reset
+}
+
 src_configure() {
 	econf \
 		$(use_enable nls) \
