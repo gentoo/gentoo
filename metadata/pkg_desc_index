@@ -14383,7 +14383,7 @@ net-analyzer/ndoutils 2.0.0: Nagios addon to store Nagios data in a MySQL databa
 net-analyzer/ndsad 1.33-r1: Cisco netflow probe from libpcap, ULOG, tee/divert sources
 net-analyzer/nepenthes 0.2.2 0.2.2-r1: Nepenthes is a low interaction honeypot that captures worms by emulating known vulnerabilities
 net-analyzer/nessus 2.2.9: A remote security scanner
-net-analyzer/nessus-agent-bin 6.10.5 6.10.7: A remote security scanner for Linux - agent component
+net-analyzer/nessus-agent-bin 6.10.5 6.10.7 6.10.9: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 4.4.1 5.0.1 6.10.5: A remote security scanner for Linux
 net-analyzer/nessus-client 1.0.2-r1 1.0.2-r2: A client for the Nessus vulnerability scanner
 net-analyzer/nessus-core 2.2.9-r1: A remote security scanner for Linux (nessus-core)
@@ -19048,7 +19048,7 @@ x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
-x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord and X
+x11-misc/xiccd 0.2.3 0.2.4: A desktop environment-independent bridge between colord and X
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5_p5_p1 0.5_p6: User preference utility for XKB extensions for X
