@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit libtool multilib-minimal python-any-r1
+inherit epatch libtool multilib-minimal python-any-r1
 
 DESCRIPTION="Google's C++ mocking framework"
 HOMEPAGE="https://github.com/google/googlemock"
@@ -34,6 +34,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-gcc6.patch
+
 	sed -i -r \
 		-e '/^install-(data|exec)-local:/s|^.*$|&\ndisabled-&|' \
 		Makefile.in
