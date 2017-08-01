@@ -91,12 +91,7 @@ DEPEND="${RDEPEND}
 "
 
 if [[ ${PV} != "9999" ]]; then
-	DEPEND+="
-		doc? (
-			app-arch/unzip
-			!app-doc/csound-manual
-		)
-	"
+	DEPEND+="doc? ( app-arch/unzip )"
 fi
 
 # requires specific alsa settings
