@@ -38,7 +38,7 @@ multilib_src_configure() {
 		$(use_enable openmp)
 		$(use_enable static-libs static)
 	)
-	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
