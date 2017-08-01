@@ -9,7 +9,7 @@ HOMEPAGE="http://moinejf.free.fr/"
 SRC_URI="https://github.com/leesavide/abcm2ps/archive/abcm2ps-${PV}.tar.gz
 	http://moinejf.free.fr/transpose_abc.pl"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples pango"
@@ -17,6 +17,13 @@ IUSE="examples pango"
 RDEPEND="pango? ( x11-libs/pango media-libs/freetype:2 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+S=${WORKDIR}/abcm2ps-abcm2ps-${PV}
+
+src_prepare() {
+	default
+	sed -i "s/VERSION=local/VERSION=${PV}/" configure
+}
 
 src_configure() {
 	econf \
@@ -35,7 +42,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins *.fmt
 
-	dodoc Changes README *.txt
+	dodoc *.txt
 
 	if use examples ; then
 		docinto examples
