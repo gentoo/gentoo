@@ -5,7 +5,7 @@ EAPI=6
 
 inherit virtualx xdg-utils
 
-DESCRIPTION="A flexible, easy-to-use configuration management system for Xfce"
+DESCRIPTION="A configuration management system for Xfce"
 HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
