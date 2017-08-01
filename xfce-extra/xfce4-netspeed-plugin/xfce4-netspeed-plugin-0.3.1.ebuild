@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit multilib xfconf
 
-DESCRIPTION="A network transfer rate monitoring panel plug-in, inspired by Gnome's Netspeed applet"
+DESCRIPTION="A network transfer rate monitor for the panel"
 HOMEPAGE="https://code.google.com/p/xfce4-netspeed-plugin/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
