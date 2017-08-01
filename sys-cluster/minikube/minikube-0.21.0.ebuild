@@ -20,7 +20,7 @@ IUSE="hardened"
 
 DEPEND="dev-go/go-bindata
 	${PYTHON_DEPS}"
-RDEPEND=">=sys-cluster/kubectl-1.6.4"
+RDEPEND=">=sys-cluster/kubectl-1.7.0"
 
 RESTRICT="test"
 
