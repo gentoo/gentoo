@@ -26,6 +26,7 @@ RDEPEND="
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgraphicaleffects)
 	$(add_qt_dep qtgui)
+	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtquickcontrols2)
 	$(add_qt_dep qtsvg)
 	plasma? ( $(add_frameworks_dep plasma) )
