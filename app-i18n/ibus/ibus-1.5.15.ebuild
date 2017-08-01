@@ -14,14 +14,14 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X"
+IUSE="deprecated gconf +gtk +gtk2 +introspection nls +python test vala wayland +X"
 REQUIRED_USE="deprecated? ( python )
 	python? (
 		${PYTHON_REQUIRED_USE}
-		|| ( deprecated gtk3 )
-		gtk3? ( introspection )
+		|| ( deprecated gtk )
+		gtk? ( introspection )
 	)
-	test? ( || ( gtk gtk3 ) )
+	test? ( gtk )
 	vala? ( introspection )"
 
 CDEPEND="app-text/iso-codes
@@ -31,8 +31,12 @@ CDEPEND="app-text/iso-codes
 	sys-apps/dbus[X?]
 	x11-libs/libnotify
 	gconf? ( gnome-base/gconf:2 )
-	gtk? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
+	gtk? (
+		x11-libs/gtk+:3
+		x11-libs/libX11
+		x11-libs/libXi
+		gtk2? ( x11-libs/gtk+:2 )
+	)
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( virtual/libintl )
 	python? (
@@ -56,7 +60,7 @@ RDEPEND="${CDEPEND}
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 			dev-python/pygtk:2[${PYTHON_USEDEP}]
 		)
-		gtk3? (
+		gtk? (
 			x11-libs/gtk+:3[introspection]
 		)
 	)"
@@ -91,7 +95,7 @@ src_configure() {
 	if use python; then
 		python_conf+=(
 			$(use_enable deprecated python-library)
-			$(use_enable gtk3 setup)
+			$(use_enable gtk setup)
 			--with-python=${EPYTHON}
 		)
 	else
@@ -100,9 +104,9 @@ src_configure() {
 
 	econf \
 		$(use_enable gconf) \
-		$(use_enable gtk gtk2) \
-		$(use_enable gtk3 ui) \
-		$(use_enable gtk3) \
+		$(use_enable gtk gtk3) \
+		$(use_enable gtk ui) \
+		$(use_enable gtk2) \
 		$(use_enable introspection) \
 		$(use_enable nls) \
 		$(use_enable test tests) \
@@ -138,15 +142,15 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use gconf && gnome2_gconf_install
-	use gtk && gnome2_query_immodules_gtk2
-	use gtk3 && gnome2_query_immodules_gtk3
+	use gtk && gnome2_query_immodules_gtk3
+	use gtk2 && gnome2_query_immodules_gtk2
 	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	use gtk && gnome2_query_immodules_gtk2
-	use gtk3 && gnome2_query_immodules_gtk3
+	use gtk && gnome2_query_immodules_gtk3
+	use gtk2 && gnome2_query_immodules_gtk2
 	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
