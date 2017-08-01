@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit qmake-utils systemd toolchain-funcs
+inherit eutils qmake-utils systemd toolchain-funcs
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="http://hostap.epitest.fi/wpa_supplicant/"
