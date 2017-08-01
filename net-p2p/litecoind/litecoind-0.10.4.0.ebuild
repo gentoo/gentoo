@@ -11,7 +11,7 @@ MyPV="${PV/_/-}"
 MyPN="litecoin"
 MyP="${MyPN}-${MyPV}"
 
-DESCRIPTION="Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted."
+DESCRIPTION="P2P Internet currency based on Bitcoin but easier to mine"
 HOMEPAGE="https://litecoin.org/"
 SRC_URI="https://github.com/${MyPN}-project/${MyPN}/archive/v${MyPV}.tar.gz -> ${MyP}.tar.gz"
 
