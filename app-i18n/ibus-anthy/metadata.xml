@@ -12,7 +12,4 @@
   <upstream>
     <remote-id type="github">ibus/ibus-anthy</remote-id>
   </upstream>
-  <use>
-    <flag name="deprecated">Install deprecated pygtk2 library</flag>
-  </use>
 </pkgmetadata>
