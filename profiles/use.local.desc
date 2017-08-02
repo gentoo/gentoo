@@ -4466,6 +4466,7 @@ media-sound/beets:replaygain - Enable support for Replay Gain metadata calculati
 media-sound/beets:thumbnails - Generate thumbnails for albums
 media-sound/beets:web - Enable embedded webserver support through dev-python/flask
 media-sound/bluez-alsa:hcitop - Enable top-like monitoring tool for HCI
+media-sound/cantata:cdio - Use dev-libs/libcdio-paranoia for CD support (instead of cdparanoia)
 media-sound/cantata:http-server - Enable internal HTTP server to play non-MPD files
 media-sound/cantata:replaygain - Enable ReplayGain support, for relative volume adjustments
 media-sound/clementine:amazoncloud - Enable Amazon cloud drive support
