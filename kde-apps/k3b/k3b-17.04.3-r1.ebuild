@@ -70,6 +70,7 @@ RDEPEND="${DEPEND}
 "
 
 REQUIRED_USE="
+	flac? ( taglib )
 	mp3? ( encode taglib )
 	sox? ( encode taglib )
 "
