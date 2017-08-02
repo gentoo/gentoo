@@ -7,7 +7,7 @@
   </maintainer>
   <longdescription lang="en">
     The M17N engine for IBus. It allows input of many languages using the input
-    table maps from <pkg>dev-db/m17n-lib</pkg>.
+    table maps from <pkg>dev-db/m17n-db</pkg>.
   </longdescription>
   <use>
     <flag name="gtk2">
