@@ -19,6 +19,7 @@ DEPEND="
 	dev-ml/ppx_ast:=
 	dev-ml/ppx_traverse_builtins:=
 	dev-ml/stdio:=
+	dev-ml/ocaml-migrate-parsetree:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
