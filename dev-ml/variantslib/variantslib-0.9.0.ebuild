@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="OCaml variants as first class values"
 HOMEPAGE="https://github.com/janestreet/variantslib"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -13,17 +15,8 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	dev-lang/ocaml:=
 	dev-ml/base:=
 	dev-ml/ppx_driver:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
-DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-}
+DEPEND="${RDEPEND} dev-ml/jbuilder"
