@@ -13,13 +13,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="doc test"
 
 RDEPEND="
-	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/sphinx[${PYTHON_USEDEP}]"
+	>=dev-python/requests-0.13[${PYTHON_USEDEP}]
+	>=dev-python/sphinx-1.1[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -35,7 +34,7 @@ python_prepare_all() {
 	# and virtualx.eclass.
 	rm tests/test_stylesheet.py || die
 
-	# Avoid redundant objects.inv from downloading, sed more lightweight
+	# Avoid redundant objects.inv from downloading, sed more lightwieght
 	if use doc; then
 		sed -e "s:^intersphinx_mapping:#intersphinx_mapping:" \
 			-e "s:^                       'sphinx':#:" \
@@ -54,9 +53,4 @@ python_compile_all() {
 
 python_test() {
 	py.test || die
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${ED}" -name '*.pth' -delete || die
 }
