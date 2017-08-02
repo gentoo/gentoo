@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="A new toplevel for OCaml with completion and colorization"
 HOMEPAGE="https://github.com/diml/utop"
@@ -15,7 +15,6 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-	dev-lang/ocaml:=
 	>=dev-ml/lwt-2.4.0:=
 	dev-ml/lwt_react:=
 	>=dev-ml/lambda-term-1.2:=
@@ -25,17 +24,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	dev-ml/opam
 	dev-ml/jbuilder"
-
-DOCS=( "CHANGES.md" "README.md" )
-SITEFILE="50${PN}-gentoo.el"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		--mandir="${ED}/usr/share/man" \
-		${PN}.install || die
-}
