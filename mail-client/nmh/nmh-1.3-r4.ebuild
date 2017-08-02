@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils base
+inherit eutils
 
 DESCRIPTION="New MH mail reader"
 HOMEPAGE="http://www.nongnu.org/nmh/"
@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gdbm"
 
 DEPEND="gdbm? ( sys-libs/gdbm )
-	!gdbm? ( sys-libs/db )
-	>=sys-libs/ncurses-5.2
+	!gdbm? ( sys-libs/db:= )
+	>=sys-libs/ncurses-5.2:0=
 	net-libs/liblockfile
 	>=app-misc/editor-wrapper-3
 	!!media-gfx/pixie" # Bug #295996 media-gfx/pixie also uses show
@@ -24,17 +24,16 @@ RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog DATE MACHINES README )
 
-src_prepare() {
-	# Patches from bug #22173.
-	epatch "${FILESDIR}"/${P}-inc-login.patch
-	epatch "${FILESDIR}"/${P}-install.patch
-	# bug #57886
-	epatch "${FILESDIR}"/${P}-m_getfld.patch
-	# bug #319937
-	epatch "${FILESDIR}"/${P}-db5.patch
-	# Allow parallel compiles/installs
-	epatch "${FILESDIR}"/${P}-parallelmake.patch
-}
+# Patches from bug #22173.
+# bug #57886
+# bug #319937
+# Allow parallel compiles/installs
+
+PATCHES=( "${FILESDIR}"/${P}-inc-login.patch
+	  "${FILESDIR}"/${P}-install.patch
+	  "${FILESDIR}"/${P}-m_getfld.patch
+	  "${FILESDIR}"/${P}-db5.patch
+	  "${FILESDIR}"/${P}-parallelmake.patch )
 
 src_configure() {
 	# Bug 348816 & Bug 341741: The previous ebuild default of
