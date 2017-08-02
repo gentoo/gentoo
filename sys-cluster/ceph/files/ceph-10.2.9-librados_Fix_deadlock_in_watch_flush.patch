@@ -1,0 +1,61 @@
+From 2fb04c40804f646b4cdd3a55ec8a9e9df95b9360 Mon Sep 17 00:00:00 2001
+From: Xiaoxi Chen <xiaoxchen@ebay.com>
+Date: Sat, 10 Sep 2016 00:23:55 +0800
+Subject: [PATCH] Librados: Fix deadlock in watch_flush
+
+In previous code, in the watch_flush, it is waiting on conditon
+with holding the "lock". The condition will only be signal by
+finisher thread, but sadly, in some cases,when finisher queue
+is not empty, some context need to take the "lock", thus deadlock.
+
+To avoid concurrent call to shutdown cause race condition, add
+a shutdown_lock to ensure only one concurrent in shutdown function.
+
+Signed-off-by: Xiaoxi Chen <xiaoxchen@ebay.com>
+---
+ src/librados/RadosClient.cc | 4 ++++
+ src/librados/RadosClient.h  | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/src/librados/RadosClient.cc b/src/librados/RadosClient.cc
+index 8c5e8ed803fa..230e8b53ecd9 100644
+--- a/src/librados/RadosClient.cc
++++ b/src/librados/RadosClient.cc
+@@ -72,6 +72,7 @@ librados::RadosClient::RadosClient(CephContext *cct_)
+     instance_id(0),
+     objecter(NULL),
+     lock("librados::RadosClient::lock"),
++    shutdown_lock("librados::RadosClient::shutdown_lock"),
+     timer(cct, lock),
+     refcnt(1),
+     log_last_version(0), log_cb(NULL), log_cb_arg(NULL),
+@@ -324,6 +325,7 @@ int librados::RadosClient::connect()
+ 
+ void librados::RadosClient::shutdown()
+ {
++  Mutex::Locker l(shutdown_lock);
+   lock.Lock();
+   if (state == DISCONNECTED) {
+     lock.Unlock();
+@@ -338,7 +340,9 @@ void librados::RadosClient::shutdown()
+   if (state == CONNECTED) {
+     if (need_objecter) {
+       // make sure watch callbacks are flushed
++      lock.Unlock();
+       watch_flush();
++      lock.Lock();
+     }
+     finisher.wait_for_empty();
+     finisher.stop();
+diff --git a/src/librados/RadosClient.h b/src/librados/RadosClient.h
+index f495ba5966c2..a8ef2070ddcb 100644
+--- a/src/librados/RadosClient.h
++++ b/src/librados/RadosClient.h
+@@ -62,6 +62,7 @@ class librados::RadosClient : public Dispatcher
+   Objecter *objecter;
+ 
+   Mutex lock;
++  Mutex shutdown_lock;
+   Cond cond;
+   SafeTimer timer;
+   int refcnt;
