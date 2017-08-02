@@ -6676,6 +6676,7 @@ net-p2p/pybitmessage:opencl - Uses dev-python/pyopencl for GPU acceleration.
 net-p2p/qbittorrent:webui - Enable the Web UI
 net-p2p/retroshare:cli - Enables the CLI version of RetroShare
 net-p2p/retroshare:feedreader - Enables the Feedreader plugin
+net-p2p/retroshare:gnome-keyring - Enables potentially insecure autologin capability via Gnome Keyring
 net-p2p/retroshare:gui - Enables the GUI version of RetroShare
 net-p2p/retroshare:voip - Enables VOIP plugin
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application
