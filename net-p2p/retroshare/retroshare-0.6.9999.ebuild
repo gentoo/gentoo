@@ -14,7 +14,7 @@ LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="cli feedreader +gui voip"
+IUSE="cli feedreader gnome-keyring +gui voip"
 REQUIRED_USE="
 	|| ( cli gui )
 	feedreader? ( gui )
@@ -30,10 +30,10 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
 	dev-qt/qtxml:5
-	gnome-base/libgnome-keyring
 	net-libs/libmicrohttpd
 	net-libs/libupnp:0
 	sys-libs/zlib
+	gnome-keyring? ( gnome-base/libgnome-keyring )
 	feedreader? (
 		dev-libs/libxml2
 		dev-libs/libxslt
@@ -84,7 +84,7 @@ src_prepare() {
 src_configure() {
 	for dir in ${rs_src_dirs} ; do
 		pushd "${S}/${dir}" >/dev/null || die
-		eqmake5
+		eqmake5 $(use gnome-keyring && echo CONFIG+=rs_autologin)
 		popd >/dev/null || die
 	done
 }
