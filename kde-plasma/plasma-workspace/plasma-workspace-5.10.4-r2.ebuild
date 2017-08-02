@@ -122,6 +122,8 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
 	"${FILESDIR}/${PN}-5.10-startplasmacompositor-script.patch"
+	"${FILESDIR}/${P}-ghns-https.patch"
+	"${FILESDIR}/${P}-notifications.patch"
 	"${FILESDIR}/${P}-unused-dep.patch"
 )
 
