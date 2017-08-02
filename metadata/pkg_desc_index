@@ -7008,7 +7008,7 @@ dev-php/PEAR-Crypt_GPG 1.3.2 1.4.2 1.6.0_beta3 1.6.0: PHP interface to the GNU P
 dev-php/PEAR-Crypt_HMAC 1.0.1-r1: Calculates RFC 2104 compliant hashes
 dev-php/PEAR-Crypt_HMAC2 1.0.0: Implementation of Hashed Message Authentication Code for PHP5
 dev-php/PEAR-Crypt_RC4 1.0.3: Encryption class for RC4 encryption
-dev-php/PEAR-DB 1.8.2 1.9.2: Database abstraction layer for PHP
+dev-php/PEAR-DB 1.9.2 1.9.2-r1: Database abstraction layer for PHP
 dev-php/PEAR-DB_DataObject 1.11.3 1.11.5-r1: SQL builder and data modeling layer
 dev-php/PEAR-Date 1.4.7 1.5.0_alpha4-r1: Date and Time Zone classes
 dev-php/PEAR-Exception 1.0.0: The PEAR Exception base class
