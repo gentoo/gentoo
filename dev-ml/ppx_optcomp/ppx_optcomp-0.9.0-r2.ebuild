@@ -15,6 +15,7 @@ IUSE=""
 DEPEND="
 	dev-ml/ppx_core:=
 	dev-lang/ocaml:=
+	dev-ml/ocaml-migrate-parsetree:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
