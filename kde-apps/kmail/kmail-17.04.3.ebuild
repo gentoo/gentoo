@@ -81,6 +81,8 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kdepim-runtime)
 "
 
+RESTRICT+=" test" # bug 616878
+
 src_prepare() {
 	cmake-utils_src_prepare
 
