@@ -38,11 +38,12 @@ opam-install() {
 }
 
 opam_src_install() {
-	opam-install "${PN}"
+	local pkg="${1:-${PN}}"
+	opam-install "${pkg}"
 	# Handle opam putting doc in a subdir
-	if [ -d "${ED}usr/share/doc/${PF}/${PN}" ] ; then
-		mv "${ED}usr/share/doc/${PF}/${PN}/"* "${ED}usr/share/doc/${PF}/" || die
-		rmdir "${ED}usr/share/doc/${PF}/${PN}" || die
+	if [ -d "${ED}usr/share/doc/${PF}/${pkg}" ] ; then
+		mv "${ED}usr/share/doc/${PF}/${pkg}/"* "${ED}usr/share/doc/${PF}/" || die
+		rmdir "${ED}usr/share/doc/${PF}/${pkg}" || die
 	fi
 }
 
