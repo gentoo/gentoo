@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="JSON parsing and pretty-printing library for OCaml"
 HOMEPAGE="http://mjambon.com/yojson.html https://github.com/mjambon/yojson"
@@ -21,15 +21,10 @@ RDEPEND=">=dev-lang/ocaml-3.11:=[ocamlopt]
 DEPEND="${RDEPEND}
 	dev-ml/cppo
 	dev-ml/jbuilder
-	dev-ml/cppo
 "
 
 src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
+	opam_src_install
 
 	if use examples ; then
 		dodoc -r examples
