@@ -9,6 +9,7 @@ inherit kde5
 
 DESCRIPTION="Full-featured burning and ripping application based on KDE Frameworks"
 HOMEPAGE="http://www.k3b.org/"
+
 LICENSE="GPL-2 FDL-1.2"
 KEYWORDS="~amd64 ~x86"
 IUSE="dvd emovix encode ffmpeg flac libav mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
@@ -21,7 +22,7 @@ DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kfilemetadata)
+	$(add_frameworks_dep kfilemetadata 'taglib?')
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
@@ -69,8 +70,9 @@ RDEPEND="${DEPEND}
 "
 
 REQUIRED_USE="
-	mp3? ( encode )
-	sox? ( encode )
+	flac? ( taglib )
+	mp3? ( encode taglib )
+	sox? ( encode taglib )
 "
 
 DOCS+=( ChangeLog {FAQ,PERMISSIONS,README}.txt )
