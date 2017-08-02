@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 DESCRIPTION="fast and light Scheme implementation"
 HOMEPAGE="http://www.stklos.net"
@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="threads"
-DEPEND="dev-libs/gmp dev-libs/libpcre virtual/libffi dev-libs/boehm-gc[threads?]"
+DEPEND="dev-libs/gmp:= dev-libs/libpcre virtual/libffi dev-libs/boehm-gc[threads?]"
 RDEPEND="${DEPEND}"
 
 #parallel build failure reported upstream
@@ -19,7 +19,8 @@ MAKEOPTS=-j1
 
 src_prepare() {
 	# kill bundled libs
-	rm -rf "${S}"/{ffi,gc,gmp,pcre}
+	rm -rf "${S}"/{ffi,gc,gmp,pcre} || die
+	default
 }
 
 src_configure() {
@@ -29,7 +30,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
-	dodoc AUTHORS ChangeLog NEWS PACKAGES-USED PORTING-NOTES README SUPPORTED-SRFIS \
-		|| die "dodocs failed"
+	emake DESTDIR="${D}" install
+	dodoc AUTHORS ChangeLog NEWS PACKAGES-USED PORTING-NOTES README SUPPORTED-SRFIS
 }
