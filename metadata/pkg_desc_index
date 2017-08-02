@@ -5230,7 +5230,7 @@ dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF file
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
-dev-ml/cmdliner 0.9.8 1.0.0: Declarative definition of command line interfaces for OCaml
+dev-ml/cmdliner 1.0.0: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.0 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.9.0 0.9.1: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
@@ -5268,10 +5268,10 @@ dev-ml/incremental_kernel 0.9.0: Library for incremental computations depending 
 dev-ml/integers 0.2.2: Various signed and unsigned integer types for OCaml
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
 dev-ml/jane-street-headers 0.9.0: Jane Street header files
-dev-ml/jbuilder 1.0_beta10 1.0_beta11: A composable build system for OCaml
+dev-ml/jbuilder 1.0_beta11: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
-dev-ml/js_of_ocaml 2.8.4-r1 3.0.0 9999: A compiler from OCaml bytecode to javascript
-dev-ml/jsonm 1.0.0 1.0.1: Non-blocking streaming JSON codec for OCaml
+dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javascript
+dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
@@ -5315,8 +5315,8 @@ dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization o
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
-dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
-dev-ml/ocaml-migrate-parsetree 1.0.1: Convert OCaml parsetrees between different major versions
+dev-ml/ocaml-make 6.37.0 6.39.0: Generic O'Caml Makefile for GNU Make
+dev-ml/ocaml-migrate-parsetree 1.0.1 1.0.2: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
@@ -5353,7 +5353,7 @@ dev-ml/ocurl 0.6.1 0.7.9 0.7.10: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/ojquery 0.1 9999: jQuery Binding for Eliom.
 dev-ml/onanomsg 1.0-r1: nanomsg bindings for OCaml
-dev-ml/opam 1.3.0 1.3.1-r1: A source-based package manager for OCaml
+dev-ml/opam 1.3.1-r1: A source-based package manager for OCaml
 dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 2.0.0: Unit testing framework for OCaml
 dev-ml/pa_bench 112.06.00: Syntax extension writing inline benchmarks
@@ -5362,7 +5362,7 @@ dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
-dev-ml/pcre-ocaml 7.2.3: Perl Compatibility Regular Expressions for O'Caml
+dev-ml/pcre-ocaml 7.2.3 7.3.0: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.6 3.0.7: Partially Ordered Map ADT for O'Caml
@@ -5373,7 +5373,7 @@ dev-ml/ppx_base 0.9.0: Base set of ppx rewriters
 dev-ml/ppx_bench 0.9.0 0.9.1: Syntax extension for writing in-line benchmarks in ocaml code
 dev-ml/ppx_bin_prot 0.9.0: Generation of bin_prot readers and writers from types
 dev-ml/ppx_compare 0.9.0: Generation of comparison functions from types
-dev-ml/ppx_core 0.9.0: Standard library for ppx rewriters
+dev-ml/ppx_core 0.9.0-r1: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 0.9.0: Printf-style format-strings for user-defined string conversion
 dev-ml/ppx_deriving 4.1-r1: Type-driven code generation for OCaml
 dev-ml/ppx_deriving_yojson 3.0: A Yojson codec generator for OCaml
@@ -5390,7 +5390,7 @@ dev-ml/ppx_jane 0.9.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.9.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.9.0: Monadic let-bindings
 dev-ml/ppx_metaquot 0.9.0: Write OCaml AST fragment using OCaml syntax
-dev-ml/ppx_optcomp 0.9.0-r1: Optional compilation for OCaml
+dev-ml/ppx_optcomp 0.9.0-r2: Optional compilation for OCaml
 dev-ml/ppx_optional 0.9.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.9.0: A ppx rewriter that inlines reverse application operators |> and |!
 dev-ml/ppx_sexp_conv 0.9.0-r1: Support Library for type-driven code generators
@@ -5415,7 +5415,7 @@ dev-ml/result 1.2: Compat result type
 dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/sedlex 1.99.3 1.99.4: An OCaml lexer generator for Unicode
 dev-ml/sequence 0.10: Simple sequence (iterator) datatype and combinators
-dev-ml/sexplib 0.9.1 0.9.2: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 0.9.2: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/spawn 0.9.0: Spawning sub-processes
 dev-ml/stdio 0.9.0: Standard IO Library for OCaml
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
@@ -5425,18 +5425,18 @@ dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing l
 dev-ml/typerep 0.9.0: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 0.9.0: Runtime types for OCaml (Extended)
 dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
-dev-ml/uchar 0.0.1 0.0.2: Uchar compatibility library
+dev-ml/uchar 0.0.2: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 2.0.1: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.6: OCaml module implementing 128 bits universally unique identifiers
-dev-ml/uutf 1.0.0-r1 1.0.1: Non-blocking streaming Unicode codec for OCaml
+dev-ml/uutf 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 0.9.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
-dev-ml/xmlm 1.2.0 1.3.0: Ocaml XML manipulation module
+dev-ml/xmlm 1.3.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
-dev-ml/yojson 1.3.3 1.4.0: JSON parsing and pretty-printing library for OCaml
+dev-ml/yojson 1.4.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.4.1 1.5: Arithmetic and logic operations over arbitrary-precision integers
-dev-ml/zed 1.4 1.5: Zed is an abstract engine for text edition
+dev-ml/zed 1.5: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.60.0 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
@@ -17394,7 +17394,7 @@ sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
 sys-auth/yubico-piv-tool 1.4.3: Command line tool for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.23 3.1.24: GUI for personalization of Yubico's YubiKey
-sys-block/aoetools 35 36: tools for ATA over Ethernet (AoE) network storage protocol
+sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 1.2.20618 1.7.21229: Adaptec RAID Controller Command Line Utility
 sys-block/blktrace 1.0.3 1.1.0 1.1.0-r1: btrace can show detailed info about what is happening on a block device io queue
 sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
