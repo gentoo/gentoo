@@ -14323,7 +14323,7 @@ net-analyzer/hydra 8.1 8.5 8.6: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.4 1.14.0: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.0: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.5.4-r1 2.6.2 2.6.3-r1 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.5.4-r1 2.6.2 2.6.3-r1 2.7.0 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
@@ -17451,7 +17451,7 @@ sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02: MegaRAID StorCLI (successor o
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1 2.1.45: Command shell for managing Linux LIO kernel target
-sys-block/tgt 1.0.70 1.0.71: Linux SCSI target framework (tgt)
+sys-block/tgt 1.0.70 1.0.71 1.0.72: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.5.3 0.6.1 0.6.3: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 21: vblade exports a block device using AoE
