@@ -1,7 +1,7 @@
 Title: systemd rootprefix migration
 Author: Mike Gilbert <floppym@gentoo.org>
 Posted: 2017-07-16
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
 Display-If-Installed: >=sys-apps/systemd-234
 
@@ -27,8 +27,8 @@ that system units move from /usr/lib/systemd/system to
 /lib/systemd/system as you upgrade/re-install packages; this is normal.
 Units will function properly from both locations.
 
-After upgrading, please run systemctl daemon-reexec or reboot your
-system to ensure that the new version is executed. Also make sure to
-regenerate your initramfs if it includes a copy of systemd (dracut).
+After upgrading, please run systemctl daemon-reexec ensure that the new
+version is executed. Also make sure to regenerate your initramfs if it
+includes a copy of systemd (dracut).
 
 If you encounter a problem, please report a bug.
