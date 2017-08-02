@@ -4,5 +4,5 @@
 
 description="Resource-specific view of processes"
 pidfile="/var/run/atop.pid"
-command="/etc/atop/atop.daily"
+command="/usr/share/atop/atop.daily"
 command_background="true"
