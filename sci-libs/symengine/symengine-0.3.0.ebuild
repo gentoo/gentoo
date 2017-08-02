@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
 HOMEPAGE="https://github.com/sympy/symengine"
@@ -67,5 +67,6 @@ src_configure() {
 		-DWITH_PTHREAD="$(usex threads)"
 		-DWITH_TCMALLOC="$(usex tcmalloc)"
 	)
+	test-flag-CXX -std=c++11 && append-cxxflags -std=c++11
 	CMAKE_BUILD_TYPE=Release cmake-utils_src_configure
 }
