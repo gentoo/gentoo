@@ -2015,7 +2015,7 @@ app-mobilephone/sobexsrv 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-mobilephone/wammu 0.40 0.43: Front-end for gammu to access mobile phones easily
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
-app-office/abiword 3.0.1 3.0.2 3.0.2-r1: Fully featured yet light and fast cross platform word processor
+app-office/abiword 3.0.2 3.0.2-r1: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.1 3.0.2: Fully featured yet light and fast cross platform word processor documentation
 app-office/auto-multiple-choice 1.3.0-r1: Create and manage multiple choice questionnaries, including automated marking
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
@@ -2355,8 +2355,8 @@ app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.3 0.0.4 9999: Import filter for old StarOffice documents
-app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
-app-text/libwpg 0.2.2 0.3.1: C++ library to read and parse graphics in WPG
+app-text/libwpd 0.10.1: WordPerfect Document import/export library
+app-text/libwpg 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.6 0.4.7: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
@@ -10653,7 +10653,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35 2.2: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
-dev-vcs/git 2.13.0 2.13.2 2.13.3 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.13.0 2.13.3 2.13.4 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1 6.20161031 6.20170101: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -13031,7 +13031,7 @@ media-libs/libcaca 0.99_beta18-r2 0.99_beta19: A library that creates colored AS
 media-libs/libcanberra 0.30-r4 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
-media-libs/libcdr 0.0.14 0.0.16 0.1.1 0.1.3 9999: Library parsing the Corel cdr documents
+media-libs/libcdr 0.1.1 0.1.3 9999: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.15: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
@@ -13165,7 +13165,7 @@ media-libs/libtimidity 0.1.0-r2 0.2.0 0.2.2 0.2.4: MIDI to WAVE converter librar
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.0 1.10.1 1.12.3 1.12.5: Separate libraries ebuild from upstream v4l-utils package
-media-libs/libvisio 0.0.30 0.1.5 0.1.5-r1 9999: Library parsing the visio documents
+media-libs/libvisio 0.1.5 0.1.5-r1 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.5: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0 1.6.0-r1 1.6.1: WebM VP8 and VP9 Codec SDK
@@ -17418,7 +17418,7 @@ sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20150412 20160228: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20150412 20160228 20170515: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10 8.07.14 8.07.14-r1: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r1 0.4.1-r2: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
@@ -17799,7 +17799,7 @@ sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio 
 sys-fs/mtd-utils 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1-r3: A FUSE filesystem providing access to MTP devices
-sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
+sys-fs/multipath-tools 0.5.0-r1 0.6.4-r1 0.7.1: Device mapper target autoconfig
 sys-fs/ncdu 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23: Open source read-write NTFS driver that runs under FUSE
@@ -18022,7 +18022,7 @@ sys-process/latencytop 0.5 0.5-r1: tool for identifying where in the system late
 sys-process/lsof 4.87-r1 4.88-r1 4.89 4.89-r1: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.3.1 0.3.2 0.3.3: Interactive memory viewer
 sys-process/minit 0.9.1 0.10 0.10-r1: a small yet feature-complete init
-sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
+sys-process/nmon 16f 16g: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.9 2.0.10-r2 2.0.11 2.0.11-r1: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 9999: The NUMA daemon that manages application locality
 sys-process/parallel 20150522 20160622 20160722 20160822 20170322 20170422: A shell tool for executing jobs in parallel locally or on remote machines
@@ -18299,7 +18299,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9 3.0.2: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.1.2 5.1.4-r1 5.1.5 5.1.6: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.1.2 5.1.4-r1 5.1.5 5.1.6 5.1.7: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
