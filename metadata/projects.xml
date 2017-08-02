@@ -2884,15 +2884,6 @@ developers and volunteer mentors.</description>
     </member>
   </project>
   <project>
-    <email>lang-misc@gentoo.org</email>
-    <name>Gentoo Programming Language Support Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Programming</url>
-    <description>The project provides coverage for Gentoo-specific issues associated with various programming languages that can be found in Portage.</description>
-    <subproject ref="ada@gentoo.org"/>
-    <subproject ref="haskell@gentoo.org"/>
-    <subproject ref="ruby@gentoo.org"/>
-  </project>
-  <project>
     <email>prolog@gentoo.org</email>
     <name>Prolog</name>
     <url>https://wiki.gentoo.org/wiki/Project:Prolog</url>
