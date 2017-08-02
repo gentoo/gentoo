@@ -118,7 +118,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-10.2.9-libradosstriper_fix_format_injection_vulnerability.patch"
 	"${FILESDIR}/${PN}-10.2.9-rbd-nbd_relax_size_check_for_newer_kernel_versions.patch"
 	"${FILESDIR}/${PN}-10.2.9-filestore_fix_infinit_loops_in_fiemap.patch"
-	"${FILESDIR}/${PN}-10.2.9-librados_Fix_deadlock_in_watch_flush.patch"
 	"${FILESDIR}/${PN}-10.2.9-librbd_filter_expected_error_codes_from_is_exclusive_lock_owner.patch"
 	"${FILESDIR}/${PN}-10.2.9-osd-scrub_to_specifies_clone_ver_but_transaction_include.patch"
 	"${FILESDIR}/${PN}-10.2.9-rbd-do_not_attempt_to_load_key_if_auth_is_disabled.patch"
