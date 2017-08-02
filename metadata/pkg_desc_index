@@ -4606,7 +4606,7 @@ dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.2.0_pre20170719: Stand-alone JavaScript C++ library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.2 7.5.3 7.5.4 7.5.5 7.5.6 7.5.7 7.5.8: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.2 7.5.3 7.5.4 7.5.5 7.5.6 7.5.7 7.5.8 7.5.9: free, small, and standard compliant Prolog compiler
 dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.5 3.0.8 3.0.10 3.0.11 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6: Tool Command Language
@@ -10244,7 +10244,7 @@ dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses,
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
-dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
+dev-util/Orange 3.4.5: Open source data visualization and analysis for novice and experts.
 dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/abi-compliance-checker 2.0 2.1 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
@@ -14639,7 +14639,7 @@ net-dns/updatedd 2.6 2.6-r4 2.6-r5: Dynamic DNS client with plugins for several 
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.1f_rc1: Arno's iptables firewall script
-net-firewall/arptables 0.0.3.4-r2: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
+net-firewall/arptables 0.0.3.4-r2 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.2 1.4.3 1.4.4: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
@@ -14998,7 +14998,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.23.1 1.24.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 6.10.3 6.11.0 6.11.1 7.6.0 7.7.2 7.7.3 7.8.0 7.9.0 7.10.0 8.1.0 8.1.2 8.1.4 8.2.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 6.10.3 6.11.0 6.11.1 6.11.2 7.6.0 7.7.2 7.7.3 7.8.0 7.9.0 7.10.0 8.1.0 8.1.2 8.1.4 8.2.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15745,7 +15745,7 @@ net-vpn/peervpn 0.044-r3: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.2.9.10 0.3.0.8 0.3.0.9 0.3.1.4_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.2.9.10 0.3.0.8 0.3.0.9 0.3.1.5_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -15948,7 +15948,7 @@ sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelizatio
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
-sci-astronomy/montage 4.1: Toolkit for assembling FITS images into mosaics
+sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
@@ -17128,7 +17128,7 @@ sys-apps/gentoo-systemd-integration 6 7 9999: systemd integration files for Gent
 sys-apps/gnome-disk-utility 3.22.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.1 1.0.3: GPT partition table manipulator for Linux
-sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257: Administrative interface for the grsecurity Role Based Access Control system
+sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
@@ -17999,7 +17999,7 @@ sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1 6.6.4: GNU system accounting utilities
 sys-process/anacron 2.3-r2 2.3-r3 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
-sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
+sys-process/atop 1.27_p3 2.2 2.3.0: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5 2.10 2.11 2.11.1 2.12 2.12.1: utility to checkpoint/restore a process tree
