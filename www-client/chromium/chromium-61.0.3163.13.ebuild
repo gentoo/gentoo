@@ -93,7 +93,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
-	dev-util/ninja
+	>=dev-util/ninja-1.7.2
 	net-libs/nodejs
 	sys-apps/hwids[usb(+)]
 	tcmalloc? ( !<sys-apps/sandbox-2.11 )
