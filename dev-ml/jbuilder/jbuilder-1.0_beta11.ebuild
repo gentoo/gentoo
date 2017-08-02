@@ -3,6 +3,8 @@
 
 EAPI=5
 
+inherit opam
+
 MY_PV="${PV/_/+}"
 MY_P="${PN}-${PV/_/-}"
 
@@ -12,13 +14,12 @@ SRC_URI="https://github.com/janestreet/jbuilder/archive/${MY_PV}.tar.gz -> ${MY_
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="test"
 
-DEPEND="dev-lang/ocaml:="
+DEPEND=""
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	dev-ml/opam
 	test? ( dev-ml/menhir )
 "
 OPAMSWITCH="system"
@@ -29,13 +30,4 @@ OPAMROOT="${D}"
 src_prepare() {
 	# Disable Werror like behavior, doesnt build with ocaml 4.05 otherwise
 	sed -i -e 's/--dev//' Makefile || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		--mandir="${ED}/usr/share/man" \
-		${PN}.install || die
 }

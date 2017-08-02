@@ -36,6 +36,7 @@ RDEPEND="
 	dev-ml/uchar:=
 	dev-ml/ocamlbuild:=
 	dev-ml/yojson:=
+	dev-ml/ocaml-migrate-parsetree:=
 	deriving? ( >=dev-ml/deriving-0.6:= )"
 DEPEND="${RDEPEND}"
 

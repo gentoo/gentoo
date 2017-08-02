@@ -12,7 +12,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/36063/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="+ocamlopt parmap zip bzip2 xml curl rpm4 test"
 
 RDEPEND="
