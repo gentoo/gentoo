@@ -368,6 +368,9 @@ src_compile() {
 	git_emake
 	use doc && git_emake doc
 
+	cd "${S}"/contrib/diff-highlight || die
+	git_emake
+
 	if use mediawiki ; then
 		cd "${S}"/contrib/mw-to-git
 		git_emake

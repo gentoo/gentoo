@@ -26,16 +26,6 @@ DEPEND="${RDEPEND}
 
 CONFIG_CHECK="~DM_MULTIPATH"
 
-PATCHES=(
-	# modprobe fails when modules are compiled statically into the kernel
-	# https://www.redhat.com/archives/dm-devel/2017-January/msg00043.html
-	"${FILESDIR}"/${PN}-0.6.2-ignore-modprobe-failures.patch
-
-	# https://bugs.gentoo.org/show_bug.cgi?id=604228
-	# https://www.redhat.com/archives/dm-devel/2017-January/msg00022.html
-	"${FILESDIR}"/${P}-sysmacros.patch
-)
-
 get_systemd_pv() {
 	use systemd && \
 		$(tc-getPKG_CONFIG) --modversion systemd
@@ -51,6 +41,13 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Fix for bug #624884
+	if grep -qF DM_TABLE_STATE kpartx/kpartx.rules ; then
+		sed '/DM_TABLE_STATE/d' -i kpartx/kpartx.rules || die
+	else
+		elog "DM_TABLE_STATE sed hack is no longer necessary."
+	fi
 
 	# The upstream lacks any way to configure the build at present
 	# and ceph is a huge dependency, so we're using sed to make it
