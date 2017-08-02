@@ -741,7 +741,6 @@ app-forensics/openscap:nss - Prefer NSS over libgcrypt as the crypto engine
 app-forensics/openscap:rpm - Compiles the RPM probes
 app-forensics/openscap:sce - Enables Script Check Engine (SCE) support
 app-forensics/openscap:sql - Build the sql independant probes
-app-forensics/ovaldi:rpm - Enable the RPM probes
 app-forensics/quickfuzz:archs - support archive formats
 app-forensics/quickfuzz:codes - support cource code formats
 app-forensics/quickfuzz:docs - support document formats
