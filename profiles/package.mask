@@ -621,7 +621,7 @@ dev-perl/Params-ValidationCompiler
 # in case of gcc switch the compiler) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-4.9
-<sys-libs/glibc-2.23
+<sys-libs/glibc-2.23-r4
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
 # Old versions of CUDA and their reverse dependencies. They do not
