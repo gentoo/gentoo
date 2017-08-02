@@ -25,7 +25,7 @@ CDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
 	emacs? ( virtual/emacs )
 	ocaml? ( dev-ml/findlib:= )
-	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt?] )
+	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt(+)?] )
 	python? ( ${PYTHON_DEPS} )"
 
 RDEPEND="${CDEPEND}
