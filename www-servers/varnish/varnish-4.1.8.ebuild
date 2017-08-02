@@ -37,8 +37,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test" #315725
 
-DOCS=( README.rst doc/changes.rst )
-
 pkg_setup() {
 	ebegin "Creating varnish user and group"
 	enewgroup varnish
@@ -95,6 +93,9 @@ src_install() {
 	insinto /etc/varnish/
 	doins lib/libvmod_std/vmod.vcc
 	doins etc/example.vcl
+
+	dodoc README.rst
+	dodoc doc/changes.rst
 
 	fowners root:varnish /etc/varnish/
 	fowners varnish:varnish /var/lib/varnish/

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,7 @@ sys-boot/grub:2
 selinux? ( sec-policy/selinux-tboot )"
 
 DOCS=(README COPYING CHANGELOG)
+PATCHES=( "${FILESDIR}/${PN}-1.9.5-genkernel-path.patch" )
 
 src_prepare() {
 	sed -i 's/ -Werror//g' Config.mk || die
@@ -38,9 +39,9 @@ src_compile() {
 	use custom-cflags && export TBOOT_CFLAGS=${CFLAGS} || unset CCASFLAGS CFLAGS CPPFLAGS LDFLAGS
 
 	if use amd64; then
-		MAKEARGS="TARGET_ARCH=x86_64"
+		export MAKEARGS="TARGET_ARCH=x86_64"
 	else
-		MAKEARGS="TARGET_ARCH=i686"
+		export MAKEARGS="TARGET_ARCH=i686"
 	fi
 
 	default
