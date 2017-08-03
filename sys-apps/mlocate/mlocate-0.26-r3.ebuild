@@ -51,9 +51,8 @@ src_install() {
 	fi
 
 	if use systemd; then
-		insinto "`systemd_get_systemunitdir`"
-		doins "${FILESDIR}"/updatedb.service
-		doins "${FILESDIR}"/updatedb.timer
+		systemd_dounit "${FILESDIR}"/updatedb.service
+		systemd_dounit "${FILESDIR}"/updatedb.timer
 	fi
 
 	fowners 0:locate /usr/bin/locate
