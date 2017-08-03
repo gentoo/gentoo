@@ -32,10 +32,6 @@ CDEPEND="
 
 RDEPEND="${CDEPEND}
 	virtual/python-pathlib[${PYTHON_USEDEP}]
-	notebook? (
-		dev-python/notebook[${PYTHON_USEDEP}]
-		dev-python/ipywidgets[${PYTHON_USEDEP}]
-	)
 	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -57,6 +53,10 @@ DEPEND="${CDEPEND}
 	)"
 
 PDEPEND="
+	notebook? (
+		dev-python/notebook[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
+	)
 	qt4? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	smp? ( dev-python/ipyparallel[${PYTHON_USEDEP}] )"
