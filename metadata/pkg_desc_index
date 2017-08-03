@@ -11856,7 +11856,7 @@ kde-apps/gwenview 16.12.3 17.04.3: KDE image viewer
 kde-apps/incidenceeditor 17.04.3: Incidence editor for korganizer
 kde-apps/jovie 16.12.3 17.04.3: Text to speech application
 kde-apps/juk 16.12.3 17.04.3: Jukebox and music manager by KDE
-kde-apps/k3b 2.0.3-r5 17.04.3-r1: Full-featured burning and ripping application based on KDE Frameworks
+kde-apps/k3b 2.0.3-r5 17.04.3-r1 17.04.3-r2: Full-featured burning and ripping application based on KDE Frameworks
 kde-apps/kabcclient 4.4.2017.04 4.14.11_pre20160611: Command line client for accessing the KDE addressbook
 kde-apps/kaccessible 16.12.3 17.04.3: Provides accessibility services like focus tracking
 kde-apps/kaccounts-integration 16.12.3 17.04.3: Administer web accounts for the sites and services across the Plasma desktop
