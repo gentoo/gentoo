@@ -1462,7 +1462,7 @@ app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident re
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
 app-forensics/openscap 1.2.5 1.2.13 9999: Framework which enables integration with Security Content Automation Protocol
-app-forensics/ovaldi 5.10.1.4: Free implementation of OVAL
+app-forensics/ovaldi 5.10.1.4 5.10.1.7: Free implementation of OVAL
 app-forensics/pasco 20040505_p1 20040505_p1-r1: IE Activity Parser
 app-forensics/quickfuzz 0.1_p20160920 9999: An experimental grammar fuzzer in Haskell using QuickCheck
 app-forensics/radamsa 0.5-r1: A general purpose fuzzer
