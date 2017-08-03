@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Simple libfame-based video encoder which compresses raw video sequences to MPEG video"
+DESCRIPTION="Simple libfame-based video encoder, compresses raw video sequences to MPEG video"
 HOMEPAGE="http://fame.sourceforge.net/"
 SRC_URI="mirror://sourceforge/fame/${P}.tar.gz"
 
