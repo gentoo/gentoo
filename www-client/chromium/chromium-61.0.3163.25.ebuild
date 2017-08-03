@@ -46,9 +46,8 @@ COMMON_DEPEND="
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
 	>=media-libs/openh264-1.6.0:=
-	media-libs/opus:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
+	system-ffmpeg? ( >=media-video/ffmpeg-3:= media-libs/opus:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	virtual/udev
@@ -93,7 +92,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
-	dev-util/ninja
+	>=dev-util/ninja-1.7.2
 	net-libs/nodejs
 	sys-apps/hwids[usb(+)]
 	tcmalloc? ( !<sys-apps/sandbox-2.11 )
@@ -141,6 +140,14 @@ theme that covers the appropriate MIME types, and configure this as your
 GTK+ icon theme.
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-widevine-r1.patch"
+	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
+	"${FILESDIR}/${PN}-gcc-r1.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r14.patch"
+	"${FILESDIR}/${PN}-atk-r1.patch"
+)
+
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -182,13 +189,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/${PN}-widevine-r1.patch"
-		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-		"${FILESDIR}/${PN}-gn-bootstrap-r13.patch"
-		"${FILESDIR}/${PN}-gcc-r1.patch"
-	)
-
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
@@ -319,7 +319,7 @@ src_prepare() {
 		third_party/yasm/run_yasm.py
 	)
 	if ! use system-ffmpeg; then
-		keeplibs+=( third_party/ffmpeg )
+		keeplibs+=( third_party/ffmpeg third_party/opus )
 	fi
 	if ! use system-icu; then
 		keeplibs+=( third_party/icu )
@@ -386,14 +386,13 @@ src_configure() {
 		libwebp
 		libxslt
 		openh264
-		opus
 		re2
 		snappy
 		yasm
 		zlib
 	)
 	if use system-ffmpeg; then
-		gn_system_libraries+=( ffmpeg )
+		gn_system_libraries+=( ffmpeg opus )
 	fi
 	if use system-icu; then
 		gn_system_libraries+=( icu )
@@ -409,7 +408,6 @@ src_configure() {
 	myconf_gn+=" use_cups=$(usex cups true false)"
 	myconf_gn+=" use_gconf=false"
 	myconf_gn+=" use_gnome_keyring=$(usex gnome-keyring true false)"
-	myconf_gn+=" use_gtk3=true"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
 
