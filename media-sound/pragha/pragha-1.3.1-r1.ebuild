@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit xfconf # autotools
 
 DESCRIPTION="A lightweight music player (with support for the Xfce desktop environment)"
-HOMEPAGE="http://pragha.wikispaces.com/ https://github.com/matiasdelellis/pragha"
-SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/pragha-music-player/pragha"
+SRC_URI="https://github.com/pragha-music-player/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
