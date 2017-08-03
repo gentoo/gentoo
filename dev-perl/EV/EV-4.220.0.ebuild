@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to libev, a high performance full-featured event loop"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
