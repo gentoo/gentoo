@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit autotools ltprune linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
@@ -15,9 +15,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
-RESTRICT="test"
+#RESTRICT="test"
 
-REQUIRED_USE="?? ( elogind systemd )"
+REQUIRED_USE="
+	?? ( elogind systemd )
+	test? ( debug )
+"
 
 CDEPEND="
 	>=dev-libs/expat-2
@@ -184,7 +187,7 @@ multilib_src_compile() {
 }
 
 src_test() {
-	DBUS_VERBOSE=1 Xemake -j1 -C "${TBD}" check
+	DBUS_VERBOSE=1 virtx emake -j1 -C "${TBD}" check
 }
 
 multilib_src_install() {
