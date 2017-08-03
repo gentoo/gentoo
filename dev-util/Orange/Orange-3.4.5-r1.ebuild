@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	dev-python/anyqt[${PYTHON_USEDEP}]
 	>=dev-python/bottleneck-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/CommonMark-0.5.5[${PYTHON_USEDEP}]
 	dev-python/dill[${PYTHON_USEDEP}]
