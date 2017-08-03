@@ -72,9 +72,8 @@ src_install() {
 	fi
 
 	if use systemd; then
-		insinto "`systemd_get_systemunitdir`"
-		doins "${FILESDIR}"/man-db.timer
-		doins "${FILESDIR}"/man-db.service
+		systemd_dounit "${FILESDIR}"/man-db.timer
+		systemd_dounit "${FILESDIR}"/man-db.service
 	fi
 }
 
