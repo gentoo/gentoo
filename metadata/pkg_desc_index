@@ -17092,7 +17092,7 @@ sys-apps/diffutils 3.3 3.5 3.6: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0 3.1: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
-sys-apps/dog 1.7-r4 1.7-r5 1.7-r6: Dog is better than cat
+sys-apps/dog 1.7-r6: Dog is better than cat
 sys-apps/dstat 0.7.3: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 1.4.2 1.4.3 1.4.4 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 9999: A library and suite of tools for inspecting disk usage
