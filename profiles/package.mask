@@ -30,6 +30,18 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# sys-boot/plymouth is unmaintained since Apr 2016. The current version
+# has multiple bugs, including not supporting OpenRC. It really needs
+# an active maintainer. Removal in 30 days. Bug #621470.
+#
+# The remaining packages are sys-boot/plymouth reverse dependencies.
+# They have no use without it, so they are being removed as well.
+kde-plasma/breeze-plymouth
+kde-plasma/plymouth-kcm
+sys-boot/plymouth
+sys-boot/plymouth-openrc-plugin
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
 # sys-apps/yum is severely outdated (last bump 2013), unmaintained
 # since 2010. It has vulnerabilities. Removal in 30 days. Bug #499328.
 #
