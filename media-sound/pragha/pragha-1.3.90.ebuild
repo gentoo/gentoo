@@ -7,7 +7,7 @@ inherit gnome2-utils xdg-utils
 
 DESCRIPTION="A lightweight music player (for Xfce)"
 HOMEPAGE="https://github.com/pragha-music-player/pragha"
-SRC_URI="https://github.com/pragha-music-player/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI="https://github.com/pragha-music-player/${PN}/releases/download/V${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,14 +25,14 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
 		>=dev-libs/libcdio-paranoia-0.90:=
 		>=media-libs/libcddb-1.3.0:= )
 	glyr? ( >=media-libs/glyr-1.0.1:= )
-	grilo? ( >=media-libs/grilo-0.2.10:= )
+	grilo? ( media-libs/grilo:0.3=[network] )
 	keybinder? ( >=dev-libs/keybinder-0.2.0:3= )
 	lastfm? ( >=media-libs/libclastfm-0.5:= )
 	libnotify? ( >=x11-libs/libnotify-0.7.5:= )
 	mtp? ( >=media-libs/libmtp-1.1.0:= )
 	peas? ( >=dev-libs/libpeas-1.0.0:=[gtk] )
 	playlist? ( >=dev-libs/totem-pl-parser-2.26:= )
-	rygel? ( >=net-misc/rygel-0.20:= )
+	rygel? ( >=net-misc/rygel-0.26:= )
 	soup? ( >=net-libs/libsoup-2.38:= )
 	udev? ( virtual/libgudev:= )"
 RDEPEND="${COMMON_DEPEND}
@@ -65,8 +65,13 @@ src_configure() {
 		$(use_enable udev gudev-1.0)
 		$(use_enable mtp libmtp)
 		$(use_enable soup libsoup-2.4)
-		$(use_enable rygel rygel-server-2.2)
-		$(use_enable grilo grilo-0.2)
+		$(use_enable rygel rygel-server-2.6)
+		$(use_enable grilo grilo-0.3)
+		$(use_enable grilo grilo-net-0.3)
+		# avoid trying to use 0.2 & 0.3 simultaneously
+		# https://github.com/pragha-music-player/pragha/issues/124
+		--disable-grilo-0.2
+		--disable-grilo-net-0.2
 	)
 	econf "${myconf[@]}"
 }
