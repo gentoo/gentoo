@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit versionator eutils flag-o-matic multilib
+inherit versionator eutils flag-o-matic
 
 #version magic thanks to masterdriverz and UberLord using bash array instead of tr
 trarr="0abcdefghi"
@@ -18,20 +18,17 @@ HOMEPAGE="http://swiss.csail.mit.edu/~jaffer/SCM"
 SLOT="0"
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
-IUSE="arrays bignums cautious dynamic-linking engineering-notation gsubr inexact
-ioext libscm macro ncurses posix readline regex sockets unix"
+IUSE="arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix"
 
 #unzip for unpacking
 DEPEND="app-arch/unzip
 	>=dev-scheme/slib-3.1.5
 	dev-util/cproto
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:0= )
 	readline? ( sys-libs/libtermcap-compat )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-multiplefixes.patch
-}
+PATCHES=( "${FILESDIR}/${P}-multiplefixes.patch" )
 
 src_compile() {
 	# SLIB is required to build SCM.
@@ -43,7 +40,7 @@ src_compile() {
 	fi
 
 	einfo "Making scmlit"
-	emake -j1 scmlit clean || die "faild to build scmlit"
+	emake -j1 scmlit clean
 
 	einfo "Building scm"
 	local features=""
@@ -139,7 +136,7 @@ src_compile() {
 	fi
 
 	if use libscm ; then
-		emake libscm.a || die
+		emake libscm.a
 	fi
 }
 
@@ -149,11 +146,11 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" man1dir="${EPREFIX}"/usr/share/man/man1/ \
-		install || die "Install failed"
+		install
 
 	if use libscm; then
 		emake DESTDIR="${D}" libdir="${EPREFIX}"/usr/$(get_libdir)/ \
-			installlib || die
+			installlib
 	fi
 
 	doinfo scm.info
