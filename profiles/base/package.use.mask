@@ -7,6 +7,16 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# sys-boot/plymouth is being treecleaned wrt #621470.
+gnome-base/gdm plymouth
+kde-plasma/plasma-meta plymouth
+sys-kernel/genkernel-next plymouth
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# sys-kernel/openvz-sources is being treecleaned wrt #580516.
+app-emulation/libvirt openvz
+
 # Michał Górny <mgorny@gentoo.org> (30 Jul 2017)
 # The Z3 backend is unstable and causes assertion failures. Mask it
 # until upstream fixes it properly.
