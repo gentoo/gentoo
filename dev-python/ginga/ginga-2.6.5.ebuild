@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 PYTHON_REQ_USE='tk?'
 
-inherit distutils-r1 eutils fdo-mime virtualx
+inherit distutils-r1 eutils xdg-utils virtualx
 
 DESCRIPTION="Astronomical image toolkit for Python"
 HOMEPAGE="https://ejeschke.github.io/ginga"
@@ -72,6 +72,11 @@ pkg_postinst() {
 			   dev-python/filemagic
 	optfeature "Useful for various RGB file manipulations" dev-python/pillow
 
-	# Update mimedb for the new .desktop file
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
