@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20170729-0113Z"
+MY_EXTRAS_VER="20170803-1814Z"
 # The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
 WSREP_REVISION="25"
 SUBSLOT="18"
@@ -64,6 +64,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.7-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
+	"${MY_PATCH_DIR}"/20026_all_mariadb-add-pkgdatadir.patch
 )
 
 # Be warned, *DEPEND are version-dependant
