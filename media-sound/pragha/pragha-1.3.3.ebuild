@@ -6,8 +6,8 @@ EAPI=6
 inherit gnome2-utils xdg-utils
 
 DESCRIPTION="A lightweight music player (for Xfce)"
-HOMEPAGE="https://github.com/matiasdelellis/pragha"
-SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/pragha-music-player/pragha"
+SRC_URI="https://github.com/pragha-music-player/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
