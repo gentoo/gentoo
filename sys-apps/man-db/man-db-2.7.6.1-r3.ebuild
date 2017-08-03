@@ -30,6 +30,7 @@ DEPEND="${CDEPEND}
 	)"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mandb )
+	cron? ( virtual/cron )
 "
 PDEPEND="manpager? ( app-text/manpager )"
 
