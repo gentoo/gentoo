@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="PyQt4/PyQt5 compatibility layer"
 HOMEPAGE="http://orange.biolab.si/"
-SRC_URI="https://github.com/ales-erjavec/${PN}/archive/${PV}.zip"
+SRC_URI="https://github.com/ales-erjavec/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
