@@ -14188,7 +14188,7 @@ media-video/qgifer 0.2.1-r4 0.2.1-r5: A video-based animated GIF creator
 media-video/qt-recordmydesktop 0.3.8-r3: Qt4 interface for RecordMyDesktop
 media-video/qx11grab 0.4.12: X11 desktop video grabber tray
 media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 0_p20160528-r1 9999: Command line media player for the Raspberry Pi
-media-video/recmpeg 1.0.5: Simple libfame-based video encoder which compresses raw video sequences to MPEG video
+media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
 media-video/replex 0.1.4 0.1.6.8: REPLEX remuxes MPEG-2 transport streams into program streams
 media-video/rovclock 0.6e 0.6e-r1: Overclocking utility for ATI Radeon cards
