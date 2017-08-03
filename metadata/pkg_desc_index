@@ -7320,6 +7320,7 @@ dev-python/aniso8601 1.2.0: A library for parsing ISO 8601 strings
 dev-python/ansi2html 1.1.1 1.2.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
+dev-python/anyqt 0.0.8: PyQt4/PyQt5 compatibility layer
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
 dev-python/aodhclient 0.6.0 0.7.0 0.8.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.4: namespace control and lazy-import mechanism
@@ -10244,7 +10245,7 @@ dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses,
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
-dev-util/Orange 3.4.5: Open source data visualization and analysis for novice and experts.
+dev-util/Orange 3.4.5-r1: Open source data visualization and analysis for novice and experts.
 dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/abi-compliance-checker 2.0 2.1 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
