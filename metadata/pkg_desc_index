@@ -13905,7 +13905,7 @@ media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
-media-sound/pragha 1.3.1-r1 1.3.3: A lightweight music player (for Xfce)
+media-sound/pragha 1.3.1-r1 1.3.3 1.3.90: A lightweight music player (for Xfce)
 media-sound/projectm-jack 2.0.1 2.1.0: A Qt based GUI for projectM that visualizes your JACK output
 media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes your pulseaudio output
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
