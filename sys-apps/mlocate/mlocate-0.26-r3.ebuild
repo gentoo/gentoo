@@ -11,12 +11,11 @@ SRC_URI="http://releases.pagure.org/mlocate/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="+cron nls selinux systemd"
+IUSE="nls selinux"
 
 RDEPEND="!sys-apps/slocate
 	!sys-apps/rlocate
 	selinux? ( sec-policy/selinux-slocate )
-	cron? ( virtual/cron )
 "
 DEPEND="app-arch/xz-utils
 	nls? ( sys-devel/gettext )
@@ -40,22 +39,15 @@ src_install() {
 
 	insinto /etc
 	doins "${FILESDIR}"/updatedb.conf
-	fperms 0644 /etc/updatedb.conf
+	doins "${FILESDIR}"/mlocate-cron.conf
+	fperms 0644 /etc/{updatedb,mlocate-cron}.conf
 
-	if use cron; then
-		insinto /etc
-		doins "${FILESDIR}"/mlocate-cron.conf
-		fperms 0644 /etc/mlocate-cron.conf
+	insinto /etc/cron.daily
+	newins "${FILESDIR}"/mlocate.cron-r3 mlocate
+	fperms 0755 /etc/cron.daily/mlocate
 
-		insinto /etc/cron.daily
-		newins "${FILESDIR}"/mlocate.cron-r3 mlocate
-		fperms 0755 /etc/cron.daily/mlocate
-	fi
-
-	if use systemd; then
-		systemd_dounit "${FILESDIR}"/updatedb.service
-		systemd_dounit "${FILESDIR}"/updatedb.timer
-	fi
+	systemd_dounit "${FILESDIR}"/updatedb.service
+	systemd_dounit "${FILESDIR}"/updatedb.timer
 
 	fowners 0:locate /usr/bin/locate
 	fperms go-r,g+s /usr/bin/locate
@@ -68,11 +60,12 @@ src_install() {
 pkg_postinst() {
 	elog "The database for the locate command is generated daily by a cron job,"
 	elog "if you install for the first time you can run the updatedb command manually now."
+	elog "If you needn't cron job, please append the /etc/cron.daily/mlocate to INSTALL_MASK."
 	elog
 	elog "Note that the /etc/updatedb.conf file is generic,"
 	elog "please customize it to your system requirements."
 
-	if use systemd; then
+	if systemd_is_booted; then
 		elog
 		elog "The systemd timer updatedb.timer has been installed,"
 		elog "please activate it with 'systemd enable updatedb.timer'"
