@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Web service API to MusicBrainz database"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 PATCHES=( "${FILESDIR}/1.0.2-no-network-testing.patch" )
 RDEPEND="
