@@ -15,7 +15,9 @@ IUSE="+cron nls selinux systemd"
 
 RDEPEND="!sys-apps/slocate
 	!sys-apps/rlocate
-	selinux? ( sec-policy/selinux-slocate )"
+	selinux? ( sec-policy/selinux-slocate )
+	cron? ( virtual/cron )
+"
 DEPEND="app-arch/xz-utils
 	nls? ( sys-devel/gettext )
 "
