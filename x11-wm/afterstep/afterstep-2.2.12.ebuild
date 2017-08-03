@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -45,6 +45,8 @@ src_prepare() {
 	sed -i -e '/CFLAGS="-O3"/d' libAfter{Base,Image}/configure || die
 	sed -i -e '/STRIP_BINARIES/s:-s::' autoconf/configure.in || die #252119
 	sed -i -e '/--with-builtin-gif/s/$with_gif/no/' autoconf/configure.in || die #253259
+	sed -i -e 's/install.bin install.alternative/install.bin/' src/afterstep/Makefile.in || die #568694
+	epatch "${FILESDIR}"/${P}-gcc5.patch #574184
 
 	pushd autoconf >/dev/null
 	eautoreconf
