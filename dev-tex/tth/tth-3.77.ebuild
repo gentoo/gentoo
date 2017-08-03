@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 SLOT="0"
 LICENSE="free-noncomm"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
 IUSE=""
 
 DEPEND=""
