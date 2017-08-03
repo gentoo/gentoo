@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 DESCRIPTION="Scmxlate is a configuration tool for software packages written in Scheme"
 HOMEPAGE="http://www.ccs.neu.edu/home/dorai/scmxlate/scmxlate.html"
-SRC_URI="http://evalwhen.com/scmxlate/scmxlate.tar.bz2
-	-> ${P}.tar.bz2"
+SRC_URI="http://evalwhen.com/scmxlate/scmxlate.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="freedist" # license doesn't grant the right for modifications
 SLOT="0"
@@ -19,6 +18,6 @@ src_compile() { true; }
 
 src_install() {
 	insinto /usr/share/${PN}/
-	doins *.cl *.scm || die "doins failed"
-	dodoc README || die "dodoc failed"
+	doins *.cl *.scm
+	dodoc README
 }
