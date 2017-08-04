@@ -14,10 +14,7 @@ SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="+bayes berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
-
-# You can do without a database unless you need the Bayes features.
-REQUIRED_USE="bayes? ( || ( berkdb mysql postgres sqlite ) )"
+IUSE="berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
 
 # The Makefile.PL script checks for dependencies, but only fails if a
 # required (i.e. not optional) dependency is missing. We therefore
@@ -86,6 +83,7 @@ PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7265.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231-extra.patch"
+	"${FILESDIR}/spamassassin-3.4.1-perl526.patch"
 )
 
 src_prepare() {
