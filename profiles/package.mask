@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (04 Aug 2017)
+# Temporary mask as current net-ftp/filezilla does not compile
+# with it, bug #626292
+=dev-libs/libfilezilla-0.10.0
+
 # Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
 # Obsolete. Replaced by media-gfx/graphite2. No longer used
 # by anything. Removal in 30 days. Bug #594314.
