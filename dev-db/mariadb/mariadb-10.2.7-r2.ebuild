@@ -553,8 +553,8 @@ multilib_src_install_all() {
 
 	# Configuration stuff
 	einfo "Building default configuration ..."
-	[[ -f "${S}/scripts/mysqlaccess.conf" ]] && doins "${S}"/scripts/mysqlaccess.conf
 	insinto "${MY_SYSCONFDIR#${EPREFIX}}"
+	[[ -f "${S}/scripts/mysqlaccess.conf" ]] && doins "${S}"/scripts/mysqlaccess.conf
 	cp "${FILESDIR}/my.cnf-10.2" "${TMPDIR}/my.cnf" || die
 	eprefixify "${TMPDIR}/my.cnf"
 	doins "${TMPDIR}/my.cnf"
