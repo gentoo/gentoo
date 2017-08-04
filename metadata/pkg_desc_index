@@ -4857,11 +4857,11 @@ dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.20.4: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
-dev-libs/libhtmlparse 0.1.13-r1: HTML parsing library. It takes HTML tags, text, and calls callbacks for each type of token
+dev-libs/libhtmlparse 0.1.13-r1: HTML parsing library
 dev-libs/libical 1.0.1 2.0.0-r2: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1 1.14-r2: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
-dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
+dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.6.2 1.7.2 1.7.3 1.8.0 1.8.1: Library to handle input devices in Wayland
@@ -4869,12 +4869,12 @@ dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split ou
 dev-libs/libisoburn 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.6: Open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.11.1 0.12.2 9999: General purpose formula parser & interpreter
-dev-libs/libkpass 6 6-r1: Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases
+dev-libs/libkpass 6 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1: X.509 and CMS (PKCS#7) library
 dev-libs/liblazy 0.2: lib for D-Bus daemon messages, querying HAL or PolicyKit privileges
 dev-libs/liblinear 210-r1 211: A Library for Large Linear Classification
 dev-libs/liblinebreak 2.1: Line breaking library
-dev-libs/liblist 2.3.1-r1 2.4: This package provides generic linked-list manipulation routines, plus queues and stacks
+dev-libs/liblist 2.3.1-r1 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 1.1.0 1.1.2-r1 2.0.1 2.0.2 2.0.3: Fast samples-based log normalization library
 dev-libs/liblouis 2.5.3: An open-source braille translator and back-translator
@@ -4923,7 +4923,7 @@ dev-libs/libpfm 4.4.0 4.6.0 4.8.0: Hardware-based performance monitoring interfa
 dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
-dev-libs/libpqxx 4.0.1 5.0.1: Standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 4.0.1 5.0.1: Standard front end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0-r1: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0 3.1.0: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
@@ -4945,17 +4945,17 @@ dev-libs/libsigsegv 2.10 2.11: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.11 1.0.12 1.0.13: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libsolv 0.6.22: Library for solving packages and reading repositories
-dev-libs/libspnav 0.2.2: The libspnav provides a replacement of the magellan library with cleaner and more orthogonal API
+dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2 1.1-r3: Library for handling root privilege
 dev-libs/libsqlora8 2.3.3-r1: Simple C-library to access Oracle databases via the OCI interface
-dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline(), and asprintf()
+dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
 dev-libs/libtasn1 4.10-r1 4.10-r2 4.12: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.17 0.18 0.19: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
-dev-libs/libtommath 0.42.0-r1 1.0 1.0-r1: highly optimized and portable routines for integer theoretic applications
+dev-libs/libtommath 0.42.0-r1 1.0 1.0-r1: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtrain 0.9b: Library for calculating fastest train routes
 dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
@@ -4963,7 +4963,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libucl 0.7.3: Universal configuration library parser
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
-dev-libs/libunistring 0.9.5 0.9.6 0.9.7: Library for manipulating Unicode strings and C strings according to the Unicode standard
+dev-libs/libunistring 0.9.5 0.9.6 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
@@ -4991,7 +4991,7 @@ dev-libs/link-grammar 5.3.10 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/locked_sstream 0.0.5: tiny C++ library which wraps std::stringstream in a mutex
 dev-libs/log4cplus 1.1.3_rc7 1.2.0: C++ port of the Log for Java (log4j) logging library
-dev-libs/log4cpp 1.0 1.1: Library of C++ classes for flexible logging to files, syslog and other destinations
+dev-libs/log4cpp 1.0 1.1: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging framework
@@ -5038,10 +5038,10 @@ dev-libs/pcl 1.12: Portable Coroutine Library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
 dev-libs/pegtl 1.3.1-r1 2.0_pre1 2.0.0 2.1.4: header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pkcs11-helper 1.21-r1: PKCS#11 helper library
-dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ class libraries for building network- and internet-based applications
+dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ libraries for building network-based applications
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
-dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
+dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0: Google's Protocol Buffers -- an efficient method of encoding structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
@@ -5090,7 +5090,7 @@ dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/sway 0.13.0 0.14.0 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
-dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
+dev-libs/tinyxml 2.6.2-r2: Simple and small C++ XML parser
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1 5.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded web application server extensible with C++
 dev-libs/totem-pl-parser 3.10.7: Playlist parsing library
@@ -5109,11 +5109,11 @@ dev-libs/urdfdom_headers 0.4.2 1.0.0 9999: URDF (U-Robot Description Format) hea
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.7.13 0.8.6 0.9.1 0.9.2: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library for C
-dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
+dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.32.1 0.34.8 0.34.9: Build infrastructure for packages that use Vala
-dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
+dev-libs/vanessa-adt 0.0.6 0.0.9: Abstract Data Types. Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.2.0 1.3.0 1.3.1 1.3.2: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume encryption keys
@@ -5141,7 +5141,7 @@ dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0 0.20.0-r1: Common Lisp implementation for the JVM
 dev-lisp/asdf 1.89 3.0.3 3.1.5 3.1.6 3.1.7 3.2.0 3.2.0-r1 3.2.1: ASDF is Another System Definition Facility for Common Lisp
-dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
+dev-lisp/asdf-binary-locations 20061018: ASDF-Extension to specify where Common Lisp binaries (FASL files) should go
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
@@ -5210,7 +5210,7 @@ dev-ml/async_rpc_kernel 0.9.0: Platform-independent core of Async RPC library
 dev-ml/async_ssl 0.9.0: An Async-pipe-based interface with OpenSSL.
 dev-ml/async_unix 0.9.0: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/atd 1.2.0 1.2.1 1.12.0: Syntax for cross-language type definitions
-dev-ml/atdgen 1.10.0 1.10.2 1.12.0: Generates optimized boilerplate OCaml code for JSON and Biniou IO from type definitions
+dev-ml/atdgen 1.10.0 1.10.2 1.12.0: Generates boilerplate OCaml code for JSON and Biniou IO from type definitions
 dev-ml/base 0.9.1 0.9.2 0.9.3: Standard library for OCaml
 dev-ml/batteries 2.5.3 2.6.0: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 0.9.0: Core-flavoured wrapper around zarith's arbitrary-precision rationals
@@ -5246,7 +5246,7 @@ dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dns-async 1.0.0: Async support of OCaml DNS
 dev-ml/dns-lwt 1.0.0: Lwt support of OCaml DNS
 dev-ml/dns-lwt-unix 1.0.0: Lwt support of OCaml DNS
-dev-ml/dose3 5.0.1: Library and a collection of tools to perform la large spectrum of analysis on package repositories
+dev-ml/dose3 5.0.1: Library to perform analysis on package repositories
 dev-ml/easy-format 1.0.2 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
@@ -5292,19 +5292,19 @@ dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/mtime 0.8.4 1.0.0 1.1.0: OCaml module to access monotonic wall-clock time
-dev-ml/oasis 0.4.8 0.4.10: OASIS is a tool to integrate a configure, build and install system in OCaml project
+dev-ml/oasis 0.4.8 0.4.10: Tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0 2.2.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-bigstring 0.1.1: Overlay over bigarrays of chars
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
-dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libraries so they do not expose everything at toplevel
+dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libs so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.15.3 0.15.4: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 1.2 1.3: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 3.0.1 3.0.2 3.1.0 3.1.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0 0.12.1: Library for binding to C libraries using pure OCaml
-dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
+dev-ml/ocaml-data-notation 0.0.11-r1: Use type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0 0.4.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-dns 0.20.1 1.0.0: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
@@ -5339,13 +5339,13 @@ dev-ml/ocamlbuild 0.10.1 0.11.0: Generic build tool with built-in rules for buil
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files
 dev-ml/ocamlgraph 1.8.7: O'Caml Graph library
-dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
+dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.8: Generate OCaml modules from source files
 dev-ml/ocamlnet 4.1.2: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39: O'Caml literate programming tool
-dev-ml/ocplib-endian 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
+dev-ml/ocplib-endian 1.0: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
 dev-ml/ocsigen-i18n 3.1.0: I18n made easy for web sites written with eliom
 dev-ml/ocsigen-start 1.0.0 9999: Eliom Base Application with users, (pre)registration, notifications, etc.
 dev-ml/ocsigen-toolkit 1.0.0 9999: User interface widgets for Ocsigen applications
@@ -5361,7 +5361,7 @@ dev-ml/pa_bench 112.06.00: Syntax extension writing inline benchmarks
 dev-ml/pa_ounit 113.00.00: Syntax extension that helps writing in-line test in ocaml
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
-dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
+dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library to exploit multicore architectures for OCaml programs
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.2.3 7.3.0: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
@@ -6007,7 +6007,7 @@ dev-perl/HTML-FormatText-WithLinks-AndTables 0.60.0 0.70.0: Converts HTML to tex
 dev-perl/HTML-FromText 2.50.0-r1 2.70.0: Convert plain text to HTML
 dev-perl/HTML-HTMLDoc 0.100.0-r1: Perl interface to the htmldoc program for producing PDF-Files from HTML-Content
 dev-perl/HTML-Highlight 0.200.0: A module to highlight words or patterns in HTML documents
-dev-perl/HTML-LinkExtractor 0.130.0-r1: A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions
+dev-perl/HTML-LinkExtractor 0.130.0-r1: A bare-bone HTML parser, similar to HTML::Parser
 dev-perl/HTML-Mason 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
@@ -6016,7 +6016,7 @@ dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
 dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
-dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions
+dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser
 dev-perl/HTML-Strip 2.90.0: Extension for stripping HTML markup from text
 dev-perl/HTML-StripScripts 1.60.0: Strip scripting constructs out of HTML
 dev-perl/HTML-StripScripts-Parser 1.30.0: XSS filter using HTML::Parser
@@ -6056,7 +6056,7 @@ dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
 dev-perl/Hash-Merge-Simple 0.51.0: Recursively merge two or more hashes, simply
 dev-perl/Hash-MoreUtils 0.20.0-r1 0.50.0: Provide the stuff missing in Hash::Util
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
-dev-perl/Hash-NoRef 0.30.0-r1: A HASH that store values without increasing the reference count (weak references)
+dev-perl/Hash-NoRef 0.30.0-r1: Hash to store values without increasing reference count (weak references)
 dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sorted
 dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
@@ -6763,7 +6763,7 @@ dev-perl/Text-Patch 1.800.0-r1: Patches text with given patch
 dev-perl/Text-Quoted 2.90.0: Extract the structure of a quoted mail message
 dev-perl/Text-Reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
-dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
+dev-perl/Text-Shellwords 1.80.0-r1: Parse text and return a set of tokens using the same rules as the Unix shell
 dev-perl/Text-Soundex 3.50.0: Implementation of the soundex algorithm
 dev-perl/Text-Table 1.130.0 1.132.0: Organize Data in Tables
 dev-perl/Text-Template 1.460.0-r1 1.470.0: Expand template text with embedded Perl
@@ -6887,7 +6887,7 @@ dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Directory 1.0.0: Returns a content of directory as XML
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
-dev-perl/XML-Elemental 2.110.0-r1: an XML::Parser style and generic classes for simplistic and perlish handling of XML data
+dev-perl/XML-Elemental 2.110.0-r1: XML::Parser style and generic classes for handling of XML data
 dev-perl/XML-Encoding 2.90.0: Perl Module that parses encoding map XML files
 dev-perl/XML-Entities 1.0.200: Decode strings with XML entities
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
@@ -6921,7 +6921,7 @@ dev-perl/XML-SAX-Writer 0.560.0: SAX2 Writer
 dev-perl/XML-Simple 2.200.0-r1 2.220.0: An API for simple XML files
 dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their DTDs
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
-dev-perl/XML-Smart 1.790.0: A smart, easy and powerful way to access or create XML from fiels, data and URLs.
+dev-perl/XML-Smart 1.790.0: Access or create XML from fields, data and URLs.
 dev-perl/XML-Stream 1.240.0: Creates and XML Stream connection and parses return data
 dev-perl/XML-TreePP 0.430.0: Pure Perl implementation for parsing/writing XML documents
 dev-perl/XML-Twig 3.520.0: Process huge XML documents in tree mode
@@ -7279,7 +7279,7 @@ dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.9 1.7.15: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
-dev-python/PyECLib 1.4.0: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/PyECLib 1.4.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.28: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.26.0: Python library to work with pdf files
@@ -7415,7 +7415,7 @@ dev-python/bpython 0.13.2 0.16 0.16-r1: Syntax highlighting and autocompletion f
 dev-python/breathe 4.6.0: Sphinx Doxygen renderer
 dev-python/brython 3.3.0 3.3.1 3.3.2: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
-dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
+dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cached-property 0.1.5 1.0.0 1.2.0 1.3.0: A cached-property for decorating methods in classes
 dev-python/cachetools 1.1.5 2.0.0: Extensible memoizing collections and decorators
@@ -7436,7 +7436,7 @@ dev-python/celery 3.1.24-r1 4.0.2: Asynchronous task queue/job queue based on di
 dev-python/cement 2.0.2 2.10.0: CLI Application Framework for Python
 dev-python/certifi 2016.9.26 2017.1.23 2017.4.17: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.5.2 1.9.1 1.10.0: Foreign Function Interface for Python calling C code
-dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
+dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0-r1: Python library for creating 3D images
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
@@ -7459,7 +7459,7 @@ dev-python/click-plugins 1.0.3: Module for click to enable registering CLI comma
 dev-python/click-threading 0.1.2 0.3.0: Multithreaded Click apps made easy.
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
 dev-python/cliff 2.4.0: Command Line Interface Formulation Framework
-dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output in programs created by the cliff framework
+dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output for the cliff framework
 dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GIS command line programs
 dev-python/clint 0.3.1-r1 0.4.1 0.5.1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
@@ -19566,7 +19566,7 @@ xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
-xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.3: A flexible, easy-to-use configuration management system for Xfce
+xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.3: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.3 4.12.4 4.13.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
@@ -19601,12 +19601,12 @@ xfce-extra/xfce4-kbdleds-plugin 0.0.6: A panel plug-in to show state of Caps, Nu
 xfce-extra/xfce4-linelight-plugin 0.1.7: A simple locate based search plug-in for the Xfce panel
 xfce-extra/xfce4-mailwatch-plugin 1.2.0: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-messenger-plugin 0.1.0: A plugin that listens DBus messages and displays received messages
-xfce-extra/xfce4-mixer 4.11.0: A volume control application (and panel plug-in) for the Xfce desktop environment
+xfce-extra/xfce4-mixer 4.11.0: A volume control application and panel plug-in for Xfce
 xfce-extra/xfce4-modemlights-plugin 0.1.3.99: A panel plug-in intended to simplify establishing a ppp connection
 xfce-extra/xfce4-mount-plugin 0.6.7 1.1.2: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.4.5 0.5.0: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.2.4 1.3.1: A network load plug-in for the Xfce panel
-xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitoring panel plug-in, inspired by Gnome's Netspeed applet
+xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitor for the panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.2.4 0.3.6: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
@@ -19618,7 +19618,7 @@ xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the
 xfce-extra/xfce4-screenshooter 1.8.2 1.9.1: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.2.6 1.2.98: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.4.6 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
-xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha (from the same authors)
+xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha
 xfce-extra/xfce4-systemload-plugin 1.1.2 1.2.1: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.0.1 1.1.0 1.2.0: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer
@@ -19630,7 +19630,7 @@ xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.2: Daemon to control volume up/down and
 xfce-extra/xfce4-wavelan-plugin 0.5.12 0.6.0: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.8.8 0.8.9: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.2 2.1.2: Alternate application launcher for Xfce
-xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel
+xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.7.1-r1 0.8.0: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.4.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
