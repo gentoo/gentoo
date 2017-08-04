@@ -5000,7 +5000,7 @@ dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interf
 dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.5.2 1.6.3 1.6.4 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
-dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
+dev-libs/mapm 4.9.5 4.9.5-r1: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.2 2.4.0 2.5.3 2.7.0: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
