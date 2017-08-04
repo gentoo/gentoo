@@ -11785,7 +11785,7 @@ gnustep-apps/sogo 3.2.9 3.2.10: Groupware server built around OpenGroupware.org 
 gnustep-apps/sudoku 0.7: Sudoku generator for GNUstep
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
-gnustep-apps/terminal 0.9.8: A terminal emulator for GNUstep
+gnustep-apps/terminal 0.9.8 0.9.9: A terminal emulator for GNUstep
 gnustep-apps/textedit 0.95_pre20100427 0.95_pre20100427-r1: A text editor with font, color, and style capabilities for GNUstep
 gnustep-apps/zipper 1.5: Zipper is a tool for inspecting and extracting compressed archives
 gnustep-base/gnustep-back-art 0.25.0 0.25.1: libart_lgpl back-end component for the GNUstep GUI Library
@@ -15607,7 +15607,7 @@ net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta 
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/litecoind 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
+net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
