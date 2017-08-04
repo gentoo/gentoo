@@ -19,9 +19,9 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-	$(use_with audiofile) \
-	$(use_with gcrypt libgcrypt) \
-	$(use_with jpeg libjpeg) \
-	$(use_with png libpng) \
-	$(use_with zlib )
+		$(use_with audiofile) \
+		$(use_with gcrypt libgcrypt) \
+		$(use_with jpeg libjpeg) \
+		$(use_with png libpng) \
+		$(use_with zlib)
 }
