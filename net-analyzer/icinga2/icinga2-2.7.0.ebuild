@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 if [[ ${PV} != 9999 ]]; then
 	inherit cmake-utils depend.apache eutils systemd toolchain-funcs user wxwidgets
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -69,6 +69,7 @@ src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DICINGA2_SYSCONFIGFILE=/etc/conf.d/icinga2
+		-DICINGA2_PLUGINDIR="/usr/$(get_libdir)/nagios/plugins"
 		-DICINGA2_USER=icinga
 		-DICINGA2_GROUP=icingacmd
 		-DICINGA2_COMMAND_USER=icinga
