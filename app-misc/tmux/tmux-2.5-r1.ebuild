@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 
+# Blocking app-vim/vim-tmux due to file collision, fixed in -r2
+# fixes bug 627032
 CDEPEND="
+	!app-vim/vim-tmux
 	dev-libs/libevent:0=
 	sys-libs/ncurses:0=
 	utempter? (
