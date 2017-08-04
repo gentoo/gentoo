@@ -23,10 +23,10 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-	$(use_with audiofile libaudiofile) \
-	$(use_with bzip2 bzip2) \
-	$(use_with gcrypt libgcrypt) \
-	$(use_with zlib zlib)
+		$(use_with audiofile libaudiofile) \
+		$(use_with bzip2 bzip2) \
+		$(use_with gcrypt libgcrypt) \
+		$(use_with zlib zlib)
 }
 
 src_install() {
