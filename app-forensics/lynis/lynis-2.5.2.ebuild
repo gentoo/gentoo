@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit eutils bash-completion-r1
 
 DESCRIPTION="Security and system auditing tool"
-HOMEPAGE="http://cisofy.com/lynis/"
-SRC_URI="http://cisofy.com/files/${P}.tar.gz"
+HOMEPAGE="https://cisofy.com/lynis/"
+SRC_URI="https://cisofy.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,7 +26,8 @@ src_prepare() {
 
 src_install() {
 	doman lynis.8
-	dodoc CHANGELOG FAQ README
+	dodoc FAQ README
+	newdoc CHANGELOG.md CHANGELOG
 
 	# Remove the old one during the next stabilize progress
 	exeinto /etc/cron.daily
