@@ -19,7 +19,7 @@ IUSE="X doc grabbitmqproxy icu pam +pic vgauth xinerama"
 COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libdnet
-	sys-fs/fuse
+	sys-fs/fuse:0
 	>=sys-process/procps-3.3.2
 	grabbitmqproxy? ( dev-libs/openssl:0 )
 	icu? ( dev-libs/icu:= )
