@@ -9,6 +9,7 @@ KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86 amd64-linux x86-linux"
 
 RDEPEND="
 	|| (
+		=dev-libs/leveldb-1.18-r2
 		=dev-libs/leveldb-1.18-r1
 		=dev-libs/leveldb-1.18
 		=dev-libs/leveldb-1.17
