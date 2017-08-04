@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ inherit autotools linux-mod pam systemd toolchain-funcs user
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
-MY_P="${P}-4449150"
-SRC_URI="https://github.com/vmware/open-vm-tools/files/590760/${MY_P}.tar.gz"
+MY_P="${P}-6082533"
+SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -19,7 +19,7 @@ IUSE="X doc grabbitmqproxy icu pam +pic vgauth xinerama"
 COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libdnet
-	sys-fs/fuse
+	sys-fs/fuse:0
 	>=sys-process/procps-3.3.2
 	grabbitmqproxy? ( dev-libs/openssl:0 )
 	icu? ( dev-libs/icu:= )
@@ -53,7 +53,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 "
 
-S="${WORKDIR}/${MY_P}/open-vm-tools"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
@@ -129,6 +129,13 @@ src_install() {
 	newinitd "${FILESDIR}/open-vm-tools.initd" vmware-tools
 	newconfd "${FILESDIR}/open-vm-tools.confd" vmware-tools
 	systemd_dounit "${FILESDIR}"/vmtoolsd.service
+
+	# Replace mount.vmhgfs with a wrapper
+	mv "${ED%/}"/usr/sbin/{mount.vmhgfs,hgfsmounter} || die
+	dosbin "${FILESDIR}/mount.vmhgfs"
+
+	# Make fstype = vmhgfs-fuse work in fstab
+	dosym vmhgfs-fuse /usr/bin/mount.vmhgfs-fuse
 
 	if use X; then
 		fperms 4711 /usr/bin/vmware-user-suid-wrapper
