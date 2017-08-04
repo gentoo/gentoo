@@ -1,5 +1,5 @@
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -45,7 +45,12 @@
  AC_CHECK_FUNCS(getopt_long)
  AC_CHECK_FUNCS(getaddrinfo)
