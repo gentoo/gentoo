@@ -11,3 +11,5 @@ LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+PATCHES=( "${FILESDIR}/remove_globals.patch" )
