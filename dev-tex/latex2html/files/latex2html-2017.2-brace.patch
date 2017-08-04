@@ -1,0 +1,36 @@
+diff -ruN latex2html-2017.2.orig/versions/html3_2.pl latex2html-2017.2/versions/html3_2.pl
+--- latex2html-2017.2.orig/versions/html3_2.pl	2017-01-23 17:14:25.000000000 -0000
++++ latex2html-2017.2/versions/html3_2.pl	2017-08-04 09:38:17.219909442 -0000
+@@ -607,7 +607,7 @@
+ 
+     if ($color_env) {
+ 	local($color_test) = join(',',@$open_tags_R);
+-	if ($color_test =~ /(color{[^}]*})/g ) {
++	if ($color_test =~ /(color\{[^}]*})/g ) {
+ 	    $color_env = $1;
+ 	}
+     }
+diff -ruN latex2html-2017.2.orig/versions/html4_01.pl latex2html-2017.2/versions/html4_01.pl
+--- latex2html-2017.2.orig/versions/html4_01.pl	2017-01-23 17:14:25.000000000 -0000
++++ latex2html-2017.2/versions/html4_01.pl	2017-08-04 09:39:32.529023088 -0000
+@@ -976,7 +976,7 @@
+ 
+     if ($color_env) {
+ 	local($color_test) = join(',',@$open_tags_R);
+-	if ($color_test =~ /(color{[^}]*})/g ) {
++	if ($color_test =~ /(color\{[^}]*})/g ) {
+ 	    $color_env = $1;
+ 	}
+     }
+diff -ruN latex2html-2017.2.orig/versions/html4_1.pl latex2html-2017.2/versions/html4_1.pl
+--- latex2html-2017.2.orig/versions/html4_1.pl	2017-01-23 17:14:25.000000000 -0000
++++ latex2html-2017.2/versions/html4_1.pl	2017-08-04 09:37:48.507866114 -0000
+@@ -976,7 +976,7 @@
+ 
+     if ($color_env) {
+ 	local($color_test) = join(',',@$open_tags_R);
+-	if ($color_test =~ /(color{[^}]*})/g ) {
++	if ($color_test =~ /(color\{[^}]*})/g ) {
+ 	    $color_env = $1;
+ 	}
+     }
