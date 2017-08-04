@@ -46,8 +46,8 @@ src_install() {
 	newins "${FILESDIR}"/mlocate.cron-r3 mlocate
 	fperms 0755 /etc/cron.daily/mlocate
 
-	systemd_dounit "${FILESDIR}"/updatedb.service
-	systemd_dounit "${FILESDIR}"/updatedb.timer
+	systemd_dounit "${FILESDIR}"/mlocate.service
+	systemd_dounit "${FILESDIR}"/mlocate.timer
 
 	fowners 0:locate /usr/bin/locate
 	fperms go-r,g+s /usr/bin/locate
@@ -67,7 +67,7 @@ pkg_postinst() {
 
 	if systemd_is_booted; then
 		elog
-		elog "The systemd timer updatedb.timer has been installed,"
+		elog "The systemd timer mlocate.timer has been installed,"
 		elog "please activate it with 'systemd enable updatedb.timer'"
 	fi
 }

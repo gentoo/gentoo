@@ -1,0 +1,13 @@
+[Unit]
+Description=Update locate database
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "rm -f /var/lib/mlocate/mlocate.db.*"
+ExecStart=/bin/sh -c "NODEVS=\"\"; \
+                      [ ! -f /etc/updatedb.conf ] && NODEVS=`awk \'\$1 == \"nodev\" && \$2 != \"rootfs\" { print \$2 }\' /proc/filesystems`; \
+                      /usr/bin/updatedb -f \"$NODEVS\""
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7

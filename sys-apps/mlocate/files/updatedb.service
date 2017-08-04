@@ -1,7 +1,0 @@
-[Unit]
-Description=Update locate database
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/updatedb
-IOSchedulingClass=idle
