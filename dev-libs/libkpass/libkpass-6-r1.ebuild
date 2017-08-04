@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases"
+DESCRIPTION="Libkpass is a C implementation to access KeePass 1.x format password databases"
 HOMEPAGE="http://libkpass.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
 
 inherit eutils
 
-DESCRIPTION="The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems"
+DESCRIPTION="The Parma Polyhedra Library for numerical analysis of complex systems"
 HOMEPAGE="http://bugseng.com/products/ppl"
 SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.bz2"
 
