@@ -7035,7 +7035,7 @@ dev-php/PEAR-HTML_Table_Matrix 1.0.9 1.0.10 1.0.10-r1: Autofill a table with dat
 dev-php/PEAR-HTML_Template_Flexy 1.3.13: An extremely powerful Tokenizer driven Template engine
 dev-php/PEAR-HTML_Template_IT 1.3.0 1.3.0-r1: Integrated Templates
 dev-php/PEAR-HTML_Template_Sigma 1.3.0: An implementation of Integrated Templates API with template 'compilation' added
-dev-php/PEAR-HTML_TreeMenu 1.2.2 1.2.2-r1: Provides an API to create a HTML tree
+dev-php/PEAR-HTML_TreeMenu 1.2.2-r1: Provides an API to create a HTML tree
 dev-php/PEAR-HTTP 1.4.1-r2: Miscellaneous HTTP utilities
 dev-php/PEAR-HTTP_Client 1.2.1 1.2.1-r1: Perform multiple HTTP requests and process their results
 dev-php/PEAR-HTTP_Download 1.1.4: Provides functionality to send HTTP downloads
