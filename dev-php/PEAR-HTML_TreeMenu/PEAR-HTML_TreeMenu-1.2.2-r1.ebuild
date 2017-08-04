@@ -11,6 +11,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/modern-syntax.patch" )
+
 src_install() {
 	php-pear-r2_src_install
 	docinto html
