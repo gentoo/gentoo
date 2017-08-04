@@ -27,6 +27,18 @@ RDEPEND="${CDEPEND}
 	cron? ( virtual/cron )
 	bzip2? ( app-arch/bzip2 )"
 
+STATEFILE="/var/lib/misc/logrotate.status"
+OLDSTATEFILE="/var/lib/logrotate.status"
+
+move_old_state_file() {
+	elog "logrotate state file is now located at ${STATEFILE}"
+	elog "See bug #357275"
+	if [[ -e "${OLDSTATEFILE}" ]] ; then
+		elog "Moving your current state file to new location: ${STATEFILE}"
+		mv -n "${OLDSTATEFILE}" "${STATEFILE}"
+	fi
+}
+
 install_cron_file() {
 	exeinto /etc/cron.daily
 	newexe "${S}"/examples/logrotate.cron "${PN}"
@@ -46,7 +58,7 @@ src_configure() {
 	if use bzip2 ; then
 		compressconf="--with-compress-command=/bin/bzip2 --with-uncompress-command=/bin/bunzip2 --with-compress-extension=.bz2"
 	fi
-	econf $(use_with acl) $(use_with selinux) ${compressconf}
+	econf $(use_with acl) $(use_with selinux) ${compressconf} --with-state-file-path="${STATEFILE}"
 }
 
 src_test() {
@@ -73,12 +85,14 @@ pkg_postinst() {
 	elog "The ${PN} binary is now installed under /usr/bin. Please"
 	elog "update your links"
 	elog
+	move_old_state_file
+	elog
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "If you wish to have logrotate e-mail you updates, please"
 		elog "emerge virtual/mailx and configure logrotate in"
 		elog "/etc/logrotate.conf appropriately"
 		elog
 		elog "Additionally, /etc/logrotate.conf may need to be modified"
-		elog "for your particular needs.  See man logrotate for details."
+		elog "for your particular needs. See man logrotate for details."
 	fi
 }
