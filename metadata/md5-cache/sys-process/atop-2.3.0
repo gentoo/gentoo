@@ -1,14 +1,13 @@
-DEFINED_PHASES=compile install postinst postrm preinst prepare pretend setup
-DEPEND=sys-libs/ncurses:0= sys-process/acct virtual/pkgconfig kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) virtual/pkgconfig
+DEFINED_PHASES=install prepare pretend setup
+DEPEND=sys-libs/ncurses:0= sys-process/acct virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=Resource-specific view of processes
 EAPI=6
 HOMEPAGE=https://www.atoptool.nl/ https://github.com/Atoptool/atop
-IUSE=kernel_linux
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses:0= sys-process/acct kernel_linux? ( virtual/modutils )
+RDEPEND=sys-libs/ncurses:0= sys-process/acct
 SLOT=0
 SRC_URI=https://github.com/Atoptool/atop/archive/v2.3.0.tar.gz -> atop-2.3.0.tar.gz https://github.com/Atoptool/atop/commit/42e86fcc42ce60f8c92f3c7d5f3a6ccde47c0b33.patch -> atop-2.3.0-version_h.patch https://github.com/Atoptool/atop/commit/a8d850d06efc8d70a19f55ec93fe83df51e99077.patch -> atop-2.3.0-version_c.patch https://github.com/Atoptool/atop/commit/5f101e656a24271726d1e9cd672631b6033c36c1.patch -> atop-2.3.0-netatop_h.patch
-_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:linux-mod src_prepare:- src_compile:linux-mod src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=b28ad409d9952fd0173ff459aada0541
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:linux-info src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=db3cc78e64c99e5fc9bec6f674897260
