@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit linux-mod systemd toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Resource-specific view of processes"
 HOMEPAGE="https://www.atoptool.nl/ https://github.com/Atoptool/atop"
@@ -39,7 +39,8 @@ PATCHES=(
 
 pkg_pretend() {
 	if use kernel_linux ; then
-		CONFIG_CHECK="BSD_PROCESS_ACCT"
+		CONFIG_CHECK="~BSD_PROCESS_ACCT"
+		check_extra_config
 	fi
 }
 
