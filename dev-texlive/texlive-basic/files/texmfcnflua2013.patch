@@ -1,0 +1,49 @@
+Index: work/texmf-dist/web2c/texmfcnf.lua
+===================================================================
+--- work.orig/texmf-dist/web2c/texmfcnf.lua
++++ work/texmf-dist/web2c/texmfcnf.lua
+@@ -30,7 +30,7 @@ return {
+             -- most cases you can leve this one untouched. The built-in definition
+             -- permits relocation of the tree.
+             --
+-            -- TEXMFCNF     = "{selfautodir:,selfautoparent:}{,{/share,}/texmf{-local,}/web2c}"
++            -- TEXMFCNF     = "selfautodir:share/texmf-dist/web2c"
+             --
+             -- more readable than "selfautoparent:{/texmf{-local,}{,/web2c},}}" is:
+             --
+@@ -44,14 +44,14 @@ return {
+ 
+             -- only used for FONTCONFIG_PATH & TEXMFCACHE in TeX Live
+ 
+-            TEXMFSYSVAR     = "selfautoparent:texmf-var",
+-            TEXMFVAR        = "home:.texlive2013/texmf-var",
++            TEXMFSYSVAR     = "selfautoparent:var/lib/texmf",
++            TEXMFVAR        = "home:.texlive/texmf-var",
+ 
+             -- We have only one cache path but there can be more. The first writable one
+             -- will be chosen but there can be more readable paths.
+ 
+             TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR",
+-            TEXMFCONFIG     = "home:.texlive2013/texmf-config",
++            TEXMFCONFIG     = "home:.texlive/texmf-config",
+ 
+             -- I don't like this texmf under home and texmf-home would make more
+             -- sense. One never knows what installers put under texmf anywhere and
+@@ -62,12 +62,12 @@ return {
+             -- entry. This makes the tex root relocatable.
+ 
+             TEXMFOS         = "selfautodir:",
+-            TEXMFDIST       = "selfautoparent:texmf-dist",
++            TEXMFDIST       = "selfautoparent:share/texmf-dist",
+ 
+-            TEXMFLOCAL      = texmflocal,
+-            TEXMFSYSCONFIG  = "selfautoparent:texmf-config",
+-            TEXMFFONTS      = "selfautoparent:texmf-fonts",
+-            TEXMFPROJECT    = "selfautoparent:texmf-project",
++            TEXMFLOCAL      = "selfautodir:local/share/texmf",
++            TEXMFSYSCONFIG  = "selfautoparent:etc/texmf",
++            TEXMFFONTS      = "selfautodir:share/texmf-dist",
++            TEXMFPROJECT    = "selfautodir:share/texmf-dist",
+ 
+             TEXMFHOME       = "home:texmf",
+          -- TEXMFHOME       = os.name == "macosx" and "home:Library/texmf" or "home:texmf",
