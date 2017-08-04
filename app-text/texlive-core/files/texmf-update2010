@@ -1,0 +1,165 @@
+#!/bin/bash
+#
+# Utility to update Gentoo TeXLive distribution configuration files
+#
+
+echo "Configuring TeXLive ..."
+
+PATH=/bin:/usr/bin
+
+# Fix for all those with altered umask for root
+umask 022
+
+# Make sure we have a correct environment, bug #30432
+# The list of env. vars is taken from the INSTALL file
+for texvar in AFMFONTS BIBINPUTS BSTINPUTS DVILJFONTS DVIPSFONTS \
+	DVIPSHEADERS GFFONTS GLYPHFONTS INDEXSTYLE MFBASES MFINPUTS \
+	MFPOOL MFTINPUTS MPINPUTS MPMEMS MPPOOL MPSUPPORT OCPINPUTS \
+	OFMFONTS OPLFONTS OTPINPUTS OVFFONTS OVPFONTS PKFONTS PSHEADERS \
+	T1FONTS T1INPUTS TEXBIB TEXCONFIG TEXDOCS TEXFONTMAPS TEXFONTS \
+	TEXFORMATS TEXINDEXSTYLE TEXINPUTS TEXMFCNF TEXMFDBS TEXMFINI \
+	TEXPICTS TEXPKS TEXPOOL TEXPSHEADERS TEXSOURCES TFMFONTS TRFONTS \
+	VFFONTS XDVIFONTS XDVIVFS ; do
+
+	if [ "${!texvar}" ]; then
+		if ! $(echo ${!texvar} | grep '^:\|::\|:$' &>/dev/null) ; then
+			export ${texvar}="${!texvar}:"
+		fi
+	fi
+done
+
+if [ "$TEXINPUTS" ]; then
+	if $(echo ${TEXINPUTS} | grep '/usr/share/texmf' &>/dev/null) ; then
+		export TEXINPUTS=$(echo ${TEXINPUTS} | sed -e 's|/usr/share/texmf/*:\?||g')
+	elif $(echo ${TEXINPUTS} | grep '/var/lib/texmf' &>/dev/null) ; then
+		export TEXINPUTS=$(echo ${TEXINPUTS} | sed -e 's|/var/lib/texmf/*:\?||g')
+	fi
+fi
+
+MKTEMP_COMMAND="mktemp -t tmp.XXXXXXXXXX"
+DIFF_COMMAND="cmp -s"
+TEMP_FILE="`${MKTEMP_COMMAND}`"
+
+if [ -z "${TEMP_FILE}" ]; then
+    exit
+fi
+
+# check whether config files for fmtutil and updmap have changed
+STATUS_FMTUTIL="0"
+STATUS_UPDMAP="0"
+
+if [ -d /etc/texmf/texmf.d ]; then
+    echo "Generating /etc/texmf/web2c/texmf.cnf from /etc/texmf/texmf.d ..."
+    cat /etc/texmf/texmf.d/*.cnf > "/etc/texmf/web2c/texmf.cnf"
+fi
+
+if [ -d /etc/texmf/fmtutil.d ]; then
+    echo "Generating /etc/texmf/web2c/fmtutil.cnf from /etc/texmf/fmtutil.d ..."
+    if [ -f /etc/texmf/web2c/fmtutil.cnf ]; then
+	cp -f /etc/texmf/web2c/fmtutil.cnf ${TEMP_FILE}
+    else
+	touch ${TEMP_FILE}
+    fi
+    cat /etc/texmf/fmtutil.d/*.cnf > "/etc/texmf/web2c/fmtutil.cnf"
+    ${DIFF_COMMAND} /etc/texmf/web2c/fmtutil.cnf ${TEMP_FILE}
+    STATUS_FMTUTIL="${STATUS_FMTUTIL}$?"
+else
+# if no regeneration took place:
+# always regenerate the formats to be on the safe side
+    STATUS_FMTUTIL="${STATUS_FMTUTIL}3"
+fi
+
+if [ -d /etc/texmf/updmap.d ]; then
+    if [ -f /etc/texmf/web2c/updmap.cfg ]; then
+	cp -f /etc/texmf/web2c/updmap.cfg ${TEMP_FILE}
+    else
+	touch ${TEMP_FILE}
+    fi
+    echo "Generating /etc/texmf/web2c/updmap.cfg from /etc/texmf/updmap.d ..."
+    cat /etc/texmf/updmap.d/*.cfg > "/etc/texmf/web2c/updmap.cfg"
+    ${DIFF_COMMAND} /etc/texmf/web2c/updmap.cfg ${TEMP_FILE}
+    STATUS_UPDMAP="${STATUS_UPDMAP}$?"
+else
+# if no regeneration could be done:
+# always regenerate the maps to be on the safe side
+    STATUS_UPDMAP="${STATUS_UPDMAP}3"
+fi
+
+echo "Generating ls-R files"
+mktexlsr &>/dev/null
+
+# Generate language.dat file, from texlive install-pkg.sh
+X=`kpsewhich language.dat`
+Z=`dirname $X`
+if [ -n "$X" -a -f "$Z/language.dat" -a -f "$Z/language.us" ] ; then
+    echo "Generating language.dat file"
+
+    # Save the old one, we will check if it has changed
+    cp -f "$Z/language.dat" "${TEMP_FILE}"
+
+    cat "$Z/language.us" > "$Z/language.dat"
+    for i in /etc/texmf/language.dat.d/language.*.dat; do
+            [ -f "$i" ] && cat "$i" >> "$Z/language.dat"
+    done
+
+    ${DIFF_COMMAND} "$Z/language.dat" "${TEMP_FILE}"
+    STATUS_FMTUTIL="${STATUS_FMTUTIL}$?"
+fi
+
+# Generate language.def file.
+if [ -n "$X" -a -f "$Z/language.def" -a -f "$Z/language.us.def" ] ; then
+    echo "Generating language.def file"
+
+    # Save the old one, we will check if it has changed
+    cp -f "$Z/language.def" "${TEMP_FILE}"
+
+    cat "$Z/language.us.def" > "$Z/language.def"
+    for i in /etc/texmf/language.def.d/language.*.def; do
+            [ -f "$i" ] && cat "$i" >> "$Z/language.def"
+    done
+    cat << EOF >> "$Z/language.def"
+%%% No changes may be made beyond this point.
+
+\uselanguage {USenglish}             %%% This MUST be the last line of the file.
+EOF
+
+    ${DIFF_COMMAND} "$Z/language.def" "${TEMP_FILE}"
+    STATUS_FMTUTIL="${STATUS_FMTUTIL}$?"
+fi
+
+# Generate language.dat.lua file.
+if [ -n "$X" -a -f "$Z/language.dat.lua" -a -f "$Z/language.us.lua" ] ; then
+    echo "Generating language.dat.lua file"
+
+    # Save the old one, we will check if it has changed
+    cp -f "$Z/language.dat.lua" "${TEMP_FILE}"
+
+    cat "$Z/language.us.lua" > "$Z/language.dat.lua"
+    for i in /etc/texmf/language.dat.lua.d/language.*.dat.lua; do
+            [ -f "$i" ] && cat "$i" >> "$Z/language.dat.lua"
+    done
+    printf "}\n" >> "$Z/language.dat.lua"
+
+    ${DIFF_COMMAND} "$Z/language.dat.lua" "${TEMP_FILE}"
+    STATUS_FMTUTIL="${STATUS_FMTUTIL}$?"
+fi
+
+if [ "${STATUS_FMTUTIL}" -ne 0 ] ; then
+    echo "Generating format files ..."
+    fmtutil-sys --all &>/dev/null
+else
+    echo "Skipping format files, since they are unchanged"
+fi
+
+if [ "${STATUS_UPDMAP}" -ne 0 ] ; then
+    echo "Generating font maps..."
+    updmap-sys &>/dev/null
+else
+    echo "Skipping font maps, since they are unchanged"
+fi
+
+rm -f ${TEMP_FILE}
+
+echo
+echo "Use 'texconfig font ro'(rw) to disable (enable) font generation for users"
+echo
