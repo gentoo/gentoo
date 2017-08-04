@@ -12,8 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.3.5[gcrypt?]
-	audiofile? ( >=media-libs/audiofile-0.3.6 )"
+RDEPEND=">=app-emulation/libspectrum-1.3.5[gcrypt?,zlib?]
+	audiofile? ( >=media-libs/audiofile-0.3.6 )
+	jpeg? ( virtual/jpeg )
+	png? ( media-libs/libpng )
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
