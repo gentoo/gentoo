@@ -4,7 +4,7 @@
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="Cyclically spawns the executable, captures its output and displays the result into the panel"
+DESCRIPTION="Cyclically spawned executable output on the panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 

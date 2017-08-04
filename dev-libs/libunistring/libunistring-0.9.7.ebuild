@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils multilib-minimal libtool
 
-DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
+DESCRIPTION="Library for manipulating Unicode and C strings according to Unicode standard"
 HOMEPAGE="https://www.gnu.org/software/libunistring/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
