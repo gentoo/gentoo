@@ -2463,7 +2463,7 @@ app-text/teseq 1.1.1: A tool for analyzing files that contain control characters
 app-text/tesseract 3.04.01 3.04.01-r1 3.05.00 3.05.01 4.00.00_alpha 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2015 2016 2017: A complete TeX distribution
-app-text/texlive-core 2015-r1 2016-r5 2017-r2: A complete TeX distribution
+app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5 2017-r2: A complete TeX distribution
 app-text/tidy-html5 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -3020,7 +3020,7 @@ dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLit
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 4.2.0.16.355.0402 4.2.0.17.097.0719: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.0.2.15.21 4.1.3.20.78-r1 4.1.5.21.78 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.16.2 3.17.0 3.18.0 3.19.2 3.19.3: A SQL Database Engine in a C Library
+dev-db/sqlite 3.16.2 3.17.0 3.18.0 3.19.2 3.19.3 3.20.0: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.9.1-r1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r2 1.2.2-r3: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -5006,7 +5006,7 @@ dev-libs/mathjax 2.2 2.4.0 2.5.3 2.7.0: JavaScript display engine for LaTeX, Mat
 dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mini-xml 2.10: Small XML parsing library to read XML and XML-like data files
-dev-libs/mm 1.4.2-r1: Shared Memory Abstraction Library
+dev-libs/mm 1.4.2-r1 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2: A high-performance MongoDB driver for C
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mozldap 6.0.6-r2 6.0.7 6.0.7-r1: Mozilla LDAP C SDK
@@ -9267,7 +9267,7 @@ dev-ros/rosmaster 1.13.0 1.13.1 9999: ROS Master implementation
 dev-ros/rosmsg 1.13.0 1.13.1 9999: Command-line tools for displaying information about message and services
 dev-ros/rosnode 1.13.0 1.13.1 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.13.0 1.13.1 9999: System-wide logging mechanism for messages sent to the /rosout topic
-dev-ros/rospack 2.4.1 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rospack 2.4.1 2.4.2 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.13.0 1.13.1 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.13.0 1.13.1 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
@@ -9321,7 +9321,7 @@ dev-ros/rqt_tf_tree 0.5.6 0.5.7 0.5.8 9999: GUI plugin for visualizing the ROS T
 dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.7 0.4.8 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
-dev-ros/rviz 1.12.8 1.12.10 9999: 3D visualization tool for ROS
+dev-ros/rviz 1.12.8 1.12.10 1.12.11 9999: 3D visualization tool for ROS
 dev-ros/rviz_plugin_tutorials 0.10.1-r2 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 9999: Robot self-test node
@@ -10198,7 +10198,7 @@ dev-tex/tth 3.77 4.08: Translate TEX into HTML
 dev-tex/vc 0.5: The vc (version control) bundle
 dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2015 2016 2017-r1: TeXLive Essential programs and files
+dev-texlive/texlive-basic 2012 2013 2014 2015 2016 2017-r1: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2015 2016 2017: TeXLive BibTeX additional styles
 dev-texlive/texlive-context 2015 2016 2017: TeXLive ConTeXt and packages
 dev-texlive/texlive-documentation-base 2012: TeXLive TeX Live documentation
@@ -10217,7 +10217,7 @@ dev-texlive/texlive-langcjk 2015 2016 2017: TeXLive Chinese/Japanese/Korean (bas
 dev-texlive/texlive-langcyrillic 2015 2016 2017: TeXLive Cyrillic
 dev-texlive/texlive-langczechslovak 2015-r1 2016 2017: TeXLive Czech/Slovak
 dev-texlive/texlive-langenglish 2015 2016 2017: TeXLive US and UK English
-dev-texlive/texlive-langeuropean 2015 2016 2017: TeXLive Other European languages
+dev-texlive/texlive-langeuropean 2013 2014 2015 2016 2017: TeXLive Other European languages
 dev-texlive/texlive-langfrench 2015 2016 2017: TeXLive French
 dev-texlive/texlive-langgerman 2015 2016 2017: TeXLive German
 dev-texlive/texlive-langgreek 2015 2016 2017: TeXLive Greek
@@ -10233,7 +10233,7 @@ dev-texlive/texlive-latex 2015 2016 2017: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2015-r1 2016 2017: TeXLive LaTeX additional packages
 dev-texlive/texlive-latexrecommended 2015-r1 2016 2017: TeXLive LaTeX recommended packages
 dev-texlive/texlive-luatex 2015 2016 2017: TeXLive LuaTeX packages
-dev-texlive/texlive-mathextra 2015: TeXLive Mathematics packages
+dev-texlive/texlive-mathextra 2012 2012-r1 2013 2014 2015: TeXLive Mathematics packages
 dev-texlive/texlive-mathscience 2016 2017: TeXLive Mathematics and science packages
 dev-texlive/texlive-metapost 2015 2016 2017: TeXLive MetaPost and Metafont packages
 dev-texlive/texlive-music 2015 2016 2017: TeXLive Music packages
@@ -10243,7 +10243,7 @@ dev-texlive/texlive-plainextra 2015 2016: TeXLive Plain TeX packages
 dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
 dev-texlive/texlive-pstricks 2015 2016 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses, etc.
-dev-texlive/texlive-science 2015: TeXLive Natural and computer sciences
+dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 3.4.5-r1: Open source data visualization and analysis for novice and experts.
@@ -10551,7 +10551,7 @@ dev-util/regexxer 0.10: An interactive tool for performing search and replace op
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/repo 1.12.37: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
-dev-util/rosdep 0.11.5 0.11.6 9999: Command-line tool for installing ROS system dependencies
+dev-util/rosdep 0.11.5 0.11.6 0.11.8 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.3 8.3-r1 8.5 8.10: Collection of rpm packaging related utilities
@@ -14375,7 +14375,7 @@ net-analyzer/nagios-check_logfiles 3.7.6.3: A nagios plugin for checking logfile
 net-analyzer/nagios-check_mysql_health 2.1.9.2 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
-net-analyzer/nagios-check_rbl 1.3.7-r1: Monitor whether or not a host is blacklisted
+net-analyzer/nagios-check_rbl 1.3.7-r1 1.4.1: Monitor whether or not a host is blacklisted
 net-analyzer/nagios-core 3.5.1 4.3.1-r1 4.3.2: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.0.3-r2 2.2.1: Official plugins for Nagios
@@ -14814,7 +14814,7 @@ net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.2: A user friendly IRC Client
-net-irc/kvirc 5.0_pre20170202154736 5.0_pre20170401092246 5.0_pre20170601121930 9999: Advanced IRC Client
+net-irc/kvirc 5.0_pre20170202154736 5.0_pre20170401092246 5.0_pre20170601121930 5.0_pre20170801214745 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating system
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
