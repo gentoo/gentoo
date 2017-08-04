@@ -1,0 +1,12 @@
+diff -ruN Text-VimColor-0.26.orig/Makefile.PL Text-VimColor-0.26/Makefile.PL
+--- Text-VimColor-0.26.orig/Makefile.PL	2015-03-21 04:14:35.000000000 -0000
++++ Text-VimColor-0.26/Makefile.PL	2017-08-04 09:46:55.760799972 -0000
+@@ -12,6 +12,8 @@
+ 
+ use 5.006;
+ 
++use lib q[.];
++
+ use inc::VimCommand;
+ use ExtUtils::MakeMaker;
+ 
