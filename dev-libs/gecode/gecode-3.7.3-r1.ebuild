@@ -43,9 +43,6 @@ src_install() {
 	fi
 
 	if use examples; then
-		docinto examples
-		doins examples/*.cpp
-		einfo "Example C++ programs have been installed into " \
-			"/usr/share/doc/${PF}/examples"
+		dodoc -r examples
 	fi
 }
