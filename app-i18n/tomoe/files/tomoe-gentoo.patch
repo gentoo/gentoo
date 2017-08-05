@@ -1,0 +1,22 @@
+--- a/module/dict/Makefile.am
++++ b/module/dict/Makefile.am
+@@ -34,7 +34,7 @@
+ 
+ LIBADD = $(TOMOE_LIBS)			\
+ 	$(top_builddir)/lib/libtomoe.la
+-LDFLAGS =							\
++AM_LDFLAGS =							\
+   -rpath $(dict_moduledir) -avoid-version -module		\
+   -export-dynamic $(no_undefined) $(LIBTOOL_EXPORT_OPTIONS)
+ 
+--- a/module/recognizer/Makefile.am
++++ b/module/recognizer/Makefile.am
+@@ -23,7 +23,7 @@
+ AM_CPPFLAGS =
+ INCLUDES = $(TOMOE_CFLAGS)
+ 
+-LDFLAGS =							\
++AM_LDFLAGS =							\
+   -rpath $(recognizer_moduledir) -avoid-version -module		\
+   -export-dynamic $(no_undefined) $(LIBTOOL_EXPORT_OPTIONS)
+ 

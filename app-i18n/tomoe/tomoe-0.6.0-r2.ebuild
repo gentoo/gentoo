@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -48,9 +48,9 @@ pkg_setup() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${P}-export-symbols.patch" \
-		"${FILESDIR}/${P}-ldflags.patch" \
-		"${FILESDIR}/${P}-glib232.patch"
+		"${FILESDIR}/${PN}-gentoo.patch" \
+		"${FILESDIR}/${PN}-export-symbols.patch" \
+		"${FILESDIR}/${PN}-glib-2.32.patch"
 
 	if ! use hyperestraier ; then
 		sed -i -e "s/use_est=yes/use_est=no/" configure.ac || die
