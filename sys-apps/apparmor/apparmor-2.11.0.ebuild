@@ -44,6 +44,10 @@ src_compile()  {
 	use doc && emake pdf
 }
 
+src_test() {
+	emake CXX="$(tc-getCXX)" USE_SYSTEM=1 check
+}
+
 src_install() {
 	emake DESTDIR="${D}" USE_SYSTEM=1 install
 
