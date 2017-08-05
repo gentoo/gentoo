@@ -175,7 +175,9 @@ exportmakeopts() {
 		|| myopts+=" NO_TCLTK=YesPlease"
 	use pcre \
 		&& myopts+=" USE_LIBPCRE=yes" \
-		&& extlibs+=" -lpcre"
+		&& extlibs+=" -lpcre" \
+		&& has_version "dev-libs/libpcre[jit]" \
+		|| myopts+=" NO_LIBPCRE1_JIT=YesPlease"
 	use perl \
 		&& myopts+=" INSTALLDIRS=vendor" \
 		|| myopts+=" NO_PERL=YesPlease"
