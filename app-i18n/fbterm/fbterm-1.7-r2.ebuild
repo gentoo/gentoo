@@ -6,8 +6,8 @@ EAPI="6"
 inherit autotools
 
 DESCRIPTION="Fast terminal emulator for the Linux framebuffer"
-HOMEPAGE="https://fbterm.googlecode.com/"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.0.tar.gz"
+HOMEPAGE="https://code.google.com/p/fbterm"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.0.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
