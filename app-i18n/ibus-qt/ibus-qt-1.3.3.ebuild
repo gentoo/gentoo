@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS README TODO"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3-doc.patch )
+PATCHES=( "${FILESDIR}"/${PN}-doc.patch )
 
 src_configure() {
 	local mycmakeargs=( -DLIBDIR=$(get_libdir) all )
