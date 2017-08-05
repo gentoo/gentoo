@@ -32,7 +32,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-libs/kirigami:2
+	$(add_frameworks_dep kirigami '' 2.2.0)
 "
 RDEPEND="${DEPEND}
 	!dev-util/plasmate
