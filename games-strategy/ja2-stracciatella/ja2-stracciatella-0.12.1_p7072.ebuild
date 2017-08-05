@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils games
 
 DESCRIPTION="A port of Jagged Alliance 2 to SDL"
-HOMEPAGE="http://tron.homeunix.org/ja2/"
+HOMEPAGE="https://ja2-stracciatella.github.io/"
 SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz
 	http://tron.homeunix.org/ja2/editor.slf.gz"
 
@@ -25,6 +25,7 @@ REQUIRED_USE="^^ ( ${LANGS//+/} )"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-makefile.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 
 	sed \
 		-e "s:/some/place/where/the/data/is:${GAMES_DATADIR}/ja2:" \
