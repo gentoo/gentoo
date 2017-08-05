@@ -5,7 +5,7 @@ EAPI=5
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-USE_RUBY="ruby21"
+USE_RUBY="ruby21 ruby22"
 RUBY_OPTIONAL=yes
 
 PYTHON_COMPAT=(python2_7 python3_{4,5,6})
