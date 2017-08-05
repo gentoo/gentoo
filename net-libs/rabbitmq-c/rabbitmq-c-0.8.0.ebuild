@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/alanxz/${PN}.git"
 else
 	SRC_URI="https://github.com/alanxz/${PN}/archive/v${PV}.zip -> ${PN}-v${PV}.zip"
-	KEYWORDS="amd64 arm ~arm64 hppa x86"
+	KEYWORDS="amd64 arm ~arm64 hppa ~ppc x86"
 fi
 
 LICENSE="MIT"
