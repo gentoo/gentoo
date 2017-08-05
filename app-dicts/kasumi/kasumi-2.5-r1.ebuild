@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI="6"
 
 DESCRIPTION="Anthy dictionary maintenance tool"
 HOMEPAGE="http://kasumi.sourceforge.jp/"
@@ -14,18 +12,15 @@ SLOT="0"
 KEYWORDS="alpha amd64 ppc sparc x86 ~x86-fbsd"
 IUSE="nls"
 
-RDEPEND=">=x11-libs/gtk+-2.6:2
-	nls? ( virtual/libintl )
+RDEPEND="app-i18n/anthy
 	virtual/libiconv
-	>=app-i18n/anthy-6131"
-
+	x11-libs/gtk+:2
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-r1-fix-desktop-QA.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-desktop.patch )
 
 src_configure() {
 	econf $(use_enable nls)
