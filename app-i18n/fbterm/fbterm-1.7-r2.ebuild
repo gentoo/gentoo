@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools
+inherit autotools fcaps
 
 DESCRIPTION="Fast terminal emulator for the Linux framebuffer"
 HOMEPAGE="https://code.google.com/p/fbterm"
@@ -12,11 +12,10 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="caps gpm video_cards_vesa"
+IUSE="gpm video_cards_vesa"
 
 RDEPEND="media-libs/fontconfig
 	media-libs/freetype:2
-	caps? ( sys-libs/libcap )
 	gpm? ( sys-libs/gpm )
 	video_cards_vesa? ( dev-libs/libx86 )"
 DEPEND="${RDEPEND}
@@ -24,6 +23,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-gcc6.patch )
+
+FILECAPS=(
+	cap_sys_tty_config+ep usr/bin/${PN}
+)
 
 src_prepare() {
 	sed -i "s|tic|tic -o '\$(DESTDIR)\$(datadir)/terminfo'|" terminfo/Makefile.am
@@ -41,14 +44,12 @@ src_configure() {
 src_install() {
 	default
 
-	if use caps; then
-		setcap "cap_sys_tty_config+ep" "${ED}"/usr/bin/${PN}
-	else
-		fperms u+s /usr/bin/${PN}
-	fi
+	use filecaps || fperms u+s /usr/bin/${PN}
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
+
 	elog "${PN} won't work with vga16fb. You have to use other native"
 	elog "framebuffer drivers or vesa driver."
 	elog "See ${EPREFIX}/usr/share/doc/${P}/README for details."
