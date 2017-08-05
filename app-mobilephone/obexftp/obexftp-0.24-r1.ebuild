@@ -4,7 +4,9 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-inherit cmake-utils python-single-r1 python-utils-r1 eutils multilib
+USE_RUBY="ruby21 ruby22"
+
+inherit cmake-utils python-single-r1 python-utils-r1 ruby-single eutils multilib
 
 DESCRIPTION="File transfer over OBEX for mobile phones"
 HOMEPAGE="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
@@ -23,7 +25,7 @@ RDEPEND="
 	net-wireless/bluez
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby:2.1 )
+	ruby? ( ${RUBY_DEPS} )
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="
