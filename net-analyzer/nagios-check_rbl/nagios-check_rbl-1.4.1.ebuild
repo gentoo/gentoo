@@ -15,6 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
+# No, this is not redundant -- see bug 627082.
+RESTRICT=test
+
 # The package's INSTALL/Makefile.PL files specify its dependencies.
 #
 #   * Data::Validate::Domain (dev-perl/Data-Validate-Domain)
