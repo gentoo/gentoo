@@ -1,5 +1,9 @@
---- fbterm-1.7/src/lib/vterm_states.cpp.old	2016-09-24 00:44:29.981247206 -0400
-+++ fbterm-1.7/src/lib/vterm_states.cpp	2016-09-24 00:48:40.463777924 -0400
+https://bugs.gentoo.org/show_bug.cgi?id=594308
+
+Author: Peter Levine <plevine457@gmail.com>
+
+--- a/src/lib/vterm_states.cpp
++++ b/src/lib/vterm_states.cpp
 @@ -39,14 +39,14 @@
  	{ 0x1B, 0,	ESesc },
  	{ 0x7F, 0,	ESkeep },
