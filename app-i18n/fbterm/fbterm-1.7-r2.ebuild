@@ -1,60 +1,58 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit autotools-utils
+EAPI="6"
+
+inherit autotools fcaps
 
 DESCRIPTION="Fast terminal emulator for the Linux framebuffer"
-HOMEPAGE="https://fbterm.googlecode.com/"
-SRC_URI="https://fbterm.googlecode.com/files/${P}.0.tar.gz"
+HOMEPAGE="https://code.google.com/p/fbterm"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.0.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="caps gpm video_cards_vesa"
+IUSE="gpm video_cards_vesa"
 
-RDEPEND="caps? ( sys-libs/libcap )
+RDEPEND="media-libs/fontconfig
+	media-libs/freetype:2
 	gpm? ( sys-libs/gpm )
-	video_cards_vesa? ( dev-libs/libx86 )
-	media-libs/fontconfig
-	media-libs/freetype:2"
+	video_cards_vesa? ( dev-libs/libx86 )"
 DEPEND="${RDEPEND}
 	sys-libs/ncurses
 	virtual/pkgconfig"
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
+PATCHES=( "${FILESDIR}"/${PN}-gcc6.patch )
 
-DOCS=( AUTHORS NEWS README )
-
-PATCHES=(
-	"${FILESDIR}"/${P}-gcc6.patch
+FILECAPS=(
+	cap_sys_tty_config+ep usr/bin/${PN}
 )
 
+src_prepare() {
+	sed -i "s|tic|tic -o '\$(DESTDIR)\$(datadir)/terminfo'|" terminfo/Makefile.am
+
+	default
+	eautoreconf
+}
+
 src_configure() {
-	local myeconfargs=(
-		$(use_enable gpm)
+	econf \
+		$(use_enable gpm) \
 		$(use_enable video_cards_vesa vesa)
-	)
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
-	$(type -P tic) -o "${ED}/usr/share/terminfo/" \
-		"${S}"/terminfo/fbterm || die "Failed to generate terminfo database"
-	if use caps; then
-		setcap "cap_sys_tty_config+ep" "${ED}"/usr/bin/fbterm
-	else
-		fperms u+s /usr/bin/fbterm
-	fi
+	default
+
+	use filecaps || fperms u+s /usr/bin/${PN}
 }
 
 pkg_postinst() {
-	einfo
-	einfo " ${PN} won't work with vga16fb. You have to use other native"
-	einfo " framebuffer drivers or vesa driver."
-	einfo " See ${EPREFIX}/usr/share/doc/${P}/README for details."
-	einfo " To use ${PN}, ensure you are in video group."
-	einfo " To input CJK merge app-i18n/fbterm-ucimf"
-	einfo
+	fcaps_pkg_postinst
+
+	elog "${PN} won't work with vga16fb. You have to use other native"
+	elog "framebuffer drivers or vesa driver."
+	elog "See ${EPREFIX}/usr/share/doc/${P}/README for details."
+	elog
+	elog "To use ${PN}, ensure you are in video group."
 }
