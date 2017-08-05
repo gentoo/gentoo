@@ -18,6 +18,7 @@ RDEPEND="app-i18n/ibus
 	dev-libs/icu:=
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
+	dev-qt/qtgui:4
 	sys-apps/dbus
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
