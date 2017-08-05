@@ -20,7 +20,7 @@ SRC_URI="http://lammps.sandia.gov/tars/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples gzip lammps-memalign mpi python static-libs"
 
 # blas/lapack is needed by the ATC package which is only built with MPI.
