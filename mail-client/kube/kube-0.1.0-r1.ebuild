@@ -28,7 +28,7 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	>=app-crypt/gpgme-1.7.1:=[cxx,qt5]
 	dev-libs/kasync
-	dev-libs/kirigami:1
+	kde-frameworks/kirigami:1
 	dev-libs/sink
 "
 DEPEND="${RDEPEND}"
