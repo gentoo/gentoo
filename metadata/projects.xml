@@ -3020,11 +3020,12 @@ developers and volunteer mentors.</description>
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Facebook (editor), Events, Telegram (admin), Slack (admin)</role>
+      <role>Facebook (admin), Twitter, Events, Telegram (admin), Slack (admin)</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
+      <role>Cafepress store, Facebook (editor)</role>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -3038,7 +3039,7 @@ developers and volunteer mentors.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Facebook (admin), G+, Twitter, Telegram (admin), Slack (admin)</role>
+      <role>Cafepress store, Facebook (admin), G+, Twitter, Telegram (admin), Slack (admin)</role>
     </member>
     <member>
       <email>nightmorph@gentoo.org</email>
