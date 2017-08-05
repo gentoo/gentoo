@@ -19,7 +19,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/glib:2
 	hyperestraier? ( app-text/hyperestraier )
-	mysql? ( dev-db/mysql )
+	mysql? ( virtual/libmysqlclient )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pygobject:2[${PYTHON_USEDEP}]
