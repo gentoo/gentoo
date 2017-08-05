@@ -3,13 +3,11 @@
 
 EAPI=6
 
-inherit eutils versionator
+inherit eutils
 
 SLOT="0"
-PV_STRING="$(get_version_component_range 4-6)"
-MY_PV="$(get_version_component_range 1-3)"
 
-SRC_URI="http://download.jetbrains.com/cpp/CLion-${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
+SRC_URI="http://download.jetbrains.com/cpp/CLion-${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A complete toolset for C and C++ development"
 HOMEPAGE="http://www.jetbrains.com/clion"
 
@@ -17,22 +15,22 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 
+# RDEPENDS may cause false positives in repoman.
+# clion requires cmake and gdb at runtime to build and debug C/C++ projects
 RDEPEND="
-	${DEPEND}
 	sys-devel/gdb
 	dev-util/cmake"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
-QA_PREBUILT="opt/${PN}-${MY_PV}/*"
+QA_PREBUILT="opt/${P}/*"
 
 src_prepare() {
 	default
 
 	local remove_me=(
-		bin/gdb
+		bin/gdb/bin
+		bin/gdb/lib
+		bin/gdb/share
 		bin/cmake
-		license/GDB*
 		license/CMake*
 		plugins/tfsIntegration/lib/native/hpux
 		plugins/tfsIntegration/lib/native/solaris
@@ -47,7 +45,7 @@ src_prepare() {
 }
 
 src_install() {
-	local dir="/opt/${PN}-${MY_PV}"
+	local dir="/opt/${P}"
 
 	insinto "${dir}"
 	doins -r *
