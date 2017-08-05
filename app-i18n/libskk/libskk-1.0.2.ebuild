@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit ltprune virtualx vala
+inherit ltprune vala virtualx
 
 DESCRIPTION="GObject-based library to deal with Japanese kana-to-kanji conversion method"
 HOMEPAGE="https://github.com/ueno/libskk"
