@@ -5,11 +5,10 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
-  <longdescription lang="en">IBus means Intelligent Input Bus. It is a new input framework for Linux OS. It provides
-full featured and user friendly input method user interface. It also may help
-developers to develop input method easily.</longdescription>
+  <longdescription lang="en">
+    The Qt client for IBus. It provides a Qt immodule.
+  </longdescription>
   <upstream>
-    <remote-id type="google-code">ibus</remote-id>
     <remote-id type="github">ibus/ibus-qt</remote-id>
   </upstream>
 </pkgmetadata>
