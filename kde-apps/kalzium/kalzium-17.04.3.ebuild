@@ -43,6 +43,8 @@ RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
 "
 
+PATCHES=( "${FILESDIR}/${P}-ocaml404.patch" ) # bug 603050
+
 src_configure(){
 	# Fix missing finite()
 	[[ ${CHOST} == *-solaris* ]] && append-cppflags -DHAVE_IEEEFP_H

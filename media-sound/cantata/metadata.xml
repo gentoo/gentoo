@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="cdio">Use <pkg>dev-libs/libcdio-paranoia</pkg> for CD support (instead of cdparanoia)</flag>
 		<flag name="http-server">Enable internal HTTP server to play non-MPD files</flag>
 		<flag name="replaygain">Enable ReplayGain support, for relative volume adjustments</flag>
 	</use>

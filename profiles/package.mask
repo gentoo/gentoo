@@ -29,6 +29,47 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (04 Aug 2017)
+# Temporary mask as current net-ftp/filezilla does not compile
+# with it, bug #626292
+=dev-libs/libfilezilla-0.10.0
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# Obsolete. Replaced by media-gfx/graphite2. No longer used
+# by anything. Removal in 30 days. Bug #594314.
+media-libs/silgraphite
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# Dependency of dev-texlive/texlive-basic-2012 no longer needed for
+# the current versions. Removal in 14 days.
+dev-texlive/texlive-documentation
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# sys-boot/plymouth is unmaintained since Apr 2016. The current version
+# has multiple bugs, including not supporting OpenRC. It really needs
+# an active maintainer. Removal in 30 days. Bug #621470.
+#
+# The remaining packages are sys-boot/plymouth reverse dependencies.
+# They have no use without it, so they are being removed as well.
+kde-plasma/breeze-plymouth
+kde-plasma/plymouth-kcm
+sys-boot/plymouth
+sys-boot/plymouth-openrc-plugin
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# sys-apps/yum is severely outdated (last bump 2013), unmaintained
+# since 2010. It has vulnerabilities. Removal in 30 days. Bug #499328.
+#
+# app-arch/createrepo is the last unmasked dependency. Since it is not
+# useful at all without yum, it is being removed as well. Bug #620992.
+app-arch/createrepo
+sys-apps/yum
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# Unmaintained since mid-2016, requires an active maintainer. Has
+# multiple build failure bugs. Removal in 30 days. Bug #580516.
+sys-kernel/openvz-sources
+
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
 # Its pre release so better to mask it
 =media-gfx/freecad-0.17_pre*
@@ -621,7 +662,7 @@ dev-perl/Params-ValidationCompiler
 # in case of gcc switch the compiler) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-4.9
-<sys-libs/glibc-2.23
+<sys-libs/glibc-2.23-r4
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
 # Old versions of CUDA and their reverse dependencies. They do not
@@ -671,10 +712,6 @@ app-emulation/wine-vanilla
 app-emulation/wine-staging
 app-emulation/wine-d3d9
 app-emulation/wine-any
-
-# Yixun Lan <dlan@gentoo.org> (30 Mar 2017)
-# Masked, broken due to emoji support which requre npm package installed (bug #612218)
-=app-i18n/ibus-1.5.15
 
 # Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
 # Masked until Mozilla and Chrome agreed how to handle

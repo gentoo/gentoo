@@ -6,6 +6,6 @@
     <name>Gentoo ML Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="bitbucket">mmottl/ocaml-makefile</remote-id>
+    <remote-id type="github">mmottl/ocaml-makefile</remote-id>
   </upstream>
 </pkgmetadata>

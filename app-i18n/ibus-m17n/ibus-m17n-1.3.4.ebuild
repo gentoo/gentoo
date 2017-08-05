@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-DESCRIPTION="The M17N engine IMEngine for IBus Framework"
+DESCRIPTION="M17N engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${P}.tar.gz"
 

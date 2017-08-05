@@ -1,92 +1,70 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils multilib python-single-r1
+
+inherit autotools ltprune python-single-r1
 
 DESCRIPTION="Japanese handwriting recognition engine"
-HOMEPAGE="http://tomoe.sourceforge.jp/"
-SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
+HOMEPAGE="http://tomoe.osdn.jp/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="doc hyperestraier mysql ruby python static-libs subversion"
+IUSE="hyperestraier mysql python ruby static-libs subversion"
+RESTRICT="test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND=">=dev-libs/glib-2.4
-	ruby? ( dev-ruby/ruby-glib2 )
+RDEPEND="dev-libs/glib:2
 	hyperestraier? ( app-text/hyperestraier )
-	subversion? (
-		>=dev-libs/apr-1
-		dev-vcs/subversion
-	)
-	mysql? ( dev-db/mysql )
+	mysql? ( virtual/libmysqlclient )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pygobject:2[${PYTHON_USEDEP}]
 		dev-python/pygtk:2[${PYTHON_USEDEP}]
-	)"
-#	test? ( app-dicts/uconv )
-
-DEPEND="${DEPEND}
+	)
+	ruby? ( dev-ruby/ruby-glib2 )
+	subversion? ( dev-vcs/subversion )"
+DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	dev-util/intltool
-	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+	virtual/pkgconfig"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-export-symbols.patch
+	"${FILESDIR}"/${PN}-glib-2.32.patch
+)
 
 pkg_setup() {
-	if use python ; then
-		python-single-r1_pkg_setup
-	fi
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/${P}-export-symbols.patch" \
-		"${FILESDIR}/${P}-ldflags.patch" \
-		"${FILESDIR}/${P}-glib232.patch"
+	sed -i \
+		-e "s/use_est=yes/use_est=$(usex hyperestraier)/" \
+		-e "s/use_mysql=yes/use_mysql=$(usex mysql)/" \
+		configure.ac
 
-	if ! use hyperestraier ; then
-		sed -i -e "s/use_est=yes/use_est=no/" configure.ac || die
-	fi
-	if ! use mysql ; then
-		sed -i -e "s/use_mysql=yes/use_mysql=no/" configure.ac || die
-	fi
-	if ! use subversion ; then
-		sed -i -e "s/use_svn=yes/use_svn=no/" macros/svn.m4 || die
-	fi
+	sed -i "s/use_svn=yes/use_svn=$(usex subversion)/" macros/svn.m4
 
+	default
 	eautoreconf
 }
 
 src_configure() {
-	local myconf
-
-	# --with-python b0rked hard
-	unset PYTHON
-	use python || myconf="${myconf} --without-python"
-
 	econf \
-		$(use_enable doc gtk-doc) \
-		$(use_with ruby) \
-		$(use_enable static-libs static) \
 		$(use_enable ruby dict-ruby) \
-		${myconf} || die
+		$(use_enable static-libs static) \
+		$(use_with python python "") \
+		$(use_with ruby) \
+		--with-svn-include="${EPREFIX}"/usr/include \
+		--with-svn-lib="${EPREFIX}"/usr/$(get_libdir)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-
-	find "${ED}/usr/$(get_libdir)/tomoe" \( -name '*.la' -o -name '*.a' \) -type f -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -type f -delete || die
-	fi
-
-	dodoc AUTHORS ChangeLog NEWS TODO || die
+	default
+	prune_libtool_files --modules
 }

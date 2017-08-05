@@ -126,7 +126,7 @@ src_prepare() {
 		fi
 
 		eapply "${WORKDIR}/psi-plus/patches"/*.diff
-		use sql && eapply "${PATCHES_DIR}/dev/psi-new-history.patch"
+		use sql && eapply "${WORKDIR}/psi-plus/patches/dev/psi-new-history.patch"
 
 		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
 		features="$(use webkit && echo '--webkit') $(use webengine && echo '--webengine') $(use sql && echo '--sql')"

@@ -93,7 +93,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	dev-util/ninja
-	net-libs/nodejs
+	>=net-libs/nodejs-4.6.1
 	sys-apps/hwids[usb(+)]
 	tcmalloc? ( !<sys-apps/sandbox-2.11 )
 	>=sys-devel/bison-2.4.3
@@ -185,6 +185,7 @@ src_prepare() {
 		"${FILESDIR}/${PN}-widevine-r1.patch"
 		"${FILESDIR}/${PN}-FORTIFY_SOURCE-r1.patch"
 		"${FILESDIR}/${PN}-gn-bootstrap-r8.patch"
+		"${FILESDIR}/${PN}-major-minor.patch"
 	)
 
 	default

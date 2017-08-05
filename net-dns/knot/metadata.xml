@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ondrej@sury.org</email>
-		<name>Ondřej Surý</name>
+		<email>nemunaire@nemunai.re</email>
+		<name>Pierre-Olivier Mercier</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
