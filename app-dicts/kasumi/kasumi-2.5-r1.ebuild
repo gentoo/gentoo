@@ -4,7 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="Anthy dictionary maintenance tool"
-HOMEPAGE="http://kasumi.sourceforge.jp/"
+HOMEPAGE="http://kasumi.osdn.jp/"
 SRC_URI="mirror://sourceforge.jp/${PN}/41436/${P}.tar.gz"
 
 LICENSE="GPL-2"
