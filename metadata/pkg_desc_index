@@ -10051,7 +10051,7 @@ dev-scheme/gauche-kakasi 0.1: Kakasi binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3: Small process-control library for Guile
 dev-scheme/greg 2.0.0 2.0.0-r1: Testing-Framework for guile
-dev-scheme/guile 1.8.8-r3 2.0.13-r1 2.0.14 2.0.14-r1: GNU Ubiquitous Intelligent Language for Extensions
+dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r2: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1 2.16.1-r1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-gui 0.2: Guile Scheme code that aims to implement a graphical user interface
@@ -13056,7 +13056,7 @@ media-libs/libdvdcss 1.2.13 1.2.13-r1 1.3.0 1.3.99 1.4.0: A portable abstraction
 media-libs/libdvdnav 4.2.1 5.0.1 5.0.3 9999: Library for DVD navigation tools
 media-libs/libdvdplay 1.0.1: A simple library designed for DVD-menu navigation
 media-libs/libdvdread 4.2.1 5.0.0-r2 5.0.2 5.0.3 9999: Library for DVD navigation tools
-media-libs/libebur128 1.0.2 1.0.3 1.1.0 1.2.0-r1: A library implementing the EBU R128 loudness standard
+media-libs/libebur128 1.0.2 1.0.3 1.1.0 1.2.0-r1 1.2.2: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.4.1 1.4.2 1.4.3 9999: Epoxy is a library for handling OpenGL function pointer management for you
@@ -13189,7 +13189,7 @@ media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library f
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 17.1.4 17.1.5 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.4.1-r2: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.4.1-r2 6.4.1-r3: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.27 1.31 1.35.1 1.36.3 1.37: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
