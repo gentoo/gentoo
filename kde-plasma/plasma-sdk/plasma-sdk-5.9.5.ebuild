@@ -33,7 +33,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-libs/kirigami:1
+	kde-frameworks/kirigami:1
 "
 RDEPEND="${DEPEND}
 	!dev-util/plasmate

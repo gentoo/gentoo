@@ -30,7 +30,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_qt_dep qtquickcontrols)
-	dev-libs/kirigami:2
+	$(add_frameworks_dep kirigami '' 2.2.0)
 	!kde-apps/analitza:4
 "
 

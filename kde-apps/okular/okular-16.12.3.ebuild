@@ -52,7 +52,7 @@ DEPEND="
 	tiff? ( media-libs/tiff:0 )
 "
 RDEPEND="${DEPEND}
-	mobile? ( dev-libs/kirigami:1 )
+	mobile? ( kde-frameworks/kirigami:1 )
 "
 
 # bug 603116
