@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -37,9 +37,9 @@ src_configure() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.2.0.20091217-doc.patch" \
-		"${FILESDIR}"/${PN}-1.3.1-display-unset.patch \
-		"${FILESDIR}"/${PN}-1.3.1-gold.patch \
-		"${FILESDIR}"/${PN}-1.3.1-qvariant.patch
+		"${FILESDIR}"/${P}-display-unset.patch \
+		"${FILESDIR}"/${P}-gold.patch \
+		"${FILESDIR}"/${P}-qvariant.patch
 }
 
 src_compile() {
