@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/ripe.atlas.sagan/ripe.atlas.sagan-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 DOCS=( CHANGES.rst README.rst )
 
