@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Lightweight field hash for inside-out objects"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
