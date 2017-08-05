@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic autotools
+inherit flag-o-matic autotools ltprune
 
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
@@ -10,8 +10,10 @@ SRC_URI="mirror://gnu/guile/${P}.tar.gz"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 LICENSE="LGPL-3+"
 IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
-
 # emacs useflag removal not working
+
+# workaround for bug 596322
+REQUIRED_USE="regex"
 
 RDEPEND="
 	>=dev-libs/boehm-gc-7.0[threads?]
@@ -49,6 +51,7 @@ src_configure() {
 	econf \
 		--disable-error-on-warning \
 		--disable-rpath \
+		--disable-static \
 		--enable-posix \
 		--without-libgmp-prefix \
 		--without-libiconv-prefix \
@@ -67,6 +70,7 @@ src_configure() {
 
 src_install() {
 	default
+	prune_libtool_files
 
 	# From Novell
 	# 	https://bugzilla.novell.com/show_bug.cgi?id=874028#c0
