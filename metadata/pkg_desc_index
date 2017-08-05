@@ -12181,7 +12181,7 @@ kde-misc/basket 1.81 2.49a_p20170225: A DropDrawers clone. Multiple information 
 kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
 kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
-kde-misc/kanyremote 6.3.5: KDE frontend to Anyremote
+kde-misc/kanyremote 6.3.5 6.4: KDE frontend to Anyremote
 kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
 kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
