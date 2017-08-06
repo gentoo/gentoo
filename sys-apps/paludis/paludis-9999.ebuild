@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
 SRC_URI=""
 
-IUSE="doc pbins pink python ruby search-index test +xml"
+IUSE="doc pbins pink python ruby ruby_targets_ruby${RUBY_VER/./} search-index test +xml"
 LICENSE="GPL-2 vim"
 SLOT="0"
 KEYWORDS=""
@@ -51,7 +51,8 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="app-eselect/eselect-package-manager"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	ruby? ( ruby_targets_ruby${RUBY_VER/./} )"
 RESTRICT="!test? ( test )"
 
 pkg_pretend() {
