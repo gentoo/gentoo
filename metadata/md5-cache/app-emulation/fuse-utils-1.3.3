@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=app-emulation/libspectrum-1.3.5[gcrypt?,zlib?] audiofile? ( >=media-libs/audiofile-0.3.6 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
+DESCRIPTION=Utils for the Free Unix Spectrum Emulator by Philip Kendall
+EAPI=6
+HOMEPAGE=http://fuse-emulator.sourceforge.net
+IUSE=audiofile gcrypt jpeg png zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-emulation/libspectrum-1.3.5[gcrypt?,zlib?] audiofile? ( >=media-libs/audiofile-0.3.6 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/fuse-emulator/fuse-utils-1.3.3.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=b6e20ea5b934609f1de56da873326575
