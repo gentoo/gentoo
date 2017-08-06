@@ -33,10 +33,12 @@ export KDE_BUILD_TYPE
 case ${CATEGORY} in
 	kde-frameworks)
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
+		[[ ${KDE_BUILD_TYPE} = live || $(get_version_component_range 2) -ge 37 ]] \
+			&& : ${QT_MINIMAL:=5.7.1}
 		;;
 	kde-plasma)
 		: ${QT_MINIMAL:=5.7.1}
-		if [[ ${KDE_BUILD_TYPE} = live && $(get_version_component_range 2) -ne 8 ]]; then
+		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 		fi
 		;;
