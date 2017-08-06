@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtgui:4
 	dev-qt/qtscript:4
 	dev-qt/qtsql:4
-	kde-frameworks/kdelibs:4
+	kde-frameworks/kdelibs:4[plasma(+)]
 	media-libs/alsa-lib
 	x11-libs/libX11
 	x11-libs/libXtst
