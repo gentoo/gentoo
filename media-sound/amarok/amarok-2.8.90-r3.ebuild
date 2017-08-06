@@ -8,6 +8,7 @@ lt lv nb nl pa pl pt pt_BR ro ru sl sr sr@ijekavian sr@ijekavianlatin sr@latin
 sv tr uk zh_CN zh_TW"
 KDE_REQUIRED="never"
 KDE_HANDBOOK="optional"
+SQL_REQUIRED="always"
 VIRTUALX_REQUIRED="test"
 VIRTUALDBUS_TEST="true"
 inherit flag-o-matic kde4-base pax-utils
@@ -30,7 +31,7 @@ fi
 # ipod requires gdk enabled and also gtk compiled in libgpod
 COMMONDEPEND="
 	app-crypt/qca:2[qt4(+)]
-	kde-frameworks/kdelibs:4[opengl?]
+	kde-frameworks/kdelibs:4[opengl?,plasma(+)]
 	$(add_kdeapps_dep kdebase-kioslaves)
 	>=media-libs/taglib-1.7[asf(+),mp4(+)]
 	>=media-libs/taglib-extras-1.0.1
