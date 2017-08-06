@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit findlib eutils
+inherit findlib eutils opam
 
 DESCRIPTION="Meta Language Toolchain"
 HOMEPAGE="https://github.com/facebook/reason"
@@ -15,7 +15,6 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 DEPEND="
-	dev-lang/ocaml:=[ocamlopt?]
 	>=dev-ml/menhir-20170418:=
 	dev-ml/merlin-extend:=
 	dev-ml/result:=
@@ -26,7 +25,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/ocamlbuild
-	dev-ml/opam
 "
 
 S="${WORKDIR}/${PN}"
@@ -38,13 +36,4 @@ src_compile() {
 		--native "$(usex ocamlopt true false)" \
 		--native-dynlink "$(usex ocamlopt true false)" \
 		|| die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		--mandir="${ED}/usr/share/man" \
-		${PN}.install || die
 }
