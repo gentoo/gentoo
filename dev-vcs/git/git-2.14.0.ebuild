@@ -174,7 +174,7 @@ exportmakeopts() {
 	use tk \
 		|| myopts+=" NO_TCLTK=YesPlease"
 	use pcre \
-		&& myopts+=" USE_LIBPCRE=yes" \
+		&& myopts+=" USE_LIBPCRE1=yes" \
 		&& extlibs+=" -lpcre"
 	use perl \
 		&& myopts+=" INSTALLDIRS=vendor" \
