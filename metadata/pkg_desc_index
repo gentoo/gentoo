@@ -2043,10 +2043,10 @@ app-office/kmymoney 4.8.0-r1 4.8.0-r2: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.2.7.2 5.3.4.2 5.3.9999 5.4.9999 9999: A full office productivity suite
+app-office/libreoffice 5.2.7.2 5.3.4.2 5.4.0.3 5.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.2.7.2 5.2.7.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.7.2 5.2.7.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.2.7.2 5.3.4.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.2.7.2 5.3.4.2 5.4.0.3: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
@@ -13617,7 +13617,7 @@ media-plugins/vdr-wapd 0.9 0.9_p1 0.9_p1-r1: VDR plugin: lets VDR listen to WAP 
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xine 0.9.4-r1: VDR plugin: for 'software only' playback using xine
-media-plugins/vdr-xineliboutput 1.1.0 2.0.0_pre20130821 2.0.0_pre20150220 9999: Video Disk Recorder Xinelib PlugIn
+media-plugins/vdr-xineliboutput 1.1.0 2.0.0_pre20130821 2.0.0_pre20150220 2.0.0 9999: Video Disk Recorder Xinelib PlugIn
 media-plugins/vdr-xvdr 9999: VDR plugin: XVDR Streamserver Plugin
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
@@ -17236,7 +17236,7 @@ sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process sy
 sys-apps/osinfo-db 20170326 20170423: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
-sys-apps/paludis 2.4.0-r1 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
+sys-apps/paludis 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
 sys-apps/pciutils 3.4.1 3.5.4 3.5.5: Various utilities dealing with the PCI bus
