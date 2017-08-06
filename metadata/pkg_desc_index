@@ -12723,7 +12723,7 @@ media-gfx/gnome-raw-thumbnailer 3.0.0 3.0.0-r1: A lightweight and fast raw image
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
-media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
+media-gfx/gozer 0.7-r2 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.10 2.5.11: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
@@ -12749,7 +12749,7 @@ media-gfx/img2pdf 0.2.4: Losslessly convert raster images to PDF
 media-gfx/imv 2.1.3 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.91-r3 0.92.1 0.92.1-r1: A SVG based generic vector-drawing program
 media-gfx/ipe 7.1.2 7.1.3: Drawing editor for creating figures in PDF or PS formats
-media-gfx/iscan 2.26.2 2.29.1.5 2.30.1.1: EPSON Image Scan! for Linux (including sane-epkowa backend)
+media-gfx/iscan 2.30.1.1: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.22.0.1 1.36.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
 media-gfx/iscan-plugin-gt-f500 1.0.0.1-r1: Epson Perfection 2480/2580 PHOTO scanner plugin for SANE 'epkowa' backend
@@ -12885,7 +12885,7 @@ media-gfx/ufraw 0.21-r1 0.22 0.22-r1: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Commandline tool for popular vector formats convertion
 media-gfx/valentina 0.4.2-r3 0.4.5 0.5.0 9999: Cloth patternmaking software
 media-gfx/videorbits 2.201 2.205: a collection of programs for creating high dynamic range images
-media-gfx/viewer 0.8.0: A stereo pair image viewer (supports ppm's only)
+media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.6: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/wally 2.4.5: A Qt4/KDE4 wallpaper changer
