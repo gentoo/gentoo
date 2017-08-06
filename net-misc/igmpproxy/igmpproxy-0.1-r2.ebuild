@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit linux-info systemd
 
-DESCRIPTION="Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)"
+DESCRIPTION="Multicast Routing Daemon using only IGMP signalling"
 HOMEPAGE="https://sourceforge.net/projects/igmpproxy"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

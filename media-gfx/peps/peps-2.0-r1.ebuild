@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.peps.redprince.net/peps/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
 DEPEND="app-text/ghostscript-gpl
@@ -25,21 +25,22 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# adding <string.h> include
-	sed -i -e "s:^\(#include.*<unistd.h>.*\):\1\n#include <string.h>:" peps.c
+	sed -i -e "s:^\(#include.*<unistd.h>.*\):\1\n#include <string.h>:" peps.c || die
 	# adding LDFLAGS to Makefile
-	sed -i -e "s:\( -o \): \${LDFLAGS}\1:g" Makefile
+	sed -i -e "s:\( -o \): \${LDFLAGS}\1:g" Makefile || die
 }
 
 src_compile() {
 	local myopts="peps"
 	use X && myopts="${myopts} xpeps"
-	emake CC="$(tc-getCC)" ${myopts} || die "emake failed"
+	emake CC="$(tc-getCC)" ${myopts}
 }
 
 src_install() {
 	# manual install, because fixing dumb Makefile is more compilcated
-	dobin peps || die "install failed"
+	dobin peps
 	use X && dobin xpeps
 
 	doman peps.1
@@ -49,5 +50,5 @@ src_install() {
 	doins peps.mime
 
 	# copy PDF so it won't be compressed
-	cp peps.pdf "${D}usr/share/doc/${PF}"
+	cp peps.pdf "${D}usr/share/doc/${PF}" || die
 }

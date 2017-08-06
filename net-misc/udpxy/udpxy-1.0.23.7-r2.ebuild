@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils systemd toolchain-funcs versionator
 
 MY_PV=$(replace_version_separator 3 -)
-DESCRIPTION="Small-footprint daemon to relay multicast UDP traffic to client's TCP (HTTP) connection"
+DESCRIPTION="Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection"
 HOMEPAGE="https://sourceforge.net/projects/udpxy/"
 SRC_URI="http://www.udpxy.com/download/1_23/${PN}.${MY_PV}-prod.tar.gz"
 
