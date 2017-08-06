@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="Runtime types for OCaml (Extended)"
 HOMEPAGE="https://github.com/janestreet/typerep_extended"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -13,7 +15,6 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-	dev-lang/ocaml:=
 	dev-ml/bin-prot:=
 	dev-ml/core_kernel:=
 	dev-ml/ppx_bin_prot:=
@@ -27,12 +28,4 @@ DEPEND="
 	dev-ml/ocaml-migrate-parsetree:=
 "
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-}
+DEPEND="${DEPEND} dev-ml/jbuilder"
