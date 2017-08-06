@@ -4,7 +4,7 @@
 EAPI="2"
 inherit flag-o-matic eutils autotools
 
-DESCRIPTION="Use DNS functionality to provide access to databases of information that changes infrequently"
+DESCRIPTION="DNS functionality to access to DB of information that changes infrequently"
 HOMEPAGE="ftp://athena-dist.mit.edu/pub/ATHENA/hesiod"
 SRC_URI="ftp://athena-dist.mit.edu/pub/ATHENA/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}-patches.tgz"
