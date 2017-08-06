@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
-IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
+IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux snmp ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
 REQUIRED_USE="cgi? ( !minimal ) apache2? ( cgi )"
 
 # Upstream's listing of required modules is NOT correct!
@@ -35,7 +35,6 @@ DEPEND_COM="
 	dev-perl/Net-CIDR
 	dev-perl/Net-DNS
 	dev-perl/Net-Netmask
-	dev-perl/Net-SNMP
 	dev-perl/Net-Server[ipv6(-)?]
 	virtual/perl-Digest-MD5
 	virtual/perl-Getopt-Long
@@ -66,6 +65,7 @@ DEPEND_COM="
 		dev-perl/DBD-mysql
 		)
 	postgres? ( dev-perl/DBD-Pg dev-db/postgresql:* )
+	snmp? ( dev-perl/Net-SNMP )
 	ssl? ( dev-perl/Net-SSLeay )
 	syslog? ( virtual/perl-Sys-Syslog )
 	!minimal? (
@@ -322,6 +322,10 @@ src_install() {
 		## Update HTML pages every 15 minutes
 		#@ 15	nice /usr/libexec/munin/munin-html
 		EOF
+
+		if ! use snmp ;then
+			rm "${D}"/usr/libexec/munin/plugins/snmp__* || die
+		fi
 
 		# remove .htaccess file
 		find "${D}" -name .htaccess -delete || die
