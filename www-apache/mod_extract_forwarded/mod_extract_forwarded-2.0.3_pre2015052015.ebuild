@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit apache-module
 
-DESCRIPTION="Apache module that rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations"
+DESCRIPTION="Rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations"
 HOMEPAGE="http://www.openinfo.co.uk/apache/index.html"
 #SRC_URI="http://www.openinfo.co.uk/apache/extract_forwarded-${PV}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
