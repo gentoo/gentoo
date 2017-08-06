@@ -538,12 +538,6 @@ net-im/skypetab-ng
 >=xfce-base/xfconf-4.13
 >=xfce-base/xfce4-settings-4.13.1
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# Unmaintained in Gentoo. The current Gentoo version no longer builds.
-# Removal in 30 days. Bug #602820.
-media-plugins/vdr-xineliboutput
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
