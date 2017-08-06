@@ -8,16 +8,16 @@ inherit cmake-utils toolchain-funcs flag-o-matic
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
 
-MY_P=${P/_p1/-r1}
-SRC_URI="http://rawtherapee.com/shared/source/${MY_P}-gtk3.tar.xz"
+MY_P=${P/_rc/-rc}
+SRC_URI="http://rawtherapee.com/shared/source/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bzip2 openmp"
 
-RDEPEND="bzip2? ( app-arch/bzip2 )
-	x11-libs/gtk+:3
+IUSE="openmp"
+
+RDEPEND="x11-libs/gtk+:3
 	dev-libs/expat
 	dev-libs/libsigc++:2
 	media-libs/libcanberra[gtk3]
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-cpp/gtkmm:3.0"
 
-S="${WORKDIR}/${MY_P}-gtk3"
+S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -51,14 +51,15 @@ pkg_pretend() {
 
 src_configure() {
 	filter-flags -ffast-math
+	# In case we add an ebuild for klt we can (i)use that one,
+	# see http://cecas.clemson.edu/~stb/klt/
 	local mycmakeargs=(
 		-DOPTION_OMP=$(usex openmp)
-		-DBZIP=$(usex bzip2)
 		-DDOCDIR=/usr/share/doc/${PF}
 		-DCREDITSDIR=/usr/share/${PN}
 		-DLICENCEDIR=/usr/share/${PN}
 		-DCACHE_NAME_SUFFIX=""
-		-DCMAKE_CXX_FLAGS="-std=c++11"
+		-DWITH_SYSTEM_KLT="off"
 	)
 	cmake-utils_src_configure
 }
