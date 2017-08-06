@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Detects, reconstructs and analyzes any RTP session through heuristics over the UDP network traffic"
+DESCRIPTION="Analyze any RTP session through heuristics over UDP network traffic"
 HOMEPAGE="http://xenion.reactive-search.com/?page_id=7"
 SRC_URI="http://xenion.antifork.org/rtpbreak/${P}.tgz"
 
