@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	pbins? ( >=app-arch/libarchive-3.1.2 )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/boost-1.41.0[python,${PYTHON_USEDEP}] )
+		<dev-libs/boost-1.63[python,${PYTHON_USEDEP}] )
 	ruby? ( dev-lang/ruby:${RUBY_VER} )
 	search-index? ( >=dev-db/sqlite-3 )
 	xml? ( >=dev-libs/libxml2-2.6 )"
