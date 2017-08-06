@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">man-db</product>
   <announced>2017-07-09</announced>
-  <revised>2017-07-09: 1</revised>
+  <revised>2017-08-06: 2</revised>
   <bug>602588</bug>
   <access>local</access>
   <affected>
     <package name="sys-apps/man-db" auto="yes" arch="*">
-      <unaffected range="ge" slot="">2.7.6.1-r2</unaffected>
-      <vulnerable range="lt" slot="">2.7.6.1-r2</vulnerable>
+      <unaffected range="ge">2.7.6.1-r2</unaffected>
+      <vulnerable range="lt">2.7.6.1-r2</vulnerable>
     </package>
   </affected>
   <background>
@@ -40,12 +40,12 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=sys-apps/man-db-2.7.6.1-r2"
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/man-db-2.7.6.1-r2:0"
     </code>
   </resolution>
   <references>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1336">CVE-2015-1336</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T16:57:30Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2017-07-09T20:19:23Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:10:41Z">whissi</metadata>
 </glsa>

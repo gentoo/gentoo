@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">libsndfile</product>
   <announced>2017-07-08</announced>
-  <revised>2017-07-08: 1</revised>
+  <revised>2017-08-06: 2</revised>
   <bug>618010</bug>
   <access>remote</access>
   <affected>
     <package name="media-libs/libsndfile" auto="yes" arch="*">
-      <unaffected range="ge" slot="">1.0.28</unaffected>
-      <vulnerable range="lt" slot="">1.0.28</vulnerable>
+      <unaffected range="ge">1.0.28</unaffected>
+      <vulnerable range="lt">1.0.28</vulnerable>
     </package>
   </affected>
   <background>
@@ -51,5 +51,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7742">CVE-2017-7742</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-21T07:41:05Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-08T12:05:10Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:06:09Z">whissi</metadata>
 </glsa>

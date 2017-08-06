@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">feh</product>
   <announced>2017-07-08</announced>
-  <revised>2017-07-08: 1</revised>
+  <revised>2017-08-06: 2</revised>
   <bug>616470</bug>
   <access>remote</access>
   <affected>
     <package name="media-gfx/feh" auto="yes" arch="*">
-      <unaffected range="ge" slot="">2.18.3</unaffected>
-      <vulnerable range="lt" slot="">2.18.3</vulnerable>
+      <unaffected range="ge">2.18.3</unaffected>
+      <vulnerable range="lt">2.18.3</vulnerable>
     </package>
   </affected>
   <background>
@@ -47,5 +47,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7875">CVE-2017-7875</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-05T00:04:28Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-08T12:06:41Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:09:29Z">whissi</metadata>
 </glsa>

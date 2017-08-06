@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">JasPer</product>
   <announced>2017-07-08</announced>
-  <revised>2017-07-08: 1</revised>
+  <revised>2017-08-06: 2</revised>
   <bug>559164</bug>
   <bug>559168</bug>
   <bug>571256</bug>
@@ -16,8 +16,8 @@
   <access>remote</access>
   <affected>
     <package name="media-libs/jasper" auto="yes" arch="*">
-      <unaffected range="ge" slot="">2.0.12</unaffected>
-      <vulnerable range="lt" slot="">2.0.12</vulnerable>
+      <unaffected range="ge">2.0.12</unaffected>
+      <vulnerable range="lt">2.0.12</vulnerable>
     </package>
   </affected>
   <background>
@@ -54,5 +54,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9591">CVE-2016-9591</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-30T19:55:35Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-08T12:06:24Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:08:50Z">whissi</metadata>
 </glsa>
