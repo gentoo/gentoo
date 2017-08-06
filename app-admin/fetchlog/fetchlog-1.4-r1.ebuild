@@ -1,5 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -29,7 +31,7 @@ pkg_preinst() {
 
 src_compile() {
 	# Links the .c file straight to the binary
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" || die
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}"
 }
 
 src_install() {
