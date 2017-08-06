@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
-DESCRIPTION="Fast erasure codec which can be used with the command-line, C, Python, or Haskell"
+DESCRIPTION="Fast erasure codec for the command-line, C, Python, or Haskell"
 HOMEPAGE="https://pypi.python.org/pypi/zfec"
 SRC_URI="mirror://pypi/z/zfec/zfec-${PV}.tar.gz"
 
