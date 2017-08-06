@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit eutils multilib-minimal
 
 DESCRIPTION="libhal stub forwarding to UDisks for Adobe Flash to play DRM content"
