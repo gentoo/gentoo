@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit apache-module eutils
@@ -6,8 +6,7 @@ inherit apache-module eutils
 MY_P="${PN}_${PV}"
 MY_PN="${PN/2}"
 
-DESCRIPTION="Apache 2.x module for finding the country and city
-that a web request originated from"
+DESCRIPTION="geoip module gets the country and city a request originated from"
 HOMEPAGE="http://www.maxmind.com/app/mod_geoip"
 SRC_URI="http://geolite.maxmind.com/download/geoip/api/mod_geoip2/${MY_P}.tar.gz"
 LICENSE="Apache-1.1"
