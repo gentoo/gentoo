@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="optional"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="Jukebox and music manager by KDE"
