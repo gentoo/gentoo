@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils versionator toolchain-funcs
 
 MY_PV=$(delete_all_version_separators)
 MY_SRC="swmm${MY_PV}_engine.zip"
-DESCRIPTION="Storm Water Management Model - SWMM, hydrology, hydraulics, and water quality model"
+DESCRIPTION="Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model"
 HOMEPAGE="http://www.epa.gov/ednnrmrl/models/swmm/index.htm"
 SRC_URI="http://www.epa.gov/nrmrl/wswrd/wq/models/swmm/${MY_SRC}"
 
