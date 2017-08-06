@@ -18,8 +18,8 @@ fi
 
 DESCRIPTION="Lightweight user interface framework for mobile and convergent applications"
 HOMEPAGE="https://techbase.kde.org/Kirigami"
+
 LICENSE="LGPL-2+"
-SLOT="2"
 IUSE="examples plasma"
 
 RDEPEND="
