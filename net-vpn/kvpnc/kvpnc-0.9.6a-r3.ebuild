@@ -3,7 +3,7 @@
 
 EAPI=6
 
-# QT3SUPPORT_REQUIRED
+QT3SUPPORT_REQUIRED="true"
 KDE_LINGUAS="ar br cs da de el en_GB eo es et eu fr ga gl hi hne it ja ka lt
 ms nb nds nl nn pa pl pt pt_BR ro ru sv tr uk zh_CN zh_TW"
 inherit kde4-base
