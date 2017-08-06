@@ -18,9 +18,9 @@ IUSE=""
 need_httpd_cgi
 
 DEPEND="
-	|| ( dev-lang/php[xml,gd] dev-lang/php[xml,gd-external] )
+	|| ( <dev-lang/php-7[xml,gd] <dev-lang/php-7[xml,gd-external] )
 "
-RDEPEND="virtual/httpd-php"
+RDEPEND="<virtual/httpd-php-7"
 
 S="${WORKDIR}"
 
