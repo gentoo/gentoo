@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="PAM base configuration files"
-HOMEPAGE="https://www.gentoo.org/proj/en/base/pam/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:PAM"
 SRC_URI="https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
