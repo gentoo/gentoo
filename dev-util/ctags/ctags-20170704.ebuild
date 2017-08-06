@@ -9,7 +9,7 @@ COMMITHASH="0645b2c833e4ca956970cc96fab32a1b04c0c55c"
 
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
 HOMEPAGE="https://ctags.io/ https://github.com/universal-ctags/ctags"
-SRC_URI="https://github.com/universal-ctags/ctags/archive/${COMMITHASH}.zip -> ${P}.zip"
+SRC_URI="https://github.com/universal-ctags/ctags/archive/${COMMITHASH}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,7 +31,6 @@ DEPEND="
 	${CDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig
-	app-arch/unzip
 "
 
 S="${WORKDIR}/${PN}-${COMMITHASH}"
