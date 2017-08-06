@@ -4811,7 +4811,7 @@ dev-libs/libcss 0.6.1: CSS parser and selection engine, written in C
 dev-libs/libcxml 0.15.1 0.15.4: small C++ library which makes it marginally neater to parse XML using libxml++
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
-dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
+dev-libs/libdbusmenu 12.10.2-r2 16.04.0: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218: A library providing Qt implementation of DBusMenu specification
 dev-libs/libdivecomputer 0.4.1 0.4.2 9999: Library for communication with dive computers from various manufacturers
 dev-libs/libdivsufsort 2.0.1 9999: Suffix-sorting library (for BWT)
@@ -9001,7 +9001,7 @@ dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
 dev-python/zc-buildout 2.5.3 2.5.3-r1: System for managing development buildouts
 dev-python/zeep 1.6.0 2.2.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.17.5: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
-dev-python/zfec 1.4.24: Fast erasure codec which can be used with the command-line, C, Python, or Haskell
+dev-python/zfec 1.4.24: Fast erasure codec for the command-line, C, Python, or Haskell
 dev-python/zict 0.1.2: Mutable mapping tools
 dev-python/zope-component 4.3.0 4.3.0-r1: Zope Component Architecture
 dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
@@ -10248,7 +10248,7 @@ dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and com
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 3.4.5-r1: Open source data visualization and analysis for novice and experts.
-dev-util/a8 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
+dev-util/a8 1.0: Lightweight IDE, embedding Vim, a terminal emulator, and a file browser
 dev-util/abi-compliance-checker 2.0 2.1 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
 dev-util/abootimg 20150323: Manipulate Android boot images.
@@ -10360,7 +10360,7 @@ dev-util/cutils 1.6-r4: C language utilities
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
-dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
+dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 10.6.2 10.6.4: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.88 1.0.89 1.0.90 1.0.91: Debian/Ubuntu bootstrap scripts
@@ -12329,7 +12329,7 @@ mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.1.0: Initial tagging script for Notmuch
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.9.1-r2 2.10.1 2.10.1-r4 2.11.0-r2 2.11.0-r3: High-performance interface between the MTA and content checkers
-mail-filter/anomy-sanitizer 1.76-r1: Perl based e-mail filtering tool, sensitive to html tags, mime types and attachments
+mail-filter/anomy-sanitizer 1.76-r1: Perl based e-mail filtering tool
 mail-filter/anubis 4.1.1 4.1.1-r1 4.2: GNU Anubis is an outgoing mail processor
 mail-filter/ask 2.4.1 2.5.3: Active Spam Killer: A program to filter spam
 mail-filter/assp 1.8.5.9 1.9.4.7 1.9.4.8 1.9.4.9 1.9.8.13030: Anti-Spam SMTP Proxy written in Perl
@@ -12799,7 +12799,7 @@ media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/opencsg 1.4.0 1.4.2: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
-media-gfx/openmesh 4.1: A generic and efficient data structure for representing and manipulating polygonal meshes
+media-gfx/openmesh 4.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2015.03_p2-r1 2015.03_p2-r2 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 3.2.0 4.0.0: Libs for the efficient manipulation of volumetric data
@@ -12807,7 +12807,7 @@ media-gfx/optipng 0.7.6: Compress PNG files without affecting image quality
 media-gfx/panini 0.71.104: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.1 0.2.2: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/pencil 0.4.4_beta: A Qt4 based animation and drawing program
-media-gfx/peps 2.0: Peps preprocesses EPS files and passes it to Ghostscript for conversion into a bitmap
+media-gfx/peps 2.0 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photivo 0_pre20121006 0_pre20121212 0_pre20131115 9999: Photo processor for RAW and Bitmap images
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
 media-gfx/photoqt 1.5.1-r1: Simple but powerful Qt-based image viewer
@@ -13050,7 +13050,7 @@ media-libs/libde265 0.9 1.0.2 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.1 0.6.2: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r2 1.0.0-r3: Software codec for dv-format video (camcorders etc)
-media-libs/libdvb 0.5.5.1-r3: libdvb package with added CAM library and libdvbmpegtools as well as dvb-mpegtools
+media-libs/libdvb 0.5.5.1-r3: libdvb package with CAM library. libdvbmpegtools, and dvb-mpegtools
 media-libs/libdvbpsi 0.2.1 0.2.2 1.1.0 1.1.2 1.2.0 1.3.0 1.3.0-r1: library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvdcss 1.2.13 1.2.13-r1 1.3.0 1.3.99 1.4.0: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 4.2.1 5.0.1 5.0.3 9999: Library for DVD navigation tools
@@ -13128,7 +13128,7 @@ media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
 media-libs/libogg 1.3.2: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libomxil-bellagio 0.9.3: Open Source implementation of the OpenMAX Integration Layer
-media-libs/libopendaap 0.4.0: A library which enables applications to discover and connect to iTunes(R) music shares
+media-libs/libopendaap 0.4.0: A library to connect to iTunes(R) music shares
 media-libs/libopenraw 0.0.9 0.1.0 0.1.1 0.1.2: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.3 0.1.7: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.2-r1 0.1.4: Audio library used by OpenShot
@@ -13140,7 +13140,7 @@ media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video pos
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
 media-libs/libprojectm-qt 2.1.0-r1: A graphical music visualization plugin similar to milkdrop
-media-libs/libptp2 1.1.10: Library and client for communicating with PTP enabled devices (e.g. digital photo cameras)
+media-libs/libptp2 1.1.10: Library and client to communicate with cameras via PTP
 media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
@@ -13955,7 +13955,7 @@ media-sound/seq24 0.9.2-r1 0.9.3: Seq24 is a loop based MIDI sequencer with focu
 media-sound/setmixer 19941227_p1: A commandline mixer
 media-sound/sexypsf 0.4.7 0.4.8: sexyPSF is an open-source PSF1 (Playstation music) file player
 media-sound/sfc 0.018-r1: SoundFontCombi is an opensource software pseudo synthesizer
-media-sound/shnflacverify 0.3: This program helps manage the verification of checksums related to Shorten and FLAC files
+media-sound/shnflacverify 0.3: Manage the verification of checksums related to Shorten and FLAC files
 media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reporting utility
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
 media-sound/sidplay 2.0.9: C64 SID player
@@ -13988,7 +13988,7 @@ media-sound/taginfo 1.2-r1: a simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/takcd 0.10-r1: Command line CD player
 media-sound/tap-reverbed 0 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
-media-sound/tapestrea 0.1.0.5-r1: Techniques + Paradigms for Expressive Synthesis, Transformation, Rendering of Environmental Audio
+media-sound/tapestrea 0.1.0.5-r1: Expressive Synthesis, Transformation, Rendering of Environmental Audio
 media-sound/tapiir 0.7.3: A flexible audio effects processor, inspired by classical tape delay systems
 media-sound/teamspeak-client-bin 3.0.19.1 3.0.19.4: TeamSpeak Client - Voice Communication Software
 media-sound/teamspeak-server-bin 3.0.13.6: Crystal Clear Cross-Platform Voice Communication Server
@@ -14386,8 +14386,8 @@ net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitor
 net-analyzer/nagios-sap-ccms-plugin 0.7.3-r1 0.8: Nagios plugin that provides an interface to SAP CCMS Infrastructure
 net-analyzer/nagircbot 0.0.33: An irc bot that alerts you to nagios changes
 net-analyzer/nagstamon 1.0.1 1.0.1_p20150222 2.0.1: Nagstamon is a systray monitor for displaying realtime status of a Nagios box
-net-analyzer/nagtrap 0.1.3: NagTrap is an integrated snmptt visualization addon for the Nagios monitoring system
-net-analyzer/nagvis 1.6.6: NagVis is a visualization addon for the well known network managment system Nagios
+net-analyzer/nagtrap 0.1.3: Integrated snmptt visualization addon for the Nagios monitoring system
+net-analyzer/nagvis 1.6.6: Visualization addon for the network managment system Nagios
 net-analyzer/namebench 1.3.1-r2: DNS Benchmark Utility
 net-analyzer/nast 0.2.0-r1: NAST - Network Analyzer Sniffer Tool
 net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for NetBIOS name information
@@ -14472,7 +14472,7 @@ net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware a
 net-analyzer/ripe-atlas-tools 1.2.1 1.2.2 1.2.3 1.2.3-r1: The official command-line client for RIPE Atlas
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.4.8-r1 1.5.5 1.5.5-r1 1.6.0-r1 1.7.0: A system to store and display time-series data
-net-analyzer/rtpbreak 1.3a-r1: Detects, reconstructs and analyzes any RTP session through heuristics over the UDP network traffic
+net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
 net-analyzer/sancp 1.6.1-r4: collect network traffic statistics and store them in pcap format
 net-analyzer/sarg 2.3.10: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
@@ -14544,7 +14544,7 @@ net-analyzer/zabbix 2.2.16 2.2.17 2.2.18 2.2.19 3.0.6 3.0.8 3.0.9 3.0.10 3.2.2 3
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.11.0 1.11.1_p20170508 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
-net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers that speak the RADIUS protocol
+net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.22.0-r1 0.40.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
 net-dialup/dial 1.2-r2: A simple client for DWUN
@@ -14572,7 +14572,7 @@ net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
 net-dialup/pptpclient 1.7.2-r3 1.8.0: Linux client for PPTP
 net-dialup/qtwvdialer 0.4.4_p20091228: Qt4 frontend for wvdial
-net-dialup/radiusclient-ng 0.5.6-r1: RadiusClient NextGeneration - library for RADIUS clients accompanied with several client utilities
+net-dialup/radiusclient-ng 0.5.6-r1: RadiusClient NextGeneration - library for RADIUS clients
 net-dialup/rp-l2tp 0.4-r4: User-space implementation of L2TP for Linux and other UNIX systems
 net-dialup/rp-pppoe 3.11-r3 3.12-r1: A user-mode PPPoE client and server suite for Linux
 net-dialup/sendpage 1.1.0-r3: Dialup alphapaging software
@@ -14612,7 +14612,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
-net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
+net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that changes infrequently
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.4.5 2.5.3: High-performance authoritative-only DNS server
@@ -14857,7 +14857,7 @@ net-libs/biblesync 1.1.2 1.1.2-r1: A multicast protocol to support Bible softwar
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccnet 6.0.7 6.1.0: Ccnet is a framework for writing networked applications in C
-net-libs/ccrtp 2.0.9 2.1.2: GNU ccRTP is an implementation of RTP, the real-time transport protocol from the IETF
+net-libs/ccrtp 2.0.9 2.1.2: GNU ccRTP - Implementation of the IETF real-time transport protocol
 net-libs/courier-authlib 0.65.0-r3 0.66.3 0.66.4 0.66.4-r1 0.67.0 0.68.0 0.68.0-r1: Courier authentication library
 net-libs/courier-unicode 1.1 1.3 1.4 2.0: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
@@ -14885,7 +14885,7 @@ net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and co
 net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
-net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
+net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 protocol, successor of OpenH323
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 0.7.0: Protobuf messages and functions for robot applications
@@ -14905,7 +14905,7 @@ net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.37: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.1: implementation of the W3C DOM, written in C
-net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the SIP protocol for multimedia session establishement
+net-libs/libeXosip 3.5.0 4.0.0: library to use the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r1 1.0.6-r2: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.8: A portable, efficient middleware for different kinds of mail access
@@ -15039,7 +15039,7 @@ net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_pre20160904 0.1.1 0.1.2 0.1.4 0.1.6 9999: Encrypted P2P, messaging, and audio/video calling platform
-net-libs/txtorcon 0.13.0: Twisted-based Tor controller client, with state-tracking and configuration abstractions
+net-libs/txtorcon 0.13.0: Twisted-based Tor controller client, with state-tracking
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
@@ -15274,7 +15274,7 @@ net-misc/icaclient 13.5.0.10185126 13.6.0.10243651: ICA Client for Citrix Presen
 net-misc/icecast 2.4.3: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)
+net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.9 3.1.3 3.1.7 3.2_rc1: A TCP, UDP, and SCTP network bandwidth measurement tool
@@ -15349,7 +15349,7 @@ net-misc/netkit-telnetd 0.17-r10 0.17-r11: Standard Linux telnet client and serv
 net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2 1.0.0_beta2-r1: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
-net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
+net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manages network configurations
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.4.4-r1 1.8.0 1.8.2: A set of co-operative tools that make networking simple and straightforward
@@ -15435,7 +15435,7 @@ net-misc/seafile 6.0.7 6.1.0: File syncing and sharing software with file encryp
 net-misc/seafile-client 6.0.7 6.1.0: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
-net-misc/sendfile 2.1b-r1: SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet
+net-misc/sendfile 2.1b-r1: SAFT implementation for asynchronous sending of files in the Internet
 net-misc/ser2net 2.7-r1 2.9.1 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 13.01: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3 9999: Command line client for ISDS
@@ -15450,7 +15450,7 @@ net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentral
 net-misc/slimrat 9999: Linux Rapidshare downloader
 net-misc/smb4k 1.2.3-r1 2.0.0-r1: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
-net-misc/snarf 7.0-r3: Small and fast CLI resource grabber with support for http, gopher, finger, and ftp protocols
+net-misc/snarf 7.0-r3: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.1 1.7.3.2 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1: A shell interface to network sockets
@@ -15492,7 +15492,7 @@ net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
-net-misc/udpxy 1.0.23.7-r2: Small-footprint daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
+net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 3.7 3.7.1: Encrypted UDP based FTP with multicast
 net-misc/unison 2.48.3 2.48.4: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
@@ -15516,7 +15516,7 @@ net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.16 5.2.17: improved Whois Client
 net-misc/wicd 1.7.4-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
-net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
+net-misc/wput 0.6.1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0 4.1.0.0-r1: The X2Go Qt client
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
@@ -15677,9 +15677,9 @@ net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a po
 net-print/pykota 1.26-r1: Flexible print quota and accounting package for use with CUPS and lpd
 net-print/splix 2.0.0_p20111206 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
-net-print/xerox-drivers 0_p20080123: PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system
+net-print/xerox-drivers 0_p20080123: PPD files for XEROX CopyCentre, DocuPrint, Phaser, WorkCentre (for CUPS)
 net-proxy/3proxy 0.5.3k 0.7.1.2 0.7.1.4 0.8.6 0.8.8 0.8.9: A really tiny cross-platform proxy servers set
-net-proxy/adzapper 20110915-r2: Redirector for squid that intercepts advertising, page counters and some web bugs
+net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
 net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
 net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP server
@@ -15690,7 +15690,7 @@ net-proxy/haproxy 1.5.14 1.5.19-r1 1.6.11-r1 1.6.13-r2 1.6.9999-r1 1.7.7 1.7.8 1
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
-net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
+net-proxy/httpush 0.9_beta11-r1: Intercepting proxy, allowing user to modify HTTP requests on-the-fly
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
@@ -15804,7 +15804,7 @@ net-wireless/kismet 2013.03.1-r2 2016.07.1-r1 9999: IEEE 802.11 wireless LAN sni
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
-net-wireless/madwimax 0.1.1-r1: A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip
+net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
 net-wireless/multimode 1.00-r2 1.4_p20140831-r1 9999: multimode radio decoder for rtl-sdr devices using gnuradio
@@ -16300,7 +16300,7 @@ sci-electronics/xcircuit 3.7.48 3.8.83 3.9.62: Circuit drawing and schematic cap
 sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
 sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
-sci-geosciences/congen 1.6.2 1.6.2-r1: Generate the speeds, equilibrium arguments, and node factors of tidal constituents
+sci-geosciences/congen 1.6.2 1.6.2-r1: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1 2.1.0: GDAL plugin to access GRASS data
 sci-geosciences/gebabbel 0.4: Qt-Frontend to load and convert gps tracks with gpsbabel
@@ -16359,8 +16359,8 @@ sci-geosciences/qgis 2.18.3-r1 2.18.10: User friendly Geographic Information Sys
 sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
-sci-geosciences/seawater 2.0.1 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
-sci-geosciences/swmm 5.0.022: Storm Water Management Model - SWMM, hydrology, hydraulics, and water quality model
+sci-geosciences/seawater 2.0.1 3.3.4: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
+sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tappy 0.9.0: Tidal Analysis in Python breaks hourly water level into tidal components
 sci-geosciences/tcd-utils 20120115 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/tilecache 2.11-r1: Web map tile caching system
@@ -17682,7 +17682,7 @@ sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Blue
 sys-firmware/edk2-ovmf 2017_pre20170505: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607 20160714 20161104 20170511 20170707: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
-sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
+sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
 sys-firmware/iwl1000-ucode 39.31.5.1 128.50.3.1: Intel (R) Wireless WiFi Link 1000BGN ucode
@@ -17728,7 +17728,7 @@ sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815 3_p20160822: An ent
 sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010 0_pre20161219 0_pre20170130 0_pre20170220 0_pre20170313 0_pre20170612: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
-sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
+sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.13.6 1.13.7: FUSE filesystem for bind mounting with altered permissions
@@ -18270,12 +18270,12 @@ www-apache/mod_depends 0.7.0_p200702041: An apache helper module for handling de
 www-apache/mod_diagnostics 0.0.1: An Apache2 module which can do debugging of modules in the Apache2 Filter Chain
 www-apache/mod_dnsbl_lookup 0.91: A helper module for Apache2 providing DNSBL lookup
 www-apache/mod_dnssd 0.6-r1: mod_dnssd is an Apache module which adds Zeroconf support via DNS-SD using Avahi
-www-apache/mod_evasive 1.10.1-r1: mod_evasive is an evasive maneuvers module to provide action in the event of an HTTP DoS
-www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Apache module that rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations
+www-apache/mod_evasive 1.10.1-r1: Evasive maneuvers module for the event of an HTTP DoS
+www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations
 www-apache/mod_fastcgi_handler 0.6: A simple FastCGI handler module
-www-apache/mod_fcgid 2.3.9 2.3.9-r1: A binary-compatible alternative to mod_fastcgi with better process management
+www-apache/mod_fcgid 2.3.9 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for streaming purposes
-www-apache/mod_geoip2 1.2.7-r1: Apache 2.x module for finding the country and city that a web request originated from
+www-apache/mod_geoip2 1.2.7-r1: geoip module gets the country and city a request originated from
 www-apache/mod_gnutls 0.8.2-r1: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
 www-apache/mod_h2 1.4.7 1.5.6 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.37 1.2.40 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
@@ -18292,7 +18292,7 @@ www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
 www-apache/mod_security 2.7.7 2.9.1-r1: Application firewall and intrusion detection for Apache
-www-apache/mod_tidy 0.5.5-r1: a TidyLib based module to parse, clean-up and pretty-print the webservers' (X)HTML output
+www-apache/mod_tidy 0.5.5-r1: TidyLib module to clean-up and pretty-print the webserver (X)HTML output
 www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process after it has started
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
@@ -18450,7 +18450,7 @@ www-misc/litmus 0.13: WebDAV server protocol compliance test suite
 www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver logfiles
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.5.1 3.8.1-r1 3.9.0: A lightweight system monitoring tool
-www-misc/multisort 1.1-r1: multisort takes any number of httpd logfiles in the Common Log Format and merges them together
+www-misc/multisort 1.1-r1: Merges httpd logfiles in the Common Log Format
 www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web Application Firewall module for Nginx)
 www-misc/profile-sync-daemon 5.45.1 6.31 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
@@ -19621,6 +19621,7 @@ xfce-extra/xfce4-screenshooter 1.8.2 1.9.1: Xfce4 screenshooter application and 
 xfce-extra/xfce4-sensors-plugin 1.2.6 1.2.98: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.4.6 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha
+xfce-extra/xfce4-statusnotifier-plugin 0.1.0: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.1.2 1.2.1: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.0.1 1.1.0 1.2.0: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer

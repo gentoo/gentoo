@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DESCRIPTION=A bash script that uses udisks to handle removable devices without dependencies on any GUI
+DESCRIPTION=Bash script that uses udisks to mount removable devices without GUI
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/bashmount/
 KEYWORDS=amd64 x86
@@ -8,4 +8,4 @@ RDEPEND=app-shells/bash sys-apps/dbus sys-apps/util-linux sys-fs/udisks:2 virtua
 SLOT=0
 SRC_URI=mirror://sourceforge/bashmount/bashmount-3.2.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=08528187f64296ec312e23a51565d3aa
+_md5_=35b3f62e33b27f3fef83dfec4b7d1010
