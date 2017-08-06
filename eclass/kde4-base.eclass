@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde4-base.eclass
@@ -112,6 +112,12 @@ unset export_fns
 # This variable must be set before inheriting any eclasses. Defaults to 'never'.
 DECLARATIVE_REQUIRED="${DECLARATIVE_REQUIRED:-never}"
 
+# @ECLASS-VARIABLE: QT3SUPPORT_REQUIRED
+# @DESCRIPTION:
+# Is qt3support required? Possible values are 'true' or 'false'.
+# This variable must be set before inheriting any eclasses. Defaults to 'false'.
+QT3SUPPORT_REQUIRED="${QT3SUPPORT_REQUIRED:-false}"
+
 # @ECLASS-VARIABLE: QTHELP_REQUIRED
 # @DESCRIPTION:
 # Is qthelp required? Possible values are 'always', 'optional' and 'never'.
@@ -129,6 +135,12 @@ OPENGL_REQUIRED="${OPENGL_REQUIRED:-never}"
 # Is qtmultimedia required? Possible values are 'always', 'optional' and 'never'.
 # This variable must be set before inheriting any eclasses. Defaults to 'never'.
 MULTIMEDIA_REQUIRED="${MULTIMEDIA_REQUIRED:-never}"
+
+# @ECLASS-VARIABLE: SQL_REQUIRED
+# @DESCRIPTION:
+# Is qtsql required? Possible values are 'always', 'optional' and 'never'.
+# This variable must be set before inheriting any eclasses. Defaults to 'never'.
+SQL_REQUIRED="${SQL_REQUIRED:-never}"
 
 # @ECLASS-VARIABLE: WEBKIT_REQUIRED
 # @DESCRIPTION:
@@ -216,6 +228,21 @@ case ${DECLARATIVE_REQUIRED} in
 esac
 unset qtdeclarativedepend
 
+# Qt3Support dependencies
+qt3supportdepend="
+	>=dev-qt/qt3support-${QT_MINIMAL}:4[accessibility]
+"
+case ${QT3SUPPORT_REQUIRED} in
+	true)
+		COMMONDEPEND+=" ${qt3supportdepend}"
+		[[ -n ${qtcoreuse} ]] && qtcoreuse+=",qt3support" || qtcoreuse="qt3support"
+		[[ -n ${qtsqluse} ]] && qtsqluse+=",qt3support" || qtsqluse="qt3support"
+		[[ -n ${kdelibsuse} ]] && kdelibsuse+=",qt3support(+)" || kdelibsuse="qt3support(+)"
+		;;
+	*) ;;
+esac
+unset qt3supportdepend
+
 # QtHelp dependencies
 qthelpdepend="
 	>=dev-qt/qthelp-${QT_MINIMAL}:4
@@ -263,6 +290,24 @@ case ${MULTIMEDIA_REQUIRED} in
 esac
 unset qtmultimediadepend
 
+# Sql dependencies
+[[ -n ${qtsqluse} ]] && qtsqluse="[${qtsqluse}]"
+qtsqldepend="
+	>=dev-qt/qtsql-${QT_MINIMAL}:4${qtsqluse}
+"
+case ${SQL_REQUIRED} in
+	always)
+		COMMONDEPEND+=" ${qtsqldepend}"
+		;;
+	optional)
+		IUSE+=" sql"
+		COMMONDEPEND+=" sql? ( ${qtsqldepend} )"
+		;;
+	*) ;;
+esac
+unset qtsqluse
+unset qtsqldepend
+
 # WebKit dependencies
 qtwebkitdepend="
 	>=dev-qt/qtwebkit-${QT_MINIMAL}:4
@@ -270,10 +315,12 @@ qtwebkitdepend="
 case ${WEBKIT_REQUIRED} in
 	always)
 		COMMONDEPEND+=" ${qtwebkitdepend}"
+		[[ -n ${kdelibsuse} ]] && kdelibsuse+=",webkit(+)" || kdelibsuse="webkit(+)"
 		;;
 	optional)
 		IUSE+=" +webkit"
 		COMMONDEPEND+=" webkit? ( ${qtwebkitdepend} )"
+		[[ -n ${kdelibsuse} ]] && kdelibsuse+=",webkit?" || kdelibsuse="webkit?"
 		;;
 	*) ;;
 esac
@@ -297,28 +344,23 @@ unset cppuintdepend
 
 # KDE dependencies
 # Qt accessibility classes are needed in various places, bug 325461
+[[ -n ${qtcoreuse} ]] && qtcoreuse+=",ssl" || qtcoreuse="ssl"
+[[ -n ${qtcoreuse} ]] && qtcoreuse="[${qtcoreuse}]"
 kdecommondepend="
 	dev-lang/perl
-	>=dev-qt/qt3support-${QT_MINIMAL}:4[accessibility]
-	>=dev-qt/qtcore-${QT_MINIMAL}:4[qt3support,ssl]
-	>=dev-qt/qtdbus-${QT_MINIMAL}:4
 	>=dev-qt/designer-${QT_MINIMAL}:4
+	>=dev-qt/qtcore-${QT_MINIMAL}:4${qtcoreuse}
+	>=dev-qt/qtdbus-${QT_MINIMAL}:4
 	>=dev-qt/qtgui-${QT_MINIMAL}:4[accessibility,dbus(+)]
 	>=dev-qt/qtscript-${QT_MINIMAL}:4
-	>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support]
 	>=dev-qt/qtsvg-${QT_MINIMAL}:4
 	>=dev-qt/qttest-${QT_MINIMAL}:4
 "
+unset qtcoreuse
 
 if [[ ${PN} != kdelibs ]]; then
-	local _kdelibsuse
-	case ${WEBKIT_REQUIRED} in
-		always) _kdelibsuse="[webkit]" ;;
-		optional) _kdelibsuse="[webkit?]" ;;
-		*) ;;
-	esac
-	kdecommondepend+=" >=kde-frameworks/kdelibs-4.14.22:4${_kdelibsuse}"
-	unset _kdelibsuse
+	[[ -n ${kdelibsuse} ]] && kdelibsuse="[${kdelibsuse}]"
+	kdecommondepend+=" kde-frameworks/kdelibs:4${kdelibsuse}"
 	if [[ ${KDEBASE} = kdevelop ]]; then
 		if [[ ${PN} != kdevplatform ]]; then
 			# @ECLASS-VARIABLE: KDEVPLATFORM_REQUIRED
@@ -337,6 +379,7 @@ if [[ ${PN} != kdelibs ]]; then
 		fi
 	fi
 fi
+unset kdelibsuse
 
 kdedepend="
 	dev-util/automoc
