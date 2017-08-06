@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils eutils toolchain-funcs
 
-DESCRIPTION="RadiusClient NextGeneration - library for RADIUS clients accompanied with several client utilities"
+DESCRIPTION="RadiusClient NextGeneration - library for RADIUS clients"
 HOMEPAGE="https://sourceforge.net/projects/radiusclient-ng.berlios/"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
 
