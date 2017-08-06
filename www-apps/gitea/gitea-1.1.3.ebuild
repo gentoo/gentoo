@@ -5,7 +5,7 @@ EAPI=6
 inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="code.gitea.io/gitea"
-GIT_COMMIT="bbe6aa3"
+GIT_COMMIT="06a554c"
 ARCHIVE_URI="https://github.com/go-gitea/gitea/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm"
 
