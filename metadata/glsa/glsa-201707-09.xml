@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">nm-applet</product>
   <announced>2017-07-08</announced>
-  <revised>2017-07-08: 1</revised>
+  <revised>2017-08-06: 2</revised>
   <bug>613768</bug>
   <access>local</access>
   <affected>
     <package name="gnome-extra/nm-applet" auto="yes" arch="*">
-      <unaffected range="ge" slot="">1.4.6-r1</unaffected>
-      <vulnerable range="lt" slot="">1.4.6-r1</vulnerable>
+      <unaffected range="ge">1.4.6-r1</unaffected>
+      <vulnerable range="lt">1.4.6-r1</vulnerable>
     </package>
   </affected>
   <background>
@@ -49,5 +49,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6590">CVE-2017-6590</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-02T12:44:50Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-08T12:07:02Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:10:08Z">whissi</metadata>
 </glsa>

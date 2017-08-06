@@ -7,15 +7,15 @@
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
   <announced>2017-07-08</announced>
-  <revised>2017-07-08: 1</revised>
+  <revised>2017-08-06: 2</revised>
   <bug>614522</bug>
   <access>remote</access>
   <affected>
     <package name="dev-db/phpmyadmin" auto="yes" arch="*">
-      <unaffected range="ge" slot="">4.0.10.20</unaffected>
-      <unaffected range="ge" slot="">4.7.0</unaffected>
-      <vulnerable range="lt" slot="">4.0.10.20</vulnerable>
-      <vulnerable range="lt" slot="">4.7.0</vulnerable>
+      <unaffected range="ge">4.0.10.20</unaffected>
+      <unaffected range="ge">4.7.0</unaffected>
+      <vulnerable range="lt">4.0.10.20</vulnerable>
+      <vulnerable range="lt">4.7.0</vulnerable>
     </package>
   </affected>
   <background>
@@ -62,5 +62,5 @@
     <uri link="https://www.phpmyadmin.net/security/PMASA-2017-8/">PMASA-2017-8</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-28T01:10:27Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-08T12:04:56Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:05:30Z">whissi</metadata>
 </glsa>

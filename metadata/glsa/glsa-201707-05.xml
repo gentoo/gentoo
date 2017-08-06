@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">OpenSLP</product>
   <announced>2017-07-08</announced>
-  <revised>2017-07-08: 1</revised>
+  <revised>2017-08-06: 3</revised>
   <bug>360061</bug>
   <bug>434918</bug>
   <bug>583396</bug>
@@ -16,8 +16,8 @@
   <access>remote</access>
   <affected>
     <package name="net-libs/openslp" auto="yes" arch="*">
-      <unaffected range="ge" slot="">2.0.0-r4</unaffected>
-      <vulnerable range="lt" slot="">2.0.0-r4</vulnerable>
+      <unaffected range="ge">2.0.0-r4</unaffected>
+      <vulnerable range="lt">2.0.0-r4</vulnerable>
     </package>
   </affected>
   <background>
@@ -53,5 +53,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7567">CVE-2016-7567</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-21T02:50:48Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-08T12:05:22Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:06:57Z">whissi</metadata>
 </glsa>

@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">libcroco</product>
   <announced>2017-07-09</announced>
-  <revised>2017-07-09: 1</revised>
+  <revised>2017-08-06: 3</revised>
   <bug>618012</bug>
   <access>remote</access>
   <affected>
     <package name="dev-libs/libcroco" auto="yes" arch="*">
-      <unaffected range="ge" slot="">0.6.12-r1</unaffected>
-      <vulnerable range="lt" slot="">0.6.12-r1</vulnerable>
+      <unaffected range="ge">0.6.12-r1</unaffected>
+      <vulnerable range="lt">0.6.12-r1</vulnerable>
     </package>
   </affected>
   <background>
@@ -46,5 +46,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7961">CVE-2017-7961</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-21T07:37:50Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2017-07-09T20:40:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-06T11:11:14Z">whissi</metadata>
 </glsa>
