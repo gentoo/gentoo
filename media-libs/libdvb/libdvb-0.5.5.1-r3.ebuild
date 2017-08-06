@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils autotools
 
-DESCRIPTION="libdvb package with added CAM library and libdvbmpegtools as well as dvb-mpegtools"
+DESCRIPTION="libdvb package with CAM library. libdvbmpegtools, and dvb-mpegtools"
 HOMEPAGE="http://www.metzlerbros.org/dvb/"
 SRC_URI="http://www.metzlerbros.org/dvb/${P}.tar.gz"
 
