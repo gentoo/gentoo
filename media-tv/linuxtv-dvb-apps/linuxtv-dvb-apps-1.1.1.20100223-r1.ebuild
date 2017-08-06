@@ -32,7 +32,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-ldflags.patch \
-		"${FILESDIR}"/${P}-alevt.patch
+		"${FILESDIR}"/${P}-alevt.patch \
+		"${FILESDIR}"/${P}-perl526.patch
 
 	# do not compile test-progs, incompatible with videodev2.h
 	sed -e '/-C test/d' \
