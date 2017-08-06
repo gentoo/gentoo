@@ -3,6 +3,8 @@
 
 EAPI="5"
 
+inherit opam
+
 DESCRIPTION="A lightweight and colourful test framework"
 HOMEPAGE="https://github.com/mirage/alcotest/"
 SRC_URI="https://github.com/mirage/alcotest/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -13,31 +15,19 @@ KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="
-	dev-lang/ocaml:=[ocamlopt]
 	dev-ml/fmt:=
 	dev-ml/astring:=
 	dev-ml/cmdliner:=
 	dev-ml/result:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/opam
-	dev-ml/topkg
-	dev-ml/ocamlbuild
+	dev-ml/jbuilder
 	dev-ml/findlib"
 
 src_compile() {
-	ocaml pkg/pkg.ml build --tests $(usex test true false) || die
+	jbuilder build -p alcotest || die
 }
 
 src_test() {
-	ocaml pkg/pkg.ml test || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-	dodoc CHANGES.md README.md
+	jbuilder runtest -p alcotest || die
 }
