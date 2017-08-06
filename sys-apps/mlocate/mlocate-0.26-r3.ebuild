@@ -42,9 +42,12 @@ src_install() {
 	doins "${FILESDIR}"/mlocate-cron.conf
 	fperms 0644 /etc/{updatedb,mlocate-cron}.conf
 
-	insinto /etc/cron.daily
-	newins "${FILESDIR}"/mlocate.cron-r3 mlocate
-	fperms 0755 /etc/cron.daily/mlocate
+	insinto /usr/share/mlocate
+	newins "${FILESDIR}"/mlocate.sh mlocate.sh
+	fperms 0755 /usr/share/mlocate/mlocate.sh
+
+	dodir /etc/cron.daily
+	dosym /usr/share/mlocate/mlocate.sh /etc/cron.daily/mlocate.sh
 
 	systemd_dounit "${FILESDIR}"/mlocate.service
 	systemd_dounit "${FILESDIR}"/mlocate.timer
