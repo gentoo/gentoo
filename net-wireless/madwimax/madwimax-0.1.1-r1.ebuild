@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools linux-info udev
 
-DESCRIPTION="A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip"
+DESCRIPTION="Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip"
 HOMEPAGE="https://code.google.com/p/madwimax/"
 SRC_URI="https://madwimax.googlecode.com/files/${P}.tar.gz"
 
