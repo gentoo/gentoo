@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
+# Masked for security reasons:
+# https://bugs.gentoo.org/600214
+<app-emulation/virtualbox-5.0.40
+<app-emulation/virtualbox-additions-5.0.40
+<app-emulation/virtualbox-bin-5.0.40
+<app-emulation/virtualbox-extpack-oracle-5.0.40
+<app-emulation/virtualbox-guest-additions-5.0.40
+<app-emulation/virtualbox-modules-5.0.40
+<x11-drivers/xf86-video-virtualbox-5.0.40
+
+
 # Bernard Cafarelli <voyageur@gentoo.org> (04 Aug 2017)
 # Temporary mask as current net-ftp/filezilla does not compile
 # with it, bug #626292
