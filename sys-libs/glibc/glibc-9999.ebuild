@@ -100,7 +100,7 @@ upstream_uris() {
 	echo mirror://gnu/glibc/$1 ftp://sourceware.org/pub/glibc/{releases,snapshots}/$1 mirror://gentoo/$1
 }
 gentoo_uris() {
-	local devspace="HTTP~vapier/dist/URI HTTP~azarah/glibc/URI"
+	local devspace="HTTP~vapier/dist/URI HTTP~tamiko/distfiles/URI HTTP~dilfridge/distfiles/URI"
 	devspace=${devspace//HTTP/https://dev.gentoo.org/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }
@@ -127,7 +127,7 @@ src_prepare() {
 		# includes backtraces and symbols.
 		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
 		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
-		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-chk_fail.c debug/chk_fail.c || die
+		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
 
 		if use debug ; then
 			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
@@ -137,4 +137,12 @@ src_prepare() {
 				debug/Makefile || die
 		fi
 	fi
+
+	case $(gcc-fullversion) in
+	4.8.[0-3]|4.9.0)
+		eerror "You need to switch to a newer compiler; gcc-4.8.[0-3] and gcc-4.9.0 miscompile"
+		eerror "glibc.  See https://bugs.gentoo.org/547420 for details."
+		die "need to switch compilers #547420"
+		;;
+	esac
 }
