@@ -13,7 +13,7 @@ MY_PV="$(replace_version_separator 3 _ ${PV%%_p*})r2"
 MY_MAJOR="$(get_version_component_range 1-3)"
 
 DESCRIPTION="The Collaborative Computing Project for NMR - Data"
-HOMEPAGE="http://www.ccpn.ac.uk/ccpn"
+HOMEPAGE="http://www.ccpn.ac.uk/v2-software/software"
 SRC_URI="http://www2.ccpn.ac.uk/download/${MY_PN}/analysis${MY_PV}.tar.gz"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" https://dev.gentoo.org/~jlec/distfiles/ccpn-update-${MY_MAJOR}-${PATCHSET}.patch.xz"
 
