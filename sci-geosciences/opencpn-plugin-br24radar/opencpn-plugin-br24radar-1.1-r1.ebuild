@@ -9,7 +9,7 @@ inherit cmake-utils wxwidgets
 MY_PN="BR24radar_pi"
 
 DESCRIPTION="Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN"
-HOMEPAGE="http://opencpn-navico-radar-plugin.github.io/"
+HOMEPAGE="https://github.com/canboat/BR24radar_pi"
 SRC_URI="
 	https://github.com/canboat/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 "
