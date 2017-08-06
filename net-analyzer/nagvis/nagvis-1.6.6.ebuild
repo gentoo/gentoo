@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils depend.apache
 
-DESCRIPTION="NagVis is a visualization addon for the well known network managment system Nagios"
+DESCRIPTION="Visualization addon for the network managment system Nagios"
 HOMEPAGE="http://www.nagvis.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
