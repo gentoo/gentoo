@@ -13,13 +13,13 @@ IUSE="eigen opengl"
 
 DEPEND="
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui)
+	$(add_qt_dep qtgui '-gles2')
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	eigen? ( dev-cpp/eigen:3 )
 	opengl? (
-		$(add_qt_dep qtopengl)
+		$(add_qt_dep qtopengl '-gles2')
 		virtual/opengl
 	)
 "

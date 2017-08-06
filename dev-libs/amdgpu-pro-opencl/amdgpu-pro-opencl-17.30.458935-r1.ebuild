@@ -35,11 +35,13 @@ pkg_nofetch() {
 src_unpack() {
 	default
 
+	local ids_ver="1.0.0"
 	local libdrm_ver="2.4.70"
 	local patchlevel=$(get_version_component_range 3)
 	cd "${S}" || die
 	unpack_deb opencl-${SUPER_PN}-icd_${MY_PV}_amd64.deb
 	unpack_deb libdrm-${SUPER_PN}-amdgpu1_${libdrm_ver}-${patchlevel}_amd64.deb
+	unpack_deb ids-${SUPER_PN}_${ids_ver}-${patchlevel}_all.deb
 }
 
 src_prepare() {
@@ -53,6 +55,8 @@ src_install() {
 
 	into "/opt/${SUPER_PN}"
 	dolib opt/${SUPER_PN}/lib/x86_64-linux-gnu/*
+	insinto "/opt/${SUPER_PN}"
+	doins -r opt/${SUPER_PN}/share
 
 	insinto /etc/OpenCL/vendors/
 	echo "/opt/${SUPER_PN}/$(get_libdir)/libamdocl64.so" > "${SUPER_PN}.icd" || die "Failed to generate ICD file"
