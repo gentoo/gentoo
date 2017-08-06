@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib
 
-DESCRIPTION="GNU ccRTP is an implementation of RTP, the real-time transport protocol from the IETF"
+DESCRIPTION="GNU ccRTP - Implementation of the IETF real-time transport protocol"
 HOMEPAGE="https://www.gnu.org/software/ccrtp/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
