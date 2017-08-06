@@ -2976,6 +2976,7 @@ dev-vcs/git:gpg - Pull in gnupg for signing -- without gnupg, attempts at signin
 dev-vcs/git:highlight - GitWeb support for app-text/highlight
 dev-vcs/git:mediawiki - Support pulling and pushing from MediaWiki
 dev-vcs/git:mediawiki-experimental - Add experimental patches for improved MediaWiki support
+dev-vcs/git:pcre-jit - Enable JIT for pcre
 dev-vcs/git:ppcsha1 - Make use of a bundled routine that is optimized for the PPC arch
 dev-vcs/git:subversion - Include git-svn for dev-vcs/subversion support
 dev-vcs/git:tk - Include the 'gitk' and 'git gui' tools
