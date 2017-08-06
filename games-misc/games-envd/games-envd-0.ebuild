@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib games
 
 DESCRIPTION="Environment file for gentoo games"
-HOMEPAGE="https://www.gentoo.org/proj/en/desktop/games/index.xml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Games"
 SRC_URI=""
 
 LICENSE="GPL-2"
