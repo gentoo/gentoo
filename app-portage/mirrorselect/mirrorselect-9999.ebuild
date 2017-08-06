@@ -11,7 +11,7 @@ inherit eutils distutils-r1 git-r3 prefix
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Mirrorselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
 SRC_URI=""
 
 LICENSE="GPL-2"
