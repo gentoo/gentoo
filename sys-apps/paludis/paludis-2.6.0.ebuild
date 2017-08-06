@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 # matching profile defaults for now
-RUBY_VER=2.1
+RUBY_VER=2.2
 
 inherit bash-completion-r1 eutils python-single-r1 user
 
