@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit apache-module eutils
 
 KEYWORDS="~amd64 ~x86"
 
-DESCRIPTION="mod_evasive is an evasive maneuvers module to provide action in the event of an HTTP DoS"
+DESCRIPTION="Evasive maneuvers module for the event of an HTTP DoS"
 HOMEPAGE="http://www.zdziarski.com/blog/?page_id=442"
 SRC_URI="http://www.zdziarski.com/projects/mod_evasive/${P/-/_}.tar.gz"
 
