@@ -1,9 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
 
-DESCRIPTION="A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers"
+DESCRIPTION="Tiny program like wget, to upload files/whole directories via FTP"
 HOMEPAGE="http://wput.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
