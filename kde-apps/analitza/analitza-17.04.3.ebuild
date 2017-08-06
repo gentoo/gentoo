@@ -13,7 +13,7 @@ IUSE="eigen nls"
 
 RDEPEND="
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui)
+	$(add_qt_dep qtgui '-gles2')
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
