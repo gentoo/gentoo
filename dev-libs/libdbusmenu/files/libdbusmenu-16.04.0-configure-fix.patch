@@ -1,0 +1,35 @@
+From 4b79b41a25cc1e2c4355738b4bed6c73b919ffee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 6 Aug 2017 17:55:45 +0200
+Subject: [PATCH] configure: Fix HAVE_VALGRIND not being defined when tests are
+ disabled
+
+If --disable-tests is used, configure fails with the following error:
+
+  configure: error: conditional "HAVE_VALGRIND" was never defined.
+  Usually this means the macro was only invoked conditionally.
+
+This is because AM_CONDITIONAL for it is called inside the 'if' for
+tests being enabled. Move it just below that block to ensure that it's
+defined unconditionally.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index ace54d1..cbd38a6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -120,8 +120,8 @@ PKG_CHECK_MODULES(DBUSMENUTESTS,  json-glib-1.0 >= $JSON_GLIB_REQUIRED_VERSION
+                                   [have_tests=yes]
+ )
+ PKG_CHECK_MODULES(DBUSMENUTESTSVALGRIND, valgrind, have_valgrind=yes, have_valgrind=no)
+-AM_CONDITIONAL([HAVE_VALGRIND], [test "x$have_valgrind" = "xyes"])
+ ])
++AM_CONDITIONAL([HAVE_VALGRIND], [test "x$have_valgrind" = "xyes"])
+ 
+ AC_SUBST(DBUSMENUTESTS_CFLAGS)
+ AC_SUBST(DBUSMENUTESTS_LIBS)
+-- 
+2.14.0
+
