@@ -7532,7 +7532,8 @@ sys-apps/nix:sodium - Use dev-libs/libsodium for cryptography
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
 sys-apps/openrc:tools - build optional tools
-sys-apps/pacman:gpg - Support verifying packages signed with GPG using app-crypt/gpgme
+sys-apps/pacman:doc - Install extended documentation using app-doc/doxygen. (Man pages are included by default.)
+sys-apps/pacman:gpg - Enable GPG signature verification using app-crypt/gpgme
 sys-apps/paludis:pbins - Enable binary package support. Adds dependency upon app-arch/libarchive
 sys-apps/paludis:pink - Use a less boring colourscheme than the default
 sys-apps/paludis:search-index - Enable cave search --index. Requires dev-db/sqlite.

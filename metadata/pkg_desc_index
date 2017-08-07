@@ -17236,7 +17236,7 @@ sys-apps/openrc 0.21.7 0.22.4 0.23.2 0.24.2 0.25 0.26.2 0.26.3 0.27.2 0.28 9999:
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20170326 20170423: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
-sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
+sys-apps/pacman 5.0.2: Archlinux's binary package manager
 sys-apps/paludis 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
@@ -18280,7 +18280,7 @@ www-apache/mod_fcgid 2.3.9 2.3.9-r1: Binary-compatible alternative to mod_fastcg
 www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for streaming purposes
 www-apache/mod_geoip2 1.2.7-r1: geoip module gets the country and city a request originated from
 www-apache/mod_gnutls 0.8.2-r1: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
-www-apache/mod_h2 1.4.7 1.5.6 9999: HTTP/2 module for Apache
+www-apache/mod_h2 1.4.7 1.5.6 1.10.10 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.37 1.2.40 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24 0.24-r2: Limit the number of simultaneous apache connections
