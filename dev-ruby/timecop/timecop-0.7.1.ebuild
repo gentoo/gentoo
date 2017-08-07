@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="A gem providing 'time travel' and 'time freezing' capabilities"
-HOMEPAGE="https://github.com/jtrupiano/timecop"
+HOMEPAGE="https://github.com/travisjeffery/timecop"
 
 LICENSE="MIT"
 SLOT="0"
