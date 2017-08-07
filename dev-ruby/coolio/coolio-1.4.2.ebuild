@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_GEMSPEC="cool.io.gemspec"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="A high performance event framework for Ruby which uses the libev C library"
-HOMEPAGE="https://coolio.github.com/"
+HOMEPAGE="https://coolio.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
