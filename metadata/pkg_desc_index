@@ -133,7 +133,7 @@ app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale f
 app-admin/logcheck 1.3.15-r2 1.3.17 1.3.18: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.11.0 3.12.1 3.12.2 3.12.3: Rotates, compresses, and mails system logs
-app-admin/logsentry 1.1.1 1.1.1-r1: Automatically monitor system logs and mail security violations
+app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.7: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 5.2.2 5.3.2 5.4.3: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
@@ -13209,7 +13209,7 @@ media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.1.0 3.1.1: An Open-Source subdivision surface library
 media-libs/opus 1.1.3-r1 1.1.4 1.1.5 1.2_beta 1.2 1.2.1: Open codec designed for internet transmission of interactive speech and audio
-media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
+media-libs/opusfile 0.6 0.8 0.9: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.9.1-r1 9999: KDE multimedia API
@@ -13485,7 +13485,7 @@ media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Li
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
 media-plugins/mythplugins 0.27.6_p20160318 0.28.1: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
-media-plugins/qmmp-plugin-pack 0.10.2 1.0.4 1.1.3-r1: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 0.10.2 0.10.3 1.1.3-r1 1.1.4: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.3.1-r1 0.3.1-r2 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.15 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -13923,7 +13923,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.3.10 0.4.4 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 0.10.8 0.10.9 1.1.7-r1 1.1.8 1.1.9 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 0.10.9 0.10.10 1.1.7-r1 1.1.9 1.1.10 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r3: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.4.0-r1 0.4.1 0.4.2 0.4.3: A graphical frontend to the LinuxSampler engine
