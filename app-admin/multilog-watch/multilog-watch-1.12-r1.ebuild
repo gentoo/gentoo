@@ -1,9 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
-DESCRIPTION="Watches a multilog file for irregularities"
+EAPI=6
 
+inherit eutils
+
+DESCRIPTION="Watches a multilog file for irregularities"
 HOMEPAGE="https://www.eyrie.org/~eagle/software/multilog-watch/"
 SRC_URI="https://archives.eyrie.org/software/system/multilog-watch
 https://www.eyrie.org/%7Eeagle/software/multilog-watch/sample.filter"
@@ -17,15 +19,15 @@ RDEPEND="dev-lang/perl
 		virtual/qmail"
 
 src_unpack() {
-	mkdir "${S}"
-	cp "${DISTDIR}"/multilog-watch "${S}"
-	cp "${DISTDIR}"/sample.filter "${S}"
+	mkdir "${S}" || die
+	cp "${DISTDIR}"/multilog-watch "${S}" || die
+	cp "${DISTDIR}"/sample.filter "${S}" || die
 }
 
 src_compile() {
-	mv multilog-watch multilog-watch.orig
-	sed -e 's/\/etc\/leland/\/etc\/multilog-watch/' multilog-watch.orig > multilog-watch
-	/usr/bin/pod2man -s 1 multilog-watch multilog-watch.1
+	mv multilog-watch multilog-watch.orig || die
+	sed -e 's/\/etc\/leland/\/etc\/multilog-watch/' multilog-watch.orig > multilog-watch || die
+	/usr/bin/pod2man -s 1 multilog-watch multilog-watch.1 || die
 }
 
 src_install() {
@@ -33,6 +35,6 @@ src_install() {
 	insinto /etc/multilog-watch
 	doins sample.filter
 
-	dobin multilog-watch || die 'install failed'
+	dobin multilog-watch
 	doman multilog-watch.1
 }
