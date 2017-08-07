@@ -4702,7 +4702,7 @@ dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary conversion r
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.17.0-r1 1.18.4 9999: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3: ELF reader and producer implemented as a C++ library
-dev-libs/elfutils 0.166 0.167 0.168 0.169 0.169-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.166 0.167 0.168 0.169 0.169-r1 0.170: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.0-r1 2.2.0-r2 2.2.1 2.2.2 2.2.3: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r3: C++ wrapper for fam
