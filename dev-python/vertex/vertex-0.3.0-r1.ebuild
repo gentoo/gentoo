@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit twisted-r1
 
 DESCRIPTION="An implementation of the Q2Q protocol"
-HOMEPAGE="http://divmod.org/trac/wiki/DivmodVertex https://pypi.python.org/pypi/Vertex"
+HOMEPAGE="https://github.com/twisted/vertex https://pypi.python.org/pypi/Vertex"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 KEYWORDS="amd64 x86"
