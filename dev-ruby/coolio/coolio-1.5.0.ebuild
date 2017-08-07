@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="cool.io.gemspec"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="A high performance event framework for Ruby which uses the libev C library"
-HOMEPAGE="https://coolio.github.com/"
+HOMEPAGE="https://coolio.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
