@@ -9,7 +9,7 @@ inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20170718"
+MY_RELEASEDATE="20170804"
 EXTRAS_VER="1.36"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
@@ -46,7 +46,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
-	>=app-admin/setools-4.0[${PYTHON_USEDEP}]
+	>=app-admin/setools-4.1.1[${PYTHON_USEDEP}]
 	sys-devel/gettext
 	dev-python/ipy[${PYTHON_USEDEP}]
 	dbus? (
