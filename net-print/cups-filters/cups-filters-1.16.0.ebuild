@@ -5,7 +5,7 @@ EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit perl-module systemd
+inherit perl-module systemd flag-o-matic
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr autotools
@@ -50,6 +50,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	[[ "${PV}" == "9999" ]] && eautoreconf
+
+	# Bug #626800
+	append-cxxflags -std=c++11
 }
 
 src_configure() {
