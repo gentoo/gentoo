@@ -3762,6 +3762,7 @@ dev-haskell/snap-server 0.9.5.1-r1 1.0.1.1: A web server for the Snap Framework
 dev-haskell/socks 0.5.4 0.5.5: Socks proxy (version 5) implementation
 dev-haskell/split 0.1.4.3 0.2.2 0.2.3 0.2.3.1: Combinator library for splitting lists
 dev-haskell/stack 1.3.2: The Haskell Tool Stack
+dev-haskell/stack-bin 1.5.1: The Haskell Tool Stack (Binary)
 dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4: State variables
 dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
 dev-haskell/stm 2.4.2 2.4.4.1: Software Transactional Memory
@@ -18414,9 +18415,9 @@ www-client/epiphany 3.22.7 3.24.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.8.0 52.1.0-r1 52.2.0 52.3.0 55.0: Firefox Web Browser
 www-client/firefox-bin 52.2.0 52.3.0 55.0: Firefox Web Browser
-www-client/google-chrome 60.0.3112.78: The web browser from Google
-www-client/google-chrome-beta 60.0.3112.78: The web browser from Google
-www-client/google-chrome-unstable 61.0.3163.25: The web browser from Google
+www-client/google-chrome 60.0.3112.90: The web browser from Google
+www-client/google-chrome-beta 61.0.3163.31: The web browser from Google
+www-client/google-chrome-unstable 62.0.3175.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18465,7 +18466,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.137: Adobe Flash Player
-www-plugins/chrome-binary-plugins 60.0.3112.78_beta 60.0.3112.78 61.0.3163.25_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.90 61.0.3163.31_beta 62.0.3175.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
