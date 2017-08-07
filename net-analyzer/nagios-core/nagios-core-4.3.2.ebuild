@@ -218,7 +218,7 @@ pkg_postinst() {
 					|| die "failed to change group of ${ROOT}etc/nagios"
 
 				elog "To enable the Nagios web front-end, please edit"
-				elog "${ROOT}etc/conf.d/apache2 and add \"-D NAGIOS -D PHP5\""
+				elog "${ROOT}etc/conf.d/apache2 and add \"-D NAGIOS -D PHP\""
 				elog "to APACHE2_OPTS. Then Nagios will be available at,"
 				elog
 			elif use lighttpd; then
