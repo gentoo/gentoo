@@ -511,8 +511,8 @@ multilib_src_install() {
 	mysql_init_vars
 
 	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
-	if [[ -f "${D}${MY_INCLUDEDIR}/private/config.h" ]] ; then
-		rm "${D}${MY_INCLUDEDIR}/private/config.h" || die
+	if [[ -f "${D}/usr/include/mysql/private/config.h" ]] ; then
+		rm "${D}/usr/include/mysql/private/config.h" || die
 	fi
 
 	if ! multilib_is_native_abi && use server ; then
@@ -743,12 +743,10 @@ multilib_src_test() {
 }
 
 mysql_init_vars() {
-	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
+	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mariadb"}
 	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
 	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
 	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
-	MY_INCLUDEDIR=${MY_INCLUDEDIR="${EPREFIX}/usr/include/mysql"}
-	MY_LIBDIR=${MY_LIBDIR="${EPREFIX}/usr/$(get_libdir)/mysql"}
 
 	if [[ -z "${MY_DATADIR}" ]] ; then
 		MY_DATADIR=""
@@ -796,8 +794,8 @@ mysql_init_vars() {
 	fi
 
 	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
-	export MY_LIBDIR MY_LOCALSTATEDIR MY_LOGDIR
-	export MY_INCLUDEDIR MY_DATADIR
+	export MY_LOCALSTATEDIR MY_LOGDIR
+	export MY_DATADIR
 }
 
 pkg_config() {
@@ -931,12 +929,6 @@ pkg_config() {
 	# see http://bugs.mysql.com/bug.php?id=31312
 	use prefix && options="${options} '--defaults-file=${MY_SYSCONFDIR}/my.cnf'"
 
-	local help_tables="${ROOT}${MY_SHAREDSTATEDIR}/fill_help_tables.sql"
-	[[ -r "${help_tables}" ]] \
-	&& cp "${help_tables}" "${TMPDIR}/fill_help_tables.sql" \
-	|| touch "${TMPDIR}/fill_help_tables.sql"
-	help_tables="${TMPDIR}/fill_help_tables.sql"
-
 	# Figure out which options we need to disable to do the setup
 	local helpfile="${TMPDIR}/mysqld-help"
 	"${EROOT}/usr/sbin/mysqld" --verbose --help >"${helpfile}" 2>/dev/null
@@ -947,9 +939,6 @@ pkg_config() {
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
 		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"
 	done
-	# But some options changed names
-	egrep -sq external-locking "${helpfile}" && \
-	options="${options/skip-locking/skip-external-locking}"
 
 	use prefix || options="${options} --user=mysql"
 
@@ -969,11 +958,8 @@ pkg_config() {
 	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
 	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" > "${sqltmp}" 2>/dev/null
 
-	local cmd=( "${EROOT}usr/share/mysql/scripts/mysql_install_db" )
+	local cmd=( "${EROOT}usr/share/mariadb/scripts/mysql_install_db" )
 	[[ -f "${cmd}" ]] || cmd=( "${EROOT}usr/bin/mysql_install_db" )
-	if [[ -r "${help_tables}" ]] ; then
-		cat "${help_tables}" >> "${sqltmp}"
-	fi
 	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}/${MY_DATADIR}" "--tmpdir=${ROOT}/${MYSQL_TMPDIR}" )
 	einfo "Command: ${cmd[*]}"
 	"${cmd[@]}" \
@@ -992,13 +978,11 @@ pkg_config() {
 	local pidfile="${EROOT}/var/run/mysqld/mysqld${RANDOM}.pid"
 	local mysqld="${EROOT}/usr/sbin/mysqld \
 		${options} \
-		$(use prefix || echo --user=mysql) \
 		--log-warnings=0 \
 		--basedir=${EROOT}/usr \
 		--datadir=${ROOT}/${MY_DATADIR} \
 		--max_allowed_packet=8M \
 		--net_buffer_length=16K \
-		--default-storage-engine=MyISAM \
 		--socket=${socket} \
 		--pid-file=${pidfile}
 		--tmpdir=${ROOT}/${MYSQL_TMPDIR}"
