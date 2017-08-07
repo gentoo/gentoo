@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/dnscrypt-proxy"
+command_args="${DNSCRYPT_OPTS}"
+pidfile="/run/${SVCNAME}.pid"
+
+depend() {
+	use net dns logger
+}
