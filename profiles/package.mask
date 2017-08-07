@@ -96,11 +96,6 @@ dev-libs/DFB++
 dev-scheme/stalin
 
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Orphan, severely outdated and vulnerable to security issues (#585940).
-# Removal in a month.
-sys-apps/pacman
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
 # One of the last consumers of old udisks:0, upstream dead for ages
 # (#601358). Removal in a month.
 x11-misc/tinymount
