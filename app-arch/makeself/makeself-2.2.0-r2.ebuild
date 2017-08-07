@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit unpacker eutils
 
@@ -18,9 +18,7 @@ RDEPEND="sys-apps/gentoo-functions"
 
 S="${WORKDIR}/${PN}-release-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-help-header.patch
-}
+PATCHES=( "${FILESDIR}/${P}-help-header.patch" )
 
 src_install() {
 	dobin makeself-header.sh makeself.sh "${FILESDIR}"/makeself-unpack
