@@ -1,6 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 inherit toolchain-funcs
 
 DESCRIPTION="Automatically monitor system logs and mail security violations"
@@ -24,7 +26,7 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin /var/tmp/logcheck /etc/logcheck
-	cp systems/linux/logcheck.sh{,.orig}
+	cp systems/linux/logcheck.sh{,.orig} || die
 	sed -i \
 		-e 's:/usr/local/bin:/usr/bin:' \
 		-e 's:/usr/local/etc:/etc/logcheck:' \
@@ -42,7 +44,7 @@ src_install() {
 	dodoc README* CHANGES CREDITS
 	dodoc systems/linux/README.*
 
-	cat << EOF > "${S}"/logsentry.cron
+	cat << EOF > "${S}"/logsentry.cron || die
 #!/bin/sh
 #
 # Uncomment the following if you want
