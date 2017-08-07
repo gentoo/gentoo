@@ -23,9 +23,11 @@ DEPEND="${RDEPEND}
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4"
 
+PATCHES=("${FILESDIR}"/${PN}-0.118-PaX-support.patch)
+
 src_prepare() {
 	default
-	epatch "${FILESDIR}"/${PN}-0.118-PaX-support.patch
+
 	if use static-libs; then
 		sed -i -e '/^lib_LIBRARIES/s:=.*:=:' -e '/^%.os/s:%.o$::' lib{asm,dw,elf}/Makefile.in || die
 	fi
