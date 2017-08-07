@@ -12,7 +12,7 @@ HOMEPAGE="http://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-macos"
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
@@ -26,7 +26,7 @@ REQUIRED_USE="static? ( !plugins !pkcs11 )
 CDEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
-		!iproute2? ( >=sys-apps/net-tools-1.60_p20160215155418 )
+		!iproute2? ( sys-apps/net-tools )
 	)
 	pam? ( virtual/pam )
 	ssl? (
@@ -68,6 +68,8 @@ src_configure() {
 	use static && append-ldflags -Xcompiler -static
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
+	IFCONFIG=/bin/ifconfig \
+	ROUTE=/bin/route \
 	econf \
 		$(usex mbedtls '--with-crypto-library=mbedtls' '') \
 		$(use_enable inotify async-push) \
