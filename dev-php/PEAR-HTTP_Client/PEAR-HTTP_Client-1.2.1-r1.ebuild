@@ -12,6 +12,8 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 RDEPEND=">=dev-php/PEAR-HTTP_Request-1.2"
 
+PATCHES=( "${FILESDIR}/modern-php.patch" )
+
 src_install() {
 	insinto /usr/share/php/HTTP
 	doins -r Client.php Client
