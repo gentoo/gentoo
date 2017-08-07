@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit meson
+PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
+
+inherit meson python-single-r1 xdg-utils
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="http://www.fwupd.org"
@@ -13,16 +15,17 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc elf +man systemd uefi"
+IUSE="colorhug dell doc elf +man systemd uefi uefi_labels"
+REQUIRED_USE="uefi_labels? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	app-crypt/gpgme
 	dev-db/sqlite
-	>=dev-libs/appstream-glib-0.6.13
+	>=dev-libs/appstream-glib-0.6.13[introspection]
 	>=dev-libs/glib-2.45.8:2
 	dev-libs/libgpg-error
 	dev-libs/libgudev
-	dev-libs/libgusb
+	>=dev-libs/libgusb-0.2.9[introspection]
 	>=net-libs/libsoup-2.51.92:2.4
 	>=sys-auth/polkit-0.103
 	colorhug? ( >=x11-misc/colord-1.2.12:0= )
@@ -30,10 +33,22 @@ RDEPEND="
 		sys-libs/efivar
 		>=sys-libs/libsmbios-2.3.3
 	)
-	elf? ( dev-libs/libelf )
-	systemd? ( sys-apps/systemd )
+	elf? ( virtual/libelf:0= )
+	systemd? ( >=sys-apps/systemd-231 )
 	!systemd? ( >=sys-auth/consolekit-1.0.0 )
 	uefi? ( >=sys-apps/fwupdate-5 )
+	uefi_labels? (
+		${PYTHON_DEPS}
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		x11-libs/pango
+		x11-libs/cairo
+		media-libs/freetype
+		media-libs/fontconfig
+		media-fonts/dejavu
+		media-fonts/source-han-sans
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -46,11 +61,8 @@ DEPEND="
 
 REQUIRED_USE="dell? ( uefi )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.9-polkit_its_files.patch"
-)
-
 src_configure() {
+	xdg_environment_reset
 	local emesonargs=(
 		-Denable-colorhug="$(usex colorhug true false)"
 		-Denable-consolekit="$(usex systemd false true)"
@@ -62,6 +74,7 @@ src_configure() {
 		# requires libtbtfwu which is not packaged yet
 		-Denable-thunderbolt=false
 		-Denable-uefi="$(usex uefi true false)"
+		-Denable-uefi-labels="$(usex uefi_labels true false)"
 	)
 	meson_src_configure
 }
