@@ -39,20 +39,21 @@ multilib_src_configure() {
 	# we aren't actually {en,dis}abling X here ... the configure
 	# script uses it just to add explicit -I/-L paths which we
 	# don't care about on Gentoo systems.
-	ECONF_SOURCE=${S} \
-	econf \
-		--disable-werror \
-		--without-x \
-		--without-liq \
-		$(use_enable static-libs static) \
-		$(use_with fontconfig) \
-		$(use_with png) \
-		$(use_with tiff) \
-		$(use_with truetype freetype) \
-		$(use_with jpeg) \
-		$(use_with webp) \
-		$(use_with xpm) \
+	local myeconfargs=(
+		--disable-werror
+		--without-x
+		--without-liq
+		$(use_enable static-libs static)
+		$(use_with fontconfig)
+		$(use_with png)
+		$(use_with tiff)
+		$(use_with truetype freetype)
+		$(use_with jpeg)
+		$(use_with webp)
+		$(use_with xpm)
 		$(use_with zlib)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
