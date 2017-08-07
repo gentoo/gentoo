@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Adds support for tests during installation of setup.py files"
-HOMEPAGE="https://pypi.python.org/pypi/pytest-runner https://bitbucket.org/pytest-dev/pytest-runner"
+HOMEPAGE="https://pypi.python.org/pypi/pytest-runner https://github.com/pytest-dev/pytest-runner"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
