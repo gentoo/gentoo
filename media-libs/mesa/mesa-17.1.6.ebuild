@@ -32,8 +32,9 @@ LICENSE="MIT"
 SLOT="0"
 RESTRICT="!bindist? ( bindist )"
 
+INTEL_CARDS="i915 i965 intel"
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 imx intel nouveau vc4 vivante vmware"
+VIDEO_CARDS="${INTEL_CARDS} ${RADEON_CARDS} freedreno imx nouveau vc4 vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -74,7 +75,7 @@ REQUIRED_USE="
 	video_cards_vmware? ( gallium )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.82"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.77"
 # keep correct libdrm and dri2proto dep
 # keep blocks in rdepend for binpkg
 RDEPEND="
@@ -118,18 +119,16 @@ RDEPEND="
 		video_cards_nouveau? ( !<=x11-libs/libva-vdpau-driver-0.7.4-r3 )
 	)
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
-	wayland? (
-		>=dev-libs/wayland-1.11.0:=[${MULTILIB_USEDEP}]
-		>=dev-libs/wayland-protocols-1.8
-	)
+	wayland? ( >=dev-libs/wayland-1.11.0:=[${MULTILIB_USEDEP}] )
 	xvmc? ( >=x11-libs/libXvMC-1.0.8:=[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
-
-	video_cards_intel? (
-		!video_cards_i965? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
-	)
-	video_cards_i915? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
 "
+for card in ${INTEL_CARDS}; do
+	RDEPEND="${RDEPEND}
+		video_cards_${card}? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
+	"
+done
+
 for card in ${RADEON_CARDS}; do
 	RDEPEND="${RDEPEND}
 		video_cards_${card}? ( ${LIBDRM_DEPSTRING}[video_cards_radeon] )
@@ -233,7 +232,7 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+=" --with-platforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
+		myconf+=" --with-egl-platforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
 	fi
 
 	if use gallium; then
