@@ -22,7 +22,7 @@ RDEPEND="fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
-	webp? ( media-libs/libwebp[${MULTILIB_USEDEP}] )
+	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	xpm? ( >=x11-libs/libXpm-3.5.10-r1[${MULTILIB_USEDEP}] >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
