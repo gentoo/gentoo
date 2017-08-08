@@ -5,6 +5,14 @@
 		<email>stasibear@gentoo.org</email>
 		<name>Erik Mackdanz</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>hsoft@hardcoded.net</email>
+		<name>Virgil Dupras</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		By combining the speed and density of containers with
 		the security of traditional virtual machines, LXD is
