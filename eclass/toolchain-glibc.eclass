@@ -1138,10 +1138,14 @@ toolchain-glibc_do_src_install() {
 		cp -a elf/ld.so "${ED}"$(alt_libdir)/$(scanelf -qSF'%S#F' elf/ld.so) || die "copying nptl interp"
 	fi
 
+	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
+	# to infer upstream version:
+	# '#define VERSION "2.26.90"' -> '2.26.90'
+	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 	# Newer versions get fancy with libm linkage to include vectorized support.
 	# While we don't really need a ldscript here, portage QA checks get upset.
-	if [[ -e ${ED}$(alt_usrlibdir)/libm-${PV}.a ]] ; then
-		dosym ../../$(get_libdir)/libm-${PV}.so $(alt_usrlibdir)/libm-${PV}.so
+	if [[ -e ${ED}$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
+		dosym ../../$(get_libdir)/libm-${upstream_pv}.so $(alt_usrlibdir)/libm-${upstream_pv}.so
 	fi
 
 	# We'll take care of the cache ourselves
