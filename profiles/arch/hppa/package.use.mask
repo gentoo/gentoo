@@ -5,6 +5,10 @@
 # request bug for the hppa arch.
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=redis that is masked in this profile.
+dev-python/pyzor test
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Requires USE=systemd that is masked in this profile.
 net-wireless/bluez user-session
 
