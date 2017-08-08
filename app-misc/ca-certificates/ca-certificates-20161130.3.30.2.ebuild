@@ -138,9 +138,15 @@ src_compile() {
 	fi
 
 	if ! use insecure_certs ; then
+		elog "To prevent applications relying on system's trusted root certificate store"
+		elog "from using CAs where at least one major browser vendor Gentoo is following"
+		elog "has decided to apply trust level restrictions, the following"
+		elog "certificate(s) were removed:"
 		# Remove untrusted certs from StartCom and WoSign (bug #598072)
-		rm "${c}"/mozilla/StartCom* || die
-		rm "${c}"/mozilla/WoSign* || die
+		elog "$(find "${c}" -type f \( \
+			-iname '*startcom*' \
+			-o -iname '*wosign*' \
+			\) -printf '%P removed; see https://bugs.gentoo.org/598072 for details\n' -delete)"
 	fi
 
 	(
