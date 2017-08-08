@@ -24,8 +24,9 @@
 # - If people want to add/remove certs, tell them to file w/mozilla:
 #   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+EAPI=6
+
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit eutils python-any-r1
 
@@ -109,7 +110,8 @@ src_prepare() {
 		fi
 	fi
 
-	epatch "${FILESDIR}"/${PN}-20150426-root.patch
+	default
+	eapply -p2 "${FILESDIR}"/${PN}-20150426-root.patch
 	local relp=$(echo "${EPREFIX}" | sed -e 's:[^/]\+:..:g')
 	sed -i \
 		-e '/="$ROOT/s:ROOT:ROOT'"${EPREFIX}"':' \
@@ -138,9 +140,15 @@ src_compile() {
 	fi
 
 	if ! use insecure_certs ; then
+		elog "To prevent applications relying on system's trusted root certificate store"
+		elog "from using CAs where at least one major browser vendor Gentoo is following"
+		elog "has decided to apply trust level restrictions, the following"
+		elog "certificate(s) were removed:"
 		# Remove untrusted certs from StartCom and WoSign (bug #598072)
-		rm "${c}"/mozilla/StartCom* || die
-		rm "${c}"/mozilla/WoSign* || die
+		elog "$(find "${c}" -type f \( \
+			-iname '*startcom*' \
+			-o -iname '*wosign*' \
+			\) -printf '%P removed; see https://bugs.gentoo.org/598072 for details\n' -delete)"
 	fi
 
 	(
