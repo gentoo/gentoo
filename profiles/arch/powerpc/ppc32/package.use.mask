@@ -83,7 +83,7 @@ media-video/vlc x265
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword
-media-sound/audacity midi
+media-sound/audacity midi soundtouch
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
 # Missing keywords (02 Jun 2015)
