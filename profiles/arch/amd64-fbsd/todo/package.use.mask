@@ -196,4 +196,4 @@ net-misc/wget uuid
 media-video/vlc rdp
 
 # net-wireless/bluez
-media-sound/pulseaudio bluetooth
+media-sound/pulseaudio bluetooth native-headset ofono-headset
