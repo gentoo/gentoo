@@ -10,9 +10,9 @@ inherit autotools flag-o-matic python-single-r1 toolchain-funcs
 MY_P=${P/_beta/BETA}
 
 DESCRIPTION="A utility for network discovery and security auditing"
-HOMEPAGE="http://nmap.org/"
+HOMEPAGE="https://nmap.org/"
 SRC_URI="
-	http://nmap.org/dist/${MY_P}.tar.bz2
+	https://nmap.org/dist/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~jer/nmap-logo-64.png
 "
 
@@ -20,7 +20,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
-IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
+IUSE="
+	ipv6 libressl libssh2 ncat ndiff nls nmap-update nping +nse ssl system-lua
+	zenmap
+"
 NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
 IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
 
@@ -34,17 +37,23 @@ RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
 	net-libs/libpcap
-	zenmap? (
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
+	libssh2? (
+		net-libs/libssh2[zlib]
 	)
-	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
 	ndiff? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	nmap-update? ( dev-libs/apr dev-vcs/subversion )
+	nmap-update? (
+		dev-libs/apr
+		dev-vcs/subversion
+	)
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
+	)
+	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
+	zenmap? (
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		${PYTHON_DEPS}
 	)
 "
 DEPEND="
@@ -113,6 +122,11 @@ src_prepare() {
 		zenmap/install_scripts/unix/zenmap-root.desktop \
 		zenmap/install_scripts/unix/zenmap.desktop || die
 
+	sed -i \
+		-e '/AC_CONFIG_SUBDIRS(libz)/d' \
+		-e '/AC_CONFIG_SUBDIRS(libssh2)/d' \
+		configure.ac
+
 	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
 	eautoreconf
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -128,6 +142,8 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable nls) \
 		$(use_with ncat) \
+		$(use_with libssh2) \
+		$(usex libssh2 --with-zlib) \
 		$(use_with ndiff) \
 		$(use_with nmap-update) \
 		$(use_with nping) \
