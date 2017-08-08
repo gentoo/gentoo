@@ -3,9 +3,11 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="Securely erase disks using a variety of recognized methods"
-HOMEPAGE="https://sourceforge.net/projects/nwipe/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/martijnvanbrummelen/nwipe/"
+SRC_URI="https://github.com/martijnvanbrummelen/${PN}/archive/v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,3 +18,8 @@ RDEPEND=">=sys-block/parted-2.3
 	>=sys-libs/ncurses-5.7-r7:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+	eautoreconf
+}
