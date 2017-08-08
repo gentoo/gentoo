@@ -1,5 +1,7 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="Controlled fork() bomber for testing heavy system load"
 HOMEPAGE="http://home.tiscali.cz:8080/~cz210552/forkbomb.html"
@@ -10,13 +12,12 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	sed -i '/^all/s/tags//' Makefile || die "sed failed"
+src_prepare() {
+	sed -i '/^all/s/tags//' Makefile || die
+	default
 }
 
 src_install() {
-	dobin ${PN} || die "dobin failed"
+	dobin ${PN}
 	doman ${PN}.8
 }
