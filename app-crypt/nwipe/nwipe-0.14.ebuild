@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Securely erase disks using a variety of recognized methods"
-HOMEPAGE="https://sourceforge.net/projects/nwipe/"
+HOMEPAGE="http://www.andybev.com/index.php/Nwipe https://github.com/martijnvanbrummelen/nwipe/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
