@@ -1,5 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="Cross-platform backup program"
 HOMEPAGE="http://migas-sbackup.sourceforge.net/"
@@ -14,7 +16,7 @@ DEPEND=""
 RDEPEND="dev-lang/perl
 	sasl? ( dev-perl/Authen-SASL )"
 
-S=${WORKDIR}/${P}/unix
+S="${WORKDIR}/${P}/unix"
 
 src_compile() {
 	return;
