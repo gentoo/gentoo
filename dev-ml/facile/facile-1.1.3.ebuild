@@ -1,9 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="OCaml constraint programming library on integer & integer set finite domains"
 HOMEPAGE="http://opti.recherche.enac.fr/"
@@ -12,16 +10,21 @@ SRC_URI="http://opti.recherche.enac.fr/facile/distrib/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
 DEPEND="${RDEPEND}
-	 sys-apps/sed"
+	sys-apps/sed
+"
+
+DOCS=( README )
+
+PATCHES=( "${FILESDIR}/${PN}"-1.1-make.patch ) # Fix building on FreeBSD
 
 src_prepare() {
-	# Fix building on FreeBSD
-	epatch "${FILESDIR}/${PN}"-1.1-make.patch
+	default
+
 	# Disable building native code objects if we dont have/want ocamlopt
 	if ! use ocamlopt; then
 		sed -i -e 's/\.opt//' src/Makefile || die "failed to change native code compiler to bytecode ones"
@@ -46,5 +49,5 @@ src_test() {
 src_install(){
 	dodir $(ocamlc -where)
 	emake install
-	dodoc README
+	einstalldocs
 }
