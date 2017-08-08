@@ -85,7 +85,7 @@ src_prepare() {
 
 	if tc-is-clang && [[ ${CHOST} == *-darwin* ]] ; then
 		# we need to up the C++ version, bug #622526
-		export CXX="$(tc-getCXX) -std=c++0x"
+		export CXX="$(tc-getCXX) -std=c++11"
 	fi
 }
 
