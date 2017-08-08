@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Requires USE=redis that is masked in this profile.
 dev-python/pyzor test
 
