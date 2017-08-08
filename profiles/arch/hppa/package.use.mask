@@ -5,6 +5,10 @@
 # request bug for the hppa arch.
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=systemd that is masked in this profile.
+net-wireless/bluez user-session
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
