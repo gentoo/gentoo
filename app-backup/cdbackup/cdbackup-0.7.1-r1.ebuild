@@ -1,5 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -15,19 +17,18 @@ IUSE=""
 RDEPEND=">=app-cdr/cdrtools-1.11.28"
 DEPEND=""
 
-src_unpack() {
-	unpack ${A}
-
+src_prepare() {
 	sed -i -e '/cd\(backup\|restore\)/,+1 s:CFLAGS:LDFLAGS:' \
-		"${S}"/Makefile || die "sed Makefile failed"
+                "${S}"/Makefile || die "sed Makefile failed"
+	default
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)" || die "make failed"
+	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin cdbackup cdrestore || die "dobin failed"
-	doman cdbackup.1 cdrestore.1 || die "doman failed"
-	dodoc CHANGES CREDITS README || die "dodoc failed"
+	dobin cdbackup cdrestore
+	doman cdbackup.1 cdrestore.1
+	dodoc CHANGES CREDITS README
 }
