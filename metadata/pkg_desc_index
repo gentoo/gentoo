@@ -14425,7 +14425,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 7.40 7.40-r1 7.50 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.40 7.50 7.60 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.04 9999: Monitor and do event correlation
@@ -18413,7 +18413,7 @@ www-client/dooble 1.55 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.22.7 3.24.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 45.8.0 52.1.0-r1 52.2.0 52.3.0 55.0: Firefox Web Browser
+www-client/firefox 52.2.0 52.3.0 55.0: Firefox Web Browser
 www-client/firefox-bin 52.2.0 52.3.0 55.0: Firefox Web Browser
 www-client/google-chrome 60.0.3112.90: The web browser from Google
 www-client/google-chrome-beta 61.0.3163.31: The web browser from Google
