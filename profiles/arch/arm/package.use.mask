@@ -200,6 +200,7 @@ app-i18n/scim-anthy kasumi
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
 media-libs/clutter egl wayland
+media-libs/clutter-gtk wayland
 x11-wm/mutter kms
 
 # Markus Meier <maekke@gentoo.org> (29 Nov 2014)

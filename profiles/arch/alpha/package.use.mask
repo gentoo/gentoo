@@ -182,6 +182,7 @@ net-misc/networkmanager teamd
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
 media-libs/clutter egl wayland
+media-libs/clutter-gtk wayland
 x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
