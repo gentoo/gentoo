@@ -8,6 +8,7 @@ net-libs/gnutls test-full
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset ofono-headset
+net-misc/ofono dundee
 
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=hdf5 that is masked in this profile.
