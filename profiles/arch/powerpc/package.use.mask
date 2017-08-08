@@ -104,7 +104,7 @@ sys-devel/llvm ocaml
 
 # Justin Lecher <jlec@gentoo> (18 May 2015)
 # missing keywords
-dev-python/matplotlib qt5
+dev-python/matplotlib qt5 test
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
