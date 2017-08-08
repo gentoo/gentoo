@@ -14,15 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="systemd rbd"
 
-RDEPEND=">=sys-fs/lvm2-2.02.45
-	>=virtual/udev-171
+RDEPEND="
+	dev-libs/json-c
 	dev-libs/libaio
 	dev-libs/userspace-rcu
+	>=sys-fs/lvm2-2.02.45
+	>=virtual/udev-171
 	sys-libs/readline:0=
 	rbd? ( sys-cluster/ceph )
-	systemd? ( sys-apps/systemd )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	systemd? ( sys-apps/systemd )
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 CONFIG_CHECK="~DM_MULTIPATH"
 
