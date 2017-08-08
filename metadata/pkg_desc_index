@@ -399,7 +399,7 @@ app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/restic 0.4.0 0.5.0 0.6.1 0.7.1: A backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
-app-backup/simplebackup 1.8.1: Cross-platform backup program
+app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
 app-backup/snapback2 1.1.0-r1: Routines for support of rsync-based snapshot backup
 app-backup/snapper 0.2.8-r1 0.3.3 0.4.1 0.5.0 9999: Command-line program for btrfs and ext4 snapshot management
 app-backup/spideroak-bin 6.3.0-r1: Secure free online backup, storage, and sharing system
@@ -412,14 +412,14 @@ app-backup/zbackup 1.4.4 9999: A versatile deduplicating backup tool
 app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
-app-benchmarks/bonnie 2.0.6 2.0.6-r1: Performance Test of Filesystem I/O using standard C library calls
+app-benchmarks/bonnie 2.0.6 2.0.6-r1 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
 app-benchmarks/bootchart2 0.14.7-r1: Performance analysis and visualization of the system boot process
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
-app-benchmarks/forkbomb 1.4: Controlled fork() bomber for testing heavy system load
+app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
 app-benchmarks/gtkperf 0.40-r1: Application designed to test GTK+ performance
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r1: A better i7 (and now i3, i5) reporting tool for Linux
