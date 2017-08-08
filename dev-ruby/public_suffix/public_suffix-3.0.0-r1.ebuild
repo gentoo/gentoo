@@ -8,6 +8,8 @@ USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRAINSTALL="data"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="Parse and decompose a domain name into top level domain, domain and subdomains"
