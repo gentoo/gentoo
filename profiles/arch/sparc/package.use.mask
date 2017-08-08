@@ -290,7 +290,7 @@ x11-misc/xscreensaver new-login
 
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded
-app-misc/lcdproc hid
+app-misc/lcdproc hid lcd_devices_mdm166a
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
