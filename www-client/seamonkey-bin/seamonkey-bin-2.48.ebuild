@@ -21,7 +21,7 @@ MOZ_LANGPACK_SUFFIX=".langpack.xpi"
 
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
 
-inherit eutils multilib mozextension pax-utils nsplugins fdo-mime gnome2-utils mozlinguas-v2
+inherit eutils multilib mozextension pax-utils nsplugins xdg-utils gnome2-utils mozlinguas-v2
 
 DESCRIPTION="Mozilla Application Suite - web browser, email, HTML editor, IRC"
 SRC_URI="${SRC_URI}
@@ -131,7 +131,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	# Update mimedb for the new .desktop file
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
