@@ -5,9 +5,9 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="An OCaml constraint programming library on integer & integer set finite domains"
-HOMEPAGE="http://www.recherche.enac.fr/log/facile/"
-SRC_URI="http://www.recherche.enac.fr/log/facile/distrib/${P}.tar.gz"
+DESCRIPTION="OCaml constraint programming library on integer & integer set finite domains"
+HOMEPAGE="http://opti.recherche.enac.fr/"
+SRC_URI="http://opti.recherche.enac.fr/facile/distrib/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
