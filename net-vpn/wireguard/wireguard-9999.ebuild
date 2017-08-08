@@ -76,13 +76,13 @@ pkg_postinst() {
 	fi
 	use module && linux-mod_pkg_postinst
 
-	ewarn
-	ewarn "This software is experimental and has not yet been released."
-	ewarn "As such, it may contain significant issues. Please do not file"
-	ewarn "bug reports with Gentoo, but rather direct them upstream to:"
-	ewarn
-	ewarn "    team@wireguard.io    security@wireguard.io"
-	ewarn
+	einfo
+	einfo "This software is experimental and has not yet been released."
+	einfo "As such, it may contain significant issues. Please do not file"
+	einfo "bug reports with Gentoo, but rather direct them upstream to:"
+	einfo
+	einfo "    team@wireguard.io    security@wireguard.io"
+	einfo
 
 	if use tools; then
 		einfo
@@ -105,5 +105,32 @@ pkg_postinst() {
 		einfo
 		einfo "More info on getting started can be found at: https://www.wireguard.io/quickstart/"
 		einfo
+	fi
+	if use module; then
+		local old new
+		if [[ $(uname -r) != "${KV_FULL}" ]]; then
+			ewarn
+			ewarn "You have just built WireGuard for kernel ${KV_FULL}, yet the currently running"
+			ewarn "kernel is $(uname -r). If you intend to use this WireGuard module on the currently"
+			ewarn "running machine, you will first need to reboot it into the kernel ${KV_FULL}, for"
+			ewarn "which this module was built."
+			ewarn
+		elif [[ -f /sys/module/wireguard/version ]] && \
+		     old="$(< /sys/module/wireguard/version)" && \
+		     new="$(modinfo -F version "${ROOT}/lib/modules/${KV_FULL}/net/wireguard.ko" 2>/dev/null)" && \
+		     [[ $old != "$new" ]]; then
+			ewarn
+			ewarn "You appear to have just upgraded WireGuard from version v$old to v$new."
+			ewarn "However, the old version is still running on your system. In order to use the"
+			ewarn "new version, you will need to remove the old module and load the new one. As"
+			ewarn "root, you can accomplish this with the following commands:"
+			ewarn
+			ewarn "    # rmmod wireguard"
+			ewarn "    # modprobe wireguard"
+			ewarn
+			ewarn "Do note that doing this will remove current WireGuard interfaces, so you may want"
+			ewarn "to gracefully remove them yourself prior."
+			ewarn
+		fi
 	fi
 }
