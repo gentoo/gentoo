@@ -1,6 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=dvd that is masked in this profile.
 media-video/mplayer dvdnav
@@ -37,7 +45,7 @@ app-shells/bash-completion test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # Pulls in dev-db/redis which is not keyworded on ia64.
->=dev-python/pyzor-1.0.0 test
+dev-python/pyzor test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
