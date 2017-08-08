@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=opencl that is masked in this profile.
+net-misc/bfgminer adl lm_sensors
+
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
 # Mask for removal of ancient versions of media-libs/libvisio,
 # media-libs/libcdr, app-text/libwpd and app-text/libwpg
