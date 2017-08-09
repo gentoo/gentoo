@@ -18282,7 +18282,7 @@ www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for strea
 www-apache/mod_geoip2 1.2.7-r1: geoip module gets the country and city a request originated from
 www-apache/mod_gnutls 0.8.2-r1: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
 www-apache/mod_h2 1.4.7 1.5.6 1.10.10 9999: HTTP/2 module for Apache
-www-apache/mod_jk 1.2.37 1.2.40 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
+www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24 0.24-r2: Limit the number of simultaneous apache connections
 www-apache/mod_log_rotate 1.00 1.01: Log rotation support for mod_log_config based on strftime(3)
