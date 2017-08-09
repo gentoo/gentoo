@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-62
+
 # Brian Evans <grknight@gentoo.org) (08 Aug 2017)
 # Old PEAR packages which are not maintained upstream or superseded
 # They contain errors which are not easy to maintain with no upstream
@@ -523,11 +528,6 @@ app-emulation/vmware-workstation
 app-emulation/vmware-player
 app-emulation/vmware-modules
 app-emulation/vmware-tools
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-61
 
 # Raymond Jennings <shentino@gmail.com> (11 Jun 2017)
 # Upstream announced EOL effective July 2017.
