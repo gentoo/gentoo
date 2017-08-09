@@ -6,6 +6,7 @@ EAPI=6
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
 KMMODULE="console/${PN}"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Command line interface to KDE calendars (noakonadi branch)"
