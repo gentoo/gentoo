@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Securely erase disks using a variety of recognized methods"
 HOMEPAGE="https://github.com/martijnvanbrummelen/nwipe/"
-SRC_URI="https://github.com/martijnvanbrummelen/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/martijnvanbrummelen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
