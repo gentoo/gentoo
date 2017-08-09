@@ -531,7 +531,7 @@ app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate m
 app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
-app-crypt/gifshuffle 2.0: GIF colourmap steganography
+app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
 app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.1.22: The GNU Privacy Guard, a GPL OpenPGP implementation
