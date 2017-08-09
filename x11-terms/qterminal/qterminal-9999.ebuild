@@ -20,6 +20,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}
+	dev-util/lxqt-build-tools
 "
 DEPEND="${RDEPEND}"
 
