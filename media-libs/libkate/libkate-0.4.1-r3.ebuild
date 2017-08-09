@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit ltprune python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Codec for karaoke and text encapsulation for Ogg"
 HOMEPAGE="https://code.google.com/p/libkate/"
@@ -48,6 +48,6 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 	use wxwidgets && python_fix_shebang "${D}"
 }
