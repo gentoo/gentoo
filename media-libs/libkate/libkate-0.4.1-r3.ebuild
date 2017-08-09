@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit multilib-minimal python-single-r1
 
 DESCRIPTION="Codec for karaoke and text encapsulation for Ogg"
 HOMEPAGE="https://code.google.com/p/libkate/"
@@ -18,12 +18,12 @@ IUSE="debug doc wxwidgets"
 REQUIRED_USE="wxwidgets? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
-	media-libs/libogg:=
-	media-libs/libpng:0=
+	media-libs/libogg:=[${MULTILIB_USEDEP}]
+	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-	sys-devel/flex
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	sys-devel/flex[${MULTILIB_USEDEP}]
 	sys-devel/bison
 	doc? ( app-doc/doxygen )
 "
@@ -38,16 +38,17 @@ pkg_setup() {
 	use wxwidgets && python-single-r1_pkg_setup
 }
 
-src_configure() {
+multilib_src_configure() {
+	local ECONF_SOURCE=${S}
 	econf \
 		--disable-static \
 		$(use_enable debug) \
-		$(use_enable doc) \
-		$(usex wxwidgets '' 'PYTHON=:')
+		$(multilib_native_use_enable doc) \
+		$(multilib_native_usex wxwidgets '' 'PYTHON=:')
 }
 
-src_install() {
-	default
+multilib_src_install_all() {
+	einstalldocs
 	find "${D}" -name '*.la' -delete || die
 	use wxwidgets && python_fix_shebang "${D}"
 }
