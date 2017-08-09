@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,8 @@ EAPI=5
 KDE_LINGUAS="bg bs ca ca@valencia cs da de el en_GB es et eu fr ga gl he hi hne
 it ja km lt mai nb nds nl pa pl pt pt_BR ro ru sr sr@ijekavian sr@ijekavianlatin
 sr@latin sv th tr uk zh_CN zh_TW"
-KDE_HANDBOOK=optional
+KDE_HANDBOOK="optional"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="KPlayer is a KDE media player based on mplayer"
@@ -19,5 +20,5 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND="${DEPEND}
-	|| ( >=media-video/mplayer-1.0_rc1 media-video/mplayer2 )
+	>=media-video/mplayer-1.0_rc1
 "
