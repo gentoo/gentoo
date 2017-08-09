@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/plymouth"
 	inherit git-r3
 else
-		SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
+	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
 fi
 
 inherit autotools readme.gentoo-r1 systemd toolchain-funcs
