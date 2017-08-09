@@ -3,7 +3,6 @@
 
 EAPI=6
 GST_ORG_MODULE=gst-plugins-bad
-MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit gstreamer
 
