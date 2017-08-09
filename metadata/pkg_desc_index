@@ -12993,7 +12993,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.3.3 0.3.3-r1: libhal stub forwarding to UDisks for Adobe Flash to play DRM content
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.7 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.7 1.4.8 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -13862,7 +13862,7 @@ media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8 0.20.9: The Musi
 media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.24.0 1.25.2 1.25.3 1.25.4: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.24.0 1.25.2 1.25.4 1.25.5: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1: Terminal-based YouTube player and downloader
