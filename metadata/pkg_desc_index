@@ -235,7 +235,7 @@ app-admin/whowatch 1.8.5: Displays information about users currently logged on i
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
-app-admin/yadm 1.05 1.06 1.07: A dotfile manager for the config files in your home folder
+app-admin/yadm 1.07: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1 0.99.2 0.99.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2 5.6.1: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -2204,7 +2204,7 @@ app-text/adiff 1.4 1.4-r1: Wordise diff
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.4 2.4-r1 2.5 2.6: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.4 2.4-r1 2.5 2.6 2.8.1: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
@@ -10617,7 +10617,7 @@ dev-util/waf 1.9.8: piece of software used to help building software projects
 dev-util/webstorm 10.0.4.141.1550 2016.2.2.162.1628.41: JavaScript IDE for client- and server-side development with Node.js
 dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
-dev-util/wsta 0.4.1 0.5.0: A CLI development tool for WebSocket APIs
+dev-util/wsta 0.5.0: A CLI development tool for WebSocket APIs
 dev-util/wstool 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r3: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
 dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
