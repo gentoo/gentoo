@@ -27,7 +27,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local ECONF_SOURCE=${S}
-	econf $(use_enable doc)
+	econf \
+		--disable-static \
+		$(use_enable doc)
 }
 
 multilib_src_install_all() {
