@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Container application to unify PIM applications within one (noakonadi branch)"

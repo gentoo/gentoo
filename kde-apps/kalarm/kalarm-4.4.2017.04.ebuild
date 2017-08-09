@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Personal alarm message, command and email scheduler by KDE (noakonadi branch)"

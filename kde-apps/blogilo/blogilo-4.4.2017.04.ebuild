@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Application to create, edit and update blog content"

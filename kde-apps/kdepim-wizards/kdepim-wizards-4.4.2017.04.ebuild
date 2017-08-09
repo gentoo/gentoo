@@ -5,6 +5,7 @@ EAPI=6
 
 KMNAME="kdepim"
 KMMODULE="wizards"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="KDE PIM wizards (noakonadi branch)"

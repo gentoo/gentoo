@@ -5,6 +5,7 @@ EAPI=6
 
 KMNAME="kdepim"
 KMMODULE="kresources"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="KDE PIM groupware plugin collection (noakonadi branch)"
