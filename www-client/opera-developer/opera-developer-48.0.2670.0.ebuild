@@ -3,7 +3,7 @@
 
 EAPI=5
 CHROMIUM_LANGS="
-	be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA he hi hr hu id it
+	be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA hi hr hu id it
 	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
