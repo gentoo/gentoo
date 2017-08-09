@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils systemd user
+inherit systemd user
 
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
@@ -12,15 +12,7 @@ LICENSE="Apache-2.0 BSD-2 LGPL-3 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RESTRICT="strip"
-
 RDEPEND="virtual/jre:1.8"
-
-pkg_preinst() {
-	if has_version '<app-misc/elasticsearch-2.3.2'; then
-		export UPDATE_NOTES=1
-	fi
-}
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -51,7 +43,7 @@ src_install() {
 	chmod +x "${D}"/usr/share/${PN}/bin/* || die
 
 	keepdir /var/{lib,log}/${PN}
-	keepdir /usr/share/${PN}/plugins
+	dodir /usr/share/${PN}/plugins
 
 	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" "${PN}.conf"
 
@@ -69,12 +61,8 @@ pkg_postinst() {
 	elog "symlinking the init script:"
 	elog "ln -sf /etc/init.d/${PN} /etc/init.d/${PN}.instance"
 	elog
-	elog "Please make sure you put elasticsearch.yml and logging.yml"
-	elog "into the configuration directory of the instance:"
+	elog "Please make sure you put elasticsearch.yml, log4j2.properties and scripts"
+	elog "from /etc/elasticsearch into the configuration directory of the instance:"
 	elog "/etc/${PN}/instance"
 	elog
-	if ! [ -z ${UPDATE_NOTES} ]; then
-		elog "This update changes some configuration variables. Please review"
-		elog "${EROOT%/}/etc/conf.d/elasticsearch before restarting your services."
-	fi
 }
