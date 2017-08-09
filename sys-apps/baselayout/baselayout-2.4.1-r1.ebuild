@@ -144,6 +144,7 @@ src_prepare() {
 			-e "/PATH=.*\/bin/s|\"$|:/usr/bin:/bin\"|" \
 			etc/profile || die
 		sed -i -r \
+			-e "s@:/bin@:${EPREFIX}/bin@g" \
 			-e "s:/(etc/env.d|opt|usr):${EPREFIX}/\1:g" \
 			-e "/^PATH=/s|\"$|:${EPREFIX}/usr/sbin:${EPREFIX}/sbin\"|" \
 			etc/env.d/50baselayout || die
