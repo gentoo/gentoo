@@ -1,5 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -15,14 +17,14 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-S="${WORKDIR}"/${PN}
+S="${WORKDIR}/${PN}"
 
 src_compile() {
-	echo $(tc-getCC) -o ${PN} ${CFLAGS} ${LDFLAGS} *.c
+	echo $(tc-getCC) -o ${PN} ${CFLAGS} ${LDFLAGS} *.c || die
 	$(tc-getCC) -o ${PN} ${CFLAGS} ${LDFLAGS} *.c || die "Cannot compile ${PN}"
 }
 
 src_install() {
-	dobin ${PN} || die "Cannot install ${PN}"
+	dobin ${PN}
 	dodoc gshuf.txt
 }
