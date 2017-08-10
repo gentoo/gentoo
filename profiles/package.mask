@@ -29,7 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Denis Dupeyron <calchan@gentoo.org> (09 AUg 2017)
+# Patrice Clement <monsieurp@gentoo.org> (10 Aug 2017)
+# Not ready for production yet.
+=dev-java/javatoolkit-0.4.0
+=dev-java/javatoolkit-0.5.0
+
+# Denis Dupeyron <calchan@gentoo.org> (09 Aug 2017)
 # Masked for testing of fix for long standing incompatibility between recent versions of ansible and jinja
 # https://github.com/ansible/ansible/issues/20494
 =app-admin/ansible-2.3.2.0-r1
