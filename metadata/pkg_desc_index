@@ -15960,7 +15960,7 @@ sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FI
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
 sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astronomical FITS images
-sci-astronomy/skycat 3.1.2-r2: ESO astronomical image visualizer with catalog access
+sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
