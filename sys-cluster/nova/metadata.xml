@@ -11,7 +11,7 @@
   </maintainer>
   <longdescription lang="en">
     Nova is a cloud computing fabric controller
-	(the main part of an IaaS system). It is written in Python.
+    (the main part of an IaaS system). It is written in Python.
   </longdescription>
   <use>
     <flag name="compute">Installs the initscripts for the nova volume service</flag>
