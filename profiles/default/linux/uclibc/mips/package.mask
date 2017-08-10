@@ -1,10 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
-# Currenlty =sys-apps/openrc-0.26.2 makes uclibc systems unbootable.
-# See bug #619370
->sys-apps/openrc-0.23.2
-
 #
 # See bug #544756.
 >=sys-devel/gcc-4.9
