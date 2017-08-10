@@ -2067,6 +2067,9 @@ gcc_slot_java() {
 
 toolchain_pkg_postinst() {
 	do_gcc_config
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow update all
+	fi
 
 	if ! is_crosscompile ; then
 		echo
@@ -2105,6 +2108,10 @@ toolchain_pkg_postinst() {
 }
 
 toolchain_pkg_postrm() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow clean all
+	fi
+
 	# to make our lives easier (and saner), we do the fix_libtool stuff here.
 	# rather than checking SLOT's and trying in upgrade paths, we just see if
 	# the common libstdc++.la exists in the ${LIBPATH} of the gcc that we are
