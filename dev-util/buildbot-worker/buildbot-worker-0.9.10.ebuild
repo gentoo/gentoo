@@ -12,8 +12,8 @@ inherit readme.gentoo user distutils-r1
 DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
 
-MY_V="${PV/_p/p}"
-MY_P="${PN}-${MY_V}"
+MY_PV="${PV/_p/.post}"
+MY_P="${PN}-${MY_PV}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
