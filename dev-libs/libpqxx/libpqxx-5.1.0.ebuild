@@ -38,7 +38,7 @@ src_configure() {
 	econf \
 		--enable-shared \
 		$(use_enable doc documentation) \
-		$(use_enable static-libs static)	local myconf
+		$(use_enable static-libs static)
 }
 
 src_install () {
