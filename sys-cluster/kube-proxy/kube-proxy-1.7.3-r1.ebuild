@@ -8,13 +8,12 @@ EGO_PN="k8s.io/kubernetes"
 ARCHIVE_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Kubernetes Node Agent"
+DESCRIPTION="Kubernetes Proxy service"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="hardened"
 
 DEPEND="dev-go/go-bindata"
 
@@ -27,7 +26,6 @@ src_prepare() {
 }
 
 src_compile() {
-	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
 	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -j1 -C src/${EGO_PN} WHAT=cmd/${PN}
 }
 
@@ -35,7 +33,7 @@ src_install() {
 	pushd src/${EGO_PN} || die
 	dobin _output/bin/${PN}
 	popd || die
-	keepdir /etc/kubernetes/manifests /var/log/kubelet
+	keepdir /var/log/${PN} /var/lib/${PN}
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	insinto /etc/logrotate.d

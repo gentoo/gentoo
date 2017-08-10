@@ -3,10 +3,7 @@
 
 EAPI="6"
 MY_EXTRAS_VER="20170803-1814Z"
-# The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
-WSREP_REVISION="25"
 SUBSLOT="18"
-MYSQL_PV_MAJOR="5.6"
 
 JAVA_PKG_OPT_USE="jdbc"
 
@@ -18,7 +15,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz "
 
 # Gentoo patches to MySQL
-if [[ ${MY_EXTRAS_VER} != "live" && ${MY_EXTRAS_VER} != "none" ]]; then
+if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
 	SRC_URI="${SRC_URI}
 		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
 		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
@@ -119,11 +116,11 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
-	!<virtual/mysql-5.6-r4
+	!<virtual/mysql-5.6-r9
 	${COMMON_DEPEND}
 	server? ( galera? (
 		sys-apps/iproute2
-		=sys-cluster/galera-${WSREP_REVISION}*
+		=sys-cluster/galera-25*
 		sst-rsync? ( sys-process/lsof )
 		sst-xtrabackup? ( net-misc/socat[ssl] )
 	) )
@@ -138,7 +135,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 # xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	 server? ( ~virtual/mysql-${MYSQL_PV_MAJOR}[embedded=,static=] )
+	 server? ( ~virtual/mysql-5.6[embedded=,static=] )
 	 virtual/libmysqlclient:${SLOT}[${MULTILIB_USEDEP},static-libs=]
 	server? ( galera? ( sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
 
