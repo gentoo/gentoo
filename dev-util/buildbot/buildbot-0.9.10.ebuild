@@ -121,7 +121,7 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}
-		doins -r contrib docs/examples
+		doins -r docker docs/examples
 	fi
 
 	newconfd "${FILESDIR}/buildmaster.confd" buildmaster
