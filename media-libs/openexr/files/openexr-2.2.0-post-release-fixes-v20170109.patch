@@ -1,0 +1,713 @@
+diff -purN a/configure.ac b/configure.ac
+--- a/configure.ac	2014-08-10 05:21:45.000000000 +0100
++++ b/configure.ac	2017-01-09 19:54:21.000000000 +0000
+@@ -188,7 +188,7 @@ AC_COMPILE_IFELSE(
+                  __asm__(
+                      "xgetbv     \n"
+                      "vzeroupper  "
+-                     : "=a"(eax), "=d"(edx) : "c"(n) : );
++                     : "=a"(eax), "=d"(edx) : "c"(n));
+              #else
+                  #error No GCC style inline asm supported for AVX instructions
+              #endif
+diff -purN a/IlmImf/CMakeLists.txt b/IlmImf/CMakeLists.txt
+--- a/IlmImf/CMakeLists.txt	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/CMakeLists.txt	2017-01-09 19:54:21.000000000 +0000
+@@ -8,8 +8,8 @@ ADD_EXECUTABLE ( b44ExpLogTable
+ 
+ TARGET_LINK_LIBRARIES ( b44ExpLogTable
+   Half
+-  Iex${ILMBASE_LIBSUFFIX}
+   IlmThread${ILMBASE_LIBSUFFIX}
++  Iex${ILMBASE_LIBSUFFIX}
+   ${PTHREAD_LIB}
+ )
+ 
+@@ -25,8 +25,8 @@ ADD_EXECUTABLE ( dwaLookups
+ 
+ TARGET_LINK_LIBRARIES ( dwaLookups
+   Half
+-  Iex${ILMBASE_LIBSUFFIX}
+   IlmThread${ILMBASE_LIBSUFFIX}
++  Iex${ILMBASE_LIBSUFFIX}
+   ${PTHREAD_LIB}
+ )
+ 
+@@ -217,6 +217,7 @@ INSTALL ( FILES
+   ImfRationalAttribute.h
+   ImfFramesPerSecond.h
+   ImfStandardAttributes.h
++  ImfStdIO.h
+   ImfEnvmap.h
+   ImfEnvmapAttribute.h
+   ImfInt64.h
+diff -purN a/IlmImf/ImfCRgbaFile.h b/IlmImf/ImfCRgbaFile.h
+--- a/IlmImf/ImfCRgbaFile.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfCRgbaFile.h	2017-01-09 19:54:21.000000000 +0000
+@@ -98,7 +98,7 @@ typedef struct ImfRgba ImfRgba;
+ 
+ #define IMF_INCREASING_Y	0
+ #define IMF_DECREASING_Y	1
+-#define IMF_RAMDOM_Y		2
++#define IMF_RANDOM_Y		2
+ 
+ 
+ /*
+diff -purN a/IlmImf/ImfDeepTiledInputPart.cpp b/IlmImf/ImfDeepTiledInputPart.cpp
+--- a/IlmImf/ImfDeepTiledInputPart.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfDeepTiledInputPart.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -90,7 +90,7 @@ DeepTiledInputPart::isComplete () const
+ unsigned int
+ DeepTiledInputPart::tileXSize () const
+ {
+-    return file->isComplete();
++    return file->tileXSize();
+ }
+ 
+ 
+diff -purN a/IlmImf/ImfDwaCompressor.cpp b/IlmImf/ImfDwaCompressor.cpp
+--- a/IlmImf/ImfDwaCompressor.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfDwaCompressor.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -149,6 +149,7 @@
+ #include "ImathBox.h"
+ #include "ImathVec.h"
+ #include "half.h"
++#include "halfLimits.h"
+ 
+ #include "dwaLookups.h"
+ 
+@@ -867,14 +868,14 @@ DwaCompressor::LossyDctDecoderBase::exec
+                     //
+                     // Zig-Zag indices in normal layout are as follows:
+                     //
+-                    // 0   1   3   6   10  15  21  28
+-                    // 2   4   7   11  16  22  29  36
+-                    // 5   8   12  17  23  30  37  43
+-                    // 9   13  18  24  31  38  44  49
+-                    // 14  19  25  32  39  45  50  54
+-                    // 20  26  33  40  46  51  55  58
+-                    // 27  34  41  47  52  56  59  61
+-                    // 35  42  48  53  57  60  62  63
++                    // 0   1   5   6   14  15  27  28
++                    // 2   4   7   13  16  26  29  42
++                    // 3   8   12  17  25  30  41  43
++                    // 9   11  18  24  31  40  44  53
++                    // 10  19  23  32  39  45  52  54
++                    // 20  22  33  38  46  51  55  60
++                    // 21  34  37  47  50  56  59  61
++                    // 35  36  48  49  57  58  62  63
+                     //
+                     // If lastNonZero is less than the first item on
+                     // each row, we know that the whole row is zero and 
+@@ -888,21 +889,21 @@ DwaCompressor::LossyDctDecoderBase::exec
+                     //
+                     // where:
+                     //
+-                    //    const int rowStartIdx[] = {2, 5, 9, 14, 20, 27, 35};
++                    //    const int rowStartIdx[] = {2, 3, 9, 10, 20, 21, 35};
+                     //    const int rowsEmpty[]   = {7, 6, 5,  4,  3,  2,  1};
+                     //
+ 
+                     if (lastNonZero < 2)
+                         dctInverse8x8_7(_dctData[comp]._buffer);
+-                    else if (lastNonZero < 5)
++                    else if (lastNonZero < 3)
+                         dctInverse8x8_6(_dctData[comp]._buffer);
+                     else if (lastNonZero < 9)
+                         dctInverse8x8_5(_dctData[comp]._buffer);
+-                    else if (lastNonZero < 14)
++                    else if (lastNonZero < 10)
+                         dctInverse8x8_4(_dctData[comp]._buffer);
+                     else if (lastNonZero < 20)
+                         dctInverse8x8_3(_dctData[comp]._buffer);
+-                    else if (lastNonZero < 27)
++                    else if (lastNonZero < 21)
+                         dctInverse8x8_2(_dctData[comp]._buffer);
+                     else if (lastNonZero < 35)
+                         dctInverse8x8_1(_dctData[comp]._buffer);
+@@ -947,7 +948,7 @@ DwaCompressor::LossyDctDecoderBase::exec
+                 }
+                 else
+                 {
+-                    #if IMF_HAVE_SSE2
++                    #ifdef IMF_HAVE_SSE2
+ 
+                         __m128i *dst = (__m128i*)&rowBlock[comp][blockx*64];
+ 
+@@ -1408,6 +1409,15 @@ DwaCompressor::LossyDctEncoderBase::exec
+             {
+ 
+                 Xdr::read<CharPtrIO> (srcXdr, src);
++
++                //
++                // Clamp to half ranges, instead of just casting. This
++                // avoids introducing Infs which end up getting zeroed later
++                //
++                src = std::max (
++                    std::min ((float) std::numeric_limits<half>::max(), src),
++                              (float)-std::numeric_limits<half>::max());
++
+                 Xdr::write<CharPtrIO> (dstXdr, ((half)src).bits());
+ 
+                 //
+@@ -1922,7 +1932,7 @@ DwaCompressor::compress
+     if (outBufferSize > _outBufferSize) 
+     {
+         _outBufferSize = outBufferSize;
+-        if (_outBuffer == 0)
++        if (_outBuffer != 0)
+             delete[] _outBuffer;       
+         _outBuffer = new char[outBufferSize];
+     }
+@@ -2163,7 +2173,7 @@ DwaCompressor::compress
+     if (*unknownUncompressedSize > 0)
+     {
+         uLongf inSize  = (uLongf)(*unknownUncompressedSize);
+-        uLongf outSize = (uLongf)(ceil ((float)inSize * 1.01f) + 100);
++        uLongf outSize = compressBound (inSize);
+ 
+         if (Z_OK != ::compress2 ((Bytef *)outDataPtr,
+                                  &outSize,
+@@ -2201,8 +2211,8 @@ DwaCompressor::compress
+           case DEFLATE:
+ 
+             {
+-                uLongf destLen = (uLongf)
+-                    (2 * (*totalAcUncompressedCount) * sizeof (unsigned short));
++                uLongf destLen = compressBound (
++                    (*totalAcUncompressedCount) * sizeof (unsigned short));
+ 
+                 if (Z_OK != ::compress2
+                                 ((Bytef *)outDataPtr,
+@@ -2254,8 +2264,7 @@ DwaCompressor::compress
+              _planarUncBuffer[RLE],
+              (signed char *)_rleBuffer);
+ 
+-        uLongf dstLen =
+-            (uLongf)ceil (1.01f * (float) * rleUncompressedSize) + 24;
++        uLongf dstLen = compressBound ((uLongf)*rleUncompressedSize);
+ 
+         if (Z_OK != ::compress2
+                         ((Bytef *)outDataPtr, 
+@@ -2493,16 +2502,14 @@ DwaCompressor::uncompress
+ 
+     if (unknownCompressedSize > 0)
+     {
+-        uLongf outSize = static_cast<uLongf>(
+-                ceil( (float)unknownUncompressedSize * 1.01) + 100);
+-
+-        if (unknownUncompressedSize < 0 || 
+-            outSize > _planarUncBufferSize[UNKNOWN]) 
++        if (unknownUncompressedSize > _planarUncBufferSize[UNKNOWN]) 
+         {
+             throw Iex::InputExc("Error uncompressing DWA data"
+                                 "(corrupt header).");
+         }
+ 
++        uLongf outSize = (uLongf)unknownUncompressedSize;
++
+         if (Z_OK != ::uncompress
+                         ((Bytef *)_planarUncBuffer[UNKNOWN],
+                          &outSize,
+@@ -2925,10 +2932,13 @@ DwaCompressor::initializeBuffers (size_t
+             //
+             // This is the size of the number of packed
+             // components, plus the requirements for
+-            // maximum Huffman encoding size.
++            // maximum Huffman encoding size (for STATIC_HUFFMAN)
++            // or for zlib compression (for DEFLATE)
+             //
+ 
+-            maxOutBufferSize += 2 * maxLossyDctAcSize + 65536;
++            maxOutBufferSize += std::max(
++                            (int)(2 * maxLossyDctAcSize + 65536),
++                            (int)compressBound (maxLossyDctAcSize) );
+             numLossyDctChans++;
+             break;
+ 
+@@ -2967,13 +2977,13 @@ DwaCompressor::initializeBuffers (size_t
+     // which could take slightly more space
+     //
+ 
+-    maxOutBufferSize += (int)(ceil (1.01f * (float)rleBufferSize) + 100);
++    maxOutBufferSize += (int)compressBound ((uLongf)rleBufferSize);
+     
+     //
+     // And the same goes for the UNKNOWN data
+     //
+ 
+-    maxOutBufferSize += (int)(ceil (1.01f * (float)unknownBufferSize) + 100);
++    maxOutBufferSize += (int)compressBound ((uLongf)unknownBufferSize);
+ 
+     //
+     // Allocate a zip/deflate compressor big enought to hold the DC data
+@@ -3095,8 +3105,8 @@ DwaCompressor::initializeBuffers (size_t
+ 
+     if (planarUncBufferSize[UNKNOWN] > 0)
+     {
+-        planarUncBufferSize[UNKNOWN] =
+-            (int) ceil (1.01f * (float)planarUncBufferSize[UNKNOWN]) + 100;
++        planarUncBufferSize[UNKNOWN] = 
++            compressBound ((uLongf)planarUncBufferSize[UNKNOWN]);
+     }
+ 
+     for (int i = 0; i < NUM_COMPRESSOR_SCHEMES; ++i)
+diff -purN a/IlmImf/ImfDwaCompressorSimd.h b/IlmImf/ImfDwaCompressorSimd.h
+--- a/IlmImf/ImfDwaCompressorSimd.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfDwaCompressorSimd.h	2017-01-09 19:54:21.000000000 +0000
+@@ -51,6 +51,8 @@
+ #include <half.h>
+ #include <assert.h>
+ 
++#include <algorithm>
++
+ OPENEXR_IMF_INTERNAL_NAMESPACE_HEADER_ENTER
+ 
+ #define _SSE_ALIGNMENT        32
+@@ -334,34 +336,37 @@ interleaveByte2 (char *dst, char *src0,
+         // use aligned loads
+         //
+     
+-        for (int x = 0; x < 8; ++x)
++        for (int x = 0; x < std::min (numBytes, 8); ++x)
+         {
+             dst[2 * x]     = src0[x];
+             dst[2 * x + 1] = src1[x];
+         }
+ 
+-        dst_epi8  = (__m128i*)&dst[16];
+-        src0_epi8 = (__m128i*)&src0[8];
+-        src1_epi8 = (__m128i*)&src1[8];
+-        sseWidth  =  (numBytes - 8) / 16;
+-
+-        for (int x=0; x<sseWidth; ++x)
++        if (numBytes > 8) 
+         {
+-            _mm_stream_si128 (&dst_epi8[2 * x],
+-                              _mm_unpacklo_epi8 (src0_epi8[x], src1_epi8[x]));
++            dst_epi8  = (__m128i*)&dst[16];
++            src0_epi8 = (__m128i*)&src0[8];
++            src1_epi8 = (__m128i*)&src1[8];
++            sseWidth  =  (numBytes - 8) / 16;
+ 
+-            _mm_stream_si128 (&dst_epi8[2 * x + 1],
+-                              _mm_unpackhi_epi8 (src0_epi8[x], src1_epi8[x]));
+-        }
++            for (int x=0; x<sseWidth; ++x)
++            {
++                _mm_stream_si128 (&dst_epi8[2 * x],
++                                  _mm_unpacklo_epi8 (src0_epi8[x], src1_epi8[x]));
+ 
+-        //
+-        // Then do run the leftovers one at a time
+-        //
++                _mm_stream_si128 (&dst_epi8[2 * x + 1],
++                                  _mm_unpackhi_epi8 (src0_epi8[x], src1_epi8[x]));
++            }
+ 
+-        for (int x = 16 * sseWidth + 8; x < numBytes; ++x)
+-        {
+-            dst[2 * x]     = src0[x];
+-            dst[2 * x + 1] = src1[x];
++            //
++            // Then do run the leftovers one at a time
++            //
++
++            for (int x = 16 * sseWidth + 8; x < numBytes; ++x)
++            {
++                dst[2 * x]     = src0[x];
++                dst[2 * x + 1] = src1[x];
++            }
+         }
+     }
+     else
+diff -purN a/IlmImf/ImfFastHuf.cpp b/IlmImf/ImfFastHuf.cpp
+--- a/IlmImf/ImfFastHuf.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfFastHuf.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -107,7 +107,7 @@ FastHufDecoder::FastHufDecoder
+     for (int i = 0; i <= MAX_CODE_LEN; ++i)
+     {
+         codeCount[i] = 0;
+-        base[i]      = 0xffffffffffffffffL;
++        base[i]      = 0xffffffffffffffffULL;
+         offset[i]    = 0;
+     }
+ 
+@@ -352,7 +352,7 @@ FastHufDecoder::buildTables (Int64 *base
+ 
+     for (int i = 0; i <= MAX_CODE_LEN; ++i)
+     {
+-        if (base[i] != 0xffffffffffffffffL)
++        if (base[i] != 0xffffffffffffffffULL)
+         {
+             _ljBase[i] = base[i] << (64 - i);
+         }
+@@ -362,7 +362,7 @@ FastHufDecoder::buildTables (Int64 *base
+             // Unused code length - insert dummy values
+             //
+ 
+-            _ljBase[i] = 0xffffffffffffffffL;
++            _ljBase[i] = 0xffffffffffffffffULL;
+         }
+     }
+ 
+@@ -417,7 +417,7 @@ FastHufDecoder::buildTables (Int64 *base
+ 
+     int minIdx = TABLE_LOOKUP_BITS;
+ 
+-    while (minIdx > 0 && _ljBase[minIdx] == 0xffffffffffffffffL)
++    while (minIdx > 0 && _ljBase[minIdx] == 0xffffffffffffffffULL)
+         minIdx--;
+ 
+     if (minIdx < 0)
+@@ -427,7 +427,7 @@ FastHufDecoder::buildTables (Int64 *base
+         // Set the min value such that the table is never tested.
+         //
+ 
+-        _tableMin = 0xffffffffffffffffL;
++        _tableMin = 0xffffffffffffffffULL;
+     }
+     else
+     {
+diff -purN a/IlmImf/ImfInputFile.cpp b/IlmImf/ImfInputFile.cpp
+--- a/IlmImf/ImfInputFile.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfInputFile.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -854,6 +854,39 @@ InputFile::rawPixelData (int firstScanLi
+ }
+ 
+ 
++
++
++void
++InputFile::rawPixelDataToBuffer (int scanLine,
++                                 char *pixelData,
++                                 int &pixelDataSize) const
++{
++    try
++    {
++        if (_data->dsFile)
++        {
++            throw IEX_NAMESPACE::ArgExc ("Tried to read a raw scanline "
++                                         "from a deep image.");
++        }
++        
++        else if (_data->isTiled)
++        {
++            throw IEX_NAMESPACE::ArgExc ("Tried to read a raw scanline "
++                                         "from a tiled image.");
++        }
++        
++        _data->sFile->rawPixelDataToBuffer(scanLine, pixelData, pixelDataSize);
++    }
++    catch (IEX_NAMESPACE::BaseExc &e)
++    {
++        REPLACE_EXC (e, "Error reading pixel data from image "
++                     "file \"" << fileName() << "\". " << e);
++        throw;
++    }
++}
++
++
++
+ void
+ InputFile::rawTileData (int &dx, int &dy,
+ 			int &lx, int &ly,
+diff -purN a/IlmImf/ImfInputFile.h b/IlmImf/ImfInputFile.h
+--- a/IlmImf/ImfInputFile.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfInputFile.h	2017-01-09 19:54:21.000000000 +0000
+@@ -201,7 +201,30 @@ class IMF_EXPORT InputFile : public Gene
+     void		rawPixelData (int firstScanLine,
+ 				      const char *&pixelData,
+ 				      int &pixelDataSize);
+-                                     
++
++
++    //----------------------------------------------
++    // Read a scanline's worth of raw pixel data 
++    // from the file, without uncompressing it, and 
++    // store in an external buffer, pixelData. 
++    // pixelData should be pre-allocated with space 
++    // for pixelDataSize chars. 
++    //
++    // This function can be used to separate the 
++    // reading of a raw scan line from the 
++    // decompression of that scan line, for
++    // example to allow multiple scan lines to be
++    // decompressed in parallel by an application's
++    // own threads, where it is not convenient to 
++    // use the threading within the library.
++    //----------------------------------------------
++
++    void		rawPixelDataToBuffer (int scanLine,
++					      char *pixelData,
++					      int &pixelDataSize) const;   
++    
++ 
++
+     //--------------------------------------------------
+     // Read a tile of raw pixel data from the file,
+     // without uncompressing it (this function is
+diff -purN a/IlmImf/ImfInputPart.cpp b/IlmImf/ImfInputPart.cpp
+--- a/IlmImf/ImfInputPart.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfInputPart.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -104,6 +104,14 @@ InputPart::rawPixelData (int firstScanLi
+     file->rawPixelData(firstScanLine, pixelData, pixelDataSize);
+ }
+ 
++
++void
++InputPart::rawPixelDataToBuffer (int scanLine, char *pixelData, int &pixelDataSize) const
++{
++    file->rawPixelDataToBuffer(scanLine, pixelData, pixelDataSize);
++}
++
++
+ void
+ InputPart::rawTileData (int &dx, int &dy, int &lx, int &ly,
+              const char *&pixelData, int &pixelDataSize)
+diff -purN a/IlmImf/ImfInputPart.h b/IlmImf/ImfInputPart.h
+--- a/IlmImf/ImfInputPart.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfInputPart.h	2017-01-09 19:54:21.000000000 +0000
+@@ -66,7 +66,14 @@ class IMF_EXPORT InputPart
+         void                rawPixelData (int firstScanLine,
+                                           const char *&pixelData,
+                                           int &pixelDataSize);
+-        void                rawTileData (int &dx, int &dy,
++
++ 
++        void                rawPixelDataToBuffer (int scanLine,
++                                                  char *pixelData,
++                                                  int &pixelDataSize) const;
++
++
++       void                 rawTileData (int &dx, int &dy,
+                                          int &lx, int &ly,
+                                          const char *&pixelData,
+                                          int &pixelDataSize);
+diff -purN a/IlmImf/ImfOptimizedPixelReading.h b/IlmImf/ImfOptimizedPixelReading.h
+--- a/IlmImf/ImfOptimizedPixelReading.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfOptimizedPixelReading.h	2017-01-09 19:54:21.000000000 +0000
+@@ -60,7 +60,7 @@ public:
+ };
+ 
+ 
+-#if IMF_HAVE_SSE2
++#ifdef IMF_HAVE_SSE2
+ 
+ 
+ //------------------------------------------------------------------------
+diff -purN a/IlmImf/ImfScanLineInputFile.cpp b/IlmImf/ImfScanLineInputFile.cpp
+--- a/IlmImf/ImfScanLineInputFile.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfScanLineInputFile.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -1264,7 +1264,7 @@ detectOptimizationMode (const vector<sli
+     OptimizationMode w;
+     
+     // need to be compiled with SSE optimisations: if not, just returns false
+-#if IMF_HAVE_SSE2
++#ifdef IMF_HAVE_SSE2
+     
+     
+     // only handle reading 3,4,6 or 8 channels
+@@ -1699,4 +1699,38 @@ ScanLineInputFile::rawPixelData (int fir
+     }
+ }
+ 
++
++void ScanLineInputFile::rawPixelDataToBuffer(int scanLine,
++                                             char *pixelData,
++                                             int &pixelDataSize) const
++{
++  if (_data->memoryMapped) {
++    throw IEX_NAMESPACE::ArgExc ("Reading raw pixel data to a buffer "
++                                 "is not supported for memory mapped "
++                                 "streams." );
++  }
++
++  try 
++  {
++    Lock lock (*_streamData);
++    
++    if (scanLine < _data->minY || scanLine > _data->maxY) 
++    {
++      throw IEX_NAMESPACE::ArgExc ("Tried to read scan line outside "
++                                   "the image file's data window.");
++    }
++    
++    readPixelData
++      (_streamData, _data, scanLine, pixelData, pixelDataSize);
++    
++  }
++  catch (IEX_NAMESPACE::BaseExc &e) 
++  {
++    REPLACE_EXC (e, "Error reading pixel data from image "
++                   "file \"" << fileName() << "\". " << e);
++    throw;
++  }
++}
++
++
+ OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_EXIT
+diff -purN a/IlmImf/ImfScanLineInputFile.h b/IlmImf/ImfScanLineInputFile.h
+--- a/IlmImf/ImfScanLineInputFile.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfScanLineInputFile.h	2017-01-09 19:54:21.000000000 +0000
+@@ -184,6 +184,28 @@ class IMF_EXPORT ScanLineInputFile : pub
+ 				      const char *&pixelData,
+ 				      int &pixelDataSize);
+ 
++   
++    //----------------------------------------------
++    // Read a scanline's worth of raw pixel data 
++    // from the file, without uncompressing it, and 
++    // store in an external buffer, pixelData. 
++    // pixelData should be pre-allocated with space 
++    // for pixelDataSize chars. 
++    //
++    // This function can be used to separate the 
++    // reading of a raw scan line from the 
++    // decompression of that scan line, for
++    // example to allow multiple scan lines to be
++    // decompressed in parallel by an application's
++    // own threads, where it is not convenient to 
++    // use the threading within the library.
++    //----------------------------------------------
++
++    void                rawPixelDataToBuffer(int scanLine,
++					     char *pixelData,
++					     int &pixelDataSize) const;
++    
++  
+     struct Data;
+ 
+   private:
+diff -purN a/IlmImf/ImfSimd.h b/IlmImf/ImfSimd.h
+--- a/IlmImf/ImfSimd.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfSimd.h	2017-01-09 19:54:21.000000000 +0000
+@@ -50,7 +50,7 @@
+ 
+ extern "C"
+ {
+-#if IMF_HAVE_SSE2
++#ifdef IMF_HAVE_SSE2
+     #include <emmintrin.h>
+     #include <mmintrin.h>
+ #endif
+diff -purN a/IlmImf/ImfVersion.h b/IlmImf/ImfVersion.h
+--- a/IlmImf/ImfVersion.h	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/ImfVersion.h	2017-01-09 19:54:21.000000000 +0000
+@@ -109,8 +109,8 @@ const int ALL_FLAGS		= TILED_FLAG | LONG
+ //
+ 
+ inline bool  isTiled (int version)	{return !!(version & TILED_FLAG);}
+-inline bool  isMultiPart (int version)  {return version & MULTI_PART_FILE_FLAG; }
+-inline bool  isNonImage(int version)    {return version & NON_IMAGE_FLAG; }
++inline bool  isMultiPart (int version)  {return !!(version & MULTI_PART_FILE_FLAG); }
++inline bool  isNonImage(int version)    {return !!(version & NON_IMAGE_FLAG); }
+ inline int   makeTiled (int version)	{return version | TILED_FLAG;}
+ inline int   makeNotTiled (int version) {return version & ~TILED_FLAG;}
+ inline int   getVersion (int version)	{return version & VERSION_NUMBER_FIELD;}
+diff -purN a/IlmImf/Makefile.am b/IlmImf/Makefile.am
+--- a/IlmImf/Makefile.am	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImf/Makefile.am	2017-01-09 19:54:21.000000000 +0000
+@@ -127,6 +127,7 @@ libIlmImfinclude_HEADERS = ImfForward.h
+ 			   ImfRational.h ImfRationalAttribute.h \
+ 			   ImfFramesPerSecond.h \
+ 			   ImfStandardAttributes.h \
++			   ImfStdIO.h \
+ 			   ImfEnvmap.h \
+ 			   ImfEnvmapAttribute.h \
+ 			   ImfInt64.h ImfRgba.h \
+diff -purN a/IlmImfTest/Makefile.am b/IlmImfTest/Makefile.am
+--- a/IlmImfTest/Makefile.am	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImfTest/Makefile.am	2017-01-09 19:54:21.000000000 +0000
+@@ -74,6 +74,8 @@ EXTRA_DIST = comp_none.exr comp_piz.exr
+ 	     comp_zips.exr lineOrder_decreasing.exr lineOrder_increasing.exr \
+ 	     test_native1.exr test_native2.exr invalid.exr \
+ 	     tiled.exr comp_b44.exr comp_b44_piz.exr \
++	     comp_dwaa_piz.exr comp_dwaa_v1.exr comp_dwaa_v2.exr \
++	     comp_dwab_piz.exr comp_dwab_v1.exr comp_dwab_v2.exr \
+              v1.7.test.planar.exr  v1.7.test.tiled.exr v1.7.test.1.exr v1.7.test.interleaved.exr \
+              invalid_shared_attrs_multipart.exr \
+ 	     tiled_with_scanlineimage_type.exr scanline_with_tiledimage_type.exr \
+diff -purN a/IlmImfTest/testDwaCompressorSimd.cpp b/IlmImfTest/testDwaCompressorSimd.cpp
+--- a/IlmImfTest/testDwaCompressorSimd.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/IlmImfTest/testDwaCompressorSimd.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -171,8 +171,9 @@ testCsc()
+ void
+ testInterleave()
+ {
+-    const int bufferLen = 100000;
+-    const int numIter   = 10000;
++    const int bufferLen     = 100000;
++    const int randomNumIter = 10000;
++    const int lengthNumIter = 128;
+     Rand48    rand48(0);
+     char     *srcA    = new char[bufferLen];
+     char     *srcB    = new char[bufferLen];
+@@ -189,7 +190,7 @@ testInterleave()
+         dst[2*i+1] = srcB[i];
+     }
+ 
+-    for (int iter=0; iter<numIter; ++iter)
++    for (int iter=0; iter<randomNumIter; ++iter)
+     {
+         memset(test, 0, 2*bufferLen);
+ 
+@@ -203,6 +204,46 @@ testInterleave()
+         }
+     }
+ 
++    //
++    // Test increasing length buffers, with varying alignment
++    // on all the buffers.
++    //
++    for (int len=1; len<lengthNumIter; ++len) 
++    {
++        for (int offset=0; offset<16*16*16; ++offset) 
++        {
++            int offsetA    =  offset        % 16;
++            int offsetB    = (offset /  16) % 16;
++            int offsetTest = (offset / 256) % 16;
++
++            memset(srcA, 255, bufferLen);
++            memset(srcB, 255, bufferLen);
++            memset(dst,  0,   2*bufferLen);
++            memset(test, 0,   2*bufferLen);
++
++            char *a   = srcA + offsetA;
++            char *b   = srcB + offsetB;
++            char *out = test + offsetTest;
++            
++            for (int i=0; i<len; ++i) 
++            {
++                a[i] = (char)rand48.nextf(0.0, 255.0);
++                b[i] = (char)rand48.nextf(0.0, 255.0);
++
++                dst[2*i]   = a[i];
++                dst[2*i+1] = b[i];
++            }
++
++            interleaveByte2(out, a, b, len);
++            
++            for (int i=0; i<2*len+8; ++i) 
++            {
++                assert( dst[2*i]   == out[2*i] );
++                assert( dst[2*i+1] == out[2*i+1] );
++            }
++        }
++    }
++
+     delete[] srcA;
+     delete[] srcB;
+     delete[] dst;
+diff -purN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2014-08-10 05:21:45.000000000 +0100
++++ b/Makefile.am	2017-01-09 19:54:21.000000000 +0000
+@@ -13,7 +13,7 @@ DIST_SUBDIRS = \
+ 
+ EXTRA_DIST = \
+ 	AUTHORS COPYING ChangeLog INSTALL LICENSE NEWS PATENTS \
+-        README README.CVS README.OSX README.win32 \
++        README README.CVS README.OSX \
+ 	README.git README.namespacing README.cmake.txt \
+ 	bootstrap openexr.m4 \
+ 	config.windows/OpenEXRConfig.h \

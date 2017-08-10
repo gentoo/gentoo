@@ -1,0 +1,36 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-08-11 14:29:16.039773264 +0100
++++ b/CMakeLists.txt	2017-08-11 14:36:48.147052790 +0100
+@@ -104,6 +104,18 @@ CHECK_CXX_SOURCE_COMPILES (
+     }
+     " HAVE_SYSCONF_NPROCESSORS_ONLN)
+ 
++MACRO(CREATE_LEGACY_SYMLINK _libname)
++   SET(_newname lib${_libname}-${OPENEXR_VERSION_API}.so)
++   SET(_legacyname lib${_libname}.so)
++   SET(_libpath ${PROJECT_BINARY_DIR}/${_libname})
++   INSTALL(
++      CODE "EXECUTE_PROCESS (
++         COMMAND ln -sf ${_newname} ${_legacyname}
++         WORKING_DIRECTORY ${_libpath}
++         )"
++   )
++   INSTALL( FILES ${_libpath}/${_legacyname} DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR} )
++ENDMACRO(CREATE_LEGACY_SYMLINK)
+ 
+ ##########################
+ # OpenEXRConfig.h generation
+@@ -188,7 +200,12 @@ SET_TARGET_PROPERTIES ( IlmImfUtil
+   SOVERSION 22
+   OUTPUT_NAME "IlmImfUtil${OPENEXR_LIBSUFFIX}"
+   )
+-  
++
++IF ( NOT WIN32 AND NAMESPACE_VERSIONING )
++  CREATE_LEGACY_SYMLINK ( IlmImf )
++  CREATE_LEGACY_SYMLINK ( IlmImfUtil )
++ENDIF ()
++
+ ##########################
+ # Example Code
+ ##########################
