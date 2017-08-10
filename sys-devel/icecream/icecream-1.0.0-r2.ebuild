@@ -48,4 +48,7 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins suse/logrotate icecream
+
+	insinto /usr/share/shadowman/tools
+	newins - icecc <<<'/usr/libexec/icecc/bin'
 }
