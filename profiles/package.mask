@@ -711,11 +711,6 @@ net-wireless/cpyrit-cuda
 =app-crypt/hashcat-3.30
 =app-crypt/hashcat-3.40
 
-# Aaron W. Swenson <titanofold@gentoo.org> (17 Apr 2017)
-# Masked for removal by 17 May 2017. Past end of life. Susceptible to security
-# bugs (603716 and 603720). Upgrade to latest version.
-=dev-db/postgresql-9.1.24
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
 virtual/wine
