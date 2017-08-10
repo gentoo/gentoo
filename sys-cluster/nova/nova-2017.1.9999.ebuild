@@ -31,8 +31,9 @@ CDEPEND="
 	!~dev-python/setuptools-34.1.1[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-34.2.0[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-34.3.0[${PYTHON_USEDEP}]
-	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]
-	<dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
+	!~dev-python/setuptools-34.3.1[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.3.2[${PYTHON_USEDEP}]
+	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
 	${CDEPEND}
 	app-admin/sudo"
