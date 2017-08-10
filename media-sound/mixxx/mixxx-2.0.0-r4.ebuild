@@ -77,6 +77,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-chromaprint-1.4.patch #604528
 	"${FILESDIR}"/${P}-gcc62.patch #595090
 
+	"${FILESDIR}"/${PN}-2.0.0-sqlite3.patch #622776
+
 	# The following patches were taken from sunny-overlay (bug #608430)
 	"${FILESDIR}"/${P}-fix-formatting-of-time-durations.patch
 	"${FILESDIR}"/${P}-eliminate-unnecessary-heap-allocation-of-qtime.patch
