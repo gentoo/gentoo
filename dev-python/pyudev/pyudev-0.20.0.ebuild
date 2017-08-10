@@ -37,7 +37,7 @@ PATCHES=(
 )
 
 REQUIRED_USE="pygobject? ( || ( $(python_gen_useflags 'python2*') ) )
-	pyside? ( $(python_gen_useflags '!(python3_3)') )"
+	pyside? ( || ( $(python_gen_useflags '!(python3_3)') ) )"
 
 python_prepare_all() {
 	if use test; then
