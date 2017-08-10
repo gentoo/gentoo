@@ -14,6 +14,6 @@
 		statistics about your listening habits.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">musicpd</remote-id>
+		<remote-id type="github">MusicPlayerDaemon/mpdscribble</remote-id>
 	</upstream>
 </pkgmetadata>
