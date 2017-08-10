@@ -1,0 +1,169 @@
+diff -purN a/Half/CMakeLists.txt b/Half/CMakeLists.txt
+--- a/Half/CMakeLists.txt	2014-08-10 05:21:45.000000000 +0100
++++ b/Half/CMakeLists.txt	2017-01-09 19:54:21.000000000 +0000
+@@ -1,23 +1,24 @@
+ # yue.nicholas@gmail.com
+ 
+ ADD_EXECUTABLE ( eLut eLut.cpp )
+-
+-ADD_CUSTOM_COMMAND (
+-  TARGET eLut POST_BUILD
+-  COMMAND eLut > ${CMAKE_CURRENT_BINARY_DIR}/eLut.h
++ADD_CUSTOM_COMMAND(
++  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/eLut.h
++  COMMAND eLut ARGS > ${CMAKE_CURRENT_BINARY_DIR}/eLut.h
++  DEPENDS eLut
+   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+-)
++  )
+ SET_SOURCE_FILES_PROPERTIES(
+   ${CMAKE_CURRENT_BINARY_DIR}/eLut.h
+   PROPERTIES HEADER_FILE_ONLY TRUE
+   )
+ 
+ ADD_EXECUTABLE ( toFloat toFloat.cpp )
+-ADD_CUSTOM_COMMAND (
+-  TARGET toFloat POST_BUILD
+-  COMMAND toFloat > ${CMAKE_CURRENT_BINARY_DIR}/toFloat.h
++ADD_CUSTOM_COMMAND(
++  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/toFloat.h
++  COMMAND toFloat ARGS > ${CMAKE_CURRENT_BINARY_DIR}/toFloat.h
++  DEPENDS toFloat
+   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+-)
++  )
+ SET_SOURCE_FILES_PROPERTIES(
+   ${CMAKE_CURRENT_BINARY_DIR}/toFloat.h
+   PROPERTIES HEADER_FILE_ONLY TRUE
+@@ -27,9 +28,7 @@ SET_SOURCE_FILES_PROPERTIES(
+   half.cpp
+   PROPERTIES
+   OBJECT_DEPENDS
+-  ${CMAKE_CURRENT_BINARY_DIR}/eLut.h
+-  OBJECT_DEPENDS
+-  ${CMAKE_CURRENT_BINARY_DIR}/toFloat.h
++  "${CMAKE_CURRENT_BINARY_DIR}/eLut.h;${CMAKE_CURRENT_BINARY_DIR}/toFloat.h"
+   )
+ 
+ IF(BUILD_SHARED_LIBS)
+diff -purN a/Half/half.cpp b/Half/half.cpp
+--- a/Half/half.cpp	2014-08-10 05:21:45.000000000 +0100
++++ b/Half/half.cpp	2017-01-09 19:54:21.000000000 +0000
+@@ -94,9 +94,9 @@ half::convert (int i)
+     // of float and half (127 versus 15).
+     //
+ 
+-    register int s =  (i >> 16) & 0x00008000;
+-    register int e = ((i >> 23) & 0x000000ff) - (127 - 15);
+-    register int m =   i        & 0x007fffff;
++    int s =  (i >> 16) & 0x00008000;
++    int e = ((i >> 23) & 0x000000ff) - (127 - 15);
++    int m =   i        & 0x007fffff;
+ 
+     //
+     // Now reassemble s, e and m into a half:
+diff -purN a/Half/halfExport.h b/Half/halfExport.h
+--- a/Half/halfExport.h	2014-08-10 05:21:45.000000000 +0100
++++ b/Half/halfExport.h	2017-01-09 19:54:21.000000000 +0000
+@@ -1,15 +1,39 @@
+-#ifndef HALFEXPORT_H
+-#define HALFEXPORT_H
+-
++///////////////////////////////////////////////////////////////////////////
++//
++// Copyright (c) 2008, Industrial Light & Magic, a division of Lucas
++// Digital Ltd. LLC
++//
++// All rights reserved.
+ //
+-//  Copyright (c) 2008 Lucasfilm Entertainment Company Ltd.
+-//  All rights reserved.   Used under authorization.
+-//  This material contains the confidential and proprietary
+-//  information of Lucasfilm Entertainment Company and
+-//  may not be copied in whole or in part without the express
+-//  written permission of Lucasfilm Entertainment Company.
+-//  This copyright notice does not imply publication.
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++// *       Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++// *       Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++// *       Neither the name of Industrial Light & Magic nor the names of
++// its contributors may be used to endorse or promote products derived
++// from this software without specific prior written permission.
+ //
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++//
++///////////////////////////////////////////////////////////////////////////
++
++#ifndef HALFEXPORT_H
++#define HALFEXPORT_H
+ 
+ #if defined(OPENEXR_DLL)
+     #if defined(HALF_EXPORTS)
+diff -purN a/Half/half.h b/Half/half.h
+--- a/Half/half.h	2014-08-10 05:21:45.000000000 +0100
++++ b/Half/half.h	2017-01-09 19:54:21.000000000 +0000
+@@ -459,7 +459,7 @@ half::half (float f)
+ 	// to do the float-to-half conversion.
+ 	//
+ 
+-	register int e = (x.i >> 23) & 0x000001ff;
++	int e = (x.i >> 23) & 0x000001ff;
+ 
+ 	e = _eLut[e];
+ 
+@@ -470,7 +470,7 @@ half::half (float f)
+ 	    // bits and combine it with the sign and exponent.
+ 	    //
+ 
+-	    register int m = x.i & 0x007fffff;
++	    int m = x.i & 0x007fffff;
+ 	    _h = e + ((m + 0x00000fff + ((m >> 13) & 1)) >> 13);
+ 	}
+ 	else
+diff -purN a/Imath/ImathMatrix.h b/Imath/ImathMatrix.h
+--- a/Imath/ImathMatrix.h	2014-08-10 05:21:45.000000000 +0100
++++ b/Imath/ImathMatrix.h	2017-01-09 19:54:21.000000000 +0000
+@@ -2527,11 +2527,11 @@ Matrix44<T>::multiply (const Matrix44<T>
+                        const Matrix44<T> &b,
+                        Matrix44<T> &c)
+ {
+-    register const T * IMATH_RESTRICT ap = &a.x[0][0];
+-    register const T * IMATH_RESTRICT bp = &b.x[0][0];
+-    register       T * IMATH_RESTRICT cp = &c.x[0][0];
++    const T * IMATH_RESTRICT ap = &a.x[0][0];
++    const T * IMATH_RESTRICT bp = &b.x[0][0];
++          T * IMATH_RESTRICT cp = &c.x[0][0];
+ 
+-    register T a0, a1, a2, a3;
++    T a0, a1, a2, a3;
+ 
+     a0 = ap[0];
+     a1 = ap[1];
+diff -purN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2014-08-10 05:21:45.000000000 +0100
++++ b/Makefile.am	2017-01-09 19:54:21.000000000 +0000
+@@ -15,7 +15,7 @@ DIST_SUBDIRS = \
+ 
+ EXTRA_DIST = \
+ 	AUTHORS COPYING ChangeLog INSTALL LICENSE NEWS \
+-	README README.CVS README.OSX README.win32 \
++	README README.CVS README.OSX \
+ 	README.cmake.txt README.namespacing README.git \
+ 	bootstrap \
+ 	config.windows/IlmBaseConfig.h \
