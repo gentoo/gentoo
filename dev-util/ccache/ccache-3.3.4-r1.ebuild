@@ -11,12 +11,13 @@ SRC_URI="https://samba.org/ftp/ccache/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/xz-utils
 	sys-libs/zlib"
 RDEPEND="${DEPEND}
+	dev-util/shadowman
 	sys-apps/gentoo-functions"
 
 src_prepare() {
@@ -52,18 +53,17 @@ ccache now supports sys-devel/clang and dev-lang/icc, too!"
 }
 
 pkg_prerm() {
-	if [[ -z ${REPLACED_BY_VERSION} ]] ; then
-		"${EROOT}"/usr/bin/ccache-config --remove-links
-		"${EROOT}"/usr/bin/ccache-config --remove-links ${CHOST}
+	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]] ; then
+		eselect compiler-shadow remove ccache
 	fi
 }
 
 pkg_postinst() {
-	"${EROOT}"/usr/bin/ccache-config --install-links
-	"${EROOT}"/usr/bin/ccache-config --install-links ${CHOST}
+	if [[ ${ROOT} == / ]]; then
+		eselect compiler-shadow update ccache
+	fi
 
 	# nuke broken symlinks from previous versions that shouldn't exist
-	rm -f "${EROOT}"/usr/lib/ccache/bin/${CHOST}-cc || die
 	rm -rf "${EROOT}"/usr/lib/ccache.backup || die
 
 	readme.gentoo_print_elog
