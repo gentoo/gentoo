@@ -41,11 +41,6 @@ all_ruby_prepare() {
 
 	# Use one address consistently
 	sed -i -e 's/localhost/127.0.0.1/' spec/{udp_socket,tcp_server,iobuffer}_spec.rb || die
-
-	# Remove specs that fail, possibly due to libev
-	# incompatibility. Should be investigated but cool.io is no longer
-	# maintained.
-	rm -f spec/udp_socket_spec.rb || die
 }
 
 each_ruby_configure() {
