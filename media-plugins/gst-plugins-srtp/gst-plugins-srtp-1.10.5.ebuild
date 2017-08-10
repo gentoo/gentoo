@@ -8,7 +8,7 @@ MULTILIB_COMPAT=( abi_x86_64 )
 inherit gstreamer
 
 DESCRIPTION="SRTP encoder/decoder plugin for GStreamer"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="
