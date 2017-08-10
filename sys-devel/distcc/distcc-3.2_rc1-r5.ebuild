@@ -146,6 +146,9 @@ src_install() {
 		newins "doc/example/xinetd" distcc || die
 	fi
 
+	insinto /usr/share/shadowman/tools
+	newins - distcc <<<"${DCCC_PATH}"
+
 	rm -r "${ED}/etc/default" || die
 	rm "${ED}/etc/distcc/clients.allow" || die
 	rm "${ED}/etc/distcc/commands.allow.sh" || die
