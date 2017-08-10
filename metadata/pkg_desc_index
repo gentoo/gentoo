@@ -4786,7 +4786,7 @@ dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2 7.4
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libb64 1.2 1.2.1: Fast Base64 encoding/decoding routines
-dev-libs/libbase58 0.1.0 0.1.1: C implementation of Bitcoin's base58 encoding
+dev-libs/libbase58 0.1.0 0.1.1 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbegemot 1.11: begemot utility function library
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.8.3 0.8.5 0.8.6: An library to provide useful functions commonly found on BSD systems
@@ -5230,7 +5230,7 @@ dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF file
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
-dev-ml/cmdliner 1.0.0 1.0.1: Declarative definition of command line interfaces for OCaml
+dev-ml/cmdliner 1.0.0 1.0.1 1.0.2: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.0 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.9.0 0.9.1: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
@@ -7833,7 +7833,7 @@ dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
 dev-python/intervaltree 2.1.0: Editable interval tree data structure for Python 2 and 3
 dev-python/into 0.2.2: Data migration utilities
 dev-python/iocapture 0.1.2 0.1.2-r1: Capture stdout,stderr easily
-dev-python/ioflo 1.5.0 1.6.7: Automated Reasoning Engine and Flow Based Programming Framework
+dev-python/ioflo 1.5.0 1.6.7 1.7.0: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ip-associations-python-novaclient-ext 0.2: Disk Config extension for python-novaclient
 dev-python/ipaddr 2.1.11-r1: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.18: IPv4/IPv6 manipulation library, backport of the ipaddress module
@@ -8612,7 +8612,7 @@ dev-python/rackspace-monitoring 0.6.5: Client library for Rackspace Cloud Monito
 dev-python/rackspace-monitoring-cli 0.6.10: Command Line Utility for Rackspace Cloud Monitoring (MaaS)
 dev-python/rackspace-novaclient 1.4 2.1: A client for the OpenStack Nova API
 dev-python/radon 1.3.2 1.4.0 1.4.2: Code Metrics in Python
-dev-python/raet 0.6.7: Reliable Asynchronous Event Transport Protocol
+dev-python/raet 0.6.7 0.6.8: Reliable Asynchronous Event Transport Protocol
 dev-python/ramlfications 0.1.9 0.1.9_p20160718: RAML reference implementation in Python
 dev-python/rarfile 2.8 3.0: Module for RAR archive reading
 dev-python/raven 5.2.0 5.3.0 5.31.0: Raven is a client for Sentry
@@ -9095,16 +9095,16 @@ dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts t
 dev-ros/cmake_modules 0.4.0 0.4.1 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.10 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.10 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
-dev-ros/combined_robot_hw 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Combined Robot HW class
-dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Combined Robot HW class tests
+dev-ros/combined_robot_hw 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Combined Robot HW class
+dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
 dev-ros/control_msgs 1.4.0 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.14.0 1.15.0 9999: Modules that are useful across all controllers
-dev-ros/controller_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Interface base class for controllers
-dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: The controller manager
-dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: The controller manager
-dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Tests for the controller manager
+dev-ros/controller_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Interface base class for controllers
+dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: The controller manager
+dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: The controller manager
+dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 9999: C++ code for doing things that are not necessarily ROS related
@@ -9139,7 +9139,7 @@ dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shap
 dev-ros/geometry_msgs 1.12.5 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.13.0 1.13.1 1.14.0 9999: Path planner library and node
 dev-ros/gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
-dev-ros/hardware_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Hardware Interface base class
+dev-ros/hardware_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Hardware Interface base class
 dev-ros/hector_compressed_map_transport 0.3.5 9999: Means for transporting compressed map data through the use of image_transport
 dev-ros/hector_geotiff 0.3.3 0.3.4 0.3.5 9999: Node to save occupancy grid map, robot trajectory and object of interest data to GeoTiff images
 dev-ros/hector_geotiff_plugins 0.3.3 0.3.4 0.3.5 9999: Plugins that extend geotiff maps generated by hector_geotiff
@@ -9167,7 +9167,7 @@ dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutor
 dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
-dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Interface for enforcing joint limits
+dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.12.7 1.12.8 1.12.9 1.12.10 1.12.11 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 1.11.9 9999: Conversion functions between KDL and geometry_msgs types
@@ -9290,7 +9290,7 @@ dev-ros/rqt_action 0.4.9 9999: Introspect all available ROS action (from actionl
 dev-ros/rqt_bag 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_bag_plugins 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_console 0.4.7 0.4.8 9999: GUI plugin for displaying and filtering ROS messages
-dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: RQT control manager plugin
+dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: RQT control manager plugin
 dev-ros/rqt_dep 0.4.7 0.4.8 9999: GUI plugin for visualizing the ROS dependency graph
 dev-ros/rqt_graph 0.4.7 0.4.8 9999: GUI plugin for visualizing the ROS computation graph
 dev-ros/rqt_gui 0.3.2-r1 0.5.0 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
@@ -9369,7 +9369,7 @@ dev-ros/theora_image_transport 1.9.5 9999: Plugin to image_transport for transpa
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.13.0 1.13.1 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.5 9999: Messages for defining robot trajectories
-dev-ros/transmission_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Transmission Interface
+dev-ros/transmission_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Transmission Interface
 dev-ros/turtle_actionlib 0.1.8 0.1.10 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
@@ -12539,7 +12539,7 @@ media-fonts/kanjistrokeorders 2.012 2.016: font to view stroke order diagrams fo
 media-fonts/khmer 5.0-r1: Fonts for the Khmer language of Cambodia
 media-fonts/kochi-substitute 20030809-r3: Kochi Japanese TrueType fonts with Wadalab Fonts
 media-fonts/konfont 0.1: Fontset for KON2
-media-fonts/koruri 20141224: Japanese TrueType font based on M+ outline fonts and Open Sans
+media-fonts/koruri 20161105: Japanese TrueType font based on M+ outline fonts and Open Sans
 media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
 media-fonts/liberation-fonts 1.07.4 2.00.0-r1 2.00.1-r1 2.00.1-r2: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
@@ -15916,7 +15916,7 @@ ros-meta/robot_model 1.12.10 1.12.11 9999: Packages for modeling various aspects
 ros-meta/ros 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 1.3.0 1.3.1 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 1.12.7 1.13.0 1.13.1 9999: ROS communications-related packages
-ros-meta/ros_control 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
+ros-meta/ros_control 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.2.0 1.3.0 1.3.1 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: JSON API to ROS functionality for non-ROS programs
@@ -17542,9 +17542,9 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for par
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-proxy 1.7.3: Kubernetes Proxy service
-sys-cluster/kubectl 1.7.3 1.7.3-r1: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.7.3: Kubernetes Node Agent
+sys-cluster/kube-proxy 1.7.3-r1: Kubernetes Proxy service
+sys-cluster/kubectl 1.7.3-r1: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.7.3-r1: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
