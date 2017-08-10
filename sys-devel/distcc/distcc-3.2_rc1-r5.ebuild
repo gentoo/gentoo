@@ -14,8 +14,8 @@ SRC_URI="https://distcc.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="crossdev gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
+KEYWORDS="~amd64 ~x86"
+IUSE="gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
 
 RESTRICT="test"
 
@@ -35,6 +35,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	!net-misc/pump
+	dev-util/shadowman
 	>=sys-devel/gcc-config-1.4.1
 	selinux? ( sec-policy/selinux-distcc )
 	xinetd? ( sys-apps/xinetd )"
@@ -155,12 +156,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ -x "${EPREFIX}/usr/bin/distcc-config" ] ; then
-		if use crossdev; then
-			"${EPREFIX}/usr/bin/distcc-config" --update-masquerade-with-crossdev
-		else
-			"${EPREFIX}/usr/bin/distcc-config" --update-masquerade
-		fi
+	if [[ ${ROOT} == / ]]; then
+		eselect compiler-shadow update distcc
 	fi
 
 	use gnome && xdg_desktop_database_update
@@ -190,13 +187,12 @@ pkg_postinst() {
 	elog
 }
 
-pkg_postrm() {
-	# delete the masquerade directory
-	if [ ! -f "${EPREFIX}/usr/bin/distcc" ] ; then
-		einfo "Remove masquerade symbolic links."
-		rm "${EPREFIX}${DCCC_PATH}/"*{cc,c++,gcc,g++}
-		rmdir "${EPREFIX}${DCCC_PATH}"
+pkg_prerm() {
+	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]]; then
+		eselect compiler-shadow remove distcc
 	fi
+}
 
+pkg_postrm() {
 	use gnome && xdg_desktop_database_update
 }
