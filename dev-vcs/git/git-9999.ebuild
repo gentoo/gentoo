@@ -53,7 +53,7 @@ CDEPEND="
 	sys-libs/zlib
 	pcre? (
 		pcre-jit? ( dev-libs/libpcre2[jit(+)] )
-		!pcre-jit? ( dev-libs/libpcre[-jit(-)] )
+		!pcre-jit? ( dev-libs/libpcre )
 	)
 	perl? ( dev-lang/perl:=[-build(-)] )
 	tk? ( dev-lang/tk:0= )
