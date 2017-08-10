@@ -59,6 +59,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	game-engine? ( boost )
 	?? ( ffmpeg libav )"
 
+RESTRICT="test"
+
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -81,10 +83,10 @@ RDEPEND="
 	cycles? (
 		media-libs/openimageio
 	)
-	ffmpeg? ( media-video/ffmpeg:0=[x264,mp3,encode,theora,jpeg2k?] )
+	ffmpeg? ( <media-video/ffmpeg-3:0=[x264,mp3,encode,theora,jpeg2k?] )
 	libav? ( >=media-video/libav-11.3:0=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0 )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	ndof? (
 		app-misc/spacenavd
@@ -130,7 +132,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# we don't want static glew, but it's scattered across
 	# thousand files
@@ -213,8 +215,9 @@ src_compile() {
 
 	if use doc; then
 		# Workaround for binary drivers.
-		cards=( /dev/ati/card* /dev/nvidia* )
-		for card in "${cards[@]}"; do addpredict "${card}"; done
+		addpredict /dev/ati
+		addpredict /dev/dri
+		addpredict /dev/nvidiactl
 
 		einfo "Generating Blender C/C++ API docs ..."
 		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
@@ -230,8 +233,6 @@ src_compile() {
 	fi
 }
 
-src_test() { :; }
-
 src_install() {
 	local i
 
@@ -243,14 +244,13 @@ src_install() {
 		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/*
 
 		docinto "html/API/blender"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/*
+		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
 	fi
 
-	# fucked up cmake will relink binary for no reason
-	emake -C "${CMAKE_BUILD_DIR}" DESTDIR="${D}" install/fast
+	cmake-utils_src_install
 
 	# fix doc installdir
-	docinto "html"
+	docinto html
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -rf "${ED%/}"/usr/share/doc/blender
 

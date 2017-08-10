@@ -9,7 +9,6 @@ inherit check-reqs cmake-utils fdo-mime flag-o-matic gnome2-utils \
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="http://www.blender.org"
-
 SRC_URI="http://download.blender.org/source/${P}.tar.gz"
 
 # Blender can have letters in the version string,
@@ -21,7 +20,7 @@ LICENSE="|| ( GPL-2 BL )"
 KEYWORDS="~amd64 ~x86"
 IUSE="+boost +bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
-	llvm man ndof nls openal openimageio openmp opensubdiv openvdb \
+	llvm man ndof nls openal openimageio openmp opensubdiv openvdb osl \
 	player sdl sndfile test tiff valgrind"
 
 # OpenCL and nVidia performance is rubbish with Blender
@@ -35,6 +34,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	opensubdiv? ( cuda )
 	nls? ( boost )
 	openal? ( boost )
+	osl? ( cycles llvm )
 	game-engine? ( boost )
 	?? ( ffmpeg libav )"
 
@@ -57,7 +57,7 @@ RDEPEND="${PYTHON_DEPS}
 	boost? ( >=dev-libs/boost-1.62:=[nls?,threads(+)] )
 	collada? ( >=media-libs/opencollada-1.6.18:= )
 	colorio? ( >=media-libs/opencolorio-1.0.9-r2 )
-	cuda? ( dev-util/nvidia-cuda-toolkit:= )
+	cuda? ( =dev-util/nvidia-cuda-toolkit-8.0*:= )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
 	libav? ( >=media-video/libav-11.3:=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -87,12 +87,14 @@ RDEPEND="${PYTHON_DEPS}
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)
+	osl? ( media-libs/osl:= )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tiff? ( media-libs/tiff:0 )
 	valgrind? ( dev-util/valgrind )"
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	>=dev-cpp/eigen-3.2.8:3
 	nls? ( sys-devel/gettext )
 	doc? (
@@ -100,15 +102,18 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx[latex]
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-C++11-build-fix.patch
-	  "${FILESDIR}"/${PN}-fix-install-rules.patch
-	  "${FILESDIR}"/${P}-eigen-3.3.1.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-install-rules.patch"
+	"${FILESDIR}/${PN}-2.78-eigen-3.3.1.patch"
+)
 
 blender_check_requirements() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		use openmp && tc-check-openmp
 
-	if use doc; then
-		CHECKREQS_DISK_BUILD="4G" check-reqs_pkg_pretend
+		if use doc; then
+			CHECKREQS_DISK_BUILD="4G" check-reqs_pkg_pretend
+		fi
 	fi
 }
 
@@ -141,7 +146,7 @@ src_prepare() {
 src_configure() {
 	# FIX: forcing '-funsigned-char' fixes an anti-aliasing issue with menu
 	# shadows, see bug #276338 for reference
-	append-flags -funsigned-char
+	#append-flags -funsigned-char
 	append-lfs-flags
 	append-cppflags -DOPENVDB_3_ABI_COMPATIBLE
 
@@ -166,7 +171,7 @@ src_configure() {
 		-DWITH_CUDA=$(usex cuda)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES=$(usex cycles)
-		-DWITH_CYCLES_OSL=OFF
+		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_LLVM=$(usex llvm)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GAMEENGINE=$(usex game-engine)
@@ -252,7 +257,7 @@ src_install() {
 	cmake-utils_src_install
 
 	# fix doc installdir
-	docinto "html"
+	docinto html
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -r "${ED%/}"/usr/share/doc/blender || die
 
