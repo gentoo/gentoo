@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit base eutils
+EAPI=6
 
 DESCRIPTION="Client library for accessing ISDS Soap services"
 HOMEPAGE="http://xpisar.wz.cz/libisds/"
@@ -18,10 +16,10 @@ COMMON_DEPEND="
 	dev-libs/expat
 	dev-libs/libxml2
 	curl? ( net-misc/curl[ssl] )
-	openssl? ( dev-libs/openssl:* )
+	openssl? ( dev-libs/openssl:= )
 	!openssl? (
 		app-crypt/gpgme
-		dev-libs/libgcrypt:*
+		dev-libs/libgcrypt:=
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -35,24 +33,22 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( NEWS README AUTHORS ChangeLog )
 
-src_prepare() {
-	base_src_prepare
-}
-
 src_configure() {
-	econf \
-		--disable-fatalwarnings \
-		$(use_with curl libcurl) \
-		$(use_enable curl curlreauthorizationbug) \
-		$(use_enable debug) \
-		$(use_enable nls) \
-		$(use_enable openssl openssl-backend) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--disable-fatalwarnings
+		$(use_with curl libcurl)
+		$(use_enable curl curlreauthorizationbug)
+		$(use_enable debug)
+		$(use_enable nls)
+		$(use_enable openssl openssl-backend)
+		$(use_enable static-libs static)
 		$(use_enable test)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	base_src_install
+	default
 
-	prune_libtool_files --all
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
