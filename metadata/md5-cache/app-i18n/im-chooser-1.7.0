@@ -10,5 +10,5 @@ RDEPEND=app-i18n/imsettings virtual/libintl x11-libs/libSM gtk2? ( x11-libs/gtk+
 SLOT=0
 SRC_URI=https://releases.pagure.org/im-chooser/im-chooser-1.7.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=3d9f954de47f1c26b8045b60090c2cd0

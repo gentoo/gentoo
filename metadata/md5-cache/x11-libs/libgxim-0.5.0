@@ -10,5 +10,5 @@ RDEPEND=dev-libs/dbus-glib dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-lib
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/libgxim/downloads/libgxim-0.5.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-single	af6ea0a8fe4c4faf733f4dbafae9e233	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-single	af6ea0a8fe4c4faf733f4dbafae9e233	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=10786432a4bd4e4c364c3468f98fda83

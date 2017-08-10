@@ -10293,13 +10293,13 @@ dev-util/boost-build 1.62.0-r1 1.63.0: A system for large project software const
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.10 0.8.12-r3 0.9.4 0.9.7 0.9.8 9999: BuildBot build automation system
-dev-util/buildbot-console-view 0.9.4 0.9.7 0.9.8: Buildbot console-view plugin
-dev-util/buildbot-pkg 0.9.4 0.9.7 0.9.8: BuildBot common www build tools for packaging releases
-dev-util/buildbot-slave 0.8.10 0.8.12: BuildBot Slave Daemon
-dev-util/buildbot-waterfall-view 0.9.4 0.9.7 0.9.8: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.4 0.9.7 0.9.8 9999: BuildBot Slave Daemon
-dev-util/buildbot-www 0.9.4 0.9.7 0.9.8: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot 0.8.12-r3 0.9.4 0.9.7 0.9.8 0.9.10 9999: BuildBot build automation system
+dev-util/buildbot-console-view 0.9.4 0.9.7 0.9.8 0.9.10: Buildbot console-view plugin
+dev-util/buildbot-pkg 0.9.4 0.9.7 0.9.8 0.9.10: BuildBot common www build tools for packaging releases
+dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
+dev-util/buildbot-waterfall-view 0.9.4 0.9.7 0.9.8 0.9.10: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 0.9.4 0.9.7 0.9.8 0.9.10 9999: BuildBot Worker (slave) Daemon
+dev-util/buildbot-www 0.9.4 0.9.7 0.9.8 0.9.10: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201 20170709: the best variant of the Yacc parser generator
@@ -18415,7 +18415,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.3.0 55.0: Firefox Web Browser
 www-client/firefox-bin 52.2.0 52.3.0 55.0: Firefox Web Browser
 www-client/google-chrome 60.0.3112.90: The web browser from Google
-www-client/google-chrome-beta 61.0.3163.31: The web browser from Google
+www-client/google-chrome-beta 61.0.3163.39: The web browser from Google
 www-client/google-chrome-unstable 62.0.3178.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18465,7 +18465,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.151: Adobe Flash Player
-www-plugins/chrome-binary-plugins 60.0.3112.90 61.0.3163.31_beta 62.0.3178.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.90 61.0.3163.39_beta 62.0.3178.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
