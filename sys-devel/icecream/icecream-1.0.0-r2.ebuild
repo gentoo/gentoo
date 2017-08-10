@@ -13,13 +13,16 @@ SRC_URI="ftp://ftp.suse.com/pub/projects/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+DEPEND="
 	sys-libs/libcap-ng
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	dev-util/shadowman
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -51,4 +54,16 @@ src_install() {
 
 	insinto /usr/share/shadowman/tools
 	newins - icecc <<<'/usr/libexec/icecc/bin'
+}
+
+pkg_prerm() {
+	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]]; then
+		eselect compiler-shadow remove icecc
+	fi
+}
+
+pkg_postinst() {
+	if [[ ${ROOT} == / ]]; then
+		eselect compiler-shadow update icecc
+	fi
 }
