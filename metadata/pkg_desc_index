@@ -15517,7 +15517,7 @@ net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.16 5.2.17: improved Whois Client
 net-misc/wicd 1.7.4-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
-net-misc/wput 0.6.1: Tiny program like wget, to upload files/whole directories via FTP
+net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0 4.1.0.0-r1: The X2Go Qt client
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
