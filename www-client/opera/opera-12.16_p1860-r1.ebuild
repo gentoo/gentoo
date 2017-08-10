@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils fdo-mime gnome2-utils multilib pax-utils versionator
+inherit eutils gnome2-utils multilib pax-utils versionator xdg-utils
 
 DESCRIPTION="A fast and secure web browser and Internet suite"
 HOMEPAGE="http://www.opera.com/"
@@ -238,11 +238,11 @@ pkg_postinst() {
 
 	# Update desktop file database and gtk icon cache (bug #334993)
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	# Update desktop file database and gtk icon cache (bug #334993)
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
