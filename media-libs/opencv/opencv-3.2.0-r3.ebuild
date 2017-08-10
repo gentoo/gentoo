@@ -286,6 +286,16 @@ multilib_src_configure() {
 			-DBUILD_opencv_hdf=$(multilib_native_usex contrib_hdf ON OFF)
 			-DBUILD_opencv_sfm=$(usex contrib_sfm ON OFF)
 		)
+
+		if multilib_is_native_abi; then
+			GLOBALCMAKEARGS+=(
+				-DCMAKE_DISABLE_FIND_PACKAGE_Tesseract=$(usex !tesseract)
+			)
+		else
+			GLOBALCMAKEARGS+=(
+				-DCMAKE_DISABLE_FIND_PACKAGE_Tesseract=ON
+			)
+		fi
 	fi
 
 	# workaround for bug 413429
