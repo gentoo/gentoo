@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Both USE=fluidsynth and USE=timidity are masked in this profile.
+media-libs/sdl-mixer midi
+
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
