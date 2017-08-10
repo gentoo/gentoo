@@ -317,7 +317,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
 # libpcre jit is not supported on alpha
