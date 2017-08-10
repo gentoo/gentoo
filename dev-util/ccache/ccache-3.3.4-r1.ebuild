@@ -34,6 +34,8 @@ src_install() {
 	default
 
 	dobin ccache-config
+	insinto /usr/share/shadowman/tools
+	newins - ccache <<<'/usr/lib/ccache/bin'
 
 	DOC_CONTENTS="
 To use ccache with **non-Portage** C compiling, add
