@@ -25,6 +25,6 @@ FONT_SUFFIX="ttf"
 
 src_prepare() {
 	if use doc; then
-		DOCS="${MY_PN}.docx ${MY_PN}.pdf"
+		DOCS="${MY_PN}.pdf"
 	fi
 }
