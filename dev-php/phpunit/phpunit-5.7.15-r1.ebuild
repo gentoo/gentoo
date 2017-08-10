@@ -46,7 +46,7 @@ src_install() {
 	doins "${FILESDIR}/autoload.php"
 	exeinto /usr/share/php/PHPUnit
 	doexe phpunit
-	dosym /usr/share/php/PHPUnit/phpunit /usr/bin/phpunit
+	dosym ../share/php/PHPUnit/phpunit /usr/bin/phpunit
 }
 
 pkg_postinst() {
