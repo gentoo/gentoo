@@ -1,13 +1,14 @@
-diff -Naur a/contrib/Makefile b/contrib/Makefile
---- a/contrib/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/contrib/Makefile	2013-06-09 01:48:22.351874929 +0000
-@@ -5,64 +5,10 @@
+diff -Naruw a/contrib/Makefile b/contrib/Makefile
+--- a/contrib/Makefile	2017-05-08 17:15:12.000000000 -0400
++++ b/contrib/Makefile	2017-07-13 20:20:26.926646151 -0400
+@@ -5,57 +5,9 @@
  include $(top_builddir)/src/Makefile.global
  
  SUBDIRS = \
 -		adminpack	\
 -		auth_delay	\
 -		auto_explain	\
+-		bloom		\
 -		btree_gin	\
 -		btree_gist	\
 -		chkpass		\
@@ -16,7 +17,6 @@ diff -Naur a/contrib/Makefile b/contrib/Makefile
 -		dblink		\
 -		dict_int	\
 -		dict_xsyn	\
--		dummy_seclabel	\
 -		earthdistance	\
 -		file_fdw	\
 -		fuzzystrmatch	\
@@ -29,35 +29,27 @@ diff -Naur a/contrib/Makefile b/contrib/Makefile
  		oid2name	\
 -		pageinspect	\
 -		passwordcheck	\
--		pg_archivecleanup \
 -		pg_buffercache	\
 -		pg_freespacemap \
 -		pg_prewarm	\
 -		pg_standby	\
 -		pg_stat_statements \
--		pg_test_fsync	\
--		pg_test_timing	\
 -		pg_trgm		\
--		pg_upgrade	\
--		pg_upgrade_support \
- 		pgbench		\
 -		pgcrypto	\
 -		pgrowlocks	\
 -		pgstattuple	\
--		pg_xlogdump	\
+-		pg_visibility	\
 -		postgres_fdw	\
 -		seg		\
 -		spi		\
 -		tablefunc	\
 -		tcn		\
 -		test_decoding	\
--		test_parser	\
--		test_shm_mq	\
+-		tsm_system_rows \
+-		tsm_system_time \
 -		tsearch2	\
 -		unaccent	\
--		vacuumlo	\
--		worker_spi
-+		vacuumlo
+ 		vacuumlo
  
 -ifeq ($(with_openssl),yes)
 -SUBDIRS += sslinfo
@@ -65,30 +57,21 @@ diff -Naur a/contrib/Makefile b/contrib/Makefile
 -ALWAYS_SUBDIRS += sslinfo
 -endif
  
- ifeq ($(with_ossp_uuid),yes)
+ ifneq ($(with_uuid),no)
  SUBDIRS += uuid-ossp
-diff -Naur a/src/backend/Makefile b/src/backend/Makefile
---- a/src/backend/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/src/backend/Makefile	2013-06-09 01:50:19.655864258 +0000
-@@ -47,7 +47,7 @@
+diff -Naruw a/src/backend/Makefile b/src/backend/Makefile
+--- a/src/backend/Makefile	2017-05-08 17:15:12.000000000 -0400
++++ b/src/backend/Makefile	2017-07-13 20:18:08.590323095 -0400
+@@ -51,7 +51,7 @@
  
  ##########################################################################
  
 -all: submake-libpgport submake-schemapg postgres $(POSTGRES_IMP)
-+all: someheaders
++all: generated-headers
  
  ifneq ($(PORTNAME), cygwin)
  ifneq ($(PORTNAME), win32)
-@@ -116,7 +116,7 @@
- endif # aix
- 
- # Update the commonly used headers before building the subdirectories
--$(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/errcodes.h $(top_builddir)/src/include/utils/probes.h
-+someheaders $(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/errcodes.h $(top_builddir)/src/include/utils/probes.h
- 
- # run this unconditionally to avoid needing to know its dependencies here:
- submake-schemapg:
-@@ -209,23 +209,8 @@
+@@ -218,23 +218,7 @@
  
  ##########################################################################
  
@@ -110,27 +93,36 @@ diff -Naur a/src/backend/Makefile b/src/backend/Makefile
 -	$(INSTALL_DATA) $(srcdir)/utils/misc/postgresql.conf.sample '$(DESTDIR)$(datadir)/postgresql.conf.sample'
 -	$(INSTALL_DATA) $(srcdir)/access/transam/recovery.conf.sample '$(DESTDIR)$(datadir)/recovery.conf.sample'
 +install:
-+
  
  install-bin: postgres $(POSTGRES_IMP) installdirs
  	$(INSTALL_PROGRAM) postgres$(X) '$(DESTDIR)$(bindir)/postgres$(X)'
-diff -Naur a/src/bin/Makefile b/src/bin/Makefile
---- a/src/bin/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/src/bin/Makefile	2013-06-09 01:51:56.143824442 +0000
-@@ -13,8 +13,7 @@
- top_builddir = ../..
+diff -Naruw a/src/bin/Makefile b/src/bin/Makefile
+--- a/src/bin/Makefile	2017-05-08 17:15:12.000000000 -0400
++++ b/src/bin/Makefile	2017-07-13 20:23:51.419471550 -0400
+@@ -14,19 +14,8 @@
  include $(top_builddir)/src/Makefile.global
  
--SUBDIRS = initdb pg_ctl pg_dump \
--	psql scripts pg_config pg_controldata pg_resetxlog pg_basebackup
-+SUBDIRS = pg_dump psql scripts pg_config
- 
- ifeq ($(PORTNAME), win32)
- SUBDIRS += pgevent
-diff -Naur a/src/Makefile b/src/Makefile
---- a/src/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/src/Makefile	2013-06-09 01:54:30.479704228 +0000
-@@ -15,17 +15,11 @@
+ SUBDIRS = \
+-	initdb \
+-	pg_archivecleanup \
+-	pg_basebackup \
+ 	pg_config \
+-	pg_controldata \
+-	pg_ctl \
+ 	pg_dump \
+-	pg_resetxlog \
+-	pg_rewind \
+-	pg_test_fsync \
+-	pg_test_timing \
+-	pg_upgrade \
+-	pg_xlogdump \
+ 	pgbench \
+ 	psql \
+ 	scripts
+diff -Naruw a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2017-05-08 17:15:12.000000000 -0400
++++ b/src/Makefile	2017-07-13 20:25:57.539158282 -0400
+@@ -15,19 +15,12 @@
  SUBDIRS = \
  	common \
  	port \
@@ -141,10 +133,12 @@ diff -Naur a/src/Makefile b/src/Makefile
  	include \
  	interfaces \
 -	backend/replication/libpqwalreceiver \
+ 	fe_utils \
  	bin \
 -	pl \
 -	makefiles \
--	test/regress
+-	test/regress \
+-	test/perl
 +	makefiles
  
  # There are too many interdependencies between the subdirectories, so
