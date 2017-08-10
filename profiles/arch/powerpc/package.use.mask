@@ -317,7 +317,7 @@ app-text/asciidoc test
 
 # Justin Lecher <jlec@gentoo.org> (01 Nov 2010)
 # Deps not Keyworded
-sci-chemistry/apbs fetk
+sci-chemistry/apbs fetk iapbs python
 
 # Alexey Shvetsov <alexxy@gentoo.org> (22 Aug 2010)
 # sci-chemistry/msms not available for this arch
