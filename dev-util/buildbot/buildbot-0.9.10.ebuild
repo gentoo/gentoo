@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_PV="${PV/_p/p}"
+MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
@@ -86,6 +86,15 @@ pkg_setup() {
 		to support starting buildbot through Gentoo's init system. To use this,
 		execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
 		The scripts can	run as a different user if desired."
+}
+
+python_prepare_all() {
+	# Disable distribution version test.
+	sed \
+		-e 's/self.assertNotIn("unknown", distro\[1\])//' \
+		-i buildbot/test/unit/test_buildbot_net_usage_data.py || die
+
+	distutils-r1_python_prepare_all
 }
 
 src_compile() {
