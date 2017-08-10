@@ -4,6 +4,13 @@
 # PPC Specific use flags
 #
 
+# Jonathan Scruggs <j.scruggs@gmail.com>
+# dependencies not keyworded yet
+field3d
+osl
+partio
+ptex
+
 # David Seifert <soap@gentoo.org> (08 Jul 2017)
 # Games are not keyworded anymore on ppc
 capslib

@@ -1,3 +1,10 @@
+# Jonathan Scruggs <j.scruggs@gmail.com> (10 Aug 2017)
+# dependencies not keyworded yet
+field3d
+osl
+partio
+ptex
+
 # Unmask the flag which corresponds to ARCH.
 -arm
 
