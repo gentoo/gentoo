@@ -23,17 +23,17 @@ RDEPEND=">=virtual/jre-1.7"
 S="${WORKDIR}/${MY_P}/"
 
 src_prepare() {
-       default
+	default
 
-       cp "${FILESDIR}/${SLOT}-build.xml" build.xml || die "Could not replace build.xml"
-       rm -fR */*/build.xml
-       einfo "Removing bundled jars and classes"
-       find "${S}" '(' -name '*.class' -o -name '*.jar' ')' -exec rm -frv {} +
+	cp "${FILESDIR}/${SLOT}-build.xml" build.xml || die "Could not replace build.xml"
+	rm -fR */*/build.xml
+	einfo "Removing bundled jars and classes"
+	find "${S}" '(' -name '*.class' -o -name '*.jar' ')' -exec rm -frv {} +
 
-       java-pkg-2_src_prepare
+	java-pkg-2_src_prepare
 }
 
 src_install() {
-       java-pkg_dojar "${S}"/output/build/lib/*.jar
-       use source && java-pkg_dosrc java/javax/servlet/
+	java-pkg_dojar "${S}"/output/build/lib/*.jar
+	use source && java-pkg_dosrc java/javax/servlet/
 }
