@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils versionator
 
 DESCRIPTION="A mesh processing system"
-HOMEPAGE="http://meshlab.sourceforge.net/"
+HOMEPAGE="https://meshlab.sourceforge.net/"
 MY_PV="$(delete_all_version_separators ${PV})"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/MeshLab%20v${PV}/MeshLabSrc_AllInc_v${MY_PV}.tgz"
 
