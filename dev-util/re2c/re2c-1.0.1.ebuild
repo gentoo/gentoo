@@ -24,5 +24,5 @@ src_install() {
 	docompress -x /usr/share/doc/${PF}/{examples,paper}
 	dodoc -r README CHANGELOG examples
 	docinto paper
-	dodoc doc/loplas.ps doc/sample.bib
+	dodoc doc/loplas.ps doc/tdfa/tdfa.pdf
 }
