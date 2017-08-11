@@ -1,6 +1,2 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-# Ian Stakenvicius, 2017-08-10
-# Mask samba-4.6 on hppa until all deps are in place
->=net-fs/samba-4.6
