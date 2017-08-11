@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ DEPEND="dev-cpp/eigen:3
 	dev-cpp/muParser
 	dev-qt/qtcore:4
 	dev-qt/qtopengl:4
-	media-libs/glew
+	media-libs/glew:0=
 	media-libs/qhull
 	=media-libs/lib3ds-1*
 	media-libs/openctm
