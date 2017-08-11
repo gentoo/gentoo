@@ -10380,7 +10380,7 @@ dev-util/distro-info-data 0.29 0.32: Information about the Debian distributions'
 dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.2.1_p20161102: Tools for browsing and manipulating docker registries
-dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
+dev-util/dogtail 0.9.9 0.9.10: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/drone 0.7.3 0.8.0_rc3: A Continuous Delivery platform built on Docker, written in Go
@@ -11701,9 +11701,9 @@ gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing a
 gnome-extra/gnome-boxes 3.22.4 3.24.0: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.22.4 3.24.2: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.22.3 3.24.0: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.22.5 3.24.0 3.24.3: Manage your online calendars with simple and modern interface
-gnome-extra/gnome-characters 3.22.0: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.22.1: Clocks application for GNOME
+gnome-extra/gnome-calendar 3.22.5 3.24.3: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-characters 3.22.0 3.24.0: Unicode character map viewer and library
+gnome-extra/gnome-clocks 3.22.1 3.24.0: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.22.2: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.8 1.6.1 1.6.3: A graphical, full featured, twin-panel file manager
@@ -16463,7 +16463,7 @@ sci-libs/gsl 1.16 2.1 2.3 2.4: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/h5hut 1.99.13: High-Performance I/O Library for Particle-based Simulations
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
-sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
+sci-libs/hdf 4.2.8 4.2.9 4.2.11 4.2.13: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1 1.5: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
