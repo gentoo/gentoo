@@ -498,11 +498,6 @@ dev-ruby/modernizr
 >=sys-libs/ldb-1.1.30
 >=net-fs/samba-4.7.0_rc1
 
-# Michael Palimaka <kensington@gentoo.org> (06 Jul 2017)
-# Obsolete. l10n is now included in app-office/calligra:5.
-# Masked for removal in 30 days. Exported to kde-sunset overlay.
-app-office/calligra-l10n
-
 # Lars Wendler <polynomial-c@gentoo.org> (06 Jul 2017)
 # Masked for testing due to new dependencies which
 # were not packaged in Gentoo previously.
