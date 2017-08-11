@@ -441,7 +441,14 @@ test-flag-PROG() {
 		cmdline+=( "${flag}" -c -o /dev/null /dev/null )
 	fi
 
-	"${cmdline[@]}" </dev/null &>/dev/null
+	if ! "${cmdline[@]}" </dev/null &>/dev/null; then
+		# -Werror makes clang bail out on unused arguments as well;
+		# try to add -Qunused-arguments to work-around that
+		# other compilers don't support it but then, it's failure like
+		# any other
+		cmdline+=( -Qunused-arguments )
+		"${cmdline[@]}" </dev/null &>/dev/null
+	fi
 }
 
 # @FUNCTION: test-flag-CC
