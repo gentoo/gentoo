@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby23 ruby22 ruby21 ruby20"
+USE_RUBY="ruby23 ruby22 ruby21"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Subversion GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kwallet nls perl python ruby sasl test vim-syntax"
 
 COMMON_DEPEND="
@@ -140,7 +140,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	fperms +x build/transform_libtool_scripts.sh
 
@@ -166,7 +166,27 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--libdir="${EPREFIX%/}/usr/$(get_libdir)"
+		$(use_with apache2 apache-libexecdir)
+		$(use_with apache2 apxs "${APXS}")
+		$(use_with berkdb berkeley-db "db.h:${EPREFIX%/}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
+		$(use_with ctypes-python ctypesgen "${EPREFIX%/}/usr")
+		$(use_enable dso runtime-module-search)
+		$(use_with gnome-keyring)
+		$(use_enable java javahl)
+		$(use_with java jdk "${JAVA_HOME}")
+		$(use_with kwallet)
+		$(use_enable nls)
+		$(use_with sasl)
+		$(use_with http serf)
+		--with-apr="${EPREFIX%/}/usr/bin/apr-1-config"
+		--with-apr-util="${EPREFIX%/}/usr/bin/apu-1-config"
+		--disable-experimental-libtool
+		--without-jikes
+		--disable-mod-activation
+		--disable-static
+	)
 
 	if use python || use perl || use ruby; then
 		myconf+=( --with-swig )
@@ -223,29 +243,10 @@ src_configure() {
 	fi
 
 	# allow overriding Python include directory
-	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby${RB_VER}" "none") \
-	ac_cv_path_RDOC=$(usex ruby "${EPREFIX}/usr/bin/rdoc${RB_VER}" "none") \
+	ac_cv_path_RUBY=$(usex ruby "${EPREFIX%/}/usr/bin/ruby${RB_VER}" "none") \
+	ac_cv_path_RDOC=$(usex ruby "${EPREFIX%/}/usr/bin/rdoc${RB_VER}" "none") \
 	ac_cv_python_includes='-I$(PYTHON_INCLUDEDIR)' \
-	econf --libdir="${EPREFIX}/usr/$(get_libdir)" \
-		$(use_with apache2 apache-libexecdir) \
-		$(use_with apache2 apxs "${APXS}") \
-		$(use_with berkdb berkeley-db "db.h:${EPREFIX}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}") \
-		$(use_with ctypes-python ctypesgen "${EPREFIX}/usr") \
-		$(use_enable dso runtime-module-search) \
-		$(use_with gnome-keyring) \
-		$(use_enable java javahl) \
-		$(use_with java jdk "${JAVA_HOME}") \
-		$(use_with kwallet) \
-		$(use_enable nls) \
-		$(use_with sasl) \
-		$(use_with http serf) \
-		${myconf[@]} \
-		--with-apr="${EPREFIX}/usr/bin/apr-1-config" \
-		--with-apr-util="${EPREFIX}/usr/bin/apu-1-config" \
-		--disable-experimental-libtool \
-		--without-jikes \
-		--disable-mod-activation \
-		--disable-static
+	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -371,9 +372,9 @@ src_install() {
 
 	if use java ; then
 		emake DESTDIR="${D}" install-javahl
-		java-pkg_regso "${ED}"usr/$(get_libdir)/libsvnjavahl*$(get_libname)
-		java-pkg_dojar "${ED}"usr/$(get_libdir)/svn-javahl/svn-javahl.jar
-		rm -fr "${ED}"usr/$(get_libdir)/svn-javahl/*.jar
+		java-pkg_regso "${ED%/}"/usr/$(get_libdir)/libsvnjavahl*$(get_libname)
+		java-pkg_dojar "${ED%/}"/usr/$(get_libdir)/svn-javahl/svn-javahl.jar
+		rm -fr "${ED%/}"/usr/$(get_libdir)/svn-javahl/*.jar
 	fi
 
 	# Install Apache module configuration.
@@ -401,10 +402,10 @@ src_install() {
 	#adjust default user and group with disabled apache2 USE flag, bug 381385
 	use apache2 || sed -e "s\USER:-apache\USER:-svn\g" \
 			-e "s\GROUP:-apache\GROUP:-svnusers\g" \
-			-i "${ED}"etc/init.d/svnserve || die
+			-i "${ED%/}"/etc/init.d/svnserve || die
 	use apache2 || sed -e "0,/apache/s//svn/" \
 			-e "s:apache:svnusers:" \
-			-i "${ED}"etc/xinetd.d/svnserve || die
+			-i "${ED%/}"/etc/xinetd.d/svnserve || die
 
 	# Install documentation.
 	dodoc CHANGES COMMITTERS README
@@ -413,10 +414,10 @@ src_install() {
 
 	# Install extra files.
 	if use extras ; then
-		cat << EOF > 80subversion-extras
-PATH="${EPREFIX}/usr/$(get_libdir)/subversion/bin"
-ROOTPATH="${EPREFIX}/usr/$(get_libdir)/subversion/bin"
-EOF
+		cat <<- EOF > 80subversion-extras
+			PATH="${EPREFIX}/usr/$(get_libdir)/subversion/bin"
+			ROOTPATH="${EPREFIX}/usr/$(get_libdir)/subversion/bin"
+		EOF
 		doenvd 80subversion-extras
 
 		emake DESTDIR="${D}" toolsdir="/usr/$(get_libdir)/subversion/bin" install-tools
@@ -442,7 +443,7 @@ EOF
 
 	prune_libtool_files --all
 
-	cd "${ED}"usr/share/locale
+	cd "${ED%/}"/usr/share/locale
 	for i in * ; do
 		[[ ${i} == *$LINGUAS* ]] || { rm -r ${i} || die ; }
 	done
@@ -450,9 +451,9 @@ EOF
 
 pkg_preinst() {
 	# Compare versions of Berkeley DB, bug 122877.
-	if use berkdb && [[ -f "${EROOT}usr/bin/svn" ]] ; then
-		OLD_BDB_VERSION="$(scanelf -nq "${EROOT}usr/$(get_libdir)/libsvn_subr-1$(get_libname 0)" | grep -Eo "libdb-[[:digit:]]+\.[[:digit:]]+" | sed -e "s/libdb-\(.*\)/\1/")"
-		NEW_BDB_VERSION="$(scanelf -nq "${ED}usr/$(get_libdir)/libsvn_subr-1$(get_libname 0)" | grep -Eo "libdb-[[:digit:]]+\.[[:digit:]]+" | sed -e "s/libdb-\(.*\)/\1/")"
+	if use berkdb && [[ -f "${EROOT%/}/usr/bin/svn" ]] ; then
+		OLD_BDB_VERSION="$(scanelf -nq "${EROOT%/}/usr/$(get_libdir)/libsvn_subr-1$(get_libname 0)" | grep -Eo "libdb-[[:digit:]]+\.[[:digit:]]+" | sed -e "s/libdb-\(.*\)/\1/")"
+		NEW_BDB_VERSION="$(scanelf -nq "${ED%/}/usr/$(get_libdir)/libsvn_subr-1$(get_libname 0)" | grep -Eo "libdb-[[:digit:]]+\.[[:digit:]]+" | sed -e "s/libdb-\(.*\)/\1/")"
 		if [[ "${OLD_BDB_VERSION}" != "${NEW_BDB_VERSION}" ]] ; then
 			CHANGED_BDB_VERSION="1"
 		fi
