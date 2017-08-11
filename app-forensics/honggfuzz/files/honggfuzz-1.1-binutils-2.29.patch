@@ -1,0 +1,11 @@
+Adapt to binutils-2.29 API change caused by
+https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commitdiff;h=003ca0fd22863aaf1a9811c8a35a0133a2d27fb1
+diff --git a/linux/bfd.c b/linux/bfd.c
+index bcd247f..e9e16ab 100644
+--- a/linux/bfd.c
++++ b/linux/bfd.c
+@@ -163,3 +163,3 @@ void arch_bfdDisasm(pid_t pid, uint8_t * mem, size_t size, char *instr)
+ 
+-    disassembler_ftype disassemble = disassembler(bfdh);
++    disassembler_ftype disassemble = disassembler(bfd_get_arch(bfdh), bfd_little_endian(bfdh), bfd_get_mach(bfdh), bfdh);
+     if (disassemble == NULL) {
