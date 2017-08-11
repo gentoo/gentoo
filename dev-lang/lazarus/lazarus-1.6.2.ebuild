@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils
 FPCVER="3.0.0"
 
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi"
-HOMEPAGE="http://www.lazarus.freepascal.org/"
+HOMEPAGE="https://www.lazarus.freepascal.org/"
 SRC_URI="https://sourceforge.net/projects/${PN}/files/Lazarus%20Zip%20_%20GZip/Lazarus%201.6.2/${P}-0.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
