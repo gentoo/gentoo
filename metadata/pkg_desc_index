@@ -13859,7 +13859,7 @@ media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8 0.20.9: The Musi
 media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.24.0 1.25.2 1.25.4 1.25.5: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.24.0 1.25.2 1.25.5 1.25.6: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1: Terminal-based YouTube player and downloader
