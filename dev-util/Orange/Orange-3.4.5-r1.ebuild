@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Open source data visualization and analysis for novice and experts."
-HOMEPAGE="http://orange.biolab.si/"
+HOMEPAGE="https://orange.biolab.si/"
 SRC_URI="https://github.com/biolab/orange3/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
