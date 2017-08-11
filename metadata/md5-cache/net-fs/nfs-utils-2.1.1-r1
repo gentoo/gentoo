@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=tcpd? ( sys-apps/tcp-wrappers ) caps? ( sys-libs/libcap ) sys-libs/e2fsprogs-libs >=net-nds/rpcbind-0.2.4 net-libs/libtirpc:= libmount? ( sys-apps/util-linux ) nfsdcld? ( >=dev-db/sqlite-3.3 ) nfsv4? ( dev-libs/libevent:= >=net-libs/libnfsidmap-0.21-r1 kerberos? ( >=net-libs/libtirpc-0.2.4-r1[kerberos] app-crypt/mit-krb5 ) nfsidmap? ( >=net-libs/libnfsidmap-0.24 >=sys-apps/keyutils-1.5.9 ) ) nfsv41? ( sys-fs/lvm2 ) uuid? ( sys-apps/util-linux ) virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) caps? ( sys-libs/libcap ) sys-libs/e2fsprogs-libs >=net-nds/rpcbind-0.2.4 net-libs/libtirpc:= libmount? ( sys-apps/util-linux ) nfsdcld? ( >=dev-db/sqlite-3.3 ) nfsv4? ( dev-libs/libevent:= >=net-libs/libnfsidmap-0.21-r1 kerberos? ( >=net-libs/libtirpc-0.2.4-r1[kerberos] app-crypt/mit-krb5 ) nfsidmap? ( >=net-libs/libnfsidmap-0.24 >=sys-apps/keyutils-1.5.9 ) ) nfsv41? ( sys-fs/lvm2 ) uuid? ( sys-apps/util-linux ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=NFS client and server daemons
 EAPI=5
 HOMEPAGE=http://linux-nfs.org/
@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/nfs/nfs-utils-2.1.1.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=4c47a3a86ad6c09fd2b234dda0b27246

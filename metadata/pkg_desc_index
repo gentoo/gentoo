@@ -2110,7 +2110,7 @@ app-portage/eclass-manpages 20170321 20170428 20170521 20170712 99999999: collec
 app-portage/eix 0.32.4 0.32.5 0.32.5-r1 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2 2.7: Elog viewer for Gentoo
-app-portage/elt-patches 20170317: Collection of patches for libtool.eclass
+app-portage/elt-patches 20170317 20170422: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1 3.7.3: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.2 0.3 0.4: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r1 9999: Replacement for 'emerge --search' with search-index
@@ -13092,7 +13092,7 @@ media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjackasyn 0.13: An application/library for connecting OSS apps to Jackit
 media-libs/libjpeg-turbo 1.5.0 1.5.1 1.5.2: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
-media-libs/libkate 0.3.7-r1 0.4.1-r1 0.4.1-r2: Codec for karaoke and text encapsulation for Ogg
+media-libs/libkate 0.3.7-r1 0.4.1-r1 0.4.1-r2 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.0.9-r1: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.26 0.27 0.28: Lightweight OSC (Open Sound Control) implementation
@@ -13165,7 +13165,7 @@ media-libs/libsub 1.1.13 1.2.4: read and write subtitles in a few different form
 media-libs/libsvgtiny 0.1.5: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1 1.1.1-r1: The Theora Video Compression Codec
-media-libs/libtiger 0.3.4: A rendering library for Kate streams using Pango and Cairo
+media-libs/libtiger 0.3.4 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.1.0-r2 0.2.0 0.2.2 0.2.4: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
@@ -13200,7 +13200,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 2.4.13-r1 3.1.0-r6 3.1.0-r7 3.2.0 3.2.0-r2: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13 2.4.13-r1 3.1.0-r6 3.1.0-r7 3.1.0-r8 3.2.0 3.2.0-r2 3.2.0-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -13400,7 +13400,7 @@ media-plugins/gst-plugins-smoothstreaming 1.8.3 1.10.3 1.10.4 1.10.5: Smooth Str
 media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.8.3 1.10.3 1.10.4 1.10.5: Beats-per-minute detection and pitch controlling plugin for GStreamer
 media-plugins/gst-plugins-soup 0.10.31-r2 1.8.3 1.10.3 1.10.4 1.10.5: HTTP client source/sink plugin for GStreamer
 media-plugins/gst-plugins-speex 0.10.31-r1 1.8.3 1.10.3 1.10.4 1.10.5: Speex encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-srtp 1.8.3-r1 1.10.3 1.10.4 1.10.5: SRTP encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-srtp 1.8.3-r1 1.10.3 1.10.3-r1 1.10.4 1.10.5 1.10.5-r1: SRTP encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-taglib 0.10.31-r1 1.8.3 1.10.3 1.10.4 1.10.5: ID3v2/APEv2 tagger plugin for GStreamer
 media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.8.3 1.10.3 1.10.5: MPEG2 encoder plugin for GStreamer
@@ -14976,7 +14976,7 @@ net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by sign
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.56.0 2.56.1: An HTTP library implementation in C
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
-net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1 1.5.4 2.0.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
+net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1 1.5.4 1.5.4-r1 2.0.0 2.0.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3-r1 0.7.4 0.7.5 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
@@ -17172,7 +17172,7 @@ sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the A
 sys-apps/inxi 2.3.0_p20160807-r1 2.3.4_p20161104-r1 2.3.8_p20170114 2.3.34_p20170805: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 3.0.2 3.0.4 3.0.5: IPMI Management Utilities
+sys-apps/ipmiutil 3.0.2 3.0.5 3.0.6: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 4.11.0 4.12.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.0.9-r1 1.1.0 1.2.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices

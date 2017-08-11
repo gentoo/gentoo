@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare test
-DEPEND=!aqua? ( media-libs/fontconfig media-libs/freetype:2 x11-libs/libX11 x11-libs/libXt truetype? ( x11-libs/libXft ) xscreensaver? ( x11-libs/libXScrnSaver ) ) ~dev-lang/tcl-8.5.17:8.5= !=dev-lang/tk-8.5:0 !aqua? ( x11-proto/xproto ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=!aqua? ( media-libs/fontconfig media-libs/freetype:2 x11-libs/libX11 x11-libs/libXt truetype? ( x11-libs/libXft ) xscreensaver? ( x11-libs/libXScrnSaver ) ) ~dev-lang/tcl-8.5.17:8.5= !=dev-lang/tk-8.5:0 !aqua? ( x11-proto/xproto ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Tk Widget Set
 EAPI=5
 HOMEPAGE=http://www.tcl.tk/
@@ -10,5 +10,5 @@ RDEPEND=!aqua? ( media-libs/fontconfig media-libs/freetype:2 x11-libs/libX11 x11
 SLOT=8.5
 SRC_URI=mirror://sourceforge/tcl/tk8.5.17-src.tar.gz mirror://sourceforge/tcl/tcl8.5.17-src.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	df8265631f8bf5f5df387e9b987121f9	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
 _md5_=65d42558877ebb7838832f746630e1f8

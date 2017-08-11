@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=media-libs/libsdl[video] media-libs/sdl-net media-libs/libpng:0 sys-libs/zlib virtual/jpeg:0 dev-libs/expat media-fonts/dejavu !dedicated? ( virtual/opengl virtual/glu media-libs/glew media-libs/libogg media-libs/libvorbis media-libs/openal media-libs/freealut x11-libs/wxGTK:3.0[X] media-libs/freetype:2 sci-libs/fftw:3.0 ) mysql? ( virtual/mysql ) !dedicated? ( virtual/pkgconfig ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl[video] media-libs/sdl-net media-libs/libpng:0 sys-libs/zlib virtual/jpeg:0 dev-libs/expat media-fonts/dejavu !dedicated? ( virtual/opengl virtual/glu media-libs/glew media-libs/libogg media-libs/libvorbis media-libs/openal media-libs/freealut x11-libs/wxGTK:3.0[X] media-libs/freetype:2 sci-libs/fftw:3.0 ) mysql? ( virtual/mysql ) !dedicated? ( virtual/pkgconfig ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Multi-player tank battle in 3D (OpenGL)
 EAPI=5
 HOMEPAGE=http://www.scorched3d.co.uk/
@@ -10,5 +10,5 @@ RDEPEND=media-libs/libsdl[video] media-libs/sdl-net media-libs/libpng:0 sys-libs
 SLOT=0
 SRC_URI=mirror://sourceforge/scorched3d/Scorched3D-44-src.tar.gz
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	games	2bb3ede665927a68ffdb7c41eec7efde	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	games	2bb3ede665927a68ffdb7c41eec7efde	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
 _md5_=82e39f285292dbd0d795aaa031e2a062

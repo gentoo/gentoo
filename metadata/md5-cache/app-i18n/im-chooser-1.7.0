@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=app-i18n/imsettings virtual/libintl x11-libs/libSM gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) xfce? ( xfce-base/libxfce4util ) dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-i18n/imsettings virtual/libintl x11-libs/libSM gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) xfce? ( xfce-base/libxfce4util ) dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Desktop Input Method configuration tool
 EAPI=6
 HOMEPAGE=https://pagure.io/im-chooser
@@ -10,5 +10,5 @@ RDEPEND=app-i18n/imsettings virtual/libintl x11-libs/libSM gtk2? ( x11-libs/gtk+
 SLOT=0
 SRC_URI=https://releases.pagure.org/im-chooser/im-chooser-1.7.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=3d9f954de47f1c26b8045b60090c2cd0

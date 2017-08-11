@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=gcrypt? ( dev-libs/libgcrypt:= ) openssl? ( dev-libs/openssl:0= ) pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib sys-devel/bison >=app-portage/elt-patches-20170317
+DEPEND=gcrypt? ( dev-libs/libgcrypt:= ) openssl? ( dev-libs/openssl:0= ) pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib sys-devel/bison >=app-portage/elt-patches-20170422
 DESCRIPTION=Allows users or groups to run commands as other users
 EAPI=6
 HOMEPAGE=http://www.sudo.ws/
@@ -11,5 +11,5 @@ REQUIRED_USE=pam? ( !skey ) skey? ( !pam ) ?? ( gcrypt openssl )
 SLOT=0
 SRC_URI=http://www.sudo.ws/sudo/dist/sudo-1.8.20p2.tar.gz ftp://ftp.sudo.ws/pub/sudo/sudo-1.8.20p2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=e765c094a3592a5f0474dc4d78999161

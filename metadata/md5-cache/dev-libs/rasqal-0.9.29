@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=media-libs/raptor-2.0.7:2 kernel_linux? ( >=sys-apps/util-linux-2.19 ) pcre? ( dev-libs/libpcre ) xml? ( dev-libs/libxml2 ) !gmp? ( dev-libs/mpfr ) gmp? ( dev-libs/gmp ) crypt? ( !mhash? ( dev-libs/libgcrypt:0 ) mhash? ( app-crypt/mhash ) ) virtual/pkgconfig sys-devel/flex test? ( dev-perl/XML-DOM ) >=app-portage/elt-patches-20170317
+DEPEND=>=media-libs/raptor-2.0.7:2 kernel_linux? ( >=sys-apps/util-linux-2.19 ) pcre? ( dev-libs/libpcre ) xml? ( dev-libs/libxml2 ) !gmp? ( dev-libs/mpfr ) gmp? ( dev-libs/gmp ) crypt? ( !mhash? ( dev-libs/libgcrypt:0 ) mhash? ( app-crypt/mhash ) ) virtual/pkgconfig sys-devel/flex test? ( dev-perl/XML-DOM ) >=app-portage/elt-patches-20170422
 DESCRIPTION=library that handles Resource Description Framework (RDF)
 EAPI=4
 HOMEPAGE=http://librdf.org/rasqal/
@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/raptor-2.0.7:2 kernel_linux? ( >=sys-apps/util-linux-2.19 )
 SLOT=0
 SRC_URI=http://download.librdf.org/source/rasqal-0.9.29.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=660acaf151dc43bc64297abd4d88fdfc

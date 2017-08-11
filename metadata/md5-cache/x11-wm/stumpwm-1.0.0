@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=dev-lisp/cl-ppcre sbcl? ( >=dev-lisp/sbcl-1.0.32 ) sbcl? ( >=dev-lisp/clx-0.7.3 ) !sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) ) !sbcl? ( !clisp? ( ecl? ( >=dev-lisp/ecls-10.4.1 ) ) ) !sbcl? ( clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) ) emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lisp/cl-ppcre sbcl? ( >=dev-lisp/sbcl-1.0.32 ) sbcl? ( >=dev-lisp/clx-0.7.3 ) !sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) ) !sbcl? ( !clisp? ( ecl? ( >=dev-lisp/ecls-10.4.1 ) ) ) !sbcl? ( clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) ) emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Stumpwm is a Window Manager written entirely in Common Lisp.
 EAPI=6
 HOMEPAGE=https://stumpwm.github.io/
@@ -12,5 +12,5 @@ RESTRICT=strip mirror
 SLOT=0
 SRC_URI=https://github.com/stumpwm/stumpwm/archive/1.0.0.tar.gz -> stumpwm-1.0.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	common-lisp-3	aae227dd64002603622f1dcc63c9744c	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	common-lisp-3	aae227dd64002603622f1dcc63c9744c	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
 _md5_=f911e48c0b39855c5a7759083d07d218
