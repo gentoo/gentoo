@@ -496,6 +496,7 @@ dev-ruby/modernizr
 # unmasked. (bug #624106)
 # See also https://bugzilla.samba.org/show_bug.cgi?id=12859
 >=sys-libs/ldb-1.1.30
+>=net-fs/samba-4.7.0_rc1
 
 # Michael Palimaka <kensington@gentoo.org> (06 Jul 2017)
 # Obsolete. l10n is now included in app-office/calligra:5.
@@ -985,10 +986,6 @@ sys-fs/bedup
 # Expires (2 Oct 2017)
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
-
-# Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
-# Masked for testing.
->=net-fs/samba-4.6.0_rc1
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Releases are not from original upstream but from a fork.
