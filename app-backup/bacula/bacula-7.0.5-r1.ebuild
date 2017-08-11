@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -55,7 +55,7 @@ RDEPEND="${DEPEND}
 	)
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
 
-REQUIRED_USE="|| ( ^^ ( mysql postgres sqlite ) bacula-clientonly )
+REQUIRED_USE="!bacula-clientonly? ( ^^ ( mysql postgres sqlite ) )
 				static? ( bacula-clientonly )"
 
 S=${WORKDIR}/${MY_P}
