@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools eutils autotools-multilib
 
 DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
-HOMEPAGE="http://fribidi.org/"
-SRC_URI="http://fribidi.org/download/${P}.tar.bz2"
+HOMEPAGE="https://fribidi.org/"
+SRC_URI="https://fribidi.org/download/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

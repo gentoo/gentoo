@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="Generic C++ template library for sparse, dense and skyline matrices"
-SRC_URI="http://download.gna.org/getfem/stable/${P}.tar.gz"
-HOMEPAGE="http://www-gmm.insa-toulouse.fr/getfem/"
+SRC_URI="https://download.gna.org/getfem/stable/${P}.tar.gz"
+HOMEPAGE="https://www-gmm.insa-toulouse.fr/getfem/"
 
 LICENSE="|| ( LGPL-3 LGPL-3-with-linking-exception )"
 SLOT="0"
