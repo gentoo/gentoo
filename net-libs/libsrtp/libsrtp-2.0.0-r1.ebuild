@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools multilib-minimal
 
 DESCRIPTION="Open-source implementation of the Secure Real-time Transport Protocol (SRTP)"
 HOMEPAGE="https://github.com/cisco/libsrtp"
@@ -16,8 +16,8 @@ IUSE="aesicm console debug doc libressl openssl static-libs syslog test"
 
 RDEPEND="
 	openssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
 "
 DEPEND="${RDEPEND}"
@@ -34,9 +34,12 @@ src_prepare() {
 	sed -i -e "s:/usr/share/dict/words:rtpw.c:" test/rtpw.c || die
 
 	eautoreconf
+
+	# sadly, tests are too broken to even consider using work-arounds
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	# stdout: default error output for messages in debug
 	# pcap: seems to be test-only
 	# openssl-kdf: OpenSSL 1.1.0+
@@ -50,14 +53,14 @@ src_configure() {
 		$(use_enable openssl)
 }
 
-src_compile() {
+multilib_src_compile() {
 	use static-libs && emake ${PN}.a
 	emake shared_library
 	use test && emake test
 }
 
-src_test() {
-	LD_LIBRARY_PATH="${S}" emake -j1 runtest
+multilib_src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}" emake -j1 runtest
 
 	# Makefile.in has '$(testapp): libsrtp2.a'
 	if use !static-libs; then
@@ -65,9 +68,8 @@ src_test() {
 	fi
 }
 
-src_install() {
+multilib_src_install_all() {
 	# libsrtp.pdf can be generated with doxygen, but it seems to be broken.
 	use doc && DOCS+=( doc/*.txt )
-
-	default
+	einstalldocs
 }

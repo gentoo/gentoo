@@ -3,27 +3,30 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools multilib-minimal
 
 DESCRIPTION="Open-source implementation of the Secure Real-time Transport Protocol (SRTP)"
 HOMEPAGE="https://github.com/cisco/libsrtp"
 SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="2/1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+SLOT="0/1"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="aesicm console debug doc libressl openssl static-libs syslog test"
 
 RDEPEND="
 	openssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
 "
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES README TODO )
 
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/srtp/config.h
+)
 PATCHES=( "${FILESDIR}/${PN}-pcap-automagic-r0.patch" )
 
 src_prepare() {
@@ -36,38 +39,45 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+multilib_src_configure() {
 	# stdout: default error output for messages in debug
+	# kernel-linux: breaks the build
+	# gdoi: disabled by upstream and breaks the build
 	# pcap: seems to be test-only
-	# openssl-kdf: OpenSSL 1.1.0+
+	ECONF_SOURCE=${S} \
 	econf \
 		--enable-stdout \
+		--disable-kernel-linux \
+		--disable-gdoi \
 		--disable-pcap \
-		--disable-openssl-kdf \
 		$(use_enable aesicm generic-aesicm) \
 		$(use_enable console) \
 		$(use_enable debug) \
-		$(use_enable openssl)
+		$(use_enable openssl) \
+		$(use_enable syslog)
 }
 
-src_compile() {
+multilib_src_compile() {
 	use static-libs && emake ${PN}.a
 	emake shared_library
 	use test && emake test
 }
 
-src_test() {
-	LD_LIBRARY_PATH="${S}" emake -j1 runtest
+multilib_src_test() {
+	# work-around tests that do not like out-of-source builds
+	cp "${S}"/test/{getopt_s,rtpw}.c "${BUILD_DIR}"/test/ || die
 
-	# Makefile.in has '$(testapp): libsrtp2.a'
+	LD_LIBRARY_PATH="${BUILD_DIR}" emake -j1 runtest
+
+	# Makefile.in has '$(testapp): libsrtp.a'
 	if use !static-libs; then
-		rm libsrtp2.a || die
+		rm libsrtp.a || die
 	fi
 }
 
-src_install() {
-	# libsrtp.pdf can be generated with doxygen, but it seems to be broken.
-	use doc && DOCS+=( doc/*.txt )
-
-	default
+multilib_src_install_all() {
+	# libsrtp.pdf can also be generated with doxygen
+	# but it would be a waste of time as an up-to-date version is built
+	use doc && DOCS+=( doc/*.txt doc/${PN}.pdf )
+	einstalldocs
 }
