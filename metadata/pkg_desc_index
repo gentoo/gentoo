@@ -4556,7 +4556,7 @@ dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance program
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
 dev-lang/julia 0.5.0-r3 0.6.0 9999: High-performance programming language for technical computing
 dev-lang/jwasm 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
-dev-lang/lazarus 1.0.12 1.2.2 1.2.4 1.2.6 1.6.0-r1 1.6.2 1.6.4: Lazarus IDE is a feature rich visual programming environment emulating Delphi
+dev-lang/lazarus 1.0.12 1.6.2 1.6.4: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language
 dev-lang/logtalk 2.41.0 2.42.2 3.00.0 3.03.0 3.07.0: Open source object-oriented logic programming language
