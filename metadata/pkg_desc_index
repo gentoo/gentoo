@@ -12860,7 +12860,7 @@ media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pa
 media-gfx/scour 0.35 0.35-r1: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2 0.27.0: Open source photo manager for GNOME
+media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2 0.26.3 0.27.0: Open source photo manager for GNOME
 media-gfx/simple-scan 3.22.0.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/splash-themes-gentoo 20101212-r1 20101212-r2: A collection of Gentoo themes for splashutils
@@ -18439,8 +18439,8 @@ www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, H
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.10.867.48_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.11.917.22_p1 1.11.917.35_p1: A new browser for our friends
+www-client/vivaldi 1.10.867.48_p1 1.11.917.39_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.11.917.35_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
