@@ -25,7 +25,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases"
 
-inherit eutils multilib pax-utils fdo-mime gnome2-utils nsplugins mozlinguas-v2
+inherit eutils multilib pax-utils xdg-utils gnome2-utils nsplugins mozlinguas-v2
 
 DESCRIPTION="Thunderbird Mail Client"
 SRC_URI="${SRC_URI}
@@ -153,7 +153,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"

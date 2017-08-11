@@ -1,6 +1,22 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=bluetooth that is masked in this profile.
+media-sound/pulseaudio native-headset
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=networkmanager that is masked in this profile.
+app-misc/geoclue skyhook
+
 # Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
@@ -43,7 +59,7 @@ dev-libs/libpcre2 jit
 
 # Tobias Klausmann <klausman@gentoo.org> (22 Oct 2016)
 # Pulls in dev-db/redis which is not keyworded on alpha.
->=dev-python/pyzor-1.0.0 test
+dev-python/pyzor test
 
 # Tobias Klausmann <klausman@gentoo.org> (03 Oct 2016)
 # Pulls in dev-db/redis which is not keyworded on alpha.
@@ -177,7 +193,8 @@ net-misc/networkmanager teamd
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
-media-libs/clutter egl
+media-libs/clutter egl wayland
+media-libs/clutter-gtk wayland
 x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
@@ -300,7 +317,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
 # libpcre jit is not supported on alpha

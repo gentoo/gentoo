@@ -1,6 +1,22 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Requires USE=ipmi which is masked in this profile.
+sys-power/nut ups_drivers_nut-ipmipsu
+
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Requires USE=octave which is masked in this profile.
+dev-python/ipython test
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=opencl that is masked in this profile.
+net-misc/bfgminer adl lm_sensors
+
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # dev-tcltk/tcllib is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
@@ -28,7 +44,7 @@ net-firewall/firehol ipset
 
 # Christoph Junghans <junghans@gentoo.org> (05 Feb 2017)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -199,7 +215,8 @@ app-i18n/scim-anthy kasumi
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
-media-libs/clutter egl
+media-libs/clutter egl wayland
+media-libs/clutter-gtk wayland
 x11-wm/mutter kms
 
 # Markus Meier <maekke@gentoo.org> (29 Nov 2014)
@@ -331,7 +348,8 @@ dev-libs/protobuf java
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
 # requires net-misc/freerdp which is not keyworded on arm
-dev-libs/weston rdp
+# screen-sharing requires rdp flag
+dev-libs/weston rdp screen-sharing
 
 # Patrick Lauer <patrick@gentoo.org> (17 June 2013)
 # Fix per-arch mask of phonon[zeitgeist] #460140

@@ -1,0 +1,10 @@
+--- gpart-0.3/Makefile.am
++++ gpart-0.3/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ SUBDIRS = src man
+ 
+-docdir = $(datadir)/doc/@PACKAGE@
++docdir = $(datadir)/doc/@PACKAGE@-@VERSION@
+ doc_DATA = Changes README.md
+ EXTRA_DIST = Changes README.md

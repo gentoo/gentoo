@@ -29,6 +29,42 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (10 Aug 2017)
+# Not ready for production yet.
+=dev-java/javatoolkit-0.4.0
+=dev-java/javatoolkit-0.5.0
+
+# Denis Dupeyron <calchan@gentoo.org> (09 Aug 2017)
+# Masked for testing of fix for long standing incompatibility between recent versions of ansible and jinja
+# https://github.com/ansible/ansible/issues/20494
+=app-admin/ansible-2.3.2.0-r1
+
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-62
+
+# Brian Evans <grknight@gentoo.org) (08 Aug 2017)
+# Old PEAR packages which are not maintained upstream or superseded
+# They contain errors which are not easy to maintain with no upstream
+# Many also do not have tests to easily find
+# incompatibilies with latest versions.
+# dev-php-Auth_HTTP has an upstream but relies on PEAR-Auth which does not
+# Masked for removal in 30 days
+dev-php/PEAR-Auth
+dev-php/PEAR-Auth_HTTP
+dev-php/PEAR-HTML_Template_IT
+dev-php/PEAR-HTML_TreeMenu
+dev-php/PEAR-HTTP_Client
+dev-php/PEAR-HTTP_Request
+dev-php/PEAR-Numbers_Roman
+dev-php/PEAR-PEAR_Info
+dev-php/PEAR-SOAP
+dev-php/PEAR-Services_Amazon
+dev-php/PEAR-Services_Weather
+dev-php/PEAR-Testing_Selenium
+dev-php/PEAR-Translation2
+
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
 # https://bugs.gentoo.org/600214
@@ -57,27 +93,6 @@ media-libs/silgraphite
 dev-texlive/texlive-documentation
 
 # Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# sys-boot/plymouth is unmaintained since Apr 2016. The current version
-# has multiple bugs, including not supporting OpenRC. It really needs
-# an active maintainer. Removal in 30 days. Bug #621470.
-#
-# The remaining packages are sys-boot/plymouth reverse dependencies.
-# They have no use without it, so they are being removed as well.
-kde-plasma/breeze-plymouth
-kde-plasma/plymouth-kcm
-sys-boot/plymouth
-sys-boot/plymouth-openrc-plugin
-
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# sys-apps/yum is severely outdated (last bump 2013), unmaintained
-# since 2010. It has vulnerabilities. Removal in 30 days. Bug #499328.
-#
-# app-arch/createrepo is the last unmasked dependency. Since it is not
-# useful at all without yum, it is being removed as well. Bug #620992.
-app-arch/createrepo
-sys-apps/yum
-
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
 # Unmaintained since mid-2016, requires an active maintainer. Has
 # multiple build failure bugs. Removal in 30 days. Bug #580516.
 sys-kernel/openvz-sources
@@ -103,11 +118,6 @@ dev-libs/DFB++
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
 # Upstream dead, vulnerable (#569980), removal in a month.
 dev-scheme/stalin
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Orphan, severely outdated and vulnerable to security issues (#585940).
-# Removal in a month.
-sys-apps/pacman
 
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
 # One of the last consumers of old udisks:0, upstream dead for ages
@@ -210,6 +220,10 @@ dev-dotnet/referenceassemblies-pcl
 # versions of gjs.  Will unmask when gnome-3.26 is ready for testing
 # or when upstream releases an official tarball.
 dev-lang/spidermonkey:52
+
+# Nicolas Bock <nicolasbock@gentoo.org> (17 Jul 2017)
+# Keep shotwell development series masked.
+>=media-gfx/shotwell-0.27
 
 # Matt Turner <mattst88@gentoo.org> (16 Jul 2017)
 # Header package for removed x11-libs/libXevie. No dependencies. Removal in a
@@ -472,37 +486,17 @@ net-libs/dhcpcd-dbus
 # tree anymore, bug #624670. Removal in a month.
 =dev-python/beautifulsoup-3.1.0.1-r2
 
-# Hans de Graaff <graaff@gentoo.org> (09 Jul 2017)
-# Upstream has removed the code and the published gem.
-# Removal in 30 days.
-dev-ruby/modernizr
-
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
 # See also https://bugzilla.samba.org/show_bug.cgi?id=12859
 >=sys-libs/ldb-1.1.30
-
-# Michael Palimaka <kensington@gentoo.org> (06 Jul 2017)
-# Obsolete. l10n is now included in app-office/calligra:5.
-# Masked for removal in 30 days. Exported to kde-sunset overlay.
-app-office/calligra-l10n
+>=net-fs/samba-4.7.0_rc1
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Jul 2017)
 # Masked for testing due to new dependencies which
 # were not packaged in Gentoo previously.
 >=sys-fs/udisks-2.7.0
-
-# Göktürk Yüksek <gokturk@gentoo.org> (05 Jul 2017)
-# Declared dead by upstream. Removal in 30 days.
-# See: http://www.haildb.com/2015/08/19/shutting-down-haildb/
-# Bug #623654.
-dev-db/haildb
-
-# Patrice Clement <monsieurp@gentoo.org> (05 Jul 2017)
-# Part of the JRE since 1.6.
-# Masked for removal in 30 days. Bug #553188.
-java-virtual/jaf
 
 # Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
 # The snapshots got a wrong version number assigned.
@@ -524,11 +518,6 @@ app-emulation/vmware-workstation
 app-emulation/vmware-player
 app-emulation/vmware-modules
 app-emulation/vmware-tools
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (11 Jun 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-61
 
 # Raymond Jennings <shentino@gmail.com> (11 Jun 2017)
 # Upstream announced EOL effective July 2017.
@@ -701,11 +690,6 @@ net-wireless/cpyrit-cuda
 =app-crypt/hashcat-3.10-r1
 =app-crypt/hashcat-3.30
 =app-crypt/hashcat-3.40
-
-# Aaron W. Swenson <titanofold@gentoo.org> (17 Apr 2017)
-# Masked for removal by 17 May 2017. Past end of life. Susceptible to security
-# bugs (603716 and 603720). Upgrade to latest version.
-=dev-db/postgresql-9.1.24
 
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Masked for testing
@@ -982,10 +966,6 @@ sys-fs/bedup
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
 
-# Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
-# Masked for testing.
->=net-fs/samba-4.6.0_rc1
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Releases are not from original upstream but from a fork.
 # Masked as requested by vapier.
@@ -1145,7 +1125,3 @@ games-fps/unreal-tournament-goty
 games-fps/unreal-tournament-strikeforce
 games-fps/unreal-tournament-bonuspacks
 games-fps/aaut
-
-# Nicolas Bock <nicolasbock@gentoo.org> (17 Jul 2017)
-# Keep shotwell development series masked.
->=media-gfx/shotwell-0.27

@@ -1,6 +1,18 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Requires USE=ipmi which is masked in this profile.
+sys-power/nut ups_drivers_nut-ipmipsu
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=opencl that is masked in this profile.
+net-misc/bfgminer adl lm_sensors
+
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
 # Mask for removal of ancient versions of media-libs/libvisio,
 # media-libs/libcdr, app-text/libwpd and app-text/libwpg
@@ -100,7 +112,7 @@ sys-devel/llvm ocaml
 
 # Justin Lecher <jlec@gentoo> (18 May 2015)
 # missing keywords
-dev-python/matplotlib qt5
+dev-python/matplotlib qt5 test
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
@@ -154,7 +166,7 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Aug 2014)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib mongodb nbconvert notebook qt4
+dev-python/ipython doc matplotlib mongodb nbconvert notebook qt4 test
 
 # Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
 # Ultimately pulls in nodejs which is broken.
@@ -263,7 +275,7 @@ net-im/gajim kde
 
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded
-app-misc/lcdproc hid
+app-misc/lcdproc hid lcd_devices_mdm166a
 
 # Brent Baude <ranger@gentoo.org> (06 Mar 2012)
 # masking wimax use flag
@@ -271,7 +283,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (20 Jan 2012)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Kacper Kowalik <xarthisius@gentoo.org> (20 Nov 2011)
 # Dropped dietlibc wrt #364103
@@ -305,7 +317,7 @@ app-text/asciidoc test
 
 # Justin Lecher <jlec@gentoo.org> (01 Nov 2010)
 # Deps not Keyworded
-sci-chemistry/apbs fetk
+sci-chemistry/apbs fetk iapbs python
 
 # Alexey Shvetsov <alexxy@gentoo.org> (22 Aug 2010)
 # sci-chemistry/msms not available for this arch

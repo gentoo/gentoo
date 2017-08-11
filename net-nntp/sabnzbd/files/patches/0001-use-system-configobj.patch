@@ -1,7 +1,7 @@
-From 55328c07986010fd7c91c7da42bca136fc4cd2e9 Mon Sep 17 00:00:00 2001
+From c12601b509ab66ac1b076679fe69fe7698455fb1 Mon Sep 17 00:00:00 2001
 From: Justin Bronder <jsbronder@gmail.com>
 Date: Mon, 13 Feb 2017 18:20:39 -0500
-Subject: [PATCH 1/5] use system configobj
+Subject: [PATCH 1/4] use system configobj
 
 ---
  sabnzbd/config.py | 3 ++-
@@ -24,5 +24,5 @@ index 93dd9bb..aab1648 100644
  SAVE_CONFIG_LOCK = threading.Lock()
  
 -- 
-2.10.2
+2.13.0
 

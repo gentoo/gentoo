@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo user distutils-r1
 
-DESCRIPTION="BuildBot Slave Daemon"
+DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
 
 MY_V="${PV/_p/p}"

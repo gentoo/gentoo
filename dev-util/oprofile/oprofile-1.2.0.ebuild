@@ -39,12 +39,6 @@ pkg_setup() {
 	use java && java-pkg_init
 }
 
-# kludge for the bug in java-pkg-opt-2.eclass
-# https://archives.gentoo.org/gentoo-dev/message/2b8c7f0ed39423050a763418ca884ed7
-src_prepare() {
-	use java && java-pkg-opt-2_src_prepare || eapply_user
-}
-
 src_configure() {
 	econf \
 		--disable-werror \

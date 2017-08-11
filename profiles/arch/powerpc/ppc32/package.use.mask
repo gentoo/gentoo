@@ -26,7 +26,7 @@ sci-libs/gdal armadillo
 
 ## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
->=sci-libs/gdal-2.0.3 mdb
+sci-libs/gdal mdb
 
 # Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
 # libomp does not support 32-bit PPC, #600148.
@@ -83,7 +83,7 @@ media-video/vlc x265
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword
-media-sound/audacity midi
+media-sound/audacity midi soundtouch
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
 # Missing keywords (02 Jun 2015)

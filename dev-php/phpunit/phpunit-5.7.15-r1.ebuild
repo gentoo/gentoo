@@ -9,7 +9,7 @@ SRC_URI="https://github.com/sebastianbergmann/${PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND="dev-php/fedora-autoloader
@@ -46,7 +46,7 @@ src_install() {
 	doins "${FILESDIR}/autoload.php"
 	exeinto /usr/share/php/PHPUnit
 	doexe phpunit
-	dosym /usr/share/php/PHPUnit/phpunit /usr/bin/phpunit
+	dosym ../share/php/PHPUnit/phpunit /usr/bin/phpunit
 }
 
 pkg_postinst() {

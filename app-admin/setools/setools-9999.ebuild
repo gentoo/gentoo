@@ -22,7 +22,8 @@ SLOT="0"
 IUSE="X debug test"
 
 RDEPEND="${PYTHON_DEPS}
-	>=sys-libs/libselinux-2.4:=[${PYTHON_USEDEP}]
+	>=sys-libs/libsepol-2.7:=
+	>=sys-libs/libselinux-2.7:=[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.8[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	dev-libs/libpcre:=

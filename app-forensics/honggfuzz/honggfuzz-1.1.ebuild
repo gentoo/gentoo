@@ -28,6 +28,13 @@ DOCS=(
 	README.md
 )
 
+src_prepare() {
+	default
+	if has_version ">=sys-libs/binutils-libs-2.29"; then
+		eapply "${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
+	fi
+}
+
 src_compile() {
 	CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" emake
 }

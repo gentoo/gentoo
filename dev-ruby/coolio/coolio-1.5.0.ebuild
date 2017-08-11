@@ -18,7 +18,7 @@ HOMEPAGE="https://coolio.github.com/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # cool.io includes a bundled version of libev that is patched to work correctly with ruby.

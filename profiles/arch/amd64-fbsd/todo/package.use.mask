@@ -163,7 +163,7 @@ sys-cluster/openmpi openmpi_fabrics_knem
 sys-cluster/openmpi openmpi_fabrics_dapl
 
 # sys-fabric/ofed
-sys-cluster/openmpi openmpi_fabrics_ofed
+sys-cluster/openmpi openmpi_fabrics_ofed openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # sys-fabric/infinipath-psm
 sys-cluster/openmpi openmpi_fabrics_psm
@@ -196,4 +196,4 @@ net-misc/wget uuid
 media-video/vlc rdp
 
 # net-wireless/bluez
-media-sound/pulseaudio bluetooth
+media-sound/pulseaudio bluetooth native-headset ofono-headset

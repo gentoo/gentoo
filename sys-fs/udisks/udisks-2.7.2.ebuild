@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	>=virtual/libgudev-165:=
 	virtual/udev
 	acl? ( virtual/acl )
+	cryptsetup? ( sys-libs/libblockdev[crypt] )
 	elogind? ( >=sys-auth/elogind-219 )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	lvm? ( sys-fs/lvm2 )

@@ -1,6 +1,34 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Both USE=fluidsynth and USE=timidity are masked in this profile.
+media-libs/sdl-mixer midi
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=dvd that is masked in this profile.
+media-video/mplayer dvdnav
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=v4l that is masked in this profile.
+media-video/ffmpeg libv4l
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=bluetooth that is masked in this profile.
+media-sound/pulseaudio native-headset
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=networkmanager that is masked in this profile.
+app-misc/geoclue skyhook
+
 # Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
@@ -21,7 +49,7 @@ app-shells/bash-completion test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # Pulls in dev-db/redis which is not keyworded on ia64.
->=dev-python/pyzor-1.0.0 test
+dev-python/pyzor test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
@@ -279,7 +307,7 @@ net-libs/glib-networking smartcard
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
 # jit not supported on ia64

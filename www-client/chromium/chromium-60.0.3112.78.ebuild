@@ -147,9 +147,9 @@ pre_build_checks() {
 			# bugs: #601654
 			die "At least clang 3.9.1 is required"
 		fi
-		if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
-			# bugs: #535730, #525374, #518668, #600288
-			die "At least gcc 4.8 is required"
+		if tc-is-gcc && ! version_is_at_least 5.0 "$(gcc-version)"; then
+			# bugs: #535730, #525374, #518668, #600288, #627356
+			die "At least gcc 5.0 is required"
 		fi
 	fi
 

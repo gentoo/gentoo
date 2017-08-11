@@ -44,6 +44,10 @@ java-pkg-opt-2_pkg_setup() {
 
 java-pkg-opt-2_src_prepare() {
 	use ${JAVA_PKG_OPT_USE} && java-utils-2_src_prepare
+	case "${EAPI:-0}" in
+		[0-5]) ;;
+		*) use ${JAVA_PKG_OPT_USE} || eapply_user ;;
+	esac
 }
 
 

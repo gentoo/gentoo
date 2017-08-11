@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="PyQt4/PyQt5 compatibility layer"
-HOMEPAGE="http://orange.biolab.si/"
+HOMEPAGE="https://github.com/ales-erjavec/anyqt"
 SRC_URI="https://github.com/ales-erjavec/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

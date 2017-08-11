@@ -20,7 +20,7 @@ SRC_URI="http://download.java.net/javaee5/${MAJOR}/promoted/source/${ZIP}"
 
 LICENSE="|| ( CDDL GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6"
