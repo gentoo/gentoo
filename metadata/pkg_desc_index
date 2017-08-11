@@ -2955,7 +2955,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.57 10.0.29 10.0.30 10.0.31 10.0.32 10.1.23 10.1.24 10.1.25 10.2.7-r2: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.57 10.0.29 10.0.30 10.0.32 10.1.24 10.1.26 10.2.7-r2: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.30: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -2992,7 +2992,7 @@ dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19 2.2.20: Advanced command-line tools 
 dev-db/percona-xtrabackup 2.4.6-r1 2.4.7: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin3 1.22.0 1.22.1-r1: wxWidgets GUI for PostgreSQL
+dev-db/pgadmin3 1.22.1-r1 1.22.1-r2: wxWidgets GUI for PostgreSQL
 dev-db/pgagent 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
@@ -13484,7 +13484,7 @@ media-plugins/mediastreamer-bcg729 1.0.0 1.0.0-r1: Backported G729 implementatio
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Linphone
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
-media-plugins/mythplugins 0.27.6_p20160318 0.28.1: Official MythTV plugins
+media-plugins/mythplugins 0.28.1: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
 media-plugins/qmmp-plugin-pack 0.10.2 0.10.3 1.1.3-r1 1.1.4: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.3.1-r1 0.3.1-r2 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
@@ -14053,7 +14053,7 @@ media-tv/ivtvplayer 0.1.3-r1: Simple IVTV command line TV and radio player with 
 media-tv/kodi 17.3 17.3-r1 17.3-r2 17.3-r3 9999: Kodi is a free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, view signal strength, ...
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
-media-tv/mythtv 0.27.6_p20160318-r1 0.28.1 0.28.1-r1: Homebrew PVR project
+media-tv/mythtv 0.28.1 0.28.1-r1: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/plex-media-server 1.5.6 1.7.5: A free media library that is intended for use with a plex client.
@@ -18364,7 +18364,7 @@ www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module us
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
 www-apps/moodle 3.1.7 3.2.4 3.3.1: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
-www-apps/mythweb 0.27.5 0.28.1: PHP scripts intended to manage MythTV from a web browser
+www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.3.5 4.3.8 4.4.7 4.5.4 4.6.4 4.7.14: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nextcloud 11.0.3 12.0.0: Personal cloud that runs on your own server
