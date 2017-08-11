@@ -1,0 +1,80 @@
+From: Ricardo Mones <ricardo@mones.org>
+Date: Wed, 9 Aug 2017 14:48:38 +0000 (+0200)
+Subject: Fix bug #3855: segfault at startup with old profile and IMAP account
+X-Git-Url: http://git.claws-mail.org/?p=claws.git;a=commitdiff_plain;h=667c9d3eaf0487193cc7873e6d3a63959a03d7f9;hp=63677adb68c57479f6bc7534cfbf2f234b1f4fb1
+
+Fix bug #3855: segfault at startup with old profile and IMAP account
+
+Revert "Remove duplicated code and include".
+
+This reverts commit 300f811f3bbf10455ca55d9b01da6705dd1e07bb.
+---
+
+diff --git a/src/imap.c b/src/imap.c
+index 0e1e777..25bb283 100644
+--- a/src/imap.c
++++ b/src/imap.c
+@@ -77,6 +77,8 @@ typedef struct _IMAPSession	IMAPSession;
+ typedef struct _IMAPNameSpace	IMAPNameSpace;
+ typedef struct _IMAPFolderItem	IMAPFolderItem;
+ 
++#include "prefs_account.h"
++
+ #define IMAP_FOLDER(obj)	((IMAPFolder *)obj)
+ #define IMAP_FOLDER_ITEM(obj)	((IMAPFolderItem *)obj)
+ #define IMAP_SESSION(obj)	((IMAPSession *)obj)
+@@ -425,6 +427,7 @@ static gint imap_get_flags			(Folder 	*folder,
+ 						 FolderItem 	*item,
+                     				 MsgInfoList 	*msglist,
+ 						 GHashTable 	*msgflags);
++static gchar *imap_folder_get_path		(Folder		*folder);
+ static gchar *imap_item_get_path		(Folder		*folder,
+ 						 FolderItem	*item);
+ static MsgInfo *imap_parse_msg(const gchar *file, FolderItem *item);
+@@ -3042,6 +3045,35 @@ static FolderItem *imap_create_special_folder(Folder *folder,
+ 	return new_item;
+ }
+ 
++static gchar *imap_folder_get_path(Folder *folder)
++{
++	gchar *folder_path;
++
++	g_return_val_if_fail(folder != NULL, NULL);
++        g_return_val_if_fail(folder->account != NULL, NULL);
++
++#ifdef G_OS_WIN32
++	gchar *sanitized_dirname = g_strdup(folder->account->recv_server);
++	g_strdelimit(sanitized_dirname, ":", ',');
++#endif
++
++        folder_path = g_strconcat(get_imap_cache_dir(),
++                                  G_DIR_SEPARATOR_S,
++#ifdef G_OS_WIN32
++																	sanitized_dirname,
++#else
++                                  folder->account->recv_server,
++#endif
++                                  G_DIR_SEPARATOR_S,
++                                  folder->account->userid,
++                                  NULL);
++
++#ifdef G_OS_WIN32
++	g_free(sanitized_dirname);
++#endif
++	return folder_path;
++}
++
+ #ifdef G_OS_WIN32
+ static gchar *imap_encode_unsafe_chars(const gchar *str)
+ {
+@@ -3078,9 +3110,8 @@ static gchar *imap_item_get_path(Folder *folder, FolderItem *item)
+ 	gchar *item_path = NULL;
+ 	
+ 	g_return_val_if_fail(folder != NULL, NULL);
+-	g_return_val_if_fail(folder->account != NULL, NULL);
+ 	g_return_val_if_fail(item != NULL, NULL);
+-	folder_path = prefs_account_cache_dir(folder->account, FALSE);
++	folder_path = imap_folder_get_path(folder);
+ 
+ 	g_return_val_if_fail(folder_path != NULL, NULL);
+ 

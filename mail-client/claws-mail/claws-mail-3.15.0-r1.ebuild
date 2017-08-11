@@ -85,6 +85,10 @@ RDEPEND="${COMMONDEPEND}
 		net-misc/curl
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-old_profile_segfault.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -148,7 +152,7 @@ src_configure() {
 	)
 
 	# libetpan is needed if user wants nntp or imap functionality
-	if use imap || use nntp; then
+	if use imap || use nntp ; then
 		myeconfargs+=( --enable-libetpan )
 	else
 		myeconfargs+=( --disable-libetpan )
@@ -183,7 +187,7 @@ src_install() {
 	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
-	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${ED%/}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
 pkg_preinst() {
