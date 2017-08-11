@@ -535,9 +535,6 @@ strip-unsupported-flags() {
 	export CXXFLAGS=$(test-flags-CXX ${CXXFLAGS})
 	export FFLAGS=$(test-flags-F77 ${FFLAGS})
 	export FCFLAGS=$(test-flags-FC ${FCFLAGS})
-	# note: this does not verify the linker flags but it is enough
-	# to strip invalid C flags which are much more likely, #621274
-	export LDFLAGS=$(test-flags-CC ${LDFLAGS})
 }
 
 # @FUNCTION: get-flag
