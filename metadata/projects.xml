@@ -360,12 +360,6 @@
     </member>
   </project>
   <project>
-    <email>bazaar@gentoo.org</email>
-    <name>Gentoo Bazaar Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Bazaar</url>
-    <description>This project provides support for bazaar packages.</description>
-  </project>
-  <project>
     <email>sci-biology@gentoo.org</email>
     <name>Gentoo Biology Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Biology</url>
@@ -1058,24 +1052,6 @@
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
       <role>Member</role>
-    </member>
-  </project>
-  <project>
-    <email>forensics@gentoo.org</email>
-    <name>Gentoo Forensics Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Forensics</url>
-    <description>Maintains intrusion detection and forensic-related packages.</description>
-    <member>
-      <email>patrick@gentoo.org</email>
-      <name>Patrick Lauer</name>
-    </member>
-    <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
-      <email>zerochaos@gentoo.org</email>
-      <name>Rick Farina</name>
     </member>
   </project>
   <project>
