@@ -112,8 +112,8 @@ src_install() {
 
 	dosym gpg /usr/bin/gpg2
 	dosym gpgv /usr/bin/gpgv2
-	echo ".so man1/gpg2.1" > "${ED}"/usr/share/man/man1/gpg.1 || die
-	echo ".so man1/gpgv2.1" > "${ED}"/usr/share/man/man1/gpgv.1 || die
+	echo ".so man1/gpg.1" > "${ED}"/usr/share/man/man1/gpg2.1 || die
+	echo ".so man1/gpgv.1" > "${ED}"/usr/share/man/man1/gpgv2.1 || die
 
 	dodir /etc/env.d
 	echo "CONFIG_PROTECT=/usr/share/gnupg/qualified.txt" >> "${ED}"/etc/env.d/30gnupg || die
