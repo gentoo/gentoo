@@ -514,11 +514,6 @@ app-office/calligra-l10n
 # Bug #623654.
 dev-db/haildb
 
-# Patrice Clement <monsieurp@gentoo.org> (05 Jul 2017)
-# Part of the JRE since 1.6.
-# Masked for removal in 30 days. Bug #553188.
-java-virtual/jaf
-
 # Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
 # The snapshots got a wrong version number assigned.
 # They are from before version 2.0.0. Masking them to force
