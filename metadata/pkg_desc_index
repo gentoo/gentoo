@@ -10321,7 +10321,7 @@ dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantic
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.1: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.7.2 3.8.2 3.9.0: Cross platform Make
+dev-util/cmake 3.7.2 3.8.2 3.9.0 3.9.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
@@ -17151,7 +17151,7 @@ sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
-sys-apps/hprofile 3.0.6 3.1.1 3.2.2: Utility to manage hardware, network, power or other profiles (fork)
+sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwdata-redhat 0.217: Hardware identification and configuration data
 sys-apps/hwids 20170328 20170715 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
