@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils versionator multilib
+inherit eutils versionator
 
 DESCRIPTION="A mesh processing system"
 HOMEPAGE="http://meshlab.sourceforge.net/"
@@ -19,7 +19,7 @@ DEPEND="dev-cpp/eigen:3
 	dev-qt/qtcore:4
 	dev-qt/qtopengl:4
 	dev-qt/qtxmlpatterns:4
-	media-libs/glew
+	media-libs/glew:0=
 	media-libs/qhull
 	=media-libs/lib3ds-1*
 	media-libs/openctm
@@ -30,17 +30,20 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/meshlab/src"
 
+PATCHES=( "${FILESDIR}/${PV}/gcc-4.7.patch"
+	  "${FILESDIR}/${PV}/lapack.patch"
+	  "${FILESDIR}/${PV}/mpir.patch"
+	  "${FILESDIR}/${PV}/qt-4.8.patch"
+	  "${FILESDIR}/${PV}/rpath.patch"
+	  "${FILESDIR}/${PV}/pluginmanager.patch"
+	  "${FILESDIR}/${PV}/meshrender.patch"
+	  "${FILESDIR}/${PV}/rmmeshrender.patch"
+	  "${FILESDIR}/${PV}/rfx.patch"
+	  "${FILESDIR}/${PV}/structuresynth.patch" )
+
 src_prepare() {
-	cd "${WORKDIR}"
-	epatch	"${FILESDIR}/${PV}"/gcc-4.7.patch \
-		"${FILESDIR}/${PV}"/lapack.patch \
-		"${FILESDIR}/${PV}"/mpir.patch \
-		"${FILESDIR}/${PV}"/qt-4.8.patch \
-		"${FILESDIR}/${PV}"/rpath.patch \
-		"${FILESDIR}/${PV}"/pluginmanager.patch \
-		"${FILESDIR}/${PV}"/meshrender.patch \
-		"${FILESDIR}/${PV}"/rmmeshrender.patch \
-		"${FILESDIR}/${PV}"/rfx.patch
+	cd "${WORKDIR}" || die
+	default
 }
 
 src_configure() {
