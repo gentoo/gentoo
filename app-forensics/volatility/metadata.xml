@@ -5,8 +5,4 @@
 		<email>chithanh@gentoo.org</email>
 		<name>Chí-Thanh Christopher Nguyễn</name>
 	</maintainer>
-<maintainer type="project">
-		<email>forensics@gentoo.org</email>
-		<name>Gentoo Forensics Project</name>
-	</maintainer>
 </pkgmetadata>
