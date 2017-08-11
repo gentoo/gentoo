@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -11,7 +11,7 @@ SRC_URI="http://ftp.netscape.com/pub/communicator/extras/fonts/windows/Cyberbit.
 LICENSE="BitstreamCyberbit"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
