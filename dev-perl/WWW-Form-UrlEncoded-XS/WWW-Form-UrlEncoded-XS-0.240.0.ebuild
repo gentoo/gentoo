@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="XS parsing/building of application/x-www-form-urlencoded"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
