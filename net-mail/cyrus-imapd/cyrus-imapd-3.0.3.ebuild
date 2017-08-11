@@ -70,7 +70,7 @@ pkg_setup() {
 
 src_prepare() {
 	# bug 604470
-	eapply -p1 "${FILESDIR}/${PN}-sieve-libs-v3.patch"
+	eapply -p1 "${FILESDIR}/${PN}-sieve-libs-v4.patch"
 	eapply -p1 "${FILESDIR}/${PN}-fix-tests.patch"
 	# Fix master(8)->cyrusmaster(8) manpage.
 	for i in `grep -rl -e 'master\.8' -e 'master(8)' "${S}"` ; do
@@ -149,15 +149,27 @@ src_install() {
 	cp -r contrib tools "${D}/usr/share/doc/${PF}"
 	rm -f doc/text/Makefile*
 
+	mv "${D}"usr/libexec/{master,cyrusmaster} || die
+
 	insinto /etc
-	doins "${FILESDIR}/cyrus.conf" "${FILESDIR}/imapd.conf"
+	newins "${D}usr/share/doc/${P}/doc/examples/cyrus_conf/normal.conf" cyrus.conf
+	newins "${D}usr/share/doc/${P}/doc/examples/imapd_conf/normal.conf" imapd.conf
+
+	sed -i -e '/^configdirectory/s|/var/.*|/var/imap|' \
+		-e '/^partition-default/s|/var/.*|/var/spool/imap|' \
+		-e '/^sievedir/s|/var/.*|/var//imap/sieve|' \
+		"${D}"etc/imapd.conf
 
 	# turn off sieve if not installed
 	if ! use sieve; then
 		sed -i -e "/sieve/s/^/#/" "${D}/etc/cyrus.conf" || die
 	fi
+	# same thing for http(s) as well
+	if ! use http; then
+		sed -i -e "/http/s/^/#/" "${D}/etc/cyrus.conf" || die
+	fi
 
-	newinitd "${FILESDIR}/cyrus.rc6" cyrus
+	newinitd "${FILESDIR}/cyrus.rc7" cyrus
 	newconfd "${FILESDIR}/cyrus.confd" cyrus
 	newpamd "${FILESDIR}/cyrus.pam-include" sieve
 
