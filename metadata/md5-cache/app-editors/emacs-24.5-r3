@@ -11,5 +11,5 @@ REQUIRED_USE=?? ( aqua X )
 SLOT=24
 SRC_URI=mirror://gnu/emacs/emacs-24.5.tar.xz https://dev.gentoo.org/~ulm/emacs/emacs-24.5-patches-3.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=e379b9857dcc47a6d0fe32f59f84b1e2

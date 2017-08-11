@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2:2 >=dev-libs/libgamin-0.1.10 !app-admin/fam !<app-admi
 SLOT=0
 SRC_URI=mirror://gnome/sources/gamin/0.1/gamin-0.1.10.tar.bz2 mirror://gentoo/gamin-0.1.9-freebsd.patch.bz2 https://pkgconfig.freedesktop.org/releases/pkg-config-0.26.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	08e000dba2ecbfac8f7dfc36affdfacd	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=015123ca9ebc7f95747c2c95e03a71c4
