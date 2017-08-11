@@ -1342,7 +1342,7 @@ app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
-app-emulation/rkt 1.25.0 1.26.0 1.27.0: rkt is an App Container runtime for Linux
+app-emulation/rkt 1.27.0: rkt is an App Container runtime for Linux
 app-emulation/runc 1.0.0_rc2-r2 1.0.0_rc2_p20170222 1.0.0_rc3 9999: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
@@ -14227,7 +14227,7 @@ media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and a
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6-r3: Tool for cutting MPEG files especially for removing commercials
 media-video/ushare 1.1a-r6 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
-media-video/v4l2loopback 0.4.0 0.4.1 0.6.1 0.6.3 0.6.3-r1 0.8.0: v4l2 loopback device which output is it's own input
+media-video/v4l2loopback 0.10.0 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
 media-video/vcdgear 1.76-r2: extract MPEG streams from CD images, convert VCD files to MPEG, correct MPEG errors, and more
 media-video/vcdimager 0.7.24: GNU VCDimager
