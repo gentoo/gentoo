@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install postinst prepare pretend unpack
 DESCRIPTION=Free Pascal Compiler
 EAPI=5
-HOMEPAGE=http://www.freepascal.org/
+HOMEPAGE=https://www.freepascal.org/
 IUSE=doc ide source
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2.1-with-linking-exception
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/freepascal/fpcbuild-3.0.0.tar.gz mirror://sourceforge/freepascal/fpc-3.0.0.source.tar.gz amd64? ( mirror://sourceforge/freepascal/fpc-3.0.0.x86_64-linux.tar ) x86? ( mirror://sourceforge/freepascal/fpc-3.0.0.i386-linux.tar ) doc? ( mirror://sourceforge/freepascal/Documentation/3.0.0/doc-html.tar.gz -> fpc-3.0.0-doc-html.tar.gz )
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=fe0559d03b069065b59b35d3bda13f98
+_md5_=bedaa549488ad9785b1100d5016bffc4
