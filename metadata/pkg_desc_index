@@ -10555,7 +10555,7 @@ dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from
 dev-util/rosdep 0.11.5 0.11.6 0.11.8 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
-dev-util/rpmdevtools 8.3 8.3-r1 8.5 8.10: Collection of rpm packaging related utilities
+dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/rr 4.5.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
@@ -11481,7 +11481,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
-games-rpg/manaplus 1.7.7.8 1.7.7.22 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.7.22 1.7.8.5 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -13766,7 +13766,7 @@ media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116
 media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.3.1-r3 3.4.3 3.5.1: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.3.1-r3 3.4.3 3.5.1 3.5.2: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.4: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
