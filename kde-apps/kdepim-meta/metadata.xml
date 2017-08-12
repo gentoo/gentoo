@@ -8,7 +8,4 @@
 	<use>
 		<flag name="google">Google service integration via <pkg>kde-apps/libkgapi</pkg></flag>
 	</use>
-	<upstream>
-		<remote-id type="launchpad">~pali</remote-id>
-	</upstream>
 </pkgmetadata>
