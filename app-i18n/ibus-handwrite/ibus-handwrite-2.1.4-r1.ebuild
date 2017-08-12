@@ -26,7 +26,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${PN}-link.patch  )
+PATCHES=(
+	"${FILESDIR}"/${PN}-headers.patch
+	"${FILESDIR}"/${PN}-link.patch
+)
 
 src_prepare() {
 	default
