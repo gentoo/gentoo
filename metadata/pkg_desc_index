@@ -1018,7 +1018,7 @@ app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Em
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
 app-editors/focuswriter 1.6.5 1.6.6: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
-app-editors/gedit 3.22.0: A text editor for the GNOME desktop
+app-editors/gedit 3.22.0 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
@@ -11712,7 +11712,7 @@ gnome-extra/gnome-contacts 3.22.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.8: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.22.3 3.22.4 3.22.5 3.24.3: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.22.0: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.22.0 3.24.1: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.22.1 3.24.2: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.22.1 3.24.0: PackageKit client for the GNOME desktop
@@ -11722,12 +11722,12 @@ gnome-extra/gnome-shell-extensions 3.22.2 3.24.3: JavaScript extensions for GNOM
 gnome-extra/gnome-shell-extensions-topicons-plus 20: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.22.7: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.22.2: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.22.2 3.24.0: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.22.0: Tool to customize GNOME 3 options
-gnome-extra/gnome-user-docs 3.22.0: GNOME end user documentation
+gnome-extra/gnome-user-docs 3.22.0 3.24.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
+gnome-extra/gnome-weather 3.20.2 3.24.0: A weather application for GNOME
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 9.0.2 9.0.4 10.0.0: Unicode character map viewer and library
@@ -11749,7 +11749,7 @@ gnome-extra/yelp 3.22.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16 1.0: Service to log activities and present to other apps
 gnome-extra/zeitgeist-explorer 0.2-r1 0.2-r2: Monitor and inspect Zeitgeist's log at a low level - developer tool
-gnome-extra/zenity 3.22.0: Tool to display dialogs from the commandline and shell scripts
+gnome-extra/zenity 3.22.0 3.24.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r3 0.6.0-r4: Affiche allows people to 'stick' notes
@@ -12716,8 +12716,8 @@ media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arr
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9 2.0.0: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.22.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.22.6: Access, organize and share your photos on GNOME
+media-gfx/gnome-font-viewer 3.22.0 3.24.0: Font viewer for GNOME
+media-gfx/gnome-photos 3.22.6 3.24.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
@@ -12859,7 +12859,7 @@ media-gfx/scour 0.35 0.35-r1: Take an SVG file and produce a cleaner and more co
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2 0.26.3 0.27.0: Open source photo manager for GNOME
-media-gfx/simple-scan 3.22.0.1: Simple document scanning utility
+media-gfx/simple-scan 3.22.0.1 3.24.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/splash-themes-gentoo 20101212-r1 20101212-r2: A collection of Gentoo themes for splashutils
 media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
@@ -13756,7 +13756,7 @@ media-sound/gmusicbrowser 1.1.15-r3 1.1.15_p20160530 9999: An open-source jukebo
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.22.2-r1: Music management for Gnome
-media-sound/gnome-sound-recorder 3.21.92: Simple sound recorder
+media-sound/gnome-sound-recorder 3.21.92 3.24.0.1: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.1.9: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
@@ -13968,7 +13968,7 @@ media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practic
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sonic-visualiser 2.5 3.0.2: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.3-r1: Live looping sampler with immediate loop recording
-media-sound/sound-juicer 3.22.1: CD ripper for GNOME
+media-sound/sound-juicer 3.22.1 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.2.2: Frontend to various audio converters
 media-sound/sox 14.4.2: The swiss army knife of sound processing programs
