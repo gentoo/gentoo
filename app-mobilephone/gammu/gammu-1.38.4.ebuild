@@ -28,8 +28,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	irda? ( virtual/os-headers )
-	odbc? ( !iodbc? ( dev-db/unixODBC )
-		iodbc? ( dev-db/libiodbc ) )
+	odbc? ( dev-db/unixODBC )
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="
