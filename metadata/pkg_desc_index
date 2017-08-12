@@ -1507,7 +1507,7 @@ app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 1.0.1: ibus-fbterm is a input method for FbTerm based on iBus
-app-i18n/ibus-handwrite 2.1.4-r1: hand write recognition/input using ibus IM engine
+app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.6.92 1.7.4: ibus-libpinyin - pinyin chinese input for ibus using libpinyin
