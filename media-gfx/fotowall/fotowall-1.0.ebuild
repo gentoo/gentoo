@@ -5,20 +5,24 @@ EAPI=6
 
 inherit qmake-utils
 
-DESCRIPTION="Qt4 tool for creating wallpapers"
+DESCRIPTION="Qt5 tool for creating wallpapers"
 HOMEPAGE="https://www.enricoros.com/opensource/fotowall/"
-SRC_URI="https://github.com/enricoros/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/enricoros/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="opengl webcam"
 
 RDEPEND="
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-	dev-qt/qtsvg:4
-	opengl? ( dev-qt/qtopengl:4 )
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	opengl? ( dev-qt/qtopengl:5 )
 "
 DEPEND="${RDEPEND}
 	webcam? ( media-libs/libv4l )
@@ -37,9 +41,9 @@ src_prepare() {
 
 src_configure() {
 	if ! use webcam; then
-		eqmake4 ${PN}.pro "CONFIG+=no-webcam"
+		eqmake5 ${PN}.pro "CONFIG+=no-webcam"
 	else
-		eqmake4
+		eqmake5
 	fi
 }
 

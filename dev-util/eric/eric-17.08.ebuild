@@ -25,9 +25,9 @@ DEPEND="
 	>=dev-python/qscintilla-python-2.8[qt5,${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
-	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
 	>=dev-python/coverage-4.1.0[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.2.0[${PYTHON_USEDEP}]
 	!dev-util/eric:4
 	!dev-util/eric:5
 "
