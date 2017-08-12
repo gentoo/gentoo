@@ -9,7 +9,7 @@ inherit kde5 pam
 
 DESCRIPTION="Library and components for secure lock screen architecture"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="+pam"
+IUSE="+pam seccomp"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kcmutils)
@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	x11-libs/libxcb
 	x11-libs/xcb-util-keysyms
 	pam? ( virtual/pam )
+	seccomp? ( sys-libs/libseccomp )
 "
 DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
@@ -71,6 +72,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DPAM_REQUIRED=$(usex pam)
 		$(cmake-utils_use_find_package pam PAM)
+		$(cmake-utils_use_find_package seccomp Seccomp)
 	)
 	kde5_src_configure
 }
