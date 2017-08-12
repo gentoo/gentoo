@@ -42,6 +42,7 @@ src_configure() {
 }
 
 src_install() {
+	dodir /usr/share/terminfo
 	default
 
 	use filecaps || fperms u+s /usr/bin/${PN}
