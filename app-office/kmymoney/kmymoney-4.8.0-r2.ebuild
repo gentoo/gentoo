@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gpgmepp.patch"
 	"${FILESDIR}/${P}-kdepimlibs-optional.patch"
 	"${FILESDIR}/${P}-drop-national-onlinetasks.patch"
+	"${FILESDIR}/${P}-cmake-3.9.patch"
 )
 
 src_prepare() {
