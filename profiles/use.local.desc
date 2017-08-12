@@ -6545,6 +6545,8 @@ net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:drm - build with DRM support
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
+net-misc/trackma:cli - Enable cli version
+net-misc/trackma:ncurses - Enable curses version
 net-misc/uftp:server - Install uftp server daemon
 net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch against a real interface.
 net-misc/vde:ssl - Enable the cryptcab plugin that allows creating an encrypted virtual cable.

@@ -4,10 +4,10 @@ DESCRIPTION=The PEAR Exception base class
 EAPI=6
 HOMEPAGE=http://pear.php.net/package/PEAR_Exception
 IUSE=test
-KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc64
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64
 LICENSE=BSD-2
 RDEPEND=dev-lang/php:* !<=dev-php/PEAR-PEAR-1.10.3-r1
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/PEAR_Exception-1.0.0.tgz
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=5d8f4b81b8c8b3054f51c18d0bd5cdb3
+_md5_=eda860dd5468cee315701a6d70e94179
