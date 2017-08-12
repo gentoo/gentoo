@@ -6,8 +6,8 @@ EAPI="6"
 inherit autotools
 
 DESCRIPTION="Hand write recognition/input for IBus"
-HOMEPAGE="https://code.google.com/p/ibus-handwrite/"
-SRC_URI="https://ibus-handwrite.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://github.com/microcai/ibus-handwrite"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
