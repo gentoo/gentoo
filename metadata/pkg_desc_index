@@ -1486,7 +1486,7 @@ app-i18n/cstools 3.42: A charset conversion tool cstocs and two Perl modules for
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
-app-i18n/fbterm 1.7-r2: Fast terminal emulator for the Linux framebuffer
+app-i18n/fbterm 1.7-r3: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2: Japanese Anthy module for Fcitx
 app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
