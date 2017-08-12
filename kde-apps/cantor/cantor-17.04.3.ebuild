@@ -12,7 +12,7 @@ inherit kde5 python-r1
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://www.kde.org/applications/education/cantor https://edu.kde.org/cantor"
 KEYWORDS="~amd64 ~x86"
-IUSE="analitza julia lua postscript python qalculate +R"
+IUSE="+analitza julia lua postscript python qalculate R"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -64,10 +64,12 @@ pkg_pretend() {
 		! use analitza && ! use julia && ! use lua && ! use python && ! use qalculate && ! use R; then
 		einfo "You have decided to build ${PN} with no backend."
 		einfo "To have this application functional, please enable one of the backends via USE flag:"
-		einfo "    analitza, julia, lua, python, qalculate, R"
+		einfo "    analitza, lua, python, qalculate"
 		einfo "Alternatively, install one of these:"
-		einfo "    # emerge sci-mathematics/maxima"
+		einfo "    # emerge sci-mathematics/maxima (bug #619534)"
 		einfo "    # emerge sci-mathematics/octave"
+		einfo "Experimental available USE flags:"
+		einfo "    julia (not stable, bug #613576), R (bug #619534)"
 		einfo
 	fi
 
