@@ -8,7 +8,4 @@
 	<use>
 		<flag name="prison">Enable support for QRcodes in contacts</flag>
 	</use>
-	<upstream>
-		<remote-id type="launchpad">~pali</remote-id>
-	</upstream>
 </pkgmetadata>
