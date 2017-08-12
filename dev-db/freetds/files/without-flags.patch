@@ -1,0 +1,48 @@
+From c4b9d766e009273c70d8953767ef2fcb95f65314 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 11 Aug 2017 16:45:15 -0400
+Subject: [PATCH] configure.ac: support "without" versions of three ./configure
+ flags.
+
+The --with-iodbc, --with-unixodbc, and --with-odbc-nodm flags all use
+the standard AC_ARG_WITH macro. The resulting ./configure script
+accepts e.g. --without-iodbc to indicate that the user does not want
+to enable iODBC, and in place of a path the word "no" is placed into
+the $with_iodbc variable. The current configure.ac doesn't handle that
+and instead treats "no" as a path. This commit updates configure.ac to
+ignore "no" as the value of those three flags.
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4f41033ae..9dfe12bb7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -546,7 +546,7 @@ esac
+ 
+ AC_ARG_WITH(iodbc,
+ AS_HELP_STRING([--with-iodbc=DIR], [build odbc driver against iODBC in DIR]))
+-if test "$with_iodbc"; then
++if test "x$with_iodbc" != "x" -a "x$with_iodbc" != "xno"; then
+ 	if echo "$with_iodbc" | grep -v '^/'; then
+ 		with_iodbc="$PWD/$with_iodbc"
+ 	fi
+@@ -563,7 +563,7 @@ fi
+ 
+ AC_ARG_WITH(unixodbc,
+ AS_HELP_STRING([--with-unixodbc=DIR], [build odbc driver against unixODBC in DIR]))
+-if test "$with_unixodbc"; then
++if test "x$with_unixodbc" != "x" -a "x$with_unixodbc" != "xno"; then
+ 	if echo "$with_unixodbc" | grep -v '^/'; then
+ 		with_unixodbc="$PWD/$with_unixodbc"
+ 	fi
+@@ -588,7 +588,7 @@ fi
+ 
+ AC_ARG_WITH(odbc_nodm,
+ AS_HELP_STRING([--with-odbc-nodm=DIR], [build odbc using headers in DIR/include]))
+-if test "$with_odbc_nodm"; then
++if test "x$with_odbc_nodm" != "x" -a "x$with_odbc_nodm" != "xno"; then
+ 	if echo "$with_odbc_nodm" | grep -v '^/'; then
+ 		with_odbc_nodm="$PWD/$with_odbc_nodm"
+ 	fi
