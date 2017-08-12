@@ -53,7 +53,7 @@ tinycdb_make() {
 src_compile() {
 	local ctdic="${MY_PN}.china_taiwan" ruby
 	mv ${ctdic}{.header,}
-	for ruby in ${USE_RUBY}; do
+	for ruby in ${RUBY_TARGETS_PREFERENCE}; do
 		if use ruby_targets_${ruby}; then
 			${ruby} ${SKKTOOLS_DIR}/ctdicconv.rb csv/${ctdic##*.}.csv | skkdic-expr2 >> ${ctdic}
 			break
