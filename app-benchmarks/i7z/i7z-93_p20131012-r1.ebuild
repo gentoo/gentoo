@@ -17,9 +17,9 @@ IUSE="qt5"
 RDEPEND="
 	sys-libs/ncurses:0=
 	qt5? (
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtwidgets:5=
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 	)
 "
 DEPEND="${RDEPEND}"
