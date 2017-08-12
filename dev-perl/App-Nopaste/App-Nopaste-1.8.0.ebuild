@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Easy access to any pastebin"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="+pastebin +browser clipboard github test"
 
 RDEPEND="
