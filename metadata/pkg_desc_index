@@ -2931,7 +2931,7 @@ dev-db/henplus 0.9.8 0.9.8-r1: Java-based multisession SQL shell for databases w
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/hyperdex 1.6.0-r1 1.7.1 1.8.0 1.8.1 9999: A searchable distributed Key-Value Store
 dev-db/innotop 1.11.1 1.11.4: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
-dev-db/kdb 3.0.1.1: Database connectivity and creation framework for various vendors
+dev-db/kdb 3.0.1.1 3.0.2: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
 dev-db/lib_mysqludf_fPROJ4 0.1.0: MySQL UDFs which converts geographic/cartesian coordinates
 dev-db/lib_mysqludf_json 0.0.2: MySQL UDFs to map relational data to the JSON format
@@ -4768,7 +4768,7 @@ dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating busine
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/klibc 2.0.4-r2: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
-dev-libs/kproperty 3.0.1: Property editing framework with editor widget similar to Qt Designer
+dev-libs/kproperty 3.0.1 3.0.2: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.1: Framework for creation and generation of reports in multiple formats
 dev-libs/leatherman 0.10.1 0.12.1 1.0.0: A C++ toolkit
