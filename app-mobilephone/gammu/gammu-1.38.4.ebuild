@@ -14,7 +14,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bluetooth curl dbi debug irda mysql nls postgres usb odbc"
-IUSE_OPTIONAL="iodbc"
 
 COMMON_DEPEND="
 	dev-libs/glib:2=
