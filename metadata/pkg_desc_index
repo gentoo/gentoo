@@ -7280,7 +7280,7 @@ dev-python/PyContracts 1.7.9 1.7.15: Declare constraints on function parameters 
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.4.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
-dev-python/PyGithub 1.28: Python library to access the Github API v3
+dev-python/PyGithub 1.28 1.35: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.26.0: Python library to work with pdf files
 dev-python/PyQt4 4.12 4.12.1: Python bindings for the Qt framework
 dev-python/PyQt5 5.7.1 5.8.2: Python bindings for the Qt framework
