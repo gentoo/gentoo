@@ -3,7 +3,7 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 inherit autotools ltprune python-single-r1 ruby-single
 
