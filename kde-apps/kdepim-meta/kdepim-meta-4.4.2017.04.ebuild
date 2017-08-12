@@ -3,12 +3,10 @@
 
 EAPI=6
 
-KDE_BLOCK_SLOT4="false"
-inherit kde5-meta-pkg
-
 DESCRIPTION="kdepim - merge this to pull in all kdepim-derived packages"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
+LICENSE="metapackage"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 SLOT="4"
