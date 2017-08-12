@@ -3,26 +3,17 @@
 
 EAPI=6
 
-inherit autotools toolchain-funcs eutils git-r3
+inherit autotools toolchain-funcs eutils
 
 MYPN=ADOL-C
 
 DESCRIPTION="Automatic differentiation system for C/C++"
 HOMEPAGE="https://projects.coin-or.org/ADOL-C/"
-
-if [[ ${PV} = *9999* ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/adol-c/adol-c.git"
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="http://www.coin-or.org/download/source/${MYPN}/${MYPN}-${PV}.tgz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${MYPN}-${PV}"
-fi
+SRC_URI="http://www.coin-or.org/download/source/${MYPN}/${MYPN}-${PV}.tgz"
 
 LICENSE="|| ( EPL-1.0 GPL-2 )"
 SLOT="0/2"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="mpi sparse static-libs"
 
 RDEPEND="
@@ -30,6 +21,8 @@ RDEPEND="
 		sparse? ( sci-libs/colpack:0= )
 "
 DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${MYPN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-no-colpack.patch
