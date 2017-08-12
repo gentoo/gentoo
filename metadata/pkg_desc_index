@@ -1525,7 +1525,7 @@ app-i18n/ibus-table-extraphrase 1.3.9.20110826: Chinese extra phrases for ibus-t
 app-i18n/ibus-table-latin 1.2.0.20100305: The Latin tables for IBus-Table
 app-i18n/ibus-table-tv 1.2.0.20100305: The Thai and Viqr (Vietnamese) tables for IBus-Table
 app-i18n/ibus-tutcode 1.0.0 1.0.1 1.0.2 1.0.2-r1: a Japanese TUT-Code input engine for IBus
-app-i18n/ibus-unikey 0.6.1-r2: Vietnamese Input Method Engine for IBUS using Unikey IME
+app-i18n/ibus-unikey 0.6.1-r2: Vietnamese UniKey engine for IBus
 app-i18n/im-canna 0.3.2.2 0.3.2.2-r1: Japanese Canna input method module for GTK+2
 app-i18n/im-chooser 1.7.0: Desktop Input Method configuration tool
 app-i18n/im-freewnn 0.0.2-r2 0.0.2-r3: Japanese FreeWnn input method module for GTK+2
@@ -17851,10 +17851,10 @@ sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
-sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 9999: Userland utilities for ZFS Linux kernel module
-sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.0-r1 0.7.1 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.52 4.4.75 4.9.16 4.9.34 4.9.35 4.9.36 4.10.17 4.11.7 4.11.8 4.11.9: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
-sys-kernel/bliss-initramfs 6.8.3-r2 7.0.2-r1 7.1.0: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
+sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.39 4.9.39-r1 4.9.41 4.11.12: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.11
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
@@ -17875,7 +17875,7 @@ sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.55_p61 3.18.59_p65 4.1.39_p47 4.1.40_p48 4.4.70_p83 4.4.75_p88 4.9.30_p21 4.9.33_p23 4.9.35_p25 4.11.5_p1 4.11.8_p4 4.11.8_p5 4.11.9_p7: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
+sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.91 3.4.113 3.10.107 3.16.46 4.1.43 4.4.81 4.9.42 4.12.6: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
@@ -18409,7 +18409,7 @@ www-client/chromium 59.0.3071.104 60.0.3112.40 60.0.3112.78 61.0.3163.31 61.0.31
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
-www-client/dooble 1.55 1.56c: A Secure and Open Source Web Browser
+www-client/dooble 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.22.7 3.24.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
