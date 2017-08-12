@@ -447,7 +447,7 @@ multilib_src_configure() {
 
 		# systemd is only linked to for server notification
 		if in_iuse systemd ; then
-			mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
+			mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd yes no) )
 		fi
 
 		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
@@ -508,7 +508,7 @@ multilib_src_configure() {
 			-DWITHOUT_EMBEDDED_SERVER=1
 			-DEXTRA_CHARSETS=none
 			-DINSTALL_SQLBENCHDIR=
-			-DWITH_SYSTEMD=NO
+			-DWITH_SYSTEMD=no
 		)
 	fi
 
