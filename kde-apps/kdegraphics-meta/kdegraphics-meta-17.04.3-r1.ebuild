@@ -8,9 +8,7 @@ inherit kde5-meta-pkg
 DESCRIPTION="kdegraphics - merge this to pull in all kdegraphics-derived packages"
 HOMEPAGE="https://www.kde.org/applications/graphics/"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls scanner"
-
-[[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}
+IUSE="scanner"
 
 RDEPEND="
 	$(add_kdeapps_dep gwenview)
@@ -26,9 +24,5 @@ RDEPEND="
 	$(add_kdeapps_dep spectacle)
 	$(add_kdeapps_dep svgpart)
 	$(add_kdeapps_dep thumbnailers)
-	scanner? (
-		$(add_kdeapps_dep ksaneplugin)
-		$(add_kdeapps_dep libksane)
-		nls? ( $(add_kdeapps_dep kde4-l10n '' ${L10N_MINIMAL}) )
-	)
+	scanner? ( $(add_kdeapps_dep libksane) )
 "
