@@ -2026,7 +2026,7 @@ app-office/calligra 3.0.1: KDE Office Suite
 app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
-app-office/geierlein 0.9.10 0.9.11: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
+app-office/geierlein 0.9.10 0.9.11 0.9.12: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.4.0: Program for creating labels and business cards
 app-office/gnucash 2.6.15 2.6.15-r1: A personal finance manager
 app-office/gnumeric 1.12.32 1.12.35: The GNOME Spreadsheet
