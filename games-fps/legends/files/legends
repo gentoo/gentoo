@@ -1,3 +1,0 @@
-#!/bin/sh
-cd GENTOO_DIR
-LD_PRELOAD=GENTOO_DIR/LIBSDL exec ./LinLegends "$@"
