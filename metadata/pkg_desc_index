@@ -1015,7 +1015,7 @@ app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-do
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.6.5: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.5 1.6.6: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.22.0: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
@@ -10396,7 +10396,7 @@ dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C progra
 dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
-dev-util/eric 17.03 17.04.1 17.07: A full featured Python IDE using PyQt and QScintilla
+dev-util/eric 17.07 17.08: A full featured Python IDE using PyQt and QScintilla
 dev-util/fatrace 0.11 0.12: report file access events from all running processes
 dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
@@ -12697,7 +12697,7 @@ media-gfx/flam3 3.0.1 9999: Tools and a library for creating fractal flames
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
 media-gfx/fontforge 20150612-r1 20150824 20160404 20161005: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
-media-gfx/fotowall 0.9-r2: Qt4 tool for creating wallpapers
+media-gfx/fotowall 0.9-r2 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 13.11.1 15.04.1 15.05: Program for improving image files made with a digital camera
 media-gfx/fr0st 1.4-r2: A fractal flame editor
 media-gfx/freecad 0.15.4671 0.16 0.16-r1 0.16.6712 0.17_pre 9999: QT based Computer Aided Design application
