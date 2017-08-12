@@ -11,11 +11,12 @@ inherit kde5
 
 DESCRIPTION="Storage service for PIM data and libraries for PIM apps"
 HOMEPAGE="https://pim.kde.org/akonadi"
+
 KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="LGPL-2.1+"
-IUSE="+mysql postgres sqlite tools xml"
+IUSE="+mysql postgres tools xml"
 
-REQUIRED_USE="|| ( sqlite mysql postgres ) test? ( tools )"
+REQUIRED_USE="|| ( mysql postgres ) test? ( tools )"
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.7.0
 COMMON_DEPEND="
@@ -40,7 +41,6 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	x11-misc/shared-mime-info
-	sqlite? ( dev-db/sqlite:3 )
 	xml? ( dev-libs/libxml2 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -64,42 +64,18 @@ RESTRICT+=" test"
 PATCHES=( "${FILESDIR}/${PN}-17.03.80-mysql56-crash.patch" )
 
 pkg_setup() {
-	# Set default storage backend in order: MySQL, SQLite PostgreSQL
+	# Set default storage backend in order: MySQL, PostgreSQL
 	# reverse driver check to keep the order
-	if use postgres; then
-		DRIVER="QPSQL"
-		AVAILABLE+=" ${DRIVER}"
-	fi
-
-	if use sqlite; then
-		DRIVER="QSQLITE3"
-		AVAILABLE+=" ${DRIVER}"
-	fi
-
-	if use mysql; then
-		DRIVER="QMYSQL"
-		AVAILABLE+=" ${DRIVER}"
-	fi
-
-	# Notify about MySQL is recommend by upstream
-	if use sqlite || has_version "<${CATEGORY}/${P}[sqlite]"; then
-		ewarn
-		ewarn "We strongly recommend you change your Akonadi database backend to MySQL in your"
-		ewarn "user configuration. This is the backend recommended by KDE upstream."
-		ewarn "In particular, kde-apps/kmail-4.10 does not work properly with the sqlite"
-		ewarn "backend anymore."
-		ewarn "You can select the backend in your ~/.config/akonadi/akonadiserverrc."
-		ewarn "Available drivers are:${AVAILABLE}"
-		ewarn
-	fi
+	use postgres && DRIVER="QPSQL"
+	use mysql && DRIVER="QMYSQL"
+	kde5_pkg_setup
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DAKONADI_BUILD_QSQLITE=$(usex sqlite)
+		-DAKONADI_BUILD_QSQLITE=OFF
 		-DBUILD_TOOLS=$(usex tools)
 		$(cmake-utils_use_find_package xml LibXml2)
-		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 	)
 
 	kde5_src_configure
@@ -118,7 +94,10 @@ EOF
 }
 
 pkg_postinst() {
+	kde5_pkg_postinst
+	elog "You can select the storage backend in ~/.config/akonadi/akonadiserverrc."
+	elog "Available drivers are:"
+	use postgres && elog "  QPSQL"
+	use mysql && elog "  QMYSQL"
 	elog "${DRIVER} has been set as your default akonadi storage backend."
-	elog "You can override it in your ~/.config/akonadi/akonadiserverrc."
-	elog "Available drivers are: ${AVAILABLE}"
 }
