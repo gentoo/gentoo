@@ -8,7 +8,4 @@
 	<use>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 	</use>
-	<upstream>
-		<remote-id type="launchpad">~pali</remote-id>
-	</upstream>
 </pkgmetadata>
