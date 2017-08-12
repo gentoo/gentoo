@@ -40,7 +40,7 @@ src_prepare() {
 	sed -i "/^ACLOCAL_AMFLAGS/,/^$/d" Makefile.am
 
 	local ruby
-	for ruby in ${USE_RUBY}; do
+	for ruby in ${RUBY_TARGETS_PREFERENCE}; do
 		if use ruby_targets_${ruby}; then
 			sed -i "1s/ruby/${ruby}/" ${PN}/mkacc.rb
 			break
