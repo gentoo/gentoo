@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare test unpack
+DEPEND=mpi? ( sys-cluster/ampi:0= ) sparse? ( sci-libs/colpack:0= ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Automatic differentiation system for C/C++
+EAPI=6
+HOMEPAGE=https://projects.coin-or.org/ADOL-C/
+IUSE=mpi sparse static-libs
+LICENSE=|| ( EPL-1.0 GPL-2 )
+RDEPEND=mpi? ( sys-cluster/ampi:0= ) sparse? ( sci-libs/colpack:0= )
+SLOT=0/2
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=0aed01028297afec3ac605f1679037cd
