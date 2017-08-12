@@ -2858,7 +2858,7 @@ dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.9.4 1.9.6 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.9.4 1.9.6 1.9.7 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
@@ -17895,7 +17895,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.5 1.5.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.12 1.13: Standard GNU database libraries
-sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r3 2.25-r2 9999: GNU libc6 (also called glibc2) C library
+sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r3 2.24-r4 2.25-r2 2.25-r3 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.0.3 3.1.2: Library for managing partitions
