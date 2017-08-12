@@ -5129,7 +5129,7 @@ dev-libs/xerces-c 3.1.4-r1: A validating XML parser written in a portable subset
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
-dev-libs/xmlsec 1.2.23 1.2.24: Command line tool for signing, verifying, encrypting and decrypting XML
+dev-libs/xmlsec 1.2.23 1.2.24 1.2.24-r1: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xmlwrapp 0.7.1 0.7.1-r1: modern style C++ library that provides a simple and easy interface to libxml2
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.3.3: An XQuery and XPath 2 library and command line utility written in C++
