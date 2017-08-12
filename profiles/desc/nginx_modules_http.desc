@@ -37,6 +37,7 @@ map - This module allows you to classify, or map a set of values into a differen
 memc - An extended version of the standard memcached module that supports set, add, delete, and many more memcached commands.
 memcached - You can use this module to perform simple caching.
 metrics - Module to export various metrics in easy-parseable JSON.
+mirror - This module implements mirroring of an original request by creating background mirror subrequests.
 mogilefs - Enable support for MogileFS.
 mp4 - This module adds pseudo-streaming
 naxsi - An open source, high performance, low rules maintenance, Web Application Firewall module for Nginx.
