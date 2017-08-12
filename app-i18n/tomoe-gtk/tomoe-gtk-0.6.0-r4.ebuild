@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit ltprune python-single-r1
 
 DESCRIPTION="Tomoe GTK+ interface widget library"
-HOMEPAGE="http://tomoe.sourceforge.jp/"
+HOMEPAGE="http://tomoe.osdn.jp/"
 SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
