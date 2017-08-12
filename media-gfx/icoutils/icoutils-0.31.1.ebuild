@@ -29,7 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
-	[[ ${CHOST} != *-linux-gnu* ]] && use nls && append-libs -lintl
+	use !elibc_glibc && use !elibc_musl && use nls && append-libs -lintl
 	econf $(use_enable nls)
 }
 
