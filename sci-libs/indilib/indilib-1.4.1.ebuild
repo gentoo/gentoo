@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN/lib/}/releases/download/v${PV}/${MY_PN}_$
 LICENSE="LGPL-2"
 SLOT="0/1"
 KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
-IUSE="test"
+IUSE=""
 
 RDEPEND="
 	net-misc/curl
