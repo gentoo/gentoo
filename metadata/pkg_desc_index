@@ -16355,7 +16355,7 @@ sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in open
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.92.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/qgis 2.18.3-r1 2.18.10: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1: GPS mapping utility
+sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1 1.9.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.4: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
