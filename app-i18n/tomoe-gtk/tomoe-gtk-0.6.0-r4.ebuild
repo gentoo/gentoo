@@ -17,6 +17,7 @@ IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="app-i18n/tomoe[python(+)?,${PYTHON_USEDEP}]
+	x11-libs/gtk+:2
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pygobject:2[${PYTHON_USEDEP}]
