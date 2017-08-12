@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ KDE_LINGUAS="cs de fr"
 inherit kde4-base
 
 DESCRIPTION="Friendly nzb linux usenet binary client"
-HOMEPAGE="http://kwooty.sourceforge.net/"
+HOMEPAGE="https://www.linux-apps.com/content/show.php/Kwooty?content=114385"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
