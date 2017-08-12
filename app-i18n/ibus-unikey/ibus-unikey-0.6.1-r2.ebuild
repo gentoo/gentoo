@@ -11,12 +11,15 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk3 nls"
+IUSE="+gtk gtk2 nls"
+REQUIRED_USE="gtk2? ( gtk )"
 
 RDEPEND="app-i18n/ibus
 	x11-libs/libX11
-	gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( x11-libs/gtk+:2 )
+	gtk? (
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3 )
+	)
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -28,5 +31,5 @@ PATCHES=( "${DISTDIR}"/${P}-gcc6.patch )
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		--with-gtk-version=$(usex gtk3 3 2)
+		--with-gtk-version=$(usex gtk2 3 2)
 }
