@@ -43,3 +43,4 @@ move dev-texlive/texlive-htmlxml dev-texlive/texlive-humanities
 move app-i18n/anthy-ss app-i18n/anthy
 move dev-libs/kirigami kde-frameworks/kirigami
 slotmove kde-frameworks/kirigami 2 5
+move app-i18n/libtomoe-gtk app-i18n/tomoe-gtk

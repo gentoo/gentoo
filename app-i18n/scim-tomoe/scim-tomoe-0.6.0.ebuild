@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="|| ( >=app-i18n/scim-1.2.0 >=app-i18n/scim-cvs-1.2.0 )
-	>=app-i18n/libtomoe-gtk-0.6.0"
+	>=app-i18n/tomoe-gtk-0.6.0"
 
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
