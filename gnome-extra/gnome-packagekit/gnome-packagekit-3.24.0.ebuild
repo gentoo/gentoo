@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools gnome2 virtualx
+inherit gnome2 virtualx
 
 DESCRIPTION="PackageKit client for the GNOME desktop"
 HOMEPAGE="https://www.freedesktop.org/software/PackageKit/"
@@ -10,8 +10,9 @@ HOMEPAGE="https://www.freedesktop.org/software/PackageKit/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="systemd test udev"
+IUSE="systemd udev" # test
 
+# XXX: test, upstream managed to break gpk-self-test beyond repair
 # gdk-pixbuf used in gpk-animated-icon
 # pango used on gpk-common
 RDEPEND="
@@ -21,8 +22,7 @@ RDEPEND="
 	>=x11-libs/libnotify-0.7.0:=
 	x11-libs/pango
 
-	>=app-admin/packagekit-base-0.8
-	>=app-admin/packagekit-gtk-0.7.2
+	>=app-admin/packagekit-base-0.9.1
 	>=media-libs/libcanberra-0.10[gtk3]
 	>=sys-apps/dbus-1.1.2
 
@@ -37,9 +37,8 @@ DEPEND="${RDEPEND}
 	app-text/docbook-sgml-utils
 	dev-libs/appstream-glib
 	>=dev-util/gtk-doc-am-1.9
-	>=dev-util/intltool-0.35
 	dev-libs/libxslt
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
 
@@ -47,7 +46,6 @@ DEPEND="${RDEPEND}
 # app-text/docbook-sgml-utils required for man pages
 
 # UPSTREAM:
-# misuse of CPPFLAGS/CXXFLAGS ?
 # see if tests can forget about display (use eclass for that ?)
 
 src_prepare() {
@@ -55,31 +53,29 @@ src_prepare() {
 	#   to be run with the dummy backend and installed .ui files
 	# * disable tests that fails every time packagekit developers make a
 	#   tiny change to headers
+	# * gpk_test_markdown_func: no definition for that one
 	sed -e '/g_test_add_func.*gpk_test_enum_func/d' \
 		-e '/g_test_add_func.*gpk_test_dbus_task_func/d' \
 		-e '/g_test_add_func.*gpk_test_error_func/d' \
 		-e '/g_test_add_func.*gpk_test_modal_dialog/d' \
 		-e '/g_test_add_func.*gpk_test_task_func/d' \
+		-e '/g_test_add_func.*gpk_test_markdown_func/d' \
 		-i src/gpk-self-test.c || die
 
-	# Disable stupid flags
-	# FIXME: touching configure.ac triggers maintainer-mode
-	sed -e '/CPPFLAGS="$CPPFLAGS -g"/d' -i configure || die
+	# XXX: g_autoptr requires explicit type support
+	sed -e 's/g_autoptr(GpkTask)/GpkTask */' \
+		-i src/gpk-self-test.c || die
 
-	# Fix compat with current systemd
-	sed -i -e 's/libsystemd-login/libsystemd/' configure.ac || die
-
-	eautoreconf
 	gnome2_src_prepare
 }
 
 src_configure() {
 	gnome2_src_configure \
 		--localstatedir=/var \
-		--enable-iso-c \
+		--disable-tests \
 		$(use_enable systemd) \
-		$(use_enable test tests) \
 		$(use_enable udev gudev)
+		# $(use_enable test tests)
 }
 
 src_test() {
