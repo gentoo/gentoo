@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Multi-source social music player"
-HOMEPAGE="https://tomahawk-player.org/"
+HOMEPAGE="https://www.tomahawk-player.org/"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
