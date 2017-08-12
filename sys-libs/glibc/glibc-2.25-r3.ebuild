@@ -9,7 +9,7 @@ DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 RESTRICT="strip" # strip ourself #46186
 EMULTILIB_PKG="true"
 
@@ -22,12 +22,12 @@ case ${PV} in
 	inherit git-2
 	;;
 *)
+	RELEASE_VER=${PV}
 	;;
 esac
-RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER="4.7.3-r1"
 # patches live at https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/src/patchsets/glibc/
-PATCH_VER="3"                                  # Gentoo patchset
+PATCH_VER="6"                                  # Gentoo patchset
 : ${NPTL_KERN_VER:="2.6.32"}                   # min kernel version nptl requires
 
 IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
@@ -100,7 +100,7 @@ upstream_uris() {
 	echo mirror://gnu/glibc/$1 ftp://sourceware.org/pub/glibc/{releases,snapshots}/$1 mirror://gentoo/$1
 }
 gentoo_uris() {
-	local devspace="HTTP~vapier/dist/URI HTTP~tamiko/distfiles/URI HTTP~dilfridge/distfiles/URI HTTP~slyfox/distfiles/URI"
+	local devspace="HTTP~vapier/dist/URI HTTP~azarah/glibc/URI HTTP~tamiko/distfiles/URI HTTP~slyfox/distfiles/URI"
 	devspace=${devspace//HTTP/https://dev.gentoo.org/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }
@@ -120,6 +120,8 @@ src_prepare() {
 	toolchain-glibc_src_prepare
 
 	cd "${S}"
+
+	epatch "${FILESDIR}"/2.19/${PN}-2.19-ia64-gcc-4.8-reloc-hack.patch #503838
 
 	if use hardened ; then
 		# We don't enable these for non-hardened as the output is very terse --
