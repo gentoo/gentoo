@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ ms nb nds nl nn pa pl pt pt_BR ro ru sv tr uk zh_CN zh_TW"
 inherit kde4-base
 
 DESCRIPTION="KDE frontend for various VPN clients"
-HOMEPAGE="http://home.gna.org/kvpnc/"
+HOMEPAGE="https://userbase.kde.org/KVpnc"
 SRC_URI="http://download.gna.org/kvpnc/${P}-kde4.tar.bz2
 	http://download.gna.org/kvpnc/${P/a}-kde4-locale.tar.bz2"
 
