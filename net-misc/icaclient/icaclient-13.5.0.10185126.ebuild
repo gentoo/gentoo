@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/speex
 	net-dns/libidn
 	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:4
+	net-libs/webkit-gtk:2
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
 	virtual/krb5
