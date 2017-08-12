@@ -4158,7 +4158,7 @@ dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimit
 dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
-dev-java/javatoolkit 0.3.0-r9 0.4.0 0.5.0: Collection of Gentoo-specific tools for Java
+dev-java/javatoolkit 0.3.0-r9 0.4.0 0.5.0 9999: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2 1-r3: Dependency injection for Java (JSR-330)
 dev-java/javax-mail 1.4: Provides a platform/protocol-independent framework for mail and messaging apps
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
