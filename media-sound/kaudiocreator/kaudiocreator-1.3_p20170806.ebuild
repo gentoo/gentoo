@@ -40,6 +40,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep audiocd-kio)
+	!media-sound/kaudiocreator:4
 "
 
 DOCS=( Changelog TODO )
