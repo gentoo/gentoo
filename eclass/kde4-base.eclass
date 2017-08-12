@@ -349,10 +349,6 @@ kdedepend="
 
 kderdepend=""
 
-if [[ ${CATEGORY} == kde-apps ]]; then
-	kderdepend+=" !kde-base/${PN}:4"
-fi
-
 # all packages needs oxygen icons for basic iconset
 if [[ ${PN} != oxygen-icons ]]; then
 	kderdepend+=" kde-frameworks/oxygen-icons"
@@ -385,14 +381,7 @@ case ${KDE_HANDBOOK} in
 		[[ ${PN} != kdelibs ]] && kderdepend+=" ${kdehandbookrdepend}"
 		;;
 	optional)
-		case ${PN} in
-			kcontrol | kdesu | knetattach)
-				IUSE+=" handbook"
-				;;
-			*)
-				IUSE+=" +handbook"
-				;;
-		esac
+		IUSE+=" +handbook"
 		kdedepend+=" handbook? ( ${kdehandbookdepend} )"
 		[[ ${PN} != kdelibs ]] && kderdepend+=" handbook? ( ${kdehandbookrdepend} )"
 		;;
@@ -637,23 +626,13 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 kde4-base_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if has handbook ${IUSE} || has "+handbook" ${IUSE} && [ "${KDE_HANDBOOK}" != optional ] ; then
+	if has handbook ${IUSE} || has "+handbook" ${IUSE} && [[ "${KDE_HANDBOOK}" != optional ]] ; then
 		eqawarn "Handbook support is enabled via KDE_HANDBOOK=optional in the ebuild."
 		eqawarn "Please do not just set IUSE=handbook, as this leads to dependency errors."
 	fi
 
 	# Don't set KDEHOME during compilation, it will cause access violations
 	unset KDEHOME
-
-	# Check if gcc compiler is fresh enough.
-	# In theory should be in pkg_pretend but we check it only for kdelibs there
-	# and for others we do just quick scan in pkg_setup because pkg_pretend
-	# executions consume quite some time (ie. when merging 300 packages at once will cause 300 checks)
-	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
-		[[ $(gcc-major-version) -lt 4 ]] || \
-				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 6 ]] ) \
-			&& die "Sorry, but gcc-4.6 and earlier wont work for some KDE packages."
-	fi
 
 	KDEDIR=/usr
 	: ${PREFIX:=/usr}
