@@ -25,6 +25,7 @@ DOCS=( LICENSE CONTRIBUTORS README.md )
 src_prepare() {
 	epatch "${FILESDIR}"/pkgconfig-pathfix.patch
 	epatch "${FILESDIR}"/pkgconfig_install.patch
+	epatch_user
 	multilib_copy_sources
 }
 
