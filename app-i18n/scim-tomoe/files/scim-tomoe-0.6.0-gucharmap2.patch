@@ -1,5 +1,5 @@
 ---
- Update libtomoe-gtk to gucharmap-2 API
+ Update tomoe-gtk to gucharmap-2 API
  https://bugs.gentoo.org/show_bug.cgi?id=243160
 
  scim_tomoe_prefs_widget.cpp |    4 ++--
