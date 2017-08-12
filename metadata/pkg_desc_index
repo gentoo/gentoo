@@ -14462,7 +14462,7 @@ net-analyzer/prelude-correlator 3.0.1-r1 3.1.0: Real time correlator of events r
 net-analyzer/prelude-lml 3.0.0 3.1.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
-net-analyzer/prometheus 1.7.1 2.0.0_beta0: Prometheus monitoring system and time series database
+net-analyzer/prometheus 1.7.1 2.0.0_beta1: Prometheus monitoring system and time series database
 net-analyzer/prometheus-node_exporter 0.14.0: Prometheus exporter for machine metrics
 net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
