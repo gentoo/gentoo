@@ -4,8 +4,8 @@
 EAPI="6"
 
 DESCRIPTION="Vietnamese UniKey engine for IBus"
-HOMEPAGE="https://code.google.com/p/ibus-unikey"
-SRC_URI="https://ibus-unikey.googlecode.com/files/${P}.tar.gz
+HOMEPAGE="https://github.com/mrlequoctuan/ibus-unikey"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/${P}-gcc6.patch"
 
 LICENSE="GPL-3"
