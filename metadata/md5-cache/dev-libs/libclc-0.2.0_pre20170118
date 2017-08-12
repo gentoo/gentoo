@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/llvm-mirror/libclc/archive/2ec7d80d5e1c96fb85c694cc6ac0a78faf01a614.tar.gz -> libclc-0.2.0_pre20170118.tar.gz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:vcs-snapshot src_configure:- src_compile:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
-_md5_=dcf7b184840c08bab9049f55954856a7
+_md5_=cada1b8887f110a6217ec6a6f86933db
