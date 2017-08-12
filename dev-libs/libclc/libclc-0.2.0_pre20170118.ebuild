@@ -39,13 +39,9 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 src_configure() {
-	# we need to find llvm with matching clang version, so look for
-	# clang first, and then use llvm-config from the same location
-	local clang_path=$(type -P clang) || die
-
 	./configure.py \
 		--with-cxx-compiler="$(tc-getCXX)" \
-		--with-llvm-config="${clang_path%/*}/llvm-config" \
+		--with-llvm-config="$(tc-getPROG LLVM_CONFIG llvm-config)" \
 		--prefix="${EPREFIX}/usr" || die
 }
 
