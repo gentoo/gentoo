@@ -119,25 +119,25 @@ src_configure() {
 	export vmchannel_test=no
 
 	econf \
-		$(use_enable test werror)
-		--with-libvirt
-		--with-default-backend=libvirt
-		--disable-appliance
-		--disable-daemon
-		--with-extra="-gentoo"
-		--with-readline
-		--disable-php
-		$(use_enable python)
-		--without-java
-		$(use_enable perl)
-		$(use_enable fuse)
-		$(use_enable ocaml)
-		$(use_enable ruby)
-		--disable-haskell
-		--disable-golang
-		$(use_enable introspection gobject)
-		$(use_enable erlang)
-		$(use_enable systemtap probes)
+		$(use_enable test werror) \
+		--with-libvirt \
+		--with-default-backend=libvirt \
+		--disable-appliance \
+		--disable-daemon \
+		--with-extra="-gentoo" \
+		--with-readline \
+		--disable-php \
+		$(use_enable python) \
+		--without-java \
+		$(use_enable perl) \
+		$(use_enable fuse) \
+		$(use_enable ocaml) \
+		$(use_enable ruby) \
+		--disable-haskell \
+		--disable-golang \
+		$(use_enable introspection gobject) \
+		$(use_enable erlang) \
+		$(use_enable systemtap probes) \
 		$(use_enable lua)
 }
 
