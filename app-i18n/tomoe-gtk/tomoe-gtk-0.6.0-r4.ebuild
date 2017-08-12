@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit ltprune python-single-r1
 
 DESCRIPTION="Tomoe GTK+ interface widget library"
 HOMEPAGE="http://tomoe.sourceforge.jp/"
@@ -40,11 +40,5 @@ src_configure() {
 
 src_install() {
 	default
-
-	if use python ; then
-		find "${D}$(python_get_sitedir)" \( -name "*.la" -o -name "*.a" \) -type f -delete || die
-	fi
-	if ! use static-libs ; then
-		find "${ED}" -name "*.la" -type f -delete || die
-	fi
+	prune_libtool_files --modules
 }
