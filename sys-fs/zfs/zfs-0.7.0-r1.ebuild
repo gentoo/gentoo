@@ -50,8 +50,8 @@ RDEPEND="${COMMON_DEPEND}
 		app-arch/cpio
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
-		|| ( =sys-kernel/genkernel-3.5.1.1
-		     =sys-kernel/bliss-initramfs-7.1.0 )
+		|| ( >=sys-kernel/genkernel-3.5.1.1
+		     >=sys-kernel/bliss-initramfs-7.1.0 )
 		)
 	sys-fs/udev-init-scripts
 "
