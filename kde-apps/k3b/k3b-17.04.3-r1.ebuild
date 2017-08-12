@@ -77,6 +77,8 @@ REQUIRED_USE="
 
 DOCS+=( ChangeLog {FAQ,PERMISSIONS,README}.txt )
 
+RESTRICT+=" test"
+
 src_configure() {
 	local mycmakeargs=(
 		-DK3B_BUILD_API_DOCS=OFF
