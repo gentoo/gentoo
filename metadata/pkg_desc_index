@@ -95,7 +95,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.2.2 5.3.2 5.4.3: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.3.2 5.4.3 5.5.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
@@ -1594,7 +1594,7 @@ app-i18n/tagainijisho 1.0.3-r1: Open-source Japanese dictionary and kanji lookup
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r2 0.6.0-r3: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
-app-i18n/transifex-client 0.10 0.12.2: A command line interface for Transifex
+app-i18n/transifex-client 0.10 0.12.2 0.12.4: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.2: Online command-line translator
 app-i18n/uchardet 0.0.6 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
@@ -2989,7 +2989,7 @@ dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition pa
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 5.6.36.82.0 5.6.36.82.1: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.6-r1 2.4.7: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.7 2.4.8: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.1-r1 1.22.1-r2: wxWidgets GUI for PostgreSQL
