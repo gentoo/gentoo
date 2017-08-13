@@ -3775,27 +3775,6 @@ developers and volunteer mentors.</description>
     </member>
   </project>
   <project>
-    <email>sunrise@gentoo.org</email>
-    <name>Sunrise</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Sunrise</url>
-    <description>Project Sunrise is a starting point for gentoo users to contribute. The team members encourage users to write ebuilds and make sure that they follow Gentoo QA standards.</description>
-    <member>
-      <email>chithanh@gentoo.org</email>
-      <name>Chí-Thanh Christopher Nguyễn</name>
-      <role>Ebuild review</role>
-    </member>
-    <member>
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
-      <role>Project pre-removal cleanup</role>
-    </member>
-    <member is-lead="1">
-      <email>tommy@gentoo.org</email>
-      <name>Thomas Sachau</name>
-      <role>Administration and ebuild review</role>
-    </member>
-  </project>
-  <project>
     <email>sh@gentoo.org</email>
     <name>Gentoo Linux SuperH (sh) Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:SuperH</url>
