@@ -14583,7 +14583,7 @@ net-dialup/ueagle-atm 1.1-r3: Firmware and configuration instructions for ADI 93
 net-dialup/ueagle4-atm 1.0: Firmware and configuration instructions for Eagle USB E4 ADSL Modem driver
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
-net-dialup/xl2tpd 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.3.6: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
+net-dialup/xl2tpd 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.3.6 1.3.9: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32 0.6.32-r1 0.6.32-r2 0.7: System which facilitates service discovery on a local network
 net-dns/bind 9.11.0_p5 9.11.1_p1 9.11.1_p3: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
@@ -15558,7 +15558,7 @@ net-news/liferea 1.12_rc3 1.12_rc3-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo
 net-news/newsbeuter 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 0.18.5 0.18.6 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
-net-news/rssguard 3.3.5: A tiny RSS and Atom feed reader
+net-news/rssguard 3.3.5 3.4.1 9999: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader
