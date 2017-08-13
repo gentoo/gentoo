@@ -16375,7 +16375,7 @@ sci-libs/adolc 2.4.1 2.5.0 2.5.2 2.6.2 2.6.3 9999: Automatic differentiation sys
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 6.200.3 7.800.2-r1 7.950.0 7.950.1: Streamlined C++ linear algebra library
-sci-libs/arpack 3.1.5 3.4.0: Arnoldi package library to solve large scale eigenvalue problems
+sci-libs/arpack 3.1.5 3.4.0 3.5.0: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/avogadrolibs 0.7.2-r1 0.8.0 0.9.0: Advanced molecule editor and visualizer 2 - libraries
