@@ -20,8 +20,7 @@
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
 # Drop stable ruby on sparc
 app-admin/augeas test
-app-doc/doxygen latex
-app-text/texlive extra
+app-text/texlive context l10n_ja
 sys-block/thin-provisioning-tools test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (13 Nov 2016)
