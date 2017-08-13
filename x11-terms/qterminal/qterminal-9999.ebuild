@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-0.7.1-no-liblxqt.patch" )
+PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
 
 pkg_preinst() {
 	gnome2_icon_savelist
