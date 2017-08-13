@@ -774,6 +774,7 @@ app-emulation/wine-any
 >=net-irc/polari-3.23
 >=net-misc/rygel-0.33
 >=games-puzzle/swell-foop-3.23
+>=gnome-extra/gnome-tweak-tool-3.23
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2017)
 # Mask experimental software
