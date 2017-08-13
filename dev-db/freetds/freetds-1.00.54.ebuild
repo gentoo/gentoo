@@ -53,8 +53,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --with-tdsver=7.4 )
-	myconf+=( $(use_with iodbc iodbc "${EPREFIX}/usr") )
+	local myconf=( $(use_with iodbc iodbc "${EPREFIX}/usr") )
 	myconf+=( $(use_with odbc unixodbc "${EPREFIX}/usr") )
 	myconf+=( $(use_enable iconv libiconv) )
 	myconf+=( $(use_with iconv libiconv-prefix "${EPREFIX}/usr") )
