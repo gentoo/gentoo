@@ -9971,7 +9971,7 @@ dev-ruby/sshkit 1.11.4 1.11.5 1.12.0 1.13.1 1.14.0: SSHKit makes it easy to writ
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
 dev-ruby/stomp 1.3.4 1.4.3 1.4.4: Ruby bindings for the stomp messaging protocol
-dev-ruby/stringex 2.6.1 2.7.0 2.7.1: Extensions for Ruby's String class
+dev-ruby/stringex 2.7.0 2.7.1: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1 1.2.1 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.4: Drop-in replacement for the standard Logger, that logs to the syslog
