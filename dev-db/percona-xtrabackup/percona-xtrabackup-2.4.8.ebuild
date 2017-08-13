@@ -11,15 +11,14 @@ SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/s
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	app-arch/lz4:0=
 	app-editors/vim-core
 	>=dev-libs/boost-1.59.0:=
 	dev-libs/libaio
-	dev-libs/libedit
+	<dev-libs/libedit-20170329.3.1
 	dev-libs/libev
 	dev-libs/libevent:0=
 	dev-libs/libgcrypt:0=
@@ -27,7 +26,9 @@ DEPEND="
 	dev-python/sphinx
 	net-misc/curl
 	sys-libs/zlib"
-RDEPEND="${DEPEND}
+
+RDEPEND="
+	${DEPEND}
 	!dev-db/xtrabackup-bin
 	dev-perl/DBD-mysql"
 
@@ -41,8 +42,12 @@ src_prepare() {
 
 	# remove bundled lz4, boost, libedit, libevent, zlib
 	# just to be safe...
-	rm -r extra/lz4 include/boost_1_59_0 \
-		cmd-line-utils/libedit libevent zlib || die
+	rm -rv \
+		extra/lz4 \
+		include/boost_1_59_0 \
+		cmd-line-utils/libedit \
+		libevent \
+		zlib || die
 }
 
 src_configure() {
@@ -61,6 +66,8 @@ src_configure() {
 		-DWITH_ZLIB=system
 		-DWITH_PIC=ON
 	)
+
+	local CMAKE_BUILD_TYPE="Release"
 	cmake-utils_src_configure
 }
 
