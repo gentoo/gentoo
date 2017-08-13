@@ -11,7 +11,7 @@ SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/s
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -19,7 +19,7 @@ DEPEND="
 	app-editors/vim-core
 	>=dev-libs/boost-1.59.0:=
 	dev-libs/libaio
-	dev-libs/libedit
+	<dev-libs/libedit-20170329.3.1
 	dev-libs/libev
 	dev-libs/libevent:0=
 	dev-libs/libgcrypt:0=
@@ -61,6 +61,8 @@ src_configure() {
 		-DWITH_ZLIB=system
 		-DWITH_PIC=ON
 	)
+
+	local CMAKE_BUILD_TYPE="Release"
 	cmake-utils_src_configure
 }
 
