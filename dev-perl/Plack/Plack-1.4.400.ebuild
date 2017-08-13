@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="test minimal examples"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.900-network-testing.patch"
