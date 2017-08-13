@@ -5093,7 +5093,7 @@ dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, re
 dev-libs/tinyxml 2.6.2-r2: Simple and small C++ XML parser
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1 5.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded web application server extensible with C++
-dev-libs/totem-pl-parser 3.10.7: Playlist parsing library
+dev-libs/totem-pl-parser 3.10.7 3.10.8: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tut 2013.12.18 2016.12.19: C++ Template Unit Test Framework
 dev-libs/tvision 2.1.0_pre2-r3 2.1.0_pre2-r4: Text User Interface that implements the well known CUA widgets
@@ -14089,7 +14089,7 @@ media-video/camorama 0.19-r2: A webcam application featuring various image filte
 media-video/ccextractor 0.59 0.68 0.69 0.85-r1: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.22.1: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.22.1 3.24.0: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
@@ -14220,7 +14220,7 @@ media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/syncplay 1.4.0 9999: Client/server to synchronize media playback
 media-video/tcmplex-panteltje 0.4.7 0.4.7-r1: Audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
-media-video/totem 3.22.1-r1: Media player for GNOME
+media-video/totem 3.22.1-r1 3.24.0: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
@@ -17876,7 +17876,7 @@ sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 
 sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.55_p61 3.18.59_p65 4.1.39_p47 4.1.40_p48 4.4.70_p83 4.4.75_p88 4.9.30_p21 4.9.33_p23 4.9.35_p25 4.11.5_p1 4.11.8_p4 4.11.8_p5 4.11.9_p7: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.18.59_p65 4.1.40_p48 4.1.42_p49 4.4.75_p88 4.4.79_p92 4.9.35_p25 4.9.40_p30 4.11.8_p5 4.11.9_p7 4.11.12_p9: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.91 3.4.113 3.10.107 3.16.46 4.1.43 4.4.81 4.9.42 4.12.6: Full sources for the Linux kernel
