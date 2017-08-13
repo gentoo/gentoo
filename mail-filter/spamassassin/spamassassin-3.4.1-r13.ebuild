@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit perl-functions systemd toolchain-funcs
+inherit perl-functions systemd toolchain-funcs user
 
 MY_P="Mail-SpamAssassin-${PV//_/-}"
 S="${WORKDIR}/${MY_P}"
@@ -83,6 +83,7 @@ PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7265.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231-extra.patch"
+	"${FILESDIR}/spamassassin-3.4.1-bug_7404.patch"
 	"${FILESDIR}/spamassassin-3.4.1-perl526.patch"
 )
 
@@ -153,31 +154,14 @@ src_install () {
 		|| die "failed to disable plugins by default"
 
 	# Add the init and config scripts.
-	newinitd "${FILESDIR}/3.4.1-spamd.init" spamd
+	newinitd "${FILESDIR}/3.4.1-spamd.init-r1" spamd
 	newconfd "${FILESDIR}/3.4.1-spamd.conf" spamd
 
 	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 
-	# The sed statements in the following conditionals alter the init
-	# script to depend (or not) on the database being running before
-	# spamd is started. The sed commands either enable the dependency,
-	# or delete the line entirely.
-	if use postgres; then
-		sed -i -e 's:@USEPOSTGRES@::' "${ED}/etc/init.d/spamd" || die
-
-		dodoc sql/*_pg.sql
-	else
-		sed -i -e '/@USEPOSTGRES@/d' "${ED}/etc/init.d/spamd" || die
-	fi
-
-	if use mysql; then
-		sed -i -e 's:@USEMYSQL@::' "${ED}/etc/init.d/spamd" || die
-
-		dodoc sql/*_mysql.sql
-	else
-		sed -i -e '/@USEMYSQL@/d' "${ED}/etc/init.d/spamd" || die
-	fi
+	use postgres && dodoc sql/*_pg.sql
+	use mysql && dodoc sql/*_mysql.sql
 
 	dodoc NOTICE TRADEMARK CREDITS UPGRADE USAGE sql/README.bayes \
 		sql/README.awl procmailrc.example sample-nonspam.txt \
@@ -230,6 +214,12 @@ src_test() {
 	# set in SATest.pm.
 	export SPAMD_HOST=disabled
 	default
+}
+
+pkg_preinst() {
+	# The spamd daemon runs as this user. Use a real home directory so
+	# that it can hold SA configuration.
+	enewuser spamd -1 -1 /home/spamd
 }
 
 pkg_postinst() {
