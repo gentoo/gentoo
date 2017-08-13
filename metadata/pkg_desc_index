@@ -13186,7 +13186,7 @@ media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LAD
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 17.1.4 17.1.5 17.1.6 17.2.0_rc3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 17.1.4 17.1.5 17.1.6 17.2.0_rc3 17.2.0_rc4 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2 6.4.1-r3: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -16510,7 +16510,7 @@ sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
-sci-libs/libsc 1.0-r1 1.1-r1 9999: Support for parallel scientific applications
+sci-libs/libsc 1.0-r1 1.1-r1 2.0 9999: Support for parallel scientific applications
 sci-libs/libsigrok 0.3.0 0.4.0 0.5.0 9999: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.3.0 0.4.0 0.4.1 0.5.0 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.1 1.8.5-r1: General framework for developing spatial indices
@@ -16554,7 +16554,7 @@ sci-libs/openfoam-bin 1.6: Open Field Operation and Manipulation - CFD Simulatio
 sci-libs/openlibm 0.5.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.3.1-r1 9999: Kinematics and Dynamics Library (KDL)
-sci-libs/p4est 1.0 1.1 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
+sci-libs/p4est 1.0 1.1 2.0 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
 sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
