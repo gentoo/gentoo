@@ -13,6 +13,7 @@ IUSE="debug bittorrent mms sqlite"
 
 RDEPEND="
 	app-crypt/qca:2[qt4]
+	kde-frameworks/kdelibs:4[plasma(+)]
 	bittorrent? ( >=net-libs/libktorrent-1.0.3:4 )
 	mms? ( media-libs/libmms )
 	sqlite? ( dev-db/sqlite:3 )
