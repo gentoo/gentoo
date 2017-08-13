@@ -4434,7 +4434,7 @@ dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
 dev-java/sun-jacc-api 20070102: Java Authorization Contract for Containers
-dev-java/sun-jaf 1.1.1: Sun's JavaBeans Activation Framework (JAF)
+dev-java/sun-jaf 1.1.1 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
 dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1 1.5.2: Sun Java3D API Core
 dev-java/sun-javamail 1.4.3-r1: A Java-based framework to build multiplatform mail and messaging applications
@@ -14639,7 +14639,7 @@ net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
 net-dns/unbound 1.5.1-r2 1.5.10 1.6.3 1.6.4: A validating, recursive and caching DNS resolver
-net-dns/updatedd 2.6 2.6-r4 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
+net-dns/updatedd 2.6 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.1f_rc1: Arno's iptables firewall script
@@ -17862,7 +17862,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 4.1.35 4.1.37 4.1.38 4.1.38-r1 4.1.42 4.1.43 4.4.52 4.4.75 4.4.76 4.4.77 4.4.78 4.4.79 4.4.80 4.4.81 4.9.6-r1 4.9.16 4.9.34 4.9.35 4.9.36 4.9.37 4.9.38 4.9.39 4.9.41 4.9.42 4.12.0 4.12.1 4.12.2 4.12.3 4.12.4 4.12.5 4.12.6: Full sources including the Gentoo patchset for the 4.12 kernel tree
+sys-kernel/gentoo-sources 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.104 3.10.104-r1 3.10.105 3.10.105-r1 3.10.106 3.10.107 4.1.35 4.1.37 4.1.38 4.1.38-r1 4.1.42 4.1.43 4.4.52 4.4.75 4.4.76 4.4.77 4.4.78 4.4.79 4.4.80 4.4.81 4.4.82 4.9.6-r1 4.9.16 4.9.34 4.9.35 4.9.36 4.9.37 4.9.38 4.9.39 4.9.41 4.9.42 4.9.43 4.12.0 4.12.1 4.12.2 4.12.3 4.12.4 4.12.5 4.12.6 4.12.7: Full sources including the Gentoo patchset for the 4.12 kernel tree
 sys-kernel/git-sources 4.13_rc1 4.13_rc2 4.13_rc3 4.13_rc4: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
