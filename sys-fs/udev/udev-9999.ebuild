@@ -9,14 +9,8 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	patchset=
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
-	if [[ -n "${patchset}" ]]; then
-		SRC_URI+="
-			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
-			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
-	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -92,22 +86,17 @@ src_prepare() {
 		fi
 	fi
 
-	# backport some patches
-	if [[ -n "${patchset}" ]]; then
-		eapply "${WORKDIR}"/patch
-	fi
-
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
 	ACTION=="add", SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
 	ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
 	EOF
 
-	# change rules back to group uucp instead of dialout for now wrt #454556
-	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
+	local PATCHES=(
+		"${FILESDIR}/234-uucp-group.patch"
+	)
 
-	# apply user patches
-	eapply_user
+	default
 
 	if ! use elibc_glibc; then #443030
 		echo '#define secure_getenv(x) NULL' >> config.h.in
