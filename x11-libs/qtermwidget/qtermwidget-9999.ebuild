@@ -13,12 +13,13 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+"
+DEPEND="${DEPEND}
 	dev-util/lxqt-build-tools
 "
-RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
