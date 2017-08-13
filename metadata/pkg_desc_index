@@ -16331,7 +16331,7 @@ sci-geosciences/mapserver 7.0.3 7.0.5: Development environment for building spat
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.3-r1 9999: Qt based map editor for the openstreetmap.org project
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
-sci-geosciences/opencpn 4.0.0-r1 4.2.0 4.4.0 4.6.1: a free, open source software for marine navigation
+sci-geosciences/opencpn 4.0.0-r1 4.2.0 4.4.0 4.6.1 4.8.0: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 1.1-r1 1.31 2.1 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-climatology 1.0-r1 9999: Climatology Plugin for OpenCPN (includes CL-DATA)
 sci-geosciences/opencpn-plugin-dr 1.1 9999: Dead Reckoning Positions Plugin for OpenCPN
