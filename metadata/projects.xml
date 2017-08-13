@@ -2734,6 +2734,11 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project:PostgreSQL</url>
     <description>This project is focused on maintaining ebuilds and utilities that are closely tied to PostgreSQL including PostgreSQL itself.</description>
     <member>
+      <email>mjo@gentoo.org</email>
+      <name>Michael Orlitzky</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>patrick@gentoo.org</email>
       <name>Patrick Lauer</name>
       <role>Member</role>
