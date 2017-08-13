@@ -14,4 +14,5 @@ IUSE="debug"
 
 RDEPEND="
 	app-misc/lirc
+	kde-frameworks/kdelibs:4[plasma(+)]
 "
