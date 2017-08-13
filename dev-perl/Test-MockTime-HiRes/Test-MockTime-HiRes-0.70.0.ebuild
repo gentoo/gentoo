@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Replace actual time with simulated high resolution time"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
