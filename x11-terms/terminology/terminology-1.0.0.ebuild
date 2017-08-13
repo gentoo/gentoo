@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_URI_APPEND="${PN}"
 else
 	SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 inherit enlightenment
