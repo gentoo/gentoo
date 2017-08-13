@@ -15,8 +15,8 @@ IUSE="test"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.44.0:2[dbus]
-	>=x11-libs/gtk+-3.12.13:3
+	>=dev-libs/glib-2.46.0:2[dbus]
+	>=x11-libs/gtk+-3.22.13:3
 	>=net-libs/webkit-gtk-2.15.90:4=
 	>=x11-libs/cairo-1.2
 	>=app-crypt/gcr-3.5.5:=
