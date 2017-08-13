@@ -7,6 +7,8 @@ CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
 KDE_HANDBOOK="optional"
 OPENGL_REQUIRED="optional"
+QT3SUPPORT_REQUIRED="true"
+SQL_REQUIRED="always"
 WEBKIT_REQUIRED="optional"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
