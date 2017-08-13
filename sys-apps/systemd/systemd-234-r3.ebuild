@@ -149,6 +149,8 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/234-0001-path-lookup-look-for-generators-in-usr-lib-systemd-s.patch
+		"${FILESDIR}"/234-0002-cryptsetup-fix-infinite-timeout-6486.patch
+		"${FILESDIR}"/234-0003-resolved-make-sure-idn2-conversions-are-roundtrippab.patch
 	)
 
 	if ! use vanilla; then
