@@ -20,7 +20,7 @@ inherit ruby-fakegem
 DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext package"
 HOMEPAGE="http://www.yotabanana.com/hiki/ruby-gettext.html"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc"
 IUSE="doc test"
 SLOT="0"
 LICENSE="Ruby"
