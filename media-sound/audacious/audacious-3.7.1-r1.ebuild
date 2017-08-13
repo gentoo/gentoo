@@ -41,6 +41,10 @@ DEPEND="${RDEPEND}
 
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-c++11-throw-in-dtors.patch
+}
+
 src_unpack() {
 	default
 	if use gtk3 ; then
