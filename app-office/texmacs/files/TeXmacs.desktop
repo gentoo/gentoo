@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=texmacs
-Icon=/usr/share/TeXmacs/misc/pixmaps/TeXmacs.xpm
-Name=TeXmacs
-GenericName=Scientific Word Processor
-Comment=A scientific word processing application.
-Categories=Office;WordProcessor;
