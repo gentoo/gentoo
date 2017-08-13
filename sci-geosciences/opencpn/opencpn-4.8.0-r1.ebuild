@@ -6,10 +6,12 @@ EAPI=5
 WX_GTK_VER="3.0"
 inherit cmake-utils wxwidgets
 
+DOC_VERSION="4.1.1329.1"
+
 DESCRIPTION="a free, open source software for marine navigation"
 HOMEPAGE="http://opencpn.org/"
 SRC_URI="https://github.com/OpenCPN/OpenCPN/archive/v${PV}.tar.gz -> ${P}.tar.gz
-doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/${PN}/+files/${PN}-doc_4.0.0.orig.tar.xz )
+doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/${PN}/+files/${PN}-doc_${DOC_VERSION}.orig.tar.xz )
 "
 
 LICENSE="GPL-2+"
@@ -56,6 +58,6 @@ src_install() {
 
 pkg_postinst() {
 	if use doc; then
-		einfo "Documentation is available at file:///usr/share/doc/${P}/html/help_en_US.html"
+		einfo "Documentation is available at file:///usr/share/doc/${PF}/html/help_en_US.html"
 	fi
 }
