@@ -27,10 +27,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 }
