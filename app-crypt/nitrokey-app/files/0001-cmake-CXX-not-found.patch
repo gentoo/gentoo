@@ -1,0 +1,14 @@
+--- a/libnitrokey/CMakeLists.txt	2017-08-18 01:22:26.815911276 +0200
++++ b/libnitrokey/CMakeLists.txt	2017-08-18 01:23:13.776069408 +0200
+@@ -1,11 +1,6 @@
+ cmake_minimum_required(VERSION 3.1)
+ IF (UNIX)
+     OPTION(USE_CLANG "Use CLang" FALSE)
+-    IF(USE_CLANG)
+-        set(CMAKE_CXX_COMPILER "/usr/bin/clang++" CACHE string "clang++ compiler" FORCE)
+-    ELSE()
+-        set(CMAKE_CXX_COMPILER)
+-    ENDIF()
+     OPTION(ADD_ASAN "Use ASAN to show memory issues" FALSE)
+     OPTION(ADD_TSAN "Use TSAN to show thread issues" FALSE)
+     IF(ADD_ASAN)
