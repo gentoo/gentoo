@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 CPPUNIT_REQUIRED="optional"
+SQL_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Common library for KDE PIM apps"
