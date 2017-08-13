@@ -21,7 +21,9 @@ RDEPEND="
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/lxqt-build-tools
+"
 
 PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
 
