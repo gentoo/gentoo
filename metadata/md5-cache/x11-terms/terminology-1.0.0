@@ -4,11 +4,11 @@ DESCRIPTION=Feature rich terminal emulator using the Enlightenment Foundation Li
 EAPI=5
 HOMEPAGE=https://www.enlightenment.org/p.php?p=about/terminology
 IUSE=nls doc
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-libs/efl-1.18 nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=https://download.enlightenment.org/rel/apps/terminology/terminology-1.0.0.tar.xz
 _eclass_exported_funcs=src_unpack:enlightenment src_prepare:enlightenment src_configure:enlightenment src_compile:enlightenment src_install:enlightenment
 _eclasses_=enlightenment	ac1fc335a7f44c04309a9f4aae403165	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=4b88f351ea3aec9269362d3f3446edb9
+_md5_=da0545956619d7cc453b78c9f9e21346
