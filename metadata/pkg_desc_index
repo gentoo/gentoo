@@ -4848,7 +4848,7 @@ dev-libs/libgcrypt 1.5.6-r101 1.7.6 1.7.7 1.7.8 1.8.0-r1: General purpose crypto
 dev-libs/libgdata 0.17.8 0.17.8-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 0.26.0 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.24.4 0.25.0: Git library for GLib
+dev-libs/libgit2-glib 0.24.4 0.25.0 0.26.0: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1 1.2.2: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
@@ -11723,7 +11723,7 @@ gnome-extra/gnome-shell-extensions-topicons-plus 20: Moves legacy tray icons to 
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.22.7: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.22.2 3.24.0: The Gnome System Monitor
-gnome-extra/gnome-tweak-tool 3.22.0: Tool to customize GNOME 3 options
+gnome-extra/gnome-tweak-tool 3.22.0 3.24.1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.22.0 3.24.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
@@ -15426,7 +15426,7 @@ net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r3: ARIN rwhois daemon
-net-misc/rygel 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.32.1 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1 2.0.0: Command line client for Amazon S3
 net-misc/s6-networking 2.2.1.0 2.3.0.0 2.3.0.1: suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
@@ -16308,7 +16308,7 @@ sci-geosciences/gebabbel 0.4: Qt-Frontend to load and convert gps tracks with gp
 sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
-sci-geosciences/gnome-maps 3.22.2: A map application for GNOME
+sci-geosciences/gnome-maps 3.22.2 3.24.3: A map application for GNOME
 sci-geosciences/googleearth 7.1.8.3036: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
@@ -17061,7 +17061,7 @@ sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.22.1: Disk usage browser for GNOME
+sys-apps/baobab 3.22.1 3.24.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.3 2.4.1-r1: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
@@ -17130,7 +17130,7 @@ sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.10 0.11 0.12 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 6 7 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.22.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.22.1 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.1 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022: Administrative interface for the grsecurity Role Based Access Control system
