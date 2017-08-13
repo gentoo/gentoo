@@ -19,6 +19,7 @@ DOCS=( AUTHORS ChangeLog NEWS README RELNOTES ToDo )
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
+	sys-fs/lvm2:0=
 	nls? ( virtual/libintl )
 	ssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd )"
