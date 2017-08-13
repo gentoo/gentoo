@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 LANGS="ar br cs de el es fr gl it lt nl pl pt ru si tr zh"
+SQL_REQUIRED="always"
 inherit qt4-r2
 
 MY_P="${PN}_${PV}"
@@ -20,7 +21,12 @@ IUSE=""
 for name in ${LANGS} ; do IUSE+="linguas_$name " ; done
 unset name
 
-DEPEND="kde-frameworks/kdelibs:4"
+DEPEND="
+	dev-qt/qtcore:4
+	dev-qt/qtdbus:4
+	dev-qt/qtgui:4
+	dev-qt/qtsql:4
+	kde-frameworks/kdelibs:4"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
