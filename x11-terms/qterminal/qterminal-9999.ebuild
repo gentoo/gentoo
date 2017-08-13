@@ -20,10 +20,9 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}
+	dev-util/lxqt-build-tools
 "
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${PN}-0.7.1-no-liblxqt.patch" )
 
 pkg_preinst() {
 	gnome2_icon_savelist
