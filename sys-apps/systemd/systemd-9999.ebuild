@@ -147,9 +147,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Bug 463376
-	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
-
 	local PATCHES=(
 	)
 
@@ -158,6 +155,7 @@ src_prepare() {
 			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 			"${FILESDIR}/228-noclean-tmp.patch"
 			"${FILESDIR}/233-systemd-user-pam.patch"
+			"${FILESDIR}/234-uucp-group.patch"
 		)
 	fi
 
