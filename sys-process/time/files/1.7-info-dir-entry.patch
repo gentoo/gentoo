@@ -1,5 +1,5 @@
---- time.info.old	2004-09-11 03:00:39.076871344 -0400
-+++ time.info	2004-09-11 03:00:40.394671008 -0400
+--- a/time.info
++++ b/time.info
 @@ -19,6 +19,9 @@
  manual into another language, under the above conditions for modified
  versions, except that this permission notice may be stated in a
