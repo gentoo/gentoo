@@ -324,10 +324,6 @@ app-pda/fusepod
 dev-util/lorax
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Security issues (#600524), upstream dead, removal in a month.
-dev-db/recutils
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
