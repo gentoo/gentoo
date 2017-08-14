@@ -31,7 +31,3 @@ media-gfx/iscan-plugin-gt-f500 minimal
 # <blubb@gentoo.org> (23 Oct 2006)
 # upstream forces sse2 on regardless of what the use flag is
 dev-libs/openssl cpu_flags_x86_sse2
-
-# Santiago M. Mola <coldwind@gentoo.org> (17 Sep 2008)
-# x86emu is the only backend available for amd64 (bug #224987)
-sys-apps/v86d x86emu
