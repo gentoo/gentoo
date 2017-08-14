@@ -14,8 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="gconf +gtk +gtk2 +introspection +libnotify nls +python test vala wayland +X"
-REQUIRED_USE="libnotify? ( gtk )
+IUSE="+X gconf +gtk +gtk2 +introspection +libnotify nls +python test vala wayland"
+REQUIRED_USE="gtk2? ( gtk )
+	libnotify? ( gtk )
 	python? (
 		${PYTHON_REQUIRED_USE}
 		gtk
@@ -29,6 +30,10 @@ CDEPEND="app-text/iso-codes
 	gnome-base/dconf
 	gnome-base/librsvg:2
 	sys-apps/dbus[X?]
+	X? (
+		x11-libs/libX11
+		!gtk? ( x11-libs/gtk+:2 )
+	)
 	gconf? ( gnome-base/gconf:2 )
 	gtk? (
 		x11-libs/gtk+:3
@@ -46,13 +51,6 @@ CDEPEND="app-text/iso-codes
 	wayland? (
 		dev-libs/wayland
 		x11-libs/libxkbcommon
-	)
-	X? (
-		|| (
-			x11-libs/gtk+:3
-			x11-libs/gtk+:2
-		)
-		x11-libs/libX11
 	)"
 RDEPEND="${CDEPEND}
 	python? (
@@ -104,6 +102,7 @@ src_configure() {
 	fi
 
 	econf \
+		$(use_enable X xim) \
 		$(use_enable gconf) \
 		$(use_enable gtk gtk3) \
 		$(use_enable gtk ui) \
@@ -114,7 +113,6 @@ src_configure() {
 		$(use_enable test tests) \
 		$(use_enable vala) \
 		$(use_enable wayland) \
-		$(use_enable X xim) \
 		--disable-emoji-dict \
 		"${python_conf[@]}"
 }
