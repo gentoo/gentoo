@@ -293,11 +293,6 @@ sys-power/yacpi
 sci-mathematics/cado-nfs
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#592992), dead since 2011 and nothing needs it in the tree.
-# Removal in a month.
-dev-libs/mozldap
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
