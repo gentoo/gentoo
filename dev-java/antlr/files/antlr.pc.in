@@ -1,9 +1,0 @@
-prefix=@prefix@
-exec_prefix=@exec_prefix@
-libdir=@libdir@
-
-
-Name: antlr
-Description: ANother Tool for Language Recognition
-Version: @VERSION@
-Libs: @libs@
