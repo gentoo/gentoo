@@ -358,11 +358,6 @@ dev-libs/qcodeedit
 app-misc/flasm
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Upstream is dead, lots of unresolved bug reports (#606154), it needs a
-# real maintainer taking care about fixing this. Removal in a month.
-sys-apps/v86d
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
