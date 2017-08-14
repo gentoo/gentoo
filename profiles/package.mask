@@ -283,11 +283,6 @@ net-irc/loqui
 dev-util/mutrace
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# QA issues, upstreams dead, multiple alternatives, bug #587284.
-# Removal in a month.
-sys-libs/libacpi
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
