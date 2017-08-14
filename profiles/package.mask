@@ -338,11 +338,6 @@ games-fps/warsow
 app-editors/mp
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Needs obsolete splitted dev-dotnet/gnome-sharp (#600960). Removal in a
-# month.
-media-video/gnome-subtitles
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
