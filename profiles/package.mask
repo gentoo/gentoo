@@ -303,11 +303,6 @@ dev-libs/mozldap
 net-analyzer/nepenthes
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Upstream inactive, not buildable with gcc6, not needed by anything in the
-# tree (#594668). Removal in a month.
-app-text/mbtpdfasm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
