@@ -320,10 +320,6 @@ net-p2p/litecoin-qt
 app-pda/fusepod
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not buildable for a long time (#597040). Removal in a month.
-dev-util/lorax
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
