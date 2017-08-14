@@ -249,11 +249,6 @@ sci-chemistry/icm
 net-vpn/kvpnc
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't work with any django version in the tree, tests fail, removal in a
-# month (#482498).
-dev-python/south
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't compile, upstream dead, removal in 2 months (#584296).
 dev-util/mutrace
 
