@@ -387,11 +387,6 @@ app-misc/relevation
 sci-astronomy/skychart
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Wrapper not generated properly (#616330), no reverse deps, removal in a
-# month.
-dev-python/colout
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
