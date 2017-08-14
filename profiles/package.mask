@@ -387,47 +387,6 @@ app-misc/relevation
 sci-astronomy/skychart
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Wrapper not generated properly (#616330), no reverse deps, removal in a
-# month.
-dev-python/colout
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Obsolete version in the tree, nothing needs this old library,
-# unmaintained, bug #616550. Removal in a month.
-net-libs/txtorcon
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with current perl (#616900). Removal in a month.
-www-client/w3mir
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Relies on no longer available dependencies (#617236) and many other
-# obsolete libs. Removal in a month.
-dev-util/pida
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with guile2, bug #617794. Removal in a month.
-net-irc/bobotpp
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Fails to build (#618950), dead for a long time. Removal in a month.
-net-p2p/dclib
-net-p2p/valknut
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Fails to build (#619210), dead and no reverse deps. Removal in a month.
-dev-db/lib_mysqludf_xql
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with latest imagemagick, upstream dead for ages (#619454).
-# Removal in a month.
-media-plugins/vdr-tvguide
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with recent python versions (#619998). Removal in a month.
-net-misc/leapcast
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
