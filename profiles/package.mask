@@ -298,11 +298,6 @@ sci-mathematics/cado-nfs
 dev-libs/mozldap
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with gcc6 (#594390), also removed from other distributions
-# due it being unmaintained and buggy. Removal in a month.
-net-analyzer/nepenthes
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
