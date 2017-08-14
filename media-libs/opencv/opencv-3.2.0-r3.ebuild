@@ -95,6 +95,10 @@ DEPEND="${RDEPEND}
 	eigen? ( dev-cpp/eigen:3 )
 	java?  ( >=virtual/jdk-1.6 )"
 
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/opencv2/cvconfig.h
+)
+
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-gles.patch"
 	"${FILESDIR}/${PN}-3.1.0-java-magic.patch"
