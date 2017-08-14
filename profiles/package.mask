@@ -448,11 +448,6 @@ net-wireless/adm8211
 net-wireless/orinoco-usb
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# More than 5 years dead, relies on a lot of dead/deprecated libraries, bug
-# #622008. Removal in a month.
-dev-util/a8
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
