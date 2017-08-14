@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit cdrom eutils gnome2-utils multilib-build
@@ -17,21 +17,12 @@ SRC_URI="https://gate.justsystems.com/download/atok/up/lin/${MY_UPDATE_P}.tar.gz
 	https://gate.justsystems.com/download/zipcode/up/lin/${MY_ZIPCODE_P}.tgz"
 
 LICENSE="ATOK MIT"
-
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
-
 RESTRICT="strip mirror"
 
-RDEPEND="!app-i18n/atokx2
-	!dev-libs/libiiimcf
-	!dev-libs/csconv
-	!app-i18n/iiimgcf
-	!dev-libs/libiiimp
-	!app-i18n/iiimsf
-	!app-i18n/iiimxcf
-	dev-libs/atk
+RDEPEND="dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libxml2:2
 	media-libs/fontconfig
@@ -78,29 +69,28 @@ RDEPEND="!app-i18n/atokx2
 		>=x11-libs/libdrm-2.4.46[abi_x86_32(-)]
 		>=x11-libs/pangox-compat-0.0.2[abi_x86_32(-)]
 	)"
+S="${WORKDIR}"
 
 EMULTILIB_PKG="true"
 
-S="${WORKDIR}"
-
 pkg_setup() {
-	if ! cdrom_get_cds atokx3index ; then
+	if ! cdrom_get_cds ${PN}index ; then
 		die "Please mount ATOK for Linux CD-ROM or set CD_ROOT variable to the directory containing ATOK X3 for Linux."
 	fi
 
-	QA_PREBUILT="opt/atokx3/lib/server/*
-		opt/atokx3/lib/client/xaux/*
-		opt/atokx3/lib/client/*
-		opt/atokx3/bin/*
+	QA_PREBUILT="opt/${PN}/lib/server/*
+		opt/${PN}/lib/client/xaux/*
+		opt/${PN}/lib/client/*
+		opt/${PN}/bin/*
 		usr/libexec/*
 		usr/bin/*
 		usr/$(get_libdir)/*
 		usr/$(get_libdir)/gtk-2.0/immodules/*
-		usr/$(get_libdir)/iiim/le/atokx3/64/*
+		usr/$(get_libdir)/iiim/le/${PN}/64/*
 		usr/$(ABI=x86 get_libdir)/*
 		usr/$(ABI=x86 get_libdir)/gtk-2.0/immodules/*
 		usr/$(ABI=x86 get_libdir)/iiim/*
-		usr/$(ABI=x86 get_libdir)/iiim/le/atokx3/*"
+		usr/$(ABI=x86 get_libdir)/iiim/le/${PN}/*"
 }
 
 src_unpack() {
@@ -118,7 +108,7 @@ src_unpack() {
 	#	IIIMF/iiimf-notuse-trunk_r3104-js*.i386.tar.gz
 
 	if use abi_x86_64 ; then
-		targets="${targets}
+		targets+="
 			IIIMF/iiimf-client-lib-64-trunk_r3104-js*.x86_64.tar.gz
 			IIIMF/iiimf-gtk-64-trunk_r3104-js*.x86_64.tar.gz
 			IIIMF/iiimf-protocol-lib-64-trunk_r3104-js*.x86_64.tar.gz
@@ -128,19 +118,19 @@ src_unpack() {
 		#	IIIMF/iiimf-notuse-64-trunk_r3104-js*.x86_64.tar.gz
 	fi
 
-	targets="${targets} ATOK/atokxup-20.0-*.0.0.i386.tar.gz"
+	targets+=" ATOK/atokxup-20.0-*.0.0.i386.tar.gz"
 
 	unpack ${MY_UPDATE_P}.tar.gz
 
+	local i
 	for i in ${targets} ; do
-		if [ -f "${S}"/${MY_UPDATE_P}/bin/${i} ] ; then
+		if [[ -f "${S}"/${MY_UPDATE_P}/bin/${i} ]] ; then
 			einfo "unpack" $(basename "${S}"/${MY_UPDATE_P}/bin/${i})
 			tar xzf "${S}"/${MY_UPDATE_P}/bin/${i} || die "Failed to unpack ${i}"
-		elif [ -f "${CDROM_ROOT}"/bin/tarball/${i} ] ; then
+		elif [[ -f "${CDROM_ROOT}"/bin/tarball/${i} ]] ; then
 			einfo "unpack" $(basename "${CDROM_ROOT}"/bin/tarball/${i})
 			tar xzf "${CDROM_ROOT}"/bin/tarball/${i} || die "Failed to unpack ${i}"
 		else
-			eerror "${i} not found."
 			die "${i} not found."
 		fi
 	done
@@ -152,27 +142,27 @@ src_prepare() {
 	if use abi_x86_64 ; then
 		local lib32="$(ABI=x86 get_libdir)"
 		local lib64="$(get_libdir)"
-		if [ "lib" != "${lib32}" ] ; then
+		if [[ "lib" != "${lib32}" ]] ; then
 			mv usr/lib "usr/${lib32}" || die
 		fi
-		if [ "lib64" != "${lib64}" ] ; then
+		if [[ "lib64" != "${lib64}" ]] ; then
 			mv usr/lib64 "usr/${lib64}" || die
 		fi
-		mkdir -p "usr/${lib64}/iiim/le/atokx3" || die
-		mv "usr/${lib32}/iiim/le/atokx3/64" "usr/${lib64}/iiim/le/atokx3/64" || die
-		rm "usr/${lib32}/iiim/le/atokx3/amd64" || die
-		sed -e "s:/usr/lib:/usr/${lib64}:" \
-			"usr/${lib32}/libiiimcf.la" > "usr/${lib64}/libiiimcf.la" || die
-		sed -e "s:/usr/lib:/usr/${lib64}:" \
-			"usr/${lib32}/libiiimp.la" > "usr/${lib64}/libiiimp.la" || die
+		mkdir -p "usr/${lib64}/iiim/le/${PN}" || die
+		mv "usr/${lib32}/iiim/le/${PN}/64" "usr/${lib64}/iiim/le/${PN}/64" || die
+		rm "usr/${lib32}/iiim/le/${PN}/amd64" || die
+		sed -e "s:/usr/lib:/usr/${lib64}:" "usr/${lib32}/libiiimcf.la" > "usr/${lib64}/libiiimcf.la" || die
+		sed -e "s:/usr/lib:/usr/${lib64}:" "usr/${lib32}/libiiimp.la" > "usr/${lib64}/libiiimp.la" || die
 		sed -i -e "s:/usr/lib:/usr/${lib32}:" "usr/${lib32}/libiiimcf.la" || die
 		sed -i -e "s:/usr/lib:/usr/${lib32}:" "usr/${lib32}/libiiimp.la" || die
 	fi
 }
 
 src_install() {
-	dodoc "${MY_UPDATE_P}/README_UP2.txt"
-	rm -rf "${MY_UPDATE_P}"
+	DOCS=( ${MY_UPDATE_P}/README_UP2.txt "${CDROM_ROOT}"/doc/atok.pdf )
+	HTML_DOCS=( "${CDROM_ROOT}"/readme.html )
+	einstalldocs
+	rm -rf ${MY_UPDATE_P}
 
 	cp -dpR * "${ED}" || die
 
@@ -180,29 +170,27 @@ src_install() {
 	if use abi_x86_64 ; then
 		local lib32="$(ABI=x86 get_libdir)"
 		local lib64="$(get_libdir)"
-		if [ "${lib32}" != "${lib64}" ] ; then
+		if [[ "${lib32}" != "${lib64}" ]] ; then
+			local f
 			for f in xiiimp.so xiiimp.a iiim-xbe xiiimp.so.2 xiiimp.so.2.0.0 iiimd-watchdog xiiimp.la ; do
 				dosym "${EPREFIX}/usr/${lib32}/iiim/${f}" "/usr/${lib64}/iiim/${f}"
 			done
-			for f in atokx3aux.so atokx3.so ; do
-				dosym "${EPREFIX}/usr/${lib32}/iiim/le/atokx3/${f}" "/usr/${lib64}/iiim/le/atokx3/${f}"
+			for f in ${PN}aux.so ${PN}.so ; do
+				dosym "${EPREFIX}/usr/${lib32}/iiim/le/${PN}/${f}" "/usr/${lib64}/iiim/le/${PN}/${f}"
 			done
-			dosym "${EPREFIX}/usr/${lib64}/iiim/le/atokx3/64" /usr/"${lib32}"/iiim/le/atokx3/64
-			dosym "${EPREFIX}/usr/${lib64}/iiim/le/atokx3/64" /usr/"${lib32}"/iiim/le/atokx3/amd64
+			dosym "${EPREFIX}/usr/${lib64}/iiim/le/${PN}/64" "/usr/${lib32}/iiim/le/${PN}/64"
+			dosym "${EPREFIX}/usr/${lib64}/iiim/le/${PN}/64" "/usr/${lib32}/iiim/le/${PN}/amd64"
 		fi
 	fi
 
 	sed -e "s:@EPREFIX@:${EPREFIX}:" "${FILESDIR}/xinput-iiimf" > "${T}/iiimf.conf" || die
 	insinto /etc/X11/xinit/xinput.d
 	doins "${T}/iiimf.conf"
-
-	dodoc "${CDROM_ROOT}"/doc/atok.pdf
-	dohtml "${CDROM_ROOT}"/readme.html
 }
 
 pkg_preinst() {
 	# bug #343325
-	if use abi_x86_64 && has_multilib_profile && [ -L "${EPREFIX}/usr/$(get_libdir)/iiim" ] ; then
+	if use abi_x86_64 && has_multilib_profile && [[ -L "${EPREFIX}/usr/$(get_libdir)/iiim" ]] ; then
 		rm -f "${EPREFIX}/usr/$(get_libdir)/iiim"
 	fi
 }
@@ -211,7 +199,7 @@ pkg_postinst() {
 	elog
 	elog "To use ATOK for Linux, you need to add following to .xinitrc or .xprofile:"
 	elog
-	elog ". /opt/atokx3/bin/atokx3start.sh"
+	elog ". /opt/${PN}/bin/${PN}start.sh"
 	elog
 	multilib_foreach_abi gnome2_query_immodules_gtk2
 }
