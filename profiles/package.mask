@@ -439,7 +439,6 @@ dev-python/pywebkitgtk
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for a long time and really buggy (#620772). Removal in a month.
 net-im/psimedia
-x11-themes/psi-themes
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
