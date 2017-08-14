@@ -458,7 +458,7 @@ dev-util/a8
 net-dialup/gtkterm
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#623562). Removal in a month.
+# Doesn't build (#623562). Removal in 2 months.
 media-plugins/vdr-skinnopacity
 
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
