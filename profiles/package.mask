@@ -235,10 +235,6 @@ x11-proto/evieext
 media-gfx/autotrace
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not usable, dead since 2003, removal in a month (#24706)
-app-mobilephone/esms
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
 net-vpn/kvpnc
