@@ -410,10 +410,6 @@ dev-util/pida
 net-irc/bobotpp
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Fails to build (#618950), dead for a long time. Removal in a month.
-net-p2p/dclib
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
