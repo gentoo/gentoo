@@ -439,16 +439,6 @@
     </member>
   </project>
   <project>
-    <email>cvs-utils@gentoo.org</email>
-    <name>Gentoo CVS Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:CVS</url>
-    <description>The Gentoo CVS Project maintains CVS (the version control system) and related tools.</description>
-    <member>
-      <email>robbat2@gentoo.org</email>
-      <name>Robin Johnson</name>
-    </member>
-  </project>
-  <project>
     <email>catalyst@gentoo.org</email>
     <name>Catalyst</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>

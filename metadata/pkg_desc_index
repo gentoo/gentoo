@@ -626,7 +626,6 @@ app-crypt/xca 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing
 app-crypt/xor-analyze 0.5 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 0.3.2-r1 0.3.3 0.4.0: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-manager-qt 0.3.0_p20170316: Cross-platform application for configuring any YubiKey over all USB transports
-app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
 app-crypt/zuluCrypt 5.1.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
@@ -3097,7 +3096,6 @@ dev-embedded/parapin 1.0.0: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
 dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ programmer
 dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port
-dev-embedded/pikdev 1.4.0: Simple graphic IDE for the development of PIC-based applications
 dev-embedded/pista 0.70: Commandline-driven interface to PICSTART+ PIC programmer
 dev-embedded/pk2-la 1.1-r2: Logic Analyzer and I/O Probe for the Microchip PICkit2
 dev-embedded/pk2cmd 1.20: An application for working with the Microchip PicKit2 PIC programmer
@@ -8587,7 +8585,6 @@ dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyvtk 0.4.74: Tools for manipulating VTK files in Python
 dev-python/pywavelets 0.5.1 0.5.2: Discrete Wavelet Transforms in Python
 dev-python/pywebdav 0.9.8-r1: WebDAV server written in Python
-dev-python/pywebkitgtk 1.1.8-r1: Python bindings for the WebKit GTK+ port
 dev-python/pyx 0.12.1-r1 0.13 0.14.1: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.5.5 0.6.0 9999: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
@@ -10243,7 +10240,6 @@ dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and com
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 3.4.5-r1: Open source data visualization and analysis for novice and experts.
-dev-util/a8 1.0: Lightweight IDE, embedding Vim, a terminal emulator, and a file browser
 dev-util/abi-compliance-checker 2.0 2.1 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
 dev-util/abootimg 20150323: Manipulate Android boot images.
@@ -10486,7 +10482,6 @@ dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 1.7.2 9999: A small build system similar to make
-dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61: NVIDIA CUDA Toolkit (compiler and friends)
@@ -14762,7 +14757,6 @@ net-im/pidgin 2.12.0: GTK Instant Messenger client
 net-im/pork 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 1.2 9999: Qt XMPP client
-net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
@@ -15195,7 +15189,6 @@ net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and fo
 net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 49.0.2623.40 55.0.2883.50 56.0.2924.51 57.0.2987.37: access remote computers via Chrome!
 net-misc/chrony 2.2.1 2.3 2.4.1 3.1 3.1-r1 3.2_pre1 9999: NTP client and server programs
-net-misc/clipgrab 3.5.6 3.6.5: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
@@ -15750,7 +15743,6 @@ net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard 0.0.20170810 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
@@ -15809,7 +15801,6 @@ net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
 net-wireless/openggsn 9999: Gateway GPRS Support Node
 net-wireless/orinoco-fwutils 0.3: ORiNOCO IEEE 802.11 wireless LAN firmware utilities
-net-wireless/orinoco-usb 9999: ORiNOCO IEEE 802.11 wireless LAN driver
 net-wireless/osmobts 9999: Osmocom BTS-Side code (Abis, scheduling)
 net-wireless/osmocom-bb 9999: OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware
 net-wireless/portapack-firmware 20170808: Firmware and scripts for controlling the Portapack from Sharebrained
@@ -19460,7 +19451,6 @@ x11-themes/oxygen-gtk 1.4.1 1.4.1-r1 1.4.6 1.4.6-r1: Official GTK+:2 port of KDE
 x11-themes/oxygen-molecule 3.2: Unified KDE and GTK+ theme
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
-x11-themes/psi-themes 0.9.3_p1-r2: Iconsets for Psi, a Qt4 Jabber Client
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
 x11-themes/qtcurve 1.8.18-r1 1.8.18_p20170601 1.9.0_rc1 9999: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus

@@ -5701,7 +5701,6 @@ net-im/psi:sql - Enable psi-new-history extras patch
 net-im/psi:webengine - Use dev-qt/qtwebengine instead of dev-qt/qtwebkit
 net-im/psi:webkit - Enable themed, html-based chatlogs
 net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
-net-im/psimedia:demo - build simple test application for the PsiMedia system
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface
 net-im/qtox:X - Adds support for X11
