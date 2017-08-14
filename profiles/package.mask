@@ -401,11 +401,6 @@ net-libs/txtorcon
 www-client/w3mir
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Relies on no longer available dependencies (#617236) and many other
-# obsolete libs. Removal in a month.
-dev-util/pida
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
