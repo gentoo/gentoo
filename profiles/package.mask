@@ -271,7 +271,6 @@ dev-util/febootstrap
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Buggy, doesn't compile for a long time, bug #575772. Removal in a month.
 dev-python/python-sipsimple
-net-voip/blink
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't compile, upstream dead, removal in 2 months (#584296).
