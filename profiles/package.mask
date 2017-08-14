@@ -367,11 +367,6 @@ sys-apps/v86d
 net-irc/irssi-xmpp
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't work with current flash-player versions, bug #609016. Removal in a
-# month.
-media-libs/hal-flash
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
