@@ -354,10 +354,6 @@ x11-terms/evilvte
 dev-libs/qcodeedit
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with gperf-3.1 (#604816). Removal in a month.
-app-misc/flasm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
