@@ -454,37 +454,12 @@ dev-util/a8
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
-# minicom. Removal in a month.
+# minicom. Removal in 2 months.
 net-dialup/gtkterm
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Relies on dead libs, it is not developed for ages, bug #622018. Removal in
-# a month.
-app-misc/gnomecatalog
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# No reverse deps, dead since 2000, bug #622154. Removal in a month.
-dev-libs/djb
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with new perl, not needed by anything in the tree (#623214,
-# #623216), removal in a month.
-app-backup/snapback2
-app-editors/XML-XSH2
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#623562). Removal in a month.
+# Doesn't build (#623562). Removal in 2 months.
 media-plugins/vdr-skinnopacity
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not needed in the tree, upstream stopped developing it long time ago, bug
-# #623706. Removal in a month.
-net-libs/dhcpcd-dbus
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with python >= 3.5 but neither needed by anything in the
-# tree anymore, bug #624670. Removal in a month.
-=dev-python/beautifulsoup-3.1.0.1-r2
 
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
