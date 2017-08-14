@@ -27,7 +27,7 @@ RDEPEND="${DEPEND} php_targets_php5-6? ( dev-php/pecl-ps:0[php_targets_php5-6] )
 PHP_EXT_ECONF_ARGS=""
 
 src_prepare() {
-	if use php_targets_php7-0 || use php_target_php7-1 || use php_targets_php7-2 ; then
+	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 ; then
 		php-ext-source-r3_src_prepare
 	else
 		default_src_prepare
@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_install() {
-	if use php_targets_php7-0 || use php_target_php7-1 || use php_targets_php7-2 ; then
+	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 ; then
 		php-ext-pecl-r3_src_install
 	fi
 }
