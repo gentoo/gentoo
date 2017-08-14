@@ -392,11 +392,6 @@ sci-astronomy/skychart
 dev-python/colout
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Obsolete version in the tree, nothing needs this old library,
-# unmaintained, bug #616550. Removal in a month.
-net-libs/txtorcon
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
