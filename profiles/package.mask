@@ -463,10 +463,6 @@ net-dialup/gtkterm
 app-misc/gnomecatalog
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# No reverse deps, dead since 2000, bug #622154. Removal in a month.
-dev-libs/djb
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't build (#623562). Removal in a month.
 media-plugins/vdr-skinnopacity
 
