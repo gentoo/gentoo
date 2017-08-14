@@ -10,8 +10,8 @@ Reported-by: Ed Wildgoose <gentoo@wildgooses.com>
 Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
 
 
---- configure.ac.orig	2012-05-26 22:45:42.753478198 +0000
-+++ configure.ac	2012-05-27 00:36:23.175844081 +0000
+--- a/configure.ac
++++ b/configure.ac
 @@ -47,6 +47,28 @@
  dnl Checks for optional library functions
  dnl -------------------------------------

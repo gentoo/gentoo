@@ -32,14 +32,14 @@ pinpointing the issue as well as confirming the fix.
 Gentoo-Bug-URL: https://bugs.gentoo.org/556456
 Reported-By: John Bowler <jbowler@acm.org>
 
---- a/rngd_entsource.c
-+++ b/rngd_entsource.c
-@@ -175,7 +175,7 @@
-  */
- int init_entropy_source(struct rng *ent_src)
- {
--	ent_src->rng_fd = open(ent_src->rng_name, O_RDONLY);
-+	ent_src->rng_fd = open(ent_src->rng_name, O_RDONLY | O_NOCTTY);
+--- rng-tools-rng-tools-6/rngd_entsource.c
++++ rng-tools-rng-tools-6/rngd_entsource.c
+@@ -162,7 +162,7 @@
+ 	struct sysfs_attribute *rngavail;
+ 	char buf[16];
+ 
+-	ent_src->rng_fd = open(ent_src->rng_fname, O_RDONLY);
++	ent_src->rng_fd = open(ent_src->rng_fname, O_RDONLY | O_NOCTTY);
  	if (ent_src->rng_fd == -1) {
+ 		message(LOG_DAEMON|LOG_DEBUG, "Unable to open file: %s", ent_src->rng_fname);
  		return 1;
- 	}
