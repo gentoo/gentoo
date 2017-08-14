@@ -14,8 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="+emoji gconf +gtk +gtk2 +introspection kde +libnotify nls +python test vala wayland +X"
+IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde +libnotify nls +python test vala wayland"
 REQUIRED_USE="emoji? ( gtk )
+	gtk2? ( gtk )
 	kde? ( gtk )
 	libnotify? ( gtk )
 	python? (
@@ -31,6 +32,10 @@ CDEPEND="app-text/iso-codes
 	gnome-base/dconf
 	gnome-base/librsvg:2
 	sys-apps/dbus[X?]
+	X? (
+		x11-libs/libX11
+		!gtk? ( x11-libs/gtk+:2 )
+	)
 	gconf? ( gnome-base/gconf:2 )
 	gtk? (
 		x11-libs/gtk+:3
@@ -49,13 +54,6 @@ CDEPEND="app-text/iso-codes
 	wayland? (
 		dev-libs/wayland
 		x11-libs/libxkbcommon
-	)
-	X? (
-		|| (
-			x11-libs/gtk+:3
-			x11-libs/gtk+:2
-		)
-		x11-libs/libX11
 	)"
 RDEPEND="${CDEPEND}
 	python? (
@@ -116,6 +114,7 @@ src_configure() {
 	fi
 
 	econf \
+		$(use_enable X xim) \
 		$(use_enable emoji emoji-dict) \
 		$(use_with emoji unicode-emoji-dir "${unicodedir}"/emoji) \
 		$(use_with emoji emoji-annotation-dir "${unicodedir}"/cldr/common/annotations) \
@@ -130,7 +129,6 @@ src_configure() {
 		$(use_enable test tests) \
 		$(use_enable vala) \
 		$(use_enable wayland) \
-		$(use_enable X xim) \
 		"${python_conf[@]}"
 }
 
