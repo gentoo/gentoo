@@ -1,5 +1,5 @@
 XIM=iiimx
-XIM_PROGRAM=@EPREFIX@/usr/bin/iiimx
+XIM_PROGRAM="@EPREFIX@/usr/bin/iiimx"
 XIM_ARGS=-iiimd
 GTK_IM_MODULE=iiim
 QT_IM_MODULE=xim
