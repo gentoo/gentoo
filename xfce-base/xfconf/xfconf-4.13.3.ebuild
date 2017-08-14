@@ -19,7 +19,9 @@ RDEPEND=">=dev-libs/glib-2.30:=
 	perl? (
 		dev-lang/perl:=[-build(-)]
 		dev-perl/glib-perl
-	)"
+	)
+	!<xfce-base/xfce4-panel-4.13.1
+	!<xfce-base/xfce4-settings-4.13.1"
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 	dev-util/intltool
