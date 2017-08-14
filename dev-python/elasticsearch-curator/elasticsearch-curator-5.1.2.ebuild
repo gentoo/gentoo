@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="curator"
-ES_VERSION="5.3.2"
+ES_VERSION="5.5.1"
 
 # tests fail in chroot
 # https://github.com/elastic/elasticsearch/issues/12018
@@ -60,7 +60,7 @@ python_test() {
 		"${ES}/config/elasticsearch.yml" || die
 
 	# start local instance of elasticsearch
-	"${ES}/bin/elasticsearch" -d -p "${PID}" -Edefault.path.repo=/ || die
+	"${ES}/bin/elasticsearch" -d -p "${PID}" -Epath.repo=/ || die
 
 	local i
 	local es_started=0
