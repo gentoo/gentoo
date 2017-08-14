@@ -363,10 +363,6 @@ app-misc/flasm
 sys-apps/v86d
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build anymore (#607482). Removal in a month.
-net-irc/irssi-xmpp
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
