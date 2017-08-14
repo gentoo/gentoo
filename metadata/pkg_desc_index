@@ -7608,7 +7608,7 @@ dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python 
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
-dev-python/elasticsearch-curator 4.2.6 4.3.1 5.0.4 5.1.1: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-curator 4.2.6 4.3.1 5.0.4 5.1.2: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 2.3.0 2.4.1 5.0.1 5.1.0 5.2.0 5.3.0 5.4.0: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
