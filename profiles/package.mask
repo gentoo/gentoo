@@ -329,7 +329,7 @@ dev-db/recutils
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
-# maintainer, removal in a month.
+# maintainer, removal in 2 months.
 dev-libs/libRocket
 games-fps/warsow
 
