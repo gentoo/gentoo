@@ -481,11 +481,6 @@ media-plugins/vdr-skinnopacity
 # #623706. Removal in a month.
 net-libs/dhcpcd-dbus
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with python >= 3.5 but neither needed by anything in the
-# tree anymore, bug #624670. Removal in a month.
-=dev-python/beautifulsoup-3.1.0.1-r2
-
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
