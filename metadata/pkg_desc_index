@@ -1506,7 +1506,7 @@ app-i18n/ibus-fbterm 1.0.1: ibus-fbterm is a input method for FbTerm based on iB
 app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
-app-i18n/ibus-libpinyin 1.6.92 1.7.4: ibus-libpinyin - pinyin chinese input for ibus using libpinyin
+app-i18n/ibus-libpinyin 1.6.92 1.7.4 1.9.0: Intelligent Pinyin engine based on libpinyin for IBus
 app-i18n/ibus-m17n 1.3.2 1.3.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese PinYin IMEngine for IBus Framework
 app-i18n/ibus-qt 1.3.1 1.3.3: Qt IBus library and Qt input method plugin
@@ -1539,7 +1539,7 @@ app-i18n/libcangjie 1.1 1.3: The library implementing the Cangjie input method
 app-i18n/libguess 1.1 1.2: A high-speed character set detection library
 app-i18n/libhangul 0.1.0: libhangul is a generalized and portable library for processing hangul
 app-i18n/libkkc 0.3.5: Japanese Kana Kanji conversion input method library
-app-i18n/libpinyin 0.8.0 1.0.0 1.3.0-r1: Library for Chinese pinyin input methods
+app-i18n/libpinyin 0.8.0 1.0.0 1.3.0-r1 2.0.92: Library to deal with pinyin
 app-i18n/librime 0.9.9 1.2 1.2.9: Rime Input Method Engine library
 app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
@@ -7510,6 +7510,7 @@ dev-python/dill 0.2.5: Serialize all of python (almost)
 dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/dirq 1.7.1: Python port of Perl module Directory::Queue
 dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
+dev-python/diskcache 2.8.3: Disk and file backed cache
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.4: Distribution utilities
 dev-python/distributed 1.17.1 1.18.0: Python library for distributed computation
@@ -7726,6 +7727,7 @@ dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi
 dev-python/geventhttpclient 1.3.1: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
 dev-python/ginga 2.6.4 2.6.5: Astronomical image toolkit for Python
+dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
 dev-python/git-python 1.0.2 2.0.6 2.1.5: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.4: GitDB is a pure-Python git object database
@@ -16740,7 +16742,7 @@ sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6-r1: X-ray diffraction/control image viewer in the context of data processing by XDS
 sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1-r1: Tool for extracting data points from graphs
-sci-visualization/yt 3.3.4 3.3.5: Astrophysical Simulation Analysis and Vizualization package
+sci-visualization/yt 3.3.5 3.4.0: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
 sec-policy/apparmor-profiles 2.11.0: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for abrt

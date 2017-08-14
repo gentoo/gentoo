@@ -7390,6 +7390,7 @@ sci-visualization/veusz:vo - Add Virtual Observatory tools via dev-python/astrop
 sci-visualization/visit:cgns - Builds the reader for the CFD General Notation System file format.
 sci-visualization/visit:silo - Adds support for reading .silo files.
 sci-visualization/visit:xdmf2 - Support for xdmf2 formated data.
+sci-visualization/yt:hub - Connect to the yt hub with dev-python/girder-client
 sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
 sec-policy/selinux-base:ubac - Enable User Based Access Control (UBAC) in the SELinux policy
