@@ -279,7 +279,7 @@ net-voip/blink
 net-irc/loqui
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't compile, upstream dead, removal in a month (#584296).
+# Doesn't compile, upstream dead, removal in 2 months (#584296).
 dev-util/mutrace
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
