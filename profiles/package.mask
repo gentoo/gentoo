@@ -467,10 +467,9 @@ app-misc/gnomecatalog
 dev-libs/djb
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with new perl, not needed by anything in the tree (#623214,
-# #623216), removal in a month.
+# Not compatible with new perl, not needed by anything in the tree (#623214),
+# removal in a month.
 app-backup/snapback2
-app-editors/XML-XSH2
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't build (#623562). Removal in a month.
