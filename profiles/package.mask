@@ -458,11 +458,6 @@ dev-util/a8
 net-dialup/gtkterm
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Relies on dead libs, it is not developed for ages, bug #622018. Removal in
-# a month.
-app-misc/gnomecatalog
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't build (#623562). Removal in a month.
 media-plugins/vdr-skinnopacity
 
