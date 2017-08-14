@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -20,5 +20,5 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~
 IUSE="doc test"
 
 each_ruby_test() {
-	${RUBY} -Ilib:bin:test:. -S testrb test || die
+	${RUBY} -Ilib:bin:test:. -S testrb-2 test || die
 }
