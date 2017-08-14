@@ -312,10 +312,6 @@ app-text/mbtpdfasm
 media-libs/embree
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with QT 5.7, bug #595452. Removal in a month.
-net-p2p/litecoin-qt
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
