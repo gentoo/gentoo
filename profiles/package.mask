@@ -428,11 +428,10 @@ media-plugins/vdr-tvguide
 net-misc/leapcast
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Rely on vulnerable webkit (#620698, #620728, #620816).
+# Rely on vulnerable webkit (#620698, #620728).
 # Removal in a month.
 dev-embedded/pikdev
 net-misc/clipgrab
-dev-util/ninja-ide
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
