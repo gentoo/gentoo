@@ -382,11 +382,6 @@ app-admin/kedpm
 app-misc/relevation
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Buggy and needs someone to take care of trying to bump it (#614860).
-# Removal in a month.
-sci-astronomy/skychart
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
