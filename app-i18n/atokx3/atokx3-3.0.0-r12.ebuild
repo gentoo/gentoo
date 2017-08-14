@@ -79,20 +79,6 @@ RDEPEND="!app-i18n/atokx2
 		>=x11-libs/pangox-compat-0.0.2[abi_x86_32(-)]
 	)"
 
-QA_PREBUILT="opt/atokx3/lib/server/*
-	opt/atokx3/lib/client/xaux/*
-	opt/atokx3/lib/client/*
-	opt/atokx3/bin/*
-	usr/libexec/*
-	usr/bin/*
-	usr/$(get_libdir)/*
-	usr/$(get_libdir)/gtk-2.0/immodules/*
-	usr/$(get_libdir)/iiim/le/atokx3/64/*
-	usr/$(ABI=x86 get_libdir)/*
-	usr/$(ABI=x86 get_libdir)/gtk-2.0/immodules/*
-	usr/$(ABI=x86 get_libdir)/iiim/*
-	usr/$(ABI=x86 get_libdir)/iiim/le/atokx3/*"
-
 EMULTILIB_PKG="true"
 
 S="${WORKDIR}"
@@ -101,6 +87,20 @@ pkg_setup() {
 	if ! cdrom_get_cds atokx3index ; then
 		die "Please mount ATOK for Linux CD-ROM or set CD_ROOT variable to the directory containing ATOK X3 for Linux."
 	fi
+
+	QA_PREBUILT="opt/atokx3/lib/server/*
+		opt/atokx3/lib/client/xaux/*
+		opt/atokx3/lib/client/*
+		opt/atokx3/bin/*
+		usr/libexec/*
+		usr/bin/*
+		usr/$(get_libdir)/*
+		usr/$(get_libdir)/gtk-2.0/immodules/*
+		usr/$(get_libdir)/iiim/le/atokx3/64/*
+		usr/$(ABI=x86 get_libdir)/*
+		usr/$(ABI=x86 get_libdir)/gtk-2.0/immodules/*
+		usr/$(ABI=x86 get_libdir)/iiim/*
+		usr/$(ABI=x86 get_libdir)/iiim/le/atokx3/*"
 }
 
 src_unpack() {
