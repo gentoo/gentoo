@@ -12691,7 +12691,7 @@ media-gfx/farbfeld 2 3 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
-media-gfx/feh 2.18.3 2.19 2.19.1: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 2.18.3 2.19 2.19.1 2.19.2: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.4_rc3-r2: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.0.1 9999: Tools and a library for creating fractal flames
