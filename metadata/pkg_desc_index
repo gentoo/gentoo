@@ -400,7 +400,6 @@ app-backup/restic 0.4.0 0.5.0 0.6.1 0.7.1: A backup program that is fast, effici
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
-app-backup/snapback2 1.1.0-r1: Routines for support of rsync-based snapshot backup
 app-backup/snapper 0.2.8-r1 0.3.3 0.4.1 0.5.0 9999: Command-line program for btrfs and ext4 snapshot management
 app-backup/spideroak-bin 6.3.0-r1: Secure free online backup, storage, and sharing system
 app-backup/tarsnap 1.0.35 1.0.37: Online backups for the truly paranoid
@@ -993,7 +992,6 @@ app-doc/vilearn 1.0: An interactive vi tutorial comprised of 5 tutorials for the
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
 app-doc/zeal 0.2.1 0.3.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
-app-editors/XML-XSH2 2.1.6-r1 2.1.26: Powerful scripting language/shell for XPath-based editing of XML
 app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
@@ -1811,7 +1809,6 @@ app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.5 4.18.6-r1: A index/query system to search a large set of files quickly
-app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
 app-misc/gnote 3.22.1 3.24.0: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
@@ -4695,7 +4692,6 @@ dev-libs/device-atlas-api-c 2.1 2.1.2_p1: API to detect devices based on the Use
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.3.3 3.3.4: The ultimate disassembler library (X86-32, X86-64)
-dev-libs/djb 0.5.2: Library created from code by Dan Bernstein
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -7386,7 +7382,7 @@ dev-python/bcolz 1.1.0 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 3.1.1 3.1.2: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.8.0-r1 1.8.1: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
-dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.5.1 4.5.3 4.6.0: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.5.3 4.6.0: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5 1.2.5-r1: behaviour-driven development, Python style
 dev-python/betamax 0.8.0: python-requests HTTP exchanges recorder
 dev-python/bibtexparser 0.6.2: A BibTeX parser written in python
@@ -10715,7 +10711,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.1-r1 2.2.2 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.8.4 4.1.3 4.2.1 4.2.2 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.8.4 4.1.3 4.2.2 4.3.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
@@ -14864,7 +14860,6 @@ net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.76 0.82 0.96: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
 net-libs/daq 0.6.2 0.6.2-r1 2.0.0 2.0.2: Data Acquisition library, for packet I/O
-net-libs/dhcpcd-dbus 0.6.1: DBus bindings for dhcpcd
 net-libs/dleyna-connector-dbus 0.2.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
