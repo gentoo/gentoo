@@ -428,31 +428,6 @@ media-plugins/vdr-tvguide
 net-misc/leapcast
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Rely on vulnerable webkit (#620698, #620728, #620816, #620830, #621554).
-# Removal in a month.
-dev-embedded/pikdev
-net-misc/clipgrab
-dev-util/ninja-ide
-app-crypt/yubikey-neo-manager
-dev-python/pywebkitgtk
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Dead for a long time and really buggy (#620772). Removal in a month.
-net-im/psimedia
-x11-themes/psi-themes
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not needed and neither compatible with current kernels, bug #621744 and
-# #621748. Removal in a month.
-net-wireless/adm8211
-net-wireless/orinoco-usb
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# More than 5 years dead, relies on a lot of dead/deprecated libraries, bug
-# #622008. Removal in a month.
-dev-util/a8
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
