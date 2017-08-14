@@ -2940,7 +2940,6 @@ dev-db/lib_mysqludf_str 0.3: MySQL UDFs of string functions that complement the 
 dev-db/lib_mysqludf_sys 0.0.3: MySQL UDFs that allows one to interact with the operating system
 dev-db/lib_mysqludf_ta 0.1: MySQL UDFs with technical analysis functions
 dev-db/lib_mysqludf_udf 0.0.3: MySQL UDFs for reporting internals from the udf interface
-dev-db/lib_mysqludf_xql 1.0.0: MySQL UDFs which can be used to create XML output directly from MySQL
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
 dev-db/libiodbc 3.52.8-r2 3.52.12: ODBC Interface for Linux
@@ -7465,7 +7464,6 @@ dev-python/colorama 0.3.3 0.3.8 0.3.9: ANSI escape character sequences for color
 dev-python/coloredlogs 6.1: Colored stream handler for the logging module
 dev-python/colorlog 2.7.0: Log formatting with colors
 dev-python/colorspacious 1.1.0: Powerful, accurate, and easy-to-use Python library for colorspace conversions
-dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.9: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.1 0.1.2: Common tools and data structures implemented in pure python
 dev-python/compizconfig-python 0.8.4-r5: Compizconfig Python Bindings
@@ -10512,7 +10510,6 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
 dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4 4.9.13: Userland tools for Linux Performance Counters
-dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/pkgcheck 0.5.3 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 1.1.0 1.2.2 1.3.5 1.3.7 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
@@ -13596,7 +13593,6 @@ media-plugins/vdr-svdrpservice 1.0.0: VDR Plugin: offers SVDRP connections as a 
 media-plugins/vdr-systeminfo 0.1.1 0.1.3 0.1.4: VDR Plugin: systeminfo
 media-plugins/vdr-text2skin 1.3.2-r1: VDR text2skin PlugIn
 media-plugins/vdr-ttxtsubs 0.3.0: VDR Plugin: displaying, recording and replaying teletext based subtitles
-media-plugins/vdr-tvguide 1.2.1-r1 1.2.2-r1: VDR Plugin: highly customizable 2D EPG viewer
 media-plugins/vdr-undelete 0.0.7 0.0.7-r1: VDR Plugin: Recover deleted recordings of VDR
 media-plugins/vdr-vcd 0.9-r1 0.9-r2 0.9-r3: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.12 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
@@ -14781,7 +14777,6 @@ net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
-net-irc/bobotpp 2.2.3: A flexible IRC bot scriptable in scheme
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
 net-irc/dccserver 0.5 0.5-r1: linux implementation of the mirc dccserver command
 net-irc/dircproxy 1.2.0_rc1: an IRC proxy server
@@ -15028,7 +15023,6 @@ net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_pre20160904 0.1.1 0.1.2 0.1.4 0.1.6 9999: Encrypted P2P, messaging, and audio/video calling platform
-net-libs/txtorcon 0.13.0: Twisted-based Tor controller client, with state-tracking
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
@@ -15290,7 +15284,6 @@ net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modul
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
 net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
 net-misc/lcr 9999: Linux Call Router
-net-misc/leapcast 0.1.3-r1 9999: Simple ChromeCast emulation app
 net-misc/libss7 1.0.2: Signalling System 7 (SS7) protocol library
 net-misc/libteam 1.22: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
@@ -15583,7 +15576,6 @@ net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clie
 net-p2p/ctorrent 3.3.2-r2 3.3.2-r3: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/datacoin-hp 9999: High-performance version of datacoin (primecoin-hp fork)
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
-net-p2p/dclib 0.3.23: DirectConnect client library
 net-p2p/deluge 1.3.15 1.3.9999 9999: BitTorrent client with a client/server model
 net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1 0.4.0-r2: Tool for generating eDonkey2000 links
@@ -15625,7 +15617,6 @@ net-p2p/transmission-remote-cli 1.7.1: Ncurses interface for the Transmission Bi
 net-p2p/transmission-remote-gtk 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.3.3-r1: Bittorrent client that does not require a website to discover content
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
-net-p2p/valknut 0.4.9: A open source cross platform client for the Direct Connect network
 net-p2p/vuze 4.8.1.2-r1 5.6.0.0 5.7.2.0: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.6.0.0 5.7.2.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xnap 2.5-r3: A P2P framework and client
@@ -17741,7 +17732,7 @@ sys-fs/ddrescue 1.21-r1 1.22-r1: Copy data from one file or block device to anot
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
-sys-fs/dislocker 0.5.2 0.6.1 0.7.1 9999: Dislocker is used to read BitLocker encrypted partitions.
+sys-fs/dislocker 0.7.1-r1 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.5 1.6.6 1.6.7: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.0-r1 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
@@ -18430,7 +18421,6 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/vivaldi 1.10.867.48_p1 1.11.917.39_p1: A new browser for our friends
 www-client/vivaldi-snapshot 1.11.917.35_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
-www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
 www-misc/awstats 7.1_p20121017 7.4 7.5: AWStats is short for Advanced Web Statistics
