@@ -476,11 +476,6 @@ app-editors/XML-XSH2
 # Doesn't build (#623562). Removal in a month.
 media-plugins/vdr-skinnopacity
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not needed in the tree, upstream stopped developing it long time ago, bug
-# #623706. Removal in a month.
-net-libs/dhcpcd-dbus
-
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
