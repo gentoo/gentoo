@@ -343,12 +343,6 @@ app-editors/mp
 media-video/gnome-subtitles
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Development stopped 4 years ago, relies on dead vte:2.90 and upstream
-# refused to even try to migrate it (#601350). Also security issues
-# (#611290). Removal in a month.
-x11-terms/evilvte
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
