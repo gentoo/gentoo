@@ -424,10 +424,6 @@ dev-db/lib_mysqludf_xql
 media-plugins/vdr-tvguide
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with recent python versions (#619998). Removal in a month.
-net-misc/leapcast
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
