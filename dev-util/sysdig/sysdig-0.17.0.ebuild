@@ -24,7 +24,7 @@ RDEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/zlib:0=
 	dev-libs/openssl:0=
-	net-misc/curl:0="
+	<net-misc/curl-7.55:0="
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/os-headers"
