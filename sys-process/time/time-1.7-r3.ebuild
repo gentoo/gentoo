@@ -16,11 +16,13 @@ IUSE=""
 
 DEPEND="sys-apps/texinfo"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${PV}-info-dir-entry.patch
+	"${FILESDIR}"/${P}-incorrect_memory_usage.patch
+)
+
 src_prepare() {
 	default
-	epatch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${PV}-info-dir-entry.patch \
-		"${FILESDIR}"/${P}-incorrect_memory_usage.patch
 	eautoreconf
 }
