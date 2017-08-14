@@ -442,11 +442,6 @@ net-im/psimedia
 x11-themes/psi-themes
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not needed and neither compatible with current kernels, bug #621744.
-# Removal in a month.
-net-wireless/adm8211
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
