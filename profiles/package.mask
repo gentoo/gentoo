@@ -308,10 +308,6 @@ net-analyzer/nepenthes
 app-text/mbtpdfasm
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# No reverse deps, not buildable with gcc6 (#595396). Removal in a month.
-media-libs/embree
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
