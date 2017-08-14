@@ -107,10 +107,10 @@ src_install() {
 	#${WORKDIR}/${PN}build-${PV}/utils/fpcm/fpcmake"
 	#fpcbuild-3.0.0/fpcsrc/utils/fpcm/bin/x86_64-linux/fpcmake
 	set -- PP="${pp}" FPCMAKE="${S}/utils/fpcm/bin/${FPC_PARCH}-linux/fpcmake" \
-		INSTALL_PREFIX="${D}"/usr \
-		INSTALL_DOCDIR="${D}"/usr/share/doc/${PF} \
-		INSTALL_MANDIR="${D}"/usr/share/man \
-		INSTALL_SOURCEDIR="${D}"/usr/lib/fpc/${PV}/source
+		INSTALL_PREFIX="${ED}"/usr \
+		INSTALL_DOCDIR="${ED}"/usr/share/doc/${PF} \
+		INSTALL_MANDIR="${ED}"/usr/share/man \
+		INSTALL_SOURCEDIR="${ED}"/usr/lib/fpc/${PV}/source
 
 	emake -j1 "$@" compiler_install rtl_install packages_install utils_install
 
@@ -135,23 +135,23 @@ src_install() {
 	if use source ; then
 		cd "${S}" || die
 		shift
-		emake -j1 PP="${D}"/usr/bin/ppc${FPC_ARCH} "$@" sourceinstall
-		find "${D}"/usr/lib/fpc/${PV}/source -name '*.o' -exec rm {} \;
+		emake -j1 PP="${ED}"/usr/bin/ppc${FPC_ARCH} "$@" sourceinstall
+		find "${ED}"/usr/lib/fpc/${PV}/source -name '*.o' -exec rm {} \;
 	fi
 
-	"${D}"/usr/lib/fpc/${PV}/samplecfg "${D}"/usr/lib/fpc/${PV} "${D}"/etc || die
+	"${ED}"/usr/lib/fpc/${PV}/samplecfg "${ED}"/usr/lib/fpc/${PV} "${ED}"/etc || die
 
-	sed -i "s:${D}::g" "${D}"/etc/fpc.cfg || die
+	sed -i "s:${ED}::g" "${ED}"/etc/fpc.cfg || die
 
 	if use ide ; then
-		sed -e "s:${D}::g" \
-			-i "${D}"/etc/fppkg.cfg \
-			-i "${D}"/etc/fppkg/* \
-			-i "${D}"/usr/lib/fpc/${PV}/ide/text/fp*.cfg \
+		sed -e "s:${ED}::g" \
+			-i "${ED}"/etc/fppkg.cfg \
+			-i "${ED}"/etc/fppkg/* \
+			-i "${ED}"/usr/lib/fpc/${PV}/ide/text/fp*.cfg \
 			|| die
 	fi
 
-	rm -r "${D}"/usr/lib/fpc/lexyacc || die
+	rm -r "${ED}"/usr/lib/fpc/lexyacc || die
 }
 
 pkg_postinst() {
