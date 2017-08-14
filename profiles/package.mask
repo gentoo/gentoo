@@ -394,6 +394,7 @@ net-im/skypetab-ng
 # fixed versions and for further testing.
 >=xfce-base/xfconf-4.13
 >=xfce-base/xfce4-settings-4.13.1
+>=xfce-base/xfce4-panel-4.13.1
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
