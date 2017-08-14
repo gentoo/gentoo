@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools
+EAPI=6
+inherit autotools ltprune
 
 DESCRIPTION="Lightweight OSC (Open Sound Control) implementation"
 HOMEPAGE="http://plugin.org.uk/liblo"
@@ -18,7 +18,7 @@ RESTRICT="test"
 DEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-threads.patch
+	default
 
 	# don't build examples by default
 	sed -i '/^SUBDIRS =/s/examples//' Makefile.am || die
@@ -30,10 +30,12 @@ src_configure() {
 	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
 
 	# switching threads on/off breaks ABI, bugs #473282, #473286 and #473356
-	econf \
-		$(use_enable static-libs static) \
-		$(use_enable ipv6) \
+	myeconfargs=(
 		--enable-threads
+		$(use_enable ipv6)
+		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

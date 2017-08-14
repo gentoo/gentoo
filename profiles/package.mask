@@ -334,59 +334,6 @@ dev-libs/libRocket
 games-fps/warsow
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Fails to build, no reverse deps (#600768). Removal in a month.
-app-editors/mp
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Needs obsolete splitted dev-dotnet/gnome-sharp (#600960). Removal in a
-# month.
-media-video/gnome-subtitles
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Development stopped 4 years ago, relies on dead vte:2.90 and upstream
-# refused to even try to migrate it (#601350). Also security issues
-# (#611290). Removal in a month.
-x11-terms/evilvte
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with gcc6, nothing needs this in the tree (#603900).
-# Removal in a month.
-dev-libs/qcodeedit
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with gperf-3.1 (#604816). Removal in a month.
-app-misc/flasm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Upstream is dead, lots of unresolved bug reports (#606154), it needs a
-# real maintainer taking care about fixing this. Removal in a month.
-sys-apps/v86d
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build anymore (#607482). Removal in a month.
-net-irc/irssi-xmpp
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't work with current flash-player versions, bug #609016. Removal in a
-# month.
-media-libs/hal-flash
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Nothing needs this, pending to migrate to pycryptodome (#611574). Removal
-# in a month.
-app-admin/kedpm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Needs migration to pycryptodome, also relies on many other dead libs
-# (#611584). Removal in a month.
-app-misc/relevation
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Buggy and needs someone to take care of trying to bump it (#614860).
-# Removal in a month.
-sci-astronomy/skychart
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
