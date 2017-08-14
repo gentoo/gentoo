@@ -5095,7 +5095,7 @@ dev-libs/univalue 1.0.2: C++ universal value object and JSON library
 dev-libs/urdfdom 0.4.2 1.0.0 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.4.2 1.0.0 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
-dev-libs/userspace-rcu 0.7.13 0.8.6 0.9.1 0.9.2: userspace RCU (read-copy-update) library
+dev-libs/userspace-rcu 0.9.1 0.9.2 0.10.0: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
@@ -14980,7 +14980,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.23.1 1.24.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.10.0 6.10.2 6.10.3 6.11.0 6.11.1 6.11.2 7.6.0 7.7.2 7.7.3 7.8.0 7.9.0 7.10.0 8.1.0 8.1.2 8.1.4 8.2.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-libs/ntirpc 1.4.1: Transport Independent RPC library for nfs-ganesha
+net-libs/ntirpc 1.4.1 1.5.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11-r1: C++ class library normalising numerous telephony protocols
@@ -15001,7 +15001,7 @@ net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
-net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
+net-libs/rpc2 2.0 2.10 2.14: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9: HTTP client library
 net-libs/shairplay 0_pre20170118 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.21-r1: OAuth2 plugin for Signon daemon
@@ -17241,7 +17241,7 @@ sys-apps/restartd 0.2.2: A daemon for checking your running and not running proc
 sys-apps/restorecond 2.7_rc1 2.7_rc4 2.7_rc5 2.7 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 0.5.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
-sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
+sys-apps/rng-tools 5-r2 6: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0 2.5.0.0 2.5.1.0: skarnet.org's small and secure supervision software suite
@@ -17292,7 +17292,7 @@ sys-apps/usbredir 0.7 0.7.1_p20170503 9999: TCP daemon and set of libraries for 
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.26.2 2.28.2 2.29.1-r1 2.29.2 2.29.2-r1 2.30 9999: Various useful Linux utilities
+sys-apps/util-linux 2.28.2 2.29.2-r1 2.30 2.30.1 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
@@ -17425,9 +17425,9 @@ sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1 2.1.45: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.70 1.0.71 1.0.72: Linux SCSI target framework (tgt)
-sys-block/thin-provisioning-tools 0.4.1 0.5.3 0.6.1 0.6.3: A suite of tools for thin provisioning on Linux
+sys-block/thin-provisioning-tools 0.4.1 0.6.3 0.7.0: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
-sys-block/vblade 20 21: vblade exports a block device using AoE
+sys-block/vblade 20 23: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-block/whdd 2.2 3.0 9999: Diagnostic and recovery tool for block devices
 sys-block/zram-init 2.7-r1 3.0 3.4 3.6 3.8: Scripts to support compressed swap devices or ramdisks with zram
@@ -18017,7 +18017,7 @@ sys-process/runit 2.1.1-r1 2.1.2 2.1.2-r1: A UNIX init scheme with service super
 sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling policy
 sys-process/supervise-scripts 4.0: Starting and stopping daemontools managed services
 sys-process/systemd-cron 1.5.3 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
-sys-process/time 1.7-r1 1.7-r2 1.7-r3: Displays info about resources used by a program
+sys-process/time 1.7-r1 1.7-r3 1.7.2: Displays info about resources used by a program
 sys-process/tini 0.13.2 0.14.0 0.15.0: A tiny but valid init for containers
 sys-process/tiptop 2.2 2.3: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
