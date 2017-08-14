@@ -1987,7 +1987,6 @@ app-misc/zygrib 7.0.0 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.7 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
-app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Spanish cellular phones
 app-mobilephone/gammu 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
@@ -8533,7 +8532,6 @@ dev-python/python-saharaclient 0.11.0 1.1.0: This is a client for the OpenStack 
 dev-python/python-scsi 0_pre160211 9999: Access to SG_IO scsi devices
 dev-python/python-scw 0.4.7-r1: Python binding for Scw
 dev-python/python-senlinclient 1.0.0 1.2.0: A client for the OpenStack Senlin API
-dev-python/python-sipsimple 2.5.1-r3: SIP SIMPLE client SDK is a Software Development Kit
 dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-socketio 1.7.4: Python implementation of the Socket.IO realtime server.
@@ -8733,7 +8731,6 @@ dev-python/socketio-client 0.6.6: A socket.io client library for Python
 dev-python/socketpool 0.5.3: A simple Python socket pool
 dev-python/sortedcollections 0.4.2 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 1.5.7: Python library to sort collections and containers
-dev-python/south 1.0: Intelligent schema migrations for Django apps
 dev-python/soya 0.14-r1 0.15_rc1: A high-level 3D engine for Python, designed with games in mind
 dev-python/spark-parser 1.5.1-r1 1.6.0 1.6.1: An Early-Algorithm Context-free grammar Parser
 dev-python/sparql-wrapper 1.7.6 1.8.0: Wrapper around a SPARQL service
@@ -10380,7 +10377,6 @@ dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: ss
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 17.07 17.08: A full featured Python IDE using PyQt and QScintilla
 dev-util/fatrace 0.11 0.12: report file access events from all running processes
-dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
@@ -14789,7 +14785,6 @@ net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.2: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20170202154736 5.0_pre20170401092246 5.0_pre20170601121930 5.0_pre20170801214745 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
-net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating system
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
 net-irc/muh 2.2a: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
@@ -15256,7 +15251,6 @@ net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
-net-misc/jumpgate 0.7: An advanced TCP connection forwarder
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1 0.10.2.0 0.10.2.1 0.11.0.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1: Generic command line non-JVM Apache Kafka producer and consumer
@@ -15552,8 +15546,6 @@ net-p2p/automatic 0.8.3: RSS downloader for Tranmission
 net-p2p/bitcoin-cli 0.13.0 0.13.1 0.13.2 9999: Command-line client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.13.0 0.13.1-r1 0.13.2 9999: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.13.0 0.13.1 0.13.2 9999: Original Bitcoin crypto-currency wallet for automated services
-net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
-net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220 0.10 0.11: Program for displaying classified advertisement items
@@ -15680,7 +15672,6 @@ net-proxy/tsocks 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/ufdbguard 1.32.4: ufdbGuard is a redirector for the Squid internet proxy
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
-net-voip/blink 1.4.1: A state of the art, easy to use SIP client
 net-voip/ekiga 4.0.1-r1: H.323 and SIP VoIP softphone
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
 net-voip/openmcu 2.2.5-r1: Simple Multi Conference Unit using H.323
@@ -16135,7 +16126,6 @@ sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
 sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3 21.3-r1: Visualisation and processing of experimental and simulated NMR spectra
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
-sci-chemistry/icm 3.7.2e 3.7.3b: MolSoft LCC ICM Pro
 sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
 sci-chemistry/ksdssp 040728 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
@@ -16586,7 +16576,6 @@ sci-mathematics/agda-stdlib 2.4.2.5 2.5.2.0.13: Agda standard library
 sci-mathematics/arb 2.11.1-r1: C library for arbitrary-precision interval arithmetic
 sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
-sci-mathematics/cado-nfs 2.2.0: Number Field Sieve (NFS) implementation for factoring integers
 sci-mathematics/calc 2.12.2.2 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.9 4.10: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.6 8.6.1: Proof assistant written in O'Caml
@@ -17865,7 +17854,6 @@ sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.1: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
-sys-libs/libacpi 0.2: A general purpose library for ACPI
 sys-libs/libapparmor 2.11.0-r1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.10 2.11: A library for manipulating block devices
@@ -17966,7 +17954,6 @@ sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectures
 sys-power/upower 0.99.4 0.99.4-r1 0.99.5: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
-sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1 6.6.4: GNU system accounting utilities
 sys-process/anacron 2.3-r2 2.3-r3 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution

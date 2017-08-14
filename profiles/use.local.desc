@@ -6620,14 +6620,6 @@ net-p2p/bitcoind:ljr - Enable Luke Dashjr's patches
 net-p2p/bitcoind:upnp - Enable Universal Plug and Play
 net-p2p/bitcoind:wallet - Enable wallet support
 net-p2p/bitcoind:zeromq - Report blocks and transactions via zeromq
-net-p2p/bitcoinxt-qt:ljr - Enable Luke Dashjr's patches
-net-p2p/bitcoinxt-qt:logrotate - Use app-admin/logrotate for rotating logs
-net-p2p/bitcoinxt-qt:qrcode - Enable generation of QR Codes for receiving payments
-net-p2p/bitcoinxt-qt:wallet - Enable wallet support
-net-p2p/bitcoinxtd:doc - Include documentatio
-net-p2p/bitcoinxtd:logrotate - Use app-admin/logrotate for rotating logs
-net-p2p/bitcoinxtd:upnp - Enable Universal Plug and Play
-net-p2p/bitcoinxtd:wallet - Enable wallet support
 net-p2p/datacoin-hp:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/dbhub:switch_user - Enable support for switching user
 net-p2p/deluge:console - Enable default console UI
@@ -6996,8 +6988,6 @@ sci-chemistry/gromacs:offensive - Enable gromacs partly offensive quotes
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs (default)
 sci-chemistry/gromacs:tng - Enable new trajectory format - tng
 sci-chemistry/gsim:emf - Support for .emf export
-sci-chemistry/icm:32bit - Automatically generated description for 32bit
-sci-chemistry/icm:64bit - Automatically generated description for 64bit
 sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd
 sci-chemistry/molequeue:client - Build the client application
 sci-chemistry/molequeue:server - Build the serve application
