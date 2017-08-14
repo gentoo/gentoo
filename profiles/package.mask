@@ -274,11 +274,6 @@ dev-python/python-sipsimple
 net-voip/blink
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't compile, one of the last consumers of obsolete gnet library
-# (#579400). Removal in a month.
-net-irc/loqui
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't compile, upstream dead, removal in 2 months (#584296).
 dev-util/mutrace
 
