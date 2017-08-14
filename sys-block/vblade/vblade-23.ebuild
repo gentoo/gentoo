@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
 DESCRIPTION="vblade exports a block device using AoE"
-HOMEPAGE="http://sf.net/projects/aoetools/"
-SRC_URI="mirror://sourceforge/aoetools/${P}.tgz"
+HOMEPAGE="https://github.com/OpenAoE/vblade"
+SRC_URI="https://github.com/OpenAoE/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,7 +15,11 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="sys-apps/util-linux"
 
+S="${WORKDIR}/${PN}-${P}"
+
 src_prepare() {
+	default
+
 	sed -i -e 's,^CFLAGS.*,CFLAGS += -Wall,' \
 		-e 's:-o vblade:${LDFLAGS} \0:' \
 		makefile || die
@@ -31,5 +35,5 @@ src_install() {
 	doman vblade.8
 	dodoc HACKING NEWS README
 	newconfd "${FILESDIR}"/conf.d-vblade vblade
-	newinitd "${FILESDIR}"/init.d-vblade.vblade0 vblade.vblade0
+	newinitd "${FILESDIR}"/init.d-vblade.vblade0-r1 vblade.vblade0
 }
