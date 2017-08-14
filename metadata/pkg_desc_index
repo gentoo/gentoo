@@ -2078,7 +2078,6 @@ app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various co
 app-officeext/texmaths 0.37-r1 0.41 0.42: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
 app-pda/dynamite 0.1.1_p20120512: A tool for decompressing data compressed with PKWARE Data Compression Library
-app-pda/fusepod 0.5.2: A userspace filesystem which mounts your iPod into a directory
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.0.1 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
@@ -2361,7 +2360,6 @@ app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.1-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
-app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3 1.2.19-r1: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
@@ -2998,7 +2996,6 @@ dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 9999:
 dev-db/postgresql 9.2.19 9.2.21 9.2.21-r2 9.2.22 9.3.15 9.3.17 9.3.17-r2 9.3.18 9.4.10 9.4.12 9.4.12-r2 9.4.13 9.5.5 9.5.7 9.5.7-r1 9.5.8 9.6.3-r1 9.6.3-r2 9.6.4 10_beta3 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
-dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases
 dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.5-r1 3.2.5-r4 3.2.5-r5 3.2.6 3.2.6-r1 3.2.6-r4 3.2.6-r5 3.2.8 3.2.8-r1 3.2.8-r2 3.2.8-r3: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2: PostgreSQL Replication Manager
 dev-db/rethinkdb 2.3.5: The open-source database for the realtime web.
@@ -4998,7 +4995,6 @@ dev-libs/mini-xml 2.10: Small XML parsing library to read XML and XML-like data 
 dev-libs/mm 1.4.2-r1 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2: A high-performance MongoDB driver for C
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
-dev-libs/mozldap 6.0.6-r2 6.0.7 6.0.7-r1: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
@@ -9904,7 +9900,7 @@ dev-ruby/ruby_dep 1.3.1 1.4.0 1.5.0: Creates a version constraint of supported R
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.8.2 3.8.3 3.8.4 3.9.0 3.10.0 3.10.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 0.0.12: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.2.5-r1 2.5.2 2.6.8 2.6.9 2.6.11 2.6.12: Centralized Ruby extension management system
+dev-ruby/rubygems 2.5.2 2.6.12: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.1 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -10450,7 +10446,6 @@ dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 4.0.1 5.0.9999 9999: The LLVM debugger
 dev-util/lockrun 20120508 20120508-r1: Lockrun - runs cronjobs with overrun protection
-dev-util/lorax 26.0: Redhat Tools for creating disk, filesystem, and iso images
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
 dev-util/ltrace 0.5.3.1 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
 dev-util/lttng-modules 2.6.4 2.7.1 2.7.4 2.8.0: LTTng Kernel Tracer Modules
@@ -12921,7 +12916,6 @@ media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfac
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
 media-libs/elementary 1.17.0 9999: Basic widget set, based on EFL for mobile touch-screen devices
 media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and grey ICC profiles
-media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
@@ -14374,7 +14368,6 @@ net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for
 net-analyzer/nbwmon 0.5.2: ncurses bandwidth monitor
 net-analyzer/ndoutils 2.0.0: Nagios addon to store Nagios data in a MySQL database
 net-analyzer/ndsad 1.33-r1: Cisco netflow probe from libpcap, ULOG, tee/divert sources
-net-analyzer/nepenthes 0.2.2 0.2.2-r1: Nepenthes is a low interaction honeypot that captures worms by emulating known vulnerabilities
 net-analyzer/nessus 2.2.9: A remote security scanner
 net-analyzer/nessus-agent-bin 6.10.5 6.10.7 6.10.9: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 4.4.1 5.0.1 6.10.5: A remote security scanner for Linux
@@ -15582,7 +15575,6 @@ net-p2p/gtk-gnutella 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.0.1: Powerful BitTorrent client based on KDE Frameworks
-net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
@@ -19537,7 +19529,7 @@ xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plu
 xfce-base/thunar 1.6.10-r1 1.6.12: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0 4.13.1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.3: A configuration management system for Xfce

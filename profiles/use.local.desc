@@ -1415,9 +1415,6 @@ dev-db/postgresql:pg_legacytimestamp - Use double precision floating-point numbe
 dev-db/postgresql:server - Disable to build and install the clients and libraries only.
 dev-db/postgresql:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid).
 dev-db/psqlodbc:iodbc - Use dev-db/libiodbc. Disable to use dev-db/unixODBC.
-dev-db/recutils:curl - Enable support for remote descriptors using libcurl
-dev-db/recutils:mdb - Build the mdb2rec utility
-dev-db/recutils:uuid - Enable support for uuid types
 dev-db/redis:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/redis:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
@@ -4078,11 +4075,6 @@ media-libs/coin:simage - Texture loading via media-libs/simage library
 media-libs/devil:allegro - Add support for Allegro
 media-libs/devil:nvtt - Add support for media-gfx/nvidia-texture-tools
 media-libs/elementary:quicklaunch - Enable quick-launch support
-media-libs/embree:imagemagick - Enables BMP, GIF, PNG, TGA, TIFF image codecs.
-media-libs/embree:ispc - Enables support for the Intel SPMD Program Compiler.
-media-libs/embree:jpeg - Enables JPEG image codecs.
-media-libs/embree:openexr - Enables OpenEXR image codecs.
-media-libs/embree:png - Enables PNG image codecs.
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
@@ -6664,7 +6656,6 @@ net-p2p/ktorrent:mediaplayer - Phonon-based media player
 net-p2p/ktorrent:shutdown - Shutdown when done
 net-p2p/ktorrent:stats - Shows statistics about torrents in several graphs
 net-p2p/ktorrent:zeroconf - Discover peers on the local network using the Zeroconf protocol
-net-p2p/litecoin-qt:qrcode - Enable generation of QR Codes for receiving payments
 net-p2p/litecoind:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/litecoind:wallet - Enable wallet support
 net-p2p/mldonkey:bittorrent - enable bittorrent support
