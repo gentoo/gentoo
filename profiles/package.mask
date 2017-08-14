@@ -349,11 +349,6 @@ media-video/gnome-subtitles
 x11-terms/evilvte
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with gcc6, nothing needs this in the tree (#603900).
-# Removal in a month.
-dev-libs/qcodeedit
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
