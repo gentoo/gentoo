@@ -372,11 +372,6 @@ net-irc/irssi-xmpp
 media-libs/hal-flash
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Nothing needs this, pending to migrate to pycryptodome (#611574). Removal
-# in a month.
-app-admin/kedpm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
