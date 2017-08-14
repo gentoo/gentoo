@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (14 Aug 2017)
+# php 7.2 beta is masked for initial testing
+php_targets_php7-2
+
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unkeyworded on most arches, unmasked in supported arch profiles.
 elogind
