@@ -239,11 +239,6 @@ media-gfx/autotrace
 app-mobilephone/esms
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Proprietary software, fetch restricted, not actively maintained, needs to
-# be updated, with multiple QA issues, bug #622414. Removal in a month.
-sci-chemistry/icm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
 net-vpn/kvpnc
