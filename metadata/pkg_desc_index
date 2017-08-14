@@ -16506,6 +16506,7 @@ sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPF
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 4.10.0-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/naga 2.1: Simplified Java NIO asynchronous sockets
+sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 5.24 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.3.2-r1 4.4.0-r1 4.4.1.1: Scientific library and interface for array oriented data access
