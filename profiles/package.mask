@@ -293,43 +293,8 @@ sys-power/yacpi
 sci-mathematics/cado-nfs
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#592992), dead since 2011 and nothing needs it in the tree.
-# Removal in a month.
-dev-libs/mozldap
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with gcc6 (#594390), also removed from other distributions
-# due it being unmaintained and buggy. Removal in a month.
-net-analyzer/nepenthes
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Upstream inactive, not buildable with gcc6, not needed by anything in the
-# tree (#594668). Removal in a month.
-app-text/mbtpdfasm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# No reverse deps, not buildable with gcc6 (#595396). Removal in a month.
-media-libs/embree
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not compatible with QT 5.7, bug #595452. Removal in a month.
-net-p2p/litecoin-qt
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not buildable (#596602), no reverse deps, removal in a month.
-app-pda/fusepod
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Not buildable for a long time (#597040). Removal in a month.
-dev-util/lorax
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Security issues (#600524), upstream dead, removal in a month.
-dev-db/recutils
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Multiple unresolved bugs (#600680), need major version bumps and a
-# maintainer, removal in a month.
+# maintainer, removal in 2 months.
 dev-libs/libRocket
 games-fps/warsow
 
@@ -394,6 +359,7 @@ net-im/skypetab-ng
 # fixed versions and for further testing.
 >=xfce-base/xfconf-4.13
 >=xfce-base/xfce4-settings-4.13.1
+>=xfce-base/xfce4-panel-4.13.1
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
