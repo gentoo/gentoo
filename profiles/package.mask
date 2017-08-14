@@ -261,7 +261,6 @@ net-misc/jumpgate
 # Lots of unresolved bugs, not compatible with QT 5.7 either, bug #574672.
 # Removal in a month.
 net-p2p/bitcoinxtd
-net-p2p/bitcoinxt-qt
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't compile, upstream dead, removal in 2 months (#584296).
