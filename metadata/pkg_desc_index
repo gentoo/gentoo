@@ -1474,7 +1474,7 @@ app-forensics/volatility 2.4.1 2.6: Framework for analyzing volatile memory
 app-forensics/yasat 526 700 755 839 848: Security and system auditing tool
 app-forensics/zzuf 0.13-r1 0.15: Transparent application input fuzzer
 app-i18n/anthy 9100h-r1 9100h-r2: Anthy -- free and secure Japanese input system
-app-i18n/atokx3 3.0.0-r11: ATOK X3 for Linux - The most famous Japanese Input Method Engine
+app-i18n/atokx3 3.0.0-r12: ATOK X3 for Linux - The most famous Japanese Input Method Engine
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0 1.0-r1: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
