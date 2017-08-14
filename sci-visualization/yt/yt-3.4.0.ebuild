@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -14,13 +14,15 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
+IUSE="hub test"
 
-CDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/numpy-1.10.4[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	dev-python/h5py[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/sympy[${PYTHON_USEDEP}]"
+	>=dev-python/sympy-1.0[${PYTHON_USEDEP}]
+	hub? ( dev-python/girder-client[${PYTHON_USEDEP}] )
+"
 DEPEND="${CDEPEND}
 	>=dev-python/cython-0.24[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-20.0[${PYTHON_USEDEP}]
