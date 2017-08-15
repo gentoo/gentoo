@@ -19516,7 +19516,7 @@ xfce-base/libxfce4ui 4.13.0 4.13.2 4.13.3: Unified widget and session management
 xfce-base/libxfce4util 4.12.1-r1 4.13.1: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 xfce-base/thunar 1.6.10-r1 1.6.12: File manager for the Xfce desktop environment
-xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop
+xfce-base/xfce4-appfinder 4.12.0-r1 4.13.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0 4.13.1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
