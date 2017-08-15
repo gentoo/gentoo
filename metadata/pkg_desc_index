@@ -14146,7 +14146,7 @@ media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recor
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 18.0.0 18.0.2 19.0.2 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 18.0.2 19.0.2 20.0.1 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.2.0 2.3.4: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/orion 1.3.5 1.4.0: Cross-platform Twitch client
