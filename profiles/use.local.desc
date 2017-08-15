@@ -2572,16 +2572,6 @@ dev-python/scrapy:boto - Add support for Amazon S3 via dev-python/boto
 dev-python/scrapy:ibl - Use Instace Based Learning algorithm for automatic extraction
 dev-python/simplecv:shell - Enable the iPython SimpleCV shell
 dev-python/sphinx:net - enable internet capabilities
-dev-python/spyder:ipython - Add support for dev-python/ipython
-dev-python/spyder:matplotlib - Add support for dev-python/matplotlib
-dev-python/spyder:numpy - Add support for dev-python/numpy
-dev-python/spyder:pep8 - Add support for dev-python/pep8
-dev-python/spyder:pyflakes - Add support for dev-python/pyflakes
-dev-python/spyder:pylint - Add support for dev-python/pylint
-dev-python/spyder:qtconsole - Add support for dev-python/qtconsole
-dev-python/spyder:rope - Add support for dev-python/rope
-dev-python/spyder:scipy - Add support for sci-libs/scipy
-dev-python/spyder:sphinx - Add support for dev-python/sphinx
 dev-python/starcluster:epydoc - Enable build of apidocs in html using epydoc
 dev-python/sympy:imaging - Add support for dev-python/pillow
 dev-python/sympy:ipython - Add support for dev-python/ipython
