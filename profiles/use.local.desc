@@ -4076,6 +4076,7 @@ media-libs/devil:allegro - Add support for Allegro
 media-libs/devil:nvtt - Add support for media-gfx/nvidia-texture-tools
 media-libs/elementary:quicklaunch - Enable quick-launch support
 media-libs/esdl:image - Enable image support
+media-libs/faac:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
 media-libs/fontconfig-infinality:nyx - Additional style using croscorefonts

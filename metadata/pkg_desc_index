@@ -1956,7 +1956,7 @@ app-misc/towitoko 2.0.7-r2: Provides a driver for using Towitoko smartcard reade
 app-misc/tpconfig 3.1.3-r1 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 1.10.5: A tagging metadata database, search tool and indexer
+app-misc/tracker 1.10.5 1.12.2: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2 0.16.12.29 0.17.1.14: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r1: tty recorder
@@ -2400,7 +2400,7 @@ app-text/pinfo 0.6.10-r5 0.6.10-r6: Hypertext info and man viewer based on (n)cu
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20170629: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.45.0 0.56.0 0.57.0 9999: PDF rendering library based on the xpdf-3.0 code base
-app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
+app-text/poppler-data 0.4.7 0.4.8: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/psiconv 0.8.3-r1: An interpreter for Psion 5(MX) file formats
@@ -5216,7 +5216,7 @@ dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1 3.0.0: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 1.0.0 1.0.1 1.0.2: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.0 0.9.1: Helper library for gathering system configuration
-dev-ml/core 0.9.0 0.9.1: Jane Street's alternative to the standard library
+dev-ml/core 0.9.1-r1: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
 dev-ml/core_kernel 0.9.0: System-independent part of Core
@@ -8404,7 +8404,7 @@ dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysmi 0.1.3: Python Lex & Yacc
 dev-python/pysnmp 4.3.3 4.3.8 4.3.9: Python SNMP library
-dev-python/pysnmp-apps 0.4.1: PySNMP applications
+dev-python/pysnmp-apps 0.4.1 0.4.2: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.2 3.5.0: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.11 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
@@ -10341,7 +10341,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 10.6.2 10.6.4: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 10.6.4 10.7.2: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.88 1.0.89 1.0.90 1.0.91: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
@@ -11536,7 +11536,7 @@ games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.9.1 0.9.6: Space exploration, trading & combat in the tradition of Terminal Velocity
-games-strategy/freeciv 2.5.6 2.5.7: multiplayer strategy game (Civilization Clone)
+games-strategy/freeciv 2.5.6 2.5.7 2.5.8: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.7 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
@@ -11713,7 +11713,7 @@ gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.3 3.8.4 3.8.5: A nautilus extension for sending files to locations
-gnome-extra/nautilus-tracker-tags 1.10.5: Nautilus extension to tag files for Tracker
+gnome-extra/nautilus-tracker-tags 1.10.5 1.12.2: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0 3.4.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
@@ -12076,7 +12076,7 @@ kde-frameworks/baloo 4.14.3_p20161017 5.34.0 5.37.0: Framework for searching and
 kde-frameworks/bluez-qt 5.34.0-r1 5.37.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.34.0 5.37.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.34.0 5.37.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.34.0 5.37.0: Extra modules and scripts for CMake
+kde-frameworks/extra-cmake-modules 5.34.0 5.37.0-r1: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.34.0 5.37.0: Framework for integrating Qt applications with KDE Plasma workspaces
 kde-frameworks/kactivities 5.34.0 5.37.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.34.0 5.37.0: Framework for getting the usage statistics collected by the activities service
@@ -12918,7 +12918,7 @@ media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.59 10.60: Read and write meta information in image, audio and video files
-media-libs/faac 1.28-r4 1.29.2 1.29.3: Free MPEG-4 audio codecs by AudioCoding.com
+media-libs/faac 1.28-r4 1.29.3 1.29.4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3 2.8.1-r1: AAC audio decoding library
 media-libs/fdk-aac 0.1.3 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
@@ -13139,7 +13139,7 @@ media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1 1.1.1-r1: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.1.0-r2 0.2.0 0.2.2 0.2.4: MIDI to WAVE converter library
-media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
+media-libs/libtxc_dxtn 1.0.1-r1 1.0.1-r2: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.0 1.10.1 1.12.3 1.12.5: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.5-r1 9999: Library parsing the visio documents
@@ -13728,7 +13728,7 @@ media-sound/gmtp 1.3.10: A simple MTP client for MP3 players
 media-sound/gmusicbrowser 1.1.15-r3 1.1.15_p20160530 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.22.2-r1: Music management for Gnome
+media-sound/gnome-music 3.22.2-r1 3.24.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.21.92 3.24.0.1: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.1.9: Fast and light music player
@@ -15209,7 +15209,7 @@ net-misc/geoipupdate 2.3.1 2.4.0: performs automatic updates of GeoIP2 and GeoIP
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/gerbera 1.0.0-r1 9999: UPnP Media Server (Based on MediaTomb)
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.22.0: Crawls through your online content
+net-misc/gnome-online-miners 3.22.0 3.24.0: Crawls through your online content
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
 net-misc/gns3-gui 1.5.2-r1 1.5.3.1 2.0.3-r1: Graphical Network Simulator
 net-misc/gns3-server 1.5.2-r1 1.5.3.1 2.0.3-r1: GNS3 server to asynchronously manage emulators
@@ -15388,7 +15388,7 @@ net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port 
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
-net-misc/rwhoisd 1.5.9.5-r3: ARIN rwhois daemon
+net-misc/rwhoisd 1.5.9.5-r3 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.32.1 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1 2.0.0: Command line client for Amazon S3
 net-misc/s6-networking 2.2.1.0 2.3.0.0 2.3.0.1: suite of small networking utilities for Unix systems
@@ -17562,7 +17562,7 @@ sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel b
 sys-devel/binutils 2.25.1-r1 2.26.1 2.27-r1 2.28-r2 2.28.1 2.29 9999: Tools necessary to build programs
 sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7.2-r1 7.3 7.3.1 8.1 8.2.1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r3: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27 2.28: binutils package for building 64bit kernels on HPPA
+sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27 2.28 2.28.1 2.29: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20170421 20170510: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -18926,7 +18926,7 @@ x11-misc/safeeyes 1.2.1 1.2.2: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
 x11-misc/sct 0.3 0.4: Set color temperature of the screen
-x11-misc/sddm 0.14.0-r2 0.14.0-r3: Simple Desktop Display Manager
+x11-misc/sddm 0.14.0-r2 0.14.0-r3 0.14.0-r4: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
@@ -19031,7 +19031,7 @@ x11-misc/xnots 0.2.1-r1 0.2.1-r2 9999: A desktop sticky note program for the uni
 x11-misc/xorg-cf-files 1.0.6: Old Imake-related build files
 x11-misc/xosview 1.19: X11 operating system viewer
 x11-misc/xowl 9999: X11 Obstinate Window Lister
-x11-misc/xpad 4.2 4.8.0 4.9.0: a sticky note application for jotting down things to remember
+x11-misc/xpad 4.2 4.9.0 5.0.0: a sticky note application for jotting down things to remember
 x11-misc/xplanet 1.3.1-r1: Render images of the earth into the X root window
 x11-misc/xplanetFX 2.6.12 2.6.13: GUI to configure, run or daemonize xplanet with HQ capabilities
 x11-misc/xprintidle 2.0: Prints user's X server idle time in milliseconds

@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure test
+DEFINED_PHASES=configure postinst postrm test
 DEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= ) udisks? ( virtual/libgudev:= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=File manager for the Xfce desktop environment
 EAPI=6
@@ -10,6 +10,6 @@ RDEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= 
 REQUIRED_USE=trash-panel-plugin? ( dbus )
 SLOT=0
 SRC_URI=mirror://xfce/src/xfce/thunar/1.6/Thunar-1.6.12.tar.bz2
-_eclass_exported_funcs=src_configure:- src_test:-
-_eclasses_=virtualx	171580f737f5aaf18fcb456548588066
-_md5_=fadc125de196194df4fc874fd272b0c8
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_test:-
+_eclasses_=virtualx	171580f737f5aaf18fcb456548588066	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_md5_=8e9c9696401aaf03893246fb1833db02
