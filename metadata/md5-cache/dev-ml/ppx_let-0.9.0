@@ -1,12 +1,13 @@
 DEFINED_PHASES=install
-DEPEND=dev-lang/ocaml:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=Monadic let-bindings
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_let
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
-RDEPEND=dev-lang/ocaml:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:=
+RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_let/archive/v0.9.0.tar.gz -> ppx_let-0.9.0.tar.gz
-_eclass_exported_funcs=src_install:-
-_md5_=433c9de0ed70ded7da0b3a2e78629b08
+_eclass_exported_funcs=src_install:opam
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=bfa40a81a5c7944f7e5c9ec28e6b46cb

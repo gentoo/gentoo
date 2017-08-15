@@ -2100,7 +2100,7 @@ app-portage/eclass-manpages 20170321 20170428 20170521 20170712 99999999: collec
 app-portage/eix 0.32.4 0.32.5 0.32.5-r1 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2 2.7: Elog viewer for Gentoo
-app-portage/elt-patches 20170317 20170422: Collection of patches for libtool.eclass
+app-portage/elt-patches 20170317 20170422 20170815: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1 3.7.3: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.2 0.3 0.4: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r1 9999: Replacement for 'emerge --search' with search-index
@@ -5367,9 +5367,9 @@ dev-ml/ppx_expect 0.9.0: Cram like framework for OCaml
 dev-ml/ppx_fail 0.9.0: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 0.9.0-r1: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_hash 0.9.0: PPX rewriter that generates hash functions from type expressions and definitions
-dev-ml/ppx_here 0.9.0 0.9.1: Expands [%here] into its location
-dev-ml/ppx_import 1.1 1.2: A syntax extension for importing declarations from interface files
-dev-ml/ppx_inline_test 0.9.0 0.9.1 0.9.2: Syntax extension for writing in-line tests in ocaml code
+dev-ml/ppx_here 0.9.1: Expands [%here] into its location
+dev-ml/ppx_import 1.2: A syntax extension for importing declarations from interface files
+dev-ml/ppx_inline_test 0.9.2: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 0.9.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.9.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.9.0: Monadic let-bindings
