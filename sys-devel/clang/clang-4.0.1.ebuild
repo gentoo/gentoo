@@ -27,8 +27,8 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 LICENSE="UoI-NCSA"
 SLOT="$(get_major_version)"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="debug default-compiler-rt default-libcxx +doc multitarget
-	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug default-compiler-rt default-libcxx +doc +static-analyzer
+	test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -51,8 +51,7 @@ PDEPEND="
 	default-libcxx? ( sys-libs/libcxx )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )
-	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # We need extra level of indirection for CLANG_RESOURCE_DIR
 S=${WORKDIR}/x/y/cfe-${PV/_/}.src
