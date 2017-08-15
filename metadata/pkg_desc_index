@@ -690,7 +690,7 @@ app-dicts/freedict-eng-ita 1.0: Freedict for language translation from English t
 app-dicts/freedict-eng-swe 1.0: Freedict for language translation from English to Swedish
 app-dicts/freedict-fra-eng 1.0: Freedict for language translation from French to English
 app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian to English
-app-dicts/gnome-dictionary 3.18.1 3.20.0: Dictionary utility for GNOME
+app-dicts/gnome-dictionary 3.18.1 3.20.0 3.24.0: Dictionary utility for GNOME
 app-dicts/gwaei 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
 app-dicts/kasumi 2.5-r1: Anthy dictionary maintenance tool
@@ -4602,7 +4602,7 @@ dev-lang/teyjus 2.0.2 2.1: Higher-order logic programming language Lambda Prolog
 dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.5-r1 8.6.6 8.6.7: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.32.1 0.34.8 0.34.9: Compiler for the GObject type system
+dev-lang/vala 0.32.1 0.34.8 0.34.9 0.36.4: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
@@ -5095,7 +5095,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.32.1 0.34.8 0.34.9: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.32.1 0.34.8 0.34.9 0.36.4: Build infrastructure for packages that use Vala
 dev-libs/vanessa-adt 0.0.6 0.0.9: Abstract Data Types. Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.2.0 1.3.0 1.3.1 1.3.2: SIMD Vector Class Library for C++
@@ -10348,7 +10348,7 @@ dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
 dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug tracking system
-dev-util/devhelp 3.22.0: An API documentation browser for GNOME
+dev-util/devhelp 3.22.0 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20160828 1.3.20170131 1.3.20170509: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
@@ -10930,7 +10930,7 @@ games-board/freedoko 0.7.13-r1 0.7.14 0.7.14-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
 games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r1 0.29.6-r2: Chinese chess with gtkmm and c++
-games-board/gnome-chess 3.22.2: Play the classic two-player boardgame of chess
+games-board/gnome-chess 3.22.2 3.24.1: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
@@ -11331,7 +11331,7 @@ games-puzzle/gemdropx 0.9-r1: A puzzle game where it's your job to clear the scr
 games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
 games-puzzle/gnome-klotski 3.22.1: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.22.2: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-sudoku 3.22.2 3.24.0: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.22.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93: A program for creating and solving Su Doku puzzles
