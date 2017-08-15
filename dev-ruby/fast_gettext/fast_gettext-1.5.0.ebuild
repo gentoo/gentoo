@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG Readme.md"
@@ -18,10 +18,10 @@ SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/activerecord dev-ruby/bundler )"
+ruby_add_bdepend "test? ( dev-ruby/activerecord[sqlite] dev-ruby/bundler )"
 
 all_ruby_prepare() {
 	rm Gemfile.lock || die
