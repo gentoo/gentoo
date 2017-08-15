@@ -18,17 +18,18 @@ EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
 # Keep in sync with sys-devel/llvm
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="6"
 KEYWORDS=""
-IUSE="debug default-compiler-rt default-libcxx +doc multitarget
-	+static-analyzer test xml z3 elibc_musl kernel_FreeBSD
-	${ALL_LLVM_TARGETS[*]}"
+IUSE="debug default-compiler-rt default-libcxx +doc +static-analyzer
+	test xml z3 elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -54,8 +55,7 @@ PDEPEND="
 	default-libcxx? ( sys-libs/libcxx )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )
-	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # We need extra level of indirection for CLANG_RESOURCE_DIR
 S=${WORKDIR}/x/y/${P}
@@ -125,7 +125,10 @@ multilib_src_configure() {
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
 		-DBUILD_SHARED_LIBS=ON
-		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		# cheap hack: LLVM combines both anyway, and the only difference
+		# is that the former list is explicitly verified at cmake time
+		-DLLVM_TARGETS_TO_BUILD=""
+		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
