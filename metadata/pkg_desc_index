@@ -8562,6 +8562,7 @@ dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment f
 dev-python/pythonmagick 0.9.14 0.9.17: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
+dev-python/pytoml 0.1.14: A TOML-0.4.0 parser/writer for Python
 dev-python/pytools 2014.3.5 2016.2.6 2017.4 9999: A collection of tools missing from the Python standard library
 dev-python/pytrie 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2016.3 2017.2: World timezone definitions for Python
