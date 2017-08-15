@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	dev-python/google-api-python-client[${PYTHON_USEDEP}]
+	>=dev-python/google-api-python-client-1.5.3[${PYTHON_USEDEP}]
 	dev-python/gdata[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
