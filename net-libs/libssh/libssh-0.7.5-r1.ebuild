@@ -4,29 +4,28 @@
 EAPI=6
 
 MY_P="${PN}-${PV/_rc/rc}"
-inherit eutils cmake-multilib multilib
+inherit cmake-multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
-HOMEPAGE="http://www.libssh.org/"
+HOMEPAGE="https://www.libssh.org/"
 SRC_URI="https://red.libssh.org/attachments/download/218/${MY_P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0/4" # subslot = soname major version
-IUSE="debug doc examples gcrypt gssapi libressl pcap +sftp ssh1 server static-libs test zlib"
+IUSE="debug doc examples gcrypt gssapi libressl pcap server +sftp ssh1 static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
 RDEPEND="
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	!gcrypt? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
 	)
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( >=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}] )
 "
@@ -42,17 +41,17 @@ PATCHES=(
 )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# just install the examples do not compile them
 	sed -i \
 		-e '/add_subdirectory(examples)/s/^/#DONOTWANT/' \
 		CMakeLists.txt || die
 
 	# keyfile torture test is currently broken
-	sed \
+	sed -i \
 		-e '/torture_keyfiles/d' \
-		-i tests/unittests/CMakeLists.txt || die
-
-	cmake-utils_src_prepare
+		tests/unittests/CMakeLists.txt || die
 }
 
 multilib_src_configure() {
