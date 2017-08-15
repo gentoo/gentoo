@@ -7410,7 +7410,7 @@ dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.2.3 1.5.2: Python unittest Utilities
 dev-python/castellan 0.4.0: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
-dev-python/catkin_pkg 0.3.4 0.3.5 9999: Standalone Python library for the catkin package system
+dev-python/catkin_pkg 0.3.6 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/ccdproc 1.1.0 1.2.0: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -8651,7 +8651,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.6.1 0.6.2 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.1.0-r1 1.1.1 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.1.0-r1 1.1.1 1.1.2 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.8.5 2.8.6: Python interface to the R Programming Language
@@ -9055,12 +9055,12 @@ dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.6.2 5.7.1: XPath, XQuery, XSLT, and XML Sc
 dev-ros/actionlib 1.11.9 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
-dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
+dev-ros/amcl 1.14.0 1.14.2 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/angles 1.9.11 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.1 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.1 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.3.1 9999: Outputs audio to a speaker from a source node
-dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
+dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 1.14.2 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
 dev-ros/bond 1.7.19 1.8.0 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 1.7.17 1.7.18 1.7.19 1.8.0 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/bondpy 1.7.16 1.7.17 1.7.18 1.7.19 1.8.0 9999: Python implementation of bond, a mechanism for checking when another process has terminated
@@ -9071,9 +9071,9 @@ dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibr
 dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 1.12.20 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
 dev-ros/camera_calibration_parsers 1.11.12 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ interface for camera calibration information
-dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
+dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 1.14.2 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.3.5 0.3.6 9999: ROS-independent package for loading plugins
-dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
+dev-ros/clear_costmap_recovery 1.14.0-r1 1.14.2 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 0.4.1 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.10 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.10 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
@@ -9088,7 +9088,7 @@ dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.
 dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: The controller manager
 dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
-dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
+dev-ros/costmap_2d 1.14.0-r1 1.14.2 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.12.4-r1 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.19 1.12.20 9999: Nodelets for processing depth images such as those produced by OpenNI camera
@@ -9099,11 +9099,11 @@ dev-ros/diagnostic_common_diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 9999: Gener
 dev-ros/diagnostic_msgs 1.12.5 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
 dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
-dev-ros/dwa_local_planner 1.14.0-r1 9999: Dynamic Window Approach to local robot navigation on a plane
+dev-ros/dwa_local_planner 1.14.0-r1 1.14.2 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.5.46 1.5.47 1.5.48 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 1.11.9 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
-dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
+dev-ros/fake_localization 1.14.0-r1 1.14.2 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.8.1 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.6.2 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.6.2 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
@@ -9119,7 +9119,7 @@ dev-ros/geodesy 0.5.0 0.5.2 9999: Python and C++ interfaces for manipulating geo
 dev-ros/geographic_msgs 0.5.0 0.5.2 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.12.5 9999: Messages for common geometric primitives such as points, vectors, and poses
-dev-ros/global_planner 1.13.0 1.13.1 1.14.0 9999: Path planner library and node
+dev-ros/global_planner 1.13.0 1.13.1 1.14.0 1.14.2 9999: Path planner library and node
 dev-ros/gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 dev-ros/hardware_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Hardware Interface base class
 dev-ros/hector_compressed_map_transport 0.3.5 9999: Means for transporting compressed map data through the use of image_transport
@@ -9163,7 +9163,7 @@ dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan
 dev-ros/libmavconn 0.18.7 0.19.0 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.9.2 0.10.1 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
-dev-ros/map_server 1.13.0 1.13.1 1.14.0 9999: Offers map data as a ROS service
+dev-ros/map_server 1.13.0 1.13.1 1.14.0 1.14.2 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2017.2.7-r1 2017.5.5: MAVLink message marshaling library
 dev-ros/mavros 0.18.7 0.19.0 9999: MAVLink extendable communication node for ROS
 dev-ros/mavros_extras 0.18.7 0.19.0 9999: Extra nodes and plugins for mavros
@@ -9175,13 +9175,13 @@ dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies 
 dev-ros/message_to_tf 0.2.0 0.2.1 0.3.0 9999: Translates pose information from different kind of common_msgs message types to tf
 dev-ros/mk 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
-dev-ros/move_base 1.14.0 9999: Given a goal in the world, will attempt to reach it with a mobile base
+dev-ros/move_base 1.14.0 1.14.2 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
-dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 9999: Move slow and clear
+dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 1.14.2 9999: Move slow and clear
 dev-ros/moveit_msgs 0.9.1 9999: Messages, services and actions used by MoveIt
-dev-ros/nav_core 1.13.0 1.13.1 1.14.0 9999: Common interfaces for navigation specific robot actions
+dev-ros/nav_core 1.13.0 1.13.1 1.14.0 1.14.2 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.5 9999: Common messages used to interact with the navigation stack
-dev-ros/navfn 1.14.0-r1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
+dev-ros/navfn 1.14.0-r1 1.14.2 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
 dev-ros/nodelet 1.9.10 1.9.11 1.9.12 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.9.10 1.9.11 1.9.12 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.8 0.1.10 9999: Nodelet tutorial
@@ -9214,7 +9214,7 @@ dev-ros/random_numbers 0.3.0 0.3.1 9999: Wrappers for generating floating point 
 dev-ros/realtime_tools 1.9.1 1.9.2 1.10.0 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 dev-ros/resource_retriever 1.12.3 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
-dev-ros/robot_pose_ekf 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
+dev-ros/robot_pose_ekf 1.14.0 1.14.2 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.13.5 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
@@ -9267,18 +9267,18 @@ dev-ros/rostime 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 9999: Time and D
 dev-ros/rostopic 1.13.0 1.13.1 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.14.0 1.14.1 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.13.0 1.13.1 9999: Tool for diagnosing issues with a running ROS system
-dev-ros/rotate_recovery 1.13.0 1.13.1 1.14.0 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
+dev-ros/rotate_recovery 1.13.0 1.13.1 1.14.0 1.14.2 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
 dev-ros/rqt_action 0.4.9 9999: Introspect all available ROS action (from actionlib) types
 dev-ros/rqt_bag 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_bag_plugins 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_console 0.4.7 0.4.8 9999: GUI plugin for displaying and filtering ROS messages
 dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: RQT control manager plugin
 dev-ros/rqt_dep 0.4.7 0.4.8 9999: GUI plugin for visualizing the ROS dependency graph
-dev-ros/rqt_graph 0.4.7 0.4.8 9999: GUI plugin for visualizing the ROS computation graph
+dev-ros/rqt_graph 0.4.7 0.4.8 0.4.9 9999: GUI plugin for visualizing the ROS computation graph
 dev-ros/rqt_gui 0.3.2-r1 0.5.0 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
 dev-ros/rqt_gui_cpp 0.2.14 0.3.1 0.3.2 0.5.0 9999: Enables GUI plugins to use the C++ client library for ROS
 dev-ros/rqt_gui_py 0.3.2 0.5.0 9999: Enables GUI plugins to use the Python client library for ROS
-dev-ros/rqt_image_view 0.4.7 0.4.8 9999: GUI plugin for displaying images using image_transport
+dev-ros/rqt_image_view 0.4.7 0.4.8 0.4.9 9999: GUI plugin for displaying images using image_transport
 dev-ros/rqt_launch 0.4.7 0.4.8 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.4.7 0.4.8 9999: GUI plugin for configuring the logger level of ROS nodes
 dev-ros/rqt_moveit 0.5.6 0.5.7 9999: Assists monitoring tasks for MoveIt! motion planner
@@ -9370,7 +9370,7 @@ dev-ros/visp_hand2eye_calibration 0.10.0 9999: Estimates the camera position wit
 dev-ros/visp_tracker 0.10.0 9999: Wraps the ViSP moving edge tracker provided by the ViSP visual servoing library into a ROS package
 dev-ros/visualization_marker_tutorials 0.9.2 0.10.1 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.5 9999: Messages used by higher level packages that deal in visualization-specific data.
-dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 9999: Implementation of an efficient 3D voxel grid
+dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 1.14.2 9999: Implementation of an efficient 3D voxel grid
 dev-ros/xacro 1.11.1 1.11.2 1.12.0 9999: XML macro language
 dev-ros/xmlrpcpp 1.13.0 1.13.1 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
@@ -14943,7 +14943,7 @@ net-libs/libsoup 2.56.0 2.56.1: An HTTP library implementation in C
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1 1.5.4 1.5.4-r1 2.0.0 2.0.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3-r1 0.7.4 0.7.5 9999: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
+net-libs/libssh2 1.7.0 1.8.0 1.8.0-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1 1.0.1-r1 1.0.1-r2 1.0.2: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
@@ -15029,7 +15029,7 @@ net-mail/checkpassword-pam 0.99: checkpassword-compatible authentication program
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
-net-mail/cyrus-imapd 2.5.10 2.5.11 2.5.11-r1 3.0.3: The Cyrus IMAP Server
+net-mail/cyrus-imapd 2.5.10 2.5.11 2.5.11-r1 3.0.3 3.0.3-r1: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.19 2.2.29.1 2.2.30.1 2.2.30.2 2.2.31: An IMAP and POP3 server written with security primarily in mind
@@ -15487,7 +15487,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.07.23 2017.08.06 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.08.06 2017.08.13 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
@@ -15860,7 +15860,7 @@ ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 9999: Plugins for publishing 
 ros-meta/imu_pipeline 0.2.1 0.2.2 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
-ros-meta/navigation 1.13.0 1.13.1 1.14.0 9999: 2D navigation stack
+ros-meta/navigation 1.13.0 1.13.1 1.14.0 1.14.2 9999: 2D navigation stack
 ros-meta/nodelet_core 1.9.9 1.9.10 1.9.11 1.9.12 9999: Nodelet Core Metapackage
 ros-meta/perception 1.2.0 1.3.0 1.3.1 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 1.5.1 1.5.2 1.5.3 9999: PCL (Point Cloud Library) ROS interface stack
@@ -16529,7 +16529,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.12.2 0.12.4 0.12.5 0.13.0 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.13.0 0.13.2 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3 0.13.0: Image processing routines for SciPy

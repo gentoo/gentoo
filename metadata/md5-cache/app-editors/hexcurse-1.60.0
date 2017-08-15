@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/LonnyGomes/hexcurse/archive/v1.60.0.tar.gz -> hexcurse-1.60.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=7c3791842d1457d31780db84498bb063
+_md5_=66c2dcdaf8706426716f2cd032af8744
