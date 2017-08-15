@@ -15948,7 +15948,7 @@ sci-biology/bioperl-db 1.6.9 1.6.9-r1 9999-r1: Perl tools for bioinformatics - P
 sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9 9999-r1: Perl wrapper modules for key bioinformatics applications
 sci-biology/biopython 1.68: Python modules for computational molecular biology
-sci-biology/bioruby 1.4.3.0001-r1 9999: An integrated environment for bioinformatics using the Ruby language
+sci-biology/bioruby 1.4.3.0001-r1 1.5.1 9999: An integrated environment for bioinformatics using the Ruby language
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34-r2: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/blossoc 1.4.0-r1: A linkage disequilibrium association mapping tool
