@@ -10,7 +10,7 @@
     <name>Python</name>
   </maintainer>
   <longdescription lang="en">
-  Spyder development environment and its PyQt4-based IDE tools:
+  Spyder development environment and its PyQt5-based IDE tools:
   interactive Python shell, Python code editor, workspace
   (dict/list/string/array editor), doc viewer, history log,
   environment variables editor, ...
