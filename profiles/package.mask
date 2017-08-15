@@ -34,11 +34,6 @@
 =dev-java/javatoolkit-0.4.0
 =dev-java/javatoolkit-0.5.0
 
-# Denis Dupeyron <calchan@gentoo.org> (09 Aug 2017)
-# Masked for testing of fix for long standing incompatibility between recent versions of ansible and jinja
-# https://github.com/ansible/ansible/issues/20494
-=app-admin/ansible-2.3.2.0-r1
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -536,6 +531,7 @@ app-emulation/wine-any
 >=app-misc/tracker-1.11
 >=gnome-extra/nautilus-tracker-tags-1.11
 >=dev-lang/vala-0.35
+>=dev-libs/vala-common-0.35
 >=x11-libs/vte-0.47
 >=gnome-base/dconf-editor-3.23
 >=dev-util/devhelp-3.23
