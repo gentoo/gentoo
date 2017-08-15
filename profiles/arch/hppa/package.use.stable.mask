@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (19 Aug 2017)
+# Stable-masking net-libs/libssh rdeps for stabilisation timeout
+# (bug 618916)
+media-gfx/exiv2 webready
+media-video/ffmpeg ssh
+net-analyzer/wireshark ciscodump libssh sshdump
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Aug 2017)
 # Stable-masking pptx support for dev-libs/libzip stabilisation timeout
 # (bug 622044)
