@@ -534,6 +534,7 @@ app-emulation/wine-any
 >=dev-cpp/pangomm-2.41
 >=media-video/totem-3.23
 >=app-misc/tracker-1.11
+>=gnome-extra/nautilus-tracker-tags-1.11
 >=dev-lang/vala-0.35
 >=x11-libs/vte-0.47
 >=gnome-base/dconf-editor-3.23
