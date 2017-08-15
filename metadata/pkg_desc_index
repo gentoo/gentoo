@@ -19501,7 +19501,7 @@ x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree (not in a list)
 x11-wm/twm 1.0.8 1.0.9: X.Org twm application
 x11-wm/vtwm 5.4.6a 5.4.7-r1: one of many TWM descendants and implements a Virtual Desktop
-x11-wm/windowlab 1.34 1.40: small and simple window manager of novel design
+x11-wm/windowlab 1.34 1.40-r1: small and simple window manager of novel design
 x11-wm/windowmaker 0.95.7 0.95.8-r1 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
