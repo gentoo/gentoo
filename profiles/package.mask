@@ -478,7 +478,6 @@ app-emulation/wine-any
 
 # Gnome Team <gnome@gentoo.org> (08 Mar 2017)
 # GNOME 3.24 mask (#611270)
->=net-libs/phodav-2.2
 >=net-libs/gtk-vnc-0.7
 >=dev-libs/libgee-0.19
 
