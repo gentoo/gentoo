@@ -38,7 +38,7 @@ PATCHES=(
 	"${FILESDIR}/catkin_prefix.patch"
 	"${FILESDIR}/argparse.patch"
 	"${FILESDIR}/ros_packages.patch"
-	"${FILESDIR}/infinite_loop.patch"
+	"${FILESDIR}/infinite_loop2.patch"
 )
 
 python_test() {
