@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: tmux support for vim"
 HOMEPAGE="https://github.com/tmux-plugins/vim-tmux"
 SRC_URI="https://github.com/tmux-plugins/${PN}/archive/v${PV}.zip -> ${P}.zip"
 LICENSE="vim.org"
-KEYWORDS="amd64 ppc ppc64 x86 ~ia64 ~arm ~mips ~sparc ~alpha ~hppa"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 
 # Bug 603526.
 # Remove this line once this version is marked stable
