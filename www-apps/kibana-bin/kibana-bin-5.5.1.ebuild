@@ -3,12 +3,12 @@
 
 EAPI=6
 
-inherit pax-utils user
+inherit user
 
 MY_PN="${PN%-bin}"
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="Explore and visualize data"
+DESCRIPTION="Analytics and search dashboard for Elasticsearch"
 HOMEPAGE="https://www.elastic.co/products/kibana"
 SRC_URI="amd64? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}-linux-x86_64.tar.gz )
 	x86? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}-linux-x86.tar.gz )"
@@ -18,8 +18,8 @@ LICENSE="Apache-2.0 Artistic-2 BSD BSD-2 CC-BY-3.0 CC-BY-4.0 icu ISC MIT MPL-2.0
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RESTRICT="strip"
-QA_PREBUILT="opt/kibana/node/bin/node"
+DEPEND=""
+RDEPEND="net-libs/nodejs"
 
 pkg_setup() {
 	enewgroup ${MY_PN}
@@ -34,6 +34,9 @@ src_unpack() {
 	fi
 
 	default
+
+	# remove bundled nodejs
+	rm -r "${S}"/node
 }
 
 src_install() {
@@ -49,16 +52,13 @@ src_install() {
 	newins "${FILESDIR}"/${MY_PN}.logrotate ${MY_PN}
 
 	newconfd "${FILESDIR}"/${MY_PN}.confd ${MY_PN}
-	newinitd "${FILESDIR}"/${MY_PN}.initd-r4 ${MY_PN}
+	newinitd "${FILESDIR}"/${MY_PN}.initd-r5 ${MY_PN}
 
 	mv * "${ED%/}"/opt/${MY_PN} || die
-
-	# bug 567934
-	pax-mark m "${ED%/}/opt/${MY_PN}/node/bin/node"
 }
 
 pkg_postinst() {
-	elog "This version of Kibana is compatible with Elasticsearch 5.2"
+	elog "This version of Kibana is compatible with Elasticsearch 5.5"
 	elog
 	elog "Be sure to point ES_INSTANCE to your Elasticsearch instance"
 	elog "in /etc/conf.d/${MY_PN}."
