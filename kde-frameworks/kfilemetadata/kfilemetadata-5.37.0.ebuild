@@ -50,6 +50,15 @@ src_configure() {
 	kde5_src_configure
 }
 
+src_test() {
+	# bug #627848
+	local myctestargs=(
+		-E "(extractorcollectiontest)"
+	)
+
+	kde5_src_test
+}
+
 pkg_postinst() {
 	kde5_pkg_postinst
 
