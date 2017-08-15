@@ -546,6 +546,8 @@ app-emulation/wine-any
 >=games-puzzle/swell-foop-3.23
 >=gnome-extra/gnome-tweak-tool-3.23
 >=gnome-extra/evolution-ews-3.23
+>=games-board/gnome-chess-3.23
+>=games-puzzle/gnome-sudoku-3.23
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2017)
 # Mask experimental software
