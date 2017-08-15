@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,9 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc hdf5"
 
 RDEPEND="
-	|| ( dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
-		dev-python/PyQt4[${PYTHON_USEDEP},svg,webkit]
-		dev-python/pyside[${PYTHON_USEDEP},svg,webkit] )
+	dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
 	dev-python/QtPy[${PYTHON_USEDEP},svg,webkit]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/rope[${PYTHON_USEDEP}]' python2_7)
