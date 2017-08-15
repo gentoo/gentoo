@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="small and simple window manager of novel design"
 HOMEPAGE="http://www.nickgravgaard.com/windowlab/"
@@ -20,6 +20,9 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${PN}-1.34-fixed-font.patch"
+	  "${FILESDIR}/${P}-gentoo.diff" )
+
 pkg_setup() {
 	if use truetype ; then
 		export DEFINES=-DXFT
@@ -29,14 +32,9 @@ pkg_setup() {
 	tc-export CC
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.34-fixed-font.patch" \
-		"${FILESDIR}"/${P}-gentoo.diff
-}
-
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc CHANGELOG README TODO || die
+	emake DESTDIR="${D}" install
+	dodoc CHANGELOG README TODO
 
 	exeinto /etc/X11/Sessions
 	cat <<- EOF > "${T}"/${PN}
