@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit autotools-utils multilib
+inherit ltprune
 
 DESCRIPTION="Helper library for	S3TC texture (de)compression"
 HOMEPAGE="https://cgit.freedesktop.org/~mareko/libtxc_dxtn/"
@@ -11,41 +11,19 @@ SRC_URI="https://people.freedesktop.org/~cbrill/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
-IUSE="multilib"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+IUSE=""
 
 RDEPEND="media-libs/mesa"
 DEPEND="${RDEPEND}"
 
 RESTRICT="bindist"
 
-foreachabi() {
-	if use multilib; then
-		local ABI
-		for ABI in $(get_all_abis); do
-			multilib_toolchain_setup ${ABI}
-			AUTOTOOLS_BUILD_DIR=${WORKDIR}/${ABI} "${@}"
-		done
-	else
-		"${@}"
-	fi
-}
-
-src_configure() {
-	foreachabi autotools-utils_src_configure
-}
-
-src_compile() {
-	foreachabi autotools-utils_src_compile
-}
-
 src_install() {
-	foreachabi autotools-utils_src_install
-	find "${ED}" -name '*.la' -exec rm -f {} +
-}
+	default
 
-src_test() {
-	:;
+	# libtxc_dxtn is installed as a module (plugin)
+	prune_libtool_files --all
 }
 
 pkg_postinst() {

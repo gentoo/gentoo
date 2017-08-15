@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit autotools
 
 DESCRIPTION="a sticky note application for jotting down things to remember"
 HOMEPAGE="https://launchpad.net/xpad"
@@ -29,3 +30,9 @@ DEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
