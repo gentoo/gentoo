@@ -12,13 +12,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-RDEPEND=">=sys-libs/ncurses-5.2:0="
+RDEPEND="
+	>=sys-libs/ncurses-5.2:0=
+"
 DEPEND="
 	${RDEPEND}
 "
-
 PATCHES=(
-	"${FILESDIR}/${PN}-1.60.0-tinfo.patch"
+	"${FILESDIR}"/${PN}-1.60.0-Werror.patch
+	"${FILESDIR}"/${PN}-1.60.0-tinfo.patch
 )
 
 src_prepare() {
