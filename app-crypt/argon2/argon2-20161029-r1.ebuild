@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib
+inherit multilib-minimal
 
 DESCRIPTION="Password hashing software that won the Password Hashing Competition (PHC)"
 HOMEPAGE="https://github.com/P-H-C/phc-winner-argon2"
@@ -27,8 +27,9 @@ src_prepare() {
 	sed -i -e 's/-g //' Makefile || die "sed failed"
 	sed -i -e "s/-march=\$(OPTTARGET) /${CFLAGS} /" Makefile || die "sed failed"
 	sed -i -e 's/CFLAGS += -march=\$(OPTTARGET)//' Makefile || die "sed failed"
+	multilib_copy_sources
 }
 
-src_install() {
+multilib_src_install() {
 	emake DESTDIR="${D}" LIBRARY_REL=$(get_libdir) install || die
 }
