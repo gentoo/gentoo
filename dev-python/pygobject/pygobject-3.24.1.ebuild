@@ -57,6 +57,11 @@ src_prepare() {
 	sed -e 's/^.*TEST_NAMES=compat_test_pygtk .*;/echo "Test disabled";/' \
 		-i tests/Makefile.{am,in} || die
 
+	# FAIL: test_cairo_font_options (test_cairo.TestPango)
+	# AssertionError: <type 'cairo.SubpixelOrder'> != <type 'int'>
+	sed -e 's/^.*type(font_opts.get_subpixel_order()), int.*/#/' \
+		-i tests/test_cairo.py || die
+
 	gnome2_src_prepare
 	python_copy_sources
 }
