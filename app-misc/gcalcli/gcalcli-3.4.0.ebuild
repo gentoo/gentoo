@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-# google-api-python-client only supports these
-PYTHON_COMPAT=( python2_7 pypy )
+# python-gflags doesn't support python3
+# parsedatetime doesn't support pypy
+PYTHON_COMPAT=( python2_7 )
 
 inherit python-r1
 
@@ -15,14 +16,18 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/google-api-python-client-1.5.3[${PYTHON_USEDEP}]
-	dev-python/gdata[${PYTHON_USEDEP}]
+	dev-python/parsedatetime[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/python-gflags[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/gcalcli-oauth2client.patch"
+}
 
 src_install() {
 	dodoc -r ChangeLog README.md docs
