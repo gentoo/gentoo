@@ -1325,7 +1325,7 @@ app-emulation/libvirt 3.2.0 3.3.0 3.4.0 3.5.0 9999: C toolkit to manipulate virt
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1 2.0.7 2.0.8: LinuX Containers userspace utilities
-app-emulation/lxd 2.8 2.11 2.14-r1: Fast, dense and secure container management
+app-emulation/lxd 2.14-r1: Fast, dense and secure container management
 app-emulation/nemu 1.1.0 1.2.0 1.3.0: ncurses interface for QEMU
 app-emulation/open-vm-tools 10.1.10: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39.1_p20170227: Unix Guest Agent for OpenStack
@@ -1501,7 +1501,7 @@ app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji C
 app-i18n/ibus 1.5.12 1.5.15 1.5.16: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick input methods
-app-i18n/ibus-chewing 1.5.1: The Chewing IMEngine for IBus Framework
+app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
 app-i18n/ibus-fbterm 1.0.1: IBus client for FbTerm
 app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
