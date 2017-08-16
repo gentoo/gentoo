@@ -226,10 +226,6 @@ dev-lang/spidermonkey:52
 # month (#615314)
 x11-proto/evieext
 
-# Thomas Deutschmann <whissi@gentoo.org> (16 Jul 2017)
-# Discontinued project with multiple vulnerabilities, removal in a month (#620802)
-media-gfx/autotrace
-
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
