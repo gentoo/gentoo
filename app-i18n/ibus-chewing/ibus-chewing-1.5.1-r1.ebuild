@@ -15,15 +15,15 @@ SRC_URI="https://github.com/definite/${PN}/releases/download/${PV}/${MY_P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls"
+IUSE="gconf nls"
 
 RDEPEND="app-i18n/ibus
 	app-i18n/libchewing
 	dev-libs/glib:2
 	dev-util/gob:2
-	gnome-base/gconf
 	x11-libs/gtk+:2
 	x11-libs/libX11
+	gconf? ( gnome-base/gconf )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -51,12 +51,12 @@ src_test() {
 }
 
 pkg_preinst() {
-	gnome2_gconf_savelist
+	use gconf && gnome2_gconf_savelist
 	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
-	gnome2_gconf_install
+	use gconf && gnome2_gconf_install
 	gnome2_schemas_update
 }
 
