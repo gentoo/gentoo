@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-gn-bootstrap-r14.patch"
 	"${FILESDIR}/${PN}-atk-r1.patch"
 	"${FILESDIR}/${PN}-mojo-dep.patch"
+	"${FILESDIR}/${PN}-gcc5-r1.patch"
 )
 
 pre_build_checks() {
