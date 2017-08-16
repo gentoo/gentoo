@@ -11,5 +11,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">sleuthkit</remote-id>
+    <remote-id type="github">sleuthkit/sleuthkit</remote-id>
   </upstream>
 </pkgmetadata>
