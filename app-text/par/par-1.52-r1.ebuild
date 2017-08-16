@@ -1,5 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -16,7 +18,7 @@ IUSE=""
 DEPEND="!dev-util/par
 	!app-arch/par"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_compile() {
 	make -f protoMakefile CC="$(tc-getCC) -c $CFLAGS" \
@@ -24,7 +26,7 @@ src_compile() {
 }
 
 src_install() {
-	newbin par par-format || die
+	newbin par par-format
 	doman par.1
 	dodoc releasenotes par.doc
 }
