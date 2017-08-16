@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=dev-libs/libnl-3.2.8:3=[${MULTILIB_USEDEP}]
 	policykit? ( >=sys-auth/polkit-0.106 )
 	net-libs/libndp[${MULTILIB_USEDEP}]
-	net-misc/curl
+	>=net-misc/curl-7.24
 	net-misc/iputils
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dhclient? ( >=net-misc/dhcp-4[client] )
 	dhcpcd? ( net-misc/dhcpcd )
-	elogind? ( sys-auth/elogind )
+	elogind? ( >=sys-auth/elogind-219 )
 	gnutls? (
 		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
 		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}] )
