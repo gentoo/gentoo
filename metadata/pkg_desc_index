@@ -142,7 +142,7 @@ app-admin/lsyncd 2.2.0 2.2.1 2.2.2: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 149 152: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.10.5 2.11.1: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.11.1 2.11.2: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
@@ -2379,7 +2379,7 @@ app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6 1.18 1.19.2.1 1.19.2.1-r1
 app-text/paperwork 1.1.2 1.2: a personal document manager for scanned documents (and PDFs)
 app-text/paperwork-backend 1.1.2 1.2: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
-app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
+app-text/par 1.52-r1: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
 app-text/pastebinit 1.5: A software that lets you send anything you want directly to a pastebin
 app-text/pdf2djvu 0.9.3 0.9.4: A tool to create DjVu files from PDF files
@@ -2445,7 +2445,7 @@ app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supp
 app-text/sword 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39 1.40: Type 1 Font utilities
-app-text/tabler 2: A utility to create text art tables from delimited input
+app-text/tabler 2 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences

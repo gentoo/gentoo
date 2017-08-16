@@ -1,13 +1,12 @@
 DEFINED_PHASES=compile install
 DEPEND=!dev-util/par !app-arch/par
 DESCRIPTION=a paragraph reformatter, vaguely similar to fmt, but better
-EAPI=0
+EAPI=6
 HOMEPAGE=http://www.nicemice.net/par/
 KEYWORDS=~amd64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=freedist
-RDEPEND=!dev-util/par !app-arch/par
 SLOT=0
 SRC_URI=http://www.nicemice.net/par/Par152.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=aac68b7d88525d078a025a04cd1632fd
+_md5_=4b8242268fe8e39d4254dbb0d4f947b8
