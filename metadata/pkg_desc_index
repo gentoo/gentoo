@@ -7476,8 +7476,8 @@ dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.15: Python module to provide iteration for datetime object
 dev-python/crossbar 17.6.1_p3: Crossbar.io - The Unified Application Router for the twisted framework
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2: Test vectors for the cryptography package
+dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
