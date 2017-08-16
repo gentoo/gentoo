@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools gnome2-utils eutils python-single-r1
+inherit autotools gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="http://www.claws-mail.org/"
@@ -200,8 +200,10 @@ pkg_postinst() {
 	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
 	ewarn "- The gtkhtml2, dillo and trayicon plugins have been dropped entirely"
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
