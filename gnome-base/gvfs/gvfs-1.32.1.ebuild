@@ -102,7 +102,6 @@ src_configure() {
 	# --disable-obexftp, upstream bug #729945
 	gnome2_src_configure \
 		--disable-gdu \
-		--disable-hal \
 		--enable-documentation \
 		--enable-gcr \
 		--with-dbus-service-dir="${EPREFIX}"/usr/share/dbus-1/services \
