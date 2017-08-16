@@ -7,7 +7,6 @@ inherit autotools linux-info udev user
 
 DESCRIPTION="Program for querying and changing monitor settings"
 HOMEPAGE="http://www.ddcutil.com/"
-
 SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # Binary drivers need special instructions compared to the open source counterparts.
@@ -16,7 +15,7 @@ SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.
 # the different drivers.
 # Remove ATI/AMD driver since it's masked for removal.
 # Will most likely need to set this for AMDGPU when in portage.
-IUSE="enable-api-libs usb-monitor user-permissions video_cards_nvidia"
+IUSE="usb-monitor user-permissions video_cards_nvidia"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -39,7 +38,7 @@ pkg_pretend() {
 	CONFIG_CHECK="~I2C_CHARDEV"
 	ERROR_I2C_CHARDEV="You must enable I2C_CHARDEV in your kernel to continue"
 	if use usb-monitor; then
-		CONFIG_CHECK+="~HIDRAW ~USB_HIDDEV"
+		CONFIG_CHECK+=" ~HIDRAW ~USB_HIDDEV"
 		ERROR_HIDRAW="HIDRAW is needed to support USB monitors"
 		ERROR_I2C_CHARDEV="USB_HIDDEV is needed to support USB monitors"
 	fi
@@ -56,9 +55,9 @@ src_prepare() {
 src_configure() {
 	# Python API is still very experimental.
 	local myeconfargs=(
-		$(use_enable enable-api-libs lib)
 		$(use_enable usb-monitor usb)
 		--disable-swig
+		--enable-lib
 	)
 
 	econf "${myeconfargs[@]}"
@@ -96,9 +95,7 @@ pkg_postinst() {
 	fi
 
 	if use video_cards_nvidia; then
-		einfo "=================================================================="
-		einfo "Please read the following webpage on proper usage with the nVidia "
-		einfo "binary drivers, or it may not work: http://www.ddcutil.com/nvidia/"
-		einfo "=================================================================="
+		ewarn "Please read the following webpage on proper usage with the nVidia "
+		ewarn "binary drivers, or it may not work: http://www.ddcutil.com/nvidia/"
 	fi
 }
