@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.rdoc TODO"
@@ -45,7 +45,7 @@ all_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -S testrb test/test_*.rb || die
+	${RUBY} -S testrb-2 test/test_*.rb || die
 }
 
 all_ruby_install() {
