@@ -1,7 +1,0 @@
-# Copyright 2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (22 Jul 2017)
-# Override default +gdbm setting, which enables minor server-only
-# feature, but enforces server USE to all users via REQUIRED_USE.
-net-firewall/fwknop -gdbm
