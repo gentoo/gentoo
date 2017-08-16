@@ -221,11 +221,6 @@ dev-lang/spidermonkey:52
 # Keep shotwell development series masked.
 >=media-gfx/shotwell-0.27
 
-# Matt Turner <mattst88@gentoo.org> (16 Jul 2017)
-# Header package for removed x11-libs/libXevie. No dependencies. Removal in a
-# month (#615314)
-x11-proto/evieext
-
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
