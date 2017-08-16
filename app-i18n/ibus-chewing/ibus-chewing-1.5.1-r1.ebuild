@@ -4,7 +4,7 @@
 EAPI="6"
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 MY_P="${P}-Source"
 
@@ -39,4 +39,18 @@ src_configure() {
 	)
 	use nls || mycmakeargs+=( -DMANAGE_GETTEXT_SUPPORT=0 )
 	cmake-utils_src_configure
+}
+
+pkg_preinst() {
+	gnome2_gconf_savelist
+	gnome2_schemas_savelist
+}
+
+pkg_postinst() {
+	gnome2_gconf_install
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
 }
