@@ -8535,7 +8535,7 @@ dev-python/python-saharaclient 0.11.0 1.1.0: This is a client for the OpenStack 
 dev-python/python-scsi 0_pre160211 9999: Access to SG_IO scsi devices
 dev-python/python-scw 0.4.7-r1: Python binding for Scw
 dev-python/python-senlinclient 1.0.0 1.2.0: A client for the OpenStack Senlin API
-dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and workaround code for Python
+dev-python/python-slip 0.6.1 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-socketio 1.7.4: Python implementation of the Socket.IO realtime server.
 dev-python/python-spidermonkey 0.0.10: JavaScript / Python bridge
@@ -12628,7 +12628,6 @@ media-gfx/argyllcms 1.7.0 1.8.2 1.8.3 1.9.1 1.9.2: Open source, ICC compatible c
 media-gfx/arss 0.2.3 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.32 2.36 2.38 2.41-r1: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
-media-gfx/autotrace 0.31.1-r7 0.31.1-r8: A program for converting bitmaps to vector graphics
 media-gfx/aview 1.3.0_rc1-r1 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
 media-gfx/blender 2.72b-r4 2.78-r1 2.78a-r1: 3D Creation/Animation/Publishing System
@@ -19264,7 +19263,6 @@ x11-proto/damageproto 1.2.1-r1: X.Org Damage protocol headers
 x11-proto/dmxproto 2.3.1: X.Org DMX protocol headers
 x11-proto/dri2proto 2.8-r1: X.Org DRI2 protocol headers
 x11-proto/dri3proto 1.0: X.Org DRI3 protocol specification and Xlib/Xserver headers
-x11-proto/evieext 1.1.1: X.Org EvIE protocol headers
 x11-proto/fixesproto 5.0 5.0-r1: X.Org Fixes protocol headers
 x11-proto/fontcacheproto 0.1.3: X.Org Fontcache protocol headers
 x11-proto/fontsproto 2.1.2 2.1.3: X.Org Fonts protocol headers
