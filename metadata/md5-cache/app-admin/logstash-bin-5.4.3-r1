@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://artifacts.elastic.co/downloads/logstash/logstash-5.4.3.zip
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
 _eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=25347115f171079809c5e3077cfdeb46
+_md5_=ef68635426cfbddd6a0e2f54e0cbab21
