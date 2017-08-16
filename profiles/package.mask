@@ -742,9 +742,12 @@ games-strategy/smac
 app-eselect/eselect-lua
 =dev-lang/lua-5.1.5-r2
 =dev-lang/lua-5.1.5-r100
+=dev-lang/lua-5.1.5-r101
 =dev-lang/lua-5.2.3
 =dev-lang/lua-5.2.3-r1
+=dev-lang/lua-5.2.3-r2
 =dev-lang/lua-5.3.3
+=dev-lang/lua-5.3.3-r1
 
 # Mike Gilbert <floppym@gentoo.org> (04 Mar 2014)
 # Dev channel releases are only for people who are developers or want more
