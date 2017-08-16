@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=(
 	pypy
-	python3_3 python3_4 python3_5 python3_6
+	python3_4 python3_5 python3_6
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
