@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
-SRC_URI="http://dev.gentoo.org/~fuzzyray/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~fuzzyray/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
