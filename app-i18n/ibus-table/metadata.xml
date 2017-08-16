@@ -9,7 +9,6 @@
     A framework for table based input methods using IBus.
   </longdescription>
   <upstream>
-    <remote-id type="google-code">ibus</remote-id>
-    <remote-id type="github">ibus/ibus</remote-id>
+    <remote-id type="github">kaio/ibus-table</remote-id>
   </upstream>
 </pkgmetadata>
