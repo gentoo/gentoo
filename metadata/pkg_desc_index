@@ -17184,7 +17184,7 @@ sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/nix 1.11.11 1.11.12-r1 1.11.13: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.1 1.2 1.3: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.21.7 0.22.4 0.23.2 0.24.2 0.25 0.26.2 0.26.3 0.27.2 0.28 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.21.7 0.22.4 0.23.2 0.24.2 0.25 0.26.2 0.26.3 0.27.2 0.28 0.29 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20170326 20170423: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
