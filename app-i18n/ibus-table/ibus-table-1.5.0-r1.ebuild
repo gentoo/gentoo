@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Tables engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
