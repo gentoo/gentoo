@@ -3,6 +3,7 @@
 
 EAPI="6"
 CMAKE_IN_SOURCE_BUILD="1"
+CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake-utils
 
