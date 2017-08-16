@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}-Source"
 
+PATCHES=( "${FILESDIR}/postgres-10-build-fix.patch" )
+
 src_prepare() {
 	default
 	sed -e "s:share):share/${P}):" \

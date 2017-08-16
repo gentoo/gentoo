@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="sqlite(+)"
 
 inherit python-single-r1
 
 DESCRIPTION="Tables engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${P}.tar.gz"
+SRC_URI="https://github.com/kaio/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
