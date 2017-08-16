@@ -3,9 +3,9 @@
 
 EAPI="6"
 
-DESCRIPTION="Latin tables for IBus-Table"
-HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${P}.tar.gz"
+DESCRIPTION="Various tables for IBus-Table"
+HOMEPAGE="https://github.com/moebiuscurve/ibus-table-others"
+SRC_URI="https://github.com/moebiuscurve/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

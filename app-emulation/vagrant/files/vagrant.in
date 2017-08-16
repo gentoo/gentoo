@@ -4,16 +4,16 @@
 # Vagrant installation directory. This sets up proper environmental variables
 # so that everything loads and compiles to proper directories.
 
-VAGRANT_DIR="$( ruby -e 'print Gem::default_path[-1] + "/gems/vagrant-1.9.5"' )"
+VAGRANT_DIR="$( ruby -e 'print Gem::default_path[-1] + "/gems/vagrant-@VAGRANT_VERSION@"' )"
 
 # Export GEM_HOME based on VAGRANT_HOME
 #
 # This needs to be set because Bundler includes gem paths
 # from RubyGems' Gem.paths.
-if [ -z $VAGRANT_HOME ]; then
-  VAGRANT_HOME=$(eval echo "~/.vagrant.d")
+if [ -z ${VAGRANT_HOME} ]; then
+  VAGRANT_HOME="~/.vagrant.d"
 fi
-export GEM_HOME="$VAGRANT_HOME/gems"
+export GEM_HOME="${VAGRANT_HOME}/gems"
 
 # SSL certs
 export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
@@ -27,19 +27,12 @@ export VAGRANT_INSTALLER_ENV=1
 export VAGRANT_INSTALLER_EMBEDDED_DIR="/var/lib/vagrant"
 export VAGRANT_INSTALLER_VERSION="2"
 
-# Determine the OS that we're on, which is used in some later checks.
-# It is very important we do this _before_ setting the PATH below
-# because uname dependencies can conflict on some platforms.
-OS=$(uname -s 2>/dev/null)
-
 # Export the OS as an environmental variable that Vagrant can access
 # so that it can behave better.
-export VAGRANT_DETECTED_OS="${OS}"
-
-VAGRANT_EXECUTABLE="${VAGRANT_DIR}/bin/vagrant"
+export VAGRANT_DETECTED_OS="$(uname -s 2>/dev/null)"
 
 # Export the VAGRANT_EXECUTABLE so that pre-rubygems can optimize a bit
-export VAGRANT_EXECUTABLE
+export VAGRANT_EXECUTABLE="${VAGRANT_DIR}/bin/vagrant"
 
 # Call the actual Vagrant bin with our arguments
 exec ruby "${VAGRANT_EXECUTABLE}" "$@"

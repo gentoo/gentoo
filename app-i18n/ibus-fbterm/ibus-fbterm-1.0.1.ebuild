@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-DESCRIPTION="ibus-fbterm is a input method for FbTerm based on iBus"
+DESCRIPTION="IBus client for FbTerm"
 HOMEPAGE="https://github.com/fujiwarat/ibus-fbterm"
 SRC_URI="https://github.com/fujiwarat/${PN}/releases/download/${PV}/${P}.tar.gz"
 
