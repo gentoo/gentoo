@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mrash/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="client extras firewalld gdbm gpg iptables nfqueue python server udp-server"
+IUSE="+client extras firewalld gdbm gpg +iptables nfqueue python +server udp-server"
 
 DEPEND="
 	client? ( net-misc/wget[ssl] )
@@ -36,9 +36,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="
-	firewalld? ( server )
-	gdbm? ( server )
-	iptables? ( server )
 	nfqueue? ( server )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	server? ( ^^ ( firewalld iptables ) )
