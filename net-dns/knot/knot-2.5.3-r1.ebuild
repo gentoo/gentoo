@@ -26,7 +26,7 @@ RDEPEND="
 	)
 	idn? ( || ( net-dns/libidn >=net-dns/libidn2-2.0.0 ) )
 	dev-libs/libedit
-	systemd? ( sys-apps/systemd )
+	systemd? ( >=sys-apps/systemd-229 )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -66,7 +66,9 @@ src_install() {
 	keepdir /var/lib/${PN}
 
 	newinitd "${FILESDIR}/knot.init" knot
-	systemd_dounit "${FILESDIR}/knot.service"
+	if use systemd; then
+		systemd_newunit "${FILESDIR}/knot-1.service" knot
+	fi
 
 	find "${D}" -name '*.la' -delete || die
 }
