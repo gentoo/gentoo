@@ -14340,7 +14340,7 @@ net-analyzer/mtr 0.87 0.92-r1 9999: My TraceRoute, an Excellent network diagnost
 net-analyzer/multimon-ng 1.0.0-r1 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/munin 2.0.19-r2 2.0.25-r2 2.0.33 2.0.33-r1 2.1.9999: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
-net-analyzer/nagios 4.3.1 4.3.2: The Nagios metapackage
+net-analyzer/nagios 4.3.1 4.3.3: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
 net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban daemon
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
