@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/pgagent"
+command_user="pgagent"
+
+# If pgagent daemonizes itself, it won't write a PID file and
+# we have to work a little harder to stop() it. So let it run
+# in the foreground, and have OpenRC manage its PID file.
+command_args="-f
+              -t ${PGA_POLL}
+              -r ${PGA_RETRY}
+              -s ${PGA_LOG}
+              -l ${PGA_LEVEL}
+              hostaddr=${PG_HOST}
+              dbname=${PG_DBNAME}
+              user=${PG_USER}"
+
+command_background="true"
+pidfile="/run/pgagent.pid"
+
+depend() {
+    use net
+    need postgresql
+}
+
+start_pre() {
+    # The log file needs to be writable by the daemon user.
+    checkpath --file --owner root:pgagent --mode 0660 "${PGA_LOG}"
+}
