@@ -7493,7 +7493,7 @@ dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 0.10.2 0.14.1 0.15.0 0.15.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
-dev-python/dbusmock 0.16.7: Easily create mock objects on D-Bus for software testing
+dev-python/dbusmock 0.16.7 0.16.9: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.0 1.1.1: A library to multiply test cases
 dev-python/debtcollector 1.3.0 1.11.0: Python deprecation patterns and strategies that collect technical debt
@@ -13708,7 +13708,7 @@ media-sound/fapg 0.41 0.42: Fast Audio Playlist Generator
 media-sound/flac-image 1.00: Utility for adding image files (e.g. album cover art) to metadata of FLAC files
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flack 2.0.6: flack - edit FLAC tags from command line
-media-sound/flacon 2.1.1 3.0.0: Extracts audio tracks from an audio CD image to separate tracks
+media-sound/flacon 2.1.1 3.1.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6-r1: Software real-time synthesizer based on the Soundfont 2 specifications
