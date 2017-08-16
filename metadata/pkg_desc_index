@@ -1513,7 +1513,7 @@ app-i18n/ibus-qt 1.3.1 1.3.3: Qt IBus library and Qt input method plugin
 app-i18n/ibus-rime 0.9.9 1.1 1.2: Rime Input Method Engine for IBus Framework
 app-i18n/ibus-skk 1.4.1-r1 1.4.2: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 2.0.4_pre20130108-r2: The SunPinYin IMEngine for IBus Framework
-app-i18n/ibus-table 1.5.0-r1: The Table Engine for IBus Framework
+app-i18n/ibus-table 1.5.0-r1 1.9.18: Tables engines for IBus
 app-i18n/ibus-table-chinese 1.4.6: Chinese input tables for ibus-table
 app-i18n/ibus-table-code 1.2.0.20100305: The code tables for IBus-Table
 app-i18n/ibus-table-cyrillic 1.2.0.20100305: Translit, Russian Traditional, Yawerty tables for IBus-Table
