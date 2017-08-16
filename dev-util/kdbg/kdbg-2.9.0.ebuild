@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_LINGUAS="cs da de es fr hr hu it ja nb nn pl pt ro ru sk sr sv tr zh_CN"
 KDE_HANDBOOK="optional"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="Graphical debugger interface"
