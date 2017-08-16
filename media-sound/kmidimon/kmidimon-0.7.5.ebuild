@@ -1,9 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 KDE_LINGUAS="cs es ja"
 KDE_HANDBOOK="optional"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="A MIDI monitor for ALSA sequencer"
