@@ -33,6 +33,7 @@
 # Not ready for production yet.
 =dev-java/javatoolkit-0.4.0
 =dev-java/javatoolkit-0.5.0
+=dev-java/javatoolkit-9999
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
 # Dev channel releases are only for people who are developers or want more
