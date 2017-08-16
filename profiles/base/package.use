@@ -1,11 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (22 Jul 2017)
-# Override default +gdbm setting, which enables minor server-only
-# feature, but enforces server USE to all users via REQUIRED_USE.
-net-firewall/fwknop -gdbm
-
 # David Seifert <soap@gentoo.org> (17 Apr 2017)
 # Only python 3.5 supported
 kde-apps/kajongg:5 python_single_target_python3_5 python_targets_python3_5
