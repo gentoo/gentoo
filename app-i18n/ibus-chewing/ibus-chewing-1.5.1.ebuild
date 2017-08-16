@@ -34,6 +34,7 @@ DOCS=( AUTHORS ChangeLog README RELEASE-NOTES.txt USER-GUIDE )
 
 src_configure() {
 	local mycmakeargs=(
+		-DMANAGE_DEPENDENCY_PACKAGE_EXISTS_CMD=false
 		-DPRJ_DOC_DIR="${EPREFIX}"/usr/share/doc/${PF}
 	)
 	use nls || mycmakeargs+=( -DMANAGE_GETTEXT_SUPPORT=0 )
