@@ -7,48 +7,35 @@ inherit autotools
 
 DESCRIPTION="A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)"
 HOMEPAGE="http://johnkerl.org/miller"
-LICENSE="BSD-2"
-
-SLOT="0"
 SRC_URI="https://github.com/johnkerl/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+LICENSE="BSD-2"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc test"
 
 DEPEND="sys-devel/flex"
 
-my_for_each_test_dir() {
-	local test_dirs=( c/{reg,unit}_test )
-	if use test ; then
-		for d in "${test_dirs[@]}" ; do
-			pushd "${d}" >/dev/null || die
-			"${@}" || die
-			popd >/dev/null || die
-		done
-	fi
-}
-
 src_prepare() {
 	default
 
-	local sed_args=(
-		# respect FLAGS
-		-e '/.*FLAGS[^=]*=/ s:(-g|-pg|-O[0-9]) ::g'
-	)
-	find -type f -name "Makefile.am" | xargs sed -r "${sed_args[@]}" -i --
-	assert
+	# respect flags
+	find -type f -name "Makefile.am" -exec sed -i -r -e '/.*FLAGS[^=]*=/ s:(-g|-pg|-O[0-9]) ::g' -- {} \; || die
 
 	# disable docs rebuilding as they're shipped prebuilt
 	sed -e '/SUBDIRS[^=]*=/ s:doc::g' -i -- Makefile.am || die
 
 	# disable building tests automagically
-	use test || sed -e '/SUBDIRS[^=]*=/ s:[^ ]*_test::g' -i -- c/Makefile.am || die
+	if ! use test; then
+		sed -e '/SUBDIRS[^=]*=/ s:[^ ]*_test::g' -i -- c/Makefile.am || die
+	fi
 
 	eautoreconf
 }
 
 src_test() {
-	my_for_each_test_dir emake check
+	emake -C c/reg_test
+	emake -C c/unit_test
 }
 
 src_install() {
