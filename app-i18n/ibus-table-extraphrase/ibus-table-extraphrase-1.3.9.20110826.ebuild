@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="Chinese extra phrases for IBus-Table"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
