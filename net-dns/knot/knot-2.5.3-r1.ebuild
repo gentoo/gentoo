@@ -47,6 +47,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P/_/-}"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-link-with-libatomic.patch"
+)
+
 src_configure() {
 	local my_conf=()
 	for u in "${KNOT_MODULES[@]#+}"; do
