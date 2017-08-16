@@ -131,7 +131,9 @@ src_compile() {
 	fi
 
 	# Create the doc output dirs if requested
-	use doc && mkdir -p "${T}"/doc/{api-docs,jni-docs} || die
+	if use doc; then
+		mkdir -p "${T}"/doc/{api-docs,jni-docs} || die
+	fi
 
 	emake all $(usex doc api-docs "")
 }
