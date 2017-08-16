@@ -16532,7 +16532,7 @@ sci-libs/rtabmap 0.13.0 0.13.2 9999: Real-Time Appearance-Based Mapping (RGB-D G
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3 0.13.0: Image processing routines for SciPy
-sci-libs/scikits_learn 0.17 0.17.1 0.18.1 0.18.2 0.18.2-r1: Python modules for machine learning and data mining
+sci-libs/scikits_learn 0.17 0.17.1 0.18.1 0.18.2 0.18.2-r1 0.19.0: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.16.1 0.18.1 0.19.1 9999: Scientific algorithms library for Python
@@ -16550,7 +16550,7 @@ sci-libs/suitesparseconfig 4.2.1 4.2.1-r1: Common configurations for all package
 sci-libs/sundials 2.7.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
-sci-libs/symengine 0.3.0: Fast symbolic manipulation library, written in C++
+sci-libs/symengine 0.3.0-r1: Fast symbolic manipulation library, written in C++
 sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
