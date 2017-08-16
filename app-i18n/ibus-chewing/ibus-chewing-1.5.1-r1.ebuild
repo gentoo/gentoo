@@ -4,7 +4,7 @@
 EAPI="6"
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils gnome2-utils virtualx
 
 MY_P="${P}-Source"
 
@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${PN}-test.patch )
 DOCS=( AUTHORS ChangeLog README RELEASE-NOTES.txt USER-GUIDE )
 
 src_configure() {
@@ -39,6 +40,14 @@ src_configure() {
 	)
 	use nls || mycmakeargs+=( -DMANAGE_GETTEXT_SUPPORT=0 )
 	cmake-utils_src_configure
+}
+
+src_test() {
+	"${EROOT}"${GLIB_COMPILE_SCHEMAS} --allow-any-name "${BUILD_DIR}"/bin || die
+
+	export GSETTINGS_BACKEND="memory"
+	export GSETTINGS_SCHEMA_DIR="${BUILD_DIR}/bin"
+	virtx cmake-utils_src_test
 }
 
 pkg_preinst() {
