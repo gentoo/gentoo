@@ -2437,7 +2437,7 @@ developers and volunteer mentors.</description>
     <email>overlays@gentoo.org</email>
     <name>Gentoo Overlays</name>
     <url>https://wiki.gentoo.org/wiki/Project:Overlays</url>
-    <description>The Gentoo Overlays team is responsible for the administration of the overlays and the *.overlays.gentoo.org websites.</description>
+    <description>The Gentoo Overlays project is responsible for the administration of the overlays and the overlays.gentoo.org / repos.gentoo.org websites.</description>
     <subproject ref="repo-qa-checks@gentoo.org"/>
     <member>
       <email>djc@gentoo.org</email>
