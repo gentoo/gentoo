@@ -81,10 +81,6 @@ src_test() {
 	virtx "${BUILD_DIR}/tests/${PN}_test"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	elog "${PN} optionally supports formats listed below."
 	elog "(List will be empty if all extra packages are installed.)"
