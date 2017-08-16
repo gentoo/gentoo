@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="nls"
 
 RDEPEND="x11-libs/libXtst
 	>=app-i18n/ibus-1.3
-	>=dev-libs/libchewing-0.3.3
+	>=app-i18n/libchewing-0.3.3
 	x11-libs/gtk+:2
 	dev-util/gob:2"
 DEPEND="${RDEPEND}
