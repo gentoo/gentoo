@@ -12,7 +12,19 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dnstap doc caps +fastparser idn systemd"
+
+KNOT_MODULES=(
+	"+dnsproxy"
+	"dnstap"
+	"+noudp"
+	"+onlinesign"
+	"rosedb"
+	"+rrl"
+	"+stats"
+	"+synthrecord"
+	"+whoami"
+)
+IUSE="doc caps +fastparser idn systemd +utils ${KNOT_MODULES[@]}"
 
 RDEPEND="
 	>=net-libs/gnutls-3.3:=
@@ -36,14 +48,21 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P/_/-}"
 
 src_configure() {
+	local my_conf=()
+	for u in "${KNOT_MODULES[@]#+}"; do
+		my_conf+=("$(use_with $u module-$u)")
+	done
+
 	econf \
 		--with-storage="${EPREFIX}/var/lib/${PN}" \
 		--with-rundir="${EPREFIX}/var/run/${PN}" \
 		$(use_enable fastparser) \
 		$(use_enable dnstap) \
 		$(use_enable doc documentation) \
+		$(use_enable utils utilities) \
+		--enable-systemd=$(usex systemd) \
 		$(use_with idn libidn) \
-		--enable-systemd=$(usex systemd)
+		"${my_conf[@]}"
 }
 
 src_compile() {

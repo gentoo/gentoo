@@ -10,13 +10,43 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="dnsproxy">
+			Enable the tiny DNS proxy module
+		</flag>
 		<flag name="dnstap">
 			Include support for the dnstap binary log format
-			(http://dnstap.info/).
+			(http://dnstap.info/)
 		</flag>
 		<flag name="fastparser">
-			Use a zone file parser that is faster, but requires more memory and
-			CPU time to compile.
+			Use a zone file parser that is faster, but requires
+			more memory and CPU time to compile
+		</flag>
+		<flag name="noudp">
+			Enable the module which can send empty truncated
+			responses to UDP queries
+		</flag>
+		<flag name="onlinesign">
+			Enable the module that sign zones on the fly instead of
+			pre-signing zone
+		</flag>
+		<flag name="rosedb">
+			Enable the module that staticaly override certain
+			responses
+		</flag>
+		<flag name="rrl">
+			Enable the response rate limiting module
+		</flag>
+		<flag name="stats">
+			Enable the server statistics module
+		</flag>
+		<flag name="synthrecord">
+			Enable the automatic forward/reverse records module
+		</flag>
+		<flag name="utils">
+			Install Knot utilities, such as kdig, kzonecheck, ...
+		</flag>
+		<flag name="whoami">
+			Enable the whoami response module
 		</flag>
 	</use>
 </pkgmetadata>
