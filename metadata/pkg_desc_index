@@ -1468,7 +1468,7 @@ app-forensics/rdd 3.0.4-r1: Rdd is a forensic copy program
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.2 1.4.4: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
-app-forensics/sleuthkit 4.0.2 4.1.0 4.1.2 4.1.3: A collection of file system and media management forensic analysis tools
+app-forensics/sleuthkit 4.0.2 4.1.0 4.1.2 4.1.3 4.4.2: A collection of file system and media management forensic analysis tools
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.4.1 2.6: Framework for analyzing volatile memory
 app-forensics/yasat 526 700 755 839 848: Security and system auditing tool
