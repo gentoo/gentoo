@@ -3,10 +3,6 @@
 
 # This file requires >=portage-2.1.1
 
-# Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
-# missing keyword on dev-python/dbusmock, bug #620024
->=gnome-base/gnome-settings-daemon-3.24 test
-
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv
