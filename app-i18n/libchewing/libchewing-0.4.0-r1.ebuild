@@ -13,6 +13,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE="static-libs test"
+REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
@@ -31,6 +32,10 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		--with-sqlite3
+}
+
+src_test() {
+	emake -j1 check
 }
 
 src_install() {
