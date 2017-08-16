@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit autotools elisp-common flag-o-matic python-r1 toolchain-funcs multilib-minimal
 
 # If you bump this package, also consider bumping the official language bindings!
