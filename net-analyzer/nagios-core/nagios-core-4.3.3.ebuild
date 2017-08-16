@@ -114,7 +114,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc Changelog INSTALLING LEGAL README.asciidoc UPGRADING
+	dodoc Changelog CONTRIBUTING.md README.asciidoc THANKS UPGRADING
 
 	emake DESTDIR="${D}" install-base
 	emake DESTDIR="${D}" install-basic
@@ -141,8 +141,7 @@ src_install() {
 		insopts --mode=0644 # Back to the default...
 	fi
 
-	newinitd "${FILESDIR}"/nagios4-r1 nagios
-	newconfd "${FILESDIR}"/conf.d nagios
+	newinitd openrc-init nagios
 
 	if use web ; then
 		if use apache2 ; then
