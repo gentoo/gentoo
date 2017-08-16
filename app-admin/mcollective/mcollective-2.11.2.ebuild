@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 USE_RUBY="ruby21 ruby22 ruby23"
 
@@ -9,13 +9,13 @@ inherit ruby-ng
 
 DESCRIPTION="Framework to build server orchestration or parallel job execution
 systems"
-HOMEPAGE="http://marionette-collective.org/"
+HOMEPAGE="https://docs.puppet.com/mcollective/"
 SRC_URI="https://github.com/puppetlabs/marionette-collective/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/all/marionette-collective-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc +client"
 
 DEPEND=""
@@ -55,6 +55,6 @@ pkg_postinst() {
 	einfo "It is recommended you read the \'getting started\' guide [2] if this"
 	einfo "is a new installation"
 	einfo
-	einfo "[1] http://activemq.apache.org/"
+	einfo "[1] https://activemq.apache.org/"
 	einfo "[2] https://code.google.com/p/mcollective/wiki/GettingStarted"
 }
