@@ -31,8 +31,8 @@ src_prepare() {
 
 	sed -i \
 		"s/python/${EPYTHON}/" \
-		engine/ibus-table-createdb.in \
-		engine/ibus-engine-table.in
+		engine/${PN}-createdb.in \
+		engine/${PN/-/-engine-}.in
 
 	default
 }
