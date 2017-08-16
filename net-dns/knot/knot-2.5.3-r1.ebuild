@@ -17,6 +17,7 @@ IUSE="dnstap doc caps +fastparser idn systemd"
 RDEPEND="
 	>=net-libs/gnutls-3.3:=
 	>=dev-db/lmdb-0.9.15
+	dev-python/lmdb
 	>=dev-libs/userspace-rcu-0.5.4
 	caps? ( >=sys-libs/libcap-ng-0.6.4 )
 	dnstap? (
