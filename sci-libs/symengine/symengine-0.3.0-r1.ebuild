@@ -33,7 +33,11 @@ pkg_pretend() {
 src_prepare() {
 	cmake-utils_src_prepare
 	sed -e "s|DESTINATION doc| DESTINATION share/doc/${PF}/html|" \
-		-i CMakeLists.txt || die
+		-e "s|/lib|/$(get_libdir)|g" \
+		-e "s|lib/|$(get_libdir)/|g" \
+		-e "/DESTINATION/s|lib|$(get_libdir)|g" \
+		-i CMakeLists.txt symengine/CMakeLists.txt \
+		symengine/utilities/teuchos/CMakeLists.txt || die
 }
 
 src_configure() {
