@@ -31,6 +31,7 @@ pkg_setup() {
 
 src_install() {
 	keepdir /etc/"${MY_PN}"/{conf.d,patterns,plugins}
+	keepdir "/var/lib/${MY_PN}"
 	keepdir "/var/log/${MY_PN}"
 
 	insinto "/usr/share/${MY_PN}"
@@ -45,15 +46,27 @@ src_install() {
 
 	newconfd "${FILESDIR}/${MY_PN}.confd" "${MY_PN}"
 	newinitd "${FILESDIR}/${MY_PN}.initd" "${MY_PN}"
+
+	insinto /usr/share/eselect/modules
+	doins "${FILESDIR}"/logstash-plugin.eselect
 }
 
 pkg_postinst() {
 	ewarn "The default user changed from root to ${MY_PN}. If you wish to run as root (for"
 	ewarn "example to read local logs), be sure to change LS_USER and LS_GROUP in"
 	ewarn "${EROOT%/}/etc/conf.d/${MY_PN}"
+	ewarn
+	ewarn "Self installed plugins are removed during Logstash upgrades (Bug #622602)"
+	ewarn "Install the plugins via eselect module that will automatically re-install"
+	ewarn "all self installed plugins after Logstash upgrades."
 	einfo
-	einfo "Installing plugins: (bug #601294)"
-	einfo "DEBUG=1 JARS_SKIP='true' bin/logstash-plugin install logstash-output-gelf"
+	einfo "Installing plugins:"
+	einfo "eselect logstash-plugin install logstash-output-gelf"
+	einfo
+
+	einfo "Reinstalling self installed plugins (installed via eselect module):"
+	eselect logstash-plugin reinstall
+
 	einfo
 	einfo "Sample configuration:"
 	einfo "${EROOT%/}/usr/share/${MY_PN}"

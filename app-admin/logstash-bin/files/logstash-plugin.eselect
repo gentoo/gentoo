@@ -1,0 +1,85 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2005-2017 Gentoo Foundation
+# Distributed under the terms of the GNU GPL version 2 or later
+
+DESCRIPTION="Manage user installed plugins of logstash"
+MAINTAINER="hydrapolic@gmail.com"
+
+PLUGINS="/var/lib/logstash/plugins-list.txt"
+LS_INSTALL_DIR="/opt/logstash"
+
+ls_plugin_wrapper() {
+  JARS_SKIP=true "${LS_INSTALL_DIR}/bin/logstash-plugin" "${1}" "${2}" || die
+}
+
+### install action
+describe_install() {
+  echo "Install plugin"
+}
+
+describe_install_parameters() {
+  echo "<plugin>"
+}
+
+do_install() {
+  [[ ${#} -lt 1 ]] && die "Please specify at least one plugin"
+
+  local plugin
+  for plugin; do
+    ls_plugin_wrapper install "${plugin}"
+    echo "${plugin}" >> "${PLUGINS}" || die
+  done
+
+  sort -u "${PLUGINS}" > "${PLUGINS}.tmp" || die
+  mv "${PLUGINS}.tmp" "${PLUGINS}" || die
+}
+
+### list action
+describe_list() {
+  echo "List user installed plugins"
+}
+
+do_list() {
+  if [[ -f "${PLUGINS}" ]]; then
+    write_list_start "Installed plugins:"
+
+    local plugin
+    while read -r plugin; do
+      write_kv_list_entry "${plugin}"
+    done < "${PLUGINS}"
+  fi
+}
+
+### reinstall action
+describe_reinstall() {
+  echo "Reinstall plugins"
+}
+
+do_reinstall() {
+  if [[ -f "${PLUGINS}" ]]; then
+    local plugin
+    while read -r plugin; do
+      ls_plugin_wrapper install "${plugin}"
+    done < "${PLUGINS}"
+  fi
+}
+
+### uninstall action
+describe_uninstall() {
+  echo "Uninstall plugin"
+}
+
+describe_uninstall_parameters() {
+  echo "<plugin>"
+}
+
+do_uninstall() {
+  if [[ -f "${PLUGINS}" ]]; then
+    local plugin
+    for plugin; do
+      grep "^${plugin}\$" "${PLUGINS}" || write_warning_msg "Plugin ${plugin} not recorded"
+      sed -i "/^${plugin}\$/d" "${PLUGINS}" || die
+      ls_plugin_wrapper remove "${plugin}"
+    done
+  fi
+}
