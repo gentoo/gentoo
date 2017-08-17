@@ -1892,7 +1892,7 @@ app-misc/pdfpc 3.1.1 4.0.7: Presenter console with multi-monitor support for PDF
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.2.3: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
-app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
+app-misc/physlock 0.5 11: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4: a small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r1 1.9-r2: A tool to help administrators keep track of daily activities
@@ -12844,7 +12844,7 @@ media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/structure-synth 1.5.0: A program to generate 3D structures by specifying a design grammar
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
 media-gfx/swftools 0.9.2-r1: SWF Tools is a collection of SWF manipulation and generation utilities
-media-gfx/sxiv 1.3.2: Simple (or small or suckless) X Image Viewer
+media-gfx/sxiv 1.3.2 1.3.2-r1 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.0.0: Application to create libraries of QPainterPath objects with redering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.99_beta6-r1: A portable, high performance parallel ray tracing system
