@@ -90,6 +90,13 @@ else
 	: ${KDE_QTHELP:=false}
 fi
 
+# @ECLASS-VARIABLE: KDE_TESTPATTERN
+# @DESCRIPTION:
+# DANGER: Only touch it if you know what you are doing.
+# By default, matches autotest(s), unittest(s) and test(s) pattern inside
+# cmake add_subdirectory calls.
+: ${KDE_TESTPATTERN:="\(auto|unit\)\?tests\?"}
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -98,22 +105,14 @@ fi
 # when USE=!test.
 # If set to "forceoptional", remove a Qt5Test dependency and comment test
 # subdirs from the root CMakeLists.txt in addition to the above.
-# If set to "forceoptional-recursive", remove a Qt5Test dependency and comment
-# test subdirs from *any* CMakeLists.txt in addition to the above.
+# If set to "forceoptional-recursive", remove Qt5Test dependencies and make
+# test subdirs according to KDE_TESTPATTERN from *any* CMakeLists.txt in ${S}
+# and below conditional on BUILD_TESTING. This is always meant as a short-term
+# fix and creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
 else
 	: ${KDE_TEST:=false}
-fi
-
-# @ECLASS-VARIABLE: KDE_L10N
-# @DESCRIPTION:
-# This is an array of translations this ebuild supports. These translations
-# are automatically added to IUSE.
-if [[ ${KDEBASE} = kdel10n ]]; then
-	if [[ -n ${KDE_L10N} ]]; then
-		IUSE="${IUSE} $(printf 'l10n_%s ' ${KDE_L10N[@]})"
-	fi
 fi
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
@@ -141,8 +140,6 @@ KDE_UNRELEASED=( )
 
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
-elif [[ ${KDEBASE} = kdel10n ]]; then
-	HOMEPAGE="https://l10n.kde.org"
 elif [[ ${KMNAME} = kdepim ]]; then
 	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 else
@@ -364,21 +361,6 @@ _calculate_src_uri() {
 		unset _kdebase
 	fi
 
-	if [[ ${KDEBASE} = kdel10n ]] ; then
-		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
-		SRC_URI=""
-		for my_l10n in ${KDE_L10N[@]} ; do
-			case ${my_l10n} in
-				sr | sr-ijekavsk | sr-Latn-ijekavsk | sr-Latn)
-					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-sr-${PV}.tar.xz )"
-					;;
-				*)
-					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-$(kde_l10n2lingua ${my_l10n})-${PV}.tar.xz )"
-					;;
-			esac
-		done
-	fi
-
 	if _kde_is_unreleased ; then
 		RESTRICT+=" fetch"
 	fi
@@ -491,16 +473,6 @@ kde5_src_unpack() {
 				git-r3_src_unpack
 				;;
 		esac
-	elif [[ ${KDEBASE} = kdel10n ]]; then
-		local l10npart=5
-		[[ ${PN} = kde4-l10n ]] && l10npart=4
-		mkdir -p "${S}" || die "Failed to create source dir ${S}"
-		cd "${S}"
-		for my_tar in ${A}; do
-			tar -xpf "${DISTDIR}/${my_tar}" --xz \
-				"${my_tar/.tar.xz/}/CMakeLists.txt" "${my_tar/.tar.xz/}/${l10npart}" 2> /dev/null ||
-				elog "${my_tar}: tar extract command failed at least partially - continuing"
-		done
 	else
 		default
 	fi
@@ -511,42 +483,6 @@ kde5_src_unpack() {
 # Function for preparing the KDE 5 sources.
 kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${KDEBASE} = kdel10n ]]; then
-		local l10npart=5
-		[[ ${PN} = kde4-l10n ]] && l10npart=4
-		# move known variant subdirs to root dir, currently sr@*
-		use_if_iuse l10n_sr-ijekavsk && _l10n_variant_subdir2root sr-ijekavsk sr
-		use_if_iuse l10n_sr-Latn-ijekavsk && _l10n_variant_subdir2root sr-Latn-ijekavsk sr
-		use_if_iuse l10n_sr-Latn && _l10n_variant_subdir2root sr-Latn sr
-		if use_if_iuse l10n_sr; then
-			rm -rf kde-l10n-sr-${PV}/${l10npart}/sr/sr@* || die "Failed to cleanup L10N=sr"
-			_l10n_variant_subdir_buster sr
-		elif [[ -d kde-l10n-sr-${PV} ]]; then
-			# having any variant selected means parent lingua will be unpacked as well
-			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
-		fi
-
-		cat <<-EOF > CMakeLists.txt || die
-		project(${PN})
-		cmake_minimum_required(VERSION 2.8.12)
-		EOF
-		# add all l10n directories to cmake
-		if [[ -n ${A} ]]; then
-			cat <<-EOF >> CMakeLists.txt || die
-			$(printf "add_subdirectory( %s )\n" \
-				`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
-			EOF
-		fi
-
-		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
-		case ${l10npart} in
-			5) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-				sed -i -e "/add_subdirectory(4)/ s/^/#DONT/" {} + || die ;;
-			4) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-				sed -i -e "/add_subdirectory(5)/ s/^/#DONT/" {} + || die ;;
-		esac
-	fi
 
 	cmake-utils_src_prepare
 
@@ -615,11 +551,6 @@ kde5_src_prepare() {
 		fi
 	fi
 
-	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
-		cmake_comment_add_subdirectory tests
-	fi
-
 	# only build unit tests when required
 	if ! use_if_iuse test ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
@@ -628,16 +559,32 @@ kde5_src_prepare() {
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
 			punt_bogus_dep Qt5 Test
-			local d
-			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test" -or -name "unittests"); do
-				pushd ${d%/*} > /dev/null || die
+			local f pf="${T}/${P}"-tests-optional.patch
+			touch ${pf} || die "Failed to touch patch file"
+			for f in $(find . -type f -name "CMakeLists.txt" -exec \
+				grep -l "^\s*add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)" {} \;); do
+				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
+				pushd ${f%/*} > /dev/null || die
 					punt_bogus_dep Qt5 Test
-					cmake_comment_add_subdirectory autotests test tests
+					sed -i CMakeLists.txt -e \
+						"/^#/! s/add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						|| die
 				popd > /dev/null || die
+				diff -Naur ${f}.old ${f} 1>>${pf}
+				rm ${f}.old || die "Failed to clean up"
 			done
+			einfo "Build system was modified by KDE_TEST=forceoptional-recursive."
+			einfo "Unified diff file ready for pickup in:"
+			einfo "  ${pf}"
+			einfo "Push it upstream to make this message go away."
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
 			cmake_comment_add_subdirectory autotests test tests
 		fi
+	fi
+
+	# in frameworks, tests = manual tests so never build them
+	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+		cmake_comment_add_subdirectory tests
 	fi
 }
 
@@ -785,44 +732,6 @@ kde5_pkg_postrm() {
 
 	gnome2_icon_cache_update
 	xdg_pkg_postrm
-}
-
-_l10n_variant_subdir2root() {
-	local l10npart=5
-	[[ ${PN} = kde4-l10n ]] && l10npart=4
-	local lingua=$(kde_l10n2lingua ${1})
-	local src=kde-l10n-${2}-${PV}
-	local dest=kde-l10n-${lingua}-${PV}/${l10npart}
-
-	# create variant rootdir structure from parent lingua and adapt it
-	mkdir -p ${dest} || die "Failed to create ${dest}"
-	mv ${src}/${l10npart}/${2}/${lingua} ${dest}/${lingua} || die "Failed to create ${dest}/${lingua}"
-	cp -f ${src}/CMakeLists.txt kde-l10n-${lingua}-${PV} || die "Failed to prepare L10N=${1} subdir"
-	echo "add_subdirectory(${lingua})" > ${dest}/CMakeLists.txt ||
-		die "Failed to prepare ${dest}/CMakeLists.txt"
-	cp -f ${src}/${l10npart}/${2}/CMakeLists.txt ${dest}/${lingua} ||
-		die "Failed to create ${dest}/${lingua}/CMakeLists.txt"
-	sed -e "s/${2}/${lingua}/" -i ${dest}/${lingua}/CMakeLists.txt ||
-		die "Failed to prepare ${dest}/${lingua}/CMakeLists.txt"
-
-	_l10n_variant_subdir_buster ${1}
-}
-
-_l10n_variant_subdir_buster() {
-	local l10npart=5
-	[[ ${PN} = kde4-l10n ]] && l10npart=4
-	local dir=kde-l10n-$(kde_l10n2lingua ${1})-${PV}/${l10npart}/$(kde_l10n2lingua ${1})
-
-	case ${l10npart} in
-		5) sed -e "/^add_subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
-		4) sed -e "/^macro.*subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
-	esac
-
-	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
-		if [[ ${subdir##*/} != "cmake_modules" ]] ; then
-			echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt || die
-		fi
-	done
 }
 
 fi

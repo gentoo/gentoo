@@ -43,9 +43,8 @@ case ${CATEGORY} in
 		fi
 		;;
 	kde-apps)
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			: ${QT_MINIMAL:=5.7.1}
-		fi
+		: ${QT_MINIMAL:=5.7.1}
+		[[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.08* ]] && : ${FRAMEWORKS_MINIMAL:=5.37.0}
 		;;
 esac
 
@@ -62,7 +61,7 @@ esac
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.9.5}
+: ${PLASMA_MINIMAL:=5.10.4}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
@@ -80,8 +79,6 @@ esac
 # kdevelop ebuild.
 if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
-elif [[ ${KMNAME} = kde-l10n || ${PN} = kde-l10n ]]; then
-	KDEBASE=kdel10n
 fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"

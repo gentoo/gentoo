@@ -77,8 +77,6 @@ REQUIRED_USE="
 
 DOCS+=( ChangeLog {FAQ,PERMISSIONS,README}.txt )
 
-PATCHES=( "${FILESDIR}/${P}-out-of-bounds.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		-DK3B_BUILD_API_DOCS=OFF
