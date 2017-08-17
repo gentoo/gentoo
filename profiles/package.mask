@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
+# Masked ede and all its dependencies due to security reasons. 
+# bug #398241
+app-xemacs/ede
+app-xemacs/semantic
+app-xemacs/jde
+app-xemacs/xslt-process
+app-xemacs/xetla
+app-xemacs/cogre
+app-xemacs/ecb
+app-xemacs/xemacs-packages-all
+
 # Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
 # Masked for removal. KDE Applications 17.04.3 was stabilised,
 # including KDE PIM based on KDE Frameworks.
