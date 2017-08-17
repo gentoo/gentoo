@@ -10,6 +10,11 @@
 # but support for third party module will be limited to the plugin API
 #
 
+# Repoman API version (do not edit)
+version: 1
+# minimum
+repoman_version: 2.3.3
+
 # NOTE: for non-gentoo repos, any custom modules added will need their
 # module names to the modules list in order for them to run.
 
