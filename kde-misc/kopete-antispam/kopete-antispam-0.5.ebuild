@@ -3,6 +3,7 @@
 
 EAPI=6
 
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 MY_PN=${PN/-/}
