@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="Provides integration for the MLDonkey P2P software"
@@ -14,7 +15,7 @@ SLOT="4"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
-DEPEND=""
+DEPEND="kde-frameworks/kdelibs:4[plasma(+)]"
 RDEPEND="${DEPEND}"
 
 src_configure() {

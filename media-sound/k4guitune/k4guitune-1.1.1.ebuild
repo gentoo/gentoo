@@ -3,7 +3,7 @@
 
 EAPI=6
 
-# QT3SUPPORT_REQUIRED
+QT3SUPPORT_REQUIRED="true"
 KDE_HANDBOOK="optional"
 inherit kde4-base
 

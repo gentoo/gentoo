@@ -4,6 +4,7 @@
 EAPI=6
 
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Library for encryption handling"
