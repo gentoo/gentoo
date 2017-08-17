@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="importwizard">Enable additional import plugins for <pkg>kde-apps/akonadi-import-wizard</pkg></flag>
+	</use>
 </pkgmetadata>
