@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
+# Unstable dependencies.
+kde-apps/kopete cryptography
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
 # Not operational, bug #619534
 >=kde-apps/cantor-17.04.3 R
