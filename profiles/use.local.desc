@@ -3472,8 +3472,6 @@ kde-apps/kopete:yahoo - Enable yahoo protocol support.
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
 kde-apps/kpimtextedit:speech - Enable text-to-speech support
-kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
-kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/kstars:fits - Enable support for NASA's sci-libs/cfitsio library
 kde-apps/kstars:indi - Enable support for Astronomical control library using libindi
 kde-apps/kstars:wcs - Enable support for World Coordinate System library using wcslib
@@ -3494,7 +3492,6 @@ kde-apps/marble:positioning - Enable position information via dev-qt/qtpositioni
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
 kde-apps/okteta:designer - Build plugins for dev-qt/designer
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
-kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:epub - Add E-Book support via app-text/ebook-tools
 kde-apps/okular:image-backend - Enable image viewing support
 kde-apps/okular:mobi - Add mobipocket support
@@ -5514,6 +5511,7 @@ net-fs/cifs-utils:caps-ng - libcap-ng support
 net-fs/cifs-utils:creds - cifs credentials support
 net-fs/cvmfs:aufs - Use AUFS instead of OverlayFS for the server
 net-fs/cvmfs:client - Install the cvmfs client programs and init script
+net-fs/cvmfs:preload - Install the cvmfs cache preloader for distributed file systems
 net-fs/cvmfs:server - Install the cvmfsd program and init script
 net-fs/cvmfs:test-programs - Install unit test programs
 net-fs/netatalk:pgp - Add support pgp authentication module
