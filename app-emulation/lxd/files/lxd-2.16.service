@@ -1,0 +1,10 @@
+[Unit]
+Description=Container hypervisor based on LXC
+
+[Service]
+ExecStart=/usr/sbin/lxd --group lxd
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
