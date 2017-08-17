@@ -441,7 +441,7 @@ app-cdr/b5i2iso 0.2 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r2: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
-app-cdr/brasero 3.12.1 3.12.1-r1: CD/DVD burning application for the GNOME desktop
+app-cdr/brasero 3.12.1 3.12.1-r1 3.12.2: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.7.4 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.0 1.8.3: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
@@ -1713,7 +1713,7 @@ app-misc/beep 1.3-r2: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
-app-misc/bijiben 3.20.2 3.21.2 3.24.0: Note editor designed to remain simple to use
+app-misc/bijiben 3.20.2 3.21.2 3.24.0 3.24.1: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.1.1 9999: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2 1.6.2-r1: Displays a list of events happening in the near future
@@ -4829,7 +4829,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgaminggear 0.13.0 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.6 1.7.7 1.7.8 1.8.0-r1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.8-r1: GLib-based library for accessing online service APIs using the GData protocol
-dev-libs/libgee 0.6.8 0.18.1: GObject-based interfaces and classes for commonly used data structures
+dev-libs/libgee 0.6.8 0.18.1 0.20.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 0.26.0 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4 0.25.0 0.26.0: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1 1.2.2: Library for code common to Gnome games
@@ -10426,7 +10426,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.46.3 2.57 2.60.1 2.60.2 2.67 2.71: Extensible continuous integration server
+dev-util/jenkins-bin 2.46.3 2.57 2.60.1 2.60.2 2.60.3 2.67 2.71: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
@@ -11685,7 +11685,7 @@ gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.22.2 3.24.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.8 1.6.1 1.6.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1: GNOME contact management application
-gnome-extra/gnome-directory-thumbnailer 0.1.8: Thumbnail generator for directories
+gnome-extra/gnome-directory-thumbnailer 0.1.8 0.1.9: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.22.3 3.22.4 3.22.5 3.24.3: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.22.0 3.24.1: Help a new user get started in GNOME
