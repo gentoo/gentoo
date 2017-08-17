@@ -7,6 +7,6 @@ LICENSE=LastPass
 RDEPEND=!!app-admin/lastpass
 RESTRICT=strip mirror
 SLOT=0
-SRC_URI=https://lastpass.com/lplinux.tar.bz2 -> lastpass-binary-component-4.1.4.tar.bz2
+SRC_URI=https://lastpass.com/lplinux.tar.bz2 -> lastpass-binary-component-4.1.44.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=5cb504929e89f44153a49166ab99784e

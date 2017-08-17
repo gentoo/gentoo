@@ -124,7 +124,7 @@ app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its
 app-admin/keepassxc 2.1.4 2.2.0 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
-app-admin/lastpass-binary-component 4.1.4: Binary component required by the LastPass Password Manager browser extension
+app-admin/lastpass-binary-component 4.1.44: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.0.0 1.1.2 1.2.1: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
 app-admin/lnav 0.8.1 0.8.2: A curses-based tool for viewing and analyzing log files
