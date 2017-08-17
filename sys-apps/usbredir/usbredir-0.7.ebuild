@@ -5,8 +5,8 @@ EAPI=5
 inherit eutils flag-o-matic
 
 DESCRIPTION="TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)"
-HOMEPAGE="http://spice-space.org/page/UsbRedir"
-SRC_URI="http://spice-space.org/download/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.spice-space.org/page/UsbRedir"
+SRC_URI="https://www.spice-space.org/download/usbredir/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

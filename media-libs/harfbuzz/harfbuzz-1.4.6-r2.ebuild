@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/harfbuzz"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/harfbuzz.git"
 [[ ${PV} == 9999 ]] && inherit git-r3 autotools
 
 PYTHON_COMPAT=( python2_7 )
@@ -12,7 +12,7 @@ inherit eutils flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
-[[ ${PV} == 9999 ]] || SRC_URI="https://www.freedesktop.org/software/${PN}/release/${P}.tar.bz2"
+[[ ${PV} == 9999 ]] || SRC_URI="https://www.freedesktop.org/software/harfbuzz/release/${P}.tar.bz2"
 
 LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416

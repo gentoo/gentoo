@@ -3,7 +3,7 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/mesa/mesa"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/mesa.git"
 
 if [[ ${PV} = 9999 ]]; then
 	GIT_ECLASS="git-r3"
@@ -20,12 +20,12 @@ MY_P="${P/_/-}"
 FOLDER="${PV/_rc*/}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
-HOMEPAGE="https://www.mesa3d.org/"
+HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
 if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 else
-	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
+	SRC_URI="https://mesa.freedesktop.org/archive/${FOLDER}/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 

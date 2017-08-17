@@ -9,11 +9,11 @@ VALA_USE_DEPEND="vapigen"
 inherit autotools eutils xdg-utils vala readme.gentoo-r1
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
-HOMEPAGE="http://spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
+HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-SRC_URI="http://spice-space.org/download/gtk/${P}.tar.bz2"
+SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.bz2"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="dbus gstaudio gstvideo gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
 
