@@ -42,7 +42,7 @@ for my_l10n in ${KDE_L10N[@]} ; do
 done
 unset URI_BASE
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND="
 	sys-devel/gettext

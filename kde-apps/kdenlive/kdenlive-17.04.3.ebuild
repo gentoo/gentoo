@@ -10,7 +10,7 @@ DESCRIPTION="Non-linear video editing suite by KDE"
 HOMEPAGE="https://www.kdenlive.org/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="freesound gles2 jogshuttle semantic-desktop v4l"
 
 RDEPEND="

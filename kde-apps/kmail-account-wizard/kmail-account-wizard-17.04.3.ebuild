@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="Assistant for KMail accounts configuration"
 HOMEPAGE+=" https://userbase.kde.org/Kmail/Account_Wizard"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="A vocabulary trainer to help you memorize things"
 HOMEPAGE="https://www.kde.org/applications/education/parley
 https://edu.kde.org/applications/school/parley"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

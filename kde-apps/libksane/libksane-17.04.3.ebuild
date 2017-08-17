@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="SANE Library interface based on KDE Frameworks"
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
