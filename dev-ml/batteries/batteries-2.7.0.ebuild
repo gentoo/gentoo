@@ -21,7 +21,3 @@ DEPEND="${RDEPEND}
 DOCS=( "ChangeLog" "FAQ" "README.folders" "README.md" )
 
 S="${WORKDIR}/${PN}-included-${PV}"
-
-src_prepare() {
-	has_version '>=dev-lang/ocaml-4.05_beta' && epatch "${FILESDIR}/ocaml405.patch"
-}
