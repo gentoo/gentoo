@@ -24,8 +24,9 @@ VALA_DEPEND="
 	net-libs/telepathy-glib[vala]
 "
 # Configure is wrong; it needs cheese-3.5.91, not 3.3.91
+# folks-0.11.4 to avoid build issues with vala-0.36, upstream 7a9001b056b4fb1d00375e7b2adeda9b7cf93c90
 RDEPEND="
-	>=dev-libs/folks-0.9.5:=[eds,telepathy]
+	>=dev-libs/folks-0.11.4:=[eds,telepathy]
 	>=dev-libs/glib-2.37.6:2
 	>=dev-libs/libgee-0.10:0.8
 	>=gnome-extra/evolution-data-server-3.13.90:=[gnome-online-accounts]
@@ -51,6 +52,11 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-vala-0.35-part1.patch
+	"${FILESDIR}"/${PV}-fix-vala-0.35-part2.patch
+)
 
 src_prepare() {
 	# Regenerate the pre-generated C sources, bug #471628
