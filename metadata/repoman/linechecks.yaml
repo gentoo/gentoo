@@ -36,7 +36,7 @@ errors:
     URI_HTTPS: 'Ebuild uses http:// but should use https:// on line: %d'
 
 eclass_export_functions:
-    - ant-tasks 
+    - ant-tasks
     - apache-2
     - apache-module
     - aspell-dict
@@ -46,7 +46,7 @@ eclass_export_functions:
     - cannadic
     - clutter
     - cmake-utils
-    - db 
+    - db
     - distutils
     - elisp
     - embassy
@@ -139,10 +139,10 @@ eclass_export_functions:
     - x-modular
     - xorg-2
     - zproduct
-  
+
 eclass_info_experimental_inherit:
-    autotools: 
-        funcs: 
+    autotools:
+        funcs:
             - eaclocal
             - eautoconf
             - eautoheader
@@ -156,13 +156,13 @@ eclass_info_experimental_inherit:
         #       the autotools functions.
         # subversion - An ESVN_BOOTSTRAP variable may be used to call one of
         #       the autotools functions.
-        exempt_eclasses: 
+        exempt_eclasses:
             - git
             - git-2
             - subversion
             - autotools-utils
     eutils:
-        funcs: 
+        funcs:
             - estack_push
             - estack_pop
             - eshopts_push
@@ -178,7 +178,7 @@ eclass_info_experimental_inherit:
             - usex
         comprehensive: false
     flag-o-matic:
-        funcs: 
+        funcs:
             - 'filter-(ld)?flags'
             - 'strip-flags'
             - 'strip-unsupported-flags'
@@ -186,26 +186,26 @@ eclass_info_experimental_inherit:
             - 'append-libs'
         comprehensive: false
     libtool:
-        funcs: 
+        funcs:
             - elibtoolize
         comprehensive: true
-        exempt_eclasses: 
+        exempt_eclasses:
             - autotools
     multilib:
-        funcs: 
+        funcs:
             - get_libdir
         # These are "eclasses are the whole ebuild" type thing.
-        exempt_eclasses: 
+        exempt_eclasses:
             - autotools
             - libtool
             - multilib-minimal
         comprehensive: false
-    multiprocessing: 
+    multiprocessing:
         funcs:
             - makeopts_jobs
         comprehensive: false
     prefix:
-        funcs: 
+        funcs:
             - eprefixify
         comprehensive: true
     toolchain-funcs:
@@ -224,8 +224,8 @@ eclass_info_experimental_inherit:
 
 # non experimental_inherit
 eclass_info:
-    autotools: 
-        funcs: 
+    autotools:
+        funcs:
             - eaclocal
             - eautoconf
             - eautoheader
@@ -240,13 +240,13 @@ eclass_info:
         #       the autotools functions.
         # subversion - An ESVN_BOOTSTRAP variable may be used to call one of
         #       the autotools functions.
-        exempt_eclasses: 
+        exempt_eclasses:
             - git
             - git-2
             - subversion
             - autotools-utils
     prefix:
-        funcs: 
+        funcs:
             - eprefixify
         comprehensive: true
 
