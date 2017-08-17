@@ -39,7 +39,7 @@ pkg_postinst() {
 	elog "and at least one of "
 	elog "		 PORTAGE_ELOG_CLASSES=\"warn error info log qa\""
 	elog "More information on the elog system can be found"
-	elog "in /etc/make.conf.example"
+	elog "in /usr/share/portage/config/make.conf.example"
 	elog
 	elog "To operate properly this software needs the directory"
 	elog "${PORT_LOGDIR:-/var/log/portage}/elog created, belonging to group portage."
