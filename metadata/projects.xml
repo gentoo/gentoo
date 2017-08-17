@@ -1387,10 +1387,10 @@
       <name>Michael Palimaka</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>monsieurp@gentoo.org</email>
