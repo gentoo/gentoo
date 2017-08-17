@@ -90,6 +90,13 @@ else
 	: ${KDE_QTHELP:=false}
 fi
 
+# @ECLASS-VARIABLE: KDE_TESTPATTERN
+# @DESCRIPTION:
+# DANGER: Only touch it if you know what you are doing.
+# By default, matches autotest(s), unittest(s) and test(s) pattern inside
+# cmake add_subdirectory calls.
+: ${KDE_TESTPATTERN:="\(auto|unit\)\?tests\?"}
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -98,8 +105,10 @@ fi
 # when USE=!test.
 # If set to "forceoptional", remove a Qt5Test dependency and comment test
 # subdirs from the root CMakeLists.txt in addition to the above.
-# If set to "forceoptional-recursive", remove a Qt5Test dependency and comment
-# test subdirs from *any* CMakeLists.txt in addition to the above.
+# If set to "forceoptional-recursive", remove Qt5Test dependencies and make
+# test subdirs according to KDE_TESTPATTERN from *any* CMakeLists.txt in ${S}
+# and below conditional on BUILD_TESTING. This is always meant as a short-term
+# fix and creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
 else
@@ -615,11 +624,6 @@ kde5_src_prepare() {
 		fi
 	fi
 
-	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
-		cmake_comment_add_subdirectory tests
-	fi
-
 	# only build unit tests when required
 	if ! use_if_iuse test ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
@@ -628,16 +632,32 @@ kde5_src_prepare() {
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
 			punt_bogus_dep Qt5 Test
-			local d
-			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test" -or -name "unittests"); do
-				pushd ${d%/*} > /dev/null || die
+			local f pf="${T}/${P}"-tests-optional.patch
+			touch ${pf} || die "Failed to touch patch file"
+			for f in $(find . -type f -name "CMakeLists.txt" -exec \
+				grep -l "^\s*add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)" {} \;); do
+				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
+				pushd ${f%/*} > /dev/null || die
 					punt_bogus_dep Qt5 Test
-					cmake_comment_add_subdirectory autotests test tests
+					sed -i CMakeLists.txt -e \
+						"/^#/! s/add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						|| die
 				popd > /dev/null || die
+				diff -Naur ${f}.old ${f} 1>>${pf}
+				rm ${f}.old || die "Failed to clean up"
 			done
+			einfo "Build system was modified by KDE_TEST=forceoptional-recursive."
+			einfo "Unified diff file ready for pickup in:"
+			einfo "  ${pf}"
+			einfo "Push it upstream to make this message go away."
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
 			cmake_comment_add_subdirectory autotests test tests
 		fi
+	fi
+
+	# in frameworks, tests = manual tests so never build them
+	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+		cmake_comment_add_subdirectory tests
 	fi
 }
 
