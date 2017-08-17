@@ -6,7 +6,7 @@ EAPI=6
 SRC_URI="https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/plymouth"
+	EGIT_REPO_URI="git://anongit.freedesktop.org/plymouth"
 	inherit git-r3
 else
 	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
@@ -33,6 +33,8 @@ CDEPEND="
 	pango? ( >=x11-libs/pango-1.21 )
 "
 DEPEND="${CDEPEND}
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 	virtual/pkgconfig
 "
 # Block due bug #383067
@@ -55,6 +57,7 @@ src_configure() {
 	myconf="--with-system-root-install=no
 	--localstatedir=/var
 	--without-rhgb-compat-link
+	--enable-documentation
 	--enable-systemd-integration
 	--with-systemdunitdir="$(systemd_get_systemunitdir)"
 	$(use_enable !static-libs shared)
