@@ -29,6 +29,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
+# Masked for removal. KDE Applications 17.04.3 was stabilised,
+# including KDE PIM based on KDE Frameworks.
+kde-apps/kde-l10n
+kde-apps/kdepim-common-libs
+kde-apps/kommander
+kde-apps/ksaneplugin
+kde-apps/ktnef
+kde-apps/kwalletd
+kde-apps/kcmshell
+kde-apps/kdebase-runtime-meta
+kde-apps/kdontchangethehostname
+kde-apps/keditfiletype
+kde-apps/kfile
+kde-apps/kmimetypefinder
+kde-apps/knewstuff
+kde-apps/kreadconfig
+kde-apps/ktraderclient
+
 # Patrice Clement <monsieurp@gentoo.org> (10 Aug 2017)
 # Not ready for production yet.
 =dev-java/javatoolkit-0.4.0
