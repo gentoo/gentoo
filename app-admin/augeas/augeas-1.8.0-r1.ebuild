@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="A library for changing configuration files"
 HOMEPAGE="http://augeas.net/"
@@ -11,7 +11,7 @@ SRC_URI="http://download.augeas.net/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs test"
 
 RDEPEND="
@@ -22,12 +22,9 @@ DEPEND="${RDEPEND}
 	>=app-doc/NaturalDocs-1.40
 	test? ( dev-lang/ruby )"
 
-#PATCHES=(
-#	"${FILESDIR}"/${P}-gets.patch
-#	"${FILESDIR}"/${P}-test.patch
-#	"${FILESDIR}"/${P}-test2.patch
-#	"${FILESDIR}"/${P}-libxml2-pkgconfig.patch
-#	)
+PATCHES=(
+	"${FILESDIR}/cve-2017-7555.patch"
+)
 
 src_prepare() {
 	if [ -f /usr/share/NaturalDocs/Config/Languages.txt ] ; then
@@ -36,13 +33,15 @@ src_prepare() {
 	if [ -f /usr/share/NaturalDocs/Config/Topics.txt ] ; then
 		addwrite /usr/share/NaturalDocs/Config/Topics.txt
 	fi
-	autotools-utils_src_prepare
+	default
 }
 
 src_configure() {
 	# Needs to implemented
-	local myeconfargs=( --without-selinux )
-	autotools-utils_src_configure
+	local myeconfargs="--without-selinux
+	$(use_enable !static-libs shared)
+	$(use_enable static-libs static)"
+	eautoreconf
+	econf ${myeconfargs}
+	default
 }
-
-AUTOTOOLS_IN_SOURCE_BUILD=1
