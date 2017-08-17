@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201708-02">
+  <title>TNEF: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in TNEF, the worst of
+    which allows remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">tnef</product>
+  <announced>2017-08-17</announced>
+  <revised>2017-08-17: 1</revised>
+  <bug>611426</bug>
+  <bug>618658</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/tnef" auto="yes" arch="*">
+      <unaffected range="ge">1.4.15</unaffected>
+      <vulnerable range="lt">1.4.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TNEF is a program for unpacking MIME attachments of type
+      “application/ms-tnef”.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in TNEF. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      MIME attachment of type “application/ms-tnef” using TNEF, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TNEF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/tnef-1.4.15"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6307">CVE-2017-6307</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6308">CVE-2017-6308</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6309">CVE-2017-6309</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6310">CVE-2017-6310</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8911">CVE-2017-8911</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-05-21T07:12:51Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-08-17T03:12:51Z">whissi</metadata>
+</glsa>
