@@ -31,6 +31,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
+	dev-libs/gobject-introspection-common
 	dev-libs/libxslt
 	dev-util/gtk-doc-am
 	dev-util/intltool
