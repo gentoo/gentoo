@@ -1841,7 +1841,7 @@ app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3: An application that translates joystick events to keyboard events
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
-app-misc/jq 1.5-r2 1.5-r3: A lightweight and flexible command-line JSON processor
+app-misc/jq 1.5-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.8.1 0.8.3 0.8.4 0.9.0 0.9.3 0.9.4 0.9.5 0.9.6: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
@@ -12804,7 +12804,7 @@ media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.13 1.14 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.2 2.7.4-r1 2.8.2 2.8.3 2.8.4 2.8.5 9999: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.8.5 2.9 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20150310-r1 20150310-r2 99999999: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
