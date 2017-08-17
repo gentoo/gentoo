@@ -45,7 +45,7 @@ app-admin/ansible 2.3.1.0 2.3.2.0 2.3.2.0-r1 9999: Model-driven deployment, conf
 app-admin/apache-tools 2.2.31 2.2.32 2.4.25 2.4.27: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
-app-admin/augeas 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: A library for changing configuration files
+app-admin/augeas 1.7.0 1.7.0-r1 1.8.0 1.8.0-r1: A library for changing configuration files
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-as-tools 1.0.49.1: The API tools serve as the client interface to the Auto Scaling web service
 app-admin/aws-cw-tools 1.0.12.1: The API tools serve as the client interface to the Amazon CloudWatch web service
