@@ -72,8 +72,6 @@ esac
 # kdevelop ebuild.
 if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
-elif [[ ${KMNAME} = kde-l10n || ${PN} = kde-l10n ]]; then
-	KDEBASE=kdel10n
 fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
