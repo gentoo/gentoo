@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,6 +6,7 @@ EAPI=5
 KDE_LINGUAS="bs ca ca@valencia cs da de el en_GB es et eu fi fr gl hu it km nb
 nds nl pl pt pt_BR ro ru sk sv tr uk zh_CN zh_TW"
 KDE_HANDBOOK="optional"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="KDE graphviz dot graph file viewer"
