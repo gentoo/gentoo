@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P/_/.}
 
+PATCHES=( "${FILESDIR}/${P}-sysmacros.patch" )
+
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Wall"
 }
