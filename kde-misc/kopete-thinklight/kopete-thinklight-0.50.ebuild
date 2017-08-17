@@ -3,9 +3,10 @@
 
 EAPI=6
 
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
-DESCRIPTION="A thinkpad's light flash on every incoming message"
+DESCRIPTION="A ThinkPad's light flash on every incoming message"
 HOMEPAGE="http://www.kde-apps.org/content/show.php?content=100537"
 SRC_URI="http://www.kde-apps.org/CONTENT/content-files/100537-${P}.tar.gz"
 
