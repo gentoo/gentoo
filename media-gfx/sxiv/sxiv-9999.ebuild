@@ -31,26 +31,14 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -i '/^LDFLAGS/d' Makefile || die
 
-	# disable exif support as required
-	if ! use exif; then
-		sed \
-			-e 's/^.* -DHAVE_GIFLIB/#\0/' \
-			-e 's/^.* -lgif/#\0/' \
-			-i Makefile || die
-	fi
-
-	# disable gif support as required
-	if ! use gif; then
-		sed \
-			-e 's/^.* -DHAVE_LIBEXIF/#\0/' \
-			-e 's/^.* -lexif/#\0/' \
-			-i Makefile || die
-	fi
-
 	tc-export CC
 
 	restore_config config.h
 	default
+}
+
+src_compile() {
+	emake $(usex exif "" NO_LIBEXIF=1) $(usex gif "" NO_GIFLIB=1)
 }
 
 src_install() {
