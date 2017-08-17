@@ -8,7 +8,7 @@ inherit eutils python-r1
 
 MY_P="HTMLgen"
 DESCRIPTION="HTMLgen - Python modules for the generation of HTML documents"
-HOMEPAGE="http://starship.python.net/crew/friedrich/HTMLgen/html/main.html"
+HOMEPAGE="http://soc.if.usp.br/manual/python-htmlgen/html/main.html"
 SRC_URI="http://starship.python.net/crew/friedrich/${MY_P}.tgz"
 
 LICENSE="BSD"
