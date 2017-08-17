@@ -20,14 +20,6 @@ dev-util/rpmdevtools emacs
 # Requires >=net-dns/libidn2-2.0 stabilization
 net-dns/dnsmasq libidn2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (02 Jul 2017)
-# Requires kde-apps/{akonadi-contacts,kcontacts} stabilisation
->=media-gfx/digikam-5.5.0 addressbook
-
-# Michael Palimaka <kensington@gentoo.org> (01 Jul 2017)
-# Requires kde-apps/kcontacts stabilisation
-app-office/calligra:5 pim
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
