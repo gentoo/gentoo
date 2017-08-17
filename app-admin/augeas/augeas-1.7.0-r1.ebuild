@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=app-doc/NaturalDocs-1.40
 	test? ( dev-lang/ruby )"
+
+PATCHES=(
+	"${FILESDIR}/cve-2017-7555.patch"
+)
 
 #PATCHES=(
 #	"${FILESDIR}"/${P}-gets.patch
