@@ -12,13 +12,16 @@ SRC_URI="http://jedsoft.org/releases/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="canlock nls ssl uudeview"
+IUSE="canlock libressl nls ssl uudeview"
 
 RDEPEND="app-arch/sharutils
 	>=sys-libs/slang-2.2.3
 	virtual/mta
 	canlock? ( net-libs/canlock )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	uudeview? ( dev-libs/uulib )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
