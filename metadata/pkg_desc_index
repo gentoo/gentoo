@@ -963,7 +963,7 @@ app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Ge
 app-doc/gimp-help 2.6.1 2.8.2: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1 1.2: yet another free document preparation system
-app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition
+app-doc/jargon 4.4.7 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.1 4.0.4 4.0.5: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
