@@ -1,0 +1,10 @@
+--- a/dbfile.c  2016-09-27 22:28:49.000000000 +0200
++++ b/dbfile.c  2017-08-17 18:23:30.768591897 +0200
+@@ -8,6 +8,7 @@
+ #include <inttypes.h>
+ #include <stddef.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ 
+ #include "csum.h"
+ #include "filerec.h"
