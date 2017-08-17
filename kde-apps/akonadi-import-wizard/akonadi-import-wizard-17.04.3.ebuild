@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Assistant to import PIM data from other applications into Akonadi"
 HOMEPAGE+=" https://userbase.kde.org/Kmail/Import_Options"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
