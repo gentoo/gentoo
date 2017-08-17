@@ -8,7 +8,7 @@ inherit kde5
 DESCRIPTION="Libraries and daemons to implement searching in Akonadi"
 HOMEPAGE="https://projects.kde.org/projects/playground/pim/akonadi-search"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="

@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5-meta-pkg
 
 DESCRIPTION="Meta package for the KDE Applications collection"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="accessibility pim sdk"
 
 RDEPEND="

@@ -7,7 +7,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="kdeutils - merge this to pull in all kdeutils-derived packages"
 HOMEPAGE="https://www.kde.org/applications/utilities https://utils.kde.org"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cups floppy lirc nls"
 
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}

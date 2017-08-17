@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Common mail library"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="
