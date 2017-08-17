@@ -14,9 +14,9 @@ HOMEPAGE="https://pim.kde.org/akonadi"
 
 KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="LGPL-2.1+"
-IUSE="+mysql postgres tools xml"
+IUSE="+mysql postgres sqlite tools xml"
 
-REQUIRED_USE="|| ( mysql postgres ) test? ( tools )"
+REQUIRED_USE="|| ( mysql postgres sqlite ) test? ( tools )"
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.7.0
 COMMON_DEPEND="
@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	x11-misc/shared-mime-info
+	sqlite? ( dev-db/sqlite:3 )
 	xml? ( dev-libs/libxml2 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -64,16 +65,24 @@ RESTRICT+=" test"
 PATCHES=( "${FILESDIR}/${PN}-17.03.80-mysql56-crash.patch" )
 
 pkg_setup() {
-	# Set default storage backend in order: MySQL, PostgreSQL
+	# Set default storage backend in order: MySQL, PostgreSQL, SQLite
 	# reverse driver check to keep the order
+	use sqlite && DRIVER="QSQLITE3"
 	use postgres && DRIVER="QPSQL"
 	use mysql && DRIVER="QMYSQL"
+
+	if use sqlite || has_version "<${CATEGORY}/${P}[sqlite]"; then
+		ewarn "We strongly recommend you change your Akonadi database backend to either MySQL"
+		ewarn "or PostgreSQL in your user configuration."
+		ewarn "In particular, kde-apps/kmail does not work properly with the sqlite backend."
+	fi
+
 	kde5_pkg_setup
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DAKONADI_BUILD_QSQLITE=OFF
+		-DAKONADI_BUILD_QSQLITE=$(usex sqlite)
 		-DBUILD_TOOLS=$(usex tools)
 		$(cmake-utils_use_find_package xml LibXml2)
 	)
@@ -97,7 +106,8 @@ pkg_postinst() {
 	kde5_pkg_postinst
 	elog "You can select the storage backend in ~/.config/akonadi/akonadiserverrc."
 	elog "Available drivers are:"
-	use postgres && elog "  QPSQL"
 	use mysql && elog "  QMYSQL"
+	use postgres && elog "  QPSQL"
+	use sqlite && elog "  QSQLITE3"
 	elog "${DRIVER} has been set as your default akonadi storage backend."
 }
