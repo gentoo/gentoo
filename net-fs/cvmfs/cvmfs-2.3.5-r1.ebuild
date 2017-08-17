@@ -15,7 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="aufs bash-completion debug doc server test test-programs"
+IUSE="aufs bash-completion debug doc preload server test test-programs"
 
 CDEPEND="
 	dev-cpp/gtest
@@ -29,6 +29,7 @@ CDEPEND="
 	sys-fs/fuse:0=
 	sys-libs/libcap:0=
 	sys-libs/zlib:0=
+	preload? ( >=dev-cpp/tbb-4.4:0=[debug?] )
 	server? (
 		>=dev-cpp/tbb-4.4:0=[debug?]
 		dev-python/geoip-python
@@ -113,12 +114,12 @@ src_configure() {
 		-DTBB_PRIVATE_LIB=OFF
 		-DZLIB_BUILTIN=OFF
 		-DBUILD_CVMFS=ON
-		-DBUILD_PRELOADER=ON
 		-DBUILD_LIBCVMFS=ON
 		-DINSTALL_MOUNT_SCRIPTS=ON
 		-DINSTALL_PUBLIC_KEYS=ON
 		-DINSTALL_BASH_COMPLETION=OFF
 		-DBUILD_DOCUMENTATION="$(usex doc)"
+		-DBUILD_PRELOADER="$(usex preload)"
 		-DBUILD_SERVER="$(usex server)"
 	)
 	if use test || use test-programs; then
