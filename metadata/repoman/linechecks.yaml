@@ -10,7 +10,12 @@
 # but support for third party module will be limited to the plugin API
 #
 
-errors: 
+# Repoman API version (do not edit)
+version: 1
+# minimum
+repoman_version: 2.3.3
+
+errors:
     COPYRIGHT_ERROR: 'Invalid Gentoo Copyright on line: %d'
     LICENSE_ERROR: 'Invalid Gentoo/GPL License on line: %d'
     ID_HEADER_ERROR: 'Stale CVS header on line: %d'

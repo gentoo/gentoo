@@ -9,6 +9,11 @@
 # but support for third party module will be limited to the plugin API
 #
 
+# Repoman API version (do not edit)
+version: 1
+# minimum
+repoman_version: 2.3.3
+
 
 allowed_filename_chars: "a-zA-Z0-9._-+:"
 max_description_length: 80
