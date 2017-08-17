@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=https://wayland.freedesktop.org/releases/weston-1.12.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	185a06792159ca143528e7010368e8af	virtualx	171580f737f5aaf18fcb456548588066
-_md5_=a5d752783fa2122dfe247a87d5d3d816
+_md5_=50fad58eae866d8208a73774959eacf4

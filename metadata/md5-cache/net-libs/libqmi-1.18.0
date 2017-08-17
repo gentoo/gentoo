@@ -11,4 +11,4 @@ SLOT=0/5.1
 SRC_URI=https://www.freedesktop.org/software/libqmi/libqmi-1.18.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=21dc09aacc8b26195938ade1775dcff6
+_md5_=e8502baa8f9a51746057f4e78191d450

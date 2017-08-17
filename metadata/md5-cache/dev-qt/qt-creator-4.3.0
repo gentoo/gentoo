@@ -10,5 +10,5 @@ RDEPEND==dev-libs/botan-1.10*[-bindist,threads] >=dev-qt/qtconcurrent-5.6.0:5 >=
 SLOT=0
 SRC_URI=https://download.qt.io/official_releases/qtcreator/4.3/4.3.0/qt-creator-opensource-src-4.3.0.tar.xz
 _eclass_exported_funcs=pkg_preinst:xdg pkg_postrm:xdg pkg_postinst:xdg pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	2c2e15383ba891d642f51896a7f0ecfe	llvm	fe231a791db197943447fdeadafa7e08	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	2c2e15383ba891d642f51896a7f0ecfe	llvm	fe231a791db197943447fdeadafa7e08	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	101cc3d4c2ccd96cb22d936a45789426
 _md5_=86d5236fb29ea1e9fec03c3d9f650eaa

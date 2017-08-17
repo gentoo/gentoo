@@ -11,5 +11,5 @@ REQUIRED_USE=bayes? ( || ( berkdb mysql postgres sqlite ) )
 SLOT=0
 SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.4.1.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=677e7528de3c02a0182382dde24f2c01

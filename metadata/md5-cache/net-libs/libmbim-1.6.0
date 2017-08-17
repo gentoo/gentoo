@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://www.freedesktop.org/software/libmbim/libmbim-1.6.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=41788e2a9f03b172e4a98799c3c69635
+_md5_=eaa148c298ac65054a6f36263bf54b59

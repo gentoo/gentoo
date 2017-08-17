@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.39.tar.gz http://www.usenix.org.uk/mirrors/stunnel/archive/5.x/stunnel-5.39.tar.gz http://ftp.nluug.nl/pub/networking/stunnel/archive/5.x/stunnel-5.39.tar.gz http://www.namesdir.com/mirrors/stunnel/archive/5.x/stunnel-5.39.tar.gz http://stunnel.cybermirror.org/archive/5.x/stunnel-5.39.tar.gz http://mirrors.zerg.biz/stunnel/archive/5.x/stunnel-5.39.tar.gz ftp://mirrors.go-parts.com/stunnel/archive/5.x/stunnel-5.39.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=9fc3e952b0a8dd8f2e361fa3c6b2d9cf

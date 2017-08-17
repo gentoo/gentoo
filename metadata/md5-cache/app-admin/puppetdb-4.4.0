@@ -9,5 +9,5 @@ RDEPEND=>=virtual/jdk-1.7.0
 SLOT=0
 SRC_URI=https://downloads.puppetlabs.com/puppetdb/puppetdb-4.4.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=72ed8eefe30b942b42715fd10e05c5d8

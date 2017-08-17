@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection
 SLOT=0
 SRC_URI=https://github.com/acrisci/playerctl/archive/v0.5.0.tar.gz -> playerctl-0.5.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	101cc3d4c2ccd96cb22d936a45789426
 _md5_=f7b3a34e59277299cdbbfe5b0c50a1fb

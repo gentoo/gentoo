@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( mysql postgres )
 SLOT=0
 SRC_URI=https://ftp.otrs.org/pub/otrs/otrs-5.0.22.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=139a527f2b1490b82795f48c29b69fa8

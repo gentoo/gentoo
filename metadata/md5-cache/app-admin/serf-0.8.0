@@ -9,5 +9,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/hashicorp/serf/archive/v0.8.0.tar.gz -> serf-0.8.0.tar.gz https://github.com/mitchellh/gox/archive/c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz -> gox-c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=20079d00b75a7d83755e1d5f158d433d

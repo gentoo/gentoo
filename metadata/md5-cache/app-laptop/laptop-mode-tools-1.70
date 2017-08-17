@@ -10,5 +10,5 @@ RDEPEND=net-wireless/wireless-tools sys-apps/iproute2 sys-apps/ethtool sys-apps/
 SLOT=0
 SRC_URI=https://github.com/rickysarraf/laptop-mode-tools/releases/download/1.70/laptop-mode-tools_1.70.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
 _md5_=32a3870cdb92083b4c7656dfe4cc0d60

@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coreos/flannel/archive/v0.8.0.tar.gz -> flannel-0.8.0.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=66da6ba22d8fc6c97fe1c593b1cc0f8d

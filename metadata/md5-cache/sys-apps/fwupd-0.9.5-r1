@@ -11,5 +11,5 @@ REQUIRED_USE=dell? ( uefi )
 SLOT=0
 SRC_URI=https://github.com/hughsie/fwupd/archive/0.9.5.tar.gz -> fwupd-0.9.5.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_configure:- src_compile:meson src_test:meson src_install:meson
-_eclasses_=meson	9ec586ad8a687a72b7d58f7e353e83d9	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	b9389dfad0ee8f8e0b2a41b79fcf7120
+_eclasses_=meson	9ec586ad8a687a72b7d58f7e353e83d9	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	101cc3d4c2ccd96cb22d936a45789426
 _md5_=e30f8f88d553013694b9d6bdf737ee79

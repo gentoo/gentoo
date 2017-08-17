@@ -9,5 +9,5 @@ RDEPEND=sys-power/acpi_call dev-lang/perl
 SLOT=0
 SRC_URI=https://github.com/teleshoes/tpacpi-bat/archive/v3.0.tar.gz -> tpacpi-bat-3.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	e12dd5e3cf1f359292cea2a70abeba5f	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=a8d7e09dc7b80f3377dbd8c71f0efa86
