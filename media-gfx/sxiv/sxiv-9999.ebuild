@@ -25,6 +25,7 @@ RDEPEND="
 	gif? ( media-libs/giflib:0= )
 	media-libs/imlib2[X,gif?]
 	x11-libs/libX11
+	x11-libs/libXft
 "
 DEPEND="${RDEPEND}"
 
