@@ -18449,7 +18449,7 @@ www-servers/resin 4.0.46 4.0.48 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.0-r1 1.7.1 1.7.2: A fast and very simple Ruby web server
-www-servers/thttpd 2.27.0 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
+www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.77 7.0.79 7.0.81 8.0.43 8.0.45 8.5.16 8.5.20 9.0.0_alpha26: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.15 2.0.15-r1: uWSGI server for Python web applications
