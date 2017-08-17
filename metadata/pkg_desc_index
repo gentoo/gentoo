@@ -17438,7 +17438,7 @@ sys-boot/netboot 0.10.2: netbooting utility
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.71 1.73 1.74: Utility to detect other OSs on a set of drives
 sys-boot/palo 1.97 1.98 9999: PALO : PArisc Linux Loader
-sys-boot/plymouth 0.9.2-r1 0.9.3 9999: Graphical boot animation (splash) and logger
+sys-boot/plymouth 0.9.2-r1 0.9.3 0.9.3-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2: Plymouth plugin for OpenRC
 sys-boot/psoload 2.0: Load home brewed code onto the GameCube with Phantasy Star Online
 sys-boot/quik 2.1.6: OldWorld PowerMac Bootloader
