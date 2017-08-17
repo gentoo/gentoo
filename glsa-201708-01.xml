@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201708-01">
+  <title>BIND: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
+    which allows remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>2017-08-17</announced>
+  <revised>2017-08-17: 1</revised>
+  <bug>605454</bug>
+  <bug>608740</bug>
+  <bug>615420</bug>
+  <bug>621730</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.11.1_p1</unaffected>
+      <vulnerable range="lt">9.11.1_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND (Berkeley Internet Name Domain) is a Name Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted DNS request to the BIND
+      resolver resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BIND users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.11.1_p1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9131">CVE-2016-9131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9147">CVE-2016-9147</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9444">CVE-2016-9444</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9778">CVE-2016-9778</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3135">CVE-2017-3135</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3136">CVE-2017-3136</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3137">CVE-2017-3137</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3138">CVE-2017-3138</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3140">CVE-2017-3140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3141">CVE-2017-3141</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-08T18:18:24Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-17T02:10:16Z">whissi</metadata>
+</glsa>
