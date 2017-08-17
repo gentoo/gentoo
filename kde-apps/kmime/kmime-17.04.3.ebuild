@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Libary for handling mail messages and newsgroup articles"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

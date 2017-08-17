@@ -11,7 +11,7 @@ DESCRIPTION="Full-featured burning and ripping application based on KDE Framewor
 HOMEPAGE="http://www.k3b.org/"
 
 LICENSE="GPL-2 FDL-1.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dvd emovix encode ffmpeg flac libav mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
 
 DEPEND="

@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="News feed aggregator"
 HOMEPAGE="https://www.kde.org/applications/internet/akregator"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
