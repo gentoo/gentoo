@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/development/umbrello
 	https://umbrello.kde.org
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

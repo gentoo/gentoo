@@ -12,7 +12,7 @@ DESCRIPTION="Library for accessing Google calendar and contact resources"
 HOMEPAGE="https://projects.kde.org/projects/extragear/libs/libkgapi"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 COMMON_DEPEND="
