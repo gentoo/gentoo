@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome.org meson
+inherit gnome.org meson xdg-utils
 
 DESCRIPTION="Library for handling and rendering XPS documents"
 HOMEPAGE="https://wiki.gnome.org/Projects/libgxps"
@@ -45,5 +45,6 @@ src_configure() {
 		-Dwith-libtiff=$(usex tiff true false)
 	)
 
+	xdg_environment_reset
 	meson_src_configure
 }
