@@ -3,7 +3,7 @@
 
 EAPI=5
 # ruby22 - code incompatability
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_TEST="test_all"
 
