@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libpng:0=[apng] sys-libs/zlib zopfli? ( app-arch/zopfli ) app-arch/unzip
+DESCRIPTION=create an APNG from multiple PNG files
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/apngasm/
+IUSE=7z zopfli
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB 7z? ( LGPL-2.1 )
+RDEPEND=media-libs/libpng:0=[apng] sys-libs/zlib zopfli? ( app-arch/zopfli )
+SLOT=0
+SRC_URI=mirror://sourceforge/apngasm/2.91/apngasm-2.91-src.zip
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=7f14832e8701f6cc5c33ec5ea9e4d2bd
