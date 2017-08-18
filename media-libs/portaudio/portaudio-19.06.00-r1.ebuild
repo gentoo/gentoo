@@ -36,6 +36,12 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
+multilib_src_compile() {
+	# workaround parallel build issue
+	emake lib/libportaudio.la
+	emake
+}
+
 src_compile() {
 	multilib-minimal_src_compile
 
