@@ -10690,7 +10690,7 @@ dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xm
 dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
 dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
-dev-vcs/tig 2.2.1-r1 2.2.2 9999: text mode interface for git
+dev-vcs/tig 2.2.2 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
 dev-vcs/tortoisehg 3.8.4 4.1.3 4.2.2 4.3.1 9999: Set of graphical tools for Mercurial
