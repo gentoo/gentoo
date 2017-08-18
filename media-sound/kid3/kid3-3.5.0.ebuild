@@ -7,7 +7,7 @@ KDE_HANDBOOK="false" # buildsystem applies broken python hacks, bug #614950
 inherit kde5
 
 DESCRIPTION="Simple tag editor based on Qt"
-HOMEPAGE="http://kid3.sourceforge.net/"
+HOMEPAGE="https://kid3.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
