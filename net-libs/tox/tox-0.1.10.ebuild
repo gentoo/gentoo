@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit autotools systemd unpacker user
+inherit autotools systemd user
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
-SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/c-toxcore-v${PV}.tar.lz -> ${P}.tar.lz"
+SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/c-toxcore-${PV}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.1"
@@ -23,11 +23,10 @@ RDEPEND="
 	ntox? ( sys-libs/ncurses:0= )
 	>=dev-libs/libsodium-0.6.1:=[asm,urandom]"
 DEPEND="${RDEPEND}
-	$(unpacker_src_uri_depends)
 	test? ( dev-libs/check )
 	virtual/pkgconfig"
 
-S=${WORKDIR}
+S="${WORKDIR}/c-toxcore-${PV}"
 
 src_prepare() {
 	default
@@ -71,7 +70,7 @@ pkg_postinst() {
 			ewarn "    ${EROOT%/}/var/lib/tox-dht-bootstrap/key"
 			ewarn "    ${EROOT%/}/etc/tox-bootstrapd.conf"
 			ewarn "    ${EROOT%/}/run/tox-dht-bootstrap/tox-dht-bootstrap.pid"
-			ewarn "Then just re-emerge net-libs/tox"
+			ewarn "Then just reinstall net-libs/tox"
 		fi
 	fi
 }
