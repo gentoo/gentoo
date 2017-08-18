@@ -4348,7 +4348,7 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.131 1.8.0.144: Oracle's Java SE Development Kit
+dev-java/oracle-jdk-bin 1.8.0.144: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.131 1.8.0.144: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
