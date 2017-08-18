@@ -12682,7 +12682,7 @@ media-gfx/freepv 0.3.0-r4 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPano
 media-gfx/freewrl 1.22.13-r5 2.3.3-r2 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
 media-gfx/geeqie 1.2.2-r2 1.2.3-r1 1.3 1.3-r1: A lightweight GTK image viewer forked from GQview
-media-gfx/gif2apng 1.6 1.7 1.8 1.9: create an APNG from a GIF
+media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to png format
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3 0.2.27-r4: Powerful GTK+ based image & movie viewer
