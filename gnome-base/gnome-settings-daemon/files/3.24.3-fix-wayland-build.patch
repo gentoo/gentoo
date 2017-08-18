@@ -1,0 +1,53 @@
+From 58403ad7677d98fbb14b020dc4d15c52a695496e Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Fri, 18 Aug 2017 09:42:56 +0200
+Subject: [PATCH] Fix build issue when gudev is detected in the absence of
+ wayland
+
+See https://bugs.gentoo.org/show_bug.cgi?id=627966
+---
+ configure.ac               | 5 +++++
+ plugins/common/Makefile.am | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 908b3a3a..c89d5e2d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -140,15 +140,20 @@ AC_ARG_ENABLE(wayland,
+         AS_HELP_STRING([--disable-wayland],[Disable wayland support (default: auto)]),
+         enable_wayland=$enableval, enable_wayland=auto)
+ if test x$enable_wayland != xno; then
++        AS_IF([test "$have_udev" = no],
++              [AC_MSG_ERROR([udev is required for Wayland support])])
++
+         PKG_CHECK_MODULES(WAYLAND, wayland-client, have_wayland=yes, have_wayland=no)
+         if test x$have_wayland = xyes; then
+                 AC_DEFINE(HAVE_WAYLAND, 1, [Define if libwayland-client is available])
++		GUDEV_PKG="$GUDEV_PKG gdk-wayland-3.0"
+         else
+                 if test x$enable_wayland = xyes; then
+                         AC_MSG_ERROR([Wayland enabled but not found])
+                 fi
+         fi
+ fi
++AM_CONDITIONAL(HAVE_WAYLAND, test x$have_wayland = xyes)
+ 
+ dnl ================================================================
+ dnl Plugins
+diff --git a/plugins/common/Makefile.am b/plugins/common/Makefile.am
+index 107e4d3b..760f3198 100644
+--- a/plugins/common/Makefile.am
++++ b/plugins/common/Makefile.am
+@@ -40,7 +40,7 @@ libcommon_la_SOURCES = \
+ 	gsd-shell-helper.c	\
+ 	gsd-shell-helper.h
+ 
+-if HAVE_GUDEV
++if HAVE_WAYLAND
+ libcommon_la_SOURCES += \
+ 	gsd-device-manager-udev.c \
+ 	gsd-device-manager-udev.h
+-- 
+2.14.1
+
