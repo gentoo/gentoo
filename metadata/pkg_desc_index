@@ -212,7 +212,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.4.0 11.4.4 11.4.5 11.5.6 11.5.7: System performance tools for Linux
+app-admin/sysstat 11.4.0 11.4.5 11.4.6 11.6.0: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
@@ -14742,7 +14742,7 @@ net-im/psi 1.2 9999: Qt XMPP client
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
-net-im/qtox 1.6.0 1.7.0 1.8.1 9999: Most feature-rich GUI for net-libs/tox using Qt5
+net-im/qtox 1.8.1 1.11.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/qutim 0.3.2 0.3.3_p1: Qt4-based multi-protocol instant messenger
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
@@ -18793,7 +18793,7 @@ x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11v
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
-x11-misc/cbatticon 1.6.5: A lightweight and fast battery icon that sits in your system tray
+x11-misc/cbatticon 1.6.5 1.6.6: A lightweight and fast battery icon that sits in your system tray
 x11-misc/ccsm 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
