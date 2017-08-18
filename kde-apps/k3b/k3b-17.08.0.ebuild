@@ -102,6 +102,15 @@ src_configure() {
 	kde5_src_configure
 }
 
+src_test() {
+	# 628166
+	local myctestargs=(
+		-E "(k3bdeviceglobalstest)"
+	)
+
+	kde5_src_test
+}
+
 pkg_postinst() {
 	kde5_pkg_postinst
 
