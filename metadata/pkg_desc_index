@@ -18394,7 +18394,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.10.867.48_p1 1.11.917.39_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.12.933.3_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.12.933.3_p1 1.12.936.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
