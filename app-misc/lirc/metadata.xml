@@ -3,13 +3,8 @@
 <pkgmetadata>
     <!-- maintainer-needed -->
     <maintainer type="person">
-        <email>candrews@integralblue.com</email>
+        <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
-        <description>Proxied maintainer; set to assignee in all bugs</description>
-    </maintainer>
-    <maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
     </maintainer>
     <use>
         <flag name="uinput">Enable support for uinput</flag>

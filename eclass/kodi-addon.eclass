@@ -3,7 +3,7 @@
 
 # @ECLASS: kodi-addon.eclass
 # @MAINTAINER:
-# candrews@integralblue.com
+# candrews@gentoo.org
 # @BLURB: Helper for correct building and (importantly) installing Kodi addon packages.
 # @DESCRIPTION:
 # Provides a src_configure function for correct CMake configuration

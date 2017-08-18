@@ -8,12 +8,8 @@
         <flag name='tools'>Build and install a binary shairplay in /usr/bin</flag>
     </use>
     <maintainer type="person">
-        <email>candrews@integralblue.com</email>
+        <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
-    </maintainer>
-    <maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
     </maintainer>
     <upstream>
         <bugs-to>https://github.com/juhovh/shairplay</bugs-to>
