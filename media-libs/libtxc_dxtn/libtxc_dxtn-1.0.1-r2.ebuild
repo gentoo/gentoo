@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="media-libs/mesa"
+RDEPEND="media-libs/mesa[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 RESTRICT="bindist"
