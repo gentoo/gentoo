@@ -13166,7 +13166,7 @@ media-libs/mesa 13.0.5 13.0.6 17.0.6 17.0.7 17.1.0 17.1.1 17.1.2 17.1.3 17.1.4 1
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2 6.4.1-r3: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
-media-libs/mutagen 1.27 1.31 1.35.1 1.36.3 1.37: Audio metadata tag reader and writer implemented in pure Python
+media-libs/mutagen 1.35.1 1.37 1.38: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.2 1.18.0 1.18.1: A software implementation of the OpenAL 3D audio API
