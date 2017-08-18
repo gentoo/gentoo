@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Imlib2 wrapper for Python"
-HOMEPAGE="http://freevo.sourceforge.net/kaa/"
+HOMEPAGE="http://www.freevo.org/ http://api.freevo.org/kaa-imlib2/"
 SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
