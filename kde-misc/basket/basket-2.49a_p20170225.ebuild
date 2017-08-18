@@ -14,7 +14,7 @@ HOMEPAGE="http://basket.kde.org/ https://github.com/basket-notepads/basket"
 SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="crypt git"
 
 RDEPEND="
