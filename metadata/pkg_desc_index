@@ -12620,8 +12620,8 @@ media-gfx/album 4.07 4.13-r1: HTML photo album generator
 media-gfx/aoi 2.5 2.7.2: A free, open-source 3D modelling and rendering studio
 media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.7 2.91: create an APNG from multiple PNG files
-media-gfx/apngdis 2.7 2.8: extract PNG frames from an APNG
-media-gfx/apngopt 1.2 1.4: optimize APNG images
+media-gfx/apngdis 2.9: extract PNG frames from an APNG
+media-gfx/apngopt 1.4: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
 media-gfx/argyllcms 1.7.0 1.8.2 1.8.3 1.9.1 1.9.2: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
