@@ -239,7 +239,7 @@ app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1 0.99.2 0.99.2-r1: Clam Anti-Vi
 app-antivirus/clamav-unofficial-sigs 3.7.2 5.6.1: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 1.15 1.19 1.20: Recompress ZIP, PNG and MNG, considerably improving compression
-app-arch/afio 2.5 2.5.1: Makes cpio-format archives and deals gracefully with input data corruption
+app-arch/afio 2.5 2.5.1 2.5.1-r1: cpio-format archives
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5 3.10.22-r7: Utility for opening arj archives
