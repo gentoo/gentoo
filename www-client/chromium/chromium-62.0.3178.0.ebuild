@@ -138,6 +138,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/${PN}-gn-bootstrap-r15.patch"
 	"${FILESDIR}/${PN}-system-zlib-r1.patch"
+	"${FILESDIR}/${PN}-gcc5-r1.patch"
 )
 
 pre_build_checks() {
