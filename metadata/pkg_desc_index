@@ -12618,7 +12618,7 @@ media-gfx/aaphoto 0.43.1 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/album 4.07 4.13-r1: HTML photo album generator
 media-gfx/aoi 2.5 2.7.2: A free, open-source 3D modelling and rendering studio
-media-gfx/apng2gif 1.6 1.7: create a GIF from an APNG
+media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.7 2.91: create an APNG from multiple PNG files
 media-gfx/apngdis 2.7 2.8: extract PNG frames from an APNG
 media-gfx/apngopt 1.2 1.4: optimize APNG images
