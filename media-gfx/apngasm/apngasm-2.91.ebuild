@@ -16,7 +16,7 @@ IUSE="7z zopfli"
 
 RDEPEND="media-libs/libpng:0=[apng]
 	sys-libs/zlib
-	zopfli? ( app-arch/zopfli )"
+	zopfli? ( app-arch/zopfli:= )"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
