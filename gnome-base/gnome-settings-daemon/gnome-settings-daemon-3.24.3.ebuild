@@ -108,6 +108,8 @@ PATCHES=(
 	"${FILESDIR}"/3.24.2-remove-unneeded-gtk-init.patch
 	# Reduce memory usage by using a fake CSS theme instead of full Adwaita for GTK+ needing plugins; requires eautoreconf
 	"${FILESDIR}"/3.24.2-reduce-memory-usage.patch
+	# Fix build issue when gudev is present but not wayland, bug #627966
+	"${FILESDIR}"/3.24.3-fix-wayland-build.patch
 )
 
 python_check_deps() {
