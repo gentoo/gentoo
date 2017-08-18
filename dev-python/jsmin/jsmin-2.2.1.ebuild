@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="JavaScript minifier"
-HOMEPAGE="https://bitbucket.org/dcs/jsmin/"
+HOMEPAGE="https://pypi.python.org/pypi/jsmin https://github.com/tikitu/jsmin/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"
