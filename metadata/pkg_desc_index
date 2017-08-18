@@ -2647,7 +2647,7 @@ app-vim/syntastic 3.8.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
 app-vim/tasklist 1.0.1: Highlight FIXME/TODO/CUSTOM keywords in a separate list
-app-vim/tcomment 3.08: vim plugin: an extensible and universal comment toggler
+app-vim/tcomment 3.08 3.08.1 9999: vim plugin: an extensible and universal comment toggler
 app-vim/thlnk 1.2.1-r1: vim plugin: linking in plaintext
 app-vim/tlib 1.20: vim plugin: a library of utility functions
 app-vim/tmpl 0.1-r1: vim plugin: Syntax for Sam Tregar's HTML::Template
@@ -13193,7 +13193,7 @@ media-libs/phonon-vlc 0.9.1-r1 9999: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6-r1: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
-media-libs/portaudio 19_pre20140130 19.06.00: A free, cross-platform, open-source, audio I/O library
+media-libs/portaudio 19_pre20140130 19.06.00 19.06.00-r1: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r1: A library for real time MIDI input and output
 media-libs/ptex 2.1.28: Per-Face Texture Mapping for Production Rendering
 media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
@@ -13252,7 +13252,7 @@ media-libs/t1lib 5.1.2-r1: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.9.1-r2 1.11.1 1.11.1-r1: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/tiff 3.9.7-r1 4.0.7 4.0.7-r3 4.0.8: Tag Image File Format (TIFF) library
-media-libs/tremor 0_pre20120120 0_pre20130223 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
+media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing plugin system for plugins that extract descriptive information from audio data
