@@ -7124,7 +7124,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.56: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.0.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
-dev-php/composer 1.4.1: Dependency Manager for PHP
+dev-php/composer 1.5.1: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/doctrine-instantiator 1.0.5: Utility to instantiate objects in PHP without invoking their constructors
