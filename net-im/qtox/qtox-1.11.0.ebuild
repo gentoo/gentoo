@@ -1,21 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit qmake-utils toolchain-funcs
+inherit cmake-utils toolchain-funcs unpacker
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
-SRC_URI="https://github.com/qTox/qTox/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/qTox/qTox/releases/download/v${PV}/v${PV}.tar.lz -> ${P}.tar.lz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk X"
 
-# needed, since tarball provided by github extracts to `qTox`
-S="${WORKDIR}/qTox-${PV}"
+S="${WORKDIR}"
 
 RDEPEND="
 	dev-db/sqlcipher
@@ -43,27 +42,17 @@ RDEPEND="
 		x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
+	$(unpacker_src_uri_depends)
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if tc-is-gcc ; then
-			if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 || $(gcc-major-version) -lt 4 ]] ; then
-				eerror "You need at least sys-devel/gcc-4.8.3"
-				die "You need at least sys-devel/gcc-4.8.3"
-			fi
-		fi
-	fi
-}
-
 src_configure() {
-	use gtk || local NO_GTK_SUPPORT="ENABLE_SYSTRAY_STATUSNOTIFIER_BACKEND=NO ENABLE_SYSTRAY_GTK_BACKEND=NO"
-	use X || local NO_X_SUPPORT="DISABLE_PLATFORM_EXT=YES"
-	eqmake5 \
-			PREFIX="${D}/usr" \
-			GIT_DESCRIBE="${PV}" \
-			${NO_GTK_SUPPORT} \
-			${NO_X_SUPPORT}
+	local mycmakeargs=(
+		-DENABLE_STATUSNOTIFIER=$(usex gtk)
+		-DENABLE_GTK_SYSTRAY=$(usex gtk)
+		-DGIT_DESCRIBE="${PV}"
+	)
+
+	cmake-utils_src_configure
 }
