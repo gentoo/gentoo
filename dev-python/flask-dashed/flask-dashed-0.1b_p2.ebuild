@@ -11,7 +11,7 @@ MY_PV="${PV/_p/}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Admin app framework for flask"
-HOMEPAGE="http://pythonhosted.org/${MY_PN}/ https://pypi.python.org/pypi/${MY_PN}"
+HOMEPAGE="http://jeanphix.me/${MY_PN}/ https://pypi.python.org/pypi/${MY_PN}"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
