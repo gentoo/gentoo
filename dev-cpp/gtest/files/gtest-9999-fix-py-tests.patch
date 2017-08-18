@@ -1,0 +1,19 @@
+Fix python tests that use broken generator expressions
+
+--- a/googletest/cmake/internal_utils.cmake
++++ b/googletest/cmake/internal_utils.cmake
+@@ -247,12 +247,12 @@
+       add_test(
+         NAME ${name}
+         COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
+-            --build_dir=${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>)
++            --build_dir=${CMAKE_CURRENT_BINARY_DIR})
+     else (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 3.1)
+       add_test(
+         ${name}
+         ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
+-          --build_dir=${CMAKE_CURRENT_BINARY_DIR}/\${CTEST_CONFIGURATION_TYPE})
++          --build_dir=${CMAKE_CURRENT_BINARY_DIR})
+     endif (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 3.1)
+   endif()
+ endfunction()
