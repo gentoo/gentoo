@@ -19449,7 +19449,7 @@ x11-themes/xfce-gant-icon-theme 3.9_p6: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
-x11-themes/zuki-themes 3.20: Zuki themes for GTK, gnome-shell and more
+x11-themes/zuki-themes 3.20 3.24.2: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
