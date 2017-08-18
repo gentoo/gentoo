@@ -28,8 +28,10 @@ DEPEND="
 	>=dev-lang/go-1.8.3"
 RDEPEND=""
 
+PATCHES=( "${FILESDIR}"/${PN}-makefile-buildflags.patch )
+
 src_compile() {
-	GOPATH="${S}" emake -C src/${EGO_PN%/*}
+	BUILDFLAGS="" GOPATH="${S}" emake -C src/${EGO_PN%/*}
 	pushd src/${EGO_PN%/*}/web/dist >/dev/null || die
 	zip -qr "${S}/src/${EGO_PN%/*}/build/webassets.zip" . || die
 	popd >/dev/null || die
