@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Graphical effect and filter library by KDE"
 HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/qimageblitz/"
-SRC_URI="http://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
