@@ -13,7 +13,7 @@ LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx dane doc examples guile +idn nls openpgp +openssl pkcs11 sslv2 +sslv3 seccomp static-libs test test-full +tls-heartbeat tools valgrind zlib ${IUSE_LINGUAS// / linguas_}"
+IUSE="+cxx dane doc examples guile +idn nls openpgp +openssl pkcs11 sslv2 sslv3 seccomp static-libs test test-full +tls-heartbeat tools valgrind zlib ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
 	test-full? ( guile pkcs11 openpgp openssl idn seccomp tools zlib )"
