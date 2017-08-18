@@ -1,11 +1,11 @@
-DEFINED_PHASES=configure install prepare test unpack
-DEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69 >=sys-apps/texinfo-4.7 sys-devel/gnuconfig sys-apps/help2man dev-vcs/git
+DEFINED_PHASES=install prepare unpack
+DEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig sys-apps/help2man >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Used to generate Makefile.in from Makefile.am
-EAPI=4
+EAPI=6
 HOMEPAGE=https://www.gnu.org/software/automake/
 LICENSE=GPL-2
-RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69 >=sys-apps/texinfo-4.7 sys-devel/gnuconfig
+RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig
 SLOT=9999
-_eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=5c33307d5deebdd048dda0e5c20d87a6
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=eb2dea6d5f23dcdcc7601ec62a203f45
