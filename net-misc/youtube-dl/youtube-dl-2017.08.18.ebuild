@@ -27,21 +27,21 @@ S="${WORKDIR}/${PN}"
 
 python_prepare_all() {
 	if ! use offensive; then
-		sed -i -e "/__version__/s|'$|-gentoo_no_offensive_sites'|g" \
+		sed -i -e "/..version../s|'$|+gentoo.no.offensive.sites'|g" \
 			youtube_dl/version.py || die
 		# these have single line import statements
 		local xxx=(
 			alphaporno anysex behindkink camwithher chaturbate eporner
-			eroprofile extremetube fourtube foxgay goshgay hellporno
-			hentaistigma hornbunny keezmovies lovehomeporn mofosex motherless
-			myvidster porn91 porncom pornflip pornhd pornotube pornovoisines
-			pornoxo ruleporn sexu slutload spankbang spankwire sunporno thisav
-			tube8 vporn watchindianporn xbef xnxx xtube xvideos xxxymovies
-			youjizz youporn
+			eroprofile extremetube foxgay goshgay hellporno hentaistigma
+			hornbunny keezmovies lovehomeporn mofosex motherless myvidster
+			porn91 porncom pornflip pornhd pornotube pornovoisines pornoxo
+			ruleporn sexu slutload spankbang spankwire sunporno thisav tube8
+			vporn watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz
+			youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
-			drtuber pornhub redtube tnaflix xhamster
+			drtuber fourtube pornhub redtube tnaflix xhamster
 		)
 		# do single line imports
 		sed -i \
