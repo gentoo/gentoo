@@ -2862,7 +2862,7 @@ dev-cpp/glog 0.3.3-r1 0.3.4 0.3.4-r1: Google's C++ logging library
 dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
-dev-cpp/gtest 1.7.0-r1: Google C++ Testing Framework
+dev-cpp/gtest 1.7.0-r1 9999: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.5 3.22.0 3.22.1: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
