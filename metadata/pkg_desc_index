@@ -15501,7 +15501,7 @@ net-nds/gosa-core 2.6.12: LDAP administration frontend for user administration
 net-nds/gosa-plugin-mail 2.6.12 2.6.12-r1: GOsa plugin for Mail integration
 net-nds/gosa-plugin-samba 2.6.12 2.6.12-r1: GOsa plugin for Samba integration
 net-nds/gosa-plugin-systems 2.6.12 2.6.12-r1: GOsa plugin for common systems integration
-net-nds/gss-proxy 0.5.1 0.6.2: daemon to proxy GSSAPI context establishment and channel handling
+net-nds/gss-proxy 0.5.1 0.6.2 0.7.0: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written in Java
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
