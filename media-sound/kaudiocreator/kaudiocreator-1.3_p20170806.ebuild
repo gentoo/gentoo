@@ -11,7 +11,7 @@ HOMEPAGE="http://www.kde-apps.org/content/show.php?content=107645"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 FDL-1.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
