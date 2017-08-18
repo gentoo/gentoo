@@ -7,7 +7,7 @@ COMMIT="a201df47a0849a09a20617fedfee26a407dc847c"
 inherit kde5 vcs-snapshot
 
 DESCRIPTION="Simple photo taking application with fancy animated interface"
-HOMEPAGE="http://dos1.github.io/kamerka/ https://github.com/dos1/kamerka"
+HOMEPAGE="https://dos1.github.io/kamerka/ https://github.com/dos1/kamerka"
 SRC_URI="https://github.com/dos1/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
