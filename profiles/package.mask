@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (18 Aug 2017)
+# Last version from 2011, and has a vulnerable init script
+# (bug 603382). The proxy-maintainer is unknown to bugzilla,
+# and the previous maintainer jmbsvicetto is OK with masking.
+net-misc/vde
+
 # Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
 # Masked ede and all its dependencies due to security reasons. 
 # bug #398241
