@@ -9,7 +9,7 @@ DESCRIPTION="create an APNG from multiple PNG files"
 HOMEPAGE="https://sourceforge.net/projects/apngasm/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
 
-LICENSE="ZLIB LGPL-2.1"
+LICENSE="ZLIB 7z? ( LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="7z zopfli"
