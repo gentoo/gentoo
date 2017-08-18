@@ -14705,7 +14705,7 @@ net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
 net-im/bitlbee 3.5.1 9999: irc to IM gateway that support multiple IM protocols
-net-im/bitlbee-steam 1.2.0 9999: Steam protocol plugin for BitlBee
+net-im/bitlbee-steam 1.2.0 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
