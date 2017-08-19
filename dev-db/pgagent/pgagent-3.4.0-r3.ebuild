@@ -24,7 +24,13 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}-Source"
 
-PATCHES=( "${FILESDIR}/postgres-10-build-fix.patch" )
+PATCHES=(
+	"${FILESDIR}/fix-dbconn-getlasterror-crash.patch"
+	"${FILESDIR}/save-stderr-jobstep-output.patch"
+	"${FILESDIR}/add-log-timestamps.patch"
+	"${FILESDIR}/fix-job-success-test.patch"
+	"${FILESDIR}/postgres-10-build-fix.patch"
+)
 
 src_prepare() {
 	default
