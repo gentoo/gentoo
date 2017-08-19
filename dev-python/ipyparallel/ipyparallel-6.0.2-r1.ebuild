@@ -3,39 +3,41 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
 DESCRIPTION="Interactive Parallel Computing with IPython"
-HOMEPAGE="http://ipython.org/"
+HOMEPAGE="https://ipyparallel.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="
-	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
-	>=dev-python/pyzmq-14.4.0[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
-	!<dev-python/ipython-4.0.0[smp]
+	!<dev-python/ipython-4.0.0[smp,${PYTHON_USEDEP}]
 	>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '<dev-python/ipython-6[${PYTHON_USEDEP}]' 'python2_7')
-	dev-python/notebook[${PYTHON_USEDEP}]
+	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
+	dev-python/notebook[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	>=dev-python/pyzmq-14.4.0[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
-	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' python2_7)
+	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-18.5[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	"
@@ -50,14 +52,12 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		emake -C docs html
+		HTML_DOCS=( docs/build/html/. )
+	fi
 }
 
 python_test() {
 	iptest --coverage xml ipyparallel.tests -- -vsx || die
-}
-
-python_install_all() {
-	use doc && HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
 }
