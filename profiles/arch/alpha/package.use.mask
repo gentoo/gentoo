@@ -211,6 +211,10 @@ dev-haskell/vector test
 # OpenCV likely will never work on Alpha
 media-video/vlc opencv
 
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
+# Missing keywords, bug #523686
+>=dev-libs/libgdata-0.16.1 test
+
 # Tobias Klausmann <klausman@gentoo.org> (11 Oct 2014)
 # app-emulation/qemu is not keyworded on alpha, masking flag that triggers
 # dependency
