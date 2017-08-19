@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs unpacker
+inherit cmake-utils gnome2-utils unpacker xdg-utils
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
@@ -55,4 +55,14 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
