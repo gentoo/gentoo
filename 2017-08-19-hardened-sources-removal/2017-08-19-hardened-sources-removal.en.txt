@@ -1,7 +1,7 @@
 Title: sys-kernel/hardened-sources removal
 Author: Francisco Blas Izquierdo Riera <klondike@gentoo.org>
 Posted: 2017-08-19
-Revision: 4
+Revision: 5
 News-Item-Format: 2.0
 Display-If-Installed: sys-kernel/hardened-sources
 Display-If-Profile: hardened/linux/*
@@ -40,13 +40,15 @@ security, reliability or update availability of either those patches
 as we aren't providing them and can't therefore make any
 recommendation regarding their use.
 
-We'd like to note that all the userspace hardening and MAC support
-for SELinux provided by Gentoo Hardened will still remain there and
-is unaffected by this removal. Also, all PaX related packages other
-than the hardened-sources will remain for the time being.
+We'd like to note that all the userspace hardening and MAC support for
+SELinux provided by Gentoo Hardened will still remain in the packages
+found in portage. Keep in mind, though, that the security provided by
+these features will be weakened a bit when using
+sys-kernel/gentoo-sources. Also, all PaX related packages, except
+sys-kernel/hardened-sources, will remain available for the time being.
 
 [1] https://grsecurity.net/passing_the_baton.php
-[2] https://www.gentoo.org/support/news-items/2015-10-21-future-support-of-
-hardened-sources-kernel.html
+[2] https://www.gentoo.org/support/news-items/2015-10-21-future-
+support-of-hardened-sources-kernel.html
 [3] https://github.com/minipli/linux-unofficial_grsec
 [4] https://github.com/copperhead/linux-hardened
