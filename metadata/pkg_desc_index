@@ -4816,7 +4816,7 @@ dev-libs/libevdev 1.5.6 1.5.7: Handler library for evdev events
 dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
-dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
+dev-libs/libexplain 1.4 1.4-r1: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.2 0.99.4 0.99.6: Fork of the json-c library, which is optimized for liblognorm processing
