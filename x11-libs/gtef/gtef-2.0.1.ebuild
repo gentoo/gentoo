@@ -34,8 +34,8 @@ DEPEND="${DEPEND}
 src_prepare() {
 	# requires running gvfs-metadata
 	sed -e 's:\(g_test_add_func.*/file/load_save_metadata_sync.*\):/*\1*/:' \
-        -e 's:\(g_test_add_func.*/file/load_save_metadata_async.*\):/*\1*/:' \
-        -e 's:\(g_test_add_func.*/file/set_without_load.*\):/*\1*/:' \
+		-e 's:\(g_test_add_func.*/file/load_save_metadata_async.*\):/*\1*/:' \
+		-e 's:\(g_test_add_func.*/file/set_without_load.*\):/*\1*/:' \
 		-i testsuite/test-file-metadata.c || die
 
 	use vala && vala_src_prepare
