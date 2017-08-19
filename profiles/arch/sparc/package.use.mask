@@ -121,10 +121,6 @@ net-firewall/iptables nftables
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
-# Missing keywords
->=media-plugins/grilo-plugins-0.2.14 upnp-av
-
 # Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
 # Requires net-libs/http-parser
 net-im/jabberd2 websocket
