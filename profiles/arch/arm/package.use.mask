@@ -68,6 +68,10 @@ games-emulation/dosbox glide
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 >=sci-libs/gdal-2.0.3 mdb
 
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
+# Missing keywords on media-libs/grilo - bug #521972
+media-sound/rhythmbox upnp-av
+
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
