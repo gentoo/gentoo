@@ -11,10 +11,9 @@ LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="nls +policykit"
 
-# drop qtgui subslot operator when QT_MINIMAL >= 5.7.0
 RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
-	$(add_qt_dep qtdbus '' '' '5=')
+	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	policykit? ( sys-auth/polkit-qt[qt5] )
