@@ -48,3 +48,4 @@ move app-i18n/ibus-table-code app-i18n/ibus-table-others
 move app-i18n/ibus-table-cyrillic app-i18n/ibus-table-others
 move app-i18n/ibus-table-tv app-i18n/ibus-table-others
 move dev-libs/libchewing app-i18n/libchewing
+move media-gfx/pydot dev-python/pydot
