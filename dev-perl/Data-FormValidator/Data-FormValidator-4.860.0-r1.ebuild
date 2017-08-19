@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Validates user input (usually from an HTML form) based on input profile"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/4.86-dot-in-inc.patch" )
