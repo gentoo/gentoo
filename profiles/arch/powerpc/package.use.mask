@@ -216,10 +216,6 @@ dev-haskell/dataenc test
 # # Depends on kde-misc/networkmanagement, not keyworded yet.
 kde-apps/solid-runtime networkmanager
 
-# Pacho Ramos <pacho@gentoo.org> (08 Sep 2013)
-# monodevelop is not keyworded, bug #468030
-gnome-extra/zeitgeist-datasources mono
-
 # Agostino Sarubbo <ago@gentoo.org> (24 Aug 2013)
 # Klibc does not work anymore on ppc
 app-shells/mksh static

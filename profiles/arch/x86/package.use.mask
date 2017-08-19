@@ -148,10 +148,6 @@ sys-apps/hwloc -gl
 # Keywords missing, bug #478104
 >=app-editors/gedit-plugins-3.8.3 git
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium, mono work on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -chromium
-
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -mkl
