@@ -315,10 +315,6 @@ sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ope
 # libpcre jit is not supported on alpha
 dev-libs/libpcre jit
 
-# Pacho Ramos <pacho@gentoo.org> (24 Oct 2011)
-# Missing keywords in needed packages, bug #388367
-net-im/empathy map
-
 # Raúl Porcel <armin76@gentoo.org> (08 Oct 2011)
 # Needs media-sound/lilypond
 app-text/asciidoc test
