@@ -121,10 +121,6 @@ net-firewall/iptables nftables
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
-# Missing keywords
->=media-plugins/grilo-plugins-0.2.14 upnp-av
-
 # Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
 # Requires net-libs/http-parser
 net-im/jabberd2 websocket
@@ -253,10 +249,6 @@ www-plugins/gnash jemalloc
 # Fix per-arch mask of phonon[zeitgeist] #460140
 media-libs/phonon zeitgeist
 
-# Patrick Lauer <patrick@gentoo.org> (27 May 2013)
-# stable keywords missing on tagpy/coherence
-media-sound/rhythmbox upnp-av
-
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -303,15 +295,6 @@ x11-misc/xscreensaver new-login
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded
 app-misc/lcdproc hid lcd_devices_mdm166a
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Requires gnutls[pkcs11], which is use.masked on sparc
-net-libs/glib-networking smartcard
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # Mask use numa for openmpi

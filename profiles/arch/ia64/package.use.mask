@@ -69,10 +69,6 @@ net-analyzer/rrdtool rados
 # x11-libs/libXpresent is not keyworded on ia64
 xfce-base/xfwm4 xpresent
 
-# Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
-# Missing keywords, bug #559770
->=net-misc/networkmanager-1.4.4 consolekit
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
 dev-libs/hiredis test
@@ -97,10 +93,6 @@ net-misc/networkmanager ofono
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
 dev-db/percona-server -numa
-
-# Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
-# Missing keywords on media-libs/grilo - bug #521972
-media-sound/rhythmbox upnp-av
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
@@ -128,10 +120,6 @@ app-text/mupdf opengl
 # dev-python/greenlet which has not been ported
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
-
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
-# Missing keywords
->=media-plugins/grilo-plugins-0.2.16 upnp-av
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
@@ -165,10 +153,6 @@ net-analyzer/wireshark doc-pdf
 # Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
 # Missing keywords, bug #513108
 net-misc/spice-gtk smartcard webdav
-
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# net-fs/libnfs lacks ia64 keyword, bug #551576
-gnome-base/gvfs nfs
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # dev-lang/luajit and dev-lua/lgi and lack ia64 keyword, bug #551540
@@ -257,10 +241,6 @@ media-libs/phonon zeitgeist
 # depends on net-libs/polarssl
 >=net-vpn/openvpn-2.3.1 polarssl
 
-# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
-# missing keyword on media-libs/tremor, bug #453200
-media-libs/gst-plugins-base ivorbis
-
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono/monodevelop
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -300,10 +280,6 @@ media-libs/phonon gstreamer vlc
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Requires gnutls[pkcs11], which is use.masked on ia64
-net-libs/glib-networking smartcard
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # Mask use numa for openmpi
