@@ -220,10 +220,6 @@ media-video/ffmpeg x265
 # neither dietlibc nor klibc will likely ever build/work on alpha, bug #487672
 >=sys-fs/dmraid-1.0.0_rc16-r3 dietlibc klibc
 
-# Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
-# Missing keywords, bug #504672
->=net-misc/vinagre-3.10 rdp
-
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
