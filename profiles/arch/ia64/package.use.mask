@@ -285,10 +285,6 @@ media-libs/phonon gstreamer vlc
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Requires gnutls[pkcs11], which is use.masked on ia64
-net-libs/glib-networking smartcard
-
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # Mask use numa for openmpi
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
