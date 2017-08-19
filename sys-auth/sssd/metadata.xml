@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>hwoarang@gentoo.org</email>
-  <name>Markos Chandras</name>
+	<email>hwoarang@gentoo.org</email>
+	<name>Markos Chandras</name>
 </maintainer>
 <use>
 	<flag name="acl"> Build and use the cifsidmap plugin</flag>
