@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune
+inherit ltprune multilib-minimal
 
 DESCRIPTION="Helper library for	S3TC texture (de)compression"
 HOMEPAGE="https://cgit.freedesktop.org/~mareko/libtxc_dxtn/"
@@ -19,7 +19,11 @@ DEPEND="${RDEPEND}"
 
 RESTRICT="bindist"
 
-src_install() {
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf
+}
+
+multilib_src_install_all() {
 	default
 
 	# libtxc_dxtn is installed as a module (plugin)
