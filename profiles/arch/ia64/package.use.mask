@@ -159,10 +159,6 @@ net-analyzer/wireshark doc-pdf
 net-misc/spice-gtk smartcard webdav
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# net-fs/libnfs lacks ia64 keyword, bug #551576
-gnome-base/gvfs nfs
-
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # dev-lang/luajit and dev-lua/lgi and lack ia64 keyword, bug #551540
 dev-libs/libpeas lua jit
 
