@@ -62,15 +62,16 @@ app-xemacs/ecb
 app-xemacs/xemacs-packages-all
 
 # Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
-# Masked for removal in 30 days. KDE Applications 17.04.3 was
-# stabilised, including KDE PIM based on KDE Frameworks.
-kde-apps/kde-l10n
+# KDE Applications 17.04.3 was stabilised, including KDE PIM
+# based on KDE Frameworks. kde-apps/ktnef merged into kmail.
+# Masked for removal in 30 days.
 kde-apps/kdepim-common-libs
-kde-apps/kommander
-kde-apps/ksaneplugin
 kde-apps/ktnef
-kde-apps/kwalletd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
+# Masked for removal in 30 days. No reverse dependencies left.
 kde-apps/kcmshell
+kde-apps/kde-l10n
 kde-apps/kdebase-runtime-meta
 kde-apps/kdontchangethehostname
 kde-apps/keditfiletype
@@ -78,7 +79,16 @@ kde-apps/kfile
 kde-apps/kmimetypefinder
 kde-apps/knewstuff
 kde-apps/kreadconfig
+kde-apps/ksaneplugin
 kde-apps/ktraderclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
+# Masked for removal in 30 days. Replaced by kde-frameworks/kwallet.
+kde-apps/kwalletd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
+# Masked for removal in 30 days. Dead upstream, no replacement.
+kde-apps/kommander
 
 # Patrice Clement <monsieurp@gentoo.org> (10 Aug 2017)
 # Not ready for production yet.
