@@ -11,14 +11,13 @@ LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="dbus nls speech X"
 
-# drop qtgui subslot operator when QT_MINIMAL >= 5.7.0
 RDEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui '' '' '5=')
+	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	media-libs/phonon[qt5]
 	dbus? ( dev-libs/libdbusmenu-qt[qt5] )
