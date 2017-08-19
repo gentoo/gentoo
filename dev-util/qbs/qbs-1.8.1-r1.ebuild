@@ -36,6 +36,11 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	# bug 625640
+	"${FILESDIR}/1.8.1-Install-missing-public-header.patch"
+)
+
 src_prepare() {
 	default
 
