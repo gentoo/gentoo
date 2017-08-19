@@ -32,7 +32,7 @@ DEPEND="
 	test? (
 		${COMMON_DEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'media-gfx/pydot[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/pydot[${PYTHON_USEDEP}]' python2_7)
 	)"
 RDEPEND="
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
