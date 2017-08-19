@@ -564,9 +564,6 @@ src_install() {
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
 
-	# Remove desktop files to support old installs that can't parse mime
-	rm -r "${ED}"usr/share/mimelnk/ || die
-
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
