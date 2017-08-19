@@ -1887,7 +1887,7 @@ app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows ar
 app-misc/openastro 1.1.48 1.1.49 1.1.50: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6 1.7: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2 1.2.2-r1: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.7: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.2.3: Simple command-line snippet manager
@@ -14948,7 +14948,7 @@ net-libs/libssh 0.7.3-r1 0.7.4 0.7.5-r1 9999: Access a working SSH implementatio
 net-libs/libssh2 1.7.0 1.8.0 1.8.0-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1 1.0.1-r1 1.0.1-r2 1.0.1-r3 1.0.2: Transport Independent RPC library (SunRPC replacement)
-net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
+net-libs/libtorrent 0.13.6 0.13.6-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.0.10 1.0.11 1.1.1 1.1.2 1.1.3 1.1.4: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 3.0.22 4.0.0 4.0.1: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.22 1.8.1: An Portable Open Source UPnP Development Kit
@@ -15378,7 +15378,7 @@ net-misc/qtm 1.3.18: Qt blogging client
 net-misc/quagga 1.1.1 1.2.0-r2 1.2.1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.044.02: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5 3.6.9 3.6.10: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
-net-misc/radvd 2.14 2.15-r1 2.16 2.17: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 2.14 2.15-r1 2.16 2.17 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rclone 1.36 1.37 9999: A program to sync files to and from various cloud storage providers
@@ -15586,7 +15586,7 @@ net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier t
 net-p2p/pybitmessage 0.4.2 0.6.2-r2: P2P communications protocol
 net-p2p/qbittorrent 3.3.7 3.3.10 3.3.12 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.2 0.6.3 0.6.9999: P2P private sharing application
-net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
+net-p2p/rtorrent 0.9.6 0.9.6-r1: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
