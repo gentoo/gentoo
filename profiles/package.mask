@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (19 Aug 2017)
+# Plasma-4 fragment, no more rdeps, masked for removal in 30 days.
+kde-plasma/libkworkspace
+
+# Andreas Sturmlechner <asturm@gentoo.org> (19 Aug 2017)
+# Constantly broken, dead upstream, no more rdeps.
+# Masked for removal in 30 days. (#485244, #577762)
+kde-apps/pykde4
+
 # Michael Orlitzky <mjo@gentoo.org> (18 Aug 2017)
 # Last version from 2011, and has a vulnerable init script
 # (bug 603382). The proxy-maintainer is unknown to bugzilla,
@@ -48,8 +57,8 @@ app-xemacs/ecb
 app-xemacs/xemacs-packages-all
 
 # Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
-# Masked for removal. KDE Applications 17.04.3 was stabilised,
-# including KDE PIM based on KDE Frameworks.
+# Masked for removal in 30 days. KDE Applications 17.04.3 was
+# stabilised, including KDE PIM based on KDE Frameworks.
 kde-apps/kde-l10n
 kde-apps/kdepim-common-libs
 kde-apps/kommander
