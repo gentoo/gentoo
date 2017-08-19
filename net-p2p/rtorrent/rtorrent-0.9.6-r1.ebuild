@@ -1,40 +1,45 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=5
 
-inherit eutils
+inherit autotools eutils systemd
 
 DESCRIPTION="BitTorrent Client using libtorrent"
-HOMEPAGE="http://libtorrent.rakshasa.no/"
-SRC_URI="http://libtorrent.rakshasa.no/downloads/${P}.tar.gz"
+HOMEPAGE="https://rakshasa.github.io/rtorrent/"
+SRC_URI="http://rtorrent.net/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="daemon debug ipv6 selinux test xmlrpc"
 
 COMMON_DEPEND="~net-libs/libtorrent-0.13.${PV##*.}
 	>=dev-libs/libsigc++-2.2.2:2
 	>=net-misc/curl-7.19.1
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	xmlrpc? ( dev-libs/xmlrpc-c )"
 RDEPEND="${COMMON_DEPEND}
 	daemon? ( app-misc/screen )
 	selinux? ( sec-policy/selinux-rtorrent )
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( dev-util/cppunit )
+	dev-util/cppunit
 	virtual/pkgconfig"
 
 DOCS=( doc/rtorrent.rc )
 
 src_prepare() {
 	# bug #358271
-	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
+	epatch \
+		"${FILESDIR}"/${PN}-0.9.1-ncurses.patch \
+		"${FILESDIR}"/${PN}-0.9.4-tinfo.patch \
+		"${FILESDIR}"/${PN}-0.9.6-cppunit-pkgconfig.patch
 
-	# upstream forgot to include
+	# https://github.com/rakshasa/rtorrent/issues/332
 	cp "${FILESDIR}"/rtorrent.1 "${S}"/doc/ || die
+
+	eautoreconf
 }
 
 src_configure() {
@@ -53,5 +58,6 @@ src_install() {
 	if use daemon; then
 		newinitd "${FILESDIR}/rtorrentd.init" rtorrentd
 		newconfd "${FILESDIR}/rtorrentd.conf" rtorrentd
+		systemd_newunit "${FILESDIR}/rtorrentd_at.service" "rtorrentd@.service"
 	fi
 }
