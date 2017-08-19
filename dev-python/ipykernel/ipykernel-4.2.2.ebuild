@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '<dev-python/ipython-6[${PYTHON_USEDEP}]' 'python2*')
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 	"
