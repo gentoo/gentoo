@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="Helper library for	S3TC texture (de)compression"
 HOMEPAGE="https://cgit.freedesktop.org/~mareko/libtxc_dxtn/"
@@ -14,15 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="media-libs/mesa"
+RDEPEND="media-libs/mesa[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 RESTRICT="bindist"
 
-src_install() {
-	default
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf
+}
 
-	# libtxc_dxtn is installed as a module (plugin)
+multilib_src_install_all() {
 	prune_libtool_files --all
 }
 
