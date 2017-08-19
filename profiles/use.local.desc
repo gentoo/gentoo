@@ -2954,6 +2954,7 @@ dev-vcs/fossil:json - Enable the JSON API of Fossil's wiki
 dev-vcs/fossil:legacy-mv-rm - Enable legacy behavior for mv/rm (skip checkout files)
 dev-vcs/fossil:miniz - Use the bundled miniz for compression instead of zlib
 dev-vcs/fossil:sqlite - Use the system SQLite instead of the bundled one
+dev-vcs/fossil:system-sqlite - Use the system SQLite instead of the bundled one
 dev-vcs/fossil:th1-docs - Enable TH1 for embedded documentation pages
 dev-vcs/fossil:th1-hooks - Enable TH1 hooks for commands and web pages
 dev-vcs/git:blksha1 - Use the new optimized SHA1 implementation
