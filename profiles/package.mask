@@ -37,9 +37,11 @@
 dev-lang/ruby:2.1
 net-analyzer/metasploit:4.12
 dev-ruby/activeresource:4.1
-dev-ruby/rails-observers
 dev-ruby/builder:3
+dev-ruby/metasploit-credential:2.0.3
+dev-ruby/rails-observers
 dev-ruby/samuel
+games-rpg/a-bird-story
 
 # Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
 # ipython-6 is python-3 only and causes circular dependencies
