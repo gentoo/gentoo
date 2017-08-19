@@ -134,6 +134,10 @@ dev-util/perf numa
 
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
+media-sound/rhythmbox upnp-av
+
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)

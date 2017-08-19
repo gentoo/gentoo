@@ -94,6 +94,10 @@ net-misc/networkmanager ofono
 # Enable numa support on supported architectures
 dev-db/percona-server -numa
 
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
+# Missing keywords on media-libs/grilo - bug #521972
+media-sound/rhythmbox upnp-av
+
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
