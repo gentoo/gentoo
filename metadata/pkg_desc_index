@@ -12751,7 +12751,7 @@ media-gfx/kgrab 0.1.1: KDE screen grabbing utility
 media-gfx/kgraphviewer 2.2.0: KDE graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
-media-gfx/krita 3.1.4: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 3.1.4 3.2.0: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 2.0.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.10.1: Palette quantization library that powers pngquant and other PNG optimizers
@@ -12815,7 +12815,7 @@ media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your des
 media-gfx/psftools 1.0.7: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/pycam 0.5.1 0.6_pre20130416-r1: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
-media-gfx/pydot 1.0.28-r2: Python interface to Graphviz's Dot language
+media-gfx/pydot 1.0.28-r2 1.2.3: Python interface to Graphviz's Dot language
 media-gfx/qingy-themes 20050816: Collection of qingy themes
 media-gfx/qiv 2.2.4 2.3.1: Quick Image Viewer
 media-gfx/qiviewer 0.5.0-r1: Lightweight image viewer, similar to eog or viewnior for Gnome
