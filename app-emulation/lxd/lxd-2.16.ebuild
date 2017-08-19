@@ -40,12 +40,13 @@ EGO_VENDOR=(
 	"gopkg.in/yaml.v2 eb3733d160e74a9c7e442f435eb3bea458e1d19f github.com/go-yaml/yaml"
 )
 
-ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://${EGO_PN}/archive/${P}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-PLOCALES="de el fr it ja nl ru sr sv tr"
+# Portage complains about zh_Hans missing, but repoman doesn't like it when it's there.
+PLOCALES="de el fr it ja nl ru sr sv tr zh"
 IUSE="+daemon nls test"
 
 # IUSE and PLOCALES must be defined before l10n inherited
@@ -114,9 +115,6 @@ ERROR_VXLAN="VXLAN: needed for network commands"
 
 PATCHES=(
 	"${FILESDIR}/${P}-dont-go-get.patch"
-	# See https://github.com/lxc/lxd/pull/3390
-	# (I thought I could remove this for v2.16, but apparently not...)
-	"${FILESDIR}/${P}-fix-fr-po.patch"
 )
 
 # KNOWN ISSUES:
