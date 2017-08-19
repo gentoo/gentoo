@@ -1,0 +1,32 @@
+diff -ur thunderbird-45.8.0/chat/content/browserRequest.xul thunderbird-45.8.0-r1/chat/content/browserRequest.xul
+--- thunderbird-45.8.0/chat/content/browserRequest.xul	2017-03-06 00:56:04.000000000 +0400
++++ thunderbird-45.8.0-r1/chat/content/browserRequest.xul	2017-08-19 09:44:22.633070241 +0400
+@@ -30,7 +30,7 @@
+     <description id="headerMessage"/>
+     </vbox>
+   </hbox>
+-  <browser type="content" disablehistory="true" src="about:blank" id="requestFrame" flex="1"/>
++  <browser type="content" src="about:blank" id="requestFrame" flex="1"/>
+   <statusbar>
+     <statusbarpanel id="security-display" crop="end" flex="1"/>
+     <statusbarpanel id="security-status" crop="end" collapsed="true"/>
+diff -ur thunderbird-45.8.0/mail/base/content/browserRequest.xul thunderbird-45.8.0-r1/mail/base/content/browserRequest.xul
+--- thunderbird-45.8.0/mail/base/content/browserRequest.xul	2017-03-06 00:56:04.000000000 +0400
++++ thunderbird-45.8.0-r1/mail/base/content/browserRequest.xul	2017-08-19 09:44:22.633070241 +0400
+@@ -30,5 +30,5 @@
+     <description id="headerMessage"/>
+   </hbox>
+   </hbox>
+-  <browser type="content" disablehistory="true" src="about:blank" id="requestFrame" flex="1"/>
++  <browser type="content" src="about:blank" id="requestFrame" flex="1"/>
+ </window>
+diff -ur thunderbird-45.8.0/suite/mailnews/browserRequest.xul thunderbird-45.8.0-r1/suite/mailnews/browserRequest.xul
+--- thunderbird-45.8.0/suite/mailnews/browserRequest.xul	2017-03-06 00:56:05.000000000 +0400
++++ thunderbird-45.8.0-r1/suite/mailnews/browserRequest.xul	2017-08-19 09:44:22.633070241 +0400
+@@ -30,5 +30,5 @@
+     <description id="headerMessage"/>
+   </hbox>
+   </hbox>
+-  <browser type="content" disablehistory="true" src="about:blank" id="requestFrame" flex="1"/>
++  <browser type="content" src="about:blank" id="requestFrame" flex="1"/>
+ </window>
