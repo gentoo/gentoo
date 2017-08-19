@@ -15,17 +15,20 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	inherit golang-vcs-snapshot
 	SRC_URI="https://github.com/gravitational/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
+RESTRICT="test"
 
 DEPEND="
 	app-arch/zip
-	>=dev-lang/go-1.7"
+	>=dev-lang/go-1.8.3"
 RDEPEND=""
+
+PATCHES=( "${FILESDIR}"/${PN}-makefile-buildflags.patch )
 
 src_compile() {
 	BUILDFLAGS="" GOPATH="${S}" emake -C src/${EGO_PN%/*}
@@ -48,4 +51,8 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
+}
+
+src_test() {
+	GOPATH="${S}" emake -C src/${EGO_PN%/*} test
 }
