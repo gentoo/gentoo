@@ -23,7 +23,7 @@ REQUIRED_USE="threads? ( ^^ ( boost poco tbb ) )
 	examples? ( ois )
 	poco? ( threads )
 	tbb? ( threads )
-	gl3plus ( !gles2 !gles3 )
+	gl3plus? ( !gles2 !gles3 )
 	gles3? ( gles2 )
 	gl3plus? ( opengl )"
 
