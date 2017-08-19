@@ -9003,7 +9003,7 @@ dev-qt/pixeltool 4.8.6-r1 4.8.7 5.6.2 5.7.1: Qt screen magnifier
 dev-qt/qdbus 5.6.2 5.7.1: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 4.8.6-r1 4.8.7 5.6.2 5.7.1: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.6.2 5.7.1: Qt documentation generator
-dev-qt/qt-creator 3.6.1 4.3.0 4.3.1 9999: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 3.6.1 4.3.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.6.2_p0-r1 5.7.1_p0: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
@@ -10513,7 +10513,7 @@ dev-util/promu 0.1.0_p20170607: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2016.3.2-r1 2017.1 2017.1.3 2017.1.5 2017.2.1: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.3.2 2017.1 2017.1.5: Intelligent Python IDE with unique code assistance and analysis
-dev-util/qbs 1.4.5 1.8.0-r1 1.8.1: Modern build tool for software projects
+dev-util/qbs 1.4.5 1.8.0-r1 1.8.1-r1: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
@@ -13310,7 +13310,7 @@ media-plugins/gmpc-mserver 0.20.0: This plugin allows you to play local files on
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.2.12 0.2.17 0.3.4: A framework for easy media discovery and browsing
+media-plugins/grilo-plugins 0.2.17 0.3.4: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.8.3 1.10.3 1.10.5: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.8.3 1.10.3 1.10.5: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
@@ -17370,7 +17370,7 @@ sys-block/fio 2.15 2.16: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2 0.3: Partition table rescue/guessing tool
-sys-block/gparted 0.27.0 0.28.1: Gnome Partition Editor
+sys-block/gparted 0.27.0 0.28.1 0.29.0: Gnome Partition Editor
 sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)

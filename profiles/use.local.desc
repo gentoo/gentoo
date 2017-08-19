@@ -4334,7 +4334,6 @@ media-plugins/grilo-plugins:daap - Enable dmap support through net-libs/libdmaps
 media-plugins/grilo-plugins:flickr - Enable Flickr support
 media-plugins/grilo-plugins:freebox - Build support for viewing TV channels using Freebox
 media-plugins/grilo-plugins:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
-media-plugins/grilo-plugins:pocket - Support for showing content from Pocket
 media-plugins/grilo-plugins:subtitles - Enables support for subtitle from OpenSubtitles
 media-plugins/grilo-plugins:thetvdb - Build support for thetvdb.com
 media-plugins/grilo-plugins:tracker - Build support for content discovery using the app-misc/tracker indexer
@@ -7647,6 +7646,7 @@ sys-block/gparted:mdadm - Support for Linux software RAID.
 sys-block/gparted:ntfs - Include NTFS support (sys-fs/ntfs3g)
 sys-block/gparted:reiser4 - Include ReiserFS4 support (sys-fs/reiser4progs)
 sys-block/gparted:reiserfs - Include ReiserFS support (sys-fs/reiserfsprogs)
+sys-block/gparted:udf - Include UDF support (sys-fs/udftools)
 sys-block/gparted:xfs - Include XFS support (sys-fs/xfsprogs, sys-fs/xfsdump)
 sys-block/open-iscsi:rdma - Support iSCSI over RDMA
 sys-block/open-iscsi:tcp - Support iSCSI over TCP
