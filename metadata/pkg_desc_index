@@ -8586,7 +8586,7 @@ dev-python/pyzmq 14.4.1 16.0.2: Lightweight and super-fast messaging library bui
 dev-python/pyzor 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.9.2-r1 2.9.4-r1 2.10: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.9.2-r1 2.9.4-r1 2.10.1: Python bindings for Qscintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.3.3: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.1.1 4.2.1 4.3.0: Qt-based console for Jupyter with support for rich media output
@@ -17545,7 +17545,7 @@ sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
 sys-cluster/singularity 2.2.1 2.3.1: Application containers for Linux
 sys-cluster/slurm 16.05.2 17.02.6: A Highly Scalable Resource Manager
 sys-cluster/swift 2.10.2 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
-sys-cluster/teleport 2.2.0 2.2.1 9999: Modern SSH server for teams managing distributed infrastructure
+sys-cluster/teleport 2.2.0 2.2.1 2.2.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
@@ -18370,8 +18370,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.3.0 55.0.1: Firefox Web Browser
 www-client/firefox-bin 52.3.0 55.0: Firefox Web Browser
 www-client/google-chrome 60.0.3112.101: The web browser from Google
-www-client/google-chrome-beta 61.0.3163.39: The web browser from Google
-www-client/google-chrome-unstable 62.0.3178.0: The web browser from Google
+www-client/google-chrome-beta 61.0.3163.49: The web browser from Google
+www-client/google-chrome-unstable 62.0.3188.2: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18419,7 +18419,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.151: Adobe Flash Player
-www-plugins/chrome-binary-plugins 60.0.3112.101 61.0.3163.39_beta 62.0.3178.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.101 61.0.3163.49_beta 62.0.3188.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
@@ -18737,7 +18737,7 @@ x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.3 1.40.5 1.40.6 1.40.7 1.40.9: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0 9999: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10: A Qt port of Neil Hodgson's Scintilla C++ editor class
+x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10.1: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0-r1: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
