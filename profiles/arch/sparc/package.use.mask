@@ -297,11 +297,6 @@ x11-misc/xscreensaver new-login
 app-misc/lcdproc hid lcd_devices_mdm166a
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Requires gnutls[pkcs11], which is use.masked on sparc
 net-libs/glib-networking smartcard
 
