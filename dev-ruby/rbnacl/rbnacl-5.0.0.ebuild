@@ -23,6 +23,8 @@ IUSE=""
 RDEPEND+=" dev-libs/libsodium"
 DEPEND+=" test? ( dev-libs/libsodium )"
 
+ruby_add_rdepend "dev-ruby/ffi"
+
 all_ruby_prepare() {
 	sed -i -e '/coveralls/I s:^:#:' \
 		-e '/bundler/ s:^:#:' \
