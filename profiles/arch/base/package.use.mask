@@ -137,10 +137,6 @@ app-editors/gvim luajit racket
 # unmask in particular profiles
 sys-apps/hwloc gl opencl
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium is keyworded only on a few arches
-gnome-extra/zeitgeist-datasources chromium
-
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl only works on x86/amd64
 sci-chemistry/gromacs mkl
