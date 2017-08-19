@@ -136,6 +136,8 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
+	"${FILESDIR}/${PN}-gcc5-r2.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r16.patch"
 )
 
 pre_build_checks() {
@@ -268,7 +270,7 @@ src_prepare() {
 		third_party/pdfium/third_party/build
 		third_party/pdfium/third_party/bigint
 		third_party/pdfium/third_party/freetype
-		third_party/pdfium/third_party/lcms2-2.6
+		third_party/pdfium/third_party/lcms
 		third_party/pdfium/third_party/libopenjpeg20
 		third_party/pdfium/third_party/libpng16
 		third_party/pdfium/third_party/libtiff
