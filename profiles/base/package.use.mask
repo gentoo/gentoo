@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (18 Aug 2017)
+# net-misc/vde is masked, so don't let users try to pull it in.
+app-emulation/qemu vde
+net-vpn/tinc vde
+
 # Michał Górny <mgorny@gentoo.org> (05 Aug 2017)
 # media-libs/silgraphite is being treecleaned wrt #594314.
 <app-text/texlive-core-2013 xetex
