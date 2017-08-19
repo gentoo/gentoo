@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_BRANCH="5.1"
 KDEBASE="kdevelop"
-KDE_TEST="forceoptional-recursive"
+KDE_TEST="true"
 VIRTUALDBUS_TEST="true"
 VIRTUALX_REQUIRED="test"
 inherit kde5
@@ -73,16 +73,7 @@ REQUIRED_USE="test? ( welcomepage )"
 
 RESTRICT+=" test"
 
-src_prepare() {
-	kde5_src_prepare
-	# root tests subdirectory actually does not contain tests, installs stuff
-	if ! use test; then
-		sed -i -e "/add_subdirectory(tests)/ s/#DONOTCOMPILE //" \
-			CMakeLists.txt || die "Failed to fix CMakeLists.txt"
-		sed -i -e '1s/^/find_package(Qt5Test \$\{QT_MIN_VERSION\})\n/' \
-			tests/CMakeLists.txt || die "Failed to fix tests/CMakeLists.txt"
-	fi
-}
+PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
 
 src_configure() {
 	local mycmakeargs=(
