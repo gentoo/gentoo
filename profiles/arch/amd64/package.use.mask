@@ -227,10 +227,6 @@ dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Masked in base, unmask per arch
-gnome-base/gvfs -bluray
-
 # Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
 # Systemtap is masked in base/package.use.mask
 # Temporarily unmask in amd64/x86, bug 384647
