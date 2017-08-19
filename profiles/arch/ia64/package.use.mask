@@ -245,10 +245,6 @@ media-libs/phonon zeitgeist
 # depends on net-libs/polarssl
 >=net-vpn/openvpn-2.3.1 polarssl
 
-# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
-# missing keyword on media-libs/tremor, bug #453200
-media-libs/gst-plugins-base ivorbis
-
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono/monodevelop
 >=net-irc/hexchat-2.9.4-r1 theme-manager
