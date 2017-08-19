@@ -132,10 +132,6 @@ dev-python/pyquery test
 # Missing keywords
 dev-util/perf numa
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
-# Missing keywords
-media-sound/rhythmbox upnp-av
-
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
