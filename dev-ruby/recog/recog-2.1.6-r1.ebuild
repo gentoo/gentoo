@@ -7,6 +7,8 @@ RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
+RUBY_FAKEGEM_EXTRAINSTALL="xml"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Pattern recognition for hosts, services, and content"
