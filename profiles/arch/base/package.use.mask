@@ -199,10 +199,6 @@ dev-qt/qtwebkit jit
 # see arch/x86/package.use.mask
 www-client/links suid
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Mask libbluray support here, and enable it per arch instead
-gnome-base/gvfs bluray
-
 # Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
 # Systemtap is not keyworded on anything except amd64/x86
 # Temporarily mask instead of dropping keywords, bug 384647
