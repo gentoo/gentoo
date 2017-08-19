@@ -570,6 +570,16 @@ git-r3_fetch() {
 
 	[[ ${repos[@]} ]] || die "No URI provided and EGIT_REPO_URI unset"
 
+	local r
+	for r in "${repos[@]}"; do
+		if [[ ${r} == git:* || ${r} == http:* ]]; then
+			ewarn "git-r3: ${r%%:*} protocol is completely unsecure and may render the ebuild"
+			ewarn "easily suspectible to MITM attacks (even if used only as fallback). Please"
+			ewarn "use https instead."
+			ewarn "[URI: ${r}]"
+		fi
+	done
+
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
@@ -582,7 +592,7 @@ git-r3_fetch() {
 	fi
 
 	# try to fetch from the remote
-	local r success saved_umask
+	local success saved_umask
 	if [[ ${EVCS_UMASK} ]]; then
 		saved_umask=$(umask)
 		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
