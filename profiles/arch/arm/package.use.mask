@@ -416,10 +416,6 @@ gnome-extra/sushi office
 # remove mask if/when dev-lang/ghc is keywoded for arm
 dev-util/dbus-test-runner test
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
-# remove mask when app-text/yelp-tools is keyworded here
->=gnome-extra/zenity-3.6 test
-
 # Markus Meier <maekke@gentoo.org> (25 Dez 2012)
 # unkeyworded deps for app-accessibility/speech-dispatcher
 app-accessibility/speech-dispatcher flite
