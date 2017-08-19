@@ -2030,7 +2030,7 @@ app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking u
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b-r1: Stylish way of giving presentations with Python
 app-office/kexi 3.0.1 3.0.2: Visual database applications creator
-app-office/kmymoney 4.8.0-r1 4.8.0-r2: Personal finance manager by KDE
+app-office/kmymoney 4.8.0-r2: Personal finance manager by KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 5.0.0: Library with common classes and functionality used by KDE finance applications
@@ -12074,7 +12074,7 @@ kde-apps/thumbnailers 17.04.3 17.08.0: Thumbnail generators for PDF/PS and RAW f
 kde-apps/umbrello 17.04.3 17.08.0: KDE UML Modeller
 kde-apps/zeroconf-ioslave 17.04.3 17.08.0: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.34.0 5.37.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 4.14.3_p20161017 5.34.0 5.37.0: Framework for searching and managing metadata
+kde-frameworks/baloo 5.34.0 5.37.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.34.0-r1 5.37.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.34.0 5.37.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.34.0 5.37.0: Breeze SVG icon theme binary resource
@@ -12096,7 +12096,7 @@ kde-frameworks/kcrash 5.34.0 5.37.0: Framework for intercepting and handling app
 kde-frameworks/kdbusaddons 5.34.0 5.37.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.34.0 5.34.0-r1 5.37.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.34.0 5.37.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.32 4.14.34 4.14.35: Libraries needed for programs by KDE
+kde-frameworks/kdelibs 4.14.34 4.14.35: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.34.0 5.37.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.34.0 5.37.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
@@ -12154,11 +12154,11 @@ kde-frameworks/syntax-highlighting 5.34.0 5.37.0: Framework for syntax highlight
 kde-frameworks/threadweaver 5.34.0 5.37.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
-kde-misc/basket 1.81 2.49a_p20170225: A DropDrawers clone. Multiple information organizer
+kde-misc/basket 2.49a_p20170225: A DropDrawers clone. Multiple information organizer
 kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
 kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
-kde-misc/kanyremote 6.3.5 6.4: KDE frontend to Anyremote
+kde-misc/kanyremote 6.4: KDE frontend to Anyremote
 kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
 kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
@@ -13775,7 +13775,7 @@ media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/k4guitune 1.1.1: Program to tune musical instruments using your computer's mic- or line- input
 media-sound/karlyriceditor 2.2-r1: Application to edit and synchronize lyrics with karaoke songs in various formats
-media-sound/kaudiocreator 1.3-r3 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
+media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.4.5 3.5.0: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r1: An advanced command-line based metronome for JACK
@@ -14110,7 +14110,7 @@ media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3 5.1: Java subtitle editor
 media-video/kaffeine 2.0.9 2.0.12: Media player with digital TV support by KDE
-media-video/kamerka 0.12 0.12_p20161002: Simple photo taking application with fancy animated interface
+media-video/kamerka 0.12_p20161002: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.2.4: Application to take pictures and videos from your webcam by KDE
 media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
@@ -15531,7 +15531,7 @@ net-news/yencode 0.46: yEnc encoder/decoder package
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
 net-nntp/brag 1.4.3: Brag collects and assembles multipart binary attachments from newsgroups
 net-nntp/inn 2.5.3-r1 2.5.3-r3 2.5.4-r1 2.5.5-r1: The Internet News daemon, fully featured NNTP server
-net-nntp/kwooty 1.1.0 1.1.0_p20150623: Friendly nzb linux usenet binary client
+net-nntp/kwooty 1.1.0_p20150623: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 18.1 19.0 19.1: A command-line based binary newsgrabber supporting .nzb files
