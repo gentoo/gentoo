@@ -168,11 +168,6 @@ media-libs/phonon zeitgeist
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
-
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
 # JIT compilation in zpaq generates code for x86/amd64.
 app-arch/zpaq -jit

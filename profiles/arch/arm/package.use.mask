@@ -448,11 +448,6 @@ net-analyzer/wireshark doc-pdf
 # no stable media-video/vlc yet, bug #401313
 media-libs/phonon vlc
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
-
 # Michael Sterrett <mr_bones_@gentoo.org> (04 Mar 2012)
 # arm is missing keywords for >=dev-libs/json-glib-0.12
 app-admin/syslog-ng json
