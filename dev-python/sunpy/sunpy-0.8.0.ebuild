@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r1
 
 DESCRIPTION="Software library for solar physics based on Python"
 HOMEPAGE="http://sunpy.org/"
@@ -17,10 +17,10 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg2k test"
 
 RDEPEND="
-	<dev-python/astropy-2[${PYTHON_USEDEP}]
+	>=dev-python/astropy-2[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.11[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
@@ -33,9 +33,9 @@ DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-mpl[${PYTHON_USEDEP}]
 	)
 "
