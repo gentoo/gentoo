@@ -2982,7 +2982,7 @@ dev-db/percona-xtrabackup 2.4.7 2.4.8: Hot backup utility for MySQL based server
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.1-r1 1.22.1-r2: wxWidgets GUI for PostgreSQL
-dev-db/pgagent 3.4.0-r1 3.4.0-r2: pgAgent is a job scheduler for PostgreSQL
+dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
