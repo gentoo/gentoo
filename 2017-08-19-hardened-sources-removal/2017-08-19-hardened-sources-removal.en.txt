@@ -1,0 +1,52 @@
+Title: sys-kernel/hardened-sources removal
+Author: Francisco Blas Izquierdo Riera <klondike@gentoo.org>
+Posted: 2017-08-19
+Revision: 4
+News-Item-Format: 2.0
+Display-If-Installed: sys-kernel/hardened-sources
+Display-If-Profile: hardened/linux/*
+
+As you may know the core of sys-kernel/hardened-sources have been the
+grsecurity patches.
+
+Sadly, their developers have stopped making these patches freely
+available [1]. This is a full stop of any public updates and not only
+stable ones as was announced two years ago[2].
+
+As a result, the Gentoo Hardened team is unable to keep providing
+further updates of the patches, and although the hardened-sources have
+proved (when using a hardened toolchain) being resistant against
+certain attacks like the stack guard page jump techniques proposed by
+Stack Clash, we can't ensure a regular patching schedule and therefore,
+the security of the users of these kernel sources.
+
+Because of that we will be masking the hardened-sources on the 27th of
+August and will proceed to remove them from the tree by the end of
+September. Obviously, we will reinstate the package again if the
+developers decide to make their patches publicly available again.
+
+Our recommendation is that users should consider using instead
+sys-kernel/gentoo-sources.
+
+As an alternative, for users happy keeping themselves on the stable
+4.9 branch of the kernel; minipli, another grsecurity user, is forward
+porting the patches on [3].
+
+Strcat from Copperhead OS is making his own version of the patches
+forward ported to the latest version of the Linux tree at [4].
+
+The Gentoo Hardened team can't make any statement regarding the
+security, reliability or update availability of either those patches
+as we aren't providing them and can't therefore make any
+recommendation regarding their use.
+
+We'd like to note that all the userspace hardening and MAC support
+for SELinux provided by Gentoo Hardened will still remain there and
+is unaffected by this removal. Also, all PaX related packages other
+than the hardened-sources will remain for the time being.
+
+[1] https://grsecurity.net/passing_the_baton.php
+[2] https://www.gentoo.org/support/news-items/2015-10-21-future-support-of-
+hardened-sources-kernel.html
+[3] https://github.com/minipli/linux-unofficial_grsec
+[4] https://github.com/copperhead/linux-hardened
