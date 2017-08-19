@@ -1,12 +1,13 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-#
-# Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# Maintainers:     Vim Herd <vim@gentoo.org>
-# Purpose:         Simplify installing spell files for vim7
-#
-
+# @ECLASS: vim-spell.eclass
+# @MAINTAINER:
+# Vim Maintainers <vim@gentoo.org>
+# @AUTHOR:
+# Ciaran McCreesh <ciaranm@gentoo.org>
+# @BLURB: Eclass for managing Vim spell files.
+# @DESCRIPTION:
 # How to make a vim spell file package using prebuilt spell lists
 # from upstream (${CODE} is the language's two letter code):
 #
@@ -21,9 +22,9 @@
 #
 # * Upload the tarball to the Gentoo mirrors.
 #
-# * (for now) Add your spell file to package.mask next to the other vim7
-#   things. The vim herd will handle unmasking your spell packages when vim7
-#   comes out of package.mask.
+# * Add your spell file to package.mask next to the other vim things. Vim
+#   Project members will handle unmasking your spell packages when vim comes out
+#   of package.mask.
 #
 # * Create the app-vim/vim-spell-${CODE} package. You should base your ebuild
 #   upon app-vim/vim-spell-en. You will need to change VIM_SPELL_LANGUAGE,
@@ -52,7 +53,7 @@
 # Don't forget to update your package as necessary.
 #
 # If there isn't an upstream-provided pregenerated spell file for your language
-# yet, read :help spell.txt from inside vim7 for instructions on how to create
+# yet, read :help spell.txt from inside vim for instructions on how to create
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
@@ -77,6 +78,9 @@ if [[ -z "${HOMEPAGE}" ]] ; then
 	HOMEPAGE="http://www.vim.org/"
 fi
 
+# @FUNCTION: vim-spell_src_install
+# @DESCRIPTION:
+# Install Vim spell files.
 vim-spell_src_install() {
 	target="/usr/share/vim/vimfiles/spell/"
 	dodir "${target}"
@@ -103,6 +107,9 @@ vim-spell_src_install() {
 	[[ -z "${had_spell_file}" ]] && die "Didn't install any spell files?"
 }
 
+# @FUNCTION: vim-spell_pkg_postinst
+# @DESCRIPTION:
+# Display installed Vim spell files.
 vim-spell_pkg_postinst() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	target="/usr/share/vim/vimfiles/spell/"
