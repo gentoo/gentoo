@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
+# ipython-6 is python-3 only and causes circular dependencies
+# Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
+>=dev-python/ipython-6
+
 # Andreas Sturmlechner <asturm@gentoo.org> (19 Aug 2017)
 # Plasma-4 fragment, no more rdeps, masked for removal in 30 days.
 kde-plasma/libkworkspace
