@@ -199,11 +199,6 @@ dev-qt/qtwebkit jit
 # see arch/x86/package.use.mask
 www-client/links suid
 
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
-# Systemtap is not keyworded on anything except amd64/x86
-# Temporarily mask instead of dropping keywords, bug 384647
-dev-libs/glib systemtap
-
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 parse-clocks
