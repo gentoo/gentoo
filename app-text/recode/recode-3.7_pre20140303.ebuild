@@ -37,6 +37,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name '*.la' -exec rm -f {} + || die
-	rm -f "${ED}"/usr/lib/charset.alias || die
+	find "${ED}" -name '*.la' -exec rm -v {} + || die
 }
