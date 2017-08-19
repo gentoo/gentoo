@@ -144,10 +144,6 @@ app-editors/gvim -luajit -racket
 # Works on x86
 sys-apps/hwloc -gl
 
-# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
-# Keywords missing, bug #478104
->=app-editors/gedit-plugins-3.8.3 git
-
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -mkl
