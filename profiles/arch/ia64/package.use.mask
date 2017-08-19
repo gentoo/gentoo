@@ -69,10 +69,6 @@ net-analyzer/rrdtool rados
 # x11-libs/libXpresent is not keyworded on ia64
 xfce-base/xfwm4 xpresent
 
-# Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
-# Missing keywords, bug #559770
->=net-misc/networkmanager-1.4.4 consolekit
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
 dev-libs/hiredis test
