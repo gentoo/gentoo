@@ -129,10 +129,6 @@ app-text/mupdf opengl
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
-# Missing keywords
->=media-plugins/grilo-plugins-0.2.16 upnp-av
-
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test

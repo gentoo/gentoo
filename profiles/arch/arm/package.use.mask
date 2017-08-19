@@ -154,10 +154,6 @@ app-text/mupdf opengl
 net-print/hplip -scanner kde
 media-gfx/xsane ocr
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
-# Missing keywords
->=media-plugins/grilo-plugins-0.2.16 upnp-av
-
 # Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
 # MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
 media-video/ffmpeg -mmal
