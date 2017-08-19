@@ -1,9 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>Python bindings for Graphviz</longdescription>
-  <upstream>
-    <remote-id type="pypi">pydot</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>horea.christ@gmail.com</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<longdescription>Python bindings for Graphviz</longdescription>
+	<upstream>
+		<remote-id type="pypi">pydot</remote-id>
+	</upstream>
 </pkgmetadata>
