@@ -424,10 +424,6 @@ dev-util/dbus-test-runner test
 # remove mask when >=app-editors/gedit-3.6 is keyworded here
 dev-util/devhelp gedit
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
-# remove mask when app-crypt/libsecret is keyworded here
->=gnome-base/gvfs-1.14 gnome-keyring
-
 # Markus Meier <maekke@gentoo.org> (25 Dez 2012)
 # unkeyworded deps for app-accessibility/speech-dispatcher
 app-accessibility/speech-dispatcher flite
