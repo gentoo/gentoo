@@ -373,16 +373,6 @@ media-sound/skype-call-recorder
 net-im/skype
 net-im/skypetab-ng
 
-# Michał Górny <mgorny@gentoo.org> (07 Jun 2017)
-# The new release changes API and *breaks* core Xfce components.
-# Upstream lists xfce-base/xfce4-settings and xfce-base/xfce4-panel
-# as being incompatible. The breakage is not exhibited at build time
-# but results in broken executables. Masked until upstream releases
-# fixed versions and for further testing.
->=xfce-base/xfconf-4.13
->=xfce-base/xfce4-settings-4.13.1
->=xfce-base/xfce4-panel-4.13.1
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
@@ -471,12 +461,6 @@ dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-1.370.0
 >=dev-perl/DateTime-Format-Strptime-1.710.0
 >=dev-perl/Log-Dispatch-2.590.0
-
-# Michał Górny <mgorny@gentoo.org> (25 May 2017)
-# First GTK+3 version with known regressions:
-# https://mail.xfce.org/pipermail/xfce-announce/2017-May/000517.html
-# Masked (+ reverse dependencies) for opt-in testing.
->=xfce-base/xfce4-panel-4.13
 
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
