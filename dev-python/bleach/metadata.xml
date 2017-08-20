@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">bleach</remote-id>
-    <remote-id type="github">jsocol/bleach</remote-id>
+    <remote-id type="github">mozilla/bleach</remote-id>
   </upstream>
 </pkgmetadata>
