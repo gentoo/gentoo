@@ -12,15 +12,14 @@ inherit eutils python-any-r1 autotools-multilib
 
 DESCRIPTION="Google C++ Testing Framework"
 HOMEPAGE="https://github.com/google/googletest"
-SRC_URI="https://googletest.googlecode.com/files/${P}.zip"
+SRC_URI="https://github.com/google/googletest/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="examples static-libs"
 
-DEPEND="app-arch/unzip
-	${PYTHON_DEPS}"
+DEPEND="${PYTHON_DEPS}"
 RDEPEND=""
 
 PATCHES=(
