@@ -10,7 +10,7 @@ RDEPEND=dev-libs/libltdl:0 dev-libs/libxml2:2= >=media-libs/freetype-2.3.7:2= ca
 REQUIRED_USE=cairo? ( png ) python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) ) test? ( python )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/fontforge/fontforge/releases/download/20161005/fontforge-20161005.tar.gz
+SRC_URI=https://github.com/fontforge/fontforge/releases/download/20170731/fontforge-dist-20170731.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	101cc3d4c2ccd96cb22d936a45789426
-_md5_=cd5c6bcb3a11389f5c122a5e59ade085
+_md5_=88524f5790a3236a9da7716588c3e391
