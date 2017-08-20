@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="an easy whitelist-based HTML-sanitizing tool"
-HOMEPAGE="https://github.com/jsocol/bleach https://pypi.python.org/pypi/bleach"
+HOMEPAGE="https://github.com/mozilla/bleach https://pypi.python.org/pypi/bleach"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
