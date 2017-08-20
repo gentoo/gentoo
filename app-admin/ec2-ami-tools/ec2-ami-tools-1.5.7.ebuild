@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby22 ruby23"
 
 inherit ruby-single versionator
 
