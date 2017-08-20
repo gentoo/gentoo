@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils python-single-r1 xdg-utils
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
@@ -96,7 +96,7 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postrm() {
