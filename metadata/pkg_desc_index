@@ -2324,7 +2324,7 @@ app-text/jmupdf 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comi
 app-text/jo 1.1: JSON output from a shell
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.6.2: BibTeX editor by KDE to edit bibliographies used with LaTeX
-app-text/kchmviewer 7.7 7.7-r1: Feature rich chm file viewer, based on Qt
+app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.11 0.4.13: A tool to crop PDF files
@@ -8989,7 +8989,7 @@ dev-python/zeep 1.6.0 2.2.0: A modern/fast Python SOAP client based on lxml / re
 dev-python/zeroconf 0.17.5: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zfec 1.4.24: Fast erasure codec for the command-line, C, Python, or Haskell
 dev-python/zict 0.1.2: Mutable mapping tools
-dev-python/zope-component 4.3.0 4.3.0-r1: Zope Component Architecture
+dev-python/zope-component 4.3.0 4.3.0-r1 4.4.0: Zope Component Architecture
 dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0 4.2.0-r1 4.3.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.1.0: General purpose exceptions for Zope packages
