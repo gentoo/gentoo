@@ -1,0 +1,42 @@
+From 3a4698e1c6e2b2c6c703f07687cc485ada734d60 Mon Sep 17 00:00:00 2001
+From: Marcin Kolny <marcin.kolny@gmail.com>
+Date: Tue, 15 Nov 2016 21:57:57 +0100
+Subject: [PATCH] plugins-bad: use flags and libs from gstreamer-gl pkg config
+ file
+
+---
+ examples/Makefile.am                                | 2 +-
+ gst-plugins-bad/gstreamermm-plugins-bad/Makefile.am | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index a08d446..200ab02 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -15,7 +15,7 @@
+ 
+ AUTOMAKE_OPTIONS = subdir-objects
+ 
+-examples_cppflags = $(GSTREAMERMM_CFLAGS)
++examples_cppflags = $(GSTREAMERMM_CFLAGS) $(GSTREAMERMM_PLUGINS_BAD_CFLAGS) $(GSTREAMERMM_GL_CFLAGS)
+ gstreamermm_includes = -I$(top_builddir)/gstreamer $(if $(srcdir:.=),-I$(top_srcdir)/gstreamer) 
+ local_libgstreamermm = $(top_builddir)/gstreamer/gstreamermm/libgstreamermm-$(GSTREAMERMM_API_VERSION).la
+ 
+diff --git a/gst-plugins-bad/gstreamermm-plugins-bad/Makefile.am b/gst-plugins-bad/gstreamermm-plugins-bad/Makefile.am
+index eb46188..859f0ba 100644
+--- a/gst-plugins-bad/gstreamermm-plugins-bad/Makefile.am
++++ b/gst-plugins-bad/gstreamermm-plugins-bad/Makefile.am
+@@ -23,11 +23,11 @@ include $(top_srcdir)/build/compile-binding.am
+ local_includes = -I$(top_builddir)/gstreamer $(if $(srcdir:.=),-I$(top_srcdir)/gstreamer)
+ local_cppflags = $(binding_includes) $(local_includes) $(binding_cppflags) -DGSTREAMERMM_PLUGINS_BAD_BUILD=1
+ 
+-AM_CPPFLAGS = $(local_cppflags) $(GSTREAMERMM_PLUGINS_BAD_CFLAGS) $(GSTREAMERMM_CFLAGS)
++AM_CPPFLAGS = $(local_cppflags) $(GSTREAMERMM_PLUGINS_BAD_CFLAGS) $(GSTREAMERMM_CFLAGS) $(GSTREAMERMM_GL_CFLAGS)
+ AM_CXXFLAGS = $(GSTREAMERMM_WXXFLAGS)
+ 
+ local_libadd = $(top_builddir)/gstreamer/gstreamermm/libgstreamermm-$(GSTREAMERMM_API_VERSION).la
+ 
+ libgstreamermm_plugins_bad_@GSTREAMERMM_API_VERSION@_la_SOURCES = $(binding_sources)
+ libgstreamermm_plugins_bad_@GSTREAMERMM_API_VERSION@_la_LDFLAGS = -no-undefined -version-info $(GSTREAMERMM_SO_VERSION)
+-libgstreamermm_plugins_bad_@GSTREAMERMM_API_VERSION@_la_LIBADD  = $(GSTREAMERMM_PLUGINS_BAD_LIBS) $(local_libadd)
++libgstreamermm_plugins_bad_@GSTREAMERMM_API_VERSION@_la_LIBADD  = $(GSTREAMERMM_PLUGINS_BAD_LIBS) $(GSTREAMERMM_GL_LIBS) $(local_libadd)
