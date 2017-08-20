@@ -11921,7 +11921,7 @@ kde-apps/kfind 17.04.3 17.08.0: File finder utility based on KDE Frameworks
 kde-apps/kfloppy 17.04.3 17.08.0: A straightforward graphical means to format 3.5" and 5.25" floppy disks
 kde-apps/kfourinline 17.04.3 17.08.0: KDE four-in-a-row game
 kde-apps/kgeography 17.04.3 17.08.0: Geography learning tool
-kde-apps/kget 17.04.3 17.08.0: Advanced download manager by KDE
+kde-apps/kget 17.04.3-r1 17.08.0-r1: Advanced download manager by KDE
 kde-apps/kgoldrunner 17.04.3 17.08.0: Game of action and puzzle solving by KDE
 kde-apps/kgpg 17.04.3 17.08.0: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 17.04.3 17.08.0: Classical hangman game by KDE
@@ -14896,7 +14896,7 @@ net-libs/libinfinity 0.6.7: An implementation of the Infinote protocol written i
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.9.0-r1 1.15.0 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 9999: Client library for accessing ISDS Soap services
-net-libs/libktorrent 1.3.1 2.0.1-r1: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 2.0.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0_pre20170128: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09 1.13 1.14: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
