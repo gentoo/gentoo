@@ -38,7 +38,7 @@ python_configure_all() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	use doc && emake -C docs html man
 }
 
 python_test() {
@@ -46,6 +46,9 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
+	if use doc; then
+		local HTML_DOCS=( docs/_build/html/. )
+		doman docs/_build/man/*
+	fi
 	distutils-r1_python_install_all
 }
