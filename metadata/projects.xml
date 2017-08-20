@@ -3923,11 +3923,11 @@ developers and volunteer mentors.</description>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
     </member>
-    <member>
+    <member is-lead="1">
       <email>tamiko@gentoo.org</email>
       <name>Matthias Maier</name>
     </member>
-    <member is-lead="1">
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
