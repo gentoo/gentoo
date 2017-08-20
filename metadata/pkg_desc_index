@@ -1359,7 +1359,7 @@ app-emulation/vagrant 1.9.6 1.9.7: A tool for building and distributing developm
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r2 2.4.27-r3 2.4.31: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.0-r3 1.4.1 1.4.2 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 4.0 5.0: Graphical console client for connecting to virtual machines
-app-emulation/virt-what 1.12 1.15: Detects if the current machine is running in a virtual machine
+app-emulation/virt-what 1.12 1.15 1.18: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118 0.1.126: VirtIO drivers for Windows virtual machines running on KVM
 app-emulation/virtualbox 5.0.16-r1 5.0.40 5.1.24 5.1.26: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 5.0.16 5.0.40 5.1.24 5.1.26: CD image containing guest additions for VirtualBox
@@ -2015,7 +2015,7 @@ app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.2.1 4.2.2: a text-based calendar and scheduling application
 app-office/calligra 3.0.1: KDE Office Suite
 app-office/dia 0.97.3: Diagram/flowchart creation program
-app-office/dia2code 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
+app-office/dia2code 0.8.8 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.9.10 0.9.11 0.9.12: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.4.0: Program for creating labels and business cards
@@ -17005,7 +17005,7 @@ sec-policy/selinux-xprint 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r
 sec-policy/selinux-xscreensaver 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for xscreensaver
 sec-policy/selinux-xserver 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 9999: SELinux policy for zabbix
-sys-apps/accountsservice 0.6.43 0.6.43-r1: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.43 0.6.43-r1 0.6.45: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 2.14 2.18-r1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
