@@ -3,7 +3,7 @@
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 # No, I am not calling ruby-ng
 inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
@@ -25,7 +25,6 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
 	>=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
 		ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
 		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
 	)"
