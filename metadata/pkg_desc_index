@@ -942,7 +942,7 @@ app-dicts/sword-wulfila 1.0: Bishop Wulfila Gothic Bible
 app-dicts/sword-wycliffe 1.0: John Wycliffe Bible (1395)
 app-dicts/sword-xhosa 1.1: Xhosa Bible
 app-dicts/sword-ylt 1.1: Young's Literal Translation (1898)
-app-dicts/verbiste 0.1.38-r1 0.1.41: French conjugation system
+app-dicts/verbiste 0.1.38-r1 0.1.41 0.1.44: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
 app-dicts/wordnet 3.0-r4 3.0-r5 3.1: A lexical database for the English language
 app-dicts/ydpdict 1.0.2: Interface for the Collins Dictionary
@@ -4690,7 +4690,7 @@ dev-libs/efl 1.17.0-r1 1.18.4 9999: Enlightenment Foundation Libraries all-in-on
 dev-libs/elfio 1.0.3: ELF reader and producer implemented as a C++ library
 dev-libs/elfutils 0.166 0.167 0.168 0.169 0.169-r1 0.170 0.170-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.2.0-r1 2.2.0-r2 2.2.1 2.2.2 2.2.3: Stream-oriented XML parser library
+dev-libs/expat 2.2.0-r1 2.2.0-r2 2.2.1 2.2.2 2.2.3 2.2.4: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r3: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
@@ -14189,7 +14189,7 @@ media-video/subliminal 2.0.5-r1 9999: Python library to search and download subt
 media-video/submux-dvd 0.5.2: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
 media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
-media-video/subtitleeditor 0.52.1 0.53.0: GTK+3 subtitle editing tool
+media-video/subtitleeditor 0.52.1 0.53.0 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitler-yuv 0.6.5: for mjpegtools for adding subtitles, pictures, and effects embedded in the picture
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
