@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools perl-module distutils-r1 toolchain-funcs java-pkg-opt-2
+inherit autotools perl-module distutils-r1 toolchain-funcs flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="http://www.gdal.org/"
@@ -121,6 +121,9 @@ src_prepare() {
 		swig/python/setup.cfg || die "sed python setup.cfg failed"
 
 	default
+
+	# bug 626844, poppler headers require C++11
+	use pdf && append-cxxflags -std=c++11
 
 	tc-export AR RANLIB
 
