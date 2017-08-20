@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -9,4 +9,7 @@
 		p1_utils is an application containing ProcessOne modules and tools that
 		are leveraged in other development projects.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">processone/p1_utils</remote-id>
+	</upstream>
 </pkgmetadata>

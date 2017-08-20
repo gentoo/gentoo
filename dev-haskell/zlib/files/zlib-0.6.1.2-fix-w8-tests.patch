@@ -1,0 +1,26 @@
+zlib does not really support windows size of 8 bits:
+
+Reported by eroen
+
+https://github.com/haskell/zlib/issues/11
+https://bugs.gentoo.org/show_bug.cgi?id=613532
+diff --git a/test/Test.hs b/test/Test.hs
+index bbd8b94..81bd260 100644
+--- a/test/Test.hs
++++ b/test/Test.hs
+@@ -66,2 +66,3 @@ prop_decompress_after_compress w cp dp =
+    -- of the zlib source code.
++   compressWindowBits cp /= WindowBits 8 &&
+    (decompressWindowBits dp > compressWindowBits cp || decompressWindowBits dp > WindowBits 8) &&
+@@ -76,2 +77,3 @@ prop_gziporzlib1 cp dp =
+    decompressWindowBits dp > compressWindowBits cp &&
++   compressWindowBits cp /= WindowBits 8 &&
+    decompressBufferSize dp > 0 && compressBufferSize cp > 0 ==>
+@@ -85,2 +87,3 @@ prop_gziporzlib2 cp dp =
+    decompressWindowBits dp >= compressWindowBits cp &&
++   compressWindowBits cp /= WindowBits 8 &&
+    decompressBufferSize dp > 0 && compressBufferSize cp > 0 ==>
+@@ -94,2 +97,3 @@ prop_gzip_concat cp dp input =
+    decompressWindowBits dp >= compressWindowBits cp &&
++   compressWindowBits cp /= WindowBits 8 &&
+    decompressBufferSize dp > 0 && compressBufferSize cp > 0 ==>

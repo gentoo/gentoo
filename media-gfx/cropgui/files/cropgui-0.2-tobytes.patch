@@ -1,0 +1,40 @@
+commit b664d1fefd7140ec4ec37b3b90a9007839029d8a
+Author: Tristan Stenner <ttstenner@gmail.com>
+Date:   Fri Oct 9 08:40:04 2015 +0200
+
+    Try tostring(), fall back to tobytes()
+
+diff --git a/cropgtk.py b/cropgtk.py
+index c1156b0..135b6a8 100755
+--- a/cropgtk.py
++++ b/cropgtk.py
+@@ -170,7 +170,11 @@ class DragManager(DragManagerBase):
+             rendered = self.rendered()
+             rendered = rendered.convert('RGB')
+             i.set_size_request(*rendered.size)
+-            pixbuf = gtk.gdk.pixbuf_new_from_data(rendered.tostring(),
++            try:
++                image_data = rendered.tostring()
++            except:
++                image_data = rendered.tobytes()
++            pixbuf = gtk.gdk.pixbuf_new_from_data(image_data,
+                 gtk.gdk.COLORSPACE_RGB, 0, 8,
+                 rendered.size[0], rendered.size[1], 3*rendered.size[0])
+ 
+diff --git a/filechooser.py b/filechooser.py
+index f2f8122..a039d74 100644
+--- a/filechooser.py
++++ b/filechooser.py
+@@ -49,7 +49,11 @@ def update_preview_cb(file_chooser, preview):
+             i.thumbnail((PREVIEW_SIZE, PREVIEW_SIZE), Image.ANTIALIAS)
+             i = i.convert('RGB')
+             i = apply_rotation(r, i)
+-            pixbuf = gtk.gdk.pixbuf_new_from_data(i.tostring(), 
++            try:
++                image_data = i.tostring()
++            except:
++                image_data = i.tobytes()
++            pixbuf = gtk.gdk.pixbuf_new_from_data(image_data, 
+                 gtk.gdk.COLORSPACE_RGB, 0, 8, i.size[0], i.size[1],
+                 i.size[0]*3)
+             preview.set_from_pixbuf(pixbuf)

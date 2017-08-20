@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGES.md README.md"
 
@@ -26,11 +26,4 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' spec/spec_helper.rb || die
 	sed -i -e '/coveralls/ s:^:#:' spec/spec_helper.rb || die
 	sed -i -e '/Coveralls/ s:^:#:' spec/spec_helper.rb || die
-
-	# Remove performance spec due to dependencies and being to dependent
-	# on machine specifics.
-	rm spec/performance_spec.rb
-
-	# Remove rspec3 configuration so we can still run with rspec2.
-	sed -e '/expose/ s:^:#:' -i spec/spec_helper.rb || die
 }

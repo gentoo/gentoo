@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -11,7 +11,7 @@ DISTFILE="${PN/it/iT}-src-${PV}.tar.gz"
 ASIANJAR="iTextAsian.jar"
 ASIANCMAPSJAR="iTextAsianCmaps.jar"
 
-DESCRIPTION="A Java library that generate documents in the Portable Document Format (PDF) and/or HTML"
+DESCRIPTION="Generate documents in the Portable Document Format (PDF) and/or HTML"
 HOMEPAGE="http://www.lowagie.com/iText/"
 SRC_URI="mirror://sourceforge/itext/${DISTFILE}
 	cjk? ( mirror://sourceforge/itext/${ASIANJAR}

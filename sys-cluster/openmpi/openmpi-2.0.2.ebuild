@@ -32,7 +32,7 @@ HOMEPAGE="http://www.open-mpi.org"
 SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
 IUSE="cma cuda cxx elibc_FreeBSD fortran heterogeneous ipv6 java mpi-threads numa romio threads
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
@@ -52,7 +52,7 @@ CDEPEND="
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
 	!sys-cluster/mpiexec
-	>=dev-libs/libevent-2.0.22[${MULTILIB_USEDEP}]
+	>=dev-libs/libevent-2.0.22[${MULTILIB_USEDEP},threads]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-1.11.2[${MULTILIB_USEDEP},numa?]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]

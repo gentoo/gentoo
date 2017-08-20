@@ -1,0 +1,46 @@
+From ee00edfbe833647d59ad87cac82f1b4c0c902179 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 3 Dec 2016 16:40:01 +0000
+Subject: [PATCH] * tools/tiffcp.c: fix uint32 underflow/overflow that can
+ cause heap-based buffer overflow. Reported by Agostino Sarubbo. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2610
+
+---
+ ChangeLog      | 7 +++++++
+ tools/tiffcp.c | 8 ++++----
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/tools/tiffcp.c b/tools/tiffcp.c
+index 142cbb0ecfc2..6d96bb89f555 100644
+--- a/tools/tiffcp.c
++++ b/tools/tiffcp.c
+@@ -1163,7 +1163,7 @@ bad:
+ 
+ static void
+ cpStripToTile(uint8* out, uint8* in,
+-    uint32 rows, uint32 cols, int outskew, int inskew)
++    uint32 rows, uint32 cols, int outskew, int64 inskew)
+ {
+ 	while (rows-- > 0) {
+ 		uint32 j = cols;
+@@ -1320,7 +1320,7 @@ DECLAREreadFunc(readContigTilesIntoBuffer)
+ 	tdata_t tilebuf;
+ 	uint32 imagew = TIFFScanlineSize(in);
+ 	uint32 tilew  = TIFFTileRowSize(in);
+-	int iskew = imagew - tilew;
++	int64 iskew = (int64)imagew - (int64)tilew;
+ 	uint8* bufp = (uint8*) buf;
+ 	uint32 tw, tl;
+ 	uint32 row;
+@@ -1348,7 +1348,7 @@ DECLAREreadFunc(readContigTilesIntoBuffer)
+ 				status = 0;
+ 				goto done;
+ 			}
+-			if (colb + tilew > imagew) {
++			if (colb > iskew) {
+ 				uint32 width = imagew - colb;
+ 				uint32 oskew = tilew - width;
+ 				cpStripToTile(bufp + colb,
+-- 
+2.12.0
+

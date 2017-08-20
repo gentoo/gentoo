@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="examples"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S=${WORKDIR}/pypoppler-${PV}
 

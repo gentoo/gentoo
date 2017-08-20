@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/rdflib[$(python_gen_usedep 'python*')]
 	dev-python/pygraphviz[$(python_gen_usedep 'python2*')]
 	dev-python/reportlab[$(python_gen_usedep 'python*')]
-	media-gfx/pydot[$(python_gen_usedep 'python2*')]
+	dev-python/pydot[$(python_gen_usedep 'python2*')]
 	"
 DEPEND="${RDEPEND}
 	sys-devel/flex"

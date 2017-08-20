@@ -1,0 +1,54 @@
+From f6a411fa829f144800d123c1256d7d7648736437 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiago=20St=C3=BCrmer=20Daitx?= <tdaitx@gmail.com>
+Date: Thu, 1 Sep 2016 00:02:48 -0300
+Subject: [PATCH 1/2] replace abs() with std::abs() for gcc6 compatibility
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Building with GCC 6 fails with "call of overloaded ‘abs(double)’ is
+ambiguous" - for some reason only on PowerPC and PPC64.
+---
+ libraries/amf/amftools-code/include/STL_File.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libraries/amf/amftools-code/include/STL_File.h b/libraries/amf/amftools-code/include/STL_File.h
+index 0bc01bed..2d9d656f 100644
+--- a/libraries/amf/amftools-code/include/STL_File.h
++++ b/libraries/amf/amftools-code/include/STL_File.h
+@@ -89,7 +89,7 @@ class aWeldVertex {
+ 	Vec3D v;
+ 	int OrigIndex;
+ 
+-	static inline bool IsSoftLessThan(const aWeldVertex& v1, const aWeldVertex& v2){if(abs(v1.v.z - v2.v.z) <= WeldThresh){ if(abs(v1.v.y - v2.v.y) <= WeldThresh){ return v1.v.x < v2.v.x-WeldThresh;}else return (v1.v.y < v2.v.y-WeldThresh);} else return (v1.v.z < v2.v.z-WeldThresh); } //Is less then (generates a "hash" for sorting vertices by z for set
++	static inline bool IsSoftLessThan(const aWeldVertex& v1, const aWeldVertex& v2){if(std::abs(v1.v.z - v2.v.z) <= WeldThresh){ if(std::abs(v1.v.y - v2.v.y) <= WeldThresh){ return v1.v.x < v2.v.x-WeldThresh;}else return (v1.v.y < v2.v.y-WeldThresh);} else return (v1.v.z < v2.v.z-WeldThresh); } //Is less then (generates a "hash" for sorting vertices by z for set
+ 	static double WeldThresh; //weld threshold for importing from STL
+ };
+ 
+
+From 93c81e3794a3eb7c2b7c7611803a3107fb25027b Mon Sep 17 00:00:00 2001
+From: "Ying-Chun Liu (PaulLiu)" <paulliu@debian.org>
+Date: Wed, 4 Jan 2017 13:50:56 +0800
+Subject: [PATCH 2/2] Fix FTBFS for glibmm Glib::RefPtr
+
+Now we can use operator RefPtr::operator bool() to test if it is NULL.
+RefPtr::operator== can not work on int.
+
+Signed-off-by: Ying-Chun Liu (PaulLiu) <paulliu@debian.org>
+---
+ src/model.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/model.cpp b/src/model.cpp
+index ee559c47..22f0bb39 100644
+--- a/src/model.cpp
++++ b/src/model.cpp
+@@ -181,7 +181,7 @@ vector<Shape*> Model::ReadShapes(Glib::RefPtr<Gio::File> file,
+ 				 uint max_triangles)
+ {
+   vector<Shape*> shapes;
+-  if (file==0) return shapes;
++  if (!file) return shapes;
+   File sfile(file);
+   vector< vector<Triangle> > triangles;
+   vector<ustring> shapenames;

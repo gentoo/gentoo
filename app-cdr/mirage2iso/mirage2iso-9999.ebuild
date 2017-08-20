@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/mirage2iso.git"
 inherit autotools git-r3
 
 DESCRIPTION="CD/DVD image converter using libmirage"
-HOMEPAGE="https://bitbucket.org/mgorny/mirage2iso/"
+HOMEPAGE="https://github.com/mgorny/mirage2iso/"
 SRC_URI=""
 
 LICENSE="BSD"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 fi
 VPNC_VER=20160829
 SRC_URI="${ARCHIVE_URI}

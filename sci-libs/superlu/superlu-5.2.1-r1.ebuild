@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,20 +11,20 @@ MY_PN=SuperLU
 
 if [[ ${PV} != *9999* ]]; then
 	inherit versionator
-	SRC_URI="http://crd.lbl.gov/~xiaoye/SuperLU//${PN}_${PV}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="http://crd-legacy.lbl.gov/~xiaoye/SuperLU//${PN}_${PV}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 	SLOT="0/$(get_major_version)"
 	S="${WORKDIR}/SuperLU_${PV}"
 else
 	inherit git-r3
 	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI=( "git://github.com/xiaoyeli/superlu" )
+	EGIT_REPO_URI="https://github.com/xiaoyeli/${PN}"
 	SLOT="0/9999"
-	KEYWORDS=""
+	KEYWORDS="~arm64 ~hppa ~ia64"
 fi
 
 DESCRIPTION="Sparse LU factorization library"
-HOMEPAGE="http://crd.lbl.gov/~xiaoye/SuperLU/"
+HOMEPAGE="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
 LICENSE="BSD"
 
 IUSE="doc examples test"

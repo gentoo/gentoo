@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
 inherit cmake-utils python-single-r1 savedconfig
@@ -12,7 +12,7 @@ DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
 HOMEPAGE="http://espressomd.org"
 
 if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/espressomd/espresso.git https://github.com/espressomd/espresso.git"
+	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 	KEYWORDS=""
@@ -105,7 +105,7 @@ pkg_postinst() {
 	echo
 	elog "Please read and cite:"
 	elog "ESPResSo, Comput. Phys. Commun. 174(9) ,704, 2006."
-	elog "http://dx.doi.org/10.1016/j.cpc.2005.10.005"
+	elog "https://dx.doi.org/10.1016/j.cpc.2005.10.005"
 	echo
 	elog "If you need more features, change"
 	elog "/etc/portage/savedconfig/${CATEGORY}/${PF}"

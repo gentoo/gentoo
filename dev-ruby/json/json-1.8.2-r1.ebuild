@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGES TODO README.rdoc README-json-jruby.markdown"
@@ -16,7 +16,7 @@ DESCRIPTION="A JSON implementation as a Ruby extension"
 HOMEPAGE="https://github.com/flori/json"
 LICENSE="|| ( Ruby GPL-2 )"
 
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 
@@ -52,11 +52,11 @@ each_ruby_compile() {
 
 each_ruby_test() {
 	JSON=pure \
-	${RUBY} -Iext:lib -S testrb tests/test_*.rb || die "pure ruby tests failed"
+	${RUBY} -Iext:lib -S testrb-2 tests/test_*.rb || die "pure ruby tests failed"
 
 	if [[ $(basename ${RUBY}) != "jruby" ]]; then
 		JSON=ext \
-		${RUBY} -Iext:lib -S testrb tests/test_*.rb || die "ext ruby tests failed"
+		${RUBY} -Iext:lib -S testrb-2 tests/test_*.rb || die "ext ruby tests failed"
 	fi
 }
 

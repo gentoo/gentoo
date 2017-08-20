@@ -7,15 +7,15 @@ inherit eutils flag-o-matic autotools multilib-minimal
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/cairo"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/cairo"
 	SRC_URI=""
 else
-	SRC_URI="http://cairographics.org/releases/${P}.tar.xz"
+	SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
-HOMEPAGE="http://cairographics.org/"
+HOMEPAGE="https://www.cairographics.org"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="X aqua debug directfb gles2 +glib opengl static-libs +svg utils valgrind xcb"
@@ -35,7 +35,7 @@ RDEPEND="
 	directfb? ( dev-libs/DirectFB )
 	gles2? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
-	opengl? ( || ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] media-libs/opengl-apple ) )
+	opengl? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] )
 	utils? ( >=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]

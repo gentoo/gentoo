@@ -5,7 +5,7 @@ EAPI=5
 inherit multilib xfconf
 
 DESCRIPTION="A time managing application (and panel plug-in) for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+HOMEPAGE="https://git.xfce.org/apps/orage/"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

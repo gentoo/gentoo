@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
+		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static">Build static library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
+	<longdescription lang="en">
+		XML/Ada is a set of modules that provide a simple manipulation of XML
+		streams. It supports the whole XML 1.1 specifications, and can parse
+		any file that follows this standard (including the contents of the DTD,
+		although no validation of the document is done based on those).
+
+		It also provides support for a number of other standard associated
+		with XML, like SAX, DOM and XML schemas.
+
+		In addition, it includes a module to manipulate Unicode streams, since
+		this is required by the XML standard.
+	</longdescription>
+</pkgmetadata>

@@ -2,8 +2,8 @@ This OpenMP library finding code is from ImageMagick's configure.ac
 
 http://bugs.gentoo.org/314095
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -44,6 +44,20 @@
  CFLAGS="$CFLAGS $OPENMP_CFLAGS"
  CXXFLAGS="$CXXFLAGS $OPENMP_CXXFLAGS"
@@ -25,8 +25,8 @@ http://bugs.gentoo.org/314095
  dnl files to be generated 
  AC_OUTPUT(Makefile inc/Makefile inc/Minuit2/Makefile inc/Math/Makefile src/Makefile 
    doc/Doxyfile doc/Makefile test/Makefile test/MnSim/Makefile 
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -9,6 +9,8 @@
  # The convenience library to be built.
  lib_LTLIBRARIES = libMinuit2.la

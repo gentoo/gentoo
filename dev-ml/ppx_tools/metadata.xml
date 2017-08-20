@@ -6,6 +6,6 @@
     <name>Gentoo ML Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ocsigen/tyxml</remote-id>
+    <remote-id type="github">alainfrisch/ppx_tools</remote-id>
   </upstream>
 </pkgmetadata>

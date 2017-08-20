@@ -12,9 +12,9 @@
 		<flag name="ldap-bind">Add support for binding to LDAP backend
 			using <pkg>dev-libs/cyrus-sasl</pkg></flag>
 		<flag name="memcached">Add support for using <pkg>net-misc/memcached</pkg>
-		    for lookup tables</flag>
+			for lookup tables</flag>
 		<flag name="lmdb">Add support for using <pkg>dev-db/lmdb</pkg>
-		    for lookup tables</flag>
+			for lookup tables</flag>
 		<flag name="vda">Add support for virtual delivery agent quota
 			enforcing</flag>
 	</use>

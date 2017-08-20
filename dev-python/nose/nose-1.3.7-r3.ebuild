@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
 	https://pypi.python.org/pypi/nose
-	http://readthedocs.org/docs/nose/
+	https://nose.readthedocs.io/en/latest/
 	https://bitbucket.org/jpellerin/nose"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
@@ -28,8 +28,9 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
-	test? ( || ( $(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7)
-		 $(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7) ) )"
+	test? ( || ( $(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{4,5,6})
+			$(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7)
+		 ) )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-python-3.5-backport.patch
@@ -37,6 +38,8 @@ PATCHES=(
 	# Patch against master found in an upstream PR, backported:
 	# https://github.com/nose-devs/nose/pull/1004
 	"${FILESDIR}"/${P}-coverage-4.1-support.patch
+
+	"${FILESDIR}"/${P}-python-3.6-test.patch
 )
 
 pkg_setup() {

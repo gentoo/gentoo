@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} )
+EAPI=6
+
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 PYTHON_REQ_USE="sqlite(+)"
 
 inherit distutils-r1 eutils
@@ -20,7 +21,8 @@ IUSE="doc examples test"
 # with ValueError: save() prohibited to prevent data loss due to
 # unsaved related object 'interval'.
 
-RDEPEND=">=dev-python/celery-3.1.15[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/celery-3.1.15[${PYTHON_USEDEP}]
 	>dev-python/django-1.4[${PYTHON_USEDEP}]
 	<dev-python/django-1.9[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]"
@@ -32,7 +34,8 @@ DEPEND="${RDEPEND}
 		dev-python/nose-cover3[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/python-memcached[${PYTHON_USEDEP}] )
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-issuetracker[${PYTHON_USEDEP}]
 		dev-python/python-memcached[${PYTHON_USEDEP}]
 	)"
@@ -43,7 +46,7 @@ python_compile_all() {
 
 python_test() {
 	# https://github.com/celery/django-celery/issues/342
-	"${PYTHON}" tests/manage.py test
+	"${PYTHON}" tests/manage.py test || die
 }
 
 python_install_all() {

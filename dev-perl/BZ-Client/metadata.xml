@@ -28,6 +28,7 @@
     <remote-id type="cpan-module">BZ::Client::XMLRPC::Response</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::Struct</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::Value</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::base64</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::boolean</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::double</remote-id>
     <remote-id type="cpan-module">BZ::Client::XMLRPC::int</remote-id>

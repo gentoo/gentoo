@@ -12,8 +12,6 @@
 	  that removes the LaTeX (or TeX) control sequences</flag>
   <flag name="dvi2tty">Add support for <pkg>dev-tex/dvi2tty</pkg> to preview
 	  dvi-files on text-only devices</flag>
-  <flag name="dvipdfm">Add support for <pkg>app-text/dvipdfm</pkg> to convert
-	  DVI files to PDF</flag>
   <flag name="epspdf">Add support for <pkg>app-text/epspdf</pkg>, a tool for converting [e]ps files to pdf.</flag>
   <flag name="extra">Add support for extra TeXLive packages</flag>
   <flag name="games">Add typesetting support for games (chess, etc.)

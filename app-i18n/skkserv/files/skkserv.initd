@@ -1,15 +1,19 @@
 #!/sbin/openrc-run
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-start() {
-	ebegin "Starting skkserv"
-	start-stop-daemon --start --quiet --exec /usr/sbin/skkserv
-	eend $?
+extra_started_commands="reload"
+
+description_reload="Reload the SKK-JISYO.L"
+
+command="/usr/sbin/${RC_SVCNAME}"
+
+depend() {
+	need net
 }
 
-stop() {
-	ebegin "Stopping skkserv"
-	start-stop-daemon --stop --quiet --exec /usr/sbin/skkserv
-	eend $?
+reload() {
+	ebegin "Reloading ${name:-${RC_SVCNAME}}"
+	start-stop-daemon --signal INT --name "${command}"
+	eend ${?}
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -11,4 +11,7 @@
 	mcollective is a framework to build server orchestration or parallel job
 	execution systems.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">puppetlabs/marionette-collective</remote-id>
+	</upstream>
 </pkgmetadata>

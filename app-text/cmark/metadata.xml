@@ -13,6 +13,6 @@
     CommonMark parsing and rendering library and program in C.
   </longdescription>
   <upstream>
-    <remote-id type="github">jgm/cmark</remote-id>
+    <remote-id type="github">commonmark/cmark</remote-id>
   </upstream>
 </pkgmetadata>

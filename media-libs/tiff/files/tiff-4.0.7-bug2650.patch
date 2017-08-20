@@ -1,0 +1,54 @@
+From 5368b55d0f88a34ede3d21782d3142b2e11e6eb9 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 11 Jan 2017 16:33:34 +0000
+Subject: [PATCH] * libtiff/tif_read.c: avoid potential undefined behaviour on
+ signed integer addition in TIFFReadRawStrip1() in isMapped() case. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2650
+
+---
+ ChangeLog          |  6 ++++++
+ libtiff/tif_read.c | 29 +++++++++++++++++++----------
+ 2 files changed, 25 insertions(+), 10 deletions(-)
+
+diff --git a/libtiff/tif_read.c b/libtiff/tif_read.c
+index 29a311db0cb7..8c5af6a8f5f7 100644
+--- a/libtiff/tif_read.c
++++ b/libtiff/tif_read.c
+@@ -420,16 +420,25 @@ TIFFReadRawStrip1(TIFF* tif, uint32 strip, void* buf, tmsize_t size,
+ 			return ((tmsize_t)(-1));
+ 		}
+ 	} else {
+-		tmsize_t ma,mb;
++		tmsize_t ma;
+ 		tmsize_t n;
+-		ma=(tmsize_t)td->td_stripoffset[strip];
+-		mb=ma+size;
+-		if ((td->td_stripoffset[strip] > (uint64)TIFF_TMSIZE_T_MAX)||(ma>tif->tif_size))
+-			n=0;
+-		else if ((mb<ma)||(mb<size)||(mb>tif->tif_size))
+-			n=tif->tif_size-ma;
+-		else
+-			n=size;
++		if ((td->td_stripoffset[strip] > (uint64)TIFF_TMSIZE_T_MAX)||
++                    ((ma=(tmsize_t)td->td_stripoffset[strip])>tif->tif_size))
++                {
++                    n=0;
++                }
++                else if( ma > TIFF_TMSIZE_T_MAX - size )
++                {
++                    n=0;
++                }
++                else
++                {
++                    tmsize_t mb=ma+size;
++                    if (mb>tif->tif_size)
++                            n=tif->tif_size-ma;
++                    else
++                            n=size;
++                }
+ 		if (n!=size) {
+ #if defined(__WIN32__) && (defined(_MSC_VER) || defined(__MINGW32__))
+ 			TIFFErrorExt(tif->tif_clientdata, module,
+-- 
+2.12.0
+

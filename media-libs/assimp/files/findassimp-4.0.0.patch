@@ -1,0 +1,25 @@
+--- a/cmake-modules/Findassimp.cmake	2017-07-24 08:21:12.436647541 +0200
++++ b/cmake-modules/Findassimp.cmake	2017-07-24 08:21:30.139980768 +0200
+@@ -55,13 +55,13 @@
+ 	find_path(
+ 	  assimp_INCLUDE_DIRS
+ 	  NAMES postprocess.h scene.h version.h config.h cimport.h
+-	  PATHS /usr/local/include/
++	  PATHS /usr/include/
+ 	)
+ 
+ 	find_library(
+ 	  assimp_LIBRARIES
+ 	  NAMES assimp
+-	  PATHS /usr/local/lib/
++	  PATHS /usr/lib/
+ 	)
+ 
+ 	if (assimp_INCLUDE_DIRS AND assimp_LIBRARIES)
+@@ -78,4 +78,4 @@
+ 	  endif (assimp_FIND_REQUIRED)
+ 	endif (assimp_FOUND)
+ 	
+-endif(WIN32)
+\ Brak znaku nowej linii na końcu pliku
++endif(WIN32)

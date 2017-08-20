@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-USE_RUBY="ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -15,7 +15,7 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 hppa ~ppc ~x86"
 IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax xemacs"
 RESTRICT="test"
 
@@ -153,16 +153,19 @@ pkg_postinst() {
 	elog "http://forge.puppetlabs.com/gentoo/portage"
 	elog
 
-	if [ "$(get_major_version $REPLACING_VERSIONS)" = "3" ]; then
-		elog
-		elog "If you're upgrading from 3.x then please move everything in /etc/puppet to"
-		elog "/etc/puppetlabs/puppet"
-		elog "Also, puppet now uses config directories for modules and manifests."
-		elog "See https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_agent.html"
-		elog "and https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_server.html"
-		elog "for more information."
-		elog
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version $v)" = "3" ]; then
+			elog
+			elog "If you're upgrading from 3.x then please move everything in /etc/puppet to"
+			elog "/etc/puppetlabs/puppet"
+			elog "Also, puppet now uses config directories for modules and manifests."
+			elog "See https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_agent.html"
+			elog "and https://docs.puppetlabs.com/puppet/4.0/reference/upgrade_server.html"
+			elog "for more information."
+			elog
+		fi
+	done
 
 	use emacs && elisp-site-regen
 	use xemacs && xemacs-elisp-site-regen

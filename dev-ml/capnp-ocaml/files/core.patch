@@ -1,0 +1,366 @@
+Index: capnp-ocaml-2.1.1/src/compiler/genCommon.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/compiler/genCommon.ml
++++ capnp-ocaml-2.1.1/src/compiler/genCommon.ml
+@@ -77,7 +77,7 @@ let apply_indent ~(indent : string) (lin
+ (* Mangle a name so that it doesn't collide with any of the names in the list. *)
+ let mangle_ident (ident : string) (idents : string list) =
+   let rec loop mangled =
+-    if List.mem idents mangled then
++    if List.mem idents mangled String.equal then
+       loop (mangled ^ "_")
+     else
+       mangled
+@@ -516,7 +516,7 @@ let filter_interesting_imports ~context
+ let make_disambiguated_type_name ~context ~(mode : Mode.t) ~(scope_mode : Mode.t)
+     ~scope ~tp node =
+   let node_id = PS.Node.id_get node in
+-  if List.mem scope node_id then
++  if List.mem scope node_id uint64_equal then
+     (* The node of interest is a parent node of the node being generated.
+        this is a case where an unambiguous type is emitted. *)
+     make_unique_typename ~context ~mode node
+Index: capnp-ocaml-2.1.1/src/compiler/make_includes.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/compiler/make_includes.ml
++++ capnp-ocaml-2.1.1/src/compiler/make_includes.ml
+@@ -2,29 +2,26 @@
+    as a list of lines.  This is used to perform an ocaml source inclusion,
+    providing functor-like capability without the performance hit. *)
+ 
+-open Core_kernel
+-
+-
+ let make_inclusion oc variable_name filename =
+-  Out_channel.output_string oc ("let " ^ variable_name ^ " = [\n");
+-  In_channel.with_file filename ~f:(fun ic ->
+-    In_channel.iter_lines ic ~f:(fun line ->
++  Core_kernel.Out_channel.output_string oc ("let " ^ variable_name ^ " = [\n");
++  Core_kernel.In_channel.with_file filename ~f:(fun ic ->
++    Core_kernel.In_channel.iter_lines ic ~f:(fun line ->
+       if String.trim line = "INCLUDE \"common-inc.ml\"" then
+-        In_channel.with_file "../runtime/common-inc.ml" ~f:(fun ic ->
+-          In_channel.iter_lines ic ~f:(fun line ->
+-            Out_channel.output_string oc "  \"  ";
+-            Out_channel.output_string oc (String.escaped line);
+-            Out_channel.output_string oc "\";\n"))
++        Core_kernel.In_channel.with_file "../runtime/common-inc.ml" ~f:(fun ic ->
++          Core_kernel.In_channel.iter_lines ic ~f:(fun line ->
++            Core_kernel.Out_channel.output_string oc "  \"  ";
++            Core_kernel.Out_channel.output_string oc (String.escaped line);
++            Core_kernel.Out_channel.output_string oc "\";\n"))
+       else begin
+-        Out_channel.output_string oc "  \"";
+-        Out_channel.output_string oc (String.escaped line);
+-        Out_channel.output_string oc "\";\n"
++        Core_kernel.Out_channel.output_string oc "  \"";
++        Core_kernel.Out_channel.output_string oc (String.escaped line);
++        Core_kernel.Out_channel.output_string oc "\";\n"
+       end));
+-  Out_channel.output_string oc "]\n\n"
++  Core_kernel.Out_channel.output_string oc "]\n\n"
+ 
+ 
+ let () =
+-  Out_channel.with_file "includes.ml" ~f:(fun oc ->
++  Core_kernel.Out_channel.with_file "includes.ml" ~f:(fun oc ->
+     make_inclusion oc "reader_api" "../runtime/reader-inc.ml";
+     make_inclusion oc "builder_api" "../runtime/builder-inc.ml")
+ 
+Index: capnp-ocaml-2.1.1/src/compiler/topsort.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/compiler/topsort.ml
++++ capnp-ocaml-2.1.1/src/compiler/topsort.ml
+@@ -83,7 +83,7 @@ let register_reference ~parentage_table
+       else
+         begin match Hashtbl.find edges parent_referee with
+         | Some referrer_list ->
+-            if List.mem referrer_list referrer then
++            if List.mem referrer_list referrer uint64_equal then
+               (* This reference is already present *)
+               ()
+             else
+@@ -199,7 +199,7 @@ let build_reference_graph
+ 
+ let dump_reference_graph reference_graph =
+   let () = Printf.printf "reference graph:\n" in
+-  Hashtbl.iter reference_graph ~f:(fun ~key ~data ->
++  Hashtbl.iteri reference_graph ~f:(fun ~key ~data ->
+     let () = Printf.printf "  key: %s\n" (Uint64.to_string key) in
+     List.iter data
+       ~f:(fun x -> Printf.printf "    data: %s\n" (Uint64.to_string x)))
+Index: capnp-ocaml-2.1.1/src/runtime/farPointer.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/runtime/farPointer.ml
++++ capnp-ocaml-2.1.1/src/runtime/farPointer.ml
+@@ -28,7 +28,6 @@
+  ******************************************************************************)
+ 
+ 
+-module Int64 = Core_kernel.Core_int64
+ module Caml  = Core_kernel.Caml
+ 
+ type landing_pad_t =
+@@ -94,14 +93,14 @@ let decode (pointer64 : Int64.t) : t =
+         Caml.Int64.to_int id64
+     in
+     let landing_pad =
+-      let masked = Int64.bit_and pointer64 landing_pad_type_mask in
++      let masked = Int64.logand pointer64 landing_pad_type_mask in
+       if Int64.compare masked Int64.zero = 0 then
+         NormalPointer
+       else
+         TaggedFarPointer
+     in
+     let offset =
+-      let masked = Int64.bit_and pointer64 offset_mask in
++      let masked = Int64.logand pointer64 offset_mask in
+       let offset64 = Int64.shift_right_logical masked offset_shift in
+       Caml.Int64.to_int offset64
+     in {
+@@ -137,8 +136,8 @@ let encode (storage_descr : t) : Int64.t
+     let offset64 = Int64.of_int storage_descr.offset in
+     let segment64 = Int64.of_int storage_descr.segment_id in
+     tag_val_far |>
+-    Int64.bit_or (Int64.shift_left type64 landing_pad_type_shift) |>
+-    Int64.bit_or (Int64.shift_left offset64 offset_shift) |>
+-    Int64.bit_or (Int64.shift_left segment64 segment_shift)
++    Int64.logor (Int64.shift_left type64 landing_pad_type_shift) |>
++    Int64.logor (Int64.shift_left offset64 offset_shift) |>
++    Int64.logor (Int64.shift_left segment64 segment_shift)
+ 
+ 
+Index: capnp-ocaml-2.1.1/src/runtime/fragmentBuffer.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/runtime/fragmentBuffer.ml
++++ capnp-ocaml-2.1.1/src/runtime/fragmentBuffer.ml
+@@ -36,14 +36,14 @@ module Bytes = CamlBytes
+ 
+ type t = {
+   (** String fragments stored in FIFO order *)
+-  fragments : string Dequeue.t;
++  fragments : string Deque.t;
+ 
+   (** Total byte count of the fragments *)
+   mutable fragments_size : int;
+ }
+ 
+ let empty () = {
+-  fragments = Dequeue.create ();
++  fragments = Deque.create ();
+   fragments_size = 0;
+ }
+ 
+@@ -52,7 +52,7 @@ let add_fragment stream fragment =
+   if len = 0 then
+     ()
+   else
+-    let () = Dequeue.enqueue_back stream.fragments fragment in
++    let () = Deque.enqueue_back stream.fragments fragment in
+     stream.fragments_size <- stream.fragments_size + len
+ 
+ let of_string s =
+@@ -71,7 +71,7 @@ let remove_exact stream size =
+       let ofs = ref 0 in
+       while !ofs < size do
+         let bytes_remaining = size - !ofs in
+-        let fragment = Dequeue.dequeue_front_exn stream.fragments in
++        let fragment = Deque.dequeue_front_exn stream.fragments in
+         let bytes_from_fragment = min bytes_remaining (String.length fragment) in
+         Bytes.blit
+           (Bytes.unsafe_of_string fragment) 0
+@@ -79,7 +79,7 @@ let remove_exact stream size =
+           bytes_from_fragment;
+         begin if bytes_from_fragment < String.length fragment then
+           let remainder = Util.str_slice ~start:bytes_from_fragment fragment in
+-          Dequeue.enqueue_front stream.fragments remainder
++          Deque.enqueue_front stream.fragments remainder
+         end;
+         ofs := !ofs + bytes_from_fragment;
+       done;
+@@ -93,7 +93,7 @@ let remove_at_least stream size =
+   else begin
+     let buffer = Buffer.create size in
+     while Buffer.length buffer < size do
+-      Buffer.add_string buffer (Dequeue.dequeue_front_exn stream.fragments)
++      Buffer.add_string buffer (Deque.dequeue_front_exn stream.fragments)
+     done;
+     stream.fragments_size <- stream.fragments_size - (Buffer.length buffer);
+     Some (Buffer.contents buffer)
+@@ -102,7 +102,7 @@ let remove_at_least stream size =
+ let peek_exact stream size =
+   match remove_exact stream size with
+   | Some bytes ->
+-      let () = Dequeue.enqueue_front stream.fragments bytes in
++      let () = Deque.enqueue_front stream.fragments bytes in
+       let () = stream.fragments_size <- stream.fragments_size + size in
+       Some bytes
+   | None ->
+@@ -113,7 +113,7 @@ let unremove stream bytes =
+   if len = 0 then
+     ()
+   else
+-    let () = Dequeue.enqueue_front stream.fragments bytes in
++    let () = Deque.enqueue_front stream.fragments bytes in
+     stream.fragments_size <- stream.fragments_size + len
+ 
+ 
+Index: capnp-ocaml-2.1.1/src/runtime/iO.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/runtime/iO.ml
++++ capnp-ocaml-2.1.1/src/runtime/iO.ml
+@@ -49,7 +49,7 @@ module WriteContext = struct
+     write : 'a -> buf:string -> pos:int -> len:int -> int;
+ 
+     (** Data remaining to write to the descriptor *)
+-    fragments : string Dequeue.t;
++    fragments : string Deque.t;
+ 
+     (** Total number of bytes stored in [fragments] *)
+     mutable fragments_size : int;
+@@ -62,23 +62,23 @@ module WriteContext = struct
+     fd;
+     comp = compression;
+     write;
+-    fragments = Dequeue.create ();
++    fragments = Deque.create ();
+     fragments_size = 0;
+     first_fragment_pos = 0;
+   }
+ 
+   let enqueue_message context message =
+     Codecs.serialize_iter message ~compression:context.comp ~f:(fun buf ->
+-      Dequeue.enqueue_back context.fragments buf;
++      Deque.enqueue_back context.fragments buf;
+       context.fragments_size <- context.fragments_size + (String.length buf))
+ 
+   let bytes_remaining context = context.fragments_size - context.first_fragment_pos
+ 
+   let write context =
+-    if Dequeue.is_empty context.fragments then
++    if Deque.is_empty context.fragments then
+       0
+     else
+-      let first_fragment = Dequeue.peek_front_exn context.fragments in
++      let first_fragment = Deque.peek_front_exn context.fragments in
+       let first_fragment_remaining =
+         String.length first_fragment - context.first_fragment_pos
+       in
+@@ -88,7 +88,7 @@ module WriteContext = struct
+       in
+       let () =
+         if bytes_written = first_fragment_remaining then
+-          let (_ : string) = Dequeue.dequeue_front_exn context.fragments in
++          let (_ : string) = Deque.dequeue_front_exn context.fragments in
+           let () = context.fragments_size <-
+               context.fragments_size - (String.length first_fragment)
+           in
+Index: capnp-ocaml-2.1.1/src/runtime/listPointer.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/runtime/listPointer.ml
++++ capnp-ocaml-2.1.1/src/runtime/listPointer.ml
+@@ -1,5 +1,4 @@
+ 
+-module Int64 = Core_kernel.Core_int64;;
+ module Caml  = Core_kernel.Caml
+ 
+ type element_type_t =
+@@ -73,13 +72,13 @@ let decode (pointer64 : Int64.t) : t =
+     }
+   else
+     let offset =
+-      let masked     = Int64.bit_and pointer64 offset_mask in
++      let masked     = Int64.logand pointer64 offset_mask in
+       let offset64   = Int64.shift_right_logical masked offset_shift in
+       let offset_int = Caml.Int64.to_int offset64 in
+       Util.decode_signed 30 offset_int
+     in
+     let element_type =
+-      let masked = Int64.bit_and pointer64 type_mask in
++      let masked = Int64.logand pointer64 type_mask in
+       let tp64   = Int64.shift_right_logical masked type_shift in
+       match Caml.Int64.to_int tp64 with
+       | 0 -> Void
+@@ -136,8 +135,8 @@ let encode (storage_descr : t) : Int64.t
+       Int64.of_int type_id
+     in
+     tag_val_list |>
+-    Int64.bit_or (Int64.shift_left offset64 offset_shift) |>
+-    Int64.bit_or (Int64.shift_left type64 type_shift) |>
+-    Int64.bit_or (Int64.shift_left (Int64.of_int storage_descr.num_elements) count_shift)
++    Int64.logor (Int64.shift_left offset64 offset_shift) |>
++    Int64.logor (Int64.shift_left type64 type_shift) |>
++    Int64.logor (Int64.shift_left (Int64.of_int storage_descr.num_elements) count_shift)
+ 
+ 
+Index: capnp-ocaml-2.1.1/src/runtime/otherPointer.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/runtime/otherPointer.ml
++++ capnp-ocaml-2.1.1/src/runtime/otherPointer.ml
+@@ -28,7 +28,6 @@
+  ******************************************************************************)
+ 
+ 
+-module Int64 = Core_kernel.Core_int64
+ module Caml  = Core_kernel.Caml
+ 
+ type t =
+@@ -43,8 +42,8 @@ let index_shift = 32
+ let index_mask  = Int64.shift_left 0xffffffffL index_shift
+ 
+ let decode (pointer64 : Int64.t) : t =
+-  if Int64.compare (Int64.bit_and pointer64 b_mask) Int64.zero = 0 then
+-    let shifted_index = Int64.bit_and pointer64 index_mask in
++  if Int64.compare (Int64.logand pointer64 b_mask) Int64.zero = 0 then
++    let shifted_index = Int64.logand pointer64 index_mask in
+     let index64 = Int64.shift_right_logical shifted_index index_shift in
+     let index32 = Caml.Int64.to_int32 index64 in
+     Capability (Uint32.of_int32 index32)
+@@ -57,6 +56,6 @@ let encode (descr : t) : Int64.t =
+       let index32 = Uint32.to_int32 index in
+       let index64 = Int64.of_int32 index32 in
+       let shifted_index = Int64.shift_left index64 index_shift in
+-      Int64.bit_or shifted_index tag_val_other
++      Int64.logor shifted_index tag_val_other
+ 
+ 
+Index: capnp-ocaml-2.1.1/src/runtime/structPointer.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/runtime/structPointer.ml
++++ capnp-ocaml-2.1.1/src/runtime/structPointer.ml
+@@ -28,7 +28,6 @@
+  ******************************************************************************)
+ 
+ 
+-module Int64 = Core_kernel.Core_int64
+ module Caml  = Core_kernel.Caml
+ 
+ type t = {
+@@ -79,13 +78,13 @@ let decode (pointer64 : Int64.t) : t =
+     }
+   else
+     let offset =
+-      let masked     = Int64.bit_and pointer64 offset_mask in
++      let masked     = Int64.logand pointer64 offset_mask in
+       let offset64   = Int64.shift_right_logical masked offset_shift in
+       let offset_int = Caml.Int64.to_int offset64 in
+       Util.decode_signed 30 offset_int
+     in
+     let data_size =
+-      let masked = Int64.bit_and pointer64 data_size_mask in
++      let masked = Int64.logand pointer64 data_size_mask in
+       let size64 = Int64.shift_right_logical masked data_size_shift in
+       Caml.Int64.to_int size64
+     in {
+@@ -113,8 +112,8 @@ let encode (storage_descr : t) : Int64.t
+     let data_size64 = Int64.of_int storage_descr.data_words in
+     let ptr_size64 = Int64.of_int storage_descr.pointer_words in
+     tag_val_struct |>
+-    Int64.bit_or (Int64.shift_left offset64 offset_shift) |>
+-    Int64.bit_or (Int64.shift_left data_size64 data_size_shift) |>
+-    Int64.bit_or (Int64.shift_left ptr_size64 pointers_size_shift)
++    Int64.logor (Int64.shift_left offset64 offset_shift) |>
++    Int64.logor (Int64.shift_left data_size64 data_size_shift) |>
++    Int64.logor (Int64.shift_left ptr_size64 pointers_size_shift)
+ 
+ 

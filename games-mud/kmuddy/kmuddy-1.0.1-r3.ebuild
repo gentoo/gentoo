@@ -3,7 +3,7 @@
 
 EAPI=6
 
-# QT3SUPPORT_REQUIRED
+QT3SUPPORT_REQUIRED="true"
 KDE_LINGUAS="es"
 KDE_DOC_DIRS="doc/${PN}"
 KDE_HANDBOOK=optional
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlinking.patch
 	"${FILESDIR}"/${P}-tempnam.patch
 	"${FILESDIR}"/${P}-desktopvalidation.patch
+	"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_configure() {

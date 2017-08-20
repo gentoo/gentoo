@@ -13,11 +13,6 @@
 	Liferea is a news aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds.  It's
 	based on gnome and xulrunner/webkit.
 	</longdescription>
-	<use>
-		<flag name="libnotify">
-			Enable popup notifications
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">liferea</remote-id>
 		<remote-id type="github">lwindolf/liferea</remote-id>

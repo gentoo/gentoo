@@ -1,0 +1,58 @@
+From 6a61192a98665d870dcb835452cb9c5757ccd27c Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Tue, 20 Dec 2016 17:24:35 +0000
+Subject: [PATCH] * tools/tiff2pdf.c: avoid potential invalid memory read in
+ t2p_writeproc. Fixes http://bugzilla.maptools.org/show_bug.cgi?id=2639
+
+---
+ ChangeLog        |  6 ++++++
+ tools/tiff2pdf.c | 20 +++++++++++---------
+ 2 files changed, 17 insertions(+), 9 deletions(-)
+
+diff --git a/tools/tiff2pdf.c b/tools/tiff2pdf.c
+index 78ffa77d123a..5348f1a765fe 100644
+--- a/tools/tiff2pdf.c
++++ b/tools/tiff2pdf.c
+@@ -2896,6 +2896,7 @@ tsize_t t2p_readwrite_pdf_image_tile(T2P* t2p, TIFF* input, TIFF* output, ttile_
+ 			}
+ 			if(TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt) != 0) {
+ 				if (count >= 4) {
++                                        int retTIFFReadRawTile;
+                     /* Ignore EOI marker of JpegTables */
+ 					_TIFFmemcpy(buffer, jpt, count - 2);
+ 					bufferoffset += count - 2;
+@@ -2903,22 +2904,23 @@ tsize_t t2p_readwrite_pdf_image_tile(T2P* t2p, TIFF* input, TIFF* output, ttile_
+ 					table_end[0] = buffer[bufferoffset-2];
+ 					table_end[1] = buffer[bufferoffset-1];
+ 					xuint32 = bufferoffset;
+-                    bufferoffset -= 2;
+-					bufferoffset += TIFFReadRawTile(
++                                        bufferoffset -= 2;
++                                        retTIFFReadRawTile= TIFFReadRawTile(
+ 						input, 
+ 						tile, 
+ 						(tdata_t) &(((unsigned char*)buffer)[bufferoffset]), 
+ 						-1);
++                                        if( retTIFFReadRawTile < 0 )
++                                        {
++                                            _TIFFfree(buffer);
++                                            t2p->t2p_error = T2P_ERR_ERROR;
++                                            return(0);
++                                        }
++					bufferoffset += retTIFFReadRawTile;
+                     /* Overwrite SOI marker of image scan with previously */
+                     /* saved end of JpegTables */
+ 					buffer[xuint32-2]=table_end[0];
+ 					buffer[xuint32-1]=table_end[1];
+-				} else {
+-					bufferoffset += TIFFReadRawTile(
+-						input, 
+-						tile, 
+-						(tdata_t) &(((unsigned char*)buffer)[bufferoffset]), 
+-						-1);
+ 				}
+ 			}
+ 			t2pWriteFile(output, (tdata_t) buffer, bufferoffset);
+-- 
+2.12.0
+

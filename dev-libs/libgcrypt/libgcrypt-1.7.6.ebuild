@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools flag-o-matic ltprune multilib-minimal
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="http://www.gnupg.org/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc static-libs"
 
 RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
@@ -21,8 +21,6 @@ RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	doc? ( virtual/texi2dvi )"
-
-DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
@@ -71,4 +69,9 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 	multilib_is_native_abi && use doc && dodoc doc/gcrypt.pdf
+}
+
+multilib_src_install_all() {
+	default
+	prune_libtool_files
 }

@@ -1,0 +1,103 @@
+From efc4725e91e10ccfef257143408d3a683e74a866 Mon Sep 17 00:00:00 2001
+From: Jose Rios <joseriosneto@protonmail.com>
+Date: Mon, 1 May 2017 02:12:26 +0100
+Subject: [PATCH] Fixed compilation for Openssl 1.1.0
+
+Most of libcrypto and libssl internal structures were made
+opaque in this version not allowing to instatiate them in
+the stack.
+
+More info:
+    * https://www.openssl.org/news/openssl-1.1.0-notes.html
+    * https://github.com/openssl/openssl/issues/962#issuecomment-208792020
+---
+ src/lib/tools/aesinterface.cpp | 28 ++++++++++++++++------------
+ src/lib/tools/aesinterface.h   |  4 ++--
+ 2 files changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/src/lib/tools/aesinterface.cpp b/src/lib/tools/aesinterface.cpp
+index fa33eb3..29ed37e 100644
+--- a/src/lib/tools/aesinterface.cpp
++++ b/src/lib/tools/aesinterface.cpp
+@@ -39,14 +39,18 @@ AesInterface::AesInterface(QObject* parent)
+     : QObject(parent)
+     , m_ok(false)
+ {
+-    EVP_CIPHER_CTX_init(&m_encodeCTX);
+-    EVP_CIPHER_CTX_init(&m_decodeCTX);
++    m_encodeCTX = EVP_CIPHER_CTX_new();
++    m_decodeCTX = EVP_CIPHER_CTX_new();
++    EVP_CIPHER_CTX_init(m_encodeCTX);
++    EVP_CIPHER_CTX_init(m_decodeCTX);
+ }
+ 
+ AesInterface::~AesInterface()
+ {
+-    EVP_CIPHER_CTX_cleanup(&m_encodeCTX);
+-    EVP_CIPHER_CTX_cleanup(&m_decodeCTX);
++    EVP_CIPHER_CTX_cleanup(m_encodeCTX);
++    EVP_CIPHER_CTX_cleanup(m_decodeCTX);
++    EVP_CIPHER_CTX_free(m_encodeCTX);
++    EVP_CIPHER_CTX_free(m_decodeCTX);
+ }
+ 
+ bool AesInterface::isOk()
+@@ -78,10 +82,10 @@ bool AesInterface::init(int evpMode, const QByteArray &password, const QByteArra
+     int result = 0;
+     if (evpMode == EVP_PKEY_MO_ENCRYPT) {
+         m_iVector = createRandomData(EVP_MAX_IV_LENGTH);
+-        result = EVP_EncryptInit_ex(&m_encodeCTX, EVP_aes_256_cbc(), NULL, key, (uchar*)m_iVector.constData());
++        result = EVP_EncryptInit_ex(m_encodeCTX, EVP_aes_256_cbc(), NULL, key, (uchar*)m_iVector.constData());
+     }
+     else if (evpMode == EVP_PKEY_MO_DECRYPT) {
+-        result = EVP_DecryptInit_ex(&m_decodeCTX, EVP_aes_256_cbc(), NULL, key, (uchar*)iVector.constData());
++        result = EVP_DecryptInit_ex(m_decodeCTX, EVP_aes_256_cbc(), NULL, key, (uchar*)iVector.constData());
+     }
+ 
+     if (result == 0) {
+@@ -106,14 +110,14 @@ QByteArray AesInterface::encrypt(const QByteArray &plainData, const QByteArray &
+     uchar* ciphertext = (uchar*)malloc(cipherlength);
+ 
+     // allows reusing of 'm_encodeCTX' for multiple encryption cycles
+-    EVP_EncryptInit_ex(&m_encodeCTX, NULL, NULL, NULL, NULL);
++    EVP_EncryptInit_ex(m_encodeCTX, NULL, NULL, NULL, NULL);
+ 
+     // update ciphertext, c_len is filled with the length of ciphertext generated,
+     // dataLength is the size of plaintext in bytes
+-    EVP_EncryptUpdate(&m_encodeCTX, ciphertext, &cipherlength, (uchar*)plainData.data(), dataLength);
++    EVP_EncryptUpdate(m_encodeCTX, ciphertext, &cipherlength, (uchar*)plainData.data(), dataLength);
+ 
+     // update ciphertext with the final remaining bytes
+-    EVP_EncryptFinal_ex(&m_encodeCTX, ciphertext + cipherlength, &finalLength);
++    EVP_EncryptFinal_ex(m_encodeCTX, ciphertext + cipherlength, &finalLength);
+ 
+     dataLength = cipherlength + finalLength;
+     QByteArray out((char*)ciphertext, dataLength);
+@@ -163,9 +167,9 @@ QByteArray AesInterface::decrypt(const QByteArray &cipherData, const QByteArray
+     // because we have padding ON, we must allocate an extra cipher block size of memory
+     uchar* plainText = (uchar*)malloc(plainTextLength + AES_BLOCK_SIZE);
+ 
+-    EVP_DecryptInit_ex(&m_decodeCTX, NULL, NULL, NULL, NULL);
+-    EVP_DecryptUpdate(&m_decodeCTX, plainText, &plainTextLength, cipherText, cipherLength);
+-    int success = EVP_DecryptFinal_ex(&m_decodeCTX, plainText + plainTextLength, &finalLength);
++    EVP_DecryptInit_ex(m_decodeCTX, NULL, NULL, NULL, NULL);
++    EVP_DecryptUpdate(m_decodeCTX, plainText, &plainTextLength, cipherText, cipherLength);
++    int success = EVP_DecryptFinal_ex(m_decodeCTX, plainText + plainTextLength, &finalLength);
+ 
+     cipherLength = plainTextLength + finalLength;
+ 
+diff --git a/src/lib/tools/aesinterface.h b/src/lib/tools/aesinterface.h
+index e0debc6..c3c940c 100644
+--- a/src/lib/tools/aesinterface.h
++++ b/src/lib/tools/aesinterface.h
+@@ -50,8 +50,8 @@ class QUPZILLA_EXPORT AesInterface : public QObject
+ private:
+     bool init(int evpMode, const QByteArray &password, const QByteArray &iVector = QByteArray());
+ 
+-    EVP_CIPHER_CTX m_encodeCTX;
+-    EVP_CIPHER_CTX m_decodeCTX;
++    EVP_CIPHER_CTX* m_encodeCTX;
++    EVP_CIPHER_CTX* m_decodeCTX;
+ 
+     bool m_ok;
+     QByteArray m_iVector;

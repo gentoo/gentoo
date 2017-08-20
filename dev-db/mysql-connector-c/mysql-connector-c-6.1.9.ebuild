@@ -16,7 +16,7 @@ DESCRIPTION="C client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/c/"
 LICENSE="GPL-2"
 
-SRC_URI="mirror://mysql/Downloads/Connector-C/${P}-src.tar.gz"
+SRC_URI="https://dev.mysql.com/get/Downloads/Connector-C/${P}-src.tar.gz"
 S="${WORKDIR}/${P}-src"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc64 ~x86"
 

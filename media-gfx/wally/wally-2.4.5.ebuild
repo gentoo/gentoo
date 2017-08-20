@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-KDE_REQUIRED="optional"
 
+KDE_REQUIRED="optional"
+SQL_REQUIRED="always"
 inherit eutils kde4-base readme.gentoo
 
 DESCRIPTION="A Qt4/KDE4 wallpaper changer"
@@ -16,14 +17,14 @@ KEYWORDS="amd64 x86"
 IUSE="debug kde"
 
 DEPEND="
-	media-libs/libexif
-	x11-libs/libX11
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4
 	dev-qt/qtsvg:4
-	kde? ( kde-frameworks/kdelibs:4 )
+	media-libs/libexif
+	x11-libs/libX11
+	kde? ( kde-frameworks/kdelibs:4[plasma(+)] )
 "
 RDEPEND="${DEPEND}"
 

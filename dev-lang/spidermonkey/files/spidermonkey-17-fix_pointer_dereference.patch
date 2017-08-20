@@ -1,0 +1,30 @@
+# HG changeset patch
+# User Mike Hommey <mh+mozilla@glandium.org>
+# Date 1373958382 -32400
+#      Tue Jul 16 16:06:22 2013 +0900
+# Node ID 1880537f26d2ce22866974a8cdf1927dc66f6dbc
+# Parent  673ea5cd6ba7fc37086d1dab71ee4a6d6a77a1ab
+Bug 894240 - Fix pointer dereference in js::cli::OptionParser::extractValue
+
+diff --git a/js/src/shell/jsoptparse.cpp b/js/src/shell/jsoptparse.cpp
+--- a/js/src/shell/jsoptparse.cpp
++++ b/js/src/shell/jsoptparse.cpp
+@@ -248,17 +248,17 @@ OptionParser::printHelp(const char *prog
+ 
+ OptionParser::Result
+ OptionParser::extractValue(size_t argc, char **argv, size_t *i, char **value)
+ {
+     JS_ASSERT(*i < argc);
+     char *eq = strchr(argv[*i], '=');
+     if (eq) {
+         *value = eq + 1;
+-        if (value[0] == '\0')
++        if (*value[0] == '\0')
+             return error("A value is required for option %.*s", eq - argv[*i], argv[*i]);
+         return Okay;
+     }
+ 
+     if (argc == *i + 1)
+         return error("Expected a value for option %s", argv[*i]);
+ 
+     *i += 1;

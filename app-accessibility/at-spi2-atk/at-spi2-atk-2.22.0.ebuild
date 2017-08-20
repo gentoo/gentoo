@@ -1,17 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 multilib-minimal
+inherit gnome2 multilib-minimal virtualx
 
 DESCRIPTION="Gtk module for bridging AT-SPI to Atk"
 HOMEPAGE="https://wiki.gnome.org/Accessibility"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="test"
 
 COMMON_DEPEND="
@@ -41,7 +41,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake check TESTS_ENVIRONMENT="dbus-run-session"
+	virtx emake check TESTS_ENVIRONMENT="dbus-run-session"
 }
 
 multilib_src_compile() { gnome2_src_compile; }

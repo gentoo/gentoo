@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="github">Diaoul/enzyme</remote-id>
 		<remote-id type="pypi">enzyme</remote-id>
+		<remote-id type="sourceforge">matroska</remote-id>
 	</upstream>
 </pkgmetadata>

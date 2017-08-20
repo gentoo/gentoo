@@ -1,0 +1,56 @@
+From b6ed1afd8a8a4104a9fcf09c3322bf6d69231622 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Mon, 7 Aug 2017 00:25:11 +0200
+Subject: libksysguard does not appear to use QtScript, but just includes it.
+
+Removing it makes it build with a clean Qt5.9 where QtScript no longer exists.
+
+Reviewed by: davidedmundson
+
+Differential Revision: https://phabricator.kde.org/D7036
+---
+ CMakeLists.txt           | 2 +-
+ processui/CMakeLists.txt | 1 -
+ processui/scripting.cpp  | 2 --
+ 3 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 84a4479..83987ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,7 +9,7 @@ include(WriteBasicConfigVersionFile)
+ find_package(ECM 1.2.0 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-find_package(Qt5 REQUIRED CONFIG COMPONENTS DBus Network Widgets Script)
++find_package(Qt5 REQUIRED CONFIG COMPONENTS DBus Network Widgets)
+ find_package(Qt5WebKitWidgets CONFIG)
+ set_package_properties(Qt5WebKitWidgets PROPERTIES
+                        URL "git://gitorious.org/qt/qtwebkit.git"
+diff --git a/processui/CMakeLists.txt b/processui/CMakeLists.txt
+index 1927839..4dfcbd4 100644
+--- a/processui/CMakeLists.txt
++++ b/processui/CMakeLists.txt
+@@ -35,7 +35,6 @@ target_link_libraries(processui
+         KF5::ConfigCore
+     PRIVATE
+         Qt5::DBus
+-        Qt5::Script
+         KF5::I18n
+         KF5::WindowSystem
+         KF5::Auth
+diff --git a/processui/scripting.cpp b/processui/scripting.cpp
+index 2aa7088..afdf949 100644
+--- a/processui/scripting.cpp
++++ b/processui/scripting.cpp
+@@ -28,8 +28,6 @@
+ #include <QDirIterator>
+ #include <QFile>
+ #include <QFileInfo>
+-#include <QScriptValue>
+-#include <QScriptContext>
+ #include <QTextStream>
+ #include <QDialog>
+ #include <QUrl>
+-- 
+cgit v0.11.2

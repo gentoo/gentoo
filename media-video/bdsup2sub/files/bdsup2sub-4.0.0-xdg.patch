@@ -1,5 +1,5 @@
---- src/deadbeef/SupTools/Core.java	2010-07-29 13:01:48.000000000 +0200
-+++ src/deadbeef/SupTools/Core.java	2010-08-01 02:19:25.215473885 +0200
+--- a/src/deadbeef/SupTools/Core.java	2010-07-29 13:01:48.000000000 +0200
++++ b/src/deadbeef/SupTools/Core.java	2010-08-01 02:19:25.215473885 +0200
 @@ -22,6 +22,8 @@
  import deadbeef.Tools.Props;
  import deadbeef.Tools.ToolBox;

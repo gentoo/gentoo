@@ -2,9 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>baccenfutter@c-base.org</email>
-		<name>Brian Wiborg</name>
-		<description>Proxied maintainer - set to assignee on bugs</description>
+		<email>davidroman96@gmail.com</email>
+		<name>David Roman</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,9 +11,9 @@ inherit gnome2 pax-utils python-r1 vala
 DESCRIPTION="git repository viewer for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gitg"
 
-LICENSE="|| ( GPL-2 GPL-3 )"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="glade +python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

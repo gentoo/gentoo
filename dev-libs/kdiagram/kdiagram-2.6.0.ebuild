@@ -10,7 +10,7 @@ HOMEPAGE="https://www.kde.org/"
 IUSE=""
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 fi
 

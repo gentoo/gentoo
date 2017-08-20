@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -75,7 +75,10 @@ src_test() {
 }
 
 src_install() {
-	use examples && dobin demos/*-viewer/*-viewer examples/uff-energy/uff-energy
+	use examples && \
+		dobin \
+			"${BUILD_DIR}"/demos/*-viewer/*-viewer \
+			"${BUILD_DIR}"/examples/uff-energy/uff-energy
 
 	cmake-utils_src_install
 }

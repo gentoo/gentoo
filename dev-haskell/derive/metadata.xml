@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -11,4 +11,7 @@
 		The tool requires GHC, but the generated code is portable to all compilers.
 		We see this tool as a competitor to DrIFT.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ndmitchell/derive</remote-id>
+	</upstream>
 </pkgmetadata>

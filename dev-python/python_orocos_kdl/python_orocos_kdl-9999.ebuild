@@ -25,11 +25,12 @@ HOMEPAGE="http://www.orocos.org/kdl"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	sci-libs/orocos_kdl
-	dev-python/sip[${PYTHON_USEDEP}]
-"
+	dev-python/sip[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 if [ "${PV#9999}" != "${PV}" ] ; then

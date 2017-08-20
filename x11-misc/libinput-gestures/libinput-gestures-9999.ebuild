@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit git-r3 python-single-r1
 
@@ -18,10 +18,10 @@ KEYWORDS=""
 IUSE="gtk kde"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/libinput
+	>=dev-libs/libinput-1.8.0
 	x11-misc/xdotool
 	x11-misc/wmctrl"
-DEPEND="dev-libs/libinput
+DEPEND=">=dev-libs/libinput-1.8.0
 	dev-util/desktop-file-utils
 	gtk? ( x11-libs/gtk+:3 )
 	kde? ( kde-plasma/kde-cli-tools:5 )"

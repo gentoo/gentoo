@@ -1,30 +1,36 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit eutils python-single-r1
 
 MY_PN="pyaimt"
 MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Python based jabber transport for AIM"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://debian/pool/main/p/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz -> ${P}.tar.gz
 	https://launchpad.net/ubuntu/+archive/primary/+files/${MY_PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="webinterface"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="net-im/jabber-base"
+DEPEND="${PYTHON_DEPS}
+	net-im/jabber-base"
 RDEPEND="${DEPEND}
 	dev-python/twisted-core[${PYTHON_USEDEP}]
 	dev-python/twisted-words[${PYTHON_USEDEP}]
 	dev-python/twisted-web[${PYTHON_USEDEP}]
 	webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_USEDEP}] )
 	dev-python/pillow[${PYTHON_USEDEP}]"
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-python26-warnings.patch"

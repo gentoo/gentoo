@@ -1,13 +1,73 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Alexis Ballier <aballier@gentoo.org> (4 Mar 2017)
-# gst-plugins-x264 is not stable on ia64
-media-plugins/gst-plugins-meta x264
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Both USE=fluidsynth and USE=timidity are masked in this profile.
+media-libs/sdl-mixer midi
 
-# Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
-# Missing keywords, bug #559770
->=net-misc/networkmanager-1.4.4 consolekit
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=dvd that is masked in this profile.
+media-video/mplayer dvdnav
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=v4l that is masked in this profile.
+media-video/ffmpeg libv4l
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=bluetooth that is masked in this profile.
+media-sound/pulseaudio native-headset
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=networkmanager that is masked in this profile.
+app-misc/geoclue skyhook
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded java
+sci-libs/gdal mdb
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded lapack
+sci-libs/gdal armadillo
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
+# Pulls in dev-db/redis which is not keyworded on ia64.
+dev-python/pyzor test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
+# dev-python/gevent requires dev-python/greenlet which has not been ported to
+# ia64 (bug #538510)
+dev-python/pyzor gevent
+
+# Sergei Trofimovich <slyfox@gentoo.org> (10 Jun 2017)
+# media-libs/libilbc has not been ported to ia64, bug #610546
+media-video/ffmpeg libilbc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (06 Jun 2017)
+# Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
+# keyworded (bug #549516)
+net-analyzer/rrdtool rados
+
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on ia64
+xfce-base/xfwm4 xpresent
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
@@ -38,10 +98,6 @@ dev-db/percona-server -numa
 # Missing keywords on media-libs/grilo - bug #521972
 media-sound/rhythmbox upnp-av
 
-# Gilles Dartiguelongue <eva@gentoo.org> (22 Aug 2016)
-# Missing keywords on dev-libs/gom - bug #521972
-media-libs/grilo test
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
@@ -61,10 +117,6 @@ media-video/ffmpeg snappy
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no ia64 support in media-libs/glfw
 app-text/mupdf opengl
-
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
@@ -111,10 +163,6 @@ net-analyzer/wireshark doc-pdf
 net-misc/spice-gtk smartcard webdav
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# net-fs/libnfs lacks ia64 keyword, bug #551576
-gnome-base/gvfs nfs
-
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # dev-lang/luajit and dev-lua/lgi and lack ia64 keyword, bug #551540
 dev-libs/libpeas lua jit
 
@@ -125,11 +173,7 @@ media-libs/elementary sdl
 
 # Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
 # Missing ffmpeg deps, bug #510340
-media-video/ffmpeg x265 gme ssh
-
-# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
-# Missing keywords for media-libs/x265
-media-video/libav x265
+media-video/ffmpeg gme ssh
 
 # Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
 # Missing keywords
@@ -140,10 +184,6 @@ net-misc/networkmanager teamd
 dev-haskell/binary test
 dev-haskell/text test
 dev-haskell/vector test
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
-# Missing keywords, bug #523686
->=dev-libs/libgdata-0.16.1 test
 
 # Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
@@ -209,10 +249,6 @@ media-libs/phonon zeitgeist
 # depends on net-libs/polarssl
 >=net-vpn/openvpn-2.3.1 polarssl
 
-# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
-# missing keyword on media-libs/tremor, bug #453200
-media-libs/gst-plugins-base ivorbis
-
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono/monodevelop
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -253,13 +289,9 @@ media-libs/phonon gstreamer vlc
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Requires gnutls[pkcs11], which is use.masked on ia64
-net-libs/glib-networking smartcard
-
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
 # jit not supported on ia64

@@ -1,0 +1,21 @@
+Avoid "undefined reference to `memset'" error when building with
+USE=custom-cflags and -O3 in CFLAGS with gcc-4.8.
+
+See:
+
+http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56888
+http://bugs.winehq.org/show_bug.cgi?id=33521
+https://bugs.gentoo.org/show_bug.cgi?id=480508
+
+diff --git a/configure.ac b/configure.ac
+index d8033cf..fe7cc7d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1767,6 +1767,7 @@ then
+ 
+   dnl Check for some compiler flags
+   WINE_TRY_CFLAGS([-fno-builtin],[AC_SUBST(BUILTINFLAG,"-fno-builtin")])
++  WINE_TRY_CFLAGS([-fno-tree-loop-distribute-patterns])
+   WINE_TRY_CFLAGS([-fno-strict-aliasing])
+   dnl clang needs to be told to fail on unknown options
+   saved_CFLAGS=$CFLAGS

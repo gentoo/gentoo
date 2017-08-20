@@ -5,7 +5,7 @@
 		<email>net-mail@gentoo.org</email>
 		<name>Net-Mail</name>
 	</maintainer>
-	<longdescription>Abook is a text-based addressbook program designed to use with mutt mail client.</longdescription>
+	<longdescription>abook is a text-based addressbook program for the mutt mail client.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">abook</remote-id>
 	</upstream>

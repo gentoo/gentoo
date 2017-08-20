@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="An mount plug-in for the Xfce panel"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-mount-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-mount-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

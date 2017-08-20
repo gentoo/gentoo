@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="Techniques + Paradigms for Expressive Synthesis, Transformation, Rendering of Environmental Audio"
+DESCRIPTION="Expressive Synthesis, Transformation, Rendering of Environmental Audio"
 HOMEPAGE="http://taps.cs.princeton.edu/"
 SRC_URI="http://taps.cs.princeton.edu/release/files/${P}.tgz"
 

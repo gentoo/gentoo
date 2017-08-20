@@ -1,7 +1,7 @@
 Avoid "make: `install' is up to date." on case insensitive filesystems
 
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -86,3 +86,5 @@
  dist: tar.bz2
  

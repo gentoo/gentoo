@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,9 +18,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-util/patchutils"
-RDEPEND=">=dev-python/feedparser-5.0.1
+RDEPEND="${PYTHON_DEPS}
+	>=dev-python/feedparser-5.0.1
 	>=dev-python/html2text-3.01"
 
 src_unpack() {

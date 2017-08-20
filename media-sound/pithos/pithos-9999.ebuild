@@ -1,20 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=(python3_4)
-inherit eutils distutils-r1
+EAPI=6
+PYTHON_COMPAT=(python3_4 python3_5)
+inherit autotools gnome2-utils python-r1
 
 if [[ ${PV} =~ [9]{4,} ]]; then
-	inherit git-2
-	EGIT_REPO_URI="git://github.com/pithos/pithos.git
-		https://github.com/pithos/pithos.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Pandora.com client for the GNOME desktop"
-HOMEPAGE="http://pithos.github.io/"
+HOMEPAGE="https://pithos.github.io/"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,6 +24,7 @@ RDEPEND="
 	dev-python/pylast[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.12[${PYTHON_USEDEP}]
+	dev-libs/appstream-glib[introspection]
 	x11-libs/pango[introspection]
 	media-libs/gstreamer:1.0[introspection]
 	media-plugins/gst-plugins-meta:1.0[aac,http,mp3]
@@ -36,6 +36,56 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_test() {
-	esetup.py test
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.1-dont-try-to-update-icon-cache.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+	python_copy_sources
+}
+
+pithos_src_configure() {
+	pushd "${BUILD_DIR}" || die
+	econf UPDATE_ICON_CACHE=":"
+	popd || die
+}
+
+src_configure() {
+	python_foreach_impl pithos_src_configure
+}
+
+pithos_src_compile() {
+	pushd "${BUILD_DIR}" || die
+	emake
+	popd || die
+}
+
+src_compile() {
+	python_foreach_impl pithos_src_compile
+}
+
+pithos_src_install() {
+	pushd "${BUILD_DIR}" || die
+	emake DESTDIR="${D}" install
+	python_doscript "${D}"/usr/bin/pithos
+	popd || die
+}
+
+src_install() {
+	python_foreach_impl pithos_src_install
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+	gnome2_schemas_savelist
+}
+pkg_postinst() {
+	gnome2_icon_cache_update
+	gnome2_schemas_update
+}
+pkg_postrm() {
+	gnome2_icon_cache_update
+	gnome2_schemas_update
 }

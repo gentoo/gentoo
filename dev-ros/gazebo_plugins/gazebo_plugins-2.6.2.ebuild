@@ -36,12 +36,14 @@ RDEPEND="
 	dev-ros/image_transport
 	dev-ros/rosconsole
 	dev-ros/cv_bridge
+	media-libs/opencv:=
 	dev-ros/polled_camera
 	dev-ros/diagnostic_updater
 	dev-ros/camera_info_manager
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/libxml2
 	>=sci-electronics/gazebo-7:=
+	dev-libs/protobuf:=
 	dev-games/ogre
 	sci-libs/pcl
 	dev-libs/boost:=

@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2017)
+# Most of clang runtimes are not supported here
+sys-devel/clang-runtime openmp sanitize
+sys-libs/libcxx libcxxrt
+
 # Michael Weber <xmw@gentoo.org> (15 Mar 2017)
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
 net-proxy/haproxy device-atlas
@@ -21,7 +26,7 @@ sci-libs/gdal armadillo
 
 ## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
->=sci-libs/gdal-2.0.3 mdb
+sci-libs/gdal mdb
 
 # Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
 # libomp does not support 32-bit PPC, #600148.
@@ -68,8 +73,9 @@ app-text/mupdf opengl
 
 # Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# media-libs/libsdl2 lacks ppc32 keyword. See bug #508226.
-media-video/mpv sdl
+# media-libs/libsdl2 lacked ppc32 keyword at the time. See bug #508226.
+# Ready for the next stable mpv version after the one below.
+=media-video/mpv-0.18.0-r1 sdl
 
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138
@@ -77,7 +83,7 @@ media-video/vlc x265
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword
-media-sound/audacity midi
+media-sound/audacity midi soundtouch
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
 # Missing keywords (02 Jun 2015)
@@ -99,17 +105,9 @@ app-misc/workrave mate
 # Dependencies lack keywords
 games-fps/lsdldoom shareware
 
-# Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
-# Missing keywords, bug #507490
-net-misc/modemmanager mbim
-
 # Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
-
-# ranger <ranger@gentoo.org> (17 apr 2012)
-# masking libvirt for cfengine (bug #412253)
-net-misc/cfengine libvirt
 
 # Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
 # Needs media-libs/simage keyworded, bug 325623

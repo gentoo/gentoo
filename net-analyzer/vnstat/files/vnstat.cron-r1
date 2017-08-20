@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# run vnstat if installed and at least one database exists
+
+if [ -x /usr/bin/vnstat ] && [ `ls /var/lib/vnstat/ | wc -l` -ge 1 ] ; then
+	exec /usr/bin/vnstat -u
+fi

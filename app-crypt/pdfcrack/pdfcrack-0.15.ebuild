@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="Tool for recovering passwords and content from PDF-files"
 HOMEPAGE="http://pdfcrack.sourceforge.net/"
@@ -13,9 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.14-cflags.patch
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-0.14-cflags.patch"
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)"

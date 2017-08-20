@@ -11,7 +11,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="ssl"
 
 RDEPEND="ssl? ( net-libs/gnutls )"
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.3-gnutls-2.8.patch"
 	epatch "${FILESDIR}/${PN}-1.4-gnutls-3.4.patch"
+	epatch "${FILESDIR}/${PN}-1.4-ikstack.patch"
 	eautoreconf
 }
 

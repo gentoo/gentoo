@@ -8,6 +8,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name='bundled-expat'> Use bundled expat instead of <pkg>dev-libs/expat</pkg></flag>
+	</use>
 	<longdescription>
 		This package provides a general purpose Haskell XML library using Expat to
 		do its parsing (&lt;http://expat.sourceforge.net/&gt; - a fast stream-oriented XML

@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit cmake-utils versionator
 
-DESCRIPTION="A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle"
+DESCRIPTION="A high-performance multi-threaded backup toolset for MySQL and Drizzle"
 HOMEPAGE="https://launchpad.net/mydumper"
 SRC_URI="https://launchpad.net/mydumper/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-3"

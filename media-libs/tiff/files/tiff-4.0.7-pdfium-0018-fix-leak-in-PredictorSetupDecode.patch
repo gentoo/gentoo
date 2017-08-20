@@ -1,0 +1,27 @@
+https://pdfium-review.googlesource.com/2432
+https://crbug.com/683834
+https://pdfium.googlesource.com/pdfium/+/master/libtiff/
+
+Author: Nicolas Pena <npm@chromium.org>
+Date:   Thu Jan 26 15:45:02 2017 -0500
+
+Fix leak in PredictorSetupDecode by calling tif_cleanup on failure
+
+tif_data and tif_cleanup are both set on the TIFFInit methods, see for
+instance TIFFInitPixarLog. If PredictorSetupDecode fails, whatever was
+filled on tif_data should be cleaned up. The previous leak fix from
+PixarLogSetupDecode is no longer necessary.
+
+--- a/libtiff/tif_predict.c
++++ b/libtiff/tif_predict.c
+@@ -118,7 +118,10 @@ PredictorSetupDecode(TIFF* tif)
+ 	TIFFDirectory* td = &tif->tif_dir;
+ 
+ 	if (!(*sp->setupdecode)(tif) || !PredictorSetup(tif))
++	{
++		(*tif->tif_cleanup)(tif);
+ 		return 0;
++	}
+ 
+ 	if (sp->predictor == 2) {
+ 		switch (td->td_bitspersample) {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -12,8 +12,9 @@
   pictures of your data. It's a data viewer, not a plot editor.  It reads
   ASCII text and sound files. It has lots of command line options, making it
   very shell script friendly.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">quickplot</remote-id>
+    <remote-id type="github">lanceman2/quickplot</remote-id>
   </upstream>
 </pkgmetadata>

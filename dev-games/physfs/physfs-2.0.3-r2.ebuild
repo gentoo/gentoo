@@ -10,7 +10,7 @@ SRC_URI="http://icculus.org/physfs/downloads/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ppc64 x86 ~x86-fbsd"
 IUSE="doc grp hog mvl qpak static-libs wad +zip"
 
 RDEPEND=""

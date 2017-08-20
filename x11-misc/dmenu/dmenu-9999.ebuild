@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils git-r3 savedconfig toolchain-funcs
+inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
 HOMEPAGE="http://tools.suckless.org/dmenu/"
@@ -24,17 +24,18 @@ DEPEND="${RDEPEND}
 	xinerama? ( x11-proto/xineramaproto )
 	x11-proto/xproto
 "
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+)
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's|^	@|	|g' \
 		-e 's|${CC} -o|$(CC) $(CFLAGS) -o|g' \
 		-e '/^	echo/d' \
 		Makefile || die
-
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-
-	eapply_user
 
 	restore_config config.def.h
 }

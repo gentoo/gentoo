@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils check-reqs multilib java-pkg-opt-2 flag-o-matic
 
@@ -32,11 +32,10 @@ DEPEND="app-eselect/eselect-opencascade
 	vtk? ( || ( =sci-libs/${MY_VTK}*[imaging] =sci-libs/${MY_VTK}*[qt4] =sci-libs/${MY_VTK}*[rendering] =sci-libs/${MY_VTK}*[views] =sci-libs/${MY_VTK}*[all-modules] ) )"
 RDEPEND="${DEPEND}"
 
-# https://bugs.gentoo.org/show_bug.cgi?id=600514
-RESTRICT="fetch"
-
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
+
+PATCHES=( "${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch )
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -44,10 +43,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	java-pkg-opt-2_src_prepare
+	default
 
-	epatch \
-		"${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
+	java-pkg-opt-2_src_prepare
 
 	# Feed environment variables used by Opencascade compilation
 	my_install_dir=${EROOT}usr/$(get_libdir)/${P}/ros

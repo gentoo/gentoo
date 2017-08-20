@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 	test? ( virtual/perl-Test-Simple )
 "
 
-SRC_TEST="do parallel"
+SRC_TEST="do"
 
 src_test() {
 	# Ugh, Upstream has tests that depend on tests ...

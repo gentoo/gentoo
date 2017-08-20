@@ -34,5 +34,6 @@
     <remote-id type="cpan-module">LWP::RobotUA</remote-id>
     <remote-id type="cpan-module">LWP::Simple</remote-id>
     <remote-id type="cpan-module">LWP::UserAgent</remote-id>
+    <remote-id type="cpan-module">RequestAgent</remote-id>
   </upstream>
 </pkgmetadata>

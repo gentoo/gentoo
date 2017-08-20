@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-2"
-	EGIT_REPO_URI="git://github.com/dwbuiten/postproc.git"
+	EGIT_REPO_URI="https://github.com/dwbuiten/postproc.git"
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}

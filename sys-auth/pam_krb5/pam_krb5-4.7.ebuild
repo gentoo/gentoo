@@ -11,7 +11,7 @@ SRC_URI="http://archives.eyrie.org/software/kerberos/pam-krb5-${PV}.tar.gz"
 
 LICENSE="|| ( BSD-2 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
 IUSE=""
 
 DEPEND="

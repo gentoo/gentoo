@@ -4,13 +4,12 @@
 EAPI=6
 
 if [[ ${PV} == *9999* ]]; then
-	KEYWORDS=""
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/mstorsjo/${PN}.git"
+	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
 	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
 	inherit autotools git-r3
 else
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+	KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 	if [[ ${PV%_p*} != ${PV} ]]; then # Gentoo snapshot
 		SRC_URI="mirror://gentoo/${P}.tar.xz"
 	else # Official release

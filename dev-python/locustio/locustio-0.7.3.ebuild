@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ DEPEND="test? (
 RDEPEND=">=dev-python/gevent-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/flask-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4.1[${PYTHON_USEDEP}]
-	>=dev-python/msgpack-0.4.2"[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.4.2[${PYTHON_USEDEP}]"
 
 python_test() {
 	esetup.py test

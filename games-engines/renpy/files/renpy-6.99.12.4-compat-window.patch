@@ -1,0 +1,51 @@
+commit cf3f7fd4cb69c154f43a5e00c7501463a6d63ff5
+Author: Andrew Savchenko <bircoph@gmail.com>
+Date:   Sun Jul 16 16:59:14 2017 +0300
+
+    Fix compatibility problem with Katawa Shoujo 1.3.1
+    
+    The game fails to start with renpy-6.99.12.4:
+    
+    I'm sorry, but an uncaught exception occurred.
+    
+    While running game code:
+      File "game/ui_settings.rpy", line 21, in <module>
+      File "renpy/common/00compat.rpy", line 134, in _set_script_version
+        config.window_auto_hide.remove("call screen")
+    ValueError: list.remove(x): x not in list
+    
+    -- Full Traceback ------------------------------------------------------------
+    
+    Full traceback:
+      File "/home/rondo/ui_settings.rpyc", line 2, in script
+      File "/usr/lib64/python2.7/site-packages/renpy699/renpy/ast.py", line 814, in execute
+        renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+      File "/usr/lib64/python2.7/site-packages/renpy699/renpy/python.py", line 1695, in py_exec_bytecode
+        exec bytecode in globals, locals
+      File "game/ui_settings.rpy", line 21, in <module>
+      File "/usr/lib64/python2.7/site-packages/renpy699/renpy/defaultstore.py", line 92, in __setattr__
+        renpy.store._set_script_version(value)  # E1101 @UndefinedVariable
+      File "renpy/common/00compat.rpy", line 134, in _set_script_version
+        config.window_auto_hide.remove("call screen")
+      File "/usr/lib64/python2.7/site-packages/renpy699/renpy/python.py", line 610, in do_mutation
+        return method(self, *args, **kwargs)
+    ValueError: list.remove(x): x not in list
+    
+    This happens because "call screen" element is being unconditionally
+    removed from config.window_auto_hide list, though it is not always
+    present there. A simple if check fixes this.
+
+diff --git a/renpy/common/00compat.rpy b/renpy/common/00compat.rpy
+index c16ad1d..eefb8e0 100644
+--- a/renpy/common/00compat.rpy
++++ b/renpy/common/00compat.rpy
+@@ -131,7 +131,8 @@ init -1900 python:
+         if version <= (6, 99, 10):
+             config.new_translate_order = False
+             config.old_say_args = True
+-            config.window_auto_hide.remove("call screen")
++            if "call screen" in config.window_auto_hide:
++                config.window_auto_hide.remove("call screen")
+             config.quit_action = ui.gamemenus("_quit_prompt")
+             config.enforce_window_max_size = False
+             config.splashscreen_suppress_overlay = False

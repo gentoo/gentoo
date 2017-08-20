@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils git-r3 multilib-minimal
 
-DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
+DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="http://libevent.org/"
 EGIT_REPO_URI="https://github.com/libevent/libevent"
 

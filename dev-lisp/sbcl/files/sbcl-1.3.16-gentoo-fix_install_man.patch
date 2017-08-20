@@ -1,0 +1,12 @@
+diff -Nuar a/install.sh b/install.sh
+--- a/install.sh	2017-03-27 11:57:34.000000000 +0200
++++ b/install.sh	2017-04-04 20:21:25.510085555 +0200
+@@ -110,7 +110,7 @@
+ CP="cp -f"
+ 
+ # man
+-$CP doc/sbcl.1 "$BUILD_ROOT$MAN_DIR"/man1/ && echo " man $BUILD_ROOT$MAN_DIR/man1/sbcl.1"
++$CP doc/sbcl-asdf-install.1 "$BUILD_ROOT$MAN_DIR"/man1/ && echo " man $BUILD_ROOT$MAN_DIR/man1/sbcl-asdf-install.1"
+ 
+ # info
+ for info in doc/manual/*.info

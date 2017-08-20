@@ -1,16 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 inherit eutils autotools
 
 MY_P=Eterm-${PV}
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="https://svn.enlightenment.org/svn/e/trunk/eterm/Eterm"
-	inherit subversion
-	SRC_URI=""
-	KEYWORDS=""
+	EGIT_REPO_URI="https://git.enlightenment.org/apps/eterm.git"
+	inherit git-r3
 else
 	SRC_URI="http://www.eterm.org/download/${MY_P}.tar.gz
 		!minimal? ( http://www.eterm.org/download/Eterm-bg-${PV}.tar.gz )"
@@ -24,7 +22,8 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="escreen minimal cpu_flags_x86_mmx cpu_flags_x86_sse2 unicode +utempter"
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXmu
 	x11-libs/libXt
 	x11-libs/libICE
@@ -34,23 +33,24 @@ RDEPEND="x11-libs/libX11
 	>=x11-libs/libast-0.6.1
 	media-libs/imlib2[X]
 	media-fonts/font-misc-misc
-	escreen? ( app-misc/screen )"
+	escreen? ( app-misc/screen )
+"
 DEPEND="${RDEPEND}"
 
 if [[ ${PV} == "9999" ]] ; then
-	S=${WORKDIR}/${ECVS_MODULE}
+	S=${WORKDIR}/${P}
 else
 	S=${WORKDIR}/${MY_P}
 fi
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
-		subversion_src_unpack
-		cd "${S}"
+		git-r3_src_unpack
+		cd "${S}" || die
 		eautoreconf
 	else
 		unpack ${MY_P}.tar.gz
-		cd "${S}"
+		cd "${S}" || die
 		use minimal || unpack Eterm-bg-${PV}.tar.gz
 	fi
 }
@@ -71,7 +71,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc ChangeLog README ReleaseNotes
 	use escreen && dodoc doc/README.Escreen
 	dodoc bg/README.backgrounds

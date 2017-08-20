@@ -1,0 +1,91 @@
+From 5dda3477ed31888b86792ed05c17d80a77fe0b03 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gentoo.org>
+Date: Thu, 30 Mar 2017 16:03:27 -0700
+Subject: [PATCH] config.ic: fix strncpy calls to copy null terminator for 512
+ byte strings
+
+This problem caused a 512 byte psk setting to trigger authentication
+failure, since the strlen call used to set password_len would return
+an unpredictable result on each peer.
+
+https://github.com/peervpn/peervpn/pull/20
+---
+ config.ic | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/config.ic b/config.ic
+index e0eba35..405e9de 100644
+--- a/config.ic
++++ b/config.ic
+@@ -147,55 +147,55 @@ static int parseConfigLine(char *line, int len, struct s_initconfig *cs) {
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"local",&vpos)) {
+-		strncpy(cs->sourceip,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->sourceip,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"port",&vpos)) {
+-		strncpy(cs->sourceport,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->sourceport,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"user",&vpos)) {
+-		strncpy(cs->userstr,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->userstr,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"group",&vpos)) {
+-		strncpy(cs->groupstr,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->groupstr,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"chroot",&vpos)) {
+-		strncpy(cs->chrootstr,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->chrootstr,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"networkname",&vpos)) {
+-		strncpy(cs->networkname,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->networkname,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"interface",&vpos)) {
+-		strncpy(cs->tapname,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->tapname,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"ifconfig4",&vpos)) {
+-		strncpy(cs->ifconfig4,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->ifconfig4,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"ifconfig6",&vpos)) {
+-		strncpy(cs->ifconfig6,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->ifconfig6,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"upcmd",&vpos)) {
+-		strncpy(cs->upcmd,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->upcmd,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"initpeers",&vpos)) {
+-		strncpy(cs->initpeers,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->initpeers,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"engine",&vpos)) {
+-		strncpy(cs->engines,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->engines,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		return 1;
+ 	}
+ 	else if(parseConfigLineCheckCommand(line,len,"psk",&vpos)) {
+-		strncpy(cs->password,&line[vpos],CONFPARSER_NAMEBUF_SIZE);
++		strncpy(cs->password,&line[vpos],CONFPARSER_NAMEBUF_SIZE+1);
+ 		cs->password_len = strlen(cs->password);
+ 		return 1;
+ 	}
+-- 
+2.10.2
+

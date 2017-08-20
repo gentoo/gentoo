@@ -32,3 +32,7 @@ move net-misc/6tunnel net-vpn/6tunnel
 move net-misc/i2pd net-vpn/i2pd
 move net-misc/tor net-vpn/tor
 move net-p2p/i2p net-vpn/i2p
+move net-libs/rb_libtorrent net-libs/libtorrent-rasterbar
+move dev-perl/gtk2-perl dev-perl/Gtk2
+move dev-haskell/hdbc-sqlite dev-haskell/hdbc-sqlite3
+move net-dialup/pptpd net-vpn/pptpd

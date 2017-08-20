@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -19,6 +19,7 @@
 			<name>The PyNaCl developers</name>
 		</maintainer>
 		<remote-id type="pypi">PyNaCl</remote-id>
+		<remote-id type="github">pyca/pynacl</remote-id>
 	</upstream>
 	<longdescription>
 		PyNaCl is a Python binding to the Networking and Cryptography library,

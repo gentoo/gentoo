@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
+		<email>graaff@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="dnssec">Use DNSSEC resolver (requires <pkg>net-dns/unbound</pkg></flag>

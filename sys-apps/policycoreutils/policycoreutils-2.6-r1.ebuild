@@ -16,6 +16,7 @@ SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
 IUSE="audit pam dbus"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -30,7 +31,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz
 		https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm64 ~mips x86"
 	S1="${WORKDIR}/${MY_P}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
@@ -39,20 +40,20 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
+DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/glibc-2.4
 	>=sys-libs/libcap-1.10-r10:=
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python]
+	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
-	>=app-admin/setools-4.0
+	>=app-admin/setools-4.0[${PYTHON_USEDEP}]
 	sys-devel/gettext
 	dev-python/ipy[${PYTHON_USEDEP}]
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib:=
 	)
-	audit? ( >=sys-process/audit-1.5.1[python] )
+	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}
 	!<sec-policy/selinux-base-policy-2.20151208-r6"
@@ -63,7 +64,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
-	dev-python/sepolgen
+	dev-python/sepolgen[${PYTHON_USEDEP}]
 	app-misc/pax-utils
 	!<sys-apps/openrc-0.14"
 

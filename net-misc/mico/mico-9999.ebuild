@@ -1,27 +1,29 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs autotools
+inherit flag-o-matic toolchain-funcs autotools
+
+PATCH_VER=20170529
 
 if [[ ${PV} == 9999 ]]; then
 	EDARCS_REPOSITORY="http://mico.org/mico-darcs-repository"
 	inherit darcs
+	SRC_URI=
+else
+	SRC_URI="http://www.mico.org/${P}.tar.gz"
 fi
 
-PATCH_VER=20120924
+if [[ -n ${PATCH_VER} ]]; then
+	SRC_URI+=" https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.xz"
+	PATCHES=${WORKDIR}/patches
+else
+	PATCHES=
+fi
 
 DESCRIPTION="A freely available and fully compliant implementation of the CORBA standard"
 HOMEPAGE="http://www.mico.org/"
-SRC_URI="http://www.mico.org/${P}.tar.gz"
-
-[[ ${PV} == 9999 ]] &&
-	SRC_URI=""
-
-[[ -n ${PATCH_VER} ]] &&
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.bz2"
-
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS=""
@@ -33,9 +35,9 @@ RESTRICT="test" #298101
 
 RDEPEND="
 	gtk?       ( x11-libs/gtk+:2 )
-	postgres?  ( dev-db/postgresql )
+	postgres?  ( dev-db/postgresql:* )
 	qt4?       ( dev-qt/qtgui:4[qt3support] )
-	ssl?       ( dev-libs/openssl )
+	ssl?       ( dev-libs/openssl:* )
 	tcl?       ( dev-lang/tcl:0 )
 	X?         ( x11-libs/libXt )
 "
@@ -49,17 +51,20 @@ if [[ ${PV} == 9999 ]]; then
 		darcs_src_unpack
 		default
 	}
+else
+	S=${WORKDIR}/${PN}
 fi
 
 src_prepare() {
-	EPATCH_SUFFIX=patch epatch "${WORKDIR}"/patches
+	default
 
+	mv configure.in configure.ac || die #426262
 	eautoreconf
 
 	# cannot use big TOC (AIX only), gdb doesn't like it.
 	# This assumes that the compiler (or -wrapper) uses
 	# gcc flag '-mminimal-toc' for compilation.
-	sed -i -e 's/,-bbigtoc//' "${S}"/configure
+	sed -i -e 's/,-bbigtoc//' "${S}"/configure || die
 
 	if use qt4; then
 		sed -i -e "s, -lqt\", $(pkg-config --libs Qt3Support)\"," configure ||
@@ -120,15 +125,25 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTDIR="${ED}"usr SHARED_INSTDIR="${ED}"usr install LDCONFIG=: || die "install failed"
+	emake INSTDIR="${ED}"usr SHARED_INSTDIR="${ED}"usr install LDCONFIG=:
 	if [[ $(get_libdir) != lib ]]; then #500744
 		mv "${ED}"usr/lib "${ED}"usr/$(get_libdir) || die
 	fi
 
-	dodir /usr/share || die
+	# avoid conflict with net-dns/nsd, bug#544488
+	mv "${ED}"usr/bin/{,mico-}nsd || die
+	mv "${ED}"usr/man/man8/{,mico-}nsd.8 || die
+
+	dodir /usr/share
 	mv "${ED}"usr/man "${ED}"usr/share || die
-	dodir /usr/share/doc/${PF} || die
+	dodir /usr/share/doc/${PF}
 	mv "${ED}"usr/doc "${ED}"usr/share/doc/${PF} || die
 
-	dodoc BUGS CHANGES* CONVERT README* ROADMAP TODO VERSION WTODO || die
+	dodoc BUGS CHANGES* CONVERT README* ROADMAP TODO VERSION WTODO
+}
+
+pkg_postinst() {
+	einfo "The MICO Name Service daemon 'nsd' is named 'mico-nsd'"
+	einfo "due to a name conflict with net-dns/nsd. For details"
+	einfo "please refer to https://bugs.gentoo.org/544488."
 }

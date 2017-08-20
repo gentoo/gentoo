@@ -27,6 +27,7 @@ S=${WORKDIR}/${P}/src
 PATCHES=(
 	"${FILESDIR}/${P}-static-lib.patch"
 	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
 )
 
 DOCS=( ../ChangeLog ../README )

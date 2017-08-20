@@ -10,12 +10,12 @@ SRC_URI="http://download.gna.org/fvwm-crystal/trayer/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf[X]
 	x11-libs/gtk+:2
 	x11-libs/libX11
 "
@@ -23,6 +23,8 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}"/${P}-dont-include-libXmu.patch )
 
 src_prepare() {
 	default

@@ -1,10 +1,10 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils flag-o-matic
 
 DESCRIPTION="foreign function call libraries"
-HOMEPAGE="http://www.haible.de/bruno/packages-ffcall.html"
+HOMEPAGE="https://www.haible.de/bruno/packages-ffcall.html"
 SRC_URI="ftp://ftp.santafe.edu/pub/gnu/${P}.tar.gz"
 
 # "Ffcall is under GNU GPL. As a special exception, if used in GNUstep

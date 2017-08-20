@@ -7,18 +7,18 @@ KDE_REQUIRED="optional"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads,xml"
 
 # experimental ; release ; old
 # Usually the tarballs are moved a lot so this should make
 # everyone happy.
 DEV_URI="
-	http://dev-builds.libreoffice.org/pre-releases/src
-	http://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
-	http://download.documentfoundation.org/libreoffice/old/${PV}/
+	https://dev-builds.libreoffice.org/pre-releases/src
+	https://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
+	https://download.documentfoundation.org/libreoffice/old/${PV}/
 "
-ADDONS_URI="http://dev-www.libreoffice.org/src/"
+ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
@@ -28,8 +28,8 @@ inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
-HOMEPAGE="http://www.libreoffice.org"
-SRC_URI="branding? ( http://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
+HOMEPAGE="https://www.libreoffice.org"
+SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
 
 # Split modules following git/tarballs
@@ -56,7 +56,6 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/86b1daaa438f5a7bea9a52d7b9799ac0-xmlsec1-1.2.23.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -77,7 +76,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter telepathy test vlc
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -89,7 +88,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
 	app-crypt/gpgme[cxx]
-	app-text/hunspell
+	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
 	>=app-text/libetonyek-0.1
@@ -113,13 +112,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.12.1
+	=dev-libs/liborcus-0.12*
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
 	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
 	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
+	>=dev-libs/xmlsec-1.2.24[nss]
 	media-gfx/graphite2
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -136,7 +136,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
-	x11-libs/cairo[X,-xlib-xcb(-)]
+	x11-libs/cairo[X]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -152,7 +152,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-extra/evolution-data-server
 	)
-	firebird? ( >=dev-db/firebird-2.5 )
+	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
 	gltf? ( >=media-libs/libgltf-0.1.0 )
 	gnome? ( gnome-base/dconf )
 	gstreamer? (
@@ -174,18 +174,17 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	mysql? ( dev-db/mysql-connector-c++ )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? ( net-libs/telepathy-glib )
 "
 
 RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
 	!app-office/openoffice
+	media-fonts/dejavu
 	media-fonts/liberation-fonts
 	media-fonts/libertine
-	media-fonts/urw-fonts
+	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools $(add_kdeapps_dep kioclient) )
 	java? ( >=virtual/jre-1.6 )
-	kde? ( $(add_kdeapps_dep kioclient) )
 	vlc? ( media-video/vlc )
 "
 
@@ -206,7 +205,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libxml2-2.7.8
 	dev-libs/libxslt
 	dev-perl/Archive-Zip
-	dev-util/cppunit
+	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
 	dev-util/intltool
 	>=dev-util/mdds-1.2.2:1=
@@ -228,7 +227,10 @@ DEPEND="${COMMON_DEPEND}
 		>=virtual/jdk-1.6
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
-	test? ( dev-util/cppunit )
+	test? (
+		dev-util/cppunit
+		media-fonts/dejavu
+	)
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -236,7 +238,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	collada? ( gltf )
 	eds? ( gnome )
 	gnome? ( gtk )
-	telepathy? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -246,6 +247,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
@@ -253,7 +255,13 @@ PATCHES=(
 
 pkg_pretend() {
 	use java || \
-		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
+		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
+
+	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
+		ewarn "Firebird has been upgraded to version 3.0.0. It is unable to read back Firebird 2.5 data,"
+		ewarn "so embedded firebird odb files created in LibreOffice pre-5.3 cannot be opened with LibreOffice 5.3."
+		ewarn "See also: https://wiki.documentfoundation.org/ReleaseNotes/5.3#Base"
+	fi
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 
@@ -264,23 +272,6 @@ pkg_pretend() {
 			CHECKREQS_DISK_BUILD="6G"
 		fi
 		check-reqs_pkg_pretend
-
-		if ! $(tc-is-clang) && { [[ $(gcc-major-version) -lt 4 ]] ||
-				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
-			eerror "Compilation with gcc older than 4.7 is not supported"
-			die "Too old gcc found."
-		fi
-	fi
-
-	# Ensure pg version but we have to be sure the pg is installed (first
-	# install on clean system)
-	if use postgres && has_version dev-db/postgresql; then
-		 local pgslot=$(postgresql-config show)
-		 if [[ ${pgslot//.} -lt 90 ]] ; then
-			eerror "PostgreSQL slot must be set to 9.0 or higher."
-			eerror "    postgresql-config set 9.0"
-			die "PostgreSQL slot is not set to 9.0 or higher."
-		 fi
 	fi
 }
 
@@ -315,7 +306,7 @@ src_unpack() {
 		done
 	else
 		local base_uri branch checkout mypv
-		base_uri="git://anongit.freedesktop.org"
+		base_uri="https://anongit.freedesktop.org"
 		for mod in ${MODULES}; do
 			branch="master"
 			mypv=${PV/.9999}
@@ -375,7 +366,7 @@ src_configure() {
 	local java_opts
 	local ext_opts
 
-	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+	# Set up Google API keys, see https://www.chromium.org/developers/how-tos/api-keys
 	# Note: these are for Gentoo use ONLY. For your own distribution, please get
 	# your own set of keys. Feel free to contact chromium@gentoo.org for more info.
 	local google_default_client_id="329227923882.apps.googleusercontent.com"
@@ -495,8 +486,6 @@ src_configure() {
 		$(use_enable odk) \
 		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
-		$(use_enable quickstarter systray) \
-		$(use_enable telepathy) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
@@ -553,7 +542,7 @@ src_install() {
 
 	# bug 593514
 	if use gtk3; then
-		dosym /usr/$(get_libdir)/libreoffice/program/liblibreofficekitgtk.so \
+		dosym libreoffice/program/liblibreofficekitgtk.so \
 			/usr/$(get_libdir)/liblibreofficekitgtk.so
 	fi
 
@@ -574,9 +563,6 @@ src_install() {
 	# https://bugs.freedesktop.org/show_bug.cgi?id=46506
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
-
-	# Remove desktop files to support old installs that can't parse mime
-	rm -r "${ED}"usr/share/mimelnk/ || die
 
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ fi
 
 LICENSE="LGPL-2.1  gpl? ( GPL-3 )"
 SLOT="0/12"
-[[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64
+[[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64
 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 ~x64-solaris ~x86-solaris"
 IUSE="aac alsa amr bs2b +bzip2 cdio cpudetection custom-cflags debug doc +encode faac fdk
@@ -248,7 +248,7 @@ multilib_src_configure() {
 	done
 
 	# pass the right -mfpu as extra
-	use neon && append-cflags -mfpu=neon
+	use neon && use arm && append-cflags -mfpu=neon
 
 	# disable mmx accelerated code if PIC is required
 	# as the provided asm decidedly is not PIC for x86.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -20,5 +20,7 @@
 		sylog and ODBC logging, etc.  It's created to be small, simple (I'd
 		like to say secure - but it's just a beta) and yet functional.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">z3APA3A/3proxy</remote-id>
+	</upstream>
 </pkgmetadata>
-

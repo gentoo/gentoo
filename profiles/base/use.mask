@@ -4,17 +4,16 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michael Palimaka <kensington@gentoo.org> (29 Dec 2016)
-# elogind support is not yet fully implemented in all required packages
+# Brian Evans <grknight@gentoo.org> (14 Aug 2017)
+# php 7.2 beta is masked for initial testing
+php_targets_php7-2
+
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unkeyworded on most arches, unmasked in supported arch profiles.
 elogind
 
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
-
-# on the way out
-ruby_targets_jruby
-ruby_targets_ruby19
-ruby_targets_ruby20
 
 # masking here and unmasking in default/linux/
 kmod
@@ -66,6 +65,7 @@ coreaudio
 # Jeremy Olexa <darkside@gentoo.org>
 # The prefix USE flags should never be used on non prefix profiles
 prefix
+prefix-chain
 prefix-guest
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 Oct 2010)

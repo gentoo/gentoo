@@ -5,7 +5,7 @@ EAPI=6
 
 STUPID_NUM="4205"
 
-inherit eutils toolchain-funcs udev
+inherit toolchain-funcs udev
 
 DESCRIPTION="CCID free software driver"
 HOMEPAGE="http://pcsclite.alioth.debian.org/ccid.html"

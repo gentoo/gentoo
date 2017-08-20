@@ -11,10 +11,12 @@ inherit eutils python-single-r1
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net"
 SRC_URI="https://apps.ankiweb.net/downloads/current/${P}-source.tgz -> ${P}.tgz"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="latex +recording +sound"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	 dev-python/PyQt4[X,svg,webkit]

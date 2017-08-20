@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib readme.gentoo systemd user
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
-HOMEPAGE="http://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
-SRC_URI="http://bumblebee-project.org/${P}.tar.gz"
+HOMEPAGE="https://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
+SRC_URI="https://bumblebee-project.org/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"

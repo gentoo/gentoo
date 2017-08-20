@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde4-base.eclass
@@ -112,6 +112,12 @@ unset export_fns
 # This variable must be set before inheriting any eclasses. Defaults to 'never'.
 DECLARATIVE_REQUIRED="${DECLARATIVE_REQUIRED:-never}"
 
+# @ECLASS-VARIABLE: QT3SUPPORT_REQUIRED
+# @DESCRIPTION:
+# Is qt3support required? Possible values are 'true' or 'false'.
+# This variable must be set before inheriting any eclasses. Defaults to 'false'.
+QT3SUPPORT_REQUIRED="${QT3SUPPORT_REQUIRED:-false}"
+
 # @ECLASS-VARIABLE: QTHELP_REQUIRED
 # @DESCRIPTION:
 # Is qthelp required? Possible values are 'always', 'optional' and 'never'.
@@ -129,6 +135,12 @@ OPENGL_REQUIRED="${OPENGL_REQUIRED:-never}"
 # Is qtmultimedia required? Possible values are 'always', 'optional' and 'never'.
 # This variable must be set before inheriting any eclasses. Defaults to 'never'.
 MULTIMEDIA_REQUIRED="${MULTIMEDIA_REQUIRED:-never}"
+
+# @ECLASS-VARIABLE: SQL_REQUIRED
+# @DESCRIPTION:
+# Is qtsql required? Possible values are 'always', 'optional' and 'never'.
+# This variable must be set before inheriting any eclasses. Defaults to 'never'.
+SQL_REQUIRED="${SQL_REQUIRED:-never}"
 
 # @ECLASS-VARIABLE: WEBKIT_REQUIRED
 # @DESCRIPTION:
@@ -216,6 +228,21 @@ case ${DECLARATIVE_REQUIRED} in
 esac
 unset qtdeclarativedepend
 
+# Qt3Support dependencies
+qt3supportdepend="
+	>=dev-qt/qt3support-${QT_MINIMAL}:4[accessibility]
+"
+case ${QT3SUPPORT_REQUIRED} in
+	true)
+		COMMONDEPEND+=" ${qt3supportdepend}"
+		[[ -n ${qtcoreuse} ]] && qtcoreuse+=",qt3support" || qtcoreuse="qt3support"
+		[[ -n ${qtsqluse} ]] && qtsqluse+=",qt3support" || qtsqluse="qt3support"
+		[[ -n ${kdelibsuse} ]] && kdelibsuse+=",qt3support(+)" || kdelibsuse="qt3support(+)"
+		;;
+	*) ;;
+esac
+unset qt3supportdepend
+
 # QtHelp dependencies
 qthelpdepend="
 	>=dev-qt/qthelp-${QT_MINIMAL}:4
@@ -263,6 +290,24 @@ case ${MULTIMEDIA_REQUIRED} in
 esac
 unset qtmultimediadepend
 
+# Sql dependencies
+[[ -n ${qtsqluse} ]] && qtsqluse="[${qtsqluse}]"
+qtsqldepend="
+	>=dev-qt/qtsql-${QT_MINIMAL}:4${qtsqluse}
+"
+case ${SQL_REQUIRED} in
+	always)
+		COMMONDEPEND+=" ${qtsqldepend}"
+		;;
+	optional)
+		IUSE+=" sql"
+		COMMONDEPEND+=" sql? ( ${qtsqldepend} )"
+		;;
+	*) ;;
+esac
+unset qtsqluse
+unset qtsqldepend
+
 # WebKit dependencies
 qtwebkitdepend="
 	>=dev-qt/qtwebkit-${QT_MINIMAL}:4
@@ -270,10 +315,12 @@ qtwebkitdepend="
 case ${WEBKIT_REQUIRED} in
 	always)
 		COMMONDEPEND+=" ${qtwebkitdepend}"
+		[[ -n ${kdelibsuse} ]] && kdelibsuse+=",webkit(+)" || kdelibsuse="webkit(+)"
 		;;
 	optional)
 		IUSE+=" +webkit"
 		COMMONDEPEND+=" webkit? ( ${qtwebkitdepend} )"
+		[[ -n ${kdelibsuse} ]] && kdelibsuse+=",webkit?" || kdelibsuse="webkit?"
 		;;
 	*) ;;
 esac
@@ -297,28 +344,23 @@ unset cppuintdepend
 
 # KDE dependencies
 # Qt accessibility classes are needed in various places, bug 325461
+[[ -n ${qtcoreuse} ]] && qtcoreuse+=",ssl" || qtcoreuse="ssl"
+[[ -n ${qtcoreuse} ]] && qtcoreuse="[${qtcoreuse}]"
 kdecommondepend="
 	dev-lang/perl
-	>=dev-qt/qt3support-${QT_MINIMAL}:4[accessibility]
-	>=dev-qt/qtcore-${QT_MINIMAL}:4[qt3support,ssl]
-	>=dev-qt/qtdbus-${QT_MINIMAL}:4
 	>=dev-qt/designer-${QT_MINIMAL}:4
+	>=dev-qt/qtcore-${QT_MINIMAL}:4${qtcoreuse}
+	>=dev-qt/qtdbus-${QT_MINIMAL}:4
 	>=dev-qt/qtgui-${QT_MINIMAL}:4[accessibility,dbus(+)]
 	>=dev-qt/qtscript-${QT_MINIMAL}:4
-	>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support]
 	>=dev-qt/qtsvg-${QT_MINIMAL}:4
 	>=dev-qt/qttest-${QT_MINIMAL}:4
 "
+unset qtcoreuse
 
 if [[ ${PN} != kdelibs ]]; then
-	local _kdelibsuse
-	case ${WEBKIT_REQUIRED} in
-		always) _kdelibsuse="[webkit]" ;;
-		optional) _kdelibsuse="[webkit?]" ;;
-		*) ;;
-	esac
-	kdecommondepend+=" >=kde-frameworks/kdelibs-4.14.22:4${_kdelibsuse}"
-	unset _kdelibsuse
+	[[ -n ${kdelibsuse} ]] && kdelibsuse="[${kdelibsuse}]"
+	kdecommondepend+=" kde-frameworks/kdelibs:4${kdelibsuse}"
 	if [[ ${KDEBASE} = kdevelop ]]; then
 		if [[ ${PN} != kdevplatform ]]; then
 			# @ECLASS-VARIABLE: KDEVPLATFORM_REQUIRED
@@ -337,6 +379,7 @@ if [[ ${PN} != kdelibs ]]; then
 		fi
 	fi
 fi
+unset kdelibsuse
 
 kdedepend="
 	dev-util/automoc
@@ -348,10 +391,6 @@ kdedepend="
 "
 
 kderdepend=""
-
-if [[ ${CATEGORY} == kde-apps ]]; then
-	kderdepend+=" !kde-base/${PN}:4"
-fi
 
 # all packages needs oxygen icons for basic iconset
 if [[ ${PN} != oxygen-icons ]]; then
@@ -385,14 +424,7 @@ case ${KDE_HANDBOOK} in
 		[[ ${PN} != kdelibs ]] && kderdepend+=" ${kdehandbookrdepend}"
 		;;
 	optional)
-		case ${PN} in
-			kcontrol | kdesu | knetattach)
-				IUSE+=" handbook"
-				;;
-			*)
-				IUSE+=" +handbook"
-				;;
-		esac
+		IUSE+=" +handbook"
 		kdedepend+=" handbook? ( ${kdehandbookdepend} )"
 		[[ ${PN} != kdelibs ]] && kderdepend+=" handbook? ( ${kdehandbookrdepend} )"
 		;;
@@ -476,6 +508,11 @@ _calculate_src_uri() {
 				4.14.10)
 					# Part of 15.04.3 actually, sigh. Used by last version of KDE PIM 4.
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
+				4.14.11*)
+					# KDEPIM 4.14 snapshot with Gentoo patches
+					SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${_kmname_pv}.tar.xz" ;;
+				16.12.3)
+					SRC_URI="mirror://kde/Attic/applications/16.12.3/src/${_kmname_pv}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[4-9]?)
 					# Unstable KDE Applications releases
 					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
@@ -632,23 +669,13 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 kde4-base_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if has handbook ${IUSE} || has "+handbook" ${IUSE} && [ "${KDE_HANDBOOK}" != optional ] ; then
+	if has handbook ${IUSE} || has "+handbook" ${IUSE} && [[ "${KDE_HANDBOOK}" != optional ]] ; then
 		eqawarn "Handbook support is enabled via KDE_HANDBOOK=optional in the ebuild."
 		eqawarn "Please do not just set IUSE=handbook, as this leads to dependency errors."
 	fi
 
 	# Don't set KDEHOME during compilation, it will cause access violations
 	unset KDEHOME
-
-	# Check if gcc compiler is fresh enough.
-	# In theory should be in pkg_pretend but we check it only for kdelibs there
-	# and for others we do just quick scan in pkg_setup because pkg_pretend
-	# executions consume quite some time (ie. when merging 300 packages at once will cause 300 checks)
-	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
-		[[ $(gcc-major-version) -lt 4 ]] || \
-				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 6 ]] ) \
-			&& die "Sorry, but gcc-4.6 and earlier wont work for some KDE packages."
-	fi
 
 	KDEDIR=/usr
 	: ${PREFIX:=/usr}
@@ -907,7 +934,9 @@ kde4-base_pkg_preinst() {
 kde4-base_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 	buildsycoca

@@ -12,7 +12,7 @@ SRC_URI="mirror://debian/pool/main/a/asr-manpages/${MY_P}.orig.tar.gz
 
 LICENSE="freedist" #465704
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa m68k ~mips ppc64 s390 sh x86"
 IUSE=""
 
 RDEPEND="virtual/man"

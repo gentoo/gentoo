@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>amynka@gentoo.org</email>
-		<name>Amy Winston</name>
+		<name>Amy Liffey</name>
 		<description>Assign bugs on me.</description>
 	</maintainer>
 	<maintainer type="person">
@@ -17,12 +17,13 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 </longdescription>
 	<use>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
-		<flag name="cuda">Enable NVIDIA Cuda computations support</flag>
+		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="gflags">Use Google's C++ argument parsing library</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="glog">Use Google's C++ loggin library</flag>
 		<flag name="ipp">Enable Intel Integrated Primitive support</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_xfeatures2d">Enables xfeatures2d and autodownload of samples in contrib</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_cvv">CVV module requires Qt5</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_hdf">HDF module requires <pkg>sci-libs/hdf5</pkg></flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_sfm">SFM module requires eigen, gflags, and glog</flag>

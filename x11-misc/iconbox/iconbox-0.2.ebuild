@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
-	dev-perl/gtk2-perl"
+	dev-perl/Gtk2"
 DEPEND="${RDEPEND}"
 
 src_compile() { :; }

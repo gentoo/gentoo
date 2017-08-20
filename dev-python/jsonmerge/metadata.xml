@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<remote-id type="pypi">jsonmerge</remote-id>
-		<remote-id type="github">omergertel/jsonmerge</remote-id>
+		<remote-id type="github">avian2/jsonmerge</remote-id>
 	</upstream>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>

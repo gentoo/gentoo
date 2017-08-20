@@ -18,12 +18,12 @@ S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt4 selinux test utils"
 
 REQUIRED_USE="
 	utils? ( || ( gtk gtk3 ) )
-	python? ( dbus gdbm )
+	python? ( dbus gdbm ${PYTHON_REQUIRED_USE} )
 	mono? ( dbus )
 	howl-compat? ( dbus )
 	mdnsresponder-compat? ( dbus )

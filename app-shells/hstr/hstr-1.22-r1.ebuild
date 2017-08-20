@@ -11,10 +11,9 @@ SRC_URI="https://github.com/dvorka/hstr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-RDEPEND="
-	sys-libs/ncurses:0="
+RDEPEND="sys-libs/ncurses:0="
 
 DEPEND="
 	${RDEPEND}

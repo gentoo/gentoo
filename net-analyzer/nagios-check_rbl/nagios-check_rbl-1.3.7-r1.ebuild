@@ -45,6 +45,8 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${P}-perl526.patch" )
+
 src_prepare() {
 	default
 

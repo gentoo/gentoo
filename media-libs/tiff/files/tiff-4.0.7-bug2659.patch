@@ -1,0 +1,34 @@
+From 7c501dbfb5315f31798f9123026210260cbe7432 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Thu, 12 Jan 2017 17:43:25 +0000
+Subject: [PATCH] =?UTF-8?q?*=20libtiff/tif=5Fojpeg.c:=20fix=20leak=20in=20?=
+ =?UTF-8?q?OJPEGReadHeaderInfoSecTablesAcTable=20when=20read=20fails.=20Pa?=
+ =?UTF-8?q?tch=20by=20Nicol=C3=A1s=20Pe=C3=B1a.=20Fixes=20http://bugzilla.?=
+ =?UTF-8?q?maptools.org/show=5Fbug.cgi=3Fid=3D2659?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ ChangeLog           | 7 +++++++
+ libtiff/tif_ojpeg.c | 5 ++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/libtiff/tif_ojpeg.c b/libtiff/tif_ojpeg.c
+index 93839d8f3e11..ac70d1b14c4f 100644
+--- a/libtiff/tif_ojpeg.c
++++ b/libtiff/tif_ojpeg.c
+@@ -1918,7 +1918,10 @@ OJPEGReadHeaderInfoSecTablesAcTable(TIFF* tif)
+ 				rb[sizeof(uint32)+5+n]=o[n];
+ 			p=(uint32)TIFFReadFile(tif,&(rb[sizeof(uint32)+21]),q);
+ 			if (p!=q)
++                        {
++                                _TIFFfree(rb);
+ 				return(0);
++                        }
+ 			sp->actable[m]=rb;
+ 			sp->sos_tda[m]=(sp->sos_tda[m]|m);
+ 		}
+-- 
+2.12.0
+

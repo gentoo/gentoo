@@ -1,0 +1,25 @@
+From 596c432181e1c4a9da354388394f640afd29f44b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 20 Mar 2017 14:57:40 -0400
+Subject: [PATCH] seccomp sandbox: fix typo w/x32 check
+
+---
+ sandbox-seccomp-filter.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index 3a1aedce72c2..a8d472a63ccb 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -235,7 +235,7 @@ static const struct sock_filter preauth_insns[] = {
+ 	 * x86-64 syscall under some circumstances, e.g.
+ 	 * https://bugs.debian.org/849923
+ 	 */
+-	SC_ALLOW(__NR_clock_gettime & ~__X32_SYSCALL_BIT);
++	SC_ALLOW(__NR_clock_gettime & ~__X32_SYSCALL_BIT),
+ #endif
+ 
+ 	/* Default deny */
+-- 
+2.12.0
+

@@ -10,11 +10,13 @@
     <name>Ian Stakenvicius</name>
   </maintainer>
   <use>
+    <flag name="autorun">Enable the AUTORUN_JOBS codebase</flag>
     <flag name="cgroups">Enable pbs_mom to use linux cgroups to isolate jobs</flag>
     <flag name="cpusets">Enable pbs_mom to utilize linux cpusets if available</flag>
     <flag name="drmaa">Enable the Distributed Resource Management Application API</flag>
     <flag name="munge">Enable authentication via munge</flag>
     <flag name="nvidia">Enable management of Nvidia GPUs</flag>
+    <flag name="quickcommit">Enable the QUICKCOMMIT codebase</flag>
     <flag name="server">Enable compilation of pbs_server and pbs_sched</flag>
   </use>
 </pkgmetadata>

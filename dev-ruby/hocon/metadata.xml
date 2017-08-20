@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a port of the Typesafe Config library to Ruby.
+		The library provides Ruby support for the HOCON configuration file format.
+	</longdescription>
+</pkgmetadata>

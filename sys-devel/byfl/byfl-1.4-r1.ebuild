@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 if [ "${PV}" = "9999" ]; then
 	LLVM_VERSION="3.8.0"
-	EGIT_REPO_URI="git://github.com/lanl/${PN^b}.git https://github.com/lanl/${PN}.git"
+	EGIT_REPO_URI="https://github.com/lanl/Byfl.git"
 	inherit autotools git-r3
 	KEYWORDS=""
 else

@@ -4,13 +4,6 @@
 EAPI=6
 
 DESCRIPTION="Virtual for LeechCraft plugins providing UI for search plugins"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="~app-leechcraft/lc-summary-${PV}"
-DEPEND=""

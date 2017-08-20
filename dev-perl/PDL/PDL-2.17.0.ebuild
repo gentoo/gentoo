@@ -16,7 +16,7 @@ LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"
 SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 
-IUSE="+badval doc fortran gd gsl hdf netpbm pdl2 pgplot threads"
+IUSE="+badval doc fortran gd gsl hdf netpbm pdl2 pgplot threads test"
 
 RDEPEND="sys-libs/ncurses:0=
 	app-arch/sharutils
@@ -52,6 +52,11 @@ DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.560.0
 	dev-perl/Devel-CheckLib
 	fortran? ( >=dev-perl/ExtUtils-F77-1.13 )
+	test? (
+		dev-perl/Test-Exception
+		dev-perl/Test-Warn
+		dev-perl/Test-Deep
+	)
 "
 
 mydoc="BUGS DEPENDENCIES DEVELOPMENT Known_problems MANIFEST* Release_Notes"
@@ -60,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.17.0-makemakerfix.patch
 	"${FILESDIR}"/${PN}-2.17.0-fortran.patch      # respect user choice for fortran compiler+flags, add pic
 	"${FILESDIR}"/${PN}-2.17.0-shared-hdf.patch   # search for shared hdf instead of static
+	"${FILESDIR}"/${PN}-2.17.0-dot-in-inc.patch   # fix broken Perl 5.26 compile due to @INC changes
 )
 
 pkg_setup() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -31,6 +31,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libxklavier
 	x11-libs/libXtst
+	${PYTHON_DEPS}
 "
 # gsettings-desktop-schemas is needed for the 'toolkit-accessibility' key
 # pyatspi-2.1.90 needed to run caribou if pygobject:3 is installed

@@ -1,5 +1,5 @@
---- src/scusibot.cpp.old	2010-01-05 15:41:23.000000000 +0100
-+++ src/scusibot.cpp	2010-01-05 15:41:46.000000000 +0100
+--- a/src/scusibot.cpp
++++ b/src/scusibot.cpp
 @@ -5,6 +5,7 @@
  #include "stationarygun.hpp"
  #include "global.hpp"
@@ -8,8 +8,8 @@
  
  ScusiBot::ScusiBot()
  	: m_event( Event::EMPTY ), m_count( 0 ), m_state( IDLE ) {
---- src/gameinfowindow.cpp.old	2010-01-05 15:45:09.000000000 +0100
-+++ src/gameinfowindow.cpp	2010-01-05 15:46:08.000000000 +0100
+--- a/src/gameinfowindow.cpp
++++ b/src/gameinfowindow.cpp
 @@ -10,6 +10,8 @@
  #include "avatarworm.hpp"
  #include "wopsprites.hpp"
@@ -19,8 +19,8 @@
  #include "scorekeeper.hpp"
  #include "wopgui.hpp"
  
---- src/map.cpp.old	2010-01-05 15:46:35.000000000 +0100
-+++ src/map.cpp	2010-01-05 15:47:06.000000000 +0100
+--- a/src/map.cpp
++++ b/src/map.cpp
 @@ -9,6 +9,8 @@
  #include "world.hpp"
  #include "wopsettings.hpp"

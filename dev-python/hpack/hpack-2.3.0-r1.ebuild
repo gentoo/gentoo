@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Pure-Python HPACK header compression"
-HOMEPAGE="http://python-hyper.org/hpack https://pypi.python.org/pypi/hpack"
+HOMEPAGE="https://python-hyper.org/hpack/en/latest/ https://pypi.python.org/pypi/hpack"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND=""

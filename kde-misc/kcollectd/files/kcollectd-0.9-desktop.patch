@@ -1,5 +1,5 @@
---- kcollectd/kcollectd.desktop
-+++ kcollectd/kcollectd.desktop
+--- a/kcollectd/kcollectd.desktop
++++ b/kcollectd/kcollectd.desktop
 @@ -5,7 +5,7 @@
  Terminal=false
  StartupNotify=true

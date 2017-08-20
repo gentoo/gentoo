@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>tajjada@gmail.com</email>
-		<name>Jasen Borisov</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -36,5 +32,9 @@
 		<flag name="swaylock">Build 'swaylock': sway's screen locker.</flag>
 		<flag name="swaymsg">Build 'swaymsg': tool for communicating with a running sway instance.</flag>
 		<flag name="wallpapers">Install sway's default wallpaper image.</flag>
+		<flag name="tray">Enable support for StatusNotifierItem tray specification.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">SirCmpwn/sway</remote-id>
+	</upstream>
 </pkgmetadata>

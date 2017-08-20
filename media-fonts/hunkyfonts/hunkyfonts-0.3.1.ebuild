@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit font
 
-DESCRIPTION="Hunky Fonts are free TrueType fonts based on Bitstream's Vera fonts with additional letters"
+DESCRIPTION="Free TrueType fonts based on Bitstream's Vera fonts with additional letters"
 HOMEPAGE="https://sourceforge.net/projects/hunkyfonts/"
 SRC_URI="mirror://sourceforge/hunkyfonts/${P}.tar.bz2"
 

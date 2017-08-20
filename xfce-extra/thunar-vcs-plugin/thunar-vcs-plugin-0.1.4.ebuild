@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="adds Subversion and GIT actions to the context menu of thunar"
-HOMEPAGE="http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin"
 SRC_URI="mirror://xfce/src/thunar-plugins/${PN}/${PV%.*}/${P}.tar.bz2
 	https://dev.gentoo.org/~ssuominen/${P}-el.po.bz2
 	https://dev.gentoo.org/~ssuominen/${P}-eu.po.bz2
@@ -44,7 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	# This won't be required for next release anymore, thanks to the following commit:
-	# http://git.xfce.org/thunar-plugins/thunar-vcs-plugin/commit/?id=e87584f7b87627a322f6e41025e5e52d65ebb4d8
+	# https://git.xfce.org/thunar-plugins/thunar-vcs-plugin/commit/?id=e87584f7b87627a322f6e41025e5e52d65ebb4d8
 	local lang
 	for lang in el eu ru ug uk; do
 		mv "${WORKDIR}"/${P}-${lang}.po po/${lang}.po || die

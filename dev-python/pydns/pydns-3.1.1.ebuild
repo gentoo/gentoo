@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5} pypy3 )
+PYTHON_COMPAT=( python3_{4,5,6} pypy3 )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${MY_PN}/trunk/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="CNRI"
 SLOT="3"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="examples"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

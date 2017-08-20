@@ -1,0 +1,11 @@
+--- a/plugins/greycstoration.h	2016-09-22 22:46:42.907946423 -0400
++++ b/plugins/greycstoration.h	2016-09-22 22:49:56.439530308 -0400
+@@ -454,7 +454,7 @@
+       p.temporary = 0;
+       p.counter = 0;
+       p.tile = p.tile_border = p.thread = p.nb_threads = 0;
+-      p.stop_request = false;
++      p.stop_request = NULL;
+       greycstoration_mutex_destroy(p);
+     }
+     p.is_running = false;

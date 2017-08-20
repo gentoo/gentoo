@@ -1,0 +1,25 @@
+From a0e41275bc8f20a6f000ab552ae5fb8fc82e9cff Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sat, 17 Jun 2017 11:40:43 +0200
+Subject: Remove unused dependency
+
+Differential Revision: https://phabricator.kde.org/D6244
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f8870f1..3a192e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@ find_package(Qt5 5.3 CONFIG REQUIRED COMPONENTS DBus Gui Core Network) #Network
+ find_package(ECM 0.0.11 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+-find_package(KF5 5.0 REQUIRED COMPONENTS Wallet WidgetsAddons I18n KIO WebKit)
++find_package(KF5 5.0 REQUIRED COMPONENTS Wallet WidgetsAddons I18n KIO)
+ 
+ cmake_policy(SET CMP0002 OLD)
+ 
+-- 
+cgit v0.11.2

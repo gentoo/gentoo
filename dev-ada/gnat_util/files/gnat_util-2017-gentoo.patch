@@ -1,0 +1,80 @@
+--- gnat_util-gpl-2014-src/Makefile.old	2016-12-28 09:56:49.378950217 +0100
++++ gnat_util-gpl-2014-src/Makefile	2016-12-28 09:57:12.301562519 +0100
+@@ -21,21 +21,30 @@
+ 
+ .PHONY: all
+ all: generate_sources
+-	${BUILDER} -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
+-		-XLIBRARY_TYPE=static -Pgnat_util -p
++	$(MAKE) build-static
+ ifeq ($(ENABLE_SHARED), yes)
+-	${BUILDER} -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
+-		-XLIBRARY_TYPE=relocatable -Pgnat_util -p
++	$(MAKE) build-shared
+ endif
++	$(MAKE) build-static-pic
++build-static:
++	${BUILDER} -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
++		-XLIBRARY_TYPE=static -Pgnat_util -p -XCC=${CC} \
++		-cargs:ada $(ADAFLAGS) -cargs:C $(CFLAGS)
++build-shared:
++	${BUILDER} -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
++		-XLIBRARY_TYPE=relocatable -Pgnat_util -p -XCC=${CC} \
++		-cargs:ada $(ADAFLAGS) -cargs:C $(CFLAGS)
++build-static-pic:
+ 	${BUILDER} -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
+-		-XLIBRARY_TYPE=static-pic -Pgnat_util -p
++		-XLIBRARY_TYPE=static-pic -Pgnat_util -p -XCC=${CC} \
++		-cargs:ada $(ADAFLAGS) -cargs:C $(CFLAGS)
+ 
+ .PHONY: generate_sources
+ generate_sources:
+ 	$(MKDIR) $(SRC)
+ 	$(CP) xsnamest.adb xutil.* snames.adb-tmpl snames.ads-tmpl snames.h-tmpl $(SRC)
+ 	(cd $(SRC) && \
+-	   gnatmake -gnatf -gnatwae -gnatyg -gnatyS xsnamest && \
++	   ${GNATMAKE} -gnatf -gnatwae -gnatyg -gnatyS xsnamest && \
+ 	   ./xsnamest && mv snames.ns snames.ads && mv snames.nb snames.adb)
+ 	$(CP) sdefault_adb.gnat_util $(SRC)/sdefault.adb
+ 
+@@ -47,6 +56,12 @@
+ 
+ .PHONY: install
+ install: install-clean
++	${MAKE} install-static
++ifeq ($(ENABLE_SHARED), yes)
++	${MAKE} install-shared
++endif
++	${MAKE} install-static-pic
++install-static:
+ 	${INSTALLER} -p -f -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
+ 		-XLIBRARY_TYPE=static \
+ 		--prefix=$(prefix) \
+@@ -54,7 +69,7 @@
+ 		--lib-subdir=lib/gnat_util/static \
+ 		--project-subdir=lib/gnat \
+ 		--build-var=LIBRARY_TYPE --build-name=static -Pgnat_util
+-ifeq ($(ENABLE_SHARED), yes)
++install-shared:
+ 	${INSTALLER} -p -f -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
+ 		-XLIBRARY_TYPE=relocatable \
+ 		--prefix=$(prefix) \
+@@ -62,7 +77,7 @@
+ 		--lib-subdir=lib/gnat_util/relocatable \
+ 		--project-subdir=lib/gnat \
+ 		--build-var=LIBRARY_TYPE --build-name=relocatable -Pgnat_util
+-endif
++install-static-pic:
+ 	${INSTALLER} -p -f -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
+ 		-XLIBRARY_TYPE=static-pic \
+ 		--prefix=$(prefix) \
+--- gnat_util-gpl-2016-src/gnat_util.gpr.old	2017-02-09 22:15:27.153827164 +0100
++++ gnat_util-gpl-2016-src/gnat_util.gpr	2017-02-09 22:15:38.307627480 +0100
+@@ -31,6 +31,7 @@
+             for Default_Switches ("Ada") use ("-O0", "-gnato", "-g", "-gnata");
+             for Default_Switches ("C") use ("-g");
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Builder is

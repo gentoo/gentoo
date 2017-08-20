@@ -1,7 +1,7 @@
-diff --git a/src/Makefile b/src/Makefile
+diff --git a/Makefile b/Makefile
 index 9330578..3ff7319 100644
---- a/src/Makefile
-+++ b/src/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -26,13 +26,13 @@ BINMODE=755
  LOGDIRMODE=700
  

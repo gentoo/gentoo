@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for sys-block/parted"
@@ -24,7 +24,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-python/pychecker )
 	virtual/pkgconfig
 "
 
@@ -33,9 +32,5 @@ PATCHES=(
 )
 
 python_test() {
-	if [[ ${EPYTHON} = python2* ]]; then
-		emake test
-	else
-		einfo "Skipping ${EPYTHON}"
-	fi
+	emake test
 }

@@ -26,6 +26,7 @@ PLUGINS="+alias +charset +exec +fifo +logger +relay +scripts +spell +trigger +xf
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
 IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/libgcrypt:0=

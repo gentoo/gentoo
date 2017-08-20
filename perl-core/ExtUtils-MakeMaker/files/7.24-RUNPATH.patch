@@ -1,0 +1,30 @@
+From 5da957658fba21be51b638bcfee32b97090ad0da Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 19 Mar 2017 01:55:56 +1300
+Subject: Prevent build root appearing in RPATH
+
+---
+ lib/ExtUtils/MM_Any.pm | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/lib/ExtUtils/MM_Any.pm b/lib/ExtUtils/MM_Any.pm
+index 433a8dd..ebcb6fc 100644
+--- a/lib/ExtUtils/MM_Any.pm
++++ b/lib/ExtUtils/MM_Any.pm
+@@ -2422,6 +2422,13 @@ sub init_others {
+             # LD_RUN_PATH now computed by ExtUtils::Liblist
+             ($self->{EXTRALIBS},  $self->{BSLOADLIBS},
+              $self->{LDLOADLIBS}, $self->{LD_RUN_PATH}) = @libs;
++            # We do not want the build root in RPATH
++            if ( exists $ENV{PORTAGE_TMPDIR} ){
++                # If we have a PORTAGE_TMPDIR set, strip that, as just testing for
++                # /usr and /opt might not be sufficient.
++                $self->{LD_RUN_PATH} = join ':', grep !/^\Q$ENV{PORTAGE_TMPDIR}/,
++                                       split /:/, $self->{LD_RUN_PATH};
++            }
+             last;
+         }
+     }
+-- 
+2.12.0
+

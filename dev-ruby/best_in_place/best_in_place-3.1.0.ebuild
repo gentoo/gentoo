@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -35,10 +35,8 @@ ruby_add_bdepend "
 		dev-ruby/rspec-rails:3
 		>=dev-ruby/nokogiri-1.5.0
 		>=dev-ruby/capybara-1.1.2:0
-		dev-ruby/poltergeist
 		>=dev-ruby/rails-3.2
 		>=dev-ruby/sqlite3-1.3.4-r1
-		dev-ruby/launchy
 		dev-ruby/bundler
 	)"
 
@@ -53,7 +51,13 @@ all_ruby_prepare() {
 		-e '2agem "rspec", "~>3.0"' \
 		-e '2agem "jquery-rails"' -e '2agem "jquery-ui-rails"' \
 		-e '/byebug/ s:^:#:' \
+		-e '/\(launchy\|poltergeist\)/d' \
 		Gemfile
+	sed -i -e '/poltergeist/,/javascript_driver/ s:^:#:' spec/rails_helper.rb || die
+
+	# Remove integration tests. They fail to run and depend on obsolete
+	# poltergeist/phantomjs.
+	rm -rf spec/integration || die
 }
 
 each_ruby_test() {

@@ -1,0 +1,75 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,16 +2,16 @@
+ # Makefile for skkfep
+ #
+ all: genMakefile
+-	make -f genMakefile all
++	$(MAKE) -f genMakefile all
+ 
+ skkfep: genMakefile
+-	make -f genMakefile skkfep
++	$(MAKE) -f genMakefile skkfep
+ 
+ simpledic: genMakefile
+-	make -f genMakefile simpledic
++	$(MAKE) -f genMakefile simpledic
+ 
+ clean: genMakefile
+-	make -f genMakefile clean
++	$(MAKE) -f genMakefile clean
+ 	rm -f genMakefile
+ 
+ genMakefile: protoMakefile config.h
+--- a/config.h
++++ b/config.h
+@@ -14,7 +14,7 @@
+ #define DEFAULT_KANAKEY "^j"
+ 
+ /* By Y. Kaneko */
+-/*#define KUTOUTEN        /* "."->maru, ","->ten */
++#define KUTOUTEN        /* "."->maru, ","->ten */
+ 
+ #define KANJIBS			/* do/don't shuft-out BS code in JIS mode */
+ #define KANJIBS_DEFAULT	0	/* 0 -> shift out / 1 -> don't shift out  */
+@@ -28,4 +28,4 @@
+ 
+ #define NATIVECODE	euc	/* EUC Kanji code */
+ 
+-#define SKK_SERVER_HOST	"ei5nazha"	/* SKK server host */
++#define SKK_SERVER_HOST	"localhost"	/* SKK server host */
+--- a/configs/linux.h
++++ b/configs/linux.h
+@@ -10,3 +10,12 @@
+ #define NO_VFORK
+ 
+ #define HAVE_SETREUID
++#define HAVE_BSD_OPENPTY
++
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++
++#if makefile_parameter
++SYSLIBS=-lutil
++#endif
+--- a/protoMakefile
++++ b/protoMakefile
+@@ -1,5 +1,5 @@
+ CFLAGS=$(SYSINCLUDE) $(SYSDEFINE) $(DEFINE) $(OPTIMIZE)
+-LIBS  =$(SYSLIBS) $(EXTRALIBS) -ltermcap
++LIBS  =$(SYSLIBS) $(EXTRALIBS) $(LDFLAGS) -lncurses
+ 
+ OBJS=fep.o connsh.o readwrite.o terms.o stty.o keybind.o romkan.o etc.o\
+ 	kkconv.o keymap.o version.o
+--- a/stty.c
++++ b/stty.c
+@@ -306,7 +306,7 @@
+ {
+ 	int cpid;
+ /* #ifdef _AIX */
+-#if defined(_AIX) || defined(NECEWS) || defined(SOLARIS2)
++#if defined(_AIX) || defined(NECEWS) || defined(SOLARIS2) || defined(LINUX)
+ 	int statusp;
+ 	reset_tty_without_close();
+ 	cpid = wait(&statusp);

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -13,4 +13,7 @@
 		This is a command line interface for
 		<pkg>app-misc/rundeck-cli-bin</pkg>.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rundeck/rundeck-cli</remote-id>
+	</upstream>
 </pkgmetadata>

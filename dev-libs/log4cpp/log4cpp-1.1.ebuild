@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ AT_M4DIR="m4"
 AUTOTOOLS_AUTORECONF=1
 inherit autotools-multilib
 
-DESCRIPTION="Library of C++ classes for flexible logging to files, syslog and other destinations"
+DESCRIPTION="C++ classes for flexible logging to files, syslog and other destinations"
 HOMEPAGE="http://log4cpp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

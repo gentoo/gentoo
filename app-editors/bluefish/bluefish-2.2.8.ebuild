@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,6 @@ SLOT="0"
 IUSE="gtk2 +gtk3 gucharmap nls python spell"
 
 RDEPEND="
-	gnome-extra/gucharmap:2.90
 	sys-libs/zlib
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
@@ -38,7 +37,8 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="
 	gtk2? ( !gtk3 !gucharmap )
-	gtk3? ( !gtk2 )"
+	gtk3? ( !gtk2 )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 

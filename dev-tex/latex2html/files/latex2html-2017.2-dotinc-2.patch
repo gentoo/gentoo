@@ -1,0 +1,12 @@
+diff -ruN latex2html-2017.2.orig/configure latex2html-2017.2/configure
+--- latex2html-2017.2.orig/configure	2017-01-23 17:14:25.000000000 -0000
++++ latex2html-2017.2/configure	2017-08-04 09:21:02.929355288 -0000
+@@ -1225,7 +1225,7 @@
+ fi
+ 
+ # this is used to get the values from the config file
+-eval `perl -w -e 'use cfgcache; foreach(keys %cfg) { print qq($_='"'"'$cfg{$_}'"'"'\n);}'`
++eval `perl -w -e 'use lib q[.]; use cfgcache; foreach(keys %cfg) { print qq($_='"'"'$cfg{$_}'"'"'\n);}'`
+ 
+ 
+ 

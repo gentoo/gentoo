@@ -1,0 +1,45 @@
+diff -uNr work.ORIG/mongo/CMakeLists.txt work/mongo/CMakeLists.txt
+--- work.ORIG/mongo/CMakeLists.txt	2014-08-01 11:51:20.832614062 +0100
++++ work/mongo/CMakeLists.txt	2014-08-01 11:51:36.898614862 +0100
+@@ -71,14 +71,13 @@
+   endforeach(flag)
+ endmacro(set_cxxflags_if_supported)
+ 
+-set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -Werror -pipe")
++set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -pipe")
+ set(CMAKE_CXX_FLAGS "-fPIC -fno-strict-aliasing -ggdb")
+ set_cxxflags_if_supported(
+   -Wall
+   -Wsign-compare
+   -Wno-unknown-pragmas
+   -Winvalid-pch
+-  -Werror
+   -pipe
+   -Wnon-virtual-dtor
+   -Woverloaded-virtual
+diff -uNr work.ORIG/mongo/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake work/mongo/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake
+--- work.ORIG/mongo/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake	2014-08-01 11:51:20.696614056 +0100
++++ work/mongo/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake	2014-08-01 11:51:36.898614862 +0100
+@@ -174,8 +174,8 @@
+ endif ()
+ 
+ ## always want these
+-set(CMAKE_C_FLAGS "-Wall -Werror ${CMAKE_C_FLAGS}")
+-set(CMAKE_CXX_FLAGS "-Wall -Werror ${CMAKE_CXX_FLAGS}")
++set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
++set(CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS}")
+ 
+ ## need to set -stdlib=libc++ to get real c++11 support on darwin
+ if (APPLE)
+diff -uNr work.ORIG/mongo/src/third_party/ft-index/examples/Makefile work/mongo/src/third_party/ft-index/examples/Makefile
+--- work.ORIG/mongo/src/third_party/ft-index/examples/Makefile	2014-08-01 11:51:20.676614055 +0100
++++ work/mongo/src/third_party/ft-index/examples/Makefile	2014-08-01 11:51:36.898614862 +0100
+@@ -1,7 +1,7 @@
+ SRCS = $(wildcard *.c)
+ TARGETS = $(patsubst %.c,%,$(SRCS)) $(patsubst %.c,%-bdb,$(SRCS))
+ CPPFLAGS = -I../include -D_GNU_SOURCE
+-CFLAGS = -g -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers
++CFLAGS = -g -std=c99 -Wall -Wextra -Wno-missing-field-initializers
+ ifeq ($(USE_STATIC_LIBS),1)
+ LIBTOKUDB = tokufractaltree_static
+ LIBTOKUPORTABILITY = tokuportability_static

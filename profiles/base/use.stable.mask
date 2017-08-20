@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Brian Evans <grknight@gentoo.org> (14 Aug 2017)
+# Needs dev-lang/php:7.2 stable
+php_targets_php7-2
+
 # Michał Górny <mgorny@gentoo.org> (25 Jan 2017)
 # Early pre-stabilization mask for dev-lang/python:3.6
 python_targets_python3_6
@@ -34,7 +38,6 @@ libressl
 
 # Hans de Graaff <graaff@gentoo.org> (25 Dec 2016)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby22
 ruby_targets_ruby23
 ruby_targets_ruby24
 

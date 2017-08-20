@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -10,4 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>Argon2 is a password hashing tool and library that won the Password Hashing Competition (PHC)</longdescription>
+	<upstream>
+		<remote-id type="github">P-H-C/phc-winner-argon2</remote-id>
+	</upstream>
 </pkgmetadata>

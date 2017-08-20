@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit versionator eutils java-pkg-2 java-ant-2
 MY_PV="$(replace_all_version_separators _)"
 MY_PN="BrowserLauncher2"
 
-DESCRIPTION="BrowserLauncher2 is a library that facilitates opening a browser from a Java application"
+DESCRIPTION="A library that facilitates opening a browser from a Java application"
 HOMEPAGE="http://browserlaunch2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/browserlaunch2/${MY_PN}-all-${MY_PV}.jar"
 

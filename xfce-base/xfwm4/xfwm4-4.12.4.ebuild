@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Window manager for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

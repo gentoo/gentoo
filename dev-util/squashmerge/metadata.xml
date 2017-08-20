@@ -13,7 +13,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://bitbucket.org/mgorny/squashmerge/issues/</bugs-to>
-		<remote-id type="bitbucket">mgorny/squashmerge</remote-id>
+		<bugs-to>https://github.com/mgorny/squashmerge/issues/</bugs-to>
+		<remote-id type="github">mgorny/squashmerge</remote-id>
 	</upstream>
 </pkgmetadata>

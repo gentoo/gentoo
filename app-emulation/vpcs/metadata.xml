@@ -6,6 +6,6 @@
 		<name>Aaron Bauman</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">vpcs</remote-id>
+		<remote-id type="sourceforge">gns-3</remote-id>
 	</upstream>
 </pkgmetadata>

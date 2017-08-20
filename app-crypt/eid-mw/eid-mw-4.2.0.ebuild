@@ -6,8 +6,7 @@ EAPI=6
 inherit eutils autotools mozextension
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/Fedict/${PN}.git
-		https://github.com/Fedict/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
 else
@@ -20,7 +19,7 @@ SLOT="0"
 LICENSE="LGPL-3"
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 
-HOMEPAGE="http://eid.belgium.be"
+HOMEPAGE="https://eid.belgium.be"
 
 IUSE="+dialogs +gtk p11-kit +xpi"
 

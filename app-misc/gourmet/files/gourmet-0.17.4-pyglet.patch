@@ -1,0 +1,56 @@
+diff --git a/gourmet/sound.py b/gourmet/sound.py
+index 2dea6bb7..c232d258 100644
+--- a/gourmet/sound.py
++++ b/gourmet/sound.py
+@@ -1,15 +1,19 @@
+ try:
+-    from sound_gst import Player
++    from sound_pyglet import Player
+ except ImportError:
+-    print 'No gst player'
++    print 'No pyglet player'
+     try:
+-        from sound_windows import Player
++        from sound_gst import Player
+     except ImportError:
+-        print 'No windows player'
+-        import sys
+-        class Player:
+-            """Fallback player"""
+-            def play_file (self,path):
+-                print 'No player installed -- beeping instead'
+-                for n in range(5): sys.stdout.write('\a'); sys.stdout.flush()
++        print 'No gst player'
++        try:
++            from sound_windows import Player
++        except ImportError:
++            print 'No windows player'
++            import sys
++            class Player:
++                """Fallback player"""
++                def play_file (self,path):
++                    print 'No player installed -- beeping instead'
++                    for n in range(5): sys.stdout.write('\a'); sys.stdout.flush()
+ 
+diff --git a/gourmet/sound_pyglet.py b/gourmet/sound_pyglet.py
+new file mode 100644
+index 00000000..41da613a
+--- /dev/null
++++ b/gourmet/sound_pyglet.py
+@@ -0,0 +1,16 @@
++import pyglet
++
++class Player:
++    def __init__ (self):
++        pass
++
++    def play_file (self,path):
++        self.source = pyglet.media.load(path,streaming=False)
++        self.source.play()
++
++    def stop_play (self,path):
++        pass
++
++if __name__ == '__main__':
++    p = Player()
++    p.play_file('../data/sound/phone.wav')

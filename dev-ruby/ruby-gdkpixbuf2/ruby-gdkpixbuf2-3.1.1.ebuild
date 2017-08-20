@@ -33,4 +33,3 @@ each_ruby_test() {
 each_ruby_install() {
 	each_fakegem_install
 }
-

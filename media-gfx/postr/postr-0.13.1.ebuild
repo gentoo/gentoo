@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -30,8 +30,13 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/gtkspell-python[${PYTHON_USEDEP}]
 	dev-python/libgnome-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	dev-python/twisted-core[${PYTHON_USEDEP}]
-	dev-python/twisted-web[${PYTHON_USEDEP}]
+	|| (
+		dev-python/twisted[${PYTHON_USEDEP}]
+		(
+			dev-python/twisted-core[${PYTHON_USEDEP}]
+			dev-python/twisted-web[${PYTHON_USEDEP}]
+		)
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/gnome-doc-utils

@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,8 +3,7 @@
+ MANDEST = ${PREFIX}/man/man1
+ 
+ CC = gcc
+-CFLAGS = -O2 -Wall -I. -g
+-LDFLAGS = -g
++CFLAGS += -Wall -I.
+ LIBS = 
+ 
+ ifdef OS2

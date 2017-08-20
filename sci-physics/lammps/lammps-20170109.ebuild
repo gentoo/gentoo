@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit eutils flag-o-matic fortran-2 multilib python-r1
 
@@ -20,7 +20,7 @@ SRC_URI="http://lammps.sandia.gov/tars/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples gzip lammps-memalign mpi python static-libs"
 
 # blas/lapack is needed by the ATC package which is only built with MPI.

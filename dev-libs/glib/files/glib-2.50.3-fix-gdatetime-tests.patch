@@ -1,0 +1,52 @@
+From ec02a1875f29ecb8e46c0d8c1403cd00a0b3a9e4 Mon Sep 17 00:00:00 2001
+From: Iain Lane <iain@orangesquash.org.uk>
+Date: Mon, 13 Mar 2017 16:52:11 +0000
+Subject: [PATCH] tests/gdatetime: Use a real rather than invented timezone
+
+The tzdata maintainers had previously invented abbreviations for
+timezones. As of their 2017a release, the one we were testing ("BRT")
+has been dropped.
+
+Switch to testing PST, which is a real timezone abbreviation.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=779799
+---
+ glib/tests/gdatetime.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/glib/tests/gdatetime.c b/glib/tests/gdatetime.c
+index dcb8a8f..c54031d 100644
+--- a/glib/tests/gdatetime.c
++++ b/glib/tests/gdatetime.c
+@@ -635,22 +635,22 @@ test_GDateTime_new_full (void)
+   g_date_time_unref (dt);
+ 
+ #ifdef G_OS_UNIX
+-  tz = g_time_zone_new ("America/Recife");
++  tz = g_time_zone_new ("America/Tijuana");
+ #elif defined G_OS_WIN32
+-  tz = g_time_zone_new ("E. South America Standard Time");
++  tz = g_time_zone_new ("Pacific Standard Time");
+ #endif
+-  dt = g_date_time_new (tz, 2010, 5, 24, 8, 4, 0);
++  dt = g_date_time_new (tz, 2010, 11, 24, 8, 4, 0);
+   g_time_zone_unref (tz);
+   g_assert_cmpint (2010, ==, g_date_time_get_year (dt));
+-  g_assert_cmpint (5, ==, g_date_time_get_month (dt));
++  g_assert_cmpint (11, ==, g_date_time_get_month (dt));
+   g_assert_cmpint (24, ==, g_date_time_get_day_of_month (dt));
+   g_assert_cmpint (8, ==, g_date_time_get_hour (dt));
+   g_assert_cmpint (4, ==, g_date_time_get_minute (dt));
+   g_assert_cmpint (0, ==, g_date_time_get_second (dt));
+ #ifdef G_OS_UNIX
+-  g_assert_cmpstr ("BRT", ==, g_date_time_get_timezone_abbreviation (dt));
++  g_assert_cmpstr ("PST", ==, g_date_time_get_timezone_abbreviation (dt));
+ #elif defined G_OS_WIN32
+-  g_assert_cmpstr ("E. South America Standard Time", ==,
++  g_assert_cmpstr ("Pacific Standard Time", ==,
+                     g_date_time_get_timezone_abbreviation (dt));
+ #endif
+   g_assert (!g_date_time_is_daylight_savings (dt));
+-- 
+2.10.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ MY_P="Python-${PV}"
 PATCHSET_VERSION="2.7.12-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
-HOMEPAGE="http://www.python.org/"
+HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 
@@ -238,6 +238,11 @@ src_test() {
 	for test in ${skipped_tests}; do
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
 	done
+
+	# Daylight saving time problem
+	# https://bugs.python.org/issue22067
+	# https://bugs.gentoo.org/610628
+	local -x TZ=UTC
 
 	# Rerun failed tests in verbose mode (regrtest -w).
 	emake test EXTRATESTOPTS="-w" < /dev/tty

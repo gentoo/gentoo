@@ -11,15 +11,9 @@ HOMEPAGE="http://www.rsyslog.com/"
 BRANCH="8-stable"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="
-		git://github.com/rsyslog/${PN}.git
-		https://github.com/rsyslog/${PN}.git
-	"
+	EGIT_REPO_URI="https://github.com/rsyslog/${PN}.git"
 
-	DOC_REPO_URI="
-		git://github.com/rsyslog/${PN}-doc.git
-		https://github.com/rsyslog/${PN}-doc.git
-	"
+	DOC_REPO_URI="https://github.com/rsyslog/${PN}-doc.git"
 
 	inherit git-r3
 else

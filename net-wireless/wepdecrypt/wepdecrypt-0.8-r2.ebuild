@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="Enhanced version of WepAttack a tool for breaking 802.11 WEP keys"
 HOMEPAGE="http://wepdecrypt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/wepdecrypt/${P}.tar.gz"

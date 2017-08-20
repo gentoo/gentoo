@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A panel plug-in with date, time and embedded calender"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/0.6/${P}.tar.bz2"
 
 LICENSE="GPL-2"

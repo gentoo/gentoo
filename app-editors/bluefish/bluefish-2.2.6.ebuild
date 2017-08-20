@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
 IUSE="nls python spell"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	x11-libs/gtk+:3

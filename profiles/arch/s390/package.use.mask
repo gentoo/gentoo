@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
 # Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
 # Not tested
 net-mail/dovecot lz4
@@ -20,7 +24,7 @@ x11-drivers/xf86-video-ati glamor
 
 # Mikle Kolyada <zlogene@gentoo.org> (11 Jan 2014)
 # too much unkeyworded dependencies (bug #497068)
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Agostino Sarubbo <ago@gentoo.org< (10 Apr 2013)
 # It requires too much unstable dep.

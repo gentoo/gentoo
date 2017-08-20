@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis, FLAC and Opus"
+DESCRIPTION="A graphical Audio CD ripper and encoder with support for many output formats"
 HOMEPAGE="http://littlesvr.ca/asunder/"
 SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 

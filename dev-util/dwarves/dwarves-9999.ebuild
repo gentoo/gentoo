@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,12 +15,12 @@ LICENSE="GPL-2" # only
 SLOT="0"
 KEYWORDS=""
 IUSE="debug"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=dev-libs/elfutils-0.131
+RDEPEND="${PYTHON_DEPS}
+	>=dev-libs/elfutils-0.131
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-
-DOC=( README README.ctracer )
 
 DOCS=( README README.ctracer NEWS )
 PATCHES=( "${FILESDIR}"/${PN}-1.10-python-import.patch )

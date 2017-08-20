@@ -6,6 +6,6 @@
     <name>Anthony G. Basile</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">slowaes</remote-id>
+    <remote-id type="pypi">pyaes</remote-id>
   </upstream>
 </pkgmetadata>

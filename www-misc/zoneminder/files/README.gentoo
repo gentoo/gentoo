@@ -14,14 +14,14 @@
    for an example configuration snippet.
 
 4. Enable PHP in your webserver configuration,
-   enable short_open_tags in php.ini,
+   enable short_open_tags in php.ini (likely on by default now)
    set the time zone in php.ini,
    and restart/reload the webserver.
 
 5. Start the zoneminder daemon:
      /etc/init.d/zoneminder start
 
-6. Finally point your browser to http://your.webserver/zoneminder
+6. Finally point your browser to http://your.webserver/zm
 
 If you are upgrading, you will need to run the zmupdate.pl script:
-      /usr/bin/zmupdate.pl --version=oldversionnumber [--user=zmuser --pass=topsecretpassword]
+   /usr/bin/zmupdate.pl --version=oldversionnumber [--user=zmuser --pass=topsecretpassword]

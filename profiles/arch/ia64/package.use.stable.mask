@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (16 Apr 2016)
+# Mask tests on thin-provisioning-tools since the required
+# packages are no longer stable, bug 610088
+sys-block/thin-provisioning-tools test
+
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins gtkspell

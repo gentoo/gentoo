@@ -1,0 +1,15 @@
+Fix bug #579910. Add sys/sysmacros.h header.
+
+https://bugs.gentoo.org/579910
+
+index 20ae130..2f3fac0 100644
+--- a/src/VBox/Runtime/r3/linux/sysfs.cpp
++++ b/src/VBox/Runtime/r3/linux/sysfs.cpp
+@@ -46,6 +46,7 @@
+ #include <sys/sysctl.h>
+ #include <sys/stat.h>
+ #include <sys/fcntl.h>
++#include <sys/sysmacros.h>
+ #include <errno.h>
+ 
+ 

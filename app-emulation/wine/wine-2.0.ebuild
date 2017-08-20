@@ -24,7 +24,7 @@ VANILLA_GV="2.47"
 VANILLA_MV="4.6.4"
 WINE_GENTOO="wine-gentoo-2015.03.07"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
-HOMEPAGE="http://www.winehq.org/"
+HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	gecko? (
 		abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${VANILLA_GV}/wine_gecko-${VANILLA_GV}-x86.msi )
@@ -213,6 +213,14 @@ wine_build_environment_check() {
 		ewarn "Gentoo's Toolchain Team. If your ebuild fails the compiler checks in"
 		ewarn "the configure phase, either update your compiler or switch to <5.0 || >=5.4"
 	fi
+	if tc-is-gcc && [[ $(gcc-major-version) -eq 5 && $(gcc-minor-version) -eq 4 ]]; then
+		if has "-march=i686" ${CFLAGS} && ! has "-mtune=generic" ${CFLAGS}; then
+			ewarn "Compilation can hang with CFLAGS=\"-march=i686\".  You can temporarily work"
+			ewarn "around this by adding \"-mtune=generic\" to your CFLAGS for wine."
+			ewarn "See package.env in man 5 portage for more information on how to do this."
+			ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=613128 for more details"
+		fi
+	fi
 
 	if use abi_x86_32 && use opencl && [[ "$(eselect opencl show 2> /dev/null)" == "intel" ]]; then
 		eerror "You cannot build wine with USE=opencl because intel-ocl-sdk is 64-bit only."
@@ -259,9 +267,6 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
-
-		# https://bugs.winehq.org/show_bug.cgi?id=42132
-		"${FILESDIR}"/${PN}-2.0_rc3-flex263.patch
 	)
 
 	default
@@ -277,7 +282,7 @@ src_prepare() {
 		sed -i '/^MimeType/d' loader/wine.desktop || die #117785
 	fi
 
-	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
+	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}"/${WINE_GENTOO}/icons/oic_winlogo.ico dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS

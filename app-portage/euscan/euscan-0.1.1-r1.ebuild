@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit distutils-r1
 
 DESCRIPTION="Ebuild upstream scan utility"
-HOMEPAGE="http://euscan.iksaif.net"
+HOMEPAGE="https://github.com/iksaif/euscan"
 SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

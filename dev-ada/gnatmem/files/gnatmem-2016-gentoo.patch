@@ -1,0 +1,85 @@
+--- 1/configure.in.old	2016-12-08 20:57:53.942004080 +0100
++++ 1/configure.in	2016-12-08 21:00:10.393677257 +0100
+@@ -6,19 +6,14 @@
+ if test ${GNATBIND} = "no"; then
+    AC_MSG_ERROR(Ada compiler needed,1)
+ fi
++AC_CONFIG_HEADERS(config.h:config.in)
++AC_DEFINE_UNQUOTED(TARGET, "${target}", [Configured target name.])
+ AC_ARG_WITH(binutils-buildtree,
+             [AC_HELP_STRING(
+              [--with-binutils-buildtree=<dir>],
+              [Specifify location of binutils build tree])],
+             BINUTILS_OBJDIR=$withval,
+             BINUTILS_OBJDIR=no)
+-AC_MSG_CHECKING([for binutils build tree validity])
+-if test -f "$BINUTILS_OBJDIR/bfd/libbfd.a"; then
+-   AC_MSG_RESULT(yes)
+-else
+-   AC_MSG_RESULT(no) 
+-   AC_MSG_FAILURE([need valid binutils build tree directory (got $BINUTILS_OBJDIR)])
+-fi
+ 
+ AC_ARG_WITH(binutils-sources,
+             [AC_HELP_STRING(
+@@ -26,21 +21,6 @@
+              [Specifify location of binutils sources])],
+             BINUTILS_SRCDIR=$withval,
+             BINUTILS_SRCDIR=auto)
+-if test "$BINUTILS_SRCDIR" = "auto"; then
+-   BINUTILS_SRCDIR=`cat "$BINUTILS_OBJDIR/Makefile" | sed -n -e "/^ *srcdir *=/ s/^ *srcdir *= *// p"`
+-   case "$BINUTILS_SRC_DIR" in
+-     /*) ;;
+-      *) # assume we have relative path
+-         BINUTILS_SRCDIR="$BINUTILS_OBJDIR/$BINUTILS_SRCDIR";;
+-   esac
+-fi
+-AC_MSG_CHECKING([for binutils source dir validity])
+-if test -f "$BINUTILS_SRCDIR/bfd/Makefile.in"; then
+-   AC_MSG_RESULT(yes)
+-else
+-   AC_MSG_RESULT(no)
+-   AC_MSG_FAILURE([need valid binutils sources directory])
+-fi
+ 
+ AC_SUBST(BINUTILS_OBJDIR)
+ AC_SUBST(BINUTILS_SRCDIR)
+--- gnatmem-gpl-2016-src/gnatmem.gpr.in.old	2017-02-02 22:15:30.247906007 +0100
++++ gnatmem-gpl-2016-src/gnatmem.gpr.in	2017-02-02 22:17:22.604974363 +0100
+@@ -10,8 +10,10 @@
+    for Languages use ("ada", "c");
+ 
+    package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
+       for Default_Switches ("ada") use ("-O2", "-W", "-Wall", "-gnatpg");
+       for Default_Switches ("c")   use ("-O2",
++                                        "-I..",
+                                         "-I" & BINUTILS_OBJDIR & "/binutils",
+                                         "-I" & BINUTILS_OBJDIR & "/bfd",
+                                         "-I" & BINUTILS_SRCDIR & "/include");
+@@ -19,8 +21,8 @@
+ 
+    package Linker is
+       for Default_Switches ("ada") use
+-         (BINUTILS_OBJDIR & "/bfd/libbfd.a",
+-          BINUTILS_OBJDIR & "/libiberty/libiberty.a",
++         ("-lbfd",
++          "-liberty",
+           "@LIBDL@",
+           "@LIBZ@");
+    end Linker;
+--- gnatmem-gpl-2015-src/src/libaddr2line.c.old	2017-01-04 21:03:36.185233702 +0100
++++ gnatmem-gpl-2015-src/src/libaddr2line.c	2017-01-04 21:04:17.680455390 +0100
+@@ -23,9 +23,9 @@
+ #include <string.h>
+ #include <stdlib.h>
+ 
+-#include "bfd.h"
+-#include "libiberty.h"
+-#include "demangle.h"
++#include <bfd.h>
++#include <libiberty/libiberty.h>
++#include <libiberty/demangle.h>
+ 
+ static asymbol **cur_syms;		/* Symbol table.  */
+ static bfd *cur_bfd;

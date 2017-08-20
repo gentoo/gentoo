@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="C++ interface for MediaWiki based web service as wikipedia.org"
-HOMEPAGE="http://www.digikam.org/"
+HOMEPAGE="https://www.digikam.org/"
 SRC_URI="https://dev.gentoo.org/~asturm/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -20,3 +20,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!net-libs/libmediawiki:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )

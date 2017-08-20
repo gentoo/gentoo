@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils cmake-utils
 
 DESCRIPTION="A tool to handle your cellular phone"
-HOMEPAGE="http://wammu.eu/gammu/"
+HOMEPAGE="https://wammu.eu/gammu/"
 SRC_URI="http://dl.cihar.com/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"

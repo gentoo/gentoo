@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/enigma-game/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 COMMON_DEPS="media-libs/sdl-ttf
@@ -31,7 +31,8 @@ RDEPEND="${COMMON_DEPS}
 
 src_prepare() {
 	cp /usr/share/gettext/config.rpath .
-	epatch "${FILESDIR}"/${P}-build.patch
+	epatch "${FILESDIR}"/${P}-build.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 	sed -i \
 		-e "s:DOCDIR:\"/usr/share/doc/${P}/html\":" \
 		src/main.cc || die

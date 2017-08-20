@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils linux-mod toolchain-funcs versionator
+inherit linux-mod toolchain-funcs versionator
 
 MY_PN="BestCrypt"
 DESCRIPTION="commercially licensed transparent filesystem encryption"

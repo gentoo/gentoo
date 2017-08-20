@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-utils eutils pax-utils systemd user versionator
 
-EGIT_REPO_URI="git://git.quassel-irc.org/quassel"
+EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
 [[ "${PV}" == "9999" ]] && inherit git-r3
 
 DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
@@ -68,7 +68,6 @@ GUI_RDEPEND="
 			)
 		)
 		phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) )
-		webkit? ( dev-qt/qtwebkit:4 )
 	)
 "
 
@@ -108,7 +107,7 @@ REQUIRED_USE="
 	qt5? ( !ayatana )
 	snorenotify? ( qt5 || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	webkit? ( || ( X monolithic ) )
+	webkit? ( qt5 || ( X monolithic ) )
 "
 
 pkg_setup() {

@@ -238,7 +238,7 @@ mozconfig_config() {
 		fi
 	fi
 
-	# Enable position independent executables 
+	# Enable position independent executables
 	mozconfig_annotate 'enabled by Gentoo' --enable-pie
 	mozconfig_use_enable debug
 	mozconfig_use_enable debug tests

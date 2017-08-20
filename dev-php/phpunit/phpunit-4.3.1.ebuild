@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,7 +28,7 @@ src_install() {
 	insinto /usr/share/php/phpunit
 	insopts -m755
 	newins "${DISTDIR}"/${PHPUNIT_PHAR} phpunit.phar
-	dosym /usr/share/php/phpunit/phpunit.phar /usr/bin/phpunit
+	dosym ../share/php/phpunit/phpunit.phar /usr/bin/phpunit
 }
 
 pkg_postinst() {

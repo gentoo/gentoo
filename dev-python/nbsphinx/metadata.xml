@@ -14,7 +14,7 @@
     Sphinx build process.
   </longdescription>
   <upstream>
-    <remote-id type="pypi">nbformat</remote-id>
+    <remote-id type="pypi">nbsphinx</remote-id>
     <remote-id type="github">spatialaudio/nbsphinx</remote-id>
   </upstream>
 </pkgmetadata>

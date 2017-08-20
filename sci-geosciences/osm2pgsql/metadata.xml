@@ -14,11 +14,6 @@
         suitable for specific applications like rendering into map tiles by
         Mapnik or geocoding with Nominatim.
     </longdescription>
-    <use>
-        <flag name="pbf">
-            Add support for importing the new "Protocolbuffer Binary Format"
-        </flag>
-    </use>
     <upstream>
         <remote-id type="github">openstreetmap/osm2pgsql</remote-id>
     </upstream>

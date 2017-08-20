@@ -1,7 +1,7 @@
 Add options to control libxml2, jansson, and libyaml automagic deps.
 
---- ctags-20161028/configure.ac
-+++ ctags-20161028/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -585,30 +585,48 @@
  AC_CHECK_FUNCS(fork waitpid execv pipe,[enable_xcmd=yes],[enable_xcmd=no])
  AM_CONDITIONAL([ENABLE_XCMD], [test "xyes" = "x$enable_xcmd"])

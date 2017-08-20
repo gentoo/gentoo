@@ -1,0 +1,33 @@
+From a7b470d67f2b98599b2c9cd9945db6eea735cc47 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sun, 18 Dec 2016 10:37:59 +0000
+Subject: [PATCH] * tools/tiff2pdf.c: prevent heap-based buffer overflow in -j
+ mode on a paletted image. Note: this fix errors out before the overflow
+ happens. There could probably be a better fix. Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2635
+
+---
+ ChangeLog        | 7 +++++++
+ tools/tiff2pdf.c | 8 +++++++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/tools/tiff2pdf.c b/tools/tiff2pdf.c
+index fe8a6ea7e101..afea414bebf6 100644
+--- a/tools/tiff2pdf.c
++++ b/tools/tiff2pdf.c
+@@ -3654,6 +3654,12 @@ tsize_t t2p_sample_realize_palette(T2P* t2p, unsigned char* buffer){
+ 	uint32 j=0;
+ 	sample_count=t2p->tiff_width*t2p->tiff_length;
+ 	component_count=t2p->tiff_samplesperpixel;
++        if( sample_count * component_count > t2p->tiff_datasize )
++        {
++            TIFFError(TIFF2PDF_MODULE,  "Error: sample_count * component_count > t2p->tiff_datasize");
++            t2p->t2p_error = T2P_ERR_ERROR;
++            return 1;
++        }
+ 	
+ 	for(i=sample_count;i>0;i--){
+ 		palette_offset=buffer[i-1] * component_count;
+-- 
+2.12.0
+

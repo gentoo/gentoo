@@ -15,5 +15,6 @@ Pentium, P6, MMX, 3DNow!, SSE and SSE2 opcodes, and has macro capability.
   </longdescription>
   <upstream>
     <remote-id type="sourceforge">nasm</remote-id>
+    <bugs-to>https://bugzilla.nasm.us/</bugs-to>
   </upstream>
 </pkgmetadata>

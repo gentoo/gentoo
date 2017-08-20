@@ -1,0 +1,41 @@
+Index: js_of_ocaml-2.8.4/lib/ppx/ppx_js.ml
+===================================================================
+--- js_of_ocaml-2.8.4.orig/lib/ppx/ppx_js.ml
++++ js_of_ocaml-2.8.4/lib/ppx/ppx_js.ml
+@@ -162,7 +162,8 @@ let invoker ?(extra_types = []) uplift d
+      {[ fun (type res t0 t1 ..) arg1 arg2 -> e ]}
+   *)
+   let local_types =
+-    res :: List.map Arg.name (extra_types @ arguments)
++    List.map Location.mknoloc
++    (res :: List.map Arg.name (extra_types @ arguments))
+   in
+   let result = List.fold_right Exp.newtype local_types invoker in
+ 
+@@ -210,7 +211,7 @@ let method_call ~loc obj meth args =
+          (Exp.fun_ ~loc ~attrs:[merlin_noloc] Label.nolabel None
+             (Pat.var ~loc ~attrs:[merlin_noloc] (Location.mknoloc "x"))
+             (Exp.send ~loc ~attrs:[merlin_noloc]
+-               (Exp.ident ~loc:gloc (lid ~loc:gloc "x")) meth))]
++               (Exp.ident ~loc:gloc (lid ~loc:gloc "x")) (Location.mknoloc meth)))]
+   )
+ 
+ (* {[ obj##.prop ]} generates
+@@ -244,7 +245,7 @@ let prop_get ~loc:_ ~prop_loc obj prop =
+         (Exp.fun_ ~loc:gloc Label.nolabel None
+            (Pat.var ~loc:gloc ~attrs:[merlin_noloc] (Location.mknoloc "x"))
+            (Exp.send ~loc:prop_loc ~attrs:[merlin_noloc]
+-              (Exp.ident ~loc:gloc (lid ~loc:gloc "x")) prop))
++              (Exp.ident ~loc:gloc (lid ~loc:gloc "x")) (Location.mknoloc prop)))
+     ]
+   )
+ 
+@@ -289,7 +290,7 @@ let prop_set ~loc ~prop_loc obj prop val
+         (Exp.fun_ ~loc Label.nolabel None
+            (Pat.var ~loc:gloc ~attrs:[merlin_noloc] (Location.mknoloc "x"))
+            (Exp.send ~loc:prop_loc ~attrs:[merlin_noloc]
+-              (Exp.ident ~loc:gloc (lid ~loc:gloc "x")) prop))
++              (Exp.ident ~loc:gloc (lid ~loc:gloc "x")) (Location.mknoloc prop)))
+     ]
+   )
+ 

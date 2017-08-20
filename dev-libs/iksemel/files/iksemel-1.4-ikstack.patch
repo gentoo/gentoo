@@ -1,0 +1,35 @@
+From 3095fe8c9686de79509fd49db5e8f39fe6c52f43 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Wed, 22 Mar 2017 12:14:33 +0200
+Subject: [PATCH] fix alignment issue in ikstack
+
+tst-ikstack
+=================
+
+ikstack bug, addr 0x100357b4 should be a multiply of 8
+FAIL tst-ikstack (exit status: 1)
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/ikstack.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/ikstack.c b/src/ikstack.c
+index bed4656..814a91c 100644
+--- a/src/ikstack.c
++++ b/src/ikstack.c
+@@ -88,9 +88,11 @@ iks_stack_alloc (ikstack *s, size_t size)
+ 	if (size < MIN_ALLOC_SIZE) size = MIN_ALLOC_SIZE;
+ 	if (size & ALIGN_MASK) size = ALIGN (size);
+ 
++	size += DEFAULT_ALIGNMENT; /* to enable alignment of space */
+ 	c = find_space (s, s->meta, size);
+ 	if (!c) return NULL;
+ 	mem = c->data + c->used;
++	mem = (void *)ALIGN((char *)mem - (char *)0);
+ 	c->used += size;
+ 	return mem;
+ }
+-- 
+2.10.2
+

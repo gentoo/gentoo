@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="http://portal.nersc.gov/svn/visit/trunk/releases/${PV}/${PN}${PV}.tar.g
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cgns debug hdf5 mpi netcdf silo tcmalloc threads"
+IUSE="cgns debug hdf5 mpi netcdf silo tcmalloc threads xdmf2"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -23,9 +23,11 @@ RDEPEND="
 	hdf5? ( sci-libs/hdf5 )
 	netcdf? ( sci-libs/netcdf )
 	silo? ( sci-libs/silo )
-	>=sci-libs/vtk-6.0.0[imaging,mpi=,python,rendering,qt4,${PYTHON_USEDEP}]
+	>=sci-libs/vtk-6.0.0[imaging,mpi=,python,rendering,qt4,xdmf2?,${PYTHON_USEDEP}]
 	sys-libs/zlib"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	xdmf2? ( sci-libs/xdmf2 )
+"
 
 S="${WORKDIR}/${PN}${PV}/src"
 PATCHES=(
@@ -74,6 +76,9 @@ src_configure() {
 	fi
 	if use netcdf; then
 		mycmakeargs+=( -DNETCDF_DIR="${EPREFIX}/usr" )
+	fi
+	if use xdmf2; then
+		mycmakeargs+=( -DOPT_VTK_MODS="vtklibxml2" -DVISIT_XDMF_DIR=/usr/ )
 	fi
 
 	cmake-utils_src_configure

@@ -1,0 +1,61 @@
+commit b2f8eb5b27a95f37509ab6345910ecd62b3c8a90
+Author: Simon Cruanes <simon.cruanes.2007@m4x.org>
+Date:   Tue May 30 09:16:37 2017 +0200
+
+    update to qcheck 0.6
+
+diff --git a/src/core/CCList.ml b/src/core/CCList.ml
+index ebdf7ce..ef4254e 100644
+--- a/src/core/CCList.ml
++++ b/src/core/CCList.ml
+@@ -688,9 +688,9 @@ let take_while p l =
+ *)
+ 
+ (*$Q
+-  Q.(pair (fun1 small_int bool) (list small_int)) (fun (f,l) -> \
+-    let l1 = take_while f l in \
+-    List.for_all f l1)
++  Q.(pair (fun1 Observable.int bool) (list small_int)) (fun (f,l) -> \
++    let l1 = take_while (Q.Fn.apply f) l in \
++    List.for_all (Q.Fn.apply f) l1)
+ *)
+ 
+ let rec drop_while p l = match l with
+@@ -698,8 +698,8 @@ let rec drop_while p l = match l with
+   | x :: l' -> if p x then drop_while p l' else l
+ 
+ (*$Q
+-  Q.(pair (fun1 small_int bool) (list small_int)) (fun (f,l) -> \
+-    take_while f l @ drop_while f l = l)
++  Q.(pair (fun1 Observable.int bool) (list small_int)) (fun (f,l) -> \
++    take_while (Q.Fn.apply f) l @ drop_while (Q.Fn.apply f) l = l)
+ *)
+ 
+ let take_drop_while p l =
+@@ -720,9 +720,9 @@ let take_drop_while p l =
+   direct direct_depth_default_ p l
+ 
+ (*$Q
+-  Q.(pair (fun1 small_int bool) (list small_int)) (fun (f,l) -> \
+-    let l1,l2 = take_drop_while f l in \
+-    (l1 = take_while f l) && (l2 = drop_while f l))
++  Q.(pair (fun1 Observable.int bool) (list small_int)) (fun (f,l) -> \
++    let l1,l2 = take_drop_while (Q.Fn.apply f) l in \
++    (l1 = take_while (Q.Fn.apply f) l) && (l2 = drop_while (Q.Fn.apply f) l))
+ *)
+ 
+ let last n l =
+diff --git a/src/data/CCRAL.ml b/src/data/CCRAL.ml
+index 0c00c3a..5d9aa24 100644
+--- a/src/data/CCRAL.ml
++++ b/src/data/CCRAL.ml
+@@ -151,7 +151,8 @@ let mapi ~f l =
+ *)
+ 
+ (*$Q
+-  Q.(pair (list small_int)(fun2 int int bool)) (fun (l,f) -> \
++  Q.(pair (list small_int)(fun2 Observable.int Observable.int bool)) (fun (l,f) -> \
++    let f = Q.Fn.apply f in \
+     mapi ~f (of_list l) |> to_list = List.mapi f l )
+ *)
+ 

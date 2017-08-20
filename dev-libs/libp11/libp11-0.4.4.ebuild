@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="Abstraction layer to simplify PKCS#11 API"
 HOMEPAGE="https://github.com/opensc/libp11/wiki"

@@ -1,0 +1,12 @@
+diff -Naur apvlv-0.1.5.orig/src/ApvlvParams.cc apvlv-0.1.5/src/ApvlvParams.cc
+--- apvlv-0.1.5.orig/src/ApvlvParams.cc	2015-01-10 15:04:24.000000000 +0100
++++ apvlv-0.1.5/src/ApvlvParams.cc	2017-02-09 20:03:08.655402750 +0100
+@@ -90,7 +90,7 @@
+ 	return false;
+       }
+ 
+-    while ((getline (os, str)) != NULL)
++    while (getline (os, str))
+       {
+ 	string argu, data, crap;
+ 	stringstream is (str);

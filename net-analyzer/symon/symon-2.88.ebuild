@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pmake
+	sys-devel/pmake
 "
 
 S=${WORKDIR}/${PN}

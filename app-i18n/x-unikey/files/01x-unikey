@@ -1,9 +1,0 @@
-# x-unikey works only with *.UTF-8 locales
-#LANG=en_US.UTF-8
-
-# Uncomment this if you use XIM.
-#GTK_IM_MODULE="xim"
-#XMODIFIERS="@im=unikey"
-
-# If you use unikey-gtk only, then comment this
-#GTK_IM_MODULE="unikey"

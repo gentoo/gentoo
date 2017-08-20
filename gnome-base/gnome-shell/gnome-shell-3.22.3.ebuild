@@ -12,10 +12,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+bluetooth +networkmanager nsplugin +nls -openrc-force"
+IUSE="+bluetooth +ibus +networkmanager nsplugin -openrc-force"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~arm ~ia64 ~ppc ~ppc64"
 
 # libXfixes-5.0 needed for pointer barriers
 # FIXME:
@@ -96,7 +96,7 @@ RDEPEND="${COMMON_DEPEND}
 	networkmanager? (
 		net-misc/mobile-broadband-provider-info
 		sys-libs/timezone-data )
-	nls? ( >=app-i18n/ibus-1.4.99[dconf(+),gtk3,introspection] )
+	ibus? ( >=app-i18n/ibus-1.4.99[dconf(+),gtk,introspection] )
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
@@ -132,7 +132,6 @@ src_prepare() {
 src_configure() {
 	# Do not error out on warnings
 	gnome2_src_configure \
-		--enable-browser-plugin \
 		--enable-man \
 		$(use_enable !openrc-force systemd) \
 		$(use_with bluetooth) \

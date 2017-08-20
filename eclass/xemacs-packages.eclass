@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xemacs-packages.eclass
@@ -8,35 +8,13 @@
 # @DESCRIPTION:
 # This eclass supports ebuilds for packages distributed by XEmacs.
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install
-
-RDEPEND="${RDEPEND} app-editors/xemacs"
-DEPEND="${DEPEND}"
-
-[ -z "$HOMEPAGE" ]    && HOMEPAGE="http://xemacs.org/"
-[ -z "$LICENSE" ]     && LICENSE="GPL-2"
-
-# @ECLASS-VARIABLE: PKG_CAT
+# @ECLASS-VARIABLE: XEMACS_PKG_CAT
 # @REQUIRED
 # @DESCRIPTION:
 # The package category that the package is in. Can be either standard,
 # mule, or contrib.
 
-case "${PKG_CAT}" in
-	"standard" )
-		MY_INSTALL_DIR="/usr/lib/xemacs/xemacs-packages" ;;
-
-	"mule" )
-		MY_INSTALL_DIR="/usr/lib/xemacs/mule-packages" ;;
-
-	"contrib" )
-		MY_INSTALL_DIR="/usr/lib/xemacs/site-packages" ;;
-	*)
-		die "Unsupported package category in PKG_CAT (or unset)" ;;
-esac
-[ -n "$DEBUG" ] && einfo "MY_INSTALL_DIR is ${MY_INSTALL_DIR}"
-
-# @ECLASS-VARIABLE: EXPERIMENTAL
+# @ECLASS-VARIABLE: XEMACS_EXPERIMENTAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set then the package is downloaded from the experimental packages
@@ -44,24 +22,38 @@ esac
 # in the experimental repository are auto-generated from XEmacs VCS, so
 # they may not be well-tested.
 
-if [ -n "$EXPERIMENTAL" ]
-then
-	[ -z "$SRC_URI" ] && SRC_URI="http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/${P}-pkg.tar.gz"
+EXPORT_FUNCTIONS src_unpack src_install
+
+RDEPEND="app-editors/xemacs"
+S="${WORKDIR}"
+
+: ${HOMEPAGE:="http://xemacs.org/"}
+: ${LICENSE:="GPL-2+"}
+
+# Backwards compatibility code, to be removed after 2017-05-03
+: ${XEMACS_PKG_CAT:=${PKG_CAT}}
+: ${XEMACS_EXPERIMENTAL:=${EXPERIMENTAL}}
+
+if [[ -n ${XEMACS_EXPERIMENTAL} ]]; then
+	: ${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/${P}-pkg.tar.gz"}
 else
-	[ -z "$SRC_URI" ] && SRC_URI="http://ftp.xemacs.org/pub/xemacs/packages/${P}-pkg.tar.gz"
+	: ${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/packages/${P}-pkg.tar.gz"}
 fi
-[ -n "$DEBUG" ] && einfo "SRC_URI is ${SRC_URI}"
 
-xemacs-packages_src_unpack() {
-	return 0
-}
-
-xemacs-packages_src_compile() {
-	einfo "Nothing to compile"
-}
+xemacs-packages_src_unpack() { :; }
 
 xemacs-packages_src_install() {
-	dodir ${MY_INSTALL_DIR}
-	cd "${D}${MY_INSTALL_DIR}"
+	local install_dir
+
+	case ${XEMACS_PKG_CAT} in
+		standard) install_dir="/usr/lib/xemacs/xemacs-packages" ;;
+		mule)     install_dir="/usr/lib/xemacs/mule-packages"   ;;
+		contrib)  install_dir="/usr/lib/xemacs/site-packages"   ;;
+		*) die "Unsupported package category in XEMACS_PKG_CAT (or unset)" ;;
+	esac
+	debug-print "install_dir is ${install_dir}"
+
+	dodir "${install_dir}"
+	cd "${D}${EPREFIX}${install_dir}" || die
 	unpack ${A}
 }

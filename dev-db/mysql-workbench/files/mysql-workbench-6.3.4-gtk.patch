@@ -1,0 +1,38 @@
+Last-Update: 2016-11-13
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Bug-Debian: https://bugs.debian.org/839356
+Description: fix FTBFS
+
+--- mysql-workbench-6.3.4+dfsg.orig/library/forms/gtk/src/lf_popover.cpp
++++ mysql-workbench-6.3.4+dfsg/library/forms/gtk/src/lf_popover.cpp
+@@ -380,7 +380,7 @@ void PopoverWidget::show_popover(const i
+   if (_style == mforms::PopoverStyleTooltip)
+   {
+     Glib::RefPtr<Gdk::Window> wnd = this->get_window();
+-    if (wnd != 0)
++    if (wnd)
+     {
+       int xx;
+       int yy;
+@@ -396,7 +396,7 @@ void PopoverWidget::show_popover(const i
+   {
+     Gdk::ModifierType mask;
+     Glib::RefPtr<Gdk::Display> dsp = Gdk::Display::get_default();
+-    if (dsp != 0)
++    if (dsp)
+       dsp->get_pointer(x, y, mask);
+   }
+ 
+--- mysql-workbench-6.3.4+dfsg.orig/library/forms/gtk/src/lf_popup.cpp
++++ mysql-workbench-6.3.4+dfsg/library/forms/gtk/src/lf_popup.cpp
+@@ -81,7 +81,8 @@ void PopupImpl::on_screen_changed(const
+ {
+   d("\n");
+   Glib::RefPtr<Gdk::Colormap> colormap = screen->get_rgba_colormap();
+-  _have_rgba = colormap;
++  if (colormap)
++    _have_rgba = true;
+ 
+   if (!_have_rgba)
+     colormap = screen->get_rgb_colormap();

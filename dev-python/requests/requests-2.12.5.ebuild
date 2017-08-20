@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="test"
 
 RDEPEND="
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/ndg-httpsclient[${PYTHON_USEDEP}]
 	>=dev-python/py-1.4.30[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[$(python_gen_usedep 'python*' pypy)]
-	>=dev-python/urllib3-1.13.1-r1[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.14[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

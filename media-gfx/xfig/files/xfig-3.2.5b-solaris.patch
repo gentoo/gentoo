@@ -1,7 +1,7 @@
 * workaround some missing things on Solaris
 
---- u_quartic.c
-+++ u_quartic.c
+--- a/u_quartic.c
++++ b/u_quartic.c
 @@ -21,4 +21,7 @@
   #include <math.h>
   
@@ -10,8 +10,8 @@
 + #endif
   
   static int
---- w_intersect.c
-+++ w_intersect.c
+--- a/w_intersect.c
++++ b/w_intersect.c
 @@ -31,6 +31,11 @@
  #define ISET_P1 (1 << 0)
  #define ISET_P2 (1 << 1)

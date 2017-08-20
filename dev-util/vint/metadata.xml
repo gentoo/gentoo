@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://github.com/Kuniwak/vint/releases</changelog>
 		<remote-id type="github">Kuniwak/vint</remote-id>
 		<remote-id type="pypi">vim-vint</remote-id>
 	</upstream>

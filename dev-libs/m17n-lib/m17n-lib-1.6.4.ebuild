@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -11,7 +11,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/m17n/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="anthy athena anthy bidi fontconfig gd spell libotf libxml2 X xft"
 
 RDEPEND="
@@ -41,10 +41,10 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-1.6.2-gui.patch \
-		"${FILESDIR}"/${PN}-1.6.3-parallel-make.patch \
-		"${FILESDIR}"/${PN}-1.6.3-configure.patch \
-		"${FILESDIR}"/${PN}-1.6.3-ispell.patch
+		"${FILESDIR}"/${PN}-gui.patch \
+		"${FILESDIR}"/${PN}-parallel-make.patch \
+		"${FILESDIR}"/${PN}-configure.patch \
+		"${FILESDIR}"/${PN}-ispell.patch
 
 	eautoreconf
 }
@@ -53,11 +53,11 @@ src_configure() {
 	local myconf="$(use_with anthy) $(use_with spell ispell) $(use_with libxml2)"
 
 	if use X; then
-		myconf+=" --with-x --enable-gui $(use_with athena) $(use_with bidi fribidi)
+		myconf+=" --with-x --with-gui $(use_with athena) $(use_with bidi fribidi)
 $(use_with fontconfig) $(use_with xft freetype) $(use_with gd) $(use_with libotf)
 $(use_with xft)"
 	else
-		myconf+=" --without-x --disable-gui --without-athena --without-fribidi
+		myconf+=" --without-x --without-gui --without-athena --without-fribidi
 --without-fontconfig --without-freetype --without-gd --without-libotf
 --without-xft"
 	fi

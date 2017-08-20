@@ -58,6 +58,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS BUILDING.md CHANGELOG FAQ README.md )
 
+PATCHES=( "${FILESDIR}/${P}-openssl-1.1.0.patch" )
+
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack

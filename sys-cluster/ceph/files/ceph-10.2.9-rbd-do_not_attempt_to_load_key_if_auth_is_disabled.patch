@@ -1,0 +1,39 @@
+From 0cd7df3649d7486d444a61cab89c48a89ddd3e8d Mon Sep 17 00:00:00 2001
+From: Jason Dillaman <dillaman@redhat.com>
+Date: Thu, 29 Jun 2017 14:54:40 -0400
+Subject: [PATCH] rbd: do not attempt to load key if auth is disabled
+
+Fixes: http://tracker.ceph.com/issues/19035
+Signed-off-by: Jason Dillaman <dillaman@redhat.com>
+(cherry picked from commit 8b9c8df6d7f0b75c5451953bb322bc1f9afb6299)
+---
+ src/krbd.cc | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/src/krbd.cc b/src/krbd.cc
+index a0e546fa7f6f..2bb6b4270abd 100644
+--- a/src/krbd.cc
++++ b/src/krbd.cc
+@@ -129,13 +129,15 @@ static int build_map_buf(CephContext *cct, const char *pool, const char *image,
+   oss << " name=" << cct->_conf->name.get_id();
+ 
+   KeyRing keyring;
+-  r = keyring.from_ceph_context(cct);
+-  if (r == -ENOENT && !(cct->_conf->keyfile.length() ||
+-                        cct->_conf->key.length()))
+-    r = 0;
+-  if (r < 0) {
+-    cerr << "rbd: failed to get secret" << std::endl;
+-    return r;
++  if (cct->_conf->auth_client_required != "none") {
++    r = keyring.from_ceph_context(cct);
++    if (r == -ENOENT && !(cct->_conf->keyfile.length() ||
++                          cct->_conf->key.length()))
++      r = 0;
++    if (r < 0) {
++      cerr << "rbd: failed to get secret" << std::endl;
++      return r;
++    }
+   }
+ 
+   CryptoKey secret;

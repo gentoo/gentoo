@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ DESCRIPTION="Python extension to the AstroDienst Swiss Ephemeris"
 HOMEPAGE="https://github.com/astrorigin/pyswisseph"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/astrorigin/pyswisseph.git"
+	EGIT_REPO_URI="https://github.com/astrorigin/pyswisseph.git"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"

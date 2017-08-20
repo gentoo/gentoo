@@ -34,6 +34,10 @@ src_prepare() {
 	for i in ${PATCHLIST} ; do
 		epatch "${DISTDIR}/${i}"
 	done
+	# ocaml 4.04.2 support
+	cp -a ocaml_stuff/4.04.1 ocaml_stuff/4.04.2 || die
+	cp ocaml_src/lib/versdep/4.04.{1,2}.ml || die
+	sed -i -e 's/4.04.1/4.04.2/'  ocaml_stuff/4.04.2/utils/pconfig.ml || die
 }
 
 src_configure() {

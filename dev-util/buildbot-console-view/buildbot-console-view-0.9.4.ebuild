@@ -5,13 +5,13 @@ EAPI="5"
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python2_7 )
 
-EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
+EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
 DESCRIPTION="Buildbot console-view plugin"
-HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-console-view"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-console-view"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"

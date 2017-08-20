@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 # The built-in ipaddress module handles the parsing of IP addresses. If
 # python is built without ipv6 support, then ipaddress can't parse ipv6

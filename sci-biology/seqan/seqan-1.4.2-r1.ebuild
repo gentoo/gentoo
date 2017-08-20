@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-any-r1
 
 DESCRIPTION="C++ Sequence Analysis Library"
 HOMEPAGE="http://www.seqan.de/"
@@ -15,19 +15,27 @@ SLOT="$(get_version_component_range 1-2)"
 LICENSE="BSD GPL-3"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_sse4_1 test"
-DEPEND="sys-libs/zlib
+REQUIRED_USE="cpu_flags_x86_sse4_1"
+
+RDEPEND="
 	app-arch/bzip2
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE} cpu_flags_x86_sse4_1"
-
-#S="${WORKDIR}"/${PN}-${PN}-v${PV}
+	sys-libs/zlib"
+DEPEND="
+	${RDEPEND}
+	test? (
+		$(python_gen_any_dep 'dev-python/nose[${PYTHON_USEDEP}]')
+		${PYTHON_DEPS}
+	)"
 
 PATCHES=(
 	"${FILESDIR}/${P}-shared.patch"
 	"${FILESDIR}/${P}-include.patch"
 	"${FILESDIR}/${P}-buildsystem.patch"
 )
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	# pkg-config file, taken from seqan 2.1

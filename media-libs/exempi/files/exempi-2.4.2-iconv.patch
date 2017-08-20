@@ -1,0 +1,41 @@
+From a2b822c85c52c96b04192a4923c9edbf9d144343 Mon Sep 17 00:00:00 2001
+From: Samuli Suominen <ssuominen@gentoo.org>
+Date: Sun, 16 Apr 2017 20:11:57 +0200
+Subject: [PATCH] Fix build on systems not using glibc's libiconv
+
+Fixes: https://bugs.gentoo.org/show_bug.cgi?id=242812
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+
+---
+ XMPFiles/source/Makefile.am | 3 ++-
+ configure.ac                | 2 ++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/XMPFiles/source/Makefile.am b/XMPFiles/source/Makefile.am
+index 6d1a1d3..d1020d0 100644
+--- a/XMPFiles/source/Makefile.am
++++ b/XMPFiles/source/Makefile.am
+@@ -53,5 +53,6 @@ libXMPFiles_la_SOURCES = WXMPFiles.cpp XMPFiles.cpp \
+ libXMPFiles_la_LIBADD = ./FileHandlers/libxmpfilehandlers.la \
+ 	./FormatSupport/libformatsupport.la \
+ 	./PluginHandler/libpluginhandler.la \
+-	./NativeMetadataSupport/libnativemetadata.la
++	./NativeMetadataSupport/libnativemetadata.la \
++	@LTLIBICONV@
+ #libXMPFiles_la_LDFLAGS = -version-info @LIBXMPCORE_VERSION_INFO@
+diff --git a/configure.ac b/configure.ac
+index a4ee14f..e1033c1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,6 +115,8 @@ AC_CHECK_HEADER(iconv.h, ,
+ AC_CHECK_HEADER(zlib.h, ,
+ 	 AC_MSG_ERROR([zlib headers missing]))
+ 
++AM_ICONV_LINK
++
+ dnl Blatently copied from iconv.m4 to remove the crack about libtool
+ dnl But check for constness of the iconv parameters.
+ AC_MSG_CHECKING([for iconv declaration])
+-- 
+2.12.2
+

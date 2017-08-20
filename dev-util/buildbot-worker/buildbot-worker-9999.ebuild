@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo user distutils-r1
 
-DESCRIPTION="BuildBot Slave Daemon"
-HOMEPAGE="http://buildbot.net/ http://code.google.com/p/buildbot/ http://pypi.python.org/pypi/buildbot-worker"
+DESCRIPTION="BuildBot Worker (slave) Daemon"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
@@ -26,11 +26,9 @@ fi
 IUSE="test"
 
 RDEPEND=">=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-core-8.0.0[${PYTHON_USEDEP}]
-	)
+	>=dev-python/twisted-17.5.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
-	!<dev-util/buildbot-0.9.0_rc1
+	!<dev-util/buildbot-0.9.7
 "
 DEPEND="${RDEPEND}
 	test? (

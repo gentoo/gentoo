@@ -5,7 +5,7 @@ EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3
@@ -28,10 +28,10 @@ REQUIRED_USE="
 RDEPEND="
 	!!dev-qt/qtphonon:4
 	qt4? (
-		dev-qt/qtcore:4[${MULTILIB_USEDEP}]
-		dev-qt/qtdbus:4[${MULTILIB_USEDEP}]
-		dev-qt/qtgui:4[${MULTILIB_USEDEP}]
-		designer? ( dev-qt/designer:4[${MULTILIB_USEDEP}] )
+		>=dev-qt/qtcore-4.8.7-r2:4[${MULTILIB_USEDEP}]
+		>=dev-qt/qtdbus-4.8.7:4[${MULTILIB_USEDEP}]
+		>=dev-qt/qtgui-4.8.7:4[${MULTILIB_USEDEP}]
+		designer? ( >=dev-qt/designer-4.8.7:4[${MULTILIB_USEDEP}] )
 	)
 	qt5? (
 		dev-qt/qtcore:5
@@ -59,6 +59,10 @@ PDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
 
 pkg_setup() {
+	if use qt4 && [[ $(gcc-major-version) -lt 5 ]] ; then
+		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
+	fi
+
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
 }
 

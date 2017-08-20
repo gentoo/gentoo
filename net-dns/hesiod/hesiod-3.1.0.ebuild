@@ -1,17 +1,17 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 inherit flag-o-matic eutils autotools
 
-DESCRIPTION="Use DNS functionality to provide access to databases of information that changes infrequently"
+DESCRIPTION="DNS functionality to access to DB of information that changes infrequently"
 HOMEPAGE="ftp://athena-dist.mit.edu/pub/ATHENA/hesiod"
 SRC_URI="ftp://athena-dist.mit.edu/pub/ATHENA/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}-patches.tgz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 src_prepare() {

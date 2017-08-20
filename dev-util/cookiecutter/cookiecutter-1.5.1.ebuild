@@ -3,9 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit vcs-snapshot distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Command-line utility to create projects from cookiecutters (project templates)"
 HOMEPAGE="https://github.com/audreyr/cookiecutter"
@@ -16,8 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-
-RESTRICT="test" # tests currently fail here
 
 RDEPEND=">=dev-python/binaryornot-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/future-0.15.2[${PYTHON_USEDEP}]
@@ -32,7 +30,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.1[${PYTHON_USEDEP}]
-		dev-python/pytest-capturelog[${PYTHON_USEDEP}]
+		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}] )"
 
 DOCS=( README.rst HISTORY.rst CONTRIBUTING.rst )

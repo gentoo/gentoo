@@ -17,6 +17,6 @@ Pyocr can be used as a wrapper for google's Tesseract-OCR or Cuneiform. It can r
 		<flag name="tesseract">Enable support for the <pkg>app-text/tesseract</pkg> OCR engine</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">jflesch/pyocr</remote-id>
+		<remote-id type="github">openpaperwork/pyocr</remote-id>
 	</upstream>
 </pkgmetadata>

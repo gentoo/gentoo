@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 IUSE="doc examples"
 
 DEPEND="
@@ -22,7 +22,10 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/pyasn1-0.1.2[${PYTHON_USEDEP}]
-	dev-python/pycrypto[${PYTHON_USEDEP}]
+	|| (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
+	)
 "
 
 python_compile_all() {
@@ -46,5 +49,5 @@ pkg_postinst() {
 	elog "You may also be interested in the following packages: "
 	elog "dev-python/pysnmp-apps - example programs using pysnmp"
 	elog "dev-python/pysnmp-mibs - IETF and other mibs"
-	elog "net-libs/libsmi - to dump MIBs in python format"
+	elog "dev-python/pysmi - to dump MIBs in python format"
 }

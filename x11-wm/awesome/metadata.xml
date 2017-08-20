@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>maksbotan@gentoo.org</email>
-    <name>Maxim Koltsov</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>skrattaren@yandex.ru</email>
-    <name>Nikolaj Sjujskij</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <use>
-    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
-  </use>
+	<maintainer type="person">
+		<email>t@tomoyat1.com</email>
+		<name>Tomoya Tabuchi</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>maksbotan@gentoo.org</email>
+		<name>Maxim Koltsov</name>
+	</maintainer>
+	<use>
+		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">awesomeWM/awesome</remote-id>
+	</upstream>
 </pkgmetadata>

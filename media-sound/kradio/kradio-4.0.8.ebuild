@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,7 @@ PLUGINS=(
 	soundserver streaming timecontrol timeshifter v4lradio
 )
 KDE_LINGUAS="cs de es is it pl pt pt_BR ru sk sr@latin tr uk"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 MY_P=${PN}4-${PV/_/-}

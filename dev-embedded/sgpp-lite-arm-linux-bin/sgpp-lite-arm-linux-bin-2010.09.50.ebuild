@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 CPU="arm"
@@ -6,7 +6,7 @@ TARGET="arm-none-linux-gnueabi"
 HOST="i686-pc-linux-gnu"
 MY_P="${CPU}-${PV%.*}-${PV##*.}-${TARGET}-${HOST}"
 
-DESCRIPTION="regular, validated releases of the GNU Toolchain for ${CPU} processors by CodeSourcery"
+DESCRIPTION="Regular, validated releases of the GNU Toolchain for ${CPU} processors"
 HOMEPAGE="http://www.codesourcery.com/sgpp/lite/${CPU}"
 SRC_URI="http://www.codesourcery.com/public/gnu_toolchain/${TARGET}/${MY_P}.tar.bz2"
 

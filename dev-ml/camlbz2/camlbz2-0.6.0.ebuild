@@ -11,12 +11,16 @@ SRC_URI="http://forge.ocamlcore.org/frs/download.php/72/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="doc"
 
 DEPEND="app-arch/bzip2
 	>=dev-lang/ocaml-3.12:=[ocamlopt]"
 RDEPEND="${DEPEND}"
+
+src_compile() {
+	emake -j1
+}
 
 src_install() {
 	findlib_src_preinst

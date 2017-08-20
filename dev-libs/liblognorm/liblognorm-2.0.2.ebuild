@@ -9,10 +9,7 @@ DESCRIPTION="Fast samples-based log normalization library"
 HOMEPAGE="http://www.liblognorm.com"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="
-		git://github.com/rsyslog/${PN}.git
-		https://github.com/rsyslog/${PN}.git
-	"
+	EGIT_REPO_URI="https://github.com/rsyslog/${PN}.git"
 
 	inherit git-r3
 else

@@ -1,45 +1,37 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="6"
 
-DESCRIPTION="The M17N engine IMEngine for IBus Framework"
+DESCRIPTION="M17N engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gtk nls"
+IUSE="gtk gtk2 nls"
 
-RDEPEND=">=app-i18n/ibus-1.3
-	gtk? ( >=x11-libs/gtk+-2.12.12:2 )
+CDEPEND="app-i18n/ibus
 	dev-libs/m17n-lib
+	gtk? (
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3 )
+	)
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	>=sys-devel/gettext-0.16.1"
-RDEPEND="${RDEPEND}
-	dev-db/m17n-db
-	dev-db/m17n-contrib"
-#	gtk? (
-#		|| (
-#			>=x11-libs/gtk+-2.90.5:3
-#			>=x11-libs/gtk+-2.12.12:2
-#		)
-#	)
+RDEPEND="${CDEPEND}
+	|| (
+		>=dev-db/m17n-db-1.7
+		dev-db/m17n-contrib
+	)"
+DEPEND="${CDEPEND}
+	dev-util/intltool
+	sys-devel/gettext
+	virtual/pkgconfig"
+REQUIRED_USE="gtk2? ( gtk )"
 
 src_configure() {
-	local myconf
-
 	econf \
-		$(use_with gtk gtk 2.0) \
 		$(use_enable nls) \
-		${myconf} || die
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-
-	dodoc AUTHORS ChangeLog NEWS README || die
+		$(use_with gtk gtk $(usex gtk2 2.0 3.0))
 }

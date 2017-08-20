@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	epatch "${FILESDIR}/debug-disable-enable-1.0.18.patch"
 	epatch "${FILESDIR}/continuum-1.0.18.patch"
+	epatch "${FILESDIR}"/${P}-gcc7.patch
 	sed -i '6i CFLAGS = @CFLAGS@' Makefile.am
 	sed -e "/_APPEND_COMPILE_FLAGS_ERROR(\[-fmudflapth\?\])/d" -i m4/ax_harden_compiler_flags.m4
 	eautoreconf

@@ -1,20 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit eutils multilib pam linux-info autotools multilib-minimal python-r1 systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
-HOMEPAGE="http://fedorahosted.org/sssd/"
-SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
+HOMEPAGE="https://pagure.io/sssd/sssd"
+SRC_URI="https://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="acl augeas autofs +locator netlink nfsv4 nls +manpages python samba selinux sudo ssh test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEP="
 	>=virtual/pam-0-r1[${MULTILIB_USEDEP}]
@@ -35,6 +36,7 @@ COMMON_DEP="
 	>=sys-apps/keyutils-1.5
 	>=net-dns/c-ares-1.7.4
 	>=dev-libs/nss-3.12.9
+	python? ( ${PYTHON_DEPS} )
 	selinux? (
 		>=sys-libs/libselinux-2.1.9
 		>=sys-libs/libsemanage-2.1
@@ -203,10 +205,4 @@ multilib_src_install_all() {
 
 multilib_src_test() {
 	default
-}
-
-pkg_postinst(){
-	elog "You must set up sssd.conf (default installed into /etc/sssd)"
-	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
-	elog "features. Please see howto in	http://fedorahosted.org/sssd/wiki/HOWTO_Configure_1_0_2"
 }

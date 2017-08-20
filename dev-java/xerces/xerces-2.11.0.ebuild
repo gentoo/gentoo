@@ -9,7 +9,7 @@ inherit eutils versionator java-pkg-2 java-ant-2
 
 DIST_PN="Xerces-J"
 SRC_PV="$(replace_all_version_separators _ )"
-DESCRIPTION="The next generation of high performance, fully compliant XML parsers in the Apache Xerces family"
+DESCRIPTION="The next generation of high performance, fully compliant XML parsers"
 HOMEPAGE="http://xml.apache.org/xerces2-j/index.html"
 SRC_URI="mirror://apache/${PN}/j/${DIST_PN}-src.${PV}.tar.gz"
 

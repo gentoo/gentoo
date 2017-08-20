@@ -5,10 +5,10 @@ EAPI=6
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime git-r3 pax-utils eutils versionator
 
-EGIT_REPO_URI="git://github.com/darktable-org/darktable.git"
+EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
-HOMEPAGE="http://www.darktable.org/"
+HOMEPAGE="https://www.darktable.org/"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
@@ -53,7 +53,10 @@ CDEPEND="
 	openexr? ( media-libs/openexr:0= )
 	webp? ( media-libs/libwebp:0= )"
 RDEPEND="${CDEPEND}
-	kwallet? ( kde-apps/kwalletd:4 )"
+	kwallet? ( || (
+		>=kde-frameworks/kwallet-5.34.0-r1
+		kde-apps/kwalletd:4
+	) )"
 DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig

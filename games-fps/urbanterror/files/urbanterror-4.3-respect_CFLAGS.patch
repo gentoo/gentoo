@@ -1,0 +1,53 @@
+Author: holgersson <holgersson@posteo.de>
+Date:   Fri Mar 31 12:13:00 2017 +0200
+
+Respect CFLAGS - inspired by hasufell’s patch
+
+--- a/Makefile	2017-03-31 11:08:58.419210817 +0200
++++ b/Makefile	2017-03-31 12:06:52.559412054 +0200
+@@ -290,34 +290,33 @@
+ CLIENT_EXTRA_FILES=
+
+ ifneq (,$(findstring "$(PLATFORM)", "linux" "gnu_kfreebsd" "kfreebsd-gnu" "gnu"))
+-  BASE_CFLAGS = -Wall -fno-strict-aliasing -Wimplicit -Wstrict-prototypes \
+-    -pipe -DUSE_ICON -DARCH_STRING=\\\"$(ARCH)\\\"
++  BASE_CFLAGS = -DUSE_ICON -DARCH_STRING=\\\"$(ARCH)\\\"
+   CLIENT_CFLAGS += $(SDL_CFLAGS)
+
+-  OPTIMIZEVM = -O3
+-  OPTIMIZE = $(OPTIMIZEVM) -ffast-math
++  OPTIMIZEVM =
++  OPTIMIZE = $(OPTIMIZEVM)
+
+   ifeq ($(ARCH),x86_64)
+-    OPTIMIZEVM = -O3
+-    OPTIMIZE = $(OPTIMIZEVM) -ffast-math
++    OPTIMIZEVM =
++    OPTIMIZE = $(OPTIMIZEVM)
+     HAVE_VM_COMPILED = true
+   else
+   ifeq ($(ARCH),x86)
+-    OPTIMIZEVM = -O3 -march=i586
+-    OPTIMIZE = $(OPTIMIZEVM) -ffast-math
++    OPTIMIZEVM =
++    OPTIMIZE = $(OPTIMIZEVM)
+     HAVE_VM_COMPILED=true
+   else
+   ifeq ($(ARCH),ppc)
+-    BASE_CFLAGS += -maltivec
++    BASE_CFLAGS +=
+     HAVE_VM_COMPILED=true
+   endif
+   ifeq ($(ARCH),ppc64)
+-    BASE_CFLAGS += -maltivec
++    BASE_CFLAGS +=
+     HAVE_VM_COMPILED=true
+   endif
+   ifeq ($(ARCH),sparc)
+-    OPTIMIZE += -mtune=ultrasparc3 -mv8plus
+-    OPTIMIZEVM += -mtune=ultrasparc3 -mv8plus
++    OPTIMIZE +=
++    OPTIMIZEVM +=
+     HAVE_VM_COMPILED=true
+   endif
+   ifeq ($(ARCH),armv7l)

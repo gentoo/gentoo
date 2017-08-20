@@ -1,0 +1,10 @@
+--- a/unetbootin.ui
++++ b/unetbootin.ui
+@@ -708,7 +708,6 @@
+   <tabstop>driveselect</tabstop>
+   <tabstop>okbutton</tabstop>
+   <tabstop>cancelbutton</tabstop>
+-  <tabstop>frebootbutton</tabstop>
+   <tabstop>fexitbutton</tabstop>
+   <tabstop>intromessage</tabstop>
+   <tabstop>rebootmsgtext</tabstop>

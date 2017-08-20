@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 	sed -i -e "s:doc/cdbkup:doc/${P}:" Makefile.in || die
+	sed -i -e 's/make /$(MAKE) /' Makefile.in || die
 }
 
 src_configure() {

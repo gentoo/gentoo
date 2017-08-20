@@ -9,13 +9,14 @@ inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20161014"
-EXTRAS_VER="1.35"
+MY_RELEASEDATE="20170804"
+EXTRAS_VER="1.36"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
 IUSE="audit pam dbus"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -23,13 +24,13 @@ HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	SRC_URI="https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
 	S1="${WORKDIR}/${MY_P}/${PN}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz
-		https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
+		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 	S1="${WORKDIR}/${MY_P}"
 	S2="${WORKDIR}/policycoreutils-extra"
@@ -39,20 +40,20 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
+DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/glibc-2.4
 	>=sys-libs/libcap-1.10-r10:=
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python]
+	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
-	>=app-admin/setools-4.0
+	>=app-admin/setools-4.1.1[${PYTHON_USEDEP}]
 	sys-devel/gettext
 	dev-python/ipy[${PYTHON_USEDEP}]
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib:=
 	)
-	audit? ( >=sys-process/audit-1.5.1[python] )
+	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}
 	!<sec-policy/selinux-base-policy-2.20151208-r6"
@@ -82,12 +83,7 @@ src_prepare() {
 	cd "${S}" || die "Failed to switch to ${S}"
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live ebuilds please use /etc/portage/patches
-		eapply "${FILESDIR}/0010-remove-sesandbox-support.patch"
-		eapply "${FILESDIR}/0020-disable-autodetection-of-pam-and-audit.patch"
-		eapply "${FILESDIR}/0030-make-inotify-check-use-flag-triggered.patch"
-		eapply "${FILESDIR}/0070-remove-symlink-attempt-fails-with-gentoo-sandbox-approach.patch"
-		eapply "${FILESDIR}/0110-build-mcstrans-bug-472912.patch"
-		eapply "${FILESDIR}/0120-build-failure-for-mcscolor-for-CONTEXT__CONTAINS.patch"
+		eapply "${FILESDIR}/policycoreutils-2.7-0001-newrole-not-suid.patch"
 	fi
 
 	# rlpkg is more useful than fixfiles
@@ -113,9 +109,9 @@ src_compile() {
 	building() {
 		emake -C "${BUILD_DIR}" \
 			AUDIT_LOG_PRIVS="y" \
-			AUDITH="$(usex audit)" \
-			PAMH="$(usex pam)" \
-			INOTIFYH="$(usex dbus)" \
+			AUDITH="$(usex audit y n)" \
+			PAMH="$(usex pam y n)" \
+			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			PYLIBVER="${EPYTHON}" \
@@ -132,9 +128,9 @@ src_install() {
 	installation-policycoreutils() {
 		einfo "Installing policycoreutils"
 		emake -C "${BUILD_DIR}" DESTDIR="${D}" \
-			AUDITH="$(usex audit)" \
-			PAMH="$(usex pam)" \
-			INOTIFYH="$(usex dbus)" \
+			AUDITH="$(usex audit y n)" \
+			PAMH="$(usex pam y n)" \
+			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			AUDIT_LOG_PRIV="y" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \

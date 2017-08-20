@@ -24,11 +24,10 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local mycmakeargs=( -DSPDLOG_BUILD_EXAMPLES=no )
-	if [[ ${PV} == *9999 ]]; then
-		mycmakeargs+=( -DSPDLOG_BUILD_TESTING=$(usex test) )
-	else
-		mycmakeargs+=( -DSPDLOG_BUILD_TESTS=$(usex test) )
-	fi
+	local mycmakeargs=(
+			-DSPDLOG_BUILD_EXAMPLES=no
+			-DSPDLOG_BUILD_TESTING=$(usex test)
+	)
+
 	cmake-utils_src_configure
 }

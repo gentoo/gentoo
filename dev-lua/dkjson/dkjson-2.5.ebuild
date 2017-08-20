@@ -11,7 +11,7 @@ SRC_URI="http://dkolf.de/src/dkjson-lua.fsl/tarball/${P}.tar.gz?uuid=release_2_5
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND=">=dev-lang/lua-5.1:=

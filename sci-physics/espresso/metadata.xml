@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -14,4 +14,7 @@
     <flag name="examples">Installs the examples</flag>
     <flag name="packages">Installs extra TCL subpackages</flag>
   </use>
+  <upstream>
+    <remote-id type="github">espressomd/espresso</remote-id>
+  </upstream>
 </pkgmetadata>

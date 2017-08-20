@@ -1,0 +1,10 @@
+diff -Naur virglrenderer-0.5.0.orig/src/Makefile.am virglrenderer-0.5.0/src/Makefile.am
+--- virglrenderer-0.5.0.orig/src/Makefile.am	2016-04-11 11:23:51.000000000 +0600
++++ virglrenderer-0.5.0/src/Makefile.am	2016-11-18 04:44:32.278594781 +0600
+@@ -1,5 +1,6 @@
+ SUBDIRS := gallium/auxiliary
+ AM_LDFLAGS = -lm \
++	$(LIBDRM_LIBS) \
+ 	$(GBM_LIBS) \
+ 	$(EPOXY_LIBS) \
+ 	$(CODE_COVERAGE_LDFLAGS)

@@ -14,7 +14,7 @@ DESCRIPTION="Digital photo management application"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble semantic-desktop mysql opengl openmp +panorama scanner X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
@@ -105,6 +105,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT=test
 # bug 366505
+
+PATCHES=( "${FILESDIR}/${P}-cmake-3.9.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

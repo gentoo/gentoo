@@ -1,0 +1,101 @@
+From d612219a1a3bfe14f0cd1de59709724b35d7f21c Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Tue, 20 Jun 2017 05:45:39 +1200
+Subject: [PATCH] Fix for '.' in @INC
+
+---
+ t/blessed_pp.t  | 4 ++--
+ t/check_pp.t    | 4 ++--
+ t/classify_pp.t | 4 ++--
+ t/error_pp.t    | 4 ++--
+ t/pod_cvg_pp.t  | 4 ++--
+ t/ref_pp.t      | 4 ++--
+ 6 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/t/blessed_pp.t b/t/blessed_pp.t
+index 84caf74..e6d1865 100644
+--- a/t/blessed_pp.t
++++ b/t/blessed_pp.t
+@@ -1,7 +1,7 @@
+ use warnings;
+ use strict;
+ 
+-do "t/setup_pp.pl" or die $@ || $!;
+-do "t/blessed.t" or die $@ || $!;
++do "./t/setup_pp.pl" or die $@ || $!;
++do "./t/blessed.t" or die $@ || $!;
+ 
+ 1;
+diff --git a/t/check_pp.t b/t/check_pp.t
+index ce2ef1d..5564360 100644
+--- a/t/check_pp.t
++++ b/t/check_pp.t
+@@ -1,7 +1,7 @@
+ use warnings;
+ use strict;
+ 
+-do "t/setup_pp.pl" or die $@ || $!;
+-do "t/check.t" or die $@ || $!;
++do "./t/setup_pp.pl" or die $@ || $!;
++do "./t/check.t" or die $@ || $!;
+ 
+ 1;
+diff --git a/t/classify_pp.t b/t/classify_pp.t
+index facdab2..1dd9cbc 100644
+--- a/t/classify_pp.t
++++ b/t/classify_pp.t
+@@ -1,7 +1,7 @@
+ use warnings;
+ use strict;
+ 
+-do "t/setup_pp.pl" or die $@ || $!;
+-do "t/classify.t" or die $@ || $!;
++do "./t/setup_pp.pl" or die $@ || $!;
++do "./t/classify.t" or die $@ || $!;
+ 
+ 1;
+diff --git a/t/error_pp.t b/t/error_pp.t
+index 6473533..a018e32 100644
+--- a/t/error_pp.t
++++ b/t/error_pp.t
+@@ -1,7 +1,7 @@
+ use warnings;
+ use strict;
+ 
+-do "t/setup_pp.pl" or die $@ || $!;
+-do "t/error.t" or die $@ || $!;
++do "./t/setup_pp.pl" or die $@ || $!;
++do "./t/error.t" or die $@ || $!;
+ 
+ 1;
+diff --git a/t/pod_cvg_pp.t b/t/pod_cvg_pp.t
+index 960bc4f..8503674 100644
+--- a/t/pod_cvg_pp.t
++++ b/t/pod_cvg_pp.t
+@@ -1,7 +1,7 @@
+ use warnings;
+ use strict;
+ 
+-do "t/setup_pp.pl" or die $@ || $!;
+-do "t/pod_cvg.t" or die $@ || $!;
++do "./t/setup_pp.pl" or die $@ || $!;
++do "./t/pod_cvg.t" or die $@ || $!;
+ 
+ 1;
+diff --git a/t/ref_pp.t b/t/ref_pp.t
+index f3b5941..55f487d 100644
+--- a/t/ref_pp.t
++++ b/t/ref_pp.t
+@@ -1,7 +1,7 @@
+ use warnings;
+ use strict;
+ 
+-do "t/setup_pp.pl" or die $@ || $!;
+-do "t/ref.t" or die $@ || $!;
++do "./t/setup_pp.pl" or die $@ || $!;
++do "./t/ref.t" or die $@ || $!;
+ 
+ 1;
+-- 
+2.13.1
+

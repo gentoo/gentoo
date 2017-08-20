@@ -4,8 +4,8 @@
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="A volume control application (and panel plug-in) for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/xfce4-mixer/"
+DESCRIPTION="A volume control application and panel plug-in for Xfce"
+HOMEPAGE="https://git.xfce.org/apps/xfce4-mixer/"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

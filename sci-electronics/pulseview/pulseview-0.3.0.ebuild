@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit cmake-utils python-single-r1
 
@@ -56,4 +56,10 @@ src_configure() {
 		-DFORCE_QT4=$(usex qt4)
 	)
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	newicon "${S}"/icons/sigrok-logo-notext.png ${PN}.png
+	domenu "${FILESDIR}"/${PN}.desktop
 }

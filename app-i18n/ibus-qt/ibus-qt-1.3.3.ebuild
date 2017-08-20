@@ -1,51 +1,50 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit cmake-utils eutils multilib
+EAPI="6"
+
+inherit cmake-utils
 
 DESCRIPTION="Qt IBus library and Qt input method plugin"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://github.com/ibus/ibus-qt/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ibus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-RDEPEND=">=app-i18n/ibus-1.3.7
-	>=sys-apps/dbus-1.2
-	x11-libs/libX11
-	>=dev-qt/qtcore-4.5:4
-	>=dev-qt/qtdbus-4.5:4"
+RDEPEND="app-i18n/ibus
+	dev-libs/icu:=
+	dev-qt/qtcore:4
+	dev-qt/qtdbus:4
+	dev-qt/qtgui:4
+	sys-apps/dbus
+	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	>=dev-libs/icu-4:=
-	dev-util/cmake
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-DOCS="AUTHORS README TODO"
-
-PATCHES=( "${FILESDIR}"/${PN}-1.3-doc.patch )
+PATCHES=( "${FILESDIR}"/${PN}-doc.patch )
 
 src_configure() {
-	local mycmakeargs=( -DLIBDIR=$(get_libdir) all )
-
+	local mycmakeargs=(
+		-DLIBDIR=$(get_libdir)
+	)
 	cmake-utils_src_configure
 }
 
 src_compile() {
 	cmake-utils_src_compile
 
-	if use doc ; then
-		cd "${CMAKE_BUILD_DIR}"
-		emake docs || die
+	if use doc; then
+		emake -C "${BUILD_DIR}" docs
 	fi
 }
 
 src_install() {
-	if use doc ; then
-		HTML_DOCS="${CMAKE_BUILD_DIR}/docs/html/*"
+	if use doc; then
+		HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
 
 	cmake-utils_src_install

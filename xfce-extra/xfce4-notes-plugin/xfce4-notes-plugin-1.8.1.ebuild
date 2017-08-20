@@ -5,7 +5,7 @@ EAPI=5
 inherit versionator xfconf
 
 DESCRIPTION="Xfce4 panel sticky notes plugin"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-notes-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-notes-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/$(get_version_component_range 1-2)/${P}.tar.bz2"
 
 LICENSE="GPL-2"

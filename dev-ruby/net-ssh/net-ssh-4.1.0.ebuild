@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_TEST=""
 
@@ -22,7 +22,7 @@ SLOT="4"
 KEYWORDS="~amd64"
 IUSE="sodium test"
 
-ruby_add_rdepend "virtual/ruby-ssl sodium? ( dev-ruby/rbnacl dev-ruby/bcrypt_pbkdf )"
+ruby_add_rdepend "virtual/ruby-ssl sodium? ( dev-ruby/rbnacl:4 dev-ruby/bcrypt_pbkdf )"
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 >=dev-ruby/mocha-0.13 )"
 
 all_ruby_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/tasty-hunit-0.8 <dev-haskell/tasty-hunit-0.10
 		>=dev-haskell/tasty-quickcheck-0.8 <dev-haskell/tasty-quickcheck-0.9 )
 "
+
+PATCHES=("${FILESDIR}"/${P}-fix-w8-tests.patch)
 
 src_configure() {
 	haskell-cabal_src_configure \

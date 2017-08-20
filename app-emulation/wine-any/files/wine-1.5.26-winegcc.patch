@@ -1,0 +1,59 @@
+http://bugs.gentoo.org/260726
+
+diff --git a/tools/winebuild/main.c b/tools/winebuild/main.c
+index 16b4165..5c77267 100644
+--- a/tools/winebuild/main.c
++++ b/tools/winebuild/main.c
+@@ -48,10 +48,13 @@ int link_ext_symbols = 0;
+ int force_pointer_size = 0;
+ int unwind_tables = 0;
+ 
++#undef FORCE_POINTER_SIZE
+ #ifdef __i386__
+ enum target_cpu target_cpu = CPU_x86;
++#define FORCE_POINTER_SIZE
+ #elif defined(__x86_64__)
+ enum target_cpu target_cpu = CPU_x86_64;
++#define FORCE_POINTER_SIZE
+ #elif defined(__powerpc__)
+ enum target_cpu target_cpu = CPU_POWERPC;
+ #elif defined(__arm__)
+@@ -611,6 +614,10 @@ int main(int argc, char **argv)
+     signal( SIGTERM, exit_on_signal );
+     signal( SIGINT, exit_on_signal );
+ 
++#ifdef FORCE_POINTER_SIZE
++    force_pointer_size = sizeof(size_t);
++#endif
++
+     output_file = stdout;
+     argv = parse_options( argc, argv, spec );
+ 
+diff --git a/tools/winegcc/winegcc.c b/tools/winegcc/winegcc.c
+index 06aa200..c44d2e3 100644
+--- a/tools/winegcc/winegcc.c
++++ b/tools/winegcc/winegcc.c
+@@ -213,10 +213,13 @@ struct options
+     strarray* files;
+ };
+ 
++#undef FORCE_POINTER_SIZE
+ #ifdef __i386__
+ static const enum target_cpu build_cpu = CPU_x86;
++#define FORCE_POINTER_SIZE
+ #elif defined(__x86_64__)
+ static const enum target_cpu build_cpu = CPU_x86_64;
++#define FORCE_POINTER_SIZE
+ #elif defined(__powerpc__)
+ static const enum target_cpu build_cpu = CPU_POWERPC;
+ #elif defined(__arm__)
+@@ -1258,6 +1261,9 @@ int main(int argc, char **argv)
+     opts.linker_args = strarray_alloc();
+     opts.compiler_args = strarray_alloc();
+     opts.winebuild_args = strarray_alloc();
++#ifdef FORCE_POINTER_SIZE
++    opts.force_pointer_size = sizeof(size_t);
++#endif
+ 
+     /* determine the processor type */
+     if (strendswith(argv[0], "winecpp")) opts.processor = proc_cpp;

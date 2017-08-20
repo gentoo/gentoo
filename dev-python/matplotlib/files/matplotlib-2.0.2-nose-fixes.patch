@@ -1,0 +1,13 @@
+diff --git a/lib/matplotlib/__init__.py b/lib/matplotlib/__init__.py
+index 530c889a9..8231c2bb8 100644
+--- a/lib/matplotlib/__init__.py
++++ b/lib/matplotlib/__init__.py
+@@ -1609,7 +1609,7 @@ def test(verbosity=1):
+ 
+         # store the old values before overriding
+         plugins = _get_extra_test_plugins()
+-        plugins.extend([plugin() for plugin in nose.plugins.builtin.plugins])
++        plugins.extend(nose.plugins.builtin.plugins)
+ 
+         manager = PluginManager(plugins=[x() for x in plugins])
+         config = nose.config.Config(verbosity=verbosity, plugins=manager)

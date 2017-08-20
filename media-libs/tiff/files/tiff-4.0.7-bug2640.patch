@@ -1,0 +1,28 @@
+From 548b62fae49637b621766c721884d59a55c9a2d8 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Tue, 20 Dec 2016 17:28:17 +0000
+Subject: [PATCH] * tools/tiff2pdf.c: avoid potential heap-based overflow in
+ t2p_readwrite_pdf_image_tile(). Fixes
+ http://bugzilla.maptools.org/show_bug.cgi?id=2640
+
+---
+ ChangeLog        | 6 ++++++
+ tools/tiff2pdf.c | 4 ++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tools/tiff2pdf.c b/tools/tiff2pdf.c
+index 5348f1a765fe..8e4e24ef9e82 100644
+--- a/tools/tiff2pdf.c
++++ b/tools/tiff2pdf.c
+@@ -2895,7 +2895,7 @@ tsize_t t2p_readwrite_pdf_image_tile(T2P* t2p, TIFF* input, TIFF* output, ttile_
+ 				return(0);
+ 			}
+ 			if(TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt) != 0) {
+-				if (count >= 4) {
++				if (count > 4) {
+                                         int retTIFFReadRawTile;
+                     /* Ignore EOI marker of JpegTables */
+ 					_TIFFmemcpy(buffer, jpt, count - 2);
+-- 
+2.12.0
+

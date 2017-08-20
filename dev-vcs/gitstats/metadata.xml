@@ -13,7 +13,7 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
-  <upstream>
-    <remote-id type="sourceforge">gitstats</remote-id>
-  </upstream>
+	<upstream>
+		<remote-id type="sourceforge">gitstats</remote-id>
+	</upstream>
 </pkgmetadata>

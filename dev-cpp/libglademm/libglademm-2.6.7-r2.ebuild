@@ -8,7 +8,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit flag-o-matic gnome2 multilib-minimal
 
 DESCRIPTION="C++ bindings for libglade"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.4"

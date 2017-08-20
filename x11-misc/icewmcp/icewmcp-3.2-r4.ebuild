@@ -13,8 +13,10 @@ SRC_URI="mirror://sourceforge/icesoundmanager/${MY_PN}-${PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	${PYTHON_DEPS}
 	dev-python/pygtk:2
 	x11-libs/gtk+:2
 	x11-wm/icewm

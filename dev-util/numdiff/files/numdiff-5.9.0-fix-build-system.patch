@@ -1,0 +1,166 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,7 +24,7 @@
+ 
+ AC_INIT(Numdiff, 5.9, <ivprimi at libero dot it>, numdiff)
+ AC_CONFIG_SRCDIR(numdiff.h)
+-AC_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl --------------------------------------
+ dnl My own flags
+@@ -82,6 +82,7 @@
+ 
+ AC_ARG_ENABLE(nls, [  --enable-nls            turn on Natural Language Support  [default=yes]],
+                  , enable_nls=yes)
++AC_SUBST([enable_nls])
+ 
+ AC_ARG_ENABLE(gmp, [  --enable-gmp            turn on use of GNU MP  [default=yes]],
+                  , enable_gmp=yes)
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -19,18 +19,18 @@
+ prefix          =@prefix@
+ exec_prefix     =@exec_prefix@
+ bindir          =@bindir@
+-docdir		=@docdir@
+-localedir	=@localedir@
+-infodir		=@infodir@
++datarootdir     =@datarootdir@
++docdir          =@docdir@
++localedir       =@localedir@
++infodir         =@infodir@
++htmldir         =@htmldir@
++pdfdir          =@pdfdir@
+ mandir          =@mandir@
++man1dir         =$(mandir)/man1
+ srcdir          =@srcdir@
+ VPATH           =@srcdir@
+ 
+-BINDIR=$(bindir)
+-DOCDIR=$(docdir)/$(PACKAGE)
+-INFODIR=$(infodir)
+-LOCALEDIR=$(localedir)
+-MANDIR=$(mandir)/man1
++enable_nls      =@enable_nls@
+ 
+ CC=@CC@
+ @SET_MAKE@
+@@ -62,7 +62,7 @@
+ HELP2MAN=help2man -s 1 -m "User Commands"
+ 
+ # flags for the preprocessor:
+-CPPFLAGS        =-DPACKAGE="\"$(PACKAGE)\"" -DPACKAGE2="\"$(PACKAGETWO)\"" -DLOCALEDIR="\"$(LOCALEDIR)\"" -I$(srcdir) -I. @CPPFLAGS@
++CPPFLAGS        =-DPACKAGE="\"$(PACKAGE)\"" -DPACKAGE2="\"$(PACKAGETWO)\"" -DLOCALEDIR="\"$(localedir)\"" -I$(srcdir) -I. @CPPFLAGS@
+ # flags for the C compiler:
+ CFLAGS          =@CFLAGS@
+ 
+@@ -77,7 +77,7 @@
+ SOURCESONE=$(srcdir)/analyze.c $(srcdir)/arith.c $(srcdir)/bitvector.c $(srcdir)/cmpbuf.c $(srcdir)/cmpfns.c $(srcdir)/error.c $(srcdir)/errors.c $(srcdir)/exitfail.c $(srcdir)/flags.c $(srcdir)/getopt.c $(srcdir)/getopt1.c $(srcdir)/inout.c $(srcdir)/io.c $(srcdir)/linesplit.c $(srcdir)/main.c $(srcdir)/new.c $(srcdir)/number.c $(srcdir)/numutil.c $(srcdir)/options.c $(srcdir)/read_line.c $(srcdir)/setmode.c $(srcdir)/side.c $(srcdir)/thrlist.c $(srcdir)/util.c $(srcdir)/xalloc-die.c $(srcdir)/xmalloc.c
+ OBJECTSTWO=./bitvector.o ./getopt.o ./getopt1.o ./linesplit.o ./ndselect.o
+ SOURCESTWO=$(srcdir)/bitvector.c $(srcdir)/getopt.c $(srcdir)/getopt1.c $(srcdir)/linesplit.c $(srcdir)/ndselect.c $(srcdir)/read_line.c
+-DOCS=$(srcdir)/AUTHORS $(srcdir)/BUGS $(srcdir)/COPYING $(srcdir)/ChangeLog $(srcdir)/INSTALL $(srcdir)/NEWS $(srcdir)/README $(srcdir)/TODO 
++DOCS=$(srcdir)/AUTHORS $(srcdir)/BUGS $(srcdir)/ChangeLog $(srcdir)/NEWS $(srcdir)/README $(srcdir)/TODO 
+ TEXISRC=$(srcdir)/docs/numdiff.txi
+ FDLTEXI=$(srcdir)/docs/fdl.texi
+ HTMLFILE=$(srcdir)/docs/numdiff.html
+@@ -91,7 +91,7 @@
+ PACKAGETWO_POT=$(srcdir)/po/$(PACKAGETWO)/$(PACKAGETWO).pot
+ PACKAGE_IT=$(srcdir)/po/$(PACKAGE)/it
+ PACKAGETWO_IT=$(srcdir)/po/$(PACKAGETWO)/it
+-IT_LOC_DIR="$(DESTDIR)$(LOCALEDIR)/it/LC_MESSAGES"
++IT_LOC_DIR="$(DESTDIR)$(localedir)/it/LC_MESSAGES"
+ 
+ GARBAGE=./numdiff.aux ./numdiff.cp ./numdiff.cps ./numdiff.fn ./numdiff.ky ./numdiff.log ./numdiff.pg ./numdiff.toc ./numdiff.tp ./numdiff.vr ./config.log ./config.status ./config.h.in.save ./config.h
+ 
+@@ -193,48 +193,61 @@
+ # Rules needed by the installation process.
+ 
+ installdirs: all
+-	$(MKDIR) "$(DESTDIR)$(BINDIR)"
+-	$(MKDIR) "$(DESTDIR)$(DOCDIR)"
+-	$(MKDIR) "$(DESTDIR)$(INFODIR)"
+-	$(MKDIR) "$(DESTDIR)$(MANDIR)"
+-	$(MKDIR) $(IT_LOC_DIR)
+-
+-install: installdirs html info pdf txt
+-	$(INSTALL_PROGRAM) $(PACKAGE) $(PACKAGETWO) "$(DESTDIR)$(BINDIR)"
+-	$(INSTALL_DATA) $(DOCS) "$(DESTDIR)$(DOCDIR)"
+-	$(INSTALL_DATA) $(MANFILE) "$(DESTDIR)$(MANDIR)"
+-	$(INSTALL_DATA) $(MANFILETWO) "$(DESTDIR)$(MANDIR)"
+-	$(INSTALL_DATA) $(HTMLFILE) "$(DESTDIR)$(DOCDIR)"
+-	$(INSTALL_DATA) $(PDFFILE) "$(DESTDIR)$(DOCDIR)"
+-	$(INSTALL_DATA) $(TXTFILE) "$(DESTDIR)$(DOCDIR)"
++	$(MKDIR) "$(DESTDIR)$(bindir)"
++	$(MKDIR) "$(DESTDIR)$(docdir)"
++	$(MKDIR) "$(DESTDIR)$(htmldir)"
++	$(MKDIR) "$(DESTDIR)$(pdfdir)"
++	$(MKDIR) "$(DESTDIR)$(infodir)"
++	$(MKDIR) "$(DESTDIR)$(mandir)"
++	$(MKDIR) "$(DESTDIR)$(man1dir)"
++	if [ $(enable_nls) == yes ]; then \
++		$(MKDIR) "$(DESTDIR)$(localedir)"/it/LC_MESSAGES; \
++	fi
++
++ifeq ($(enable_nls),yes)
++opt_targets = install-nls
++endif
++install: installdirs html info pdf txt $(opt_targets)
++	$(INSTALL_PROGRAM) $(PACKAGE) $(PACKAGETWO) "$(DESTDIR)$(bindir)"
++	$(INSTALL_DATA) $(DOCS) "$(DESTDIR)$(docdir)"
++	$(INSTALL_DATA) $(MANFILE) "$(DESTDIR)$(man1dir)"
++	$(INSTALL_DATA) $(MANFILETWO) "$(DESTDIR)$(man1dir)"
++	$(INSTALL_DATA) $(HTMLFILE) "$(DESTDIR)$(htmldir)"
++	$(INSTALL_DATA) $(PDFFILE) "$(DESTDIR)$(pdfdir)"
++	$(INSTALL_DATA) $(TXTFILE) "$(DESTDIR)$(docdir)"
+ 	$(POST_INSTALL)
+-	$(INSTALL_DATA) $(INFOFILE) "$(DESTDIR)$(INFODIR)"
+-	$(INSTALL_DATA) $(INFOFILE).gz "$(DESTDIR)$(INFODIR)"
++	$(INSTALL_DATA) $(INFOFILE) "$(DESTDIR)$(infodir)"
++	$(INSTALL_DATA) $(INFOFILE).gz "$(DESTDIR)$(infodir)"
+ 	if $(SHELL) -c "$(INSTINFO) --version" \
+ 	>/dev/null 2>&1; then \
+-	$(INSTINFO) --dir-file="$(DESTDIR)$(INFODIR)/dir" "$(DESTDIR)$(INFODIR)/numdiff.info"; \
++	$(INSTINFO) --dir-file="$(DESTDIR)$(infodir)/dir" "$(DESTDIR)$(infodir)/numdiff.info"; \
+ 	else true; fi
+ 
+-install-nls: install
++install-nls: installdirs
+ 	$(INSTALL_DATA) $(PACKAGE_IT).mo $(IT_LOC_DIR)/$(PACKAGE).mo
+ 	$(INSTALL_DATA) $(PACKAGETWO_IT).mo $(IT_LOC_DIR)/$(PACKAGETWO).mo
+ 
+ # Rules needed to removed the installed stuff
+ 
+ uninstall:
+-	$(RM) "$(DESTDIR)$(BINDIR)/$(PACKAGE)"
+-	$(RM) "$(DESTDIR)$(BINDIR)/$(PACKAGETWO)"
+-	$(RM) "$(DESTDIR)$(DOCDIR)"/*
+-	$(RMDIR) "$(DESTDIR)$(DOCDIR)"
+-	$(INSTINFO) --delete "$(DESTDIR)$(INFODIR)/numdiff.info" "$(DESTDIR)$(INFODIR)/dir"
+-	$(RM) "$(DESTDIR)$(INFODIR)/numdiff.info.gz"
+-	$(RM) "$(DESTDIR)$(INFODIR)/numdiff.info"
+-	$(RM) "$(DESTDIR)$(MANDIR)/$(PACKAGE).1"
+-	$(RM) "$(DESTDIR)$(MANDIR)/$(PACKAGETWO).1"
++	$(RM) "$(DESTDIR)$(bindir)/$(PACKAGE)"
++	$(RM) "$(DESTDIR)$(bindir)/$(PACKAGETWO)"
++	$(RM) "$(DESTDIR)$(docdir)"/*
++	$(RMDIR) "$(DESTDIR)$(docdir)"
++	$(RM) "$(DESTDIR)$(htmldir)"/*
++	$(RMDIR) "$(DESTDIR)$(htmldir)"
++	$(RM) "$(DESTDIR)$(pdfdir)"/*
++	$(RMDIR) "$(DESTDIR)$(pdfdir)"
++	$(INSTINFO) --delete "$(DESTDIR)$(infodir)/numdiff.info" "$(DESTDIR)$(infodir)/dir"
++	$(RM) "$(DESTDIR)$(infodir)/numdiff.info.gz"
++	$(RM) "$(DESTDIR)$(infodir)/numdiff.info"
++	$(RM) "$(DESTDIR)$(man1dir)/$(PACKAGE).1"
++	$(RM) "$(DESTDIR)$(man1dir)/$(PACKAGETWO).1"
++	$(RMDIR) "$(DESTDIR)$(mandir)"
+ 
+ uninstall-nls: uninstall
+-	$(FIND) "$(DESTDIR)$(LOCALEDIR)" -name '$(PACKAGE).mo' -exec $(RM) \{\} \;
+-	$(FIND) "$(DESTDIR)$(LOCALEDIR)" -name '$(PACKAGETWO).mo' -exec $(RM) \{\} \;
++	$(FIND) "$(DESTDIR)$(localedir)" -name '$(PACKAGE).mo' -exec $(RM) \{\} \;
++	$(FIND) "$(DESTDIR)$(localedir)" -name '$(PACKAGETWO).mo' -exec $(RM) \{\} \;
+ 
+ # Cleaning rules
+ 

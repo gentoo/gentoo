@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Route Plotting Plugin for OpenCPN"
-HOMEPAGE="https://github.com/SaltyPaws/DR_pi"
+HOMEPAGE="https://github.com/SaltyPaws/route_pi"
 
 LICENSE="GPL-2+"
 SLOT="0"

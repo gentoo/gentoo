@@ -4,7 +4,7 @@
 EAPI=4
 
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
-HOMEPAGE="http://www.atheme.org/project/mowgli"
+HOMEPAGE="http://atheme.org/projects/libmowgli.html"
 SRC_URI="http://atheme.org/downloads/${P}.tar.gz"
 IUSE="ssl"
 

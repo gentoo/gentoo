@@ -7,7 +7,7 @@ inherit eutils prefix
 
 DESCRIPTION="Password generator capable of generating pronounceable and/or secure passwords"
 HOMEPAGE="https://github.com/mackers/passook"
-# snapshot of git://github.com/mackers/passook.git
+# snapshot of https://github.com/mackers/passook.git
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3+"

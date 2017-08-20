@@ -1,11 +1,11 @@
-# Enable user suspend and hiberate support.
+# Enable user suspend and hibernate support.
 #
 # Author: Eric Hameleers <alien@slackware.com>
 #
 # KDE bug #344456
 # Gentoo bug #529186
 #
-[Allow all users to suspend and hiberate]
+[Allow all users to suspend and hibernate]
 Identity=unix-group:users
 Action=org.freedesktop.upower.suspend;org.freedesktop.upower.hibernate
 ResultAny=yes

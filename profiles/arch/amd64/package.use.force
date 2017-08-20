@@ -1,14 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# NP-Hardass <NP-Hardass@gentoo.org> (23 May 2017)
+# Packages with optional 64-bit variant
+app-emulation/wine-vanilla -abi_x86_64
+app-emulation/wine-staging -abi_x86_64
+app-emulation/wine-d3d9 -abi_x86_64
+app-emulation/wine-any -abi_x86_64
+
+# Michał Górny <mgorny@gentoo.org> (08 Apr 2017)
+# Require sandbox to be multilib-capable to avoid failures when building
+# multilib packages, #611292.
+sys-apps/sandbox abi_x86_32
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Force the host target to avoid dependency hell
 sys-devel/clang llvm_targets_X86
 sys-devel/llvm llvm_targets_X86
-
-# NP-Hardass <NP-Hardass@gentoo.org> (12 Mar 2016)
-# 32 bit required, 64 bit optional
-www-plugins/pipelight abi_x86_32 -abi_x86_64
 
 # Michał Górny <mgorny@gentoo.org> (02 Sep 2013)
 # Packages with optional 64-bit variant.
@@ -23,7 +31,3 @@ media-gfx/iscan-plugin-gt-f500 minimal
 # <blubb@gentoo.org> (23 Oct 2006)
 # upstream forces sse2 on regardless of what the use flag is
 dev-libs/openssl cpu_flags_x86_sse2
-
-# Santiago M. Mola <coldwind@gentoo.org> (17 Sep 2008)
-# x86emu is the only backend available for amd64 (bug #224987)
-sys-apps/v86d x86emu

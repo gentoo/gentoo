@@ -11,9 +11,7 @@ HOMEPAGE="http://www.int21.de/huc"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-linux ~ppc-macos"
-
-DOCS=( README )
+KEYWORDS="amd64 ppc sparc x86 ~x86-linux ~ppc-macos"
 
 src_compile() {
 	$(tc-getCXX) \
@@ -22,6 +20,6 @@ src_compile() {
 }
 
 src_install () {
-	dobin ${PN}
+	dobin "${PN}"
 	einstalldocs
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 eutils git-r3 linux-info multilib user
 
@@ -20,9 +20,21 @@ REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
 	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
 
-CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
-DEPEND="
+CDEPEND="
 	>=dev-python/setuptools-16.0[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-24.0.0[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.0.0[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.0.1[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.0.2[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.0.3[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.1.0[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.1.1[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.2.0[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.3.0[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.3.1[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.3.2[${PYTHON_USEDEP}]
+	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
+DEPEND="
 	${CDEPEND}
 	app-admin/sudo"
 
@@ -90,8 +102,6 @@ RDEPEND="
 	!~dev-python/requests-2.12.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.17.1[${PYTHON_USEDEP}]
-	>=dev-python/setuptools-16.0[${PYTHON_USEDEP}]
-	!~dev-python/setuptools-24.0.0[${PYTHON_USEDEP}]
 	>=dev-python/websockify-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-cache-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]

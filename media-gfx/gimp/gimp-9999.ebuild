@@ -6,18 +6,16 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1 git-r3
 
-EGIT_REPO_URI="git://git.gnome.org/gimp"
-
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
+EGIT_REPO_URI="https://git.gnome.org/browse/gimp"
 SRC_URI=""
-
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
 KEYWORDS=""
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev wmf xpm"
+IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
 
 for lang in ${LANGS}; do
 	IUSE+=" linguas_${lang}"
@@ -33,14 +31,15 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	xpm? ( x11-libs/libXpm )
 	>=media-libs/freetype-2.1.7
 	>=media-libs/harfbuzz-0.9.19
-	>=media-libs/gexiv2-0.6.1
+	>=media-libs/gexiv2-0.10.3
+	>=media-libs/libmypaint-1.3.0_beta0[gegl]
 	>=media-libs/fontconfig-2.2.0
 	sys-libs/zlib
 	dev-libs/libxml2
 	dev-libs/libxslt
 	x11-themes/hicolor-icon-theme
-	>=media-libs/babl-0.1.14
-	>=media-libs/gegl-0.3.4:0.3[cairo]
+	>=media-libs/babl-0.1.24
+	>=media-libs/gegl-0.3.14:0.3[cairo]
 	>=dev-libs/glib-2.43
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
@@ -48,17 +47,19 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	gnome? ( gnome-base/gvfs )
 	virtual/jpeg:0
 	jpeg2k? ( media-libs/jasper:= )
-	>=media-libs/lcms-2.2:2
+	>=media-libs/lcms-2.7:2
 	mng? ( media-libs/libmng )
 	openexr? ( >=media-libs/openexr-1.6.1 )
-	pdf? ( >=app-text/poppler-0.12.4[cairo] >=app-text/poppler-data-0.4.7 )
-	>=media-libs/libpng-1.2.37:0
+	pdf? ( >=app-text/poppler-0.44[cairo] >=app-text/poppler-data-0.4.7 )
+	>=media-libs/libpng-1.6.25:0
 	python?	(
 		${PYTHON_DEPS}
 		>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
+		>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
 	)
 	>=media-libs/tiff-3.5.7:0
 	>=gnome-base/librsvg-2.36.0:2
+	webp? ( >=media-libs/libwebp-0.5.1 )
 	wmf? ( >=media-libs/libwmf-0.2.8 )
 	x11-libs/libXcursor
 	sys-libs/zlib
@@ -95,14 +96,17 @@ pkg_setup() {
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_with mng libmng) \
 		$(use_with openexr) \
+		$(use_with webp) \
 		$(use_with pdf poppler) \
 		$(use_enable python) \
 		$(use_enable smp mp) \
 		$(use_enable cpu_flags_x86_sse sse) \
+		--with-librsvg \
 		$(use_with udev gudev) \
 		$(use_with wmf) \
 		--with-xmc \
 		$(use_with xpm libxpm) \
+		$(use_enable vector-icons) \
 		--without-xvfb-run"
 
 	if use python; then
@@ -111,6 +115,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch_user
+
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 
 	echo '#!/bin/sh' > py-compile

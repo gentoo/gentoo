@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,9 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE library for CDDB"
-KEYWORDS="amd64 ~arm x86"
+SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
+
+KEYWORDS="amd64 x86"
 IUSE="debug musicbrainz"
 
 # tests require network access and compare static data with online data

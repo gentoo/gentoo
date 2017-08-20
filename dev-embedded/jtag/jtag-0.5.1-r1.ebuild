@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
 inherit eutils
 
-DESCRIPTION="Software for working with JTAG-aware (IEEE 1149.1) devices (parts) and boards through JTAG adapter"
+DESCRIPTION="Tool for working with JTAG-aware devices and boards through JTAG adapter"
 HOMEPAGE="http://openwince.sourceforge.net/jtag/"
 SRC_URI="mirror://sourceforge/openwince/${P}.tar.bz2"
 

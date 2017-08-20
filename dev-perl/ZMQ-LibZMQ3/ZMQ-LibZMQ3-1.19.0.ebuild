@@ -1,10 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=DMAKI
-MODULE_VERSION=1.19
+DIST_AUTHOR=DMAKI
+DIST_VERSION=1.19
 inherit perl-module
 
 DESCRIPTION="A libzmq 3.x wrapper for Perl"
@@ -30,4 +30,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST=do
+src_prepare() {
+	sed -i -e 's/Otherwise, do the usual./Otherwise, do the usual.\nuse lib q[.];/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}

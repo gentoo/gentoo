@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils user cmake-utils gnome2-utils pam versionator fdo-mime java-pkg-2 pax-utils
+inherit eutils user cmake-utils gnome2-utils pam versionator fdo-mime java-pkg-2 pax-utils qmake-utils
 
 # TODO
 # * package gin and gwt
@@ -57,7 +57,7 @@ RDEPEND="
 	>=dev-libs/mathjax-2.7.0
 	dev-libs/openssl:0
 	sys-apps/util-linux
-	>=sys-devel/clang-3.5.0
+	>=sys-devel/clang-3.5.0:*
 	sys-libs/zlib
 	>=virtual/jre-1.8:=
 	x11-libs/pango
@@ -70,7 +70,7 @@ RDEPEND="
 		>=dev-qt/qtopengl-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtpositioning-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtprintsupport-${QT_VER}:${QT_SLOT}
-		>=dev-qt/qtsingleapplication-2.6.1_p20150629[qt5]
+		>=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5]
 		>=dev-qt/qtsensors-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtsql-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtsvg-${QT_VER}:${QT_SLOT}
@@ -172,7 +172,7 @@ src_prepare() {
 	# qmake spec, and then sed this into the patched src/cpp/desktop/CMakeLists.txt.
 	rm -rf "${S}"/src/cpp/desktop/3rdparty || die
 	local s=$(grep '\-lQt$${QT_MAJOR_VERSION}Solutions_SingleApplication' \
-				   "${EROOT}"/usr/lib64/qt5/mkspecs/features/qtsingleapplication.prf \
+				   $(qt5_get_mkspecsdir)/features/qtsingleapplication.prf \
 					 | sed -e 's@\$\${QT_MAJOR_VERSION}@5@' \
 						   -e 's@LIBS \*= -l@@')
 	sed -e "s@Qt5Solutions_SingleApplication-2.6@${s}@g" \
@@ -195,7 +195,7 @@ src_configure() {
 		-DDISTRO_SHARE=share/${PN}
 		-DRSTUDIO_INSTALL_FREEDESKTOP="$(usex !dedicated "ON" "OFF")"
 		-DRSTUDIO_TARGET=$(usex dedicated "Server" "$(usex server "Development" "Desktop")")
-		-DQT_QMAKE_EXECUTABLE="${EROOT}"usr/lib64/qt5/bin/qmake
+		-DQT_QMAKE_EXECUTABLE=$(qt5_get_bindir)/qmake
 		-DRSTUDIO_VERIFY_R_VERSION=FALSE
 		)
 

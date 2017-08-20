@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -7,8 +7,9 @@
   </maintainer>
   <longdescription lang="en">
 GSL interface for OCaml
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="bitbucket">mmottl/gsl-ocaml</remote-id>
+    <remote-id type="github">mmottl/gsl-ocaml</remote-id>
   </upstream>
 </pkgmetadata>

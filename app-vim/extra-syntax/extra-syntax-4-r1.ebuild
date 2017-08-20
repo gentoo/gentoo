@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: metapackage for all extra syntax packages"
 HOMEPAGE="http://www.vim.org/"
 LICENSE="metapackage"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~mips ~ppc ppc64 x86"
 SRC_URI=""
 IUSE=""
 

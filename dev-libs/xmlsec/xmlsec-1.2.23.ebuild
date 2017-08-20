@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools ltprune
 
 DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting XML"
 HOMEPAGE="http://www.aleksey.com/xmlsec"

@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="Maybe a GNOME shell like dashboard for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/xfdashboard/start"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/xfdashboard/start"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

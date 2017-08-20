@@ -27,6 +27,29 @@ for arg in nullglob dotglob extglob ; do
 	done
 done
 
+# test 'set' options
+set -f
+tbegin "set +f"
+s0=$-
+t eshopts_push +f
+s1=$-
+t eshopts_pop
+s2=$-
+[[ ${s0} == "${s2}" ]] &&
+[[ ${s1} != *f* ]]
+tend $?
+
+set +f
+tbegin "set -f"
+s0=$-
+t eshopts_push -f
+s1=$-
+t eshopts_pop
+s2=$-
+[[ ${s0} == "${s2}" ]] &&
+[[ ${s1} == *f* ]]
+tend $?
+
 tbegin "multi push/pop"
 s0=$(shopt -p)
 t eshopts_push -s dotglob

@@ -8,7 +8,7 @@ inherit eutils systemd user
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
 SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}.tar.gz"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD-2 LGPL-3 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -52,9 +52,9 @@ src_install() {
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}/${PN}.sysctl.d" "${PN}.conf"
 
-	newinitd "${FILESDIR}/${PN}.init8" "${PN}"
-	newconfd "${FILESDIR}/${PN}.conf3" "${PN}"
-	systemd_newunit "${FILESDIR}"/${PN}.service6 "${PN}.service"
+	newinitd "${FILESDIR}/${PN}.init" "${PN}"
+	newconfd "${FILESDIR}/${PN}.conf" "${PN}"
+	systemd_newunit "${FILESDIR}"/${PN}.service "${PN}.service"
 }
 
 pkg_postinst() {

@@ -22,13 +22,14 @@
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
 		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
 		<flag name="enca">Enable subtitles charset discovery via <pkg>app-i18n/enca</pkg></flag>
-		<flag name="gbm">Enable Graphics Buffer Manager based EGL video output</flag>
+		<flag name="gbm">Enable Graphics Buffer Manager based EGL video backend</flag>
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
 		<flag name="libass">Enable OSD (On Screen Display) and subtitles support via <pkg>media-libs/libass</pkg></flag>
 		<flag name="libguess">Enable subtitles charset discovery via <pkg>app-i18n/libguess</pkg></flag>
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
 		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
+		<flag name="opengl" restrict="&gt;=media-video/mpv-0.25.0">Enable the recommended 'opengl' video output</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
 		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs

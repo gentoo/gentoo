@@ -1,0 +1,23 @@
+From fb598bb76a0431aa3a880ecfa45054c996a070fb Mon Sep 17 00:00:00 2001
+From: Maksim Shabunin <maksim.shabunin@itseez.com>
+Date: Fri, 13 May 2016 13:28:09 +0300
+Subject: [PATCH] Disabled PCH support for gcc >= 6.0.0
+
+Command line generation routine uses "-isystem" to include headers outside of "<opencv>/modules" folder, but GCC 6 does not work when passed "-isystem /usr/include" option.
+---
+ cmake/OpenCVPCHSupport.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/OpenCVPCHSupport.cmake b/cmake/OpenCVPCHSupport.cmake
+index 13619daf27e..e6585cae020 100644
+--- a/cmake/OpenCVPCHSupport.cmake
++++ b/cmake/OpenCVPCHSupport.cmake
+@@ -19,7 +19,7 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
+         ARGS ${CMAKE_CXX_COMPILER_ARG1} -dumpversion
+         OUTPUT_VARIABLE gcc_compiler_version)
+     #MESSAGE("GCC Version: ${gcc_compiler_version}")
+-    IF(gcc_compiler_version VERSION_GREATER "4.2.-1")
++    IF(gcc_compiler_version VERSION_GREATER "4.2.-1" AND gcc_compiler_version VERSION_LESS "6.0.0")
+         SET(PCHSupport_FOUND TRUE)
+     ENDIF()
+ 

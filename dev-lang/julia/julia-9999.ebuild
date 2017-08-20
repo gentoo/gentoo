@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,9 +8,9 @@ RESTRICT="test"
 inherit git-r3 elisp-common eutils multilib pax-utils toolchain-funcs
 
 DESCRIPTION="High-performance programming language for technical computing"
-HOMEPAGE="http://julialang.org/"
+HOMEPAGE="https://julialang.org/"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/JuliaLang/julia.git"
+EGIT_REPO_URI="https://github.com/JuliaLang/julia.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,7 +32,7 @@ RDEPEND="
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	>=sys-devel/llvm-3.5:0=
+	>=sys-devel/llvm-3.9:0=
 	>=sys-libs/libunwind-1.1:7=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=

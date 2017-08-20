@@ -20,6 +20,7 @@ RDEPEND="dev-cpp/libxmlpp:2.6
 	dev-libs/boost
 	dev-libs/locked_sstream"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-util/waf
 	virtual/pkgconfig"
 

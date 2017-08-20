@@ -1,0 +1,39 @@
+commit 272601864851e4411421ffe7fce764e01b5b1bfa
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed May 3 00:16:05 2017 +0200
+
+    libkleo: Fix build with GCC-6.3
+    
+    Thanks-to: Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+
+diff --git a/libkleo/backends/qgpgme/qgpgmekeylistjob.cpp b/libkleo/backends/qgpgme/qgpgmekeylistjob.cpp
+index 4d26eb8772..c9c4642c62 100644
+--- a/libkleo/backends/qgpgme/qgpgmekeylistjob.cpp
++++ b/libkleo/backends/qgpgme/qgpgmekeylistjob.cpp
+@@ -85,7 +85,7 @@ static QGpgMEKeyListJob::result_type list_keys( Context * ctx, QStringList pats,
+   if ( pats.size() < 2 ) {
+     std::vector<Key> keys;
+     const KeyListResult r = do_list_keys( ctx, pats, keys, secretOnly );
+-    return make_tuple( r, keys, QString(), Error() );
++    return boost::make_tuple( r, keys, QString(), Error() );
+   }
+ 
+   // The communication channel between gpgme and gpgsm is limited in
+@@ -109,7 +109,7 @@ retry:
+       chunkSize /= 2;
+       if ( chunkSize < 1 )
+         // chunks smaller than one can't be -> return the error.
+-        return make_tuple( this_result, keys, QString(), Error() );
++        return boost::make_tuple( this_result, keys, QString(), Error() );
+       else
+         goto retry;
+     }
+@@ -119,7 +119,7 @@ retry:
+       break;
+     pats = pats.mid( chunkSize );
+   } while ( !pats.empty() );
+-  return make_tuple( result, keys, QString(), Error() );
++  return boost::make_tuple( result, keys, QString(), Error() );
+ }
+ 
+ Error QGpgMEKeyListJob::start( const QStringList & patterns, bool secretOnly ) {

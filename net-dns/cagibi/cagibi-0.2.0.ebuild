@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Cache/proxy system for the SSDP part of UPnP"
-HOMEPAGE="http://frinring.wordpress.com/2010/08/09/cagibi-0-1-1-released-network-kio-slave-freezes-kded-in-4-5-0/"
+HOMEPAGE="https://frinring.wordpress.com/2010/08/09/cagibi-0-1-1-released-network-kio-slave-freezes-kded-in-4-5-0/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

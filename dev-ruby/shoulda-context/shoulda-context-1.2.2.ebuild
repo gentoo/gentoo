@@ -21,7 +21,7 @@ HOMEPAGE="http://thoughtbot.com/projects/shoulda"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64"
 IUSE="doc test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,9 +14,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="examples"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=dev-python/egenix-mx-base-2.0.3[${PYTHON_USEDEP}]
-	dev-db/postgresql
+	dev-db/postgresql:*
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 

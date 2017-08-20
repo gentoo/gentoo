@@ -2,16 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>sautier.louis@gmail.com</email>
-    <name>Louis Sautier</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>djc@gentoo.org</email>
-    <name>Dirkjan Ochtman</name>
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
   </maintainer>
   <longdescription lang="en">
       Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.

@@ -1,0 +1,28 @@
+From 8af6cea015eeea61a3421b4f98ee4ba12f6c9b17 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20=C5=BBo=C5=82nowski?= <aidecoe@aidecoe.name>
+Date: Mon, 29 May 2017 12:10:15 +0100
+Subject: [PATCH] Don't install test suite
+
+See
+<http://setuptools.readthedocs.io/en/latest/setuptools.html?highlight=find_packages#using-find-packages>
+for example patterns.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index a3f6f90..b4533f7 100755
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@ setup(name='alot',
+       author_email=alot.__author_email__,
+       url=alot.__url__,
+       license=alot.__copyright__,
+-      packages=find_packages(),
++      packages=find_packages(exclude=["tests.*", "tests"]),
+       package_data={'alot': [
+                              'defaults/alot.rc.spec',
+                              'defaults/notmuch.rc.spec',
+-- 
+2.12.2
+

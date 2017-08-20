@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -8,7 +8,7 @@ inherit python-any-r1
 
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 
-DESCRIPTION="C++ client API for PostgreSQL. The standard front-end for writing C++ programs that use PostgreSQL"
+DESCRIPTION="Standard front end for writing C++ programs that use PostgreSQL"
 SRC_URI="http://pqxx.org/download/software/${PN}/${P}.tar.gz"
 HOMEPAGE="http://pqxx.org/development/libpqxx/"
 LICENSE="BSD"

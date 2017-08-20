@@ -6,14 +6,18 @@
     <name>Cjk</name>
   </maintainer>
   <use>
-    <flag name="fcitx">Enable <pkg>app-i18n/fcitx</pkg> support</flag>
-    <flag name="ibus">Enable <pkg>app-i18n/ibus</pkg> support</flag>
-    <flag name="libssh2">Enable <pkg>net-libs/libssh2</pkg> support</flag>
-    <flag name="regis">Enable ReGIS support</flag>
-    <flag name="scim">Enable <pkg>app-i18n/scim</pkg> support</flag>
-    <flag name="uim">Enable <pkg>app-i18n/uim</pkg> support</flag>
-    <flag name="skk">Enable SKK support (<pkg>virtual/skkserv</pkg> or <pkg>app-i18n/skk-jisyo</pkg>)</flag>
-    <flag name="utempter">Enable <pkg>sys-libs/libutempter</pkg> support</flag>
+    <flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
+    <flag name="gtk2">
+      Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
+    </flag>
+    <flag name="harfbuzz">Enable support for OpenType Layout (<pkg>media-libs/harfbuzz</pkg>)</flag>
+    <flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
+    <flag name="libssh2">Enable support for <pkg>net-libs/libssh2</pkg></flag>
+    <flag name="regis">Enable support for ReGIS</flag>
+    <flag name="scim">Enable support for <pkg>app-i18n/scim</pkg></flag>
+    <flag name="skk">Enable support for SKK (<pkg>virtual/skkserv</pkg> or <pkg>app-i18n/skk-jisyo</pkg>)</flag>
+    <flag name="uim">Enable support for <pkg>app-i18n/uim</pkg></flag>
+    <flag name="utempter">Enable support for <pkg>sys-libs/libutempter</pkg></flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">mlterm</remote-id>

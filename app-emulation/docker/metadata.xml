@@ -13,10 +13,6 @@
 		<name>Tianon</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>xarthisius@gentoo.org</email>
-		<name>Kacper Kowalik</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
@@ -43,10 +39,6 @@
 		<flag name="device-mapper">
 			Enables dependencies for the "devicemapper" graph driver, including
 			necessary kernel flags.
-		</flag>
-		<flag name="experimental">
-			Enable features labelled by upstream to be of "experimental"
-			quality and not yet ready for general consumption.
 		</flag>
 		<flag name="overlay">
 			Enables dependencies for the "overlay" graph driver, including

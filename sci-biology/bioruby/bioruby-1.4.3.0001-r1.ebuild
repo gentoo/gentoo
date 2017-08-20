@@ -3,14 +3,14 @@
 
 EAPI=5
 
-USE_RUBY="ruby21"
+USE_RUBY="ruby21 ruby22"
 
 inherit ruby-fakegem
 
 DESCRIPTION="An integrated environment for bioinformatics using the Ruby language"
 LICENSE="Ruby"
-HOMEPAGE="http://www.bioruby.org/"
-SRC_URI="http://www.${PN}.org/archive/${P}.tar.gz"
+HOMEPAGE="http://bioruby.org/"
+SRC_URI="http://${PN}.org/archive/${P}.tar.gz"
 
 SLOT="0"
 IUSE=""

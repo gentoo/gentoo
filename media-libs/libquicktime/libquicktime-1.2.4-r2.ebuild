@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png schroedinger static-libs vorbis X x264"
 
 RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
@@ -42,7 +42,7 @@ RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
 		x11-libs/libXt
 		x11-libs/libXv
 		)
-	x264? ( >=media-libs/x264-0.0.20130506[${MULTILIB_USEDEP}] )"
+	x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gettext

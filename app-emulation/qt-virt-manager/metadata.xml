@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -8,4 +8,7 @@
 	<use>
 		<flag name="smartcard">Enable smartcard remoting using <pkg>app-emulation/libcacard</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">F1ash/qt-virt-manager</remote-id>
+	</upstream>
 </pkgmetadata>

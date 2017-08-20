@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs autotools
+inherit flag-o-matic toolchain-funcs autotools
 
 DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests etc"
 HOMEPAGE="http://xca.sourceforge.net"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="bindist doc libressl qt4 qt5"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
@@ -20,7 +20,10 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:0= )
 	doc? ( app-text/linuxdoc-tools )
-	qt5? ( dev-qt/qtgui:5 )
+	qt5? (
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 	qt4? ( dev-qt/qtgui:4 )"
 DEPEND="${RDEPEND}"
 

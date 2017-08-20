@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,16 +14,13 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-util/patchelf
 	dev-python/pycrypto[${PYTHON_USEDEP}]
-	dev-python/pyxenstore[${PYTHON_USEDEP}]"
-
-# Fails to build if python2.5/python2.6 are present
-DEPEND="${RDEPEND}
-	!dev-lang/python:2.5
-	!dev-lang/python:2.6
+	dev-python/pyxenstore[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	python-single-r1_pkg_setup

@@ -27,7 +27,8 @@ RDEPEND="
 	)
 	emacs? ( virtual/emacs )
 	java? ( >=virtual/jdk-1.2:* )
-	odbc? ( dev-db/unixODBC )"
+	odbc? ( dev-db/unixODBC )
+	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] virtual/glu )
 	sctp? ( net-misc/lksctp-tools )

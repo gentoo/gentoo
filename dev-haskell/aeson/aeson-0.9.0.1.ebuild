@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/attoparsec-0.13.0.0:=[profile?]
 	>=dev-haskell/hashable-1.1.2.0:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/old-locale:=[profile?]
-	>=dev-haskell/scientific-0.3.1:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
+	>=dev-haskell/scientific-0.3.1:=[bytestring-builder,profile?] <dev-haskell/scientific-0.4:=[bytestring-builder,profile?]
 	dev-haskell/syb:=[profile?]
 	>=dev-haskell/text-1.1.1.0:=[profile?]
 	dev-haskell/transformers:=[profile?]

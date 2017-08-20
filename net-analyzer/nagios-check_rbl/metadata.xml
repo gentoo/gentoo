@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -6,7 +6,10 @@
     <name>Michael Orlitzky</name>
   </maintainer>
   <maintainer type="project">
-      <email>sysadmin@gentoo.org</email>
-      <name>Gentoo Sysadmin Project</name>
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
   </maintainer>
-  </pkgmetadata>
+  <upstream>
+    <remote-id type="github">matteocorti/check_rbl</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -28,7 +28,7 @@ RDEPEND="sys-libs/ncurses:0=
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:0= )
 	zlib? ( sys-libs/zlib )
 	X? (
 		x11-libs/libXmu
@@ -149,7 +149,7 @@ src_configure() {
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
 
-		local f
+		local f line
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
 			while read line; do ewarn "${line}"; done <<-EOF

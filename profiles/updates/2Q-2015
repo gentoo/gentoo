@@ -215,7 +215,6 @@ move kde-base/parley kde-apps/parley
 move kde-base/phonon-kde kde-apps/phonon-kde
 move kde-base/picmi kde-apps/picmi
 move kde-base/plasma-apps kde-apps/plasma-apps
-move kde-base/plasma-runtime kde-apps/plasma-runtime
 move kde-base/poxml kde-apps/poxml
 move kde-base/print-manager kde-apps/print-manager
 move kde-base/renamedlg-plugins kde-apps/renamedlg-plugins

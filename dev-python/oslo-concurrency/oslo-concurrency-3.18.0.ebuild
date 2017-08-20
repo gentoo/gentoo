@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ S="${WORKDIR}/oslo.concurrency-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 CDPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
@@ -48,5 +48,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	nosetests tests/ || die "test failed under ${EPYTHON}"
+	nosetests ${PN/-/_}/tests/ || die "test failed under ${EPYTHON}"
 }

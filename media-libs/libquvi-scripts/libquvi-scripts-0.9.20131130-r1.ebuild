@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/quvi/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
 IUSE="offensive"
 
 RDEPEND=">=dev-lua/LuaBitOp-1.0.1-r1[${MULTILIB_USEDEP}]

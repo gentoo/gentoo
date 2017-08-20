@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 pypy )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 eutils flag-o-matic multilib toolchain-funcs versionator
+inherit distutils-r1 flag-o-matic multilib toolchain-funcs versionator
 
 MY_PV="${PV//.}"
 
@@ -20,6 +20,7 @@ LICENSE="Sleepycat"
 KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc ldap odbc python static-libs test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}"
 

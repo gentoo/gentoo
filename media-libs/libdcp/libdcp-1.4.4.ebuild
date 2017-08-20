@@ -30,6 +30,7 @@ RDEPEND="dev-cpp/glibmm:2
 DEPEND="${RDEPEND}
 	dev-util/waf
 	virtual/pkgconfig
+	${PYTHON_DEPS}
 	test? ( app-text/xmldiff )"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.3.3-no-ldconfig.patch

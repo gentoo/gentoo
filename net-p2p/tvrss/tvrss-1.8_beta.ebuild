@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -19,7 +19,7 @@ DEPEND="x11-libs/gtk+:2
 	>=dev-lang/perl-5.8.6
 	dev-perl/XML-RAI
 	dev-perl/glib-perl
-	dev-perl/gtk2-perl"
+	dev-perl/Gtk2"
 
 src_install() {
 	dobin ${S}/tvrss

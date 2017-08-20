@@ -21,20 +21,20 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="VLC media player - Video player and streamer"
-HOMEPAGE="http://www.videolan.org/vlc/"
+HOMEPAGE="https://www.videolan.org/vlc/"
 if [[ ${PV} = *9999 ]] ; then # Live ebuild
 	SRC_URI=""
 elif [[ "${MY_P}" == "${P}" ]]; then
-	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 else
-	SRC_URI="http://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
 if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
@@ -110,7 +110,7 @@ RDEPEND="
 	musepack? ( >=media-sound/musepack-tools-444:0 )
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	ogg? ( >=media-libs/libogg-1:0 )
-	opencv? ( >media-libs/opencv-2:0 )
+	opencv? ( >media-libs/opencv-2:0= )
 	opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
 	opus? ( >=media-libs/opus-1.0.3:0 )
 	png? ( media-libs/libpng:0= sys-libs/zlib:0 )
@@ -131,7 +131,7 @@ RDEPEND="
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
 	skins? ( x11-libs/libXext:0 x11-libs/libXpm:0 x11-libs/libXinerama:0 )
-	speex? ( media-libs/speex:0 )
+	speex? ( >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 )
 	svg? ( >=gnome-base/librsvg-2.9:2 >=x11-libs/cairo-1.13.1:0 )
 	swscale? (
 		!libav? ( media-video/ffmpeg:0= )

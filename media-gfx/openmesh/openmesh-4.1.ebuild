@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ MY_PN="OpenMesh"
 MY_PV="${PV/_rc/-RC}"
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
-DESCRIPTION="A generic and efficient data structure for representing and manipulating polygonal meshes"
+DESCRIPTION="A generic data structure to represent and manipulate polygonal meshes"
 HOMEPAGE="http://www.openmesh.org/"
 SRC_URI="http://openmesh.org/media/Releases/${MY_PV/-RC/RC}/${MY_PN}-${MY_PV}.tar.bz2"
 

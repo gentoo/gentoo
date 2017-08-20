@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 )
+EAPI=5
+
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 DISTUTILS_OPTIONAL=1
 
 inherit eutils distutils-r1 libtool multilib-minimal toolchain-funcs
@@ -15,18 +16,14 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
-IUSE="nls python static-libs test zlib"
+IUSE="nls python static-libs zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+RDEPEND="python? ( ${PYTHON_DEPS} )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
-		test? ( dev-python/nose[${PYTHON_USEDEP}] )
-	)"
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r6
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 
 S=${WORKDIR}/${MY_P}
@@ -74,11 +71,12 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	do_python
+	# Make sure we load the freshly built library
+	LD_LIBRARY_PATH="${BUILD_DIR}/lib/.libs" do_python
 }
 
 python_test() {
-	nosetests -w "${S}"/python || die "Tests fail with ${EPYTHON}"
+	${EPYTHON} -m unittest test_cracklib || die "Tests fail with ${EPYTHON}"
 }
 
 multilib_src_install() {

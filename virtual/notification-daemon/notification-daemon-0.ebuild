@@ -4,10 +4,6 @@
 EAPI=5
 
 DESCRIPTION="Virtual for notification daemon dbus service"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="gnome kde"
@@ -28,5 +24,5 @@ RDEPEND="
 		x11-wm/enlightenment[e_modules_notification]
 		x11-misc/mate-notification-daemon
 		lxqt-base/lxqt-notificationd
+		net-misc/eventd[notification]
 		kde-misc/colibri ) ) )"
-DEPEND=""

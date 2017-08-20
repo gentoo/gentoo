@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,6 +17,7 @@ IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=dev-libs/glib-2.34:2
 	>=dev-libs/gobject-introspection-0.9.6
 	>=dev-python/pygobject-3.3.91:3[${PYTHON_USEDEP}]

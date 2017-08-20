@@ -16,7 +16,7 @@ fi
 
 inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib pax-utils toolchain-funcs versionator prefix
-
+inherit check-reqs
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="http://www.haskell.org/ghc/"
 
@@ -26,10 +26,11 @@ arch_binaries=""
 # sorted!
 arch_binaries="$arch_binaries alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-${PV}-alpha.tbz2 )"
 #arch_binaries="$arch_binaries arm? ( http://code.haskell.org/~slyfox/ghc-arm/ghc-bin-${PV}-arm.tbz2 )"
+arch_binaries="$arch_binaries arm64? ( http://code.haskell.org/~slyfox/ghc-arm64/ghc-bin-${PV}-arm64.tbz2 )"
 arch_binaries="$arch_binaries amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-${PV}-amd64.tbz2 )"
-#arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
-#arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
-#arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
+arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64.tbz2 )"
+arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
+arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
 #arch_binaries="$arch_binaries sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-${PV}-x86.tbz2 )"
 
@@ -40,14 +41,15 @@ arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc
 yet_binary() {
 	case "${ARCH}" in
 		alpha) return 0 ;;
+		arm64) return 0 ;;
 		#arm)
 		#	ewarn "ARM binary is built on armv5tel-eabi toolchain. Use with caution."
 		#	return 0
 		#;;
 		amd64) return 0 ;;
-		#ia64) return 0 ;;
-		#ppc) return 0 ;;
-		#ppc64) return 0 ;;
+		ia64) return 0 ;;
+		ppc) return 0 ;;
+		ppc64) return 0 ;;
 		#sparc) return 0 ;;
 		x86) return 0 ;;
 		*) return 1 ;;
@@ -76,18 +78,25 @@ IUSE+=" binary"
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
-# gentoo binaries are built against ncurses-6
-RDEPEND+="
-	binary? (
-		|| (
-			sys-libs/ncurses:0/6
-			sys-libs/ncurses:5/6
-		)
-	)
+
+# This set of dependencies is needed to run
+# prebuilt ghc. We specifically avoid ncurses
+# dependency with:
+#    utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING
+PREBUILT_BINARY_DEPENDS="
+	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
 "
+# This set of dependencies is needed to install
+# ghc[binary] in system. terminfo package is linked
+# against ncurses.
+PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
+	sys-libs/ncurses:0/6
+"
+
+RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xml-dtd:4.2
@@ -95,7 +104,7 @@ DEPEND="${RDEPEND}
 		app-text/docbook-xsl-stylesheets
 		dev-python/sphinx
 		>=dev-libs/libxslt-1.1.2 )
-"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
 PDEPEND="!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )"
 
@@ -328,7 +337,25 @@ relocate_ghc() {
 	rm "$gp_back"
 }
 
+ghc-check-reqs() {
+	# These are pessimistic values (slightly bigger than worst-case)
+	# Worst case is UNREG USE=profile ia64. See bug #611866 for some
+	# numbers on various arches.
+	CHECKREQS_DISK_BUILD=8G
+	CHECKREQS_DISK_USR=2G
+	# USE=binary roughly takes
+	use binary && CHECKREQS_DISK_BUILD=4G
+
+	"$@"
+}
+
+pkg_pretend() {
+	ghc-check-reqs check-reqs_pkg_pretend
+}
+
 pkg_setup() {
+	ghc-check-reqs check-reqs_pkg_setup
+
 	# quiet portage about prebuilt binaries
 	use binary && QA_PREBUILT="*"
 
@@ -457,12 +484,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-8.0.1-par-g0-on-A32.patch
 		epatch "${FILESDIR}"/${PN}-8.0.2_rc2-old-sphinx.patch
 		epatch "${FILESDIR}"/${PN}-8.0.2-libffi-alpha.patch
-
-		if use prefix; then
-			# Make configure find docbook-xsl-stylesheets from Prefix
-			sed -e '/^FP_DIR_DOCBOOK_XSL/s:\[.*\]:['"${EPREFIX}"'/usr/share/sgml/docbook/xsl-stylesheets/]:' \
-				-i utils/haddock/doc/configure.ac || die
-		fi
+		epatch "${FILESDIR}"/${PN}-8.0.2-O2-unreg.patch
 
 		bump_libs
 
@@ -492,6 +514,7 @@ src_configure() {
 		# app-text/dblatex is not in portage, can not build PDF or PS
 		echo "BUILD_SPHINX_PDF  = NO"  >> mk/build.mk
 		echo "BUILD_SPHINX_HTML = $(usex doc YES NO)" >> mk/build.mk
+		echo "BUILD_MAN = $(usex doc YES NO)" >> mk/build.mk
 
 		# this controls presence on 'xhtml' and 'haddock' in final install
 		echo "HADDOCK_DOCS       = YES" >> mk/build.mk
@@ -570,7 +593,7 @@ src_install() {
 		mv "${S}/usr" "${ED}"
 	else
 
-		emake install DESTDIR="${D}"
+		emake -j1 install DESTDIR="${D}"
 		dodoc "distrib/README" "ANNOUNCE" "LICENSE" "VERSION"
 
 		# rename ghc-shipped files to avoid collision

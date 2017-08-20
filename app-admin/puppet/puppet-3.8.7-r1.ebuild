@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -176,12 +176,15 @@ pkg_postinst() {
 		elog
 	fi
 
-	if [ "$(get_major_version $REPLACING_VERSIONS)" = "2" ]; then
-		elog
-		elog "If you're upgrading from 2.x then we strongly suggest you to read:"
-		elog "http://docs.puppetlabs.com/guides/upgrading.html"
-		elog
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version $v)" = "2" ]; then
+			elog
+			elog "If you're upgrading from 2.x then we strongly suggest you to read:"
+			elog "http://docs.puppetlabs.com/guides/upgrading.html"
+			elog
+		fi
+	done
 
 	use emacs && elisp-site-regen
 	use xemacs && xemacs-elisp-site-regen

@@ -1,43 +1,42 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit git-r3
-#endif
-
-inherit autotools-utils
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
+inherit autotools git-r3
 
 DESCRIPTION="A lightweight implementation of Desktop Notification Spec"
-HOMEPAGE="https://bitbucket.org/mgorny/libtinynotify/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/libtinynotify/"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug doc static-libs"
 
 RDEPEND="sys-apps/dbus:0="
 DEPEND="${RDEPEND}
+	>=dev-util/gtk-doc-1.18
 	virtual/pkgconfig
 	doc? ( >=dev-util/gtk-doc-1.18 )"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-DEPEND="${DEPEND}
-	>=dev-util/gtk-doc-1.18"
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		$(use_enable debug)
 		$(use_enable doc gtk-doc)
+		$(use_enable static-libs static)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete
 }

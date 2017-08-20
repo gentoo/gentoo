@@ -34,7 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme )
-	lapack? ( virtual/pkgconfig )"
+	lapack? ( virtual/pkgconfig )
+	${PYTHON_DEPS}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then

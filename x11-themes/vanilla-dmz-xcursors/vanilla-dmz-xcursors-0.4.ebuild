@@ -8,7 +8,7 @@ SRC_URI="http://jimmac.musichall.cz/zip/${P/-xcursors}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_PN}

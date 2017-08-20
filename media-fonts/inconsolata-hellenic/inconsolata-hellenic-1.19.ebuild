@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit font
 
-DESCRIPTION="Hellenisation of the wonderful, monospace, open/free font Inconsolata by Raph Levien"
+DESCRIPTION="Hellenisation of the wonderful, monospace, open/free font Inconsolata"
 HOMEPAGE="http://www.cosmix.org/software/"
 SRC_URI="http://www.cosmix.org/software/files/InconsolataHellenic.zip -> ${P}.zip"
 

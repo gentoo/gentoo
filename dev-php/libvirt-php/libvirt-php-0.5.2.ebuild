@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PHP_EXT_NAME="libvirt-php"
 PHP_EXT_SKIP_PHPIZE="yes"
-USE_PHP="php5-6 php5-5"
+USE_PHP="php5-6"
 
 inherit php-ext-source-r2 eutils
 

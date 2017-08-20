@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	gnome-base/libgnomeui
 	gnome-base/libbonoboui
 	dev-perl/gnome2-canvas

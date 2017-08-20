@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -8,4 +8,8 @@
 	<longdescription lang="en">
 		Neutron shared routines and utilities
 	</longdescription>
+	<upstream>
+		<remote-id type="github">openstack/neutron-lib</remote-id>
+		<remote-id type="pypi">neutron-lib</remote-id>
+	</upstream>
 </pkgmetadata>

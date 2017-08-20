@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 inherit ruby-fakegem
 
 DESCRIPTION="Forwardable with hash, and instance variable extensions"
-HOMEPAGE="https://rubygems.org/gems/forwardable-extended http://github.com/envygeeks/forwardable-extended"
+HOMEPAGE="https://rubygems.org/gems/forwardable-extended https://github.com/envygeeks/forwardable-extended"
 
 LICENSE="MIT"
 SLOT="0"

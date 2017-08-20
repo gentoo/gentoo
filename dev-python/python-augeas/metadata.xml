@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -6,5 +6,8 @@
   </maintainer>
   <longdescription lang="en">
 python-augeas is a set of Python bindings around augeas.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">python-augeas</remote-id>
+  </upstream>
 </pkgmetadata>

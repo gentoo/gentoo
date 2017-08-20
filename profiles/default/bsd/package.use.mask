@@ -11,7 +11,7 @@ app-doc/doxygen doxysearch
 
 # Mikle Kolyada <zlogene@gentoo.org> (07 Dec 2014)
 # There are a lot of unkeyworded dev-perl/* packages
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Robin H. Johnson <robbat2@gentoo.org> (05 Jan 2014)
 # Pending keywording of net-libs/miniupnpc per bug #497186

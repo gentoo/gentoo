@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=yes
 inherit eutils versionator autotools-multilib #git-2
 
 # If github is desired, the following may be used.
-#EGIT_REPO_URI="git://github.com/signal11/hidapi.git"
+#EGIT_REPO_URI="https://github.com/signal11/hidapi.git"
 #EGIT_BRANCH="master"
 EGIT_COMMIT="d17db57b9d4354752e0af42f5f33007a42ef2906"
 

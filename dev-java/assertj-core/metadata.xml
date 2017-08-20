@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -6,4 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<longdescription>AssertJ core is a Java library that provides a fluent interface for writing assertions. Its main goal is to improve test code readability and make maintenance of tests easier. AssertJ core provides assertions for JDK standard types can be used with either JUnit or TestNG.</longdescription>
+	<upstream>
+		<remote-id type="github">joel-costigliola/assertj-core</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,21 @@
+commit 01df8861c19a203cea9ef26570893c2b9c0e48b2
+Author: Evgeny Grin (Karlson2k) <k2k@narod.ru>
+Date:   Wed Apr 12 21:11:28 2017 +0300
+
+    Fixed GNU/Linux builds without epoll
+
+diff --git a/src/microhttpd/daemon.c b/src/microhttpd/daemon.c
+index 49a1b82..02713e3 100644
+--- a/src/microhttpd/daemon.c
++++ b/src/microhttpd/daemon.c
+@@ -2251,8 +2251,10 @@ send_param_adapter (struct MHD_Connection *connection,
+       if (0 < ret)
+         {
+           /* write successful */
++#ifdef EPOLL_SUPPORT
+           if (left > (uint64_t)ret)
+             connection->epoll_state &= ~MHD_EPOLL_STATE_WRITE_READY;
++#endif /* EPOLL_SUPPORT */
+           return ret;
+         }
+       err = MHD_socket_get_error_();

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit autotools common-lisp-3 git-2 xdg-utils
 
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
 HOMEPAGE="https://stumpwm.github.io/"
-EGIT_REPO_URI="git://github.com/stumpwm/stumpwm"
+EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"

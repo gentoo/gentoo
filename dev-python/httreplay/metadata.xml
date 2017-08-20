@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -11,5 +11,6 @@
       <email>davepeck+httreplay@gmail.com</email>
       <name>Aron Griffis, Dave Peck</name>
     </maintainer>
+    <remote-id type="github">agriffis/httreplay</remote-id>
   </upstream>
 </pkgmetadata>

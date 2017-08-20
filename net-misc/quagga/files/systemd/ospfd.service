@@ -1,7 +1,7 @@
 [Unit]
 Description=OSPF routing daemon
 Documentation=man:ospfd(8) man:zebra(8)
-BindTo=zebra.service
+BindsTo=zebra.service
 After=network.target zebra.service
 ConditionPathExists=/etc/quagga/ospfd.conf
 

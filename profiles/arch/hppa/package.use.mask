@@ -1,7 +1,38 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+# NOTE: When masking a USE flag due to missing keywords, please file a keyword
+# request bug for the hppa arch.
+
+# Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
+# Requires java
+app-forensics/sleuthkit java
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=redis that is masked in this profile.
+dev-python/pyzor test
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=systemd that is masked in this profile.
+net-wireless/bluez user-session
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
 
 # Jeroen Roovers <jer@gentoo.org> (26 Feb 2017)
 # app-crypt/libsecret is not keyworded for HPPA
@@ -10,7 +41,8 @@ dev-vcs/git libsecret
 # Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
-media-video/ffmpeg libilbc zimg
+# sofalizer needs sci-libs/netcdf and sci-libs/hdf5 (bug #615510)
+media-video/ffmpeg libilbc sofalizer zimg
 
 # Jeroen Roovers <jer@gentoo.org> (3 Feb 2017)
 # net-mail/notmuch is not keyworded
@@ -175,7 +207,6 @@ x11-misc/xscreensaver gdm new-login
 x11-libs/wxGTK gstreamer
 net-p2p/mldonkey guionly gtk
 dev-vcs/git gtk
-app-cdr/cdrdao gcdmaster
 net-im/pidgin eds
 
 # Jeroen Roovers <jer@gentoo.org> (15 Apr 2008)
@@ -195,5 +226,3 @@ app-text/texlive xindy
 # Mart Raudsepp <leio@gentoo.org> (02 Apr 2008)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb
-
-# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.

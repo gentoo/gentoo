@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 DESCRIPTION="A FUSE filesystem providing access to MTP devices"
-HOMEPAGE="http://www.adebenham.com/mtpfs/"
-SRC_URI="http://www.adebenham.com/debian/${P}.tar.gz"
+HOMEPAGE="https://www.adebenham.com/mtpfs/"
+SRC_URI="https://www.adebenham.com/debian/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

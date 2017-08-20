@@ -1,12 +1,10 @@
-diff --git a/configure.ac b/configure.ac
-index 8625fe9..20fdd42 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -80,6 +80,8 @@ AS_IF([test "x${have_zinnia}" = "xyes" ],[
+@@ -80,6 +80,8 @@
  		AM_CONDITIONAL(WITH_ZINNIA,[false])		
  ])
  
-+AC_SEARCH_LIBS([atan2],[m])
++AC_CHECK_LIB([m],[atan2])
 +
  # check ibus
  PKG_CHECK_MODULES(IBUS, [

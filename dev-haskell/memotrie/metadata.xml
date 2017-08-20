@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -13,4 +13,7 @@
 		
 		&amp;#169; 2008,2009,2010 by Conal Elliott; BSD3 license.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">conal/MemoTrie</remote-id>
+	</upstream>
 </pkgmetadata>

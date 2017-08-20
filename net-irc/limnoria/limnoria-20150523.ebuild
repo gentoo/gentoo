@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ MY_PN="Limnoria"
 MY_P="${MY_PN}-${MY_PV}"
 
 if [[ ${PV} == "99999999" ]]; then
-	EGIT_REPO_URI="git://github.com/ProgVal/Limnoria.git"
+	EGIT_REPO_URI="https://github.com/ProgVal/${MY_PN}.git"
 	EGIT_BRANCH="testing"
 	inherit git-r3
 	SRC_URI=""
@@ -22,7 +22,7 @@ else
 fi
 
 DESCRIPTION="Python based extensible IRC infobot and channel bot"
-HOMEPAGE="http://supybot.aperio.fr/"
+HOMEPAGE="https://supybot.aperio.fr/"
 LICENSE="BSD"
 SLOT="0"
 IUSE="crypt ssl test"

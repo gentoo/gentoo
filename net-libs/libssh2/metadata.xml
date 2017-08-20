@@ -3,9 +3,8 @@
 <pkgmetadata>
 <maintainer type="project">
 <email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <use>
-<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
+	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
 </use>
 </pkgmetadata>

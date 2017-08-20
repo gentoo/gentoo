@@ -53,11 +53,11 @@ fi
 
 # @ECLASS-VARIABLE: GCONF_DEBUG
 # @DEFAULT_UNSET
-# @DESCRIPTION: 
+# @DESCRIPTION:
 # Whether to handle debug or not.
 # Some gnome applications support various levels of debugging (yes, no, minimum,
-# etc), but using --disable-debug also removes g_assert which makes debugging   
-# harder. This variable should be set to yes for such packages for the eclass   
+# etc), but using --disable-debug also removes g_assert which makes debugging
+# harder. This variable should be set to yes for such packages for the eclass
 # to handle it properly. It will enable minimal debug with USE=-debug.
 # Note that this is most commonly found in configure.ac as GNOME_DEBUG_CHECK.
 #
@@ -68,7 +68,7 @@ if has ${EAPI:-0} 4 5; then
 		IUSE="debug"
 	fi
 fi
-    
+
 # @ECLASS-VARIABLE: GNOME2_ECLASS_GIO_MODULES
 # @INTERNAL
 # @DESCRIPTION:
@@ -337,7 +337,9 @@ gnome2_pkg_preinst() {
 gnome2_pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_gconf_install
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	gnome2_schemas_update
 	gnome2_scrollkeeper_update
 	gnome2_gdk_pixbuf_update

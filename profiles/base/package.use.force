@@ -1,6 +1,17 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
+# (on behalf of Treecleaner project)
+# www-apache/mod_python is masked for removal, force agent-only builds.
+net-analyzer/check_mk agent-only
+
+# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
+# Always force patch on appropriate variant to ensure
+# similar experience when using app-emulation/wine-any
+app-emulation/wine-staging staging
+app-emulation/wine-d3d9 d3d9
+
 # David Seifert <soap@gentoo.org> (07 Mar 2017)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
 # only for debug pruposes.
@@ -81,9 +92,3 @@ dev-lang/python wide-unicode
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (14 Jan 2010)
-# List of packages working on a single (non-default) Ruby
-# implementation that cannot, thus, be turned off.
-dev-ruby/bitescript ruby_targets_jruby
-dev-ruby/duby ruby_targets_jruby

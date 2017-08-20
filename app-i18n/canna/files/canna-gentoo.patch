@@ -1,0 +1,146 @@
+--- a/Canna.conf
++++ b/Canna.conf
+@@ -109,12 +109,12 @@
+ # define DefErrDir $(cannaPrefix)/log
+ # define DefLibCannaDir $(cannaExecPrefix)/lib
+ #else 
+-# define DefCannaPrefix /usr/local/canna
++# define DefCannaPrefix $(EPREFIX)/usr
+ # ifdef ObsoleteInstallDir
+ #  define DefErrDir /usr/spool/canna
+ #  define DefLibCannaDir /usr/lib
+ # else
+-#  define DefErrDir /var/log
++#  define DefErrDir $(EPREFIX)/var/log/$(PN)
+ #  define DefLibCannaDir $(cannaExecPrefix)/lib
+ # endif
+ #endif
+@@ -123,7 +123,7 @@
+ # define DefCannaLibDir $(cannaPrefix)/lib
+ #else
+ # define DefCannaSrvDir $(cannaExecPrefix)/sbin
+-# define DefCannaLibDir $(cannaPrefix)/share/canna
++# define DefCannaLibDir $(cannaPrefix)/share/$(PN)
+ #endif
+ 
+ #if defined(LinuxArchitecture) || defined(FreeBSDArchitecture) \
+@@ -147,9 +147,11 @@
+ XCOMM cannaLibDir = /var/lib/canna
+ XCOMM cannaLibDir = /var/db/canna
+ cannaLibDir = DefCannaLibDir
+-XCOMM cannaManDir = $(cannaPrefix)/share/man
+-cannaManDir = $(cannaPrefix)/man
+-cannaIncDir = $(cannaPrefix)/include/canna
++cannaManDir = $(cannaPrefix)/share/man
++XCOMM cannaManDir = $(cannaPrefix)/man
++cannaIncDir = $(cannaPrefix)/include/$(PN)
++cannaShareDir = $(cannaPrefix)/share/$(PN)
++cannaDocDir = $(cannaPrefix)/share/doc/$(PF)
+ 
+ libCannaDir = DefLibCannaDir
+ ErrDir  = DefErrDir
+@@ -237,7 +239,7 @@
+ /* #define UseInstalledLibCanna YES */
+ #define UseInstalledLibCanna NO
+ 
+-DicDir   = $(cannaLibDir)/dic
++DicDir   = $(EPREFIX)/var/lib/$(PN)/dic
+ 
+ /* ここから下は変更不要です */
+ 
+--- a/Imakefile
++++ b/Imakefile
+@@ -87,6 +87,7 @@
+ 	 echo "#define CANNAHOSTFILE \"$(cannaLibDir)/cannahost\"";\
+ 	 echo "/* for lib/canna */";\
+ 	 echo "#define CANNALIBDIR \"$(cannaLibDir)\""; \
++	 echo "#define CANNASHAREDIR \"$(cannaShareDir)\""; \
+ 	 echo "#define SUPPORT_OLD_WCHAR $(supportOldWchar)"; \
+ 	 echo "/* for scripts */";\
+ 	 echo "#define CANNABINDIR $(cannaBinDir)"; \
+--- a/dic/phono/Imakefile
++++ b/dic/phono/Imakefile
+@@ -27,9 +27,10 @@
+ 
+        ROMAJI_DIC_DEF = -DSHIFT
+ 
+-               DICDIR = $(cannaLibDir)/dic
+-            SAMPLEDIR = $(cannaLibDir)/sample
+-         SAMPLESRCDIR = $(cannaLibDir)/sample/src
++               DICDIR = $(DicDir)
++        CANNASHAREDIR = $(cannaShareDir)
++            SAMPLEDIR = $(cannaDocDir)/sample
++         SAMPLESRCDIR = $(cannaDocDir)/sample/src
+ 
+     KPDEF = default.kpdef jdaemon.kpdef just.kpdef kaisoku.kpdef kana.kpdef \
+             lan5.kpdef matsu.kpdef newjis.kpdef romaji.kpdef sokuon.kpdef \
+@@ -69,7 +70,7 @@
+ MakeDirectories(install,$(DICDIR))
+ MakeDirectories(install,$(SAMPLESRCDIR))
+ 
+-InstallMultiple($(ROMKANA_TABLES),$(DICDIR))
++InstallMultiple($(ROMKANA_TABLES),$(CANNASHAREDIR))
+ 
+ #ifdef USE_OBSOLETE_STYLE_FILENAME
+ InstallNonExec(default.kpdef,$(SAMPLESRCDIR))
+--- a/lib/canna/romaji.c
++++ b/lib/canna/romaji.c
+@@ -427,7 +427,6 @@
+ 	}
+       }
+       
+-#if 0 /* currently CANNASHAREDDIR is not defined */
+       if (retval == (struct RkRxDic *)NULL) { /* added for Debian by ISHIKAWA Mutsumi <ishikawa@linux.or.jp> */
+         extern jrUserInfoStruct *uinfo;
+ 	
+@@ -450,7 +449,6 @@
+ 	  }
+ 	}
+       }
+-#endif
+       
+       if (retval == (struct RkRxDic *)NULL) { /* 全部オープンできない */
+ 	sprintf(rdic, 
+--- a/misc/Imakefile
++++ b/misc/Imakefile
+@@ -48,7 +48,7 @@
+ MakeLintLibSubdirs($(SUBDIRS))
+ MakeLintSubdirs($(SUBDIRS),install.ln,install.ln)
+ 
+-MakeDirectories(install,$(cannaLibDir)/sample/src)
++MakeDirectories(install,$(cannaDocDir)/sample/src)
+ 
+ #ifdef USE_OBSOLETE_STYLE_FILENAME
+ default.canna: default.ca
+@@ -58,8 +58,8 @@
+ 	$(CP) default.ca default.canna
+ #endif
+ 
+ InstallNonExec(default.canna,$(cannaLibDir))
+-InstallNonExec(is.c,$(cannaLibDir)/sample/src)
++InstallNonExec(is.c,$(cannaDocDir)/sample/src)
+ 
+ clean::
+ 	$(RM) $(PROGRAMS)
+--- a/misc/initfiles/Imakefile
++++ b/misc/initfiles/Imakefile
+@@ -6,7 +6,7 @@
+ #endif
+ 
+             CANNAROOT = ../..
+-            SAMPLEDIR = $(cannaLibDir)/sample
++            SAMPLEDIR = $(cannaDocDir)/sample
+ 
+ all::
+ 
+--- a/server/Imakefile
++++ b/server/Imakefile
+@@ -6,7 +6,7 @@
+ #ifdef __EMX__
+          INSTFLAGS = $(INSTUGIDFLAGS)
+ #else
+-         INSTFLAGS = -s $(INSTUGIDFLAGS)
++         INSTFLAGS = $(INSTUGIDFLAGS)
+ #endif
+            DEFINES = $(CANNASERVER_DEFINES) $(SIGNAL_DEFINES) ConnectionFlags
+           INCLUDES = -I$(CANNAROOT)/include

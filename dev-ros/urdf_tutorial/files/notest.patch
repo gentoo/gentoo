@@ -1,0 +1,14 @@
+Index: urdf_tutorial-0.2.5/CMakeLists.txt
+===================================================================
+--- urdf_tutorial-0.2.5.orig/CMakeLists.txt
++++ urdf_tutorial-0.2.5/CMakeLists.txt
+@@ -4,7 +4,9 @@ project(urdf_tutorial)
+ find_package(catkin REQUIRED roslaunch)
+ catkin_package()
+ 
++if(CATKIN_ENABLE_TESTING)
+ roslaunch_add_file_check(launch)
++endif()
+ 
+ install(DIRECTORY config images meshes launch rviz urdf
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

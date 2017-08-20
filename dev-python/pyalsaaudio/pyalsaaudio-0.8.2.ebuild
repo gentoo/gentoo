@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pyalsaaudio/${P}.tar.gz mirror://pypi/${PN:0:1}/${
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND="media-libs/alsa-lib"
@@ -29,6 +29,10 @@ python_compile_all() {
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
+}
+
+python_test() {
+	"${PYTHON}" test.py -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

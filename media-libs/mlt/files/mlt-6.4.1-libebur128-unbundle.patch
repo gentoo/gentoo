@@ -1,0 +1,137 @@
+From fad1df2bc8efc2881867e510443547fddf5d620b Mon Sep 17 00:00:00 2001
+From: Brian Matherly <code@brianmatherly.com>
+Date: Sun, 19 Feb 2017 23:35:17 -0600
+Subject: [PATCH 1/2] Use external libebur128 if detected.
+
+---
+ src/modules/plus/Makefile  |  7 +++++--
+ src/modules/plus/configure | 11 +++++++++++
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/src/modules/plus/Makefile b/src/modules/plus/Makefile
+index 90067a56..351e7b76 100644
+--- a/src/modules/plus/Makefile
++++ b/src/modules/plus/Makefile
+@@ -22,14 +22,17 @@ OBJS = consumer_blipflash.o \
+ 	   filter_sepia.o \
+ 	   producer_blipflash.o \
+ 	   producer_count.o \
+-	   transition_affine.o \
+-	   ebur128/ebur128.o
++	   transition_affine.o
+ 
+ ifdef USE_FFTW
+ 	OBJS += filter_dance.o \
+ 	   filter_fft.o
+ endif
+ 
++ifdef USE_INTERNAL_LIBEBUR128
++	OBJS += ebur128/ebur128.o
++endif
++
+ SRCS := $(OBJS:.o=.c)
+ 
+ all: 	$(TARGET)
+diff --git a/src/modules/plus/configure b/src/modules/plus/configure
+index fbd49807..e38464b4 100755
+--- a/src/modules/plus/configure
++++ b/src/modules/plus/configure
+@@ -16,5 +16,16 @@ then
+ 		echo "- fftw not found: disable fft and dance filters"
+ 	fi
+ 
++	pkg-config libebur128
++	if [ $? -eq 0 ]
++	then
++		echo "CFLAGS += $(pkg-config --cflags libebur128)" >> config.mak
++		echo "LDFLAGS += $(pkg-config --libs libebur128)" >> config.mak
++	else
++		echo "- libebur128 not found: using internal libebur128"
++		echo "USE_INTERNAL_LIBEBUR128=1" >> config.mak
++		echo "CFLAGS += -DUSE_INTERNAL_LIBEBUR128" >> config.mak
++	fi
++
+ 	exit 0
+ fi
+
+From 9951883b895eb920b7f67ea67a0753d8dea21a9e Mon Sep 17 00:00:00 2001
+From: Brian Matherly <code@brianmatherly.com>
+Date: Mon, 20 Feb 2017 08:15:52 -0600
+Subject: [PATCH 2/2] Fix include directives for ebur128 filters.
+
+---
+ src/modules/plus/Makefile                  | 2 +-
+ src/modules/plus/configure                 | 2 ++
+ src/modules/plus/filter_dynamic_loudness.c | 2 +-
+ src/modules/plus/filter_loudness.c         | 2 +-
+ src/modules/plus/filter_loudness_meter.c   | 2 +-
+ 5 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/modules/plus/Makefile b/src/modules/plus/Makefile
+index 351e7b76..366bca19 100644
+--- a/src/modules/plus/Makefile
++++ b/src/modules/plus/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS += -I../.. -Iebur128/queue
++CFLAGS += -I../..
+ 
+ LDFLAGS += -L../../framework -lmlt -lm -lpthread
+ 
+diff --git a/src/modules/plus/configure b/src/modules/plus/configure
+index e38464b4..59662ca0 100755
+--- a/src/modules/plus/configure
++++ b/src/modules/plus/configure
+@@ -19,12 +19,14 @@ then
+ 	pkg-config libebur128
+ 	if [ $? -eq 0 ]
+ 	then
++		echo "- libebur128 found: using external libebur128"
+ 		echo "CFLAGS += $(pkg-config --cflags libebur128)" >> config.mak
+ 		echo "LDFLAGS += $(pkg-config --libs libebur128)" >> config.mak
+ 	else
+ 		echo "- libebur128 not found: using internal libebur128"
+ 		echo "USE_INTERNAL_LIBEBUR128=1" >> config.mak
+ 		echo "CFLAGS += -DUSE_INTERNAL_LIBEBUR128" >> config.mak
++		echo "CFLAGS += -Iebur128 -Iebur128/queue" >> config.mak
+ 	fi
+ 
+ 	exit 0
+diff --git a/src/modules/plus/filter_dynamic_loudness.c b/src/modules/plus/filter_dynamic_loudness.c
+index 07551f14..99c83051 100644
+--- a/src/modules/plus/filter_dynamic_loudness.c
++++ b/src/modules/plus/filter_dynamic_loudness.c
+@@ -22,7 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+-#include "ebur128/ebur128.h"
++#include <ebur128.h>
+ 
+ typedef struct
+ {
+diff --git a/src/modules/plus/filter_loudness.c b/src/modules/plus/filter_loudness.c
+index 8b74b5c9..0614fecc 100644
+--- a/src/modules/plus/filter_loudness.c
++++ b/src/modules/plus/filter_loudness.c
+@@ -22,7 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+-#include "ebur128/ebur128.h"
++#include <ebur128.h>
+ 
+ #define MAX_RESULT_SIZE 512
+ 
+diff --git a/src/modules/plus/filter_loudness_meter.c b/src/modules/plus/filter_loudness_meter.c
+index 9926f945..6c81d19f 100644
+--- a/src/modules/plus/filter_loudness_meter.c
++++ b/src/modules/plus/filter_loudness_meter.c
+@@ -22,7 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+-#include "ebur128/ebur128.h"
++#include <ebur128.h>
+ 
+ typedef struct
+ {

@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
+	media-libs/opencv:=
 	dev-ros/dynamic_reconfigure
 	dev-ros/camera_info_manager
 	dev-ros/image_transport

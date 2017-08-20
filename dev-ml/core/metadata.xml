@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -14,4 +14,7 @@
   Core_extended adds new functionality, but is only code reviewed on an
   ad-hoc basis.
   </longdescription>
+  <upstream>
+    <remote-id type="github">janestreet/core</remote-id>
+  </upstream>
 </pkgmetadata>

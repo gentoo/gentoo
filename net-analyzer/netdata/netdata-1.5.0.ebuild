@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit autotools fcaps linux-info python-r1 systemd user
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/firehol/${PN}.git"
+	EGIT_REPO_URI="https://github.com/firehol/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/firehol/netdata/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/firehol/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

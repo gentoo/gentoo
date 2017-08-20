@@ -1,0 +1,42 @@
+From 798588a480eaae50368bed75fc78f8314523b2a3 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Sun, 23 Apr 2017 20:22:02 +0100
+Subject: Do not spin in a loop when /proc/timer_stats cannot be written
+
+Only set up the polling once the write has succeeded.
+
+Fixes: https://bugs.freedesktop.org/show_bug.cgi?id=100626
+
+diff --git a/src/up-wakeups.c b/src/up-wakeups.c
+index 1bc3c7b..99433dd 100644
+--- a/src/up-wakeups.c
++++ b/src/up-wakeups.c
+@@ -626,6 +626,13 @@ up_wakeups_timerstats_enable (UpWakeups *wakeups)
+ 
+ 	g_debug ("enabling timer stats");
+ 
++	/* enable timer stats */
++	file = fopen (UP_WAKEUPS_SOURCE_USERSPACE, "w");
++	if (file == NULL)
++		return FALSE;
++	fprintf (file, "1\n");
++	fclose (file);
++
+ 	/* setup polls */
+ 	wakeups->priv->poll_kernel_id =
+ 		g_timeout_add_seconds (UP_WAKEUPS_POLL_INTERVAL_KERNEL,
+@@ -637,11 +644,6 @@ up_wakeups_timerstats_enable (UpWakeups *wakeups)
+ 				       (GSourceFunc) up_wakeups_poll_userspace_cb, wakeups);
+ 	g_source_set_name_by_id (wakeups->priv->poll_userspace_id, "[upower] up_wakeups_poll_userspace_cb");
+ 
+-	file = fopen (UP_WAKEUPS_SOURCE_USERSPACE, "w");
+-	if (file == NULL)
+-		return FALSE;
+-	fprintf (file, "1\n");
+-	fclose (file);
+ 	wakeups->priv->polling_enabled = TRUE;
+ 	return TRUE;
+ }
+-- 
+cgit v0.10.2
+

@@ -1,0 +1,30 @@
+From 571cec91e71c2aae0d5f439ea2d8439d0c3d75eb Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <fziglio@redhat.com>
+Date: Mon, 15 May 2017 15:57:28 +0100
+Subject: [PATCH 2/3] reds: Avoid integer overflows handling monitor
+ configuration
+
+Avoid VDAgentMessage::size integer overflows.
+
+Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+---
+ server/reds.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/server/reds.c b/server/reds.c
+index ec2b6f47..656f518f 100644
+--- a/server/reds.c
++++ b/server/reds.c
+@@ -1131,6 +1131,9 @@ static void reds_on_main_agent_monitors_config(RedsState *reds,
+         spice_debug("not enough data yet. %zd", cmc->offset);
+         return;
+     }
++    if (msg_header->size < sizeof(VDAgentMonitorsConfig)) {
++        goto overflow;
++    }
+     monitors_config = (VDAgentMonitorsConfig *)(cmc->buffer + sizeof(*msg_header));
+     spice_debug("monitors_config->num_of_monitors: %d", monitors_config->num_of_monitors);
+     reds_client_monitors_config(reds, monitors_config);
+-- 
+2.13.0
+

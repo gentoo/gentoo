@@ -12,7 +12,7 @@ SRC_URI="http://www.nufw.org/attachments/download/39/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="debug ldap mysql pam pam_nuauth plaintext postgres prelude unicode nfqueue nfconntrack static syslog test"
 
 REQUIRED_USE="pam_nuauth? ( plaintext )"

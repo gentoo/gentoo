@@ -4,6 +4,30 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
+# Unstable dependencies.
+kde-apps/kopete cryptography
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
+# Not operational, bug #619534
+>=kde-apps/cantor-17.04.3 R
+
+# Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
+# Unstable dependencies.
+dev-util/rpmdevtools emacs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Aug 2017)
+# Requires dev-lang/python-3.5 stabilisation
+>=kde-apps/kdegames-meta-17.04.3 python
+
+# Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
+# Requires >=net-dns/libidn2-2.0 stabilization
+net-dns/dnsmasq libidn2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
+# Requires dev-lang/julia stabilisation, bug #613576
+kde-apps/cantor julia
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
 # Requires not yet stabilised sci-geosciences/grass,
 # which probably needs bump to solve several issues.
@@ -35,10 +59,9 @@ media-plugins/kipi-plugins mediawiki vkontakte
 media-libs/mlt opencv
 
 # Johannes Huber <johu@gentoo.org> (25 Jan 2017)
-# Fails to build with dev-lang/ocaml-0.04.0 which
-# needs to be stabilized due to security issue.
+# Fails to build with dev-lang/ocaml-4.04.0
 # Bugs: #603050, #581946
-kde-apps/kalzium solver
+<kde-apps/kalzium-17.04.3 solver
 
 # Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
 # sys-fs/zfs isn't going to be marked stable anytime soon
@@ -147,10 +170,6 @@ media-libs/libcaca java mono
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Jul 2014)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (29 Jun 2014)
-# Not yet stabilized dependencies blocking sec bug 514886
-app-office/libreoffice firebird
 
 # Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
 # sys-cluster/cman is still in ~arch.

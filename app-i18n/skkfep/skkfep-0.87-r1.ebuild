@@ -1,37 +1,46 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI="6"
+
+inherit toolchain-funcs
 
 DESCRIPTION="A SKK-like Japanese input method for console"
-HOMEPAGE="http://homepage2.nifty.com/aito/soft.html"
-SRC_URI="http://homepage2.nifty.com/aito/skkfep/${P}.tar.gz"
+HOMEPAGE="http://aitoweb.world.coocan.jp/soft.html"
+SRC_URI="http://aitoweb.world.coocan.jp/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
-RDEPEND=">=sys-libs/ncurses-5.7-r7"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
+DEPEND="sys-apps/sed
+	sys-libs/ncurses:=
 	virtual/awk"
-RDEPEND="${RDEPEND}
+RDEPEND="sys-libs/ncurses:=
 	app-i18n/skk-jisyo"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-system-dic.patch
+	"${FILESDIR}"/${PN}-annotation.patch
+)
+DOCS=( README HISTORY TODO )
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-LDFLAGS.patch
+	sed -i "/SYSTEM_DIC_NAME/a#define SYSTEM_DIC_NAME \"${EPREFIX}/usr/share/skk/SKK-JISYO.L\"" config.h
+
+	default
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" OPTIMIZE="${CFLAGS}"
+	emake \
+		CC="$(tc-getCC)" \
+		OPTIMIZE="${CFLAGS}"
 }
 
 src_install() {
 	dobin skkfep escmode
 	doman skkfep.1
-	dodoc README HISTORY TODO
+	einstalldocs
 }

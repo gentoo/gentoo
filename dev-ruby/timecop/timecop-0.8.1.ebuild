@@ -14,11 +14,11 @@ RUBY_FAKEGEM_EXTRADOC="README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="A gem providing 'time travel' and 'time freezing' capabilities"
-HOMEPAGE="https://github.com/jtrupiano/timecop"
+HOMEPAGE="https://github.com/travisjeffery/timecop"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE=""
 
 # Missing testdep activesupport

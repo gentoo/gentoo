@@ -11,20 +11,11 @@
 	</maintainer>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
-		<flag name="attica">Get hot stuff with <pkg>dev-libs/libattica</pkg></flag>
-		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
-		<flag name="eigen">Enable <pkg>dev-cpp/eigen</pkg> mathematical templates support</flag>
-		<flag name="glew">Enable <pkg>media-libs/glew</pkg> opengl extension library support</flag>
-		<flag name="glib">Enable support for C library routines from <pkg>dev-libs/glib</pkg></flag>
-		<flag name="gsf">Enable support for ODT structures extraction via <pkg>gnome-extra/libgsf</pkg></flag>
 		<flag name="import-filter">Enable support for various import filter file formats like WordPerfect, Visio and Apple Keynote</flag>
-		<flag name="kdcraw">Enable support for KDE image manipulating interface via <pkg>kde-apps/libkdcraw</pkg></flag>
 		<flag name="lcms">Build colorengine plugins using <pkg>media-libs/lcms</pkg></flag>
 		<flag name="okular">Enable bindings for <pkg>kde-apps/okular</pkg></flag>
 		<flag name="phonon">Build stage/eventplugins and videoshape plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="pim">Enable support for KDE PIM resources integration</flag>
 		<flag name="spacenav">Enable support for the 3Dconnexion spacenav input device via <pkg>dev-libs/libspnav</pkg></flag>
-		<flag name="vc">Enable support for <pkg>dev-libs/vc</pkg>, could be a significant speed boost on krita</flag>
-		<flag name="xbase">Enable support for xbase compatible database formats</flag>
 	</use>
 </pkgmetadata>

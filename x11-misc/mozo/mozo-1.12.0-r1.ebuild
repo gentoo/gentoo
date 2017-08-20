@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,8 @@ KEYWORDS="amd64 ~arm x86"
 DESCRIPTION="Mozo menu editor for MATE"
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE="gtk3"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=mate-base/mate-menus-1.6[introspection]
@@ -33,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3[introspection]
 	)"
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40:*
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"

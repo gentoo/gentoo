@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -14,8 +15,10 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 IUSE="test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
+	${PYTHON_DEPS}
 	>=dev-libs/dbus-glib-0.60
 	>=dev-libs/glib-2.30:2
 	>=net-libs/sofia-sip-1.12.11

@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: mysql-multilib.eclass
+# @ECLASS: mysql-multilib-r1.eclass
 # @MAINTAINER:
 # Maintainers:
 #	- MySQL Team <mysql-bugs@gentoo.org>
@@ -211,7 +211,7 @@ DEPEND="${DEPEND}
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="${PDEPEND} perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	 ~virtual/mysql-${MYSQL_PV_MAJOR}[embedded=,static=]
+	 server? ( ~virtual/mysql-${MYSQL_PV_MAJOR}[embedded=,static=] )
 	 virtual/libmysqlclient:${SLOT}[${MULTILIB_USEDEP},static-libs=]"
 
 # my_config.h includes ABI specific data
@@ -406,16 +406,13 @@ multilib_src_configure() {
 		# The build forces this to be defined when cross-compiling.  We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
+		-DPKG_CONFIG_EXECUTABLE="${EPREFIX}/usr/bin/$(tc-getPKG_CONFIG)"
 	)
 
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
-	fi
-
-	if in_iuse systemd ; then
-		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
 	fi
 
 	if use openssl || use libressl ; then
@@ -447,6 +444,12 @@ multilib_src_configure() {
 	mycmakeargs+=( -DWITH_EDITLINE=bundled )
 
 	if multilib_is_native_abi && use server ; then
+
+		# systemd is only linked to for server notification
+		if in_iuse systemd ; then
+			mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd yes no) )
+		fi
+
 		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
 			ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
@@ -505,6 +508,7 @@ multilib_src_configure() {
 			-DWITHOUT_EMBEDDED_SERVER=1
 			-DEXTRA_CHARSETS=none
 			-DINSTALL_SQLBENCHDIR=
+			-DWITH_SYSTEMD=no
 		)
 	fi
 
@@ -942,7 +946,7 @@ mysql-multilib-r1_pkg_config() {
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
 		cmd=( "${EROOT}usr/sbin/mysqld" )
-		initialize_options="--initialize-insecure  '--init-file=${sqltmp}'"
+		initialize_options="--initialize-insecure  --init-file='${sqltmp}'"
 		sqltmp="" # the initialize will take care of it
 	else
 		cmd=( "${EROOT}usr/share/mysql/scripts/mysql_install_db" )

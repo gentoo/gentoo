@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 inherit multilib ruby-fakegem
 
@@ -14,7 +14,7 @@ DESCRIPTION="A Ruby interface to some LDAP libraries"
 HOMEPAGE="http://ruby-ldap.sourceforge.net/"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~hppa ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-macos"
 IUSE="ssl"
 DEPEND=">=net-nds/openldap-2
 	dev-libs/cyrus-sasl

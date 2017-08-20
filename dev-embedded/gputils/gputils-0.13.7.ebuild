@@ -1,11 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
 inherit eutils
 
-DESCRIPTION="Collection of tools including assembler, linker and librarian for PIC microcontrollers"
+DESCRIPTION="Tools including assembler, linker and librarian for PIC microcontrollers"
 HOMEPAGE="http://gputils.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

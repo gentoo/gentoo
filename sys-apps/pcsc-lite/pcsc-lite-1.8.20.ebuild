@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 systemd udev user multilib-minimal
+inherit python-single-r1 systemd udev user multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
 HOMEPAGE="http://pcsclite.alioth.debian.org/"

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -12,4 +12,7 @@
 		Python wrapper for MurmurHash (MurmurHash3), a set of fast and
 		robust hash functions.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">mmh3</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,10 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Haubenwallner <haubi@gentoo.org> (23 Mar 2017)
+# Using nettle hides a conflict between wincrypt and openssl.
+app-arch/libarchive nettle
+
 # Michael Haubenwallner <haubi@gentoo.org> (18 Apr 2016)
 # Cygwin coreutils provide kill as gkill
 sys-apps/coreutils kill

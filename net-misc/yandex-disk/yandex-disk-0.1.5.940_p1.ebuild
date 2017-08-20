@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit bash-completion-r1 eutils rpm
 
@@ -33,14 +33,15 @@ src_prepare() {
 		-e '/^complete/s/-X //' \
 		etc/bash_completion.d/yandex-disk-completion.bash || die
 
-	epatch_user
+	eapply_user
 }
 
 src_install() {
 	exeinto /opt/bin
 	doexe usr/bin/yandex-disk
 	newbashcomp etc/bash_completion.d/yandex-disk-completion.bash "${PN}"
-	doman usr/share/man/man1/*.gz
+	insinto /usr/share/man
+	doins -r usr/share/man/*
 	insinto /usr/share
 	doins -r usr/share/locale
 }

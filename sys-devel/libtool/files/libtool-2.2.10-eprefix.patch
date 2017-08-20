@@ -1,0 +1,11 @@
+--- ./libltdl/m4/libtool.m4.orig	2010-07-02 12:41:07.000000000 +0200
++++ ./libltdl/m4/libtool.m4	2010-07-02 12:45:39.000000000 +0200
+@@ -2087,7 +2087,7 @@
+     mingw* | cegcc*) lt_search_path_spec=`$ECHO "$lt_search_path_spec" |\
+       $SED 's,/\([[A-Za-z]]:\),\1,g'` ;;
+   esac
+-  sys_lib_search_path_spec=`$ECHO "$lt_search_path_spec" | $lt_NL2SP`
++  sys_lib_search_path_spec=`$ECHO "@GENTOO_PORTAGE_EPREFIX@/lib @GENTOO_PORTAGE_EPREFIX@/usr/lib $lt_search_path_spec" | $lt_NL2SP`
+ else
+   sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
+ fi])

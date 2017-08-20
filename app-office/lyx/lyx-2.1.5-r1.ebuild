@@ -51,7 +51,7 @@ RDEPEND="${COMMONDEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-pictures
 		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
-		dev-texlive/texlive-genericextra
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )
 		dev-texlive/texlive-fontsrecommended
 		|| (
 			dev-tex/latex2html

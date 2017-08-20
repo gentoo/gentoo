@@ -14,4 +14,8 @@ LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+# libck.so name collision #616762
+# these packages have nothing in common
+RDEPEND="!sys-cluster/charm"
+
 S="${WORKDIR}/${MY_P}"

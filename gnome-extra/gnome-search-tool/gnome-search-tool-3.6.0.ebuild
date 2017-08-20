@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.30:2
 	sys-apps/grep
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3:3
+	>=x11-libs/gtk+-3:3[X]
 	x11-libs/libICE
 	x11-libs/libSM
 "

@@ -5,6 +5,6 @@
     <email>slis@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">ntop</remote-id>
+    <remote-id type="github">ntop/ntopng</remote-id>
   </upstream>
 </pkgmetadata>

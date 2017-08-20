@@ -10,7 +10,7 @@ BV_AMD64=${BV}-linux-x86_64
 BV_X86=${BV}-linux-i686
 
 DESCRIPTION="The Crystal Programming Language"
-HOMEPAGE="http://crystal-lang.org"
+HOMEPAGE="https://crystal-lang.org"
 SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.tar.gz
 	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${PV}/crystal-${BV_AMD64}.tar.gz )
 	x86? ( https://github.com/crystal-lang/crystal/releases/download/${PV}/crystal-${BV_X86}.tar.gz )"

@@ -130,7 +130,7 @@ python_test() {
 
 python_install_all() {
 	use doc && \
-		local DOCS=( "${DISTDIR}"/${PN}*pdf ) \
+		local DOCS=( "${DISTDIR}"/${PN}-${DOC_PV}-ref.pdf ) \
 		local HTML_DOCS=( "${WORKDIR}"/html/. )
 	distutils-r1_python_install_all
 }

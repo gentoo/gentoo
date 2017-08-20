@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -21,4 +21,7 @@
 		nombre del proyecto para satisfacer una petición realizada
 		por la empresa de relojes suiza.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">swatch</remote-id>
+	</upstream>
 </pkgmetadata>

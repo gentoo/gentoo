@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="SAX2 Driver for Expat"
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND=">=dev-perl/XML-SAX-0.15-r1

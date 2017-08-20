@@ -1,22 +1,24 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Automatic algebraic manipulator"
-HOMEPAGE="http://www.mathomatic.org/"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mfillpot/mathomatic"
+SRC_URI="https://github.com/mfillpot/mathomatic/archive/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc gnuplot"
 
-DEPEND="sys-libs/readline
-	sys-libs/ncurses"
+DEPEND="sys-libs/readline:=
+	sys-libs/ncurses:="
 RDEPEND="${DEPEND}
 	gnuplot? ( sci-visualization/gnuplot )"
+
+S="${WORKDIR}/${PN}-${P}"
 
 src_compile() {
 	append-cflags -DBOLD_COLOR=1

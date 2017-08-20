@@ -1,0 +1,24 @@
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c	2017-02-26 18:48:27.196949325 +0100
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c	2017-02-26 18:50:28.149283794 +0100
+@@ -1,9 +1,6 @@
+ #include <asm/atomic.h>
+ #include <linux/spinlock_types.h>
+-#include <asm/io.h>
+ #include <asm/processor.h>
+-#include <asm/pgtable.h>
+-#include <asm/page.h>
+ #include <linux/kmod.h>
+ #include <linux/vmalloc.h>
+ #include <linux/init.h>
+@@ -20,11 +17,6 @@
+ 
+ #define DRIVER_NAME				"SAA716x Core"
+ 
+-static irqreturn_t saa716x_msi_handler(int irq, void *dev_id)
+-{
+-	return IRQ_HANDLED;
+-}
+-
+ static int saa716x_enable_msi(struct saa716x_dev *saa716x)
+ {
+ 	struct pci_dev *pdev = saa716x->pdev;

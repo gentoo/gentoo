@@ -1,0 +1,19 @@
+# HG changeset patch
+# User Kristian Fiskerstrand <kf@sumptuouscapital.com>
+# Date 1499610580 -7200
+# Node ID 719ffdf628a81a2f052f3b6dc746a3e1d37afe30
+# Parent  6352f0dbcadf35aac29c2fbf10fb218ae50d9c77
+Fix nums specification
+
+diff --git a/Makefile b/Makefile
+--- a/Makefile
++++ b/Makefile
+@@ -56,7 +56,7 @@
+ CAMLINCLUDE= -package cryptokit,unix,str,bigarray -I lib -I bdb
+ COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLLDFLAGS) -ccopt -Lbdb -dtypes $(WARNERR)
+ OCAMLDEP=ocamldep $(CAMLP4)
+-CAMLLIBS=bdb.cma nums.cma
++CAMLLIBS=bdb.cma
+ OCAMLFLAGS=$(COMMONCAMLFLAGS) -linkpkg -g $(CAMLLIBS)
+ OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -linkpkg -inline 40 $(CAMLLIBS:.cma=.cmxa)
+ 

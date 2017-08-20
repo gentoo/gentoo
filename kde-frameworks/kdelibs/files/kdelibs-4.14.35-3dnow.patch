@@ -1,0 +1,19 @@
+commit f96d12c9dbc59be09a7f8e29ced43f681e6f3dce
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Jul 23 01:18:26 2017 +0200
+
+    Add missing HAVE_X86_3DNOW cmakedefine
+
+diff --git a/solid/solid/config-processor.h.cmake b/solid/solid/config-processor.h.cmake
+index f7c3d2b4bc..51ac8e18f5 100644
+--- a/solid/solid/config-processor.h.cmake
++++ b/solid/solid/config-processor.h.cmake
+@@ -10,5 +10,7 @@
+ #cmakedefine HAVE_X86_SSE2
+ 
+ /* Defined to 1 if the assembler supports AltiVec instructions. */
+-#cmakedefine HAVE_PPC_ALTIVEC  
++#cmakedefine HAVE_PPC_ALTIVEC
+ 
++/* Defined to 1 if the assembler supports 3DNOW instructions. */
++#cmakedefine HAVE_X86_3DNOW

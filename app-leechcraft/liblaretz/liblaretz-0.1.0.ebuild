@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Shared library to be used by the Laretz sync server and its clients"
-HOMEPAGE="http://leechcraft.org"
+HOMEPAGE="https://leechcraft.org"
 SRC_URI="https://github.com/0xd34df00d/${PN#lib}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 inherit cmake-utils

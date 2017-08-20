@@ -31,5 +31,6 @@ Conformance with C/C++/ObjC and their variants</longdescription>
 		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
 		<flag name="multitarget">Build all host targets (default: host only)</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer</flag>
+		<flag name="z3">Enable the static analyzer constraint manager backend using <pkg>sci-mathematics/z3</pkg></flag>
 	</use>
 </pkgmetadata>

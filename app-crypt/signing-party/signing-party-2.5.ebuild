@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs autotools
+inherit toolchain-funcs autotools
 
 DESCRIPTION="A collection of several tools related to OpenPGP"
 HOMEPAGE="http://pgp-tools.alioth.debian.org/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/s/signing-party/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="
@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}
 	net-mail/qprint
 	>=dev-perl/MailTools-1.62
 	dev-perl/Net-IDN-Encode
+	app-crypt/libmd
 	virtual/mailx
 	virtual/mta
 	|| (

@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils multilib python-r1 toolchain-funcs
+inherit multilib python-r1 toolchain-funcs
 
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"
@@ -16,6 +16,7 @@ KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86 ~ppc-macos"
 SLOT="0"
 LICENSE="BSD"
 IUSE="bindist doc python bzip2 gmp libressl ssl static-libs threads zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -29,6 +30,10 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 	)"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-c++11.patch"
+)
 
 src_prepare() {
 	default

@@ -28,7 +28,7 @@ RDEPEND="
 	lapack? ( virtual/lapack )
 	!qt4? ( motif? ( media-libs/SoXt ) )
 	ogre? ( dev-games/ogre[ois?] dev-libs/boost:=[threads] )
-	opencv? ( media-libs/opencv qt4? ( media-libs/opencv[-qt5(-)] ) )
+	opencv? ( media-libs/opencv:= qt4? ( media-libs/opencv[-qt5(-)] ) )
 	png? ( media-libs/libpng:0= )
 	qt4? ( media-libs/SoQt dev-qt/qtgui:4 )
 	usb? ( virtual/libusb:1 )

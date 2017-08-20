@@ -10,7 +10,7 @@ PLOCALE_BACKUP="en_US"
 inherit l10n qmake-utils
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
-HOMEPAGE="http://www.smplayer.eu/"
+HOMEPAGE="http://www.smplayer.info/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"

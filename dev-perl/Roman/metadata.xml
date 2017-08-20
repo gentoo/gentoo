@@ -5,10 +5,6 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>

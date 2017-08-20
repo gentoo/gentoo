@@ -1,62 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
   </maintainer>
-<use>
-  <flag name="timezone">
+  <use>
+    <flag name="timezone">
     Add dependency over <pkg>dev-ruby/tzinfo</pkg> to enable the "time"
     plugin for rbot. If the USE flag is disabled the plugin is also
     disabled by default.
   </flag>
-  <flag name="aspell">
+    <flag name="aspell">
     Use aspell instead of ispell in the "spell" plugin for rbot. The
     vanilla plugin uses ispell, but enabling this flag makes it use
     the ispell interface from aspell instead.
-  </flag>
-  <flag name="translator">
+    </flag>
+    <flag name="translator">
     Add dependency over <pkg>dev-ruby/mechanize</pkg>, which is needed
     to enable the "translator" plugin for rbot. If the USE flag is
     disabled the plugin is also disabled by default.
   </flag>
-  <flag name="shorturl">
+    <flag name="shorturl">
     Add dependency over <pkg>dev-ruby/shorturl</pkg>, which is needed
     to enable the "shortenurl" plugin for rbot. If the USE flag is
     disabled the plugin is also disabled by default.
   </flag>
-  <flag name="nls">
+    <flag name="nls">
     Build and install translation for the messages coming from the bot
     and its plugins (through <pkg>dev-ruby/ruby-gettext</pkg>).
   </flag>
-  <flag name="figlet">
+    <flag name="figlet">
     Add dependency over <pkg>app-misc/figlet</pkg>, which is used by
     the "figlet" plugin for rbot. If the USE flag is disabled the
     plugin will be unable to use figlet; if toilet is also disabled,
     the plugin will be disabled.
   </flag>
-  <flag name="toilet">
+    <flag name="toilet">
     Add dependency over <pkg>app-misc/toilet</pkg>, which is used by
     the "figlet" plugin for rbot. If the USE flag is disabled the
     plugin will be unable to use toilet; if figlet is also disabled,
     the plugin will be disabled.
   </flag>
-  <flag name="fortune">
+    <flag name="fortune">
     Add dependency over <pkg>games-misc/fortune-mod</pkg>, which is
     needed to enable the "fortune" plugin for rbot. If the USE flag is
     disabled the plugin is also disabled by default.
   </flag>
-  <flag name="cal">
+    <flag name="cal">
     Add dependency over a package providing the /usr/bin/cal command,
     which is needed to enable the "cal" plugin for rbot. If the USE
     flag is disabled the plugin is also disabled by default.
-  </flag>
-  <flag name="host">
+    </flag>
+    <flag name="host">
     Add dependency over <pkg>net-dns/bind-tools</pkg> (providing
     /usr/bin/host), which is needed to enable the "host" plugin for
     rbot. If the USE flag is disabled the plugin is also disabled by
     default.
   </flag>
-</use>
+  </use>
+  <upstream>
+    <remote-id type="github">ruby-rbot/rbot</remote-id>
+  </upstream>
 </pkgmetadata>

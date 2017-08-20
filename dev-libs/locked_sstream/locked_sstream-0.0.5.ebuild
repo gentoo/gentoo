@@ -5,6 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 PYTHON_REQ_USE="threads(+)"
+
 inherit python-any-r1 waf-utils
 
 DESCRIPTION="tiny C++ library which wraps std::stringstream in a mutex"
@@ -17,7 +18,8 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND=""
-DEPEND="dev-util/waf"
+DEPEND="dev-util/waf
+	${PYTHON_DEPS}"
 
 src_prepare() {
 	rm -vf ./waf || die

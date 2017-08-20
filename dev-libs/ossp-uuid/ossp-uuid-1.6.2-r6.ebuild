@@ -16,17 +16,17 @@ GENTOO_DEPEND_ON_PERL="no"
 
 inherit perl-module php-ext-source-r3
 
-DESCRIPTION="An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID"
+DESCRIPTION="An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID"
 HOMEPAGE="http://www.ossp.org/pkg/lib/uuid/"
 SRC_URI="ftp://ftp.ossp.org/pkg/lib/uuid/${MY_P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 arm ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="+cxx perl php static-libs"
 
 DEPEND="perl? ( dev-lang/perl:= )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND} php? ( !dev-php/pecl-uuid )"
 
 S="${WORKDIR}/${MY_P}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde5-functions.eclass
@@ -33,15 +33,18 @@ export KDE_BUILD_TYPE
 case ${CATEGORY} in
 	kde-frameworks)
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
+		[[ ${KDE_BUILD_TYPE} = live || $(get_version_component_range 2) -ge 37 ]] \
+			&& : ${QT_MINIMAL:=5.7.1}
 		;;
 	kde-plasma)
-		if ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
-			: ${QT_MINIMAL:=5.7.1}
-		fi
+		: ${QT_MINIMAL:=5.7.1}
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
-			: ${QT_MINIMAL:=5.7.1}
 		fi
+		;;
+	kde-apps)
+		: ${QT_MINIMAL:=5.7.1}
+		[[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.08* ]] && : ${FRAMEWORKS_MINIMAL:=5.37.0}
 		;;
 esac
 
@@ -53,12 +56,12 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.29.0}
+: ${FRAMEWORKS_MINIMAL:=5.34.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.4.1}
+: ${PLASMA_MINIMAL:=5.10.4}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
@@ -242,12 +245,7 @@ add_kdeapps_dep() {
 	elif [[ ${CATEGORY} = kde-apps ]]; then
 		version=${PV}
 	elif [[ -z "${version}" ]] ; then
-		# In KDE applications world, 5.9999 > yy.mm.x
-		if [[ ${PV} = 5.9999 || ${PV} = 9999 ]]; then
-			version=5.9999
-		else
-			version=${KDE_APPS_MINIMAL}
-		fi
+		version=${KDE_APPS_MINIMAL}
 	fi
 
 	_add_category_dep kde-apps "${1}" "${2}" "${version}" "${4}"

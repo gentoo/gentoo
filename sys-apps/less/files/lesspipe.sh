@@ -164,7 +164,7 @@ lesspipe() {
 	*.bmp|*.gif|*.jpeg|*.jpg|*.ico|*.pcd|*.pcx|*.png|*.ppm|*.tga|*.tiff|*.tif|*.webp)
 		identify -verbose -- "$1" || file -L -- "$1"
 		;;
-	*.asf|*.avi|*.mov|*.mp4|*.mpeg|*.mpg|*.qt|*.ram|*.rm|*.webm|*.wmv)
+	*.asf|*.avi|*.flv|*.mkv|*.mov|*.mp4|*.mpeg|*.mpg|*.qt|*.ram|*.rm|*.webm|*.wmv)
 		midentify "$1" || file -L -- "$1"
 		;;
 	*.mp3)        mp3info "$1" || id3info "$1" ;;

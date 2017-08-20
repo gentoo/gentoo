@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+     Arb is a C library for arbitrary-precision interval arithmetic,
+     using a midpoint-radius representation (“ball arithmetic”). It
+     supports real and complex numbers, polynomials, power series,
+     matrices, and evaluation of many transcendental functions. All
+     operations are done with automatic, rigorous error bounds.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">fredrik-johansson/arb</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,10 @@
+--- a/qt5/style/qtcurve.cpp
++++ b/qt5/style/qtcurve.cpp
+@@ -67,6 +67,7 @@
+ #include <QSettings>
+ #include <QPixmapCache>
+ #include <QTextStream>
++#include <QDebug>
+ 
+ #include "shadowhelper.h"
+ #include <qtcurve-utils/x11qtc.h>

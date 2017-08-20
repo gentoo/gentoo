@@ -27,6 +27,22 @@ pkg_preinst() {
 	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
 }
 
+src_prepare() {
+	if use prefix-chain; then
+		epatch "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
+
+		# need to set the PKG_CONFIG_PATH globally for this prefix, when
+		# chaining is enabled, since pkg-config may not be installed locally,
+		# but still .pc files should be found for all RDEPENDable prefixes in
+		# the chain.
+		echo "PKG_CONFIG_PATH=\"/usr/lib/pkgconfig:/usr/share/pkgconfig\"" >> etc/env.d/00basic
+		echo "PORTAGE_OVERRIDE_EPREFIX=\"${EPREFIX}\"" >> etc/env.d/00basic
+		echo "PORTAGE_CONFIGROOT=\"${EPREFIX}\"" >> etc/env.d/00basic
+		echo "EPREFIX=\"${EPREFIX}\"" >> etc/env.d/00basic
+	fi
+	default
+}
+
 src_install() {
 	# make functions.sh available in /etc/init.d (from gentoo-functions)
 	# Note: we cannot replace the symlink with a file here, or Portage will
@@ -38,9 +54,13 @@ src_install() {
 	sed \
 		-e "/PATH=/!s:/\(etc\|usr/bin\|bin\):\"${EPREFIX}\"/\1:g" \
 		-e "/PATH=/s|\([:\"]\)/|\1${EPREFIX}/|g" \
-		-e "/PATH=.*\/sbin/s|\"$|:/usr/sbin:/sbin\"|" \
-		-e "/PATH=.*\/bin/s|\"$|:/usr/bin:/bin\"|" \
 		etc/profile > "${ED}"/etc/profile || die
+	if ! use prefix-chain; then
+		sed \
+			-e "/PATH=.*\/sbin/s|\"$|:/usr/sbin:/sbin\"|" \
+			-e "/PATH=.*\/bin/s|\"$|:/usr/bin:/bin\"|" \
+			-i "${ED}"/etc/profile || die
+	fi
 	dodir etc/env.d
 	sed \
 		-e "s:/\(etc/env.d\|opt\|usr\):${EPREFIX}/\1:g" \

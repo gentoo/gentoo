@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ DOCS="EXPERIMENTAL"
 
 USE_PHP="php5-6 php5-5 php5-4"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r2 epatch
 
 KEYWORDS="amd64 ppc ppc64 x86"
 

@@ -1,0 +1,46 @@
+diff --git a/src/Makefile b/src/Makefile
+index 4f8aaf1..7b527a6 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -28,7 +28,7 @@ else
+     CFLAGS += -DDEBUG_LEVEL=1 -g
+ endif
+ 
+-CFLAGS		+= -fno-strict-aliasing
++CFLAGS		+= -fno-strict-aliasing -fgnu89-inline
+ CFLAGS		+= -DVERSION=\"$(VERSION)\" -Wall
+ CFLAGS		+= $(shell pkg-config $(PKGS) --cflags)
+ LDLIBS		+= $(shell pkg-config $(PKGS) --libs)
+diff --git a/src/main.c b/src/main.c
+index aef54d6..f1571f3 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -228,7 +228,6 @@ processOptions( int argc, char **argv )
+     char		text[1024];
+     unsigned long	flags, flagsMask;
+     char		*options[NOPTIONS];
+-    int			nbytes;
+ 
+     int			i;
+ 
+@@ -295,7 +294,7 @@ OPTIONS\n\
+     for( i=0; i < NOPTIONS; i++)
+ 	options[i] = NULL;
+ 
+-    nbytes = readOptionsFromFile( options, &flags, &flagsMask, text, 1024,
++    readOptionsFromFile( options, &flags, &flagsMask, text, 1024,
+ 				    config_file);
+ 
+     /* Initialize  the global xnots_t structure. */
+diff --git a/src/xnots.h b/src/xnots.h
+index 52316fe..6b9f577 100644
+--- a/src/xnots.h
++++ b/src/xnots.h
+@@ -330,6 +330,7 @@ void		correctNoteGeometry	( Note		*note,
+ 					  unsigned	height
+ 					);
+ void		correctNoteHeight	( Note *note );
++extern
+ inline void	resetNoteWidth		( Note *note );
+ void		freeNote		( Note *note );
+ void		showNotes		();

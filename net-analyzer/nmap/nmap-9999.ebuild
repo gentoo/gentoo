@@ -97,11 +97,9 @@ src_prepare() {
 
 	# Fix desktop files wrt bug #432714
 	sed -i \
-		-e '/^Encoding/d' \
 		-e 's|^Categories=.*|Categories=Network;System;Security;|g' \
 		zenmap/install_scripts/unix/zenmap-root.desktop \
 		zenmap/install_scripts/unix/zenmap.desktop || die
-
 	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
 	eautoreconf
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -116,17 +114,18 @@ src_configure() {
 	econf \
 		$(use_enable ipv6) \
 		$(use_enable nls) \
-		$(use_with zenmap) \
-		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
 		$(use_with ncat) \
 		$(use_with ndiff) \
 		$(use_with nmap-update) \
 		$(use_with nping) \
 		$(use_with ssl openssl) \
+		$(use_with zenmap) \
+		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
+		--cache-file="${S}"/config.cache \
 		--with-libdnet=included \
 		--with-pcre=/usr
+	#	Commented out because configure does weird things
 	#	--with-liblinear=/usr \
-	#	Commented because configure does weird things, while autodetection works
 }
 
 src_compile() {

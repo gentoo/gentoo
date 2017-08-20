@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${GITHUB_USER}/${PN}/tarball/${PV_COMMIT} -> ${PN}-g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 x86"
+KEYWORDS="alpha amd64 arm hppa ppc ppc64 x86"
 IUSE=""
 
 S="${WORKDIR}/${GITHUB_USER}-${PN}-${PV_COMMIT:0:7}"

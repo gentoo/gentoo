@@ -1,0 +1,12 @@
+Index: onanomsg-1.0/_tags
+===================================================================
+--- onanomsg-1.0.orig/_tags
++++ onanomsg-1.0/_tags
+@@ -19,6 +19,7 @@ true: debug, bin_annot, safe_string
+ 	      package(lwt.unix), \
+ 	      package(lwt.ppx), \
+ 	      package(oUnit), \
++	      package(ppx_deriving), \
+ 	      package(containers)
+ 
+ <examples/*>: package(bigstring), \

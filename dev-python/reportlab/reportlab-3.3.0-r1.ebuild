@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} ) # Tests crash with pypy
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} ) # Tests crash with pypy
 
 inherit distutils-r1 flag-o-matic prefix
 

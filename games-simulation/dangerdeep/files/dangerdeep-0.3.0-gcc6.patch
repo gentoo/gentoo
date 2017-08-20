@@ -1,0 +1,38 @@
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=610654
+Upstream Ticket: https://sourceforge.net/p/dangerdeep/patches/26/
+
+--- a/src/system.cpp
++++ b/src/system.cpp
+@@ -178,7 +178,7 @@
+ 	instance = this;
+ }
+ 
+-system::~system()
++system::~system() DTOR_NOEXCEPT
+ {
+ 	if (!instance) {
+ 		SDL_Quit();
+--- a/src/system.h
++++ b/src/system.h
+@@ -52,6 +52,12 @@
+ #define ASSERT(a,...)
+ #endif
+ 
++#if __cplusplus >= 201103L
++#define DTOR_NOEXCEPT noexcept(false)
++#else
++#define DTOR_NOEXCEPT
++#endif
++
+ class font;
+ class texture;
+ 
+@@ -61,7 +67,7 @@
+ public:
+ 	enum button_type { left_button=0x1, right_button=0x2, middle_button=0x4, wheel_up=0x8, wheel_down=0x10 };
+ 	system(double nearz_, double farz_, unsigned res_x=1024, unsigned res_y=768, bool fullscreen=true);
+-	~system();
++	~system() DTOR_NOEXCEPT;
+ 	void set_video_mode(unsigned res_x_, unsigned res_y_, bool fullscreen);
+ 	void swap_buffers();
+ 

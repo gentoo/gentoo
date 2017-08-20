@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="6"
 
 inherit eutils
 
@@ -20,6 +20,10 @@ IUSE=""
 
 DEPEND="sys-devel/binutils-config"
 RDEPEND="${DEPEND}"
+
+src_unpack() {
+	mkdir -p "${S}"
+}
 
 src_install() {
 	LIBPATH=/usr/$(get_libdir)/binutils/${CHOST}/native-${PV}

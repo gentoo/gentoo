@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,11 +24,11 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXtst
-	test? ( dev-qt/qttest:5 )
 	webkit? ( dev-qt/qtwebkit:5 )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
+	test? ( dev-qt/qttest:5 )
 "
 
 S=${WORKDIR}/CopyQ-${PV}

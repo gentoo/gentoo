@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -85,6 +85,6 @@ pkg_postinst(){
 	elog "Support for jreality is missing, sorry (see bug #346073)."
 	elog " "
 	elog "Additional features for polymake are available through external"
-	elog "software such as sci-mathmatics/4ti2 and sci-mathematics/topcom."
+	elog "software such as sci-mathematics/4ti2 and sci-mathematics/topcom."
 	elog "After installing new external software run 'polymake --reconfigure'."
 }

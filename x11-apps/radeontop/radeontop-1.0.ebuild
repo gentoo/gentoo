@@ -46,6 +46,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	export nls=$(usex nls 1 0)
+	export amdgpu=1
 	export xcb=1
 	# Do not add -g or -s to CFLAGS
 	export plain=1

@@ -7,17 +7,17 @@ XORG_MULTILIB="yes"
 if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
-	EGIT_REPO_URI="git://github.com/xkbcommon/${PN}"
+	EGIT_REPO_URI="https://github.com/xkbcommon/${PN}"
 else
 	XORG_BASE_INDIVIDUAL_URI=""
-	SRC_URI="http://xkbcommon.org/download/${P}.tar.xz"
+	SRC_URI="https://xkbcommon.org/download/${P}.tar.xz"
 fi
 
 inherit xorg-2 ${GIT_ECLASS}
 
 DESCRIPTION="X.Org xkbcommon library"
 HOMEPAGE="https://xkbcommon.org/"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="X doc test"
 
 DEPEND="sys-devel/bison

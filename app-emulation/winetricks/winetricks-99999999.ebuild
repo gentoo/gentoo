@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2-utils eutils
 
 if [[ ${PV} == "99999999" ]] ; then
-	EGIT_REPO_URI="git://github.com/Winetricks/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Winetricks/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
 else
@@ -21,7 +21,7 @@ SRC_URI="${SRC_URI}
 	kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )"
 
 DESCRIPTION="Easy way to install DLLs needed to work around problems in Wine"
-HOMEPAGE="http://winetricks.org http://wiki.winehq.org/winetricks"
+HOMEPAGE="https://github.com/Winetricks/winetricks https://wiki.winehq.org/Winetricks"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -31,9 +31,12 @@ DEPEND=""
 RDEPEND="app-arch/cabextract
 	app-arch/p7zip
 	app-arch/unzip
-	app-emulation/wine
 	net-misc/wget
 	x11-misc/xdg-utils
+	|| (
+		app-emulation/wine
+		virtual/wine
+	)
 	gtk? ( gnome-extra/zenity )
 	kde? ( kde-apps/kdialog )
 	rar? ( app-arch/unrar )"

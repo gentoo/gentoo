@@ -11,7 +11,7 @@ HOMEPAGE="https://kaffeine.kde.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.3 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="
@@ -44,6 +44,8 @@ RDEPEND="${CDEPEND}
 "
 
 DOCS=( Changelog NOTES README.md )
+
+PATCHES=( "${FILESDIR}/${P}-kf5.34.patch" )
 
 src_prepare() {
 	kde5_src_prepare

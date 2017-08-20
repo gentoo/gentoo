@@ -17,4 +17,7 @@
 		Tianocore UEFI Development Kit, a stable release of portions of the
 		EDK II project.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">tianocore/udk</remote-id>
+	</upstream>
 </pkgmetadata>

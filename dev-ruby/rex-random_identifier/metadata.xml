@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -6,8 +6,9 @@
     <name>Rick Farina</name>
   </maintainer>
   <longdescription lang="en">
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">rapid7/rex-random_identifier</remote-id>
+    <remote-id type="rubygems">rex-random_identifier</remote-id>
   </upstream>
 </pkgmetadata>

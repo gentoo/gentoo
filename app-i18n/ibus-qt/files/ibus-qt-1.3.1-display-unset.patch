@@ -1,15 +1,12 @@
-From d2a4e30fdb92aeaf476dcaaf2b5d6f8275d6af70 Mon Sep 17 00:00:00 2001
-From: Peter Wu <lekensteyn@gmail.com>
-Date: Tue, 4 Sep 2012 19:40:08 +0200
-Subject: [PATCH] Do not crash on missing/invalid DISPLAY envvar.
+commit d2a4e30fdb92aeaf476dcaaf2b5d6f8275d6af70
+Author: Peter Wu <lekensteyn@gmail.com>
+Date:   Tue Sep 4 19:40:08 2012 +0200
 
-- Check whether the passed DISPLAY environment variable contains ":".
+    Do not crash on missing/invalid DISPLAY envvar.
 
-- Fallback to "-display" parameter passed to QApplication.
----
- src/CMakeLists.txt |    2 ++
- src/qibusbus.cpp   |   23 ++++++++++++++++-------
- 2 files changed, 18 insertions(+), 7 deletions(-)
+    - Check whether the passed DISPLAY environment variable contains ":".
+
+    - Fallback to "-display" parameter passed to QApplication.
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 2ad5588..8866ac0 100644
@@ -41,7 +38,7 @@ index 6a45d65..ed8248a 100644
  
  namespace IBus {
  /**
-@@ -121,15 +122,23 @@
+@@ -121,15 +122,23 @@ QString
  Bus::getSocketPath (void)
  {
      QString display = getenv ("DISPLAY");
@@ -71,6 +68,3 @@ index 6a45d65..ed8248a 100644
  
      QString path =
          QDir::homePath() +
--- 
-1.7.10
-

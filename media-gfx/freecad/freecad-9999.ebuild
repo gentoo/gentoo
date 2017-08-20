@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 #sci-libs/orocos_kdl waiting for Bug 604130 (keyword ~x86)
 #dev-qt/qtgui:4[-egl] and dev-qt/qtopengl:4[-egl] : Bug 564978
@@ -33,8 +33,8 @@ COMMON_DEPEND="
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/pyside[X,svg,${PYTHON_USEDEP}]
-	dev-python/shiboken[${PYTHON_USEDEP}]
+	dev-python/pyside:0[X,svg,${PYTHON_USEDEP}]
+	dev-python/shiboken:0[${PYTHON_USEDEP}]
 	dev-qt/designer:4
 	dev-qt/qtgui:4[-egl]
 	dev-qt/qtopengl:4[-egl]
@@ -51,9 +51,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-qt/assistant:4"
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/swig-2.0.4-r1:0
-	dev-python/pyside-tools[${PYTHON_USEDEP}]"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+	dev-python/pyside-tools:0[${PYTHON_USEDEP}]"
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
 # https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
@@ -63,8 +61,6 @@ RESTRICT="mirror"
 #   DEPEND and RDEPEND:
 #		salome-smesh - science overlay
 #		zipio++ - not in portage yet
-
-S="${WORKDIR}/FreeCAD-${PV}"
 
 DOCS=( README.md ChangeLog.txt )
 

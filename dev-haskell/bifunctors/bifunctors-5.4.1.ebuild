@@ -8,7 +8,7 @@ EAPI=6
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-DESCRIPTION="Bifunctors"
+DESCRIPTION="Haskell 98 bifunctors, bifoldables and bitraversables"
 HOMEPAGE="https://github.com/ekmett/bifunctors/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 

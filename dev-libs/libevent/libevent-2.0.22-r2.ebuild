@@ -6,7 +6,7 @@ inherit eutils libtool multilib-minimal
 
 MY_P="${P}-stable"
 
-DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
+DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="http://libevent.org/"
 SRC_URI="mirror://sourceforge/levent/files/${MY_P}.tar.gz"
 

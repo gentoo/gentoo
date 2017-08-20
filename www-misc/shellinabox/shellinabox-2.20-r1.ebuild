@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="+pam"
 
 DEPEND="
@@ -50,7 +50,7 @@ src_configure() {
 
 	econf \
 		$(use_enable pam) \
-		"${myeconf}"
+		"${myeconf[@]}"
 }
 
 src_install() {

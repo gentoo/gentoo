@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ MY_PN="${PN/q/Q}"
 
 inherit font
 
-DESCRIPTION="Unicode font for alphabetic writing systems and elder scripts like Runes, Gothic and ancient Greek"
+DESCRIPTION="Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek"
 HOMEPAGE="http://www.quivira-font.com/"
 SRC_URI="http://www.quivira-font.com/files/${MY_PN}.otf -> ${P}.otf
 	doc? ( http://www.quivira-font.com/files/${MY_PN}.pdf -> ${P}.pdf

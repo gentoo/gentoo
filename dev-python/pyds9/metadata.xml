@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -11,5 +11,8 @@
   ds9. The pyds9 module uses a  Python interface to XPA to communicate
   with ds9. It supports communication with all of ds9’s XPA access
   points.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">ericmandel/pyds9</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -35,6 +35,10 @@ REQUIRED_USE="acl? ( ads )"
 
 DOCS="doc/linux-cifs-client-guide.odt"
 
+PATCHES=(
+	"${FILESDIR}/${P}-talloc.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
@@ -52,6 +56,12 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	if has_version app-crypt/heimdal ; then
+		# https://bugs.gentoo.org/612584
+		eapply "${FILESDIR}/${PN}-6.7-heimdal.patch"
+	fi
+
 	eautoreconf
 }
 

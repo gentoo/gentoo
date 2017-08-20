@@ -8,6 +8,10 @@
 # NOTE: Please add your entry at the top!
 #
 
+# Fabian Groffen <grobian@gentoo.org> (15 Apr 2017)
+# reentrant patch breaks prefix option, bug #615560
+=sys-devel/flex-2.6.3-r1
+
 # Elias Pipping <pipping@gentoo.org> (09 Oct 2007)
 # darwin-miscutils are only available on darwin
 sys-apps/darwin-miscutils

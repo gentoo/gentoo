@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit autotools eutils
 
-DESCRIPTION="Modular, multithreaded webapplicationserver extensible with C++"
+DESCRIPTION="Modular, multithreaded web application server extensible with C++"
 HOMEPAGE="http://www.tntnet.org/"
 SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 

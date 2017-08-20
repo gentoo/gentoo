@@ -8,7 +8,7 @@ inherit autotools eutils flag-o-matic
 MY_P=${P/_/-}
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="http://www.midnight-commander.org"
+HOMEPAGE="https://www.midnight-commander.org"
 SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
@@ -51,7 +51,8 @@ src_prepare() {
 
 	# These tests fail, so disable them instead of disabling the entire
 	# test suite. Please check on each bump if this is still necessary.
-	rm tests/src/vfs/extfs/helpers-list/data/{u7z,urar}.* || die
+	# Next release will fix them: http://midnight-commander.org/ticket/3781
+	rm tests/src/vfs/extfs/helpers-list/data/{rpm,u7z,urar}.* || die
 
 	eautoreconf
 }

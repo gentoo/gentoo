@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -13,11 +13,23 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
 
-DEPEND="
+RDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.0[${PYTHON_USEDEP}]
 "
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/sphinx-testing[${PYTHON_USEDEP}] )"
+
+python_prepare() {
+	if python_is_python3; then
+		sed -i -e "s/import urllib/import urllib.request as urllib/" sphinxcontrib/jinja.py || die
+	fi
+}
+
+python_test() {
+	nosetests || die
+}

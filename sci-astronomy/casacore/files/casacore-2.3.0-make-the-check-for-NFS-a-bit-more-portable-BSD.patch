@@ -1,0 +1,60 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Thu, 24 Nov 2016 14:31:06 +0100
+Subject: Make the check for NFS a bit more portable (BSD)
+
+And provide a fallback (f.e. for HURD).However, there is probably no
+real use case for that, since also other file systems may be slow or
+lack certain features.
+---
+ casa/OS/Directory.cc | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/casa/OS/Directory.cc b/casa/OS/Directory.cc
+index 82e6efc..b79ce0f 100644
+--- a/casa/OS/Directory.cc
++++ b/casa/OS/Directory.cc
+@@ -488,29 +488,38 @@ Vector<String> Directory::shellExpand (const Vector<String>& files, Bool stripPa
+    return expInNames;
+ }
+ 
+-#ifndef __APPLE__
++#if defined(__linux__)
+ #include <sys/vfs.h>
+-#include <linux//nfs_fs.h>
+-#else
++#include <linux/nfs_fs.h>
++#elif defined( __APPLE__)
+ #include <sys/param.h>
+ #include <sys/mount.h>
+ #include <sys/vnode.h>
++#elif defined(__FreeBSD_kernel__)
++#include <sys/mount.h>
++#include <sys/param.h>
++#include <stdlib.h>
+ #endif
+ 
+ Bool Directory::isNFSMounted() const
+ {
++#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD_kernel__)
+    struct statfs buf;
+    if (statfs (itsFile.path().expandedName().chars(), &buf) < 0) {
+       throw (AipsError ("Directory::isNFSMounted error on " +
+             itsFile.path().expandedName() +
+             ": " + strerror(errno)));
+    }
+-#ifndef __APPLE__
++#endif
++#if defined(__linux__)
+    return buf.f_type == NFS_SUPER_MAGIC;
+-#else
++#elif defined(__APPLE__)
+    return buf.f_type == VT_NFS;
++#elif defined(__FreeBSD_kernel__)
++   return strcmp (buf.f_fstypename, "nfs") == 0;
++#else
++   return False;
+ #endif
+-
+ }
+ 
+ } //# NAMESPACE CASACORE - END

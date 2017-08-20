@@ -11,7 +11,7 @@ inherit cmake-multilib git-r3 llvm
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libunwind.git
+EGIT_REPO_URI="https://git.llvm.org/git/libunwind.git
 	https://github.com/llvm-mirror/libunwind.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"

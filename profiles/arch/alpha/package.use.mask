@@ -1,6 +1,39 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
+# missing keyword on dev-python/dbusmock, bug #620024
+>=gnome-base/gnome-settings-daemon-3.24 test
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=bluetooth that is masked in this profile.
+media-sound/pulseaudio native-headset
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=networkmanager that is masked in this profile.
+app-misc/geoclue skyhook
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
+# Tobias Klausmann <klausman@gentoo.org> (18 May 2017)
+# Stack protector code is not ported to alpha (and may not ever be)
+>=sys-devel/gcc-6 ssp
+
+# Tobias Klausmann <klausman@gentoo.org> (08 May 2017)
+# USE=test requires valgrind, which will never be ported to alpha
+app-misc/jq test
+
 # Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
 # libilbc has not been ported to alpha and likely never will be.
 media-video/ffmpeg libilbc
@@ -30,7 +63,7 @@ dev-libs/libpcre2 jit
 
 # Tobias Klausmann <klausman@gentoo.org> (22 Oct 2016)
 # Pulls in dev-db/redis which is not keyworded on alpha.
->=dev-python/pyzor-1.0.0 test
+dev-python/pyzor test
 
 # Tobias Klausmann <klausman@gentoo.org> (03 Oct 2016)
 # Pulls in dev-db/redis which is not keyworded on alpha.
@@ -87,11 +120,6 @@ app-text/tesseract scrollview
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no alpha support in media-libs/glfw
 app-text/mupdf opengl
-
-# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-lang/luajit lacks alpha keyword. See bug #488318.
-media-video/mpv luajit
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
@@ -169,7 +197,8 @@ net-misc/networkmanager teamd
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
-media-libs/clutter egl
+media-libs/clutter egl wayland
+media-libs/clutter-gtk wayland
 x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
@@ -202,10 +231,6 @@ media-video/ffmpeg x265
 # Tobias Klausmann <klausman@gentoo.org (16 Jul 2014)
 # neither dietlibc nor klibc will likely ever build/work on alpha, bug #487672
 >=sys-fs/dmraid-1.0.0_rc16-r3 dietlibc klibc
-
-# Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
-# Missing keywords, bug #504672
->=net-misc/vinagre-3.10 rdp
 
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
 # Missing keywords, bug #495250
@@ -292,15 +317,11 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
 # libpcre jit is not supported on alpha
 dev-libs/libpcre jit
-
-# Pacho Ramos <pacho@gentoo.org> (24 Oct 2011)
-# Missing keywords in needed packages, bug #388367
-net-im/empathy map
 
 # Raúl Porcel <armin76@gentoo.org> (08 Oct 2011)
 # Needs media-sound/lilypond

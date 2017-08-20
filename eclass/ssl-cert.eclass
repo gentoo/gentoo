@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ssl-cert.eclass
@@ -66,7 +66,8 @@ gen_cnf() {
 
 	# These can be overridden in the ebuild
 	SSL_DAYS="${SSL_DAYS:-730}"
-	SSL_BITS="${SSL_BITS:-1024}"
+	SSL_BITS="${SSL_BITS:-4096}"
+	SSL_MD="${SSL_MD:-sha256}"
 	SSL_COUNTRY="${SSL_COUNTRY:-US}"
 	SSL_STATE="${SSL_STATE:-California}"
 	SSL_LOCALITY="${SSL_LOCALITY:-Santa Barbara}"
@@ -166,6 +167,7 @@ gen_crt() {
 	if [ "${1}" ] ; then
 		ebegin "Generating self-signed X.509 Certificate for CA"
 		openssl x509 -extfile "${SSL_CONF}" \
+			-${SSL_MD} \
 			-days ${SSL_DAYS} -req -signkey "${base}.key" \
 			-in "${base}.csr" -out "${base}.crt" &>/dev/null
 	else
@@ -173,7 +175,7 @@ gen_crt() {
 		ebegin "Generating authority-signed X.509 Certificate"
 		openssl x509 -extfile "${SSL_CONF}" \
 			-days ${SSL_DAYS} -req -CAserial "${SSL_SERIAL}" \
-			-CAkey "${ca}.key" -CA "${ca}.crt" \
+			-CAkey "${ca}.key" -CA "${ca}.crt" -${SSL_MD} \
 			-in "${base}.csr" -out "${base}.crt" &>/dev/null
 	fi
 	eend $?

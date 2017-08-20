@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGES.md README.md"
@@ -22,6 +22,8 @@ IUSE=""
 
 RDEPEND+=" dev-libs/libsodium"
 DEPEND+=" test? ( dev-libs/libsodium )"
+
+ruby_add_rdepend "dev-ruby/ffi"
 
 all_ruby_prepare() {
 	sed -i -e '/coveralls/I s:^:#:' \

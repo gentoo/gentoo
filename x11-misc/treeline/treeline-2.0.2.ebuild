@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils python-single-r1
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="
 	${PYTHON_DEPS}

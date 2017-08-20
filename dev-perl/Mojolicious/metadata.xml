@@ -55,6 +55,8 @@
     <remote-id type="cpan-module">Mojo::Server::Daemon</remote-id>
     <remote-id type="cpan-module">Mojo::Server::Hypnotoad</remote-id>
     <remote-id type="cpan-module">Mojo::Server::Morbo</remote-id>
+    <remote-id type="cpan-module">Mojo::Server::Morbo::Backend</remote-id>
+    <remote-id type="cpan-module">Mojo::Server::Morbo::Backend::Poll</remote-id>
     <remote-id type="cpan-module">Mojo::Server::PSGI</remote-id>
     <remote-id type="cpan-module">Mojo::Server::Prefork</remote-id>
     <remote-id type="cpan-module">Mojo::Template</remote-id>

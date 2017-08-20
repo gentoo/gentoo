@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,9 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=">=dev-python/pygtk-2.4[${PYTHON_USEDEP}]
+DEPEND="${PYTHON_DEPS}
+	>=dev-python/pygtk-2.4[${PYTHON_USEDEP}]
 	>=x11-libs/scw-0.4.0"
 RDEPEND="${DEPEND}"

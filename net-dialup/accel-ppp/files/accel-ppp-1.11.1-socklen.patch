@@ -1,0 +1,18 @@
+commit 68008248259dfaa2fde91f8697db889971056bb3
+Author: lmwangi <lmwangi@gmail.com>
+Date:   Tue Jun 7 13:55:04 2016 +0300
+
+    fix build issue where socketlen is not found
+
+diff --git a/accel-pppd/logs/log_pgsql.c b/accel-pppd/logs/log_pgsql.c
+index e4b5a9e..78fa72d 100644
+--- a/accel-pppd/logs/log_pgsql.c
++++ b/accel-pppd/logs/log_pgsql.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <sys/socket.h>
+ 
+ #include <postgresql/libpq-fe.h>
+ 

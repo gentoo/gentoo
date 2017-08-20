@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,10 +13,10 @@ HOMEPAGE="http://jackaudio.org/"
 
 RESTRICT="mirror"
 if [[ "${PV}" = "2.9999" ]]; then
-	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
+	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/jackaudio/jack2/archive/v${PV}.tar.gz -> jack2-${PV}.tar.gz"
+	SRC_URI="https://github.com/jackaudio/${PN}/archive/v${PV}.tar.gz -> jack2-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 

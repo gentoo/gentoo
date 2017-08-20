@@ -11,6 +11,8 @@
 
 if [[ -z ${_EPATCH_ECLASS} ]]; then
 
+inherit estack
+
 # @VARIABLE: EPATCH_SOURCE
 # @DESCRIPTION:
 # Default directory to search for patches.

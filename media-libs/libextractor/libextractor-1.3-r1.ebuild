@@ -1,20 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="A library used to extract metadata from files of arbitrary type"
+DESCRIPTION="Library to extract metadata from files of arbitrary type"
 HOMEPAGE="https://www.gnu.org/software/libextractor/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
-IUSE="+archive +bzip2 ffmpeg flac gif gsf gtk jpeg mp4 +magic midi mpeg tidy tiff vorbis +zlib" # test
+IUSE="+archive +bzip2 ffmpeg flac gif gsf gtk jpeg +magic midi mp4 mpeg tidy tiff vorbis +zlib" # test
 
 RESTRICT="test"
 
-RDEPEND="app-text/iso-codes
+COMMON_DEPEND="
+	app-text/iso-codes
 	>=dev-libs/glib-2
 	media-gfx/exiv2:=
 	sys-devel/libtool
@@ -26,33 +27,36 @@ RDEPEND="app-text/iso-codes
 	flac? (
 		media-libs/flac
 		media-libs/libogg
-		)
+	)
 	gif? ( media-libs/giflib:= )
 	gsf? ( gnome-extra/libgsf:= )
 	gtk? ( x11-libs/gtk+:3 )
 	jpeg? ( virtual/jpeg:0 )
-	mp4? ( media-libs/libmp4v2:0 )
 	magic? ( sys-apps/file )
 	midi? ( media-libs/libsmf )
+	mp4? ( media-libs/libmp4v2:0 )
 	mpeg? ( media-libs/libmpeg2 )
 	tidy? ( app-text/htmltidy )
 	tiff? ( media-libs/tiff:0 )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
-		)
+	)
 	zlib? ( sys-libs/zlib )
-	!<app-crypt/pkcrack-1.2.2-r1
-	!sci-biology/glimmer
-	!sci-chemistry/pdb-extract"
-DEPEND="${RDEPEND}
+"
+DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 # test? ( app-forensics/zzuf )
+RDEPEND="${COMMON_DEPEND}
+	!sci-biology/glimmer
+	!sci-chemistry/pdb-extract
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-giflib-5.patch #571902
 	"${FILESDIR}"/${P}-ffmpeg-2.9.patch
+	"${FILESDIR}"/${P}-exiv2-0.26.patch #621242
 )
 
 src_prepare() {

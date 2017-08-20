@@ -9,14 +9,8 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
 	inherit git-r3
 else
-	patchset=
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
-	if [[ -n "${patchset}" ]]; then
-		SRC_URI+="
-			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
-			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
-	fi
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -61,6 +55,10 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 
 S=${WORKDIR}/systemd-${PV}
 
+PATCHES=(
+	"${FILESDIR}"/233-format-warnings.patch
+)
+
 check_default_rules() {
 	# Make sure there are no sudden changes to upstream rules file
 	# (more for my own needs than anything else ...)
@@ -104,11 +102,6 @@ src_prepare() {
 		fi
 	fi
 
-	# backport some patches
-	if [[ -n "${patchset}" ]]; then
-		eapply "${WORKDIR}"/patch
-	fi
-
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
 	ACTION=="add", SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
@@ -121,8 +114,7 @@ src_prepare() {
 	# stub out the am_path_libcrypt function
 	echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > m4/gcrypt.m4
 
-	# apply user patches
-	eapply_user
+	default
 
 	eautoreconf
 

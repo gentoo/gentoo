@@ -1,0 +1,80 @@
+From 718b24286559169ba29f89536c3f6c81dcfe6e30 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Mon, 13 Mar 2017 21:57:28 +0100
+Subject: [PATCH] libnma,libnm-gtk: use package-aware gettext() macro
+
+gettext("str") expands to dcgettext(NULL, "str") which gets
+translations from the last used domain, while _("str") is equivalent
+to g_dgettext(GETTEXT_PACKAGE, "str") which uses the library's
+translations.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=772362
+(cherry picked from commit 9df10e2e758a7b78aa5a69a15900030f45e48fff)
+---
+ src/libnm-gtk/nm-ui-utils.c | 10 +++++-----
+ src/libnma/nma-ui-utils.c   | 10 +++++-----
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/libnm-gtk/nm-ui-utils.c b/src/libnm-gtk/nm-ui-utils.c
+index e92ff80..eec9a5f 100644
+--- a/src/libnm-gtk/nm-ui-utils.c
++++ b/src/libnm-gtk/nm-ui-utils.c
+@@ -642,7 +642,7 @@ change_password_storage_icon (GtkWidget *passwd_entry, MenuItem item)
+ 	                                   icon_name_table[item]);
+ 	gtk_entry_set_icon_tooltip_text (GTK_ENTRY (passwd_entry),
+ 	                                 GTK_ENTRY_ICON_SECONDARY,
+-	                                 gettext (icon_desc_table[item]));
++	                                 _(icon_desc_table[item]));
+ 
+ 	/* We want to make entry insensitive when ITEM_STORAGE_ASK is selected
+ 	 * Unfortunately, making GtkEntry insensitive will also make the icon
+@@ -843,12 +843,12 @@ nma_utils_setup_password_storage (GtkWidget *passwd_entry,
+ 	g_object_set_data (G_OBJECT (popup_menu), PASSWORD_STORAGE_MENU_TAG, GUINT_TO_POINTER (TRUE));
+ 	g_object_set_data (G_OBJECT (popup_menu), MENU_WITH_NOT_REQUIRED_TAG, GUINT_TO_POINTER (with_not_required));
+ 	group = NULL;
+-	item[0] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[0]));
++	item[0] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[0]));
+ 	group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item[0]));
+-	item[1] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[1]));
+-	item[2] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[2]));
++	item[1] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[1]));
++	item[2] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[2]));
+ 	if (with_not_required)
+-		item[3] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[3]));
++		item[3] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[3]));
+ 
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), item[0]);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), item[1]);
+diff --git a/src/libnma/nma-ui-utils.c b/src/libnma/nma-ui-utils.c
+index 99e2e97..418ef5f 100644
+--- a/src/libnma/nma-ui-utils.c
++++ b/src/libnma/nma-ui-utils.c
+@@ -76,7 +76,7 @@ change_password_storage_icon (GtkWidget *passwd_entry, MenuItem item)
+ 	                                   icon_name_table[item]);
+ 	gtk_entry_set_icon_tooltip_text (GTK_ENTRY (passwd_entry),
+ 	                                 GTK_ENTRY_ICON_SECONDARY,
+-	                                 gettext (icon_desc_table[item]));
++	                                 _(icon_desc_table[item]));
+ 
+ 	/* We want to make entry insensitive when ITEM_STORAGE_ASK is selected
+ 	 * Unfortunately, making GtkEntry insensitive will also make the icon
+@@ -277,12 +277,12 @@ nma_utils_setup_password_storage (GtkWidget *passwd_entry,
+ 	g_object_set_data (G_OBJECT (popup_menu), PASSWORD_STORAGE_MENU_TAG, GUINT_TO_POINTER (TRUE));
+ 	g_object_set_data (G_OBJECT (popup_menu), MENU_WITH_NOT_REQUIRED_TAG, GUINT_TO_POINTER (with_not_required));
+ 	group = NULL;
+-	item[0] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[0]));
++	item[0] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[0]));
+ 	group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item[0]));
+-	item[1] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[1]));
+-	item[2] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[2]));
++	item[1] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[1]));
++	item[2] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[2]));
+ 	if (with_not_required)
+-		item[3] = gtk_radio_menu_item_new_with_label (group, gettext (icon_desc_table[3]));
++		item[3] = gtk_radio_menu_item_new_with_label (group, _(icon_desc_table[3]));
+ 
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), item[0]);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), item[1]);
+-- 
+2.10.1
+

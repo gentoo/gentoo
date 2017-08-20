@@ -1,16 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-EGIT_REPO_URI="git://github.com/freenet/plugin-Freemail-official.git
-	https://github.com/freenet/plugin-Freemail-official.git"
+EGIT_REPO_URI="https://github.com/freenet/plugin-Freemail-official.git"
 EGIT_PROJECT="Freemail/official"
 EANT_BUILD_TARGET="dist"
 inherit eutils git-2 java-pkg-2 java-ant-2
 
 DESCRIPTION="Anonymous IMAP/SMTP e-mail server over Freenet"
-HOMEPAGE="http://www.freenetproject.org/tools.html"
+HOMEPAGE="https://github.com/freenet/plugin-Freemail"
 SRC_URI=""
 
 LICENSE="LGPL-2.1"

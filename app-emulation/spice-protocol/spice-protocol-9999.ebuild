@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3 autotools
-	EGIT_REPO_URI="git://anongit.freedesktop.org/spice/spice-protocol"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-protocol.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
+	SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Headers defining the SPICE protocol"
-HOMEPAGE="http://spice-space.org/"
+HOMEPAGE="https://spice-space.org/"
 
 LICENSE="BSD"
 SLOT="0"

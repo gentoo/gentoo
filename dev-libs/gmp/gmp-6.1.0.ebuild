@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
-DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
+DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
 HOMEPAGE="http://gmplib.org/"
 SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
 	mirror://gnu/${PN}/${MY_P}.tar.xz

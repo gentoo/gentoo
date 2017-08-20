@@ -9,7 +9,7 @@ XORG_DOC=doc
 XORG_MULTILIB=yes
 inherit xorg-2
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/util-keysyms"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/util-keysyms.git"
 
 DESCRIPTION="X C-language Bindings sample implementations"
 HOMEPAGE="https://xcb.freedesktop.org/"

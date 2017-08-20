@@ -32,7 +32,6 @@
 		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
 		<flag name="spice">Enable Spice protocol support via <pkg>app-emulation/spice</pkg></flag>
 		<flag name="ssh">Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
-		<flag name="static-softmmu">Build the Software MMU (system) targets as static binaries</flag>
 		<flag name="static-user">Build the User targets as static binaries</flag>
 		<flag name="static">Build the User and Software MMU (system) targets as well as tools as static binaries</flag>
 		<flag name="snappy">Enable support for snappy compression</flag>

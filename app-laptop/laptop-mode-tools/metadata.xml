@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -9,6 +9,7 @@
 			<email>gentoo-lmt@researchut.com</email>
 			<name>Ritesh Raj Sarraf</name>
 		</maintainer>
+		<remote-id type="github">rickysarraf/laptop-mode-tools</remote-id>
 	</upstream>
 	<use>
 		<flag name="scsi">Adds dependency on sdparm to control non-SATA SCSI drivers</flag>

@@ -29,6 +29,7 @@ LICENSE="google-chrome"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # All the libs this package links against.
 RDEPEND="app-admin/sudo

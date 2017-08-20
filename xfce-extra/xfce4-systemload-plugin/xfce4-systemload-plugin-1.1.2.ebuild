@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="System load plug-in for Xfce panel"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-systemload-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-systemload-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="BSD-2"

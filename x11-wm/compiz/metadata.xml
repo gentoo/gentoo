@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <use>
     <flag name="fuse">
       Enables support for the filesystem in userspace plugin through <pkg>sys-fs/fuse</pkg>.
@@ -11,10 +12,6 @@
       used.
     </flag>
   </use>
-  <maintainer type="project">
-    <email>desktop-effects@gentoo.org</email>
-    <name>Desktop effects</name>
-  </maintainer>
   <longdescription>
     compiz is a compositing window manager that uses 3D graphics acceleration via OpenGL.
   </longdescription>

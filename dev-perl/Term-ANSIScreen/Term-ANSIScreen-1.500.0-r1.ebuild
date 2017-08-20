@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,3 +15,5 @@ KEYWORDS="amd64 hppa ~ppc x86"
 IUSE=""
 
 SRC_TEST="do"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.50-no-dot-inc.patch )

@@ -5,7 +5,6 @@
     <email>amynka@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">gflags</remote-id>
-    <remote-id type="github">schuhschuh/gflags</remote-id>
+    <remote-id type="github">gflags/gflags</remote-id>
   </upstream>
 </pkgmetadata>

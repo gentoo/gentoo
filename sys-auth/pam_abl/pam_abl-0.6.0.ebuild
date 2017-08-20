@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,17 +8,17 @@ MY_P="${MY_PN}-${PV}"
 
 inherit flag-o-matic pam cmake-utils db-use multilib
 
-DESCRIPTION="PAM module for blacklisting of hosts and users on repeated failed authentication attempts"
+DESCRIPTION="PAM module for blacklisting hosts and users repeatedly failed authentication"
 HOMEPAGE="http://pam-abl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND=">=sys-libs/pam-0.78-r2
-	>=sys-libs/db-4.2.52_p2"
+	>=sys-libs/db-4.2.52_p2:="
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}

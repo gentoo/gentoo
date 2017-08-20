@@ -1,0 +1,26 @@
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Tue, 13 Jun 2017 21:10:34 +1200
+Subject: [PATCH] Fix broken use of lib '.'
+
+   "'.'" is not "."
+
+Bug: https://bugs.gentoo.org/614122
+---
+ Build.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Build.PL b/Build.PL
+index 43c6f80..9ee443b 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ 
+-use lib q('.');
++use lib q(.);
+ use Po4aBuilder;
+ 
+ my $build = Po4aBuilder->new
+-- 
+2.13.1
+

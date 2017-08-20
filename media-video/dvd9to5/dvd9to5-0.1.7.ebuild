@@ -1,9 +1,9 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="Perl script to backup the main feature of a DVD-9 on DVD-5"
-HOMEPAGE="http://lakedaemon.netmindz.net/dvd9to5/"
-SRC_URI="http://lakedaemon.netmindz.net/dvd9to5/${P}.tar.bz2"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://bluray.beandog.org/dvd9to5/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ SRC_URI="https://dl.opendesktop.org/api/files/download/id/1486311191/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -20,7 +20,7 @@ DEPEND="
 	kde-frameworks/kdelibs:4
 "
 RDEPEND="${DEPEND}
-	kde-apps/kwalletd:4
+	|| ( kde-frameworks/kwallet:5 kde-apps/kwalletd:4 )
 	sys-fs/encfs
 "
 

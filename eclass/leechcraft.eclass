@@ -28,8 +28,7 @@ esac
 inherit cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git
-	               https://github.com/0xd34df00d/leechcraft.git"
+	EGIT_REPO_URI="https://github.com/0xd34df00d/leechcraft.git"
 
 	inherit git-r3
 else

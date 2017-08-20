@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.tigr.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 IUSE="jpeg"
 
 RDEPEND="x11-libs/libXpm

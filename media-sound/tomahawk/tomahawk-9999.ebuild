@@ -9,11 +9,11 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="http://download.tomahawk-player.org/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
-	EGIT_REPO_URI="git://github.com/tomahawk-player/${PN}.git"
+	EGIT_REPO_URI="https://github.com/tomahawk-player/${PN}.git"
 fi
 
 DESCRIPTION="Multi-source social music player"
-HOMEPAGE="https://tomahawk-player.org/"
+HOMEPAGE="https://www.tomahawk-player.org/"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"

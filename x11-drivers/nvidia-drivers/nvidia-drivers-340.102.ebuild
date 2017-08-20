@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils flag-o-matic linux-info linux-mod multilib-minimal nvidia-driver \
 	portability toolchain-funcs unpacker user udev
 
-NV_URI="http://us.download.nvidia.com/XFree86/"
+NV_URI="http://http.download.nvidia.com/XFree86/"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
@@ -18,12 +18,12 @@ SRC_URI="
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
 	x86-fbsd? ( ${NV_URI}FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )
 	x86? ( ${NV_URI}Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
-	tools? ( ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2 )
+	tools? ( ${NV_URI}nvidia-settings/nvidia-settings-${PV}.tar.bz2 )
 "
 
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
-KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="-* amd64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X uvm"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
@@ -71,7 +71,7 @@ QA_PREBUILT="opt/* usr/lib*"
 
 S=${WORKDIR}/
 
-pkg_pretend() {
+nvidia_drivers_versions_check() {
 	if use amd64 && has_multilib_profile && \
 		[ "${DEFAULT_ABI}" != "amd64" ]; then
 		eerror "This ebuild doesn't currently support changing your default ABI"
@@ -106,7 +106,13 @@ pkg_pretend() {
 	use kernel_linux && check_extra_config
 }
 
+pkg_pretend() {
+	nvidia_drivers_versions_check
+}
+
 pkg_setup() {
+	nvidia_drivers_versions_check
+
 	# try to turn off distcc and ccache for people that have a problem with it
 	export DISTCC_DISABLE=1
 	export CCACHE_DISABLE=1

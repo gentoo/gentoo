@@ -1,0 +1,14 @@
+diff --git a/src/xmms2-scrobbler.c b/src/xmms2-scrobbler.c
+index 244fccb..8cd06ed 100644
+--- a/src/xmms2-scrobbler.c
++++ b/src/xmms2-scrobbler.c
+@@ -534,3 +534,3 @@ on_medialib_get_info2 (xmmsv_t *val, void *udata)
+ {
+-	bool reset_current_id = XPOINTER_TO_INT (udata);
++	bool reset_current_id = (bool)(uintptr_t)(udata);
+ 
+@@ -572,3 +572,3 @@ maybe_submit_to_profile (bool reset_current_id)
+ 	                           on_medialib_get_info2,
+-	                           XINT_TO_POINTER (reset_current_id));
++	                           (void*)(uintptr_t)(reset_current_id));
+ 	xmmsc_result_unref (mediainfo_result);

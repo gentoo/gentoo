@@ -97,8 +97,11 @@ PATCHES=(
 
 src_unpack() {
 	unpack ${P}.tar.gz
-	find "${DISTDIR}/" -name "*traineddata-${LANGPACKV}" \
-		 -execdir sh -c 'cp -- "$0" "${S}/tessdata/${0%-*}"' '{}' ';' || die
+	for file in ${A}; do
+		if [[ "${file}" == *traineddata* ]]; then
+			cp "${DISTDIR}/${file}" "${S}/tessdata/${file%-*}" || die
+		fi
+	done
 }
 
 src_prepare() {

@@ -45,7 +45,7 @@ src_prepare() {
 	use ppc64 && append-flags -mminimal-toc
 	use uclibc && export ac_cv_type_error_t=yes
 
-	epatch "${FILESDIR}"/${PN}-configure-zlib.patch # 604650, fixed in upstream HEAD
+	epatch "${FILESDIR}"/${P}-zlib.patch # 604650, fixed in upstream HEAD
 	eautoconf
 }
 

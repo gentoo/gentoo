@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,15 +6,13 @@ PYTHON_COMPAT=( python2_7 )
 
 if [[ $PV = *9999* ]]; then
 	scm_eclass=git-r3
-	EGIT_REPO_URI="
-		git://github.com/ceph/ceph.git
-		https://github.com/ceph/ceph.git"
+	EGIT_REPO_URI="https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
-	SRC_URI="http://ceph.com/download/${P}.tar.gz
+	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz
 		${UPSTREAM_PATCHSET_URI}"
 fi
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
@@ -22,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 inherit check-reqs autotools eutils multilib python-single-r1 udev readme.gentoo-r1 systemd ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
-HOMEPAGE="http://ceph.com/"
+HOMEPAGE="https://ceph.com/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -41,7 +39,7 @@ COMMON_DEPEND="
 	sys-apps/util-linux
 	dev-libs/libxml2
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	libatomic? ( dev-libs/libatomic_ops )
 	xfs? ( sys-fs/xfsprogs )
 	zfs? ( sys-fs/zfs )
@@ -157,7 +155,6 @@ src_install() {
 	systemd_newunit          "${FILESDIR}/ceph-osd_at.service"      "ceph-osd@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
 	systemd_newunit          "${FILESDIR}/ceph-mon_at.service"      "ceph-mon@.service"
-	systemd_install_serviced "${FILESDIR}/ceph-mon_at.service.conf" "ceph-mon@.service"
 
 	python_fix_shebang \
 		"${ED}"/usr/sbin/{ceph-disk,ceph-create-keys} \

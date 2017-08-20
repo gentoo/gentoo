@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-	<email>mysql-bugs@gentoo.org</email>
+    <email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
   </maintainer>
 <!-- 
@@ -11,6 +11,7 @@ dev-db/mysql
 dev-db/mariadb
 -->
 <use>
+  <flag name="backup">Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption</flag>
   <flag name="cluster">Add support for NDB clustering (deprecated)</flag>
   <flag name="community">Enables the community features from upstream.</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
@@ -30,6 +31,7 @@ dev-db/mariadb
   <flag name="oqgraph">Add support for the Open Query GRAPH engine</flag>
   <flag name="pam">Enable the optional PAM authentication plugin for the server</flag>
   <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
+  <flag name="rocksdb">Add support for RocksDB; a key/value, LSM database optimized for flash storage</flag>
   <flag name="server">Build the server program</flag>
   <flag name="sphinx">Add suport for the sphinx full-text search engine</flag>
   <flag name="sst-rsync">Add tools needed to support the rsync SST method</flag>

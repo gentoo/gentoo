@@ -23,8 +23,6 @@ app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
 app-emulation/crossover-bin
-app-emulation/crossover-office-bin
-app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
 app-emulation/winetricks
@@ -118,6 +116,7 @@ games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/hoh-bin
 games-roguelike/adom
+games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
@@ -159,13 +158,11 @@ net-print/cndrvcups-lb
 sci-biology/foldingathome
 sci-chemistry/cara-bin
 sci-chemistry/cyana
-sci-chemistry/icm
 sci-chemistry/mars
 sci-electronics/eagle
 sci-libs/ipp
 sys-libs/lib-compat-loki
 www-plugins/nspluginwrapper
-www-plugins/pipelight
 
 
 # AMD64 Team; <amd64@gentoo.org>

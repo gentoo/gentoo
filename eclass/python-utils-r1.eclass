@@ -47,6 +47,18 @@ _PYTHON_ALL_IMPLS=(
 )
 readonly _PYTHON_ALL_IMPLS
 
+# @ECLASS-VARIABLE: PYTHON_COMPAT_NO_STRICT
+# @INTERNAL
+# @DESCRIPTION:
+# Set to a non-empty value in order to make eclass tolerate (ignore)
+# unknown implementations in PYTHON_COMPAT.
+#
+# This is intended to be set by the user when using ebuilds that may
+# have unknown (newer) implementations in PYTHON_COMPAT. The assumption
+# is that the ebuilds are intended to be used within multiple contexts
+# which can involve revisions of this eclass that support a different
+# set of Python implementations.
+
 # @FUNCTION: _python_impl_supported
 # @USAGE: <impl>
 # @INTERNAL
@@ -79,6 +91,7 @@ _python_impl_supported() {
 			fi
 			;;
 		*)
+			[[ ${PYTHON_COMPAT_NO_STRICT} ]] && return 1
 			die "Invalid implementation in PYTHON_COMPAT: ${impl}"
 	esac
 }
@@ -147,6 +160,40 @@ _python_set_impls() {
 		_PYTHON_UNSUPPORTED_IMPLS=( "${unsupp[@]}" )
 		readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
 	fi
+}
+
+# @FUNCTION: _python_impl_matches
+# @USAGE: <impl> <pattern>...
+# @INTERNAL
+# @DESCRIPTION:
+# Check whether the specified <impl> matches at least one
+# of the patterns following it. Return 0 if it does, 1 otherwise.
+#
+# <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns can be
+# either:
+# a) fnmatch-style patterns, e.g. 'python2*', 'pypy'...
+# b) '-2' to indicate all Python 2 variants (= !python_is_python3)
+# c) '-3' to indicate all Python 3 variants (= python_is_python3)
+_python_impl_matches() {
+	[[ ${#} -ge 2 ]] || die "${FUNCNAME}: takes at least 2 parameters"
+
+	local impl=${1} pattern
+	shift
+
+	for pattern; do
+		if [[ ${pattern} == -2 ]]; then
+			! python_is_python3 "${impl}"
+			return
+		elif [[ ${pattern} == -3 ]]; then
+			python_is_python3 "${impl}"
+			return
+		# unify value style to allow lax matching
+		elif [[ ${impl/./_} == ${pattern/./_} ]]; then
+			return 0
+		fi
+	done
+
+	return 1
 }
 
 # @ECLASS-VARIABLE: PYTHON
@@ -660,7 +707,7 @@ python_optimize() {
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
 				;;
-			python*)
+			python*|pypy3)
 				# both levels of optimization are separate since 3.5
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -O -m compileall -q -f -d "${instpath}" "${d}"
@@ -810,10 +857,18 @@ python_newscript() {
 # The <new-path> can either be an absolute target system path (in which
 # case it needs to start with a slash, and ${ED} will be prepended to
 # it) or relative to the implementation's site-packages directory
-# (then it must not start with a slash).
+# (then it must not start with a slash). The relative path can be
+# specified either using the Python package notation (separated by dots)
+# or the directory notation (using slashes).
 #
 # When not set explicitly, the modules are installed to the top
 # site-packages directory.
+#
+# In the relative case, the exact path is determined directly
+# by each python_doscript/python_newscript function. Therefore,
+# python_moduleinto can be safely called before establishing the Python
+# interpreter and/or a single call can be used to set the path correctly
+# for multiple implementations, as can be seen in the following example.
 #
 # Example:
 # @CODE
@@ -823,12 +878,6 @@ python_newscript() {
 #   python_foreach_impl python_domodule baz.py
 # }
 # @CODE
-
-# Set the current module root. The new value will be stored
-# in the 'python_moduleroot' environment variable. The new value need
-# be relative to the site-packages root.
-#
-# Alternatively, you can set the variable directly.
 python_moduleinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -867,7 +916,7 @@ python_domodule() {
 		local PYTHON_SITEDIR=${PYTHON_SITEDIR}
 		[[ ${PYTHON_SITEDIR} ]] || python_export PYTHON_SITEDIR
 
-		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot}
+		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot//.//}
 	fi
 
 	(
@@ -943,7 +992,7 @@ python_wrapper_setup() {
 		rm -f "${workdir}"/bin/2to3 || die
 		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
 
-		local EPYTHON PYTHON PYTHON_CONFIG
+		local EPYTHON PYTHON
 		python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
@@ -970,11 +1019,9 @@ python_wrapper_setup() {
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
-			python_export "${impl}" PYTHON_CONFIG
-
 			cat > "${workdir}/bin/python-config" <<-_EOF_ || die
 				#!/bin/sh
-				exec "${PYTHON_CONFIG}" "\${@}"
+				exec "${PYTHON}-config" "\${@}"
 			_EOF_
 			cp "${workdir}/bin/python-config" \
 				"${workdir}/bin/python${pyver}-config" || die
@@ -996,7 +1043,7 @@ python_wrapper_setup() {
 		for x in "${nonsupp[@]}"; do
 			cat >"${workdir}"/bin/${x} <<-_EOF_ || die
 				#!/bin/sh
-				echo "${x} is not supported by ${EPYTHON}" >&2
+				echo "${ECLASS}: ${FUNCNAME}: ${x} is not supported by ${EPYTHON} (PYTHON_COMPAT)" >&2
 				exit 127
 			_EOF_
 			chmod +x "${workdir}"/bin/${x} || die
@@ -1270,14 +1317,14 @@ python_export_utf8_locale() {
 					fi
 					return 0
 				fi
-			fi  
+			fi
 		done
 
 		ewarn "Could not find a UTF-8 locale. This may trigger build failures in"
 		ewarn "some python packages. Please ensure that a UTF-8 locale is listed in"
 		ewarn "/etc/locale.gen and run locale-gen."
 		return 1
-	fi  
+	fi
 
 	return 0
 }

@@ -5,10 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>xmw@gentoo.org</email>
-		<name>Michael Weber</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,9 +13,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
-RDEPEND=">=media-libs/skstream-0.3.9
+RDEPEND="${PYTHON_DEPS}
+	>=media-libs/skstream-0.3.9
 	>=dev-games/wfmath-1.0.1
 	>=dev-games/mercator-0.3.3
 	dev-libs/libgcrypt:0

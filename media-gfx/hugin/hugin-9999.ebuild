@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,6 +42,7 @@ CDEPEND="
 	virtual/opengl
 	x11-libs/wxGTK:3.0=[X,opengl]
 	lapack? ( virtual/blas virtual/lapack )
+	python? ( ${PYTHON_DEPS} )
 	sift? ( media-gfx/autopano-sift-C )"
 RDEPEND="${CDEPEND}
 	media-libs/exiftool"
@@ -49,7 +50,7 @@ DEPEND="${CDEPEND}
 	dev-cpp/tclap
 	sys-devel/gettext
 	virtual/pkgconfig
-	python? ( ${PYTHON_DEPS} >=dev-lang/swig-2.0.4 )"
+	python? ( >=dev-lang/swig-2.0.4 )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

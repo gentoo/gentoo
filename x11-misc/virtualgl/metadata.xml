@@ -14,9 +14,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-	An open source package that gives any Unix or Linux remote display software
-	the ability to run OpenGL applications with full 3D hardware acceleration.
-</longdescription>
+		An open source package that gives any Unix or Linux remote display software
+		the ability to run OpenGL applications with full 3D hardware acceleration.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">virtualgl</remote-id>
 	</upstream>

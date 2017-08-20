@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -10,6 +10,9 @@
   leverage multi-core processor performance without having to be a
   threading expert. It represents a higher-level, task-based
   parallelism that abstracts platform details and threading mechanism
-  for performance and scalability. 
-</longdescription>
+  for performance and scalability.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">01org/tbb</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -43,9 +43,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-#	mkdir bluetooth || die
-#	cp "${FILESDIR}"/mgmt.h bluetooth/ || die
-
 	eapply_user
 
 	echo ${PV} > VERSION || die

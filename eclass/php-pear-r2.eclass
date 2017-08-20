@@ -97,9 +97,10 @@ php-pear-r2_src_install() {
 php-pear-r2_pkg_postinst() {
 	# Add unknown channels
 	if [[ -f "${EROOT}usr/share/php/.packagexml/${PEAR_P}-channel.xml" ]] ; then
-		if "${EROOT}usr/bin/peardev" channel-info "${PHP_PEAR_DOMAIN}" &> /dev/null; then
+		"${EROOT}usr/bin/peardev" channel-info "${PHP_PEAR_DOMAIN}" &> /dev/null
+		if [[ $? -ne 0 ]]; then
 			"${EROOT}usr/bin/peardev" channel-add \
-				"${EROOT}usr/share/php/.packagexml/${PEAR_PN}-channel.xml" \
+				"${EROOT}usr/share/php/.packagexml/${PEAR_P}-channel.xml" \
 				|| einfo "Ignore any errors about existing channels"
 		fi
 	fi

@@ -5,4 +5,7 @@
     <email>ml@gentoo.org</email>
     <name>Gentoo ML Project</name>
   </maintainer>
+  <upstream>
+	  <remote-id type="github">backtracking/ocamlgraph</remote-id>
+  </upstream>
 </pkgmetadata>

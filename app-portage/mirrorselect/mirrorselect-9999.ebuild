@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,13 +6,12 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils distutils-r1 git-2 prefix
+inherit eutils distutils-r1 git-r3 prefix
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
-EGIT_MASTER="master"
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Mirrorselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
 SRC_URI=""
 
 LICENSE="GPL-2"

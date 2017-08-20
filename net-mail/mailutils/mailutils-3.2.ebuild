@@ -64,6 +64,8 @@ src_prepare() {
 		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
 	fi
+	# bug #612712
+	eapply "${FILESDIR}"/${P}-fix-build.patch
 	eapply_user
 	eautoreconf
 }
