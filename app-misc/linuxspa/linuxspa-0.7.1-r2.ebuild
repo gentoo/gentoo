@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -12,13 +12,15 @@ SRC_URI="mirror://sourceforge/serialsniffer/${MY_PN}-${PV}.tgz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_PN}"
 
+PATCHES=( "${FILESDIR}/${P}-compile-fix.patch" )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-compile-fix.patch
+	default
 	sed -i Makefile \
 		-e 's| -o | $(LDFLAGS)&|g' \
 		|| die "sed Makefile"
