@@ -12,12 +12,13 @@ HOMEPAGE="https://gstreamer.freedesktop.org/bindings/cplusplus.html"
 LICENSE="LGPL-2.1"
 SLOT="1.0/1"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc examples opengl test"
+IUSE="doc examples test"
 
+# module is experimental:
+# >=media-libs/gst-plugins-bad-${PV}:1.0[opengl?]
 RDEPEND="
 	>=media-libs/gstreamer-${PV}:1.0
 	>=media-libs/gst-plugins-base-${PV}:1.0
-	>=media-libs/gst-plugins-bad-${PV}:1.0[opengl?]
 	>=dev-cpp/glibmm-2.47.6:2
 	>=dev-cpp/libxmlpp-2.14:2.6
 	>=dev-libs/libsigc++-2:2
@@ -61,8 +62,8 @@ src_prepare() {
 
 src_configure() {
 	gnome2_src_configure \
+		 --disable-plugins-bad \
 		$(use_enable doc documentation) \
-		$(use_enable opengl gl) \
 		$(use_enable test unittests)
 }
 
