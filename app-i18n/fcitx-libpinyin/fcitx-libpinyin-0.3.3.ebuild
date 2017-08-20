@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="dictmanager"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8[dbus]
-	app-i18n/libpinyin
+	=app-i18n/libpinyin-1.3.0-r1
 	dev-libs/glib:2
 	sys-apps/dbus
 	virtual/libintl
