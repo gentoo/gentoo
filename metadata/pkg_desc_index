@@ -1751,7 +1751,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
 app-misc/dailystrips 1.0.28-r2 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/dateutils 0.4.1: command line date and time utilities
+app-misc/dateutils 0.4.1 0.4.2: command line date and time utilities
 app-misc/datovka 3.0.3-r1 4.7.1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
@@ -7997,7 +7997,7 @@ dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on Ea
 dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
 dev-python/mpi4py 2.0.0: Message Passing Interface for Python
 dev-python/mpmath 0.18 0.19-r1 0.19-r2: Python library for arbitrary-precision floating-point arithmetic
-dev-python/msgpack 0.4.6 0.4.8: MessagePack (de)serializer for Python
+dev-python/msgpack 0.4.8: MessagePack (de)serializer for Python
 dev-python/multidict 1.3.0_alpha1 2.0.1 2.1.0 2.1.2 2.1.4 2.1.5: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munch 2.1.1: A dot-accessible dictionary (a la JavaScript objects)
