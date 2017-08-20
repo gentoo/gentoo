@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201708-03">
+  <title>Xen: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could allow for privilege escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2017-08-20</announced>
+  <revised>2017-08-20: 1</revised>
+  <bug>624112</bug>
+  <bug>624114</bug>
+  <bug>624116</bug>
+  <bug>624118</bug>
+  <bug>624120</bug>
+  <bug>624122</bug>
+  <bug>624124</bug>
+  <bug>624126</bug>
+  <bug>624128</bug>
+  <bug>624130</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.7.3</unaffected>
+      <vulnerable range="lt">4.7.3</vulnerable>
+    </package>
+    <package name="app-emulation/xen-pvgrub" auto="yes" arch="*">
+      <unaffected range="ge">4.7.3</unaffected>
+      <vulnerable range="lt">4.7.3</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.7.3</unaffected>
+      <vulnerable range="lt">4.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain privileges on the host system, cause a
+      Denial of Service condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.7.3"
+    </code>
+    
+    <p>All Xen PvGrub users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-pvgrub-4.7.3"
+    </code>
+    
+    <p>All Xen Tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-tools-4.7.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10911">
+      CVE-2017-10911
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10912">
+      CVE-2017-10912
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10913">
+      CVE-2017-10913
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10914">
+      CVE-2017-10914
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10915">
+      CVE-2017-10915
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10916">
+      CVE-2017-10916
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10917">
+      CVE-2017-10917
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10918">
+      CVE-2017-10918
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10919">
+      CVE-2017-10919
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10920">
+      CVE-2017-10920
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10921">
+      CVE-2017-10921
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10922">
+      CVE-2017-10922
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10923">
+      CVE-2017-10923
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-08-08T00:22:12Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-08-20T23:24:49Z">b-man</metadata>
+</glsa>
