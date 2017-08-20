@@ -2294,7 +2294,7 @@ app-text/grip 4.2.0: Preview GitHub Markdown files like Readme locally before co
 app-text/groonga 5.0.3 5.0.9 6.1.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
-app-text/gspell 1.2.3 1.4.1: Spell check library for GTK+ applications
+app-text/gspell 1.2.3 1.4.1 1.4.2: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.7: Spell checking widget for GTK
 app-text/gtranslator 2.91.7-r1: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
@@ -17191,7 +17191,7 @@ sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec sys
 sys-apps/nvme-cli 1.1 1.2 1.3: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.21.7 0.22.4 0.23.2 0.24.2 0.25 0.26.2 0.26.3 0.27.2 0.28 0.29 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
-sys-apps/osinfo-db 20170326 20170423: osinfo database files
+sys-apps/osinfo-db 20170326 20170423 20170813: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
 sys-apps/pacman 5.0.2: Archlinux's binary package manager
 sys-apps/paludis 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
