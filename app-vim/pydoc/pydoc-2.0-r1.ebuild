@@ -13,7 +13,10 @@ SRC_URI="https://github.com/fs111/${PN}.vim/tarball/${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="app-arch/unzip"
+RDEPEND="${PYTHON_DEPS}"
 
 src_unpack() {
 	default
