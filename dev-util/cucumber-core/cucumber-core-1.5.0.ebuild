@@ -23,18 +23,11 @@ ruby_add_bdepend "
 		>=dev-ruby/unindent-1.0
 	)"
 
-USE_RUBY=${USE_RUBY/ruby23} ruby_add_bdepend "test? ( >=dev-ruby/kramdown-1.4.2 )"
-
 ruby_add_rdepend "
 	>=dev-ruby/gherkin-4.0:4
 "
 
-each_ruby_prepare() {
-	case ${RUBY} in
-		*ruby23)
-			# Avoid dependency on kramdown so we can add the ruby22
-			# target.
-			rm -f spec/readme_spec.rb || die
-			;;
-	esac
+all_ruby_prepare() {
+	# Avoid dependency on kramdown to keep dependency list manageable for all arches.
+	rm -f spec/readme_spec.rb || die
 }
