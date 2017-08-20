@@ -9660,10 +9660,10 @@ dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasm 1.0.2-r4 9999: cross-architecture assembler, disassembler, linker, and debugger
 dev-ruby/metasploit-concern 2.0.1 2.0.3: Metasploit concern allows you to define concerns in app/concerns.
-dev-ruby/metasploit-credential 2.0.3 2.0.8: Code for modeling and managing credentials in Metasploit
-dev-ruby/metasploit-model 2.0.0 2.0.3: Common code, such as validators and mixins
+dev-ruby/metasploit-credential 2.0.8: Code for modeling and managing credentials in Metasploit
+dev-ruby/metasploit-model 2.0.3: Common code, such as validators and mixins
 dev-ruby/metasploit-payloads 1.1.11 1.1.13 1.2.24 1.2.28: Compiled binaries for Metasploit's Meterpreter
-dev-ruby/metasploit_data_models 2.0.0 2.0.14: The database layer for Metasploit
+dev-ruby/metasploit_data_models 2.0.14: The database layer for Metasploit
 dev-ruby/metasploit_payloads-mettle 0.0.6 0.1.9: Compiled binaries for Metasploit's next-gen Meterpreter
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
@@ -14333,7 +14333,7 @@ net-analyzer/macchanger 1.7.0 1.7.0-r1: Utility for viewing/manipulating the MAC
 net-analyzer/masscan 1.0.3-r2 1.0.4: Mass IP port scanner
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/metasploit 4.12.7 4.12.16 4.14.16 9999: Advanced framework for developing, testing, and using vulnerability exploit code
+net-analyzer/metasploit 4.14.16 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16: Nagios/Icinga event broker that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.2 2.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
@@ -15952,7 +15952,7 @@ sci-biology/bioperl-db 1.6.9 1.6.9-r1 9999-r1: Perl tools for bioinformatics - P
 sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9 9999-r1: Perl wrapper modules for key bioinformatics applications
 sci-biology/biopython 1.68: Python modules for computational molecular biology
-sci-biology/bioruby 1.4.3.0001-r1 1.5.1 9999: An integrated environment for bioinformatics using the Ruby language
+sci-biology/bioruby 1.4.3.0001-r1 1.5.1: An integrated environment for bioinformatics using the Ruby language
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34-r2: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/blossoc 1.4.0-r1: A linkage disequilibrium association mapping tool
@@ -16232,7 +16232,7 @@ sci-electronics/gwave 20090213-r1 20120229: Analog waveform viewer for SPICE-lik
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.4 4.0.5-r1 4.0.6: Electronic Schematic and PCB design tools.
-sci-electronics/klayout 0.23.10 0.24.9 0.24.10: Viewer and editor for GDS and OASIS integrated circuit layouts
+sci-electronics/klayout 0.23.10 0.24.10: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
