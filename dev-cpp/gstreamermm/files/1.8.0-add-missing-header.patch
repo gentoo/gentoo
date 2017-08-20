@@ -1,0 +1,42 @@
+From 73b25333ca3778ccf4322f47abbcbc507c31890d Mon Sep 17 00:00:00 2001
+From: Marcin Kolny <marcin.kolny@gmail.com>
+Date: Wed, 12 Oct 2016 19:37:45 +0200
+Subject: [PATCH] Gst::Caps: include missing header
+
+---
+ gstreamer/src/caps.ccg | 1 -
+ gstreamer/src/caps.hg  | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/gstreamer/src/caps.ccg b/gstreamer/src/caps.ccg
+index 93acf7e..782f8e2 100644
+--- a/gstreamer/src/caps.ccg
++++ b/gstreamer/src/caps.ccg
+@@ -17,7 +17,6 @@
+  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include <gstreamermm/structure.h>
+ #include <gstreamermm/capsfeatures.h>
+ 
+ namespace Gst
+diff --git a/gstreamer/src/caps.hg b/gstreamer/src/caps.hg
+index 7969cdc..bf0b950 100644
+--- a/gstreamer/src/caps.hg
++++ b/gstreamer/src/caps.hg
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include <gstreamermm/miniobject.h>
++#include <gstreamermm/structure.h>
+ 
+ _DEFS(gstreamermm,gst)
+ 
+@@ -28,7 +29,6 @@ _WRAP_ENUM(CapsIntersectMode, GstCapsIntersectMode, NO_GTYPE)
+ 
+ _WRAP_ENUM(CapsFlags, GstCapsFlags)
+ 
+-class Structure;
+ class CapsFeatures;
+ 
+ /** Structure describing sets of media formats.
