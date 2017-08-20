@@ -9,7 +9,7 @@ inherit python-single-r1 xdg-utils
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
-SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/fontforge-dist-${PV}.tar.xz"
 
 LICENSE="BSD GPL-3+"
 SLOT="0"
@@ -59,6 +59,8 @@ DEPEND="${RDEPEND}
 #		>=net-libs/czmq-2.2.0:0=
 #		>=net-libs/zeromq-4.0.4:0=
 #	)
+
+S="${WORKDIR}/fontforge-2.0.${PV}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
