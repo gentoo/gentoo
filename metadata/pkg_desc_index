@@ -8112,7 +8112,7 @@ dev-python/pafy 0.5.3.1 9999: Python library to retrieve YouTube content and met
 dev-python/paho-mqtt 1.1 1.2.3: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 0.20.1 0.20.3 9999: Powerful data structures for data analysis and statistics
-dev-python/pandocfilters 1.2.4 1.4.1 1.4.2: Utilities for writing pandoc filters in python
+dev-python/pandocfilters 1.2.4 1.4.1 1.4.2-r1: Utilities for writing pandoc filters in python
 dev-python/paramiko 1.16.0 2.1.2 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4 1.6.6: parse() is the opposite of format()
