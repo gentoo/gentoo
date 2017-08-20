@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="HTTrack Website Copier, Open Source Offline Browser"
 HOMEPAGE="http://www.httrack.com/"
@@ -24,6 +24,7 @@ DOCS=( AUTHORS README greetings.txt history.txt )
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.48.13-minizip.patch
+	eapply_user
 }
 
 src_configure() {
@@ -42,8 +43,8 @@ src_install() {
 		mv "${D}"/usr/share/{doc/,}${PF}/html || die
 
 		rm "${D}"/usr/share/${PN}/html || die
-		dosym /usr/share/${PF}/html /usr/share/${PN}/html
+		dosym ../../${PF}/html /usr/share/${PN}/html
 	fi
 
-	find "${ED}" -type f -name '*.la' -delete || die
+	prune_libtool_files
 }
