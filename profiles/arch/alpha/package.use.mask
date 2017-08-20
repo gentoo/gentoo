@@ -132,6 +132,14 @@ dev-python/pyquery test
 # Missing keywords
 dev-util/perf numa
 
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+media-sound/rhythmbox upnp-av
+
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+>=media-plugins/grilo-plugins-0.2.14 upnp-av
+
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
@@ -202,6 +210,10 @@ dev-haskell/vector test
 # Tobias Klausmann <klausman@gentoo.org> (20 Nov 2014)
 # OpenCV likely will never work on Alpha
 media-video/vlc opencv
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
+# Missing keywords, bug #523686
+>=dev-libs/libgdata-0.16.1 test
 
 # Tobias Klausmann <klausman@gentoo.org> (11 Oct 2014)
 # app-emulation/qemu is not keyworded on alpha, masking flag that triggers

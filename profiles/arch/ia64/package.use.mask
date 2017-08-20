@@ -94,6 +94,10 @@ net-misc/networkmanager ofono
 # Enable numa support on supported architectures
 dev-db/percona-server -numa
 
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
+# Missing keywords on media-libs/grilo - bug #521972
+media-sound/rhythmbox upnp-av
+
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
@@ -120,6 +124,10 @@ app-text/mupdf opengl
 # dev-python/greenlet which has not been ported
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
+
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+>=media-plugins/grilo-plugins-0.2.16 upnp-av
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5

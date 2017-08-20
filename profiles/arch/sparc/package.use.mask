@@ -121,6 +121,10 @@ net-firewall/iptables nftables
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+>=media-plugins/grilo-plugins-0.2.14 upnp-av
+
 # Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
 # Requires net-libs/http-parser
 net-im/jabberd2 websocket
@@ -248,6 +252,10 @@ www-plugins/gnash jemalloc
 # Patrick Lauer <patrick@gentoo.org> (17 June 2013)
 # Fix per-arch mask of phonon[zeitgeist] #460140
 media-libs/phonon zeitgeist
+
+# Patrick Lauer <patrick@gentoo.org> (27 May 2013)
+# stable keywords missing on tagpy/coherence
+media-sound/rhythmbox upnp-av
 
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono
