@@ -8252,7 +8252,7 @@ dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports a
 dev-python/pycodestyle 2.0.0 2.1.0 2.2.0 2.3.1: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pycountry 16.11.8: Database of countries, subdivisions, languages, currencies and script
-dev-python/pycparser 2.14 2.17: C parser and AST generator written in Python
+dev-python/pycparser 2.14 2.17 2.18: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.5 3.4.6: A self-contained cryptographic library for Python
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
