@@ -3486,7 +3486,7 @@ dev-haskell/hdbc-odbc 2.3.1.1 2.4.0.1: ODBC driver for HDBC
 dev-haskell/hdbc-postgresql 2.3.2.3 2.3.2.4-r1: PostgreSQL driver for HDBC
 dev-haskell/hdbc-sqlite3 2.3.3.1-r1: Sqlite v3 driver for HDBC
 dev-haskell/hex 0.1.2: Convert strings into hexadecimal and back
-dev-haskell/hexpat 0.20.9 0.20.10 0.20.11: XML parser/formatter based on expat
+dev-haskell/hexpat 0.20.9 0.20.10 0.20.11 0.20.13: XML parser/formatter based on expat
 dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
 dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3: Syntax highlighting
 dev-haskell/hinotify 0.3.8.1: Haskell binding to inotify
