@@ -2691,7 +2691,7 @@ app-vim/vimclojure 2.3.6-r2 2.3.6-r3: vim plugin: Clojure syntax highlighting, f
 app-vim/vimcommander 0.81: vim plugin: Total Commander style file explorer
 app-vim/vimoutliner 0.3.6: vim plugin: easy and fast outlining
 app-vim/vimpress 2.1.5 3.2.0: vim plugin: manage wordpress blogs from vim
-app-vim/vimpython 1.13-r1: vim plugin: A set of menus/shortcuts to work with Python files
+app-vim/vimpython 1.13-r1 1.13-r2: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/vimtex 20160324: vim plugin: a modern vim plugin for editing LaTeX files
 app-vim/voom 5.1 5.1-r1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.2: vim plugin: interface to Web APIs

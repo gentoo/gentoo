@@ -1091,14 +1091,19 @@
     <url>https://wiki.gentoo.org/wiki/Foundation:Main_Page</url>
     <description>The Gentoo Foundation, Inc. provides the legal and financial base for the Gentoo project.</description>
     <member>
-      <email>antarus@gentoo.org</email>
-      <name>Alec Warner</name>
+      <email>alicef@gentoo.org</email>
+      <name>Alice Ferrazzi</name>
       <role>Board Member</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
       <role>Board Member, Officer:Secretary, Chairman</role>
+    </member>
+    <member>
+      <email>kensington@gentoo.org</email>
+      <name>Michael Palimaka</name>
+      <role>Board Member</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
@@ -1113,12 +1118,12 @@
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Board member, Officer: Infra Liaison, Treasurer</role>
+      <role>Officer: Assistant Infra Liaison, Assistant Treasurer</role>
     </member>
     <member>
-      <email>swift@gentoo.org</email>
-      <name>Sven Vermeulen</name>
-      <role>Board Member</role>
+      <email>zlg@gentoo.org</email>
+      <name>Daniel Campbell</name>
+      <role>Board Member, Treasurer</role>
     </member>
   </project>
   <project>
