@@ -11,8 +11,8 @@ MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="CFFI-based drop-in replacement for Pycairo"
+HOMEPAGE="https://github.com/Kozea/cairocffi"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-HOMEPAGE="https://github.com/SimonSapin/cairocffi"
 
 LICENSE="BSD"
 SLOT="0"
