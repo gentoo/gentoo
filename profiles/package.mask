@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (20 Aug 2017)
+# Pre-release of a new incompatible version that breaks the only reverse
+# dependency in Gentoo. Masked until 2.0.0 proper is released, or
+# dev-cpp/libjson-rpc-cpp is fixed, whichever happens first.
+>=dev-cpp/catch-2
+
 # Hans de Graaff <graaff@gentoo.org> (20 Aug 2017)
 # Mask Ruby 2.1 for removal, bug 615822
 # This version is no longer supported by upstream
