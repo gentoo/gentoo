@@ -18374,7 +18374,7 @@ www-client/firefox-bin 52.3.0 55.0: Firefox Web Browser
 www-client/google-chrome 60.0.3112.101: The web browser from Google
 www-client/google-chrome-beta 61.0.3163.49: The web browser from Google
 www-client/google-chrome-unstable 62.0.3188.2: The web browser from Google
-www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22 3.49.1: HTTrack Website Copier, Open Source Offline Browser
+www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
