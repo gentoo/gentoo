@@ -46,5 +46,5 @@ src_install() {
 		dosym ../../${PF}/html /usr/share/${PN}/html
 	fi
 
-	prune_libtool_files
+	prune_libtool_files --all
 }
