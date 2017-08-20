@@ -35,10 +35,8 @@
 # since March 2017.
 # This mask also includes all remaining ruby21-only packages.
 dev-lang/ruby:2.1
-net-analyzer/metasploit:4.12
 dev-ruby/activeresource:4.1
 dev-ruby/builder:3
-dev-ruby/metasploit-credential:2.0.3
 dev-ruby/rails-observers
 dev-ruby/samuel
 games-rpg/a-bird-story
