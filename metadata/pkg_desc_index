@@ -1852,7 +1852,7 @@ app-misc/leave 20100918: Command-line tool from FreeBSD that reminds you when it
 app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
-app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
+app-misc/linuxspa 0.7.1-r1 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.9.0-r6 0.9.4a-r2 0.9.4c 0.9.4d 0.10.0_rc2: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.2 2.3 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
