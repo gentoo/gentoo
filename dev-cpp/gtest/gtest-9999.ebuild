@@ -15,10 +15,6 @@ EGIT_REPO_URI="https://github.com/google/googletest.git"
 LICENSE="BSD"
 SLOT="0"
 IUSE="examples test"
-# Test require a ton of privileges, namely
-# FEATURES="-sandbox -userpriv -usersandbox"
-# which is generally not acceptable for Gentoo
-RESTRICT="test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
