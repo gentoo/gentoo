@@ -1,0 +1,40 @@
+--- a/googlemock/CMakeLists.txt
++++ b/googlemock/CMakeLists.txt
+@@ -11,6 +11,8 @@
+ 
+ option(gmock_build_tests "Build all of Google Mock's own tests." OFF)
+ 
++set(LIB_INSTALL_DIR lib CACHE STRING "Library install directory")
++
+ # A directory to find Google Test sources.
+ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/gtest/CMakeLists.txt")
+   set(gtest_dir gtest)
+@@ -104,7 +106,7 @@
+ #
+ # Install rules
+ install(TARGETS gmock gmock_main
+-  DESTINATION lib)
++  DESTINATION ${LIB_INSTALL_DIR})
+ install(DIRECTORY ${gmock_SOURCE_DIR}/include/gmock
+   DESTINATION include)
+ 
+--- a/googletest/CMakeLists.txt
++++ b/googletest/CMakeLists.txt
+@@ -27,6 +27,8 @@
+   "Build gtest with internal symbols hidden in shared libraries."
+   OFF)
+ 
++set(LIB_INSTALL_DIR lib CACHE STRING "Library install directory")
++
+ # Defines pre_project_set_up_hermetic_build() and set_up_hermetic_build().
+ include(cmake/hermetic_build.cmake OPTIONAL)
+ 
+@@ -103,7 +105,7 @@
+ #
+ # Install rules
+ install(TARGETS gtest gtest_main
+-  DESTINATION lib)
++  DESTINATION ${LIB_INSTALL_DIR})
+ install(DIRECTORY ${gtest_SOURCE_DIR}/include/gtest
+   DESTINATION include)
+ 
