@@ -61,7 +61,7 @@ xdg_environment_reset() {
 	unset DBUS_SESSION_BUS_ADDRESS
 }
 
-# @FUNCTION: fdo-xdg_desktop_database_update
+# @FUNCTION: xdg_desktop_database_update
 # @DESCRIPTION:
 # Updates the .desktop files database.
 # Generates a list of mimetypes linked to applications that can handle them
