@@ -113,7 +113,7 @@ multilib_src_test() {
 				die "Test suite failed. New/unknown test failure(s) found!"
 			else
 				echo ""
-				einfo "Test suite passed. Now new/unknown test failure(s) found!"
+				einfo "Test suite passed. No new/unknown test failure(s) found!"
 			fi
 
 			return 0
