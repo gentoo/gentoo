@@ -1,0 +1,14 @@
+DEFINED_PHASES=prepare
+DEPEND=!static? ( sys-libs/zlib sqlite? ( dev-db/sqlite:3 ) ) static? ( sys-libs/zlib[static-libs(+)] sqlite? ( dev-db/sqlite:3[static-libs(+)] ) )
+DESCRIPTION=Suite of tools compiling mdoc and man
+EAPI=6
+HOMEPAGE=http://mdocml.bsd.lv/
+IUSE=sqlite static
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=!static? ( sys-libs/zlib sqlite? ( dev-db/sqlite:3 ) )
+SLOT=0
+SRC_URI=http://mdocml.bsd.lv/snapshots/mandoc-1.14.3.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=8dc4f8185c99aa6190de9415a715086f
