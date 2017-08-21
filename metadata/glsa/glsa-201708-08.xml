@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201708-08">
+  <title>bzip2: Denial of Service</title>
+  <synopsis>An use-after-free vulnerability has been found in bzip2 that could
+    allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">bzip2</product>
+  <announced>2017-08-21</announced>
+  <revised>2017-08-21: 1</revised>
+  <bug>620466</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/bzip2" auto="yes" arch="*">
+      <unaffected range="ge" slot="">1.0.6-r8</unaffected>
+      <vulnerable range="lt" slot="">1.0.6-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>bzip2 is a high-quality data compressor used extensively by Gentoo
+      Linux.
+    </p>
+  </background>
+  <description>
+    <p>A use-after-free flaw was found in bzip2recover, leading to a null
+      pointer dereference, or a write to a closed file descriptor. Please
+      review the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      bzip2 archive using bzip2recover, possibly resulting in a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All bzip2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/bzip2-1.0.6-r8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3189">CVE-2016-3189</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-04T20:39:15Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-08-21T01:24:45Z">whissi</metadata>
+</glsa>
