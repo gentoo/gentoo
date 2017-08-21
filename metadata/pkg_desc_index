@@ -1283,7 +1283,7 @@ app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform env
 app-emulation/bochs 2.6.9: LGPL-ed pc emulator
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.8-r2 0.7.9 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/containerd 0.2.5_p20170308 0.2.9 9999: A daemon to control runC
+app-emulation/containerd 0.2.5_p20170308 0.2.9 0.2.9_p20170605 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.7.2 2.8.0: Golden Disk Image builder.
@@ -1295,7 +1295,7 @@ app-emulation/docker-machine 0.9.0 0.10.0 0.12.0: Machine management for a conta
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20161111 9999: Docker container networking
 app-emulation/docker-registry 2.6.2: Docker Registry 2.0
-app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc3_p20170607: runc container cli tools (docker fork)
+app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc3_p20170607 1.0.0_rc3_p20170706: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r3 1.4.1_pre20130107-r4: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
