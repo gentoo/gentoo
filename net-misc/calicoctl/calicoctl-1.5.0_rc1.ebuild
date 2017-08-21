@@ -49,7 +49,7 @@ EGO_VENDOR=( "github.com/docopt/docopt-go 784ddc588536785e7299f7272f39101f7faccc
 	"k8s.io/client-go 4a3ab2f5be5177366f8206fd79ce55ca80e417fa github.com/kubernetes/client-go"
 	"k8s.io/apimachinery b317fa7ec8e0e7d1f77ac63bf8c3ec7b29a2a215 github.com/kubernetes/apimachinery")
 
-inherit golang-vcs-snapshot systemd user
+inherit golang-vcs-snapshot
 
 CALICOCTL_COMMIT="118b8ae1cbfb852f387c9066b5ae27633593a99f"
 
