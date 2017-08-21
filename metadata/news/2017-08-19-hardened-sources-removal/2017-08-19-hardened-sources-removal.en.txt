@@ -1,7 +1,7 @@
 Title: sys-kernel/hardened-sources removal
 Author: Francisco Blas Izquierdo Riera <klondike@gentoo.org>
 Posted: 2017-08-19
-Revision: 6
+Revision: 8
 News-Item-Format: 2.0
 Display-If-Installed: sys-kernel/hardened-sources
 Display-If-Profile: hardened/linux/*
@@ -32,8 +32,9 @@ As an alternative, for users happy keeping themselves on the stable
 4.9 branch of the kernel; minipli, another grsecurity user, is forward
 porting the patches on [3].
 
-Strcat from Copperhead OS is making his own version of the patches
-forward ported to the latest version of the Linux tree at [4].
+Strcat from Copperhead OS is making his own version with some
+additional hardening features over those on the latest version of the
+Linux tree at [4].
 
 The Gentoo Hardened team can't make any statement regarding the
 security, reliability or update availability of either those patches
