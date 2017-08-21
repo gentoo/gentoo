@@ -25,7 +25,7 @@ src_test() {
 	ebegin "Running mandelbrot test"
 	./bff samples/mandelbrot.b > mandelbrot.out
 	eend $? || die
-	[[ $( md5sum -c <<< '5024283fa65866ddd347b877798e84d8 mandelbrot.out') ]] \
+	md5sum -c <<< '5024283fa65866ddd347b877798e84d8 mandelbrot.out' \
 		&& cat mandelbrot.out \
 		|| die "mandelbrot did not output correctly"
 }
