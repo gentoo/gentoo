@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>imomaliev@github.com</email>
+			<name>Sardorbek Imomaliev</name>
+		</maintainer>
+		<remote-id type="github">imomaliev/tmux-bash-completion</remote-id>
+	</upstream>
+</pkgmetadata>
