@@ -97,6 +97,14 @@ DEPEND="${RDEPEND}
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h
+	/usr/include/opencv2/opencv_modules.hpp
+	# [vtk]
+	/usr/include/opencv2/viz.hpp
+	/usr/include/opencv2/viz/types.hpp
+	/usr/include/opencv2/viz/viz3d.hpp
+	/usr/include/opencv2/viz/vizcore.hpp
+	/usr/include/opencv2/viz/widget_accessor.hpp
+	/usr/include/opencv2/viz/widgets.hpp
 )
 
 PATCHES=(
