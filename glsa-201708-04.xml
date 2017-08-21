@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201708-04">
+  <title>Ked Password Manager: Information leak</title>
+  <synopsis>An insecure file usage has been reported in Ked Password Manager
+    possibly allowing confidential information to be disclosed.
+  </synopsis>
+  <product type="ebuild">kedpm</product>
+  <announced>2017-08-21</announced>
+  <revised>2017-08-21: 1</revised>
+  <bug>616690</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/kedpm" auto="yes" arch="*">
+      <vulnerable range="lt">0.4.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Helps to manage large numbers of passwords and related information and
+      simplifies the tasks of searching and entering password data.
+    </p>
+  </background>
+  <description>
+    <p>A history file in ~/.kedpm/history is written in clear text. All of the
+      commands performed in the password manager are written there. This can
+      lead to the disclosure of the master password if the “password”
+      command is used with an argument. The names of the password entries
+      created and consulted are also accessible in clear text.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could obtain confidential information.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo Security recommends that users unmerge Ked Password Manager:</p>
+    
+    <code>
+      # emerge --unmerge "app-admin/kedpm"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8296">CVE-2017-8296</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-08-14T23:18:50Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-08-21T00:06:05Z">b-man</metadata>
+</glsa>
