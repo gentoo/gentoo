@@ -5,11 +5,6 @@
     <email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
   </maintainer>
-<!-- 
-Please note that this list is shared between the following packages:
-dev-db/mysql
-dev-db/mariadb
--->
 <use>
   <flag name="backup">Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption</flag>
   <flag name="cluster">Add support for NDB clustering (deprecated)</flag>
@@ -27,6 +22,7 @@ dev-db/mariadb
   <flag name="max-idx-128">Raise the max index per table limit from 64 to 128</flag>
   <flag name="minimal">Install client programs only, no server</flag>
   <flag name="mroonga">Add support for the Mroonga engine for interfacing with the Groonga text search</flag>
+  <flag name="numa">Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)</flag>
   <flag name="openssl">Enable SSL connections and crypto functions using <pkg>dev-libs/openssl</pkg></flag>
   <flag name="oqgraph">Add support for the Open Query GRAPH engine</flag>
   <flag name="pam">Enable the optional PAM authentication plugin for the server</flag>
