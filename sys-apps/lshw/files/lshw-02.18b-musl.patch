@@ -1,0 +1,58 @@
+diff -aurP a/src/core/dasd.cc b/src/core/dasd.cc
+--- a/src/core/dasd.cc	2017-08-21 14:12:47.257918811 -0500
++++ b/src/core/dasd.cc	2017-08-21 14:21:52.178939131 -0500
+@@ -4,6 +4,7 @@
+ #include <glob.h>
+ #include <string.h>
+ #include <fcntl.h>
++#include <libgen.h>
+ #include <unistd.h>
+ #include <inttypes.h>
+ #include <sys/ioctl.h>
+diff -aurP a/src/core/sysfs.cc b/src/core/sysfs.cc
+--- a/src/core/sysfs.cc	2017-08-21 14:12:47.258918811 -0500
++++ b/src/core/sysfs.cc	2017-08-21 14:34:22.281967103 -0500
+@@ -9,6 +9,7 @@
+ #include "osutils.h"
+ #include <limits.h>
+ #include <unistd.h>
++#include <libgen.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -99,7 +100,7 @@
+   {
+     devname =
+       string(fs.path + "/bus/") + string(namelist[i]->d_name) +
+-      "/devices/" + basename(path.c_str());
++      "/devices/" + basename(const_cast<char *>(path.c_str()));
+ 
+     if (samefile(devname, path))
+       return string(namelist[i]->d_name);
+@@ -139,7 +140,7 @@
+ 
+   if (bustype == "virtio")
+   {
+-    string name = basename(path.c_str());
++    string name = basename(const_cast<char *>(path.c_str()));
+     if (name.compare(0, 6, "virtio") == 0)
+       return "virtio@" + name.substr(6);
+     else
+@@ -207,7 +208,7 @@
+   string driverlink = This->devpath + "/driver";
+   if (!exists(driverlink))
+     return "";
+-  return basename(readlink(driverlink).c_str());
++  return basename(const_cast<char *>(readlink(driverlink).c_str()));
+ }
+ 
+ 
+@@ -288,7 +289,7 @@
+ 
+ string entry::name() const
+ {
+-  return basename(This->devpath.c_str());
++  return basename(const_cast<char *>(This->devpath.c_str()));
+ }
+ 
+ 

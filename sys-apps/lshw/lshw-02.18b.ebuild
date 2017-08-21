@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PLOCALES='fr'
 
@@ -36,10 +36,11 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${PN}-02.18b-gentoo.patch
 	"${FILESDIR}"/${PN}-02.18b-gettext-array.patch
+	"${FILESDIR}"/${PN}-02.18b-musl.patch
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	l10n_find_plocales_changes "src/po" "" ".po" || die
 	sed -i \
