@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Brian Evans <grknight@gentoo.org> (21 Aug 2017)
+# No keywords for sys-process/numactl
+dev-db/mariadb numa
+
 # Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
