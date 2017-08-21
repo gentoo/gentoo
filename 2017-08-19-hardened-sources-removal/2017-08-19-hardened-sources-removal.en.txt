@@ -1,7 +1,7 @@
 Title: sys-kernel/hardened-sources removal
 Author: Francisco Blas Izquierdo Riera <klondike@gentoo.org>
 Posted: 2017-08-19
-Revision: 8
+Revision: 9
 News-Item-Format: 2.0
 Display-If-Installed: sys-kernel/hardened-sources
 Display-If-Profile: hardened/linux/*
