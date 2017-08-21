@@ -31,7 +31,6 @@ src_prepare() {
 	sed -i -r \
 		-e '/^install-(data|exec)-local:/s|^.*$|&\ndisabled-&|' \
 		Makefile.am || die
-	elibtoolize --reverse-deps
 	autotools-multilib_src_prepare
 }
 
