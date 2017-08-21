@@ -30,7 +30,7 @@ LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0/${SUBSLOT:-0}"
 IUSE="+backup bindist cracklib debug embedded extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
-	odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
+	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-xtrabackup static static-libs systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
@@ -100,6 +100,7 @@ COMMON_DEPEND="
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
 		innodb-snappy? ( app-arch/snappy )
+		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( virtual/pam:0= )
 		systemd? ( sys-apps/systemd:= )
@@ -350,16 +351,19 @@ multilib_src_configure() {
 	fi
 
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
+	# systemtap only works on native ABI  bug 530132
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DWITH_READLINE=$(usex bindist 1 0)
 			-DNOT_FOR_DISTRIBUTION=$(usex bindist 0 1)
+			-DENABLE_DTRACE=$(usex systemtap)
 		)
 	else
 		mycmakeargs+=(
 			-DWITHOUT_TOOLS=1
 			-DWITH_READLINE=1
 			-DNOT_FOR_DISTRIBUTION=0
+			-DENABLE_DTRACE=0
 		)
 	fi
 
@@ -399,7 +403,8 @@ multilib_src_configure() {
 			-DINSTALL_SQLBENCHDIR=share/mariadb
 			-DPLUGIN_ROCKSDB=$(usex rocksdb DYNAMIC NO)
 			# systemd is only linked to for server notification
-			-DWITH_SYSTEMD=$(usex systemd)
+			-DWITH_SYSTEMD=$(usex systemd yes no)
+			-DWITH_NUMA=$(usex numa ON OFF)
 		)
 		if use test ; then
 			# This is needed for the new client lib which tests a real, open server
@@ -462,15 +467,8 @@ multilib_src_configure() {
 			-DWITHOUT_EMBEDDED_SERVER=1
 			-DEXTRA_CHARSETS=none
 			-DINSTALL_SQLBENCHDIR=
-			-DWITH_SYSTEMD=NO
+			-DWITH_SYSTEMD=no
 		)
-	fi
-
-	# systemtap only works on native ABI  bug 530132
-	if multilib_is_native_abi; then
-		mycmakeargs+=( -DENABLE_DTRACE=$(usex systemtap) )
-	else
-		mycmakeargs+=( -DENABLE_DTRACE=0 )
 	fi
 
 	cmake-utils_src_configure
@@ -487,9 +485,9 @@ multilib_src_compile() {
 src_install() {
 	# headers with ABI specific data
 	local MULTILIB_WRAPPED_HEADERS=(
-		/usr/include/mysql/my_config.h
-		/usr/include/mysql/private/embedded_priv.h
-		/usr/include/mysql/mysql_version.h
+		/usr/include/mysql/server/my_config.h
+		/usr/include/mysql/server/private/embedded_priv.h
+		/usr/include/mysql/server/mysql_version.h
 		/usr/include/mariadb/mariadb_version.h
 		/usr/include/mysql/mariadb_version.h
 		/usr/include/mysql/private/probes_mysql_nodtrace.h
@@ -508,12 +506,12 @@ multilib_src_install() {
 	mysql_init_vars
 
 	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
-	if [[ -f "${D}/usr/include/mysql/private/config.h" ]] ; then
-		rm "${D}/usr/include/mysql/private/config.h" || die
+	if [[ -f "${D}/usr/include/mysql/server/private/config.h" ]] ; then
+		rm "${D}/usr/include/mysql/server/private/config.h" || die
 	fi
 
 	if ! multilib_is_native_abi && use server ; then
-		insinto /usr/include/mysql/private
+		insinto /usr/include/mysql/server/private
 		doins "${S}"/sql/*.h
 	fi
 
