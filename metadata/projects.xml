@@ -4190,12 +4190,7 @@ developers and volunteer mentors.</description>
     <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>keytoaster@gentoo.org</email>
-      <name>Tobias Heinlein</name>
-      <role>Member</role>
+      <role>Administrator</role>
     </member>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
@@ -4210,7 +4205,7 @@ developers and volunteer mentors.</description>
     <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
-      <role>Banling</role>
+      <role>Administrator, Banling</role>
     </member>
   </project>
   <project>
