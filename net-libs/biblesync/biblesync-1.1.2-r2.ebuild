@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils
+inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="A multicast protocol to support Bible software shared co-navigation"
 HOMEPAGE="http://www.crosswire.org/wiki/BibleSync"
@@ -19,6 +19,7 @@ RDEPEND=""
 src_configure() {
 	local mycmakeargs=(
 		"-DBUILD_SHARED_LIBS=$(usex !static)"
+		"-DLIBDIR=/usr/$(get_libdir)"
 	)
 	cmake-utils_src_configure
 }
