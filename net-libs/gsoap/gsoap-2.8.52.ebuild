@@ -30,17 +30,18 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 "
 
+PATCHES=(
+	# Fix Pre-ISO headers
+	"${FILESDIR}/${PN}-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch"
+
+	# enable shared libs https://bugs.gentoo.org/583398
+	"${FILESDIR}/${PN}-2.8.52-shared_libs.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-
-	# Fix Pre-ISO headers
-	eapply "${FILESDIR}/${PN}-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch"
-
-	# enable shared libs https://bugs.gentoo.org/583398
-	eapply "${FILESDIR}/${PN}-2.7.40-shared_libs.patch"
-
 	eautoreconf
 }
 
