@@ -37,6 +37,11 @@ RDEPEND="${COMMON_DEPEND}
 	sys-devel/binutils
 	net-dns/bind-tools"
 
+# iODBC and unixODBC are mutually-exclusive choices for
+# the ODBC driver manager. Future versions of FreeTDS
+# will throw an error if you specify both.
+REQUIRED_USE="?? ( iodbc odbc )"
+
 # Won't be necessary in the next release.
 PATCHES=( "${FILESDIR}/without-flags.patch" )
 
