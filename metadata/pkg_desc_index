@@ -4499,7 +4499,7 @@ dev-lang/R 3.2.2 3.3.2 3.4.1: Language and environment for statistical computing
 dev-lang/ats 0.2.9: ATS Programming Language
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
-dev-lang/bff 1.0.3.1: a brainfuck interpreter
+dev-lang/bff 1.0.3.1 1.0.5: A brainfuck interpreter
 dev-lang/blassic 0.10.2 0.10.3: classic Basic interpreter
 dev-lang/c-intercal 30.0: C-INTERCAL - INTERCAL to binary (via C) compiler
 dev-lang/cfortran 4.4-r2 4.4-r3: Header file allowing to call Fortran routines from C and C++
