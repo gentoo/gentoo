@@ -2541,7 +2541,7 @@ app-vim/colorv 3.0.2 3.0.2-r1: vim plugin: a color tool for vim
 app-vim/command-t 4.0: vim plugin: fast file navigation for vim
 app-vim/conque 2.3 2.3-r1: vim plugin: Run interactive commands inside a Vim buffer
 app-vim/cream 0.43: An easy-to-use configuration of the GVim text editor
-app-vim/csound-syntax 20160804: set of tools for editing Csound files with vim
+app-vim/csound-syntax 20160804: vim plugin: set of tools for editing Csound files with vim
 app-vim/csscomplete 1.0: vim plugin: CSS 3 omni complete function
 app-vim/csv 0.31-r1: vim plugin: display and alter csv files
 app-vim/ctrlp 1.79 1.80: vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
@@ -10638,7 +10638,7 @@ dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git eas
 dev-vcs/fossil 1.34 1.35 2.2 2.3: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
 dev-vcs/git 2.13.0 2.13.3 2.13.4 2.13.5 2.14.0 2.14.0-r1 2.14.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
-dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1 6.20161031 6.20170101: manage files with git, without checking their contents into git
+dev-vcs/git-annex 6.20170818: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.2.1 2.3 2.4 2.11: The highly caffeinated git GUI
