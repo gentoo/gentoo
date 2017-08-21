@@ -10284,7 +10284,7 @@ dev-util/buildbot-console-view 0.9.4 0.9.7 0.9.8 0.9.10: Buildbot console-view p
 dev-util/buildbot-pkg 0.9.4 0.9.7 0.9.8 0.9.10: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/buildbot-waterfall-view 0.9.4 0.9.7 0.9.8 0.9.10: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.4 0.9.7 0.9.8 0.9.10 9999: BuildBot Worker (slave) Daemon
+dev-util/buildbot-worker 0.9.4 0.9.7 0.9.8 0.9.10 0.9.10-r1 9999: BuildBot Worker (slave) Daemon
 dev-util/buildbot-www 0.9.4 0.9.7 0.9.8 0.9.10: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
