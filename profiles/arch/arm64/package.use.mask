@@ -5,6 +5,10 @@
 # Support for g15daemon  still needs -9999 packages on all arches 
 media-sound/mumble g15
 
+# NeddySeagoon <neddysegoon@gentoo.org> (21 Aug 2107)
+# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
+app-office/libreoffice coinmp
+
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
