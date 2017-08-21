@@ -51,7 +51,7 @@ src_install() {
 	newins "${FILESDIR}"/${MY_PN}.logrotate ${MY_PN}
 
 	newconfd "${FILESDIR}"/${MY_PN}.confd ${MY_PN}
-	newinitd "${FILESDIR}"/${MY_PN}.initd-r5 ${MY_PN}
+	newinitd "${FILESDIR}"/${MY_PN}.initd ${MY_PN}
 
 	mv * "${ED%/}"/opt/${MY_PN} || die
 }
