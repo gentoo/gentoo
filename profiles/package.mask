@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hanno Boeck <hanno@gentoo.org> (21 Aug 2017)
+# Open security bugs, no upstream, bug 628432
+# Alternatives: app-arch/libarchive, app-arch/unar
+app-arch/unrar-gpl
+
 # Michael Orlitzky <mjo@gentoo.org> (20 Aug 2017)
 # Masked until somebody who uses systemd tells me
 # I didn't break the service file or configuration.
