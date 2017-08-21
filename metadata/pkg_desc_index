@@ -15161,6 +15161,7 @@ net-misc/bti 031-r1 034: A command line twitter/identi.ca client
 net-misc/buka 2.0: Download manga from buka.cn
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
 net-misc/cadaver 0.23.3: Command-line WebDAV client
+net-misc/calicoctl 1.5.0_rc1: CLI to manage Calico network and security policy
 net-misc/capi4hylafax 01.03.00.99.300.20-r2: capi4hylafax adds a faxcapi modem to the hylafax enviroment
 net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
