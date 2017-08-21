@@ -13421,7 +13421,7 @@ media-plugins/kodi-pvr-dvblink 3.3.11-r1 3.4.5 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 2.4.7 2.4.11 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 1.4.7 1.4.8 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 3.4.24 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
-media-plugins/kodi-pvr-iptvsimple 2.4.8 2.4.11 9999: Kodi's IPTVSimple client addon
+media-plugins/kodi-pvr-iptvsimple 2.4.8 2.4.11 2.4.14 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 2.4.16 2.4.19 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 4.15.3 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 2.4.11 2.4.13 9999: Kodi's NextPVR client addon
