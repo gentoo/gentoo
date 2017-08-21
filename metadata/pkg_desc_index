@@ -7795,7 +7795,7 @@ dev-python/hvac 0.2.17: Python 2/3 client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 2.6.2 3.0.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.0.0 5.1.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1: A featureful, correct URL for Python
-dev-python/hypothesis 3.6.0-r1 3.6.1 3.8.3: A library for property based testing
+dev-python/hypothesis 3.6.0-r1 3.6.1 3.8.3 3.18.5: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
@@ -8232,7 +8232,7 @@ dev-python/pyavm 0.9.3 0.9.4: Python module for Astronomy Visualization Metadata
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14 0.3.15: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.5.0: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0: Python bindings for the cairo library
+dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0 1.15.1: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.5.12-r1 0.6.1: Python wrapping of the Cap'n Proto library
@@ -13628,7 +13628,7 @@ media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files usi
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.9 8.13.10 8.13.11 8.13.12: A program to convert abc files to Postscript files
-media-sound/abcmidi 2017.04.10 2017.04.19 2017.07.11: Programs for processing ABC music notation files
+media-sound/abcmidi 2017.04.10 2017.04.19 2017.07.11 2017.08.14: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
