@@ -34,16 +34,16 @@ src_prepare() {
 	# disable exif support as required
 	if ! use exif; then
 		sed \
-			-e 's/^.* -DHAVE_GIFLIB/#\0/' \
-			-e 's/^.* -lgif/#\0/' \
+			-e 's/^.* -DHAVE_LIBEXIF/#\0/' \
+			-e 's/^.* -lexif/#\0/' \
 			-i Makefile || die
 	fi
 
 	# disable gif support as required
 	if ! use gif; then
 		sed \
-			-e 's/^.* -DHAVE_LIBEXIF/#\0/' \
-			-e 's/^.* -lexif/#\0/' \
+			-e 's/^.* -DHAVE_GIFLIB/#\0/' \
+			-e 's/^.* -lgif/#\0/' \
 			-i Makefile || die
 	fi
 
