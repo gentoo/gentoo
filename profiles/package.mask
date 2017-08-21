@@ -46,6 +46,7 @@ app-arch/unrar-gpl
 # Masked until somebody who uses systemd tells me
 # I didn't break the service file or configuration.
 =mail-filter/spamassassin-3.4.1-r14
+=mail-filter/spamassassin-3.4.1-r15
 
 # Andreas Sturmlechner <asturm@gentoo.org> (20 Aug 2017)
 # Masked for removal in 30 days. Use kde-apps/kio-extras[mtp,slp] instead.
