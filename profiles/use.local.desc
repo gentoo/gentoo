@@ -1320,6 +1320,7 @@ dev-db/mariadb:libressl - Enable SSL connections and crypto functions using dev-
 dev-db/mariadb:max-idx-128 - Raise the max index per table limit from 64 to 128
 dev-db/mariadb:minimal - Install client programs only, no server
 dev-db/mariadb:mroonga - Add support for the Mroonga engine for interfacing with the Groonga text search
+dev-db/mariadb:numa - Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)
 dev-db/mariadb:openssl - Enable SSL connections and crypto functions using dev-libs/openssl
 dev-db/mariadb:oqgraph - Add support for the Open Query GRAPH engine
 dev-db/mariadb:pam - Enable the optional PAM authentication plugin for the server
