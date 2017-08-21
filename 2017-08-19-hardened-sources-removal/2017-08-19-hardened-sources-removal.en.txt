@@ -37,8 +37,8 @@ additional hardening features over those on the latest version of the
 Linux tree at [4].
 
 The Gentoo Hardened team can't make any statement regarding the
-security, reliability or update availability of either those patches
-as we aren't providing them and can't therefore make any
+security, reliability or update availability of either of those
+patches as we aren't providing them and can't therefore make any
 recommendation regarding their use.
 
 We'd like to note that all the userspace hardening and MAC support for
