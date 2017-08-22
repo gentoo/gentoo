@@ -18,7 +18,7 @@ SRC_URI="http://releases.wildfiregames.com/${MY_P}-unix-build.tar.xz"
 LICENSE="GPL-2 LGPL-2.1 MIT CC-BY-SA-3.0 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="editor +lobby nvtt pch sound test"
+IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
 RDEPEND="
@@ -29,6 +29,8 @@ RDEPEND="
 	~games-strategy/0ad-data-${PV}
 	media-libs/libpng:0
 	media-libs/libsdl2[X,opengl,video]
+	media-libs/libvorbis
+	media-libs/openal
 	net-libs/enet:1.3
 	net-libs/miniupnpc:=
 	net-misc/curl
@@ -39,9 +41,7 @@ RDEPEND="
 	x11-libs/libXcursor
 	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 	lobby? ( >=net-libs/gloox-1.0.20 )
-	nvtt? ( media-gfx/nvidia-texture-tools )
-	sound? ( media-libs/libvorbis
-		media-libs/openal )"
+	nvtt? ( media-gfx/nvidia-texture-tools )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
@@ -65,7 +65,6 @@ src_configure() {
 		$(usex nvtt "" "--without-nvtt")
 		$(usex pch "" "--without-pch")
 		$(usex test "" "--without-tests")
-		$(usex sound "" "--without-audio")
 		$(usex editor "--atlas" "")
 		$(usex lobby "" "--without-lobby")
 		--collada
