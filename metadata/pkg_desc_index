@@ -14815,7 +14815,7 @@ net-irc/shadowircd 6.3.3 6.3.3-r1: An IRCd based on charybdis that adds several 
 net-irc/sic 1.1 1.2: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
-net-irc/unrealircd 3.2.10.7 4.0.6 4.0.12: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 3.2.10.7 4.0.12: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.4-r1 1.7-r1 1.7.1 1.8 1.9 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
