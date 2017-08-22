@@ -10,4 +10,4 @@ RDEPEND=sys-apps/util-linux selinux? ( sys-libs/libselinux )
 SLOT=0/2
 SRC_URI=https://dev.gentoo.org/~blueness/f2fs-tools/f2fs-tools-1.8.0.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=a2fd72942a4a89c87d60c1a296e6cb76
+_md5_=12b9f32585a0efb4632b15a9311392d5
