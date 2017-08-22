@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A bi-directional ping utility"
-HOMEPAGE="http://www.finnie.org/software/2ping/"
-SRC_URI="http://www.finnie.org/software/2ping/${P}.tar.gz"
+HOMEPAGE="https://www.finnie.org/software/2ping/"
+SRC_URI="https://www.finnie.org/software/2ping/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

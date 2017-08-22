@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -58,5 +58,5 @@ src_install() {
 	done
 
 	einfo "Creating symlink to PHP manual at /usr/share/php-docs"
-	dosym /usr/share/doc/${PF} /usr/share/php-docs
+	dosym doc/${PF} /usr/share/php-docs
 }

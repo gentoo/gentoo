@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils linux-info systemd toolchain-funcs
 
 DESCRIPTION="AICCU Client to configure an IPv6 tunnel to SixXS"
-HOMEPAGE="http://www.sixxs.net/tools/aiccu"
-SRC_URI="http://www.sixxs.net/archive/sixxs/aiccu/unix/${PN}_${PV//\./}.tar.gz"
+HOMEPAGE="https://www.sixxs.net/tools/aiccu"
+SRC_URI="https://www.sixxs.net/archive/sixxs/aiccu/unix/aiccu_${PV//\./}.tar.gz"
 
 LICENSE="SixXS"
 SLOT="0"

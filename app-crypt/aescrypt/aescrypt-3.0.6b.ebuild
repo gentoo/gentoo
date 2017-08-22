@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Advanced file encryption using AES"
-HOMEPAGE="http://www.aescrypt.com/"
+HOMEPAGE="https://www.aescrypt.com/"
 SRC_URI="https://www.aescrypt.com/download/v3/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"

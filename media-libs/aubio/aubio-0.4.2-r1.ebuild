@@ -10,8 +10,8 @@ PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils multilib eutils
 
 DESCRIPTION="Library for audio labelling"
-HOMEPAGE="http://aubio.org/"
-SRC_URI="http://aubio.org//pub/${P}.tar.bz2"
+HOMEPAGE="https://aubio.org/"
+SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
