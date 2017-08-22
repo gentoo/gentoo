@@ -2,33 +2,27 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1
 
-DESCRIPTION="Python bindings for the low-level FUSE API"
-HOMEPAGE="https://python-llfuse.googlecode.com/ https://pypi.python.org/pypi/llfuse"
+DESCRIPTION="Python library for communicating with HTTP 1.1 servers"
+HOMEPAGE="https://bitbucket.org/nikratio/python-dugong/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
-RDEPEND=">=sys-fs/fuse-2.8.0
-	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' python2_7)
-"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	virtual/pkgconfig
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
-	)
-"
+	)"
 
 python_test() {
-	py.test || die "Tests failed under ${EPYTHON}"
+	py.test -v || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
