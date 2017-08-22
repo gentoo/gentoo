@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/muennich/physlock/archive/v11.tar.gz -> physlock-11.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=d59f6b2c60a60c9ee13034880c231f4b
+_md5_=78d8a68367ed86a5f3b845080c6be7f6

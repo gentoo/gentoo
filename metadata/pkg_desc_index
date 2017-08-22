@@ -1019,7 +1019,7 @@ app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.0386 8.0.0386-r1 8.0.0938 9999: GUI version of the Vim text editor
+app-editors/gvim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1065,8 +1065,8 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r 9.8s: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.0386 8.0.0386-r1 8.0.0938 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.0386 8.0.0938 9999: vim and gvim shared files
+app-editors/vim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.0.0386 8.0.0938 8.0.0983 9999: vim and gvim shared files
 app-editors/vis 0.3 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
@@ -1892,7 +1892,7 @@ app-misc/pdfpc 3.1.1 4.0.7: Presenter console with multi-monitor support for PDF
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.2.3: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
-app-misc/physlock 0.5 11: lightweight Linux console locking tool
+app-misc/physlock 0.5 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4: a small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r1 1.9-r2: A tool to help administrators keep track of daily activities
@@ -8433,6 +8433,7 @@ dev-python/pytest-django 2.9.1: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.2.2: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.8.1: py.test plugin for flake8
+dev-python/pytest-forked 0.2: run tests in isolated forked subprocesses
 dev-python/pytest-html 1.10.1 1.14.2: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-isort 0.1.0: py.test plugin for isort
@@ -8451,7 +8452,7 @@ dev-python/pytest-shutil 1.2.4 1.2.8: A goodie-bag of unix shell and environment
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.5 1.2.7: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.14-r1 1.15.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.14-r1 1.15.0 1.20.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1: Manage external processes across test runs
 dev-python/python-afl 0.6.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
 dev-python/python-application 1.5.0: Basic building blocks for python applications
