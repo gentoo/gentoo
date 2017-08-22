@@ -17,6 +17,10 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )"
 DEPEND="$RDEPEND"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-sysmacros.patch #623660
+)
+
 src_configure() {
 	#This is required to install to /sbin, bug #481110
 	econf \
