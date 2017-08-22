@@ -1489,9 +1489,9 @@ app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4: A fcitx module to look up pinyin candidate words on the internet
 app-i18n/fcitx-configtool 0.4.6 0.4.8: A GTK+ GUI configuration tool for fcitx
 app-i18n/fcitx-hangul 0.2.1 0.3.0: Korean Hangul module for Fcitx
-app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3: Libpinyin module for Fcitx
+app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 9999: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.3 9999: m17n-provided input methods for Fcitx
-app-i18n/fcitx-qt5 1.0.5 1.0.6 9999: Fcitx input method module for Qt 5
+app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 9999: Fcitx input method module for Qt 5
 app-i18n/fcitx-rime 0.2.0 0.3.1: Rime support for Fcitx
 app-i18n/fcitx-sayura 0.1.1 9999: Sinhala Sayura input method for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
@@ -1509,7 +1509,7 @@ app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.6.92 1.7.4 1.9.0: Intelligent Pinyin engine based on libpinyin for IBus
 app-i18n/ibus-m17n 1.3.2 1.3.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese PinYin IMEngine for IBus Framework
-app-i18n/ibus-qt 1.3.1 1.3.3: Qt IBus library and Qt input method plugin
+app-i18n/ibus-qt 1.3.3: Qt IBus library and Qt input method plugin
 app-i18n/ibus-rime 0.9.9 1.1 1.2: Rime Input Method Engine for IBus Framework
 app-i18n/ibus-skk 1.4.1-r1 1.4.2: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 2.0.4_pre20130108-r2: The SunPinYin IMEngine for IBus Framework
@@ -1529,7 +1529,7 @@ app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement w
 app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcc 1.0: A Kanji code converter
-app-i18n/kcm-fcitx 0.4.3 0.4.9999 0.5.3 9999: KDE configuration module for Fcitx
+app-i18n/kcm-fcitx 0.4.3 0.4.9999 0.5.3 0.5.4 9999: KDE configuration module for Fcitx
 app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kimera 2.11-r1 2.11-r2: A Japanese input method which supports the XIM protocol
 app-i18n/kinput2 3.1-r1 3.1-r2: A Japanese input server which supports the XIM protocol
@@ -1557,7 +1557,7 @@ app-i18n/mozc 1.10.1390.102-r1 1.13.1651.102 2.16.2037.102: The Mozc engine for 
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nabi 0.99.11 1.0.0: Simple Hanguk X Input Method
 app-i18n/nkf 2.1.3 2.1.3-r1: Network Kanji code conversion Filter with UTF-8/16 support
-app-i18n/opencc 1.0.4 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
+app-i18n/opencc 1.0.4 1.0.5 9999: Project for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 1.5.5 1.8.5 1.8.7: GUI editor for gettext translations files
 app-i18n/pology 0.11-r1 0.12 9999: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
@@ -19390,7 +19390,7 @@ x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+
 x11-themes/gtk-engines-xfce 3.2.0-r200 3.2.0-r300: A port of Xfce engine to GTK+ 3.x
 x11-themes/gtk-theme-switch 2.1.0: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
-x11-themes/hicolor-icon-theme 0.15: Fallback theme for the freedesktop icon theme specification
+x11-themes/hicolor-icon-theme 0.15 0.16: Fallback theme for the freedesktop icon theme specification
 x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-themes 0.0.1-r1 0.0.2: Collection of IceWM themes
