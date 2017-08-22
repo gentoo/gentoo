@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=l10n_en? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_en-20101029.tar.gz ) l10n_de? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_de-20101029.tar.gz ) l10n_es? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_es-20101029.tar.gz ) l10n_fa? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_fa-20101029.tar.gz ) l10n_fr? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_fr-20101029.tar.gz ) l10n_ja? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_ja-20101029.tar.gz ) l10n_pl? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_pl-20101029.tar.gz ) l10n_pt-BR? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_pt_BR-20101029.tar.gz ) l10n_ro? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_ro-20101029.tar.gz ) l10n_tr? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_tr-20101029.tar.gz )
 _eclass_exported_funcs=pkg_preinst:- src_unpack:- src_install:-
-_md5_=6778652283db977f792a19a4adcb1f9e
+_md5_=224d06b85ff7522de1898c138e31057b

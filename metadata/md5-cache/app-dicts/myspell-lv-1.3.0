@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://dict.dv.lv/download/lv_LV-1.3.0.zip -> myspell-lv-1.3.0.zip
 _eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
-_eclasses_=myspell-r2	f771bf8a3f42be87a117b6f96d641724
+_eclasses_=myspell-r2	efe585da0c175bc2ac2dffda176c79dc
 _md5_=508814f77d279aeea9ebb8759113f0ee

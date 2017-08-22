@@ -8,5 +8,5 @@ LICENSE=LGPL-3 MPL-1.1
 SLOT=0
 SRC_URI=http://pt-br.libreoffice.org/assets/VeroptBRV300AOG.oxt http://wiki.documentfoundation.org/images/f/ff/DicSin-BR.oxt -> myspell-pt-br-3.0.0-thes.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
-_eclasses_=myspell-r2	f771bf8a3f42be87a117b6f96d641724
+_eclasses_=myspell-r2	efe585da0c175bc2ac2dffda176c79dc
 _md5_=8f3df159124677f3c77d897f9d54224d
