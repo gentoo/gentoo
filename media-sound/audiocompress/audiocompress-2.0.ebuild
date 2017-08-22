@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit toolchain-funcs
@@ -6,8 +6,8 @@ inherit toolchain-funcs
 MY_P=AudioCompress-${PV}
 
 DESCRIPTION="Very gentle 1-band dynamic range compressor"
-HOMEPAGE="http://beesbuzz.biz/code/"
-SRC_URI="http://beesbuzz.biz/code/audiocompress/${MY_P}.tar.gz"
+HOMEPAGE="https://beesbuzz.biz/code/audiocompress.php"
+SRC_URI="https://beesbuzz.biz/code/audiocompress/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
