@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -67,7 +67,7 @@ pkg_setup() {
 	elog "all cases, at least a small English dictionary will be installed."
 	elog
 	elog "To specify which optional dictionaries are installed, set the"
-	elog "L10N variable in /etc/make.conf. For example, to install full"
+	elog "L10N variable in /etc/portage/make.conf. For example, to install full"
 	elog "English and French dictionaries, use:"
 	elog "    L10N=\"en fr\""
 	elog
