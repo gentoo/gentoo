@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/libpinyin/libpinyin"
 SRC_URI="mirror://github/${PN}/${PN}/${PN}-lite-${PV}.tar.gz -> ${P}.tar
 	mirror://github/${PN}/${PN}/model.text.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0/2"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE=""
