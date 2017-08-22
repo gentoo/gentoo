@@ -3,13 +3,16 @@
 
 EAPI=5
 
+OASIS_BUILD_TESTS=1
+OASIS_BUILD_DOCS=1
+
 inherit oasis
 
 DESCRIPTION="QuickCheck inspired property-based testing for OCaml"
 HOMEPAGE="https://github.com/c-cube/qcheck/"
 SRC_URI="https://github.com/c-cube/qcheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
