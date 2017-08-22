@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/libpinyin/libpinyin"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/${PN}-lite-${PV}.tar.gz -> ${P}.tar
 	mirror://sourceforge/${PN}/models/model${MODELV}.text.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0/4"
 KEYWORDS="amd64 ~arm64 ~ppc ppc64 x86"
 IUSE=""
