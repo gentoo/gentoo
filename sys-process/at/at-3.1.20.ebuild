@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils flag-o-matic pam user systemd
 
 DESCRIPTION="Queues jobs for later execution"
-HOMEPAGE="http://packages.qa.debian.org/a/at.html"
+HOMEPAGE="https://packages.qa.debian.org/a/at.html"
 SRC_URI="mirror://debian/pool/main/a/at/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
