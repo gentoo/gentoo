@@ -78,7 +78,7 @@ src_install () {
 	# Take care of main binary
 	if [[ -f "mbrola" ]]; then
 		dobin mbrola
-	dosym /usr/bin/mbrola "/usr/share/${PN}/mbrola"
+		dosym ../../bin/mbrola "/usr/share/${PN}/mbrola"
 	fi
 
 	dodoc readme.txt
