@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ inherit versionator toolchain-funcs eutils
 MY_PV=$(get_version_component_range 1-3)
 DEB_PV=$(get_version_component_range 4-5)
 DESCRIPTION="create and edit the partition table of a disk partitioned in Atari format"
-HOMEPAGE="http://packages.qa.debian.org/a/atari-fdisk.html"
+HOMEPAGE="https://packages.qa.debian.org/a/atari-fdisk.html"
 SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${MY_PV}-${DEB_PV}.tar.gz"
 
 LICENSE="GPL-2"
