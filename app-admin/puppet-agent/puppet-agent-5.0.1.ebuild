@@ -93,13 +93,13 @@ src_install() {
 	# symlinks
 	chmod 0755 -R "${D}/opt/puppetlabs/puppet/bin/"
 	chmod 0755 "${D}//opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper"
-	dosym /opt/puppetlabs/bin/facter /usr/bin/facter
-	dosym /opt/puppetlabs/bin/hiera /usr/bin/hiera
-	dosym /opt/puppetlabs/bin/mco /usr/bin/mco
-	dosym /opt/puppetlabs/bin/puppet /usr/bin/puppet
-	dosym /opt/puppetlabs/puppet/bin/mcollectived /usr/sbin/mcollectived
-	dosym /opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
-	dosym /opt/puppetlabs/puppet/bin/augparse /usr/bin/augparse
-	dosym /opt/puppetlabs/puppet/bin/augtool /usr/bin/augtool
-	dosym /opt/puppetlabs/puppet/bin/extlookup2hiera /usr/bin/extlookup2hiera
+	dosym ../../opt/puppetlabs/bin/facter /usr/bin/facter
+	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
+	dosym ../../opt/puppetlabs/bin/mco /usr/bin/mco
+	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
+	dosym ../../opt/puppetlabs/puppet/bin/mcollectived /usr/sbin/mcollectived
+	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
+	dosym ../../opt/puppetlabs/puppet/bin/augparse /usr/bin/augparse
+	dosym ../../opt/puppetlabs/puppet/bin/augtool /usr/bin/augtool
+	dosym ../../opt/puppetlabs/puppet/bin/extlookup2hiera /usr/bin/extlookup2hiera
 }
