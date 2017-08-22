@@ -5433,8 +5433,18 @@ net-dns/dnsmasq:tftp - Enables built in TFTP server for netbooting.
 net-dns/hash-slinger:ipsec - Enable support for IPSECKEY records (ipseckey)
 net-dns/hash-slinger:openpgp - Enable support for OPENPGPKEY records (openpgpkey)
 net-dns/hash-slinger:ssh - Enable support for SSHFP records (sshfp)
-net-dns/knot:dnstap - Include support for the dnstap binary log format (http://dnstap.info/).
-net-dns/knot:fastparser - Use a zone file parser that is faster, but requires more memory and CPU time to compile.
+net-dns/knot:dnsproxy - Enable the tiny DNS proxy module
+net-dns/knot:dnstap - Include support for the dnstap binary log format (http://dnstap.info/)
+net-dns/knot:fastparser - Use a zone file parser that is faster, but requires more memory and CPU time to compile
+net-dns/knot:libidn2 - If IDN support is enabled, use net-dns/libidn2 instead of net-dns/libidn
+net-dns/knot:noudp - Enable the module which can send empty truncated responses to UDP queries
+net-dns/knot:onlinesign - Enable the module that sign zones on the fly instead of pre-signing zone
+net-dns/knot:rosedb - Enable the module that staticaly override certain responses
+net-dns/knot:rrl - Enable the response rate limiting module
+net-dns/knot:stats - Enable the server statistics module
+net-dns/knot:synthrecord - Enable the automatic forward/reverse records module
+net-dns/knot:utils - Install Knot utilities, such as kdig, kzonecheck, ...
+net-dns/knot:whoami - Enable the whoami response module
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
 net-dns/ldns-utils:gost - Enable GOST support
@@ -8409,6 +8419,9 @@ www-servers/pshs:magic - Enable automatic detection of Content-Type using libmag
 www-servers/pshs:netlink - Use libnetlink (sys-apps/iproute2) to get network interface addresses
 www-servers/pshs:qrcode - Enable generating QRCodes for server URL
 www-servers/resin:admin - Enable Resin admin webapp
+www-servers/sniproxy:dns - Enable DNS resolver via net-libs/udns
+www-servers/sniproxy:largefile - Enable large file support (so we can log more than 2GB)
+www-servers/sniproxy:rfc3339 - Use RFC3339 timestamp format in log.
 www-servers/tomcat:extra-webapps - Build also the docs and examples webapp
 www-servers/tomcat:websockets - Builds websockets api and implementation (requires java 7)
 www-servers/uwsgi:embedded - Embed plugins instead of building them as real plugins. When disabling this USE flag make sure you specify all used plugins in your uWSGI configuration. Note: Language plugins will always be built as real plugins.
