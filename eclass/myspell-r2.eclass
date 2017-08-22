@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: aspell-dict.eclass
@@ -85,21 +85,21 @@ myspell-r2_src_install() {
 	for x in "${MYSPELL_DICT[@]}"; do
 		target="${x##*/}"
 		newins "${x}" "${target}" || die
-		dosym /usr/share/hunspell/"${target}" /usr/share/myspell/"${target}" || die
+		dosym ../hunspell/"${target}" /usr/share/myspell/"${target}" || die
 	done
 
 	insinto /usr/share/mythes
 	for x in "${MYSPELL_THES[@]}"; do
 		target="${x##*/}"
 		newins "${x}" "${target}" || die
-		dosym /usr/share/mythes/"${target}" /usr/share/myspell/"${target}" || die
+		dosym ../mythes/"${target}" /usr/share/myspell/"${target}" || die
 	done
 
 	insinto /usr/share/hyphen
 	for x in "${MYSPELL_HYPH[@]}"; do
 		target="${x##*/}"
 		newins "${x}" "${target}" || die
-		dosym /usr/share/hyphen/"${target}" /usr/share/myspell/"${target}" || die
+		dosym ../hyphen/"${target}" /usr/share/myspell/"${target}" || die
 	done
 
 	# Remove licenses as they suffix them with .txt too
