@@ -2915,7 +2915,7 @@ dev-db/db-je 3.3.75: A high performance, transactional storage engine written en
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
 dev-db/etcd 2.3.8 3.0.17 3.1.10 3.2.4 3.2.5: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
-dev-db/freetds 0.91 1.00.41 1.00.54-r1: Tabular Datastream Library
+dev-db/freetds 0.91 1.00.41 1.00.54-r1 9999: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
 dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
@@ -14027,7 +14027,7 @@ media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts nec
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r1: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 17.3 17.3-r1 17.3-r2 17.3-r3 17.4_rc1 9999: Kodi is a free and open source media-player and entertainment hub
+media-tv/kodi 17.3 17.3-r1 17.3-r2 17.3-r3 17.4_rc1 17.4 9999: Kodi is a free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, view signal strength, ...
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
 media-tv/mythtv 0.28.1-r1: Homebrew PVR project
@@ -15613,7 +15613,7 @@ net-print/cndrvcups-common-lb 3.10 3.20 3.40: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.3 2.2.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.13.5 1.14.1 1.15.0 1.16.1 1.16.2 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.13.5 1.14.1 1.15.0 1.16.2 1.16.3 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
