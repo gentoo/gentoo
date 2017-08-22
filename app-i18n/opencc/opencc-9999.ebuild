@@ -21,7 +21,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS=""
 IUSE="doc"
 
 DEPEND="doc? ( app-doc/doxygen )"
