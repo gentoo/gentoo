@@ -10,7 +10,7 @@ MY_PN=UrbanTerror
 MY_PV=43_full
 
 DESCRIPTION="Data files for UrbanTerror"
-HOMEPAGE="http://www.urbanterror.info/home/"
+HOMEPAGE="http://www.urbanterror.info"
 SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip -> ${P}.zip
 	https://upload.wikimedia.org/wikipedia/commons/5/56/Urbanterror.svg -> ${PN}.svg"
 
