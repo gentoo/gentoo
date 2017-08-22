@@ -20,7 +20,7 @@ DEPEND="virtual/commonlisp
 		dev-lisp/flexi-streams"
 RDEPEND="dev-lisp/cl-ppcre"
 
-COMMONLISPS="sbcl clisp clozurecl cmucl ecls openmcl"
+COMMONLISPS="sbcl clisp clozurecl cmucl ecls"
 
 find-lisp-impl() {
 	for lisp in ${COMMONLISPS} ; do
@@ -47,5 +47,5 @@ src_install() {
 	common-lisp-install-sources -t all build/
 	common-lisp-install-asdf
 	dodoc CHANGELOG
-	dohtml doc/index.html
+	dodoc doc/index.html
 }
