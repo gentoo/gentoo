@@ -10,7 +10,7 @@ DESCRIPTION="GNOME default icon theme"
 HOMEPAGE="https://www.gnome.org/ https://people.freedesktop.org/~jimmac/icons/#git"
 
 SRC_URI="${SRC_URI}
-	branding? ( http://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )"
+	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )"
 
 LICENSE="|| ( LGPL-3 CC-BY-SA-3.0 )
 	branding? ( CC-BY-SA-4.0 )"
