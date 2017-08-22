@@ -135,7 +135,7 @@ app-admin/logrotate 3.9.1 3.11.0 3.12.2 3.12.3: Rotates, compresses, and mails s
 app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.7: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 5.2.2 5.3.2 5.4.3-r1: Tool for managing events and logs
-app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
+app-admin/logsurfer+ 1.8-r2 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1 0.9.7.1-r2: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2: Live Syncing (Mirror) Daemon
