@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils autotools games
 
 DESCRIPTION="BomberMan clone with network game support"
-HOMEPAGE="http://www.bomberclone.de/"
+HOMEPAGE="https://www.bomberclone.de/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
