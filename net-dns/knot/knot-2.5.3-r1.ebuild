@@ -24,7 +24,7 @@ KNOT_MODULES=(
 	"+synthrecord"
 	"+whoami"
 )
-IUSE="doc caps +fastparser idn systemd +utils ${KNOT_MODULES[@]}"
+IUSE="doc caps +fastparser idn libidn2 systemd +utils ${KNOT_MODULES[@]}"
 
 RDEPEND="
 	>=net-libs/gnutls-3.3:=
@@ -36,7 +36,10 @@ RDEPEND="
 		dev-libs/fstrm
 		dev-libs/protobuf-c
 	)
-	idn? ( || ( net-dns/libidn >=net-dns/libidn2-2.0.0 ) )
+	idn? (
+		!libidn2? ( net-dns/libidn )
+		libidn2? ( >=net-dns/libidn2-2.0.0 )
+	)
 	dev-libs/libedit
 	systemd? ( >=sys-apps/systemd-229 )
 "
