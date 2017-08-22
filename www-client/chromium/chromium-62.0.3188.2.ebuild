@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.11:= )
 	dev-libs/expat:=
 	dev-libs/glib:2
-	system-icu? ( <dev-libs/icu-59:= )
+	system-icu? ( >=dev-libs/icu-59:= )
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -138,6 +138,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/${PN}-gcc5-r2.patch"
 	"${FILESDIR}/${PN}-gn-bootstrap-r16.patch"
+	"${FILESDIR}/${PN}-system-icu-r2.patch"
 )
 
 pre_build_checks() {
