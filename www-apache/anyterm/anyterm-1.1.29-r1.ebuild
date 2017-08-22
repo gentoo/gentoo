@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A terminal anywhere"
-HOMEPAGE="http://anyterm.org/"
-SRC_URI="http://anyterm.org/download/${P}.tbz2"
+HOMEPAGE="https://anyterm.org/"
+SRC_URI="https://anyterm.org/download/${P}.tbz2"
 
 LICENSE="GPL-2 Boost-1.0"
 SLOT="0"
@@ -51,5 +51,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "To proceed with installation, read the following:"
-	elog "http://anyterm.org/1.1/install.html"
+	elog "https://anyterm.org/install.html"
 }
