@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Universal Command Line Environment for AWS"
-HOMEPAGE="http://pypi.python.org/pypi/awscli"
+HOMEPAGE="https://pypi.python.org/pypi/awscli"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
