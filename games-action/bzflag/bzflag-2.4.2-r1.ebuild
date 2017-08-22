@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils flag-o-matic games
 
 DESCRIPTION="3D tank combat simulator game"
-HOMEPAGE="http://www.bzflag.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.bzflag.org/"
+SRC_URI="mirror://sourceforge/bzflag/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
