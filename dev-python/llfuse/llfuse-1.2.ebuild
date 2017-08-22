@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the low-level FUSE API"
-HOMEPAGE="https://python-llfuse.googlecode.com/ https://pypi.python.org/pypi/llfuse"
+HOMEPAGE="https://bitbucket.org/nikratio/python-llfuse/ https://pypi.python.org/pypi/llfuse"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
