@@ -28,12 +28,12 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	gbm? ( gles )
 	|| ( gles opengl )
-	gles? ( X )
-	opengl? ( X )
+	^^ ( gbm wayland X )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -60,6 +60,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-libs/libcdio
 	dev-libs/libfmt
+	gbm? (	media-libs/mesa[gbm] )
 	gles? ( media-libs/mesa[gles2] )
 	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
@@ -82,18 +83,32 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sftp? ( net-libs/libssh[sftp] )
 	sys-libs/zlib
 	udev? ( virtual/udev )
-	vaapi? ( x11-libs/libva[opengl] )
+	vaapi? (
+		x11-libs/libva[egl]
+		opengl? ( x11-libs/libva[opengl] )
+		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
+		vdpau? ( x11-libs/libva[vdpau] )
+		wayland? ( x11-libs/libva[wayland] )
+		X? ( x11-libs/libva[X] )
+	)
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
 		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
 	)
+	wayland? (
+		dev-cpp/waylandpp
+		media-libs/mesa[wayland]
+		>=dev-libs/wayland-protocols-1.7
+		x11-libs/libxkbcommon
+	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
 	X? (
-		x11-libs/libdrm
 		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
+		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
+	x11-libs/libdrm
 	xslt? ( dev-libs/libxslt )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
@@ -232,7 +247,6 @@ src_configure() {
 		-DENABLE_UPNP=$(usex upnp)
 		-DENABLE_VAAPI=$(usex vaapi)
 		-DENABLE_VDPAU=$(usex vdpau)
-		-DENABLE_X11=$(usex X)
 		-DENABLE_XSLT=$(usex xslt)
 		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz"
 		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
@@ -245,6 +259,23 @@ src_configure() {
 		mycmakeargs+=( -DWITH_FFMPEG="yes" )
 	else
 		mycmakeargs+=( -DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz" )
+	fi
+
+	if use gbm; then
+		mycmakeargs+=( -DCORE_PLATFORM_NAME="gbm" )
+	fi
+
+	if use wayland; then
+		mycmakeargs+=( -DCORE_PLATFORM_NAME="wayland" )
+		if use opengl; then
+			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gl" )
+		else
+			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gles" )
+		fi
+	fi
+
+	if use X; then
+		mycmakeargs+=( -DCORE_PLATFORM_NAME="x11" )
 	fi
 
 	cmake-utils_src_configure
