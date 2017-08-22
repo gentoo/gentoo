@@ -21,11 +21,11 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
-	app-i18n/fcitx-qt5
+	>=app-i18n/fcitx-qt5-1.1
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
