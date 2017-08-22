@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/BYVoid/OpenCC"
 SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/2"
 KEYWORDS="amd64 hppa ppc ppc64 x86"
 IUSE="doc static-libs"
 
