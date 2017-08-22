@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -58,7 +58,7 @@ RDEPEND="virtual/libiconv
 	)
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
-	opencc? ( app-i18n/opencc )
+	opencc? ( app-i18n/opencc:= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
