@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils games
 
 DESCRIPTION="Arx Fatalis demo"
-HOMEPAGE="http://www.arkane-studios.com/uk/arx.php"
+HOMEPAGE="https://www.arkane-studios.com/uk/arx.php"
 SRC_URI="arx_demo_english.zip"
 
 LICENSE="ArxFatalisDemo"
