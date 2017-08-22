@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -32,7 +32,7 @@ pkg_setup() {
 
 	elog "Building ${PF} with the following modules:"
 	elog "  ${PDSH_MODULE_LIST}"
-	elog "This list can be changed in /etc/make.conf by setting"
+	elog "This list can be changed in /etc/portage/make.conf by setting"
 	elog "PDSH_MODULE_LIST=\"module1 module2...\""
 }
 
