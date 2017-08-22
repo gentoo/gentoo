@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
-	sys-libs/db:*"
+	sys-libs/db:="
 
 DEPEND="${RDEPEND}
 	virtual/libintl

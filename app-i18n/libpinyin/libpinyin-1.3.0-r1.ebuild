@@ -16,7 +16,7 @@ SLOT="0/7"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/db:*
+RDEPEND="sys-libs/db:=
 	dev-libs/glib:2"
 DEPEND="${RDEPEND}
 	virtual/libintl
