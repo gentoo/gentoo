@@ -9742,7 +9742,7 @@ dev-ruby/pdf-reader 1.4.1 1.4.1-r1 2.0.0: PDF parser conforming as much as possi
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.17.1-r1 0.18.4 0.18.4-r1 0.21.0: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r1 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
-dev-ruby/pkg-config 1.1.7 1.2.3 1.2.4: A pkg-config implementation by Ruby
+dev-ruby/pkg-config 1.1.7 1.2.3 1.2.4 1.2.7: A pkg-config implementation by Ruby
 dev-ruby/plist 3.2.0 3.3.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.0.2 1.1.1: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -9995,7 +9995,7 @@ dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.17.0-r1 6.1.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.2 1.14.5 1.14.6 1.14.7: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
-dev-ruby/typhoeus 0.6.9 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
+dev-ruby/typhoeus 0.6.9 1.1.2 1.3.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.52 1.2.2 1.2.3: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.2 3.0.4 3.2.0: Ruby wrapper for UglifyJS JavaScript compressor
