@@ -4759,7 +4759,7 @@ dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for Te
 dev-libs/kproperty 3.0.1 3.0.2: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.1 3.0.2: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 0.10.1 0.12.1 1.0.0: A C++ toolkit
+dev-libs/leatherman 0.10.1 0.12.1 1.0.0 1.1.0: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r2: a fast key-value storage library written at Google
 dev-libs/libFuzzer 3.9.1: A fuzzing library distributed as part of LLVM
@@ -8522,7 +8522,7 @@ dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3 0.5.6: Python library to use Jabber/XMPP networks in a non-blocking way
-dev-python/python-neutronclient 4.1.1 6.0.0 6.1.0: A client for the OpenStack Quantum API
+dev-python/python-neutronclient 6.1.0 6.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 6.0.1 7.1.2: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.4: A Python library that implements an OEmbed consumer
@@ -17527,7 +17527,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 9.4.0 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
-sys-cluster/nova 14.0.7 15.0.6 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 14.0.7 15.0.6 15.0.7 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
