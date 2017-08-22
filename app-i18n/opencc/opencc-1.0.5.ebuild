@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-inherit cmake-utils multilib eutils vcs-snapshot
+inherit cmake-utils
 
-DESCRIPTION="Libraries for conversion between Traditional and Simplified Chinese"
+DESCRIPTION="Project for conversion between Traditional and Simplified Chinese"
 HOMEPAGE="https://github.com/BYVoid/OpenCC"
 SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -17,18 +17,13 @@ IUSE="doc"
 DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND=""
 
-DOCS="AUTHORS NEWS.md README.md"
-
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-1.0.4-cmake-libdir.patch
-#)
+DOCS=(AUTHORS NEWS.md README.md)
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_SHARED_LIBS=ON
 		-DENABLE_GTEST=OFF
-		-DCMAKE_INSTALL_LIBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 
 	cmake-utils_src_configure
