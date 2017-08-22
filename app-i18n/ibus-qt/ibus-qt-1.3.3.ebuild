@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ibus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="app-i18n/ibus
