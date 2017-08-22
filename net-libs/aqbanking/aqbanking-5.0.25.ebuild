@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit eutils
 
 DESCRIPTION="Generic Online Banking Interface"
-HOMEPAGE="http://www.aquamaniac.de/aqbanking/"
-SRC_URI="http://www.aquamaniac.de/sites/download/download.php?package=03&release=95&file=01&dummy=${P}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.aquamaniac.de/sites/aqbanking/index.php"
+SRC_URI="https://www.aquamaniac.de/sites/download/download.php?package=03&release=95&file=01&dummy=${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
