@@ -2152,7 +2152,7 @@ app-shells/bashdb 4.3.0.91-r2 4.4.0.92: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.1: Foreign function interface for bash
-app-shells/dash 0.5.8.2 0.5.9 0.5.9.1-r1: Debian Almquist Shell
+app-shells/dash 0.5.8.2 0.5.9.1-r1 0.5.9.1-r2: Debian Almquist Shell
 app-shells/dsh 0.25.10: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.4.0 2.5.0 2.6.0: fish is the Friendly Interactive SHell
@@ -11295,7 +11295,7 @@ games-misc/yadex 1.7.0: A Doom level (wad) editor
 games-mud/circlemud 3.1: a multi-user dungeon game system server
 games-mud/crystal 0.2.4 0.2.4-r1: The crystal MUD client
 games-mud/gmudix 1.0 1.0-r1: GTK+ MUD client with ANSI color, macros, timers, triggers, variables, and an easy scripting language
-games-mud/gnome-mud 0.11.2 0.11.2-r1 0.11.2-r2 9999: GNOME MUD client
+games-mud/gnome-mud 0.11.2-r2 9999: GNOME MUD client
 games-mud/kildclient 3.0.1 3.0.1-r1: Powerful MUD client with a built-in PERL interpreter
 games-mud/kmuddy 1.0.1-r3: MUD client by KDE
 games-mud/lyntin 4.2-r1 4.2-r2: tintin mud client clone implemented in Python
