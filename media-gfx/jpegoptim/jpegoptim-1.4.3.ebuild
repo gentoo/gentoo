@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit toolchain-funcs
 
 DESCRIPTION="Utility to optimize JPEG files"
 HOMEPAGE="http://www.kokkonen.net/tjko/projects.html"
