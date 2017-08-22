@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -25,7 +25,7 @@ SLOT="4"
 KEYWORDS=""
 IUSE="minimal"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8[dbus,qt4]
+RDEPEND=">=app-i18n/fcitx-4.2.8[qt4]
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
