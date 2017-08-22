@@ -37,5 +37,10 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
+	if use doc; then
+		mv "${ED}usr/share/opencc/doc/html" "${ED}usr/share/doc/${P}/html" || die
+		rmdir "${ED}usr/share/opencc/doc" || die
+	fi
+
 	use static-libs || find "${ED}" -name '*.la' -o -name '*.a' -exec rm {} +
 }
