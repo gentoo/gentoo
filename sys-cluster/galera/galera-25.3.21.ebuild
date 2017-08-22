@@ -8,12 +8,12 @@ MY_P="${PN}-3-${PV}"
 inherit scons-utils toolchain-funcs user flag-o-matic
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="http://www.galeracluster.com"
-SRC_URI="http://releases.galeracluster.com/source/galera-3-${PV}.tar.gz"
+SRC_URI="http://releases.galeracluster.com/${PN}-3/source/galera-3-${PV}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
 
 CDEPEND="
@@ -66,6 +66,7 @@ src_configure() {
 		ssl=1
 		tests=$(usex test 1 0)
 		strict_build_flags=0
+		system_asio=1
 	)
 }
 
