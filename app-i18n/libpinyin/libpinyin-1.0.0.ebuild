@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${PN}-lite-${PV}.tar.gz -> ${P}.tar
 	mirror://sourceforge/${PN}/models/model${MODELV}.text.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/4"
 KEYWORDS="amd64 ~arm64 ~ppc ppc64 x86"
 IUSE=""
 
