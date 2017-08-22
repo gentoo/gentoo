@@ -58,7 +58,7 @@ src_install() {
 
 	exeinto /usr/share/drush
 	doexe drush
-	dosym /usr/share/drush/drush /usr/bin/drush
+	dosym ../share/drush/drush /usr/bin/drush
 
 	keepdir /etc/drush
 	newbashcomp drush.complete.sh drush
