@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,8 +33,8 @@ src_compile() {
 
 src_install() {
 	dohtml -r *
-	einfo "Creating symlink from ${P} to ${PN} for preserving bookmarks"
-	dosym /usr/share/doc/${P} /usr/share/doc/${PN}
+	einfo "Creating symlink from ${PF} to ${PN} for preserving bookmarks"
+	dosym ${PF} /usr/share/doc/${PN}
 	readme.gentoo_create_doc
 }
 
