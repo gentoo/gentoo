@@ -25,7 +25,7 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
-	app-i18n/fcitx-qt5
+	>=app-i18n/fcitx-qt5-1.1
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
