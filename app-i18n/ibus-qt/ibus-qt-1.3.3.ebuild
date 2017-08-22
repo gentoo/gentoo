@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Qt IBus library and Qt input method plugin"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-doc.patch )
 
 src_configure() {
+	append-cxxflags -std=c++14
+
 	local mycmakeargs=(
 		-DLIBDIR=$(get_libdir)
 	)
