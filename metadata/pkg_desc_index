@@ -12742,7 +12742,7 @@ media-gfx/jigl 2.0.1: Jason's Image Gallery
 media-gfx/jp2a 1.0.6-r1: JPEG image to ASCII art converter
 media-gfx/jpeg2ps 1.9-r1: Converts JPEG images to Postscript using a wrapper
 media-gfx/jpeginfo 1.6.1: Prints information and tests integrity of JPEG/JFIF files
-media-gfx/jpegoptim 1.3.1 1.4.0 1.4.2 1.4.3: Utility to optimize JPEG files
+media-gfx/jpegoptim 1.4.3 1.4.4: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/k3d 0.8.0.5: A free 3D modeling, animation, and rendering system
@@ -14826,7 +14826,7 @@ net-libs/aqbanking 5.0.25 5.4.3_beta 5.5.1 5.6.10: Generic Online Banking Interf
 net-libs/axtls 1.5.3 2.1.1 2.1.2 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
-net-libs/biblesync 1.1.2 1.1.2-r1: A multicast protocol to support Bible software shared co-navigation
+net-libs/biblesync 1.1.2 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccnet 6.0.7 6.1.0: Ccnet is a framework for writing networked applications in C
