@@ -2464,7 +2464,7 @@ app-text/tree 1.7.0: Lists directories recursively, and produces an indented lis
 app-text/ttf2pk2 1.5_p20120701 2.0_p20140525 2.0_p20150521 2.0_p20160523 2.0_p20170524: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/tuxcards 2.2.1-r1: A hierarchical notebook
-app-text/txt2man 1.5.6: Scripts to convert regular ASCII text to man pages
+app-text/txt2man 1.5.6 1.6.0: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
 app-text/txt2tags 2.6-r1: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 0.8.4: A text to PostScript converter like a2ps, but supports UTF-8
@@ -19015,7 +19015,7 @@ x11-misc/xdg-user-dirs-gtk 0.10 0.10-r1: Integrates xdg-user-dirs into the Gnome
 x11-misc/xdg-utils 1.1.1-r1 1.1.2: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.51: user-friendly program to show you what is using up all your disk space
-x11-misc/xdo 0.5: Small X utility to perform elementary actions on windows
+x11-misc/xdo 0.5 0.5.6: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
