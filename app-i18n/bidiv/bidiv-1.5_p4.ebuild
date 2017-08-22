@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 PATCH_LEVEL=4
 
 DESCRIPTION="A commandline tool displaying logical Hebrew/Arabic"
-HOMEPAGE="http://packages.qa.debian.org/b/bidiv.html"
+HOMEPAGE="https://packages.qa.debian.org/b/bidiv.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PATCH_LEVEL}.debian.tar.gz"
 
