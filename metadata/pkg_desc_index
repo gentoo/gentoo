@@ -2233,7 +2233,7 @@ app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preproces
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
 app-text/crf++ 0.54 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
-app-text/csvfix 1.3 1.6: A stream editor for manipulating CSV files
+app-text/csvfix 1.6: A stream editor for manipulating CSV files
 app-text/cuneiform 1.1.0-r2: An enterprise quality OCR engine by Cognitive Technologies
 app-text/cutemarked 0.11.3: Qt5 markdown editor
 app-text/cwtext 0.96: Text to Morse Code converter
@@ -11463,7 +11463,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
-games-rpg/manaplus 1.7.7.22 1.7.8.5 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.8.5 1.7.8.19 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -12923,7 +12923,7 @@ media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.59 10.60: Read and write meta information in image, audio and video files
-media-libs/faac 1.28-r4 1.29.4 1.29.6: Free MPEG-4 audio codecs by AudioCoding.com
+media-libs/faac 1.28-r4 1.29.4 1.29.6 1.29.6.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3 2.8.1-r1: AAC audio decoding library
 media-libs/fdk-aac 0.1.3 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
@@ -19086,7 +19086,7 @@ x11-plugins/compiz-plugins-main 0.8.8: Compiz Fusion Window Decorator Plugins
 x11-plugins/compiz-plugins-unsupported 0.8.8: Compiz Fusion Window Decorator Unsupported Plugins
 x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 1.9.6.1-r1 1.9.7 1.9.8.1 9999: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 1.9.6.1-r1 1.9.7 1.9.8.1 1.9.8.2 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6 0.2.6-r1 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
