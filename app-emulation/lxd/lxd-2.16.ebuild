@@ -45,12 +45,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# Portage complains about zh_Hans missing, but repoman doesn't like it when it's there.
-PLOCALES="de el fr it ja nl ru sr sv tr zh"
 IUSE="+daemon nls test"
 
-# IUSE and PLOCALES must be defined before l10n inherited
-inherit bash-completion-r1 golang-build l10n linux-info systemd user golang-vcs-snapshot
+inherit bash-completion-r1 golang-build linux-info systemd user golang-vcs-snapshot
 
 SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}"
@@ -117,16 +114,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-dont-go-get.patch"
 )
 
-# KNOWN ISSUES:
-# - Translations may not work.  I've been unsuccessful in forcing
-#   localized output.  Anyway, upstream (Canonical) doesn't install the
-#   message files.
-
 src_prepare() {
 	default_src_prepare
-
-	# Warn on unhandled locale changes
-	l10n_find_plocales_changes "${S}/src/${EGO_PN}/po" "" .po
 
 	# Examples in go-lxc make our build fail.
 	rm -rf "${S}/src/${EGO_PN}/vendor/gopkg.in/lxc/go-lxc.v2/examples" || die
@@ -170,12 +159,7 @@ src_install() {
 	cd "src/${EGO_PN}" || die "can't cd into ${S}/src/${EGO_PN}"
 
 	if use nls; then
-		local lingua
-		for lingua in ${PLOCALES}; do
-			if use linguas_${lingua}; then
-				domo po/${lingua}.mo
-			fi
-		done
+		domo po/*.mo
 	fi
 
 	if use daemon; then
