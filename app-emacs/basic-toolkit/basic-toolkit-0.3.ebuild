@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit elisp
 
 DESCRIPTION="Basic edit toolkit"
-HOMEPAGE="http://www.emacswiki.org/emacs/basic-toolkit.el"
+HOMEPAGE="https://www.emacswiki.org/emacs/basic-toolkit.el"
 # taken from https://www.emacswiki.org/emacs/download/basic-toolkit.el
 SRC_URI="https://enise.org/users/victor/share/distfiles/${P}.el.xz"
 
