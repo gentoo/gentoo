@@ -53,7 +53,7 @@ src_install() {
 		insinto /etc
 		doins monitoring-agent.config
 		rm monitoring-agent.config
-		dosym /etc/monitoring-agent.config ${MY_D}/monitoring-agent.config
+		dosym ../../etc/monitoring-agent.config ${MY_D}/monitoring-agent.config
 
 		fowners -R mongodb:mongodb ${MY_D}
 		newinitd "${FILESDIR}/${MY_PN}.initd" ${MY_PN}
