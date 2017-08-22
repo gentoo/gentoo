@@ -21,6 +21,8 @@ DOCS=( README.md )
 src_prepare() {
 	eapply_user
 
+	# fix interpreter to be a recent/good shell
+	sed -i -e "1s:/bin/sh:${CONFIG_SHELL}:" conftools/get-version.sh || die
 	if use unicode; then
 		cp -R "${S}" "${S}"w || die
 		pushd "${S}"w >/dev/null
