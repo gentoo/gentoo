@@ -21,6 +21,10 @@
 			Use a zone file parser that is faster, but requires
 			more memory and CPU time to compile
 		</flag>
+		<flag name="libidn2">
+			If IDN support is enabled, use net-dns/libidn2 instead
+			of net-dns/libidn
+		</flag>
 		<flag name="noudp">
 			Enable the module which can send empty truncated
 			responses to UDP queries
