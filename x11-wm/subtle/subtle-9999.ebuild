@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 ruby_add_rdepend "dev-ruby/archive-tar-minitar"
-ruby_add_bdepend "dev-ruby/rake"
+ruby_add_bdepend "dev-ruby/rake doc? ( dev-ruby/rdoc )"
 
 all_ruby_unpack() {
 	if [[ ${PV} == "9999" ]]; then
