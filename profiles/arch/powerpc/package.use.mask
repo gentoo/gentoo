@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (22 Aug 2017)
+# Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
+app-i18n/fcitx-libpinyin dictmanager
+
 # Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
 # Requires java
 app-forensics/sleuthkit java
