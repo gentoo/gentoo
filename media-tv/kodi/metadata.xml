@@ -9,6 +9,7 @@
 		<flag name="airplay">enable AirPlay support</flag>
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="cec">Enable support for HDMI-CEC devices via libcec</flag>
+		<flag name="gbm">Use the Graphics Buffer Manager for EGL on KMS.</flag>
 		<flag name="gles">Enable support for GLES</flag>
 		<flag name="lirc">Enable support for controlling Totem with a remote control using <pkg>app-misc/lirc</pkg></flag>
 		<flag name="nfs">Enable NFS client support</flag>
