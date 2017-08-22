@@ -10,8 +10,9 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="dictmanager">
-			Enable dictionary manager. Requires <pkg>dev-qt/qtwebkit</pkg>.
-		</flag>
+		<flag name="dictmanager">Enable dictionary manager</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">fcitx/fcitx-libpinyin</remote-id>
+	</upstream>
 </pkgmetadata>
