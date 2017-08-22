@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="lib for D-Bus daemon messages, querying HAL or PolicyKit privileges"
 HOMEPAGE="https://freedesktop.org/wiki/Software/liblazy"
@@ -14,12 +16,11 @@ RDEPEND="sys-apps/dbus"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_compile() {
+src_configure() {
 	econf --disable-dependency-tracking
-	emake || die "emake failed."
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS NEWS README
 }
