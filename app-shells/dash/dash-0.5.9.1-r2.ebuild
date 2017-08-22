@@ -19,7 +19,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="libedit static vanilla"
 
 RDEPEND="!static? ( libedit? ( dev-libs/libedit ) )"
@@ -47,6 +47,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# don't redefine stat on Solaris
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		export ac_cv_func_stat64=yes
+	fi
 	append-cppflags -DJOBS=$(usex libedit 1 0)
 	use static && append-ldflags -static
 	# Do not pass --enable-glob due to #443552.
