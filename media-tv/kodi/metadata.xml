@@ -22,7 +22,7 @@
 		<flag name="xslt">Enable XSLT support using <pkg>dev-libs/libxslt</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>http://trac.kodi.tv/</bugs-to>
+		<bugs-to>https://trac.kodi.tv/</bugs-to>
 		<remote-id type="github">xbmc/xbmc</remote-id>
 	</upstream>
 </pkgmetadata>
