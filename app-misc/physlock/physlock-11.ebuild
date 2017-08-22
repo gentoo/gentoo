@@ -23,4 +23,5 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr install
+	insinto etc/pam.d; dosym login physlock
 }
