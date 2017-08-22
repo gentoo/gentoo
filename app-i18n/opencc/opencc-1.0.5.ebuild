@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0/2"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="doc static-libs"
+IUSE="doc"
 
 DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND=""
@@ -41,6 +41,4 @@ src_install() {
 		mv "${ED}usr/share/opencc/doc/html" "${ED}usr/share/doc/${P}/html" || die
 		rmdir "${ED}usr/share/opencc/doc" || die
 	fi
-
-	use static-libs || find "${ED}" -name '*.la' -o -name '*.a' -exec rm {} +
 }
