@@ -81,6 +81,7 @@ src_configure() {
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		# built-ins installed by sys-libs/compiler-rt
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
+		-DCOMPILER_RT_BUILD_LIBFUZZER=ON
 		-DCOMPILER_RT_BUILD_SANITIZERS=ON
 		-DCOMPILER_RT_BUILD_XRAY=ON
 	)
