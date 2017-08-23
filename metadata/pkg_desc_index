@@ -12674,7 +12674,7 @@ media-gfx/farbfeld 2 3 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
-media-gfx/feh 2.18.3 2.19 2.19.1 2.19.2: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 2.18.3 2.19 2.19.1 2.19.2 2.19.3: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.4_rc3-r2: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.0.1 9999: Tools and a library for creating fractal flames
@@ -12691,7 +12691,7 @@ media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to
 media-gfx/geeqie 1.2.2-r2 1.2.3-r1 1.3 1.3-r1: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to png format
-media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
+media-gfx/gifsicle 1.86 1.90: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r3 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.14-r2 2.8.14-r4 2.8.20-r1 2.8.22 2.9.4-r3 9999: GNU Image Manipulation Program
