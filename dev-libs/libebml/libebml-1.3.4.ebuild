@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Extensible binary format library (kinda like XML)"
-HOMEPAGE="http://www.matroska.org/ https://github.com/Matroska-Org/libebml/"
-SRC_URI="http://dl.matroska.org/downloads/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.matroska.org/ https://github.com/Matroska-Org/libebml/"
+SRC_URI="https://dl.matroska.org/downloads/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname major version
