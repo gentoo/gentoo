@@ -786,8 +786,8 @@ app-i18n/mozc:fcitx - Enable support for app-i18n/fcitx
 app-i18n/mozc:ibus - Enable support for app-i18n/ibus
 app-i18n/mozc:renderer - Enable native candidate window.
 app-i18n/pyzy:boost - Enable support for dev-libs/boost
-app-i18n/pyzy:doc - Enable support for documents
-app-i18n/pyzy:opencc - Use app-i18n/opencc for input
+app-i18n/pyzy:doc - Generate API documentation
+app-i18n/pyzy:opencc - Enable support for app-i18n/opencc
 app-i18n/scim:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/scim-anthy:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/scim-anthy:kasumi - Use Anthy dictionary maintenance tool (app-dicts/kasumi)
