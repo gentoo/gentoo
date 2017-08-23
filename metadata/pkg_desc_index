@@ -4951,7 +4951,7 @@ dev-libs/libucl 0.7.3: Universal configuration library parser
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.6 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
-dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20 1.0.21: Userspace access to USB devices
+dev-libs/libusb 1.0.19-r1 1.0.20 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 1.3.1_p2-r1: mapping tool for UTF-8 strings
@@ -17281,7 +17281,7 @@ sys-apps/unscd 0.52-r2: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbmon 6-r1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7 0.7.1_p20170503 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
-sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
+sys-apps/usbutils 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.28.2 2.29.2-r1 2.30 2.30.1 9999: Various useful Linux utilities
