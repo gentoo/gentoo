@@ -1,14 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 eutils
+inherit python-single-r1
 
-DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
+DESCRIPTION="Chinese Pinyin and Bopomofo engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
@@ -16,35 +14,32 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="boost lua nls"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=app-i18n/ibus-1.4[python,${PYTHON_USEDEP}]
-	dev-python/pygtk[${PYTHON_USEDEP}]
+	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	app-i18n/pyzy
-	boost? ( >=dev-libs/boost-1.39 )
-	lua? (
-		>=dev-lang/lua-5.1
-		<dev-lang/lua-5.2 )
+	dev-db/sqlite:3
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	boost? ( dev-libs/boost )
+	lua? ( =dev-lang/lua-5.1*:= )
 	nls? ( virtual/libintl )"
-
 DEPEND="${RDEPEND}
-	sys-apps/sed
+	dev-util/intltool
 	virtual/pkgconfig
-	nls? ( >=sys-devel/gettext-0.16.1 )"
+	nls? ( sys-devel/gettext )"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
-DOCS="AUTHORS ChangeLog NEWS README"
+PATCHES=( "${FILESDIR}"/${P}-content-type-method.patch )
 
 src_prepare() {
-	sed -i -e "s/python/${EPYTHON}/" setup/ibus-setup-pinyin.in || die
-	epatch "${FILESDIR}"/${P}-content-type-method.patch
+	sed -i "s/python/${EPYTHON}/" setup/${PN/-/-setup-}.in
+
+	default
 }
 
 src_configure() {
 	econf \
 		$(use_enable boost) \
 		$(use_enable lua lua-extension) \
-		$(use_enable nls) \
-		--enable-english-input-mode
+		$(use_enable nls)
 }
