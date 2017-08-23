@@ -16,9 +16,7 @@ SRC_URI="https://pyzy.googlecode.com/files/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="boost doc opencc test"
-# Currently it fails to build test code
-RESTRICT="test"
+IUSE="boost doc opencc"
 
 RDEPEND="dev-db/sqlite:3
 	dev-libs/glib:2
@@ -45,7 +43,6 @@ src_configure() {
 	econf \
 		$(use_enable boost) \
 		$(use_enable opencc) \
-		$(use_enable test tests) \
 		--enable-db-open-phrase
 }
 
