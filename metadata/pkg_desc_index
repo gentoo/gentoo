@@ -1520,6 +1520,7 @@ app-i18n/ibus-table-extraphrase 1.3.9.20110826: Chinese extra phrases for IBus-T
 app-i18n/ibus-table-latin 1.2.0.20100305: Latin tables for IBus-Table
 app-i18n/ibus-table-others 1.3.9: Various tables for IBus-Table
 app-i18n/ibus-tutcode 1.0.0 1.0.1 1.0.2 1.0.2-r1: a Japanese TUT-Code input engine for IBus
+app-i18n/ibus-typing-booster 1.5.32: Completion input method for IBus
 app-i18n/ibus-unikey 0.6.1-r2: Vietnamese UniKey engine for IBus
 app-i18n/im-canna 0.3.2.2 0.3.2.2-r1: Japanese Canna input method module for GTK+2
 app-i18n/im-chooser 1.7.0: Desktop Input Method configuration tool
@@ -17998,7 +17999,7 @@ sys-process/minit 0.9.1 0.10 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16f 16g: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.9 2.0.10-r2 2.0.11 2.0.11-r1: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20150522 20160622 20160722 20160822 20170322 20170422: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20170422 20170822: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
