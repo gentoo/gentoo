@@ -5,7 +5,4 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
-<upstream>
-	<remote-id type="sourceforge">linux-usb</remote-id>
-</upstream>
 </pkgmetadata>
