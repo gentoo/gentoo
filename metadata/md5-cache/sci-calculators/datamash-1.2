@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure prepare
-DEPEND=nls? ( sys-devel/gettext ) openssl? ( dev-libs/openssl ) nls? ( virtual/libintl ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure
+DEPEND=nls? ( sys-devel/gettext ) openssl? ( dev-libs/openssl ) nls? ( virtual/libintl )
 DESCRIPTION=command-line program for basic numeric, textual and statistical operations
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/datamash/
@@ -9,6 +9,5 @@ LICENSE=GPL-3
 RDEPEND=nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://gnu/datamash/datamash-1.2.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=0b17bbb421811f51fd0a1325e4a1c561
+_eclass_exported_funcs=src_configure:-
+_md5_=3a7684a7d0a2ee9a7b86a3318d6bae90
