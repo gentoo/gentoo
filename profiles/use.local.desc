@@ -2010,6 +2010,8 @@ dev-libs/cyrus-sasl:srp - Enable SRP authentication
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/dbus-c++:ecore - Use Ecore integration
 dev-libs/dbus-c++:glib - Use glib integration
+dev-libs/eekboard:libcanberra - Enable support for media-libs/libcanberra
+dev-libs/eekboard:xtest - Enable support for x11-libs/libXtst
 dev-libs/efl:bmp - Enable WBMP image loader
 dev-libs/efl:drm - Enable DRM engine
 dev-libs/efl:eet - Enable Eet image loader
@@ -2055,6 +2057,8 @@ dev-libs/gmp:asm - Enable use of hand optimized assembly routines (faster execut
 dev-libs/gmp:pgo - After building gmp, run some tests against to produce faster libraries -- this option will double the compile time
 dev-libs/gobject-introspection:doctool - Install g-ir-doc-tool for generating documentation from introspected data
 dev-libs/hidapi:fox - Build a x11-libs/fox GUI
+dev-libs/input-pad:eekboard - Enable support for dev-libs/eekboard
+dev-libs/input-pad:xtest - Enable support for x11-libs/libXtst
 dev-libs/intel-common:compiler - Install the libraries needed for the icc and ifort compilers
 dev-libs/jemalloc:hugepages - Enable transparent huge page support
 dev-libs/jemalloc:lazy-lock - Enable lazy locking (only lock when multi-threaded)
