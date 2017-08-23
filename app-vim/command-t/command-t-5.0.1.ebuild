@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 USE_RUBY="ruby22 ruby23 ruby24"
 
 inherit vim-plugin ruby-ng
@@ -16,13 +16,17 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 RDEPEND="|| ( app-editors/vim[ruby] app-editors/gvim[ruby] )"
 
+all_ruby_prepare() {
+	find "${S}" -name .gitignore -delete || die
+}
+
 each_ruby_configure() {
-	cd ruby/${PN} || die
+	cd ruby/${PN}/ext/${PN} || die
 	${RUBY} extconf.rb || die "extconf.rb failed"
 }
 
 each_ruby_compile() {
-	cd ruby/${PN} || die
+	cd ruby/${PN}/ext/${PN} || die
 	emake V=1
 	rm *.o *.c *.h *.log extconf.rb depend Makefile || die
 }
@@ -30,13 +34,15 @@ each_ruby_compile() {
 each_ruby_install() {
 	local sitelibdir=$(ruby_rbconfig_value "sitelibdir")
 	insinto "${sitelibdir}"
-	doins -r ruby/*
+	doins -r ruby/${PN}/{ext,lib}/*
 }
 
 all_ruby_install() {
-	rm Gemfile* *.gemspec Rakefile LICENSE README.md || die
-	rm -r appstream bin fixtures data ruby spec vendor || die
-	find "${S}" -name .gitignore -delete || die
+	rm Gemfile* Rakefile LICENSE README.md || die
+	rm -r appstream bin fixtures data ruby/${PN}/{ext,lib,*.gemspec} spec vendor || die
 
 	vim-plugin_src_install
+
+	# make sure scripts are executable
+	chmod +x "${ED}"/usr/share/vim/vimfiles/ruby/${PN}/bin/* || die
 }
