@@ -1,0 +1,17 @@
+--- a/data/db/open-phrase/Makefile.am
++++ b/data/db/open-phrase/Makefile.am
+@@ -30,13 +30,10 @@
+ DBTAR = pyzy-database-$(DBVER).tar.bz2
+ 
+ $(DBTAR):
+-	$(AM_V_GEN) \
+-	wget http://pyzy.googlecode.com/files/$(DBTAR) || \
+-	( $(RM) $@; exit 1)
++	touch $@
+ 
+ stamp-db: $(DBTAR)
+ 	$(AM_V_GEN) \
+-	tar jxfm $(DBTAR); \
+ 	mv db/main.db db/$(db_file); \
+ 	touch $@
+ 
