@@ -5,7 +5,7 @@ EAPI=6
 inherit toolchain-funcs versionator multiprocessing autotools
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
-HOMEPAGE="https://mkvtoolnix.download/"
+HOMEPAGE="https://mkvtoolnix.download/ https://github.com/mbunkus/mkvtoolnix"
 SRC_URI="https://mkvtoolnix.download/sources/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -13,13 +13,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug pch test qt5"
 
+# check NEWS.md for build system changes entries for boost/libebml/libmatroska
+# version requirement updates and other packaging info
 RDEPEND="
-	>=dev-libs/boost-1.46.0:=
-	>=dev-libs/libebml-1.3.3:=
+	>=dev-libs/boost-1.49.0:=
+	>=dev-libs/libebml-1.3.5:=
 	dev-libs/jsoncpp:=
 	dev-libs/pugixml
 	media-libs/flac
-	>=media-libs/libmatroska-1.4.4:=
+	>=media-libs/libmatroska-1.4.5:=
 	media-libs/libogg
 	media-libs/libvorbis
 	sys-apps/file
@@ -78,6 +80,7 @@ src_configure() {
 		$(use_enable qt5 qt) \
 		$(usex pch "" --disable-precompiled-headers) \
 		"${myconf[@]}" \
+		--disable-update-check \
 		--disable-optimization \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--with-boost="${EPREFIX}"/usr \
