@@ -52,21 +52,6 @@ src_install() {
 	dodoc ChangeLog* README TODO
 	echo "LDPATH=${PREFIX}/usr/$(get_libdir)/${PN}" > "${T}/10${PN}" || die
 	doenvd "${T}/10${PN}"
-
-	# filter out event files for alien arches, bug 580016
-	cd "${D}/usr/share/${PN}" || die
-	local arch="${ARCH}" f
-	case "${arch}" in
-		x86)
-			arch=i386
-			;;
-		amd64)
-			arch=x86-64
-			;;
-	esac
-	for f in $(find -O3 -mindepth 1 -maxdepth 1 -type d ! -name "${arch}" ); do
-		rm -r "${f}" || die
-	done
 }
 
 pkg_postinst() {
