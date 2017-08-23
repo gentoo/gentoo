@@ -1,10 +1,17 @@
-commit 344872231b95ce7c2808288101cc563dcd011940
-Author: Hillwood Yang <hillwoodroc@gmail.com>
-Date:   Thu Feb 26 11:04:29 2015 +0800
+https://github.com/pyzy/pyzy/pull/1
 
-diff -urN a/src/SimpTradConverter.cc b/src/SimpTradConverter.cc
+Author: Hillwood Yang <hillwood@opensuse.org>
+
 --- a/src/SimpTradConverter.cc
 +++ b/src/SimpTradConverter.cc
+@@ -4,6 +4,7 @@
+  *
+  * Copyright (c) 2008-2010 Peng Huang <shawn.p.huang@gmail.com>
+  * Copyright (c) 2010 BYVoid <byvoid1@gmail.com>
++ * Copyright (c) 2015 Hillwood Yang <hillwood@opensuse.org>
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
 @@ -40,7 +41,6 @@ namespace PyZy {
  #ifdef HAVE_OPENCC
  

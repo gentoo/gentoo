@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -31,8 +31,8 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-dont-download-dictionary-file.patch
-	epatch "${FILESDIR}"/${PN}-support-opencc-1.0.0.patch
+	epatch "${FILESDIR}"/${PN}-db.patch
+	epatch "${FILESDIR}"/${PN}-opencc-1.0.0.patch
 
 	mv ../db ./data/db/open-phrase/ || die
 	eautoreconf
