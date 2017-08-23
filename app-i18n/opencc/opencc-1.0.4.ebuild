@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BYVoid/${PN^^[oc]}/archive/ver.${PV}.tar.gz -> ${P}.
 LICENSE="Apache-2.0"
 SLOT="0/2"
 KEYWORDS="amd64 hppa ppc ppc64 x86"
-IUSE="doc static-libs"
+IUSE="doc"
 
 DEPEND="doc? ( app-doc/doxygen )"
 
@@ -26,10 +26,4 @@ src_configure() {
 		-DENABLE_GTEST=OFF
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	use static-libs || find "${ED}" -name '*.la' -o -name '*.a' -exec rm {} +
 }
