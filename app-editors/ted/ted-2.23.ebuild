@@ -62,5 +62,5 @@ src_compile() {
 
 src_install() {
 	default
-	dosym /usr/share/Ted/examples/rtf2pdf.sh /usr/bin/rtf2pdf.sh
+	dosym ../share/Ted/examples/rtf2pdf.sh /usr/bin/rtf2pdf.sh
 }
