@@ -92,6 +92,18 @@ python_test() {
 	popd >/dev/null || die
 }
 
+python_install() {
+	distutils-r1_python_install
+
+	# Create ipythonX.Y symlinks.
+	# TODO:
+	# 1. do we want them for pypy? No.  pypy has no numpy
+	# 2. handle it in the eclass instead (use _python_ln_rel).
+	# With pypy not an option the dosym becomes unconditional
+	dosym ../lib/python-exec/${EPYTHON}/ipython \
+		/usr/bin/ipython${EPYTHON#python}
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
