@@ -4,4 +4,7 @@
 <maintainer type="person">
 <email>jer@gentoo.org</email>
 </maintainer>
+<use>
+<flag name='openssl'>Use <pkg>dev-libs/openssl</pkg> for cryptographic features</flag>
+</use>
 </pkgmetadata>
