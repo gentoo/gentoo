@@ -1,8 +1,6 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e3eb3a1..5370866 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -83,6 +83,10 @@ if (DEFINED SYSCONF_INSTALL_DIR)
+@@ -83,6 +83,10 @@
    set (DIR_ETC ${SYSCONF_INSTALL_DIR})
  endif (DEFINED SYSCONF_INSTALL_DIR)
  
