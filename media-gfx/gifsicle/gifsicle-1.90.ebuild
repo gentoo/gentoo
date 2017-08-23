@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="A command-line tool for creating, editing, and getting information about GIF images and animations"
+DESCRIPTION="Create, manipulate, and optimize GIF images and animations"
 HOMEPAGE="https://www.lcdf.org/~eddietwo/gifsicle/ https://github.com/kohler/gifsicle"
 SRC_URI="https://www.lcdf.org/~eddietwo/${PN}/${P}.tar.gz"
 
