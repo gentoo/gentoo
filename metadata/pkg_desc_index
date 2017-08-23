@@ -2445,7 +2445,7 @@ app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellcheckin
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
-app-text/t1utils 1.39 1.40: Type 1 Font utilities
+app-text/t1utils 1.39 1.40 1.41: Type 1 Font utilities
 app-text/tabler 2 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
@@ -2613,7 +2613,7 @@ app-vim/pdv 1.0.1-r1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 5.3.2: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
 app-vim/perlomni 2.5: vim plugin: a vim plugin with Perl omni completion functions
 app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax highlighting
-app-vim/phpdocs 0.26: vim plugin: PHPDoc Support in VIM
+app-vim/phpdocs 0.26 0.26-r1: vim plugin: PHPDoc Support in VIM
 app-vim/project 1.4.1: vim plugin: Managing multiple projects with multiple sources like an IDE
 app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
 app-vim/pushpop 4.0-r1: vim plugin: pushd / popd from the vim commandline
@@ -4969,7 +4969,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.4-r1: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.4-r1 2.9.4-r2: Version 2 of the library to manipulate XML files
 dev-libs/libxslt 1.1.29-r1: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
@@ -5254,7 +5254,7 @@ dev-ml/incremental_kernel 0.9.0: Library for incremental computations depending 
 dev-ml/integers 0.2.2: Various signed and unsigned integer types for OCaml
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
 dev-ml/jane-street-headers 0.9.0: Jane Street header files
-dev-ml/jbuilder 1.0_beta11: A composable build system for OCaml
+dev-ml/jbuilder 1.0_beta11 1.0_beta12: A composable build system for OCaml
 dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
 dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
@@ -5314,7 +5314,7 @@ dev-ml/ocaml-sha 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-snappy 0.1.0: OCaml bindings to snappy fast compression/decompression library
 dev-ml/ocaml-sqlite3 4.1.2 4.1.3 4.2.0: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
-dev-ml/ocaml-stdint 0.3.0 0.4.1: Various signed and unsigned integers for OCaml
+dev-ml/ocaml-stdint 0.3.0 0.4.1 0.4.2: Various signed and unsigned integers for OCaml
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
@@ -9060,15 +9060,15 @@ dev-qt/qtwidgets 5.6.2 5.7.1: Set of components for creating classic desktop-sty
 dev-qt/qtx11extras 5.6.2 5.7.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.6.2 5.7.1: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.6.2 5.7.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
-dev-ros/actionlib 1.11.9 9999: Provides a standardized interface for interfacing with preemptable tasks
+dev-ros/actionlib 1.11.9 1.11.10 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
-dev-ros/amcl 1.14.0 1.14.2 9999: Probabilistic localization system for a robot moving in 2D
+dev-ros/amcl 1.15.1 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/angles 1.9.11 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.1 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.1 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.3.1 9999: Outputs audio to a speaker from a source node
-dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 1.14.2 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
+dev-ros/base_local_planner 1.15.1 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
 dev-ros/bond 1.7.19 1.8.0 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 1.7.17 1.7.18 1.7.19 1.8.0 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/bondpy 1.7.16 1.7.17 1.7.18 1.7.19 1.8.0 9999: Python implementation of bond, a mechanism for checking when another process has terminated
@@ -9079,9 +9079,9 @@ dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibr
 dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 1.12.20 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
 dev-ros/camera_calibration_parsers 1.11.12 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ interface for camera calibration information
-dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 1.14.2 9999: Attempts to find a legal place to put a carrot for the robot to follow
+dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.3.5 0.3.6 0.3.7 9999: ROS-independent package for loading plugins
-dev-ros/clear_costmap_recovery 1.14.0-r1 1.14.2 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
+dev-ros/clear_costmap_recovery 1.14.0-r1 1.14.2 1.15.1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 0.4.1 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.10 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.10 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
@@ -9096,7 +9096,7 @@ dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.
 dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: The controller manager
 dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
-dev-ros/costmap_2d 1.14.0-r1 1.14.2 9999: Creates a 2D costmap from sensor data
+dev-ros/costmap_2d 1.14.0-r1 1.14.2 1.15.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.12.4-r1 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.19 1.12.20 9999: Nodelets for processing depth images such as those produced by OpenNI camera
@@ -9107,11 +9107,11 @@ dev-ros/diagnostic_common_diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 9999: Gener
 dev-ros/diagnostic_msgs 1.12.5 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
 dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
-dev-ros/dwa_local_planner 1.14.0-r1 1.14.2 9999: Dynamic Window Approach to local robot navigation on a plane
+dev-ros/dwa_local_planner 1.14.0-r1 1.14.2 1.15.1 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.5.46 1.5.47 1.5.48 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 1.11.9 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
-dev-ros/fake_localization 1.14.0-r1 1.14.2 9999: A ROS node that simply forwards odometry information
+dev-ros/fake_localization 1.14.0-r1 1.14.2 1.15.1 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.8.1 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.6.2 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.6.2 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
@@ -9127,7 +9127,7 @@ dev-ros/geodesy 0.5.0 0.5.2 9999: Python and C++ interfaces for manipulating geo
 dev-ros/geographic_msgs 0.5.0 0.5.2 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.12.5 9999: Messages for common geometric primitives such as points, vectors, and poses
-dev-ros/global_planner 1.13.0 1.13.1 1.14.0 1.14.2 9999: Path planner library and node
+dev-ros/global_planner 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Path planner library and node
 dev-ros/gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 dev-ros/hardware_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Hardware Interface base class
 dev-ros/hector_compressed_map_transport 0.3.5 9999: Means for transporting compressed map data through the use of image_transport
@@ -9171,7 +9171,7 @@ dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan
 dev-ros/libmavconn 0.18.7 0.19.0 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.9.2 0.10.1 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
-dev-ros/map_server 1.13.0 1.13.1 1.14.0 1.14.2 9999: Offers map data as a ROS service
+dev-ros/map_server 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2017.2.7-r1 2017.5.5: MAVLink message marshaling library
 dev-ros/mavros 0.18.7 0.19.0 9999: MAVLink extendable communication node for ROS
 dev-ros/mavros_extras 0.18.7 0.19.0 9999: Extra nodes and plugins for mavros
@@ -9183,13 +9183,13 @@ dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies 
 dev-ros/message_to_tf 0.2.0 0.2.1 0.3.0 9999: Translates pose information from different kind of common_msgs message types to tf
 dev-ros/mk 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
-dev-ros/move_base 1.14.0 1.14.2 9999: Given a goal in the world, will attempt to reach it with a mobile base
+dev-ros/move_base 1.14.0 1.14.2 1.15.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
-dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 1.14.2 9999: Move slow and clear
+dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Move slow and clear
 dev-ros/moveit_msgs 0.9.1 9999: Messages, services and actions used by MoveIt
-dev-ros/nav_core 1.13.0 1.13.1 1.14.0 1.14.2 9999: Common interfaces for navigation specific robot actions
+dev-ros/nav_core 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.5 9999: Common messages used to interact with the navigation stack
-dev-ros/navfn 1.14.0-r1 1.14.2 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
+dev-ros/navfn 1.14.0-r1 1.14.2 1.15.1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
 dev-ros/nodelet 1.9.10 1.9.11 1.9.12 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.9.10 1.9.11 1.9.12 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.8 0.1.10 9999: Nodelet tutorial
@@ -9198,7 +9198,7 @@ dev-ros/octomap_msgs 0.3.3 9999: Messages and serializations / conversion for th
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
 dev-ros/opencv_apps 1.11.14 1.11.15 1.12.0 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 9999: Tests for ROS OpenCV integration
-dev-ros/openni2_camera 0.2.7-r1 9999: ROS drivers for the Asus Xtion and Primesense Devices
+dev-ros/openni2_camera 0.2.7-r1 0.2.8 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
 dev-ros/pcl_conversions 0.2.1-r1 9999: Provides conversions from PCL data types and ROS message types
@@ -9222,7 +9222,7 @@ dev-ros/random_numbers 0.3.0 0.3.1 9999: Wrappers for generating floating point 
 dev-ros/realtime_tools 1.9.1 1.9.2 1.10.0 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 dev-ros/resource_retriever 1.12.3 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
-dev-ros/robot_pose_ekf 1.14.0 1.14.2 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
+dev-ros/robot_pose_ekf 1.14.0 1.14.2 1.15.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.13.5 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
@@ -9275,7 +9275,7 @@ dev-ros/rostime 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 9999: Time and D
 dev-ros/rostopic 1.13.0 1.13.1 1.13.2 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.14.0 1.14.1 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.13.0 1.13.1 1.13.2 9999: Tool for diagnosing issues with a running ROS system
-dev-ros/rotate_recovery 1.13.0 1.13.1 1.14.0 1.14.2 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
+dev-ros/rotate_recovery 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
 dev-ros/rqt_action 0.4.9 9999: Introspect all available ROS action (from actionlib) types
 dev-ros/rqt_bag 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_bag_plugins 0.4.7 0.4.8 9999: GUI plugin for displaying and replaying ROS bag files
@@ -9378,7 +9378,7 @@ dev-ros/visp_hand2eye_calibration 0.10.0 9999: Estimates the camera position wit
 dev-ros/visp_tracker 0.10.0 9999: Wraps the ViSP moving edge tracker provided by the ViSP visual servoing library into a ROS package
 dev-ros/visualization_marker_tutorials 0.9.2 0.10.1 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.5 9999: Messages used by higher level packages that deal in visualization-specific data.
-dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 1.14.2 9999: Implementation of an efficient 3D voxel grid
+dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Implementation of an efficient 3D voxel grid
 dev-ros/xacro 1.11.1 1.11.2 1.12.0 9999: XML macro language
 dev-ros/xmlrpcpp 1.13.0 1.13.1 1.13.2 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
@@ -14020,7 +14020,7 @@ media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5 1.6: Digital vinyl emulation software
 media-sound/yoshimi 1.4.1 1.5.1.1: A software synthesizer based on ZynAddSubFX
-media-sound/zynaddsubfx 3.0.1-r1: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 3.0.1-r1 3.0.2: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
@@ -14136,7 +14136,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7 0.8.9: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0 0.5.1: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 9.6.0 12.0.0 13.0.0-r1 14.0.0: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 9.6.0 12.0.0 13.0.0-r1 14.0.0 15.0.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.0.1-r1 4.0.1-r2: A software motion detector
 media-video/motiontrack 0.1.3-r1: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2 1.4.0 1.5.0 1.5.1 1.5.2: Modern Video Toolkit
@@ -15868,7 +15868,7 @@ ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 9999: Plugins for publishing 
 ros-meta/imu_pipeline 0.2.1 0.2.2 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
-ros-meta/navigation 1.13.0 1.13.1 1.14.0 1.14.2 9999: 2D navigation stack
+ros-meta/navigation 1.15.1 9999: 2D navigation stack
 ros-meta/nodelet_core 1.9.9 1.9.10 1.9.11 1.9.12 9999: Nodelet Core Metapackage
 ros-meta/perception 1.2.0 1.3.0 1.3.1 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 1.5.1 1.5.2 1.5.3 9999: PCL (Point Cloud Library) ROS interface stack
@@ -17572,7 +17572,7 @@ sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7
 sys-devel/binutils-config 5-r3: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27 2.28 2.28.1 2.29: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20170421 20170510: NetBSD's portable make
+sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.1-r100 4.0.1 5.0.9999 9999: C language family frontend for LLVM
