@@ -240,11 +240,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Astronomy</url>
     <description>The Astronomy Project handles astronomy, astrophysics, cosmology related activities in Gentoo.</description>
     <member>
-      <email>bicatali@gentoo.org</email>
-      <name>Sebastien Fabbro</name>
-      <role>Astronomy Data Processing, Cosmology</role>
-    </member>
-    <member>
       <email>bircoph@gentoo.org</email>
       <name>Andrew Savchenko</name>
       <role>General maintenance</role>
@@ -560,11 +555,6 @@
     <member>
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
-      <role>developer</role>
-    </member>
-    <member>
-      <email>bicatali@gentoo.org</email>
-      <name>Sebastien Fabbro</name>
       <role>developer</role>
     </member>
     <member>
@@ -2126,11 +2116,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Mathematics</url>
     <description>The Mathematics Project handles all math related activities in Gentoo.</description>
     <member>
-      <email>bicatali@gentoo.org</email>
-      <name>Sebastien Fabbro</name>
-      <role>Numerics, Statistics</role>
-    </member>
-    <member>
       <email>bircoph@gentoo.org</email>
       <name>Andrew Savchenko</name>
       <role>Numerics, Statistics</role>
@@ -2575,11 +2560,6 @@ developers and volunteer mentors.</description>
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
       <role>High Energy Physics</role>
-    </member>
-    <member>
-      <email>bicatali@gentoo.org</email>
-      <name>Sebastien Fabbro</name>
-      <role>High Energy Physics, Cosmology</role>
     </member>
     <member>
       <email>bircoph@gentoo.org</email>
@@ -3620,11 +3600,6 @@ developers and volunteer mentors.</description>
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
       <role>Physics, *</role>
-    </member>
-    <member>
-      <email>bicatali@gentoo.org</email>
-      <name>Sebastien Fabbro</name>
-      <role>General science packages, numerical libraries</role>
     </member>
     <member>
       <email>bircoph@gentoo.org</email>
