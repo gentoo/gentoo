@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.1-bug_7265.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231-extra.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7404.patch"
+	"${FILESDIR}/spamassassin-3.4.1-bug_7462.patch"
 	"${FILESDIR}/spamassassin-3.4.1-perl526.patch"
 )
 
