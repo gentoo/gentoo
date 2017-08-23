@@ -10,8 +10,8 @@ PYZY_DB="${PN}-database-1.0.0"
 
 DESCRIPTION="The Chinese PinYin and Bopomofo conversion library"
 HOMEPAGE="https://github.com/pyzy/pyzy"
-SRC_URI="https://pyzy.googlecode.com/files/${P}.tar.gz
-	https://pyzy.googlecode.com/files/${PYZY_DB}.tar.bz2"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz
+	https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${PYZY_DB}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
