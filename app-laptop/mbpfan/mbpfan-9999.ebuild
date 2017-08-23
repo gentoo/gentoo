@@ -27,8 +27,7 @@ src_compile() {
 }
 
 src_install() {
-	# There's a double linking problem in install
-	emake DESTDIR="${ED}" CC="$(tc-getCC)" install
+	emake DESTDIR="${ED}" install
 
 	# Remove the empty systemd unit directory
 	# It doesn't actually install the unit file
