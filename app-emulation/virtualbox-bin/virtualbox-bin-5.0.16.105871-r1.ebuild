@@ -229,7 +229,7 @@ src_install() {
 		doins vboxwebsrv
 		fowners root:vboxusers /opt/VirtualBox/vboxwebsrv
 		fperms 0750 /opt/VirtualBox/vboxwebsrv
-		dosym /opt/VirtualBox/VBox.sh /opt/bin/vboxwebsrv
+		dosym ../../opt/VirtualBox/VBox.sh /opt/bin/vboxwebsrv
 		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
@@ -238,7 +238,7 @@ src_install() {
 		doins rdesktop-vrdp
 		doins -r rdesktop-vrdp-keymaps
 		fperms 0750 /opt/VirtualBox/rdesktop-vrdp
-		dosym /opt/VirtualBox/rdesktop-vrdp /opt/bin/rdesktop-vrdp
+		dosym ../../opt/VirtualBox/rdesktop-vrdp /opt/bin/rdesktop-vrdp
 	fi
 
 	if ! use headless && use chm; then
@@ -266,11 +266,11 @@ src_install() {
 	doins -r * || die
 
 	# create symlinks for working around unsupported $ORIGIN/.. in VBoxC.so (setuid)
-	dosym /opt/VirtualBox/VBoxVMM.so /opt/VirtualBox/components/VBoxVMM.so
-	dosym /opt/VirtualBox/VBoxREM.so /opt/VirtualBox/components/VBoxREM.so
-	dosym /opt/VirtualBox/VBoxRT.so /opt/VirtualBox/components/VBoxRT.so
-	dosym /opt/VirtualBox/VBoxDDU.so /opt/VirtualBox/components/VBoxDDU.so
-	dosym /opt/VirtualBox/VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
+	dosym ../VBoxVMM.so /opt/VirtualBox/components/VBoxVMM.so
+	dosym ../VBoxREM.so /opt/VirtualBox/components/VBoxREM.so
+	dosym ../VBoxRT.so /opt/VirtualBox/components/VBoxRT.so
+	dosym ../VBoxDDU.so /opt/VirtualBox/components/VBoxDDU.so
+	dosym ../VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
 
 	local each
 	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp}; do
@@ -291,8 +291,8 @@ src_install() {
 			pax-mark -m "${D}"/opt/VirtualBox/${each}
 		done
 
-		dosym /opt/VirtualBox/VBox.sh /opt/bin/VirtualBox
-		dosym /opt/VirtualBox/VBox.sh /opt/bin/VBoxSDL
+		dosym ../VirtualBox/VBox.sh /opt/bin/VirtualBox
+		dosym ../VirtualBox/VBox.sh /opt/bin/VBoxSDL
 	else
 		# Hardened build: Mark selected binaries set-user-ID-on-execution
 		fowners root:vboxusers /opt/VirtualBox/VBoxHeadless
@@ -305,10 +305,10 @@ src_install() {
 	fowners root:vboxusers /opt/VirtualBox/VBox.sh
 	fperms 0750 /opt/VirtualBox/VBox.sh
 
-	dosym /opt/VirtualBox/VBox.sh /opt/bin/VBoxManage
-	dosym /opt/VirtualBox/VBox.sh /opt/bin/VBoxVRDP
-	dosym /opt/VirtualBox/VBox.sh /opt/bin/VBoxHeadless
-	dosym /opt/VirtualBox/VBoxTunctl /opt/bin/VBoxTunctl
+	dosym ../VirtualBox/VBox.sh /opt/bin/VBoxManage
+	dosym ../VirtualBox/VBox.sh /opt/bin/VBoxVRDP
+	dosym ../VirtualBox/VBox.sh /opt/bin/VBoxHeadless
+	dosym ../VirtualBox/VBoxTunctl /opt/bin/VBoxTunctl
 
 	# set an env-variable for 3rd party tools
 	echo -n "VBOX_APP_HOME=/opt/VirtualBox" > "${T}/90virtualbox"
