@@ -7,13 +7,12 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 inherit autotools-multilib
 
 DESCRIPTION="Library for DVD navigation tools"
-HOMEPAGE="http://dvdnav.mplayerhq.hu/"
+HOMEPAGE="https://www.videolan.org/developers/libdvdnav.html"
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.videolan.org/libdvdread.git"
-	KEYWORDS=""
 else
-	SRC_URI="http://downloads.videolan.org/pub/videolan/libdvdread/${PV}/${P}.tar.bz2"
+	SRC_URI="https://downloads.videolan.org/pub/videolan/libdvdread/${PV}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 fi
 
