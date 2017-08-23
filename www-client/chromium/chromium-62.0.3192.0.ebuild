@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.11:= )
 	dev-libs/expat:=
 	dev-libs/glib:2
-	system-icu? ( <dev-libs/icu-59:= )
+	system-icu? ( >=dev-libs/icu-59:= )
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -136,9 +136,9 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-	"${FILESDIR}/${PN}-gn-bootstrap-r15.patch"
-	"${FILESDIR}/${PN}-system-zlib-r1.patch"
-	"${FILESDIR}/${PN}-gcc5-r1.patch"
+	"${FILESDIR}/${PN}-gcc5-r2.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r16.patch"
+	"${FILESDIR}/${PN}-system-icu-r2.patch"
 )
 
 pre_build_checks() {
@@ -271,7 +271,7 @@ src_prepare() {
 		third_party/pdfium/third_party/build
 		third_party/pdfium/third_party/bigint
 		third_party/pdfium/third_party/freetype
-		third_party/pdfium/third_party/lcms2-2.6
+		third_party/pdfium/third_party/lcms
 		third_party/pdfium/third_party/libopenjpeg20
 		third_party/pdfium/third_party/libpng16
 		third_party/pdfium/third_party/libtiff
@@ -282,6 +282,7 @@ src_prepare() {
 		third_party/qcms
 		third_party/sfntly
 		third_party/skia
+		third_party/skia/third_party/gif
 		third_party/skia/third_party/vulkan
 		third_party/smhasher
 		third_party/spirv-headers
