@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -48,6 +48,6 @@ src_install() {
 pkg_postinst() {
 	elog "To adjust the MAXKMERLENGTH or CATEGORIES parameters as described in the manual,"
 	elog "please set the variables VELVET_MAXKMERLENGTH or VELVET_CATEGORIES in your"
-	elog "environment or /etc/make.conf, then re-emerge the package. For example:"
+	elog "environment or /etc/portage/make.conf, then re-emerge the package. For example:"
 	elog "	VELVET_MAXKMERLENGTH=NN emerge [options] velvet"
 }
