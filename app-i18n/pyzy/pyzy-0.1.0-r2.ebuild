@@ -43,7 +43,8 @@ src_configure() {
 	econf \
 		$(use_enable boost) \
 		$(use_enable opencc) \
-		--enable-db-open-phrase
+		--enable-db-open-phrase \
+		DOXYGEN=$(usex doc doxygen true)
 }
 
 src_install() {
