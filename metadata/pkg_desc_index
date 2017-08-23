@@ -13032,9 +13032,9 @@ media-libs/libdv 1.0.0-r2 1.0.0-r3: Software codec for dv-format video (camcorde
 media-libs/libdvb 0.5.5.1-r3: libdvb package with CAM library. libdvbmpegtools, and dvb-mpegtools
 media-libs/libdvbpsi 0.2.1 0.2.2 1.1.0 1.1.2 1.2.0 1.3.0 1.3.0-r1: library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvdcss 1.2.13 1.2.13-r1 1.3.0 1.3.99 1.4.0: A portable abstraction library for DVD decryption
-media-libs/libdvdnav 4.2.1 5.0.1 5.0.3 9999: Library for DVD navigation tools
+media-libs/libdvdnav 5.0.3 9999: Library for DVD navigation tools
 media-libs/libdvdplay 1.0.1: A simple library designed for DVD-menu navigation
-media-libs/libdvdread 4.2.1 5.0.0-r2 5.0.2 5.0.3 9999: Library for DVD navigation tools
+media-libs/libdvdread 5.0.3 9999: Library for DVD navigation tools
 media-libs/libebur128 1.0.2 1.0.3 1.1.0 1.2.0-r1 1.2.2: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
