@@ -5004,7 +5004,7 @@ dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for Mong
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
-dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0 2.0.0: MessagePack is a binary-based efficient data interchange format
+dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0 1.4.2 2.0.0 2.1.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.3-r1 3.3-r2: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files

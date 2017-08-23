@@ -9,4 +9,4 @@ RDEPEND=app-admin/eselect
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~titanofold/eselect-postgresql-2.0.tbz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=8a9a36e0772174ebdc705b607acb74c6
+_md5_=a98d41f790e527c8dd97b435ada5b186
