@@ -14860,7 +14860,7 @@ net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V 
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 protocol, successor of OpenH323
-net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
+net-libs/http-parser 2.6.2 2.7.1: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 0.7.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 3.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
