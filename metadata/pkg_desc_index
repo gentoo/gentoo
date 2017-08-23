@@ -12905,7 +12905,7 @@ media-libs/aubio 0.4.1-r1 0.4.2-r1 0.4.3-r1 0.4.4-r1 0.4.5-r1: Library for audio
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.8 2.6.20 2.6.20-r1 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.8 2.6.20 9999: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.12 0.1.18 0.1.20 0.1.22 0.1.24 0.1.26 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.12 0.1.18 0.1.20 0.1.22 0.1.24 0.1.26 0.1.30 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bio2jack 0.9-r1: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r1: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
@@ -12952,7 +12952,7 @@ media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.4: A graphics library for fast image creation
-media-libs/gegl 0.2.0-r2 0.3.0 0.3.4 0.3.8 0.3.10 0.3.12 0.3.14 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r2 0.3.0 0.3.4 0.3.8 0.3.10 0.3.12 0.3.14 0.3.20 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.3 0.10.5-r1 0.10.6: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3-r1 5.0.6 5.1.3 5.1.4: Library to handle, display and manipulate GIF images
