@@ -24,12 +24,15 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun libav openexr raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
 "
 
+# NOTE: Even current libav 11.4 does not have AV_CODEC_CAP_VARIABLE_FRAME_SIZE
+#       so there is no chance to support libav right now (Gentoo bug #567638)
+#       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
@@ -40,8 +43,7 @@ RDEPEND="
 
 	cairo? ( x11-libs/cairo )
 	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
+		>=media-video/ffmpeg-2.8:0=
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	virtual/jpeg:0=
@@ -88,6 +90,8 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
+
+	epatch "${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
 
 	eautoreconf
 
