@@ -12161,7 +12161,7 @@ kde-frameworks/plasma 5.34.0 5.37.0: Plasma framework
 kde-frameworks/prison 1.1.1 5.34.0 5.37.0: QRCode and data matrix barcode library
 kde-frameworks/solid 5.34.0 5.37.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.34.0 5.37.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/syntax-highlighting 5.34.0 5.37.0: Framework for syntax highlighting
+kde-frameworks/syntax-highlighting 5.34.0 5.37.0 5.37.0-r1: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.34.0 5.37.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
@@ -15425,7 +15425,7 @@ net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
 net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/slimrat 9999: Linux Rapidshare downloader
-net-misc/smb4k 1.2.3-r1 2.0.0-r1: Advanced network neighborhood browser
+net-misc/smb4k 1.2.3-r1 2.0.0-r1 2.0.2: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r3: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
@@ -18371,7 +18371,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8 4.8.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 59.0.3071.104 60.0.3112.40 60.0.3112.78 61.0.3163.39 61.0.3163.49 62.0.3178.0 62.0.3188.2: Open-source version of Google Chrome web browser
+www-client/chromium 60.0.3112.78 61.0.3163.39 61.0.3163.49 62.0.3188.2 62.0.3192.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
