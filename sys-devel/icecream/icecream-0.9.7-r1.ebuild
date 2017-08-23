@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -67,7 +67,7 @@ pkg_postinst() {
 	elog "ICECC_VERSION in /etc/conf.d/icecream"
 	elog '  ICECC_VERSION=<filename_of_archive_containing_your_environment>'
 	elog
-	elog "To use icecream with portage add the following line to /etc/make.conf"
+	elog "To use icecream with portage add the following line to /etc/portage/make.conf"
 	elog '  PREROOTPATH=/usr/lib/icecc/bin'
 	elog
 	elog "To use icecream with normal make use (e.g. in /etc/profile)"
