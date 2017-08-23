@@ -73,7 +73,7 @@ src_install() {
 
 	# we have to keep this because otherwise it'll break upgrading
 	mv "${ED}/usr/bin/SciTE" "${ED}/usr/bin/scite" || die
-	dosym /usr/bin/scite /usr/bin/SciTE
+	dosym scite /usr/bin/SciTE
 
 	# replace .desktop file with our own working version
 	rm -f "${ED}/usr/share/applications/SciTE.desktop" || die
