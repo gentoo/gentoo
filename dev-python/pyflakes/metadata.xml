@@ -15,6 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">pyflakes</remote-id>
-		<remote-id type="launchpad">pyflakes</remote-id>
+		<remote-id type="github">PyCQA/pyflakes</remote-id>
 	</upstream>
 </pkgmetadata>
