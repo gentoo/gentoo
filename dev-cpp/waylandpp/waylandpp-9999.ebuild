@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib scons-utils toolchain-funcs versionator
+inherit scons-utils toolchain-funcs versionator
 
 DESCRIPTION="Wayland C++ bindings"
 HOMEPAGE="https://github.com/NilsBrause/waylandpp"
@@ -18,34 +18,33 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/NilsBrause/waylandpp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/waylandpp-${PV}"
 fi
 
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-libs/wayland-1.11.0
 	media-libs/mesa[wayland]
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
 	)
 	"
-RDEPEND="${COMMON_DEPEND}"
 
 src_compile() {
-	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" escons
+	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${D%/}/usr" escons
 	if use doc; then
 		doxygen || die "error making docs"
 	fi
 }
 
 src_install() {
-	PREFIX="${D%/}/usr" scons install
+	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${D%/}/usr" escons install
 	# fix multilib-strict QA failures
 	mv "${ED%/}"/usr/{lib,$(get_libdir)} || die
 	if use doc; then
 		doman doc/man/man3/*.3
-		HTML_DOCS="doc/html" einstalldocs
+		local HTML_DOCS=( doc/html )
+		einstalldocs
 	fi
 }
