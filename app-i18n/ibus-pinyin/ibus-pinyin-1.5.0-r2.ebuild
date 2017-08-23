@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="Chinese Pinyin and Bopomofo engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -26,15 +26,20 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${P}-content-type-method.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-boost.patch
+	"${FILESDIR}"/${P}-content-type-method.patch
+)
 
 src_prepare() {
 	sed -i "s/python/${EPYTHON}/" setup/${PN/-/-setup-}.in
 
 	default
+	eautoreconf
 }
 
 src_configure() {
