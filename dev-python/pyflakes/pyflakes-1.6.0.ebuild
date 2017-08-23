@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Passive checker for Python programs"
-HOMEPAGE="https://launchpad.net/pyflakes https://pypi.python.org/pypi/pyflakes"
+HOMEPAGE="https://github.com/PyCQA/pyflakes https://pypi.python.org/pypi/pyflakes"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
