@@ -1,14 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit autotools java-pkg-opt-2 linux-info user
+EAPI=6
+inherit java-pkg-opt-2 linux-info user
 
-MY_P=${PN}-1.1.0
 DESCRIPTION="A transparent low-overhead system-wide profiler"
 HOMEPAGE="http://${PN}.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~bircoph/patches/${P}.patch.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,12 +21,8 @@ RDEPEND=">=dev-libs/popt-1.7-r1
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.31"
 
-S="${WORKDIR}/${MY_P}"
-
 CONFIG_CHECK="PERF_EVENTS"
 ERROR_PERF_EVENTS="CONFIG_PERF_EVENTS is mandatory for ${PN} to work."
-
-PATCHES=( "${WORKDIR}/${P}.patch" )
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -45,13 +39,6 @@ pkg_setup() {
 	use java && java-pkg_init
 }
 
-src_prepare() {
-	default
-	# bug #600000
-	epatch "${FILESDIR}/${PN}-1.1.0-gcc6-template-depth.patch"
-	eautoreconf
-}
-
 src_configure() {
 	econf \
 		--disable-werror \
@@ -65,21 +52,6 @@ src_install() {
 	dodoc ChangeLog* README TODO
 	echo "LDPATH=${PREFIX}/usr/$(get_libdir)/${PN}" > "${T}/10${PN}" || die
 	doenvd "${T}/10${PN}"
-
-	# filter out event files for alien arches, bug 580016
-	cd "${D}/usr/share/${PN}" || die
-	local arch="${ARCH}" f
-	case "${arch}" in
-		x86)
-			arch=i386
-			;;
-		amd64)
-			arch=x86-64
-			;;
-	esac
-	for f in $(find -O3 -mindepth 1 -maxdepth 1 -type d ! -name "${arch}" ); do
-		rm -r "${f}" || die
-	done
 }
 
 pkg_postinst() {
