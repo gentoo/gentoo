@@ -3215,6 +3215,7 @@ dev-go/go-text 0_pre20150806 0_pre20160211 9999: Go text processing support
 dev-go/go-tools 0_pre20150823-r1 0_pre20150902 0_pre20160121 0_pre20160220 9999: Go Tools
 dev-go/go-tour 0_p20160209: A Tour of Go
 dev-go/godep 74 9999: dependency tool for go
+dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
 dev-go/golint 0_pre20161114: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 0.5 0.6: Go Tor pluggable transports library
@@ -14136,7 +14137,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7 0.8.9: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0 0.5.1: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 9.6.0 12.0.0 13.0.0-r1 14.0.0 15.0.0: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 9.6.0 15.0.0-r1: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.0.1-r1 4.0.1-r2: A software motion detector
 media-video/motiontrack 0.1.3-r1: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2 1.4.0 1.5.0 1.5.1 1.5.2: Modern Video Toolkit
