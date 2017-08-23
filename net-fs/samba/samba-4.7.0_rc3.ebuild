@@ -23,7 +23,7 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads client cluster cups dmapi fam gnutls gpg iprint ldap pam python
+IUSE="acl addc addns ads client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
 quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -65,6 +65,7 @@ CDEPEND="
 	)
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
+	debug? ( dev-util/lttng-ust )
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )
 	gnutls? (
@@ -182,6 +183,7 @@ multilib_src_configure() {
 			$(use_with ads)
 			$(use_with cluster cluster-support)
 			$(use_enable cups)
+			$(use_with debug lttng)
 			$(use_with dmapi)
 			$(use_with fam)
 			$(use_enable gnutls)
@@ -215,6 +217,7 @@ multilib_src_configure() {
 			--without-gpgme
 			--disable-iprint
 			$(use_with ldap)
+			$(use_with debug lttng)
 			--without-pam
 			--without-quotas
 			--without-syslog

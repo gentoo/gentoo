@@ -151,6 +151,7 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		--with-modulesdir="${EPREFIX}/usr/$(get_libdir)/samba"
 		--with-piddir="${EPREFIX}/run/${PN}"
+		--without-lttng
 		--bundled-libraries="${bundled_libs}"
 		--builtin-libraries=NONE
 		--disable-rpath
