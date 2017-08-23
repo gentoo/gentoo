@@ -25,9 +25,11 @@ RDEPEND="dev-db/sqlite:3
 	opencc? ( app-i18n/opencc:= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	sys-devel/autoconf-archive
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-boost.patch
 	"${FILESDIR}"/${PN}-db.patch
 	"${FILESDIR}"/${PN}-opencc-1.0.0.patch
 )
