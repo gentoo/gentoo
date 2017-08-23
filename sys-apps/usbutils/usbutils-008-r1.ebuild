@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
 
 DESCRIPTION="USB enumeration utilities"
-HOMEPAGE="http://linux-usb.sourceforge.net/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/usb/usbutils/"
 SRC_URI="mirror://kernel/linux/utils/usb/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
