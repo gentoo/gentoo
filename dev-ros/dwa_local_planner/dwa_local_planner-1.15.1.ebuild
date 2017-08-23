@@ -9,22 +9,23 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Probabilistic localization system for a robot moving in 2D"
-LICENSE="LGPL-2.1"
+DESCRIPTION="Dynamic Window Approach to local robot navigation on a plane"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/base_local_planner
+	dev-ros/costmap_2d
+	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/nav_core
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/pluginlib
+	dev-ros/pcl_conversions
 	dev-ros/roscpp
 	dev-ros/tf
-	dev-ros/rosbag
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-libs/boost:=
-	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-cpp/eigen:3
+	sci-libs/pcl
+	dev-libs/boost:=[threads]
 "
-DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )
-"
-
-PATCHES=( "${FILESDIR}/gcc7.patch" )
+DEPEND="${RDEPEND}"
