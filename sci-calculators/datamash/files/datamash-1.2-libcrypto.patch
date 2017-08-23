@@ -1,0 +1,10 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -56,6 +56,7 @@
+        $(LDEXPL_LIBM) \
+        $(LIBICONV) \
+        $(LIBINTL) \
++       $(LIB_CRYPTO) \
+        $(ROUND_LIBM) \
+        $(ROUNDL_LIBM) \
+        $(SQRT_LIBM) \
