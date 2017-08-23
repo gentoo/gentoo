@@ -67,7 +67,7 @@ src_install() {
 
 	# make the correct symlink
 	rm "${ED}"/usr/bin/kermit-sshsub || die
-	dosym /usr/bin/kermit /usr/bin/kermit-sshsub
+	dosym kermit /usr/bin/kermit-sshsub
 
 	# the ckermit.ini script is calling the wrong kermit binary --
 	# the one from ${D}
