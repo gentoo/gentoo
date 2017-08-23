@@ -27,7 +27,7 @@ src_install() {
 	insinto /usr/share/eselect/modules
 	doins postgresql.eselect
 
-	dosym /usr/bin/eselect /usr/bin/postgresql-config
+	dosym eselect /usr/bin/postgresql-config
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,7 +19,7 @@ src_install() {
 	insinto /usr/share/eselect/modules
 	doins postgresql.eselect
 
-	dosym /usr/bin/eselect /usr/bin/postgresql-config
+	dosym eselect /usr/bin/postgresql-config
 }
 
 pkg_postinst() {
