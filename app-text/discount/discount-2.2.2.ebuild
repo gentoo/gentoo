@@ -39,20 +39,14 @@ src_configure() {
 		--prefix="${EPREFIX}"usr
 		--mandir="${EPREFIX}"usr/share/man
 		--shared
+		--pkg-config
 		$(usex minimal '' --enable-all-features)
 		# Enable deterministic HTML generation behavior. Otherwise, will
 		# actually call rand() as part of its serialization code...
 		--debian-glitch
 	)
-	einfo "Running ${configure_call[@]} || die"
+	einfo "Running ${configure_call[@]}"
 	"${configure_call[@]}" || die
-}
-
-src_test() {
-	# I can't get these to pass; might be fixed in the future. The rest
-	# work fine.
-	rm -rf tests/muñoz.t || die 'failed to remove failing tests'
-	default
 }
 
 src_install() {
@@ -60,6 +54,9 @@ src_install() {
 		DESTDIR="${D}" \
 		$(usex minimal install install.everything) \
 		SAMPLE_PFX="${PN}-"
+
+	insinto /usr/$(get_libdir)/pkgconfig
+	doins libmarkdown.pc
 }
 
 pkg_postinst() {
