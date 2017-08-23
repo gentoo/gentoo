@@ -8,3 +8,23 @@
         $(ROUND_LIBM) \
         $(ROUNDL_LIBM) \
         $(SQRT_LIBM) \
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -339,7 +339,8 @@
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
++	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
++	$(am__DEPENDENCIES_1)
+ datamash_LINK = $(CCLD) $(datamash_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+ 	$(LDFLAGS) -o $@
+ AM_V_P = $(am__v_P_@AM_V@)
+@@ -1908,6 +1909,7 @@
+        $(LDEXPL_LIBM) \
+        $(LIBICONV) \
+        $(LIBINTL) \
++       $(LIB_CRYPTO) \
+        $(ROUND_LIBM) \
+        $(ROUNDL_LIBM) \
+        $(SQRT_LIBM) \

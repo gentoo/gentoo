@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
 
 DESCRIPTION="command-line program for basic numeric, textual and statistical operations"
 HOMEPAGE="https://www.gnu.org/software/datamash/"
@@ -27,12 +26,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-libcrypto.patch
 )
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
 
 src_configure() {
 	econf \
