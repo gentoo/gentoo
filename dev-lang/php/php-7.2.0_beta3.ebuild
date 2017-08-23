@@ -7,7 +7,7 @@ inherit flag-o-matic versionator systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="http://php.net/"
-SRC_URI="https://downloads.php.net/~pollita/${P/_/}.tar.xz"
+SRC_URI="https://downloads.php.net/~remi/${P/_/}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
