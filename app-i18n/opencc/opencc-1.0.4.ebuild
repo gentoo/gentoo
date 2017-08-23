@@ -12,18 +12,21 @@ SRC_URI="https://github.com/BYVoid/${PN^^[oc]}/archive/ver.${PV}.tar.gz -> ${P}.
 LICENSE="Apache-2.0"
 SLOT="0/2"
 KEYWORDS="amd64 hppa ppc ppc64 x86"
-IUSE="doc"
+IUSE="doc test"
 
 DEPEND="doc? ( app-doc/doxygen )"
 
 DOCS="AUTHORS *.md"
-PATCHES=( "${FILESDIR}"/${P}-cmake-libdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-libdir.patch
+	"${FILESDIR}"/${PN}-test.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_SHARED_LIBS=ON
-		-DENABLE_GTEST=OFF
+		-DENABLE_GTEST=$(usex test)
 	)
 	cmake-utils_src_configure
 }

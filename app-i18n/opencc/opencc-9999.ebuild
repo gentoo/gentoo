@@ -21,11 +21,12 @@ HOMEPAGE="https://github.com/BYVoid/OpenCC"
 LICENSE="Apache-2.0"
 SLOT="0/2"
 KEYWORDS=""
-IUSE="doc"
+IUSE="doc test"
 
 DEPEND="doc? ( app-doc/doxygen )"
 
 DOCS="AUTHORS *.md"
+PATCHES=( "${FILESDIR}"/${PN}-test.patch )
 
 src_prepare() {
 	sed -i "s|\${DIR_SHARE_OPENCC}/doc|share/doc/${PF}|" doc/CMakeLists.txt
@@ -37,7 +38,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_SHARED_LIBS=ON
-		-DENABLE_GTEST=OFF
+		-DENABLE_GTEST=$(usex test)
 	)
 	cmake-utils_src_configure
 }
