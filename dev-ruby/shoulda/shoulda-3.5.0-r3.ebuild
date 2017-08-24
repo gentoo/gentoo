@@ -18,7 +18,7 @@ SRC_URI="https://github.com/thoughtbot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64"
 IUSE=""
 
 # This now more or less a meta-gem and it only contains features for
