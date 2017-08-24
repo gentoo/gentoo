@@ -9,8 +9,8 @@ MYPN=CCfits
 MYP=${MYPN}-${PV}
 
 DESCRIPTION="C++ interface for cfitsio"
-HOMEPAGE="http://heasarc.gsfc.nasa.gov/fitsio/CCfits/"
-SRC_URI="${HOMEPAGE}/${MYP}.tar.gz"
+HOMEPAGE="https://heasarc.gsfc.nasa.gov/fitsio/CCfits/"
+SRC_URI="https://heasarc.gsfc.nasa.gov/fitsio/CCfits/${MYP}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
