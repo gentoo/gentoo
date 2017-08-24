@@ -50,9 +50,10 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use test \
-		&& { has_version "dev-python/twisted[${PYTHON_USEDEP}]" \
-			|| has_version "dev-python/twisted-words[${PYTHON_USEDEP}]"; }
+	if use test ; then
+		 has_version "dev-python/twisted[${PYTHON_USEDEP}]" \
+			|| has_version "dev-python/twisted-words[${PYTHON_USEDEP}]"
+	fi
 }
 
 pkg_setup() {
