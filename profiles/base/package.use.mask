@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (24 Aug 2017)
+# This is a security risk if not used carefully, bug 628596.
+net-analyzer/nrpe command-args
+
 # Michael Orlitzky <mjo@gentoo.org> (18 Aug 2017)
 # net-misc/vde is masked, so don't let users try to pull it in.
 app-emulation/qemu vde
