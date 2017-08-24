@@ -29,7 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
-	myeconfargs=(
+	local myeconfargs=(
 		$(use_enable lzma)
 		$(use_enable lzo)
 		$(use_enable static)
