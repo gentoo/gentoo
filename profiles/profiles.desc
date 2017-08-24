@@ -17,6 +17,7 @@ alpha           default/linux/alpha/13.0/developer              stable
 amd64           default/linux/amd64/13.0                           stable
 amd64           default/linux/amd64/13.0/selinux                   dev
 amd64           default/linux/amd64/13.0/desktop                   stable
+amd64           default/linux/amd64/13.0/desktop/systemd           stable
 amd64           default/linux/amd64/13.0/desktop/gnome             stable
 amd64           default/linux/amd64/13.0/desktop/gnome/systemd     stable
 amd64           default/linux/amd64/13.0/desktop/plasma            stable
