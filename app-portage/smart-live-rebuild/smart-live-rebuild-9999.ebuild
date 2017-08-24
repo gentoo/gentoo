@@ -7,13 +7,13 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 #if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 inherit git-r3
 #endif
 
 DESCRIPTION="Check live packages for updates and emerge them as necessary"
-HOMEPAGE="https://bitbucket.org/mgorny/smart-live-rebuild/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/smart-live-rebuild/"
+SRC_URI="https://github.com/mgorny/smart-live-rebuild/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
