@@ -10,7 +10,7 @@ MY_BASE_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PV="${MY_BASE_PV}${PV:8:1}"
 
 DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documentation needs."
-HOMEPAGE="https://www.dokuwiki.org/DokuWiki"
+HOMEPAGE="http://wiki.splitbrain.org/wiki:dokuwiki"
 SRC_URI="http://download.dokuwiki.org/src/${PN}/${PN}-${MY_PV}.tgz"
 
 LICENSE="GPL-2"
