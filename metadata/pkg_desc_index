@@ -13097,7 +13097,7 @@ media-libs/libmodplug 0.8.8.5 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.7.3 0.9.0 0.9.1 0.9.1a 0.9.2: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 1.9.1-r1 2.0.0: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
-media-libs/libmpdclient 2.9 2.10 2.11: A library for interfacing Music Player Daemon (media-sound/mpd)
+media-libs/libmpdclient 2.9 2.10 2.11 2.13: A library for interfacing Music Player Daemon (media-sound/mpd)
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0: An library to control MPRIS2 compatible players
@@ -13842,7 +13842,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8 0.20.9: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8 0.20.9 0.20.10: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console

@@ -3930,6 +3930,11 @@ developers and volunteer mentors.</description>
     <name>Treecleaner</name>
     <url>https://wiki.gentoo.org/wiki/Project:Treecleaner</url>
     <description>The Tree Cleaning Team is primarily concerned with removing unmaintained and broken packages from the tree.</description>
+    <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>hwoarang@gentoo.org</email>
       <name>Markos Chandras</name>
