@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.newsbeuter.org/downloads/newsbeuter-2.9.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=dd9b5ad718ed86fdf4f46b70f554337f
+_md5_=b1ebe60775e5a3fe343e19a2c1c25d80
