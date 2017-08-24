@@ -4974,7 +4974,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.4-r1 2.9.4-r2: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.4-r1 2.9.4-r2 2.9.4-r3: Version 2 of the library to manipulate XML files
 dev-libs/libxslt 1.1.29-r1: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
