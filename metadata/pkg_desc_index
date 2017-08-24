@@ -15096,7 +15096,7 @@ net-mail/pop2imap 1.18 1.21: Synchronize mailboxes between a pop and an imap ser
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
 net-mail/popick 0.1: POP3 mailbox deleter using regular expressions to match message headers and delete messages
 net-mail/poppassd_ceti 1.8.5-r1 1.8.5-r2: Password change daemon with PAM support
-net-mail/postfix-logwatch 1.40.03: A log analyzer for postfix
+net-mail/postfix-logwatch 1.40.03 1.40.03-r1: A log analyzer for postfix
 net-mail/qlogtools 3.1: Qmail Log processing tools
 net-mail/qmail-autoresponder 0.97-r1 0.97-r2: Rate-limited autoresponder for qmail
 net-mail/qmail-lint 0.55: qmail-lint checks your qmail configuration for common problems
