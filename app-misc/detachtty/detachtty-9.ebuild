@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit toolchain-funcs
@@ -21,6 +21,6 @@ src_compile() {
 src_install() {
 	dobin detachtty attachtty || die
 	doman detachtty.1 || die
-	dosym /usr/share/man/man1/detachtty.1 /usr/share/man/man1/attachtty.1
+	dosym detachtty.1 /usr/share/man/man1/attachtty.1
 	dodoc INSTALL README || die
 }
