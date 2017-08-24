@@ -15031,7 +15031,7 @@ net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2 4.2.2-r1 4.2.
 net-libs/zmqpp 4.1.2: ZeroMQ 'highlevel' C++ bindings
 net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
-net-mail/amavis-logwatch 1.51.03: A log analyzer for amavisd-new
+net-mail/amavis-logwatch 1.51.03 1.51.03-r1: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration service
