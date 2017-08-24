@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ inherit golang-base
 
 KEYWORDS="~amd64"
 DESCRIPTION="Consul cross-DC KV replication daemon"
-EGO_PN="github.com/hashicorp/${PN}/..."
-HOMEPAGE="http://${EGO_PN%/*}"
+EGO_PN="github.com/hashicorp/consul-replicate/..."
+HOMEPAGE="https://github.com/hashicorp/consul-replicate"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="test"
@@ -16,7 +16,7 @@ IUSE="test"
 DEPEND=">=dev-lang/go-1.4:="
 RDEPEND=""
 
-SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/hashicorp/consul-replicate/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/hashicorp/consul-template/archive/v0.8.0.tar.gz -> consul-template-0.8.0.tar.gz
 	https://github.com/fatih/structs/archive/a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz -> structs-a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz
 	https://github.com/hashicorp/consul/archive/v0.6.3.tar.gz -> consul-0.6.3.tar.gz
