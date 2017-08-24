@@ -97,5 +97,5 @@ src_install() {
 		"${CONFDIR}"/csh.login
 
 	# bug #119703: add csh -> tcsh symlink
-	dosym /bin/tcsh /bin/csh
+	dosym tcsh /bin/csh
 }
