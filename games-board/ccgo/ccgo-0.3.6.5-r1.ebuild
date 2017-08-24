@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="An IGS client written in C++"
-HOMEPAGE="http://ccdw.org/~cjj/prog/ccgo/"
-SRC_URI="http://ccdw.org/~cjj/prog/ccgo/src/${P}.tar.gz"
+HOMEPAGE="https://ccdw.org/~cjj/prog/ccgo/"
+SRC_URI="https://ccdw.org/~cjj/prog/ccgo/src/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
