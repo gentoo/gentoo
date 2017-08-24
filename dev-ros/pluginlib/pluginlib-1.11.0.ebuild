@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-libs/boost:=
-	dev-libs/tinyxml
+	dev-libs/tinyxml2:=
 	dev-ros/cmake_modules
 "
 DEPEND="${RDEPEND}
