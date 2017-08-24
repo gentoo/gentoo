@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ inherit autotools eutils
 MY_P=${PN}-${PV/_p/-}
 
 DESCRIPTION="Spine is a fast poller for Cacti (formerly known as Cactid)"
-HOMEPAGE="http://cacti.net/spine_info.php"
-SRC_URI="http://www.cacti.net/downloads/spine/${MY_P}.tar.gz"
+HOMEPAGE="https://cacti.net/spine_info.php"
+SRC_URI="https://www.cacti.net/downloads/spine/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
