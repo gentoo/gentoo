@@ -6,8 +6,8 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Extracts files from Microsoft cabinet archive files"
-HOMEPAGE="http://www.cabextract.org.uk/"
-SRC_URI="http://www.cabextract.org.uk/${P}.tar.gz"
+HOMEPAGE="https://www.cabextract.org.uk/"
+SRC_URI="https://www.cabextract.org.uk/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
