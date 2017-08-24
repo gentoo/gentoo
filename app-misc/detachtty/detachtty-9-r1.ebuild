@@ -24,6 +24,6 @@ src_compile() {
 src_install() {
 	dobin "${PN}" attachtty
 	doman "${PN}.1"
-	dosym /usr/share/man/man1/detachtty.1 /usr/share/man/man1/attachtty.1
+	dosym detachtty.1 /usr/share/man/man1/attachtty.1
 	einstalldocs
 }
