@@ -4978,7 +4978,7 @@ dev-libs/libxml2 2.9.4-r1 2.9.4-r2: Version 2 of the library to manipulate XML f
 dev-libs/libxslt 1.1.29-r1: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
-dev-libs/libzip 1.2.0: Library for manipulating zip archives
+dev-libs/libzip 1.2.0 1.2.0-r1: Library for manipulating zip archives
 dev-libs/link-grammar 5.3.10 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/locked_sstream 0.0.5: tiny C++ library which wraps std::stringstream in a mutex
