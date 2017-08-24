@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/releases/download/${P}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="selinux ssl"
+IUSE="command-args selinux ssl"
 
 DEPEND="sys-apps/tcp-wrappers
 	ssl? ( dev-libs/openssl:0 )"
@@ -32,6 +32,7 @@ src_configure() {
 		--with-nrpe-user=nagios \
 		--with-nrpe-group=nagios \
 		--with-piddir=/run \
+		$(use_enable command-args) \
 		$(use_enable ssl)
 }
 
@@ -61,4 +62,12 @@ pkg_postinst(){
 	elog 'Some users have reported incompatibilities between nrpe-2.x and'
 	elog 'nrpe-3.x. We recommend that you use the same major version for'
 	elog 'both your server and clients.'
+
+	if use command-args ; then
+		ewarn ''
+		ewarn 'You have enabled command-args for NRPE. That lets clients'
+		ewarn 'supply arguments to the commands that are run, and IS A'
+		ewarn 'SECURITY RISK!'
+		ewarn''
+	fi
 }
