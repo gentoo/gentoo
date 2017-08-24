@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-libs/libsigc++-2:2
 "
 DEPEND="${RDEPEND}
+	dev-cpp/mm-common
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -35,8 +36,8 @@ DEPEND="${RDEPEND}
 		>=media-libs/gst-plugins-good-${PV}:1.0
 		>=media-plugins/gst-plugins-jpeg-${PV}:1.0 )
 "
-#   dev-cpp/mm-common"
-# eautoreconf needs mm-common
+# eautoreconf:
+#	dev-cpp/mm-common
 
 # Installs reference docs into /usr/share/doc/gstreamermm-1.0/
 # but that's okay, because the rest of dev-cpp/*mm stuff does the same
