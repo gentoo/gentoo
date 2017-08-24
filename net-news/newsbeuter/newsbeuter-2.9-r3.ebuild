@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9-ncurses6.patch
 	"${FILESDIR}"/${PN}-2.9-fix-mem-leak.patch
 	"${FILESDIR}"/${PN}-2.9-fix-segfault.patch
+	"${FILESDIR}"/${PN}-2.9-security-fix.patch
 )
 
 src_prepare() {
