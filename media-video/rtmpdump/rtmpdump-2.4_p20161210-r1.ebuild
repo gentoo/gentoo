@@ -3,16 +3,16 @@
 
 EAPI="6"
 
-inherit git-r3 multilib toolchain-funcs multilib-minimal flag-o-matic
+inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
-EGIT_REPO_URI="git://git.ffmpeg.org/rtmpdump"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="gnutls polarssl ssl libressl"
 
 DEPEND="ssl? (
@@ -28,6 +28,12 @@ pkg_setup() {
 		ewarn "USE='gnutls polarssl' are ignored without USE='ssl'."
 		ewarn "Please review the local USE flags for this package."
 	fi
+}
+
+src_unpack() {
+	mkdir -p "${S}" || die "Can't create source directory"
+	cd "${S}" || die
+	unpack ${A}
 }
 
 src_prepare() {
@@ -46,7 +52,7 @@ src_prepare() {
 
 multilib_src_compile() {
 	if use ssl ; then
-		if use gnutls ; then
+		if use gnutls ;	then
 			crypto="GNUTLS"
 		elif use polarssl ; then
 			crypto="POLARSSL"
