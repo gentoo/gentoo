@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit toolchain-funcs autotools python-single-r1 eutils
 
 DESCRIPTION="WorldForge server running small games"
-HOMEPAGE="http://worldforge.org/index.php/components/cyphesis/"
+HOMEPAGE="https://www.worldforge.org/index.php/components/cyphesis/"
 SRC_URI="mirror://sourceforge/worldforge/${P}.tar.bz2"
 
 LICENSE="GPL-2"
