@@ -14,8 +14,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk ncurses"
 
 RDEPEND="
-	ncurses? ( >=sys-libs/ncurses-5.5 )
-	gtk? ( =x11-libs/gtk+-2* )
+	ncurses? ( >=sys-libs/ncurses-5.5:= )
+	gtk? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf
+		=x11-libs/gtk+-2*
+	)
 	>=net-libs/libnet-1.1.2
 	>=net-libs/libpcap-0.9.4
 "
