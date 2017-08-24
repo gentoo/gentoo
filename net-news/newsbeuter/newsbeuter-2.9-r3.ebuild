@@ -7,7 +7,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/akrennmair/newsbeuter.git"
 else
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 	SRC_URI="http://www.newsbeuter.org/downloads/${P}.tar.gz"
 fi
 
