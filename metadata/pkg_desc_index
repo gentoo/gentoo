@@ -15502,7 +15502,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.08.13 2017.08.18 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.08.18 2017.08.23 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
@@ -18407,7 +18407,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.11.917.43_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.12.933.3_p1 1.12.936.3_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.12.936.3_p1 1.12.941.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
