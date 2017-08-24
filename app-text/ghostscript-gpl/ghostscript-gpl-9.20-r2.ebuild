@@ -236,7 +236,7 @@ src_install() {
 	done
 
 	# install the CMaps from poppler-data properly, bug #409361
-	dosym "${EPREFIX}/usr/share/poppler/cMaps" "/usr/share/ghostscript/${PVM}/Resource/CMap"
+	dosym ../../../poppler/cMaps "/usr/share/ghostscript/${PVM}/Resource/CMap"
 
 	use static-libs || find "${ED}" -name '*.la' -delete
 

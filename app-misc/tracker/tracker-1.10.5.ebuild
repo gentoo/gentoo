@@ -218,12 +218,12 @@ src_install() {
 
 	# Manually symlink extensions for {firefox,thunderbird}-bin
 	if use firefox-bookmarks; then
-		dosym /usr/share/xul-ext/trackerfox \
+		dosym ../../../share/xul-ext/trackerfox \
 			/usr/$(get_libdir)/firefox-bin/extensions/trackerfox@bustany.org
 	fi
 
 	if use thunderbird; then
-		dosym /usr/share/xul-ext/trackerbird \
+		dosym ../../../share/xul-ext/trackerbird \
 			/usr/$(get_libdir)/thunderbird-bin/extensions/trackerbird@bustany.org
 	fi
 }
