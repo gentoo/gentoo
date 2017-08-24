@@ -9834,16 +9834,16 @@ dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.8.0 0.8.1 0.8.2: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/right_http_connection 1.3.0-r1 1.5.0: RightScale's robust HTTP/S connection module
-dev-ruby/rinku 1.7.3 2.0.0 2.0.2: A Ruby library that does autolinking
+dev-ruby/rinku 2.0.2 2.0.3: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
-dev-ruby/rjb 1.5.4 1.5.5: Rjb is a Ruby-Java software bridge
-dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
+dev-ruby/rjb 1.5.5: Rjb is a Ruby-Java software bridge
+dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.4 2.15.4 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/roadie 3.2.1 3.2.1-r1 3.2.1-r2 3.2.2: Making HTML emails comfortable for the Rails rockstars
-dev-ruby/roadie-rails 1.1.1 1.2.1: Hooks Roadie into your Rails application to help with email generation
+dev-ruby/roadie-rails 1.2.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.11.1-r1 2.1.0 2.1.1 2.2.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
-dev-ruby/rqrcode 0.9.0 0.10.1: Library for encoding QR Codes
+dev-ruby/rqrcode 0.10.1: Library for encoding QR Codes
 dev-ruby/rr 1.1.2-r1 1.2.0 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0 1.7.0: Ruby bindings for rrdtool
 dev-ruby/rspec 2.14.1-r1 2.99.0 3.3.0 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
@@ -9854,9 +9854,9 @@ dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for 
 dev-ruby/rspec-json_expectations 2.1.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.5.2 3.5.2-r1 3.6.0 3.6.1: RSpec's official Ruby on Rails plugin
-dev-ruby/rspec-retry 0.5.4: Retry intermittently failing rspec examples
+dev-ruby/rspec-retry 0.5.4 0.5.5: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.3.0 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspectacular 0.70.0 0.70.7: RSpec support and matchers
+dev-ruby/rspectacular 0.70.7: RSpec support and matchers
 dev-ruby/ruby-atk 3.0.8 3.1.1: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
@@ -9868,7 +9868,7 @@ dev-ruby/ruby-clutter-gtk 3.0.8 3.1.1: Ruby Clutter bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-elf 1.0.8: Ruby library to access ELF files information
 dev-ruby/ruby-feedparser 0.9.4: Ruby library to parse ATOM/RSS feeds
-dev-ruby/ruby-filemagic 0.7.1 0.7.2: Ruby binding to libmagic
+dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 3.0.8 3.1.1: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.0.8 3.1.1: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gettext 3.1.1 3.2.2 3.2.3 3.2.3-r1 3.2.4: Native Language Support Library and Tools modeled after GNU gettext package
@@ -9919,11 +9919,11 @@ dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
-dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
+dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.2.19-r2 3.4.15 3.4.23 3.4.24 3.4.25: An extension of CSS3, adding nested rules, variables, mixins, and more
-dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6 5.0.6-r1: Official Ruby-on-Rails Integration with Sass
+dev-ruby/sass 3.2.19-r2 3.4.24 3.4.25: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
@@ -9936,8 +9936,8 @@ dev-ruby/settingslogic 2.0.9: A simple configuration / settings solution that us
 dev-ruby/sexp_processor 4.7.0 4.8.0 4.9.0 4.10.0: Processor for s-expressions created as part of the ParseTree project
 dev-ruby/sfl 2.2-r1: Library providing spawn() which is almost perfectly compatible with ruby 1.9's
 dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
-dev-ruby/shotgun 0.9.1 0.9.2: Forking implementation of rackup
-dev-ruby/shoulda 2.11.3-r2 3.5.0-r2 3.5.0-r3: Making tests easy on the fingers and eyes
+dev-ruby/shotgun 0.9.2: Forking implementation of rackup
+dev-ruby/shoulda 2.11.3-r2 3.5.0-r3: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.2.1 1.2.2: Context framework extracted from Shoulda
 dev-ruby/shoulda-matchers 2.8.0-r1 3.1.1-r1 3.1.2: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
@@ -18273,7 +18273,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9 3.0.2: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.1.2 5.1.6 5.1.7: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.1.2 5.1.6 5.1.7 5.1.8: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
