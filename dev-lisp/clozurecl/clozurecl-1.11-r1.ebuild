@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,13 +9,13 @@ MY_PN=ccl
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Common Lisp implementation, derived from Digitool's MCL product"
-HOMEPAGE="http://ccl.clozure.com/"
+HOMEPAGE="https://ccl.clozure.com/"
 SRC_URI="
-	x86?   ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
-	amd64? ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
-	doc? ( http://ccl.clozure.com/docs/ccl.html )"
-	# ppc?   ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxppc.tar.gz )
-	# ppc64? ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxppc.tar.gz )"
+	x86?   ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
+	amd64? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
+	doc? ( https://ccl.clozure.com/docs/ccl.html )"
+	# ppc?   ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxppc.tar.gz )
+	# ppc64? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxppc.tar.gz )"
 
 LICENSE="LLGPL-2.1"
 SLOT="0"
