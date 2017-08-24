@@ -12,8 +12,8 @@
   <access>remote</access>
   <affected>
     <package name="app-arch/bzip2" auto="yes" arch="*">
-      <unaffected range="ge" slot="">1.0.6-r8</unaffected>
-      <vulnerable range="lt" slot="">1.0.6-r8</vulnerable>
+      <unaffected range="ge">1.0.6-r8</unaffected>
+      <vulnerable range="lt">1.0.6-r8</vulnerable>
     </package>
   </affected>
   <background>
