@@ -14179,7 +14179,7 @@ media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw vi
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
 media-video/replex 0.1.4 0.1.6.8: REPLEX remuxes MPEG-2 transport streams into program streams
 media-video/rovclock 0.6e 0.6e-r1: Overclocking utility for ATI Radeon cards
-media-video/rtmpdump 2.4_p20161210 9999: RTMP client intended to stream audio or video flash content
+media-video/rtmpdump 2.4_p20161210 2.4_p20161210-r1 9999: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.3.8 9999: A Simple Screen Recorder
@@ -14678,7 +14678,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
 net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21 2.23: A full-featured file system for online data storage
-net-fs/samba 4.2.14 4.5.10-r1 4.5.12-r1 4.6.6 4.6.7 4.7.0_rc3: Samba Suite Version 4
+net-fs/samba 4.2.14 4.5.10-r1 4.5.12-r1 4.6.6 4.6.7 4.7.0_rc4: Samba Suite Version 4
 net-fs/smbnetfs 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
