@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -49,21 +49,21 @@ src_install() {
 
 	newbin ROX-Filer rox
 
-	dosym /usr/share/rox/ROX/MIME/text-x-{diff,patch}.png
-	dosym /usr/share/rox/ROX/MIME/application-x-font-{afm,type1}.png
-	dosym /usr/share/rox/ROX/MIME/application-xml{,-dtd}.png
-	dosym /usr/share/rox/ROX/MIME/application-xml{,-external-parsed-entity}.png
-	dosym /usr/share/rox/ROX/MIME/application-{,rdf+}xml.png
-	dosym /usr/share/rox/ROX/MIME/application-x{ml,-xbel}.png
-	dosym /usr/share/rox/ROX/MIME/application-{x-shell,java}script.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip,xz}-compressed-tar.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip,lzma}-compressed-tar.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip-compressed-tar,lzo}.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip,xz}.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{gzip,lzma}.png
-	dosym /usr/share/rox/ROX/MIME/application-{msword,rtf}.png
+	dosym text-x-diff.png /usr/share/rox/ROX/MIME/text-x-patch.png
+	dosym application-x-font-afm.png /usr/share/rox/ROX/MIME/application-x-font-type1.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-xml-dtd.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-xml-external-parsed-entity.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-rdf+xml.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-x-xbel.png
+	dosym application-x-shellscript.png /usr/share/rox/ROX/MIME/application-javascript.png
+	dosym application-x-bzip-compressed-tar.png /usr/share/rox/ROX/MIME/application-x-xz-compressed-tar.png
+	dosym application-x-bzip-compressed-tar.png /usr/share/rox/ROX/MIME/application-x-lzma-compressed-tar.png
+	dosym application-x-bzip-compressed-tar.png /usr/share/rox/ROX/MIME/application-x-lzo.png
+	dosym application-x-bzip.png /usr/share/rox/ROX/MIME/application-x-xz.png
+	dosym application-x-gzip.png /usr/share/rox/ROX/MIME/application-x-lzma.png
+	dosym application-msword.png /usr/share/rox/ROX/MIME/application-rtf.png
 
-	dosym /usr/share/rox/.DirIcon /usr/share/pixmaps/rox.png
+	dosym ../rox/.DirIcon /usr/share/pixmaps/rox.png
 
 	insinto /usr/share/applications
 	doins   "${FILESDIR}"/rox.desktop
