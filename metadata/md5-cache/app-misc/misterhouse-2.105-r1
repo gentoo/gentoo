@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl tk? ( dev-perl/Tk dev-perl/Tk-CursorControl ) mysql? ( dev
 SLOT=0
 SRC_URI=mirror://sourceforge/misterhouse/misterhouse-2.105.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=9efcdc5d12e1f5647b284fe65385a665
+_md5_=cefb17b884d4317765d2026a5faff443

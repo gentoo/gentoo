@@ -8302,7 +8302,7 @@ dev-python/pygccxml 1.0.0 1.7.5: Generate an XML description of a C++ program fr
 dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
-dev-python/pygit2 0.25.0 0.25.1: Python bindings for libgit2
+dev-python/pygit2 0.25.0 0.25.1 0.26.0: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0 3.24.1: GLib's GObject library bindings for Python

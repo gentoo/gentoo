@@ -8,4 +8,4 @@ SLOT=0
 SRC_URI=mirror://debian/pool/main/d/detachtty/detachtty_9.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=ddf495414c2d4395c4da183abf0f7d84
+_md5_=bc4223ce62b31e34d696117437dcab4b
