@@ -365,7 +365,7 @@ app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup
 app-backup/duplicity 0.7.10 0.7.11 0.7.12 0.7.13.1: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12 1.2.1-r13: Flexible backup script using perl
-app-backup/fsarchiver 0.6.19 0.6.24 0.8.0 0.8.1: Flexible filesystem archiver for backup and deployment tool
+app-backup/fsarchiver 0.8.1 0.8.2: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A handy backup script utilizing tar
 app-backup/genbackupdata 1.9: Generate test data for backup software testing.
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
