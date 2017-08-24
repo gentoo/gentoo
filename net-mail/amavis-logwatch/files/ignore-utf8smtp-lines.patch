@@ -1,0 +1,32 @@
+From a8dac25fe398e42abdb89b85b1435d52386827b4 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 24 Aug 2017 09:05:04 -0400
+Subject: [PATCH 4/4] Ignore UTF8SMTP lines.
+
+Lines that look like,
+
+  UTF8SMTP :10024 /var/...: <sender@example.net> -> <rcpt@example.com>
+  BODY=8BITMIME SMTPUTF8 Received: from mx.example.com ([127.0.0.1]) by...
+
+were previously unmatched because of the relatively-new "UTF8SMTP".
+Similar lines that have "ESMTP" instead of "UTF8SMTP" are already
+ignored, so it makes sense to ignore the "UTF8SMTP" lines too.
+---
+ amavis-logwatch | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/amavis-logwatch b/amavis-logwatch
+index 06b60c8..deb9146 100644
+--- a/amavis-logwatch
++++ b/amavis-logwatch
+@@ -2132,6 +2132,7 @@ while (<>) {
+         or ($p1 =~ /^SpamControl/)
+         or ($p1 =~ /^Perl/)
+         or ($p1 =~ /^ESMTP/)
++        or ($p1 =~ /^UTF8SMTP/)
+         or ($p1 =~ /^(?:\(!+\))?(\S+ )?(?:FWD|SEND) from /)            # log level 4
+         or ($p1 =~ /^(?:\(!+\))?(\S+ )?(?:ESMTP|FWD|SEND) via /)       # log level 4
+         or ($p1 =~ /^tempdir being removed/)
+-- 
+2.13.0
+
