@@ -4,28 +4,19 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit distutils-r1
-
-#if LIVE
 EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
-inherit git-r3
-#endif
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Check live packages for updates and emerge them as necessary"
 HOMEPAGE="https://github.com/mgorny/smart-live-rebuild/"
-SRC_URI="https://github.com/mgorny/smart-live-rebuild/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI=""
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND=">=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]"
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
 
 python_test() {
 	esetup.py test
