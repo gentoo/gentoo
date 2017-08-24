@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# NeddySeagoon <neddysegoon@gentoo.org> 24 Aug 2017
+# Support for g15daemon  still needs -9999 packages on all arches 
+media-sound/mumble g15
+
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
