@@ -18,6 +18,8 @@ CDEPEND="
 	dev-libs/libxdg-basedir
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:2=
 	x11-libs/libXScrnSaver
 	x11-libs/libXft
 	x11-libs/libXinerama
