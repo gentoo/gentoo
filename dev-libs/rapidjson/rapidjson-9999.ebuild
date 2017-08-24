@@ -14,6 +14,7 @@ SLOT="0"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/miloyip/rapidjson.git"
+	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	SRC_URI="https://github.com/miloyip/rapidjson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
