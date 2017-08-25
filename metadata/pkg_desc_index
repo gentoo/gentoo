@@ -216,7 +216,7 @@ app-admin/sysstat 11.4.0 11.4.5 11.4.6 11.6.0: System performance tools for Linu
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3 5.0.4: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -308,7 +308,7 @@ app-arch/rpm 4.11.0.1 4.11.1 4.11.2 4.11.2-r1 4.12.0.1: Red Hat Package Manageme
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r2: Compression program for large files
 app-arch/sharutils 4.14-r1 4.15.1 4.15.2: Tools to deal with shar archives
-app-arch/snappy 1.1.3-r1 1.1.6: A high-speed compression/decompression library by Google
+app-arch/snappy 1.1.3-r1 1.1.6 1.1.7: A high-speed compression/decompression library by Google
 app-arch/star 1.5.3: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
@@ -17829,7 +17829,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.82 4.4.83 4.9.34 4.9.43 4.9.44 4.12.5 4.12.6 4.12.7 4.12.8: Full sources including the Gentoo patchset for the 4.12 kernel tree
+sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.82 4.4.83 4.4.84 4.9.34 4.9.43 4.9.44 4.12.5 4.12.6 4.12.7 4.12.8: Full sources including the Gentoo patchset for the 4.12 kernel tree
 sys-kernel/git-sources 4.13_rc1 4.13_rc2 4.13_rc3 4.13_rc4 4.13_rc5 4.13_rc6: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -19539,7 +19539,7 @@ xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.3: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.3 4.12.4 4.13.1: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0 4.13.0_p20170825: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r2: Archive plug-in for the Thunar filemanager
