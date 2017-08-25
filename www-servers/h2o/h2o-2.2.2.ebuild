@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 			dev-lang/ruby:2.4
 			dev-lang/ruby:2.3
 			dev-lang/ruby:2.2
-			dev-lang/ruby:2.1
 		)
 	)"
 
