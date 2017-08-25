@@ -18745,7 +18745,7 @@ x11-libs/libyui 3.0.13 3.2.5: UI abstraction library
 x11-libs/libyui-gtk 2.44.5 2.44.7: UI abstraction library - GTK plugin
 x11-libs/libyui-ncurses 2.46.4 2.47.6: UI abstraction library - ncurses plugin
 x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
-x11-libs/motif 2.2.3-r12 2.3.5 2.3.6-r1 2.3.7: The Motif user interface component toolkit
+x11-libs/motif 2.2.3-r12 2.3.6-r1 2.3.7: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.3 1.40.5 1.40.6 1.40.7 1.40.9: Internationalized text layout and rendering library
