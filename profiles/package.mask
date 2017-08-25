@@ -263,10 +263,6 @@ gnustep-apps/displaycalibrator
 # Segfaults on diffs, last release 8 years ago, removal in a month (#626106)
 gnustep-apps/easydiff
 
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, last release 11 years ago, removal in a month (#626106)
-gnustep-apps/remotedesk
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
