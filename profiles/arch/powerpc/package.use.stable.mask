@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (25 Aug 2017)
+# ceph has never been stabilized under either ~ppc or ~ppc64
+sys-fs/multipath-tools rbd
+
 # Christoph Junghans <junghans@gentoo.org> (14 Feb 2017)
 # Stable-masking mpi support so Boost 1.62 stabilization can go ahead
 # (bug 590244)
