@@ -3059,6 +3059,8 @@ games-arcade/slimevolley:net - Enable network support
 games-arcade/smc:music - Download and install the music files
 games-arcade/tuxanci:physfs - Use dev-games/physfs instead of dev-libs/libzip to load compressed data
 games-arcade/tuxanci:sound - Enable sound
+games-board/cockatrice:client - Build with client
+games-board/cockatrice:oracle - Build with oracle
 games-board/cockatrice:server - Compile server support
 games-board/crafty:no-opts - Don't try to enable crazy CFLAG options
 games-board/freedoko:backgrounds - Install additional background images

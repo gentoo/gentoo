@@ -3057,7 +3057,7 @@ dev-dotnet/vte-sharp 2.24.0-r10: GtkSharp's vte module of the gnome-desktop-shar
 dev-dotnet/wnck-sharp 2.24.0-r10: GtkSharp's wnck module of the gnome-desktop-sharp tarball
 dev-dotnet/xdt-for-monodevelop 2.8.1 2.8.3: Microsoft's Xml Document Transformation library
 dev-dotnet/xsp 2.10.2-r2: XSP is a small web server that can host ASP.NET pages
-dev-embedded/arduino 1.0.5-r1: An open-source AVR electronics prototyping platform
+dev-embedded/arduino 1.0.5-r1 1.0.5-r2: An open-source AVR electronics prototyping platform
 dev-embedded/avarice 2.11 2.12 2.13: Interface for GDB to Atmel AVR JTAGICE in circuit emulator
 dev-embedded/avr-libc 1.6.2 1.6.4 1.6.8 1.7.0 1.7.1 1.8.0 1.8.1 2.0.0: C library for Atmel AVR microcontrollers
 dev-embedded/avra 1.3.0: Atmel AVR Assembler
@@ -10934,7 +10934,7 @@ games-board/ccgo 0.3.6.5 0.3.6.5-r1: An IGS client written in C++
 games-board/cgoban 1.9.14-r1 1.9.14-r2: A Go-frontend
 games-board/cgoban2 2.6.12 2.6.12-r1: A Java client for the Kiseido Go Server, and a SGF editor
 games-board/chessx 1.3.2 1.4.0 1.4.0-r1: Qt5-based Chess Database Utility
-games-board/cockatrice 20160506 20160506-r1 20160630: An open-source multiplatform software for playing card games over a network
+games-board/cockatrice 20160506 20160506-r1 20160630 20170505: An open-source multiplatform software for playing card games over a network
 games-board/crafty 24.1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6 1.1.1.6-r1: The well-known board game, written in java
 games-board/eboard 1.1.1-r1 1.1.1-r2: chess interface for POSIX systems
