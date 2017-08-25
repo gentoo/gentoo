@@ -7270,7 +7270,7 @@ dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.9 1.7.15: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
-dev-python/PyECLib 1.4.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/PyECLib 1.4.0 1.5.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.28 1.35: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.26.0: Python library to work with pdf files
@@ -8036,7 +8036,7 @@ dev-python/ndg-httpsclient 0.4.0 0.4.2 0.4.2-r1: Provides enhanced HTTPS support
 dev-python/neovim-python-client 0.1.9 0.1.13: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2: Python/numpy interface to the netCDF C library
-dev-python/netifaces 0.10.4 0.10.5: Portable network interface information
+dev-python/netifaces 0.10.4 0.10.5 0.10.6: Portable network interface information
 dev-python/netlib 0.10 0.10.1 0.11.1 0.11.2 0.12.0: Collection of network utility classes used by pathod and mitmproxy
 dev-python/netmiko 1.4.2: Multi-vendor library to simplify Paramiko SSH connections to network devices
 dev-python/networkx 1.10-r1 1.11: Python tools to manipulate graphs and complex networks
@@ -17548,7 +17548,7 @@ sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
 sys-cluster/singularity 2.2.1 2.3.1: Application containers for Linux
 sys-cluster/slurm 16.05.2 17.02.6: A Highly Scalable Resource Manager
-sys-cluster/swift 2.10.2 2.13.1 2017.1.9999: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.10.2 2.13.1 2.15.1 2017.1.9999 2017.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 2.2.0 2.2.1 2.2.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
