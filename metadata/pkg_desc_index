@@ -11746,10 +11746,7 @@ gnustep-apps/affiche 0.6.0-r3 0.6.0-r4: Affiche allows people to 'stick' notes
 gnustep-apps/batmon 0.8: displays the status of your laptop battery
 gnustep-apps/cdplayer 0.6.0: Small CD Audio Player for GNUstep
 gnustep-apps/cenon 4.0.2-r1: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
-gnustep-apps/clipbook 0.6.0.8.3-r1: A clipboard for GNUstep that can hold things for later copy and paste
 gnustep-apps/cynthiune 1.0.0: Free software and romantic music player for GNUstep
-gnustep-apps/displaycalibrator 0.7: Frontend to xgamma
-gnustep-apps/easydiff 0.4.0: GNUstep app that lets you easily see the differences between two text files
 gnustep-apps/fisicalab 0.3.5: educational application to solve physics problems
 gnustep-apps/ftp 0.5: FTP client for GNUstep
 gnustep-apps/gemas 0.4: a simple code editor for GNUstep
@@ -11765,14 +11762,11 @@ gnustep-apps/laternamagica 0.4: an image viewer and slideshow application
 gnustep-apps/mpdcon 1.5.1: GNUstep client for the Music Player Daemon
 gnustep-apps/pictureframe 1.1.3: digital picture frame software
 gnustep-apps/pikopixel 1.0_beta7 1.0_beta8: a free application for drawing & editing pixel-art images
-gnustep-apps/preferences 1.3.0_pre20100523: GNUstep program to define your own personal user experience
 gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
-gnustep-apps/remotedesk 0.1: GNUstep remote windows access tool
 gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
 gnustep-apps/sogo 3.2.9 3.2.10: Groupware server built around OpenGroupware.org and the SOPE application server
-gnustep-apps/sudoku 0.7: Sudoku generator for GNUstep
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.8 0.9.9: A terminal emulator for GNUstep
@@ -11787,16 +11781,13 @@ gnustep-base/gnustep-make 2.6.8 2.7.0: GNUstep Makefile Package
 gnustep-base/gnustep-updater 0.2 0.3: Helper tool to upgrade Gentoo GNUstep installations
 gnustep-base/libobjc2 1.8 1.8.1: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r1 0.5-r2: A tool to create .nfont packages for use with gnustep-back-art
-gnustep-libs/camerakit 0.0.1.20041011-r1: A simple wrapper to libgphoto2 for GNUstep
 gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
 gnustep-libs/dbuskit 0.1.1 0.1.1-r1: framework that interfaces Objective-C applications with the D-Bus IPC service
 gnustep-libs/gsldap 0.0.1_pre20070219: GNUstep LDAP library for open ldap C libraries
 gnustep-libs/highlighterkit 0.1.3: Syntax highlighter framework
-gnustep-libs/iconkit 0.4.1: framework used to create icons using different elements
 gnustep-libs/netclasses 1.06-r1 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
-gnustep-libs/prefsmodule 1.1.1_pre20061204-r1: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-libs/renaissance 0.9.0 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
 gnustep-libs/sope 3.2.9 3.2.10: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1: GNUstep lightweight database abstraction layer
