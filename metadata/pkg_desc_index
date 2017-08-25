@@ -17820,7 +17820,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.82 4.4.83 4.4.84 4.9.34 4.9.43 4.9.44 4.12.5 4.12.6 4.12.7 4.12.8: Full sources including the Gentoo patchset for the 4.12 kernel tree
+sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.82 4.4.83 4.4.84 4.9.34 4.9.43 4.9.44 4.9.45 4.12.5 4.12.6 4.12.7 4.12.8: Full sources including the Gentoo patchset for the 4.12 kernel tree
 sys-kernel/git-sources 4.13_rc1 4.13_rc2 4.13_rc3 4.13_rc4 4.13_rc5 4.13_rc6: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
