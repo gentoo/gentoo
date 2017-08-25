@@ -267,10 +267,6 @@ gnustep-apps/easydiff
 # Dead upstream, last release 11 years ago, removal in a month (#626106)
 gnustep-apps/remotedesk
 
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Crashes on startup with current gnustep packages, removal in a month (#626106)
-gnustep-apps/sudoku
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
