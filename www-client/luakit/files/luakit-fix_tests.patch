@@ -1,0 +1,108 @@
+From 1d5ae1d56da688c3ac95301f4ae07eb7721dd20e Mon Sep 17 00:00:00 2001
+From: Aidan Holm <aidanholm@gmail.com>
+Date: Fri, 11 Aug 2017 11:32:47 +0800
+Subject: [PATCH] Add support for tests with DEVELOPMENT_PATHS=0
+
+---
+ ipc.c                         | 36 ++++++++++++++++--------------------
+ tests/async/run_test.lua      |  4 ++++
+ tests/async/wrangle_paths.lua | 20 ++++++++++++++++++++
+ 3 files changed, 40 insertions(+), 20 deletions(-)
+ create mode 100644 tests/async/wrangle_paths.lua
+
+diff --git a/ipc.c b/ipc.c
+index e0e8bfde..bd871209 100644
+--- a/ipc.c
++++ b/ipc.c
+@@ -158,23 +158,20 @@ web_extension_connect_thread(gpointer UNUSED(data))
+ static void
+ initialize_web_extensions_cb(WebKitWebContext *context, gpointer UNUSED(data))
+ {
+-#if DEVELOPMENT_PATHS
+-    gchar *extension_dir = g_get_current_dir();
+-#else
+-    const gchar *extension_dir = LUAKIT_INSTALL_PATH;
+-#endif
+-
+-    char *extension_file = g_build_filename(extension_dir,  "luakit.so", NULL);
+-    if (access(extension_file, R_OK)) {
+-#if DEVELOPMENT_PATHS
+-#  define DEVPATHS "\nLuakit was built with DEVELOPMENT_PATHS=1; are you running luakit correctly?"
+-#else
+-#  define DEVPATHS ""
+-#endif
+-        fatal("Cannot access luakit extension '%s': %s" DEVPATHS, extension_file, strerror(errno));
+-#undef DEVPATHS
++    char *dirs[] = { g_get_current_dir(), LUAKIT_INSTALL_PATH }, *dir = NULL;
++
++    for (unsigned i = 0; !dir && i < LENGTH(dirs); ++i) {
++        char *extension_file = g_build_filename(dirs[i],  "luakit.so", NULL);
++        verbose("checking for luakit extension at '%s'", dirs[i]);
++        if (!access(extension_file, R_OK))
++            dir = dirs[i];
++        g_free(extension_file);
+     }
+-    g_free(extension_file);
++
++    if (dir)
++        verbose("found luakit extension at '%s'", dir);
++    else
++        fatal("cannot find luakit extension 'luakit.so'");
+ 
+     const char *path;
+     g_mutex_lock (&socket_path_lock);
+@@ -185,10 +182,9 @@ initialize_web_extensions_cb(WebKitWebContext *context, gpointer UNUSED(data))
+ 
+     GVariant *payload = g_variant_new_string(path);
+     webkit_web_context_set_web_extensions_initialization_user_data(context, payload);
+-    webkit_web_context_set_web_extensions_directory(context, extension_dir);
+-#if DEVELOPMENT_PATHS
+-    g_free(extension_dir);
+-#endif
++    webkit_web_context_set_web_extensions_directory(context, dir);
++
++    g_free(dirs[0]);
+ }
+ 
+ static void
+diff --git a/tests/async/run_test.lua b/tests/async/run_test.lua
+index d281265b..2a55f225 100644
+--- a/tests/async/run_test.lua
++++ b/tests/async/run_test.lua
+@@ -3,6 +3,10 @@
+ -- @script async.run_test
+ -- @copyright 2017 Aidan Holm
+ 
++-- Adjust paths to work when running with DEVELOPMENT_PATHS=0
++dofile("tests/async/wrangle_paths.lua")
++require_web_module("tests/async/wrangle_paths")
++
+ local shared_lib = {}
+ local priv = require "tests.priv"
+ local test = require("tests.lib")
+diff --git a/tests/async/wrangle_paths.lua b/tests/async/wrangle_paths.lua
+new file mode 100644
+index 00000000..66efe929
+--- /dev/null
++++ b/tests/async/wrangle_paths.lua
+@@ -0,0 +1,20 @@
++--- Test runner path wrangler.
++--
++-- @script async.wrangle_paths
++-- @copyright 2017 Aidan Holm
++
++local system_paths, luakit_paths = {}, {}
++for path in string.gmatch(package.path, "[^;]+") do
++    if not path:match("^%./") and not path:find("luakit") then
++        table.insert(system_paths, path)
++    elseif not path:match("^%./") and path:find("luakit_test_") then
++        table.insert(luakit_paths, path)
++    end
++end
++local rel_paths = { "./lib/?.lua", "./lib/?/init.lua", "./config/?.lua", "./config/?/init.lua", }
++system_paths = table.concat(system_paths, ";")
++rel_paths = table.concat(rel_paths, ";")
++luakit_paths = table.concat(luakit_paths, ";")
++package.path = string.format("./?.lua;%s;%s;%s", system_paths, rel_paths, luakit_paths)
++
++-- vim: et:sw=4:ts=8:sts=4:tw=80
