@@ -490,8 +490,8 @@ src_install() {
 		/usr/include/mysql/server/mysql_version.h
 		/usr/include/mariadb/mariadb_version.h
 		/usr/include/mysql/mariadb_version.h
-		/usr/include/mysql/private/probes_mysql_nodtrace.h
-		/usr/include/mysql/private/probes_mysql_dtrace.h )
+		/usr/include/mysql/server/private/probes_mysql_nodtrace.h
+		/usr/include/mysql/server/private/probes_mysql_dtrace.h )
 
 	# wrap the config scripts
 	local MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config /usr/bin/mysql_config )
