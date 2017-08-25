@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils libtool multilib-minimal
+inherit libtool ltprune multilib-minimal
 
 DESCRIPTION="Portable Network Graphics library"
 HOMEPAGE="http://www.libpng.org/"
@@ -32,10 +32,12 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable cpu_flags_x86_sse intel-sse) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_enable cpu_flags_x86_sse intel-sse)
+		$(use_enable static-libs static)
 		--enable-arm-neon=$(usex neon)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
