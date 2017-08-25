@@ -255,10 +255,6 @@ net-misc/directvnc
 # Dropped from upstream tarball for years, removal in a month (#626106)
 gnustep-apps/clipbook
 
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, last release 13 years ago, removal in a month (#626106)
-gnustep-apps/displaycalibrator
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
