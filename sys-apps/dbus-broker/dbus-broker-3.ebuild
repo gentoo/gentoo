@@ -12,20 +12,20 @@ SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="selinux systemd test"
+IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/c-dvar-1
 	>=dev-libs/c-rbtree-2
-	dev-libs/expat
+	>=dev-libs/expat-2.2
 	>=dev-libs/glib-2.50:2
+	>=sys-apps/systemd-230
 	selinux? ( sys-libs/libselinux )
-	systemd? ( sys-apps/systemd )
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/c-list-2
 	>=dev-libs/c-sundry-1
 	virtual/pkgconfig
-	test? ( sys-apps/dbus )
+	test? ( >=sys-apps/dbus-1.10 )
 "
