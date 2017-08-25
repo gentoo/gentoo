@@ -10,12 +10,13 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cpu_flags_x86_aes i2p-hardening libressl pch static +upnp"
+IUSE="cpu_flags_x86_aes i2p-hardening libressl pch static +upnp websocket"
 
 RDEPEND="!static? ( >=dev-libs/boost-1.49[threads]
 			!libressl? ( dev-libs/openssl:0[-bindist] )
 			libressl? ( dev-libs/libressl )
 			upnp? ( net-libs/miniupnpc )
+			websocket? ( dev-cpp/websocketpp )
 		)"
 DEPEND="${RDEPEND}
 	static? ( >=dev-libs/boost-1.49[static-libs,threads]
@@ -41,6 +42,7 @@ src_configure() {
 		-DWITH_PCH=$(usex pch ON OFF)
 		-DWITH_STATIC=$(usex static ON OFF)
 		-DWITH_UPNP=$(usex upnp ON OFF)
+		-DWITH_WEBSOCKETS=$(usex websocket ON OFF)
 		-DWITH_LIBRARY=ON
 		-DWITH_BINARY=ON
 	)
