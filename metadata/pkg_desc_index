@@ -4524,7 +4524,7 @@ dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0 2.2.0.0 2.3.0.0 2.3.0.1: a non-interactive scripting language
 dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
-dev-lang/fpc 2.6.4 3.0.0 3.0.2: Free Pascal Compiler
+dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1: Free Pascal Compiler
 dev-lang/fsharp 4.0.1.20 4.1.18: The F# Compiler
 dev-lang/gdl 0.9.6-r2: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
