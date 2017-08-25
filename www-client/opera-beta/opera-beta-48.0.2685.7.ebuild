@@ -15,7 +15,7 @@ LICENSE="OPERA-2014"
 SLOT="0"
 SRC_URI_BASE="http://get.geo.opera.com/pub/"
 SRC_URI="
-	amd64? ( "${SRC_URI_BASE}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb" )
+	amd64?	( "${SRC_URI_BASE}${PN}/${PV}/linux/${PN}_${PV}_amd64.deb" )
 "
 KEYWORDS="~amd64"
 
@@ -63,12 +63,15 @@ src_prepare() {
 			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
 			rm -r usr/lib || die
 			;;
+		x86)
+			mv usr/lib/i386-linux-gnu/${PN} usr/$(get_libdir)/ || die
+			;;
 	esac
 
 	rm usr/bin/${PN} || die
 
-	rm usr/share/doc/${PN}-stable/copyright || die
-	mv usr/share/doc/${PN}-stable usr/share/doc/${PF} || die
+	rm usr/share/doc/${PN}/copyright || die
+	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
 
 	pushd "${OPERA_HOME}/localization" > /dev/null || die
 	chromium_remove_language_paks
