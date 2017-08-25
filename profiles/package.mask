@@ -282,7 +282,6 @@ gnustep-libs/iconkit
 # Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
 # Dead upstream, last code update 11 years ago, removal in a month (#626106)
 # Use gnustep-apps/systempreferences instead
-gnustep-apps/preferences
 gnustep-libs/prefsmodule
 
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
