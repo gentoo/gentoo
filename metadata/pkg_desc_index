@@ -4533,7 +4533,7 @@ dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.
 dev-lang/gnat-gpl 2016 2017: GNAT Ada Compiler - GPL version
 dev-lang/gnu-smalltalk 3.2.5: GNU Smalltalk
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.8.3 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.8.3 1.9 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
