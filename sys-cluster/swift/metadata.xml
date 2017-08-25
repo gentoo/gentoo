@@ -18,7 +18,7 @@
   </maintainer>
   <longdescription lang="en">
     Swift is a highly available, distributed, eventually consistent object/blob
-	store.
+  store.
   </longdescription>
   <upstream>
     <remote-id type="launchpad">swift</remote-id>
