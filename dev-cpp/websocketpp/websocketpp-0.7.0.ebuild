@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="C++/Boost Asio based websocket client/server library"
 HOMEPAGE="http://www.zaphoyd.com/websocketpp"
 SRC_URI="https://github.com/zaphoyd/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 LICENSE="BSD"
 SLOT="0"
 IUSE="boost examples test"
