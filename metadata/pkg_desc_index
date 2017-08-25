@@ -17459,7 +17459,7 @@ sys-boot/systemd-boot 233: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.5-r1 1.9.6: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
-sys-boot/unetbootin 625 647: UNetbootin installs Linux/BSD distributions to a partition or USB drive
+sys-boot/unetbootin 625 647 655: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427 59_p20170413: Chrome OS verified boot tools
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2: PPC Bootloader
