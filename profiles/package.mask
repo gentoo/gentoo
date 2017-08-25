@@ -275,10 +275,6 @@ gnustep-apps/sudoku
 # Dead upstream, nothing in tree depends on it, removal in a month (#626106)
 gnustep-libs/camerakit
 
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, nothing in tree depends on it, removal in a month (#626106)
-gnustep-libs/iconkit
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
