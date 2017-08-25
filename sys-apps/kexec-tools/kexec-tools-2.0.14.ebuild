@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	AUTOTOOLS_AUTORECONF=true
 else
 	SRC_URI="mirror://kernel/linux/utils/kernel/kexec/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
 inherit autotools-utils linux-info systemd
