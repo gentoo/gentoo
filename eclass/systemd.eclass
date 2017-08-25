@@ -418,3 +418,18 @@ systemd_tmpfiles_create() {
 	type systemd-tmpfiles &> /dev/null || return 0
 	systemd-tmpfiles --create "${@}"
 }
+
+# @FUNCTION: systemd_reenable
+# @USAGE: <unit> ...
+# @DESCRIPTION:
+# Re-enables units if they are currently enabled. This resets symlinks to the
+# defaults specified in the [Install] section.
+systemd_reenable() {
+	type systemctl &>/dev/null || return 0
+	local x
+	for x; do
+		if systemctl --quiet --root="${ROOT}" is-enabled "${x}"; then
+			systemctl --root="${ROOT}" reenable "${x}"
+		fi
+	done
+}
