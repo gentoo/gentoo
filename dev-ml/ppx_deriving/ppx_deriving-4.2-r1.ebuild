@@ -45,6 +45,7 @@ src_test() {
 
 src_install() {
 	opam_src_install
+	mv "${ED}/usr/lib/ppx_deriving/ppx_deriving" "${D}/$(ocamlc -where)/ppx_deriving/" || die
 
 	use doc && dohtml api.docdir/*
 }
