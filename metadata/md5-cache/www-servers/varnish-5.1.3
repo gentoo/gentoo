@@ -4,7 +4,7 @@ DESCRIPTION=Varnish is a state-of-the-art, high-performance HTTP accelerator
 EAPI=6
 HOMEPAGE=http://www.varnish-cache.org/
 IUSE=jemalloc jit static-libs python_targets_pypy python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
-KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~mips ~ppc ~ppc64 ~x86
 LICENSE=BSD-2 GPL-2
 RDEPEND=python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] sys-libs/readline:0= dev-libs/libpcre[jit?] jemalloc? ( dev-libs/jemalloc ) sys-libs/ncurses:0= sys-devel/gcc
 REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=http://repo.varnish-cache.org/source/varnish-5.1.3.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=0be0ae5ddfe34b809c1d43f4f6a8c5bd
+_md5_=57e223e68abddff5c902dc9470035179
