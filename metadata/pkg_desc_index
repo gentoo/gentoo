@@ -5367,7 +5367,7 @@ dev-ml/ppx_compare 0.9.0: Generation of comparison functions from types
 dev-ml/ppx_core 0.9.0-r1: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 0.9.0: Printf-style format-strings for user-defined string conversion
 dev-ml/ppx_derivers 1.0: Shared [@@deriving] plugin registry
-dev-ml/ppx_deriving 4.1-r1 4.2: Type-driven code generation for OCaml
+dev-ml/ppx_deriving 4.1-r1 4.2-r1: Type-driven code generation for OCaml
 dev-ml/ppx_deriving_yojson 3.0: A Yojson codec generator for OCaml
 dev-ml/ppx_driver 0.9.0 0.9.1: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 0.9.0: Generate a list containing all values of a finite type
