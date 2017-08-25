@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?] =www-servers/apache-2.4*
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
-_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	7027963e8e8cc12c91117bdb9225dc26	depend.apache	0917334d570e07f9743a04ff85b3bf1b	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	7027963e8e8cc12c91117bdb9225dc26	depend.apache	0917334d570e07f9743a04ff85b3bf1b	git-r3	78651c07ca1c1373bf81545d39eb9769	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=a3ece310a2dcd91523e4c4cd93aed8e0

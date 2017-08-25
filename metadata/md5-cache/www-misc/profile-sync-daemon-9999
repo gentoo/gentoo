@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=app-shells/bash net-misc/rsync[xattr] sys-apps/systemd
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769
 _md5_=7925e802cbfc86c581b6ac56651c62e1

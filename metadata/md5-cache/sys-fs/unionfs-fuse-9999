@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=sys-fs/fuse
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_install:-
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769
 _md5_=3e3afd964a0f9c5159522bdb385da66d

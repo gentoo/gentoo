@@ -7,5 +7,5 @@ LICENSE=WTFPL-2
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_unpack:git-r3 src_prepare:- src_install:vim-plugin
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
 _md5_=fc135b560a33758565f60f5364437353

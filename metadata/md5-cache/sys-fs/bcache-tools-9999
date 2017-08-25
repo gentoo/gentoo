@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/util-linux-2.24
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_install:-
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
 _md5_=977caf5e701a4f3deadf704d879ed8af

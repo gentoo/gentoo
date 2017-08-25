@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_test:-
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769
 _md5_=69d94c0b32641abd3edff5d11271b7cf

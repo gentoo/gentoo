@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=!<games-simulation/flightgear-2.10.0
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_install:-
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769
 _md5_=bde9fe5b13b85f270b9a654f588685c0

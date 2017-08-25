@@ -8,5 +8,5 @@ LICENSE=MIT-with-advertising
 RDEPEND=sys-apps/pciutils X? ( x11-apps/xprop x11-apps/xwininfo x11-apps/xrandr www-client/w3m[imlib] media-libs/imlib2 media-gfx/imagemagick )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769
 _md5_=f48804f79c19de305678ea4ff1fb6cf0

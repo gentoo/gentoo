@@ -8,5 +8,5 @@ LICENSE=LGPL-3-with-linking-exception
 RDEPEND=dev-ml/react:= >=dev-lang/ocaml-4:=
 SLOT=0/9999
 _eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:opam
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	opam	24b4a2529c1fd12f1304856d6c5a690d
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769	opam	24b4a2529c1fd12f1304856d6c5a690d
 _md5_=98d9f05c2bc8dc841646d2e6d240b8e3

@@ -9,5 +9,5 @@ RDEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-
 RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=bfd89516cf797466350572c50765afc6

@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_install:-
-_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=git-r3	78651c07ca1c1373bf81545d39eb9769	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=12218441ee4754515a30cd57d8c084dd

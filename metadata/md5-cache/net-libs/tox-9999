@@ -9,5 +9,5 @@ RDEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig
 REQUIRED_USE=^^ ( no-log log-trace log-debug log-info log-warn log-error )
 SLOT=0/0.1
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	78651c07ca1c1373bf81545d39eb9769	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	15a3154d9241313a8b9b625618ce981b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=91adc6ba4c3069c257eaf778eac0f8fc
