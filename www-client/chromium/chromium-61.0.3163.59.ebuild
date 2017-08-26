@@ -47,13 +47,21 @@ COMMON_DEPEND="
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
 	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-3:= media-libs/opus:= )
+	system-ffmpeg? (
+		>=media-video/ffmpeg-3:=
+		|| (
+			media-video/ffmpeg[-samba]
+			>=net-fs/samba-4.5.10-r1[-debug(-)]
+		)
+		!=net-fs/samba-4.5.12
+		media-libs/opus:=
+	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
 	x11-libs/libXcursor:=
