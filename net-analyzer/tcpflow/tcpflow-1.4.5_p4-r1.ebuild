@@ -35,7 +35,7 @@ DEPEND="
 S=${WORKDIR}/${PN}
 
 src_prepare() {
-	default 
+	default
 
 	eapply "${WORKDIR}"/debian/patches/*.patch
 
