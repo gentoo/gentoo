@@ -196,7 +196,11 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
-	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
+	# clang-tidy requires [static-analyzer] and tests are not split
+	# correctly, so they are all disabled when static-analyzer is off
+	if multilib_is_native_abi && use static-analyzer; then
+		cmake-utils_src_make check-clang-tools
+	fi
 }
 
 src_install() {
