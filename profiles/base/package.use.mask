@@ -489,10 +489,6 @@ sci-physics/reduze berkdb
 dev-python/pypy sandbox
 dev-python/pypy3 sandbox
 
-# Julian Ospald <hasufell@gentoo.org> (27 Oct 2013)
-# luajit is in ~arch, prepare for minetest stabilization
-games-action/minetest luajit
-
 # Julian Ospald <hasufell@gentoo.org> (31 Aug 2013)
 # Randomly breaks consumers at runtime. Do not report
 # gentoo bugs.
