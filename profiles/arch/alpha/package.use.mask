@@ -264,10 +264,6 @@ dev-haskell/dataenc test
 # dev-python/cython is not keyworded for alpha
 >=app-accessibility/brltty-4.5 python
 
-# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
 # missing keyword on media-libs/tremor, bug #453200
 media-libs/gst-plugins-base ivorbis
