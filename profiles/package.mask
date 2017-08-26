@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Aug 2017)
+# media-libs/phonon[zeitgeist] masked on all arches since 2012.
+# No other rdeps left. Masked for removal in 30 days.
+dev-libs/libqzeitgeist
+
 # Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
 # Masked for removal in 30 days.
 # No major keywords,  old EAPI, no maintainer.
