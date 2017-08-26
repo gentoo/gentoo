@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name='system-cmark'>use <pkg>app-text/cmark</pkg> instead of bundled copy</flag>
+	</use>
 	<longdescription>
 		This package provides Haskell bindings for
 		&lt;https://github.com/jgm/cmark libcmark&gt;, the reference
