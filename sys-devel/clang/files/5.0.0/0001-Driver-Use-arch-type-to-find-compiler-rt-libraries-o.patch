@@ -1,4 +1,4 @@
-From 3ebf8771792a40ff7701f1309914d5d3d930ea71 Mon Sep 17 00:00:00 2001
+From 19e3dc0ce4949cc7f869b4552c6a7f28cd59c3b7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
 Date: Thu, 17 Nov 2016 14:19:18 +0100
 Subject: [PATCH] [Driver] Use arch type to find compiler-rt libraries (on
@@ -30,10 +30,10 @@ will be used reliably for all 32-bit x86 variants.
  create mode 100644 test/Driver/Inputs/basic_linux_tree/usr/lib/gcc/i686-unknown-linux/4.6.0/crtbegin.o
 
 diff --git a/lib/Driver/ToolChain.cpp b/lib/Driver/ToolChain.cpp
-index 0476d156f5..2660c5a2c0 100644
+index 6adc0386ee..7e4222f087 100644
 --- a/lib/Driver/ToolChain.cpp
 +++ b/lib/Driver/ToolChain.cpp
-@@ -297,15 +297,12 @@ static StringRef getArchNameForCompilerRTLib(const ToolChain &TC,
+@@ -283,15 +283,12 @@ static StringRef getArchNameForCompilerRTLib(const ToolChain &TC,
    const llvm::Triple &Triple = TC.getTriple();
    bool IsWindows = Triple.isOSWindows();
  
@@ -49,7 +49,7 @@ index 0476d156f5..2660c5a2c0 100644
 +  return llvm::Triple::getArchTypeName(TC.getArch());
  }
  
- std::string ToolChain::getCompilerRTPath() const {
+ std::string ToolChain::getCompilerRT(const ArgList &Args, StringRef Component,
 diff --git a/test/Driver/Inputs/basic_linux_tree/usr/i686-unknown-linux/lib/.keep b/test/Driver/Inputs/basic_linux_tree/usr/i686-unknown-linux/lib/.keep
 new file mode 100644
 index 0000000000..e69de29bb2
@@ -57,7 +57,7 @@ diff --git a/test/Driver/Inputs/basic_linux_tree/usr/lib/gcc/i686-unknown-linux/
 new file mode 100644
 index 0000000000..e69de29bb2
 diff --git a/test/Driver/linux-ld.c b/test/Driver/linux-ld.c
-index 1c5f1a4556..a47afe3924 100644
+index e5aa870866..92b199b9d4 100644
 --- a/test/Driver/linux-ld.c
 +++ b/test/Driver/linux-ld.c
 @@ -71,6 +71,27 @@
@@ -100,33 +100,29 @@ index a9ef665c57..c9793d968c 100644
 +// CHECK-LINUX-NOSTDLIB-NOT: "{{.*}}/Inputs/resource_dir{{/|\\\\}}lib{{/|\\\\}}linux{{/|\\\\}}libclang_rt.builtins-i386.a"
  // CHECK-MSVC-NOSTDLIB: warning: argument unused during compilation: '--rtlib=compiler-rt'
 diff --git a/test/Driver/print-libgcc-file-name-clangrt.c b/test/Driver/print-libgcc-file-name-clangrt.c
-index fb4545af30..ce941dc4a1 100644
+index 9f8120c31d..28c758881d 100644
 --- a/test/Driver/print-libgcc-file-name-clangrt.c
 +++ b/test/Driver/print-libgcc-file-name-clangrt.c
-@@ -5,10 +5,16 @@
- // RUN:   | FileCheck --check-prefix=CHECK-CLANGRT-X8664 %s
+@@ -6,6 +6,12 @@
  // CHECK-CLANGRT-X8664: libclang_rt.builtins-x86_64.a
  
-+// RUN: %clang -rtlib=compiler-rt -print-libgcc-file-name 2>&1 \
+ // RUN: %clang -rtlib=compiler-rt -print-libgcc-file-name 2>&1 \
 +// RUN:     --target=i386-pc-linux \
 +// RUN:   | FileCheck --check-prefix=CHECK-CLANGRT-I386 %s
 +// CHECK-CLANGRT-I386: libclang_rt.builtins-i386.a
 +
 +// Check whether alternate arch values map to the correct library.
 +//
- // RUN: %clang -rtlib=compiler-rt -print-libgcc-file-name 2>&1 \
++// RUN: %clang -rtlib=compiler-rt -print-libgcc-file-name 2>&1 \
  // RUN:     --target=i686-pc-linux \
 -// RUN:   | FileCheck --check-prefix=CHECK-CLANGRT-I686 %s
 -// CHECK-CLANGRT-I686: libclang_rt.builtins-i686.a
 +// RUN:   | FileCheck --check-prefix=CHECK-CLANGRT-I386 %s
- 
- // RUN: %clang -rtlib=compiler-rt -print-libgcc-file-name 2>&1 \
- // RUN:     --target=arm-linux-gnueabi \
 diff --git a/test/Driver/windows-cross.c b/test/Driver/windows-cross.c
-index 0e688f0a26..072d37cd51 100644
+index 5a2fe52b09..78b4981c9d 100644
 --- a/test/Driver/windows-cross.c
 +++ b/test/Driver/windows-cross.c
-@@ -64,7 +64,7 @@
+@@ -59,7 +59,7 @@
  // RUN:    | FileCheck %s --check-prefix CHECK-SANITIZE-ADDRESS-EXE-X86
  
  // CHECK-SANITIZE-ADDRESS-EXE-X86: "-fsanitize=address"
@@ -136,5 +132,5 @@ index 0e688f0a26..072d37cd51 100644
  // RUN: %clang -### -target armv7-windows-itanium --sysroot %S/Inputs/Windows/ARM/8.1 -B %S/Inputs/Windows/ARM/8.1/usr/bin -fuse-ld=lld-link2 -shared -o shared.dll -fsanitize=tsan -x c++ %s 2>&1 \
  // RUN:    | FileCheck %s --check-prefix CHECK-SANITIZE-TSAN
 -- 
-2.14.1
+2.11.0
 
