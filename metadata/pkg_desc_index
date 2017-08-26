@@ -2102,7 +2102,7 @@ app-portage/eclass-manpages 20170321 20170428 20170521 20170712 99999999: collec
 app-portage/eix 0.32.4 0.32.5 0.32.5-r1 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2 2.7: Elog viewer for Gentoo
-app-portage/elt-patches 20170317 20170422 20170815 20170826: Collection of patches for libtool.eclass
+app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1 3.7.3: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.2 0.3 0.4: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r1 9999: Replacement for 'emerge --search' with search-index
@@ -10303,7 +10303,7 @@ dev-util/cargo 0.15.0 0.16.0 0.17.0 0.20.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.6-r1 0.7.7 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/ccache 3.2.4 3.2.5 3.2.7 3.3.3 3.3.4: fast compiler cache
+dev-util/ccache 3.2.4 3.2.5 3.2.7 3.3.3 3.3.4 3.3.4-r1: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/cdiff 0.9.8 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
@@ -10558,6 +10558,7 @@ dev-util/sel 0.08.4 0.08.4-r1 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623: Stanford GraphBase
+dev-util/shadowman 1 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.6.1 0.6.2 0.6.3 0.6.4 0.7.1: Dependency manager for the Crystal language
 dev-util/shc 3.8.9: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.4.4 0.4.5 0.4.6: Shell script analysis tool
@@ -17581,7 +17582,7 @@ sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 20160602-r1 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.22.0 1.23.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
-sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
+sys-devel/distcc 3.1-r10 3.2_rc1-r4 3.2_rc1-r5: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.4 4.9.4-r1 5.4.0 5.4.0-r3 6.3.0 6.4.0 7.1.0-r1 7.2.0: The GNU Compiler Collection
@@ -17592,7 +17593,7 @@ sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Deve
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r2 999999: Original UNIX development tools
-sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
+sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
 sys-devel/lld 4.0.1 5.0.9999 9999: The LLVM linker (link editor)
