@@ -18,12 +18,9 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="aqua debug designer gstreamer pulseaudio qt4 +qt5 +vlc zeitgeist"
+IUSE="aqua debug designer gstreamer pulseaudio qt4 +qt5 +vlc"
 
-REQUIRED_USE="
-	|| ( qt4 qt5 )
-	zeitgeist? ( qt4 )
-"
+REQUIRED_USE="|| ( qt4 qt5 )"
 
 RDEPEND="
 	!!dev-qt/qtphonon:4
@@ -44,7 +41,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		designer? ( dev-qt/designer:5 )
 	)
-	zeitgeist? ( dev-libs/libqzeitgeist )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
@@ -72,7 +68,7 @@ multilib_src_configure() {
 		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
 		-DWITH_GLIB2=$(usex pulseaudio)
 		-DWITH_PulseAudio=$(usex pulseaudio)
-		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist) || echo -DWITH_QZeitgeist=OFF)
+		-DWITH_QZeitgeist=OFF
 		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
 
