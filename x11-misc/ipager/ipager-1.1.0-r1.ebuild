@@ -1,8 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A themable desktop pager for fluxbox and other window managers"
 HOMEPAGE="http://www.useperl.ru/ipager/index.en.html"
@@ -19,12 +18,10 @@ RDEPEND="media-libs/imlib2[X]
 DEPEND="${RDEPEND}
 	dev-util/scons"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-scons_imlib2.patch
-	epatch "${FILESDIR}"/${P}-scons_flags.patch
-	epatch "${FILESDIR}"/${P}-gcc43.patch
-	epatch "${FILESDIR}"/${P}-gcc47.patch
-}
+PATCHES=( "${FILESDIR}/${P}-scons_imlib2.patch"
+	  "${FILESDIR}/${P}-scons_flags.patch"
+	  "${FILESDIR}/${P}-gcc43.patch"
+	  "${FILESDIR}/${P}-gcc47.patch" )
 
 src_compile() {
 	CONFIG_OPTS="xinerama=false"
