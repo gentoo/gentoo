@@ -89,7 +89,10 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( README )
-PATCHES=( "${FILESDIR}"/freerdp-Fix-gstreamer-1.0-detection.patch )
+PATCHES=(
+	"${FILESDIR}"/2.0.0-rc0-libressl.patch
+	"${FILESDIR}"/freerdp-Fix-gstreamer-1.0-detection.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
