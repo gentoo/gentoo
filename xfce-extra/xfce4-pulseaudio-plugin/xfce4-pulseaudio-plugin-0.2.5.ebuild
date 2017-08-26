@@ -44,6 +44,15 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+
+	if ! has_version media-sound/pavucontrol; then
+		elog "For the 'audio mixer...' shortcut to work, you need to install"
+		elog "an external mixer application. Please either install:"
+		elog
+		elog "	media-sound/pavucontrol"
+		elog
+		elog "or specify another application to use in the 'Properties' dialog."
+	fi
 }
 
 pkg_postrm() {
