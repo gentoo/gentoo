@@ -1,0 +1,185 @@
+diff --git a/python/core/conversions.sip b/python/core/conversions.sip
+index f07d3ab1db..948821e91e 100644
+--- a/python/core/conversions.sip
++++ b/python/core/conversions.sip
+@@ -2041,3 +2041,178 @@ register_from_qvariant_convertor = (void (*)(FromQVariantConvertorFn))sipImportS
+ register_from_qvariant_convertor(null_from_qvariant_convertor);
+ %End
+ %End
++
++// QList<QVariant> is implemented as a Python list.
++%MappedType QList<QVariant> /TypeHintIn="Sequence[QVariant]", TypeHintOut="List[QVariant]", TypeHintValue="[]"/
++{
++%TypeHeaderCode
++#include <qlist.h>
++%End
++
++%ConvertFromTypeCode
++    // Create the list.
++    PyObject *l;
++
++    if ((l = PyList_New(sipCpp->size())) == NULL)
++        return NULL;
++
++    // Set the list elements.
++    for (int i = 0; i < sipCpp->size(); ++i)
++    {
++        QVariant *t = new QVariant(sipCpp->at(i));
++        PyObject *tobj;
++
++        if ((tobj = sipConvertFromNewType(t, sipType_QVariant, sipTransferObj)) == NULL)
++        {
++            Py_DECREF(l);
++            delete t;
++
++            return NULL;
++        }
++
++        PyList_SET_ITEM(l, i, tobj);
++    }
++
++    return l;
++%End
++
++%ConvertToTypeCode
++    SIP_SSIZE_T len;
++
++    // Check the type if that is all that is required.
++    if (sipIsErr == NULL)
++    {
++        if (!PySequence_Check(sipPy) || (len = PySequence_Size(sipPy)) < 0)
++            return 0;
++
++        for (SIP_SSIZE_T i = 0; i < len; ++i)
++        {
++            PyObject *itm = PySequence_ITEM(sipPy, i);
++            bool ok = (itm && sipCanConvertToType(itm, sipType_QVariant, SIP_NOT_NONE));
++
++            Py_XDECREF(itm);
++
++            if (!ok)
++                return 0;
++        }
++
++        return 1;
++    }
++
++    QList<QVariant> *ql = new QList<QVariant>;
++    len = PySequence_Size(sipPy);
++
++    for (SIP_SSIZE_T i = 0; i < len; ++i)
++    {
++        PyObject *itm = PySequence_ITEM(sipPy, i);
++        int state;
++        QVariant *t = reinterpret_cast<QVariant *>(sipConvertToType(itm, sipType_QVariant, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++
++        Py_DECREF(itm);
++
++        if (*sipIsErr)
++        {
++            sipReleaseType(t, sipType_QVariant, state);
++
++            delete ql;
++            return 0;
++        }
++
++        ql->append(*t);
++
++        sipReleaseType(t, sipType_QVariant, state);
++    }
++
++    *sipCppPtr = ql;
++
++    return sipGetState(sipTransferObj);
++%End
++};
++
++
++// QList<QPolygonF> is implemented as a Python list.
++%MappedType QList<QPolygonF> /TypeHintIn="Sequence[QPolygonF]", TypeHintOut="List[QPolygonF]", TypeHintValue="[]"/
++{
++%TypeHeaderCode
++#include <qlist.h>
++%End
++
++%ConvertFromTypeCode
++    // Create the list.
++    PyObject *l;
++
++    if ((l = PyList_New(sipCpp->size())) == NULL)
++        return NULL;
++
++    // Set the list elements.
++    for (int i = 0; i < sipCpp->size(); ++i)
++    {
++        QPolygonF *t = new QPolygonF(sipCpp->at(i));
++        PyObject *tobj;
++
++        if ((tobj = sipConvertFromNewType(t, sipType_QPolygonF, sipTransferObj)) == NULL)
++        {
++            Py_DECREF(l);
++            delete t;
++
++            return NULL;
++        }
++
++        PyList_SET_ITEM(l, i, tobj);
++    }
++
++    return l;
++%End
++
++%ConvertToTypeCode
++    SIP_SSIZE_T len;
++
++    // Check the type if that is all that is required.
++    if (sipIsErr == NULL)
++    {
++        if (!PySequence_Check(sipPy) || (len = PySequence_Size(sipPy)) < 0)
++            return 0;
++
++        for (SIP_SSIZE_T i = 0; i < len; ++i)
++        {
++            PyObject *itm = PySequence_ITEM(sipPy, i);
++            bool ok = (itm && sipCanConvertToType(itm, sipType_QPolygonF, SIP_NOT_NONE));
++
++            Py_XDECREF(itm);
++
++            if (!ok)
++                return 0;
++        }
++
++        return 1;
++    }
++
++    QList<QPolygonF> *ql = new QList<QPolygonF>;
++    len = PySequence_Size(sipPy);
++
++    for (SIP_SSIZE_T i = 0; i < len; ++i)
++    {
++        PyObject *itm = PySequence_ITEM(sipPy, i);
++        int state;
++        QPolygonF *t = reinterpret_cast<QPolygonF *>(sipConvertToType(itm, sipType_QPolygonF, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++
++        Py_DECREF(itm);
++
++        if (*sipIsErr)
++        {
++            sipReleaseType(t, sipType_QPolygonF, state);
++
++            delete ql;
++            return 0;
++        }
++
++        ql->append(*t);
++
++        sipReleaseType(t, sipType_QPolygonF, state);
++    }
++
++    *sipCppPtr = ql;
++
++    return sipGetState(sipTransferObj);
++%End
++};
+-- 
+2.12.0
