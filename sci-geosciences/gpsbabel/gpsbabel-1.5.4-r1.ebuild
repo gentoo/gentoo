@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 		dev-lang/perl
 		dev-libs/libxslt
 	)
-	gui? ( dev-qt/linguist:5 )
+	gui? ( dev-qt/linguist-tools:5 )
 "
 
 DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
