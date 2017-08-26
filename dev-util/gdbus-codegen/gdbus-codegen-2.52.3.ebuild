@@ -6,10 +6,10 @@ GNOME_ORG_MODULE="glib"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome.org distutils-r1
+inherit gnome.org distutils-r1
 
 DESCRIPTION="GDBus code and documentation generator"
-HOMEPAGE="http://www.gtk.org/"
+HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="0"
