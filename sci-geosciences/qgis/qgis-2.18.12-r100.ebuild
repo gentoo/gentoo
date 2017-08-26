@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
