@@ -253,10 +253,6 @@ www-plugins/gnash jemalloc
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# Patrick Lauer <patrick@gentoo.org> (17 June 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Patrick Lauer <patrick@gentoo.org> (27 May 2013)
 # stable keywords missing on tagpy/coherence
 media-sound/rhythmbox upnp-av

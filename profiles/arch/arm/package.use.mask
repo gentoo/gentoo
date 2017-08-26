@@ -351,10 +351,6 @@ dev-libs/protobuf java
 # screen-sharing requires rdp flag
 dev-libs/weston rdp screen-sharing
 
-# Patrick Lauer <patrick@gentoo.org> (17 June 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2013)
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware

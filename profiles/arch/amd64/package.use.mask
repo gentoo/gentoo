@@ -182,10 +182,6 @@ sci-chemistry/gromacs -mkl
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2012)
-# Masked for stabilization as the use flag pulls a dep tree of hell.
-media-libs/phonon zeitgeist
-
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
