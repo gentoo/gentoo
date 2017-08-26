@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 kde-frameworks/kconfig:5 kde-frameworks/knotifications:5 kde-frameworks/kwallet:5
+DESCRIPTION=GUI frontend for encfs
+EAPI=6
+HOMEPAGE=https://www.linux-apps.com/p/1170068/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 kde-frameworks/kconfig:5 kde-frameworks/knotifications:5 kde-frameworks/kwallet:5 sys-fs/encfs
+SLOT=0
+SRC_URI=https://dl.opendesktop.org/api/files/download/id/1486310914/kencfs-plasma-2.0.1a.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=ca739df9d242cfead15d058c39c1fd5b
