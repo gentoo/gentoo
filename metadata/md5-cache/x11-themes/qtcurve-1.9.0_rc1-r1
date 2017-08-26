@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup t
 DEPEND=gtk? ( x11-libs/gtk+:2 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 ) qt5? ( >=dev-qt/qtdbus-5.6.1:5 >=dev-qt/qtgui-5.6.1:5 >=dev-qt/qtsvg-5.6.1:5 >=dev-qt/qtwidgets-5.6.1:5 >=dev-qt/qtx11extras-5.6.1:5 ) plasma? ( >=kde-frameworks/karchive-5.34.0 >=kde-frameworks/kcompletion-5.34.0 >=kde-frameworks/kconfig-5.34.0 >=kde-frameworks/kconfigwidgets-5.34.0 >=kde-frameworks/kcoreaddons-5.34.0 >=kde-frameworks/kdelibs4support-5.34.0 >=kde-frameworks/kguiaddons-5.34.0 >=kde-frameworks/ki18n-5.34.0 >=kde-frameworks/kiconthemes-5.34.0 >=kde-frameworks/kio-5.34.0 >=kde-frameworks/kwidgetsaddons-5.34.0 >=kde-frameworks/kwindowsystem-5.34.0 >=kde-frameworks/kxmlgui-5.34.0 >=dev-qt/qtprintsupport-5.6.1:5 ) X? ( x11-libs/libX11 x11-libs/libxcb ) virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info dev-util/desktop-file-utils app-arch/xz-utils
 DESCRIPTION=Widget styles for Qt and GTK2
 EAPI=6
-HOMEPAGE=https://quickgit.kde.org/?p=qtcurve.git
+HOMEPAGE=https://cgit.kde.org/qtcurve.git
 IUSE=+X gtk nls plasma qt4 +qt5 test debug
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2+
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/KDE/qtcurve/archive/1.9.0-rc1.tar.gz -> qtcurve-1.9.0_rc1.tar.gz
 _eclass_exported_funcs=pkg_preinst:kde5 pkg_postrm:kde5 pkg_postinst:kde5 pkg_setup:- src_unpack:kde5 src_prepare:kde5 src_configure:- src_compile:kde5 src_test:kde5 src_install:kde5
 _eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	kde5	09c7ac1af326f01df9480dea46e16211	kde5-functions	5c73432b07827170422215f4ed6c8338	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=63e97200d8ade9b85bab07a3eac9acb3
+_md5_=ca0bd0e9e5191afa50fc8b5e84ff88d1
