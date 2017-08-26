@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ GCONF_DEBUG="yes"
 inherit autotools eutils gnome2
 
 DESCRIPTION="LibGRSS is a library for easy management of RSS/Atom/Pie feeds"
-HOMEPAGE="https://live.gnome.org/Libgrss"
+HOMEPAGE="https://wiki.gnome.org/Projects/Libgrss"
 SRC_URI="http://gtk.mplat.es/libgrss/tarballs/${P}.tar.gz"
 
 LICENSE="LGPL-3"
