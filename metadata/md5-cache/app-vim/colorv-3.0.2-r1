@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gentoo/colorv-3.0.2.tar.bz2 https://dev.gentoo.org/~radhermit/vim/colorv-3.0.2.tar.bz2
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin pkg_setup:python-single-r1 src_prepare:- src_install:vim-plugin
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
-_md5_=54fab8de10fb9845a9715d91b1227a9f
+_md5_=30e2ff614c1f663d46dd1ea03b5e3667
