@@ -10633,7 +10633,7 @@ dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
 dev-vcs/colorcvs 1.4-r1: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
-dev-vcs/cvs 1.12.12-r11: Concurrent Versions System - source code revision control tools
+dev-vcs/cvs 1.12.12-r11 1.12.12-r12: Concurrent Versions System - source code revision control tools
 dev-vcs/cvs-fast-export 1.26 1.38: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1: Convert a CVS repository to a Subversion repository
