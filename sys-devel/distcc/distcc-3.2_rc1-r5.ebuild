@@ -44,12 +44,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
-DCCC_PATH="/usr/$(get_libdir)/distcc/bin"
-DISTCC_VERBOSE="0"
-
 pkg_setup() {
 	enewuser distcc 240 -1 -1 daemon
 	python-single-r1_pkg_setup
+
+	DCCC_PATH="/usr/$(get_libdir)/distcc/bin"
+	DISTCC_VERBOSE="0"
 }
 
 src_prepare() {
