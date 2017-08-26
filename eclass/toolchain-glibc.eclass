@@ -120,9 +120,6 @@ setup_target_flags() {
 			# The mips abi cannot support the GNU style hashes. #233233
 			filter-ldflags -Wl,--hash-style=gnu -Wl,--hash-style=both
 		;;
-		ppc)
-			append-flags "-freorder-blocks"
-		;;
 		sparc)
 			# Both sparc and sparc64 can use -fcall-used-g6.  -g7 is bad, though.
 			filter-flags "-fcall-used-g7"
