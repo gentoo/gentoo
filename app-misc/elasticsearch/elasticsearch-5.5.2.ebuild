@@ -20,8 +20,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -rf bin/*.{bat,exe} || die
-	rm LICENSE.txt || die
+	rm -v bin/*.{bat,exe} LICENSE.exe || die
 
 	default
 }
@@ -32,7 +31,7 @@ src_install() {
 
 	insinto /etc/${PN}
 	doins config/*
-	rm -rf config || die
+	rm -rv config || die
 
 	insinto /usr/share/${PN}
 	doins -r ./*
