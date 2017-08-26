@@ -84,6 +84,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
