@@ -7,12 +7,12 @@
   </synopsis>
   <product type="ebuild">evilvte</product>
   <announced>2017-08-21</announced>
-  <revised>2017-08-21: 1</revised>
+  <revised>2017-08-26: 2</revised>
   <bug>611290</bug>
   <access>remote</access>
   <affected>
     <package name="x11-terms/evilvte" auto="yes" arch="*">
-      <vulnerable range="lt">0.5.1</vulnerable>
+      <vulnerable range="le">0.5.1</vulnerable>
     </package>
   </affected>
   <background>
@@ -45,5 +45,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2017-08-14T23:29:51Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2017-08-21T01:03:58Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-08-26T14:45:16Z">b-man</metadata>
 </glsa>

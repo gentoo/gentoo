@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201708-10">
+  <title>jbig2dec: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple integer overflow flaws have been discovered in jbig2dec,
+    possibly resulting in execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">jbig2dec</product>
+  <announced>2017-08-26</announced>
+  <revised>2017-08-26: 1</revised>
+  <bug>616464</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jbig2dec" auto="yes" arch="*">
+      <unaffected range="ge">0.13-r4</unaffected>
+      <vulnerable range="lt">0.13-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>jbig2dec is a decoder implementation of the JBIG2 image compression
+      format.
+    </p>
+  </background>
+  <description>
+    <p>Integer overflow errors have been discovered in the
+      jbig2_decode_symbol_dict, jbig2_build_huffman_table, and
+      jbig2_image_compose functions of jbig2dec.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted JBIG2
+      file using an application linked against jbig2dec, could possibly execute
+      arbitrary code with the privileges of the process or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All jbig2dec users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/jbig2dec-0.13-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7885">CVE-2017-7885</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7975">CVE-2017-7975</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7976">CVE-2017-7976</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-08-02T02:58:46Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-08-26T14:52:50Z">ackle</metadata>
+</glsa>
