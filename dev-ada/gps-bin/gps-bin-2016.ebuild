@@ -67,9 +67,9 @@ src_install() {
 	doins -r share/themes
 	insinto /opt/${P}/lib/
 	doins -r lib/python2.7
-	dosym /usr/bin/gnatinspect /opt/${P}/bin/gnatinspect
-	dosym /usr/bin/${GNATLS} /opt/${P}/bin/gnatls
-	dosym /usr/bin/${GNATMAKE} /opt/${P}/bin/gnatmake
-	dosym /usr/bin/${GNAT} /opt/${P}/bin/gnat
-	dosym /opt/${P}/bin/gps_exe /usr/bin/gps
+	dosym ../../../usr/bin/gnatinspect /opt/${P}/bin/gnatinspect
+	dosym ../../../usr/bin/${GNATLS} /opt/${P}/bin/gnatls
+	dosym ../../../usr/bin/${GNATMAKE} /opt/${P}/bin/gnatmake
+	dosym ../../../usr/bin/${GNAT} /opt/${P}/bin/gnat
+	dosym ../../opt/${P}/bin/gps_exe /usr/bin/gps
 }
