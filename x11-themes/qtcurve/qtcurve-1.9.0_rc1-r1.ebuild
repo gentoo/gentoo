@@ -7,7 +7,7 @@ KDE_AUTODEPS="false"
 inherit kde5
 
 DESCRIPTION="Widget styles for Qt and GTK2"
-HOMEPAGE="https://quickgit.kde.org/?p=qtcurve.git"
+HOMEPAGE="https://cgit.kde.org/qtcurve.git"
 
 LICENSE="LGPL-2+"
 SLOT="0"
