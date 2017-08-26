@@ -39,7 +39,7 @@ RDEPEND="
 	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"
 DEPEND="dev-perl/Module-Build"
 
-src_configure() { 
+src_configure() {
 	local myconf
 	if use gtk ; then
 		myconf="--gtk-youtube-viewer"
