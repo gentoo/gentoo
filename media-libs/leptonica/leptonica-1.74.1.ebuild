@@ -7,7 +7,7 @@ inherit eutils multilib-minimal
 
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
-SRC_URI="http://www.leptonica.org/source/${P}.tar.gz"
+SRC_URI="https://github.com/DanBloomberg/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0/5"
 KEYWORDS="alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86 ~ppc-macos"
