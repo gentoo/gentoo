@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/hsqldb/hsqldb_1_8_1_3.zip
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_postinst:- pkg_setup:- src_prepare:java-pkg-2 src_configure:java-ant-2 src_compile:java-pkg-2 src_test:- src_install:-
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	java-ant-2	4e2b30d918dda38a51839a4d45282b62	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=f694dfbe1665d49962fa127a3413a08e
+_md5_=d31183944efec2b89d3a191a0710b86f
