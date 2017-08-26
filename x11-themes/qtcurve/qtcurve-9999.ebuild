@@ -7,7 +7,7 @@ KDE_AUTODEPS="false"
 inherit kde5
 
 DESCRIPTION="Widget styles for Qt and GTK2"
-HOMEPAGE="https://quickgit.kde.org/?p=qtcurve.git"
+HOMEPAGE="https://cgit.kde.org/qtcurve.git"
 
 LICENSE="LGPL-2+"
 SLOT="0"
@@ -84,6 +84,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
