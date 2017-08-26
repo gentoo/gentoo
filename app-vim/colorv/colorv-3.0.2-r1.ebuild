@@ -28,7 +28,7 @@ src_prepare() {
 	eapply_user
 
 	# fix shebangs in Python files (note: one of them is python3...)
-	sed -i -e "1s:python[23]:${EPYTHON}:" autoload/colorv/*.py || die 
+	sed -i -e "1s:python[23]:${EPYTHON}:" autoload/colorv/*.py || die
 	# use python colorpicker instead of C-based picker
 	rm autoload/colorv/{colorpicker.c,Makefile} || die
 }
