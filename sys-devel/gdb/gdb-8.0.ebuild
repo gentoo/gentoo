@@ -164,6 +164,11 @@ src_configure() {
 			$(use_with python python "${EPYTHON}")
 		)
 	fi
+	if use sparc-solaris || x86-solaris ; then
+		# disable largefile support
+		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
+		myconf+=( --disable-largefile )
+	fi
 
 	econf "${myconf[@]}"
 }
