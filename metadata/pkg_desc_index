@@ -681,7 +681,7 @@ app-dicts/dictd-misc 1.5b-r1: Easton's 1897 Bible Dictionary for dict
 app-dicts/dictd-vera 1.22 1.23: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
 app-dicts/dictd-web1913 1.4-r1: Webster's Revised Unabridged Dictionary (1913) for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
-app-dicts/dikt 2s 2s_p1: A dictionary application that implements the Dict protocol
+app-dicts/dikt 2s_p1: A dictionary application that implements the Dict protocol
 app-dicts/duali-data 0.1b-r1: Dictionary data for the Arab dictionary project duali
 app-dicts/eblook 1.6.1: Interactive search utility for electronic dictionaries
 app-dicts/edictionary 2.6-r1: Command line dictionary and thesaurus
@@ -5061,7 +5061,7 @@ dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 5.1.0 5.2.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 5.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.26.0 0.28.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -10157,7 +10157,7 @@ dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexibl
 dev-tex/latex2html 2008 2008-r1 2015 2017.2 2017.2-r1: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
 dev-tex/latexdiff 1.1.0 1.1.1 1.2.0-r1 9999: Compare two latex files and mark up significant differences
-dev-tex/latexmk 435 441 443a 444 445 448 452c: Perl script for automatically building LaTeX documents
+dev-tex/latexmk 435 441 443a 444 445 448 452c 453a: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
@@ -10445,7 +10445,7 @@ dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, prov
 dev-util/jenkins-bin 2.46.3 2.57 2.60.1 2.60.2 2.60.3 2.67 2.71: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
-dev-util/kdbg 2.9.0: Graphical debugger interface
+dev-util/kdbg 2.9.0 2.9.1: Graphical debugger interface
 dev-util/kdevelop 5.1.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.1.1: PHP plugin for KDevelop

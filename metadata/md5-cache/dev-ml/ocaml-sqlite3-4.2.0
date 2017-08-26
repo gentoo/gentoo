@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=>=dev-db/sqlite-3.3.3 dev-ml/jbuilder >=dev-ml/findlib-1.3.2 >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=>=dev-db/sqlite-3.3.3 dev-ml/jbuilder dev-ml/base dev-ml/stdio dev-ml/configurator >=dev-ml/findlib-1.3.2 >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=A package for ocaml that provides access to SQLite databases
 EAPI=5
 HOMEPAGE=http://mmottl.github.io/sqlite3-ocaml/
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~x86-fbsd
 LICENSE=MIT
 RDEPEND=>=dev-db/sqlite-3.3.3 >=dev-lang/ocaml-4:=
 SLOT=0/4.2.0
 SRC_URI=https://github.com/mmottl/sqlite3-ocaml/releases/download/4.2.0/sqlite3-4.2.0.tbz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=256776e53b62ef75efc3aaa9b430f808
+_md5_=fb3e249bf1b2b33c0eb0bdbd4b3d3cc3
