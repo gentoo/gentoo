@@ -9191,7 +9191,7 @@ dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies 
 dev-ros/message_to_tf 0.2.0 0.2.1 0.3.0 9999: Translates pose information from different kind of common_msgs message types to tf
 dev-ros/mk 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
-dev-ros/move_base 1.14.0 1.14.2 1.15.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
+dev-ros/move_base 1.15.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Move slow and clear
 dev-ros/moveit_msgs 0.9.1 9999: Messages, services and actions used by MoveIt
