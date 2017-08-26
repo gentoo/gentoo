@@ -96,7 +96,7 @@ moz_pkgsetup() {
 	export USE_PTHREADS=1
 	export ALDFLAGS=${LDFLAGS}
 	# ensure MOZCONFIG is not defined
-	eval unset MOZCONFIG
+	unset MOZCONFIG
 
 	# set MOZILLA_FIVE_HOME
 	export MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"

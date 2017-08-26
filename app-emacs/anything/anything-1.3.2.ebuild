@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="Open anything - QuickSilver-like candidate-selection framework"
-HOMEPAGE="http://www.emacswiki.org/emacs/Anything"
+HOMEPAGE="https://www.emacswiki.org/emacs/Anything"
 # snapshot from http://repo.or.cz/w/anything-config.git
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

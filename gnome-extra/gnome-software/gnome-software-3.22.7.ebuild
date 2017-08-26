@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Gnome install & update software"
-HOMEPAGE="http://wiki.gnome.org/Apps/Software"
+HOMEPAGE="https://wiki.gnome.org/Apps/Software"
 
 LICENSE="GPL-2+"
 SLOT="0"

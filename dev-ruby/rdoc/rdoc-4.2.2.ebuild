@@ -77,7 +77,7 @@ all_ruby_install() {
 	for bin in rdoc ri; do
 		ruby_fakegem_binwrapper $bin /usr/bin/$bin-2
 
-		for version in 21 22 23; do
+		for version in 22 23; do
 			if use ruby_targets_ruby${version}; then
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
 				sed -i -e "1s/env ruby/ruby${version}/" \

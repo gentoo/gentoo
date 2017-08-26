@@ -29,10 +29,35 @@
 
 #--- END OF EXAMPLES ---
 
-# Michael Orlitzky <mjo@gentoo.org> (20 Aug 2017)
-# Masked until somebody who uses systemd tells me
-# I didn't break the service file or configuration.
-=mail-filter/spamassassin-3.4.1-r14
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Aug 2017)
+# media-libs/phonon[zeitgeist] masked on all arches since 2012.
+# No other rdeps left. Masked for removal in 30 days.
+dev-libs/libqzeitgeist
+
+# Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
+# Masked for removal in 30 days.
+# No major keywords,  old EAPI, no maintainer.
+# Use sys-apps/less instead.
+sys-apps/more
+
+# Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
+# Packages depending on this library need to be tested first before
+# it is unmasked. Possibly some slotting is still needed.
+# Package testing tracked in bug #611022.
+>=dev-libs/msgpack-1.4.2
+
+# Michał Górny <mgorny@gentoo.org> (21 Aug 2017)
+# xfce4-mixer is discontinued upstream and no longer considered part
+# of the DE since 4.12. It requires vulnerable gstreamer:0.10, and no
+# longer builds with the development versions of core Xfce4 components.
+# The suggested replacement is xfce-extra/xfce4-pulseaudio-plugin.
+# Removal in 30 days. Bug #628424.
+xfce-extra/xfce4-mixer
+
+# Hanno Boeck <hanno@gentoo.org> (21 Aug 2017)
+# Open security bugs, no upstream, bug 628432
+# Alternatives: app-arch/libarchive, app-arch/unar
+app-arch/unrar-gpl
 
 # Andreas Sturmlechner <asturm@gentoo.org> (20 Aug 2017)
 # Masked for removal in 30 days. Use kde-apps/kio-extras[mtp,slp] instead.
@@ -236,40 +261,6 @@ media-video/dfbsee
 # Upstream dead, relies on also dead DirectFB lib (#625612). Removal in a
 # month.
 net-misc/directvnc
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dropped from upstream tarball for years, removal in a month (#626106)
-gnustep-apps/clipbook
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, last release 13 years ago, removal in a month (#626106)
-gnustep-apps/displaycalibrator
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Segfaults on diffs, last release 8 years ago, removal in a month (#626106)
-gnustep-apps/easydiff
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, last release 11 years ago, removal in a month (#626106)
-gnustep-apps/remotedesk
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Crashes on startup with current gnustep packages, removal in a month (#626106)
-gnustep-apps/sudoku
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, nothing in tree depends on it, removal in a month (#626106)
-gnustep-libs/camerakit
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, nothing in tree depends on it, removal in a month (#626106)
-gnustep-libs/iconkit
-
-# Bernard Cafarelli <voyageur@gentoo.org> (25 Jul 2017)
-# Dead upstream, last code update 11 years ago, removal in a month (#626106)
-# Use gnustep-apps/systempreferences instead
-gnustep-apps/preferences
-gnustep-libs/prefsmodule
 
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data

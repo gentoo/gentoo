@@ -20,11 +20,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
-	>=app-i18n/libpinyin-1.9.91
+	>=app-i18n/libpinyin-1.9.91:=
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	boost? ( dev-libs/boost:= )
 	lua? ( dev-lang/lua:0 )
-	opencc? ( app-i18n/opencc )"
+	opencc? ( app-i18n/opencc:= )"
 
 DEPEND="${RDEPEND}
 	virtual/libintl

@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A simple bash driven frontend to simplify decompression of files"
 HOMEPAGE="http://obsoleet.org/code/unfoo"
@@ -23,7 +23,6 @@ COMMON_DEPS="
 	app-arch/p7zip
 	|| (
 		app-arch/rar
-		app-arch/unrar-gpl
 		app-arch/unrar )
 	app-arch/unace
 	app-arch/unzip

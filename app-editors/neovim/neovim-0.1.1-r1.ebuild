@@ -72,6 +72,6 @@ src_install() {
 
 	# conditionally install a symlink for nvimpager
 	if use nvimpager; then
-		dosym /usr/share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
+		dosym ../share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
 	fi
 }

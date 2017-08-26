@@ -117,7 +117,7 @@ src_install() {
 	dobin src/redis-cli
 	dosbin src/redis-benchmark src/redis-server src/redis-check-aof src/redis-check-rdb
 	fperms 0750 /usr/sbin/redis-benchmark
-	dosym /usr/sbin/redis-server /usr/sbin/redis-sentinel
+	dosym redis-server /usr/sbin/redis-sentinel
 
 	if use prefix; then
 		diropts -m0750

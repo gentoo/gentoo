@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2 readme.gentoo-r1
 
 DESCRIPTION="Screenshot utility for GNOME"
-HOMEPAGE="https://git.gnome.org/browse/gnome-screenshot"
+HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
 
 LICENSE="GPL-2+"
 SLOT="0"

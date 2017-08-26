@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -31,14 +31,14 @@ DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.7"
 
 RDEPEND="${CP_DEPEND}
-    || (
+	|| (
 		dev-java/icedtea:7[-sunec]
 		dev-java/icedtea:8[-sunec]
 		dev-java/icedtea-bin:7
 		dev-java/icedtea-bin:8
 		dev-java/oracle-jre-bin
 		dev-java/oracle-jdk-bin
-    )"
+	)"
 
 EANT_BUILD_TARGET="pkg"
 JAVA_ANT_ENCODING="UTF-8"

@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">cairocffi</remote-id>
-    <remote-id type="github">SimonSapin/cairocffi</remote-id>
+    <remote-id type="github">Kozea/cairocffi</remote-id>
   </upstream>
 </pkgmetadata>

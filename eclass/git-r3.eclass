@@ -105,18 +105,22 @@ fi
 # @ECLASS-VARIABLE: EGIT_REPO_URI
 # @REQUIRED
 # @DESCRIPTION:
-# URIs to the repository, e.g. git://foo, https://foo. If multiple URIs
-# are provided, the eclass will consider them as fallback URIs to try
-# if the first URI does not work. For supported URI syntaxes, read up
-# the manpage for git-clone(1).
+# URIs to the repository, e.g. https://foo. If multiple URIs are
+# provided, the eclass will consider the remaining URIs as fallbacks
+# to try if the first URI does not work. For supported URI syntaxes,
+# read the manpage for git-clone(1).
 #
-# It can be overriden via env using ${PN}_LIVE_REPO variable.
+# URIs should be using https:// whenever possible. http:// and git://
+# URIs are completely unsecured and their use (even if only as
+# a fallback) renders the ebuild completely vulnerable to MITM attacks.
+#
+# It can be overridden via env using ${PN}_LIVE_REPO variable.
 #
 # Can be a whitespace-separated list or an array.
 #
 # Example:
 # @CODE
-# EGIT_REPO_URI="git://a/b.git https://c/d.git"
+# EGIT_REPO_URI="https://a/b.git https://c/d.git"
 # @CODE
 
 # @ECLASS-VARIABLE: EVCS_OFFLINE
@@ -566,6 +570,16 @@ git-r3_fetch() {
 
 	[[ ${repos[@]} ]] || die "No URI provided and EGIT_REPO_URI unset"
 
+	local r
+	for r in "${repos[@]}"; do
+		if [[ ${r} == git:* || ${r} == http:* ]]; then
+			ewarn "git-r3: ${r%%:*} protocol is completely unsecure and may render the ebuild"
+			ewarn "easily suspectible to MITM attacks (even if used only as fallback). Please"
+			ewarn "use https instead."
+			ewarn "[URI: ${r}]"
+		fi
+	done
+
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
@@ -578,7 +592,7 @@ git-r3_fetch() {
 	fi
 
 	# try to fetch from the remote
-	local r success saved_umask
+	local success saved_umask
 	if [[ ${EVCS_UMASK} ]]; then
 		saved_umask=$(umask)
 		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -27,24 +27,24 @@ src_install() {
 
 	insinto /etc/${PN}
 	doins -r Config/*
-	dosym /etc/${PN} /usr/share/${PN}/Config
+	dosym ../../../etc/${PN} /usr/share/${PN}/Config
 
 	perl_set_version
 	insinto ${VENDOR_LIB}
 	doins -r Modules/NaturalDocs
 	dodir /usr/share/${PN}/Modules
-	dosym ${VENDOR_LIB}/NaturalDocs /usr/share/${PN}/Modules/NaturalDocs
+	dosym ../../../..${VENDOR_LIB}/NaturalDocs /usr/share/${PN}/Modules/NaturalDocs
 
 	exeinto /usr/share/${PN}
 	doexe ${PN}
 
 	# Symlink the Perl script into /usr/bin
 	dodir /usr/bin
-	dosym /usr/share/${PN}/${PN} /usr/bin/${PN}
+	dosym ../share/${PN}/${PN} /usr/bin/${PN}
 
 	# Documentation
 	dohtml -r Help/*
-	dosym /usr/share/doc/${PF}/html /usr/share/${PN}/Help
+	dosym ../doc/${PF}/html /usr/share/${PN}/Help
 }
 
 pkg_preinst() {

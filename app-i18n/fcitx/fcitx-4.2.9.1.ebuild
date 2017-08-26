@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -22,10 +22,11 @@ fi
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc ppc64 x86"
-IUSE="+X +autostart +cairo +dbus debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
-REQUIRED_USE="autostart? ( dbus ) cairo? ( X ) gtk2? ( dbus ) gtk3? ( dbus ) introspection? ( dbus ) pango? ( cairo ) qt4? ( X dbus )"
+IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
+REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
-RDEPEND="virtual/libiconv
+RDEPEND="sys-apps/dbus
+	virtual/libiconv
 	virtual/libintl
 	x11-libs/libxkbcommon
 	X? (
@@ -42,7 +43,6 @@ RDEPEND="virtual/libiconv
 		pango? ( x11-libs/pango )
 		!pango? ( media-libs/fontconfig )
 	)
-	dbus? ( sys-apps/dbus )
 	enchant? ( app-text/enchant )
 	gtk2? (
 		dev-libs/glib:2
@@ -58,7 +58,7 @@ RDEPEND="virtual/libiconv
 	)
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
-	opencc? ( app-i18n/opencc )
+	opencc? ( app-i18n/opencc:= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
@@ -101,7 +101,6 @@ src_configure() {
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DSYSCONFDIR="${EPREFIX}/etc"
 		-DENABLE_CAIRO=$(usex cairo)
-		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DEBUG=$(usex debug)
 		-DENABLE_ENCHANT=$(usex enchant)
 		-DENABLE_GETTEXT=$(usex nls)

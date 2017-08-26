@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Brian Evans <grknight@gentoo.org> (21 Aug 2017)
+# No keywords for sys-process/numactl
+dev-db/mariadb numa
+
 # Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
@@ -248,10 +252,6 @@ www-plugins/gnash jemalloc
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
-
-# Patrick Lauer <patrick@gentoo.org> (17 June 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
 
 # Patrick Lauer <patrick@gentoo.org> (27 May 2013)
 # stable keywords missing on tagpy/coherence

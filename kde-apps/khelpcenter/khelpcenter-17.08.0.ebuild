@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KDE_HANDBOOK="forceoptional"
+KDE_HANDBOOK="true"
 inherit kde5
 
 DESCRIPTION="The KDE Help Center"
@@ -20,6 +20,7 @@ DEPEND="
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdbusaddons)
+	$(add_frameworks_dep kdoctools)
 	$(add_frameworks_dep khtml)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kinit)

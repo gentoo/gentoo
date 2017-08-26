@@ -136,8 +136,8 @@ src_install() {
 	python_fix_shebang "${ED}"/usr/share/${PN}
 
 	if use hunspell ; then
-		dosym /usr/share/myspell /usr/share/lyx/dicts
-		dosym /usr/share/myspell /usr/share/lyx/thes
+		dosym ../myspell /usr/share/lyx/dicts
+		dosym ../myspell /usr/share/lyx/thes
 	fi
 }
 

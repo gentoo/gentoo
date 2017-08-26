@@ -9,7 +9,7 @@ inherit qt4-r2
 MY_P="mks_${PV}-src"
 
 DESCRIPTION="A cross platform Qt 4 IDE"
-HOMEPAGE="http://www.monkeystudio.org"
+HOMEPAGE="https://monkeystudio.pasnox.com/"
 SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-3"

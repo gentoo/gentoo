@@ -1,10 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
-inherit bash-completion-r1 distutils-r1 eutils git-r3
+inherit bash-completion-r1 distutils-r1 git-r3
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
@@ -66,7 +66,7 @@ python_prepare_all() {
 			|| die
 	fi
 
-	epatch_user
+	eapply_user
 
 	distutils-r1_python_prepare_all
 }

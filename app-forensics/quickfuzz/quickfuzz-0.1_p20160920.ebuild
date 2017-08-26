@@ -98,6 +98,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-ghc-8.0.2_rc1.patch
 	"${FILESDIR}"/${P}-directory-1.3.patch
+	"${FILESDIR}"/${P}-derive-2.6.patch
 )
 
 # $1 - target tarball name (not including extension)

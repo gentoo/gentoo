@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-db/kdb[mysql?,postgres?,sqlite?]
+	>=dev-db/kdb-3.0.2[mysql?,postgres?,sqlite?]
 	dev-libs/kproperty
 	dev-libs/kreport
 	marble? ( $(add_kdeapps_dep marble) )

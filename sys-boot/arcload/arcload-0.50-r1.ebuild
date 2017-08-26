@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -9,8 +9,8 @@ inherit eutils toolchain-funcs versionator
 MY_PV="${PV/50/5}"
 
 DESCRIPTION="ARCLoad - SGI Multi-bootloader.  Able to bootload many different SGI Systems"
-HOMEPAGE="http://www.linux-mips.org/wiki/index.php/ARCLoad"
-SRC_URI="ftp://ftp.linux-mips.org/pub/linux/mips/people/skylark/${PN}-${MY_PV}.tar.bz2"
+HOMEPAGE="https://www.linux-mips.org/wiki/ARCLoad"
+SRC_URI="https//www.linux-mips.org/pub/linux/mips/people/skylark/arcload-${MY_PV}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="-* ~mips"

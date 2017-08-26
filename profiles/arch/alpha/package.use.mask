@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Brian Evans <grknight@gentoo.org> (21 Aug 2017)
+# No keywords for sys-process/numactl
+dev-db/mariadb numa
+
 # Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
@@ -259,10 +263,6 @@ dev-haskell/dataenc test
 # William Hubbs <williamh@gentoo.org> (22 Jun 2013)
 # dev-python/cython is not keyworded for alpha
 >=app-accessibility/brltty-4.5 python
-
-# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
 
 # Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
 # missing keyword on media-libs/tremor, bug #453200

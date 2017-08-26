@@ -252,7 +252,12 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile all $(usev test)
+	cmake-utils_src_compile all
+	use test && emake -C "${BUILD_DIR}" kodi-test
+}
+
+src_test() {
+	emake -C "${BUILD_DIR}" test
 }
 
 src_install() {

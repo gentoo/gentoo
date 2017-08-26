@@ -90,7 +90,7 @@ src_unpack() {
 
 src_prepare() {
 	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
+	eapply "${FILESDIR}"/5.0.0/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
@@ -193,7 +193,11 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
-	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
+	# clang-tidy requires [static-analyzer] and tests are not split
+	# correctly, so they are all disabled when static-analyzer is off
+	if multilib_is_native_abi && use static-analyzer; then
+		cmake-utils_src_make check-clang-tools
+	fi
 }
 
 src_install() {
@@ -275,4 +279,16 @@ multilib_src_install_all() {
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 	# +x for some reason; TODO: investigate
 	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
+}
+
+pkg_postinst() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow update all
+	fi
+}
+
+pkg_postrm() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow clean all
+	fi
 }
