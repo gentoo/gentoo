@@ -37,9 +37,7 @@ RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
 	net-libs/libpcap
-	libssh2? (
-		net-libs/libssh2[zlib]
-	)
+	libssh2? ( net-libs/libssh2[zlib] )
 	ndiff? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
 	nmap-update? (
@@ -60,8 +58,6 @@ DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
-
-S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
 	"${FILESDIR}"/${PN}-5.21-python.patch
@@ -72,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
 )
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use ndiff || use zenmap; then
@@ -128,7 +125,9 @@ src_prepare() {
 		configure.ac
 
 	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
+
 	eautoreconf
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# we need the original for a Darwin-specific fix, bug #604432
 		mv libdnet-stripped/include/config.h.in{.nmap-orig,} || die
@@ -141,14 +140,14 @@ src_configure() {
 	econf \
 		$(use_enable ipv6) \
 		$(use_enable nls) \
-		$(use_with ncat) \
 		$(use_with libssh2) \
-		$(usex libssh2 --with-zlib) \
+		$(use_with ncat) \
 		$(use_with ndiff) \
 		$(use_with nmap-update) \
 		$(use_with nping) \
 		$(use_with ssl openssl) \
 		$(use_with zenmap) \
+		$(usex libssh2 --with-zlib) \
 		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
 		--cache-file="${S}"/config.cache \
 		--with-libdnet=included \
