@@ -4,15 +4,14 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit virtualx autotools eutils gnome2 multilib python-single-r1 git-r3
+inherit versionator virtualx autotools eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
-EGIT_REPO_URI="https://git.gnome.org/browse/gimp"
-SRC_URI=""
+SRC_URI="mirror://gimp/v$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
@@ -68,7 +67,6 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	postscript? ( app-text/ghostscript-gpl )
 	udev? ( virtual/libgudev:= )"
 DEPEND="${RDEPEND}
-	dev-util/gdbus-codegen
 	dev-libs/appstream-glib
 	sys-apps/findutils
 	virtual/pkgconfig
@@ -76,7 +74,6 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19
 	doc? ( >=dev-util/gtk-doc-1 )
 	>=sys-devel/libtool-2.2
-	>=sys-devel/autoconf-2.54
 	>=sys-devel/automake-1.11
 	dev-util/gtk-doc-am"  # due to our call to eautoreconf below (bug #386453)
 
@@ -95,19 +92,7 @@ src_prepare() {
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
-
-	echo '#!/bin/sh' > py-compile
-	chmod a+x py-compile || die
-	sed -i -e 's:\$srcdir/configure:#:g' autogen.sh
-	local myconf
-	if ! use doc; then
-	    myconf="${myconf} --disable-gtk-doc"
-	fi
-	./autogen.sh ${myconf} || die
-
-	# Fix "libtoolize --force" of autogen.sh (bug #476626)
-	rm install-sh ltmain.sh || die
-	_elibtoolize --copy --install || die
+	eautoreconf  # If you remove this: remove dev-util/gtk-doc-am from DEPEND, too
 
 	gnome2_src_prepare
 
@@ -118,6 +103,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		GEGL=/usr/bin/gegl-0.3
+		GDBUS_CODEGEN=/bin/false
 
 		--enable-default-binary
 		--disable-silent-rules
@@ -194,7 +180,8 @@ src_install() {
 	prune_libtool_files --all
 
 	# Prevent dead symlink gimp-console.1 from downstream man page compression (bug #433527)
-	mv "${ED}"/usr/share/man/man1/gimp-console{-*,}.1 || die
+	local gimp_app_version=$(get_version_component_range 1-2)
+	mv "${ED}"/usr/share/man/man1/gimp-console{-${gimp_app_version},}.1 || die
 
 	_clean_up_locales
 }
