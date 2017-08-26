@@ -47,6 +47,7 @@ src_prepare() {
 		/EnvironmentFile=/{s,/sysconfig/,/conf.d/,g;};
 		' \
 		"${S}"/scripts/memcached.service
+	default
 }
 
 src_configure() {
