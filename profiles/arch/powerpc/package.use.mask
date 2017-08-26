@@ -228,10 +228,6 @@ app-shells/mksh static
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Agostino Sarubbo <ago@gentoo.org> (23 Apr 2013)
 # dev-db/spatialite fails to compile on ppc*
 sci-libs/gdal spatialite
