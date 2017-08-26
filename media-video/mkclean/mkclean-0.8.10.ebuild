@@ -1,7 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
+
+inherit toolchain-funcs
 
 DESCRIPTION="mkclean is a command line tool to clean and optimize Matroska files"
 HOMEPAGE="http://www.matroska.org/downloads/mkclean.html"
@@ -13,8 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_configure() {
-	# non-standard configure
-	./configure || die
+	tc-export CC CXX
+
+	emake -C corec/tools/coremake
+	mv corec/tools/coremake/coremake . || die
+
+	./coremake $(corec/tools/coremake/system_output.sh) || die
 
 	# fixing generated makefiles
 	sed -i -e 's|^\(LFLAGS.*+=.*\$(LIBS)\)|\1 \$(LDFLAGS)|g' \
