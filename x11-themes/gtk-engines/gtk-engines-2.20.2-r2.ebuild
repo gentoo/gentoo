@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit eutils gnome2 multilib-minimal
 
 DESCRIPTION="GTK+2 standard engines and themes"
-HOMEPAGE="http://www.gtk.org/"
+HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
