@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Desktop agnostic launcher"
-HOMEPAGE="https://github.com/manuelschneid3r/albert"
-SRC_URI="https://github.com/manuelschneid3r/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://albertlauncher.github.io/"
+SRC_URI="https://github.com/albertlauncher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
