@@ -9473,7 +9473,7 @@ dev-ruby/celluloid-io 0.16.2 0.17.3: Evented IO for Celluloid actors
 dev-ruby/celluloid-pool 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-supervision 0.20.6: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/certificate_authority 0.1.6-r1 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
-dev-ruby/charlock_holmes 0.7.3 0.7.4: Character encoding detecting library for Ruby using ICU
+dev-ruby/charlock_holmes 0.7.3 0.7.4 0.7.5: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
 dev-ruby/childprocess 0.5.3 0.6.3 0.7.0 0.7.1: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
@@ -9577,12 +9577,12 @@ dev-ruby/gh 0.15.0-r1 0.15.1: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r3 2.12.2 3.2.0-r1 4.1.3: Fast Gherkin lexer and parser
 dev-ruby/git 1.3.0: Library for using Git in Ruby
 dev-ruby/github_api 0.14.5 0.17.0: A Ruby wrapper for the GitHub REST API v3
-dev-ruby/globalid 0.3.6 0.3.6-r1 0.3.7 0.4.0 0.4.0-r1: Reference models by URI
+dev-ruby/globalid 0.4.0 0.4.0-r1: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0 0.7.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1 5.0.1 5.0.2: A ruby web page templating engine
-dev-ruby/haml-rails 0.9.0 1.0.0: Provides Haml generators for Rails 4
+dev-ruby/haml-rails 1.0.0: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 0.3.4 0.3.5 0.3.6: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
@@ -9604,7 +9604,7 @@ dev-ruby/hoe-seattlerb 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.2.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
-dev-ruby/http 0.6.3-r1 0.9.8 0.9.8-r1 0.9.8-r2 1.0.2 2.2.1 2.2.2: An easy-to-use client library for making requests from Ruby
+dev-ruby/http 0.6.3-r1 0.9.8-r1 0.9.8-r2 1.0.2 2.2.1 2.2.2: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-cookie 1.0.2-r1 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1-r1 1.0.2 1.0.3: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
@@ -9622,19 +9622,19 @@ dev-ruby/introspection 0.0.3 0.0.4: Dynamic inspection of the hierarchy of metho
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
 dev-ruby/itextomml 1.5.4 1.5.5 1.5.6: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jeweler 2.3.7: Rake tasks to manage gems, versioning and generate new projects
-dev-ruby/jira-ruby 1.3.0 1.4.0 1.4.1: API for JIRA
+dev-ruby/jira-ruby 1.3.0 1.4.0 1.4.1 1.4.3: API for JIRA
 dev-ruby/jmespath 1.3.1: Implements JMESPath for Ruby
 dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
-dev-ruby/jquery-rails 3.1.4 4.1.1 4.1.1-r1 4.2.2 4.3.1 4.3.1-r1: jQuery! For Rails! So great
+dev-ruby/jquery-rails 3.1.4 4.2.2 4.3.1 4.3.1-r1: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 4.2.1 5.0.5 6.0.0 6.0.1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.3.0-r1 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.2-r1 1.8.3 1.8.6 2.0.4 2.1.0: A JSON implementation as a Ruby extension
-dev-ruby/jwt 1.5.4 1.5.5 1.5.6: A Ruby implementation of JSON Web Token draft 06
+dev-ruby/jwt 1.5.5 1.5.6: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0: A simple PEG library for Ruby
-dev-ruby/kramdown 1.12.0 1.13.1 1.13.2 1.13.2-r1 1.14.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
-dev-ruby/launchy 2.4.3 2.4.3-r1 2.4.3-r2: Helper class for launching cross-platform applications
+dev-ruby/kramdown 1.13.2 1.13.2-r1 1.14.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/launchy 2.4.3-r1 2.4.3-r2: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.4.1: Preview mail in the browser instead of sending
 dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
@@ -9644,11 +9644,11 @@ dev-ruby/liquid-c 3.0.0: Liquid performance extension in C
 dev-ruby/listen 0.7.3-r2 1.3.1-r3 1.3.1-r4 3.0.8 3.1.5 3.1.5-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.4: Module that provides Gem based plugin management
-dev-ruby/locale 2.1.0-r2 2.1.1 2.1.2 2.1.2-r1: A pure ruby library which provides basic APIs for localization
+dev-ruby/locale 2.1.0-r2 2.1.2 2.1.2-r1: A pure ruby library which provides basic APIs for localization
 dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
-dev-ruby/logging 2.1.0 2.2.0 2.2.2: Flexible logging library based on the design of Java's log4j library
+dev-ruby/logging 2.2.2: Flexible logging library based on the design of Java's log4j library
 dev-ruby/logue 1.0.4 1.0.8: A module that adds logging/trace functionality
 dev-ruby/loofah 2.0.3: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
@@ -9716,14 +9716,14 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 5.3.1 5.3.2: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.2.1 1.2.1-r1 2.0.0 2.1.0: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 1.2.1-r1 2.0.0 2.1.0: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.6.8.1 1.7.1 1.7.2 1.8.0: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9 1.4.13: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2 0.5.1 0.5.3: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.2.0 1.2.0-r1 1.3.0 1.3.1 1.4.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.3.1 1.4.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.4.1 4.6.2 4.7.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.3.1 1.3.2 1.4.0 1.6.0 1.6.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
@@ -9734,14 +9734,14 @@ dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.4.11 2.4.13 2.5.0 2.6.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1 1.1.13: A mid-level packet manipulation library
-dev-ruby/paint 1.0.1 2.0.0: Terminal painter
+dev-ruby/paint 2.0.0: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
 dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1 1.8.0: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/path_expander 1.0.1 1.0.2: Pre-process CLI arguments expanding directories into their constituent files
 dev-ruby/pathutil 0.14.0 0.14.0-r1: Like Pathname but a little less insane
-dev-ruby/patron 0.4.18-r2 0.5.0-r1 0.8.0 0.9.1: Patron is a Ruby HTTP client library based on libcurl
+dev-ruby/patron 0.4.18-r2 0.8.0 0.9.1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.1 0.12.4: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.1 0.6.1-r1 0.7.0: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0: A tool for analyzing PDF output
