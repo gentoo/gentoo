@@ -241,10 +241,6 @@ dev-haskell/dataenc test
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Dirkjan Ochtman <djc@gentoo.org> (3 May 2013)
 # depends on net-libs/polarssl
 >=net-vpn/openvpn-2.3.1 polarssl

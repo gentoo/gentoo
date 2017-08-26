@@ -29,7 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrice Clement (23 Aug 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Aug 2017)
+# media-libs/phonon[zeitgeist] masked on all arches since 2012.
+# No other rdeps left. Masked for removal in 30 days.
+dev-libs/libqzeitgeist
+
+# Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
+# Masked for removal in 30 days.
+# No major keywords,  old EAPI, no maintainer.
+# Use sys-apps/less instead.
+sys-apps/more
+
+# Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
 # Packages depending on this library need to be tested first before
 # it is unmasked. Possibly some slotting is still needed.
 # Package testing tracked in bug #611022.
