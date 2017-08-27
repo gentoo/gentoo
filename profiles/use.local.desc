@@ -16,7 +16,6 @@ app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/orca:braille - Enable braille support
 app-accessibility/simon:opencv - Use media-libs/opencv
-app-accessibility/simon:pim - Use kde-apps/kdepimlibs
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
@@ -1025,7 +1024,6 @@ app-office/kexi:marble - Enable displaying of maps using kde-apps/marble
 app-office/kexi:mdb - Enable support for Microsoft Access database
 app-office/kexi:webkit - Enable web form designer widget using dev-qt/qtwebkit
 app-office/kmymoney:hbci - Enable HBCI support using net-libs/aqbanking
-app-office/kmymoney:pim - Enable KDE PIM integration via kde-apps/kdepimlibs
 app-office/kmymoney:quotes - Enable Online Stock Quote retrieval
 app-office/kmymoney:weboob - Enable import of online banking transactions extracted by www-client/weboob
 app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
