@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1
+inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 virtualx
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
 HOMEPAGE="http://zbar.sourceforge.net/"
@@ -91,6 +91,10 @@ src_configure() {
 		$(use_with X x) \
 		$(use_with xv xv) \
 		$(use_enable v4l video)
+}
+
+src_test() {
+	virtx default
 }
 
 src_install() {
