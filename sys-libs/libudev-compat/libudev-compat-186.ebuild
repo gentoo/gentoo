@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Wrapper around libudev.so.1 for packages needing the old libudev.so.0"
-HOMEPAGE="http://gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="LGPL-2.1+"
