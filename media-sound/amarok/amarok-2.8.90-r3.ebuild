@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="4"
-IUSE="cdda debug +embedded ipod lastfm mp3tunes mtp ofa opengl test +utils"
+IUSE="debug +embedded ipod lastfm mp3tunes mtp ofa opengl test +utils"
 
 if [[ ${KDE_BUILD_TYPE} == live ]]; then
 	RESTRICT+=" test"
@@ -41,20 +41,15 @@ COMMONDEPEND="
 	>=dev-qt/qtdbus-4.8:4
 	>=dev-qt/qtscript-4.8:4
 	>=x11-libs/qtscriptgenerator-0.1.0
-	cdda? (
-		$(add_kdeapps_dep libkcddb)
-		$(add_kdeapps_dep libkcompactdisc)
-		$(add_kdeapps_dep audiocd-kio)
-	)
 	ipod? ( >=media-libs/libgpod-0.7.0[gtk] )
 	lastfm? ( >=media-libs/liblastfm-1.0.3[qt4(+)] )
 	mp3tunes? (
 		dev-libs/glib:2
 		dev-libs/libxml2
 		dev-libs/openssl:0
+		>=dev-qt/qtcore-4.8.4:4[glib]
 		net-libs/loudmouth
 		net-misc/curl
-		>=dev-qt/qtcore-4.8.4:4[glib]
 	)
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	ofa? ( >=media-libs/libofa-0.9.0 )
