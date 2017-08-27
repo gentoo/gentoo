@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
+# Drop stable gstreamer on sparc, can move to use.stable.mask
+# after gstreamer:0.10 is gone; #601354
+media-plugins/evas_generic_loaders gstreamer
+dev-libs/efl gstreamer
+media-sound/mp3splt-gtk gstreamer
+net-im/pidgin gstreamer
+
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
 # Drop stable ruby on sparc
 app-admin/augeas test
