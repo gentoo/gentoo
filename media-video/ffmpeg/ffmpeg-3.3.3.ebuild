@@ -96,7 +96,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa doc +encode jack oss pic static-libs test v4l
+	alsa chromium doc +encode jack oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -307,13 +307,17 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
 
-PATCHES=( "${FILESDIR}/openjpeg22.patch" )
+PATCHES=(
+	"${FILESDIR}"/openjpeg22.patch
+	"${FILESDIR}"/chromium.patch
+)
 
 src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 	default
+	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
 
 multilib_src_configure() {
@@ -440,6 +444,20 @@ multilib_src_configure() {
 		"${myconf[@]}"
 	echo "${@}"
 	"${@}" || die
+
+	if multilib_is_native_abi && use chromium; then
+		einfo "Configuring for Chromium"
+		mkdir -p ../chromium || die
+		pushd ../chromium >/dev/null || die
+		set -- "${@}" \
+			--disable-shared \
+			--enable-static \
+			--enable-pic \
+			--extra-cflags="-DFF_API_CONVERGENCE_DURATION=0"
+		echo "${@}"
+		"${@}" || die
+		popd >/dev/null || die
+	fi
 }
 
 multilib_src_compile() {
@@ -451,6 +469,13 @@ multilib_src_compile() {
 				emake V=1 tools/${i}
 			fi
 		done
+
+		if use chromium; then
+			einfo "Compiling for Chromium"
+			pushd ../chromium >/dev/null || die
+			emake V=1 libffmpeg
+			popd >/dev/null || die
+		fi
 	fi
 }
 
@@ -463,6 +488,13 @@ multilib_src_install() {
 				dobin tools/${i}
 			fi
 		done
+
+		if use chromium; then
+			einfo "Installing for Chromium"
+			pushd ../chromium >/dev/null || die
+			emake V=1 DESTDIR="${D}" install-libffmpeg
+			popd >/dev/null || die
+		fi
 	fi
 }
 
