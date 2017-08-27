@@ -1034,7 +1034,7 @@ app-editors/juffed 0.10-r1: QScintilla-based tabbed text editor with syntax high
 app-editors/jupp 3.1_p27 3.1_p30: portable version of JOE's Own Editor
 app-editors/kakoune 0_pre20160620 0_pre20170523 9999: Selection-oriented code editor inspired by vim
 app-editors/kile 2.1.3-r3: A Latex Editor and TeX shell by KDE
-app-editors/latexila 3.22.1 3.24.2: Integrated LaTeX environment for GNOME
+app-editors/latexila 3.22.1 3.24.2 3.24.3: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.1 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
 app-editors/leo 5.1: Leo: Literate Editor with Outlines
@@ -1807,7 +1807,7 @@ app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.5 4.18.6-r1: A index/query system to search a large set of files quickly
-app-misc/gnote 3.22.1 3.24.0: Desktop note-taking application
+app-misc/gnote 3.22.1 3.24.0 3.24.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 0.1.14: A simple JIRA commandline client in Go
@@ -4838,7 +4838,7 @@ dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.13.0 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.6 1.7.7 1.7.8 1.8.0-r1: General purpose crypto library based on the code used in GnuPG
-dev-libs/libgdata 0.17.8 0.17.8-r1: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.8 0.17.8-r1 0.17.9: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1 0.20.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 0.26.0 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4 0.25.0 0.26.0-r1: Git library for GLib
@@ -4846,7 +4846,7 @@ dev-libs/libgnome-games-support 1.2.1 1.2.2: Library for code common to Gnome ga
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 230-r1 231: GObject bindings for libudev
-dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
+dev-libs/libgusb 0.2.7 0.2.8 0.2.9 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.20.4 3.24.1: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
@@ -8264,7 +8264,7 @@ dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports a
 dev-python/pycodestyle 2.0.0 2.1.0 2.2.0 2.3.1: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pycountry 16.11.8 17.5.14: Database of countries, subdivisions, languages, currencies and script
-dev-python/pycparser 2.14 2.17 2.18: C parser and AST generator written in Python
+dev-python/pycparser 2.14 2.17 2.18-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.5 3.4.6: A self-contained cryptographic library for Python
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
@@ -12702,13 +12702,13 @@ media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9 2.0.0: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.22.0 3.24.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.22.6 3.24.2: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.22.6 3.24.2 3.24.3: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r2 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.10 2.5.11: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.10 2.5.11 2.5.14: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
@@ -13056,7 +13056,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0 4.0.0-r1: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.2 0.1.0 9999: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.10 2.5.12: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.10 2.5.12 2.5.14: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -14725,7 +14725,7 @@ net-im/dianara 1.3.1-r1 1.3.3 1.3.7: Qt-based client for the pump.io distributed
 net-im/discord-bin 0.0.1: All-in-one voice and text chat for gamers
 net-im/ejabberd 16.09 17.01-r2 17.04-r1: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
-net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
+net-im/empathy 3.12.12 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
 net-im/gajim 0.16.6-r1 0.16.8: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
@@ -15016,7 +15016,7 @@ net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_pre20160904 0.1.6 0.1.10 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
-net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
+net-libs/uhttpmock 0.4.0 0.5.0 0.5.1: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
@@ -15544,7 +15544,7 @@ net-nntp/kwooty 1.1.0_p20150623: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 18.1 19.0 19.1: A command-line based binary newsgrabber supporting .nzb files
-net-nntp/pan 0.140 0.141: A newsreader for GNOME
+net-nntp/pan 0.140 0.141 0.142: A newsreader for GNOME
 net-nntp/sabnzbd 2.1.0: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
