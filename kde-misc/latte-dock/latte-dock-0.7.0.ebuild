@@ -3,6 +3,7 @@
 
 EAPI=6
 
+QT_MINIMAL="5.7.1"
 inherit cmake-utils gnome2-utils kde5-functions
 
 DESCRIPTION="Elegant dock, based on KDE Frameworks"
@@ -27,6 +28,7 @@ RDEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep kglobalaccel)
@@ -45,14 +47,13 @@ RDEPEND="
 	$(add_qt_dep qtgui 'xcb')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
+	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libxcb
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep extra-cmake-modules)
 "
-
-BUILD_DIR="${S}/build"
 
 DOCS=( CHANGELOG.md README.md TRANSLATORS )
 
