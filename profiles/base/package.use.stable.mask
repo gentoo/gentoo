@@ -4,6 +4,15 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# James Le Cuirot <chewi@gentoo.org> (27 Aug 2017)
+# Masked for testing.
+media-video/ffmpeg chromium
+www-client/opera system-ffmpeg
+www-client/opera-beta system-ffmpeg
+www-client/opera-developer system-ffmpeg
+www-client/vivaldi system-ffmpeg
+www-client/vivaldi-snapshot system-ffmpeg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
 # Unstable dependencies.
 kde-apps/kopete cryptography
