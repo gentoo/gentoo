@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="Icon themes for smplayer"
-HOMEPAGE="http://www.smplayer.eu/"
+HOMEPAGE="http://www.smplayer.info/"
 SRC_URI="mirror://sourceforge/smplayer/${P}.tar.bz2"
 
 LICENSE="CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 CC0-1.0 GPL-2 GPL-3+ LGPL-3"
