@@ -14,8 +14,9 @@ SRC_URI="https://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="gtk imagemagick java jpeg python qt4 static-libs +threads v4l X xv"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="gtk imagemagick java jpeg python qt4 static-libs test +threads v4l X xv"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 	imagemagick? ( virtual/imagemagick-tools )
@@ -33,12 +34,15 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.4 )"
 DEPEND="${CDEPEND}
 	java? ( >=virtual/jdk-1.4 )
+	test? ( ${PYTHON_DEPS} )
 	app-arch/unzip
 	sys-devel/gettext
 	virtual/pkgconfig"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	if use python || use test; then
+		python-single-r1_pkg_setup
+	fi
 	java-pkg-opt-2_pkg_setup
 }
 
