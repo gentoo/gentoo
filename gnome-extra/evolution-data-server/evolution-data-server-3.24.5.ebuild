@@ -18,7 +18,7 @@ SLOT="0/60" # subslot = libcamel-1.2 soname version
 IUSE="api-doc-extras berkdb +gnome-online-accounts +gtk google +introspection ipv6 ldap kerberos vala +weather"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # sys-libs/db is only required for migrating from <3.13 versions
 # gdata-0.17.7 soft required for new gdata_feed_get_next_page_token API to handle more than 100 google tasks
