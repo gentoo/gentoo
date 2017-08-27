@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-proto/xproto x11-libs/libXt
+DESCRIPTION=Command-line program for getting and setting the contents of the X selection
+EAPI=6
+HOMEPAGE=http://www.vergenet.net/~conrad/software/xsel
+KEYWORDS=amd64 ~arm ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=HPND
+RDEPEND=x11-libs/libX11 x11-libs/libXext
+SLOT=0
+SRC_URI=http://www.vergenet.net/~conrad/software/xsel/download/xsel-1.2.0.tar.gz
+_eclass_exported_funcs=src_compile:-
+_md5_=1918283daf9c249353f6f190ee93e7da

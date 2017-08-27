@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=X? ( =x11-libs/fltk-1* x11-libs/libX11 x11-libs/libXext x11-libs/libXft ) >=sys-libs/zlib-1.1.4
+DESCRIPTION=A 3D quaternionic fractal generator
+EAPI=0
+HOMEPAGE=http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
+IUSE=X debug
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.physcip.uni-stuttgart.de/phy11733/download/quat-1.20.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=ab5572659e13263ade60b8eac3eccf76

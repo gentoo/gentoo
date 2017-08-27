@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=An in-depth exploration of the art of shell scripting
+EAPI=5
+HOMEPAGE=http://www.tldp.org/LDP/abs/html
+IUSE=pdf
+KEYWORDS=alpha amd64 hppa ~mips ppc sparc x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://bash.deta.in/abs-guide-final.tar.bz2 pdf? ( http://bash.deta.in/abs-guide.pdf )
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_md5_=42f7d639dc8ab4239d3e8678e1f81e7c

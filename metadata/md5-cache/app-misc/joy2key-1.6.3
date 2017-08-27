@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=X? ( x11-libs/libX11 x11-apps/xwininfo ) X? ( x11-proto/xproto )
+DESCRIPTION=An application that translates joystick events to keyboard events
+EAPI=0
+HOMEPAGE=https://sourceforge.net/projects/joy2key
+IUSE=X
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 x11-apps/xwininfo )
+SLOT=0
+SRC_URI=mirror://sourceforge/joy2key/joy2key-1.6.3.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=9cb2603948bd7c0e48deb3d3b146d0d8

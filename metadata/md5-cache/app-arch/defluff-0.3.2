@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=deflate huffman optimizer
+EAPI=5
+HOMEPAGE=http://j-o.users.sourceforge.net/ http://encode.ru/threads/1214-defluff-a-deflate-huffman-optimizer
+KEYWORDS=~amd64 ~x86 -*
+LICENSE=all-rights-reserved
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=amd64? ( http://encode.ru/attachment.php?attachmentid=1523 -> defluff-0.3.2-linux-x86_64.zip ) x86? ( http://encode.ru/attachment.php?attachmentid=1522 -> defluff-0.3.2-linux-i686.zip )
+_eclass_exported_funcs=src_install:-
+_md5_=50ed26f5c3917ea2f5e792fd8f074f8a

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=extract MPEG streams from CD images, convert VCD files to MPEG, correct MPEG errors, and more
+EAPI=2
+HOMEPAGE=http://www.vcdgear.com/
+KEYWORDS=-* amd64 x86
+LICENSE=all-rights-reserved
+RDEPEND=virtual/libstdc++:3.3
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.vcdgear.com/files/vcdgear176-040415_linux.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=795b1d0afb3485bd0aba1ea4cac158d2

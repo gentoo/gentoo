@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=The CLI inxi collects and prints hardware and system information
+EAPI=6
+HOMEPAGE=https://github.com/smxi/inxi
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-shells/bash-3.0 sys-apps/pciutils sys-apps/usbutils
+SLOT=0
+SRC_URI=https://github.com/smxi/inxi/tarball/89e18d245bc34fc5be5f5baddac2ccd8106be050 -> inxi-2.3.4_p20161104.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=3eb8d9c03f5ececaa2f87343d2ca5a56

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Module-Build-0.380.0 test? ( dev-perl/Test-NoWarnings ) dev-lang/perl:=
+DESCRIPTION=IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/IMAP-BodyStructure/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KA/KAPPA/IMAP-BodyStructure-1.03.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=cb4976abb9f8ef168bed3bb2dc06afe9

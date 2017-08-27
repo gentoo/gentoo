@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=PPD files for XEROX CopyCentre, DocuPrint, Phaser, WorkCentre (for CUPS)
+EAPI=2
+HOMEPAGE=http://www.support.xerox.com/go/getfile.asp?objid=61334&prodID=6180
+KEYWORDS=amd64 x86
+LICENSE=Xerox
+RDEPEND=net-print/cups
+RESTRICT=bindist fetch
+SLOT=0
+SRC_URI=http://download.support.xerox.com/pub/drivers/DocuColor_2006/drivers/unix/en/LinuxCupsPrinterPkg.tar.gz
+_eclass_exported_funcs=src_unpack:- src_install:-
+_md5_=19a3457129f8ae92afabe023bfbf5db4

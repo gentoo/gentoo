@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=!dev-php/PEAR-PhpDocumentor
+DESCRIPTION=Automatic documenting of php api directly from the source
+EAPI=6
+HOMEPAGE=https://pear.phpdoc.org/package/phpDocumentor
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=media-gfx/graphviz dev-lang/php:*[iconv,intl,xmlreader,xslt] >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http:///get/phpDocumentor-2.7.0.tgz
+_eclass_exported_funcs=pkg_postrm:php-pear-r2 pkg_postinst:php-pear-r2 src_prepare:- src_install:-
+_eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
+_md5_=be8dc56ab28cf557f06d8f0b370f9195

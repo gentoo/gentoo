@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=readline? ( sys-libs/readline:0= ) guile? ( >=dev-scheme/guile-1.8:= )
+DESCRIPTION=patched version of GNU make that adds improved error reporting, tracing, and a debugger
+EAPI=5
+HOMEPAGE=http://bashdb.sourceforge.net/remake/
+IUSE=guile readline
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-1
+RDEPEND=readline? ( sys-libs/readline:0= ) guile? ( >=dev-scheme/guile-1.8:= )
+SLOT=0
+SRC_URI=mirror://sourceforge/bashdb/remake-4.1+dbg1.1.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=367dcde1bc3ac0499fb5487cc31d598b

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=cli? ( dev-lang/php:*[simplexml,tokenizer] ) dev-lang/php:*
+DESCRIPTION=A high quality and open source framework for developing Web Applications
+EAPI=5
+HOMEPAGE=http://framework.zend.com/
+IUSE=cli doc examples minimal
+KEYWORDS=amd64 hppa ~ppc x86
+LICENSE=BSD
+RDEPEND=cli? ( dev-lang/php:*[simplexml,tokenizer] ) dev-lang/php:*
+SLOT=0
+SRC_URI=!minimal? ( http://framework.zend.com/releases/ZendFramework-1.12.9/ZendFramework-1.12.9.tar.gz ) minimal? ( http://framework.zend.com/releases/ZendFramework-1.12.9/ZendFramework-1.12.9-minimal.tar.gz ) doc? ( http://framework.zend.com/releases/ZendFramework-1.12.9/ZendFramework-1.12.9-apidoc.tar.gz http://framework.zend.com/releases/ZendFramework-1.12.9/ZendFramework-1.12.9-manual-en.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=php-lib-r1	6678e5aa3d09f16c7ea1cdc12ca1d81c
+_md5_=013e02ccde769ea51df850db396c81dd

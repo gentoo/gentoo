@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=bluetooth? ( net-wireless/bluez ) nls? ( sys-devel/gettext )
+DESCRIPTION=Exchange data with Siemens phones
+EAPI=0
+HOMEPAGE=http://www.hendrik-sattler.de/scmxx/
+IUSE=bluetooth nls
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=bluetooth? ( net-wireless/bluez )
+SLOT=0
+SRC_URI=mirror://sourceforge/scmxx/scmxx-0.9.0.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=e495b6a117e9607ffa45a9fc7c4bff06

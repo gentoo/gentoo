@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=An SMTP filter to check for viruses using the ClamAV anti-virus software
+EAPI=0
+HOMEPAGE=http://thewalter.net/stef/software/clamsmtp/
+KEYWORDS=amd64 hppa ~sparc x86
+LICENSE=BSD
+RDEPEND=>=app-antivirus/clamav-0.75
+SLOT=0
+SRC_URI=http://thewalter.net/stef/software/clamsmtp/clamsmtp-1.10.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=cfb64a312ea4dd11f8782cc8f6969401

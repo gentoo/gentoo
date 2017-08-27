@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure postinst setup
+DEPEND=nls? ( sys-devel/gettext )
+DESCRIPTION=Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
+EAPI=6
+HOMEPAGE=https://savannah.nongnu.org/projects/davfs2
+IUSE=nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-3+
+RDEPEND=dev-libs/libxml2 net-libs/neon sys-libs/zlib nls? ( virtual/libintl virtual/libiconv )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://nongnu/davfs2/davfs2-1.5.4.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=e12ef3049a62a97d5a84ca81d904e26d

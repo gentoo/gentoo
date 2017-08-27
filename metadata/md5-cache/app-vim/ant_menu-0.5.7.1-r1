@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Java ant build system integration
+EAPI=6
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=155
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=LGPL-2
+RDEPEND=dev-java/ant || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/ant_menu-0.5.7.1.tar.bz2 https://dev.gentoo.org/~radhermit/vim/ant_menu-0.5.7.1.tar.bz2
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=f9fa661c2a55bd71d071b9f26e828a79

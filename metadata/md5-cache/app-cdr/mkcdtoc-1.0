@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/perl-5.8.0
+DESCRIPTION=command-line utility to create toc-files for cdrdao
+EAPI=0
+HOMEPAGE=https://sourceforge.net/projects/mkcdtoc/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.8.0
+SLOT=0
+SRC_URI=mirror://sourceforge/mkcdtoc/mkcdtoc-1.0.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=b5c13f103a70023ad726e12ef0c1476a

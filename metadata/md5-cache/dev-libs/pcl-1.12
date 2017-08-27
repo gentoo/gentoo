@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Portable Coroutine Library
+EAPI=5
+HOMEPAGE=http://xmailserver.org/libpcl.html
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+SLOT=0/1
+SRC_URI=http://xmailserver.org/pcl-1.12.tar.gz
+_eclass_exported_funcs=-
+_md5_=096eb732533a5eda0c67d7843a0b5e73

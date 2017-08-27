@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Convert CD images from bin/cue to iso+wav/cdr
+EAPI=6
+HOMEPAGE=http://he.fi/bchunk/
+KEYWORDS=amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=http://he.fi/bchunk/bchunk-1.2.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=d378a76ea3ccd7cb31d78b6f06bde5fc

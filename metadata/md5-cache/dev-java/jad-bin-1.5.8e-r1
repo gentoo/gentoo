@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Jad - The fast JAva Decompiler
+EAPI=5
+HOMEPAGE=http://www.kpdus.com/jad.html
+KEYWORDS=amd64 x86
+LICENSE=freedist
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.kpdus.com/jad/linux/jadls158.zip
+_eclass_exported_funcs=src_install:-
+_md5_=8ef2339b9646c510e295fe3d05d8bbc9

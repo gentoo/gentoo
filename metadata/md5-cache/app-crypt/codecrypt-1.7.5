@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/gmp:= cryptopp? ( dev-libs/crypto++ ) sci-libs/fftw:3.0
+DESCRIPTION=Post-quantum cryptography tool
+EAPI=6
+HOMEPAGE=http://e-x-a.org/codecrypt/
+IUSE=+cryptopp
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-libs/gmp:= cryptopp? ( dev-libs/crypto++ ) sci-libs/fftw:3.0
+SLOT=0
+SRC_URI=http://e-x-a.org/codecrypt/files/codecrypt-1.7.5.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_md5_=f064335c85325ea7a0fc7d9715687d63

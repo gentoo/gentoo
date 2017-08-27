@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Lightweight CalDAV+CardDAV server
+EAPI=5
+HOMEPAGE=http://sabre.io/baikal/
+IUSE=+mysql sqlite vhosts
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-3
+RDEPEND=>=dev-lang/php-5.5[ctype,filter,json,pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?] mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=|| ( mysql sqlite )
+SLOT=0.4.6
+SRC_URI=https://github.com/fruux/Baikal/releases/download/0.4.6/baikal-0.4.6.zip
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=143c299ca829e871188eb633c263f1ad

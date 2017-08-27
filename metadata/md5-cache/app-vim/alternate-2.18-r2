@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: quickly switch between .c and .h files
+EAPI=6
+HOMEPAGE=https://github.com/vim-scripts/a.vim
+KEYWORDS=~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=alternate
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/vim-scripts/a.vim/archive/2.18.tar.bz2 -> alternate-2.18.tar.bz2 http://www.vim.org/scripts/download_script.php?src_id=6347 -> alternate.txt
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=b6b1c4f65f6b06f8727187b56a262378

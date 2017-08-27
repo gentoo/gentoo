@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst
+DEPEND=virtual/cron
+DESCRIPTION=a client for signing certificates with an ACME-server
+EAPI=6
+HOMEPAGE=https://github.com/lukas2511/dehydrated
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=virtual/cron app-shells/bash
+SLOT=0
+SRC_URI=https://github.com/lukas2511/dehydrated/archive/v0.4.0.tar.gz -> dehydrated-0.4.0.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=37f45bdcbea0211bf6d4a094092c42eb

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=>=media-libs/blib-1.1.4 virtual/pkgconfig aalib? ( >=media-libs/aalib-1.4_rc4-r2 ) gtk? ( >=x11-libs/gtk+-2.4.4 ) directfb? ( >=dev-libs/DirectFB-0.9.20-r1 )
+DESCRIPTION=Graphical Blinkenlights simulator with networking support
+EAPI=0
+HOMEPAGE=http://www.blinkenlights.net/project/developer-tools
+IUSE=aalib gtk directfb
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=media-video/blinkenthemes
+SLOT=0
+SRC_URI=http://www.blinkenlights.de/dist/blinkensim-2.7.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=830b5946005a207ace330f7dbedbd245

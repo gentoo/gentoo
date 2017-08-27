@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND=>=sys-fs/fuse-2.9 virtual/pkgconfig
+DESCRIPTION=FUSE filesystem for bind mounting with altered permissions
+EAPI=6
+HOMEPAGE=http://bindfs.org/
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/fuse-2.9
+RESTRICT=test
+SLOT=0
+SRC_URI=http://bindfs.org/downloads/bindfs-1.13.6.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=b34d3659b75e886e1bf144afca993bf9

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=ssl? ( dev-libs/openssl:0 ) zlib? ( sys-libs/zlib ) virtual/yacc sys-devel/flex
+DESCRIPTION=An IRCd based on charybdis that adds several useful features
+EAPI=6
+HOMEPAGE=http://shadowircd.net
+IUSE=debug +ipv6 largenet ssl zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0 ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=https://github.com/shadowircd/shadowircd/archive/shadowircd-6.3.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=0cffec7ef86cc3b246c26d03bfb70314

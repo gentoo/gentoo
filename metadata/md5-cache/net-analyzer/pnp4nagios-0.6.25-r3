@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=dev-lang/php:*[filter,gd,json,simplexml,xml,zlib] >=net-analyzer/rrdtool-1.2[graph,perl] || ( <net-analyzer/nagios-core-4 net-analyzer/icinga net-analyzer/icinga2 )
+DESCRIPTION=A performance data analyzer for nagios
+EAPI=6
+HOMEPAGE=http://www.pnp4nagios.org/
+IUSE=apache2
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php:*[filter,gd,json,simplexml,xml,zlib] >=net-analyzer/rrdtool-1.2[graph,perl] || ( <net-analyzer/nagios-core-4 net-analyzer/icinga net-analyzer/icinga2 ) virtual/perl-Getopt-Long virtual/perl-Time-HiRes media-fonts/dejavu apache2? ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core,apache2_modules_rewrite] )
+SLOT=0
+SRC_URI=mirror://sourceforge/pnp4nagios/PNP-0.6/pnp4nagios-0.6.25.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
+_md5_=e3ba92cd512a9d108b647e38c21c04a9

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-lang/perl
+DESCRIPTION=A simple console LiveJournal entry system
+EAPI=0
+HOMEPAGE=http://umlautllama.com/projects/perl/#jlj
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc x86
+LICENSE=freedist
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://umlautllama.com/projects/perl/jlj_2.12.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=3cd22b5ee00febce05cecba2cb6bf871

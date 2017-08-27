@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/glib-2.20:= dev-libs/libxml2:= >=net-libs/libsoup-2.32:= >=x11-libs/gtk+-2.14:2= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.10:= upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) ) dev-util/intltool virtual/pkgconfig
+DESCRIPTION=A weather plug-in for the Xfce desktop environment
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin
+IUSE=upower
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.20:= dev-libs/libxml2:= >=net-libs/libsoup-2.32:= >=x11-libs/gtk+-2.14:2= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.10:= upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
+SLOT=0
+SRC_URI=mirror://xfce/src/panel-plugins/xfce4-weather-plugin/0.8/xfce4-weather-plugin-0.8.9.tar.bz2
+_eclass_exported_funcs=src_configure:-
+_md5_=8d4f75a5eff25213eb64dec11254191e

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=transfer a DVD title to your harddisk with ease on Linux
+EAPI=2
+HOMEPAGE=http://www.lallafa.de/bp/cpdvd.html
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-video/transcode-0.6.2[dvd] >=dev-lang/perl-5.8.0-r12 >=media-video/cpvts-1.2
+SLOT=0
+SRC_URI=http://www.lallafa.de/bp/files/cpdvd-1.10.gz
+_eclass_exported_funcs=src_install:-
+_md5_=e1d1c7f4cee3c739d2424253341b8a58

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure test
+DEPEND=<dev-libs/libmirage-3.0.5:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) virtual/pkgconfig test? ( app-arch/xz-utils )
+DESCRIPTION=CD/DVD image converter using libmirage
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/mirage2iso/
+IUSE=pinentry test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=<dev-libs/libmirage-3.0.5:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) pinentry? ( app-crypt/pinentry )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/mgorny/mirage2iso/releases/download/mirage2iso-0.4.1/mirage2iso-0.4.1.tar.bz2 test? ( https://github.com/mgorny/mirage2iso/releases/download/mirage2iso-0.4.1/mirage2iso-0.3-tests.tar.xz )
+_eclass_exported_funcs=src_configure:- src_test:-
+_md5_=a23a5bd38194492e22055f01e54a6f60

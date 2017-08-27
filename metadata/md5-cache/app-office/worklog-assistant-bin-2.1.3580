@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Hassle-free time tracking for JIRA self-hosted and OnDemand
+EAPI=6
+HOMEPAGE=https://worklogassistant.com
+KEYWORDS=~amd64
+LICENSE=worklog-assistant
+RESTRICT=fetch bindist strip
+SLOT=0
+SRC_URI=https://worklogassistant.com/downloads/worklog-assistant-v2_2.1.3580_amd64.deb
+_eclass_exported_funcs=src_unpack:unpacker src_prepare:- src_install:-
+_eclasses_=unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=ddef9d08d29a671e81a22fd0b6301d14

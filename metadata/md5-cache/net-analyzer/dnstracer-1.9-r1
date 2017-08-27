@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Determines where a given nameserver gets its information from
+EAPI=5
+HOMEPAGE=http://www.mavetju.org/unix/general.php
+IUSE=ipv6
+KEYWORDS=amd64 arm hppa ia64 ~ppc ppc64 s390 sparc x86 ~amd64-linux
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=http://www.mavetju.org/download/dnstracer-1.9.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=7ac60216d4229c9709382c7a1ecd5a4a

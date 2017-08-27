@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Gentoo specific zsh completion support (includes emerge and ebuild commands)
+EAPI=5
+HOMEPAGE=https://github.com/gentoo/gentoo-zsh-completions
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc64-solaris
+LICENSE=ZSH
+RDEPEND=>=app-shells/zsh-4.3.5
+SLOT=0
+SRC_URI=https://github.com/gentoo/gentoo-zsh-completions/archive/20150103.tar.gz -> gentoo-zsh-completions-20150103.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=db92f391919d9842163f9d2b807de410

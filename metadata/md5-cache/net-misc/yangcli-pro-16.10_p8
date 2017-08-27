@@ -1,0 +1,13 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Network manager client that lets you test and manage NETCONF servers
+EAPI=6
+HOMEPAGE=https://www.yumaworks.com/yangcli-pro/
+KEYWORDS=~amd64 -*
+LICENSE=yangcli-pro
+RDEPEND=net-libs/libssh2 sys-libs/ncurses:5/5[tinfo]
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://www.yumaworks.com/pub/yangcli-pro/16.10-8/deb8/yangcli-pro-16.10-8.deb8.amd64.deb )
+_eclass_exported_funcs=src_unpack:unpacker src_install:-
+_eclasses_=unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=073139777dac96b4ece2023e8de08f45

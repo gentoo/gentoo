@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: easily switch between buffers
+EAPI=6
+HOMEPAGE=https://github.com/fholgado/minibufexpl.vim
+KEYWORDS=amd64 ~mips ppc x86
+LICENSE=bufexplorer.vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/fholgado/minibufexpl.vim/archive/v6.5.2.tar.gz -> minibufexpl-6.5.2.tar.gz
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=876f5ce1814b6c0be3e352350f823690

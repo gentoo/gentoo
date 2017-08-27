@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=net-libs/libpcap berkdb? ( <sys-libs/db-2 )
+DESCRIPTION=Reports network interface statistics
+EAPI=0
+HOMEPAGE=http://www.frenchfries.net/paul/tcpstat/
+IUSE=berkdb
+KEYWORDS=amd64 ~ppc ppc64 sparc x86
+LICENSE=BSD-2
+RDEPEND=net-libs/libpcap berkdb? ( <sys-libs/db-2 )
+SLOT=0
+SRC_URI=http://www.frenchfries.net/paul/tcpstat/tcpstat-1.5.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=f4ef9a9e2c0a9822f511d7be7e3cfed2

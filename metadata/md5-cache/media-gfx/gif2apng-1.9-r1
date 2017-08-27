@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-libs/zlib app-arch/zopfli:= app-arch/unzip
+DESCRIPTION=create an APNG from a GIF
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/gif2apng/
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB LGPL-2.1
+RDEPEND=sys-libs/zlib app-arch/zopfli:=
+SLOT=0
+SRC_URI=mirror://sourceforge/gif2apng/1.9/gif2apng-1.9-src.zip
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=a616359bbd90aa1401fe670518ff4107

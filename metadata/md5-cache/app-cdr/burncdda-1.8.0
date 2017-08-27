@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Console app for copying burning audio cds
+EAPI=6
+HOMEPAGE=http://www.thenktor.homepage.t-online.de/burncdda
+IUSE=flac mp3 vorbis
+KEYWORDS=~amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=app-cdr/cdrdao dev-util/dialog media-sound/normalize media-sound/sox virtual/cdrtools flac? ( media-libs/flac ) mp3? ( media-sound/mpg123 media-sound/mp3_check ) vorbis? ( media-sound/vorbis-tools )
+SLOT=0
+SRC_URI=http://www.thenktor.homepage.t-online.de/burncdda/download/burncdda-1.8.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=97aa1555c957ae9e312b1fe25097a362

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/jbuilder dev-ml/opam test? ( dev-ml/ounit ) >=dev-lang/ocaml-4:= dev-ml/dns-lwt:= dev-ml/ocaml-dns:= dev-ml/cmdliner:= dev-ml/mirage-profile:= dev-ml/ocaml-ipaddr:= >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Lwt support of OCaml DNS
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-dns https://mirage.io
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=LGPL-2 LGPL-2.1-with-linking-exception ISC
+RDEPEND=>=dev-lang/ocaml-4:= dev-ml/dns-lwt:= dev-ml/ocaml-dns:= dev-ml/cmdliner:= dev-ml/mirage-profile:= dev-ml/ocaml-ipaddr:=
+RESTRICT=test
+SLOT=0/1.0.0
+SRC_URI=https://github.com/mirage/ocaml-dns/archive/v1.0.0.tar.gz -> ocaml-dns-1.0.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=c16ed23d277821a6db955e81cd3faad5

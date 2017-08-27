@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libdshconfig
+DESCRIPTION=Distributed Shell
+EAPI=3
+HOMEPAGE=http://www.netfort.gr.jp/~dancer/software/dsh.html.en
+IUSE=nls
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~m68k-mint
+LICENSE=GPL-2
+RDEPEND=dev-libs/libdshconfig virtual/ssh
+SLOT=0
+SRC_URI=http://www.netfort.gr.jp/~dancer/software/downloads/dsh-0.25.10.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=1fd017b0d5215ad4454f677d2ff874f3

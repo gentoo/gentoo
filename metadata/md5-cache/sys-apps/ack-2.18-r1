@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/File-Next-1.160.0 test? ( dev-perl/IO-Tty ) dev-lang/perl:=
+DESCRIPTION=ack is a tool like grep, optimized for programmers
+EAPI=6
+HOMEPAGE=http://betterthangrep.com/ http://search.cpan.org/dist/ack/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=Artistic-2
+RDEPEND=>=dev-perl/File-Next-1.160.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/ack-2.18.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=8b276db3a96205b05014b41cac7ed02a

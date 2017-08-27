@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-perl/Spreadsheet-ParseExcel
+DESCRIPTION=Print out an XLS file with minimal formatting, or extract the data into CSV
+EAPI=0
+HOMEPAGE=http://www.af0.net/~dan/?antixls
+KEYWORDS=~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=public-domain
+RDEPEND=dev-perl/Spreadsheet-ParseExcel
+SLOT=0
+SRC_URI=http://www.af0.net/~dan/repos/antixls-0.3b.perl
+_eclass_exported_funcs=src_install:-
+_md5_=7784f68092b0f9215b08854e08e3aa18

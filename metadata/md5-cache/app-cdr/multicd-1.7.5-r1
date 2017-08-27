@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tool for making direct copies of your files to multiple cd's
+EAPI=0
+HOMEPAGE=http://danborn.net/multicd/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.8.6 virtual/cdrtools
+SLOT=0
+SRC_URI=http://danborn.net/multicd/multicd-1.7.5.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=d53d2283455401622b9fe534c3d9da03

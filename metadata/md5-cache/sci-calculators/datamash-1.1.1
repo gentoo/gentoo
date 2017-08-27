@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=nls? ( sys-devel/gettext ) nls? ( virtual/libintl )
+DESCRIPTION=command-line program for basic numeric, textual and statistical operations
+EAPI=6
+HOMEPAGE=http://www.gnu.org/software/datamash/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://gnu/datamash/datamash-1.1.1.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=44d13882f46fdf4d9826af22b87b40d4

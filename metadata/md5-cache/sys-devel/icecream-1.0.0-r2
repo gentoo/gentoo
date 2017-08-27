@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prerm setup
+DEPEND=sys-libs/libcap-ng
+DESCRIPTION=icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
+EAPI=6
+HOMEPAGE=https://github.com/icecc/icecream
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/libcap-ng dev-util/shadowman
+SLOT=0
+SRC_URI=ftp://ftp.suse.com/pub/projects/icecream/icecc-1.0.0.tar.bz2
+_eclass_exported_funcs=pkg_prerm:- pkg_postinst:- pkg_setup:- src_configure:- src_install:-
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=7bc066955752590035e6bc1086ab5850

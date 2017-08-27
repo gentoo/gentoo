@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=app-misc/rlwrap >=sys-apps/gawk-4.0.2 curl? ( net-misc/curl[ssl] ) bidi? ( dev-libs/fribidi ) tts? ( || ( media-sound/mpg123 app-accessibility/espeak media-video/mpv media-video/mplayer ) ) test? ( app-editors/emacs )
+DESCRIPTION=Online command-line translator
+EAPI=5
+HOMEPAGE=https://www.soimort.org/translate-shell/
+IUSE=+curl +bidi test tts
+KEYWORDS=~amd64
+LICENSE=public-domain
+RDEPEND=app-misc/rlwrap >=sys-apps/gawk-4.0.2 curl? ( net-misc/curl[ssl] ) bidi? ( dev-libs/fribidi ) tts? ( || ( media-sound/mpg123 app-accessibility/espeak media-video/mpv media-video/mplayer ) )
+SLOT=0
+SRC_URI=https://github.com/soimort/translate-shell/archive/v0.9.6.2.tar.gz -> translate-shell-0.9.6.2.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=a96c8584f4ac08e3ed4d84a760d56e60

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Half-Life Software Development Kit for mod authors
+EAPI=6
+HOMEPAGE=http://www.valvesoftware.com/hlsdk.htm
+KEYWORDS=~x86
+LICENSE=ValveSDK
+SLOT=0
+SRC_URI=http://www.metamod.org/files/sdk/hlsdk-2.3.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=210bec2425b1822dcd0cfdf30758bd9d

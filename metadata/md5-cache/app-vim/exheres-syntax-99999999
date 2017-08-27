@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) dev-vcs/git
+DESCRIPTION=vim plugin: exheres format highlighting
+EAPI=0
+HOMEPAGE=http://www.exherbo.org/
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_unpack:- src_compile:- src_install:vim-plugin
+_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=803faea135747074be759366f6900683

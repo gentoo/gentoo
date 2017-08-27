@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=The Command Line Interface for the AWS Identity and Access Management Service
+EAPI=2
+HOMEPAGE=http://aws.amazon.com/developertools/AWS-Identity-and-Access-Management/4143
+KEYWORDS=~amd64 ~x86
+LICENSE=Amazon
+RDEPEND=virtual/jre
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://sabayon/app-admin/IAMCli-1.3.0.zip
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_md5_=e30356109bbac740dcb587e623e13f7a

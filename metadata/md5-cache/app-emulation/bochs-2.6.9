@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= ) doc? ( app-text/docbook-sgml-utils ) X? ( x11-proto/xproto ) sys-apps/sed >=app-text/opensp-1.5
+DESCRIPTION=LGPL-ed pc emulator
+EAPI=6
+HOMEPAGE=http://bochs.sourceforge.net/
+IUSE=3dnow avx debugger doc gdb ncurses readline svga sdl +smp vnc X +x86-64
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= )
+REQUIRED_USE=avx? ( x86-64 ) gdb? ( !debugger !smp ) debugger? ( !gdb )
+SLOT=0
+SRC_URI=mirror://sourceforge/bochs/bochs-2.6.9.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_md5_=6e4400f8dd0c3788c193529bb3e0ae5e

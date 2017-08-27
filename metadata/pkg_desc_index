@@ -4302,7 +4302,7 @@ dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.8.1: Access the metadata in digital images and video via a simple Java API
 dev-java/metainf-services 1.6 1.7: Generates META-INF/services files automatically
-dev-java/microba 0.4.4.3 0.4.4.3-r1: Swing components for date operations and palettes
+dev-java/microba 0.4.4.3-r1: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.7.1.3: Milton WebDav library
 dev-java/milton-mail-api 2.7.1.3: Milton WebDav library
@@ -10704,7 +10704,7 @@ dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.16-r2 0.17.1-r2: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.8.18 1.9.7: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
-dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
+dev-vcs/svn2git 1.0.10 1.0.11 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
 dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.2 9999: text mode interface for git
@@ -17806,7 +17806,7 @@ sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1 1.2 1.3: Ben Fennema's tools for packet
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r1 2.1.8 2.6.4 2.6.5 2.7.2: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
-sys-fs/unionfs-fuse 1.0 9999: Self-syncing tree-merging file system based on FUSE
+sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20140928 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
@@ -18443,7 +18443,7 @@ www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.6: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
-www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
+www-servers/gatling 0.12-r2 0.13 0.13-r1 0.15: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.2 9999: An optimized HTTP server with support for HTTP/1.x and HTTP/2
 www-servers/hiawatha 9.15: Advanced and secure webserver

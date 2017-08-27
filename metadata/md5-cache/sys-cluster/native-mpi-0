@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Use native OS MPI in prefix environment
+EAPI=3
+HOMEPAGE=https://prefix.gentoo.org
+KEYWORDS=~amd64-linux ~x86-linux
+LICENSE=GPL-3
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=dc2bde9d965ee21f46eddd5be1b5e04e

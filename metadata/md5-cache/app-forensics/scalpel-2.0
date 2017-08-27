@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/tre
+DESCRIPTION=A high performance file carver
+EAPI=6
+HOMEPAGE=https://github.com/sleuthkit/scalpel
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/tre
+SLOT=0
+SRC_URI=http://www.digitalforensicssolutions.com/Scalpel/scalpel-2.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=9364eb21420fcd2cc96697a62488b6f9

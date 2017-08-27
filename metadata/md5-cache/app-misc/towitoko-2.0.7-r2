@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=Provides a driver for using Towitoko smartcard readers under UNIX environment
+EAPI=0
+HOMEPAGE=https://www.gentoo.org/
+IUSE=moneyplex
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/towitoko-2.0.7.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_md5_=df7f385b6ec7cd09de1046b777dff815

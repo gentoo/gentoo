@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Semantic versioning utilities, constraint parsing, and checking
+EAPI=6
+HOMEPAGE=https://github.com/composer/semver
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/composer/semver/archive/1.0.0.tar.gz -> semver-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=1ad12246e2bd2722b55aa2045d14ba9a

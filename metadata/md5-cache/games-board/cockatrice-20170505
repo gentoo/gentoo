@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/libgcrypt:0 dev-libs/protobuf dev-qt/linguist-tools:5 dev-qt/qtconcurrent:5 dev-qt/qtprintsupport:5 dev-qt/qtcore:5 client? ( dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtsvg:5 ) oracle? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=An open-source multiplatform software for playing card games over a network
+EAPI=6
+HOMEPAGE=https://github.com/Cockatrice/Cockatrice
+IUSE=server +client +oracle
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/Cockatrice/Cockatrice/archive/2017-05-05-Release-2.3.17.tar.gz -> cockatrice-20170505.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=4727b0c35f1b30ad66c57803f5cfecba

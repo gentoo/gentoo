@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: NERDTree and tabs in vim
+EAPI=6
+HOMEPAGE=https://github.com/jistr/vim-nerdtree-tabs
+KEYWORDS=amd64 x86
+LICENSE=Apache-2.0
+RDEPEND=app-vim/nerdtree || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/jistr/vim-nerdtree-tabs/archive/v1.4.7.tar.gz -> nerdtree-tabs-1.4.7.tar.gz
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
+_eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_md5_=562dbab2a9dda102b4d82dfee3ed66a0

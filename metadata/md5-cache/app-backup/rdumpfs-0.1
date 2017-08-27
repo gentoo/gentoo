@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=a rsync-based dump file system backup tool
+EAPI=5
+HOMEPAGE=https://github.com/chneukirchen/rdumpfs
+IUSE=+xattr
+KEYWORDS=~amd64
+LICENSE=CC0-1.0
+RDEPEND=net-misc/rsync[xattr?]
+SLOT=0
+SRC_URI=https://github.com/chneukirchen/rdumpfs/archive/v0.1.tar.gz -> rdumpfs-0.1.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
+_eclasses_=vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=7a6f9626218f2fc5b069264f93058b16

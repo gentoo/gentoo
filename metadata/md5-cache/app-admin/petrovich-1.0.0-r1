@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Filesystem Integrity Checker
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/petrovich
+KEYWORDS=~amd64 ~x86 ~ppc ~sparc
+LICENSE=GPL-2
+RDEPEND=virtual/perl-Digest-MD5
+SLOT=0
+SRC_URI=mirror://sourceforge/petrovich/petrovich-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=1a3efda5e1272eaddaf71201a8e7cab4

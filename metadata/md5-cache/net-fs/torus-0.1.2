@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.6:=
+DESCRIPTION=A distributed storage system coordinated through etcd
+EAPI=6
+HOMEPAGE=https://github.com/coreos/torus
+IUSE=doc test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/coreos/torus/releases/download/v0.1.2/torus_v0.1.2_src.tar.gz -> torus-0.1.2.tar.gz https://github.com/Masterminds/glide/archive/0.10.2.tar.gz -> glide-0.10.2.tar.gz test? ( https://github.com/gogo/protobuf/archive/v0.3.tar.gz -> gogo-protobuf-0.3.tar.gz )
+_eclass_exported_funcs=src_unpack:- src_compile:- src_test:- src_install:-
+_md5_=41e3647ec6725be348603c6946b60379

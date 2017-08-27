@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/glib:2 dev-util/peg test? ( dev-lang/perl virtual/perl-Getopt-Long app-text/htmltidy )
+DESCRIPTION=Implementation of markdown in C, using a PEG grammar
+EAPI=5
+HOMEPAGE=https://github.com/jgm/peg-markdown
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=|| ( GPL-2 MIT )
+RDEPEND=dev-libs/glib:2
+SLOT=0
+SRC_URI=https://github.com/jgm/peg-markdown/archive/0.4.14.tar.gz -> peg-markdown-0.4.14.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=86709aa218ce602faef44de69a5d84b0

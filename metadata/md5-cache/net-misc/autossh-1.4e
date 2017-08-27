@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Automatically restart SSH sessions and tunnels
+EAPI=5
+HOMEPAGE=http://www.harding.motd.ca/autossh/
+KEYWORDS=amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=net-misc/openssh
+SLOT=0
+SRC_URI=http://www.harding.motd.ca/autossh/autossh-1.4e.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=f8f545cd743c51297e96640b7fdf6d94

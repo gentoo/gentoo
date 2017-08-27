@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Simple information system script
+EAPI=6
+HOMEPAGE=https://github.com/dylanaraps/neofetch
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT-with-advertising
+RDEPEND=sys-apps/pciutils X? ( x11-apps/xprop x11-apps/xwininfo x11-apps/xrandr www-client/w3m[imlib] media-libs/imlib2 media-gfx/imagemagick )
+SLOT=0
+SRC_URI=https://github.com/dylanaraps/neofetch/archive/3.0.1/neofetch-3.0.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:-
+_md5_=73869ddcb2d5e78c110421f7bd48fd1b
