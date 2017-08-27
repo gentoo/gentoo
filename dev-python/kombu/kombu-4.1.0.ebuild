@@ -46,8 +46,7 @@ DEPEND="${RDEPEND}
 DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
-	"${FILESDIR}"/${P}-dict-iter.patch
-	)
+)
 
 python_prepare_all() {
 	# AttributeError: test_Etcd instance has no attribute 'patch'
