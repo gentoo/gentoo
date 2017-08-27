@@ -3,7 +3,7 @@ app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.22.0 2.24.1: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.22.1 2.24.1: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
-app-accessibility/caribou 0.4.20 0.4.21: Input assistive technology intended for switch and pointer users
+app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
@@ -10463,7 +10463,7 @@ dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 4.0.1 5.0.9999 9999: The LLVM debugger
 dev-util/lockrun 20120508 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
-dev-util/ltrace 0.5.3.1 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
+dev-util/ltrace 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
 dev-util/lttng-modules 2.6.4 2.7.1 2.7.4 2.8.0: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
