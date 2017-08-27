@@ -1,0 +1,11 @@
+--- a/docs/Makefile.am	2017-07-18 12:27:27.280000000 +0200
++++ b/docs/Makefile.am	2017-09-04 00:23:38.789451743 +0200
+@@ -1,3 +1,7 @@
+-SUBDIRS = api manpages
++SUBDIRS = manpages
++
++if ENABLE_GTK_DOC
++    SUBDIRS += api
++endif
+ 
+ -include $(top_srcdir)/git.mk
