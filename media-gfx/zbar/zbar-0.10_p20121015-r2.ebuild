@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk imagemagick java jpeg python qt4 static-libs test +threads v4l X xv"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( ${PYTHON_REQUIRED_USE} )"
+	test? ( X ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 	imagemagick? ( virtual/imagemagick-tools )
