@@ -62,7 +62,7 @@
 # using a single variable, rather than having to set the packagename_LIVE_REPO
 # variable for each and every SELinux policy module package they want to install.
 # The default value is Gentoo's hardened-refpolicy repository.
-: ${SELINUX_GIT_REPO:="git://anongit.gentoo.org/proj/hardened-refpolicy.git https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
+: ${SELINUX_GIT_REPO:="https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
 
 # @ECLASS-VARIABLE: SELINUX_GIT_BRANCH
 # @DESCRIPTION:
