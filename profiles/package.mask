@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
+# Doesn't work anymore. Dead upstream.
+# Masked for removal in 30 days.
+media-gfx/kflickr
+
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Aug 2017)
 # media-libs/phonon[zeitgeist] masked on all arches since 2012.
 # No other rdeps left. Masked for removal in 30 days.
