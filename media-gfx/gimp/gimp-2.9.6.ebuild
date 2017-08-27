@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit versionator virtualx autotools eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
-HOMEPAGE="http://www.gimp.org/"
+HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
