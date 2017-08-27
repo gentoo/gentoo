@@ -31,7 +31,7 @@ DEPEND="
 	${RDEPEND}"
 
 src_prepare(){
-	#Make the desktop's entries somewhat cuter
+	#Make the desktop's entries somewhat cutter
 	sed -i -e 's/GenericName=edb debugger/GenericName=Evan\x27s Debugger/' edb.desktop || die
 	sed -i -e 's/Comment=edb debugger/Comment=edb is a cross platform x86\/x86-64 debugger/' edb.desktop || die
 
