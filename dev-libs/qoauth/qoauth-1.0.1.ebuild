@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit qt4-r2
 
 DESCRIPTION="A Qt-based library for OAuth support"
-HOMEPAGE="https://wiki.github.com/ayoy/qoauth"
+HOMEPAGE="https://github.com/ayoy/qoauth/wiki"
 SRC_URI="http://files.ayoy.net/qoauth/release/${PV}/src/${P}-src.tar.bz2"
 
 LICENSE="LGPL-2.1"

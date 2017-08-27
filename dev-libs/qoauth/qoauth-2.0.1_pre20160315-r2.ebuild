@@ -6,7 +6,7 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="Qt-based library for OAuth support"
-HOMEPAGE="https://wiki.github.com/ayoy/qoauth"
+HOMEPAGE="https://github.com/ayoy/qoauth/wiki"
 SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
