@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2
 
 DESCRIPTION="Liboobs is a wrapping library to the System Tools Backends"
-HOMEPAGE="https://library.gnome.org/devel/liboobs/stable/"
+HOMEPAGE="https://developer.gnome.org/liboobs/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"
