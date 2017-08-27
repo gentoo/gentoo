@@ -8,7 +8,7 @@ KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 x86"
 inherit bash-completion-r1
 
 DESCRIPTION="Gentoo automatic kernel building scripts, reloaded"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
