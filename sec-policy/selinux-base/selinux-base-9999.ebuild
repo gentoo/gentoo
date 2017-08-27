@@ -3,7 +3,7 @@
 EAPI="6"
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="${SELINUX_GIT_REPO:-git://anongit.gentoo.org/proj/hardened-refpolicy.git https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
+	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
 	EGIT_BRANCH="${SELINUX_GIT_BRANCH:-master}"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy"
 
