@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/pycparser-2.18-OO.patch
+)
+
 python_prepare_all() {
 	# remove the original files to guarantee their regen
 	rm pycparser/{c_ast,lextab,yacctab}.py || die
