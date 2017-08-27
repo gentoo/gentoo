@@ -5,7 +5,8 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 virtualx
+inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal \
+	python-single-r1 virtualx
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
 HOMEPAGE="http://zbar.sourceforge.net/"
@@ -18,17 +19,19 @@ IUSE="gtk imagemagick java jpeg python qt4 static-libs test +threads v4l X xv"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( X ${PYTHON_REQUIRED_USE} )"
 
-CDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+CDEPEND="gtk? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
 	imagemagick? ( virtual/imagemagick-tools )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
 		gtk? ( >=dev-python/pygtk-2[${PYTHON_USEDEP}] )
 	)
-	qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
+	qt4? ( dev-qt/qtcore:4[${MULTILIB_USEDEP}]
+		dev-qt/qtgui:4[${MULTILIB_USEDEP}] )
 	X? (
-		x11-libs/libXext
-		xv? ( x11-libs/libXv )
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		xv? ( x11-libs/libXv[${MULTILIB_USEDEP}] )
 	)"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.4 )"
@@ -72,33 +75,36 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	if use java; then
+multilib_src_configure() {
+	if multilib_is_native_abi && use java; then
 		export JAVACFLAGS="$(java-pkg_javac-args)"
 		export JAVA_CFLAGS="$(java-pkg_get-jni-cflags)"
 	fi
 
 	append-cppflags -DNDEBUG
+	ECONF_SOURCE=${S} \
 	econf \
-		$(use_with java) \
+		$(multilib_native_use_with java) \
 		$(use_with jpeg) \
 		$(use_with gtk) \
-		$(use_with imagemagick) \
-		$(use_with python) \
+		$(multilib_native_use_with imagemagick) \
+		$(multilib_native_use_with python) \
 		$(use_with qt4 qt) \
 		$(use_enable static-libs static) \
 		$(use_enable threads pthread) \
 		$(use_with X x) \
 		$(use_with xv xv) \
 		$(use_enable v4l video)
+
+	# work-around out-of-source build issue
+	mkdir gtk pygtk qt test || die
 }
 
 src_test() {
-	virtx default
+	virtx multilib-minimal_src_test
 }
 
-src_install() {
-	emake DESTDIR="${D}" install
+multilib_src_install_all() {
 	dodoc HACKING NEWS README TODO
 	find "${D}" -name '*.la' -delete || die
 }
