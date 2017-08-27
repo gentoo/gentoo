@@ -3,18 +3,18 @@
 
 EAPI=6
 
-inherit cmake-utils
+EGIT_REPO_URI="https://github.com/philsquared/Catch.git"
+EGIT_BRANCH=master
+inherit cmake-utils git-r3
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
 HOMEPAGE="https://github.com/philsquared/Catch"
-SRC_URI="https://github.com/philsquared/Catch/archive/v${PV}.tar.gz -> ${P^}.tar.gz"
+SRC_URI=""
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
-
-S=${WORKDIR}/${P^}
 
 # CMake is only used to build & run tests, so override phases
 src_configure() { :; }
