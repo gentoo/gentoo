@@ -20,6 +20,7 @@ IUSE="doc examples perl static-libs test"
 
 CDEPEND="
 	sys-libs/zlib
+	virtual/jpeg:0=
 "
 DEPEND="${CDEPEND}
 	test? (
