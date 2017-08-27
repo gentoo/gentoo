@@ -1,12 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit base flag-o-matic toolchain-funcs
 
-DESCRIPTION="tty recorder"
-HOMEPAGE="http://namazu.org/~satoru/ttyrec/"
+DESCRIPTION="The tty recorder provides tools to record and replay a terminal session."
+HOMEPAGE="http://0xcc.net/ttyrec/"
 SRC_URI="http://namazu.org/~satoru/ttyrec/${P}.tar.gz"
 
 LICENSE="BSD"
