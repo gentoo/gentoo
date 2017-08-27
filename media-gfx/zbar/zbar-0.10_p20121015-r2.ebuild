@@ -33,6 +33,7 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.4 )"
 DEPEND="${CDEPEND}
 	java? ( >=virtual/jdk-1.4 )
+	app-arch/unzip
 	sys-devel/gettext
 	virtual/pkgconfig"
 
