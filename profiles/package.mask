@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (27 Aug 2017)
+# No consumers left, depends on deprecated akonadi:4.
+# Masked for removal in 30 days.
+kde-misc/akonadi-git-resource
+
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
