@@ -16,18 +16,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
-CDEPEND=">=dev-python/pbr-2.0[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
+	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
-	>=dev-python/requests-2.10.0[${PYTHON_USEDEP}]
-	!~dev-python/requests-2.12.0[${PYTHON_USEDEP}]
-	!~dev-python/requests-2.13.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-3.22.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-serialization-1.19.1[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.10.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
