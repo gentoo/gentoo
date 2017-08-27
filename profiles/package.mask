@@ -444,6 +444,23 @@ app-editors/atom:beta
 # Gnome 3.26 package mask
 >=app-text/libgepub-0.5
 
+# Mart Raudsepp <leio@gentoo.org> (27 Aug 2017)
+# Old GNOME2 era python bindings; use introspection with modern
+# gnome3 libraries instead.
+dev-python/gnome-python-extras-base
+dev-python/egg-python
+dev-python/gtkspell-python
+dev-python/gnome-python-desktop-base
+dev-python/gnome-keyring-python
+dev-python/librsvg-python
+dev-python/libwnck-python
+dev-python/gnome-python-base
+dev-python/gconf-python
+dev-python/gnome-vfs-python
+dev-python/libbonobo-python
+dev-python/libgnomecanvas-python
+dev-python/libgnome-python
+
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
