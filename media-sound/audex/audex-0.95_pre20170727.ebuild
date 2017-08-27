@@ -11,7 +11,7 @@ HOMEPAGE="https://userbase.kde.org/Audex"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -37,4 +37,6 @@ DEPEND="
 	$(add_qt_dep qtxml)
 	media-sound/cdparanoia
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!media-sound/audex:4
+"
