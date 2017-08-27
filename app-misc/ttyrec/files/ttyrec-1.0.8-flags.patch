@@ -1,0 +1,19 @@
+--- a/Makefile	2017-08-26 11:47:02.981266309 +0200
++++ b/Makefile	2017-08-26 14:33:47.161600445 +0200
+@@ -10,13 +10,13 @@
+ all: $(TARGET)
+ 
+ ttyrec: ttyrec.o io.o
+-	$(CC) $(CFLAGS) -o ttyrec ttyrec.o io.o
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o ttyrec ttyrec.o io.o
+ 
+ ttyplay: ttyplay.o io.o
+-	$(CC) $(CFLAGS) -o ttyplay ttyplay.o io.o
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o ttyplay ttyplay.o io.o
+ 
+ ttytime: ttytime.o io.o
+-	$(CC) $(CFLAGS) -o ttytime ttytime.o io.o
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o ttytime ttytime.o io.o
+ 
+ clean:
+ 	rm -f *.o $(TARGET) ttyrecord *~
