@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
+# Upstream is no longer providing public patches
+sys-kernel/hardened-sources
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Aug 2017)
 # Requires deprecated libkcddb:4, upstream is not going to port.
 # See also: https://github.com/dfaust/soundkonverter/issues/23
