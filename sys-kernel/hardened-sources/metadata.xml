@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
@@ -15,7 +15,7 @@
 	</maintainer>
 	<longdescription>
 		hardened-sources is based upon genpatches, and adds the grsecurity
-		patch from http://www.grsecurity.net, which also includes PaX.
+		patch from https://www.grsecurity.net/, which also includes PaX.
 	</longdescription>
 	<use>
 		<flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>
