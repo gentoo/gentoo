@@ -21,13 +21,28 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
+python_prepare_all() {
+	# remove the original files to guarantee their regen
+	rm pycparser/{c_ast,lextab,yacctab}.py || die
+
+	# kill sys.path manipulations to force the tests to use built files
+	sed -i -e '/sys\.path/d' tests/*.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_compile() {
 	distutils-r1_python_compile
-	pushd "${BUILD_DIR}/lib/pycparser" > /dev/null || die
+
+	# note: tables built by py3.5+ are incompatible with older versions
+	# because of 100 group limit of 're' module -- just generate them
+	# separately optimized for each target instead
+	pushd "${BUILD_DIR}"/lib/pycparser > /dev/null || die
 	"${PYTHON}" _build_tables.py || die
 	popd > /dev/null || die
 }
 
 python_test() {
-	nosetests || die
+	# change workdir to avoid '.' import
+	nosetests -v -w tests || die
 }
