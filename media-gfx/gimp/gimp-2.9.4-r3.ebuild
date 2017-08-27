@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit versionator virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
-HOMEPAGE="http://www.gimp.org/"
+HOMEPAGE="https://www.gimp.org/"
 SRC_URI="https://www.hartwork.org/public/${P}-r1.tar.xz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
