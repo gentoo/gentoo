@@ -2885,7 +2885,7 @@ dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/libxsd-frontend 2.0.0: A compiler frontend for the W3C XML Schema definition language
 dev-cpp/lucene++ 3.0.7: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
-dev-cpp/mm-common 0.9.10: Build infrastructure and utilities for GNOME C++ bindings
+dev-cpp/mm-common 0.9.10 0.9.11: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/muParser 2.2.3 2.2.5: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.40.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
@@ -4921,7 +4921,7 @@ dev-libs/libprelude 3.0.0 3.1.0-r1: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0 3.1.0: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
-dev-libs/libpwquality 1.3.0: Library for password quality checking and generating random passwords
+dev-libs/libpwquality 1.3.0 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
 dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking system
 dev-libs/libratbag 0.9: Library to configure gaming mice
@@ -11731,7 +11731,7 @@ gnome-extra/libgsf 1.14.41-r1: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
-gnome-extra/nautilus-sendto 3.8.3 3.8.4 3.8.5: A nautilus extension for sending files to locations
+gnome-extra/nautilus-sendto 3.8.4 3.8.5: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.10.5 1.12.2: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0 3.4.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
@@ -14543,7 +14543,7 @@ net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODE
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.6 2.7 2.7-r1 2.7.1: Serial Communication Program
-net-dialup/moserial 3.0.10: A clean and friendly gtk-based serial terminal
+net-dialup/moserial 3.0.10 3.0.11: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
 net-dialup/picocom 2.2: minimal dumb-terminal emulation program
@@ -14879,7 +14879,7 @@ net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation
 net-libs/libbtbb 2015.10.1 2017.03.2 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
-net-libs/libdmapsharing 2.9.37: A library that implements the DMAP family of protocols
+net-libs/libdmapsharing 2.9.37 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.1: implementation of the W3C DOM, written in C
 net-libs/libeXosip 3.5.0 4.0.0: library to use the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
