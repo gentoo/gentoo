@@ -679,7 +679,14 @@ qt5_base_configure() {
 	einfo "Configuring with: ${conf[@]}"
 	"${S}"/configure "${conf[@]}" || die "configure failed"
 
+	if [[ ${QT5_MINOR_VERSION} -ge 8 ]]; then
+		# a forwarding header is no longer created since 5.8, causing the system
+		# config to always be used. bug 599636
+		cp src/corelib/global/qconfig.h include/QtCore/ || die
+	fi
+
 	popd >/dev/null || die
+
 }
 
 # @FUNCTION: qt5_qmake
