@@ -59,9 +59,6 @@ media-libs/phonon designer
 # Required by dev-qt/qtwebengine
 media-libs/libvpx svc
 
-# Conflicts with kde-apps/audiocd-kio:5
-media-sound/amarok:4 -cdda
-
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
 <dev-python/qscintilla-python-2.10 -qt4
 <x11-libs/qscintilla-2.10 -qt4
