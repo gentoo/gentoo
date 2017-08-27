@@ -9,7 +9,7 @@
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="nonblockdialogs">Enable fancy non-blocking JavaScript dialogs
 			shown inside the page, not blocking the application window. When closing
-			 browser windows with open dialogs, this can crash the application.
+			browser windows with open dialogs, this can crash the application.
 		</flag>
 	</use>
 	<upstream>
