@@ -35,3 +35,22 @@
      /** try to connect; we'll try again later if we fail */
      (void) netsnmp_mysql_connect();
  
+--- a/apps/snmptrapd_sql.c
++++ b/apps/snmptrapd_sql.c
+@@ -50,11 +50,16 @@
+ #undef PACKAGE_STRING
+ #undef PACKAGE_TARNAME
+ #undef PACKAGE_VERSION
++#ifdef HAVE_BROKEN_LIBMYSQLCLIENT
++#include <mysql.h>
++#include <errmsg.h>
++#else
+ #include <my_global.h>
+ #include <my_sys.h>
+ #include <mysql.h>
+ #include <errmsg.h>
+ #include <mysql_version.h>
++#endif
+ 
+ netsnmp_feature_require(container_fifo)
+ 
