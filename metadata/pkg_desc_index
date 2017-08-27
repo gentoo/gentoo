@@ -15265,7 +15265,7 @@ net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1 0.10.2.0 0.10.2.1 0.11.0.0: A high-throughput distributed messaging system
+net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1 0.10.2.0 0.10.2.1 0.10.2.1-r1 0.11.0.0 0.11.0.0-r1: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.1.0 1.2.0-r1: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.2 2.8.3: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
@@ -15498,7 +15498,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.08.18 2017.08.23 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.08.23 2017.08.27.1 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
