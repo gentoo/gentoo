@@ -1,18 +1,9 @@
 Allow libffmpeg to be built for Chromium-based browsers
 https://patchwork.ffmpeg.org/patch/4500/
 
-diff --git a/Makefile b/Makefile
-index 29870d7..1e267e7 100644
---- a/Makefile
-+++ b/Makefile
-@@ -65,6 +65,7 @@ all: all-yes
- 
- include $(SRC_PATH)/tools/Makefile
- include $(SRC_PATH)/ffbuild/common.mak
-+include $(SRC_PATH)/ffbuild/libffmpeg.mak
- 
- FF_EXTRALIBS := $(FFEXTRALIBS)
- FF_DEP_LIBS  := $(DEP_LIBS)
+NOTE: This patch lacks the Makefile include line. We append it
+manually instead to make patching across different versions easier.
+
 diff --git a/ffbuild/libffmpeg.mak b/ffbuild/libffmpeg.mak
 new file mode 100644
 index 0000000..992cf3c
