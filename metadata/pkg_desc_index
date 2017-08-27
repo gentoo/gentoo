@@ -1961,7 +1961,7 @@ app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 1.10.5 1.12.2: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2 0.16.12.29 0.17.1.14: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
-app-misc/ttyrec 1.0.8-r1: tty recorder
+app-misc/ttyrec 1.0.8-r1 1.0.8-r2: The tty recorder provides tools to record and replay a terminal session.
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.4.0: System uptime record daemon that keeps track of your highest uptimes
