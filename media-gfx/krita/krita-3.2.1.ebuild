@@ -71,10 +71,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-tests-optional.patch
-	"${FILESDIR}"/${P}-unused-dep.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-3.2.0-tests-optional.patch )
 
 src_configure() {
 	local mycmakeargs=(
