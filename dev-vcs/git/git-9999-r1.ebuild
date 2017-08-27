@@ -157,7 +157,7 @@ exportmakeopts() {
 		myopts+=" NO_CURL=YesPlease"
 	fi
 
-	# broken assumptions, because of broken build system ...
+	# broken assumptions, because of static build system ...
 	myopts+=" NO_FINK=YesPlease NO_DARWIN_PORTS=YesPlease"
 	myopts+=" INSTALL=install TAR=tar"
 	myopts+=" SHELL_PATH=${EPREFIX}/bin/sh"
@@ -219,7 +219,8 @@ exportmakeopts() {
 	if [[ ${CHOST} == *-solaris* ]]; then
 		myopts+=" NEEDS_LIBICONV=YesPlease"
 		myopts+=" HAVE_CLOCK_MONOTONIC=1"
-		myopts+=" HAVE_GETDELIM=1"
+		grep -q getdelim "${ROOT}"/usr/include/stdio.h && \
+			myopts+=" HAVE_GETDELIM=1"
 	fi
 
 	has_version '>=app-text/asciidoc-8.0' \
