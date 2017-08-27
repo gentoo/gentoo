@@ -2248,7 +2248,7 @@ app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13: Diction and style checkers for english and german texts
 app-text/diffpdf 2.1.3: Program that textually or visually compares two PDF files
 app-text/ding 1.8.1: Tk based dictionary (German-English) (incl. dictionary itself)
-app-text/discount 2.1.8a-r1 2.2.0: A Markdown-to HTML translator written in C
+app-text/discount 2.1.8a-r1 2.2.2: A Markdown-to HTML translator written in C
 app-text/djview 4.9 4.10 4.10.3 4.10.5 4.10.6: Portable DjVu viewer using Qt4
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
 app-text/djvusmooth 0.2.18: Graphical editor for DjVu documents
