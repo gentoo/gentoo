@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="hbci">Enable HBCI support using <pkg>net-libs/aqbanking</pkg></flag>
-		<flag name="pim">Enable KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
 		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
 		<flag name="weboob">Enable import of online banking transactions extracted by <pkg>www-client/weboob</pkg></flag>
 	</use>

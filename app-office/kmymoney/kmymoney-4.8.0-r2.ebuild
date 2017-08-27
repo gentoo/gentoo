@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-2"
 SLOT="4"
 KEYWORDS="amd64 x86"
-IUSE="calendar debug doc hbci ofx pim quotes weboob"
+IUSE="calendar debug doc hbci ofx quotes weboob"
 
 COMMON_DEPEND="
 	>=app-crypt/gpgme-1.7.0[cxx]
@@ -34,7 +34,6 @@ COMMON_DEPEND="
 		>=sys-libs/gwenhywfar-4.15.3[qt4]
 	)
 	ofx? ( >=dev-libs/libofx-0.9.4 )
-	pim? ( $(add_kdeapps_dep kdepimlibs) )
 	weboob? ( www-client/weboob )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -75,7 +74,7 @@ src_configure() {
 		-DUSE_DEVELOPER_DOC=$(usex doc)
 		-DENABLE_KBANKING=$(usex hbci)
 		-DENABLE_LIBOFX=$(usex ofx)
-		$(cmake-utils_use_find_package pim KdepimLibs)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KdepimLibs=ON
 		-DENABLE_WEBOOB=$(usex weboob)
 	)
 	kde4-base_src_configure
