@@ -4208,7 +4208,7 @@ dev-java/jibx 1.1.5-r3 1.2.6-r1: Bind XML to Java code
 dev-java/jibx-tools 1.1.5-r2 1.1.5-r3: JiBX: Binding XML to Java Code - Generators
 dev-java/jicmp 1.0.2: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jid3 0.46-r2: ID3 Class Library Implementation
-dev-java/jide-oss 3.6.12: JIDE Common Layer (Professional Swing Components)
+dev-java/jide-oss 3.6.12 3.6.18: JIDE Common Layer (Professional Swing Components)
 dev-java/jikes 1.22-r13: IBM's open source, high performance Java compiler
 dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jinput 2.0.6-r1: An implementation of an API for game controller discovery and polled input
@@ -12155,7 +12155,7 @@ kde-frameworks/modemmanager-qt 5.34.0 5.37.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.34.0 5.37.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 4.14.3 5.34.0 5.37.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.34.0 5.37.0: Plasma framework
-kde-frameworks/prison 1.1.1 5.34.0 5.37.0: QRCode and data matrix barcode library
+kde-frameworks/prison 5.34.0 5.37.0: QRCode and data matrix barcode library
 kde-frameworks/solid 5.34.0 5.37.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.34.0 5.37.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syntax-highlighting 5.34.0 5.37.0 5.37.0-r1: Framework for syntax highlighting

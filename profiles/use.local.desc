@@ -3440,7 +3440,6 @@ kde-apps/kdepim-apps-libs:prison - Enable support for QRcodes in contacts
 kde-apps/kdepim-common-libs:google - Google service integration via kde-apps/libkgapi
 kde-apps/kdepim-meta:google - Google service integration via kde-apps/libkgapi
 kde-apps/kdepim-runtime:google - Google service integration via kde-apps/libkgapi
-kde-apps/kdepimlibs:prison - Enable support for QRcodes in contacts
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-apps/keditbookmarks:man - Build and install man pages
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
