@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (28 Aug 2017)
+# Alike xfce4-mixer, relies on gstreamer:0.10 (gstreamer:1.0 removed
+# mixer wrappers). Last commit upstream in 2014. PulseAudio users
+# can switch to xfce-extra/xfce4-pulseaudio-plugin
+# or xfce-extra/xfce4-volumed-pulse.
+# Removal in 30 days. Bug #629212.
+xfce-extra/xfce4-volumed
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Aug 2017)
 # No consumers left, depends on deprecated akonadi:4.
 # Masked for removal in 30 days.
