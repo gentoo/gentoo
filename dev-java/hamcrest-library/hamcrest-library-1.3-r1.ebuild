@@ -17,7 +17,7 @@ SRC_URI="https://${MY_PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 CDEPEND="
 	dev-java/hamcrest-generator:${SLOT}
