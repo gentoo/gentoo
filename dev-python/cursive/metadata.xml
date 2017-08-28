@@ -10,7 +10,7 @@
     <name>Openstack</name>
   </maintainer>
   <longdescription lang="en">
-		Cursive implements OpenStack-specific validation of digital signatures.
+    Cursive implements OpenStack-specific validation of digital signatures.
   </longdescription>
   <upstream>
     <remote-id type="pypi">cursive</remote-id>
