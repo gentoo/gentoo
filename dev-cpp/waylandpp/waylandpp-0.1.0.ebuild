@@ -31,6 +31,11 @@ DEPEND="${RDEPEND}
 	)
 	"
 
+src_prepare() {
+	default
+	sed -i -e "s:\$\${prefix}/lib:/usr/$(get_libdir):" SConstruct || die
+}
+
 src_compile() {
 	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${D%/}/usr" escons
 	if use doc; then
