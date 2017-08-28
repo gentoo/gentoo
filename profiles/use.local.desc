@@ -1288,6 +1288,8 @@ dev-cpp/glog:unwind - Use sys-libs/libunwind for stack unwinding instead of glib
 dev-cpp/libcmis:man - Build and install man pages.
 dev-cpp/libjson-rpc-cpp:http-client - Build support for HTTP client using net-misc/curl
 dev-cpp/libjson-rpc-cpp:http-server - Build support for HTTP server using net-libs/libmicrohttpd
+dev-cpp/libjson-rpc-cpp:redis-client - Build support for Redis client using dev-libs/hiredis
+dev-cpp/libjson-rpc-cpp:redis-server - Build support for Redis server using dev-libs/hiredis
 dev-cpp/libjson-rpc-cpp:stubgen - Build header stub code generator (needed for development and when pregenerated headers are not bundled)
 dev-cpp/pficommon:fcgi - Build FCGI feature
 dev-cpp/pficommon:mprpc - Build MessagePack RPC feature
