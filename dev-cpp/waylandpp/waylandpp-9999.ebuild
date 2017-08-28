@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	sed -i -e "s:\$\${prefix}/lib:/usr/$(get_libdir):" SConstruct || die
+	sed -i -e "s:\$\${prefix}/lib:$\${prefix}/$(get_libdir):" -e "s:os.path.join(prefix, \"lib\":os.path.join(prefix, \"$(get_libdir)\":g" SConstruct || die
 }
 
 src_compile() {
@@ -46,7 +46,6 @@ src_compile() {
 src_install() {
 	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${D%/}/usr" escons install
 	# fix multilib-strict QA failures
-	mv "${ED%/}"/usr/{lib,$(get_libdir)} || die
 	if use doc; then
 		doman doc/man/man3/*.3
 		local HTML_DOCS=( doc/html )
