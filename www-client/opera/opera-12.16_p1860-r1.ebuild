@@ -10,7 +10,7 @@ HOMEPAGE="http://www.opera.com/"
 SLOT="0"
 LICENSE="OPERA-12 LGPL-2 LGPL-3"
 KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="elibc_FreeBSD gtk kde +gstreamer multilib"
+IUSE="elibc_FreeBSD gtk kde multilib"
 
 O_V="$(get_version_component_range 1-2)" # Version, i.e. 11.00
 O_B="$(get_version_component_range 3)"   # Build number, i.e. 1156
@@ -76,13 +76,6 @@ KDERDEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 "
-GSTRDEPEND="
-	dev-libs/glib:2
-	dev-libs/libxml2
-	media-libs/gst-plugins-base:0.10
-	media-libs/gstreamer:0.10
-	media-plugins/gst-plugins-meta:0.10
-"
 RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
@@ -98,7 +91,6 @@ RDEPEND="
 	x11-misc/xdg-utils
 	gtk? ( ${GTKRDEPEND} )
 	kde? ( ${KDERDEPEND} )
-	gstreamer? ( ${GSTRDEPEND} )
 "
 
 QA_PREBUILT="*"
@@ -145,15 +137,14 @@ src_prepare() {
 	# Remove package directory
 	rm -rf share/${PN}/package
 
+	rm -r lib/${PN}/gstreamer || die
+
 	# Optional libraries
 	if ! use gtk; then
 		rm lib/${PN}/liboperagtk2.so || die
 	fi
 	if ! use kde; then
 		rm lib/${PN}/liboperakde4.so || die
-	fi
-	if ! use gstreamer; then
-		rm -r lib/${PN}/gstreamer || die
 	fi
 	if use amd64 && ! use multilib; then
 		rm lib/${PN}/pluginwrapper/operapluginwrapper-ia32-linux || die
