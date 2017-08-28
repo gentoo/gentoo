@@ -293,6 +293,7 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	gnome2_pkg_postinst
+	systemd_reenable NetworkManager.service
 	! use systemd && readme.gentoo_print_elog
 
 	if [[ -e "${EROOT}etc/NetworkManager/nm-system-settings.conf" ]]; then
