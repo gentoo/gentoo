@@ -1044,7 +1044,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20160421 20161005 20170401: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.7.5 2.8.5 2.8.6 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.7.5 2.8.6 2.8.7 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.0.1 3.0.1-r1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 0.2.0 9999: Vim-fork focused on extensibility and agility.
@@ -2489,7 +2489,7 @@ app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to somethi
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapian-omega 1.2.22 1.2.24 1.4.3 1.4.4: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
-app-text/xdvik 22.85-r1 22.87.03: DVI previewer for X Window System
+app-text/xdvik 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
