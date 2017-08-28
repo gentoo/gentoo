@@ -8097,7 +8097,7 @@ dev-python/os-win 0.4.0 1.2.1 1.4.1: Windows / Hyper-V library for OpenStack pro
 dev-python/os-xenapi 0.1.1: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.17.0 1.25.0: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 3.18.0 3.21.0: library for running multi-thread, multi-process applications
+dev-python/oslo-concurrency 3.18.0 3.18.1 3.21.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 3.22.1 4.11.0: Oslo Configuration API
 dev-python/oslo-context 2.12.2 2.17.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.17.1 4.25.0: OpenStack Common DB Code
@@ -8819,7 +8819,7 @@ dev-python/sympy 0.7.6.1-r1 1.0-r1 1.1 1.1.1: Computer Algebra System in pure Py
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.7: Pretty-print tabular data
 dev-python/tagpy 2013.1: Python Bindings for TagLib
-dev-python/taskflow 2.9.0 2.14.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
+dev-python/taskflow 2.9.0 2.9.1 2.14.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.3.0 1.3.2: Traceback fiddling library for Python
 dev-python/tdaemon 0.1.6: Test Daemon
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
@@ -14307,7 +14307,7 @@ net-analyzer/hydra 8.1 8.5 8.6: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.4 1.14.0: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.0: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.5.4-r1 2.6.2 2.6.3-r1 2.7.0 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.6.2 2.6.3-r1 2.7.0 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
@@ -17499,7 +17499,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for par
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 7.0.4 7.0.5 8.0.2 8.0.3 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 7.0.5 8.0.3 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -17530,7 +17530,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 9.4.0 10.0.2 2016.2.9999 2017.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 9.4.0 9.4.1 10.0.2 10.0.3 2016.2.9999 2017.1.9999: A virtual network service for Openstack
 sys-cluster/nova 14.0.7 15.0.6 15.0.7 2016.2.9999 2017.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
