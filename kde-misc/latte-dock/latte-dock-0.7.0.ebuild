@@ -57,6 +57,12 @@ DEPEND="${RDEPEND}
 
 DOCS=( CHANGELOG.md README.md TRANSLATORS )
 
+src_prepare() {
+	cmake-utils_src_prepare
+	sed -i -e "s/^Version/X-KDE-PluginInfo-Version/g" \
+		app/org.kde.latte-dock.desktop.cmake || die
+}
+
 pkg_preinst() {
 	gnome2_icon_savelist
 }
