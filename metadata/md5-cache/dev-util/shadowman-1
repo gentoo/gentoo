@@ -9,4 +9,4 @@ RDEPEND=app-admin/eselect
 SLOT=0
 SRC_URI=https://github.com/mgorny/shadowman/archive/v1.tar.gz -> shadowman-1.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=69f191e8b6fa412551b72f037f8f7b89
+_md5_=beaeee9ab71c8cc274fb0037548b3ac6
