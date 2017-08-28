@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
+# Failure to re-keyword ffmpeg/gst-plugins-libav in a timely
+# fashion; bugs #574786, #608868, #610810
+media-plugins/gst-plugins-meta ffmpeg
+
 # Brian Evans <grknight@gentoo.org> (21 Aug 2017)
 # No keywords for sys-process/numactl
 dev-db/mariadb numa
