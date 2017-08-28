@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 
 RDEPEND="|| (
 		dev-java/tomcat-servlet-api:${SLOT}
