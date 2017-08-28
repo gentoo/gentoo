@@ -17,7 +17,7 @@ DEPEND="${RDEPEND}"
 
 src_install() {
 	# tool modules are split into their respective packages
-	emake DESTDIR="${D}" install \
+	emake DESTDIR="${ED}" install \
 		INSTALL_MODULES_TOOL=""
 	keepdir /usr/share/shadowman/tools
 }
