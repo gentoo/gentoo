@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/cinemast/libjson-rpc-cpp"
 SRC_URI=""
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS=""
 IUSE="doc +http-client +http-server +stubgen test"
 
