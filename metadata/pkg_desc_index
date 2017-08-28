@@ -18390,7 +18390,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 47.0.2631.55: A fast and secure web browser
 www-client/opera-beta 47.0.2631.34 48.0.2685.7: A fast and secure web browser
-www-client/opera-developer 48.0.2670.0 48.0.2679.0: A fast and secure web browser
+www-client/opera-developer 49.0.2695.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -18965,7 +18965,7 @@ x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.5.7 0.5.8: Simple X hotkey daemon
 x11-misc/synergy 1.6.3 1.8.6 1.8.8: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
-x11-misc/tint2 0.12.12 0.14.6: tint2 is a lightweight panel/taskbar for Linux.
+x11-misc/tint2 0.12.12 0.14.6-r1: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
