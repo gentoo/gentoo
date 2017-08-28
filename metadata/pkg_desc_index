@@ -5883,7 +5883,7 @@ dev-perl/ExtUtils-F77 1.180.0 1.190.0 1.200.0: Facilitate use of FORTRAN from Pe
 dev-perl/ExtUtils-Helpers 0.22.0 0.26.0: Various portability utilities for module builders
 dev-perl/ExtUtils-InstallPaths 0.10.0 0.11.0: Build.PL install path logic made easy
 dev-perl/ExtUtils-LibBuilder 0.80.0: A tool to build C libraries
-dev-perl/ExtUtils-PkgConfig 1.150.0 1.160.0: Simplistic perl interface to pkg-config
+dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
@@ -6025,7 +6025,7 @@ dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expressio
 dev-perl/HTML-Template-JIT 0.50.0-r1: a just-in-time compiler for HTML::Template
 dev-perl/HTML-Template-Pro 0.951.0: Perl/XS module to use HTML Templates from CGI scripts
 dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
-dev-perl/HTML-Tree 4.200.0-r1 5.30.0-r1 5.40.0 5.60.0: A library to manage HTML-Tree in PERL
+dev-perl/HTML-Tree 5.60.0: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
 dev-perl/HTTP-Cache-Transparent 1.100.0-r1 1.400.0: Cache the result of http get-requests persistently
@@ -6183,7 +6183,7 @@ dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (impro
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Lite-HTML 1.240.0: Provide routine to transform a HTML page in a MIME-Lite mail
 dev-perl/MIME-Types 2.120.0 2.130.0: Definition of MIME types
-dev-perl/MIME-tools 5.507.0 5.509.0: A Perl module for parsing and creating MIME entities
+dev-perl/MIME-tools 5.509.0: A Perl module for parsing and creating MIME entities
 dev-perl/MLDBM 2.50.0: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
 dev-perl/MP3-Info 1.240.0-r1: A Perl module to manipulate/fetch info from MP3 files
