@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libcrypto.so.0.9.8 and libssl.so.0.9.8 SONAME for ABI compat
@@ -7,7 +7,8 @@ EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 
-PLEVEL=$(echo "${PV##*_p}" | tr '[1-9]' '[a-i]')
+#PLEVEL=$(printf "\\$(printf '%03o' $((${PV##*_p} + 96)))")
+PLEVEL='h' # _p8 -> tr '[1-9]' '[a-i]' -> 'h'
 MY_PV=${PV/_p*/${PLEVEL}}
 MY_P=${PN}-${MY_PV}
 S="${WORKDIR}/${MY_P}"
