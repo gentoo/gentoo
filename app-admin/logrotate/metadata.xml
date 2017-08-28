@@ -22,7 +22,6 @@
 		<flag name="acl">Installs acl support</flag>
 		<flag name="cron">Installs cron file</flag>
 		<flag name="selinux">Installs Security Enhanced Linux support</flag>
-		<flag name="bzip2">Compresses rotated log files with bzip2 instead of gzip</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">logrotate/logrotate</remote-id>
