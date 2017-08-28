@@ -25,6 +25,7 @@ RDEPEND="
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
+	<dev-python/eventlet-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
