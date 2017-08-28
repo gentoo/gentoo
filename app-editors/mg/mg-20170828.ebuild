@@ -11,7 +11,7 @@ SRC_URI="http://homepage.boetes.org/software/mg/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="livecd"
 
 RDEPEND="sys-libs/ncurses:0
@@ -20,10 +20,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	# remove OpenBSD specific easter egg
-	sed -i -e 's/theo\.o//' GNUmakefile || die
-	sed -i -e '/theo_init/d' main.c || die
-
 	# fix path to tutorial in man page
 	sed -i -e "s:doc/mg/:doc/${PF}/:" mg.1 || die
 
@@ -33,7 +29,7 @@ src_prepare() {
 src_compile() {
 	emake CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		CURSES_LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install()  {
