@@ -20,7 +20,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -v bin/*.{bat,exe} LICENSE.exe || die
+	rm -v bin/*.{bat,exe} LICENSE.txt || die
 
 	default
 }
