@@ -16,7 +16,8 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+
 IUSE="libressl"
 
 RDEPEND="
@@ -33,6 +34,10 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 # Tests access network, and fail randomly. Bug #431458.
 RESTRICT=test
+
+python_compile() {
+	distutils-r1_python_compile --openssl="${EPREFIX}"/usr
+}
 
 python_test() {
 	esetup.py test
