@@ -1041,7 +1041,7 @@ app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lfhex 0.42: A fast hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20160421 20161005 20170401: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20161005 20170401 20170828: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 2.7.5 2.8.6 2.8.7 9999: GNU GPL'd Pico clone with more functionality
