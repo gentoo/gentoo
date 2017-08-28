@@ -8,11 +8,13 @@ PYTHON_REQ_USE='xml'
 
 inherit eutils python-r1
 
+MY_PV=0_p${PV//./}
+MY_P=${PN}-${MY_PV}
 DESCRIPTION="Converts profiling output to dot graphs"
 HOMEPAGE="https://github.com/jrfonseca/gprof2dot"
-SRC_URI="http://www.hartwork.org/public/${P}.tar.xz"
+SRC_URI="http://www.hartwork.org/public/${MY_P}.tar.xz"
 
-LICENSE="GPL-3"
+LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -21,8 +23,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
+S="${WORKDIR}"/${MY_P}
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-py3-xrange.patch
+	epatch "${FILESDIR}"/${MY_P}-py3-xrange.patch
 }
 
 _make_call_script() {
