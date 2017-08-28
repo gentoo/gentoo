@@ -11,7 +11,7 @@ SRC_URI="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/contrib/${P}.tar.gz"
 
 LICENSE="PSTT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 hppa ppc ppc64 x86"
 IUSE=""
 
 DEPEND="app-arch/ncompress"
