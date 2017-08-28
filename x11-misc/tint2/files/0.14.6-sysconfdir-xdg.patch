@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -257,7 +257,7 @@
+ install( TARGETS tint2 DESTINATION bin )
+ install( FILES tint2.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps )
+ install( FILES tint2.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications )
+-install( FILES themes/tint2rc DESTINATION /etc/xdg/tint2 )
++install( FILES themes/tint2rc DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/xdg/tint2 )
+ install( FILES default_icon.png DESTINATION ${CMAKE_INSTALL_DATADIR}/tint2 )
+ install( FILES AUTHORS ChangeLog README.md doc/tint2.md DESTINATION ${docdir} )
+ install( FILES doc/manual.html doc/readme.html DESTINATION ${htmldir} )
+
