@@ -38,7 +38,7 @@ src_install() {
 	prune_libtool_files --all
 	keepdir /var/spool/uptimed
 	fowners uptimed:uptimed /var/spool/uptimed
-	newinitd "${FILESDIR}"/${PN}.init uptimed
+	newinitd "${FILESDIR}"/${PN}.init-r1 uptimed
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }
 
