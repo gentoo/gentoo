@@ -2318,7 +2318,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3 1.3.4 1.4.2 1.5.4 1.6.0 1.6.1-r1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.74: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.74 3.75: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.5 1.5.6: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1 3.8.2: Java GUI for managing BibTeX and other bibliographies
@@ -2341,7 +2341,7 @@ app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libetonyek 0.1.6 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4: Library implementing N-gram-based text categorization
-app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
+app-text/libgepub 0.4 0.5.2: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.2.5 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
@@ -3948,7 +3948,7 @@ dev-java/asm 3.3.1-r1 5.0.3 5.1: Bytecode manipulation framework for Java
 dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
-dev-java/avalon-logkit 1.2.2-r2 2.1-r8: Easy-to-use Java logging toolkit
+dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
 dev-java/batik 1.8-r3 1.9: Java based SVG toolkit
@@ -4005,7 +4005,7 @@ dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded 
 dev-java/commons-jxpath 1.3-r3: Applies XPath expressions to graphs of objects of all kinds
 dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1 3.1 3.3.2 3.4 3.6: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
-dev-java/commons-logging 1.2 1.2-r1: An ultra-thin bridge between different Java logging libraries
+dev-java/commons-logging 1.2-r1: An ultra-thin bridge between different Java logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 3.2: Java library emulating the client side of many basic Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
@@ -10419,7 +10419,7 @@ dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/google-perftools 1.8.3 2.0-r2 2.4 2.5 2.6 2.6.1: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.44: A software version control visualization tool
 dev-util/gperf 3.0.4 3.1: A perfect hash function generator
-dev-util/gprof2dot 0_p20130517: Converts profiling output to dot graphs
+dev-util/gprof2dot 2013.05.17 2016.10.13: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.31-r1: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
@@ -11806,7 +11806,7 @@ java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
 java-virtuals/jmx 1.0-r4: Virtual for Java Management Extensions (JMX)
 java-virtuals/saaj-api 1.3-r3: Virtual for SAAJ 1.3 (AKA JSR-67 MR3) API
 java-virtuals/script-api 1.0-r1: Virtual for Java Scripting API (jsr223)
-java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r1 2.5-r2 3.0-r1 3.0-r2 3.1 3.1-r1: Virtual for servlet api
+java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
@@ -18645,7 +18645,7 @@ x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and 
 x11-libs/fltk 1.3.3-r3 1.3.3-r5 1.3.4 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
-x11-libs/gdk-pixbuf 2.36.6: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.36.6 2.36.9: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.9: OpenGL to PostScript printing library
