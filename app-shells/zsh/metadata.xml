@@ -5,6 +5,10 @@
     <email>radhermit@gentoo.org</email>
     <name>Tim Harder</name>
   </maintainer>
+  <maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
   <longdescription>
   Zsh is a shell designed for interactive use, although it is also a
   powerful scripting language. Many of the useful features of bash, ksh,
