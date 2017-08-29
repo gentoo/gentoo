@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/zsh/code"
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SRC_URI="http://www.zsh.org/pub/${P}.tar.xz
+	SRC_URI="http://www.zsh.org/pub/${P}.tar.gz
 		doc? ( http://www.zsh.org/pub/${P}-doc.tar.xz )"
 fi
 
@@ -74,7 +74,21 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--bindir="${EPREFIX}"/bin
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--enable-etcdir="${EPREFIX}"/etc/zsh
+		--enable-runhelpdir="${EPREFIX}"/usr/share/zsh/${PV%_*}/help
+		--enable-fndir="${EPREFIX}"/usr/share/zsh/${PV%_*}/functions
+		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions
+		--enable-function-subdirs
+		--with-tcsetpgrp
+		$(use_enable maildir maildir-support)
+		$(use_enable pcre)
+		$(use_enable caps cap)
+		$(use_enable unicode multibyte)
+		$(use_enable gdbm )
+	)
 
 	if use static ; then
 		myconf+=( --disable-dynamic )
@@ -95,21 +109,7 @@ src_configure() {
 		append-ldflags -Wl,-x
 	fi
 
-	econf \
-		--bindir="${EPREFIX}"/bin \
-		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--enable-etcdir="${EPREFIX}"/etc/zsh \
-		--enable-runhelpdir="${EPREFIX}"/usr/share/zsh/${PV%_*}/help \
-		--enable-fndir="${EPREFIX}"/usr/share/zsh/${PV%_*}/functions \
-		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions \
-		--enable-function-subdirs \
-		--with-tcsetpgrp \
-		$(use_enable maildir maildir-support) \
-		$(use_enable pcre) \
-		$(use_enable caps cap) \
-		$(use_enable unicode multibyte) \
-		$(use_enable gdbm ) \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 
 	if use static ; then
 		# compile all modules statically, see Bug #27392
