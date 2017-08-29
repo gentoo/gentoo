@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ HOMEPAGE="https://bitbucket.org/Coin3D/soqt"
 SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="debug doc static-libs"
 
@@ -34,13 +34,13 @@ DOCS=(AUTHORS ChangeLog FAQ HACKING NEWS README)
 
 src_configure() {
 	local myeconfargs=(
-		htmldir="/usr/share/doc/${PF}/html"
+		htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		--disable-compact
 		--disable-html-help
 		--disable-loadlibrary
 		--disable-man
 		--enable-pkgconfig
-		--includedir="/usr/include/coin"
+		--includedir="${EPREFIX}/usr/include/coin"
 		--with-coin
 		$(use_enable debug)
 		$(use_enable debug symbols)
