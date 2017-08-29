@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (29 Aug 2017)
+# The new snapshot introduces more issues than it fixes, even after
+# reverting one of the most breaking commits. Downgrade to 4.13.0
+# is suggested, I will probably add a new revision with some specific
+# patches if necessary.
+=xfce-base/xfwm4-4.13.0_p20170825
+
 # Michał Górny <mgorny@gentoo.org> (28 Aug 2017)
 # Alike xfce4-mixer, relies on gstreamer:0.10 (gstreamer:1.0 removed
 # mixer wrappers). Last commit upstream in 2014. PulseAudio users
