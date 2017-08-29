@@ -13,7 +13,7 @@ SRC_URI="http://www.renpy.org/dl/${PV}/${P}-source.tar.bz2"
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
 MYSLOT=$(delete_all_version_separators ${SLOT})
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="development doc examples"
 REQUIRED_USE="examples? ( development )"
 
