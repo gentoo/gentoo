@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 case ${PV} in
 *_pre*) UP_PV="${PV%_pre*}-WIP-${PV#*_pre}" ;;
@@ -26,7 +26,7 @@ RDEPEND="!sys-libs/com_err
 DEPEND="nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${P%_pre*}
+S="${WORKDIR}/${P%_pre*}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
@@ -34,7 +34,7 @@ PATCHES=(
 
 src_prepare() {
 	printf 'all:\n%%:;@:\n' > doc/Makefile.in # don't bother with docs #305613
-	epatch "${PATCHES[@]}"
+	default
 }
 
 multilib_src_configure() {
