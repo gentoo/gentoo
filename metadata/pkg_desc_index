@@ -8643,7 +8643,7 @@ dev-python/repoze-lru 0.6-r2 0.6-r3: A tiny LRU cache implementation and decorat
 dev-python/repoze-sphinx-autointerface 0.7.1 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/reproject 0.3.1: Reproject astronomical images with Python
-dev-python/requests 2.8.1 2.11.1 2.12.5 2.13.0 2.14.2 2.18.1 2.18.2: HTTP library for human beings
+dev-python/requests 2.8.1 2.11.1 2.12.5 2.13.0 2.14.2 2.18.1 2.18.2-r1: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
 dev-python/requests-mock 1.2.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.6.2 0.7.0: This project provides first-class OAuth library support for Requests
