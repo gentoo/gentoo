@@ -36,10 +36,10 @@ src_configure() {
 src_compile() {
 	# cl-unicode builds parts of its source code automatically the first time it
 	# is compiled, so we compile it here.
-	local lispimpl=$(find-lisp-impl)
 	local initclunicode="(progn (push \"${S}/\" asdf:*central-registry*) (require :${PN}))"
-	common-lisp-export-impl-args "${lispimpl}"
-	${lispimpl} ${CL_EVAL} "${initclunicode}"
+
+	common-lisp-export-impl-args "$(find-lisp-impl)"
+	${CL_BINARY} ${CL_EVAL} "${initclunicode}"
 }
 
 src_install() {
