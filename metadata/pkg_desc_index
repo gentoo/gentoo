@@ -10450,11 +10450,11 @@ dev-util/jenkins-bin 2.46.3 2.57 2.60.1 2.60.2 2.60.3 2.67 2.71: Extensible cont
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.0 2.9.1: Graphical debugger interface
-dev-util/kdevelop 5.1.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.1.1 5.1.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.1.1: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.1.1: Python plugin for KDevelop
-dev-util/kdevplatform 5.1.1: KDE development support libraries and apps
+dev-util/kdevelop-php 5.1.1 5.1.2: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.1.1 5.1.2: Python plugin for KDevelop
+dev-util/kdevplatform 5.1.1 5.1.2: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kscope 1.9.4-r2: Source Editing Environment based on Qt
 dev-util/kup 0.3.4-r1: kernel.org uploader tool
