@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/vifm/${PF}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="X developer +extended-keys gtk +magic vim vim-syntax"
 
 DEPEND="
