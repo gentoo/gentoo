@@ -30,6 +30,10 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/10.0.06-make.patch
+)
+
 src_prepare() {
 	sed -i -e 's/install -s/install/' src/Makefile || die
 	default
