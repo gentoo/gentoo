@@ -103,9 +103,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
-
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
 
@@ -200,11 +197,7 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
-	# clang-tidy requires [static-analyzer] and tests are not split
-	# correctly, so they are all disabled when static-analyzer is off
-	if multilib_is_native_abi && use static-analyzer; then
-		cmake-utils_src_make check-clang-tools
-	fi
+	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
 }
 
 src_install() {
