@@ -2167,7 +2167,7 @@ app-shells/ksh 93.20140625 93.20160110: The Original Korn Shell, 1993 revision (
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 53a 56 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
-app-shells/mpv-bash-completion 3.3.12 3.3.13: Bash completion for the mpv video player
+app-shells/mpv-bash-completion 3.3.12 3.3.15: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.1: Simplistic interactive filtering tool
