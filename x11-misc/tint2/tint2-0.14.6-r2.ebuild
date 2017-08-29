@@ -31,7 +31,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PV}-sysconfdir-xdg.patch" )
+# bug 629312
+PATCHES=( "${FILESDIR}/${PV}-sysconfdir-xdg2.patch" )
 
 src_configure() {
 	local mycmakeargs=(
