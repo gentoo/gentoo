@@ -44,10 +44,14 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
+	"${FILESDIR}"/${PN}-1.2-ia64-undwarf.patch
+	"${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
+	"${FILESDIR}"/${PN}-1.2-ia64-missing.patch
 )
 
 src_prepare() {
 	default
+	chmod +x src/ia64/mk_cursor_i || die
 	# Since we have tests disabled via RESTRICT, disable building in the subdir
 	# entirely.  This worksaround some build errors too. #484846
 	sed -i -e '/^SUBDIRS/s:tests::' Makefile.in || die
