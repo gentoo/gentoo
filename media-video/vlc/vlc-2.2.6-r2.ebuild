@@ -196,10 +196,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
 
 	# Patch up incompatibilities and reconfigure autotools.
-	"${FILESDIR}"/${PN}-9999-libva-1.2.1-compat.patch
+# 	"${FILESDIR}"/${PN}-9999-libva-1.2.1-compat.patch
 
 	# Fix up broken audio when skipping using a fixed reversed bisected commit.
-	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
+# 	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
 
 	# Bug #541678
 	"${FILESDIR}"/qt4-select.patch
@@ -214,8 +214,8 @@ PATCHES=(
 	# Bug #589396
 	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
 
-	# Bug #594126
-	"${FILESDIR}"/${PN}-2.2.4-decoder-lock-scope.patch
+	# Bug #594126, #629294
+	"${FILESDIR}"/${PN}-2.2.6-decoder-lock-scope.patch
 	"${FILESDIR}"/${PN}-2.2.4-alsa-large-buffers.patch
 
 	# Bug #593460

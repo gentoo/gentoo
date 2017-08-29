@@ -214,8 +214,8 @@ PATCHES=(
 	# Bug #589396
 	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
 
-	# Bug #594126
-	"${FILESDIR}"/${PN}-2.2.4-decoder-lock-scope.patch
+	# Bug #594126, #629294
+	"${FILESDIR}"/${PN}-2.2.6-decoder-lock-scope.patch
 	"${FILESDIR}"/${PN}-2.2.4-alsa-large-buffers.patch
 
 	# Bug #593460
