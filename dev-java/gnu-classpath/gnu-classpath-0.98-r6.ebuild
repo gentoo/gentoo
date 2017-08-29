@@ -14,7 +14,7 @@ LICENSE="GPL-2-with-linking-exception"
 SLOT="0.98"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 
-IUSE="alsa debug doc dssi examples gconf +gjdoc gmp gtk gstreamer qt4 xml"
+IUSE="alsa debug doc dssi examples gconf +gjdoc gmp gtk xml"
 REQUIRED_USE="doc? ( gjdoc )"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
@@ -22,11 +22,6 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 		gconf? ( gnome-base/gconf:2= )
 		gjdoc? ( >=dev-java/antlr-2.7.7-r7:0 )
 		gmp? ( >=dev-libs/gmp-4.2.4:0= )
-		gstreamer? (
-			>=media-libs/gstreamer-0.10.10:0.10=
-			>=media-libs/gst-plugins-base-0.10.10:0.10=
-			x11-libs/gtk+:2=
-		)
 		gtk? (
 				>=x11-libs/gtk+-2.8:2=
 				dev-libs/glib:2=
@@ -40,7 +35,6 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 				x11-libs/libXtst
 				x11-libs/pango
 		)
-		qt4? ( dev-qt/qtgui:4= )
 		xml? ( >=dev-libs/libxml2-2.6.8:2= >=dev-libs/libxslt-1.1.11 )"
 
 DEPEND="app-arch/zip
@@ -77,9 +71,6 @@ src_configure() {
 		chmod 755 tools/gjdoc.build || die
 	fi
 
-	# Force Qt version, bug #619004.
-	export QT_SELECT=qt4
-
 	ANTLR= ./configure \
 		$(use_enable alsa) \
 		$(use_enable debug ) \
@@ -88,8 +79,6 @@ src_configure() {
 		$(use_enable gjdoc) \
 		$(use_enable gmp) \
 		$(use_enable gtk gtk-peer) \
-		$(use_enable gstreamer gstreamer-peer) \
-		$(use_enable qt4 qt-peer) \
 		$(use_enable xml xmlj) \
 		$(use_enable dssi ) \
 		$(use_with doc gjdoc "${S}/tools/gjdoc.build") \
