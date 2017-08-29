@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="luajit"
 
-COMMON_DEPEND=">=media-video/mpv-0.14.0[cli]"
+COMMON_DEPEND=">=media-video/mpv-0.25.0[cli]"
 RDEPEND="${COMMON_DEPEND}
 	>=app-shells/bash-completion-2.3-r1
 "
