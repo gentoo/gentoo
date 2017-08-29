@@ -1772,9 +1772,7 @@ dev-java/gnu-classpath:dssi - Build with DSSI javax.sound.midi provider
 dev-java/gnu-classpath:gconf - Build with GConf preferences backend
 dev-java/gnu-classpath:gjdoc - Build GJDoc, a documentation generator
 dev-java/gnu-classpath:gmp - Build with GMP backend for java.math.BigInteger
-dev-java/gnu-classpath:gstreamer - Build with GStreamer javax.sound.sampler provider
 dev-java/gnu-classpath:gtk - Build with Gtk+ AWT peers
-dev-java/gnu-classpath:qt4 - Build with Qt4 AWT peers
 dev-java/gnu-classpath:xml - Build with native XML backend
 dev-java/icedtea:cacao - Use the CACAO virtual machine rather than HotSpot.
 dev-java/icedtea:cups - Link against the CUPS library at compile time, rather than using it dynamically at runtime.
