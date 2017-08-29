@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (29 Aug 2017)
+# The FOSS-friendly oracle-javamail has rendered other implementations
+# and the virtual obsolete. Removal in 30 days. See bug #553186.
+dev-java/gnu-classpath-inetlib
+dev-java/gnu-javamail
+dev-java/sun-javamail
+java-virtuals/javamail
+
+# James Le Cuirot <chewi@gentoo.org> (29 Aug 2017)
 # Old and holding up the removal of Java 7. Still alive upstream but
 # new versions have proven too tricky to package under our current
 # infrastructure. It may return one day. Removal in 30 days.
