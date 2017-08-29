@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils multilib-minimal
+inherit autotools ltprune multilib-minimal
 
 DESCRIPTION="AAC audio decoding library"
 HOMEPAGE="http://www.audiocoding.com/faad2.html"
