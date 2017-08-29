@@ -39,7 +39,7 @@ src_install() {
 	exeinto /usr/share/${PN}/bin
 	doexe "${FILESDIR}/elasticsearch-systemd-pre-exec"
 
-	chmod +x "${D}"/usr/share/${PN}/bin/* || die
+	chmod +x "${ED}"/usr/share/${PN}/bin/* || die
 
 	keepdir /var/{lib,log}/${PN}
 	dodir /usr/share/${PN}/plugins
