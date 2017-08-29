@@ -64,7 +64,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_CLIENT=$(usex client)
+		-DBUILD_CLIENT=$(usex !dedicated)
 		-DCUSTOM_BINDIR="${EPREFIX}/usr/bin"
 		-DCUSTOM_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DCUSTOM_LOCALEDIR="${EPREFIX}/usr/share/${PN}/locale"
