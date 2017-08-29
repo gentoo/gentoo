@@ -3,54 +3,67 @@
 
 EAPI=6
 
-SCM=""
-if [[ ${PV} = *9999 ]] ; then
-	SCM="git-r3"
-
-	if [ "${PV%.9999}" != "${PV}" ] ; then
-		EGIT_REPO_URI="git://git.videolan.org/vlc/vlc-${PV%.9999}.git"
-	else
-		EGIT_REPO_URI="git://git.videolan.org/vlc.git"
-	fi
-fi
-
-inherit autotools flag-o-matic toolchain-funcs versionator virtualx ${SCM}
-
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
+if [[ ${PV} = *9999 ]] ; then
+	if [[ ${PV%.9999} != ${PV} ]] ; then
+		EGIT_REPO_URI="https://git.videolan.org/git/vlc/vlc-${PV%.9999}.git"
+	else
+		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
+	fi
+	SCM="git-r3"
+else
+	if [[ ${MY_P} = ${P} ]] ; then
+		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	else
+		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+	fi
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+fi
+inherit autotools flag-o-matic toolchain-funcs versionator virtualx ${SCM}
 
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="https://www.videolan.org/vlc/"
-if [[ ${PV} = *9999 ]] ; then # Live ebuild
-	SRC_URI=""
-elif [[ "${MY_P}" == "${P}" ]]; then
-	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
-else
-	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
-fi
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
-if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
-fi
-
-IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
-	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
-	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
-	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
-	growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
-	+libsamplerate libtiger linsys libtar lirc live lua
+IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec +avformat bidi bluray cdda
+	cddb chromaprint dbus dc1394 debug directfb directx dts dvb +dvbpsi dvd dxva2
+	elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt gme
+	gnome gnutls growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav
+	libcaca libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
-	matroska cpu_flags_x86_mmx modplug mp3 mpeg
-	mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
-	png postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
-	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
-	taglib theora tremor truetype twolame udev upnp vaapi v4l vcdx vdpau
-	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi"
-
+	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack ncurses neon ogg
+	omxil opencv opengl optimisememory opus png postproc projectm pulseaudio
+	qt4 +qt5 rdp rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
+	sid skins speex cpu_flags_x86_sse svg +swscale taglib theora tremor truetype
+	twolame udev upnp vaapi v4l vcdx vdpau vlm vnc vorbis vpx wma-fixed +X
+	x264 x265 +xcb xml xv zeroconf zvbi
+"
+REQUIRED_USE="
+	aalib? ( X )
+	bidi? ( truetype )
+	cddb? ( cdda )
+	dvb? ( dvbpsi )
+	dxva2? ( avcodec )
+	ffmpeg? ( avcodec avformat swscale )
+	fontconfig? ( truetype )
+	gnutls? ( gcrypt )
+	httpd? ( lua )
+	libcaca? ( X )
+	libtar? ( skins )
+	libtiger? ( kate )
+	qt4? ( X )
+	qt5? ( X )
+	sdl? ( X )
+	skins? ( truetype X xml || ( qt4 qt5 ) )
+	vaapi? ( avcodec X )
+	vdpau? ( X )
+	vlm? ( encode )
+	xv? ( xcb )
+"
 RDEPEND="
 	dev-libs/libgpg-error:0
 	net-dns/libidn:0
@@ -152,12 +165,6 @@ RDEPEND="
 		libav? ( media-video/libav:0=[vaapi] )
 	)
 	vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
-	zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
-"
-
-# Temporarily block non-live FFMPEG versions as they break vdpau, 9999 works;
-# thus we'll have to wait for a new release there.
-RDEPEND="${RDEPEND}
 	vdpau? (
 		x11-libs/libvdpau:0
 		!libav? ( media-video/ffmpeg:0= )
@@ -171,40 +178,17 @@ RDEPEND="${RDEPEND}
 	x265? ( media-libs/x265:0= )
 	xcb? ( x11-libs/libxcb:0 x11-libs/xcb-util:0 x11-libs/xcb-util-keysyms:0 )
 	xml? ( dev-libs/libxml2:2 )
+	zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
 	zvbi? ( media-libs/zvbi:0 )
 "
-
 DEPEND="${RDEPEND}
+	app-arch/xz-utils:0
+	>=sys-devel/gettext-0.18.3:*
+	virtual/pkgconfig:*
 	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
-	app-arch/xz-utils:0
-	>=sys-devel/gettext-0.18.3:*
-	virtual/pkgconfig:*
-"
-
-REQUIRED_USE="
-	aalib? ( X )
-	bidi? ( truetype )
-	cddb? ( cdda )
-	dvb? ( dvbpsi )
-	dxva2? ( avcodec )
-	ffmpeg? ( avcodec avformat swscale )
-	fontconfig? ( truetype )
-	gnutls? ( gcrypt )
-	httpd? ( lua )
-	libcaca? ( X )
-	libtar? ( skins )
-	libtiger? ( kate )
-	qt4? ( X )
-	qt5? ( X )
-	sdl? ( X )
-	skins? ( truetype X xml || ( qt4 qt5 ) )
-	vaapi? ( avcodec X )
-	vdpau? ( X )
-	vlm? ( encode )
-	xv? ( xcb )
 "
 
 PATCHES=(
@@ -223,6 +207,10 @@ PATCHES=(
 	# Allow QT5.5 since Gentoo has a patched QTwidgets
 	"${FILESDIR}"/${PN}-2.2.2-qt5widgets.patch
 
+	# Bug #575072
+	"${FILESDIR}"/${PN}-2.2.4-relax_ffmpeg.patch
+	"${FILESDIR}"/${PN}-2.2.4-ffmpeg3.patch
+
 	# Bug #589396
 	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
 
@@ -238,14 +226,6 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	if [[ "${MERGE_TYPE}" != "binary" ]] && tc-is-gcc ; then
-		if ! version_is_at_least 4.5 $(gcc-version) ; then
-			die "You need to have at least >=sys-devel/gcc-4.5 to build and/or have a working vlc, see bug #426754."
-		fi
-	fi
-}
-
 src_unpack() {
 	if [[ ${PV} = *9999 ]] ; then
 		git-r3_src_unpack
@@ -255,6 +235,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	# Remove unnecessary warnings about unimplemented pragmas on gcc for now.
 	# Need to recheck this with gcc 4.9 and every subsequent minor bump of gcc.
 	#
@@ -276,8 +258,6 @@ src_prepare() {
 
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
-
-	default
 
 	# Don't use --started-from-file when not using dbus.
 	if ! use dbus ; then
@@ -304,12 +284,10 @@ src_configure() {
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"
 
-	# We need to disable -fstack-check if use >=gcc 4.8.0.
-	# See bug #499996
+	# We need to disable -fstack-check if use >=gcc 4.8.0. bug #499996
 	use x86 && append-cflags $(test-flags-CC -fno-stack-check)
 
-	# Needs libresid-builder from libsidplay:2 which is in another directory...
-	# FIXME!
+	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
 
 	if use truetype || use projectm ; then
@@ -492,13 +470,11 @@ src_test() {
 
 src_install() {
 	default
-
-	# Punt useless libtool's .la files
 	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	if [ "$ROOT" = "/" ] && [ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ] ; then
+	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
 		"/usr/$(get_libdir)/vlc/vlc-cache-gen" -f "/usr/$(get_libdir)/vlc/plugins/"
 	else
