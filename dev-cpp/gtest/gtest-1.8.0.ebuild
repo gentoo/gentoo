@@ -6,23 +6,27 @@ EAPI=6
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
-inherit git-r3 python-any-r1 cmake-multilib
+inherit python-any-r1 cmake-multilib
 
 DESCRIPTION="Google C++ Testing Framework"
 HOMEPAGE="https://github.com/google/googletest"
-EGIT_REPO_URI="https://github.com/google/googletest.git"
+SRC_URI="https://github.com/google/googletest/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="examples test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix-py-tests.patch
-	"${FILESDIR}"/${P}-fix-gcc6-undefined-behavior.patch
+	"${FILESDIR}"/${PN}-9999-fix-py-tests.patch
+	"${FILESDIR}"/${PN}-9999-fix-gcc6-undefined-behavior.patch
+	"${FILESDIR}"/${PN}-1.8.0-multilib-strict.patch
 )
+
+S="${WORKDIR}"/googletest-release-${PV}
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -32,22 +36,17 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
 		-DBUILD_GTEST=ON
-		-DINSTALL_GMOCK=ON
-		-DINSTALL_GTEST=ON
+		-DLIB_INSTALL_DIR=$(get_libdir)
 		-Dgtest_build_samples=OFF
 		-Dgtest_disable_pthreads=OFF
-
-		# currently only static libs work
-		# due to numerous ODR violations
-		# https://github.com/google/googletest/issues/930
-		-DBUILD_SHARED_LIBS=OFF
+		-DBUILD_SHARED_LIBS=ON
 
 		# tests
 		-Dgmock_build_tests=$(usex test)
 		-Dgtest_build_tests=$(usex test)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	cmake-utils_src_configure
+	cmake-utils_src_configure mycmakeargs
 }
 
 multilib_src_install_all() {
