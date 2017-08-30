@@ -64,10 +64,7 @@ CDEPEND="
 		>=dev-qt/qtbearer-${QT_PV}
 	)
 	otr? ( >=net-libs/libotr-4.0.0 )
-	phonon? (
-		kde? ( media-libs/phonon[qt4] )
-		!kde? ( || ( >=dev-qt/qtphonon-${QT_PV} media-libs/phonon[qt4] ) )
-	)
+	phonon? ( media-libs/phonon[qt4] )
 	plugman? (
 		dev-libs/libattica
 		app-arch/libarchive
