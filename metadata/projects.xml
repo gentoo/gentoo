@@ -719,6 +719,16 @@
     </member>
   </project>
   <project>
+    <email>crossdev@gentoo.org</email>
+    <name>Gentoo Crossdev maintainers</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Crossdev</url>
+    <description>Subproject of toolchain for advanced wizards</description>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
+    </member>
+  </project>
+  <project>
     <email>crypto@gentoo.org</email>
     <name>Crypto</name>
     <url>https://wiki.gentoo.org/wiki/Project:Crypto</url>
@@ -3894,6 +3904,7 @@ developers and volunteer mentors.</description>
     <name>Gentoo Toolchain Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Toolchain</url>
     <description>Manages gcc/binutils/glibc and other toolchain-related packages</description>
+    <subproject ref="crossdev@gentoo.org"/>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>

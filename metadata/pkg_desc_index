@@ -11752,7 +11752,7 @@ gnome-extra/zeitgeist-explorer 0.2-r1 0.2-r2: Monitor and inspect Zeitgeist's lo
 gnome-extra/zenity 3.22.0 3.24.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
-gnustep-apps/affiche 0.6.0-r3 0.6.0-r4: Affiche allows people to 'stick' notes
+gnustep-apps/affiche 0.6.0-r4: Affiche allows people to 'stick' notes
 gnustep-apps/batmon 0.8: displays the status of your laptop battery
 gnustep-apps/cdplayer 0.6.0: Small CD Audio Player for GNUstep
 gnustep-apps/cenon 4.0.2-r1: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
@@ -11761,10 +11761,10 @@ gnustep-apps/fisicalab 0.3.5: educational application to solve physics problems
 gnustep-apps/ftp 0.5: FTP client for GNUstep
 gnustep-apps/gemas 0.4: a simple code editor for GNUstep
 gnustep-apps/gmines 0.2: The well-known minesweeper game
-gnustep-apps/gnumail 1.2.2: A fully featured mail application for GNUstep
+gnustep-apps/gnumail 1.2.2 1.2.3: A fully featured mail application for GNUstep
 gnustep-apps/gorm 1.2.23: A clone of the NeXTstep Interface Builder application for GNUstep
 gnustep-apps/graphos 0.6: vector drawing application centered around bezier paths
-gnustep-apps/gshisen 1.3.0 1.3.0-r1: The first GNUstep game, similar to Mahjongg
+gnustep-apps/gshisen 1.3.0-r1: The first GNUstep game, similar to Mahjongg
 gnustep-apps/gspdf 0.5: Postscript and Pdf Viewer using GhostScript
 gnustep-apps/gworkspace 0.9.4: A workspace manager for GNUstep
 gnustep-apps/lapispuzzle 1.2: a Tetris-like game where each player is effected by the others game play
@@ -11790,15 +11790,15 @@ gnustep-base/gnustep-gui 0.25.0 0.25.1: Library of GUI classes written in Obj-C
 gnustep-base/gnustep-make 2.6.8 2.7.0: GNUstep Makefile Package
 gnustep-base/gnustep-updater 0.2 0.3: Helper tool to upgrade Gentoo GNUstep installations
 gnustep-base/libobjc2 1.8 1.8.1: GNUstep Objective-C runtime
-gnustep-base/mknfonts 0.5-r1 0.5-r2: A tool to create .nfont packages for use with gnustep-back-art
+gnustep-base/mknfonts 0.5-r2: A tool to create .nfont packages for use with gnustep-back-art
 gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
 gnustep-libs/dbuskit 0.1.1 0.1.1-r1: framework that interfaces Objective-C applications with the D-Bus IPC service
 gnustep-libs/gsldap 0.0.1_pre20070219: GNUstep LDAP library for open ldap C libraries
 gnustep-libs/highlighterkit 0.1.3: Syntax highlighter framework
-gnustep-libs/netclasses 1.06-r1 1.1.0: An asynchronous networking library for GNUstep
-gnustep-libs/pantomime 1.2.2: A set of Objective-C classes that model a mail system
+gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
+gnustep-libs/pantomime 1.2.2 1.2.3: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
-gnustep-libs/renaissance 0.9.0 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
+gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
 gnustep-libs/sope 3.2.9 3.2.10: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1: GNUstep lightweight database abstraction layer
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
