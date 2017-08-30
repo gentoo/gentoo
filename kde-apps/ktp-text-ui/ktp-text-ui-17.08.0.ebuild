@@ -40,7 +40,7 @@ DEPEND="
 	$(add_qt_dep qtwebengine 'widgets')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 	speech? ( $(add_qt_dep qtspeech) )
 "
 RDEPEND="${DEPEND}

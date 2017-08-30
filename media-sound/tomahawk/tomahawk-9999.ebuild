@@ -42,7 +42,7 @@ CDEPEND="
 	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
-	telepathy? ( net-libs/telepathy-qt[qt5] )
+	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
 	xmpp? ( net-libs/jreen[qt5] )
 "
 DEPEND="${CDEPEND}

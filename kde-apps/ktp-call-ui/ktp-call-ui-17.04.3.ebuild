@@ -33,6 +33,6 @@ DEPEND="
 	media-libs/qt-gstreamer[qt5]
 	net-libs/farstream:0.2
 	net-libs/telepathy-farstream
-	net-libs/telepathy-qt[farstream,qt5]
+	net-libs/telepathy-qt[farstream,qt5(+)]
 "
 RDEPEND="${DEPEND}"
