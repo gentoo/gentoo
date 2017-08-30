@@ -116,7 +116,7 @@ RDEPEND="
 	~dev-python/suds-0.6[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-i18n-3.15.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
 	>=dev-python/oslo-vmware-2.17.0[${PYTHON_USEDEP}]
 	>=dev-python/os-brick-1.15.2[${PYTHON_USEDEP}]
 	>=dev-python/os-win-2.0.0[${PYTHON_USEDEP}]
