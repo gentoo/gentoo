@@ -13,7 +13,7 @@ else
 	KEYWORDS="amd64 arm ppc ppc64 x86"
 fi
 
-IUSE="dbus declarative kde multimedia opengl phonon webkit xmlpatterns"
+IUSE="dbus declarative multimedia opengl phonon webkit xmlpatterns"
 
 DEPEND="
 	~dev-qt/designer-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
@@ -28,10 +28,7 @@ DEPEND="
 	declarative? ( ~dev-qt/qtdeclarative-${PV}[aqua=,debug=,webkit?,${MULTILIB_USEDEP}] )
 	multimedia? ( ~dev-qt/qtmultimedia-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 	opengl? ( ~dev-qt/qtopengl-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	phonon? (
-		kde? ( media-libs/phonon[aqua=,qt4] )
-		!kde? ( || ( ~dev-qt/qtphonon-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] media-libs/phonon[aqua=,qt4] ) )
-	)
+	phonon? ( media-libs/phonon[aqua=,qt4] )
 	webkit? ( ~dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 	xmlpatterns? ( ~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 "
