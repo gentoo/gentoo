@@ -122,10 +122,7 @@ multilib_src_configure() {
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
 		-DBUILD_SHARED_LIBS=ON
-		# cheap hack: LLVM combines both anyway, and the only difference
-		# is that the former list is explicitly verified at cmake time
-		-DLLVM_TARGETS_TO_BUILD=""
-		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
