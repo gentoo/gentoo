@@ -12134,7 +12134,7 @@ kde-frameworks/kjs 5.34.0 5.37.0: ECMAScipt compatible parser and engine
 kde-frameworks/kjsembed 5.34.0 5.37.0: Framework binding JavaScript objects to QObjects
 kde-frameworks/kmediaplayer 5.34.0 5.37.0: Framework providing a common interface for KParts that can play media files
 kde-frameworks/knewstuff 5.34.0 5.37.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.34.0 5.37.0: Framework for notifying the user of an event
+kde-frameworks/knotifications 5.34.0 5.34.0-r1 5.37.0 5.37.0-r1: Framework for notifying the user of an event
 kde-frameworks/knotifyconfig 5.34.0 5.37.0: Framework for configuring desktop notifications
 kde-frameworks/kpackage 5.34.0 5.37.0: Framework to install and load packages of non binary content
 kde-frameworks/kparts 5.34.0 5.37.0: Framework providing elaborate user-interface components
