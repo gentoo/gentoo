@@ -11,8 +11,7 @@ MY_PV=43_full
 
 DESCRIPTION="Data files for UrbanTerror"
 HOMEPAGE="http://www.urbanterror.info"
-SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip -> ${P}.zip
-	https://upload.wikimedia.org/wikipedia/commons/5/56/Urbanterror.svg -> ${PN}.svg"
+SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip -> ${P}.zip"
 
 # fetch updates recursively for |4.3.x-4.3.0|
 if [[ "${PV}" != "4.3.0" ]]; then
@@ -26,7 +25,7 @@ unset MY_CTR
 
 LICENSE="Q3AEULA-20000111 urbanterror-4.2-maps"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_PN}43"
@@ -51,7 +50,6 @@ src_prepare() {
 }
 
 src_install() {
-	newicon -s scalable "${DISTDIR}"/${PN}.svg urbanterror.svg
 	insinto /usr/share/urbanterror/q3ut4
 	doins q3ut4/*.pk3
 	# These files are *essential* for startup
