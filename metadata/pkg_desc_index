@@ -7484,7 +7484,7 @@ dev-python/couchdb-python 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
 dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
-dev-python/croniter 0.3.11 0.3.15: Python module to provide iteration for datetime object
+dev-python/croniter 0.3.11 0.3.15 0.3.17: Python module to provide iteration for datetime object
 dev-python/crossbar 17.6.1_p3: Crossbar.io - The Unified Application Router for the twisted framework
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Library providing cryptographic recipes and primitives
@@ -8531,8 +8531,8 @@ dev-python/python-manilaclient 1.11.0 1.14.0: A client for the OpenStack Manila 
 dev-python/python-memcached 1.53-r1 1.58: Pure python memcached client
 dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
-dev-python/python-mistralclient 2.1.2 3.0.2: A client for the OpenStack Mistral API
-dev-python/python-monascaclient 1.2.0 1.5.1: A client for the OpenStack Monasca API
+dev-python/python-mistralclient 2.1.2 3.0.2 3.1.2: A client for the OpenStack Mistral API
+dev-python/python-monascaclient 1.2.0 1.5.1 1.7.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 0.5.5: Python MPD client library
 dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay extension
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
@@ -8577,6 +8577,7 @@ dev-python/python-xlib 0.15_rc1-r2 0.19: A fully functional X client library for
 dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
+dev-python/python-zunclient 0.4.0: A client for the OpenStack Zun API
 dev-python/python3-openid 3.0.4_p1 3.1.0: Python 3 port of the python-openid library
 dev-python/python_orocos_kdl 1.3.1-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.2.2 3.3.0 3.3.0-r200 3.4.0: A Python module for making simple text/console-mode user interfaces
@@ -17504,7 +17505,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for par
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 7.0.5 7.0.6 8.0.3 8.0.4 2016.2.9999 2017.1.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 7.0.5 7.0.6 8.0.3 8.0.4 2016.2.9999 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -17543,7 +17544,7 @@ sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.3 2.1.1: A high-performance message passing library (MPI)
-sys-cluster/openstack-meta 2016.2.9999 2017.1.9999: A openstack meta-package for installing the various openstack pieces
+sys-cluster/openstack-meta 2016.2.9999 2017.1.9999 2017.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14 1.1.16: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
