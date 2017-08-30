@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/puppetlabs/ruby-hocon"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND+=""
 DEPEND+=""
