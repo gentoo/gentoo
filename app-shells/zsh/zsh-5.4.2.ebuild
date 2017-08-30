@@ -10,12 +10,12 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/zsh/code"
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SRC_URI="http://www.zsh.org/pub/${P}.tar.gz
-		doc? ( http://www.zsh.org/pub/${P}-doc.tar.xz )"
+	SRC_URI="https://www.zsh.org/pub/${P}.tar.gz
+		doc? ( https://www.zsh.org/pub/${P}-doc.tar.xz )"
 fi
 
 DESCRIPTION="UNIX Shell similar to the Korn shell"
-HOMEPAGE="http://www.zsh.org/"
+HOMEPAGE="https://www.zsh.org/"
 
 LICENSE="ZSH gdbm? ( GPL-2 )"
 SLOT="0"
