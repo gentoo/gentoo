@@ -36,7 +36,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:= )
 "
-DEPEND="${EDEPEND}
+DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
 	hppa? ( >=sys-devel/binutils-2.15.92.0.2 )
