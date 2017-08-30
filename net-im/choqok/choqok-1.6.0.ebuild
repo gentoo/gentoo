@@ -45,7 +45,7 @@ DEPEND="
 		$(add_frameworks_dep kdewebkit)
 		$(add_qt_dep qtwebkit)
 	)
-	telepathy? ( net-libs/telepathy-qt[qt5] )
+	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
 "
 RDEPEND="${DEPEND}
 	!net-im/choqok:4
