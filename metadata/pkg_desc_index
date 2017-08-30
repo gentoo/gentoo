@@ -7889,7 +7889,7 @@ dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0_pre20110820-r1 0.1.7 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2 2.6.0: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0 1.0.0-r1: Jupyter metapackage. Install all the Jupyter components in one go
-dev-python/jupyter_client 4.1.1 4.2.2 4.3.0 4.4.0 5.1.0: Jupyter protocol implementation and client libraries
+dev-python/jupyter_client 4.4.0 5.1.0-r1: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.1 5.0.0 5.1.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.0.6 4.1.0 4.2.1 4.3.0: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
@@ -14518,7 +14518,7 @@ net-analyzer/vnstat 1.17 1.17-r1: Console-based network traffic monitor that kee
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.7 2.4.1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.7 2.4.1-r1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
