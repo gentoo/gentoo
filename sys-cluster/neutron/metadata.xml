@@ -11,11 +11,11 @@
   </maintainer>
   <longdescription lang="en">
     Just like OpenStack Nova provides an API to dynamically request and
-	configure virtual servers, Neutron provides an API to dynamically request
-	and configure virtual networks. These networks connect "interfaces" from
-	other OpenStack services (e.g., vNICs from Nova VMs). The Neutron API
-	supports extensions to provide advanced network capabilities
-	(e.g., QoS, ACLs, network monitoring, etc).
+  configure virtual servers, Neutron provides an API to dynamically request
+  and configure virtual networks. These networks connect "interfaces" from
+  other OpenStack services (e.g., vNICs from Nova VMs). The Neutron API
+  supports extensions to provide advanced network capabilities
+  (e.g., QoS, ACLs, network monitoring, etc).
   </longdescription>
   <use>
     <flag name="compute-only">Only install things needed on compute hosts</flag>
