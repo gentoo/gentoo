@@ -1,0 +1,94 @@
+# Patch that allows to build Coolreader3 with Qt5 or wxWindgets GUI.
+# Qt5 build related bug : https://sourceforge.net/p/crengine/bugs/370
+# => absence of "-std=c++11 -fPIC" options in ../cr3qt/CMakeLIsts.txt
+# and absence of Qt5 libraries in linking library list of ../cr3qt/CMakeLIsts.txt;
+# wxWidgets build related bug : https://sourceforge.net/p/crengine/bugs/371
+# => absence of "fonconfig" in linking library list of ../cr3wx/CMakeLIsts.txt
+# Add chages to years of cr3wx about dialog and merge with cr3qt about dialog patch.
+
+diff -Naur old/CMakeLists.txt new/CMakeLists.txt
+--- old/CMakeLists.txt	2015-07-13 11:23:37.000000000 +0300
++++ new/CMakeLists.txt	2017-08-28 00:34:39.000000000 +0300
+@@ -29,7 +29,7 @@
+   endif()
+ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+   # Update if necessary
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic -std=c++11 -fPIC")
+ endif()
+ 
+ if (NOT DEFINED GUI)
+@@ -323,7 +323,7 @@
+   message("Will make CR3/WX")
+   ADD_DEFINITIONS( ${DESKTOP_DEFS} -DCR_WX_SUPPORT=1 )
+   SET(wxWidgets_USE_LIBS base core )
+-  FIND_PACKAGE(wxWidgets)
++  FIND_PACKAGE(wxWidgets 2.8)
+   IF (wxWidgets_FOUND)
+     INCLUDE(${wxWidgets_USE_FILE})
+     include_directories( ${wxWidgets_INCLUDE_DIRS} )
+diff -Naur old/cr3qt/CMakeLists.txt new/cr3qt/CMakeLists.txt
+--- old/cr3qt/CMakeLists.txt	2015-07-13 11:23:37.000000000 +0300
++++ new/cr3qt/CMakeLists.txt	2017-08-26 03:25:55.000000000 +0300
+@@ -173,7 +173,11 @@
+     SET (EXTRA_LIBS ${QT_LIBRARIES} ${STD_LIBS} )
+ #${QT_LIBRARIES} 
+ ELSEIF (UNIX)
+-    SET (EXTRA_LIBS ${QT_LIBRARIES} fontconfig ${STD_LIBS} )
++    IF( ${GUI} STREQUAL QT )
++	SET (EXTRA_LIBS ${QT_LIBRARIES} fontconfig ${STD_LIBS} )
++    ELSE()
++        SET (EXTRA_LIBS fontconfig ${STD_LIBS} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES})
++    ENDIF()
+ ELSE()
+     SET (EXTRA_LIBS ${STD_LIBS} ${QT_LIBRARIES} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES} )
+ ENDIF(MAC)
+diff -Naur old/cr3wx/CMakeLists.txt new/cr3wx/CMakeLists.txt
+--- old/cr3wx/CMakeLists.txt	2015-07-13 11:23:37.000000000 +0300
++++ new/cr3wx/CMakeLists.txt	2017-08-26 01:22:53.000000000 +0300
+@@ -10,7 +10,7 @@
+ )
+ LINK_DIRECTORIES(${wxWidgets_LIBRARY_DIRS})
+ ADD_EXECUTABLE(cr3 ${CR3_SOURCES})
+-SET (EXTRA_LIBS  ${wxWidgets_LIBRARIES} ${STD_LIBS})
++SET (EXTRA_LIBS  ${wxWidgets_LIBRARIES} fontconfig ${STD_LIBS})
+ TARGET_LINK_LIBRARIES(cr3 crengine tinydict ${EXTRA_LIBS})
+ 
+ IF (UNIX)
+@@ -22,6 +22,9 @@
+   INSTALL( DIRECTORY ../cr3qt/data/hyph DESTINATION share/cr3 
+   FILES_MATCHING PATTERN "*.pattern" )
+   INSTALL( DIRECTORY ../cr3qt/data/skins DESTINATION share/cr3/skins )
++  INSTALL( FILES ../cr3qt/src/desktop/cr3.desktop DESTINATION share/applications )
++  INSTALL( FILES ../cr3qt/src/desktop/cr3.png DESTINATION share/pixmaps )
++  INSTALL( FILES ../cr3qt/src/desktop/cr3.xpm DESTINATION share/pixmaps )
+ ELSE()
+   INSTALL( TARGETS cr3 RUNTIME DESTINATION . )
+   INSTALL( DIRECTORY ../cr3qt/data/ DESTINATION . 
+
+# Change the dates in About program dialogs:
+--- a/crengine/include/cr3version.h	2015-07-13 11:23:37.000000000 +0300
++++ b/crengine/include/cr3version.h	2017-07-12 11:09:49.000000000 +0300
+@@ -1,2 +1,2 @@
+-#define CR_ENGINE_VERSION "3.1.2-52"
+-#define CR_ENGINE_BUILD_DATE "2014-11-19"
++#define CR_ENGINE_VERSION "3.1.2-71"
++#define CR_ENGINE_BUILD_DATE "2015-07-02"
+
+--- a/cr3qt/src/aboutdlg.ui
++++ b/cr3qt/src/aboutdlg.ui
+@@ -59 +59 @@
+-        <string notr="true">(c) 1998-2010 Vadim Lopatin</string>
++        <string notr="true">(c) 1998-2015 Vadim Lopatin</string>
+
+--- old/cr3wx/src/cr3.cpp	2015-07-13 11:23:37.000000000 +0300
++++ new/cr3wx/src/cr3.cpp	2017-08-28 02:29:32.000000000 +0300
+@@ -1479,7 +1479,7 @@
+ void 
+ cr3Frame::OnAbout( wxCommandEvent& WXUNUSED( event ) )
+ {
+-    wxMessageBox( wxT( "Cool Reader " wxT(CR3_VERSION) wxT("\n(c) 1998-2007 Vadim Lopatin\nwxWidgets version\n") )
++    wxMessageBox( wxT( "Cool Reader " wxT(CR3_VERSION) wxT("\n(c) 1998-2015 Vadim Lopatin\nwxWidgets version\n") )
+     wxT("\nBased on CREngine library " wxT(CR_ENGINE_VERSION) )
+     wxT("\nThird party libraries used:")
+     wxT("\nzlib, libpng, libjpeg, freetype2,")

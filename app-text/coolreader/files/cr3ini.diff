@@ -1,0 +1,35 @@
+# Patch to allow creating cr3.ini file in the home directory of user
+# instead to trying save it in /usr/share/cr3/cr3.ini
+# Bug: https://sourceforge.net/p/crengine/bugs/179/
+# Patch was proposed by "Olexandr" (see bug report)
+diff --git a/cr3qt/src/mainwindow.cpp b/cr3qt/src/mainwindow.cpp
+index 142242a..0401f71 100644
+--- a/cr3qt/src/mainwindow.cpp
++++ b/cr3qt/src/mainwindow.cpp
+@@ -77,8 +77,8 @@ MainWindow::MainWindow(QWidget *parent)
+ #endif
+     QString cacheDir = homeDir + "cache";
+     QString bookmarksDir = homeDir + "bookmarks";
+-    QString histFile = exeDir + "cr3hist.bmk";
+-    QString histFile2 = homeDir + "cr3hist.bmk";
++    QString histFile2 = exeDir + "cr3hist.bmk";
++    QString histFile = homeDir + "cr3hist.bmk";
+     QString iniFile2 = exeDir + "cr3.ini";
+     QString iniFile = homeDir + "cr3.ini";
+     QString cssFile = homeDir + "fb2.css";
+@@ -92,9 +92,13 @@ MainWindow::MainWindow(QWidget *parent)
+     ldomDocCache::init( qt2cr( cacheDir ), DOC_CACHE_SIZE );
+     ui->view->setPropsChangeCallback( this );
+     if ( !ui->view->loadSettings( iniFile ) )
+-        ui->view->loadSettings( iniFile2 );
++        if ( !ui->view->loadSettings( iniFile2 ) )
++          ui->view->saveSettings( iniFile );
++
+     if ( !ui->view->loadHistory( histFile ) )
+-        ui->view->loadHistory( histFile2 );
++        if ( !ui->view->loadHistory( histFile2 ) )
++          ui->view->saveHistory( histFile );
++
+     if ( !ui->view->loadCSS( cssFile ) )
+         ui->view->loadCSS( cssFile2 );
+ #if ENABLE_BOOKMARKS_DIR==1
