@@ -22,7 +22,7 @@ DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep ktp-contact-list)
