@@ -7838,7 +7838,7 @@ dev-python/ipcalc 1.1.3: IP subnet calculator
 dev-python/ipdb 0.10.1 0.10.2: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2 4.6.1 4.6.1-r1: IPython Kernel for Jupyter
+dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2 4.6.1-r2: IPython Kernel for Jupyter
 dev-python/ipynb 0.5: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0 6.0.2 6.0.2-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 3.2.1-r1 5.3.0 5.4.1 6.1.0: Advanced interactive shell for Python
