@@ -5739,6 +5739,7 @@ net-im/telepathy-connection-managers:zeroconf - Enable Link-Local Messaging via 
 net-im/tkabber:plugins - Enables installation the extra plugins
 net-im/toxic:av - Enables audio calling and/or audio notifications
 net-im/toxic:notifications - Enables desktop notifications with libnotify
+net-im/toxic:qrcode - Enables QR code support
 net-im/vacuum:adiummessagestyle - Use UI styles created for Adium
 net-im/vacuum:annotations - Enable adding comments to the contacts in the roster
 net-im/vacuum:aspell - Select app-text/aspell spell checker backend
