@@ -18,7 +18,7 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="aqua debug designer gstreamer pulseaudio qt4 +qt5 +vlc"
+IUSE="debug designer gstreamer pulseaudio qt4 +qt5 +vlc"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
 
@@ -47,7 +47,6 @@ DEPEND="${RDEPEND}
 	qt5? ( kde-frameworks/extra-cmake-modules:5 )
 "
 PDEPEND="
-	aqua? ( media-libs/phonon-qt7 )
 	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt4?,qt5?] )
 	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt4?,qt5?] )
 "

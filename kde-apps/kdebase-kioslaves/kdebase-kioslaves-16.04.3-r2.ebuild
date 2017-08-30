@@ -18,7 +18,7 @@ RESTRICT="test"
 
 DEPEND="
 	virtual/jpeg:0
-	!aqua? ( x11-libs/libXcursor )
+	x11-libs/libXcursor
 	bzip2? ( app-arch/bzip2 )
 	exif? ( media-gfx/exiv2:= )
 	openexr? ( media-libs/openexr:= )
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	kde-apps/kdialog:*
 	kde-frameworks/kdelibs:4[bzip2?,lzma?]
 	virtual/ssh
-	!aqua? ( !kernel_SunOS? ( virtual/eject ) )
+	!kernel_SunOS? ( virtual/eject )
 "
 
 KMEXTRA="
