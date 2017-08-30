@@ -60,10 +60,10 @@ RDEPEND="
 	>=dev-python/ryu-4.14[${PYTHON_USEDEP}]
 	compute-only? (
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
-		!~dev-python/sqlalchemy-1.1.5[sqlite,${PYTHON_USEDEP}]
-		!~dev-python/sqlalchemy-1.1.6[sqlite,${PYTHON_USEDEP}]
-		!~dev-python/sqlalchemy-1.1.7[sqlite,${PYTHON_USEDEP}]
-		!~dev-python/sqlalchemy-1.1.8[sqlite,${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.7[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	sqlite? (
 		>=dev-python/sqlalchemy-1.0.10[sqlite,${PYTHON_USEDEP}]
@@ -103,6 +103,7 @@ RDEPEND="
 	>=dev-python/oslo-context-2.14.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-db-4.24.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
 	>=dev-python/oslo-log-3.22.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-messaging-5.24.2[${PYTHON_USEDEP}]
 	!~dev-python/oslo-messaging-5.25.0[${PYTHON_USEDEP}]
