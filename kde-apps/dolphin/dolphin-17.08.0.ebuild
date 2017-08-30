@@ -42,7 +42,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	semantic-desktop? (
 		$(add_frameworks_dep baloo)
 		$(add_frameworks_dep kfilemetadata)

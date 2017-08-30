@@ -48,7 +48,7 @@ COMMON_DEPEND="
 		>=dev-libs/libgcrypt-1.2.2:0
 		>=net-libs/libotr-4.1.0
 	)
-	phonon? ( media-libs/phonon[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	spell? ( app-text/enchant )
 	xmpp? (
 		net-dns/libidn

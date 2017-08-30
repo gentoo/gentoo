@@ -19,6 +19,6 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	phonon? ( media-libs/phonon[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 "
 DEPEND="${RDEPEND}"

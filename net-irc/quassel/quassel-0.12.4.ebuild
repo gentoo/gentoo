@@ -52,7 +52,7 @@ GUI_RDEPEND="
 			kde-frameworks/kxmlgui:5
 			kde-frameworks/sonnet:5
 		)
-		phonon? ( media-libs/phonon[qt5] )
+		phonon? ( media-libs/phonon[qt5(+)] )
 		snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 		webkit? ( dev-qt/qtwebkit:5 )
 	)
