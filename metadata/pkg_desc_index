@@ -10248,7 +10248,7 @@ dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and com
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 3.4.5-r1: Open source data visualization and analysis for novice and experts.
-dev-util/abi-compliance-checker 2.0 2.1 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 2.1 2.2 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
 dev-util/abootimg 20150323: Manipulate Android boot images.
 dev-util/ald 0.1.7-r2: Assembly Language Debugger
@@ -19537,7 +19537,7 @@ xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.3: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.3 4.12.4 4.13.1: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0 4.13.0_p20170825: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0 4.13.0-r1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r2: Archive plug-in for the Thunar filemanager
