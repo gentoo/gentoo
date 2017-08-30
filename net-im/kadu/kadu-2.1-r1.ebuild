@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -48,12 +48,7 @@ COMMON_DEPEND="
 		>=dev-libs/libgcrypt-1.2.2:0
 		>=net-libs/libotr-4.1.0
 	)
-	phonon? (
-		|| (
-			media-libs/phonon[qt5]
-			>=dev-qt/qtphonon-4.7.0:4
-		)
-	)
+	phonon? ( media-libs/phonon[qt5] )
 	spell? ( app-text/enchant )
 	xmpp? (
 		net-dns/libidn
