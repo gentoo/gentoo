@@ -92,7 +92,7 @@ COMMON_DEPEND="
 	)
 	openexr? ( media-libs/openexr )
 	pdf? ( app-text/poppler:=[qt5] )
-	phonon? ( media-libs/phonon[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
 	X? (

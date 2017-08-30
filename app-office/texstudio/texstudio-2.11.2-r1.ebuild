@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXext
-	video? ( media-libs/phonon[qt5] )"
+	video? ( media-libs/phonon[qt5(+)] )"
 RDEPEND="${COMMON_DEPEND}
 	app-text/ghostscript-gpl
 	app-text/psutils

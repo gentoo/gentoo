@@ -42,7 +42,7 @@ RDEPEND="
 	$(add_qt_dep qtxml)
 	media-libs/giflib:=
 	media-libs/libpng:0=
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	sys-libs/zlib
 	virtual/jpeg:0
 	!libressl? ( dev-libs/openssl:0 )

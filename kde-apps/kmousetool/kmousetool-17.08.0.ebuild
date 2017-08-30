@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	x11-libs/libXtst
 "
