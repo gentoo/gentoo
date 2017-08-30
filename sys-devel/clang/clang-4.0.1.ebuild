@@ -93,7 +93,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/5.0.0/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 
 	# fix stand-alone doc build
-	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
+	eapply "${FILESDIR}"/4.0.1/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
 
 	# fix value of ATOMIC_*_LOCK_FREE
 	# (backport, temporary reverted upstream because of FreeBSD issues)
