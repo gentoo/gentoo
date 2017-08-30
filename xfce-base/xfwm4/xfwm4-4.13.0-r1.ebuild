@@ -5,12 +5,9 @@ EAPI=6
 
 inherit gnome2-utils
 
-# note: this is upstream b9f910bd with aee8b25a reverted
-# due to https://bugzilla.xfce.org/show_bug.cgi?id=13823
-MY_P=${P%_p*}git.2b80a066
 DESCRIPTION="Window manager for the Xfce desktop environment"
 HOMEPAGE="https://www.xfce.org/projects/"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${MY_P}.tar.bz2"
+SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,7 +19,6 @@ RDEPEND="dev-libs/dbus-glib:=
 	>=x11-libs/gtk+-2.24:2=
 	x11-libs/libX11:=
 	x11-libs/libXext:=
-	x11-libs/libXinerama:=
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/pango:=
@@ -49,8 +45,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog COMPOSITOR NEWS README TODO )
-
-S=${WORKDIR}/${MY_P}
+PATCHES=(
+	"${FILESDIR}"/xfwm4-4.13.0-ctrl-f1.patch
+)
 
 src_configure() {
 	local myconf=(
