@@ -33,6 +33,7 @@ RDEPEND="
 		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5
 	)
+	server? ( !app-admin/supernova )
 	sndfile? ( media-libs/libsndfile )
 	wiimote? ( app-misc/cwiid )
 "
