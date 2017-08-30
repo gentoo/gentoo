@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/libgpod
 	>=media-libs/liblastfm-1.0.6[fingerprint,qt4(+)]
 	sys-libs/zlib
-	|| ( dev-qt/qtphonon:4 kde-apps/phonon-kde:4 )"
+	kde-apps/phonon-kde:4"
 DEPEND="${RDEPEND}"
 
 src_configure() {
