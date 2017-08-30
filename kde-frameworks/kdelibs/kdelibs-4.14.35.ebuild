@@ -47,29 +47,25 @@ COMMONDEPEND="
 	media-libs/phonon[qt4]
 	sys-libs/zlib
 	virtual/jpeg:0
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+	x11-libs/libXau
+	x11-libs/libXcursor
+	x11-libs/libXdmcp
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXft
+	x11-libs/libXpm
+	x11-libs/libXrender
+	x11-libs/libXScrnSaver
+	x11-libs/libXtst
 	x11-misc/shared-mime-info
+	!kernel_SunOS? ( || (
+		sys-libs/libutempter
+		>=sys-freebsd/freebsd-lib-9.0
+	) )
 	acl? ( virtual/acl )
-	!aqua? (
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-		x11-libs/libXau
-		x11-libs/libXcursor
-		x11-libs/libXdmcp
-		x11-libs/libXext
-		x11-libs/libXfixes
-		x11-libs/libXft
-		x11-libs/libXpm
-		x11-libs/libXrender
-		x11-libs/libXScrnSaver
-		x11-libs/libXtst
-		!kernel_SunOS? (
-			|| (
-				sys-libs/libutempter
-				>=sys-freebsd/freebsd-lib-9.0
-			)
-		)
-	)
 	bzip2? ( app-arch/bzip2 )
 	fam? ( virtual/fam )
 	jpeg2k? ( media-libs/jasper:= )
@@ -101,15 +97,13 @@ RDEPEND="${COMMONDEPEND}
 	app-misc/ca-certificates
 	kde-frameworks/kdelibs-env:4
 	sys-apps/dbus[X]
-	!aqua? (
-		x11-apps/iceauth
-		x11-apps/rgb
-		x11-misc/xdg-utils
-		udisks? ( sys-fs/udisks:2 )
-		upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
-	)
+	x11-apps/iceauth
+	x11-apps/rgb
+	x11-misc/xdg-utils
 	plasma? ( !sci-libs/plasma )
 	udev? ( app-misc/media-player-info )
+	udisks? ( sys-fs/udisks:2 )
+	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
 "
 PDEPEND="
 	x11-misc/xdg-utils
@@ -145,36 +139,6 @@ src_prepare() {
 		sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
 			plasma/CMakeLists.txt plasma/tests/CMakeLists.txt includes/CMakeLists.txt \
 			|| die "failed to sed out QT_QTOPENGL_FOUND"
-	fi
-
-	if use aqua; then
-		sed -i -e \
-			"s:BUNDLE_INSTALL_DIR \"/Applications:BUNDLE_INSTALL_DIR \"${EPREFIX}/${APP_BUNDLE_DIR}:g" \
-			cmake/modules/FindKDE4Internal.cmake || die "failed to sed FindKDE4Internal.cmake"
-
-		#if [[ ${CHOST} == *-darwin8 ]]; then
-		sed -i -e \
-			"s:set(_add_executable_param MACOSX_BUNDLE):remove(_add_executable_param MACOSX_BUNDLE):g" \
-			cmake/modules/KDE4Macros.cmake || die "failed to sed KDE4Macros.cmake"
-		#fi
-
-		# solid/solid/backends/iokit doesn't properly link, so disable it.
-		sed -e "s|\(APPLE\)|(FALSE)|g" -i solid/solid/CMakeLists.txt \
-			|| die "disabling solid/solid/backends/iokit failed"
-		sed -e "s|m_backend = .*Backends::IOKit.*;|m_backend = 0;|g" -i solid/solid/managerbase.cpp \
-			|| die "disabling solid/solid/backends/iokit failed"
-
-		# There's no fdatasync on OSX and the check fails to detect that.
-		sed -e "/HAVE_FDATASYNC/ d" -i config.h.cmake \
-			|| die "disabling fdatasync failed"
-
-		# Fix nameser include to nameser8_compat
-		sed -e "s|nameser8_compat.h|nameser_compat.h|g" -i kio/misc/kpac/discovery.cpp \
-			|| die "fixing nameser include failed"
-		append-flags -DHAVE_ARPA_NAMESER8_COMPAT_H=1
-
-		# Try to fix kkeyserver_mac
-		eapply "${FILESDIR}"/${PN}-4.3.80-kdeui_util_kkeyserver_mac.patch
 	fi
 }
 
@@ -241,25 +205,6 @@ src_install() {
 		cd "${S}"/doc/api/
 		docinto /HTML/en/kdelibs-apidox
 		dohtml -r ${P}-apidocs/*
-	fi
-
-	if use aqua; then
-		einfo "fixing ${PN} plugins"
-
-		local _PV=${PV:0:3}.0
-		local _dir=${EPREFIX}/usr/$(get_libdir)/kde4/plugins/script
-
-		install_name_tool -id \
-			"${_dir}/libkrossqtsplugin.${_PV}.dylib" \
-			"${D}/${_dir}/libkrossqtsplugin.${_PV}.dylib" \
-			|| die "failed fixing libkrossqtsplugin.${_PV}.dylib"
-
-		einfo "fixing ${PN} cmake detection files"
-		#sed -i -e \
-		#	"s:if (HAVE_XKB):if (HAVE_XKB AND NOT APPLE):g" \
-		echo -e "set(XKB_FOUND FALSE)\nset(HAVE_XKB FALSE)" > \
-			"${ED}"/usr/share/apps/cmake/modules/FindXKB.cmake \
-			|| die "failed fixing FindXKB.cmake"
 	fi
 
 	# We don't package it, so don't install headers

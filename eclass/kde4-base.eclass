@@ -384,10 +384,8 @@ unset kdelibsuse
 kdedepend="
 	dev-util/automoc
 	virtual/pkgconfig
-	!aqua? (
-		>=x11-libs/libXtst-1.1.0
-		x11-proto/xf86vidmodeproto
-	)
+	>=x11-libs/libXtst-1.1.0
+	x11-proto/xf86vidmodeproto
 "
 
 kderdepend=""
@@ -439,12 +437,6 @@ case ${KDE_SELINUX_MODULE} in
 		kderdepend+=" selinux? ( sec-policy/selinux-${KDE_SELINUX_MODULE} )"
 		;;
 esac
-
-# We always need the aqua useflag because otherwise we cannot = refer to it inside
-# add_kdebase_dep. This was always kind of a bug, but came to light with EAPI=5
-# (where referring to a use flag not in IUSE masks the ebuild).
-# The only alternative would be to prohibit using add_kdebase_dep if KDE_REQUIRED=never
-IUSE+=" aqua"
 
 case ${KDE_REQUIRED} in
 	always)
