@@ -52,8 +52,7 @@ DOCS=( BUGS ChangeLog{,.zoo} DEVEL-CVS FAQ HACKING MINOR-BUGS NEWS \
 
 src_prepare() {
 	default
-
-	sed -i "/^AR/s/ar/$(tc-getAR)/" diff/Makefile.in lib/Makefile.in || die
+	sed -i "/^AR/s:ar:$(tc-getAR):" diff/Makefile.in lib/Makefile.in || die
 }
 
 src_configure() {
