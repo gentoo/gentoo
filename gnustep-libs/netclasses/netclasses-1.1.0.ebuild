@@ -8,7 +8,7 @@ DESCRIPTION="An asynchronous networking library for GNUstep"
 HOMEPAGE="http://gap.nongnu.org/talksoup/"
 SRC_URI="https://savannah.nongnu.org/download/gap/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
