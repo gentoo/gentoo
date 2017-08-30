@@ -21,16 +21,19 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="alsa debug +network qt4 +qt5"
-
-REQUIRED_USE="|| ( qt4 qt5 )"
+IUSE="alsa debug +network qt4"
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-libs/phonon-4.9.0[qt4?,qt5?]
+	>=media-libs/phonon-4.9.0[qt4?,qt5(+)]
 	media-plugins/gst-plugins-meta:1.0[alsa?,ogg,vorbis]
 	virtual/opengl
 	network? ( media-plugins/gst-plugins-soup:1.0 )
@@ -39,13 +42,6 @@ RDEPEND="
 		>=dev-qt/qtgui-4.8.7:4[glib]
 		>=dev-qt/qtopengl-4.8.7:4
 		!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
 	)
 "
 DEPEND="${RDEPEND}
@@ -57,7 +53,7 @@ pkg_setup() {
 		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
 	fi
 
-	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
+	MULTIBUILD_VARIANTS=( $(usev qt4) qt5 )
 }
 
 src_configure() {
