@@ -24,6 +24,7 @@ media-plugins/evas_generic_loaders gstreamer
 dev-libs/efl gstreamer
 media-sound/mp3splt-gtk gstreamer
 net-im/pidgin gstreamer
+media-libs/libcanberra gstreamer
 
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
 # Drop stable ruby on sparc
