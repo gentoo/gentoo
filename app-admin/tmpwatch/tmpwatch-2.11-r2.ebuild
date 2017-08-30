@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs eutils
 
 DESCRIPTION="Files which haven't been accessed are removed from specified directories"
-HOMEPAGE="https://fedorahosted.org/tmpwatch/"
-SRC_URI="https://fedorahosted.org/releases/t/m/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://pagure.io/tmpwatch"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
