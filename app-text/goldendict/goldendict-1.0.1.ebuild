@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,23 +13,19 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug kde"
+IUSE="debug"
 
 RDEPEND="
 	>=app-text/hunspell-1.2
 	media-libs/libogg
 	media-libs/libvorbis
+	media-libs/phonon[qt4]
 	sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXtst
 	>=dev-qt/qtcore-4.5:4[exceptions,qt3support]
 	>=dev-qt/qtgui-4.5:4[exceptions,qt3support]
 	>=dev-qt/qtwebkit-4.5:4[exceptions]
-	!kde? ( || (
-		>=dev-qt/qtphonon-4.5:4[exceptions]
-		media-libs/phonon[qt4]
-	) )
-	kde? ( media-libs/phonon[qt4] )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
