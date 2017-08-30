@@ -281,12 +281,6 @@ sys-kernel/openvz-sources
 =media-gfx/freecad-0.17_pre*
 
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Severely broken with lots of unresolved bugs, outdated, needs a dedicated
-# maintainer (#402157). Removal in a month.
-dev-lang/gnat-gcc
-virtual/gnat
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
 # Upstream dead, cannot be bumped, buggy (#468128). Removal in a month.
 x11-apps/spotlighter
 
