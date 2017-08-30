@@ -18,38 +18,34 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="aqua debug designer gstreamer pulseaudio qt4 +qt5 +vlc"
-
-REQUIRED_USE="|| ( qt4 qt5 )"
+IUSE="aqua debug designer gstreamer pulseaudio qt4 +vlc"
 
 RDEPEND="
 	!!dev-qt/qtphonon:4
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	designer? ( dev-qt/designer:5 )
+	pulseaudio? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		>=media-sound/pulseaudio-0.9.21[glib,${MULTILIB_USEDEP}]
+	)
 	qt4? (
 		>=dev-qt/qtcore-4.8.7-r2:4[${MULTILIB_USEDEP}]
 		>=dev-qt/qtdbus-4.8.7:4[${MULTILIB_USEDEP}]
 		>=dev-qt/qtgui-4.8.7:4[${MULTILIB_USEDEP}]
 		designer? ( >=dev-qt/designer-4.8.7:4[${MULTILIB_USEDEP}] )
 	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		designer? ( dev-qt/designer:5 )
-	)
-	pulseaudio? (
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		>=media-sound/pulseaudio-0.9.21[glib,${MULTILIB_USEDEP}]
-	)
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
-	qt5? ( kde-frameworks/extra-cmake-modules:5 )
+	kde-frameworks/extra-cmake-modules:5
 "
 PDEPEND="
 	aqua? ( media-libs/phonon-qt7 )
-	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt4?,qt5?] )
-	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt4?,qt5?] )
+	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt4?,qt5(+)] )
+	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt4?,qt5(+)] )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
@@ -59,7 +55,7 @@ pkg_setup() {
 		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
 	fi
 
-	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
+	MULTIBUILD_VARIANTS=( $(usev qt4) qt5 )
 }
 
 multilib_src_configure() {
