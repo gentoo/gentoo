@@ -71,10 +71,8 @@ COMMONDEPEND="
 	kde-frameworks/kdelibs:4[zeroconf?]
 	media-libs/phonon[qt4]
 	media-libs/qimageblitz[-qt5(-)]
-	!aqua? (
-		x11-libs/libX11
-		x11-libs/libXScrnSaver
-	)
+	x11-libs/libX11
+	x11-libs/libXScrnSaver
 	cryptography? (
 		|| (
 			$(add_kdeapps_dep kdepim-common-libs)
@@ -117,8 +115,8 @@ RDEPEND="${COMMONDEPEND}
 	winpopup? ( net-fs/samba )
 "
 DEPEND="${COMMONDEPEND}
+	x11-proto/scrnsaverproto
 	jingle? ( dev-libs/jsoncpp )
-	!aqua? ( x11-proto/scrnsaverproto )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-17.04.0-kde4qgpgme.patch" )
