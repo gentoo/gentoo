@@ -15479,7 +15479,7 @@ net-misc/utelnetd 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2 2.3.2-r3: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
-net-misc/vinagre 3.22.0-r1: VNC client for the GNOME desktop
+net-misc/vinagre 3.22.0-r1 3.22.0-r2: VNC client for the GNOME desktop
 net-misc/vino 3.22.0: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
