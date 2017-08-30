@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,7 +75,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 	dev-qt/qttest:4
-	dev-cpp/gmock
+	|| (
+		dev-cpp/gtest
+		dev-cpp/gmock
+	)
 	amazoncloud? ( dev-cpp/sparsehash )
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )

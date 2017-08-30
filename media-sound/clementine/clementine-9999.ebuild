@@ -77,7 +77,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 	dev-qt/qttest:4
-	dev-cpp/gmock
+	|| (
+		dev-cpp/gtest
+		dev-cpp/gmock
+	)
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
