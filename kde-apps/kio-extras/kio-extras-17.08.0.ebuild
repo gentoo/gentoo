@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	man? ( $(add_frameworks_dep khtml) )
 	mtp? ( media-libs/libmtp:= )
 	openexr? ( media-libs/openexr )
-	phonon? ( media-libs/phonon[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	samba? ( net-fs/samba[client] )
 	sftp? ( net-libs/libssh:=[sftp] )
 	slp? ( net-libs/openslp )

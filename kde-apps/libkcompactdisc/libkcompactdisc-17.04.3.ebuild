@@ -16,7 +16,7 @@ DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep solid)
 	$(add_qt_dep qtdbus)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	alsa? ( media-libs/alsa-lib )
 "
 RDEPEND="${DEPEND}"

@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	media-gfx/exiv2:=
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	virtual/jpeg:0
 	face? ( $(add_kdeapps_dep libkface) )
 	kipi? ( $(add_kdeapps_dep libkipi) )
