@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils user
+inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils user xdg-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -268,6 +268,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_mimeinfo_database_update
+
 	# Add group for users allowed to sniff.
 	enewgroup wireshark
 
@@ -280,4 +282,8 @@ pkg_postinst() {
 	ewarn "NOTE: To capture traffic with wireshark as normal user you have to"
 	ewarn "add yourself to the wireshark group. This security measure ensures"
 	ewarn "that only trusted users are allowed to sniff your traffic."
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
 }
