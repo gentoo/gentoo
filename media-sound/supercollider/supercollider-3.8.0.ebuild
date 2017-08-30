@@ -35,6 +35,7 @@ RDEPEND="
 	)
 	sndfile? ( media-libs/libsndfile )
 	wiimote? ( app-misc/cwiid )
+	server? ( !app-admin/supernova )
 "
 DEPEND="${RDEPEND}
 	dev-libs/icu
