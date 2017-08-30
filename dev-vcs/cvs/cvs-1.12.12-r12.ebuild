@@ -95,7 +95,3 @@ src_install() {
 
 	newpamd "${FILESDIR}"/cvs.pam-include-1.12.12 cvs
 }
-
-pkg_postinst() {
-	use server || elog "If you want any CVS server functionality, you MUST emerge with USE=server!"
-}
