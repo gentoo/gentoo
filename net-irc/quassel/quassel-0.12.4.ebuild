@@ -67,7 +67,7 @@ GUI_RDEPEND="
 				kde-frameworks/oxygen-icons:*
 			)
 		)
-		phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) )
+		phonon? ( media-libs/phonon[qt4] )
 	)
 "
 
