@@ -10,7 +10,7 @@ ROS_SUBDIR=${PN}
 inherit ros-catkin
 
 DESCRIPTION="Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device"
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
