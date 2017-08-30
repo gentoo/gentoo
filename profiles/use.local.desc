@@ -2412,7 +2412,6 @@ dev-python/PyQt4:dbus - Build bindings for the QtDBus module
 dev-python/PyQt4:declarative - Build bindings for the QtDeclarative module
 dev-python/PyQt4:designer - Build bindings for the QtDesigner module and enable the designer plugin
 dev-python/PyQt4:help - Build bindings for the QtHelp module
-dev-python/PyQt4:kde - Select media-libs/phonon as Phonon variant (needed for KDE)
 dev-python/PyQt4:multimedia - Build bindings for the QtMultimedia module
 dev-python/PyQt4:opengl - Build bindings for the QtOpenGL module
 dev-python/PyQt4:phonon - Build bindings for the phonon module
@@ -2637,7 +2636,6 @@ dev-qt/qt-creator:valgrind - Add support for memory debugging using dev-util/val
 dev-qt/qt-creator:webengine - Use dev-qt/qtwebengine to view documentation
 dev-qt/qt-creator:webkit - Use dev-qt/qtwebkit to view documentation
 dev-qt/qt-creator:winrt - Build plugin for WinRT devices
-dev-qt/qt-meta:kde - Select media-libs/phonon as Phonon variant (needed for KDE)
 dev-qt/qt-meta:qt3support - Enable the Qt3Support library for Qt4
 dev-qt/qt-mobility:bluetooth - Enable Bluetooth support in QtConnectivity and QtSystemInfo modules
 dev-qt/qt-mobility:connectivity - Build the QtConnectivity module

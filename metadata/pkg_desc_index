@@ -14361,7 +14361,7 @@ net-analyzer/nagios-check_mysql_health 2.1.9.2 2.2.2: A nagios plugin for checki
 net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.3.7-r1 1.4.1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 3.5.1 4.3.1-r1 4.3.3: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 3.5.1 4.3.1-r1 4.3.3 4.3.4: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.0.3-r2 2.2.1: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
@@ -15931,7 +15931,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.12.4 0.14.2 0.14.3 0.15.0 0.15.0-r1 0.15.1 0.16.0 0.16.0-r1: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.14.3 0.16.0 0.16.0-r1: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
@@ -18382,7 +18382,7 @@ www-client/firefox 52.2.0 52.3.0 55.0.2: Firefox Web Browser
 www-client/firefox-bin 52.3.0 55.0.2: Firefox Web Browser
 www-client/google-chrome 60.0.3112.113: The web browser from Google
 www-client/google-chrome-beta 61.0.3163.59: The web browser from Google
-www-client/google-chrome-unstable 62.0.3192.0: The web browser from Google
+www-client/google-chrome-unstable 62.0.3198.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18430,7 +18430,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.151: Adobe Flash Player
-www-plugins/chrome-binary-plugins 60.0.3112.113 61.0.3163.59_beta 62.0.3192.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.113 61.0.3163.59_beta 62.0.3198.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
