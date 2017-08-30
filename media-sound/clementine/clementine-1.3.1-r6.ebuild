@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 
 LANGS=" af ar be bg bn br bs ca cs cy da de el en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
-inherit cmake-utils flag-o-matic fdo-mime gnome2-utils virtualx
+inherit cmake-utils flag-o-matic xdg-utils gnome2-utils virtualx
 [[ ${PV} == *9999* ]] && inherit git-r3
 
 DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
@@ -166,7 +166,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
 	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
@@ -175,6 +175,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
