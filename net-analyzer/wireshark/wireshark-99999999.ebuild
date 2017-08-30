@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils user xdg-utils
+inherit autotools eutils fcaps flag-o-matic git-r3 gnome2-utils multilib qmake-utils user xdg-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -268,6 +268,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_mimeinfo_database_update
 
 	# Add group for users allowed to sniff.
@@ -285,5 +286,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_mimeinfo_database_update
 }
