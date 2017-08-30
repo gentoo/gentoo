@@ -58,7 +58,7 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kxmlgui:5
 	)
 	perl? ( dev-lang/perl:0= )
-	phonon? ( media-libs/phonon:0[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl:0= )
