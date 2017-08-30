@@ -24,7 +24,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	dev-libs/purpose:5
-	media-libs/qt-gstreamer[qt5]
+	media-libs/qt-gstreamer[qt5(+)]
 	virtual/libudev:=
 "
 RDEPEND="${DEPEND}

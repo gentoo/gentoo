@@ -30,7 +30,7 @@ DEPEND="
 	dev-libs/boost
 	dev-libs/glib:2
 	media-libs/phonon[qt5(+)]
-	media-libs/qt-gstreamer[qt5]
+	media-libs/qt-gstreamer[qt5(+)]
 	net-libs/farstream:0.2
 	net-libs/telepathy-farstream
 	net-libs/telepathy-qt[farstream,qt5(+)]
