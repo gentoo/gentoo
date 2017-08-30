@@ -32,7 +32,7 @@ DEPEND="
 	$(add_qt_dep qtscript)
 	$(add_qt_dep qtwidgets)
 	media-libs/libv4l
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	media-libs/qimageblitz[qt5]
 "
 RDEPEND="${DEPEND}"
