@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 
 QA_DT_NEEDED_x86_fbsd="usr/lib/libunwind.so.7.0.0"
 
+# Bug 586208
+CCACHE_NODIRECT=1
+
 S="${WORKDIR}/${MY_P}"
 
 MULTILIB_WRAPPED_HEADERS=(

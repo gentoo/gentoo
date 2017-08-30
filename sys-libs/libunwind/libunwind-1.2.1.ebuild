@@ -23,6 +23,9 @@ RDEPEND="lzma? ( app-arch/xz-utils )"
 DEPEND="${RDEPEND}
 	libatomic? ( dev-libs/libatomic_ops )"
 
+# Bug 586208
+CCACHE_NODIRECT=1
+
 S="${WORKDIR}/${MY_P}"
 
 MULTILIB_WRAPPED_HEADERS=(
