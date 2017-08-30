@@ -14,7 +14,7 @@ IUSE="cinder glance heat keystone neutron nova swift"
 DEPEND=""
 RDEPEND="
 	keystone? ( ~sys-auth/keystone-${PV} )
-	swift? ( <sys-cluster/swift-2.11 )
+	swift? ( ~sys-cluster/swift-${PV} )
 	neutron? ( ~sys-cluster/neutron-${PV} )
 	glance? ( ~app-admin/glance-${PV} )
 	cinder? ( ~sys-cluster/cinder-${PV} )
