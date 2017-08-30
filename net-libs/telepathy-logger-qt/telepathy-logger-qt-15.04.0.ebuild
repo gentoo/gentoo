@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libxml2
 	net-im/telepathy-logger
 	net-libs/telepathy-glib
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 	sys-apps/dbus
 "
 DEPEND="${RDEPEND}

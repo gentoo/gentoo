@@ -28,7 +28,7 @@ DEPEND="
 	app-crypt/qca:2[qt5]
 	net-libs/accounts-qt
 	net-libs/signond
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 "
 RDEPEND="${DEPEND}
 	app-crypt/qca:2[ssl]

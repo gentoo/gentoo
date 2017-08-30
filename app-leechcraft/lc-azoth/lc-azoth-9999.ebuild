@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	dev-qt/qtsql:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtxml:5
-	astrality? ( net-libs/telepathy-qt[qt5] )
+	astrality? ( net-libs/telepathy-qt[qt5(+)] )
 	autoidler? (
 		dev-qt/qtx11extras:5
 		x11-libs/libXScrnSaver
