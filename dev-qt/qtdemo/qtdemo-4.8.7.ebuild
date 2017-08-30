@@ -25,7 +25,7 @@ DEPEND="
 	declarative? ( ~dev-qt/qtdeclarative-${PV}[aqua=,debug=,webkit?,${MULTILIB_USEDEP}] )
 	multimedia? ( ~dev-qt/qtmultimedia-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 	opengl? ( ~dev-qt/qtopengl-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	phonon? ( >=media-libs/phonon-4.8.3-r1[aqua=,qt4,${MULTILIB_USEDEP}] )
+	phonon? ( >=media-libs/phonon-4.8.3-r1[qt4,${MULTILIB_USEDEP}] )
 	webkit? ( ~dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 	xmlpatterns? ( ~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 "
