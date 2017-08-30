@@ -22,21 +22,17 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="debug qt4 +qt5"
-
-REQUIRED_USE="|| ( qt4 qt5 )"
+IUSE="debug qt4"
 
 RDEPEND="
-	>=media-libs/phonon-4.9.0[qt4=,qt5=]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	>=media-libs/phonon-4.9.0[qt4=,qt5(+)]
 	>=media-video/vlc-2.0.1:=[dbus,ogg,vorbis]
 	qt4? (
 		>=dev-qt/qtcore-4.8.7-r2:4
 		>=dev-qt/qtgui-4.8.7:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
 	)
 "
 DEPEND="${RDEPEND}
@@ -50,7 +46,7 @@ pkg_setup() {
 		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
 	fi
 
-	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
+	MULTIBUILD_VARIANTS=( $(usev qt4) qt5 )
 }
 
 src_configure() {
