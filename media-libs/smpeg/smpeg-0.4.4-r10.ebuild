@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils toolchain-funcs autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="SDL MPEG Player Library"
-HOMEPAGE="http://icculus.org/smpeg/"
+HOMEPAGE="https://icculus.org/smpeg/"
 SRC_URI="ftp://ftp.lokigames.com/pub/open-source/smpeg/${P}.tar.gz
 	mirror://gentoo/${P}-gtkm4.patch.bz2"
 
