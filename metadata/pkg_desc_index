@@ -4805,7 +4805,7 @@ dev-libs/libcxml 0.15.1 0.15.4: small C++ library which makes it marginally neat
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 12.10.2-r2 16.04.0: Library to pass menu structure across DBus
-dev-libs/libdbusmenu-qt 0.9.3_pre20160218: A library providing Qt implementation of DBusMenu specification
+dev-libs/libdbusmenu-qt 0.9.3_pre20160218 0.9.3_pre20160218-r1: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdivecomputer 0.4.1 0.4.2 9999: Library for communication with dive computers from various manufacturers
 dev-libs/libdivsufsort 2.0.1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
@@ -12226,10 +12226,10 @@ kde-plasma/khotkeys 5.10.4 5.10.5: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.10.4 5.10.5: A utility that provides information about a computer system
 kde-plasma/kmenuedit 5.10.4 5.10.5: KDE Plasma menu editor
 kde-plasma/kscreen 5.10.4 5.10.5: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.10.4 5.10.5: Library and components for secure lock screen architecture
+kde-plasma/kscreenlocker 5.10.4 5.10.5 5.10.5.1: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.10.4 5.10.5: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.10.4 5.10.5: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.10.4 5.10.5: KWallet PAM module to not enter password again
+kde-plasma/kwallet-pam 5.10.4 5.10.5 5.10.5-r1: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.10.4 5.10.5: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.10.4-r1 5.10.5: KDE window manager
 kde-plasma/kwrited 5.10.4 5.10.5: KDE Plasma daemon listening for wall and write messages
@@ -12246,7 +12246,7 @@ kde-plasma/plasma-nm 5.10.4 5.10.5: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.10.4 5.10.5: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.10.4 5.10.5: Useful applications for Plasma development
 kde-plasma/plasma-vault 5.9.96: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.10.4-r1 5.10.4-r2 5.10.5: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.10.4-r1 5.10.4-r2 5.10.5 5.10.5-r1: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.10.4 5.10.5: Additional wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.10.4 5.10.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.10.4 5.10.5: PolKit agent module for KDE Plasma
@@ -13214,7 +13214,7 @@ media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
 media-libs/qhull 2012.1-r4 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6-r2 0.0.6_p20131029: Graphical effect and filter library by KDE
-media-libs/qt-gstreamer 1.2.0-r2: C++ bindings for GStreamer with a Qt-style API
+media-libs/qt-gstreamer 1.2.0-r2 1.2.0-r3: C++ bindings for GStreamer with a Qt-style API
 media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
@@ -14907,7 +14907,7 @@ net-libs/libinfinity 0.6.7: An implementation of the Infinote protocol written i
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.9.0-r1 1.15.0 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 9999: Client library for accessing ISDS Soap services
-net-libs/libktorrent 2.0.1-r1: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 2.0.1-r1 2.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0_pre20170128: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09 1.13 1.14: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
@@ -15019,7 +15019,7 @@ net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to 
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
-net-libs/telepathy-qt 0.9.7: Qt bindings for the Telepathy D-Bus protocol
+net-libs/telepathy-qt 0.9.7 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_pre20160904 0.1.6 0.1.10 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0 0.5.1: HTTP web service mocking library
@@ -15585,7 +15585,7 @@ net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10: go-ipfs is the main implementation of IP
 net-p2p/gtk-gnutella 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
-net-p2p/ktorrent 5.0.1: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 5.0.1 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)

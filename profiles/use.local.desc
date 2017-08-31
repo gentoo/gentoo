@@ -3565,6 +3565,7 @@ kde-plasma/plasma-meta:wallpapers - Install wallpapers for the Plasma Workspace
 kde-plasma/plasma-nm:modemmanager - Enable support for mobile broadband devices
 kde-plasma/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-plasma/plasma-nm:teamd - Enable Teamd control support
+kde-plasma/plasma-workspace:appstream - Enable AppStream software metadata support
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
@@ -6650,11 +6651,17 @@ net-p2p/go-ipfs-bin:fuse - Enable runtime support for sys-fs/fuse
 net-p2p/ktorrent:bwscheduler - Schedule upload and download limits over a period of a week
 net-p2p/ktorrent:downloadorder - Specify the download order of a multi-file torrent
 net-p2p/ktorrent:infowidget - Displays general information about a torrent in several tabs
+net-p2p/ktorrent:ipfilter - Filter IP addresses through a blocklist
+net-p2p/ktorrent:kross - Enable kross scripting support
 net-p2p/ktorrent:logviewer - Displays the logging output
 net-p2p/ktorrent:magnetgenerator - Generates magnet URI's
 net-p2p/ktorrent:mediaplayer - Phonon-based media player
+net-p2p/ktorrent:rss - Syndication plugin for KTorrent, supporting RSS and Atom feeds
+net-p2p/ktorrent:scanfolder - Scan folders for torrent files and load them
+net-p2p/ktorrent:search - Search for torrents
 net-p2p/ktorrent:shutdown - Shutdown when done
 net-p2p/ktorrent:stats - Shows statistics about torrents in several graphs
+net-p2p/ktorrent:upnp - Forward ports using UPnP
 net-p2p/ktorrent:zeroconf - Discover peers on the local network using the Zeroconf protocol
 net-p2p/litecoind:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/litecoind:wallet - Enable wallet support
