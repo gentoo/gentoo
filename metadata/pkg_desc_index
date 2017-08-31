@@ -217,7 +217,7 @@ app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer ad
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3 5.0.4: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
-app-admin/tenshi 0.12 0.14 0.15 0.16: Log parsing and notification program
+app-admin/tenshi 0.12 0.14 0.15 0.16-r1: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -18384,7 +18384,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.3.0 55.0.2: Firefox Web Browser
 www-client/firefox-bin 52.3.0 55.0.2: Firefox Web Browser
 www-client/google-chrome 60.0.3112.113: The web browser from Google
-www-client/google-chrome-beta 61.0.3163.59: The web browser from Google
+www-client/google-chrome-beta 61.0.3163.71: The web browser from Google
 www-client/google-chrome-unstable 62.0.3198.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18433,7 +18433,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 26.0.0.151: Adobe Flash Player
-www-plugins/chrome-binary-plugins 60.0.3112.113 61.0.3163.59_beta 62.0.3198.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 60.0.3112.113 61.0.3163.71_beta 62.0.3198.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
