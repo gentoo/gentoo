@@ -5,7 +5,7 @@ EAPI=6
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
-HOMEPAGE="http://surf.suckless.org/"
+HOMEPAGE="https://surf.suckless.org/"
 EGIT_REPO_URI="git://git.suckless.org/surf"
 EGIT_BRANCH="surf-webkit2"
 
