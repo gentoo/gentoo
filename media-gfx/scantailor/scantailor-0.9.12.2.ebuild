@@ -8,7 +8,7 @@ MY_PV="RELEASE_$(replace_all_version_separators _)"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A interactive post-processing tool for scanned pages"
-HOMEPAGE="http://scantailor.sourceforge.net/"
+HOMEPAGE="http://scantailor.org/ https://github.com/scantailor/scantailor"
 SRC_URI="https://github.com/scantailor/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 public-domain"
