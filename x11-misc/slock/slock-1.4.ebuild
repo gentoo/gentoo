@@ -5,8 +5,8 @@ EAPI=6
 inherit fcaps savedconfig toolchain-funcs
 
 DESCRIPTION="simple X display locker"
-HOMEPAGE="http://tools.suckless.org/slock"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/slock"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
