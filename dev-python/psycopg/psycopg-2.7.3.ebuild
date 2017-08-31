@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 # Remove py3.2 entry from intersphinx setting
-PATCHES=( "${FILESDIR}/"${PN}-2.4.2-setup.py.patch )
+PATCHES=(  )
 
 S="${WORKDIR}/${MY_P}"
 
