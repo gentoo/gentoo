@@ -5,8 +5,8 @@ EAPI=6
 inherit multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.opus-codec.org/opus.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.xiph.org/opus.git"
 else
 	SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
