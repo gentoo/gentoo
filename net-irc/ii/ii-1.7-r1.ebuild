@@ -16,13 +16,13 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "s/CFLAGS[[:space:]]*= -g -O0/CFLAGS += /" \
-		-e "s/LDFLAGS[[:space:]]*=/LDFLAGS +=/" \
-		-e /^LIBS/d \
+		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' \
+		-e '/^CC/d' \
+		-e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
 		config.mk || die
-
-	# enable verbose build
-	sed -i 's/@${CC}/${CC}/' Makefile || die
+	sed -i \
+		-e 's|@${CC}|$(CC)|g' \
+		Makefile || die
 
 	ht_fix_file query.sh
 }
