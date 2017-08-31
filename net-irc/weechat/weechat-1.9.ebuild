@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
-HOMEPAGE="http://weechat.org/"
+HOMEPAGE="https://weechat.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
