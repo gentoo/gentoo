@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="utility to set the name of your window manager"
-HOMEPAGE="http://tools.suckless.org/x/wmname"
-SRC_URI="http://dl.suckless.org/tools/wmname-0.1.tar.gz"
+HOMEPAGE="https://tools.suckless.org/x/wmname"
+SRC_URI="https://dl.suckless.org/tools/wmname-0.1.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
