@@ -34,7 +34,7 @@ CDEPEND="
 	dev-cpp/lucene++
 	dev-cpp/sparsehash
 	dev-libs/boost:=
-	dev-libs/qtkeychain:=[qt5]
+	dev-libs/qtkeychain:=[qt5(+)]
 	>=dev-libs/quazip-0.7.2[qt5]
 	media-libs/liblastfm[qt5]
 	>=media-libs/taglib-1.8.0
