@@ -34,10 +34,13 @@ src_prepare() {
 	sed -i \
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
+
 	if use elibc_FreeBSD; then
 		sed -i -e 's/-DHAVE_SHADOW_H//' config.mk || die
 	fi
+
 	restore_config config.h
+
 	tc-export CC
 }
 
