@@ -25,7 +25,7 @@ KEYWORDS=""
 IUSE="dictmanager"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
-	>=app-i18n/libpinyin-1.9.91:=
+	>=app-i18n/libpinyin-2.1.0:=
 	dev-libs/glib:2
 	sys-apps/dbus
 	virtual/libintl
@@ -40,6 +40,8 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+DOCS=(AUTHORS)
 
 src_configure() {
 	local mycmakeargs=(
