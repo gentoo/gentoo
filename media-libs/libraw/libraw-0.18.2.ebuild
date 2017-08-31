@@ -10,16 +10,16 @@ MY_PV=${PV/_b/-B}
 MY_P=${MY_PN}-${MY_PV}
 
 DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
-HOMEPAGE="http://www.libraw.org/"
-SRC_URI="http://www.libraw.org/data/${MY_P}.tar.gz
+HOMEPAGE="https://www.libraw.org/"
+SRC_URI="https://www.libraw.org/data/${MY_P}.tar.gz
 	demosaic? (
-		http://www.libraw.org/data/LibRaw-demosaic-pack-GPL2-${MY_PV}.tar.gz
-		http://www.libraw.org/data/LibRaw-demosaic-pack-GPL3-${MY_PV}.tar.gz
+		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL2-${MY_PV}.tar.gz
+		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL3-${MY_PV}.tar.gz
 	)"
 
 # Libraw also has it's own license, which is a pdf file and
 # can be obtained from here:
-# http://www.libraw.org/data/LICENSE.LibRaw.pdf
+# https://www.libraw.org/data/LICENSE.LibRaw.pdf
 LICENSE="LGPL-2.1 CDDL GPL-2 GPL-3"
 SLOT="0/16" # subslot = libraw soname version
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
