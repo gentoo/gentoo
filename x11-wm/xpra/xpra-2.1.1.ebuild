@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
 	client? ( enc_x264? ( dec_avcodec2 ) enc_x265? ( dec_avcodec2 ) )"
 
-COMMON_DEPEND=""${PYTHON_DEPS}"
+COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	x11-libs/gtk+:2
@@ -51,15 +51,14 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 	)
 	enc_x265? ( media-libs/x265
 		!libav? ( >=media-video/ffmpeg-2:0= )
-		libav? ( media-video/libav:0= )
+		libav? ( media-video/libav:0= ) )
 	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pygtkglext )
 	pulseaudio? ( media-sound/pulseaudio )
 	sound? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 		dev-python/gst-python:1.0 )
-	vpx? ( media-libs/libvpx virtual/ffmpeg )
-	)"
+	vpx? ( media-libs/libvpx virtual/ffmpeg )"
 
 RDEPEND="${COMMON_DEPEND}
 	dev-python/ipython[${PYTHON_USEDEP}]
@@ -86,7 +85,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch
 	"${FILESDIR}"/${PN}-2.0-suid-warning.patch )
 
 pkg_postinst() {
