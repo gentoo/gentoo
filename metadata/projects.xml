@@ -98,6 +98,11 @@
       <name>Manuel Rüger</name>
       <role>Member (Gentoo/ARM)</role>
     </member>
+    <member>
+      <email>nerdboy@gentoo.org</email>
+      <name>Steve Arnold</name>
+      <role>Member (Gentoo/ARM Kernel)</role>
+    </member>
     <member is-lead="1">
       <email>steev@gentoo.org</email>
       <name>Steev Klimaszewski</name>
@@ -145,7 +150,12 @@
     <name>Gentoo Resources for Ada</name>
     <url>https://wiki.gentoo.org/wiki/Project:Ada</url>
     <description>This project provides support for Ada compilers and libraries in Portage. At present a gnat compiler is provided: gnat-gpl by AdaCore.</description>
-    <member>
+    <member is-lead="1">
+      <email>nerdboy@gentoo.org</email>
+      <name>Steve Arnold</name>
+      <role>member</role>
+    </member>
+    <member is-lead="1">
       <email>tupone@gentoo.org</email>
       <name>Alfredo Tupone</name>
       <role>member</role>
@@ -3924,6 +3934,10 @@ developers and volunteer mentors.</description>
     <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
+    </member>
+    <member>
+      <email>nerdboy@gentoo.org</email>
+      <name>Steve Arnold</name>
     </member>
     <member>
       <email>rhill@gentoo.org</email>
