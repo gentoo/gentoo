@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	if use minimal; then
-		cmake_comment_add_subdirectory po
+		cmake_comment_add_subdirectory layout po
 	fi
 
 	cmake-utils_src_prepare
