@@ -5,7 +5,7 @@ EAPI=6
 inherit linux-info
 
 DESCRIPTION="iptables firewall generator"
-HOMEPAGE="https://github.com/firehol/firehol"
+HOMEPAGE="https://firehol.org/ https://github.com/firehol/firehol"
 SRC_URI="https://github.com/firehol/firehol/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
