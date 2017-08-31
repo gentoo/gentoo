@@ -1490,7 +1490,7 @@ app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4: A fcitx module to look up pinyin candidate words on the internet
 app-i18n/fcitx-configtool 0.4.6 0.4.8: A GTK+ GUI configuration tool for fcitx
 app-i18n/fcitx-hangul 0.2.1 0.3.0: Korean Hangul module for Fcitx
-app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 9999: Chinese LibPinyin input methods for Fcitx
+app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 0.5.2 9999: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.3 9999: m17n-provided input methods for Fcitx
 app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 9999: Fcitx input method module for Qt 5
 app-i18n/fcitx-rime 0.2.0 0.3.1: Rime support for Fcitx
@@ -1508,7 +1508,7 @@ app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
-app-i18n/ibus-libpinyin 1.6.92 1.7.4 1.9.0: Intelligent Pinyin engine based on libpinyin for IBus
+app-i18n/ibus-libpinyin 1.6.92 1.7.4 1.9.0 1.9.1: Intelligent Pinyin engine based on libpinyin for IBus
 app-i18n/ibus-m17n 1.3.2 1.3.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-qt 1.3.3: Qt IBus library and Qt input method plugin
@@ -1541,7 +1541,7 @@ app-i18n/libchewing 0.3.3 0.4.0-r1 0.5.1: Library for Chinese Phonetic input met
 app-i18n/libguess 1.1 1.2: A high-speed character set detection library
 app-i18n/libhangul 0.1.0: libhangul is a generalized and portable library for processing hangul
 app-i18n/libkkc 0.3.5: Japanese Kana Kanji conversion input method library
-app-i18n/libpinyin 0.8.0 1.0.0 1.3.0-r1 2.0.92: Library to deal with pinyin
+app-i18n/libpinyin 0.8.0 1.0.0 1.3.0-r1 2.0.92 2.1.0 9999: Library to deal with pinyin
 app-i18n/librime 0.9.9 1.2 1.2.9: Rime Input Method Engine library
 app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
@@ -3014,7 +3014,7 @@ dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLit
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 4.2.0.16.355.0402 4.2.0.17.097.0719: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.0.2.15.21 4.1.3.20.78-r1 4.1.5.21.78 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.16.2 3.17.0 3.18.0 3.19.2 3.19.3 3.20.0: A SQL Database Engine in a C Library
+dev-db/sqlite 3.16.2 3.17.0 3.18.0 3.19.2 3.19.3 3.20.0 3.20.1: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.9.1-r1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r2 1.2.2-r3: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -4084,7 +4084,7 @@ dev-java/gradle-bin 3.3 3.4.1: A project automation and build tool with a Groovy
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 13.0.1 13.0.1-r3 14.0.1 18.0 20.0: A collection of Google's core Java libraries
-dev-java/guice 4.0 4.1: A lightweight dependency injection framework for Java 5 and above
+dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1-r1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
@@ -14800,7 +14800,7 @@ net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.2: A user friendly IRC Client
-net-irc/kvirc 5.0_pre20170202154736 5.0_pre20170401092246 5.0_pre20170601121930 5.0_pre20170801214745 9999: Advanced IRC Client
+net-irc/kvirc 5.0_pre20170801214745 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
 net-irc/muh 2.2a 2.2a-r1: Persistent IRC bouncer
