@@ -42,7 +42,7 @@ CDEPEND="
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
 	sensors? ( sys-apps/lm_sensors )
-	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5] )
+	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	sysstat? ( =lxqt-base/libsysstat-0.3* )
 	tray? ( x11-libs/libXcomposite
 		x11-libs/libXdamage
