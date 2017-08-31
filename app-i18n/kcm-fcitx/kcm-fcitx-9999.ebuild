@@ -30,6 +30,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	kde-frameworks/kcmutils:5
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/ki18n:5
@@ -38,18 +39,13 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 	kde-frameworks/knewstuff:5
 	kde-frameworks/kwidgetsaddons:5
 	virtual/libintl
+	x11-libs/libX11
+	x11-libs/libxkbfile
 	!${CATEGORY}/${PN}:4[-minimal(-)]"
 DEPEND="${RDEPEND}
 	kde-frameworks/extra-cmake-modules:5
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-src_prepare() {
-	# x11-libs/libxkbfile only used by kbd-layout-viewer not ported to Qt 5 / KDE 5.
-	sed -e "/find_package(XkbFile REQUIRED)/d" -i CMakeLists.txt
-
-	cmake-utils_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
