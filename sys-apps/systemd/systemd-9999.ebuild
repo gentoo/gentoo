@@ -256,7 +256,7 @@ multilib_src_configure() {
 		-Dquotacheck=$(meson_multilib)
 		-Drandomseed=$(meson_multilib)
 		-Drfkill=$(meson_multilib)
-		-Dsysysers=$(meson_multilib)
+		-Dsysusers=$(meson_multilib)
 		-Dtimedated=$(meson_multilib)
 		-Dtimesyncd=$(meson_multilib)
 		-Dtmpfiles=$(meson_multilib)
