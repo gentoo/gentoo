@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
-HOMEPAGE="http://lftp.tech/"
+HOMEPAGE="https://lftp.tech/"
 SRC_URI="${HOMEPAGE}ftp/${P}.tar.xz"
 
 LICENSE="GPL-3"
