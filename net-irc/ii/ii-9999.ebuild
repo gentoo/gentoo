@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit fixheadtails git-r3 toolchain-funcs
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
 HOMEPAGE="https://tools.suckless.org/ii/"
-EGIT_REPO_URI="https://git.suckless.org/ii"
+EGIT_REPO_URI="git://git.suckless.org/ii"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,15 +16,13 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "s/CFLAGS      = -g -O0/CFLAGS += /" \
-		-e "s/LDFLAGS     =/LDFLAGS +=/" \
-		-e /^LIBS/d \
+		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' \
+		-e '/^CC/d' \
+		-e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
 		config.mk || die
-
-	# enable verbose build
-	sed -i 's/@${CC}/${CC}/' Makefile || die
-
-	ht_fix_file query.sh
+	sed -i \
+		-e 's|@${CC}|$(CC)|g' \
+		Makefile || die
 }
 
 src_compile() {
@@ -33,7 +31,6 @@ src_compile() {
 
 src_install() {
 	dobin ii
-	newbin query.sh ii-query
 	dodoc CHANGES FAQ README
 	doman *.1
 }
