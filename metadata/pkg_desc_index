@@ -14785,7 +14785,7 @@ net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r1 2.12.4-r2 9999: Graphical IRC client based on XChat
-net-irc/ii 1.7 1.7-r1 9999: A minimalist FIFO and filesystem-based IRC client
+net-irc/ii 1.7-r1 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.23 2.0.24: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
@@ -14822,7 +14822,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/savirc 1.99-r1: User friendly IRC client with unicode support and tcl/tk scripting
 net-irc/scrollz 2.1 2.2 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3 6.3.3-r1: An IRCd based on charybdis that adds several useful features
-net-irc/sic 1.1 1.2: An extremly simple IRC client
+net-irc/sic 1.2 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.12: An advanced Internet Relay Chat daemon
