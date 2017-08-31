@@ -12652,7 +12652,7 @@ media-gfx/clockphoto 1.1: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4-r1 0.6.8-r1: Batch image converter and resizer based on ImageMagick
-media-gfx/cptutils 1.63 1.66 1.68: A number of utilities for the manipulation of color gradient files
+media-gfx/cptutils 1.68: A number of utilities for the manipulation of color gradient files
 media-gfx/cropgui 0.1.1-r3 0.2-r1 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
