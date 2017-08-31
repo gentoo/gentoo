@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ WX_GTK_VER="3.0"
 CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-libs/boost-1.41
+	>=dev-libs/boost-1.58-r1
 	console? ( dev-libs/libedit )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )"
@@ -69,6 +69,7 @@ src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DICINGA2_SYSCONFIGFILE=/etc/conf.d/icinga2
+		-DICINGA2_PLUGINDIR="/usr/$(get_libdir)/nagios/plugins"
 		-DICINGA2_USER=icinga
 		-DICINGA2_GROUP=icingacmd
 		-DICINGA2_COMMAND_USER=icinga
@@ -121,7 +122,6 @@ src_install() {
 	einstalldocs
 
 	newinitd "${FILESDIR}"/icinga2.initd icinga2
-	newconfd "${FILESDIR}"/icinga2.confd icinga2
 
 	if use mysql ; then
 		docinto schema
@@ -144,7 +144,8 @@ src_install() {
 	rm -r "${D}/var/run" || die "failed to remove /var/run"
 	rm -r "${D}/var/cache" || die "failed to remove /var/cache"
 
-	fowners icinga:icinga /etc/icinga2
+	fowners root:icinga /etc/icinga2
+	fperms 0750 /etc/icinga2
 	fowners icinga:icinga /var/lib/icinga2
 	fowners icinga:icinga /var/spool/icinga2
 	fowners -R icinga:icingacmd /var/lib/icinga2/api
