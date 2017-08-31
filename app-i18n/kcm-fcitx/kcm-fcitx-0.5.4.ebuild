@@ -30,7 +30,8 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	kde-frameworks/kcmutils:5
+	kde-frameworks/kcompletion:5
+	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/ki18n:5
 	kde-frameworks/kio:5
@@ -47,6 +48,11 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# x11-libs/libxkbfile only used by kbd-layout-viewer not ported to Qt 5 / KDE 5.
 	sed -e "/find_package(XkbFile REQUIRED)/d" -i CMakeLists.txt
+
+	# Adjust dependencies to match actual usage.
+	# https://github.com/fcitx/kcm-fcitx/issues/12
+	sed -e "s/KCMUtils/Completion\n    ConfigWidgets/" -i CMakeLists.txt
+	sed -e "s/KF5::KCMUtils/KF5::Completion\n  KF5::ConfigWidgets/" -i src/CMakeLists.txt
 
 	cmake-utils_src_prepare
 }
