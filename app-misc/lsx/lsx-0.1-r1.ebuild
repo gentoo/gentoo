@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="list executables"
-HOMEPAGE="http://tools.suckless.org/lsx"
-SRC_URI="http://suckless.org/download/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/lsx"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
