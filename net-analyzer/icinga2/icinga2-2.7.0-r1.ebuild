@@ -144,7 +144,8 @@ src_install() {
 	rm -r "${D}/var/run" || die "failed to remove /var/run"
 	rm -r "${D}/var/cache" || die "failed to remove /var/cache"
 
-	fowners icinga:icinga /etc/icinga2
+	fowners root:icinga /etc/icinga2
+	fperms 0750 /etc/icinga2
 	fowners icinga:icinga /var/lib/icinga2
 	fowners icinga:icinga /var/spool/icinga2
 	fowners -R icinga:icingacmd /var/lib/icinga2/api
