@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils multilib
-
 DESCRIPTION="A menu-driven tool to draw and manipulate objects interactively in an X window"
 HOMEPAGE="http://mcj.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mcj/${PN}-full-${PV}.tar.xz"
