@@ -6,8 +6,8 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-multilib
 
 DESCRIPTION="The Ogg Vorbis sound file format library"
-HOMEPAGE="http://xiph.org/vorbis"
-SRC_URI="http://downloads.xiph.org/releases/vorbis/${P}.tar.xz"
+HOMEPAGE="https://xiph.org/vorbis/"
+SRC_URI="https://downloads.xiph.org/releases/vorbis/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
