@@ -5,7 +5,7 @@ EAPI=6
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="farbfeld simple image format tools"
-HOMEPAGE="http://tools.suckless.org/farbfeld/"
+HOMEPAGE="https://tools.suckless.org/farbfeld/"
 EGIT_REPO_URI="git://git.suckless.org/farbfeld"
 
 LICENSE="ISC"
