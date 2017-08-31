@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	net-libs/libnfnetlink
 	dbus? ( sys-apps/dbus )
 	zlib? ( sys-libs/zlib )
-	qt4? ( sys-auth/polkit-qt[qt4(+)]
+	qt4? ( sys-auth/polkit-qt[qt4]
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
