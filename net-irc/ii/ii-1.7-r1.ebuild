@@ -5,8 +5,8 @@ EAPI=6
 inherit fixheadtails toolchain-funcs
 
 DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
-HOMEPAGE="http://tools.suckless.org/ii/"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/ii/"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
