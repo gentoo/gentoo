@@ -96,10 +96,12 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+		-DCHANNEL_URBDRC=$(usex usb)
 		-DWITH_ALSA=$(usex alsa)
+		-DWITH_CCACHE=OFF
 		-DWITH_CLIENT=$(usex client)
 		-DWITH_CUPS=$(usex cups)
-		-DWITH_CCACHE=OFF
 		-DWITH_DEBUG_ALL=$(usex debug)
 		-DWITH_MANPAGES=$(usex doc)
 		-DWITH_FFMPEG=$(usex ffmpeg)
@@ -112,11 +114,9 @@ src_configure() {
 		-DWITH_PCSC=$(usex smartcard)
 		-DWITH_LIBSYSTEMD=$(usex systemd)
 		-DWITH_SSE2=$(usex cpu_flags_x86_sse2)
-		-DCHANNEL_URBDRC=$(usex usb)
 		-DWITH_X11=$(usex X)
 		-DWITH_XINERAMA=$(usex xinerama)
 		-DWITH_XV=$(usex xv)
-		-DBUILD_TESTING=$(usex test)
 		-DWITH_WAYLAND=$(usex wayland)
 	)
 	cmake-utils_src_configure
