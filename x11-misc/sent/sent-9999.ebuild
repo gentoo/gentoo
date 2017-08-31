@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="Simple plaintext presentation tool"
-HOMEPAGE="http://tools.suckless.org/sent/"
-EGIT_REPO_URI="http://git.suckless.org/sent/"
+HOMEPAGE="https://tools.suckless.org/sent/"
+EGIT_REPO_URI="git://git.suckless.org/sent/"
 
 LICENSE="MIT"
 SLOT="0"
