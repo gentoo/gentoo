@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit toolchain-funcs
 
 MY_P=gnat-gpl-2016-x86_64-linux-bin
 
