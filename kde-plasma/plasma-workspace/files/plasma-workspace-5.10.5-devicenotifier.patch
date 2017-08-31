@@ -1,0 +1,32 @@
+From b8f263cd9939530a6634a1ddb9533bf473a67805 Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Wed, 23 Aug 2017 11:10:34 +0200
+Subject: [Device Notifier] Set preferred size for ActionItem
+
+In QtQuick Layouts implicit size (set by IconItem to the SVG's natural size) takes
+precedence over width/height. This was fixed in DeviceItem but forgotten here.
+
+BUG: 382541
+FIXED-IN: 5.8.8
+---
+ applets/devicenotifier/package/contents/ui/ActionItem.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/applets/devicenotifier/package/contents/ui/ActionItem.qml b/applets/devicenotifier/package/contents/ui/ActionItem.qml
+index 5e54866..df28365 100644
+--- a/applets/devicenotifier/package/contents/ui/ActionItem.qml
++++ b/applets/devicenotifier/package/contents/ui/ActionItem.qml
+@@ -56,8 +56,8 @@ MouseArea {
+ 
+         PlasmaCore.IconItem {
+             source: area.icon
+-            width: units.iconSizes.smallMedium
+-            height: width
++            Layout.preferredWidth: units.iconSizes.smallMedium
++            Layout.preferredHeight: width
+         }
+ 
+         PlasmaComponents.Label {
+-- 
+cgit v0.11.2
+
