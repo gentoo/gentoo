@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-utils bash-completion-r1
 
 DESCRIPTION="Taskwarrior is a command-line todo list manager"
-HOMEPAGE="http://taskwarrior.org/"
-SRC_URI="http://taskwarrior.org/download/${P}.tar.gz"
+HOMEPAGE="https://taskwarrior.org/"
+SRC_URI="https://taskwarrior.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
