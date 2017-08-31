@@ -20,7 +20,7 @@ IUSE="examples test"
 
 CP_DEPEND="dev-java/antlr:3
 	dev-java/netty-transport:0
-	=dev-java/asm-5.0.3:4
+	>=dev-java/asm-5:4
 	dev-java/commons-compress:0
 	dev-java/guava:20
 	dev-java/jffi:1.2
@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7_beta1-dont-always-recompile-classes.patch
 	"${FILESDIR}"/${PN}-2.7_beta2-maxrepeat-import.patch
 	"${FILESDIR}"/${PN}-2.7.0-build.xml.patch
+	"${FILESDIR}"/CVE-2016-4000.patch
 )
 
 src_prepare() {
