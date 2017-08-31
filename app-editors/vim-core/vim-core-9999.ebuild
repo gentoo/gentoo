@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="vim and gvim shared files"
-HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
+HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
