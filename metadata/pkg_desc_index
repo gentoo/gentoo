@@ -17056,6 +17056,7 @@ sys-apps/coreutils 8.25 8.26 8.27: Standard GNU utilities (chmod, cp, dd, ls, so
 sys-apps/cpint 1.1.6 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20130610 20140123 20150606 20151017 20170122: Utility to get detailed information about the CPU(s) using the CPUID instruction
 sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
+sys-apps/crazydiskinfo 1.0.2: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11: Miscellaneous commands used on macOS, Sierra 10.12
