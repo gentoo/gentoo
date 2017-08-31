@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	# Disable failing test
-	[[ ${PV} == 0.7.0 ]] || die "Please remove the sed from python_prepare_all"
+	[[ ${PV} == 0.7.5 ]] || die "Please remove the sed from python_prepare_all"
 	sed -i -e 's:test_input_redirection:_&:' tests/test_cmd2.py || die
 	distutils-r1_python_prepare_all
 }
