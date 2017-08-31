@@ -32,7 +32,6 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	fowners tenshi:root /etc/tenshi/tenshi.conf
 	doman tenshi.8
 	newinitd tenshi.openrc-init tenshi
 
