@@ -7,8 +7,8 @@ inherit autotools eutils flag-o-matic
 
 MY_PN="MediaInfo"
 DESCRIPTION="MediaInfo libraries"
-HOMEPAGE="http://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfoLib"
-SRC_URI="http://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
+HOMEPAGE="https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfoLib"
+SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
