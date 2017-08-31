@@ -43,7 +43,7 @@ RDEPEND="
 		$(add_frameworks_dep kservice)
 		$(add_frameworks_dep kwallet)
 	)
-	phonon? ( media-libs/phonon[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	positioning? ( $(add_qt_dep qtpositioning) )
 	shapefile? ( sci-libs/shapelib:= )
 	webkit? ( $(add_qt_dep qtwebkit) )
