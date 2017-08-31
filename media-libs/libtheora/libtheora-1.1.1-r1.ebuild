@@ -5,8 +5,8 @@ EAPI=5
 inherit autotools eutils flag-o-matic multilib-minimal
 
 DESCRIPTION="The Theora Video Compression Codec"
-HOMEPAGE="http://www.theora.org"
-SRC_URI="http://downloads.xiph.org/releases/theora/${P/_}.tar.bz2"
+HOMEPAGE="https://www.theora.org"
+SRC_URI="https://downloads.xiph.org/releases/theora/${P/_}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
