@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A command line CD encoder"
 HOMEPAGE="https://abcde.einval.com/"
@@ -55,6 +55,7 @@ RDEPEND="media-sound/cd-discid
 "
 
 src_prepare() {
+	default
 	sed -i 's:etc/abcde.co:etc/abcde/abcde.co:g' abcde || die
 	sed -i -e '/^prefix/s/=/?=/' -e '/^sysconfdir/s/=/?=/' Makefile || die
 }
