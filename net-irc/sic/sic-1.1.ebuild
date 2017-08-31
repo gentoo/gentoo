@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="An extremly simple IRC client"
-HOMEPAGE="http://tools.suckless.org/sic"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/sic"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
