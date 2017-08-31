@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils cmake-utils systemd user
 
 DESCRIPTION="the server part of Taskwarrior, a command-line todo list manager"
-HOMEPAGE="http://taskwarrior.org/"
-SRC_URI="http://taskwarrior.org/download/${P}.tar.gz"
+HOMEPAGE="https://taskwarrior.org/"
+SRC_URI="https://taskwarrior.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
