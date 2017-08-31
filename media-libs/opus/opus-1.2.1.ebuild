@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.opus-codec.org/opus.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.xiph.org/opus.git"
 else
 	SRC_URI="https://github.com/xiph/opus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	if [[ "${PV}" != *_alpha* ]] &&  [[ "${PV}" != *_beta* ]] ; then
