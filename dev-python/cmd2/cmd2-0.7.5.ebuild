@@ -15,6 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
+# restrict tests because pyperclip is fairly unstable...
+RESTRICT="test"
+
 RDEPEND="
 	>=dev-python/pyparsing-2.0.1[${PYTHON_USEDEP}]
 	dev-python/pyperclip[${PYTHON_USEDEP}]
