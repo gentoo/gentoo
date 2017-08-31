@@ -11,7 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="
 		https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz
-		http://ftp.videolan.org/pub/videolan/x265/${PN}_${PV}.tar.gz"
+		https://ftp.videolan.org/pub/videolan/x265/${PN}_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
