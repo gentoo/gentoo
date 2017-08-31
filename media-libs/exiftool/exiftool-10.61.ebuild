@@ -7,8 +7,8 @@ DIST_NAME=Image-ExifTool
 inherit perl-module
 
 DESCRIPTION="Read and write meta information in image, audio and video files"
-HOMEPAGE="http://www.sno.phy.queensu.ca/~phil/exiftool/ ${HOMEPAGE}"
-SRC_URI="http://www.sno.phy.queensu.ca/~phil/exiftool/${DIST_P}.tar.gz"
+HOMEPAGE="https://www.sno.phy.queensu.ca/~phil/exiftool/ ${HOMEPAGE}"
+SRC_URI="https://www.sno.phy.queensu.ca/~phil/exiftool/${DIST_P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x64-macos"
