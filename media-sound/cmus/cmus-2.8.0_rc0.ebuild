@@ -5,7 +5,7 @@ EAPI=5
 inherit bash-completion-r1 multilib
 
 DESCRIPTION="A ncurses based music player with plugin support for many formats"
-HOMEPAGE="http://cmus.github.io/"
+HOMEPAGE="https://cmus.github.io/"
 SRC_URI="https://github.com/cmus/cmus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
