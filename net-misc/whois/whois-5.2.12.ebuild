@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 MY_P=${P/-/_}
 DESCRIPTION="improved Whois Client"
-HOMEPAGE="http://www.linux.it/~md/software/"
+HOMEPAGE="https://www.linux.it/~md/software/"
 SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
