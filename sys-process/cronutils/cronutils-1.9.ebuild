@@ -11,7 +11,7 @@ SRC_URI="https://github.com/google/${PN}/archive/version/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S=${WORKDIR}/${PN}-version-${PV}
 
