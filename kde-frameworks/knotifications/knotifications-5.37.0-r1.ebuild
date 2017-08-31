@@ -20,7 +20,7 @@ RDEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	media-libs/phonon[qt5(+)]
-	dbus? ( dev-libs/libdbusmenu-qt[qt5] )
+	dbus? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	speech? ( $(add_qt_dep qtspeech) )
 	X? (
 		$(add_qt_dep qtx11extras)
