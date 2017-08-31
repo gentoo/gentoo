@@ -10,7 +10,7 @@ MY_PV=${PV/_b/-B}
 MY_P=${MY_PN}-${MY_PV}
 
 DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
-HOMEPAGE="https://www.libraw.org/"
+HOMEPAGE="https://www.libraw.org/ https://github.com/LibRaw/LibRaw"
 SRC_URI="https://www.libraw.org/data/${MY_P}.tar.gz
 	demosaic? (
 		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL2-${MY_PV}.tar.gz
