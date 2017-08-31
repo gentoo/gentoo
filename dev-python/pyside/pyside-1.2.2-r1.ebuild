@@ -49,10 +49,7 @@ RDEPEND="
 	help? ( >=dev-qt/qthelp-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV} )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	phonon? ( || (
-		media-libs/phonon[qt4(+)]
-		>=dev-qt/qtphonon-${QT_PV}
-	) )
+	phonon? ( media-libs/phonon[qt4(+)] )
 	script? ( >=dev-qt/qtscript-${QT_PV} )
 	sql? ( >=dev-qt/qtsql-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV}[accessibility] )
