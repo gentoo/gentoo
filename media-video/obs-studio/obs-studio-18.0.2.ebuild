@@ -51,6 +51,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES="${FILESDIR}/${PN}-ImageMagick-header-path.patch"
+
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
 src_configure() {
