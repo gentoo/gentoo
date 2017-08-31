@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils systemd user
+inherit autotools ltprune systemd user
 
 DESCRIPTION="A free socks4,5 and msproxy implementation"
 HOMEPAGE="http://www.inet.no/dante/"
@@ -83,8 +83,8 @@ src_install() {
 	insinto /etc/socks
 	doins "${FILESDIR}"/sock?.conf
 	pushd "${ED}"/etc/socks > /dev/null
-	use pam && epatch "${FILESDIR}"/sockd.conf-with-pam.patch
-	use tcpd && epatch "${FILESDIR}"/sockd.conf-with-libwrap.patch
+	use pam && eapply -p0 "${FILESDIR}"/sockd.conf-with-pam.patch
+	use tcpd && eapply -p0 "${FILESDIR}"/sockd.conf-with-libwrap.patch
 	popd > /dev/null
 
 	# init script
