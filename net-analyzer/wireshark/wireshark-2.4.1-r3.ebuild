@@ -265,6 +265,7 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 
 	# Add group for users allowed to sniff.
@@ -283,5 +284,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
