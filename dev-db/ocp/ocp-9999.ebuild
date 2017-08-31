@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit flag-o-matic
-
 DESCRIPTION="Oracle copy tool"
 HOMEPAGE="https://github.com/maxsatula/ocp"
 
@@ -33,9 +31,4 @@ src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
 		eautoreconf
 	fi
-}
-
-src_configure() {
-	append-ldflags $(no-as-needed)
-	default
 }
