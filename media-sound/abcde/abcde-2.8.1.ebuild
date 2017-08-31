@@ -4,8 +4,8 @@
 EAPI=5
 
 DESCRIPTION="A command line CD encoder"
-HOMEPAGE="http://abcde.einval.com/"
-SRC_URI="http://abcde.einval.com/download/${P}.tar.gz"
+HOMEPAGE="https://abcde.einval.com/"
+SRC_URI="https://abcde.einval.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
