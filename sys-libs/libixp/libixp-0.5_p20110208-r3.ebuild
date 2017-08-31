@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# hg clone http://hg.suckless.org/libixp
+# hg clone https://hg.suckless.org/libixp
 
 EAPI=4
 inherit multilib toolchain-funcs
 
 DESCRIPTION="A stand-alone client/server 9P library including ixpc client"
-HOMEPAGE="http://libs.suckless.org/libixp"
+HOMEPAGE="https://libs.suckless.org/deprecated/libixp"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="MIT"
