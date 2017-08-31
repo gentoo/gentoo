@@ -1,0 +1,90 @@
+diff -ur cnijfilter-source-3.80-1/cngpij/cngpij/bjcups.c cnijfilter-source-3.80-1.new/cngpij/cngpij/bjcups.c
+--- cnijfilter-source-3.80-1/cngpij/cngpij/bjcups.c
++++ cnijfilter-source-3.80-1.new/cngpij/cngpij/bjcups.c
+@@ -66,6 +66,27 @@
+ 
+ char* g_printer_name = NULL;
+ 
++#if (CUPS_VERSION_MAJOR > 1) || (CUPS_VERSION_MINOR > 5)
++#define HAVE_CUPS_1_6 1
++#endif
++
++#ifndef HAVE_CUPS_1_6
++
++#define ippSetOperation(ipp_request, ipp_op_id) ipp_request->request.op.operation_id = ipp_op_id
++#define ippSetRequestId(ipp_request, ipp_rq_id) ipp_request->request.op.request_id = ipp_rq_id
++#define ippGetStatusCode(ipp_request) ipp_request->request.status.status_code
++#define ippFirstAttribute(ipp) ipp->attrs /* simplistic */
++#define bjcups_ippNextAttribute(resp, attr) attr->next
++#define ippGetGroupTag(attr)  attr->group_tag
++#define ippGetName(attr) attr->name
++#define ippGetString(attr, ind, lang) attr->values[ind].string.text
++#define ippGetValueTag(attr) attr->value_tag
++
++#else
++
++#define bjcups_ippNextAttribute(resp, attr) ippNextAttribute(resp)
++
++#endif
+ 
+ extern int GetIPCData(LPIPCU pipc, char *sname);
+ static short getDeviceURI( const char *pDestName, char *pDeviceURI, short bufSize);
+@@ -698,8 +719,8 @@
+ 	else {
+ 		pRequest = ippNew();
+ 		
+-		pRequest->request.op.operation_id = CUPS_GET_PRINTERS;
+-		pRequest->request.op.request_id   = 1;
++		ippSetOperation(pRequest, CUPS_GET_PRINTERS);
++		ippSetRequestId(pRequest, 1);
+ 		
+ 		pLanguage = bjcupsLangDefault();	// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 		
+@@ -708,29 +729,29 @@
+ 		ippAddString(pRequest, IPP_TAG_OPERATION, IPP_TAG_URI, "printer-uri", NULL, NULL);
+ 		
+ 		if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 				fputs("ERROR: IPP ERROR\n", stderr);
+ 				goto onErr;
+ 			}
+ 			else {
+-				pAttribute = pResponse->attrs;
++				pAttribute = ippFirstAttribute(pResponse);
+ 
+ 				while (pAttribute != NULL) {
+-					while (pAttribute != NULL && pAttribute->group_tag != IPP_TAG_PRINTER) {
+-						pAttribute = pAttribute->next;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) != IPP_TAG_PRINTER) {
++						pAttribute = bjcups_ippNextAttribute(pResponse, pAttribute);
+ 					}
+ 					if (pAttribute == NULL) {
+ 						break;
+ 					}
+ 					
+-					while (pAttribute != NULL && pAttribute->group_tag == IPP_TAG_PRINTER) {
+-						if (strcmp(pAttribute->name, "printer-name") == 0 && pAttribute->value_tag == IPP_TAG_NAME) {
+-							pPrinter = pAttribute->values[0].string.text;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) == IPP_TAG_PRINTER) {
++						if (strcmp(ippGetName(pAttribute), "printer-name") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_NAME) {
++							pPrinter = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						if (strcmp(pAttribute->name, "device-uri") == 0 && pAttribute->value_tag == IPP_TAG_URI) {
+-							pDUri = pAttribute->values[0].string.text;
++						if (strcmp(ippGetName(pAttribute), "device-uri") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_URI) {
++							pDUri = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						pAttribute = pAttribute->next;
++						pAttribute = bjcups_ippNextAttribute(pResponse, pAttribute);
+ 					}
+ 
+ 					if (strcasecmp(pDestName, pPrinter) == 0) {
+@@ -739,7 +760,7 @@
+ 					}
+ 					
+ 					if (pAttribute != NULL)
+-						 pAttribute = pAttribute->next;
++						pAttribute = bjcups_ippNextAttribute(pResponse, pAttribute);
+ 				}
+ 			}

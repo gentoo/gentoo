@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mfld.fr@gmail.com</email>
+    <name>mfld-fr</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    CUPS drivers for some Canon inkjet printers (common part)
+  </longdescription>
+  <use>
+    <flag name="net">build CUPS backend for network</flag>
+    <flag name="servicetools">build service tools</flag>
+  </use>
+</pkgmetadata>
