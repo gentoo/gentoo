@@ -5,7 +5,7 @@ EAPI=6
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
-HOMEPAGE="http://dwm.suckless.org/"
+HOMEPAGE="https://dwm.suckless.org/"
 EGIT_REPO_URI="git://git.suckless.org/dwm"
 
 LICENSE="MIT"

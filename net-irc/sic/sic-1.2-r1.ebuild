@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit fixheadtails toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
-HOMEPAGE="https://tools.suckless.org/ii/"
+DESCRIPTION="An extremly simple IRC client"
+HOMEPAGE="https://tools.suckless.org/sic"
 SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 
 src_prepare() {
 	default
@@ -23,8 +23,6 @@ src_prepare() {
 	sed -i \
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
-
-	ht_fix_file query.sh
 }
 
 src_compile() {
@@ -32,8 +30,5 @@ src_compile() {
 }
 
 src_install() {
-	dobin ii
-	newbin query.sh ii-query
-	dodoc CHANGES FAQ README
-	doman *.1
+	emake DESTDIR="${D}" PREFIX="/usr" install
 }
