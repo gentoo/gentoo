@@ -66,6 +66,13 @@ pkg_setup() {
 	# Add our own CFLAGS/CPPFLAGS
 	#
 	export EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}"
+
+	#
+	# Disable internal zlib dependnecies
+	# For some reason this applied also when
+	# System zlib is being used
+	#
+	COMMON_MAKE_OPTS="ZLIBOBJS= CC=$(tc-getCC) AR=$(tc-getAR) STRIP=true"
 }
 
 src_prepare() {
@@ -98,12 +105,6 @@ src_compile() {
 	use ldap && append-cppflags -DHAS_LDAP
 	use odbc && append-cppflags -DHAS_ODBC
 
-	#
-	# Disable internal zlib dependnecies
-	# For some reason this applied also when
-	# System zlib is being used
-	#
-	COMMON_MAKE_OPTS="ZLIBOBJS= CC=$(tc-getCC) AR=$(tc-getAR) STRIP=true"
 	emake ${COMMON_MAKE_OPTS}  shared
 	use static-libs && emake ${COMMON_MAKE_OPTS} default
 	use test && emake ${COMMON_MAKE_OPTS} stestlib
@@ -115,7 +116,8 @@ src_compile() {
 	# 1. python will link against the static lib
 	# 2. tests will not work find soname.
 	#
-	# Bad upstream behavior
+	# Upstream should have created the symlinks when
+	# building and not when installing.
 	#
 	local libname="libcl.so.$(get_version_component_range 1-3 ${PV})"
 	local solibname="libcl.so.$(get_version_component_range 1-2 ${PV})"
@@ -132,15 +134,8 @@ src_test() {
 }
 
 src_install() {
+	emake install ${COMMON_MAKE_OPTS} DESTDIR="${D}" PREFIX=/usr PATH_LIB="/usr/$(get_libdir)"
 	einstalldocs
-
-	#
-	# Upstream does not provide
-	# a simple target for install
-	#
-	doheader cryptlib.h
-	dolib.so libcl.so*
-	use static-libs && dolib.a libcl.a
 
 	wrap_python ${FUNCNAME}
 
