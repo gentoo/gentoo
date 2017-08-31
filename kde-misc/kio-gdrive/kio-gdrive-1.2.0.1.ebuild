@@ -26,7 +26,7 @@ RDEPEND="
 	$(add_kdeapps_dep libkgapi)
 	$(add_qt_dep qtwidgets)
 	kaccounts? ( $(add_kdeapps_dep kaccounts-integration) )
-	!kaccounts? ( dev-libs/qtkeychain:=[qt5] )
+	!kaccounts? ( dev-libs/qtkeychain:=[qt5(+)] )
 "
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtgui)
