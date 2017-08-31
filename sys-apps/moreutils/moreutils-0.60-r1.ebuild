@@ -5,7 +5,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="a collection of tools that nobody thought to write when Unix was young"
-HOMEPAGE="http://joeyh.name/code/moreutils/"
+HOMEPAGE="https://joeyh.name/code/moreutils/"
 #SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.gz"
 SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
 
