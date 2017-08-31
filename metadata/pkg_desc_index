@@ -2424,7 +2424,7 @@ app-text/recode 3.6_p20-r1 3.7_pre20140303: Convert files between various charac
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.5: Web-based solution for managing scientific literature, references and citations
 app-text/referencer 1.2.2: Application to organise documents or references, and to generate BibTeX files
-app-text/restview 2.4.0 2.5.2 2.7.0: reStructuredText viewer
+app-text/restview 2.7.0: reStructuredText viewer
 app-text/rfcutil 3.2.3-r2: return all related RFCs based upon a number or a search string
 app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
@@ -7311,7 +7311,7 @@ dev-python/alembic 0.8.10 0.9.3: database migrations tool, written by the author
 dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
-dev-python/aniso8601 1.2.0: A library for parsing ISO 8601 strings
+dev-python/aniso8601 1.2.0 1.2.1: A library for parsing ISO 8601 strings
 dev-python/ansi2html 1.1.1 1.2.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
@@ -7704,7 +7704,7 @@ dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web t
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
 dev-python/flower 0.8.4 0.9.1: Real-time monitor and web admin for Celery distributed task queue
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
-dev-python/fonttools 3.0 3.10.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 3.0 3.10.0 3.15.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.11.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
@@ -12582,7 +12582,7 @@ media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
 media-fonts/quivira 4.0 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
 media-fonts/ricty 3.2.0 3.2.0-r1: A beautiful sans-serif monotype Japanese font designed for code listings
-media-fonts/roboto 2.136: Standard font for Android 4.0 (Ice Cream Sandwich) and later
+media-fonts/roboto 2.136 2.138: Standard font for Android 4.0 (Ice Cream Sandwich) and later
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
 media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
@@ -12938,7 +12938,7 @@ media-libs/fdk-aac 0.1.3 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
 media-libs/flac 1.3.2-r1: free lossless audio encoder and decoder
-media-libs/flickcurl 1.24 1.25 1.26: C library for the Flickr API
+media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 3.75 4.38.00 4.38.02: music and sound effects library, and a sound processing system
 media-libs/fnlib 0.5-r2: Font Library for enlightenment
@@ -14711,7 +14711,7 @@ net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a li
 net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
 net-ftp/scythia 0.9.3_p2: Just a small FTP client
-net-ftp/tftp-hpa 5.2 5.2-r1: port of the OpenBSD TFTP server
+net-ftp/tftp-hpa 5.2-r1: port of the OpenBSD TFTP server
 net-ftp/tlswrap 1.04-r3: FTP wrapper which supports TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
 net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3 3.0.3-r1: Very Secure FTP Daemon written with speed, size and security in mind
