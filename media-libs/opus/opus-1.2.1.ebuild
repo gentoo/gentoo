@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
-HOMEPAGE="http://opus-codec.org/"
+HOMEPAGE="https://opus-codec.org/"
 
 LICENSE="BSD-2"
 SLOT="0"
