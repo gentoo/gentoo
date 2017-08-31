@@ -31,7 +31,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	kde-frameworks/kcmutils:5
+	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/ki18n:5
 	kde-frameworks/kio:5
