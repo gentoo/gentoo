@@ -6,8 +6,8 @@ inherit xdg-utils gnome2-utils autotools
 
 MY_PN=Viewnior
 DESCRIPTION="Fast and simple image viewer"
-HOMEPAGE="https://siyanpanayotov.com/project/viewnior/ https://github.com/xsisqox/Viewnior"
-SRC_URI="https://github.com/xsisqox/${MY_PN}/archive/${P}.tar.gz"
+HOMEPAGE="https://siyanpanayotov.com/project/viewnior/ https://github.com/hellosiyan/Viewnior"
+SRC_URI="https://github.com/hellosiyan/${MY_PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
