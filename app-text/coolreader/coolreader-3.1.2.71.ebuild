@@ -25,19 +25,17 @@ IUSE="qt4 qt5 wxwidgets"
 REQUIRED_USE="^^ ( qt4 qt5 wxwidgets )"
 
 DEPEND="sys-libs/zlib
-	media-libs/libpng
-	virtual/jpeg
+	media-libs/libpng:0
+	virtual/jpeg:0
 	media-libs/freetype
 	wxwidgets? (
-		>=x11-libs/wxGTK-2.8 )
+		|| ( x11-libs/wxGTK:3.0-gtk3 x11-libs/wxGTK:3.0 x11-libs/wxGTK:2.8 ) )
 	qt4? ( dev-qt/qtcore:4
 		dev-qt/qtgui:4 )
 	qt5? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5 )
-	"
-RDEPEND="${DEPEND}
-	media-fonts/corefonts"
+		dev-qt/qtwidgets:5 )"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	# setting patch to save cr3.ini to ~homedir
