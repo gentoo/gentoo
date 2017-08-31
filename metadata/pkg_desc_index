@@ -107,7 +107,7 @@ app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirro
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.5: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.10-r1: Single process stack of various system monitors
-app-admin/glance 13.0.0 14.0.0 14.0.0-r1 2016.2.9999 2017.1.9999 2017.2.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 13.0.0 14.0.0 14.0.0-r1 15.0.0 2016.2.9999 2017.1.9999 2017.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/graylog2 2.1.2 2.2.2 2.2.3: Free and open source log management
 app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
@@ -4766,7 +4766,7 @@ dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for Te
 dev-libs/kproperty 3.0.1 3.0.2: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.1 3.0.2: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 0.10.1 0.12.1 1.0.0 1.1.1 1.1.2: A C++ toolkit
+dev-libs/leatherman 0.10.1 0.12.1 1.0.0 1.1.1 1.1.2 1.2.0: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r2: a fast key-value storage library written at Google
 dev-libs/libFuzzer 3.9.1: A fuzzing library distributed as part of LLVM
@@ -14259,8 +14259,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8 1.9: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8h 1.1.18: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 0.8.8h 1.1.18: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 0.8.8h 1.1.20: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 0.8.8h 1.1.20: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
@@ -17312,7 +17312,7 @@ sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libf
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.01_pre20160307231538 9999: PAM Module for two step verification via mobile platform
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 10.0.3 11.0.3 2016.2.9999 2017.1.9999 2017.2.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 10.0.3 11.0.3 12.0.0 2016.2.9999 2017.1.9999 2017.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.5.1-r2 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
@@ -17481,7 +17481,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.94.9 9.2.1-r2 10.2.3-r2 10.2.7-r1 10.2.8 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 9.1.4 10.0.4 10.0.5 2016.2.9999 2017.1.9999 2017.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 9.1.4 10.0.4 10.0.5 11.0.0 2016.2.9999 2017.1.9999 2017.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
@@ -17505,7 +17505,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for par
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 7.0.5 7.0.6 8.0.3 8.0.4 2016.2.9999 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 7.0.5 7.0.6 8.0.3 8.0.4 9.0.0 2016.2.9999 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -17536,8 +17536,8 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 9.4.0 9.4.1 10.0.2 10.0.3 2016.2.9999 2017.1.9999 2017.2.9999: A virtual network service for Openstack
-sys-cluster/nova 14.0.7 14.0.8 15.0.6 15.0.7 2016.2.9999 2017.1.9999 2017.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/neutron 9.4.0 9.4.1 10.0.2 10.0.3 11.0.0 2016.2.9999 2017.1.9999 2017.2.9999: A virtual network service for Openstack
+sys-cluster/nova 14.0.7 14.0.8 15.0.6 15.0.7 16.0.0 2016.2.9999 2017.1.9999 2017.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
