@@ -1,0 +1,25 @@
+From 188dce32ea9c58271c8ce48ab02a3b255498bf9f Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 4 Feb 2017 05:08:47 +0200
+Subject: [PATCH] build: allow specify additional CFLAGS
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index cb9884c..827a78a 100644
+--- a/makefile
++++ b/makefile
+@@ -90,7 +90,7 @@ DYLIBNAME = lib$(PROJ).$(MAJ).$(MIN).dylib
+ # Further cc flags are gathered dynamically at runtime via the ccopts.sh
+ # script.
+ 
+-CFLAGS		= -c -D__UNIX__ -DNDEBUG -I.
++CFLAGS		= -c -D__UNIX__ -DNDEBUG -I. $(EXTRA_CFLAGS)
+ CFLAGS_ANALYSE = -c -D__UNIX__ -I.
+ CFLAGS_COVERAGE = -c -D__UNIX__ -I. -ggdb3 -fno-omit-frame-pointer -O1 --coverage -fprofile-arcs -ftest-coverage
+ CFLAGS_DEBUG = -c -D__UNIX__ -I. -ggdb3 -fno-omit-frame-pointer -O0
+-- 
+2.10.2
