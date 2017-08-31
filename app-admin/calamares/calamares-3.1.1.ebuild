@@ -35,7 +35,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/boost-1.55:=[${PYTHON_USEDEP}]
 	sys-apps/dbus
 	sys-apps/dmidecode
-	sys-auth/polkit-qt[qt5]
+	sys-auth/polkit-qt[qt5(+)]
 	>=sys-libs/kpmcore-3.0.3:5=
 	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_USEDEP}] )
 "
