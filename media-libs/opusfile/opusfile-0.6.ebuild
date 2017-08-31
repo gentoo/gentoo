@@ -4,8 +4,8 @@
 EAPI=5
 
 DESCRIPTION="A high-level decoding and seeking API for .opus files"
-HOMEPAGE="http://www.opus-codec.org/"
-SRC_URI="http://downloads.xiph.org/releases/opus/${P}.tar.gz"
+HOMEPAGE="https://www.opus-codec.org/"
+SRC_URI="https://downloads.xiph.org/releases/opus/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
