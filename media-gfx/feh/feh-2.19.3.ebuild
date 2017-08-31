@@ -5,8 +5,8 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A fast, lightweight imageviewer using imlib2"
-HOMEPAGE="http://feh.finalrewind.org/"
-SRC_URI="http://feh.finalrewind.org/${P}.tar.bz2"
+HOMEPAGE="https://feh.finalrewind.org/"
+SRC_URI="https://feh.finalrewind.org/${P}.tar.bz2"
 
 LICENSE="feh"
 SLOT="0"
