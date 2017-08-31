@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit fdo-mime gnome2-utils autotools
+inherit xdg-utils gnome2-utils autotools
 
 MY_PN=Viewnior
 DESCRIPTION="Fast and simple image viewer"
@@ -23,11 +23,12 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_PN}-${P}
 
 src_prepare() {
+	default
+
 	# fix for bug #454230
 	sed -r -i "s:(PKG_CHECK_MODULES):AC_CHECK_LIB([m],[cos])\n\n\1:" configure.ac
 
 	eautoreconf
-	default
 }
 
 pkg_preinst() {
@@ -35,11 +36,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
