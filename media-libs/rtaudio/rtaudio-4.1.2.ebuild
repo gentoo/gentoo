@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils autotools
 
 DESCRIPTION="A set of cross-platform C++ classes for realtime audio I/O"
-HOMEPAGE="http://www.music.mcgill.ca/~gary/rtaudio/"
-SRC_URI="http://www.music.mcgill.ca/~gary/${PN}/release/${P}.tar.gz"
+HOMEPAGE="https://www.music.mcgill.ca/~gary/rtaudio/"
+SRC_URI="https://www.music.mcgill.ca/~gary/${PN}/release/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
