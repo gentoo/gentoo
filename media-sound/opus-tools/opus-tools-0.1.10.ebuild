@@ -5,15 +5,15 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Royalty-free, highly versatile audio codec"
-HOMEPAGE="http://opus-codec.org/"
+HOMEPAGE="https://opus-codec.org/"
 
 if [[ ${PV} == *9999 ]] ; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.opus-codec.org/${PN}.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.xiph.org/opus-tools.git"
 elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
 	SRC_URI="https://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
 else # Official release
-	SRC_URI="http://downloads.xiph.org/releases/opus/${P}.tar.gz"
+	SRC_URI="https://downloads.xiph.org/releases/opus/${P}.tar.gz"
 fi
 
 LICENSE="BSD-2"
