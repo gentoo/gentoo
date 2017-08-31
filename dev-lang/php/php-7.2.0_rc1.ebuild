@@ -7,7 +7,7 @@ inherit flag-o-matic versionator systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="http://php.net/"
-SRC_URI="https://downloads.php.net/~remi/${P/_/}.tar.xz"
+SRC_URI="https://downloads.php.net/~remi/php-7.2.0RC1.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -20,7 +20,7 @@ LICENSE="PHP-3.01
 SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
-S="${WORKDIR}/${P/_/}"
+S="${WORKDIR}/php-7.2.0RC1"
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
 
