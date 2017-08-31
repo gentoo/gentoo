@@ -5,8 +5,8 @@ EAPI=6
 inherit eutils multilib savedconfig toolchain-funcs
 
 DESCRIPTION="simple terminal implementation for X"
-HOMEPAGE="http://st.suckless.org/"
-SRC_URI="http://dl.suckless.org/st/${P}.tar.gz"
+HOMEPAGE="https://st.suckless.org/"
+SRC_URI="https://dl.suckless.org/st/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"

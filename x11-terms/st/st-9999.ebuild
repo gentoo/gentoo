@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils git-r3 multilib savedconfig toolchain-funcs
 
 DESCRIPTION="simple terminal implementation for X"
-HOMEPAGE="http://st.suckless.org/"
+HOMEPAGE="https://st.suckless.org/"
 EGIT_REPO_URI="git://git.suckless.org/st"
 
 LICENSE="MIT-with-advertising"
