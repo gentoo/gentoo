@@ -99,6 +99,7 @@ src_configure() {
 		-DWITH_ALSA=$(usex alsa)
 		-DWITH_CLIENT=$(usex client)
 		-DWITH_CUPS=$(usex cups)
+		-DWITH_CCACHE=OFF
 		-DWITH_DEBUG_ALL=$(usex debug)
 		-DWITH_MANPAGES=$(usex doc)
 		-DWITH_FFMPEG=$(usex ffmpeg)
