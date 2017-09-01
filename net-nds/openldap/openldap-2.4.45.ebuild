@@ -873,7 +873,7 @@ pkg_postinst() {
 	if has_version 'net-nds/openldap[-minimal]' && ((${OPENLDAP_PRINT_MESSAGES})); then
 		elog "Getting started using OpenLDAP? There is some documentation available:"
 		elog "Gentoo Guide to OpenLDAP Authentication"
-		elog "(https://www.gentoo.org/doc/en/ldap-howto.xml)"
+		elog "(https://wiki.gentoo.org/wiki/Centralized_authentication_using_OpenLDAP)"
 		elog "---"
 		elog "An example file for tuning BDB backends with openldap is"
 		elog "DB_CONFIG.fast.example in /usr/share/doc/${PF}/"
