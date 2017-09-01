@@ -32,6 +32,7 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}
 	sys-apps/groff
+	virtual/pkgconfig
 	test? ( sys-process/time )"
 
 PATCHES=( "${FILESDIR}"/${P}-cflags.patch )
