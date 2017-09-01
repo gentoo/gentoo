@@ -574,7 +574,7 @@ git-r3_fetch() {
 	for r in "${repos[@]}"; do
 		if [[ ${r} == git:* || ${r} == http:* ]]; then
 			ewarn "git-r3: ${r%%:*} protocol is completely unsecure and may render the ebuild"
-			ewarn "easily suspectible to MITM attacks (even if used only as fallback). Please"
+			ewarn "easily susceptible to MITM attacks (even if used only as fallback). Please"
 			ewarn "use https instead."
 			ewarn "[URI: ${r}]"
 		fi
