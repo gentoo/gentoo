@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="A library that provides top functionality to applications"
 HOMEPAGE="https://git.gnome.org/browse/libgtop"
@@ -23,6 +23,9 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	# Add explicit stdc, bug #628256
+	append-cflags "-std=c99"
+
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable introspection)
