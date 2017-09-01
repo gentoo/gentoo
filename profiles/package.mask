@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (1 Sep 2017)
+# vulnerable per bug #513818 and dead upstream
+# net-analyzer/ntopng is available
+net-analyzer/ntop
+
 # Michael Orlitzky <mjo@gentoo.org> (30 Aug 2017)
 # Ownership of most installed files has changed; needs testing.
 =net-analyzer/nagios-core-4.3.4
