@@ -26,7 +26,7 @@ nongnu		http://download.savannah.nongnu.org/releases/ http://ftp.cc.uoc.gr/mirro
 openbsd		https://mirrors.evowise.com/pub/OpenBSD/
 openssl		ftp://ftp.openssl.org ftp://ftp.linux.hr/pub/openssl/ http://artfiles.org/openssl.org/ ftp://ftp.pca.dfn.de/pub/tools/net/openssl/ ftp://guest.kuria.katowice.pl/pub/openssl/ ftp://ftp.fi.muni.cz/pub/openssl/ http://openssl.skazkaforyou.com/
 opera		ftp://ftp.opera.com/pub/opera ftp://ftp.tu-cottbus.de/pub/net/opera ftp://ftp.task.gda.pl/pub/opera ftp://ftp.ntua.gr/pub/www/Opera ftp://ftp.rediris.es/mirror/opera ftp://ftp.heanet.ie/pub/opera
-postgresql	http://ftp.postgresql.org/pub/ ftp://ftp.postgresql.org/pub/
+postgresql	https://ftp.postgresql.org/pub/
 pypi		https://pypi.python.org/packages/source https://files.pythonhosted.org/packages/source
 qmail		http://www.qmail.org/ http://qmail.geto.net/ http://qmail-mirror.jms1.net/ http://qmail.pandakc.com/ http://qmail.mirrors.auchnet.org/ http://qmail.glasswings.com.au/ http://qmail.ii.net/ http://infobase.ibase.com.hk/qmail/ http://qmail.morva.net/ http://qmail.teraren.com/ http://qmail.mirror.cdnetworks.com/ http://qmail.yongbok.net/ http://qmail.mirror.choon.net/ http://qmail.cbox.biz/ http://qmail.cbox.biz/ http://qmail.mirrors.ovh.net/ftp.qmail.org/ http://qmail.rasjonell.net/ http://qmail.europnews.de/ http://qmail.kendzorra.org/ http://qmail.mirror.gsnw.org/ http://mirrors.ntua.gr/qmail/ http://qmail.cti.gr/ http://qmail.dnsbeans.com/ http://qmail.hypergrid.it/ http://qmail.omnis.ch/ http://qmail.linorg.usp.br/ http://qmail.cavsystems.net/ http://qmail.mivzakim.net/ http://qmail.mirror.rise.ph/
 quakeunity	http://www.mirrorservice.org/sites/quakeunity.com
