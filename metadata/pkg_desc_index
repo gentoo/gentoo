@@ -5305,7 +5305,7 @@ dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unita
 dev-ml/ocaml-extunix 0.1.4 0.1.5: Thin bindings to various low-level system APIs
 dev-ml/ocaml-fileutils 0.5.1 0.5.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.5-r1 0.3.7: Provides support for internationalization of OCaml program
-dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
+dev-ml/ocaml-hashcons 1.2 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0 6.39.0: Generic O'Caml Makefile for GNU Make
@@ -9167,6 +9167,8 @@ dev-ros/image_publisher 1.12.19 1.12.20 9999: Publish an image stream from singl
 dev-ros/image_rotate 1.12.19 1.12.20 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Transparent support for transporting images in low-bandwidth compressed formats
 dev-ros/image_view 1.12.19 1.12.20 9999: Simple viewer for ROS image topics
+dev-ros/imu_complementary_filter 1.1.5 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
+dev-ros/imu_filter_madgwick 1.1.5 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_processors 0.2.1 0.2.2 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 0.2.2 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutorials
@@ -9241,14 +9243,14 @@ dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.14.0 1.14.2 1.15.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.13.5 9999: Package for publishing the state of a robot to tf
-dev-ros/rosapi 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
+dev-ros/rosapi 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 0.8.1 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.13.0 1.13.1 1.13.2 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_storage 1.13.0 1.13.1 1.13.2 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.14.0 1.14.1 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.14.0 1.14.1 9999: Tool for determining cflags/lflags/etc. of boost on your system
-dev-ros/rosbridge_library 0.7.15 0.7.16 0.7.17 9999: Core rosbridge package responsible for interpreting JSON and performing the appropriate ROS action
-dev-ros/rosbridge_server 0.7.13-r2 0.7.14 0.7.15 0.7.16 0.7.17 9999: A WebSocket interface to rosbridge
+dev-ros/rosbridge_library 0.7.15 0.7.16 0.7.17 0.8.1 9999: Core rosbridge package responsible for interpreting JSON and performing the appropriate ROS action
+dev-ros/rosbridge_server 0.7.13-r2 0.7.14 0.7.15 0.7.16 0.7.17 0.8.1 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.14.0 1.14.1 9999: Cleanup filesystem resources (e.g. log files)
 dev-ros/rosconsole 1.12.5 1.12.6 1.12.7 1.13.0 1.13.1 1.13.2 9999: ROS console output library
@@ -9327,6 +9329,7 @@ dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.7 0.4.8 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
 dev-ros/rviz 1.12.11 1.12.13 9999: 3D visualization tool for ROS
+dev-ros/rviz_imu_plugin 1.1.5 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.10.1-r2 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 9999: Robot self-test node
@@ -13187,7 +13190,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 2.4.13-r1 3.1.0-r6 3.1.0-r7 3.1.0-r8 3.2.0 3.2.0-r2 3.2.0-r3: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13 2.4.13-r2 3.1.0-r8 3.2.0-r2 3.2.0-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -15875,6 +15878,7 @@ ros-meta/image_common 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Common 
 ros-meta/image_pipeline 1.12.19 1.12.20 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 0.2.2 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
+ros-meta/imu_tools 1.1.5 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.15.1 9999: 2D navigation stack
@@ -15891,7 +15895,7 @@ ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.
 ros-meta/ros_control 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.2.0 1.3.0 1.3.1 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
-ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: JSON API to ROS functionality for non-ROS programs
+ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 0.8.1 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.3.2 0.5.0 9999: Qt-based framework for GUI development for ROS
@@ -19164,7 +19168,6 @@ x11-plugins/vicious 2.1.3 2.2.0: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r2: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmDownload 0.1.2a-r1 0.1.2a-r2: dockapp that displays how much data you've received on each eth and ppp device
 x11-plugins/wmMatrix 0.2-r1: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
-x11-plugins/wmMoonClock 1.27-r1: dockapp that shows lunar ephemeris to a high accuracy
 x11-plugins/wmSMPmon 3.1-r1: SMP system monitor dockapp
 x11-plugins/wmSpaceWeather 1.04_p19: dockapp showing weather at geosynchronous orbit
 x11-plugins/wmSun 1.03-r1 1.05: dockapp which displays the rise/set time of the sun
@@ -19230,10 +19233,11 @@ x11-plugins/wmmemload 0.1.6 0.1.6-r1 0.1.7 0.1.8: dockapp that displays memory a
 x11-plugins/wmmemmon 1.0.2_pre2: a dockapp for monitoring memory and swap
 x11-plugins/wmmenu 1.3-r1: a popup menu of icons like in AfterStep, as a dockapp
 x11-plugins/wmmisc 1.1: a monitoring dockapp for system load, user amount, fork amount and processes
-x11-plugins/wmmixer 1.7: A mixer designed for WindowMaker
+x11-plugins/wmmixer 1.7 1.8: A mixer designed for WindowMaker
 x11-plugins/wmmldonkey 0.003-r1: wmmsg is a dockapp to show the up and downloadrate from your mldonkey
-x11-plugins/wmmon 1.0_beta2-r3 1.2_beta1: Dockable system resources monitor applet for WindowMaker
+x11-plugins/wmmon 1.2_beta1 1.3: Dockable system resources monitor applet for WindowMaker
 x11-plugins/wmmon+smp 1.0-r2: Dockapp CPU monitor resembling Xosview, support for smp
+x11-plugins/wmmoonclock 1.27-r1 1.29: dockapp that shows lunar ephemeris to a high accuracy
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
 x11-plugins/wmmp3 0.12: Mp3 player dock app for WindowMaker; frontend to mpg123
 x11-plugins/wmmsg 1.0.1 1.0.1-r1 1.0.1-r2: universal visual notification dockapp

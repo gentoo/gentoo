@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xproto x11-proto/xextproto
+DESCRIPTION=dockapp that shows lunar ephemeris to a high accuracy
+EAPI=6
+HOMEPAGE=http://www.dockapps.net/wmmoonclock
+KEYWORDS=~amd64 ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=http://www.dockapps.net/download/wmmoonclock-1.29.tar.gz
+_eclass_exported_funcs=-
+_md5_=40d0c10d216cf38471b964d8c838f86e
