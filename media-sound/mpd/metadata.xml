@@ -35,6 +35,7 @@
     <flag name="soundcloud">Build plugin to access soundcloud</flag>
     <flag name="systemd">Enable support for systemd socket activation</flag>
     <flag name="twolame">Support twolame MPEG-2 encoding</flag>
+    <flag name="webdav">Enable using music from a WebDAV share</flag>
     <flag name="wildmidi">Enable MIDI support via wildmidi</flag>
     <flag name="zip">Support for ZIP files</flag>
   </use>

@@ -17,7 +17,7 @@ IUSE="adplug +alsa ao audiofile bzip2 cdio +curl debug +eventfd expat faad
 	lame mms libav libmpdclient libsamplerate libsoxr +mad mikmod modplug
 	mpg123 musepack +network nfs ogg openal opus oss pipe pulseaudio recorder
 	samba selinux sid +signalfd sndfile soundcloud sqlite systemd tcpd twolame
-	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib"
+	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib webdav"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio recorder"
 DECODER_PLUGINS="adplug audiofile faad ffmpeg flac fluidsynth mad mikmod
@@ -31,6 +31,7 @@ REQUIRED_USE="
 	recorder? ( || ( ${ENCODER_PLUGINS} ) )
 	opus? ( ogg )
 	upnp? ( expat )
+	webdav? ( curl expat )
 "
 
 CDEPEND="!<sys-cluster/mpich2-1.4_rc2
@@ -220,6 +221,7 @@ src_configure() {
 		$(use_enable wildmidi)
 		$(use_enable zip zzip)
 		$(use_enable icu)
+		$(use_enable webdav)
 		$(use_enable faad aac)
 		$(use_with zeroconf zeroconf avahi)
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
