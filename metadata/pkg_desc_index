@@ -195,7 +195,7 @@ app-admin/rsyslog 8.19.0 8.24.0-r2 8.25.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.29.0: 
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.10 2015.8.13 2015.8.13-r1 2016.3.7 2016.11.7 2017.7.0 9999: Salt is a remote execution and configuration manager
-app-admin/serf 0.8.0 0.8.1: Service orchestration and management tool
+app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 3.3.8-r7 4.0.1 4.1.0 4.1.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/sshguard 1.7.1 2.0.0: protects hosts from brute force attacks against ssh
@@ -5047,7 +5047,7 @@ dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qrosscore 0.3.2 9999: KDE-free version of Kross (core libraries and Qt Script backend)
 dev-libs/qrosspython 0.3.2 9999: Python scripting backend for Qross
-dev-libs/qtkeychain 0.7.0: Qt API for storing passwords securely
+dev-libs/qtkeychain 0.7.0 0.8.0: Qt API for storing passwords securely
 dev-libs/quantlib 1.6 1.7.1: A comprehensive software framework for quantitative finance
 dev-libs/quazip 0.7.2-r1 0.7.3: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/rapidjson 1.1.0 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
@@ -15436,7 +15436,7 @@ net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: r
 net-misc/snarf 7.0-r3: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.1 1.7.3.2 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
-net-misc/sock 1.1: A shell interface to network sockets
+net-misc/sock 1.1 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.1.0 1.2.0: A daemon that spawns one command per connection, and dampens connection bursts
 net-misc/spice-gtk 0.33-r2 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
@@ -17361,7 +17361,7 @@ sys-auth/pambase 20101024-r2 20120417-r3 20140313 20150213 20150213-r1: PAM base
 sys-auth/passwdqc 1.3.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.113 0.113-r4: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
-sys-auth/polkit-qt 0.112.0-r1 0.112.0_p20160416: PolicyKit Qt4 API wrapper library
+sys-auth/polkit-qt 0.112.0-r1 0.112.0_p20160416-r1: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r1 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
@@ -17506,7 +17506,7 @@ sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
 sys-cluster/galera 25.3.20 25.3.21: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
-sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2: Networking middleware for partitioned global address space (PGAS) language
+sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
@@ -17984,7 +17984,7 @@ sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.2 2.3.0: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5 2.10 2.11 2.11.1 2.12 2.12.1: utility to checkpoint/restore a process tree
+sys-process/criu 2.5 2.10 2.11 2.11.1 2.12 2.12.1 3.4: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
