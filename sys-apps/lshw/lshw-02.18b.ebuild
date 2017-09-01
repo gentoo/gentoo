@@ -13,8 +13,8 @@ MIN_PV=${MIN_PVE/b/B}
 
 MY_P="$PN-$MIN_PV.$MAJ_PV"
 DESCRIPTION="Hardware Lister"
-HOMEPAGE="http://ezix.org/project/wiki/HardwareLiSter"
-SRC_URI="http://ezix.org/software/files/${MY_P}.tar.gz"
+HOMEPAGE="https://www.ezix.org/project/wiki/HardwareLiSter"
+SRC_URI="https://www.ezix.org/software/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
