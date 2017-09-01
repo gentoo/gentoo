@@ -8,6 +8,5 @@
   <upstream>
     <remote-id type="pypi">pexpect</remote-id>
     <remote-id type="github">pexpect/pexpect</remote-id>
-    <remote-id type="sourceforge">pexpect</remote-id>
   </upstream>
 </pkgmetadata>
