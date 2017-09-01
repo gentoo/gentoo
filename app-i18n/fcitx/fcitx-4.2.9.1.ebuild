@@ -25,7 +25,8 @@ KEYWORDS="amd64 hppa ppc ppc64 x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
-RDEPEND="sys-apps/dbus
+RDEPEND="dev-libs/glib:2
+	sys-apps/dbus
 	virtual/libiconv
 	virtual/libintl
 	x11-libs/libxkbcommon
@@ -37,25 +38,15 @@ RDEPEND="sys-apps/dbus
 		xml? ( x11-libs/libxkbfile )
 	)
 	cairo? (
-		dev-libs/glib:2
 		x11-libs/cairo[X]
 		x11-libs/libXext
 		pango? ( x11-libs/pango )
 		!pango? ( media-libs/fontconfig )
 	)
 	enchant? ( app-text/enchant )
-	gtk2? (
-		dev-libs/glib:2
-		x11-libs/gtk+:2
-	)
-	gtk3? (
-		dev-libs/glib:2
-		x11-libs/gtk+:3
-	)
-	introspection? (
-		dev-libs/glib:2
-		dev-libs/gobject-introspection
-	)
+	gtk2? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
+	introspection? ( dev-libs/gobject-introspection )
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:= )
@@ -105,7 +96,6 @@ src_configure() {
 		-DENABLE_ENCHANT=$(usex enchant)
 		-DENABLE_GETTEXT=$(usex nls)
 		-DENABLE_GIR=$(usex introspection)
-		-DENABLE_GLIB2=$(if use cairo || use gtk2 || use gtk3 || use introspection; then echo yes; else echo no; fi)
 		-DENABLE_GTK2_IM_MODULE=$(usex gtk2)
 		-DENABLE_GTK3_IM_MODULE=$(usex gtk3)
 		-DENABLE_LIBXML2=$(usex xml)
