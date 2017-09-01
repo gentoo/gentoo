@@ -19,11 +19,10 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/libatasmart-0.19
 	>=sys-auth/polkit-0.110
-	sys-libs/libblockdev[lvm?]
+	sys-libs/libblockdev[crypt,lvm?]
 	>=virtual/libgudev-165:=
 	virtual/udev
 	acl? ( virtual/acl )
-	cryptsetup? ( sys-libs/libblockdev[crypt] )
 	elogind? ( >=sys-auth/elogind-219 )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	lvm? ( sys-fs/lvm2 )
