@@ -3984,7 +3984,7 @@ dev-java/colt 1.2.0-r3: Java Libraries for High Performance Scientific and Techn
 dev-java/commons-beanutils 1.9.2: Provides easy-to-use wrappers around Reflection and Introspection APIs
 dev-java/commons-betwixt 0.8: Introspective Bean to XML mapper
 dev-java/commons-chain 1.2: API exposing the Chain of Responsability design pattern - by the ASF
-dev-java/commons-cli 1.2 1.3.1: A Java library for working with the command line arguments and options
+dev-java/commons-cli 1.3.1 1.4: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7: Implementations of common encoders and decoders in Java
 dev-java/commons-collections 3.2.1-r1 4.1: Extends the JCF classes with new interfaces, implementations and utilities
 dev-java/commons-compress 1.10: Java API for working with archive files
@@ -8021,7 +8021,7 @@ dev-python/mygpoclient 1.7-r1: A gpodder.net client library
 dev-python/mypy 0.4.3 0.4.4 0.4.5: Optional static typing for Python
 dev-python/mysql-connector-python 2.1.4: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1: Python interface to MySQL
-dev-python/mysqlclient 1.3.10: Fork of MySQL-python
+dev-python/mysqlclient 1.3.10 1.3.12: Fork of MySQL-python
 dev-python/nagiosplugin 1.2.3 1.2.4: A class library for writing nagios-compatible plugins
 dev-python/naima 0.8-r1: Python package for gamma-ray astronomy
 dev-python/namespace-google 1: Namespace package declaration for google
@@ -10322,7 +10322,7 @@ dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 0.7.0 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.17.8 2.17.9: Perl script to check for commonly used bash features not defined by POSIX
-dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
+dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
