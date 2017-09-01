@@ -16,9 +16,11 @@ SRC_URI="
 	x86?   ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-ia32.tar.gz )
 "
 
-LICENSE="Apache-2.0 GPL v2+ LGPL-2.1+ MIT"
+LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+RDEPEND="gnome-base/gconf:2"
 
 S="${WORKDIR}/mattermost-desktop-${PV}"
 
@@ -40,7 +42,7 @@ src_install() {
 	exeinto "/opt/${MY_PN}"
 	doexe *.so "${MY_PN}"
 
-	dosym "../../opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "../../opt/${MY_PN}/${MY_PN}" "/opt/bin/${MY_PN}"
 
 	newicon "${S}/icon.png" "${MY_PN}.png"
 	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
