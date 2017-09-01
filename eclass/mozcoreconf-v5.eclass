@@ -252,10 +252,7 @@ mozconfig_final() {
 
 	# Apply EXTRA_ECONF entries to .mozconfig
 	if [[ -n ${EXTRA_ECONF} ]]; then
-		IFS=\! read -a ac <<<${EXTRA_ECONF// --/\!}
-		for opt in "${ac[@]}"; do
-			mozconfig_annotate "EXTRA_ECONF" --${opt#--}
-		done
+		mozconfig_annotate "EXTRA_ECONF" "${EXTA_ECONF}"
 	fi
 
 	echo
