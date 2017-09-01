@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples test"
 
-RDEPEND="virtual/python-enum34
-	>=dev-python/greenlet-0.3[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/greenlet-0.3[${PYTHON_USEDEP}]
+	virtual/python-enum34[${PYTHON_USEDEP}]"
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
 		>=dev-python/python-docs-2.7.6-r1:2.7 )
 	test? ( ${RDEPEND}
@@ -25,6 +25,9 @@ DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
+	# provided by virtual/python-enum34
+	sed -i '/enum-compat/d' setup.py || die
+
 	if use doc; then
 		local PYTHON_DOC_ATOM=$(best_version --host-root dev-python/python-docs:2.7)
 		local PYTHON_DOC_VERSION="${PYTHON_DOC_ATOM#dev-python/python-docs-}"
