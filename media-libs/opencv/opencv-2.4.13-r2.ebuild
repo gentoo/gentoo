@@ -87,8 +87,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.4.9-cuda-pkg-config.patch"
 	"${FILESDIR}/${PN}-3.0.0-gles.patch"
 	"${FILESDIR}/${P}-gcc-6.0.patch"
+	"${FILESDIR}/${P}-imgcodecs-refactoring.patch" #bug 627958
 )
-#"${FILESDIR}/${P}-git-autodetect.patch
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
