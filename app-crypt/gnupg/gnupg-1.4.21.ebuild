@@ -106,7 +106,7 @@ pkg_postinst() {
 #		ewarn "Further info available at http://alumnes.eps.udl.es/%7Ed4372211/index.en.html"
 #	fi
 	elog
-	elog "See https://www.gentoo.org/doc/en/gnupg-user.xml for documentation on gnupg"
+	elog "See https://wiki.gentoo.org/wiki/GnuPG for documentation on gnupg"
 	elog
 	elog "If you wish to view images emerge:"
 	elog "media-gfx/xloadimage, media-gfx/xli or any other viewer"
