@@ -8409,7 +8409,7 @@ dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyringe 1.0.2: Debugger capable of attaching and injecting code
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
 dev-python/pyroma 1.7: Test project's packaging friendliness
-dev-python/pyroute2 0.4.12 0.4.18: A pure Python netlink and Linux network configuration library.
+dev-python/pyroute2 0.4.12 0.4.20: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.12.0 0.12.1: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r2: Python library to produce RTF documents
