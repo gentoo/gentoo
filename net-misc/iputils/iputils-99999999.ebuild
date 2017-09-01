@@ -1,22 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# For released versions, we precompile the man/html pages and store
-# them in a tarball on our mirrors.  This avoids ugly issues while
-# building stages, and when the jade/sgml packages are broken (which
-# seems to be more common than would be nice).
-# Required packages for doc generation:
-# app-text/docbook-sgml-utils
-
-EAPI=5
+EAPI=6
 
 inherit flag-o-matic eutils toolchain-funcs fcaps
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/iputils/iputils/archive/s${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~polynomial-c/iputils-s${PV}-manpages.tar.xz"
+	SRC_URI="https://github.com/iputils/iputils/archive/s${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux"
 fi
 
@@ -43,15 +35,12 @@ RDEPEND="arping? ( !net-misc/arping )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
-	virtual/os-headers"
-if [[ ${PV} == "99999999" ]] ; then
-	DEPEND+="
-		app-text/openjade
-		dev-perl/SGMLSpm
-		app-text/docbook-sgml-dtd
-		app-text/docbook-sgml-utils
-	"
-fi
+	virtual/os-headers
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt:0
+"
 
 REQUIRED_USE="ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )"
 
@@ -99,9 +88,7 @@ src_compile() {
 		TARGETS="${TARGETS[*]}" \
 		${myconf[@]}
 
-	if [[ ${PV} == "99999999" ]] ; then
-		emake html man
-	fi
+	emake html man
 }
 
 src_install() {
@@ -147,7 +134,7 @@ src_install() {
 		newconfd "${FILESDIR}"/rarpd.conf.d rarpd
 	fi
 
-	dodoc INSTALL.md RELNOTES
+	dodoc INSTALL.md
 
 	use doc && dohtml doc/*.html
 }
