@@ -198,7 +198,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	if use !compute-only; then
-		for svc in api cert conductor consoleauth network scheduler spicehtml5proxy xvpvncproxy; do
+		for svc in api conductor consoleauth network scheduler spicehtml5proxy xvpvncproxy; do
 			newinitd "${FILESDIR}/nova.initd" "nova-${svc}"
 		done
 	fi
