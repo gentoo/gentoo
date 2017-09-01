@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1
+inherit ltprune python-single-r1
 
 DESCRIPTION="tools and bindings for kernel evdev device emulation, data capture, and replay"
 HOMEPAGE="https://www.freedesktop.org/wiki/Evemu/"
