@@ -9,11 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python module for spawning child applications and responding to expected patterns"
-HOMEPAGE="
-	http://pexpect.sourceforge.net/
-	https://pypi.python.org/pypi/pexpect/
-	https://github.com/pexpect/pexpect/
-"
+HOMEPAGE="https://pexpect.readthedocs.io/ https://pypi.python.org/pypi/pexpect/ https://github.com/pexpect/pexpect/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
