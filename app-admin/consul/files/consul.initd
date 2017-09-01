@@ -5,35 +5,23 @@
 description="consul agent"
 extra_started_commands="reload"
 export GOMAXPROCS=${GOMAXPROCS:-2}
-group=${group:-${SVCNAME}}
-pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
-user=${user:-${SVCNAME}}
-
-command="/usr/bin/${SVCNAME}"
+group=${group:-${RC_SVCNAME}}
+user=${user:-${RC_SVCNAME}}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+command="/usr/bin/${RC_SVCNAME}"
 command_args="agent ${command_args:-config-dir=/etc/consul.d}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
-	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
-	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+stopsig="SIGINT"
 
 depend() {
 	need net
-	after net
 }
 
 reload() {
-	ebegin "Reloading ${SVCNAME}"
+	ebegin "Reloading ${RC_SVCNAME}"
 	${command} reload
-	eend $?
-}
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
-}
-
-stop() {
-	# SIGINT is required for graceful shutdown of consul agent
-	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --signal SIGINT --pidfile "${pidfile}"
 	eend $?
 }
