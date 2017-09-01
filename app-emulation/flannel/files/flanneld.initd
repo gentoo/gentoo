@@ -3,11 +3,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 description="Flannel Network Fabric for Containers"
-pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
 user=${user:-root}
 group=${group:-root}
 
-command="/usr/bin/${SVCNAME}"
+command="/usr/bin/${RC_SVCNAME}"
 command_args="${command_args}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
@@ -16,9 +16,4 @@ start_stop_daemon_args="--user ${user} --group ${group} \
 
 depend() {
 	need net
-	after net
-}
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
 }
