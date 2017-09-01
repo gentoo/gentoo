@@ -120,13 +120,27 @@ pkg_postinst() {
 	einfo "As Growl is not the default notification system on Gentoo, we disable it."
 
 	local replacing
+	local major
+	local minor
 	for replacing in ${REPLACING_VERSIONS}; do
-		if [ "$(get_major_version ${replacing})" == "1" ]; then
+		major=$(get_major_version ${replacing})
+		minor=$(get_version_component_range 2 ${replacing})
+
+		if [ "${major}" == "1" ]; then
 			ewarn
 			ewarn "Upgrading to ${PN}-2.x.y converts schedule items to a format"
 			ewarn "that is not compatible with earlier ${PN}-1.x.y releases."
 			ewarn
 			break
+		elif [ "${major}" == "2" ] && [ ${minor} -lt 2 ]; then
+			ewarn
+			ewarn "Due to changes in this release, the queue will be converted when ${PN}"
+			ewarn "is started for the first time. Job order, settings and data will be"
+			ewarn "preserved, but all jobs will be unpaused and URLs that did not finish"
+			ewarn "fetching before the upgrade will be lost!"
+			ewarn
+			break
 		fi
+
 	done
 }
