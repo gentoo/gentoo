@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -150,7 +150,7 @@ pkg_postinst() {
 	elog 'Documentation is available in the genkernel manual page'
 	elog 'as well as the following URL:'
 	echo
-	elog 'https://www.gentoo.org/doc/en/genkernel.xml'
+	elog 'https://wiki.gentoo.org/wiki/Genkernel'
 	echo
 	ewarn "This package is known to not work with reiser4.  If you are running"
 	ewarn "reiser4 and have a problem, do not file a bug.  We know it does not"
