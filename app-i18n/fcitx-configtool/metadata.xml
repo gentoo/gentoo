@@ -13,6 +13,6 @@
 		<flag name="gtk3">Use GTK+3 instead of 2</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">fcitx</remote-id>
+		<remote-id type="github">fcitx/fcitx-configtool</remote-id>
 	</upstream>
 </pkgmetadata>
