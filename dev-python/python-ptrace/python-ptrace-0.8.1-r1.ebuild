@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)"
-HOMEPAGE="https://bitbucket.org/haypo/python-ptrace/ https://pypi.python.org/pypi/python-ptrace"
+HOMEPAGE="https://github.com/haypo/python-ptrace/ https://pypi.python.org/pypi/python-ptrace"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

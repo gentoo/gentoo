@@ -1,0 +1,45 @@
+--- a/test/MakerDialogBackend-test.c
++++ b/test/MakerDialogBackend-test.c
+@@ -126,7 +126,7 @@
+ void backup_key_to_g_value(const gchar * key, GType gType, GValue * value)
+ {
+     g_value_init(value, gType);
+-    backend_command_get_key_value(key, value);
++    mkdg_backend_read(backend, value, QUOTE_ME(PROJECT_SCHEMA_SECTION), key, NULL);
+ }
+ 
+ void change_new_value_from_orig_value(GValue * newValue,
+@@ -169,7 +169,7 @@
+ {
+     GValue storedGValue = { 0 };
+     g_value_init(&storedGValue, G_VALUE_TYPE(newValue));
+-    backend_command_get_key_value(key, &storedGValue);
++    mkdg_backend_read(backend, &storedGValue, QUOTE_ME(PROJECT_SCHEMA_SECTION), key, NULL);
+     g_assert(mkdg_g_value_is_equal(newValue, &storedGValue));
+     g_value_unset(&storedGValue);
+ }
+@@ -219,7 +219,7 @@
+ #define GCONF_KEY "max-chi-symbol-len"
+     GValue origValue = { 0 };
+     g_value_init(&origValue, G_TYPE_BOOLEAN);
+-    backend_command_get_key_value(GCONF_KEY, &origValue);
++    mkdg_backend_read(backend, &origValue, QUOTE_ME(PROJECT_SCHEMA_SECTION), GCONF_KEY, NULL);
+ 
+     GValue newValue = { 0 };
+     g_value_init(&newValue, G_TYPE_BOOLEAN);
+@@ -229,13 +229,13 @@
+ 
+     GValue storedValue = { 0 };
+     g_value_init(&storedValue, G_TYPE_BOOLEAN);
+-    backend_command_get_key_value(GCONF_KEY, &storedValue);
++    mkdg_backend_read(backend, &storedValue, QUOTE_ME(PROJECT_SCHEMA_SECTION), GCONF_KEY, NULL);
+     g_assert(mkdg_g_value_is_equal(&newValue, &storedValue));
+ 
+     /*
+      * Restore the original value 
+      */
+-    backend_command_set_key_value(GCONF_KEY, &origValue);
++    mkdg_backend_write(backend, &origValue, QUOTE_ME(PROJECT_SCHEMA_SECTION), GCONF_KEY, NULL);
+ #undef GCONF_KEY
+ }
+ 

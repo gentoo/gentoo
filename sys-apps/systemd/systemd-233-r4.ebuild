@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		!doc? ( https://dev.gentoo.org/~floppym/dist/${P}-man.tar.gz )"
-	KEYWORDS="~alpha amd64 arm ~arm64 ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ia64 ~ppc ~ppc64 ~sparc x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -447,11 +447,6 @@ pkg_postinst() {
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
-	fi
-
-	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
-		ewarn "You should replace the resolv.conf symlink:"
-		ewarn "ln -snf ${ROOTPREFIX-/usr}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
 }
 

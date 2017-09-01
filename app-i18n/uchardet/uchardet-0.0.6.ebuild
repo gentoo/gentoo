@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="An encoding detector library"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/uchardet/"
-SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
+SRC_URI="https://www.freedesktop.org/software/uchardet/releases/${P}.tar.xz"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"

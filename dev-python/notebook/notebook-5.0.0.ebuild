@@ -41,11 +41,12 @@ DEPEND="${RDEPEND}
 	doc? (
 		app-text/pandoc
 		>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1[${PYTHON_USEDEP}]
+		dev-python/nbsphinx[${PYTHON_USEDEP}]
 	)
 	"
 
-PATCHES=( "${FILESDIR}/${P}"-setupbase.py.patch )
+PATCHES=( "${FILESDIR}/${P}"-setupbase.py.patch
+	"${FILESDIR}/${P}"-example-execution.patch )
 
 python_prepare_all() {
 	sed \

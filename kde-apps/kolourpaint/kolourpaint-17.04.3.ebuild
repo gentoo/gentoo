@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Paint Program by KDE"
 HOMEPAGE="https://www.kde.org/applications/graphics/kolourpaint/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="BSD-2 LGPL-2 LGPL-2+ || ( LGPL-2.1 LGPL-3 ) GPL-2 handbook? ( FDL-1.2 )"
 IUSE="scanner"
 

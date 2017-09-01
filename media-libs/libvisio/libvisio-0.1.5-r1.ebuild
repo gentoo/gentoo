@@ -3,18 +3,18 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libvisio/"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libvisio.git"
 inherit autotools
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing the visio documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://dev-www.libreoffice.org/src/libvisio/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
 IUSE="doc static-libs test tools"
 
 RDEPEND="

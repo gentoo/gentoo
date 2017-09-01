@@ -14,39 +14,32 @@ PYTHON_REQ_USE="threads,xml"
 # Usually the tarballs are moved a lot so this should make
 # everyone happy.
 DEV_URI="
-	http://dev-builds.libreoffice.org/pre-releases/src
-	http://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
-	http://download.documentfoundation.org/libreoffice/old/${PV}/
+	https://dev-builds.libreoffice.org/pre-releases/src
+	https://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
+	https://download.documentfoundation.org/libreoffice/old/${PV}/
 "
-ADDONS_URI="http://dev-www.libreoffice.org/src/"
+ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
-HOMEPAGE="http://www.libreoffice.org"
-SRC_URI="branding? ( http://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
+HOMEPAGE="https://www.libreoffice.org"
+SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
 
 # Split modules following git/tarballs
 # Core MUST be first!
 # Help is used for the image generator
-MODULES="core help"
 # Only release has the tarballs
 if [[ ${PV} != *9999* ]]; then
 	for i in ${DEV_URI}; do
-		for mod in ${MODULES}; do
-			if [[ ${mod} == core ]]; then
-				SRC_URI+=" ${i}/${P}.tar.xz"
-			else
-				SRC_URI+=" ${i}/${PN}-${mod}-${PV}.tar.xz"
-			fi
-		done
-		unset mod
+		SRC_URI+=" ${i}/${P}.tar.xz"
+		SRC_URI+=" ${i}/${PN}-help-${PV}.tar.xz"
 	done
 	unset i
 fi
@@ -183,7 +176,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/dejavu
 	media-fonts/liberation-fonts
 	media-fonts/libertine
-	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools $(add_kdeapps_dep kioclient) )
+	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
 	vlc? ( media-video/vlc )
 "
@@ -293,29 +286,23 @@ pkg_setup() {
 }
 
 src_unpack() {
-	local mod
-
 	[[ -n ${PATCHSET} ]] && unpack ${PATCHSET}
 	use branding && unpack "${BRANDING}"
 
 	if [[ ${PV} != *9999* ]]; then
 		unpack "${P}.tar.xz"
-		for mod in ${MODULES}; do
-			[[ ${mod} == core ]] && continue
-			unpack "${PN}-${mod}-${PV}.tar.xz"
-		done
+		unpack "${PN}-help-${PV}.tar.xz"
 	else
-		local base_uri branch checkout mypv
-		base_uri="git://anongit.freedesktop.org"
-		for mod in ${MODULES}; do
-			branch="master"
-			mypv=${PV/.9999}
-			[[ ${mypv} != ${PV} ]] && branch="${PN}-${mypv/./-}"
-			git-r3_fetch "${base_uri}/${PN}/${mod}" "refs/heads/${branch}"
-			[[ ${mod} != core ]] && checkout="${S}/${mod}"
-			[[ ${mod} == help ]] && checkout="helpcontent2" # doesn't match on help
-			git-r3_checkout "${base_uri}/${PN}/${mod}" ${checkout}
-		done
+		local base_uri branch mypv
+		base_uri="https://anongit.freedesktop.org/git"
+		branch="master"
+		mypv=${PV/.9999}
+		[[ ${mypv} != ${PV} ]] && branch="${PN}-${mypv/./-}"
+		git-r3_fetch "${base_uri}/${PN}/core" "refs/heads/${branch}"
+		git-r3_checkout "${base_uri}/${PN}/core"
+
+		git-r3_fetch "${base_uri}/${PN}/help" "refs/heads/master"
+		git-r3_checkout "${base_uri}/${PN}/help" "helpcontent2" # doesn't match on help
 	fi
 }
 
@@ -366,7 +353,7 @@ src_configure() {
 	local java_opts
 	local ext_opts
 
-	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+	# Set up Google API keys, see https://www.chromium.org/developers/how-tos/api-keys
 	# Note: these are for Gentoo use ONLY. For your own distribution, please get
 	# your own set of keys. Feel free to contact chromium@gentoo.org for more info.
 	local google_default_client_id="329227923882.apps.googleusercontent.com"

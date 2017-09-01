@@ -11,7 +11,7 @@ HOMEPAGE="http://www.kde-apps.org/content/show.php?content=107645"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 FDL-1.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -35,11 +35,12 @@ DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	media-libs/libdiscid
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	>=media-libs/taglib-1.5
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep audiocd-kio)
+	!media-sound/kaudiocreator:4
 "
 
 DOCS=( Changelog TODO )

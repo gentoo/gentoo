@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,16 @@ HOMEPAGE="https://github.com/cinemast/libjson-rpc-cpp"
 SRC_URI=""
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS=""
-IUSE="doc +http-client +http-server +stubgen test"
+IUSE="doc +http-client +http-server redis-client redis-server +stubgen test"
 
 RDEPEND="
 	dev-libs/jsoncpp:=
 	http-client? ( net-misc/curl:= )
 	http-server? ( net-libs/libmicrohttpd:= )
+	redis-client? ( dev-libs/hiredis:= )
+	redis-server? ( dev-libs/hiredis:= )
 	stubgen? ( dev-libs/argtable:= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -31,6 +33,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DHTTP_CLIENT=$(usex http-client)
 		-DHTTP_SERVER=$(usex http-server)
+		-DREDIS_CLIENT=$(usex redis-client)
+		-DREDIS_SERVER=$(usex redis-server)
 		# they are not installed
 		-DCOMPILE_EXAMPLES=OFF
 		-DCOMPILE_STUBGEN=$(usex stubgen)
@@ -45,6 +49,12 @@ src_compile() {
 	cmake-utils_src_compile
 
 	use doc && emake -C "${BUILD_DIR}" doc
+}
+
+src_test() {
+	# Tests fail randomly when run in parallel
+	local MAKEOPTS=-j1
+	cmake-utils_src_test
 }
 
 src_install() {

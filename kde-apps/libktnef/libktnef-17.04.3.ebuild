@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Library for handling TNEF data"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

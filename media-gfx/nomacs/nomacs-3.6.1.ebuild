@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils fdo-mime
 
 DESCRIPTION="Qt-based image viewer"
-HOMEPAGE="http://www.nomacs.org/"
+HOMEPAGE="https://nomacs.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

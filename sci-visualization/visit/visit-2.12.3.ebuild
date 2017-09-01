@@ -24,8 +24,9 @@ RDEPEND="
 	netcdf? ( sci-libs/netcdf )
 	silo? ( sci-libs/silo )
 	=sci-libs/vtk-6.1.0*[imaging,mpi=,python,rendering,qt5,xdmf2?,${PYTHON_USEDEP}]
+	dev-qt/qtx11extras
 	sys-libs/zlib
-	x11-libs/qwt:6"
+	x11-libs/qwt:6[qt5]"
 DEPEND="${RDEPEND}
 	xdmf2? ( sci-libs/xdmf2 )
 "

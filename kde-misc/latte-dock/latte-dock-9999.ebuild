@@ -3,13 +3,12 @@
 
 EAPI=6
 
-KDE_GCC_MINIMAL="4.9"
 QT_MINIMAL="5.7.1"
 inherit cmake-utils gnome2-utils kde5-functions
 
 DESCRIPTION="Elegant dock, based on KDE Frameworks"
 HOMEPAGE="https://store.kde.org/p/1169519/
-https://github.com/psifidotos/Latte-Dock"
+	https://github.com/psifidotos/Latte-Dock"
 
 if [[ ${PV} = 9999 ]] ; then
 	inherit git-r3
@@ -29,6 +28,7 @@ RDEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep kglobalaccel)
@@ -47,6 +47,7 @@ RDEPEND="
 	$(add_qt_dep qtgui 'xcb')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
+	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libxcb
 "
@@ -62,12 +63,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-
-	if has_version ">=dev-qt/qtcore-5.8.0" ; then
-		ewarn "Qt versions >=5.8 are known to cause runtime problems. If you"
-		ewarn "experience problems while running Latte Dock, please check this"
-		ewarn "out: https://github.com/psifidotos/Latte-Dock/issues/183"
-	fi
 }
 
 pkg_postrm() {

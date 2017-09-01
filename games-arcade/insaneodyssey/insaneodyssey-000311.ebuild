@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,6 +30,9 @@ src_prepare() {
 		"${FILESDIR}"/${P}-datafiles.patch > "${T}"/datafiles.patch \
 		|| die
 		epatch "${T}"/datafiles.patch
+
+	epatch "${FILESDIR}"/${P}-gcc6.patch
+
 	sed -i \
 		-e "/lvl/s:^:${GAMES_DATADIR}/${PN}/:" \
 		-e "s:night:${GAMES_DATADIR}/${PN}/night:" \

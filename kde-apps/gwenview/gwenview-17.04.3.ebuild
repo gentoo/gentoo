@@ -14,7 +14,7 @@ HOMEPAGE="
 "
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="kipi raw semantic-desktop X"
 
 # requires running environment
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	media-gfx/exiv2:=
 	media-libs/lcms:2
 	media-libs/libpng:0=
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	virtual/jpeg:0
 	kipi? ( $(add_kdeapps_dep libkipi '' '' '5=') )
 	raw? ( $(add_kdeapps_dep libkdcraw) )

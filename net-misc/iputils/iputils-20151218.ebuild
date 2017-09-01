@@ -21,7 +21,7 @@ fi
 DESCRIPTION="Network monitoring tools including ping and ping6"
 HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
-LICENSE="BSD-4"
+LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
 

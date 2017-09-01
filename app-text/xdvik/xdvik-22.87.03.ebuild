@@ -80,7 +80,7 @@ src_install() {
 
 	emake DESTDIR="${D}" install
 
-	dosym /usr/share/texmf-dist/xdvi/XDvi /usr/share/X11/app-defaults/XDvi
+	dosym ../../texmf-dist/xdvi/XDvi /usr/share/X11/app-defaults/XDvi
 
 	dodoc BUGS FAQ README.*
 

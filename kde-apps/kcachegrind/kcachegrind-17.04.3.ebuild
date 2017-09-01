@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Frontend for Cachegrind by KDE"
 HOMEPAGE="https://www.kde.org/applications/development/kcachegrind
 https://kcachegrind.github.io/html/Home.html"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 COMMON_DEPEND="

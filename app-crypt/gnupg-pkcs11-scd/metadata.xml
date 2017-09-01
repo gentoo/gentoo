@@ -12,4 +12,7 @@
 		<remote-id type="sourceforge">gnupg-pkcs11</remote-id>
 		<remote-id type="github">alonbl/gnupg-pkcs11-scd</remote-id>
 	</upstream>
+	<use>
+		<flag name="proxy">Build the gnupg-pkcs11-scd-prox</flag>
+	</use>
 </pkgmetadata>

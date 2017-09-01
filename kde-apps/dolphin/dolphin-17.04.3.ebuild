@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Plasma filemanager focusing on usability"
 HOMEPAGE="https://dolphin.kde.org https://www.kde.org/applications/system/dolphin"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="semantic-desktop thumbnail"
 
 DEPEND="
@@ -42,7 +42,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	semantic-desktop? (
 		$(add_frameworks_dep baloo)
 		$(add_frameworks_dep kfilemetadata)

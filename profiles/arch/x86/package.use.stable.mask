@@ -23,7 +23,7 @@ sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (26 Feb 2017)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Brian Evans <grknight@gentoo.org> (17 Jan 2017)
 # Stable mask groonga on mariadb as I don't know how stable

@@ -55,13 +55,13 @@ xdg_environment_reset() {
 	mkdir -p "${XDG_DATA_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" \
 		"${XDG_RUNTIME_DIR}" || die
 	# This directory needs to be owned by the user, and chmod 0700
-	# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+	# https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
 	unset DBUS_SESSION_BUS_ADDRESS
 }
 
-# @FUNCTION: fdo-xdg_desktop_database_update
+# @FUNCTION: xdg_desktop_database_update
 # @DESCRIPTION:
 # Updates the .desktop files database.
 # Generates a list of mimetypes linked to applications that can handle them

@@ -1,5 +1,0 @@
-# Config file for /etc/init.d/nepenthes
-
-# Set preferred options here
-NEPENTHES_OPTS="--user nepenthes --group nepenthes"
-

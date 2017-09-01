@@ -1,0 +1,75 @@
+From 1fbb0e7954701cfa5f88eb764a2e18002519a9ce Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 20 Aug 2017 18:42:17 +0200
+Subject: [PATCH] Fix JACK compilation for Audacious 3.6+
+
+---
+ audacious/impulser2.cpp |  2 +-
+ jack/Makefile.am        | 20 ++++++++++++++++++--
+ 2 files changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/audacious/impulser2.cpp b/audacious/impulser2.cpp
+index bc7d4de..b2ae0a8 100644
+--- a/audacious/impulser2.cpp
++++ b/audacious/impulser2.cpp
+@@ -301,7 +301,7 @@ static void slot_load(SlotConfiguration * slot, int i)
+   slot->limit =   aud_get_double (configSectionString, key_i("limit",i));
+   slot->idelay =  aud_get_double (configSectionString, key_i("idelay",i));
+   slot->i1o2_index = aud_get_int (configSectionString, key_i("i1o2_index",i));
+-  #ifdef AUDACIOUS36
++  #if defined(AUDACIOUS36) && ! defined(JACK)
+   filename = aud_get_str(configSectionString, key_i("file",i)).to_raw();
+   #else
+   filename = aud_get_str(configSectionString, key_i("file",i));
+diff --git a/jack/Makefile.am b/jack/Makefile.am
+index 58527d6..0512828 100644
+--- a/jack/Makefile.am
++++ b/jack/Makefile.am
+@@ -26,6 +26,10 @@ include $(top_srcdir)/audacious/plugins.make
+ 
+ AM_CPPFLAGS += $(jack_CFLAGS) $(gtk3_CFLAGS) -I$(top_srcdir)/samples
+ 
++if BUILD_AUDACIOUS36
++AM_CPPFLAGS += -DAUDACIOUS36 -fvisibility=hidden
++endif
++
+ if BUILD_JACK
+ noinst_LTLIBRARIES = libbmp_int.la libjack_common.la
+ bin_PROGRAMS = fv3_jack_strev fv3_jack_nrev fv3_jack_revmodel fv3_jack_impulser2 fv3_jack_mbcomp fv3_jack_stenh \
+@@ -35,9 +39,15 @@ endif
+ libbmp_int_la_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+ libbmp_int_la_SOURCES = configdb.h configdb_rcfile.c rcfile.c rcfile.h util.c util.h
+ libjack_common_la_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+-libjack_common_la_SOURCES = plugin.h jack_main.cpp ../samples/CArg.cpp ../samples/CArg.hpp ../audacious/so.c
++libjack_common_la_SOURCES = plugin.h jack_main.cpp ../samples/CArg.cpp ../samples/CArg.hpp
+ libjack_common_la_LIBADD = $(jack_LIBS) $(gtk3_LIBS)
+ 
++if BUILD_AUDACIOUS36
++libjack_common_la_SOURCES += ../audacious/so36.cpp
++else
++libjack_common_la_SOURCES += ../audacious/so.c
++endif
++
+ I_LIBS += libbmp_int.la libjack_common.la
+ 
+ fv3_jack_strev_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+@@ -54,9 +64,15 @@ fv3_jack_revmodel_LDADD = $(I_LIBS)
+ 
+ fv3_jack_impulser2_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+ fv3_jack_impulser2_SOURCES = ../audacious/CFileLoader.hpp  ../audacious/CFileLoader_t.hpp ../audacious/impulser2.cpp \
+- ../audacious/wave.xpm ../audacious/so.c
++ ../audacious/wave.xpm
+ fv3_jack_impulser2_LDADD = $(I_LIBS) $(top_builddir)/libgdither/libgdither.la $(sndfile_LIBS)
+ 
++if BUILD_AUDACIOUS36
++fv3_jack_impulser2_SOURCES += ../audacious/so36.cpp
++else
++fv3_jack_impulser2_SOURCES += ../audacious/so.c
++endif
++
+ fv3_jack_mbcomp_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+ fv3_jack_mbcomp_SOURCES = ../audacious/compressor.cpp
+ fv3_jack_mbcomp_LDADD = $(I_LIBS)
+-- 
+2.13.2
+

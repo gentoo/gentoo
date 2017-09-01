@@ -14,11 +14,11 @@ PYTHON_REQ_USE="threads,xml"
 # Usually the tarballs are moved a lot so this should make
 # everyone happy.
 DEV_URI="
-	http://dev-builds.libreoffice.org/pre-releases/src
-	http://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
-	http://download.documentfoundation.org/libreoffice/old/${PV}/
+	https://dev-builds.libreoffice.org/pre-releases/src
+	https://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
+	https://download.documentfoundation.org/libreoffice/old/${PV}/
 "
-ADDONS_URI="http://dev-www.libreoffice.org/src/"
+ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
@@ -28,8 +28,8 @@ inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
-HOMEPAGE="http://www.libreoffice.org"
-SRC_URI="branding? ( http://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
+HOMEPAGE="https://www.libreoffice.org"
+SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
 
 # Split modules following git/tarballs
@@ -301,7 +301,7 @@ src_unpack() {
 		done
 	else
 		local base_uri branch checkout mypv
-		base_uri="git://anongit.freedesktop.org"
+		base_uri="https://anongit.freedesktop.org"
 		for mod in ${MODULES}; do
 			branch="master"
 			mypv=${PV/.9999}
@@ -361,7 +361,7 @@ src_configure() {
 	local java_opts
 	local ext_opts
 
-	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+	# Set up Google API keys, see https://www.chromium.org/developers/how-tos/api-keys
 	# Note: these are for Gentoo use ONLY. For your own distribution, please get
 	# your own set of keys. Feel free to contact chromium@gentoo.org for more info.
 	local google_default_client_id="329227923882.apps.googleusercontent.com"

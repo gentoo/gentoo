@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="KDE version of the Simon Says game"
 HOMEPAGE="https://www.kde.org/applications/education/blinken
 https://edu.kde.org/blinken"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -23,7 +23,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 "
 RDEPEND="${DEPEND}"
 

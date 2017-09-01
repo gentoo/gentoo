@@ -35,6 +35,10 @@ REQUIRED_USE="acl? ( ads )"
 
 DOCS="doc/linux-cifs-client-guide.odt"
 
+PATCHES=(
+	"${FILESDIR}/${P}-talloc.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 

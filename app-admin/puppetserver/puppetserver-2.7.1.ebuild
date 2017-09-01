@@ -76,7 +76,7 @@ src_install() {
 	dosym ../apps/puppetserver/bin/puppetserver /opt/puppetlabs/server/bin/puppetserver
 	dodir /opt/puppetlabs/bin
 	dosym ../server/apps/puppetserver/bin/puppetserver /opt/puppetlabs/bin/puppetserver
-	dosym /opt/puppetlabs/server/apps/puppetserver/bin/puppetserver /usr/bin/puppetserver
+	dosym ../../opt/puppetlabs/server/apps/puppetserver/bin/puppetserver /usr/bin/puppetserver
 	dodir /opt/puppetlabs/server/apps/puppetserver/config/services.d
 	# other sys stuff
 	dodir /etc/puppetlabs/code

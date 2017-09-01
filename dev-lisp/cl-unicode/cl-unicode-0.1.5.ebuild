@@ -20,7 +20,7 @@ DEPEND="virtual/commonlisp
 		dev-lisp/flexi-streams"
 RDEPEND="dev-lisp/cl-ppcre"
 
-COMMONLISPS="sbcl clisp clozurecl cmucl ecls openmcl"
+COMMONLISPS="sbcl clisp clozurecl cmucl ecls"
 
 find-lisp-impl() {
 	for lisp in ${COMMONLISPS} ; do
@@ -36,10 +36,10 @@ src_configure() {
 src_compile() {
 	# cl-unicode builds parts of its source code automatically the first time it
 	# is compiled, so we compile it here.
-	local lispimpl=$(find-lisp-impl)
 	local initclunicode="(progn (push \"${S}/\" asdf:*central-registry*) (require :${PN}))"
-	common-lisp-export-impl-args "${lispimpl}"
-	${lispimpl} ${CL_EVAL} "${initclunicode}"
+
+	common-lisp-export-impl-args "$(find-lisp-impl)"
+	${CL_BINARY} ${CL_EVAL} "${initclunicode}"
 }
 
 src_install() {
@@ -47,5 +47,5 @@ src_install() {
 	common-lisp-install-sources -t all build/
 	common-lisp-install-asdf
 	dodoc CHANGELOG
-	dohtml doc/index.html
+	dodoc doc/index.html
 }

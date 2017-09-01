@@ -26,6 +26,12 @@ DEPEND="
 	)"
 RDEPEND=""
 
+src_unpack() {
+	unpack $A
+	# This is an interactive test.
+	rm -f "${S}"/keyring/tests/backends/test_kwallet.py
+}
+
 python_test() {
 	py.test -v -v || die "testsuite failed under ${EPYTHON}"
 }

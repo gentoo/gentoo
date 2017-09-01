@@ -1,0 +1,22 @@
+--- apngasm-2.91-src/Makefile
++++ apngasm-2.91-src/Makefile
+@@ -1,8 +1,7 @@
+ PACKAGE    = apngasm
+ CC         = gcc
+-SRC_DIRS   = . 7z zopfli
+-CFLAGS     = -Wall -pedantic -DFEATURE_7ZIP -DFEATURE_ZOPFLI
+-CFLAGS_OPT = -O2
++SRC_DIRS   = . 7z
++CFLAGS     += -Wall -pedantic
+ CFLAGS_7Z  = -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses
+ LIBS       = -lstdc++ -lm -lpng -lz
+ 
+@@ -16,7 +15,7 @@
+ all : $(PACKAGE)
+ 
+ $(PACKAGE) : objdirs $(OBJECTS)
+-	$(CC) -o $@ $(OBJECTS) -s $(LIBS)
++	$(CC) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS)
+ 
+ objdirs :
+ 	mkdir -p $(OBJ_DIRS)

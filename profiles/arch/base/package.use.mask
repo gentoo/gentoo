@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alon Bar-Lev <alonbl@gentoo.org> (01 Sep 2017)
+# dev-python/tlslite is keyworded only for x86/amd64
+# waiting for ppc, bug#629506
+dev-python/kaa-base tls
+
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # the needed deps are amd64/x86 only
 net-analyzer/metasploit nexpose openvas
@@ -137,10 +142,6 @@ app-editors/gvim luajit racket
 # unmask in particular profiles
 sys-apps/hwloc gl opencl
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium is keyworded only on a few arches
-gnome-extra/zeitgeist-datasources chromium
-
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl only works on x86/amd64
 sci-chemistry/gromacs mkl
@@ -156,11 +157,6 @@ media-libs/freetype infinality
 # Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
 # sys-fs/zfs is not available everywhere.
 sys-boot/grub libzfs
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection doctool
 
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
 # JIT compilation in libzpaq generates code for x86/amd64.
@@ -199,15 +195,6 @@ dev-qt/qtwebkit jit
 # see arch/x86/package.use.mask
 www-client/links suid
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Mask libbluray support here, and enable it per arch instead
-gnome-base/gvfs bluray
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
-# Systemtap is not keyworded on anything except amd64/x86
-# Temporarily mask instead of dropping keywords, bug 384647
-dev-libs/glib systemtap
-
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 parse-clocks
@@ -219,10 +206,6 @@ sys-power/pm-utils video_cards_intel video_cards_radeon
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan X
-
-# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
-# TLS needs dev-libs/cryptlib, which is x86 only
-dev-python/kaa-base tls
 
 # Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
 # Java is not supported in most of the arches enchant is keyworded

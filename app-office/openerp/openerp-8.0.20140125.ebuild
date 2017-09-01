@@ -29,7 +29,7 @@ CDEPEND="!app-office/openerp-web
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/reportlab[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
-	media-gfx/pydot
+	dev-python/pydot[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]

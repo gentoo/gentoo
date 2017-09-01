@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/xhtml1 )"
 
 RESTRICT="test"
-DOCS=( AUTHORS ChangeLog NEWS README )
+DOCS=( ChangeLog NEWS README )
 
 src_unpack() {
 	git-r3_src_unpack

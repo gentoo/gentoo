@@ -9,7 +9,7 @@ SRC_URI="${HOMEPAGE}/files/documents/4414/49311/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~x64-macos ~x86-macos"
 IUSE=""
 
 RDEPEND="dev-lang/perl

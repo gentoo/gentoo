@@ -30,7 +30,7 @@ fi
 
 LICENSE="kvirc"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -58,7 +58,7 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kxmlgui:5
 	)
 	perl? ( dev-lang/perl:0= )
-	phonon? ( media-libs/phonon:0[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl:0= )

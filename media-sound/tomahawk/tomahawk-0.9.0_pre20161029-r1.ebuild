@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Multi-source social music player"
-HOMEPAGE="https://tomahawk-player.org/"
+HOMEPAGE="https://www.tomahawk-player.org/"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
@@ -43,7 +43,7 @@ CDEPEND="
 	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
-	telepathy? ( net-libs/telepathy-qt[qt5] )
+	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
 	xmpp? ( net-libs/jreen[qt5] )
 "
 DEPEND="${CDEPEND}

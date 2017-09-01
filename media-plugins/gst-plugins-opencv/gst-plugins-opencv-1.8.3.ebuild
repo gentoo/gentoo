@@ -8,7 +8,7 @@ MULTILIB_COMPAT=( abi_x86_64 )
 inherit gstreamer
 
 DESCRIPTION="OpenCV elements for Gstreamer"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="

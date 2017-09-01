@@ -9,7 +9,7 @@ DESCRIPTION="KDE Telepathy audio/video conferencing ui"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -29,10 +29,10 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	dev-libs/boost
 	dev-libs/glib:2
-	media-libs/phonon[qt5]
-	media-libs/qt-gstreamer[qt5]
+	media-libs/phonon[qt5(+)]
+	media-libs/qt-gstreamer[qt5(+)]
 	net-libs/farstream:0.2
 	net-libs/telepathy-farstream
-	net-libs/telepathy-qt[farstream,qt5]
+	net-libs/telepathy-qt[farstream,qt5(+)]
 "
 RDEPEND="${DEPEND}"

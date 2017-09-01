@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,9 +13,13 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 "
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}
+	dev-util/lxqt-build-tools
+"
+
+PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )

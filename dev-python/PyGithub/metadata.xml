@@ -6,6 +6,6 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">jacquev6/PyGithub</remote-id>
+    <remote-id type="github">PyGithub/PyGithub</remote-id>
   </upstream>
 </pkgmetadata>

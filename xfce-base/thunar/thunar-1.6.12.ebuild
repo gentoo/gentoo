@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit virtualx
+inherit virtualx xdg-utils
 
 MY_P=${P^}
 
@@ -64,4 +64,12 @@ src_configure() {
 
 src_test() {
 	virtx emake check
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

@@ -182,10 +182,6 @@ sci-chemistry/gromacs -mkl
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2012)
-# Masked for stabilization as the use flag pulls a dep tree of hell.
-media-libs/phonon zeitgeist
-
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
@@ -226,15 +222,6 @@ www-client/midori -jit
 dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
-
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Masked in base, unmask per arch
-gnome-base/gvfs -bluray
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
-# Systemtap is masked in base/package.use.mask
-# Temporarily unmask in amd64/x86, bug 384647
-dev-libs/glib -systemtap
 
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86

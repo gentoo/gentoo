@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,7 @@ SLOT="4"
 IUSE="debug"
 
 RDEPEND="
+	kde-frameworks/kdelibs:4[plasma(+)]
 	$(add_kdeapps_dep libkdegames)
 "
 DEPEND="${RDEPEND}

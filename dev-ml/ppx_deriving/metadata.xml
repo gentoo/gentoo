@@ -6,6 +6,6 @@
 		<name>Gentoo ML Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">whitequark/ppx_deriving</remote-id>
+		<remote-id type="github">ocaml-ppx/ppx_deriving</remote-id>
 	</upstream>
 </pkgmetadata>

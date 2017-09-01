@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="chm">Enable support for Microsoft Compiled HTML Help files</flag>
-		<flag name="ebook">Add E-Book support</flag>
 		<flag name="epub">Add E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
 		<flag name="image-backend">Enable image viewing support</flag>
 		<flag name="mobi">Add mobipocket support</flag>

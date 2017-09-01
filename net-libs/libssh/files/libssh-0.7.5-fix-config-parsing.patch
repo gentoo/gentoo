@@ -1,0 +1,32 @@
+From 5333be5988c3789e7011598995f4df90d50d84d0 Mon Sep 17 00:00:00 2001
+From: "Artyom V. Poptsov" <poptsov.artyom@gmail.com>
+Date: Sun, 4 Jun 2017 11:54:55 +0300
+Subject: config: Bugfix: Don't skip unseen opcodes
+
+libssh fails to read the configuration from a config file due to a
+wrong check in 'ssh_config_parse_line' procedure in 'config.c'; it's
+effectively skipping every opcode (and therefore every option) from
+the file.  The change fixes that behaviour.
+
+Signed-off-by: Artyom V. Poptsov <poptsov.artyom@gmail.com>
+Reviewed-by: Andreas Schneider <asn@cryptomilk.org>
+---
+ src/config.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/config.c b/src/config.c
+index 6478fc5f..519926e7 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -219,7 +219,7 @@ static int ssh_config_parse_line(ssh_session session, const char *line,
+ 
+   opcode = ssh_config_get_opcode(keyword);
+   if (*parsing == 1 && opcode != SOC_HOST) {
+-      if (seen[opcode] == 0) {
++      if (seen[opcode] != 0) {
+           return 0;
+       }
+       seen[opcode] = 1;
+-- 
+cgit v1.1
+

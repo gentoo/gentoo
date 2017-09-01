@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE Plasma desktop"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="appstream +fontconfig gtk2 gtk3 +input_devices_evdev input_devices_synaptics
 ibus legacy-systray pulseaudio +qt4 scim +semantic-desktop"
 
@@ -66,7 +66,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	x11-libs/libXcursor
 	x11-libs/libXfixes

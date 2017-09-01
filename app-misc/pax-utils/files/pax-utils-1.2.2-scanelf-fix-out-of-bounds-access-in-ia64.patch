@@ -1,0 +1,72 @@
+From e95103c40d0541fbcdb4b84b000832d9b1b83b8d Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sat, 19 Aug 2017 10:34:41 +0100
+Subject: [PATCH] scanelf: fix out-of-bounds access in ia64
+
+commit 2eb852129394f97dae89c0ff1f9f48637edcb0e9
+slightly changed decoder and added unchecked
+read from elf header:
+
+```
+       switch (EGET(dpltrel->d_un.d_val)) { \
+       case DT_REL: \
+               rel = REL##B(elf->vdata + EGET(drel->d_un.d_val)); \
+```
+
+On ia64 'EGET(drel->d_un.d_val)' returns absolute address:
+
+```
+    $ dumpelf bug/luatex
+    ...
+    /* Dynamic tag #31 'DT_RELA' 0x97E310 */
+    {
+        .d_tag     = 0x7        ,
+        .d_un      = {
+                .d_val = 0x4000000000031C30 ,
+                .d_ptr = 0x4000000000031C30 ,
+        },
+    },
+```
+
+That causes 'scanelf' crash on binaries like 'luatex'.
+
+This change restores check and loudly skips such sections:
+    scanelf: bug/luatex: DT_RELA is out of file range
+
+Bug: https://bugs.gentoo.org/624356
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ scanelf.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/scanelf.c b/scanelf.c
+index 1ead891..a054408 100644
+--- a/scanelf.c
++++ b/scanelf.c
+@@ -607,11 +607,23 @@ static char *scanelf_file_textrels(elfobj *elf, char *found_textrels, char *foun
+ 	} \
+ 	switch (EGET(dpltrel->d_un.d_val)) { \
+ 	case DT_REL: \
++		if (EGET(drel->d_un.d_val) >= (uint64_t)elf->len - sizeof (drel->d_un.d_val)) { \
++			rel = NULL; \
++			rela = NULL; \
++			warn("%s: DT_REL is out of file range", elf->filename); \
++			break; \
++		} \
+ 		rel = REL##B(elf->vdata + EGET(drel->d_un.d_val)); \
+ 		rela = NULL; \
+ 		pltrel = DT_REL; \
+ 		break; \
+ 	case DT_RELA: \
++		if (EGET(drel->d_un.d_val) >= (uint64_t)elf->len - sizeof (drel->d_un.d_val)) { \
++			rel = NULL; \
++			rela = NULL; \
++			warn("%s: DT_RELA is out of file range", elf->filename); \
++			break; \
++		} \
+ 		rel = NULL; \
+ 		rela = RELA##B(elf->vdata + EGET(drel->d_un.d_val)); \
+ 		pltrel = DT_RELA; \
+-- 
+2.14.1
+

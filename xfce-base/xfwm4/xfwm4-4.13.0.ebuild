@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit gnome2-utils
+
 DESCRIPTION="Window manager for the Xfce desktop environment"
 HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
@@ -56,4 +58,12 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }

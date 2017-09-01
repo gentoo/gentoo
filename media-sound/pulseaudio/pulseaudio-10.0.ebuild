@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools bash-completion-r1 eutils flag-o-matic gnome2-utils linux-info systemd user versionator udev multilib-minimal
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
-HOMEPAGE="http://www.pulseaudio.org/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 
 # libpulse-simple and libpulse link to libpulse-core; this is daemon's

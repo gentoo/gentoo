@@ -7,7 +7,7 @@ inherit apache-module eutils
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Evasive maneuvers module for the event of an HTTP DoS"
-HOMEPAGE="http://www.zdziarski.com/blog/?page_id=442"
+HOMEPAGE="https://github.com/jzdziarski/mod_evasive"
 SRC_URI="http://www.zdziarski.com/projects/mod_evasive/${P/-/_}.tar.gz"
 
 LICENSE="BSD"

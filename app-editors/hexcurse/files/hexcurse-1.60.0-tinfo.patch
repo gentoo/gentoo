@@ -1,5 +1,5 @@
---- hexcurse-1.60.0/configure.ac
-+++ hexcurse-1.60.0/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -15,7 +15,9 @@
  
  dnl Checks for libraries.

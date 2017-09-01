@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ PYTHON_REQ_USE="threads(+)"
 inherit waf-utils python-any-r1
 
 DESCRIPTION="A port of the AMS internal modules to LV2 plugins to create modular synthesizers"
-HOMEPAGE="http://objectivewave.wordpress.com/ams-lv2/"
-SRC_URI="https://github.com/blablack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://objectivewave.wordpress.com/ams-lv2/"
+SRC_URI="https://github.com/blablack/ams-lv2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
