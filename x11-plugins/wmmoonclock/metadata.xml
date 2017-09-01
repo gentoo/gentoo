@@ -6,11 +6,11 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<longdescription>
-		wmMoonClock displays phases and ephemeris of the Moon. Clicking on the App
+		wmmoonclock displays phases and ephemeris of the Moon. Clicking on the App
 		cycles the user through several `pages' of ephemeris information. Included are
 		age, fraction of current lunar cycle, the % illumination, whether its currently
 		visible or not, the rise/set times for yesterday, today and tomorrow, the
-		`horizon coordinates", and the "ecliptic coordinates". wmMoonClock supports
+		`horizon coordinates", and the "ecliptic coordinates". wmmoonlock supports
 		8-bit and high-color displays.
 	</longdescription>
 </pkgmetadata>
