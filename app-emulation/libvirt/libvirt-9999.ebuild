@@ -70,7 +70,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
-	fuse? ( >=sys-fs/fuse-2.8.6 )
+	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	libssh? ( net-libs/libssh )
