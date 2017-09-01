@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -146,7 +146,7 @@ pkg_postinst() {
 	elog
 
 	# (#76985)
-	elog "Visit https://www.gentoo.org/doc/en/index.xml?catid=desktop"
+	elog "Visit https://wiki.gentoo.org/wiki/Category:X.Org"
 	elog "for more information on configuring X."
 	elog
 }
