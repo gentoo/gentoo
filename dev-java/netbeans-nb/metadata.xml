@@ -9,8 +9,4 @@
   <email>java@gentoo.org</email>
   <name>Java</name>
 </maintainer>
-<use>
-  <flag name="keychain">Automatically starts keychain on netbeans start and loads
-  specified keys so Netbeans can use them.</flag>
-</use>
 </pkgmetadata>
