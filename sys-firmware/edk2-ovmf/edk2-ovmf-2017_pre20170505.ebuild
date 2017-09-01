@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="+binary"
 
 REQUIRED_USE="
