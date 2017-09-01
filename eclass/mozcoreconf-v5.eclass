@@ -252,7 +252,7 @@ mozconfig_final() {
 
 	# Apply EXTRA_ECONF entries to .mozconfig
 	if [[ -n ${EXTRA_ECONF} ]]; then
-		mozconfig_annotate "EXTRA_ECONF" "${EXTA_ECONF}"
+		mozconfig_annotate "EXTRA_ECONF" "${EXTRA_ECONF}"
 	fi
 
 	echo
