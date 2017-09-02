@@ -22,10 +22,14 @@ DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.12-fix-buildsystem.patch )
+
 python_prepare_all() {
+	# unbundle htslib
+	export HTSLIB_MODE="external"
 	export HTSLIB_INCLUDE_DIR="${EPREFIX}"/usr/include
 	export HTSLIB_LIBRARY_DIR="${EPREFIX}"/usr/$(get_libdir)
-	export HTSLIB_CONFIGURE_OPTIONS="--disable-libcurl"
+	rm -r htslib || die
 
 	# prevent setup.py from adding RPATHs
 	sed -e "/ext\.extra_link_args += \['-Wl,-rpath,\$ORIGIN'\]/d" \
