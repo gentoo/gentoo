@@ -505,12 +505,6 @@ src_prepare() {
 			epatch "${FILESDIR}"/${PN}-8.2.1_rc1-win32-cross-2-hack.patch # bad workaround
 		popd
 
-		if use prefix; then
-			# Make configure find docbook-xsl-stylesheets from Prefix
-			sed -e '/^FP_DIR_DOCBOOK_XSL/s:\[.*\]:['"${EPREFIX}"'/usr/share/sgml/docbook/xsl-stylesheets/]:' \
-				-i utils/haddock/doc/configure.ac || die
-		fi
-
 		bump_libs
 
 		# as we have changed the build system
