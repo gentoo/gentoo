@@ -28,7 +28,7 @@ ruby_add_rdepend "
 	=dev-ruby/request_store-1.0.5
 	>=dev-ruby/rbpdf-1.19.0
 	dev-ruby/actionpack-action_caching
-	dev-ruby/actionpack-xml_parser:*
+	dev-ruby/actionpack-xml_parser:0
 	dev-ruby/protected_attributes
 	>=dev-ruby/redcarpet-3.3.2
 	>=dev-ruby/nokogiri-1.6.7.2
