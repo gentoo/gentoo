@@ -68,10 +68,6 @@ www-servers/nginx luajit
 app-emulation/libvirt virtualbox
 
 # Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
-# gst:0.10: Thanks but no thanks.
-dev-qt/qtmultimedia gstreamer010
-
-# Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
 # nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
 # Older spidermonkey does not work on arm64.
 # This should be revised when gjs is updated.
@@ -90,10 +86,6 @@ dev-qt/designer:4 webkit
 dev-qt/qtdeclarative:4 webkit
 dev-python/pyside webkit
 kde-frameworks/kdelibs:4 webkit
-
-# Alexis Ballier <aballier@gentoo.org> (26 Jun 2017)
-# Needs gstreamer:0.10
-<dev-qt/qtwebkit-4.9 gstreamer
 
 # Alexis Ballier <aballier@gentoo.org> (23 Jun 2017)
 # No need for old drivers
