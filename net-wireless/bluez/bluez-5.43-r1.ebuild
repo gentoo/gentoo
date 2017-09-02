@@ -244,6 +244,7 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	use udev && udev_reload
+	systemd_reenable bluetooth.service
 
 	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp."
 
