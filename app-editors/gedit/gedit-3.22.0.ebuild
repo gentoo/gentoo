@@ -56,7 +56,7 @@ DEPEND="${COMMON_DEPEND}
 # yelp-tools, gnome-common needed to eautoreconf
 
 pkg_setup() {
-	use python && [[ ${MERGE_TYPE} != binary ]] && python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
