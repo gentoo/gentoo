@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (03 Sep 2017)
+# Dead upstream. Use media-libs/phonon instead.
+# Masked for removal in 30 days. Bug #629144.
+dev-qt/qtphonon
+
 # Aaron Bauman <bman@gentoo.org> (1 Sep 2017)
 # vulnerable per bug #513818 and dead upstream
 # net-analyzer/ntopng is available
