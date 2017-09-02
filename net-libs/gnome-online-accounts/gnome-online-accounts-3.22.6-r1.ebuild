@@ -12,8 +12,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-IUSE="debug gnome +introspection kerberos" # telepathy"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+
+IUSE="debug gnome +introspection kerberos vala" # telepathy"
+REQUIRED_USE="vala? ( introspection )"
 
 # pango used in goaeditablelabel
 # libsoup used in goaoauthprovider
@@ -21,7 +23,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 # https://bugzilla.gnome.org/show_bug.cgi?id=692250
 # json-glib-0.16 needed for bug #485092
 RDEPEND="
-	>=dev-libs/glib-2.44:2
+	>=dev-libs/glib-2.40:2
 	>=app-crypt/libsecret-0.5
 	>=dev-libs/json-glib-0.16
 	dev-libs/libxml2:2
@@ -42,7 +44,7 @@ RDEPEND="
 PDEPEND="gnome? ( >=gnome-base/gnome-control-center-3.2[gnome-online-accounts(+)] )"
 
 DEPEND="${RDEPEND}
-	$(vala_depend)
+	vala? ( $(vala_depend) )
 	dev-libs/libxslt
 	>=dev-util/gtk-doc-am-1.3
 	>=dev-util/gdbus-codegen-2.30.0
@@ -59,8 +61,8 @@ DEPEND="${RDEPEND}
 QA_CONFIGURE_OPTIONS=".*"
 
 src_prepare() {
+	use vala && vala_src_prepare
 	gnome2_src_prepare
-	vala_src_prepare
 }
 
 src_configure() {
@@ -82,7 +84,9 @@ src_configure() {
 		--enable-telepathy \
 		--enable-windows-live \
 		$(usex debug --enable-debug=yes ' ') \
-		$(use_enable kerberos)
+		$(use_enable kerberos) \
+		$(use_enable introspection) \
+		$(use_enable vala)
 		#$(use_enable telepathy)
 	# gudev & cheese from sub-configure is overriden
 	# by top level configure, and disabled so leave it like that
