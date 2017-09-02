@@ -11,7 +11,7 @@ HOMEPAGE="http://mosquitto.org/"
 SRC_URI="http://mosquitto.org/files/source/${P}.tar.gz"
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="bridge examples +persistence +srv ssl tcpd websockets"
 
 RDEPEND="tcpd? ( sys-apps/tcp-wrappers )
