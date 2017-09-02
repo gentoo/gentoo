@@ -1488,7 +1488,7 @@ app-i18n/fcitx 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXten
 app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2: Japanese Anthy module for Fcitx
 app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4: A fcitx module to look up pinyin candidate words on the internet
-app-i18n/fcitx-configtool 0.4.6 0.4.8: A GTK+ GUI configuration tool for fcitx
+app-i18n/fcitx-configtool 0.4.6 0.4.8 0.4.9 9999: GTK+ GUI configuration tool for Fcitx
 app-i18n/fcitx-hangul 0.2.1 0.3.0: Korean Hangul module for Fcitx
 app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 0.5.2 9999: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.3 9999: m17n-provided input methods for Fcitx
