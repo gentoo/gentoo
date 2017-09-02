@@ -10021,7 +10021,7 @@ dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and 
 dev-ruby/uglifier 2.7.2 3.0.4 3.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
-dev-ruby/unf_ext 0.0.7.1 0.0.7.4: Unicode Normalization Form support library for CRuby
+dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.13 0.2.14 0.2.15: Ruby vcard support extracted from Vpim
