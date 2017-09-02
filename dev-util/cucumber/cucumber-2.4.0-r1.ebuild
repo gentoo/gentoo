@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
@@ -57,6 +57,8 @@ all_ruby_prepare() {
 	# Avoid dependency on git
 	sed -i -e '/executables/ s/=.*/= ["cucumber"]/' \
 		-e '/git ls-files/d' cucumber.gemspec || die
+
+	sed -i -e '/pry/ s:^:#:' spec/spec_helper.rb || die
 
 }
 
