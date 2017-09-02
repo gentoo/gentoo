@@ -481,6 +481,7 @@ src_prepare() {
 		cd "${S}" # otherwise epatch will break
 
 		epatch "${FILESDIR}"/${PN}-7.0.4-CHOST-prefix.patch
+		epatch "${FILESDIR}"/${PN}-8.2.1-darwin.patch
 
 		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-cgen-constify.patch
 		epatch "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
