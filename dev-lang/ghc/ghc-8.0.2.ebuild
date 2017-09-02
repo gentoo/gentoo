@@ -384,7 +384,7 @@ src_unpack() {
 	# unpacked separately, so prevent them from being unpacked
 	local ONLYA=${A}
 	case ${CHOST} in
-		*-darwin* | *-solaris*)  ONLYA=${GHC_P}-src.tar.bz2  ;;
+		*-darwin* | *-solaris*)  ONLYA=${GHC_P}-src.tar.xz  ;;
 	esac
 	unpack ${ONLYA}
 }
