@@ -12,7 +12,7 @@
 #
 # The eclass provides all common dependencies as well as common use flags.
 
-has "${EAPI:-0}" 5 || die "EAPI=${EAPI} not supported"
+has "${EAPI:-0}" 5 6 || die "EAPI=${EAPI} not supported"
 
 if [[ ! ${_BITCOINCORE_ECLASS} ]]; then
 
@@ -37,7 +37,13 @@ fi
 
 EXPORT_FUNCTIONS src_prepare src_test src_install
 
-if in_bcc_iuse ljr || in_bcc_iuse knots || in_bcc_iuse 1stclassmsg || in_bcc_iuse zeromq || [ -n "$BITCOINCORE_POLICY_PATCHES" ]; then
+if in_bcc_iuse ljr; then
+	BITCOINCORE_KNOTS_USE=ljr
+else
+	BITCOINCORE_KNOTS_USE=knots
+fi
+
+if in_bcc_iuse ${BITCOINCORE_KNOTS_USE} || in_bcc_iuse 1stclassmsg || in_bcc_iuse zeromq || [ -n "$BITCOINCORE_POLICY_PATCHES" ]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
@@ -72,11 +78,10 @@ WALLET_DEPEND="sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]"
 LIBEVENT_DEPEND=""
 UNIVALUE_DEPEND=""
 BITCOINCORE_LJR_NAME=ljr
-BITCOINCORE_KNOTS_USE=knots
 [ -n "${BITCOINCORE_LJR_PV}" ] || BITCOINCORE_LJR_PV="${PV}"
 
 case "${PV}" in
-0.13*)
+0.12* | 0.13* | 0.14*)
 	BITCOINCORE_MINOR=$(get_version_component_range 2)
 	IUSE="${IUSE} libressl"
 	OPENSSL_DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )"
@@ -85,12 +90,9 @@ case "${PV}" in
 	else
 		LIBEVENT_DEPEND="dev-libs/libevent"
 	fi
-	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]"
+	LIBSECP256K1_DEPEND=">=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]"
 	UNIVALUE_DEPEND="dev-libs/univalue"
 	BITCOINCORE_LJR_NAME=knots
-	if in_bcc_iuse ljr; then
-		BITCOINCORE_KNOTS_USE=ljr
-	fi
 	if in_bcc_policy spamfilter; then
 		REQUIRED_USE="${REQUIRED_USE} bitcoin_policy_spamfilter? ( ${BITCOINCORE_KNOTS_USE} )"
 	fi
@@ -112,7 +114,7 @@ esac
 LJR_PV() {
 	local testsfx=
 	if [ -n "${BITCOINCORE_LJR_PREV}" ]; then
-		if [ "$1" = "dir" ]; then
+		if [[ $1 = dir && ${BITCOINCORE_SERIES} = 0.12.x ]]; then
 			testsfx="/test/${BITCOINCORE_LJR_PREV}"
 		else
 			testsfx=".${BITCOINCORE_LJR_PREV}"
@@ -133,7 +135,8 @@ if [ -z "$BITCOINCORE_COMMITHASH" ]; then
 	EGIT_PROJECT='bitcoin'
 	EGIT_REPO_URI="https://github.com/bitcoin/bitcoin.git"
 else
-	SRC_URI="https://github.com/${MyPN}/${MyPN}/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> ${MyPN}-v${PV}${BITCOINCORE_SRC_SUFFIX}.tgz"
+	# -g2 because git changed the git-archive substitution of abbreviated hashes; affects up to 0.14.1
+	SRC_URI="https://github.com/${MyPN}/${MyPN}/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> ${MyPN}-v${PV}${BITCOINCORE_SRC_SUFFIX}-g2.tgz"
 	if [ -z "${BITCOINCORE_NO_SYSLIBS}" ]; then
 		SRC_URI="${SRC_URI} http://bitcoinknots.org/files/${BITCOINCORE_SERIES}/$(LJR_PV dir)/${LJR_PATCHDIR}.txz -> ${LJR_PATCHDIR}.tar.xz"
 	fi
@@ -177,8 +180,8 @@ fi
 if [ "${BITCOINCORE_NEED_LIBSECP256K1}" = "1" ]; then
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} $LIBSECP256K1_DEPEND"
 fi
-if [ "${PN}" = "libbitcoinconsensus" ]; then
-	DEPEND="$DEPEND ${BITCOINCORE_COMMON_DEPEND}
+if [ "${PN}" = "libbitcoinconsensus" ] && in_bcc_iuse test; then
+	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND}
 		test? (
 			${UNIVALUE_DEPEND}
 			>=dev-libs/boost-1.52.0[threads(+)]
@@ -194,7 +197,7 @@ bitcoincore_common_depend_use() {
 	in_bcc_iuse "$1" || return
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} $1? ( $2 )"
 }
-bitcoincore_common_depend_use upnp net-libs/miniupnpc
+bitcoincore_common_depend_use upnp '>=net-libs/miniupnpc-1.9.20150916'
 bitcoincore_common_depend_use wallet "${WALLET_DEPEND}"
 bitcoincore_common_depend_use zeromq net-libs/zeromq
 RDEPEND="${RDEPEND} ${BITCOINCORE_COMMON_DEPEND}"
@@ -306,12 +309,16 @@ bitcoincore_prepare() {
 		mypolicy="${mypolicy#[-+]}"
 
 		if [ "${BITCOINCORE_MINOR}" -ge 12 ]; then
+			local sed_target=src/validation.h
+			if ! [ -e src/validation.h ]; then
+				sed_target=src/main.h
+			fi
 			case "${mypolicy}" in
 			rbf)
-				use bitcoin_policy_rbf || sed -i 's/\(DEFAULT_ENABLE_REPLACEMENT = \)true/\1false/' src/main.h
+				use bitcoin_policy_rbf || sed -i 's/\(DEFAULT_ENABLE_REPLACEMENT = \)true/\1false/' "${sed_target}" || die
 				;;
 			spamfilter)
-				use bitcoin_policy_spamfilter || sed -i 's/\(DEFAULT_SPAMFILTER = \)true/\1false/' src/main.h
+				use bitcoin_policy_spamfilter || sed -i 's/\(DEFAULT_SPAMFILTER = \)true/\1false/' "${sed_target}" || die
 				;;
 			*)
 				die "Unknown policy ${mypolicy}"
@@ -340,6 +347,7 @@ bitcoincore_prepare() {
 }
 
 bitcoincore_autoreconf() {
+	[[ ${EAPI} != 5 ]] && eapply_user
 	eautoreconf
 	rm -r src/leveldb || die
 	rm -r src/secp256k1 || die
@@ -403,7 +411,7 @@ bitcoincore_src_test() {
 
 bitcoincore_src_install() {
 	default
-	[ "${PN}" = "libbitcoinconsensus" ] || rm "${D}/usr/bin/test_bitcoin"
+	use_if_iuse test || rm "${D}/usr/bin/test_bitcoin"
 }
 
 _BITCOINCORE_ECLASS=1
