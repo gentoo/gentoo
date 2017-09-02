@@ -1,0 +1,29 @@
+From 8801beb5b64952fad15ff0c316bf1eddbde20ba9 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 2 Sep 2017 18:23:10 +0200
+Subject: [PATCH] Add missing VOIP ifdef guards
+
+Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=523230
+---
+ src/muc-channel.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/muc-channel.c b/src/muc-channel.c
+index c0a27a490..9f6e01167 100644
+--- a/src/muc-channel.c
++++ b/src/muc-channel.c
+@@ -1647,9 +1647,11 @@ gabble_muc_channel_can_be_closed (GabbleMucChannel *chan)
+   if (g_hash_table_size (priv->tubes) > 0)
+     return FALSE;
+ 
++#ifdef ENABLE_VOIP
+   if (priv->calls != NULL || priv->call_requests != NULL
+       || priv->call_initiating)
+     return FALSE;
++#endif
+ 
+   return TRUE;
+ }
+-- 
+2.14.1
+
