@@ -12203,7 +12203,7 @@ kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with
 kde-misc/kshutdown 4.0: Shutdown manager for desktop environmenmts like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20170128: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.6.2 0.7.0 9999: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.6.2 0.7.1 9999: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-redshift-control 1.0.17 1.0.18: Plasma 5 applet for controlling redshift
