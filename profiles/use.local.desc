@@ -2279,13 +2279,16 @@ dev-lisp/gcl:athena - Build xgcl - an interface to x11-libs/libXaw
 dev-lisp/sbcl:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 dev-lua/lpeg:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/lua-openssl:luajit - Use dev-lang/luajit instead of dev-lang/lua
+dev-lua/luacheck:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luafilesystem:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luaossl:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
 dev-lua/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
+dev-lua/luassert:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luvit:bundled-libs - Use bundled versions of some libraries.
 dev-lua/messagepack:luajit - Use the lua just-in-time compiler dev-lang/luajit instead of dev-lang/lua
 dev-lua/mpack:luajit - Use dev-lang/luajit instead of dev-lang/lua
+dev-lua/say:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-ml/angstrom:async - Enable dev-ml/async bindings for asynchronous API.
 dev-ml/angstrom:lwt - Enable dev-ml/lwt bindings for asynchronous API.
 dev-ml/cairo-ocaml:pango - Enable support for x11-libs/pango
@@ -5785,6 +5788,10 @@ net-im/vacuum:socksstreams - Enable initiating SOCKS5 data streams between two X
 net-im/vacuum:urlprocessor - Allows other plugins to load data from custom types of URLs
 net-im/vacuum:vcard - Enable obtaining peer's personal contact information
 net-im/vacuum:xmppuriqueries - Allow other plugins to handle XMPP URI queries
+net-irc/atheme-services:cracklib - Enable nickserv/cracklib module for enforcing strong account passwords
+net-irc/atheme-services:largenet - Enable support/tweaks for large networks
+net-irc/atheme-services:ldap - Enable ldap-backed authentication module
+net-irc/atheme-services:perl - Install a perl module which wraps around the services' XML-RPC interface
 net-irc/bip:freenode - Enables freenode-specific functionality. Currently that is only support for mute lists (MODE #channel +q).
 net-irc/bip:noctcp - Disable the automatic CTCP VERSION reply which is often exploited by malicious people to cause a DoS (reconnect due to flooding).
 net-irc/bip:oidentd - Enable oidentd support
@@ -8294,6 +8301,7 @@ www-client/google-chrome:plugins - Add system plugins path to launcher
 www-client/google-chrome-beta:plugins - Add system plugins path to launcher
 www-client/google-chrome-unstable:plugins - Add system plugins path to launcher
 www-client/links:libevent - Enable dev-libs/libevent support
+www-client/luakit:luajit - Use dev-lang/luajit instead of dev-lang/lua
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:granite - Enable support for the elementary library dev-libs/granite

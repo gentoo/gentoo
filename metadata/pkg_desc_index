@@ -4890,7 +4890,7 @@ dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.2 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
 dev-libs/libmongo-client 0.1.7 0.1.8: The alternative C driver for MongoDB
-dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usability-oriented extensions to C
+dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 2.1.0 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libmspack 0.5_alpha 0.5_alpha-r1: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
@@ -4979,7 +4979,7 @@ dev-libs/libxml2 2.9.4-r1 2.9.4-r2 2.9.4-r3: Version 2 of the library to manipul
 dev-libs/libxslt 1.1.29-r1: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
-dev-libs/libzip 1.2.0 1.2.0-r1: Library for manipulating zip archives
+dev-libs/libzip 1.2.0 1.2.0-r1 1.2.0-r2: Library for manipulating zip archives
 dev-libs/link-grammar 5.3.10 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/locked_sstream 0.0.5: tiny C++ library which wraps std::stringstream in a mutex
@@ -5161,6 +5161,7 @@ dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
 dev-lua/lua-zlib 0.3 1.1: Lua bindings to zlib
 dev-lua/lua_cliargs 2.5_p5 3.0_p1: A command-line argument parser.
+dev-lua/luacheck 0.20.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
 dev-lua/luadbi 0.5-r5: DBI module for Lua
@@ -5175,7 +5176,7 @@ dev-lua/luaposix 33.4.0: Bindings for POSIX APIs
 dev-lua/luarocks 2.0.7.1 2.0.8 2.0.12 2.2.0: A deployment and management system for Lua modules
 dev-lua/luasec 0.5.1 0.6: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r3: Networking support library for the Lua language
-dev-lua/luassert 1.7.9: Lua Assertions Extension
+dev-lua/luassert 1.7.9 1.7.10: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
 dev-lua/luvit 0.7.0 0.8.2 9999: Takes node.js' architecture and dependencies and fits it in the Lua language
@@ -5183,7 +5184,7 @@ dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.2 1.0.3 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
-dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
+dev-lua/say 1.3_p1 1.3_p1-r1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5 0.7: Module which offers basic control of ANSI compliant terminals
 dev-ml/OCaml-ImageMagick 0.34-r1: Provide the ImageMagick methods to OCaml
@@ -14777,6 +14778,7 @@ net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.2.5 9999: Qt Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
+net-irc/atheme-services 7.2.9: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
@@ -18394,6 +18396,7 @@ www-client/google-chrome-unstable 62.0.3198.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
+www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua
 www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
