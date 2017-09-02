@@ -1,0 +1,24 @@
+--- a/misc/guess-ploidy.py
++++ b/misc/guess-ploidy.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2.7
+ #
+ # Plot the output of "bcftools +guess-ploidy -v"
+ #
+--- a/misc/plot-roh.py
++++ b/misc/plot-roh.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2.7
+ 
+ import glob, gzip, csv, sys, os, copy, re
+ csv.register_dialect('tab', delimiter='\t', quoting=csv.QUOTE_NONE)
+--- a/misc/vcfutils.pl
++++ b/misc/vcfutils.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ #   Copyright (C) 2010 Broad Institute.
+ #   Copyright (C) 2011, 2014 Genome Research Ltd.
