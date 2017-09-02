@@ -12,7 +12,7 @@ SRC_URI="http://kerryt.orcon.net.nz/${MY_P}.tar.gz
 
 LICENSE="freedist GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="bindist" #444330
 
