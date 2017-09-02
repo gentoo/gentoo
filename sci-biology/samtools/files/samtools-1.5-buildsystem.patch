@@ -196,7 +196,7 @@
  	$(CC) $(CFLAGS) $(ALL_CPPFLAGS) -c -o $@ $<
  
 +$(LOBJS):
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -fPIC -c -o $@ $<
++	$(CC) $(CFLAGS) $(ALL_CPPFLAGS) -fPIC -c -o $@ $<
 +
  
  LIBST_OBJS = sam_opts.o sam_utils.o
