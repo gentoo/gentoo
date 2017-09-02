@@ -31,11 +31,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-minimal_compile_fix.patch" #629510
+)
+
 src_prepare() {
+	default
 	if [[ ${PV} == "9999" ]] ; then
 		eautoreconf
 	fi
-	default
 }
 
 src_configure() {
