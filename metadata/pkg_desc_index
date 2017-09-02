@@ -10327,7 +10327,7 @@ dev-util/checkstyle 7.2: Development tool to help write Java code that adheres t
 dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
-dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.1: A complete toolset for C and C++ development
+dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.2: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
 dev-util/cmake 3.7.2 3.8.2 3.9.0 3.9.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -14746,7 +14746,7 @@ net-im/jabberd2 2.3.3-r2 2.3.4-r1 2.5.0 2.6.1: Open Source Jabber Server
 net-im/kadu 2.1-r1 4.3-r1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mattermost-desktop-bin 3.5.0 3.6.0: Mattermost Desktop application
+net-im/mattermost-desktop-bin 3.5.0 3.6.0 3.7.0: Mattermost Desktop application
 net-im/mcabber 1.0.5 1.1.0 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
@@ -15405,7 +15405,7 @@ net-misc/rclone 1.36 1.37 9999: A program to sync files to and from various clou
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc18 1.2.0_rc19: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc19 1.2.0_rc20: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
@@ -17839,7 +17839,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.82 4.4.83 4.4.84 4.4.85 4.9.34 4.9.43 4.9.44 4.9.45 4.9.46 4.12.5 4.12.6 4.12.7 4.12.8 4.12.9 4.12.10: Full sources including the Gentoo patchset for the 4.12 kernel tree
+sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.82 4.4.83 4.4.84 4.4.85 4.4.86 4.9.34 4.9.43 4.9.44 4.9.45 4.9.46 4.12.5 4.12.6 4.12.7 4.12.8 4.12.9 4.12.10: Full sources including the Gentoo patchset for the 4.12 kernel tree
 sys-kernel/git-sources 4.13_rc1 4.13_rc2 4.13_rc3 4.13_rc4 4.13_rc5 4.13_rc6 4.13_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
