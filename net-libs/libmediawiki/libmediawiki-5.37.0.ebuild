@@ -9,7 +9,7 @@ DESCRIPTION="C++ interface for MediaWiki based web service as wikipedia.org"
 HOMEPAGE="https://www.digikam.org/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
