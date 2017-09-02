@@ -15455,7 +15455,7 @@ net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneli
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
-net-misc/streamlink 0.1.0 0.4.0 0.6.0 9999: CLI for extracting streams from websites to a video player of your choice
+net-misc/streamlink 0.1.0 0.4.0 0.6.0 0.7.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36 5.37 5.38 5.39 5.40: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
@@ -17999,7 +17999,7 @@ sys-process/dumb-init 1.2.0: A minimal init system for Linux containers
 sys-process/fcron 3.2.1-r1 3.2.1-r2 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
-sys-process/glances 2.7.1 2.8.1 2.9.1 2.10: CLI curses based monitoring tool
+sys-process/glances 2.7.1 2.8.1 2.9.1 2.10 2.10-r1 2.11: CLI curses based monitoring tool
 sys-process/htop 1.0.3 1.0.3-r1 2.0.1 2.0.2: interactive process viewer
 sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
