@@ -87,10 +87,6 @@ dev-qt/qtdeclarative:4 webkit
 dev-python/pyside webkit
 kde-frameworks/kdelibs:4 webkit
 
-# Alexis Ballier <aballier@gentoo.org> (26 Jun 2017)
-# Needs gstreamer:0.10
-<dev-qt/qtwebkit-4.9 gstreamer
-
 # Alexis Ballier <aballier@gentoo.org> (23 Jun 2017)
 # No need for old drivers
 <x11-base/xorg-drivers-1.19 video_cards_freedreno video_cards_tegra
