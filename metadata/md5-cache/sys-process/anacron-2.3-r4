@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/anacron/anacron-2.3.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=09218f60f2b803a8e5a80f33d53fa970
+_md5_=b488069272aa72020a79b8d5beb00298

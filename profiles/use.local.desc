@@ -2705,7 +2705,6 @@ dev-qt/qthelp:exceptions - Add support for exceptions - like catching them insid
 dev-qt/qtmultimedia:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtmultimedia:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtmultimedia:gstreamer - Enable audio support via media-libs/gstreamer using SLOT 1.0
-dev-qt/qtmultimedia:gstreamer010 - Enable audio support via media-libs/gstreamer using SLOT 0.10
 dev-qt/qtmultimedia:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtmultimedia:widgets - Build the QtMultimediaWidgets module
 dev-qt/qtnetwork:bindist - Disable EC support via dev-libs/openssl
