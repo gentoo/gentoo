@@ -74,7 +74,7 @@ prefix_src_archives() {
 	done
 }
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/portage.git
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
 	https://github.com/gentoo/portage.git"
 
 pkg_setup() {
