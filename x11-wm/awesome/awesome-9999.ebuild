@@ -68,7 +68,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	docompress -x /usr/share/doc/awesome/doc
 
 	pax-mark m "${ED%/}"/usr/bin/awesome
 
