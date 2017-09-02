@@ -15728,7 +15728,7 @@ net-vpn/openvpn 2.4.2-r1 2.4.3 2.4.3-r1 9999: Robust and highly flexible tunneli
 net-vpn/peervpn 0.044-r3: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-vpn/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
+net-vpn/tinc 1.0.31 1.0.32 1.1_pre15: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.2.9.10 0.3.0.8 0.3.0.9 0.3.0.10 0.3.1.5_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
