@@ -1,0 +1,11 @@
+--- a/config.mk
++++ b/config.mk
+@@ -2,7 +2,7 @@
+ 
+ # Compile/link options.
+ CC         ?= gcc
+-CFLAGS     += -std=gnu99 -ggdb -W -Wall -Wextra -Werror=unused-result
++CFLAGS     += -std=gnu99 -W -Wall -Wextra
+ LDFLAGS    +=
+ CPPFLAGS   +=
+ 
