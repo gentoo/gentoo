@@ -1958,7 +1958,7 @@ app-misc/towitoko 2.0.7-r2: Provides a driver for using Towitoko smartcard reade
 app-misc/tpconfig 3.1.3-r1 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 1.10.5 1.12.2: A tagging metadata database, search tool and indexer
+app-misc/tracker 1.10.5 1.12.2 1.12.3: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2 0.16.12.29 0.17.1.14: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r1 1.0.8-r2: The tty recorder provides tools to record and replay a terminal session.
@@ -2625,7 +2625,7 @@ app-vim/pyclewn 2.0.1 2.1-r1: Pyclewn allows using vim as a front end to a debug
 app-vim/pydiction 1.2.3 1.2.3-r1 1.2.3-r2: vim plugin: tab-complete your Python code
 app-vim/pydoc 2.0 2.0-r1: vim plugin: integrates python documentation view and search tool
 app-vim/pytest 1.1.4: vim plugin: run tests with py.test from within vim
-app-vim/python-mode 0.6.18-r3 0.6.18-r4 0.9.0: Provide python code looking for bugs, refactoring and other useful things
+app-vim/python-mode 0.6.18-r3 0.6.18-r4 0.9.0 0.9.0-r1: Provide python code looking for bugs, refactoring and other useful things
 app-vim/rails 5.1 5.2: vim plugin: aids developing Ruby on Rails applications
 app-vim/rainbow_parentheses 1.0: vim plugin: Colour parentheses to differentiate nest levels
 app-vim/recover 0.18: vim plugin: show differences for recovered files
@@ -11742,7 +11742,7 @@ gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.4 3.8.5: A nautilus extension for sending files to locations
-gnome-extra/nautilus-tracker-tags 1.10.5 1.12.2: Nautilus extension to tag files for Tracker
+gnome-extra/nautilus-tracker-tags 1.10.5 1.12.2 1.12.3: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0 3.4.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
