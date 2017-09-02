@@ -44,7 +44,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-util/gtk-doc-am-1.17
-	dev-libs/libxslt"
+	dev-libs/libxslt
+	virtual/pkgconfig
+"
 # Twisted tests fail if bad ipv6 setup, upstream bug #30565
 # Random twisted tests fail with org.freedesktop.DBus.Error.NoReply for some reason
 # pygobject:2 is needed by twisted-17 for gtk2reactor usage by gabble
@@ -57,6 +59,11 @@ DEPEND="${RDEPEND}
 #		>=dev-python/dbus-python-0.83
 #	) )
 #)
+
+PATCHES=(
+	# Fix build with USE=-jingle, bug #523230
+	"${FILESDIR}"/${P}-build-fix-no-jingle.patch
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup
