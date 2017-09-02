@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-# ruby23 and ruby24  dion't have required deps
-USE_RUBY="ruby22"
+# ruby24 don't have required deps
+USE_RUBY="ruby22 ruby23"
 inherit eutils depend.apache ruby-ng user
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
