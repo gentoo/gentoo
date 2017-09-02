@@ -8,11 +8,11 @@ inherit cmake-utils
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-sayura"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-configtool"
 fi
 
-DESCRIPTION="Sinhala Sayura input method for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-sayura"
+DESCRIPTION="GTK+ GUI configuration tool for Fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-configtool"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
@@ -21,13 +21,23 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
-	virtual/libiconv
-	virtual/libintl"
+	app-text/iso-codes
+	dev-libs/glib:2
+	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=()
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_GTK2=OFF
+		-DENABLE_GTK3=ON
+	)
+
+	cmake-utils_src_configure
+}
