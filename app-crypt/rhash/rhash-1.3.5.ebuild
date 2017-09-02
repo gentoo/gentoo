@@ -57,7 +57,8 @@ multilib_src_compile() {
 		$(use openssl && echo -ldl)
 	)
 
-	use elibc_Darwin || use elibc_SunOS &&
+	use elibc_Darwin || use elibc_DragonFly || use elibc_FreeBSD ||
+		use elibc_NetBSD || use elibc_OpenBSD || use elibc_SunOS &&
 			ADDLDFLAGS+=( $(use nls && echo -lintl) )
 
 	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" \
