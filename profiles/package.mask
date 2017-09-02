@@ -34,6 +34,10 @@
 # Masked for removal in 30 days. Bug #629144.
 dev-qt/qtphonon
 
+# Gilles Dartiguelongue <eva@gentoo.org> (2 Sep 1017)
+# Gnome 3.26 package mask
+>=dev-libs/libgepub-0.5
+
 # Aaron Bauman <bman@gentoo.org> (1 Sep 2017)
 # vulnerable per bug #513818 and dead upstream
 # net-analyzer/ntopng is available
