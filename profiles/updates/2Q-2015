@@ -106,7 +106,7 @@ move kde-base/kfind kde-apps/kfind
 move kde-base/kfloppy kde-apps/kfloppy
 move kde-base/kfmclient kde-apps/kfmclient
 move kde-base/kfourinline kde-apps/kfourinline
-move kde-base/kgamma kde-apps/kgamma
+move kde-base/kgamma kde-plasma/kgamma
 move kde-base/kgeography kde-apps/kgeography
 move kde-base/kget kde-apps/kget
 move kde-base/kglobalaccel kde-apps/kglobalaccel
@@ -208,7 +208,7 @@ move kde-base/nepomuk kde-apps/nepomuk
 move kde-base/nsplugins kde-apps/nsplugins
 move kde-base/okteta kde-apps/okteta
 move kde-base/okular kde-apps/okular
-move kde-base/oxygen-icons kde-apps/oxygen-icons
+move kde-base/oxygen-icons kde-frameworks/oxygen-icons
 move kde-base/pairs kde-apps/pairs
 move kde-base/palapeli kde-apps/palapeli
 move kde-base/parley kde-apps/parley
