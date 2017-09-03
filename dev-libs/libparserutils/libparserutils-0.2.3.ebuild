@@ -11,7 +11,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~ppc x86 ~m68k-mint"
+KEYWORDS="amd64 arm ~ppc x86 ~m68k-mint"
 IUSE="iconv test"
 
 DEPEND="test? (	dev-lang/perl )"
