@@ -6,9 +6,9 @@ inherit toolchain-funcs git-r3
 
 DESCRIPTION="Utility to view Radeon GPU utilization"
 HOMEPAGE="https://github.com/clbr/radeontop"
-LICENSE="GPL-3"
 EGIT_REPO_URI="https://github.com/clbr/radeontop.git"
 
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="nls"
@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	tc-export CC
+	export LIBDIR=$(get_libdir)
 	export nls=$(usex nls 1 0)
 	export amdgpu=1
 	export xcb=1
