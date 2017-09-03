@@ -2301,7 +2301,7 @@ app-text/groonga 5.0.3 5.0.9 6.1.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.2.3 1.4.1 1.4.2: Spell check library for GTK+ applications
-app-text/gtkspell 2.0.16 3.0.7: Spell checking widget for GTK
+app-text/gtkspell 2.0.16 3.0.7 3.0.9: Spell checking widget for GTK
 app-text/gtranslator 2.91.7-r1: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
@@ -12143,7 +12143,7 @@ kde-frameworks/kjs 5.34.0 5.37.0: ECMAScipt compatible parser and engine
 kde-frameworks/kjsembed 5.34.0 5.37.0: Framework binding JavaScript objects to QObjects
 kde-frameworks/kmediaplayer 5.34.0 5.37.0: Framework providing a common interface for KParts that can play media files
 kde-frameworks/knewstuff 5.34.0 5.37.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.34.0 5.34.0-r1 5.37.0 5.37.0-r1: Framework for notifying the user of an event
+kde-frameworks/knotifications 5.34.0 5.34.0-r1 5.37.0-r1: Framework for notifying the user of an event
 kde-frameworks/knotifyconfig 5.34.0 5.37.0: Framework for configuring desktop notifications
 kde-frameworks/kpackage 5.34.0 5.37.0: Framework to install and load packages of non binary content
 kde-frameworks/kparts 5.34.0 5.37.0: Framework providing elaborate user-interface components
@@ -12169,7 +12169,7 @@ kde-frameworks/plasma 5.34.0 5.37.0: Plasma framework
 kde-frameworks/prison 5.34.0 5.37.0: QRCode and data matrix barcode library
 kde-frameworks/solid 5.34.0 5.37.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.34.0 5.37.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/syntax-highlighting 5.34.0 5.37.0 5.37.0-r1: Framework for syntax highlighting
+kde-frameworks/syntax-highlighting 5.34.0 5.37.0-r1: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.34.0 5.37.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
@@ -18662,7 +18662,7 @@ x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ Toolkit for developing Grap
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.36.6 2.36.9: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
-x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
+x11-libs/gksu 2.0.2-r1 2.0.2-r2: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.9: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.8.17-r2 0.10.32 0.10.35: A library of document-centric objects and utilities
@@ -18731,7 +18731,7 @@ x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5 9999: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-qt 0.11.1: Qt port of libfm, a library providing components to build desktop file managers
 x11-libs/libfontenc 1.1.2 1.1.3: X.Org fontenc library
-x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
+x11-libs/libgksu 2.0.12-r2 2.0.12-r3: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
