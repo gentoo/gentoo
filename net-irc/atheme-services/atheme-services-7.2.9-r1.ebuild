@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="cracklib largenet ldap nls +pcre perl profile ssl"
 S="${WORKDIR}/atheme-${PV}"
 
-RDEPEND=">=dev-libs/libmowgli-2.1.0:0
+RDEPEND=">=dev-libs/libmowgli-2.1.0:2
 	cracklib? ( sys-libs/cracklib )
 	ldap? ( net-nds/openldap )
 	perl? ( dev-lang/perl )
