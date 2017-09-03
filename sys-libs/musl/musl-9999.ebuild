@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,15 +8,15 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
 	SRC_URI="
-	http://dev.gentoo.org/~blueness/musl-misc/getconf.c
-	http://dev.gentoo.org/~blueness/musl-misc/getent.c
-	http://dev.gentoo.org/~blueness/musl-misc/iconv.c"
+	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
+	https://dev.gentoo.org/~blueness/musl-misc/getent.c
+	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
 	KEYWORDS=""
 else
 	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz
-	http://dev.gentoo.org/~blueness/musl-misc/getconf.c
-	http://dev.gentoo.org/~blueness/musl-misc/getent.c
-	http://dev.gentoo.org/~blueness/musl-misc/iconv.c"
+	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
+	https://dev.gentoo.org/~blueness/musl-misc/getent.c
+	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
 	KEYWORDS="-* ~amd64 ~arm ~mips ~ppc ~x86"
 fi
 
