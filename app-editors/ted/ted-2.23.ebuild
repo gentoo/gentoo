@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs xdg-utils
 
 DESCRIPTION="X-based rich text editor"
 HOMEPAGE="http://www.nllgg.nl/Ted"
@@ -63,4 +63,12 @@ src_compile() {
 src_install() {
 	default
 	dosym ../share/Ted/examples/rtf2pdf.sh /usr/bin/rtf2pdf.sh
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
