@@ -9,7 +9,7 @@ move media-tv/linuxtv-dvb-headers virtual/linuxtv-dvb-headers
 move app-shells/prll sys-process/prll
 move net-wireless/wispy-tools net-wireless/spectools
 slotmove dev-ruby/syslogger 3 0
-move kde-misc/konq-plugins kde-base/konq-plugins
+move kde-misc/konq-plugins kde-apps/konq-plugins
 slotmove <gnome-extra/nautilus-actions-3.2.2 0 2
 move dev-php/php-tokenstream dev-php/PHP_TokenStream
 move dev-php/phpunit-selenium dev-php/PHPUnit_Selenium
