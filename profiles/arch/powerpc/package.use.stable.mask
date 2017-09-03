@@ -17,14 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
+# Stable-masking mpi support so Boost stabilization can go ahead
+# Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
+=dev-libs/boost-1.62* mpi
+=dev-libs/boost-1.63* mpi
+
 # Mikle Kolyada <zlogene@gentoo.org> (25 Aug 2017)
 # ceph has never been stabilized under either ~ppc or ~ppc64
 sys-fs/multipath-tools rbd
-
-# Christoph Junghans <junghans@gentoo.org> (14 Feb 2017)
-# Stable-masking mpi support so Boost 1.62 stabilization can go ahead
-# (bug 590244)
-=dev-libs/boost-1.62* mpi
 
 # Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
 # Dependencies not going to stable for now
