@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit autotools elisp-common eutils flag-o-matic multilib python-single-r1 too
 DESCRIPTION="Research tool for commutative algebra and algebraic geometry"
 HOMEPAGE="http://www.math.uiuc.edu/Macaulay2/"
 BASE_URI="http://www.math.uiuc.edu/Macaulay2/Downloads/OtherSourceCode/"
-BASE_URI2="http://dev.gentoo.org/~tomka/files/"
+BASE_URI2="https://dev.gentoo.org/~tomka/files/"
 SRC_URI="
 	${BASE_URI2}/${P}-fat.tar.bz2
 "
