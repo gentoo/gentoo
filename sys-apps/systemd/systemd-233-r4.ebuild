@@ -442,6 +442,8 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
+	systemd_reenable systemd-networkd.service systemd-resolved.service
+
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
