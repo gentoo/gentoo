@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -8,8 +8,8 @@ DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
 SLOT="8.1"
 SOURCE_URL="http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-src.zip"
-PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2"
-L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-8.1-20151105.tar.bz2"
+PATCHES_URL="https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2"
+L10N_URL="https://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-8.1-20151105.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="l10n_af? ( ${ALL_URLS} )
 	l10n_ar? ( ${ALL_URLS} )
