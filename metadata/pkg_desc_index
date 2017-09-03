@@ -15433,7 +15433,7 @@ net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
 net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/slimrat 9999: Linux Rapidshare downloader
-net-misc/smb4k 1.2.3-r1 2.0.2: Advanced network neighborhood browser
+net-misc/smb4k 2.0.2: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r3: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
