@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -9,7 +9,7 @@ HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="8.1"
 SOURCE_URL="http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/22CB933E3A1450B092C45785C187837E97523F5C-ant-libs-1.9.4.zip
 	http://hg.netbeans.org/binaries/95CCE237B1E9390FBED0440B601822813DB220E6-ant-misc-1.9.4.zip"
 LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
