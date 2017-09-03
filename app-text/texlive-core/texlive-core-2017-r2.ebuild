@@ -101,6 +101,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
 	>=app-text/poppler-0.12.3-r3:=
+	<app-text/poppler-0.58.0
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
 	dev-libs/zziplib
