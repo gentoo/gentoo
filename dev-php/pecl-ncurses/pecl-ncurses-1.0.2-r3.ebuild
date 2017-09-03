@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ USE_PHP="php5-6 php7-0"
 
 inherit php-ext-pecl-r3
 
-SRC_URI+=" http://dev.gentoo.org/~grknight/distfiles/${P}-php7.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~grknight/distfiles/${P}-php7.patch.xz"
 
 DESCRIPTION="Terminal screen handling and optimization package"
 
