@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/clbr/radeontop/archive/v1.0.tar.gz -> radeontop-1.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=2d5f955a124f8991dd06357210de2dbc
+_md5_=85a05fbb471eaac27b0e99934edb217f
