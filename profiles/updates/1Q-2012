@@ -1,4 +1,3 @@
-slotmove kde-misc/kcm-grub2 0 4
 slotmove kde-misc/kfilebox 0 4
 move x11-misc/synergy-plus x11-misc/synergy
 move media-sound/minitunes media-sound/musique
