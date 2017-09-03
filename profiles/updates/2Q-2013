@@ -6,7 +6,6 @@ slotmove =net-libs/libgrss-0.5.0* 0 0.5
 move games-engines/gambatte games-emulation/gambatte
 move media-sound/alsa-firmware sys-firmware/alsa-firmware
 move sys-process/crtools sys-process/criu
-move kde-misc/libkfbapi net-libs/libkfbapi
 move app-text/wpd2odt app-text/writerperfect
 slotmove =dev-ruby/mocha-0.10* 0 0.10
 slotmove =dev-ruby/mocha-0.11* 0 0.11
