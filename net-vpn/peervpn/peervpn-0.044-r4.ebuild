@@ -42,8 +42,9 @@ src_install() {
 
 	insinto /etc/${PN}
 	newins peervpn.conf peervpn.conf.example
-	fowners ${PN}:${PN} /etc/${PN}
-	fperms 0700 /etc/${PN}
+	# read-only group access for bug 629418
+	fowners root:${PN} /etc/${PN}
+	fperms 0750 /etc/${PN}
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
@@ -51,4 +52,14 @@ src_install() {
 	keepdir /var/log/${PN}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
+}
+
+pkg_preinst() {
+	if ! has_version '>=net-vpn/peervpn-0.044-r4' && \
+		[[ -d ${EROOT}etc/${PN} &&
+		$(find "${EROOT}etc/peervpn" ! -user root -print) ]]; then
+		ewarn "Tightening '${EROOT}etc/${PN}' permissions for bug 629418"
+		chown -R root:${PN} "${EROOT}etc/${PN}" || die
+		chmod -R g+rX-w,o-rwx "${EROOT}etc/${PN}" || die
+	fi
 }
