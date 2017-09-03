@@ -16,7 +16,7 @@ SRC_URI="https://github.com/xypron/skyldav/archive/${MY_PV}.tar.gz -> ${MY_P}.ta
 ## selfmade tarball
 #MY_PVR=${PVR/_rc/rc}
 #MY_P="${PN}-${MY_PVR}"
-#SRC_URI="http://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${MY_P}.tar.gz"
+#SRC_URI="https://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${MY_P}.tar.gz"
 
 ## github commit tarball
 #MY_GIT_COMMIT="49bdb5e710b5a77c38ceb87da6015afb7009f1f9"
