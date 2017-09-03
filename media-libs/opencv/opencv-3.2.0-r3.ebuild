@@ -12,7 +12,7 @@ HOMEPAGE="http://opencv.org"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	contrib? ( https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
-		contrib_xfeatures2d? ( http://dev.gentoo.org/~amynka/snap/vgg_boostdesc-${PV}.tar.gz ) )"
+		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-${PV}.tar.gz ) )"
 LICENSE="BSD"
 SLOT="0/3.2" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
