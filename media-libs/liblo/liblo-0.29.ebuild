@@ -17,6 +17,10 @@ RESTRICT="test"
 
 DEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-ipv6_build_fix.patch" #627832
+)
+
 src_prepare() {
 	default
 
