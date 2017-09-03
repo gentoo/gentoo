@@ -147,7 +147,7 @@ src_configure() {
 		$(use_enable erlang) \
 		$(use_enable systemtap probes) \
 		$(use_enable lua) \
-		--with-gtk=$(usex gtk 3 no)
+		--with-gtk=$(usex gtk 3 no) \
 		$(usex doc '' PO4A=no)
 }
 
