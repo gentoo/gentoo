@@ -4,7 +4,7 @@
 EAPI=6
 
 inherit perl-module
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
 
 DESCRIPTION="Mozilla's CA cert bundle in PEM format (Gentoo stub)"
 
