@@ -13720,7 +13720,7 @@ media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or 
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 3.4.5: a media player aiming to be similar to AmaroK, but for GTK+
-media-sound/ezstream 0.5.6 0.6.0: A command line source client for Icecast media streaming servers
+media-sound/ezstream 0.6.0-r1: A command line source client for Icecast media streaming servers
 media-sound/fapg 0.41 0.42: Fast Audio Playlist Generator
 media-sound/flac-image 1.00: Utility for adding image files (e.g. album cover art) to metadata of FLAC files
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
