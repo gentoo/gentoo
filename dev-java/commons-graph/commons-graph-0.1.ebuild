@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A toolkit for managing graphs and graph based data structures"
 HOMEPAGE="https://commons.apache.org/sandbox/commons-graph/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
