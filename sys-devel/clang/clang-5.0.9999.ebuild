@@ -105,6 +105,11 @@ src_prepare() {
 	# fix finding compiler-rt libs
 	eapply "${FILESDIR}"/5.0.0/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 
+	cd tools/extra || die
+	# fix stand-alone test build for extra tools
+	eapply "${FILESDIR}"/5.0.0/extra/0002-test-Fix-clang-library-dir-in-LD_LIBRARY_PATH-For-st.patch
+	cd - >/dev/null || die
+
 	# User patches
 	eapply_user
 }
