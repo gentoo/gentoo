@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 user readme.gentoo-r1 udev vala
+inherit gnome2 user readme.gentoo-r1 systemd udev vala
 
 DESCRIPTION="Modem and mobile broadband management libraries"
 HOMEPAGE="https://cgit.freedesktop.org/ModemManager/ModemManager/"
@@ -103,6 +103,8 @@ pkg_postinst() {
 			;;
 		esac
 	fi
+
+	systemd_reenable ModemManager.service
 
 	readme.gentoo_print_elog
 }
