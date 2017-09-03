@@ -14,7 +14,7 @@ DESCRIPTION="Colour management system allowing to share settings across apps and
 HOMEPAGE="http://www.oyranos.org/"
 [[ ${PV} != *9999 ]] && \
 SRC_URI="https://github.com/${PN}-cms/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	http://dev.gentoo.org/~asturm/${P}-patches.tar.xz"
+	https://dev.gentoo.org/~asturm/${P}-patches.tar.xz"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="BSD"
