@@ -22,7 +22,7 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+mirror://gentoo/${SCTP_PATCH}}
 	${HPN_PATCH:+hpn? (
 		mirror://gentoo/${HPN_PATCH}.xz
-		http://dev.gentoo.org/~chutzpah/${HPN_PATCH}.xz
+		https://dev.gentoo.org/~chutzpah/${HPN_PATCH}.xz
 	)}
 	${LDAP_PATCH:+ldap? ( mirror://gentoo/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( http://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
