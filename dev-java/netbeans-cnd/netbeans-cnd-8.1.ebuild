@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -9,7 +9,7 @@ HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="8.1"
 SOURCE_URL="http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/99529DC0E1426A102A98EF5494B6F6AA6E497F62-clank_0.3.6.zip
