@@ -6,9 +6,9 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility to view Radeon GPU utilization"
 HOMEPAGE="https://github.com/clbr/radeontop"
-LICENSE="GPL-3"
 SRC_URI="https://github.com/clbr/radeontop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
@@ -45,6 +45,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	export LIBDIR=$(get_libdir)
 	export nls=$(usex nls 1 0)
 	export amdgpu=1
 	export xcb=1
