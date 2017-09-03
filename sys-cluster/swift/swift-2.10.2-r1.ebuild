@@ -104,7 +104,8 @@ python_install_all() {
 		newins "etc/object-expirer.conf-sample" "object-expirer.conf"
 	fi
 
-	fowners swift:swift "/etc/swift" || die "fowners failed"
+	fowners root:swift "/etc/swift" || die "fowners failed"
+	fperms 0750 /etc/swift
 }
 
 pkg_postinst() {
