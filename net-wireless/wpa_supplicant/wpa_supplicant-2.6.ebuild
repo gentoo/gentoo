@@ -394,4 +394,6 @@ pkg_postinst() {
 				"Please try to re-enable ${fn}"
 		fi
 	done
+
+	systemd_reenable wpa_supplicant.service
 }
