@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Bugzilla subcommand for git"
 HOMEPAGE="http://www.fishsoup.net/software/git-bz/"
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
