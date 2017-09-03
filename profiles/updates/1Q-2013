@@ -16,7 +16,6 @@ move net-wireless/bluez-firmware sys-firmware/bluez-firmware
 move net-wireless/atmel-firmware sys-firmware/atmel-firmware
 move net-wireless/b43-firmware sys-firmware/b43-firmware
 move net-wireless/b43legacy-firmware sys-firmware/b43legacy-firmware
-slotmove =x11-drivers/ati-drivers-12.6_beta_pre897 1 legacy
 move dev-util/qt-creator dev-qt/qt-creator
 move x11-libs/qt-assistant dev-qt/qthelp
 move x11-libs/qt-bearer dev-qt/qtbearer

@@ -1,14 +1,8 @@
 slotmove kde-misc/colibri 0 4
-slotmove kde-misc/eventlist 0 4
 slotmove media-gfx/blender 2.60 0
-slotmove kde-misc/plasma-mpd-nowplaying 0 4
-slotmove kde-misc/kbstateapplet 0 4
 move net-voip/telepathy-sofiasip net-voip/telepathy-rakia
-slotmove kde-misc/kio-ftps 0 4
 slotmove kde-misc/kcollectd 0 4
-slotmove kde-misc/wicd-client-kde 0 4
 slotmove kde-misc/kanyremote 0 4
-slotmove kde-misc/kio-upnp-ms 0 4
 move app-i18n/ibus-mozc app-i18n/mozc
 move sys-auth/nss-ldapd sys-auth/nss-pam-ldapd
 move sys-apps/seabios sys-firmware/seabios
