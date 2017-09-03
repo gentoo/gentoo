@@ -1,0 +1,37 @@
+diff --git a/Makefile.am b/Makefile.am
+index 59ba94121..6419e9f57 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -26,6 +26,8 @@ dbusservice_DATA = nm-fortisslvpn-service.conf
+ nmvpnservicedir = $(NM_VPN_SERVICE_DIR)
+ nmvpnservice_DATA = nm-fortisslvpn-service.name
+ 
++fortisslvpn_statedir = $(localstatedir)/lib/$(PACKAGE)
++
+ BUILT_SOURCES =
+ 
+ ###############################################################################
+@@ -276,7 +278,7 @@ auth_dialog_nm_fortisslvpn_auth_dialog_LDADD = \
+ if WITH_LIBNM_GLIB
+ # Install a file with full path to plugins for an old gnome-shell
+ # https://bugzilla.gnome.org/show_bug.cgi?id=693590
+-install-data-hook:
++install-compat-name-file:
+ 	mkdir -p $(DESTDIR)$(sysconfdir)/NetworkManager/VPN
+ 	sed -e "1s|^|# This file is obsoleted by a file in $(NM_VPN_SERVICE_DIR)\n\n|" \
+ 	    -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
+@@ -286,8 +288,14 @@ install-data-hook:
+ 
+ uninstall-hook:
+ 	 rm -f $(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-fortisslvpn-service.name
++else
++install-compat-name-file:
++	@:
+ endif
+ 
++install-data-hook: install-compat-name-file
++	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)
++
+ appdatadir = $(datadir)/appdata
+ appdata_files = $(appdata_in_files:.xml.in=.xml)
+ if WITH_GNOME
