@@ -827,8 +827,8 @@ use_if_iuse() {
 # @FUNCTION: optfeature
 # @USAGE: <short description> <package atom to match> [other atoms]
 # @DESCRIPTION:
-# Print out a message suggesting an optional package (or packages) which
-# provide the described functionality
+# Print out a message suggesting an optional package (or packages)
+# not currently installed which provides the described functionality.
 #
 # The following snippet would suggest app-misc/foo for optional foo support,
 # app-misc/bar or app-misc/baz[bar] for optional bar support
