@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="A command line source client for Icecast media streaming servers"
-HOMEPAGE="http://www.icecast.org/ezstream.php"
+HOMEPAGE="http://www.icecast.org/ezstream/"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -14,7 +14,7 @@ IUSE="taglib"
 
 COMMON_DEPEND="dev-libs/libxml2
 	>=media-libs/libshout-2.2
-	media-libs/libvorbis
+	!taglib? ( media-libs/libvorbis )
 	taglib? ( media-libs/taglib )"
 RDEPEND="${COMMON_DEPEND}
 	net-misc/icecast"
@@ -27,14 +27,14 @@ src_configure() {
 	econf \
 		--docdir=${docdir} \
 		--enable-examplesdir=${docdir}/examples \
-		$(use_with taglib)
+		$(use_with taglib taglib "/usr")
 }
 
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN} || die
-	newconfd "${FILESDIR}"/${PN}.confd ${PN} || die
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
-	rm -f "${D}"/usr/share/doc/${PF}/COPYING
+	rm -f "${D%/}"/usr/share/doc/${PF}/COPYING
 }
