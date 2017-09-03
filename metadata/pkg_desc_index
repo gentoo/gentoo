@@ -1715,7 +1715,7 @@ app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full
 app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r2: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
-app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
+app-misc/bfr 1.6-r2 1.6-r3: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
 app-misc/bijiben 3.20.2 3.21.2 3.24.0 3.24.1: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
