@@ -21,7 +21,6 @@ move kde-base/kabcclient kde-apps/kabcclient
 move kde-base/kaddressbook kde-apps/kaddressbook
 move kde-base/kalarm kde-apps/kalarm
 move kde-base/kdepim-common-libs kde-apps/kdepim-common-libs
-move kde-base/kdepim-icons kde-apps/kdepim-icons
 move kde-base/kdepim-kresources kde-apps/kdepim-kresources
 move kde-base/kdepim-l10n kde-apps/kdepim-l10n
 move kde-base/kdepim-meta kde-apps/kdepim-meta
