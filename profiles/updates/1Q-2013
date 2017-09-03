@@ -56,7 +56,7 @@ move net-misc/leechcraft-blogique app-leechcraft/lc-blogique
 move net-misc/leechcraft-core app-leechcraft/lc-core
 move net-misc/leechcraft-cstp app-leechcraft/lc-cstp
 move net-misc/leechcraft-dbusmanager app-leechcraft/lc-dbusmanager
-move net-misc/leechcraft-full app-leechcraft/leechraft-meta
+move net-misc/leechcraft-full app-leechcraft/leechcraft-meta
 move net-misc/leechcraft-gacts app-leechcraft/lc-gacts
 move net-misc/leechcraft-glance app-leechcraft/lc-glance
 move net-misc/leechcraft-historyholder app-leechcraft/lc-historyholder

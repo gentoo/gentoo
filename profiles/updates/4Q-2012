@@ -54,7 +54,7 @@ move x11-libs/vdpau-video x11-libs/libva-vdpau-driver
 slotmove <net-libs/farstream-0.1.90 0 0.1
 move dev-ruby/ruby-bsearch dev-ruby/bsearch
 move net-misc/ptunnel net-proxy/pingtunnel
-move media-sound/leechcraft-lemon net-misc/leechcraft-lemon
+move media-sound/leechcraft-lemon app-leechcraft/lc-lemon
 move dev-haskell/hsql-sqlite dev-haskell/hsql-sqlite3
 slotmove dev-ruby/builder 3.1.4 3.1
 move x11-terms/terminal x11-terms/xfce4-terminal

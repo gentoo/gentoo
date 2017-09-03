@@ -1,4 +1,4 @@
-move kde-misc/print-manager kde-base/print-manager
+move kde-misc/print-manager kde-apps/print-manager
 slotmove =dev-haskell/glade-0.12* 0 2
 slotmove =dev-haskell/gtk-0.12* 0 2
 slotmove =media-sound/ardour-2.8* 0 2
