@@ -9,7 +9,7 @@ MY_P="${P/-/_}"
 
 DESCRIPTION="A graphical user interface toolkit for X"
 HOMEPAGE="http://xforms-toolkit.org/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
