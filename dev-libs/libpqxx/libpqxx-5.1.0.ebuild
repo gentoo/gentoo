@@ -16,12 +16,12 @@ SLOT="0"
 IUSE="doc static-libs"
 
 RDEPEND="dev-db/postgresql:="
-DEPEND="${PYTHON_DEPS}
-		${RDEPEND}
-		doc? (
-			 app-doc/doxygen
-			 app-text/xmlto
-		)
+DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
+	doc? (
+		app-doc/doxygen
+		app-text/xmlto
+	)
 "
 
 DOCS=( AUTHORS NEWS README{.md,-UPGRADE} )
@@ -39,16 +39,6 @@ src_configure() {
 		--enable-shared \
 		$(use_enable doc documentation) \
 		$(use_enable static-libs static)
-}
-
-src_install () {
-	use doc && HTML_DOCS=( doc/html/. )
-
-	default
-
-	if ! use static-libs; then
-		find "${D}" -name '*.la' -delete || die
-	fi
 }
 
 src_test() {
@@ -71,15 +61,8 @@ src_test() {
 		local server_version
 		server_version=$(psql -Aqtc 'SELECT version();' 2> /dev/null)
 		if [[ $? = 0 ]] ; then
-			# Currently works with highest server version in tree
-			#server_version=$(echo ${server_version} | cut -d " " -f 2 | cut -d "." -f -2 | tr -d .)
-			#if [[ $server_version < 92 ]] ; then
-				cd "${S}/test"
-				emake check
-			#else
-			#	eerror "Server version must be 8.4.x or below."
-			#	die "Server version isn't 8.4.x or below"
-			#fi
+			cd "${S}/test" || die
+			emake check
 		else
 			eerror "Is the server running?"
 			eerror "Verify role and database exist, and are permitted in pg_hba.conf for:"
@@ -90,5 +73,14 @@ src_test() {
 	else
 		eerror "PGDATABASE and PGUSER must be set to perform tests."
 		eerror "Skipping tests."
+	fi
+}
+
+src_install () {
+	use doc && HTML_DOCS=( doc/html/. )
+	default
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
 	fi
 }
