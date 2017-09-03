@@ -16,7 +16,6 @@ move net-wireless/bluez-firmware sys-firmware/bluez-firmware
 move net-wireless/atmel-firmware sys-firmware/atmel-firmware
 move net-wireless/b43-firmware sys-firmware/b43-firmware
 move net-wireless/b43legacy-firmware sys-firmware/b43legacy-firmware
-move net-wireless/rt61-firmware sys-firmware/rt61-firmware
 slotmove =x11-drivers/ati-drivers-12.6_beta_pre897 1 legacy
 move dev-util/qt-creator dev-qt/qt-creator
 move x11-libs/qt-assistant dev-qt/qthelp
@@ -45,9 +44,7 @@ move media-sound/leechcraft-lastfmscrobble app-leechcraft/lc-lastfmscrobble
 move media-sound/leechcraft-lmp app-leechcraft/lc-lmp
 move media-sound/leechcraft-musiczombie app-leechcraft/lc-musiczombie
 move media-sound/leechcraft-touchstreams app-leechcraft/lc-touchstreams
-move media-video/leechcraft-laure app-leechcraft/lc-laure
 move net-analyzer/leechcraft-networkmonitor app-leechcraft/lc-networkmonitor
-move net-ftp/leechcraft-lcftp app-leechcraft/lc-lcftp
 move net-im/leechcraft-azoth app-leechcraft/lc-azoth
 move net-misc/leechcraft-advancednotifications app-leechcraft/lc-advancednotifications
 move net-misc/leechcraft-anhero app-leechcraft/lc-anhero
@@ -73,14 +70,11 @@ move net-misc/leechcraft-pintab app-leechcraft/lc-pintab
 move net-misc/leechcraft-qrosp app-leechcraft/lc-qrosp
 move net-misc/leechcraft-sb2 app-leechcraft/lc-sb2
 move net-misc/leechcraft-secman app-leechcraft/lc-secman
-move net-misc/leechcraft-sidebar app-leechcraft/lc-sidebar
 move net-misc/leechcraft-summary app-leechcraft/lc-summary
-move net-misc/leechcraft-tabpp app-leechcraft/lc-tabpp
 move net-misc/leechcraft-tabsessmanager app-leechcraft/lc-tabsessmanager
 move net-misc/leechcraft-tabslist app-leechcraft/lc-tabslist
 move net-news/leechcraft-aggregator app-leechcraft/lc-aggregator
 move net-p2p/leechcraft-bittorrent app-leechcraft/lc-bittorrent
-move net-p2p/leechcraft-eiskaltdcpp app-leechcraft/lc-eiskaltdcpp
 move net-proxy/leechcraft-xproxy app-leechcraft/lc-xproxy
 move sys-fs/leechcraft-vrooby app-leechcraft/lc-vrooby
 move www-client/leechcraft-deadlyrics app-leechcraft/lc-deadlyrics
@@ -93,5 +87,4 @@ move x11-plugins/leechcraft-lhtr app-leechcraft/lc-lhtr
 move x11-plugins/leechcraft-tpi app-leechcraft/lc-tpi
 move app-leechcraft/leechraft-meta app-leechcraft/leechcraft-meta
 slotmove www-plugins/chrome-binary-plugins 0 unstable
-move dev-php/pecl-zendoptimizerplus dev-php/pecl-zendopcache
 slotmove <media-libs/gupnp-dlna-0.7 0 1.0
