@@ -52,8 +52,9 @@ src_configure() {
 
 src_test() {
 	# ECMToolchainAndroidTest passes but then breaks src_install
+	# ECMPoQmToolsTest is broken, bug #627806
 	local myctestargs=(
-		-E "(ECMToolchainAndroidTest)"
+		-E "(ECMToolchainAndroidTest|ECMPoQmToolsTest)"
 	)
 
 	kde5_src_test
