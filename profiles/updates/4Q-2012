@@ -4,8 +4,6 @@ move app-emulation/qemu-kvm app-emulation/qemu
 move media-libs/libmediawiki net-libs/libmediawiki
 move media-fonts/source-sans-pro media-fonts/source-pro
 move media-fonts/source-code-pro media-fonts/source-pro
-move x11-wm/razorqt razorqt-base/razorqt-meta
-move x11-misc/lightdm-razorqt-greeter razorqt-base/razorqt-lightdm-greeter
 move x11-libs/openmotif x11-libs/motif
 move app-doc/openmotif-manual app-doc/motif-reference-manual
 slotmove dev-libs/boost 1.36 0
@@ -48,8 +46,6 @@ move games-board/jrisk games-board/domination
 move x11-libs/elementary media-libs/elementary
 move x11-misc/pnmixer media-sound/pnmixer
 move app-portage/pyGPG dev-python/pyGPG
-move mail-client/claws-mail-tnef_parse mail-client/claws-mail-tnef-parse
-move mail-client/claws-mail-spam_report mail-client/claws-mail-spam-report
 move x11-libs/vdpau-video x11-libs/libva-vdpau-driver
 slotmove <net-libs/farstream-0.1.90 0 0.1
 move dev-ruby/ruby-bsearch dev-ruby/bsearch

@@ -21,9 +21,7 @@ move app-admin/eselect-cblas app-eselect/eselect-cblas
 move app-admin/eselect-cdparanoia app-eselect/eselect-cdparanoia
 move app-admin/eselect-chuck app-eselect/eselect-chuck
 move app-admin/eselect-ctags app-eselect/eselect-ctags
-move app-admin/eselect-ecj app-eselect/eselect-ecj
 move app-admin/eselect-emacs app-eselect/eselect-emacs
-move app-admin/eselect-esd app-eselect/eselect-esd
 move app-admin/eselect-fontconfig app-eselect/eselect-fontconfig
 move app-admin/eselect-gnat app-eselect/eselect-gnat
 move app-admin/eselect-gnome-shell-extensions app-eselect/eselect-gnome-shell-extensions
@@ -33,7 +31,6 @@ move app-admin/eselect-lapack app-eselect/eselect-lapack
 move app-admin/eselect-lcdfilter app-eselect/eselect-lcdfilter
 move app-admin/eselect-lib-bin-symlink app-eselect/eselect-lib-bin-symlink
 move app-admin/eselect-lua app-eselect/eselect-lua
-move app-admin/eselect-maven app-eselect/eselect-maven
 move app-admin/eselect-mesa app-eselect/eselect-mesa
 move app-admin/eselect-metasploit app-eselect/eselect-metasploit
 move app-admin/eselect-miniaudicle app-eselect/eselect-miniaudicle
