@@ -13,7 +13,7 @@ IUSE=""
 
 if [[ ${PV} != 9999* ]] ; then
 	SRC_URI="mirror://gentoo/${P}.tar.xz
-		http://dev.gentoo.org/~chutzpah/vim/${P}.tar.xz"
+		https://dev.gentoo.org/~chutzpah/vim/${P}.tar.xz"
 fi
 
 DEPEND="app-arch/xz-utils"
