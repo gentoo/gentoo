@@ -50,7 +50,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${DISTDIR}/${PN}-2.3.2.0-pycryptodome.patch"
-	"${FILESDIR/${PN}-2.3.2.0-fix_key_error.patch}"
+	"${FILESDIR}/${PN}-2.3.2.0-fix_key_error.patch"
 	)
 
 python_test() {
