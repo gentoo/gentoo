@@ -16,7 +16,7 @@ IUSE=""
 
 S=${WORKDIR}/${PN}-${P}
 
-PATCHES=( "${FILESDIR}"/${PN}-2.0.3-fix-docdir.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.0.3-fix-buildsystem.patch )
 
 src_prepare() {
 	default
