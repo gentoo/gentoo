@@ -34,6 +34,7 @@ RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtgraphicaleffects:5
 	sys-apps/util-linux
+	media-libs/gst-plugins-base:0.10
 "
 # note if you compile protobuf with >=gcc-5.1 you need to disable the new c++11 abi
 # -D_GLIBCXX_USE_CXX11_ABI=0  to your CXXFLAGS for protobuf
