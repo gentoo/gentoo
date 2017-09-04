@@ -322,10 +322,6 @@ x11-apps/spotlighter
 dev-libs/DFB++
 
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, vulnerable (#569980), removal in a month.
-dev-scheme/stalin
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
 # One of the last consumers of old udisks:0, upstream dead for ages
 # (#601358). Removal in a month.
 x11-misc/tinymount
