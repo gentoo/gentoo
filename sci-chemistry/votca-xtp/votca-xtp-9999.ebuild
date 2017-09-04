@@ -46,6 +46,7 @@ DOCS=( README NOTICE CHANGELOG.md )
 src_configure() {
 	mycmakeargs=(
 		-DLIB=$(get_libdir)
+		-DBUILD_XTP_MANUAL=$(usex doc)
 	)
 	cmake-utils_src_configure
 }
