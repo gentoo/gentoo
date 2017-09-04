@@ -9,7 +9,7 @@ SRC_URI="https://github.com/elastic/beats/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND=">=dev-lang/go-1.8.3"
 RDEPEND="!app-admin/filebeat-bin"
