@@ -8162,7 +8162,7 @@ dev-python/pep8 1.4.5 1.5.6 1.5.7 1.7.0: Python style guide checker
 dev-python/peppercorn 0.5: A library for converting a token stream into a data structure for use in web form posts
 dev-python/pexpect 3.3 4.2.1: Python module for spawning child applications and responding to expected patterns
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
-dev-python/pgmagick 0.6: Yet another boost.python based wrapper for GraphicsMagick
+dev-python/pgmagick 0.6.7: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/phonenumbers 7.7.5 8.3.1: Python port of Google's libphonenumber
 dev-python/photutils 0.3.1 0.3.2: Python package for image astronomical photometry
