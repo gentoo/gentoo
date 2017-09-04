@@ -1,10 +1,9 @@
 Title: sys-kernel/hardened-sources removal
 Author: Francisco Blas Izquierdo Riera <klondike@gentoo.org>
 Posted: 2017-08-19
-Revision: 9
+Revision: 10
 News-Item-Format: 2.0
 Display-If-Installed: sys-kernel/hardened-sources
-Display-If-Profile: hardened/linux/*
 
 As you may know the core of sys-kernel/hardened-sources have been the
 grsecurity patches.
