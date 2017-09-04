@@ -3,28 +3,31 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="Utility to get detailed information about the CPU(s) using the
-CPUID instruction"
+DESCRIPTION="Utility to get detailed information about the CPU(s) using the CPUID instruction"
 HOMEPAGE="http://www.etallen.com/cpuid.html"
 SRC_URI="http://www.etallen.com/${PN}/${P}.src.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-20170122-Makefile.patch
-	eapply_user
-}
+DEPEND="
+	app-arch/gzip
+	dev-lang/perl"
 
-src_compile() {
+PATCHES=(
+	"${FILESDIR}"/${PN}-20170122-Makefile.patch
+	"${FILESDIR}"/${PN}-20170122-missing-include-sysmacros.patch
+)
+
+src_configure() {
 	tc-export CC
-	emake || die "emake failed"
 }
 
 src_install() {
-	emake BUILDROOT="${D}" install || die "email install failed"
+	emake BUILDROOT="${ED}" install
+	einstalldocs
 }
