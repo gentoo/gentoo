@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mgorny/${PN}/releases/download/v${PV}/${P}.tar.xz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="pinentry test"
 
 COMMON_DEPEND=">=dev-libs/libmirage-2.0.0:0=
