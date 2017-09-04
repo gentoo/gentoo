@@ -27,7 +27,7 @@ RDEPEND=">=app-arch/zip-2.3
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? ( libav? ( media-video/libav:= )
 		!libav? ( >=media-video/ffmpeg-1.2:= ) )
-	flac? ( >=media-libs/flac-1.2.0[cxx] )
+	flac? ( >=media-libs/flac-1.3.1[cxx] )
 	id3tag? ( media-libs/libid3tag )
 	jack? ( virtual/jack )
 	lame? ( >=media-sound/lame-3.70 )
