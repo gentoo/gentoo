@@ -40,3 +40,11 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 }
+
+pkg_postinst() {
+	einfo
+	einfo "Please read and cite:"
+	einfo "VOTCA-CTP, J. Chem. Theo. Comp. 7, 3335-3345 (2011)"
+	einfo "https://dx.doi.org/10.1021/ct200388s"
+	einfo
+}
