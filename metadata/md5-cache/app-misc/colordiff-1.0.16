@@ -7,6 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl sys-apps/diffutils
 SLOT=0
 SRC_URI=http://www.colordiff.org/colordiff-1.0.16.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=prefix	df8265631f8bf5f5df387e9b987121f9
+_eclasses_=prefix	7b6fb2fc216b101b5d97d171925a847c
 _md5_=fe15c84976bf9a1cc563adbccbbae01b

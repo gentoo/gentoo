@@ -2190,7 +2190,7 @@ app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell usin
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.16 3.18 3.21: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
-app-shells/zsh 5.0.5 5.2 5.2-r1 5.3.1 5.4.1 5.4.2 9999: UNIX Shell similar to the Korn shell
+app-shells/zsh 5.0.5 5.2 5.2-r1 5.3.1 5.4.1 5.4.2 5.4.2-r1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.25.0 0.26.0 9999: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
@@ -10531,7 +10531,7 @@ dev-util/pkgcheck 0.5.3 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 1.1.0 1.2.2 1.3.5 1.3.7 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1 20130507-r2: A perl based version of pkg-config from OpenBSD
-dev-util/plan9port 20140306-r3: Port of many Plan 9 programs and libraries
+dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
 dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF and kprobes
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
@@ -17043,7 +17043,7 @@ sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.22.1 3.24.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
-sys-apps/baselayout 2.3 2.4.1-r1: Filesystem baselayout and init scripts
+sys-apps/baselayout 2.3 2.4.1-r1 2.4.1-r2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 2.2-r5: Minimal baselayout for Gentoo Prefix installs
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
