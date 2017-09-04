@@ -18,12 +18,13 @@ KEYWORDS="~amd64 ~x86"
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="botan debug doc geoip ldap lua luajit mydns mysql opendbx postgres protobuf remote sqlite systemd tools tinydns test"
+IUSE="botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sqlite systemd tools tinydns test"
 
 REQUIRED_USE="mydns? ( mysql ) ?? ( lua luajit )"
 
 RDEPEND="
-	dev-libs/openssl:=
+	libressl? ( dev-libs/libressl:= )
+	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:=
 	botan? ( =dev-libs/botan-1.10*[threads] )
 	lua? ( dev-lang/lua:= )
