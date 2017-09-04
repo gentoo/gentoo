@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
-HOMEPAGE="http://libburnia-project.org/"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wikis/home"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -37,5 +37,5 @@ src_install() {
 
 	dodoc Roadmap doc/{*.txt,Tutorial}
 
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
