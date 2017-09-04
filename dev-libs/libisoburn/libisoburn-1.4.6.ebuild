@@ -3,10 +3,8 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn"
-HOMEPAGE="http://libburnia-project.org/"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wikis/home"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
@@ -60,5 +58,5 @@ src_install() {
 	docinto xorriso
 	dodoc xorriso/{changelog.txt,README_gnu_xorriso}
 
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
