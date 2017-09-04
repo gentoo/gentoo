@@ -4103,7 +4103,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.5.1 7.2.6.11: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.4.0 3.5.1 7.2.6.10 7.2.6.11: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.4.0 3.5.1 7.2.6.11: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -4846,7 +4846,7 @@ dev-libs/libgit2-glib 0.24.4 0.25.0 0.26.0-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1 1.2.2: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
-dev-libs/libgudev 230-r1 231: GObject bindings for libudev
+dev-libs/libgudev 230-r1 231 232: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.20.4 3.24.1: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
