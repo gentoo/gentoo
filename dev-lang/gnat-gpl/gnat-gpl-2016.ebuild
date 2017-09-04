@@ -20,7 +20,7 @@ SSP_UCLIBC_STABLE="x86 amd64 mips ppc ppc64 arm"
 #end Hardened stuff
 
 TOOLCHAIN_GCC_PV=4.9.4
-GCC_FILESDIR=${PORTDIR}/sys-devel/gcc/files
+#GCC_FILESDIR=${PORTDIR}/sys-devel/gcc/files
 
 inherit eutils toolchain-funcs toolchain
 
