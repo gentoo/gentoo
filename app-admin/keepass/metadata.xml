@@ -9,11 +9,6 @@
 		<email>kensington@gentoo.org</email>
 		<description>Proxy maintainer. CC him on bugs.</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>fearedbliss@gentoo.org</email>
-		<name>Jonathan Vasquez</name>
-		<description>Proxy maintainer. CC him on bugs.</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
