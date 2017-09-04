@@ -39,13 +39,13 @@ CDEPEND="media-libs/libsamplerate
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
-DEPEND="!media-sound/jack-audio-connection-kit:0
-	${CDEPEND}
+DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
-	pam? ( sys-auth/realtime-base )"
+	pam? ( sys-auth/realtime-base )
+	!media-sound/jack-audio-connection-kit:0"
 
 DOCS=( ChangeLog README README_NETJACK2 TODO )
 
