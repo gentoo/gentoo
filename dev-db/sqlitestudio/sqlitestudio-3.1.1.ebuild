@@ -31,6 +31,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-qt/designer:5
+	dev-qt/qtconcurrent:5
 	test? ( dev-qt/qttest:5 )
 "
 
