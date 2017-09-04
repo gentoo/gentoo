@@ -40,13 +40,21 @@ COMMON_DEPEND="
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
 	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-3:= media-libs/opus:= )
+	system-ffmpeg? (
+		>=media-video/ffmpeg-3:=
+		|| (
+			media-video/ffmpeg[-samba]
+			>=net-fs/samba-4.5.10-r1[-debug(-)]
+		)
+		!=net-fs/samba-4.5.12
+		media-libs/opus:=
+	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
 	x11-libs/libXcursor:=
@@ -137,8 +145,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/${PN}-gcc5-r2.patch"
-	"${FILESDIR}/${PN}-gn-bootstrap-r16.patch"
-	"${FILESDIR}/${PN}-system-icu-r2.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r17.patch"
 )
 
 pre_build_checks() {
@@ -282,6 +289,7 @@ src_prepare() {
 		third_party/qcms
 		third_party/sfntly
 		third_party/skia
+		third_party/skia/third_party/gif
 		third_party/skia/third_party/vulkan
 		third_party/smhasher
 		third_party/spirv-headers
