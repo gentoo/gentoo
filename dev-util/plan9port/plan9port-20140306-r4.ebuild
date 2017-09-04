@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -96,13 +96,13 @@ src_install() {
 	cp -a * "${ED}/${PLAN9}"
 
 	# build the environment variables and install them in env.d
-	cat > "${T}/30plan9" <<-EOF
+	cat > "${T}/60plan9" <<-EOF
 		PLAN9="${EPLAN9}"
 		PATH="${EPLAN9}/bin"
 		ROOTPATH="${EPLAN9}/bin"
 		MANPATH="${EPLAN9}/man"
 	EOF
-	doenvd "${T}/30plan9"
+	doenvd "${T}/60plan9"
 }
 
 pkg_postinst() {
