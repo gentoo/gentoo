@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,10 @@ HOMEPAGE="https://github.com/lz4/lz4"
 
 LICENSE="BSD-2 GPL-2"
 # https://abi-laboratory.pro/tracker/timeline/lz4/
+# 1.7.5->1.8.0 has some minor changes; the only really incompatible
+# would be removing 'const' from LZ4F_freeDecompressionContext() arg
+# however, it is extremely unlikely that this 'const' would actually
+# be relied on
 SLOT="0/r131"
 IUSE="static-libs"
 
