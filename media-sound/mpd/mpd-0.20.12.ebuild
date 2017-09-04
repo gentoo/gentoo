@@ -226,6 +226,7 @@ src_configure() {
 		$(use_enable webdav)
 		$(use_enable faad aac)
 		$(use_with zeroconf zeroconf avahi)
+		--with-boost="${EPREFIX}"/usr
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
 		--with-systemduserunitdir=$(systemd_get_userunitdir)
 	)
