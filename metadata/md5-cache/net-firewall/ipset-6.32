@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst setup
+DEPEND=>=net-firewall/iptables-1.4.7 net-libs/libmnl modules? ( kernel_linux? ( virtual/modutils ) ) modules? ( sys-apps/sed kernel_linux? ( virtual/linux-sources ) )
+DESCRIPTION=IPset tool for iptables, successor to ippool
+EAPI=6
+HOMEPAGE=http://ipset.netfilter.org/
+IUSE=kernel_linux modules
+KEYWORDS=~amd64 ~arm64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.4.7 net-libs/libmnl modules? ( kernel_linux? ( virtual/modutils ) )
+SLOT=0
+SRC_URI=http://ipset.netfilter.org/ipset-6.32.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a3c8fcf6aef68a603e1855c31a146a0f
