@@ -214,7 +214,7 @@ src_install() {
 	default
 
 	# FAQ is not required as is installed from help/faq.txt
-	dodoc AUTHORS ChangeLog NEWS README{,.bsd,.linux,.macos,.vmware} \
+	dodoc AUTHORS ChangeLog NEWS README.* \
 		doc/{randpkt.txt,README*}
 
 	if use doc; then
