@@ -31,7 +31,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap nls openssl offensive pam selinux skey +sendmail"
+IUSE="gcrypt ldap nls openssl offensive pam sasl selinux +sendmail skey"
 
 CDEPEND="
 	sys-libs/zlib
@@ -42,6 +42,7 @@ CDEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
 	openssl? ( dev-libs/openssl:0= )
 	pam? ( virtual/pam )
+	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 "
 RDEPEND="
@@ -135,6 +136,7 @@ src_configure() {
 		$(use_enable gcrypt)
 		$(use_enable nls)
 		$(use_enable openssl)
+		$(use_enable sasl)
 		$(use_with offensive insults)
 		$(use_with offensive all-insults)
 		$(use_with ldap ldap_conf_file /etc/ldap.conf.sudo)
