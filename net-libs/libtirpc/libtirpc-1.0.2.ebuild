@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.2-bcopy-to-memmove.patch"
 	"${FILESDIR}/${PN}-1.0.2-bzero-to-memset.patch"
+	"${FILESDIR}/${PN}-1.0.2-glibc-2.26.patch"
 )
 
 src_prepare() {
