@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/dbus-glib-0.88 >=dev-libs/glib-2.37.3:2 media-libs/libcanberra x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3:3 x11-libs/cairo x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/pango[X] virtual/opengl systemd? ( >=sys-apps/systemd-183 ) !systemd? ( >=sys-power/upower-pm-utils-0.9.23 ) dev-libs/libxslt >=dev-util/intltool-0.40.6 virtual/pkgconfig doc? ( app-text/xmlto ) gnome-base/gnome-common >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Cinnamon session manager
+EAPI=6
+HOMEPAGE=http://cinnamon.linuxmint.com/
+IUSE=doc ipv6 systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ FDL-1.1+ LGPL-2+
+RDEPEND=>=dev-libs/dbus-glib-0.88 >=dev-libs/glib-2.37.3:2 media-libs/libcanberra x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3:3 x11-libs/cairo x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/pango[X] virtual/opengl systemd? ( >=sys-apps/systemd-183 ) !systemd? ( >=sys-power/upower-pm-utils-0.9.23 ) >=gnome-extra/cinnamon-desktop-2.6[systemd=] !systemd? ( sys-auth/consolekit )
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cinnamon-session/archive/3.4.2.tar.gz -> cinnamon-session-3.4.2.tar.gz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	64c50579ea42fbcc77a7e220a8ae8e94	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=f11a8181f2a671574cfd9bc4c7e5af43
