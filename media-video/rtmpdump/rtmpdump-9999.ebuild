@@ -7,7 +7,7 @@ inherit git-r3 multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
-EGIT_REPO_URI="git://git.ffmpeg.org/rtmpdump"
+EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
