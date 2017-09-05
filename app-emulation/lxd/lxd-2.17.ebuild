@@ -47,7 +47,7 @@ KEYWORDS="~amd64"
 
 IUSE="+daemon +ipv6 nls test"
 
-inherit bash-completion-r1 golang-build linux-info systemd user golang-vcs-snapshot
+inherit bash-completion-r1 linux-info systemd user golang-vcs-snapshot
 
 SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}"
@@ -140,8 +140,10 @@ src_compile() {
 
 src_test() {
 	if use daemon; then
-		# Go native tests should succeed
-		golang-build_src_test
+		export GOPATH="${S}"
+		cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
+
+		emake check
 	fi
 }
 
