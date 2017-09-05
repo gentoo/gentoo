@@ -15,14 +15,19 @@ SRC_URI="https://portland.freedesktop.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc +perl"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="doc"
 
-RDEPEND="dev-util/desktop-file-utils
+RDEPEND="
+	dev-util/desktop-file-utils
+	dev-perl/File-MimeInfo
+	dev-perl/Net-DBus
+	dev-perl/X11-Protocol
+	sys-apps/dbus
 	x11-misc/shared-mime-info
 	x11-apps/xprop
 	x11-apps/xset
-	perl? ( dev-perl/File-MimeInfo )"
+"
 DEPEND=">=app-text/xmlto-0.0.26-r1[text(+)]"
 
 DOCS=( README RELEASE_NOTES TODO ) # ChangeLog is bogus, see git instead
