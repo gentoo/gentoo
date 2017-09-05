@@ -15,7 +15,7 @@ SRC_URI="https://github.com/rhinstaller/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bcache +crypt dmraid doc lvm kbd python test"
+IUSE="bcache +crypt dmraid doc lvm kbd test"
 
 CDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -36,7 +36,7 @@ CDEPEND="
 		virtual/udev
 	)
 	kbd? ( >=sys-apps/kmod-19 )
-	python? ( ${PYTHON_DEPS} )
+	${PYTHON_DEPS}
 "
 
 DEPEND="
@@ -49,12 +49,12 @@ RDEPEND="
 	${CDEPEND}
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -67,6 +67,7 @@ src_configure() {
 		--with-btrfs
 		--with-fs
 		--with-part
+		--with-python3
 		--without-mpath
 		$(use_enable test tests)
 		$(use_with bcache)
@@ -76,7 +77,6 @@ src_configure() {
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
 		$(use_with kbd)
-		$(use_with python python3)
 	)
 	econf "${myeconfargs[@]}"
 }
