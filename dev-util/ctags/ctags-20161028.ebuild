@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
 HOMEPAGE="https://ctags.io/ https://github.com/universal-ctags/ctags"
-SRC_URI="http://dev.gentoo.org/~radhermit/vim/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/vim/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
