@@ -1019,7 +1019,7 @@ app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.22.0 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
-app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
+app-editors/ghostwriter 1.5.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 8.0.1056 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
