@@ -18031,7 +18031,7 @@ sys-process/tini 0.13.2 0.14.0 0.15.0: A tiny but valid init for containers
 sys-process/tiptop 2.2 2.3: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
-sys-process/vixie-cron 4.1-r14: Paul Vixie's cron daemon, a fully featured crond implementation
+sys-process/vixie-cron 4.1-r14 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
