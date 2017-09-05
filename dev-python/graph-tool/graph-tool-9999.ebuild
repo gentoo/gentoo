@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit check-reqs python-r1 toolchain-funcs
 
@@ -25,11 +25,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/boost:=[python,${PYTHON_USEDEP}]
+	dev-libs/boost:=[context,python,${PYTHON_USEDEP}]
 	dev-libs/expat
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	sci-mathematics/cgal
+	>=sci-mathematics/cgal-4.9
 	cairo? (
 		dev-cpp/cairomm
 		dev-python/pycairo[${PYTHON_USEDEP}]
@@ -64,7 +64,6 @@ src_configure() {
 	configure() {
 		econf \
 			--disable-static \
-			--disable-optimization \
 			$(use_enable openmp) \
 			$(use_enable cairo) \
 			--with-boost-python="${EPYTHON: -3}${threads}"
