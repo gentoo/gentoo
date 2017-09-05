@@ -3,34 +3,40 @@
 
 EAPI=6
 
-inherit toolchain-glibc
+inherit prefix toolchain-glibc
 
-DESCRIPTION="GNU libc6 (also called glibc2) C library"
-HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
+DESCRIPTION="GNU libc C library"
+HOMEPAGE="https://www.gnu.org/software/libc/"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-RESTRICT="strip" # strip ourself #46186
+RESTRICT="strip" # Strip ourself #46186
 EMULTILIB_PKG="true"
 
 # Configuration variables
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URIS="git://sourceware.org/git/glibc.git"
-	EGIT_SOURCEDIRS="${S}"
-	inherit git-2
+	EGIT_REPO_URI="git://sourceware.org/git/glibc.git"
+	inherit git-r3
 else
 	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 	KEYWORDS=""
+	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
 RELEASE_VER=${PV}
 
 GCC_BOOTSTRAP_VER="4.7.3-r1"
-# patches live at https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/src/patchsets/glibc/
-PATCH_VER="0"                                  # Gentoo patchset
-: ${NPTL_KERN_VER:="2.6.32"}                   # min kernel version nptl requires
 
-IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+# Gentoo patchset
+PATCH_VER="0"
+
+SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
+SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
+
+IUSE="audit caps debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+
+# Min kernel version nptl requires
+: ${NPTL_KERN_VER:="2.6.32"}
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -58,8 +64,6 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 
-# Why SLOT 2.2 you ask yourself while sippin your tea ?
-# Everyone knows 2.2 > 0, duh.
 SLOT="2.2"
 
 # General: We need a new-enough binutils/gcc to match upstream baseline.
@@ -75,11 +79,13 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
 	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2"
+	!<sys-apps/portage-2.1.2
+"
 RDEPEND="${COMMON_DEPEND}
 	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
-	!sys-libs/nss-db"
+	!sys-libs/nss-db
+"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !crosscompile_opts_headers-only? (
@@ -91,33 +97,23 @@ else
 	DEPEND+="
 		>=sys-devel/binutils-2.24
 		>=sys-devel/gcc-4.7
-		virtual/os-headers"
+		virtual/os-headers
+	"
 	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
 fi
-
-upstream_uris() {
-	echo mirror://gnu/glibc/$1 ftp://sourceware.org/pub/glibc/{releases,snapshots}/$1 mirror://gentoo/$1
-}
-gentoo_uris() {
-	local devspace="HTTP~vapier/dist/URI HTTP~tamiko/distfiles/URI HTTP~dilfridge/distfiles/URI HTTP~slyfox/distfiles/URI"
-	devspace=${devspace//HTTP/https://dev.gentoo.org/}
-	echo mirror://gentoo/$1 ${devspace//URI/$1}
-}
-SRC_URI=$(
-	[[ -z ${EGIT_REPO_URIS} ]] && upstream_uris ${P}.tar.xz
-	[[ -n ${PATCH_VER}      ]] && gentoo_uris ${P}-patches-${PATCH_VER}.tar.bz2
-)
-SRC_URI+=" ${GCC_BOOTSTRAP_VER:+multilib? ( $(gentoo_uris gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2) )}"
 
 #
 # the phases
 #
 
 pkg_pretend() {
-    check_devpts
+	die "This is work in progress. DONT try to use it. dilfridge"
 
-	# Prevent native builds from downgrading.
+	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
+	check_devpts
+
+	# Prevent native builds from downgrading
 	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
 	   [[ ${ROOT} == "/" ]] && \
 	   [[ ${CBUILD} == ${CHOST} ]] && \
@@ -128,7 +124,7 @@ pkg_pretend() {
 		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror " Downgrading glibc is not supported and a sure way to destruction"
-			die "aborting to save your system"
+			die "Aborting to save your system"
 		fi
 
 		if ! glibc_run_test '#include <pwd.h>\nint main(){return getpwuid(0)==0;}\n'
@@ -136,31 +132,31 @@ pkg_pretend() {
 			eerror "Your patched vendor kernel is broken.  You need to get an"
 			eerror "update from whoever is providing the kernel to you."
 			eerror "https://sourceware.org/bugzilla/show_bug.cgi?id=5227"
-			eerror "http://bugs.gentoo.org/262698"
-			die "keeping your system alive, say thank you"
+			eerror "https://bugs.gentoo.org/262698"
+			die "Keeping your system alive, say thank you"
 		fi
 
 		if ! glibc_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n'
 		then
 			eerror "Your old kernel is broken.  You need to update it to"
 			eerror "a newer version as syscall(<bignum>) will break."
-			eerror "http://bugs.gentoo.org/279260"
-			die "keeping your system alive, say thank you"
+			eerror "https://bugs.gentoo.org/279260"
+			die "Keeping your system alive, say thank you"
 		fi
 	fi
 
-	# users have had a chance to phase themselves, time to give em the boot
+	# Users have had a chance to phase themselves, time to give em the boot
 	if [[ -e ${EROOT}/etc/locale.gen ]] && [[ -e ${EROOT}/etc/locales.build ]] ; then
 		eerror "You still haven't deleted ${EROOT}/etc/locales.build."
 		eerror "Do so now after making sure ${EROOT}/etc/locale.gen is kosher."
-		die "lazy upgrader detected"
+		die "Lazy upgrader detected"
 	fi
 
 	if [[ ${CTARGET} == i386-* ]] ; then
 		eerror "i386 CHOSTs are no longer supported."
 		eerror "Chances are you don't actually want/need i386."
-		eerror "Please read http://www.gentoo.org/doc/en/change-chost.xml"
-		die "please fix your CHOST"
+		eerror "Please read https://www.gentoo.org/doc/en/change-chost.xml"
+		die "Please fix your CHOST"
 	fi
 
 	if [[ -e /proc/xen ]] && [[ $(tc-arch) == "x86" ]] && ! is-flag -mno-tls-direct-seg-refs ; then
@@ -198,61 +194,37 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	[[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
+	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
 
 	setup_env
 
 	# Check NPTL support _before_ we unpack things to save some time
-	want_nptl && check_nptl_support
+	check_nptl_support
 
-	if [[ -n ${EGIT_REPO_URIS} ]] ; then
-		local i d
-		for ((i=0; i<${#EGIT_REPO_URIS[@]}; ++i)) ; do
-			EGIT_REPO_URI=${EGIT_REPO_URIS[$i]}
-			EGIT_SOURCEDIR=${EGIT_SOURCEDIRS[$i]}
-			git-2_src_unpack
-		done
+	if [[ -n ${EGIT_REPO_URI} ]] ; then
+		git-r3_src_unpack
 	else
-		unpack_pkg
+		unpack ${PN}.tar.xz
 	fi
 
 	cd "${S}"
 	touch locale/C-translit.h #185476 #218003
-	[[ -n ${LT_VER}     ]] && unpack_pkg linuxthreads ${LT_VER}
-	[[ -n ${PORTS_VER}  ]] && unpack_pkg ports ${PORTS_VER}
-	[[ -n ${LIBIDN_VER} ]] && unpack_pkg libidn
 
-	if [[ -n ${PATCH_VER} ]] ; then
-		cd "${WORKDIR}"
-		unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
-		# pull out all the addons
-		local d
-		for d in extra/*/configure ; do
-			d=${d%/configure}
-			[[ -d ${S}/${d} ]] && die "${d} already exists in \${S}"
-			mv "${d}" "${S}" || die "moving ${d} failed"
-		done
-	fi
+	cd "${WORKDIR}"
+	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
+	# pull out all the addons
+	local d
+	for d in extra/*/configure ; do
+		d=${d%/configure}
+		[[ -d ${S}/${d} ]] && die "${d} already exists in \${S}"
+		mv "${d}" "${S}" || die "moving ${d} failed"
+	done
 }
 
 src_prepare() {
-	# XXX: We should do the branchupdate, before extracting the manpages and
-	# infopages else it does not help much (mtimes change if there is a change
-	# to them with branchupdate)
-	if [[ -n ${BRANCH_UPDATE} ]] ; then
-		epatch "${DISTDIR}"/glibc-${RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
-
-		# Snapshot date patch
-		einfo "Patching version to display snapshot date ..."
-		sed -i -e "s:\(#define RELEASE\).*:\1 \"${BRANCH_UPDATE}\":" version.h
-	fi
-
-	if [[ -n ${PATCH_VER} ]] && ! use vanilla ; then
-		EPATCH_MULTI_MSG="Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER} ..." \
-		EPATCH_EXCLUDE=${GLIBC_PATCH_EXCLUDE} \
-		EPATCH_SUFFIX="patch" \
-		ARCH=$(tc-arch) \
-		epatch "${WORKDIR}"/patches
+	if ! use vanilla ; then
+		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER} ..."
+		eapply "${WORKDIR}"/patches/*.patch
 	fi
 
 	if just_headers ; then
@@ -265,7 +237,7 @@ src_prepare() {
 		fi
 	fi
 
-	eapply_user
+	default
 
 	gnuconfig_update
 
@@ -301,7 +273,7 @@ src_prepare() {
 	4.8.[0-3]|4.9.0)
 		eerror "You need to switch to a newer compiler; gcc-4.8.[0-3] and gcc-4.9.0 miscompile"
 		eerror "glibc.  See https://bugs.gentoo.org/547420 for details."
-		die "need to switch compilers #547420"
+		die "Need to switch compilers #547420"
 		;;
 	esac
 }
@@ -310,7 +282,17 @@ glibc_do_configure() {
 	# Glibc does not work with gold (for various reasons) #269274.
 	tc-ld-disable-gold
 
-	dump_toolchain_settings "Configuring glibc for $1"
+	einfo "Configuring glibc for $1"
+
+	local v
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC LD {AS,C,CPP,CXX,LD}FLAGS ; do
+		einfo " $(printf '%15s' ${v}:)   ${!v}"
+	done
+
+	# The glibc configure script doesn't properly use LDFLAGS all the time.
+	export CC="$(tc-getCC ${CTARGET}) ${LDFLAGS}"
+	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
+	echo
 
 	local myconf=()
 
@@ -326,41 +308,12 @@ glibc_do_configure() {
 	[[ -d ports ]] && addons+=",ports"
 	popd > /dev/null
 
-	if has_version '<sys-libs/glibc-2.13' ; then
-		myconf+=( --enable-old-ssp-compat )
-	fi
-
-	if version_is_at_least 2.25 ; then
-		myconf+=( --enable-stack-protector=all )
-	fi
-
-	if version_is_at_least 2.25 ; then
-		myconf+=( --enable-stackguard-randomization )
-	else
-		myconf+=( $(use_enable hardened stackguard-randomization) )
-	fi
+	myconf+=( --enable-stack-protector=all )
+	myconf+=( --enable-stackguard-randomization )
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
-	if [[ $1 == "linuxthreads" ]] ; then
-		if want_tls ; then
-			myconf+=( --with-tls )
-
-			if ! want__thread || use glibc-compat20 || [[ ${LT_KER_VER} == 2.[02].* ]] ; then
-				myconf+=( --without-__thread )
-			else
-				myconf+=( --with-__thread )
-			fi
-		else
-			myconf+=( --without-tls --without-__thread )
-		fi
-
-		myconf+=( --disable-sanity-checks )
-		addons="linuxthreads${addons}"
-		myconf+=( --enable-kernel=${LT_KER_VER} )
-	elif [[ $1 == "nptl" ]] ; then
-		# Newer versions require nptl, so there is no addon for it.
-		version_is_at_least 2.20 || addons="nptl${addons}"
+	if [[ $1 == "nptl" ]] ; then
 		myconf+=( --enable-kernel=${NPTL_KERN_VER} )
 	else
 		die "invalid pthread option"
@@ -409,19 +362,16 @@ glibc_do_configure() {
 		--mandir='$(prefix)'/share/man
 		--infodir='$(prefix)'/share/info
 		--libexecdir='$(libdir)'/misc/glibc
-		--with-bugurl=http://bugs.gentoo.org/
+		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		$(in_iuse rpc && use_enable rpc obsolete-rpc || echo --enable-obsolete-rpc)
 		$(in_iuse systemtap && use_enable systemtap)
 		$(in_iuse nscd && use_enable nscd)
 		${EXTRA_ECONF}
 	)
 
 	# We rely on sys-libs/timezone-data for timezone tools normally.
-	if version_is_at_least 2.23 ; then
-		myconf+=( $(use_enable vanilla timezone-tools) )
-	fi
+	myconf+=( $(use_enable vanilla timezone-tools) )
 
 	# These libs don't have configure flags.
 	ac_cv_lib_audit_audit_log_user_avc_message=$(in_iuse audit && usex audit || echo no)
@@ -436,13 +386,6 @@ glibc_do_configure() {
 	# and many people like to force gnu hash style only, so disable
 	# this overriding check.  #347761
 	export libc_cv_hashstyle=no
-
-	# Overtime, generating info pages can be painful.  So disable this for
-	# versions older than the latest stable to avoid the issue (this ver
-	# should be updated from time to time).  #464394 #465816
-	if ! version_is_at_least 2.17 ; then
-		export ac_cv_prog_MAKEINFO=:
-	fi
 
 	local builddir=$(builddir "$1")
 	mkdir -p "${builddir}"
@@ -512,11 +455,7 @@ glibc_headers_configure() {
 		ac_cv_lib_audit_audit_log_user_avc_message=no
 		ac_cv_lib_cap_cap_init=no
 	)
-	if ! version_is_at_least 2.25 ; then
-		vars+=(
-			libc_cv_predef_stack_protector=no
-		)
-	fi
+
 	einfo "Forcing cached settings:"
 	for v in "${vars[@]}" ; do
 		einfo " ${v}"
@@ -528,14 +467,14 @@ glibc_headers_configure() {
 		pushd "${S}"/sysdeps/mips >/dev/null
 		sed -i -e '/^CC +=/s:=.*:= -D_MIPS_SZPTR=32:' mips32/Makefile mips64/n32/Makefile || die
 		sed -i -e '/^CC +=/s:=.*:= -D_MIPS_SZPTR=64:' mips64/n64/Makefile || die
-		if version_is_at_least 2.21 ; then
-			# Force the mips ABI to the default.  This is OK because the set of
-			# installed headers in this phase is the same between the 3 ABIs.
-			# If this ever changes, this hack will break, but that's unlikely
-			# as glibc discourages that behavior.
-			# https://crbug.com/647033
-			sed -i -e 's:abiflag=.*:abiflag=_ABIO32:' preconfigure || die
-		fi
+
+		# Force the mips ABI to the default.  This is OK because the set of
+		# installed headers in this phase is the same between the 3 ABIs.
+		# If this ever changes, this hack will break, but that's unlikely
+		# as glibc discourages that behavior.
+		# https://crbug.com/647033
+		sed -i -e 's:abiflag=.*:abiflag=_ABIO32:' preconfigure || die
+
 		popd >/dev/null
 	fi
 
@@ -555,8 +494,6 @@ glibc_headers_configure() {
 
 	local addons
 	[[ -d ${S}/ports ]] && addons+=",ports"
-	# Newer versions require nptl, so there is no addon for it.
-	version_is_at_least 2.20 || addons+=",nptl"
 	myconf+=( --enable-add-ons="${addons#,}" )
 
 	# Nothing is compiled here which would affect the headers for the target.
@@ -574,8 +511,7 @@ do_src_configure() {
 	if just_headers ; then
 		glibc_headers_configure
 	else
-		want_linuxthreads && glibc_do_configure linuxthreads
-		want_nptl && glibc_do_configure nptl
+		glibc_do_configure nptl
 	fi
 }
 
@@ -584,12 +520,7 @@ src_configure() {
 }
 
 do_src_compile() {
-	local t
-	for t in linuxthreads nptl ; do
-		if want_${t} ; then
-			emake -C "$(builddir ${t})" || die "make ${t} for ${ABI} failed"
-		fi
-	done
+	emake -C "$(builddir nptl)" || die "make nptl for ${ABI} failed"
 }
 
 src_compile() {
@@ -602,21 +533,15 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir $1)"
-	nonfatal emake -j1 check && return 0
-	einfo "make check failed - re-running with --keep-going to get the rest of the results"
-	nonfatal emake -j1 -k check
-	ewarn "make check failed for ${ABI}-${CTARGET}-$1"
-	return 1
+	emake -j1 check
 }
 
-glibc_do_src_test() {
-	local ret=0 t
-	for t in linuxthreads nptl ; do
-		if want_${t} ; then
-			glibc_src_test ${t}
-			: $(( ret |= $? ))
-		fi
-	done
+do_src_test() {
+	local ret=0
+
+	glibc_src_test nptl
+	: $(( ret |= $? ))
+
 	return ${ret}
 }
 
@@ -624,62 +549,20 @@ src_test() {
 	# Give tests more time to complete.
 	export TIMEOUTFACTOR=5
 
-	foreach_abi toolchain-glibc_do_src_test || die "tests failed"
+	foreach_abi do_src_test || die "tests failed"
 }
 
 glibc_do_src_install() {
-	local builddir=$(builddir $(want_linuxthreads && echo linuxthreads || echo nptl))
+	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
 	emake install_root="${D}$(alt_prefix)" install || die
-
-	if want_linuxthreads && want_nptl ; then
-		einfo "Installing NPTL to $(alt_libdir)/tls/..."
-		cd "$(builddir nptl)"
-		dodir $(alt_libdir)/tls $(alt_usrlibdir)/nptl
-
-		local l src_lib
-		for l in libc libm librt libpthread libthread_db ; do
-			# take care of shared lib first ...
-			l=${l}.so
-			if [[ -e ${l} ]] ; then
-				src_lib=${l}
-			else
-				src_lib=$(eval echo */${l})
-			fi
-			cp -a ${src_lib} "${ED}"$(alt_libdir)/tls/${l} || die "copying nptl ${l}"
-			fperms a+rx $(alt_libdir)/tls/${l}
-			dosym ${l} $(alt_libdir)/tls/$(scanelf -qSF'%S#F' ${src_lib})
-
-			# then grab the linker script or the symlink ...
-			if [[ -L ${ED}$(alt_usrlibdir)/${l} ]] ; then
-				dosym $(alt_libdir)/tls/${l} $(alt_usrlibdir)/nptl/${l}
-			else
-				sed \
-					-e "s:/${l}:/tls/${l}:g" \
-					-e "s:/${l/%.so/_nonshared.a}:/nptl/${l/%.so/_nonshared.a}:g" \
-					"${ED}"$(alt_usrlibdir)/${l} > "${ED}"$(alt_usrlibdir)/nptl/${l}
-			fi
-
-			# then grab the static lib ...
-			src_lib=${src_lib/%.so/.a}
-			[[ ! -e ${src_lib} ]] && src_lib=${src_lib/%.a/_pic.a}
-			cp -a ${src_lib} "${ED}"$(alt_usrlibdir)/nptl/ || die "copying nptl ${src_lib}"
-			src_lib=${src_lib/%.a/_nonshared.a}
-			if [[ -e ${src_lib} ]] ; then
-				cp -a ${src_lib} "${ED}"$(alt_usrlibdir)/nptl/ || die "copying nptl ${src_lib}"
-			fi
-		done
-
-		# use the nptl linker instead of the linuxthreads one as the linuxthreads
-		# one may lack TLS support and that can be really bad for business
-		cp -a elf/ld.so "${ED}"$(alt_libdir)/$(scanelf -qSF'%S#F' elf/ld.so) || die "copying nptl interp"
-	fi
 
 	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
 	# to infer upstream version:
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
+
 	# Newer versions get fancy with libm linkage to include vectorized support.
 	# While we don't really need a ldscript here, portage QA checks get upset.
 	if [[ -e ${ED}$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
@@ -777,10 +660,10 @@ glibc_do_src_install() {
 		"${S}"/localedata/SUPPORTED > "${ED}"/usr/share/i18n/SUPPORTED \
 		|| die "generating /usr/share/i18n/SUPPORTED failed"
 	cd "${WORKDIR}"/extra/locale
-	dosbin locale-gen || die
+	dosbin locale-gen
 	doman *.[0-8]
 	insinto /etc
-	doins locale.gen || die
+	doins locale.gen
 
 	# Make sure all the ABI's can find the locales and so we only
 	# have to generate one set
@@ -796,34 +679,27 @@ glibc_do_src_install() {
 
 	# Install misc network config files
 	insinto /etc
-	doins nscd/nscd.conf posix/gai.conf nss/nsswitch.conf || die
-	doins "${WORKDIR}"/extra/etc/*.conf || die
+	doins nscd/nscd.conf posix/gai.conf nss/nsswitch.conf
+	doins "${WORKDIR}"/extra/etc/*.conf
 
-	if ! in_iuse nscd || use nscd ; then
-		doinitd "${WORKDIR}"/extra/etc/nscd || die
+	if use nscd ; then
+		doinitd "${WORKDIR}"/extra/etc/nscd
 
 		local nscd_args=(
 			-e "s:@PIDFILE@:$(strings "${ED}"/usr/sbin/nscd | grep nscd.pid):"
 		)
-		version_is_at_least 2.16 || nscd_args+=( -e 's: --foreground : :' )
+
 		sed -i "${nscd_args[@]}" "${ED}"/etc/init.d/nscd
 
-		# Newer versions of glibc include the nscd.service themselves.
-		# TODO: Drop the $FILESDIR copy once 2.19 goes stable.
-		if version_is_at_least 2.19 ; then
-			systemd_dounit nscd/nscd.service || die
-			systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf || die
-		else
-			systemd_dounit "${FILESDIR}"/nscd.service || die
-			systemd_newtmpfilesd "${FILESDIR}"/nscd.tmpfilesd nscd.conf || die
-		fi
+		systemd_dounit nscd/nscd.service
+		systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf
 	else
 		# Do this since extra/etc/*.conf above might have nscd.conf.
 		rm -f "${ED}"/etc/nscd.conf
 	fi
 
 	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc
-	doenvd "${T}"/00glibc || die
+	doenvd "${T}"/00glibc
 
 	for d in BUGS ChangeLog* CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
 		[[ -s ${d} ]] && dodoc ${d}
@@ -837,13 +713,11 @@ glibc_do_src_install() {
 glibc_headers_install() {
 	local builddir=$(builddir "headers")
 	cd "${builddir}"
-	emake install_root="${D}$(alt_prefix)" install-headers || die
-	if ! version_is_at_least 2.16 ; then
-		insinto $(alt_headers)/bits
-		doins bits/stdio_lim.h || die
-	fi
+	emake install_root="${D}$(alt_prefix)" install-headers
+
 	insinto $(alt_headers)/gnu
-	doins "${S}"/include/gnu/stubs.h || die "doins include gnu"
+	doins "${S}"/include/gnu/stubs.h
+
 	# Make sure we install the sys-include symlink so that when
 	# we build a 2nd stage cross-compiler, gcc finds the target
 	# system headers correctly.  See gcc/doc/gccinstall.info
