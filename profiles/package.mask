@@ -48,11 +48,6 @@ dev-perl/XML-AutoWriter
 # See also our tracker bug: https://bugs.gentoo.org/629836
 >=app-text/poppler-0.58.0
 
-# Anthony G. Basile <blueness@gentoo.org> (03 Sep 2017)
-# Masked for testing
-# See bug #628692#c4
-=sys-fs/eudev-3.2.3
-
 # Michael Palimaka <kensington@gentoo.org> (03 Sep 2017)
 # Dead upstream. Use media-libs/phonon instead.
 # Masked for removal in 30 days. Bug #629144.
