@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-embedded/gputils-0.12 dev-libs/glib:2 dev-libs/popt sys-libs/readline:0= gtk? ( >=x11-libs/gtk+extra-2 ) sys-devel/flex virtual/pkgconfig virtual/yacc
+DESCRIPTION=A simulator for the Microchip PIC microcontrollers
+EAPI=6
+HOMEPAGE=http://gpsim.sourceforge.net
+IUSE=doc gtk static-libs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-embedded/gputils-0.12 dev-libs/glib:2 dev-libs/popt sys-libs/readline:0= gtk? ( >=x11-libs/gtk+extra-2 )
+SLOT=0
+SRC_URI=mirror://sourceforge/gpsim/gpsim-0.30.0.tar.gz
+_eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=de2d1f2760423b9ca162d803b23e5b63
