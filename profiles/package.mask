@@ -43,10 +43,10 @@ dev-perl/XML-AutoWriter
 >=app-text/enchant-2
 
 # Lars Wendler <polynomial-c@gentoo.org> (03 Sep 2017)
-# Masked because it introduced a new object API which breaks consumers:
+# Masked because a new object API was introduced which breaks consumers:
 # https://cgit.freedesktop.org/poppler/poppler/commit/poppler/Object.h?id=9773c1534668d84b8267c3e5c9d612076fa231a5
 # See also our tracker bug: https://bugs.gentoo.org/629836
-=app-text/poppler-0.58.0
+>=app-text/poppler-0.58.0
 
 # Anthony G. Basile <blueness@gentoo.org> (03 Sep 2017)
 # Masked for testing
