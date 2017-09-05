@@ -10882,7 +10882,7 @@ games-arcade/nottetris2 1: The spiritual successor of the classic Tetris mixed w
 games-arcade/openbubbles 1.2: A clone of Evan Bailey's game Bubbles
 games-arcade/openmortal 0.7-r1: A spoof of the famous Mortal Kombat game
 games-arcade/opensonic 0.1.4-r1: A free open-source game based on the Sonic the Hedgehog universe
-games-arcade/opentyrian 2.1.20130907: Open-source port of the DOS game Tyrian, vertical scrolling shooter
+games-arcade/opentyrian 2.1.20130907 2.1.20130907-r1: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0: Nice perspective based puzzle game, where you flatten the view to move across gaps
 games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet Set Willy
 games-arcade/pacmanarena 0.15: a Pacman clone in full 3D with a few surprises. Rockets, bombs and explosions abound
@@ -11048,7 +11048,7 @@ games-emulation/mamory 0.2.25: ROM management tools and library
 games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.41 0.9.45 0.9.45.1 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8: A front-end (GUI) for mednafen emulator
-games-emulation/mekanix 070: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
+games-emulation/mekanix 070 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
 games-emulation/mgba 0.5.2 0.6.0: A new Game Boy Advance emulator written in C.
 games-emulation/mupen64plus 1.5-r1 1.5-r2 2.0 2.5: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
@@ -15624,8 +15624,8 @@ net-p2p/xnap 2.5-r3: A P2P framework and client
 net-print/adobeps 1.0.6-r1: Adobe PostScript drivers for Windows for use with CUPS
 net-print/apsfilter 7.2.5 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/c2esp 25c 26: A cups filter for Kodak ESP printers
-net-print/cndrvcups-common-lb 3.10 3.20 3.40: Common files for Canon drivers
-net-print/cndrvcups-lb 3.00 3.20 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
+net-print/cndrvcups-lb 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.3 2.2.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.5.0 1.13.5 1.15.0 1.16.4 1.17.1 1.17.2 9999: Cups PDF filters

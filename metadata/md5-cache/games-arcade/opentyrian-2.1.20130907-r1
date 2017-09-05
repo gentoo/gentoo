@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/libsdl media-libs/sdl-net app-arch/unzip dev-vcs/mercurial
+DESCRIPTION=Open-source port of the DOS game Tyrian, vertical scrolling shooter
+EAPI=6
+HOMEPAGE=https://bitbucket.org/opentyrian/opentyrian/wiki/Home
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-net
+SLOT=0
+SRC_URI=http://darklomax.org/tyrian/tyrian21.zip http://www.camanis.net/opentyrian/releases/opentyrian-2.1.20130907-src.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=0aa65e27008a1539af68b71e55ca1296
