@@ -2844,7 +2844,6 @@ dev-util/cmake:system-jsoncpp - Use system copy of dev-libs/jsoncpp instead of b
 dev-util/coccigrep:vim - Install the coccigrep vim plugin
 dev-util/codeblocks:contrib - Build additional contrib components
 dev-util/cppcheck:htmlreport - install cppcheck-htmlreport
-dev-util/ctags:ada - Enable Ada support
 dev-util/ctags:json - Enable JSON output support
 dev-util/ctags:xml - Enable XML parsing support
 dev-util/ctags:yaml - Enable YAML parsing support
