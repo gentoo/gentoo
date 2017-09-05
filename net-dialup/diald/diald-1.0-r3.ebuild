@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils autotools pam
+inherit autotools pam
 
 DESCRIPTION="Daemon that provides on demand IP links via SLIP or PPP"
 HOMEPAGE="http://diald.sourceforge.net"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="Old-MIT GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="pam"
 
 DEPEND="pam? ( virtual/pam )
@@ -32,7 +32,7 @@ src_prepare() {
 }
 
 src_install() {
-	make \
+	emake \
 		DESTDIR="${D}" \
 		sysconfdir=/etc \
 		bindir=/usr/bin \
@@ -42,7 +42,7 @@ src_install() {
 		BINGRP=root \
 		ROOTUID=root \
 		ROOTGRP=root \
-		install || die "make failed"
+		install
 	use pam && pamd_mimic_system diald auth account
 
 	dodir /var/cache/diald
