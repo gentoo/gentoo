@@ -406,3 +406,7 @@ media-video/vlc projectm chromaprint opencv
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+# Ian Whyman <thev00d00@gentoo.org> (05 Sept 2017)
+# missing keywords dev-lang/duktape media-libs/lastfmlib
+net-misc/gerbera javascript lastfm
