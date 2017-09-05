@@ -16,6 +16,7 @@ RDEPEND="dev-lang/perl"
 PATCHES=(
 	"${FILESDIR}/unescaped-left-brace.patch"
 	"${FILESDIR}/redundant-argument-to-sprintf.patch"
+	"${FILESDIR}/multi-digit-enhanced-status.patch"
 )
 
 src_prepare() {
