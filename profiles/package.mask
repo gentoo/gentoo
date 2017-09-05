@@ -431,11 +431,6 @@ media-plugins/vdr-skinnopacity
 >=sys-libs/ldb-1.1.30
 >=net-fs/samba-4.7.0_rc1
 
-# Lars Wendler <polynomial-c@gentoo.org> (06 Jul 2017)
-# Masked for testing due to new dependencies which
-# were not packaged in Gentoo previously.
->=sys-fs/udisks-2.7.0
-
 # Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
 # The snapshots got a wrong version number assigned.
 # They are from before version 2.0.0. Masking them to force
