@@ -1,0 +1,31 @@
+From 2f7ca474ec49f805257c75cefb364e08ebd9e4d1 Mon Sep 17 00:00:00 2001
+From: Johannes Huber <johu@gentoo.org>
+Date: Tue, 5 Sep 2017 22:58:44 +0200
+Subject: [PATCH] [Qt5] Drop unused dependencies
+
+---
+ CMakeLists.txt | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a5b0a5be..787bd0d6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,12 +133,10 @@ macro_optional_find_package(Qt4)
+ find_package(Qt5Core)
+ find_package(Qt5Gui)
+ find_package(Qt5Xml)
+-find_package(Qt5Widgets)
+-find_package(Qt5Test)
+-if (Qt5Core_FOUND AND Qt5Gui_FOUND AND Qt5Xml_FOUND AND Qt5Widgets_FOUND AND Qt5Test_FOUND)
++if (Qt5Core_FOUND AND Qt5Gui_FOUND AND Qt5Xml_FOUND)
+   set(QT5_FOUND true)
+ else ()
+-  message("-- Package Qt5Core or Qt5Gui or Qt5Xml or Qt5Widgets or Qt5Test not found")
++  message("-- Package Qt5Core or Qt5Gui or Qt5Xml not found")
+   set(QT5_FOUND false)
+ endif()
+ 
+-- 
+2.14.1
+
