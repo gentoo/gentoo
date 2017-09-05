@@ -7,5 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://sourceforge/logreporters/postfix-logwatch-1.40.03.tgz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=144960bdebb218cda5e01045d50fd054
+_md5_=183b4cdf285b1e1c3f917b9a2751054a
