@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/jsoncpp:=
 	dev-libs/pugixml
 	media-libs/flac
-	>=media-libs/libmatroska-1.4.5:=
+	>=media-libs/libmatroska-1.4.7:=
 	media-libs/libogg
 	media-libs/libvorbis
 	sys-apps/file
