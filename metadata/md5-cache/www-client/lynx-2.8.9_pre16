@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/zlib nls? ( virtual/libintl ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( dev-libs/libgcrypt:0= >=net-libs/gnutls-2.6.4:= ) ) bzip2? ( app-arch/bzip2 ) idn? ( net-dns/libidn )
 SLOT=0
 SRC_URI=http://invisible-mirror.net/archives/lynx/tarballs/lynx2.8.9dev.16.tar.bz2
-_md5_=16b25eff328e83ce7f85cec196ba7a29
+_md5_=f6446bc29cedd5b92acf67b17fa39f08
