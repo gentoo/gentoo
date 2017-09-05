@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
 DEPEND="media-gfx/opencsg
-	sci-mathematics/cgal
+	sci-mathematics/cgal:=
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4[-egl]
 	dev-qt/qtopengl:4[-egl]
