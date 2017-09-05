@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Console app for copying burning audio cds"
-HOMEPAGE="http://www.thenktor.homepage.t-online.de/burncdda"
+HOMEPAGE="http://burncdda.sourceforge.net/"
 SRC_URI="http://www.thenktor.homepage.t-online.de/burncdda/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
