@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs flag-o-matic multilib autotools
 
-MY_PN=${PN/-/_}
-MY_P=${MY_PN}-${PV}
+MY_PN="${PN/-/_}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Similar to dd but can copy from source with errors"
 HOMEPAGE="http://www.garloff.de/kurt/linux/ddrescue/"
@@ -23,14 +23,18 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${MY_PN}-1.99-musl.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${MY_PN}-1.99-test_fix.patch"
-	epatch "${FILESDIR}/${MY_PN}-1.99-musl.patch"
+	default
 
 	sed -i \
 		-e 's:-ldl:$(LDFLAGS) -ldl:' \
 		-e 's:-shared:$(CFLAGS) $(LDFLAGS) -shared:' \
 		Makefile
+
 	eautoreconf
 }
 
@@ -62,7 +66,7 @@ _emake() {
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0) \
 		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}" \
 		CFLAGS_OPT='$(CFLAGS)' \
-		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/${PN}" \
+		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX%/}/usr/$(get_libdir)/${PN}" \
 		CC="$(tc-getCC)" \
 		"$@"
 }
@@ -79,7 +83,7 @@ src_install() {
 	# easier to install by hand than trying to make sense of the Makefile.
 	dobin dd_rescue
 	dodir /usr/$(get_libdir)/${PN}
-	cp -pPR libddr_*.so "${ED}"/usr/$(get_libdir)/${PN}/ || die
+	cp -pPR libddr_*.so "${ED%/}"/usr/$(get_libdir)/${PN}/ || die
 	dodoc README.dd_rescue
 	doman dd_rescue.1
 	use lzo && doman ddr_lzo.1
