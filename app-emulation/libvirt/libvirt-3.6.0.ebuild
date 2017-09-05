@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch          # bug #609488
 	"${FILESDIR}"/${PN}-3.6.0-ssh-malicious-hostname-fix.patch # bug #629462
+	"${FILESDIR}"/${PN}-3.6.0-blobb.patch
 )
 
 pkg_setup() {
