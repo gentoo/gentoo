@@ -1021,7 +1021,7 @@ app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.4.2: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 9999: GUI version of the Vim text editor
+app-editors/gvim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 8.0.1056 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1067,8 +1067,8 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r 9.8s: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.0386 8.0.0938 8.0.0983 9999: vim and gvim shared files
+app-editors/vim 8.0.0386 8.0.0386-r1 8.0.0938 8.0.0983 8.0.1056 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.0.0386 8.0.0938 8.0.0983 8.0.1056 9999: vim and gvim shared files
 app-editors/vis 0.3 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
@@ -9705,7 +9705,7 @@ dev-ruby/mocha 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0 1.2.1
 dev-ruby/moneta 0.8.1 1.0.0: A unified interface to key/value stores
 dev-ruby/mongo 2.0.6: A Ruby driver for MongoDB
 dev-ruby/msgpack 0.7.6 1.0.1 1.0.2 1.0.3 1.1.0: Binary-based efficient data interchange format for ruby binding
-dev-ruby/multi_json 1.9.3 1.12.1: A gem to provide swappable JSON backends
+dev-ruby/multi_json 1.9.3 1.12.1 1.12.2: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r2 0.5.5 0.6.0: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
