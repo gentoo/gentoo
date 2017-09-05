@@ -2,38 +2,23 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+command="/usr/bin/gerbera"
+command_args="--logfile ${GERBERA_LOGFILE}
+	      --config ${GERBERA_CONFIG}
+	      --port ${GERBERA_PORT}
+	      ${GERBERA_OPTIONS}"
+command_user="gerbera:gerbera"
+command_background=true
+start_stop_daemon_args="--wait 500"
+retry="10"
+pidfile="/run/${RC_SVCNAME}.pid"
+
 depend() {
 	need net
-	# In order to properly support this (need vs use), we would have to
-	# parse ${GERBERA_CONFIG} and see if mysql is enabled and if it is
-	# pointing to the local system.  #368409
-	use mysql
 }
 
-start() {
-	ebegin "Starting Gerbera"
-
-	checkpath --directory --owner "${GERBERA_USER}:${GERBERA_GROUP}" --mode 0755 /run/gerbera
-	checkpath --file --owner "${GERBERA_USER}:${GERBERA_GROUP}" --mode 0644 "${GERBERA_LOGFILE}"
-
-	start-stop-daemon \
-		--start \
-		--exec /usr/bin/gerbera \
-		--user ${GERBERA_USER} \
-		--group ${GERBERA_GROUP} \
-		--background \
-		--wait 500 \
-		-- \
-		--pidfile /run/gerbera/gerbera.pid \
-		--logfile ${GERBERA_LOGFILE} \
-		--config ${GERBERA_CONFIG} \
-		--port ${GERBERA_PORT} \
-		${GERBERA_OPTIONS}
-	eend $?
-}
-
-stop () {
-	ebegin "Stopping Gerbera"
-	start-stop-daemon --stop --retry 10 --quiet --pidfile /run/gerbera/gerbera.pid
-	eend $?
+start_pre() {
+	checkpath --owner "gerbera:gerbera" \
+			  --mode 0644 \
+			  --file "${GERBERA_LOGFILE}"
 }

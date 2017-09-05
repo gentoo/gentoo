@@ -6,12 +6,12 @@ EAPI=6
 inherit cmake-utils eutils linux-info systemd tmpfiles user
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/v00d00/${PN}.git"
+	EGIT_REPO_URI="https://github.com/gerbera/${PN}.git"
 	KEYWORDS=""
 	SRC_URI=""
 	inherit git-r3
 else
-	SRC_URI="https://github.com/v00d00/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gerbera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${P}"
 fi
@@ -78,18 +78,15 @@ src_install() {
 	use mysql && systemd_dounit "${S}/scripts/systemd/${PN}-mysql.service"
 
 	newinitd "${FILESDIR}/${PN}-1.0.0.initd" "${PN}"
-	use mysql || sed -i -e "/use mysql/d" "${ED}/etc/init.d/${PN}"
 	newconfd "${FILESDIR}/${PN}-1.0.0.confd" "${PN}"
 
 	insinto /etc/${PN}
 	newins "${FILESDIR}/${PN}-1.0.0.config" config.xml
-	fperms 0600 /etc/${PN}/config.xml
-	fowners gerbera:gerbera /etc/${PN}/config.xml
+	fperms 0640 /etc/${PN}/config.xml
+	fowners root:gerbera /etc/${PN}/config.xml
 
 	keepdir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
-
-	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 }
 
 pkg_postinst() {
