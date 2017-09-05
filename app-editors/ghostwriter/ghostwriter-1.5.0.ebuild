@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PLOCALES="de en it ja pt_BR ru"
+PLOCALES="cs de en es fr it ja pt_BR ru"
 
 inherit l10n qmake-utils
 
