@@ -86,7 +86,7 @@ src_configure() {
 
 src_compile() {
 	# generating translation files in parallel is currently broken
-	emake -C po -j1
+	use nls && emake -C po -j1
 	emake
 }
 
