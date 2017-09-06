@@ -12,5 +12,4 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+DEPEND="app-text/asciidoc"
