@@ -33,11 +33,17 @@ teq 1.2 version_cut 1-2 .1.2.3
 teq .1.2 version_cut 0-2 .1.2.3
 teq 2.3 version_cut 2-3 1.2.3.
 teq 2.3. version_cut 2- 1.2.3.
+teq 2.3. version_cut 2-4 1.2.3.
 
+teq 1.2-3 version_rs 2 - 1.2.3
+teq 1.2.3 version_rs 2 . 1.2-3
+teq 1.2.3.a version_rs 3 . 1.2.3a
+teq 1.2-alpha-4 version_rs 2-3 - 1.2_alpha4
 teq 1.23-b_alpha4 version_rs 3 - 2 "" 1.2.3b_alpha4
 teq a1b_2-c-3-d4e5 version_rs 3-5 _ 4-6 - a1b2c3d4e5
 teq .1-2.3 version_rs 1 - .1.2.3
 teq -1.2.3 version_rs 0 - .1.2.3
+teq 1.2.3. version_rs 3 . 1.2.3
 
 txf version_cut foo 1.2.3
 txf version_rs -3 _ a1b2c3d4e5
