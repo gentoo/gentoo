@@ -10587,7 +10587,7 @@ dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and prog
 dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/staruml-bin 2.8.0: A sophisticated software modeler
-dev-util/strace 4.13 4.16 4.17 4.18 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.13 4.16 4.17 4.18 4.19 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.7_p1 1.0.8: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
@@ -12984,7 +12984,7 @@ media-libs/gstreamer-editing-services 1.10.3 1.10.4: SDK for making video editor
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.0 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.0 1.5.1 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -17155,7 +17155,7 @@ sys-apps/inxi 2.3.0_p20160807-r1 2.3.4_p20161104-r1 2.3.8_p20170114 2.3.34_p2017
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.2 3.0.5 3.0.6: IPMI Management Utilities
-sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 4.11.0 4.12.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 4.11.0 4.12.0 4.13.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.0.9-r1 1.1.0 1.2.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1 2.1.2: tool to manipulate Intel X86 and X86-64 processor microcode update collections
