@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}/redundant-argument-to-sprintf.patch"
 	"${FILESDIR}/ignore-amavis-startup-notifications.patch"
 	"${FILESDIR}/ignore-utf8smtp-lines.patch"
+	"${FILESDIR}/unchecked-encrypted.patch"
 )
 
 src_prepare() {
