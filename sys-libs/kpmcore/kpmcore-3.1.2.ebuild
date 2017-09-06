@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="5/5"
 IUSE=""
 
-CDEPEND="
+RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
@@ -30,9 +30,6 @@ CDEPEND="
 	sys-apps/util-linux
 	>=sys-block/parted-3
 "
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
-"
-RDEPEND="${CDEPEND}
-	!<sys-block/partitionmanager-2.0.0
 "
