@@ -1,5 +1,5 @@
---- common/wl_agent.c.orig	2003-09-11 20:39:02.674298800 +0200
-+++ common/wl_agent.c	2003-09-11 20:42:17.229721880 +0200
+--- a/common/wl_agent.c	2003-09-11 20:39:02.674298800 +0200
++++ b/common/wl_agent.c	2003-09-11 20:42:17.229721880 +0200
 @@ -919,32 +919,31 @@
  	viewdist = 0x7fffffffl;
  	closest = NULL;
@@ -42,8 +42,8 @@
  	}
  
  	// hit something
---- common/wl_draw.c.orig	2003-09-11 20:43:26.473195272 +0200
-+++ common/wl_draw.c	2003-09-11 20:46:57.859059736 +0200
+--- a/common/wl_draw.c	2003-09-11 20:43:26.473195272 +0200
++++ b/common/wl_draw.c	2003-09-11 20:46:57.859059736 +0200
 @@ -877,7 +877,7 @@
  		tilespot = &tilemap[0][0]+spotloc;
  
