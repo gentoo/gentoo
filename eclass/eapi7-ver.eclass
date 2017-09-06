@@ -76,7 +76,7 @@ version_rs() {
 
 	while [[ $# -ge 2 ]]; do
 		_version_parse_range "$1"
-		[[ ${end} && ${end} -le $((${#comp[@]}/2)) ]] || end=$((${#comp[@]}/2))
+		[[ ${end} && ${end} -le $((${#comp[@]}/2)) ]] || end=$((${#comp[@]}/2 - 1))
 		for (( i = start*2; i <= end*2; i+=2 )); do
 			comp[i]=$2
 		done

@@ -24,6 +24,7 @@ txf() {
 	tend ${?} "function did not die"
 }
 
+teq 1 version_cut 1 1.2.3
 teq 1.2 version_cut 1-2 1.2.3
 teq 2.3 version_cut 2- 1.2.3
 teq 1.2.3 version_cut 1- 1.2.3
@@ -35,7 +36,10 @@ teq 2.3 version_cut 2-3 1.2.3.
 teq 2.3. version_cut 2- 1.2.3.
 teq 2.3. version_cut 2-4 1.2.3.
 
+teq 1-2.3 version_rs 1 - 1.2.3
 teq 1.2-3 version_rs 2 - 1.2.3
+teq 1-2-3.4 version_rs 1-2 - 1.2.3.4
+teq 1.2-3-4 version_rs 2- - 1.2.3.4
 teq 1.2.3 version_rs 2 . 1.2-3
 teq 1.2.3.a version_rs 3 . 1.2.3a
 teq 1.2-alpha-4 version_rs 2-3 - 1.2_alpha4

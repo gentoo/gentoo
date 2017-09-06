@@ -11,6 +11,7 @@ inherit eapi7-ver
 cutting() {
 	local x
 	for x in {1..1000}; do
+		version_cut 1 1.2.3
 		version_cut 1-2 1.2.3
 		version_cut 2- 1.2.3
 		version_cut 1- 1.2.3
@@ -27,7 +28,10 @@ cutting() {
 replacing() {
 	local x
 	for x in {1..1000}; do
+		version_rs 1 - 1.2.3
 		version_rs 2 - 1.2.3
+		version_rs 1-2 - 1.2.3.4
+		version_rs 2- - 1.2.3.4
 		version_rs 2 . 1.2-3
 		version_rs 3 . 1.2.3a
 		version_rs 2-3 - 1.2_alpha4
