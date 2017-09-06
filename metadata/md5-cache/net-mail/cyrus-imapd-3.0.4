@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst preinst prepare setup
+DEPEND=sys-libs/zlib dev-libs/libpcre >=dev-libs/cyrus-sasl-2.1.13 dev-libs/jansson dev-libs/icu:= afs? ( net-fs/openafs ) caps? ( sys-libs/libcap ) clamav? ( app-antivirus/clamav ) http? ( dev-libs/libxml2 dev-libs/libical ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb ) mysql? ( >=virtual/mysql-5.5 ) nntp? ( !net-nntp/leafnode ) pam? ( virtual/pam >=net-mail/mailbase-1 ) perl? ( dev-lang/perl:= ) postgres? ( dev-db/postgresql:* ) snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 ) ssl? ( >=dev-libs/openssl-1.0.1e:0[-bindist] ) sqlite? ( dev-db/sqlite:3 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) ) xapian? ( >=dev-libs/xapian-1.4.0 ) test? ( dev-util/cunit ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
+DESCRIPTION=The Cyrus IMAP Server
+EAPI=6
+HOMEPAGE=http://www.cyrusimap.org/
+IUSE=afs backup calalarm caps clamav http jmap kerberos ldap lmdb mysql nntp pam perl postgres replication +server sieve snmp sphinx sqlite ssl static-libs tcpd test xapian ssl
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD-with-attribution
+RDEPEND=sys-libs/zlib dev-libs/libpcre >=dev-libs/cyrus-sasl-2.1.13 dev-libs/jansson dev-libs/icu:= afs? ( net-fs/openafs ) caps? ( sys-libs/libcap ) clamav? ( app-antivirus/clamav ) http? ( dev-libs/libxml2 dev-libs/libical ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb ) mysql? ( >=virtual/mysql-5.5 ) nntp? ( !net-nntp/leafnode ) pam? ( virtual/pam >=net-mail/mailbase-1 ) perl? ( dev-lang/perl:= ) postgres? ( dev-db/postgresql:* ) snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 ) ssl? ( >=dev-libs/openssl-1.0.1e:0[-bindist] ) sqlite? ( dev-db/sqlite:3 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) ) xapian? ( >=dev-libs/xapian-1.4.0 ) !mail-mta/courier !net-mail/bincimap !net-mail/courier-imap !net-mail/uw-imap !net-mail/cyrus-imap-admin
+REQUIRED_USE=afs? ( kerberos ) backup? ( sqlite ) calalarm? ( http ) http? ( sqlite ) jmap? ( http xapian ) sphinx? ( mysql )
+SLOT=0
+SRC_URI=ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-3.0.4.tar.gz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=356d988e4decbae7306b1c21e15c2416
