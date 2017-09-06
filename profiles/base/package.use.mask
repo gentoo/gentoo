@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (6 Sep 2017)
+# This should really go away now.
+>=sys-libs/glibc-2.26 rpc
+
 # Michael Orlitzky <mjo@gentoo.org> (24 Aug 2017)
 # This is a security risk if not used carefully, bug 628596.
 net-analyzer/nrpe command-args
