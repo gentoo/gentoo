@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit python-single-r1 xdg-utils
+inherit gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
@@ -102,11 +102,13 @@ src_install() {
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
