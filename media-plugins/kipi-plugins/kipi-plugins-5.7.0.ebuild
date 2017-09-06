@@ -10,21 +10,19 @@ DESCRIPTION="Plugins for the KDE Image Plugin Interface"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
 IUSE="flashexport mediawiki +remotestorage vkontakte"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	MY_PV="${PV/_/-}"
-	MY_P="digikam-${MY_PV}"
-
+	KEYWORDS="~amd64 ~x86"
 	if [[ ${PV} =~ beta[0-9]$ ]]; then
 		SRC_BRANCH="unstable"
 	else
 		SRC_BRANCH="stable"
 	fi
 
+	MY_PV="${PV/_/-}"
+	MY_P="digikam-${MY_PV}"
 	SRC_URI="mirror://kde/${SRC_BRANCH}/digikam/${MY_P}.tar.xz"
-
 	S="${WORKDIR}/${MY_P}/extra/${PN}"
 fi
 
