@@ -11187,7 +11187,7 @@ games-fps/soldieroffortune-demo 0.57-r1: First-person shooter based on the merce
 games-fps/tenebrae 1.04 1.04-r1: adds stencil shadows and per pixel lights to quake
 games-fps/transfusion-bin 1.01: Blood remake
 games-fps/tribes2 25034: Tribes 2 - Team Combat on an Epic Scale
-games-fps/turtlearena 0.6.1: A turtle featuring free and open source third-person action game (ioq3 engine)
+games-fps/turtlearena 0.6.1 0.6.1-r1: A turtle featuring free and open source third-person action game (ioq3 engine)
 games-fps/unreal 226: Futuristic FPS (a hack that runs on top of Unreal Tournament)
 games-fps/unreal-tournament 451: Futuristic FPS
 games-fps/unreal-tournament-bonuspacks 436: Futuristic FPS (bonus packs)
@@ -11221,7 +11221,7 @@ games-fps/ut2004-troopers 6.0: UT2004 Troopers - Star Wars mod
 games-fps/ut2004-unwheel 0_beta5: UT2004 UnWheel - multiplayer driving mod focusing on fun driving
 games-fps/warsow 1.5.1-r1: Multiplayer FPS based on the QFusion engine (evolved from Quake 2)
 games-fps/warsow-community-map-pack 01: Community Map Pack for the Warsow multiplayer FPS
-games-fps/wolfgl 0.93-r1: Wolfenstein and Spear of Destiny port using OpenGL
+games-fps/wolfgl 0.93-r1 0.93-r2: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.1 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children

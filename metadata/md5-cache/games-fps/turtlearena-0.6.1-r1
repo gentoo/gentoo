@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=sys-libs/zlib[minizip] !dedicated? ( media-libs/freetype:2 media-libs/libsdl[X,sound,joystick,opengl,video] virtual/jpeg:0 virtual/opengl curl? ( net-misc/curl ) openal? ( media-libs/openal ) theora? ( media-libs/libtheora ) voice? ( media-libs/speex mumble? ( media-sound/mumble ) ) vorbis? ( media-libs/libvorbis ) ) app-arch/unzip virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A turtle featuring free and open source third-person action game (ioq3 engine)
+EAPI=6
+HOMEPAGE=http://ztm.x10host.com/ta/index.htm
+IUSE=+curl debug dedicated mumble openal server theora voice vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ CC-BY-SA-3.0 mplus-fonts lcc
+RDEPEND=sys-libs/zlib[minizip] !dedicated? ( media-libs/freetype:2 media-libs/libsdl[X,sound,joystick,opengl,video] virtual/jpeg:0 virtual/opengl curl? ( net-misc/curl ) openal? ( media-libs/openal ) theora? ( media-libs/libtheora ) voice? ( media-libs/speex mumble? ( media-sound/mumble ) ) vorbis? ( media-libs/libvorbis ) )
+SLOT=0
+SRC_URI=https://turtlearena.googlecode.com/files/turtlearena-0.6.1-0-src.tar.bz2 https://turtlearena.googlecode.com/files/turtlearena-0.6.1-0.zip
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=6eaaba1a269e95c09d546a52adf842b2
