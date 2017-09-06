@@ -4455,7 +4455,7 @@ dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat j
 dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.2.4 1.2.7 1.2.8 1.2.10 1.2.12: Native APR library for Tomcat
+dev-java/tomcat-native 1.2.4 1.2.7 1.2.8 1.2.10 1.2.12 1.2.14: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.77 7.0.79 7.0.81 8.0.43 8.0.45 8.0.46 8.5.11 8.5.16 8.5.20 9.0.0_alpha26: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
@@ -4891,7 +4891,7 @@ dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.2 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
 dev-libs/libmongo-client 0.1.7 0.1.8: The alternative C driver for MongoDB
-dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 2.1.0 9999: Useful set of performance and usability-oriented extensions to C
+dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 2.1.1 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libmspack 0.5_alpha 0.5_alpha-r1: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
@@ -10196,7 +10196,7 @@ dev-tex/rubber 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/slatex 20090928: SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source
-dev-tex/style-check 0.14: Parses latex-formatted text in search of forbidden phrases
+dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
 dev-tex/svninfo 0.7.4: A LaTeX module to access SVN version info
 dev-tex/tex4ht 20090611_p1038-r2 20090611_p1038-r3 20090611_p1038-r4 20090611_p1038-r5: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/texamator 1.7.5-r2: A program aimed at helping you making your exercise sheets
@@ -14779,7 +14779,7 @@ net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.2.5 9999: Qt Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
-net-irc/atheme-services 7.2.9: A portable and secure set of open-source and modular IRC services
+net-irc/atheme-services 7.2.9-r1: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
@@ -15645,6 +15645,7 @@ net-print/gutenprint 5.2.12: Ghostscript and cups printer drivers
 net-print/hplip 3.16.3 3.17.6 3.17.7: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.16.3 3.17.6: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
+net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4: PPD description files for (some) Kyocera Mita Printers
 net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
 net-print/libinklevel 0.8.0-r1 0.9.0 0.9.1 0.9.2: A library to get the ink level of your printer

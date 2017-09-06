@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
+EAPI=6
+HOMEPAGE=http://www.kyoceradocumentsolutions.eu
+IUSE=+rastertokpsl-fix l10n_en l10n_ar l10n_cs l10n_de l10n_el l10n_es l10n_fr l10n_he l10n_hu l10n_it l10n_ko l10n_pl l10n_pt l10n_ro l10n_ru l10n_th l10n_tr l10n_vi l10n_zh-CN l10n_zh-TW
+KEYWORDS=-* ~amd64
+LICENSE=GPL-2 kyocera-mita-ppds
+RDEPEND=net-print/cups
+REQUIRED_USE=|| ( l10n_en l10n_ar l10n_cs l10n_de l10n_el l10n_es l10n_fr l10n_he l10n_hu l10n_it l10n_ko l10n_pl l10n_pt l10n_ro l10n_ru l10n_th l10n_tr l10n_vi l10n_zh-CN l10n_zh-TW )
+RESTRICT=fetch mirror
+SLOT=0
+SRC_URI=LinuxDrv_1.1203_FS-1x2xMFP.zip
+_md5_=81496704a129dcb080ebc12e3e9f4286
