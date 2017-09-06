@@ -17422,7 +17422,7 @@ sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873
 sys-block/open-isns 0.97: iSNS server and client for Linux
 sys-block/parted 2.4 2.4-r1 3.1-r1 3.1-r2 3.2 3.2-r1 3.2-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 3.0.1 3.1.0: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 3.1.0 3.1.2: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
