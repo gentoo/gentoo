@@ -1,6 +1,5 @@
-diff -ru ntopng-2.4-stable.orig/configure.ac ntopng-2.4-stable/configure.ac
---- ntopng-2.4-stable.orig/configure.ac	2016-11-20 03:59:19.928851928 -0800
-+++ ntopng-2.4-stable/configure.ac	2016-11-20 03:59:53.717850915 -0800
+--- a/configure.ac
++++ b/configure.ac
 @@ -341,14 +341,6 @@
  	GMAKE="make"
  fi
@@ -16,9 +15,8 @@ diff -ru ntopng-2.4-stable.orig/configure.ac ntopng-2.4-stable/configure.ac
  GIT=`which git`
  if test x$GIT = x
  then
-diff -ru ntopng-2.4-stable.orig/Makefile.in ntopng-2.4-stable/Makefile.in
---- ntopng-2.4-stable.orig/Makefile.in	2016-06-27 12:31:18.000000000 -0700
-+++ ntopng-2.4-stable/Makefile.in	2016-11-20 04:00:31.037849796 -0800
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -4,7 +4,6 @@
  SHELL=/bin/sh
  OS := $(shell uname -s)
