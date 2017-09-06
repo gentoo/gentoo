@@ -7,7 +7,6 @@ KEYWORDS=amd64 hppa ~mips ppc sparc x86
 LICENSE=vim
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
-SRC_URI=mirror://gentoo/detectindent-1.0_p20150908.tar.xz http://dev.gentoo.org/~chutzpah/vim/detectindent-1.0_p20150908.tar.xz
-_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
+SRC_URI=mirror://gentoo/detectindent-1.0_p20150908.tar.xz https://dev.gentoo.org/~chutzpah/vim/detectindent-1.0_p20150908.tar.xz
 _eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
-_md5_=0e6c864d767919a3f905529f11db229d
+_md5_=d9ddbb6bc352ad9634db9267bf9a7ba8
