@@ -10,7 +10,7 @@ SRC_URI="http://www.thc.org/thc-rut/${P}.tar.gz"
 
 LICENSE="free-noncomm PCRE GPL-1+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 DEPEND="
 	dev-libs/libpcre

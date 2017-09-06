@@ -11,7 +11,7 @@ SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.bz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~sparc-solaris"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~sparc-solaris"
 IUSE="doc lpsol pch static-libs test"
 
 RDEPEND=">=dev-libs/gmp-4.1.3[cxx]

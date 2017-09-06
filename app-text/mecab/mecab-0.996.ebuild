@@ -10,7 +10,7 @@ HOMEPAGE="http://mecab.sourceforge.net/"
 SRC_URI="https://mecab.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
-KEYWORDS="amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm hppa ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 SLOT="0"
 IUSE="static-libs unicode"
 

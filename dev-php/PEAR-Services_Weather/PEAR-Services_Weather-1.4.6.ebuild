@@ -9,7 +9,7 @@ DESCRIPTION="This class acts as an interface to various online weather-services"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="minimal"
 RDEPEND="dev-lang/php[ctype]
 	>=dev-php/PEAR-HTTP_Request-1.2.4-r1

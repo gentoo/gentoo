@@ -10,7 +10,7 @@ SRC_URI="http://bitop.luajit.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/lua-5.1.5-r2:*[${MULTILIB_USEDEP}]"

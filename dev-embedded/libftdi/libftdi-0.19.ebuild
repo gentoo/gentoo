@@ -8,7 +8,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-2 autotools
 else
 	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${P}.tar.gz"
-	KEYWORDS="amd64 arm ppc ppc64 sparc x86"
+	KEYWORDS="amd64 arm ppc ppc64 ~sparc x86"
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"

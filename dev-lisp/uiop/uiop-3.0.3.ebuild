@@ -10,7 +10,7 @@ SRC_URI="http://common-lisp.net/project/asdf/archives/asdf-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="~dev-lisp/asdf-${PV}"

@@ -12,7 +12,7 @@ HOMEPAGE="http://gkrellkam.sourceforge.net"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="x86 ppc sparc alpha amd64"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 
 RDEPEND="net-misc/wget
 	 app-admin/gkrellm[X]"

@@ -9,7 +9,7 @@ SRC_URI="http://dockapps.windowmaker.org/download.php/id/268/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 
 RDEPEND="x11-libs/libXpm
 	x11-libs/libXext

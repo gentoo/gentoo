@@ -24,7 +24,7 @@ DESCRIPTION="Galician dictionaries for myspell/hunspell"
 LICENSE="GPL-2 LGPL-2.1"
 HOMEPAGE="http://lingucomponent.openoffice.org/"
 
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 
 IUSE=""
 

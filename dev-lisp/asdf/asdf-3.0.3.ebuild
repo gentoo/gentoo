@@ -10,7 +10,7 @@ SRC_URI="http://common-lisp.net/project/${PN}/archives/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="doc test"
 
 SLOT="0/${PVR}"

@@ -29,7 +29,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 [[ ${PV} == *9999 ]] || \
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE="examples static-libs"
 
 src_configure() {

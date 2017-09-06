@@ -6,7 +6,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: PHPDoc Support in VIM"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=520"
 LICENSE="vim"
-KEYWORDS="alpha ~amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha ~amd64 ia64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 DEPEND="${DEPEND} >=sys-apps/sed-4"
 RDEPEND="${DEPEND}"

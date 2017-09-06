@@ -9,7 +9,7 @@ HOMEPAGE="http://mkeadle.org/distfiles/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
 
 RDEPEND="|| ( x11-wm/fluxbox x11-wm/blackbox x11-wm/openbox )"
 

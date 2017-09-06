@@ -9,7 +9,7 @@ HOMEPAGE="http://crazney.net/programs/itunes/libopendaap.html"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 src_unpack() {

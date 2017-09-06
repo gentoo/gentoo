@@ -11,7 +11,7 @@ SRC_URI="http://www.eecs.harvard.edu/~nr/noweb/dist/${P}.tgz"
 
 LICENSE="noweb emacs? ( GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="emacs examples"
 
 DEPEND="virtual/tex-base

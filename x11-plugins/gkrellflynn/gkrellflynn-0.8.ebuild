@@ -7,7 +7,7 @@ inherit eutils gkrellm-plugin toolchain-funcs
 HOMEPAGE="http://bax.comlab.uni-rostock.de/en/projects/flynn.html"
 SRC_URI="http://bax.comlab.uni-rostock.de/fileadmin/downloads/${P}.tar.gz"
 DESCRIPTION="A funny GKrellM2 load monitor (for Doom(tm) fans)"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

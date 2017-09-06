@@ -12,7 +12,7 @@ HOMEPAGE="http://gael.roualland.free.fr/ifstat/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 ~sparc x86"
 
 DEPEND="snmp? ( >=net-analyzer/net-snmp-5.0 )"
 RDEPEND="${DEPEND}"

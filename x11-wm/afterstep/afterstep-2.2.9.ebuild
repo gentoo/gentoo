@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.afterstep.org/stable/AfterStep-${PV}.tar.bz2"
 # libAfterBase/libAfterImage are LGPL
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="alsa debug dbus gif gtk jpeg cpu_flags_x86_mmx nls png svg tiff xinerama"
 
 RDEPEND="

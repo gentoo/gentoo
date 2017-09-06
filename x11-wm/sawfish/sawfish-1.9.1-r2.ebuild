@@ -10,7 +10,7 @@ SRC_URI="http://download.tuxfamily.org/sawfish/${P}.tar.xz"
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ~ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="emacs nls xinerama"
 
 RDEPEND="emacs? ( virtual/emacs !app-emacs/sawfish )

@@ -15,7 +15,7 @@ SRC_URI="https://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ia64 ~mips sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ia64 ~mips ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND=""

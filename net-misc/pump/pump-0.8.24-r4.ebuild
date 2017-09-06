@@ -14,7 +14,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${PN}_${PV}.orig.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc sparc x86"
+KEYWORDS="amd64 arm hppa ia64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=dev-libs/popt-1.5"

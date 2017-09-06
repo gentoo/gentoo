@@ -12,7 +12,7 @@ DESCRIPTION="Read directives from a configuration file"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ia64 ~ppc ~sparc x86"
 IUSE=""
 
 src_install() {

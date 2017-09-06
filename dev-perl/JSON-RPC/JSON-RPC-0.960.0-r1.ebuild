@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl implementation of JSON-RPC 1.1 protocol"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/libwww-perl

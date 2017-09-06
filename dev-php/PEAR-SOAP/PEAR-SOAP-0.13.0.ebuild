@@ -9,7 +9,7 @@ DESCRIPTION="SOAP Client/Server for PHP 4"
 
 LICENSE="PHP-2.02"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="minimal"
 
 RDEPEND=">=dev-php/PEAR-HTTP_Request-1.2.4-r1

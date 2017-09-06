@@ -7,7 +7,7 @@ SRC_URI="http://sandbox.cz/~covex/icewm/iceicons/${PN}-default-${PV}.tar.gz"
 LICENSE="LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=x11-wm/icewm-1.2.6"

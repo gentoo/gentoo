@@ -7,5 +7,5 @@ DESCRIPTION="Provides methods for converting to and from Roman Numerals"
 
 LICENSE="PHP-2.02"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""

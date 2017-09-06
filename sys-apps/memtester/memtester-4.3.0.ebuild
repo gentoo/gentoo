@@ -12,7 +12,7 @@ SRC_URI="http://pyropus.ca/software/memtester/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 src_prepare() {

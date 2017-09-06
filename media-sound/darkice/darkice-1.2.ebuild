@@ -10,7 +10,7 @@ SRC_URI="https://darkice.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc sparc x86"
+KEYWORDS="amd64 hppa ppc ~sparc x86"
 IUSE="aac aacplus alsa debug jack libsamplerate mp3 opus pulseaudio twolame vorbis"
 
 RDEPEND="aac? ( media-libs/faac )

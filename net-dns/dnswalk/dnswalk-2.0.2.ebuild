@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/dnswalk/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 RDEPEND=">=dev-perl/Net-DNS-0.12"
 

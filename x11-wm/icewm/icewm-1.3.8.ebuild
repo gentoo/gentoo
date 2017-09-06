@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SRC_URI="mirror://sourceforge/${PN}/${P/_}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
 IUSE="bidi debug gnome minimal nls truetype uclibc xinerama"
 REQUIRED_USE="gnome? ( ${PYTHON_REQUIRED_USE} )"
 

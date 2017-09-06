@@ -10,7 +10,7 @@ SRC_URI="https://github.com/atheme/${PN}/archive/0.2.7.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
 IUSE="pango +tools xcomposite"
 
 RDEPEND="

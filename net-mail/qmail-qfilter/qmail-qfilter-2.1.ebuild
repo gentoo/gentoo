@@ -9,7 +9,7 @@ HOMEPAGE="http://untroubled.org/qmail-qfilter/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=dev-libs/bglibs-1.0.19"

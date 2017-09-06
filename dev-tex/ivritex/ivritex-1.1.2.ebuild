@@ -14,7 +14,7 @@ LICENSE="LPPL-1.2"
 
 SLOT="0"
 DEPEND=""
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 
 src_install () {
 	export VARTEXFONTS="${T}/fonts"

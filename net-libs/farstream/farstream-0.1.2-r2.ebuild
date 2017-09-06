@@ -11,7 +11,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/Farstream"
 SRC_URI="https://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="+introspection python test upnp"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

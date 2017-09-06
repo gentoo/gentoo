@@ -11,7 +11,7 @@ SRC_URI="http://bashburn.dose.se/index.php?s=file_download&id=25 -> ${MY_P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND="app-shells/bash"

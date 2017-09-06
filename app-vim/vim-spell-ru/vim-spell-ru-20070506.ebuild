@@ -6,5 +6,5 @@ VIM_SPELL_LANGUAGE="Russian"
 inherit vim-spell
 
 LICENSE="myspell-ru_RU-AlexanderLebedev"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""

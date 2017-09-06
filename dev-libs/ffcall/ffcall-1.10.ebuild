@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.santafe.edu/pub/gnu/${P}.tar.gz"
 # under GNU LGPL." -ffcall author
 LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ppc sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~hppa ppc ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=""

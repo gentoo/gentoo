@@ -8,7 +8,7 @@ HOMEPAGE="http://www.xemacs.org/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 IUSE="mule"
 
 RDEPEND="

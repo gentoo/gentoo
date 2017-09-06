@@ -9,7 +9,7 @@ SRC_URI="http://entropymine.com/jason/${PN}/${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ppc ~sparc x86 ~x86-linux ~ppc-macos"
 IUSE=""
 
 RDEPEND="media-libs/libpng"

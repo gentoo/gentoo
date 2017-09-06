@@ -9,7 +9,7 @@ DESCRIPTION="Generic server class for PHP"
 
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/php[sockets]"

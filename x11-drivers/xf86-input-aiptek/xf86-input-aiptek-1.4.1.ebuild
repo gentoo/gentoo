@@ -6,7 +6,7 @@ EAPI=4
 inherit xorg-2
 
 DESCRIPTION="Aiptek USB Digital Tablet Input Driver for Linux"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh ~sparc x86"
 IUSE=""
 
 RDEPEND=""

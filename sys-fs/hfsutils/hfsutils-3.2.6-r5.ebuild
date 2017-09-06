@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.mars.org/pub/hfs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~sparc x86"
 IUSE="tcl tk"
 
 DEPEND="

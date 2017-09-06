@@ -7,7 +7,7 @@ SRC_URI="ftp://ftp.visi.com/users/hawkeyd/X/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha ppc sparc x86"
+KEYWORDS="alpha ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

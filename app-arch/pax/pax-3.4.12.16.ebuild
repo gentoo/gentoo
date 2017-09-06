@@ -16,7 +16,7 @@ SRC_URI="mirror://fedora-dev/releases/${FC_PV}/Everything/source/SRPMS/${MY_P}-$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh ~sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

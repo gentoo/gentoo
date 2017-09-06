@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 DEPEND=""
 RDEPEND=""

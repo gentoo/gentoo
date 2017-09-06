@@ -7,7 +7,7 @@ SRC_URI="https://fossies.org/linux/privat/old/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha ~amd64 ~hppa ~mips ppc sparc x86"
+KEYWORDS="alpha ~amd64 ~hppa ~mips ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/perl-5.6.1

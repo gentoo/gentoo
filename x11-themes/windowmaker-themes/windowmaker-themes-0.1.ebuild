@@ -93,7 +93,7 @@ IUSE="offensive"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 hppa ppc sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 hppa ppc ~sparc x86 ~amd64-fbsd"
 
 DEPEND=""
 RDEPEND="x11-wm/windowmaker"

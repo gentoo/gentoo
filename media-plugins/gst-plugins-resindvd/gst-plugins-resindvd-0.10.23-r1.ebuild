@@ -6,7 +6,7 @@ EAPI="5"
 GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE=""
 
 RDEPEND="

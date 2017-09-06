@@ -11,7 +11,7 @@ SLOT="0"
 LICENSE="GPL-2"
 # not in keywords due to missing dependencies:
 # ~s390 ~ppc64 ~alpha ~ia64 ~sparc ~x86
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ~sparc x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 

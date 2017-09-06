@@ -60,7 +60,7 @@ SRC_URI="http://www.openwall.com/popa3d/${P}.tar.gz
 
 LICENSE="Openwall"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 DEPEND=">=sys-apps/sed-4
 	pam? ( >=sys-libs/pam-0.72

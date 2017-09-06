@@ -9,7 +9,7 @@ DESCRIPTION="Header file allowing to call Fortran routines from C and C++"
 SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/c/${PN}/${PN}_${PV}-${DEB_PR}.diff.gz"
 HOMEPAGE="http://www-zeus.desy.de/~burow/cfortran/"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 LICENSE="LGPL-2"
 IUSE="examples"
 SLOT="0"

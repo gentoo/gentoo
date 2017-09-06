@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LaTeX-Calendar"
 SLOT="0"
-KEYWORDS="x86 sparc ppc amd64"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

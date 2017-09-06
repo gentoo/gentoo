@@ -10,7 +10,7 @@ DESCRIPTION="very high level language"
 
 LICENSE="public-domain HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="X iplsrc"
 
 S="${WORKDIR}/icon.v${MY_PV}src"

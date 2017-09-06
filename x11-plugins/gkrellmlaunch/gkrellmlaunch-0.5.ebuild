@@ -11,7 +11,7 @@ IUSE=""
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha amd64"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 
 RDEPEND="app-admin/gkrellm[X]"
 DEPEND="${RDEPEND}"

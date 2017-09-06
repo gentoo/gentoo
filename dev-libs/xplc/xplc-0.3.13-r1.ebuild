@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/xplc/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc sparc x86"
+KEYWORDS="alpha amd64 hppa ppc ~sparc x86"
 IUSE=""
 
 DEPEND="virtual/pkgconfig"

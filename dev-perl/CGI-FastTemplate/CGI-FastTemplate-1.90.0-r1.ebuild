@@ -10,5 +10,5 @@ inherit perl-module
 DESCRIPTION="The Perl CGI::FastTemplate Module"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
 IUSE=""

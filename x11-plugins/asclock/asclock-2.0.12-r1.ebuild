@@ -10,7 +10,7 @@ SRC_URI="http://www.tigr.net/afterstep/download/asclock/${P}.tar.gz"
 HOMEPAGE="http://tigr.net/afterstep/applets/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 DEPEND="x11-libs/libXpm"
 RDEPEND="${DEPEND}

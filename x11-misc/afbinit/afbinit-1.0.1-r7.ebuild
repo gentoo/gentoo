@@ -10,7 +10,7 @@ IUSE=""
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="-* sparc"
+KEYWORDS="-* ~sparc"
 
 RDEPEND="${DEPEND}
 	sys-apps/util-linux"

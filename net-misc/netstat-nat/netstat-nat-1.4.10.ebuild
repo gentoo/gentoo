@@ -10,7 +10,7 @@ SRC_URI="http://tweegy.nl/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc sparc x86"
+KEYWORDS="amd64 ~arm ppc ~sparc x86"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-install.patch

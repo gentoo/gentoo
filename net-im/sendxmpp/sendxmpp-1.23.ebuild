@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/s/sendxmpp/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc sparc x86"
+KEYWORDS="amd64 hppa ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Net-XMPP

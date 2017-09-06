@@ -6,7 +6,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: extra syntax highlighting for help files"
 HOMEPAGE="http://mysite.verizon.net/astronaut/vim/"
 LICENSE="public-domain"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ~ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ~ppc ppc64 ~sparc x86"
 IUSE=""
 
 VIM_PLUGIN_HELPTEXT=\

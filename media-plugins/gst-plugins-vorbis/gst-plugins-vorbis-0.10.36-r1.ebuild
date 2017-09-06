@@ -6,7 +6,7 @@ EAPI="5"
 GST_ORG_MODULE=gst-plugins-base
 inherit gstreamer libtool
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE=""
 
 RDEPEND=">=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]

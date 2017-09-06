@@ -11,7 +11,7 @@ SRC_URI="http://gige.xdv.org/soft/libjackasyn/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="amd64 ~sparc x86"
 
 DEPEND="media-sound/jack-audio-connection-kit
 	media-libs/libsamplerate"

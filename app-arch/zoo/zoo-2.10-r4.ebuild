@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.kiarchive.ru/pub/unix/arcers/${P}pl1.tar.gz
 
 LICENSE="zoo"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 S=${WORKDIR}

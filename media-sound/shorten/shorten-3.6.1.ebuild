@@ -9,7 +9,7 @@ SRC_URI="http://shnutils.freeshell.org/shorten/dist/src/${P}.tar.gz"
 
 LICENSE="shorten"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~ppc ~sparc x86 ~x86-fbsd"
 
 src_unpack() {
 	unpack ${A}

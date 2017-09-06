@@ -6,7 +6,7 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="Network performance benchmark including tests for TCP, UDP, sockets, ATM and more"
 SRC_URI="ftp://ftp.netperf.org/${PN}/${P}.tar.bz2"
-KEYWORDS="alpha amd64 arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm64 hppa ia64 ppc ppc64 ~sparc x86"
 
 HOMEPAGE="http://www.netperf.org/"
 LICENSE="netperf"

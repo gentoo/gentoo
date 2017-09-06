@@ -9,7 +9,7 @@ SRC_URI="http://icecast.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~ppc sparc x86"
+KEYWORDS="alpha ~ppc ~sparc x86"
 IUSE=""
 
 src_unpack() {

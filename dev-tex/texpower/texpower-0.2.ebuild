@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/texpower/${MY_P}.tar.gz"
 HOMEPAGE="http://texpower.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 S="${WORKDIR}/${MY_P}"
 

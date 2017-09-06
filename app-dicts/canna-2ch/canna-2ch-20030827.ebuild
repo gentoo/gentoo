@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha ~amd64 ppc ppc64 ~sparc x86"
 IUSE="canna"
 
 DEPEND="canna? ( app-i18n/canna )"

@@ -6,7 +6,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: fluxbox files syntax and indent"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=679"
 LICENSE="vim"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 RDEPEND="${RDEPEND} >=app-vim/genindent-1.0"

@@ -15,7 +15,7 @@ DEPEND="${RDEPEND}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc amd64 ppc"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 src_compile() {
 	econf || die "Configuration failed"

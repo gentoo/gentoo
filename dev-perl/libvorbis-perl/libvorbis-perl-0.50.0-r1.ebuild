@@ -11,7 +11,7 @@ DESCRIPTION="Ogg::Vorbis - Perl extension for Ogg Vorbis streams"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="amd64 ia64 ppc sparc x86"
+KEYWORDS="amd64 ia64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="media-libs/libogg

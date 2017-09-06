@@ -17,7 +17,7 @@ SRC_URI="http://www.catb.org/~esr/terminfo/termtypes.tc.gz
 
 LICENSE="GPL-2 LGPL-2 BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc sparc x86"
+KEYWORDS="alpha amd64 hppa ppc ~sparc x86"
 IUSE=""
 
 DEPEND=""

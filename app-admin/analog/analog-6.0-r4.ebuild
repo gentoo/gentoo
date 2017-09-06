@@ -11,7 +11,7 @@ SRC_URI="http://www.analog.cx/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ppc ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND=">=dev-libs/libpcre-3.4

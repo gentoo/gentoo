@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 hppa ia64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6 perl ssl"
 
 DEPEND="

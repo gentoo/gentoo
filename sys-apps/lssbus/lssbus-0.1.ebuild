@@ -7,7 +7,7 @@ SRC_URI="https://people.redhat.com/tcallawa/lssbus/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* sparc"
+KEYWORDS="-* ~sparc"
 IUSE=""
 
 DEPEND=""

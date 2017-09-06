@@ -10,5 +10,5 @@ DICT_PREFIX="dictd_www.freedict.de_"
 inherit stardict
 
 HOMEPAGE="http://download.huzheng.org/freedict.de/"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""

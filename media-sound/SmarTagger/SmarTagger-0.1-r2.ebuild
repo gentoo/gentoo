@@ -9,7 +9,7 @@ SRC_URI="http://freshmeat.net/redir/smartagger/9680/url_tgz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="

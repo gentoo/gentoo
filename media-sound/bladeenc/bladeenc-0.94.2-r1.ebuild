@@ -10,7 +10,7 @@ HOMEPAGE="http://bladeenc.mp3.no/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 src_prepare() {

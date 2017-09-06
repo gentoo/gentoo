@@ -10,7 +10,7 @@ HOMEPAGE="http://www.xs4all.nl/~rsmith/software/"
 SRC_URI="${HOMEPAGE}${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
 DEPEND="
 	x11-libs/libX11

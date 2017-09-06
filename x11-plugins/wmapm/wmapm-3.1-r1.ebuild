@@ -7,7 +7,7 @@ HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/18"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

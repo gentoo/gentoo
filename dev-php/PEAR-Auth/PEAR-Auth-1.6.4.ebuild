@@ -7,7 +7,7 @@ inherit php-pear-r1
 DESCRIPTION="Provides methods for creating an authentication system using PHP"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ~ppc64 ~sparc x86"
 IUSE="minimal"
 RDEPEND="!minimal? ( >=dev-php/PEAR-Log-1.9.10
 	>=dev-php/PEAR-File_Passwd-1.1.0

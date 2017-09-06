@@ -9,7 +9,7 @@ SRC_URI="http://linuxgazette.net/ftpfiles/lg-issue${PV}.tar.gz"
 
 LICENSE="OPL"
 SLOT="${PV}"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh ~sparc x86"
 IUSE=""
 
 RDEPEND=">=app-doc/linux-gazette-base-${PV}"

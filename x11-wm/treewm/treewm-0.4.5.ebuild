@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/treewm/${P}.tar.bz2"
 HOMEPAGE="http://treewm.sourceforge.net/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc"
+KEYWORDS="ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXau

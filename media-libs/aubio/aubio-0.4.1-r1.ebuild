@@ -15,7 +15,7 @@ SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python"
 
 RDEPEND="

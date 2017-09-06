@@ -204,7 +204,7 @@ SRC_URI="${THEME_URI}/3051.tar.gz
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 RESTRICT="strip"
 

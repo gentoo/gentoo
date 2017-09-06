@@ -24,7 +24,7 @@ SRC_URI="http://extensions.libreoffice.org/extension-center/german-de-de-1901-ol
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 
 src_prepare() {
 	# Nicely rename; http://www.iana.org/assignments/language-subtag-registry

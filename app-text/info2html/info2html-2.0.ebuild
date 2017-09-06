@@ -11,7 +11,7 @@ LICENSE="freedist"
 # webapp.eclass deals with SLOTting
 #SLOT="0"
 IUSE=""
-KEYWORDS="alpha amd64 hppa sparc x86"
+KEYWORDS="alpha amd64 hppa ~sparc x86"
 
 RDEPEND="dev-lang/perl"
 

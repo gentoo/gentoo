@@ -6,7 +6,7 @@ DESCRIPTION="GTK+1 and GTK+2 Geramik Themes"
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=3952"
 SRC_URI="http://www.kde-look.org/content/files/3952-${MY_P}.tar.gz"
 
-KEYWORDS="alpha amd64 ~mips ~ppc sparc x86"
+KEYWORDS="alpha amd64 ~mips ~ppc ~sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

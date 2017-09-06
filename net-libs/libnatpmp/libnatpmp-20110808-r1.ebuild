@@ -10,7 +10,7 @@ SRC_URI="http://miniupnp.free.fr/files/download.php?file=${P}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="sparc"
+KEYWORDS="~sparc"
 IUSE="static-libs"
 
 src_prepare() {

@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/common-lisp-controller_${PV}.tar.gz"
 
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND="|| ( >=sys-apps/coreutils-8.15 app-misc/realpath )

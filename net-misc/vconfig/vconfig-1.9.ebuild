@@ -11,7 +11,7 @@ HOMEPAGE="http://www.candelatech.com/~greear/vlan.html"
 SRC_URI="http://www.candelatech.com/~greear/vlan/${MY_PN}.${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="static"
 
 src_compile() {

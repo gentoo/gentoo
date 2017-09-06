@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for Sound Mixer control"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ia64 ~ppc ~sparc x86"
 IUSE=""
 
 # Dont' enable tests unless your working without a sandbox - expects to write to /dev/mixer

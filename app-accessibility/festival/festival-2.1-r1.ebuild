@@ -23,7 +23,7 @@ SRC_URI="${SITE}/${MY_P}.tar.gz
 
 LICENSE="FESTIVAL HPND BSD rc regexp-UofT free-noncomm"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="~app-accessibility/speech-tools-2.1

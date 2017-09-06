@@ -10,7 +10,7 @@ SRC_URI="http://monkey.org/~provos/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86"
 
 DEPEND="
 	dev-libs/libdnet

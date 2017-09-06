@@ -7,7 +7,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/perl-5

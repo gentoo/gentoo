@@ -8,7 +8,7 @@ SRC_URI="ftp://ftp11.freebsd.org/pub/FreeBSD/ports/distfiles/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc amd64 ppc"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXmu

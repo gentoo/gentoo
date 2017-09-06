@@ -9,7 +9,7 @@ HOMEPAGE="https://www.gentoo.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc s390 sparc x86"
+KEYWORDS="amd64 ppc s390 ~sparc x86"
 IUSE=""
 
 DEPEND=">=app-text/sgml-common-0.6.1"

@@ -11,7 +11,7 @@ SRC_URI="http://jak-linux.org/projects/${PN}/${MY_PR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="aac cdparanoia mp3 wma"
 
 DEPEND=""

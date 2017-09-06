@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~williamh/dist/${P}.tar.gz"
-	KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+	KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 ~sparc x86"
 fi
 
 DESCRIPTION="Gentoo LiveCD tools for autoconfiguration of hardware"

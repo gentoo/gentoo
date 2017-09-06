@@ -11,7 +11,7 @@ DEPEND="net-libs/libpcap"
 
 SLOT="0"
 LICENSE="BSD-2"
-KEYWORDS="amd64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="ipv6"
 

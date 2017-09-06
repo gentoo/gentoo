@@ -10,7 +10,7 @@ HOMEPAGE="http://oinkmaster.sf.net/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc sparc x86"
+KEYWORDS="amd64 ~arm ppc ~sparc x86"
 IUSE="X"
 
 RDEPEND="

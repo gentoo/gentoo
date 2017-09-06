@@ -6,7 +6,7 @@ HOMEPAGE="ftp://ftp.qlogic.com/outgoing/linux/firmware/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="qlogic-fibre-channel-firmware"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 # really depends on absolutely nothing

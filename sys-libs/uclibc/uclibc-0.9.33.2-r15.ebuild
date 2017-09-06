@@ -22,7 +22,7 @@ if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER="17"
 	SRC_URI="https://uclibc.org/downloads/${MY_P}.tar.bz2
 		${PATCH_VER:+mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2}"
-	KEYWORDS="-* amd64 arm m68k ~mips ppc sh sparc x86"
+	KEYWORDS="-* amd64 arm m68k ~mips ppc sh ~sparc x86"
 fi
 
 LICENSE="LGPL-2"

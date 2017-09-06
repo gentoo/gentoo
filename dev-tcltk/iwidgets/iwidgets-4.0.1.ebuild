@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="HPND Old-MIT tcltk"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ia64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND="

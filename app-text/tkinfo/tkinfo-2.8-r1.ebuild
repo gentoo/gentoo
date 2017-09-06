@@ -7,7 +7,7 @@ DESCRIPTION="Info Browser in TK"
 HOMEPAGE="http://math-www.uni-paderborn.de/~axel/tkinfo/"
 SRC_URI="http://math-www.uni-paderborn.de/~axel/${PN}/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ~sparc x86"
 IUSE=""
 LICENSE="freedist"
 SLOT="0"
