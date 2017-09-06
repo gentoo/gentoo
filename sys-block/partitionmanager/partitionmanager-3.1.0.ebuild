@@ -34,5 +34,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools kdesu)
-	!sys-block/partitionmanager:0
 "
