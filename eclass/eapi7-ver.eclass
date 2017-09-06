@@ -34,12 +34,17 @@ _version_parse_range() {
 	[[ ${start} -gt 0 ]] && [[ -z ${end} || ${start} -le ${end} ]] || die
 }
 
+# RETURNS:
+# comp=( s0 c1 s1 c2 s2... )
+# where s - separator, c - component
 _version_split() {
 	local v=$1 LC_ALL=C
 
+	comp=("")
+
 	# get first component
 	[[ ${v} =~ ^([A-Za-z]*|[0-9]*) ]] || die
-	comp=("${BASH_REMATCH[1]}")
+	comp+=("${BASH_REMATCH[1]}")
 	v=${v:${#BASH_REMATCH[0]}}
 
 	# get remaining separators and components
@@ -59,9 +64,9 @@ version_cut() {
 
 	local IFS=
 	if [[ ${end} ]]; then
-		echo "${comp[*]:(start-1)*2:(end-start)*2+1}"
+		echo "${comp[*]:(start-1)*2+1:(end-start)*2+1}"
 	else
-		echo "${comp[*]:(start-1)*2}"
+		echo "${comp[*]:(start-1)*2+1}"
 	fi
 }
 
@@ -74,7 +79,7 @@ version_rs() {
 	while [[ $# -ge 2 ]]; do
 		_version_parse_range "$1"
 		[[ ${end} && ${end} -le $((${#comp[@]}/2)) ]] || end=$((${#comp[@]}/2))
-		for (( i = start*2 - 1; i < end*2; i+=2 )); do
+		for (( i = start*2; i <= end*2; i+=2 )); do
 			comp[i]=$2
 		done
 		shift 2
