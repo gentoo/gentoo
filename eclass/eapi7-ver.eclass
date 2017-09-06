@@ -31,7 +31,7 @@ _version_parse_range() {
 	[[ $1 =~ ^([0-9]+)(-([0-9]*))?$ ]] || die
 	start=${BASH_REMATCH[1]}
 	[[ ${BASH_REMATCH[2]} ]] && end=${BASH_REMATCH[3]} || end=${start}
-	[[ ${start} -gt 0 ]] && [[ -z ${end} || ${start} -le ${end} ]] || die
+	[[ ${start} -ge 0 ]] && [[ -z ${end} || ${start} -le ${end} ]] || die
 }
 
 # RETURNS:
@@ -51,17 +51,24 @@ _version_split() {
 }
 
 version_cut() {
-	local start end
+	local start end istart iend
 	local -a comp
 
 	_version_parse_range "$1"
 	_version_split "${2-${PV}}"
 
 	local IFS=
-	if [[ ${end} ]]; then
-		echo "${comp[*]:(start-1)*2+1:(end-start)*2+1}"
+	if [[ ${start} -gt 0 ]]; then
+		istart=$(( (start-1)*2 + 1 ))
+		iend=$(( (end-start)*2 + 1 ))
 	else
-		echo "${comp[*]:(start-1)*2+1}"
+		istart=0
+		iend=$(( (end-start)*2 ))
+	fi
+	if [[ ${end} ]]; then
+		echo "${comp[*]:istart:iend}"
+	else
+		echo "${comp[*]:istart}"
 	fi
 }
 
