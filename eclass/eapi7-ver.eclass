@@ -51,7 +51,7 @@ _version_split() {
 }
 
 version_cut() {
-	local start end istart iend
+	local start end istart
 	local -a comp
 
 	_version_parse_range "$1"
@@ -59,14 +59,12 @@ version_cut() {
 
 	local IFS=
 	if [[ ${start} -gt 0 ]]; then
-		istart=$(( (start-1)*2 + 1 ))
-		iend=$(( (end-start)*2 + 1 ))
+		istart=$(( start*2 - 1 ))
 	else
 		istart=0
-		iend=$(( (end-start)*2 ))
 	fi
 	if [[ ${end} ]]; then
-		echo "${comp[*]:istart:iend}"
+		echo "${comp[*]:istart:end*2-istart}"
 	else
 		echo "${comp[*]:istart}"
 	fi
