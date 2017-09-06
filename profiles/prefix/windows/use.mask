@@ -3,3 +3,6 @@
 
 # Re-add Windows kernel
 -kernel_Winnt
+
+# linux-exclusive feature
+inotify
