@@ -12,8 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.3.5[gcrypt?]
-	audiofile? ( >=media-libs/audiofile-0.3.6 )"
+RDEPEND=">=app-emulation/libspectrum-1.4.0[gcrypt?,zlib?]
+	audiofile? ( >=media-libs/audiofile-0.3.6 )
+	jpeg? ( virtual/jpeg:0 )
+	png? ( media-libs/libpng:0 )
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -23,5 +26,5 @@ src_configure() {
 		$(use_with gcrypt libgcrypt) \
 		$(use_with jpeg libjpeg) \
 		$(use_with png libpng) \
-		$(use_with zlib )
+		$(use_with zlib)
 }
