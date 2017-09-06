@@ -29,6 +29,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Austin English <wizardedit@gentoo.org> (05 Sep 2017)
+# Download has been broken for nearly a year, no alternative found
+# Bug: https://bugs.gentoo.org/599390
+# Removal in 30 days
+games-rpg/nwmouse
+games-rpg/nwmovies
+games-rpg/nwn
+games-rpg/nwn-cep
+games-rpg/nwn-data
+games-rpg/nwn-penultima
+games-rpg/nwn-penultimarerolled
+games-rpg/nwn-shadowlordsdreamcatcherdemon
+
 # Kent Fredric <kentnl@gentoo.org> (05 Sep 2017)
 # Broken since Perl 5.16 circa 2012, no longer maintained upstream
 # Bug: https://bugs.gentoo.org/623900
