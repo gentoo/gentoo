@@ -7,5 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://sourceforge/logreporters/amavis-logwatch-1.51.03.tgz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=2ce4cba1e982ba5394e5cb70a2feb311
+_md5_=49ec933162d07a3ea73b19324d5d8ad0
