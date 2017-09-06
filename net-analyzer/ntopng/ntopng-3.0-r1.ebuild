@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils user toolchain-funcs
+EAPI=6
+inherit autotools user toolchain-funcs
 
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="http://www.ntop.org/"
@@ -11,7 +11,6 @@ SRC_URI="https://github.com/ntop/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="dev-db/sqlite:3
 	dev-python/pyzmq
@@ -28,37 +27,18 @@ DEPEND="dev-db/sqlite:3
 	virtual/libmysqlclient"
 RDEPEND="${DEPEND}
 	dev-db/redis"
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-mysqltool.patch
+)
 
 src_prepare() {
+	sed -e "s/@VERSION@/${PV}/g;s/@SHORT_VERSION@/${PV}/g" < "${S}/configure.seed" > "${S}/configure.ac" || die
+
 	default
-	cat "${S}/configure.seed" | sed "s/@VERSION@/${PV}/g" | sed "s/@SHORT_VERSION@/${PV}/g" > "${S}/configure.ac"
-	epatch "${FILESDIR}/configure-${PV}.patch"
-	epatch "${FILESDIR}/${P}-mysqltool.patch"
-# 	epatch "${FILESDIR}/${P}-dont-build-ndpi.patch"
-# 	epatch "${FILESDIR}/${P}-mysqltool.patch"
-# 	epatch "${FILESDIR}/${P}-cxx.patch"
-# 	sed -i 's/exit$/exit 1/g' "${S}/configure.ac" "${S}/nDPI/configure.ac"
+
 	eautoreconf
-
-# 	cd "${S}/nDPI"
-# 	eautoreconf
 }
-
-# src_configure() {
-# 	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG
-# 	cd "${S}/nDPI"
-# 	econf
-# 	cd "${S}"
-# 	econf
-# }
-# 
-# src_compile() {
-# 	cd "${S}/nDPI"
-# 	emake
-# 
-# 	cd "${S}"
-# 	emake
-# }
 
 src_install() {
 	SHARE_NTOPNG_DIR="${EPREFIX}/usr/share/${PN}"
@@ -88,5 +68,5 @@ pkg_setup() {
 }
 
 pkg_postinst() {
-	elog "ntopng default creadential are user='admin' password='admin'"
+	elog "ntopng default credentials are user='admin' password='admin'"
 }
