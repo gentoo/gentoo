@@ -1386,7 +1386,7 @@ app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Expl
 app-emulation/wine-mono 4.6.4 4.7.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
 app-emulation/wine-vanilla 2.0 2.0.1 2.0.2 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 9999: Free implementation of Windows(tm) on Unix, without external patchsets
-app-emulation/winetricks 20170614 99999999: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20170823 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
@@ -11484,7 +11484,7 @@ games-rpg/freedroidrpg 0.16 0.16-r1: A modification of the classical Freedroid e
 games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling RPG + modding engine
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
-games-rpg/lure 1.1: Lure of the Temptress
+games-rpg/lure 1.1 1.1-r1: Lure of the Temptress
 games-rpg/manaplus 1.7.8.19 1.7.9.2 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
@@ -13885,7 +13885,7 @@ media-sound/patchage 0.5.0-r1 1.0.0: Modular patch bay for JACK-based audio and 
 media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
-media-sound/pianobar 2016.06.02 9999: A console-based replacement for Pandora's flash player
+media-sound/pianobar 2016.06.02 2017.08.30 9999: A console-based replacement for Pandora's flash player
 media-sound/picard 1.3.1 1.3.2-r1 1.4.1 1.4.2: A cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner

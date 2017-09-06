@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=games-engines/scummvm-0.13.1 app-arch/unzip
+DESCRIPTION=Lure of the Temptress
+EAPI=6
+HOMEPAGE=http://www.revolution.co.uk/_display.php?id=10
+IUSE=linguas_en linguas_es linguas_de linguas_fr linguas_it
+KEYWORDS=~amd64 ~x86
+LICENSE=lure
+RDEPEND=>=games-engines/scummvm-0.13.1
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/scummvm/scummvm/266aef932a8a052df897e4d79b4572e5d169916f/dists/engine-data/lure.dat -> lure-0.13.1.dat !linguas_en? ( !linguas_es? ( !linguas_fr? ( !linguas_de? ( !linguas_it? ( mirror://sourceforge/scummvm/lure-1.1.zip -> lure-en-1.1.zip ) ) ) ) ) linguas_en? ( mirror://sourceforge/scummvm/lure-1.1.zip -> lure-en-1.1.zip ) linguas_es? ( mirror://sourceforge/scummvm/lure-es-1.1.zip ) linguas_fr? ( mirror://sourceforge/scummvm/lure-fr-1.1.zip ) linguas_de? ( mirror://sourceforge/scummvm/lure-de-1.1.zip ) linguas_it? ( mirror://sourceforge/scummvm/lure-it-1.1.zip )
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=5ce292dd901bc2e16ecd9b05fb2a9e31

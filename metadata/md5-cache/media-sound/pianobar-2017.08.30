@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/libao net-misc/curl dev-libs/libgcrypt:0= dev-libs/json-c:= libav? ( >=media-video/libav-12:0= ) !libav? ( >=media-video/ffmpeg-3.1:0= ) virtual/pkgconfig
+DESCRIPTION=A console-based replacement for Pandora's flash player
+EAPI=6
+HOMEPAGE=https://6xq.net/pianobar/
+IUSE=libav static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=media-libs/libao net-misc/curl dev-libs/libgcrypt:0= dev-libs/json-c:= libav? ( >=media-video/libav-12:0= ) !libav? ( >=media-video/ffmpeg-3.1:0= )
+SLOT=0
+SRC_URI=https://6xq.net/pianobar/pianobar-2017.08.30.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=36decf97a5fb84e751e325d9005bd6d0
