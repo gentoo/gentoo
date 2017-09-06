@@ -43,10 +43,16 @@ _version_split() {
 	comp=()
 
 	# get separators and components
+	local s c
 	while [[ ${v} ]]; do
-		[[ ${v} =~ ^([^A-Za-z0-9]*)([A-Za-z]*|[0-9]*) ]] || die
-		comp+=("${BASH_REMATCH[@]:1:2}")
-		v=${v:${#BASH_REMATCH[0]}}
+		# cut the separator
+		s="${v%%[a-zA-Z0-9]*}"
+		v=${v:${#s}}
+		# cut the next component; it can be either digits or letters
+		[[ ${v} == [0-9]* ]] && c=${v%%[^0-9]*} || c=${v%%[^a-zA-Z]*}
+		v=${v:${#c}}
+
+		comp+=( "${s}" "${c}" )
 	done
 }
 
