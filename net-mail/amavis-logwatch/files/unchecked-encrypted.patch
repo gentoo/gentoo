@@ -1,0 +1,41 @@
+From e9f83dde1b241ce449264db7a517124bb115dd99 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 6 Sep 2017 09:19:42 -0400
+Subject: [PATCH 1/1] Catch mail that is passed UNCHECKED-ENCRYPTED.
+
+Some encrypted mail can pass through the system with a log line like,
+
+  (01495-17) Passed UNCHECKED-ENCRYPTED {RelayedTaggedInbound}, ...
+
+These were unmatched, because the "-ENCRYPTED" suffix is new. One
+regular expression and a dictionary have been updated to catch those
+lines and dump them into the "unchecked" bin with the rest of the
+UNCHECKED lines.
+---
+ amavis-logwatch | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/amavis-logwatch b/amavis-logwatch
+index deb9146..448de3a 100644
+--- a/amavis-logwatch
++++ b/amavis-logwatch
+@@ -1799,6 +1799,7 @@ my %ccatmajor_to_sectkey = (
+    'INFECTED'    => 'malware',
+    'BANNED'      => 'bannedname',
+    'UNCHECKED'   => 'unchecked',
++   'UNCHECKED-ENCRYPTED' => 'unchecked',
+    'SPAM'        => 'spam',
+    'SPAMMY'      => 'spammy',
+    'BAD-HEADER'  => 'badheader',
+@@ -2295,7 +2296,7 @@ while (<>) {
+       #XXX elsif (($action, $key, $ip, $from, $to) = ( $p1 =~ /^(?:Virus found - quarantined|(?:(Passed|Blocked) )?INFECTED) \(([^\)]+)\),[A-Z .]*(?: \[($re_IP)\])?(?: \[$re_IP\])* [<(]([^>)]*)[>)] -> [(<]([^(<]+)[(>]/o ))
+ 
+       # the first IP is the envelope sender.
+-      if ($p1 !~ /^(CLEAN|SPAM(?:MY)?|INFECTED \(.*?\)|BANNED \(.*?\)|BAD-HEADER(?:-\d)?|UNCHECKED|MTA-BLOCKED|OVERSIZED|OTHER|TEMPFAIL)(?: \{[^}]+})?, ([^[]+ )?(?:([^<]+) )?[<(](.*?)[>)] -> ([(<].*?[)>]), (?:.*Hits: ([-+.\d]+))(?:.* size: (\d+))?(?:.* autolearn=(\w+))?/) {
++      if ($p1 !~ /^(CLEAN|SPAM(?:MY)?|INFECTED \(.*?\)|BANNED \(.*?\)|BAD-HEADER(?:-\d)?|UNCHECKED|UNCHECKED-ENCRYPTED|MTA-BLOCKED|OVERSIZED|OTHER|TEMPFAIL)(?: \{[^}]+})?, ([^[]+ )?(?:([^<]+) )?[<(](.*?)[>)] -> ([(<].*?[)>]), (?:.*Hits: ([-+.\d]+))(?:.* size: (\d+))?(?:.* autolearn=(\w+))?/) {
+          inc_unmatched('passblock');
+          next;
+       }
+-- 
+2.13.0
+
