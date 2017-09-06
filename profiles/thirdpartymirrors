@@ -14,7 +14,7 @@ gnome		https://download.gnome.org/
 gnu		http://ftpmirror.gnu.org/ http://ftp.gnu.org/gnu/
 gnu-alpha	ftp://alpha.gnu.org/gnu/ http://alpha.gnu.org/gnu/ ftp://ftp.funet.fi/pub/gnu/alpha/gnu/ http://www.nic.funet.fi/pub/gnu/alpha/gnu/ ftp://gnualpha.uib.no/pub/gnualpha/ http://gnualpha.uib.no/ ftp://mirrors.fe.up.pt/pub/gnu-alpha/ http://mirrors.fe.up.pt/pub/gnu-alpha/ http://mirror.lihnidos.org/GNU/alpha/gnu/ http://mirrors.ibiblio.org/gnu/alpha/gnu/
 gnupg		ftp://ftp.gnupg.org/gcrypt/ http://mirrors.dotsrc.org/gcrypt/ http://artfiles.org/gnupg.org/ http://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ ftp://sunsite.icm.edu.pl/pub/security/gnupg/ http://gd.tuwien.ac.at/privacy/gnupg/ http://www.ring.gr.jp/pub/net/gnupg/ ftp://ftp.ring.gr.jp/pub/net/gnupg/
-hackage		http://hackage.haskell.org/ http://dev.gentoo.org/~qnikst/hdiff.luite.com/
+hackage		http://hackage.haskell.org/ https://dev.gentoo.org/~qnikst/hdiff.luite.com/
 idsoftware	ftp://ftp.idsoftware.com/idstuff ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	http://mirror.checkdomain.de/imagemagick/ ftp://mirror.checkdomain.de/imagemagick/ ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/ ftp://ftp.u-aizu.ac.jp/pub/graphics/image/ImageMagick/imagemagick.org ftp://ftp.nluug.nl/pub/ImageMagick http://ftp.nluug.nl/ImageMagick/ ftp://sunsite.icm.edu.pl/packages/ImageMagick/ http://ftp.acc.umu.se/mirror/imagemagick.org/ftp/ https://www.imagemagick.org/download http://transloadit.imagemagick.org/download ftp://transloadit.imagemagick.org/ImageMagick ftp://ftp.fifi.org/pub/ImageMagick
 kde		https://download.kde.org http://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde ftp://kde.mirror.anlx.net
