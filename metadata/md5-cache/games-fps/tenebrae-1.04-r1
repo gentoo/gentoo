@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=virtual/glu virtual/opengl media-libs/libpng:0 x11-libs/libXxf86dga x11-libs/libXxf86vm app-arch/unzip x11-proto/xextproto x11-proto/xf86dgaproto x11-proto/xf86vidmodeproto
+DESCRIPTION=adds stencil shadows and per pixel lights to quake
+EAPI=6
+HOMEPAGE=http://tenebrae.sourceforge.net/
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=virtual/glu virtual/opengl media-libs/libpng:0 x11-libs/libXxf86dga x11-libs/libXxf86vm
+SLOT=0
+SRC_URI=mirror://sourceforge/tenebrae/tenebraedata.zip mirror://gentoo/tenebrae-1.04.tbz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=641cc43fc092154936e8f5f0c9a22a26
