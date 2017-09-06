@@ -4,14 +4,15 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
+QT_MINIMAL="5.7.1"
 inherit kde5
 
 DESCRIPTION="KDE utility for management of partitions and file systems"
 HOMEPAGE="https://www.kde.org/applications/system/kdepartitionmanager"
-SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
+[[ ${KDE_BUILD_TYPE} == release ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
@@ -33,5 +34,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools kdesu)
-	!sys-block/partitionmanager:0
 "
