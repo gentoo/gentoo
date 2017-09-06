@@ -11,7 +11,7 @@ SRC_URI="http://www.inf.puc-rio.br/~roberto/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ppc ppc64 sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc ~x86"
 IUSE="debug doc"
 
 RDEPEND=">=dev-lang/lua-5.1"

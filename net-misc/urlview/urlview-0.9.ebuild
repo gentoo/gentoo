@@ -10,7 +10,7 @@ SRC_URI="ftp://gd.tuwien.ac.at/infosys/mail/mutt/contrib/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 s390 sh ~sparc x86"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.2

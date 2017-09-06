@@ -9,7 +9,7 @@ SRC_URI="http://www.linuxvirtualserver.org/software/kernel-2.5/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ~ppc64 s390 sparc x86"
+KEYWORDS="amd64 ia64 ~ppc64 s390 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5.2"

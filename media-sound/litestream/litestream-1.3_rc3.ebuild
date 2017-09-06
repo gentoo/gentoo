@@ -11,7 +11,7 @@ SRC_URI="http://litestream.org/litestream/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

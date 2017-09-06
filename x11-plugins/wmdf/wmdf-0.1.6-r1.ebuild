@@ -16,7 +16,7 @@ DEPEND="${RDEPEND}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86 ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~x86-linux"
 IUSE=""
 
 src_unpack() {

@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.dict.org/pub/dict/pre/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="x86 ppc sparc amd64 ppc64"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
 

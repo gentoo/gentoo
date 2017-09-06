@@ -9,7 +9,7 @@ HOMEPAGE="http://www.stratego-language.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc alpha ia64"
+KEYWORDS="alpha ia64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND=""

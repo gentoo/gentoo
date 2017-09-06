@@ -12,7 +12,7 @@ SRC_URI="http://antipoder.dyndns.org/downloads/${P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"
 #-amd64: 1.6: 'cmix list' gives: MIXER_READ(SOUND_MIXER_OUTSRC): Input/output error
-KEYWORDS="-amd64 ~ppc sparc x86"
+KEYWORDS="-amd64 ~ppc ~sparc x86"
 
 src_unpack() {
 	unpack ${A}

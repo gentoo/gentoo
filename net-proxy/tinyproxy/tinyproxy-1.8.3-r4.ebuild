@@ -11,7 +11,7 @@ SRC_URI="http://www.banu.com/pub/${PN}/1.8/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ~sparc x86"
 
 IUSE="test debug +filter-proxy minimal reverse-proxy
 	transparent-proxy +upstream-proxy +xtinyproxy-header"

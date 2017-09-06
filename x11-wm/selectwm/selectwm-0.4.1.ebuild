@@ -10,7 +10,7 @@ SRC_URI="http://ordiluc.net/selectwm/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ~sparc x86 ~x86-fbsd"
 IUSE="nls"
 
 RDEPEND="x11-libs/gtk+:2

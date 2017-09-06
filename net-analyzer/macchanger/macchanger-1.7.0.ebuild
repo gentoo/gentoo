@@ -9,7 +9,7 @@ OUI_FILE="OUI.list-${OUI_DATE}"
 HOMEPAGE="https://github.com/alobbs/macchanger"
 SRC_URI="https://github.com/alobbs/macchanger/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm ppc sparc x86"
+KEYWORDS="amd64 arm ppc ~sparc x86"
 SLOT="0"
 
 src_configure() {

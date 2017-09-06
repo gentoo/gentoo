@@ -6,7 +6,7 @@ DESCRIPTION="High Level Firewall Language"
 SRC_URI="ftp://ftp.hlfl.org/pub/hlfl/${P}.tar.gz"
 HOMEPAGE="http://www.hlfl.org"
 LICENSE="GPL-2"
-KEYWORDS="~ppc sparc x86"
+KEYWORDS="~ppc ~sparc x86"
 SLOT="0"
 
 DEPEND=""

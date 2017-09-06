@@ -12,7 +12,7 @@ SRC_URI="http://www.its4you.at/downloads/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc sparc x86"
+KEYWORDS="amd64 ia64 ppc ~sparc x86"
 IUSE="doc"
 
 DEPEND=""

@@ -12,7 +12,7 @@ SRC_URI="http://cfengine.com/source_code/download?file=${P}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ppc ppc64 ~s390 ~sparc x86"
 IUSE="vim-syntax"
 
 RDEPEND=">=sys-libs/db-4

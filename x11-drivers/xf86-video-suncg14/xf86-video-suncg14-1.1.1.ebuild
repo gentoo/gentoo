@@ -7,7 +7,7 @@
 inherit x-modular
 
 DESCRIPTION="CG14 video driver"
-KEYWORDS="-* sparc"
+KEYWORDS="-* ~sparc"
 IUSE=""
 RDEPEND=">=x11-base/xorg-server-1.0.99"
 DEPEND="${RDEPEND}

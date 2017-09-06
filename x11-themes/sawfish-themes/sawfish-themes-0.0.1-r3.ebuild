@@ -59,7 +59,7 @@ SRC_URI="${THEME_URI}/absolutedarkness/absolutedarkness-0.30.tar.gz
 
 SLOT="1"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="alpha ~amd64 ia64 ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="=x11-wm/sawfish-1*"

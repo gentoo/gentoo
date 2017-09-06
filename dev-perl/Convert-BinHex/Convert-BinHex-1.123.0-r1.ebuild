@@ -11,5 +11,5 @@ DESCRIPTION="Extract data from Macintosh BinHex files"
 
 SLOT="0"
 LICENSE="GPL-1"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""

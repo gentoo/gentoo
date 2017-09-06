@@ -12,7 +12,7 @@ SRC_URI="http://www.nanoo.org/~daniel/${PN}/${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="doc"
 
 RDEPEND=""

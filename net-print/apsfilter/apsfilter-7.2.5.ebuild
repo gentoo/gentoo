@@ -3,7 +3,7 @@
 
 DESCRIPTION="Apsfilter Prints So Fine, It Leads To Extraordinary Results"
 HOMEPAGE="http://www.apsfilter.org"
-KEYWORDS="x86 ppc alpha sparc"
+KEYWORDS="alpha ppc ~sparc x86"
 IUSE="cups"
 SLOT="0"
 LICENSE="GPL-2"

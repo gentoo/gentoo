@@ -7,5 +7,5 @@ DESCRIPTION="Provides methods for spelling numerals in words"
 
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""

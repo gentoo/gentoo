@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/archivemail/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE=""
 
 python_prepare_all() {

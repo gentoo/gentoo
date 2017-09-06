@@ -11,7 +11,7 @@ SRC_URI="http://darksnow.radiolivre.org/pacotes/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 PDEPEND=">=media-sound/darkice-1.2"

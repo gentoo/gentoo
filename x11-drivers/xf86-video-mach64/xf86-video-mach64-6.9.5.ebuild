@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="ATI Mach64 video driver"
 
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.10

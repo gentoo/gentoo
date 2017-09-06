@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="high-level interface to cddb/freedb protocol"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc sparc x86"
+KEYWORDS="amd64 ia64 ppc ~sparc x86"
 IUSE=""
 
 SRC_TEST=no

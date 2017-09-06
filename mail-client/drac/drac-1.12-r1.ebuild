@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.cc.umanitoba.ca/src/${PN}.tar.Z"
 
 LICENSE="rc"
 SLOT="0"
-KEYWORDS="x86 sparc ppc hppa ~amd64 ppc64"
+KEYWORDS="~amd64 hppa ppc ppc64 ~sparc x86"
 IUSE="debug"
 
 DEPEND="virtual/mta

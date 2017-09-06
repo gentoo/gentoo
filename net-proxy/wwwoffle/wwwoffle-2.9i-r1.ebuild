@@ -8,7 +8,7 @@ DESCRIPTION="Web caching proxy suitable for non-permanent Internet connections"
 HOMEPAGE="http://www.gedanken.org.uk/software/wwwoffle/"
 SRC_URI="http://www.gedanken.org.uk/software/${PN}/download/${P}.tgz"
 
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gnutls ipv6 zlib"

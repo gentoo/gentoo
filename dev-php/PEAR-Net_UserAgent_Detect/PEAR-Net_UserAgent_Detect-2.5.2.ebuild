@@ -7,5 +7,5 @@ DESCRIPTION="Determines Web browser, version, and platform from an HTTP user age
 
 LICENSE="PHP-2.02"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""

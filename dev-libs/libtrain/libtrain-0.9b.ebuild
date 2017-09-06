@@ -13,7 +13,7 @@ HOMEPAGE="http://www.on.rim.or.jp/~katamuki/software/train/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~ppc sparc x86"
+KEYWORDS="~ppc ~sparc x86"
 IUSE="debug static-libs "
 
 PATCHES=( "${FILESDIR}"/${P}-impl-dec.patch )

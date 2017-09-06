@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 	#KEYWORDS=""
 else
 	SRC_URI="mirror://kernel/software/devel/sparse/dist/${P}.tar.bz2"
-	KEYWORDS="amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
+	KEYWORDS="amd64 arm hppa ia64 ppc ppc64 s390 sh ~sparc x86"
 fi
 
 LICENSE="OSL-1.1"

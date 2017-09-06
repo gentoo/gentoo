@@ -12,7 +12,7 @@ SRC_URI="https://libkate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="doc wxwidgets"
 
 COMMON_DEPEND="media-libs/libogg:=

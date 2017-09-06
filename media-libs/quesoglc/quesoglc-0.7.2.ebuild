@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-free.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="doc examples static-libs"
 
 RDEPEND="virtual/opengl

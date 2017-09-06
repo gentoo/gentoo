@@ -9,7 +9,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm hppa ppc ppc64 ~sparc x86"
 IUSE="doc examples static-libs"
 
 RDEPEND=""

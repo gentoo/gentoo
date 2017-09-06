@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/x/xosd/${PN}_${PV}.orig.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="xinerama"
 
 RDEPEND="x11-libs/libX11

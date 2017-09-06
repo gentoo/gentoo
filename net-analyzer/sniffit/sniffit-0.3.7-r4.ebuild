@@ -21,7 +21,7 @@ DEPEND="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 src_prepare() {
 	epatch \

@@ -10,7 +10,7 @@ SRC_URI="https://upower.freedesktop.org/releases/upower-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="+introspection ios kernel_FreeBSD kernel_linux"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100

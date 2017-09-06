@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/openwince/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="~ppc ~sparc x86"
 IUSE=""
 
 DEPEND="dev-embedded/include"

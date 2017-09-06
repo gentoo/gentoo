@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Conversions to/from UTF8 from/to charactersets"
 
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 SRC_TEST="do"

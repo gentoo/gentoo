@@ -29,7 +29,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh ~sparc x86"
 IUSE="authcram gencertdaily highvolume qmail-spp ssl vanilla"
 RESTRICT="test"
 

@@ -17,7 +17,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc alpha amd64 ppc"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 
 src_unpack() {
 	unpack ${A}

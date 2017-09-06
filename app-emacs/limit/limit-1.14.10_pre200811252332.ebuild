@@ -14,7 +14,7 @@ SRC_URI="http://www.jpl.org/ftp/pub/m17n/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 
 DEPEND=">=app-emacs/apel-10.3"
 RDEPEND="${DEPEND}

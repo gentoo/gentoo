@@ -6,5 +6,5 @@ VIM_SPELL_LANGUAGE="Czech"
 inherit vim-spell
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE=""

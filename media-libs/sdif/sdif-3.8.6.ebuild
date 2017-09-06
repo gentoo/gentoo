@@ -16,7 +16,7 @@ SRC_URI="http://www.ircam.fr/anasyn/sdif/download/${MY_P}.tar.gz
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 DEPEND=""
 

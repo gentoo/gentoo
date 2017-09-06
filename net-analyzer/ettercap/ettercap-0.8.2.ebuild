@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="gtk ipv6 ncurses +plugins"
 
 RDEPEND="dev-libs/libbsd

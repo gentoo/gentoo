@@ -10,7 +10,7 @@ SRC_URI="mirror://github/keplerproject/luafilesystem/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=">=dev-lang/lua-5.1"

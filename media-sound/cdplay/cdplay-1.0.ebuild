@@ -9,7 +9,7 @@ SRC_URI="http://www.ta-sa.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND="!media-sound/cdtool"

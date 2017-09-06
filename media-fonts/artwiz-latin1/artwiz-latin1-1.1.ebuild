@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/artwiz-latin1/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT=0
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 S=${WORKDIR}/artwiz-latin1

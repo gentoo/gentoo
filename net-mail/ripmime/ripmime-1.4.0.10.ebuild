@@ -11,7 +11,7 @@ SRC_URI="http://www.pldaniels.com/ripmime/${P}.tar.gz"
 
 LICENSE="Sendmail"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="static-libs"
 
 src_prepare() {

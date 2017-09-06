@@ -16,7 +16,7 @@ RDEPEND="${DEPEND}
 IUSE="lirc"
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="~amd64 ppc ~sparc x86"
 
 PLUGIN_SO="radio.so"
 S="${WORKDIR}/${PN}"

@@ -13,7 +13,7 @@ SRC_URI="http://users.skynet.be/solaris/linuxaudio/downloads/clxclient-${PV}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 RDEPEND="x11-libs/libX11
 	>=media-libs/libclthreads-1.0.1"

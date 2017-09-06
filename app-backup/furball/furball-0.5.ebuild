@@ -9,7 +9,7 @@ HOMEPAGE="http://www.claws-and-paws.com/software/furball/index.shtml"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 RDEPEND="dev-lang/perl
 	app-arch/tar"

@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/timidity/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="motif oss nas X gtk vorbis tk slang alsa jack emacs ao selinux speex flac ncurses"
 
 DEPEND="ncurses? ( >=sys-libs/ncurses-5 )

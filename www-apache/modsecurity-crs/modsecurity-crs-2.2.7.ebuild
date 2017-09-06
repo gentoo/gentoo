@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/archive/${PV}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="lua geoip"
 
 RDEPEND=">=www-apache/mod_security-2.7[lua?,geoip?]"

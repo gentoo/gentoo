@@ -9,7 +9,7 @@ SRC_URI="http://markstaggs.net/${PN}-download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

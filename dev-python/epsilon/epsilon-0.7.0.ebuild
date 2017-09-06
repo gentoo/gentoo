@@ -10,7 +10,7 @@ DESCRIPTION="Epsilon is a Python utilities package, most famous for its Time cla
 HOMEPAGE="https://github.com/twisted/epsilon https://pypi.python.org/pypi/Epsilon"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/twisted-core-13.2.0[${PYTHON_USEDEP}]

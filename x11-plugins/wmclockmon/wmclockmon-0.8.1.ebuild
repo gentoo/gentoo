@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/w/${PN}/${PN}_${PV}-1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

@@ -10,7 +10,7 @@ SRC_URI="http://www.webta.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="amd64 hppa ~mips ppc ~sparc x86"
 IUSE="fam pcre"
 
 RDEPEND="

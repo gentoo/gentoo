@@ -7,7 +7,7 @@ SRC_URI="http://jk.yazzy.org/projects/vlorb/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="ogg"
 
 DEPEND=">=media-sound/cdparanoia-3.9.8

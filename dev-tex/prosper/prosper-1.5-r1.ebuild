@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://sourceforge/prosper/${CONTRIB}.tar.gz"
 LICENSE="LPPL-1.2"	# has been changed since 1.5
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 S=${WORKDIR}/${PN}
 IUSE=""
 DEPEND=""

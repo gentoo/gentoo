@@ -6,5 +6,5 @@ VIM_SPELL_LANGUAGE="German"
 inherit vim-spell
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""

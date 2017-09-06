@@ -9,7 +9,7 @@ HOMEPAGE="http://cr.yp.to/qmailanalog.html"
 
 LICENSE="freedist public-domain" # public-domain for files/tai64nfrac.c
 SLOT="0"
-KEYWORDS="x86 sparc ~amd64"
+KEYWORDS="~amd64 ~sparc x86"
 IUSE=""
 
 DEPEND="sys-apps/groff"

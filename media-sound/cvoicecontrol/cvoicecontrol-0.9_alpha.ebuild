@@ -15,7 +15,7 @@ SRC_URI="http://www.kiecza.net/daniel/linux/${MY_P}.tar.bz2"
 SLOT="0"
 LICENSE="GPL-2"
 
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 src_unpack() {
 	unpack ${A}

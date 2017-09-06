@@ -6,7 +6,7 @@ EAPI="5"
 GST_ORG_MODULE=gst-plugins-base
 inherit gstreamer
 
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=gnome-base/gnome-vfs-2.24.4-r2:2[${MULTILIB_USEDEP}]"

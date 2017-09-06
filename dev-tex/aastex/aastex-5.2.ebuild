@@ -11,7 +11,7 @@ SRC_URI="http://www.journals.uchicago.edu/AAS/AASTeX/${MY_P}.tar.gz"
 
 LICENSE="LPPL-1.3"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="alpha amd64 hppa ~mips ppc ~sparc x86"
 IUSE=""
 
 src_install() {

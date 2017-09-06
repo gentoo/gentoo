@@ -11,7 +11,7 @@ SRC_URI="https://www.sixxs.net/archive/sixxs/aiccu/unix/aiccu_${PV//\./}.tar.gz"
 
 LICENSE="SixXS"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc sparc x86"
+KEYWORDS="amd64 arm hppa ppc ~sparc x86"
 IUSE="systemd"
 
 RDEPEND="

@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/opalvoip/${P}.tar.bz2
 
 LICENSE="MPL-1.0"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 ~sparc x86"
 # default enabled are features from 'minsize', the most used according to ptlib
 IUSE="alsa +asn debug doc +dtmf examples ffmpeg ftp +http ipv6
 xmpp ldap lua mail odbc oss pch pulseaudio qos remote sasl sdl serial

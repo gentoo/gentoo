@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gnome2-utils gstreamer
 
 DESCRIPTION="GStreamer plugin for wrapping GConf audio/video settings"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=gnome-base/gconf-2.32.4-r1[${MULTILIB_USEDEP}]"

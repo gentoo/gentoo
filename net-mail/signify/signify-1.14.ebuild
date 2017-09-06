@@ -13,7 +13,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="ppc sparc x86 ~amd64"
+KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE=""
 
 src_unpack() {

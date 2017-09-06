@@ -7,7 +7,7 @@ SLOT="0"
 LICENSE="GPL-2"
 HOMEPAGE="http://www.dict.org/"
 IUSE=""
-KEYWORDS="x86 ppc sparc amd64 ppc64"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
 DEPEND=""
 

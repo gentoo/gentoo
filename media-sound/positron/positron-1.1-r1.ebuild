@@ -12,7 +12,7 @@ SRC_URI="http://www.xiph.org/positron/files/source/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="vorbis"
 
 DEPEND="vorbis? ( dev-python/pyvorbis[${PYTHON_USEDEP}] )"

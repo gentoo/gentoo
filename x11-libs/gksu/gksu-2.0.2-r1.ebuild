@@ -13,7 +13,7 @@ SRC_URI="http://people.debian.org/~kov/gksu/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sh ~sparc x86 ~x86-fbsd"
 IUSE="doc gnome"
 
 RDEPEND=">=x11-libs/libgksu-2.0.8

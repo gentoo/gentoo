@@ -21,6 +21,6 @@ app-xemacs/elib
 app-xemacs/sh-script
 app-xemacs/fsf-compat
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 
 inherit xemacs-packages

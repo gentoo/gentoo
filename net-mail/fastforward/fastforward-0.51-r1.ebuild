@@ -9,7 +9,7 @@ SRC_URI="http://cr.yp.to/software/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="~ppc ~sparc x86"
 IUSE=""
 
 DEPEND="sys-apps/groff"

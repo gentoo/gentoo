@@ -11,7 +11,7 @@ SRC_URI="http://www.rhyolite.com/anti-spam/dcc/source/old/${P}.tar.Z"
 
 LICENSE="DCC"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="cgi ipv6 rrdtool milter"
 
 RDEPEND="dev-lang/perl

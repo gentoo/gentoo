@@ -9,7 +9,7 @@ SRC_URI="mirror://debian/pool/main/n/netkit-bootparamd/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~hppa ~mips ppc sparc x86"
+KEYWORDS="~hppa ~mips ppc ~sparc x86"
 IUSE=""
 
 DEPEND="!<=net-misc/netkit-bootpd-0.17-r2"

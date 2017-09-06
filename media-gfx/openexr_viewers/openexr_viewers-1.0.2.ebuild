@@ -10,7 +10,7 @@ HOMEPAGE="http://openexr.com/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="opengl video_cards_nvidia"
 
 RDEPEND=">=media-libs/ilmbase-1.0.2

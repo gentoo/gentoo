@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: automatically detect file indent settings"
 HOMEPAGE="https://github.com/ciaranm/detectindent"
 LICENSE="vim"
-KEYWORDS="amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="amd64 hppa ~mips ppc ~sparc x86"
 IUSE=""
 
 if [[ ${PV} != 9999* ]] ; then

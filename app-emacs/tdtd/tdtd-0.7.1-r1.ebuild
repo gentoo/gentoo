@@ -9,7 +9,7 @@ SRC_URI="http://www.menteith.com/raw-attachment/wiki/tdtd/data/${PN}${PV//./}.zi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

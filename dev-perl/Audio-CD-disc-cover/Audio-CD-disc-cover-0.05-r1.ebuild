@@ -16,7 +16,7 @@ SRC_URI="http://www.vanhemert.co.uk/files/${MY_P}.tar.gz"
 IUSE=""
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
 
 DEPEND=">=dev-perl/URI-1.10
 	>=dev-perl/HTML-Parser-3.15

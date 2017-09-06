@@ -9,7 +9,7 @@ HOMEPAGE="https://sourceforge.net/projects/xfonts/"
 LICENSE="public-domain"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc s390 sh ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 S="${WORKDIR}/${PN}-src"

@@ -6,6 +6,6 @@ inherit php-pear-r1
 DESCRIPTION="PEAR MDB is a merge of the PEAR DB and Metabase php database abstraction layers"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 RDEPEND="dev-php/PEAR-XML_Parser"

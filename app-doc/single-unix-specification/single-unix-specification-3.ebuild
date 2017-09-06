@@ -7,7 +7,7 @@ SRC_URI="http://www.opengroup.org/onlinepubs/009695399/download/susv3.tar.bz2"
 
 LICENSE="sus3-copyright"
 SLOT="3"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sparc x86"
 IUSE=""
 RESTRICT="mirror"
 

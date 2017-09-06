@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc sh sparc x86"
+KEYWORDS="amd64 arm ~ppc sh ~sparc x86"
 IUSE=""
 
 RDEPEND="

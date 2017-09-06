@@ -6,7 +6,7 @@ EAPI=4
 inherit xorg-2
 
 DESCRIPTION="list resources in widgets"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="amd64 arm hppa ~mips ppc ppc64 s390 sh ~sparc x86"
 IUSE=""
 RDEPEND="x11-libs/libX11
 	x11-libs/libXt

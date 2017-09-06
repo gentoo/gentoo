@@ -11,7 +11,7 @@ SRC_URI="http://www.fefe.de/fnord/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="hppa ppc sparc x86"
+KEYWORDS="hppa ppc ~sparc x86"
 IUSE="auth"
 
 DEPEND=""

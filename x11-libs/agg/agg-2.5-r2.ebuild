@@ -11,7 +11,7 @@ SRC_URI="http://antigrain.com/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="+gpc +truetype +X"
 
 # preffer X with enabled xcb, really

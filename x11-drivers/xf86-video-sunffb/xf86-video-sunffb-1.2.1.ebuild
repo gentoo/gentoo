@@ -5,7 +5,7 @@ inherit x-modular
 
 DESCRIPTION="SUNFFB video driver"
 
-KEYWORDS="-* sparc"
+KEYWORDS="-* ~sparc"
 IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.0.99"

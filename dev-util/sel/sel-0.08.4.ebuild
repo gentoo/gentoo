@@ -9,7 +9,7 @@ HOMEPAGE="http://www.rninet.de/darkstar/sel.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc s390 sparc x86"
+KEYWORDS="~amd64 ppc s390 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5.1"

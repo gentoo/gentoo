@@ -11,7 +11,7 @@ SRC_URI="http://devel.tlrmx.org/audio/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="media-sound/jack-audio-connection-kit

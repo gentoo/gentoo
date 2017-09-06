@@ -7,7 +7,7 @@ SRC_URI="mirror://sourceforge/libavc1394/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/libraw1394-0.8"

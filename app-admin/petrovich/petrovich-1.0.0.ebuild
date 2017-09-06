@@ -10,7 +10,7 @@ HOMEPAGE="https://sourceforge.net/projects/petrovich"
 IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="ppc ~sparc x86"
 
 DEPEND="virtual/perl-Digest-MD5"
 

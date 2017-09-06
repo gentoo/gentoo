@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.logilab.org/pub/constraint/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE="doc examples"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

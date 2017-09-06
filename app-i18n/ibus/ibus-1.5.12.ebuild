@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="+X gconf +gtk +gtk2 +introspection +libnotify nls +python test vala wayland"
 REQUIRED_USE="gtk2? ( gtk )
 	libnotify? ( gtk )

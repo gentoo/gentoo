@@ -58,7 +58,7 @@ SRC_URI="http://heroine.linuxave.net/${MY_P}.tar.gz
 
 LICENSE="XAnim"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
+KEYWORDS="ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="virtual/jpeg

@@ -16,7 +16,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc amd64 ppc"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 src_prepare() {
 	sed -ie 's/-o wmppp/\$(LDFLAGS) -o wmppp/' Makefile

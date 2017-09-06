@@ -10,7 +10,7 @@ SRC_URI="http://mping.uninett.no/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 

@@ -11,7 +11,7 @@ SRC_URI="http://www.snortsam.net/files/snortsam/${MY_P}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}

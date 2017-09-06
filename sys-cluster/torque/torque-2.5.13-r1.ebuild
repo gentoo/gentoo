@@ -12,7 +12,7 @@ SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=1643 -> ${P}.tar.gz"
 LICENSE="torque-2.5"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="cpusets +crypt doc drmaa kernel_linux munge server static-libs +syslog threads tk xml"
 
 # ed is used by makedepend-sh

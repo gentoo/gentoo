@@ -9,7 +9,7 @@ SRC_URI="http://members.brabant.chello.nl/~k.holtman/${P}.tgz"
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ppc sparc x86"
+KEYWORDS="alpha amd64 ~hppa ppc ~sparc x86"
 IUSE=""
 
 RDEPEND=""

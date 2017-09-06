@@ -7,7 +7,7 @@ SRC_URI="http://www.icon-king.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 RESTRICT="strip binchecks"

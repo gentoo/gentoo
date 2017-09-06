@@ -11,7 +11,7 @@ DESCRIPTION="High level API for event-based execution flow control"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/AnyEvent

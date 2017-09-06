@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: GNU info documentation browser"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=21"
 LICENSE="BSD"
-KEYWORDS="x86 alpha sparc ia64 ppc s390 amd64"
+KEYWORDS="alpha amd64 ia64 ppc s390 ~sparc x86"
 IUSE=""
 
 VIM_PLUGIN_HELPTEXT="This plugin adds the :Info command."

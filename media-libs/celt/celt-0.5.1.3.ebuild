@@ -9,7 +9,7 @@ SRC_URI="http://downloads.us.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0.5.1"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
 IUSE="ogg static-libs"
 
 DEPEND="ogg? ( media-libs/libogg )"

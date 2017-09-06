@@ -9,7 +9,7 @@ SRC_URI="http://www.ibiblio.org/pub/linux/utils/file/${P}.tar.gz"
 
 LICENSE="symlinks"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="static"
 
 src_compile() {

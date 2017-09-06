@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~vapier/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha arm hppa ~mips ppc sh sparc x86"
+KEYWORDS="alpha arm hppa ~mips ppc sh ~sparc x86"
 IUSE=""
 
 DEPEND=""

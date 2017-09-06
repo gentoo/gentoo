@@ -6,7 +6,7 @@ HOMEPAGE="https://art.gnome.org/themes/gtk2/1058"
 #SRC_URI="https://art.gnome.org/download/themes/gtk2/1058/GTK2-EXperience.tar.gz"
 SRC_URI="http://freshmeat.net/redir/${PN}/50795/url_tgz/${PN}-gtk-${PV}.tar.gz"
 
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

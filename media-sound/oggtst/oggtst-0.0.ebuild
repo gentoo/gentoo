@@ -9,7 +9,7 @@ SRC_URI="http://gnometoaster.rulez.org/archive/${PN}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libao-0.8.0

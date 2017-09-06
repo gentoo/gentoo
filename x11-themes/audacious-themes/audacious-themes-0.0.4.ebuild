@@ -102,7 +102,7 @@ SRC_URI="${THEME_URI}/AbsoluteE_Xmms.zip
 
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 
 IUSE=""
 

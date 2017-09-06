@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
+KEYWORDS="ppc ~sparc x86"
 IUSE="mysql postgres test"
 
 RDEPEND="dev-db/cdb"

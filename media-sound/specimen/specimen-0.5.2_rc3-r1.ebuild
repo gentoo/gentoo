@@ -12,7 +12,7 @@ SRC_URI="http://zhevny.com/${PN}/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE="lash"
 
 RDEPEND=">=media-sound/jack-audio-connection-kit-0.109.2

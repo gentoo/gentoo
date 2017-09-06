@@ -7,7 +7,7 @@ SRC_URI="http://tud.at/programm/fwanalog/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86 ppc sparc"
+KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND="" # this is just a bash script

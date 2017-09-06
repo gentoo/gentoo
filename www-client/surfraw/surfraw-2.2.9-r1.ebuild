@@ -11,7 +11,7 @@ SRC_URI="http://${PN}.alioth.debian.org/dist/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="amd64 hppa ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 hppa ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 RESTRICT="test"
 RDEPEND="dev-lang/perl"
 

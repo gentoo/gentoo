@@ -11,7 +11,7 @@ SRC_URI="mirror://kernel/software/network/tftp/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~ppc-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh ~sparc x86 ~x86-fbsd ~ppc-macos"
 IUSE="ipv6 readline selinux tcpd"
 
 CDEPEND="

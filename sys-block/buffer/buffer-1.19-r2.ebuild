@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc sparc x86"
+KEYWORDS="amd64 arm ppc ~sparc x86"
 IUSE=""
 
 src_prepare() {
