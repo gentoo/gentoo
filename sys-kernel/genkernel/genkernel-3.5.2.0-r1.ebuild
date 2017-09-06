@@ -8,7 +8,7 @@ EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
 VERSION_BUSYBOX='1.27.2' # warning, be sure to bump patches
 VERSION_DMRAID='1.0.0.rc16-3' # warning, be sure to bump patches
-VERSION_MDADM='3.4' # warning, be sure to bump patches
+VERSION_MDADM='4.0' # warning, be sure to bump patches
 VERSION_FUSE='2.8.6' # warning, be sure to bump patches
 VERSION_ISCSI='2.0-872' # warning, be sure to bump patches
 VERSION_LVM='2.02.173' # warning, be sure to bump patches
