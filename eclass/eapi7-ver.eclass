@@ -40,14 +40,9 @@ _version_parse_range() {
 _version_split() {
 	local v=$1 LC_ALL=C
 
-	comp=("")
+	comp=()
 
-	# get first component
-	[[ ${v} =~ ^([A-Za-z]*|[0-9]*) ]] || die
-	comp+=("${BASH_REMATCH[1]}")
-	v=${v:${#BASH_REMATCH[0]}}
-
-	# get remaining separators and components
+	# get separators and components
 	while [[ ${v} ]]; do
 		[[ ${v} =~ ^([^A-Za-z0-9]*)([A-Za-z]*|[0-9]*) ]] || die
 		comp+=("${BASH_REMATCH[@]:1:2}")
