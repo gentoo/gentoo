@@ -28,10 +28,10 @@ case ${EAPI:-0} in
 esac
 
 _version_parse_range() {
-	[[ $1 =~ ^([0-9]+)(-([0-9]*))?$ ]] || die
-	start=${BASH_REMATCH[1]}
-	[[ ${BASH_REMATCH[2]} ]] && end=${BASH_REMATCH[3]} || end=${start}
-	[[ ${start} -ge 0 ]] && [[ -z ${end} || ${start} -le ${end} ]] || die
+	[[ ${1} == [0-9]* ]] || die
+	start=${1%-*}
+	[[ ${1} == *-* ]] && end=${1#*-} || end=${start}
+	[[ ${start} -ge 0 && ( -z ${end} || ${start} -le ${end} ) ]] || die
 }
 
 # RETURNS:
