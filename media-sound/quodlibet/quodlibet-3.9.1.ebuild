@@ -16,6 +16,7 @@ IUSE="+dbus gstreamer ipod +udev"
 
 RDEPEND="dev-libs/keybinder:3[introspection]
 	dev-python/feedparser[${PYTHON_USEDEP}]
+	dev-python/faulthandler[${PYTHON_USEDEP}]
 	dev-python/futures[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.32[${PYTHON_USEDEP}]
