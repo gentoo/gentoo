@@ -18894,7 +18894,7 @@ x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5-r1: utility that merges application menus, your desktop and even your file manager
 x11-misc/libinput-gestures 2.15 2.19 2.26 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.7.0 1.7.0-r1 1.8.0: A simple locker using lightdm
-x11-misc/lightdm 1.18.3 1.21.5 1.22.0: A lightweight display manager
+x11-misc/lightdm 1.18.3 1.22.0 1.24.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.1-r1 2.0.2 2.0.2-r1: LightDM GTK+ Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
@@ -19413,7 +19413,7 @@ x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+
 x11-themes/gtk-engines-xfce 3.2.0-r200 3.2.0-r300: A port of Xfce engine to GTK+ 3.x
 x11-themes/gtk-theme-switch 2.1.0: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
-x11-themes/hicolor-icon-theme 0.15 0.16: Fallback theme for the freedesktop icon theme specification
+x11-themes/hicolor-icon-theme 0.15 0.16 0.17: Fallback theme for the freedesktop icon theme specification
 x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-themes 0.0.1-r1 0.0.2: Collection of IceWM themes
