@@ -4,11 +4,11 @@ DESCRIPTION=Nagios core - monitoring daemon, web GUI, and documentation
 EAPI=6
 HOMEPAGE=http://www.nagios.org/
 IUSE=apache2 classicui lighttpd perl +web vim-syntax
-KEYWORDS=alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 sparc ~x86
 LICENSE=GPL-2
 RDEPEND=sys-devel/libtool virtual/mailx perl? ( dev-lang/perl:= ) web? ( app-arch/unzip media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd[php] ) apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_cgi] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_cgid] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_fcgid] ) || ( dev-lang/php:*[apache2] dev-lang/php:*[cgi] dev-lang/php:*[fpm] ) ) ) vim-syntax? ( app-vim/nagios-syntax )
 REQUIRED_USE=apache2? ( !lighttpd )
 SLOT=0
 SRC_URI=mirror://sourceforge/nagios/nagios-4.3.3.tar.gz web? ( https://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=56e11b495b5024f2275603a57f38f271
+_md5_=358777f368391f59bf52de8d7acd1ea3
