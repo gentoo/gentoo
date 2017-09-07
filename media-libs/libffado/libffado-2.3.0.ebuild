@@ -13,10 +13,10 @@ HOMEPAGE="http://www.ffado.org"
 if [ "${PV}" = "9999" ]; then
 	inherit subversion
 	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
-	KEYWORDS="~arm ~ia64 ~ppc ~ppc64"
+	KEYWORDS="~arm ~arm64 ~ia64 ~ppc ~ppc64"
 else
 	SRC_URI="http://www.ffado.org/files/${P}.tgz"
-	KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64"
 fi
 
 LICENSE="GPL-2 GPL-3"
