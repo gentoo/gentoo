@@ -1,0 +1,19 @@
+commit 87e54cc4d3fa76f3b226fbf2822a87af48cf3e51
+Author: Johannes Huber <johu@gentoo.org>
+Date:   Wed Sep 6 23:30:42 2017 +0200
+
+    Fix multilib install
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef7ade07..11f8603b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,7 +66,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON) # for .moc
+ set(CMAKE_AUTOMOC ON)
+ if(NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+   set(QTAV_INSTALL_HEADERS ${CMAKE_INSTALL_PREFIX}/include)
+-  set(QTAV_INSTALL_LIBS ${CMAKE_INSTALL_PREFIX}/lib)
++  set(QTAV_INSTALL_LIBS ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+   set(QTAV_INSTALL_BINS ${CMAKE_INSTALL_PREFIX}/bin)
+   set(QTAV_INSTALL_QML ${CMAKE_INSTALL_PREFIX}/qml)
+ else()
