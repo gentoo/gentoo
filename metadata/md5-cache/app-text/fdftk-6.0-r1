@@ -7,5 +7,4 @@ LICENSE=Adobe
 RESTRICT=fetch strip mirror
 SLOT=0
 SRC_URI=FDFToolkitForUnix.tar.gz
-_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=33be30da24f6154735c02c2e90451e5f

@@ -8,5 +8,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://gnu/cppi/cppi-1.18.tar.xz
-_eclass_exported_funcs=src_configure:-
 _md5_=958e893729e2e760f8e74ec8150e39bc

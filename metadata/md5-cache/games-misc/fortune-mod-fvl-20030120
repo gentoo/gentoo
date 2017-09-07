@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://sourceforge/fortune-mod-fvl/fortune-mod-fvl-20030120.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=4a31b6a2914d0c39339405f7344c8a14

@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 sys-fs/fuse
 SLOT=0
 SRC_URI=mirror://sourceforge/libfat/libfat-0.3a.tar.gz
-_eclass_exported_funcs=-
 _md5_=9b2c4a3790326e812eb106a379bac13e

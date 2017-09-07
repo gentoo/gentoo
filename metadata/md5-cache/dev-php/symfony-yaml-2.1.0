@@ -10,5 +10,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/symfony/yaml/archive/v2.1.0.tar.gz -> symfony-yaml-2.1.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_test:- src_install:-
 _md5_=b0cf1414d074416dcbac6f22c0d5dffe

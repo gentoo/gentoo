@@ -8,5 +8,4 @@ LICENSE=BSD-2
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gentoo/libspt-1.1.tar.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=9395de72c0679691646342182874193c

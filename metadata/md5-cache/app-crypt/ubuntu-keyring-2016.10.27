@@ -6,5 +6,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=mirror://ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2016.10.27.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=ee16fb96be54e4e79739f300d2ea902d

@@ -9,5 +9,4 @@ LICENSE=BSD-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=2
 SRC_URI=http://atheme.org/downloads/libmowgli-2.0.0.tar.gz
-_eclass_exported_funcs=src_configure:-
 _md5_=108d4caa5d58b456ffa5e7b80b6a6eb4

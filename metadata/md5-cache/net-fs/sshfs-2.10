@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-fs/fuse-2.6.0_pre3 >=dev-libs/glib-2.4.2 >=net-misc/openssh-4.4
 SLOT=0
 SRC_URI=https://github.com/libfuse/sshfs/releases/download/sshfs-2.10/sshfs-2.10.tar.gz
-_eclass_exported_funcs=-
 _md5_=2d34b0150f3d3234ad065ec588e69fd1

@@ -8,6 +8,5 @@ LICENSE=all-rights-reserved
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.logiqx.com/Tools/DatUtil/dutil246.zip http://www.logiqx.com/Tools/DatLib/datlib236.zip
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=1eb2cf476f9865bf2050cfa419c4c973

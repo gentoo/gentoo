@@ -8,5 +8,4 @@ LICENSE=Apache-2.0
 RDEPEND=>=www-apache/mod_security-2.7[lua?,geoip?]
 SLOT=0
 SRC_URI=https://github.com/SpiderLabs/owasp-modsecurity-crs/tarball/v2.2.6 -> modsecurity-crs-2.2.6.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_install:-
 _md5_=81289ca16f43fd849e6444f8593bb7c1

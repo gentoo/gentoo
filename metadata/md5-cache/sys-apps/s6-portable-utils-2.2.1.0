@@ -9,5 +9,4 @@ LICENSE=ISC
 RDEPEND=!static? ( >=dev-libs/skalibs-2.5.1.0:= )
 SLOT=0
 SRC_URI=https://www.skarnet.org/software/s6-portable-utils/s6-portable-utils-2.2.1.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=25391b2f8731071bf1d25801ef88e50e

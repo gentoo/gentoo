@@ -10,5 +10,4 @@ RDEPEND=>=dev-lang/perl-5.10.1 >=dev-perl/libintl-perl-1.200 unicode? ( dev-perl
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://nongnu/texi2html/texi2html-5.0.tar.bz2
-_eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_install:-
 _md5_=2a30049bf055792ad4d0b337753dfba2

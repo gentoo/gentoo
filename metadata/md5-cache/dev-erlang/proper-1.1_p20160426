@@ -8,6 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/erlang-17.1 <dev-lang/erlang-19 dev-lang/erlang
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/proper/proper-1.1_p20160426.tar.bz2
-_eclass_exported_funcs=src_prepare:rebar src_configure:- src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
 _md5_=1b3666a4be9acd59440caad81877ed88

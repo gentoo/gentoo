@@ -9,5 +9,4 @@ LICENSE=Artistic-2
 RDEPEND=dev-libs/libpcre sys-libs/zlib perl? ( >=dev-lang/perl-5.8 )
 SLOT=0/17
 SRC_URI=mirror://sourceforge/qpdf/qpdf-6.0.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=1a1df192ee7dd8eda10b2734c48a9f9b

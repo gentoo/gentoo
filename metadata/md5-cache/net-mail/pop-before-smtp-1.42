@@ -7,5 +7,4 @@ LICENSE=|| ( GPL-2 BSD Artistic )
 RDEPEND=dev-lang/perl[berkdb] dev-perl/Net-Netmask dev-perl/TimeDate
 SLOT=0
 SRC_URI=mirror://sourceforge/popbsmtp/pop-before-smtp-1.42.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=bc0ac63ac88870a0fb5341ed3b50f8ac

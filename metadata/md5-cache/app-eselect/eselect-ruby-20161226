@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.0.2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~flameeyes/ruby-team/ruby.eselect-20161226.xz
-_eclass_exported_funcs=src_install:-
 _md5_=0ec9b1b2a21916f60912700a8b4a88d4

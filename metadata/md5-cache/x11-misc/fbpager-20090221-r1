@@ -9,5 +9,4 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11 xrender? ( x11-libs/libXrender )
 SLOT=0
 SRC_URI=mirror://gentoo/fbpager-20090221.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_configure:-
 _md5_=003faeded34ee9699e3ea0190be9cffd

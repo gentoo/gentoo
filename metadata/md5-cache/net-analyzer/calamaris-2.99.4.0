@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/GDGraph
 SLOT=0
 SRC_URI=http://cord.de/calamaris-2.99.4.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=52403d2d1a83c61dc0fe03c8ad74f729

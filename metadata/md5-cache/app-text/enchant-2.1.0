@@ -11,5 +11,4 @@ REQUIRED_USE=|| ( hunspell aspell zemberek )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/AbiWord/enchant/releases/download/v2.1.0/enchant-2.1.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=7cc32067297db1acf5cb863465a785b9

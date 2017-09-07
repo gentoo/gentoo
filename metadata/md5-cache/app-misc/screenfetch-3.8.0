@@ -8,5 +8,4 @@ LICENSE=GPL-3
 RDEPEND=curl? ( net-misc/curl ) X? ( media-gfx/scrot x11-apps/xdpyinfo )
 SLOT=0
 SRC_URI=https://github.com/KittyKatt/screenFetch/archive/v3.8.0.tar.gz -> screenfetch-3.8.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=13e89cd70629346270e1f74cdf72926d

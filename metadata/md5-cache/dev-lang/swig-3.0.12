@@ -10,5 +10,4 @@ RDEPEND=pcre? ( dev-libs/libpcre ) ccache? ( sys-libs/zlib )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/swig/swig-3.0.12.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=8c68fd67eca0e1de3de20fe6f0d11a50

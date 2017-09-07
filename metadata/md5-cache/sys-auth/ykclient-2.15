@@ -10,5 +10,4 @@ RDEPEND=>=net-misc/curl-7.21.1
 RESTRICT=test
 SLOT=0
 SRC_URI=http://opensource.yubico.com/yubico-c-client/releases/ykclient-2.15.tar.gz
-_eclass_exported_funcs=-
 _md5_=08ff4347542daf4711fc809c4128f9fb

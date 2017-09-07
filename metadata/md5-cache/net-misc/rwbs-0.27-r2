@@ -6,5 +6,4 @@ KEYWORDS=~amd64 x86
 LICENSE=Resounding GPL-2
 SLOT=0
 SRC_URI=http://games.gci.net/pub/VoiceOverIP/RogerWilco/rwbs_Linux_0_27.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=01e78a36d1a07996825c586daf611348

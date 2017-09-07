@@ -9,5 +9,4 @@ LICENSE=LGPL-2
 RDEPEND=>=media-libs/gstreamer-0.10.30:0.10 >=media-libs/gst-plugins-base-0.10.30:0.10
 SLOT=0.10
 SRC_URI=https://gstreamer.freedesktop.org/src/gnonlin/gnonlin-0.10.17.tar.bz2
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=b96c37ce96c73eae217e867aa6bb442e

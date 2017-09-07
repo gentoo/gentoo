@@ -9,5 +9,4 @@ LICENSE=MIT
 RDEPEND=dev-lang/php:* dev-php/fedora-autoloader dev-php/symfony-filesystem
 SLOT=0
 SRC_URI=https://github.com/symfony/config/archive/v2.8.20.tar.gz -> symfony-config-2.8.20.tar.gz
-_eclass_exported_funcs=src_prepare:- src_test:- src_install:-
 _md5_=a5c72c58a248fa691363785395e41e9e

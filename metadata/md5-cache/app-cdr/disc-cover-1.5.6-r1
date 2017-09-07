@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/Audio-CD-disc-cover virtual/latex-base
 SLOT=0
 SRC_URI=http://www.vanhemert.co.uk/files/disc-cover-1.5.6.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=764d4b90420fd91d1f186699c6f43cb0

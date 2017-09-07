@@ -9,5 +9,4 @@ LICENSE=GPL-2+
 RDEPEND=executable? ( >=dev-libs/igraph-0.6 ) !media-gfx/xpaint
 SLOT=0
 SRC_URI=http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw-0.7.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=2de0637b9c5b9ad67f9462048e1a7b8c

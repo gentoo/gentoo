@@ -9,5 +9,4 @@ LICENSE=BSD
 RDEPEND=>=net-libs/ldns-1.7.0[dane?,ecdsa?,gost?,ssl?] examples? ( net-libs/libpcap )
 SLOT=0
 SRC_URI=http://www.nlnetlabs.nl/downloads/ldns/ldns-1.7.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=707695de682a2d42623341c6317bae84

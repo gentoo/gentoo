@@ -8,5 +8,4 @@ LICENSE=freedist
 RDEPEND=dev-lang/tk
 SLOT=0
 SRC_URI=http://math-www.uni-paderborn.de/~axel/tkinfo/tkinfo-2.8.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=1e203ce4ae032579e9c4ebf14bd2e44f

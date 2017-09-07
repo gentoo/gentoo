@@ -8,5 +8,4 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/perl sys-libs/libcap >=sys-libs/libhx-3.12.1 sys-apps/pciutils
 SLOT=0
 SRC_URI=http://jftp.inai.de/hxtools/hxtools-20121125.tar.xz
-_eclass_exported_funcs=src_install:-
 _md5_=eb1001d509fecaa9522b2473d80dfd44

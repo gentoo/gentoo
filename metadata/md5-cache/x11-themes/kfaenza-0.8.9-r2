@@ -8,5 +8,4 @@ LICENSE=GPL-3
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://ompldr.org/vYjR0NQ/kfaenza-0.8.9.tar.gz http://kde-look.org/CONTENT/content-files/153813-kfaenza-icon-patch-0.3.tar.gz additional? ( http://kde-look.org/CONTENT/content-files/147483-additional-KFaenza.tar.gz )
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
 _md5_=8e73f94b46107c530e4bdceab130247f

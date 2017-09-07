@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/lzo-2
 SLOT=0
 SRC_URI=http://www.lzop.org/download/lzop-1.04.tar.gz
-_eclass_exported_funcs=src_test:- src_install:-
 _md5_=fcfd11b7b13ad3962cd3578803f6eebc

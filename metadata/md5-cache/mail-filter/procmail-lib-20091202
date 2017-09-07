@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=mail-filter/procmail
 SLOT=0
 SRC_URI=mirror://nongnu/procmail-lib/procmail-lib-2009.1202.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=ef79f141cdc044bc1976f59cddca49b3

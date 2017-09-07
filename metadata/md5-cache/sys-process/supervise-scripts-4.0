@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=virtual/daemontools
 SLOT=0
 SRC_URI=http://untroubled.org/supervise-scripts/archive/supervise-scripts-4.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=1ece33942e889742f1961484234907ce

@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/iproute2
 SLOT=0
 SRC_URI=mirror://sourceforge/cbqinit/cbq.init-v0.7.3 -> cbqinit-0.7.3
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
 _md5_=e6b3ce63ddb9760544766643037b1a00

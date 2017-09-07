@@ -7,6 +7,5 @@ LICENSE=GPL-2 CC-BY-SA-3.0
 RDEPEND=>=games-action/minetest-0.4.16
 SLOT=0
 SRC_URI=https://github.com/minetest/minetest_game/tarball/0.4.16 -> minetest_game-0.4.16.tar.gz
-_eclass_exported_funcs=src_unpack:vcs-snapshot src_install:-
 _eclasses_=vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=8848610a4128c381ab5019bcca9072ab

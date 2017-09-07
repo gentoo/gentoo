@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=app-shells/bash dmi? ( sys-apps/dmidecode )
 SLOT=0
 SRC_URI=https://people.redhat.com/~rjones/virt-what/files/virt-what-1.15.tar.gz
-_eclass_exported_funcs=-
 _md5_=749e08d7200215dea6fe8985b8f39a1a

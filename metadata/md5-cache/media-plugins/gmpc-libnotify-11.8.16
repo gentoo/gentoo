@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2 x11-libs/libnotify
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/gmpc-libnotify-11.8.16.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=8bab46bbdfca80cffae92c5d7d9df636

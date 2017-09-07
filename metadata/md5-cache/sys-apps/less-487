@@ -9,5 +9,4 @@ LICENSE=|| ( GPL-3 BSD-2 )
 RDEPEND=>=app-misc/editor-wrapper-3 >=sys-libs/ncurses-5.2:0= pcre? ( dev-libs/libpcre )
 SLOT=0
 SRC_URI=http://www.greenwoodsoftware.com/less/less-487.tar.gz
-_eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_install:-
 _md5_=f7286d17f7aa46c2f61f89530dee8d6c

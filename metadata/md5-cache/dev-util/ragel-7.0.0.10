@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=~dev-util/colm-0.13.0.5
 SLOT=0
 SRC_URI=https://www.colm.net/files/ragel/ragel-7.0.0.10.tar.gz
-_eclass_exported_funcs=src_test:- src_install:-
 _md5_=64eb79a47a3bbc1a85d57e5d8cdb50e2

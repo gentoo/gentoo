@@ -8,5 +8,4 @@ LICENSE=Artistic-2 Inform
 PDEPEND=emacs? ( app-emacs/inform-mode )
 SLOT=0
 SRC_URI=http://mirror.ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.33.1-b2.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=924ca06dee495d15a564bbee6019532e

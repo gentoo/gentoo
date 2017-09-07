@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/Net-Server mail-filter/spamassassin
 SLOT=0
 SRC_URI=https://github.com/mpaperno/spampd/archive/2.42.tar.gz -> spampd-2.42.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=cd7b302448b8f50dcdb0b5f93bc8fef3

@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/libpcre2-10.21[pcre32] sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/fish-shell/fish-shell/releases/download/2.6.0/fish-2.6.0.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_configure:- src_test:-
 _md5_=c13aabe4d31d7691f71db52e53017a41

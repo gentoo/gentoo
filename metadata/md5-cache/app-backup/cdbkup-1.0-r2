@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=net-misc/openssh virtual/cdrtools virtual/eject !app-misc/cdcat
 SLOT=0
 SRC_URI=mirror://sourceforge/cdbkup/cdbkup-1.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _md5_=5d6404a4d7695af61a00aa3ce03e0ee7

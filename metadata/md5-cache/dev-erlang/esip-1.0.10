@@ -8,6 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-erlang/fast_tls-1.0.9 >=dev-erlang/stun-1.0.9 >=dev-erlang/p1_utils-1.0.6 >=dev-lang/erlang-17.1 dev-lang/erlang
 SLOT=0
 SRC_URI=https://github.com/processone/esip/archive/1.0.10.tar.gz -> esip-1.0.10.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
 _md5_=af1ec82f716fc44285c80594f6304cef

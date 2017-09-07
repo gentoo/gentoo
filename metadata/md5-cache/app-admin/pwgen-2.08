@@ -7,5 +7,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbs
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/pwgen/pwgen-2.08.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=aed42cef1396e47419e2aea2a0604a30

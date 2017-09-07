@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2
 SLOT=0
 SRC_URI=mirror://gentoo/oodict.eselect-20100228.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=b12a56fd4c8174b04b10bd2016188b9f

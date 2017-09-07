@@ -8,5 +8,4 @@ LICENSE=HPND
 RDEPEND=x11-libs/libX11 x11-libs/libXext
 SLOT=0
 SRC_URI=http://www.vergenet.net/~conrad/software/xsel/download/xsel-1.2.0.tar.gz
-_eclass_exported_funcs=src_compile:-
 _md5_=1918283daf9c249353f6f190ee93e7da

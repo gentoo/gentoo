@@ -7,5 +7,4 @@ LICENSE=GPL-1
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://gentoo/fortune-tao.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=660cbdc80cec012d780492304d347110

@@ -7,5 +7,4 @@ LICENSE=BSD
 RDEPEND=!<media-libs/freetype-1.4_pre20080316
 SLOT=0
 SRC_URI=http://www.lcdf.org/type/t1utils-1.40.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=908fa41663d0a20a54b87f9f5e691d74

@@ -8,5 +8,4 @@ LICENSE=MIT
 RDEPEND=dev-lang/php
 SLOT=0
 SRC_URI=http://christian-seiler.de/projekte/php/bbcode/download/stringparser_bbcode-0.3.3.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=81f919a85a2ae71f09247154231c3319

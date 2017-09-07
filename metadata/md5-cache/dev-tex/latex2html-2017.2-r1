@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl virtual/latex-base media-libs/netpbm dev-lang/perl gif? ( media-libs/giflib ) png? ( media-libs/libpng:0 )
 SLOT=0
 SRC_URI=http://mirrors.ctan.org/support/latex2html/latex2html-2017.2.tar.gz
-_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _md5_=51a720196380897e43bd1a1977e61080

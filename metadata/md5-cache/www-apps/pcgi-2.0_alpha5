@@ -7,5 +7,4 @@ LICENSE=ZPL
 RDEPEND=dev-lang/python
 SLOT=0
 SRC_URI=http://www.zope.org/Products/Zope/2.6.1/Zope-2.6.1-src.tgz mirror://gentoo/PCGI-HOWTO-1998-08-13.html.bz2
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=32318a8608ecff3b3b6f93c4de4e0538

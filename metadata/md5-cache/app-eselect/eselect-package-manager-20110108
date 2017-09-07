@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.1.1
 SLOT=0
 SRC_URI=mirror://gentoo/eselect-package-manager-20110108.tar.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=35965705c606035ce955eb9cf8e7af95

@@ -8,5 +8,4 @@ LICENSE=free-noncomm
 RDEPEND=!<games-action/d2x-0.2.5-r3 !games-action/descent2-data
 SLOT=0
 SRC_URI=ftp://ftp.funet.fi/pub/msdos/games/interplay/d2demo10.zip
-_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
 _md5_=7435af78d7602ac458f2149fec19a437

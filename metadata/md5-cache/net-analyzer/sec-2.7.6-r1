@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.0
 SLOT=0
 SRC_URI=mirror://sourceforge/simple-evcorr/sec-2.7.6.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=fe0fcc1285c8600e5bc3ec10802283cd

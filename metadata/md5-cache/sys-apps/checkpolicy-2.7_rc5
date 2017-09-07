@@ -9,6 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/libsemanage-2.7_rc5
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170718/checkpolicy-2.7-rc5.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=ef182b3f78de0f498182423e20625e74

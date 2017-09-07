@@ -10,6 +10,5 @@ RDEPEND=>=net-misc/dhcpcd-6.4.4 qt4? ( dev-qt/qtsvg:4 )
 REQUIRED_USE=?? ( gtk gtk3 qt4 ) gtk3? ( !gtk ) gtk? ( !gtk3 )
 SLOT=0
 SRC_URI=http://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.5.tar.bz2
-_eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=e1d2001a40b919d5bbb329bb9171f61d

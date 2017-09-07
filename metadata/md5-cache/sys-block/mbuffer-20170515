@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=http://www.maier-komor.de/software/mbuffer/mbuffer-20170515.tgz
-_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=2c210a3f02be38c5e35a03de9a06b4b9

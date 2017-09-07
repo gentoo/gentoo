@@ -10,5 +10,4 @@ RDEPEND=dev-libs/apr:1 dev-libs/apr-util:1 odbc? ( iodbc? ( >=dev-db/libiodbc-3.
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/logging/log4cxx/0.10.0/apache-log4cxx-0.10.0.tar.gz
-_eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
 _md5_=505a62dae7ef0adfebaed7b0d60c6944

@@ -9,5 +9,4 @@ LICENSE=BSD-2
 RDEPEND=selinux? ( sec-policy/selinux-resolvconf )
 SLOT=0
 SRC_URI=http://roy.marples.name/downloads/openresolv/openresolv-3.9.0.tar.xz
-_eclass_exported_funcs=src_configure:-
 _md5_=78b5c3ac7883dc5148f406b6c9e15800

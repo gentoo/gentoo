@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXinerama
 SLOT=0
 SRC_URI=http://www.lcdf.org/xwrits/xwrits-2.26.tar.gz
-_eclass_exported_funcs=-
 _md5_=646617e5b496dfeb41d90eedb23d8d53

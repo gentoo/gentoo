@@ -8,5 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/ocaml:=
 SLOT=0/3.1.0
 SRC_URI=https://github.com/besport/ocsigen-i18n/archive/3.1.0.tar.gz -> ocsigen-i18n-3.1.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=3a6d4f130e52a64217fce33daa9a8122

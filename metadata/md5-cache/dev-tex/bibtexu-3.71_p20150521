@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/kpathsea-6.2.1:= >=dev-libs/icu-4.4:= !<app-text/texlive-core-2013
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20150521-source.tar.xz mirror://gentoo/texlive-module-bibtex8-2015.tar.xz mirror://gentoo/texlive-module-bibtexu-2015.tar.xz doc? ( mirror://gentoo/texlive-module-bibtex8.doc-2015.tar.xz mirror://gentoo/texlive-module-bibtexu.doc-2015.tar.xz )
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=40be98fe3c9380110da3ced453e27143

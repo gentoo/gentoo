@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=mail-filter/procmail
 SLOT=0
 SRC_URI=mirror://nongnu/procmail-lib/procmail-lib-2008.1108.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=5e8cfe12775704f4a1bbe883ae51f91c

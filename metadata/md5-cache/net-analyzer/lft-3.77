@@ -8,5 +8,4 @@ LICENSE=VOSTROM
 RDEPEND=net-libs/libpcap
 SLOT=0
 SRC_URI=http://pwhois.org/get/lft-3.77.tar.gz
-_eclass_exported_funcs=src_prepare:-
 _md5_=85142ed1d6f8eda9d248d8eceba11652

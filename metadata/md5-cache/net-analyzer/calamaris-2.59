@@ -7,5 +7,4 @@ KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://cord.de/calamaris-2.59.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=f434d2321e1bd4f5f2a8d2af43bcc847

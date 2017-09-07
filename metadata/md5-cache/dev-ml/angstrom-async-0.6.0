@@ -8,6 +8,5 @@ LICENSE=BSD
 RDEPEND=dev-lang/ocaml:= dev-ml/angstrom:= dev-ml/async:=
 SLOT=0/0.6.0
 SRC_URI=https://github.com/inhabitedtype/angstrom/archive/0.6.0.tar.gz -> angstrom-0.6.0.tar.gz
-_eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
 _md5_=11c86db67f6f5171b0f414d08a5a85ea

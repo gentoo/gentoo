@@ -7,6 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://lagan.stanford.edu/lagan_web/lagan20.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=c9dbddd6a22f2e20ff25d0aa1e6f4280

@@ -7,5 +7,4 @@ LICENSE=OPL
 RDEPEND=>=app-doc/linux-gazette-base-01
 SLOT=01
 SRC_URI=http://linuxgazette.net/ftpfiles/lg-issue01to08.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=b50590f62761b65424446216624ac079

@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions || ( >=sys-apps/portage-2.1.6 >=sys-apps/paludis-0.56.0 sys-apps/pkgcore )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/python-updater-0.14.tar.bz2
-_eclass_exported_funcs=src_compile:-
 _md5_=6b797ead7a5ff5b31b1815922d83c762

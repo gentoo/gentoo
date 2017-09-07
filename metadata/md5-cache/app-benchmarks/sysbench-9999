@@ -7,6 +7,5 @@ IUSE=aio mysql postgres test
 LICENSE=GPL-2+
 RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= )
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_test:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=69d94c0b32641abd3edff5d11271b7cf

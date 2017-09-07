@@ -9,5 +9,4 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] !<dev-ml/findlib-1.6.1-r1
 SLOT=0/0.11.0
 SRC_URI=https://github.com/ocaml/ocamlbuild/archive/0.11.0.tar.gz -> ocamlbuild-0.11.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=36fdbdd8ff98d672f856bb155dc337e4

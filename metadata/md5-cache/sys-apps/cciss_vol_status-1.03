@@ -6,5 +6,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/cciss/cciss_vol_status-1.03.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=e0ef5d507fa2bc71ba5d1bc35557192a

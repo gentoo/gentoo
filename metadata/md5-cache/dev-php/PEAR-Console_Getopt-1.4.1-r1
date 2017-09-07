@@ -8,5 +8,4 @@ PDEPEND=dev-php/PEAR-PEAR
 RDEPEND=dev-lang/php:*
 SLOT=0
 SRC_URI=http://pear.php.net/get/Console_Getopt-1.4.1.tgz
-_eclass_exported_funcs=src_install:-
 _md5_=0ad48a582706f1ce7b24223b69407468

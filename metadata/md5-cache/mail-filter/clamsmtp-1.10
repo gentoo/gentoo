@@ -8,5 +8,4 @@ LICENSE=BSD
 RDEPEND=>=app-antivirus/clamav-0.75
 SLOT=0
 SRC_URI=http://thewalter.net/stef/software/clamsmtp/clamsmtp-1.10.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=cfb64a312ea4dd11f8782cc8f6969401

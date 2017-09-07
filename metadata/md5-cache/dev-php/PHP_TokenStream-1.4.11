@@ -7,5 +7,4 @@ LICENSE=BSD
 RDEPEND=dev-php/fedora-autoloader || ( dev-lang/php:5.6[tokenizer] dev-lang/php:7.0[tokenizer] dev-lang/php:7.1[tokenizer] )
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann/php-token-stream/archive/1.4.11.tar.gz -> PHP_TokenStream-1.4.11.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=3c7863fc55f51b56e35ead160a41bbac

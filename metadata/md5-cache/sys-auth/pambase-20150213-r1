@@ -10,5 +10,4 @@ RDEPEND=|| ( >=sys-libs/pam-1.1.3 ( sys-auth/openpam || ( sys-freebsd/freebsd-pa
 RESTRICT=binchecks
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~vapier/dist/pambase-20150213.tar.xz
-_eclass_exported_funcs=pkg_setup:- src_compile:- src_test:- src_install:-
 _md5_=465c2c973ca56b4c414fb222cb2bb664

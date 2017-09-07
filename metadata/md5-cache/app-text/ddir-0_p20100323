@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://gentoo/ddir-0_p20100323.tar.bz2
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=59cdef5b0a440216f245382046ae2174

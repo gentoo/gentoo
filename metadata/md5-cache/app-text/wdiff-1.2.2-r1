@@ -9,5 +9,4 @@ LICENSE=GPL-3
 RDEPEND=sys-apps/diffutils sys-apps/less sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://gnu/wdiff/wdiff-1.2.2.tar.gz
-_eclass_exported_funcs=src_configure:- src_test:-
 _md5_=d24c4b861ee1c5521c87d0784ef0d3c9

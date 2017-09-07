@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl flac? ( media-libs/flac ) vorbis? ( media-sound/vorbis-tools ) mp3? ( media-libs/id3lib ) aac? ( || ( media-video/atomicparsley media-video/atomicparsley-wez ) )
 SLOT=0
 SRC_URI=https://github.com/downloads/Daenyth/audiotag/audiotag-0.19.tar.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=094bb00298bea87e003b2cef0a40c07c

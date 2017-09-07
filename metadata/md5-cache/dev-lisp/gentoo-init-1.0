@@ -6,5 +6,4 @@ KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lisp/asdf-2.0
 SLOT=0
-_eclass_exported_funcs=src_install:-
 _md5_=5299c1411de9ab3abd8e58d946a45f3f

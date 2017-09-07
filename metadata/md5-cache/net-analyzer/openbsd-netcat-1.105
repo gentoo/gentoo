@@ -8,5 +8,4 @@ LICENSE=BSD
 RDEPEND=dev-libs/libbsd
 SLOT=0
 SRC_URI=http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.105.orig.tar.gz http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.105-7.debian.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=36cbee506ef168d2c65f5cfe890a8b37

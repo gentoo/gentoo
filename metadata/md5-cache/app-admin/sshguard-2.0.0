@@ -9,5 +9,4 @@ LICENSE=BSD
 RDEPEND=kernel_linux? ( net-firewall/iptables ) kernel_FreeBSD? ( !ipfilter? ( sys-freebsd/freebsd-pf ) ) virtual/logger
 SLOT=0
 SRC_URI=mirror://sourceforge/sshguard/sshguard-2.0.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=3c787daff49eec20f439990c0bd4d394

@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/bashdb/bashdb-4.4-0.92.tar.bz2
-_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=89ef710ab9f5b0805309b5dc83fe1e3b

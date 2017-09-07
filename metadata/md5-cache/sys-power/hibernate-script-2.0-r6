@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=!<media-gfx/splashutils-1.5.2
 SLOT=0
 SRC_URI=http://tuxonice.nigelcunningham.com.au/downloads/all/hibernate-script-2.0.tar.gz mirror://gentoo/hibernate-script-2.0-patches-5.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=8dc84125a451ee237f20cebc4044ca1c

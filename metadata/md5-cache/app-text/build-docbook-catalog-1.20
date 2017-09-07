@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) !<app-text/docbook-xsl-stylesheets-1.73.1 dev-libs/libxml2
 SLOT=0
 SRC_URI=mirror://gentoo/build-docbook-catalog-1.20.tar.xz https://dev.gentoo.org/~floppym/distfiles/build-docbook-catalog-1.20.tar.xz https://dev.gentoo.org/~vapier/dist/build-docbook-catalog-1.20.tar.xz
-_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:-
 _md5_=0938ce8d07b1f9fa6940048eab6eb807

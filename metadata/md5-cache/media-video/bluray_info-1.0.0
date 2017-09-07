@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libbluray-1.0.0
 SLOT=0
 SRC_URI=mirror://sourceforge/bluray-info/bluray_info-1.0.0.tar.gz
-_eclass_exported_funcs=-
 _md5_=00032e0948ee070e1046db77695582b7

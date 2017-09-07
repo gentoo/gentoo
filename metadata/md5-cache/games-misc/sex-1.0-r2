@@ -7,5 +7,4 @@ LICENSE=BSD
 RDEPEND=!sci-astronomy/sextractor
 SLOT=0
 SRC_URI=http://spatula.net/software/sex/sex-1.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _md5_=33b3fea8b8baf912660aec1bf445d867

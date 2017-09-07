@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.6 virtual/perl-Digest-MD5
 SLOT=0
 SRC_URI=http://linux.netpimpz.com/quickcrypt/download/quickcrypt_0.9.2b.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=7a6d08f810aa71fae7f4d92498684ab6

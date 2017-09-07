@@ -9,5 +9,4 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 media-libs/libid3tag media-libs/libmad media-libs/libmtp sys-fs/fuse
 SLOT=0
 SRC_URI=https://www.adebenham.com/debian/mtpfs-1.0.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
 _md5_=c8571d16f7f272ad277edf0d2308bc9d

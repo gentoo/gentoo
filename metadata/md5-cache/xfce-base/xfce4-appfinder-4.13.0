@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.30:= >=x11-libs/gtk+-3.20:3= >=xfce-base/garcon-0.3:= >=xfce-base/libxfce4util-4.11:= >=xfce-base/libxfce4ui-4.11:=[gtk3(+)] >=xfce-base/xfconf-4.10:= !xfce-base/xfce-utils
 SLOT=0
 SRC_URI=mirror://xfce/src/xfce/xfce4-appfinder/4.13/xfce4-appfinder-4.13.0.tar.bz2
-_eclass_exported_funcs=-
 _md5_=3f0562ef65f0847cfbaeaa2cd5f69101

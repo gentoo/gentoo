@@ -6,6 +6,5 @@ HOMEPAGE=https://keybase.io/docs/kbfs
 LICENSE=BSD
 RDEPEND=app-crypt/gnupg sys-fs/fuse
 SLOT=0
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=ccdaa5ab4ce7a729ba0460afaa42e51c

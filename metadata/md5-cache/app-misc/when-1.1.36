@@ -8,5 +8,4 @@ LICENSE=Artistic
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://www.lightandmatter.com/when/when.tar.gz -> when-1.1.36.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
 _md5_=f3ef5b6e2abb0b0003fa08df80ed1071

@@ -10,5 +10,4 @@ RDEPEND=dev-vcs/git
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://kernel/linux/kernel/people/jsipek/guilt/guilt-0.32.tar.bz2 mirror://gentoo/guilt-manpages-0.32.tar.bz2
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _md5_=e6b23c2a6bd9ef42d317a649673e942f

@@ -9,5 +9,4 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/php:*
 SLOT=0
 SRC_URI=https://github.com/PHPMailer/PHPMailer/archive/v5.2.23.tar.gz -> PHPMailer-5.2.23.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _md5_=7c9efdbd8557d4b3f6edb5ee10660173

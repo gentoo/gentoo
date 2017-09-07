@@ -6,6 +6,5 @@ KEYWORDS=amd64 x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://dl.suckless.org/tools/lsx-0.1.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=b2b7534bc23633029ef850ac5ebac4a8

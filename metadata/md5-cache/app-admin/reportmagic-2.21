@@ -8,5 +8,4 @@ KEYWORDS=x86 ppc amd64
 LICENSE=Artistic
 SLOT=0
 SRC_URI=http://www.reportmagic.org/rmagic-2.21.tar.gz
-_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=59d4cf1e2110241a173fa0fd2a88a4fa

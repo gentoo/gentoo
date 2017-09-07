@@ -7,5 +7,4 @@ LICENSE=LGPL-3
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://www2.mrc-lmb.cam.ac.uk/groups/murshudov/content/refmac/Dictionary/refmac_dictionary_v5.41.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=e865f0b097f016976d5ac8dab60ed8cc

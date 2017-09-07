@@ -7,5 +7,4 @@ LICENSE=GPL-2 FVWM
 RDEPEND=>=x11-wm/fvwm-2.6.2
 SLOT=0
 SRC_URI=http://www.fvwm.org/generated/icon_download/fvwm_icons.tar.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=eec5a644ab469dbec76b272811a99552

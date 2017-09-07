@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://gentoo/midentd-2.3.1.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=2bb7dad0dc7c3b865ead98a352017e35

@@ -8,5 +8,4 @@ LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/habitat-sh/habitat/archive/0.28.0.tar.gz -> habitat-0.28.0.tar.gz https://dev.gentoo.org/~mrueg/files/habitat-cargo-0.28.0.tar.xz
-_eclass_exported_funcs=src_prepare:- src_test:- src_install:-
 _md5_=7855246ebd6f3e1aadc2b17d3ccf83bd

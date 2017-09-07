@@ -8,5 +8,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/amide/volpack-1.0c7.tgz
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=7883f54bc1bacdb1c69066cf3758728f

@@ -7,6 +7,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=http://www.megastep.org/makeself/makeself-2.1.5.run
-_eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
 _md5_=0cccc2ef600c57c2c64adf6c8f872463

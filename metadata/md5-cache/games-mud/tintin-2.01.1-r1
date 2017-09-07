@@ -8,5 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/libpcre net-libs/gnutls sys-libs/readline:0 sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://sourceforge/tintin/tintin-2.01.1.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=cf491c64d29854d10b30c94d839cb4aa

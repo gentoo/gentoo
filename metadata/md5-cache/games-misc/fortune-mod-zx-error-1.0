@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://korpus.juls.savba.sk/~garabik/software/fortunes-zx-error/fortunes-zx-error-1.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=3cae8fd47efc5524de3ef1d2b0924ff5

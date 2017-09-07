@@ -7,5 +7,4 @@ LICENSE=CC-BY-SA-3.0
 RDEPEND=app-admin/tripwire
 SLOT=0
 SRC_URI=mirror://sourceforge/mktwpol/mktwpol-1.0.0.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:-
 _md5_=40a4df102eb4838b58bddf49e1436bec

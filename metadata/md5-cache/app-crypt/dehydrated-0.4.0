@@ -7,5 +7,4 @@ LICENSE=MIT
 RDEPEND=app-shells/bash
 SLOT=0
 SRC_URI=https://github.com/lukas2511/dehydrated/archive/v0.4.0.tar.gz -> dehydrated-0.4.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=8d99bcf66fb15cbd69c2950a097048b8

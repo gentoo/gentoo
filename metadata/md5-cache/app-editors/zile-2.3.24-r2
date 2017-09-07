@@ -9,5 +9,4 @@ LICENSE=GPL-3+
 RDEPEND=sys-libs/ncurses:0
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.3.24.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=576777db1e8d7803345b1c63a0788435

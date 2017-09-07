@@ -9,5 +9,4 @@ LICENSE=ISC
 RDEPEND=!static? ( >=dev-libs/skalibs-2.5.0.0:= )
 SLOT=0
 SRC_URI=https://www.skarnet.org/software/s6-linux-utils/s6-linux-utils-2.3.0.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=67330d3cda66d6522f8485cb6ade0e4c

@@ -8,5 +8,4 @@ LICENSE=marginalhacks
 RDEPEND=dev-lang/perl media-gfx/jhead virtual/imagemagick-tools ffmpeg? ( virtual/ffmpeg )
 SLOT=0
 SRC_URI=http://marginalhacks.com/bin/album.versions/album-4.13.tar.gz http://marginalhacks.com/bin/album.versions/data-4.05.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=bd5567a4fbcf66926dad90429d9b9777

@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://freepats.opensrc.org//freepats-20060219.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
 _md5_=1f9fbcb8c58dc8f107a6394b5f2c7005

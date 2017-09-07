@@ -9,5 +9,4 @@ LICENSE=GPL-3+
 RDEPEND=>=dev-libs/boehm-gc-7.2 sys-libs/ncurses:0 acl? ( virtual/acl )
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.4.11.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=f7128d1bd12348dddb7ec38e6ff1e5e2

@@ -10,5 +10,4 @@ RDEPEND=>=dev-libs/libverto-0.2.2 >=dev-libs/ding-libs-0.5.0 virtual/krb5 selinu
 RESTRICT=test
 SLOT=0
 SRC_URI=http://releases.pagure.org/gssproxy/gssproxy-0.7.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=b4cc740730c3008f07a9a3905f969fb6

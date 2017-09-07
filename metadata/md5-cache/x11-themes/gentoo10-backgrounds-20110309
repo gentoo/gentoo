@@ -7,5 +7,4 @@ KEYWORDS=amd64 ~mips x86
 LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~flameeyes/gentoo10-backgrounds-20110309.tar.xz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
 _md5_=1e2f01d7e17d1ea2c21ccbe3868eabc8

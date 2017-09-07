@@ -6,5 +6,4 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fb
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=app-dicts/myspell-es
 SLOT=0
-_eclass_exported_funcs=-
 _md5_=9170d42bb5810196c1c9e5b9ec0b672e

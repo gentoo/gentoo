@@ -9,5 +9,4 @@ LICENSE=GPL-3
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/quvi/0.4/libquvi-scripts-0.4.21.tar.xz
-_eclass_exported_funcs=src_configure:-
 _md5_=e3c2bae58432b84fbe6469fb01ad0360

@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=virtual/ssh
 SLOT=0
 SRC_URI=http://www.netfort.gr.jp/~dancer/software/downloads/libdshconfig-0.20.12.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=271fbcbf03985924d0201d81fe13e09d

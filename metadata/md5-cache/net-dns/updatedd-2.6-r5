@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/IO-Socket-Timeout
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/updatedd/updatedd_2.6.tar.gz
-_eclass_exported_funcs=src_configure:-
 _md5_=627967c6878947f58a47a6da3851f267

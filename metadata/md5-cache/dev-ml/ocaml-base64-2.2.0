@@ -9,6 +9,5 @@ LICENSE=ISC
 RDEPEND=>=dev-lang/ocaml-4.02:=
 SLOT=0/2.2.0
 SRC_URI=https://github.com/mirage/ocaml-base64/archive/v2.2.0.tar.gz -> ocaml-base64-2.2.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
 _md5_=d941370fd406e53aab553b5ad43eb78a

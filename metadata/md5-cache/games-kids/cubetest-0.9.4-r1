@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4
 SLOT=0
 SRC_URI=http://www.vandenoever.info/software/cubetest/cubetest-0.9.4.tar.bz2
-_eclass_exported_funcs=src_prepare:-
 _md5_=6547af55963e65ce578c950ffabb80d2

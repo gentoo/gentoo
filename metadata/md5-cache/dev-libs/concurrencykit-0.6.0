@@ -7,5 +7,4 @@ LICENSE=Apache-2.0 BSD-2
 RDEPEND=!sys-cluster/charm
 SLOT=0
 SRC_URI=http://concurrencykit.org/releases/ck-0.6.0.tar.gz -> concurrencykit-0.6.0.tar.gz
-_eclass_exported_funcs=-
 _md5_=152d1c39c5e5a7475cf6c670f73b4626

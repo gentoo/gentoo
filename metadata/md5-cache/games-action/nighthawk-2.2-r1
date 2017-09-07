@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXpm
 SLOT=0
 SRC_URI=ftp://metalab.unc.edu/pub/Linux/games/arcade/nighthawk-2.2-1.tar.gz
-_eclass_exported_funcs=src_prepare:-
 _md5_=0cb2bfa2c505d1a53c49531aa8ef6a78

@@ -8,5 +8,4 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/readahead-list-1.20060421.1016.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _md5_=4f4db75cfdf917dfa524f910a008e721

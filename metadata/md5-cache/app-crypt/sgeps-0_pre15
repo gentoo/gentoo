@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=app-crypt/gnupg dev-lang/perl virtual/perl-Storable virtual/perl-File-Temp virtual/perl-Getopt-Long dev-perl/Config-Simple zsh-completion? ( app-shells/zsh )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~flameeyes/sgeps/sgeps-0_pre15.tar.xz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=d4562dbd1d846dc4da6d9461c3a023cf

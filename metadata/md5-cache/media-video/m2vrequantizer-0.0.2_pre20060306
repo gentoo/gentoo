@@ -6,5 +6,4 @@ KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://vdrfiles/requant/M2VRequantizer-20060306.tgz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _md5_=b5a53750ec38844b697bead7f530a27f

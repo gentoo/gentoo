@@ -8,6 +8,5 @@ LICENSE=ISC
 RDEPEND=dev-lang/ocaml:=
 SLOT=0/1.1.0
 SRC_URI=https://github.com/ocaml-doc/octavius/archive/v1.1.0.tar.gz -> octavius-1.1.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
 _md5_=0afeeb2903d7312c02d8f237b65c624d

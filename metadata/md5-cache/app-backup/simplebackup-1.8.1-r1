@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl sasl? ( dev-perl/Authen-SASL )
 SLOT=0
 SRC_URI=mirror://sourceforge/migas-sbackup/simplebackup-1.8.1.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=035fa6138e45213cda284b52ee2b952b

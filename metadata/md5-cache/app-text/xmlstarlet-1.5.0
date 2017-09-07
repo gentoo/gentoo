@@ -8,5 +8,4 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/libxml2-2.6.27 >=dev-libs/libxslt-1.1.9 dev-libs/libgcrypt:0 virtual/libiconv
 SLOT=0
 SRC_URI=mirror://sourceforge/xmlstar/xmlstarlet-1.5.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=b023ec7bb2febc6975a660010c2d3324

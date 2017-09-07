@@ -7,5 +7,4 @@ LICENSE=ZSH
 RDEPEND=>=app-shells/zsh-4.3.5
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~radhermit/dist/gentoo-zsh-completions-20141115.tar.xz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=3690350601a4a76f5ad7fc5afb5c1ed5

@@ -9,5 +9,4 @@ LICENSE=BSD-2
 RDEPEND=sys-fs/fuse:0
 SLOT=0
 SRC_URI=https://github.com/restic/restic/archive/v0.5.0.tar.gz -> restic-0.5.0.tar.gz
-_eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _md5_=825fbe9107eafeeebaa568afefe39eda

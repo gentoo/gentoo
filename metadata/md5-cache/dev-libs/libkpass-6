@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/nettle-2.7.1
 SLOT=0
 SRC_URI=mirror://sourceforge/libkpass/libkpass-6.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=7e0d40f743bbeaa5aff5a1d5eb541b60

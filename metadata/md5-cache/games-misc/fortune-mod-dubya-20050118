@@ -7,5 +7,4 @@ LICENSE=fairuse
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://seiler.us/wiki/images/8/8c/Dubya-20050118.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=ceb5640a0daa656ad7f50217bb79eaf6

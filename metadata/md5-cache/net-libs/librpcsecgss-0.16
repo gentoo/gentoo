@@ -8,5 +8,4 @@ LICENSE=BSD
 RDEPEND=net-libs/libgssglue
 SLOT=0
 SRC_URI=http://www.citi.umich.edu/projects/nfsv4/linux/librpcsecgss/librpcsecgss-0.16.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=76960630fdbc7f1dfb2e22355a16e0bd

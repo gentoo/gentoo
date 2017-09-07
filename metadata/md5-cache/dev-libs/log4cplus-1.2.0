@@ -10,5 +10,4 @@ RDEPEND=iconv? ( virtual/libiconv ) qt4? ( dev-qt/qtcore:4 )
 REQUIRED_USE=?? ( iconv working-locale working-c-locale )
 SLOT=0/1.2-5
 SRC_URI=mirror://sourceforge/project/log4cplus/log4cplus-stable/1.2.0/log4cplus-1.2.0.tar.bz2
-_eclass_exported_funcs=src_configure:- src_test:- src_install:-
 _md5_=433af8a4cb6b5209e853b0d6028c204a

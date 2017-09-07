@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND==x11-libs/gtk+-2* !x11-wm/oroborus-extras
 SLOT=0
 SRC_URI=mirror://debian/pool/main/d//deskmenu//deskmenu_1.4.5.tar.gz
-_eclass_exported_funcs=-
 _md5_=b9aaacc17b4fed76bf44e0c87705d2a7

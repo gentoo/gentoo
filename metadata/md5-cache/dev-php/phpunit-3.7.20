@@ -8,5 +8,4 @@ LICENSE=BSD
 RDEPEND=dev-lang/php:*[phar,xml]
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~olemarkus/phpunit/phpunit-3.7.20.phar
-_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
 _md5_=a3db8e04c367d360386799ba182bbb72

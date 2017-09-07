@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3 >=dev-lang/python-exec-2.4.2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/eselect-python-20160516.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_prepare:-
 _md5_=aab2dba22e4b3f78a04bfef22709ee14

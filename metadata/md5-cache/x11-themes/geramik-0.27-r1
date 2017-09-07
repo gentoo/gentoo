@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=x11-themes/gtk-engines-qtpixmap
 SLOT=0
 SRC_URI=http://www.kde-look.org/content/files/3952-Geramik-0.27.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=85f003cb7feaddc8a3eedba30f6177c3

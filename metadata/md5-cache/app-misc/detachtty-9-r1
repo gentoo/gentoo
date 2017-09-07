@@ -6,6 +6,5 @@ KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/d/detachtty/detachtty_9.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=9a5b112b0f53ee99274e5e7b096de1fe

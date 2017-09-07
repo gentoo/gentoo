@@ -7,5 +7,4 @@ LICENSE=NVIDIA-cuDNN
 RESTRICT=fetch
 SLOT=0/6
 SRC_URI=cudnn-8.0-linux-x64-v6.0.tgz
-_eclass_exported_funcs=src_install:-
 _md5_=cbc2d8ac97f0edef801656603d8b19ae

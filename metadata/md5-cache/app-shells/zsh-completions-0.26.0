@@ -7,5 +7,4 @@ LICENSE=BSD
 RDEPEND=app-shells/zsh
 SLOT=0
 SRC_URI=https://github.com/zsh-users/zsh-completions/archive/0.26.0.tar.gz -> zsh-completions-0.26.0.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=459111b53304d2f8870f7188b22edd30

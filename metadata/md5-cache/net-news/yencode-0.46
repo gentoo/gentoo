@@ -7,5 +7,4 @@ KEYWORDS=x86 ppc ~sparc arm ~amd64
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/yencode/yencode-0.46.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=0dc24b1193a1dfcb17c025a18fe94201

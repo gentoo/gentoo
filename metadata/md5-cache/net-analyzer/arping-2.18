@@ -9,6 +9,5 @@ LICENSE=GPL-2
 RDEPEND=net-libs/libpcap net-libs/libnet:1.1 !net-misc/iputils[arping(+)]
 SLOT=2
 SRC_URI=http://www.habets.pp.se/synscan/files/arping-2.18.tar.gz
-_eclass_exported_funcs=pkg_postinst:fcaps
 _eclasses_=fcaps	e80204189039ecc03f24151c518375f0
 _md5_=2e684d5a60d73864d809e9749bea4603

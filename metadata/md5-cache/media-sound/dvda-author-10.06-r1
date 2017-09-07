@@ -9,5 +9,4 @@ LICENSE=GPL-3
 RDEPEND=>=media-sound/sox-14.1[png] >=media-libs/flac-1.2.1[ogg]
 SLOT=0
 SRC_URI=mirror://sourceforge/dvd-audio/dvda-author-10.06-300.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _md5_=c44f77cd0994ed78268619419c7b5d37

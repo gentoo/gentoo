@@ -7,5 +7,4 @@ LICENSE=qmail-nelson
 RDEPEND=virtual/qmail dev-lang/perl
 SLOT=0
 SRC_URI=mirror://qmail/qmail-qsanity-0.52
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _md5_=a4fb10277bb108fd320974a0fb545985

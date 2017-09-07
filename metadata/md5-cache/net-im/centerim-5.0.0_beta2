@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2 >=net-im/pidgin-2.7.0 >=dev-libs/glib-2.16.0 >=dev-libs/libsigc++-2.2.0 nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=http://www.centerim.org/download/cim5/centerim5-5.0.0beta2.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=8d882c6cd4eec691223c2d524880ffdc

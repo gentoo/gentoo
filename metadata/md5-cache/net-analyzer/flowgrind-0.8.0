@@ -9,5 +9,4 @@ LICENSE=GPL-3
 RDEPEND=sys-apps/util-linux dev-libs/xmlrpc-c[abyss,curl] gsl? ( sci-libs/gsl ) pcap? ( net-libs/libpcap )
 SLOT=0
 SRC_URI=https://github.com/flowgrind/flowgrind/releases/download/flowgrind-0.8.0/flowgrind-0.8.0.tar.bz2
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=a43fa12dcf3a90c43821e42ec063bbca

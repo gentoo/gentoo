@@ -8,5 +8,4 @@ LICENSE=public-domain
 RDEPEND=net-misc/wget[ssl?]
 SLOT=0
 SRC_URI=http://wgetpaste.zlin.dk/wgetpaste-2.28.tar.bz2
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=39dc1907fa8c8f4164efc82c56238105

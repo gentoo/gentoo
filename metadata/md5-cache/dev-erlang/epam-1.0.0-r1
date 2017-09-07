@@ -8,6 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/erlang-17.1 sys-libs/pam dev-lang/erlang
 SLOT=0
 SRC_URI=https://github.com/processone/epam/archive/1.0.0.tar.gz -> epam-1.0.0.tar.gz
-_eclass_exported_funcs=pkg_setup:- src_prepare:rebar src_compile:rebar src_test:rebar src_install:-
 _eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=50eff1df7f36ec104a3527afc8eb1e7b

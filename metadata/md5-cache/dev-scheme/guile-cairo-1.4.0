@@ -9,5 +9,4 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-scheme/guile-1.8 >=x11-libs/cairo-1.4
 SLOT=0
 SRC_URI=http://download.gna.org/guile-cairo/guile-cairo-1.4.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=10fedb78319cc3ac856bac1067f2cabd

@@ -10,6 +10,5 @@ RDEPEND=dev-db/sqlite:3
 REQUIRED_USE=test? ( static-libs )
 SLOT=0
 SRC_URI=https://github.com/chewing/libchewing/archive/v0.4.0.tar.gz -> libchewing-0.4.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=5f662115f008f0fb2ed9a41d99acb986

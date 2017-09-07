@@ -8,6 +8,5 @@ RDEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 dev-libs/libgcrypt:11 dev-li
 RESTRICT=bindist mirror splitdebug
 SLOT=0
 SRC_URI=amd64? ( http://staruml.io/download/release/v2.8.0/StarUML-v2.8.0-64-bit.deb ) x86? ( http://staruml.io/download/release/v2.8.0/StarUML-v2.8.0-32-bit.deb )
-_eclass_exported_funcs=src_unpack:- src_install:-
 _eclasses_=unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
 _md5_=ae71522ed54944bb29a04175bed67e78

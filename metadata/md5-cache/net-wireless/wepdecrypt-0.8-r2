@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/openssl:= net-libs/libpcap sys-libs/zlib X? ( x11-libs/fltk:1 )
 SLOT=0
 SRC_URI=mirror://sourceforge/wepdecrypt/wepdecrypt-0.8.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=67531779ace1d3e6f20eab83bea35d63

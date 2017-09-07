@@ -6,5 +6,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/mirdir/mirdir-2.1-Unix.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=849e90e2609382e8533a9c27182b54df

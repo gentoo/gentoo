@@ -10,5 +10,4 @@ RDEPEND=net-print/cups || ( hylafax? ( net-misc/hylafaxplus ) efax? ( net-misc/e
 REQUIRED_USE=|| ( hylafax mgetty-fax efax )
 SLOT=0
 SRC_URI=http://vigna.dsi.unimi.it/fax4CUPS/fax4CUPS-1.29.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=6539e3cf4c92d018eba5f2141d5f4154

@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/motif-2.3:0
 SLOT=0
 SRC_URI=ftp://ftp.cv.nrao.edu/fits/os-support/unix/xfitsview/xfitsview2.2.tgz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=0e84a88c996af66e00318db8f3f2a998

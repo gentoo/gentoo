@@ -9,5 +9,4 @@ LICENSE=|| ( BSD LGPL-2.1 )
 RDEPEND=zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=http://chasen.org/~taku/software/darts/src/darts-0.32.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=378c522339bb295c67f858c0e7d61e2c

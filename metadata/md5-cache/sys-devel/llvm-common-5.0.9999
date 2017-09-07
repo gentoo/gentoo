@@ -6,6 +6,5 @@ HOMEPAGE=https://llvm.org/
 LICENSE=UoI-NCSA
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=30a9c29c9cf527db494aad648312c634

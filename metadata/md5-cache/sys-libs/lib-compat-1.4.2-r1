@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=!<=app-emulation/emul-linux-x86-compat-20140508
 SLOT=0
 SRC_URI=mirror://gentoo/lib-compat-1.4.2.tar.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=b949c069fec68fe40f4909c31c9b8019

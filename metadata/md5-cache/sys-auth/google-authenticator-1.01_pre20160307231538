@@ -8,6 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=virtual/pam
 SLOT=0
 SRC_URI=mirror://gentoo/google-authenticator-1.01_pre20160307231538.tar.xz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=db9e15ebd40489f98eb1d91d2170b0f9

@@ -10,5 +10,4 @@ RDEPEND=app-i18n/ibus x11-libs/libX11 gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( 
 REQUIRED_USE=gtk2? ( gtk )
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus-unikey/ibus-unikey-0.6.1.tar.gz https://dev.gentoo.org/~dlan/distfiles/ibus-unikey-0.6.1-gcc6.patch
-_eclass_exported_funcs=src_configure:-
 _md5_=791e5b3f76ae722ce88988059126ab6f

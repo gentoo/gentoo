@@ -9,6 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=!dev-lang/tendra
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/tinycc/tcc-0.9.26.tar.bz2
-_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=77b6ad3298fc9a30bc196d54be034505

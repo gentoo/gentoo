@@ -5,6 +5,5 @@ EAPI=5
 HOMEPAGE=http://mduft.github.io/rex/
 LICENSE=MIT
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_install:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=25c43da3c426c71f0074582c9ab9ca47

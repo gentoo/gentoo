@@ -9,6 +9,5 @@ LICENSE=MIT
 RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama )
 SLOT=0
 SRC_URI=https://dl.suckless.org/dwm/dwm-6.1.tar.gz
-_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=f8af60728c8f078884f20e29777c43f7

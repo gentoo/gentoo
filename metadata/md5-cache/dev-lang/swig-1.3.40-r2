@@ -8,5 +8,4 @@ LICENSE=BSD BSD-2
 RESTRICT=test
 SLOT=1
 SRC_URI=mirror://sourceforge/swig/swig-1.3.40.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _md5_=3befc73dc57f85b006ae9315a0130e32

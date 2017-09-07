@@ -8,5 +8,4 @@ KEYWORDS=~amd64
 LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/coreos/etcd-ca/archive/812f3626796be16d9db052720ce9c54f5a40bb26.zip -> etcd-ca-0_p20140903.zip
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _md5_=50a64c233b7f9e3666ab4d97261b138f

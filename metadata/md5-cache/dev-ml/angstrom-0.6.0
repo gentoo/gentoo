@@ -10,6 +10,5 @@ RDEPEND=dev-lang/ocaml:= dev-ml/ocaml-cstruct:= dev-ml/ocplib-endian:= dev-ml/re
 RESTRICT=test
 SLOT=0/0.6.0
 SRC_URI=https://github.com/inhabitedtype/angstrom/archive/0.6.0.tar.gz -> angstrom-0.6.0.tar.gz
-_eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
 _md5_=a4d3e46062552a0c9db35476ca673f9a

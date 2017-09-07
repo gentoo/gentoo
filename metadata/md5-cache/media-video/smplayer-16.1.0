@@ -10,6 +10,5 @@ RDEPEND=sys-libs/zlib qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleappli
 REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
 SRC_URI=mirror://sourceforge/smplayer/smplayer-16.1.0.tar.bz2
-_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=ec659c6d699c3f128596cf26ac222b05

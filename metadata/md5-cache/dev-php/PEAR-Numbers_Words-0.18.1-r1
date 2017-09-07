@@ -9,5 +9,4 @@ LICENSE=PHP-3.01
 RDEPEND=dev-lang/php:* dev-php/PEAR-Math_BigInteger
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Numbers_Words-0.18.1.tgz
-_eclass_exported_funcs=src_test:- src_install:-
 _md5_=636233053378229bdbbef52ec3d54f8f

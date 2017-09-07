@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib
 SLOT=0
 SRC_URI=http://ftp.suse.com/pub/people/tiwai/awesfx/awesfx-0.5.1d.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _md5_=3e97954160ef076fe09f1f8bc314d52f

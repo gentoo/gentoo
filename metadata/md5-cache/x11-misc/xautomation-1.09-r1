@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libpng-1.2:0 x11-libs/libX11 x11-libs/libXi x11-libs/libXtst
 SLOT=0
 SRC_URI=http://hoopajoo.net/static/projects/xautomation-1.09.tar.gz
-_eclass_exported_funcs=-
 _md5_=ccf4612b7215e4ce65a078af08917f20

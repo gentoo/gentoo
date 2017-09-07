@@ -6,5 +6,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ppc64 ppc sparc x86 ~arm64 ~x86-fbsd ~amd64-f
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dolsen/releases/keyrings/gentoo-keys-201607021514.tar.xz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=b749cbf59ad9d452f37631debdd2dd9a

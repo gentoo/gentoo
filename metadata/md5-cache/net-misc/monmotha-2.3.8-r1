@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=net-firewall/iptables-1.2.5
 SLOT=0
 SRC_URI=http://monmotha.mplug.org/~monmotha/firewall/firewall/2.3/rc.firewall-2.3.8
-_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
 _md5_=8a3c6c7b73a98a89a5c135a8a1ad9eed

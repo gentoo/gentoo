@@ -7,5 +7,4 @@ LICENSE=Markwardt
 RDEPEND=dev-lang/gdl
 SLOT=0
 SRC_URI=http://www.physics.wisc.edu/~craigm/idl/down/cmtotal.tar.gz -> idlmarkwardt-20130418.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=e6163fb3228800d0ab4092c25c55b1a0

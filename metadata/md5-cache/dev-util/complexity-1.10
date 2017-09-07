@@ -8,5 +8,4 @@ LICENSE=GPL-3
 RDEPEND=>=sys-devel/autogen-5.11.7
 SLOT=0
 SRC_URI=mirror://gnu/complexity/complexity-1.10.tar.xz
-_eclass_exported_funcs=-
 _md5_=a60097793ec051ca18c5e977ea0140ea

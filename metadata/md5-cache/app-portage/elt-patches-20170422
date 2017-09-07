@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/elt-patches-20170422.tar.xz
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=8f507b1b8e23e7bbb0eaeece34ad52a8

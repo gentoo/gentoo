@@ -8,5 +8,4 @@ LICENSE=openssl
 RDEPEND=!<dev-libs/openssl-1.0.2d-r1:0
 SLOT=0
 SRC_URI=http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/openssl/openssl-c_rehash.sh?rev=1.7 -> openssl-c_rehash.sh.1.7
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=9af68d65855f43c59c540061525ea423

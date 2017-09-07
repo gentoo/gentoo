@@ -7,5 +7,4 @@ LICENSE=BSD
 RDEPEND=net-misc/openssh
 SLOT=0
 SRC_URI=http://www.harding.motd.ca/autossh/autossh-1.4e.tgz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=f8f545cd743c51297e96640b7fdf6d94

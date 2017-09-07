@@ -8,5 +8,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1+
 SLOT=0
 SRC_URI=http://aepatrakov.narod.ru/olderfiles/1/dcaenc-2.tar.gz
-_eclass_exported_funcs=-
 _md5_=007b81ad4c97fee2a3a122b1f18ed410

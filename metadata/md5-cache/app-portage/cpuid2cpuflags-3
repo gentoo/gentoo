@@ -6,5 +6,4 @@ KEYWORDS=~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-sol
 LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://github.com/mgorny/cpuid2cpuflags/releases/download/v3/cpuid2cpuflags-3.tar.bz2
-_eclass_exported_funcs=pkg_postinst:-
 _md5_=15d61cbe3bf5f3dcd001daf9ce9f92f0

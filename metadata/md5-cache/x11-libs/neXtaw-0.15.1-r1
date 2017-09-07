@@ -8,5 +8,4 @@ LICENSE=BSD
 RDEPEND=x11-libs/libICE x11-libs/libXext x11-libs/libXt x11-libs/libX11 x11-libs/libSM x11-libs/libXmu x11-libs/libxkbfile x11-libs/libXpm x11-proto/xextproto x11-proto/xproto !<x11-libs/neXtaw-0.15.1-r1
 SLOT=0
 SRC_URI=http://siag.nu/pub/neXtaw/neXtaw-0.15.1.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=f1b87d954d9233969f1859afad655891

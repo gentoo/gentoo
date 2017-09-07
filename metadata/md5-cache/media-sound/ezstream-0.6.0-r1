@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libxml2 >=media-libs/libshout-2.2 !taglib? ( media-libs/libvorbis ) taglib? ( media-libs/taglib ) net-misc/icecast
 SLOT=0
 SRC_URI=http://downloads.xiph.org/releases/ezstream/ezstream-0.6.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=da32b753907f208763bebcc57a99db1d

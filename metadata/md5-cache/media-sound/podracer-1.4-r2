@@ -7,5 +7,4 @@ LICENSE=MIT
 RDEPEND=app-shells/bash net-misc/curl
 SLOT=0
 SRC_URI=mirror://sourceforge/podracer/podracer-1.4.tar.bz2
-_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=ae1784e2ad58e2417ea383b55e4bd575

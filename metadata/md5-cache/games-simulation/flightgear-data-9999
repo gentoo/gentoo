@@ -6,6 +6,5 @@ HOMEPAGE=http://www.flightgear.org/
 LICENSE=GPL-2
 RDEPEND=!<games-simulation/flightgear-2.10.0
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_install:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=bde9fe5b13b85f270b9a654f588685c0

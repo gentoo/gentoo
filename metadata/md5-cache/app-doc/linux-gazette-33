@@ -7,5 +7,4 @@ LICENSE=OPL
 RDEPEND=>=app-doc/linux-gazette-base-33
 SLOT=33
 SRC_URI=http://linuxgazette.net/ftpfiles/lg-issue33.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=e2cbbd1a2e8a4880af6dd5768ade45bc

@@ -8,5 +8,4 @@ LICENSE=HPND
 RDEPEND=dev-lang/tcl:0= virtual/mysql:0=
 SLOT=0
 SRC_URI=http://www.xdobry.de/mysqltcl/mysqltcl-3.052.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=35d0b535ad3c2eedda47033e26a88595

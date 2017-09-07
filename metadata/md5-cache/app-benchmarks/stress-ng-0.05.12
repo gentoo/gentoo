@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/keyutils sys-apps/attr
 SLOT=0
 SRC_URI=http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.05.12.tar.gz
-_eclass_exported_funcs=-
 _md5_=1fa19956770dc585053c3b5623a27890

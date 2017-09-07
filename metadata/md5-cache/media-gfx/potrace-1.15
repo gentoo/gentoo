@@ -9,6 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=http://potrace.sourceforge.net/download/1.15/potrace-1.15.tar.gz
-_eclass_exported_funcs=src_configure:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=35285b92c9d0f1c93689d324287a013c

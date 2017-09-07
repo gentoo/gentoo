@@ -6,6 +6,5 @@ HOMEPAGE=https://github.com/EionRobb/funyahoo-plusplus
 LICENSE=GPL-3+
 RDEPEND=net-im/pidgin dev-libs/json-glib
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=d7b3d8c36985e4ef0dc5add544fdd4ec

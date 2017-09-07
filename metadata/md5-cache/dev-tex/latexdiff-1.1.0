@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8 dev-perl/Algorithm-Diff
 SLOT=0
 SRC_URI=http://mirror.ctan.org/support/latexdiff.zip -> latexdiff-1.1.0.zip
-_eclass_exported_funcs=src_test:- src_install:-
 _md5_=b47f668a2a9e3710154bde357ac6da08

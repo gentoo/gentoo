@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/popt >=media-libs/libexif-0.6.21
 SLOT=0
 SRC_URI=mirror://sourceforge/libexif/exif-0.6.21.tar.bz2
-_eclass_exported_funcs=src_configure:-
 _md5_=f76957ddd2548cd17b0832f710a136b4

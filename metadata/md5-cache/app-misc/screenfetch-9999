@@ -7,6 +7,5 @@ IUSE=curl X
 LICENSE=GPL-3
 RDEPEND=curl? ( net-misc/curl ) X? ( media-gfx/scrot x11-apps/xdpyinfo )
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_install:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=13e89cd70629346270e1f74cdf72926d

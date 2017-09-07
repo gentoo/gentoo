@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=ftp://ftp.dict.org/pub/dict/pre/dict-gazetteer-1.2-pre.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=1fb04efab23a36cb7ca459cedb140859

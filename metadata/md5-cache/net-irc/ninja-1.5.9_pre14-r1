@@ -10,5 +10,4 @@ RDEPEND=ncurses? ( sys-libs/ncurses ) ssl? ( dev-libs/openssl )
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://qoop.org/ninja/stable/ninja-1.5.9pre14.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=e079c86b06efd4b5dcc91d250f03000a

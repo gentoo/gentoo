@@ -8,5 +8,4 @@ LICENSE=BSD
 PDEPEND=app-admin/sagan
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~maksbotan/sagan/sagan-rules-20130430.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=ae56d57606cb180c721eebb06e505649

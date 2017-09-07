@@ -7,5 +7,4 @@ LICENSE=CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3
 RDEPEND=media-video/smplayer
 SLOT=0
 SRC_URI=mirror://sourceforge/smplayer/smplayer-skins-15.2.0.tar.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=4c7a8e023a5368e5c00b4aaa00c3eba9

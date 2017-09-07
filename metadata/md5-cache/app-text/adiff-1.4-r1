@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl !app-arch/atool sys-apps/diffutils
 SLOT=0
 SRC_URI=mirror://gentoo/adiff-1.4
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _md5_=274033dddd69983fb51cf845dea44c43

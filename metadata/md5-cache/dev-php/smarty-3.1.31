@@ -9,5 +9,4 @@ LICENSE=LGPL-3
 RDEPEND=dev-lang/php:*[unicode]
 SLOT=0
 SRC_URI=https://github.com/smarty-php/smarty/archive/v3.1.31.tar.gz -> smarty-3.1.31.tar.gz doc? ( http://www.smarty.net/files/docs/manual-en.3.1.14.zip )
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=e6cfb6365766a2e3ba27949ae1a72c77

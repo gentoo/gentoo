@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/kpathsea-6.1.0_p20120701 >=dev-libs/icu-4.4:=
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20120701-source.tar.xz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=6acd8119410a786830d7b3f8be93d662

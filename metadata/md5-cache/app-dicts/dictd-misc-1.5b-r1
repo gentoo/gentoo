@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=ftp://ftp.dict.org/pub/dict/pre/dict-misc-1.5b-pre.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=e0e94cf891de0c332be98828186e7459

@@ -10,5 +10,4 @@ RDEPEND=>=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-ba
 REQUIRED_USE=|| ( hddtemp lm_sensors acpi )
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-sensors-plugin/1.2/xfce4-sensors-plugin-1.2.98.tar.bz2
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=6e805de8091298ffc8c64318bf08c932

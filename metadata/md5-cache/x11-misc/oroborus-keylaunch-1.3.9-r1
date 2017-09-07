@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 !x11-wm/oroborus-extras
 SLOT=0
 SRC_URI=mirror://debian/pool/main/k//keylaunch//keylaunch_1.3.9.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:-
 _md5_=9fe7b31042ba49e06b06869d226dd1b1

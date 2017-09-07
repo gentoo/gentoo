@@ -9,5 +9,4 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=media-libs/libpng-1.2:0 media-libs/jasper
 SLOT=0
 SRC_URI=mirror://sourceforge/icns/libicns-0.8.0.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=8874300363e1d6e0252e750d1c9890df

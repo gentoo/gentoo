@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND==sys-apps/sed-4*
 SLOT=0
 SRC_URI=http://unihedron.com/projects/saydate/saydate-0.3.0.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=4f4b1bafbf547fca0cc334324525a8ad

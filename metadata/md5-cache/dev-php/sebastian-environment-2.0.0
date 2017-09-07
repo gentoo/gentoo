@@ -7,5 +7,4 @@ LICENSE=BSD
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann//environment/archive/2.0.0.tar.gz -> sebastian-environment-2.0.0.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=aeba46da2309292848ec00227be8d3a9

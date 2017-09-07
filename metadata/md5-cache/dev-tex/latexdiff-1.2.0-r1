@@ -9,5 +9,4 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base || ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended ) dev-perl/Algorithm-Diff
 SLOT=0
 SRC_URI=https://github.com/ftilmann/latexdiff/archive/1.2.0.tar.gz -> latexdiff-1.2.0.tar.gz
-_eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _md5_=9b92479c0b6c1ba6a96579ab59e78d8b

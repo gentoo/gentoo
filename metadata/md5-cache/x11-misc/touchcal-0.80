@@ -8,5 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=sys-libs/ncurses:0= x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama
 SLOT=0
 SRC_URI=mirror://sourceforge/touchcal/touchcal_0.80.orig.tar.gz
-_eclass_exported_funcs=-
 _md5_=7e1f61127a2e64b05246c12a2f7b9376

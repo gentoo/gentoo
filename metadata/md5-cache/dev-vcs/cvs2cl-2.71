@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://gentoo/cvs2cl-2.71.pl.bz2
-_eclass_exported_funcs=src_install:-
 _md5_=2087903d89987c762adeecc871537503

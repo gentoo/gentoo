@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=crypt? ( net-misc/openssh ) rsh? ( net-misc/netkit-rsh ) readline? ( sys-libs/readline )
 SLOT=0
 SRC_URI=mirror://sourceforge/pdsh/pdsh-2.26.tar.bz2
-_eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
 _md5_=1359bcbb8947b3435f47049ff612c0ec

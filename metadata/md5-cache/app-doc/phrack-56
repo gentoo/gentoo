@@ -6,5 +6,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linu
 LICENSE=phrack
 SLOT=56
 SRC_URI=http://www.phrack.org/archives/tgz/phrack56.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=461796e269353966d6d1c02a54f0a26f

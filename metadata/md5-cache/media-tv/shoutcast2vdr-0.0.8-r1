@@ -7,5 +7,4 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.kost.sh/vdr/shoutcast2vdr-0.0.8.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=fd54b01b9c41ae43ca638cde9dd95843

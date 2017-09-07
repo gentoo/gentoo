@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=!<app-text/texlive-core-2010 dev-libs/kpathsea sys-libs/zlib media-libs/freetype:2 >=media-libs/libpng-1.2.43-r2:0= app-text/libpaper app-text/dvipdfmx
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=65ab05330be30e526f96e307aaab14eb

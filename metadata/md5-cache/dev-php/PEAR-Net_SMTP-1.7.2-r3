@@ -8,5 +8,4 @@ LICENSE=PHP-3.01
 RDEPEND=dev-lang/php:* dev-php/PEAR-Net_Socket dev-php/PEAR-PEAR sasl? ( dev-php/PEAR-Auth_SASL )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Net_SMTP-1.7.2.tgz
-_eclass_exported_funcs=src_install:-
 _md5_=818424b60fcaf20c927c78db1f93f6af

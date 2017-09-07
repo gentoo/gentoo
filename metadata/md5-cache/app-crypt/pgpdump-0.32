@@ -8,5 +8,4 @@ LICENSE=BSD
 RDEPEND=sys-libs/zlib app-arch/bzip2
 SLOT=0
 SRC_URI=http://www.mew.org/~kazu/proj/pgpdump/pgpdump-0.32.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=6c484f1e2e0ef71132b7589e27621759

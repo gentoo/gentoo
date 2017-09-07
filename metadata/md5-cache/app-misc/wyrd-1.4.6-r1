@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?] >=app-misc/remind-03.01 dev-ml/camlp4:=
 SLOT=0
 SRC_URI=http://pessimization.com/software/wyrd/wyrd-1.4.6.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=3e9c770deb2b6347f68ec8eb2ad8d3c9

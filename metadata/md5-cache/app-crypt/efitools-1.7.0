@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-apps/util-linux
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git/snapshot/v1.7.0.tar.bz2 -> efitools-1.7.0.tar.bz2
-_eclass_exported_funcs=-
 _md5_=80a93ad8d26fd5026e7806684c8796ab

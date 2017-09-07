@@ -7,5 +7,4 @@ KEYWORDS=amd64 ppc x86
 LICENSE=|| ( Artistic GPL-2 )
 SLOT=0
 SRC_URI=http://www.far2wise.net/plod/plod-1.9.tar.gz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _md5_=66537d8aae1525a969c3190cb1fb1c25

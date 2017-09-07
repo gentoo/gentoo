@@ -7,5 +7,4 @@ KEYWORDS=alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=public-domain
 SLOT=0
 SRC_URI=ftp://invisible-island.net/cproto/cproto-4_7e.tgz
-_eclass_exported_funcs=src_install:-
 _md5_=9e7b5bb8ae25f4ba7a29646dcd4a91b9

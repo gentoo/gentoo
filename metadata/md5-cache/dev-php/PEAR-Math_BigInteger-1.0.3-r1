@@ -7,5 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-lang/php:*
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Math_BigInteger-1.0.3.tgz
-_eclass_exported_funcs=src_install:-
 _md5_=4c31f3008d92b270b5016d2c74153092

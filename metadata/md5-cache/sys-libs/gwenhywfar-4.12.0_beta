@@ -10,5 +10,4 @@ RDEPEND=dev-libs/libgpg-error >=dev-libs/libgcrypt-1.2.0:0 dev-libs/openssl:0 >=
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.aquamaniac.de/sites/download/download.php?package=01&release=76&file=01&dummy=gwenhywfar-4.12.0beta.tar.gz -> gwenhywfar-4.12.0beta.tar.gz
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=e986df208f0c257851e3ade15c6257cd

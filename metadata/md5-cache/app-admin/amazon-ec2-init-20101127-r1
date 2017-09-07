@@ -6,5 +6,4 @@ KEYWORDS=-* ~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=net-misc/wget
 SLOT=0
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=be98a79980a67e933b1b83546195f411

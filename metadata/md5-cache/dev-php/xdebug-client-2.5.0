@@ -9,5 +9,4 @@ LICENSE=Xdebug
 RDEPEND=libedit? ( dev-libs/libedit )
 SLOT=0
 SRC_URI=http://pecl.php.net/get/xdebug-2.5.0.tgz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=e8b64399adfe35c7a72a7fe86f337f4f

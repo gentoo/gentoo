@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sci-libs/gsl
 SLOT=0
 SRC_URI=http://www.phy.duke.edu/~rgb/General/dieharder/dieharder-3.31.1.tgz
-_eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
 _md5_=fe50bb883637cb5c4bcd2edde8a0bcbc

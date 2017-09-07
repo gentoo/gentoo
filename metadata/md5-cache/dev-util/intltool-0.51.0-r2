@@ -8,5 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/XML-Parser sys-devel/gettext
 SLOT=0
 SRC_URI=https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
-_eclass_exported_funcs=-
 _md5_=12884bf41b06c8b85cd98ef4f57a56cb

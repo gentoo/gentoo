@@ -8,5 +8,4 @@ LICENSE=freedist
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://umlautllama.com/projects/perl/jlj_2.12.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=3cd22b5ee00febce05cecba2cb6bf871

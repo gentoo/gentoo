@@ -8,5 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=>=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:=
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-genmon-plugin/4.0/xfce4-genmon-plugin-4.0.0.tar.bz2
-_eclass_exported_funcs=-
 _md5_=80be9e7bf0983c979c776a17192d0975

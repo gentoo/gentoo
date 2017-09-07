@@ -7,5 +7,4 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://sourceforge/fortune-mod-fvl/fortune-mod-norbert.tretkowski-20030120.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=6703bb92a4dcc39419a03ed1f473b5dc

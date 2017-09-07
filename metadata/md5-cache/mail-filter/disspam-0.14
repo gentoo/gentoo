@@ -8,5 +8,4 @@ LICENSE=Artistic
 RDEPEND=>=dev-lang/perl-5.6.1 >=virtual/perl-libnet-1.11 >=sys-apps/sed-4 >=dev-perl/Net-DNS-0.12
 SLOT=0
 SRC_URI=https://fossies.org/linux/privat/old/disspam-0.14.tar.gz
-_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=32e996242e2e04ff19f3891e4dc13c7e

@@ -9,5 +9,4 @@ LICENSE=Artistic-2
 RDEPEND=sys-libs/zlib virtual/jpeg:0= perl? ( >=dev-lang/perl-5.8 )
 SLOT=0/18
 SRC_URI=mirror://sourceforge/qpdf/qpdf-7.0.b1.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=6f5c691a4587d4842eb6a184812b0de1

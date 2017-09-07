@@ -6,5 +6,4 @@ KEYWORDS=~arm amd64 ~ppc ppc64 sparc x86 ~x86-fbsd
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://nekohako.xware.cx/id3tool/id3tool-1.2a.tar.gz
-_eclass_exported_funcs=src_install:-
 _md5_=bf0d452093a6dda96dcb56ef983885a4

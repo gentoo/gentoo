@@ -7,5 +7,4 @@ LICENSE=MSMS
 RESTRICT=fetch
 SLOT=0
 SRC_URI=amd64? ( msms_i86_64Linux2_2.6.1.tar.gz ) x86? ( msms_i86Linux2_2.6.1.tar.gz )
-_eclass_exported_funcs=src_install:-
 _md5_=3bed25085e21d3be0ead51b25101c70b

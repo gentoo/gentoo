@@ -8,5 +8,4 @@ LICENSE=GPL-2 LGPL-3
 RDEPEND=dev-libs/kpathsea >=app-eselect/eselect-mpost-0.3 x11-libs/cairo x11-libs/pixman media-libs/libpng
 SLOT=0
 SRC_URI=http://foundry.supelec.fr/gf/download/frsrelease/395/1879/metapost-1.780-src.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
 _md5_=6823afeae9afcf62b5e81ec4e66622f1

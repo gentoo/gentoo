@@ -7,5 +7,4 @@ LICENSE=GPL-3
 RDEPEND=sys-apps/gptfdisk
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~prometheanfire/dist/growpart/growpart-0.0.30.gz
-_eclass_exported_funcs=src_install:-
 _md5_=50805ea08ddf1e0d32af93a6a85d5a3b

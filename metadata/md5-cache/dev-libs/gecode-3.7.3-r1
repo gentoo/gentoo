@@ -9,5 +9,4 @@ LICENSE=MIT
 RDEPEND=gist? ( dev-qt/qtcore:4 dev-qt/qtgui:4 media-libs/freetype media-libs/libpng >=dev-libs/glib-2 )
 SLOT=0
 SRC_URI=http://www.gecode.org/download/gecode-3.7.3.tar.gz
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=27e5c82631f6dccf5a8cdbf47452f497

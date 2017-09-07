@@ -8,5 +8,4 @@ LICENSE=astrolog
 RDEPEND=app-misc/astrolog
 SLOT=0
 SRC_URI=http://www.astrolog.org/ftp/ephem/ephemall.zip
-_eclass_exported_funcs=src_install:-
 _md5_=e4c8b43c3e0cb7fdba96679681eeebb9

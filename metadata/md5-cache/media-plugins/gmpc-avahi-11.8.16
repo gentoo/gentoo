@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2 net-dns/avahi[dbus]
 SLOT=0
 SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-avahi-11.8.16.tar.gz
-_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=644afb7a5b9bef4e147f50e3b788d316

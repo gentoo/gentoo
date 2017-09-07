@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/cairo:= x11-libs/libX11:= x11-libs/libXmu:= gtk3? ( x11-libs/gtk+:3= x11-libs/libwnck:3= ) !gtk3? ( >=x11-libs/gtk+-2.12:2= x11-libs/libwnck:1= )
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/xfce4-taskmanager/1.2/xfce4-taskmanager-1.2.0.tar.bz2
-_eclass_exported_funcs=src_configure:-
 _md5_=6b2bbe35a042d744f611217190f1d287

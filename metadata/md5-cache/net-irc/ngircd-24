@@ -10,6 +10,5 @@ RDEPEND=iconv? ( virtual/libiconv ) ident? ( net-libs/libident ) pam? ( virtual/
 RESTRICT=test
 SLOT=0
 SRC_URI=https://arthur.barton.de/pub/ngircd/ngircd-24.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=c2a6df2c9d141696c241b58c3b70440a

@@ -6,5 +6,4 @@ KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.habets.pp.se/pub/synscan/pipebench-0.40.tar.gz
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _md5_=8d7abc3635c0a4d8fa1ed0942a8eca61

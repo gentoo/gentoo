@@ -9,5 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= sys-devel/bc sys-devel/gettext X? ( x11-misc/xsel )
 SLOT=0
 SRC_URI=http://fishshell.com/files/2.4.0/fish-2.4.0.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_configure:- src_test:-
 _md5_=5fcd0548c5db327a77b7fc9272f1266d
