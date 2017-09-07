@@ -3,11 +3,11 @@
 
 EAPI="6"
 
-inherit multilib
+inherit autotools multilib
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/google/google-authenticator-libpam.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	SRC_URI="https://github.com/google/google-authenticator-libpam/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -26,17 +26,18 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
-	if [[ ${PV} == 9999 ]] ; then
-		eautoreconf
-	fi
+	eautoreconf
 }
 
-src_compile() {
-	default
+src_configure() {
+	# We might want to use getpam_mod_dir from pam eclass,
+	# but the build already appends "/security" for us.
+	econf --libdir="/$(get_libdir)"
 }
 
 src_install() {
 	default
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
