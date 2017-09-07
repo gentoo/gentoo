@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN/lib}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~x86"
 IUSE="static-libs test"
 REQUIRED_USE="test? ( static-libs )"
 
