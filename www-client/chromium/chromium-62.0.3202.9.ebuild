@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	dev-libs/expat:=
 	dev-libs/glib:2
 	system-icu? ( >=dev-libs/icu-59:= )
+	>=dev-libs/libxml2-2.9.5:=[icu]
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -145,9 +146,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/${PN}-gcc5-r2.patch"
-	"${FILESDIR}/${PN}-gn-bootstrap-r16.patch"
-	"${FILESDIR}/${PN}-system-icu-r2.patch"
-	"${FILESDIR}/${PN}-mojo-dep.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r17.patch"
+	"${FILESDIR}/${PN}-glibc2.26-r1.patch"
 )
 
 pre_build_checks() {
@@ -235,6 +235,7 @@ src_prepare() {
 		third_party/ced
 		third_party/cld_2
 		third_party/cld_3
+		third_party/crc32c
 		third_party/cros_system_api
 		third_party/devscripts
 		third_party/dom_distiller_js
@@ -262,7 +263,7 @@ src_prepare() {
 		third_party/libsrtp
 		third_party/libudev
 		third_party/libwebm
-		third_party/libxml
+		third_party/libxml/chromium
 		third_party/libyuv
 		third_party/lss
 		third_party/lzma_sdk
@@ -374,7 +375,6 @@ src_configure() {
 	# TODO: freetype (https://bugs.chromium.org/p/pdfium/issues/detail?id=733).
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_libsrtp (bug #459932).
-	# TODO: xml (bug #616818).
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
@@ -387,6 +387,7 @@ src_configure() {
 		libjpeg
 		libpng
 		libwebp
+		libxml
 		libxslt
 		openh264
 		re2
