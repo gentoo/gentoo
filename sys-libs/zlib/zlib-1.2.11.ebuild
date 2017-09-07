@@ -7,8 +7,8 @@ AUTOTOOLS_AUTO_DEPEND="no"
 inherit autotools toolchain-funcs multilib multilib-minimal
 
 DESCRIPTION="Standard (de)compression library"
-HOMEPAGE="http://www.zlib.net/"
-SRC_URI="http://zlib.net/${P}.tar.gz
+HOMEPAGE="https://zlib.net/"
+SRC_URI="https://zlib.net/${P}.tar.gz
 	http://www.gzip.org/zlib/${P}.tar.gz
 	http://www.zlib.net/current/beta/${P}.tar.gz"
 
