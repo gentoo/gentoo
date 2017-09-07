@@ -14,7 +14,7 @@ DESCRIPTION="Digital photo management application"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
-IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble semantic-desktop mysql opengl openmp +panorama scanner X"
+IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble mediaplayer semantic-desktop mysql opengl openmp +panorama scanner X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	KEYWORDS="~amd64 ~x86"
@@ -74,6 +74,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtconcurrent)
 		$(add_qt_dep qtnetwork)
 	)
+	mediaplayer? ( media-libs/qtav[opengl] )
 	mysql? ( virtual/mysql[server] )
 	opengl? (
 		$(add_qt_dep qtopengl)
@@ -145,8 +146,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_APPSTYLES=ON
 		-DENABLE_AKONADICONTACTSUPPORT=$(usex addressbook)
+		-DENABLE_MEDIAPLAYER=$(usex mediaplayer)
 		-DENABLE_MYSQLSUPPORT=$(usex mysql)
-		-DENABLE_MEDIAPLAYER=OFF
 		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 		$(cmake-utils_use_find_package calendar KF5CalendarCore)
 		$(cmake-utils_use_find_package gphoto2 Gphoto2)
@@ -154,6 +155,7 @@ src_configure() {
 		$(cmake-utils_use_find_package kipi KF5Kipi)
 		$(cmake-utils_use_find_package lensfun LensFun)
 		$(cmake-utils_use_find_package marble Marble)
+		$(cmake-utils_use_find_package mediaplayer QtAV)
 		$(cmake-utils_use_find_package opengl OpenGL)
 		$(cmake-utils_use_find_package openmp OpenMP)
 		$(cmake-utils_use_find_package panorama KF5ThreadWeaver)
