@@ -42,6 +42,8 @@ DEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-boost.patch" ) # bug 609108
+
 # Building with python integration seems to fail without 8G available
 # RAM(!)  Since the memory check in check-reqs doesn't count swap, it
 # may be unfair to fail the build entirely on the memory test alone.
