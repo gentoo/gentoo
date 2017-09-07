@@ -74,7 +74,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtconcurrent)
 		$(add_qt_dep qtnetwork)
 	)
-	mysql? ( virtual/mysql )
+	mysql? ( virtual/mysql[server] )
 	opengl? (
 		$(add_qt_dep qtopengl)
 		virtual/opengl
