@@ -2901,7 +2901,7 @@ dev-cpp/tbb 4.3.20150611 4.4.20160803 2017.20161128 2017.20170226: High level ab
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
-dev-cpp/waylandpp 0.1.0 9999: Wayland C++ bindings
+dev-cpp/waylandpp 0.1.0 0.1.2 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.7.0: C++/Boost Asio based websocket client/server library
 dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.5.3: YAML parser and emitter in C++
@@ -17325,7 +17325,7 @@ sys-auth/elogind 229.6 231.4 232.3: The systemd project's logind, extracted to a
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
-sys-auth/google-authenticator 1.01_pre20160307231538 9999: PAM Module for two step verification via mobile platform
+sys-auth/google-authenticator 1.01_pre20160307231538 1.04 9999: PAM Module for two step verification via mobile platform
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
 sys-auth/keystone 10.0.3 11.0.3 12.0.0 2016.2.9999 2017.1.9999 2017.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.5.1-r2 0.6.0-r2: library to add support for consumer fingerprint readers
