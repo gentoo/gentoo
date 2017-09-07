@@ -19,6 +19,7 @@ PATCHES=(
 	"${FILESDIR}/ignore-amavis-startup-notifications.patch"
 	"${FILESDIR}/ignore-utf8smtp-lines.patch"
 	"${FILESDIR}/unchecked-encrypted.patch"
+	"${FILESDIR}/file-libmagic-errors.patch"
 )
 
 src_prepare() {
