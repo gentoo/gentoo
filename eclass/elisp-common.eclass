@@ -344,7 +344,7 @@ elisp-site-file-install() {
 # directory.
 
 elisp-site-regen() {
-	local sitelisp=${ROOT}${EPREFIX}${SITELISP}
+	local sitelisp=${ROOT%/}${EPREFIX}${SITELISP}
 	local sf i ret=0 null="" page=$'\f'
 	local -a sflist
 
