@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=>=dev-libs/glib-2.24:= >=dev-libs/libdbusmenu-16.04.0:=[gtk3] >=x11-libs/gtk+-3.18:3= x11-libs/libX11:= >=xfce-base/libxfce4ui-4.12:= >=xfce-base/libxfce4util-4.12:= >=xfce-base/xfce4-panel-4.12:= >=xfce-base/xfconf-4.12:= dev-util/gdbus-codegen >=sys-apps/sed-4
+DESCRIPTION=A panel area for fd.o Status Notifiers (systray replacement)
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-statusnotifier-plugin
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.24:= >=dev-libs/libdbusmenu-16.04.0:=[gtk3] >=x11-libs/gtk+-3.18:3= x11-libs/libX11:= >=xfce-base/libxfce4ui-4.12:= >=xfce-base/libxfce4util-4.12:= >=xfce-base/xfce4-panel-4.12:= >=xfce-base/xfconf-4.12:=
+SLOT=0
+SRC_URI=mirror://xfce/src/panel-plugins/xfce4-statusnotifier-plugin/0.2/xfce4-statusnotifier-plugin-0.2.0.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	8a5e0bf2b8031478ecfeaec753ef4560	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=2b5741eb49850a16beecb398768d6778
