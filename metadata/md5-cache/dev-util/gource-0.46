@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5:0= >=media-libs/libpng-1.2:0= media-libs/libsdl2[video,opengl,X] media-libs/sdl2-image[jpeg,png] dev-libs/libpcre:3 dev-libs/tinyxml media-libs/freetype:2 media-libs/mesa virtual/glu:0 virtual/pkgconfig >=media-libs/glm-0.9.3
+DESCRIPTION=A software version control visualization tool
+EAPI=6
+HOMEPAGE=http://gource.io/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5:0= >=media-libs/libpng-1.2:0= media-libs/libsdl2[video,opengl,X] media-libs/sdl2-image[jpeg,png] dev-libs/libpcre:3 dev-libs/tinyxml media-libs/freetype:2 media-libs/mesa virtual/glu:0 media-fonts/freefont
+SLOT=0
+SRC_URI=https://github.com/acaudwell/Gource/releases/download/gource-0.46/gource-0.46.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=90ae95ada120d296c8f61cc54fae0e3a
