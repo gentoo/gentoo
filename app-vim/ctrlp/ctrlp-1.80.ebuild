@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex sup
 HOMEPAGE="https://github.com/ctrlpvim/ctrlp.vim"
 SRC_URI="https://github.com/${PN}vim/${PN}.vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${PN}.vim-${PV}"
 
