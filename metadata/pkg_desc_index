@@ -13220,6 +13220,7 @@ media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
 media-libs/qhull 2012.1-r4 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6-r2 0.0.6_p20131029: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r2 1.2.0-r3: C++ bindings for GStreamer with a Qt-style API
+media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links

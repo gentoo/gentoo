@@ -3925,6 +3925,7 @@ media-gfx/digikam:addressbook - Enable akonadi contact integration
 media-gfx/digikam:kipi - Enable support for media-plugins/kipi-plugins
 media-gfx/digikam:lensfun - Enable support for media-libs/lensfun
 media-gfx/digikam:marble - Enable support for geolocation using kde-apps/marble
+media-gfx/digikam:mediaplayer - Enable support for media player using media-libs/qtav
 media-gfx/digikam:panorama - Build the panorama plugin which requires media-gfx/hugin
 media-gfx/digikam:semantic-desktop - Enable kde-frameworks/kfilemetadata support
 media-gfx/enblend:gpu - GPU support for Enblend
@@ -4257,6 +4258,7 @@ media-libs/phonon:designer - Install plugin for dev-qt/designer
 media-libs/phonon:vlc - Install VLC Phonon backend
 media-libs/phonon-gstreamer:network - Enable network streaming support via libsoup
 media-libs/portmidi:test-programs - Install various example programs
+media-libs/qtav:gui - Build a video player gui
 media-libs/quvi:json - Enable support for JSON output
 media-libs/raptor:json - Enable support for JSON parsing
 media-libs/raspberrypi-userland-bin:hardfp - Use armv6 hardfp ABI
