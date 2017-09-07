@@ -14,7 +14,7 @@ SRC_URI="${BASE_URI}/${PN/*-}-data.txt -> ${PN}-data-${PV}.txt
 
 LICENSE="unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 S="${WORKDIR}"
