@@ -12,7 +12,7 @@ SRC_URI="http://www.hyperrealm.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~mips ppc ~ppc64 sparc x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~mips ppc ~ppc64 sparc x86 ~x86-linux"
 IUSE="+cxx examples static-libs"
 
 DEPEND="
