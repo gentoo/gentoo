@@ -29,6 +29,12 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	# We might want to use getpam_mod_dir from pam eclass,
+	# but the build already appends "/security" for us.
+	econf --libdir="/$(get_libdir)"
+}
+
 src_compile() {
 	default
 }
