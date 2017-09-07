@@ -117,6 +117,7 @@ UNBUNDLE_LIBS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-12.2.0-use-provided-cpu-flag-values.patch"
+	"${FILESDIR}/${PN}-12.2.0-cflags.patch"
 
 	# pull in some bugfixes from upstream
 	"${FILESDIR}/${PN}-12.2.0-fix_two_stray_get_health_callers.patch"
@@ -189,6 +190,11 @@ ceph_src_configure() {
 
 	rm -f "${BUILD_DIR:-${S}}/CMakeCache.txt"
 	cmake-utils_src_configure
+
+	# bug #630232
+	sed -i "s:\"${T//:\\:}/${EPYTHON}/bin/python\":\"${PYTHON}\":" \
+		"${BUILD_DIR:-${CMAKE_BUILD_DIR:-${S}}}"/include/acconfig.h \
+		|| die "sed failed"
 }
 
 src_configure() {
@@ -260,6 +266,11 @@ src_install() {
 	readme.gentoo_create_doc
 
 	python_setup 'python2*'
+
+	# bug #630232
+	sed -i -r "s:${T//:/\\:}/${EPYTHON}:/usr:" "${ED}"/usr/bin/ceph \
+		|| die "sed failed"
+
 	python_fix_shebang "${ED}"/usr/{,s}bin/
 
 	# python_fix_shebang apparently is not idempotent
