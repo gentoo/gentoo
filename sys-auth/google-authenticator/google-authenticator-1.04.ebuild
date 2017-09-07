@@ -35,10 +35,6 @@ src_configure() {
 	econf --libdir="/$(get_libdir)"
 }
 
-src_compile() {
-	default
-}
-
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
