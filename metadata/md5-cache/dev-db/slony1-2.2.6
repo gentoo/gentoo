@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10=[server,threads] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server,threads] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server,threads] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server,threads] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server,threads] ) postgres_targets_postgres9_2? ( dev-db/postgresql:9.2=[server,threads] ) perl? ( dev-perl/DBD-Pg )
+DESCRIPTION=A replication system for the PostgreSQL Database Management System
+EAPI=6
+HOMEPAGE=http://slony.info/
+IUSE=doc perl postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 postgres_targets_postgres9_2
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD GPL-2
+RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10=[server,threads] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server,threads] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server,threads] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server,threads] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server,threads] ) postgres_targets_postgres9_2? ( dev-db/postgresql:9.2=[server,threads] ) perl? ( dev-perl/DBD-Pg )
+SLOT=0
+SRC_URI=http://main.slony.info/downloads/2.2/source/slony1-2.2.6.tar.bz2 http://main.slony.info/downloads/2.2/source/slony1-2.2.6-docs.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=173cd18a4276d0db449eb5ec28793524
