@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Darwinia, the hyped indie game of the year. By the Uplink creators
+EAPI=6
+HOMEPAGE=http://www.darwinia.co.uk/downloads/demo_linux.html
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Introversion
+RDEPEND=media-libs/libsdl[abi_x86_32(-)] media-libs/libvorbis[abi_x86_32(-)] virtual/glu[abi_x86_32(-)] ~virtual/libstdc++-3.3 virtual/opengl[abi_x86_32(-)]
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://www.introversion.co.uk/darwinia/downloads/darwinia-demo2-1.3.0.sh
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
+_md5_=0fb1d6a9143f67db07b1a3bdea726d22
