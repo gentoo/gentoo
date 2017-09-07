@@ -17844,7 +17844,7 @@ sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0: Boot your system's rootfs from ZFS, L
 sys-kernel/ck-sources 4.9.39 4.9.39-r1 4.9.41 4.9.42 4.9.43 4.9.44 4.9.45 4.9.46 4.9.47 4.11.12 4.12.6 4.12.7 4.12.8 4.12.9 4.12.10: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.12
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
-sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66 67: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.86 4.9.34 4.9.47 4.12.5 4.12.6 4.12.7 4.12.8 4.12.9 4.12.10 4.13.0: Full sources including the Gentoo patchset for the 4.13 kernel tree
 sys-kernel/git-sources 4.13_rc1 4.13_rc2 4.13_rc3 4.13_rc4 4.13_rc5 4.13_rc6 4.13_rc7: The very latest -git version of the Linux kernel
