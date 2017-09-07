@@ -10,6 +10,7 @@
   </longdescription>
   <use>
     <flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg></flag>
+    <flag name="liberation-fonts">Use <pkg>media-fonts/liberation-fonts</pkg></flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">crengine</remote-id>
