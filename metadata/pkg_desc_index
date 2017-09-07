@@ -1270,7 +1270,7 @@ app-emacs/wgrep 2.1.10: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.49: Window manager for GNU Emacs
-app-emacs/with-editor 2.5.8 2.5.10: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.5.8 2.5.10 2.6.0: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.3: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2: An Emacs major mode for editing XSL stylesheets and running XSL processes
@@ -9789,7 +9789,7 @@ dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.11 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.4.7 1.5.5 1.6.4 1.6.5 1.6.6 1.6.7 2.0.1 2.0.2 2.0.3: A modular Ruby webserver interface
 dev-ruby/rack-attack 4.4.1 5.0.1: A DSL for blocking & throttling abusive clients
-dev-ruby/rack-cache 1.6.1 1.7.0: Enable HTTP caching for Rack-based applications that produce freshness info
+dev-ruby/rack-cache 1.6.1 1.7.0 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
 dev-ruby/rack-protection 1.5.3-r1 2.0.0: This gem protects against typical web attacks
