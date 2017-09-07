@@ -25,6 +25,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+RESTRICT="test" # Has no tests to run
+
 PATCHES=(
 	"${FILESDIR}"/${PV}-strip.patch
 	"${FILESDIR}"/${PV}-ldflags.patch
