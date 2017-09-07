@@ -1,0 +1,14 @@
+Boost 1.65 made 'advance()' ambiguous.
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=629966
+
+--- a/src/gui/qt/gametable/gametableimpl.cpp
++++ b/src/gui/qt/gametable/gametableimpl.cpp
+@@ -3859,7 +3859,7 @@
+ 	int playerCount = static_cast<int>(seatList->size());
+ 	if (id < playerCount) {
+ 		PlayerListIterator pos = seatList->begin();
+-		advance(pos, id);
++		std::advance(pos, id);
+ 		myStartWindow->getSession()->startVoteKickPlayer((*pos)->getMyUniqueID());
+ 	}
+ }
