@@ -5,10 +5,10 @@ EAPI=6
 
 inherit autotools
 
-MY_P="${PN}-source-${PV}-1"
+MY_P="cnijfilter-source-${PV}-1"
 
-DESCRIPTION="CUPS drivers for some Canon inkjet printers (common part)"
-HOMEPAGE="http://support-sg.canon-asia.com/contents/SG/EN/0100469302.html"
+DESCRIPTION="CUPS drivers for Canon Pixma inkjet printers (common part)"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Canon_Pixma_Printer"
 SRC_URI="http://gdlp01.c-wss.com/gds/3/0100004693/01/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -45,7 +45,7 @@ PATCHES=(
 pkg_setup() {
 	[[ -z ${LINGUAS} ]] && LINGUAS="en"
 
-	if [[ ${MERGE_TYPE} == source ]]; then
+	if [[ ${MERGE_TYPE} != binary ]]; then
 		DIRS=(libs pstocanonij backend)
 		use net && DIRS+=(backendnet)
 		use servicetools && DIRS+=(cngpij)
@@ -53,8 +53,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${PATCHES[@]}"
-	eapply_user
+	# apply patches
+	default
 
 	local d
 	for d in "${DIRS[@]}"; do

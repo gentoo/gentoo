@@ -1,0 +1,11 @@
+diff -urN cnijfilter-source-3.70-1.old/cngpijmon/src/bjcupsmon_cups.c cnijfilter-source-3.70-1/cngpijmon/src/bjcupsmon_cups.c
+--- cnijfilter-source-3.70-1.old/cngpijmon/src/bjcupsmon_cups.c	2012-12-21 17:27:54.599964570 +0100
++++ cnijfilter-source-3.70-1/cngpijmon/src/bjcupsmon_cups.c	2012-12-21 17:28:42.076966493 +0100
+@@ -20,6 +20,7 @@
+ /*** Includes ***/
+ #include <cups/cups.h>
+ #include <cups/language.h>
++#include <cups/ppd.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <pwd.h>

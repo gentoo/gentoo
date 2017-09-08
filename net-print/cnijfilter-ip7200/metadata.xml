@@ -10,10 +10,10 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
-    CUPS drivers for some Canon inkjet printers (common part)
+    CUPS drivers for Canon Pixma inkjet printers (printer-specific part)
+    Series: IP 7200
   </longdescription>
   <use>
-    <flag name="net">build CUPS backend for network</flag>
     <flag name="servicetools">build service tools</flag>
   </use>
 </pkgmetadata>
