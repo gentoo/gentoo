@@ -91,6 +91,7 @@ multilib_src_configure() {
 	# hardware-accell is disabled on OSX because the asm files force
 	#   GNU-stack (as doesn't support that) and when that's removed ld
 	#   complains about duplicate symbols
+	#   while Cygwin as does not understand these asm files at all
 	ECONF_SOURCE=${S} econf \
 		$(multilib_native_enable manpages) \
 		$(multilib_native_use_enable doc gtk-doc) \
@@ -115,6 +116,7 @@ multilib_src_configure() {
 		--without-included-libtasn1 \
 		--without-tpm \
 		"${libconf[@]}" \
+		$([[ ${CHOST} == *-cygwin* ]] && echo --disable-hardware-acceleration) \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
 }
 
