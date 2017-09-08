@@ -29,7 +29,7 @@ ruby_add_rdepend "
 	>=dev-ruby/faraday_middleware-0.9.0
 	>=dev-ruby/faraday_middleware-multi_json-0.0.6
 	>=dev-ruby/multi_json-1.10
-	=dev-ruby/semantic_puppet-0.1* >=dev-ruby/semantic_puppet-0.1.1
+	>=dev-ruby/semantic_puppet-0.1.1
 	>=dev-ruby/json-1.8:0"
 
 ruby_add_bdepend "test? (
@@ -43,6 +43,7 @@ all_ruby_prepare() {
 		-e '/cri/ s/2\.6\../2.7/' \
 		-e '/systemu/ s/2.5.2/2.5/' \
 		-e '/faraday/ s/0.9.0/0.9/' \
+		-e '/semantic_puppet/ s/~>/>/' \
 		-e '/s.files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
