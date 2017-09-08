@@ -9,7 +9,7 @@ SRC_URI="http://${PN%-*}.org/Public/${PN/*-}/${PV}/core.zip -> ${PN}-common-${PV
 
 LICENSE="unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

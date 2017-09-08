@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit check-reqs autotools eutils python-r1 udev user \
-	readme.gentoo-r1 systemd versionator flag-o-matic
+	readme.gentoo-r1 systemd versionator flag-o-matic toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -114,6 +114,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-10.2.5-Make-RBD-Python-bindings-compatible-with-Python-3.patch"
 	"${FILESDIR}/${PN}-10.2.5-Make-CephFS-bindings-and-tests-compatible-with-Python-3.patch"
 	"${FILESDIR}/${PN}-10.2.7-fix-compilation-with-zstd.patch"
+	"${FILESDIR}/${PN}-10.2.9-cflags.patch"
+	"${FILESDIR}/${PN}-10.2.9-dont-run-lsb_release.patch"
 	# pull in some bugfixes from upstream
 	"${FILESDIR}/${PN}-10.2.9-libradosstriper_fix_format_injection_vulnerability.patch"
 	"${FILESDIR}/${PN}-10.2.9-rbd-nbd_relax_size_check_for_newer_kernel_versions.patch"
@@ -122,7 +124,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-10.2.9-osd-scrub_to_specifies_clone_ver_but_transaction_include.patch"
 	"${FILESDIR}/${PN}-10.2.9-rbd-do_not_attempt_to_load_key_if_auth_is_disabled.patch"
 	"${FILESDIR}/${PN}-10.2.9-unlock_sdata_op_ordering_lock_with_sdata_lock.patch"
-
 )
 
 check-reqs_export_vars() {
@@ -197,6 +198,11 @@ src_prepare() {
 	#rm -rf "${UNBUNDLE_LIBS[@]}"
 
 	append-flags -fPIC
+
+	if tc-is-gcc && [[ $(gcc-fullversion) == "7.2.0" ]] && is-flag "-g*"; then
+		ewarn "Filtering out -g* flags since gcc-7.2 tends to ICE with them and ceph"
+		filter-flags "-g*"
+	fi
 	eautoreconf
 }
 

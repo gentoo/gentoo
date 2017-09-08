@@ -17,6 +17,8 @@ IUSE="examples"
 LICENSE="PSF-2"
 SLOT="0"
 
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
 python_test() {
 	esetup.py test
 }
