@@ -13,7 +13,7 @@ SRC_URI="https://github.com/markfasheh/duperemove/archive/v${PV/_/.}.tar.gz -> $
 # includes code from polarssl (GPL-2+)
 LICENSE="GPL-2 GPL-2+ BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
