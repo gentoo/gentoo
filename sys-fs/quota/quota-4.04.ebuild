@@ -20,7 +20,14 @@ RDEPEND="
 		sys-apps/dbus
 		dev-libs/libnl:3
 	)
-	rpc? ( net-nds/rpcbind )
+	rpc? (
+		net-nds/rpcbind
+		|| (	sys-libs/glibc[rpc(-)]
+			(
+				net-libs/rpcsvc-proto
+			)
+		)
+	)
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 DEPEND="
