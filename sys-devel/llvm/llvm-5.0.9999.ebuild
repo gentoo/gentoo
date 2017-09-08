@@ -36,7 +36,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 SLOT="$(get_major_version)"
 KEYWORDS=""
 IUSE="debug +doc gold libedit +libffi ncurses test
-	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
+	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	sys-libs/zlib:0=
