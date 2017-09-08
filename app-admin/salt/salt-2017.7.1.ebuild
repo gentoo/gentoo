@@ -91,7 +91,9 @@ PATCHES=(
 )
 
 python_prepare() {
-	rm tests/unit/{test_zypp_plugins.py,utils/test_extend.py}
+	rm tests/unit/{test_zypp_plugins.py,utils/test_extend.py} || die
+	rm tests/unit/modules/test_boto_{vpc,secgroup,elb}.py || die
+	rm tests/unit/states/test_boto_vpc.py || die
 }
 
 python_install_all() {
