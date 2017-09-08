@@ -8,5 +8,5 @@ LICENSE=yuuji
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://enise.org/users/victor/share/distfiles/revive-2.23.el.xz
-_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	19ff54b35acd0bf2a14831a308a57753
+_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=918930817db0ab20f37a0a0a60a2f889

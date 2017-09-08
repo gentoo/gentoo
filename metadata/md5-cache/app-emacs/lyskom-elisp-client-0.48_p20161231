@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/lyskom-elisp-client-0.48_p20161231.tar.xz
-_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	19ff54b35acd0bf2a14831a308a57753	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
 _md5_=cf6e6627ba0c5770ced528364ea36f4b

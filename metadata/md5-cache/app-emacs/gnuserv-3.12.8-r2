@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-eselect/eselect-emacs-1.15 X? ( x11-libs/libXau ) !!app-emacs/gnuserv-programs !!<app-editors/xemacs-21.4.22-r3 !!~app-editors/xemacs-21.5.29 !!~app-editors/xemacs-21.5.30 !!~app-editors/xemacs-21.5.31 !!~app-editors/xemacs-21.5.33 !!=app-editors/xemacs-21.5.34 !!=app-editors/xemacs-21.5.34-r1 >=virtual/emacs-23
 SLOT=0
 SRC_URI=http://meltin.net/hacks/emacs/src/gnuserv-3.12.8.tar.gz
-_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	19ff54b35acd0bf2a14831a308a57753	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=6f6969bcde2bdcc014515b7c7c93ce65
