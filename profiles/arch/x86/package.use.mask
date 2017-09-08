@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Johannes Huber <johu@gentoo.org> (07 Aug 2017)
+# Requires media-libs/qtav, which is not keyworded on x86.
+media-gfx/digikam mediaplayer
+
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv

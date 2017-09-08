@@ -21,41 +21,65 @@ case ${EAPI:-0} in
 	*) die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
+# @ECLASS-VARIABLE: _POSTGRES_ALL_VERSIONS
+# @INTERNAL
+# @DESCRIPTION:
+# List of versions to reverse sort POSTGRES_COMPAT slots
+
+_POSTGRES_ALL_VERSIONS=( 11 10 9.6 9.5 9.4 9.3 9.2 )
+
+
 
 # @ECLASS-VARIABLE: POSTGRES_COMPAT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A Bash array containing a list of compatible PostgreSQL slots as
 # defined by the developer. If declared, must be declared before
-# inheriting this eclass. Example: POSTGRES_COMPAT=( 9.4 9.{5,6} )
-
-# @ECLASS-VARIABLE: POSTGRES_USEDEP
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Add the 2-Style and/or 4-Style use dependencies without brackets to be used
-# for POSTGRES_DEP. If declared, must be done before inheriting this eclass.
+# inheriting this eclass. Example:
+#@CODE
+#POSTGRES_COMPAT=( 9.2 9.3 9.4 9.5 9.6 10 )
+#POSTGRES_COMPAT=( 9.{2,3} 9.{4..6} 10 ) # Same as previous
+#@CODE
 
 # @ECLASS-VARIABLE: POSTGRES_DEP
 # @DESCRIPTION:
 # An automatically generated dependency string suitable for use in
 # DEPEND and RDEPEND declarations.
+POSTGRES_DEP="dev-db/postgresql:="
+
+# @ECLASS-VARIABLE: POSTGRES_USEDEP
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Add the 2-Style and/or 4-Style use dependencies without brackets to be used
+# for POSTGRES_DEP. If declared, must be declared before inheriting this eclass.
+declare -p POSTGRES_USEDEP &>/dev/null && POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
 
 # @ECLASS-VARIABLE: POSTGRES_REQ_USE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An automatically generated REQUIRED_USE-compatible string built upon
 # POSTGRES_COMPAT. REQUIRED_USE="... ${POSTGRES_REQ_USE}" is only
 # required if the package must build against one of the PostgreSQL slots
 # declared in POSTGRES_COMPAT.
 
+# @ECLASS-VARIABLE: _POSTGRES_COMPAT
+# @INTERNAL
+# @DESCRIPTION:
+# Copy of POSTGRES_COMPAT, reverse sorted
+_POSTGRES_COMPAT=()
+
+
 if declare -p POSTGRES_COMPAT &> /dev/null ; then
 	# Reverse sort the given POSTGRES_COMPAT so that the most recent
 	# slot is preferred over an older slot.
 	# -- do we care if dependencies are deterministic by USE flags?
-	readarray -t POSTGRES_COMPAT < <(printf '%s\n' "${POSTGRES_COMPAT[@]}" | sort -nr)
+	for i in ${_POSTGRES_ALL_VERSIONS[@]} ; do
+		has ${i} ${POSTGRES_COMPAT[@]} && _POSTGRES_COMPAT+=( ${i} )
+	done
 
 	POSTGRES_DEP=""
 	POSTGRES_REQ_USE=" || ("
-	for slot in "${POSTGRES_COMPAT[@]}" ; do
+	for slot in "${_POSTGRES_COMPAT[@]}" ; do
 		POSTGRES_DEP+=" postgres_targets_postgres${slot/\./_}? ( dev-db/postgresql:${slot}="
 		declare -p POSTGRES_USEDEP &>/dev/null && \
 			POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
@@ -65,10 +89,6 @@ if declare -p POSTGRES_COMPAT &> /dev/null ; then
 		POSTGRES_REQ_USE+=" postgres_targets_postgres${slot/\./_}"
 	done
 	POSTGRES_REQ_USE+=" )"
-else
-	POSTGRES_DEP="dev-db/postgresql:="
-	declare -p POSTGRES_USEDEP &>/dev/null && \
-		POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
 fi
 
 
@@ -96,10 +116,16 @@ postgres_check_slot() {
 }
 
 # @FUNCTION: postgres_new_user
+# @USAGE: [user [(uid|-1) [(shell|-1) [(homedir|-1) [groups]]]]]
 # @DESCRIPTION:
 # Creates the "postgres" system group and user -- which is separate from
-# the database user -- in addition to the developer defined user. Takes
-# the same arguments as "enewuser".
+# the database user -- and, optionally, the developer defined user. There
+# are no required parameters.
+#
+# When given a user to create, it'll be created with the next available
+# uid, default shell set to /bin/false, default homedir is /dev/null,
+# and added to the "postgres" system group. You can use "-1" to skip any
+# parameter except user or groups.
 postgres_new_user() {
 	enewgroup postgres 70
 	enewuser postgres 70 /bin/bash /var/lib/postgresql postgres
@@ -116,7 +142,6 @@ postgres_new_user() {
 }
 
 # @FUNCTION: postgres_pkg_setup
-# @USAGE: postgres_pkg_setup
 # @DESCRIPTION:
 # Initialize environment variable(s) according to the best
 # installed version of PostgreSQL that is also in POSTGRES_COMPAT. This
@@ -127,7 +152,7 @@ postgres_pkg_setup() {
 
 	local compat_slot
 	local best_slot
-	for compat_slot in "${POSTGRES_COMPAT[@]}"; do
+	for compat_slot in "${_POSTGRES_COMPAT[@]}"; do
 		if use "postgres_targets_postgres${compat_slot/\./_}"; then
 			best_slot="${compat_slot}"
 			break
@@ -136,7 +161,7 @@ postgres_pkg_setup() {
 
 	if [[ -z "${best_slot}" ]]; then
 		local flags f
-		for f in "${POSTGRES_COMPAT[@]}"; do
+		for f in "${_POSTGRES_COMPAT[@]}"; do
 			flags+=" postgres${f/./_}"
 		done
 
