@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+PYTHON_COMPAT=(python{3_4,3_5,3_6})
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7)"
+	dev-python/pyte[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/pytest-mock[${PYTHON_USEDEP}] )
