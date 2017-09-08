@@ -3,8 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 )
-
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 multilib prefix
@@ -19,7 +18,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~ppc-aix ~
 
 python_prepare_all() {
 	hprefixify src/py/buildparser src/py/findclass setup.py
-
 	distutils-r1_python_prepare_all
 }
 
