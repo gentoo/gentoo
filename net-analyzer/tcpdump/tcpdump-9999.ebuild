@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic toolchain-funcs user
+inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
@@ -48,13 +48,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	# tcpdump needs some optimization. see bug #108391
-	# but do not replace -Os
-	filter-flags -O[0-9]
-	has -O? ${CFLAGS} || append-cflags -O2
-
-	filter-flags -finline-functions
-
 	if use drop-root; then
 		append-cppflags -DHAVE_CAP_NG_H
 		export LIBS=$( $(tc-getPKG_CONFIG) --libs libcap-ng )
