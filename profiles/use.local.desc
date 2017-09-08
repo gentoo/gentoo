@@ -7364,6 +7364,7 @@ sci-physics/hepmc:gev - Build with GeV instead of default MeV for momentum units
 sci-physics/herwig++:c++11 - Build Herwig++ using the C++11 standard. Experimental feature, not for production use.
 sci-physics/herwig++:fastjet - Adds support for sci-physics/fastjet
 sci-physics/hoomd-blue:cuda - Enable cuda non-bonded kernels
+sci-physics/lammps:cuda - Enable cuda non-bonded kernels
 sci-physics/lammps:lammps-memalign - Enables the use of the posix_memalign() call instead of malloc() when large chunks or memory are allocated by LAMMPS. Aliengnment is on 16 byte boundaries.
 sci-physics/lhapdf:octave - Add bindings for sci-mathematics/octave
 sci-physics/pythia:fastjet - Build jets using the sci-physics/fastjet package
