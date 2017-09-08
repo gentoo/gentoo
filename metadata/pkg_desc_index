@@ -216,7 +216,7 @@ app-admin/sysstat 11.4.0 11.4.5 11.4.6 11.6.0: System performance tools for Linu
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3 5.0.4: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3 5.0.4 5.1.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15 0.16-r1: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -4919,7 +4919,7 @@ dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1 1.4.2: a pipeline manipulation libr
 dev-libs/libplatform 2.0.1 2.1.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 4.0.1 5.0.1 5.1.0: Standard front-end for writing C++ programs that use PostgreSQL
-dev-libs/libprelude 3.0.0 3.1.0-r1: Prelude-SIEM Framework Library
+dev-libs/libprelude 3.0.0 3.1.0-r1 4.0.0: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0 3.1.0: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
