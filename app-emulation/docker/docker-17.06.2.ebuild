@@ -17,7 +17,7 @@ else
 	else
 		MY_PV="$PV-ce"
 	fi
-	DOCKER_GITCOMMIT="02c1d87"
+	DOCKER_GITCOMMIT="cec0b72"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
@@ -61,10 +61,10 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 
-	~app-emulation/containerd-0.2.9
-	~app-emulation/docker-runc-1.0.0_rc3_p20170607[apparmor?,seccomp?]
+	~app-emulation/containerd-0.2.9_p20170605
+	~app-emulation/docker-runc-1.0.0_rc3_p20170706[apparmor?,seccomp?]
 	app-emulation/docker-proxy
-	container-init? ( >=sys-process/tini-0.13.1[static] )
+	container-init? ( >=sys-process/tini-0.15.0[static] )
 "
 
 RESTRICT="installsources strip"
@@ -237,9 +237,6 @@ src_compile() {
 	# build daemon
 	./hack/make.sh dynbinary || die 'dynbinary failed'
 
-	# build man pages
-	./man/md2man-all.sh || die "unable to generate man pages"
-
 	popd || die # components/engine
 
 	pushd components/cli || die
@@ -250,6 +247,13 @@ src_compile() {
 		VERSION="$(cat ../../VERSION)" \
 		GITCOMMIT="${DOCKER_GITCOMMIT}" \
 		dynbinary || die
+
+	# build man pages
+	go build -o gen-manpages github.com/docker/cli/man || die
+	./gen-manpages --root . --target ./man/man1 || die
+	./man/md2man-all.sh -q || die
+	rm gen-manpages || die
+	# see "components/cli/scripts/docs/generate-man.sh" (which also does "go get" for go-md2man) 
 
 	popd || die # components/cli
 }
@@ -272,12 +276,6 @@ src_install() {
 
 	dodoc AUTHORS CONTRIBUTING.md CHANGELOG.md NOTICE README.md
 	dodoc -r docs/*
-	doman man/man*/*
-
-	dobashcomp contrib/completion/bash/*
-
-	insinto /usr/share/zsh/site-functions
-	doins contrib/completion/zsh/_*
 
 	insinto /usr/share/vim/vimfiles
 	doins -r contrib/syntax/vim/ftdetect
@@ -289,7 +287,11 @@ src_install() {
 	popd || die # components/engine
 
 	pushd components/cli || die
+
 	newbin build/docker-* docker
+
+	doman man/man*/*
+
 	dobashcomp contrib/completion/bash/*
 	insinto /usr/share/zsh/site-functions
 	doins contrib/completion/zsh/_*

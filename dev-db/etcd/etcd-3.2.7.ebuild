@@ -13,11 +13,11 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc"
-DEPEND=">=dev-lang/go-1.6:="
+DEPEND=">=dev-lang/go-1.8:="
 RDEPEND="!dev-db/etcdctl"
 
 src_prepare() {
-	eapply_user
+	default
 	sed -e 's|GIT_SHA=.*|GIT_SHA=v${PV}|'\
 		-i "${S}"/src/${EGO_PN}/build || die
 }
@@ -29,12 +29,13 @@ pkg_setup() {
 
 src_compile() {
 	export GOPATH=${S}
-	cd "${S}"/src/${EGO_PN} || die
+	pushd src/${EGO_PN} || die
 	./build || die
+	popd || die
 }
 
 src_install() {
-	cd "${S}"/src/${EGO_PN} || die
+	pushd src/${EGO_PN} || die
 	insinto /etc/${PN}
 	doins "${FILESDIR}/${PN}.conf"
 	dobin bin/*
@@ -52,9 +53,11 @@ src_install() {
 	dodir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
 	fperms 755 /var/log/${PN}
+	popd || die
 }
 
 src_test() {
-	cd "${S}"/src/${EGO_PN} || die
+	pushd src/${EGO_PN} || die
 	./test || die
+	popd || die
 }
