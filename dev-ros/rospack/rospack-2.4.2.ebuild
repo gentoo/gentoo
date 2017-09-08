@@ -28,4 +28,5 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/gentoo.patch"
+	"${FILESDIR}/boost165.patch"
 )
