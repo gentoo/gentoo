@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-libs/expat
-	media-gfx/exiv2:=
+	>=media-gfx/exiv2-0.26:=
 	media-libs/lcms:2
 	media-libs/liblqr
 	media-libs/libpng:0=
