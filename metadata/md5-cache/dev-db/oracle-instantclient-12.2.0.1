@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare test unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Oracle 12c Instant Client with SDK
+EAPI=6
+HOMEPAGE=http://www.oracle.com/technetwork/database/features/instant-client/index.html
+IUSE=jdbc odbc +sdk +sqlplus tools abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86
+LICENSE=OTN
+RDEPEND=>=dev-libs/libaio-0.3.109-r5[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] !<dev-db/oracle-instantclient-basic-12 !<dev-db/oracle-instantclient-odbc-12 !<dev-db/oracle-instantclient-jdbc-12 !<dev-db/oracle-instantclient-sqlplus-12
+RESTRICT=fetch splitdebug
+SLOT=0/12.2
+SRC_URI=abi_x86_32? ( instantclient-basic-linux-12.2.0.1.0.zip odbc? ( instantclient-odbc-linux-12.2.0.1.0.zip ) jdbc? ( instantclient-jdbc-linux-12.2.0.1.0.zip ) !abi_x86_64? ( sdk? ( instantclient-sdk-linux-12.2.0.1.0.zip ) sqlplus? ( instantclient-sqlplus-linux-12.2.0.1.0.zip ) tools? ( instantclient-tools-linux-12.2.0.1.0.zip ) ) ) abi_x86_64? ( instantclient-basic-linux.x64-12.2.0.1.0.zip odbc? ( instantclient-odbc-linux.x64-12.2.0.1.0.zip ) jdbc? ( instantclient-jdbc-linux.x64-12.2.0.1.0.zip ) sdk? ( instantclient-sdk-linux.x64-12.2.0.1.0.zip ) sqlplus? ( instantclient-sqlplus-linux.x64-12.2.0.1.0.zip ) tools? ( instantclient-tools-linux.x64-12.2.0.1.0.zip ) )
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=44fb2376c86b6eae974d2d71b430862a
