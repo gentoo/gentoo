@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (09 Sep 2017)
+# Python 3 port is almost complete with version 0.6.0. Users might run into
+# minor bumps here and there which is why the mask is still in place for the
+# time being.
+>=dev-java/javatoolkit-0.6.0
+
 # Alon Bar-Lev <alonbl@gentoo.org> (08 Sep 2017)
 # Complex build system, hard to maintain, no dependencies in tree, upstream
 # does not cooperate (Bug#630420).
@@ -270,12 +276,6 @@ kde-apps/kwalletd
 # Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
 # Masked for removal in 30 days. Dead upstream, no replacement.
 kde-apps/kommander
-
-# Patrice Clement <monsieurp@gentoo.org> (10 Aug 2017)
-# Not ready for production yet.
-=dev-java/javatoolkit-0.4.0
-=dev-java/javatoolkit-0.5.0
-=dev-java/javatoolkit-9999
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
 # Dev channel releases are only for people who are developers or want more
