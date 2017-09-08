@@ -3,10 +3,10 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
 EAPI=6
 HOMEPAGE=https://github.com/ctrlpvim/ctrlp.vim
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=vim
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/ctrlpvim/ctrlp.vim/archive/1.80.tar.gz -> ctrlp-1.80.tar.gz
 _eclasses_=vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
-_md5_=668d608e64ebbbe24b13b28c118541e1
+_md5_=e70f43201887478d3c72e78c0f9df95a
