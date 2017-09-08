@@ -4154,7 +4154,7 @@ dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimit
 dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
-dev-java/javatoolkit 0.3.0-r9 0.4.0 0.5.0 9999: Collection of Gentoo-specific tools for Java
+dev-java/javatoolkit 0.3.0-r9 0.6.0 9999: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2 1-r3: Dependency injection for Java (JSR-330)
 dev-java/javax-mail 1.4: Provides a platform/protocol-independent framework for mail and messaging apps
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
@@ -4496,7 +4496,7 @@ dev-java/xmpcore 5.1.2: Java library based on the Adobe C++ XMPCore library with
 dev-java/xom 1.2.10: A new XML object model
 dev-java/xp 0.5-r3: XP is an XML 1.0 parser written in Java
 dev-java/xpp2 2.1.10-r2: A streaming pull XML parser used to quickly process input elements
-dev-java/xpp3 1.1.4c-r3: An implementation of XMLPULL V1 API
+dev-java/xpp3 1.1.4c-r3 1.1.4c-r4: An implementation of XMLPULL V1 API
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspect XML schema docs
 dev-java/xstream 1.4.8-r2: A text-processing Java API that serialize objects to XML and back again
