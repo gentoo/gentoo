@@ -2189,7 +2189,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.16 3.18 3.21: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.21 3.23: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3.1 5.4.1 5.4.2 5.4.2-r1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.25.0 0.26.0 9999: Additional completion definitions for Zsh
@@ -18464,7 +18464,7 @@ www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that ca
 www-servers/apache 2.2.31-r1 2.2.32 2.4.25 2.4.27: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
-www-servers/caddy 0.10.6: Fast, cross-platform HTTP/2 web server with automatic HTTPS
+www-servers/caddy 0.10.6 0.10.7: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1 0.15: High performance web server
