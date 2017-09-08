@@ -28,7 +28,7 @@ LICENSE="UoI-NCSA"
 SLOT="$(get_major_version)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc +static-analyzer
-	test xml z3 elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
