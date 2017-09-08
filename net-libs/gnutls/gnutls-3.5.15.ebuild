@@ -89,9 +89,16 @@ multilib_src_configure() {
 	local libconf=($("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g'))
 
 	# TPM needs to be tested before being enabled
+	libconf+=( --without-tpm )
+
 	# hardware-accell is disabled on OSX because the asm files force
 	#   GNU-stack (as doesn't support that) and when that's removed ld
 	#   complains about duplicate symbols
+	[[ ${CHOST} == *-darwin* ]] && libconf+=( --disable-hardware-acceleration )
+
+	# Cygwin as does not understand these asm files at all
+	[[ ${CHOST} == *-cygwin* ]] && libconf+=( --disable-hardware-acceleration )
+
 	ECONF_SOURCE=${S} econf \
 		$(multilib_native_enable manpages) \
 		$(multilib_native_use_enable doc gtk-doc) \
@@ -117,9 +124,7 @@ multilib_src_configure() {
 		$(use_with zlib) \
 		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt" \
 		--without-included-libtasn1 \
-		--without-tpm \
-		"${libconf[@]}" \
-		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
+		"${libconf[@]}"
 }
 
 multilib_src_install_all() {
