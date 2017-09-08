@@ -1291,6 +1291,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.8.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 17.03.1 17.03.2 17.06.0-r1 17.06.1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker-bench-security 1.3.2: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.13.0 1.14.0 1.15.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.9.0 0.10.0 0.12.0: Machine management for a container-centric world
@@ -17495,7 +17496,7 @@ sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loa
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 0.94.9 9.2.1-r2 10.2.3-r2 10.2.7-r1 10.2.8 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3 12.2.0: Ceph distributed filesystem
+sys-cluster/ceph 10.2.3-r2 10.2.7-r1 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3 12.2.0-r1: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 9.1.4 10.0.4 10.0.5 10.0.6 11.0.0 2016.2.9999 2017.1.9999 2017.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
@@ -17848,7 +17849,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 64 65 66 67: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.86 4.4.87 4.9.34 4.9.47 4.12.5 4.12.6 4.12.7 4.12.8 4.12.9 4.12.10 4.13.0: Full sources including the Gentoo patchset for the 4.13 kernel tree
+sys-kernel/gentoo-sources 3.10.107 4.1.42 4.1.43 4.4.75 4.4.86 4.4.87 4.9.34 4.9.47 4.9.48 4.12.5 4.12.6 4.12.7 4.12.8 4.12.9 4.12.10 4.13.0: Full sources including the Gentoo patchset for the 4.13 kernel tree
 sys-kernel/git-sources 4.13_rc1 4.13_rc2 4.13_rc3 4.13_rc4 4.13_rc5 4.13_rc6 4.13_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
