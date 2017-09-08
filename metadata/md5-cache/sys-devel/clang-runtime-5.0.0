@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta-ebuild for clang runtime libraries
+EAPI=6
+HOMEPAGE=https://clang.llvm.org/
+IUSE=+compiler-rt libcxx openmp +sanitize abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=metapackage
+RDEPEND=compiler-rt? ( ~sys-libs/compiler-rt-5.0.0:5.0.0 sanitize? ( ~sys-libs/compiler-rt-sanitizers-5.0.0:5.0.0 ) ) libcxx? ( >=sys-libs/libcxx-5.0.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) openmp? ( >=sys-libs/libomp-5.0.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+REQUIRED_USE=sanitize? ( compiler-rt )
+SLOT=5.0.0
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=c5e2e85f580197ee6ca96277d70e36fc

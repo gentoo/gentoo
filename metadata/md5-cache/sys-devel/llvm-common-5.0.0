@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install test
+DESCRIPTION=Common files shared between multiple slots of LLVM
+EAPI=6
+HOMEPAGE=https://llvm.org/
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=UoI-NCSA
+RDEPEND=!sys-devel/llvm:0
+SLOT=0
+SRC_URI=https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz
+_md5_=a4a7d9efd5de3e24ecf6074fc3208e34
