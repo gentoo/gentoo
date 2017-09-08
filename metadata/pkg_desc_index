@@ -7811,7 +7811,7 @@ dev-python/hvac 0.2.17: Python 2/3 client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 2.6.2 3.0.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.0.0 5.1.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1: A featureful, correct URL for Python
-dev-python/hypothesis 3.6.0-r1 3.6.1 3.8.3 3.18.5 3.19.2 3.22.0 3.22.2: A library for property based testing
+dev-python/hypothesis 3.6.0-r1 3.6.1 3.8.3 3.18.5 3.19.2 3.22.0 3.22.2 3.24.1: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
@@ -8251,7 +8251,7 @@ dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14 0.3.15: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.5.0 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0 1.15.1: Python bindings for the cairo library
+dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0 1.15.1 1.15.2: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.5.12-r1 0.6.1: Python wrapping of the Cap'n Proto library
@@ -8273,7 +8273,7 @@ dev-python/pycollada 0.4 9999: python library for reading and writing collada do
 dev-python/pycountry 16.11.8 17.5.14: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.17 2.18-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
-dev-python/pycryptodome 3.4.5 3.4.6: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.4.5 3.4.6 3.4.7: A self-contained cryptographic library for Python
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 2017.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
