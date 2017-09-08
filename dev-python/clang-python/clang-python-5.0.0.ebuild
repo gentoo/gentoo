@@ -4,18 +4,15 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit git-r3 python-r1
+inherit python-r1
 
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/clang.git
-	https://github.com/llvm-mirror/clang.git"
-EGIT_BRANCH="release_50"
+SRC_URI="https://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -29,7 +26,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-S=${WORKDIR}/${P}/bindings/python
+S=${WORKDIR}/cfe-${PV/_/}.src/bindings/python
+
+src_prepare() {
+	default
+
+	# move to the correct subdirectory
+	# https://reviews.llvm.org/D37378
+	mv tests/{,cindex/}test_exception_specification_kind.py || die
+}
 
 src_test() {
 	python_foreach_impl nosetests -v || die
