@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/netaddr[${PYTHON_USEDEP}]
 	app-text/asciidoc
 	net-misc/sshpass
 	virtual/ssh
