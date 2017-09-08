@@ -166,7 +166,7 @@ app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.20 2.23 2.24 2.25 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0 1.0.0-r1: Filesystem Integrity Checker
 app-admin/pprocm 1.0-r2: ncurses-based program to monitor CPU, disk, network and memory usage
-app-admin/prelude-manager 3.0.0 3.1.0: Bus communication for all Prelude modules
+app-admin/prelude-manager 3.0.0 3.1.0 4.0.0: Bus communication for all Prelude modules
 app-admin/procinfo 18-r2: Displays some kernel stats and info on a running Linux system
 app-admin/procinfo-ng 2.0.304-r1: Completely rewrite of the old system monitoring app procinfo
 app-admin/profile-cleaner 2.36: Vacuum and reindex browser sqlite databases
@@ -4920,7 +4920,7 @@ dev-libs/libplatform 2.0.1 2.1.0.1: Platform support library used by libCEC and 
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 4.0.1 5.0.1 5.1.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0-r1 4.0.0: Prelude-SIEM Framework Library
-dev-libs/libpreludedb 3.0.0 3.1.0: Framework to easy access to the Prelude database
+dev-libs/libpreludedb 3.0.0 3.1.0 4.0.0: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.3.0 1.4.0: Library for password quality checking and generating random passwords
@@ -14452,9 +14452,9 @@ net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0: Portmon is a network service monitoring daemon
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/postal 0.72: SMTP and POP mailserver benchmark. Supports SSL, randomized user accounts and more
-net-analyzer/prelude-correlator 3.0.1-r1 3.1.0: Real time correlator of events received by Prelude Manager
-net-analyzer/prelude-lml 3.0.0 3.1.0: The prelude log analyzer
-net-analyzer/prelude-lml-rules 3.0.1 3.1.0: Prelude LML community ruleset
+net-analyzer/prelude-correlator 3.0.1-r1 3.1.0 4.0.0: Real time correlator of events received by Prelude Manager
+net-analyzer/prelude-lml 3.0.0 3.1.0 4.0.0: The prelude log analyzer
+net-analyzer/prelude-lml-rules 3.0.1 3.1.0 4.0.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
 net-analyzer/prometheus 1.7.1 2.0.0_beta1: Prometheus monitoring system and time series database
 net-analyzer/prometheus-node_exporter 0.14.0: Prometheus exporter for machine metrics
@@ -18369,7 +18369,7 @@ www-apps/phpwebsite 0.10.2 1.7.2: phpWebSite Content Management System
 www-apps/piwigo 2.8.6-r1 2.9.0 2.9.1: a photo gallery software for the web
 www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8 3.0.2 3.1: Web Based Management tool for Postfix style virtual domains and users
-www-apps/prewikka 3.1.0: Graphical front-end analysis console for the Prelude Framework
+www-apps/prewikka 3.1.0 4.0.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 3.2.7 3.2.7-r1 3.3.4 3.3.4-r1 3.4.2 3.4.2-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
