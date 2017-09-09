@@ -18504,7 +18504,7 @@ x11-apps/editres 1.0.6: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
-x11-apps/fusion-icon 0.1-r4: Compiz Fusion Tray Icon and Manager
+x11-apps/fusion-icon 0.1-r4 0.2.4: Compiz Fusion Tray Icon and Manager
 x11-apps/iceauth 1.0.6 1.0.7: ICE authority file utility
 x11-apps/ico 1.0.4: animate an icosahedron or other polyhedron
 x11-apps/intel-gpu-tools 1.15: Intel GPU userland tools
