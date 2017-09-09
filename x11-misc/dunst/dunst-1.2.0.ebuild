@@ -47,9 +47,9 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" PREFIX="/usr" install
 
-	dunstify && dobin dunstify
+	use dunstify && dobin dunstify
 
 	dodoc AUTHORS CHANGELOG.md README.md RELEASE_NOTES
 }
