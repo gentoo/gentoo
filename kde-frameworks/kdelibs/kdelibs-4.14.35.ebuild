@@ -126,6 +126,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-3dnow.patch"
 	"${FILESDIR}/${P}-kde3support.patch"
 	"${FILESDIR}/${P}-plasma4.patch"
+	# upstream:
+	"${FILESDIR}/${P}-enchant2.patch"
 )
 
 src_prepare() {
