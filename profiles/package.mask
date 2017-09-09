@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (09 Sep 2017)
+# Requires dead Qt 4. Dead upstream.
+# Masked for removal in 30 days.
+app-text/kding
+
+# Michael Palimaka <kensington@gentoo.org> (09 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Unmaintained.
 # Masked for removal in 30 days.
 sys-process/procexp
