@@ -37,7 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 LIBDIR="${EROOT%/}/usr/$(get_libdir)"
+	eqmake5 LIBDIR="${EPREFIX%/}/usr/$(get_libdir)"
 }
 
 src_install() {
