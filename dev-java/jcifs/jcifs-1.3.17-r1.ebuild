@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -7,8 +7,8 @@ JAVA_PKG_IUSE="doc examples source"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Library that implements the CIFS/SMB networking protocol in Java"
-SRC_URI="http://jcifs.samba.org/src/${P}.tgz"
-HOMEPAGE="http://jcifs.samba.org/"
+SRC_URI="https://jcifs.samba.org/src/${P}.tgz"
+HOMEPAGE="https://jcifs.samba.org/"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
 KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
