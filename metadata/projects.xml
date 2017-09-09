@@ -4232,13 +4232,15 @@ developers and volunteer mentors.</description>
     <name>Wine</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wine</url>
     <description>Maintenance of Wine and Wine-related Packages</description>
-    <member>
+    <member is-lead="1">
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
+      <role>Non-Technical Lead</role>
     </member>
     <member is-lead="1">
       <email>NP-Hardass@gentoo.org</email>
       <name>NP-Hardass</name>
+      <role>Technical Lead</role>
     </member>
     <member>
       <email>ryao@gentoo.org</email>
