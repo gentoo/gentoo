@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure test
+DEPEND=sys-libs/pinktrace:= debug? ( sys-libs/libunwind:= ) test? ( app-portage/unsandbox )
+DESCRIPTION=ptrace-based sandbox
+EAPI=6
+HOMEPAGE=https://git.exherbo.org/sydbox-1.git
+IUSE=debug seccomp test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=sys-libs/pinktrace:= debug? ( sys-libs/libunwind:= )
+SLOT=0
+SRC_URI=http://distfiles.exherbo.org/distfiles/sydbox-1.0.7.tar.bz2
+_md5_=781874a86dfa4b91e43db6d0fcc790c7
