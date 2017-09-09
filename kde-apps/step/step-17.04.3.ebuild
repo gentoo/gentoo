@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	kde5_src_prepare
 
+	# FIXME: Should be upstream in 17.08.2
+	sed -e 's/add_subdirectory( *po *)/ecm_optional_add_subdirectory(po)/' \
+		-i CMakeLists.txt || die
+
 	# FIXME: Drop duplicate upstream
 	sed -e '/find_package.*Xml Test/ s/^/#/' \
 		-i stepcore/CMakeLists.txt || die
