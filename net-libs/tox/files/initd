@@ -15,7 +15,7 @@ start() {
 	start-stop-daemon --start \
 		--pidfile "${PIDFILE}" \
 		--user="${TOX_USER}" --group="${TOX_GROUP}" \
-		--exec /usr/bin/tox-bootstrapd -- /etc/tox-bootstrapd.conf
+		--exec /usr/bin/tox-bootstrapd -- --config /etc/tox-bootstrapd.conf
 
 	eend $?
 }
