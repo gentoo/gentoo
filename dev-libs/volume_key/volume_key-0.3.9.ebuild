@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/nss
