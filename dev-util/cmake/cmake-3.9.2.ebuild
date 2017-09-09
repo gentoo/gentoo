@@ -5,7 +5,7 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common toolchain-funcs eutils versionator cmake-utils virtualx flag-o-matic
+inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils cmake-utils
 
 MY_P="${P/_/-}"
 
@@ -198,8 +198,18 @@ src_install() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
+	if use qt5; then
+		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
+	if use qt5; then
+		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
 }
