@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (9 Sep 2017)
+# Potentially destructive. Use it only if you know what you're doing.
+sys-libs/glibc vanilla
+
 # Michael Palimaka <kensington@gentoo.org> (09 Sep 2017)
 # Required dependency isn't yet available
 dev-util/massif-visualizer callgraph
