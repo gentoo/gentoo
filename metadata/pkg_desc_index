@@ -1432,6 +1432,7 @@ app-eselect/eselect-python 20160516 99999999: Eselect module for management of m
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.21 0.22 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
+app-eselect/eselect-repository 9999: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20131227 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -4570,7 +4571,7 @@ dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distrib
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
-dev-lang/nim 0.16.0 0.17.0: compiled, garbage-collected systems programming language
+dev-lang/nim 0.16.0 0.17.0 0.17.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 2017.07 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.0 4.04.1 4.04.2 4.05.0: Type-inferring functional programming language descended from the ML family
