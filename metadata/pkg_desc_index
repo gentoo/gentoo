@@ -5095,7 +5095,7 @@ dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
-dev-libs/unibilium 1.1.4 1.2.0: A very basic terminfo library
+dev-libs/unibilium 1.1.4 1.2.0 1.2.1: A very basic terminfo library
 dev-libs/unittest++ 1.6.0 1.6.1: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2: C++ universal value object and JSON library
 dev-libs/urdfdom 0.4.2 1.0.0 9999: URDF (U-Robot Description Format) library
