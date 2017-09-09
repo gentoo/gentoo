@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit toolchain-funcs
 
 DESCRIPTION="customizable and lightweight notification-daemon"
 HOMEPAGE="http://www.knopwob.org/dunst/ https://github.com/dunst-project/dunst"
@@ -35,23 +35,21 @@ DEPEND="
 RDEPEND="${CDEPEND}"
 
 src_prepare() {
-	default
-
-	# Remove nasty CFLAGS which override user choice
 	sed -i -e "/^CFLAGS/ { s:-g::;s:-O.:: }" config.mk || die
 
-	if use dunstify; then
-		# add dunstify to the all target
-		sed -i -e "/^all:/ s:$: dunstify:" Makefile || die
-	fi
+	default
+}
+
+src_compile() {
+	tc-export CC
+	emake
+	use dunstify && emake dunstify
 }
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
 
-	if use dunstify; then
-		dobin dunstify
-	fi
+	use dunstify && dobin dunstify
 
 	dodoc AUTHORS CHANGELOG.md README.md RELEASE_NOTES
 }

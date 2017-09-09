@@ -1,9 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="customizable and lightweight notification-daemon"
 HOMEPAGE="http://www.knopwob.org/dunst/"
@@ -20,33 +19,41 @@ CDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2=
 	x11-libs/libXScrnSaver
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/pango[X]
 	dunstify? ( x11-libs/libnotify )
 "
-
-DEPEND="${CDEPEND}
-		dev-lang/perl
-		virtual/pkgconfig"
-
+DEPEND="
+	${CDEPEND}
+	dev-lang/perl
+	virtual/pkgconfig
+"
 RDEPEND="${CDEPEND}"
 
 src_prepare() {
-	# Remove nasty CFLAGS which override user choice
-	sed -ie "/^CFLAGS/ {
-		s:-g::
-		s:-O.::
-	}" config.mk || die "sed failed"
+	sed -i \
+		-e '/^CFLAGS/ { s:-g::; s:-O.:: }' \
+		-e '/^CPPFLAGS/ s:-D_BSD_SOURCE:-D_DEFAULT_SOURCE:' \
+		config.mk || die
 
-	if use dunstify; then
-		# add dunstify to the all target
-		sed -ie "/^all:/ s:$: dunstify:" Makefile || die "sed failed"
-	fi
+	sed -i \
+		-e 's:registration_id > 0:(&):' \
+		dbus.c || die
 
-	epatch_user
+	sed -i \
+		-e '/g_print.*iter->data/ s:iter->data:(char *)&:' \
+		dunstify.c || die
+
+	default
+}
+
+src_compile() {
+	tc-export CC
+	emake V=
+
+	use dunstify && emake V= dunstify
 }
 
 src_install() {
