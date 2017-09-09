@@ -8,8 +8,8 @@ PYTHON_REQ_USE="threads"
 inherit python-single-r1 waf-utils multilib-minimal eutils
 
 DESCRIPTION="An LDAP-like embedded database"
-HOMEPAGE="http://ldb.samba.org"
-SRC_URI="http://www.samba.org/ftp/pub/${PN}/${P}.tar.gz"
+HOMEPAGE="https://ldb.samba.org/"
+SRC_URI="https://www.samba.org/ftp/pub/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
