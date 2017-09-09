@@ -31,9 +31,14 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 cargo_crate_uris() {
 	local crate
 	for crate in "$@"; do
-		local name version url
+		local name version url pretag
 		name="${crate%-*}"
 		version="${crate##*-}"
+		pretag="[a-zA-Z]+"
+		if [[ $version =~ $pretag ]]; then
+			version="${name##*-}-${version}"
+			name="${name%-*}"
+		fi
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
 		echo "${url}"
 	done
