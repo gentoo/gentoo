@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="A wrapper to fake privilege separation"
 HOMEPAGE="https://cwrap.org/uid_wrapper.html"
-SRC_URI="ftp://ftp.samba.org/pub/cwrap/${P}.tar.gz
+SRC_URI="https://www.samba.org/ftp/pub/cwrap/${P}.tar.gz
 	https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
