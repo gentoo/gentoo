@@ -81,7 +81,6 @@ RESTRICT="test"
 PATCHES=(
 	# TODO upstream
 	"${FILESDIR}/${PN}-2.18.6-featuresummary.patch"
-	"${FILESDIR}/${PN}-2.18.6-python.patch"
 	# Taken from redhat
 	"${FILESDIR}/${P}-sip.patch"
 	# git master
