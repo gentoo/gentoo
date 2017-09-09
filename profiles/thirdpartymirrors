@@ -32,7 +32,7 @@ qmail		http://www.qmail.org/ http://qmail.geto.net/ http://qmail-mirror.jms1.net
 quakeunity	http://www.mirrorservice.org/sites/quakeunity.com
 rubygems	https://rubygems.org/gems
 ruby		https://cache.ruby-lang.org/pub/ruby/ ftp://ftp.fu-berlin.de/unix/languages/ruby/
-samba		http://ftp.samba.org/pub/samba ftp://ftp.samba.gr.jp/pub/samba http://ftp.cc.uoc.gr/mirrors/samba
+samba		https://download.samba.org/pub/samba/ ftp://ftp.samba.gr.jp/pub/samba http://ftp.cc.uoc.gr/mirrors/samba
 sabayon         http://sabayon.c3sl.ufpr.br/distfiles http://ftp.nluug.nl/pub/os/Linux/distr/sabayonlinux/distfiles http://ftp.rnl.ist.utl.pt/pub/sabayon/distfiles http://ftp.fsn.hu/pub/linux/distributions/sabayon/distfiles http://ftp.nluug.nl/pub/os/Linux/distr/sabayonlinux/distfiles http://cross-lfs.sabayonlinux.org/distfiles http://sabayon.mirror.dkm.cz/pub/sabayon/distfiles http://mirror.internode.on.net/pub/sabayon/distfiles http://na.mirror.garr.it/mirrors/sabayonlinux/distfiles http://distfiles.sabayon.org
 snobol4		ftp://ftp.snobol4.org/snobol/old/
 sourceforge	http://download.sourceforge.net
