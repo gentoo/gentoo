@@ -10483,6 +10483,7 @@ dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.2.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1: GNU make replacement
+dev-util/massif-visualizer 0.7.0: Tool visualising massif data
 dev-util/mdds 1.2.2 1.2.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4 3.17.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
