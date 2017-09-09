@@ -27,6 +27,7 @@ RDEPEND="
 	media-libs/freetype:2
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/libcxx
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
