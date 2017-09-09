@@ -47,6 +47,15 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
+
+	# bug 630394
+	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
+}
+
 src_configure() {
 	if use drop-root; then
 		append-cppflags -DHAVE_CAP_NG_H
@@ -63,7 +72,6 @@ src_configure() {
 
 src_test() {
 	if [[ ${EUID} -ne 0 ]] || ! use drop-root; then
-		sed -i -e '/^\(espudp1\|eapon1\)/d;' tests/TESTLIST || die
 		emake check
 	else
 		ewarn "If you want to run the test suite, make sure you either"
