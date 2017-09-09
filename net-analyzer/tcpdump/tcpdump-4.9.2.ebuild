@@ -10,7 +10,7 @@ HOMEPAGE="
 	https://github.com/the-tcpdump-group/tcpdump
 "
 SRC_URI="
-	https://sources.archlinux.org/other/packages/${PN}/${P}.tar.gz
+	http://www.tcpdump.org/release/${P}.tar.gz
 "
 
 LICENSE="BSD"
