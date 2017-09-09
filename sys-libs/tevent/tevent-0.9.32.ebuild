@@ -8,8 +8,8 @@ PYTHON_REQ_USE="threads(+)"
 inherit waf-utils multilib-minimal python-single-r1
 
 DESCRIPTION="Samba tevent library"
-HOMEPAGE="http://tevent.samba.org/"
-SRC_URI="http://samba.org/ftp/tevent/${P}.tar.gz"
+HOMEPAGE="https://tevent.samba.org/"
+SRC_URI="https://www.samba.org/ftp/tevent/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
