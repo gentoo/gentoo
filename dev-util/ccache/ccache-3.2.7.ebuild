@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit eutils readme.gentoo-r1
 
 DESCRIPTION="fast compiler cache"
-HOMEPAGE="http://ccache.samba.org/"
-SRC_URI="http://samba.org/ftp/ccache/${P}.tar.xz"
+HOMEPAGE="https://ccache.samba.org/"
+SRC_URI="https://www.samba.org/ftp/ccache/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
