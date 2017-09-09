@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.com/accounts-sso/libaccounts-qt/repository/VERSION_1.15/archive.tar.gz -> accounts-qt-1.15.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
-_md5_=fc389a2f9e61b6a866270264d8049740
+_md5_=0f1af1f7643127bf7e2b75bb0b805f1b

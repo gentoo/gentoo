@@ -1014,7 +1014,7 @@ app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-do
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.6.5 1.6.6: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.5 1.6.6 1.6.7: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.22.0 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
@@ -12234,7 +12234,7 @@ kde-plasma/khotkeys 5.10.4 5.10.5: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.10.4 5.10.5: A utility that provides information about a computer system
 kde-plasma/kmenuedit 5.10.4 5.10.5: KDE Plasma menu editor
 kde-plasma/kscreen 5.10.4 5.10.5: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.10.4 5.10.5 5.10.5.1: Library and components for secure lock screen architecture
+kde-plasma/kscreenlocker 5.10.4 5.10.5.1: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.10.4 5.10.5: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.10.4 5.10.5: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.10.4 5.10.5 5.10.5-r1: KWallet PAM module to not enter password again
