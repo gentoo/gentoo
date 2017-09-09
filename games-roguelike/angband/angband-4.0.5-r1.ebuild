@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,8 @@ RDEPEND="X? ( x11-libs/libX11 )
 DEPEND="${RDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig"
+
+PATCHES=("${FILESDIR}"/${P}-pie-gcc.patch)
 
 src_prepare() {
 	default
