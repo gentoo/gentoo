@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="debug doc test"
 
 COMMON_DEPEND="
