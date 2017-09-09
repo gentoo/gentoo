@@ -2316,6 +2316,7 @@ app-text/html401 19991224-r2: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
 app-text/htmlinc 1.0_beta1 1.0_beta1-r2: HTML Include System by Ulli Meybohm
+app-text/htmlmin 0.1.11_pre20170909: A configurable HTML Minifier with safety features
 app-text/htmlrecode 1.3.1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1: An HTML preprocessor
@@ -2991,6 +2992,7 @@ dev-db/percona-xtrabackup 2.4.7 2.4.8: Hot backup utility for MySQL based server
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.1-r1 1.22.1-r2: wxWidgets GUI for PostgreSQL
+dev-db/pgadmin4 1.6: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
@@ -7683,9 +7685,11 @@ dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Reso
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-debug 0.4.3: Configures Flask applications in a canonical way
 dev-python/flask-evolution 0.5-r1 0.6: Simple migrations for Flask/SQLAlchemy projects
+dev-python/flask-gravatar 0.4.2: Small extension for Flask to make usage of Gravatar service easy
+dev-python/flask-htmlmin 1.2.1: Minimize your flask rendered html
 dev-python/flask-login 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 1.3.0 2.0.0: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-migrate 1.3.0 2.0.0 2.1.1: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.7.0 0.8: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.5 0.6: Easily create navigation for Flask applications.
 dev-python/flask-openid 1.2.4 1.2.5: OpenID support for Flask
