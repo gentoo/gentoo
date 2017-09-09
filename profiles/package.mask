@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (09 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Unmaintained.
+# Masked for removal in 30 days.
+x11-apps/python-whiteboard
+
 # Patrice Clement <monsieurp@gentoo.org> (09 Sep 2017)
 # Python 3 port is almost complete with version 0.6.0. Users might run into
 # minor bumps here and there which is why the mask is still in place for the
