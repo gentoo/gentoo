@@ -1,0 +1,33 @@
+From 668ef94b2b861f7ec4aa20941bcb6493bc4367be Mon Sep 17 00:00:00 2001
+From: Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com>
+Date: Sat, 9 Sep 2017 19:39:14 +0200
+Subject: Fix build with >=enchant-2
+
+Summary: Forwarding a user-contributed patch.
+
+Reviewers: aacid
+
+Reviewed By: aacid
+
+Differential Revision: https://phabricator.kde.org/D7748
+---
+ sonnet/plugins/enchant/enchantdict.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/sonnet/plugins/enchant/enchantdict.cpp b/sonnet/plugins/enchant/enchantdict.cpp
+index 52f7fad..80e40fc 100644
+--- a/sonnet/plugins/enchant/enchantdict.cpp
++++ b/sonnet/plugins/enchant/enchantdict.cpp
+@@ -82,8 +82,7 @@ bool QSpellEnchantDict::storeReplacement(const QString &bad,
+ 
+ bool QSpellEnchantDict::addToPersonal(const QString &word)
+ {
+-    enchant_dict_add_to_pwl(m_dict, word.toUtf8(),
+-                            word.toUtf8().length());
++    enchant_dict_add(m_dict, word.toUtf8(), word.toUtf8().length());
+     return true;
+ }
+ 
+-- 
+cgit v0.11.2
+
