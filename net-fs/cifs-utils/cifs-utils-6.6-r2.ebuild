@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
-HOMEPAGE="http://wiki.samba.org/index.php/LinuxCIFS_utils"
+HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
 SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
