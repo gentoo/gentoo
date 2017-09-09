@@ -27,6 +27,7 @@ RDEPEND="
 	media-libs/freetype:2
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/libcxx
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
@@ -71,10 +72,10 @@ src_install() {
 	doins -r usr/.
 
 	fperms +x /opt/${MY_PN}/bin/${MY_PN}
-	dosym /opt/${MY_PN}/bin/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/share/applications/${MY_PN}.desktop \
+	dosym "${D}/opt/${MY_PN}/bin/${MY_PN}" /usr/bin/${MY_PN}
+	dosym "${D}/opt/${MY_PN}/share/applications/${MY_PN}.desktop" \
 		/usr/share/applications/${MY_PN}.desktop
-	dosym /opt/${MY_PN}/share/pixmaps/${MY_PN}.png \
+	dosym "${D}/opt/${MY_PN}/share/pixmaps/${MY_PN}.png" \
 		/usr/share/pixmaps/${MY_PN}.png
 }
 
