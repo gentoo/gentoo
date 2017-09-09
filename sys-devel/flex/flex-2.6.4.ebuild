@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	#epatch "${PATCHES[@]}"
+	epatch_user
 
 	# Disable running in the tests/ subdir as it has a bunch of built sources
 	# that cannot be made conditional (automake limitation). #568842
