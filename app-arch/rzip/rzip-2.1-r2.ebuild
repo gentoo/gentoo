@@ -6,8 +6,8 @@ EAPI="2"
 inherit autotools eutils
 
 DESCRIPTION="Compression program for large files"
-HOMEPAGE="http://rzip.samba.org"
-SRC_URI="http://rzip.samba.org/ftp/rzip/${P}.tar.gz"
+HOMEPAGE="https://rzip.samba.org/"
+SRC_URI="https://rzip.samba.org/ftp/rzip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
