@@ -5,5 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<remote-id type="github">mgorny/eselect-repository</remote-id>
+	<upstream>
+		<remote-id type="github">mgorny/eselect-repository</remote-id>
+	</upstream>
 </pkgmetadata>
