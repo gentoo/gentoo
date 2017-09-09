@@ -204,7 +204,7 @@ src_unpack() {
 	if [[ -n ${EGIT_REPO_URI} ]] ; then
 		git-r3_src_unpack
 	else
-		unpack ${PN}.tar.xz
+		unpack ${P}.tar.xz
 	fi
 
 	cd "${S}"
