@@ -11,7 +11,7 @@ SRC_URI="https://forge.ocamlcore.org/frs/download.php/1574/${P}.tgz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc mpir +ocamlopt"
 
 RDEPEND="
