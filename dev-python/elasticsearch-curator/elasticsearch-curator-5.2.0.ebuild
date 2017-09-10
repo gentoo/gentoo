@@ -6,7 +6,14 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="curator"
-ES_VERSION="5.3.2"
+ES_VERSION="5.5.2"
+
+# tests fail in chroot
+# https://github.com/elastic/elasticsearch/issues/12018
+RESTRICT="test"
+
+# running tests in non-chroot environments:
+# FEATURES="test -usersandbox" emerge dev-python/elasticsearch-curator
 
 inherit distutils-r1
 
@@ -21,11 +28,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/elasticsearch-py-2.4.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/click-6.0[${PYTHON_USEDEP}]
+	>=dev-python/elasticsearch-py-5.4.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-6.0.0[${PYTHON_USEDEP}]
+	>=dev-python/click-6.7[${PYTHON_USEDEP}]
 	>=dev-python/certifi-2017.4.17[${PYTHON_USEDEP}]
-	>=dev-python/urllib3-1.8.3[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.20[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.9.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
@@ -40,7 +47,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-# FEATURES="test -usersandbox" emerge dev-python/elasticsearch-curator
 python_test() {
 	ES="${WORKDIR}/elasticsearch-${ES_VERSION}"
 	ES_PORT="25123"
@@ -54,11 +60,11 @@ python_test() {
 		"${ES}/config/elasticsearch.yml" || die
 
 	# start local instance of elasticsearch
-	"${ES}/bin/elasticsearch" -d -p "${PID}" -Edefault.path.repo=/ || die
+	"${ES}/bin/elasticsearch" -d -p "${PID}" -Epath.repo=/ || die
 
 	local i
 	local es_started=0
-	for i in {1..15}; do
+	for i in {1..20}; do
 		grep -q "started" "${ES_LOG}" 2> /dev/null
 		if [[ $? -eq 0 ]]; then
 			einfo "Elasticsearch started"
@@ -89,17 +95,12 @@ python_prepare_all() {
 	# avoid downloading from net
 	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
 
-	# remove test TestCLIFixFor687 as it is only to be run on older versions
-	# and the call to curator.get_version(global_client) sometimes
-	# fails with Connection refused
-	sed -e '137,255d' -i test/integration/test_delete_indices.py || die
-
 	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
 	cd docs || die
-	emake man $(usex doc html "")
+	emake -j1 man $(usex doc html "")
 }
 
 python_install_all() {
@@ -110,7 +111,7 @@ python_install_all() {
 
 pkg_postinst() {
 	ewarn ""
-	ewarn "For Python 3 support information please read: http://click.pocoo.org/3/python3/"
+	ewarn "For Python 3 support information please read: http://click.pocoo.org/latest/python3/"
 	ewarn ""
 	ewarn "Example usage on Python 3:"
 	ewarn "export LC_ALL=en_US.UTF-8"
