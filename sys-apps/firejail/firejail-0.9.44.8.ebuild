@@ -20,6 +20,8 @@ DEPEND="!sys-apps/firejail-lts
 RDEPEND="${DEPEND}
 	x11? ( x11-wm/xpra[client,server] )"
 
+RESTRICT=test
+
 src_prepare() {
 	default
 	find -name Makefile.in -exec sed -i -r \
