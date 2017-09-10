@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Advanced command line hexadecimal editor and more"
 HOMEPAGE="http://www.radare.org"
-SRC_URI="http://cloud.radare.org/get/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/radare/radare2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
