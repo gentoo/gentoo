@@ -4021,7 +4021,7 @@ dev-java/commons-vfs 1.0-r1 2.0-r1: A single API for accessing various different
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables
-dev-java/cssparser 0.9.20 0.9.21 0.9.22: API for parsing CSS 2 in Java
+dev-java/cssparser 0.9.22 0.9.23: API for parsing CSS 2 in Java
 dev-java/db4o-jdk11 7.4 7.4-r1: Core files for the object database for Java
 dev-java/db4o-jdk12 7.4 7.4-r1: Core files for the object database for Java
 dev-java/db4o-jdk5 7.4 7.4-r1: Core files for the object database for Java
@@ -7481,7 +7481,7 @@ dev-python/configparser 3.3.0.2 3.5.0 3.5.0-r1: Backport of Python-3 built-in co
 dev-python/configshell 1.6 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
 dev-python/configshell-fb 1.1.22 1.1.23: A Python library for building configuration shells
 dev-python/constantly 15.1.0: Symbolic constants in Python
-dev-python/construct 2.5.2 2.8.12: A powerful declarative parser for binary data
+dev-python/construct 2.5.2 2.8.12 2.8.14: A powerful declarative parser for binary data
 dev-python/contextlib2 0.5.4 0.5.5: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/corner 2.0.1: Make scatter matrix corner plots
@@ -14272,8 +14272,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8 1.9: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8h 1.1.20: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 0.8.8h 1.1.20: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 0.8.8h 1.1.20 1.1.21: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 0.8.8h 1.1.20 1.1.21: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices

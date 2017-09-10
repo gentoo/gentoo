@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare prerm setup
+DEPEND=|| ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Cacti is a complete frontend to rrdtool
+EAPI=6
+HOMEPAGE=https://www.cacti.net/
+IUSE=snmp doc vhosts
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php[cli,mysql,session,sockets,xml] dev-php/adodb net-analyzer/rrdtool[graph] virtual/cron virtual/mysql snmp? ( >=net-analyzer/net-snmp-5.2.0 ) >=app-admin/webapp-config-1.50.15
+SLOT=1.1.21
+SRC_URI=https://www.cacti.net/downloads/cacti-1.1.21.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=0813341b6caff98ff767f528cd56b968
