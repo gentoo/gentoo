@@ -9110,14 +9110,14 @@ dev-ros/clear_costmap_recovery 1.14.0-r1 1.14.2 1.15.1 9999: Recovery behavior t
 dev-ros/cmake_modules 0.4.0 0.4.1 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.10 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.10 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
-dev-ros/combined_robot_hw 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Combined Robot HW class
+dev-ros/combined_robot_hw 0.12.0 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.5 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
 dev-ros/control_msgs 1.4.0 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.14.0 1.15.0 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Interface base class for controllers
-dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: The controller manager
+dev-ros/controller_manager 0.12.0 9999: The controller manager
 dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: The controller manager
 dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
@@ -9179,9 +9179,9 @@ dev-ros/image_view 1.12.19 1.12.20 9999: Simple viewer for ROS image topics
 dev-ros/imu_complementary_filter 1.1.5 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_filter_madgwick 1.1.5 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_processors 0.2.1 0.2.2 9999: Processors for sensor_msgs::Imu data
-dev-ros/imu_transformer 0.2.1 0.2.2 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
+dev-ros/imu_transformer 0.2.2 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutorials
-dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communication library for RViz and similar tools
+dev-ros/interactive_markers 1.11.3 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Interface for enforcing joint limits
@@ -9400,7 +9400,7 @@ dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 0.1.10 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.6 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.8.0 0.9.1 0.9.3 0.10.0 9999: Online automated pattern-based object tracker relying on visual servoing
-dev-ros/visp_bridge 0.8.0 0.9.1 0.9.3 0.10.0 9999: Converts between ROS structures and ViSP structures
+dev-ros/visp_bridge 0.10.0 9999: Converts between ROS structures and ViSP structures
 dev-ros/visp_camera_calibration 0.10.0 9999: Calibration of cameras using a customizable pattern and ViSP library
 dev-ros/visp_hand2eye_calibration 0.10.0 9999: Estimates the camera position with respect to its effector using the ViSP library
 dev-ros/visp_tracker 0.10.0 9999: Wraps the ViSP moving edge tracker provided by the ViSP visual servoing library into a ROS package
