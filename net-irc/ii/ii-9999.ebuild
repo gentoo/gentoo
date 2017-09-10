@@ -6,7 +6,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
 HOMEPAGE="https://tools.suckless.org/ii/"
-EGIT_REPO_URI="git://git.suckless.org/ii"
+EGIT_REPO_URI="https://git.suckless.org/ii"
 
 LICENSE="MIT"
 SLOT="0"
