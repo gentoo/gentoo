@@ -4862,7 +4862,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.6.2 1.7.2 1.7.3 1.8.0 1.8.1: Library to handle input devices in Wayland
+dev-libs/libinput 1.6.2 1.7.2 1.7.3 1.8.2: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.6: Open-source library for reading, mastering and writing optical discs
@@ -4972,7 +4972,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.24 0.25: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.24 0.25 0.26: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -7910,7 +7910,7 @@ dev-python/kazoo 2.2.1: A high-level Python library that makes it easier to use 
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 10.3.3 10.4.0: Provides access to the system keyring service
-dev-python/keyrings_alt 2.2: Alternate keyring implementations
+dev-python/keyrings_alt 2.2 2.3: Alternate keyring implementations
 dev-python/keystoneauth 2.4.1 2.4.2 2.12.3 2.18.0 2.20.0 3.1.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.1 4.14.0 4.17.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
@@ -19046,7 +19046,7 @@ x11-misc/xclip 0.13: Copy data from standard input to X clipboard
 x11-misc/xcompmgr 1.1.7: X Compositing manager
 x11-misc/xdaliclock 2.43: Dali Clock is a digital clock. When a digit changes, it melts into its new shape
 x11-misc/xdesktopwaves 1.3-r2: A cellular automata setting the background of your X Windows desktop under water
-x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
+x11-misc/xdg-user-dirs 0.15 0.16: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10 0.10-r1: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
 x11-misc/xdg-utils 1.1.1-r1 1.1.2: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
