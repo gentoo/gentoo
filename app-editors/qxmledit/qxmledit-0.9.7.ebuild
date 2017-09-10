@@ -27,6 +27,8 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
+	media-libs/glu
+	virtual/opengl
 "
 RDEPEND="${DEPEND}"
 
