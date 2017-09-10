@@ -15034,7 +15034,7 @@ net-libs/stem 1.3.0 1.4.0 1.4.1 1.5.4: Stem is a Python controller library for T
 net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
-net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
+net-libs/telepathy-logger-qt 15.04.0 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_pre20160904 0.1.6 0.1.10 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
