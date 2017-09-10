@@ -312,10 +312,6 @@ mozconfig_config() {
 		mozconfig_annotate '-pulseaudio' --enable-alsa
 	fi
 
-	# Enable sandbox and content sandboxing
-	mozconfig_annotate 'sandbox' --enable-sandbox
-	mozconfig_annotate 'sandbox' --enable-content-sandbox
- 
 	mozconfig_use_enable system-cairo
 	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-jpeg
