@@ -1461,6 +1461,11 @@
       <role>Member (security)</role>
     </member>
     <member>
+      <email>slyfox@gentoo.org</email>
+      <name>Sergei Trofimovich</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
       <role>Member</role>
@@ -2784,6 +2789,11 @@ developers and volunteer mentors.</description>
       <role>ppc/ppc64 keywording/stabilization</role>
     </member>
     <member>
+      <email>slyfox@gentoo.org</email>
+      <name>Sergei Trofimovich</name>
+      <role>ppc/ppc64 keywording/stabilization</role>
+    </member>
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3536,6 +3546,11 @@ developers and volunteer mentors.</description>
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
+      <role>Member ( Gentoo/SPARC )</role>
+    </member>
+    <member>
+      <email>slyfox@gentoo.org</email>
+      <name>Sergei Trofimovich</name>
       <role>Member ( Gentoo/SPARC )</role>
     </member>
     <member>
