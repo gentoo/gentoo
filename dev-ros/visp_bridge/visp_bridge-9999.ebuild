@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/camera_calibration_parsers
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
