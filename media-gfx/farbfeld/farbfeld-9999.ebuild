@@ -6,7 +6,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="farbfeld simple image format tools"
 HOMEPAGE="https://tools.suckless.org/farbfeld/"
-EGIT_REPO_URI="git://git.suckless.org/farbfeld"
+EGIT_REPO_URI="https://git.suckless.org/farbfeld"
 
 LICENSE="ISC"
 SLOT="0"
@@ -19,9 +19,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-3-as-needed.patch
-)
 
 src_prepare() {
 	default
