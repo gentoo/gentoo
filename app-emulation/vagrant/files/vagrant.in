@@ -25,7 +25,7 @@ export VAGRANT_INSTALLER_ENV=1
 # This is currently used only in Vagrant::Plugin::Manager.system_plugins_file
 # to locate plugins configuration file.
 export VAGRANT_INSTALLER_EMBEDDED_DIR="/var/lib/vagrant"
-export VAGRANT_INSTALLER_VERSION="2"
+export VAGRANT_INSTALLER_VERSION=2
 
 # Export the OS as an environmental variable that Vagrant can access
 # so that it can behave better.
@@ -33,6 +33,12 @@ export VAGRANT_DETECTED_OS="$(uname -s 2>/dev/null)"
 
 # Export the VAGRANT_EXECUTABLE so that pre-rubygems can optimize a bit
 export VAGRANT_EXECUTABLE="${VAGRANT_DIR}/bin/vagrant"
+
+# Allow to install plugins even with deps in different slots (Bug #628648)
+export VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1
+
+# Make it work with rvm (Bugs #474476 #628648)
+unset GEM_HOME GEM_PATH
 
 # Call the actual Vagrant bin with our arguments
 exec ruby "${VAGRANT_EXECUTABLE}" "$@"
