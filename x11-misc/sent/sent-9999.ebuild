@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="Simple plaintext presentation tool"
 HOMEPAGE="https://tools.suckless.org/sent/"
-EGIT_REPO_URI="git://git.suckless.org/sent/"
+EGIT_REPO_URI="https://git.suckless.org/sent/"
 
 LICENSE="MIT"
 SLOT="0"
@@ -17,14 +17,14 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libXft
 "
-
 RDEPEND="
 	${DEPEND}
-	!savedconfig? ( media-gfx/farbfeld )
-
+	media-gfx/farbfeld
 "
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's|^ @|  |g' \
 		-e 's|@${CC}|$(CC)|g' \
