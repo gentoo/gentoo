@@ -16,7 +16,7 @@ MY_PV=${MY_PV/_beta/b}
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="http://www.cups.org/cups.git"
+	EGIT_REPO_URI="https://github.com/apple/cups.git"
 	if [[ ${PV} != 9999 ]]; then
 		EGIT_BRANCH=branch-${PV/.9999}
 	fi
@@ -26,7 +26,7 @@ else
 fi
 
 DESCRIPTION="The Common Unix Printing System"
-HOMEPAGE="http://www.cups.org/"
+HOMEPAGE="https://www.cups.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -180,7 +180,7 @@ multilib_src_configure() {
 	# explicitly specify compiler wrt bug 524340
 	#
 	# need to override KRB5CONFIG for proper flags
-	# https://www.cups.org/str.php?L4423
+	# https://github.com/apple/cups/issues/4423
 	econf \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
