@@ -35,6 +35,7 @@
 =dev-lang/perl-5.24.3_rc2
 =dev-lang/perl-5.24.3_rc3
 =virtual/perl-Module-CoreList-5.201.709.220
+=virtual/perl-Time-HiRes-1.974.100
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Unmaintained.
@@ -579,7 +580,6 @@ dev-ruby/poltergeist
 =virtual/perl-Test-Simple-1.302.73
 =virtual/perl-Thread-Queue-3.120.0
 =virtual/perl-Thread-Semaphore-2.130.0
-=virtual/perl-Time-HiRes-1.974.100
 =virtual/perl-Time-Local-1.250.0
 =virtual/perl-XSLoader-0.270.0
 =virtual/perl-bignum-0.470.0
