@@ -4,7 +4,7 @@ DESCRIPTION=M2Crypto: A Python crypto and SSL toolkit
 EAPI=6
 HOMEPAGE=https://gitlab.com/m2crypto/m2crypto https://pypi.python.org/pypi/M2Crypto
 IUSE=libressl python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=BSD
 RDEPEND=!libressl? ( >=dev-libs/openssl-0.9.8:0= ) libressl? ( dev-libs/libressl:0= ) dev-python/typing[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://pypi/M/M2Crypto/M2Crypto-0.26.0.tar.gz
 _eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=2f05582ed21b76467a2da5ece992bfad
+_md5_=4678f6dfbdd6a2239f8d8778938c2191
