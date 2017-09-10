@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Does not work.
+# Use net-misc/dropbox or kde-apps/dolphin-plugins instead.
+# Masked for removal in 30 days.
+kde-misc/kfilebox
+
 # Kent Fredric <kentnl@gentoo.org> (10 Sep 2017)
 # Staging block for Perl 5.24.3
 =dev-lang/perl-5.24.3_rc1
