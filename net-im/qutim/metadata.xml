@@ -37,7 +37,6 @@
 	<flag name="telepathy">Enable to connect various IMs through <pkg>net-libs/telepathy-qt</pkg></flag>
 	<flag name="antiboss">Enable support for the antiboss plugin</flag>
 	<flag name="espionage">!!Not recomended, contains privacy risk!! Enable control plugin that controls user by sending messages and roster to remote server</flag>
-	<flag name="mobility">Enable several mobility related plugins like vibro notification</flag>
 	<flag name="plugman">Enable downloadable content management with <pkg>dev-libs/libattica</pkg></flag>
 </use>
 </pkgmetadata>
