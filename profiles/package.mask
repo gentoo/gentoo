@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (10 Sep 2017)
+# Staging block for Perl 5.24.3
+=dev-lang/perl-5.24.3_rc1
+=dev-lang/perl-5.24.3_rc2
+=dev-lang/perl-5.24.3_rc3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Unmaintained.
 # Use media-video/kmplayer or kde-apps/dragon instead.
