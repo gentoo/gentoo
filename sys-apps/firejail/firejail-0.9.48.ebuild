@@ -22,6 +22,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=( "${FILESDIR}/${PV}-contrib-fix.patch" )
 
+RESTRICT=test
+
 src_prepare() {
 	default
 	find -name Makefile.in -exec sed -i -r \
