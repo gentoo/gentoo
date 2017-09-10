@@ -35,7 +35,7 @@ RDEPEND="
 	$(add_qt_dep qtsql)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	net-libs/telepathy-logger-qt:5
+	>=net-libs/telepathy-logger-qt-17.08.0:5
 	>=net-libs/telepathy-qt-0.9.5[qt5(+)]
 	otr? (
 		dev-libs/libgcrypt:0=
