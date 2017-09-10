@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils flag-o-matic multilib
 
 DESCRIPTION="Terminal Emulator for X Windows"
-HOMEPAGE="http://invisible-island.net/xterm/"
-SRC_URI="ftp://invisible-island.net/${PN}/${P}.tgz"
+HOMEPAGE="https://invisible-island.net/xterm/"
+SRC_URI="ftp://ftp.invisible-island.net/${PN}/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
