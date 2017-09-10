@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=!sci-chemistry/surf app-crypt/gcr dev-libs/glib:2 net-libs/libsoup net-libs/webkit-gtk:4 x11-libs/gtk+:3 x11-libs/libX11 x11-apps/xprop x11-misc/dmenu !savedconfig? ( net-misc/curl x11-terms/st )
 SLOT=0
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=39532665db8d5287b7857d43f7fcd0a7
+_md5_=c3c5ed3c1e0ce7f549b2b06065396ced

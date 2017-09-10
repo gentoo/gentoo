@@ -6,4 +6,4 @@ HOMEPAGE=https://tools.suckless.org/ii/
 LICENSE=MIT
 SLOT=0
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=e26bdd1ebed511cc3e9de2cb6c4538b6
+_md5_=87e5fb124a9c4f1cea229d47ffda8bd8

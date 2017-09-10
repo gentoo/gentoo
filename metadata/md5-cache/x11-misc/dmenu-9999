@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama )
 SLOT=0
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=ba05f73e92519f6be904608605d0086a
+_md5_=347e8fcbe92e0cf7c5c7092331ec73ed
