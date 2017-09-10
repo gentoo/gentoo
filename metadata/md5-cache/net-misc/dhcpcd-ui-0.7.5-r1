@@ -1,14 +1,14 @@
-DEFINED_PHASES=configure install setup
-DEPEND=virtual/libintl libnotify? ( gtk? ( x11-libs/libnotify ) gtk3? ( x11-libs/libnotify ) qt4? ( kde-frameworks/kdelibs:4 kde-apps/knotify:4 ) ) gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) qt4? ( dev-qt/qtgui:4 ) virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=virtual/libintl gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) gtk3? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 ) libnotify? ( x11-libs/libnotify ) virtual/pkgconfig
 DESCRIPTION=Desktop notification and configuration for dhcpcd
 EAPI=6
-HOMEPAGE=http://roy.marples.name/projects/dhcpcd-ui/
-IUSE=debug gtk gtk3 qt4 libnotify
+HOMEPAGE=https://roy.marples.name/projects/dhcpcd-ui/
+IUSE=debug gtk gtk3 libnotify
 KEYWORDS=amd64 x86
 LICENSE=BSD-2
-RDEPEND=>=net-misc/dhcpcd-6.4.4 qt4? ( dev-qt/qtsvg:4 )
-REQUIRED_USE=?? ( gtk gtk3 qt4 ) gtk3? ( !gtk ) gtk? ( !gtk3 )
+RDEPEND=virtual/libintl gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) gtk3? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 ) libnotify? ( x11-libs/libnotify ) >=net-misc/dhcpcd-6.4.4
+REQUIRED_USE=?? ( gtk gtk3 ) libnotify? ( || ( gtk gtk3 ) )
 SLOT=0
-SRC_URI=http://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.5.tar.bz2
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=e1d2001a40b919d5bbb329bb9171f61d
+SRC_URI=https://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.5.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=fa393488fb19ee3d0629a648a17fc8ed

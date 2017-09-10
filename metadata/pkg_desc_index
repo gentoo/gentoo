@@ -4826,7 +4826,7 @@ dev-libs/liberasurecode 1.0.8-r1 1.1.1: Erasure Code API library written in C wi
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.23 4.24: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.5.6 1.5.7: Handler library for evdev events
-dev-libs/libevent 2.0.22 2.0.22-r2 2.1.8 9999: Library to execute a function when a specific event occurs on a file descriptor
+dev-libs/libevent 2.1.8 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4 1.4-r1: Library which may be used to explain Unix and Linux system call errors
@@ -15216,7 +15216,7 @@ net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.3.4 4.3.5 4.3.6: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 7.0.0_beta3 7.0.0_rc1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
-net-misc/dhcpcd-ui 0.7.4 0.7.5 0.7.5-r1: Desktop notification and configuration for dhcpcd
+net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
