@@ -1,0 +1,93 @@
+From 9841f8c06835444437e3ebaf79aea0b5a3c09ee8 Mon Sep 17 00:00:00 2001
+From: Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+Date: Sun, 10 Sep 2017 16:10:41 +0200
+Subject: [PATCH 2/2] knode: Fix build with GCC-6.3.0
+
+---
+ knode/knconfigwidgets.cpp |  3 ++-
+ knode/kngroup.cpp         | 18 +++++++++---------
+ knode/knnntpaccount.cpp   | 18 +++++++++---------
+ 3 files changed, 20 insertions(+), 19 deletions(-)
+
+diff --git a/knode/knconfigwidgets.cpp b/knode/knconfigwidgets.cpp
+index 9e4ced972d..5d8223ed2b 100644
+--- a/knode/knconfigwidgets.cpp
++++ b/knode/knconfigwidgets.cpp
+@@ -47,6 +47,7 @@
+ #include <kmimetypetrader.h>
+ #include <kmime/kmime_dateformatter.h>
+ #include <kcolordialog.h>
++#include <kfontchooser.h>
+ #include <kfontdialog.h>
+ #include <kfiledialog.h>
+ #include <kscoringeditor.h>
+@@ -821,7 +822,7 @@ void KNode::AppearanceWidget::slotFontItemActivated( QListWidgetItem *item )
+   if ( item ) {
+     FontListItem *fontItem = static_cast<FontListItem*>( item );
+     QFont font = fontItem->font();
+-    int result = KFontDialog::getFont(font,false,this);
++    int result = KFontDialog::getFont(font,KFontChooser::NoDisplayFlags,this);
+ 
+     if (result == KFontDialog::Accepted)
+       fontItem->setFont(font);
+diff --git a/knode/kngroup.cpp b/knode/kngroup.cpp
+index c667a32bcd..2be1bbdaa2 100644
+--- a/knode/kngroup.cpp
++++ b/knode/kngroup.cpp
+@@ -161,15 +161,15 @@ void KNGroup::saveInfo()
+     if(i_dentity)
+       i_dentity->saveConfig(info);
+     else if(info.hasKey("Email")) {
+-      info.deleteEntry("Name", false);
+-      info.deleteEntry("Email", false);
+-      info.deleteEntry("Reply-To", false);
+-      info.deleteEntry("Mail-Copies-To", false);
+-      info.deleteEntry("Org", false);
+-      info.deleteEntry("UseSigFile", false);
+-      info.deleteEntry("UseSigGenerator", false);
+-      info.deleteEntry("sigFile", false);
+-      info.deleteEntry("sigText", false);
++      info.deleteEntry("Name", 0);
++      info.deleteEntry("Email", 0);
++      info.deleteEntry("Reply-To", 0);
++      info.deleteEntry("Mail-Copies-To", 0);
++      info.deleteEntry("Org", 0);
++      info.deleteEntry("UseSigFile", 0);
++      info.deleteEntry("UseSigGenerator", 0);
++      info.deleteEntry("sigFile", 0);
++      info.deleteEntry("sigText", 0);
+     }
+ 
+     mCleanupConf->saveConfig( info );
+diff --git a/knode/knnntpaccount.cpp b/knode/knnntpaccount.cpp
+index ed6e68eff0..7ed7b9abaf 100644
+--- a/knode/knnntpaccount.cpp
++++ b/knode/knnntpaccount.cpp
+@@ -147,15 +147,15 @@ void KNNntpAccount::saveInfo()
+   if(i_dentity)
+     i_dentity->saveConfig(conf);
+   else if(conf.hasKey("Email")) {
+-    conf.deleteEntry("Name", false);
+-    conf.deleteEntry("Email", false);
+-    conf.deleteEntry("Reply-To", false);
+-    conf.deleteEntry("Mail-Copies-To", false);
+-    conf.deleteEntry("Org", false);
+-    conf.deleteEntry("UseSigFile", false);
+-    conf.deleteEntry("UseSigGenerator", false);
+-    conf.deleteEntry("sigFile", false);
+-    conf.deleteEntry("sigText", false);
++    conf.deleteEntry("Name", 0);
++    conf.deleteEntry("Email", 0);
++    conf.deleteEntry("Reply-To", 0);
++    conf.deleteEntry("Mail-Copies-To", 0);
++    conf.deleteEntry("Org", 0);
++    conf.deleteEntry("UseSigFile", 0);
++    conf.deleteEntry("UseSigGenerator", 0);
++    conf.deleteEntry("sigFile", 0);
++    conf.deleteEntry("sigText", 0);
+   }
+ 
+   mCleanupConf->saveConfig( conf );
+-- 
+2.14.1
+
