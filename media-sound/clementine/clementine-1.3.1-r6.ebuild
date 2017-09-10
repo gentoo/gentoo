@@ -76,7 +76,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	dev-qt/qttest:4
 	|| (
-		dev-cpp/gtest
+		>=dev-cpp/gtest-1.8.0
 		dev-cpp/gmock
 	)
 	amazoncloud? ( dev-cpp/sparsehash )
