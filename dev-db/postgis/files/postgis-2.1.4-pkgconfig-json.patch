@@ -1,0 +1,122 @@
+diff --git a/configure.ac b/configure.ac
+index a13cf13..c0a7842 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -780,61 +780,19 @@ dnl ===========================================================================
+ dnl Detect if json-c installed
+ dnl ===========================================================================
+ 
+-CHECK_JSON=yes
+-HAVE_JSON=no
+-HAVE_JSON_C=no
+-
+-AC_ARG_WITH([json],
+-	[AS_HELP_STRING([--without-json], [build without json-c support])],
+-	[CHECK_JSON="$withval"], [])
+-
+-if test "$CHECK_JSON" != "no"; then dnl {
+-
+-AC_ARG_WITH([jsondir],
+-	[AS_HELP_STRING([--with-jsondir=PATH], [specify the json-c installation directory])],
+-	[JSONDIR="$withval"], [JSONDIR=])
+-
+-if test ! "x$JSONDIR" = "x"; then
+-	dnl Make sure that the directory exists
+-	if test "x$JSONDIR" = "xyes"; then
+-		AC_MSG_ERROR([you must specify a parameter to --with-jsondir, e.g. --with-jsondir=/path/to])
+-	else
+-		AC_MSG_RESULT([Using user-specified json-c directory: $JSONDIR])
+-
+-		dnl Add the include directory to JSON_CPPFLAGS
+-		JSON_CPPFLAGS="-I$JSONDIR/include"
+-		JSON_LDFLAGS="-L$JSONDIR/lib"
+-	fi
+-fi
+-
+-dnl Check that we can find the json/json.h header file
+-CPPFLAGS_SAVE="$CPPFLAGS"
+-CPPFLAGS="$JSON_CPPFLAGS"
+-AC_CHECK_HEADER([json/json.h], [HAVE_JSON=yes], [
+-  AC_CHECK_HEADER([json-c/json.h], [HAVE_JSON=yes; HAVE_JSON_C=yes], [])
+-])      
+-CPPFLAGS="$CPPFLAGS_SAVE"
+-
+-dnl Ensure we can link against libjson
+-LIBS_SAVE="$LIBS"
+-LIBS="$JSON_LDFLAGS"
+-AC_CHECK_LIB([json-c], [json_object_get], [HAVE_JSON=yes; JSON_LDFLAGS="${JSON_LDFLAGS} -ljson-c"], [
+-  AC_CHECK_LIB([json], [json_object_get], [HAVE_JSON=yes; JSON_LDFLAGS="${JSON_LDFLAGS} -ljson"], [], [])
+-], [])
+-LIBS="$LIBS_SAVE"
+-
+-if test "$HAVE_JSON" = "yes"; then
++PKG_CHECK_MODULES([JSON], [json],
++                  [
++                      HAVE_JSON=yes
+ 	AC_DEFINE([HAVE_LIBJSON], 1, [Define to 1 if libjson is present])
+-fi
+-if test "$HAVE_JSON_C" = "yes"; then
+-  AC_DEFINE([HAVE_LIBJSON_C], 1, [Define to 1 if libjson resides in a json-c subdir])
+-fi
+-
+-AC_SUBST([JSON_CPPFLAGS])
+-AC_SUBST([JSON_LDFLAGS])
+-AC_SUBST([HAVE_JSON])
+-
+-fi dnl }
++                  ],
++                  [
++                      PKG_CHECK_MODULES([JSON], [json-c],
++                      [
++                          HAVE_JSON=yes
++	                  AC_DEFINE([HAVE_LIBJSON], 1, [Define to 1 if libjson is present])
++                      ],
++                      [HAVE_JSON=no])
++                  ])
+ 
+ dnl ===========================================================================
+ dnl Detect GTK+2.0 for GUI
+@@ -927,7 +885,7 @@ AC_DEFINE_UNQUOTED([POSTGIS_USE_STATS], [1], [Enable use of ANALYZE statistics])
+ CPPFLAGS="$PGSQL_CPPFLAGS $GEOS_CPPFLAGS $PROJ_CPPFLAGS $XML2_CPPFLAGS $SFCGAL_CPPFLAGS $CPPFLAGS"
+ AC_MSG_RESULT([CPPFLAGS: $CPPFLAGS])
+ 
+-SHLIB_LINK="$PGSQL_LDFLAGS $GEOS_LDFLAGS $PROJ_LDFLAGS -lgeos_c -lproj $JSON_LDFLAGS $XML2_LDFLAGS $SFCGAL_LDFLAGS"
++SHLIB_LINK="$PGSQL_LDFLAGS $GEOS_LDFLAGS $PROJ_LDFLAGS -lgeos_c -lproj $JSON_LIBS $XML2_LDFLAGS $SFCGAL_LDFLAGS"
+ AC_SUBST([SHLIB_LINK])
+ dnl AC_MSG_RESULT([SHLIB_LINK: $SHLIB_LINK])
+ 
+diff --git a/liblwgeom/Makefile.in b/liblwgeom/Makefile.in
+index 3cc6256..5ccbb3b 100644
+--- a/liblwgeom/Makefile.in
++++ b/liblwgeom/Makefile.in
+@@ -11,8 +11,8 @@
+ # **********************************************************************
+ 
+ CC = @CC@
+-CFLAGS = @CFLAGS@ @PICFLAGS@ @WARNFLAGS@ @GEOS_CPPFLAGS@ @PROJ_CPPFLAGS@ @JSON_CPPFLAGS@
+-LDFLAGS = @LDFLAGS@ @GEOS_LDFLAGS@ -lgeos_c @PROJ_LDFLAGS@ -lproj @JSON_LDFLAGS@
++CFLAGS = @CFLAGS@ @PICFLAGS@ @WARNFLAGS@ @GEOS_CPPFLAGS@ @PROJ_CPPFLAGS@ @JSON_CFLAGS@
++LDFLAGS = @LDFLAGS@ @GEOS_LDFLAGS@ -lgeos_c @PROJ_LDFLAGS@ -lproj @JSON_LIBS@
+ NUMERICFLAGS = @NUMERICFLAGS@
+ top_builddir = @top_builddir@
+ prefix = @prefix@
+diff --git a/liblwgeom/lwin_geojson.c b/liblwgeom/lwin_geojson.c
+index 7019626..ec1d594 100644
+--- a/liblwgeom/lwin_geojson.c
++++ b/liblwgeom/lwin_geojson.c
+@@ -19,13 +19,8 @@
+ 
+ #include <string.h>
+ 
+-#ifdef HAVE_LIBJSON_C
+-#include <json-c/json.h>
+-#include <json-c/json_object_private.h>
+-#else
+-#include <json/json.h>
+-#include <json/json_object_private.h>
+-#endif
++#include <json.h>
++#include <json_object_private.h>
+ 
+ #ifndef JSON_C_VERSION
+ // Adds support for libjson < 0.10
