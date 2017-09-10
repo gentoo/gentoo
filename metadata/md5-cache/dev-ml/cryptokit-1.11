@@ -4,11 +4,11 @@ DESCRIPTION=Cryptographic primitives library for Objective Caml
 EAPI=5
 HOMEPAGE=http://forge.ocamlcore.org/projects/cryptokit/
 IUSE=zlib +ocamlopt debug doc test
-KEYWORDS=~amd64 ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86-fbsd
 LICENSE=LGPL-2
 RDEPEND=zlib? ( >=sys-libs/zlib-1.1 ) dev-ml/zarith:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 REQUIRED_USE=test? ( ocamlopt )
 SLOT=0/1.11
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/1618/cryptokit-1.11.tar.gz
 _eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	oasis	9256ed89af74c3365ec888c00bfdfe43	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=66c0bbbbbb32d62d70fa5d2e8ee17723
+_md5_=7788fc9278f465e9d0d4bc3a4e5ed7f6
