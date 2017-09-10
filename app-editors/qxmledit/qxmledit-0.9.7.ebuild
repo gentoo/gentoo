@@ -40,6 +40,10 @@ src_prepare() {
 	# bug 568746
 	sed -i -e '/QMAKE_CXXFLAGS/s:-Werror::' \
 		src/{QXmlEdit,QXmlEditWidget,sessions/QXmlEditSessions}.pro || die
+
+	# bug 629624
+	sed -i -e 's/LIBS += -lGL -lGLU -lglut/LIBS += -lGL -lGLU/' \
+		src/QXmlEdit.pro || die
 }
 
 src_configure() {
