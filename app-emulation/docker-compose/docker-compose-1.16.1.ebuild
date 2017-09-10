@@ -21,16 +21,17 @@ CDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	<dev-python/cached-property-2[${PYTHON_USEDEP}]
-	>=dev-python/colorama-0.3.7[${PYTHON_USEDEP}]
-	<dev-python/colorama-0.4[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	<dev-python/dockerpty-0.5[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/docker-py-2.5.1[${PYTHON_USEDEP}]
 	<dev-python/docker-py-3.0[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	<dev-python/docopt-0.7[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.5.1[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3[${PYTHON_USEDEP}]
+	>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
+	!~dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
+	<dev-python/PySocks-2[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	<dev-python/pyyaml-4[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.11.0[${PYTHON_USEDEP}]
@@ -44,6 +45,8 @@ CDEPEND="
 	<dev-python/websocket-client-1.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]' 'python2_7' )
 	$(python_gen_cond_dep '<dev-python/enum34-2[${PYTHON_USEDEP}]' 'python2_7' )
+	$(python_gen_cond_dep '>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]' 'python2_7' )
+	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7' )
 "
 DEPEND="
 	${CDEPEND}
