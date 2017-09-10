@@ -19,7 +19,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	media-gfx/farbfeld
+	!savedconfig? ( media-gfx/farbfeld )
 "
 
 src_prepare() {
