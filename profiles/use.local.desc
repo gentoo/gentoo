@@ -5715,7 +5715,6 @@ net-im/qutim:espionage - !!Not recomended, contains privacy risk!! Enable contro
 net-im/qutim:histman - Enable history importer plugin
 net-im/qutim:hunspell - Enable spellchecking using app-text/hunspell
 net-im/qutim:irc - Enable IRC protocol support
-net-im/qutim:mobility - Enable several mobility related plugins like vibro notification
 net-im/qutim:mrim - Enable mail.ru protocol support
 net-im/qutim:otr - Enable plugin for encrypted conversations (Off-The-Record messaging)
 net-im/qutim:phonon - Add sound support via media-libs/phonon or dev-qt/qtphonon
