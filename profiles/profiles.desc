@@ -130,11 +130,11 @@ sh              default/linux/sh/13.0/desktop/gnome             exp
 sh              default/linux/sh/13.0/developer                 exp
 
 # SPARC Profiles
-sparc           default/linux/sparc/13.0                        stable
-sparc           default/linux/sparc/13.0/desktop                stable
-sparc           default/linux/sparc/13.0/desktop/gnome          stable
-sparc           default/linux/sparc/13.0/desktop/gnome/systemd  stable
-sparc           default/linux/sparc/13.0/developer              stable
+sparc           default/linux/sparc/13.0                        exp
+sparc           default/linux/sparc/13.0/desktop                exp
+sparc           default/linux/sparc/13.0/desktop/gnome          exp
+sparc           default/linux/sparc/13.0/desktop/gnome/systemd  exp
+sparc           default/linux/sparc/13.0/developer              exp
 
 # x86 Profiles
 x86             default/linux/x86/13.0                          stable
