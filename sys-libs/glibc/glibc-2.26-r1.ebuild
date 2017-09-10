@@ -315,7 +315,19 @@ glibc_do_configure() {
 	[[ -d ports ]] && addons+=",ports"
 	popd > /dev/null
 
-	myconf+=( --enable-stack-protector=all )
+	case ${CTARGET} in
+		powerpc-*)
+			# Currently gcc on powerpc32 generates invalid code for
+			# __builtin_return_address(0) calls. Normally programs
+			# don't do that but malloc hooks in glibc do:
+			# https://gcc.gnu.org/PR81996
+			# https://bugs.gentoo.org/629054
+			myconf+=( --enable-stack-protector=no )
+			;;
+		*)
+			myconf+=( --enable-stack-protector=all )
+			;;
+	esac
 	myconf+=( --enable-stackguard-randomization )
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
