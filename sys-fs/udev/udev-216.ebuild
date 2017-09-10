@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,12 +6,12 @@ EAPI=5
 inherit autotools bash-completion-r1 eutils linux-info multilib multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
+	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-2
 	patchset=
 else
 	patchset=2
-	SRC_URI="https://www.freedesktop.org/software/systemd/systemd-${PV}.tar.xz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 		SRC_URI+="
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz

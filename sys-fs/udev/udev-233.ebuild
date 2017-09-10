@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools bash-completion-r1 linux-info multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
+	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
