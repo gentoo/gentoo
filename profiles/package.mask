@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Unmaintained.
+# Use media-video/kmplayer or kde-apps/dragon instead.
+# Masked for removal in 30 days.
+media-video/kplayer
+
 # Michael Palimaka <kensington@gentoo.org> (10 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Build failures.
 # Bug #622548, #623574. Masked for removal in 30 days.
