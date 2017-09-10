@@ -20,7 +20,7 @@ HOMEPAGE="http://runc.io"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor ambient hardened +seccomp"
+IUSE="+ambient apparmor hardened +seccomp"
 
 RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
@@ -45,8 +45,8 @@ src_compile() {
 
 	# build up optional flags
 	local options=(
-		$(usex apparmor 'apparmor' '')
 		$(usex ambient 'ambient' '')
+		$(usex apparmor 'apparmor' '')
 		$(usex seccomp 'seccomp' '')
 	)
 
