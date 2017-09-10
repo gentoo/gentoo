@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (10 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Build failures.
+# Bug #622548, #623574. Masked for removal in 30 days.
+net-libs/qmf
+
+# Michael Palimaka <kensington@gentoo.org> (10 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Use Qt 5 instead.
+# Depends on vulnerable gstreamer:0.10.
+# Masked for removal in 30 days.
+dev-qt/qt-mobility
+
 # Michael Palimaka <kensington@gentoo.org> (09 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
