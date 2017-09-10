@@ -148,6 +148,9 @@ src_configure() {
 		)
 	fi
 
+	# bug 612956
+	addpredict /dev/dri/renderD128
+
 	cmake-utils_src_configure
 }
 
