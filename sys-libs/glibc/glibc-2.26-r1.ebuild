@@ -108,8 +108,6 @@ fi
 #
 
 pkg_pretend() {
-	die "This is work in progress. DONT try to use it. dilfridge"
-
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
 	check_devpts
 
