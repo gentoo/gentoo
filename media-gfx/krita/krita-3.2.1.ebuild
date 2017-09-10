@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
