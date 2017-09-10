@@ -240,7 +240,6 @@ src_prepare() {
 	gnuconfig_update
 
 	cd "${WORKDIR}"
-	find . -type f '(' -size 0 -o -name "*.orig" ')' -delete
 	find . -name configure -exec touch {} +
 
 	eprefixify extra/locale/locale-gen
