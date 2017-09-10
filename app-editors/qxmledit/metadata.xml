@@ -17,6 +17,7 @@
 		XSD viewers.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">lbellonda/qxmledit</remote-id>
 		<remote-id type="sourceforge">qxmledit</remote-id>
 	</upstream>
 </pkgmetadata>
