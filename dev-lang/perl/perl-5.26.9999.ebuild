@@ -6,19 +6,19 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.1.5
+CROSS_VER=1.1.6
 PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 
-DIST_AUTHOR=XSAWYERX
+DIST_AUTHOR=SHAY
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
-PERL_BIN_OLDVERSEN=""
+PERL_BIN_OLDVERSEN="5.26.0"
 # Don't add more -RC values, its historical bungling
-PERL_OLDVERSEN="5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
+PERL_OLDVERSEN="5.26.0 5.26.0-RC1 5.25.12 5.25.11 5.24.3 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.26.0
+	DIST_VERSION=5.26.1-RC1
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -85,7 +85,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.705.300 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.709.220 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
 	src_remove_dual      perl-core/Test-Harness       3.380.0       prove
