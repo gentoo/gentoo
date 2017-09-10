@@ -5514,7 +5514,7 @@ dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0: Generate images from Bio::Seq objects for visualization purposes
-dev-perl/Bio-SamTools 1.420.0: Read SAM/BAM database files
+dev-perl/Bio-SamTools 1.420.0 1.430.0: Read SAM/BAM database files
 dev-perl/Bit-Vector 7.400.0: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
