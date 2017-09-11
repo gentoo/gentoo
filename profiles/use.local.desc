@@ -501,7 +501,7 @@ app-emulation/libvirt:lxc - Support management of Linux Containers virtualisatio
 app-emulation/libvirt:macvtap - Support for MAC-based TAP (macvlan/macvtap). For networking instead of the normal TUN/TAP. It has its advantages and disadvantages. macvtap support requires very new kernels and is currently evolving. Support for this is experimental at best.
 app-emulation/libvirt:nfs - Allow using Network File System mounts as pool for disk image storage
 app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl and sys-process/numad
-app-emulation/libvirt:openvz - Support management of OpenVZ virtualisation (see sys-kernel/openvz-sources)
+app-emulation/libvirt:openvz - Support management of OpenVZ virtualisation (openvz-sources)
 app-emulation/libvirt:parted - Allow using real disk partitions as pool for disk image storage, using sys-block/parted to create, resize and delete them.
 app-emulation/libvirt:pcap - Support auto learning IP addreses for routing
 app-emulation/libvirt:phyp - Support IBM HMC / IVM hypervisor via PHYP protocol
