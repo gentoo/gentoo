@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}
 	virtual/yacc
 	test? (
 		dev-libs/dbus-glib
-		>=dev-libs/glib-2.26:2 )
+		>=dev-libs/glib-2.26:2
+		dev-libs/gobject-introspection )
 "
 
 src_configure() {

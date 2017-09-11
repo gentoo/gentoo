@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 
 COMMON_DEPEND="
-	app-crypt/gcr
+	app-crypt/gcr[gtk]
 	dev-libs/glib:2
 	net-libs/libsoup
 	net-libs/webkit-gtk:4
