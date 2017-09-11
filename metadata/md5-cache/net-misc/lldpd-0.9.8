@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=dev-libs/libbsd >=dev-libs/libevent-2.0.5:= snmp? ( net-analyzer/net-snmp[extensible(+)] ) xml? ( dev-libs/libxml2 ) seccomp? ( sys-libs/libseccomp ) zsh-completion? ( app-shells/zsh ) virtual/pkgconfig doc? ( graph? ( app-doc/doxygen[dot] ) !graph? ( app-doc/doxygen ) ) test? ( dev-libs/check ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Implementation of IEEE 802.1ab (LLDP)
+EAPI=6
+HOMEPAGE=https://vincentbernat.github.com/lldpd/
+IUSE=cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers seccomp sonmp snmp static-libs test readline xml zsh-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=dev-libs/libbsd >=dev-libs/libevent-2.0.5:= snmp? ( net-analyzer/net-snmp[extensible(+)] ) xml? ( dev-libs/libxml2 ) seccomp? ( sys-libs/libseccomp ) zsh-completion? ( app-shells/zsh )
+REQUIRED_USE=graph? ( doc )
+SLOT=0
+SRC_URI=http://media.luffy.cx/files/lldpd/lldpd-0.9.8.tar.gz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=f4a2a5590faea2887c79e90192eb162c

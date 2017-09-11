@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.6:2 aspell? ( app-text/aspell ) hunspell? ( >=app-text/hunspell-1.2.1:0= ) zemberek? ( dev-libs/dbus-glib ) virtual/pkgconfig
+DESCRIPTION=Spellchecker wrapping library
+EAPI=6
+HOMEPAGE=https://abiword.github.io/enchant/
+IUSE=aspell +hunspell static-libs test zemberek
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.6:2 aspell? ( app-text/aspell ) hunspell? ( >=app-text/hunspell-1.2.1:0= ) zemberek? ( dev-libs/dbus-glib ) zemberek? ( app-text/zemberek-server )
+REQUIRED_USE=|| ( hunspell aspell zemberek )
+RESTRICT=test
+SLOT=0/2
+SRC_URI=https://github.com/AbiWord/enchant/releases/download/v2.1.1/enchant-2.1.1.tar.gz
+_md5_=ec4961dd4e5b88e677ffd2d8cafae366
