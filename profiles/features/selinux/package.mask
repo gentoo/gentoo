@@ -34,3 +34,4 @@ net-misc/netctl
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
 sys-process/systemd-cron
+sys-apps/dbus-broker
