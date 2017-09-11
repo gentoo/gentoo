@@ -15,8 +15,6 @@ DIST_AUTHOR=WOLFSAGE
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
-# Don't add more -RC values, its historical bungling
-PERL_OLDVERSEN="5.27.2 5.27.1 5.27.0 5.26.0 5.26.0-RC1 5.25.12 5.25.11 5.24.2 5.24.1 5.24.0 5.22.3 5.22.2 5.22.1 5.22.0"
 if [[ "${PV##*.}" == "9999" ]]; then
 	DIST_VERSION=5.27.3
 else
@@ -153,13 +151,17 @@ pkg_setup() {
 		myarch+="-thread"
 	fi
 
+	PRIV_BASE="/usr/$(get_libdir)/perl5"
+	SITE_BASE="/usr/local/$(get_libdir)/perl5"
+	VENDOR_BASE="/usr/$(get_libdir)/perl5/vendor_perl"
+
 	LIBPERL="libperl$(get_libname ${MY_PV} )"
-	PRIV_LIB="/usr/$(get_libdir)/perl5/${MY_PV}"
-	ARCH_LIB="/usr/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading}"
-	SITE_LIB="/usr/local/$(get_libdir)/perl5/${MY_PV}"
-	SITE_ARCH="/usr/local/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading}"
-	VENDOR_LIB="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}"
-	VENDOR_ARCH="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}/${myarch}${mythreading}"
+	PRIV_LIB="${PRIV_BASE}/${MY_PV}"
+	ARCH_LIB="${PRIV_BASE}/${MY_PV}/${myarch}${mythreading}"
+	SITE_LIB="${SITE_BASE}/${MY_PV}"
+	SITE_ARCH="${SITE_BASE}/${MY_PV}/${myarch}${mythreading}"
+	VENDOR_LIB="${VENDOR_BASE}/${MY_PV}"
+	VENDOR_ARCH="${VENDOR_BASE}/${MY_PV}/${myarch}${mythreading}"
 
 	dual_scripts
 }
@@ -397,12 +399,38 @@ src_configure() {
 		myconf -DDEBUGGING=none
 	fi
 
-	if [[ -n ${PERL_OLDVERSEN} ]] ; then
-		local inclist=$(
-			for v in ${PERL_OLDVERSEN};	do
-				has "${v}" ${PERL_BIN_OLDVERSEN} && echo -n "${v}/${myarch}${mythreading} ";
-				echo -n "${v} ";
-		done )
+	# Autodiscover all old version directories, some of them will even be newer
+	# if you downgrade
+	if [[ -z ${PERL_OLDVERSEN} ]]; then
+		PERL_OLDVERSEN="$(
+			find "${EROOT%/}${PRIV_BASE}" "${EROOT%/}${SITE_BASE}" "${EROOT%/}${VENDOR_BASE}" \
+				   -maxdepth 1 -mindepth 1 -type d -regex '.*/5[.][0-9]+[.][0-9]+$' \
+				   -printf "%f "  2>/dev/null )"
+	fi
+	# Fixup versions, removing self match, fixing order and dupes
+	PERL_OLDVERSEN="$(
+		echo "${PERL_OLDVERSEN}"           |\
+			tr " " "\n" 				   |\
+			grep -vF "${DIST_VERSION%-RC}" |\
+			sort -u -nr -t'.' -k1,1 -k2,2 -k3,3
+	)"
+
+	# Experts who want a "Pure" install can set PERL_OLDVERSEN to an empty string
+	if [[ -n "${PERL_OLDVERSEN// }" ]]; then
+		local inclist="$(
+				for v in ${PERL_OLDVERSEN};	do
+					has "${v}" ${PERL_BIN_OLDVERSEN} && echo -n "${v}/${myarch}${mythreading} ";
+					echo -n "${v} ";
+				done )"
+		einfo "This version of perl may partially support modules previously"
+		einfo "installed in any of the following paths:"
+		for incpath in ${inclist}; do
+			[[ -e "${EROOT%/}${VENDOR_BASE}/${incpath}" ]] && einfo " ${EROOT%/}${VENDOR_BASE}/${incpath}"
+			[[ -e "${EROOT%/}${PRIV_BASE}/${incpath}"   ]] && einfo " ${EROO%/T}${PRIV_BASE}/${incpath}"
+			[[ -e "${EROOT%/}${SITE_BASE}/${incpath}"   ]] && einfo " ${EROOT%/}${SITE_BASE}/${incpath}"
+		done
+		einfo "This is a temporary measure and you should aim to cleanup these paths"
+		einfo "via world updates and perl-cleaner"
 		myconf -Dinc_version_list="${inclist}"
 	fi
 
