@@ -407,10 +407,6 @@ sys-kernel/openvz-sources
 # Upstream dead, cannot be bumped, buggy (#468128). Removal in a month.
 x11-apps/spotlighter
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Fails to build (#542108), relies on dead DirectFB. Removal in a month.
-dev-libs/DFB++
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
