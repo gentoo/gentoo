@@ -31,7 +31,7 @@ REQUIRED_USE="
 # >=media-libs/libmediaart-1.9:2.0 is suggested to be disabled for 1.10 for security; revisit for 1.12 (configure flag)
 RDEPEND="
 	>=app-i18n/enca-1.9
-	>dev-db/sqlite-3.8.4.2:=
+	<dev-db/sqlite-3.20
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=

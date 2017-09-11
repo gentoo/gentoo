@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
@@ -62,6 +62,10 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-scripts.patch"
+)
 
 DOCS=(AUTHORS ChangeLog THANKS)
 

@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils gnome2-utils multilib xdg
+inherit cmake-utils gnome2-utils xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -43,7 +43,7 @@ RDEPEND="dev-libs/glib:2
 		pango? ( x11-libs/pango )
 		!pango? ( media-libs/fontconfig )
 	)
-	enchant? ( app-text/enchant )
+	enchant? ( <app-text/enchant-2 )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
 	introspection? ( dev-libs/gobject-introspection )
@@ -121,21 +121,18 @@ src_install() {
 	rm -r "${ED}usr/share/doc/${PN}"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
-	xdg_pkg_postinst
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	xdg_pkg_postrm
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
 }
