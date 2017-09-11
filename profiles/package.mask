@@ -358,7 +358,6 @@ dev-php/PEAR-Auth_HTTP
 dev-php/PEAR-HTML_Template_IT
 dev-php/PEAR-HTML_TreeMenu
 dev-php/PEAR-HTTP_Client
-dev-php/PEAR-HTTP_Request
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
