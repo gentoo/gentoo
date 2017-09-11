@@ -420,10 +420,6 @@ x11-misc/tinymount
 # EOL, severely broken, impossible to bump (#624966). Removal in a month.
 sci-geosciences/googleearth
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Dead for ages, not usable at present time (#625596). Removal in a month.
-app-mobilephone/linuxsms
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
