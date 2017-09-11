@@ -66,7 +66,6 @@ for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
 			DEPEND+=" virtual/fortran"
-			RDEPEND+=" virtual/fortran"
 			break
 			;;
 		no)
@@ -77,7 +76,6 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			;;
 		*)
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
-			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;
 	esac
 done
