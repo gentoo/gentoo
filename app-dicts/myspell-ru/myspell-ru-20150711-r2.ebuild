@@ -16,7 +16,7 @@ MY_PV="0.4.0"
 
 DESCRIPTION="Russian spellcheck dictionary based on works of AOT group for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/extensions/russian-dictionary-pack"
-SRC_URI="https://extensions.libreoffice.org/${EXT}/${DICT}/${MY_PV}/@@download/file/${MY_PN}-0-4-0.oxt"
+SRC_URI="https://extensions.libreoffice.org/${EXT}/${DICT}/${MY_PV}/@@download/file/${MY_PN}-${MY_PV//./-}.oxt"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
