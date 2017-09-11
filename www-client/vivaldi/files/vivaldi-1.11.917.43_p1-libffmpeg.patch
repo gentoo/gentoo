@@ -1,0 +1,27 @@
+--- a/opt/vivaldi/vivaldi
++++ b/opt/vivaldi/vivaldi
+@@ -32,14 +32,14 @@
+       # Chromium's FFMpeg version N-82746-g6bb7ea7 is the oldest known working version
+       # chromium/third_party/ffmpeg/chromium/config/Chromium/linux/x64/libavutil/ffversion.h
+       if [ -r "$1" ]; then
+-        if [ `grep -aom1 'FFmpeg version N-[0-9]\+-' "$1" | cut -f2 -d-` -ge "82746" ]; then
++#        if [ `grep -aom1 'FFmpeg version N-[0-9]\+-' "$1" | cut -f2 -d-` -ge "82746" ]; then
+           if [[ -n "$LD_PRELOAD" ]]; then
+             export LD_PRELOAD="$LD_PRELOAD:$1"
+           else
+             export LD_PRELOAD="$1"
+           fi
+           export VIVALDI_FFMPEG_FOUND=YES
+-        fi
++#        fi
+       fi
+     fi
+   fi
+@@ -54,6 +54,7 @@
+ # Check for libs in order that they are most likely to appear.
+ # Where possible, use other files/directories to confirm it's the correct variant.
+ VIVALDI_FFMPEG_FOUND=NO
++checkffmpeg "/usr/lib64/chromium/libffmpeg.so"
+ checkffmpeg "/usr/lib/$DEBARCH/oxide-qt/libffmpeg.so" '/usr/share/doc/oxideqt-codecs-extra'
+ checkffmpeg '/usr/lib/chromium-browser/libffmpeg.so' '/usr/share/doc/chromium-codecs-ffmpeg-extra'
+ 
