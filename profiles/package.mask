@@ -389,11 +389,6 @@ dev-php/PEAR-Translation2
 # by anything. Removal in 30 days. Bug #594314.
 media-libs/silgraphite
 
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# Dependency of dev-texlive/texlive-basic-2012 no longer needed for
-# the current versions. Removal in 14 days.
-dev-texlive/texlive-documentation
-
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
 # Its pre release so better to mask it
 =media-gfx/freecad-0.17_pre*
