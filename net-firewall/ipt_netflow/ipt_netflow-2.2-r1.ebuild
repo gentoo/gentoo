@@ -56,6 +56,9 @@ src_prepare() {
 	# Compatibility with kernel 4.10, bug #617484
 	eapply "${FILESDIR}/${P}-linux-4.10.patch"
 
+	# Compatibility with kernel 4.13, bug #630446
+	eapply "${FILESDIR}/${P}-linux-4.13.patch"
+
 	eapply_user
 }
 
