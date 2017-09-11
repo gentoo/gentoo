@@ -15,7 +15,7 @@ IUSE="test"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
-	>=app-crypt/gcr-3.5.5:=
+	>=app-crypt/gcr-3.5.5:=[gtk]
 	>=app-crypt/libsecret-0.14
 	>=app-text/iso-codes-0.35
 	>=dev-libs/glib-2.44.0:2[dbus]
