@@ -11,7 +11,7 @@ diff --git a/salt/utils/verify.py b/salt/utils/verify.py
 index 5cac0fa651b..a3dc67db336 100644
 --- a/salt/utils/verify.py
 +++ b/salt/utils/verify.py
-@@ -480,12 +480,21 @@ def clean_path(root, path, subdir=False):
+@@ -484,12 +484,21 @@ def clean_path(root, path, subdir=False):
      return ''
  
  
@@ -31,6 +31,6 @@ index 5cac0fa651b..a3dc67db336 100644
      try:
 -        return bool(clean_path(opts['pki_dir'], id_))
 +        return bool(clean_path(opts['pki_dir'], id_)) and clean_id(id_)
-     except (AttributeError, KeyError, TypeError) as e:
+     except (AttributeError, KeyError) as e:
          return False
  
