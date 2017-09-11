@@ -394,11 +394,6 @@ media-libs/silgraphite
 # the current versions. Removal in 14 days.
 dev-texlive/texlive-documentation
 
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# Unmaintained since mid-2016, requires an active maintainer. Has
-# multiple build failure bugs. Removal in 30 days. Bug #580516.
-sys-kernel/openvz-sources
-
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
 # Its pre release so better to mask it
 =media-gfx/freecad-0.17_pre*
