@@ -364,7 +364,6 @@ dev-php/PEAR-PEAR_Info
 dev-php/PEAR-SOAP
 dev-php/PEAR-Services_Amazon
 dev-php/PEAR-Services_Weather
-dev-php/PEAR-Testing_Selenium
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
