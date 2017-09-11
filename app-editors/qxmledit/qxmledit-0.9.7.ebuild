@@ -56,6 +56,9 @@ src_configure() {
 		QXMLEDIT_INST_DATA_DIR="${EPREFIX}/usr/share/${PN}" \
 		QXMLEDIT_INST_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 
+	# avoid internal compiler errors
+	use x86 && export QXMLEDIT_INST_AVOID_PRECOMP_HEADERS=Y
+
 	eqmake5
 }
 
