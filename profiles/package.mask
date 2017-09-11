@@ -403,10 +403,6 @@ sys-kernel/openvz-sources
 # Its pre release so better to mask it
 =media-gfx/freecad-0.17_pre*
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, cannot be bumped, buggy (#468128). Removal in a month.
-x11-apps/spotlighter
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
