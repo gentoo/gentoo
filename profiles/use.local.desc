@@ -3054,7 +3054,6 @@ games-arcade/performous:tools - Install tools
 games-arcade/performous:webcam - Enable Webcam support
 games-arcade/savagewheels:fmod - Enable the fmod music and sound effects library
 games-arcade/slimevolley:net - Enable network support
-games-arcade/smc:music - Download and install the music files
 games-arcade/tuxanci:physfs - Use dev-games/physfs instead of dev-libs/libzip to load compressed data
 games-arcade/tuxanci:sound - Enable sound
 games-board/cockatrice:client - Build with client
@@ -4281,7 +4280,6 @@ media-libs/sdl2-mixer:smpeg - Use media-libs/smpeg for MP3 support
 media-libs/sdl2-mixer:tremor - enable OGG Vorbis music via libtremor
 media-libs/sdl2-mixer:wav - support WAVE files
 media-libs/sge:image - enable sdl-image support
-media-libs/silgraphite:pango - Enables the pango-graphite pango module.
 media-libs/spandsp:fixed-point - Enable fixed point support
 media-libs/speex:utils - Enables speex commandline utilities (speexenc, speexdec).
 media-libs/speex:vbr - Enable VBR support.
@@ -6296,8 +6294,6 @@ net-misc/dhcp:client - Install the dhclient program
 net-misc/dhcp:server - Install the dhcpd and dhcrelay programs
 net-misc/dhcpcd:embedded - Embed the definitions of dhcp options in the dhcpcd executable
 net-misc/dhcpcd-ui:gtk3 - Add support for x11-libs/gtk+ (The GIMP Toolkit)
-net-misc/directvnc:dmalloc - Enable debugging with the dmalloc library
-net-misc/directvnc:mouse - Adds mouse support
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
 net-misc/dropbear:multicall - Build all the programs as one little binary (to save space)
 net-misc/dropbear:shadow - Enable shadow password support
@@ -7062,7 +7058,6 @@ sci-geosciences/gmt:gmttria - Non GNU triangulation method, more efficient
 sci-geosciences/gmt:metric - Use SI (cm) units instead of US (inches) ones
 sci-geosciences/gmt:mex - Enable compilation of mex supplement which requires Octave/Matlab
 sci-geosciences/gmt:octave - Enable octave support
-sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
 sci-geosciences/gpsbabel:gui - Enable the graphical user interface (requires dev-qt/qtwebengine)
 sci-geosciences/gpsd:dbus - export gpsd data over dbus connections
 sci-geosciences/gpsd:latency_timing - support latency timing information

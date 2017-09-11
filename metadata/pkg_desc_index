@@ -1314,6 +1314,7 @@ app-emulation/ganeti-instance-debootstrap 0.11 0.12 0.16: Scripts to build Ganet
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
 app-emulation/genymotion-bin 2.10.0: Complete set of tools that provide a virtual environment for Android
+app-emulation/go-secbench 0.1.0: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
@@ -2001,7 +2002,6 @@ app-mobilephone/heimdall 1.4.0 1.4.1 1.4.2 9999: Tool suite used to flash firmwa
 app-mobilephone/kannel 1.4.3-r2 1.5.0-r3: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: API for Python which provides simple access to Bluetooth operations
-app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
 app-mobilephone/obexftp 0.24-r1: File transfer over OBEX for mobile phones
 app-mobilephone/past 0.0.4: Simple SMS tool
 app-mobilephone/pysms 0.9.4-r1: Tool for sending text messages for various Swiss providers
@@ -4621,7 +4621,6 @@ dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
 dev-libs/389-adminutil 1.1.15: 389 adminutil
 dev-libs/9libs 1.0-r2: A package of Plan 9 compatibility libraries
-dev-libs/DFB++ 1.2.0: C++ bindings for DirectFB
 dev-libs/DirectFB 1.7.6: Thin library on top of the Linux framebuffer devices
 dev-libs/Ice 3.5.1 3.6.3 3.6.3-r1: ICE middleware C++ library and generator tools
 dev-libs/MicroJSON 0.3.1 0.3.2: Small and simple to use JSON generation and parsing library
@@ -6990,8 +6989,6 @@ dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-php/File_Iterator 1.3.4 1.4.2: FilterIterator implementation that filters files based on criteria
 dev-php/PEAR-Archive_Tar 1.4.2-r2: Tar file management class
-dev-php/PEAR-Auth 1.6.4 1.6.5_pre20150209: Provides methods for creating an authentication system using PHP
-dev-php/PEAR-Auth_HTTP 2.1.8-r1: Create HTTP authentication systems like Apache's realm-based .htaccess mechanism
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Benchmark 1.2.9: Framework to benchmark PHP scripts or function calls
 dev-php/PEAR-Cache 1.5.6-r2: Framework for caching of arbitrary data
@@ -7033,14 +7030,10 @@ dev-php/PEAR-HTML_Select 1.3.1-r1: HTML_Select is a class for generating HTML fo
 dev-php/PEAR-HTML_Table 1.8.4-r1: Makes the design of HTML tables easy, flexible, reusable and efficient
 dev-php/PEAR-HTML_Table_Matrix 1.0.9 1.0.10 1.0.10-r1: Autofill a table with data
 dev-php/PEAR-HTML_Template_Flexy 1.3.13: An extremely powerful Tokenizer driven Template engine
-dev-php/PEAR-HTML_Template_IT 1.3.0 1.3.0-r1: Integrated Templates
 dev-php/PEAR-HTML_Template_Sigma 1.3.0: An implementation of Integrated Templates API with template 'compilation' added
-dev-php/PEAR-HTML_TreeMenu 1.2.2-r1: Provides an API to create a HTML tree
 dev-php/PEAR-HTTP 1.4.1-r2: Miscellaneous HTTP utilities
-dev-php/PEAR-HTTP_Client 1.2.1 1.2.1-r1: Perform multiple HTTP requests and process their results
 dev-php/PEAR-HTTP_Download 1.1.4: Provides functionality to send HTTP downloads
 dev-php/PEAR-HTTP_Header 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
-dev-php/PEAR-HTTP_Request 1.4.4 1.4.4-r1: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Request2 2.2.1: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Session2 0.7.3-r1: Wraps PHP's session functions providing extras like db storage for session data
 dev-php/PEAR-I18Nv2 0.11.4-r3: Internationalization - basic support to localize your application
@@ -7085,11 +7078,9 @@ dev-php/PEAR-Net_Traceroute 0.21.3 0.21.3-r1: OS independet wrapper class for ex
 dev-php/PEAR-Net_URL 1.0.15 1.0.15-r1: Easy parsing of URLs
 dev-php/PEAR-Net_URL2 2.0.5 2.2.1-r2: Easy parsing of URLs (PHP5 port of PEAR-Net_URL package)
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2 2.5.2-r1: Determines Web browser, version, and platform from an HTTP user agent string
-dev-php/PEAR-Numbers_Roman 1.0.2 1.0.2-r1: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1 0.18.1-r1: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 1.0.0_rc2-r1 1.0.0_rc2-r2 1.0.0_rc3: Package for reading and writing OLE containers
 dev-php/PEAR-PEAR 1.10.1-r1 1.10.3-r1 1.10.3-r2 1.10.5: PEAR Base System
-dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.7.2-r1: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager2 1.0.4-r1: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4-r1: Various methods to check files to update an existing package.xml file
@@ -7097,18 +7088,14 @@ dev-php/PEAR-PHP_Beautifier 0.1.15-r2: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Determine minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
 dev-php/PEAR-Pager 2.4.9 2.5.1: Data paging class
-dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
-dev-php/PEAR-Services_Amazon 0.8.0: Provides access to Amazon's retail and associate web services
 dev-php/PEAR-Services_JSON 1.0.3: PHP implementaion of json_encode/decode
 dev-php/PEAR-Services_TinyURL 0.1.2-r1: An interface for creating and retrieving TinyURLs with their API
 dev-php/PEAR-Services_W3C_CSSValidator 0.2.3: Provides an object oriented interface for the W3 CSS Validator
 dev-php/PEAR-Services_W3C_HTMLValidator 1.0.0-r1: Object oriented interface to the API of validator.w3.org
-dev-php/PEAR-Services_Weather 1.4.6: This class acts as an interface to various online weather-services
 dev-php/PEAR-Spreadsheet_Excel_Writer 0.9.3 0.9.4: Package for generating Excel spreadsheets
 dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a record set of data for paging and sorting
 dev-php/PEAR-Structures_Graph 1.1.1-r1: Graph datastructure manipulation library
 dev-php/PEAR-System_Command 1.0.8-r1: PHP command-line execution interface
-dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
 dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2-r1: Generation of CAPTCHAs
 dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers to prove user is human
 dev-php/PEAR-Text_Figlet 1.0.2-r1: Render text using FIGlet fonts
@@ -7117,7 +7104,6 @@ dev-php/PEAR-Text_Password 1.1.1 1.2.1: Creating passwords with PHP
 dev-php/PEAR-Text_Wiki 1.2.2: Abstracts parsing and rendering rules for Wiki markup in structured plain text
 dev-php/PEAR-Text_Wiki_BBCode 0.0.4-r3: BBCode parser for Text_Wiki
 dev-php/PEAR-Text_Wiki_Mediawiki 0.2.0-r1: Mediawiki parser for Text_Wiki
-dev-php/PEAR-Translation2 2.0.4-r1: Class for multilingual applications management
 dev-php/PEAR-Validate 0.8.5: Validation class
 dev-php/PEAR-Var_Dump 1.0.4-r3: Dump structured information about a variable
 dev-php/PEAR-VersionControl_SVN 0.5.2: Simple OO wrapper interface for the Subversion command-line client
@@ -10913,7 +10899,6 @@ games-arcade/sdlroids 1.3.4-r3: Asteroids Clone for X using SDL
 games-arcade/sdlsasteroids 3.0.1: Rework of Sasteroids using SDL
 games-arcade/skystreets 0.2.4: A remake of the old DOS game Skyroads
 games-arcade/slimevolley 2.4.2: A simple volleyball game
-games-arcade/smc 1.9: Secret Maryo Chronicles
 games-arcade/snake3d 0.9: variant of the snake game
 games-arcade/solarwolf 1.5: action/arcade recreation of SolarFox
 games-arcade/spacerider 0.13: space-shooter written in C++, using the SDL
@@ -12640,7 +12625,6 @@ media-fonts/wqy-unibit 1.1.0_p1 1.1.0_p1-r1: WenQuanYi Unibit CJK font
 media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
 media-fonts/x11fonts-jmk 3.0-r1: This package contains character-cell fonts for use with X
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
-media-gfx/DFBPoint 0.7.2: DFBPoint is presentation program based on DirectFB
 media-gfx/aaphoto 0.43.1 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/album 4.07 4.13-r1: HTML photo album generator
@@ -13259,7 +13243,6 @@ media-libs/sdl2-ttf 2.0.13 2.0.14: library that allows you to use TrueType fonts
 media-libs/sdlmm 0.1.8-r1: A C++ Wrapper for the Simple DirectMedia Layer
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/silgraphite 2.3.1: Rendering engine for complex non-Roman writing systems
 media-libs/simage 1.7.0 1.7.0-r1: Image and video texturing library
 media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
 media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
@@ -14097,7 +14080,6 @@ media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Li
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
 media-video/dcpomatic 2.10.2 2.10.5 2.11.7: create Digital Cinema Packages (DCPs) from videos, images and sound files
 media-video/devedeng 4.8.7 4.8.8 4.8.9 9999: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
-media-video/dfbsee 0.7.4-r1: an image viewer and video player based on DirectFB
 media-video/dirac 1.0.2 1.0.2-r1: Open Source video codec
 media-video/dv2sub 0.3: extract info or subtitles from DV stream
 media-video/dvbackup 0.0.4-r1: A small utility for creating backups on DV tapes
@@ -15220,7 +15202,6 @@ net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
-net-misc/directvnc 0.7.6-r1 0.7.8: Very thin VNC client for unix framebuffer systems
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.8.1 0.3.9: Google Drive client for the commandline
@@ -16299,7 +16280,6 @@ sci-geosciences/geocode-glib 3.20.1 3.24.0: GLib geocoding library that uses the
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
 sci-geosciences/gnome-maps 3.22.2 3.24.3: A map application for GNOME
-sci-geosciences/googleearth 7.1.8.3036: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.10 3.16 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
@@ -17867,7 +17847,6 @@ sys-kernel/linux-docs 4.1 4.4 4.9: Developer documentation generated from the Li
 sys-kernel/linux-firmware 20160331 20161205 20170113 20170314 20170519 20170622 20170906 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8 4.9 4.10 4.11 4.12 4.13: Linux system headers
 sys-kernel/mips-sources 4.4.79 4.8.17 4.9.40 4.10.17 4.11.12 4.12.4: Linux-Mips GIT sources for MIPS-based machines, dated 20170703
-sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11 2.6.32.116.1: Kernel sources with OpenVZ patchset
 sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999: Raspberry PI kernel sources
@@ -18530,7 +18509,6 @@ x11-apps/sessreg 1.1.1: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.0 1.3.1: Controls the keyboard layout of a running X server
 x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.5 1.0.6: Session Manager Proxy
-x11-apps/spotlighter 0.1-r1: Shows a movable and resizable spotlight on the screen
 x11-apps/transset 1.0.1: An utility for setting opacity property
 x11-apps/viewres 1.0.4: graphical class browser for Xt
 x11-apps/whyteboard 0.41.1: A simple image, PDF and postscript file annotator
@@ -19000,7 +18978,6 @@ x11-misc/synergy 1.6.3 1.8.6 1.8.8: Lets you easily share a single mouse and key
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 0.12.12 0.14.6-r2: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
-x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.80: Touchscreen calibration utility
 x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
