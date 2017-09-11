@@ -416,10 +416,6 @@ dev-libs/DFB++
 # (#601358). Removal in a month.
 x11-misc/tinymount
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# EOL, severely broken, impossible to bump (#624966). Removal in a month.
-sci-geosciences/googleearth
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
