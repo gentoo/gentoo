@@ -104,6 +104,23 @@ DEPEND="${RDEPEND}
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h
+	/usr/include/opencv2/opencv_modules.hpp
+	# [contrib_cvv]
+	/usr/include/opencv2/cvv.hpp
+	/usr/include/opencv2/cvv/call_meta_data.hpp
+	/usr/include/opencv2/cvv/cvv.hpp
+	/usr/include/opencv2/cvv/debug_mode.hpp
+	/usr/include/opencv2/cvv/dmatch.hpp
+	/usr/include/opencv2/cvv/filter.hpp
+	/usr/include/opencv2/cvv/final_show.hpp
+	/usr/include/opencv2/cvv/show_image.hpp
+	# [vtk]
+	/usr/include/opencv2/viz.hpp
+	/usr/include/opencv2/viz/types.hpp
+	/usr/include/opencv2/viz/viz3d.hpp
+	/usr/include/opencv2/viz/vizcore.hpp
+	/usr/include/opencv2/viz/widget_accessor.hpp
+	/usr/include/opencv2/viz/widgets.hpp
 )
 
 PATCHES=(
