@@ -133,9 +133,7 @@ games-rpg/nwn-shadowlordsdreamcatcherdemon
 dev-perl/XML-AutoWriter
 
 # Gilles Dartiguelongue <eva@gentoo.org> (04 Sep 2017)
-# Release barely known to projects using enchant
-# soversion is completely broken, bug #629750
-# Breaks gtkspell (build) & gspell (runtime) at least, bug #629772
+# Incompatible changes in API in Enchant 2. Bug #629838.
 >=app-text/enchant-2
 
 # Lars Wendler <polynomial-c@gentoo.org> (03 Sep 2017)
