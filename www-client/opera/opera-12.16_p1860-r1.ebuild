@@ -10,7 +10,7 @@ HOMEPAGE="http://www.opera.com/"
 SLOT="0"
 LICENSE="OPERA-12 LGPL-2 LGPL-3"
 KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="elibc_FreeBSD gtk kde multilib"
+IUSE="elibc_FreeBSD gtk multilib"
 
 O_V="$(get_version_component_range 1-2)" # Version, i.e. 11.00
 O_B="$(get_version_component_range 3)"   # Build number, i.e. 1156
@@ -71,11 +71,6 @@ GTKRDEPEND="
 	x11-libs/pango
 	x11-libs/pixman
 "
-KDERDEPEND="
-	kde-frameworks/kdelibs:4
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-"
 RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
@@ -90,7 +85,6 @@ RDEPEND="
 	x11-libs/libXt
 	x11-misc/xdg-utils
 	gtk? ( ${GTKRDEPEND} )
-	kde? ( ${KDERDEPEND} )
 "
 
 QA_PREBUILT="*"
@@ -143,9 +137,9 @@ src_prepare() {
 	if ! use gtk; then
 		rm lib/${PN}/liboperagtk2.so || die
 	fi
-	if ! use kde; then
-		rm lib/${PN}/liboperakde4.so || die
-	fi
+
+	rm lib/${PN}/liboperakde4.so || die
+
 	if use amd64 && ! use multilib; then
 		rm lib/${PN}/pluginwrapper/operapluginwrapper-ia32-linux || die
 	fi
