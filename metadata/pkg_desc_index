@@ -4721,7 +4721,7 @@ dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.7 9999: UI library that focuses on simplicity and minimalism
-dev-libs/gjs 1.46.0 1.48.6: Javascript bindings for GNOME
+dev-libs/gjs 1.46.0 1.48.6 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.50.3-r1 2.52.3: The GLib library of C routines
 dev-libs/gmime 2.6.23: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
@@ -11677,7 +11677,7 @@ gnome-base/gnome-session 3.22.3 3.24.1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.22.2 3.22.2-r1 3.24.2 3.24.3: Gnome Settings Daemon
 gnome-base/gnome-shell 3.22.3 3.22.3-r2 3.24.3: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.22.0 3.24.0: Collection of GSettings schemas for GNOME desktop
+gnome-base/gsettings-desktop-schemas 3.22.0 3.24.0 3.24.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.30.4 1.32.1: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
@@ -11708,7 +11708,7 @@ gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0: Translation data for Cinnam
 gnome-extra/cjs 3.0.1 3.4.1 3.4.4: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.22.7 3.24.5: Evolution groupware backend
+gnome-extra/evolution-data-server 3.22.7 3.24.5 3.24.6: Evolution groupware backend
 gnome-extra/evolution-ews 3.22.6 3.24.5: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
@@ -13035,7 +13035,7 @@ media-libs/libcanberra 0.30-r4 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.1.3 9999: Library parsing the Corel cdr documents
-media-libs/libchamplain 0.12.15: Clutter based world map renderer
+media-libs/libchamplain 0.12.15 0.12.16: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 1.0.2 2.2.1 2.4.0 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
@@ -14871,7 +14871,7 @@ net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP proto
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.22.5 3.22.6-r1 3.24.2-r1: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.22.5 3.22.6-r1 3.24.2-r1 3.24.3: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.12 3.5.13 3.5.14 3.5.15 3.6.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.40 2.8.51 2.8.52: A cross-platform open source C and C++ SDK for SOAP/XML Web services
@@ -18692,7 +18692,7 @@ x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r3 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1 0.2.1-r1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2 0.8.0-r3: Rendering engine for MathML documents
-x11-libs/gtksourceview 2.10.5-r3 3.22.2 3.24.3: A text widget implementing syntax highlighting and other features
+x11-libs/gtksourceview 2.10.5-r3 3.22.2 3.24.3 3.24.4: A text widget implementing syntax highlighting and other features
 x11-libs/guile-gtk 2.1-r2 2.1-r3: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
 x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
@@ -18777,7 +18777,7 @@ x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.6-r1 2.3.7: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
-x11-libs/pango 1.40.3 1.40.5 1.40.6 1.40.7 1.40.9 1.40.11: Internationalized text layout and rendering library
+x11-libs/pango 1.40.3 1.40.5 1.40.6 1.40.7 1.40.9 1.40.11 1.40.12: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10.1: A Qt port of Neil Hodgson's Scintilla C++ editor class
