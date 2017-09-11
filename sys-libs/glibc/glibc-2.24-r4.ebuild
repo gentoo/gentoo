@@ -27,7 +27,7 @@ case ${PV} in
 esac
 GCC_BOOTSTRAP_VER="4.7.3-r1"
 # patches live at https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/src/patchsets/glibc/
-PATCH_VER="8"                                  # Gentoo patchset
+PATCH_VER="10"                                 # Gentoo patchset
 : ${NPTL_KERN_VER:="2.6.32"}                   # min kernel version nptl requires
 
 IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
@@ -100,7 +100,7 @@ upstream_uris() {
 	echo mirror://gnu/glibc/$1 ftp://sourceware.org/pub/glibc/{releases,snapshots}/$1 mirror://gentoo/$1
 }
 gentoo_uris() {
-	local devspace="HTTP~vapier/dist/URI HTTP~azarah/glibc/URI HTTP~tamiko/distfiles/URI"
+	local devspace="HTTP~vapier/dist/URI HTTP~azarah/glibc/URI HTTP~tamiko/distfiles/URI HTTP~slyfox/distfiles/URI"
 	devspace=${devspace//HTTP/https://dev.gentoo.org/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }
