@@ -384,11 +384,6 @@ dev-php/PEAR-Translation2
 # with it, bug #626292
 =dev-libs/libfilezilla-0.10.0
 
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# Obsolete. Replaced by media-gfx/graphite2. No longer used
-# by anything. Removal in 30 days. Bug #594314.
-media-libs/silgraphite
-
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
 # Its pre release so better to mask it
 =media-gfx/freecad-0.17_pre*
