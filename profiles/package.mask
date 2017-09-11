@@ -156,11 +156,6 @@ dev-qt/qtphonon
 # net-analyzer/ntopng is available
 net-analyzer/ntop
 
-# Michael Orlitzky <mjo@gentoo.org> (30 Aug 2017)
-# Ownership of most installed files has changed; needs testing.
-=net-analyzer/nagios-core-4.3.4
-=net-analyzer/nagios-4.3.4
-
 # James Le Cuirot <chewi@gentoo.org> (29 Aug 2017)
 # The FOSS-friendly oracle-javamail has rendered other implementations
 # and the virtual obsolete. Removal in 30 days. See bug #553186.
