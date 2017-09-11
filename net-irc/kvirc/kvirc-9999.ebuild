@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=(python2_7)
 
-inherit cmake-utils flag-o-matic multilib python-single-r1
+inherit cmake-utils flag-o-matic gnome2-utils multilib python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -135,4 +135,14 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
