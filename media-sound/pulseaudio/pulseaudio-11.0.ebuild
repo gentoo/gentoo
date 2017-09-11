@@ -255,9 +255,9 @@ multilib_src_compile() {
 		emake
 		use doc && emake doxygen
 	else
-		local targets=( libpulse.la libpulse-simple.la )
+		local targets=( libpulse.la libpulsedsp.la libpulse-simple.la )
 		use glib && targets+=( libpulse-mainloop-glib.la )
-		emake -C src libpulse{,dsp,-simple,-mainloop-glib}.la
+		emake -C src ${targets[*]}
 	fi
 }
 
