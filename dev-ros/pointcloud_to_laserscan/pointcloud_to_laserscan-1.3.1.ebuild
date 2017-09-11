@@ -20,5 +20,6 @@ RDEPEND="
 	dev-ros/tf2
 	dev-ros/tf2_ros
 	dev-ros/tf2_sensor_msgs
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
