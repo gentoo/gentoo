@@ -16,9 +16,9 @@ KEYWORDS="amd64 x86"
 IUSE="perl static-libs"
 DOCS=( AUTHORS ChangeLog NEWS README )
 PATCHES=(
-	"${FILESDIR}/${P}-ricedown.patch"
-	"${FILESDIR}/${P}-perl.patch"
-	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}/${P}-perl_build.patch"
+	"${FILESDIR}/${P}-c++-2011.patch"
 )
 AUTOTOOLS_AUTORECONF=yes
 
