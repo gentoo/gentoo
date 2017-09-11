@@ -346,27 +346,6 @@ kde-apps/kommander
 # experimental features and accept a more unstable release.
 >=www-client/chromium-62
 
-# Brian Evans <grknight@gentoo.org) (08 Aug 2017)
-# Old PEAR packages which are not maintained upstream or superseded
-# They contain errors which are not easy to maintain with no upstream
-# Many also do not have tests to easily find
-# incompatibilies with latest versions.
-# dev-php-Auth_HTTP has an upstream but relies on PEAR-Auth which does not
-# Masked for removal in 30 days
-dev-php/PEAR-Auth
-dev-php/PEAR-Auth_HTTP
-dev-php/PEAR-HTML_Template_IT
-dev-php/PEAR-HTML_TreeMenu
-dev-php/PEAR-HTTP_Client
-dev-php/PEAR-HTTP_Request
-dev-php/PEAR-Numbers_Roman
-dev-php/PEAR-PEAR_Info
-dev-php/PEAR-SOAP
-dev-php/PEAR-Services_Amazon
-dev-php/PEAR-Services_Weather
-dev-php/PEAR-Testing_Selenium
-dev-php/PEAR-Translation2
-
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
 # https://bugs.gentoo.org/600214
@@ -384,65 +363,9 @@ dev-php/PEAR-Translation2
 # with it, bug #626292
 =dev-libs/libfilezilla-0.10.0
 
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# Obsolete. Replaced by media-gfx/graphite2. No longer used
-# by anything. Removal in 30 days. Bug #594314.
-media-libs/silgraphite
-
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# Dependency of dev-texlive/texlive-basic-2012 no longer needed for
-# the current versions. Removal in 14 days.
-dev-texlive/texlive-documentation
-
-# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
-# Unmaintained since mid-2016, requires an active maintainer. Has
-# multiple build failure bugs. Removal in 30 days. Bug #580516.
-sys-kernel/openvz-sources
-
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
 # Its pre release so better to mask it
 =media-gfx/freecad-0.17_pre*
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, cannot be bumped, buggy (#468128). Removal in a month.
-x11-apps/spotlighter
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Fails to build (#542108), relies on dead DirectFB. Removal in a month.
-dev-libs/DFB++
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# One of the last consumers of old udisks:0, upstream dead for ages
-# (#601358). Removal in a month.
-x11-misc/tinymount
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# EOL, severely broken, impossible to bump (#624966). Removal in a month.
-sci-geosciences/googleearth
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Dead for ages, not usable at present time (#625596). Removal in a month.
-app-mobilephone/linuxsms
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, last consumer of obsolete cegui version (#625604). Removal
-# in a month.
-games-arcade/smc
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Dead for a long time, relies on also dead DirectFB lib (#625608). Removal
-# in a month.
-media-gfx/DFBPoint
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, relies on also dead DirectFB lib (#625610). Removal in a
-# month.
-media-video/dfbsee
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, relies on also dead DirectFB lib (#625612). Removal in a
-# month.
-net-misc/directvnc
 
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data

@@ -2,9 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mschiff@gentoo.org</email>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
 	</maintainer>
-	<use>
-		<flag name="bundled-libs">Use bundled libraries.</flag>
-	</use>
+	<longdescription lang="en">
+		This tool runs and evaluates the docker security benchmark.
+	</longdescription>
 </pkgmetadata>
