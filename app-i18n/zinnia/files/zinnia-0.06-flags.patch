@@ -1,8 +1,6 @@
-Index: zinnia-0.06/configure.in
-===================================================================
---- zinnia-0.06.orig/configure.in
-+++ zinnia-0.06/configure.in
-@@ -59,15 +59,6 @@ AC_ARG_WITH(pkgconfigdir,
+--- /configure.in
++++ /configure.in
+@@ -59,15 +59,6 @@
  AC_SUBST([pkgconfigdir])
  AC_MSG_NOTICE([pkgconfig directory is ${pkgconfigdir}])
  
