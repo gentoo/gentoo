@@ -17082,6 +17082,7 @@ sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11: Miscellaneous commands used on macOS, Sierra 10.12
 sys-apps/dbus 1.10.18 1.10.20 1.10.22: A message bus system, a simple way for applications to talk to each other
+sys-apps/dbus-broker 4 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.7 4.8.1.1 4.8.2: A selection of tools from Debian
