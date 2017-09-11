@@ -43,7 +43,7 @@ RDEPEND="dev-libs/glib:2
 		pango? ( x11-libs/pango )
 		!pango? ( media-libs/fontconfig )
 	)
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:0= )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
 	introspection? ( dev-libs/gobject-introspection )
