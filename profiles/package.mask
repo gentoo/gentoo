@@ -29,11 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Sep 2017)
-# Plasma-4 fragment, no more rdeps, masked for removal in 30 days.
-# Masked for removal in 30 days.
-kde-apps/knotify
-
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Does not work.
 # Use net-misc/dropbox or kde-apps/dolphin-plugins instead.
