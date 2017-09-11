@@ -346,15 +346,6 @@ kde-apps/kommander
 # experimental features and accept a more unstable release.
 >=www-client/chromium-62
 
-# Brian Evans <grknight@gentoo.org) (08 Aug 2017)
-# Old PEAR packages which are not maintained upstream or superseded
-# They contain errors which are not easy to maintain with no upstream
-# Many also do not have tests to easily find
-# incompatibilies with latest versions.
-# dev-php-Auth_HTTP has an upstream but relies on PEAR-Auth which does not
-# Masked for removal in 30 days
-dev-php/PEAR-Auth
-
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
 # https://bugs.gentoo.org/600214
