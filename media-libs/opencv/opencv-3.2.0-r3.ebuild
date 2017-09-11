@@ -107,6 +107,9 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvv/filter.hpp
 	/usr/include/opencv2/cvv/final_show.hpp
 	/usr/include/opencv2/cvv/show_image.hpp
+	# [contrib_hdf]
+	/usr/include/opencv2/hdf.hpp
+	/usr/include/opencv2/hdf/hdf5.hpp
 	# [vtk]
 	/usr/include/opencv2/viz.hpp
 	/usr/include/opencv2/viz/types.hpp
