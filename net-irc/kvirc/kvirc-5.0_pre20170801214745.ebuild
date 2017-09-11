@@ -60,7 +60,7 @@ RDEPEND="dev-qt/qtcore:5
 	perl? ( dev-lang/perl:0= )
 	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0= )
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
