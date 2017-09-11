@@ -24,7 +24,7 @@ RDEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/zlib:0=
 	dev-libs/openssl:0=
-	<net-misc/curl-7.55:0="
+	net-misc/curl:0="
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/os-headers"
@@ -41,6 +41,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		# fix building against curl-7.55.0+
+		# https://bugs.gentoo.org/627572
+		"${FILESDIR}"/sysdig-0.17.0-curlbuild.h.patch
+	)
+
 	sed -i -e 's:-ggdb::' CMakeLists.txt || die
 
 	cmake-utils_src_prepare
