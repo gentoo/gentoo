@@ -7,8 +7,8 @@ IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd m
 KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) virtual/logger xinetd? ( sys-apps/xinetd )
-REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss )
+REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
 SLOT=0
 SRC_URI=https://get.bitlbee.org/src/bitlbee-3.5.1.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=1727c70884437dab97375800676c01fb
+_md5_=e069927dda2fa9d2b853b581c9dd009d
