@@ -411,11 +411,6 @@ x11-apps/spotlighter
 # Fails to build (#542108), relies on dead DirectFB. Removal in a month.
 dev-libs/DFB++
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# One of the last consumers of old udisks:0, upstream dead for ages
-# (#601358). Removal in a month.
-x11-misc/tinymount
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
