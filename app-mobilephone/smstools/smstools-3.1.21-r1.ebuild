@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit systemd toolchain-funcs user
+inherit systemd toolchain-funcs user eutils
 
 DESCRIPTION="Send and receive short messages through GSM modems"
 HOMEPAGE="http://smstools3.kekekasvi.com/"
@@ -18,6 +18,7 @@ DEPEND=""
 RDEPEND="sys-process/procps
 	stats? ( >=dev-libs/mm-1.4.0 )"
 
+PATCHES="${FILESDIR}/${PV}-gawk-location.patch"
 S="${WORKDIR}/${PN}3"
 
 pkg_setup() {
@@ -26,6 +27,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	if use stats; then
 		sed -i -e "s:CFLAGS += -D NOSTATS:#CFLAGS += -D NOSTATS:" \
 			"${S}/src/Makefile" || die
@@ -56,7 +58,7 @@ src_install() {
 	fowners -R smsd:sms /var/spool/sms
 	fperms g+s /var/spool/sms/incoming
 
-	newinitd "${FILESDIR}"/smsd.initd3 smsd
+	newinitd "${FILESDIR}"/smsd.initd4 smsd
 	insopts -o smsd -g sms -m0644
 	insinto /etc
 	newins examples/smsd.conf.easy smsd.conf
