@@ -1314,7 +1314,7 @@ app-emulation/ganeti-instance-debootstrap 0.11 0.12 0.16: Scripts to build Ganet
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
 app-emulation/genymotion-bin 2.10.0: Complete set of tools that provide a virtual environment for Android
-app-emulation/go-secbench 0.1.0: run and evaluate the docker security benchmark
+app-emulation/go-secbench 0.1.0 0.1.0-r1: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator

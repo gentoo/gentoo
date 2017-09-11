@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-lang/go >=dev-lang/go-1.8
+DESCRIPTION=run and evaluate the docker security benchmark
+EAPI=6
+HOMEPAGE=https://github.com/qnib/go-secbench
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-emulation/docker
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/qnib/go-secbench/archive/v0.1.0.tar.gz -> go-secbench-0.1.0.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=2fc9d5e88eab360514b02deb96263a37
