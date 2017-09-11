@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
+# dep tree to be stabilized at this time.
+>=net-irc/weechat-1.7 doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
 # Requires not yet stabilised dev-db/oracle-instantclient.
 sci-geosciences/qgis oracle
