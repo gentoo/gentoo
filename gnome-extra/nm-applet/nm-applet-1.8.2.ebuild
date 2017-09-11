@@ -31,7 +31,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	virtual/freedesktop-icon-theme
 	virtual/libgudev:=
-	gcr? ( >=app-crypt/gcr-3.14:= )
+	gcr? ( >=app-crypt/gcr-3.14:=[gtk] )
 	modemmanager? ( net-misc/modemmanager )
 	selinux? ( sys-libs/libselinux )
 	teamd? ( >=dev-libs/jansson-2.3 )
