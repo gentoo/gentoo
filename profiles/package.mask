@@ -29,6 +29,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (11 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Fails to build with new x11-libs/qscintilla.
+# Masked for removal in 30 days. Bug #628224.
+app-editors/qwriter
+
+# Michael Palimaka <kensington@gentoo.org> (11 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Fails to build with new x11-libs/qscintilla.
+# Masked for removal in 30 days. Bug #628228.
+dev-util/kscope
+
+# Michael Palimaka <kensington@gentoo.org> (11 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Fails to build with new x11-libs/qscintilla.
+# Masked for removal in 30 days. Bug #628230.
+dev-util/monkeystudio
+
+# Michael Palimaka <kensington@gentoo.org> (11 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Fails to build with new x11-libs/qscintilla.
+# Masked for removal in 30 days. Bug #628234.
+dev-util/universalindentgui
+
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Does not work.
 # Use net-misc/dropbox or kde-apps/dolphin-plugins instead.
