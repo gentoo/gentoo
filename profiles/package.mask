@@ -355,7 +355,6 @@ kde-apps/kommander
 # Masked for removal in 30 days
 dev-php/PEAR-Auth
 dev-php/PEAR-Auth_HTTP
-dev-php/PEAR-HTML_Template_IT
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
