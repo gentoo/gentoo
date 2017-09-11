@@ -11737,7 +11737,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.4 3.8.5: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.10.5 1.12.2 1.12.3: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6 3.2.0 3.4.4 3.4.7: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.4.6-r1 1.8.0 1.8.2: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.4.6-r1 1.8.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
@@ -13898,7 +13898,7 @@ media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes you
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
-media-sound/pulseaudio 10.0 10.99.1: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 10.0 10.99.1 11.0: A networked sound server with an advanced plugin system
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -14853,7 +14853,7 @@ net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP proto
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.18 1.0.19 1.0.20: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.22.5 3.22.6-r1 3.24.2-r1 3.24.3: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.22.5 3.22.6-r1 3.24.3: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.12 3.5.13 3.5.14 3.5.15 3.6.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.40 2.8.51 2.8.52: A cross-platform open source C and C++ SDK for SOAP/XML Web services
@@ -18385,7 +18385,7 @@ www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web b
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.22.7 3.24.3 3.24.4: GNOME webbrowser based on Webkit
+www-client/epiphany 3.22.7 3.24.4: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.3.0 55.0.2: Firefox Web Browser
 www-client/firefox-bin 52.3.0 55.0.2: Firefox Web Browser
