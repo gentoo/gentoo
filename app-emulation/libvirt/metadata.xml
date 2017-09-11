@@ -33,7 +33,7 @@
 		Support management of Linux Containers virtualisation (<pkg>app-emulation/lxc</pkg>)
 	</flag>
 	<flag name="openvz">
-		Support management of OpenVZ virtualisation (see <pkg>sys-kernel/openvz-sources</pkg>)
+		Support management of OpenVZ virtualisation (openvz-sources)
 	</flag>
 	<flag name="uml">
 		Support management of User Mode Linux virtualisation
