@@ -429,11 +429,6 @@ app-mobilephone/linuxsms
 # in a month.
 games-arcade/smc
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Dead for a long time, relies on also dead DirectFB lib (#625608). Removal
-# in a month.
-media-gfx/DFBPoint
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
