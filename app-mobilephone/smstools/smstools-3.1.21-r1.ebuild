@@ -18,6 +18,7 @@ DEPEND=""
 RDEPEND="sys-process/procps
 	stats? ( >=dev-libs/mm-1.4.0 )"
 
+PATCHES="${FILESDIR}/${PV}-gawk-location.patch"
 S="${WORKDIR}/${PN}3"
 
 pkg_setup() {
@@ -57,7 +58,7 @@ src_install() {
 	fowners -R smsd:sms /var/spool/sms
 	fperms g+s /var/spool/sms/incoming
 
-	newinitd "${FILESDIR}"/smsd.initd3 smsd
+	newinitd "${FILESDIR}"/smsd.initd4 smsd
 	insopts -o smsd -g sms -m0644
 	insinto /etc
 	newins examples/smsd.conf.easy smsd.conf
