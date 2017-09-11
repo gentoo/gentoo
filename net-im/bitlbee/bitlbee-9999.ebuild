@@ -25,6 +25,7 @@ IUSE="debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )
 	xmpp? ( !nss )
+	test? ( plugins )
 "
 
 COMMON_DEPEND="
