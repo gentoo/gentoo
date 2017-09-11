@@ -1,0 +1,287 @@
+From c19543dcd12858d0852a9f0dc0641eaa5b52a038 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Tue, 12 Sep 2017 07:40:39 +1200
+Subject: Axe Test::Dependencies::Heavy
+
+---
+ MANIFEST                       |  1 -
+ META.json                      | 23 +++--------------------
+ META.yml                       |  6 ------
+ Makefile.PL                    |  8 --------
+ dist.ini                       |  7 -------
+ lib/Test/Dependencies.pm       |  4 ++--
+ lib/Test/Dependencies/Heavy.pm | 36 ++++++++++++++++++++++++++++++++++--
+ t/00-load-basic.t              |  7 -------
+ t/05-dependencies-heavy.t      | 12 ------------
+ 9 files changed, 39 insertions(+), 65 deletions(-)
+ delete mode 100644 t/05-dependencies-heavy.t
+
+diff --git a/MANIFEST b/MANIFEST
+index fddccd7..4780f3d 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -16,7 +16,6 @@ t/01-load-with-exclude.t
+ t/02-dependencies-default.t
+ t/03-empty.t
+ t/04-dependencies-light.t
+-t/05-dependencies-heavy.t
+ t/data/empty/dummy
+ t/data/mostly-empty/META.yml
+ t/data/mostly-empty/lib/empty
+diff --git a/META.json b/META.json
+index 24b6d31..cd9ff8d 100644
+--- a/META.json
++++ b/META.json
+@@ -14,18 +14,6 @@
+    },
+    "name" : "Test-Dependencies",
+    "optional_features" : {
+-      "Heavy" : {
+-         "description" : "\"Heavy\" dependency search policy",
+-         "prereqs" : {
+-            "runtime" : {
+-               "requires" : {
+-                  "B::PerlReq" : "0",
+-                  "PerlReq::Utils" : "0"
+-               }
+-            }
+-         },
+-         "x_default" : "0"
+-      },
+       "Legacy" : {
+          "description" : "Legacy (no-arguments) ok_dependencies() invocation",
+          "prereqs" : {
+@@ -49,10 +37,8 @@
+       },
+       "develop" : {
+          "requires" : {
+-            "B::PerlReq" : "0",
+             "CPAN::Meta" : "0",
+-            "File::Find::Rule::Perl" : "0",
+-            "PerlReq::Utils" : "0"
++            "File::Find::Rule::Perl" : "0"
+          }
+       },
+       "runtime" : {
+@@ -61,16 +47,13 @@
+             "perl" : "v5.10.1"
+          },
+          "suggests" : {
+-            "B::PerlReq" : "0",
+             "CPAN::Meta" : "0",
+-            "File::Find::Rule::Perl" : "0",
+-            "PerlReq::Utils" : "0"
++            "File::Find::Rule::Perl" : "0"
+          }
+       },
+       "test" : {
+          "requires" : {
+-            "Test::More" : "1.30",
+-            "Test::Needs" : "0"
++            "Test::More" : "1.30"
+          }
+       }
+    },
+diff --git a/META.yml b/META.yml
+index 45176e6..01e1e21 100644
+--- a/META.yml
++++ b/META.yml
+@@ -4,7 +4,6 @@ author:
+   - 'Erik Huelsmann <ehuels@gmail.com>'
+ build_requires:
+   Test::More: '1.30'
+-  Test::Needs: '0'
+ configure_requires:
+   CPAN::Meta::Requirements: '2.120620'
+   ExtUtils::MakeMaker: '0'
+@@ -17,11 +16,6 @@ meta-spec:
+   version: '1.4'
+ name: Test-Dependencies
+ optional_features:
+-  Heavy:
+-    description: '"Heavy" dependency search policy'
+-    requires:
+-      B::PerlReq: '0'
+-      PerlReq::Utils: '0'
+   Legacy:
+     description: 'Legacy (no-arguments) ok_dependencies() invocation'
+     requires:
+diff --git a/Makefile.PL b/Makefile.PL
+index 57708c2..c3b1e51 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -23,7 +23,6 @@ my %WriteMakefileArgs = (
+   },
+   "TEST_REQUIRES" => {
+     "Test::More" => "1.30",
+-    "Test::Needs" => 0
+   },
+   "VERSION" => "0.23",
+   "test" => {
+@@ -35,7 +34,6 @@ my %WriteMakefileArgs = (
+ my %FallbackPrereqs = (
+   "Pod::Strip" => 0,
+   "Test::More" => "1.30",
+-  "Test::Needs" => 0
+ );
+ 
+ # inserted by Dist::Zilla::Plugin::DynamicPrereqs 0.029
+@@ -44,12 +42,6 @@ if (has_module('CPAN::Meta') && has_module('File::Find::Rule::Perl')
+   requires('CPAN::Meta');
+   requires('File::Find::Rule::Perl');
+ }
+-if (has_module('B::PerlReq') && has_module('PerlReq::Utils')
+-    || prompt('install "Heavy" dependency search policy? [y/N]', 'N') =~ /^y/i) {
+-  requires('B::PerlReq');
+-  requires('PerlReq::Utils');
+-}
+-
+ 
+ unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+   delete $WriteMakefileArgs{TEST_REQUIRES};
+diff --git a/dist.ini b/dist.ini
+index abcc46b..885da23 100644
+--- a/dist.ini
++++ b/dist.ini
+@@ -22,7 +22,6 @@ Pod::Strip = 0
+ [Prereqs / TestRequires]
+ Test::More  = 1.30
+ ; ' all versions up to 1.1.14 have a bug with 'plan' leaking from 'use_ok'
+-Test::Needs = 0
+ 
+ [OptionalFeature / Legacy]
+ -default = 1
+@@ -30,12 +29,6 @@ Test::Needs = 0
+ CPAN::Meta = 0
+ File::Find::Rule::Perl = 0
+ 
+-[OptionalFeature / Heavy]
+--default = 0
+--description = "Heavy" dependency search policy
+-B::PerlReq = 0
+-PerlReq::Utils = 0
+-
+ ; [MetaNoIndex]
+ ; directory = t-data
+ 
+diff --git a/lib/Test/Dependencies.pm b/lib/Test/Dependencies.pm
+index 31f0783..6a1bd69 100644
+--- a/lib/Test/Dependencies.pm
++++ b/lib/Test/Dependencies.pm
+@@ -110,7 +110,7 @@ sub import {
+     if (defined $args{style}) {
+       _choose_style($args{style});
+     } else {
+-      _choose_style('heavy');
++      _choose_style('light');
+     }
+   }
+ 
+@@ -122,7 +122,7 @@ sub _choose_style {
+   if (lc $style eq 'light') {
+     eval 'use Test::Dependencies::Light';
+   } elsif (lc $style eq 'heavy') {
+-    eval 'use Test::Dependencies::Heavy';
++    require Test::Dependencies::Heavy;
+   } else {
+     carp "Unknown style: '", $style, "'";
+   }
+diff --git a/lib/Test/Dependencies/Heavy.pm b/lib/Test/Dependencies/Heavy.pm
+index 5a78f7f..121b8f1 100644
+--- a/lib/Test/Dependencies/Heavy.pm
++++ b/lib/Test/Dependencies/Heavy.pm
+@@ -3,9 +3,14 @@ package Test::Dependencies::Heavy;
+ use warnings;
+ use strict;
+ 
+-use B::PerlReq;
++BEGIN {
++    die <<'EOF';
++Test::Dependencies::Heavy is not available on Gentoo
++Read `perldoc Test::Dependencies::Heavy` for details
++EOF
++}
++
+ use IPC::Cmd qw/run/;
+-use PerlReq::Utils qw(path2mod);
+ use Exporter 'import';
+ 
+ our @EXPORT = qw/get_modules_used_in_file/;
+@@ -14,6 +19,33 @@ our @EXPORT = qw/get_modules_used_in_file/;
+ 
+ Test::Dependencies::Heavy - Heavy style for checking for dependencies.
+ 
++=head1 REMOVED
++
++This package has been neutered by Gentoo as its primary dependencies,
++L<< C<B::PerlReq>|B::PerlReq >> and L<< C<PerlReq::Utils>|PerlReq::Utils >>
++( shipped in C<dev-perl/rpm-build-perl> ) are broken upstream since Perl 5.22,
++and upstream haven't been seen since 2012.
++
++Given that nobody in Gentoo noticed this other than Arch Testing, is safe to
++assume its dead.
++
++If the issues with C<rpm-build-perl> can be restored, this removal can be
++reverted.
++
++Related Bugs:
++
++=over 4
++
++=item * L<< RT#117350 - Compilation error with op_sibling on Perl 5.26|https://rt.cpan.org/Public/Bug/Display.html?id=117350 >>
++
++=item * L<< RT#104855 - Runtime Tests fail since Perl 5.22|https://rt.cpan.org/Public/Bug/Display.html?id=104885 >>
++
++=item * L<< Gentoo#623095 - Compile failure on Perl 5.26|https://bugs.gentoo.org/623096 >>
++
++=item * L<< Gentoo#627080 - Runtime tests fail|https://bugs.gentoo.org/627080 >>
++
++=back
++
+ =head1 SYNOPSIS
+ 
+ You shouldn't have to include this module yourself.  Look at the
+diff --git a/t/00-load-basic.t b/t/00-load-basic.t
+index d776b3d..80fdebd 100644
+--- a/t/00-load-basic.t
++++ b/t/00-load-basic.t
+@@ -1,18 +1,11 @@
+ #!perl
+ 
+ use Test::More 0.98;
+-use Test::Needs;
+ 
+ plan skip_all => 'Tests incompatible with Test::More 1.001014'
+     if $Test::More::VERSION == 1.001014;
+ 
+-
+ use_ok('Test::Dependencies');
+ use_ok('Test::Dependencies::Light');
+ 
+-subtest "Heavy Loading" => sub {
+-    test_needs 'B::PerlReq', 'PerlReq::Utils';
+-    use_ok('Test::Dependencies::Heavy');
+-};
+-
+ done_testing;
+diff --git a/t/05-dependencies-heavy.t b/t/05-dependencies-heavy.t
+deleted file mode 100644
+index dd9972f..0000000
+--- a/t/05-dependencies-heavy.t
++++ /dev/null
+@@ -1,12 +0,0 @@
+-#!perl
+-
+-use Test::Needs 'B::PerlReq', 'PerlReq::Utils';
+-
+-# yay bootstrap!
+-use Test::Dependencies exclude => [
+-    qw/Test::Dependencies
+-      ExtUtils::MakeMaker  CPAN::Meta::Requirements Module::Metadata /
+-  ],
+-  style => 'heavy';
+-
+-ok_dependencies();
+-- 
+2.14.1
+
