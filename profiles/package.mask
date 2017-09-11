@@ -439,11 +439,6 @@ media-gfx/DFBPoint
 # month.
 media-video/dfbsee
 
-# Pacho Ramos <pacho@gentoo.org> (26 Jul 2017)
-# Upstream dead, relies on also dead DirectFB lib (#625612). Removal in a
-# month.
-net-misc/directvnc
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
