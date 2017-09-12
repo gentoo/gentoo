@@ -102,7 +102,7 @@ src_configure() {
 	COPTS="$(use_have -n auth-dns auth)"
 	COPTS+="$(use_have conntrack)"
 	COPTS+="$(use_have dbus)"
-	COPTS+="$(use libidn2 || $(use_have idn))"
+	COPTS+="$(use libidn2 || use_have idn)"
 	COPTS+="$(use_have libidn2)"
 	COPTS+="$(use_have -n inotify)"
 	COPTS+="$(use_have -n dhcp dhcp dhcp6)"
