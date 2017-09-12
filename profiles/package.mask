@@ -201,12 +201,6 @@ kde-misc/akonadi-git-resource
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
 
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Aug 2017)
-# Requires deprecated libkcddb:4, upstream is not going to port.
-# See also: https://github.com/dfaust/soundkonverter/issues/23
-# Masked for removal in 30 days.
-media-sound/soundkonverter
-
 # Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
 # Requires deprecated Qt/KDE4. Dead upstream. Use kde-apps/spectacle instead.
 # Masked for removal in 30 days.
