@@ -6,11 +6,11 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="PALO : PArisc Linux Loader"
 HOMEPAGE="http://parisc-linux.org/ https://parisc.wiki.kernel.org/"
-SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.xz"
+SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/${PN}.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* hppa"
+KEYWORDS="-* ~hppa"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.96-toolchain.patch
