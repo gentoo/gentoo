@@ -14,7 +14,7 @@ HOMEPAGE="https://techbase.kde.org/Kirigami"
 EGIT_REPO_URI="${EGIT_REPO_URI/${PN}2/${PN}}"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="plasma"
 
 RDEPEND="
