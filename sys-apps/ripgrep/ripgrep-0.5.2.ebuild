@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-util/cargo
-	>=dev-lang/rust-1.11
+	>=virtual/rust-1.11
 "
 
 src_prepare() {
