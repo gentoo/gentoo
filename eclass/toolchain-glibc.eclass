@@ -1278,7 +1278,7 @@ toolchain-glibc_do_src_install() {
 	doins "${WORKDIR}"/extra/etc/*.conf || die
 
 	if ! in_iuse nscd || use nscd ; then
-		doinitd "${WORKDIR}"/extra/etc/nscd || die
+		doinitd "$(prefixify_ro "${WORKDIR}"/extra/etc/nscd)" || die
 
 		local nscd_args=(
 			-e "s:@PIDFILE@:$(strings "${ED}"/usr/sbin/nscd | grep nscd.pid):"
