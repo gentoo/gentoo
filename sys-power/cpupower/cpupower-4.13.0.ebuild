@@ -12,8 +12,8 @@ SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm x86"
-IUSE="cpufreq_bench debug nls"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="cpufreq_bench nls"
 
 # File collision w/ headers of the deprecated cpufrequtils
 RDEPEND="sys-apps/pciutils
@@ -23,20 +23,29 @@ DEPEND="${RDEPEND}
 	virtual/os-headers
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/cflags-strip.patch
+)
+
+src_configure() {
+	export bindir="${EPREFIX}/usr/bin"
+	export sbindir="${EPREFIX}/usr/sbin"
+	export mandir="${EPREFIX}/usr/share/man"
+	export includedir="${EPREFIX}/usr/include"
+	export libdir="${EPREFIX}/usr/$(get_libdir)"
+	export localedir="${EPREFIX}/usr/share/locale"
+	export docdir="${EPREFIX}/usr/share/doc/${PF}"
+	export confdir="${EPREFIX}/etc"
+	export V=1
+	export NLS=$(usex nls true false)
+	export CPUFREQ_BENCH=$(usex cpufreq_bench true false)
+}
+
 src_compile() {
 	myemakeargs=(
-		DEBUG=$(usex debug true false)
-		V=1
-		CPUFREQ_BENCH=$(usex cpufreq_bench true false)
-		NLS=$(usex nls true false)
-		docdir=/usr/share/doc/${PF}/${PN}
-		mandir=/usr/share/man
-		libdir=/usr/$(get_libdir)
 		AR="$(tc-getAR)"
 		CC="$(tc-getCC)"
 		LD="$(tc-getCC)"
-		STRIP=true
-		OPTIMIZATION=
 		VERSION=${PV}
 	)
 
@@ -50,6 +59,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" "${myemakeargs[@]}" install
+	doheader lib/cpupower.h
 	dodoc README ToDo
 
 	newconfd "${FILESDIR}"/conf.d-r2 cpupower
