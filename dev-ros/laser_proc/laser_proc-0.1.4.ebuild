@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,5 +18,6 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
 	dev-ros/nodelet
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
