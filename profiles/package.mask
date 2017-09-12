@@ -626,11 +626,6 @@ app-emulation/wine-any
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
 
-# Gnome Team <gnome@gentoo.org> (08 Mar 2017)
-# GNOME 3.24 mask (#611270)
->=net-libs/gtk-vnc-0.7
->=dev-libs/libgee-0.19
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2017)
 # Mask experimental software
 =mail-mta/postfix-3.3*
