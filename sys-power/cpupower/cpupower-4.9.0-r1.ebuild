@@ -50,6 +50,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" "${myemakeargs[@]}" install
+	doheader lib/cpupower.h
 	dodoc README ToDo
 
 	newconfd "${FILESDIR}"/conf.d-r2 cpupower
