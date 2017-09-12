@@ -66,10 +66,6 @@ inherit eutils
 
 EXPORT_FUNCTIONS src_install pkg_postinst
 
-IUSE=""
-DEPEND="|| ( >=app-editors/vim-7_alpha
-	>=app-editors/gvim-7_alpha )"
-RDEPEND="${DEPEND}"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SLOT="0"
 
