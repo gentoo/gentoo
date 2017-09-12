@@ -1,0 +1,25 @@
+From 9e1f02b3fdb7d6f410ae7563349b7a07544dd3c6 Mon Sep 17 00:00:00 2001
+From: Jonathan Riddell <jr@jriddell.org>
+Date: Tue, 12 Sep 2017 16:46:43 +0100
+Subject: desktop-mime-but-no-exec-code
+
+---
+ src/org.kde.kgraphviewer.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/org.kde.kgraphviewer.desktop b/src/org.kde.kgraphviewer.desktop
+index 42c6cc2..6e4aa15 100644
+--- a/src/org.kde.kgraphviewer.desktop
++++ b/src/org.kde.kgraphviewer.desktop
+@@ -37,7 +37,7 @@ Name[uk]=KGraphViewer
+ Name[x-test]=xxKGraphViewerxx
+ Name[zh_TW]=KGraphViewer
+ MimeType=text/vnd.graphviz
+-Exec=kgraphviewer -qwindowtitle %c
++Exec=kgraphviewer -qwindowtitle %c %u
+ Icon=kgraphviewer
+ Type=Application
+ Categories=Qt;KDE;Graphics;Viewer;2DGraphics;DataVisualization;
+-- 
+cgit v0.11.2
+
