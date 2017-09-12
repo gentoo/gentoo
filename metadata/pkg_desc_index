@@ -14858,7 +14858,7 @@ net-libs/gnutls 3.5.12 3.5.13 3.5.14 3.5.15 3.6.0: A TLS 1.2 and SSL 3.0 impleme
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.40 2.8.51 2.8.52: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
-net-libs/gtk-vnc 0.6.0: VNC viewer widget for GTK
+net-libs/gtk-vnc 0.6.0 0.7.1: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
