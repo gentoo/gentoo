@@ -20,5 +20,6 @@ RDEPEND="
 	dev-ros/costmap_2d
 	dev-ros/base_local_planner
 	dev-ros/pluginlib
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
