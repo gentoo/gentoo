@@ -9219,7 +9219,7 @@ dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.4.1-r2 1.5.1 1.5.2 1.5.3 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.10.5 1.11.0 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 0.1.10 9999: Pluginlib tutorials
-dev-ros/pointcloud_to_laserscan 1.3.0 1.3.1 9999: Converts a 3D Point Cloud into a 2D laser scan
+dev-ros/pointcloud_to_laserscan 1.3.1 9999: Converts a 3D Point Cloud into a 2D laser scan
 dev-ros/polled_camera 1.11.12 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
 dev-ros/pr2_description 1.12.0 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
@@ -9374,7 +9374,7 @@ dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.13.0 1.13.1 1.13.2 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.5 9999: Messages for defining robot trajectories
 dev-ros/transmission_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.12.0 9999: Transmission Interface
-dev-ros/turtle_actionlib 0.1.8 0.1.10 9999: Demonstrates how to write an action server and client with the turtlesim
+dev-ros/turtle_actionlib 0.1.10 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
 dev-ros/turtlesim 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 9999: Tool made for teaching ROS and ROS packages
@@ -9383,7 +9383,7 @@ dev-ros/urdf 1.12.10 1.12.11 9999: C++ parser for the Unified Robot Description 
 dev-ros/urdf_parser_plugin 1.12.7 1.12.8 1.12.9 1.12.10 1.12.11 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 0.2.5 0.3.0 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
-dev-ros/urg_node 0.1.9 0.1.10 9999: ROS wrapper for the Hokuyo urg_c library
+dev-ros/urg_node 0.1.10 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.6 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.8.0 0.9.1 0.9.3 0.10.0 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.10.0 9999: Converts between ROS structures and ViSP structures
@@ -10114,7 +10114,7 @@ dev-tcltk/tkzinc 3.3.6: A Tk widget library
 dev-tcltk/tls 1.6-r3 1.6.7 1.7.11: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r2: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development environment
-dev-tex/aastex 5.2: LaTeX package used to mark up manuscripts for American Astronomical Society journals. (AASTeX)
+dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
 dev-tex/biber 2.5 2.7: A BibTeX replacement for users of biblatex
@@ -12107,7 +12107,7 @@ kde-frameworks/kcrash 5.34.0 5.37.0 5.38.0: Framework for intercepting and handl
 kde-frameworks/kdbusaddons 5.34.0 5.37.0 5.38.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.34.0 5.34.0-r1 5.37.0 5.38.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.34.0 5.37.0 5.38.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.34 4.14.35: Libraries needed for programs by KDE
+kde-frameworks/kdelibs 4.14.34 4.14.35 4.14.36: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.34.0 5.37.0 5.38.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.34.0 5.37.0 5.38.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
@@ -16546,7 +16546,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.13.0 0.13.2 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.13.2 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3 0.13.0: Image processing routines for SciPy
