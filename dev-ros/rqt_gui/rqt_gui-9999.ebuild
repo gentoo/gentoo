@@ -15,6 +15,8 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=dev-ros/qt_gui-0.3.0[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-ros/qt_gui-0.3.0[${PYTHON_USEDEP}]
+	dev-libs/boost:="
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/gentoo.patch" )

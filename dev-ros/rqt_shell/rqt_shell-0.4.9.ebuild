@@ -4,9 +4,8 @@
 EAPI=5
 
 KEYWORDS="~amd64"
-ROS_REPO_URI="https://github.com/ros-visualization/rqt_common_plugins"
+ROS_REPO_URI="https://github.com/ros-visualization/rqt_shell"
 PYTHON_COMPAT=( python2_7 )
-ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
