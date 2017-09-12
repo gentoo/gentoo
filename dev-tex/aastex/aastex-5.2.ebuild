@@ -6,7 +6,7 @@ inherit latex-package
 MY_P=${PN/latex-/}${PV//./}
 
 DESCRIPTION="LaTeX package for American Astronomical Society journals. (AASTeX)"
-HOMEPAGE="http://www.journals.uchicago.edu/AAS/AASTeX/"
+HOMEPAGE="http://journals.aas.org/authors/aastex.html"
 SRC_URI="http://www.journals.uchicago.edu/AAS/AASTeX/${MY_P}.tar.gz"
 
 LICENSE="LPPL-1.3"
