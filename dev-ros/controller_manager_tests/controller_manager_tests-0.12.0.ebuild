@@ -18,6 +18,7 @@ RDEPEND="
 	dev-ros/controller_manager[${PYTHON_USEDEP}]
 	dev-ros/controller_interface
 	dev-ros/control_toolbox
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	test? (
