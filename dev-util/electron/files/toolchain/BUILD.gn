@@ -1,0 +1,19 @@
+import("//build/toolchain/gcc_toolchain.gni")
+
+gcc_toolchain("default") {
+  cc = getenv("CC")
+  cxx = getenv("CXX")
+  ar = getenv("AR")
+  nm = getenv("NM")
+  ld = cxx
+
+  extra_cflags = getenv("CFLAGS")
+  extra_cppflags = getenv("CPPFLAGS")
+  extra_cxxflags = getenv("CXXFLAGS")
+  extra_ldflags = getenv("LDFLAGS")
+
+  toolchain_args = {
+    current_cpu = current_cpu
+    current_os = current_os
+  }
+}
