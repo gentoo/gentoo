@@ -19,5 +19,6 @@ RDEPEND="
 	dev-ros/resource_retriever
 	dev-ros/roscpp
 	dev-libs/tinyxml
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
