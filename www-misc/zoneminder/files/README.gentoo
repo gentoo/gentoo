@@ -3,11 +3,10 @@
    (see https://wiki.gentoo.org/wiki/MySQL/Startup_Guide).
    E.g., when logged into mysql as root,
      mysql> CREATE DATABASE \`zm\`;
-     mysql> grant select,insert,update,lock tables,delete on zm.* to 'zmuser'@localhost identified by 'zmpass';
+     mysql> grant select,insert,alter,update,lock tables,delete on zm.* to 'zmuser'@localhost identified by 'zmpass';
      mysql> flush privileges;
    Once you completed that you should execute the following:
-     cd /usr/share/zoneminder
-     mysql -u zmuser -p < db/zm_create.sql
+     mysql -p < /usr/share/zoneminder/db/zm_create.sql
 
 2. Set your database settings in /etc/zm.conf, including above zmpass
 
@@ -24,5 +23,5 @@
 
 6. Finally point your browser to http://your.webserver/zm
 
-If you are upgrading, you will need to run the zmupdate.pl script:
-   /usr/bin/zmupdate.pl --version=oldversionnumber [--user=zmuser --pass=zmpass]
+If you are upgrading, you will need to run the zmupdate.pl script: 
+   /usr/bin/zmupdate.pl
