@@ -1,0 +1,512 @@
+From b756fa976480791c76e9338a16ee2b0a29265b93 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Mon, 8 Feb 2016 15:16:40 -0500
+Subject: [PATCH] electron build fixes
+
+---
+ common.gypi               | 43 ++++++++++++++++++++++-----
+ electron.gyp              | 74 +++++++++++++++++++++++++++++++++++----------
+ toolchain.gypi            | 76 +++++++++++++++++++----------------------------
+ tools/ar-flags.py         | 15 ++++++++++
+ tools/atom_source_root.py |  5 ++++
+ tools/browserify.py       | 24 +++++++++++++++
+ tools/get-endianness.py   |  4 +++
+ tools/js2asar.py          | 13 ++++----
+ 8 files changed, 179 insertions(+), 75 deletions(-)
+ create mode 100644 tools/ar-flags.py
+ create mode 100644 tools/atom_source_root.py
+ create mode 100644 tools/browserify.py
+ create mode 100644 tools/get-endianness.py
+
+diff --git a/common.gypi b/common.gypi
+index 7c1bf366a..c441ae04b 100644
+--- a/common.gypi
++++ b/common.gypi
+@@ -2,6 +2,7 @@
+   'includes': [
+     'toolchain.gypi',
+     'vendor/brightray/brightray.gypi',
++    'vendor/node/common.gypi',
+   ],
+   'variables': {
+     # Tell crashpad to build as external project.
+@@ -16,26 +17,23 @@
+     'openssl_no_asm': 1,
+     'use_openssl_def': 0,
+     'OPENSSL_PRODUCT': 'libopenssl.a',
+-    'node_release_urlbase': 'https://atom.io/download/atom-shell',
+-    'node_byteorder': '<!(node <(DEPTH)/tools/get-endianness.js)',
++    'node_release_urlbase': 'https://atom.io/download/electron',
++    'node_byteorder': '<!(python <(DEPTH)/tools/get-endianness.py)',
+     'node_target_type': 'shared_library',
++    'node_module_version': '',
+     'node_install_npm': 'false',
+     'node_prefix': '',
+     'node_shared': 'true',
+-    'node_shared_cares': 'false',
+-    'node_shared_http_parser': 'false',
+-    'node_shared_libuv': 'false',
+-    'node_shared_openssl': 'false',
+     'node_shared_v8': 'true',
+-    'node_shared_zlib': 'false',
+     'node_tag': '',
+     'node_use_dtrace': 'false',
+     'node_use_etw': 'false',
+     'node_use_mdb': 'false',
+     'node_use_openssl': 'true',
+     'node_use_perfctr': 'false',
+-    'node_use_v8_platform': 'false',
++    'node_use_v8_platform': 'true',
+     'node_use_bundled_v8': 'false',
++    'node_v8_path': '<(DEPTH)/chromium/v8/',
+     'node_enable_d8': 'false',
+     'uv_library': 'static_library',
+     'uv_parent_path': 'vendor/node/deps/uv',
+@@ -44,10 +42,16 @@
+     'v8_postmortem_support': 'false',
+     'v8_enable_i18n_support': 'false',
+     'v8_inspector': 'false',
++    'v8_use_snapshot': 'true',
++    'v8_use_external_startup_data': 1,
+   },
+   # Settings to compile node under Windows.
+   'target_defaults': {
+     'target_conditions': [
++      ['_target_name in ["icuuc", "icui18n"]', {
++        'cflags_cc!': ['-fno-rtti']
++      }],
++
+       ['_target_name in ["libuv", "http_parser", "openssl", "openssl-cli", "cares", "node", "zlib"]', {
+         'msvs_disabled_warnings': [
+           4003,  # not enough actual parameters for macro 'V'
+@@ -128,6 +132,14 @@
+         ],
+       }],
+       ['_target_name=="node"', {
++        'cflags!': [
++          '-fvisibility=hidden',
++          '-fdata-sections',
++          '-ffunction-sections',
++        ],
++        'cflags_cc!': [
++          '-fvisibility-inlines-hidden',
++        ],
+         'include_dirs': [
+           '<(libchromiumcontent_src_dir)',
+           '<(libchromiumcontent_src_dir)/third_party/icu/source/common',
+@@ -228,6 +240,21 @@
+           }],  # OS=="win"
+         ],
+       }],
++      ['_target_name=="shell_runner_host_lib"', {
++        'conditions': [
++          ['icu_use_data_file_flag==1', {
++            'defines': ['ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE'],
++          }, { # else icu_use_data_file_flag !=1
++            'conditions': [
++              ['OS=="win"', {
++                'defines': ['ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_SHARED'],
++              }, {
++                'defines': ['ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_STATIC'],
++              }],
++            ],
++          }],
++        ],
++      }],
+     ],
+     'msvs_cygwin_shell': 0, # Strangely setting it to 1 would make building under cygwin fail.
+     'msvs_disabled_warnings': [
+diff --git a/electron.gyp b/electron.gyp
+index b415525b1..4d0185561 100644
+--- a/electron.gyp
++++ b/electron.gyp
+@@ -191,7 +191,7 @@
+                   }, {
+                     'copied_libraries': [
+                       '<(PRODUCT_DIR)/lib/libnode.so',
+-                      '<(libchromiumcontent_dir)/libffmpeg.so',
++                      '<@(libchromiumcontent_shared_v8_libraries)',
+                     ],
+                   }],
+                 ],
+@@ -200,7 +200,6 @@
+               'files': [
+                 '<@(copied_libraries)',
+                 '<(libchromiumcontent_dir)/locales',
+-                '<(libchromiumcontent_dir)/icudtl.dat',
+                 '<(libchromiumcontent_dir)/blink_image_resources_200_percent.pak',
+                 '<(libchromiumcontent_dir)/content_resources_200_percent.pak',
+                 '<(libchromiumcontent_dir)/content_shell.pak',
+@@ -245,15 +244,17 @@
+         '<@(lib_sources)',
+       ],
+       'include_dirs': [
+-        '.',
+         'chromium_src',
++        '.',
+         'vendor/brightray',
+         'vendor/native_mate',
++        # libicu headers shim.
++        '<(SHARED_INTERMEDIATE_DIR)/shim_headers/icui18n_shim',
++        '<(SHARED_INTERMEDIATE_DIR)/shim_headers/icuuc_shim',
+         # Include atom_natives.h.
+         '<(SHARED_INTERMEDIATE_DIR)',
+         # Include directories for uv and node.
+         'vendor/node/src',
+-        'vendor/node/deps/http_parser',
+         'vendor/node/deps/uv/include',
+         # The `node.h` is using `#include"v8.h"`.
+         '<(libchromiumcontent_src_dir)/v8/include',
+@@ -342,11 +343,12 @@
+             '<@(lib_sources_nss)',
+           ],
+           'link_settings': {
++            'libraries': [ '<@(libchromiumcontent_v8_libraries)' ],
+             'ldflags': [
+               # Make binary search for libraries under current directory, so we
+               # don't have to manually set $LD_LIBRARY_PATH:
+               # http://serverfault.com/questions/279068/cant-find-so-in-the-same-directory-as-the-executable
+-              '-rpath \$$ORIGIN',
++              '-Wl,-rpath=\$$ORIGIN/',
+               # Make native module dynamic loading work.
+               '-rdynamic',
+             ],
+@@ -368,6 +370,9 @@
+     {
+       'target_name': 'js2asar',
+       'type': 'none',
++      'dependencies': [
++        'nodebin'
++      ],
+       'actions': [
+         {
+           'action_name': 'js2asar',
+@@ -389,6 +394,7 @@
+           'action': [
+             'python',
+             'tools/js2asar.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(_outputs)',
+             'lib',
+             '<@(_inputs)',
+@@ -399,6 +405,9 @@
+     {
+       'target_name': 'app2asar',
+       'type': 'none',
++      'dependencies': [
++        'nodebin'
++      ],
+       'actions': [
+         {
+           'action_name': 'app2asar',
+@@ -420,6 +429,7 @@
+           'action': [
+             'python',
+             'tools/js2asar.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(_outputs)',
+             'default_app',
+             '<@(_inputs)',
+@@ -445,6 +455,7 @@
+       'dependencies': [
+         # depend on this target to ensure the '<(js2c_input_dir)' is created
+         'atom_js2c_copy',
++        'nodebin'
+       ],
+       'variables': {
+         'sandbox_args': [
+@@ -474,11 +485,9 @@
+             '<(js2c_input_dir)/preload_bundle.js',
+           ],
+           'action': [
+-            'npm',
+-            'run',
+-            '--silent',
+-            'browserify',
+-            '--',
++            'python',
++            'tools/browserify.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(sandbox_args)',
+             '-o',
+             '<@(_outputs)',
+@@ -493,12 +502,11 @@
+             '<(js2c_input_dir)/isolated_bundle.js',
+           ],
+           'action': [
+-            'npm',
+-            'run',
+-            '--silent',
+-            'browserify',
+-            '--',
++            'python',
++            'tools/browserify.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(isolated_args)',
++            'lib/isolated_renderer/init.js',
+             '-o',
+             '<@(_outputs)',
+           ],
+@@ -533,6 +541,42 @@
+         }
+       ],
+     },  # target atom_js2c
++    {
++      'target_name': 'nodebin',
++      'type': 'executable',
++      'defines': [
++        'ELECTRON_NODE_BUILD_NO_ASAR'
++      ],
++      'sources': [
++        'vendor/node/src/node_main.cc',
++      ],
++      'dependencies': [
++        'vendor/node/node.gyp:node',
++      ],
++      'include_dirs': [
++        '.',
++        '<(node_v8_path)/include',
++        'vendor/native_mate',
++        # Include atom_natives.h.
++        '<(SHARED_INTERMEDIATE_DIR)',
++        # Include directories for uv and node.
++        'vendor/node/src',
++        'vendor/node/deps/uv/include',
++        '<(libchromiumcontent_src_dir)',
++        # The `node.h` is using `#include"v8.h"`.
++        '<(libchromiumcontent_src_dir)/v8/include',
++        # The `node.h` is using `#include"ares.h"`.
++        'vendor/node/deps/cares/include',
++      ],
++      'link_settings': {
++        'libraries': [ '<@(libchromiumcontent_v8_libraries)' ],
++        'ldflags': [
++          '-Wl,-rpath=\$$ORIGIN/',
++          # Make native module dynamic loading work.
++          '-rdynamic',
++        ],
++      },
++    },  # target nodebin
+   ],
+   'conditions': [
+     ['OS=="mac"', {
+diff --git a/toolchain.gypi b/toolchain.gypi
+index 1c5f8a713..c20ed1a0f 100644
+--- a/toolchain.gypi
++++ b/toolchain.gypi
+@@ -16,7 +16,7 @@
+       'arm_neon%': 1,
+ 
+       # Abosulte path to source root.
+-      'source_root%': '<!(node <(DEPTH)/tools/atom_source_root.js)',
++      'source_root%': '<!(python <(DEPTH)/tools/atom_source_root.py)',
+     },
+ 
+     # Copy conditionally-set variables out one scope.
+@@ -40,34 +40,6 @@
+         'mac_sdk%': '<!(python <(DEPTH)/tools/mac/find_sdk.py <(mac_sdk_min))',
+       }],
+ 
+-      ['OS=="linux"', {
+-        'variables': {
+-          # The system libdir used for this ABI.
+-          'system_libdir%': 'lib',
+-
+-          # Setting the path to sysroot.
+-          'conditions': [
+-            ['target_arch=="arm"', {
+-              # sysroot needs to be an absolute path otherwise it generates
+-              # incorrect results when passed to pkg-config
+-              'sysroot%': '<(source_root)/vendor/debian_wheezy_arm-sysroot',
+-            }],
+-            ['target_arch=="ia32"', {
+-              'sysroot%': '<(source_root)/vendor/debian_wheezy_i386-sysroot',
+-            }],
+-            ['target_arch=="x64"', {
+-              'sysroot%': '<(source_root)/vendor/debian_wheezy_amd64-sysroot',
+-            }],
+-          ],
+-        },
+-        # Copy conditionally-set variables out one scope.
+-        'sysroot%': '<(sysroot)',
+-        'system_libdir%': '<(system_libdir)',
+-
+-        # Redirect pkg-config to search from sysroot.
+-        'pkg-config%': '<(source_root)/tools/linux/pkg-config-wrapper "<(sysroot)" "<(target_arch)" "<(system_libdir)"',
+-      }],
+-
+       # Set default compiler flags depending on ARM version.
+       ['arm_version==6', {
+         'arm_arch%': 'armv6',
+@@ -136,23 +108,6 @@
+       },
+     }],
+ 
+-    # Setup sysroot environment.
+-    ['OS=="linux" and target_arch in ["arm", "ia32", "x64"]', {
+-      'target_defaults': {
+-        'target_conditions': [
+-          ['_toolset=="target"', {
+-            'cflags': [
+-              '--sysroot=<(sysroot)',
+-            ],
+-            'ldflags': [
+-              '--sysroot=<(sysroot)',
+-              '<!(<(source_root)/tools/linux/sysroot_ld_path.sh <(sysroot))',
+-            ],
+-          }]
+-        ],
+-      },
+-    }],  # sysroot
+-
+     # Setup cross-compilation on Linux.
+     ['OS=="linux"', {
+       'target_defaults': {
+@@ -179,6 +134,35 @@
+             'ldflags': [
+               '-m64',
+             ],
++            'conditions': [
++              ['use_lto==1 and clang==0', {
++                'cflags': [
++                  '-fno-fat-lto-objects',
++                  '-fuse-linker-plugin',
++                  '-flto=4',
++                  '--param=lto-partitions=1',
++                ],
++                'ldflags': [
++                  '-fno-fat-lto-objects',
++                  '-fuse-linker-plugin',
++                  '-flto=4',
++                  '--param=lto-partitions=1',
++                ],
++                'arflags': [
++                  '<!@(python <(DEPTH)/tools/ar-flags.py)',
++                ]
++              }],
++              ['use_lto==1 and clang==1', {
++                'cflags': [
++                  '-flto',
++                  '-fwhole-program-vtables'
++                ],
++                'ldflags': [
++                  '-flto',
++                  '-fwhole-program-vtables'
++                ],
++              }],
++            ],
+           }],  # target_arch=="x64" and _toolset=="target"
+           ['target_arch=="arm" and _toolset=="target"', {
+             'conditions': [
+diff --git a/tools/ar-flags.py b/tools/ar-flags.py
+new file mode 100644
+index 000000000..80b338a6e
+--- /dev/null
++++ b/tools/ar-flags.py
+@@ -0,0 +1,15 @@
++#!/usr/bin/env python
++
++import os
++import subprocess
++
++if __name__ == '__main__':
++    cc = os.environ.get('CC', '/usr/bin/cc')
++    gcc_version = subprocess.check_output(
++        [cc, '-dumpversion'], universal_newlines=True).strip(' \n')
++
++    lto_plugin = os.path.join(
++        '/usr/libexec/gcc/x86_64-pc-linux-gnu/', gcc_version,
++        'liblto_plugin.so')
++
++    print('--plugin={}'.format(lto_plugin))
+diff --git a/tools/atom_source_root.py b/tools/atom_source_root.py
+new file mode 100644
+index 000000000..316e99701
+--- /dev/null
++++ b/tools/atom_source_root.py
+@@ -0,0 +1,5 @@
++#!/usr/bin/env python
++
++import os.path
++
++print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+diff --git a/tools/browserify.py b/tools/browserify.py
+new file mode 100644
+index 000000000..15472c953
+--- /dev/null
++++ b/tools/browserify.py
+@@ -0,0 +1,24 @@
++#!/usr/bin/env python
++
++import os
++import subprocess
++import sys
++
++SOURCE_ROOT = os.path.dirname(os.path.dirname(__file__))
++
++
++def main():
++  node = sys.argv[1]
++  args = sys.argv[2:]
++
++  call_browserify(node, args)
++
++
++def call_browserify(node, args):
++  browserify = os.path.join(
++    SOURCE_ROOT, 'node_modules', '.bin', 'browserify')
++  subprocess.check_call([node, browserify] + args)
++
++
++if __name__ == '__main__':
++  sys.exit(main())
+diff --git a/tools/get-endianness.py b/tools/get-endianness.py
+new file mode 100644
+index 000000000..31507936f
+--- /dev/null
++++ b/tools/get-endianness.py
+@@ -0,0 +1,4 @@
++#!/usr/bin/env python
++
++import sys
++print(sys.byteorder)
+diff --git a/tools/js2asar.py b/tools/js2asar.py
+index adad1751e..ca7686893 100755
+--- a/tools/js2asar.py
++++ b/tools/js2asar.py
+@@ -11,13 +11,14 @@ SOURCE_ROOT = os.path.dirname(os.path.dirname(__file__))
+ 
+ 
+ def main():
+-  archive = sys.argv[1]
+-  folder_name = sys.argv[2]
+-  source_files = sys.argv[3:]
++  node = sys.argv[1]
++  archive = sys.argv[2]
++  folder_name = sys.argv[3]
++  source_files = sys.argv[4:]
+ 
+   output_dir = tempfile.mkdtemp()
+   copy_files(source_files, output_dir)
+-  call_asar(archive, os.path.join(output_dir, folder_name))
++  call_asar(node, archive, os.path.join(output_dir, folder_name))
+   shutil.rmtree(output_dir)
+ 
+ 
+@@ -28,11 +29,11 @@ def copy_files(source_files, output_dir):
+     shutil.copy2(source_file, output_path)
+ 
+ 
+-def call_asar(archive, output_dir):
++def call_asar(node, archive, output_dir):
+   asar = os.path.join(SOURCE_ROOT, 'node_modules', '.bin', 'asar')
+   if sys.platform in ['win32', 'cygwin']:
+     asar += '.cmd'
+-  subprocess.check_call([asar, 'pack', output_dir, archive])
++  subprocess.check_call([node, asar, 'pack', output_dir, archive])
+ 
+ 
+ def safe_mkdir(path):
+-- 
+2.14.1
+
