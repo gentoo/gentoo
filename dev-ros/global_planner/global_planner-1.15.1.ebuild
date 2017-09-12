@@ -24,5 +24,6 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
