@@ -702,7 +702,7 @@ glibc_do_src_install() {
 	doins "${WORKDIR}"/extra/etc/*.conf
 
 	if use nscd ; then
-		doinitd "${WORKDIR}"/extra/etc/nscd
+		doinitd "$(prefixify_ro "${WORKDIR}"/extra/etc/nscd)"
 
 		local nscd_args=(
 			-e "s:@PIDFILE@:$(strings "${ED}"/usr/sbin/nscd | grep nscd.pid):"
