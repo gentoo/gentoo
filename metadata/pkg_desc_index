@@ -4584,7 +4584,7 @@ dev-lang/orc 0.4.26-r1: The Oil Runtime Compiler, a just-in-time compiler for ar
 dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.24.1-r1 5.24.1-r2 5.24.2 5.24.3_rc1 5.26.0 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.24.1-r2 5.24.2 5.24.3_rc1 5.26.0 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.30 5.6.31 7.0.15 7.0.19 7.0.21 7.0.23 7.1.9 7.2.0_rc1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.13 3.4.5 3.4.6 3.5.3 3.6.1-r1: An interpreted, interactive, object-oriented programming language
@@ -18130,7 +18130,7 @@ virtual/perl-ExtUtils-Install 2.40.0-r3: Virtual for ExtUtils-Install
 virtual/perl-ExtUtils-MakeMaker 7.100.200_rc-r1 7.240.0: Virtual for ExtUtils-MakeMaker
 virtual/perl-ExtUtils-Manifest 1.700.0-r4: Virtual for ExtUtils-Manifest
 virtual/perl-ExtUtils-ParseXS 3.310.0-r1 3.340.0: Virtual for ExtUtils-ParseXS
-virtual/perl-File-Path 2.120.100_rc-r2 2.130.0: Virtual for File-Path
+virtual/perl-File-Path 2.130.0: Virtual for File-Path
 virtual/perl-File-Spec 3.630.100_rc-r1 3.670.0: Virtual for File-Spec
 virtual/perl-File-Temp 0.230.400-r5: Virtual for File-Temp
 virtual/perl-Filter-Simple 0.920.0-r3 0.930.0: Virtual for perl-core/Filter-Simple
