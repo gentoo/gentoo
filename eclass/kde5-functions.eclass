@@ -39,9 +39,6 @@ case ${CATEGORY} in
 			: ${FRAMEWORKS_MINIMAL:=9999}
 		fi
 		;;
-	kde-apps)
-		[[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.08* ]] && : ${FRAMEWORKS_MINIMAL:=5.37.0}
-		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
@@ -52,7 +49,7 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.34.0}
+: ${FRAMEWORKS_MINIMAL:=5.37.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
