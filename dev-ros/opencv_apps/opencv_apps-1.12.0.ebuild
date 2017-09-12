@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/nodelet
 	dev-ros/roscpp
 	>=media-libs/opencv-3:0=[contrib]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
