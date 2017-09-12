@@ -4,11 +4,11 @@ DESCRIPTION=An automated pipeline for performing Poisson-Boltzmann electrostatic
 EAPI=5
 HOMEPAGE=http://www.poissonboltzmann.org/
 IUSE=doc examples opal +pdb2pka python_targets_python2_7
-KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-chemistry/openbabel-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] opal? ( dev-python/zsi[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) pdb2pka? ( sci-chemistry/apbs[python_targets_python2_7(-)?,-python_single_target_python2_7(-),-mpi] ) virtual/fortran
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/Electrostatics/apbs-pdb2pqr/releases/download/pdb2pqr-1.9.0/pdb2pqr-src-1.9.0.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=a8cfc7a980b8933a75f09a8a76d19bdc
+_md5_=277a039f856ae0c68d6abceb12d4badc
