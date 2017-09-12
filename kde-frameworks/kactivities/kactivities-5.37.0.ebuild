@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework for working with KDE activities"
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 COMMON_DEPEND="
