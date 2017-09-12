@@ -4247,7 +4247,7 @@ dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite st
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
-dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
+dev-java/jsch 0.1.52 0.1.54: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729 20160212: Java implementation of the JavaScript Object Notation
 dev-java/json-simple 1.1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
