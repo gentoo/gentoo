@@ -10028,7 +10028,7 @@ dev-ruby/web-console 2.3.0 3.3.1 3.4.0 3.5.1: A debugging tool for your Ruby on 
 dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1 2.3.2 3.0.1: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.3 1.2.4: Universal Ruby library to handle WebSocket protocol
-dev-ruby/websocket-driver 0.6.4 0.6.5: A complete implementation of the WebSocket protocols
+dev-ruby/websocket-driver 0.6.5 0.7.0: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
 dev-ruby/wikicloth 0.8.3: A mediawiki parser
 dev-ruby/will_paginate 3.1.5 3.1.6: Most awesome pagination solution for Ruby
