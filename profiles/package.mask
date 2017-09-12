@@ -739,11 +739,6 @@ x11-libs/gtk+:1
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
-# Fails to switch cpufreq governor.
-# https://bugs.gentoo.org/590780
-~sys-power/cpupower-4.7.0
-
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all
 # functionality is provided yet. Use --pretend to make sure correct
