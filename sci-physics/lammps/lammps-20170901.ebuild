@@ -30,11 +30,13 @@ DEPEND="
 	sys-libs/zlib
 	mpi? (
 		virtual/mpi
+		sci-libs/hdf5[mpi]
 	)
 	python? ( ${PYTHON_DEPS} )
 	sci-libs/voro++
 	virtual/blas
 	virtual/lapack
+	sci-libs/fftw:3.0
 	netcdf? ( sci-libs/netcdf )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	dev-cpp/eigen:3
@@ -65,6 +67,7 @@ src_configure() {
 		-DENABLE_MC=ON
 		-DENABLE_MEAM=ON
 		-DENABLE_MISC=ON
+		-DLAMMPS_XDR=ON #630444
 		-DENABLE_MOLECULE=ON
 		-DENABLE_PERI=ON
 		-DENABLE_QEQ=ON
