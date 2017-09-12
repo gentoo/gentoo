@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-util/cargo >=virtual/rust-1.17
+DESCRIPTION=a search tool that combines the usability of ag with the raw speed of grep
+EAPI=6
+HOMEPAGE=https://github.com/BurntSushi/ripgrep
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Unlicense )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~radhermit/dist/ripgrep-0.6.0.tar.xz
+_md5_=91c174b0e19eb1792d4583d59c8ff6ac

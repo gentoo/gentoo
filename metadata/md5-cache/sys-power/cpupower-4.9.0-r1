@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequtils virtual/os-headers nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Shows and sets processor power related values
+EAPI=6
+HOMEPAGE=https://www.kernel.org/
+IUSE=cpufreq_bench debug nls
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequtils
+SLOT=0/0
+SRC_URI=https://dev.gentoo.org/~floppym/dist/cpupower-4.9.0.tar.xz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=69d028f7b86c8ad128774923ea8ae234

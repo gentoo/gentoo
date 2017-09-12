@@ -17245,7 +17245,7 @@ sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/restorecond 2.7_rc1 2.7_rc4 2.7_rc5 2.7 9999: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 0.5.2: a search tool that combines the usability of ag with the raw speed of grep
+sys-apps/ripgrep 0.5.2 0.6.0: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
@@ -17956,7 +17956,7 @@ sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a 
 sys-power/apcupsd 3.14.13 3.14.14 3.14.14-r1: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8 0.8-r1 9999: Toggle discrete NVIDIA Optimus graphics card
-sys-power/cpupower 3.18 4.9.0: Shows and sets processor power related values
+sys-power/cpupower 3.18 4.9.0-r1 4.13.0: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20140828 20160729 20161222: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
