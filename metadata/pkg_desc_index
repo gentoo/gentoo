@@ -11820,7 +11820,7 @@ kde-apps/akonadi-mime 17.04.3 17.08.1: Library for akonadi mime types
 kde-apps/akonadi-notes 17.04.3 17.08.1: Library for akonadi notes integration
 kde-apps/akonadi-search 17.04.3 17.08.1: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 17.04.3 17.08.1: Application for debugging Akonadi Resources
-kde-apps/akregator 4.4.2017.04 17.04.3 17.08.1: News feed aggregator
+kde-apps/akregator 4.4.2017.04 17.04.3 17.08.1 17.08.1-r1: News feed aggregator
 kde-apps/analitza 17.04.3 17.08.1: KDE library for mathematical features
 kde-apps/ark 17.04.3 17.08.1: KDE Archiving tool
 kde-apps/artikulate 17.04.3 17.08.1: Language learning application that helps improving pronunciation skills
