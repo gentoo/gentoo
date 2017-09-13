@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup
+DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=The OpenAFS distributed file system kernel module
+EAPI=6
+HOMEPAGE=https://www.openafs.org/
+IUSE=debug kernel_linux
+KEYWORDS=~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=IBM BSD openafs-krb5-a APSL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://openafs.org/dl/openafs/1.6.21/openafs-1.6.21-src.tar.bz2 https://dev.gentoo.org/~bircoph/afs/openafs-patches-20170212.tar.xz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1a0be1ffeef6e0a48c4118336b1a68dc
