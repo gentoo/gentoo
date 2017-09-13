@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/pluginlib
 	dev-ros/base_local_planner
 	dev-cpp/eigen:3
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules"
