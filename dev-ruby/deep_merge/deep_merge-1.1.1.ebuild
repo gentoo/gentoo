@@ -15,7 +15,7 @@ HOMEPAGE="http://trac.misuse.org/science/wiki/DeepMerge"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE=""
 
 each_ruby_test() {
