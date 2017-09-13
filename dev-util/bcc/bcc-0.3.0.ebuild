@@ -10,7 +10,8 @@ inherit cmake-utils linux-info python-single-r1 python-utils-r1
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
 EGIT_COMMIT="v${PV}"
-SRC_URI="https://github.com/iovisor/bcc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/iovisor/bcc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+	https://github.com/iovisor/bcc/commit/76887992d786064213af87694d2a21745e579338.patch -> bcc-0.3.0-llvm5-76887992d786064213af87694d2a21745e579338.patch"
 RESTRICT="test"
 
 LICENSE="Apache-2.0"
@@ -25,6 +26,10 @@ RDEPEND=">=dev-libs/elfutils-0.166:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
+
+PATCHES=(
+	"${DISTDIR}/bcc-0.3.0-llvm5-76887992d786064213af87694d2a21745e579338.patch"
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
