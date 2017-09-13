@@ -36,6 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.5
 	dev-util/itstool
+	>=dev-util/meson-0.42.0
 	sys-devel/gettext
 	test? (
 		qt5? ( dev-qt/qttest:5 )
