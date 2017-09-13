@@ -72,10 +72,10 @@ src_install() {
 	doins -r usr/.
 
 	fperms +x /opt/${MY_PN}/bin/${MY_PN}
-	dosym "${D}/opt/${MY_PN}/bin/${MY_PN}" /usr/bin/${MY_PN}
-	dosym "${D}/opt/${MY_PN}/share/applications/${MY_PN}.desktop" \
+	dosym ../../opt/${MY_PN}/bin/${MY_PN} /usr/bin/${MY_PN}
+	dosym ../../../opt/${MY_PN}/share/applications/${MY_PN}.desktop \
 		/usr/share/applications/${MY_PN}.desktop
-	dosym "${D}/opt/${MY_PN}/share/pixmaps/${MY_PN}.png" \
+	dosym ../../../opt/${MY_PN}/share/pixmaps/${MY_PN}.png \
 		/usr/share/pixmaps/${MY_PN}.png
 }
 
