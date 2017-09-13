@@ -11,10 +11,6 @@
 # Potentially destructive. Use it only if you know what you're doing.
 sys-libs/glibc vanilla
 
-# Michael Palimaka <kensington@gentoo.org> (09 Sep 2017)
-# Required dependency isn't yet available
-dev-util/massif-visualizer callgraph
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (6 Sep 2017)
 # This should really go away now.
 >=sys-libs/glibc-2.26 rpc
