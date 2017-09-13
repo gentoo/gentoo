@@ -14,7 +14,11 @@ fi
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
 if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
+		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
+		https://download.fcitx-im.org/data/py_stroke-20121124.tar.gz -> fcitx-data-py_stroke-20121124.tar.gz
+		https://download.fcitx-im.org/data/py_table-20121124.tar.gz -> fcitx-data-py_table-20121124.tar.gz
+		https://download.fcitx-im.org/data/en_dict-20121020.tar.gz -> fcitx-data-en_dict-20121020.tar.gz"
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
@@ -66,6 +70,14 @@ DEPEND="${RDEPEND}
 DOCS=(AUTHORS ChangeLog THANKS)
 
 src_prepare() {
+	if [[ "${PV}" == "9999" ]]; then
+		ln -s "${DISTDIR}/fcitx-data-pinyin.tar.gz" src/im/pinyin/data/pinyin.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-table.tar.gz" src/im/table/data/table.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-py_stroke-20121124.tar.gz" src/module/pinyin-enhance/data/py_stroke-20121124.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-py_table-20121124.tar.gz" src/module/pinyin-enhance/data/py_table-20121124.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
+	fi
+
 	# https://github.com/fcitx/fcitx/issues/250
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \

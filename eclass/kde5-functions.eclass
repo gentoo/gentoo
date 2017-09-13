@@ -33,35 +33,28 @@ export KDE_BUILD_TYPE
 case ${CATEGORY} in
 	kde-frameworks)
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
-		[[ ${KDE_BUILD_TYPE} = live || $(get_version_component_range 2) -ge 37 ]] \
-			&& : ${QT_MINIMAL:=5.7.1}
 		;;
 	kde-plasma)
-		: ${QT_MINIMAL:=5.7.1}
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 		fi
-		;;
-	kde-apps)
-		: ${QT_MINIMAL:=5.7.1}
-		[[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.08* ]] && : ${FRAMEWORKS_MINIMAL:=5.37.0}
 		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.6.1}
+: ${QT_MINIMAL:=5.7.1}
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.34.0}
+: ${FRAMEWORKS_MINIMAL:=5.37.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.10.4}
+: ${PLASMA_MINIMAL:=5.10.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
