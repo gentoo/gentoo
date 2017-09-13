@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
