@@ -20,5 +20,6 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-ros/roscpp
 	dev-ros/rviz
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
