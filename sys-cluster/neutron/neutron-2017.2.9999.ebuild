@@ -135,6 +135,7 @@ RDEPEND="
 	net-firewall/iptables
 	net-firewall/ebtables
 	net-firewall/conntrack-tools
+	net-proxy/haproxy
 	openvswitch? ( <=net-misc/openvswitch-2.8.9999 )
 	ipv6? (
 		net-misc/radvd
