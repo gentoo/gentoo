@@ -81,6 +81,12 @@ DEPEND="${RDEPEND}
 
 PREFIX="/usr"
 
+pkg_setup() {
+	# Uses Data::Manip in various places which can fail
+	# if TZ is still set to Factory as it is in stock gentoo
+	# install media
+	export TZ=UTC
+}
 src_prepare() {
 	sed -i \
 		-e "s:\$VERSION = '${PV}':\$VERSION = '${PVR}':" \
