@@ -1,13 +1,68 @@
-diff -ruN xmltv-0.5.68.orig/Makefile.PL xmltv-0.5.68/Makefile.PL
---- xmltv-0.5.68.orig/Makefile.PL	2016-06-02 07:05:01.000000000 +0200
-+++ xmltv-0.5.68/Makefile.PL	2017-09-23 12:20:18.128841958 +0200
-@@ -6,6 +6,9 @@
- use File::Basename ();
- use File::Find;
+From 97893e7a8121d5cb384e079f6d63702993785896 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Thu, 14 Sep 2017 08:32:21 +1200
+Subject: Fix configure+compile failing under Perl 5.26 without '.' in @INC
+
+Bug: https://bugs.gentoo.org/630474
+---
+ Makefile.PL           | 2 +-
+ filter/tv_grep.PL     | 2 +-
+ grab/it/tv_grab_it.PL | 2 +-
+ lib/XMLTV.pm.PL       | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index e068e20..0a0179c 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -251,7 +251,7 @@ elsif ($opt_default) {
+     *ask = sub { print "$_[0] $_[2]\n"; $_[2] };
+ }
+ else {
+-    require 'lib/Ask/Term.pm';
++    require './lib/Ask/Term.pm';
+     *ask = \&XMLTV::Ask::Term::ask_boolean;
+ }
  
-+# Needed later for Perl 5.26
-+use lib q[.];
-+
- # Don't use ':config pass_through' because that requires Getopt::Long
- # 2.24 or later, and we don't have a clean way to require that.
- #
+diff --git a/filter/tv_grep.PL b/filter/tv_grep.PL
+index afc86b8..3f343b6 100644
+--- a/filter/tv_grep.PL
++++ b/filter/tv_grep.PL
+@@ -12,7 +12,7 @@
+ 
+ use IO::File;
+ use XMLTV;
+-require 'filter/Grep.pm';
++require './filter/Grep.pm';
+ 
+ my $out = shift @ARGV; die "no output file given" if not defined $out;
+ my $in = 'filter/tv_grep.in';
+diff --git a/grab/it/tv_grab_it.PL b/grab/it/tv_grab_it.PL
+index d337941..aee5554 100644
+--- a/grab/it/tv_grab_it.PL
++++ b/grab/it/tv_grab_it.PL
+@@ -354,7 +354,7 @@ close IN_FH or die "cannot close $in: $!";
+ 
+ # stuff for setting share dir
+ die "usage: $_ output_file share_dir" if @ARGV != 2;
+-require 'lib/set_share_dir.pl';
++require './lib/set_share_dir.pl';
+ #warn "faccio $ARGV[0] $ARGV[1]\n";
+ #set_share_dir('grab/it/tv_grab_it.in2', $ARGV[0], $ARGV[1]);
+ copy( 'grab/it/tv_grab_it.in2', $ARGV[0] );
+diff --git a/lib/XMLTV.pm.PL b/lib/XMLTV.pm.PL
+index 270ed56..460bb4e 100644
+--- a/lib/XMLTV.pm.PL
++++ b/lib/XMLTV.pm.PL
+@@ -8,7 +8,7 @@ use strict;
+ sub print_list( $$ );
+ 
+ my $out = shift @ARGV; die "no output file given" if not defined $out;
+-my $in = 'lib/XMLTV.pm.in';
++my $in = './lib/XMLTV.pm.in';
+ require $in;
+ open(IN_FH, $in) or die "cannot read $in: $!";
+ die if not @XMLTV::Channel_Handlers; die if not @XMLTV::Programme_Handlers;
+-- 
+2.14.1
+
