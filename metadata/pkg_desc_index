@@ -2158,7 +2158,7 @@ app-shells/bashdb 4.3.0.91-r2 4.4.0.92: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.1: Foreign function interface for bash
-app-shells/dash 0.5.8.2 0.5.9.1-r1 0.5.9.1-r2: Debian Almquist Shell
+app-shells/dash 0.5.8.2 0.5.9.1-r1 0.5.9.1-r2 0.5.9.1-r3: Debian Almquist Shell
 app-shells/dsh 0.25.10: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.4.0 2.5.0 2.6.0: fish is the Friendly Interactive SHell
