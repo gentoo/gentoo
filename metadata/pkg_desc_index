@@ -12090,7 +12090,7 @@ kde-frameworks/baloo 5.37.0 5.38.0: Framework for searching and managing metadat
 kde-frameworks/bluez-qt 5.37.0 5.38.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.37.0 5.38.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.37.0 5.38.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.34.0 5.37.0-r1 5.38.0: Extra modules and scripts for CMake
+kde-frameworks/extra-cmake-modules 5.37.0-r1 5.38.0: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.37.0 5.38.0: Framework for integrating Qt applications with KDE Plasma workspaces
 kde-frameworks/kactivities 5.37.0 5.38.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.37.0 5.38.0: Framework for getting the usage statistics collected by the activities service
@@ -15622,7 +15622,7 @@ net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
 net-print/cndrvcups-lb 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.3 2.2.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.13.5 1.16.4 1.17.3 1.17.4 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.13.5 1.16.4 1.17.4 1.17.5 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -19497,7 +19497,7 @@ x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 1.3.7-r3 1.3.7-r4 9999: Fluxbox is an X11 windo
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.0 9999: A manual tiling window manager for X
-x11-wm/i3 4.13-r1 9999: An improved dynamic tiling window manager
+x11-wm/i3 4.13-r1 4.14 9999: An improved dynamic tiling window manager
 x11-wm/icewm 1.3.8 1.3.12-r1 1.4.0 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan

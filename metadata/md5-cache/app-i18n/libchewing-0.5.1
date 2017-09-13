@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install test
-DEPEND=dev-db/sqlite:3 virtual/pkgconfig test? ( dev-libs/check sys-libs/ncurses[unicode] )
+DEPEND=dev-db/sqlite:3 test? ( sys-libs/ncurses[unicode] )
 DESCRIPTION=Library for Chinese Phonetic input method
 EAPI=6
 HOMEPAGE=http://chewing.csie.net/
 IUSE=static-libs test
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-db/sqlite:3
 REQUIRED_USE=test? ( static-libs )
 SLOT=0
 SRC_URI=https://github.com/chewing/libchewing/releases/download/v0.5.1/libchewing-0.5.1.tar.bz2
 _eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=5079f51fe6eaa5bd47e5e74a6dfae895
+_md5_=281f9aa93717c27cfa077e7a9780b5cb
