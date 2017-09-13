@@ -18,7 +18,7 @@ HOMEPAGE="https://docs.puppet.com/hiera/latest/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha )"
 
