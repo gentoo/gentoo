@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit autotools ltprune flag-o-matic
 
 MY_PN="MediaInfo"
 DESCRIPTION="MediaInfo libraries"
@@ -12,12 +12,12 @@ SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl doc mms static-libs"
 
 RDEPEND="sys-libs/zlib
 	dev-libs/tinyxml2:=
-	>=media-libs/libzen-0.4.34[static-libs=]
+	>=media-libs/libzen-0.4.37[static-libs=]
 	curl? ( net-misc/curl )
 	mms? ( >=media-libs/libmms-0.6.1[static-libs=] )"
 DEPEND="${RDEPEND}

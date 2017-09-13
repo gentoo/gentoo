@@ -12,11 +12,11 @@ SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl mms wxwidgets"
 
 RDEPEND="sys-libs/zlib
-	>=media-libs/libzen-0.4.34
+	>=media-libs/libzen-0.4.37
 	~media-libs/lib${P}[curl=,mms=]
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
 DEPEND="${RDEPEND}
