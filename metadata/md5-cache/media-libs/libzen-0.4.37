@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Shared library for libmediainfo and mediainfo
+EAPI=6
+HOMEPAGE=https://github.com/MediaArea/ZenLib
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+SLOT=0
+SRC_URI=https://mediaarea.net/download/source/libzen/0.4.37/libzen_0.4.37.tar.bz2
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=db827e01239fc139b7cf37c4bd635fe0
