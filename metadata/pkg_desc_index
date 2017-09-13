@@ -13320,7 +13320,7 @@ media-plugins/gmpc-mserver 0.20.0: This plugin allows you to play local files on
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.2.17 0.3.4: A framework for easy media discovery and browsing
+media-plugins/grilo-plugins 0.2.17 0.3.4 0.3.5: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.10.3 1.10.5: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.10.3 1.10.5: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
