@@ -1921,6 +1921,7 @@ app-misc/rioutil 1.5.0-r2: Tool for transfering mp3s to and from a Rio 600, 800,
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
+app-misc/rq 0.10.4: record query - a tool for doing record analysis and transformation
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/scope 0.04-r1: Serial Line Analyser
@@ -13128,7 +13129,7 @@ media-libs/libqaccessibilityclient 0.2.0: Library for writing accessibility clie
 media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.17.2 0.18.2 0.18.3: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.17.2 0.18.2 0.18.3 0.18.4: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
