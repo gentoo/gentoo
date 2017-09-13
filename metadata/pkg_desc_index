@@ -5016,7 +5016,7 @@ dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.13.1 4.14 4.15 4.16: Netscape Portable Runtime
-dev-libs/nss 3.29.5 3.31 3.32: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.29.5 3.31 3.32.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8 2.2.11: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 5.9.5 5.9.6_p1-r1 6.4.0 6.6.1: Regular expression library for different character encodings
