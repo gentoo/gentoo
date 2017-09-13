@@ -2622,7 +2622,7 @@ app-vim/pdv 1.0.1-r1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 5.3.2: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
 app-vim/perlomni 2.5: vim plugin: a vim plugin with Perl omni completion functions
 app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax highlighting
-app-vim/phpdocs 0.26 0.26-r1: vim plugin: PHPDoc Support in VIM
+app-vim/phpdocs 0.26-r1: vim plugin: PHPDoc Support in VIM
 app-vim/project 1.4.1: vim plugin: Managing multiple projects with multiple sources like an IDE
 app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
 app-vim/pushpop 4.0-r1: vim plugin: pushd / popd from the vim commandline
@@ -14983,7 +14983,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.24.0 1.25.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.17 4.6.1 6.9.4 6.11.2 6.11.3 7.10.0 8.2.1 8.4.0 8.5.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-libs/ntirpc 1.4.1 1.5.2: Transport Independent RPC library for nfs-ganesha
+net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11-r1: C++ class library normalising numerous telephony protocols
