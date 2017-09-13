@@ -1,0 +1,44 @@
+From d0a5f4159cddcca656ca8bbcbd6e551e3499c166 Mon Sep 17 00:00:00 2001
+From: Anthony Fieroni <bvbfan@abv.bg>
+Date: Sun, 10 Sep 2017 21:59:35 +0300
+Subject: [akregator] Make sure part is created before main windows is restored
+
+DIfferential Revision: https://phabricator.kde.org/D6739
+
+BUG: 381822
+BUG: 378513
+BUG: 381825
+BUG: 377129
+
+Signed-off-by: Anthony Fieroni <bvbfan@abv.bg>
+---
+ src/main.cpp | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index b80b198..aa1bb08 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -113,14 +113,11 @@ int main(int argc, char **argv)
+ 
+     // see if we are starting with session management
+     if (app.isSessionRestored()) {
+-#undef RESTORE
+-#define RESTORE(type) { int n = 1; \
+-                        while (KMainWindow::canBeRestored(n)) { \
+-                            (new type)->restore(n, false); \
+-                            n++;} \
+-}
+-
+-        RESTORE(Akregator::MainWindow);
++        auto mainWindow = new Akregator::MainWindow();
++        mainWindow->loadPart();
++        if (KMainWindow::canBeRestored(1)) {
++            mainWindow->restore(1, false);
++        }
+     }
+ 
+     return app.exec();
+-- 
+cgit v0.11.2
+
