@@ -18,7 +18,7 @@ SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/activerecord[sqlite] dev-ruby/bundler )"
