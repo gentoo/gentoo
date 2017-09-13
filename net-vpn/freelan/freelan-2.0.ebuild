@@ -30,7 +30,9 @@ src_prepare() {
 		"${FILESDIR}/boost158.patch" \
 		"${FILESDIR}/mf.patch" \
 		"${FILESDIR}/prefix.patch" \
-		"${FILESDIR}/boost163.patch"
+		"${FILESDIR}/boost163.patch" \
+		"${FILESDIR}/glibc225.patch" \
+		"${FILESDIR}/gcc7.patch"
 
 	sed -e "s/CXXFLAGS='-O3'/CXXFLAGS=''/" \
 		-e "s/CXXFLAGS=\['-Werror'\]/CXXFLAGS=[]/" \
