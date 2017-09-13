@@ -17,20 +17,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Sep 2017)
+# Mask test for Qt 5.7.1 stabilization timeout
+# (bug 620334)
+kde-frameworks/extra-cmake-modules test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
-# Stable-masking mpi support so Boost stabilization can go ahead
+# Mask mpi support so Boost stabilization can go ahead
 # Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
-=dev-libs/boost-1.62* mpi
-=dev-libs/boost-1.63* mpi
+dev-libs/boost mpi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (19 Aug 2017)
-# Stable-masking net-libs/libssh rdeps for stabilisation timeout
+# Mask net-libs/libssh rdeps for stabilisation timeout
 # (bug 618916)
 media-gfx/exiv2 webready
 media-video/ffmpeg ssh
 net-analyzer/wireshark ciscodump libssh sshdump
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Aug 2017)
-# Stable-masking pptx support for dev-libs/libzip stabilisation timeout
+# Mask pptx support for dev-libs/libzip stabilisation timeout
 # (bug 622044)
 media-gfx/pstoedit pptx
