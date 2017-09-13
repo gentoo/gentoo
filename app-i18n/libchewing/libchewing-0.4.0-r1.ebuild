@@ -17,11 +17,7 @@ REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	test? (
-		dev-libs/check
-		sys-libs/ncurses[unicode]
-	)"
+	test? ( sys-libs/ncurses[unicode] )"
 
 src_prepare() {
 	default
