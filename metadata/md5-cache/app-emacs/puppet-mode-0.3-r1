@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Emacs major mode for editing Puppet manifests
 EAPI=6
 HOMEPAGE=https://github.com/voxpupuli/puppet-mode
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/voxpupuli/puppet-mode/archive/0.3.tar.gz -> puppet-mode-0.3.tar.gz
 _eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=e8d300396c73155a52f24178ee7bb545
+_md5_=d5c1e3b500e1b3cda4b64820faa0b482
