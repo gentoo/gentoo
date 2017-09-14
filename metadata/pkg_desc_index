@@ -63,7 +63,7 @@ app-admin/checksec 1.7.2 1.7.3 1.7.4 1.7.5: Tool to check properties of executab
 app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3 1.3-r1: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
-app-admin/cli53 0.8.7 0.8.8 9999: Command line tool for Amazon Route 53
+app-admin/cli53 0.8.9 9999: Command line tool for Amazon Route 53
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1 1.7.3: Python framework for efficient cluster administration
@@ -17986,7 +17986,7 @@ sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is 
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectures
-sys-power/upower 0.99.4 0.99.4-r1 0.99.5: D-Bus abstraction for enumerating power devices, querying history and statistics
+sys-power/upower 0.99.4 0.99.4-r1 0.99.5 0.99.6: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1 6.6.4: GNU system accounting utilities
 sys-process/anacron 2.3-r2 2.3-r3 2.3-r4: a periodic command scheduler
