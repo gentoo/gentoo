@@ -24,7 +24,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -35,18 +35,11 @@ SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 # Split modules following git/tarballs
 # Core MUST be first!
 # Help is used for the image generator
-MODULES="core help"
 # Only release has the tarballs
 if [[ ${PV} != *9999* ]]; then
 	for i in ${DEV_URI}; do
-		for mod in ${MODULES}; do
-			if [[ ${mod} == core ]]; then
-				SRC_URI+=" ${i}/${P}.tar.xz"
-			else
-				SRC_URI+=" ${i}/${PN}-${mod}-${PV}.tar.xz"
-			fi
-		done
-		unset mod
+		SRC_URI+=" ${i}/${P}.tar.xz"
+		SRC_URI+=" ${i}/${PN}-help-${PV}.tar.xz"
 	done
 	unset i
 fi
@@ -56,6 +49,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	"${ADDONS_URI}/libepubgen-0.0.1.tar.bz2"
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -183,7 +177,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/dejavu
 	media-fonts/liberation-fonts
 	media-fonts/libertine
-	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools $(add_kdeapps_dep kioclient) )
+	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
 	vlc? ( media-video/vlc )
 "
@@ -293,29 +287,23 @@ pkg_setup() {
 }
 
 src_unpack() {
-	local mod
-
 	[[ -n ${PATCHSET} ]] && unpack ${PATCHSET}
 	use branding && unpack "${BRANDING}"
 
 	if [[ ${PV} != *9999* ]]; then
 		unpack "${P}.tar.xz"
-		for mod in ${MODULES}; do
-			[[ ${mod} == core ]] && continue
-			unpack "${PN}-${mod}-${PV}.tar.xz"
-		done
+		unpack "${PN}-help-${PV}.tar.xz"
 	else
-		local base_uri branch checkout mypv
-		base_uri="https://anongit.freedesktop.org"
-		for mod in ${MODULES}; do
-			branch="master"
-			mypv=${PV/.9999}
-			[[ ${mypv} != ${PV} ]] && branch="${PN}-${mypv/./-}"
-			git-r3_fetch "${base_uri}/${PN}/${mod}" "refs/heads/${branch}"
-			[[ ${mod} != core ]] && checkout="${S}/${mod}"
-			[[ ${mod} == help ]] && checkout="helpcontent2" # doesn't match on help
-			git-r3_checkout "${base_uri}/${PN}/${mod}" ${checkout}
-		done
+		local base_uri branch mypv
+		base_uri="https://anongit.freedesktop.org/git"
+		branch="master"
+		mypv=${PV/.9999}
+		[[ ${mypv} != ${PV} ]] && branch="${PN}-${mypv/./-}"
+		git-r3_fetch "${base_uri}/${PN}/core" "refs/heads/${branch}"
+		git-r3_checkout "${base_uri}/${PN}/core"
+
+		git-r3_fetch "${base_uri}/${PN}/help" "refs/heads/master"
+		git-r3_checkout "${base_uri}/${PN}/help" "helpcontent2" # doesn't match on help
 	fi
 }
 
@@ -466,6 +454,7 @@ src_configure() {
 		--without-help \
 		--with-helppack-integration \
 		--with-system-gpgmepp \
+		--without-system-libepubgen \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \

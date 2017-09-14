@@ -29,7 +29,7 @@ LICENSE="UoI-NCSA"
 SLOT="6"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc +static-analyzer
-	test xml z3 elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -102,17 +102,6 @@ src_unpack() {
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
 }
 
-src_prepare() {
-	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
-
-	# fix stand-alone doc build
-	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
-
-	# User patches
-	eapply_user
-}
-
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
@@ -125,10 +114,7 @@ multilib_src_configure() {
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
 		-DBUILD_SHARED_LIBS=ON
-		# cheap hack: LLVM combines both anyway, and the only difference
-		# is that the former list is explicitly verified at cmake time
-		-DLLVM_TARGETS_TO_BUILD=""
-		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
@@ -148,7 +134,6 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 		# z3 is not multilib-friendly
 		-DCLANG_ANALYZER_BUILD_Z3=$(multilib_native_usex z3)
-		-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
@@ -157,14 +142,20 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=$(usex doc)
-			-DLLVM_ENABLE_SPHINX=$(usex doc)
-			-DLLVM_ENABLE_DOXYGEN=OFF
+			# normally copied from LLVM_INCLUDE_DOCS but the latter
+			# is lacking value in stand-alone builds
+			-DCLANG_INCLUDE_DOCS=$(usex doc)
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=$(usex doc)
 		)
 		use doc && mycmakeargs+=(
+			-DLLVM_BUILD_DOCS=ON
+			-DLLVM_ENABLE_SPHINX=ON
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
+		)
+		use z3 && mycmakeargs+=(
+			-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 		)
 	else
 		mycmakeargs+=(
@@ -200,11 +191,7 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
-	# clang-tidy requires [static-analyzer] and tests are not split
-	# correctly, so they are all disabled when static-analyzer is off
-	if multilib_is_native_abi && use static-analyzer; then
-		cmake-utils_src_make check-clang-tools
-	fi
+	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
 }
 
 src_install() {

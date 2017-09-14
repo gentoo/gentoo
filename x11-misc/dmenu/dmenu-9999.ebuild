@@ -5,8 +5,8 @@ EAPI=6
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
-HOMEPAGE="http://tools.suckless.org/dmenu/"
-EGIT_REPO_URI="git://git.suckless.org/dmenu"
+HOMEPAGE="https://tools.suckless.org/dmenu/"
+EGIT_REPO_URI="https://git.suckless.org/dmenu"
 
 LICENSE="MIT"
 SLOT="0"

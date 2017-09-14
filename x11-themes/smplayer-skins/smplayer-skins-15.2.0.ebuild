@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Skins for SMPlayer"
-HOMEPAGE="http://www.smplayer.eu/"
+HOMEPAGE="http://www.smplayer.info/"
 SRC_URI="mirror://sourceforge/smplayer/${P}.tar.bz2"
 
 LICENSE="CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3"

@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="KDE window manager"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="gles2 multimedia"
 
 COMMON_DEPEND="
@@ -69,12 +69,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
-	multimedia? (
-		|| (
-			$(add_qt_dep qtmultimedia 'gstreamer,qml')
-			$(add_qt_dep qtmultimedia 'gstreamer010,qml')
-		)
-	)
+	multimedia? ( $(add_qt_dep qtmultimedia 'gstreamer,qml') )
 	!<kde-apps/kdeartwork-meta-15.08.3-r1:4
 	!kde-plasma/kwin:4
 	!kde-plasma/systemsettings:4
@@ -83,7 +78,7 @@ DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep designer)
 	$(add_qt_dep qtconcurrent)
 	x11-proto/xproto
-	test? (	x11-libs/xcb-util-wm )
+	test? ( x11-libs/xcb-util-wm )
 "
 
 RESTRICT+=" test"

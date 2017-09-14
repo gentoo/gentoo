@@ -12,7 +12,7 @@ HOMEPAGE="http://opencv.org"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	contrib? ( https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
-		contrib_xfeatures2d? ( http://dev.gentoo.org/~amynka/snap/vgg_boostdesc-${PV}.tar.gz ) )"
+		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-${PV}.tar.gz ) )"
 LICENSE="BSD"
 SLOT="0/3.2" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
@@ -107,6 +107,9 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvv/filter.hpp
 	/usr/include/opencv2/cvv/final_show.hpp
 	/usr/include/opencv2/cvv/show_image.hpp
+	# [contrib_hdf]
+	/usr/include/opencv2/hdf.hpp
+	/usr/include/opencv2/hdf/hdf5.hpp
 	# [vtk]
 	/usr/include/opencv2/viz.hpp
 	/usr/include/opencv2/viz/types.hpp

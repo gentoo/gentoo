@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit virtualx xdg-utils
+inherit gnome2-utils virtualx xdg-utils
 
 MY_P=${P^}
 
@@ -68,8 +68,10 @@ src_test() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }

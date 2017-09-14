@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">X11-XCB</remote-id>
+    <remote-id type="cpan-module">X11::XCB</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Atom</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Color</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Connection</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Event::ClientMessage</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Event::Focus</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Event::Generic</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Event::MapNotify</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Event::PropertyNotify</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Rect</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Screen</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Sizehints</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Sizehints::Aspect</remote-id>
+    <remote-id type="cpan-module">X11::XCB::Window</remote-id>
+  </upstream>
+</pkgmetadata>

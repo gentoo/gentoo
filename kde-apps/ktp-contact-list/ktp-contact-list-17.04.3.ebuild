@@ -30,7 +30,7 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep kcmutils)

@@ -7,5 +7,4 @@ move sys-cluster/quantum sys-cluster/neutron
 move sci-libs/scikits_statsmodels dev-python/statsmodels
 slotmove =dev-python/pydns-2.3.4 0 2
 move sys-devel/systemd-sdk sys-devel/systemd-m4
-move dev-python/quantumclient dev-python/neutronclient
 slotmove =net-libs/libecap-0.2.0 2 0.2

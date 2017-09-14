@@ -41,7 +41,9 @@ EXPORT_FUNCTIONS src_compile src_install
 # @DESCRIPTION:
 # Since there's nothing to build in most cases, default doesn't do
 # anything.
-common-lisp-3_src_compile() { true; }
+common-lisp-3_src_compile() {
+	true;
+}
 
 # @FUNCTION: absolute-path-p
 # @DESCRIPTION:
@@ -117,7 +119,7 @@ common-lisp-install-sources() {
 		elif [[ -d ${path} ]] ; then
 			common-lisp-install-sources -t ${ftype} $(find "${path}" -type f)
 		else
-			die "${path} it neither a regular file nor a directory"
+			die "${path} is neither a regular file nor a directory"
 		fi
 	done
 }
@@ -168,6 +170,7 @@ common-lisp-3_src_install() {
 # @DESCRIPTION:
 #   Export a few variables containing the switches necessary
 #   to make the CL implementation perform basic functions:
+#   * CL_BINARY: Common Lisp implementation
 #   * CL_NORC: don't load syste-wide or user-specific initfiles
 #   * CL_LOAD: load a certain file
 #   * CL_EVAL: eval a certain expression at startup
@@ -176,13 +179,15 @@ common-lisp-export-impl-args() {
 		eerror "Usage: ${FUNCNAME[0]} lisp-implementation"
 		die "${FUNCNAME[0]}: wrong number of arguments: $#"
 	fi
-	case ${1} in
+	CL_BINARY="${1}"
+	case "${CL_BINARY}" in
 		clisp)
 			CL_NORC="-norc"
 			CL_LOAD="-i"
 			CL_EVAL="-x"
 			;;
-		clozure | ccl | openmcl)
+		clozure | clozurecl | ccl | openmcl)
+			CL_BINARY="ccl"
 			CL_NORC="--no-init"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
@@ -192,7 +197,8 @@ common-lisp-export-impl-args() {
 			CL_LOAD="-load"
 			CL_EVAL="-eval"
 			;;
-		ecl)
+		ecl | ecls)
+			CL_BINARY="ecl"
 			CL_NORC="-norc"
 			CL_LOAD="-load"
 			CL_EVAL="-eval"
@@ -203,8 +209,8 @@ common-lisp-export-impl-args() {
 			CL_EVAL="--eval"
 			;;
 		*)
-			die ${1} is not supported by ${0}
+			die "${CL_BINARY} is not supported by ${0}"
 			;;
 	esac
-	export CL_NORC CL_LOAD CL_EVAL
+	export CL_BINARY CL_NORC CL_LOAD CL_EVAL
 }

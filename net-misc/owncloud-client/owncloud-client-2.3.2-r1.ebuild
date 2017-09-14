@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc dolphin nautilus samba +sftp shibboleth test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
-	dev-libs/qtkeychain[qt5]
+	dev-libs/qtkeychain[qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5

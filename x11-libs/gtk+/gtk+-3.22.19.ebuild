@@ -86,11 +86,11 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-3
 	!<gnome-base/gail-1000
 	!<x11-libs/vte-0.31.0:2.90
-	>=x11-themes/adwaita-icon-theme-3.14
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
 	gnome-base/librsvg[${MULTILIB_USEDEP}]
+	>=x11-themes/adwaita-icon-theme-3.14
 	vim-syntax? ( app-vim/gtk-syntax )
 "
 

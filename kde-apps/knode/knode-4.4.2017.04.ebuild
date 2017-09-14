@@ -24,6 +24,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
+
 KMEXTRACTONLY="
 	libkpgp/
 "

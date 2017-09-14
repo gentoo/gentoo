@@ -8,7 +8,7 @@ inherit cmake-multilib
 # tar -cJf libreplaygain-${PV}.tar.xz libreplaygain-${PV}
 
 DESCRIPTION="Replay Gain library from Musepack"
-HOMEPAGE="http://www.musepack.net/"
+HOMEPAGE="https://www.musepack.net/"
 SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"

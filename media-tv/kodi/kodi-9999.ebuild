@@ -28,7 +28,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	gbm? ( gles )
@@ -62,6 +62,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libfmt
 	gbm? (	media-libs/mesa[gbm] )
 	gles? ( media-libs/mesa[gles2] )
+	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
 	>=media-fonts/noto-20160531
@@ -231,6 +232,7 @@ src_configure() {
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_CAP=$(usex caps)
+		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)

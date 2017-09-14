@@ -11,11 +11,11 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
-HOMEPAGE="http://weechat.org/"
+HOMEPAGE="https://weechat.org/"
 
 LICENSE="GPL-3"
 SLOT="0"

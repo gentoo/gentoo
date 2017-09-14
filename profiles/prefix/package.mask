@@ -8,11 +8,6 @@
 # NOTE: Please add your entry at the top!
 #
 
-# Michael Haubenwallner <haubi@gentoo.org> (22 Aug 2017)
-# --disable-threaded-resolver does not work
-# https://github.com/curl/curl/issues/1784
-=net-misc/curl-7.55.1
-
 # Fabian Groffen <grobian@gentoo.org> (15 Apr 2017)
 # reentrant patch breaks prefix option, bug #615560
 =sys-devel/flex-2.6.3-r1

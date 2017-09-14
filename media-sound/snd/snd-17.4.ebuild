@@ -44,7 +44,8 @@ REQUIRED_USE="
 	?? ( ruby s7 )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-17.4-portaudio.patch"
+	"${FILESDIR}"/${PN}-17.4-portaudio.patch
+	"${FILESDIR}"/${PN}-17.4-undefined-oss_sample_types.patch
 )
 
 pkg_setup() {

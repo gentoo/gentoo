@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/gap/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_PN}-${PV}

@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/tdbear/microba"
 SRC_URI="https://github.com/tdbear/${PN}/archive/${PV}.zip -> ${P}.zip"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="dev-java/jgraph:0"
 

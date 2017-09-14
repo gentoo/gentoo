@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,6 +13,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ropemacs"
+RESTRICT="test"
 
 # Note: company-mode supports many backends, and we refrain from including
 # them all in RDEPEND. Only depend on things that are needed at build time.

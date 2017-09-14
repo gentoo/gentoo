@@ -5,7 +5,7 @@ EAPI="6"
 inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
-HOMEPAGE="http://urbanterror.info"
+HOMEPAGE="http://urbanterror.info https://github.com/mickael9/ioq3"
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3

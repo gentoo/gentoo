@@ -36,7 +36,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 SLOT="$(get_major_version)"
 KEYWORDS=""
 IUSE="debug +doc gold libedit +libffi ncurses test
-	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
+	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	sys-libs/zlib:0=
@@ -80,9 +80,6 @@ src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
-
-	# support building llvm against musl-libc
-	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die

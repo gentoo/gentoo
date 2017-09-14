@@ -12,10 +12,11 @@ SRC_URI="http://cloud.radare.org/get/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ssl"
+IUSE="ssl +system-capstone"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
+	system-capstone? ( dev-libs/capstone:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -27,7 +28,8 @@ PATCHES=(
 
 src_configure() {
 	econf \
-		$(use_with ssl openssl)
+		$(use_with ssl openssl) \
+		$(use_with system-capstone syscapstone)
 }
 
 src_install() {

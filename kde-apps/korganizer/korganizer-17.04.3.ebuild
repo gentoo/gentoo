@@ -61,7 +61,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	X? (
 		$(add_qt_dep qtx11extras)
 		x11-libs/libX11

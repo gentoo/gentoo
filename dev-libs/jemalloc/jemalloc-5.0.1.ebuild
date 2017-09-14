@@ -55,8 +55,8 @@ multilib_src_install_all() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fixup install_name, #437362
 		install_name_tool \
-			-id "${EPREFIX}"/usr/$(get_libdir)/libjemalloc.1.dylib \
-			"${ED}"/usr/$(get_libdir)/libjemalloc.1.dylib || die
+			-id "${EPREFIX}"/usr/$(get_libdir)/libjemalloc.2.dylib \
+			"${ED}"/usr/$(get_libdir)/libjemalloc.2.dylib || die
 	fi
 	use static-libs || find "${ED}" -name '*.a' -delete
 }

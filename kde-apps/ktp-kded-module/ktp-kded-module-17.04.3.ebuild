@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtsql)
 	$(add_qt_dep qtwidgets)
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kcmutils)

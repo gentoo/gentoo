@@ -5,8 +5,8 @@ EAPI=6
 inherit fcaps savedconfig toolchain-funcs
 
 DESCRIPTION="simple X display locker"
-HOMEPAGE="http://tools.suckless.org/slock"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/slock"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -34,10 +34,13 @@ src_prepare() {
 	sed -i \
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
+
 	if use elibc_FreeBSD; then
 		sed -i -e 's/-DHAVE_SHADOW_H//' config.mk || die
 	fi
+
 	restore_config config.h
+
 	tc-export CC
 }
 

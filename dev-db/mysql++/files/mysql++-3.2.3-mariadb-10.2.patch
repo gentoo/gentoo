@@ -1,0 +1,31 @@
+diff -Naur mysql++-3.2.2-ORIG/lib/dbdriver.cpp mysql++-3.2.2/lib/dbdriver.cpp
+--- mysql++-3.2.2-ORIG/lib/dbdriver.cpp	2017-07-14 14:56:06.206629443 +0200
++++ mysql++-3.2.2/lib/dbdriver.cpp	2017-07-14 15:28:34.690826959 +0200
+@@ -257,7 +257,11 @@
+ 	}
+ 	
+ 	if ((n == 1) &&
++#ifdef CLIENT_LONG_PASSWORD
+ 			(o >= CLIENT_LONG_PASSWORD) &&
++#else
++			(o >= CLIENT_MYSQL) &&
++#endif
+ #if MYSQL_VERSION_ID > 40000	// highest flag value varies by version
+ 			(o <= CLIENT_MULTI_RESULTS)
+ #else
+diff -aurN a/lib/common.h b/lib/common.h
+--- a/lib/common.h	2016-12-30 18:44:44.000000000 -0500
++++ b/lib/common.h	2017-09-01 09:12:12.270089396 -0400
+@@ -130,12 +130,6 @@
+ 	#define MYSQLPP_PATH_SEPARATOR '/'
+ #endif
+ 
+-#if defined(MYSQLPP_MYSQL_HEADERS_BURIED)
+-#	include <mysql/mysql_version.h>
+-#else
+-#	include <mysql_version.h>
+-#endif
+-
+ namespace mysqlpp {
+ 
+ /// \brief Alias for 'true', to make code requesting exceptions more

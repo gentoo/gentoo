@@ -19,12 +19,14 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/pluginlib
 	dev-ros/actionlib
+	dev-ros/base_local_planner
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/nav_core
 	dev-ros/tf
 	dev-ros/move_base_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules"

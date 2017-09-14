@@ -7,7 +7,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="A frontend to the subversion vcs"
-HOMEPAGE="https://kdesvn.alwins-world.de/ https://cgit.kde.org/kdesvn.git/"
+HOMEPAGE="https://kdesvn.alwins-world.de/ https://cgit.kde.org/kdesvn.git"
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 fi

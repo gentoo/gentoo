@@ -256,7 +256,7 @@ multilib_src_configure() {
 		-Dquotacheck=$(meson_multilib)
 		-Drandomseed=$(meson_multilib)
 		-Drfkill=$(meson_multilib)
-		-Dsysysers=$(meson_multilib)
+		-Dsysusers=$(meson_multilib)
 		-Dtimedated=$(meson_multilib)
 		-Dtimesyncd=$(meson_multilib)
 		-Dtmpfiles=$(meson_multilib)
@@ -423,16 +423,13 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
+	systemd_reenable systemd-networkd.service systemd-resolved.service
+
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
-	fi
-
-	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
-		ewarn "You should replace the resolv.conf symlink:"
-		ewarn "ln -snf ${ROOTPREFIX%/}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
 }
 

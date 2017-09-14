@@ -4,7 +4,7 @@
 EAPI=6
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit git-r3 python-any-r1 cmake-multilib
 
@@ -15,10 +15,6 @@ EGIT_REPO_URI="https://github.com/google/googletest.git"
 LICENSE="BSD"
 SLOT="0"
 IUSE="examples test"
-# Test require a ton of privileges, namely
-# FEATURES="-sandbox -userpriv -usersandbox"
-# which is generally not acceptable for Gentoo
-RESTRICT="test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"

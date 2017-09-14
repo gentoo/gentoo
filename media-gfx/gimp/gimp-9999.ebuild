@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit virtualx autotools eutils gnome2 multilib python-single-r1 git-r3
 
 DESCRIPTION="GNU Image Manipulation Program"
-HOMEPAGE="http://www.gimp.org/"
+HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://git.gnome.org/browse/gimp"
 SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
@@ -61,6 +61,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=gnome-base/librsvg-2.40.6:2
 	webp? ( >=media-libs/libwebp-0.6.0 )
 	wmf? ( >=media-libs/libwmf-0.2.8 )
+	net-libs/glib-networking[ssl]
 	x11-libs/libXcursor
 	sys-libs/zlib
 	app-arch/bzip2
@@ -177,7 +178,7 @@ _clean_up_locales() {
 }
 
 src_test() {
-	Xemake check
+	virtx emake check
 }
 
 src_install() {

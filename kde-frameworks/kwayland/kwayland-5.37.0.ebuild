@@ -10,7 +10,7 @@ DESCRIPTION="Qt-style client and server library wrapper for Wayland libraries"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kwayland"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 DEPEND="
@@ -20,7 +20,7 @@ DEPEND="
 	media-libs/mesa[egl]
 "
 RDEPEND="${DEPEND}
-	$(add_qt_dep qtwayland 'egl')
+	$(add_qt_dep qtwayland 'egl(+)')
 "
 
 # All failing, I guess we need a virtual wayland server

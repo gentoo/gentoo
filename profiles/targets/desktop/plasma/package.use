@@ -48,7 +48,6 @@ media-libs/mesa egl wayland
 
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl
-dev-qt/qtwayland:5 egl
 
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
@@ -58,9 +57,6 @@ media-libs/phonon designer
 
 # Required by dev-qt/qtwebengine
 media-libs/libvpx svc
-
-# Conflicts with kde-apps/audiocd-kio:5
-media-sound/amarok:4 -cdda
 
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
 <dev-python/qscintilla-python-2.10 -qt4

@@ -32,16 +32,15 @@ DEPEND="${RDEPEND}
 	"
 
 src_compile() {
-	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${D%/}/usr" escons
+	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" ROOT="${D%/}/" PREFIX="/usr" LIBDIR="$(get_libdir)" escons
 	if use doc; then
 		doxygen || die "error making docs"
 	fi
 }
 
 src_install() {
-	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${D%/}/usr" escons install
+	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" ROOT="${D%/}/" PREFIX="/usr" LIBDIR="$(get_libdir)" escons install
 	# fix multilib-strict QA failures
-	mv "${ED%/}"/usr/{lib,$(get_libdir)} || die
 	if use doc; then
 		doman doc/man/man3/*.3
 		local HTML_DOCS=( doc/html )

@@ -509,3 +509,7 @@ app-admin/rsyslog zeromq
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # RPI support on arm
 dev-libs/libcec -raspberry-pi
+
+# Ian Whyman <thev00d00@gentoo.org> (05 Sept 2017)
+# missing keywords dev-lang/duktape media-libs/lastfmlib
+net-misc/gerbera javascript lastfm

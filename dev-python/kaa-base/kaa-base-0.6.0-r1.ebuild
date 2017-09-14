@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite?,threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Basic Framework for all Kaa Python Modules"
-HOMEPAGE="http://freevo.sourceforge.net/kaa/"
+HOMEPAGE="http://www.freevo.org/ http://api.freevo.org/kaa-base/"
 SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

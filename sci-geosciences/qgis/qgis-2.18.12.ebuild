@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples georeferencer grass mapserver oracle postgres python webkit"
+IUSE="examples georeferencer grass mapserver oracle postgres python"
 
 REQUIRED_USE="
 	mapserver? ( python )
@@ -56,7 +56,7 @@ COMMON_DEPEND="
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt4[X,sql,svg,webkit?,${PYTHON_USEDEP}]
+		dev-python/PyQt4[X,sql,svg,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -66,7 +66,6 @@ COMMON_DEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	)
-	webkit? ( dev-qt/qtwebkit:4 )
 "
 DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
@@ -82,7 +81,6 @@ RESTRICT="test"
 PATCHES=(
 	# TODO upstream
 	"${FILESDIR}/${PN}-2.18.6-featuresummary.patch"
-	"${FILESDIR}/${PN}-2.18.6-python.patch"
 	# Taken from redhat
 	"${FILESDIR}/${P}-sip.patch"
 	# git master
@@ -121,7 +119,7 @@ src_configure() {
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
-		-DWITH_QTWEBKIT=$(usex webkit)
+		-DWITH_QTWEBKIT=OFF
 	)
 
 	if has_version '<x11-libs/qscintilla-2.10'; then
@@ -149,6 +147,9 @@ src_configure() {
 			-DWITH_INTERNAL_YAML=OFF
 		)
 	fi
+
+	# bug 612956
+	addpredict /dev/dri/renderD128
 
 	cmake-utils_src_configure
 }

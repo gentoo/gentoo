@@ -1,0 +1,71 @@
+* Do not override $(docdir) as part of the GNU conventions
+* Do not install 'COPYING' and 'INSTALL'
+* Install html files using html_ prefix and not doc_ prefix
+* Do not try to link against tcmalloc, the complexity of juggling
+  the options around isn't worth it
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=585968
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,7 @@
+ # (for sanity checking)
+ AC_CONFIG_SRCDIR(README)
+ AM_INIT_AUTOMAKE([dist-zip])
+-AM_CONFIG_HEADER(src/config.h)
++AC_CONFIG_HEADERS([src/config.h])
+ 
+ # Checks for programs.
+ AC_PROG_CXX
+@@ -28,23 +28,7 @@
+ # These are 'only' needed for unittests
+ AC_CHECK_HEADERS(sys/resource.h unistd.h sys/time.h sys/utsname.h)
+ 
+-# If you have google-perftools installed, we can do a bit more testing.
+-# We not only want to set HAVE_MALLOC_EXTENSION_H, we also want to set
+-# a variable to let the Makefile to know to link in tcmalloc.
+ AC_LANG([C++])
+-AC_CHECK_HEADERS(google/malloc_extension.h,
+-                 tcmalloc_libs=-ltcmalloc,
+-                 tcmalloc_libs=)
+-# On some systems, when linking in tcmalloc you also need to link in
+-# pthread.  That's a bug somewhere, but we'll work around it for now.
+-tcmalloc_flags=""
+-if test -n "$tcmalloc_libs"; then
+-  ACX_PTHREAD
+-  tcmalloc_flags="\$(PTHREAD_CFLAGS)"
+-  tcmalloc_libs="$tcmalloc_libs \$(PTHREAD_LIBS)"
+-fi
+-AC_SUBST(tcmalloc_flags)
+-AC_SUBST(tcmalloc_libs)
+ 
+ # Figure out where hash_map lives and also hash_fun.h (or stl_hash_fun.h).
+ # This also tells us what namespace hash code lives in.
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -11,12 +11,11 @@
+ AM_CXXFLAGS = -Wall -W -Wwrite-strings -Woverloaded-virtual -Wshadow
+ endif
+ 
+-docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
+ ## This is for HTML and other documentation you want to install.
+ ## Add your documentation files (in doc/) in addition to these boilerplate
+ ## Also add a TODO file if you have one
+-dist_doc_DATA = AUTHORS COPYING ChangeLog INSTALL NEWS README README_windows.txt \
+-   TODO \
++dist_doc_DATA = AUTHORS ChangeLog NEWS README README_windows.txt TODO
++dist_html_DATA = \
+    doc/dense_hash_map.html			\
+    doc/dense_hash_set.html			\
+    doc/sparse_hash_map.html			\
+@@ -182,11 +181,6 @@
+    $(sparsehashinclude_HEADERS)
+ nodist_time_hash_map_SOURCES = $(nodist_internalinclude_HEADERS)
+ 
+-# If tcmalloc is installed, use it with time_hash_map; it gives us
+-# heap-usage statistics for the hash_map routines, which is very nice
+-time_hash_map_CXXFLAGS = @tcmalloc_flags@ $(AM_CXXFLAGS)
+-time_hash_map_LDFLAGS = @tcmalloc_flags@
+-time_hash_map_LDADD = @tcmalloc_libs@
+ 
+ ## ^^^^ END OF RULES TO MAKE THE LIBRARIES, BINARIES, AND UNITTESTS
+ 

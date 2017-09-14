@@ -1,0 +1,25 @@
+From 459111cb4f6937d58de480cf06743474f5c1dd3d Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Sat, 5 Aug 2017 17:38:03 -0400
+Subject: [PATCH 3/3] cfg: disable NtfOSD by default
+
+---
+ sabnzbd/cfg.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sabnzbd/cfg.py b/sabnzbd/cfg.py
+index d8867db..59a341c 100644
+--- a/sabnzbd/cfg.py
++++ b/sabnzbd/cfg.py
+@@ -322,7 +322,7 @@ acenter_prio_queue_done = OptionBool('acenter', 'acenter_prio_queue_done', True)
+ acenter_prio_other = OptionBool('acenter', 'acenter_prio_other', False)
+ 
+ # [ntfosd]
+-ntfosd_enable = OptionBool('ntfosd', 'ntfosd_enable', not sabnzbd.WIN32 and not sabnzbd.DARWIN)
++ntfosd_enable = OptionBool('ntfosd', 'ntfosd_enable', False)
+ ntfosd_cats = OptionList('ntfosd', 'ntfosd_cats', ['*'])
+ ntfosd_prio_startup = OptionBool('ntfosd', 'ntfosd_prio_startup', True)
+ ntfosd_prio_download = OptionBool('ntfosd', 'ntfosd_prio_download', False)
+-- 
+2.13.0
+

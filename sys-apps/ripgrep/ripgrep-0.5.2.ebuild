@@ -7,7 +7,7 @@ DESCRIPTION="a search tool that combines the usability of ag with the raw speed 
 HOMEPAGE="https://github.com/BurntSushi/ripgrep"
 #SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # custom tarball bundling all deps and index, otherwise cargo fetches from the network
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"

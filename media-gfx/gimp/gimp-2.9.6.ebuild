@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit versionator virtualx autotools eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
-HOMEPAGE="http://www.gimp.org/"
+HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
@@ -60,6 +60,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=gnome-base/librsvg-2.40.6:2
 	webp? ( >=media-libs/libwebp-0.6.0 )
 	wmf? ( >=media-libs/libwmf-0.2.8 )
+	net-libs/glib-networking[ssl]
 	x11-libs/libXcursor
 	sys-libs/zlib
 	app-arch/bzip2
@@ -88,6 +89,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-underlinking.patch  # from 629304
 	eapply_user
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
@@ -102,8 +104,8 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		GEGL=/usr/bin/gegl-0.3
-		GDBUS_CODEGEN=/bin/false
+		GEGL=${EPREFIX}/usr/bin/gegl-0.3
+		GDBUS_CODEGEN=${EPREFIX}/bin/false
 
 		--enable-default-binary
 		--disable-silent-rules
@@ -147,7 +149,7 @@ src_compile() {
 	addwrite /dev/ati/  # bug 589198
 	addwrite /proc/mtrr  # bug 589198
 
-	export XDG_DATA_DIRS=/usr/share  # bug 587004
+	export XDG_DATA_DIRS=${EPREFIX}/usr/share  # bug 587004
 	gnome2_src_compile
 }
 
@@ -163,7 +165,7 @@ _clean_up_locales() {
 }
 
 src_test() {
-	Xemake check
+	virtx emake check
 }
 
 src_install() {
