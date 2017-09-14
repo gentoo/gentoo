@@ -12,7 +12,3 @@ command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
 	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
-}
