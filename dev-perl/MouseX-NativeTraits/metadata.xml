@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MouseX-NativeTraits</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::Array</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::Bool</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::Code</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::Counter</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::Hash</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::Number</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Custom::Trait::String</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute::Native</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::ArrayRef</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::Bool</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::CodeRef</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::Counter</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::HashRef</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::ArrayRef</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::Bool</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::CodeRef</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::Counter</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::HashRef</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::Num</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::MethodProvider::Str</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::Num</remote-id>
+    <remote-id type="cpan-module">MouseX::NativeTraits::Str</remote-id>
+  </upstream>
+</pkgmetadata>
