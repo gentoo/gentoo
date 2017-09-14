@@ -18,7 +18,3 @@ depend() {
 	need net
 	after net
 }
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
-}
