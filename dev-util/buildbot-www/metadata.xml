@@ -9,8 +9,9 @@
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
 	</maintainer>
-	<longdescription lang="en">The BuildBot-www package is the base or common code used for the other user interface
-    packages such as the waterfall and console views.
+	<longdescription lang="en">
+		The BuildBot-www package is the base or common code used for the other
+		user interface packages such as the waterfall and console views.
 	</longdescription>
 	<upstream>
 		<maintainer>
