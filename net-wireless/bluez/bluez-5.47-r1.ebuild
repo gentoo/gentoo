@@ -245,7 +245,7 @@ multilib_src_install_all() {
 	done
 	doins src/main.conf
 
-	newinitd "${FILESDIR}"/bluetooth-init.d-r3 bluetooth
+	newinitd "${FILESDIR}"/bluetooth-init.d-r4 bluetooth
 	newinitd "${FILESDIR}"/rfcomm-init.d-r2 rfcomm
 
 	einstalldocs
