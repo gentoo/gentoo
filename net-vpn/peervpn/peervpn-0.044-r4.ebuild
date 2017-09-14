@@ -57,9 +57,11 @@ src_install() {
 pkg_preinst() {
 	if ! has_version '>=net-vpn/peervpn-0.044-r4' && \
 		[[ -d ${EROOT}etc/${PN} &&
-		$(find "${EROOT}etc/peervpn" ! -user root -print) ]]; then
+		$(find "${EROOT}etc/${PN}" -user "${PN}" ! -type l -print) ]]; then
 		ewarn "Tightening '${EROOT}etc/${PN}' permissions for bug 629418"
-		chown -R root:${PN} "${EROOT}etc/${PN}" || die
-		chmod -R g+rX-w,o-rwx "${EROOT}etc/${PN}" || die
+		while read -r -d ''; do
+			chown root:${PN} "${REPLY}" || die
+			chmod g+rX-w,o-rwx "${REPLY}" || die
+		done < <(find "${EROOT}etc/${PN}" -user "${PN}" ! -type l -print0)
 	fi
 }
