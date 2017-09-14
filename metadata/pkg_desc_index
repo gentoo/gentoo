@@ -17530,7 +17530,7 @@ sys-cluster/kube-apiserver 1.7.4 1.7.5: Kubernetes API server
 sys-cluster/kube-controller-manager 1.7.4 1.7.5: Kubernetes Controller Manager
 sys-cluster/kube-proxy 1.7.4 1.7.5: Kubernetes Proxy service
 sys-cluster/kube-scheduler 1.7.4 1.7.5: Kubernetes Controller Manager
-sys-cluster/kubectl 1.7.4 1.7.5: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.7.4 1.7.5 1.7.6: CLI to run commands against Kubernetes clusters
 sys-cluster/kubelet 1.7.4 1.7.5: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
