@@ -256,7 +256,7 @@ app-arch/createrepo 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.18.18 1.18.22 1.18.23 1.18.24: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.18.18 1.18.23 1.18.24: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.12.0-r1 1.12.0-r2 1.14.1-r1 1.16.0-r2 1.18.1: Engrampa archive manager for MATE
@@ -10369,8 +10369,8 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 10.6.4 10.7.2: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.87 1.0.88 1.0.89 1.0.90 1.0.91: Debian/Ubuntu bootstrap scripts
+dev-util/debhelper 9.20160814 10.7.2 10.8: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debootstrap 1.0.87 1.0.89 1.0.91: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
@@ -15148,7 +15148,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/apt-cacher-ng 2 3: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 3: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.30.0 1.31.0 1.32.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
