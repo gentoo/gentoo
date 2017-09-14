@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 sys-devel/make >=dev-util/cmake-3.0
+DESCRIPTION=Ampache desktop client library
+EAPI=6
+HOMEPAGE=http://ampache-browser.org
+IUSE=nls debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://github.com/ampache-browser/ampache_browser/archive/v1.0.0.tar.gz -> ampache_browser-1.0.0.tar.gz
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=96d95788d2e5eb5e7b9a1b9033aba12b
