@@ -14,10 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-libs/ncurses:0="
-RDEPEND="${DEPEND}"
+RDEPEND="sys-libs/ncurses:0="
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-cflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cflags.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+)
 
 src_prepare() {
 	default
