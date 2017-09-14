@@ -53,7 +53,7 @@ cargo_src_unpack() {
 	mkdir -p "${ECARGO_VENDOR}" || die
 	mkdir -p "${S}" || die
 
-	local archive
+	local archive shasum pkg
 	for archive in ${A}; do
 		case "${archive}" in
 			*.crate)
