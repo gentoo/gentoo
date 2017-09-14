@@ -6318,6 +6318,7 @@ dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 2.4.9: Moose minus the antlers
+dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
@@ -6871,6 +6872,7 @@ dev-perl/Wx-Scintilla 0.390.0-r2: Scintilla source code editing component for wx
 dev-perl/X-Osd 0.700.0-r1: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol
+dev-perl/X11-XCB 0.160.0: Perl bindings for libxcb
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
 dev-perl/XML-AutoWriter 0.400.0-r1: DOCTYPE based XML output
@@ -6885,6 +6887,7 @@ dev-perl/XML-DOM 1.450.0 1.460.0: A Perl module for an DOM Level 1 compliant int
 dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
+dev-perl/XML-Descent 1.40.0: Recursive decent XML parsing
 dev-perl/XML-Directory 1.0.0: Returns a content of directory as XML
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: XML::Parser style and generic classes for handling of XML data
@@ -6923,6 +6926,7 @@ dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their 
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Smart 1.790.0: Access or create XML from fields, data and URLs.
 dev-perl/XML-Stream 1.240.0: Creates and XML Stream connection and parses return data
+dev-perl/XML-TokeParser 0.50.0: Simplified interface to XML::Parser
 dev-perl/XML-TreePP 0.430.0: Pure Perl implementation for parsing/writing XML documents
 dev-perl/XML-Twig 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
@@ -6933,6 +6937,7 @@ dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL querie
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
+dev-perl/XS-Object-Magic 0.40.0-r3: Opaque, extensible XS pointer backed objects using sv_magic
 dev-perl/YAML 1.150.0 1.210.0 1.230.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.640.0 0.650.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.290.0 1.300.0: Fast, lightweight YAML loader and dumper
