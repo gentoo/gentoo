@@ -66,6 +66,9 @@ python_install_all() {
 	newconfd "${FILESDIR}/buildbot_worker.confd2" buildbot_worker
 	newinitd "${FILESDIR}/buildbot_worker.initd2" buildbot_worker
 
+	dodir /var/lib/buildbot_worker
+	cp "${FILESDIR}/buildbot.tac.sample" "${D}/var/lib/buildbot_worker"|| die "Install failed!"
+
 	readme.gentoo_create_doc
 }
 
@@ -106,13 +109,11 @@ pkg_config() {
 		die "Instance already exists"
 	fi
 
-	local buildbot="/usr/bin/buildbot"
 	if [[ ! -d "${buildworker_path}" ]]; then
 		mkdir --parents "${buildworker_path}" || die "Unable to create directory ${buildworker_path}"
 	fi
-	"${buildbot}" create-master "${instance_path}" &>/dev/null || die "Creating instance failed"
 	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
-	mv "${instance_path}/master.cfg.sample" "${instance_path}/master.cfg" \
+	cp "${buildworker_path}/buildbot.tac.sample" "${instance_path}/buildbot.tac" \
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildbot_worker" "/etc/init.d/buildbot_worker.${instance_name}" \
 		|| die "Unable to create link to init file"
