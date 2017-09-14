@@ -12125,7 +12125,7 @@ kde-frameworks/kdoctools 5.37.0 5.38.0: Tools to generate documentation in vario
 kde-frameworks/kemoticons 5.37.0 5.38.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 4: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.37.0 5.38.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.37.0 5.38.0: Framework to handle global shortcuts
+kde-frameworks/kglobalaccel 5.37.0 5.38.1: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.37.0 5.38.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.37.0 5.38.0: KHTML web rendering engine
 kde-frameworks/ki18n 5.37.0 5.38.0: Framework based on Gettext for internationalizing user interface text
@@ -15746,7 +15746,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware imag
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.8 1.1.13: A Bluetooth configuration tool
 net-wireless/blueman 2.0.3 2.0.4 2.1_alpha1 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 5.43-r1 5.46 5.47: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 5.43-r1 5.46 5.47-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
 net-wireless/broadcom-sta 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
