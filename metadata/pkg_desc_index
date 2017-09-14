@@ -17528,10 +17528,10 @@ sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.7.4 1.7.5: Kubernetes API server
 sys-cluster/kube-controller-manager 1.7.4 1.7.5: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.7.4 1.7.5: Kubernetes Proxy service
+sys-cluster/kube-proxy 1.7.4 1.7.5 1.7.6: Kubernetes Proxy service
 sys-cluster/kube-scheduler 1.7.4 1.7.5: Kubernetes Controller Manager
 sys-cluster/kubectl 1.7.4 1.7.5 1.7.6: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.7.4 1.7.5: Kubernetes Node Agent
+sys-cluster/kubelet 1.7.4 1.7.5 1.7.6: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
