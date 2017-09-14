@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare
-DEPEND=sys-libs/ncurses:0= >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a fuzzy search tool for the command-line
 EAPI=6
 HOMEPAGE=https://github.com/calleerlandsson/pick
@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/calleerlandsson/pick/releases/download/v1.8.0/pick-1.8.0.tar.gz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=07bfa1482ac95e8f60bc32b1a6564bd9
+_md5_=e0e742d2d2a1af0f4c4e35ca93ef5179
