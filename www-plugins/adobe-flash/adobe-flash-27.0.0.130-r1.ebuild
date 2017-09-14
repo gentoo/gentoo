@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit nsplugins multilib multilib-minimal
+inherit gnome2-utils nsplugins multilib multilib-minimal
 
 DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="
@@ -130,4 +130,11 @@ multilib_src_install() {
 				|| die
 		fi
 	fi
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
