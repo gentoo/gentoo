@@ -14,8 +14,8 @@ else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
 fi
-DESCRIPTION="Cups PDF filters"
-HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/pdf_as_standard_print_job_format"
+DESCRIPTION="Cups filters"
+HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
