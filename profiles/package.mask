@@ -564,12 +564,12 @@ dev-perl/Params-ValidationCompiler
 # these packages can result in build failures (and possible breakage) for
 # many packages, and may leave your system vulnerable to known security
 # exploits.
-#
 # If you still use one of these old toolchain packages, please upgrade (and
-# in case of gcc switch the compiler) ASAP. If you need them for a specific
+# switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-4.9
 <sys-libs/glibc-2.23-r4
+<sys-devel/binutils-2.28.1
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
 # Old versions of CUDA and their reverse dependencies. They do not
