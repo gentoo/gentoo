@@ -91,13 +91,13 @@ RDEPEND="${COMMON_DEPEND}
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !crosscompile_opts_headers-only? (
 		>=${CATEGORY}/binutils-2.24
-		>=${CATEGORY}/gcc-4.7
+		>=${CATEGORY}/gcc-4.9
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	DEPEND+="
 		>=sys-devel/binutils-2.24
-		>=sys-devel/gcc-4.7
+		>=sys-devel/gcc-4.9
 		virtual/os-headers
 	"
 	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
@@ -266,14 +266,6 @@ src_prepare() {
 				debug/Makefile || die
 		fi
 	fi
-
-	case $(gcc-fullversion) in
-	4.8.[0-3]|4.9.0)
-		eerror "You need to switch to a newer compiler; gcc-4.8.[0-3] and gcc-4.9.0 miscompile"
-		eerror "glibc.  See https://bugs.gentoo.org/547420 for details."
-		die "Need to switch compilers #547420"
-		;;
-	esac
 }
 
 glibc_do_configure() {
