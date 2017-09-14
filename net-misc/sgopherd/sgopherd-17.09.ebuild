@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -9,7 +9,7 @@ DESCRIPTION="Small Gopher Server written in GNU Bash"
 HOMEPAGE="https://github.com/vain/sgopherd"
 SRC_URI="https://github.com/vain/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="PIZZA-WARE"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -22,7 +22,7 @@ src_prepare() {
 	# Set default user to run sgopherd
 	sed -i -e '/user/s/http/nobody/' xinetd/xinetd-example.conf || die 'sed failed'
 
-	epatch_user
+	eapply_user
 }
 
 src_install() {
