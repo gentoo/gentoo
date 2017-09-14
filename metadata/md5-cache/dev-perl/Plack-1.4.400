@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/CGI-Compile dev-perl/CGI-Emulate-PSGI dev-perl/FCGI dev-perl/FCGI-ProcManager >=dev-perl/libwww-perl-5.814.0 >=dev-perl/Log-Dispatch-2.250.0 dev-perl/Log-Log4perl dev-perl/Module-Refresh ) >=dev-perl/Apache-LogFormat-Compiler-0.330.0 >=dev-perl/Cookie-Baker-0.70.0 >=dev-perl/Devel-StackTrace-1.230.0 >=dev-perl/Devel-StackTrace-AsHTML-0.110.0 >=dev-perl/File-ShareDir-1.0.0 dev-perl/Filesys-Notify-Simple >=dev-perl/HTTP-Entity-Parser-0.170.0 >=dev-perl/HTTP-Headers-Fast-0.180.0 >=dev-perl/HTTP-Message-5.814.0 >=virtual/perl-HTTP-Tiny-0.34.0 >=dev-perl/Hash-MultiValue-0.50.0 >=virtual/perl-Pod-Parser-1.360.0 >=dev-perl/Stream-Buffered-0.20.0 >=dev-perl/Test-TCP-2.150.0 dev-perl/Try-Tiny >=dev-perl/URI-1.590.0 >=dev-perl/WWW-Form-UrlEncoded-0.230.0 virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/Plack-1.0044.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=fbbf9205bca60b45a01342ac405511b8

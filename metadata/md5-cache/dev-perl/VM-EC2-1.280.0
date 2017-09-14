@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/AnyEvent-7.40.0 >=dev-perl/AnyEvent-CacheDNS-0.80.0 >=dev-perl/AnyEvent-HTTP-2.150.0 >=virtual/perl-Digest-SHA-5.470.0 >=virtual/perl-File-Path-2.80.0 dev-perl/JSON >=dev-perl/libwww-perl-5.835.0 >=virtual/perl-MIME-Base64-3.80.0 >=dev-perl/String-Approx-3.260.0 >=dev-perl/URI-1.690.0 >=dev-perl/XML-Simple-2.180.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LD/LDS/VM-EC2-1.28.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=0df0805d318fc9492ab08feb0fbea991

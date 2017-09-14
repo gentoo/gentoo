@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/XML-Parser-2.31 >=virtual/perl-Scalar-List-Utils-1.230.0 >=virtual/perl-Encode-2.240.100_rc >=dev-libs/expat-1.95.5 dev-perl/Tie-IxHash dev-perl/XML-XPath >=dev-perl/libwww-perl-6.40.0 >=dev-perl/HTML-Parser-3.690.0 nls? ( >=dev-perl/Text-Iconv-1.2-r1 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIROD/XML-Twig-3.52.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=ee47d5e3154e4e6e6c3c4fafdc40986c

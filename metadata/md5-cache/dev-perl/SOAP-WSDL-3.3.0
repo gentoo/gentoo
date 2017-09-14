@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Load-0.200.0 >=dev-perl/Class-Std-Fast-0.0.5 virtual/perl-Data-Dumper dev-perl/TimeDate virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/libwww-perl dev-perl/Module-Build virtual/perl-Scalar-List-Utils virtual/perl-Storable >=dev-perl/Template-Toolkit-2.180.0 dev-perl/TermReadKey dev-perl/URI dev-perl/XML-Parser dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SW/SWALTERS/SOAP-WSDL-3.003.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=dfc3632b92e6698ee7897b0217c5fa4b

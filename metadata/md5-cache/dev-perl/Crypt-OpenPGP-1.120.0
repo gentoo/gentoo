@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Crypt-RSA dev-perl/Crypt-Blowfish dev-perl/Crypt-CAST5_PP dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-IDEA dev-perl/Crypt-RIPEMD160 dev-perl/Crypt-Rijndael >=dev-perl/Crypt-Twofish-2.00 virtual/perl-Digest-MD5 virtual/perl-Digest-SHA dev-perl/File-HomeDir virtual/perl-IO-Compress dev-perl/libwww-perl virtual/perl-MIME-Base64 virtual/perl-Math-BigInt dev-perl/TermReadKey dev-perl/URI >=dev-perl/Data-Buffer-0.04 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=53db194967b68f5347e7ef1040602745

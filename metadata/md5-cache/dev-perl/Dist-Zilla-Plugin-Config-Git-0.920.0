@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Dist-Zilla-1.0.0 >=dev-perl/Moose-0.340.0 >=dev-perl/MooseX-Types-0.60.0 >=dev-perl/String-Errf-0.1.0 >=dev-perl/namespace-clean-0.60.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BB/BBYRD/Dist-Zilla-Plugin-Config-Git-0.92.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=1368768a324523c9561fca2cec82031a

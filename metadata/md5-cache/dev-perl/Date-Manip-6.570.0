@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Encode virtual/perl-File-Spec virtual/perl-IO virtual/perl-Storable elibc_musl? ( sys-libs/timezone-data ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SB/SBECK/Date-Manip-6.57.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=4605b1af7c39d519d515aee0a4bb3609

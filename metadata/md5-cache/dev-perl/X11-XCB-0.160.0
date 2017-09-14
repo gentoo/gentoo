@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Data-Dump dev-perl/Mouse dev-perl/MouseX-NativeTraits dev-perl/Try-Tiny dev-perl/XML-Descent dev-perl/XML-Simple >=virtual/perl-XSLoader-0.20.0 x11-proto/xcb-proto >=x11-libs/libxcb-1.2 x11-libs/xcb-util x11-libs/xcb-util-wm dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MS/MSTPLBG/X11-XCB-0.16.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	171580f737f5aaf18fcb456548588066
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	171580f737f5aaf18fcb456548588066
 _md5_=3fb3896f08a8edf44e915a9c5267c1ef

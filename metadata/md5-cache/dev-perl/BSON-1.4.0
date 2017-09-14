@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=virtual/perl-Carp virtual/perl-Digest-MD5 virtual/perl-Exporter virtual/perl-Math-BigInt >=dev-perl/Moo-2.2.4 virtual/perl-Scalar-List-Utils dev-perl/Tie-IxHash virtual/perl-Time-HiRes virtual/perl-Time-Local >=dev-perl/boolean-0.450.0 dev-perl/namespace-clean virtual/perl-threads-shared virtual/perl-version dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MO/MONGODB/BSON-v1.4.0.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=68ef248f891f50e5fc59bf0a03232e9b

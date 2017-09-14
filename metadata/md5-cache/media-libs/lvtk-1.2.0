@@ -10,5 +10,5 @@ RDEPEND=media-libs/lv2 >=dev-libs/boost-1.40.0 python_targets_python2_7? ( >=dev
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://github.com/lvtk/lvtk/archive/1.2.0.tar.gz -> lvtk-1.2.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
 _md5_=fb0de1af5a6764eb256e853a3e726130

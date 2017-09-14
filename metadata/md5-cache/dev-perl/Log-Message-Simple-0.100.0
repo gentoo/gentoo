@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Log-Message virtual/perl-if dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BI/BINGOS/Log-Message-Simple-0.10.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=efe07b7e0cf4f79a7c309b1d1ca6b393

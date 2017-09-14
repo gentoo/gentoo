@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!=sci-libs/openfoam-bin-2.4* !=sci-libs/openfoam-kernel-2.4* !=sci-libs/openfoam-meta-2.4* !=sci-libs/openfoam-solvers-2.4* !=sci-libs/openfoam-utilities-2.4* !=sci-libs/openfoam-wmake-2.4* sci-mathematics/cgal sci-libs/parmetis sci-libs/parmgridgen sci-libs/scotch virtual/mpi opendx? ( sci-visualization/opendx ) paraview? ( sci-visualization/paraview[development] )
 SLOT=2.4
 SRC_URI=http://downloads.sourceforge.net/foam/OpenFOAM-2.4.0.tgz
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=b52d2f238b664b4592329c5ae14ad235

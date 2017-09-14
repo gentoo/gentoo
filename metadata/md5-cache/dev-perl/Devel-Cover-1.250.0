@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Digest-MD5 virtual/perl-Storable !minimal? ( dev-perl/Browser-Open dev-perl/Capture-Tiny dev-perl/Class-XSAccessor dev-perl/HTML-Parser >=dev-perl/JSON-MaybeXS-1.3.3 dev-perl/Moo dev-perl/Parallel-Iterator >=dev-perl/Perl-Tidy-20060719.0.0 >=dev-perl/Pod-Coverage-0.220.0 dev-perl/Sereal-Decoder dev-perl/Sereal-Encoder >=dev-perl/PPI-HTML-1.70.0 >=dev-perl/Template-Toolkit-2.0.0 dev-perl/Test-Differences dev-perl/namespace-clean ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PJ/PJCJ/Devel-Cover-1.25.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=347b03d78560eb7f6f06905e0eef6073

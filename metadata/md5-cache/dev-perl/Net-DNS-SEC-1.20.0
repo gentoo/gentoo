@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-perl/Crypt-OpenSSL-Bignum-0.40.0 >=dev-perl/Crypt-OpenSSL-DSA-0.140.0 >=dev-perl/Crypt-OpenSSL-RSA-0.270.0 >=virtual/perl-File-Spec-0.860.0 >=virtual/perl-MIME-Base64-2.110.0 >=dev-perl/Net-DNS-1.10.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NL/NLNETLABS/Net-DNS-SEC-1.02.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=6de68337b6668af6ace2ecd7eeb85e5d

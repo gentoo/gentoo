@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Carp-Clan dev-perl/Class-Load dev-perl/Data-Visitor >=dev-perl/DateTime-0.51 dev-perl/DateTime-Format-Strptime >=dev-perl/Devel-StackTrace-1.21 virtual/perl-Digest-SHA virtual/perl-Encode dev-perl/HTML-Parser dev-perl/HTTP-Message >=dev-perl/IO-Socket-SSL-2.5.0 dev-perl/JSON-MaybeXS dev-perl/LWP-Protocol-https virtual/perl-Scalar-List-Utils >=dev-perl/Moose-0.940.0 dev-perl/MooseX-Role-Parameterized dev-perl/Net-HTTP !=dev-perl/Net-HTTP-6.40.0 !=dev-perl/Net-HTTP-6.50.0 virtual/perl-libnet >=dev-perl/Net-OAuth-0.25 virtual/perl-Time-HiRes >=dev-perl/Try-Tiny-0.30.0 >=dev-perl/URI-1.400.0 virtual/perl-libnet dev-perl/namespace-autoclean dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MM/MMIMS/Net-Twitter-4.01041.tar.gz
-_eclasses_=multiprocessing	284a473719153462f3e974d86c8cb81c	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=863176b90a315b817631787f2424ebf3
