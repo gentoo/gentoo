@@ -7353,7 +7353,7 @@ dev-python/authres 0.701 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.16.0-r1 17.5.1-r2 17.7.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0 0.6.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0: Friendly state machines for python.
-dev-python/autopep8 1.0.4 1.2.4 1.3.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.3.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0 1.11.81: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -8665,11 +8665,11 @@ dev-python/robotframework-sshlibrary 2.1.3: A test library for Robot Framework t
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/root_numpy 3.2.0 3.3.0 3.3.1 4.4.0: Interface between ROOT and numpy
 dev-python/rootpy 0.7.1 0.8.0 0.8.3: Pythonic layer on top of the ROOT framework's PyROOT bindings
-dev-python/rope 0.10.3 0.10.5: Python refactoring library
+dev-python/rope 0.10.3 0.10.5 0.10.7: Python refactoring library
 dev-python/rope_py3k 0.9.4: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.8: Rope in Emacs
-dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
+dev-python/ropemode 0.2-r1 0.3 0.4: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.6.1 0.6.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.1.0-r1 1.1.1 1.1.2 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
@@ -12679,7 +12679,7 @@ media-gfx/farbfeld 2 3 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
-media-gfx/feh 2.18.3 2.19.3: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 2.18.3 2.19.3 2.20: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.4_rc3-r2: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.0.1 9999: Tools and a library for creating fractal flames
