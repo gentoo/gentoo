@@ -21,10 +21,7 @@ SRC_URI="
 LICENSE="Vivaldi"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-
 RESTRICT="bindist mirror"
-
-S=${WORKDIR}
 
 DEPEND="
 	virtual/libiconv
@@ -59,7 +56,6 @@ RDEPEND="
 	x11-libs/libXtst
 	x11-libs/pango[X]
 "
-
 QA_PREBUILT="*"
 S=${WORKDIR}
 
@@ -96,6 +92,9 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
+	epatch "${FILESDIR}"/${PN}-1.12.955.3_p1-libffmpeg.patch
+
+	epatch_user
 }
 
 src_install() {
