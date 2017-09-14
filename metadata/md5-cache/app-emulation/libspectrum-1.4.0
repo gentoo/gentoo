@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 audiofile? ( >=media-libs/audiofile-0.3.6 ) bzip2? ( >=app-arch/bzip2-1.0 ) gcrypt? ( dev-libs/libgcrypt:0 ) zlib? ( sys-libs/zlib )
 SLOT=0
-SRC_URI=mirror://sourceforge/fuse-emulator/libspectrum-1.3.5.tar.gz
+SRC_URI=mirror://sourceforge/fuse-emulator/libspectrum-1.4.0.tar.gz
 _md5_=d35bb07c5c61cc611dea5f0d53eb710a

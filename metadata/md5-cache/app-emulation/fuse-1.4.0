@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=app-emulation/libspectrum-1.4.0 dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) gpm? ( sys-libs/gpm ) gtk? ( x11-libs/gtk+:3 ) joystick? ( media-libs/libjsw ) png? ( media-libs/libpng:0= sys-libs/zlib ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) X? ( x11-libs/libX11 x11-libs/libXext ) xml? ( dev-libs/libxml2:2 ) fbcon? ( virtual/linux-sources ) dev-lang/perl virtual/pkgconfig
+DESCRIPTION=Free Unix Spectrum Emulator by Philip Kendall
+EAPI=6
+HOMEPAGE=http://fuse-emulator.sourceforge.net
+IUSE=alsa ao fbcon gpm gtk joystick memlimit png sdl svga X xml
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-emulation/libspectrum-1.4.0 dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) gpm? ( sys-libs/gpm ) gtk? ( x11-libs/gtk+:3 ) joystick? ( media-libs/libjsw ) png? ( media-libs/libpng:0= sys-libs/zlib ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) X? ( x11-libs/libX11 x11-libs/libXext ) xml? ( dev-libs/libxml2:2 )
+REQUIRED_USE=^^ ( X fbcon gtk sdl svga )
+SLOT=0
+SRC_URI=mirror://sourceforge/fuse-emulator/fuse-1.4.0.tar.gz
+_md5_=d58d745782061988786412e6eb3765e6
