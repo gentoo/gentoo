@@ -1,0 +1,33 @@
+From e84699188ca845d39c6d5a7037a8a4d1620bb348 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Thu, 14 Sep 2017 15:29:34 +1200
+Subject: Fix for 5.26 .-in-@INC issues
+
+---
+ Makefile.PL | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 91a3da6..9ed7403 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -33,6 +33,7 @@ __
+            != grep { $ok{$_} = eval "require $_; 1" } @configure_req;
+ }
+ 
++BEGIN { unshift @INC, '.'; }
+ use inc::Module::Install;
+ 
+ name 'X11-XCB';
+@@ -81,7 +82,7 @@ WriteMakefile(
+ 
+ postamble <<'END_OF_MAKEFILE';
+ XCB_xs.inc:
+-	$(PERL) -M_GenerateMyXS -E '_GenerateMyXS::generate()'
++	$(PERL) -I. -M_GenerateMyXS -E '_GenerateMyXS::generate()'
+ 
+ XCB.c: XCB_xs.inc XCB_util.inc XCB.inc
+ 
+-- 
+2.14.1
+
