@@ -15422,7 +15422,7 @@ net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and 
 net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
 net-misc/sendfile 2.1b-r1: SAFT implementation for asynchronous sending of files in the Internet
 net-misc/ser2net 2.7-r1 2.9.1 2.10.0: Serial To Network Proxy
-net-misc/sgopherd 13.01: Small Gopher Server written in GNU Bash
+net-misc/sgopherd 17.09: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3 9999: Command line client for ISDS
 net-misc/shmux 1.0 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/shout 0.8.0-r2: Shout is a program for creating mp3 stream for use with icecast or shoutcast
