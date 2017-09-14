@@ -80,6 +80,8 @@ CDEPEND="
 	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 	virtual/pkgconfig
 	test? (
 		!system-mitkrb5? (
