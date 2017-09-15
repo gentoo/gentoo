@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Media player with digital TV support by KDE"
 HOMEPAGE="https://kaffeine.kde.org/"
-SRC_URI="mirror://kde/stable/${PN}/$(get_version_component_range 1-3)/src/${P}.tar.xz"
+SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.3 )"
 KEYWORDS="~amd64 ~x86"
