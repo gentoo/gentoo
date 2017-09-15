@@ -7703,7 +7703,7 @@ dev-python/flask-wtf 0.10.3 0.13.1: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
-dev-python/flower 0.9.1: Real-time monitor and web admin for Celery distributed task queue
+dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 3.0 3.10.0 3.15.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.11.0: RPC protocol for Twisted
