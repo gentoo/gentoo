@@ -17323,7 +17323,7 @@ sys-apps/yum 3.4.3_p20170619: automatic updater and package installer/remover fo
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 1.1.1 1.1.2 1.2.0 9999: Framework for defining and tracking users, login sessions and seats
-sys-auth/docker_auth 1.2.1 1.2.1_p20170711: Docker Registry 2 authentication server
+sys-auth/docker_auth 1.2.1 1.2.1_p20170711 1.3: Docker Registry 2 authentication server
 sys-auth/elogind 229.6 231.4 232.3: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
