@@ -1,0 +1,66 @@
+From 66537d1ecf7e857a0a443c1ebf72baf6f19dd3e4 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Mon, 11 Sep 2017 19:11:50 +0200
+Subject: build: Fix TIFF loader compilation with autotools
+
+https://bugzilla.gnome.org/show_bug.cgi?id=786342
+---
+ configure.ac           | 7 +++----
+ gdk-pixbuf/Makefile.am | 2 +-
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0abe5ce..c07bd6f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -564,7 +564,6 @@ dnl Test for libjasper
+ *** --without-libjasper to configure])
+   fi
+ 
+-AC_SUBST(LIBTIFF)
+ AC_SUBST(LIBJPEG)
+ AC_SUBST(LIBPNG)
+ AC_SUBST(LIBJASPER)
+@@ -676,7 +675,7 @@ if test x$gio_can_sniff = x; then
+   AC_DEFINE(GDK_PIXBUF_USE_GIO_MIME, 1, [Define if gio can sniff image data])
+ fi
+ 
+-AM_CONDITIONAL(HAVE_TIFF, test "x$LIBTIFF" != x)
++AM_CONDITIONAL(HAVE_TIFF, test "x$libtiff_found" != x)
+ AM_CONDITIONAL(HAVE_PNG, test "x$LIBPNG" != x)
+ AM_CONDITIONAL(HAVE_JPEG, test "x$LIBJPEG" != x)
+ AM_CONDITIONAL(HAVE_JASPER, test "x$LIBJASPER" != x)
+@@ -684,7 +683,7 @@ AM_CONDITIONAL(HAVE_JASPER, test "x$LIBJASPER" != x)
+ if $dynworks ; then
+   STATIC_LIB_DEPS=
+   if echo "$included_loaders" | egrep '(^|,)tiff($|,)' > /dev/null; then
+-    STATIC_LIB_DEPS="$STATIC_LIB_DEPS $LIBTIFF"
++    STATIC_LIB_DEPS="$STATIC_LIB_DEPS $TIFF_LIBS"
+   fi
+   if echo "$included_loaders" | egrep '(^|,)jpeg($|,)' > /dev/null; then
+     STATIC_LIB_DEPS="$STATIC_LIB_DEPS $LIBJPEG"
+@@ -698,7 +697,7 @@ if $dynworks ; then
+     STATIC_LIB_DEPS="$STATIC_LIB_DEPS $LIBJASPER"
+   fi
+ else
+-  STATIC_LIB_DEPS="$LIBTIFF $LIBJPEG $LIBPNG $LIBJASPER"
++  STATIC_LIB_DEPS="$TIFF_LIBS $LIBJPEG $LIBPNG $LIBJASPER"
+ fi
+ 
+ # Checks to see whether we should include mediaLib
+diff --git a/gdk-pixbuf/Makefile.am b/gdk-pixbuf/Makefile.am
+index 01b693c..720a058 100644
+--- a/gdk-pixbuf/Makefile.am
++++ b/gdk-pixbuf/Makefile.am
+@@ -88,7 +88,7 @@ libpixbufloader_pnm_la_LIBADD = $(module_libs)
+ libstatic_pixbufloader_tiff_la_SOURCES = io-tiff.c
+ libpixbufloader_tiff_la_SOURCES = io-tiff.c
+ libpixbufloader_tiff_la_LDFLAGS = -avoid-version -module $(no_undefined)
+-libpixbufloader_tiff_la_LIBADD = $(LIBTIFF) $(module_libs)
++libpixbufloader_tiff_la_LIBADD = $(TIFF_LIBS) $(module_libs)
+ 
+ #
+ # The XPM loader
+-- 
+cgit v0.12
+
