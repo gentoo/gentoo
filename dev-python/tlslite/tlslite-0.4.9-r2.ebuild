@@ -15,7 +15,7 @@ LICENSE="BSD public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 #Refrain for now setting IUSE test and deps of test given test restricted.
-IUSE="doc"
+IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -27,11 +27,6 @@ python_test() {
 	cd tests || die
 	"${PYTHON}" "${S}"/tests/tlstest.py client localhost:4443 . || die
 	"${PYTHON}" "${S}"/tests/tlstest.py server localhost:4442 . || die
-}
-
-python_install_all(){
-	use doc && HTML_DOCS=( docs/. )
-	distutils-r1_python_install_all
 }
 
 pkg_postinst() {
