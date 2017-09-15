@@ -15,16 +15,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-ml/ocamlbuild"
-RDEPEND=">=dev-lang/ocaml-4.01.0"
+RDEPEND=">=dev-lang/ocaml-4.02.0"
 
 PATCHES=(
 	"${FILESDIR}/${P}-mkdir.patch"
 )
 
 src_compile() {
-	./build.sh /usr
+	./build.sh /usr || die "Build failed"
 }
 
 src_install() {
-	./install.sh "${ED}/usr"
+	./install.sh "${ED}/usr" || die "Install failed"
 }
