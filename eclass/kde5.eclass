@@ -344,7 +344,7 @@ _calculate_src_uri() {
 			local plasmapv=$(get_version_component_range 1-3)
 
 			case ${PV} in
-				5.?.[6-9]? )
+				5.?.[6-9]? | 5.??.[6-9]? )
 					# Plasma 5 beta releases
 					SRC_URI="mirror://kde/unstable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
