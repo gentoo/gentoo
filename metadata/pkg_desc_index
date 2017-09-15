@@ -12185,7 +12185,7 @@ kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
 kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
-kde-misc/kdiff3 0.9.98-r1 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
+kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
