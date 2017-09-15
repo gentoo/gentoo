@@ -3,8 +3,7 @@
 
 EAPI=5
 
-# ruby24 -> tests fail
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc"
 RUBY_FAKEGEM_GEMSPEC="rgen.gemspec"
@@ -23,3 +22,11 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 ruby_add_bdepend "doc? ( >=dev-ruby/rdoc-4.2.0 )
 	test? ( >=dev-ruby/minitest-5.10:5 >=dev-ruby/nokogiri-1.6.8.1 )
 "
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby24)
+			sed -i -e 's/Can not use a Fixnum/Can not use a Integer/' test/metamodel_builder_test.rb || die
+			;;
+	esac
+}
