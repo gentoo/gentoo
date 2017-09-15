@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/boto-2.36.0[${PYTHON_USEDEP}]
 	>=dev-python/boto3-1.2.1[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/pretty-yaml[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
