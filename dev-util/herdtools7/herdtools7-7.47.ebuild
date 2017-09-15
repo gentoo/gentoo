@@ -7,7 +7,7 @@ inherit opam
 
 DESCRIPTION="The Herd toolsuite to deal with .cat memory models"
 HOMEPAGE="http://diy.inria.fr/sources/index.html"
-SRC_URI="https://github.com/herd/herdtools7/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/herd/herdtools7/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CeCILL-B"
 SLOT="0"
