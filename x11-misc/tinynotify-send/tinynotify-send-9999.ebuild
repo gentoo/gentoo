@@ -1,48 +1,41 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit git-r3
-#endif
-
-inherit autotools-utils
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
+inherit autotools git-r3
 
 DESCRIPTION="A notification sending utility (using libtinynotify)"
-HOMEPAGE="https://bitbucket.org/mgorny/tinynotify-send/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="app-eselect/eselect-notify-send
 	x11-libs/libtinynotify:0=
 	~x11-libs/libtinynotify-cli-${PV}"
 DEPEND="${RDEPEND}
+	dev-util/gtk-doc
 	virtual/pkgconfig"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-DEPEND="${DEPEND}
-	dev-util/gtk-doc"
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		--disable-library
 		--enable-regular
 		--disable-system-wide
 		--with-system-wide-exec=/usr/bin/sw-notify-send
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
 
 pkg_postinst() {

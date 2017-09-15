@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 eutils readme.gentoo
 
 DESCRIPTION="Rope in Emacs"
-HOMEPAGE="http://rope.sourceforge.net/ropemacs.html
+HOMEPAGE="https://github.com/python-rope/ropemacs
 	https://pypi.python.org/pypi/ropemacs"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

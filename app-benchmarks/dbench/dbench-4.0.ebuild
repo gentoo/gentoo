@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=5
 
@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.samba.org/pub/tridge/dbench/${P}.tar.gz"
 HOMEPAGE="http://samba.org/ftp/tridge/dbench/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm64 hppa ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-libs/popt"

@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eutils fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator
+inherit autotools eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}"
 WDC_V="20150204"
 WINE_DESKTOP_COMMON_P="wine-desktop-common-${WDC_V}"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://github.com/NP-Hardass/wine-desktop-common/archive/${WDC_V}.tar.gz -> ${WINE_DESKTOP_COMMON_P}.tar.gz
@@ -50,6 +50,7 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -117,7 +118,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.0 )
+	mono? ( app-emulation/wine-mono:4.7.1 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -374,6 +375,7 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
+		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
@@ -445,8 +447,8 @@ multilib_src_install_all() {
 	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine64{,-preloader}
 
 	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym "${MY_PREFIX}"/bin/wine{64,} # 404331
-		dosym "${MY_PREFIX}"/bin/wine{64,}-preloader
+		dosym wine64 "${MY_PREFIX}"/bin/wine # 404331
+		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
 	fi
 
 	# Failglob for bin and man loops
@@ -477,7 +479,7 @@ pkg_postinst() {
 
 	eselect wine update --all --if-unset || die
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
@@ -503,5 +505,5 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

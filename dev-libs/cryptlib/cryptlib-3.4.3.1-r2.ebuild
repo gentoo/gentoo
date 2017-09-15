@@ -72,6 +72,7 @@ src_prepare() {
 src_compile() {
 	use ldap && append-cppflags -DHAS_LDAP
 	use odbc && append-cppflags -DHAS_ODBC
+	append-cppflags -DHAS_ZLIB
 
 	export DISABLE_AUTODETECT=1
 	emake EXTRA_CFLAGS="${CPPFLAGS} ${CFLAGS}" shared

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 inherit autotools eutils
 
-DESCRIPTION="Library of C++ classes for flexible logging to files, syslog and other destinations"
+DESCRIPTION="C++ classes for flexible logging to files, syslog and other destinations"
 HOMEPAGE="http://log4cpp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

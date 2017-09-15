@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,9 +8,7 @@ PYTHON_REQ_USE="sqlite"
 
 if [[ $PV = *9999* ]]; then
 	scm_eclass=git-2
-	EGIT_REPO_URI="
-		git://github.com/orbeckst/${PN}.git
-		https://github.com/orbeckst/${PN}.git"
+	EGIT_REPO_URI="https://github.com/orbeckst/${PN}.git"
 	SRC_URI=""
 	KEYWORDS=""
 else

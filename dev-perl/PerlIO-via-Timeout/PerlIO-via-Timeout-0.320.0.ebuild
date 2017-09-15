@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="PerlIO layer that adds read & write timeout to a handle"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="

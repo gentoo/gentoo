@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="libressl test"
 
 RDEPEND="
@@ -22,12 +22,13 @@ RDEPEND="
 	libressl? ( dev-libs/libressl )
 	$(python_gen_cond_dep '>=dev-python/cffi-1.4.1:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3 pypy{,3})
-	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
+	>=dev-python/idna-2.1[${PYTHON_USEDEP}]
 	>=dev-python/asn1crypto-0.21.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	virtual/python-ipaddress[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]

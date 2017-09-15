@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ MY_P=${MY_PN}-${PV}
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3
@@ -21,39 +21,39 @@ HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="alsa debug +network +qt4 qt5"
-
-REQUIRED_USE="|| ( qt4 qt5 )"
+IUSE="alsa debug +network qt4"
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
+	>=media-libs/phonon-4.9.0[qt4?,qt5(+)]
 	media-plugins/gst-plugins-meta:1.0[alsa?,ogg,vorbis]
-	>=media-libs/phonon-4.9.0[qt4?,qt5?]
-	qt4? (
-		dev-qt/qtcore:4[glib]
-		dev-qt/qtgui:4[glib]
-		dev-qt/qtopengl:4
-		!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-	)
 	virtual/opengl
 	network? ( media-plugins/gst-plugins-soup:1.0 )
+	qt4? (
+		>=dev-qt/qtcore-4.8.7-r2:4[glib]
+		>=dev-qt/qtgui-4.8.7:4[glib]
+		>=dev-qt/qtopengl-4.8.7:4
+		!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
+	)
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
 pkg_setup() {
-	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
+	if use qt4 && [[ $(gcc-major-version) -lt 5 ]] ; then
+		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
+	fi
+
+	MULTIBUILD_VARIANTS=( $(usev qt4) qt5 )
 }
 
 src_configure() {

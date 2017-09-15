@@ -1,6 +1,20 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
+# missing keyword on dev-python/dbusmock, bug #620024
+>=gnome-base/gnome-settings-daemon-3.24 test
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# package.use.force forces USE=binary, and USE=debug requires !binary,
+# so it can never be enabled.
+sys-firmware/seabios debug
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
 # Jeroen Roovers <jer@gentoo.org> <16 Jan 2017>
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
@@ -32,11 +46,6 @@ dev-java/ant-apache-bsf python
 # no ppc64 support in media-libs/glfw
 app-text/mupdf opengl
 
-# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-lang/luajit lacks ppc64 keyword. See bug #488318.
-media-video/mpv luajit
-
 # Jeroen Roovers <jer@gentoo.org> (26 Dec 2015)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
@@ -51,7 +60,7 @@ dev-qt/qtwebkit webchannel
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keywords
-media-sound/audacity midi
+media-sound/audacity midi soundtouch
 
 # Justin Lecher <jlec@gentoo.org> (16 June 2015)
 # Pending bug upstream, #550818

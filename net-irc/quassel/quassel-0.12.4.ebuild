@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-utils eutils pax-utils systemd user versionator
 
-EGIT_REPO_URI="git://git.quassel-irc.org/quassel"
+EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
 [[ "${PV}" == "9999" ]] && inherit git-r3
 
 DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
@@ -27,7 +27,7 @@ SERVER_RDEPEND="
 	)
 	!qt5? (
 		dev-qt/qtscript:4
-		crypt? ( app-crypt/qca:2[qt4(+),ssl] )
+		crypt? ( app-crypt/qca:2[qt4,ssl] )
 		postgres? ( dev-qt/qtsql:4[postgres] )
 		!postgres? ( dev-qt/qtsql:4[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	)
@@ -39,7 +39,7 @@ GUI_RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 		dbus? (
-			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt5]
+			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt5(+)]
 			dev-qt/qtdbus:5
 		)
 		kde? (
@@ -52,7 +52,7 @@ GUI_RDEPEND="
 			kde-frameworks/kxmlgui:5
 			kde-frameworks/sonnet:5
 		)
-		phonon? ( media-libs/phonon[qt5] )
+		phonon? ( media-libs/phonon[qt5(+)] )
 		snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 		webkit? ( dev-qt/qtwebkit:5 )
 	)
@@ -60,15 +60,14 @@ GUI_RDEPEND="
 		dev-qt/qtgui:4
 		ayatana? ( dev-libs/libindicate-qt )
 		dbus? (
-			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt4(+)]
+			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt4]
 			dev-qt/qtdbus:4
 			kde? (
 				kde-frameworks/kdelibs:4
 				kde-frameworks/oxygen-icons:*
 			)
 		)
-		phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) )
-		webkit? ( dev-qt/qtwebkit:4 )
+		phonon? ( media-libs/phonon[qt4] )
 	)
 "
 
@@ -108,7 +107,7 @@ REQUIRED_USE="
 	qt5? ( !ayatana )
 	snorenotify? ( qt5 || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	webkit? ( || ( X monolithic ) )
+	webkit? ( qt5 || ( X monolithic ) )
 "
 
 pkg_setup() {

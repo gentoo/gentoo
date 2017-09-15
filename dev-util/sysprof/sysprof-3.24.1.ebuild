@@ -15,7 +15,9 @@ IUSE="debug gtk systemd"
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
-	gtk? ( >=x11-libs/gtk+-3.22.0:3 )
+	gtk? (
+		sys-auth/polkit
+		>=x11-libs/gtk+-3.22.0:3 )
 	systemd? (
 		sys-auth/polkit
 		>=sys-apps/systemd-222 )
@@ -35,6 +37,7 @@ pkg_pretend() {
 
 src_configure() {
 	# introspection & vala not use in build system
+	# --with-sysprofd=host currently unavailable from ebuild
 	gnome2_src_configure \
 		$(use_enable debug) \
 		$(use_enable gtk) \

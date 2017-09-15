@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,10 +9,10 @@ SRC_URI="https://www.colm.net/files/ragel/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE="vim-syntax"
 
-DEPEND="dev-util/colm"
+DEPEND="~dev-util/colm-0.13.0.4"
 RDEPEND="${DEPEND}"
 
 src_test() {

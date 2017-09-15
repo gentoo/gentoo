@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,16 +12,26 @@ SRC_URI="mirror://kernel/linux/utils/fs/reiserfs/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.6.25-no_acl.patch"
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+}
 
 src_configure() {
 	append-flags -std=gnu89 #427300
-	econf \
-		--bindir="${EPREFIX}/bin" \
-		--libdir="${EPREFIX}/$(get_libdir)" \
-		--sbindir="${EPREFIX}/sbin" \
+	local myeconfargs=(
+		--bindir="${EPREFIX}/bin"
+		--libdir="${EPREFIX}/$(get_libdir)"
+		--sbindir="${EPREFIX}/sbin"
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

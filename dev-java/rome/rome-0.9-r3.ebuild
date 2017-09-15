@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,8 +12,7 @@ HOMEPAGE="https://rometools.github.io/rome/"
 SRC_URI="mirror://gentoo/${P}-src.zip -> ${P}.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/jdom:0"
 

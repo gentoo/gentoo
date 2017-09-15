@@ -10,7 +10,7 @@ inherit eutils perl-module
 DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~s390 ~sh ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 # embedded=on disables ssl support
 # https://metacpan.org/source/MICHIELB/DBD-mysql-4.036/dbdimp.c#L1886
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 		virtual/perl-Time-HiRes
 	)
 "
-
+PATCHES=( "${FILESDIR}/${DIST_VERSION}-no-dot-inc.patch" )
 src_configure() {
 	if use test; then
 		myconf="${myconf} --testdb=test \

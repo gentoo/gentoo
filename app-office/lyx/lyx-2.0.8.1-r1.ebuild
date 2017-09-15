@@ -51,7 +51,7 @@ RDEPEND="${COMMONDEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-pictures
 		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
-		dev-texlive/texlive-genericextra
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )
 		dev-texlive/texlive-fontsrecommended
 		|| (
 			dev-tex/latex2html
@@ -136,8 +136,8 @@ src_install() {
 	python_fix_shebang "${ED}"/usr/share/${PN}
 
 	if use hunspell ; then
-		dosym /usr/share/myspell /usr/share/lyx/dicts
-		dosym /usr/share/myspell /usr/share/lyx/thes
+		dosym ../myspell /usr/share/lyx/dicts
+		dosym ../myspell /usr/share/lyx/thes
 	fi
 }
 

@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/${RC_SVCNAME}server"
+command_args="${CANNASERVER_OPTS}"
+
+# CANNASERVER_OPTS and CANNASERVER_OWNER is defined in /etc/conf.d/canna
+CANNASERVER_LOGFILE="/var/log/${RC_SVCNAME}/CANNA0msgs"
+
+depend() {
+	use logger
+	need net
+}
+
+start_pre() {
+	if [ "${CANNASERVER_ENABLE_SYSLOG}" = "yes" ]; then
+		command_args="${command_args} -syslog"
+	elif [ -z "${CANNASERVER_OWNER}" ]; then
+		checkpath "${CANNASERVER_LOGFILE}"
+	else
+		checkpath -o "${CANNASERVER_OWNER}" "${CANNASERVER_LOGFILE}"
+		command_args="${command_args} -u ${CANNASERVER_OWNER}"
+	fi
+}
+
+stop() {
+	ebegin "Stopping ${name:-${RC_SVCNAME}}"
+	/usr/sbin/${RC_SVCNAME}kill
+	eend ${?}
+}

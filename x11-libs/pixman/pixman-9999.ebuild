@@ -5,7 +5,7 @@ EAPI=5
 XORG_MULTILIB=yes
 inherit xorg-2
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/pixman"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/pixman.git"
 DESCRIPTION="Low-level pixel manipulation routines"
 
 if [[ $PV != 9999* ]]; then

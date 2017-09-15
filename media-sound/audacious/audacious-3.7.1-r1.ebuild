@@ -48,6 +48,10 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-c++11-throw-in-dtors.patch
+}
+
 src_configure() {
 	if use gtk ;then
 		gtk="--enable-gtk"

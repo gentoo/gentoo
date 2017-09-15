@@ -7,6 +7,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">scantailor/scantailor</remote-id>
-		<remote-id type="sourceforge">scantailor</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+af-packet control-socket cuda debug +detection geoip hardened logrotate lua luajit nflog +nfqueue redis +rules test"
 
+REQUIRED_USE="lua? ( !luajit )"
+
 DEPEND="
 	>=dev-libs/jansson-2.2
 	dev-libs/libpcre

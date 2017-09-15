@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -23,7 +23,7 @@ DEPEND="
 	${RDEPEND}
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/pkginfo[${PYTHON_USEDEP}]' python2_7)
+		dev-python/pkginfo[${PYTHON_USEDEP}]
 	)"
 
 python_prepare_all() {
@@ -38,4 +38,8 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	distutils-r1_python_install_all
+}
+
+python_test() {
+	nosetests || die
 }

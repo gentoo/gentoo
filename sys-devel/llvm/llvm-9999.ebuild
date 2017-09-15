@@ -12,14 +12,17 @@ inherit cmake-utils flag-o-matic git-r3 multilib-minimal pax-utils \
 	python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
+EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
+# Those are in lib/Targets, without explicit CMakeLists.txt mention
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 # Additional licenses:
@@ -32,10 +35,10 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
-SLOT="5"
+SLOT="6"
 KEYWORDS=""
 IUSE="debug +doc gold libedit +libffi ncurses test
-	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
+	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	sys-libs/zlib:0=
@@ -61,7 +64,7 @@ DEPEND="${RDEPEND}
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
-PDEPEND="app-vim/llvm-vim
+PDEPEND="sys-devel/llvm-common
 	gold? ( sys-devel/llvmgold )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -80,9 +83,6 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
-	# support building llvm against musl-libc
-	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
-
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
@@ -99,11 +99,17 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		# disable appending VCS revision to the version to improve
+		# direct cache hit ratio
+		-DLLVM_APPEND_VC_REV=OFF
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DBUILD_SHARED_LIBS=ON
-		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		# cheap hack: LLVM combines both anyway, and the only difference
+		# is that the former list is explicitly verified at cmake time
+		-DLLVM_TARGETS_TO_BUILD=""
+		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		-DLLVM_ENABLE_FFI=$(usex libffi)
@@ -154,11 +160,12 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		[[ -x "/usr/bin/llvm-tblgen" ]] \
-			|| die "/usr/bin/llvm-tblgen not found or usable"
+		local tblgen="${EPREFIX}/usr/lib/llvm/${SLOT}/bin/llvm-tblgen"
+		[[ -x "${tblgen}" ]] \
+			|| die "${tblgen} not found or usable"
 		mycmakeargs+=(
 			-DCMAKE_CROSSCOMPILING=ON
-			-DLLVM_TABLEGEN=/usr/bin/llvm-tblgen
+			-DLLVM_TABLEGEN="${tblgen}"
 		)
 	fi
 

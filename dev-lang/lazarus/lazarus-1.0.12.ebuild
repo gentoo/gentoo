@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,9 +13,9 @@ SLOT="0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 KEYWORDS="amd64 ppc x86"
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi"
-HOMEPAGE="http://www.lazarus.freepascal.org/"
+HOMEPAGE="https://www.lazarus.freepascal.org/"
 IUSE="minimal"
-SRC_URI="http://downloads.sourceforge.net/project/${PN}/Lazarus%20Zip%20_%20GZip/Lazarus%20${PV}/${PN}-${PV}-0.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/Lazarus%20Zip%20_%20GZip/Lazarus%20${PV}/${PN}-${PV}-0.tar.gz"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
 	net-misc/rsync

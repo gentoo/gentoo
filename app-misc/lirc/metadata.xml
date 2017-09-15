@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
     <maintainer type="person">
-        <email>candrews@integralblue.com</email>
+        <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
-        <description>Proxied maintainer; set to assignee in all bugs</description>
-    </maintainer>
-    <maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
     </maintainer>
     <use>
+        <flag name="uinput">Enable support for uinput</flag>
+        <flag name="devinput">Support the devinput input device</flag>
         <flag name="hardware-carrier">The transmitter device generates its clock signal in hardware</flag>
         <flag name="transmitter">Add transmitter support to some lirc-drivers (e.g. serial)</flag>
         <flag name="inputlirc">Add a dependency on app-misc/inputlircd</flag>

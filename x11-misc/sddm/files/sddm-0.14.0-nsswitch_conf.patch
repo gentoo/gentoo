@@ -1,0 +1,27 @@
+From 1f39c7a91ea4bc9527628adb01cb49173f1e68be Mon Sep 17 00:00:00 2001
+From: Palo Kisa <palo.kisa@gmail.com>
+Date: Fri, 9 Jun 2017 10:13:01 +0200
+Subject: [PATCH] UserModel: Check for duplicates from getpwent()
+
+---
+ src/greeter/UserModel.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/greeter/UserModel.cpp b/src/greeter/UserModel.cpp
+index 94c492d0..33114d08 100644
+--- a/src/greeter/UserModel.cpp
++++ b/src/greeter/UserModel.cpp
+@@ -72,6 +72,13 @@ namespace SDDM {
+             if (mainConfig.Users.HideShells.get().contains(QString::fromLocal8Bit(current_pw->pw_shell)))
+                 continue;
+ 
++            // skip duplicates
++            // Note: getpwent() makes no attempt to suppress duplicate information
++            // if multiple sources are specified in nsswitch.conf(5).
++            if (d->users.cend()
++                != std::find_if(d->users.cbegin(), d->users.cend(), [current_pw](const UserPtr & u) { return u->uid == current_pw->pw_uid; }))
++                continue;
++
+             // create user
+             UserPtr user { new User() };
+             user->name = QString::fromLocal8Bit(current_pw->pw_name);

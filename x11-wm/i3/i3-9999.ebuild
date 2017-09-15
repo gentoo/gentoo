@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ EAPI=6
 inherit autotools git-r3
 
 DESCRIPTION="An improved dynamic tiling window manager"
-HOMEPAGE="http://i3wm.org/"
+HOMEPAGE="https://i3wm.org/"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/i3/i3"
+EGIT_REPO_URI="https://github.com/i3/i3"
 EGIT_BRANCH="next"
 
 LICENSE="BSD"
@@ -36,6 +36,10 @@ RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-musl-GLOB_TILDE.patch"
+)
 
 src_prepare() {
 	default

@@ -13,7 +13,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="test"
 
 RDEPEND="
-	>=virtual/perl-ExtUtils-Command-1.160.0
 	>=virtual/perl-ExtUtils-Install-1.520.0
 	>=virtual/perl-ExtUtils-Manifest-1.700.0
 	>=virtual/perl-File-Spec-0.800.0

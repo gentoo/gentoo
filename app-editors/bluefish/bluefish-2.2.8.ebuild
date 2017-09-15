@@ -19,7 +19,6 @@ SLOT="0"
 IUSE="gtk2 +gtk3 gucharmap nls python spell"
 
 RDEPEND="
-	gnome-extra/gucharmap:2.90
 	sys-libs/zlib
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )

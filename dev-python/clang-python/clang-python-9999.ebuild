@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit git-r3 python-r1
 
 DESCRIPTION="Python bindings for sys-devel/clang"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/clang.git
+EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
 LICENSE="UoI-NCSA"
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
 RDEPEND="
-	>=sys-devel/clang-${PV}
+	>=sys-devel/clang-${PV}:*
 	!sys-devel/llvm:0[clang(-),python(-)]
 	!sys-devel/clang:0[python(-)]
 	${PYTHON_DEPS}"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}/bindings/python
 
 src_test() {
-	python_foreach_impl nosetests -v
+	python_foreach_impl nosetests -v || die
 }
 
 src_install() {

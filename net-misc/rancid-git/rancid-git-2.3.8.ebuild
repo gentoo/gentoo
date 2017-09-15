@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit autotools eutils readme.gentoo user
 
-DESCRIPTION="Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!"
+DESCRIPTION="New Cisco confIg Differ with git extensions and support for colorized emails!"
 HOMEPAGE="https://dotwaffle.github.com/rancid-git"
 #SRC_URI="ftp://ftp.shrubbery.net/pub/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/dotwaffle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"

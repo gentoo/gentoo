@@ -10,7 +10,7 @@ MY_P="Python-${PV}"
 PATCHSET_VERSION="2.7.13-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
-HOMEPAGE="http://www.python.org/"
+HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 

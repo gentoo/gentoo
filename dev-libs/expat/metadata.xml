@@ -5,6 +5,10 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 		<name>Gentoo Freedesktop Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libexpat:expat</remote-id>
 		<remote-id type="sourceforge">expat</remote-id>

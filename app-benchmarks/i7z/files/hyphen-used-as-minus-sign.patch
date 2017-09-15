@@ -1,0 +1,26 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix hyphen abuse
+
+--- a/doc/i7z.man
++++ b/doc/i7z.man
+@@ -7,15 +7,15 @@
+ i7z runs the i7z, ncurses based, program without any options. i7z will print out the C-states and temperature for i3, i5 and i7 based Core processors from Intel (including Nehalems, Sandy Bridge and Ivy Bridge). 
+ .SH OPTIONS
+ .TP
+-\fB-h, --help \fPshow the list of options available with the i7z tool.
++\fB\-h, \-\-help \fPshow the list of options available with the i7z tool.
+ .TP
+-\fB-w  [a|l],  --write  [a,l] \fPLogging of the frequencies can be turned on with this options. Option "-w a" or "--write a" will append to the  log file. Option "-w l" or "--write l" will replace the log file.
++\fB\-w  [a|l],  \-\-write  [a,l] \fPLogging of the frequencies can be turned on with this options. Option "\-w a" or "\-\-write a" will append to the  log file. Option "\-w l" or "\-\-write l" will replace the log file.
+ .TP
+-\fB-l,  --logfile  [FILENAME] \fPChange  the  log file name to the specified FILENAME. Default logging file is cpu_freq_log.txt (single  socket) or cpu_freq_log_dual%d.txt (dual socket, %d is either 0, 1).
++\fB\-l,  \-\-logfile  [FILENAME] \fPChange  the  log file name to the specified FILENAME. Default logging file is cpu_freq_log.txt (single  socket) or cpu_freq_log_dual%d.txt (dual socket, %d is either 0, 1).
+ .TP
+-\fB--socket0  [SOCKETNUM], --socket1 [SOCKETNUM] \fPThe tool can print information for about 2 sockets at once at the most. The top view  will  be, by  default, of the first socket (controlled by --socket0) and the bottom view will be of the second socket (controlled by --socket1). Supply the appropriate value of 0 or 1 or more for SOCKETNUM (if there are more sockets on the machine) to show in the top and bottom view.
++\fB\-\-socket0  [SOCKETNUM], \-\-socket1 [SOCKETNUM] \fPThe tool can print information for about 2 sockets at once at the most. The top view  will  be, by  default, of the first socket (controlled by \-\-socket0) and the bottom view will be of the second socket (controlled by \-\-socket1). Supply the appropriate value of 0 or 1 or more for SOCKETNUM (if there are more sockets on the machine) to show in the top and bottom view.
+ .TP
+-\fB--nogui \fPDisable the GUI. Useful when the only need is logging.
++\fB\-\-nogui \fPDisable the GUI. Useful when the only need is logging.
+ .SH Example
+ To print for two sockets and also change the log file (log to /tmp/logfilei7z)
+ 

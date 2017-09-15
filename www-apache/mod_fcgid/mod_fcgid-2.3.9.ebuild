@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit apache-module eutils multilib
 
-DESCRIPTION="mod_fcgid is a binary-compatible alternative to mod_fastcgi with better process management"
+DESCRIPTION="Binary-compatible alternative to mod_fastcgi with better process management"
 HOMEPAGE="https://httpd.apache.org/mod_fcgid/"
 SRC_URI="mirror://apache/httpd/mod_fcgid/${P}.tar.bz2"
 

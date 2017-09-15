@@ -88,6 +88,7 @@ RDEPEND="${PYTHON_DEPS}
 	"
 
 DEPEND="${RDEPEND}
+	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
 	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig

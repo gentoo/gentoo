@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ HOMEPAGE="http://forge.ocamlcore.org/projects/cryptokit/"
 SRC_URI="http://forge.ocamlcore.org/frs/download.php/1618/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86-fbsd"
 IUSE="zlib"
 
 DEPEND="zlib? ( >=sys-libs/zlib-1.1 )
@@ -21,6 +21,7 @@ DEPEND="zlib? ( >=sys-libs/zlib-1.1 )
 RDEPEND="${DEPEND}"
 
 DOCS=( "Changes" "README.txt" "AUTHORS.txt" )
+REQUIRED_USE="test? ( ocamlopt )"
 
 src_configure() {
 	oasis_configure_opts="$(use_enable zlib)" \

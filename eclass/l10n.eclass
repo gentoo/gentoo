@@ -3,6 +3,8 @@
 
 # @ECLASS: l10n.eclass
 # @MAINTAINER:
+# Ulrich Müller <ulm@gentoo.org>
+# @AUTHOR:
 # Ben de Groot <yngwin@gentoo.org>
 # @BLURB: convenience functions to handle localizations
 # @DESCRIPTION:

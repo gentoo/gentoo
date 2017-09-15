@@ -5,7 +5,7 @@ EAPI="2"
 
 MY_PN="LinuxCupsPrinterPkg"
 
-DESCRIPTION="PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system"
+DESCRIPTION="PPD files for XEROX CopyCentre, DocuPrint, Phaser, WorkCentre (for CUPS)"
 HOMEPAGE="http://www.support.xerox.com/go/getfile.asp?objid=61334&prodID=6180"
 SRC_URI="http://download.support.xerox.com/pub/drivers/DocuColor_2006/drivers/unix/en/${MY_PN}.tar.gz"
 

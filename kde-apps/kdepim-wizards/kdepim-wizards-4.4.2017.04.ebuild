@@ -5,13 +5,14 @@ EAPI=6
 
 KMNAME="kdepim"
 KMMODULE="wizards"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="KDE PIM wizards (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
 IUSE="debug"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	$(add_kdeapps_dep kdepim-kresources)
@@ -31,10 +32,10 @@ KMEXTRACTONLY="
 "
 
 src_prepare() {
-	ln -s "${EKDEDIR}"/include/kdepim-kresources/{kabcsloxprefs.h,kcalsloxprefs.h} \
+	ln -s "${EPREFIX}"/usr/include/kdepim-kresources/{kabcsloxprefs.h,kcalsloxprefs.h} \
 		kresources/slox/ \
 		|| die "Failed to link extra_headers."
-	ln -s "${EKDEDIR}"/include/kdepim-kresources/{kabc_groupwiseprefs,kcal_groupwiseprefsbase}.h \
+	ln -s "${EPREFIX}"/usr/include/kdepim-kresources/{kabc_groupwiseprefs,kcal_groupwiseprefsbase}.h \
 		kresources/groupwise/ \
 		|| die "Failed to link extra_headers."
 

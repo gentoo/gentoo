@@ -85,8 +85,6 @@ src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
-	# disarm implicit -flto
-	eapply "${FILESDIR}"/5.7.1-kill-flto.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -94,7 +92,8 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	eapply "${FILESDIR}"/5.7.1_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/5.8.0_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
 	eapply_user
@@ -240,7 +239,8 @@ src_install() {
 #    "resource": "_resource_build.py" if sys.platform != "win32" else None,
 #    "lzma": "_lzma_build.py",
 #    "_decimal": "_decimal_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal )
+#    "ssl": "_ssl_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )

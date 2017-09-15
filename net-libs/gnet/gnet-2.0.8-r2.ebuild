@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit autotools eutils gnome2
 
 DESCRIPTION="A simple network library"
-HOMEPAGE="https://live.gnome.org/GNetLibrary"
+HOMEPAGE="https://wiki.gnome.org/Projects/GNetLibrary"
 
 LICENSE="LGPL-2"
 SLOT="2"

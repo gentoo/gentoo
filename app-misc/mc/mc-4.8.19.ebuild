@@ -8,7 +8,7 @@ inherit autotools eutils flag-o-matic
 MY_P=${P/_/-}
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="http://www.midnight-commander.org"
+HOMEPAGE="https://www.midnight-commander.org"
 SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"

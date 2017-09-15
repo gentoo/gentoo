@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A terminal anywhere"
-HOMEPAGE="http://anyterm.org/"
-SRC_URI="http://anyterm.org/download/${P}.tbz2"
+HOMEPAGE="https://anyterm.org/"
+SRC_URI="https://anyterm.org/download/${P}.tbz2"
 
 LICENSE="GPL-2 Boost-1.0"
 SLOT="0"
@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.28-respect-LDFLAGS.patch"
 	"${FILESDIR}/${P}-gcc-4.4.patch"
 	"${FILESDIR}/${P}-boost-1.50.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
 )
 
 src_prepare() {
@@ -50,5 +51,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "To proceed with installation, read the following:"
-	elog "http://anyterm.org/1.1/install.html"
+	elog "https://anyterm.org/install.html"
 }

@@ -36,4 +36,5 @@ PDEPEND="
 	>=dev-perl/LWP-Protocol-https-6.20.0
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.720.0-no-ssl3.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.720.0-no-ssl3.patch
+	  "${FILESDIR}/${P}-no-dot-inc.patch" )

@@ -1,0 +1,315 @@
+diff -Nur skycat-3.1.3.orig/astrotcl/library/AstrotclInit.tcl skycat-3.1.3/astrotcl/library/AstrotclInit.tcl
+--- skycat-3.1.3.orig/astrotcl/library/AstrotclInit.tcl	2017-08-10 16:18:22.100000000 +0000
++++ skycat-3.1.3/astrotcl/library/AstrotclInit.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -11,7 +11,7 @@
+ # pbiereic     24/08/99    created
+ # abrighto     21/12/05    updated for new version
+ 
+-if {![lcontain $auto_path $astrotcl_library]} {
++if { $auto_path ni $astrotcl_library } {
+     lappend auto_path $astrotcl_library
+ }
+ 
+diff -Nur skycat-3.1.3.orig/cat/library/AstroCat.tcl skycat-3.1.3/cat/library/AstroCat.tcl
+--- skycat-3.1.3.orig/cat/library/AstroCat.tcl	2017-08-10 16:18:22.110000000 +0000
++++ skycat-3.1.3/cat/library/AstroCat.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -145,7 +145,7 @@
+ 	    return
+ 	}
+ 	if {"$onoff" == "on"} {
+-	    lassign [pipe] rfd_ wfd_
++	    lassign [chan pipe] rfd_ wfd_
+ 	    fileevent $rfd_ readable [code $this feedback]
+ 	    $w_.cat feedback $wfd_
+ 	} elseif {[info exists rfd_]} {
+diff -Nur skycat-3.1.3.orig/cat/library/AstroImage.tcl skycat-3.1.3/cat/library/AstroImage.tcl
+--- skycat-3.1.3.orig/cat/library/AstroImage.tcl	2017-08-10 16:18:22.110000000 +0000
++++ skycat-3.1.3/cat/library/AstroImage.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -401,7 +401,7 @@
+ 	    return
+ 	}
+ 	if {"$onoff" == "on"} {
+-	    lassign [pipe] rfd_ wfd_
++	    lassign [chan pipe] rfd_ wfd_
+ 	    fileevent $rfd_ readable [code $this feedback]
+ 	    $w_.im feedback $wfd_
+ 	} elseif {[info exists rfd_]} {
+diff -Nur skycat-3.1.3.orig/cat/library/CatInit.tcl skycat-3.1.3/cat/library/CatInit.tcl
+--- skycat-3.1.3.orig/cat/library/CatInit.tcl	2017-08-10 16:18:22.110000000 +0000
++++ skycat-3.1.3/cat/library/CatInit.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -12,7 +12,7 @@
+ 
+ package require img::xpm
+ 
+-if {![lcontain $auto_path $cat_library]} {
++if { $auto_path ni $cat_library } {
+     lappend auto_path $cat_library
+ }
+ 
+diff -Nur skycat-3.1.3.orig/rtd/library/RtdImageBias.tcl skycat-3.1.3/rtd/library/RtdImageBias.tcl
+--- skycat-3.1.3.orig/rtd/library/RtdImageBias.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/RtdImageBias.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -10,6 +10,12 @@
+ 
+ itk::usual RtdImageBias {}
+ 
++# see http://wiki.tcl.tk/2028
++proc lvarpush {var val {ndx end}} {
++  upvar $var args
++  set args [linsert $args $ndx $val]
++}
++
+ # RtdImageBias is a class for controlling the subtraction of
+ # a bias frame.
+ 
+diff -Nur skycat-3.1.3.orig/rtd/library/RtdImageFitsHeader.tcl skycat-3.1.3/rtd/library/RtdImageFitsHeader.tcl
+--- skycat-3.1.3.orig/rtd/library/RtdImageFitsHeader.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/RtdImageFitsHeader.tcl	2017-08-10 17:41:35.500000000 +0000
+@@ -11,6 +11,8 @@
+ # pbiereic    17/02/03   fixed problems with tabnotebook, packing order
+ #                        and labels of tabsets
+ 
++package require Tclutil
++
+ itk::usual RtdImageFitsHeader {}
+ 
+ # RtdImageFitsHeader is an itcl widget for displaying the FITS header of all
+@@ -156,7 +158,7 @@
+ 	set tconfig_(sort_cols) $sort_cols
+ 	set tconfig_(sort_order) $sort_order
+ 
+-	loop i 0 $num_hdus_ {
++	for {set i 0} {$i < $num_hdus_} {incr i} {
+             $tabnotebook_(table$i) config -sort_cols $sort_cols \
+ 		    -sort_order $sort_order
+ 	    $tabnotebook_(table$i) new_info
+@@ -169,7 +171,7 @@
+ 	global $var
+ 	set val [set $var]
+ 	set tconfig_($label) $val
+-	loop i 0 $num_hdus_ {
++	for {set i 0} {$i < $num_hdus_} {incr i} {
+ 	    $tabnotebook_(table$i) set_option $label Show $val
+ 	    $tabnotebook_(table$i) new_info
+ 	}
+@@ -216,7 +218,7 @@
+ 
+ 	set length [string length [$listbox get 0]]
+ 
+-        loop n $start_idx $end_idx {
++        for {set n $start_idx} {$n < $end_idx} {incr n} {
+ 	    set row [string tolower [$listbox get $n]]
+             if {[catch {regexp -indices $string $row indices} idx] } { continue }
+ 	    if { $idx > 0 } {
+@@ -274,7 +276,7 @@
+ 	set hlist [$image_ hdu list]
+ 
+ 	set ExtName "HDU 1"
+-	loop i 0 $hdu_count {
++	for {set i 0} {$i < $hdu_count} {incr i} {
+ 	    set hdu [expr {$i + 1}]
+ 	    set list [lindex $hlist $i]
+ 	    
+diff -Nur skycat-3.1.3.orig/rtd/library/RtdImageHduChooser.tcl skycat-3.1.3/rtd/library/RtdImageHduChooser.tcl
+--- skycat-3.1.3.orig/rtd/library/RtdImageHduChooser.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/RtdImageHduChooser.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -16,6 +16,7 @@
+ # pbiereic        11/10/08   Break image display loop after failure.
+ # pbiereic        26/11/08   Using 'view update' for HDU images display.
+ #                            Using a toplevel window for the HDU images display.
++package require Tclutil
+ 
+ itk::usual RtdImageHduChooser {}
+ 
+@@ -426,7 +427,7 @@
+     
+     private method svinfo {} {
+ 	set list [array get ext_ *NAXIS*]
+-	loop i 0 [llength $list] 2 {
++	for {set i 0} {$i < [llength $list]} {incr i 2} {
+ 	    lappend newlist "[lindex $list $i] [lindex $list [expr {$i+1}]]"
+ 	}
+ 	set newlist [lsort -increasing -index 0 $newlist]
+diff -Nur skycat-3.1.3.orig/rtd/library/RtdImagePerf.tcl skycat-3.1.3/rtd/library/RtdImagePerf.tcl
+--- skycat-3.1.3.orig/rtd/library/RtdImagePerf.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/RtdImagePerf.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -9,6 +9,7 @@
+ # D. Hopkinson    31 Jan 97  Created
+ # P.Biereichel    21/07/97   % display is the default + some bug fixes
+ # P.Biereichel    01/03/01   Only % display suported + code revised
++package require Tclutil
+ 
+ itk::usual RtdImagePerf {}
+ 
+diff -Nur skycat-3.1.3.orig/rtd/library/RtdImagePick2.tcl skycat-3.1.3/rtd/library/RtdImagePick2.tcl
+--- skycat-3.1.3.orig/rtd/library/RtdImagePick2.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/RtdImagePick2.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -62,6 +62,7 @@
+ # NOTES
+ # - In contrast to RtdImagePick, RtdImagePick2 does not use tkwait which may
+ #   cause problem for an inheriting class due to nested calls to tkwait.
++package require Tclutil
+ 
+ itk::usual RtdImagePick2 { }
+ 
+@@ -127,7 +128,7 @@
+ 		{Set the magnification factor of the zoom} \
+ 		-menu [menu $magMenu_]
+ 
+-	loop i 2 31 {
++	for {set i 2} {$i < 31} {incr i} {
+ 	    $m.mag add radiobutton -label " ${i}x" \
+ 		    -command [code $this scaleZoom $i] \
+ 		    -variable $magMenu_
+diff -Nur skycat-3.1.3.orig/rtd/library/RtdInit.tcl skycat-3.1.3/rtd/library/RtdInit.tcl
+--- skycat-3.1.3.orig/rtd/library/RtdInit.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/RtdInit.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -10,7 +10,7 @@
+ # --------     ---------   ----------------------------------------------
+ # pbiereic     24/08/99    created
+ 
+-if {![lcontain $auto_path $rtd_library]} {
++if { $auto_path ni $rtd_library} {
+     lappend auto_path $rtd_library
+ }
+ 
+diff -Nur skycat-3.1.3.orig/rtd/library/Rtd.tcl skycat-3.1.3/rtd/library/Rtd.tcl
+--- skycat-3.1.3.orig/rtd/library/Rtd.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/Rtd.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -650,7 +650,7 @@
+ 	set t6 "Tcl version:\t[info patchlevel]"
+ 	set t7 "Tcl package path:\t$tcl_pkgPath"
+ 	set t8 "Package versions:\t"
+-	foreach el "Tclx Itcl Itk Tkx BLT" {
++	foreach el "Itcl Itk BLT" {
+ 	    set t8 "$t8$el[package versions $el] "
+ 	}
+         DialogWidget $w_.rtd_about \
+diff -Nur skycat-3.1.3.orig/rtd/library/tRtd.tcl skycat-3.1.3/rtd/library/tRtd.tcl
+--- skycat-3.1.3.orig/rtd/library/tRtd.tcl	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/library/tRtd.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -10,6 +10,7 @@
+ # who             when       what
+ # --------------  ---------  ----------------------------------------
+ # pbiereic        01/03/01   Created
++package require Tclutil
+ 
+ itk::usual tRtd {}
+ 
+diff -Nur skycat-3.1.3.orig/rtd/util/rmipc.tcl skycat-3.1.3/rtd/util/rmipc.tcl
+--- skycat-3.1.3.orig/rtd/util/rmipc.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/rtd/util/rmipc.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -20,7 +20,7 @@
+     }
+     set f [open "|ipcs $opt"]
+     while {[gets $f line] != -1} {
+-        if { ![lcontain $line $env(USER)]} { continue }
++        if { $line ni $env(USER) } { continue }
+ 	set num [lindex $line 1]
+ 	if {![catch {expr $num}]} {
+ 	    if {[catch {exec ipcrm $opt $num} msg]} {
+diff -Nur skycat-3.1.3.orig/skycat/library/SkycatInit.tcl skycat-3.1.3/skycat/library/SkycatInit.tcl
+--- skycat-3.1.3.orig/skycat/library/SkycatInit.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/skycat/library/SkycatInit.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -12,9 +12,11 @@
+ 
+ package require img::xpm
+ 
+-if {![lcontain $auto_path $skycat_library]} {
++if { $auto_path ni $skycat_library } {
+     lappend auto_path $skycat_library
+ }
+ 
+ namespace eval skycat {namespace export *}
+ namespace import -force skycat::*
++namespace import ::tcl::mathfunc::max
++namespace import ::tcl::mathfunc::min
+diff -Nur skycat-3.1.3.orig/tclutil/library/Batch.tcl skycat-3.1.3/tclutil/library/Batch.tcl
+--- skycat-3.1.3.orig/tclutil/library/Batch.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/tclutil/library/Batch.tcl	2017-08-10 17:40:54.160000000 +0000
+@@ -15,6 +15,8 @@
+ # --------   ---------   ----------------------------------------------
+ # A.Brighton 20 Dec 95   created
+ 
++package require Expect
++
+ itk::usual Batch {}
+ 
+ # This class is used to evaluate a set of Tcl commands in a separate
+@@ -55,7 +57,7 @@
+ 	}
+ 	flush stdout
+ 	flush stderr
+-	pipe rfd wfd
++	lassign [chan pipe] rfd wfd
+ 	set pid [fork]
+ 	if {$pid == 0} {
+ 	    # child
+@@ -65,7 +67,7 @@
+ 	    close $fd
+ 	    puts $wfd $status
+ 	    close $wfd
+-	    kill [pid]
++	    kill [pid] 9
+ 	} else {
+ 	    set bg_pid_ $pid
+ 	    fileevent $rfd readable [code $this read_pipe $rfd $wfd]
+diff -Nur skycat-3.1.3.orig/tclutil/library/canvastext.tcl skycat-3.1.3/tclutil/library/canvastext.tcl
+--- skycat-3.1.3.orig/tclutil/library/canvastext.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/tclutil/library/canvastext.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -21,7 +21,7 @@
+ proc ct_search_forward_char {canvas item char} {
+     if {![lempty $item]} {
+ 	set text [lindex [$canvas itemconfigure $item -text] 4]
+-	loop i [$canvas index $item insert] [$canvas index $item end] {
++	for {set i [$canvas index $item insert]} {$i < [$canvas index $item end]} {incr i} {
+ 	    if {$char == [string index $text $i]} {
+ 		return $i
+ 	    }
+@@ -37,7 +37,7 @@
+ proc ct_search_backward_char {canvas item char} {
+     if {![lempty $item]} {
+ 	set text  [lindex [$canvas itemconfigure $item -text] 4]
+-	loop i [expr {[$canvas index $item insert] - 1}] 0 -1 {
++	for {set i [expr {[$canvas index $item insert] - 1}]} {$i > 0} {decr i} {
+ 	    if {$char == [string index $text $i]} {
+ 		return $i
+ 	    }
+diff -Nur skycat-3.1.3.orig/tclutil/library/itcldoc.tcl skycat-3.1.3/tclutil/library/itcldoc.tcl
+--- skycat-3.1.3.orig/tclutil/library/itcldoc.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/tclutil/library/itcldoc.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -36,7 +36,6 @@
+ # A.Brighton 07 Jan 98   created
+ 
+ package require Itcl
+-package require Tclx
+ 
+ itcl::class ItclDoc {
+ 
+diff -Nur skycat-3.1.3.orig/tclutil/library/list.tcl skycat-3.1.3/tclutil/library/list.tcl
+--- skycat-3.1.3.orig/tclutil/library/list.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/tclutil/library/list.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -50,3 +50,9 @@
+     }
+     return $l
+ }
++
++proc lempty {list} {
++    if {[catch {llength $list} len]} { return 0 }
++    return [expr {$len == 0}]
++}
++
+diff -Nur skycat-3.1.3.orig/tclutil/library/TclutilInit.tcl skycat-3.1.3/tclutil/library/TclutilInit.tcl
+--- skycat-3.1.3.orig/tclutil/library/TclutilInit.tcl	2017-08-10 16:18:22.130000000 +0000
++++ skycat-3.1.3/tclutil/library/TclutilInit.tcl	2017-08-10 17:38:25.850000000 +0000
+@@ -16,9 +16,8 @@
+ 
+ package require Itcl
+ package require Itk
+-package require Tclx
+ 
+-if {![lcontain $auto_path $tclutil_library]} {
++if {$auto_path ni $tclutil_library} {
+     lappend auto_path $tclutil_library
+ }
+ 

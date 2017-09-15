@@ -67,24 +67,3 @@ diff -urN slurm-16.05.2.orig/src/Makefile.am slurm-16.05.2/src/Makefile.am
  
  if !REAL_BG_L_P_LOADED
  SUBDIRS += srun
-diff -urN slurm-16.05.2.orig/src/Makefile.in slurm-16.05.2/src/Makefile.in
---- slurm-16.05.2.orig/src/Makefile.in	2016-07-07 02:51:37.000000000 +0300
-+++ slurm-16.05.2/src/Makefile.in	2016-07-15 20:02:41.373270765 +0300
-@@ -199,7 +199,7 @@
- DIST_SUBDIRS = api bcast common database db_api layouts plugins sacct \
- 	sacctmgr salloc sattach sbatch sbcast scancel scontrol sdiag \
- 	sinfo slurmctld slurmd slurmdbd smap smd sprio squeue sreport \
--	srun_cr sshare sstat strigger sview srun
-+	srun_cr sshare sstat strigger srun
- am__DIST_COMMON = $(srcdir)/Makefile.in
- DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
- am__relativize = \
-@@ -487,7 +487,7 @@
- SUBDIRS = api bcast common database db_api layouts plugins sacct \
- 	sacctmgr salloc sattach sbatch sbcast scancel scontrol sdiag \
- 	sinfo slurmctld slurmd slurmdbd smap smd sprio squeue sreport \
--	srun_cr sshare sstat strigger sview $(am__append_1)
-+	srun_cr sshare sstat strigger  $(am__append_1)
- all: all-recursive
- 
- .SUFFIXES:

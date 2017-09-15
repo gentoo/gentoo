@@ -1,5 +1,5 @@
---- meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp~	2014-02-07 10:38:29.000000000 +0100
-+++ meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp	2015-11-16 00:07:34.868113218 +0100
+--- a/meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp	2014-02-07 10:38:29.000000000 +0100
++++ b/meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp	2015-11-16 00:07:34.868113218 +0100
 @@ -55,7 +55,11 @@
  
  void RenderRFX::initActionList()

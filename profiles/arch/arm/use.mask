@@ -5,6 +5,10 @@
 -cpu_flags_arm_iwmmxt
 -iwmmxt
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # Dependencies not keyworded
 ayatana
@@ -32,10 +36,6 @@ clamav
 # Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
 # cblas-external as virtual/cblas is also masked
 cblas-external
-
-# Samuli Suominen <ssuominen@gentoo.org> (17 Oct 2009)
-# Required package: media-sound/musepack-tools
-musepack
 
 # Raúl Porcel <armin76@gentoo.org>
 # I've been told xfs is broken on ARM
@@ -66,8 +66,6 @@ xindy
 lyx
 lasi
 hardened
-frei0r
-libvirt
 pdfannotextractor
 prelude
 mssql
@@ -80,23 +78,19 @@ lirc
 lm_sensors
 xemacs
 scanner
-fluidsynth
 sid
 mms
 mtp
 ieee1394
 pm-utils
 darcs
-toolame
 ggi
 nut
 fits
 tokyocabinet
 vaapi
-rtmp
 lpsol
 upnp
-libtar
 devil
 gts
 anthy

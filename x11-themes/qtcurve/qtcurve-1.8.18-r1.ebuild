@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-remove_qt_filedialog_api.patch"
 	"${FILESDIR}/${P}-gtk2_segfault.patch"
 	"${FILESDIR}/${P}-std_isnan.patch"
+	"${FILESDIR}/${P}-glibc-2.23.patch"
 	)
 
 pkg_setup() {

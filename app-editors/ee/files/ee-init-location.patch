@@ -1,0 +1,40 @@
+--- a/ee.1
++++ b/ee.1
+@@ -406,7 +406,7 @@
+ .PP
+ Since different users have different preferences, \fIee\fR allows some 
+ slight configurability.  There are three possible locations for an 
+-initialization file for ee:  the file \fI/usr/local/lib/init.ee\fR, the 
++initialization file for ee:  the file \fI/usr/share/ee/init.ee\fR, the 
+ file \fI.init.ee\fR in the user's home directory, or the file \fI.init.ee\fR 
+ in the current directory (if different from the home 
+ directory).  This allows system administrators to set some preferences for 
+@@ -414,7 +414,7 @@
+ and the user to customize settings for particular directories (like one 
+ for correspondence, and a different directory for programming).
+ .PP
+-The file \fI\/usr/local/lib/init.ee\fR is read first, then 
++The file \fI\/usr/share/ee/init.ee\fR is read first, then 
+ \fI$HOME/.init.ee\fR, then \fI.init.ee\fR, with the settings specified by the 
+ most recent file read taking precedence.
+ .PP
+@@ -521,7 +521,7 @@
+ may be too slow for slower systems.
+ .SH FILES
+ .PP
+-.I /usr/local/lib/init.ee
++.I /usr/share/ee/init.ee
+ .br
+ .I $HOME/.init.ee
+ .br
+--- a/ee.c
++++ b/ee.c
+@@ -4124,7 +4124,7 @@
+ }
+ 
+ unsigned char *init_name[3] = {
+-	"/usr/local/lib/init.ee", 
++	"/usr/share/ee/init.ee", 
+ 	NULL, 
+ 	".init.ee"
+ 	};

@@ -10,7 +10,7 @@ SRC_URI="mirror://apache/tomcat/tomcat-5/v${PV/_/-}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.4"
-KEYWORDS="~amd64 ~arm ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc source"
 
 DEPEND=">=virtual/jdk-1.5

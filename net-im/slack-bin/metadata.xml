@@ -4,19 +4,18 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-Slack offers persistent chat rooms organized by topic,
-as well as private groups and direct messaging.
-All content inside Slack is searchable, including files, conversations,
-and people.
+	Slack offers persistent chat rooms organized by topic,
+	as well as private groups and direct messaging.
+	All content inside Slack is searchable, including files, conversations,
+	and people.
 	</longdescription>
 	<upstream>
-	<doc>https://get.slack.help/hc/en-us</doc>
+		<doc>https://get.slack.help/hc/en-us</doc>
 	</upstream>
 </pkgmetadata>

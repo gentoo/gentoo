@@ -1,0 +1,236 @@
+From c6836939c6fd603f86f469bb7c6502b28b1ca583 Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 3 Jan 2016 11:53:13 +0800
+Subject: [PATCH 01/07] create user specific directory under /var/run
+
+---
+ src/lxdm.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/lxdm.c b/src/lxdm.c
+index a37f051..d81b587 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -750,7 +750,13 @@ static char ** create_client_auth(struct passwd *pw,char **env)
+ 	if(xauth_write_file(authfile,s->display,s->mcookie)==-1)
+ 	{
+ 		g_free(authfile);
+-		authfile = g_strdup_printf("/var/run/lxdm/.Xauth%d",pw->pw_uid);
++
++		gchar *authdir = g_strdup_printf("/var/run/lxdm/%d", pw->pw_uid);
++		g_mkdir_with_parents(authdir, S_IRWXU);
++		chown(authdir, pw->pw_uid, pw->pw_gid);
++
++		authfile = g_strdup_printf("%s/.Xauthority", authdir);
++		g_free(authdir);
+ 		remove(authfile);
+ 		xauth_write_file(authfile,s->display,s->mcookie);
+ 	}
+-- 
+2.1.4
+
+
+From 7258b57fd305182c6c031eb8c1ded96c5a06f6da Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sat, 20 Feb 2016 22:36:59 +0800
+Subject: [PATCH 02/07] fix build before gtk 2.22
+
+---
+ src/greeter-gdk.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/greeter-gdk.c b/src/greeter-gdk.c
+index 1abbefa..ad3267a 100644
+--- a/src/greeter-gdk.c
++++ b/src/greeter-gdk.c
+@@ -22,6 +22,7 @@
+ 
+ #define XLIB_ILLEGAL_ACCESS
+ 
++#include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ #include <gdk/gdkx.h>
+ #include <gdk/gdkkeysyms.h>
+@@ -88,12 +89,14 @@ static void on_ui_expose(void)
+ 	}
+ 	
+ 	cr=gdk_cairo_create(win);
++#if GTK_CHECK_VERSION(3,0,0)
+ 	cairo_pattern_t *pattern=gdk_window_get_background_pattern(win);
+ 	if(pattern)
+ 	{
+ 		cairo_set_source(cr,pattern);
+ 		cairo_paint(cr);
+ 	}
++#endif
+ 
+ 	gdk_cairo_set_source_color(cr, &bg);
+ 	cairo_rectangle(cr, rc.x, rc.y, rc.width, rc.height);
+-- 
+2.1.4
+
+
+From 5d36a53702f1e60bb316946f1edccb2dbc3c01bd Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 21 Feb 2016 10:45:58 +0800
+Subject: [PATCH 03/07] fix with user_list only: problem when password check
+ fail
+
+---
+ src/greeter.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/greeter.c b/src/greeter.c
+index 10b7f3f..03503b6 100644
+--- a/src/greeter.c
++++ b/src/greeter.c
+@@ -146,7 +146,7 @@ static void switch_to_input_user(void)
+ 		if(user_list_scrolled)
+ 			gtk_widget_show(user_list_scrolled);
+ 		else
+-			gtk_widget_hide(user_list);
++			gtk_widget_show(user_list);
+ 		gtk_widget_grab_focus(user_list);
+ 	}
+ 	else
+-- 
+2.1.4
+
+
+From fe121ce70ad5e99bd3b3b896dfcbe439dd22716c Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 21 Feb 2016 11:45:35 +0800
+Subject: [PATCH 04/07] fix not honor ctl+alt+backspacer for restarting
+
+---
+ src/lxdm.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/lxdm.c b/src/lxdm.c
+index d81b587..e00d219 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -962,6 +962,11 @@ static void on_xserver_stop(void *data,int pid, int status)
+ 		s->dpy=NULL;
+ 		ui_drop();
+ 		lxdm_startx(s);
++		#ifndef DISABLE_XAUTH
++		char temp[256];
++		sprintf(temp,"/var/run/lxdm/lxdm-:%d.auth",s->display);
++		setenv("XAUTHORITY",temp,1);
++		#endif
+ 		ui_prepare();
+ 		lxsession_set_active(s);
+ 	}
+-- 
+2.1.4
+
+
+From 72812894cfd9454d70e4b0753531e46580416771 Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Mon, 21 Mar 2016 19:25:25 +0800
+Subject: [PATCH 05/07] fix css under gtk 3.20
+
+---
+ data/themes/Industrial/gtk.css | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/themes/Industrial/gtk.css b/data/themes/Industrial/gtk.css
+index 179f0d6..f8e6432 100644
+--- a/data/themes/Industrial/gtk.css
++++ b/data/themes/Industrial/gtk.css
+@@ -17,6 +17,7 @@
+ 	color: #000000;
+ }
+ 
++#bottom_pane label,
+ #bottom_pane GtkLabel {
+ 	font: Sans 12;
+ 	color: #9E9D9B;
+-- 
+2.1.4
+
+
+From 855c090f1330aedc97b9a486dcd0d0b4c7ff4f4e Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 16 Oct 2016 12:49:40 +0800
+Subject: [PATCH 06/07] Compile with the musl c library (no execinfo.h)
+
+---
+ configure.ac | 2 +-
+ src/lxdm.c   | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 52f2ac9..a9fca61 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,7 +32,7 @@ AM_CONDITIONAL(HAVE_PAM, [test -n "$USE_PAM" -a "x$USE_PAM" != xno ])
+ 
+ # Checks for header files.
+ AC_PATH_X
+-AC_CHECK_HEADERS([shadow.h stdlib.h string.h unistd.h utmpx.h])
++AC_CHECK_HEADERS([execinfo.h shadow.h stdlib.h string.h unistd.h utmpx.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_PID_T
+diff --git a/src/lxdm.c b/src/lxdm.c
+index e00d219..53d2176 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -49,7 +49,9 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ 
++#ifdef HAVE_EXECINFO_H
+ #include <execinfo.h>
++#endif
+ 
+ #ifdef HAVE_UTMPX_H
+ #include <utmpx.h>
+@@ -1552,6 +1554,7 @@ int lxdm_do_auto_login(void)
+ 
+ static void log_sigsegv(void)
+ {
++#ifdef HAVE_EXECINFO_H
+ 	void *array[40];
+ 	size_t size;
+ 	char **bt_strs;
+@@ -1564,6 +1567,7 @@ static void log_sigsegv(void)
+ 	    fprintf(stderr, "%s\n", bt_strs[i]);
+ 
+ 	free(bt_strs);
++#endif
+ }
+ 
+ static void sigsegv_handler(int sig)
+-- 
+2.1.4
+
+
+From a548c73e35d62ec334df5cd3a491ee409d0067bd Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Fri, 11 Nov 2016 20:24:30 +0800
+Subject: [PATCH 07/07] fix tcp_listen=1 does not work for mordern X.org
+
+---
+ src/lxdm.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/lxdm.c b/src/lxdm.c
+index 53d2176..722936f 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -490,6 +490,9 @@ static char *lxsession_xserver_command(LXSession *s)
+ 	{
+ 		arg[arc++] = g_strdup("-nolisten");
+ 		arg[arc++] = g_strdup("tcp");
++	} else {
++		arg[arc++] = g_strdup("-listen");
++		arg[arc++] = g_strdup("tcp");
+ 	}
+ 	if(!novtswitch)
+ 	{
+-- 
+2.1.4
+

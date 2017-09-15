@@ -6,13 +6,13 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="Quake-style terminal emulator based on konsole"
-HOMEPAGE="http://yakuake.kde.org/"
+HOMEPAGE="https://yakuake.kde.org/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 fi
 
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

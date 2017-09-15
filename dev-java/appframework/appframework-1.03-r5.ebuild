@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Set of Java classes to build desktop applications easily"
 HOMEPAGE="https://java.net/projects/appframework"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${MY_P}-src.zip -> ${P}.zip"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${MY_P}-src.zip -> ${P}.zip"
 
 LICENSE="LGPL-2.1"
 

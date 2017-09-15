@@ -1,0 +1,11 @@
+--- a/cmd/mkbindic/mkbindic.cpp
++++ b/cmd/mkbindic/mkbindic.cpp
+@@ -40,7 +40,7 @@
+ bck_text=;
+ flag=;
+ compat_flag=;
+-sortcmd="sort -d -s +0 -1"
++sortcmd="sort -d -s -k 1,1"
+ usage="usage: mkbindic [-m|-s] [-name dicname] [-c version] textfile [cpp-args ...]";
+ : ${TMPDIR:=/tmp}
+ 

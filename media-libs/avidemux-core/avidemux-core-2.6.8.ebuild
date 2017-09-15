@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 MY_PN="${PN/-core/}"
 if [[ ${PV} == *9999* ]] ; then
 	KEYWORDS=""
-	EGIT_REPO_URI="git://gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git https://git.gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git"
+	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
 
 	inherit git-2
 else
@@ -53,6 +53,7 @@ DEPEND="
 S="${WORKDIR}/${MY_P}"
 BUILD_DIR="${S}/buildCore"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 DOCS=( AUTHORS README )
 
 src_prepare() {
@@ -84,7 +85,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs="
+	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		$(cmake-utils_use nls GETTEXT)
 		$(cmake-utils_use sdl SDL)
@@ -92,10 +93,10 @@ src_configure() {
 		$(cmake-utils_use vdpau VDPAU)
 		$(cmake-utils_use video_cards_fglrx XVBA)
 		$(cmake-utils_use xv XVIDEO)
-	"
+	)
 
 	if use debug ; then
-		mycmakeargs+=" -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1"
+		mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
 	fi
 
 	CMAKE_USE_DIR="${S}"/avidemux_core cmake-utils_src_configure

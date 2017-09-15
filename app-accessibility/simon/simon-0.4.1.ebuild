@@ -18,7 +18,7 @@ SRC_URI="mirror://kde/stable/simon/${PV}/src/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libsamplerate nls opencv pim sphinx"
+IUSE="libsamplerate nls opencv sphinx"
 
 RDEPEND="
 	dev-qt/qtcore:4
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtgui:4
 	dev-qt/qtscript:4
 	dev-qt/qtsql:4
-	kde-frameworks/kdelibs:4
+	kde-frameworks/kdelibs:4[plasma(+)]
 	media-libs/alsa-lib
 	x11-libs/libX11
 	x11-libs/libXtst
@@ -37,7 +37,6 @@ RDEPEND="
 		virtual/libintl
 	)
 	opencv? ( media-libs/opencv )
-	pim? ( kde-apps/kdepimlibs:4 )
 	sphinx? (
 		>=app-accessibility/pocketsphinx-0.8
 		>=app-accessibility/sphinxbase-0.8
@@ -55,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linguas.patch
 	"${FILESDIR}"/${P}-sphinx.patch
 	"${FILESDIR}"/${P}-opencv-include.patch
+	"${FILESDIR}"/${P}-no-qtwebkit.patch
 )
 
 src_configure() {
@@ -63,7 +63,7 @@ src_configure() {
 		-DBackendType=$(usex sphinx "both" "jhtk")
 		$(cmake-utils_use_with sphinx Sphinxbase)
 		$(cmake-utils_use_with sphinx Pocketsphinx)
-		$(cmake-utils_use_with pim KdepimLibs)
+		-DWITH_KdepimLibs=OFF
 		$(cmake-utils_use_with libsamplerate LibSampleRate)
 		$(cmake-utils_use_with opencv OpenCV)
 		$(cmake-utils_use_enable nls NLS)

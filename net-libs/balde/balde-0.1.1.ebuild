@@ -1,16 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/balde/balde.git
-		https://github.com/balde/balde.git"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	inherit git-r3 autotools
 fi
 
 DESCRIPTION="A microframework for C based on GLib and bad intentions"
-HOMEPAGE="http://balde.io/"
+HOMEPAGE="https://balde.rgm.io/"
 
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"

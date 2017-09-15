@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit perl-module
 
-DESCRIPTION="sendxmpp is a perl-script to send xmpp (jabber), similar to what mail(1) does for mail"
+DESCRIPTION="A perl-script to send xmpp (jabber), similar to what mail(1) does for mail"
 HOMEPAGE="http://sendxmpp.hostname.sk/"
 SRC_URI="mirror://debian/pool/main/s/sendxmpp/${PN}_${PV}.orig.tar.gz"
 

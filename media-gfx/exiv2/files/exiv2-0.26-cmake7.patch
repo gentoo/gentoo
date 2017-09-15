@@ -1,0 +1,38 @@
+From 15e0b9052eacd3438c8b39bf3fdda5da69ec068a Mon Sep 17 00:00:00 2001
+From: Bernd Kuhls <bernd.kuhls@t-online.de>
+Date: Sun, 4 Jun 2017 10:13:14 +0200
+Subject: [PATCH] cmake: simplify libintl check
+
+According to https://cmake.org/cmake/help/v3.4/module/FindIntl.html
+the FindIntl module already checks for libintl.so.
+---
+ config/CMakeChecks.txt | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/config/CMakeChecks.txt b/config/CMakeChecks.txt
+index b90d4fde..0cd28ec7 100644
+--- a/config/CMakeChecks.txt
++++ b/config/CMakeChecks.txt
+@@ -98,18 +98,11 @@ ENDIF( EXIV2_ENABLE_SHARED )
+ 
+ IF( EXIV2_ENABLE_NLS )
+     FIND_PACKAGE(Intl)
+-    if(Intl_FOUND AND NOT MSVC)
++    if(Intl_FOUND)
+         INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+-        find_library(LIBINTL_LIBRARY NAMES intl libintl)
+-        if(libintl_FOUND)
+-            INCLUDE_DIRECTORIES(${Intl_INCLUDE_DIRS})
+-            SET(LIBINTL_LIBRARIES ${LIBINTL_LIBRARY})
+-        else()
+-            SET(LIBINTL_LIBRARIES)
+-            if ( APPLE OR CYGWIN )
+-                SET(LIBINTL_LIBRARIES -lintl)
+-            endif()
+-        endif()
++        SET(LIBINTL_LIBRARIES ${Intl_LIBRARIES})
++    else()
++        SET(LIBINTL_LIBRARIES)
+     endif()
+     IF( NOT LOCALEDIR )
+         SET( LOCALEDIR "${CMAKE_INSTALL_LOCALEDIR}" )

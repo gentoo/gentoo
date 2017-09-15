@@ -26,7 +26,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Powerful BitTorrent client based on KDE Frameworks"
-HOMEPAGE="http://ktorrent.pwsp.net/"
+HOMEPAGE="https://www.kde.org/applications/internet/ktorrent/"
 
 LICENSE="GPL-2"
 IUSE="+bwscheduler +downloadorder +infowidget +logviewer
@@ -62,7 +62,7 @@ COMMON_DEPEND="
 	>=net-libs/libktorrent-${LIBKT_VERSION_MIN}:5
 	infowidget? ( dev-libs/geoip )
 	mediaplayer? (
-		media-libs/phonon[qt5]
+		media-libs/phonon[qt5(+)]
 		>=media-libs/taglib-1.5
 	)
 	shutdown? ( $(add_plasma_dep plasma-workspace) )

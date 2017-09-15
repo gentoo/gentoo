@@ -1,0 +1,21 @@
+Prevent the environment from being clobbered during sh_test
+
+diff --git a/tests/sh_test.py b/tests/sh_test.py
+index ab41055..d1b08c6 100644
+--- a/tests/sh_test.py
++++ b/tests/sh_test.py
+@@ -29,12 +29,8 @@ class ShellScriptTests(basetest.TestCase):
+     path_with_python = ':'.join((
+         os.path.dirname(sys.executable), os.environ.get('PATH')))
+ 
+-    env = {
+-        'PATH': path_with_python,
+-        # Setuptools puts dependency eggs in our path, so propagate that.
+-        'PYTHONPATH': os.pathsep.join(sys.path),
+-        'TEST_TMPDIR': FLAGS.test_tmpdir,
+-        }
++    env = os.environ.copy()
++    env['TEST_TMPDIR'] = FLAGS.test_tmpdir
+     p = subprocess.Popen(sh_test_path, cwd=tests_path, env=env)
+     self.assertEqual(0, p.wait())
+ 

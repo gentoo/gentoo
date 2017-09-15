@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,13 +10,14 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 	multilib-minimal python-single-r1 toolchain-funcs pax-utils prefix
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
-	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
-	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
-	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${PN}-3.8.0-manpages.tar.bz2 )"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( https://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		https://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		https://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( https://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
+	!doc? ( https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.8.0-manpages.tar.bz2 )
+	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.xz"
 
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
@@ -156,38 +157,38 @@ src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
-	eapply "${FILESDIR}"/3.9.1/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
+	eapply "${WORKDIR}/${P}-patchset"/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
-	eapply "${FILESDIR}"/3.9.1/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
+	eapply "${WORKDIR}/${P}-patchset"/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
-	eapply "${FILESDIR}"/3.9.1/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
+	eapply "${WORKDIR}/${P}-patchset"/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
 
 	# Prevent race conditions with parallel Sphinx runs
 	# https://llvm.org/bugs/show_bug.cgi?id=23781
-	eapply "${FILESDIR}"/3.8.1/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
+	eapply "${WORKDIR}/${P}-patchset"/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
 
 	# Prevent installing libgtest
 	# https://llvm.org/bugs/show_bug.cgi?id=18341
-	eapply "${FILESDIR}"/3.8.1/0005-cmake-Do-not-install-libgtest.patch
+	eapply "${WORKDIR}/${P}-patchset"/0005-cmake-Do-not-install-libgtest.patch
 
 	# Allow custom cmake build types (like 'Gentoo')
-	eapply "${FILESDIR}"/3.9.1/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
+	eapply "${WORKDIR}/${P}-patchset"/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/3.9.1/llvm-config-r1.patch
+	eapply "${WORKDIR}/${P}-patchset"/llvm-config-r1.patch
 
 	# Restore SOVERSIONs for shared libraries
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
-	eapply "${FILESDIR}"/3.8.1/0008-cmake-Restore-SOVERSIONs-on-shared-libraries.patch
+	eapply "${WORKDIR}/${P}-patchset"/0008-cmake-Restore-SOVERSIONs-on-shared-libraries.patch
 
 	# support building llvm against musl-libc
-	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
+	use elibc_musl && eapply "${WORKDIR}/${P}-patchset"/musl-fixes.patch
 
 	# support "musl" as a valid environment type in llvm
-	eapply "${FILESDIR}"/3.8.1/musl-env-support.patch
+	eapply "${WORKDIR}/${P}-patchset"/musl-env-support.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
@@ -197,21 +198,21 @@ src_prepare() {
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		eapply "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		# Support gcc4.9 search paths
 		# https://github.com/llvm-mirror/clang/commit/af4db76e059c1a3
-		eapply "${FILESDIR}"/3.8.1/clang/gcc4.9-search-path.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/gcc4.9-search-path.patch
 
-		eapply "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		pushd "${S}"/tools/clang >/dev/null || die
 		# be able to specify default values for -stdlib and -rtlib at build time
-		eapply "${FILESDIR}"/3.8.1/clang/default-libs.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/default-libs.patch
 
 		# enable clang to recognize musl-libc
-		eapply "${FILESDIR}"/3.8.1/clang/musl-support.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/musl-support.patch
 		popd >/dev/null || die
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
@@ -219,28 +220,28 @@ src_prepare() {
 
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
-		eapply "${FILESDIR}"/3.9.1/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
-		eapply "${FILESDIR}"/3.8.1/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
+		eapply "${WORKDIR}/${P}-patchset"/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
 
 		# Do not force -march flags on arm platforms
 		# https://bugs.gentoo.org/show_bug.cgi?id=562706
-		eapply "${FILESDIR}"/3.8.1/compiler-rt/arm_march_flags.patch
+		eapply "${WORKDIR}/${P}-patchset"/compiler-rt/arm_march_flags.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
-		eapply "${FILESDIR}"/3.9.1/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
 		# Fix git-clang-format shebang, bug #562688
 		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
 
 		# Fix 'stdarg.h' file not found on Gentoo/FreeBSD, bug #578064
 		# https://llvm.org/bugs/show_bug.cgi?id=26651
-		eapply "${FILESDIR}"/3.8.1/compiler-rt/fbsd.patch
+		eapply "${WORKDIR}/${P}-patchset"/compiler-rt/fbsd.patch
 
 		# Backport abi-tag support, bug #571600
-		eapply "${FILESDIR}"/3.8.1/clang/abi-tag-support-sema.patch
-		eapply "${FILESDIR}"/3.8.1/clang/abi-tag-support-mangler.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/abi-tag-support-sema.patch
+		eapply "${WORKDIR}/${P}-patchset"/clang/abi-tag-support-mangler.patch
 
 		pushd projects/compiler-rt >/dev/null || die
 
@@ -258,7 +259,7 @@ src_prepare() {
 		sed -e 's/add_subdirectory(readline)/#&/' \
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
 		# Do not install bundled six module
-		eapply "${FILESDIR}"/3.9.1/lldb/six.patch
+		eapply "${WORKDIR}/${P}-patchset"/lldb/six.patch
 	fi
 
 	# User patches

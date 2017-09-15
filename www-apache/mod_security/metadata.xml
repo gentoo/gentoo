@@ -2,16 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <use>
-    <flag name="geoip">
-      Configure ModSecurity to query the GeoIP database from MaxMind,
-      provided by <pkg>dev-libs/geoip</pkg>. This flag only controls
-      the default configuration, as the GeoIP query code is part of
-      ModSecurity's source code.
+    <flag name="fuzzyhash">
+      Support fuzzy hash computations (to detect malware, for example)
+      using the <pkg>app-crypt/ssdeep</pkg> package.
     </flag>
 
-    <flag name="curl">
-      Build the ModSecurity Audit Log Collector (mlogc) that depends
-      on <pkg>net-misc/curl</pkg>.
+    <flag name="geoip">
+      Pull in <pkg>dev-libs/geoip</pkg> for use by the SecGeoLookupDb
+      directive.
     </flag>
 
     <flag name="jit">
@@ -19,5 +17,18 @@
       by <pkg>dev-libs/libpcre</pkg> with jit USE flag enabled. Might
       not be available on hardened systems.
     </flag>
+
+    <flag name="json">
+      Suppose JSON in the request body parser through
+      <pkg>dev-libs/yajl</pkg>.
+    </flag>
+
+    <flag name="mlogc">
+      Build and install the ModSecurity Audit Log Collector (mlogc).
+    </flag>
   </use>
+
+  <upstream>
+    <remote-id type="github">SpiderLabs/ModSecurity</remote-id>
+  </upstream>
 </pkgmetadata>

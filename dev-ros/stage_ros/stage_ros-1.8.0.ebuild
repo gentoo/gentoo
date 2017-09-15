@@ -23,7 +23,7 @@ RDEPEND="
 	dev-ros/std_msgs
 	dev-ros/tf
 	x11-libs/fltk
-	sci-electronics/Stage:=
+	>=sci-electronics/Stage-4.3:=
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}

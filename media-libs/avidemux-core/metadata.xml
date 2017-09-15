@@ -6,6 +6,7 @@
     <name>Gentoo Video project</name>
   </maintainer>
   <use>
+    <flag name="nvenc">Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.</flag>
     <flag name="system-ffmpeg">Use the ffmpeg provided by the system.</flag>
   </use>
   <upstream>

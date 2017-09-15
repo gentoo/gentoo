@@ -9,11 +9,11 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="http://download.tomahawk-player.org/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
-	EGIT_REPO_URI="git://github.com/tomahawk-player/${PN}.git"
+	EGIT_REPO_URI="https://github.com/tomahawk-player/${PN}.git"
 fi
 
 DESCRIPTION="Multi-source social music player"
-HOMEPAGE="https://tomahawk-player.org/"
+HOMEPAGE="https://www.tomahawk-player.org/"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
@@ -34,7 +34,7 @@ CDEPEND="
 	dev-cpp/lucene++
 	dev-cpp/sparsehash
 	dev-libs/boost:=
-	dev-libs/qtkeychain:=[qt5]
+	dev-libs/qtkeychain:=[qt5(+)]
 	>=dev-libs/quazip-0.7.2[qt5]
 	media-libs/liblastfm[qt5]
 	>=media-libs/taglib-1.8.0
@@ -42,7 +42,7 @@ CDEPEND="
 	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
-	telepathy? ( net-libs/telepathy-qt[qt5] )
+	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
 	xmpp? ( net-libs/jreen[qt5] )
 "
 DEPEND="${CDEPEND}

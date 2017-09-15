@@ -1,7 +1,5 @@
-http://bugs.gentoo.org/504056
-
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -38,6 +38,8 @@
  # Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
@@ -11,8 +9,8 @@ http://bugs.gentoo.org/504056
  # Check for imlib2
  AC_CHECK_PROGS(imlib2config_cmd, imlib2-config)
  if test x$imlib2config_cmd = "x"; then
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -1,7 +1,7 @@
  bin_PROGRAMS = hsetroot
  

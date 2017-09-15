@@ -5,14 +5,14 @@ EAPI=5
 
 XORG_DOC=doc
 inherit xorg-2 multilib versionator flag-o-matic
-EGIT_REPO_URI="git://anongit.freedesktop.org/xorg/xserver"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 KEYWORDS=""
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd +udev unwind"
+IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd +udev unwind xcsecurity"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
@@ -178,6 +178,7 @@ src_configure() {
 		$(use_enable !minimal dri)
 		$(use_enable !minimal dri2)
 		$(use_enable !minimal glx)
+		$(use_enable xcsecurity)
 		$(use_enable xephyr)
 		$(use_enable xnest)
 		$(use_enable xorg)

@@ -10,7 +10,7 @@ inherit python-r1 xorg-2
 
 DESCRIPTION="X C-language Bindings protocol headers"
 HOMEPAGE="https://xcb.freedesktop.org/"
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/proto"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/proto.git"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 

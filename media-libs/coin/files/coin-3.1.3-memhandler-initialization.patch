@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=619378
+Patch http://pkgs.fedoraproject.org/cgit/rpms/Coin3.git/tree/0012-memhandler-initialization.patch?id=ca89ec7227943bdec800ee51b920f578fab87b05
+
+--- a/src/misc/SbHash.h
++++ b/src/misc/SbHash.h
+@@ -89,6 +89,8 @@
+     cc_memalloc_deallocate(entry->memhandler, ptr);
+   }
+   SbHashEntry(const Key & key, const Type & obj) : key(key), obj(obj) {}
++  SbHashEntry(const Key & key, const Type & obj, cc_memalloc *memhandler)
++		: key(key), obj(obj), memhandler(memhandler) {}
+
+   Key key;
+   Type obj;
+@@ -218,7 +220,7 @@
+     /* Key not already in the hash table; insert a new
+      * entry as the first element in the bucket
+      */
+-    entry = new (this->memhandler) SbHashEntry<Type, Key>(key, obj);
++    entry = new (this->memhandler) SbHashEntry<Type, Key>(key, obj, this->memhandler);
+     entry->next = this->buckets[i];
+     this->buckets[i] = entry;
+

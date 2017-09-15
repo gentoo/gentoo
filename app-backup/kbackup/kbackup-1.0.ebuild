@@ -7,11 +7,11 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Program that lets you back up any directories or files"
-HOMEPAGE="http://kde-apps.org/content/show.php/KBackup?content=44998"
+HOMEPAGE="https://www.linux-apps.com/content/show.php/KBackup?content=44998"
 SRC_URI="http://members.aon.at/m.koller/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="

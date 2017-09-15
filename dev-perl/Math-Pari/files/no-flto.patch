@@ -1,0 +1,74 @@
+From c169041dfa888ec3815aa5bacc97bcc0f21dc318 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 11 Jun 2017 13:05:59 +1200
+Subject: [PATCH] Disable -flto as it breaks compile.
+
+LTO seems to be bad for static/shared libraries or something.
+
+Turning it off until somebody works out how to make it not cause
+a compile failure, on top of all the crap Pari does.
+---
+ Makefile.PL | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index f3025bd..c32eb6a 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -42,18 +42,23 @@ Could not find GP/PARI build directory, please run Makefile.PL
+ with paridir=/directory option.
+ EOD
+ 
++my $optimize = $Config{optimize};
++my $ldflags  = $Config{ldflags};
++
++s/(^|\s)-flto(\s|$)/$1$2/ for $optimize, $ldflags;
++
+ my $gcc_version
+   = defined($Config{gccversion}) ? ", gccversion=$Config{gccversion}" : "";
+ print <<EOP;
+ Setting up Math::Pari with Perl $] on $^O version $Config{osvers};
+    cc=$Config{cc}$gcc_version, cccdlflags='$Config{cccdlflags}',
+    ccflags='$Config{ccflags}',
+-   optimize='$Config{optimize}',
+-   ld=$Config{ld}, ldflags='$Config{ldflags}'.
++   optimize='$optimize',
++   ld=$Config{ld}, ldflags='$ldflags'.
+ EOP
+ 
+ if ($^O eq 'solaris' and $Config{cc} eq 'gcc'
+-    and (    $Config{optimize}   =~ s/(?<!\S)(-xarch=386|-xildoff)(?!\S)//g
++    and (    $optimize   =~ s/(?<!\S)(-xarch=386|-xildoff)(?!\S)//g
+           or $Config{cccdlflags} =~ s/(?<!\S)-KPIC(?!\S)/-fPIC/ )) {
+   # Vendor's Perl has major problems with building extensions; try to fix this
+   # One way is to use perlgcc; but it does not work with 5.8.4
+@@ -61,7 +66,7 @@ if ($^O eq 'solaris' and $Config{cc} eq 'gcc'
+   print <<EOP;
+ 
+ ... Broken config of gcc-on-Solaris detected!  I would try to work around this.
+-... Reset: cccdlflags --> '$Config{cccdlflags}',   optimize -> '$Config{optimize}'.
++... Reset: cccdlflags --> '$Config{cccdlflags}',   optimize -> '$optimize'.
+ 
+ EOP
+ }
+@@ -181,7 +186,7 @@ $define .= ' -DLONG_SHORTER_THAN_IV' if $perl_int_size > $longsize;
+ 
+ $define .= ' -Derr=pari_err'; # On linux it can get a wrong dynamic loading
+ $define .= ' -DHAVE_LADD' if $opts{have_ladd};
+-$define .= ' -DGCC_INLINE' if $Config{gccversion} and not $Config{optimize} =~ /-g\b/;
++$define .= ' -DGCC_INLINE' if $Config{gccversion} and not $optimize =~ /-g\b/;
+ $define .= ' -DHAVE_PARIPRIV' if -f "$paridir/src/headers/paripriv.h";
+ #$define .= ' -DNO_GRAPHICS_PARI' unless -f "$paridir/src/graph/plotgnuplot.c";
+ 
+@@ -200,6 +205,8 @@ my $extra_inc = extra_includes($paridir);
+ &WriteMakefile(
+ 	       LIBS	     =>  $libs,
+ 	       INC	     => $extra_inc . ' -I $(PARI_DIR)/src/headers -I $(PARI_DIR)/src -I ./libPARI',
++         OPTIMIZE  => $optimize,
++         LDFLAGS   => $ldflags,
+ 	       NAME	     => 'Math::Pari',
+ 	       ($common::parilib ? () :
+ 		 (MYEXTLIB   =>  'libPARI/libPARI$(LIB_EXT)')),
+-- 
+2.13.1
+

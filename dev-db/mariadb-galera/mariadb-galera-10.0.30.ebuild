@@ -20,7 +20,7 @@ DESCRIPTION="An enhanced, drop-in replacement for MySQL with Galera Replication"
 IUSE="bindist jdbc odbc oqgraph pam sphinx sst-rsync sst-xtrabackup tokudb xml"
 RESTRICT="!bindist? ( bindist )"
 
-REQUIRED_USE="server? ( tokudb? ( jemalloc ) ) static? ( !pam )"
+REQUIRED_USE="server? ( tokudb? ( jemalloc !tcmalloc ) ) static? ( !pam )"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~amd64 ~x86"

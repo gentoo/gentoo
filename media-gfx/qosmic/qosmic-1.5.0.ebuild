@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit qt4-r2
 
 DESCRIPTION="A cosmic recursive flame fractal editor"
-HOMEPAGE="https://code.google.com/p/qosmic/"
+HOMEPAGE="https://github.com/bitsed/qosmic"
 SRC_URI="https://qosmic.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"

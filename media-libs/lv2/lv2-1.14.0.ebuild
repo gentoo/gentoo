@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-single-r1 waf-utils multilib
@@ -14,7 +14,7 @@ SRC_URI="http://lv2plug.in/spec/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~mips ppc ppc64 x86"
 IUSE="doc plugins"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

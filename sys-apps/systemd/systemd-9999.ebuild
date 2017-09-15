@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit bash-completion-r1 linux-info multilib-minimal multiprocessing pam python-any-r1 systemd toolchain-funcs udev user
+inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http
-	idn importd +kmod +lz4 lzma nat pam policykit
+	idn importd +kmod libidn2 +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
@@ -42,7 +42,10 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 		>=net-libs/libmicrohttpd-0.9.33:0=
 		ssl? ( >=net-libs/gnutls-3.1.4:0= )
 	)
-	idn? ( net-dns/libidn:0= )
+	idn? (
+		libidn2? ( net-dns/libidn2 )
+		!libidn2? ( net-dns/libidn )
+	)
 	importd? (
 		app-arch/bzip2:0=
 		sys-libs/zlib:0=
@@ -88,8 +91,6 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/intltool-0.50
-	>=dev-util/meson-0.40.0
-	dev-util/ninja
 	>=sys-apps/coreutils-8.16
 	>=sys-kernel/linux-headers-${MINKV}
 	virtual/pkgconfig
@@ -103,28 +104,31 @@ DEPEND="${COMMON_DEPEND}
 "
 
 pkg_pretend() {
-	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-		~CHECKPOINT_RESTORE ~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
-		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
-		~TIMERFD ~TMPFS_XATTR ~UNIX
-		~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
-		~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
-		~!SYSFS_DEPRECATED_V2"
+	if [[ ${MERGE_TYPE} != buildonly ]]; then
+		local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
+			~CHECKPOINT_RESTORE ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
+			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
+			~TIMERFD ~TMPFS_XATTR ~UNIX
+			~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
+			~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
+			~!SYSFS_DEPRECATED_V2"
 
-	use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
-	use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
-	kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
-	kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
+		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
+		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
+		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
+		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
 
-	if linux_config_exists; then
-		local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
-			if [ -n "${uevent_helper_path}" ] && [ "${uevent_helper_path}" != '""' ]; then
+		if linux_config_exists; then
+			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
+			if [[ -n ${uevent_helper_path} ]] && [[ ${uevent_helper_path} != '""' ]]; then
 				ewarn "It's recommended to set an empty value to the following kernel config option:"
 				ewarn "CONFIG_UEVENT_HELPER_PATH=${uevent_helper_path}"
 			fi
-	fi
+			if linux_chkconfig_present X86; then
+				CONFIG_CHECK+=" ~DMIID"
+			fi
+		fi
 
-	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if kernel_is -lt ${MINKV//./ }; then
 			ewarn "Kernel version at least ${MINKV} required"
 		fi
@@ -143,9 +147,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Bug 463376
-	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
-
 	local PATCHES=(
 	)
 
@@ -154,6 +155,7 @@ src_prepare() {
 			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 			"${FILESDIR}/228-noclean-tmp.patch"
 			"${FILESDIR}/233-systemd-user-pam.patch"
+			"${FILESDIR}/234-uucp-group.patch"
 		)
 	fi
 
@@ -193,10 +195,6 @@ meson_multilib_native_use() {
 
 multilib_src_configure() {
 	local myconf=(
-		--buildtype=plain
-		--prefix="${EPREFIX}/usr"
-		--libdir="$(get_libdir)"
-		--sysconfdir="${EPREFIX}/etc"
 		--localstatedir="${EPREFIX}/var"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
@@ -221,7 +219,6 @@ multilib_src_configure() {
 		-Defi-libdir="/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
 		$(usex http -Dgnutls=$(meson_multilib_native_use ssl) -Dgnutls=false)
-		-Dlibidn=$(meson_multilib_native_use idn)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
 		-Dzlib=$(meson_multilib_native_use importd)
@@ -259,25 +256,26 @@ multilib_src_configure() {
 		-Dquotacheck=$(meson_multilib)
 		-Drandomseed=$(meson_multilib)
 		-Drfkill=$(meson_multilib)
-		-Dsysysers=$(meson_multilib)
+		-Dsysusers=$(meson_multilib)
 		-Dtimedated=$(meson_multilib)
 		-Dtimesyncd=$(meson_multilib)
 		-Dtmpfiles=$(meson_multilib)
 		-Dvconsole=$(meson_multilib)
 	)
 
-	set -- meson "${myconf[@]}" "${S}"
-	echo "$@"
-	"$@" || die
-}
-
-eninja() {
-	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j $(makeopts_jobs) -l $(makeopts_loadavg "${MAKEOPTS}" 0)"
+	if multilib_is_native_abi && use idn; then
+		myconf+=(
+			-Dlibidn2=$(usex libidn2 true false)
+			-Dlibidn=$(usex libidn2 false true)
+		)
+	else
+		myconf+=(
+			-Dlibidn2=false
+			-Dlibidn=false
+		)
 	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
-	echo "$@"
-	"$@" || die
+
+	meson_src_configure "${myconf[@]}"
 }
 
 multilib_src_compile() {
@@ -301,9 +299,9 @@ multilib_src_install_all() {
 
 	if use sysv-utils; then
 		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym "..${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
+			dosym "${EPREFIX}${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
 		done
-		dosym "..${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
+		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
 		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
@@ -380,6 +378,19 @@ migrate_locale() {
 	fi
 }
 
+pkg_preinst() {
+	# If /lib/systemd and /usr/lib/systemd are the same directory, remove the
+	# symlinks we created in src_install.
+	if [[ $(realpath "${EROOT%/}${ROOTPREFIX}/lib/systemd") == $(realpath "${EROOT%/}/usr/lib/systemd") ]]; then
+		if [[ -L ${ED%/}/usr/lib/systemd/systemd ]]; then
+			rm "${ED%/}/usr/lib/systemd/systemd" || die
+		fi
+		if [[ -L ${ED%/}/usr/lib/systemd/systemd-shutdown ]]; then
+			rm "${ED%/}/usr/lib/systemd/systemd-shutdown" || die
+		fi
+	fi
+}
+
 pkg_postinst() {
 	newusergroup() {
 		enewgroup "$1"
@@ -387,6 +398,7 @@ pkg_postinst() {
 	}
 
 	enewgroup input
+	enewgroup kvm 78
 	enewgroup systemd-journal
 	newusergroup systemd-bus-proxy
 	newusergroup systemd-coredump
@@ -411,16 +423,13 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
+	systemd_reenable systemd-networkd.service systemd-resolved.service
+
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
-	fi
-
-	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
-		ewarn "You should replace the resolv.conf symlink:"
-		ewarn "ln -snf ${ROOTPREFIX%/}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
 }
 

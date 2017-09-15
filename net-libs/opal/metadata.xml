@@ -3,7 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="capi">Enable CAPI support</flag>
     <flag name="celt">Enable CELT ultra-low delay audio codec</flag>
     <flag name="dtmf">Enable DTMF encoding/decoding support</flag>
     <flag name="fax">Enable T.38 FAX protocol</flag>
@@ -13,7 +12,6 @@
     <flag name="iax">Enable Inter-Asterisk eXchange protocol</flag>
     <flag name="ivr">Enable Interactive Voice Response</flag>
     <flag name="ilbc">Enable iLBC (RFC 3951) speech codec</flag>
-    <flag name="ixj">Enable xJack cards support</flag>
     <flag name="lid">Enable Line Interface Device</flag>
     <flag name="plugins">Enable plugins support</flag>
     <flag name="sbc">Enable the Bluetooth low-complexity, SubBand Codec

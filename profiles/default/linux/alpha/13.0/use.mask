@@ -1,5 +1,3 @@
 # Anthony G. Basile <blueness@gentoo.org> (15 Apr 2012)
-# Pulls in net-libs/axtls or net-libs/polarssl which are
-# not keyworded for arch
+# Pulls in net-libs/axtls which is not keyworded for arch
 curl_ssl_axtls
-curl_ssl_polarssl

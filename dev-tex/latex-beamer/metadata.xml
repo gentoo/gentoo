@@ -6,6 +6,6 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">rivanvx/beamer</remote-id>
+		<remote-id type="github">josephwright/beamer</remote-id>
 	</upstream>
 </pkgmetadata>

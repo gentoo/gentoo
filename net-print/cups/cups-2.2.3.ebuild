@@ -54,7 +54,7 @@ CDEPEND="
 	pam? ( virtual/pam )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
-		>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
+		>=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}]
 	)
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )

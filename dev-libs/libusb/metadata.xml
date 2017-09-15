@@ -11,6 +11,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">libusb/libusb</remote-id>
-		<remote-id type="sourceforge">libusb</remote-id>
 	</upstream>
 </pkgmetadata>

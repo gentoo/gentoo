@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1 git-r3
+inherit virtualx autotools eutils gnome2 multilib python-single-r1 git-r3
 
 DESCRIPTION="GNU Image Manipulation Program"
-HOMEPAGE="http://www.gimp.org/"
+HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://git.gnome.org/browse/gimp"
 SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
@@ -31,15 +31,15 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	xpm? ( x11-libs/libXpm )
 	>=media-libs/freetype-2.1.7
 	>=media-libs/harfbuzz-0.9.19
-	>=media-libs/gexiv2-0.10.3
-	>=media-libs/libmypaint-1.3.0_beta0[gegl]
+	>=media-libs/gexiv2-0.10.6
+	>=media-libs/libmypaint-1.3.0[gegl]
 	>=media-libs/fontconfig-2.2.0
 	sys-libs/zlib
 	dev-libs/libxml2
 	dev-libs/libxslt
 	x11-themes/hicolor-icon-theme
-	>=media-libs/babl-0.1.24
-	>=media-libs/gegl-0.3.14:0.3[cairo]
+	>=media-libs/babl-0.1.30
+	>=media-libs/gegl-0.3.20:0.3[cairo]
 	>=dev-libs/glib-2.43
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
@@ -58,9 +58,10 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 		>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
 	)
 	>=media-libs/tiff-3.5.7:0
-	>=gnome-base/librsvg-2.36.0:2
-	webp? ( >=media-libs/libwebp-0.5.1 )
+	>=gnome-base/librsvg-2.40.6:2
+	webp? ( >=media-libs/libwebp-0.6.0 )
 	wmf? ( >=media-libs/libwmf-0.2.8 )
+	net-libs/glib-networking[ssl]
 	x11-libs/libXcursor
 	sys-libs/zlib
 	app-arch/bzip2
@@ -69,6 +70,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	udev? ( virtual/libgudev:= )"
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	dev-libs/appstream-glib
 	sys-apps/findutils
 	virtual/pkgconfig
 	>=dev-util/intltool-0.40.1
@@ -84,40 +86,16 @@ DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	G2CONF="--enable-default-binary \
-		--disable-silent-rules \
-		$(use_with !aqua x) \
-		$(use_with aalib aa) \
-		$(use_with alsa) \
-		$(use_enable altivec) \
-		--without-webkit \
-		$(use_with jpeg2k libjasper) \
-		$(use_with postscript gs) \
-		$(use_enable cpu_flags_x86_mmx mmx) \
-		$(use_with mng libmng) \
-		$(use_with openexr) \
-		$(use_with webp) \
-		$(use_with pdf poppler) \
-		$(use_enable python) \
-		$(use_enable smp mp) \
-		$(use_enable cpu_flags_x86_sse sse) \
-		--with-librsvg \
-		$(use_with udev gudev) \
-		$(use_with wmf) \
-		--with-xmc \
-		$(use_with xpm libxpm) \
-		$(use_enable vector-icons) \
-		--without-xvfb-run"
-
 	if use python; then
 		python-single-r1_pkg_setup
 	fi
 }
 
 src_prepare() {
-	epatch_user
+	eapply_user
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
+	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
 
 	echo '#!/bin/sh' > py-compile
 	chmod a+x py-compile || die
@@ -133,10 +111,43 @@ src_prepare() {
 	_elibtoolize --copy --install || die
 
 	gnome2_src_prepare
+
+	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
+	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
 }
 
 src_configure() {
-	GEGL=/usr/bin/gegl-0.3 gnome2_src_configure
+	local myconf=(
+		GEGL=/usr/bin/gegl-0.3
+
+		--enable-default-binary
+		--disable-silent-rules
+
+		$(use_with !aqua x)
+		$(use_with aalib aa)
+		$(use_with alsa)
+		$(use_enable altivec)
+		--with-appdata-test
+		--without-webkit
+		$(use_with jpeg2k libjasper)
+		$(use_with postscript gs)
+		$(use_enable cpu_flags_x86_mmx mmx)
+		$(use_with mng libmng)
+		$(use_with openexr)
+		$(use_with webp)
+		$(use_with pdf poppler)
+		$(use_enable python)
+		$(use_enable smp mp)
+		$(use_enable cpu_flags_x86_sse sse)
+		$(use_with udev gudev)
+		$(use_with wmf)
+		--with-xmc
+		$(use_with xpm libxpm)
+		$(use_enable vector-icons)
+		--without-xvfb-run
+	)
+
+	gnome2_src_configure "${myconf[@]}"
 }
 
 src_compile() {
@@ -167,7 +178,7 @@ _clean_up_locales() {
 }
 
 src_test() {
-	Xemake check
+	virtx emake check
 }
 
 src_install() {

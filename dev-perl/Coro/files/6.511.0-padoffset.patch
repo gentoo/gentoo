@@ -1,0 +1,60 @@
+From b48bc3a8141e5f27ce48b6f3ebbe2ba6ee7bda94 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 23 May 2017 15:12:06 +0200
+Subject: [PATCH] Adjust comppad_name_ variable sizes to Perl 5.26.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Perl 5.26.0 changed some variable types in this commit:
+
+commit d12be05dd0210a08e077f0cc9586a5a963122547
+Author: David Mitchell <davem@iabyn.com>
+Date:   Mon Sep 26 15:56:08 2016 +0100
+
+    make PL_ pad vars be of type PADOFFSET
+
+    Now that that PADOFFSET is signed, make
+
+        PL_comppad_name_fill
+        PL_comppad_name_floor
+        PL_padix
+        PL_constpadix
+        PL_padix_floor
+        PL_min_intro_pending
+        PL_max_intro_pending
+
+    be of type PADOFFSET rather than I32, to match the rest of the pad
+    interface.
+
+    At the same time, change various I32 local vars in pad.c functions to be
+    PADOFFSET.
+
+This patch adjusts Coro to the changes.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ Coro/state.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Coro/state.h b/Coro/state.h
+index 9a3e84f..8d6d067 100644
+--- a/Coro/state.h
++++ b/Coro/state.h
+@@ -83,8 +83,13 @@ VAR(compcv,        CV *)           /* currently compiling subroutine */
+ 
+ VAR(comppad,       AV *)           /* storage for lexically scoped temporaries */
+ VAR(comppad_name,  AV *)           /* variable names for "my" variables */
++#if PERL_VERSION_ATLEAST (5,25,6)
++VAR(comppad_name_fill,     PADOFFSET)    /* last "introduced" variable offset */
++VAR(comppad_name_floor,    PADOFFSET)    /* start of vars in innermost block */
++#else
+ VAR(comppad_name_fill,     I32)    /* last "introduced" variable offset */
+ VAR(comppad_name_floor,    I32)    /* start of vars in innermost block */
++#endif
+ 
+ VAR(runops,        runops_proc_t)  /* for tracing support */
+ 
+-- 
+2.9.4
+

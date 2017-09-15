@@ -33,5 +33,5 @@ net-firewall/firewalld
 net-misc/netctl
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
-sys-apps/systemd-sysv-utils
 sys-process/systemd-cron
+sys-apps/dbus-broker

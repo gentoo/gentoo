@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Common rules for searching for Perl things"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="

@@ -1,0 +1,13 @@
+--- a/kkconv.c
++++ b/kkconv.c
+@@ -660,7 +660,9 @@
+ 		flushOut(l);
+ #ifdef USE_SERVER
+ 		if (!CandFromServer) {
+-			selectCand(FirstCandEntry,CurrentCand);
++			if (FirstCandEntry != NULL) {
++				selectCand(FirstCandEntry,CurrentCand);
++			}
+ 		}
+ 		else if (NetLearnMode != LearnOff) {
+ 			if (CurrentCand->dicitem == NULL) {

@@ -16,7 +16,7 @@ IUSE="perl +symon symux"
 RDEPEND="perl? ( dev-lang/perl )
 	symux? ( net-analyzer/rrdtool )"
 DEPEND="${RDEPEND}
-	virtual/pmake"
+	sys-devel/pmake"
 
 S=${WORKDIR}/${PN}
 

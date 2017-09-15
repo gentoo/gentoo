@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ IUSE="pcre"
 
 RDEPEND="virtual/libiconv
 	dev-ml/camlp4:=
-	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt?] )"
+	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt(+)?] )"
 DEPEND="${RDEPEND}
 	doc? ( dev-tex/rubber virtual/latex-base )"
 

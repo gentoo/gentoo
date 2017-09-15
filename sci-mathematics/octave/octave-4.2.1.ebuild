@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl openssl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse static-libs X zlib"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/bzip2
@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsrecommended
-		dev-texlive/texlive-genericrecommended
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		dev-texlive/texlive-metapost
 	)
 	sys-apps/texinfo

@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools libtool git-r3 linux-info pam
+inherit autotools libtool git-r3 linux-info pam xdg-utils
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="acl cgroups debug doc kernel_linux pam pm-utils policykit selinux test"
+IUSE="acl cgroups debug doc evdev kernel_linux pam pm-utils policykit selinux test udev"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19
@@ -29,8 +29,14 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		app-admin/cgmanager
 		>=sys-libs/libnih-1.0.2[dbus]
 		)
+	evdev? ( dev-libs/libevdev:= )
+	udev? (
+		virtual/libudev
+		x11-libs/libdrm:=
+	)
 	pam? ( virtual/pam )
-	policykit? ( >=sys-auth/polkit-0.110 )"
+	policykit? ( >=sys-auth/polkit-0.110 )
+	selinux? ( sys-libs/libselinux )"
 # pm-utils: bug 557432
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
@@ -58,11 +64,13 @@ pkg_setup() {
 }
 
 src_prepare() {
+	xdg_environment_reset
+
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
 	default
-	elibtoolize # bug 593314
 	eautoreconf
+	#elibtoolize # bug 593314
 }
 
 src_configure() {
@@ -75,8 +83,11 @@ src_configure() {
 		$(use_enable test docbook-docs) \
 		$(use_enable debug) \
 		$(use_enable policykit polkit) \
+		$(use_enable evdev libevdev) \
 		$(use_enable acl udev-acl) \
-		$(use_enable cgroups) \
+		$(use_enable cgroups libcgmanager) \
+		$(use_enable selinux libselinux) \
+		$(use_enable udev libudev) \
 		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-pam-module-dir="$(getpam_mod_dir)" \

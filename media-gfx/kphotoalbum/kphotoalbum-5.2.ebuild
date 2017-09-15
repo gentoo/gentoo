@@ -7,7 +7,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Tool for indexing, searching, and viewing images"
-HOMEPAGE="http://www.kphotoalbum.org/"
+HOMEPAGE="https://www.kphotoalbum.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2"
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	media-gfx/exiv2:=
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	virtual/jpeg:0
 	face? ( $(add_kdeapps_dep libkface) )
 	kipi? ( $(add_kdeapps_dep libkipi) )

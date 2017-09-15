@@ -1,9 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 KDE_LINGUAS="br cs da de el es et fi fr he hr hu is it ja nb nl nn pl pt pt_BR ro ru sk sl sv tr uk zh_TW"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-base
 
 DESCRIPTION="New mail notification utility"

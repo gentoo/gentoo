@@ -20,6 +20,6 @@
   </use>
   <upstream>
     <remote-id type="pypi">pandas</remote-id>
-    <remote-id type="github">pydata/pandas</remote-id>
+    <remote-id type="github">pandas-dev/pandas</remote-id>
   </upstream>
 </pkgmetadata>

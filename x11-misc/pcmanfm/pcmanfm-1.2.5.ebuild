@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
+
 PLOCALES="ar be bg bn ca cs da de el en_GB es et eu fa fi fo fr gl he hr hu id
 is it ja kk km ko lg lt lv ms nl pa pl pt pt_BR ro ru si sk sl sr sr@latin sv
 te th tr tt_RU ug uk vi zh_CN zh_TW"
@@ -13,7 +14,7 @@ MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Fast lightweight tabbed filemanager"
-HOMEPAGE="http://pcmanfm.sourceforge.net/"
+HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -36,23 +37,26 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
-DOCS=( AUTHORS )
-
-DOC_CONTENTS="PCmanFM can optionally support the menu://applications/
-	location. You should install lxde-base/lxmenu-data for that functionality."
+PATCHES=( "${FILESDIR}"/${PN}-1.2.5-CVE-2017-8934.patch )
 
 src_prepare() {
-	export LINGUAS="${LINGUAS:-${PLOCALE_BACKUP}}"
-	l10n_get_locales > "${S}"/po/LINGUAS
 	default
+
+	export LINGUAS="${LINGUAS:-${PLOCALE_BACKUP}}"
+	l10n_get_locales > po/LINGUAS || die
 }
 
 src_configure() {
-	econf --sysconfdir=/etc $(use_enable debug)
+	econf \
+		--sysconfdir="${EPREFIX}"/etc \
+		$(use_enable debug)
 }
 
 src_install() {
 	default
+
+	local DOC_CONTENTS="PCmanFM can optionally support the menu://applications/
+	location. You should install lxde-base/lxmenu-data for that functionality."
 	readme.gentoo_create_doc
 }
 

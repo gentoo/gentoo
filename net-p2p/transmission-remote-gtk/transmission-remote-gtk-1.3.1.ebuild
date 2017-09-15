@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+GNOME2_EAUTORECONF="yes"
 
 inherit gnome2
 
@@ -11,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ayatana debug geoip libnotify libproxy rss"
 
 # RESTRICT="test"
@@ -36,13 +37,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS="AUTHORS ChangeLog README"
+src_prepare() {
+	sed -i -e '/-Werror/d' configure.ac || die
+	gnome2_src_prepare
+}
 
 src_configure() {
 	# Disable overly strict appdata validation
 	gnome2_src_configure \
 		$(use_enable debug) \
-		--enable-gtk3 \
 		$(use_with geoip libgeoip) \
 		$(use_with libnotify) \
 		$(use_with libproxy) \

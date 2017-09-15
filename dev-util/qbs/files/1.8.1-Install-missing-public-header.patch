@@ -1,0 +1,52 @@
+From 4143de9ab93283c6331418610902da4648db5b67 Mon Sep 17 00:00:00 2001
+From: Joerg Bornemann <joerg.bornemann@qt.io>
+Date: Mon, 10 Jul 2017 09:49:19 +0200
+Subject: [PATCH] Install missing public header
+
+Since commit 7ccc08f3, tools/version.h is needed by a public header.
+It must be installed.
+
+Change-Id: I79cb243463abb9390a581144467b3cd89f46eadd
+Reviewed-by: Christian Kandeler <christian.kandeler@qt.io>
+---
+ src/lib/corelib/corelib.qbs     | 2 +-
+ src/lib/corelib/tools/tools.pri | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/corelib/corelib.qbs b/src/lib/corelib/corelib.qbs
+index 1b137925..6dd6f082 100644
+--- a/src/lib/corelib/corelib.qbs
++++ b/src/lib/corelib/corelib.qbs
+@@ -405,7 +405,6 @@ QbsLibrary {
+             "stlutils.h",
+             "toolchains.cpp",
+             "version.cpp",
+-            "version.h",
+             "visualstudioversioninfo.cpp",
+             "visualstudioversioninfo.h",
+             "vsenvironmentdetector.cpp",
+@@ -435,6 +434,7 @@ QbsLibrary {
+             "settingsmodel.h",
+             "setupprojectparameters.h",
+             "toolchains.h",
++            "version.h",
+         ]
+         qbs.install: qbsbuildconfig.installApiHeaders
+         qbs.installDir: headerInstallPrefix + "/tools"
+diff --git a/src/lib/corelib/tools/tools.pri b/src/lib/corelib/tools/tools.pri
+index 0fa91147..fb0c225b 100644
+--- a/src/lib/corelib/tools/tools.pri
++++ b/src/lib/corelib/tools/tools.pri
+@@ -125,7 +125,8 @@ qbs_enable_unit_tests {
+         $$PWD/generatorpluginmanager.h \
+         $$PWD/installoptions.h \
+         $$PWD/setupprojectparameters.h \
+-        $$PWD/toolchains.h
++        $$PWD/toolchains.h \
++        $$PWD/version.h
+     tools_headers.path = $${QBS_INSTALL_PREFIX}/include/qbs/tools
+     INSTALLS += tools_headers
+ }
+-- 
+2.14.1
+

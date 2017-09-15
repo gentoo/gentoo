@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Python library for interacting with the JIRA REST API"
@@ -14,14 +14,19 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="filemagic ipython oauth"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
+DEPEND="
+	dev-python/pbr[${PYTHON_USEDEP}]
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	"
+RDEPEND="
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	filemagic? ( dev-python/filemagic[${PYTHON_USEDEP}] )
 	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
 	oauth? (
-		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
-		dev-python/tlslite[${PYTHON_USEDEP}]
 		dev-python/pycrypto[${PYTHON_USEDEP}]
+		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
 	)
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]"
+	"

@@ -1,38 +1,50 @@
-diff -Naur a/IlmImf/ImfSystemSpecific.cpp b/IlmImf/ImfSystemSpecific.cpp
---- a/IlmImf/ImfSystemSpecific.cpp	2016-06-14 01:19:15.070511555 +0930
-+++ b/IlmImf/ImfSystemSpecific.cpp	2016-06-14 01:36:08.776496862 +0930
-@@ -35,6 +35,7 @@
- #include "ImfSystemSpecific.h"
- #include "ImfNamespace.h"
- #include "OpenEXRConfig.h"
-+#include <cpuid.h>
+$NetBSD: patch-IlmImf_ImfSystemSpecific.cpp,v 1.2 2014/08/19 13:34:42 joerg Exp $
+
+Rework cpuid function to use gnuc __get_cpuid (requiring at least gcc 4.3)
+This get's over issues such as encountered with PIC builds.
+Upstream issue : https://github.com/openexr/openexr/issues/128
+
+https://raw.githubusercontent.com/jsonn/pkgsrc/trunk/graphics/openexr/patches/patch-IlmImf_ImfSystemSpecific.cpp
+https://github.com/jsonn/pkgsrc/commit/5158af44e65b6d7b9f1a8aca2eb24cb87d003724
+https://bugs.gentoo.org/show_bug.cgi?id=626760
+
+--- a/IlmImf/ImfSystemSpecific.cpp.orig	2014-08-10 04:23:57.000000000 +0000
++++ b/IlmImf/ImfSystemSpecific.cpp
+@@ -40,21 +40,30 @@ OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_EN
  
- OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_ENTER
- 
-@@ -42,19 +43,15 @@
+ namespace {
  #if defined(IMF_HAVE_SSE2) &&  defined(__GNUC__)
- 
+-
      // Helper functions for gcc + SSE enabled
 -    void cpuid(int n, int &eax, int &ebx, int &ecx, int &edx)
-+    void cpuid(unsigned int n, unsigned int &eax, unsigned int &ebx, unsigned int &ecx, unsigned int &edx)
++    void cpuid(unsigned int n, unsigned int &eax, unsigned int &ebx,
++					unsigned int &ecx, unsigned int &edx)
      {
--        __asm__ __volatile__ (
--            "cpuid"
--            : /* Output  */ "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx) 
--            : /* Input   */ "a"(n)
--            : /* Clobber */);
-+	__get_cpuid(n, &eax, &ebx, &ecx, &edx );
++#ifdef __i386__
++        __asm__ __volatile__ (
++            "pushl %%ebx; cpuid; movl %%ebx, %0; popl %%ebx"
++            : /* Output  */ "=m"(ebx), "=a"(eax), "=c"(ecx), "=d"(edx) 
++            : /* Input   */ "a"(n)
++            : /* Clobber */);
++#else
+         __asm__ __volatile__ (
+             "cpuid"
+             : /* Output  */ "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx) 
+             : /* Input   */ "a"(n)
+             : /* Clobber */);
++#endif
      }
  
  #else // IMF_HAVE_SSE2 && __GNUC__
  
      // Helper functions for generic compiler - all disabled
 -    void cpuid(int n, int &eax, int &ebx, int &ecx, int &edx)
-+    void cpuid(unsigned int n, unsigned int &eax, unsigned int &ebx, unsigned int &ecx, unsigned int &edx)
++    void cpuid(unsigned int n, unsigned int &eax, unsigned int &ebx,
++					unsigned int &ecx, unsigned int &edx)
      {
          eax = ebx = ecx = edx = 0;
      }
-@@ -64,7 +61,7 @@
+@@ -64,7 +73,7 @@ namespace {
  
  #ifdef OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX
  
@@ -41,7 +53,7 @@ diff -Naur a/IlmImf/ImfSystemSpecific.cpp b/IlmImf/ImfSystemSpecific.cpp
      {
          __asm__ __volatile__ (
              "xgetbv"
-@@ -75,7 +72,7 @@
+@@ -75,7 +84,7 @@ namespace {
  
  #else //  OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX
  
@@ -50,7 +62,7 @@ diff -Naur a/IlmImf/ImfSystemSpecific.cpp b/IlmImf/ImfSystemSpecific.cpp
      {
          eax = edx = 0;
      }
-@@ -94,8 +91,8 @@
+@@ -94,8 +103,8 @@ CpuId::CpuId():
      f16c(false)
  {
      bool osxsave = false;

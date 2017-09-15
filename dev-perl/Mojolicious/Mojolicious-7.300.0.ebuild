@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Real-time web framework"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test minimal"
 
 RDEPEND="

@@ -1,12 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
-inherit eutils
+EAPI="6"
+
+inherit toolchain-funcs
 
 MY_P="${PN}-v${PV}"
+
 DESCRIPTION="A Japanese input server which supports the XIM protocol"
-HOMEPAGE="http://www.nec.co.jp/canna/"
+HOMEPAGE="http://www.nec.co.jp/canna"
 SRC_URI="ftp://ftp.sra.co.jp/pub/x11/${PN}/${MY_P}.tar.gz"
 
 LICENSE="HPND"
@@ -14,29 +16,34 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="freewnn"
 
-RDEPEND="freewnn? ( >=app-i18n/freewnn-1.1.1_alpha19 )
-	!freewnn? ( >=app-i18n/canna-3.5_beta2-r1 )
+RDEPEND="x11-libs/libICE
+	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXaw
+	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXp
-	x11-libs/libXt"
-
+	x11-libs/libXpm
+	x11-libs/libXt
+	!freewnn? ( app-i18n/canna )
+	freewnn? ( app-i18n/freewnn )"
 DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
-	x11-misc/imake
-	app-text/rman"
-
+	x11-misc/imake"
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-r1-gentoo.diff"
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-headers.patch
+	"${FILESDIR}"/${PN}-ppc.patch
+	"${FILESDIR}"/${PN}-segfault.patch
+	"${FILESDIR}"/${PN}-wnn.patch
+)
+DOCS=( README NEWS doc/. )
 
-	if use freewnn; then
-		sed -i -e '/\/\* #define UseWnn/s:^:#define UseWnn\n:' Kinput2.conf || die
-	else
-		sed -i -e '/\/\* #define UseCanna/s:^:#define UseCanna\n:' Kinput2.conf || die
-	fi
+src_prepare() {
+	default
+
+	sed -i "s|^/\* \(#define Use$(usex freewnn Wnn Canna)\) \*/|\1|" ${PN^k}.conf
 }
 
 src_configure() {
@@ -45,30 +52,26 @@ src_configure() {
 
 src_compile() {
 	emake \
-		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults/" \
+		CC="$(tc-getCC)" \
 		CDEBUGFLAGS="${CFLAGS}" \
 		LOCAL_LDFLAGS="${LDFLAGS}" \
-		|| die
+		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
 }
 
 src_install() {
-	emake XAPPLOADDIR="/usr/share/X11/app-defaults/" DESTDIR="${D}" install || die
-	rm -rf "${ED}/usr/lib/X11" || die
+	emake \
+		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults" \
+		DESTDIR="${D}" \
+		install
+	einstalldocs
+	newman cmd/${PN}.man ${PN}.1
 
-	local server
-	if use freewnn; then
-		server="wnn"
-	else
-		server="canna"
-	fi
+	rm -rf "${ED}"/usr/$(get_libdir)/X11
 
 	insinto /etc/X11/xinit/xinput.d
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX}:g" \
-		-e "s:@SERVER@:${server}:g" \
-		"${FILESDIR}/xinput-kinput2" > "${T}/kinput2.conf" || die
-	doins "${T}/kinput2.conf" || die
-
-	dodoc README NEWS doc/* || die
-	newman cmd/${PN}.man ${PN}.1 || die
+		-e "s:@SERVER@:$(usex freewnn wnn canna):g" \
+		"${FILESDIR}"/xinput-${PN} > "${T}"/${PN}.conf
+	doins "${T}"/${PN}.conf
 }

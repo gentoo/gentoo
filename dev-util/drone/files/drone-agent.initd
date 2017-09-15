@@ -7,12 +7,8 @@ pidfile=${pidfile:-"/run/drone/${SVCNAME}.pid"}
 user=${user:-drone}
 group=${group:-drone}
 
-command="/usr/bin/drone agent"
+command="/usr/bin/drone-agent"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/drone/${SVCNAME}.log \
 	--stderr /var/log/drone/${SVCNAME}.log"
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
-}

@@ -15,7 +15,7 @@
 # This eclass provides a unified interface for compiling and installing standalone
 # PHP extensions (modules).
 
-inherit flag-o-matic autotools multilib eutils
+inherit autotools multilib
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install
 

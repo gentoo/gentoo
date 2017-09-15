@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-single-r1 toolchain-funcs versionator
@@ -24,7 +24,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 RDEPEND="
 	>=dev-libs/gobject-introspection-common-${PV}
 	>=dev-libs/glib-2.$(get_version_component_range 2):2
-	doctool? ( dev-python/mako )
+	doctool? ( dev-python/mako[${PYTHON_USEDEP}] )
 	virtual/libffi:=
 	virtual/pkgconfig
 	!<dev-lang/vala-0.20.0

@@ -5,12 +5,14 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
+SQL_REQUIRED="always"
 inherit kde4-meta
 
 DESCRIPTION="Application to create, edit and update blog content"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="

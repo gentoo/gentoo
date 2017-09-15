@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 
-# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+# NOTE: When masking a USE flag due to missing keywords, please file a keyword
+# request bug for the hppa arch.
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
 
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
 # kwallet integration split from kde to distinct flag
@@ -308,5 +313,3 @@ bmp
 
 # Adding h323 to mask. For more information see bug #115798
 h323
-
-# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.

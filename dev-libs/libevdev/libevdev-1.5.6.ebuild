@@ -7,14 +7,14 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit python-any-r1 xorg-2
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}.git"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/libevdev.git"
 
 DESCRIPTION="Handler library for evdev events"
 
 if [[ ${PV} == 9999* ]] ; then
 	SRC_URI=""
 else
-	SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+	SRC_URI="https://www.freedesktop.org/software/libevdev/${P}.tar.xz"
 fi
 
 RESTRICT="test" # Tests need to run as root.

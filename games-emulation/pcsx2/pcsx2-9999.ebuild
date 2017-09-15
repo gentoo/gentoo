@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,11 +7,8 @@ PLOCALES="ar_SA ca_ES cs_CZ de_DE es_ES fi_FI fr_FR hr_HR hu_HU id_ID it_IT ja_J
 inherit cmake-utils git-r3 l10n multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
-HOMEPAGE="http://www.pcsx2.net"
-EGIT_REPO_URI=(
-	"https://github.com/PCSX2/pcsx2.git"
-	"git://github.com/PCSX2/pcsx2.git"
-)
+HOMEPAGE="https://www.pcsx2.net"
+EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,7 +21,7 @@ RDEPEND="
 	dev-libs/libaio[abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/libpng:=[abi_x86_32(-)]
-	media-libs/libsdl[abi_x86_32(-),joystick,sound]
+	media-libs/libsdl2[abi_x86_32(-),joystick,sound]
 	media-libs/libsoundtouch[abi_x86_32(-)]
 	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]
@@ -34,7 +31,7 @@ RDEPEND="
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	x11-libs/wxGTK:3.0[abi_x86_32(-),X]
+	x11-libs/wxGTK:3.0[abi_x86_32(-),-sdl,X]
 "
 # Ensure no incompatible headers from eselect-opengl are installed, bug #510730
 DEPEND="${RDEPEND}
@@ -89,7 +86,7 @@ src_configure() {
 		-DGTK3_API=FALSE
 		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
 		# wxGTK must be built against same sdl version
-		-DSDL2_API=FALSE
+		-DSDL2_API=TRUE
 		-DWX28_API=FALSE
 	)
 

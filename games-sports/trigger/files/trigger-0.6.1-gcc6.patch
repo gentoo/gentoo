@@ -1,0 +1,39 @@
+Bug: https://bugs.gentoo.org/617886
+
+--- a/src/pengine/tinyxmlparser.cpp
++++ b/src/pengine/tinyxmlparser.cpp
+@@ -326,14 +326,14 @@
+   if ( !p || !*p )
+   {
+     SetError( TIXML_ERROR_DOCUMENT_EMPTY );
+-    return false;
++    return NULL;
+   }
+ 
+     p = SkipWhiteSpace( p );
+   if ( !p )
+   {
+     SetError( TIXML_ERROR_DOCUMENT_EMPTY );
+-    return false;
++    return NULL;
+   }
+ 
+   while ( p && *p )
+@@ -541,7 +541,7 @@
+   if ( !p || !*p || *p != '<' )
+   {
+     if ( document ) document->SetError( TIXML_ERROR_PARSING_ELEMENT );
+-    return false;
++    return NULL;
+   }
+ 
+   p = SkipWhiteSpace( p+1 );
+@@ -551,7 +551,7 @@
+   if ( !p || !*p )
+   {
+     if ( document )  document->SetError( TIXML_ERROR_FAILED_TO_READ_ELEMENT_NAME );
+-    return false;
++    return NULL;
+   }
+ 
+     TIXML_STRING endTag ("</");

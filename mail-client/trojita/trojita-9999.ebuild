@@ -31,7 +31,7 @@ RDEPEND="
 		>=app-crypt/gpgme-1.8.0[cxx,qt5]
 	)
 	dbus? ( dev-qt/qtdbus:5 )
-	password? ( dev-libs/qtkeychain[qt5] )
+	password? ( dev-libs/qtkeychain[qt5(+)] )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}

@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
@@ -35,9 +35,13 @@ REQUIRED_USE="systemd? ( !python_single_target_pypy )"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 python_prepare_all() {
+	eapply_user
+
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
+
+	sed -i -e 's|runscript|openrc-run|g' files/gentoo-initd || die
 
 	distutils-r1_python_prepare_all
 }
@@ -82,16 +86,19 @@ pkg_postinst() {
 		elog "You are upgrading from version 0.6.x, please see:"
 		elog "http://www.fail2ban.org/wiki/index.php/HOWTO_Upgrade_from_0.6_to_0.8"
 	fi
+
 	if ! has_version ${CATEGORY}/${PN}; then
 		if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin; then
 			elog "For most jail.conf configurations, it is recommended you install either"
 			elog "dev-python/pyinotify or app-admin/gamin (in order of preference)"
 			elog "to control how log file modifications are detected"
 		fi
+
 		if ! has_version dev-lang/python[sqlite]; then
 			elog "If you want to use ${PN}'s persistent database, then reinstall"
 			elog "dev-lang/python with USE=sqlite"
 		fi
+
 		if has_version sys-apps/systemd[-python]; then
 			elog "If you want to track logins through sys-apps/systemd's"
 			elog "journal backend, then reinstall sys-apps/systemd with USE=python"

@@ -24,7 +24,7 @@ VANILLA_GV="2.47"
 VANILLA_MV="4.6.4"
 WINE_GENTOO="wine-gentoo-2015.03.07"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
-HOMEPAGE="http://www.winehq.org/"
+HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	gecko? (
 		abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${VANILLA_GV}/wine_gecko-${VANILLA_GV}-x86.msi )
@@ -282,7 +282,7 @@ src_prepare() {
 		sed -i '/^MimeType/d' loader/wine.desktop || die #117785
 	fi
 
-	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
+	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}"/${WINE_GENTOO}/icons/oic_winlogo.ico dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
@@ -415,8 +415,8 @@ multilib_src_install_all() {
 	use abi_x86_64 && pax-mark psmr "${D}"usr/bin/wine64{,-preloader}
 
 	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym /usr/bin/wine{64,} # 404331
-		dosym /usr/bin/wine{64,}-preloader
+		dosym wine64 /usr/bin/wine # 404331
+		dosym wine64-preloader /usr/bin/wine-preloader
 	fi
 
 	# respect LINGUAS when installing man pages, #469418

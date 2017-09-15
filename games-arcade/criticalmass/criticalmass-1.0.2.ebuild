@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils games
+inherit autotools eutils flag-o-matic games
 
 DESCRIPTION="SDL/OpenGL space shoot'em up game"
 HOMEPAGE="http://criticalmass.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/criticalmass/CriticalMass-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="media-libs/sdl-mixer
@@ -30,6 +30,11 @@ src_prepare() {
 		"${FILESDIR}"/${P}-libpng15.patch
 	rm -rf curl
 	eautoreconf
+}
+
+src_configure() {
+	append-cxxflags -std=gnu++98 # Bug 612758
+	default
 }
 
 src_install() {

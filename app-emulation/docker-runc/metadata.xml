@@ -10,9 +10,8 @@
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<use>
-		<flag name="apparmor">
-			Enable AppArmor support.
-		</flag>
+		<flag name="ambient">Enable support for ambient capability</flag>
+		<flag name="apparmor">Enable AppArmor support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">docker/runc</remote-id>

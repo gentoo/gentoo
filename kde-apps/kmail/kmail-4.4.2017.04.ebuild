@@ -5,13 +5,14 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 VIRTUALX_REQUIRED="test"
 inherit flag-o-matic kde4-meta
 
 DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
@@ -40,6 +41,8 @@ KMEXTRA="
 	plugins/kmail/
 "
 KMLOADLIBS="libkdepim"
+
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )
 
 src_configure() {
 	mycmakeargs=(

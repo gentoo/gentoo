@@ -1,0 +1,35 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Thu, 22 Dec 2016 14:24:44 +0100
+Subject: Fix freetype include path
+
+---
+ MontageLib/Viewer/mViewer_graphics.c | 2 +-
+ util/Viewer/graphics.c               | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/MontageLib/Viewer/mViewer_graphics.c b/MontageLib/Viewer/mViewer_graphics.c
+index 932ca5f..a50281d 100644
+--- a/MontageLib/Viewer/mViewer_graphics.c
++++ b/MontageLib/Viewer/mViewer_graphics.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <math.h>
+ #include <freetype2/ft2build.h>
+-#include <freetype.h>
++#include FT_FREETYPE_H
+ 
+ void  mViewer_labeledCurve (char *face_path, int fontsize, int showLine,
+                             double *xcurve, double *ycurve, int npt,  
+diff --git a/util/Viewer/graphics.c b/util/Viewer/graphics.c
+index 6bb7d8d..f7a5215 100644
+--- a/util/Viewer/graphics.c
++++ b/util/Viewer/graphics.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <math.h>
+ #include <freetype2/ft2build.h>
+-#include <freetype.h>
++#include FT_FREETYPE_H
+ 
+ void labeled_curve (char *face_path, int fontsize, int showLine,
+                     double *xcurve, double *ycurve, int npt,  

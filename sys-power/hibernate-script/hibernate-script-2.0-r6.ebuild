@@ -6,8 +6,8 @@ EAPI=6
 PATCH_VERSION="5"
 
 DESCRIPTION="Hibernate script supporting multiple suspend methods"
-HOMEPAGE="http://www.tuxonice.net/"
-SRC_URI="http://www.tuxonice.net/downloads/all/${P}.tar.gz
+HOMEPAGE="https://github.com/NigelCunningham/Hibernate-Script"
+SRC_URI="http://tuxonice.nigelcunningham.com.au/downloads/all/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCH_VERSION}.tar.bz2"
 
 LICENSE="GPL-2"

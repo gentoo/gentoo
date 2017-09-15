@@ -5,14 +5,15 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 CPPUNIT_REQUIRED="optional"
+SQL_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Common library for KDE PIM apps"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P/10_p/11_pre}.tar.xz"
 
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86"
 LICENSE="LGPL-2.1"
-IUSE="debug ldap prison"
+IUSE="debug ldap"
 
 # some akonadi tests timeout, that probably needs more work as its ~700 tests
 RESTRICT="test"
@@ -28,7 +29,6 @@ DEPEND="
 	media-libs/phonon[qt4]
 	x11-misc/shared-mime-info
 	ldap? ( net-nds/openldap )
-	prison? ( kde-frameworks/prison:4 )
 "
 # boost is not linked to, but headers which include it are installed
 # bug #418071
@@ -44,7 +44,7 @@ src_configure() {
 		-DBUILD_TOOLS=OFF
 		-DBUILD_doc=$(usex handbook)
 		$(cmake-utils_use_find_package ldap Ldap)
-		$(cmake-utils_use_find_package prison Prison)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Prison=ON
 	)
 
 	kde4-base_src_configure

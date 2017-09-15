@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,8 +17,9 @@ if [ "${PV}" != "9999" ]; then
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS=""
+	PDEPEND="${PDEPEND} doc? ( =app-doc/${PN}-manual-${PV} )"
 fi
 
 DESCRIPTION="Votca coarse-graining engine"
@@ -51,14 +52,8 @@ src_unpack() {
 		default
 	else
 		git-r3_src_unpack
-		if use doc; then
-			EGIT_REPO_URI="git://github.com/${PN/-//}-manual.git https://github.com/${PN/-//}-manual.git"
-			EGIT_BRANCH="master"
-			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}-manual"\
-				git-r3_src_unpack
-		fi
 		if use examples; then
-			EGIT_REPO_URI="git://github.com/${PN/-//}-tutorials.git https://github.com/${PN/-//}-tutorials.git"
+			EGIT_REPO_URI="https://github.com/${PN/-//}-tutorials.git"
 			EGIT_BRANCH="master"
 			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN#votca-}-tutorials"\
 				git-r3_src_unpack
@@ -84,15 +79,7 @@ src_install() {
 		bashcomp_alias csg_call "${i##*/}"
 	done
 	if use doc; then
-		if [[ ${PV} = *9999* ]]; then
-			#we need to do that here, because we need an installed version of csg to build the manual
-			[[ ${CHOST} = *-darwin* ]] && \
-				emake -C "${WORKDIR}/${PN}"-manual PATH="${PATH}${PATH:+:}${ED}/usr/bin" DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}${DYLD_LIBRARY_PATH:+:}${ED}/usr/$(get_libdir)" \
-				|| emake -C "${WORKDIR}/${PN}"-manual PATH="${PATH}${PATH:+:}${ED}/usr/bin" LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${ED}/usr/$(get_libdir)"
-			newdoc "${WORKDIR}/${PN}"-manual/manual.pdf "${PN}-manual-${PV}.pdf"
-		else
-			dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
-		fi
+		[[ ${PV} != *9999* ]] && dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
 		cmake-utils_src_make -C "${CMAKE_BUILD_DIR}" html
 		dodoc -r "${CMAKE_BUILD_DIR}"/share/doc/html
 	fi
@@ -108,6 +95,6 @@ pkg_postinst() {
 	einfo
 	einfo "Please read and cite:"
 	einfo "VOTCA, J. Chem. Theory Comput. 5, 3211 (2009). "
-	einfo "http://dx.doi.org/10.1021/ct900369w"
+	einfo "https://dx.doi.org/10.1021/ct900369w"
 	einfo
 }

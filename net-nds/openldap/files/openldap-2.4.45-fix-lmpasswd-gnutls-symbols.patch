@@ -1,0 +1,109 @@
+If GnuTLS is used, the lmpasswd module for USE=samba does not compile.
+Forward-port an old Debian patch that upstream never applied.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+Signed-off-by: Steffen Hau <steffen@hauihau.de>
+X-Gentoo-Bug: http://bugs.gentoo.org/show_bug.cgi?id=233633
+X-Upstream-Bug: http://www.openldap.org/its/index.cgi/Software%20Enhancements?id=4997
+X-Debian-Bug: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=245341
+
+--- openldap-2.4.17.orig/libraries/liblutil/passwd.c	2009-07-27 18:59:19.635995474 -0700
++++ openldap-2.4.17/libraries/liblutil/passwd.c	2009-07-27 19:01:13.588069010 -0700
+@@ -51,6 +51,26 @@ typedef unsigned char des_data_block[8];
+ typedef PK11Context *des_context[1];
+ #define DES_ENCRYPT CKA_ENCRYPT
+ 
++#elif defined(HAVE_GNUTLS_GNUTLS_H) && !defined(DES_ENCRYPT)
++#	include <gcrypt.h>
++static int gcrypt_init = 0;
++
++typedef const void* des_key;
++typedef unsigned char DES_cblock[8];
++typedef DES_cblock des_data_block;
++typedef int DES_key_schedule; /* unused */
++typedef DES_key_schedule des_context; /* unused */
++#define des_failed(encrypted) 0
++#define des_finish(key, schedule) 
++
++#define DES_set_key_unchecked( key, key_sched ) \
++  gcry_cipher_setkey( hd, key, 8 )
++
++#define DES_ecb_encrypt( input, output, key_sched, enc ) \
++  gcry_cipher_encrypt( hd, *output, 8, *input, 8 )
++
++#define DES_set_odd_parity( key ) do {} while(0)
++
+ #endif
+ 
+ #endif /* SLAPD_LMHASH */
+@@ -651,7 +671,7 @@ static int chk_md5(
+ 
+ #ifdef SLAPD_LMHASH
+ 
+-#if defined(HAVE_OPENSSL)
++#if defined(HAVE_OPENSSL) || defined(HAVE_GNUTLS_GNUTLS_H)
+ 
+ /*
+  * abstract away setting the parity.
+@@ -841,6 +861,19 @@ static int chk_lanman(
+ 	des_data_block StdText = "KGS!@#$%";
+ 	des_data_block PasswordHash1, PasswordHash2;
+ 	char PasswordHash[33], storedPasswordHash[33];
++
++#if defined(HAVE_GNUTLS_GNUTLS_H) && !defined(DES_ENCRYPT)
++	gcry_cipher_hd_t hd;
++
++	if ( !gcrypt_init ) {
++	  gcry_check_version( GCRYPT_VERSION );
++	  gcrypt_init = 1;
++	}
++
++	schedule = schedule; /* unused - avoid warning */
++
++	gcry_cipher_open( &hd, GCRY_CIPHER_DES, GCRY_CIPHER_MODE_ECB, 0 );
++#endif /* HAVE_GNUTLS_GNUTLS_H && !DES_ENCRYPT */
+ 	
+ 	for( i=0; i<cred->bv_len; i++) {
+ 		if(cred->bv_val[i] == '\0') {
+@@ -883,6 +916,10 @@ static int chk_lanman(
+ 	strncpy( storedPasswordHash, passwd->bv_val, 32 );
+ 	storedPasswordHash[32] = '\0';
+ 	ldap_pvt_str2lower( storedPasswordHash );
++
++#if defined(HAVE_GNUTLS_GNUTLS_H) && !defined(DES_ENCRYPT)
++	gcry_cipher_close( hd );
++#endif /* HAVE_GNUTLS_GNUTLS_H && !DES_ENCRYPT */
+ 	
+ 	return memcmp( PasswordHash, storedPasswordHash, 32) ? LUTIL_PASSWD_ERR : LUTIL_PASSWD_OK;
+ }
+@@ -1138,6 +1175,19 @@ static int hash_lanman(
+ 	des_data_block PasswordHash1, PasswordHash2;
+ 	char PasswordHash[33];
+ 	
++#if defined(HAVE_GNUTLS_GNUTLS_H) && !defined(DES_ENCRYPT)
++	gcry_cipher_hd_t hd;
++
++	if ( !gcrypt_init ) {
++	  gcry_check_version( GCRYPT_VERSION );
++	  gcrypt_init = 1;
++	}
++
++	schedule = schedule; /* unused - avoid warning */
++
++	gcry_cipher_open( &hd, GCRY_CIPHER_DES, GCRY_CIPHER_MODE_ECB, 0 );
++#endif /* HAVE_GNUTLS_GNUTLS_H && !DES_ENCRYPT */
++
+ 	for( i=0; i<passwd->bv_len; i++) {
+ 		if(passwd->bv_val[i] == '\0') {
+ 			return LUTIL_PASSWD_ERR;	/* NUL character in password */
+@@ -1168,6 +1218,10 @@ static int hash_lanman(
+ 	
+ 	hash->bv_val = PasswordHash;
+ 	hash->bv_len = 32;
++
++#if defined(HAVE_GNUTLS_GNUTLS_H) && !defined(DES_ENCRYPT)
++	gcry_cipher_close( hd );
++#endif /* HAVE_GNUTLS_GNUTLS_H && !DES_ENCRYPT */
+ 	
+ 	return pw_string( scheme, hash );
+ }

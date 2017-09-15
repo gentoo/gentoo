@@ -11,7 +11,7 @@ SRC_URI="http://ccdw.org/~cjj/prog/ccgo/src/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="

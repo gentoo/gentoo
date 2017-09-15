@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 		virtual/perl-Time-HiRes
 	)
 "
-
+PATCHES=( "${FILESDIR}/${DIST_VERSION}-no-dot-inc.patch" )
 src_configure() {
 	if use test; then
 		myconf="${myconf} --testdb=test \

@@ -5,12 +5,13 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Address book application (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
@@ -31,6 +32,8 @@ KMEXTRACTONLY="
 "
 
 KMLOADLIBS="libkdepim"
+
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )
 
 src_install() {
 	kde4-meta_src_install

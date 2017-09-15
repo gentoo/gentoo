@@ -74,7 +74,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtconcurrent)
 		$(add_qt_dep qtnetwork)
 	)
-	mysql? ( virtual/mysql )
+	mysql? ( virtual/mysql[server] )
 	opengl? (
 		$(add_qt_dep qtopengl)
 		virtual/opengl
@@ -105,6 +105,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT=test
 # bug 366505
+
+PATCHES=( "${FILESDIR}/${P}-cmake-3.9.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

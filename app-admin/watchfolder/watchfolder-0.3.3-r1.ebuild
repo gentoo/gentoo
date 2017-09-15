@@ -11,7 +11,7 @@ SRC_URI="http://dstunrea.sdf-eu.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~x86"
 
 S="${WORKDIR}/${P/folder/d}"
 

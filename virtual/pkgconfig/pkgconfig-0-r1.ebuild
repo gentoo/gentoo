@@ -12,6 +12,6 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND="
 	|| (
 		>=dev-util/pkgconfig-0.28-r1[${MULTILIB_USEDEP}]
-		>=dev-util/pkgconf-0.9.3-r1[pkg-config,${MULTILIB_USEDEP}]
+		>=dev-util/pkgconf-0.9.12[pkg-config,${MULTILIB_USEDEP}]
 		>=dev-util/pkgconfig-openbsd-20130507-r1[pkg-config,${MULTILIB_USEDEP}]
 	)"

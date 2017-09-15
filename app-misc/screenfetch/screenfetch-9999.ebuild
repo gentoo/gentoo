@@ -21,7 +21,7 @@ RDEPEND="
 	)"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://github.com/KittyKatt/screenFetch.git"
+	EGIT_REPO_URI="https://github.com/KittyKatt/screenFetch.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"

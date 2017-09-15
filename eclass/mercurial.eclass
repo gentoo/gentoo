@@ -4,7 +4,6 @@
 # @ECLASS: mercurial.eclass
 # @MAINTAINER:
 # Christoph Junghans <junghans@gentoo.org>
-# Dirkjan Ochtman <djc@gentoo.org>
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>

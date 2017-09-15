@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit cmake-utils eutils systemd user
 
 DESCRIPTION="Advanced and secure webserver"
-HOMEPAGE="http://www.hiawatha-webserver.org"
-SRC_URI="http://www.hiawatha-webserver.org/files/${P}.tar.gz"
+HOMEPAGE="https://www.hiawatha-webserver.org"
+SRC_URI="https://www.hiawatha-webserver.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

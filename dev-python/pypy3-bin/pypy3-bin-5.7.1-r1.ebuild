@@ -16,25 +16,13 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 	amd64? (
 		jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+ncurses.tar.lz )
 		!jit? ( ${BINHOST}/${P}-amd64+bzip2+ncurses.tar.lz )
-	)
-	x86? (
-		cpu_flags_x86_sse2? (
-			jit? ( ${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.tar.lz )
-			!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses+sse2.tar.lz )
-		)
-		!cpu_flags_x86_sse2? (
-			!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses.tar.lz )
-		)
 	)"
-
-# Supported variants
-REQUIRED_USE="x86? ( !cpu_flags_x86_sse2? ( !jit ) )"
 
 LICENSE="MIT"
 # XX from pypy3-XX.so module suffix
 SLOT="0/57"
-KEYWORDS="~amd64 ~x86"
-IUSE="gdbm +jit sqlite cpu_flags_x86_sse2 test tk"
+KEYWORDS="~amd64"
+IUSE="gdbm +jit sqlite test tk"
 
 # yep, world would be easier if people started filling subslots...
 RDEPEND="
@@ -114,12 +102,11 @@ src_install() {
 	dodoc README.rst
 
 	if ! use gdbm; then
-		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
-			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
+		rm -r "${ED%/}${dest}"/lib_pypy/_gdbm* || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
-			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3* \
 			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
 	fi
 	if ! use tk; then

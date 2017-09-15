@@ -1,0 +1,25 @@
+https://github.com/kkos/oniguruma/issues/68
+https://github.com/kkos/oniguruma/commit/1337755c2758a62057ef95f1cff1b9466f533301
+
+--- /sample/Makefile.am
++++ /sample/Makefile.am
+@@ -4,7 +4,7 @@
+ LDADD  = $(lib_onig)
+ 
+ AM_LDFLAGS  = -L$(prefix)/lib
+-AM_CPPFLAGS = -I../src -I$(includedir)
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(includedir)
+ 
+ TESTS = encode listcap names posix simple sql syntax user_property bug_fix
+ 
+--- /test/Makefile.am
++++ /test/Makefile.am
+@@ -3,7 +3,7 @@
+ 
+ AM_LDFLAGS  = -L$(prefix)/lib
+ AM_CFLAGS =
+-AM_CPPFLAGS = -I../src -I$(includedir)
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(includedir)
+ 
+ TESTS = test_utf8 testc testp testcu
+ 

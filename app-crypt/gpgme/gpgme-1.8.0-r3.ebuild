@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 flag-o-matic ltprune qmake-utils
@@ -14,12 +14,12 @@ SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1/11" # subslot = soname major version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp cxx python qt5 static-libs"
 
 COMMON_DEPEND="app-crypt/gnupg
 	>=dev-libs/libassuan-2.0.2
-	>=dev-libs/libgpg-error-1.11
+	>=dev-libs/libgpg-error-1.17
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtcore:5 )"
 	#doc? ( app-doc/doxygen[dot] )
@@ -39,6 +39,7 @@ REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-et_EE.patch
 	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-gcc-7.patch
 )
 
 do_python() {

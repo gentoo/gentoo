@@ -26,8 +26,9 @@ RDEPEND="${PYTHON_DEPS}
 		gtk? ( dev-python/pygtk[${PYTHON_USEDEP}] )
 		|| (
 			x11-misc/ktsuss
+			kde-plasma/kde-cli-tools[kdesu]
 			kde-apps/kdesu
-			)
+		)
 	)
 	|| (
 		net-misc/dhcpcd

@@ -20,7 +20,7 @@ SSP_UCLIBC_STABLE="x86 amd64 mips ppc ppc64 arm"
 #end Hardened stuff
 
 TOOLCHAIN_GCC_PV=4.9.4
-GCC_FILESDIR=${PORTDIR}/sys-devel/gcc/files
+#GCC_FILESDIR=${PORTDIR}/sys-devel/gcc/files
 
 inherit eutils toolchain-funcs toolchain
 
@@ -61,12 +61,14 @@ pkg_setup() {
 	fi
 	CC=${GCC}
 	local base=$(basename ${GCC})
+	CXX="${base/gcc/g++}"
 	GNATMAKE="${base/gcc/gnatmake}"
 	GNATBIND="${base/gcc/gnatbind}"
 	if [[ ${base} != ${GCC} ]] ; then
 		local path=$(dirname ${GCC})
 		GNATMAKE="${path}/${GNATMAKE}"
 		GNATBIND="${path}/${GNATBIND}"
+		CXX="${path}/${CXX}"
 	fi
 	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
@@ -86,11 +88,12 @@ src_unpack() {
 	fi
 
 	toolchain_src_unpack
+	if use bootstrap; then
+		rm gnat-gpl-2014-x86_64-linux-bin/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld || die
+	fi
 }
 
 src_prepare() {
-	sed -e "s:@VER@:${TOOLCHAIN_GCC_PV}:g" "${FILESDIR}"/${PN}.xml > ${P}.xml
-
 	mv ../gnat-gpl-${PV}-src/src/ada gcc/ || die
 	mv ../gcc-interface-${REL}-gpl-${PV}-src gcc/ada/gcc-interface || die
 
@@ -148,8 +151,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/share/gprconfig
-	doins ${P}.xml
 	toolchain_src_install
 	cd "${D}"${BINPATH}
 	for x in gnat*; do

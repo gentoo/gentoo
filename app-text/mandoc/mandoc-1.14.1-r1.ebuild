@@ -15,10 +15,9 @@ SRC_URI="http://mdocml.bsd.lv/snapshots/${MY_P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="sqlite static"
+IUSE="static"
 
-LIB_DEPEND="sys-libs/zlib[static-libs(+)]
-	sqlite? ( dev-db/sqlite:3[static-libs(+)] )"
+LIB_DEPEND="sys-libs/zlib[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
@@ -55,8 +54,6 @@ MANM_ROFF=mandoc_roff
 MANM_EQN=mandoc_eqn
 MANM_TBL=mandoc_tbl
 MANM_MANCONF=mman.conf
-
-HAVE_SQLITE3="$(usex sqlite 1 0)"
 
 CFLAGS="${CFLAGS} ${CPPFLAGS}"
 LDFLAGS="${LDFLAGS} $(usex static -static '')"

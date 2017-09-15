@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ DESCRIPTION="Python bindings for OpenBabel (including Pybel)"
 HOMEPAGE="http://openbabel.sourceforge.net/"
 SRC_URI="mirror://sourceforge/openbabel/openbabel-${PV}.tar.gz"
 
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-testpybel.patch
 	"${FILESDIR}"/${P}-bindings_only.patch
 	"${FILESDIR}"/${P}-swig-3.0.3.patch
+	"${FILESDIR}"/${P}-gcc-6_and_7-backport.patch
 	)
 
 src_prepare() {

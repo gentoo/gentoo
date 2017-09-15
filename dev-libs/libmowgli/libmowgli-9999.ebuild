@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit git-2
 
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
-HOMEPAGE="http://www.atheme.org/project/mowgli"
-EGIT_REPO_URI="git://github.com/atheme/libmowgli-2.git"
+HOMEPAGE="http://atheme.org/projects/libmowgli.html"
+EGIT_REPO_URI="https://github.com/atheme/libmowgli-2.git"
 IUSE="libressl ssl"
 
 LICENSE="BSD-2"

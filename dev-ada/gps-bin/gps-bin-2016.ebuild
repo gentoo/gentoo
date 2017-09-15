@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit toolchain-funcs
 
 MY_P=gnat-gpl-2016-x86_64-linux-bin
 
@@ -67,9 +68,9 @@ src_install() {
 	doins -r share/themes
 	insinto /opt/${P}/lib/
 	doins -r lib/python2.7
-	dosym /usr/bin/gnatinspect /opt/${P}/bin/gnatinspect
-	dosym /usr/bin/${GNATLS} /opt/${P}/bin/gnatls
-	dosym /usr/bin/${GNATMAKE} /opt/${P}/bin/gnatmake
-	dosym /usr/bin/${GNAT} /opt/${P}/bin/gnat
-	dosym /opt/${P}/bin/gps_exe /usr/bin/gps
+	dosym ../../../usr/bin/gnatinspect /opt/${P}/bin/gnatinspect
+	dosym ../../../usr/bin/${GNATLS} /opt/${P}/bin/gnatls
+	dosym ../../../usr/bin/${GNATMAKE} /opt/${P}/bin/gnatmake
+	dosym ../../../usr/bin/${GNAT} /opt/${P}/bin/gnat
+	dosym ../../opt/${P}/bin/gps_exe /usr/bin/gps
 }

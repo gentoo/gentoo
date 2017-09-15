@@ -24,7 +24,9 @@
   <use>
     <flag name="bayes">
       Require a database (MySQL, SQLite, Postgres, or BerkDB) backend
-      to enable the Bayesian filtering database.
+      to enable the Bayesian filtering database. If you use the Redis
+      backend, you do not need to enable this flag (Redis support is
+      enabled automatically, and has no external dependencies).
     </flag>
     <flag name="cron">
       Install a cron job to update SpamAssassin's rules daily.

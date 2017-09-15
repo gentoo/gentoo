@@ -21,14 +21,14 @@
 		<flag name="gcrypt">Enable sealing of journal files using gcrypt; required to build systemd-import/systemd-pull</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
-		<flag name="kdbus">Connect to kernel dbus (KDBUS) instead of userspace dbus if available</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
+		<flag name="libidn2">If IDN support is enabled, use <pkg>net-dns/libidn2</pkg> instead of <pkg>net-dns/libidn</pkg></flag>
 		<flag name="lz4">Enable lz4 compression for the journal</flag>
 		<flag name="nat">Enable support for network address translation in networkd</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
 		<flag name="vanilla">Disable Gentoo-specific behavior and compatibility quirks</flag>
-		<flag name="xkb">Validate XKB keymap in logind</flag>
+		<flag name="xkb">Depend on <pkg>x11-libs/libxkbcommon</pkg> to allow logind to control the X11 keymap</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">systemd/systemd</remote-id>

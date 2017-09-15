@@ -10,7 +10,7 @@
 		<flag name="staging">Enable Wine-Staging's Patchset</flag>
 	</use>
 	<longdescription lang="en">
-		Allows for any variant of WINE, regardless of slotting to fulfill the dependencies
+		Allows for any variant of Wine, regardless of slotting to fulfill the dependencies
 		traditionally fulfilled by the non-slotted, pre-variant, app-emulation/wine.
 	</longdescription>
 </pkgmetadata>

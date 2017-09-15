@@ -7,7 +7,7 @@ inherit texlive-common eutils libtool prefix
 
 TEXMFD_VERSION="8"
 
-DESCRIPTION="Library implementing generic path searching, configuration, and TeX-specific file searching"
+DESCRIPTION="Path searching library for TeX-related files"
 HOMEPAGE="http://tug.org/texlive/"
 SRC_URI="mirror://gentoo/texlive-${PV#*_p}-source.tar.xz
 	mirror://gentoo/${PN}-texmf.d-${TEXMFD_VERSION}.tar.xz"

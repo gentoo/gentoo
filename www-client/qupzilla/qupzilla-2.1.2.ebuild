@@ -20,7 +20,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=QupZilla-${PV}
 	SRC_URI="https://github.com/QupZilla/${PN}/releases/download/v${PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -57,6 +57,8 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS BUILDING.md CHANGELOG FAQ README.md )
+
+PATCHES=( "${FILESDIR}/${P}-openssl-1.1.0.patch" )
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then

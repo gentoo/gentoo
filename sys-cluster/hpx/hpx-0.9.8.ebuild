@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ SRC_URI="http://stellar.cct.lsu.edu/files/${PN}_${PV}.7z"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${PN}_${PV}"
 
-inherit cmake-utils fortran-2 multilib python-single-r1
+inherit cmake-utils fortran-2 multilib python-any-r1
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="http://stellar.cct.lsu.edu/tag/hpx/"
@@ -34,9 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/p7zip
 	virtual/pkgconfig
-	test? ( dev-lang/python )
+	test? ( ${PYTHON_DEPS} )
 "
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}"/hpx-0.9.8-install-path.patch
@@ -45,7 +44,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-single-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {

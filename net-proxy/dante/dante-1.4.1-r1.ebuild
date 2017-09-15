@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils systemd user
+inherit autotools ltprune systemd user
 
 DESCRIPTION="A free socks4,5 and msproxy implementation"
-HOMEPAGE="http://www.inet.no/dante/"
-MY_P="${P/_/-}"
-SRC_URI="ftp://ftp.inet.no/pub/socks/${MY_P}.tar.gz"
+HOMEPAGE="https://www.inet.no/dante/"
+SRC_URI="https://www.inet.no/dante/files/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -30,8 +29,6 @@ RDEPEND="${CDEPEND}
 "
 
 DOCS="BUGS CREDITS NEWS README SUPPORT doc/README* doc/*.txt doc/SOCKS4.protocol"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0-socksify.patch
@@ -83,8 +80,8 @@ src_install() {
 	insinto /etc/socks
 	doins "${FILESDIR}"/sock?.conf
 	pushd "${ED}"/etc/socks > /dev/null
-	use pam && epatch "${FILESDIR}"/sockd.conf-with-pam.patch
-	use tcpd && epatch "${FILESDIR}"/sockd.conf-with-libwrap.patch
+	use pam && eapply -p0 "${FILESDIR}"/sockd.conf-with-pam.patch
+	use tcpd && eapply -p0 "${FILESDIR}"/sockd.conf-with-libwrap.patch
 	popd > /dev/null
 
 	# init script

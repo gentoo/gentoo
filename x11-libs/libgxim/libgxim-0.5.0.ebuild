@@ -1,33 +1,61 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI="6"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+
+inherit autotools ltprune ruby-single
 
 DESCRIPTION="GObject-based XIM protocol library"
-HOMEPAGE="https://tagoh.bitbucket.org/libgxim/"
-SRC_URI="https://bitbucket.org/tagoh/libgxim/downloads/${P}.tar.bz2"
+HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
+SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc static-libs"
+IUSE="${USE_RUBY//ruby/ruby_targets_ruby} static-libs test"
 
-RDEPEND=">=dev-libs/check-0.9.4
-	>=dev-libs/dbus-glib-0.74
-	>=dev-libs/glib-2.32
-	>=sys-apps/dbus-0.23
-	>=x11-libs/gtk+-2.2:2"
+RDEPEND="dev-libs/dbus-glib
+	dev-libs/glib:2
+	sys-apps/dbus
+	virtual/libintl
+	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
-	dev-lang/ruby
+	${RUBY_DEPS}
+	dev-util/intltool
+	sys-devel/autoconf-archive
+	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( >=dev-util/gtk-doc-1.8 )"
+	test? ( dev-libs/check )"
+
+AT_M4DIR="m4macros"
+
+src_prepare() {
+	sed -i \
+		-e "/PKG_CHECK_MODULES/s/\(check\)/$(usex test '\1' _)/" \
+		-e "/^GNOME_/d" \
+		-e "/^CFLAGS/s/\$WARN_CFLAGS/-Wall -Wmissing-prototypes/" \
+		configure.ac
+
+	sed -i "/^ACLOCAL_AMFLAGS/,/^$/d" Makefile.am
+
+	local ruby
+	for ruby in ${RUBY_TARGETS_PREFERENCE}; do
+		if use ruby_targets_${ruby}; then
+			sed -i "1s/ruby/${ruby}/" ${PN}/mkacc.rb
+			break
+		fi
+	done
+
+	default
+	eautoreconf
+}
 
 src_configure() {
-	econf $(use_enable static-libs static) || die
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-
-	dodoc AUTHORS ChangeLog NEWS README || die
+	default
+	prune_libtool_files
 }

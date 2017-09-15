@@ -21,5 +21,6 @@ RDEPEND="
 	>=dev-ros/qt_gui-0.3.0
 	dev-ros/roscpp
 	dev-ros/nodelet
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

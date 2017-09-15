@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 EAUTORECONF=1
 inherit xfconf
 
-DESCRIPTION="Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel"
+DESCRIPTION="Xfce plugin puts the maximized window title and windows buttons on the panel"
 HOMEPAGE="https://github.com/cedl38/xfce4-windowck-plugin"
 SRC_URI="https://github.com/cedl38/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

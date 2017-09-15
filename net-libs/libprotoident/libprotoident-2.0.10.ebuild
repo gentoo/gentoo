@@ -8,14 +8,15 @@ DESCRIPTION="A library that performs application layer protocol identification f
 HOMEPAGE="http://research.wand.net.nz/software/libprotoident.php"
 SRC_URI="http://research.wand.net.nz/software/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-3+"
 SLOT="0/2"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs +tools"
+IUSE="static-libs tools"
 
 DEPEND="
 	>=net-libs/libtrace-3.0.9
-	tools? ( net-libs/libflowmanager )
+	net-libs/libflowmanager
+	tools? ( <net-libs/libflowmanager-3 )
 "
 RDEPEND="
 	${DEPEND}

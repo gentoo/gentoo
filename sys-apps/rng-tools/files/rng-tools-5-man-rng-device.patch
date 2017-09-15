@@ -2,8 +2,8 @@ https://bugs.gentoo.org/555106
 
 patch by Gokturk Yuksek <gokturk@binghamton.edu>
 
---- rngd.8.in
-+++ rngd.8.in
+--- a/rngd.8.in
++++ b/rngd.8.in
 @@ -59,7 +59,7 @@
  .TP
  \fB\-r\fI file\fR, \fB\-\-rng-device=\fIfile\fR

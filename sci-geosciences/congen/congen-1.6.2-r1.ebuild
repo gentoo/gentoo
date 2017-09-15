@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils
 
 MY_P=${P/_p/-r}
-DESCRIPTION="Generate the speeds, equilibrium arguments, and node factors of tidal constituents"
+DESCRIPTION="Calculate speeds, equilibrium arguments, node factors of tidal constituents"
 HOMEPAGE="http://www.flaterco.com/xtide/files.html"
 SRC_URI="ftp://ftp.flaterco.com/xtide/${MY_P}.tar.bz2"
 

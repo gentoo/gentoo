@@ -91,6 +91,9 @@ src_prepare() {
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
+	# Remove pointless GCC version check
+	sed -e '/^check_gcc$/d' -i configure || die
+
 	default
 
 	# link with lazy on hardened #394757

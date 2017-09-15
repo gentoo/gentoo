@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/jeremyevans/erubi"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/minitest )"

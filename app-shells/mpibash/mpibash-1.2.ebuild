@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools-utils multilib
 
 if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/lanl/MPI-Bash.git https://github.com/lanl/MPI-Bash.git"
+	EGIT_REPO_URI="https://github.com/lanl/MPI-Bash.git"
 	inherit git-r3
 	KEYWORDS=""
 	AUTOTOOLS_AUTORECONF=1

@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="+bluetooth +browser-extension +ibus +networkmanager nsplugin -openrc-force"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ia64 x86"
 
 # libXfixes-5.0 needed for pointer barriers
 # FIXME:
@@ -97,7 +97,7 @@ RDEPEND="${COMMON_DEPEND}
 	networkmanager? (
 		net-misc/mobile-broadband-provider-info
 		sys-libs/timezone-data )
-	ibus? ( >=app-i18n/ibus-1.4.99[dconf(+),gtk3,introspection] )
+	ibus? ( >=app-i18n/ibus-1.4.99[dconf(+),gtk,introspection] )
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
@@ -110,6 +110,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gdbus-codegen-2.45.3
 	>=dev-util/gtk-doc-am-1.17
 	gnome-base/gnome-common
+	sys-devel/autoconf-archive
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
 "

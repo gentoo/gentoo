@@ -14,8 +14,6 @@ else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
 	EHG_REVISION="stable"
-	KEYWORDS=""
-	SRC_URI=""
 	HG_DEPEND="dev-vcs/mercurial"
 fi
 

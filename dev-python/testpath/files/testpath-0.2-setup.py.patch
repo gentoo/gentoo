@@ -1,7 +1,7 @@
 Patch to bring back setup.py from
 https://github.com/jupyter/testpath/blob/086bd1bd1ec7da1b3dacfed1705c0c99fae231b3/setup.py
 --- /dev/null
-+++ setup.py
++++ b/setup.py
 @@ -0,0 +1,22 @@
 +from distutils.core import setup
 +

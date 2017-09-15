@@ -1,0 +1,23 @@
+diff --git a/Makefile b/Makefile
+index 6a3aa95..a591a6f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,3 +7,3 @@ CC = g++
+ objfiles=bpatch.o archfunc.o file.o system.o tmpstore.o deltup.o 
+-libs=-lstdc++ -lz -lbz2 -lcrypto #-lssl
++libs=-lz -lbz2 -lcrypto #-lssl
+ 
+@@ -12,3 +12,3 @@ libs=-lstdc++ -lz -lbz2 -lcrypto #-lssl
+ %.o : %.cpp
+-	${CC} -c $< -o $@ ${CXXFLAGS} #-g #-Wall -pedantic
++	${CXX} -c $< -o $@ ${CXXFLAGS} #-g #-Wall -pedantic
+ 
+@@ -17,6 +17,6 @@ all: deltup
+ depend:
+-	gcc -MM *.cpp > .depend
++	${CXX} -MM *.cpp > .depend
+ 	
+ deltup: $(objfiles)
+-	${CC} $(objfiles) ${LDFLAGS} -o deltup $(libs)
++	${CXX} $(objfiles) ${LDFLAGS} -o deltup $(libs)
+ 

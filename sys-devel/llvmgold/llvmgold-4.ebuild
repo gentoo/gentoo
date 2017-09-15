@@ -4,12 +4,12 @@
 EAPI=6
 
 DESCRIPTION="LLVMgold plugin symlink for autoloading"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="sys-devel/llvm:${PV}[gold]

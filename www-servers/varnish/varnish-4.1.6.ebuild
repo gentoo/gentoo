@@ -13,7 +13,7 @@ SRC_URI="http://repo.varnish-cache.org/source/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~mips ~ppc ~ppc64 x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="
@@ -52,6 +52,9 @@ src_prepare() {
 	# Remove bundled libjemalloc. We also fix
 	# automagic dep in our patches, bug #461638
 	rm -rf lib/libjemalloc
+
+	# Fix bug #620952
+	epatch "${FILESDIR}"/fix-build-x86.patch
 
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac

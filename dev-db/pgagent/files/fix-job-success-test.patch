@@ -1,0 +1,30 @@
+From 01b72d867cc2bdbaff1765499a6395f7bc94e2be Mon Sep 17 00:00:00 2001
+From: Sanket Mehta <sanket.mehta@enterprisedb.com>
+Date: Tue, 1 Dec 2015 11:34:32 +0530
+Subject: [PATCH] Set 'succeeded' flag to true/false by checking for the step
+ failure everytime (it gets executed).
+
+These was an issue with the current implementation.
+
+Once the 'succeeded' flag is set to true, the following batch step
+execution does not stop executiong of following steps on failure, even
+we have set 'onerror' to 'f' for that step.
+---
+ job.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/job.cpp b/job.cpp
+index f3eaa03..9864f57 100644
+--- a/job.cpp
++++ b/job.cpp
+@@ -307,9 +307,7 @@ int Job::Execute()
+ 
+ 				// set success status for batch runs, be pessimistic by default
+ 				LogMessage(wxString::Format(_("Script return code: %d"), rc), LOG_DEBUG);
+-				if (rc == 0)
+-					succeeded = true;
+-
++				succeeded = ((rc == 0) ? true : false);
+ 				// If output is empty then either script did not return any output
+ 				// or script threw some error into stderr.
+ 				// Check script threw some error into stderr

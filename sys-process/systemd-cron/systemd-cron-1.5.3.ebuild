@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron-boot etc-crontab-systemd minutely setgid yearly"
+IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 
 RDEPEND=">=sys-apps/systemd-217
 	     sys-apps/debianutils
@@ -20,7 +20,8 @@ RDEPEND=">=sys-apps/systemd-217
 	     ${PYTHON_DEPS}
 		 sys-process/cronbase"
 
-DEPEND="sys-process/cronbase"
+DEPEND="sys-process/cronbase
+	test? ( sys-apps/man-db dev-python/pyflakes )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -35,6 +36,7 @@ src_prepare() {
 	sed -i \
 		-e 's!/crontab$!/crontab-systemd!' \
 		-e 's!/crontab\(\.[15]\)$!/crontab-systemd\1!' \
+		-e 's/pyflakes3/pyflakes/' \
 		-- "${S}/Makefile.in" || die
 
 	if use etc-crontab-systemd

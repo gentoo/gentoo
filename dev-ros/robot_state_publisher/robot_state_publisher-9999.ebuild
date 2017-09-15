@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,9 @@ RDEPEND="
 	dev-ros/sensor_msgs
 	dev-ros/tf
 	dev-ros/urdf
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest[${PYTHON_USEDEP}]
+	test? ( dev-cpp/gtest )
 "

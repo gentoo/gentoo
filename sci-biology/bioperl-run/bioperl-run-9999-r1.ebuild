@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,8 +8,7 @@ inherit perl-module git-2
 DESCRIPTION="Perl wrapper modules for key bioinformatics applications"
 HOMEPAGE="http://www.bioperl.org/"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/bioperl/${PN}.git
-	https://github.com/bioperl/${PN}.git"
+EGIT_REPO_URI="https://github.com/bioperl/${PN}.git"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"

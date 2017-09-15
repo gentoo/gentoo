@@ -9,7 +9,7 @@ SRC_URI="http://www.far2wise.net/plod/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="dev-lang/perl"
 

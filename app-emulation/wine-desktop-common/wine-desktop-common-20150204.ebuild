@@ -7,9 +7,9 @@ inherit gnome2-utils
 
 DESCRIPTION="Various desktop menu items and icons for wine"
 HOMEPAGE="https://github.com/NP-Hardass/wine-desktop-common
-	http://dev.gentoo.org/~tetromino/distfiles/wine
-	http://bazaar.launchpad.net/~ubuntu-wine/wine/ubuntu-debian-dir/files/head:/debian/"
-SRC_URI="http://github.com/NP-Hardass/${PN}/archive/${PV//./}.tar.gz -> ${P}.tar.gz"
+	https://dev.gentoo.org/~tetromino/distfiles/wine
+	https://bazaar.launchpad.net/~ubuntu-wine/wine/ubuntu-debian-dir/files/head:/debian/"
+SRC_URI="https://github.com/NP-Hardass/${PN}/archive/${PV//./}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

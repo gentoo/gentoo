@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mjambon/cppo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 
 IUSE="examples +ocamlopt"
 
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	use ocamlopt || sed -e 's/ocamlbuild_cppo.cmx/ocamlbuild_cppo.cmo/' -i Makefile
-	emake BEST="$(usex ocamlopt '.native' '.byte')"
+	emake BEST="$(usex ocamlopt '.native' '.byte')" $(usex ocamlopt opt all) ocamlbuild
 }
 
 src_install() {

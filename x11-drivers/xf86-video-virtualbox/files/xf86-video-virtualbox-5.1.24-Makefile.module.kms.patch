@@ -1,0 +1,13 @@
+Fix bug #625690
+
+--- a/src/VBox/Additions/linux/drm/Makefile.module.kms
++++ b/src/VBox/Additions/linux/drm/Makefile.module.kms
+@@ -50,7 +50,7 @@ MOD_CFLAGS = -Wno-declaration-after-statement -fshort-wchar -fno-pie
+ ifneq ($(KERN_VERSION),24)
+ MOD_CFLAGS += -include $(MANGLING)
+ endif
+-MOD_INCL   = $(addprefix -I$(KBUILD_EXTMOD),/ /include)
++MOD_INCL   = $(addprefix -I$(KBUILD_EXTMOD),/ /include /r0drv/linux)
+ # What on earth is this?
+ MOD_INCL  += $(addprefix -I$(KBUILD_EXTMOD)/vboxvideo,/ /include)
+ MOD_INCL  += -Iinclude/drm

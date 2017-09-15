@@ -3,11 +3,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 PLOCALES="ca cs cy da de es et eu fr hu it ja pl pt pt_BR ru sk sr sr@latin uk zh_TW"
 
-inherit distutils-r1 git-r3 l10n
+inherit distutils-r1 virtualx git-r3 l10n
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
@@ -37,7 +37,7 @@ remove_locale() {
 }
 
 python_test() {
-	esetup.py test
+	virtx esetup.py test
 }
 
 python_install_all() {

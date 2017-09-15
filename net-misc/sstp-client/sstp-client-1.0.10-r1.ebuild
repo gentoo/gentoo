@@ -9,7 +9,7 @@ DESCRIPTION="A client implementation of Secure Socket Tunneling Protocol (SSTP)"
 HOMEPAGE="http://sstp-client.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sstp-client/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="static"
@@ -29,7 +29,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# set proper examples dir, --docdir overriding is src_configure does not work
+	# set proper examples dir, --docdir overriding in src_configure does not work
 	sed -i -e "/^docdir/s:@PACKAGE@:${PF}/examples:" Makefile.am || die 'sed on Makefile.am failed'
 
 	default
@@ -38,8 +38,8 @@ src_prepare() {
 
 src_configure() {
 	local PPPD_VER="$(best_version net-dialup/ppp)"
-	PPPD_VER=${PPPD_VER#*/*-} #reduce it to ${PV}-${PR}
-	PPPD_VER=${PPPD_VER%%[_-]*} # main version without beta/pre/patch/revision
+	PPPD_VER=${PPPD_VER#*/*-} 		# reduce it to ${PV}-${PR}
+	PPPD_VER=${PPPD_VER%%[_-]*}		# main version without beta/pre/patch/revision
 	econf \
 		--enable-ppp-plugin \
 		--enable-group=sstpc \
@@ -51,5 +51,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 }

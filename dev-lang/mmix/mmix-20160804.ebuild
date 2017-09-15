@@ -12,7 +12,7 @@ SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
 RESTRICT="mirror"
 
 DEPEND="virtual/tex-base
-	doc? ( dev-texlive/texlive-genericrecommended )"
+	doc? ( || ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended ) )"
 RDEPEND=""
 
 SLOT="0"

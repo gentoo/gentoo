@@ -11,24 +11,29 @@ SRC_URI="https://github.com/mtoyoda/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Toyoda"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="l10n_ja"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
 
+DOCS=( README.md )
+
 src_prepare() {
 	default
-	sed -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" -i Makefile || die
+	sed \
+	    -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
+		-i Makefile || die
 }
 
 src_install() {
 	dobin "${PN}"
 	doman "${PN}.1"
-	local DOCS=( README.md )
+
 	if use l10n_ja; then
-		newman ${PN}.1.ja ${PN}.ja.1
+		newman "${PN}.1.ja" "${PN}.ja.1"
 		DOCS+=( README.ja.md )
 	fi
+
 	einstalldocs
 }

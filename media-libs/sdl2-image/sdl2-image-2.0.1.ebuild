@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils multilib-minimal
+inherit eutils multilib multilib-minimal
 
 MY_P=SDL2_image-${PV}
 DESCRIPTION="Image file loading library"
@@ -50,7 +50,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
-	multilib_is_native_abi && newbin .libs/showimage showimage2
+	multilib_is_native_abi && newbin .libs/showimage$(get_exeext) showimage2$(get_exeext)
 }
 
 multilib_src_install_all() {

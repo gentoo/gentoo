@@ -124,6 +124,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-glext.patch
 	"${FILESDIR}"/${P}-memset.patch
 	"${FILESDIR}"/${P}-gdal2.patch
+	"${FILESDIR}"/${P}-gcc67.patch
 	)
 
 RESTRICT=test
@@ -291,7 +292,7 @@ src_configure() {
 			-DSIP_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
-			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${PREFIX} --root=${D}"
+			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX}/usr --root=${D}"
 		)
 	fi
 

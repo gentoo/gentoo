@@ -37,20 +37,24 @@ if [[ ${PV} != *9999 ]]; then
 			doc? (
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	[[ "${PV}" = *_rc* ]] || \
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs +gpg highlight +iconv libressl libsecret mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
+	gnome-keyring? ( app-crypt/libsecret )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
-	libsecret? ( app-crypt/libsecret )
 	sys-libs/zlib
-	pcre? ( dev-libs/libpcre )
+	pcre? (
+		pcre-jit? ( dev-libs/libpcre2[jit(+)] )
+		!pcre-jit? ( dev-libs/libpcre )
+	)
 	perl? ( dev-lang/perl:=[-build(-)] )
 	tk? ( dev-lang/tk:0= )
 	curl? (
@@ -107,6 +111,7 @@ REQUIRED_USE="
 	mediawiki-experimental? ( mediawiki )
 	subversion? ( perl )
 	webdav? ( curl )
+	pcre-jit? ( pcre )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
@@ -152,7 +157,7 @@ exportmakeopts() {
 		myopts+=" NO_CURL=YesPlease"
 	fi
 
-	# broken assumptions, because of broken build system ...
+	# broken assumptions, because of static build system ...
 	myopts+=" NO_FINK=YesPlease NO_DARWIN_PORTS=YesPlease"
 	myopts+=" INSTALL=install TAR=tar"
 	myopts+=" SHELL_PATH=${EPREFIX}/bin/sh"
@@ -172,9 +177,16 @@ exportmakeopts() {
 		|| myopts+=" NO_GETTEXT=YesPlease"
 	use tk \
 		|| myopts+=" NO_TCLTK=YesPlease"
-	use pcre \
-		&& myopts+=" USE_LIBPCRE=yes" \
-		&& extlibs+=" -lpcre"
+	if use pcre; then
+		if use pcre-jit; then
+			myopts+=" USE_LIBPCRE2=YesPlease"
+			extlibs+=" -lpcre2-8"
+		else
+			myopts+=" USE_LIBPCRE1=YesPlease"
+			myopts+=" NO_LIBPCRE1_JIT=YesPlease"
+			extlibs+=" -lpcre"
+		fi
+	fi
 	use perl \
 		&& myopts+=" INSTALLDIRS=vendor" \
 		|| myopts+=" NO_PERL=YesPlease"
@@ -207,7 +219,8 @@ exportmakeopts() {
 	if [[ ${CHOST} == *-solaris* ]]; then
 		myopts+=" NEEDS_LIBICONV=YesPlease"
 		myopts+=" HAVE_CLOCK_MONOTONIC=1"
-		myopts+=" HAVE_GETDELIM=1"
+		grep -q getdelim "${ROOT}"/usr/include/stdio.h && \
+			myopts+=" HAVE_GETDELIM=1"
 	fi
 
 	has_version '>=app-text/asciidoc-8.0' \
@@ -358,7 +371,7 @@ src_compile() {
 		cd "${S}"
 	fi
 
-	if use libsecret ; then
+	if use gnome-keyring ; then
 		cd "${S}"/contrib/credential/libsecret
 		git_emake || die "emake git-credential-libsecret failed"
 	fi
@@ -366,6 +379,9 @@ src_compile() {
 	cd "${S}"/contrib/subtree || die
 	git_emake
 	use doc && git_emake doc
+
+	cd "${S}"/contrib/diff-highlight || die
+	git_emake
 
 	if use mediawiki ; then
 		cd "${S}"/contrib/mw-to-git
@@ -453,7 +469,7 @@ src_install() {
 	doexe contrib/contacts/git-contacts
 	dodoc contrib/contacts/git-contacts.txt
 
-	if use libsecret ; then
+	if use gnome-keyring ; then
 		cd "${S}"/contrib/credential/libsecret
 		dobin git-credential-libsecret
 	fi

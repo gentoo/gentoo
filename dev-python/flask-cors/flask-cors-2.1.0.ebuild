@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/wcdolphin/${PN}.git"
+	EGIT_REPO_URI="https://github.com/wcdolphin/${PN}.git"
 	SRC_URI=""
 else
 	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"

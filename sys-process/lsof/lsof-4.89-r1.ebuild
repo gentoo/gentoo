@@ -61,6 +61,7 @@ src_configure() {
 
 	append-cppflags $(use rpc && $(tc-getPKG_CONFIG) libtirpc --cflags || echo "-DHASNOTRPC -DHASNORPC_H")
 	append-cppflags $(usex ipv6 -{D,U}HASIPv6)
+	[[ ${CHOST} == *-solaris2.11 ]] && append-cppflags -DHAS_PAD_MUTEX
 
 	export LSOF_CFGL="${CFLAGS} ${LDFLAGS} \
 		$(use rpc && $(tc-getPKG_CONFIG) libtirpc --libs)"

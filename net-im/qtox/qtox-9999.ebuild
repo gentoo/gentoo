@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils git-r3
+inherit cmake-utils eutils git-r3 gnome2-utils xdg-utils
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
@@ -45,22 +45,21 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if tc-is-gcc ; then
-			if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 || $(gcc-major-version) -lt 4 ]] ; then
-				eerror "You need at least sys-devel/gcc-4.8.3"
-				die "You need at least sys-devel/gcc-4.8.3"
-			fi
-		fi
-	fi
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATUSNOTIFIER=$(usex gtk True False)
-		-DENABLE_GTK_SYSTRAY=$(usex gtk True False)
+		-DENABLE_STATUSNOTIFIER=$(usex gtk)
+		-DENABLE_GTK_SYSTRAY=$(usex gtk)
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

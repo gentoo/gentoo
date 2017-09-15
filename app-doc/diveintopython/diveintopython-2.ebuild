@@ -8,10 +8,10 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="'Dive Into Python' by Mark Pilgrim - Python 2"
 HOMEPAGE="http://www.diveintopython.net/"
-SRC_URI="http://www.diveintopython.net/download/${PN}-html-${MY_PV}.zip -> ${P}.zip
-	pdf? (
-		http://www.diveintopython.net/download/${PN}-pdf-${MY_PV}.zip -> ${P}-pdf.zip
-	)"
+SRC_URI="
+http://www.diveintopython.net/download/${PN}-html-${MY_PV}.zip -> ${P}.zip
+pdf? ( http://www.diveintopython.net/download/${PN}-pdf-${MY_PV}.zip -> ${P}-pdf.zip )
+"
 
 LICENSE="FDL-1.1"
 SLOT="2"

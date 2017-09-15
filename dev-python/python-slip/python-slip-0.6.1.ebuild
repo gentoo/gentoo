@@ -1,20 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_REQ_USE="xml"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 eutils
 
 DESCRIPTION="Miscellaneous convenience, extension and workaround code for Python"
-HOMEPAGE="https://fedorahosted.org/python-slip/"
+HOMEPAGE="https://github.com/nphilipp/python-slip"
 SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="dbus selinux"
 
 RDEPEND="

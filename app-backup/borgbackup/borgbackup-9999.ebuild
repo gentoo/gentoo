@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -15,14 +15,14 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="Deduplicating backup program with compression and authenticated encryption."
+DESCRIPTION="Deduplicating backup program with compression and authenticated encryption"
 HOMEPAGE="https://borgbackup.readthedocs.io/"
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="libressl +fuse"
 
-# Unformately we have a file conflict with app-office/borg, bug #580402
+# Unfortunately we have a file conflict with app-office/borg, bug #580402
 RDEPEND="
 	!!app-office/borg
 	app-arch/lz4
@@ -30,6 +30,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	fuse? ( dev-python/llfuse[${PYTHON_USEDEP}] )
+	dev-python/pyzmq[${PYTHON_USEDEP}]
 "
 
 DEPEND="

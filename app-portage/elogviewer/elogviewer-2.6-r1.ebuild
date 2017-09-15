@@ -34,7 +34,8 @@ Portage's elog features.  Required is
 	PORTAGE_ELOG_SYSTEM=\"save\"
 and at least one of
 	PORTAGE_ELOG_CLASSES=\"warn error info log qa\"
-More information on the elog system can be found in /etc/make.conf.example
+More information on the elog system can be found in
+/usr/share/portage/config/make.conf.example
 
 To operate properly this software needs the directory
 ${PORT_LOGDIR:-/var/log/portage}/elog created, belonging to group portage.

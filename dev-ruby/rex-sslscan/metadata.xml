@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+  </maintainer>
+  <longdescription lang="en">
+  </longdescription>
+  <upstream>
+    <remote-id type="github">rapid7/rex-sslscan</remote-id>
+    <remote-id type="rubygems">rex-sslscan</remote-id>
+  </upstream>
+</pkgmetadata>

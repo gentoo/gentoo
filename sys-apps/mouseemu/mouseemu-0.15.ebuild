@@ -1,7 +1,7 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Emulates scrollwheel, right- & left-click for one-button mice/touchpads"
 HOMEPAGE="http://geekounet.org/powerbook/"
@@ -15,17 +15,16 @@ IUSE=""
 DEPEND=""
 
 S=${WORKDIR}/${PN}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-0.13-fix.patch
-	epatch "${FILESDIR}"/${PN}-0.15-build.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.13-fix.patch
+	"${FILESDIR}"/${PN}-0.15-build.patch
+	"${FILESDIR}"/${PN}-0.15-openrc.patch
+)
 
 src_install() {
-	dosbin mouseemu || die
-	dodoc README
+	dosbin mouseemu
+	einstalldocs
+
 	newinitd mouseemu.init.gentoo mouseemu
 	insinto /etc
 	doins mouseemu.conf

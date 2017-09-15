@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="bittorrent">Enable bittorrent transfer plugin through <pkg>net-libs/libktorrent</pkg></flag>
 		<flag name="mms">Enable MMS (Microsoft Media Server) plugin through <pkg>media-libs/libmms</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -15,7 +15,7 @@ SRC_URI="!gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 IUSE="+chardet nls gtk gtk3 qt5"
 REQUIRED_USE="

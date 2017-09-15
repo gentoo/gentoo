@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ DESCRIPTION="Relative Expression-Based Object Language"
 HOMEPAGE="http://rebol.com"
 
 MY_PR=${PVR/3_pre/}
-EGIT_REPO_URI="git://github.com/rebol/r3.git"
+EGIT_REPO_URI="https://github.com/rebol/r3.git"
 
 inherit eutils git-2
 

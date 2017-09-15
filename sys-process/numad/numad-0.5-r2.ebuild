@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	HASH="334278ff3d774d105939743436d7378a189e8693"
 	SRC_URI="http://git.fedorahosted.org/git/?p=numad.git;a=snapshot;h=${HASH};sf=tbz2 -> numad-0.5-${HASH:0:7}.tar.bz2"
-	KEYWORDS="~amd64 -arm -s390 ~x86"
+	KEYWORDS="~amd64 -arm ~arm64 -s390 ~x86"
 	S="${WORKDIR}/${PN}-${HASH:0:7}"
 fi
 

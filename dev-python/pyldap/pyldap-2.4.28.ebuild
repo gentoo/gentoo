@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1 multilib
 
@@ -67,8 +67,10 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( Demo/. )
 	use doc && local HTML_DOCS=( Doc/.build/html/. )
-
 	distutils-r1_python_install_all
+	if use examples; then
+		dodoc -r Demo
+		docompress -x /usr/share/doc/${PF}/Demo
+	fi
 }

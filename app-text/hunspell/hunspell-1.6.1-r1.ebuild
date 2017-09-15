@@ -13,7 +13,7 @@ HOMEPAGE="http://hunspell.sourceforge.net/"
 SLOT="0/$(get_version_component_range 1-2)"
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
 IUSE="ncurses nls readline static-libs"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
@@ -22,7 +22,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id
-is it km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
+is it kk km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk
+zu"
 
 PDEPEND="app-dicts/myspell-en"
 for lang in ${LANGS}; do

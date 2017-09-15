@@ -36,7 +36,7 @@ src_prepare() {
 	append-flags $(test-flags -fno-stack-protector)
 
 	# only use -nopie on archs that support it
-	gcc-specs-pie && append-flags -nopie
+	tc-enables-pie && append-flags -nopie
 
 	sed -i -e 's:strip::' Makefile || die
 	append-flags -Wa,--noexecstack

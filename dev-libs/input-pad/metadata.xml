@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <use>
+    <flag name="eekboard">Enable support for <pkg>dev-libs/eekboard</pkg></flag>
+    <flag name="xtest">Enable support for <pkg>x11-libs/libXtst</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">fujiwarat/input-pad</remote-id>
+  </upstream>
+</pkgmetadata>

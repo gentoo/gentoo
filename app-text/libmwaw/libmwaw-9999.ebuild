@@ -20,7 +20,6 @@ IUSE="doc static-libs tools"
 
 RDEPEND="
 	dev-libs/librevenge
-	dev-libs/libxml2
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}

@@ -12,11 +12,11 @@ MY_P=${PN}-${PV/_/-}
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm -x86"
+	KEYWORDS="amd64 ~arm x86"
 	UPSTREAM_VER=0
 	SECURITY_VER=26
 	GENTOO_VER=

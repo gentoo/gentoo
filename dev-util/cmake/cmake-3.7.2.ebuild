@@ -3,14 +3,15 @@
 
 EAPI=6
 
+CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
 inherit bash-completion-r1 elisp-common toolchain-funcs eutils versionator cmake-utils virtualx flag-o-matic
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
-HOMEPAGE="http://www.cmake.org/"
-SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
+HOMEPAGE="https://cmake.org/"
+SRC_URI="https://cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 LICENSE="CMake"
 SLOT="0"

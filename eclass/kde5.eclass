@@ -79,6 +79,24 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # Defaults to "doc". Otherwise, use alternative KDE handbook path.
 : ${KDE_DOC_DIR:=doc}
 
+# @ECLASS-VARIABLE: KDE_QTHELP
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
+# and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
+if [[ ${CATEGORY} = kde-frameworks && ( $(get_version_component_range 2) -ge 36 || ${KDE_BUILD_TYPE} = live ) ]]; then
+	: ${KDE_QTHELP:=true}
+else
+	: ${KDE_QTHELP:=false}
+fi
+
+# @ECLASS-VARIABLE: KDE_TESTPATTERN
+# @DESCRIPTION:
+# DANGER: Only touch it if you know what you are doing.
+# By default, matches autotest(s), unittest(s) and test(s) pattern inside
+# cmake add_subdirectory calls.
+: ${KDE_TESTPATTERN:="\(auto|unit\)\?tests\?"}
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -87,8 +105,10 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # when USE=!test.
 # If set to "forceoptional", remove a Qt5Test dependency and comment test
 # subdirs from the root CMakeLists.txt in addition to the above.
-# If set to "forceoptional-recursive", remove a Qt5Test dependency and comment
-# test subdirs from *any* CMakeLists.txt in addition to the above.
+# If set to "forceoptional-recursive", remove Qt5Test dependencies and make
+# test subdirs according to KDE_TESTPATTERN from *any* CMakeLists.txt in ${S}
+# and below conditional on BUILD_TESTING. This is always meant as a short-term
+# fix and creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
 else
@@ -131,7 +151,7 @@ KDE_UNRELEASED=( )
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
 elif [[ ${KDEBASE} = kdel10n ]]; then
-	HOMEPAGE="http://l10n.kde.org"
+	HOMEPAGE="https://l10n.kde.org"
 elif [[ ${KMNAME} = kdepim ]]; then
 	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 else
@@ -223,6 +243,18 @@ case ${KDE_HANDBOOK} in
 		;;
 esac
 
+case ${KDE_QTHELP} in
+	false)	;;
+	*)
+		IUSE+=" doc"
+		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
+		DEPEND+=" doc? (
+			$(add_qt_dep qthelp)
+			>=app-doc/doxygen-1.8.13-r1
+		)"
+		;;
+esac
+
 case ${KDE_TEST} in
 	false)	;;
 	*)
@@ -294,6 +326,8 @@ _calculate_src_uri() {
 	case ${CATEGORY} in
 		kde-apps)
 			case ${PV} in
+				16.12.3)
+					SRC_URI="mirror://kde/Attic/applications/16.12.3/src/${_kmname}-${PV}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[6-9]? )
 					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
@@ -536,6 +570,7 @@ kde5_src_prepare() {
 
 		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
 			punt_bogus_dep KF5 DocTools
+			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
@@ -557,16 +592,17 @@ kde5_src_prepare() {
 			pushd ${po} > /dev/null || die
 			local lang
 			for lang in *; do
-				if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
-					rm -r ${lang} || die
+				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
+					case ${lang} in
+						cmake_modules | \
+						CMakeLists.txt | \
+						${PN}.pot)	;;
+						*) rm -r ${lang} || die	;;
+					esac
 					if [[ -e CMakeLists.txt ]] ; then
 						cmake_comment_add_subdirectory ${lang}
 						sed -e "/add_subdirectory([[:space:]]*${lang}\/.*[[:space:]]*)/d" \
 							-i CMakeLists.txt || die
-					fi
-				elif [[ -f ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
-					if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
-						rm ${lang} || die
 					fi
 				fi
 			done
@@ -588,11 +624,6 @@ kde5_src_prepare() {
 		fi
 	fi
 
-	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
-		cmake_comment_add_subdirectory tests
-	fi
-
 	# only build unit tests when required
 	if ! use_if_iuse test ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
@@ -601,16 +632,32 @@ kde5_src_prepare() {
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
 			punt_bogus_dep Qt5 Test
-			local d
-			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test" -or -name "unittests"); do
-				pushd ${d%/*} > /dev/null || die
+			local f pf="${T}/${P}"-tests-optional.patch
+			touch ${pf} || die "Failed to touch patch file"
+			for f in $(find . -type f -name "CMakeLists.txt" -exec \
+				grep -l "^\s*add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)" {} \;); do
+				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
+				pushd ${f%/*} > /dev/null || die
 					punt_bogus_dep Qt5 Test
-					cmake_comment_add_subdirectory autotests test tests
+					sed -i CMakeLists.txt -e \
+						"/^#/! s/add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						|| die
 				popd > /dev/null || die
+				diff -Naur ${f}.old ${f} 1>>${pf}
+				rm ${f}.old || die "Failed to clean up"
 			done
+			einfo "Build system was modified by KDE_TEST=forceoptional-recursive."
+			einfo "Unified diff file ready for pickup in:"
+			einfo "  ${pf}"
+			einfo "Push it upstream to make this message go away."
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
 			cmake_comment_add_subdirectory autotests test tests
 		fi
+	fi
+
+	# in frameworks, tests = manual tests so never build them
+	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+		cmake_comment_add_subdirectory tests
 	fi
 }
 
@@ -641,6 +688,10 @@ kde5_src_configure() {
 
 	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
+	fi
+
+	if [[ ${KDE_QTHELP} != false ]]; then
+		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
 	fi
 
 	# install mkspecs in the same directory as qt stuff
@@ -700,10 +751,18 @@ kde5_src_install() {
 
 	cmake-utils_src_install
 
-	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
+	# We don't want QCH and tags files to be compressed, because then
+	# cmake can't find the tags and qthelp viewers can't find the docs
+	local p=$(best_version dev-qt/qtcore:5)
+	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
+	if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
+		docompress -x /usr/share/doc/qt-${pv}
+	fi
+
+	# We don't want /usr/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs
-	if [[ -d ${ED}/${PREFIX}/share/doc/HTML ]]; then
-		docompress -x ${PREFIX}/share/doc/HTML
+	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+		docompress -x /usr/share/doc/HTML
 	fi
 }
 
@@ -735,14 +794,6 @@ kde5_pkg_postinst() {
 			einfo "Use it at your own risk."
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
 		fi
-		# for kf5-based applications tell user that he SHOULD NOT be using kde-plasma/plasma-workspace:4
-		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
-				has_version 'kde-plasma/plasma-workspace:4'; then
-			echo
-			ewarn "WARNING! Your system configuration still contains \"kde-plasma/plasma-workspace:4\","
-			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
-			ewarn "Please consider upgrading to Plasma 5."
-		fi
 	fi
 }
 
@@ -752,7 +803,9 @@ kde5_pkg_postinst() {
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	xdg_pkg_postrm
 }
 

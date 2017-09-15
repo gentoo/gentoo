@@ -19,10 +19,8 @@
 		<flag name="enca">Detects the character encoding automatically</flag>
 		<flag name="game">Enable Game music support</flag>
 		<flag name="gnome">Enable Gnome hotkey support (requires Qt5DBus)</flag>
-		<flag name="kde">Use kde4 notifier system</flag>
 		<flag name="lyrics">Fetch track lyrics from the web</flag>
 		<flag name="midi">Enable midi support using wildmidi library</flag>
-		<flag name="mpris">Enable MPRIS support</flag>
 		<flag name="notifier">Enable qmmps' notifier system</flag>
 		<flag name="opus">Enable the opus plugin</flag>
 		<flag name="projectm">Enable projectm music visualization plugin</flag>

@@ -35,23 +35,8 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		if [[ $(get_version_component_range 2) -ge 9 ]]; then
-			: ${QT_MINIMAL:=5.7.1}
-		fi
-		if ! [[ $(get_version_component_range 2) -le 9 && $(get_version_component_range 3) -lt 50 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.34.0}
-		fi
-		if [[ ${KDE_BUILD_TYPE} = live && $(get_version_component_range 2) -ne 8 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=9999}
-			: ${QT_MINIMAL:=5.7.1}
-		fi
-		;;
-	kde-apps)
-		if [[ $(get_version_component_range 1) -ge 17 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.32.0}
-		fi
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			: ${QT_MINIMAL:=5.7.1}
+			: ${FRAMEWORKS_MINIMAL:=9999}
 		fi
 		;;
 esac
@@ -59,17 +44,17 @@ esac
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.6.1}
+: ${QT_MINIMAL:=5.7.1}
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.29.0}
+: ${FRAMEWORKS_MINIMAL:=5.37.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.4.1}
+: ${PLASMA_MINIMAL:=5.10.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
@@ -253,12 +238,7 @@ add_kdeapps_dep() {
 	elif [[ ${CATEGORY} = kde-apps ]]; then
 		version=${PV}
 	elif [[ -z "${version}" ]] ; then
-		# In KDE applications world, 5.9999 > yy.mm.x
-		if [[ ${PV} = 5.9999 || ${PV} = 9999 ]]; then
-			version=5.9999
-		else
-			version=${KDE_APPS_MINIMAL}
-		fi
+		version=${KDE_APPS_MINIMAL}
 	fi
 
 	_add_category_dep kde-apps "${1}" "${2}" "${version}" "${4}"

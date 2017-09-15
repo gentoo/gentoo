@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="High-performance regular expression matching library"
-SRC_URI="https://github.com/01org/hyperscan/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/01org/hyperscan/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://01.org/hyperscan"
 
 LICENSE="BSD"

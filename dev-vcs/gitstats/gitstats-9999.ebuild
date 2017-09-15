@@ -10,10 +10,7 @@ inherit python-r1
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	KEYWORDS=""
-	EGIT_REPO_URI="
-		git://github.com/hoxu/gitstats.git
-		https://github.com/hoxu/gitstats.git
-	"
+	EGIT_REPO_URI="https://github.com/hoxu/${PN}.git"
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${P}.tar.xz"

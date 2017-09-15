@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/OpenRC/${PN}.git"
+	EGIT_REPO_URI="https://github.com/OpenRC/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~williamh/dist/${P}.tar.bz2"

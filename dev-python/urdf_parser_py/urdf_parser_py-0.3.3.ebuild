@@ -19,5 +19,5 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openbabel/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc openmp test wxwidgets"
 
 RDEPEND="
@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS doc/*.inc doc/README* doc/*.mol2"
 
-PATCHES=( "${FILESDIR}"/${P}-test_lib_path.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-test_lib_path.patch
+	"${FILESDIR}"/${P}-gcc-6_and_7-backport.patch
+	)
 
 pkg_setup() {
 	if use openmp; then

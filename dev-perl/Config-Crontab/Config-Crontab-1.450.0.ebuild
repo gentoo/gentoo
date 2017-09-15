@@ -12,7 +12,7 @@ DESCRIPTION="Read/Write Vixie compatible crontab(5) files"
 LICENSE="Artistic"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=""
 DEPEND="virtual/perl-ExtUtils-MakeMaker"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	!<dev-python/ipython-4.0.0[smp]
 	>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '<dev-python/ipython-6[${PYTHON_USEDEP}]' 'python2_7')
 	dev-python/notebook[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]

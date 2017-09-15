@@ -1,0 +1,92 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Thu, 1 Dec 2016 21:18:56 +0100
+Subject: Dynamically link to libastrometry.so, when possible
+
+---
+ blind/Makefile | 10 ++++------
+ libkd/Makefile |  3 +--
+ util/Makefile  |  8 +++-----
+ 3 files changed, 8 insertions(+), 13 deletions(-)
+
+diff --git a/blind/Makefile b/blind/Makefile
+index 33895df..6e7c55c 100644
+--- a/blind/Makefile
++++ b/blind/Makefile
+@@ -43,9 +43,7 @@ LDFLAGS := $(LDFLAGS_DEF)
+ LDLIBS := $(LDLIBS_DEF)
+ LDLIBS += $(ANFILES_LIB)
+ 
+-SLIB := $(ENGINE_LIB)
+-SLIB += $(CATS_SLIB)
+-SLIB += $(ANFILES_SLIB)
++SLIB := $(ENGINE_SO)
+ 
+ CAIRO_SLIB := $(COMMON)/cairoutils.o
+ CAIRO_SLIB += $(SLIB)
+@@ -131,7 +129,7 @@ ENGINE_OBJS += new-wcs.o fits-guess-scale.o cut-table.o \
+ 	resort-xylist.o
+ 
+ BUILD_INDEX_OBJS := build-index.o uniformize-catalog.o startree2.o hpquads.o \
+-	quad-builder.o quad-utils.o codefile.o codetree.o unpermute-stars.o \
++	quad-builder.o codefile.o codetree.o unpermute-stars.o \
+ 	unpermute-quads.o merge-index.o 
+ ENGINE_OBJS += $(BUILD_INDEX_OBJS)
+ 
+@@ -147,8 +145,8 @@ $(ENGINE_LIB): $(ENGINE_OBJS)
+ 	$(AR) rc $@ $(ENGINE_OBJS)
+ 	$(RANLIB) $@
+ 
+-$(ENGINE_SO): $(ENGINE_OBJS) $(SLIB)
+-	$(CC) $(LDFLAGS) $(SHAREDLIBFLAGS) -Wl,-soname,$@.0 -o $@.0 $^ $(LDLIBS)
++$(ENGINE_SO): $(ENGINE_LIB) $(CATS_SLIB) $(ANFILES_SLIB)
++	$(CC) $(LDFLAGS) $(SHAREDLIBFLAGS) -Wl,-soname,$@.0 -o $@.0 -Wl,--whole-archive $^ -Wl,--no-whole-archive $(LDLIBS) -lpthread
+ 	ln -s  $@.0 $@
+ 
+ # old and miscellaneous executables that aren't part of the pipeline.
+diff --git a/libkd/Makefile b/libkd/Makefile
+index f535986..0442518 100644
+--- a/libkd/Makefile
++++ b/libkd/Makefile
+@@ -90,8 +90,7 @@ py: pyspherematch
+ PYSPHEREMATCH_OBJ := pyspherematch.o
+ 
+ spherematch_c$(PYTHON_SO_EXT): pyspherematch.c setup.py $(SLIB)
+-	LDFLAGS="$(LDFLAGS)" LDLIBS="$(LDLIBS)" \
+-	SLIB="$(SLIB)" \
++	LDFLAGS="$(LDFLAGS)" LDLIBS="-L../blind -lastrometry" \
+ 	INC="$(INC)" \
+ 	CFLAGS="$(CFLAGS)" \
+ 	$(PYTHON) setup.py build_ext --inplace --force --build-temp .
+diff --git a/util/Makefile b/util/Makefile
+index f88df1b..0ecf716 100644
+--- a/util/Makefile
++++ b/util/Makefile
+@@ -86,8 +86,7 @@ CFLAGS += -I.
+ 
+ LDFLAGS += $(LDFLAGS_DEF)
+ 
+-LDLIBS := $(LDLIBS_DEF)
+-LDLIBS += $(ANFILES_LIB)
++LDLIBS := $(LDLIBS_DEF) -lm
+ 
+ SHAREDLIBFLAGS := $(SHAREDLIBFLAGS_DEF)
+ 
+@@ -122,8 +121,7 @@ ANUTILS_H := an-bool.h an-endian.h an-opts.h an-thread-pthreads.h \
+ ANUTILS_H_PATH := $(addprefix $(INCLUDE_DIR)/,$(ANUTILS_H))
+ 
+ ifndef NO_QFITS
+-ANUTILS_OBJ += fitsioutils.o sip_qfits.o fitstable.o fitsbin.o fitsfile.o \
+-	tic.o
++ANUTILS_OBJ += fitsioutils.o sip_qfits.o fitstable.o fitsbin.o fitsfile.o
+ ANUTILS_DEPS += $(QFITS_LIB)
+ endif
+ 
+@@ -164,7 +162,7 @@ wcs-pv2sip: wcs-pv2sip.o $(ANUTILS_SLIB)
+ ALL_OBJ += wcs-pv2sip.o
+ 
+ _util$(PYTHON_SO_EXT): util.i lanczos.i $(ANFILES_SLIB)
+-	LDFLAGS="$(LDFLAGS)" LDLIBS="$(LDLIBS)" SLIB="$(ANFILES_SLIB)" \
++	LDFLAGS="$(LDFLAGS)" LDLIBS="-L../blind -lastrometry" \
+ 	INC="$(ANFILES_INC)" CFLAGS="$(CFLAGS)" \
+ 	$(PYTHON) setup.py build_ext -v --inplace --build-temp .
+ util.py: util.i lanczos.i

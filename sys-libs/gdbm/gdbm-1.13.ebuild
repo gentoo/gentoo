@@ -14,15 +14,14 @@ SRC_URI="mirror://gnu/gdbm/${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+berkdb exporter nls static-libs"
+IUSE="+berkdb exporter nls +readline static-libs"
 
-RDEPEND="
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r4
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+DEPEND="
+	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
+"
+RDEPEND="${DEPEND}"
 
-EX_S="${WORKDIR}"/${EX_P}
+EX_S="${WORKDIR}/${EX_P}"
 
 src_prepare() {
 	elibtoolize
@@ -39,15 +38,17 @@ multilib_src_configure() {
 		popd >/dev/null
 	fi
 
-	ECONF_SOURCE=${S} \
-	econf \
-		--includedir="${EPREFIX}"/usr/include/gdbm \
-		--with-gdbm183-libdir="${EX_S}/.libs" \
-		--with-gdbm183-includedir="${EX_S}" \
-		$(use_enable berkdb libgdbm-compat) \
-		$(multilib_native_use_enable exporter gdbm-export) \
-		$(use_enable nls) \
+	local myeconfargs=(
+		--includedir="${EPREFIX}"/usr/include/gdbm
+		--with-gdbm183-libdir="${EX_S}/.libs"
+		--with-gdbm183-includedir="${EX_S}"
+		$(use_enable berkdb libgdbm-compat)
+		$(multilib_native_use_enable exporter gdbm-export)
+		$(use_enable nls)
 		$(use_enable static-libs static)
+		$(use_with readline)
+	)
+	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -59,7 +60,7 @@ multilib_src_install_all() {
 	einstalldocs
 
 	use static-libs || find "${ED}" -name '*.la' -delete
-	mv "${ED}"/usr/include/gdbm/gdbm.h "${ED}"/usr/include/ || die
+	mv "${ED%/}"/usr/include/gdbm/gdbm.h "${ED%/}"/usr/include/ || die
 }
 
 pkg_preinst() {

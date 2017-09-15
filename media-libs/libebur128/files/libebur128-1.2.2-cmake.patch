@@ -1,0 +1,52 @@
+From d374f1983966fc3ff65bcd73e5f12d358c4f1273 Mon Sep 17 00:00:00 2001
+From: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Date: Sat, 4 Mar 2017 14:33:07 +0100
+Subject: [PATCH] CMakeList: do not overwrite module path
+
+Currently, the CMakeList.txt completely overwrites the CMAKE_MODULE_PATH
+variable.
+
+This is problematic when an upper-layer buildsystem wants to set its own
+module path to use custom modules.
+
+For example, Buildroot [0] provides a custom platform description [1] to
+fix cross-compilation issue. Overwriting the module path means that this
+custom platform description is not found:
+
+    System is unknown to cmake, create:
+    Platform/Buildroot to use this system, please send your config file
+    to cmake@www.cmake.org so it can be added to cmake
+
+Providing such a custom platform description is what the upstream cmake
+devs suggest [2], quoting:
+
+    If a toolchain file specifies CMAKE_SYSTEM_NAME such that a custom
+    `Platform/MySystem.cmake` file is loaded then the latter can set
+    them [*] as needed for the target platform.
+
+[*] offending settings causing RPATH issues during cross-compilation.
+
+So we need to append to the module path, rather than replace it blindly.
+
+[0] https://buildroot.org/
+[1] https://git.buildroot.org/buildroot/tree/support/misc/Buildroot.cmake
+[2] http://public.kitware.com/pipermail/cmake/2017-February/065063.html
+
+Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eea18a6..ff352eb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+ project(libebur128 C)
+ 
+-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
++list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+ 

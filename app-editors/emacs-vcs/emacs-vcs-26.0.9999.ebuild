@@ -45,7 +45,7 @@ RDEPEND="sys-libs/ncurses:0=
 	mailutils? ( net-mail/mailutils[clients] )
 	!mailutils? ( net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	X? (

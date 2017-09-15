@@ -227,9 +227,9 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]]; then
 	# 5.5.33 and 10.0.5 add TokuDB. Authors strongly recommend jemalloc or perfomance suffers
 	mysql_version_is_at_least "10.0.5" && IUSE="${IUSE} odbc xml"
 	if [[ ${HAS_TOOLS_PATCH} ]] ; then
-		REQUIRED_USE="${REQUIRED_USE} !server? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
+		REQUIRED_USE="${REQUIRED_USE} !server? ( !oqgraph !sphinx ) tokudb? ( jemalloc !tcmalloc )"
 	else
-		REQUIRED_USE="${REQUIRED_USE} minimal? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
+		REQUIRED_USE="${REQUIRED_USE} minimal? ( !oqgraph !sphinx ) tokudb? ( jemalloc !tcmalloc )"
 	fi
 	# MariaDB 10.1 introduces InnoDB/XtraDB compression with external libraries
 	# Choices are bzip2, lz4, lzma, lzo.  bzip2 and lzma enabled by default as they are system libraries
@@ -265,7 +265,7 @@ fi
 
 REQUIRED_USE="
 	${REQUIRED_USE} tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
-	 static? ( yassl )"
+	 static? ( yassl !openssl !libressl )"
 
 #
 # DEPENDENCIES:

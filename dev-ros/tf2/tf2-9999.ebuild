@@ -20,4 +20,6 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=[threads]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-ros/roscpp )
+"

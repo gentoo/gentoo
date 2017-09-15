@@ -11,6 +11,6 @@
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
-		<doc>http://doc.qt.io/</doc>
+		<doc>https://doc.qt.io/</doc>
 	</upstream>
 </pkgmetadata>

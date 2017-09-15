@@ -14,10 +14,11 @@ EGIT_REPO_URI="https://github.com/radare/radare2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ssl"
+IUSE="ssl +system-capstone"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
+	system-capstone? ( dev-libs/capstone:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -25,5 +26,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-		$(use_with ssl openssl)
+		$(use_with ssl openssl) \
+		$(use_with system-capstone syscapstone)
 }

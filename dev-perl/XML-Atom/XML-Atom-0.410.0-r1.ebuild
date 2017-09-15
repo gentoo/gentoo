@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=MIYAGAWA
-MODULE_VERSION=0.41
+DIST_AUTHOR=MIYAGAWA
+DIST_VERSION=0.41
 inherit perl-module
 
 DESCRIPTION="Atom feed and API implementation"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="dev-perl/libwww-perl
+RDEPEND="
+	dev-perl/libwww-perl
 	dev-perl/URI
 	dev-perl/Class-Data-Inheritable
 	>=dev-perl/XML-LibXML-1.69
@@ -23,7 +24,12 @@ DEPEND="dev-perl/libwww-perl
 	dev-perl/Digest-SHA1
 	dev-perl/HTML-Parser
 	dev-perl/LWP-Authen-Wsse
-	virtual/perl-MIME-Base64"
-RDEPEND="${DEPEND}"
+	virtual/perl-MIME-Base64
+"
+DEPEND="${RDEPEND}"
 
-SRC_TEST=do
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install/use lib q[.]; use inc::Module::Install/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}

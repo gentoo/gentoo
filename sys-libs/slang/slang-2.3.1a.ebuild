@@ -18,7 +18,7 @@ IUSE="cjk pcre png readline static-libs zlib"
 RDEPEND="sys-libs/ncurses:0=
 	pcre? ( >=dev-libs/libpcre-8.33-r1[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
-	cjk? ( >=dev-libs/oniguruma-5.9.5[${MULTILIB_USEDEP}] )
+	cjk? ( >=dev-libs/oniguruma-5.9.5:=[${MULTILIB_USEDEP}] )
 	readline? ( >=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	abi_x86_32? (

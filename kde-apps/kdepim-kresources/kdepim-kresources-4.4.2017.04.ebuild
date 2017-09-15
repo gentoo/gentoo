@@ -5,13 +5,14 @@ EAPI=6
 
 KMNAME="kdepim"
 KMMODULE="kresources"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="KDE PIM groupware plugin collection (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
 IUSE="debug"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	$(add_kdeapps_dep kaddressbook)
@@ -19,6 +20,8 @@ DEPEND="
 	$(add_kdeapps_dep libkdepim)
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
 
 KMEXTRACTONLY="
 	kaddressbook/common/
@@ -30,7 +33,7 @@ KMEXTRACTONLY="
 KMLOADLIBS="libkdepim"
 
 src_prepare() {
-	local kconfig_compiler="${EKDEDIR}/bin/kconfig_compiler"
+	local kconfig_compiler="${EPREFIX}/usr/bin/kconfig_compiler"
 
 	pushd kaddressbook/common > /dev/null
 	# create the kabprefs_base.h file
@@ -44,6 +47,6 @@ src_install() {
 	kde4-meta_src_install
 
 	# Install headers needed by kdepim-wizards, egroupware stuff gone
-	insinto "${PREFIX}"/include/${PN}
+	insinto /usr/include/${PN}
 	doins "${CMAKE_BUILD_DIR}"/${KMMODULE}/{groupwise,slox}/*.h
 }

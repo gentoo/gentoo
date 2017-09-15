@@ -13,7 +13,7 @@ IUSE="test"
 SLOT="0"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://github.com/fmtlib/fmt.git"
+	EGIT_REPO_URI="https://github.com/fmtlib/fmt.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/fmtlib/fmt/archive/${PV}.tar.gz -> ${P}.tar.gz"

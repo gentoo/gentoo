@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Establish an ISA relationship with base classes at compile time"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sh ~sparc ~x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS=""
 IUSE=""
 
 SRC_TEST=do

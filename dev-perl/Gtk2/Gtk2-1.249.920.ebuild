@@ -11,7 +11,7 @@ DESCRIPTION="Perl bindings for GTK2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ~ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.300.0
 	>=dev-perl/ExtUtils-PkgConfig-1.30.0
+	test? ( x11-libs/gdk-pixbuf[jpeg] )
 "
 
 src_test(){

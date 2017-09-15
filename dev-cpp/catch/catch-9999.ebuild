@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/philsquared/Catch.git"
+EGIT_BRANCH=catch2
 inherit cmake-utils git-r3
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
@@ -14,8 +15,6 @@ LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-
-CMAKE_USE_DIR=${S}/projects/CMake
 
 # CMake is only used to build & run tests, so override phases
 src_configure() { :; }

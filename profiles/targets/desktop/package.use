@@ -1,6 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Aug 2017)
+# Required by flac and mp3
+kde-apps/k3b taglib
+kde-frameworks/kfilemetadata taglib
+
+# Brian Evans <grknight@gentoo.org> (18 Jul 2017)
+# Don't force users to enable gd on PHP due to desktop defaults
+dev-lang/php -exif -truetype
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (02 Feb 2017)
 # Enable luajit for OSC and youtube-dl support by default.
 # Override default +sdl from desktop profile and disable sdl outputs.

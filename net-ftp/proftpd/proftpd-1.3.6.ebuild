@@ -30,7 +30,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynmasq exec ifsession ifversion ident ipv6
 	kerberos ldap libressl linguas_bg_BG linguas_en_US linguas_fr_FR linguas_it_IT linguas_ja_JP linguas_ko_KR
 	linguas_ru_RU linguas_zh_CN linguas_zh_TW log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
-	ratio readme rewrite selinux sftp shaper sitemisc snmp softquota sqlite ssl tcpd test trace unique_id vroot xinetd"
+	ratio readme rewrite selinux sftp shaper sitemisc snmp softquota sqlite ssl tcpd test unique_id vroot xinetd"
 # TODO: geoip
 REQUIRED_USE="ban? ( ctrls )
 	msg? ( ctrls )
@@ -62,6 +62,10 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-ftp )"
 
 S="${WORKDIR}/${P/_/}"
+
+PATCHES=("${FILESDIR}"/${PN}-1.3.6-use-trace.patch)
+
+RESTRICT=test # tests corrupt memory. need to be fixed upstream first
 
 in_dir() {
 	pushd "${WORKDIR}/${1}" || die
@@ -218,7 +222,7 @@ src_configure() {
 		$(use_enable pam auth-pam) \
 		$(use_enable pcre) \
 		$(use_enable test tests) \
-		$(use_enable trace) \
+		--enable-trace \
 		$(use_enable userland_GNU shadow) \
 		$(use_enable userland_GNU autoshadow) \
 		${c:1}

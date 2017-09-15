@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package exposes combinators that can wrap arbitrary
+		monadic actions. They run the action and potentially retry
+		running it with some configurable delay for a configurable
+		number of times.
+		The purpose is to make it easier to work with IO and
+		especially network IO actions that often experience temporary
+		failure and warrant retrying of the original action. For
+		example, a database query may time out for a while, in which
+		case we should hang back for a bit and retry the query instead
+		of simply raising an exception.
+	</longdescription>
+</pkgmetadata>

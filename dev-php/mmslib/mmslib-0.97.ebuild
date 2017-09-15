@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="library for encoding, decoding, and sending MMSes"
 HOMEPAGE="http://www.hellkvist.org/software/#MMSLIB"
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 DEPEND=""
-RDEPEND="dev-lang/php"
+RDEPEND="dev-lang/php:*"
 
 src_install() {
 	insinto "/usr/share/php/${PN}"

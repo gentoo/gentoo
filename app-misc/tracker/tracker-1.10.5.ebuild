@@ -16,7 +16,7 @@ IUSE="cue elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf gstreamer
 gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager pdf playlist
 rss seccomp stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 REQUIRED_USE="
 	?? ( gstreamer ffmpeg )
@@ -31,7 +31,7 @@ REQUIRED_USE="
 # >=media-libs/libmediaart-1.9:2.0 is suggested to be disabled for 1.10 for security; revisit for 1.12 (configure flag)
 RDEPEND="
 	>=app-i18n/enca-1.9
-	>dev-db/sqlite-3.8.4.2:=
+	<dev-db/sqlite-3.20
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
@@ -218,12 +218,12 @@ src_install() {
 
 	# Manually symlink extensions for {firefox,thunderbird}-bin
 	if use firefox-bookmarks; then
-		dosym /usr/share/xul-ext/trackerfox \
+		dosym ../../../share/xul-ext/trackerfox \
 			/usr/$(get_libdir)/firefox-bin/extensions/trackerfox@bustany.org
 	fi
 
 	if use thunderbird; then
-		dosym /usr/share/xul-ext/trackerbird \
+		dosym ../../../share/xul-ext/trackerbird \
 			/usr/$(get_libdir)/thunderbird-bin/extensions/trackerbird@bustany.org
 	fi
 }

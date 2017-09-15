@@ -97,7 +97,7 @@
  	ar ru $(SOFA_LIB_NAME) $?
  
 +$(SOFA_SHLIB_NAME): $(SOFA_OBS)
-+	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(SOFA_SHLIB_NAME).0 -lm $? -o $(SOFA_SHLIB_NAME).0.0
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(SOFA_SHLIB_NAME).0 $? -lm -o $(SOFA_SHLIB_NAME).0.0
 +	ln -sfn $(SOFA_SHLIB_NAME).0.0 $(SOFA_SHLIB_NAME).0
 +
  # Install the header files.

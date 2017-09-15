@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python3_4 python3_5 )
+EAPI=6
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit systemd autotools eutils gnome2-utils python-r1
 
@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="gtk? ( ${PYTHON_REQUIRED_USE} )"
 
 src_prepare() {
-	epatch_user
+	default
 	eautoreconf
 }
 

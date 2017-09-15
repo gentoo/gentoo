@@ -1,0 +1,17 @@
+--- a/uitoolkit/fb/ui_font.c
++++ b/uitoolkit/fb/ui_font.c
+@@ -1625,11 +1625,11 @@
+       }
+       percent = 0;
+ #else /* __linux__ */
+-      if (stat("/usr/share/fonts/X11/misc/unifont.pcf.gz", &st) == 0) {
+-        font_file = "/usr/share/fonts/X11/misc/unifont.pcf.gz";
++      if (stat(XDATADIR "/fonts/unifont/unifont.pcf.gz", &st) == 0) {
++        font_file = XDATADIR "/fonts/unifont/unifont.pcf.gz";
+         percent = 100;
+       } else {
+-        font_file = "/usr/share/fonts/X11/misc/10x20.pcf.gz";
++        font_file = XDATADIR "/fonts/misc/10x20.pcf.gz";
+         percent = 0;
+       }
+ #endif

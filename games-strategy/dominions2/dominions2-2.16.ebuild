@@ -20,7 +20,7 @@ SRC_URI="x86? (
 # further information on their homepage or on the game CD :(
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 RESTRICT="bindist strip"
 

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>desktop-effects@gentoo.org</email>
-	<name>Desktop effects</name>
-</maintainer>
+<!--maintainer-needed-->
 <longdescription lang="en">
 Package with several compiz-fusion plugins:
 fakeargb, mswitch, snow, tile.

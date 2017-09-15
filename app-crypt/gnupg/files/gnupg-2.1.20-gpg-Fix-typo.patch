@@ -1,0 +1,27 @@
+From 692208fd6c1547cc7dd2062a1d1c9499bc0a8be4 Mon Sep 17 00:00:00 2001
+From: Justus Winter <justus@g10code.com>
+Date: Mon, 8 May 2017 13:52:39 +0200
+Subject: [PATCH] gpg: Fix typo.
+
+--
+Signed-off-by: Justus Winter <justus@g10code.com>
+---
+ g10/packet.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/g10/packet.h b/g10/packet.h
+index a10495c..d42510d 100644
+--- a/g10/packet.h
++++ b/g10/packet.h
+@@ -623,7 +623,7 @@ struct parse_packet_ctx_s
+   iobuf_t inp;       /* The input stream with the packets.  */
+   struct packet_struct last_pkt; /* The last parsed packet.  */
+   int free_last_pkt; /* Indicates that LAST_PKT must be freed.  */
+-  int skip_meta;     /* Skip right trust packets.  */
++  int skip_meta;     /* Skip ring trust packets.  */
+ };
+ typedef struct parse_packet_ctx_s *parse_packet_ctx_t;
+ 
+-- 
+2.10.2
+

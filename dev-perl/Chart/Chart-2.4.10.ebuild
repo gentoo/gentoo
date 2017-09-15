@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Perl Chart Module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="test"
 
 RDEPEND=">=dev-perl/GD-2.0.36"

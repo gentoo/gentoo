@@ -1,0 +1,158 @@
+Author: Jan Beyer <jan@beathovn.de>
+Copyright: Copyright 2014 Jan Beyer
+License: The same as the Bibus packaging.
+Description: Patch to migrate bibus from wxpython2.8 to wxpython 3.0
+ Thanks to Olly Betts for the script that did the main work:
+ http://anonscm.debian.org/cgit/collab-maint/wx-migration-tools.git
+
+--- a/ShortcutEd.py
++++ b/ShortcutEd.py
+@@ -27,7 +27,7 @@
+ 		self.category = category	# edited category
+ 		self.short = short		# current shortcuts list
+ 		# begin wxGlade: Capture.__init__
+-		kwds["style"] = wx.DIALOG_MODAL|wx.CAPTION|wx.RESIZE_BORDER|wx.THICK_FRAME
++		kwds["style"] = wx.CAPTION|wx.RESIZE_BORDER|wx.RESIZE_BORDER
+ 		wx.Dialog.__init__(self, *args, **kwds)
+ 		self.label_1 = wx.StaticText(self, -1, _("Capture from field"))
+ 		self.choice_field = wx.Choice(self, -1, choices=[])
+@@ -110,7 +110,7 @@
+ 		self.parentshort = short	# we keep a copy for updating it latter
+ 		self.db = db				# connection to the database
+ 		# begin wxGlade: ShortcutEd.__init__
+-		kwds["style"] = wx.DIALOG_MODAL|wx.CAPTION|wx.RESIZE_BORDER|wx.THICK_FRAME
++		kwds["style"] = wx.CAPTION|wx.RESIZE_BORDER|wx.RESIZE_BORDER
+ 		wx.Dialog.__init__(self, *args, **kwds)
+ 		self.list_shortcuts = wx.ListCtrl(self, -1, style=wx.LC_REPORT|wx.LC_EDIT_LABELS|wx.LC_NO_HEADER|wx.LC_SINGLE_SEL|wx.SUNKEN_BORDER)
+ 		self.button_new = wx.Button(self, -1, _("New"))
+--- a/bibus.py
++++ b/bibus.py
+@@ -120,7 +120,7 @@
+ #
+ class Bibus(wx.App):
+ 	def OnInit(self):
+-		wx.InitAllImageHandlers()
++		# no-op in wxPython2.8 and later: wx.InitAllImageHandlers()
+ 		self.SetAppName(APPNAME)
+ 		# reading and eventually converting the config file
+ 		if os.path.isfile( wx.StandardPaths.Get().GetUserDataDir() ):	# old config file in $HOME/.bibus
+--- a/Pref_Shortcuts.py
++++ b/Pref_Shortcuts.py
+@@ -26,7 +26,7 @@
+ 	def __init__(self, categories, *args, **kwds):
+ 		self.categories = categories  # current categories in parent. may be different from BIB.SHORTCUTS
+ 		# begin wxGlade: NewCategory.__init__
+-		kwds["style"] = wx.DIALOG_MODAL|wx.CAPTION|wx.RESIZE_BORDER|wx.THICK_FRAME
++		kwds["style"] = wx.CAPTION|wx.RESIZE_BORDER|wx.RESIZE_BORDER
+ 		wx.Dialog.__init__(self, *args, **kwds)
+ 		self.label_1 = wx.StaticText(self, -1, _("Name"))
+ 		self.text_ctrl_name = wx.TextCtrl(self, -1, "")
+@@ -80,7 +80,7 @@
+ 	def onFile(self,evt):
+ 		tmpfilen = self.text_ctrl_name.GetValue()
+ 		if not tmpfilen: tmpfilen = 'shortcut'
+-		filen = wx.FileSelector(_("Choose the file location and name"),default_filename=tmpfilen,parent=self, flags = wx.SAVE )
++		filen = wx.FileSelector(_("Choose the file location and name"),default_filename=tmpfilen,parent=self, flags = wx.FD_SAVE )
+ 		if filen:
+ 			self.text_ctrl_filen.SetValue(filen)
+ 
+--- a/moveFile.py
++++ b/moveFile.py
+@@ -96,7 +96,7 @@
+ 
+ if __name__ == "__main__":
+     app = wx.PySimpleApp(0)
+-    wx.InitAllImageHandlers()
++    # no-op in wxPython2.8 and later: wx.InitAllImageHandlers()
+     dialog_1 = MoveFile(None, -1, "")
+     app.SetTopWindow(dialog_1)
+     dialog_1.Show()
+--- a/OOo.py
++++ b/OOo.py
+@@ -103,7 +103,7 @@
+ 				self.saveDoc()
+ 				self.finalize()
+ 			except bibOOo_IOError:
+-				url = wx.FileSelector('Save as...',default_extension='odt',wildcard="%s (*.odt)|*.odt|%s (*.sxw)|*.sxw|%s (*.*)|*.*"%(_("OpenDocument Text"),_("OpenOffice.org Text Document"),  _("All files")),flags=wx.SAVE|wx.OVERWRITE_PROMPT)
++				url = wx.FileSelector('Save as...',default_extension='odt',wildcard="%s (*.odt)|*.odt|%s (*.sxw)|*.sxw|%s (*.*)|*.*"%(_("OpenDocument Text"),_("OpenOffice.org Text Document"),  _("All files")),flags=wx.FD_SAVE|wx.FD_OVERWRITE_PROMPT)
+ 				if url == '':
+ 					return
+ 				else:
+--- a/BibFrame.py
++++ b/BibFrame.py
+@@ -971,7 +971,7 @@
+ 
+     def __getFile(self,question=_("Please choose the file encoding"),mode='r',enc='ascii'):
+         """Get file and encoding. Return open file or None"""
+-        dlg = wx.FileDialog(self,_("Choose a File to import"),style = wx.OPEN | wx.CHANGE_DIR)
++        dlg = wx.FileDialog(self,_("Choose a File to import"),style = wx.FD_OPEN | wx.FD_CHANGE_DIR)
+         try:
+             answer = dlg.ShowModal()
+             filename = dlg.GetPath()
+@@ -1048,7 +1048,7 @@
+ # --------------------------------- File Export --------------------------------------------
+     def __saveFile(self,question=_("Please choose the file encoding"),mode='r',enc='latin_1'):
+         """Get file and encoding. Return open file or None"""
+-        dlg = wx.FileDialog(self,_("Save as..."),style = wx.SAVE | wx.OVERWRITE_PROMPT | wx.CHANGE_DIR)
++        dlg = wx.FileDialog(self,_("Save as..."),style = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT | wx.FD_CHANGE_DIR)
+         try:
+             answer = dlg.ShowModal()
+             filename = dlg.GetPath()
+@@ -1124,7 +1124,7 @@
+ 
+     def __saveFileHTML(self,question=_("Choose the destination file"),mode='w'):
+         """Get file. Return open file or None"""
+-        dlg = wx.FileDialog(self,_("Save as..."),style = wx.SAVE | wx.OVERWRITE_PROMPT | wx.CHANGE_DIR)
++        dlg = wx.FileDialog(self,_("Save as..."),style = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT | wx.FD_CHANGE_DIR)
+         try:
+             answer = dlg.ShowModal()
+         finally:
+@@ -1176,7 +1176,7 @@
+         ret = wx.GetSingleChoiceIndex(_('What do you want to export?'),_('Export'),[_('Selection'),_('Current key'),_('All')])
+         if ret == -1: return
+         # get the file destination
+-        answer = wx.FileSelector(_("Choose the name of the SQLite database"), flags = wx.SAVE | wx.OVERWRITE_PROMPT | wx.CHANGE_DIR )
++        answer = wx.FileSelector(_("Choose the name of the SQLite database"), flags = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT | wx.FD_CHANGE_DIR )
+         if answer == '': return
+         # we create the database
+         try:
+@@ -1746,7 +1746,7 @@
+ 
+         arcstarttime=time.time()
+         archivename=time.strftime('bibusbackup_%y%m%d_%H%M%S.tar', time.localtime(arcstarttime))
+-        dlg = wx.FileDialog(self,_("Archive all user data into file ..."),style = wx.SAVE | wx.OVERWRITE_PROMPT | wx.CHANGE_DIR)
++        dlg = wx.FileDialog(self,_("Archive all user data into file ..."),style = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT | wx.FD_CHANGE_DIR)
+         dlg.SetDirectory(userDocsDir)
+         dlg.SetFilename(archivename)
+         dlg.SetWildcard("TAR archive (*.tar)|*.tar")        
+--- a/FirstStart/MySQL_Setup.py
++++ b/FirstStart/MySQL_Setup.py
+@@ -533,7 +533,7 @@
+ 
+ if __name__ == "__main__":
+     app = wx.PySimpleApp(0)
+-    wx.InitAllImageHandlers()
++    # no-op in wxPython2.8 and later: wx.InitAllImageHandlers()
+     MySQL_Setup = MySQL_Setup_Main(None, -1, "")
+     app.SetTopWindow(MySQL_Setup)
+     MySQL_Setup.Show()
+--- a/StyleEditor/FormatEditor.py
++++ b/StyleEditor/FormatEditor.py
+@@ -33,7 +33,7 @@
+ 
+ class FormatEditor(wx.Dialog):
+ 	def __init__(self, *args, **kwds):
+-		#kwds["style"] = wx.TAB_TRAVERSAL | wx.CAPTION | wx.MINIMIZE_BOX | wx.MAXIMIZE_BOX | wx.THICK_FRAME
++		#kwds["style"] = wx.TAB_TRAVERSAL | wx.CAPTION | wx.MINIMIZE_BOX | wx.MAXIMIZE_BOX | wx.RESIZE_BORDER
+ 		kwds["style"] = wx.DEFAULT_FRAME_STYLE
+ 		self.filename = kwds['filename']
+ 		del kwds['filename']
+@@ -130,7 +130,7 @@
+ 			wx.MessageBox(_("The style name is not correct, please avoid: '/' under linux; '\\' and ':' under Windows"),_("Style name"),style=wx.OK|wx.ICON_ERROR)
+ 
+ #	def SaveAs(self,evt):
+-#		self.filename = wx.FileSelector(_('Where to save the style file?'), flags = wx.SAVE | wx.OVERWRITE_PROMPT)
++#		self.filename = wx.FileSelector(_('Where to save the style file?'), flags = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
+ #		#print "%r"%self.filename
+ #		if self.filename:
+ #			self.Save(evt)

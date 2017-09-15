@@ -1,0 +1,178 @@
+--- a/configure.in
++++ b/configure.in
+@@ -38,6 +38,8 @@
+ AC_PROG_LIBTOOL
+ AC_PROG_LN_S
+ 
++PKG_PROG_PKG_CONFIG
++
+ # Checks for libraries.
+ AC_CHECK_LIB([m], [pow],,AC_MSG_ERROR(-lm was not found but required.))
+ 
+@@ -81,7 +83,15 @@
+ AC_CHECK_FUNCS(random_r nrand48)
+ 
+ # Check for ImageMagick.
+-PKG_CHECK_MODULES(Wand, Wand >= 6.4)
++PKG_CHECK_MODULES(Wand, [Wand >= 6.4],,
++	[PKG_CHECK_MODULES(Wand, MagickWand >= 6.4)]
++)
++
++old_CPPFLAGS="$CPPFLAGS"; CPPFLAGS="$Wand_CFLAGS"
++AC_CHECK_HEADERS([magick/api.h] [wand/magick-wand.h],,
++	AC_CHECK_HEADERS([MagickCore/MagickCore.h] [MagickWand/MagickWand.h])
++)
++CPPFLAGS="$old_CPPFLAGS"
+ 
+ if test -d src/skyrocket_sounds ; then
+ 	AC_ARG_ENABLE(sound, [  --disable-sound         Don't compile with sound.])
+--- a/src/TexMgr.cpp
++++ b/src/TexMgr.cpp
+@@ -25,8 +25,19 @@
+ #endif
+ #include <cstdlib>
+ 
++#ifdef HAVE_MAGICK_API_H
++#ifdef HAVE_WAND_MAGICK_WAND_H
+ #include <magick/api.h>
+ #include <wand/magick-wand.h>
++#endif /* HAVE_WAND_MAGICK_WAND_H */
++#endif /* HAVE_MAGICK_API_H */
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++#ifdef HAVE_MAGICKWAND_MAGICKWAND_H
++#include <MagickCore/MagickCore.h>
++#include <MagickWand/MagickWand.h>
++#endif /* HAVE_MAGICKWAND_MAGICKWAND_H */
++#endif /* HAVE_MAGICKCORE_MAGICKCORE_H */
++
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -255,10 +266,18 @@
+ // Directory scanning + image loading code in a separate function callable either from loadNextImage or another thread if pthreads is available.
+ void TexMgr::loadNextImageFromDisk() {
+ 	MagickWand *magick_wand = NewMagickWand();
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++	ExceptionInfo *exception;
++#else
+ 	ExceptionInfo exception;
++#endif
+ 	int dirLoop = 0;
+ 
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++	exception = AcquireExceptionInfo ();
++#else
+ 	GetExceptionInfo (&exception);
++#endif
+ 
+ 	int imageLoaded = 0;
+ 	do {
+@@ -317,7 +336,11 @@
+ 		nextH = ohh;
+ 	}
+ 
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, oww, ohh, "RGBA", CharPixel, nextTex, exception);
++#else
+ 	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, oww, ohh, "RGBA", CharPixel, nextTex, &exception);
++#endif
+ 
+ 	magick_wand = DestroyMagickWand (magick_wand);
+ 
+--- a/src/matrixview.c
++++ b/src/matrixview.c
+@@ -84,8 +84,19 @@
+ float *texcoords;
+ unsigned char *colors;
+ 
++#ifdef HAVE_MAGICK_API_H
++#ifdef HAVE_WAND_MAGICK_WAND_H
+ #include <magick/api.h>
+ #include <wand/magick-wand.h>
++#endif /* HAVE_WAND_MAGICK_WAND_H */
++#endif /* HAVE_MAGICK_API_H */
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++#ifdef HAVE_MAGICKWAND_MAGICKWAND_H
++#include <MagickCore/MagickCore.h>
++#include <MagickWand/MagickWand.h>
++#endif /* HAVE_MAGICKWAND_MAGICKWAND_H */
++#endif /* HAVE_MAGICKCORE_MAGICKCORE_H */
++
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -99,10 +110,18 @@
+ // Directory scanning + image loading code in a separate function callable either from loadNextImage or another thread if pthreads is available.
+ void loadNextImageFromDisk() {
+ 	MagickWand *magick_wand = NewMagickWand();
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++	ExceptionInfo *exception;
++#else
+ 	ExceptionInfo exception;
++#endif
+ 	int dirLoop = 0;
+ 
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++	exception = AcquireExceptionInfo ();
++#else
+ 	GetExceptionInfo (&exception);
++#endif
+ 
+ 	int imageLoaded = 0;
+ 	do {
+@@ -159,7 +178,11 @@
+ 	if (!next_pic)
+ 		next_pic = (unsigned char *)malloc (text_x * text_y);
+ 
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, text_x, text_y, "I", CharPixel, next_pic, exception);
++#else
+ 	ExportImagePixels (GetImageFromMagickWand(magick_wand), 0, 0, text_x, text_y, "I", CharPixel, next_pic, &exception);
++#endif
+ 
+ 	magick_wand = DestroyMagickWand (magick_wand);
+ }
+@@ -211,11 +234,19 @@
+ 			pthread_cond_signal(next_pic_cond);
+ 		}
+ 	} else {
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++		ExceptionInfo *exception;
++#else
+ 		ExceptionInfo exception;
++#endif
+ 		Image *image = NULL, *scaled_image;
+ 		ImageInfo *image_info;
+ 
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++		exception = AcquireExceptionInfo ();
++#else
+ 		GetExceptionInfo (&exception);
++#endif
+ 
+ 		if (!pics)
+ 			LOAD_TEXTURE (pics, cpics, cpics_compressedsize, cpics_size)
+@@ -227,6 +258,15 @@
+ 			image_info = CloneImageInfo ((ImageInfo *) NULL);
+ 			image_info->size = AcquireMagickMemory(sizeof("90x70"));
+ 			strcpy(image_info->size, "90x70");
++#ifdef HAVE_MAGICKCORE_MAGICKCORE_H
++			image = AcquireImage(image_info, exception);
++
++			ImportImagePixels(image, 0, 0, 90, 70, "I", CharPixel, (unsigned char *)(pics + ((random () & 15) * (90 * 70))), exception);
++
++			scaled_image = ScaleImage (image, text_x, text_y, exception);
++
++			ExportImagePixels (scaled_image, 0, 0, text_x, text_y, "I", CharPixel, pic, exception);
++#else
+ 			image = AcquireImage(image_info);
+ 
+ 			ImportImagePixels(image, 0, 0, 90, 70, "I", CharPixel, (unsigned char *)(pics + ((random () & 15) * (90 * 70))));
+@@ -234,6 +274,7 @@
+ 			scaled_image = ScaleImage (image, text_x, text_y, &exception);
+ 
+ 			ExportImagePixels (scaled_image, 0, 0, text_x, text_y, "I", CharPixel, pic, &exception);
++#endif
+ 
+ 			DestroyImage (image);
+ 			DestroyImage (scaled_image);

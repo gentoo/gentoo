@@ -7,6 +7,8 @@
     </maintainer>
 	<use>
 		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
+		<flag name="xtrans">Build with Xtrans support; 
+		WARNING: Disabling this flag will result in ICE binding on all interfaces</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/mate-session-manager</remote-id>

@@ -8,7 +8,7 @@ DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/neovim/neovim.git"
+	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -72,6 +72,6 @@ src_install() {
 
 	# conditionally install a symlink for nvimpager
 	if use nvimpager; then
-		dosym /usr/share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
+		dosym ../share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
 	fi
 }

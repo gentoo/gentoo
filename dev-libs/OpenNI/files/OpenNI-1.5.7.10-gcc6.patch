@@ -1,0 +1,145 @@
+Bug: https://bugs.gentoo.org/594988
+Upstream PR: https://github.com/OpenNI/OpenNI/pull/122
+
+diff -Naur a/Samples/NiUserSelection/glh/glh_linear.h b/Samples/NiUserSelection/glh/glh_linear.h
+--- a/Samples/NiUserSelection/glh/glh_linear.h	2013-11-12 11:30:03.000000000 -0500
++++ b/Samples/NiUserSelection/glh/glh_linear.h	2017-06-22 18:43:34.470107723 -0400
+@@ -77,7 +77,7 @@
+ #define     GLH_EPSILON         GLH_REAL(10e-6)
+ #define     GLH_PI              GLH_REAL(3.1415926535897932384626433832795)    
+ 
+-#define     equivalent(a,b)     (((a < b + GLH_EPSILON) && (a > b - GLH_EPSILON)) ? true : false)
++#define     is_equivalent(a,b)     (((a < b + GLH_EPSILON) && (a > b - GLH_EPSILON)) ? true : false)
+ 
+ namespace glh
+ {
+@@ -1093,7 +1093,7 @@
+ 
+         real norm = q[0] * q[0] + q[1] * q[1] + q[2] * q[2] + q[3] * q[3];
+ 
+-        s = (equivalent(norm,GLH_ZERO)) ? GLH_ZERO : ( GLH_TWO / norm );
++        s = (is_equivalent(norm,GLH_ZERO)) ? GLH_ZERO : ( GLH_TWO / norm );
+ 
+         xs = q[0] * s;
+         ys = q[1] * s;
+@@ -1194,7 +1194,7 @@
+             theta *= real(0.5);
+             real sin_theta = real(sin(theta));
+ 
+-            if (!equivalent(sqnorm,GLH_ONE)) 
++            if (!is_equivalent(sqnorm,GLH_ONE)) 
+               sin_theta /= real(sqrt(sqnorm));
+             x = sin_theta * axis.v[0];
+             y = sin_theta * axis.v[1];
+@@ -1216,14 +1216,14 @@
+ 
+         alpha = p1.dot(p2);
+ 
+-        if(equivalent(alpha,GLH_ONE))
++        if(is_equivalent(alpha,GLH_ONE))
+         { 
+             *this = identity(); 
+             return *this; 
+         }
+ 
+         // ensures that the anti-parallel case leads to a positive dot
+-        if(equivalent(alpha,-GLH_ONE))
++        if(is_equivalent(alpha,-GLH_ONE))
+         {
+             vec3 v;
+ 
+@@ -1280,7 +1280,7 @@
+     void normalize()
+     {
+         real rnorm = GLH_ONE / real(sqrt(w * w + x * x + y * y + z * z));
+-        if (equivalent(rnorm, GLH_ZERO))
++        if (is_equivalent(rnorm, GLH_ZERO))
+             return;
+         x *= rnorm;
+         y *= rnorm;
+@@ -1439,10 +1439,10 @@
+     inline
+     bool operator == ( const quaternion & q1, const quaternion & q2 )
+     {
+-        return (equivalent(q1.x, q2.x) &&
+-		        equivalent(q1.y, q2.y) &&
+-		        equivalent(q1.z, q2.z) &&
+-		        equivalent(q1.w, q2.w) );
++        return (is_equivalent(q1.x, q2.x) &&
++		        is_equivalent(q1.y, q2.y) &&
++		        is_equivalent(q1.z, q2.z) &&
++		        is_equivalent(q1.w, q2.w) );
+     }
+ 
+     inline
+diff -Naur a/Samples/NiViewer/glh/glh_linear.h b/Samples/NiViewer/glh/glh_linear.h
+--- a/Samples/NiViewer/glh/glh_linear.h	2013-11-12 11:30:03.000000000 -0500
++++ b/Samples/NiViewer/glh/glh_linear.h	2017-06-22 18:43:34.470107723 -0400
+@@ -77,7 +77,7 @@
+ #define     GLH_EPSILON         GLH_REAL(10e-6)
+ #define     GLH_PI              GLH_REAL(3.1415926535897932384626433832795)    
+ 
+-#define     equivalent(a,b)     (((a < b + GLH_EPSILON) && (a > b - GLH_EPSILON)) ? true : false)
++#define     is_equivalent(a,b)     (((a < b + GLH_EPSILON) && (a > b - GLH_EPSILON)) ? true : false)
+ 
+ namespace glh
+ {
+@@ -1093,7 +1093,7 @@
+ 
+         real norm = q[0] * q[0] + q[1] * q[1] + q[2] * q[2] + q[3] * q[3];
+ 
+-        s = (equivalent(norm,GLH_ZERO)) ? GLH_ZERO : ( GLH_TWO / norm );
++        s = (is_equivalent(norm,GLH_ZERO)) ? GLH_ZERO : ( GLH_TWO / norm );
+ 
+         xs = q[0] * s;
+         ys = q[1] * s;
+@@ -1194,7 +1194,7 @@
+             theta *= real(0.5);
+             real sin_theta = real(sin(theta));
+ 
+-            if (!equivalent(sqnorm,GLH_ONE)) 
++            if (!is_equivalent(sqnorm,GLH_ONE)) 
+               sin_theta /= real(sqrt(sqnorm));
+             x = sin_theta * axis.v[0];
+             y = sin_theta * axis.v[1];
+@@ -1216,14 +1216,14 @@
+ 
+         alpha = p1.dot(p2);
+ 
+-        if(equivalent(alpha,GLH_ONE))
++        if(is_equivalent(alpha,GLH_ONE))
+         { 
+             *this = identity(); 
+             return *this; 
+         }
+ 
+         // ensures that the anti-parallel case leads to a positive dot
+-        if(equivalent(alpha,-GLH_ONE))
++        if(is_equivalent(alpha,-GLH_ONE))
+         {
+             vec3 v;
+ 
+@@ -1280,7 +1280,7 @@
+     void normalize()
+     {
+         real rnorm = GLH_ONE / real(sqrt(w * w + x * x + y * y + z * z));
+-        if (equivalent(rnorm, GLH_ZERO))
++        if (is_equivalent(rnorm, GLH_ZERO))
+             return;
+         x *= rnorm;
+         y *= rnorm;
+@@ -1439,10 +1439,10 @@
+     inline
+     bool operator == ( const quaternion & q1, const quaternion & q2 )
+     {
+-        return (equivalent(q1.x, q2.x) &&
+-		        equivalent(q1.y, q2.y) &&
+-		        equivalent(q1.z, q2.z) &&
+-		        equivalent(q1.w, q2.w) );
++        return (is_equivalent(q1.x, q2.x) &&
++		        is_equivalent(q1.y, q2.y) &&
++		        is_equivalent(q1.z, q2.z) &&
++		        is_equivalent(q1.w, q2.w) );
+     }
+ 
+     inline

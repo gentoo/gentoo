@@ -6,8 +6,8 @@ EAPI=6
 inherit versionator linux-info flag-o-matic toolchain-funcs udev
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
-HOMEPAGE="http://www.open-iscsi.org/"
-SRC_URI="http://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://www.open-iscsi.com/"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

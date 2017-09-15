@@ -9,9 +9,9 @@ inherit eutils flag-o-matic savedconfig toolchain-funcs multilib
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
 if [[ ${PV} == "9999" ]] ; then
-	MY_P=${PN}
+	MY_P=${P}
 	EGIT_REPO_URI="git://busybox.net/busybox.git"
-	inherit git-2
+	inherit git-r3
 else
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"

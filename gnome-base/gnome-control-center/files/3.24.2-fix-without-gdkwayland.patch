@@ -1,0 +1,47 @@
+From 13437b364fe56ffaaa421b8396ba761a2e0cc13d Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sat, 15 Jul 2017 06:22:16 +0300
+Subject: [PATCH] common: Add missing GDK_WINDOWING_WAYLAND guards for
+ gsd_udev_device_manager_lookup_device
+
+commit 8f9259ac06db added a gdkwayland specific lookup_device implementation, guard it
+with compile-time GDK_WINDOWING_WAYLAND as other places are.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=780544
+---
+ panels/common/gsd-device-manager-udev.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/panels/common/gsd-device-manager-udev.c b/panels/common/gsd-device-manager-udev.c
+index fdda02a..5dc4447 100644
+--- a/panels/common/gsd-device-manager-udev.c
++++ b/panels/common/gsd-device-manager-udev.c
+@@ -24,7 +24,9 @@
+ #include <string.h>
+ #include <gudev/gudev.h>
+ 
++#ifdef GDK_WINDOWING_WAYLAND
+ #include <gdk/gdkwayland.h>
++#endif
+ #include "gsd-device-manager-udev.h"
+ 
+ struct _GsdUdevDeviceManager
+@@ -227,6 +229,7 @@ static GsdDevice *
+ gsd_udev_device_manager_lookup_device (GsdDeviceManager *manager,
+ 				       GdkDevice	*gdk_device)
+ {
++#ifdef GDK_WINDOWING_WAYLAND
+ 	const gchar *node_path;
+ 	GHashTableIter iter;
+ 	GsdDevice *device;
+@@ -243,6 +246,7 @@ gsd_udev_device_manager_lookup_device (GsdDeviceManager *manager,
+ 			return device;
+ 		}
+ 	}
++#endif
+ 
+ 	return NULL;
+ }
+-- 
+2.10.2
+

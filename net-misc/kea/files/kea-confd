@@ -1,0 +1,4 @@
+# Which services should be taken into account?
+DHCP4="true"
+DHCP6="false"
+DDNS="false"

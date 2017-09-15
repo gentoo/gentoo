@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+state_dir=/var/lib/acpilight
+
+extra_commands="save restore"
+
+depend() {
+	need localmount
+	after bootmisc modules isapnp coldplug hotplug
+}
+
+restore() {
+	ebegin "Restoring brightness level"
+	if [ ! -r "${state_dir}/state" ] ; then
+		ewarn "No brightness level in ${state_dir}/state"
+		eend 0
+		return 0
+	fi
+	xbacklight "$(cat "${state_dir}/state")"
+	eend $?
+}
+
+save() {
+	ebegin "Saving brightness level"
+	mkdir -p "${state_dir}" && xbacklight -get > "${state_dir}/state"
+	eend $?
+}
+
+start() {
+	if [ "${RESTORE_ON_START}" = "yes" ]; then
+		restore
+	fi
+}
+
+stop() {
+	if [ "${SAVE_ON_STOP}" = "yes" ]; then
+		save
+	fi
+}

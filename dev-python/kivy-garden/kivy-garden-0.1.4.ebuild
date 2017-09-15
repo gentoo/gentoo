@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1
 
@@ -28,7 +28,7 @@ PATCHES=( "${FILESDIR}/remove_bat-${PV}.patch" )
 
 src_prepare() {
 	distutils-r1_src_prepare
-	mv "${S}/bin/garden" "${S}/bin/kivy-garden"
+	mv "${S}/bin/garden" "${S}/bin/kivy-garden" || die
 }
 
 pkg_postinst() {

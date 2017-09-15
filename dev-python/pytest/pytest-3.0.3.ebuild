@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="doc test"
 
 # When bumping, please check setup.py for the proper py version
@@ -45,6 +45,9 @@ python_prepare_all() {
 	# versioning performed by the eclass.
 	sed -e "s/return points/return {'py.test': target}/" -i setup.py || die "sed failed"
 	grep -qF "py>=${PY_VER}" setup.py || die "Incorrect dev-python/py dependency"
+
+	# https://bugs.gentoo.org/598442
+	rm testing/test_pdb.py || die
 
 	distutils-r1_python_prepare_all
 }

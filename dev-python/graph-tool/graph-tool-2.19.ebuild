@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://downloads.skewed.de/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="An efficient python module for manipulation and statistical analysis of graphs"
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	sci-mathematics/cgal
+	>=sci-mathematics/cgal-4.9
 	cairo? (
 		dev-cpp/cairomm
 		dev-python/pycairo[${PYTHON_USEDEP}]

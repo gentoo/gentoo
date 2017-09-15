@@ -15,13 +15,13 @@ else
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
-HOMEPAGE="http://weechat.org/"
+HOMEPAGE="https://weechat.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
 
 NETWORKS="+irc"
-PLUGINS="+alias +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
+PLUGINS="+alias +buflist +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
@@ -100,30 +100,31 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_NCURSES=ON
+		-DENABLE_NLS=$(usex nls)
+		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_LARGEFILE=ON
-		-DENABLE_JAVASCRIPT=OFF
 		-DENABLE_ALIAS=$(usex alias)
-		-DENABLE_DOC=$(usex doc)
+		-DENABLE_ASPELL=$(usex spell)
+		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
 		-DENABLE_EXEC=$(usex exec)
 		-DENABLE_FIFO=$(usex fifo)
-		-DENABLE_GUILE=$(usex guile)
 		-DENABLE_IRC=$(usex irc)
 		-DENABLE_LOGGER=$(usex logger)
-		-DENABLE_LUA=$(usex lua)
-		-DENABLE_NLS=$(usex nls)
+		-DENABLE_RELAY=$(usex relay)
+		-DENABLE_SCRIPT=$(usex scripts)
+		-DENABLE_SCRIPTS=$(usex scripts)
 		-DENABLE_PERL=$(usex perl)
 		-DENABLE_PYTHON=$(usex python)
-		-DENABLE_RELAY=$(usex relay)
 		-DENABLE_RUBY=$(usex ruby)
-		-DENABLE_SCRIPTS=$(usex scripts)
-		-DENABLE_SCRIPT=$(usex scripts)
-		-DENABLE_ASPELL=$(usex spell)
-		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_LUA=$(usex lua)
 		-DENABLE_TCL=$(usex tcl)
-		-DENABLE_TESTS=$(usex test)
+		-DENABLE_GUILE=$(usex guile)
+		-DENABLE_JAVASCRIPT=OFF
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_XFER=$(usex xfer)
+		-DENABLE_DOC=$(usex doc)
+		-DENABLE_TESTS=$(usex test)
 	)
 
 	if use python; then

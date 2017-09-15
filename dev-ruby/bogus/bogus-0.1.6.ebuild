@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Decreases the need for integration tests by ensuring that the things you stub or mock actually exist."
+DESCRIPTION="Ensuring that the things you stub or mock actually exist"
 HOMEPAGE="https://github.com/psyho/bogus"
 
 LICENSE="MIT"

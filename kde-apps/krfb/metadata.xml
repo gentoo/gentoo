@@ -5,8 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="telepathy">Enable desktop sharing through a telepathy client</flag>
-		<flag name="ktp">Enable displaying of KDE Telepathy contacts</flag>
-	</use>
 </pkgmetadata>

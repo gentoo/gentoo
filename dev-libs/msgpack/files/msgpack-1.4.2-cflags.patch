@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7a9b241..73fe07c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -283,13 +283,6 @@ IF (MSGPACK_BUILD_TESTS)
+     ADD_SUBDIRECTORY (test)
+ ENDIF ()
+ 
+-IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+-    IF (MSGPACK_ENABLE_SHARED)
+-        SET_PROPERTY (TARGET msgpackc APPEND_STRING PROPERTY COMPILE_FLAGS "-Wall -Wextra -Werror -g -O3 -DPIC")
+-    ENDIF ()
+-    SET_PROPERTY (TARGET msgpackc-static APPEND_STRING PROPERTY COMPILE_FLAGS "-Wall -Wextra -Werror -g -O3" )
+-ENDIF ()
+-
+ IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+     SET_PROPERTY (TARGET msgpackc APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-mismatched-tags")
+ ENDIF ()
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 5dfbbe4..5d1cb8a 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -74,9 +74,6 @@ FOREACH (source_file ${check_PROGRAMS})
+         ${CMAKE_THREAD_LIBS_INIT}
+     )
+     ADD_TEST (${source_file_we} ${source_file_we})
+-    IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+-        SET_PROPERTY (TARGET ${source_file_we} APPEND_STRING PROPERTY COMPILE_FLAGS "-Wall -Wextra -Werror -g -O3 ")
+-    ENDIF ()
+     IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+         SET_PROPERTY (TARGET ${source_file_we} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-mismatched-tags")
+     ENDIF ()

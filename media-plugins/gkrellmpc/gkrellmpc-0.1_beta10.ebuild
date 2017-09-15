@@ -10,7 +10,7 @@ SRC_URI="http://mina.naguib.ca/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="threads"
 
 RDEPEND=">=app-admin/gkrellm-2[X]

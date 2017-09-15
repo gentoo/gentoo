@@ -1,15 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=(python{2_7,3_4,3_5})
+PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
 
 EGIT_BRANCH="master"
 
 inherit distutils-r1 python-r1 git-2
 
-EGIT_REPO_URI="git://github.com/dol-sen/pyGPG.git"
+EGIT_REPO_URI="https://github.com/dol-sen/pyGPG.git"
 
 DESCRIPTION="A python interface wrapper for gnupg's gpg command"
 HOMEPAGE="https://github.com/dol-sen/pyGPG"

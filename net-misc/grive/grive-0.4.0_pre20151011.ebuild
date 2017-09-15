@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit cmake-utils
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/vitalif/${PN}2.git"
+	EGIT_REPO_URI="https://github.com/vitalif/${PN}2.git"
 else
 	inherit vcs-snapshot
 	COMMIT="44cb91f94e67bcdad77ca564b4d8083cedf72251"

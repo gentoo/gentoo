@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,11 +21,11 @@ COMMON_DEPEND="
 	net-libs/libnfnetlink
 	dbus? ( sys-apps/dbus )
 	zlib? ( sys-libs/zlib )
-	qt4? ( sys-auth/polkit-qt[qt4(+)]
+	qt4? ( sys-auth/polkit-qt[qt4]
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
-		|| ( kde-apps/kdesu x11-misc/ktsuss )
+		|| ( kde-plasma/kde-cli-tools[kdesu] kde-apps/kdesu x11-misc/ktsuss )
 	)
 "
 DEPEND="${COMMON_DEPEND}

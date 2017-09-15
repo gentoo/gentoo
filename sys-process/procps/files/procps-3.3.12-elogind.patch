@@ -1,0 +1,265 @@
+--- procps-ng-3.3.12/configure	2016-07-10 07:32:09.862265237 +0200
++++ procps-ng-3.3.12/configure	2016-07-10 07:32:09.862265237 +0200
+@@ -650,6 +650,10 @@
+ BUILD_KILL_TRUE
+ BUILD_PIDOF_FALSE
+ BUILD_PIDOF_TRUE
++WITH_ELOGIND_FALSE
++WITH_ELOGIND_TRUE
++ELOGIND_LIBS
++ELOGIND_CFLAGS
+ WITH_SYSTEMD_FALSE
+ WITH_SYSTEMD_TRUE
+ SYSTEMD_LIBS
+@@ -815,6 +819,7 @@
+ enable_libselinux
+ with_ncurses
+ with_systemd
++with_elogind
+ enable_pidof
+ enable_kill
+ enable_skill
+@@ -845,7 +850,9 @@
+ NCURSESW_CFLAGS
+ NCURSESW_LIBS
+ SYSTEMD_CFLAGS
+-SYSTEMD_LIBS'
++SYSTEMD_LIBS
++ELOGIND_CFLAGS
++ELOGIND_LIBS'
+ 
+ 
+ # Initialize some variables set by options.
+@@ -1521,6 +1528,7 @@
+   --without-libintl-prefix     don't search for libintl in includedir and libdir
+   --without-ncurses       build only applications not needing ncurses
+   --with-systemd          enable systemd support
++  --with-elogind          enable elogind support
+ 
+ Some influential environment variables:
+   CC          C compiler command
+@@ -1550,6 +1558,10 @@
+               C compiler flags for SYSTEMD, overriding pkg-config
+   SYSTEMD_LIBS
+               linker flags for SYSTEMD, overriding pkg-config
++  ELOGIND_CFLAGS
++              C compiler flags for ELOGIND, overriding pkg-config
++  ELOGIND_LIBS
++              linker flags for ELOGIND, overriding pkg-config
+ 
+ Use these variables to override the choices made by `configure' or to help
+ it to find libraries and programs with nonstandard names/locations.
+@@ -17295,6 +17307,127 @@
+ fi
+ 
+ 
++
++# Check whether --with-elogind was given.
++if test "${with_elogind+set}" = set; then :
++  withval=$with_elogind;
++else
++  with_elogind=no
++
++fi
++
++# Do not allow elogind if systemd is wanted and found
++if test "x$with_systemd" != "xno"; then :
++  with_elogind=no
++fi
++
++if test "x$with_elogind" != "xno"; then :
++
++
++pkg_failed=no
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for libelogind" >&5
++$as_echo_n "checking for libelogind... " >&6; }
++
++if test -n "$ELOGIND_CFLAGS"; then
++    pkg_cv_ELOGIND_CFLAGS="$ELOGIND_CFLAGS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libelogind\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libelogind") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_ELOGIND_CFLAGS=`$PKG_CONFIG --cflags "libelogind" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++if test -n "$ELOGIND_LIBS"; then
++    pkg_cv_ELOGIND_LIBS="$ELOGIND_LIBS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libelogind\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libelogind") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_ELOGIND_LIBS=`$PKG_CONFIG --libs "libelogind" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        ELOGIND_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "libelogind" 2>&1`
++        else
++	        ELOGIND_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "libelogind" 2>&1`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$ELOGIND_PKG_ERRORS" >&5
++
++	as_fn_error $? "Package requirements (libelogind) were not met:
++
++$ELOGIND_PKG_ERRORS
++
++Consider adjusting the PKG_CONFIG_PATH environment variable if you
++installed software in a non-standard prefix.
++
++Alternatively, you may set the environment variables ELOGIND_CFLAGS
++and ELOGIND_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details." "$LINENO" 5
++elif test $pkg_failed = untried; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
++$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
++as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
++is in your PATH or set the PKG_CONFIG environment variable to the full
++path to pkg-config.
++
++Alternatively, you may set the environment variables ELOGIND_CFLAGS
++and ELOGIND_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details.
++
++To get pkg-config, see <http://pkg-config.freedesktop.org/>.
++See \`config.log' for more details" "$LINENO" 5; }
++else
++	ELOGIND_CFLAGS=$pkg_cv_ELOGIND_CFLAGS
++	ELOGIND_LIBS=$pkg_cv_ELOGIND_LIBS
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++fi
++
++$as_echo "#define WITH_ELOGIND 1" >>confdefs.h
++
++
++fi
++ if test x$with_elogind != xno; then
++  WITH_ELOGIND_TRUE=
++  WITH_ELOGIND_FALSE='#'
++else
++  WITH_ELOGIND_TRUE='#'
++  WITH_ELOGIND_FALSE=
++fi
++
++
+ # AC_ARG_ENABLEs
+ # Check whether --enable-pidof was given.
+ if test "${enable_pidof+set}" = set; then :
+@@ -17712,6 +17845,10 @@
+   as_fn_error $? "conditional \"WITH_SYSTEMD\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+ fi
++if test -z "${WITH_ELOGIND_TRUE}" && test -z "${WITH_ELOGIND_FALSE}"; then
++  as_fn_error $? "conditional \"WITH_ELOGIND\" was never defined.
++Usually this means the macro was only invoked conditionally." "$LINENO" 5
++fi
+ if test -z "${BUILD_PIDOF_TRUE}" && test -z "${BUILD_PIDOF_FALSE}"; then
+   as_fn_error $? "conditional \"BUILD_PIDOF\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+--- procps-ng-3.3.12/configure.ac	2016-07-09 23:49:25.817307031 +0200
++++ procps-ng-3.3.12/configure.ac	2016-07-09 23:49:25.817307031 +0200
+@@ -155,6 +155,19 @@
+ ])
+ AM_CONDITIONAL([WITH_SYSTEMD], [test x$with_systemd != xno])
+ 
++AC_ARG_WITH([elogind],
++  [AS_HELP_STRING([--with-elogind], [enable elogind support])],
++  [], [with_elogind=no]
++)
++# Do not allow elogind if systemd is wanted and found
++AS_IF([test "x$with_systemd" != "xno"], [with_elogind=no])
++
++AS_IF([test "x$with_elogind" != "xno"], [
++  PKG_CHECK_MODULES([ELOGIND], [libelogind])
++  AC_DEFINE(WITH_ELOGIND, 1, [enable elogind support])
++])
++AM_CONDITIONAL([WITH_ELOGIND], [test x$with_elogind != xno])
++
+ # AC_ARG_ENABLEs
+ AC_ARG_ENABLE([pidof],
+   AS_HELP_STRING([--disable-pidof], [do not build pidof]),
+--- procps-ng-3.3.12/Makefile.am	2016-07-10 00:40:44.235121270 +0200
++++ procps-ng-3.3.12/Makefile.am	2016-07-10 00:40:44.235121270 +0200
+@@ -155,6 +155,10 @@
+ proc_libprocps_la_LIBADD += @SYSTEMD_LIBS@
+ endif
+ 
++if WITH_ELOGIND
++proc_libprocps_la_LIBADD += @ELOGIND_LIBS@
++endif
++
+ proc_libprocps_la_LDFLAGS = \
+ 	-version-info $(LIBprocps_CURRENT):$(LIBprocps_REVISION):$(LIBprocps_AGE) \
+ 	-no-undefined \
+--- procps-ng-3.3.12/Makefile.in	2016-07-10 07:32:11.170237828 +0200
++++ procps-ng-3.3.12/Makefile.in	2016-07-10 07:32:11.170237828 +0200
+@@ -126,6 +126,7 @@
+ @BUILD_SKILL_FALSE@	snice.1
+ 
+ @WITH_SYSTEMD_TRUE@am__append_14 = @SYSTEMD_LIBS@
++@WITH_ELOGIND_TRUE@am__append_15 = @ELOGIND_LIBS@
+ TESTS = lib/test_strtod_nol$(EXEEXT)
+ check_PROGRAMS = $(am__EXEEXT_5)
+ noinst_PROGRAMS = lib/test_strutils$(EXEEXT) \
+@@ -688,6 +689,8 @@
+ ECHO_N = @ECHO_N@
+ ECHO_T = @ECHO_T@
+ EGREP = @EGREP@
++ELOGIND_CFLAGS = @ELOGIND_CFLAGS@
++ELOGIND_LIBS = @ELOGIND_LIBS@
+ EXEEXT = @EXEEXT@
+ FGREP = @FGREP@
+ GMSGFMT = @GMSGFMT@
+--- procps-ng-3.3.12/proc/readproc.c	2016-07-09 23:49:25.825306872 +0200
++++ procps-ng-3.3.12/proc/readproc.c	2016-07-09 23:49:25.825306872 +0200
+@@ -40,6 +40,9 @@
+ #ifdef WITH_SYSTEMD
+ #include <systemd/sd-login.h>
+ #endif
++#ifdef WITH_ELOGIND
++#include <elogind/sd-login.h>
++#endif
+ 
+ // sometimes it's easier to do this manually, w/o gcc helping
+ #ifdef PROF
+@@ -518,7 +521,7 @@
+ }
+ 
+ static void sd2proc(proc_t *restrict p) {
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+     char buf[64];
+     uid_t uid;
+ 

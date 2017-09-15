@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>tetromino@gentoo.org</email>
-<name>Alexandre Rostovtsev</name>
+	<email>tetromino@gentoo.org</email>
+	<name>Alexandre Rostovtsev</name>
 </maintainer>
 <maintainer type="person">
-<email>leio@gentoo.org</email>
-<description>Backup maintainer, CC on bugs and assign to remaining</description>
+	<email>leio@gentoo.org</email>
+	<name>Mart Raudsepp</name>
 </maintainer>
 <longdescription lang="en">
 	Sysprof is a sampling CPU profiler for Linux that profiles the entire system,
@@ -15,4 +15,8 @@
 	Sysprof handles shared libraries and applications do not need to be recompiled.
 	In fact they don't even have to be restarted.
 </longdescription>
+<use>
+	<flag name="systemd">Build the sysprofd daemon service, required to run the UI without root permissions.
+		Relies on <pkg>sys-apps/systemd</pkg> running as the init system.</flag>
+</use>
 </pkgmetadata>

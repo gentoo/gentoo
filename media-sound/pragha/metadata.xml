@@ -16,6 +16,6 @@
     <flag name="soup">Search metadata on AcoustID and radios on TuneIn using <pkg>net-libs/libsoup</pkg></flag>
   </use>
   <upstream>
-    <remote-id type="github">matiasdelellis/pragha</remote-id>
+    <remote-id type="github">pragha-music-player/pragha</remote-id>
   </upstream>
 </pkgmetadata>

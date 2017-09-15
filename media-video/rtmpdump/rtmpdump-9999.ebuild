@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit git-2 multilib toolchain-funcs multilib-minimal flag-o-matic
+inherit git-r3 multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
-EGIT_REPO_URI="git://git.ffmpeg.org/rtmpdump"
+EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
@@ -40,6 +40,7 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
+	eapply_user
 	multilib_copy_sources
 }
 
@@ -69,6 +70,6 @@ multilib_src_install() {
 	else
 		cd librtmp || die
 	fi
-	emake DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man" \
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" mandir='$(prefix)/share/man' \
 		CRYPTO="${crypto}" install
 }

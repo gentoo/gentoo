@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eutils fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator
+inherit autotools eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
@@ -31,15 +31,15 @@ D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 WDC_V="20150204"
 WINE_DESKTOP_COMMON_P="wine-desktop-common-${WDC_V}"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix"
-HOMEPAGE="http://www.winehq.org/"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with optional external patchsets"
+HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://github.com/NP-Hardass/wine-desktop-common/archive/${WDC_V}.tar.gz -> ${WINE_DESKTOP_COMMON_P}.tar.gz
 "
 
 if [[ ${PV} == "9999" ]] ; then
-	STAGING_EGIT_REPO_URI="git://github.com/wine-compholio/wine-staging.git"
-	D3D9_EGIT_REPO_URI="git://github.com/sarnex/wine-d3d9-patches.git"
+	STAGING_EGIT_REPO_URI="https://github.com/wine-compholio/wine-staging.git"
+	D3D9_EGIT_REPO_URI="https://github.com/sarnex/wine-d3d9-patches.git"
 else
 	SRC_URI="${SRC_URI}
 	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )
@@ -67,6 +67,7 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -147,7 +148,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.0 )
+	mono? ( app-emulation/wine-mono:4.7.1 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -400,7 +401,7 @@ src_prepare() {
 	# Edit wine.desktop to work for specific variant
 	sed -e "/^Exec=/s/wine /wine-${WINE_VARIANT} /" -i loader/wine.desktop || die
 
-	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
+	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}/${WINE_DESKTOP_COMMON_P}/icons/oic_winlogo.ico" dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
@@ -461,6 +462,7 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
+		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
@@ -539,8 +541,8 @@ multilib_src_install_all() {
 	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine64{,-preloader}
 
 	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym "${MY_PREFIX}"/bin/wine{64,} # 404331
-		dosym "${MY_PREFIX}"/bin/wine{64,}-preloader
+		dosym wine64 "${MY_PREFIX}"/bin/wine # 404331
+		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
 	fi
 
 	# Failglob for bin and man loops
@@ -578,7 +580,7 @@ pkg_postinst() {
 
 	eselect wine update --all --if-unset || die
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
@@ -611,5 +613,5 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

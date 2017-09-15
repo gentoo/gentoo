@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2 multilib virtualx
+inherit gnome2 multilib virtualx
 
 DESCRIPTION="A library for using 3D graphics hardware to draw pretty pictures"
-HOMEPAGE="http://www.cogl3d.org/"
+HOMEPAGE="https://www.cogl3d.org/"
 
 LICENSE="MIT BSD"
 SLOT="1.0/20" # subslot = .so version
@@ -17,7 +17,7 @@ REQUIRED_USE="
 	wayland? ( gles2 )
 	|| ( gles2 opengl )
 "
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32:2

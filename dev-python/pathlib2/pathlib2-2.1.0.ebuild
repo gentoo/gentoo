@@ -13,11 +13,12 @@ SRC_URI="mirror://pypi/p/pathlib2/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
 	${EPYTHON} test_pathlib2.py || die

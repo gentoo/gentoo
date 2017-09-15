@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/SchedMD/slurm.git"
+	EGIT_REPO_URI="https://github.com/SchedMD/slurm.git"
 	INHERIT_GIT="git-r3"
 	SRC_URI=""
 	KEYWORDS=""
@@ -17,7 +17,7 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
-	SRC_URI="http://www.schedmd.com/download/latest/${MY_P}.tar.bz2"
+	SRC_URI="https://www.schedmd.com/download/latest/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -25,7 +25,7 @@ fi
 inherit autotools eutils pam perl-module user prefix ${INHERIT_GIT}
 
 DESCRIPTION="SLURM: A Highly Scalable Resource Manager"
-HOMEPAGE="http://www.schedmd.com"
+HOMEPAGE="https://www.schedmd.com"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -53,7 +53,8 @@ LIBSLURMDB_PERL_S="${WORKDIR}/${P}/contribs/perlapi/libslurmdb/perl"
 RESTRICT="primaryuri"
 
 PATCHES=(
-	"${FILESDIR}/${P}-disable-sview.patch"
+	"${FILESDIR}"/${P}-disable-sview.patch
+	"${FILESDIR}"/${P}-sysmacros.patch
 )
 
 src_unpack() {
@@ -219,7 +220,7 @@ pkg_postinst() {
 	elog "through a (javascript enabled) browser to create a configureation file."
 	elog "Copy that file to /etc/slurm/slurm.conf on all nodes (including the headnode) of your cluster."
 	einfo
-	elog "For cgroup support, please see http://www.schedmd.com/slurmdocs/cgroup.conf.html"
+	elog "For cgroup support, please see https://www.schedmd.com/slurmdocs/cgroup.conf.html"
 	elog "Your kernel must be compiled with the wanted cgroup feature:"
 	elog "    General setup  --->"
 	elog "        [*] Control Group support  --->"

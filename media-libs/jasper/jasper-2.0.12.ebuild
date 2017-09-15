@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="Implementation of the codec specified in the JPEG-2000 Part-1 standard"
-HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
+HOMEPAGE="https://www.ece.uvic.ca/~mdadams/jasper/"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	inherit vcs-snapshot
 	SRC_URI="https://github.com/mdadams/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # We limit memory usage to 128 MiB by default, specified in bytes

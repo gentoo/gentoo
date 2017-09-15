@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit cmake-utils gnome2-utils multilib xdg
+inherit cmake-utils gnome2-utils xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -14,7 +14,11 @@ fi
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
 if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
+		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
+		https://download.fcitx-im.org/data/py_stroke-20121124.tar.gz -> fcitx-data-py_stroke-20121124.tar.gz
+		https://download.fcitx-im.org/data/py_table-20121124.tar.gz -> fcitx-data-py_table-20121124.tar.gz
+		https://download.fcitx-im.org/data/en_dict-20121020.tar.gz -> fcitx-data-en_dict-20121020.tar.gz"
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
@@ -22,10 +26,12 @@ fi
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc ppc64 x86"
-IUSE="+X +autostart +cairo +dbus debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
-REQUIRED_USE="autostart? ( dbus ) cairo? ( X ) gtk2? ( dbus ) gtk3? ( dbus ) introspection? ( dbus ) pango? ( cairo ) qt4? ( X dbus )"
+IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
+REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
-RDEPEND="virtual/libiconv
+RDEPEND="dev-libs/glib:2
+	sys-apps/dbus
+	virtual/libiconv
 	virtual/libintl
 	x11-libs/libxkbcommon
 	X? (
@@ -36,29 +42,18 @@ RDEPEND="virtual/libiconv
 		xml? ( x11-libs/libxkbfile )
 	)
 	cairo? (
-		dev-libs/glib:2
 		x11-libs/cairo[X]
 		x11-libs/libXext
 		pango? ( x11-libs/pango )
 		!pango? ( media-libs/fontconfig )
 	)
-	dbus? ( sys-apps/dbus )
-	enchant? ( app-text/enchant )
-	gtk2? (
-		dev-libs/glib:2
-		x11-libs/gtk+:2
-	)
-	gtk3? (
-		dev-libs/glib:2
-		x11-libs/gtk+:3
-	)
-	introspection? (
-		dev-libs/glib:2
-		dev-libs/gobject-introspection
-	)
+	enchant? ( <app-text/enchant-2 )
+	gtk2? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
+	introspection? ( dev-libs/gobject-introspection )
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
-	opencc? ( app-i18n/opencc )
+	opencc? ( app-i18n/opencc:= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
@@ -80,12 +75,25 @@ PATCHES=(
 )
 
 src_prepare() {
+	if [[ "${PV}" == "9999" ]]; then
+		ln -s "${DISTDIR}/fcitx-data-pinyin.tar.gz" src/im/pinyin/data/pinyin.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-table.tar.gz" src/im/table/data/table.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-py_stroke-20121124.tar.gz" src/module/pinyin-enhance/data/py_stroke-20121124.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-py_table-20121124.tar.gz" src/module/pinyin-enhance/data/py_table-20121124.tar.gz || die
+		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
+	fi
+
 	# https://github.com/fcitx/fcitx/issues/250
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
 		-e "/find_package(XkbFile REQUIRED)/a\\    endif(ENABLE_X11)" \
 		-i CMakeLists.txt
+
+	# https://github.com/fcitx/fcitx/issues/342
+	while IFS='' read -d $'\0' -r f ; do
+		sed 's:^#!/bin/sh$:#!/usr/bin/env bash:' -i "${f}" || die
+	done < <(find "${S}" -name '*.sh' -type f -print0)
 
 	cmake-utils_src_prepare
 	xdg_environment_reset
@@ -96,12 +104,10 @@ src_configure() {
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DSYSCONFDIR="${EPREFIX}/etc"
 		-DENABLE_CAIRO=$(usex cairo)
-		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DEBUG=$(usex debug)
 		-DENABLE_ENCHANT=$(usex enchant)
 		-DENABLE_GETTEXT=$(usex nls)
 		-DENABLE_GIR=$(usex introspection)
-		-DENABLE_GLIB2=$(if use cairo || use gtk2 || use gtk3 || use introspection; then echo yes; else echo no; fi)
 		-DENABLE_GTK2_IM_MODULE=$(usex gtk2)
 		-DENABLE_GTK3_IM_MODULE=$(usex gtk3)
 		-DENABLE_LIBXML2=$(usex xml)
@@ -127,21 +133,18 @@ src_install() {
 	rm -r "${ED}usr/share/doc/${PN}"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
-	xdg_pkg_postinst
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	xdg_pkg_postrm
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
 }

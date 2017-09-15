@@ -9,7 +9,7 @@ RESTRICT="test"
 inherit distutils-r1
 
 DESCRIPTION="a helper library for writing code unmodified on both Twisted and asyncio"
-HOMEPAGE="https://github.com/tavendo/txaio"
+HOMEPAGE="https://github.com/crossbario/txaio"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

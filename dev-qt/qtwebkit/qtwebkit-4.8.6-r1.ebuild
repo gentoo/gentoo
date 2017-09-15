@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ else
 	KEYWORDS="amd64 arm ia64 ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-IUSE="+gstreamer icu +jit"
+IUSE="icu +jit"
 
 # libxml2[!icu?] is needed for bugs 407315 and 411091
 DEPEND="
@@ -23,12 +23,6 @@ DEPEND="
 	~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.5.0-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXrender-0.9.7-r1[${MULTILIB_USEDEP}]
-	gstreamer? (
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		dev-libs/libxml2:2[!icu?,${MULTILIB_USEDEP}]
-		>=media-libs/gstreamer-0.10.36-r1:0.10[${MULTILIB_USEDEP}]
-		>=media-libs/gst-plugins-base-0.10.36-r1:0.10[${MULTILIB_USEDEP}]
-	)
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
@@ -72,7 +66,7 @@ multilib_src_configure() {
 		-system-sqlite
 		$(qt_use icu)
 		$(qt_use jit javascript-jit)
-		$(use gstreamer || echo -DENABLE_VIDEO=0)
+		-DENABLE_VIDEO=0
 	)
 	qt4_multilib_src_configure
 }

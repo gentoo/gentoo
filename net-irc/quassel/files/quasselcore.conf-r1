@@ -1,0 +1,11 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Loglevel Debug|Info|Warning|Error. Default is: Info
+#LOGLEVEL="Info"
+
+# The address(es) quasselcore will listen on. Default is 0.0.0.0
+#LISTEN="0.0.0.0"
+
+# The port quasselcore will listen at. Default is: 4242
+#PORT="4242"

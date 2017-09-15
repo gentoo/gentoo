@@ -1,6 +1,6 @@
-From db19965ad957edee3c2ef3e321c3904b436749da Mon Sep 17 00:00:00 2001
+From bedd95f5f14524360117209ed6a1a83627523f54 Mon Sep 17 00:00:00 2001
 From: Sebastian Pipping <sebastian@pipping.org>
-Date: Mon, 9 Jan 2017 21:38:42 +0100
+Date: Wed, 10 May 2017 17:33:05 +0200
 Subject: [PATCH] Backport $(MATH_LIB) patch to GEGL 0.2
 
 Source:
@@ -8,7 +8,8 @@ https://git.gnome.org/browse/gegl/patch/?id=c9bbc815378cb81ba8a48be35f615e7e2d74
 ---
  bin/Makefile.am      | 2 +-
  examples/Makefile.am | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ tools/Makefile.am    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/bin/Makefile.am b/bin/Makefile.am
 index c85ecbd..08a156b 100644
@@ -33,6 +34,19 @@ index c29a1dd..5c4ac3a 100644
  	$(top_builddir)/gegl/libgegl-$(GEGL_API_VERSION).la \
 -	$(DEP_LIBS) $(GTK_LIBS) $(BABL_LIBS) $(PNG_LIBS)
 +	$(DEP_LIBS) $(GTK_LIBS) $(BABL_LIBS) $(PNG_LIBS) $(MATH_LIB)
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 8f1077d..4dd3845 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -22,7 +22,7 @@ AM_CFLAGS = $(DEP_CFLAGS) $(BABL_CFLAGS)
+ 
+ AM_LDFLAGS = \
+ 	$(top_builddir)/gegl/libgegl-$(GEGL_API_VERSION).la \
+-	$(DEP_LIBS) $(BABL_LIBS)
++	$(DEP_LIBS) $(BABL_LIBS) $(MATH_LIB)
+ 
+ noinst_PROGRAMS = introspect operation_reference img_cmp
+ 
 -- 
-2.11.0
+2.12.2
 

@@ -3,17 +3,18 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="Support Library for type-driven code generators"
 HOMEPAGE="https://github.com/janestreet/ppx_sexp_conv"
 SRC_URI="https://github.com/janestreet/ppx_sexp_conv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
 DEPEND="
-	dev-lang/ocaml:=
 	dev-ml/ppx_core:=
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_type_conv:=
@@ -21,14 +22,7 @@ DEPEND="
 	dev-ml/ppx_optcomp:=
 	dev-ml/sexplib:=
 	dev-ml/ocaml-migrate-parsetree:=
+	dev-ml/ppx_traverse_builtins:=
 	"
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-}
+DEPEND="${DEPEND} dev-ml/jbuilder"

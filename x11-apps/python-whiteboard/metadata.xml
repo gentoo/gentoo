@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>ziapannocchia@gmail.com</email>
-		<name>Marco Clocchiatti</name>
-		<description>Proxy maintainer. CC him on bugs</description>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 	Build and operate an electronic whiteboard using gnu/linux, a wiimote and an IR pen.
 	</longdescription>
@@ -20,7 +12,6 @@
 		<changelog>https://github.com/pnegre/python-whiteboard/commits/master</changelog>
 		<doc>https://github.com/pnegre/python-whiteboard/wiki</doc>
 		<bugs-to>https://groups.google.com/group/python-whiteboard</bugs-to>
-		<remote-id type="sourceforge">git://github.com/pnegre/python-whiteboard.git</remote-id>
 		<remote-id type="github">pnegre/python-whiteboard</remote-id>
 	</upstream>
 </pkgmetadata>

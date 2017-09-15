@@ -17,7 +17,7 @@ DOCS=( README.md CONTRIBUTING.md doc/Design.md doc/FAQ.md doc/index.md doc/Manua
 DEPEND="dev-lang/go
 	test? ( sys-fs/fuse )"
 
-RDEPEND="sys-fs/fuse"
+RDEPEND="sys-fs/fuse:0"
 
 src_compile() {
 	local mygoargs=(

@@ -15,14 +15,15 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gmp gtk iconv postgresql pygobject projects readline +shared sqlite
-	static syslog"
+IUSE="gmp gnat_2016 gnat_2017 gtk iconv postgresql pygobject projects readline
+	+shared sqlite static syslog tools"
 
-RDEPEND="dev-lang/gnat-gpl
+RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
+	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
-		dev-ada/gtkada
+		dev-ada/gtkada[gnat_2016=,gnat_2017=,shared?,static?]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
@@ -34,30 +35,18 @@ RDEPEND="dev-lang/gnat-gpl
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		dev-ada/gprbuild[static?,shared?]
+		=dev-ada/gprbuild-2016[gnat_2016=,gnat_2017=,shared?,static?]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	pygobject? ( gtk )"
+	pygobject? ( gtk )
+	^^ ( gnat_2016 gnat_2017 )"
 
 S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
-
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	GNATMAKE="${GCC/gcc/gnatmake}"
-	GNATCHOP="${GCC/gcc/gnatchop}"
-	if [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-4.9.4 in make.conf"
-		die "ada compiler not available"
-	fi
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	default
@@ -66,6 +55,14 @@ src_prepare() {
 }
 
 src_configure() {
+	if use gnat_2016; then
+		GCC_PV=4.9.4
+	else
+		GCC_PV=6.3.0
+	fi
+	GCC=${CHOST}-gcc-${GCC_PV}
+	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
+	GNATCHOP=${CHOST}-gnatchop-${GCC_PV}
 	if use sqlite; then
 		myConf="--with-sqlite=$(get_libdir)"
 	else
@@ -91,35 +88,32 @@ src_configure() {
 		--with-python-exec=${EPYTHON} \
 		--enable-shared-python \
 		--disable-pygtk \
+		CC=${GCC} \
 		$myConf
 }
 
 src_compile() {
 	if use shared; then
-		emake PROCESSORS=$(makeopts_jobs) build_library_type/relocatable
+		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
+			build_library_type/relocatable
 	fi
 	if use static; then
-		emake PROCESSORS=$(makeopts_jobs) build_library_type/static
+		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
+			build_library_type/static
 	fi
 	python_fix_shebang .
 }
 
 src_install() {
 	if use shared; then
-		emake DESTDIR="${D}" install_library_type/relocatable
+		emake prefix="${D}usr" install_library_type/relocatable
 	fi
 	if use static; then
-		emake DESTDIR="${D}" install_library_type/static
+		emake prefix="${D}usr" install_library_type/static
 	fi
-	emake DESTDIR="${D}" install_gps_plugin
+	emake prefix="${D}usr" install_gps_plugin
 	einstalldocs
 	dodoc -r features-* known-problems-*
-	mv "${D}"/usr/share/doc/${PN}/GNATColl.pdf "${D}"/usr/share/doc/${PF}/
-	mv "${D}"/usr/share/doc/${PN}/html/html "${D}"/usr/share/doc/${PF}/
-	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples
-	rm -rf "${D}"/usr/share/doc/${PN}
-	rmdir "${D}"/usr/share/examples
-	docompress -x /usr/share/doc/${PF}/examples
 }
 
 src_test() {

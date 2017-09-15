@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 eutils git-r3 linux-info multilib user
 
@@ -31,8 +31,9 @@ CDEPEND="
 	!~dev-python/setuptools-34.1.1[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-34.2.0[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-34.3.0[${PYTHON_USEDEP}]
-	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]
-	<dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
+	!~dev-python/setuptools-34.3.1[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-34.3.2[${PYTHON_USEDEP}]
+	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
 	${CDEPEND}
 	app-admin/sudo"

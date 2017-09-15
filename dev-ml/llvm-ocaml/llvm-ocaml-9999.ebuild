@@ -11,26 +11,28 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils git-r3 llvm python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
+EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with sys-devel/llvm
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS=""
-IUSE="test ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
-	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,}]
+	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
 	!sys-devel/llvm[ocaml(-)]"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
@@ -72,7 +74,10 @@ src_configure() {
 
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_OCAML_OUT_OF_TREE=ON
-		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		# cheap hack: LLVM combines both anyway, and the only difference
+		# is that the former list is explicitly verified at cmake time
+		-DLLVM_TARGETS_TO_BUILD=""
+		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# disable various irrelevant deps and settings
@@ -80,7 +85,7 @@ src_configure() {
 		-DLLVM_ENABLE_TERMINFO=OFF
 		-DHAVE_HISTEDIT_H=NO
 		-DWITH_POLLY=OFF
-		-DLLVM_ENABLE_ASSERTIONS=OFF
+		-DLLVM_ENABLE_ASSERTIONS=$(usex debug)
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 
@@ -96,6 +101,9 @@ src_configure() {
 		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 	)
 
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	# also: custom rules for OCaml do not work for CPPFLAGS
+	use debug || local -x CFLAGS="${CFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
 
 	local llvm_libdir=$(llvm-config --libdir)

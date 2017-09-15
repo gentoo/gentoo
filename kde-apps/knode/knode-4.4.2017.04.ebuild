@@ -5,12 +5,13 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Usenet newsgroups and mailing lists reader by KDE (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 # test fails, last checked for 4.2.96
@@ -22,6 +23,8 @@ DEPEND="
 	$(add_kdeapps_dep libkpgp)
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
 
 KMEXTRACTONLY="
 	libkpgp/

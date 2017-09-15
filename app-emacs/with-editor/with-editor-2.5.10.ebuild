@@ -21,3 +21,4 @@ DOCS="README.md with-editor.org"
 DEPEND=">=app-emacs/dash-2.13.0"
 # Versions of magit before 2.5.0 bundled with-editor
 RDEPEND="!!<app-emacs/magit-2.5.0 ${DEPEND}"
+DEPEND="${DEPEND} sys-apps/texinfo"

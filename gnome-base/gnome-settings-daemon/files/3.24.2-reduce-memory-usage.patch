@@ -1,0 +1,177 @@
+From 386f456eda7a027dfc706ebb675602d6f067f5c6 Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Mon, 27 Mar 2017 00:17:59 -0700
+Subject: [PATCH 5/5] common: avoid loading Adwaita CSS theme into memory
+
+The various Gtk programs are not dependent on any specific theme being
+loaded. Therefore, the parsing the Adwaita CSS theme (which is quite a
+detailed theme) is unnecessary and a few MB of overhead to each gsd
+subprocess.
+
+By setting the GTK_THEME environment variable in main() and providing an
+alternate CSS file (which is empty), we can force Gtk to never load the
+default theme, but instead our empty theme. This is important as otherwise
+GtkSettings can force-load Adwaita upon first use, and that fragments the
+heap.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=780555
+---
+ configure.ac                          |  1 +
+ plugins/common/Makefile.am            | 10 ++++++++++
+ plugins/common/Makefile.am.gresources | 34 ++++++++++++++++++++++++++++++++++
+ plugins/common/daemon-skeleton-gtk.h  | 28 ++++++++++++++++++++++++++++
+ plugins/common/gsd.gresources.xml     |  6 ++++++
+ plugins/common/gtk.css                |  0
+ 6 files changed, 79 insertions(+)
+ create mode 100644 plugins/common/Makefile.am.gresources
+ create mode 100644 plugins/common/gsd.gresources.xml
+ create mode 100644 plugins/common/gtk.css
+
+diff --git a/configure.ac b/configure.ac
+index 475821d..df86831 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,6 +73,7 @@ AC_SUBST([GSD_PLUGIN_LDFLAGS])
+ 
+ AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+ AC_PATH_PROG([GLIB_MKENUMS],[glib-mkenums])
++AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
+ 
+ LT_LIB_M
+ AC_SUBST(LIBM)
+diff --git a/plugins/common/Makefile.am b/plugins/common/Makefile.am
+index 239c601..706be12 100644
+--- a/plugins/common/Makefile.am
++++ b/plugins/common/Makefile.am
+@@ -33,6 +33,8 @@ libcommon_la_SOURCES = \
+ 	gsd-device-mapper.h	\
+ 	gsd-input-helper.c	\
+ 	gsd-input-helper.h	\
++	gsd-resources.c		\
++	gsd-resources.h		\
+ 	gsd-settings-migrate.c	\
+ 	gsd-settings-migrate.h	\
+ 	gsd-shell-helper.c	\
+@@ -68,3 +70,11 @@ EXTRA_DIST = $(scripts_DATA) daemon-skeleton.h daemon-skeleton-gtk.h
+ 
+ CLEANFILES = \
+ 	$(GSD_COMMON_ENUM_FILES)
++
++DISTCLEANFILES =
++
++glib_resources_c = gsd-resources.c
++glib_resources_h = gsd-resources.h
++glib_resources_xml = gsd.gresources.xml
++glib_resources_namespace = gsd
++include Makefile.am.gresources
+diff --git a/plugins/common/Makefile.am.gresources b/plugins/common/Makefile.am.gresources
+new file mode 100644
+index 0000000..1441d0e
+--- /dev/null
++++ b/plugins/common/Makefile.am.gresources
+@@ -0,0 +1,34 @@
++resources_xml=$(addprefix $(srcdir)/,$(glib_resources_xml))
++resources_srcdir=$(dir $(resources_xml))
++
++DISTCLEANFILES += $(glib_resources_h) $(glib_resources_c)
++BUILT_SOURCES += $(glib_resources_h) $(glib_resources_c)
++CLEANFILES += stamp-resources $(glib_resources_c) $(glib_resources_h)
++EXTRA_DIST += \
++	$(glib_resources_xml) \
++	$(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(resources_srcdir) --generate-dependencies $(resources_xml)) \
++	$(NULL)
++
++stamp-resources: $(glib_resources_c) $(resources_xml)
++	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) \
++		--target=xgen-gr.h \
++		--sourcedir=$(resources_srcdir) \
++		--generate-header \
++		--c-name $(glib_resources_namespace) \
++		$(resources_xml) \
++	&& (cmp -s xgen-gr.h $(glib_resources_h) || cp -f xgen-gr.h $(glib_resources_h)) \
++	&& rm -f xgen-gr.h \
++	&& echo timestamp > $(@F)
++
++$(glib_resources_h): stamp-resources
++	@true
++
++$(glib_resources_c): $(resources_xml) $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(resources_srcdir) --generate-dependencies $(resources_xml))
++	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) \
++		--target=xgen-gr.c \
++		--sourcedir=$(resources_srcdir) \
++		--generate-source \
++		--c-name $(glib_resources_namespace) \
++		$(resources_xml) \
++	&& (cmp -s xgen-gr.c $(glib_resources_c) || cp -f xgen-gr.c $(glib_resources_c)) \
++	&& rm -f xgen-gr.c
+diff --git a/plugins/common/daemon-skeleton-gtk.h b/plugins/common/daemon-skeleton-gtk.h
+index 3bfd618..3ba0422 100644
+--- a/plugins/common/daemon-skeleton-gtk.h
++++ b/plugins/common/daemon-skeleton-gtk.h
+@@ -163,6 +163,30 @@ register_with_gnome_session (void)
+ 			   NULL);
+ }
+ 
++static void
++set_empty_gtk_theme (gboolean set)
++{
++	static char *old_gtk_theme = NULL;
++
++	if (set) {
++		/* Override GTK_THEME to reduce overhead of CSS engine. By using
++		 * GTK_THEME environment variable, GtkSettings is not allowed to
++		 * initially parse the Adwaita theme.
++		 *
++		 * https://bugzilla.gnome.org/show_bug.cgi?id=780555 */
++		old_gtk_theme = g_strdup (g_getenv ("GTK_THEME"));
++		g_setenv ("GTK_THEME", "Disabled", TRUE);
++	} else {
++		/* GtkSettings has loaded, so we can drop GTK_THEME used to initialize
++		 * our internal theme. Only the main thread accesses the GTK_THEME
++		 * environment variable, so this is safe to release. */
++		if (old_gtk_theme != NULL)
++			g_setenv ("GTK_THEME", old_gtk_theme, TRUE);
++		else
++			g_unsetenv ("GTK_THEME");
++	}
++}
++
+ int
+ main (int argc, char **argv)
+ {
+@@ -172,6 +196,8 @@ main (int argc, char **argv)
+         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+         textdomain (GETTEXT_PACKAGE);
+ 
++        set_empty_gtk_theme (TRUE);
++
+         /* Work around https://bugzilla.gnome.org/show_bug.cgi?id=674885 */
+         g_type_ensure (G_TYPE_DBUS_CONNECTION);
+         g_type_ensure (G_TYPE_DBUS_PROXY);
+@@ -187,6 +213,8 @@ main (int argc, char **argv)
+                 exit (1);
+         }
+ 
++        set_empty_gtk_theme (FALSE);
++
+         if (verbose)
+                 g_setenv ("G_MESSAGES_DEBUG", "all", TRUE);
+ 
+diff --git a/plugins/common/gsd.gresources.xml b/plugins/common/gsd.gresources.xml
+new file mode 100644
+index 0000000..e4ac1cd
+--- /dev/null
++++ b/plugins/common/gsd.gresources.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<gresources>
++  <gresource prefix="/org/gtk/libgtk/theme/Disabled">
++    <file>gtk.css</file>
++  </gresource>
++</gresources>
+diff --git a/plugins/common/gtk.css b/plugins/common/gtk.css
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.10.2
+

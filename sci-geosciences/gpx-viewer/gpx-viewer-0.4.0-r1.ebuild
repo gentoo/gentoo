@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION=0.16
 inherit autotools-utils gnome2 vala
 
 DESCRIPTION="Simple program to visualize a gpx file"
-HOMEPAGE="http://blog.sarine.nl/gpx-viewer/"
+HOMEPAGE="https://github.com/DaveDavenport/gpx-viewer"
 SRC_URI="https://edge.launchpad.net/${PN}/trunk/0.4.0/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"

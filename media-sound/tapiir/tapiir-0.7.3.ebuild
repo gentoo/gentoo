@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
 
-DESCRIPTION="a flexible audio effects processor, inspired on the classical magnetic tape delay systems"
+inherit autotools
+
+DESCRIPTION="A flexible audio effects processor, inspired by classical tape delay systems"
 HOMEPAGE="http://www.resorama.com/maarten/tapiir/"
 SRC_URI="http://www.resorama.com/maarten/files/${P}.tgz"
 
@@ -19,23 +20,22 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.7.2-ldflags.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.7.2-ldflags.patch
-
+	default
+	mv configure.{in,ac} || die
 	cp "${FILESDIR}"/${P}-acinclude.m4 acinclude.m4 || die
-
 	eautoreconf
 }
 
-src_configure() {
-	econf --disable-dependency-tracking
-}
-
 src_install() {
+	local HTML_DOCS=( doc/{*.html,images/*.png} )
 	default
+
 	doman doc/${PN}.1
-	dodoc AUTHORS doc/${PN}.txt
-	dohtml doc/*.html doc/images/*.png
+	dodoc doc/${PN}.txt
+
 	insinto /usr/share/${PN}/examples
 	doins doc/examples/*.mtd
 }

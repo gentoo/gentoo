@@ -1,26 +1,25 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI="3"
+
 inherit elisp-common eutils
 
 DESCRIPTION="Anthy -- free and secure Japanese input system"
-HOMEPAGE="http://anthy.sourceforge.jp/"
-SRC_URI="mirror://sourceforge.jp/anthy/37536/${P}.tar.gz"
+HOMEPAGE="http://anthy.osdn.jp/"
+SRC_URI="mirror://sourceforge.jp/${PN}/37536/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
-#KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="canna-2ch emacs static-libs"
 
-DEPEND="!app-i18n/anthy-ss
-	canna-2ch? ( app-dicts/canna-2ch )
+RDEPEND="canna-2ch? ( app-dicts/canna-2ch )
 	emacs? ( virtual/emacs )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-anthy_context_t.patch"
+	epatch "${FILESDIR}"/${PN}-anthy_context_t.patch
 
 	if use canna-2ch; then
 		einfo "Adding nichan.ctd to anthy.dic."
@@ -43,7 +42,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install || die
 
-	if use emacs ; then
+	if use emacs; then
 		elisp-site-file-install "${FILESDIR}"/50anthy-gentoo.el || die
 	fi
 

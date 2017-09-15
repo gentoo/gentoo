@@ -14,13 +14,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 CDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
-	dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7' 'python3_4')
 	|| (
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		(	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')

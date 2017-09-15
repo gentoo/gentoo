@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit toolchain-funcs
 
-DESCRIPTION="multisort takes any number of httpd logfiles in the Common Log Format and merges them together"
+DESCRIPTION="Merges httpd logfiles in the Common Log Format"
 HOMEPAGE="http://www.xach.com/multisort/"
 SRC_URI="http://www.xach.com/${PN}/${PN}-${PV}.tar.gz"
 

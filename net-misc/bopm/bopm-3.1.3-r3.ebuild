@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools user
 
 DESCRIPTION="Blitzed Open Proxy Monitor"
-HOMEPAGE="http://github.com/blitzed-org/bopm"
+HOMEPAGE="https://github.com/blitzed-org/bopm"
 SRC_URI="http://static.blitzed.org/www.blitzed.org/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

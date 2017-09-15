@@ -48,7 +48,6 @@
     <flag name="urlprocessor">Allows other plugins to load data from custom types of URLs</flag>
     <flag name="vcard">Enable obtaining peer's personal contact information</flag>
     <flag name="xmppuriqueries">Allow other plugins to handle XMPP URI queries</flag>
-    <flag name="vcs-revision">Add VCS revision to version number, INSECURE.</flag>
     <flag name="aspell">Select <pkg>app-text/aspell</pkg> spell checker backend</flag>
     <flag name="enchant">Select <pkg>app-text/enchant</pkg> spell checker backend</flag>
     <flag name="hunspell">Select <pkg>app-text/hunspell</pkg> spell checker backend</flag>

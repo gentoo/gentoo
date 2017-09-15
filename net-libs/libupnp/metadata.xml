@@ -13,4 +13,9 @@
     <remote-id type="sourceforge">pupnp</remote-id>
     <remote-id type="github">mrjimenez/pupnp</remote-id>
   </upstream>
+  <use>
+    <flag name="reuseaddr">Allow clean restarts by binding the socket with SO_REUSEADDR.</flag>
+    <flag name="blocking-tcp">Do not use async socket calls.</flag>
+    <flag name="samples">Install sample applications.</flag>
+  </use>
 </pkgmetadata>

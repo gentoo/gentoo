@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-DESCRIPTION="A bash script that uses udisks to handle removable devices without dependencies on any GUI"
+DESCRIPTION="Bash script that uses udisks to mount removable devices without GUI"
 HOMEPAGE="https://sourceforge.net/projects/bashmount/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

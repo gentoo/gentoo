@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/camlspotter/camlimages/get/${PV}.tar.bz2 -> ${P}.
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ppc x86"
-IUSE="doc exif gif gtk jpeg png postscript tiff truetype X xpm"
+IUSE="exif gif gtk jpeg png postscript tiff truetype X xpm"
 
 RDEPEND=">=dev-lang/ocaml-3.10.2:=[X?,ocamlopt]
 	exif? ( media-libs/libexif )
@@ -28,7 +28,6 @@ RDEPEND=">=dev-lang/ocaml-3.10.2:=[X?,ocamlopt]
 	sys-libs/zlib
 	"
 DEPEND="${DEPEND}
-	doc? ( dev-python/sphinx[latex] )
 	dev-util/omake
 	virtual/pkgconfig
 	dev-ml/findlib"
@@ -51,15 +50,10 @@ src_compile() {
 		$(camlimages_arg_want truetype    FREETYPE) \
 		PATH_GS=/bin/true \
 		--force-dotomake || die
-
-	if use doc ; then
-		sphinx-build doc/sphinx sphinxdoc || die
-	fi
 }
 
 src_install() {
 	findlib_src_preinst
 	omake --force-dotomake DESTDIR="${D}" install || die
 	dodoc README.md
-	use doc && dohtml -r sphinxdoc/*
 }

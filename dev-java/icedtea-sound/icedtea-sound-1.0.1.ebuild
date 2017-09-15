@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
@@ -12,7 +12,7 @@ SRC_URI="http://icedtea.classpath.org/download/source/${P}.tar.xz"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 IUSE="+doc test"
 

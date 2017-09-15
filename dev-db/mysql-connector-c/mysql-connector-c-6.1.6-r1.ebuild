@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ DESCRIPTION="C client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/c/"
 LICENSE="GPL-2"
 
-SRC_URI="mirror://mysql/Downloads/Connector-C/${P}-src.tar.gz"
+SRC_URI="https://dev.mysql.com/get/Downloads/Connector-C/${P}-src.tar.gz"
 S="${WORKDIR}/${P}-src"
 KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86"
 

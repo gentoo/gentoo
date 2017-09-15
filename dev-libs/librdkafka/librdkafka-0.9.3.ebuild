@@ -9,10 +9,7 @@ DESCRIPTION="Apache Kafka C/C++ client library"
 HOMEPAGE="https://github.com/edenhill/librdkafka"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="
-		git://github.com/edenhill/${PN}.git
-		https://github.com/edenhill/${PN}.git
-		"
+	EGIT_REPO_URI="https://github.com/edenhill/${PN}.git"
 
 	inherit git-r3
 else

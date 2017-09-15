@@ -15,7 +15,7 @@ SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dri"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -78,9 +78,8 @@ src_prepare() {
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
-	# Remove pointless GCC version limitations in check_gcc()
-	sed -e "/\s*-o\s*\\\(\s*\$cc_maj\s*-eq\s*[5-9]\s*-a\s*\$cc_min\s*-gt\s*[0-5]\s*\\\)\s*\\\/d" \
-		-i configure || die
+	# Remove pointless GCC version check
+	sed -e '/^check_gcc$/d' -i configure || die
 
 	default
 

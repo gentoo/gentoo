@@ -506,10 +506,20 @@ detect_version() {
 		OKV_DICT=(["2"]="${KV_MAJOR}.$((${KV_PATCH_ARR} - 1))" ["3"]="2.6.39" ["4"]="3.19")
 
 		if [[ ${RELEASETYPE} == -rc ]] || [[ ${RELEASETYPE} == -pre ]]; then
+
 			OKV=${K_BASE_VER:-$OKV_DICT["${KV_MAJOR}"]}
-			KERNEL_URI="${KERNEL_BASE_URI}/testing/patch-${CKV//_/-}.xz
-						${KERNEL_BASE_URI}/linux-${OKV}.tar.xz"
-			UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${CKV//_/-}.xz"
+
+			# as of 12/5/2017, the rc patch is no longer offered as a compressed
+			# file, and no longer is it mirrored on kernel.org
+			if [[ ${KV_MAJOR} -ge 4 ]] && [[ ${KV_PATCH} -ge 12 ]]; then
+				KERNEL_URI="https://git.kernel.org/torvalds/p/v${KV_FULL}/v${OKV} -> patch-${KV_FULL}.patch
+							${KERNEL_BASE_URI}/linux-${OKV}.tar.xz"
+				UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${CKV//_/-}.patch"
+			else
+				KERNEL_URI="${KERNEL_BASE_URI}/testing/patch-${CKV//_/-}.xz
+							${KERNEL_BASE_URI}/linux-${OKV}.tar.xz"
+				UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${CKV//_/-}.xz"
+			fi
 		fi
 
 		if [[ ${RELEASETYPE} == -git ]]; then
@@ -1400,7 +1410,7 @@ getfilevar() {
 
 detect_arch() {
 
-	local ALL_ARCH LOOP_ARCH COMPAT_URI i
+	local ALL_ARCH LOOP_ARCH LOOP_ARCH_L COMPAT_URI i TC_ARCH_KERNEL
 
 	# COMPAT_URI is the contents of ${ARCH}_URI
 	# ARCH_URI is the URI for all the ${ARCH}_URI patches
@@ -1408,20 +1418,25 @@ detect_arch() {
 
 	ARCH_URI=""
 	ARCH_PATCH=""
+	TC_ARCH_KERNEL=""
 	ALL_ARCH="ALPHA AMD64 ARM HPPA IA64 M68K MIPS PPC PPC64 S390 SH SPARC X86"
 
 	for LOOP_ARCH in ${ALL_ARCH}; do
 		COMPAT_URI="${LOOP_ARCH}_URI"
 		COMPAT_URI="${!COMPAT_URI}"
 
-		[[ -n ${COMPAT_URI} ]] && \
-			ARCH_URI="${ARCH_URI} $(echo ${LOOP_ARCH} | tr '[:upper:]' '[:lower:]')? ( ${COMPAT_URI} )"
+		declare -l LOOP_ARCH_L=${LOOP_ARCH}
 
-		if [[ ${LOOP_ARCH} == "$(echo $(tc-arch-kernel) | tr '[:lower:]' '[:upper:]')" ]]; 	then
+		[[ -n ${COMPAT_URI} ]] && \
+			ARCH_URI="${ARCH_URI} ${LOOP_ARCH_L}? ( ${COMPAT_URI} )"
+
+		declare -u TC_ARCH_KERNEL=$(tc-arch-kernel)
+		if [[ ${LOOP_ARCH} == ${TC_ARCH_KERNEL} ]]; then
 			for i in ${COMPAT_URI}; do
 				ARCH_PATCH="${ARCH_PATCH} ${DISTDIR}/${i/*\//}"
 			done
 		fi
+
 	done
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/NilsBrause/waylandpp/issues</bugs-to>
+		<remote-id type="github">NilsBrause/waylandpp</remote-id>
+	</upstream>
+</pkgmetadata>

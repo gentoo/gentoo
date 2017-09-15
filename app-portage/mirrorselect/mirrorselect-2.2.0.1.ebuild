@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit eutils distutils-r1 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Mirrorselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
 SRC_URI="https://dev.gentoo.org/~dolsen/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -19,7 +19,7 @@
 	<flag name="pam-passthru">Enable pam-passthru plugin - for simple and fast system services used in ldap</flag>
 	<flag name="dna">Enable dna (distributed numeric assignment ) plugin -  to
 		automatically assign unique uid numbers to new user entries as they are created.</flag>
-	<flag name="presence">Enable presence plugin - non-stabdart syntax
+	<flag name="presence">Enable presence plugin - non-standard syntax
 		validation</flag>
 	<flag name="bitwise">Enable bitwise plugin - supported data in raw/bitwise
 		format</flag>

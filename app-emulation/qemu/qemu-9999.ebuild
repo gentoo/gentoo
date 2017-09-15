@@ -8,7 +8,7 @@ PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.9.0-r50"
+FIRMWARE_ABI_VERSION="2.9.0-r52"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
@@ -137,7 +137,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
-	snappy? ( app-arch/snappy[static-libs(+)] )
+	snappy? ( app-arch/snappy:=[static-libs(+)] )
 	spice? (
 		>=app-emulation/spice-protocol-0.12.3
 		>=app-emulation/spice-0.12.0[static-libs(+)]
@@ -153,13 +153,15 @@ SOFTMMU_TOOLS_DEPEND="
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
+		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
 		~sys-firmware/ipxe-1.0.0_p20160620
-		~sys-firmware/seabios-1.10.1[binary,seavgabios]
+		~sys-firmware/seabios-1.10.2[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8
 	)
 	!pin-upstream-blobs? (
+		sys-firmware/edk2-ovmf
 		sys-firmware/ipxe
-		sys-firmware/seabios[seavgabios]
+		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
 	)"
 
@@ -202,6 +204,7 @@ QA_PREBUILT="
 	usr/share/qemu/openbios-sparc32
 	usr/share/qemu/palcode-clipper
 	usr/share/qemu/s390-ccw.img
+	usr/share/qemu/s390-netboot.img
 	usr/share/qemu/u-boot.e500"
 
 QA_WX_LOAD="usr/bin/qemu-i386
@@ -503,7 +506,7 @@ qemu_src_configure() {
 	if use ${static_flag}; then
 		conf_opts+=( --static --disable-pie )
 	else
-		gcc-specs-pie && conf_opts+=( --enable-pie )
+		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
 
 	echo "../configure ${conf_opts[*]}"
@@ -679,8 +682,10 @@ src_install() {
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
 		rm "${ED}/usr/share/qemu/bios.bin"
+		rm "${ED}/usr/share/qemu/bios-256k.bin"
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
 			dosym ../seabios/bios.bin /usr/share/qemu/bios.bin
+			dosym ../seabios/bios-256k.bin /usr/share/qemu/bios-256k.bin
 		fi
 
 		# Remove vgabios since we're using the seavgabios packaged one
@@ -743,6 +748,7 @@ pkg_postinst() {
 
 	if use pin-upstream-blobs && firmware_abi_change; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
+		ewarn "	$(best_version sys-firmware/edk2-ovmf)"
 		ewarn "	$(best_version sys-firmware/ipxe)"
 		ewarn "	$(best_version sys-firmware/seabios)"
 		ewarn "	$(best_version sys-firmware/sgabios)"
@@ -761,6 +767,12 @@ pkg_info() {
 	echo "  $(best_version sys-firmware/ipxe)"
 	echo "  $(best_version sys-firmware/seabios)"
 	if has_version 'sys-firmware/seabios[binary]'; then
+		echo "    USE=binary"
+	else
+		echo "    USE=''"
+	fi
+	echo "  $(best_version sys-firmware/edk2-ovmf)"
+	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
 		echo "    USE=binary"
 	else
 		echo "    USE=''"

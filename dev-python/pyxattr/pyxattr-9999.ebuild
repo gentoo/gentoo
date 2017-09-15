@@ -3,16 +3,14 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1 eutils git-r3
 
 DESCRIPTION="Python interface to xattr"
 HOMEPAGE="http://pyxattr.k1024.org/"
 SRC_URI=""
-EGIT_REPO_URI="
-	https://github.com/iustin/${PN}.git
-	git://github.com/iustin/${PN}.git"
+EGIT_REPO_URI="https://github.com/iustin/${PN}.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
