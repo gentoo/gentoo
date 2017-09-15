@@ -16153,7 +16153,7 @@ sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry package
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.4 2016.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3 21.3-r1: Visualisation and processing of experimental and simulated NMR spectra
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
