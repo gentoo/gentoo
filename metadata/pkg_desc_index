@@ -12192,6 +12192,7 @@ kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
 kde-misc/kio-stash 1.0: KIO Slave and daemon to stash discontinuous file selections
+kde-misc/kmarkdownwebview 0.1.0: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/konstruktor 0.9_beta1: LEGO CAD
 kde-misc/kookie 0.1.1: Manage recipes and shopping lists
@@ -18759,10 +18760,10 @@ x11-libs/libxkbfile 1.0.8 1.0.9 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.3 5.3-r1 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
-x11-libs/libyui 3.0.13 3.2.5: UI abstraction library
+x11-libs/libyui 3.0.13 3.2.5 3.3.3: UI abstraction library
 x11-libs/libyui-gtk 2.44.5 2.44.7: UI abstraction library - GTK plugin
 x11-libs/libyui-ncurses 2.46.4 2.47.6: UI abstraction library - ncurses plugin
-x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
+x11-libs/libyui-qt 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.6-r1 2.3.7: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
