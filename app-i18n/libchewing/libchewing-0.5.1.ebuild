@@ -10,7 +10,7 @@ HOMEPAGE="http://chewing.csie.net/"
 SRC_URI="https://github.com/${PN/lib}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs test"
 REQUIRED_USE="test? ( static-libs )"
