@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,14 @@ DEPEND="net-libs/libpcap
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	>=sys-libs/db-4:*
+	|| (	<sys-libs/glibc-2.26[rpc]
+		(
+			>=sys-libs/glibc-2.26
+			net-libs/rpcsvc-proto
+			net-libs/libtirpc
+			net-libs/libnsl
+		)
+	)
 	X? ( x11-libs/libXmu )"
 RDEPEND="${DEPEND}"
 
@@ -52,6 +60,9 @@ src_prepare() {
 
 	# bug #538462
 	epatch "${FILESDIR}"/${PV}-macof-size-calculation.patch
+
+	# allow building against libtirpc, needed for glibc-2.26, bug 381391
+	epatch "${FILESDIR}"/${PV}-libtirpc.patch
 
 	eautoreconf
 }
