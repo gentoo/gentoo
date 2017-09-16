@@ -14361,7 +14361,7 @@ net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
 net-analyzer/mtr 0.87 0.92-r1 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.0.0-r1 9999: a fork of multimon, decodes multiple digital transmission modes
-net-analyzer/munin 2.0.19-r2 2.0.25-r2 2.0.33 2.0.33-r1 2.1.9999: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.19-r2 2.0.33 2.0.33-r1 2.1.9999: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
 net-analyzer/nagios 4.3.1 4.3.3 4.3.4: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
@@ -15594,7 +15594,7 @@ net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network 
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10: go-ipfs is the main implementation of IPFS.
-net-p2p/gtk-gnutella 1.1.11: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.11 1.1.11-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.0.1 5.1.0: Powerful BitTorrent client based on KDE Frameworks
@@ -16708,7 +16708,7 @@ sci-misc/netlogo-bin 5.0.3-r1: Cross-platform multi-agent programmable modeling 
 sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/pythoncad 1.37-r1: CAD program written in PyGTK
 sci-misc/repsnapper 2.3.2a_p3 2.4a_p0 2.4a_p3 9999: Host software for controlling the RepRap open source 3D printer
-sci-misc/vitables 2.1-r1: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
+sci-misc/vitables 2.1-r1 3.0.0: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
 sci-physics/bullet 2.83.4 2.83.5 2.85 2.86: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
