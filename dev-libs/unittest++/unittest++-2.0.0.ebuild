@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,12 +20,18 @@ IUSE="test"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
+	# https://github.com/unittest-cpp/unittest-cpp/pull/163
 	sed -i '/run unit tests as post build step/,/Running unit tests/d' \
 		CMakeLists.txt || die
-	use test || sed -i \
-		'/build the test runner/,/target_link_libraries(TestUnitTest++ UnitTest++/d' \
-		CMakeLists.txt || die
-	cmake-utils_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DUTPP_INCLUDE_TESTS_IN_BUILD=$(usex test)
+	)
+	cmake-utils_src_configure
 }
 
 src_test() {

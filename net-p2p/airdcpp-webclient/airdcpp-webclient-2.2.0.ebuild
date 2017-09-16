@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
 
-inherit cmake-utils user python-any-r1
+inherit cmake-utils python-any-r1 user
 
 DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
@@ -20,13 +20,13 @@ RDEPEND="
 	dev-cpp/websocketpp
 	dev-libs/boost:=
 	dev-libs/geoip
-	dev-libs/leveldb
+	dev-libs/leveldb:=
 	dev-libs/openssl:0=[-bindist]
 	net-libs/miniupnpc:=
-	sys-libs/zlib
+	sys-libs/zlib:=
 	virtual/libiconv
-	nat-pmp? ( net-libs/libnatpmp )
-	tbb? ( dev-cpp/tbb )
+	nat-pmp? ( net-libs/libnatpmp:= )
+	tbb? ( dev-cpp/tbb:= )
 "
 DEPEND="
 	virtual/pkgconfig
@@ -44,16 +44,18 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_WEB_UI=OFF
+		-DENABLE_NATPMP=$(usex nat-pmp)
+		-DENABLE_TBB=$(usex tbb)
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
+	cmake-utils_src_install
 	newconfd "${FILESDIR}/airdcppd.confd" airdcppd
 	newinitd "${FILESDIR}/airdcppd.initd" airdcppd
 	keepdir /var/lib/airdcppd
 	fowners airdcppd:airdcppd /var/lib/airdcppd
-	cmake-utils_src_install
 }
 
 pkg_postinst() {
