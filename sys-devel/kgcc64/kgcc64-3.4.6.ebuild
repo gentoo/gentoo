@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -16,7 +16,6 @@ TOOLCHAIN_ALLOWED_LANGS="c"
 GCC_TARGET_NO_MULTILIB=true
 
 PATCH_VER="1.2"
-GCC_FILESDIR=${FILESDIR/${PN}/gcc}
 
 inherit eutils toolchain
 
@@ -34,7 +33,7 @@ DEPEND="hppa? ( sys-devel/binutils-hppa64 )
 
 src_prepare() {
 	toolchain_src_prepare
-	epatch "${GCC_FILESDIR}"/3.4.4/gcc-3.4.4-cross-compile.patch
+	epatch "${FILESDIR}"/3.4.4/gcc-3.4.4-cross-compile.patch
 
 	# Arch stuff
 	case $(tc-arch) in
@@ -42,7 +41,7 @@ src_prepare() {
 			# Patch forward-ported from a gcc-3.0.x patch that adds -march=r10000 and
 			# -mtune=r10000 support to gcc (Allows the compiler to generate code to
 			# take advantage of R10k's second ALU, perform shifts, etc..
-			epatch "${GCC_FILESDIR}"/3.4.2/gcc-3.4.x-mips-add-march-r10k.patch
+			epatch "${FILESDIR}"/3.4.2/gcc-3.4.x-mips-add-march-r10k.patch
 
 			# This is a very special patch -- it allows us to build kernels on SGI IP28
 			# (Indigo2 Impact R10000) systems.
@@ -54,7 +53,7 @@ src_prepare() {
 			# The option also accepts a flag, which are highlighted below:
 			#	-mr10k-cache-barrier=1 - Protect stores only (IP28)
 			#	-mr10k-cache-barrier=2 - Protect stores and loads (IP32 R10K)
-			epatch "${GCC_FILESDIR}"/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v4.patch
+			epatch "${FILESDIR}"/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v4.patch
 			;;
 	esac
 }
