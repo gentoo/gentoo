@@ -32,7 +32,7 @@ RDEPEND="
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	>=sys-devel/llvm-3.9:0=
+	>=sys-devel/llvm-4.0.0:=
 	>=sys-libs/libunwind-1.1:7=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
@@ -59,8 +59,6 @@ src_prepare() {
 	# - fix BLAS and LAPACK link interface
 
 	sed -i \
-		-e 's|$(JLDOWNLOAD)|${EPREFIX}/bin/true|' \
-		-e 's|git submodule|${EPREFIX}/bin/true|g' \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
 		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
 		deps/Makefile || die
