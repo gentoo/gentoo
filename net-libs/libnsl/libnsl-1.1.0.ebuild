@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools multilib-minimal
 
 DESCRIPTION="Public client interface for NIS(YP) and NIS+ in a IPv6 ready version"
 HOMEPAGE="https://github.com/thkukuk/libnsl"
@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="
 	!<sys-libs/glibc-2.26
-	net-libs/libtirpc
+	net-libs/libtirpc[${MULTILIB_USEDEP}]
 "
 RDEPEND=${DEPEND}
 
@@ -25,4 +25,9 @@ S=${WORKDIR}/${PN}-${P}
 src_prepare(){
 	default
 	eautoreconf
+}
+
+multilib_src_configure() {
+	# Fool multilib-minimal to run ./configure in out-of-tree build
+	ECONF_SOURCE=${S} econf
 }
