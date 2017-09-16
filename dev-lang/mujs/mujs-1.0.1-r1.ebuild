@@ -25,12 +25,13 @@ src_prepare() {
 }
 
 src_compile() {
-	emake shared
+	emake VERSION=${PV} shared
 }
 
 src_install() {
 	emake \
 		DESTDIR="${ED}" \
+		VERSION=${PV} \
 		libdir="/usr/$(get_libdir)" \
 		install-shared \
 		$(usex static-libs install-static '')
