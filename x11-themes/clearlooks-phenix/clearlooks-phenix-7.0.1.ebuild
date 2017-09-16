@@ -3,25 +3,20 @@
 
 EAPI=5
 
-inherit git-r3
-
 DESCRIPTION="Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2"
 HOMEPAGE="http://www.jpfleury.net/en/software/clearlooks-phenix.php"
-EGIT_REPO_URI="https://github.com/jpfleury/clearlooks-phenix.git"
+SRC_URI="https://github.com/jpfleury/clearlooks-phenix/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
-SLOT="live"
+SLOT="0"
 IUSE=""
 
-RDEPEND="x11-libs/gtk+:3
+RDEPEND="
+	>=x11-libs/gtk+-3.20.0:3
 	x11-themes/gtk-engines"
 
 src_install() {
-	insinto "/usr/share/themes/Clearlooks-Phenix-${SLOT}"
+	insinto "/usr/share/themes/Clearlooks-Phenix"
 	doins -r *
-}
-
-pkg_postinst() {
-	elog "The theme is named Clearlooks-Phenix-${SLOT}."
 }
