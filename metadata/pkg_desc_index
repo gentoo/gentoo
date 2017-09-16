@@ -17624,7 +17624,7 @@ sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r2 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
-sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0: 64bit kernel compiler
+sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
 sys-devel/lld 4.0.1 5.0.0 5.0.9999 9999: The LLVM linker (link editor)
 sys-devel/llvm 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r3 3.8.1-r2 3.9.1-r1 4.0.1 5.0.0 5.0.9999 9999: Low Level Virtual Machine
