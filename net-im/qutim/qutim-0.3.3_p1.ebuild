@@ -9,8 +9,8 @@ inherit qt4-r2 cmake-utils
 
 MY_PV="${PV/_p/.p_}"
 DESCRIPTION="Qt4-based multi-protocol instant messenger"
-HOMEPAGE="http://www.qutim.org"
-SRC_URI="http://www.qutim.org/dwnl/80/${PN}-${MY_PV}.tar.xz"
+HOMEPAGE="https://www.qutim.org"
+SRC_URI="https://www.qutim.org/dwnl/80/${PN}-${MY_PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,7 +22,7 @@ IUSE="doc +sound tools"
 IUSE="$IUSE telepathy irc xmpp mrim oscar purple vkontakte"
 # plugins
 IUSE="$IUSE antiboss aspell ayatana awn crypt dbus debug -espionage histman hunspell
-	kde otr plugman phonon purple qml sdl +ssl +xscreensaver webkit"
+	otr plugman phonon purple qml sdl +ssl +xscreensaver webkit"
 
 REQUIRED_USE="
 	oscar? ( ssl )
@@ -56,7 +56,6 @@ CDEPEND="
 	histman? ( >=dev-qt/qtsql-${QT_PV} )
 	ayatana? ( >=dev-libs/libindicate-qt-0.2.2 )
 	hunspell? ( app-text/hunspell )
-	kde? ( kde-frameworks/kdelibs:4 )
 	otr? ( >=net-libs/libotr-4.0.0 )
 	phonon? ( media-libs/phonon[qt4] )
 	plugman? (
@@ -73,7 +72,6 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	kde? ( dev-util/automoc )
 "
 RDEPEND="${CDEPEND}
 	xmpp? ( app-crypt/qca:2[gpg] )
@@ -135,7 +133,6 @@ src_configure() {
 		$(cmake-utils_use  histman     HISTMAN           )
 		$(cmake-utils_use  hunspell    HUNSPELLER        )
 		$(cmake-utils_use  ayatana     INDICATOR         )
-		$(cmake-utils_use  kde         KDEINTEGRATION    )
 		$(cmake-utils_use  qml         KINETICPOPUPS     )
 		$(cmake-utils_use  phonon      PHONONSOUND       )
 		$(cmake-utils_use  plugman     PLUGMAN           )
@@ -150,6 +147,7 @@ src_configure() {
 						# consider to make it optional if it also support kde or whatever
 		-DUPDATER=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_QtMobility=ON # required dependency last-rited
+		-DKDEINTEGRATION=OFF # bug 631122
 	)
 	# NOTE: Integration plugins are autodisabled:
 	# symbianintegration macintegration maemo5integration haikunotifications meegointegration winintegration
