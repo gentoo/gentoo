@@ -15518,7 +15518,7 @@ net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and man
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2017.03.16 2017.09.02 2017.09.11 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
-net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
+net-misc/ytalk 3.3.0 3.3.0-r1: Multi-user replacement for UNIX talk
 net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
@@ -18781,7 +18781,7 @@ x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
 x11-libs/qwtpolar 1.1.1-r1: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
-x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
+x11-libs/scw 0.4.7 0.4.7-r1: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
