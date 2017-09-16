@@ -51,7 +51,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	dev-libs/fribidi
+	>=dev-libs/fribidi-0.19.7
 	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
 	>=dev-libs/libxml2-2.9.4
