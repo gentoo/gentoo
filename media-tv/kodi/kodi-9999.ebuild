@@ -12,7 +12,7 @@ inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
-FFMPEG_VERSION="3.3.2"
+FFMPEG_VERSION="3.3.3"
 CODENAME="Leia"
 FFMPEG_KODI_VERSION="Alpha-1"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
@@ -44,21 +44,21 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		app-pda/libplist
 		net-libs/shairplay
 	)
-	alsa? ( media-libs/alsa-lib )
+	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
 	bluetooth? ( net-wireless/bluez )
-	bluray? ( >=media-libs/libbluray-0.7.0 )
+	bluray? ( >=media-libs/libbluray-1.0.1 )
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	dev-libs/fribidi
+	>=dev-libs/fribidi-0.19.7
 	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
-	dev-libs/libxml2
+	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-libs/libcdio
+	>=dev-libs/libcdio-0.94
 	dev-libs/libfmt
 	gbm? (	media-libs/mesa[gbm] )
 	gles? ( media-libs/mesa[gles2] )
@@ -67,8 +67,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-fonts/corefonts
 	>=media-fonts/noto-20160531
 	media-fonts/roboto
-	media-libs/fontconfig
-	media-libs/freetype
+	>=media-libs/fontconfig-2.12.4
+	>=media-libs/freetype-2.8
 	>=media-libs/libass-0.13.4
 	media-libs/mesa[egl]
 	>=media-libs/taglib-1.11.1
@@ -82,7 +82,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	sftp? ( net-libs/libssh[sftp] )
-	sys-libs/zlib
+	>=sys-libs/zlib-1.2.11
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva[egl]
@@ -92,6 +92,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		wayland? ( x11-libs/libva[wayland] )
 		X? ( x11-libs/libva[X] )
 	)
+	virtual/libiconv
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
 		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
@@ -102,7 +103,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-libs/wayland-protocols-1.7
 		x11-libs/libxkbcommon
 	)
-	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
+	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXrandr
@@ -128,9 +129,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
-	app-arch/unzip
 	app-arch/xz-utils
-	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
 	dev-libs/rapidjson
