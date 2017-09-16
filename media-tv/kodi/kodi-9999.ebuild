@@ -44,7 +44,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		app-pda/libplist
 		net-libs/shairplay
 	)
-	alsa? ( media-libs/alsa-lib )
+	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
 	bluetooth? ( net-wireless/bluez )
 	bluray? ( >=media-libs/libbluray-0.7.0 )
 	caps? ( sys-libs/libcap )
