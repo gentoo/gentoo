@@ -7483,7 +7483,6 @@ dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and 
 dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.15 0.3.17: Python module to provide iteration for datetime object
-dev-python/crossbar 17.6.1_p3: Crossbar.io - The Unified Application Router for the twisted framework
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Test vectors for the cryptography package
@@ -15189,6 +15188,7 @@ net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.33-r1 1.34 1.35: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
+net-misc/crossbar 17.6.1_p3-r1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0: lightweight file synchronizer utility
 net-misc/curl 7.55.1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
