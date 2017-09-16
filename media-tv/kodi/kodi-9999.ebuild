@@ -67,7 +67,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-fonts/corefonts
 	>=media-fonts/noto-20160531
 	media-fonts/roboto
-	media-libs/fontconfig
+	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.8
 	>=media-libs/libass-0.13.4
 	media-libs/mesa[egl]
