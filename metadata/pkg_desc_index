@@ -4567,7 +4567,7 @@ dev-lang/mercury 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Mercury is a
 dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
-dev-lang/moarvm 2017.01-r1 2017.02-r1 2017.03-r1 2017.04-r1 2017.05-r1 2017.06-r1 2017.07 9999: A 6model-based VM for NQP and Rakudo Perl 6
+dev-lang/moarvm 2017.01-r1 2017.02-r1 2017.03-r1 2017.04-r1 2017.05-r1 2017.06-r1 2017.07 2017.08.1 9999: A 6model-based VM for NQP and Rakudo Perl 6
 dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.425 4.8.0.495 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
@@ -4575,7 +4575,7 @@ dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/nim 0.16.0 0.17.0 0.17.2: compiled, garbage-collected systems programming language
-dev-lang/nqp 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 2017.07 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
+dev-lang/nqp 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 2017.07 2017.08 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.0 4.04.1 4.04.2 4.05.0: Type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
@@ -4591,7 +4591,7 @@ dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of
 dev-lang/python 2.7.12 2.7.13 3.4.5 3.4.6 3.5.3 3.6.1-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/rakudo 2017.01 2017.02 2017.03 2017.04.2 2017.05 2017.06 2017.07 9999: A compiler for the Perl 6 programming language
+dev-lang/rakudo 2017.01 2017.02 2017.03 2017.04.2 2017.05 2017.06 2017.07 2017.08 9999: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
@@ -8180,7 +8180,7 @@ dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata wr
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
-dev-python/pluggy 0.4.0: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.4.0 0.5.2: plugin and hook calling mechanisms for python
 dev-python/pluginbase 0.5: Support library for building plugins sytems in Python
 dev-python/plumbum 1.6.0 1.6.3: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9 3.10: Python Lex-Yacc library
