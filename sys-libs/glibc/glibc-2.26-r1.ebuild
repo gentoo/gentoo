@@ -569,10 +569,10 @@ glibc_do_src_install() {
 
 	emake install_root="${D}$(alt_prefix)" install || die
 
-	# This version (2.26) provides some "compatibility libraries" for the NIS/NIS+ support
-	# which come without headers etc. So, for us completely useless. Use
-	# net-libs/libnsl instead.
-	find "${D}" -name "libnsl*" -delete
+	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
+	# which come without headers etc. Only needed for binary packages since the
+	# external net-libs/libnsl has increased soversion. Keep only versioned libraries.
+	find "${D}" -name "libnsl.a" -o -name "libnsl.so" -delete
 
 	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
 	# to infer upstream version:
