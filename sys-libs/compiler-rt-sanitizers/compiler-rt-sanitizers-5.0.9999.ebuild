@@ -19,7 +19,7 @@ EGIT_BRANCH="release_50"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="5.0.0"
+SLOT="5.0.1"
 KEYWORDS=""
 IUSE="test"
 
