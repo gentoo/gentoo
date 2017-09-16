@@ -48,7 +48,6 @@ move kde-base/kbruch kde-apps/kbruch
 move kde-base/kcachegrind kde-apps/kcachegrind
 move kde-base/kcalc kde-apps/kcalc
 move kde-base/kcharselect kde-apps/kcharselect
-move kde-base/kcmshell kde-apps/kcmshell
 move kde-base/kcolorchooser kde-apps/kcolorchooser
 move kde-base/kcron kde-apps/kcron
 move kde-base/kde-l10n kde-apps/kde4-l10n
@@ -57,7 +56,6 @@ move kde-base/kdeadmin-meta kde-apps/kdeadmin-meta
 move kde-base/kdebase-data kde-apps/kdebase-data
 move kde-base/kdebase-kioslaves kde-apps/kdebase-kioslaves
 move kde-base/kdebase-meta kde-apps/kdebase-meta
-move kde-base/kdebase-runtime-meta kde-apps/kdebase-runtime-meta
 move kde-base/kde-dev-scripts kde-apps/kde-dev-scripts
 move kde-base/kde-dev-utils kde-apps/kde-dev-utils
 move kde-base/kdeedu-meta kde-apps/kdeedu-meta
@@ -74,11 +72,7 @@ move kde-base/kdewebdev-meta kde-apps/kdewebdev-meta
 move kde-base/kdf kde-apps/kdf
 move kde-base/kdialog kde-apps/kdialog
 move kde-base/kdiamond kde-apps/kdiamond
-move kde-base/kdontchangethehostname kde-apps/kdontchangethehostname
 move kde-base/keditbookmarks kde-apps/keditbookmarks
-move kde-base/keditfiletype kde-apps/keditfiletype
-move kde-base/kfile kde-apps/kfile
-move kde-base/kfilereplace kde-apps/kfilereplace
 move kde-base/kfind kde-apps/kfind
 move kde-base/kfloppy kde-apps/kfloppy
 move kde-base/kfourinline kde-apps/kfourinline
@@ -102,7 +96,6 @@ move kde-base/klines kde-apps/klines
 move kde-base/klinkstatus kde-apps/klinkstatus
 move kde-base/kmag kde-apps/kmag
 move kde-base/kmahjongg kde-apps/kmahjongg
-move kde-base/kmimetypefinder kde-apps/kmimetypefinder
 move kde-base/kmines kde-apps/kmines
 move kde-base/kmix kde-apps/kmix
 move kde-base/kmousetool kde-apps/kmousetool
@@ -110,12 +103,10 @@ move kde-base/kmouth kde-apps/kmouth
 move kde-base/kmplot kde-apps/kmplot
 move kde-base/knavalbattle kde-apps/knavalbattle
 move kde-base/knetwalk kde-apps/knetwalk
-move kde-base/knewstuff kde-apps/knewstuff
 move kde-base/knotify kde-apps/knotify
 move kde-base/kolf kde-apps/kolf
 move kde-base/kollision kde-apps/kollision
 move kde-base/kolourpaint kde-apps/kolourpaint
-move kde-base/kommander kde-apps/kommander
 move kde-base/kompare kde-apps/kompare
 move kde-base/konqueror kde-apps/konqueror
 move kde-base/konquest kde-apps/konquest
@@ -125,12 +116,10 @@ move kde-base/kpat kde-apps/kpat
 move kde-base/kppp kde-apps/kppp
 move kde-base/kqtquickcharts kde-apps/kqtquickcharts
 move kde-base/krdc kde-apps/krdc
-move kde-base/kreadconfig kde-apps/kreadconfig
 move kde-base/kremotecontrol kde-apps/kremotecontrol
 move kde-base/kreversi kde-apps/kreversi
 move kde-base/krfb kde-apps/krfb
 move kde-base/kruler kde-apps/kruler
-move kde-base/ksaneplugin kde-apps/ksaneplugin
 move kde-base/kscd kde-apps/kscd
 move kde-base/kshisen kde-apps/kshisen
 move kde-base/ksirk kde-apps/ksirk
@@ -144,11 +133,9 @@ move kde-base/kteatime kde-apps/kteatime
 move kde-base/ktimer kde-apps/ktimer
 move kde-base/ktimezoned kde-apps/ktimezoned
 move kde-base/ktouch kde-apps/ktouch
-move kde-base/ktraderclient kde-apps/ktraderclient
 move kde-base/ktuberling kde-apps/ktuberling
 move kde-base/kturtle kde-apps/kturtle
 move kde-base/kubrick kde-apps/kubrick
-move kde-base/kwalletd kde-apps/kwalletd
 move kde-base/kwalletmanager kde-apps/kwalletmanager
 move kde-base/kwordquiz kde-apps/kwordquiz
 move kde-base/kwrite kde-apps/kwrite
