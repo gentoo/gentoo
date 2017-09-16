@@ -6,10 +6,10 @@ EAPI=6
 inherit autotools eutils qmake-utils
 
 DESCRIPTION="GPS waypoints, tracks and routes converter"
-HOMEPAGE="http://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
+HOMEPAGE="https://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
 SRC_URI="
 	https://dev.gentoo.org/~asturm/${P}.tar.gz
-	doc? ( http://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
+	doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-use_system_shapelib.patch"
 	"${FILESDIR}/${P}-use_system_zlib.patch"
 	"${FILESDIR}/${P}-xmldoc.patch"
+	"${FILESDIR}/${P}-qt-5.9.patch"
 )
 
 RESTRICT="test" # bug 421699
