@@ -9,7 +9,7 @@ DESCRIPTION="Library for Chinese Phonetic input method"
 HOMEPAGE="http://chewing.csie.net/"
 SRC_URI="https://github.com/${PN/lib}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
-SLOT="0"
+SLOT="0/3"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs test"
