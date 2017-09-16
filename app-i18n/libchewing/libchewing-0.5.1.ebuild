@@ -13,16 +13,16 @@ SLOT="0/3"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs test"
-REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
 	test? ( sys-libs/ncurses[unicode] )"
 
 src_configure() {
+	# libchewing.a is required for building of tests.
 	econf \
-		$(use_enable static-libs static) \
-		--with-sqlite3
+		--with-sqlite3 \
+		$(if use static-libs || use test; then echo --enable-static; else echo --disable-static; fi)
 }
 
 src_test() {
@@ -32,4 +32,5 @@ src_test() {
 src_install() {
 	default
 	prune_libtool_files
+	use static-libs || find "${D}" -name "*.a" -delete || die
 }
