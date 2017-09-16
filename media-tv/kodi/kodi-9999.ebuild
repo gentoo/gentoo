@@ -58,7 +58,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-libs/libcdio
+	>=dev-libs/libcdio-0.94
 	dev-libs/libfmt
 	gbm? (	media-libs/mesa[gbm] )
 	gles? ( media-libs/mesa[gles2] )
