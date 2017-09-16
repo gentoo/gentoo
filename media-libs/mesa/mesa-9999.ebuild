@@ -240,7 +240,7 @@ multilib_src_configure() {
 		myconf+="
 			$(use_enable d3d9 nine)
 			$(use_enable llvm)
-			$(use_enable openmax omx)
+			$(use_enable openmax omx-bellagio)
 			$(use_enable vaapi va)
 			$(use_enable vdpau)
 			$(use_enable xa)
