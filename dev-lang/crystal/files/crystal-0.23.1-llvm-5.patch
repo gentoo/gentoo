@@ -1,0 +1,837 @@
+https://bugs.gentoo.org/630634
+diff --git a/.gitignore b/.gitignore
+index 9a883edfd..5f852d930 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -12,5 +12,6 @@ all_spec
+ /tmp
+ /doc/
+ /src/llvm/ext/llvm_ext.o
++/src/llvm/ext/llvm_ext.dwo
+ /src/ext/*.o
+ /src/ext/libcrystal.a
+diff --git a/Makefile b/Makefile
+index a5dc0d7e3..14a21bb86 100644
+--- a/Makefile
++++ b/Makefile
+@@ -37,8 +37,6 @@ LLVM_CONFIG_FINDER := \
+     (command -v llvm-config > /dev/null && (case "$(llvm-config --version)" in 3.9*) command -v llvm-config;; *) false;; esac)) || \
+   command -v llvm-config-3.8 || command -v llvm-config38 || \
+     (command -v llvm-config > /dev/null && (case "$(llvm-config --version)" in 3.8*) command -v llvm-config;; *) false;; esac)) || \
+-  command -v llvm-config-3.6 || command -v llvm-config36 || \
+-  command -v llvm-config-3.5 || command -v llvm-config35 || \
+   command -v llvm-config
+ LLVM_CONFIG := $(shell $(LLVM_CONFIG_FINDER))
+ LLVM_EXT_DIR = src/llvm/ext
+diff --git a/src/compiler/crystal/compiler.cr b/src/compiler/crystal/compiler.cr
+index a2bed9a95..afc7976e3 100644
+--- a/src/compiler/crystal/compiler.cr
++++ b/src/compiler/crystal/compiler.cr
+@@ -447,9 +447,6 @@ module Crystal
+
+     protected def optimize(llvm_mod)
+       fun_pass_manager = llvm_mod.new_function_pass_manager
+-      {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-        fun_pass_manager.add_target_data target_machine.data_layout
+-      {% end %}
+       pass_manager_builder.populate fun_pass_manager
+       fun_pass_manager.run llvm_mod
+       module_pass_manager.run llvm_mod
+@@ -460,9 +457,6 @@ module Crystal
+     private def module_pass_manager
+       @module_pass_manager ||= begin
+         mod_pass_manager = LLVM::ModulePassManager.new
+-        {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-          mod_pass_manager.add_target_data target_machine.data_layout
+-        {% end %}
+         pass_manager_builder.populate mod_pass_manager
+         mod_pass_manager
+       end
+@@ -554,54 +548,29 @@ module Crystal
+         can_reuse_previous_compilation =
+           !compiler.emit && !@bc_flags_changed && File.exists?(bc_name) && File.exists?(object_name)
+
+-        {% if LibLLVM::IS_35 %}
+-          # In LLVM 3.5 we can't write a bitcode to memory,
+-          # so instead we write it to another file
+-          bc_name_new = self.bc_name_new
+-          llvm_mod.write_bitcode_to_file(bc_name_new)
+-
+-          if can_reuse_previous_compilation
+-            if FileUtils.cmp(bc_name, bc_name_new)
+-              # If the user cancelled a previous compilation it might be that
+-              # the .o file is empty
+-              if File.size(object_name) > 0
+-                File.delete bc_name_new
+-                must_compile = false
+-              end
+-            end
+-          end
++        memory_buffer = llvm_mod.write_bitcode_to_memory_buffer
+
+-          if must_compile
+-            # Create/overwrite the .bc file (for next compilations)
+-            File.rename(bc_name_new, bc_name)
+-            compiler.optimize llvm_mod if compiler.release?
+-            compiler.target_machine.emit_obj_to_file llvm_mod, object_name
+-          end
+-        {% else %}
+-          memory_buffer = llvm_mod.write_bitcode_to_memory_buffer
+-
+-          if can_reuse_previous_compilation
+-            memory_io = IO::Memory.new(memory_buffer.to_slice)
+-            changed = File.open(bc_name) { |bc_file| !FileUtils.cmp(bc_file, memory_io) }
+-
+-            # If the user cancelled a previous compilation
+-            # it might be that the .o file is empty
+-            if !changed && File.size(object_name) > 0
+-              must_compile = false
+-              memory_buffer.dispose
+-              memory_buffer = nil
+-            else
+-              # We need to compile, so we'll write the memory buffer to file
+-            end
+-          end
++        if can_reuse_previous_compilation
++          memory_io = IO::Memory.new(memory_buffer.to_slice)
++          changed = File.open(bc_name) { |bc_file| !FileUtils.cmp(bc_file, memory_io) }
+
+-          # If there's a memory buffer, it means we must create a .o from it
+-          if memory_buffer
+-            # Create the .bc file (for next compilations)
+-            File.write(bc_name, memory_buffer.to_slice)
++          # If the user cancelled a previous compilation
++          # it might be that the .o file is empty
++          if !changed && File.size(object_name) > 0
++            must_compile = false
+             memory_buffer.dispose
++            memory_buffer = nil
++          else
++            # We need to compile, so we'll write the memory buffer to file
+           end
+-        {% end %}
++        end
++
++        # If there's a memory buffer, it means we must create a .o from it
++        if memory_buffer
++          # Create the .bc file (for next compilations)
++          File.write(bc_name, memory_buffer.to_slice)
++          memory_buffer.dispose
++        end
+
+         if must_compile
+           compiler.optimize llvm_mod if compiler.release?
+diff --git a/src/llvm.cr b/src/llvm.cr
+index 44a03c272..f9b31cf4b 100644
+--- a/src/llvm.cr
++++ b/src/llvm.cr
+@@ -94,11 +94,5 @@ module LLVM
+     string
+   end
+
+-  {% if LibLLVM::IS_35 %}
+-    DEBUG_METADATA_VERSION = 1
+-  {% elsif LibLLVM::IS_36 %}
+-    DEBUG_METADATA_VERSION = 2
+-  {% else %}
+-    DEBUG_METADATA_VERSION = 3
+-  {% end %}
++  DEBUG_METADATA_VERSION = 3
+ end
+diff --git a/src/llvm/context.cr b/src/llvm/context.cr
+index 8485eedf1..7d66a4365 100644
+--- a/src/llvm/context.cr
++++ b/src/llvm/context.cr
+@@ -9,9 +9,9 @@ class LLVM::Context
+   end
+
+   def new_module(name : String) : Module
+-    {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++    {% if LibLLVM::IS_38 %}
+       Module.new(LibLLVM.module_create_with_name_in_context(name, self), name, self)
+-    {% else %}
++    {% else %} # LLVM >= 3.9
+       Module.new(LibLLVM.module_create_with_name_in_context(name, self), self)
+     {% end %}
+   end
+@@ -104,9 +104,9 @@ class LLVM::Context
+     if ret != 0 && msg
+       raise LLVM.string_and_dispose(msg)
+     end
+-    {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++    {% if LibLLVM::IS_38 %}
+       Module.new(mod, "unknown", self)
+-    {% else %}
++    {% else %} # LLVM >= 3.9
+       Module.new(mod, self)
+     {% end %}
+   end
+diff --git a/src/llvm/di_builder.cr b/src/llvm/di_builder.cr
+index b8c0fd628..79571d2c0 100644
+--- a/src/llvm/di_builder.cr
++++ b/src/llvm/di_builder.cr
+@@ -31,16 +31,8 @@ struct LLVM::DIBuilder
+
+   def create_function(scope, name, linkage_name, file, line, composite_type, is_local_to_unit, is_definition,
+                       scope_line, flags, is_optimized, func)
+-    {% if LibLLVM::IS_36 || LibLLVM::IS_35 %}
+-      LibLLVMExt.di_builder_create_function(self, scope, name, linkage_name, file, line, composite_type,
+-                                            is_local_to_unit ? 1 : 0,
+-                                            is_definition ? 1 : 0,
+-                                            scope_line, flags,
+-                                            is_optimized ? 1 : 0, func)
+-    {% else %}
+-      LibLLVMExt.di_builder_create_function(self, scope, name, linkage_name, file, line, composite_type,
+-                                            is_local_to_unit, is_definition, scope_line, flags, is_optimized, func)
+-    {% end %}
++    LibLLVMExt.di_builder_create_function(self, scope, name, linkage_name, file, line, composite_type,
++      is_local_to_unit, is_definition, scope_line, flags, is_optimized, func)
+   end
+
+   def create_auto_variable(scope, name, file, line, type, align_in_bits)
+@@ -87,19 +79,11 @@ struct LLVM::DIBuilder
+   end
+
+   def create_replaceable_composite_type(scope, name, file, line, context : Context)
+-    {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-      LibLLVMExt.temporary_md_node(context, nil, 0).as(LibLLVMExt::Metadata)
+-    {% else %}
+-      LibLLVMExt.di_builder_create_replaceable_composite_type(self, scope, name, file, line)
+-    {% end %}
++    LibLLVMExt.di_builder_create_replaceable_composite_type(self, scope, name, file, line)
+   end
+
+   def replace_temporary(from, to)
+-    {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-      LibLLVMExt.metadata_replace_all_uses_with(from, to)
+-    {% else %}
+-      LibLLVMExt.di_builder_replace_temporary(self, from, to)
+-    {% end %}
++    LibLLVMExt.di_builder_replace_temporary(self, from, to)
+   end
+
+   def end
+diff --git a/src/llvm/ext/llvm_ext.cc b/src/llvm/ext/llvm_ext.cc
+index d13446160..3dbdd4220 100644
+--- a/src/llvm/ext/llvm_ext.cc
++++ b/src/llvm/ext/llvm_ext.cc
+@@ -18,35 +18,22 @@ using namespace llvm;
+ #define LLVM_VERSION_LE(major, minor) \
+   (LLVM_VERSION_MAJOR < (major) || LLVM_VERSION_MAJOR == (major) && LLVM_VERSION_MINOR <= (minor))
+
++#if LLVM_VERSION_LE(4, 0)
+ typedef struct LLVMOpaqueDIBuilder *LLVMDIBuilderRef;
+ DEFINE_SIMPLE_CONVERSION_FUNCTIONS(DIBuilder, LLVMDIBuilderRef)
+
+-#if LLVM_VERSION_EQ(3, 5)
+-typedef LLVMValueRef LLVMMetadataRef;
+-typedef Value Metadata;
+-#define DIBuilderRef LLVMDIBuilderRef
+-
+-#else /* LLVM != 3.5 */
+ typedef struct LLVMOpaqueMetadata *LLVMMetadataRef;
+ DEFINE_ISA_CONVERSION_FUNCTIONS(Metadata, LLVMMetadataRef)
+ inline Metadata **unwrap(LLVMMetadataRef *Vals) {
+   return reinterpret_cast<Metadata **>(Vals);
+ }
+-#endif /* LLVM == 3.5 */
+-
+-#if LLVM_VERSION_LE(3, 6)
+-template <typename T> T unwrapDIptr(LLVMMetadataRef v) {
+-  return v ? T(unwrap<MDNode>(v)) : T();
+-}
+-#define DIBuilderRef LLVMDIBuilderRef
++#endif
+
+-#else /* LLVM > 3.6 */
+ typedef DIBuilder *DIBuilderRef;
+ #define DIArray DINodeArray
+ template <typename T> T *unwrapDIptr(LLVMMetadataRef v) {
+   return (T *)(v ? unwrap<MDNode>(v) : NULL);
+ }
+-#endif /* LLVM <= 3.6 */
+
+ #if LLVM_VERSION_LE(3, 6)
+ #define OperandBundleDef void
+@@ -66,13 +53,7 @@ void LLVMDIBuilderFinalize(LLVMDIBuilderRef dref) { unwrap(dref)->finalize(); }
+
+ LLVMMetadataRef LLVMDIBuilderCreateFile(DIBuilderRef Dref, const char *File,
+                                         const char *Dir) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIFile F = D->createFile(File, Dir);
+-  return wrap(F);
+-#else
+   return wrap(Dref->createFile(File, Dir));
+-#endif
+ }
+
+ LLVMMetadataRef LLVMDIBuilderCreateCompileUnit(DIBuilderRef Dref, unsigned Lang,
+@@ -82,20 +63,13 @@ LLVMMetadataRef LLVMDIBuilderCreateCompileUnit(DIBuilderRef Dref, unsigned Lang,
+                                                int Optimized,
+                                                const char *Flags,
+                                                unsigned RuntimeVersion) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DICompileUnit CU = D->createCompileUnit(Lang, File, Dir, Producer, Optimized,
+-                                          Flags, RuntimeVersion);
+-  return wrap(CU);
+-#else
+-# if LLVM_VERSION_LE(3, 9)
++#if LLVM_VERSION_LE(3, 9)
+   return wrap(Dref->createCompileUnit(Lang, File, Dir, Producer, Optimized,
+                                       Flags, RuntimeVersion));
+-# else
++#else
+   DIFile *F = Dref->createFile(File, Dir);
+   return wrap(Dref->createCompileUnit(Lang, F, Producer, Optimized,
+                                       Flags, RuntimeVersion));
+-# endif
+ #endif
+ }
+
+@@ -111,19 +85,11 @@ LLVMMetadataRef LLVMDIBuilderCreateFunction(
+ #endif
+     bool IsOptimized,
+     LLVMValueRef Func) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DISubprogram Sub = D->createFunction(
+-      unwrapDI<DIDescriptor>(Scope), Name, LinkageName, unwrapDI<DIFile>(File),
+-      Line, unwrapDI<DICompositeType>(CompositeType), IsLocalToUnit,
+-      IsDefinition, ScopeLine, Flags, IsOptimized, unwrap<Function>(Func));
+-#else
+   DISubprogram *Sub = Dref->createFunction(
+       unwrapDI<DIScope>(Scope), Name, LinkageName, unwrapDI<DIFile>(File), Line,
+       unwrapDI<DISubroutineType>(CompositeType), IsLocalToUnit, IsDefinition,
+       ScopeLine, Flags, IsOptimized);
+   unwrap<Function>(Func)->setSubprogram(Sub);
+-#endif
+   return wrap(Sub);
+ }
+
+@@ -132,18 +98,8 @@ LLVMMetadataRef LLVMDIBuilderCreateLexicalBlock(DIBuilderRef Dref,
+                                                 LLVMMetadataRef File,
+                                                 unsigned Line,
+                                                 unsigned Column) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-# if LLVM_VERSION_EQ(3, 5)
+-  DILexicalBlock LB = D->createLexicalBlock(unwrapDI<DIDescriptor>(Scope), unwrapDI<DIFile>(File), Line, Column, 0);
+-# else /* LLVM <= 3.6 && LLVM != 3.5 */
+-  DILexicalBlock LB = D->createLexicalBlock(unwrapDI<DIDescriptor>(Scope), unwrapDI<DIFile>(File), Line, Column);
+-# endif
+-  return wrap(LB);
+-#else /* LLVM > 3.6 */
+   return wrap(Dref->createLexicalBlock(unwrapDI<DIDescriptor>(Scope),
+                                        unwrapDI<DIFile>(File), Line, Column));
+-#endif /* LLVM <= 3.6 */
+ }
+
+ LLVMMetadataRef LLVMDIBuilderCreateBasicType(DIBuilderRef Dref,
+@@ -151,71 +107,34 @@ LLVMMetadataRef LLVMDIBuilderCreateBasicType(DIBuilderRef Dref,
+                                              uint64_t SizeInBits,
+                                              uint64_t AlignInBits,
+                                              unsigned Encoding) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIBasicType T = D->createBasicType(Name, SizeInBits, AlignInBits, Encoding);
+-  return wrap(T);
+-#else
+-# if LLVM_VERSION_LE(3, 9)
++#if LLVM_VERSION_LE(3, 9)
+   return wrap(Dref->createBasicType(Name, SizeInBits, AlignInBits, Encoding));
+-# else
++#else
+   return wrap(Dref->createBasicType(Name, SizeInBits, Encoding));
+-# endif
+ #endif
+ }
+
+ LLVMMetadataRef LLVMDIBuilderGetOrCreateTypeArray(DIBuilderRef Dref,
+                                                   LLVMMetadataRef *Data,
+                                                   unsigned Length) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-# if LLVM_VERSION_EQ(3, 5)
+-  Value **DataValue = unwrap(Data);
+-  ArrayRef<Value *> Elements(DataValue, Length);
+-  DIArray A = D->getOrCreateArray(Elements);
+-# else /* LLVM <= 3.6 && LLVM != 3.5 */
+-  Metadata **DataValue = unwrap(Data);
+-  ArrayRef<Metadata *> Elements(DataValue, Length);
+-  DITypeArray A = D->getOrCreateTypeArray(Elements);
+-# endif
+-  return wrap(A);
+-#else /* LLVM > 3.6 */
+   Metadata **DataValue = unwrap(Data);
+   return wrap(
+       Dref->getOrCreateTypeArray(ArrayRef<Metadata *>(DataValue, Length))
+           .get());
+-#endif /* LLVM <= 3.6 */
+ }
+
+ LLVMMetadataRef LLVMDIBuilderGetOrCreateArray(DIBuilderRef Dref,
+                                               LLVMMetadataRef *Data,
+                                               unsigned Length) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  ArrayRef<Metadata *> elements(unwrap(Data), Length);
+-  DIArray a = D->getOrCreateArray(elements);
+-
+-  return wrap(a);
+-#else
+   Metadata **DataValue = unwrap(Data);
+   return wrap(
+       Dref->getOrCreateArray(ArrayRef<Metadata *>(DataValue, Length)).get());
+-#endif
+ }
+
+ LLVMMetadataRef
+ LLVMDIBuilderCreateSubroutineType(DIBuilderRef Dref, LLVMMetadataRef File,
+                                   LLVMMetadataRef ParameterTypes) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-# if LLVM_VERSION_EQ(3, 5)
+-  DICompositeType CT = D->createSubroutineType(unwrapDI<DIFile>(File), unwrapDI<DIArray>(ParameterTypes));
+-# else /* LLVM <= 3.6 && LLVM != 3.5 */
+-  DICompositeType CT = D->createSubroutineType(unwrapDI<DIFile>(File), unwrapDI<DITypeArray>(ParameterTypes));
+-# endif
+-#else /* LLVM > 3.6 */
+   DISubroutineType *CT = Dref->createSubroutineType(DITypeRefArray(unwrap<MDTuple>(ParameterTypes)));
+-#endif /* LLVM <= 3.6 */
+   return wrap(CT);
+ }
+
+@@ -229,21 +148,14 @@ LLVMMetadataRef LLVMDIBuilderCreateAutoVariable(
+     DINode::DIFlags Flags,
+ #endif
+     uint32_t AlignInBits) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIVariable V = D->createLocalVariable(
+-      llvm::dwarf::DW_TAG_auto_variable, unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+-      unwrapDI<DIType>(Ty), AlwaysPreserve, Flags, 0);
+-#else
+-# if LLVM_VERSION_LE(3, 9)
++#if LLVM_VERSION_LE(3, 9)
+   DILocalVariable *V = Dref->createAutoVariable(
+       unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+       unwrapDI<DIType>(Ty), AlwaysPreserve, Flags);
+-# else
++#else
+   DILocalVariable *V = Dref->createAutoVariable(
+       unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+       unwrapDI<DIType>(Ty), AlwaysPreserve, Flags, AlignInBits);
+-# endif
+ #endif
+   return wrap(V);
+ }
+@@ -258,18 +170,10 @@ LLVMMetadataRef LLVMDIBuilderCreateParameterVariable(
+     DINode::DIFlags Flags
+ #endif
+     ) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIVariable V = D->createLocalVariable(
+-       llvm::dwarf::DW_TAG_arg_variable, unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+-       unwrapDI<DIType>(Ty), AlwaysPreserve, Flags, ArgNo);
+-  return wrap(V);
+-#else
+   DILocalVariable *V = Dref->createParameterVariable
+     (unwrapDI<DIDescriptor>(Scope), Name, ArgNo, unwrapDI<DIFile>(File), Line,
+      unwrapDI<DIType>(Ty), AlwaysPreserve, Flags);
+   return wrap(V);
+-#endif
+ }
+
+ LLVMValueRef LLVMDIBuilderInsertDeclareAtEnd(DIBuilderRef Dref,
+@@ -278,46 +182,17 @@ LLVMValueRef LLVMDIBuilderInsertDeclareAtEnd(DIBuilderRef Dref,
+                                              LLVMMetadataRef Expr,
+                                              LLVMValueRef DL,
+                                              LLVMBasicBlockRef Block) {
+-#if LLVM_VERSION_EQ(3, 5)
+-  DIBuilder *D = unwrap(Dref);
+-  Instruction *Instr =
+-    D->insertDeclare(unwrap(Storage), unwrapDI<DIVariable>(VarInfo),
+-                     unwrap(Block));
+-  Instr->setDebugLoc(DebugLoc::getFromDILocation(cast<MDNode>(DL)));
+-#endif
+-
+-#if LLVM_VERSION_EQ(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  Instruction *Instr =
+-    D->insertDeclare(unwrap(Storage), unwrapDI<DIVariable>(VarInfo),
+-                     unwrapDI<DIExpression>(Expr), unwrap(Block));
+-  Instr->setDebugLoc(DebugLoc::getFromDILocation(cast<MDNode>(unwrap<MetadataAsValue>(DL)->getMetadata())));
+-#endif
+-
+-#if LLVM_VERSION_GE(3, 7)
+   Instruction *Instr =
+     Dref->insertDeclare(unwrap(Storage), unwrap<DILocalVariable>(VarInfo),
+                         unwrapDI<DIExpression>(Expr),
+                         DebugLoc(cast<MDNode>(unwrap<MetadataAsValue>(DL)->getMetadata())),
+                         unwrap(Block));
+-#endif
+-
+   return wrap(Instr);
+ }
+
+ LLVMMetadataRef LLVMDIBuilderCreateExpression(DIBuilderRef Dref, int64_t *Addr,
+                                               size_t Length) {
+-#if LLVM_VERSION_LE(3, 6)
+-# if LLVM_VERSION_EQ(3, 5)
+-  return nullptr;
+-# else /* LLVM <= 3.6 && LLVM != 3.5 */
+-  DIBuilder *D = unwrap(Dref);
+-  DIExpression Expr = D->createExpression(ArrayRef<int64_t>(Addr, Length));
+-  return wrap(Expr);
+-# endif
+-#else /* LLVM > 3.6 */
+   return wrap(Dref->createExpression(ArrayRef<int64_t>(Addr, Length)));
+-#endif
+ }
+
+ LLVMMetadataRef LLVMDIBuilderCreateEnumerationType(
+@@ -325,30 +200,16 @@ LLVMMetadataRef LLVMDIBuilderCreateEnumerationType(
+     LLVMMetadataRef File, unsigned LineNumber, uint64_t SizeInBits,
+     uint64_t AlignInBits, LLVMMetadataRef Elements,
+     LLVMMetadataRef UnderlyingType) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DICompositeType enumType = D->createEnumerationType(
+-      unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), LineNumber,
+-      SizeInBits, AlignInBits, unwrapDI<DIArray>(Elements),
+-      unwrapDI<DIType>(UnderlyingType));
+-#else
+   DICompositeType *enumType = Dref->createEnumerationType(
+       unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), LineNumber,
+       SizeInBits, AlignInBits, DINodeArray(unwrapDI<MDTuple>(Elements)),
+       unwrapDI<DIType>(UnderlyingType));
+-#endif
+   return wrap(enumType);
+ }
+
+ LLVMMetadataRef LLVMDIBuilderCreateEnumerator(DIBuilderRef Dref,
+                                               const char *Name, int64_t Value) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIEnumerator e = D->createEnumerator(Name, Value);
+-  return wrap(e);
+-#else
+   DIEnumerator *e = Dref->createEnumerator(Name, Value);
+-#endif
+   return wrap(e);
+ }
+
+@@ -367,22 +228,13 @@ LLVMDIBuilderCreateStructType(DIBuilderRef Dref,
+ #endif
+                               LLVMMetadataRef DerivedFrom,
+                               LLVMMetadataRef Elements) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DICompositeType CT = D->createStructType(
+-      unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+-      SizeInBits, AlignInBits, Flags, unwrapDI<DIType>(DerivedFrom),
+-      unwrapDI<DIArray>(Elements));
+-#else
+   DICompositeType *CT = Dref->createStructType(
+       unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+       SizeInBits, AlignInBits, Flags, unwrapDI<DIType>(DerivedFrom),
+       DINodeArray(unwrapDI<MDTuple>(Elements)));
+-#endif
+   return wrap(CT);
+ }
+
+-#if LLVM_VERSION_GE(3, 8)
+ LLVMMetadataRef
+ LLVMDIBuilderCreateReplaceableCompositeType(DIBuilderRef Dref,
+                                             LLVMMetadataRef Scope,
+@@ -409,7 +261,6 @@ LLVMDIBuilderReplaceTemporary(DIBuilderRef Dref,
+   llvm::TempMDNode fwd_decl(Node);
+   Dref->replaceTemporary(std::move(fwd_decl), Type);
+ }
+-#endif
+
+ LLVMMetadataRef
+ LLVMDIBuilderCreateMemberType(DIBuilderRef Dref, LLVMMetadataRef Scope,
+@@ -422,16 +273,9 @@ LLVMDIBuilderCreateMemberType(DIBuilderRef Dref, LLVMMetadataRef Scope,
+                               DINode::DIFlags Flags,
+ #endif
+                               LLVMMetadataRef Ty) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIDerivedType DT = D->createMemberType(
+-      unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+-      SizeInBits, AlignInBits, OffsetInBits, Flags, unwrapDI<DIType>(Ty));
+-#else
+   DIDerivedType *DT = Dref->createMemberType(
+       unwrapDI<DIDescriptor>(Scope), Name, unwrapDI<DIFile>(File), Line,
+       SizeInBits, AlignInBits, OffsetInBits, Flags, unwrapDI<DIType>(Ty));
+-#endif
+   return wrap(DT);
+ }
+
+@@ -440,39 +284,24 @@ LLVMMetadataRef LLVMDIBuilderCreatePointerType(DIBuilderRef Dref,
+                                                uint64_t SizeInBits,
+                                                uint64_t AlignInBits,
+                                                const char *Name) {
+-#if LLVM_VERSION_LE(3, 6)
+-  DIBuilder *D = unwrap(Dref);
+-  DIDerivedType T = D->createPointerType(unwrapDI<DIType>(PointeeType),
+-                                         SizeInBits, AlignInBits, Name);
+-#else
+   DIDerivedType *T = Dref->createPointerType(unwrapDI<DIType>(PointeeType),
+-                                             SizeInBits, AlignInBits, Name);
++                                             SizeInBits, AlignInBits,
++#if LLVM_VERSION_GE(5, 0)
++                                             None,
+ #endif
++                                             Name);
+   return wrap(T);
+ }
+
+ LLVMMetadataRef LLVMTemporaryMDNode(LLVMContextRef C, LLVMMetadataRef *MDs,
+                                     unsigned Count) {
+-#if LLVM_VERSION_LE(3, 6)
+-  return wrap(MDNode::getTemporary(*unwrap(C),
+-                                   ArrayRef<Metadata *>(unwrap(MDs), Count)));
+-#else
+   return wrap(MDTuple::getTemporary(*unwrap(C),
+                                     ArrayRef<Metadata *>(unwrap(MDs), Count))
+                   .release());
+-#endif
+ }
+
+ void LLVMMetadataReplaceAllUsesWith(LLVMMetadataRef MD, LLVMMetadataRef New) {
+-#if LLVM_VERSION_LE(3, 6)
+-# if LLVM_VERSION_EQ(3, 5)
+   auto *Node = unwrap<MDNode>(MD);
+-# else /* LLVM <= 3.6 && LLVM != 3.5 */
+-  auto *Node = unwrap<MDNodeFwdDecl>(MD);
+-# endif
+-#else /* LLVM > 3.6 */
+-  auto *Node = unwrap<MDNode>(MD);
+-#endif
+   Node->replaceAllUsesWith(unwrap<MDNode>(New));
+   MDNode::deleteTemporary(Node);
+ }
+diff --git a/src/llvm/function_pass_manager.cr b/src/llvm/function_pass_manager.cr
+index 979cb9c97..834d72a20 100644
+--- a/src/llvm/function_pass_manager.cr
++++ b/src/llvm/function_pass_manager.cr
+@@ -2,12 +2,6 @@ class LLVM::FunctionPassManager
+   def initialize(@unwrap : LibLLVM::PassManagerRef)
+   end
+
+-  {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-    def add_target_data(target_data)
+-      LibLLVM.add_target_data target_data, self
+-    end
+-  {% end %}
+-
+   def run(mod : Module)
+     changed = false
+     run do |runner|
+diff --git a/src/llvm/lib_llvm.cr b/src/llvm/lib_llvm.cr
+index e2c7a9445..5a0b67cdd 100644
+--- a/src/llvm/lib_llvm.cr
++++ b/src/llvm/lib_llvm.cr
+@@ -6,8 +6,6 @@ lib LibLLVM
+                    (command -v llvm-config > /dev/null && (case "$(llvm-config --version)" in 3.9*) command -v llvm-config;; *) false;; esac)) || \
+                    command -v llvm-config-3.8 || command -v llvm-config38 || \
+                    (command -v llvm-config > /dev/null && (case "$(llvm-config --version)" in 3.8*) command -v llvm-config;; *) false;; esac)) || \
+-                   command -v llvm-config-3.6 || command -v llvm-config36 || \
+-                   command -v llvm-config-3.5 || command -v llvm-config35 || \
+                    command -v llvm-config
+                   `.chomp.stringify
+                 }}
+@@ -32,8 +30,6 @@ end
+     IS_40 = {{LibLLVM::VERSION.starts_with?("4.0")}}
+     IS_39 = {{LibLLVM::VERSION.starts_with?("3.9")}}
+     IS_38 = {{LibLLVM::VERSION.starts_with?("3.8")}}
+-    IS_36 = {{LibLLVM::VERSION.starts_with?("3.6")}}
+-    IS_35 = {{LibLLVM::VERSION.starts_with?("3.5")}}
+   end
+ {% end %}
+
+@@ -283,9 +279,7 @@ lib LibLLVM
+   fun set_alignment = LLVMSetAlignment(value : ValueRef, bytes : UInt32)
+   fun get_return_type = LLVMGetReturnType(TypeRef) : TypeRef
+
+-  {% unless LibLLVM::IS_35 %}
+-    fun write_bitcode_to_memory_buffer = LLVMWriteBitcodeToMemoryBuffer(mod : ModuleRef) : MemoryBufferRef
+-  {% end %}
++  fun write_bitcode_to_memory_buffer = LLVMWriteBitcodeToMemoryBuffer(mod : ModuleRef) : MemoryBufferRef
+
+   fun dispose_memory_buffer = LLVMDisposeMemoryBuffer(buf : MemoryBufferRef) : Void
+   fun get_buffer_start = LLVMGetBufferStart(buf : MemoryBufferRef) : UInt8*
+@@ -293,26 +287,22 @@ lib LibLLVM
+
+   fun write_bitcode_to_fd = LLVMWriteBitcodeToFD(mod : ModuleRef, fd : LibC::Int, should_close : LibC::Int, unbuffered : LibC::Int) : LibC::Int
+
+-  {% if LibLLVM::IS_36 || LibLLVM::IS_35 %}
+-    fun add_target_data = LLVMAddTargetData(td : TargetDataRef, pm : PassManagerRef)
+-  {% end %}
+-
+-  {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++  {% if LibLLVM::IS_38 %}
+     fun copy_string_rep_of_target_data = LLVMCopyStringRepOfTargetData(data : TargetDataRef) : UInt8*
+     fun get_target_machine_data = LLVMGetTargetMachineData(t : TargetMachineRef) : TargetDataRef
+     fun set_data_layout = LLVMSetDataLayout(mod : ModuleRef, data : UInt8*)
+-  {% else %}
++  {% else %} # LLVM >= 3.9
+     fun create_target_data_layout = LLVMCreateTargetDataLayout(t : TargetMachineRef) : TargetDataRef
+     fun set_module_data_layout = LLVMSetModuleDataLayout(mod : ModuleRef, data : TargetDataRef)
+   {% end %}
+
+-  {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++  {% if LibLLVM::IS_38 %}
+     fun add_attribute = LLVMAddAttribute(arg : ValueRef, attr : LLVM::Attribute)
+     fun add_instr_attribute = LLVMAddInstrAttribute(instr : ValueRef, index : UInt32, attr : LLVM::Attribute)
+     fun add_function_attr = LLVMAddFunctionAttr(fn : ValueRef, pa : LLVM::Attribute)
+     fun get_function_attr = LLVMGetFunctionAttr(fn : ValueRef) : LLVM::Attribute
+     fun get_attribute = LLVMGetAttribute(arg : ValueRef) : LLVM::Attribute
+-  {% else %}
++  {% else %} # LLVM >= 3.9
+     type AttributeRef = Void*
+     alias AttributeIndex = UInt
+
+diff --git a/src/llvm/lib_llvm_ext.cr b/src/llvm/lib_llvm_ext.cr
+index 84c65cccb..953567eb8 100644
+--- a/src/llvm/lib_llvm_ext.cr
++++ b/src/llvm/lib_llvm_ext.cr
+@@ -13,19 +13,11 @@ lib LibLLVMExt
+   fun create_di_builder = LLVMNewDIBuilder(LibLLVM::ModuleRef) : DIBuilder
+   fun di_builder_finalize = LLVMDIBuilderFinalize(DIBuilder)
+
+-  {% if LibLLVM::IS_36 || LibLLVM::IS_35 %}
+-    fun di_builder_create_function = LLVMDIBuilderCreateFunction(
+-                                                                 builder : DIBuilder, scope : Metadata, name : Char*,
+-                                                                 linkage_name : Char*, file : Metadata, line : UInt,
+-                                                                 composite_type : Metadata, is_local_to_unit : Int, is_definition : Int,
+-                                                                 scope_line : UInt, flags : LLVM::DIFlags, is_optimized : Int, func : LibLLVM::ValueRef) : Metadata
+-  {% else %}
+-    fun di_builder_create_function = LLVMDIBuilderCreateFunction(
+-                                                                 builder : DIBuilder, scope : Metadata, name : Char*,
+-                                                                 linkage_name : Char*, file : Metadata, line : UInt,
+-                                                                 composite_type : Metadata, is_local_to_unit : Bool, is_definition : Bool,
+-                                                                 scope_line : UInt, flags : LLVM::DIFlags, is_optimized : Bool, func : LibLLVM::ValueRef) : Metadata
+-  {% end %}
++  fun di_builder_create_function = LLVMDIBuilderCreateFunction(
++                                                               builder : DIBuilder, scope : Metadata, name : Char*,
++                                                               linkage_name : Char*, file : Metadata, line : UInt,
++                                                               composite_type : Metadata, is_local_to_unit : Bool, is_definition : Bool,
++                                                               scope_line : UInt, flags : LLVM::DIFlags, is_optimized : Bool, func : LibLLVM::ValueRef) : Metadata
+
+   fun di_builder_create_file = LLVMDIBuilderCreateFile(builder : DIBuilder, file : Char*, dir : Char*) : Metadata
+   fun di_builder_create_compile_unit = LLVMDIBuilderCreateCompileUnit(builder : DIBuilder,
+@@ -94,17 +86,12 @@ lib LibLLVMExt
+                                                                       align_in_bits : UInt64,
+                                                                       name : Char*) : Metadata
+
+-  {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-    fun temporary_md_node = LLVMTemporaryMDNode(context : LibLLVM::ContextRef, mds : Metadata*, count : UInt) : Metadata
+-    fun metadata_replace_all_uses_with = LLVMMetadataReplaceAllUsesWith(Metadata, Metadata)
+-  {% else %}
+-    fun di_builder_create_replaceable_composite_type = LLVMDIBuilderCreateReplaceableCompositeType(builder : DIBuilder,
+-                                                                                                   scope : Metadata,
+-                                                                                                   name : Char*,
+-                                                                                                                    file : Metadata,
+-                                                                                                   line : UInt) : Metadata
+-    fun di_builder_replace_temporary = LLVMDIBuilderReplaceTemporary(builder : DIBuilder, from : Metadata, to : Metadata)
+-  {% end %}
++  fun di_builder_create_replaceable_composite_type = LLVMDIBuilderCreateReplaceableCompositeType(builder : DIBuilder,
++                                                                                                 scope : Metadata,
++                                                                                                 name : Char*,
++                                                                                                 file : Metadata,
++                                                                                                 line : UInt) : Metadata
++  fun di_builder_replace_temporary = LLVMDIBuilderReplaceTemporary(builder : DIBuilder, from : Metadata, to : Metadata)
+
+   fun set_current_debug_location = LLVMSetCurrentDebugLocation2(LibLLVM::BuilderRef, Int, Int, Metadata, Metadata)
+
+diff --git a/src/llvm/module.cr b/src/llvm/module.cr
+index cb71e3b21..c15a56e77 100644
+--- a/src/llvm/module.cr
++++ b/src/llvm/module.cr
+@@ -6,7 +6,7 @@ class LLVM::Module
+
+   getter context : Context
+
+-  {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++  {% if LibLLVM::IS_38 %}
+     def initialize(@unwrap : LibLLVM::ModuleRef, @name : String, @context : Context)
+       @owned = false
+     end
+@@ -14,7 +14,7 @@ class LLVM::Module
+     def name : String
+       @name
+     end
+-  {% else %}
++  {% else %} # LLVM >= 3.9
+     def initialize(@unwrap : LibLLVM::ModuleRef, @context : Context)
+       @owned = false
+     end
+@@ -34,9 +34,9 @@ class LLVM::Module
+   end
+
+   def data_layout=(data : TargetData)
+-    {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++    {% if LibLLVM::IS_38 %}
+       LibLLVM.set_data_layout(self, data.to_data_layout_string)
+-    {% else %}
++    {% else %} # LLVM >= 3.9
+       LibLLVM.set_module_data_layout(self, data)
+     {% end %}
+   end
+@@ -57,11 +57,9 @@ class LLVM::Module
+     LibLLVM.write_bitcode_to_file self, filename
+   end
+
+-  {% unless LibLLVM::IS_35 %}
+-    def write_bitcode_to_memory_buffer
+-      MemoryBuffer.new(LibLLVM.write_bitcode_to_memory_buffer self)
+-    end
+-  {% end %}
++  def write_bitcode_to_memory_buffer
++    MemoryBuffer.new(LibLLVM.write_bitcode_to_memory_buffer self)
++  end
+
+   def write_bitcode_to_fd(fd : Int, should_close = false, buffered = false)
+     LibLLVM.write_bitcode_to_fd(self, fd, should_close ? 1 : 0, buffered ? 1 : 0)
+diff --git a/src/llvm/module_pass_manager.cr b/src/llvm/module_pass_manager.cr
+index 10bfa60bd..519227809 100644
+--- a/src/llvm/module_pass_manager.cr
++++ b/src/llvm/module_pass_manager.cr
+@@ -3,12 +3,6 @@ class LLVM::ModulePassManager
+     @unwrap = LibLLVM.pass_manager_create
+   end
+
+-  {% if LibLLVM::IS_35 || LibLLVM::IS_36 %}
+-    def add_target_data(target_data)
+-      LibLLVM.add_target_data target_data, self
+-    end
+-  {% end %}
+-
+   def run(mod)
+     LibLLVM.run_pass_manager(self, mod) != 0
+   end
+diff --git a/src/llvm/target_machine.cr b/src/llvm/target_machine.cr
+index e4bb081e9..42e44abe2 100644
+--- a/src/llvm/target_machine.cr
++++ b/src/llvm/target_machine.cr
+@@ -9,9 +9,9 @@ class LLVM::TargetMachine
+
+   def data_layout
+     @layout ||= begin
+-      layout = {% if LibLLVM::IS_38 || LibLLVM::IS_36 || LibLLVM::IS_35 %}
++      layout = {% if LibLLVM::IS_38 %}
+                  LibLLVM.get_target_machine_data(self)
+-               {% else %}
++               {% else %} # LLVM >= 3.9
+                  LibLLVM.create_target_data_layout(self)
+                {% end %}
+       layout ? TargetData.new(layout) : raise "Missing layout for #{self}"
+--
+2.14.1
+
