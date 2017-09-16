@@ -4572,7 +4572,7 @@ dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.425 4.8.0.495 4.8.0.524
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
-dev-lang/mujs 0_p20161202 1.0.1: lightweight Javascript interpreter
+dev-lang/mujs 0_p20161202 1.0.1-r1: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/nim 0.16.0 0.17.0 0.17.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2017.01 2017.02 2017.03 2017.04 2017.05 2017.06 2017.07 2017.08 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
@@ -11895,7 +11895,7 @@ kde-apps/kde-apps-meta 17.04.3 17.08.1: Meta package for the KDE Applications co
 kde-apps/kde-dev-scripts 17.04.3 17.08.1: KDE Development Scripts
 kde-apps/kde-dev-utils 17.04.3 17.08.1: KDE Development Utilities
 kde-apps/kde-meta 17.04.3 17.08.1: Merge this to pull in all KDE Plasma and Applications packages
-kde-apps/kde4-l10n 17.04.3 17.08.1: KDE legacy internationalization package
+kde-apps/kde4-l10n 17.04.3 17.08.1-r1: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 17.04.3 17.08.1: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 17.04.3 17.08.1: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
@@ -19328,7 +19328,7 @@ x11-terms/qterminal 0.7.1 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 2.9.3-r2 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.21 9.22 9.22-r1 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.3.4 3.4.0: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.3.4 3.4.0 3.5.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.7 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1 1.0.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
