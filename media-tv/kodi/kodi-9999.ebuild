@@ -128,9 +128,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
-	app-arch/unzip
 	app-arch/xz-utils
-	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
 	dev-libs/rapidjson
