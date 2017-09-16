@@ -3,14 +3,12 @@
 
 EAPI="6"
 
-inherit ltprune
-
-DESCRIPTION="Library for Chinese Phonetic input method"
-HOMEPAGE="http://chewing.csie.net/"
+DESCRIPTION="Intelligent phonetic (Zhuyin/Bopomofo) input method library"
+HOMEPAGE="http://chewing.im/ https://github.com/chewing/libchewing"
 SRC_URI="https://github.com/${PN/lib}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
-SLOT="0/3"
 LICENSE="LGPL-2.1"
+SLOT="0/3"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs test"
 
@@ -31,6 +29,6 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name "*.la" -delete || die
 	use static-libs || find "${D}" -name "*.a" -delete || die
 }
