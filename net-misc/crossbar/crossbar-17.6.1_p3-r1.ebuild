@@ -129,7 +129,7 @@ pkg_config() {
 
 	local instance_path="${crossbar_path}/${instance_name}"
 	local instance_log_path="${log_path}/${instance_name}"
-	
+
 	if [[ -e "${instance_path}" ]]; then
 		eerror "The instance with the specified name already exists:"
 		eerror "${instance_path}"
@@ -144,13 +144,13 @@ pkg_config() {
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/crossbar" "/etc/init.d/crossbar.${instance_name}" \
 		|| die "Unable to create link to init file"
-	
+
 	if [[ ! -d "${instance_log_path}" ]]; then
 		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
 	fi
 	ln --symbolic --relative "${instance_log_path}/node.log" "${instance_path}/node.log" \
 		|| die "Unable to create link to log file"
-		
+
 	einfo "Successfully created a crossbar instance at ${instance_path}."
 	einfo "To change the default settings edit the config.json file in this directory."
 }
