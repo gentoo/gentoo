@@ -95,6 +95,8 @@ pkg_postinst() {
 
 pkg_config() {
 	local buildworker_path="/var/lib/buildbot_worker"
+	local log_path="/var/log/buildbot_worker"
+
 	einfo "This will prepare a new buildbot_worker instance in ${buildworker_path}."
 	einfo "Press Control-C to abort."
 
@@ -103,20 +105,28 @@ pkg_config() {
 	[[ -z "${instance_name}" ]] && die "Invalid instance name"
 
 	local instance_path="${buildworker_path}/${instance_name}"
+	local instance_log_path="${log_path}/${instance_name}"
+
 	if [[ -e "${instance_path}" ]]; then
 		eerror "The instance with the specified name already exists:"
 		eerror "${instance_path}"
 		die "Instance already exists"
 	fi
 
-	if [[ ! -d "${buildworker_path}" ]]; then
-		mkdir --parents "${buildworker_path}" || die "Unable to create directory ${buildworker_path}"
+	if [[ ! -d "${instance_path}" ]]; then
+		mkdir --parents "${instance_path}" || die "Unable to create directory ${buildworker_path}"
 	fi
 	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
 	cp "${buildworker_path}/buildbot.tac.sample" "${instance_path}/buildbot.tac" \
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildbot_worker" "/etc/init.d/buildbot_worker.${instance_name}" \
 		|| die "Unable to create link to init file"
+
+	if [[ ! -d "${instance_log_path}" ]]; then
+		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+	fi
+	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
+		|| die "Unable to create link to log file"
 
 	einfo "Successfully created a buildbot_worker instance at ${instance_path}."
 	einfo "To change the default settings edit the buildbot.tac file in this directory."
