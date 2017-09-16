@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit eutils cmake-utils toolchain-funcs
+inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="http://www.simgear.org/"
 SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="+dns debug gdal openmp subversion test"
 
 COMMON_DEPEND="
@@ -31,12 +31,17 @@ RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
 
-PATCHES=( "${FILESDIR}/simgear-2017.2.1-gdal-underlinking.patch" )
-
-DOCS=(AUTHORS ChangeLog NEWS README Thanks)
+PATCHES=(
+	"${FILESDIR}"/${PN}-2017.2.1-gdal-underlinking.patch
+	"${FILESDIR}"/${PN}-2017.2.1-boost-1.65-tr1-removal.patch
+)
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {
