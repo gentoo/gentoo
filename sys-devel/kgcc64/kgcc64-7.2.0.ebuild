@@ -15,14 +15,16 @@ export CTARGET
 TOOLCHAIN_ALLOWED_LANGS="c"
 GCC_TARGET_NO_MULTILIB=true
 
-PATCH_VER="1.3"
+PATCH_VER="1.1"
+PATCH_GCC_VER="7.1.0"
 
 inherit eutils toolchain
 
 DESCRIPTION="64bit kernel compiler"
 
 # Works on mips and sparc; all other archs, refer to bug #228115
-KEYWORDS="hppa sparc"
+# unkeyworded, same as sys-devel/gcc
+#KEYWORDS="~hppa ~mips"
 
 RDEPEND=">=dev-libs/gmp-4.3.2
 	>=dev-libs/mpfr-2.4.2
