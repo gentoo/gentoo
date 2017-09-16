@@ -41,10 +41,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	apache2? ( www-servers/apache[apache2_modules_dav] )
 	java? ( >=virtual/jre-1.5 )
-	kwallet? ( || (
-		( >=kde-frameworks/kwallet-5.34.0-r1 )
-		( kde-apps/kwalletd:4 )
-	) )
+	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 	nls? ( virtual/libintl )
 	perl? ( dev-perl/URI )"
 # Note: ctypesgen doesn't need PYTHON_USEDEP, it's used once
