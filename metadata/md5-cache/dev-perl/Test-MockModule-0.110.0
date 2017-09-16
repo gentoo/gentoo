@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Carp dev-perl/SUPER virtual/perl-Scalar-List-Utils dev-lang
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GF/GFRANKS/Test-MockModule-0.11.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=abe5a61e1a4acd8bc60593fde357b462
+_md5_=473bbc657b9f0755222146b32aa3a257
