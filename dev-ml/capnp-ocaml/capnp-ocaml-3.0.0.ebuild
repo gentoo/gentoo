@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 	dev-ml/jbuilder
 "
 
+src_compile() {
+	emake build
+}
+
 src_install() {
 	opam_src_install capnp
 }
