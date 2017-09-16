@@ -171,7 +171,7 @@ pkg_postinst() {
 
 pkg_config() {
 	local buildmaster_path="/var/lib/buildmaster"
-	local log_path="/var/log/buildbot_worker"
+	local log_path="/var/log/buildmaster"
 
 	einfo "This will prepare a new buildmaster instance in ${buildmaster_path}."
 	einfo "Press Control-C to abort."
