@@ -14,11 +14,18 @@ LICENSE="LGPL-2.1+ BSD"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-RDEPEND="!sys-libs/glibc[rpc(-)]"
+RDEPEND="!<sys-libs/glibc-2.26"
 
 S=${WORKDIR}/${PN}-${P}
 
 src_prepare(){
 	default
 	eautoreconf
+}
+
+src_install(){
+	default
+
+	# provided by sys-fs/quota[rpc]
+	rm "${ED}"/usr/include/rpcsvc/rquota.{x,h} || die
 }
