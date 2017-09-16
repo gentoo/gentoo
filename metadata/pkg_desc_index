@@ -11887,7 +11887,6 @@ kde-apps/kcalc 17.04.3 17.08.1: KDE calculator
 kde-apps/kcalcore 17.04.3 17.08.1: Library for handling calendar data
 kde-apps/kcalutils 17.04.3 17.08.1: Library providing utility functions for the handling of calendar data
 kde-apps/kcharselect 17.04.3 17.08.1: KDE character selection utility
-kde-apps/kcmshell 16.04.3: Utility to host KDE control modules independently of SystemSettings
 kde-apps/kcolorchooser 17.04.3 17.08.1: KDE color selector/editor
 kde-apps/kcontacts 17.04.3 17.08.1: Address book API based on KDE Frameworks
 kde-apps/kcron 17.04.3 17.08.1: KDE Task Scheduler
@@ -11895,7 +11894,6 @@ kde-apps/kdav 17.04.3 17.08.1: DAV protocol implemention with KJobs
 kde-apps/kde-apps-meta 17.04.3 17.08.1: Meta package for the KDE Applications collection
 kde-apps/kde-dev-scripts 17.04.3 17.08.1: KDE Development Scripts
 kde-apps/kde-dev-utils 17.04.3 17.08.1: KDE Development Utilities
-kde-apps/kde-l10n 16.12.3: KDE internationalization package
 kde-apps/kde-meta 17.04.3 17.08.1: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde4-l10n 17.04.3 17.08.1: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 17.04.3 17.08.1: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
@@ -11903,7 +11901,6 @@ kde-apps/kdeadmin-meta 17.04.3 17.08.1: KDE administration tools - merge this to
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-kioslaves 16.04.3-r2: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
 kde-apps/kdebase-meta 17.04.3 17.08.1: Transitional package to pull in plasma-meta plus basic applications
-kde-apps/kdebase-runtime-meta 16.04.3-r1: Merge this to pull in all kdebase-runtime-derived packages
 kde-apps/kdebugsettings 17.04.3 17.08.1: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 17.04.3 17.08.1: kdecore - merge this to pull in the most basic applications
 kde-apps/kdeedu-data 17.04.3 17.08.1: Shared icons, artwork and data files for educational applications
@@ -11917,7 +11914,6 @@ kde-apps/kdenetwork-meta 17.04.3 17.08.1: kdenetwork - merge this to pull in all
 kde-apps/kdenlive 17.04.3 17.08.1: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 17.04.3 17.08.1: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 17.04.3 17.08.1: Libraries for KDE PIM applications
-kde-apps/kdepim-common-libs 4.14.11_pre20160611-r1: Common libraries for KDE PIM apps
 kde-apps/kdepim-kresources 4.4.2017.04: KDE PIM groupware plugin collection (noakonadi branch)
 kde-apps/kdepim-l10n 4.4.11.1-r2: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2017.04 17.04.3 17.08.1: KDE PIM - merge this to pull in all kdepim-derived packages
@@ -11932,10 +11928,7 @@ kde-apps/kdewebdev-meta 17.04.3 17.08.1: KDE WebDev - merge this to pull in all 
 kde-apps/kdf 17.04.3 17.08.1: KDE free disk space utility
 kde-apps/kdialog 17.04.3 17.08.1: Can be used to show nice dialog boxes from shell scripts
 kde-apps/kdiamond 17.04.3 17.08.1: A KDE three-in-a-row game
-kde-apps/kdontchangethehostname 16.04.3: Tool to inform Plasma about a change in hostname
 kde-apps/keditbookmarks 17.04.3 17.08.1: Bookmarks editor based on KDE Frameworks
-kde-apps/keditfiletype 16.04.3: KDE mime/file type assocciation editor
-kde-apps/kfile 16.04.3: Commandline frontend to KFileMetaInfo
 kde-apps/kfilereplace 17.04.3 17.08.1: Powerful tool to search and replace in multiple files
 kde-apps/kfind 17.04.3 17.08.1: File finder utility based on KDE Frameworks
 kde-apps/kfloppy 17.04.3 17.08.1: A straightforward graphical means to format 3.5" and 5.25" floppy disks
@@ -11972,7 +11965,6 @@ kde-apps/kmail-account-wizard 17.04.3 17.08.1: Assistant for KMail accounts conf
 kde-apps/kmailtransport 17.04.3 17.08.1: Mail transport service
 kde-apps/kmbox 17.04.3 17.08.1: Library for accessing MBox format mail storages
 kde-apps/kmime 17.04.3 17.08.1: Libary for handling mail messages and newsgroup articles
-kde-apps/kmimetypefinder 16.04.3: KDE application to report the mimetype for a given file
 kde-apps/kmines 17.04.3 17.08.1: Classic mine sweeper game
 kde-apps/kmix 17.04.3 17.08.1: Plasma mixer gui
 kde-apps/kmousetool 17.04.3 17.08.1: KDE program that clicks the mouse for you
@@ -11980,14 +11972,12 @@ kde-apps/kmouth 17.04.3 17.08.1: Text-to-speech synthesizer front end
 kde-apps/kmplot 17.04.3 17.08.1: Mathematical function plotter
 kde-apps/knavalbattle 17.04.3 17.08.1: Battleship clone by KDE
 kde-apps/knetwalk 17.04.3 17.08.1: KDE version of the popular NetWalk game for system administrators
-kde-apps/knewstuff 16.04.3: KDE4 software to download and upload 'new stuff'
 kde-apps/knode 4.4.2017.04: Usenet newsgroups and mailing lists reader by KDE (noakonadi branch)
 kde-apps/knotes 4.4.2017.04 17.04.3 17.08.1: Note taking application
 kde-apps/knotify 16.04.3: The KDE notification daemon
 kde-apps/kolf 17.04.3 17.08.1: Minigolf Game by KDE
 kde-apps/kollision 17.04.3 17.08.1: Simple ball dodging game
 kde-apps/kolourpaint 17.04.3 17.08.1: Paint Program by KDE
-kde-apps/kommander 16.12.3: KDE dialog system for scripting
 kde-apps/kompare 17.04.3 17.08.1: A program to view the differences between files
 kde-apps/konqueror 17.04.3 17.08.1: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 17.04.3 17.08.1: Galactic Strategy KDE Game
@@ -12003,13 +11993,11 @@ kde-apps/kpimtextedit 17.04.3 17.08.1: A textedit with PIM-specific features
 kde-apps/kppp 17.04.3 17.08.1: A dialer and front-end to pppd
 kde-apps/kqtquickcharts 17.04.3 17.08.1: Qt Quick plugin for beautiful and interactive charts
 kde-apps/krdc 17.04.3 17.08.1: Remote desktop connection (RDP and VNC) client
-kde-apps/kreadconfig 16.04.3: Command-line tool to read KConfig entries
 kde-apps/kremotecontrol 17.04.3 17.08.1: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 17.04.3 17.08.1: Board game by KDE
 kde-apps/krfb 17.04.3 17.08.1: VNC-compatible server to share Plasma desktops
 kde-apps/kross-interpreters 17.04.3 17.08.1: Kross interpreter plugins for programming languages
 kde-apps/kruler 17.04.3 17.08.1: Screen ruler for Plasma
-kde-apps/ksaneplugin 17.04.3: SANE Plugin by KDE
 kde-apps/kscd 17.04.3 17.08.1: KDE CD player
 kde-apps/kshisen 17.04.3 17.08.1: A KDE game similiar to Mahjongg
 kde-apps/ksirk 17.04.3 17.08.1: Port of the board game risk
@@ -12023,7 +12011,6 @@ kde-apps/kteatime 17.04.3 17.08.1: KDE timer for making a fine cup of tea
 kde-apps/ktimer 17.04.3 17.08.1: KDE Timer
 kde-apps/ktimetracker 4.4.2017.04: Tracks time spent on various tasks (noakonadi branch)
 kde-apps/ktimezoned 16.04.3: KDE: Timezone daemon
-kde-apps/ktnef 4.14.11_pre20160611: Viewer for TNEF attachments
 kde-apps/ktouch 17.04.3 17.08.1: Program that helps to learn and practice touch typing
 kde-apps/ktp-accounts-kcm 17.04.3 17.08.1: KDE Telepathy account management kcm
 kde-apps/ktp-approver 17.04.3 17.08.1: KDE Telepathy notification handler
@@ -12037,11 +12024,9 @@ kde-apps/ktp-filetransfer-handler 17.04.3 17.08.1: KDE Telepathy file transfer h
 kde-apps/ktp-kded-module 17.04.3 17.08.1: KDE Telepathy workspace integration
 kde-apps/ktp-send-file 17.04.3 17.08.1: KDE Telepathy file manager plugin to send files to contacts
 kde-apps/ktp-text-ui 17.04.3 17.08.1: KDE Telepathy text chat window
-kde-apps/ktraderclient 16.04.3: A command-line tool for querying the KDE trader system
 kde-apps/ktuberling 17.04.3 17.08.1: Potato game for kids by KDE
 kde-apps/kturtle 17.04.3 17.08.1: Educational programming environment using the Logo programming language
 kde-apps/kubrick 17.04.3 17.08.1: Game based on the "Rubik's Cube" puzzle by KDE
-kde-apps/kwalletd 16.04.3-r1: KDE Password Server
 kde-apps/kwalletmanager 17.04.3 17.08.1: KDE Wallet management tool
 kde-apps/kwave 17.04.3 17.08.1: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
 kde-apps/kwordquiz 17.04.3 17.08.1: A powerful flashcard and vocabulary learning program
@@ -15018,7 +15003,7 @@ net-libs/rest 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.10 2.14: Remote procedure call package for IP/UDP (used by Coda)
-net-libs/rpcsvc-proto 1.2: rpcsvc protocol definitions from glibc
+net-libs/rpcsvc-proto 1.2-r1: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9: HTTP client library
 net-libs/shairplay 0_pre20170118 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.21-r1: OAuth2 plugin for Signon daemon
