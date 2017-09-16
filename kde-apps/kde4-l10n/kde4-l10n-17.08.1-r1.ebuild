@@ -61,7 +61,7 @@ RDEPEND="
 	!<kde-plasma/plasma-workspace-5.10.0:5
 "
 
-REMOVE_DIRS="${FILESDIR}/${PN}-16.12.3-remove-dirs"
+REMOVE_DIRS="${FILESDIR}/${PN}-17.08.1-remove-dirs"
 
 IUSE="test $(printf 'l10n_%s ' ${KDE_L10N[@]})"
 
