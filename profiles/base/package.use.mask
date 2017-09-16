@@ -46,10 +46,6 @@ app-editors/emacs-vcs hesiod
 # Mask USE flag which has limited keywords for app-crypt/argon2
 dev-lang/php argon2
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (18 Jul 2017)
-# Requires unavailable >=dev-lang/mujs-1.0.0, see Gentoo bug 621820.
-media-video/mpv javascript
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Jul 2017)
 # Causes build to fail with ffmpeg-3, #602786
 www-plugins/gnash vaapi
