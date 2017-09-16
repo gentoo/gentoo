@@ -102,7 +102,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-libs/wayland-protocols-1.7
 		x11-libs/libxkbcommon
 	)
-	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
+	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXrandr
