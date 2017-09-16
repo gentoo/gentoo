@@ -92,6 +92,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		wayland? ( x11-libs/libva[wayland] )
 		X? ( x11-libs/libva[X] )
 	)
+	virtual/libiconv
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
 		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
