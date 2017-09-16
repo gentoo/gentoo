@@ -54,7 +54,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/fribidi
 	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
-	dev-libs/libxml2
+	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
 	dev-python/pillow[${PYTHON_USEDEP}]
