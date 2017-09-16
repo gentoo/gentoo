@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/JuliaLang/julia.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="emacs"
+IUSE=""
 
 RDEPEND="
 	dev-lang/R:0=
@@ -30,15 +30,15 @@ RDEPEND="
 	sci-libs/fftw:3.0=[threads]
 	sci-libs/openlibm:0=
 	sci-libs/spqr:0=
+	>=dev-libs/libpcre2-10.23:0=[jit]
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
 	>=sys-devel/llvm-4.0.0:=
 	>=sys-libs/libunwind-1.1:7=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
-	>=virtual/blas-1.1
-	virtual/lapack
-	emacs? ( app-emacs/ess )"
+	>=virtual/blas-3.6
+	virtual/lapack"
 
 DEPEND="${RDEPEND}
 	dev-util/patchelf
@@ -95,12 +95,14 @@ src_prepare() {
 }
 
 src_configure() {
-	# julia does not play well with the system versions of
-	# dsfmt, libuv, pcre2 and utf8proc
+	# julia does not play well with the system versions of dsfmt, libuv,
+	# and utf8proc
+
+	# USE_SYSTEM_LIBM=0 implies using external openlibm
 	cat <<-EOF > Make.user
 		USE_SYSTEM_DSFMT=0
 		USE_SYSTEM_LIBUV=0
-		USE_SYSTEM_PCRE=0
+		USE_SYSTEM_PCRE=1
 		USE_SYSTEM_RMATH=0
 		USE_SYSTEM_UTF8PROC=0
 		USE_LLVM_SHLIB=1
@@ -111,7 +113,7 @@ src_configure() {
 		USE_SYSTEM_GRISU=1
 		USE_SYSTEM_LAPACK=1
 		USE_SYSTEM_LIBGIT2=1
-		USE_SYSTEM_LIBM=1
+		USE_SYSTEM_LIBM=0
 		USE_SYSTEM_LIBUNWIND=1
 		USE_SYSTEM_LLVM=1
 		USE_SYSTEM_MPFR=1
@@ -133,11 +135,10 @@ src_compile() {
 	addpredict /proc/self/mem
 
 	emake cleanall
-	emake julia-release \
+	emake VERBOSE=1 julia-release \
 		prefix="/usr" DESTDIR="${D}" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	pax-mark m $(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')
 	emake
-	use emacs && elisp-compile contrib/julia-mode.el
 }
 
 src_test() {
@@ -152,28 +153,15 @@ src_install() {
 	EOF
 	doenvd 99julia
 
-	if use emacs; then
-		elisp-install "${PN}" contrib/julia-mode.el
-		elisp-site-file-install "${FILESDIR}"/63julia-gentoo.el
-	fi
 	dodoc README.md
 
 	mv "${ED}"/usr/etc/julia "${ED}"/etc || die
 	rmdir "${ED}"/usr/etc || die
-	rmdir "${ED}"/usr/libexec || die
 	mv "${ED}"/usr/share/doc/julia/{examples,html} \
-		"${ED}"/usr/share/doc/${P} || die
+		"${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
 	if [[ $(get_libdir) != lib ]]; then
 		mkdir -p "${ED}"/usr/$(get_libdir) || die
 		mv "${ED}"/usr/lib/julia "${ED}"/usr/$(get_libdir)/julia || die
 	fi
-}
-
-pkg_postinst() {
-	use emacs && elisp-site-regen
-}
-
-pkg_postrm() {
-	use emacs && elisp-site-regen
 }
