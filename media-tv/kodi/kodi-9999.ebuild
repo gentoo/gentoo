@@ -82,7 +82,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	sftp? ( net-libs/libssh[sftp] )
-	sys-libs/zlib
+	>=sys-libs/zlib-1.2.11
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva[egl]
