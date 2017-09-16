@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="plugin and hook calling mechanisms for python"
-HOMEPAGE=" http://pypi.python.org/pypi/pluggy"
+HOMEPAGE="https://pypi.python.org/pypi/pluggy"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"
