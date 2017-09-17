@@ -143,22 +143,16 @@ RDEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	llvm? (
 		video_cards_radeonsi? (
-			vulkan? ( >=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}] )
-			|| (
-				sys-devel/llvm[llvm_targets_AMDGPU]
-				sys-devel/llvm[video_cards_radeon]
-			)
+			>=sys-devel/llvm-3.9.0[llvm_targets_AMDGPU(-)]
 		)
-		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
+		>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}]
 	)
 	opencl? (
-		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
-		>=sys-devel/clang-3.6.0:=[${MULTILIB_USEDEP}]
+		>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}]
+		>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP}]
 	)
 "
 
-# FIXME: kill the sys-devel/llvm[video_cards_radeon] compat once
-# LLVM < 3.9 is out of the game
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	opencl? (
