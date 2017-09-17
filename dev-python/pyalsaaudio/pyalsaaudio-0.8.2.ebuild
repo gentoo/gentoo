@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pyalsaaudio/${P}.tar.gz mirror://pypi/${PN:0:1}/${
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~sparc x86"
 IUSE="doc"
 
 RDEPEND="media-libs/alsa-lib"
