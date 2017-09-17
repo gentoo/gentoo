@@ -16055,7 +16055,7 @@ sci-biology/prodigal 2.6.3: Prokaryotic Dynamic Programming Genefinding Algorith
 sci-biology/profphd 1.0.39 1.0.40: Secondary structure and solvent accessibility predictor
 sci-biology/prosite 2017.02: A protein families and domains database
 sci-biology/psipred 3.2.1 3.3 3.4 3.5: Protein Secondary Structure Prediction
-sci-biology/pysam 0.12: Python interface for the SAM/BAM sequence alignment and mapping format
+sci-biology/pysam 0.12.0.1: Python interface for the SAM/BAM sequence alignment and mapping format
 sci-biology/qrna 2.0.3c-r2: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/rebase 1701 1702 1703 1704: A restriction enzyme database
