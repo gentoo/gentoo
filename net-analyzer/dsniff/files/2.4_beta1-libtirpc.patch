@@ -1,6 +1,5 @@
-diff -ruN dsniff-2.4.orig/Makefile.in dsniff-2.4/Makefile.in
---- dsniff-2.4.orig/Makefile.in	2017-09-16 12:20:13.001953108 -0000
-+++ dsniff-2.4/Makefile.in	2017-09-16 12:37:32.452792454 -0000
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -37,8 +37,8 @@
  X11INC	= @X_CFLAGS@
  X11LIB	= @X_LIBS@ @X_PRE_LIBS@ -lXmu -lX11 @X_EXTRA_LIBS@
@@ -12,9 +11,8 @@ diff -ruN dsniff-2.4.orig/Makefile.in dsniff-2.4/Makefile.in
  
  INSTALL	= @INSTALL@
  INSTALL_PROGRAM = @INSTALL_PROGRAM@
-diff -ruN dsniff-2.4.orig/configure.in dsniff-2.4/configure.in
---- dsniff-2.4.orig/configure.in	2017-09-16 12:20:07.346916686 -0000
-+++ dsniff-2.4/configure.in	2017-09-16 12:33:42.559167188 -0000
+--- a/configure.in
++++ b/configure.in
 @@ -338,4 +338,6 @@
  AC_SUBST(SSLINC)
  AC_SUBST(SSLLIB)
