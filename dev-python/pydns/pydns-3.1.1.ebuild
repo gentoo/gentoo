@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${MY_PN}/trunk/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="CNRI"
 SLOT="3"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~sparc x86"
 IUSE="examples"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
