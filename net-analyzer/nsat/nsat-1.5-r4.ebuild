@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils toolchain-funcs
+EAPI=6
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Network Security Analysis Tool, an application-level network security scanner"
 HOMEPAGE="http://nsat.sourceforge.net/"
@@ -10,28 +10,38 @@ SRC_URI="mirror://sourceforge/nsat/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="X"
 
 RDEPEND="
-	X? (
-		x11-libs/libX11
-		dev-lang/tk
-	)
 	dev-libs/libmix
 	net-libs/libpcap
+	X? (
+		dev-lang/tk:*
+		x11-libs/libX11
+	)
+	|| (	<sys-libs/glibc-2.26
+		(
+			net-libs/libnsl
+			net-libs/libtirpc
+			net-libs/rpcsvc-proto
+		)
+	)
 "
 DEPEND="$RDEPEND"
-
 S="${WORKDIR}/${PN}"
+PATCHES=(
+	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-lvalue-gcc4.patch
+	"${FILESDIR}"/${P}-strip.patch
+	"${FILESDIR}"/${P}-misc.patch
+	"${FILESDIR}"/${P}-va_list.patch
+	"${FILESDIR}"/${P}-libtirpc.patch
+	"${FILESDIR}"/${P}-amd64-compat.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-configure.patch
-	epatch "${FILESDIR}"/${P}-lvalue-gcc4.patch
-	epatch "${FILESDIR}"/${P}-strip.patch
-	epatch "${FILESDIR}"/${P}-misc.patch
-	epatch "${FILESDIR}"/${P}-va_list.patch
-	use amd64 && epatch "${FILESDIR}"/${P}-amd64-compat.patch
+	default
 
 	sed -i \
 		-e "s:^#CGIFile /usr/local/share/nsat/nsat.cgi$:#CGIFile /usr/share/nsat/nsat.cgi:g" \
