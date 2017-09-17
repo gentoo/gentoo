@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-13">
+  <title>SquirrelMail: Remote Code Execution</title>
+  <synopsis>A vulnerability in SquirrelMail might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">squirrelmail</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>616700</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/squirrelmail" auto="yes" arch="*">
+      <vulnerable range="lt">1.4.23_pre20140426</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SquirrelMail is a webmail package written in PHP. It supports IMAP and
+      SMTP and can optionally be installed with SQL support.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that the sendmail.cf file is mishandled in a popen
+      call.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open an e-mail attachment,
+      could execute arbitrary shell commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for SquirrelMail and recommends that
+      users unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "mail-client/squirrelmail"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7692">CVE-2017-7692</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-08T23:47:24Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T20:28:22Z">b-man</metadata>
+</glsa>
