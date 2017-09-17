@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="test"
 RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/zope-event[${PYTHON_USEDEP}]
