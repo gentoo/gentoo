@@ -98,7 +98,7 @@ EOF
 		insinto "${smw_serverdir}"
 		doins "${S}/src/server/serverconfig"
 
-		dosym "${smw_serverdir}/serverconfig" "/etc/${MY_PN}.conf"
+		dosym "${smw_serverdir}/serverconfig" "/etc/${MY_PN}d.conf"
 
 		newinitd "${FILESDIR}/smwd.initd" "${MY_PN}d"
 		eend $?
