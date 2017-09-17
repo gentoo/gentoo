@@ -56,10 +56,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_compile() {
-	cmake-utils_src_compile
-}
-
 src_install() {
 	cmake-utils_src_install
 
