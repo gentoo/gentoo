@@ -142,14 +142,13 @@ RDEPEND="${RDEPEND}
 # simultaneously.
 RDEPEND="${RDEPEND}
 	llvm? (
+		opencl? (
+			>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP}]
+		)
 		video_cards_radeonsi? (
 			>=sys-devel/llvm-3.9.0[llvm_targets_AMDGPU(-)]
 		)
 		>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}]
-	)
-	opencl? (
-		>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}]
-		>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP}]
 	)
 "
 
@@ -198,7 +197,7 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
-	if use llvm || use opencl; then
+	if use llvm; then
 		llvm_pkg_setup
 	fi
 	python-any-r1_pkg_setup
