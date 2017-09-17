@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
 		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}] )
 "
-RDEPEND+="!<media-libs/gst-plugins-bad-1.11.90" # rawparse move
+RDEPEND+="!<media-libs/gst-plugins-bad-1.11.90:1.0" # rawparse move
 
 multilib_src_configure() {
 	gstreamer_multilib_src_configure \
