@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-14">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which may allow attackers to bypass intended restrictions.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>615870</bug>
+  <bug>615994</bug>
+  <bug>626776</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.55.1</unaffected>
+      <vulnerable range="lt">7.55.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a tool and libcurl is a library for transferring data with URL
+      syntax.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition, obtain
+      sensitive information, or bypass intended restrictions for TLS sessions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.55.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000099">
+      CVE-2017-1000099
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000100">
+      CVE-2017-1000100
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000101">
+      CVE-2017-1000101
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7407">CVE-2017-7407</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7468">CVE-2017-7468</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-03T21:18:02Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T21:18:05Z">b-man</metadata>
+</glsa>
