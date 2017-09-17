@@ -14272,7 +14272,7 @@ net-analyzer/dnsenum 1.2.2: A perl script to enumerate DNS from a server
 net-analyzer/dnstracer 1.9-r1: Determines where a given nameserver gets its information from
 net-analyzer/dosdetector 20060621 20060621-r1: Tool to analyze and detect suspicious traffic from IP and alert about it
 net-analyzer/driftnet 0.1.6_p20090401 0.1.6_p20090401-r1: A program which listens to network traffic and picks out images from TCP streams it observes
-net-analyzer/dsniff 2.4_beta1-r4 2.4_beta1-r7 2.4_beta1-r8: A collection of tools for network auditing and penetration testing
+net-analyzer/dsniff 2.4_beta1-r4 2.4_beta1-r7 2.4_beta1-r9: A collection of tools for network auditing and penetration testing
 net-analyzer/echoping 6.0.2_p434-r2 6.0.2_p434-r3: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14 0.9.15: A graphical network monitor for Unix modeled after etherman
