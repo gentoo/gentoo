@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-04">
+  <title>mod_gnutls: Certificate validation error</title>
+  <synopsis>A vulnerability in mod_gnutls allows remote attackers to spoof
+    clients via crafted certificates.
+  </synopsis>
+  <product type="ebuild">mod_gnutls</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>541038</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/mod_gnutls" auto="yes" arch="*">
+      <unaffected range="ge">0.7.3</unaffected>
+      <vulnerable range="lt">0.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mod_gnutls is an extension for ​Apache’s httpd. It uses the
+      ​GnuTLS library to provide HTTPS. It supports some protocols and
+      features that mod_ssl does not.
+    </p>
+    
+  </background>
+  <description>
+    <p>It was discovered that the authentication hook in mod_gnutls does not
+      validate client’s certificates even when option
+      “GnuTLSClientVerify” is set to “require”.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could present a crafted certificate and spoof clients
+      data.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mod_gnutls users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_gnutls-0.7.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2091">
+      CVE-2015-2091
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-17T21:37:14Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:43:18Z">chrisadr</metadata>
+</glsa>

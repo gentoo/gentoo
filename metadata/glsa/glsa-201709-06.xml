@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-06">
+  <title>Supervisor: command injection vulnerability</title>
+  <synopsis>A vulnerability in Supervisor might allow remote attackers to
+    execute arbitrary code.
+    
+  </synopsis>
+  <product type="ebuild">supervisor</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>626100</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/supervisor" auto="yes" arch="*">
+      <unaffected range="ge">3.1.4</unaffected>
+      <vulnerable range="lt">3.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Supervisor is a client/server system that allows its users to monitor
+      and control a number of processes on UNIX-like operating systems.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in Supervisor was discovered in which an authenticated
+      client could send malicious XML-RPC requests and supervidord will run
+      them as shell commands with process privileges. In some cases,
+      supervisord is configured with root permissions.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code with the privileges of
+      the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Supervisor users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "=app-admin/supervisor-3.1.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-11610">
+      CVE-2017-11610
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-07-27T14:58:00Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:45:48Z">chrisadr</metadata>
+</glsa>

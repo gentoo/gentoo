@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-08">
+  <title>GDK-PixBuf: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GDK-PixBuf, the worst
+    of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gdk-pixbuf</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>592976</bug>
+  <bug>611390</bug>
+  <bug>630026</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">2.36.9</unaffected>
+      <vulnerable range="lt">2.36.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GDK-PixBuf is an image loading library for GTK+.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GDK-PixBuf. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending a specially crafted TIFF, JPEG, or URL,
+      could execute arbitrary code with the privileges of the process or cause
+      a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GDK-PixBuf users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/gdk-pixbuf-2.36.9"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6311">
+      CVE-2017-6311
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6312">
+      CVE-2017-6312
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6313">
+      CVE-2017-6313
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6314">
+      CVE-2017-6314
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-10T23:08:28Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:48:14Z">chrisadr</metadata>
+</glsa>
