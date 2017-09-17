@@ -140,58 +140,63 @@ RDEPEND="${RDEPEND}
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling one than more slot
 # simultaneously.
+LLVM_DEPSTR=">=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}]"
+LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
+CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
+CLANG_DEPSTR_AMDGPU=${CLANG_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 RDEPEND="${RDEPEND}
 	llvm? (
 		opencl? (
 			video_cards_r600? (
-				>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP},llvm_targets_AMDGPU(-)]
+				${CLANG_DEPSTR_AMDGPU}
 			)
 			!video_cards_r600? (
 				video_cards_radeonsi? (
-					>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP},llvm_targets_AMDGPU(-)]
+					${CLANG_DEPSTR_AMDGPU}
 				)
 			)
 			!video_cards_r600? (
 				!video_cards_radeonsi? (
 					video_cards_radeon? (
-						>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP},llvm_targets_AMDGPU(-)]
+						${CLANG_DEPSTR_AMDGPU}
 					)
 				)
 			)
 			!video_cards_r600? (
 				!video_cards_radeon? (
 					!video_cards_radeonsi? (
-						>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP}]
+						${CLANG_DEPSTR}
 					)
 				)
 			)
 		)
 		!opencl? (
 			video_cards_r600? (
-				>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP},llvm_targets_AMDGPU(-)]
+				${LLVM_DEPSTR_AMDGPU}
 			)
 			!video_cards_r600? (
 				video_cards_radeonsi? (
-					>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP},llvm_targets_AMDGPU(-)]
+					${LLVM_DEPSTR_AMDGPU}
 				)
 			)
 			!video_cards_r600? (
 				!video_cards_radeonsi? (
 					video_cards_radeon? (
-						>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP},llvm_targets_AMDGPU(-)]
+						${LLVM_DEPSTR_AMDGPU}
 					)
 				)
 			)
 			!video_cards_r600? (
 				!video_cards_radeon? (
 					!video_cards_radeonsi? (
-						>=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}]
+						${LLVM_DEPSTR}
 					)
 				)
 			)
 		)
 	)
 "
+unset {LLVM,CLANG}_DEPSTR{,_AMDGPU}
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
