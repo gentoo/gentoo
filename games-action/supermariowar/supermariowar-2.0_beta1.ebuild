@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+server"
+IUSE="server"
 
 RDEPEND="
 	sys-libs/zlib
@@ -28,6 +28,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	app-arch/unzip
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -54,10 +55,6 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
 }
 
 src_install() {
@@ -102,7 +99,7 @@ EOF
 		insinto "${smw_serverdir}"
 		doins "${S}/src/server/serverconfig"
 
-		dosym "${smw_serverdir}/serverconfig" "/etc/${MY_PN}.conf"
+		dosym "${smw_serverdir}/serverconfig" "/etc/${MY_PN}d.conf"
 
 		newinitd "${FILESDIR}/smwd.initd" "${MY_PN}d"
 		eend $?
