@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-12">
+  <title>Perl: Race condition vulnerability</title>
+  <synopsis>A vulnerability in module File::Path for Perl allows local
+    attackers to set arbitrary mode values on arbitrary files bypassing
+    security restrictions.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>620304</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.24.1-r2</unaffected>
+      <vulnerable range="lt">5.24.1-r2</vulnerable>
+    </package>
+    <package name="perl-core/File-Path" auto="yes" arch="*">
+      <unaffected range="ge">2.130.0</unaffected>
+      <vulnerable range="lt">2.130.0</vulnerable>
+    </package>
+    <package name="virtual/perl-File-Path" auto="yes" arch="*">
+      <unaffected range="ge">2.130.0</unaffected>
+      <vulnerable range="lt">2.130.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>File::Path module provides a convenient way to create directories of
+      arbitrary depth and to delete an entire directory subtree from the
+      filesystem.
+    </p>
+  </background>
+  <description>
+    <p>A race condition occurs within concurrent environments. This condition
+      was discovered by The cPanel Security Team in the rmtree and remove_tree
+      functions in the File-Path module before 2.13 for Perl. This is due to
+      the  time-of-check-to-time-of-use (TOCTOU) race condition between the
+      stat() that decides the inode is a directory and the chmod() that tries
+      to make it user-rwx.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could exploit this condition to set arbitrary mode
+      values on arbitrary files and hence bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.24.1-r2"
+    </code>
+    
+    <p>All File-Path users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=perl-core/File-Path-2.130.0"
+    </code>
+    
+    <p>All Perl-File-Path users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=virtual/perl-File-Path-2.130.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6512">
+      CVE-2017-6512
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-12T03:14:08Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T19:28:53Z">chrisadr</metadata>
+</glsa>
