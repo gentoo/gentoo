@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils flag-o-matic
 
 MY_P="${P/_/-}"
 DESCRIPTION="Tools to deal with shar archives"
@@ -20,6 +20,14 @@ DEPEND="app-arch/xz-utils
 	nls? ( >=sys-devel/gettext-0.10.35 )"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	default
+
+	# Upstream is aware but thinks this isn't a bug/problem in sharutils itself
+	# See http://lists.gnu.org/archive/html/bug-gnu-utils/2013-10/msg00011.html
+	append-cflags $(test-flags-CC -Wno-error=format-security)
+}
 
 src_configure() {
 	strip-linguas -u po
