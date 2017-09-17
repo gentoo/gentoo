@@ -28,6 +28,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	app-arch/unzip
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
