@@ -60,9 +60,8 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	local bin base_bin
+	local bin
 	for bin in "${ED}/usr/bin"/*; do
-		base_bin=$(basename "${bin}")
 		chmod 0755 "${bin}" || die
 	done
 
@@ -74,9 +73,10 @@ src_install() {
 	mv "${ED}/usr/bin"/* "${ED}/${smw_bindir}" || die
 	eend $?
 
+	local base_bin
 	for bin in "${ED}/${smw_bindir}"/*; do
 		base_bin=$(basename "${bin}")
-		einfo "Creating launcher in /usr/bin for ${base_bin}"
+		einfo "Creating ${base_bin} launcher in /usr/bin"
 		cat << EOF > "${base_bin}" || die
 #!/usr/bin/env bash
 # Copyright 1999-2017 Gentoo Foundation
