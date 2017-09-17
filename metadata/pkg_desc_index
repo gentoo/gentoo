@@ -6940,7 +6940,7 @@ dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protoc
 dev-perl/XS-Object-Magic 0.40.0-r3: Opaque, extensible XS pointer backed objects using sv_magic
 dev-perl/YAML 1.150.0 1.210.0 1.230.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.640.0 0.650.0: Perl YAML Serialization using XS and libyaml
-dev-perl/YAML-Syck 1.290.0 1.300.0: Fast, lightweight YAML loader and dumper
+dev-perl/YAML-Syck 1.300.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.700.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
@@ -13170,7 +13170,7 @@ media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LAD
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.8 17.1.9 17.2.0 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.8 17.1.9 17.2.0 17.2.1 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2 6.4.1-r3: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
