@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+server"
+IUSE="server"
 
 RDEPEND="
 	sys-libs/zlib
