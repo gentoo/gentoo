@@ -1,0 +1,123 @@
+From 639b9f9aa286f10ce11f9fb28f0c83985f069a0d Mon Sep 17 00:00:00 2001
+From: Sergey Farbotka <z8sergey8z@gmail.com>
+Date: Mon, 31 Aug 2015 23:55:44 +0300
+Subject: [PATCH] Core: send IPv4-only address in UPNP request
+
+The app sends first available local IP address in UPNP request.
+If first available address is IPv6, miniupnpd sends the following error:
+"Failed to convert hostname '<my-ipv6-address>' to ip address"
+
+As eiskaltdc++ does not support IPv6 yet, we can use IPv4 address only
+in UPNP requests.
+---
+ dcpp/ConnectivityManager.cpp |  2 +-
+ dcpp/Util.cpp                | 17 ++++++++++++-----
+ dcpp/Util.h                  |  5 +++--
+ extra/upnpc.cpp              |  2 +-
+ 4 files changed, 17 insertions(+), 9 deletions(-)
+
+diff --git a/dcpp/ConnectivityManager.cpp b/dcpp/ConnectivityManager.cpp
+index 3495a9a..acc0d68 100644
+--- a/dcpp/ConnectivityManager.cpp
++++ b/dcpp/ConnectivityManager.cpp
+@@ -90,7 +90,7 @@ void ConnectivityManager::detectConnection() {
+ 
+    autoDetected = true;
+ 
+-   if (!Util::isPrivateIp(Util::getLocalIp())) {
++   if (!Util::isPrivateIp(Util::getLocalIp(AF_INET))) {
+        SettingsManager::getInstance()->set(SettingsManager::INCOMING_CONNECTIONS, SettingsManager::INCOMING_DIRECT);
+        log(_("Public IP address detected, selecting active mode with direct connection"));
+        fire(ConnectivityManagerListener::Finished());
+diff --git a/dcpp/Util.cpp b/dcpp/Util.cpp
+index dc7e08e..9b5a2ca 100644
+--- a/dcpp/Util.cpp
++++ b/dcpp/Util.cpp
+@@ -704,7 +704,7 @@ string Util::formatExactSize(int64_t aBytes) {
+ #endif
+ }
+ 
+-vector<string> Util::getLocalIPs() {
++vector<string> Util::getLocalIPs(unsigned short sa_family) {
+     vector<string> addresses;
+ 
+ #ifdef HAVE_IFADDRS_H
+@@ -712,6 +712,9 @@ vector<string> Util::getLocalIPs() {
+ 
+     if (getifaddrs(&ifap) == 0)
+     {
++        bool ipv4 = (sa_family == AF_UNSPEC) || (sa_family == AF_INET);
++        bool ipv6 = (sa_family == AF_UNSPEC) || (sa_family == AF_INET6);
++
+         for (struct ifaddrs *i = ifap; i != NULL; i = i->ifa_next)
+         {
+             struct sockaddr *sa = i->ifa_addr;
+@@ -723,14 +726,14 @@ vector<string> Util::getLocalIPs() {
+                 socklen_t len;
+ 
+                 // IPv4 address
+-                if (sa->sa_family == AF_INET)
++                if (ipv4 && (sa->sa_family == AF_INET))
+                 {
+                     struct sockaddr_in* sai = (struct sockaddr_in*)sa;
+                     src = (void*) &(sai->sin_addr);
+                     len = INET_ADDRSTRLEN;
+                 }
+                 // IPv6 address
+-                else if (sa->sa_family == AF_INET6)
++                else if (ipv6 && (sa->sa_family == AF_INET6))
+                 {
+                     struct sockaddr_in6* sai6 = (struct sockaddr_in6*)sa;
+                     src = (void*) &(sai6->sin6_addr);
+@@ -752,9 +755,13 @@ vector<string> Util::getLocalIPs() {
+ 
+     return addresses;
+ }
+-string Util::getLocalIp() {
++string Util::getLocalIp(unsigned short as_family) {
+ #ifdef HAVE_IFADDRS_H
+-    return getLocalIPs().empty() ? "0.0.0.0" : getLocalIPs()[0];
++    vector<string> addresses = getLocalIPs(as_family);
++    if (addresses.empty())
++        return (((as_family == AF_UNSPEC) || (as_family == AF_INET)) ? "0.0.0.0" : "::");
++
++    return addresses[0];
+ #else
+     string tmp;
+ 
+diff --git a/dcpp/Util.h b/dcpp/Util.h
+index a489f70..f2842d3 100644
+--- a/dcpp/Util.h
++++ b/dcpp/Util.h
+@@ -28,6 +28,7 @@
+ 
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/socket.h>
+ #include <unistd.h>
+ #include <cstdlib>
+ #include <vector>
+@@ -403,8 +404,8 @@ class Util
+     }
+ 
+     static string encodeURI(const string& /*aString*/, bool reverse = false);
+-    static string getLocalIp();
+-    static std::vector<string> getLocalIPs();
++    static string getLocalIp(unsigned short sa_family = AF_UNSPEC);
++    static std::vector<string> getLocalIPs(unsigned short sa_family = AF_UNSPEC);
+     static bool isPrivateIp(string const& ip);
+     static string formatAdditionalInfo(const std::string& aIp, bool sIp, bool sCC);
+     /**
+diff --git a/extra/upnpc.cpp b/extra/upnpc.cpp
+index fb61f14..63f6d34 100644
+--- a/extra/upnpc.cpp
++++ b/extra/upnpc.cpp
+@@ -63,7 +63,7 @@ bool UPnPc::add(const unsigned short port, const UPnP::Protocol protocol, const
+     const string port_ = Util::toString(port);
+ 
+     return UPNP_AddPortMapping(urls.controlURL, data.first.servicetype, port_.c_str(), port_.c_str(),
+-        Util::getLocalIp().c_str(), description.c_str(), protocols[protocol], NULL
++        Util::getLocalIp(AF_INET).c_str(), description.c_str(), protocols[protocol], NULL
+ #if (MINIUPNPC_API_VERSION == 8 || defined(MINIUPNPC16))
+                                                                                     , 0) == UPNPCOMMAND_SUCCESS;
+ #else
