@@ -867,6 +867,9 @@ git-r3_checkout() {
 		echo "${orig_repo}/objects" > "${GIT_DIR}"/objects/info/alternates || die
 		# now copy the refs
 		cp -R "${orig_repo}"/refs/* "${GIT_DIR}"/refs/ || die
+		if [[ -f ${orig_repo}/packed-refs ]]; then
+			cp "${orig_repo}"/packed-refs "${GIT_DIR}"/packed-refs || die
+		fi
 
 		# (no need to copy HEAD, we will set it via checkout)
 
