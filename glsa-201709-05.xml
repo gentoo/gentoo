@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-05">
+  <title>chkrootkit: Local privilege escalation</title>
+  <synopsis>A vulnerability in chkrootkit may allow local users to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">chkrootkit</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>512356</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-forensics/chkrootkit" auto="yes" arch="*">
+      <unaffected range="ge">0.50</unaffected>
+      <vulnerable range="lt">0.50</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>chkrootkit is a tool to locally check for signs of a rootkit.</p>
+  </background>
+  <description>
+    <p>When /tmp is mounted without the noexec option chkrootkit will execute
+      files in /tmp with root privileges.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could possibly execute arbitrary code with root
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>Users should mount /tmp with noexec option.</p>
+  </workaround>
+  <resolution>
+    <p>All chkrootkit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-forensics/chkrootkit-0.50"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0476">
+      CVE-2014-0476
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-10T06:30:28Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:44:38Z">chrisadr</metadata>
+</glsa>
