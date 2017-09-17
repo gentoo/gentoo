@@ -5078,7 +5078,7 @@ dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemm
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/softhsm 2.2.0-r3 2.3.0: A software PKCS#11 implementation
 dev-libs/sord 0.12.0 0.12.2 0.14.0 0.16.0: Library for storing RDF data in memory
-dev-libs/spdlog 0.13.0 0.14.0 9999: Very fast, header only, C++ logging library.
+dev-libs/spdlog 0.13.0 0.14.0 0.14.0-r1 9999: Very fast, header only, C++ logging library.
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
@@ -5780,7 +5780,7 @@ dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0 1.60.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
-dev-perl/Debug-Client 0.290.0 0.300.0: Client side code for perl debugger
+dev-perl/Debug-Client 0.300.0: Client side code for perl debugger
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
