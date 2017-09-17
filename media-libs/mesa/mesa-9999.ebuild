@@ -231,6 +231,19 @@ x86? (
 	)
 )"
 
+llvm_check_deps() {
+	local flags=${MULTILIB_USEDEP}
+	if use video_cards_r600 || use video_cards_radeon || use video_cards_radeonsi
+	then
+		flags+=",llvm_targets_AMDGPU(-)"
+	fi
+
+	if use opencl; then
+		has_version "sys-devel/clang[${flags}]" || return 1
+	fi
+	has_version "sys-devel/llvm[${flags}]"
+}
+
 pkg_setup() {
 	# warning message for bug 459306
 	if use llvm && has_version sys-devel/llvm[!debug=]; then
