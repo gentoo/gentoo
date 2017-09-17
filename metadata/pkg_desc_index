@@ -10500,7 +10500,7 @@ dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve com
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
-dev-util/ninja 1.6.0 1.7.1 1.7.2 9999: A small build system similar to make
+dev-util/ninja 1.7.2 1.8.2 9999: A small build system similar to make
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61: NVIDIA CUDA Toolkit (compiler and friends)
