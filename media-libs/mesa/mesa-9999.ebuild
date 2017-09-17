@@ -151,6 +151,10 @@ RDEPEND="${RDEPEND}
 		)
 		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
 	)
+	opencl? (
+		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
+		>=sys-devel/clang-3.6.0:=[${MULTILIB_USEDEP}]
+	)
 "
 
 # FIXME: kill the sys-devel/llvm[video_cards_radeon] compat once
@@ -158,9 +162,7 @@ RDEPEND="${RDEPEND}
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	opencl? (
-				>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
-				>=sys-devel/clang-3.6.0:=[${MULTILIB_USEDEP}]
-				>=sys-devel/gcc-4.6
+		>=sys-devel/gcc-4.6
 	)
 	sys-devel/gettext
 	virtual/pkgconfig
