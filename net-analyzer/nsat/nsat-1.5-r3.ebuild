@@ -20,13 +20,6 @@ RDEPEND="
 	)
 	dev-libs/libmix
 	net-libs/libpcap
-	|| (	<sys-libs/glibc-2.26
-		(
-			net-libs/libtirpc
-			net-libs/libnsl
-			net-libs/rpcsvc-proto
-		)
-	)
 "
 DEPEND="$RDEPEND"
 
@@ -38,7 +31,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-strip.patch
 	epatch "${FILESDIR}"/${P}-misc.patch
 	epatch "${FILESDIR}"/${P}-va_list.patch
-	epatch "${FILESDIR}"/${P}-libtirpc.patch
 	use amd64 && epatch "${FILESDIR}"/${P}-amd64-compat.patch
 
 	sed -i \
