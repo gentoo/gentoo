@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-03">
+  <title>WebKitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebkitGTK+, the worst
+    of which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">webkit-gtk</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>622442</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.16.5</unaffected>
+      <vulnerable range="lt">2.16.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, offers
+      Webkit’s full functionality and is used on a wide range of systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebkitGTK+. Please
+      review the references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code via crafted web content.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.16.5"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2424">
+      CVE-2017-2424
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2538">
+      CVE-2017-2538
+    </uri>
+    <uri link="https://webkitgtk.org/security/WSA-2017-0005.html">WebkitGTK+
+      Security Announce
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-10T06:48:46Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:37:18Z">chrisadr</metadata>
+</glsa>

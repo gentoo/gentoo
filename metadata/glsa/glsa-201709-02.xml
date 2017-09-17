@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-02">
+  <title>Binutils: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Binutils, the worst of
+    which may allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">binutils</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>618006</bug>
+  <bug>618514</bug>
+  <bug>618516</bug>
+  <bug>618520</bug>
+  <bug>618826</bug>
+  <bug>621130</bug>
+  <bug>624524</bug>
+  <bug>624702</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-devel/binutils" auto="yes" arch="*">
+      <unaffected range="ge">2.28.1</unaffected>
+      <vulnerable range="lt">2.28.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Binutils are a collection of tools to create, modify and analyse
+      binary files. Many of the files use BFD, the Binary File Descriptor
+      library, to do low-level manipulation.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Binutils. Please review
+      References for additional information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to compile/execute a specially
+      crafted ELF file, PE File, or binary file, could possibly cause a Denial
+      of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Binutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/binutils-2.28.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6965">
+      CVE-2017-6965
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6966">
+      CVE-2017-6966
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6969">
+      CVE-2017-6969
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7614">
+      CVE-2017-7614
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8392">
+      CVE-2017-8392
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8393">
+      CVE-2017-8393
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8394">
+      CVE-2017-8394
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8395">
+      CVE-2017-8395
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8396">
+      CVE-2017-8396
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8397">
+      CVE-2017-8397
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8398">
+      CVE-2017-8398
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8421">
+      CVE-2017-8421
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9038">
+      CVE-2017-9038
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9039">
+      CVE-2017-9039
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9040">
+      CVE-2017-9040
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9041">
+      CVE-2017-9041
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9042">
+      CVE-2017-9042
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9742">
+      CVE-2017-9742
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9954">
+      CVE-2017-9954
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-16T22:31:03Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:30:04Z">chrisadr</metadata>
+</glsa>
