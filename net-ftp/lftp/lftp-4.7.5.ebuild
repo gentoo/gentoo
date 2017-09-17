@@ -55,8 +55,8 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.2.91-lafile.patch \
-	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch \
+	"${FILESDIR}"/${PN}-4.0.2.91-lafile.patch
+	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
 	"${FILESDIR}"/${PN}-4.7.0-gettext.patch
 )
 
