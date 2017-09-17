@@ -34,7 +34,7 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	)
 	selinux? (
 		sys-apps/policycoreutils
-		sys-libs/libselinux
+		>=sys-libs/libselinux-2.6
 	)
 	!<sys-apps/baselayout-2.1-r1
 	!<sys-fs/udev-init-scripts-27"
@@ -50,8 +50,8 @@ RDEPEND="${COMMON_DEPEND}
 		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
 	)
 	selinux? (
-		sec-policy/selinux-base-policy
-		sec-policy/selinux-openrc
+		>=sec-policy/selinux-base-policy-2.20170204-r4
+		>=sec-policy/selinux-openrc-2.20170204-r4
 	)
 "
 
