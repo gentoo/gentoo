@@ -1,6 +1,5 @@
-diff -ruN nsat.orig/configure.in nsat/configure.in
---- nsat.orig/configure.in	2017-09-16 18:55:57.761877318 -0000
-+++ nsat/configure.in	2017-09-16 19:00:24.689990798 -0000
+--- a/configure.in
++++ b/configure.in
 @@ -195,6 +195,8 @@
  AC_FUNC_VPRINTF
  AC_CHECK_FUNCS(select socket strdup strstr random srandom snprintf setsockopt initstate gettimeofday strerror)
@@ -10,9 +9,8 @@ diff -ruN nsat.orig/configure.in nsat/configure.in
  AC_OUTPUT(Makefile tools/Makefile src/Makefile src/mod/Makefile src/smb/Makefile src/libmix++/Makefile src/libmix++/mix/net.h)
  
  AC_MSG_RESULT()
-diff -ruN nsat.orig/src/Makefile.in nsat/src/Makefile.in
---- nsat.orig/src/Makefile.in	2017-09-16 18:55:58.116879119 -0000
-+++ nsat/src/Makefile.in	2017-09-16 19:03:39.994778665 -0000
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -36,7 +36,7 @@
  	@cd mod ; $(MAKE) modobj
  
@@ -22,9 +20,8 @@ diff -ruN nsat.orig/src/Makefile.in nsat/src/Makefile.in
  
  pidalloc.o:
  	${GPP} ${CFLAGS} -c pidalloc.cpp
-diff -ruN nsat.orig/src/mod/Makefile.in nsat/src/mod/Makefile.in
---- nsat.orig/src/mod/Makefile.in	2002-01-21 17:16:24.000000000 -0000
-+++ nsat/src/mod/Makefile.in	2017-09-16 19:02:15.547438001 -0000
+--- a/src/mod/Makefile.in
++++ b/src/mod/Makefile.in
 @@ -35,7 +35,7 @@
  	${GPP} ${CFLAGS} -c osscan.cpp
  
