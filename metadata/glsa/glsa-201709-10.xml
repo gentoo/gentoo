@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-10">
+  <title>Git: Command injection</title>
+  <synopsis>A command injection vulnerability in Git may allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>627488</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/git" auto="yes" arch="*">
+      <unaffected range="ge">2.13.5</unaffected>
+      <vulnerable range="lt">2.13.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Git is a small and fast distributed version control system designed to
+      handle small and large projects.
+    </p>
+  </background>
+  <description>
+    <p>Specially crafted ‘ssh://...’ URLs may allow the owner of the
+      repository to execute arbitrary commands on client’s machine if those
+      commands are already installed on the client’s system. This is
+      especially dangerous when the third-party repository has one or more
+      submodules with specially crafted ‘ssh://...’ URLs. Each time the
+      repository is recursively cloned or submodules are updated the payload
+      will be triggered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to clone a specially crafted
+      repository, could possibly execute arbitrary code with the privileges of
+      the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Git users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.13.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000117">
+      CVE-2017-1000117
+    </uri>
+    <uri link="https://marc.info/?l=git&amp;m=150238802328673&amp;w=2">Mailing
+      list ARChives (MARC) Git Team Announce
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-08T23:46:38Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T19:03:46Z">chrisadr</metadata>
+</glsa>

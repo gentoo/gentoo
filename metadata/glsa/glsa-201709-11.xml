@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-11">
+  <title>GIMPS: Root privilege escalation</title>
+  <synopsis>Gentoo's GIMPS ebuilds are vulnerable to privilege escalation due
+    to improper permissions. A local attacker could use it to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">gimps</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>603408</bug>
+  <access>local</access>
+  <affected>
+    <package name="sci-mathematics/gimps" auto="yes" arch="*">
+      <unaffected range="ge">28.10-r1</unaffected>
+      <vulnerable range="lt">28.10-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GIMPS, the Great Internet Mersenne Prime Search, is a software capable
+      of find Mersenne Primes, which are used in cryptography. GIMPS is also
+      used for hardware testing.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s default GIMPS installation suffered
+      from a privilege escalation vulnerability in the init script. This script
+      calls an unsafe “chown -R” command in checkconfig() function.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker who does not belong to the root group, but has the
+      ability to modify the /var/lib/gimps directory can escalate privileges to
+      the root group.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GIMPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sci-mathematics/gimps-28.10-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14484">CVE-2017-14484</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-10T06:41:04Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T19:05:30Z">chrisadr</metadata>
+</glsa>
