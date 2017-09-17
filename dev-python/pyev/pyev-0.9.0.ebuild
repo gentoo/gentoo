@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/p/pyev/${P}.tar.gz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="amd64 arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE=""
 
 RDEPEND="dev-libs/libev"
