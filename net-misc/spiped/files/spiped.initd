@@ -16,17 +16,17 @@ command_user="${SPIPED_USER}"
 pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
-	use net
-	before logger
+    use net
+    before logger
 }
 
 checkconfig() {
-  if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
-    eerror "You need to setup /etc/conf.d/spiped first!"
-    return 1
-  fi
+    if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
+        eerror "You need to setup /etc/conf.d/spiped first!"
+        return 1
+    fi
 }
 
 start_pre() {
-	checkconfig || return 1
+    checkconfig || return 1
 }
