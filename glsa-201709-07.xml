@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-07">
+  <title>Kpathsea: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in Kpathsea allows remote attackers to execute
+    arbitrary commands by manipulating the -tex option from mpost program.
+  </synopsis>
+  <product type="ebuild">kpathsea</product>
+  <announced>2017-09-17</announced>
+  <revised>2017-09-17: 1</revised>
+  <bug>612328</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/kpathsea" auto="yes" arch="*">
+      <unaffected range="ge">6.2.2_p20160523</unaffected>
+      <vulnerable range="lt">6.2.2_p20160523</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Kpathsea is a library to do path searching. It is used by TeX Live and
+      others TeX related software.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that the mpost program from the shell_escape_commands
+      list is capable of executing arbitrary external programs during the
+      conversion of .tex files. The responsible function is runpopen()
+      (texmfmp.c).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted .tex
+      file, could possibly execute arbitrary code with the privileges of the
+      process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Kpathsea users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-libs/kpathsea-6.2.2_p20160523"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10243">
+      CVE-2016-10243
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-06-17T20:59:54Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-09-17T15:47:02Z">chrisadr</metadata>
+</glsa>
