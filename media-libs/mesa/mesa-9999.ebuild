@@ -145,6 +145,12 @@ RDEPEND="${RDEPEND}
 		opencl? (
 			>=sys-devel/clang-3.9.0:=[${MULTILIB_USEDEP}]
 		)
+		video_cards_r600? (
+			>=sys-devel/llvm-3.9.0[llvm_targets_AMDGPU(-)]
+		)
+		video_cards_radeon? (
+			>=sys-devel/llvm-3.9.0[llvm_targets_AMDGPU(-)]
+		)
 		video_cards_radeonsi? (
 			>=sys-devel/llvm-3.9.0[llvm_targets_AMDGPU(-)]
 		)
