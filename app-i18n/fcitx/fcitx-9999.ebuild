@@ -24,7 +24,7 @@ else
 fi
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
-SLOT="0"
+SLOT="4"
 KEYWORDS=""
 IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"

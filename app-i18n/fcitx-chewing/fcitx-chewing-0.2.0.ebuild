@@ -9,7 +9,7 @@ HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://fcitx.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="4"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE=""
 

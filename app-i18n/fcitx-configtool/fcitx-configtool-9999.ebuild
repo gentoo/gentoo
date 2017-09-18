@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2+"
-SLOT="0"
+SLOT="4"
 KEYWORDS=""
 IUSE=""
 
