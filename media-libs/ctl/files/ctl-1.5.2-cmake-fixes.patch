@@ -1,0 +1,260 @@
+diff -purN a/cmake/modules/FindIlmBase.cmake b/cmake/modules/FindIlmBase.cmake
+--- a/cmake/modules/FindIlmBase.cmake	2014-06-03 02:11:24.000000000 +0100
++++ b/cmake/modules/FindIlmBase.cmake	2017-08-15 12:34:32.472849083 +0100
+@@ -52,7 +52,15 @@ endif()
+ if("${IlmBase_VERSION}" VERSION_LESS "2.0.0")
+   set(IlmBase_ALL_LIBRARIES Imath Half Iex IlmThread)
+ else()
+-  set(IlmBase_ALL_LIBRARIES Imath Half Iex IexMath IlmThread)
++  # handle new library names for 2.0.0
++  string(REPLACE "." "_" _IlmBase_VERSION ${IlmBase_VERSION})
++  string(SUBSTRING ${_IlmBase_VERSION} 0 3 _IlmBase_VERSION )
++  set(IlmBase_ALL_LIBRARIES
++    Half
++    Imath-${_IlmBase_VERSION} 
++    Iex-${_IlmBase_VERSION} 
++    IexMath-${_IlmBase_VERSION} 
++    IlmThread-${_IlmBase_VERSION})
+ endif()
+ foreach(ILMBASE_LIB ${IlmBase_ALL_LIBRARIES})
+   string(TOUPPER ${ILMBASE_LIB} _upper_ilmbase_lib)
+diff -purN a/cmake/modules/FindOpenEXR.cmake b/cmake/modules/FindOpenEXR.cmake
+--- a/cmake/modules/FindOpenEXR.cmake	2014-06-03 02:11:24.000000000 +0100
++++ b/cmake/modules/FindOpenEXR.cmake	2017-08-15 12:34:32.473849079 +0100
+@@ -52,7 +52,18 @@ if(OpenEXR_INCLUDE_DIR AND EXISTS "${Ope
+     endif()
+ endif()
+ 
+-find_library(OpenEXR_LIBRARY NAMES IlmImf libIlmImf HINTS ${_OpenEXR_HINT_LIB})
++if("${OpenEXR_VERSION}" VERSION_LESS "2.0.0")
++  set(IlmBase_ALL_LIBRARIES IlmImf libIlmImf)
++else()
++  # handle new library names for 2.0.0
++  string(REPLACE "." "_" _OpenEXR_VERSION ${OpenEXR_VERSION})
++  string(SUBSTRING ${_OpenEXR_VERSION} 0 3 _OpenEXR_VERSION )
++  set(IlmBase_ALL_LIBRARIES
++    IlmImf-${_OpenEXR_VERSION} 
++    libIlmImf-${_OpenEXR_VERSION})
++endif()
++
++find_library(OpenEXR_LIBRARY NAMES ${IlmBase_ALL_LIBRARIES} HINTS ${_OpenEXR_HINT_LIB})
+ 
+ find_package(IlmBase QUIET)
+ 
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/CMakeLists.txt	2017-08-15 13:13:40.530291351 +0100
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 2.8)
+ project( CTL )
++INCLUDE ( GNUInstallDirs )
+ 
+ set( CTL_MAJOR_VERSION 1 )
+ set( CTL_MINOR_VERSION 5 )
+@@ -14,7 +15,7 @@ set( INSTALL_DOC_DIR doc CACHE PATH "Ins
+ if( WIN32 AND NOT CYGWIN )
+   set(DEF_INSTALL_CMAKE_DIR CMake)
+ else()
+-  set(DEF_INSTALL_CMAKE_DIR lib/CMake/CTL)
++  set(DEF_INSTALL_CMAKE_DIR ${CMAKE_INSTALL_LIBDIR}/CMake/CTL)
+ endif()
+ set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Install directory for project CMake files" )
+ 
+@@ -28,9 +29,9 @@ SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE
+ # which point to directories outside the build tree to the install RPATH
+ SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ # the RPATH to be used when installing, but only if it's not a system directory
+-LIST(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/lib" isSystemDir)
++LIST(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_FULL_LIBDIR}" isSystemDir)
+ IF("${isSystemDir}" STREQUAL "-1")
+-  SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++  SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_FULL_LIBDIR}")
+ ENDIF("${isSystemDir}" STREQUAL "-1")
+ 
+ 
+@@ -77,7 +78,7 @@ configure_file(config/CTLConfigVersion.c
+ 
+ if ( PKG_CONFIG_FOUND )
+ configure_file(config/CTL.pc.in "${PROJECT_BINARY_DIR}/CTL.pc" @ONLY)
+-install( FILES "${PROJECT_BINARY_DIR}/CTL.pc" DESTINATION lib/pkgconfig COMPONENT dev )
++install( FILES "${PROJECT_BINARY_DIR}/CTL.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev )
+ endif()
+ 
+ install( FILES
+diff -purN a/config/CTL.pc.in b/config/CTL.pc.in
+--- a/config/CTL.pc.in	2014-06-03 02:11:24.000000000 +0100
++++ b/config/CTL.pc.in	2017-08-15 12:40:09.487115567 +0100
+@@ -1,8 +1,6 @@
+-prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=@INSTALL_BIN_DIR@
+-libdir=@INSTALL_LIB_DIR@
+-includedir=@INSTALL_INCLUDE_DIR@
+-CTL_includedir=@INSTALL_INCLUDE_DIR@/CTL
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++CTL_includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/CTL
+ 
+ Name: CTL
+ Description: CTL interpreter library
+diff -purN a/config/OpenEXR_CTL.pc.in b/config/OpenEXR_CTL.pc.in
+--- a/config/OpenEXR_CTL.pc.in	2014-06-03 02:11:24.000000000 +0100
++++ b/config/OpenEXR_CTL.pc.in	2017-08-15 12:58:19.539342327 +0100
+@@ -1,11 +1,10 @@
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
+-OpenEXR_includedir=@includedir@/OpenEXR
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++OpenEXR_includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/OpenEXR
+ 
+ Name: OpenEXR_CTL
+ Description: Simplified OpenEXR interface to CTL
+-Version: @OPENEXR_CTL_VERSION@
+-Libs: -L${libdir} -lIlmImfCtl @OPENEXR_LDFLAGS@ @CTL_LDFLAGS@
+-Cflags: @CTL_CXXFLAGS_PC@ @OPENEXR_CXXFLAGS@ -I${OpenEXR_includedir}
++Version: @CTL_VERSION@
++Libs: -L${libdir} -lIlmImfCtl
++Cflags: -I${OpenEXR_includedir}
++Requires: CTL,OpenEXR
+diff -purN a/ctlrender/CMakeLists.txt b/ctlrender/CMakeLists.txt
+--- a/ctlrender/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/ctlrender/CMakeLists.txt	2017-08-15 12:55:05.273951388 +0100
+@@ -46,4 +47,4 @@ target_link_libraries( ctlrender ${AcesC
+ target_link_libraries( ctlrender ${AcesContainer_LDFLAGS_OTHER} )
+ endif()
+ 
+-install( TARGETS ctlrender DESTINATION bin )
++install( TARGETS ctlrender DESTINATION ${CMAKE_INSTALL_BINDIR} )
+diff -purN a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+--- a/doc/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/doc/CMakeLists.txt	2017-08-15 12:46:12.988162583 +0100
+@@ -1 +1 @@
+-install( FILES CtlManual.pdf CtlManual.doc DESTINATION doc/CTL )
++install( FILES CtlManual.pdf CtlManual.doc DESTINATION ${CMAKE_INSTALL_DOCDIR} )
+diff -purN a/lib/dpx/CMakeLists.txt b/lib/dpx/CMakeLists.txt
+--- a/lib/dpx/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/lib/dpx/CMakeLists.txt	2017-08-15 12:34:32.473849079 +0100
+@@ -11,3 +11,4 @@ add_library( ctldpx
+  dpx_rw.cc
+ )
+ 
++target_link_libraries( ctldpx ${IlmBase_LIBRARY} )
+diff -purN a/lib/IlmCtl/CMakeLists.txt b/lib/IlmCtl/CMakeLists.txt
+--- a/lib/IlmCtl/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/lib/IlmCtl/CMakeLists.txt	2017-08-15 12:54:57.825937147 +0100
+@@ -21,8 +23,7 @@ add_library( IlmCtl ${DO_SHARED}
+  CtlStdType.cpp
+ )
+ 
+-target_link_libraries( IlmCtl ${IlmBase_LDFLAGS_OTHER} )
+-target_link_libraries( IlmCtl Iex IlmThread Half )
++target_link_libraries( IlmCtl ${IlmBase_LIBRARY} ${IlmBase_LDFLAGS_OTHER} )
+ 
+ set_target_properties( IlmCtl PROPERTIES
+   VERSION ${CTL_VERSION}
+@@ -48,6 +49,6 @@ install( FILES
+ 	CtlTypeStorage.h
+ 	CtlStdType.h
+ 	CtlVersion.h
+- DESTINATION include/CTL )
++ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/CTL )
+ 
+-install( TARGETS IlmCtl DESTINATION lib )
++install( TARGETS IlmCtl DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+diff -purN a/lib/IlmCtlMath/CMakeLists.txt b/lib/IlmCtlMath/CMakeLists.txt
+--- a/lib/IlmCtlMath/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/lib/IlmCtlMath/CMakeLists.txt	2017-08-15 12:54:56.536934689 +0100
+@@ -18,8 +20,8 @@ install( FILES
+   CtlLookupTable.h
+   CtlRbfInterpolator.h
+   CtlSparseMatrix.h
+- DESTINATION include/CTL )
++ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/CTL )
+ 
+-install( TARGETS IlmCtlMath DESTINATION lib )
++install( TARGETS IlmCtlMath DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ 
+ # TODO Add Imath and Iex libadd dependency and version info
+diff -purN a/lib/IlmCtlSimd/CMakeLists.txt b/lib/IlmCtlSimd/CMakeLists.txt
+--- a/lib/IlmCtlSimd/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/lib/IlmCtlSimd/CMakeLists.txt	2017-08-15 12:55:59.859057599 +0100
+@@ -40,6 +42,6 @@ set_target_properties( IlmCtlSimd PROPER
+   SOVERSION ${CTL_VERSION}
+ )
+ 
+-install( FILES CtlSimdInterpreter.h DESTINATION include/CTL )
++install( FILES CtlSimdInterpreter.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/CTL )
+ 
+-install( TARGETS IlmCtlSimd DESTINATION lib )
++install( TARGETS IlmCtlSimd DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+diff -purN a/lib/IlmImfCtl/CMakeLists.txt b/lib/IlmImfCtl/CMakeLists.txt
+--- a/lib/IlmImfCtl/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/lib/IlmImfCtl/CMakeLists.txt	2017-08-15 12:56:30.444118441 +0100
+@@ -7,10 +9,10 @@ add_library( IlmImfCtl ${DO_SHARED}
+   ImfCtlCopyFunctionArg.cpp
+ )
+ 
+-target_link_libraries( IlmImfCtl IlmCtl IlmImf Iex IlmThread Half )
++target_link_libraries( IlmImfCtl IlmCtl ${OpenEXR_LIBRARY} ${IlmBase_LIBRARY} )
+ 
+-install( FILES ImfCtlApplyTransforms.h DESTINATION include/OpenEXR )
++install( FILES ImfCtlApplyTransforms.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR )
+ 
+ export( TARGETS IlmImfCtl IlmCtl FILE "${PROJECT_BINARY_DIR}/CTLLibraryDepends.cmake" )
+ 
+-install( TARGETS IlmImfCtl DESTINATION lib )
++install( TARGETS IlmImfCtl DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+diff -purN a/OpenEXR_CTL/CMakeLists.txt b/OpenEXR_CTL/CMakeLists.txt
+--- a/OpenEXR_CTL/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/OpenEXR_CTL/CMakeLists.txt	2017-08-15 13:00:56.197503264 +0100
+ -13,7 +13,7 @@ add_custom_target( OpenEXR_CTL DEPENDS C
+ 
+ if ( PKG_CONFIG_FOUND )
+ configure_file(../config/OpenEXR_CTL.pc.in "${PROJECT_BINARY_DIR}/OpenEXR_CTL.pc" @ONLY)
+-install( FILES "${PROJECT_BINARY_DIR}/OpenEXR_CTL.pc" DESTINATION lib/pkgconfig COMPONENT dev )
++install( FILES "${PROJECT_BINARY_DIR}/OpenEXR_CTL.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev )
+ endif()
+ 
+ # TODO CMake config
+diff -purN a/OpenEXR_CTL/CtlModules/CMakeLists.txt b/OpenEXR_CTL/CtlModules/CMakeLists.txt
+--- a/OpenEXR_CTL/CtlModules/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/OpenEXR_CTL/CtlModules/CMakeLists.txt	2017-08-15 13:00:54.589503311 +0100
+@@ -1,7 +1,9 @@
++INCLUDE ( GNUInstallDirs )
++
+ install( 
+     FILES
+         utilities.ctl
+     DESTINATION 
+-        ${INSTALL_LIB_DIR}/CTL
++        ${CMAKE_INSTALL_LIBDIR}/CTL
+ )
+ 
+diff -purN a/OpenEXR_CTL/exr_ctl_exr/CMakeLists.txt b/OpenEXR_CTL/exr_ctl_exr/CMakeLists.txt
+--- a/OpenEXR_CTL/exr_ctl_exr/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/OpenEXR_CTL/exr_ctl_exr/CMakeLists.txt	2017-08-15 13:01:50.748508049 +0100
+@@ -20,6 +21,6 @@ target_link_libraries( exr_ctl_exr IlmCt
+ target_link_libraries( exr_ctl_exr ${IlmBase_LIBRARIES} ${IlmBase_LDFLAGS_OTHER} )
+ target_link_libraries( exr_ctl_exr ${OpenEXR_LIBRARIES} ${OpenEXR_LDFLAGS_OTHER} )
+ 
+-install( TARGETS exr_ctl_exr DESTINATION ${INSTALL_BIN_DIR} )
++install( TARGETS exr_ctl_exr DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ 
+-install( FILES change_saturation.ctl DESTINATION ${INSTALL_LIB_DIR}/CTL )
++install( FILES change_saturation.ctl DESTINATION ${CMAKE_INSTALL_LIBDIR}/CTL )
+diff -purN a/OpenEXR_CTL/exrdpx/CMakeLists.txt b/OpenEXR_CTL/exrdpx/CMakeLists.txt
+--- a/OpenEXR_CTL/exrdpx/CMakeLists.txt	2014-06-03 02:11:24.000000000 +0100
++++ b/OpenEXR_CTL/exrdpx/CMakeLists.txt	2017-08-15 13:01:49.664507838 +0100
+@@ -20,8 +21,8 @@ target_link_libraries( exrdpx IlmCtlSimd
+ target_link_libraries( exrdpx ${IlmBase_LIBRARIES} ${IlmBase_LDFLAGS_OTHER} )
+ target_link_libraries( exrdpx ${OpenEXR_LIBRARIES} ${OpenEXR_LDFLAGS_OTHER} )
+ 
+-install( TARGETS exrdpx DESTINATION ${INSTALL_BIN_DIR} )
++install( TARGETS exrdpx DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ 
+-install( FILES transform_DPX_EXR.ctl transform_EXR_DPX.ctl DESTINATION ${INSTALL_LIB_DIR}/CTL )
++install( FILES transform_DPX_EXR.ctl transform_EXR_DPX.ctl DESTINATION ${CMAKE_INSTALL_LIBDIR}/CTL )
+ 
+ 

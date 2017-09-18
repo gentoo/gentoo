@@ -1,0 +1,38 @@
+diff -purN a/cmake/FindILMBase.cmake b/cmake/FindILMBase.cmake
+--- a/cmake/FindILMBase.cmake	2016-06-19 05:56:00.000000000 +0100
++++ b/cmake/FindILMBase.cmake	2017-03-02 11:44:35.449043588 +0000
+@@ -37,12 +37,17 @@
+ #  ILMBASE_FOUND - true if ILMBASE was found on the system
+ #  ILMBASE_LIBRARY_DIRS - the full set of library directories
+ 
++find_package(PkgConfig QUIET)
++if(PKG_CONFIG_FOUND)
++  pkg_check_modules(PC_ILMBASE QUIET IlmBase)
++endif()
++
+ FIND_PATH ( Ilmbase_Base_Dir include/OpenEXR/IlmBaseConfig.h
+   ENV ILMBASE_ROOT
+   )
+ 
+ IF ( Ilmbase_Base_Dir )
+-
++  SET ( IlmBase_VERSION ${PC_ILMBASE_VERSION} )
+   SET ( ILMBASE_INCLUDE_DIRS
+     ${Ilmbase_Base_Dir}/include
+     ${Ilmbase_Base_Dir}/include/OpenEXR
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-06-19 05:56:00.000000000 +0100
++++ b/CMakeLists.txt	2017-03-02 11:44:37.029035041 +0000
+@@ -146,8 +146,11 @@ IF ( CMAKE_HOST_UNIX )
+       LIST ( APPEND Field3D_Libraries_Shared
+              ${MPI_LIBRARIES} )
+   ENDIF ( MPI_FOUND )
++  # handle new library names for 2.0.0
++  STRING ( REPLACE "." "_" _IlmBase_VERSION ${IlmBase_VERSION} )
++  STRING ( SUBSTRING ${_IlmBase_VERSION} 0 3 _IlmBase_VERSION )
+   LIST ( APPEND Field3D_Libraries_Shared
+-    Iex Half IlmThread Imath
++    Iex-${_IlmBase_VERSION} Half IlmThread-${_IlmBase_VERSION} Imath-${_IlmBase_VERSION}
+     pthread dl z )
+   SET ( Field3D_DSO_Libraries ${Field3D_Libraries_Shared} )
+   SET ( Field3D_BIN_Libraries Field3D ${Field3D_Libraries_Shared}

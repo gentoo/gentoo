@@ -1,0 +1,40 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2014-08-10 05:21:45.000000000 +0100
++++ b/CMakeLists.txt	2017-08-15 11:14:47.863194801 +0100
+@@ -21,6 +21,7 @@ set(CPACK_SOURCE_PACKAGE_FILE_NAME
+ set(CPACK_SOURCE_IGNORE_FILES
+   "/.git*;/.cvs*;${CPACK_SOURCE_IGNORE_FILES}")
+ INCLUDE ( CPack )
++INCLUDE ( GNUInstallDirs )
+ 
+ OPTION (NAMESPACE_VERSIONING "Use Namespace Versioning" ON)
+ 
+@@ -70,6 +71,6 @@ ENDIF ()
+ INSTALL ( FILES
+   doc/OpenEXRViewers.pdf
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/share/doc/OpenEXR-${OPENEXR_VERSION}
++  ${CMAKE_INSTALL_DOCDIR}
+   )
+ 
+diff -purN a/exrdisplay/CMakeLists.txt b/exrdisplay/CMakeLists.txt
+--- a/exrdisplay/CMakeLists.txt	2014-08-10 05:21:45.000000000 +0100
++++ b/exrdisplay/CMakeLists.txt	2017-08-15 11:14:24.156767514 +0100
+@@ -28,5 +29,5 @@ TARGET_LINK_LIBRARIES ( exrdisplay
+ INSTALL ( TARGETS
+ 	exrdisplay
+ 	DESTINATION
+-	${CMAKE_INSTALL_PREFIX}/bin
++	${CMAKE_INSTALL_BINDIR}
+ )
+diff -purN a/playexr/CMakeLists.txt b/playexr/CMakeLists.txt
+--- a/playexr/CMakeLists.txt	2014-08-10 05:21:45.000000000 +0100
++++ b/playexr/CMakeLists.txt	2017-08-15 11:14:19.826689605 +0100
+@@ -35,6 +36,6 @@ TARGET_LINK_LIBRARIES ( playexr
+ INSTALL ( TARGETS
+ 	playexr
+ 	DESTINATION
+-	${CMAKE_INSTALL_PREFIX}/bin
++	${CMAKE_INSTALL_BINDIR}
+ )
+ 

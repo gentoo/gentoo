@@ -1,0 +1,31 @@
+From bba42ca72233679b98a5c38d6d6aefb4c2d78b60 Mon Sep 17 00:00:00 2001
+From: Carlos Perez Lopez <carlospzlz@gmail.com>
+Date: Mon, 22 May 2017 23:02:26 +0100
+Subject: [PATCH] Addressed issue 992.
+
+- Fixed dangling quotes produced by cmake file.
+---
+ CMakeLists.txt                               | 2 +-
+ examples/glEvalLimit/glEvalLimit.cpp         | 4 +++-
+ examples/glFVarViewer/glFVarViewer.cpp       | 4 +++-
+ examples/glImaging/glImaging.cpp             | 6 ++++--
+ examples/glPaintTest/glPaintTest.cpp         | 4 +++-
+ examples/glPtexViewer/glPtexViewer.cpp       | 4 +++-
+ examples/glShareTopology/glShareTopology.cpp | 4 +++-
+ examples/glStencilViewer/glStencilViewer.cpp | 4 +++-
+ examples/glViewer/glViewer.cpp               | 4 +++-
+ 9 files changed, 26 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e02ce90c..6d4f5342 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,7 +48,7 @@ endif()
+     string(REGEX REPLACE "^v" "" OSD_SONAME ${OSD_SONAME})
+ 
+     add_definitions(
+-        -DOPENSUBDIV_VERSION_STRING="${OSD_SONAME}"
++        -DOPENSUBDIV_VERSION_STRING=\\\"${OSD_SONAME}\\\"
+     )
+ 
+ #-------------------------------------------------------------------------------

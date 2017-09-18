@@ -1,0 +1,260 @@
+From 75b1aca8122c3774817a0964b369e733c735b5b5 Mon Sep 17 00:00:00 2001
+From: Jonathan Scruggs <j.scruggs@gmail.com>
+Date: Sat, 19 Aug 2017 12:18:02 +0100
+Subject: [PATCH] oiio/RB-1.7: Use GNUInstallDirs for installation paths
+
+Change all hard coded paths to GNUInstallDirs varibles.
+
+Remove variable setting in main CMakeFiles.txt file since
+GNUInstallDirs does all this for you.
+
+Signed-off by: Jonathan Scruggs <j.scruggs@gmail.com>
+---
+ CMakeLists.txt                   | 63 +++++-----------------------------------
+ src/cmake/oiio_macros.cmake      |  6 ++--
+ src/doc/CMakeLists.txt           | 16 +++++-----
+ src/fonts/CMakeLists.txt         |  6 ++--
+ src/include/CMakeLists.txt       |  6 ++--
+ src/nuke/txReader/CMakeLists.txt |  2 +-
+ src/nuke/txWriter/CMakeLists.txt |  2 +-
+ src/python/CMakeLists.txt        | 18 ++++++------
+ 8 files changed, 37 insertions(+), 82 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ca8da565..6821e1c6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -353,6 +353,8 @@ if (LINKSTATIC)
+     set (Boost_USE_STATIC_LIBS 1)
+ endif ()
+ 
++include (GNUInstallDirs)
++
+ set (CMAKE_MODULE_PATH
+      "${PROJECT_SOURCE_DIR}/src/cmake/modules"
+      "${PROJECT_SOURCE_DIR}/src/cmake")
+@@ -370,59 +372,6 @@ include_directories (
+   )
+ 
+ 
+-###########################################################################
+-# Paths for install tree customization.  Note that relative paths are relative
+-# to CMAKE_INSTALL_PREFIX.
+-set (DEFAULT_BIN_INSTALL_DIR   "bin")
+-set (DEFAULT_LIB_INSTALL_DIR   "lib")
+-set (DEFAULT_INCLUDE_INSTALL_DIR "include/OpenImageIO")
+-if (UNIX AND NOT SELF_CONTAINED_INSTALL_TREE)
+-    # Try to be well-behaved and install into reasonable places according to
+-    # the "standard" unix directory heirarchy
+-    # TODO: Figure out how to get the correct python directory
+-    set (DEFAULT_PYLIB_INSTALL_DIR "lib/python/site-packages")
+-    set (DEFAULT_PYLIB3_INSTALL_DIR "lib/python3/site-packages")
+-    set (DEFAULT_DOC_INSTALL_DIR "share/doc/OpenImageIO")
+-    set (DEFAULT_MAN_INSTALL_DIR "share/man/man1")
+-    set (DEFAULT_FONTS_INSTALL_DIR "share/fonts/oiio")
+-else ()
+-    # Here is the "self-contained install tree" case: the expectation here is
+-    # that everything OIIO related will go into its own directory, not into
+-    # some standard system heirarchy.
+-    set (DEFAULT_PYLIB_INSTALL_DIR "python")
+-    set (DEFAULT_PYLIB3_INSTALL_DIR "python3")
+-    set (DEFAULT_DOC_INSTALL_DIR "doc")
+-    set (DEFAULT_MAN_INSTALL_DIR "doc/man")
+-    set (DEFAULT_FONTS_INSTALL_DIR "fonts/oiio")
+-endif ()
+-if (EXEC_INSTALL_PREFIX)
+-    # Tack on an extra prefix to support multi-arch builds.
+-    set (DEFAULT_BIN_INSTALL_DIR   "${EXEC_INSTALL_PREFIX}/${DEFAULT_BIN_INSTALL_DIR}")
+-    set (DEFAULT_LIB_INSTALL_DIR   "${EXEC_INSTALL_PREFIX}/${DEFAULT_LIB_INSTALL_DIR}")
+-    set (DEFAULT_PYLIB_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/${DEFAULT_PYLIB_INSTALL_DIR}")
+-    set (DEFAULT_PYLIB3_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/${DEFAULT_PYLIB3_INSTALL_DIR}")
+-    set (DEFAULT_FONTS_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/${DEFAULT_FONTS_INSTALL_DIR}")
+-endif ()
+-# Set up cmake cache variables corresponding to the defaults deduced above, so
+-# that the user can override them as desired:
+-set (BIN_INSTALL_DIR ${DEFAULT_BIN_INSTALL_DIR} CACHE STRING
+-     "Install location for binaries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (LIB_INSTALL_DIR ${DEFAULT_LIB_INSTALL_DIR} CACHE STRING
+-     "Install location for libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (PYLIB_INSTALL_DIR ${DEFAULT_PYLIB_INSTALL_DIR} CACHE STRING
+-     "Install location for python libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (PYLIB3_INSTALL_DIR ${DEFAULT_PYLIB3_INSTALL_DIR} CACHE STRING
+-     "Install location for python3 libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (INCLUDE_INSTALL_DIR ${DEFAULT_INCLUDE_INSTALL_DIR} CACHE STRING
+-     "Install location of header files (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (DOC_INSTALL_DIR ${DEFAULT_DOC_INSTALL_DIR} CACHE STRING
+-     "Install location for documentation (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (FONTS_INSTALL_DIR ${DEFAULT_FONTS_INSTALL_DIR} CACHE STRING
+-     "Install location for fonts (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-if (UNIX)
+-    set (MAN_INSTALL_DIR ${DEFAULT_MAN_INSTALL_DIR} CACHE STRING
+-         "Install location for manual pages (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-endif()
+ set (PLUGIN_SEARCH_PATH "" CACHE STRING "Default plugin search path")
+ 
+ set (INSTALL_DOCS ON CACHE BOOL "Install documentation")
+@@ -440,9 +389,9 @@ if (CMAKE_SKIP_RPATH)
+     set (CMAKE_SKIP_RPATH FALSE)
+     unset (CMAKE_INSTALL_RPATH)
+ else ()
+-    set (CMAKE_INSTALL_RPATH "${LIB_INSTALL_DIR}")
++    set (CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_FULL_LIBDIR}")
+     if (NOT IS_ABSOLUTE ${CMAKE_INSTALL_RPATH})
+-        set (CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}")
++        set (CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_FULL_LIBDIR}")
+     endif ()
+     set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ endif ()
+@@ -531,7 +480,9 @@ if (USE_PYTHON3 AND boost_PYTHON_FOUND AND NOT BUILD_OIIOUTIL_ONLY)
+ endif ()
+ 
+ add_subdirectory (src/include)
+-add_subdirectory (src/doc)
++if (INSTALL_DOCS)
++    add_subdirectory (src/doc)
++endif ()
+ add_subdirectory (src/fonts)
+ add_subdirectory (src/nuke)
+ 
+diff --git a/src/cmake/oiio_macros.cmake b/src/cmake/oiio_macros.cmake
+index ee7be325..bfd07413 100644
+--- a/src/cmake/oiio_macros.cmake
++++ b/src/cmake/oiio_macros.cmake
+@@ -7,9 +7,9 @@
+ #
+ macro (oiio_install_targets)
+     install (TARGETS ${ARGN}
+-             RUNTIME DESTINATION "${BIN_INSTALL_DIR}" COMPONENT user
+-             LIBRARY DESTINATION "${LIB_INSTALL_DIR}" COMPONENT user
+-             ARCHIVE DESTINATION "${LIB_INSTALL_DIR}" COMPONENT developer)
++             RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT user
++             LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT user
++             ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT developer)
+ endmacro ()
+ 
+ # Macro to add a build target for an IO plugin.
+diff --git a/src/doc/CMakeLists.txt b/src/doc/CMakeLists.txt
+index eea04340..60c9be72 100644
+--- a/src/doc/CMakeLists.txt
++++ b/src/doc/CMakeLists.txt
+@@ -6,10 +6,10 @@ set (public_docs
+      "${OpenImageIO_SOURCE_DIR}/CHANGES.md"
+ )
+ 
+-if (INSTALL_DOCS)
+-    install (FILES ${public_docs} DESTINATION ${DOC_INSTALL_DIR}
+-             COMPONENT documentation)
+-endif ()
++install (FILES ${public_docs}
++         DESTINATION ${CMAKE_INSTALL_DOCDIR}
++         COMPONENT documentation
++)
+ 
+ # generate man pages using txt2man and a tiny python script to munge the
+ # result of "$tool --help"
+@@ -37,8 +37,8 @@ if (UNIX AND TXT2MAN AND PYTHONINTERP_FOUND)
+     # force man page build before install
+     add_custom_target (man_pages ALL DEPENDS ${manpage_files})
+ 
+-    if (INSTALL_DOCS)
+-        install (FILES ${manpage_files}
+-                 DESTINATION ${MAN_INSTALL_DIR} COMPONENT documentation)
+-    endif ()
++    install (FILES ${manpage_files}
++             DESTINATION ${CMAKE_INSTALL_MANDIR}
++             COMPONENT documentation
++    )
+ endif()
+diff --git a/src/fonts/CMakeLists.txt b/src/fonts/CMakeLists.txt
+index 1e296da0..da17ed9d 100644
+--- a/src/fonts/CMakeLists.txt
++++ b/src/fonts/CMakeLists.txt
+@@ -1,7 +1,9 @@
+ file (GLOB public_fonts "*/*.ttf")
+ 
+ if (INSTALL_FONTS AND USE_FREETYPE)
+-    install (FILES ${public_fonts} DESTINATION ${FONTS_INSTALL_DIR}
+-             COMPONENT fonts)
++    install (FILES ${public_fonts}
++             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/fonts/oiio
++             COMPONENT fonts
++    )
+ endif ()
+ 
+diff --git a/src/include/CMakeLists.txt b/src/include/CMakeLists.txt
+index b063e6f3..6a19efab 100644
+--- a/src/include/CMakeLists.txt
++++ b/src/include/CMakeLists.txt
+@@ -19,5 +19,7 @@ set (OIIO_BUILD_CPP14 ${USE_CPP14})
+ configure_file(OpenImageIO/oiioversion.h.in "${CMAKE_BINARY_DIR}/include/OpenImageIO/oiioversion.h" @ONLY)
+ list(APPEND public_headers "${CMAKE_BINARY_DIR}/include/OpenImageIO/oiioversion.h")
+ 
+-install (FILES ${public_headers} DESTINATION ${INCLUDE_INSTALL_DIR}
+-         COMPONENT developer)
++install (FILES ${public_headers}
++         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/OpenImageIO
++         COMPONENT developer
++)
+diff --git a/src/nuke/txReader/CMakeLists.txt b/src/nuke/txReader/CMakeLists.txt
+index 3e72b6d4..0a803d10 100644
+--- a/src/nuke/txReader/CMakeLists.txt
++++ b/src/nuke/txReader/CMakeLists.txt
+@@ -29,4 +29,4 @@ else ()
+ endif ()
+ 
+ install (TARGETS txReader
+-    LIBRARY DESTINATION "${LIB_INSTALL_DIR}/nuke")
++    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/nuke")
+diff --git a/src/nuke/txWriter/CMakeLists.txt b/src/nuke/txWriter/CMakeLists.txt
+index 66312bc4..fcdf2d64 100644
+--- a/src/nuke/txWriter/CMakeLists.txt
++++ b/src/nuke/txWriter/CMakeLists.txt
+@@ -29,4 +29,4 @@ else ()
+ endif ()
+ 
+ install (TARGETS txWriter
+-    LIBRARY DESTINATION "${LIB_INSTALL_DIR}/nuke")
++    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/nuke")
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index 81a4a890..f0c575ee 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -4,10 +4,15 @@ string (REGEX MATCH "python3\$" _py3_subdir ${CMAKE_CURRENT_BINARY_DIR})
+ 
+ if (_py3_subdir)
+     set (BUILD_PY3 ON)
++    set (PYTHON_DIR python3)
+ else ()
+     set (BUILD_PY3 OFF)
++    set (PYTHON_DIR python)
+ endif ()
+ 
++set (PYLIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/${PYTHON_DIR}/site-packages CACHE STRING
++     "Install location for python libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
++
+ if (NOT BOOST_CUSTOM AND NOT BUILD_PY3)
+     #Unset those, otherwise find_package(PythonLibs) will pick up old stuff
+     #if it has been run before
+@@ -123,15 +128,10 @@ if (BOOST_CUSTOM OR Boost_FOUND AND PYTHONLIBS_FOUND)
+                                SUFFIX ".pyd")
+     endif()
+     
+-    if (BUILD_PY3)
+-        install (TARGETS ${target_name}
+-                 RUNTIME DESTINATION ${PYLIB3_INSTALL_DIR} COMPONENT user
+-                 LIBRARY DESTINATION ${PYLIB3_INSTALL_DIR} COMPONENT user)
+-    else ()
+-        install (TARGETS ${target_name}
+-                 RUNTIME DESTINATION ${PYLIB_INSTALL_DIR} COMPONENT user
+-                 LIBRARY DESTINATION ${PYLIB_INSTALL_DIR} COMPONENT user)
+-    endif ()
++    install (TARGETS ${target_name}
++             RUNTIME DESTINATION ${PYLIB_INSTALL_DIR} COMPONENT user
++             LIBRARY DESTINATION ${PYLIB_INSTALL_DIR} COMPONENT user
++    )
+ elseif (BUILD_PY3)
+     if (NOT PYTHONLIBS_FOUND)
+         message (STATUS "Python3 libraries not found")
+-- 
+2.14.1
+

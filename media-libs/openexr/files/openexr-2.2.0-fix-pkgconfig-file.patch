@@ -1,0 +1,36 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-08-17 12:10:25.488010071 +0100
++++ b/CMakeLists.txt	2017-08-17 12:16:16.305467545 +0100
+@@ -26,7 +26,7 @@ set(CPACK_SOURCE_IGNORE_FILES
+   "/.git*;/.cvs*;${CPACK_SOURCE_IGNORE_FILES}")
+ INCLUDE ( CPack )
+ INCLUDE ( GNUInstallDirs )
+-
++find_package( PkgConfig QUIET )
+ 
+ # Allow the developer to select if Dynamic or Static libraries are built
+ OPTION (BUILD_SHARED_LIBS    "Build Shared Libraries" ON)
+@@ -258,3 +258,8 @@ INSTALL ( FILES
+   DESTINATION
+   ${CMAKE_INSTALL_DOCDIR}/examples
+   )
++
++if ( PKG_CONFIG_FOUND )
++	configure_file(OpenEXR.pc.cmake "${PROJECT_BINARY_DIR}/OpenEXR.pc" @ONLY)
++	install( FILES "${PROJECT_BINARY_DIR}/OpenEXR.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev )
++endif()
+diff -purN a/OpenEXR.pc.cmake b/OpenEXR.pc.cmake
+--- a/OpenEXR.pc.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/OpenEXR.pc.cmake	2017-08-17 12:15:19.425695228 +0100
+@@ -0,0 +1,11 @@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++OpenEXR_includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/OpenEXR
++
++Name: OpenEXR
++Description: OpenEXR image library
++Version: @OPENEXR_VERSION@
++
++Libs: -L${libdir} -lIlmImf@OPENEXR_LIBSUFFIX@ -lIlmImfUtil@OPENEXR_LIBSUFFIX@
++Cflags: -I${OpenEXR_includedir}
++Requires: IlmBase
