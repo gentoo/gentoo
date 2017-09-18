@@ -2142,7 +2142,7 @@ app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.62 0.63 0.64: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.18 2.1.21 2.1.22 2.1.23 2.1.24: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.18 2.1.21 2.1.22 2.1.23 2.1.24 2.1.25: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/prefix-chain-setup 0.5 0.6 0.7: Chained EPREFIX bootstrapping utility
 app-portage/repo-commit 0.4.1 9999: A repository commit helper
@@ -12070,7 +12070,6 @@ kde-apps/pimcommon 17.04.3-r1 17.08.1: Common PIM libraries
 kde-apps/plasma-telepathy-meta 17.04.3 17.08.1: Plasma Telepathy client
 kde-apps/poxml 17.04.3 17.08.1: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 17.04.3 17.08.1: Manage print jobs and printers in Plasma
-kde-apps/pykde4 4.14.3-r3: Python bindings for kdelibs-4
 kde-apps/rocs 17.04.3 17.08.1: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 17.04.3 17.08.1: KWallet extension for signond
 kde-apps/spectacle 17.04.3 17.08.1: Screenshot capture utility
@@ -12230,7 +12229,6 @@ kde-plasma/kwin 5.10.5: KDE window manager
 kde-plasma/kwrited 5.10.5: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.10.5: Plasma screen management library
 kde-plasma/libksysguard 5.10.5: Task management and system monitoring library
-kde-plasma/libkworkspace 4.11.22: A library for Plasma desktop applications
 kde-plasma/milou 5.10.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.10.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
