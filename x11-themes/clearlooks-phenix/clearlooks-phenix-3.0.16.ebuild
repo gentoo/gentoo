@@ -9,12 +9,15 @@ SRC_URI="https://github.com/jpfleury/clearlooks-phenix/archive/${PV}.tar.gz -> $
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="3.6"
 IUSE=""
 
-RDEPEND="
-	>=x11-libs/gtk+-3.14.0:3
+SLOT_BLOCK="!x11-themes/clearlooks-phenix:3.4
+	!x11-themes/clearlooks-phenix:0"
+RDEPEND="${SLOT_BLOCK}
+	>=x11-libs/gtk+-3.6:3
 	x11-themes/gtk-engines"
+DEPEND="app-arch/unzip"
 
 src_install() {
 	insinto "/usr/share/themes/Clearlooks-Phenix"
