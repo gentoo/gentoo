@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-	  <email>perl@gentoo.org</email>
-	  <name>Gentoo Perl Project</name>
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
   </maintainer>
   <upstream>
     <remote-id type="cpan">BZ-Client</remote-id>
