@@ -10,4 +10,4 @@ RDEPEND=dev-perl/Moose dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Role-Identifiable-0.007.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=4544a28b91af3cf5b1ac86f748394227
+_md5_=d7bf2018c2cd0f0d8236c9ca8cf22de9

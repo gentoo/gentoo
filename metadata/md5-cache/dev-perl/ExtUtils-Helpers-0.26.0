@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Carp >=virtual/perl-Exporter-5.570.0 virtual/perl-File-Spec
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LE/LEONT/ExtUtils-Helpers-0.026.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=5c8e7ba4d257ba2fadf192dd51a6a52f
+_md5_=06a17362c74dea92b46cd015f3af7cb4

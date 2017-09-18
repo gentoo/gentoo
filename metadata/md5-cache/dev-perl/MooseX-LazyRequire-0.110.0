@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Carp >=dev-perl/Moose-0.940.0 >=dev-perl/aliased-0.300.0 de
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/MooseX-LazyRequire-0.11.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=36568f82824533a1f633480719c3e5a7
+_md5_=a8b5b5207f90839c83ece91460dfbd3a

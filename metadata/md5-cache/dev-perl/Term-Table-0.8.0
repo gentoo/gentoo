@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=virtual/perl-Carp >=dev-perl/Importer-0.24.0 virtual/perl-Scalar-List-Utils virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-1.302.72 ) dev-lang/perl:=
+DESCRIPTION=Format a header and rows into a table
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Term-Table/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/Importer-0.24.0 virtual/perl-Scalar-List-Utils dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/EX/EXODIST/Term-Table-0.008.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=fb86c5c8d2f7ad3623c29508b644f713

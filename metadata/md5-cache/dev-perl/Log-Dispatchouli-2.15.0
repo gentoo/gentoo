@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Carp virtual/perl-File-Spec dev-perl/Log-Dispatch dev-perl/
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Log-Dispatchouli-2.015.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=2094331843aacc6d842f0002b8a55297
+_md5_=f0235cb6c2168f4dac0cacfe8054a370

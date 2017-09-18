@@ -10,4 +10,4 @@ RDEPEND=dev-perl/MooseX-Types dev-perl/Params-Util >=virtual/perl-version-0.820.
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/MooseX-Types-Perl-0.101343.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=8de47ca97d5166bc9f4c4764b5edf514
+_md5_=e373e08d7e35a8db5b41ea3954c809b9

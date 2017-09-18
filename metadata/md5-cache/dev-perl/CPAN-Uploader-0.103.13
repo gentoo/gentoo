@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Digest-MD5 dev-p
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/CPAN-Uploader-0.103013.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=03f3327b674382774c5a1d814ec0b0af
+_md5_=076e5d265dc201dfe5b963d7558151e3
