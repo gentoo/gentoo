@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (18 Sep 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-63
+
 # Kent Fredric <kentnl@gentoo.org> (18 Sep 2017)
 # Dead upstream, requires Module::Install. May be kept
 # if somebody can make an argument for it. Bug #631334
@@ -301,11 +306,6 @@ app-xemacs/xetla
 app-xemacs/cogre
 app-xemacs/ecb
 app-xemacs/xemacs-packages-all
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-62
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
 # Masked for security reasons:
