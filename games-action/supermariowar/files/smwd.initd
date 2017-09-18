@@ -7,7 +7,7 @@ command_background="true"
 pidfile="/var/run/${RC_SVCNAME}.pid"
 name="Super Mario War server"
 description="The Super Mario War server process is in charge of hosting Super Mario War games"
-smw_server_dir="/usr/share/supermariowar-2.0_beta1/server"
+smw_serverdir="@SMW_SERVERDIR@"
 
 depend() {
     use net
@@ -15,11 +15,11 @@ depend() {
 }
 
 start() {
-    if [[ ! -d "${smw_server_dir}" ]]; then
-        eerror "Cannot cd into ${smw_server_dir}"
+    if [[ ! -d "${smw_serverdir}" ]]; then
+        eerror "Cannot cd into ${smw_serverdir}"
         return 1
     fi
-    cd "${smw_server_dir}" || return 1
+    cd "${smw_serverdir}" || return 1
     ebegin "Starting ${name}"
     start-stop-daemon \
         --start \

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 eutils multilib-minimal pax-utils autotools
+inherit bash-completion-r1 eutils multilib-minimal pax-utils
 
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -31,14 +31,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 # gtk-doc-am to install API docs
-
-# https://bugzilla.gnome.org/show_bug.cgi?id=778193 (remove src_prepare/eautoreconf once not needed on bump)
-PATCHES=( "${FILESDIR}"/${PN}-1.12.2-automagic.patch )
-
-src_prepare() {
-	default
-	eautoreconf # Due to automagic libunwind/libdw fix
-}
 
 src_configure() {
 	if [[ ${CHOST} == *-interix* ]] ; then

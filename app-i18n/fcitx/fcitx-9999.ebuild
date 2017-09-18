@@ -39,7 +39,10 @@ RDEPEND="dev-libs/glib:2
 		x11-libs/libXfixes
 		x11-libs/libXinerama
 		x11-libs/libXrender
-		xml? ( x11-libs/libxkbfile )
+		xml? (
+			x11-libs/libxkbfile
+			x11-misc/xkeyboard-config
+		)
 	)
 	cairo? (
 		x11-libs/cairo[X]

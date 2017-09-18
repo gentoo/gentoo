@@ -17,14 +17,14 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="server"
+IUSE="+server"
 
 RDEPEND="
 	sys-libs/zlib
 	dev-cpp/yaml-cpp
 	net-libs/enet:1.3=
-	media-libs/sdl-mixer
-	media-libs/sdl-image"
+	media-libs/sdl-mixer[vorbis]
+	media-libs/sdl-image[png,jpeg]"
 
 DEPEND="
 	${RDEPEND}
@@ -102,6 +102,9 @@ EOF
 		dosym "${smw_serverdir}/serverconfig" "/etc/${MY_PN}d.conf"
 
 		newinitd "${FILESDIR}/smwd.initd" "${MY_PN}d"
+		sed -i -e \
+			"s#@SMW_SERVERDIR@#${smw_serverdir}#g;" \
+			"${ED}/etc/init.d/${MY_PN}d" || die
 		eend $?
 	fi
 }
