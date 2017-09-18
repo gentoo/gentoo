@@ -182,7 +182,7 @@ freebsd_src_unpack() {
 			local tarball="freebsd-src-${MY_PV}.tar.xz"
 			local topdir="usr/src/"
 			local extractlist=()
-			for i in ${EXTRACTONLY} ; do
+			for i in ${EXTRACTONLY} tools/ ; do
 				extractlist+=( ${topdir}${i} )
 			done
 			ebegin "Unpacking parts of ${tarball} to ${WORKDIR}"
@@ -210,8 +210,9 @@ freebsd_src_unpack() {
 		export INSTALL_LINK="ln -f"
 		export INSTALL_SYMLINK="ln -fs"
 	fi
-	if version_is_at_least 11.0 ${RV} ; then
-		export RSYMLINK=" -l s"
+	# An older version of install command doesn't support the -T option.
+	if version_is_at_least 11.0 ${RV} && ! has_version ">=sys-freebsd/freebsd-ubin-${RV}" ; then
+		export INSTALL="sh ${WORKDIR}/tools/install.sh"
 	fi
 
 	# If CC=clang, we should use clang-cpp instead of cpp. #478810, #595878
