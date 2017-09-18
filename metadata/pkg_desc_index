@@ -14442,7 +14442,7 @@ net-analyzer/prelude-lml 3.0.0 3.1.0 4.0.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0 4.0.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
 net-analyzer/prometheus 1.7.1 2.0.0_beta2: Prometheus monitoring system and time series database
-net-analyzer/prometheus-node_exporter 0.14.0: Prometheus exporter for machine metrics
+net-analyzer/prometheus-node_exporter 0.14.0-r1: Prometheus exporter for machine metrics
 net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
@@ -15214,7 +15214,7 @@ net-misc/eventd 0.21.0 0.23.0: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20150803: Qt4-based download/upload manager
-net-misc/felix 2.5.0: Calico's per-host agent, responsible for programming routes and security policy
+net-misc/felix 2.5.0 2.5.1: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 2.0.0_rc0 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
