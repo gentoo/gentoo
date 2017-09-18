@@ -5,5 +5,5 @@ EAPI=5
 HOMEPAGE=https://github.com/mikeryan/btcrack
 LICENSE=GPL-3
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
 _md5_=e6c3ff79c7811db6b83fcd9abd1f594f

@@ -6,5 +6,5 @@ HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=4955 https://github.com
 LICENSE=vim
 RDEPEND=app-vim/fugitive || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
 _md5_=2fbbc28119f85672bde4f51619daae0f

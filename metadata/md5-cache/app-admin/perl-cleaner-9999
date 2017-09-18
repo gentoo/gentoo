@@ -6,5 +6,5 @@ HOMEPAGE=https://www.gentoo.org/proj/en/perl/
 LICENSE=GPL-2
 RDEPEND=app-shells/bash dev-lang/perl || ( ( sys-apps/portage app-portage/portage-utils ) sys-apps/pkgcore sys-apps/paludis )
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445	prefix	7b6fb2fc216b101b5d97d171925a847c
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	prefix	7b6fb2fc216b101b5d97d171925a847c
 _md5_=92e938e8b473a0fe766b98c4724ef07f

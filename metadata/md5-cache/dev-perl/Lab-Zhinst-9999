@@ -6,5 +6,5 @@ HOMEPAGE=http://search.cpan.org/~amba/Lab-Zhinst/
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=sci-electronics/labone dev-lang/perl:=
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=0e78b14ae33dce1aea0eea3a54c64440

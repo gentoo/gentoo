@@ -7,5 +7,5 @@ IUSE=test
 LICENSE=GPL-3
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base || ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended ) dev-perl/Algorithm-Diff
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
 _md5_=2fad7de8f76510031b92930273e4e615

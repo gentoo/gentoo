@@ -10,5 +10,5 @@ RDEPEND=app-crypt/qca:2[qt5] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:
 REQUIRED_USE=?? ( aspell enchant hunspell ) iconsets? ( extras ) sql? ( extras ) webengine? ( !webkit )
 RESTRICT=test iconsets? ( bindist )
 SLOT=0
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	4f7ddb4119309845d6687213171ab445	l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	52a888802d25387c2c74cb845d1219bc	l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=65ef3abe77de5e5ae6f95baa36a2cbcb

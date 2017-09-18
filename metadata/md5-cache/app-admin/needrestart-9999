@@ -6,5 +6,5 @@ HOMEPAGE=https://fiasko-nw.net/~thomas/tag/needrestart.html https://github.com/l
 LICENSE=GPL-2+
 RDEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
 _md5_=39cb184d297a58ba8488c670fe7f7675

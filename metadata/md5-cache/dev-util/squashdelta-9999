@@ -8,5 +8,5 @@ LICENSE=BSD public-domain
 RDEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) dev-util/xdelta:3
 REQUIRED_USE=|| ( lz4 lzo )
 SLOT=0
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	4f7ddb4119309845d6687213171ab445	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	git-r3	52a888802d25387c2c74cb845d1219bc	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=402751767b947f72084bc2a47252a940

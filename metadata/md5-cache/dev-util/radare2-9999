@@ -7,5 +7,5 @@ IUSE=ssl +system-capstone
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= ) system-capstone? ( dev-libs/capstone:0= )
 SLOT=0
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
 _md5_=ad3fbcc4fa9dd414a7abdd6e1c960c24
