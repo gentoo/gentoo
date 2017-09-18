@@ -6,10 +6,10 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <longdescription>The Apache::Test framework was designed for creating test
-		suites for products running on the Apache httpd webserver (not
-		necessarily mod_perl). Originally designed for the mod_perl Apache
-		module, it was extended to be used for any Apache
-		module.</longdescription>
+    suites for products running on the Apache httpd webserver (not
+    necessarily mod_perl). Originally designed for the mod_perl Apache
+    module, it was extended to be used for any Apache
+    module.</longdescription>
   <upstream>
     <remote-id type="cpan">Apache-Test</remote-id>
     <remote-id type="cpan-module">Apache::Test</remote-id>
