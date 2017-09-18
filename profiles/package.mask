@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (18 Sep 2017)
+# Dead upstream, requires Module::Install. May be kept
+# if somebody can make an argument for it. Bug #631334
+# Masked for removal in 30 days.
+dev-perl/PerlIO-via-symlink
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2017)
 # Unfortunately broken esp. with USE=python. Bugs #623780, #631064
 =sci-geosciences/qgis-2.18.12-r100
