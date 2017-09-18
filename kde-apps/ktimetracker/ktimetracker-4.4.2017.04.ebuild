@@ -30,6 +30,8 @@ KMEXTRACTONLY="
 
 KMLOADLIBS="libkdepim"
 
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
+
 src_unpack() {
 	if use kontact; then
 		KMEXTRA="${KMEXTRA} kontact/plugins/ktimetracker"
