@@ -7489,6 +7489,7 @@ dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
+dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1 0.1.2: Cursive implements OpenStack-specific validation of digital signatures.
@@ -8952,7 +8953,7 @@ dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor
 dev-python/wcsaxes 0.8 0.9: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.7 0.1.7-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weakrefmethod 1.0.3: Backport of WeakMethod from Python 3.4 to Python 2.6+
-dev-python/weasyprint 0.29 0.39: Visual rendering engine for HTML and CSS that can export to PDF
+dev-python/weasyprint 0.29 0.39 0.40: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.12: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5 0.5.1: Character encoding aliases for legacy web content
