@@ -27,8 +27,7 @@ RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(net:src)"
 BUILD_TARGETS="module"
-CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER ~PADATA"
-WARNING_PADATA="If you're running a multicore system you likely should enable CONFIG_PADATA for improved performance and parallel crypto."
+CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER"
 
 pkg_setup() {
 	if use module; then
