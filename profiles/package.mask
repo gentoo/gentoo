@@ -266,11 +266,6 @@ xfce-extra/xfce4-mixer
 # Alternatives: app-arch/libarchive, app-arch/unar
 app-arch/unrar-gpl
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Aug 2017)
-# Masked for removal in 30 days. Use kde-apps/kio-extras[mtp,slp] instead.
-kde-misc/kio-mtp
-kde-misc/kio-slp
-
 # Michał Górny <mgorny@gentoo.org> (20 Aug 2017)
 # Pre-release of a new incompatible version that breaks the only reverse
 # dependency in Gentoo. Masked until 2.0.0 proper is released, or
