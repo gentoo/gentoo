@@ -14993,7 +14993,7 @@ net-libs/ortp 0.20.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550)
 net-libs/osptoolkit 4.13.0: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.1 1.3.7: Library to parse proxy auto-config files
 net-libs/phodav 2.1 2.2: WebDav server implementation using libsoup
-net-libs/pjproject 2.5.1: Open source SIP, Media, and NAT Traversal Library
+net-libs/pjproject 2.5.1 2.6: Open source SIP, Media, and NAT Traversal Library
 net-libs/polarssl 1.3.9 1.3.9-r1: Cryptographic library for embedded systems
 net-libs/ptlib 2.10.11: Network focused portable C++ class library providing high level functions
 net-libs/qmf 4.0.3: The Qt Messaging Framework
