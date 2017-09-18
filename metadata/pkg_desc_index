@@ -5450,7 +5450,7 @@ dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot exec
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1 0.680.0: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.260.0-r1 0.270.0: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.120.0 7.130.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent 7.120.0 7.130.0 7.140.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
@@ -9442,7 +9442,7 @@ dev-ruby/ast 2.2.0 2.3.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.2.1 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 6.7.7.2 7.1.1.3 7.1.2.4 7.1.2.6: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 6.7.7.2 7.1.1.3 7.1.2.4 7.1.2.6 7.1.4: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/awesome_print 1.7.0 1.8.0: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
 dev-ruby/aws-sdk 1.66.0 2.6.50 2.8.14 2.9.44 2.10.37: Official SDK for Amazon Web Services
