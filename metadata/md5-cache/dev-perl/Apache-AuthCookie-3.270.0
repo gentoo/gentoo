@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=www-apache/mod_perl-2 virtual/perl-Carp >=dev-perl/Class-Load-0.30.0 virtual/perl-Encode dev-perl/HTTP-Body dev-perl/Hash-MultiValue virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Apache-Test-1.390.0 >=dev-perl/URI-1.310.0 >=virtual/perl-Test-Simple-0.940.0 !www-apache/mpm_itk ) dev-lang/perl:=
+DESCRIPTION=Perl Authentication and Authorization via cookies
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Apache-AuthCookie/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=www-apache/mod_perl-2 virtual/perl-Carp >=dev-perl/Class-Load-0.30.0 virtual/perl-Encode dev-perl/HTTP-Body dev-perl/Hash-MultiValue dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MS/MSCHOUT/Apache-AuthCookie-3.27.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=3fba831882acd9a46f58c98c298a0029
