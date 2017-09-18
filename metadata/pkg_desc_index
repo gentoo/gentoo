@@ -2913,7 +2913,7 @@ dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2-r1 0.9.4: MySQL Schema Versioning and Migration Utility
 dev-db/aerospike-server-community 3.9.0.3 3.9.1.1 3.10.0.3 3.11.0.2 3.12.1 3.12.1.1 3.13.0.3 3.14.1.3 9999: Flash-optimized, in-memory, nosql database
 dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is useful for schema upgrades
-dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 2.1: Administration tool for disaster recovery of PostgreSQL servers
+dev-db/barman 2.1 2.3: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/cockroach 1.0_rc1 1.0 1.0-r1 1.0.1 1.0.3: open source database for building cloud services
@@ -2998,13 +2998,13 @@ dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
-dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 3.6.5 9999: Connection pool server for PostgreSQL
+dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 3.6.5 3.6.6 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0 0.97.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
-dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 2.4.0_rc1 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.21 9.2.21-r2 9.2.22 9.2.23 9.3.15 9.3.17 9.3.17-r2 9.3.18 9.3.19 9.4.10 9.4.12 9.4.12-r2 9.4.13 9.4.14 9.5.5 9.5.7 9.5.7-r1 9.5.8 9.5.9 9.6.3-r1 9.6.3-r2 9.6.4 9.6.5 10_beta3 10_beta4 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -8212,7 +8212,7 @@ dev-python/prompt_toolkit 1.0.0 1.0.14 1.0.15: Building powerful interactive com
 dev-python/protobuf-python 3.1.0 3.3.0 3.3.0-r1: Google's Protocol Buffers - official Python bindings
 dev-python/prov 1.5.0 1.5.1: W3C provenance data dodel library
 dev-python/psutil 1.2.1 2.1.3 5.0.1 5.1.3 5.2.2 5.3.0 5.3.1: Retrieve information on running processes and system utilization
-dev-python/psycopg 1.1.21-r1 2.5.3 2.6.2 2.7.3: PostgreSQL database adapter for Python
+dev-python/psycopg 1.1.21-r1 2.5.3 2.6.2 2.7.3 2.7.3.1: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33 0.33-r1: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1 0.5.2: Run a subprocess in a pseudo terminal
 dev-python/pudb 2016.2: A full-screen, console-based Python debugger

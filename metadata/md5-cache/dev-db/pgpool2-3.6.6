@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) postgres_targets_postgres9_2? ( dev-db/postgresql:9.2= ) memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( dev-libs/openssl:* ) sys-devel/bison !!dev-db/pgpool
+DESCRIPTION=Connection pool server for PostgreSQL
+EAPI=6
+HOMEPAGE=http://www.pgpool.net/
+IUSE=doc memcached pam ssl static-libs postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 postgres_targets_postgres9_2
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) postgres_targets_postgres9_2? ( dev-db/postgresql:9.2= ) memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( dev-libs/openssl:* )
+SLOT=0
+SRC_URI=http://www.pgpool.net/download.php?f=pgpool-II-3.6.6.tar.gz -> pgpool-II-3.6.6.tar.gz
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=b40c8acfaed3780f2ea648ae7da3163c
