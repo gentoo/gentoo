@@ -1894,7 +1894,7 @@ app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows ar
 app-misc/openastro 1.1.48 1.1.49 1.1.50: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6 1.7: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2 1.2.2-r1: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2 1.2.2-r1 1.2.2-r2: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.7: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.2.3: Simple command-line snippet manager
@@ -17870,7 +17870,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.6 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.12 1.13: Standard GNU database libraries
-sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r4 2.25-r5 2.26 2.26-r1 9999: GNU libc C library
+sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r4 2.25-r5 2.26-r1 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.1.2: Library for managing partitions
