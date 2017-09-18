@@ -8373,7 +8373,7 @@ dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
 dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
-dev-python/pyopencl 2014.1 2016.1 9999: Python wrapper for OpenCL
+dev-python/pyopencl 2014.1 2016.1 2017.2 9999: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
 dev-python/pyopenssl 0.15.1-r1 16.2.0 17.0.0 17.2.0: Python interface to the OpenSSL library
@@ -10797,7 +10797,7 @@ games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstrac
 games-action/spacearyarya-kxl 1.0.2-r1 1.0.2-r2: A 2D/3D shooting game
 games-action/spacetripper-demo 1 1-r1: Hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
-games-action/supermariowar 2.0_beta1: Fan-made multiplayer Super Mario Bros. style deathmatch game
+games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-action/supertuxkart 0.9.1 0.9.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.6.4: Online multi-player platform 2D shooter
@@ -12966,11 +12966,11 @@ media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creat
 media-libs/grilo 0.2.15 0.3.3 0.3.4: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r4 1.10.3 1.10.5 1.12.2: Less plugins for GStreamer
-media-libs/gst-plugins-base 0.10.36-r2 1.10.3 1.10.5 1.12.2: Basepack of plugins for gstreamer
+media-libs/gst-plugins-base 0.10.36-r2 1.10.3 1.10.5 1.12.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r2 1.10.3 1.10.5 1.12.2: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.10.3 1.10.5 1.12.2: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 0.10.8-r1 1.10.3 1.12.2: A GStreamer based RTSP server
-media-libs/gstreamer 0.10.36-r2 1.10.3 1.10.5 1.12.2: Open source multimedia framework
+media-libs/gstreamer 0.10.36-r2 1.10.3 1.10.5 1.12.3: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.10.3 1.10.4 1.12.2: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
@@ -13327,7 +13327,7 @@ media-plugins/gst-plugins-annodex 0.10.31-r1: GStreamer plugin for annodex strea
 media-plugins/gst-plugins-assrender 0.10.23-r1 1.10.3 1.10.5 1.12.2: ASS/SSA rendering with effects support plugin for GStreamer
 media-plugins/gst-plugins-bluez 1.10.3 1.10.5 1.12.2: AVDTP source/sink and A2DP sink plugin for GStreamer
 media-plugins/gst-plugins-cdio 0.10.19-r1 1.10.3 1.10.5 1.12.2: CD Audio Source (cdda) plugin for GStreamer
-media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.10.3 1.10.5 1.12.2: CD Audio Source (cdda) plugin for GStreamer
+media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.10.3 1.10.5 1.12.3: CD Audio Source (cdda) plugin for GStreamer
 media-plugins/gst-plugins-dash 1.10.3 1.10.5 1.12.2: MPEG-DASH plugin for GStreamer
 media-plugins/gst-plugins-dtls 1.10.3 1.10.5 1.12.2: DTLS encoder/decoder with SRTP support plugin for GStreamer
 media-plugins/gst-plugins-dts 0.10.23-r1 1.10.3 1.10.5 1.12.2: DTS audio decoder plugin for Gstreamer
@@ -13355,7 +13355,7 @@ media-plugins/gst-plugins-libde265 1.10.3 1.10.5 1.12.2: H.265 decoder plugin fo
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.10.3 1.10.5 1.12.2: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.10.3 1.10.5 1.12.2: PNG image encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-libvisual 0.10.36-r1 1.10.3 1.10.5 1.12.2: Visualization elements for GStreamer
+media-plugins/gst-plugins-libvisual 0.10.36-r1 1.10.3 1.10.5 1.12.3: Visualization elements for GStreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.10.3 1.10.5: MP3 decoder plugin for GStreamer
 media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3 1.10.5: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.10.3 1.10.5 1.12.2: MOD audio decoder plugin for GStreamer
@@ -13369,7 +13369,7 @@ media-plugins/gst-plugins-ofa 0.10.23-r1 1.10.3 1.10.5 1.12.2: MusicIP audio fin
 media-plugins/gst-plugins-ogg 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-opencv 1.10.3 1.10.5 1.12.2: OpenCV elements for Gstreamer
 media-plugins/gst-plugins-openh264 1.10.3 1.10.5 1.12.2: H.264 encoder/decoder plugin for GStreamer.
-media-plugins/gst-plugins-opus 0.10.23-r1 1.10.3 1.10.5 1.12.2: Opus audio parser plugin for GStreamer
+media-plugins/gst-plugins-opus 0.10.23-r1 1.10.3 1.10.5 1.12.3: Opus audio parser plugin for GStreamer
 media-plugins/gst-plugins-oss 0.10.31-r1 1.10.3 1.10.5 1.12.2: OSS (Open Sound System) support plugin for GStreamer
 media-plugins/gst-plugins-pango 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-pulse 0.10.31-r2 1.10.3 1.10.5 1.12.2: PulseAudio sound server plugin for GStreamer
