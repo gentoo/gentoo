@@ -7,7 +7,7 @@ inherit user golang-build golang-vcs-snapshot
 EGO_PN="github.com/prometheus/prometheus"
 MY_PV=${PV/_beta/-beta.}
 EGIT_COMMIT="v${MY_PV}"
-PROMETHEUS_COMMIT="a52f082"
+PROMETHEUS_COMMIT="1b80f63"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -52,16 +52,17 @@ src_install() {
 	dosym ../../usr/share/prometheus/consoles /etc/prometheus/consoles
 	popd || die
 
-	newinitd "${FILESDIR}"/prometheus-2.initd prometheus
+	newinitd "${FILESDIR}"/prometheus-3.initd prometheus
 	newconfd "${FILESDIR}"/prometheus.confd prometheus
 	keepdir /var/log/prometheus /var/lib/prometheus
 	fowners prometheus:prometheus /var/log/prometheus /var/lib/prometheus
 }
 
 pkg_postinst() {
-	if has_version '<net-analyzer/prometheus-2.0.0_beta1'; then
+	if has_version '<net-analyzer/prometheus-2.0.0_beta4'; then
 		ewarn "Old prometheus 1.x TSDB won't be converted to the new prometheus 2.0 format"
 		ewarn "Be aware that the old data currently cannot be accessed with prometheus 2.0"
-		ewarn "It's generally advised to start with a clean storage directory"
+		ewarn "This release requires a clean storage directory and is not compatible with"
+		ewarn "files created by previous beta releases"
 	fi
 }
