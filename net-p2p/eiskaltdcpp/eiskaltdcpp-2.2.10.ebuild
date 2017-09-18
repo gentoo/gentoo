@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
+PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr@latin sr sv_SE uk vi zh_CN"
 
 inherit cmake-utils gnome2-utils l10n xdg-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
@@ -13,15 +13,13 @@ HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +dht examples -gtk idn -javascript json libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp -xmlrpc"
+IUSE="cli daemon dbus +dht examples idn -javascript json lua +minimal pcre +qt5 spell sqlite upnp -xmlrpc"
 
 REQUIRED_USE="
 	?? ( json xmlrpc )
 	cli? ( ^^ ( json xmlrpc ) )
 	dbus? ( qt5 )
 	javascript? ( qt5 )
-	libcanberra? ( gtk )
-	libnotify? ( gtk )
 	spell? ( qt5 )
 	sqlite? ( qt5 )
 "
@@ -51,14 +49,6 @@ RDEPEND="
 		xmlrpc? ( dev-perl/RPC-XML )
 	)
 	daemon? ( xmlrpc? ( dev-libs/xmlrpc-c[abyss,cxx] ) )
-	gtk? (
-		dev-libs/glib:2
-		x11-libs/gtk+:3
-		x11-libs/pango
-		x11-themes/hicolor-icon-theme
-		libcanberra? ( media-libs/libcanberra )
-		libnotify? ( x11-libs/libnotify )
-	)
 	idn? ( net-dns/libidn )
 	lua? ( dev-lang/lua:= )
 	pcre? ( dev-libs/libpcre )
@@ -88,6 +78,13 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog.txt )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ipv6_upnp.patch
+	"${FILESDIR}"/${P}-miniupnpc{1,2}.patch
+	"${FILESDIR}"/${P}-openssl-1.1.patch
+	"${FILESDIR}"/${P}-tray-close.patch
+)
+
 src_prepare() {
 	cmake-utils_src_prepare
 	l10n_find_plocales_changes 'eiskaltdcpp-qt/translations' '' '.ts'
@@ -99,23 +96,25 @@ src_configure() {
 		-Dlinguas="$(l10n_get_locales)"
 		-DLOCAL_MINIUPNP=OFF
 		-DUSE_GTK=OFF
+		-DUSE_GTK3=OFF
+		-DUSE_LIBGNOME2=OFF
+		-DUSE_LIBCANBERRA=OFF
+		-DUSE_LIBNOTIFY=OFF
 		-DUSE_QT=OFF
 		-DUSE_QT_QML=OFF
-		-DUSE_LIBGNOME2=OFF
 		-DNO_UI_DAEMON=$(usex daemon)
 		-DDBUS_NOTIFY=$(usex dbus)
 		-DWITH_DHT=$(usex dht)
 		-DWITH_EXAMPLES=$(usex examples)
-		-DUSE_GTK3=$(usex gtk)
 		-DUSE_IDNA=$(usex idn)
 		-DUSE_JS=$(usex javascript)
-		-DUSE_LIBCANBERRA=$(usex libcanberra)
-		-DUSE_LIBNOTIFY=$(usex libnotify)
 		-DLUA_SCRIPT=$(usex lua)
 		-DWITH_LUASCRIPTS=$(usex lua)
 		-DWITH_DEV_FILES=$(usex !minimal)
 		-DPERL_REGEX=$(usex pcre)
 		-DUSE_QT5=$(usex qt5)
+		-DWITH_EMOTICONS=$(usex qt5)
+		-DWITH_SOUNDS=$(usex qt5)
 		-DUSE_ASPELL=$(usex spell)
 		-DUSE_QT_SQLITE=$(usex sqlite)
 		-DUSE_MINIUPNP=$(usex upnp)
@@ -130,17 +129,6 @@ src_configure() {
 		mycmakeargs+=(
 			-DJSONRPC_DAEMON=$(usex json)
 			-DXMLRPC_DAEMON=$(usex xmlrpc)
-		)
-	fi
-	if use qt5 || use gtk; then
-		mycmakeargs+=(
-			-DWITH_EMOTICONS=ON
-			-DWITH_SOUNDS=ON
-		)
-	else
-		mycmakeargs+=(
-			-DWITH_EMOTICONS=OFF
-			-DWITH_SOUNDS=OFF
 		)
 	fi
 	cmake-utils_src_configure
