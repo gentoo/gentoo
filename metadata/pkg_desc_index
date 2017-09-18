@@ -5469,7 +5469,7 @@ dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface progra
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-Nopaste 1.4.0-r1 1.8.0 1.9.0 1.11.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0 1.704.300: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.780.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.780.0 0.800.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
@@ -5549,7 +5549,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0 3.80.0 3.120.0 3.160.0 3.180.0 3.200.0 3.220.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0 3.80.0 3.120.0 3.160.0 3.180.0 3.200.0 3.220.0 3.340.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
