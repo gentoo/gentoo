@@ -14,13 +14,13 @@ fi
 DESCRIPTION="Chinese LibPinyin input methods for Fcitx"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-libpinyin"
 if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+	SRC_URI="https://download.fcitx-im.org/data/model.text.20161206.tar.gz -> fcitx-data-model.text.20161206.tar.gz"
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
-SLOT="0"
+SLOT="4"
 KEYWORDS=""
 IUSE="dictmanager"
 
@@ -42,6 +42,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=(AUTHORS)
+
+src_prepare() {
+	if [[ "${PV}" == "9999" ]]; then
+		ln -s "${DISTDIR}/fcitx-data-model.text.20161206.tar.gz" data/model.text.20161206.tar.gz || die
+	fi
+
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
