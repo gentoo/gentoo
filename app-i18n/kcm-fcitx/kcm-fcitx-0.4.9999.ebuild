@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils xdg
+inherit cmake-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
