@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 description="Calico Felix host agent"
-pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
 user=${user:-root}
 group=${group:-root}
 
@@ -11,14 +11,9 @@ command="/usr/bin/calico-felix"
 command_args="${command_args}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
-	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
-	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
 
 depend() {
 	need net
-	after net
-}
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
 }
