@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="http://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="4"
 KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE="dictmanager"
 
