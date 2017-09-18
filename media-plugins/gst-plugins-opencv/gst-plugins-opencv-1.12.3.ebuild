@@ -12,7 +12,7 @@ IUSE=""
 
 RDEPEND="
 	>=media-libs/opencv-2.3.0[contrib(+),${MULTILIB_USEDEP}]
-	<media-libs/opencv-3.2.1
+	<media-libs/opencv-3.3.1
 "
 DEPEND="${RDEPEND}"
 
