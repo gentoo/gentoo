@@ -68,7 +68,7 @@ src_install() {
 	python_fix_shebang "${ED%/}"/usr/bin/*.py
 
 	readme.gentoo_create_doc
-	dodoc CHANGELOG docbook-xsl/asciidoc-docbook-xsl.txt \
+	dodoc BUGS CHANGELOG README docbook-xsl/asciidoc-docbook-xsl.txt \
 		dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt
 
 	# Below results in some files being installed twice in different locations, but they are
