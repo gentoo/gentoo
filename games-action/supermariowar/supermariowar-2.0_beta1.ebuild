@@ -49,9 +49,9 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=OFF
-	    -DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr"
-	    -DSMW_BINDIR="${EPREFIX%/}/usr/bin"
-	    -DSMW_DATADIR="${EPREFIX%/}/usr/share/${PF}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr"
+		-DSMW_BINDIR="${EPREFIX%/}/usr/bin"
+		-DSMW_DATADIR="${EPREFIX%/}/usr/share/${PF}"
 	)
 
 	cmake-utils_src_configure
