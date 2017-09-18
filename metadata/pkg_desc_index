@@ -6106,7 +6106,7 @@ dev-perl/Image-Size 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.5: Import packages into other packages
 dev-perl/Importer 0.24.0: Alternative interface to modules that export symbols
 dev-perl/Inline 0.500.0-r1 0.800.0: Write Perl subroutines in other languages
-dev-perl/Inline-C 0.760.0 0.780.0: C Language Support for Inline
+dev-perl/Inline-C 0.780.0: C Language Support for Inline
 dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
 dev-perl/Inline-Python 0.520.0: Easy implementation of Python extensions
 dev-perl/JSON 2.900.0 2.940.0: JSON (JavaScript Object Notation) encoder/decoder
