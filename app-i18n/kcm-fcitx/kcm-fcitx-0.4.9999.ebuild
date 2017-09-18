@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="GPL-2+"
-SLOT="4"
+SLOT="4-plasma4"
 KEYWORDS=""
 IUSE="minimal"
 
