@@ -16,7 +16,7 @@ diff -Nura a/po/LINGUAS b/po/LINGUAS
 +++ b/po/LINGUAS	2009-01-19 21:54:24.000000000 +0100
 @@ -0,0 +1,23 @@
 +# please keep this list sorted alphabetically
-+# http://live.gnome.org/GnomeGoals/PoLinguas
++# https://wiki.gnome.org/Initiatives/GnomeGoals/PoLinguas
 +#
 +ca
 +cs
