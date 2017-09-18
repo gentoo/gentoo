@@ -6,43 +6,47 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 pypy )
 
 [ "$PV" == "9999" ] && inherit git-r3 autotools
-inherit readme.gentoo-r1 python-single-r1
+inherit python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
-HOMEPAGE="http://www.methods.co.nz/asciidoc/"
+HOMEPAGE="http://asciidoc.org/"
 if [ "$PV" == "9999" ]; then
 	EGIT_REPO_URI="https://github.com/asciidoc/asciidoc.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples graphviz highlight test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-REQUIRED_USE="highlight? ( ${PYTHON_REQUIRED_USE} )"
-
-RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
-		dev-libs/libxslt
-		graphviz? ( media-gfx/graphviz )
-		app-text/docbook-xml-dtd:4.5
-		highlight? ( || ( dev-util/source-highlight \
-			dev-python/pygments[${PYTHON_USEDEP}] \
-			app-text/highlight )
+RDEPEND="
+	app-text/docbook-xml-dtd:4.5
+	>=app-text/docbook-xsl-stylesheets-1.75
+	dev-libs/libxslt
+	${PYTHON_DEPS}
+	graphviz? ( media-gfx/graphviz )
+	highlight? (
+		|| (
+			dev-util/source-highlight
+			dev-python/pygments[${PYTHON_USEDEP}]
+			app-text/highlight
 		)
+	)"
+DEPEND="
+	test? (
+		app-text/dvipng
+		dev-texlive/texlive-latex
+		dev-util/source-highlight
+		media-gfx/graphviz
+		media-gfx/imagemagick
+		media-sound/lilypond
 		${PYTHON_DEPS}
-"
-DEPEND="test? ( dev-util/source-highlight
-			media-sound/lilypond
-			media-gfx/imagemagick
-			dev-texlive/texlive-latex
-			app-text/dvipng
-			media-gfx/graphviz
-			${PYTHON_DEPS} )
-"
+	)"
 
 DOC_CONTENTS="
 If you are going to use a2x, please also look at a2x(1) under
@@ -51,13 +55,12 @@ REQUISITES for a list of runtime dependencies.
 
 if [ "$PV" == "9999" ]; then
 	DEPEND="${DEPEND}
-		www-client/lynx
-		dev-util/source-highlight"
+		dev-util/source-highlight
+		www-client/lynx"
 fi
 
 src_prepare() {
 	default
-
 	# Only needed for prefix - harmless (does nothing) otherwise
 	sed -i -e "s:^CONF_DIR=.*:CONF_DIR='${EPREFIX}/etc/asciidoc':" \
 		"${S}/asciidoc.py" || die
@@ -82,29 +85,28 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	local -x ASCIIDOC_PY=asciidoc.py
+	"${EPYTHON}" tests/test${PN}.py update || die
+	"${EPYTHON}" tests/test${PN}.py run || die
+}
+
 src_install() {
-	emake DESTDIR="${D}" install
-
-	python_fix_shebang "${ED}"/usr/bin/*.py
-
-	if use examples; then
-		# This is a symlink to a directory
-		rm examples/website/images || die
-
-		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-		dosym ../../../asciidoc/images /usr/share/doc/${PF}/examples
-	fi
+	default
+	python_fix_shebang "${ED%/}"/usr/bin/*.py
 
 	readme.gentoo_create_doc
 	dodoc BUGS CHANGELOG README docbook-xsl/asciidoc-docbook-xsl.txt \
-			dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt
-}
+		dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt
 
-src_test() {
-	local -x ASCIIDOC_PY=asciidoc.py
-	"${PYTHON}" tests/test${PN}.py update || die
-	"${PYTHON}" tests/test${PN}.py run || die
+	# Below results in some files being installed twice in different locations, but they are
+	# in the right place, uncompressed, and there won't be any broken links. See bug #483336
+	if use examples; then
+		# examples/website is full of relative symlinks,
+		# deref them for copying, which dodoc doesn't do
+		cp -rL examples/website "${ED%/}"/usr/share/doc/${PF}/examples || die
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }
 
 pkg_postinst() {
