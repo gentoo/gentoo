@@ -77,7 +77,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.51.0
 	nfs? ( net-fs/libnfs:= )
 	opengl? ( media-libs/glu )
-	!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
+	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
