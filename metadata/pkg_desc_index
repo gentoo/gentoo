@@ -533,7 +533,7 @@ app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.0: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.0 2.2.1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.6 0.8.0 0.9.0: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -1901,7 +1901,7 @@ app-misc/pet 0.2.3: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.5 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
-app-misc/pipeworks 0.4: a small utility that measures throughput between stdin and stdout
+app-misc/pipeworks 0.4 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r1 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r2 0.2.0-r4: A Password Safe compatible command-line password manager

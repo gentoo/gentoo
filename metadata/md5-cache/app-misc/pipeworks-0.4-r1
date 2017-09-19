@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A small utility that measures throughput between stdin and stdout
+EAPI=6
+HOMEPAGE=http://pipeworks.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/pipeworks/pipeworks-0.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=8d5759d6f64bc5dc3410fd185c44b9af
