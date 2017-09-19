@@ -8,7 +8,7 @@ inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.sv.gnu.org/emacs.git"
-	EGIT_BRANCH="emacs-25"
+	EGIT_BRANCH="emacs-26"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 else
@@ -27,14 +27,13 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="25"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+SLOT="26"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib mailutils motif pax_kernel png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
-	net-libs/liblockfile
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
@@ -43,8 +42,11 @@ RDEPEND="sys-libs/ncurses:0=
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
+	mailutils? ( net-mail/mailutils[clients] )
+	!mailutils? ( net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
+	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	X? (
 		x11-libs/libXmu
@@ -72,7 +74,7 @@ RDEPEND="sys-libs/ncurses:0=
 		gtk? (
 			xwidgets? (
 				x11-libs/gtk+:3
-				net-libs/webkit-gtk:3=
+				net-libs/webkit-gtk:4=
 			)
 			!xwidgets? (
 				gtk3? ( x11-libs/gtk+:3 )
@@ -96,9 +98,6 @@ DEPEND="${RDEPEND}
 if [[ ${PV##*.} = 9999 ]]; then
 	DEPEND="${DEPEND}
 	sys-apps/texinfo"
-
-	RDEPEND="${RDEPEND}
-	!=app-editors/emacs-${PV%.*}*"
 fi
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
@@ -123,7 +122,6 @@ src_prepare() {
 		|| die "unable to sed ctags.1"
 
 	AT_M4DIR=m4 eautoreconf
-	touch src/stamp-h.in || die
 }
 
 src_configure() {
@@ -231,18 +229,22 @@ src_configure() {
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--with-gameuser=":gamestat" \
 		--without-compress-install \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
+		--without-pop \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
+		$(use_with games gameuser ":gamestat") \
 		$(use_with gpm) \
 		$(use_with hesiod) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
+		$(use_with mailutils) \
 		$(use_with selinux) \
 		$(use_with ssl gnutls) \
+		$(use_with systemd libsystemd) \
+		$(use_with threads) \
 		$(use_with wide-int) \
 		$(use_with zlib) \
 		${myconf}
@@ -270,6 +272,7 @@ src_install () {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
 	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
+	rm -rf "${ED}/usr/$(get_libdir)"
 	rm -rf "${ED}"/var
 
 	# remove unused <version>/site-lisp dir

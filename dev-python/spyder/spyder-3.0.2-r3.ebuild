@@ -20,8 +20,7 @@ RDEPEND="
 	dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
 	dev-python/QtPy[${PYTHON_USEDEP},svg,webkit]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/rope[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/rope_py3k[${PYTHON_USEDEP}]' python3_4 python3_5)
+	>=dev-python/rope-0.10.7[${PYTHON_USEDEP}]
 	dev-python/jedi[${PYTHON_USEDEP}]
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
