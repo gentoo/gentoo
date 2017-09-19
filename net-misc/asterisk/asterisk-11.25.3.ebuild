@@ -9,17 +9,17 @@ MY_P="${PN}-${PV/_/-}"
 DESCRIPTION="Asterisk: A Modular Open Source PBX System"
 HOMEPAGE="http://www.asterisk.org/"
 SRC_URI="http://downloads.asterisk.org/pub/telephony/asterisk/releases/${MY_P}.tar.gz
-	 mirror://gentoo/gentoo-asterisk-patchset-4.04.tar.bz2"
+	 mirror://gentoo/gentoo-asterisk-patchset-3.17.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 IUSE_VOICEMAIL_STORAGE="
 	+voicemail_storage_file
 	voicemail_storage_odbc
 	voicemail_storage_imap
 "
-IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc xmpp ldap libedit libressl lua mysql newt +samples odbc osplookup oss pjproject portaudio postgres radius selinux snmp span speex srtp static syslog vorbis"
+IUSE="${IUSE_VOICEMAIL_STORAGE} alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc xmpp ldap libedit libressl lua mysql newt +samples odbc osplookup oss portaudio postgres radius selinux snmp span speex srtp static syslog vorbis"
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	^^ ( ${IUSE_VOICEMAIL_STORAGE/+/} )
@@ -31,7 +31,6 @@ PATCHES=( "${WORKDIR}/asterisk-patchset" )
 
 CDEPEND="dev-db/sqlite:3
 	dev-libs/popt
-	dev-libs/jansson
 	dev-libs/libxml2
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
@@ -66,7 +65,7 @@ CDEPEND="dev-db/sqlite:3
 	snmp? ( net-analyzer/net-snmp )
 	span? ( media-libs/spandsp )
 	speex? ( media-libs/speex )
-	srtp? ( net-libs/libsrtp:= )
+	srtp? ( net-libs/libsrtp:0 )
 	vorbis? ( media-libs/libvorbis )"
 
 DEPEND="${CDEPEND}
@@ -74,7 +73,6 @@ DEPEND="${CDEPEND}
 	!net-libs/pjsip
 	voicemail_storage_imap? ( virtual/imap-c-client )
 	virtual/pkgconfig
-	pjproject? ( net-libs/pjproject )
 "
 
 RDEPEND="${CDEPEND}
@@ -101,7 +99,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	AT_M4DIR="autoconf third-party third-party/pjproject" eautoreconf
+	AT_M4DIR=autoconf eautoreconf
 }
 
 src_configure() {
@@ -119,8 +117,7 @@ src_configure() {
 		$(use_with caps cap) \
 		$(use_with http gmime) \
 		$(use_with newt) \
-		$(use_with portaudio) \
-		$(use_with pjproject)
+		$(use_with portaudio)
 
 	# Blank out sounds/sounds.xml file to prevent
 	# asterisk from installing sounds files (we pull them in via
@@ -173,7 +170,7 @@ src_configure() {
 	use_select calendar		res_calendar res_calendar_{caldav,ews,exchange,icalendar}
 	use_select cluster		res_corosync
 	use_select curl			func_curl res_config_curl res_curl
-	use_select dahdi		app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
+	use_select dahdi		app_dahdibarge app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
 	use_select freetds		{cdr,cel}_tds
 	use_select gtalk		chan_motif
 	use_select http			res_http_post
@@ -297,8 +294,8 @@ pkg_postinst() {
 	elog "#gentoo-voip @ irc.freenode.net"
 	echo
 	echo
-	elog "Please read the Asterisk 13 upgrade document:"
-	elog "https://wiki.asterisk.org/wiki/display/AST/Upgrading+to+Asterisk+13"
+	elog "Please read the Asterisk 11 upgrade document:"
+	elog "https://wiki.asterisk.org/wiki/display/AST/Upgrading+to+Asterisk+11"
 }
 
 pkg_config() {
