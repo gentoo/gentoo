@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
+# contrib_xfeatures2d requires cuda to build
+# cuda is masked for pcc bug 365451
+media-libs/opencv contrib_xfeatures2d
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (22 Aug 2017)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
 app-i18n/fcitx-libpinyin dictmanager
