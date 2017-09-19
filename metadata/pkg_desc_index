@@ -1870,7 +1870,7 @@ app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and d
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
 app-misc/mc 4.8.15 4.8.18-r1 4.8.19 9999: GNU Midnight Commander is a text based file manager
-app-misc/media-player-info 22: A repository of data files describing media player capabilities
+app-misc/media-player-info 22 23: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45 0.45-r1: Self-employed-mode software for 3COM/USR message modems
@@ -12172,7 +12172,7 @@ kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from y
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
 kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
-kde-misc/kdeconnect 1.0.3: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 1.0.3 1.2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
@@ -18956,7 +18956,7 @@ x11-misc/sddm 0.14.0-r2 0.14.0-r4 0.15.0: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.4 1.8: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.4 1.8 1.9: The Shared MIME-info Database specification
 x11-misc/shutter 0.93.1-r3: Feature-rich screenshot program
 x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
