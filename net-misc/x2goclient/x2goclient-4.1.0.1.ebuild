@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,15 +40,8 @@ RDEPEND="${DEPEND}
 CLIENT_BUILD="${WORKDIR}"/${P}.client_build
 PLUGIN_BUILD="${WORKDIR}"/${P}.plugin_build
 
-PATCHES=( "${FILESDIR}"/${P}-r1-rcc_to_qrc.patch )
-
 src_prepare() {
 	default
-
-	local f
-	for f in res/*rcc; do
-		mv ${f} ${f/rcc/qrc} || die
-	done
 
 	if ! use ldap; then
 		sed -e "s/-lldap//" -i x2goclient.pro || die
@@ -89,7 +82,13 @@ src_compile() {
 src_install() {
 	dobin "${CLIENT_BUILD}"/${PN}
 
-	insinto /usr/share/pixmaps/x2goclient
+	local size
+	for size in 16 32 48 64 128 ; do
+		doicon -s ${size} res/img/icons/${size}x${size}/${PN}.png
+	done
+	newicon -s scalable res/img/icons/hildon/${PN}_hildon.svg ${PN}.svg
+
+	insinto /usr/share/pixmaps
 	doins res/img/icons/${PN}.xpm
 
 	domenu desktop/${PN}.desktop
