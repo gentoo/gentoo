@@ -10,13 +10,13 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 multilib
+inherit distutils-r1
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
 IUSE="build doc epydoc +ipc linguas_ru +native-extensions selinux xattr"
 
@@ -63,7 +63,7 @@ PDEPEND="
 
 REQUIRED_USE="epydoc? ( $(python_gen_useflags 'python2*') )"
 
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/portage"
+SRC_ARCHIVES="https://dev.gentoo.org/~zmedico/portage/archives"
 
 prefix_src_archives() {
 	local x y
@@ -129,11 +129,14 @@ python_prepare_all() {
 			-i cnf/make.globals || die "sed failed"
 
 		einfo "Adjusting repos.conf ..."
-		sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
-			-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
-			-e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
+		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
 			-i cnf/repos.conf || die "sed failed"
+		if prefix-guest ; then
+			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
+				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
+				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
+				-i cnf/repos.conf || die "sed failed"
+		fi
 
 		einfo "Adding FEATURES=force-prefix to make.globals ..."
 		echo -e '\nFEATURES="${FEATURES} force-prefix"' >> cnf/make.globals \
@@ -230,36 +233,6 @@ pkg_preinst() {
 	else
 		SYNC_DEPTH_UPGRADE=false
 	fi
-}
-
-get_ownership() {
-	case ${USERLAND} in
-		BSD)
-			stat -f '%Su:%Sg' "${1}"
-			;;
-		*)
-			stat -c '%U:%G' "${1}"
-			;;
-	esac
-}
-
-new_config_protect() {
-	# Generate a ._cfg file even if the target file
-	# does not exist, ensuring that the user will
-	# notice the config change.
-	local basename=${1##*/}
-	local dirname=${1%/*}
-	local i=0
-	while true ; do
-		local filename=$(
-			echo -n "${dirname}/._cfg"
-			printf "%04d" ${i}
-			echo -n "_${basename}"
-		)
-		[[ -e ${filename} ]] || break
-		(( i++ ))
-	done
-	echo "${filename}"
 }
 
 pkg_postinst() {
