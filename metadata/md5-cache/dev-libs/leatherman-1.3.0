@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/boost-1.54[nls] net-misc/curl >=sys-devel/gcc-4.8:* sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=A C++ toolkit
+EAPI=6
+HOMEPAGE=https://github.com/puppetlabs/leatherman
+IUSE=debug test
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=Apache-2.0
+RDEPEND=net-misc/curl
+SLOT=0
+SRC_URI=https://github.com/puppetlabs/leatherman/archive/1.3.0.tar.gz -> leatherman-1.3.0.tar.gz
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=7da3e0f291df949870b29ca2e878a738
