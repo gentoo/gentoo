@@ -5649,7 +5649,7 @@ dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armou
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.123.0-r1 1.124.0 1.125.0: Extract data from Macintosh BinHex files
-dev-perl/Convert-Binary-C 0.770.0 0.780.0: Binary Data Conversion using C Types
+dev-perl/Convert-Binary-C 0.770.0 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.80.0-r1 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
@@ -18338,7 +18338,7 @@ www-apps/metadot 6.1.6-r1 6.4.5.4-r1: Metadot is a CMS with file, page and link 
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
-www-apps/moodle 3.1.7 3.2.4 3.3.1: The Moodle Course Management System
+www-apps/moodle 3.1.8 3.2.5 3.3.2: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
