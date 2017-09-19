@@ -11772,7 +11772,7 @@ gnustep-apps/cdplayer 0.6.0: Small CD Audio Player for GNUstep
 gnustep-apps/cenon 4.0.2-r1: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
 gnustep-apps/cynthiune 1.0.0: Free software and romantic music player for GNUstep
 gnustep-apps/fisicalab 0.3.5: educational application to solve physics problems
-gnustep-apps/ftp 0.5: FTP client for GNUstep
+gnustep-apps/ftp 0.5 0.6: FTP client for GNUstep
 gnustep-apps/gemas 0.4: a simple code editor for GNUstep
 gnustep-apps/gmines 0.2: The well-known minesweeper game
 gnustep-apps/gnumail 1.2.2 1.2.3: A fully featured mail application for GNUstep
@@ -12656,7 +12656,7 @@ media-gfx/darktable 2.2.4 2.2.5 9999: A virtual lighttable and darkroom for phot
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.5.0 5.7.0: Digital photo management application
-media-gfx/displaycal 3.2.4.0 3.3.0.0 3.3.1.0 3.3.2.0 3.3.3.0: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.3.3.0 3.3.4.1: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -15359,7 +15359,7 @@ net-misc/openssh 7.3_p1-r7 7.3_p1-r8 7.4_p1 7.5_p1 7.5_p1-r1 7.5_p1-r2: Port of 
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 2.6.1 2.7.2 2.7.2-r1: Production quality, multilayer virtual switch
-net-misc/owncloud-client 2.3.1 2.3.2-r1: Synchronize files from ownCloud Server with your computer
+net-misc/owncloud-client 2.3.1 2.3.2-r1 2.3.3: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8 1.8.1: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
 net-misc/pcapfix 0.7: Repair and fix broken pcap files
@@ -15497,7 +15497,7 @@ net-misc/wicd 1.7.4-r2: A lightweight wired and wireless network manager for Lin
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1 4.1.0.0 4.1.0.0-r1: The X2Go Qt client
+net-misc/x2goclient 4.0.3.2 4.1.0.0-r1 4.1.0.1: The X2Go Qt client
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
