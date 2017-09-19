@@ -9750,7 +9750,7 @@ dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.4.11 2.4.13 2.5.0 2.6.0: A fast XML parser and Object marshaller
+dev-ruby/ox 2.5.0 2.6.0 2.7.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
