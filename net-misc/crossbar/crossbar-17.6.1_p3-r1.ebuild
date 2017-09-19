@@ -22,7 +22,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/setuptools-36.0.1[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.5.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.1.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/enum34-1.1.6[${PYTHON_USEDEP}]' python2_7)
 	>=dev-python/txaio-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
@@ -62,7 +62,7 @@ RDEPEND="
 DEPEND="
 	!dev-python/crossbar
 	>=dev-python/setuptools-36.0.1[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.5.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.1.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
