@@ -7613,7 +7613,7 @@ dev-python/dpkt 1.8-r1 1.8.8: Fast, simple packet creation / parsing
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7 3.7.1: Python library for communicating with HTTP 1.1 servers
-dev-python/dulwich 0.9.9 0.13.0 0.14.1 0.17.3: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.9.9 0.13.0 0.14.1 0.17.3 0.18.3: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2 2.3 2.4.1: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
