@@ -801,13 +801,6 @@ dev-libs/iniparser:4
 =dev-python/django-1.7*
 =dev-python/django-1.9*
 
-# Tony Vroon <chainsaw@gentoo.org> (5 Jan 2015)
-# Asterisk 13 is an LTS release but has not seen
-# sufficient releases to be considered ready for
-# production usage. You are welcome to have a go
-# but please be careful.
-=net-misc/asterisk-13*
-
 # Jeroen Roovers <jer@gentoo.org> (12 Dec 2014)
 # The 96 and 173 branches are no longer supported and remain vulnerable to
 # CVE-2014-8298 (bug #532342). You may be able to mitigate the vulnerability by
