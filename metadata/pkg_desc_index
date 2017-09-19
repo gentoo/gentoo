@@ -1010,7 +1010,7 @@ app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4 2.2.0-r5: A vi/ex clone
 app-editors/emacs 18.59-r11 23.4-r15 23.4-r16 24.5-r3 24.5-r4 25.1 25.2 25.2-r1 25.3: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 25.2.9999 26.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs-vcs 26.0.9999-r1 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
@@ -8791,7 +8791,7 @@ dev-python/sphinxcontrib-programoutput 0.8 0.11: Extension to sphinx to include 
 dev-python/sphinxcontrib-spelling 2.1.2 2.3.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.0.1: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
-dev-python/spyder 3.0.2-r2: Python IDE with matlab-like features
+dev-python/spyder 3.0.2-r3 3.2.3: Python IDE with matlab-like features
 dev-python/sqlalchemy 0.7.10 0.9.8 1.0.17 1.1.5 1.1.9 1.1.11 1.1.12 1.1.13 1.1.14: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.11.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
