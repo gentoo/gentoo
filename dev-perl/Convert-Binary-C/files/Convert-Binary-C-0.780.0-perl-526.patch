@@ -1,0 +1,181 @@
+From 26c2c60f11cf649f348a5af2c15f83525f02bf30 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Wed, 20 Sep 2017 08:00:50 +1200
+Subject: Fix tests for Perl 5.26
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=121039
+Bug: https://bugs.gentoo.org/615106
+Bug: https://github.com/mhx/Convert-Binary-C/pull/6
+---
+ bin/perltypes.PL        | 3 ++-
+ tests/206_parse.t       | 4 ++--
+ tests/209_sourcify.t    | 2 +-
+ tests/210_depend.t      | 2 +-
+ tests/211_clone.t       | 2 +-
+ tests/215_local.t       | 2 +-
+ tests/218_member.t      | 2 +-
+ tests/223_initializer.t | 2 +-
+ tests/230_compiler.t    | 2 +-
+ tests/601_speed.t       | 2 +-
+ tests/602_threads.t     | 2 +-
+ 11 files changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/bin/perltypes.PL b/bin/perltypes.PL
+index 09ca5d2..be63ffd 100755
+--- a/bin/perltypes.PL
++++ b/bin/perltypes.PL
+@@ -21,10 +21,11 @@ print OUT <<'!NO!SUBS!';
+ 
+ use Convert::Binary::C;
+ use Data::Dumper;
++use File::Spec::Functions qw(rel2abs);
+ use strict;
+ 
+ my $base;
+--d "$_/include" and $base = "$_/include" and last for qw( tests ../tests );
++-d "$_/include" and $base = rel2abs("$_/include") and last for qw( tests ../tests );
+ defined $base or die <<MSG;
+ Please run this script from either the 'examples' directory
+ or the distribution base directory.
+diff --git a/tests/206_parse.t b/tests/206_parse.t
+index 6e34d63..a4c403f 100644
+--- a/tests/206_parse.t
++++ b/tests/206_parse.t
+@@ -13,7 +13,7 @@ $^W = 1;
+ 
+ BEGIN { plan tests => 116 }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ #===================================================================
+ # create object (1 tests)
+@@ -140,7 +140,7 @@ ok($s1,329,"incorrect number of typedef identifiers");
+ # check if all sizes are correct (1 big test)
+ #===================================================================
+ 
+-do 'tests/include/sizeof.pl';
++do './tests/include/sizeof.pl';
+ $max_size = 0;
+ @fail = ();
+ @success = ();
+diff --git a/tests/209_sourcify.t b/tests/209_sourcify.t
+index 3fbdae6..0f34e83 100644
+--- a/tests/209_sourcify.t
++++ b/tests/209_sourcify.t
+@@ -13,7 +13,7 @@ $^W = 1;
+ 
+ BEGIN { plan tests => 98 }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ eval {
+   $orig  = new Convert::Binary::C %$CCCFG;
+diff --git a/tests/210_depend.t b/tests/210_depend.t
+index b46fdf7..e2705fd 100644
+--- a/tests/210_depend.t
++++ b/tests/210_depend.t
+@@ -13,7 +13,7 @@ $^W = 1;
+ 
+ BEGIN { plan tests => 483 }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ eval {
+   $c1 = new Convert::Binary::C Include => ['tests/include/files'];
+diff --git a/tests/211_clone.t b/tests/211_clone.t
+index 252554f..144de70 100644
+--- a/tests/211_clone.t
++++ b/tests/211_clone.t
+@@ -13,7 +13,7 @@ $^W = 1;
+ 
+ BEGIN { plan tests => 35 }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ eval {
+   $orig = new Convert::Binary::C %$CCCFG;
+diff --git a/tests/215_local.t b/tests/215_local.t
+index dabf7fc..2f2dffe 100644
+--- a/tests/215_local.t
++++ b/tests/215_local.t
+@@ -15,7 +15,7 @@ BEGIN {
+   plan tests => 10;
+ }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ eval {
+   $c = new Convert::Binary::C;
+diff --git a/tests/218_member.t b/tests/218_member.t
+index e212160..7966e44 100644
+--- a/tests/218_member.t
++++ b/tests/218_member.t
+@@ -15,7 +15,7 @@ BEGIN {
+   plan tests => 1907;
+ }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ %basic = ( char => 1, short => 1, int => 1,
+            long => 1, signed => 1, unsigned => 1,
+diff --git a/tests/223_initializer.t b/tests/223_initializer.t
+index a80d741..f1d6b26 100644
+--- a/tests/223_initializer.t
++++ b/tests/223_initializer.t
+@@ -13,7 +13,7 @@ $^W = 1;
+ 
+ BEGIN { plan tests => 27 }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ $c = eval { new Convert::Binary::C %$CCCFG };
+ ok($@,'',"failed to create Convert::Binary::C objects");
+diff --git a/tests/230_compiler.t b/tests/230_compiler.t
+index 1cc67f1..276275a 100644
+--- a/tests/230_compiler.t
++++ b/tests/230_compiler.t
+@@ -37,7 +37,7 @@ for my $cur (sort keys %cc) {
+   $bin =~ s/\s+//gms;
+   $bin = pack "H*", $bin;
+ 
+-  do $cc{$cur}{cfg};
++  do "./$cc{$cur}{cfg}";
+ 
+   my $c = new Convert::Binary::C %config;
+   $c->parse_file('tests/compiler/test.h');
+diff --git a/tests/601_speed.t b/tests/601_speed.t
+index 27f1fc9..d399e38 100644
+--- a/tests/601_speed.t
++++ b/tests/601_speed.t
+@@ -16,7 +16,7 @@ BEGIN {
+   plan tests => 11;
+ }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ eval { require Data::Dumper }; $Data_Dumper = $@;
+ eval { require IO::File };     $IO_File = $@;
+diff --git a/tests/602_threads.t b/tests/602_threads.t
+index 8e45b0d..968939b 100644
+--- a/tests/602_threads.t
++++ b/tests/602_threads.t
+@@ -17,7 +17,7 @@ BEGIN {
+   plan tests => NUM_THREADS
+ }
+ 
+-my $CCCFG = require 'tests/include/config.pl';
++my $CCCFG = require './tests/include/config.pl';
+ 
+ #===================================================================
+ # load appropriate threads module and start a couple of threads
+-- 
+2.14.1
+
