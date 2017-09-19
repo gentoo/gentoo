@@ -12,7 +12,7 @@ SRC_URI="http://downloads.asterisk.org/pub/telephony/asterisk/releases/${MY_P}.t
 	 mirror://gentoo/gentoo-asterisk-patchset-4.04.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE_VOICEMAIL_STORAGE="
 	+voicemail_storage_file
