@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl interface to the GOST R 34.11-94 digest algorithm"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ppc ~ppc64 x86"
 IUSE="test"
 
 RDEPEND="
