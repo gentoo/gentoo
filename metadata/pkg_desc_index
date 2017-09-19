@@ -10331,7 +10331,7 @@ dev-util/cgdb 0.6.6 0.6.7 0.6.8 0.7.0 9999: A curses front-end for GDB, the GNU 
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.17.8 2.17.9: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
-dev-util/clair 2.0.0: Vulnerability Static Analysis for Containers
+dev-util/clair 2.0.1: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.2: A complete toolset for C and C++ development
