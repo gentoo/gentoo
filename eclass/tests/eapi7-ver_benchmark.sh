@@ -100,7 +100,7 @@ get_times() {
 		sum=$(dc -e "${!vr} + + + + 3 k 5 / p")
 
 		vr="${v}[@]"
-		printf '%s %4.2f %4.2f %4.2f %4.2f %4.2f %4.2f\n' \
+		printf '%s %4.2f %4.2f %4.2f %4.2f %4.2f => %4.2f avg\n' \
 			"${v}" "${!vr}" "${sum}"
 	done
 }
