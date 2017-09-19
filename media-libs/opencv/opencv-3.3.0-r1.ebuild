@@ -10,6 +10,7 @@ DESCRIPTION="A collection of algorithms and sample code for various computer vis
 HOMEPAGE="http://opencv.org"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~amynka/snap/imgcodecs-${P}.tar.gz
 	contrib? ( https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
 		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz  ) ) "
 LICENSE="BSD"
@@ -124,7 +125,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-gles.patch"
 	"${FILESDIR}/${PN}-3.1.0-java-magic.patch"
 	"${FILESDIR}/${PN}-3.1.0-find-libraries-fix.patch"
-	"${FILESDIR}/${P}-imgcodecs-gcc.patch" # bug 627958 and https://github.com/opencv/opencv/pull/9376
+	"${WORKDIR}/${P}-imgcodecs-gcc.patch" # bug 627958 and https://github.com/opencv/opencv/pull/9376
 )
 
 pkg_pretend() {
