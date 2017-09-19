@@ -8,8 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 multilib-minimal pax-utils \
-	python-any-r1 toolchain-funcs versionator
+inherit cmake-utils eapi7-ver flag-o-matic git-r3 multilib-minimal \
+	pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
 	|| ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-5.1 )
-	kernel_Darwin? ( <sys-libs/libcxx-$(get_version_component_range 1-3).9999 )
+	kernel_Darwin? ( <sys-libs/libcxx-$(ver_cut 1-3).9999 )
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
