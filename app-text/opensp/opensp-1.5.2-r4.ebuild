@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-WANT_AUTOMAKE='1.13'
 inherit eutils flag-o-matic autotools
 
 MY_P=${P/opensp/OpenSP}
