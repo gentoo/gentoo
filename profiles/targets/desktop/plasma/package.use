@@ -31,9 +31,6 @@ media-gfx/exiv2 xmp
 # Required by kde-apps/okteta
 dev-qt/qtscript scripttools
 
-# Required by kde-apps/pykde4
-dev-python/PyQt4 script sql
-
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
 
