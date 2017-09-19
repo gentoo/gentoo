@@ -12,7 +12,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="emacs gtk ncurses qt4 qt5 caps gnome-keyring static"
+IUSE="emacs gtk ncurses qt5 caps gnome-keyring static"
 
 CDEPEND="
 	>=dev-libs/libgpg-error-1.17
@@ -20,9 +20,6 @@ CDEPEND="
 	>=dev-libs/libgcrypt-1.6.3
 	ncurses? ( sys-libs/ncurses:0= )
 	gtk? ( x11-libs/gtk+:2 )
-	qt4? (
-		>=dev-qt/qtgui-4.4.1:4
-	     )
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
@@ -44,12 +41,10 @@ RDEPEND="
 "
 
 REQUIRED_USE="
-	|| ( ncurses gtk qt4 qt5 )
+	|| ( ncurses gtk qt5 )
 	gtk? ( !static )
-	qt4? ( !static )
 	qt5? ( !static )
 	static? ( ncurses )
-	?? ( qt4 qt5 )
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
@@ -65,24 +60,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
 	use static && append-ldflags -static
 	[[ "$(gcc-major-version)" -ge 5 ]] && append-cxxflags -std=gnu++11
 
-	if use qt4; then
-		myconf+=(
-			--enable-pinentry-qt
-			--disable-pinentry-qt5
-		)
-		export MOC="$(qt4_get_bindir)"/moc
-		export QTLIB="$(qt4_get_libdir)"
-	elif use qt5; then
-		myconf+=( --enable-pinentry-qt )
-		export MOC="$(qt5_get_bindir)"/moc
-		export QTLIB="$(qt5_get_libdir)"
-	else
-		myconf+=( --disable-pinentry-qt )
-	fi
+	export QTLIB="$(qt5_get_libdir)"
 
 	econf \
 		--enable-pinentry-tty \
@@ -93,16 +74,15 @@ src_configure() {
 		$(use_with caps libcap) \
 		$(use_enable gnome-keyring libsecret) \
 		$(use_enable gnome-keyring pinentry-gnome3) \
-		"${myconf[@]}"
+		$(use_enable qt5 pinentry-qt) \
+		MOC="$(qt5_get_bindir)"/moc
 }
 
 src_install() {
 	default
 	rm -f "${ED}"/usr/bin/pinentry || die
 
-	if use qt4 || use qt5; then
-		dosym pinentry-qt /usr/bin/pinentry-qt4
-	fi
+	use qt5 && dosym pinentry-qt /usr/bin/pinentry-qt4
 }
 
 pkg_postinst() {
