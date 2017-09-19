@@ -4,10 +4,10 @@ DESCRIPTION=Disables bareword filehandles
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/bareword-filehandles/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ppc ~x86
+KEYWORDS=~amd64 hppa ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/B-Hooks-OP-Check dev-perl/Lexical-SealRequireHints virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/bareword-filehandles-0.005.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=91e53fe632c87a096f50fb3c96007b9e
+_md5_=355e6d959992708ec0c5fbf6be6700e6

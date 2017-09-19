@@ -4,10 +4,10 @@ DESCRIPTION=disables multidimensional array emulation
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/multidimensional/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ppc ~x86
+KEYWORDS=~amd64 hppa ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/B-Hooks-OP-Check-0.190.0 >=dev-perl/Lexical-SealRequireHints-0.5.0 virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/multidimensional-0.013.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=fc67d7aa1f33ec106a90c445189bb71e
+_md5_=5595df3cfe353dd7cd748b05938d3c40
