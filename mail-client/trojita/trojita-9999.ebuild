@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.kde.org/${PN}.git"
+EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
 inherit cmake-utils fdo-mime gnome2-utils virtualx
 [[ ${PV} == 9999 ]] && inherit git-r3
 
