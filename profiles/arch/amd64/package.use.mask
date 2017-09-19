@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
+# [cuda] is unmasked in this profiles.
+media-libs/opencv -contrib_xfeatures2d
+
 # Brian Evans <grknight@gentoo.org> (21 Jul 2017)
 # app-crypt/argon2 is keyworded on amd64
 dev-lang/php -argon2
