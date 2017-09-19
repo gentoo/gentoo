@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # emacs support disabled due to #99533 #335900
@@ -35,6 +35,11 @@ src_prepare() {
 	# https://github.com/telmich/gpm/issues/8
 	epatch "${WORKDIR}"/${P}-docs.patch
 	touch -r . doc/* || die
+
+	# bug #629774
+	epatch "${FILESDIR}"/${P}-glibc-2.26.patch
+
+	epatch_user
 
 	# fix ABI values
 	sed -i \
