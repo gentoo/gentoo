@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	cairo? ( png )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( python )
+	test? ( png python )
 "
 
 RDEPEND="
