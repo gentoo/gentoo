@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools qmake-utils multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="Simple passphrase entry dialogs which utilize the Assuan protocol"
-HOMEPAGE="http://gnupg.org/aegypten2/index.html"
+HOMEPAGE="https://gnupg.org/aegypten2/index.html"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
