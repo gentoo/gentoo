@@ -14675,7 +14675,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
 net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21 2.23: A full-featured file system for online data storage
-net-fs/samba 4.2.14 4.5.10-r1 4.5.13 4.6.7 4.7.0_rc5: Samba Suite Version 4
+net-fs/samba 4.2.14 4.5.10-r1 4.5.13 4.6.7 4.7.0_rc6: Samba Suite Version 4
 net-fs/smbnetfs 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
@@ -17114,7 +17114,7 @@ sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
-sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.1 1.0.2: Hard disk drive health inspection tool
+sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.2 1.1.0: Hard disk drive health inspection tool
 sys-apps/guix 0.12.0-r3 0.13.0: GNU package manager (nix sibling)
 sys-apps/habitat 0.28.0: Application automation framework
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
@@ -17408,7 +17408,7 @@ sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0 2.5.3: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.11 3.15.3 3.16.1: Userland client/server for kernel network block device
+sys-block/nbd 3.11 3.15.3 3.16.1 3.16.2: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873-r3 2.0.874 2.0.874-r1: A performant, transport independent, multi-platform implementation of RFC3720
@@ -17876,7 +17876,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.1.2: Library for managing partitions
-sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.1: An LDAP-like embedded database
+sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.2: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
@@ -17943,7 +17943,7 @@ sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less
 sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.9 2.1.10: Samba talloc library
 sys-libs/tapi 1.30: Text-based Application Programming Interface
-sys-libs/tdb 1.3.8 1.3.13 1.3.14: A simple database API
+sys-libs/tdb 1.3.8 1.3.13 1.3.14 1.3.15: A simple database API
 sys-libs/tevent 0.9.28 0.9.31-r1 0.9.32 0.9.33: Samba tevent library
 sys-libs/timezone-data 2016h 2016i 2016j 2017a 2017b: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
