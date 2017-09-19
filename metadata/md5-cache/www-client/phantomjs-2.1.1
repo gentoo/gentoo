@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-libs/icu:= fontconfig? ( media-libs/fontconfig ) !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) truetype? ( media-libs/freetype ) dev-db/sqlite:3 net-misc/openssh[-bindist] app-arch/unzip dev-lang/ruby virtual/pkgconfig
+DESCRIPTION=A headless WebKit scriptable with a JavaScript API
+EAPI=6
+HOMEPAGE=http://phantomjs.org/
+IUSE=examples fontconfig libressl truetype
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/icu:= fontconfig? ( media-libs/fontconfig ) !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) truetype? ( media-libs/freetype ) dev-db/sqlite:3
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz -> phantomjs-2.1.1.tar.gz https://download.qt.io/archive/qt/5.5/5.5.1/submodules/qtbase-opensource-src-5.5.1.tar.xz https://download.qt.io/community_releases/5.7/5.7.1/qtwebkit-opensource-src-5.7.1.tar.xz mirror://gentoo/gentoo-phantomjs-patchset-0.01.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=2e54a9da186893e1cb87c3d11cbd6774
