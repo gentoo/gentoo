@@ -73,9 +73,8 @@ esac
 # @INTERNAL
 # @DESCRIPTION:
 # Parse the range string <range>, setting 'start' and 'end' variables
-# to the appropriate bounds.  <min> and <max> specify the appropriate
-# lower and upper bound for the range; the user-specified value is
-# truncated to this range.
+# to the appropriate bounds.  <max> specifies the appropriate upper
+# bound for the range; the user-specified value is truncated to this.
 _ver_parse_range() {
 	local range=${1}
 	local max=${2}
