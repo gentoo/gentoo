@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
+# This package was a stopgap to bump dev-python/spyder to 3.*
+# Now >=dev-python/rope-0.10.7 supports python3, use it instead
+# Masked for removal in 30 days.
+dev-python/rope_py3k
+
 # Kent Fredric <kentnl@gentoo.org> (19 Sep 2017)
 # Dead upstream, broken on Perl 5.26. Bugs #631302, #623116
 # Masked for removal in 30 days.
