@@ -21,7 +21,7 @@ RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.10[python?,${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.33[python(+)?,${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.14[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.15[python?,${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ldap? ( net-nds/openldap )
 "
@@ -41,7 +41,6 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/pyldb.h )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.31-optional_packages.patch
-	"${FILESDIR}"/${PN}-1.1.31-talloc-disable-python.patch
 	"${FILESDIR}"/${PN}-1.1.31-fix_PKGCONFIGDIR-when-python-disabled.patch
 )
 
