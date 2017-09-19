@@ -8,8 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
-	python-single-r1 toolchain-funcs pax-utils versionator
+inherit cmake-utils eapi7-ver flag-o-matic git-r3 llvm \
+	multilib-minimal pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -104,7 +104,7 @@ src_unpack() {
 
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
+	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 
 	local mycmakeargs=(
 		# ensure that the correct llvm-config is used
@@ -209,8 +209,8 @@ src_install() {
 	# Apply CHOST and version suffix to clang tools
 	# note: we use two version components here (vs 3 in runtime path)
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-2 "${llvm_version}")
-	local clang_full_version=$(get_version_component_range 1-3 "${llvm_version}")
+	local clang_version=$(ver_cut 1-2 "${llvm_version}")
+	local clang_full_version=$(ver_cut 1-3 "${llvm_version}")
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
