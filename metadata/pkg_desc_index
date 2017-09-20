@@ -8132,7 +8132,7 @@ dev-python/paho-mqtt 1.1 1.2.3: A client class with support for both MQTT v3.1 a
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 0.20.1 0.20.3 9999: Powerful data structures for data analysis and statistics
 dev-python/pandocfilters 1.2.4 1.4.1 1.4.2-r1: Utilities for writing pandoc filters in python
-dev-python/paramiko 1.16.0 2.1.2 2.2.1 9999: SSH2 protocol library
+dev-python/paramiko 1.16.0 2.1.2 2.2.1 2.3.0 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4 1.6.6: parse() is the opposite of format()
 dev-python/parse-type 0.3.4 0.3.4-r1: Simplifies to build parse types based on the parse module
@@ -8251,7 +8251,7 @@ dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14 0.3.15: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.5.0 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0 1.15.1 1.15.2: Python bindings for the cairo library
+dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0 1.15.1 1.15.2 1.15.3: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.5.12-r1 0.6.1: Python wrapping of the Cap'n Proto library
