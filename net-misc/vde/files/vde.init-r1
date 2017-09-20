@@ -19,6 +19,8 @@ start_pre() {
 start() {
 	VDE_SOCKET="${VDE_SOCKET:-/run/${RC_SVCNAME}.ctl}"
 
+	ebegin "Starting ${SVC_NAME}"
+
 	start-stop-daemon --start --exec ${command} -- \
 		--pidfile=${pidfile} \
 		--tap=${VDE_TAP} \
