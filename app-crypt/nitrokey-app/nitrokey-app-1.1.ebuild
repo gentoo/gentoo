@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils udev
+inherit cmake-utils gnome2-utils udev
 
 DESCRIPTION="Cross platform personalization tool for the Nitrokey"
 HOMEPAGE="https://github.com/Nitrokey/nitrokey-app"
@@ -48,4 +48,9 @@ src_prepare() {
 
 pkg_postinst() {
 	udev_reload
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
