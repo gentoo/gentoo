@@ -1,0 +1,62 @@
+This is a manual backport of the following commit which fixes the
+original bug as well as https://bugs.exim.org/show_bug.cgi?id=2166:
+
+From e69636bc9ddf3617be688b07941d7d659d50eaa7 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sat, 3 Jun 2017 13:39:18 +0100
+Subject: [PATCH 1/1] Fix crash in transport, on second smtp-connect fail for a
+ list of target hosts
+
+Reported as the sequence:
+  1MX: 554 on connect (banner)
+  2MX: TCP conn timeout
+
+diff --git a/src/src/transports/smtp.c b/src/src/transports/smtp.c
+index 454c0f7..dc9e03b 100644
+--- a/src/src/transports/smtp.c
++++ b/src/src/transports/smtp.c
+@@ -2177,25 +2177,34 @@ return OK;
+ 
+   /* The failure happened while setting up the call; see if the failure was
+   a 5xx response (this will either be on connection, or following HELO - a 5xx
+-  after EHLO causes it to try HELO). If so, fail all addresses, as this host is
+-  never going to accept them. For other errors during setting up (timeouts or
+-  whatever), defer all addresses, and yield DEFER, so that the host is not
+-  tried again for a while. */
++  after EHLO causes it to try HELO). If so, and there are no more hosts to try,
++  fail all addresses, as this host is never going to accept them. For other
++  errors during setting up (timeouts or whatever), defer all addresses, and
++  yield DEFER, so that the host is not tried again for a while.
++
++  XXX This peeking for another host feels like a layering violation. We want
++  to note the host as unusable, but down here we shouldn't know if this was
++  the last host to try for the addr(list).  Perhaps the upper layer should be
++  the one to do set_errno() ?  The problem is that currently the addr is where
++  errno etc. are stashed, but until we run out of hosts to try the errors are
++  host-specific.  Maybe we should enhance the host_item definition? */
+ 
+ FAILED:
+   sx->ok = FALSE;                /* For when reached by GOTO */
+-
+-  yield = code == '5'
++  set_errno(sx->addrlist, errno, message,
++	    sx->host->next
++	    ? DEFER
++	    : code == '5'
+ #ifdef SUPPORT_I18N
+-	  || errno == ERRNO_UTF8_FWD
++			|| errno == ERRNO_UTF8_FWD
+ #endif
+-    ? FAIL : DEFER;
+-
+-  set_errno(sx->addrlist, errno, message, yield, pass_message, sx->host
++	    ? FAIL : DEFER,
++	    pass_message, sx->host
+ #ifdef EXPERIMENTAL_DSN_INFO
+ 	    , sx->smtp_greeting, sx->helo_response
+ #endif
+ 	    );
++  yield = DEFER;
+   }
+ 
+ 
