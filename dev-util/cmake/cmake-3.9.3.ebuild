@@ -5,7 +5,7 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common toolchain-funcs eutils versionator cmake-utils virtualx flag-o-matic
+inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils cmake-utils
 
 MY_P="${P/_/-}"
 
@@ -16,7 +16,7 @@ SRC_URI="https://cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar
 LICENSE="CMake"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc emacs server system-jsoncpp ncurses qt5"
 
 RDEPEND="
@@ -62,7 +62,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
 
 	# upstream fixes (can usually be removed with a version bump)
-	"${FILESDIR}"/${PN}-3.9.1-boost-1.65.0.patch
 )
 
 cmake_src_bootstrap() {
@@ -198,8 +197,18 @@ src_install() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
+	if use qt5; then
+		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
+	if use qt5; then
+		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
 }
