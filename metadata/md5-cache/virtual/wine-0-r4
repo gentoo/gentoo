@@ -1,8 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for Wine that supports multiple variants and slotting
-EAPI=6
-IUSE=d3d9 staging
-KEYWORDS=~amd64 ~x86
-RDEPEND=staging? ( || ( app-emulation/wine-staging[staging] app-emulation/wine-any[staging] ) ) d3d9? ( || ( app-emulation/wine-d3d9[d3d9] app-emulation/wine-any[d3d9] ) ) || ( app-emulation/wine-vanilla app-emulation/wine-staging app-emulation/wine-d3d9 app-emulation/wine-any ) !app-emulation/wine:0
-SLOT=0
-_md5_=eff9e3e87bb61fcfe1ce89ce9cf2e9f2

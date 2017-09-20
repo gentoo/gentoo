@@ -15481,7 +15481,7 @@ net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system
 net-misc/utelnetd 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
-net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2 2.3.2-r3: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
+net-misc/vde 2.3.2-r4: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
 net-misc/vinagre 3.22.0-r1 3.22.0-r2: VNC client for the GNOME desktop
 net-misc/vino 3.22.0: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
@@ -18232,7 +18232,7 @@ virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
-virtual/wine 0-r4: Virtual for Wine that supports multiple variants and slotting
+virtual/wine 0-r5: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
