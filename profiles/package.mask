@@ -34,6 +34,13 @@
 # Masked for removal in 30 days.
 media-libs/herqq
 
+# Patrice Clement <monsieurp@gentoo.org> (20 Sep 2017)
+# Upstream has been dead for years.
+# Masked for removal in 30 days.
+dev-java/db4o-jdk5
+dev-java/db4o-jdk11
+dev-java/db4o-jdk12
+
 # Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
 # This package was a stopgap to bump dev-python/spyder to 3.*
 # Now >=dev-python/rope-0.10.7 supports python3, use it instead
