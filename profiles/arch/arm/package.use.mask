@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (20 Sep 2017)
+# media-sound/mac's executable segfaults when compressing all but the
+# smallest wav files.
+media-sound/xmms2 mac
+
 # Gilles Dartiguelongue <eva@gentoo.org> (19 Aug 2017)
 # sys-fs/udftools is not keyworded, bug #628310
 sys-block/gparted udf
