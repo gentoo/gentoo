@@ -139,6 +139,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
 	tc_version_is_at_least 3 && IUSE+=" doc gcj awt hardened multilib objc"
+	tc_version_is_at_least 3.3 && IUSE+=" pgo"
 	tc_version_is_at_least 4.0 && IUSE+=" objc-gc"
 	tc_version_is_between 4.0 4.9 && IUSE+=" mudflap"
 	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
@@ -1569,7 +1570,11 @@ gcc_do_make() {
 		# resulting binaries natively ^^;
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
 	else
-		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
+		if tc_version_is_at_least 3.3 && use pgo; then
+			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-profiledbootstrap}
+		else
+			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
+		fi
 	fi
 
 	# Older versions of GCC could not do profiledbootstrap in parallel due to
