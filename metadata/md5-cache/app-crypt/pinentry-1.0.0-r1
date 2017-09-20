@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=app-eselect/eselect-pinentry >=dev-libs/libassuan-2.1 >=dev-libs/libgcrypt-1.6.3 >=dev-libs/libgpg-error-1.17 caps? ( sys-libs/libcap ) gnome-keyring? ( app-crypt/libsecret ) gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) static? ( >=sys-libs/ncurses-5.7-r5:0=[static-libs,-gpm] ) sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Simple passphrase entry dialogs which utilize the Assuan protocol
+EAPI=6
+HOMEPAGE=https://gnupg.org/aegypten2/index.html
+IUSE=caps emacs gnome-keyring gtk ncurses qt5 static
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=app-eselect/eselect-pinentry >=dev-libs/libassuan-2.1 >=dev-libs/libgcrypt-1.6.3 >=dev-libs/libgpg-error-1.17 caps? ( sys-libs/libcap ) gnome-keyring? ( app-crypt/libsecret ) gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) static? ( >=sys-libs/ncurses-5.7-r5:0=[static-libs,-gpm] ) gnome-keyring? ( app-crypt/gcr )
+REQUIRED_USE=|| ( ncurses gtk qt5 ) gtk? ( !static ) qt5? ( !static ) static? ( ncurses )
+SLOT=0
+SRC_URI=mirror://gnupg/pinentry/pinentry-1.0.0.tar.bz2
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=940ad38072f0f4c6bd4edc75456b7590
