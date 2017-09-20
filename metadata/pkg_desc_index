@@ -15331,7 +15331,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manages network configurations
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.4.4-r1 1.8.0 1.8.2: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.4.4-r1 1.8.0 1.8.2 1.8.4: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-fortisslvpn 1.2.2 1.2.6: NetworkManager Fortinet SSLVPN compatible plugin
 net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4 1.2.4-r1: NetworkManager OpenConnect plugin
