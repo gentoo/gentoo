@@ -44,7 +44,6 @@ DEPEND="
 	wayland? ( $(add_frameworks_dep kwayland) )
 "
 RDEPEND="${DEPEND}
-	$(add_plasma_dep plasma-workspace)
 	app? ( $(add_frameworks_dep kirigami '' 2.2.0) )
 	wayland? ( $(add_plasma_dep kwin) )
 	!kde-misc/kdeconnect:4
