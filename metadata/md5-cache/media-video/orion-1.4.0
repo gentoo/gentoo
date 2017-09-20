@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure install prepare
 DEPEND=dev-qt/qtquickcontrols:5 dev-qt/qtsvg:5 dev-qt/qtwebengine:5 mpv? ( media-video/mpv[libmpv] ) !mpv? ( dev-qt/qtmultimedia:5 )
 DESCRIPTION=Cross-platform Twitch client
 EAPI=6
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-qt/qtquickcontrols:5 dev-qt/qtsvg:5 dev-qt/qtwebengine:5 mpv? ( media-video/mpv[libmpv] ) !mpv? ( dev-qt/qtmultimedia:5 ) !mpv? ( media-plugins/gst-plugins-hls )
 SLOT=0
 SRC_URI=https://github.com/alamminsalo/orion/archive/1.4.0.tar.gz -> orion-1.4.0.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=f001a83fe47aa9237d06a9a656f5f61f
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=3bc1643cc70cf82c1b2f8ce0f5d78d2f
