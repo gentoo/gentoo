@@ -7,12 +7,11 @@ EGO_PN="gopkg.in/Netflix-Skunkworks/go-jira.v1"
 
 inherit golang-build golang-vcs-snapshot
 
-ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="A simple JIRA commandline client in Go"
 HOMEPAGE="https://github.com/Netflix-Skunkworks/go-jira"
-SRC_URI="${ARCHIVE_URI}
+SRC_URI="https://github.com/Netflix-Skunkworks/go-jira/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 LICENSE="Apache-2.0"
 SLOT="0"
