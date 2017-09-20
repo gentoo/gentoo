@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (21 Sep 2017)
+# Requires dead Qt 4. Dead upstream.
+# Masked for removal in 30 days.
+media-libs/herqq
+
 # Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
 # This package was a stopgap to bump dev-python/spyder to 3.*
 # Now >=dev-python/rope-0.10.7 supports python3, use it instead
