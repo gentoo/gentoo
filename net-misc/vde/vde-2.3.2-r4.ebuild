@@ -31,6 +31,8 @@ RDEPEND="${COMMON_DEPS}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${P}-format-security.patch" )
+
 pkg_setup() {
 	# default group already used in kqemu
 	enewgroup qemu
