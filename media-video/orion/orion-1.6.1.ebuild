@@ -13,11 +13,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+mpv"
 
-DEPEND="dev-qt/qtquickcontrols2:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwebengine:5
+DEPEND=">=dev-qt/qtquickcontrols2-5.8:5
+	>=dev-qt/qtsvg-5.8:5
+	>=dev-qt/qtwebengine-5.8:5
 	mpv? ( media-video/mpv[libmpv] )
-	!mpv? ( dev-qt/qtmultimedia:5 )"
+	!mpv? ( >=dev-qt/qtmultimedia-5.8:5 )"
 RDEPEND="${DEPEND}
 	!mpv? ( media-plugins/gst-plugins-hls )"
 
