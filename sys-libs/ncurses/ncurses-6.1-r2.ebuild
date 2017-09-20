@@ -132,6 +132,9 @@ do_configure() {
 		# The configure script uses ldd to parse the linked output which
 		# is flaky for cross-compiling/multilib/ldd versions/etc...
 		$(use_with gpm gpm libgpm.so.1)
+		# Required for building  on mingw-w64, and possibly other windows
+		# platforms, bug #639670
+		$(use_enable kernel_Winnt term-driver)
 		--disable-termcap
 		--enable-symlinks
 		--with-rcs-ids
@@ -238,7 +241,10 @@ multilib_src_install() {
 		# Provide a link for -lcurses.
 		ln -sf libncurses$(get_libname) "${ED}"/usr/$(get_libdir)/libcurses$(get_libname) || die
 	fi
-	use static-libs || find "${ED}"/usr/ -name '*.a' -delete
+	# don't delete '*.dll.a', needed for linking #631468
+	if ! use static-libs; then
+		find "${ED}"/usr/ -name '*.a' ! -name '*.dll.a' -delete || die
+	fi
 
 	# Build fails to create this ...
 	dosym ../share/terminfo /usr/$(get_libdir)/terminfo
