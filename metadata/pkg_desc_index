@@ -7358,7 +7358,7 @@ dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 16.3.0-r1 17.2.0: Attributes without boilerplate
 dev-python/audioread 1.0.1-r1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.800: Authentication Results Header Module
-dev-python/autobahn 0.9.4.2 0.16.0-r1 17.5.1-r2 17.7.1: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 0.9.4.2 0.16.0-r1 17.5.1-r2 17.7.1 17.9.1 17.9.2: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0 0.6.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.3.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -8902,10 +8902,11 @@ dev-python/twisted-words 13.2.0 15.2.1: Twisted Words contains Instant Messaging
 dev-python/twitter 1.17.1: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2 0.7.0: Python library for communicating with AMQP peers using Twisted
-dev-python/txaio 2.3.1 2.5.1-r1 2.7.1 2.8.1: Compatibility API between asyncio/Twisted/Trollius
+dev-python/txaio 2.3.1 2.5.1-r1 2.7.1 2.8.1 2.8.2: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5 0.9.5-r1: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
+dev-python/txtorcon 0.19.3: Twisted-based Tor controller client, with state-tracking and config abstractions
 dev-python/typed-ast 1.1.0: A fork of Python 2 and 3 ast modules with type comment support
 dev-python/typing 3.5.2.2 3.5.3.0 3.6.2: Type Hints for Python
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
@@ -10336,7 +10337,7 @@ dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantic
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.2: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.7.2 3.8.2 3.9.1-r1 3.9.2: Cross platform Make
+dev-util/cmake 3.7.2 3.8.2 3.9.2 3.9.3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
@@ -14675,7 +14676,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
 net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21 2.23: A full-featured file system for online data storage
-net-fs/samba 4.2.14 4.5.10-r1 4.5.13 4.6.7 4.7.0_rc6: Samba Suite Version 4
+net-fs/samba 4.2.14 4.5.10-r1 4.5.13 4.5.14 4.6.7 4.6.8 4.7.0_rc6: Samba Suite Version 4
 net-fs/smbnetfs 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
@@ -15189,7 +15190,7 @@ net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.33-r1 1.34 1.35: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/crossbar 17.6.1_p3-r1: Crossbar.io - The Unified Application Router for the twisted framework
+net-misc/crossbar 17.6.1_p3-r1 17.8.1 17.9.1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0: lightweight file synchronizer utility
 net-misc/curl 7.55.1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
