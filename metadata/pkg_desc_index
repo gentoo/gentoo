@@ -6634,7 +6634,7 @@ dev-perl/Sub-Uplevel 0.250.0 0.260.0 0.280.0: Apparently run a function in a hig
 dev-perl/Switch 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
 dev-perl/Symbol-Util 0.20.300-r1: Additional utils for Perl symbols manipulation
-dev-perl/Syntax-Highlight-Engine-Simple 0.90.0: Simple Syntax Highlight Engine
+dev-perl/Syntax-Highlight-Engine-Simple 0.90.0 0.100.0: Simple Syntax Highlight Engine
 dev-perl/Syntax-Highlight-Engine-Simple-Perl 0.20.0: Experimental Perl code highlighting class
 dev-perl/Syntax-Keyword-Junction 0.3.8: Perl6 style Junction operators in Perl5
 dev-perl/Sys-CPU 0.610.0: Access CPU info. number, etc on Win and UNIX
