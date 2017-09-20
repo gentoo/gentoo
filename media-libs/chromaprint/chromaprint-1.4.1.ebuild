@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ inherit cmake-multilib
 GTEST_VERSION="1.8.0"
 
 DESCRIPTION="A client-side library that implements a custom algorithm for extracting fingerprints"
-HOMEPAGE="http://acoustid.org/chromaprint"
-SRC_URI="https://bitbucket.org/acoustid/${PN}/downloads/${P}.tar.gz
+HOMEPAGE="https://acoustid.org/chromaprint"
+SRC_URI="https://bitbucket.org/acoustid/chromaprint/downloads/${P}.tar.gz
 	test? (	https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
 "
 

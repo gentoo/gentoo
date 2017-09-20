@@ -8,8 +8,8 @@ PYTHON_REQ_USE="ncurses(+),threads(+)"
 inherit distutils-r1 multilib
 
 DESCRIPTION="The ncurses client for canto-daemon"
-HOMEPAGE="http://codezen.org/canto-ng/"
-SRC_URI="http://codezen.org/static/${P}.tar.gz"
+HOMEPAGE="https://codezen.org/canto-ng/"
+SRC_URI="https://codezen.org/static/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

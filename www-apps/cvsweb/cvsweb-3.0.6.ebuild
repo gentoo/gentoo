@@ -1,11 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit webapp
 
 DESCRIPTION="WWW interface to a CVS tree"
-HOMEPAGE="http://www.freebsd.org/projects/cvsweb.html"
-SRC_URI="ftp://ftp.freebsd.org/pub/FreeBSD/ports/local-distfiles/scop/${P}.tar.gz"
+HOMEPAGE="https://www.freebsd.org/projects/cvsweb.html"
+SRC_URI="https://people.freebsd.org/~scop/cvsweb/${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc sparc x86"

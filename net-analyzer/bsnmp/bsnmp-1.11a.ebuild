@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils flag-o-matic
 
 DESCRIPTION="Mini-SNMP Daemon and Library"
-HOMEPAGE="http://people.freebsd.org/~harti/"
-SRC_URI="http://people.freebsd.org/~harti/bsnmp/${P}.tar.gz"
+HOMEPAGE="https://people.freebsd.org/~harti/bsnmp/index.html"
+SRC_URI="https://people.freebsd.org/~harti/bsnmp/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

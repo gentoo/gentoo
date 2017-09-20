@@ -6,8 +6,8 @@ EAPI=5
 inherit prefix
 
 DESCRIPTION="Colorizes output of diff"
-HOMEPAGE="http://www.colordiff.org/"
-SRC_URI="http://www.colordiff.org/${P}.tar.gz"
+HOMEPAGE="https://www.colordiff.org/"
+SRC_URI="https://www.colordiff.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,14 +11,14 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Common Lisp implementation, derived from Digitool's MCL product"
 HOMEPAGE="https://ccl.clozure.com"
 SRC_URI="
-	x86?   ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
-	amd64? ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
-	arm? ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-linuxarm.tar.gz )
-	x86-macos? ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-darwinx86.tar.gz )
-	x64-macos? ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-darwinx86.tar.gz )
-	x86-solaris? ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-solarisx86.tar.gz )
-	x64-solaris? ( ${HOMEPAGE}/ftp/pub/release/${PV}/${MY_P}-solarisx86.tar.gz )
-	doc? ( ${HOMEPAGE}/docs/ccl.html )"
+	x86?   ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
+	amd64? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
+	arm? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-linuxarm.tar.gz )
+	x86-macos? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-darwinx86.tar.gz )
+	x64-macos? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-darwinx86.tar.gz )
+	x86-solaris? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-solarisx86.tar.gz )
+	x64-solaris? ( https://ccl.clozure.com/ftp/pub/release/${PV}/${MY_P}-solarisx86.tar.gz )
+	doc? ( https://ccl.clozure.com/docs/ccl.html )"
 
 LICENSE="LLGPL-2.1"
 SLOT="0"

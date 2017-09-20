@@ -4,7 +4,7 @@
 EAPI=4
 
 DESCRIPTION="FreeBSD Whois Client"
-HOMEPAGE="http://www.freebsd.org/"
+HOMEPAGE="https://www.freebsd.org/"
 SRC_URI="http://utenti.gufi.org/~drizzt/codes/${P}.tar.gz"
 
 LICENSE="BSD"

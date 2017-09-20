@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,8 +9,8 @@ MY_PN="${PN/-util}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library providing APIs for applications written for Google Android"
-HOMEPAGE="http://source.android.com/"
-SRC_URI="http://central.maven.org/maven2/com/google/${MY_PN}/${MY_PN}/${PV}/${MY_P}-sources.jar"
+HOMEPAGE="https://source.android.com/"
+SRC_URI="https://repo1.maven.org/maven2/com/google/${MY_PN}/${MY_PN}/${PV}/${MY_P}-sources.jar"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

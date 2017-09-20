@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="RPC/Serialization system with capabilities support"
-HOMEPAGE="http://capnproto.org"
+HOMEPAGE="https://capnproto.org"
 SRC_URI="https://github.com/sandstorm-io/capnproto/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

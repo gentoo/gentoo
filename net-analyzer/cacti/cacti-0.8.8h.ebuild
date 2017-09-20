@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ inherit eutils webapp
 MY_P=${P/_p*/}
 
 DESCRIPTION="Cacti is a complete frontend to rrdtool"
-HOMEPAGE="http://www.cacti.net/"
-SRC_URI="http://www.cacti.net/downloads/${MY_P}.tar.gz"
+HOMEPAGE="https://www.cacti.net/"
+SRC_URI="https://www.cacti.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86"

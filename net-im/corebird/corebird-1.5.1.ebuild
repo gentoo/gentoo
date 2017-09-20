@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION=0.34
 inherit autotools gnome2 vala virtualx
 
 DESCRIPTION="Native GTK+3 Twitter client"
-HOMEPAGE="http://corebird.baedert.org/"
+HOMEPAGE="https://corebird.baedert.org/"
 SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

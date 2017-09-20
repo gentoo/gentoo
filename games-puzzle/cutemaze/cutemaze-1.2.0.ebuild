@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit gnome2-utils qmake-utils
 
 DESCRIPTION="A simple, top-down game in which mazes are randomly generated"
 HOMEPAGE="https://gottcode.org/cutemaze/"
-SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
+SRC_URI="https://gottcode.org/cutemaze/${P}-src.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

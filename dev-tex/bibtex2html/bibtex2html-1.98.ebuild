@@ -8,8 +8,8 @@ inherit eutils
 IUSE="doc +ocamlopt"
 
 DESCRIPTION="A bibtex to HTML converter"
-SRC_URI="http://www.lri.fr/~filliatr/ftp/bibtex2html/${P}.tar.gz"
-HOMEPAGE="http://www.lri.fr/~filliatr/bibtex2html/"
+SRC_URI="https://www.lri.fr/~filliatr/ftp/bibtex2html/${P}.tar.gz"
+HOMEPAGE="https://www.lri.fr/~filliatr/bibtex2html/"
 
 SLOT="0"
 

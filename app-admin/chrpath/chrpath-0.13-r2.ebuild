@@ -6,9 +6,9 @@ EAPI=6
 inherit eutils autotools
 
 DESCRIPTION="chrpath can modify the rpath and runpath of ELF executables"
-HOMEPAGE="http://directory.fsf.org/project/chrpath/"
+HOMEPAGE="https://chrpath.alioth.debian.org/"
 # original upstream no longer exists (ftp://ftp.hungry.com/pub/hungry)
-SRC_URI="http://ftp.tux.org/pub/X-Windows/ftp.hungry.com/chrpath/${P}.tar.gz"
+SRC_URI="https://alioth.debian.org/frs/download.php/latestfile/813/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

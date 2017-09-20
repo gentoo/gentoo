@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="WWW interface to a CVS tree"
-HOMEPAGE="http://www.freebsd.org/projects/cvsweb.html"
+HOMEPAGE="https://www.freebsd.org/projects/cvsweb.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"

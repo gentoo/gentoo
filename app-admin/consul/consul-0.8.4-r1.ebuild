@@ -8,7 +8,7 @@ inherit golang-vcs-snapshot systemd user
 KEYWORDS="~amd64"
 EGO_PN="github.com/hashicorp/consul"
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
-HOMEPAGE="http://www.consul.io"
+HOMEPAGE="https://www.consul.io"
 SRC_URI="https://github.com/hashicorp/consul/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"

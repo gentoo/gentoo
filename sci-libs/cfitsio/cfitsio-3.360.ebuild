@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 inherit autotools-utils fortran-2
 
 DESCRIPTION="C and Fortran library for manipulating FITS files"
-HOMEPAGE="http://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html"
+HOMEPAGE="https://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html"
 SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,11 +8,11 @@ inherit latex-package elisp-common toolchain-funcs multilib eutils flag-o-matic
 MY_P="${P/-latex/}"
 
 DESCRIPTION="A LaTeX 2e macro package which enables the use of CJK scripts in various encodings"
-HOMEPAGE="http://cjk.ffii.org/"
+HOMEPAGE="https://cjk.ffii.org/"
 # fonts are taken from ftp://ftp.ctan.org/tex-archive/fonts/CJK.zip
-SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
+SRC_URI="https://cjk.ffii.org/${MY_P}.tar.gz
 	mirror://gentoo/${MY_P}-fonts.zip
-	doc? ( ftp://ftp.ffii.org/pub/cjk/${MY_P}-doc.tar.gz )"
+	doc? ( https://cjk.ffii.org/${MY_P}-doc.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"

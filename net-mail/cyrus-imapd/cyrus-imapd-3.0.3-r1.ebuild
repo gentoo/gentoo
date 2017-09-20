@@ -7,7 +7,7 @@ inherit autotools pam ssl-cert user
 MY_P=${P/_/}
 
 DESCRIPTION="The Cyrus IMAP Server"
-HOMEPAGE="http://www.cyrusimap.org/"
+HOMEPAGE="https://www.cyrusimap.org/"
 SRC_URI="ftp://ftp.cyrusimap.org/cyrus-imapd/${MY_P}.tar.gz"
 
 LICENSE="BSD-with-attribution"

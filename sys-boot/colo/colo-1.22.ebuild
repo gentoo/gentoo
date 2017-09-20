@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="CObalt LOader - Modern bootloader for Cobalt MIPS machines"
-HOMEPAGE="http://www.colonel-panic.org/cobalt-mips/"
-SRC_URI="http://www.colonel-panic.org/cobalt-mips/colo/colo-${PV}.tar.gz"
+HOMEPAGE="https://www.colonel-panic.org/cobalt-mips/"
+SRC_URI="https://www.colonel-panic.org/cobalt-mips/colo/colo-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~mips"

@@ -16,17 +16,17 @@ MY_PV=${MY_PV/_beta/b}
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="http://www.cups.org/cups.git"
+	EGIT_REPO_URI="https://github.com/apple/cups.git"
 	if [[ ${PV} != 9999 ]]; then
 		EGIT_BRANCH=branch-${PV/.9999}
 	fi
 else
-	SRC_URI="https://github.com/apple/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/apple/cups/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
 fi
 
 DESCRIPTION="The Common Unix Printing System"
-HOMEPAGE="http://www.cups.org/"
+HOMEPAGE="https://www.cups.org/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 inherit eutils flag-o-matic python-r1 toolchain-funcs udev
 
 DESCRIPTION="Tools for bcachefs"
-HOMEPAGE="http://bcache.evilpiepirate.org/"
+HOMEPAGE="https://bcache.evilpiepirate.org/"
 SRC_URI="
 	https://github.com/g2p/bcache-tools/archive/v${PV%%_p*}.tar.gz -> ${P}.tgz
 	https://dev.gentoo.org/~jlec/distfiles/bcache-status-20140220.tar.gz
