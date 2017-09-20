@@ -18,7 +18,7 @@ SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~x86"
 
 IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac fluidsynth gvfs ices
 jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa opus oss
