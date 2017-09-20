@@ -9660,7 +9660,7 @@ dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libxml 2.8.0-r1 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/liquid 2.6.2 3.0.6 4.0.0: Template engine for Ruby
 dev-ruby/liquid-c 3.0.0: Liquid performance extension in C
-dev-ruby/listen 0.7.3-r2 1.3.1-r3 1.3.1-r4 3.0.8 3.1.5 3.1.5-r1: Listens to file modifications and notifies you about the changes
+dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.0.8 3.1.5 3.1.5-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.0-r2 2.1.2 2.1.2-r1: A pure ruby library which provides basic APIs for localization
@@ -9736,7 +9736,7 @@ dev-ruby/network_interface 0.0.1-r1 0.0.2: network_interface layer from metasplo
 dev-ruby/nexpose 5.3.1 5.3.2: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1-r1 2.0.0 2.1.0: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.8.1 1.7.1 1.7.2 1.8.0: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.8.1 1.7.1 1.7.2 1.8.0 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9 1.4.13: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -19031,7 +19031,7 @@ x11-misc/xdg-user-dirs-gtk 0.10 0.10-r1: Integrates xdg-user-dirs into the Gnome
 x11-misc/xdg-utils 1.1.1-r1 1.1.2: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.51: user-friendly program to show you what is using up all your disk space
-x11-misc/xdo 0.5 0.5.6: Small X utility to perform elementary actions on windows
+x11-misc/xdo 0.5 0.5.6 0.5.7: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
