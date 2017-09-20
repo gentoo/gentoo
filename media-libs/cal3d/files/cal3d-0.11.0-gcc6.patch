@@ -1,0 +1,688 @@
+--- cal3d-0.11.0/src/cal3d/loader.cpp.old	2016-09-24 00:58:09.968689367 -0400
++++ cal3d-0.11.0/src/cal3d/loader.cpp	2016-09-24 01:06:54.867068386 -0400
+@@ -886,7 +886,7 @@
+   if(!dataSrc.ok())
+   {
+     dataSrc.setError();
+-    return false;
++    return NULL;
+   }
+ 
+   // allocate a new core keyframe instance
+@@ -1338,13 +1338,13 @@
+ 		if(stricmp(skeleton->Attribute("MAGIC"),Cal::SKELETON_XMLFILE_MAGIC)!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		if(atoi(skeleton->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+ 		{
+ 			CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		skeleton = skeleton->NextSiblingElement();
+@@ -1353,19 +1353,19 @@
+ 	if(!skeleton || stricmp(skeleton->Value(),"SKELETON")!=0)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(skeleton->Attribute("MAGIC")!=NULL && stricmp(skeleton->Attribute("MAGIC"),Cal::SKELETON_XMLFILE_MAGIC)!=0)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(skeleton->Attribute("VERSION")!=NULL && atoi(skeleton->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+ 	{
+ 		CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 
+@@ -1383,7 +1383,7 @@
+ 		if(stricmp(bone->Value(),"BONE")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}    
+ 
+ 		std::string strName=bone->Attribute("NAME");
+@@ -1395,7 +1395,7 @@
+ 		if(!translation || stricmp( translation->Value(),"TRANSLATION")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		float tx, ty, tz;
+@@ -1404,13 +1404,13 @@
+ 		if(!node)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}    
+ 		TiXmlText* translationdata = node->ToText();
+ 		if(!translationdata)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}    
+ 		str.clear();
+ 		str << translationdata->Value();
+@@ -1422,7 +1422,7 @@
+ 		if(!rotation || stricmp(rotation->Value(),"ROTATION")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		float rx, ry, rz, rw;
+@@ -1431,13 +1431,13 @@
+ 		if(!node)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		TiXmlText* rotationdata = node->ToText();
+ 		if(!rotationdata)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		str.clear();
+ 		str << rotationdata->Value();
+@@ -1450,7 +1450,7 @@
+ 		if(!rotation || stricmp(translationBoneSpace->Value(),"LOCALTRANSLATION")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		float txBoneSpace, tyBoneSpace, tzBoneSpace;
+@@ -1459,13 +1459,13 @@
+ 		if(!node)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		TiXmlText* translationBoneSpacedata = node->ToText();
+ 		if(!translationBoneSpacedata)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		str.clear();
+ 		str << translationBoneSpacedata->Value();
+@@ -1477,7 +1477,7 @@
+ 		if(!rotationBoneSpace || stricmp(rotationBoneSpace->Value(),"LOCALROTATION")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		float rxBoneSpace, ryBoneSpace, rzBoneSpace, rwBoneSpace;
+@@ -1486,13 +1486,13 @@
+ 		if(!node)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		TiXmlText* rotationBoneSpacedata = node->ToText();
+ 		if(!rotationBoneSpacedata)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		str.clear();
+ 		str << rotationBoneSpacedata->Value();
+@@ -1504,7 +1504,7 @@
+ 		if(!parent ||stricmp(parent->Value(),"PARENTID")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 
+@@ -1514,13 +1514,13 @@
+ 		if(!node)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		TiXmlText* parentid = node->ToText();
+ 		if(!parentid)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 		parentId = atoi(parentid->Value());
+ 
+@@ -1566,7 +1566,7 @@
+ 			{
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+ 				delete pCoreBone;
+-				return false;
++				return NULL;
+ 			}
+ 
+ 			TiXmlNode *node= child->FirstChild();
+@@ -1574,14 +1574,14 @@
+ 			{
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+ 				delete pCoreBone;
+-				return false;
++				return NULL;
+ 			}
+ 			TiXmlText* childid = node->ToText();
+ 			if(!childid)
+ 			{
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+ 				delete pCoreBone;
+-				return false;
++				return NULL;
+ 			}
+ 
+ 			int childId = atoi(childid->Value());
+@@ -1633,7 +1633,7 @@
+ 	if(!animation)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(stricmp(animation->Value(),"HEADER")==0)
+@@ -1641,13 +1641,13 @@
+ 		if(stricmp(animation->Attribute("MAGIC"),Cal::ANIMATION_XMLFILE_MAGIC)!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		if(atoi(animation->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+ 		{
+ 			CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		animation = animation->NextSiblingElement();
+@@ -1656,19 +1656,19 @@
+ 	if(!animation || stricmp(animation->Value(),"ANIMATION")!=0)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(animation->Attribute("MAGIC") !=NULL && stricmp(animation->Attribute("MAGIC"),Cal::ANIMATION_XMLFILE_MAGIC)!=0)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(animation->Attribute("VERSION")!=NULL && atoi(animation->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+ 	{
+ 		CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	int trackCount= atoi(animation->Attribute("NUMTRACKS"));
+@@ -1880,7 +1880,7 @@
+ 	if(!mesh)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(stricmp(mesh->Value(),"HEADER")==0)
+@@ -1888,13 +1888,13 @@
+ 		if(stricmp(mesh->Attribute("MAGIC"),Cal::MESH_XMLFILE_MAGIC)!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		if(atoi(mesh->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+ 		{
+ 			CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		mesh = mesh->NextSiblingElement();
+@@ -1902,19 +1902,19 @@
+ 	if(!mesh || stricmp(mesh->Value(),"MESH")!=0)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(mesh->Attribute("MAGIC")!=NULL && stricmp(mesh->Attribute("MAGIC"),Cal::MESH_XMLFILE_MAGIC)!=0)
+ 	{
+ 		CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	if(mesh->Attribute("VERSION")!=NULL && atoi(mesh->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+ 	{
+ 		CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	// get the number of submeshes
+@@ -1937,7 +1937,7 @@
+ 		if(!submesh || stricmp(submesh->Value(),"SUBMESH")!=0)
+ 		{
+ 			CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-			return false;
++			return NULL;
+ 		}
+ 
+ 		// get the material thread id of the submesh
+@@ -1986,7 +1986,7 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}      
+ 
+ 			CalCoreSubmesh::Vertex Vertex;
+@@ -1996,7 +1996,7 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 
+ 			node = pos->FirstChild();
+@@ -2004,14 +2004,14 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}      
+ 			TiXmlText* posdata = node->ToText();
+ 			if(!posdata)
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 			str.clear();
+ 			str << posdata->Value();
+@@ -2022,7 +2022,7 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 
+ 			node = norm->FirstChild();
+@@ -2030,14 +2030,14 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 			TiXmlText* normdata = node->ToText();
+ 			if(!normdata)
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 			str.clear();
+ 			str << normdata->Value();
+@@ -2051,14 +2051,14 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				TiXmlText* collapseid = node->ToText();
+ 				if(!collapseid)
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				Vertex.collapseId = atoi(collapseid->Value());
+ 
+@@ -2067,7 +2067,7 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 
+ 				node = collapseCount->FirstChild();
+@@ -2075,14 +2075,14 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				TiXmlText* collapseCountdata = node->ToText();
+ 				if(!collapseCountdata)
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				Vertex.faceCollapseCount= atoi(collapseCountdata->Value());
+ 				collapse = collapseCount->NextSiblingElement();        
+@@ -2106,7 +2106,7 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 
+ 				node = texcoord->FirstChild();
+@@ -2114,14 +2114,14 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				TiXmlText* texcoorddata = node->ToText();
+ 				if(!texcoorddata)
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				str.clear();
+ 				str << texcoorddata->Value();
+@@ -2161,7 +2161,7 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 
+ 				node = influence->FirstChild();
+@@ -2169,14 +2169,14 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				TiXmlText* influencedata = node->ToText();
+ 				if(!influencedata)
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 
+ 				Vertex.vectorInfluence[influenceId].boneId = atoi(influence->Attribute("ID"));
+@@ -2202,21 +2202,21 @@
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				node = physique->FirstChild();
+ 				if(!node)
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 				TiXmlText* physiquedata = node->ToText();
+ 				if(!physiquedata)
+ 				{
+ 					delete pCoreSubmesh;
+ 					CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-					return false;
++					return NULL;
+ 				}
+ 
+ 				physicalProperty.weight = (float) atof(physiquedata->Value());
+@@ -2241,7 +2241,7 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 			str.clear();
+ 			str << spring->Attribute("VERTEXID");
+@@ -2266,7 +2266,7 @@
+ 			{
+ 				delete pCoreSubmesh;
+ 				CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-				return false;
++				return NULL;
+ 			}
+ 
+ 			int tmp[3];
+@@ -2336,7 +2336,7 @@
+   if(!material)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+   }
+ 
+   if(stricmp(material->Value(),"HEADER")==0)
+@@ -2344,13 +2344,13 @@
+     if(stricmp(material->Attribute("MAGIC"),Cal::MATERIAL_XMLFILE_MAGIC)!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-          return false;
++          return NULL;
+     }
+ 
+     if(atoi(material->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+     {
+     CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-          return false;
++          return NULL;
+     }
+ 
+     material = material->NextSiblingElement();
+@@ -2359,19 +2359,19 @@
+   if(!material||stricmp(material->Value(),"MATERIAL")!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+   }
+ 
+   if(material->Attribute("MAGIC")!=NULL && stricmp(material->Attribute("MAGIC"),Cal::MATERIAL_XMLFILE_MAGIC)!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+   }
+ 
+   if(material->Attribute("VERSION") != NULL && atoi(material->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+   {
+     CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+   }
+ 
+   CalCoreMaterialPtr pCoreMaterial = new CalCoreMaterial();
+@@ -2385,7 +2385,7 @@
+   if(!ambient ||stricmp(ambient->Value(),"AMBIENT")!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+ 
+   CalCoreMaterial::Color ambientColor; 
+@@ -2393,13 +2393,13 @@
+   if(!node)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   TiXmlText* ambientdata = node->ToText();
+   if(!ambientdata)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   str << ambientdata->Value();
+   str >> r >> g >> b >> a;
+@@ -2412,7 +2412,7 @@
+   if(!diffuse || stricmp(diffuse->Value(),"DIFFUSE")!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+ 
+   CalCoreMaterial::Color diffuseColor; 
+@@ -2420,13 +2420,13 @@
+   if(!node)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   TiXmlText* diffusedata = node->ToText();
+   if(!diffusedata)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   str.clear();
+   str << diffusedata->Value();
+@@ -2441,7 +2441,7 @@
+   if(!specular||stricmp(specular->Value(),"SPECULAR")!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+ 
+   CalCoreMaterial::Color specularColor; 
+@@ -2449,13 +2449,13 @@
+   if(!node)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   TiXmlText* speculardata = node->ToText();
+   if(!speculardata)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   str.clear();
+   str << speculardata->Value();
+@@ -2469,7 +2469,7 @@
+   if(!shininess||stricmp(shininess->Value(),"SHININESS")!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+ 
+   float fshininess;
+@@ -2477,13 +2477,13 @@
+   if(!node)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   TiXmlText* shininessdata = node->ToText();
+   if(!shininessdata)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-    return false;
++    return NULL;
+   }
+   fshininess = (float)atof(shininessdata->Value());
+ 
+@@ -2502,7 +2502,7 @@
+     if(!map||stricmp(map->Value(),"MAP")!=0)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+     
+ 
+@@ -2510,14 +2510,14 @@
+     if(!node)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+     TiXmlText* mapfile = node->ToText();
+     if(!mapfile)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+     MatFileName.push_back(mapfile->Value());
