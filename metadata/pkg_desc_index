@@ -585,7 +585,7 @@ app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
 app-crypt/p11-kit 0.23.2 0.23.2-r1 0.23.5 0.23.7: Provides a standard configuration setup for installing PKCS#11
-app-crypt/paperkey 1.3 1.4: OpenPGP key archiver
+app-crypt/paperkey 1.4: OpenPGP key archiver
 app-crypt/pdfcrack 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108 0.112: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.30 0.31 0.32: A PGP packet visualizer
@@ -625,7 +625,7 @@ app-crypt/veracrypt 1.19 1.21: Disk encryption with strong security based on Tru
 app-crypt/xca 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 0.3.3 0.4.4: Python library and command line tool for configuring a YubiKey
-app-crypt/yubikey-manager-qt 0.3.0_p20170316 0.3.1: Cross-platform application for configuring any YubiKey over all USB transports
+app-crypt/yubikey-manager-qt 0.3.1: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zuluCrypt 5.1.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
@@ -2191,10 +2191,10 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.21 3.23: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.23: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3.1 5.4.1 5.4.2 5.4.2-r1 9999: UNIX Shell similar to the Korn shell
-app-shells/zsh-completions 0.25.0 0.26.0 9999: Additional completion definitions for Zsh
+app-shells/zsh-completions 0.26.0 9999: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides written in LaTeX
