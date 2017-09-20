@@ -174,6 +174,81 @@ ver_rs() {
 	echo "${comp[*]}"
 }
 
+# @FUNCTION: _ver_validate
+# @USAGE: <comp[0]>...
+# @DESCRIPTION:
+# Verify that the version component array passed as the argument
+# validates according to the PMS version rules. Returns 0 if it does,
+# 1 otherwise.
+_ver_validate() {
+	local prev=start
+
+	while [[ ${1} || ${2} ]]; do
+		local s=${1}
+		local c=${2}
+
+		if [[ -z ${s} ]]; then
+			if [[ ${c} == [0-9]* ]]; then
+				# number without preceding sep may be either:
+				case ${prev} in
+					# a. 1st version number
+					start) prev=numeric;;
+					# b. _foo suffix number
+					suffix) prev=suffix_num;;
+					# c. -rN revision number
+					revision) prev=revision_num;;
+					*) return 1;;
+				esac
+			elif [[ -n ${c} ]]; then
+				# letter without preceding sep = letter after version
+				[[ ${prev} == numeric ]] || return 1
+				[[ ${#c} -eq 1 ]] || return 1
+				prev=letter
+			fi
+		elif [[ -z ${c} ]]; then
+			# trailing suffix?
+			return 1
+		elif [[ ${s} == . ]]; then
+			# number preceded by dot = numeric component
+			[[ ${prev} == numeric ]] || return 1
+		elif [[ ${s} == _ ]]; then
+			# _ implies _foo suffix
+			case ${prev} in
+				numeric|letter|suffix|suffix_num) ;;
+				*) return 1;;
+			esac
+
+			case ${c} in
+				alpha) ;;
+				beta) ;;
+				rc) ;;
+				pre) ;;
+				p) ;;
+				*) return 1;;
+			esac
+			prev=suffix
+		elif [[ ${s} == - ]]; then
+			# - implies revision
+			case ${prev} in
+				numeric|letter|suffix|suffix_num) ;;
+				*) return 1;;
+			esac
+
+			[[ ${c} == r ]] || return 1
+			prev=revision
+		else
+			return 1
+		fi
+
+		shift 2
+	done
+
+	# empty version string?
+	[[ ${prev} != start ]] || return 1
+
+	return 0
+}
+
 # @FUNCTION: ver_test
 # @USAGE: [<v1>] <op> <v2>
 # @DESCRIPTION:
@@ -183,127 +258,163 @@ ver_rs() {
 # revision parts), and the comparison is performed according to
 # the algorithm specified in the PMS.
 ver_test() {
-	local v1 v2 op i tail result
-	local -a v1comp v2comp
-	local match=(
-		"+([0-9])*(.+([0-9]))"						# numeric components
-		"[a-z]"										# letter component
-		"*(@(_alpha|_beta|_pre|_rc|_p)*([0-9]))"	# suffixes
-		"-r+([0-9])"								# revision
-	)
+	local LC_ALL=C
+	local va op vb
 
-	local LC_ALL=C shopt_save=$(shopt -p extglob)
-	shopt -s extglob
-
-	if [[ $# -eq 2 ]]; then
-		v1=${PVR}
-	elif [[ $# -eq 3 ]]; then
-		v1=$1; shift
+	if [[ $# -eq 3 ]]; then
+		va=${1}
+		shift
 	else
-		die "${FUNCNAME}: bad number of arguments"
+		va=${PVR}
 	fi
-	op=$1
-	v2=$2
+
+	[[ $# -eq 2 ]] || die "${FUNCNAME}: bad number of arguments"
+
+	op=${1}
+	vb=${2}
 
 	case ${op} in
 		-eq|-ne|-lt|-le|-gt|-ge) ;;
 		*) die "${FUNCNAME}: invalid operator: ${op}" ;;
 	esac
 
-	# Test for both versions being valid, and split them into parts
-	for (( i=0; i<4; i++ )); do
-		tail=${v1##${match[i]}}
-		v1comp[i]=${v1%"${tail}"}
-		v1=${tail}
-		tail=${v2##${match[i]}}
-		v2comp[i]=${v2%"${tail}"}
-		v2=${tail}
-	done
-	# There must not be any remaining tail, and the numeric part
-	# must be non-empty.  All other parts are optional.
-	[[ -z ${v1} && -z ${v2} && -n ${v1comp[0]} && -n ${v2comp[0]} ]] \
-		|| die "${FUNCNAME}: invalid version"
+	# explicitly strip -r0[00000...] to avoid overcomplexifying the algo
+	[[ ${va} == *-r0* && 10#${va#*-r} -eq 0 ]] && va=${va%-r*}
+	[[ ${vb} == *-r0* && 10#${vb#*-r} -eq 0 ]] && vb=${vb%-r*}
 
-	# Compare numeric components (PMS algorithm 3.2)
-	_ver_cmp_num() {
-		local a=(${1//./ }) b=(${2//./ })
-		local an=${#a[@]} bn=${#b[@]}
-		local i
-		# First component
-		[[ 10#${a[0]} -gt 10#${b[0]} ]] && return 2
-		[[ 10#${a[0]} -lt 10#${b[0]} ]] && return 1
-		for (( i=1; i<an && i<bn; i++ )); do
-			# Other components (PMS algorithm 3.3)
-			if [[ ${a[i]} == 0* || ${b[i]} == 0* ]]; then
-				local ap=${a[i]%%*(0)} bp=${b[i]%%*(0)}
-				[[ ${ap} > ${bp} ]] && return 2
-				[[ ${ap} < ${bp} ]] && return 1
+	local comp compb
+	_ver_split "${vb}"
+	compb=( "${comp[@]}" )
+	_ver_split "${va}"
+
+	_ver_validate "${comp[@]}" || die "${FUNCNAME}: invalid version: ${va}"
+	_ver_validate "${compb[@]}" || die "${FUNCNAME}: invalid version: ${vb}"
+
+	local i sa sb ca cb wa wb result=0
+	for (( i = 0;; i += 2 )); do
+		sa=${comp[i]}
+		ca=${comp[i+1]}
+		sb=${compb[i]}
+		cb=${compb[i+1]}
+
+		# 1. determine the component type for Ca
+		if [[ -z ${sa} ]]; then
+			if [[ ${ca} == [0-9]* ]]; then
+				# number without preceding sep may be either:
+				# a. 1st version number
+				# b. _foo suffix number
+				# c. -rN revision number
+				# weight is irrelevant since (a) occurs simultaneously,
+				# and (b)/(c) use weight of preceding component
+				wa=0
+				# method: plain numeric
+				m=pn
+			elif [[ -n ${ca} ]]; then
+				# letter without preceding sep = letter after version
+				# weight below numeric, lexical method
+				wa=9
+				m=l
 			else
-				[[ ${a[i]} -gt ${b[i]} ]] && return 2
-				[[ ${a[i]} -lt ${b[i]} ]] && return 1
+				# empty == end of version string
+				# weight below all positive stuff but above negative
+				wa=6
+				m=
 			fi
-		done
-		[[ ${an} -gt ${bn} ]] && return 2
-		[[ ${an} -lt ${bn} ]] && return 1
-		return 0
-	}
-
-	# Compare letter components (PMS algorithm 3.4)
-	_ver_cmp_let() {
-		local a=$1 b=$2
-		[[ ${a} > ${b} ]] && return 2
-		[[ ${a} < ${b} ]] && return 1
-		return 0
-	}
-
-	# Compare suffixes (PMS algorithm 3.5)
-	_ver_cmp_suf() {
-		local a=(${1//_/ }) b=(${2//_/ })
-		local an=${#a[@]} bn=${#b[@]}
-		local i
-		for (( i=0; i<an && i<bn; i++ )); do
-			# Compare each suffix (PMS algorithm 3.6)
-			if [[ ${a[i]%%*([0-9])} == "${b[i]%%*([0-9])}" ]]; then
-				[[ 10#${a[i]##*([a-z])} -gt 10#${b[i]##*([a-z])} ]] && return 2
-				[[ 10#${a[i]##*([a-z])} -lt 10#${b[i]##*([a-z])} ]] && return 1
-			else
-				# Check for p first
-				[[ ${a[i]} == p*([0-9]) ]] && return 2
-				[[ ${b[i]} == p*([0-9]) ]] && return 1
-				# Hack: Use that alpha < beta < pre < rc alphabetically
-				[[ ${a[i]} > ${b[i]} ]] && return 2 || return 1
-			fi
-		done
-		if [[ ${an} -gt ${bn} ]]; then
-			[[ ${a[bn]} == p*([0-9]) ]] && return 2 || return 1
-		elif [[ ${an} -lt ${bn} ]]; then
-			[[ ${b[an]} == p*([0-9]) ]] && return 1 || return 2
+		elif [[ ${sa} == . ]]; then
+			# number preceded by dot = numeric component
+			# highest weight, weird PMS 2+ component comparison
+			wa=10
+			m=wn
+		elif [[ ${sa} == _ ]]; then
+			# _ implies _foo suffix
+			# weights differ, comparison by weight
+			case ${ca} in
+				alpha) wa=2 ;;
+				beta) wa=3 ;;
+				rc) wa=4 ;;
+				pre) wa=5 ;;
+				p) wa=8 ;;
+				*) die "Invalid version suffix: _${ca}";;
+			esac
+			m=
+		elif [[ ${sa} == - ]]; then
+			# - implies revision
+			# weight below positive suffixes, no comparison
+			[[ ${ca} == r ]] || die "Invalid version part: -${ca}"
+			wa=7
+			m=
 		fi
-		return 0
-	}
 
-	# Compare revision components (PMS algorithm 3.7)
-	_ver_cmp_rev() {
-		local a=${1#-r} b=${2#-r}
-		[[ 10#${a} -gt 10#${b} ]] && return 2
-		[[ 10#${a} -lt 10#${b} ]] && return 1
-		return 0
-	}
+		# 2. determine the component type for Cb
+		if [[ -z ${sb} ]]; then
+			if [[ ${cb} == [0-9]* ]]; then
+				wb=0
+			elif [[ -n ${cb} ]]; then
+				wb=9
+			else
+				wb=6
+			fi
+		elif [[ ${sb} == . ]]; then
+			wb=10
+		elif [[ ${sb} == _ ]]; then
+			case ${cb} in
+				alpha) wb=2 ;;
+				beta) wb=3 ;;
+				rc) wb=4 ;;
+				pre) wb=5 ;;
+				p) wb=8 ;;
+				*) die "Invalid version suffix: _${cb}";;
+			esac
+		elif [[ ${sb} == - ]]; then
+			[[ ${cb} == r ]] || die "Invalid version part: -${cb}"
+			wb=7
+		fi
 
-	# Version comparison top-level logic (PMS algorithm 3.1)
-	_ver_cmp_num "${v1comp[0]}" "${v2comp[0]}" &&
-	_ver_cmp_let "${v1comp[1]}" "${v2comp[1]}" &&
-	_ver_cmp_suf "${v1comp[2]}" "${v2comp[2]}" &&
-	_ver_cmp_rev "${v1comp[3]}" "${v2comp[3]}"
+		# DEBUG
+		#echo "$sa $ca [$wa] <$m> $sb $cb [$wb]" >&2
 
-	case $? in
-		0) result=0  ;;			# a = b
-		1) result=-1 ;;			# a < b
-		2) result=1  ;;			# a > b
-		*) die "${FUNCNAME}: invalid return code: $?" ;;
-	esac
+		# 3. compare weights, we can proceed further only if weights match
+		if [[ ${wa} -ne ${wb} ]]; then
+			result=$(( wa - wb ))
+			break
+		fi
 
-	${shopt_save}
+		# 4. both empty maybe?
+		[[ -z ${ca} && -z ${cb} ]] && break
+
+		# 5. compare components according to the algo
+
+		# weird numeric is weird and reuses pn/l, so do it first
+		# (PMS algo 3.3)
+		if [[ ${m} == wn ]]; then
+			if [[ ${ca} != 0* && ${cb} != 0* ]]; then
+				# if neither of them starts with 0, use normal numeric
+				m=pn
+			else
+				# strip trailing zeros
+				while [[ ${ca} == *0 ]]; do ca=${ca::-1}; done
+				while [[ ${cb} == *0 ]]; do cb=${cb::-1}; done
+				m=l
+			fi
+		fi
+
+		case ${m} in
+			pn) # plain numeric
+				if [[ 10#${ca} -ne 10#${cb} ]]; then
+					result=$(( 10#${ca} - 10#${cb} ))
+					break
+				fi
+				;;
+			l) # lexical
+				if [[ ${ca} != ${cb} ]]; then
+					[[ ${ca} > ${cb} ]] && result=1 || result=-1
+					break
+				fi
+				;;
+			'') ;;
+			*) die "Unexpected comparison method m=${m}";;
+		esac
+	done
 
 	test "${result}" "${op}" 0
 }
