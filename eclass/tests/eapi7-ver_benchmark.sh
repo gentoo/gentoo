@@ -76,6 +76,38 @@ replacing_versionator() {
 	done >/dev/null
 }
 
+comparing() {
+	local x
+	for x in {1..1000}; do
+		ver_test 1b_p1 -le 1_p1
+		ver_test 1.1b -le 1.1
+		ver_test 12.2.5 -le 12.2b
+		ver_test 4.0 -le 5.0
+		ver_test 5 -le 5.0
+		ver_test 1.0_pre2 -le 1.0_p2
+		ver_test 1.0_alpha2 -le 1.0_p2
+		ver_test 1.0_alpha1 -le 1.0_beta1
+		ver_test 1.0_beta3 -le 1.0_rc3
+		ver_test 1.001000000000000001 -le 1.001000000000000002
+	done
+}
+
+comparing_versionator() {
+	local x
+	for x in {1..100}; do
+		version_is_at_least 1b_p1 1_p1
+		version_is_at_least 1.1b 1.1
+		version_is_at_least 12.2.5 12.2b
+		version_is_at_least 4.0 5.0
+		version_is_at_least 5 5.0
+		version_is_at_least 1.0_pre2 1.0_p2
+		version_is_at_least 1.0_alpha2 1.0_p2
+		version_is_at_least 1.0_alpha1 1.0_beta1
+		version_is_at_least 1.0_beta3 1.0_rc3
+		version_is_at_least 1.001000000000000001 1.001000000000000002
+	done
+}
+
 get_times() {
 	local factor=${1}; shift
 	echo "${*}"
@@ -111,3 +143,5 @@ get_times 1 cutting
 get_times 10 cutting_versionator
 get_times 1 replacing
 get_times 10 replacing_versionator
+get_times 1 comparing
+get_times 10 comparing_versionator
