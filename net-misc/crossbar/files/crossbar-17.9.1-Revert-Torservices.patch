@@ -1,0 +1,270 @@
+From 97a2d923dff32397c9df5adb95ecb84bcd95d83d Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 19 Sep 2017 17:44:08 -0700
+Subject: [PATCH] Revert "Add built-in Tor services and connection support"
+
+This reverts commit f75db17642845f46bebd2f6f1d6a092974b9b390.
+---
+ crossbar/common/checkconfig.py                     | 60 +--------------
+ crossbar/twisted/endpoint.py                       | 83 +--------------------
+ .../router/transport/Transport-Endpoints.md        | 85 +---------------------
+ requirements-dev.txt                               |  1 -
+ requirements-min.txt                               |  1 -
+ 5 files changed, 4 insertions(+), 226 deletions(-)
+
+diff --git a/crossbar/common/checkconfig.py b/crossbar/common/checkconfig.py
+index a8e84d45..1f5d9c91 100644
+--- a/crossbar/common/checkconfig.py
++++ b/crossbar/common/checkconfig.py
+@@ -867,31 +867,6 @@ def check_listening_endpoint_twisted(endpoint):
+     # should/can we ask Twisted to parse it easily?
+ 
+ 
+-def check_listening_endpoint_onion(endpoint):
+-    """
+-    :param endpoint: The onion endpoint
+-    :type endpoint: dict
+-    """
+-    for k in endpoint:
+-        if k not in ['type', 'port', 'private_key_file', 'tor_control_endpoint']:
+-            raise InvalidConfigException(
+-                "encountered unknown attribute '{}' in onion endpoint".format(k)
+-            )
+-
+-    check_dict_args(
+-        {
+-            u"type": (True, [six.text_type]),
+-            u"port": (True, six.integer_types),
+-            u"private_key_file": (True, [six.text_type]),
+-            u"tor_control_endpoint": (True, [Mapping])
+-        },
+-        endpoint,
+-        "onion endpoint config",
+-    )
+-    check_endpoint_port(u"port")
+-    check_connecting_endpoint(endpoint[u"tor_control_endpoint"])
+-
+-
+ def check_connecting_endpoint_tcp(endpoint):
+     """
+     Check a TCP connecting endpoint configuration.
+@@ -978,33 +953,6 @@ def check_connecting_endpoint_twisted(endpoint):
+         check_endpoint_timeout(endpoint['timeout'])
+ 
+ 
+-def check_connecting_endpoint_tor(endpoint):
+-    """
+-    :param endpoint: The Tor connecting endpoint to check.
+-    :type endpoint: dict
+-    """
+-    for k in endpoint:
+-        if k not in ['type', 'host', 'port', 'tor_socks_port', 'tls']:
+-            raise InvalidConfigException(
+-                "encountered unknown attribute '{}' in connecting endpoint".format(k)
+-            )
+-
+-    if 'host' not in endpoint:
+-        raise InvalidConfigException("missing mandatory attribute 'host' in connecting endpoint item\n\n{}".format(pformat(endpoint)))
+-
+-    if 'port' not in endpoint:
+-        raise InvalidConfigException("missing mandatory attribute 'port' in connecting endpoint item\n\n{}".format(pformat(endpoint)))
+-
+-    if 'tor_socks_port' not in endpoint:
+-        raise InvalidConfigException("missing mandatory attribute 'tor_socks_port' in connecting endpoint item\n\n{}".format(pformat(endpoint)))
+-
+-    check_endpoint_port(endpoint['port'])
+-    check_endpoint_port(endpoint['tor_socks_port'])
+-
+-    if 'tls' in endpoint:
+-        check_connecting_endpoint_tls(endpoint['tls'])
+-
+-
+ def check_listening_endpoint(endpoint):
+     """
+     Check a listening endpoint configuration.
+@@ -1022,7 +970,7 @@ def check_listening_endpoint(endpoint):
+         raise InvalidConfigException("missing mandatory attribute 'type' in endpoint item\n\n{}".format(pformat(endpoint)))
+ 
+     etype = endpoint['type']
+-    if etype not in ['tcp', 'unix', 'twisted', 'onion']:
++    if etype not in ['tcp', 'unix', 'twisted']:
+         raise InvalidConfigException("invalid attribute value '{}' for attribute 'type' in endpoint item\n\n{}".format(etype, pformat(endpoint)))
+ 
+     if etype == 'tcp':
+@@ -1031,8 +979,6 @@ def check_listening_endpoint(endpoint):
+         check_listening_endpoint_unix(endpoint)
+     elif etype == 'twisted':
+         check_listening_endpoint_twisted(endpoint)
+-    elif etype == 'onion':
+-        check_listening_endpoint_onion(endpoint)
+     else:
+         raise InvalidConfigException('logic error')
+ 
+@@ -1054,7 +1000,7 @@ def check_connecting_endpoint(endpoint):
+         raise InvalidConfigException("missing mandatory attribute 'type' in endpoint item\n\n{}".format(pformat(endpoint)))
+ 
+     etype = endpoint['type']
+-    if etype not in ['tcp', 'unix', 'twisted', 'tor']:
++    if etype not in ['tcp', 'unix', 'twisted']:
+         raise InvalidConfigException("invalid attribute value '{}' for attribute 'type' in endpoint item\n\n{}".format(etype, pformat(endpoint)))
+ 
+     if etype == 'tcp':
+@@ -1063,8 +1009,6 @@ def check_connecting_endpoint(endpoint):
+         check_connecting_endpoint_unix(endpoint)
+     elif etype == 'twisted':
+         check_connecting_endpoint_twisted(endpoint)
+-    elif etype == 'tor':
+-        check_connecting_endpoint_tor(endpoint)
+     else:
+         raise InvalidConfigException('logic error')
+ 
+diff --git a/crossbar/twisted/endpoint.py b/crossbar/twisted/endpoint.py
+index 483e5a39..251bfa5c 100644
+--- a/crossbar/twisted/endpoint.py
++++ b/crossbar/twisted/endpoint.py
+@@ -33,7 +33,7 @@ from __future__ import absolute_import, division
+ import six
+ import os
+ from os import environ
+-from os.path import join, abspath, isabs, exists
++from os.path import join, abspath
+ 
+ from twisted.internet import defer
+ from twisted.internet._sslverify import OpenSSLCertificateAuthorities
+@@ -48,11 +48,7 @@ from twisted.internet.endpoints import TCP4ServerEndpoint, \
+     UNIXClientEndpoint, \
+     serverFromString,   \
+     clientFromString
+-from twisted.internet.interfaces import IStreamServerEndpoint
+ from twisted.python.filepath import FilePath
+-from zope.interface import implementer
+-
+-import txtorcon
+ 
+ from crossbar.twisted.sharedport import SharedPort, SharedTLSPort
+ 
+@@ -318,12 +314,6 @@ def _create_tls_client_context(config, cbdir, log):
+     return ctx
+ 
+ 
+-def _ensure_absolute(fname, cbdir):
+-    if isabs(fname):
+-        return fname
+-    return abspath(join(cbdir, fname))
+-
+-
+ def create_listening_endpoint_from_config(config, cbdir, reactor, log):
+     """
+     Create a Twisted stream server endpoint from a Crossbar.io transport configuration.
+@@ -431,59 +421,6 @@ def create_listening_endpoint_from_config(config, cbdir, reactor, log):
+     elif config['type'] == 'twisted':
+         endpoint = serverFromString(reactor, config['server_string'])
+ 
+-    # tor endpoint
+-    elif config['type'] == 'onion':  # or "tor"? r "tor_onion"?
+-        port = config['port']
+-        private_key_fname = _ensure_absolute(config[u'private_key_file'], cbdir)
+-        tor_control_ep = create_connecting_endpoint_from_config(
+-            config[u'tor_control_endpoint'], cbdir, reactor, log
+-        )
+-
+-        try:
+-            with open(private_key_fname, 'r') as f:
+-                private_key = f.read().strip()
+-        except (IOError, OSError):
+-            private_key = None
+-
+-        @implementer(IStreamServerEndpoint)
+-        class _EphemeralOnion(object):
+-
+-            @defer.inlineCallbacks
+-            def listen(self, proto_factory):
+-                # we don't care which local TCP port we listen on, but
+-                # we do need to know it
+-                local_ep = TCP4ServerEndpoint(reactor, 0, interface=u"127.0.0.1")
+-                target_port = yield local_ep.listen(proto_factory)
+-                tor = yield txtorcon.connect(
+-                    reactor,
+-                    tor_control_ep,
+-                )
+-
+-                # create and add the service
+-                hs = txtorcon.EphemeralHiddenService(
+-                    ports=["{} 127.0.0.1:{}".format(port, target_port.getHost().port)],
+-                    key_blob_or_type=private_key if private_key else "NEW:BEST",
+-                )
+-                log.info("Uploading descriptors can take more than 30s")
+-                yield hs.add_to_tor(tor.protocol)
+-
+-                # if it's new, store our private key
+-                # XXX better "if private_key is None"?
+-                if not exists(private_key_fname):
+-                    with open(private_key_fname, 'w') as f:
+-                        f.write(hs.private_key)
+-                    log.info("Wrote private key to '{fname}'", fname=private_key_fname)
+-
+-                addr = txtorcon.TorOnionAddress(hs.hostname, port)
+-                log.info(
+-                    "Listening on Tor onion service {addr.onion_uri}:{addr.onion_port}"
+-                    " with local port {local_port}",
+-                    addr=addr,
+-                    local_port=target_port.getHost().port,
+-                )
+-                defer.returnValue(addr)
+-        endpoint = _EphemeralOnion()
+-
+     else:
+         raise Exception("invalid endpoint type '{}'".format(config['type']))
+ 
+@@ -656,24 +593,6 @@ def create_connecting_endpoint_from_config(config, cbdir, reactor, log):
+     elif config['type'] == 'twisted':
+         endpoint = clientFromString(reactor, config['client_string'])
+ 
+-    elif config['type'] == 'tor':
+-        host = config['host']
+-        port = config['port']
+-        socks_port = config['tor_socks_port']
+-        tls = config.get('tls', False)
+-        if not tls and not host.endswith(u'.onion'):
+-            log.warn("Non-TLS connection traversing Tor network; end-to-end encryption advised")
+-
+-        socks_endpoint = TCP4ClientEndpoint(
+-            reactor, "127.0.0.1", socks_port,
+-        )
+-        endpoint = txtorcon.TorClientEndpoint(
+-            host, port,
+-            socks_endpoint=socks_endpoint,
+-            reactor=reactor,
+-            use_tls=tls,
+-        )
+-
+     else:
+         raise Exception("invalid endpoint type '{}'".format(config['type']))
+ 
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index fa75074a..d68d1e89 100644
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -4,7 +4,6 @@ colorama>=0.3.3
+ mock>=1.3.0
+ wheel>=0.26.0
+ hashin>=0.4.1
+-txtorcon>=0.19.3
+ 
+ # docs
+ flask
+diff --git a/requirements-min.txt b/requirements-min.txt
+index 38ee5a71..83c8d802 100644
+--- a/requirements-min.txt
++++ b/requirements-min.txt
+@@ -6,7 +6,6 @@ Twisted>=17.5.0
+ h2>=3.0.1
+ priority>=1.3.0
+ txaio>=2.8.2
+-txtorcon>=0.19.3
+ autobahn>=17.9.1
+ netaddr>=0.7.19
+ PyTrie>=0.3
+-- 
+2.14.1
+

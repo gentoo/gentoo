@@ -13,10 +13,13 @@
 		<remote-id type="github">crossbariocrossbar</remote-id>
 	</upstream>
 	<longdescription>
-		Crossbar.io is an open source networking platform 
+		Crossbar.io is an open source networking platform
 		for distributed and microservice applications. It implements the
-		open Web Application Messaging Protocol (WAMP), is feature rich, 
-		scalable, robust and secure. Let Crossbar.io take care of the 
+		open Web Application Messaging Protocol (WAMP), is feature rich,
+		scalable, robust and secure. Let Crossbar.io take care of the
 		hard parts of messaging so you can focus on your app's features.
 	</longdescription>
+	<use>
+		<flag name="tor">include tor services connections support</flag>
+	</use>
 </pkgmetadata>
