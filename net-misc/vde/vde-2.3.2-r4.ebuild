@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 user
+inherit ltprune python-single-r1 user
 
 MY_P="${PN}2-${PV}"
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://vde.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 IUSE="pcap python selinux ssl libressl static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -38,10 +38,6 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
-src_prepare() {
-	epatch_user
-}
-
 src_configure() {
 	econf \
 		$(use_enable pcap) \
@@ -58,8 +54,8 @@ src_install() {
 	default
 	prune_libtool_files
 
-	newinitd "${FILESDIR}"/vde.init vde
-	newconfd "${FILESDIR}"/vde.conf vde
+	newinitd "${FILESDIR}"/vde.init-r1 vde
+	newconfd "${FILESDIR}"/vde.conf-r1 vde
 }
 
 pkg_postinst() {
@@ -67,5 +63,4 @@ pkg_postinst() {
 	einfo "# rc-update add vde default"
 	einfo "You need to setup tap0 in /etc/conf.d/net"
 	einfo "To use it as an user be sure to set a group in /etc/conf.d/vde"
-	einfo "Users of the group can then run: $ vdeq qemu -sock /var/run/vde.ctl ..other opts"
 }
