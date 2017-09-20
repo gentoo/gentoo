@@ -8907,7 +8907,7 @@ dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5 0.9.5-r1: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/typed-ast 1.1.0: A fork of Python 2 and 3 ast modules with type comment support
-dev-python/typing 3.5.2.2 3.5.3.0: Type Hints for Python
+dev-python/typing 3.5.2.2 3.5.3.0 3.6.2: Type Hints for Python
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.3.0 2.4.1: A portable, lightweight MessagePack serializer and deserializer
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
