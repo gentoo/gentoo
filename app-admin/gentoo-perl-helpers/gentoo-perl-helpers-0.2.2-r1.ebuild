@@ -25,7 +25,8 @@ IUSE=""
 # app-arch/tar
 
 RDEPEND="
-	app-portage/portage-utils
+	$(: --format support)
+	>=app-portage/portage-utils-0.60
 	sys-apps/portage
 "
 DEPEND=""
