@@ -12,7 +12,7 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Crossbar.io - The Unified Application Router for the twisted framework"
 HOMEPAGE="http://crossbar.io/ https://github.com/crossbario/crossbar https://pypi.python.org/pypi/crossbar"
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
-SRC_URI="https://github.com/crossbario/crossbar/archive/v17.8.1.tar.gz"
+SRC_URI="https://github.com/crossbario/crossbar/archive/v17.8.1.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
