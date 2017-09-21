@@ -43,7 +43,6 @@ pkg_setup() {
 	elog "(ref: http://foldingforum.org/viewtopic.php?f=16&t=22524&p=241992#p241992 )"
 	elog ""
 
-	# the bash shell is important for "su -c" in init script
 	enewuser foldingathome -1 -1 "${EPREFIX}"/opt/foldingathome
 }
 
@@ -88,7 +87,7 @@ WantedBy=multi-user.target
 EOF
 	systemd_newunit "${T}"/fah-init.service foldingathome.service
 
-	chown -R foldingathome:foldingathome "${ED}"${I}
+	fowners -R foldingathome:foldingathome /opt/foldingathome
 }
 
 pkg_postinst() {
@@ -97,17 +96,18 @@ pkg_postinst() {
 	elog "(systemd)\tsystemctl enable foldingathome"
 	elog ""
 	if [ ! -e "${EPREFIX}"/opt/foldingathome/config.xml ]; then
-		elog "No configuration found -- please run"
+		elog "No config.xml file found -- please run"
 		elog "emerge --config ${P} to configure your client, or specify"
 		elog "all necessary runtime options in FOLD_OPTS within"
 		elog "${EPREFIX}/etc/conf.d/foldingathome"
+		elog ""
 	fi
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog "NOTE, the 'initfolding' helper script has been dropped, please"
 		elog "use emerge --config ${P} or run FAHClient --configure directly"
 		elog "and adjust file permissions and ownership yourself"
+		elog ""
 	fi
-	elog ""
 	elog "Please see ${EPREFIX}/opt/foldingathome/FAHClient --help for more details."
 	einfo ""
 	einfo "The original package maintainer encourages you to acquire a username and join team 36480."
@@ -122,5 +122,5 @@ pkg_postrm() {
 
 pkg_config() {
 	cd "${EPREFIX}"/opt/foldingathome || die
-	su foldingathome -s /bin/bash -c "./FAHClient --configure"
+	su foldingathome -s /bin/sh -c "./FAHClient --configure"
 }
