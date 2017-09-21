@@ -122,6 +122,7 @@ media-gfx/nvidia-texture-tools cuda
 # Matthias Maier <tamiko@gentoo.org> (11 May 2017)
 # Globally mask pie use flag. Selectively unmask on specific profiles.
 sys-devel/gcc pie
+sys-devel/clang pie
 
 # Mike Gilbert <floppym@gentoo.org> (28 Apr 2017)
 # Needs sandbox-2.11 (masked)

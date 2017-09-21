@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Dahl <matthias.dahl@binary-island.eu> (21 Sep 2017)
+# Introduces by default enabled Stack Protector (strong) and FORTIFY_SOURCE
+# as well as support for default enabled PIE by USE flag.
+# Needs testing before it can be unmask.
+=sys-devel/clang-5.0.0-r1
+
 # Bernard Cafarelli <voyageur@gentoo.org> (20 Sep 2017)
 # Requires qt 5.8, not yet in tree. Bug #631570
 >=media-video/orion-1.6.0
