@@ -45,7 +45,7 @@ else
 fi
 
 DESCRIPTION="Common CA Certificates PEM files"
-HOMEPAGE="http://packages.debian.org/sid/ca-certificates"
+HOMEPAGE="https://packages.debian.org/sid/ca-certificates"
 NMU_PR=""
 if ${PRECOMPILED} ; then
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${PV}${NMU_PR:++nmu}${NMU_PR}_all.deb"

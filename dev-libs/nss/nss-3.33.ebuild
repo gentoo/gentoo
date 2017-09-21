@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
-NSPR_VER="4.13.1"
+NSPR_VER="4.16"
 RTM_NAME="NSS_${PV//./_}_RTM"
 # Rev of https://git.fedorahosted.org/cgit/nss-pem.git
 PEM_GIT_REV="429b0222759d8ad8e6dcd29e62875ae3efd69116"
@@ -43,7 +43,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	# Custom changes for gentoo
-	"${FILESDIR}/${PN}-3.28-gentoo-fixups.patch"
+	"${FILESDIR}/${PN}-3.32-gentoo-fixups.patch"
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
 )

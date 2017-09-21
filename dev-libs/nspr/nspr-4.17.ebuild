@@ -47,6 +47,7 @@ src_prepare() {
 		einfo "Renaming configure.in to configure.ac"
 		mv "${S}"/nspr/configure.{in,ac} || die
 	fi
+
 	# We must run eautoconf to regenerate configure
 	eautoconf
 
