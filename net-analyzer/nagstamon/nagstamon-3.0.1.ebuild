@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}"
 
-PATCHES="${FILESDIR}/${P}-setup.patch"
+PATCHES="${FILESDIR}/${PN}-3.0-setup.patch"
 
 src_prepare() {
 	default_src_prepare
