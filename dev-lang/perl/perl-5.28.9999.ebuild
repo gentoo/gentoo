@@ -9,14 +9,14 @@ PATCH_VER=1
 CROSS_VER=1.1.6
 PATCH_BASE="perl-5.27.1-patches-${PATCH_VER}"
 
-DIST_AUTHOR=WOLFSAGE
+DIST_AUTHOR=GENEHACK
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.3
+	DIST_VERSION=5.27.4
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -83,7 +83,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.350.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.940.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.708.210 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.709.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
 	src_remove_dual      perl-core/Test-Harness       3.390.0       prove
