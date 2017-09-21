@@ -33,12 +33,13 @@ IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 #>=dev-libs/jerasure-2.0.0-r1
 #>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
+	virtual/libudev
 	app-arch/bzip2:=[static-libs?]
 	app-arch/lz4:=[static-libs?]
 	app-arch/snappy:=[static-libs?]
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
-	dev-libs/boost:=[threads,context,static-libs?,${PYTHON_USEDEP}]
+	dev-libs/boost:=[threads,context,python,static-libs?,${PYTHON_USEDEP}]
 	dev-libs/crypto++:=[static-libs?]
 	dev-libs/leveldb:=[snappy,static-libs?]
 	dev-libs/libaio:=[static-libs?]
