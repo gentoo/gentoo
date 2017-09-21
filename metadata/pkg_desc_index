@@ -8341,7 +8341,7 @@ dev-python/pyjwt 1.4.0 1.5.0 1.5.2 1.5.3: JSON Web Token implementation in Pytho
 dev-python/pykerberos 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.5.2 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylast 1.6.0 1.7.0: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 1.6.0 1.7.0 1.9.0: Python interface to last.fm and other api-compatible websites
 dev-python/pyldap 2.4.28 2.4.37: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
