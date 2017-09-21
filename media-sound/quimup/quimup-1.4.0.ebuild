@@ -6,7 +6,7 @@ inherit eutils qmake-utils
 
 MY_P=${PN}_${PV}
 
-DESCRIPTION="A Qt4 client for the music player daemon (MPD) written in C++"
+DESCRIPTION="A Qt5 client for the music player daemon (MPD) written in C++"
 HOMEPAGE="http://mpd.wikia.com/wiki/Client:Quimup"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}_src.tar.gz"
 
