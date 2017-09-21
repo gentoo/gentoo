@@ -15,8 +15,8 @@
 	</maintainer>
 	<longdescription>
 		Libraries from Dreamworks Animation for the efficient manipulation 
-                of volumetric data used in big budget movies like 'Cloudy with a
-                Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
+		of volumetric data used in big budget movies like 'Cloudy with a
+		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
 		<flag restrict="&gt;=media-gfx/openvdb-4.0.0" name="abi3-compat">
