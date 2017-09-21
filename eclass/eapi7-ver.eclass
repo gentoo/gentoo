@@ -174,79 +174,92 @@ ver_rs() {
 	echo "${comp[*]}"
 }
 
-# @FUNCTION: _ver_validate
-# @USAGE: <comp[0]>...
+# @FUNCTION: _ver_compare
+# @USAGE: <va> <vb>
+# @RETURN: 1 if <va> < <vb>, 2 if <va> = <vb>, 3 if <va> > <vb>
+# @INTERNAL
 # @DESCRIPTION:
-# Verify that the version component array passed as the argument
-# validates according to the PMS version rules. Returns 0 if it does,
-# 1 otherwise.
-_ver_validate() {
-	local prev=start
+# Compare two versions <va> and <vb>.  If <va> is less than, equal to,
+# or greater than <vb>, return 1, 2, or 3 as exit status, respectively.
+_ver_compare() {
+	local va=${1} vb=${2} a an al as ar b bn bl bs br re LC_ALL=C
 
-	while [[ ${1} || ${2} ]]; do
-		local s=${1}
-		local c=${2}
+	re="^([0-9]+(\.[0-9]+)*)([a-z]?)((_(alpha|beta|pre|rc|p)[0-9]*)*)(-r[0-9]+)?$"
 
-		if [[ -z ${s} ]]; then
-			if [[ ${c} == [0-9]* ]]; then
-				# number without preceding sep may be either:
-				case ${prev} in
-					# a. 1st version number
-					start) prev=numeric;;
-					# b. _foo suffix number
-					suffix) prev=suffix_num;;
-					# c. -rN revision number
-					revision) prev=revision_num;;
-					*) return 1;;
-				esac
-			elif [[ -n ${c} ]]; then
-				# letter without preceding sep = letter after version
-				[[ ${prev} == numeric ]] || return 1
-				[[ ${#c} -eq 1 ]] || return 1
-				prev=letter
-			fi
-		elif [[ -z ${c} ]]; then
-			# trailing suffix?
-			return 1
-		elif [[ ${s} == . ]]; then
-			# number preceded by dot = numeric component
-			[[ ${prev} == numeric ]] || return 1
-		elif [[ ${s} == _ ]]; then
-			# _ implies _foo suffix
-			case ${prev} in
-				numeric|letter|suffix|suffix_num) ;;
-				*) return 1;;
-			esac
+	[[ ${va} =~ ${re} ]] || die "${FUNCNAME}: invalid version: ${va}"
+	an=${BASH_REMATCH[1]}
+	al=${BASH_REMATCH[3]}
+	as=${BASH_REMATCH[4]}
+	ar=${BASH_REMATCH[7]}
 
-			case ${c} in
-				alpha) ;;
-				beta) ;;
-				rc) ;;
-				pre) ;;
-				p) ;;
-				*) return 1;;
-			esac
-			prev=suffix
-		elif [[ ${s} == - ]]; then
-			# - implies revision
-			case ${prev} in
-				numeric|letter|suffix|suffix_num) ;;
-				*) return 1;;
-			esac
+	[[ ${vb} =~ ${re} ]] || die "${FUNCNAME}: invalid version: ${vb}"
+	bn=${BASH_REMATCH[1]}
+	bl=${BASH_REMATCH[3]}
+	bs=${BASH_REMATCH[4]}
+	br=${BASH_REMATCH[7]}
 
-			[[ ${c} == r ]] || return 1
-			prev=revision
+	# Compare numeric components (PMS algorithm 3.2)
+	# First component
+	a=${an%%.*}
+	b=${bn%%.*}
+	[[ 10#${a} -gt 10#${b} ]] && return 3
+	[[ 10#${a} -lt 10#${b} ]] && return 1
+
+	while [[ ${an} == *.* && ${bn} == *.* ]]; do
+		# Other components (PMS algorithm 3.3)
+		an=${an#*.}
+		bn=${bn#*.}
+		a=${an%%.*}
+		b=${bn%%.*}
+		if [[ ${a} == 0* || ${b} == 0* ]]; then
+			# Remove any trailing zeros
+			[[ ${a} =~ 0+$ ]] && a=${a%"${BASH_REMATCH[0]}"}
+			[[ ${b} =~ 0+$ ]] && b=${b%"${BASH_REMATCH[0]}"}
+			[[ ${a} > ${b} ]] && return 3
+			[[ ${a} < ${b} ]] && return 1
 		else
-			return 1
+			[[ ${a} -gt ${b} ]] && return 3
+			[[ ${a} -lt ${b} ]] && return 1
 		fi
-
-		shift 2
 	done
+	[[ ${an} == *.* ]] && return 3
+	[[ ${bn} == *.* ]] && return 1
 
-	# empty version string?
-	[[ ${prev} != start ]] || return 1
+	# Compare letter components (PMS algorithm 3.4)
+	[[ ${al} > ${bl} ]] && return 3
+	[[ ${al} < ${bl} ]] && return 1
 
-	return 0
+	# Compare suffixes (PMS algorithm 3.5)
+	as=${as#_}${as:+_}
+	bs=${bs#_}${bs:+_}
+	while [[ -n ${as} && -n ${bs} ]]; do
+		# Compare each suffix (PMS algorithm 3.6)
+		a=${as%%_*}
+		b=${bs%%_*}
+		if [[ ${a%%[0-9]*} == "${b%%[0-9]*}" ]]; then
+			[[ 10#${a##*[a-z]} -gt 10#${b##*[a-z]} ]] && return 3
+			[[ 10#${a##*[a-z]} -lt 10#${b##*[a-z]} ]] && return 1
+		else
+			# Check for p first
+			[[ ${a%%[0-9]*} == p ]] && return 3
+			[[ ${b%%[0-9]*} == p ]] && return 1
+			# Hack: Use that alpha < beta < pre < rc alphabetically
+			[[ ${a} > ${b} ]] && return 3 || return 1
+		fi
+		as=${as#*_}
+		bs=${bs#*_}
+	done
+	if [[ -n ${as} ]]; then
+		[[ ${as} == p[_0-9]* ]] && return 3 || return 1
+	elif [[ -n ${bs} ]]; then
+		[[ ${bs} == p[_0-9]* ]] && return 1 || return 3
+	fi
+
+	# Compare revision components (PMS algorithm 3.7)
+	[[ 10#${ar#-r} -gt 10#${br#-r} ]] && return 3
+	[[ 10#${ar#-r} -lt 10#${br#-r} ]] && return 1
+
+	return 2
 }
 
 # @FUNCTION: ver_test
@@ -258,7 +271,6 @@ _ver_validate() {
 # revision parts), and the comparison is performed according to
 # the algorithm specified in the PMS.
 ver_test() {
-	local LC_ALL=C
 	local va op vb
 
 	if [[ $# -eq 3 ]]; then
@@ -278,143 +290,6 @@ ver_test() {
 		*) die "${FUNCNAME}: invalid operator: ${op}" ;;
 	esac
 
-	# explicitly strip -r0[00000...] to avoid overcomplexifying the algo
-	[[ ${va} == *-r0* && 10#${va#*-r} -eq 0 ]] && va=${va%-r*}
-	[[ ${vb} == *-r0* && 10#${vb#*-r} -eq 0 ]] && vb=${vb%-r*}
-
-	local comp compb
-	_ver_split "${vb}"
-	compb=( "${comp[@]}" )
-	_ver_split "${va}"
-
-	_ver_validate "${comp[@]}" || die "${FUNCNAME}: invalid version: ${va}"
-	_ver_validate "${compb[@]}" || die "${FUNCNAME}: invalid version: ${vb}"
-
-	local i sa sb ca cb wa wb result=0
-	for (( i = 0;; i += 2 )); do
-		sa=${comp[i]}
-		ca=${comp[i+1]}
-		sb=${compb[i]}
-		cb=${compb[i+1]}
-
-		# 1. determine the component type for Ca
-		if [[ -z ${sa} ]]; then
-			if [[ ${ca} == [0-9]* ]]; then
-				# number without preceding sep may be either:
-				# a. 1st version number
-				# b. _foo suffix number
-				# c. -rN revision number
-				# weight is irrelevant since (a) occurs simultaneously,
-				# and (b)/(c) use weight of preceding component
-				wa=0
-				# method: plain numeric
-				m=pn
-			elif [[ -n ${ca} ]]; then
-				# letter without preceding sep = letter after version
-				# weight below numeric, lexical method
-				wa=9
-				m=l
-			else
-				# empty == end of version string
-				# weight below all positive stuff but above negative
-				wa=6
-				m=
-			fi
-		elif [[ ${sa} == . ]]; then
-			# number preceded by dot = numeric component
-			# highest weight, weird PMS 2+ component comparison
-			wa=10
-			m=wn
-		elif [[ ${sa} == _ ]]; then
-			# _ implies _foo suffix
-			# weights differ, comparison by weight
-			case ${ca} in
-				alpha) wa=2 ;;
-				beta) wa=3 ;;
-				rc) wa=4 ;;
-				pre) wa=5 ;;
-				p) wa=8 ;;
-				*) die "Invalid version suffix: _${ca}";;
-			esac
-			m=
-		elif [[ ${sa} == - ]]; then
-			# - implies revision
-			# weight below positive suffixes, no comparison
-			[[ ${ca} == r ]] || die "Invalid version part: -${ca}"
-			wa=7
-			m=
-		fi
-
-		# 2. determine the component type for Cb
-		if [[ -z ${sb} ]]; then
-			if [[ ${cb} == [0-9]* ]]; then
-				wb=0
-			elif [[ -n ${cb} ]]; then
-				wb=9
-			else
-				wb=6
-			fi
-		elif [[ ${sb} == . ]]; then
-			wb=10
-		elif [[ ${sb} == _ ]]; then
-			case ${cb} in
-				alpha) wb=2 ;;
-				beta) wb=3 ;;
-				rc) wb=4 ;;
-				pre) wb=5 ;;
-				p) wb=8 ;;
-				*) die "Invalid version suffix: _${cb}";;
-			esac
-		elif [[ ${sb} == - ]]; then
-			[[ ${cb} == r ]] || die "Invalid version part: -${cb}"
-			wb=7
-		fi
-
-		# DEBUG
-		#echo "$sa $ca [$wa] <$m> $sb $cb [$wb]" >&2
-
-		# 3. compare weights, we can proceed further only if weights match
-		if [[ ${wa} -ne ${wb} ]]; then
-			result=$(( wa - wb ))
-			break
-		fi
-
-		# 4. both empty maybe?
-		[[ -z ${ca} && -z ${cb} ]] && break
-
-		# 5. compare components according to the algo
-
-		# weird numeric is weird and reuses pn/l, so do it first
-		# (PMS algo 3.3)
-		if [[ ${m} == wn ]]; then
-			if [[ ${ca} != 0* && ${cb} != 0* ]]; then
-				# if neither of them starts with 0, use normal numeric
-				m=pn
-			else
-				# strip trailing zeros
-				while [[ ${ca} == *0 ]]; do ca=${ca::-1}; done
-				while [[ ${cb} == *0 ]]; do cb=${cb::-1}; done
-				m=l
-			fi
-		fi
-
-		case ${m} in
-			pn) # plain numeric
-				if [[ 10#${ca} -ne 10#${cb} ]]; then
-					result=$(( 10#${ca} - 10#${cb} ))
-					break
-				fi
-				;;
-			l) # lexical
-				if [[ ${ca} != ${cb} ]]; then
-					[[ ${ca} > ${cb} ]] && result=1 || result=-1
-					break
-				fi
-				;;
-			'') ;;
-			*) die "Unexpected comparison method m=${m}";;
-		esac
-	done
-
-	test "${result}" "${op}" 0
+	_ver_compare "${va}" "${vb}"
+	test $? "${op}" 2
 }
