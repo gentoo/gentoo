@@ -27,5 +27,6 @@ CONTRIBCATEGORIES="media modeline minor-mode util"
 src_install() {
 	common-lisp-install-sources -t all ${CONTRIBCATEGORIES}
 	dobin util/stumpish/stumpish
+	dobin util/pinentry/stumpwm-pinentry
 	dodoc README.org
 }
