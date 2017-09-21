@@ -9579,7 +9579,7 @@ dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
 dev-ruby/fattr 2.3.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.6 0.11.8.7: A ruby indexing/searching library
-dev-ruby/ffaker 2.4.0 2.5.0 2.6.0: Faster Faker, generates dummy data
+dev-ruby/ffaker 2.6.0 2.7.0: Faster Faker, generates dummy data
 dev-ruby/ffi 1.9.6-r2 1.9.10 1.9.18: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/file-tail 1.1.1 1.2.0: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.1.1: small ruby class for handling filesizes with both the SI and binary prefixes
