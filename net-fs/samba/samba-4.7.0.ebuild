@@ -75,7 +75,7 @@ CDEPEND="
 	gpg? ( app-crypt/gpgme )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
-	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
+	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
@@ -97,7 +97,7 @@ RDEPEND="${CDEPEND}
 	!dev-perl/Parse-Yapp
 "
 
-REQUIRED_USE="addc? ( python gnutls !system-mitkrb5 )
+REQUIRED_USE="addc? ( python gnutls )
 	test? ( python )
 	addns? ( python )
 	ads? ( acl gnutls ldap )
