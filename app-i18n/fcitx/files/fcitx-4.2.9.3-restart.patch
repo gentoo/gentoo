@@ -1,0 +1,13 @@
+https://github.com/fcitx/fcitx/issues/362
+https://github.com/fcitx/fcitx/commit/82202f6b81361263693f07ae17c55c8ce048b220
+
+--- /src/lib/fcitx/instance.c
++++ /src/lib/fcitx/instance.c
+@@ -365,6 +365,7 @@
+         setjmp(FcitxRecover);
+ 
+         if (instance->destroy || instance->restart) {
++            FcitxInstanceEnd(instance);
+             FcitxInstanceRealEnd(instance);
+             break;
+         }
