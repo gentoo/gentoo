@@ -1698,7 +1698,7 @@ app-leechcraft/lc-vgrabber 9999: Allows to find, stream and save audio and video
 app-leechcraft/lc-vrooby 9999: Vrooby, removable device manager for LeechCraft
 app-leechcraft/lc-xproxy 9999: Provides advanced proxy support features for LeechCraft
 app-leechcraft/lc-xtazy 9999: Fetches info about current tune and provides it to other plugins
-app-leechcraft/lcpackgen 1.3 1.3.1: Package creator for app-leechcraft/lc-lackman package manager
+app-leechcraft/lcpackgen 1.3.1: Package creator for app-leechcraft/lc-lackman package manager
 app-leechcraft/leechcraft-meta 9999: Metapackage containing all ready-to-use LeechCraft plugins
 app-leechcraft/liblaretz 0.1.0 9999: Shared library to be used by the Laretz sync server and its clients
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
@@ -1990,7 +1990,7 @@ app-misc/yq 2.1.2 2.3.0: Command-line YAML processor - jq wrapper for YAML docum
 app-misc/ytree 1.99_p1: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
-app-misc/zygrib 7.0.0 8.0.1: GRIB File Viewer - Weather data visualization
+app-misc/zygrib 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.7 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
@@ -11615,7 +11615,7 @@ games-strategy/uqm 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1 11.04.1-r1: A free Worms clone
-games-strategy/warzone2100 3.1.5 3.1.5-r1 3.2.2 3.2.3: 3D real-time strategy game
+games-strategy/warzone2100 3.2.3: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.18-r1: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and coordination
@@ -13778,7 +13778,7 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
 media-sound/jack2 1.9.10 1.9.11_rc1: Jackdmp jack implemention for multi-processor machine
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
-media-sound/jalv 1.4.4 1.4.6 1.6.0-r1: Simple but fully featured LV2 host for Jack
+media-sound/jalv 1.6.0-r1: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
@@ -13903,7 +13903,7 @@ media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.3.10 0.4.4 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.10.9 0.10.10 1.1.7-r1 1.1.9 1.1.10 9999: Qt5-based audio player with winamp/xmms skins support
