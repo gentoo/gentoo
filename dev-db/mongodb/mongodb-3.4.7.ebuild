@@ -20,9 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
-RDEPEND=">=app-arch/snappy-1.1.2
-	>=dev-cpp/yaml-cpp-0.5.1
-	>=dev-libs/boost-1.57[threads(+)]
+RDEPEND=">=app-arch/snappy-1.1.3
+	>=dev-cpp/yaml-cpp-0.5.3
+	>=dev-libs/boost-1.60[threads(+)]
 	>=dev-libs/libpcre-8.39[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
@@ -33,7 +33,7 @@ RDEPEND=">=app-arch/snappy-1.1.2
 		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-4.8.2:*
+	>=sys-devel/gcc-5.3.0:*
 	sys-libs/ncurses
 	sys-libs/readline
 	debug? ( dev-util/valgrind )
@@ -45,20 +45,20 @@ DEPEND="${RDEPEND}
 PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.2.0-fix-scons.patch"
-	"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch"
 	"${FILESDIR}/${PN}-3.2.10-boost-1.62.patch"
-	"${FILESDIR}/${PN}-3.2.16-Replace-string-with-explicit-std-string.patch"
+	"${FILESDIR}/${PN}-3.4.0-fix-scons.patch"
+	"${FILESDIR}/${PN}-3.4.4-Replace-string-with-explicit-std-string.patch"
 	"${FILESDIR}/${PN}-3.4.6-sysmacros-include.patch"
+	"${FILESDIR}/${PN}-3.4.7-no-boost-check.patch"
 )
 
 S=${WORKDIR}/${MY_P}
 
 pkg_pretend() {
 	if [[ ${REPLACING_VERSIONS} < 3.0 ]]; then
-		ewarn "To upgrade an existing MongoDB deployment to 3.2, you must be"
-		ewarn "running a 3.0-series release. Please update to the latest 3.0"
-		ewarn "release before continuing if wish to keep your data."
+		ewarn "To upgrade from a version earlier than the 3.0-series, you must"
+		ewarn "successively upgrade major releases until you have upgraded"
+		ewarn "to 3.2-series. Then upgrade to 3.4 series."
 	fi
 }
 
@@ -184,8 +184,6 @@ pkg_postinst() {
 	done
 
 	ewarn "Make sure to read the release notes and follow the upgrade process:"
-	ewarn "  https://docs.mongodb.org/manual/release-notes/3.2/"
-	ewarn "  https://docs.mongodb.org/master/release-notes/3.2-upgrade/"
-	ewarn
-	ewarn " Starting in 3.2, MongoDB uses the WiredTiger as the default storage engine."
+	ewarn "  https://docs.mongodb.org/manual/release-notes/3.4/"
+	ewarn "  https://docs.mongodb.com/manual/release-notes/3.4/#upgrade-procedures"
 }
