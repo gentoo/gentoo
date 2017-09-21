@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~x86"
 COMMON_DEPS="dev-java/commons-logging
 	dev-java/commons-lang:2.1
 	dev-java/commons-io:1
-	dev-libs/protobuf[java]
+	dev-java/protobuf-java:0
 	dev-java/fastutil:0
 	dev-java/log4j
 	dev-java/jsap
