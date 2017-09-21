@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,7 +22,7 @@ CDEPEND="~dev-java/${MY_PN}-buffer-${PV}:0
 	~dev-java/${MY_PN}-transport-${PV}:0
 	dev-java/jboss-marshalling:0
 	dev-java/jzlib:1.1.3
-	dev-libs/protobuf:0[java]"
+	dev-java/protobuf-java:0"
 
 RDEPEND=">=virtual/jre-1.7
 	${CDEPEND}"
