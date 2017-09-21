@@ -24,8 +24,8 @@ SLOT="4-plasma5"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.8
-	>=app-i18n/fcitx-qt5-1.1
+RDEPEND=">=app-i18n/fcitx-4.2.9:4
+	>=app-i18n/fcitx-qt5-1.1:4
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
