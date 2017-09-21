@@ -47,7 +47,7 @@ RDEPEND="qt5? (
 		>=media-libs/sdl-sound-1.0.1 )
 	soundio? ( media-libs/libsoundio )
 	stk? ( media-libs/stk )
-	vst? ( app-emulation/wine )"
+	vst? ( || ( app-emulation/wine virtual/wine ) )"
 DEPEND="${RDEPEND}
 	qt5? ( dev-qt/linguist-tools:5 )
 	>=dev-util/cmake-2.4.5"
