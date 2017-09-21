@@ -4,7 +4,7 @@ DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 EAPI=5
 HOMEPAGE=http://www.isc.org/software/bind
 IUSE=doc gost gssapi idn ipv6 libressl readline seccomp ssl urandom xml
-KEYWORDS=alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( net-dns/idnkit ) gssapi? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) seccomp? ( sys-libs/libseccomp ) !<net-dns/bind-9.10.2
 REQUIRED_USE=gost? ( !libressl ssl )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.isc.org/isc/bind9/9.11.1-P1/bind-9.11.1-P1.tar.gz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=6e35b8fa4c6fde32af72792171e0236b
+_md5_=5798f4d27721d04da47d207a6e2dec4d
