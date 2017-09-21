@@ -18344,7 +18344,7 @@ www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.4.7 4.5.4 4.6.4 4.7.14 4.8.1 4.8.5: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/nextcloud 11.0.3 11.0.4 12.0.0 12.0.2: Personal cloud that runs on your own server
+www-apps/nextcloud 11.0.4 11.0.5 12.0.2 12.0.3: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.3-r1 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
