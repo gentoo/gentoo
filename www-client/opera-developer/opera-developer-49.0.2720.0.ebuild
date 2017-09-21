@@ -13,10 +13,19 @@ DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="http://www.opera.com/"
 LICENSE="OPERA-2014"
 SLOT="0"
-SRC_URI_BASE="http://get.geo.opera.com/pub/"
-SRC_URI="
-	amd64?	( "${SRC_URI_BASE}${PN}/${PV}/linux/${PN}_${PV}_amd64.deb" )
+SRC_URI_BASE="
+	http://download1.operacdn.com/pub/
+	http://download2.operacdn.com/pub/
+	http://download3.operacdn.com/pub/
+	http://download4.operacdn.com/pub/
 "
+SRC_URI="amd64? ("
+for uri in ${SRC_URI_BASE}; do
+SRC_URI+="
+	"${uri}${PN}/${PV}/linux/${PN}_${PV}_amd64.deb"
+"
+done
+SRC_URI+=")"
 KEYWORDS="~amd64"
 
 RDEPEND="
