@@ -3,7 +3,7 @@
 
 # Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
 # Requires [cuda] which is masked in most of the profiles.
-media-libs/opencv -contrib_xfeatures2d
+media-libs/opencv contrib_xfeatures2d
 
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Sep 2017)
 # dev-python/tlslite is keyworded only for x86/amd64
