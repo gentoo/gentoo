@@ -3601,6 +3601,11 @@ developers and volunteer mentors.</description>
     <name>Gentoo Sandbox Team</name>
     <url>https://wiki.gentoo.org/wiki/Project:Sandbox</url>
     <description>The Gentoo Sandbox Team maintains sandbox-related tools and libraries</description>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
