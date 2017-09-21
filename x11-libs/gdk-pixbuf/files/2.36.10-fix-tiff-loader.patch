@@ -26,7 +26,7 @@ index 0abe5ce..c07bd6f 100644
  fi
  
 -AM_CONDITIONAL(HAVE_TIFF, test "x$LIBTIFF" != x)
-+AM_CONDITIONAL(HAVE_TIFF, test "x$libtiff_found" != x)
++AM_CONDITIONAL(HAVE_TIFF, test "x$libtiff_found" != xno)
  AM_CONDITIONAL(HAVE_PNG, test "x$LIBPNG" != x)
  AM_CONDITIONAL(HAVE_JPEG, test "x$LIBJPEG" != x)
  AM_CONDITIONAL(HAVE_JASPER, test "x$LIBJASPER" != x)
