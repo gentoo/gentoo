@@ -9,6 +9,6 @@ LICENSE=TeamViewer LGPL-2.1
 RDEPEND=system-wine? ( app-emulation/wine[abi_x86_32(-),png] ) !system-wine? ( media-libs/libpng:1.2[abi_x86_32(-)] ) sys-apps/dbus[abi_x86_32(-)] dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtgui:4[abi_x86_32(-)] dev-qt/qtwebkit:4[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libSM[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXau[abi_x86_32(-)] x11-libs/libXdamage[abi_x86_32(-)] x11-libs/libXdmcp[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXfixes[abi_x86_32(-)] x11-libs/libXrandr[abi_x86_32(-)] x11-libs/libXtst[abi_x86_32(-)]
 RESTRICT=bindist mirror
 SLOT=12
-SRC_URI=https://download.teamviewer.com/download/version_12x/teamviewer_12.0.76279_i386.deb
+SRC_URI=https://download.teamviewer.com/download/version_12x/teamviewer_12.0.85001_i386.deb
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=ab59c98974b3d0323abb011a5a8556df
