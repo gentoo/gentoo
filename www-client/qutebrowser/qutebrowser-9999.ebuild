@@ -57,7 +57,7 @@ python_test() {
 
 python_install_all() {
 	doman doc/${PN}.1
-	dodoc {CHANGELOG,CONTRIBUTING,FAQ,README}.asciidoc
+	for DocFile in {doc/,./}*.asciidoc; do dodoc $DocFile; done
 
 	domenu ${PN}.desktop
 	doicon -s scalable icons/${PN}.svg
