@@ -4,15 +4,14 @@
 EAPI=6
 inherit cmake-utils toolchain-funcs versionator
 
+MY_PV="$(replace_all_version_separators '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
 HOMEPAGE="http://graphics.pixar.com/opensubdiv/"
-
-MY_PV="$(replace_all_version_separators '_')"
-
 SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="cuda doc examples opencl openmp ptex tbb tutorials"
 
 RDEPEND="media-libs/glew:=
@@ -22,11 +21,17 @@ RDEPEND="media-libs/glew:=
 
 DEPEND="${RDEPEND}
 	tbb? ( dev-cpp/tbb )
-	doc? ( dev-python/docutils app-doc/doxygen )"
+	doc? ( 
+		dev-python/docutils
+		app-doc/doxygen
+	)"
 
-KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 
-S="${WORKDIR}"/OpenSubdiv-${MY_PV}
+PATCHES=(
+	"${FILESDIR}/${P}-fix-quotes.patch"
+	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -34,13 +39,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
-src_prepare() {
-	cmake-utils_src_prepare
-
-	sed -e 's|"${OSD_SONAME}"|${OSD_SONAME}|' \
-	    -i CMakeLists.txt || die
 }
 
 src_configure() {
@@ -53,11 +51,12 @@ src_configure() {
 		-DNO_OMP=$(usex !openmp)
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
-		-DNO_REGRESSION=1 # The don't work with certain settings
+		-DNO_REGRESSION=1 # They don't work with certain settings
 		-DNO_EXAMPLES=$(usex !examples)
 		-DNO_TUTORIALS=$(usex !tutorials)
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
 
 	cmake-utils_src_configure
