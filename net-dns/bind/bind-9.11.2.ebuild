@@ -38,7 +38,7 @@ SRC_URI="ftp://ftp.isc.org/isc/bind9/${MY_PV}/${MY_P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps dlz dnstap doc filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
 json ldap libressl lmdb mysql nslint odbc postgres python rpz seccomp selinux ssl static-libs
@@ -100,9 +100,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# bug 600212
-	epatch "${FILESDIR}"/${P}-dyndb-dlopen.patch
-
 	# Adjusting PATHs in manpages
 	for i in bin/{named/named.8,check/named-checkconf.8,rndc/rndc.8} ; do
 		sed -i \
@@ -221,7 +218,7 @@ src_install() {
 		cd "${S}"
 	fi
 
-	dodoc CHANGES FAQ README
+	dodoc CHANGES README
 
 	if use idn; then
 		dodoc contrib/idn/README.idnkit
