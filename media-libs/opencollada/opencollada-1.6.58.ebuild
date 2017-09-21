@@ -11,9 +11,7 @@ SRC_URI="https://github.com/KhronosGroup/OpenCOLLADA/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-
 KEYWORDS="~amd64 ~ppc64 ~x86"
-
 IUSE="static-libs"
 
 # This is still needed to have so version numbers
@@ -27,9 +25,9 @@ RDEPEND="dev-libs/libpcre
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}"/OpenCOLLADA-${PV}
+S="${WORKDIR}/OpenCOLLADA-${PV}"
 
-PATCHES=( "${FILESDIR}"/${PN}-build-fixes-v1.patch )
+PATCHES=( "${FILESDIR}/${PN}-build-fixes-v3.patch" )
 
 src_prepare() {
 	edos2unix CMakeLists.txt
@@ -37,7 +35,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	# Remove bundled depends that have portage equivalents
-	rm -rv Externals/{expat,lib3ds,LibXML,pcre,zlib,zziplib} || die
+	rm -rv Externals/{expat,lib3ds,LibXML,pcre,zziplib} || die
 
 	# Remove unused build systems
 	rm -v Makefile scripts/{unixbuild.sh,vcproj2cmake.rb} || die
@@ -61,5 +59,11 @@ src_install() {
 	echo "LDPATH=/usr/$(get_libdir)/opencollada" > "${T}"/99${PN} || die "echo failed"
 	doenvd "${T}"/99${PN}
 
+	dobin "${BUILD_DIR}/bin/DAEValidator"
 	dobin "${BUILD_DIR}/bin/OpenCOLLADAValidator"
+	# Need to be in same directory as above binaries
+	docinto "/usr/bin"
+	dodoc "${BUILD_DIR}/bin/COLLADAPhysX3Schema.xsd"
+	dodoc "${BUILD_DIR}/bin/collada_schema_1_4_1.xsd"
+	dodoc "${BUILD_DIR}/bin/collada_schema_1_5.xsd"
 }
