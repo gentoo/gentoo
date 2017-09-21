@@ -992,7 +992,7 @@ app-doc/votca-csg-manual 9999: Manual for votca-csg
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
 app-doc/zeal 0.2.1 0.3.1 0.4.0: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
-app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: Text editor based on the FOX Toolkit
+app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/atom 1.15.0-r1 1.16.0 1.18.0: A hackable text editor for the 21st Century
@@ -15166,7 +15166,7 @@ net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays Blinke
 net-misc/bopm 3.1.3-r3: Blitzed Open Proxy Monitor
 net-misc/bridge-utils 1.5 1.6: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
 net-misc/bsdwhois 1.43.2.1: FreeBSD Whois Client
-net-misc/bti 031-r1 034: A command line twitter/identi.ca client
+net-misc/bti 034: A command line twitter/identi.ca client
 net-misc/buka 2.0: Download manga from buka.cn
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
 net-misc/cadaver 0.23.3: Command-line WebDAV client
