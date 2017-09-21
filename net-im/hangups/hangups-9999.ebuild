@@ -33,7 +33,7 @@ COMMON_DEPEND=">=dev-python/configargparse-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.6.0[${PYTHON_USEDEP}]
 	<dev-python/requests-3.0.0
 	>=dev-python/ReParser-1.4.3[${PYTHON_USEDEP}]
-	>=dev-libs/protobuf-3.1.0[python]
+	>=dev-python/protobuf-python-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/urwid-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/MechanicalSoup-0.6.0[${PYTHON_USEDEP}]"
 	DEPEND="${COMMON_DEPEND}

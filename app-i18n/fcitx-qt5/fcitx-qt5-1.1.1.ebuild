@@ -8,11 +8,11 @@ inherit cmake-utils
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-configtool"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-qt5"
 fi
 
-DESCRIPTION="GTK+ GUI configuration tool for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-configtool"
+DESCRIPTION="Fcitx input method module for Qt 5"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-qt5"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
@@ -21,23 +21,19 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="4"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE=""
 
+# Private headers of dev-qt/qtgui:5 used.
 RDEPEND=">=app-i18n/fcitx-4.2.9:4
-	app-text/iso-codes
-	dev-libs/glib:2
-	x11-libs/gtk+:3"
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5=
+	dev-qt/qtwidgets:5
+	virtual/libintl
+	x11-libs/libxkbcommon"
 DEPEND="${RDEPEND}
+	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig"
 
 DOCS=()
-
-src_configure() {
-	local mycmakeargs=(
-		-DENABLE_GTK2=OFF
-		-DENABLE_GTK3=ON
-	)
-
-	cmake-utils_src_configure
-}
