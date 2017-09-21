@@ -25,7 +25,7 @@ KEYWORDS=""
 IUSE=""
 
 # Private headers of dev-qt/qtgui:5 used.
-RDEPEND=">=app-i18n/fcitx-4.2.8
+RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5=
