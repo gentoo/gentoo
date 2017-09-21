@@ -1488,15 +1488,15 @@ app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r3: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.9.1 4.2.9.2 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.1 4.2.9.2 4.2.9.3 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2: Japanese Anthy module for Fcitx
-app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
+app-i18n/fcitx-chewing 0.2.0 0.2.2 0.2.3 9999: Chinese Chewing input method for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4: A fcitx module to look up pinyin candidate words on the internet
-app-i18n/fcitx-configtool 0.4.6 0.4.8 0.4.9 9999: GTK+ GUI configuration tool for Fcitx
+app-i18n/fcitx-configtool 0.4.6 0.4.8 0.4.9 0.4.10 9999: GTK+ GUI configuration tool for Fcitx
 app-i18n/fcitx-hangul 0.2.1 0.3.0: Korean Hangul module for Fcitx
 app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 0.5.2 9999: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.3 9999: m17n-provided input methods for Fcitx
-app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 9999: Fcitx input method module for Qt 5
+app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 1.1.1 9999: Fcitx input method module for Qt 5
 app-i18n/fcitx-rime 0.2.0 0.3.1: Rime support for Fcitx
 app-i18n/fcitx-sayura 0.1.1 9999: Sinhala Sayura input method for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
@@ -1536,7 +1536,7 @@ app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement w
 app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcc 1.0: A Kanji code converter
-app-i18n/kcm-fcitx 0.4.3 0.4.9999 0.5.3 0.5.4 9999: KDE configuration module for Fcitx
+app-i18n/kcm-fcitx 0.4.3 0.4.9999 0.5.3 0.5.4 0.5.5 9999: KDE configuration module for Fcitx
 app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kimera 2.11-r1 2.11-r2: A Japanese input method which supports the XIM protocol
 app-i18n/kinput2 3.1-r1 3.1-r2: A Japanese input server which supports the XIM protocol
@@ -4379,7 +4379,7 @@ dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus proj
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
-dev-java/protobuf-java 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0: Google's Protocol Buffers - official Java Bindings
+dev-java/protobuf-java 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0 3.4.1: Google's Protocol Buffers - Java bindings
 dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
@@ -5040,7 +5040,7 @@ dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ libraries for building network-bas
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
-dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0: Google's Protocol Buffers -- an efficient method of encoding structured data
+dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0 3.4.1: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1 1.3.0: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX providing a better way of handling character encodings
@@ -8210,7 +8210,7 @@ dev-python/progressbar 2.3-r2 2.3-r3: Text progressbar library for python
 dev-python/prometheus_client 0.0.20: Python client for the Prometheus monitoring system
 dev-python/promise 0.4.2: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 1.0.0 1.0.14 1.0.15: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.1.0 3.3.0 3.3.0-r1: Google's Protocol Buffers - official Python bindings
+dev-python/protobuf-python 3.1.0 3.3.0 3.3.0-r1 3.4.1: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.0 1.5.1: W3C provenance data dodel library
 dev-python/psutil 1.2.1 2.1.3 5.0.1 5.1.3 5.2.2 5.3.0 5.3.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.6.2 2.7.3 2.7.3.1: PostgreSQL database adapter for Python

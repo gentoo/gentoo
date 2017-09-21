@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libiconv virtual/libintl x11-libs/libxkbcommon X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXrender xml? ( x11-libs/libxkbfile x11-misc/xkeyboard-config ) ) cairo? ( x11-libs/cairo[X] x11-libs/libXext pango? ( x11-libs/pango ) !pango? ( media-libs/fontconfig ) ) enchant? ( app-text/enchant:0= ) gtk2? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc:= ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) xml? ( app-text/iso-codes dev-libs/libxml2 ) kde-frameworks/extra-cmake-modules:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+EAPI=6
+HOMEPAGE=https://fcitx-im.org/ https://github.com/fcitx/fcitx
+IUSE=+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+ LGPL-2+ MIT
+RDEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libiconv virtual/libintl x11-libs/libxkbcommon X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXrender xml? ( x11-libs/libxkbfile x11-misc/xkeyboard-config ) ) cairo? ( x11-libs/cairo[X] x11-libs/libXext pango? ( x11-libs/pango ) !pango? ( media-libs/fontconfig ) ) enchant? ( app-text/enchant:0= ) gtk2? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc:= ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) xml? ( app-text/iso-codes dev-libs/libxml2 )
+REQUIRED_USE=cairo? ( X ) pango? ( cairo ) qt4? ( X )
+SLOT=4
+SRC_URI=https://download.fcitx-im.org/fcitx/fcitx-4.2.9.3_dict.tar.xz
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=848d2a0d3633631a0ece4d76263bdf34
