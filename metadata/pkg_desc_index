@@ -17222,7 +17222,7 @@ sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.20 1.8.21 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.4.27: PC/SC Architecture smartcard tools
-sys-apps/pick 1.8.0: a fuzzy search tool for the command-line
+sys-apps/pick 1.8.0 1.9.0: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.9.4 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
