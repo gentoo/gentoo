@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ RDEPEND="dev-qt/qtcore:4
 	sdl? ( media-libs/libsdl
 		>=media-libs/sdl-sound-1.0.1 )
 	stk? ( media-libs/stk )
-	vst? ( app-emulation/wine )"
+	vst? ( || ( app-emulation/wine virtual/wine ) )"
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.4.5"
 RDEPEND="${RDEPEND}
