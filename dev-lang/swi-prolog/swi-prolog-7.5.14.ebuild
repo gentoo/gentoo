@@ -14,13 +14,14 @@ SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="archive berkdb debug doc +gmp hardened java +libedit libressl minimal odbc readline ssl static-libs test uuid zlib X"
+IUSE="archive berkdb debug doc +gmp hardened java +libedit libressl minimal odbc pcre readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
 	archive? ( app-arch/libarchive )
 	berkdb? ( >=sys-libs/db-4:= )
 	zlib? ( sys-libs/zlib )
 	odbc? ( dev-db/unixODBC )
+	pcre? ( dev-libs/libpcre )
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
@@ -94,6 +95,7 @@ src_configure() {
 			$(use_with java jpl) \
 			${jpltestconf} \
 			$(use_with libedit) \
+			$(use_with pcre) \
 			$(use_with odbc) \
 			$(use_with readline) \
 			$(use_with ssl) \
