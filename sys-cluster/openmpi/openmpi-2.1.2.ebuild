@@ -21,7 +21,6 @@ IUSE_OPENMPI_RM="
 
 IUSE_OPENMPI_OFED_FEATURES="
 	openmpi_ofed_features_control-hdr-padding
-	openmpi_ofed_features_connectx-xrc
 	openmpi_ofed_features_udcm
 	openmpi_ofed_features_rdmacm
 	openmpi_ofed_features_dynamic-sl"
@@ -39,7 +38,6 @@ REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
 	openmpi_rm_pbs? ( !openmpi_rm_slurm )
 	openmpi_fabrics_psm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed )
-	openmpi_ofed_features_connectx-xrc? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_udcm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_dynamic-sl? ( openmpi_fabrics_ofed )"
@@ -125,7 +123,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
 		$(multilib_native_use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
 		$(multilib_native_use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding) \
-		$(multilib_native_use_enable openmpi_ofed_features_connectx-xrc openib-connectx-xrc) \
 		$(multilib_native_use_enable openmpi_ofed_features_rdmacm openib-rdmacm) \
 		$(multilib_native_use_enable openmpi_ofed_features_udcm openib-udcm) \
 		$(multilib_native_use_enable openmpi_ofed_features_dynamic-sl openib-dynamic-sl) \
