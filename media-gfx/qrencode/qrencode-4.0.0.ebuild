@@ -32,3 +32,8 @@ src_test() {
 	sed -i -e '/configure/d' test_all.sh || die
 	sh test_all.sh || die
 }
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
