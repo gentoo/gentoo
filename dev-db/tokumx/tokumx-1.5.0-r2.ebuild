@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="pax_kernel"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="!dev-db/mongodb
 	${PYTHON_DEPS}
 	dev-libs/jemalloc
 	>=dev-libs/boost-1.50[threads(+)]
