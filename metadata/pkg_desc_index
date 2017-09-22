@@ -7262,7 +7262,7 @@ dev-python/Babel 2.1.1 2.3.4 2.4.0 2.5.0: Collection of tools for internationali
 dev-python/BitVector 3.4.4 3.4.6: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 2.0.1: Jinja2 adapter for Django
-dev-python/CommonMark 0.5.4 0.7.3: Python parser for the CommonMark Markdown spec
+dev-python/CommonMark 0.5.4 0.7.3 0.7.4: Python parser for the CommonMark Markdown spec
 dev-python/CoverageTestRunner 1.9-r1 1.10 1.11: fail Python program unit tests unless they test everything
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
@@ -18936,7 +18936,7 @@ x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
-x11-misc/qps 1.10.16-r1: Visual process manager - Qt version of ps/top
+x11-misc/qps 1.10.16-r1 1.10.17: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
 x11-misc/qt5ct 0.31 0.33: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client for Linux
