@@ -4,7 +4,7 @@ DESCRIPTION=Simple, high-reliability, source control management, and more
 EAPI=6
 HOMEPAGE=http://www.fossil-scm.org/
 IUSE=debug fusefs json legacy-mv-rm -miniz system-sqlite +ssl static tcl th1-docs th1-hooks
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=BSD-2
 RDEPEND=sys-libs/zlib || ( sys-libs/readline:0 dev-libs/libedit ) system-sqlite? ( >=dev-db/sqlite-3.20.0:3 ) ssl? ( dev-libs/openssl:0 ) tcl? ( dev-lang/tcl:0= )
 REQUIRED_USE=ssl? ( !miniz )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://www.fossil-scm.org/index.html/uv/fossil-src-2.3.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=c041ebdbb2fcf2a086730be80405f013
+_md5_=86f151d3aceb3200d288e02914eab53f

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare pretend setup
+DEPEND=sys-libs/ncurses:0= >=sys-process/acct-6.6.4-r1 virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Resource-specific view of processes
+EAPI=6
+HOMEPAGE=https://www.atoptool.nl/ https://github.com/Atoptool/atop
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0= >=sys-process/acct-6.6.4-r1
+SLOT=0
+SRC_URI=https://github.com/Atoptool/atop/archive/v2.3.0.tar.gz -> atop-2.3.0.tar.gz https://github.com/Atoptool/atop/commit/42e86fcc42ce60f8c92f3c7d5f3a6ccde47c0b33.patch -> atop-2.3.0-version_h.patch https://github.com/Atoptool/atop/commit/a8d850d06efc8d70a19f55ec93fe83df51e99077.patch -> atop-2.3.0-version_c.patch https://github.com/Atoptool/atop/commit/5f101e656a24271726d1e9cd672631b6033c36c1.patch -> atop-2.3.0-netatop_h.patch
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=90775c53218c5ead0087d83ec08f5214
