@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Jonathan Scruggs <j.scruggs@gmail.com> (23 Sep 2017)
+# dependencies not keyworded yet
+media-libs/openimageio field3d ptex
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (22 Aug 2017)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
 app-i18n/fcitx-libpinyin dictmanager
