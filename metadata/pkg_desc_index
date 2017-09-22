@@ -17952,7 +17952,7 @@ sys-libs/timezone-data 2016h 2016i 2016j 2017a 2017b: Timezone data (/usr/share/
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uclibc-ng 1.0.19 1.0.20 1.0.22 1.0.23 1.0.24 1.0.24-r1 1.0.25 1.0.26 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1 1.2.4: A wrapper to fake privilege separation
-sys-libs/zlib 1.2.11: Standard (de)compression library
+sys-libs/zlib 1.2.11 1.2.11-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7 1.7-r1: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.27 2.0.28: Daemon for Advanced Configuration and Power Interface
