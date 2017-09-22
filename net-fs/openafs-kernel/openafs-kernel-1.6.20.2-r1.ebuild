@@ -8,7 +8,7 @@ inherit autotools linux-mod multilib toolchain-funcs versionator
 MY_PV=$(delete_version_separator '_')
 MY_PN="${PN/-kernel}"
 MY_P="${MY_PN}-${MY_PV}"
-PVER="20170212"
+PVER="20170822"
 
 DESCRIPTION="The OpenAFS distributed file system kernel module"
 HOMEPAGE="https://www.openafs.org/"
