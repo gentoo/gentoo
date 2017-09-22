@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="Combinators to devise OCaml Format pretty-printing functions"
 HOMEPAGE="http://erratique.ch/software/fmt https://github.com/dbuenzli/fmt"
@@ -19,7 +19,6 @@ RDEPEND="dev-ml/result:=[ocamlopt]
 	dev-ml/uchar:=[ocamlopt]
 	dev-ml/cmdliner:=[ocamlopt]"
 DEPEND="${RDEPEND}
-	dev-ml/opam
 	>=dev-ml/topkg-0.9
 	dev-ml/ocamlbuild
 	dev-ml/findlib"
@@ -30,13 +29,4 @@ src_compile() {
 
 src_test() {
 	ocaml pkg/pkg.ml test || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-	dodoc CHANGES.md README.md
 }
