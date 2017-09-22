@@ -17,7 +17,7 @@ SRC_URI="https://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
 LICENSE="PSF-2"
 SLOT="3.4/3.4m"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
+IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml pgo"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -177,7 +177,11 @@ src_compile() {
 
 	cd "${BUILD_DIR}" || die
 
-	emake CPPFLAGS= CFLAGS= LDFLAGS=
+    if use pgo; then
+		emake profile-opt CPPFLAGS= CFLAGS= LDFLAGS=
+	else
+		emake CPPFLAGS= CFLAGS= LDFLAGS=
+    fi
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax_kernel]; then
