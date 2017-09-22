@@ -15,14 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-CDEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/gmp:0=
 	>=dev-libs/libpcre-8.32
 "
 
 DEPEND="
-	${CDEPEND}
+	${RDEPEND}
 	sys-devel/gettext
 	doc? ( dev-util/gtk-doc )
 	test? (
@@ -31,11 +31,6 @@ DEPEND="
 	)
 "
 
-RDEPEND="
-	${CDEPEND}
-"
-
-# https://github.com/rhinstaller/libbytesize/issues/27
 RESTRICT="test"
 
 pkg_setup() {
