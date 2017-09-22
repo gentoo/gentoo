@@ -66,7 +66,7 @@ CDEPEND="dev-db/sqlite:3
 	snmp? ( net-analyzer/net-snmp )
 	span? ( media-libs/spandsp )
 	speex? ( media-libs/speex )
-	srtp? ( net-libs/libsrtp:= )
+	srtp? ( net-libs/libsrtp:0 )
 	vorbis? ( media-libs/libvorbis )"
 
 DEPEND="${CDEPEND}
