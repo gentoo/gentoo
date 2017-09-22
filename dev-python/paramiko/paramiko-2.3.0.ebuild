@@ -26,6 +26,7 @@ RDEPEND="
 	>=dev-python/pyasn1-0.1.7[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # Required for testsuite
@@ -35,8 +36,12 @@ python_test() {
 	"${PYTHON}" test.py --verbose || die "Tests fail with ${EPYTHON}"
 }
 
+python_compile_all() {
+	use doc && esetup.py build_sphinx -s sites/docs
+}
+
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/. )
+	use doc && local HTML_DOCS=( build/sphinx/html/. )
 
 	distutils-r1_python_install_all
 
