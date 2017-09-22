@@ -344,13 +344,6 @@ net-vpn/kvpnc
 # Unmask when it is finally fixed, so people can build the package.
 dev-util/mutrace
 
-# Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
-# Masked until >=net-fs/samba-4.7 is in the tree and 
-# unmasked. (bug #624106)
-# See also https://bugzilla.samba.org/show_bug.cgi?id=12859
->=sys-libs/ldb-1.1.30
->=net-fs/samba-4.7.0_rc1
-
 # Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
 # The snapshots got a wrong version number assigned.
 # They are from before version 2.0.0. Masking them to force
