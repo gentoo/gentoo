@@ -4942,7 +4942,7 @@ dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access libra
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10 2.11: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
-dev-libs/libsodium 1.0.11 1.0.13: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.11 1.0.13 1.0.14: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libsolv 0.6.22: Library for solving packages and reading repositories
 dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2 1.1-r3: Library for handling root privilege
