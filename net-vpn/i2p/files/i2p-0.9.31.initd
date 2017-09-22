@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -22,8 +22,6 @@ WRAPPER_CONF="$I2P/wrapper.config"
 start() {
 	ebegin "Starting I2P"
 	start-stop-daemon --start -b -m -u i2p --pidfile "$PIDFILE" --quiet --exec $WRAPPER_CMD -- -c $WRAPPER_CONF wrapper.daemonize=FALSE wrapper.syslog.ident=i2p wrapper.java.command="$JAVABINARY" wrapper.name=i2p wrapper.displayname="I2P Service" wrapper.statusfile="$I2P_CONFIG_DIR/i2p.status" wrapper.java.statusfile="$I2P_CONFIG_DIR/i2p.java.status" wrapper.logfile="$LOGFILE"
-	sleep 1
-	[ -e "$PIDFILE" -a -e /proc/$(cat "$PIDFILE") ]
 	eend $?
 }
 
