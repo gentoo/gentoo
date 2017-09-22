@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="Repackage the OCaml compiler libs so they do not expose everything at toplevel"
 HOMEPAGE="https://github.com/janestreet/ocaml-compiler-libs"
 SRC_URI="https://github.com/janestreet/ocaml-compiler-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -12,17 +14,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
-DEPEND="dev-lang/ocaml:="
-RDEPEND="${DEPEND}"
+RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ml/opam
 	dev-ml/jbuilder"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		--mandir="${ED}/usr/share/man" \
-		${PN}.install || die
-}
