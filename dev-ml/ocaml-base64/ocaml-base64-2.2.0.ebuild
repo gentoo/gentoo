@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="Library for radix-64 representation (de)coding"
 HOMEPAGE="https://github.com/mirage/ocaml-base64"
@@ -14,17 +14,12 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="test"
 
-RDEPEND=">=dev-lang/ocaml-4.02:="
+RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-ml/jbuilder
-	dev-ml/opam
 	test? ( dev-ml/rresult dev-ml/bos dev-ml/alcotest )
 "
 
 src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		base64.install || die
+	opam_src_install base64
 }

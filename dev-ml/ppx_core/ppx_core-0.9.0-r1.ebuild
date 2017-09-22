@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="Standard library for ppx rewriters"
 HOMEPAGE="https://github.com/janestreet/ppx_core"
 SRC_URI="https://github.com/janestreet/ppx_core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -13,7 +15,6 @@ KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
 DEPEND="
-	dev-lang/ocaml:=
 	dev-ml/base:=
 	dev-ml/ocaml-compiler-libs:=
 	dev-ml/ppx_ast:=
@@ -22,12 +23,4 @@ DEPEND="
 	dev-ml/ocaml-migrate-parsetree:=
 "
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-}
+DEPEND="${DEPEND} dev-ml/jbuilder"

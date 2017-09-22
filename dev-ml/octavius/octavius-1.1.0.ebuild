@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="ocamldoc comment syntax parser"
 HOMEPAGE="https://github.com/ocaml-doc/octavius"
@@ -14,17 +14,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
-DEPEND="dev-lang/ocaml:="
-RDEPEND="${DEPEND}"
+RDEPEND=""
 DEPEND="${DEPEND}
 	dev-ml/jbuilder
-	dev-ml/opam
 	dev-ml/ocamlbuild"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-}

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit findlib
+inherit opam
 
 DESCRIPTION="Parser combinators built for speed and memory efficiency"
 HOMEPAGE="https://github.com/inhabitedtype/angstrom"
@@ -20,8 +20,7 @@ RDEPEND="
 	dev-ml/async:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
-	dev-ml/opam"
+	dev-ml/jbuilder"
 
 S="${WORKDIR}/angstrom-${PV}"
 
@@ -31,13 +30,4 @@ src_compile() {
 
 src_test() {
 	jbuilder runtest -p ${PN}
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		--mandir="${ED}/usr/share/man" \
-		${PN}.install || die
 }
