@@ -24,10 +24,9 @@ SLOT="0"
 IUSE="asan clang debug doc +jit static-libs optimize ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
-		>=dev-libs/libtommath-1.0
 		dev-libs/libuv
-		jit? ( dev-lang/lua:0[deprecated]
-			dev-lua/LuaBitOp )
+		dev-lang/lua:0[deprecated]
+		dev-lua/LuaBitOp
 		virtual/libffi"
 DEPEND="${RDEPEND}
 	clang? ( >=sys-devel/clang-3.1 )
@@ -42,7 +41,6 @@ src_configure() {
 	use doc && DOCS+=( docs/* )
 	local myconfigargs=(
 		"--prefix=/usr"
-		"--has-libtommath"
 		"--has-libuv"
 		"--has-libatomic_ops"
 		"--has-libffi"
@@ -50,7 +48,6 @@ src_configure() {
 		"--compiler=$(usex clang clang gcc)"
 		"$(usex asan        --asan)"
 		"$(usex debug       --debug            --no-debug)"
-		"$(usex jit         --lua=/usr/bin/lua --no-jit)"
 		"$(usex optimize    --optimize=        --no-optimize)"
 		"$(usex static-libs --static)"
 		"$(usex ubsan       --ubsan)"

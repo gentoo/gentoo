@@ -28,7 +28,7 @@ CDEPEND="java? (
 		dev-java/jline:0
 		dev-java/jna:4
 	)
-	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
+	moar? ( ~dev-lang/moarvm-2017.09.1[clang=] )"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.7 )"
 DEPEND="${CDEPEND}
