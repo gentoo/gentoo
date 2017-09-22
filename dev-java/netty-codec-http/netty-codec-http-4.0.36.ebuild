@@ -41,7 +41,7 @@ DEPEND=">=virtual/jdk-1.7
 
 S="${WORKDIR}/${MY_PN}-${MY_P}.Final/${PN/${MY_PN}-}"
 JAVA_SRC_DIR="src/main/java"
-JAVA_GENTOO_CLASSPATH="${MY_PN}-buffer,${MY_PN}-codec,${MY_PN}-common,${MY_PN}-handler,${MY_PN}-transport,jboss-marshalling,jzlib-1.1.3,protobuf"
+JAVA_GENTOO_CLASSPATH="${MY_PN}-buffer,${MY_PN}-codec,${MY_PN}-common,${MY_PN}-handler,${MY_PN}-transport,jboss-marshalling,jzlib-1.1.3,protobuf-java"
 
 src_test() {
 	cd src/test/java || die
