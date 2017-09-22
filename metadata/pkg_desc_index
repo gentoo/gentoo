@@ -5082,7 +5082,7 @@ dev-libs/sord 0.12.0 0.12.2 0.14.0 0.16.0: Library for storing RDF data in memor
 dev-libs/spdlog 0.13.0 0.14.0 0.14.0-r1 9999: Very fast, header only, C++ logging library.
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multicore architectures
-dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
+dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/sway 0.13.0 0.14.0 9999: i3-compatible Wayland window manager
@@ -9996,7 +9996,7 @@ dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like struct
 dev-ruby/temple 0.6.10 0.7.7 0.8.0: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.2.2-r1 1.6.0: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.2: a library for ANSI color formatting like HTML for output in terminal
-dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.9 3.2.4 3.2.5: An xUnit family unit testing framework for Ruby
+dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.9 3.2.4 3.2.5 3.2.6: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1-r1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
@@ -15535,6 +15535,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12_rc3 1.12_rc3-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r3 9999: A RSS/Atom feed reader for the text console
+net-news/newsboat 2.10 9999: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.4 0.18.5 0.18.6 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5 3.4.1 9999: A tiny RSS and Atom feed reader
