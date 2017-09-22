@@ -1,0 +1,86 @@
+From 0a28ad879b544f73f74491ddd58646750335bf1d Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Fri, 28 Apr 2017 17:22:38 -0400
+Subject: [PATCH] Gentoo build fixes
+
+---
+ chromiumcontent/BUILD.gn      | 8 ++------
+ chromiumcontent/build_libs.py | 2 +-
+ script/create-dist            | 4 ----
+ script/lib/config.py          | 2 +-
+ 4 files changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/chromiumcontent/BUILD.gn b/chromiumcontent/BUILD.gn
+index e4e4166..25be865 100644
+--- a/chromiumcontent/BUILD.gn
++++ b/chromiumcontent/BUILD.gn
+@@ -343,12 +343,8 @@ if (is_electron_build && !is_component_build) {
+     }
+   }
+ 
+-  static_library("v8") {
+-    complete_static_lib = true
+-    sources = []
+-    if (defined(obj_v8)) {
+-      sources += obj_v8
+-    }
++  shared_library("v8") {
++    deps = [ "//v8:v8", "//v8:v8_libplatform" ]
+   }
+ 
+ } else {
+diff --git a/chromiumcontent/build_libs.py b/chromiumcontent/build_libs.py
+index e10f320..716c5f2 100644
+--- a/chromiumcontent/build_libs.py
++++ b/chromiumcontent/build_libs.py
+@@ -82,7 +82,7 @@ with open(args.out, 'w') as out:
+             "third_party/usrsctp",
+             "third_party/woff2",
+             "third_party/zlib",
+-            "tools",
++            "tools/battor_agent",
+             "ui",
+             "url",
+         ])
+diff --git a/script/create-dist b/script/create-dist
+index aec75e5..64c7401 100755
+--- a/script/create-dist
++++ b/script/create-dist
+@@ -45,7 +45,6 @@ COMPONENTS = ['static_library', 'shared_library']
+ BINARIES = {
+   'all': [
+     'content_shell.pak',
+-    'icudtl.dat',
+     'natives_blob.bin',
+     'snapshot_blob.bin',
+     os.path.join('gen', 'blink', 'public', 'resources', 'blink_image_resources_200_percent.pak'),
+@@ -59,7 +58,6 @@ BINARIES = {
+     'libffmpeg.dylib',
+   ],
+   'linux': [
+-    'libffmpeg.so',
+   ],
+   'win32': [
+     'd3dcompiler_47.dll',
+@@ -312,8 +310,6 @@ def main():
+       copy_generated_sources(target_arch, component)
+       copy_locales(target_arch, component)
+ 
+-  copy_ffmpeg(target_arch)
+-  copy_sources()
+   generate_licenses()
+   if not args.no_zip:
+     create_zip(create_debug_archive)
+diff --git a/script/lib/config.py b/script/lib/config.py
+index 3455161..195b2a1 100644
+--- a/script/lib/config.py
++++ b/script/lib/config.py
+@@ -4,4 +4,4 @@ import os
+ 
+ 
+ def get_output_dir(source_root, target_arch, component):
+-  return os.path.join(source_root, 'src', 'out-' + target_arch, component)
++  return os.environ.get('CHROMIUM_BUILD_DIR')
+-- 
+2.13.3
+
