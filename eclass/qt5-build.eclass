@@ -194,9 +194,11 @@ qt5-build_src_prepare() {
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
 
-		# Respect toolchain and flags in config.tests
-		find config.tests/unix -name '*.test' -type f -execdir \
-			sed -i -e 's/-nocache //' '{}' + || die
+		if [[ ${QT5_MINOR_VERSION} -le 7 ]]; then
+			# Respect toolchain and flags in config.tests
+			find config.tests/unix -name '*.test' -type f -execdir \
+				sed -i -e 's/-nocache //' '{}' + || die
+		fi
 
 		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
 		# compiler support for extended instruction sets (bug 552942)
