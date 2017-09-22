@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -54,10 +54,6 @@ RES_DIR='installer/resources'
 
 PATCHES=(
 	"${FILESDIR}/${P}-add_libs.patch"
-
-	# New Gentoo detection code is added in 0.9.29 and its side-effect breaks Gentoo
-	# http://zzz.i2p/topics/2285-gentoo-installation-is-broken-in-0-9-29
-	"${FILESDIR}/${P}-revert-gentoo-detection.patch"
 )
 
 pkg_setup() {
@@ -109,7 +105,7 @@ src_install() {
 	local i
 	for i in BOB commons-el commons-logging i2p i2psnark i2ptunnel \
 		jasper-compiler jasper-runtime javax.servlet jbigi jetty* mstreaming org.mortbay.* router* \
-		sam standard streaming systray; do
+		sam standard streaming systray addressbook; do
 		java-pkg_dojar lib/${i}.jar
 	done
 

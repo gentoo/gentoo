@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">humanize</remote-id>
-		<remote-id type="github">jmoiron/humanize</remote-id>
-		<bugs-to>https://github.com/jmoiron/humanize/issues</bugs-to>
+		<remote-id type="pypi">denonavr</remote-id>
+		<remote-id type="github">scarface-4711/denonavr</remote-id>
+		<bugs-to>https://github.com/scarface-4711/denonavr/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
