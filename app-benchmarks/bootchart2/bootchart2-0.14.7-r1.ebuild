@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ REQUIRED_USE="
 RDEPEND="
 	!app-benchmarks/bootchart
 	X? (
-		dev-python/pycairo[svg?,${PYTHON_USEDEP}]
+		dev-python/pycairo[svg(+)?,${PYTHON_USEDEP}]
 		dev-python/pygtk[$(python_gen_usedep 'python2*')]
 		${PYTHON_DEPS}
 		)
