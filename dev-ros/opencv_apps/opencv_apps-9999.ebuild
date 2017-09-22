@@ -22,7 +22,9 @@ RDEPEND="
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nodelet
 	dev-ros/roscpp
-	>=media-libs/opencv-3:0=[contrib]
+	>=media-libs/opencv-3.3:0=[contrib]
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/ocv33.patch" )
