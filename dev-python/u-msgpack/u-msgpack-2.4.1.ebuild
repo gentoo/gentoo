@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=("${FILESDIR}"/${P}-little-endian.patch)
+
 python_test() {
 	py.test -v || die "Tests fail with ${EPYTHON}"
 }
