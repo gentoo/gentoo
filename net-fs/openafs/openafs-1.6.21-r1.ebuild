@@ -7,7 +7,7 @@ inherit autotools eutils flag-o-matic multilib pam systemd toolchain-funcs versi
 
 MY_PV=$(delete_version_separator '_')
 MY_P="${PN}-${MY_PV}"
-PVER="20170212"
+PVER="20170822"
 
 DESCRIPTION="The OpenAFS distributed file system"
 HOMEPAGE="https://www.openafs.org/"
