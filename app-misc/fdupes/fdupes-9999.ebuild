@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic git-r3 toolchain-funcs
+inherit flag-o-matic git-r3 toolchain-funcs
 
 MY_P="${PN}-${PV/_pre/-PR}"
 
@@ -15,20 +15,19 @@ EGIT_REPO_URI="https://github.com/adrianlopezroche/fdupes.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+)
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-makefile.patch
-
+src_configure() {
 	append-lfs-flags
 	tc-export CC
 }
 
 src_install() {
 	dobin fdupes
+	dodoc CHANGES CONTRIBUTORS README
 	doman fdupes.1
-	dodoc CHANGES CONTRIBUTORS README TODO
 }
