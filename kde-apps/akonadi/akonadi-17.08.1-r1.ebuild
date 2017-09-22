@@ -52,7 +52,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-l10n
 	!kde-apps/kdepimlibs
-	mysql? ( virtual/mysql )
+	mysql? (
+		<dev-db/mariadb-10.2
+		virtual/mysql
+	)
 	postgres? ( dev-db/postgresql )
 "
 

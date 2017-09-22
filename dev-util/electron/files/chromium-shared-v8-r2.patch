@@ -1,0 +1,79 @@
+diff --git a/v8/BUILD.gn.orig b/v8/BUILD.gn
+index 8587356..4365e03 100644
+--- a/v8/BUILD.gn
++++ b/v8/BUILD.gn
+@@ -113,7 +113,7 @@ config("internal_config") {
+ 
+   include_dirs = [ "." ]
+ 
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "BUILDING_V8_SHARED" ]
+   }
+ }
+@@ -127,14 +127,14 @@ config("internal_config_base") {
+ # This config should be applied to code using the libplatform.
+ config("libplatform_config") {
+   include_dirs = [ "include" ]
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "USING_V8_PLATFORM_SHARED" ]
+   }
+ }
+ 
+ # This config should be applied to code using the libbase.
+ config("libbase_config") {
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "USING_V8_BASE_SHARED" ]
+   }
+   libs = []
+@@ -151,7 +151,7 @@ config("libsampler_config") {
+ # This config should only be applied to code using V8 and not any V8 code
+ # itself.
+ config("external_config") {
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "USING_V8_SHARED" ]
+   }
+   include_dirs = [ "include" ]
+@@ -2265,7 +2265,7 @@ v8_component("v8_libbase") {
+ 
+   defines = []
+ 
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "BUILDING_V8_BASE_SHARED" ]
+   }
+ 
+@@ -2355,7 +2355,7 @@ v8_component("v8_libplatform") {
+ 
+   configs = [ ":internal_config_base" ]
+ 
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "BUILDING_V8_PLATFORM_SHARED" ]
+   }
+ 
+@@ -2498,7 +2498,7 @@ group("gn_all") {
+   }
+ }
+
+-if (is_component_build) {
++if (is_component_build || is_electron_build) {
+   v8_component("v8") {
+     sources = [
+       "src/v8dll-main.cc",
+diff --git a/v8/src/inspector/BUILD.gn b/v8/src/inspector/BUILD.gn
+index 6ebb91c..b6a2489 100644
+--- a/v8/src/inspector/BUILD.gn
++++ b/v8/src/inspector/BUILD.gn
+@@ -106,7 +106,7 @@ config("inspector_config") {
+       "/wd4996",  # Deprecated function call.
+     ]
+   }
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "BUILDING_V8_SHARED" ]
+   }
+ }
