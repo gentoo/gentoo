@@ -2853,6 +2853,7 @@ dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/edb-debugger:graphviz - Add support for the Graphviz library
 dev-util/edb-debugger:legacy-mem-write - Probe if writes to /proc/PID/mem are broken.
 dev-util/edb-debugger:pax_kernel - Enable building under a PaX enabled kernel
+dev-util/electron:gtk3 - Build with GTK+3 instead of GTK+2
 dev-util/electron:hidpi - Enable support for high-resolution screens (high dots per inch)
 dev-util/electron:lto - Build with link time optimization enabled
 dev-util/electron:pic - Disable optimized assembly code that is not PIC friendly
