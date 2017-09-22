@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install prepare test
-DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/yojson:= dev-ml/result:= >=dev-ml/ppx_deriving-4:= dev-ml/cppo:= dev-ml/findlib dev-ml/ocamlbuild test? ( dev-ml/ounit dev-ml/ppx_import )
+DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/yojson:= dev-ml/result:= >=dev-ml/ppx_deriving-4:= dev-ml/cppo:= dev-ml/findlib dev-ml/ocamlbuild test? ( dev-ml/ounit dev-ml/ppx_import ) >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=A Yojson codec generator for OCaml
 EAPI=5
 HOMEPAGE=https://github.com/whitequark/ppx_deriving_yojson/
 IUSE=+ocamlopt test
 KEYWORDS=~amd64
 LICENSE=MIT
-RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/yojson:= dev-ml/result:= >=dev-ml/ppx_deriving-4:= dev-ml/cppo:=
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/yojson:= dev-ml/result:= >=dev-ml/ppx_deriving-4:= dev-ml/cppo:= >=dev-lang/ocaml-4:=
 SLOT=0/3.0
 SRC_URI=https://github.com/whitequark/ppx_deriving_yojson/archive/v3.0.tar.gz -> ppx_deriving_yojson-3.0.tar.gz
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=79b20b98e88b582e2edb470a571783a1
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	opam	24b4a2529c1fd12f1304856d6c5a690d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=c5badd88606f9b236df7f0b20af8b626

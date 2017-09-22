@@ -1,11 +1,12 @@
 DEFINED_PHASES=install
-DEPEND=dev-lang/ocaml:= dev-ml/opam dev-ml/jbuilder
+DEPEND=dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=Repackage the OCaml compiler libs so they do not expose everything at toplevel
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ocaml-compiler-libs
 KEYWORDS=~amd64 ~ppc
 LICENSE=Apache-2.0
-RDEPEND=dev-lang/ocaml:=
+RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ocaml-compiler-libs/archive/v0.9.0.tar.gz -> ocaml-compiler-libs-0.9.0.tar.gz
-_md5_=fb54ec024b8169cc59766ead04d73f76
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=71682a5e3a28fb0b2b096f94d678b639

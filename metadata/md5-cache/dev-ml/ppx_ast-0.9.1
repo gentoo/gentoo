@@ -1,11 +1,12 @@
 DEFINED_PHASES=install
-DEPEND=dev-lang/ocaml:= dev-ml/ocaml-compiler-libs:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DEPEND=dev-ml/ocaml-compiler-libs:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=AST used in Jane Street ppx rewriters
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_ast
 KEYWORDS=~amd64 ~ppc
 LICENSE=Apache-2.0
-RDEPEND=dev-lang/ocaml:= dev-ml/ocaml-compiler-libs:= dev-ml/ocaml-migrate-parsetree:=
+RDEPEND=dev-ml/ocaml-compiler-libs:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.1
 SRC_URI=https://github.com/janestreet/ppx_ast/archive/v0.9.1.tar.gz -> ppx_ast-0.9.1.tar.gz
-_md5_=b721a461778d3f98eddaf1604b6a4281
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=e35f3188a2d7715800e03095fbec913b

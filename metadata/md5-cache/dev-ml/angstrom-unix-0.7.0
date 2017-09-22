@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/angstrom:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Parser combinators built for speed and memory efficiency
+EAPI=6
+HOMEPAGE=https://github.com/inhabitedtype/angstrom
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ml/angstrom:= >=dev-lang/ocaml-4:=
+SLOT=0/0.7.0
+SRC_URI=https://github.com/inhabitedtype/angstrom/archive/0.7.0.tar.gz -> angstrom-0.7.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=3836476be7b69ee263ba3237e62e0f9e

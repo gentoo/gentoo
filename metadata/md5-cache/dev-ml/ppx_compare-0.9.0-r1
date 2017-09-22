@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_driver:= dev-ml/ppx_type_conv:= dev-ml/ppx_core:= dev-ml/base:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_metaquot:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Generation of comparison functions from types
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_compare
+KEYWORDS=~amd64 ~ppc
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_driver:= dev-ml/ppx_type_conv:= dev-ml/ppx_core:= dev-ml/base:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_metaquot:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_compare/archive/v0.9.0.tar.gz -> ppx_compare-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=231d0511af0912b2f46d11a629a7678b

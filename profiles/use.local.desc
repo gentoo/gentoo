@@ -2290,8 +2290,6 @@ dev-lua/luvit:bundled-libs - Use bundled versions of some libraries.
 dev-lua/messagepack:luajit - Use the lua just-in-time compiler dev-lang/luajit instead of dev-lang/lua
 dev-lua/mpack:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/say:luajit - Use dev-lang/luajit instead of dev-lang/lua
-dev-ml/angstrom:async - Enable dev-ml/async bindings for asynchronous API.
-dev-ml/angstrom:lwt - Enable dev-ml/lwt bindings for asynchronous API.
 dev-ml/cairo-ocaml:pango - Enable support for x11-libs/pango
 dev-ml/csv:lwt - Enables the Lwt-based library for asynchronous operations.
 dev-ml/dose3:parmap - Adds multi-core CPU support via dev-ml/parmap.
