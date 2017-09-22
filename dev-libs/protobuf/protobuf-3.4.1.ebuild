@@ -53,16 +53,20 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+
+	if use emacs; then
+		elisp-compile editors/protobuf-mode.el
+	fi
+}
+
 multilib_src_compile() {
 	if tc-is-cross-compiler; then
 		emake -C "${WORKDIR}/build/src" protoc
 	fi
 
 	default
-
-	if use emacs; then
-		elisp-compile editors/protobuf-mode.el
-	fi
 }
 
 multilib_src_test() {
