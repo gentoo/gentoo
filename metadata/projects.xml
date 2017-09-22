@@ -3602,6 +3602,11 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project:Sandbox</url>
     <description>The Gentoo Sandbox Team maintains sandbox-related tools and libraries</description>
     <member>
+      <email>grobian@gentoo.org</email>
+      <name>Fabian Groffen</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Member</role>
