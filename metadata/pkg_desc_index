@@ -13180,7 +13180,7 @@ media-libs/mutagen 1.35.1 1.37 1.38: Audio metadata tag reader and writer implem
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.2 1.18.0 1.18.1: A software implementation of the OpenAL 3D audio API
-media-libs/opencollada 1.6.25 1.6.31 1.6.36: Stream based read/write library for COLLADA files
+media-libs/opencollada 1.6.25 1.6.31 1.6.36 1.6.58: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
