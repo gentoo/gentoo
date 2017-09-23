@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc test"
 
@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/pip[${PYTHON_USEDEP}]
 	>=dev-python/py-1.4.17[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (	>=dev-python/pytest-2.3.5[${PYTHON_USEDEP}] )"
 
