@@ -10,7 +10,7 @@ SRC_URI="
 	mirror://debian/pool/main/f/${PN}/${PN}_2.4b2-to-ipv6.orig.tar.gz
 	mirror://debian/pool/main/f/${PN}/${PN}_2.4b2-to-ipv6-16.1.diff.gz
 	"
-HOMEPAGE="http://fping.sourceforge.net/ http://packages.qa.debian.org/f/fping.html"
+HOMEPAGE="http://fping.sourceforge.net/ https://packages.qa.debian.org/f/fping.html"
 
 SLOT="0"
 LICENSE="fping"
