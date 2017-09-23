@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils flag-o-matic multilib python-single-r1 toolchain-funcs
 
 DESCRIPTION="Advanced Power Management battery status display for X"
-HOMEPAGE="http://packages.qa.debian.org/x/xbattbar.html"
+HOMEPAGE="https://packages.qa.debian.org/x/xbattbar.html"
 SRC_URI="mirror://debian/pool/main/x/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
