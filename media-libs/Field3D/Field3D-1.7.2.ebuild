@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/Field3D-1.7.2-openexr-fixes.patch" )
+PATCHES=( "${FILESDIR}/Field3D-1.7.2-Use-PkgConfig-for-IlmBase.patch" )
 
 # Docs are not finished yet.
 mycmakeargs=( -DINSTALL_DOCS=OFF )
