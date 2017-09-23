@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (23 Sep 2017)
+# MPI does not have stable keywords on hppa
+sci-libs/fftw mpi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
 # Mask mpi support so Boost stabilization can go ahead
 # Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
