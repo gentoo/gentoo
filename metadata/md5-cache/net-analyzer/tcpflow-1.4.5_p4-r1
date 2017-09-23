@@ -2,7 +2,7 @@ DEFINED_PHASES=configure prepare
 DEPEND=app-forensics/afflib dev-libs/boost dev-libs/openssl:= net-libs/http-parser:= net-libs/libpcap sys-libs/zlib cairo? ( x11-libs/cairo ) test? ( sys-apps/coreutils ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A tool for monitoring, capturing and storing TCP connections flows
 EAPI=6
-HOMEPAGE=https://github.com/simsong/tcpflow http://packages.qa.debian.org/t/tcpflow.html
+HOMEPAGE=https://github.com/simsong/tcpflow https://packages.qa.debian.org/t/tcpflow.html
 IUSE=cairo test
 KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=app-forensics/afflib dev-libs/boost dev-libs/openssl:= net-libs/http-par
 SLOT=0
 SRC_URI=mirror://debian/pool/main/t/tcpflow/tcpflow_1.4.5+repack1.orig.tar.gz mirror://debian/pool/main/t/tcpflow/tcpflow_1.4.5+repack1-4.debian.tar.xz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=4d037bfe4344d069f4402df93c63fa0e
+_md5_=9d06c54741c54256a816cf507c9d4472

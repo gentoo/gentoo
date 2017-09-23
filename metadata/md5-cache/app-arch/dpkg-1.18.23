@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare
 DEPEND=>=dev-lang/perl-5.14.2:= bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) selinux? ( sys-libs/libselinux ) zlib? ( >=sys-libs/zlib-1.1.4 ) app-arch/xz-utils sys-devel/flex virtual/pkgconfig nls? ( app-text/po4a >=sys-devel/gettext-0.18.2 ) test? ( dev-perl/IO-String dev-perl/Test-Pod virtual/perl-Test-Harness ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Package maintenance system for Debian
 EAPI=6
-HOMEPAGE=http://packages.qa.debian.org/dpkg
+HOMEPAGE=https://packages.qa.debian.org/dpkg
 IUSE=+bzip2 +lzma nls selinux test unicode +update-alternatives +zlib
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris
 LICENSE=GPL-2+
@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/perl-5.14.2:= bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-u
 SLOT=0
 SRC_URI=mirror://debian/pool/main/d/dpkg/dpkg_1.18.23.tar.xz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=1ec3175c14ca2eef49dee4e1f4555db4
+_md5_=79fa3820a4a80a2782994867d8d19398

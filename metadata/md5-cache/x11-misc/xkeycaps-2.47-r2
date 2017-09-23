@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install
 DEPEND=x11-misc/xbitmaps x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXaw x11-libs/libXext x11-proto/xproto x11-misc/imake >=sys-apps/sed-4
 DESCRIPTION=GUI frontend to xmodmap
 EAPI=6
-HOMEPAGE=http://packages.qa.debian.org/x/xkeycaps.html
+HOMEPAGE=https://packages.qa.debian.org/x/xkeycaps.html
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=HPND
 RDEPEND=x11-misc/xbitmaps x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXaw x11-libs/libXext
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xkeycaps/xkeycaps_2.47.orig.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=3a942290f1d10f8b9a41c59be6053c97
+_md5_=2dca3a0273650c2897a215a7fe1ec765
