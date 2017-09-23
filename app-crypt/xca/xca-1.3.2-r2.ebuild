@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit flag-o-matic toolchain-funcs autotools
+inherit flag-o-matic autotools
 
 DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests etc"
 HOMEPAGE="http://xca.sourceforge.net"
@@ -12,19 +12,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="bindist doc libressl qt4 qt5"
-
-REQUIRED_USE="|| ( qt4 qt5 )"
+IUSE="bindist doc libressl"
 
 RDEPEND="
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:0= )
-	doc? ( app-text/linuxdoc-tools )
-	qt5? (
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)
-	qt4? ( dev-qt/qtgui:4 )"
+	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -39,9 +34,9 @@ src_prepare() {
 
 src_configure() {
 	# bug #595440
-	use qt5 && append-cxxflags -std=c++11
+	append-cxxflags -std=c++11
 	econf \
-		--with-qt-version=$(use qt5 && echo 5 || echo 4) \
+		--with-qt-version=5 \
 		$(use_enable doc) \
 		STRIP=true
 }
