@@ -9,6 +9,10 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Translate Shell (formerly Google Translate CLI) is a command-line
 		translator powered by Google Translate (default), Bing Translator, and
