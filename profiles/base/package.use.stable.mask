@@ -71,11 +71,6 @@ media-plugins/kipi-plugins mediawiki vkontakte
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
 
-# Johannes Huber <johu@gentoo.org> (25 Jan 2017)
-# Fails to build with dev-lang/ocaml-4.04.0
-# Bugs: #603050, #581946
-<kde-apps/kalzium-17.04.3 solver
-
 # Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
 # sys-fs/zfs isn't going to be marked stable anytime soon
 app-emulation/libvirt zfs
