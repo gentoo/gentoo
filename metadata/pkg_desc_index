@@ -12785,7 +12785,7 @@ media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
 media-gfx/openmesh 4.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2015.03_p2-r1 2015.03_p2-r2 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation software
-media-gfx/openvdb 3.2.0 4.0.0: Libs for the efficient manipulation of volumetric data
+media-gfx/openvdb 3.2.0 4.0.0 4.0.2: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6: Compress PNG files without affecting image quality
 media-gfx/panini 0.71.104: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.1 0.2.2: pdf2svg is based on poppler and cairo and can convert pdf to svg files
@@ -12884,6 +12884,7 @@ media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
 media-gfx/yafaray 0.1.1: YafaRay is a raytracing open source render engine
 media-gfx/zbar 0.10-r6 0.10_p20121015-r1 0.10_p20121015-r2: Library and tools for reading barcodes from images or video
 media-gfx/zgv 5.9: A svgalib console image viewer
+media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/SoQt 1.5.0-r1: The glue between Coin3D and Qt
 media-libs/SoXt 1.3.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
@@ -13178,7 +13179,7 @@ media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.2 1.18.0 1.18.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.25 1.6.31 1.6.36 1.6.58: Stream based read/write library for COLLADA files
-media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
+media-libs/opencolorio 1.0.9-r2 1.0.9_p20170719: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
 media-libs/opencv 2.4.13 2.4.13-r2 3.1.0-r8 3.2.0-r2 3.2.0-r3 3.3.0-r1: A collection of algorithms and sample code for various computer vision problems
@@ -13189,10 +13190,11 @@ media-libs/openh264 1.4.0-r1 1.5.0 1.7.0: Cisco OpenH264 library and Gecko Media
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
 media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2 2.2.0: An open-source JPEG 2000 library
-media-libs/opensubdiv 3.1.0 3.1.1: An Open-Source subdivision surface library
+media-libs/opensubdiv 3.1.0 3.1.1 3.3.0: An Open-Source subdivision surface library
 media-libs/opus 1.1.3-r1 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6 0.8 0.9: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
+media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.9.1-r1 9999: KDE multimedia API
 media-libs/phonon-gstreamer 4.9.0-r1 9999: Phonon GStreamer backend
@@ -13203,7 +13205,7 @@ media-libs/plotutils 2.6-r1: Powerful C/C++ function library for exporting 2-D v
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
 media-libs/portaudio 19_pre20140130 19.06.00 19.06.00-r1: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r1: A library for real time MIDI input and output
-media-libs/ptex 2.1.28: Per-Face Texture Mapping for Production Rendering
+media-libs/ptex 2.1.28 2.1.28-r1: Per-Face Texture Mapping for Production Rendering
 media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
 media-libs/qhull 2012.1-r4 2015.2: Geometry library
