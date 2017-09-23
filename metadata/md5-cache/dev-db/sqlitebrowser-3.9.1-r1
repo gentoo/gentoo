@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-cpp/antlr-cpp:2 dev-db/sqlite:3 dev-libs/qcustomplot[qt5] dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)] dev-qt/linguist-tools:5 test? ( dev-qt/qttest:5 ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=dev-cpp/antlr-cpp:2 dev-db/sqlite:3 dev-libs/qcustomplot[qt5(+)] dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)] dev-qt/linguist-tools:5 test? ( dev-qt/qttest:5 ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=SQLite Database Browser
 EAPI=6
 HOMEPAGE=http://sqlitebrowser.org
 IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=GPL-3 MPL-2.0
-RDEPEND=dev-cpp/antlr-cpp:2 dev-db/sqlite:3 dev-libs/qcustomplot[qt5] dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)]
+RDEPEND=dev-cpp/antlr-cpp:2 dev-db/sqlite:3 dev-libs/qcustomplot[qt5(+)] dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)]
 SLOT=0
 SRC_URI=https://github.com/sqlitebrowser/sqlitebrowser/archive/v3.9.1.tar.gz -> sqlitebrowser-3.9.1.tar.gz
 _eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=1c36b2d0618082439844e1048513806a
+_md5_=5414b4bbf3709380a1f2c8f4dffd8f58
