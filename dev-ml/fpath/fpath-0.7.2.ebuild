@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="File system paths for OCaml"
 HOMEPAGE="http://erratique.ch/software/fpath https://github.com/dbuenzli/fpath"
 SRC_URI="http://erratique.ch/software/fpath/releases/${P}.tbz"
@@ -13,7 +15,6 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	dev-lang/ocaml:=
 	dev-ml/result:=
 	dev-ml/astring:=
 "
@@ -25,12 +26,4 @@ DEPEND="${RDEPEND}
 
 src_compile() {
 	ocaml pkg/pkg.ml build || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
 }
