@@ -27,10 +27,6 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf $(use_with expat)
-}
-
 src_install() {
 	default
 
