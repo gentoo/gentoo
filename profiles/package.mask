@@ -108,6 +108,7 @@ kde-misc/kfilebox
 =dev-lang/perl-5.24.3_rc1
 =dev-lang/perl-5.24.3_rc2
 =dev-lang/perl-5.24.3_rc3
+=dev-lang/perl-5.24.3
 =virtual/perl-Module-CoreList-5.201.709.220
 =virtual/perl-Time-HiRes-1.974.100-r1
 
