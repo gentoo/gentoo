@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	dev-lang/swig:*
 "
 
+PATCHES=( "${FILESDIR}/${PN}-1.1.0-Rename-partconv.patch" )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
