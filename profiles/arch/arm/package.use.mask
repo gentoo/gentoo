@@ -326,10 +326,6 @@ media-sound/rhythmbox visualizer
 # Unkeyworded deps, bug #481462
 dev-python/ipython nbconvert
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# Depends on kde-plasma/plasma-nm, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
 # sci-libs/hdf does not build properly on arm
 # sci-libs/plplot not keyworded
