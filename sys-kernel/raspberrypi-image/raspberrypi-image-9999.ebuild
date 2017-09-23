@@ -14,10 +14,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
-
 EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
 
 RESTRICT="binchecks strip"
 
@@ -57,5 +55,3 @@ src_install() {
 
 	readme.gentoo_create_doc
 }
-
-DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
