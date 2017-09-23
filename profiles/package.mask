@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (23 Sep 2017) Mask old
+# unmaintained slots for removal in 30 days. Upgrade to the newer
+# slots.
+dev-ruby/capybara:0
+dev-ruby/xpath:0
+
 # Bernard Cafarelli <voyageur@gentoo.org> (20 Sep 2017)
 # Requires qt 5.8, not yet in tree. Bug #631570
 >=media-video/orion-1.6.0
