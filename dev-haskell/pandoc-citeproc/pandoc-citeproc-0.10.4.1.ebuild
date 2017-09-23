@@ -15,7 +15,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bibutils debug embed_data_files test_citeproc unicode_collation"
 
 RESTRICT=test # execs a process dropping environment (with LD_PRELOAD)
