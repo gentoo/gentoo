@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (23 Sep 2017)
+# Broken on Perl 5.26 (bug 623096), no fix in sight. No consumers.
+# Removal in 30 days.
+dev-perl/rpm-build-perl
+
 # Hans de Graaff <graaff@gentoo.org> (23 Sep 2017) Mask old
 # unmaintained slots for removal in 30 days. Upgrade to the newer
 # slots.
