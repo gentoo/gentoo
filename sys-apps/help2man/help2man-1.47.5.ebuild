@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="GNU utility to convert program --help output to a man page"
 HOMEPAGE="https://www.gnu.org/software/help2man/"
@@ -17,7 +16,11 @@ RDEPEND="dev-lang/perl
 	nls? ( dev-perl/Locale-gettext )"
 DEPEND=${RDEPEND}
 
-DOCS="debian/changelog NEWS README THANKS" #385753
+DOCS=( debian/changelog NEWS README THANKS ) #385753
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.46.1-linguas.patch
+)
 
 src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -25,8 +28,7 @@ src_prepare() {
 			-e 's/-shared/-bundle/' \
 			Makefile.in || die
 	fi
-	epatch \
-		"${FILESDIR}"/${PN}-1.46.1-linguas.patch
+	default
 }
 
 src_configure() {
