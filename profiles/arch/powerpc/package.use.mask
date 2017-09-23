@@ -216,10 +216,6 @@ gnome-base/gnome classic extras
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# # Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Agostino Sarubbo <ago@gentoo.org> (24 Aug 2013)
 # Klibc does not work anymore on ppc
 app-shells/mksh static
@@ -246,7 +242,6 @@ x11-misc/colord argyllcms extra-print-profiles
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Nove 2012)
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
-kde-apps/krfb telepathy
 net-im/choqok telepathy
 
 # Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
