@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="A selection of tools from Debian"
-HOMEPAGE="http://packages.qa.debian.org/d/debianutils.html"
+HOMEPAGE="https://packages.qa.debian.org/d/debianutils.html"
 SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="BSD GPL-2 SMAIL"
