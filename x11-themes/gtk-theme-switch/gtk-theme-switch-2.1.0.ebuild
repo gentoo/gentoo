@@ -5,7 +5,7 @@ EAPI=2
 inherit toolchain-funcs
 
 DESCRIPTION="Utility to switch and preview GTK+ theme"
-HOMEPAGE="http://packages.qa.debian.org/g/gtk-theme-switch.html"
+HOMEPAGE="https://packages.qa.debian.org/g/gtk-theme-switch.html"
 SRC_URI="mirror://debian/pool/main/g/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
