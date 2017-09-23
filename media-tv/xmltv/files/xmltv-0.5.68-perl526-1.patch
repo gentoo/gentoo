@@ -1,0 +1,13 @@
+diff -ruN xmltv-0.5.68.orig/Makefile.PL xmltv-0.5.68/Makefile.PL
+--- xmltv-0.5.68.orig/Makefile.PL	2016-06-02 07:05:01.000000000 +0200
++++ xmltv-0.5.68/Makefile.PL	2017-09-23 12:20:18.128841958 +0200
+@@ -6,6 +6,9 @@
+ use File::Basename ();
+ use File::Find;
+ 
++# Needed later for Perl 5.26
++use lib q[.];
++
+ # Don't use ':config pass_through' because that requires Getopt::Long
+ # 2.24 or later, and we don't have a clean way to require that.
+ #
