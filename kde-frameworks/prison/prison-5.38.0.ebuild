@@ -14,7 +14,7 @@ IUSE=""
 
 DEPEND="
 	$(add_qt_dep qtgui)
-	media-gfx/qrencode
+	media-gfx/qrencode:=
 	media-libs/libdmtx
 "
 RDEPEND="${DEPEND}"
