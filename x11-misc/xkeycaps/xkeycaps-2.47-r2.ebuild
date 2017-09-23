@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="GUI frontend to xmodmap"
-HOMEPAGE="http://packages.qa.debian.org/x/xkeycaps.html"
+HOMEPAGE="https://packages.qa.debian.org/x/xkeycaps.html"
 SRC_URI="mirror://debian/pool/main/x/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="HPND"
