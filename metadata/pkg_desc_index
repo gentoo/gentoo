@@ -1707,7 +1707,7 @@ app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
-app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36 2.0.41 2.0.43: A spaced-repetition memory training program (flash cards)
+app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36 2.0.41 2.0.43 2.0.47: A spaced-repetition memory training program (flash cards)
 app-misc/asciinema 1.4.0: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r1 5.40-r2 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
@@ -4597,7 +4597,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.1.9 2.1.10 2.2.6 2.2.7-r3 2.2.7-r4 2.2.8 2.3.4-r3 2.3.4-r4 2.3.5 2.4.1-r3 2.4.1-r4 2.4.2: An object-oriented scripting language
+dev-lang/ruby 2.2.6 2.2.7-r3 2.2.7-r4 2.2.8 2.3.4-r3 2.3.4-r4 2.3.5 2.4.1-r3 2.4.1-r4 2.4.2: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1 2.12.2: The Scala Programming Language
@@ -9422,7 +9422,6 @@ dev-ruby/activemodel 4.2.8 4.2.9 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4
 dev-ruby/activemodel-serializers-xml 1.0.1 1.0.2: XML serialization for your Active Model objects and Active Record models
 dev-ruby/activerecord 4.2.8 4.2.9 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
-dev-ruby/activeresource 4.1.0 5.0.0: Think Active Record for web resources
 dev-ruby/activesupport 4.2.8 4.2.9 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.9.4 0.9.5 0.9.7: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.4.0-r1 2.5.1 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
@@ -9477,7 +9476,7 @@ dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 3.2.6 4.1.1 4.2.0 4.2.1 4.2.2: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
-dev-ruby/builder 3.0.4-r2 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
+dev-ruby/builder 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.12.5 1.12.6 1.13.7 1.14.6: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.5.0 0.6.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.6.3 2.6.4-r1 2.6.5 2.7.0: Another synchronous Ruby AMQP client
@@ -9807,7 +9806,6 @@ dev-ruby/rails 4.2.8 4.2.9 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: ruby
 dev-ruby/rails-deprecated_sanitizer 1.0.3-r1 1.0.3-r2: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.8 1.0.8-r1 2.0.2 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/rails-observers 0.1.2: Rails Observers
 dev-ruby/railties 4.2.8 4.2.9 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.0.0-r1 2.1.0 2.2.1 2.2.2: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.3.0 12.0.0 12.1.0: Make-like scripting in Ruby
@@ -9943,7 +9941,6 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.4.24 3.4.25: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1: Official Ruby-on-Rails Integration with Sass
@@ -11465,7 +11462,6 @@ games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or beco
 games-roguelike/tomenet 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b 0.8.0b-r1: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
-games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
 games-rpg/adonthell 0.3.5-r1 0.3.5-r2: roleplaying game engine
 games-rpg/arx-fatalis-data 1.21-r2 1.21-r3: Arx Fatalis data files
 games-rpg/arx-fatalis-demo 0: Arx Fatalis demo

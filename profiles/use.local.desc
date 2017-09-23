@@ -3226,7 +3226,6 @@ games-roguelike/stone-soup:luajit - Use dev-lang/luajit as scripting backend ins
 games-roguelike/stone-soup:ncurses - Enable for console (uses ncurses) based build. (can be enabled on top of tiles)
 games-roguelike/stone-soup:tiles - Enable for graphical (tiled) build. (can be enabled on top of ncurses)
 games-roguelike/tomenet:server - Compile server support
-games-rpg/a-bird-story:bundled-libs - Use bundled libraries
 games-rpg/arx-fatalis-data:gog - Extract the data from the GOG.com installer.
 games-rpg/arx-libertatis:c++0x - Build ROOT using the C++11 standard.
 games-rpg/arx-libertatis:crash-reporter - Build a dev-qt/qtgui-based tool that allows to submit crash information to the upstream backtracker.
