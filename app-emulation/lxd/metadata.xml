@@ -26,5 +26,8 @@
 		<flag name="daemon">
 			Build the system daemon, not just the client tool
 		</flag>
+		<flag name="dnsmasq">
+			Depend on dnsmasq to provide DHCP and DNS.
+		</flag>
 	</use>
 </pkgmetadata>

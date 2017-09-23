@@ -45,7 +45,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="+daemon +ipv6 nls test"
+IUSE="+daemon +ipv6 +dnsmasq nls test"
 
 inherit bash-completion-r1 linux-info systemd user golang-vcs-snapshot
 
@@ -68,7 +68,9 @@ RDEPEND="
 	daemon? (
 		app-arch/xz-utils
 		>=app-emulation/lxc-2.0.7[seccomp]
-		net-dns/dnsmasq[dhcp,ipv6?]
+		dnsmasq? (
+			net-dns/dnsmasq[dhcp,ipv6?]
+		)
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6?]
 		sys-fs/squashfs-tools
