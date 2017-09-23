@@ -9832,7 +9832,7 @@ dev-ruby/redcarpet 3.3.4 3.4.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r4 4.3.2: A module for using Textile in Ruby
 dev-ruby/redis 3.3.2 3.3.3: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
-dev-ruby/regexp_parser 0.4.3 0.4.4: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_parser 0.4.3 0.4.4 0.4.5: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/request_store 1.0.5 1.3.1 1.3.2: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0-r3 2.0.1 2.0.2: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rex-arch 0.1.4 0.1.5: architecture specific information for Rex
@@ -10378,7 +10378,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 10.7.2 10.8: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 10.8 10.9: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.89 1.0.91: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
