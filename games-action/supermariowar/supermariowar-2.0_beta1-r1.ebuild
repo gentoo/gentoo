@@ -13,14 +13,13 @@ DESCRIPTION="Fan-made multiplayer Super Mario Bros. style deathmatch game"
 HOMEPAGE="https://github.com/mmatyas/supermariowar"
 SRC_URI="https://github.com/mmatyas/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
-
+KEYWORDS="~amd64 ~x86"
 IUSE="server"
 
 RDEPEND="
-	sys-libs/zlib
+	sys-libs/zlib:=
 	dev-cpp/yaml-cpp
 	net-libs/enet:1.3=
 	media-libs/sdl-mixer[vorbis]
@@ -40,7 +39,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	einfo "Copying Findyaml-cpp.cmake"
 	cp "${FILESDIR}/${P}-yaml-cpp-config.cmake" cmake/Findyaml-cpp.cmake || die
 	eend $?
