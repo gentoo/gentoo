@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils bash-completion-r1
 
 DESCRIPTION="Script for unpacking various file formats"
-HOMEPAGE="http://packages.qa.debian.org/u/unp.html"
+HOMEPAGE="https://packages.qa.debian.org/u/unp.html"
 TEMP_PV="${PV/_pre/$'\x7e'pre}"
 MY_PV="${TEMP_PV/_p/+nmu}"
 SRC_URI="mirror://debian/pool/main/u/unp/${PN}_${MY_PV}.tar.bz2"
