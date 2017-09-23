@@ -4,7 +4,7 @@ DESCRIPTION=SELinux core utilities
 EAPI=6
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
 IUSE=audit pam dbus python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~amd64 ~arm64 ~mips ~x86
+KEYWORDS=amd64 ~arm64 ~mips x86
 LICENSE=GPL-2
 PDEPEND=sys-apps/semodule-utils sys-apps/selinux-python
 RDEPEND=>=sys-libs/libselinux-2.7:=[python,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] >=sys-libs/glibc-2.4 >=sys-libs/libcap-1.10-r10:= >=sys-libs/libsemanage-2.7:=[python,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] sys-libs/libcap-ng:= >=sys-libs/libsepol-2.7:= >=app-admin/setools-4.1.1[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] sys-devel/gettext dev-python/ipy[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dbus? ( sys-apps/dbus dev-libs/dbus-glib:= ) audit? ( >=sys-process/audit-1.5.1[python,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) pam? ( sys-libs/pam:= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) python_targets_python3_4? ( dev-lang/python:3.4[xml] ) python_targets_python3_5? ( dev-lang/python:3.5[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] !<sec-policy/selinux-base-policy-2.20151208-r6 app-misc/pax-utils !<sys-apps/openrc-0.14
@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targe
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/policycoreutils-2.7.tar.gz https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-1.36.tar.bz2
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=cdbacb5d81003ea22502e4f64a46ae53
+_md5_=0b2bb7a0c97147d4fe7e33b77b644245
