@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery"
-HOMEPAGE="http://packages.qa.debian.org/f/fakeroot.html"
+HOMEPAGE="https://packages.qa.debian.org/f/fakeroot.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.bz2"
 
 LICENSE="GPL-3"
