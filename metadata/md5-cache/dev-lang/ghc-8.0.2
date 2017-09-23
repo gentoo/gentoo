@@ -4,7 +4,7 @@ DESCRIPTION=The Glasgow Haskell Compiler
 EAPI=5
 HOMEPAGE=http://www.haskell.org/ghc/
 IUSE=doc ghcbootstrap ghcmakebinary +gmp +profile binary
-KEYWORDS=~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 PDEPEND=!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )
 RDEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] !ghcmakebinary? ( virtual/libffi:= ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
@@ -12,4 +12,4 @@ REQUIRED_USE=?? ( ghcbootstrap binary )
 SLOT=0/8.0.2
 SRC_URI=!binary? ( http://downloads.haskell.org/~ghc/8.0.2/ghc-8.0.2-src.tar.xz ) !ghcbootstrap? ( alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-8.0.2-alpha.tbz2 ) arm64? ( http://code.haskell.org/~slyfox/ghc-arm64/ghc-bin-8.0.2-arm64.tbz2 ) amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-8.0.2-amd64.tbz2 ) ia64? ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-8.0.2-ia64.tbz2 ) ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-8.0.2-ppc.tbz2 ) ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-8.0.2-ppc64.tbz2 ) x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-8.0.2-x86.tbz2 ) )
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	check-reqs	bd050ce908e4637604ee604ed4b78e8f	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ghc-package	f9cf05643e20f03876bb4807f008c80f	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	pax-utils	4f95120230a315c8caaabeb2307b7eee	prefix	7b6fb2fc216b101b5d97d171925a847c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=8bba641e2cbb40a3711ddf6cca4b126e
+_md5_=6d459a8fbdba1e61f36d164403025a7c
