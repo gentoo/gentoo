@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=dev-libs/expat >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Digital Forensics XML
+EAPI=6
+HOMEPAGE=https://github.com/simsong/dfxml
+KEYWORDS=~amd64
+LICENSE=LGPL-3
+RDEPEND=dev-libs/expat
+SLOT=0
+SRC_URI=https://api.github.com/repos/simsong/dfxml/tarball/7d11eaa7da8d31f588ce8aecb4b4f5e7e8169ba6 -> dfxml-20170921.tar.gz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=6851062df87264acc590cfffd052ffb7
