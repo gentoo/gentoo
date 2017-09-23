@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="a monitoring dockapp for system load, user amount, fork amount and processes"
-HOMEPAGE="http://packages.qa.debian.org/w/wmmisc.html"
+HOMEPAGE="https://packages.qa.debian.org/w/wmmisc.html"
 SRC_URI="mirror://debian/pool/main/w/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
