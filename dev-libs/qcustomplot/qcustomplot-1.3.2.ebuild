@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,19 +14,13 @@ SRC_URI="
 SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="qt5"
+IUSE=""
 
 RDEPEND="
-	!qt5? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtwidgets:5
-	)
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}"
 
@@ -42,7 +36,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use qt5 && eqmake5 || eqmake4
+	eqmake5
 }
 
 src_install() {
