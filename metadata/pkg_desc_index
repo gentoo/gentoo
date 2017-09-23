@@ -9784,7 +9784,7 @@ dev-ruby/prawn 2.1.0 2.2.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
-dev-ruby/pry 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
+dev-ruby/pry 0.10.4 0.11.0: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.2.4: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 2.0.5 3.0.0-r1: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0: Object oriented authorization for Rails applications
@@ -15504,7 +15504,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.09.02 2017.09.11 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.09.11 2017.09.15 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0 3.3.0-r1: Multi-user replacement for UNIX talk
 net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
@@ -18580,7 +18580,7 @@ x11-base/xorg-drivers 1.12 1.15 1.18-r1 1.19 9999: Meta package containing deps 
 x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.18.4 1.19.2 1.19.3 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.135 304.135-r1 340.102 340.102-r1 375.39 375.66 375.66-r1 378.13 378.13-r1 381.22 381.22-r1 384.59-r1 384.69: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.135 304.135-r1 304.137 340.102 340.102-r1 340.104 375.39 375.66 375.66-r1 378.13 378.13-r1 381.22 381.22-r1 384.59-r1 384.69: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
