@@ -12,7 +12,7 @@ SRC_URI="https://github.com/stedolan/jq/releases/download/${P}/${P}.tar.gz"
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos"
-IUSE="oniguruma static-libs test"
+IUSE="oniguruma static-libs"
 
 DEPEND="
 	>=sys-devel/bison-3.0
