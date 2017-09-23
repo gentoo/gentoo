@@ -17124,7 +17124,7 @@ sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
 sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.46.6 1.47.3 1.47.4: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.46.6 1.47.4 1.47.5: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
