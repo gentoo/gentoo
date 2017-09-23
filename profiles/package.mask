@@ -289,18 +289,6 @@ app-arch/unrar-gpl
 # dev-cpp/libjson-rpc-cpp is fixed, whichever happens first.
 >=dev-cpp/catch-2
 
-# Hans de Graaff <graaff@gentoo.org> (20 Aug 2017)
-# Mask Ruby 2.1 for removal, bug 615822
-# This version is no longer supported by upstream
-# since March 2017.
-# This mask also includes all remaining ruby21-only packages.
-dev-lang/ruby:2.1
-dev-ruby/activeresource:4.1
-dev-ruby/builder:3
-dev-ruby/rails-observers
-dev-ruby/samuel
-games-rpg/a-bird-story
-
 # Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
 # ipython-6 is python-3 only and causes circular dependencies
 # Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
