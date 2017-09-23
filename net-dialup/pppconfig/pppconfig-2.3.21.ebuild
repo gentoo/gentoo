@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A text menu based utility for configuring ppp"
-HOMEPAGE="http://packages.qa.debian.org/p/pppconfig.html"
+HOMEPAGE="https://packages.qa.debian.org/p/pppconfig.html"
 SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.gz"
 
 SLOT="0"
