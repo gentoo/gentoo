@@ -42,10 +42,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Revert gperf-3.1 fix as it breaks compilation
-	eapply -R "${FILESDIR}"/${PN}-2.12.2-gperf31.patch
-
 	eautoreconf
 }
 
