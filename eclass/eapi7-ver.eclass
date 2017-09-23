@@ -174,6 +174,28 @@ ver_rs() {
 	echo "${comp[*]}"
 }
 
+# @FUNCTION: _ver_compare_int
+# @USAGE: <a> <b>
+# @RETURN: 0 if <a> -eq <b>, 1 if <a> -lt <b>, 3 if <a> -gt <b>
+# @INTERNAL
+# @DESCRIPTION:
+# Compare two non-negative integers <a> and <b>, of arbitrary length.
+# If <a> is equal to, less than, or greater than <b>, return 0, 1, or 3
+# as exit status, respectively.
+_ver_compare_int() {
+	local a=$1 b=$2 d=$(( ${#1}-${#2} ))
+
+	# Zero-pad to equal length if necessary.
+	if [[ ${d} -gt 0 ]]; then
+		printf -v b "%0${d}d%s" 0 "${b}"
+	elif [[ ${d} -lt 0 ]]; then
+		printf -v a "%0$(( -d ))d%s" 0 "${a}"
+	fi
+
+	[[ ${a} > ${b} ]] && return 3
+	[[ ${a} == "${b}" ]]
+}
+
 # @FUNCTION: _ver_compare
 # @USAGE: <va> <vb>
 # @RETURN: 1 if <va> < <vb>, 2 if <va> = <vb>, 3 if <va> > <vb>
@@ -200,10 +222,7 @@ _ver_compare() {
 
 	# Compare numeric components (PMS algorithm 3.2)
 	# First component
-	a=${an%%.*}
-	b=${bn%%.*}
-	[[ 10#${a} -gt 10#${b} ]] && return 3
-	[[ 10#${a} -lt 10#${b} ]] && return 1
+	_ver_compare_int "${an%%.*}" "${bn%%.*}" || return
 
 	while [[ ${an} == *.* && ${bn} == *.* ]]; do
 		# Other components (PMS algorithm 3.3)
@@ -218,8 +237,7 @@ _ver_compare() {
 			[[ ${a} > ${b} ]] && return 3
 			[[ ${a} < ${b} ]] && return 1
 		else
-			[[ ${a} -gt ${b} ]] && return 3
-			[[ ${a} -lt ${b} ]] && return 1
+			_ver_compare_int "${a}" "${b}" || return
 		fi
 	done
 	[[ ${an} == *.* ]] && return 3
@@ -237,8 +255,7 @@ _ver_compare() {
 		a=${as%%_*}
 		b=${bs%%_*}
 		if [[ ${a%%[0-9]*} == "${b%%[0-9]*}" ]]; then
-			[[ 10#${a##*[a-z]} -gt 10#${b##*[a-z]} ]] && return 3
-			[[ 10#${a##*[a-z]} -lt 10#${b##*[a-z]} ]] && return 1
+			_ver_compare_int "${a##*[a-z]}" "${b##*[a-z]}" || return
 		else
 			# Check for p first
 			[[ ${a%%[0-9]*} == p ]] && return 3
@@ -256,8 +273,7 @@ _ver_compare() {
 	fi
 
 	# Compare revision components (PMS algorithm 3.7)
-	[[ 10#${ar#-r} -gt 10#${br#-r} ]] && return 3
-	[[ 10#${ar#-r} -lt 10#${br#-r} ]] && return 1
+	_ver_compare_int "${ar#-r}" "${br#-r}" || return
 
 	return 2
 }
