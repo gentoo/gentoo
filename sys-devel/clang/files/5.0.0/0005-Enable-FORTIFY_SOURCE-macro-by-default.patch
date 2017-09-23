@@ -1,0 +1,35 @@
+From 68d39575cdff576b85907bea8e42b7ef26384dbb Mon Sep 17 00:00:00 2001
+From: Matthias Dahl <matthias.dahl@binary-island.eu>
+Date: Wed, 20 Sep 2017 16:17:31 +0200
+Subject: [PATCH 3/3] Enable FORTIFY_SOURCE macro by default
+
+FORTIFY_SOURCE only works for optimization levels > 0 and is currently not
+compatible with the address sanitizer, thus the macro is only set if the input
+language is C or C++ and the optimization level > 0 while the address sanitizer
+is not requested.
+---
+ lib/Frontend/CompilerInvocation.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/lib/Frontend/CompilerInvocation.cpp b/lib/Frontend/CompilerInvocation.cpp
+index 0d0869c815d..88c16534103 100644
+--- a/lib/Frontend/CompilerInvocation.cpp
++++ b/lib/Frontend/CompilerInvocation.cpp
+@@ -2694,6 +2694,14 @@ bool CompilerInvocation::CreateFromArgs(CompilerInvocation &Res,
+       !LangOpts.Sanitize.has(SanitizerKind::Address) &&
+       !LangOpts.Sanitize.has(SanitizerKind::Memory);
+ 
++  // Set the macro before the command line macros are being processed, so it can be
++  // properly unset if required to in case of incompatibilities.
++  if (Res.getCodeGenOpts().OptimizationLevel > 0 &&
++      (DashX.getLanguage() == InputKind::C || DashX.getLanguage() == InputKind::CXX) &&
++      !LangOpts.Sanitize.has(SanitizerKind::Address)) {
++    Res.getPreprocessorOpts().addMacroDef("_FORTIFY_SOURCE=2");
++  }
++
+   // FIXME: ParsePreprocessorArgs uses the FileManager to read the contents of
+   // PCH file and find the original header name. Remove the need to do that in
+   // ParsePreprocessorArgs and remove the FileManager
+-- 
+2.14.1
+

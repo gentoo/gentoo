@@ -4,3 +4,4 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
 # Force default-PIE build on 17.0 profiles.
 sys-devel/gcc pie
+sys-devel/clang pie

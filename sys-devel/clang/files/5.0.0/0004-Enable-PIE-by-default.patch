@@ -1,0 +1,25 @@
+From 148f3660aba75658553128196524933738cb5965 Mon Sep 17 00:00:00 2001
+From: Matthias Dahl <matthias.dahl@binary-island.eu>
+Date: Wed, 20 Sep 2017 15:53:03 +0200
+Subject: [PATCH 2/3] Enable PIE by default
+
+---
+ lib/Driver/ToolChains/Linux.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Driver/ToolChains/Linux.cpp b/lib/Driver/ToolChains/Linux.cpp
+index fd35c2480be..e0da31b4df7 100644
+--- a/lib/Driver/ToolChains/Linux.cpp
++++ b/lib/Driver/ToolChains/Linux.cpp
+@@ -810,7 +810,7 @@ void Linux::AddIAMCUIncludeArgs(const ArgList &DriverArgs,
+   }
+ }
+ 
+-bool Linux::isPIEDefault() const { return getSanitizerArgs().requiresPIE(); }
++bool Linux::isPIEDefault() const { return true; }
+ unsigned Linux::GetDefaultStackProtectorLevel(bool KernelOrKext) const { return 2; }
+ 
+ SanitizerMask Linux::getSupportedSanitizers() const {
+-- 
+2.14.1
+

@@ -1,0 +1,38 @@
+From facec87f38ad95ad3ad2b5f581c92bde19da4c6b Mon Sep 17 00:00:00 2001
+From: Matthias Dahl <matthias.dahl@binary-island.eu>
+Date: Wed, 20 Sep 2017 15:50:43 +0200
+Subject: [PATCH 1/3] Enable Stack Protector by default
+
+Enable "strong"-level Stack Protector by default.
+---
+ lib/Driver/ToolChains/Linux.cpp | 1 +
+ lib/Driver/ToolChains/Linux.h   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/lib/Driver/ToolChains/Linux.cpp b/lib/Driver/ToolChains/Linux.cpp
+index 08a27fa7fed..fd35c2480be 100644
+--- a/lib/Driver/ToolChains/Linux.cpp
++++ b/lib/Driver/ToolChains/Linux.cpp
+@@ -811,6 +811,7 @@ void Linux::AddIAMCUIncludeArgs(const ArgList &DriverArgs,
+ }
+ 
+ bool Linux::isPIEDefault() const { return getSanitizerArgs().requiresPIE(); }
++unsigned Linux::GetDefaultStackProtectorLevel(bool KernelOrKext) const { return 2; }
+ 
+ SanitizerMask Linux::getSupportedSanitizers() const {
+   const bool IsX86 = getTriple().getArch() == llvm::Triple::x86;
+diff --git a/lib/Driver/ToolChains/Linux.h b/lib/Driver/ToolChains/Linux.h
+index 9778c1832cc..ddd46a1d587 100644
+--- a/lib/Driver/ToolChains/Linux.h
++++ b/lib/Driver/ToolChains/Linux.h
+@@ -36,6 +36,7 @@ public:
+   void AddIAMCUIncludeArgs(const llvm::opt::ArgList &DriverArgs,
+                            llvm::opt::ArgStringList &CC1Args) const override;
+   bool isPIEDefault() const override;
++  unsigned GetDefaultStackProtectorLevel(bool KernelOrKext) const override;
+   SanitizerMask getSupportedSanitizers() const override;
+   void addProfileRTLibs(const llvm::opt::ArgList &Args,
+                         llvm::opt::ArgStringList &CmdArgs) const override;
+-- 
+2.14.1
+
