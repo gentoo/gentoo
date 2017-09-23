@@ -313,7 +313,7 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-apps/okular ebook chm
+kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
