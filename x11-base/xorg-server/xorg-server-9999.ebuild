@@ -12,7 +12,7 @@ SLOT="0/${PV}"
 KEYWORDS=""
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug glamor ipv6 libressl minimal selinux +suid suid-wrapper systemd +udev unwind xcsecurity"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
@@ -132,6 +132,7 @@ PDEPEND="
 REQUIRED_USE="!minimal? (
 		|| ( ${IUSE_SERVERS} )
 	)
+	^^ ( suid suid-wrapper )
 	xephyr? ( kdrive )"
 
 #UPSTREAMED_PATCHES=(
@@ -171,6 +172,7 @@ src_configure() {
 		$(use_enable glamor)
 		$(use_enable kdrive)
 		$(use_enable suid install-setuid)
+		$(use_enable suid-wrapper)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
