@@ -7,9 +7,11 @@ inherit autotools flag-o-matic
 DESCRIPTION="A tool for monitoring, capturing and storing TCP connections flows"
 HOMEPAGE="https://github.com/simsong/tcpflow https://packages.qa.debian.org/t/tcpflow.html"
 SRC_URI="
-	https://github.com/simsong/${PN}/archive/${P/_/}.tar.gz
-	https://api.github.com/repos/simsong/dfxml/tarball/7d11eaa7da8d31f588ce8aecb4b4f5e7e8169ba6 -> dfxml-20170921.tar.gz
 	https://api.github.com/repos/simsong/be13_api/tarball/c81521d768bb78499c069fcd7c47adc8eee0350c -> be13_api-20170924.tar.gz
+	https://api.github.com/repos/simsong/dfxml/tarball/7d11eaa7da8d31f588ce8aecb4b4f5e7e8169ba6 -> dfxml-20170921.tar.gz
+	https://dev.gentoo.org/~jer/be13_api-20170924.tar.gz
+	https://dev.gentoo.org/~jer/dfxml-20170921.tar.gz
+	https://github.com/simsong/${PN}/archive/${P/_/}.tar.gz
 "
 
 LICENSE="GPL-3"
