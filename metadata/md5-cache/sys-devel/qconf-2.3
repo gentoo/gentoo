@@ -1,14 +1,12 @@
 DEFINED_PHASES=configure install
-DEPEND=qt4? ( dev-qt/qtcore:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtxml:5 )
+DEPEND=dev-qt/qtcore:5 dev-qt/qtxml:5
 DESCRIPTION=./configure like generator for qmake-based projects
 EAPI=6
 HOMEPAGE=https://github.com/psi-plus/qconf
-IUSE=qt4 +qt5
 KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=qt4? ( dev-qt/qtcore:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtxml:5 )
-REQUIRED_USE=^^ ( qt4 qt5 )
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtxml:5
 SLOT=0
 SRC_URI=http://psi-im.org/files/qconf/qconf-2.3.tar.xz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=2d59608b66919fb9d06a7532696dd6fb
+_md5_=298b2954fc13060a0f29ec926f65330e

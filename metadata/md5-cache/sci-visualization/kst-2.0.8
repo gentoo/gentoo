@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=!qt5? ( dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 ) qt5? ( dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3 test? ( !qt5? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3 test? ( dev-qt/qttest:5 ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=Fast real-time large-dataset viewing and plotting tool
 EAPI=5
 HOMEPAGE=https://kst.kde.org/
-IUSE=debug qt5 test
+IUSE=debug test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2 FDL-1.2
-RDEPEND=!qt5? ( dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 ) qt5? ( dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3
+RDEPEND=dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/kst/Kst-2.0.8.tar.gz
-_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=784affd9e0f1457da1878f59a85c6951
+_eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=f316f1ee7aa9d74b3c3db6de44ccda1b
