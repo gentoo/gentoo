@@ -7377,6 +7377,7 @@ dev-python/backports-unittest-mock 1.2.1 1.2.1-r1 1.3: Backport of unittest.mock
 dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0 1.3.0 1.4.0: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
+dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface.
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
 dev-python/bcolz 1.1.0 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 3.1.1 3.1.2 3.1.3: Modern password hashing for software and servers
@@ -8669,6 +8670,7 @@ dev-python/retrying 1.3.3: General-purpose retrying library
 dev-python/reverend 0.4-r1: Reverend - Simple Bayesian classifier
 dev-python/rfc3986 0.3.1 0.4.1 1.1.0: Validating URI References per RFC 3986
 dev-python/rfc3987 1.3.7: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
+dev-python/riak-python-client 2.7.0: The Riak client for Python.
 dev-python/rlcompleter2 0.98-r1: Python command line completion
 dev-python/rnc2rng 2.4 2.4.1: RELAX NG Compact to regular syntax conversion library
 dev-python/robotframework 3.0.2: Test automation framework for acceptance testing & test-driven development
