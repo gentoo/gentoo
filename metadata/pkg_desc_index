@@ -15599,7 +15599,7 @@ net-p2p/ppcoind 0.4.0 0.4.0-r1: Cryptocurrency forked from Bitcoin which aims to
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.6.2-r2: P2P communications protocol
-net-p2p/qbittorrent 3.3.7 3.3.10 3.3.12 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 3.3.10 3.3.12 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.2 0.6.3 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.6 0.9.6-r1: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
@@ -16121,7 +16121,7 @@ sci-chemistry/aria 2.3.2_p20130826: Automated NOE assignment and NMR structure c
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
 sci-chemistry/avogadro 1.0.3-r2 1.1.0 1.1.1: Advanced molecular editor that uses Qt4 and OpenGL
-sci-chemistry/avogadro2 0.7.2 0.8.0 0.9.0: Advanced molecule editor and visualizer 2
+sci-chemistry/avogadro2 0.9.0: Advanced molecule editor and visualizer 2
 sci-chemistry/azara 2.8-r5: A suite of programmes to process and view NMR data
 sci-chemistry/ball 1.4.2-r2: Biochemical Algorithms Library
 sci-chemistry/bkchem 0.14.0_pre2-r1: Chemical drawing program
@@ -16156,7 +16156,7 @@ sci-chemistry/mdanalysis 0.7.7: A python library to analyze and manipulate molec
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
 sci-chemistry/molden 4.8-r2 5.0 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
-sci-chemistry/molequeue 0.7.1 0.8.0: Abstract, manage and coordinate execution of tasks
+sci-chemistry/molequeue 0.8.0: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as proteins, in both schematic and detailed representations
 sci-chemistry/molsketch 0.3.0 0.4.1-r1: A drawing tool for 2D molecular structures
