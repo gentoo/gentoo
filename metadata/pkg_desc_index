@@ -14632,7 +14632,7 @@ net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.3 3.1.3-r1 3.1.4: iptables firewall generator
 net-firewall/firewalld 0.4.3.3: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
-net-firewall/fwbuilder 5.0.1.3592-r1 5.3.6: A firewall GUI
+net-firewall/fwbuilder 5.0.1.3592-r1 5.3.6 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/fwknop 2.6.9-r1: Single Packet Authorization and Port Knocking application
 net-firewall/gshield 2.8-r4: iptables firewall configuration system
