@@ -1381,13 +1381,13 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 2.0 2.1 2.2 2.3 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
-app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
+app-emulation/wine-any 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
+app-emulation/wine-d3d9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 2.0 2.0.1 2.0.2 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 2.0 2.0.1 2.0.2 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -1454,6 +1454,7 @@ app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
 app-forensics/chkrootkit 0.50 0.51: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
+app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 0.69 1.5.7-r2 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
@@ -2912,7 +2913,7 @@ dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data bin
 dev-cpp/yaml-cpp 0.5.3 0.5.3-r1: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2-r1 0.9.4: MySQL Schema Versioning and Migration Utility
-dev-db/aerospike-server-community 3.9.0.3 3.9.1.1 3.10.0.3 3.11.0.2 3.12.1 3.12.1.1 3.13.0.3 3.14.1.3 9999: Flash-optimized, in-memory, nosql database
+dev-db/aerospike-server-community 3.13.0.7 3.14.1.4 9999: Flash-optimized, in-memory, nosql database
 dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 2.1 2.3: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
@@ -3000,12 +3001,12 @@ dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 3.6.5 3.6.6 9999: Connection pool server for PostgreSQL
-dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
+dev-db/pgrouting 2.0.0 2.5.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0 0.97.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
-dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 2.4.0_rc1 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 2.4.0_rc1 2.4.0_rc2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.21 9.2.21-r2 9.2.22 9.2.23 9.3.15 9.3.17 9.3.17-r2 9.3.18 9.3.19 9.4.10 9.4.12 9.4.12-r2 9.4.13 9.4.14 9.5.5 9.5.7 9.5.7-r1 9.5.8 9.5.9 9.6.3-r1 9.6.3-r2 9.6.4 9.6.5 10_rc1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -4560,7 +4561,7 @@ dev-lang/jwasm 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.6.2 1.6.4: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language
-dev-lang/logtalk 2.41.0 2.42.2 3.00.0 3.03.0 3.07.0: Open source object-oriented logic programming language
+dev-lang/logtalk 3.00.0 3.03.0 3.07.0 3.11.2: Open source object-oriented logic programming language
 dev-lang/lua 5.1.5-r4 5.1.5-r100 5.1.5-r101 5.2.3 5.2.3-r1 5.2.3-r2 5.3.3 5.3.3-r1: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 1.1.6 2.0.2 2.0.3 2.0.3-r1 2.0.4: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
@@ -4691,7 +4692,6 @@ dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
 dev-libs/dclog 1.1.1-r2: A logging library for C/C++ programs
 dev-libs/device-atlas-api-c 2.1 2.1.2_p1: API to detect devices based on the User-Agent HTTP header
-dev-libs/dfxml 20170921 99999999: Digital Forensics XML
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.3.3 3.3.4: The ultimate disassembler library (X86-32, X86-64)
@@ -7363,7 +7363,7 @@ dev-python/autobahn 0.9.4.2 0.16.0-r1 17.5.1-r2 17.7.1 17.9.1 17.9.2: WebSocket 
 dev-python/automat 0.5.0 0.6.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.3.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0 1.11.81 1.11.154: Universal Command Line Environment for AWS
+dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0 1.11.81 1.11.154 1.11.158: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
@@ -8210,7 +8210,7 @@ dev-python/process-tests 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2 1.3: Easy to use progress bars
 dev-python/progressbar 2.3-r2 2.3-r3: Text progressbar library for python
-dev-python/prometheus_client 0.0.20: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.0.20 0.0.21: Python client for the Prometheus monitoring system
 dev-python/promise 0.4.2: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 1.0.0 1.0.14 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.1.0 3.3.0 3.3.0-r1 3.4.1: Google's Protocol Buffers - Python bindings
@@ -10546,7 +10546,7 @@ dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
-dev-util/promu 0.1.0_p20170607: Prometheus Utility Tool
+dev-util/promu 0.1.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2016.3.2-r1 2017.1.5 2017.2.1 2017.2.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.3.2 2017.1.5 2017.2.3: Intelligent Python IDE with unique code assistance and analysis
@@ -11304,7 +11304,7 @@ games-misc/ggencoder 0.91a: Utility to encode and decode Game Genie (tm) codes
 games-misc/gtklife 5.1 5.1-r1: A Conway's Life simulator for Unix
 games-misc/katawa-shoujo 1.3 1.3.1: bishoujo-style visual novel by Four Leaf Studios
 games-misc/little-inferno 20130509: Throw your toys into your fire, and play with them as they burn
-games-misc/lolcat 42.1.43: Rainbows and unicorns!
+games-misc/lolcat 42.1.43 90.8.8: Rainbows and unicorns!
 games-misc/lucidlife 0.9.2 0.9.2-r1: A Conway's Life simulator written in GTK+2 - fork from Gtklife
 games-misc/nyancat 1.2.1 1.5.1: Nyan Cat Telnet Server
 games-misc/opengfx 0.5.3 0.5.4 0.5.4-r1: OpenGFX data files for OpenTTD
@@ -12200,7 +12200,7 @@ kde-misc/latte-dock 0.6.2 0.7.1 9999: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-redshift-control 1.0.17 1.0.18: Plasma 5 applet for controlling redshift
-kde-misc/plasma-applet-weather-widget 1.6.8 1.6.9: Plasma 5 applet for weather forecasts
+kde-misc/plasma-applet-weather-widget 1.6.10: Plasma 5 applet for weather forecasts
 kde-misc/rsibreak 0.12.6 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
@@ -13917,7 +13917,7 @@ media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
-media-sound/qtractor 0.8.0-r1 0.8.1-r1 0.8.2-r1 0.8.3: Qtractor is an Audio/MIDI multi-track sequencer
+media-sound/qtractor 0.8.3: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
@@ -14446,7 +14446,7 @@ net-analyzer/prelude-correlator 3.0.1-r1 3.1.0 4.0.0: Real time correlator of ev
 net-analyzer/prelude-lml 3.0.0 3.1.0 4.0.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0 4.0.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
-net-analyzer/prometheus 1.7.1 2.0.0_beta4: Prometheus monitoring system and time series database
+net-analyzer/prometheus 1.7.1 2.0.0_beta4 2.0.0_beta5: Prometheus monitoring system and time series database
 net-analyzer/prometheus-node_exporter 0.14.0-r1: Prometheus exporter for machine metrics
 net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
@@ -14492,7 +14492,7 @@ net-analyzer/symon 2.87 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
 net-analyzer/tcpdump 4.9.0 4.9.1 4.9.2 9999: A Tool for network monitoring and data acquisition
-net-analyzer/tcpflow 1.4.5_p1-r1 1.4.5_p4-r1: A tool for monitoring, capturing and storing TCP connections flows
+net-analyzer/tcpflow 1.4.5_p1-r1 1.4.5_p4-r1 1.5.0_alpha: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.1.2-r1 4.2.6: utilities for editing and replaying previously captured network traffic
@@ -14512,7 +14512,7 @@ net-analyzer/traceproto 1.1.2_beta1: A traceroute-like utility that sends packet
 net-analyzer/traceroute 2.0.20 2.0.22 2.1.0: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, MTU discovery and other features
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
-net-analyzer/tsung 1.6.0: Erlang's multi-protocol distributed load testing tool
+net-analyzer/tsung 1.6.0 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 1.17-r1: Console-based network traffic monitor that keeps statistics of network usage
@@ -14748,7 +14748,7 @@ net-im/openmittsu 0.9.2.109: An open source chat client for Threema-style end-to
 net-im/pidgin 2.12.0: GTK Instant Messenger client
 net-im/pork 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
-net-im/psi 1.2 9999: Qt XMPP client
+net-im/psi 1.2 1.3 9999: Qt XMPP client
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
@@ -15578,7 +15578,7 @@ net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15 1.3.9999 9999: BitTorrent client with a client/server model
 net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1 0.4.0-r2: Tool for generating eDonkey2000 links
-net-p2p/eiskaltdcpp 2.2.9 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
+net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
@@ -15638,8 +15638,8 @@ net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic p
 net-print/foomatic-db-ppds 4.0.20140105 4.0.20160504 4.0.20161101 4.0.20170331: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.12: Ghostscript and cups printer drivers
-net-print/hplip 3.16.3 3.17.6 3.17.7: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.16.3 3.17.6: Proprietary plugins and firmware for HPLIP
+net-print/hplip 3.16.3 3.17.6 3.17.7 3.17.9: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip-plugin 3.16.3 3.17.6 3.17.7 3.17.9: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4: PPD description files for (some) Kyocera Mita Printers
@@ -15725,7 +15725,7 @@ net-vpn/openfortivpn 1.3.0: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.2-r1 2.4.3 2.4.3-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.5.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.5.3 5.6.0: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.31 1.0.32 1.1_pre15: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.3.0.8 0.3.0.10 0.3.0.11 0.3.1.6_rc 0.3.1.7 0.3.2.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
@@ -16614,7 +16614,7 @@ sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/factmsieve 76-r1: Convenient factorization helper script using msieve and ggnfs
 sci-mathematics/fann 2.2.0-r1 9999: Fast Artificial Neural Network Library
-sci-mathematics/flint 2.3 2.4.3 2.4.4-r1 2.4.5 2.5.2: Fast Library for Number Theory
+sci-mathematics/flint 2.4.4-r1 2.4.5 2.5.2: Fast Library for Number Theory
 sci-mathematics/form 4.1 4.2.0: Symbolic Manipulation System
 sci-mathematics/fricas 1.3.0-r1 1.3.1 1.3.2: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r1 0.9.0-r2: Software system and project for computations with monomial ideals
@@ -18385,7 +18385,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8 4.8.1 4.8.2: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 61.0.3163.79 62.0.3202.9 62.0.3202.18 63.0.3213.3 63.0.3218.0: Open-source version of Google Chrome web browser
+www-client/chromium 61.0.3163.79 61.0.3163.100 62.0.3202.9 62.0.3202.18 63.0.3213.3 63.0.3218.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
@@ -18395,7 +18395,7 @@ www-client/epiphany 3.22.7 3.24.4: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.3.0 55.0.2: Firefox Web Browser
 www-client/firefox-bin 52.3.0 55.0.2: Firefox Web Browser
-www-client/google-chrome 61.0.3163.91: The web browser from Google
+www-client/google-chrome 61.0.3163.100: The web browser from Google
 www-client/google-chrome-beta 62.0.3202.29: The web browser from Google
 www-client/google-chrome-unstable 63.0.3218.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
@@ -18446,7 +18446,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 27.0.0.130-r1: Adobe Flash Player
-www-plugins/chrome-binary-plugins 61.0.3163.91 62.0.3202.29_beta 63.0.3218.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 61.0.3163.100 62.0.3202.29_beta 63.0.3218.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features

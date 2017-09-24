@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libfastjson-0.99.3:= >=dev-libs/libestr-0.1.9 >=dev-libs/libl
 SLOT=0
 SRC_URI=http://www.rsyslog.com/files/download/rsyslog/rsyslog-8.27.0.tar.gz -> rsyslog-8.27.0.tar.gz doc? ( http://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-8.27.0.tar.gz -> rsyslog-docs-8.27.0.tar.gz )
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=4b88ffe5047f8817d911366f04358827
+_md5_=4bde383db6db23d90a34470b27fed456
