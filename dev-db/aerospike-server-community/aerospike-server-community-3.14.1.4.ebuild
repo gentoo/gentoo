@@ -13,7 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="app-crypt/gcr"
+RDEPEND="sys-libs/readline
+	sys-libs/zlib
+	dev-libs/openssl
+	"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P}-debian7"
