@@ -21,7 +21,7 @@ DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping c
 HOMEPAGE="http://catb.org/gpsd/"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/22"
 
 GPSD_PROTOCOLS=(
 	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt
