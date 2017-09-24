@@ -10,4 +10,7 @@
 		the userspace command line interface, and conntrackd, the userspace
 		daemon.
 	</longdescription>
+	<use>
+		<flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
+	</use>
 </pkgmetadata>
