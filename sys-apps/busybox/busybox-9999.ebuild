@@ -10,7 +10,7 @@ DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
 if [[ ${PV} == "9999" ]] ; then
 	MY_P=${P}
-	EGIT_REPO_URI="git://busybox.net/busybox.git"
+	EGIT_REPO_URI="https://git.busybox.net/busybox"
 	inherit git-r3
 else
 	MY_P=${PN}-${PV/_/-}
