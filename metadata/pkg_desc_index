@@ -1911,7 +1911,7 @@ app-misc/qlcplus 4.10.5b-r1: QLC+ - Q Light Controller Plus to control DMX inter
 app-misc/ranger 1.8.1 1.9.0_beta5 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.22.4 1.23.2: A personal full text search package
+app-misc/recoll 1.22.4 1.23.2 1.23.3: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15: Ridiculously functional reminder program
