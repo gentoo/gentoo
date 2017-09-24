@@ -1,0 +1,23 @@
+https://github.com/rsyslog/rsyslog/pull/1791
+---
+ tests/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -498,7 +498,6 @@ TESTS += msgvar-concurrency-array.sh \
+ 	mmnormalize_processing_test2.sh \
+ 	mmnormalize_processing_test3.sh \
+ 	mmnormalize_processing_test4.sh
+-endif
+ 
+ if ENABLE_IMPTCP
+ TESTS +=  \
+@@ -512,6 +511,7 @@ if LOGNORM_REGEX_SUPPORTED
+ TESTS += \
+ 	mmnormalize_regex.sh
+ endif
++endif
+ 
+ if ENABLE_MMJSONPARSE
+ TESTS += \
