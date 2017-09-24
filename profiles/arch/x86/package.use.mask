@@ -232,10 +232,6 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
 
-# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
-# masked in base, unmask for x86/amd64
-dev-python/kaa-base -tls
-
 # Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
 app-text/enchant -zemberek
 

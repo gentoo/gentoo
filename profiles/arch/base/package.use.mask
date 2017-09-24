@@ -5,11 +5,6 @@
 # Requires [cuda] which is masked in most of the profiles.
 media-libs/opencv contrib_xfeatures2d
 
-# Alon Bar-Lev <alonbl@gentoo.org> (01 Sep 2017)
-# dev-python/tlslite is keyworded only for x86/amd64
-# waiting for ppc, bug#629506
-dev-python/kaa-base tls
-
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # the needed deps are amd64/x86 only
 net-analyzer/metasploit nexpose openvas

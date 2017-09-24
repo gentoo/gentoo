@@ -306,7 +306,3 @@ media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 # saves people from needlessly installing nasm
 # Refs bug #93279
 media-sound/lame cpu_flags_x86_mmx
-
-# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
-# masked in base, unmask for x86/amd64
-dev-python/kaa-base -tls
