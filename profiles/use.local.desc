@@ -1105,8 +1105,6 @@ app-text/blogc:git - Build blogc-git-receiver tool
 app-text/blogc:httpd - Build blogc-runserver tool
 app-text/blogc:make - Build blogc-make tool
 app-text/cb2bib:webengine - Use dev-qt/qtwebengine instead of dev-qt/qtwebkit
-app-text/coolreader:corefonts - Use media-fonts/corefonts
-app-text/coolreader:liberation-fonts - Use media-fonts/liberation-fonts
 app-text/crm114:mew - Add support for using the mewdecode mime decoder (app-emacs/mew)
 app-text/crm114:mimencode - Add support for using the mimencode mime (net-mail/metamail)
 app-text/crm114:normalizemime - Add support for using the normalizemime (mail-filter/normalizemime)
