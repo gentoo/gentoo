@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-19">
+  <title>Exim: Local privilege escalation</title>
+  <synopsis>A vulnerability in Exim may allow local users to gain root
+    privileges.
+    
+  </synopsis>
+  <product type="ebuild">exim</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>622212</bug>
+  <access>local</access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.89-r1</unaffected>
+      <vulnerable range="lt">4.89-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Exim is a message transfer agent (MTA) developed at the University of
+      Cambridge for use on Unix systems connected to the Internet.
+    </p>
+  </background>
+  <description>
+    <p>Exim supports the use of multiple “-p” command line arguments
+      causing a memory leak. This could lead to a stack-clash in user-space and
+      as result the attacker can, “clash” or “smash” the stack or
+      another memory region, or “jump” over the stack guard-page.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could obtain root privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Exim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/exim-4.89-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000369">
+      CVE-2017-1000369
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-19T01:45:18Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T15:49:28Z">chrisadr</metadata>
+</glsa>
