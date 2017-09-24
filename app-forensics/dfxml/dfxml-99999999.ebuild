@@ -26,10 +26,3 @@ src_prepare() {
 
 	eautoreconf
 }
-
-src_install() {
-	default
-
-	insinto /usr/share/aclocal
-	doins dfxml_configure.m4
-}
