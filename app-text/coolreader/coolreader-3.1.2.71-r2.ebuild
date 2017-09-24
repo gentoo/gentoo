@@ -24,25 +24,16 @@ HOMEPAGE="https://sourceforge.net/projects/crengine/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="qt4 qt5 wxwidgets corefonts liberation-fonts"
-REQUIRED_USE="^^ ( qt4 qt5 wxwidgets )
-	wxwidgets? (
-		|| ( corefonts liberation-fonts ) )"
+IUSE="wxwidgets"
 
 DEPEND="sys-libs/zlib
 	media-libs/libpng:0
 	virtual/jpeg:0
 	media-libs/freetype
-	wxwidgets? (
-		|| ( x11-libs/wxGTK:3.0 x11-libs/wxGTK:2.8 ) )
-	qt4? ( dev-qt/qtcore:4
-		dev-qt/qtgui:4 )
-	qt5? ( dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5 )"
+	wxwidgets? ( || ( x11-libs/wxGTK:3.0 x11-libs/wxGTK:2.8 ) )
+	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"
 RDEPEND="${DEPEND}
-	corefonts? ( media-fonts/corefonts )
-	liberation-fonts? ( media-fonts/liberation-fonts )"
+	wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )"
 
 # 1st patch: To save cr3.ini to ~homedir.
 # 2nd patch: To build QT5 and WX GUI version of coolreader3;
@@ -56,16 +47,14 @@ PATCHES=( "${FILESDIR}/cr3ini.diff" "${FILESDIR}/cr3.1.2.71-r1_qt5_wx.diff" )
 src_configure() {
 	CMAKE_USE_DIR="${S}"
 	CMAKE_BUILD_TYPE="Release"
-	if use qt4; then
-		local mycmakeargs=(-D GUI=QT)
-	elif use qt5; then
-		local mycmakeargs=(-D GUI=QT5)
-	elif use wxwidgets; then
+	if use wxwidgets; then
 		. "${ROOT}/var/lib/wxwidgets/current"
 		if [[ "${WXCONFIG}" -eq "none" ]]; then
 		   	die "The wxGTK profile should be selected!"
 		fi
 		local mycmakeargs=(-D GUI=WX)
+	else
+		local mycmakeargs=(-D GUI=QT5)
 	fi
 	cmake-utils_src_configure
 }
