@@ -4618,7 +4618,7 @@ dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.5-r1 8.6.6 8.6.7: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.32.1 0.34.8 0.34.9 0.36.4 0.36.5: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
-dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
+dev-lang/xsb 3.6.0 3.7.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
 dev-libs/389-adminutil 1.1.15: 389 adminutil
