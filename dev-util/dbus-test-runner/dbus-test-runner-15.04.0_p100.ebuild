@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
