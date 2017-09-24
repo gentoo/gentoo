@@ -8,10 +8,6 @@
     A fast and small cross-platform XML/CSS based eBook reader for desktops and handheld devices.
     Supported formats: FB2, TXT, RTF, DOC, TCR, HTML, EPUB, CHM, PDB, MOBI.
   </longdescription>
-  <use>
-    <flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg></flag>
-    <flag name="liberation-fonts">Use <pkg>media-fonts/liberation-fonts</pkg></flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">crengine</remote-id>
   </upstream>
