@@ -22,3 +22,4 @@ slotmove app-i18n/fcitx-table-extra 0 4
 slotmove app-i18n/fcitx-unikey 0 4
 slotmove app-i18n/kcm-fcitx 4 4-plasma4
 slotmove app-i18n/kcm-fcitx 5 4-plasma5
+move dev-libs/dfxml app-forensics/dfxml
