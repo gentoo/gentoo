@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-18">
+  <title>Mercurial: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mercurial, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mercurial</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>621068</bug>
+  <bug>627484</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/mercurial" auto="yes" arch="*">
+      <unaffected range="ge">4.3</unaffected>
+      <vulnerable range="lt">4.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mercurial is a distributed source control management system.</p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mercurial. Please
+      review the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mercurial users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/mercurial-4.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000115">
+      CVE-2017-1000115
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000116">
+      CVE-2017-1000116
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9462">
+      CVE-2017-9462
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T20:06:48Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T15:47:31Z">chrisadr</metadata>
+</glsa>
