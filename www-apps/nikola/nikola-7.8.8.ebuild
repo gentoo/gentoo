@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	assets? ( >=dev-python/webassets-0.10.1[${PYTHON_USEDEP}] )
-	charts? ( ~dev-python/pygal-2.0.1[${PYTHON_USEDEP}] )
+	charts? ( >=dev-python/pygal-2.0.1[${PYTHON_USEDEP}] )
 	ghpages? ( >=dev-python/ghp-import-0.4.1[${PYTHON_USEDEP}] )
 	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
 	ipython? ( >=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}] )
