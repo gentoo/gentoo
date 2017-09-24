@@ -11,7 +11,7 @@ inherit l10n qmake-utils xdg-utils
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="http://psi-im.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
-	https://github.com/psi-im/psi-l10n/archive/1.2.tar.gz -> psi-l10n-${PV}.tar.gz"
+	https://github.com/psi-im/psi-l10n/archive/${PV}.tar.gz -> psi-l10n-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -114,8 +114,7 @@ src_install() {
 	l10n_for_each_locale_do install_locale
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 }
