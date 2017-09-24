@@ -9743,9 +9743,9 @@ dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML 
 dev-ruby/nokogumbo 1.4.7 1.4.9 1.4.13: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
-dev-ruby/oauth 0.4.7-r2 0.5.1 0.5.3: A RubyGem for implementing both OAuth clients and servers
+dev-ruby/oauth 0.5.1 0.5.3: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.3.1 1.4.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
-dev-ruby/octokit 4.4.1 4.6.2 4.7.0: Ruby toolkit for the Github API
+dev-ruby/octokit 4.7.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.3.1 1.3.2 1.4.0 1.6.0 1.6.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
@@ -9754,7 +9754,7 @@ dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.5.0 2.6.0 2.7.0: A fast XML parser and Object marshaller
-dev-ruby/packetfu 1.1.11-r1 1.1.13: A mid-level packet manipulation library
+dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
@@ -9822,7 +9822,7 @@ dev-ruby/rbnacl 4.0.2 5.0.0: Provides a high-level toolkit for building cryptogr
 dev-ruby/rbpdf 1.19.2 1.19.3: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0-r1 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
-dev-ruby/rcairo 1.14.3 1.15.4 1.15.5 1.15.9-r1: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.3 1.15.9-r1: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.3.0 5.0.0-r3 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
@@ -9939,7 +9939,7 @@ dev-ruby/rubyntlm 0.6.1 0.6.2: Ruby/NTLM provides message creator and parser for
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
-dev-ruby/rubytter 1.5.1 1.5.1-r1: Rubytter is a simple twitter library
+dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
