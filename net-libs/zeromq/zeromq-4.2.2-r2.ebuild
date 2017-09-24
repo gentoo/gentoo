@@ -12,16 +12,18 @@ SRC_URI="https://github.com/zeromq/libzmq/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="pgm +sodium static-libs test unwind elibc_Darwin"
+IUSE="doc pgm +sodium static-libs test unwind elibc_Darwin"
 
 RDEPEND="
 	!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) )
 	sodium? ( dev-libs/libsodium:= )
 	pgm? ( =net-libs/openpgm-5.2.122 )"
 DEPEND="${RDEPEND}
-	app-text/asciidoc
-	app-text/xmlto
 	!elibc_Darwin? ( sys-apps/util-linux )
+	doc? (
+		app-text/asciidoc
+		app-text/xmlto
+	)
 	pgm? ( virtual/pkgconfig )"
 
 PATCHES=( "${FILESDIR}"/${PN}-4.2.1-disable-experimental-zmq_poll-implementation.patch
@@ -42,6 +44,7 @@ src_configure() {
 		$(use_enable unwind libunwind)
 		$(use_with sodium libsodium)
 		$(use_with pgm)
+		$(use_with doc docs)
 	)
 	econf "${myeconfargs[@]}"
 }
