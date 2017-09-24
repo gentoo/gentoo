@@ -15,7 +15,7 @@ IUSE="test doc timezone yahoo"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="yahoo? ( >=dev-python/requests-oauthlib-0.4.0[${PYTHON_USEDEP}]
 		dev-python/placefinder[${PYTHON_USEDEP}] )
