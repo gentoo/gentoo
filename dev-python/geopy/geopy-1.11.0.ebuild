@@ -21,7 +21,8 @@ RDEPEND="yahoo? ( >=dev-python/requests-oauthlib-0.4.0[${PYTHON_USEDEP}]
 		dev-python/placefinder[${PYTHON_USEDEP}] )
 	timezone? ( dev-python/pytz[${PYTHON_USEDEP}] )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
+	test? ( dev-python/mock[${PYTHON_USEDEP}]
+		 dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose-cover3[${PYTHON_USEDEP}]
 		dev-python/pylint[${PYTHON_USEDEP}] )
 	doc? ( $(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' python2_7)
