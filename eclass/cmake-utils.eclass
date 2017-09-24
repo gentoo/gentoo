@@ -93,6 +93,12 @@ _CMAKE_UTILS_ECLASS=1
 # for econf and is needed to pass TRY_RUN results when cross-compiling.
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
+# @ECLASS-VARIABLE: CMAKE_UTILS_QA_SRC_DIR_READONLY
+# @DESCRIPTION:
+# After running cmake-utils_src_prepare, sets ${S} to read-only. This is
+# a user flag and should under _no circumstances_ be set in the ebuild.
+# Helps in improving QA of build systems that write to source tree.
+
 case ${EAPI} in
 	5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
 	6) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
@@ -441,6 +447,11 @@ cmake-utils_src_prepare() {
 	fi
 
 	popd > /dev/null || die
+
+	# make ${S} read-only in order to detect broken build-systems
+	if [[ ${CMAKE_UTILS_QA_SRC_DIR_READONLY} && ! ${CMAKE_IN_SOURCE_BUILD} ]]; then
+		chmod -R a-w "${S}"
+	fi
 
 	_CMAKE_UTILS_SRC_PREPARE_HAS_RUN=1
 }
