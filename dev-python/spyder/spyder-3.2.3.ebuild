@@ -33,6 +33,7 @@ RDEPEND="
 	dev-python/pickleshare[${PYTHON_USEDEP}]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
+	>=dev-python/pycodestyle-2.3.0
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
