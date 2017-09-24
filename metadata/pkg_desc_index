@@ -9496,7 +9496,7 @@ dev-ruby/celluloid-supervision 0.20.6: Provides a simple and natural way to buil
 dev-ruby/certificate_authority 0.1.6-r1 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.3 0.7.4 0.7.5: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
-dev-ruby/childprocess 0.5.3 0.6.3 0.7.0 0.7.1: Solution for controlling external programs running in the background
+dev-ruby/childprocess 0.5.3 0.6.3 0.7.0 0.7.1 0.8.0: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
 dev-ruby/chunky_png 1.3.6 1.3.7 1.3.8: Pure Ruby library that can read and write PNG images
 dev-ruby/classifier 1.3.4: Module to allow Bayesian and other types of classifications
@@ -14526,7 +14526,7 @@ net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-w
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.11.0 1.11.1_p20170508 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
-net-dialup/cutecom 0.22.0-r1 0.40.0-r1: CuteCom is a serial terminal, like minicom, written in qt
+net-dialup/cutecom 0.40.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
 net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
