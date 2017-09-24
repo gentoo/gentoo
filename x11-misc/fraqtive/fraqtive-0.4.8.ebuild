@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,6 +32,8 @@ DEPEND="
 "
 
 src_configure() {
+	epatch "${FILESDIR}/${P}-qt-includes.patch"
+
 	tc-export PKG_CONFIG
 	sed -i -e "s|-lGLU|$( ${PKG_CONFIG} --libs glu )|g" src/src.pro || die
 	local conf="release"
