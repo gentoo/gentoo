@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-20">
+  <title>Postfix: Privilege escalation</title>
+  <synopsis>A vulnerability in Postfix may allow local users to gain root
+    privileges.
+    
+  </synopsis>
+  <product type="ebuild">postfix</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>621882</bug>
+  <access>local</access>
+  <affected>
+    <package name="mail-mta/postfix" auto="yes" arch="*">
+      <unaffected range="ge">3.1.6</unaffected>
+      <vulnerable range="lt">3.1.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Postfix is a mail server and an alternative to the widely-used Sendmail
+      program.
+    </p>
+  </background>
+  <description>
+    <p>By default, Berkeley DB reads a DB_CONFIG configuration file from the
+      current working directory. This is an undocumented behavior.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker, by using a specially crafted DG_CONFIG file, could
+      possibly escalate privileges to the root group.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Postfix users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/postfix-3.1.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://www.postfix.org/announcements/postfix-3.2.2.html">Postfix
+      Official Announce
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-21T15:43:52Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T15:51:13Z">chrisadr</metadata>
+</glsa>

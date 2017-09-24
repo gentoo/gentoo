@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-17">
+  <title>CVS: Command injection</title>
+  <synopsis>A command injection vulnerability in CVS may allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">cvs</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>627498</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/cvs" auto="yes" arch="*">
+      <unaffected range="ge">1.12.12-r12</unaffected>
+      <vulnerable range="lt">1.12.12-r12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CVS (Concurrent Versions System) is an open-source network-transparent
+      version control system. It contains both a client utility and a server.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that when CVS is configured to use SSH for remote
+      repositories it allows remote attackers to execute arbitrary code through
+      a repository URL with a specially crafted hostname.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to clone a specially crafted
+      repository, could possibly execute arbitrary code with the privileges of
+      the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CVS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/cvs-1.12.12-r12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12836">
+      CVE-2017-12836
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T20:16:04Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T15:44:04Z">chrisadr</metadata>
+</glsa>

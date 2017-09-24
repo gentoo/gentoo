@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-15">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>626382</bug>
+  <bug>630068</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">61.0.3163.79</unaffected>
+      <vulnerable range="lt">61.0.3163.79</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, bypass security restrictions, or spoof content.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-61.0.3163.79"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5091">
+      CVE-2017-5091
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5092">
+      CVE-2017-5092
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5093">
+      CVE-2017-5093
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5094">
+      CVE-2017-5094
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5095">
+      CVE-2017-5095
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5096">
+      CVE-2017-5096
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5097">
+      CVE-2017-5097
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5098">
+      CVE-2017-5098
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5099">
+      CVE-2017-5099
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5100">
+      CVE-2017-5100
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5101">
+      CVE-2017-5101
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5102">
+      CVE-2017-5102
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5103">
+      CVE-2017-5103
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5104">
+      CVE-2017-5104
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5105">
+      CVE-2017-5105
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5106">
+      CVE-2017-5106
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5107">
+      CVE-2017-5107
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5108">
+      CVE-2017-5108
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5109">
+      CVE-2017-5109
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5110">
+      CVE-2017-5110
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5111">
+      CVE-2017-5111
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5112">
+      CVE-2017-5112
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5113">
+      CVE-2017-5113
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5114">
+      CVE-2017-5114
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5115">
+      CVE-2017-5115
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5116">
+      CVE-2017-5116
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5117">
+      CVE-2017-5117
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5118">
+      CVE-2017-5118
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5119">
+      CVE-2017-5119
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5120">
+      CVE-2017-5120
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7000">
+      CVE-2017-7000
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T20:25:44Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T15:34:49Z">chrisadr</metadata>
+</glsa>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-16">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobe-flash</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>627336</bug>
+  <bug>630964</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">27.0.0.130-r1</unaffected>
+      <vulnerable range="lt">27.0.0.130-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-26.0.0.151"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-11281">
+      CVE-2017-11281
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-11282">
+      CVE-2017-11282
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3085">
+      CVE-2017-3085
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3106">
+      CVE-2017-3106
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T20:12:17Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T15:37:00Z">chrisadr</metadata>
+</glsa>
