@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=>=dev-libs/libusb-1.0.20 >=dev-qt/qtcore-5.6:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5 >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Mooltipass crossplatform daemon/tools
+EAPI=6
+HOMEPAGE=https://github.com/raoulh/moolticute
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/libusb-1.0.20 >=dev-qt/qtcore-5.6:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://github.com/raoulh/moolticute/archive/v0.9.8-beta.tar.gz -> moolticute-0.9.8_beta.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=3e0693ff1c4fa7dace52ff54008dfb10
