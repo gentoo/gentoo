@@ -32,6 +32,7 @@ src_install() {
 	cp -r adapters coding contributions core examples integration \
 		library paths scratch tests tools VERSION.txt \
 		loader-sample.lgt settings-sample.lgt tester-sample.lgt \
+		tests-sample.lgt \
 		"${D}/usr/share/${P}" \
 		|| die "Failed to install files"
 
