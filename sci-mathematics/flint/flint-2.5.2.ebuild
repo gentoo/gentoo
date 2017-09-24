@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	)"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.4.4-PIE-FTBFS.patch
+
 	sed -i \
 		-e '/echo "DLPATH_ADD=/s/\$DLPATH_ADD/\\\$(CURDIR)/' \
 		./configure || die
