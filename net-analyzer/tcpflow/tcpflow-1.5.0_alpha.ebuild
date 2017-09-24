@@ -20,7 +20,8 @@ SLOT="0"
 IUSE="cairo test"
 
 RDEPEND="
-	app-forensics/afflib
+	dev-db/sqlite
+	dev-lang/python:2.7=
 	dev-libs/boost:=
 	dev-libs/openssl:=
 	net-libs/http-parser:=
