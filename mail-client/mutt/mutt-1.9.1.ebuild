@@ -14,7 +14,7 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
-IUSE="berkdb crypt debug doc gdbm gnutls gpg +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet vanilla"
+IUSE="berkdb crypt debug doc gdbm gnutls gpg +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet vanilla prefix"
 REQUIRED_USE="
 	hcache?   ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) )
 	imap?     ( ssl )
