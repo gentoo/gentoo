@@ -13,7 +13,7 @@ depend() {
 }
 
 start() {
-    ebegin "Starting lxd server"
+    ebegin "Starting lxd service"
 
     start-stop-daemon --start \
 		      --pidfile ${PIDFILE} \
