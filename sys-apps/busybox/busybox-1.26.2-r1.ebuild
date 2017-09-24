@@ -128,6 +128,7 @@ src_configure() {
 	busybox_config_option y ASH
 	busybox_config_option y SH_IS_ASH
 	busybox_config_option n HUSH
+	busybox_config_option n SH_IS_HUSH
 
 	busybox_config_option '"/run"' PID_FILE_PATH
 	busybox_config_option '"/run/ifstate"' IFUPDOWN_IFSTATE_PATH
