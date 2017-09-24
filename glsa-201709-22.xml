@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-22">
+  <title>Oracle JDK/JRE, IcedTea: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oracle's JRE and JDK
+    software suites, and IcedTea, the worst of which may allow execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">oracle-jdk-bin,oracle-jre-bin,icedtea-bin</product>
+  <announced>2017-09-24</announced>
+  <revised>2017-09-24: 1</revised>
+  <bug>625602</bug>
+  <bug>626088</bug>
+  <bug>627682</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.141</unaffected>
+      <vulnerable range="lt">1.8.0.141</vulnerable>
+    </package>
+    <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.141</unaffected>
+      <vulnerable range="lt">1.8.0.141</vulnerable>
+    </package>
+    <package name="dev-java/icedtea-bin" auto="yes" arch="*">
+      <unaffected range="rge" slot="7">7.2.6.11</unaffected>
+      <unaffected range="rge" slot="8">3.5.0</unaffected>
+      <vulnerable range="lt" slot="7">7.2.6.11</vulnerable>
+      <vulnerable range="lt" slot="8">3.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Java Platform, Standard Edition (Java SE) lets you develop and deploy
+      Java applications on desktops and servers, as well as in today’s
+      demanding embedded environments. Java offers the rich user interface,
+      performance, versatility, portability, and security that today’s
+      applications require.
+    </p>
+    
+    <p>IcedTea’s aim is to provide OpenJDK in a form suitable for easy
+      configuration, compilation and distribution with the primary goal of
+      allowing inclusion in GNU/Linux distributions.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Oracle’s JRE, JDK and
+      IcedTea. Please review the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or gain
+      access to information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JDK binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jdk-bin-1.8.0.141"
+    </code>
+    
+    <p>All Oracle JRE binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jre-bin-1.8.0.141"
+    </code>
+    
+    <p>All IcedTea binary 7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-7.2.6.11"
+    </code>
+    
+    <p>All IcedTea binary 3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-3.5.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10053">
+      CVE-2017-10053
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10067">
+      CVE-2017-10067
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10074">
+      CVE-2017-10074
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10078">
+      CVE-2017-10078
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10081">
+      CVE-2017-10081
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10086">
+      CVE-2017-10086
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10087">
+      CVE-2017-10087
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10089">
+      CVE-2017-10089
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10090">
+      CVE-2017-10090
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10096">
+      CVE-2017-10096
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10101">
+      CVE-2017-10101
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10102">
+      CVE-2017-10102
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10105">
+      CVE-2017-10105
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10107">
+      CVE-2017-10107
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10108">
+      CVE-2017-10108
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10109">
+      CVE-2017-10109
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10110">
+      CVE-2017-10110
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10111">
+      CVE-2017-10111
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10114">
+      CVE-2017-10114
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10115">
+      CVE-2017-10115
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10116">
+      CVE-2017-10116
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10117">
+      CVE-2017-10117
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10118">
+      CVE-2017-10118
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10121">
+      CVE-2017-10121
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10125">
+      CVE-2017-10125
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10135">
+      CVE-2017-10135
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10176">
+      CVE-2017-10176
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10193">
+      CVE-2017-10193
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10198">
+      CVE-2017-10198
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10243">
+      CVE-2017-10243
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T20:31:23Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-24T21:53:39Z">chrisadr</metadata>
+</glsa>
