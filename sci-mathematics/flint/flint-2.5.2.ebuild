@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -25,6 +25,12 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)"
+
+src_prepare() {
+	sed -i \
+		-e '/echo "DLPATH_ADD=/s/\$DLPATH_ADD/\\\$(CURDIR)/' \
+		./configure || die
+}
 
 src_configure() {
 	./configure \

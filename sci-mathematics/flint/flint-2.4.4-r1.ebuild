@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -31,6 +31,10 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-2.4.3-whitespaces.patch \
 		"${FILESDIR}"/${PN}-2.4.3-cflags-ldflags.patch \
 		"${FILESDIR}"/${PN}-2.4.4-test.patch
+
+	sed -i \
+		-e '/echo "DLPATH_ADD=/s/\$DLPATH_ADD/\\\$(CURDIR)/' \
+		./configure || die
 }
 
 src_configure() {
