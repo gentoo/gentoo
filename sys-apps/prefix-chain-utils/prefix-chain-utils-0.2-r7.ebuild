@@ -41,11 +41,13 @@ src_install() {
 	dosym $wrapperdir/prefix-chain-wrapper $wrapperdir/${CHOST}-g++
 	dosym $wrapperdir/prefix-chain-wrapper $wrapperdir/${CHOST}-cpp
 	dosym $wrapperdir/prefix-chain-wrapper $wrapperdir/${CHOST}-c++
+	dosym $wrapperdir/prefix-chain-wrapper $wrapperdir/${CHOST}-windres
 
 	dosym $wrapperdir/${CHOST}-gcc $wrapperdir/gcc
 	dosym $wrapperdir/${CHOST}-g++ $wrapperdir/g++
 	dosym $wrapperdir/${CHOST}-cpp $wrapperdir/cpp
 	dosym $wrapperdir/${CHOST}-c++ $wrapperdir/c++
+	dosym $wrapperdir/${CHOST}-windres $wrapperdir/windres
 
 	# LDPATH is required to keep gcc-config happy :(
 	cat > "${T}"/$wrappercfg <<EOF
