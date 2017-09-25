@@ -37,12 +37,14 @@ RDEPEND="
 	sci-mathematics/glpk:0=
 	sys-devel/llvm:4=
 	>=sys-libs/libunwind-1.1:7=
+	<sys-libs/libunwind-1.2.1
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	>=virtual/blas-3.6
 	virtual/lapack"
 
 DEPEND="${RDEPEND}
+	dev-vcs/git
 	dev-util/patchelf
 	virtual/pkgconfig"
 
