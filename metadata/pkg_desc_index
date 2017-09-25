@@ -2985,7 +2985,7 @@ dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 9999: Oracle copy tool
 dev-db/odbtp 1.1.4: Fast, efficient TCP/IP protocol for connecting to Win32-based databases
 dev-db/opendbx 1.4.5-r1 1.4.6-r1 1.5.0-r1: OpenDBX - A database abstraction layer
-dev-db/oracle-instantclient 12.1.0.2 12.2.0.1: Oracle 12c Instant Client with SDK
+dev-db/oracle-instantclient 12.1.0.2 12.2.0.1 12.2.0.1-r1: Oracle 12c Instant Client with SDK
 dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
@@ -17234,7 +17234,7 @@ sys-apps/policycoreutils 2.6-r1 2.7 9999: SELinux core utilities
 sys-apps/portage 2.3.6 2.3.8 2.3.10 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.5 1.6: Tool to query and modify process behavior
-sys-apps/prefix-chain-utils 0.2-r6: Chained EPREFIX utilities and wrappers
+sys-apps/prefix-chain-utils 0.2-r7: Chained EPREFIX utilities and wrappers
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1 4.0.1 4.0.3 5.0.0 5.1.0: User-space implementation of chroot, mount --bind, and binfmt_misc
