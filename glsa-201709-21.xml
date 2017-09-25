@@ -7,15 +7,15 @@
   </synopsis>
   <product type="ebuild">php</product>
   <announced>2017-09-24</announced>
-  <revised>2017-09-24: 1</revised>
+  <revised>2017-09-25: 2</revised>
   <bug>624054</bug>
   <bug>626460</bug>
   <bug>629452</bug>
   <access>remote</access>
   <affected>
     <package name="dev-lang/php" auto="yes" arch="*">
-      <unaffected range="rge" slot="5.6">5.6.31</unaffected>
-      <unaffected range="rge" slot="7.0">7.0.23</unaffected>
+      <unaffected range="ge" slot="5.6">5.6.31</unaffected>
+      <unaffected range="ge" slot="7.0">7.0.23</unaffected>
       <vulnerable range="lt" slot="5.6">5.6.31</vulnerable>
       <vulnerable range="lt" slot="7.0">7.0.23</vulnerable>
     </package>
@@ -65,5 +65,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2017-09-24T12:43:20Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2017-09-24T19:00:18Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-25T21:30:08Z">chrisadr</metadata>
 </glsa>
