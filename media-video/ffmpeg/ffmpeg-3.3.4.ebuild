@@ -320,6 +320,24 @@ src_prepare() {
 	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
 
+#Check if LDFLAGS contains any LTO flags
+#Must check in reverse!
+#If no LTO flags present, then this is a non-LTO build
+#If the last LTO flag is -fno-lto, that means this is a non-LTO build
+#otherwise, it is an LTO build
+#GCC treats LTO flags in the exact same way
+#Required for bug #631352
+is_lto() {
+	local x arr_ldflags len
+	arr_ldflags=(${LDFLAGS})
+	for ((i=${#arr_ldflags[@]}-1; i >= 0; i--)); do
+		x="${arr_ldflags[i]}"
+		[[ "${x}" == -flto* ]] && return 0
+		[[ "${x}" == -fno-lto ]] && return 1
+	done
+	return 1
+}
+
 multilib_src_configure() {
 	local myconf=( ${EXTRA_FFMPEG_CONF} )
 
@@ -395,8 +413,10 @@ multilib_src_configure() {
 		break
 	done
 
-	# LTO support, bug #566282
-	is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	# LTO support, bug #566282, bug #631352
+	if is_lto; then
+		myconf+=( --enable-lto )
+	fi
 
 	# Mandatory configuration
 	myconf=(
