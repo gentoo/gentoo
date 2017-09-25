@@ -9,6 +9,10 @@
     <email>slyfox@gentoo.org</email>
     <name>Sergei Trofimovich</name>
   </maintainer>
+  <maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
   <use>
     <flag name="convert">Build ext2 conversion utility (btrfs-convert)</flag>
 	<flag name="static">Build static binaries in addition to the dynamic ones</flag>
