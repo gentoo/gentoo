@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Emdek/${PN}/archive/v${PV/_p/-dev}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="spell"
 
 DEPEND="
