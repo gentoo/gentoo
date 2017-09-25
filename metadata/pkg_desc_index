@@ -9483,7 +9483,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.12.5 1.12.6 1.13.7 1.14.6: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.5.0 0.6.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.6.3 2.6.4-r1 2.6.5 2.7.0: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.6.5 2.7.0 2.7.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r2 3.4.1: A distributed application deployment system
@@ -9674,7 +9674,7 @@ dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written i
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
 dev-ruby/logging 2.2.2: Flexible logging library based on the design of Java's log4j library
 dev-ruby/logue 1.0.4 1.0.8: A module that adds logging/trace functionality
-dev-ruby/loofah 2.0.3: Library for manipulating and transforming HTML/XML documents and fragments.
+dev-ruby/loofah 2.0.3 2.1.1: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
 dev-ruby/lumberjack 1.0.10 1.0.11 1.0.12: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
