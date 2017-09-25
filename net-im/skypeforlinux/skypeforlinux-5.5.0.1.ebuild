@@ -5,7 +5,7 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit eutils pax-utils rpm multilib-build
+inherit pax-utils rpm multilib-build xdg-utils
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
 HOMEPAGE="https://www.skype.com/"
@@ -105,4 +105,14 @@ src_install() {
 		eqawarn "you suspect that ${PN} is being broken by this modification,"
 		eqawarn "please open a bug."
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
