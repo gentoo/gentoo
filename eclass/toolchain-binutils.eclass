@@ -78,8 +78,9 @@ add_src_uri() {
 	set -- mirror://gentoo https://dev.gentoo.org/~vapier/dist https://dev.gentoo.org/~tamiko/distfiles
 	SRC_URI="${SRC_URI} ${@/%//${a}}"
 }
-add_src_uri binutils-${BVER}-patches-${PATCHVER}.tar ${PATCHVER}
-add_src_uri binutils-${BVER}-uclibc-patches-${UCLIBC_PATCHVER}.tar ${UCLIBC_PATCHVER}
+PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${BVER}}
+add_src_uri binutils-${PATCH_BINUTILS_VER}-patches-${PATCHVER}.tar ${PATCHVER}
+add_src_uri binutils-${PATCH_BINUTILS_VER}-uclibc-patches-${UCLIBC_PATCHVER}.tar ${UCLIBC_PATCHVER}
 add_src_uri elf2flt-${ELF2FLT_VER}.tar ${ELF2FLT_VER}
 
 if version_is_at_least 2.18 ; then
