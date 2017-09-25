@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">oracle-jdk-bin,oracle-jre-bin,icedtea-bin</product>
   <announced>2017-09-24</announced>
-  <revised>2017-09-24: 1</revised>
+  <revised>2017-09-25: 2</revised>
   <bug>625602</bug>
   <bug>626088</bug>
   <bug>627682</bug>
@@ -23,8 +23,8 @@
       <vulnerable range="lt">1.8.0.141</vulnerable>
     </package>
     <package name="dev-java/icedtea-bin" auto="yes" arch="*">
-      <unaffected range="rge" slot="7">7.2.6.11</unaffected>
-      <unaffected range="rge" slot="8">3.5.0</unaffected>
+      <unaffected range="ge" slot="7">7.2.6.11</unaffected>
+      <unaffected range="ge" slot="8">3.5.0</unaffected>
       <vulnerable range="lt" slot="7">7.2.6.11</vulnerable>
       <vulnerable range="lt" slot="8">3.5.0</vulnerable>
     </package>
@@ -183,5 +183,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2017-09-17T20:31:23Z">chrisadr</metadata>
-  <metadata tag="submitter" timestamp="2017-09-24T21:53:39Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-25T08:54:45Z">chrisadr</metadata>
 </glsa>
