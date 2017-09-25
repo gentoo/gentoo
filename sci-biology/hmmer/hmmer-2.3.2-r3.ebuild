@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.genetics.wustl.edu/pub/eddy/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0"
 IUSE="threads test"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=""
 RDEPEND=""
