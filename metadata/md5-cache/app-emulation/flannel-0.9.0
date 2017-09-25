@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.8 virtual/pkgconfig
+DESCRIPTION=An etcd backed network fabric for containers
+EAPI=6
+HOMEPAGE=https://github.com/coreos/flannel
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/coreos/flannel/archive/v0.9.0.tar.gz -> flannel-0.9.0.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=66da6ba22d8fc6c97fe1c593b1cc0f8d
