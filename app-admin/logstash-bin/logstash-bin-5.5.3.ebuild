@@ -12,7 +12,8 @@ DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
 SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.zip"
 
-LICENSE="Apache-2.0"
+# source: LICENSE.txt and NOTICE.txt
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -30,6 +31,7 @@ pkg_setup() {
 
 src_install() {
 	keepdir /etc/"${MY_PN}"/{conf.d,patterns,plugins}
+	keepdir "/var/lib/${MY_PN}"
 	keepdir "/var/log/${MY_PN}"
 
 	insinto "/usr/share/${MY_PN}"
@@ -44,13 +46,30 @@ src_install() {
 
 	newconfd "${FILESDIR}/${MY_PN}.confd" "${MY_PN}"
 	newinitd "${FILESDIR}/${MY_PN}.initd" "${MY_PN}"
+
+	insinto /usr/share/eselect/modules
+	doins "${FILESDIR}"/logstash-plugin.eselect
 }
 
 pkg_postinst() {
-	ewarn "The default user changed from root to ${MY_PN}. If you wish to run as root (for"
-	ewarn "example to read local logs), be sure to change LS_USER and LS_GROUP in"
-	ewarn "${EROOT%/}/etc/conf.d/${MY_PN}"
+	ewarn "The default pidfile directory has been changed from /run/logstash to /run."
+	ewarn "Please ensure any running logstash processes are shut down cleanly."
+	ewarn
+	ewarn "The default data directory has been moved from /opt/logstash/data to"
+	ewarn "/var/lib/logstash/data. Please check and move its contents as necessary."
+	ewarn
+	ewarn "Self installed plugins are removed during Logstash upgrades (Bug #622602)"
+	ewarn "Install the plugins via eselect module that will automatically re-install"
+	ewarn "all self installed plugins after Logstash upgrades."
 	einfo
-	einfo "Installing plugins: (bug #601294)"
-	einfo "DEBUG=1 JARS_SKIP='true' bin/logstash-plugin install logstash-output-gelf"
+	einfo "Installing plugins:"
+	einfo "eselect logstash-plugin install logstash-output-gelf"
+	einfo
+
+	einfo "Reinstalling self installed plugins (installed via eselect module):"
+	eselect logstash-plugin reinstall
+
+	einfo
+	einfo "Sample configuration:"
+	einfo "${EROOT%/}/usr/share/${MY_PN}"
 }
