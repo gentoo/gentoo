@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Sep 2017)
+# Requires dead Qt 4. Dead upstream. Use media-sound/cantata
+# instead, which originally started as a QtMPC fork but is
+# much more advanced. Masked for removal in 30 days.
+media-sound/qtmpc
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (23 Sep 2017)
 # Broken on Perl 5.26 (bug 623096), no fix in sight. No consumers.
 # Removal in 30 days.
