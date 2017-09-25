@@ -3,7 +3,7 @@
 
 EAPI=2
 
-inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib
+inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib xdg-utils
 
 PATCHSET_VER="0"
 MY_P=${PN}-srcdist-${PV}
@@ -44,6 +44,8 @@ src_prepare() {
 
 	cd "${S}" || die
 	eautoconf
+
+	xdg_environment_reset
 }
 
 src_configure() {
