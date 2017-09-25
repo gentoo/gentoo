@@ -4931,7 +4931,6 @@ dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /pr
 dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.3.0 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
-dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking system
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 0.9.2-r1 0.9.3 0.9.4 0.9.5 0.11.0: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.12 1.2.13 1.2.14: An easy to use library for the RELP protocol
@@ -12166,7 +12165,6 @@ kde-frameworks/sonnet 5.37.0 5.38.0: Framework for providing spell-checking thro
 kde-frameworks/syntax-highlighting 5.37.0-r1 5.38.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.37.0 5.38.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
-kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
 kde-misc/basket 2.49a_p20170225: A DropDrawers clone. Multiple information organizer
 kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
 kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
