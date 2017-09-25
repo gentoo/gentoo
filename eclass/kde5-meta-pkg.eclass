@@ -4,9 +4,10 @@
 # @ECLASS: kde5-meta-pkg.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @BLURB: This eclass contains boilerplate for KDE 5 meta packages
+# @BLURB: This eclass contains boilerplate for KDE meta packages.
 # @DESCRIPTION:
-# This eclass should only be used for defining meta packages for KDE 5.
+# This eclass should only be used for defining meta packages bundling
+# software produced by the KDE community.
 
 if [[ -z ${_KDE5_META_PKG_ECLASS} ]]; then
 _KDE5_META_PKG_ECLASS=1
