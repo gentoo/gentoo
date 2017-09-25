@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-25">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium, google-chrome</product>
+  <announced>2017-09-25</announced>
+  <revised>2017-09-25: 1</revised>
+  <bug>631784</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">61.0.3163.100</unaffected>
+      <vulnerable range="lt">61.0.3163.100</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-61.0.3163.100"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5121">
+      CVE-2017-5121
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5122">
+      CVE-2017-5122
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-25T13:02:09Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-25T22:00:19Z">chrisadr</metadata>
+</glsa>

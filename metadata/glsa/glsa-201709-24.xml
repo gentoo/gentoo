@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-24">
+  <title>RAR, UnRAR: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in RAR and UnRAR, the
+    worst of which may allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">rar,unrar</product>
+  <announced>2017-09-25</announced>
+  <revised>2017-09-25: 1</revised>
+  <bug>622342</bug>
+  <bug>628182</bug>
+  <bug>628184</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/rar" auto="yes" arch="*">
+      <unaffected range="ge">5.5.0_p20170811</unaffected>
+      <vulnerable range="lt">5.5.0_p20170811</vulnerable>
+    </package>
+    <package name="app-arch/unrar" auto="yes" arch="*">
+      <unaffected range="ge">5.5.7</unaffected>
+      <vulnerable range="lt">5.5.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>RAR and UnRAR provide command line interfaces for compressing and
+      decompressing RAR files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in RAR and UnRAR. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted RAR,
+      could possibly execute arbitrary code with the privileges of the process
+      or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RAR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/rar-5.5.0_p20170811"
+    </code>
+    
+    <p>All UnRAR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/unrar-5.5.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6706">CVE-2012-6706</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12940">
+      CVE-2017-12940
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12941">
+      CVE-2017-12941
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12942">
+      CVE-2017-12942
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-03T22:15:08Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-09-25T21:49:49Z">chrisadr</metadata>
+</glsa>
