@@ -4566,7 +4566,7 @@ dev-lang/logtalk 3.00.0 3.03.0 3.07.0 3.11.2: Open source object-oriented logic 
 dev-lang/lua 5.1.5-r4 5.1.5-r100 5.1.5-r101 5.2.3 5.2.3-r1 5.2.3-r2 5.3.3 5.3.3-r1: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 1.1.6 2.0.2 2.0.3 2.0.3-r1 2.0.4: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
-dev-lang/mercury 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Mercury is a modern general-purpose logic/functional programming language
+dev-lang/mercury 13.05.2: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
