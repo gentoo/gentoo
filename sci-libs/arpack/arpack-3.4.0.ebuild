@@ -41,11 +41,6 @@ src_configure() {
 		$(use_enable mpi)
 }
 
-src_test() {
-	cp "${S}"/TESTS/testA.mtx "${BUILD_DIR}"/TESTS || die
-	default
-}
-
 src_install() {
 	default
 
