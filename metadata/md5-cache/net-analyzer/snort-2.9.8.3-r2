@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev-libs/libdnet sys-libs/zlib !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) || ( net-libs/libnsl <sys-libs/glibc-2.26 ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The de facto standard for intrusion detection/prevention
+EAPI=6
+HOMEPAGE=http://www.snort.org/
+IUSE=static +gre +ppm +perfprofiling +non-ether-decoders control-socket file-inspect high-availability shared-rep side-channel sourcefire linux-smp-stats inline-init-failopen +threads debug +active-response reload-error-restart +react +flexresp3 large-pcap-64bit selinux +libtirpc
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev-libs/libdnet sys-libs/zlib !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) || ( net-libs/libnsl <sys-libs/glibc-2.26 ) selinux? ( sec-policy/selinux-snort )
+REQUIRED_USE=!kernel_linux? ( !shared-rep )
+SLOT=0
+SRC_URI=https://www.snort.org/downloads/snort/snort-2.9.8.3.tar.gz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=f660c476aafdcb19fc20238bc83a623d

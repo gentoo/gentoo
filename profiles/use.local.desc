@@ -5294,6 +5294,7 @@ net-analyzer/snort:gre - Enable support for inspecting and processing Generic Ro
 net-analyzer/snort:high-availability - Enables high-availability state sharing.
 net-analyzer/snort:inline-init-failopen - Enables support to allow traffic to pass (fail-open) through inline deployments while snort is starting and not ready to begin inspecting traffic. If this option is not enabled, network traffic will not pass (fail-closed) until snort has fully started and is ready to perform packet inspection.
 net-analyzer/snort:large-pcap-64bit - Allows Snort to read pcap files that are larger than 2 GB. ONLY VALID FOR 64bit SYSTEMS!
+net-analyzer/snort:libtirpc - Build against net-libs/libtirpc for RPC support
 net-analyzer/snort:linux-smp-stats - Enable accurate statistics reporting through /proc on systems with multipule processors.
 net-analyzer/snort:mpls - Enables support for processing and inspecting Multiprotocol Label Switching MPLS network network traffic. Only needed if you are monitoring an MPLS network.
 net-analyzer/snort:non-ether-decoders - Enable decoding of non-ethernet protocols such as TokenRing, FDDI, IPX, etc.
