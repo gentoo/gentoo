@@ -138,5 +138,8 @@
 			Allows Snort to read pcap files that are larger than 2 GB. ONLY
 			VALID FOR 64bit SYSTEMS!
 		</flag>
+		<flag name="libtirpc">
+			Build against <pkg>net-libs/libtirpc</pkg> for RPC support
+		</flag>
 	</use>
 </pkgmetadata>
