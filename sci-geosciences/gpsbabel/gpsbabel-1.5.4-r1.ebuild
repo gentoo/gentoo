@@ -43,14 +43,14 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.4.3-fix_binary_name.patch"
-	"${FILESDIR}/${P}-disable_statistic_uploading.patch"
-	"${FILESDIR}/${P}-disable_update_check.patch"
-	"${FILESDIR}/${P}-disable_version_check.patch"
-	"${FILESDIR}/${P}-use_system_shapelib.patch"
-	"${FILESDIR}/${P}-use_system_zlib.patch"
-	"${FILESDIR}/${P}-xmldoc.patch"
-	"${FILESDIR}/${P}-qt-5.9.patch"
+	"${FILESDIR}"/${PN}-1.4.3-fix_binary_name.patch
+	"${FILESDIR}"/${P}-disable_statistic_uploading.patch
+	"${FILESDIR}"/${P}-disable_update_check.patch
+	"${FILESDIR}"/${P}-disable_version_check.patch
+	"${FILESDIR}"/${P}-use_system_shapelib.patch
+	"${FILESDIR}"/${P}-use_system_zlib.patch
+	"${FILESDIR}"/${P}-xmldoc.patch
+	"${FILESDIR}"/${P}-qt-5.9-{1,2}.patch
 )
 
 RESTRICT="test" # bug 421699
