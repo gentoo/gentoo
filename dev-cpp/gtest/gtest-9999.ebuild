@@ -29,6 +29,7 @@ RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-fix-gcc6-undefined-behavior.patch
+	"${FILESDIR}"/${PN}-1.8.0-increase-clone-stack-size.patch
 )
 
 pkg_setup() {
