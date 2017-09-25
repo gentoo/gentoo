@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 DESCRIPTION="Excellent text file viewer"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/"
@@ -16,10 +16,6 @@ DEPEND=">=app-misc/editor-wrapper-3
 	>=sys-libs/ncurses-5.2:0=
 	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	chmod a+x configure || die
-}
 
 src_configure() {
 	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
