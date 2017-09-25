@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=A daemon to control runC
+EAPI=6
+HOMEPAGE=https://containerd.tools
+IUSE=hardened +seccomp
+KEYWORDS=~amd64 ~arm ~ppc64
+LICENSE=Apache-2.0
+RDEPEND=>=app-emulation/docker-runc-1.0.0_rc4_p20170917 seccomp? ( sys-libs/libseccomp )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containerd/containerd/archive/06b9cb35161009dcb7123345749fef02f7cea8e0.tar.gz -> containerd-0.2.9_p20170917.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=3c461d0f6e1d29181bc612c87d1dc447
