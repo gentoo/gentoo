@@ -21,7 +21,8 @@ IUSE="static-libs"
 DEPEND=">=media-libs/freetype-2.0.9
 	virtual/opengl
 	virtual/glu
-	media-libs/freeglut"
+	media-libs/freeglut
+	<dev-util/cppunit-1.14"
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P2}
