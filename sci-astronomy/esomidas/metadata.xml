@@ -13,4 +13,7 @@
  surface photometry, image sharpening and decomposition, statistics and
  various others.
 </longdescription>
+<use>
+  <flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
+</use>
 </pkgmetadata>
