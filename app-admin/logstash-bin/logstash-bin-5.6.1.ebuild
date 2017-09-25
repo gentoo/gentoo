@@ -52,9 +52,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "The default user changed from root to ${MY_PN}. If you wish to run as root (for"
-	ewarn "example to read local logs), be sure to change LS_USER and LS_GROUP in"
-	ewarn "${EROOT%/}/etc/conf.d/${MY_PN}"
+	ewarn "The default pidfile directory has been changed from /run/logstash to /run."
+	ewarn "Please ensure any running logstash processes are shut down cleanly."
+	ewarn
+	ewarn "The default data directory has been moved from /opt/logstash/data to"
+	ewarn "/var/lib/logstash/data. Please check and move its contents as necessary."
 	ewarn
 	ewarn "Self installed plugins are removed during Logstash upgrades (Bug #622602)"
 	ewarn "Install the plugins via eselect module that will automatically re-install"
