@@ -232,11 +232,6 @@ app-text/adiff
 # Removal in 30 days. Bug #629212.
 xfce-extra/xfce4-volumed
 
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Aug 2017)
-# No consumers left, depends on deprecated akonadi:4.
-# Masked for removal in 30 days.
-kde-misc/akonadi-git-resource
-
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
@@ -255,11 +250,6 @@ kde-misc/colibri
 # Doesn't work anymore. Dead upstream.
 # Masked for removal in 30 days.
 media-gfx/kflickr
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Aug 2017)
-# media-libs/phonon[zeitgeist] masked on all arches since 2012.
-# No other rdeps left. Masked for removal in 30 days.
-dev-libs/libqzeitgeist
 
 # Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
 # Masked for removal in 30 days.
