@@ -102,6 +102,9 @@ src_prepare() {
 	sed -i \
 		-e "s|ar -rcs|$(tc-getAR) -rcs|g" \
 		src/Makefile || die
+
+	# disable doc install starting  git fetching
+	sed -i -e 's~install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html~install: $(build_depsbindir)/stringreplace~' Makefile || die
 }
 
 src_configure() {
@@ -159,7 +162,10 @@ src_install() {
 	# Julia is special. It tries to find a valid git repository (that would
 	# normally be cloned during compilation/installation). Just make it
 	# happy...
-	git init && git commit -a --allow-empty -m "initial" || die "git failed"
+	git init && \
+		git config --local user.email "whatyoudoing@example.com" && \
+		git config --local user.name "Whyyyyyy" && \
+		git commit -a --allow-empty -m "initial" || die "git failed"
 
 	emake install \
 		prefix="/usr" DESTDIR="${D}" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
