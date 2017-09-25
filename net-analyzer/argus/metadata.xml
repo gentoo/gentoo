@@ -6,4 +6,7 @@
 	<name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <longdescription>network Audit Record Generation and Utilization System</longdescription>
+<use>
+	<flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
+</use>
 </pkgmetadata>
