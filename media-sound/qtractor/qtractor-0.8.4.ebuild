@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit qmake-utils flag-o-matic
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="Audio/MIDI multi-track sequencer written in C++ with the Qt framework"
 HOMEPAGE="http://qtractor.sourceforge.net/"
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug dssi libsamplerate mad osc +qt5 rubberband vorbis cpu_flags_x86_sse zlib"
+IUSE="cpu_flags_x86_sse debug dssi libsamplerate mad osc +qt5 rubberband vorbis zlib"
 
 RDEPEND="
 	!qt5? (
@@ -28,15 +28,15 @@ RDEPEND="
 		dev-qt/qtx11extras:5
 	)
 	media-libs/alsa-lib
-	media-libs/libsndfile
-	virtual/jack
 	media-libs/ladspa-sdk
+	media-libs/libsndfile
 	>=media-libs/lilv-0.16.0
 	media-libs/lv2
 	media-libs/suil
+	virtual/jack
 	dssi? ( media-libs/dssi )
-	mad? ( media-libs/libmad )
 	libsamplerate? ( media-libs/libsamplerate )
+	mad? ( media-libs/libmad )
 	osc? ( media-libs/liblo )
 	rubberband? ( media-libs/rubberband )
 	vorbis? ( media-libs/libvorbis )
@@ -69,9 +69,4 @@ src_configure() {
 	else
 		eqmake4 ${PN}.pro -o ${PN}.mak
 	fi
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
 }
