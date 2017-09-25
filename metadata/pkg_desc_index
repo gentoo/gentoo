@@ -1722,7 +1722,7 @@ app-misc/beep 1.3-r2: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2 1.6-r3: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
-app-misc/bijiben 3.20.2 3.21.2 3.24.0 3.24.1 3.24.2: Note editor designed to remain simple to use
+app-misc/bijiben 3.24.0 3.24.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.1.1 9999: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2 1.6.2-r1: Displays a list of events happening in the near future
@@ -1808,7 +1808,7 @@ app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music an
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.07 6.08-r1: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.6 0.20.7: Graphical file manager for Unix-like systems, using GTK+
-app-misc/geoclue 0.12.99 2.4.4 2.4.7: A geoinformation D-Bus service
+app-misc/geoclue 0.12.99 2.4.7: A geoinformation D-Bus service
 app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
@@ -2284,7 +2284,7 @@ app-text/enchant 1.6.0 1.6.1 2.1.0 2.1.1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.5.3 0.6.0 0.6.1 0.6.2 0.6.3: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.22.1 3.22.1-r1 3.24.0 3.24.1: Simple document viewer for GNOME
+app-text/evince 3.22.1-r1 3.24.1: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fbless 0.2.3: Python-based console fb2 reader with less-like interface
@@ -17550,7 +17550,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 9.4.1 10.0.3 10.0.4 11.0.1 2016.2.9999 2017.1.9999 2017.2.9999: A virtual network service for Openstack
-sys-cluster/nova 14.0.8 15.0.7 16.0.0 2016.2.9999 2017.1.9999 2017.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 14.0.8 15.0.7 16.0.1 2016.2.9999 2017.1.9999 2017.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
