@@ -587,18 +587,6 @@ net-wireless/cpyrit-cuda
 =app-crypt/hashcat-3.30
 =app-crypt/hashcat-3.40
 
-# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
-# Masked for testing
-virtual/wine
-app-eselect/eselect-wine
-app-emulation/wine-desktop-common
-app-emulation/wine-gecko
-app-emulation/wine-mono
-app-emulation/wine-vanilla
-app-emulation/wine-staging
-app-emulation/wine-d3d9
-app-emulation/wine-any
-
 # Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
