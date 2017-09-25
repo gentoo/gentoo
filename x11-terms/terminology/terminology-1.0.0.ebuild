@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,6 +18,6 @@ inherit enlightenment
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/p.php?p=about/terminology"
 
-RDEPEND=">=dev-libs/efl-1.18"
+RDEPEND=">=dev-libs/efl-1.18[X]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
