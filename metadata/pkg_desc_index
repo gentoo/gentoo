@@ -4567,7 +4567,7 @@ dev-lang/lua 5.1.5-r4 5.1.5-r100 5.1.5-r101 5.2.3 5.2.3-r1 5.2.3-r2 5.3.3 5.3.3-
 dev-lang/luajit 1.1.6 2.0.2 2.0.3 2.0.3-r1 2.0.4: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 13.05.2: Mercury is a modern general-purpose logic/functional programming language
-dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
+dev-lang/mercury-extras 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2017.07 2017.08.1 2017.09.1 9999: A 6model-based VM for NQP and Rakudo Perl 6
@@ -13918,7 +13918,7 @@ media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
-media-sound/qtractor 0.8.3: Qtractor is an Audio/MIDI multi-track sequencer
+media-sound/qtractor 0.8.3 0.8.4: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
