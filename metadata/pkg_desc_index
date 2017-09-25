@@ -10574,7 +10574,7 @@ dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/rr 4.5.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
-dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
+dev-util/scala-ide 4.1.0 4.3.0 4.6.1: The Scala IDE
 dev-util/scanmem 0.15.3 0.16.1: Locate and modify variables in executing processes
 dev-util/schroot 1.6.10-r3 1.6.10-r4: Utility to execute commands in a chroot environment
 dev-util/scons 2.3.5 2.4.1 2.5.0 2.5.1: Extensible Python-based build utility
