@@ -12,14 +12,14 @@ SRC_URI="http://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 LICENSE="GPL-2"
 SLOT="4"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="dictmanager"
+IUSE="dictionary-manager"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
 	app-i18n/libpinyin
 	dev-libs/glib:2
 	sys-apps/dbus
 	virtual/libintl
-	dictmanager? (
+	dictionary-manager? (
 		>=app-i18n/fcitx-4.2.8[qt4]
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	local mycmakeargs="$(cmake-utils_use_enable dictmanager QT)"
+	local mycmakeargs="$(cmake-utils_use_enable dictionary-manager QT)"
 	cmake-utils_src_configure
 }
 

@@ -10,7 +10,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="dictmanager">Enable dictionary manager</flag>
+		<flag name="dictionary-manager">Install dictionary manager</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">fcitx/fcitx-libpinyin</remote-id>
