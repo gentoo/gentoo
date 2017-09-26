@@ -15,10 +15,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-perl/IO-Socket-SSL
-	|| (
-		( >dev-perl/libwww-perl-6 dev-perl/HTML-Form )
-		<dev-perl/libwww-perl-6
-	)
+	>dev-perl/libwww-perl-6 dev-perl/HTML-Form
 	>=dev-perl/URI-1.36
 	>=dev-perl/HTML-Parser-3.34
 	dev-perl/HTML-Tree
