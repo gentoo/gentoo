@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/580726
+
+--- a/libsandbox/libsandbox.c
++++ b/libsandbox/libsandbox.c
+@@ -1225,7 +1225,7 @@
+ 		if (mod_cnt) {
+ 			str_list_for_each_item(envp, entry, count) {
+ 				for (i = 0; i < num_vars; ++i)
+-					if (is_env_var(entry, vars[i].name, vars[i].len)) {
++					if (i != 12 && is_env_var(entry, vars[i].name, vars[i].len)) {
+ 						(*mod_cnt)++;
+ 						goto skip;
+ 					}
