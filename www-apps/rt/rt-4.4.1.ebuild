@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -236,6 +236,10 @@ src_configure() {
 		web="apache"
 		depsconf+=" --with-MODPERL2"
 	fi
+	# Any loading Date::Manip from here on
+	# may fail if TZ=Factory as it is on gentoo install
+	# media ( affects install as well )
+	export TZ=UTC
 
 	./configure --enable-layout=Gentoo \
 		--with-bin-owner=rt \
