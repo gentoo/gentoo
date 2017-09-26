@@ -9,7 +9,8 @@ MYP=${PN}-gpl-${PV}-src
 
 DESCRIPTION="Ada unit testing framework"
 HOMEPAGE="http://libre.adacore.com/tools/aunit/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/573990c6c7a447658d00e1cb -> ${MYP}.tar.gz"
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed000
+	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -36,5 +37,4 @@ src_install() {
 	rmdir "${D}"usr/share/doc/${PN} || die
 	mv "${D}"usr/share/examples/${PN} "${D}"usr/share/doc/${PF}/examples || die
 	rmdir "${D}"usr/share/examples || die
-	dodoc features-* known-problems-*
 }
