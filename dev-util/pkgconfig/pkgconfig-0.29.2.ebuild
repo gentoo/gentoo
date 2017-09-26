@@ -25,9 +25,9 @@ HOMEPAGE="https://pkgconfig.freedesktop.org/wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build elibc_FreeBSD elibc_glibc hardened"
+IUSE="elibc_FreeBSD elibc_glibc hardened internal-glib"
 
-RDEPEND="!build? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
+RDEPEND="!internal-glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
 	!dev-util/pkgconf[pkg-config]
 	!dev-util/pkg-config-lite
 	!dev-util/pkgconfig-openbsd[pkg-config]
@@ -61,7 +61,7 @@ src_prepare() {
 multilib_src_configure() {
 	local myconf
 
-	if use build; then
+	if use internal-glib; then
 		myconf+=' --with-internal-glib'
 		# non-glibc platforms use GNU libiconv, but configure needs to
 		# know about that not to get confused when it finds something
