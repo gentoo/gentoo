@@ -335,6 +335,11 @@
       <role>Misc stuff that needs to get done</role>
     </member>
     <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+      <role>Misc stuff, toolchain</role>
+    </member>
+    <member>
       <email>hwoarang@gentoo.org</email>
       <name>Markos Chandras</name>
     </member>
