@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit cmake-utils gnome2-utils xdg-utils
 
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/fcitx/fcitx"
@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
 		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
 		https://download.fcitx-im.org/data/py_stroke-20121124.tar.gz -> fcitx-data-py_stroke-20121124.tar.gz
@@ -77,7 +77,7 @@ PATCHES=(
 DOCS=(AUTHORS ChangeLog THANKS)
 
 src_prepare() {
-	if [[ "${PV}" == "9999" ]]; then
+	if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 		ln -s "${DISTDIR}/fcitx-data-pinyin.tar.gz" src/im/pinyin/data/pinyin.tar.gz || die
 		ln -s "${DISTDIR}/fcitx-data-table.tar.gz" src/im/table/data/table.tar.gz || die
 		ln -s "${DISTDIR}/fcitx-data-py_stroke-20121124.tar.gz" src/module/pinyin-enhance/data/py_stroke-20121124.tar.gz || die
