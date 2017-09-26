@@ -46,6 +46,10 @@ RDEPEND="
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
 
+PATCHES=(
+	"${FILESDIR}/fix-missing-include-2.7.1.patch"
+)
+
 want_apache2
 
 pkg_setup() {
