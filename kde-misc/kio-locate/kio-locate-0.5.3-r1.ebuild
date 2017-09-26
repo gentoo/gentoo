@@ -7,8 +7,8 @@ KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="Locate KIO slave"
-HOMEPAGE="http://www.kde-apps.org/content/show.php/kio-locate?content=120965"
-SRC_URI="http://www.kde-apps.org/CONTENT/content-files/120965-${P}.tar.gz"
+HOMEPAGE="https://www.linux-apps.com/content/show.php/kio-locate?content=120965"
+SRC_URI="https://dl.opendesktop.org/api/files/download/id/1460972255/120965-${P}.tar.gz"
 # See also: https://github.com/reporter123/kio-locate/commits/master
 
 LICENSE="GPL-2"
