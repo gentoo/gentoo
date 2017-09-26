@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
+# Requires dead Qt 4. Dead upstream.
+# Masked for removal in 30 days.
+kde-misc/konstruktor
+
+# Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
+# Requires dead Qt 4. Dead upstream.
+# Masked for removal in 30 days.
+kde-misc/kookie
+
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Sep 2017)
 # Requires dead Qt 4. Dead upstream. Use media-sound/cantata
 # instead, which originally started as a QtMPC fork but is
