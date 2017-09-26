@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -31,7 +31,8 @@ src_prepare() {
 	epatch \
 		patches/portaudio.patch \
 		"${FILESDIR}"/${P}-use_lrdf_pkgconfig.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
+		"${FILESDIR}"/${P}-gcc47.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_compile() {
