@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit cmake-utils gnome2-utils
 
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/fcitx/fcitx-libpinyin"
@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="Chinese LibPinyin input methods for Fcitx"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-libpinyin"
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/model.text.20161206.tar.gz -> fcitx-data-model.text.20161206.tar.gz"
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 DOCS=(AUTHORS)
 
 src_prepare() {
-	if [[ "${PV}" == "9999" ]]; then
+	if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 		ln -s "${DISTDIR}/fcitx-data-model.text.20161206.tar.gz" data/model.text.20161206.tar.gz || die
 	fi
 
