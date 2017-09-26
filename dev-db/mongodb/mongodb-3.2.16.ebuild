@@ -129,10 +129,10 @@ src_install() {
 	doman debian/mongo*.1
 	dodoc README docs/building.md
 
-	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd-r2" ${PN}
-	newinitd "${FILESDIR}/${PN/db/s}.initd-r2" ${PN/db/s}
-	newconfd "${FILESDIR}/${PN/db/s}.confd-r2" ${PN/db/s}
+	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r3" ${PN}
+	newinitd "${FILESDIR}/${PN/db/s}.initd-r3" ${PN/db/s}
+	newconfd "${FILESDIR}/${PN/db/s}.confd-r3" ${PN/db/s}
 
 	insinto /etc
 	newins "${FILESDIR}/${PN}.conf-r3" ${PN}.conf
