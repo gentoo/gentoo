@@ -10,7 +10,7 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cpu_flags_x86_aes i2p-hardening libressl pch static +upnp websocket"
+IUSE="cpu_flags_x86_aes i2p-hardening libressl static +upnp websocket"
 
 RDEPEND="!static? ( >=dev-libs/boost-1.49[threads]
 			!libressl? ( dev-libs/openssl:0[-bindist] )
@@ -39,7 +39,7 @@ src_configure() {
 	mycmakeargs=(
 		-DWITH_AESNI=$(usex cpu_flags_x86_aes ON OFF)
 		-DWITH_HARDENING=$(usex i2p-hardening ON OFF)
-		-DWITH_PCH=$(usex pch ON OFF)
+		-DWITH_PCH=OFF
 		-DWITH_STATIC=$(usex static ON OFF)
 		-DWITH_UPNP=$(usex upnp ON OFF)
 		-DWITH_WEBSOCKETS=$(usex websocket ON OFF)
