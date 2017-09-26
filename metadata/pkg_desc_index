@@ -16019,7 +16019,7 @@ sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
 sci-biology/gmap 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
 sci-biology/goby 1.9.7.3-r1 1.9.8.1-r1: A DNA sequencing data management framework
 sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management framework - C/C++ API
-sci-biology/hmmer 2.3.2-r3 2.3.2-r4 3.1_beta2: Sequence analysis using profile hidden Markov models
+sci-biology/hmmer 2.3.2-r4 3.1_beta2: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.04 1.05-r1: A subset seed design tool for DNA sequence alignment
 sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
 sci-biology/iqpnni 3.3.2-r1: Important Quartet Puzzling and NNI Operation

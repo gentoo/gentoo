@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Tie-RefHash
 EAPI=6
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86
 RDEPEND=|| ( =dev-lang/perl-5.26* =dev-lang/perl-5.24* ~perl-core/Tie-RefHash-1.390.0 ) dev-lang/perl:= !<perl-core/Tie-RefHash-1.390.0 !>perl-core/Tie-RefHash-1.390.0-r999
 SLOT=0
-_md5_=55f59d41de7885ddb3d5aac8882d7238
+_md5_=86c29905e6ef92a755ba9707ee9dab0f
