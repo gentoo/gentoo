@@ -1,0 +1,44 @@
+------------------------------------------------------------------------
+r961 | mhaubi | 2017-09-26 15:34:00 +0200 (Tue, 26 Sep 2017) | 1 line
+
+drop 'dist-shar', deprecated by newer automake
+
+Index: doc/confix.texi
+===================================================================
+#--- doc/confix.texi	(revision 960)
+#+++ doc/confix.texi	(working copy)
+#@@ -992,9 +992,6 @@
+ @code{dist-bzip2} creates a @file{.tar.bz2} distribution.
+ 
+ @item
+-@code{dist-shar} creates a shell archive distribution.
+-
+-@item
+ @code{dist-zip} create a zip file (popular on Windows).
+ 
+ @item
+Index: libconfix/plugins/automake/out_automake.py
+===================================================================
+--- libconfix/plugins/automake/out_automake.py	(revision 960)
++++ libconfix/plugins/automake/out_automake.py	(working copy)
+@@ -175,7 +175,6 @@
+ 
+         # enable dist'ing in the following formats
+         self.makefile_am().add_automake_options('dist-bzip2')
+-        self.makefile_am().add_automake_options('dist-shar')
+         self.makefile_am().add_automake_options('dist-zip')
+ 
+ 
+Index: libconfix/plugins/automake/tests/output.py
+===================================================================
+--- libconfix/plugins/automake/tests/output.py	(revision 960)
++++ libconfix/plugins/automake/tests/output.py	(working copy)
+@@ -146,7 +146,7 @@
+ 
+         self.failUnless('1.9' in rootdir_automake_builder.makefile_am().automake_options())
+         self.failUnless('dist-bzip2' in rootdir_automake_builder.makefile_am().automake_options())
+-        self.failUnless('dist-shar' in rootdir_automake_builder.makefile_am().automake_options())
++        self.failUnless('dist-shar' not in rootdir_automake_builder.makefile_am().automake_options())
+         self.failUnless('dist-zip' in rootdir_automake_builder.makefile_am().automake_options())
+         self.failUnless(const.CONFIX2_DIR in rootdir_automake_builder.makefile_am().extra_dist())
+         self.failUnless(const.CONFIX2_PKG in rootdir_automake_builder.makefile_am().extra_dist())
