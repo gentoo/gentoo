@@ -242,11 +242,6 @@ xfce-extra/xfce4-volumed
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
 
-# Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
-# Doesn't work anymore. Dead upstream.
-# Masked for removal in 30 days.
-media-gfx/kflickr
-
 # Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
 # Masked for removal in 30 days.
 # No major keywords,  old EAPI, no maintainer.
