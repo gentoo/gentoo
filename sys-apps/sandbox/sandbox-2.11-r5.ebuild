@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 #
@@ -37,6 +37,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-exec-prelink.patch #599894
 	epatch "${FILESDIR}"/${PN}-2.10-fix-opendir.patch #553092
 	epatch "${FILESDIR}"/${P}-symlinkat-renameat.patch #612202
+	epatch "${FILESDIR}"/${P}-keep-ld_library_path.patch #580726
 	epatch_user
 }
 
