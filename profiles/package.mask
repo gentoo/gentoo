@@ -242,21 +242,6 @@ xfce-extra/xfce4-volumed
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
 
-# Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
-# Requires deprecated Qt/KDE4. Dead upstream. Use kde-apps/spectacle instead.
-# Masked for removal in 30 days.
-media-gfx/kgrab
-
-# Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
-# Doesn't work with Plasma 5. Dead upstream.
-# Masked for removal in 30 days.
-kde-misc/colibri
-
-# Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
-# Doesn't work anymore. Dead upstream.
-# Masked for removal in 30 days.
-media-gfx/kflickr
-
 # Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
 # Masked for removal in 30 days.
 # No major keywords,  old EAPI, no maintainer.
