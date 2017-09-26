@@ -12199,9 +12199,9 @@ kde-misc/kwebkitpart 1.4.0_pre20170128: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.6.2 0.7.1 9999: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
-kde-misc/plasma-applet-redshift-control 1.0.17 1.0.18: Plasma 5 applet for controlling redshift
+kde-misc/plasma-applet-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/plasma-applet-weather-widget 1.6.10: Plasma 5 applet for weather forecasts
-kde-misc/rsibreak 0.12.6 0.12.7: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.0.2: A collection manager based on KDE Frameworks
@@ -14652,7 +14652,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.1.5.2 5.1.6.1 5.1.7: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.1.5.2 5.1.6.1 5.1.7 5.1.7.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.13: iptables extensions not yet accepted in the main kernel
