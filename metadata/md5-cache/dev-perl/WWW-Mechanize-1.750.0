@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-perl/IO-Socket-SSL || ( ( >dev-perl/libwww-perl-6 dev-perl/HTML-Form ) <dev-perl/libwww-perl-6 ) >=dev-perl/URI-1.36 >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree test? ( dev-perl/PadWalker dev-perl/Test-Exception dev-perl/Test-NoWarnings dev-perl/Test-Taint >=dev-perl/Test-Warn-0.11 dev-perl/Test-Memory-Cycle dev-perl/HTTP-Server-Simple ) dev-lang/perl:=[-build(-)]
+DEPEND=dev-perl/IO-Socket-SSL >dev-perl/libwww-perl-6 dev-perl/HTML-Form >=dev-perl/URI-1.36 >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree test? ( dev-perl/PadWalker dev-perl/Test-Exception dev-perl/Test-NoWarnings dev-perl/Test-Taint >=dev-perl/Test-Warn-0.11 dev-perl/Test-Memory-Cycle dev-perl/HTTP-Server-Simple ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Handy web browsing in a Perl object
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/WWW-Mechanize/
 IUSE=test
 KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/IO-Socket-SSL || ( ( >dev-perl/libwww-perl-6 dev-perl/HTML-Form ) <dev-perl/libwww-perl-6 ) >=dev-perl/URI-1.36 >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree dev-lang/perl:=[-build(-)]
+RDEPEND=dev-perl/IO-Socket-SSL >dev-perl/libwww-perl-6 dev-perl/HTML-Form >=dev-perl/URI-1.36 >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/WWW-Mechanize-1.75.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=e6a2197f65e9d225242ddf142f8ae33a
+_md5_=6e81a20d7723ca43ecac49e43c228414

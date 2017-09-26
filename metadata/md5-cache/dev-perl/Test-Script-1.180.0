@@ -9,4 +9,4 @@ RDEPEND=>=virtual/perl-File-Spec-0.800.0 >=dev-perl/Probe-Perl-0.10.0 >=dev-perl
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Test-Script-1.18.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=29cc4ae5f081d75208b0192aad3c43ee
+_md5_=eecb97132ad9b3b4194d7dd5f6eaf1ba
