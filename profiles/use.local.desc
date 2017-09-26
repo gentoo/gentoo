@@ -1251,6 +1251,8 @@ app-vim/vim-latex:python - Enable python support which can help speed up some fu
 app-vim/youcompleteme:clang - Enable semantic support for C-family languages using sys-devel/clang
 dev-ada/asis:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/asis:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
+dev-ada/aunit:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
+dev-ada/aunit:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/aws:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/aws:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gnat_util:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
