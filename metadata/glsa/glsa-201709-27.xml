@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-27">
+  <title>libTIFF: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LibTIFF, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>2017-09-26</announced>
+  <revised>2017-09-26: 2</revised>
+  <bug>610330</bug>
+  <bug>614020</bug>
+  <bug>614022</bug>
+  <bug>617996</bug>
+  <bug>617998</bug>
+  <bug>618610</bug>
+  <bug>624602</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">4.0.8</unaffected>
+      <vulnerable range="lt">4.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The TIFF library contains encoding and decoding routines for the Tag
+      Image File Format. It is called by numerous programs, including GNOME and
+      KDE applications, to interpret TIFF images.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibTIFF. Please review
+      the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process a specially crafted
+      TIFF file, could possibly execute arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, obtain sensitive
+      information, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibTIFF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/tiff-4.0.8"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10267">
+      CVE-2016-10267
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10268">
+      CVE-2016-10268
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5225">
+      CVE-2017-5225
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5563">
+      CVE-2017-5563
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7592">
+      CVE-2017-7592
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7593">
+      CVE-2017-7593
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7594">
+      CVE-2017-7594
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7595">
+      CVE-2017-7595
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7596">
+      CVE-2017-7596
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7597">
+      CVE-2017-7597
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7598">
+      CVE-2017-7598
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7599">
+      CVE-2017-7599
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7600">
+      CVE-2017-7600
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7601">
+      CVE-2017-7601
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7602">
+      CVE-2017-7602
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9403">CVE-2017-9403</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-26T15:05:13Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-26T22:14:50Z">chrisadr</metadata>
+</glsa>
