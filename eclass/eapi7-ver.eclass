@@ -16,8 +16,6 @@
 #
 # https://bugs.gentoo.org/482170
 #
-# Note: version comparison function is not included currently.
-#
 # @ROFF .SS
 # Version strings
 #
@@ -176,6 +174,110 @@ ver_rs() {
 	echo "${comp[*]}"
 }
 
+# @FUNCTION: _ver_compare_int
+# @USAGE: <a> <b>
+# @RETURN: 0 if <a> -eq <b>, 1 if <a> -lt <b>, 3 if <a> -gt <b>
+# @INTERNAL
+# @DESCRIPTION:
+# Compare two non-negative integers <a> and <b>, of arbitrary length.
+# If <a> is equal to, less than, or greater than <b>, return 0, 1, or 3
+# as exit status, respectively.
+_ver_compare_int() {
+	local a=$1 b=$2 d=$(( ${#1}-${#2} ))
+
+	# Zero-pad to equal length if necessary.
+	if [[ ${d} -gt 0 ]]; then
+		printf -v b "%0${d}d%s" 0 "${b}"
+	elif [[ ${d} -lt 0 ]]; then
+		printf -v a "%0$(( -d ))d%s" 0 "${a}"
+	fi
+
+	[[ ${a} > ${b} ]] && return 3
+	[[ ${a} == "${b}" ]]
+}
+
+# @FUNCTION: _ver_compare
+# @USAGE: <va> <vb>
+# @RETURN: 1 if <va> < <vb>, 2 if <va> = <vb>, 3 if <va> > <vb>
+# @INTERNAL
+# @DESCRIPTION:
+# Compare two versions <va> and <vb>.  If <va> is less than, equal to,
+# or greater than <vb>, return 1, 2, or 3 as exit status, respectively.
+_ver_compare() {
+	local va=${1} vb=${2} a an al as ar b bn bl bs br re LC_ALL=C
+
+	re="^([0-9]+(\.[0-9]+)*)([a-z]?)((_(alpha|beta|pre|rc|p)[0-9]*)*)(-r[0-9]+)?$"
+
+	[[ ${va} =~ ${re} ]] || die "${FUNCNAME}: invalid version: ${va}"
+	an=${BASH_REMATCH[1]}
+	al=${BASH_REMATCH[3]}
+	as=${BASH_REMATCH[4]}
+	ar=${BASH_REMATCH[7]}
+
+	[[ ${vb} =~ ${re} ]] || die "${FUNCNAME}: invalid version: ${vb}"
+	bn=${BASH_REMATCH[1]}
+	bl=${BASH_REMATCH[3]}
+	bs=${BASH_REMATCH[4]}
+	br=${BASH_REMATCH[7]}
+
+	# Compare numeric components (PMS algorithm 3.2)
+	# First component
+	_ver_compare_int "${an%%.*}" "${bn%%.*}" || return
+
+	while [[ ${an} == *.* && ${bn} == *.* ]]; do
+		# Other components (PMS algorithm 3.3)
+		an=${an#*.}
+		bn=${bn#*.}
+		a=${an%%.*}
+		b=${bn%%.*}
+		if [[ ${a} == 0* || ${b} == 0* ]]; then
+			# Remove any trailing zeros
+			[[ ${a} =~ 0+$ ]] && a=${a%"${BASH_REMATCH[0]}"}
+			[[ ${b} =~ 0+$ ]] && b=${b%"${BASH_REMATCH[0]}"}
+			[[ ${a} > ${b} ]] && return 3
+			[[ ${a} < ${b} ]] && return 1
+		else
+			_ver_compare_int "${a}" "${b}" || return
+		fi
+	done
+	[[ ${an} == *.* ]] && return 3
+	[[ ${bn} == *.* ]] && return 1
+
+	# Compare letter components (PMS algorithm 3.4)
+	[[ ${al} > ${bl} ]] && return 3
+	[[ ${al} < ${bl} ]] && return 1
+
+	# Compare suffixes (PMS algorithm 3.5)
+	as=${as#_}${as:+_}
+	bs=${bs#_}${bs:+_}
+	while [[ -n ${as} && -n ${bs} ]]; do
+		# Compare each suffix (PMS algorithm 3.6)
+		a=${as%%_*}
+		b=${bs%%_*}
+		if [[ ${a%%[0-9]*} == "${b%%[0-9]*}" ]]; then
+			_ver_compare_int "${a##*[a-z]}" "${b##*[a-z]}" || return
+		else
+			# Check for p first
+			[[ ${a%%[0-9]*} == p ]] && return 3
+			[[ ${b%%[0-9]*} == p ]] && return 1
+			# Hack: Use that alpha < beta < pre < rc alphabetically
+			[[ ${a} > ${b} ]] && return 3 || return 1
+		fi
+		as=${as#*_}
+		bs=${bs#*_}
+	done
+	if [[ -n ${as} ]]; then
+		[[ ${as} == p[_0-9]* ]] && return 3 || return 1
+	elif [[ -n ${bs} ]]; then
+		[[ ${bs} == p[_0-9]* ]] && return 1 || return 3
+	fi
+
+	# Compare revision components (PMS algorithm 3.7)
+	_ver_compare_int "${ar#-r}" "${br#-r}" || return
+
+	return 2
+}
+
 # @FUNCTION: ver_test
 # @USAGE: [<v1>] <op> <v2>
 # @DESCRIPTION:
@@ -185,5 +287,25 @@ ver_rs() {
 # revision parts), and the comparison is performed according to
 # the algorithm specified in the PMS.
 ver_test() {
-	die "${FUNCNAME}: not implemented"
+	local va op vb
+
+	if [[ $# -eq 3 ]]; then
+		va=${1}
+		shift
+	else
+		va=${PVR}
+	fi
+
+	[[ $# -eq 2 ]] || die "${FUNCNAME}: bad number of arguments"
+
+	op=${1}
+	vb=${2}
+
+	case ${op} in
+		-eq|-ne|-lt|-le|-gt|-ge) ;;
+		*) die "${FUNCNAME}: invalid operator: ${op}" ;;
+	esac
+
+	_ver_compare "${va}" "${vb}"
+	test $? "${op}" 2
 }
