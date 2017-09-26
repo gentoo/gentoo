@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit cmake-utils gnome2-utils
 
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/fcitx/fcitx-chewing"
@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="Chinese Chewing input method for Fcitx"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-chewing"
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
