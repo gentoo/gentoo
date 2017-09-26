@@ -22,14 +22,14 @@ fi
 LICENSE="GPL-2+ GPL-3+"
 SLOT="4"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="dictmanager"
+IUSE="dictionary-manager"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
 	>=app-i18n/libpinyin-2.1.0:=
 	dev-libs/glib:2
 	sys-apps/dbus
 	virtual/libintl
-	dictmanager? (
+	dictionary-manager? (
 		>=app-i18n/fcitx-qt5-1.1
 		>=dev-qt/qtcore-5.7:5
 		>=dev-qt/qtdbus-5.7:5
@@ -53,7 +53,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_QT=$(usex dictmanager)
+		-DENABLE_QT=$(usex dictionary-manager)
 	)
 
 	cmake-utils_src_configure
