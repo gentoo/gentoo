@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201709-27">
-  <title>LibTIFF: Multiple vulnerabilities</title>
+  <title>libTIFF: Multiple vulnerabilities</title>
   <synopsis>Multiple vulnerabilities have been found in LibTIFF, the worst of
     which could result in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">tiff</product>
   <announced>2017-09-26</announced>
-  <revised>2017-09-26: 1</revised>
+  <revised>2017-09-26: 2</revised>
   <bug>610330</bug>
   <bug>614020</bug>
   <bug>614022</bug>
@@ -105,5 +105,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9403">CVE-2017-9403</uri>
   </references>
   <metadata tag="requester" timestamp="2017-09-26T15:05:13Z">chrisadr</metadata>
-  <metadata tag="submitter" timestamp="2017-09-26T22:09:20Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-26T22:14:50Z">chrisadr</metadata>
 </glsa>
