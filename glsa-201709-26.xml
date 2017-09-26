@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201709-26">
+  <title>libsoup: Arbitrary remote code execution</title>
+  <synopsis>A vulnerability in libsoup might allow remote attackers to execute
+    arbitrary code.
+    
+  </synopsis>
+  <product type="ebuild">libsoup</product>
+  <announced>2017-09-26</announced>
+  <revised>2017-09-26: 1</revised>
+  <bug>627466</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libsoup" auto="yes" arch="*">
+      <unaffected range="ge">2.56.1</unaffected>
+      <vulnerable range="lt">2.56.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libsoup is an HTTP client/server library for GNOME.</p>
+  </background>
+  <description>
+    <p>A stack based buffer overflow vulnerability was discovered in libsoup.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by using specially crafted HTTP requests, could
+      execute arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libsoup users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libsoup-2.56.1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2885">CVE-2017-2885</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-24T21:06:07Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-09-26T11:30:15Z">chrisadr</metadata>
+</glsa>
