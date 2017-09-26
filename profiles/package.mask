@@ -243,11 +243,6 @@ xfce-extra/xfce4-volumed
 sys-kernel/hardened-sources
 
 # Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
-# Doesn't work with Plasma 5. Dead upstream.
-# Masked for removal in 30 days.
-kde-misc/colibri
-
-# Michael Palimaka <kensington@gentoo.org> (27 Aug 2017)
 # Doesn't work anymore. Dead upstream.
 # Masked for removal in 30 days.
 media-gfx/kflickr
