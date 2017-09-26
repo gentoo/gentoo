@@ -24,6 +24,8 @@ S=${WORKDIR}/${P}/src/${EGO_PN}
 
 RDEPEND="!<app-emulation/docker-1.13.0_rc1"
 
+RESTRICT="test" # needs dockerd
+
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" go build -o "bin/docker-proxy" ./cmd/proxy || die
 }
