@@ -8,8 +8,10 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
+# Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Depends on >=icu-59, still masked.
 >=www-client/chromium-62.0.3202.9 system-icu
+>=www-client/firefox-56.0 system-icu
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (9 Sep 2017)
 # Potentially destructive. Use it only if you know what you're doing.
