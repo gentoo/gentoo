@@ -4617,7 +4617,7 @@ dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6 8.6.7: Tool Command Language
 dev-lang/teyjus 2.0.2 2.1: Higher-order logic programming language Lambda Prolog
 dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.5-r1 8.6.6 8.6.7: Tk Widget Set
-dev-lang/tuprolog 2.9.2 3.0.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
+dev-lang/tuprolog 2.9.2 3.0.0 3.0.1: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.32.1 0.34.8 0.34.9 0.36.4 0.36.5: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.7.0: XSB is a logic programming and deductive database system
