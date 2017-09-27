@@ -9699,7 +9699,7 @@ dev-ruby/metasploit-payloads 1.1.11 1.1.13 1.2.24 1.2.28: Compiled binaries for 
 dev-ruby/metasploit_data_models 2.0.14: The database layer for Metasploit
 dev-ruby/metasploit_payloads-mettle 0.0.6 0.1.9: Compiled binaries for Metasploit's next-gen Meterpreter
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
-dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
+dev-ruby/method_source 0.8.2-r3 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 2.99.2 3.0 3.0-r1 3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2016.0521: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.1 0.3.2: Fast mime detection by extension or content
@@ -9919,7 +9919,7 @@ dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID id
 dev-ruby/ruby-pango 3.0.8 3.1.1: Ruby Pango bindings
 dev-ruby/ruby-poppler 3.0.8 3.1.1: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.16.2: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.4.2-r1 1.7.5 1.8.1 1.8.3: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-progressbar 1.4.2-r1 1.7.5 1.8.1 1.8.3-r1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 3.0.8 3.1.1: Ruby bindings for librsvg
