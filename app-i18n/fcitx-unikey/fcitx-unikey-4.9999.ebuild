@@ -24,10 +24,10 @@ SLOT="4"
 KEYWORDS=""
 IUSE="+macro-editor"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8
+RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/libintl
 	macro-editor? (
-		>=app-i18n/fcitx-4.2.8[qt4]
+		>=app-i18n/fcitx-4.2.9:4[qt4]
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 	)"
