@@ -1,0 +1,24 @@
+From 4e18f4e4ddc856a520f22fabc98299f9f068ffb9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Pereira?= <luis.artur.pereira@gmail.com>
+Date: Mon, 3 Jul 2017 18:22:33 +0100
+Subject: [PATCH] Drops Qt5Core_VERSION_STRING
+
+Use Qt5Core_VERSION. Qt5Core_VERSION_STRING is a compatibility variable and
+it was removed in Qt 5.9 release.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ac1bfce..c533125 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,7 +134,7 @@ find_package(X11 REQUIRED QUIET)
+ find_package(Qt5 ${QT_MINIMUM_VERSION} CONFIG REQUIRED Widgets DBus X11Extras LinguistTools)
+ find_package(Qt5Xdg ${QTXDG_MINIMUM_VERSION} REQUIRED)
+ find_package(KF5WindowSystem REQUIRED QUIET)
+-message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION_STRING}")
++message(STATUS "Building ${PROJECT_NAME} with Qt ${Qt5Core_VERSION}")
+ 
+ QT5_ADD_DBUS_INTERFACE(SRCS
+     dbus/org.freedesktop.Notifications.xml

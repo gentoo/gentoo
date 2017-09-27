@@ -1,0 +1,60 @@
+From a1ca99ba76c3aece28ee561f759e81282f9b323f Mon Sep 17 00:00:00 2001
+From: "i.Dark_Templar" <darktemplar@dark-templar-archives.net>
+Date: Sat, 30 Sep 2017 20:02:49 +0300
+Subject: [PATCH 1/2] Fix reading and writing mimeapps.list file.
+
+---
+ qtxdg/xdgdesktopfile.cpp | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/qtxdg/xdgdesktopfile.cpp b/qtxdg/xdgdesktopfile.cpp
+index d21e2df..623ea27 100644
+--- a/qtxdg/xdgdesktopfile.cpp
++++ b/qtxdg/xdgdesktopfile.cpp
+@@ -1396,7 +1396,7 @@ bool readDesktopFile(QIODevice & device, QSettings::SettingsMap & map)
+ 
+         if (value.contains(QLatin1Char(';')))
+         {
+-            map.insert(key, value.split(QLatin1Char(';')));
++            map.insert(key, value.split(QLatin1Char(';'), QString::SkipEmptyParts));
+         }
+         else
+         {
+@@ -1418,7 +1418,10 @@ bool writeDesktopFile(QIODevice & device, const QSettings::SettingsMap & map)
+ 
+     for (auto it = map.constBegin(); it != map.constEnd(); ++it)
+     {
+-        if (! it.value().canConvert<QString>())
++        bool isString     = it.value().canConvert<QString>();
++        bool isStringList = (it.value().type() == QVariant::StringList);
++
++        if ((! isString) && (! isStringList))
+         {
+             return false;
+         }
+@@ -1444,7 +1447,21 @@ bool writeDesktopFile(QIODevice & device, const QSettings::SettingsMap & map)
+             return false;
+         }
+ 
+-        stream << remainingKey << QLatin1Char('=') << it.value().toString() << QLatin1Char('\n');
++        stream << remainingKey << QLatin1Char('=');
++
++        if (isString)
++        {
++            stream << it.value().toString() << QLatin1Char(';');
++        }
++        else /* if (isStringList) */
++        {
++            for (const QString &value: it.value().toStringList())
++            {
++                stream << value << QLatin1Char(';');
++            }
++        }
++
++        stream << QLatin1Char('\n');
+ 
+     }
+ 
+-- 
+2.13.6
+

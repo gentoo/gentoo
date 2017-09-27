@@ -1,0 +1,30 @@
+From c9df6bc1c79e1032ff9750f14165dd7bdd67b53c Mon Sep 17 00:00:00 2001
+From: Palo Kisa <palo.kisa@gmail.com>
+Date: Mon, 23 Oct 2017 10:30:04 +0200
+Subject: [PATCH] worldclock: Fix widget size updating
+
+If the content change resulted in need of different size to show all
+the content, the parent widget(s) didn't get the change. This resulted
+in cut text or waste of space in panel.
+---
+ plugin-worldclock/lxqtworldclock.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/plugin-worldclock/lxqtworldclock.cpp b/plugin-worldclock/lxqtworldclock.cpp
+index 34c36967..d6fe9c07 100644
+--- a/plugin-worldclock/lxqtworldclock.cpp
++++ b/plugin-worldclock/lxqtworldclock.cpp
+@@ -132,9 +132,13 @@ void LXQtWorldClock::updateTimeText()
+ 
+     if (!isUpToDate)
+     {
++        const QSize old_size = mContent->sizeHint();
+         mContent->setText(tzNow.toString(preformat(mFormat, timeZone, tzNow)));
++        if (old_size != mContent->sizeHint())
++            mRotatedWidget->adjustContentSize();
+         mRotatedWidget->update();
+         updatePopupContent();
++
+     }
+ }
+ 

@@ -6,7 +6,7 @@ inherit cmake-utils
 
 DESCRIPTION="Qt terminal emulator widget"
 HOMEPAGE="https://github.com/lxde/qtermwidget"
-SRC_URI="https://github.com/lxde/${PN}/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/lxde/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -1,0 +1,58 @@
+From 05e415389d09a4fd80802498ce42860dd773c411 Mon Sep 17 00:00:00 2001
+From: Alf Gaida <agaida@siduction.org>
+Date: Wed, 7 Jun 2017 18:44:52 +0200
+Subject: [PATCH] Add some comments about the meaning of versions
+
+refs lxde/lxqt/issues/1236
+---
+ CMakeLists.txt             | 11 +++++++++++
+ cmake/lxqt-config.cmake.in | 12 ++++++++++++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eb612a2..ac1bfce 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,8 +6,19 @@ set(QT_MINIMUM_VERSION "5.5.0")
+ set(QTXDG_MINIMUM_VERSION "2.0.0")
+ set(LXQTBT_MINIMUM_VERSION "0.3.1")
+ 
++# Major LXQt Version, belong to all components
+ set(LXQT_MAJOR_VERSION 0)
++# Minor LXQt Version, belong to all components
+ set(LXQT_MINOR_VERSION 11)
++#
++# Patch Version, belong *only* to the component
++# LXQt is 0.11 - liblxqt is at patch version 1
++# The official LXQt version will follow liblxqt.
++#
++# In a perfect world all components would have the same major- and minor- and
++# patch-version as liblxqt - in real life it will be fine if every component
++# has it's own patch version within a major/minor life cyle.
++#
+ set(LXQT_PATCH_VERSION 1)
+ set(LXQT_VERSION ${LXQT_MAJOR_VERSION}.${LXQT_MINOR_VERSION}.${LXQT_PATCH_VERSION})
+ 
+diff --git a/cmake/lxqt-config.cmake.in b/cmake/lxqt-config.cmake.in
+index 227d789..5cb6dc5 100644
+--- a/cmake/lxqt-config.cmake.in
++++ b/cmake/lxqt-config.cmake.in
+@@ -17,6 +17,18 @@ find_dependency(KF5WindowSystem)
+ find_dependency(lxqt-build-tools @LXQTBT_MINIMUM_VERSION@)
+ include(LXQtConfigVars)
+ 
++
++#  - Set version informations
++set(LXQT_MAJOR_VERSION      "@LXQT_MAJOR_VERSION@")
++set(LXQT_MINOR_VERSION      "@LXQT_MINOR_VERSION@")
++set(LXQT_PATCH_VERSION      "@LXQT_PATCH_VERSION@")
++set(LXQT_VERSION            "@LXQT_VERSION@")
++
++add_definitions("-DLXQT_MAJOR_VERSION=\"${LXQT_MAJOR_VERSION}\"")
++add_definitions("-DLXQT_MINOR_VERSION=\"${LXQT_MINOR_VERSION}\"")
++add_definitions("-DLXQT_PATCH_VERSION=\"${LXQT_PATCH_VERSION}\"")
++add_definitions("-DLXQT_VERSION=\"${LXQT_VERSION}\"")
++
+ if (NOT TARGET @LXQT_LIBRARY_NAME@)
+     if (POLICY CMP0024)
+         cmake_policy(SET CMP0024 NEW)

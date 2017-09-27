@@ -5,4 +5,7 @@
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
   </maintainer>
+  <use>
+    <flag name="themes">Pull in lxqt themes (default)</flag>
+  </use>
 </pkgmetadata>

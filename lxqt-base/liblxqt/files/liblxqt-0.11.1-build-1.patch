@@ -1,0 +1,27 @@
+From ada50f1c58e3debe15fc8bcd2328fe13b140f2db Mon Sep 17 00:00:00 2001
+From: Alf Gaida <agaida@siduction.org>
+Date: Wed, 7 Jun 2017 18:27:42 +0200
+Subject: [PATCH] Move LXQt version back to liblxqt
+
+lxqt-build-tools is clearly the wrong place for these informations. The version
+informations only belong to liblxqt.
+---
+ CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fd73916..eb612a2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,6 +6,11 @@ set(QT_MINIMUM_VERSION "5.5.0")
+ set(QTXDG_MINIMUM_VERSION "2.0.0")
+ set(LXQTBT_MINIMUM_VERSION "0.3.1")
+ 
++set(LXQT_MAJOR_VERSION 0)
++set(LXQT_MINOR_VERSION 11)
++set(LXQT_PATCH_VERSION 1)
++set(LXQT_VERSION ${LXQT_MAJOR_VERSION}.${LXQT_MINOR_VERSION}.${LXQT_PATCH_VERSION})
++
+ include(CMakePackageConfigHelpers)
+ include(GNUInstallDirs) # Standard directories for installation
+ 

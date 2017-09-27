@@ -15,6 +15,7 @@
     display manager</flag>
     <flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>
     image viewer</flag>
+    <flag name="l10n">Pull in localization files (default)</flag>
     <flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>
     window manager</flag>
     <flag name="oxygen">Prefer <pkg>kde-frameworks/oxygen-icons</pkg> (default)</flag>
