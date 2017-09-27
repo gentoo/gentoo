@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="GPL-2 NVIDIA-r1"
 SLOT="0/${PV%.*}"
-KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="-* amd64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
