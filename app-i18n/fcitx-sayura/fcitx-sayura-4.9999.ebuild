@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -31,3 +31,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=()
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+}
