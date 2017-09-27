@@ -18,8 +18,6 @@ IUSE="test"
 DEPEND="
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )"
 
-# Remove forced CFLAG on setup.py
-PATCHES=( "${FILESDIR}"/0001-remove-hardcoded-cflags.patch )
 DOCS=( CHANGES.md README.md doc/yenc-draft.1.3.txt )
 
 python_test() {
