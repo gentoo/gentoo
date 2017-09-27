@@ -85,7 +85,8 @@ src_prepare() {
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
-		-e "/find_package(XkbFile REQUIRED)/a\\    endif(ENABLE_X11)" \
+		-e "/find_package(XkbFile REQUIRED)/a\\        find_package(XKeyboardConfig REQUIRED)\n    endif(ENABLE_X11)" \
+		-e "/^find_package(XKeyboardConfig REQUIRED)/,+1d" \
 		-i CMakeLists.txt
 
 	cmake-utils_src_prepare
