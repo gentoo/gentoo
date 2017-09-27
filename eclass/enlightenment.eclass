@@ -88,8 +88,8 @@ case "${EAPI:-0}" in
 esac
 EXPORT_FUNCTIONS ${ENLIGHTENMENT_EXPF}
 
-DESCRIPTION="A DR17 production"
-HOMEPAGE="http://www.enlightenment.org/"
+DESCRIPTION="An Enlightenment Foundation production"
+HOMEPAGE="https://www.enlightenment.org"
 if [[ -z ${SRC_URI} ]] ; then
 	case ${EURI_STATE:-${E_STATE}} in
 	release) SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz";;
