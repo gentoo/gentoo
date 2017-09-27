@@ -8239,7 +8239,7 @@ dev-python/pyClamd 0.3.10 0.3.17: python interface to Clamd (Clamav daemon)
 dev-python/pyGPG 0.1 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyacoustid 1.0.0-r1: Python module for Chromaprint acoustic fingerprinting and the Acoustid API
-dev-python/pyaes 1.6.0: Pure-Python Implementation of the AES block-cipher and common modes of operation
+dev-python/pyaes 1.6.0 1.6.1: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.0.29: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamazon 0.65-r1: A Python wrapper for the Amazon web API
