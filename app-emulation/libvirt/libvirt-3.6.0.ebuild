@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
 	SRC_URI=""
-	KEYWORDS="amd64"
+	KEYWORDS=""
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
@@ -80,7 +80,6 @@ RDEPEND="
 		>sys-process/numactl-2.0.2
 		sys-process/numad
 	)
-	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
 		sys-fs/lvm2[-device-mapper-only(-)]

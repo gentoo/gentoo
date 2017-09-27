@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
@@ -18,7 +18,7 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -70,7 +70,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
-	fuse? ( >=sys-fs/fuse-2.8.6 )
+	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	libssh? ( net-libs/libssh )
@@ -80,7 +80,6 @@ RDEPEND="
 		>sys-process/numactl-2.0.2
 		sys-process/numad
 	)
-	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
 		sys-fs/lvm2[-device-mapper-only(-)]
@@ -126,7 +125,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
-	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch # bug #609488
+	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch          # bug #609488
 )
 
 pkg_setup() {
