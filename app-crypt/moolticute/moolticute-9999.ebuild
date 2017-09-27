@@ -34,6 +34,15 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P/_/-}"
 
+src_prepare() {
+	default
+
+	# Fill version.h with package version
+	if [[ ${PV} != 9999* ]]; then
+		sed -i "s/\"git\"/\"v${PV/_/-}\"/" src/version.h || die
+	fi
+}
+
 src_configure() {
 	eqmake5 PREFIX="/usr" Moolticute.pro
 }
