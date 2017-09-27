@@ -36,5 +36,3 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!media-gfx/kgraphviewer:4
 "
-
-PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
