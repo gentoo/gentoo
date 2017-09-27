@@ -80,7 +80,6 @@ RDEPEND="
 		>sys-process/numactl-2.0.2
 		sys-process/numad
 	)
-	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
 		sys-fs/lvm2[-device-mapper-only(-)]
