@@ -10,6 +10,8 @@ RUBY_FAKEGEM_TASK_DOC=""
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="A Text Progress Bar Library for Ruby"
