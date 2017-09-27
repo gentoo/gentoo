@@ -1,0 +1,10 @@
+diff --git a/systemd/CMakeLists.txt b/systemd/CMakeLists.txt
+index 3b03b6e613..c359ad2df9 100644
+--- a/systemd/CMakeLists.txt
++++ b/systemd/CMakeLists.txt
+@@ -17,4 +17,4 @@ install(FILES
+   ceph-disk@.service
+   ceph-volume@.service
+   rbdmap.service
+-  DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/systemd/system)
++  DESTINATION ${SYSTEMD_UNITDIR})
