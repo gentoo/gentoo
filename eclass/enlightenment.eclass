@@ -46,7 +46,7 @@ E_ECONF=()
 #	S           EURI_STATE
 
 E_LIVE_SERVER_DEFAULT_SVN="http://svn.enlightenment.org/svn/e/trunk"
-E_LIVE_SERVER_DEFAULT_GIT="git://git.enlightenment.org"
+E_LIVE_SERVER_DEFAULT_GIT="https://git.enlightenment.org"
 
 E_STATE="release"
 if [[ ${PV} == *9999* ]] ; then
