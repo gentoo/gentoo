@@ -18,7 +18,7 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -126,7 +126,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch          # bug #609488
-	"${FILESDIR}"/${PN}-3.6.0-ssh-malicious-hostname-fix.patch # bug #629462
 )
 
 pkg_setup() {
