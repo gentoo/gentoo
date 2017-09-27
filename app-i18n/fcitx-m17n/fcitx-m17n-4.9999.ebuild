@@ -8,36 +8,26 @@ inherit cmake-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-configtool"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-m17n"
 fi
 
-DESCRIPTION="GTK+ GUI configuration tool for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-configtool"
+DESCRIPTION="m17n-provided input methods for Fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-m17n"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="LGPL-2.1+"
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.9:4
-	app-text/iso-codes
-	dev-libs/glib:2
-	x11-libs/gtk+:3"
+	dev-libs/m17n-lib
+	virtual/libintl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=()
-
-src_configure() {
-	local mycmakeargs=(
-		-DENABLE_GTK2=OFF
-		-DENABLE_GTK3=ON
-	)
-
-	cmake-utils_src_configure
-}

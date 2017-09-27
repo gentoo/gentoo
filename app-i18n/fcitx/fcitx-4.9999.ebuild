@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS=""
 IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
@@ -70,10 +70,6 @@ DEPEND="${RDEPEND}
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/${P}-restart.patch"
-)
-
 DOCS=(AUTHORS ChangeLog THANKS)
 
 src_prepare() {
@@ -89,7 +85,8 @@ src_prepare() {
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
-		-e "/find_package(XkbFile REQUIRED)/a\\    endif(ENABLE_X11)" \
+		-e "/find_package(XkbFile REQUIRED)/a\\        find_package(XKeyboardConfig REQUIRED)\n    endif(ENABLE_X11)" \
+		-e "/^find_package(XKeyboardConfig REQUIRED)/,+1d" \
 		-i CMakeLists.txt
 
 	cmake-utils_src_prepare

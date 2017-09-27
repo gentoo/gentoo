@@ -57,10 +57,6 @@ DEPEND="
 # testsuite needs it own source
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PATCHES=(
-	"${FILESDIR}"/${P}-log-endless-loop.patch
-	)
-
 python_compile_all() {
 	if use doc; then
 		mkdir docs/.build || die

@@ -3,9 +3,9 @@
 
 EAPI=5
 CHROMIUM_LANGS="
-	be bg bn ca cs da de el en-GB es-419 es fil fi fr-CA fr he hi hr hu id it
-	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
-	zh-CN zh-TW
+	be bg bn ca cs da de el en-GB es-419 es fil fi fr-CA fr hi hr hu id it ja
+	ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi zh-CN
+	zh-TW
 "
 inherit chromium-2 multilib unpacker
 
@@ -13,10 +13,17 @@ DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="http://www.opera.com/"
 LICENSE="OPERA-2014"
 SLOT="0"
-SRC_URI_BASE="http://get.geo.opera.com/pub/"
-SRC_URI="
-	amd64? ( "${SRC_URI_BASE}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb" )
+SRC_URI_BASE="
+	http://download1.operacdn.com/pub/
+	http://download2.operacdn.com/pub/
+	http://download3.operacdn.com/pub/
+	http://download4.operacdn.com/pub/
 "
+for uri in ${SRC_URI_BASE}; do
+SRC_URI+="
+	"${uri}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb"
+"
+done
 KEYWORDS="~amd64"
 
 RDEPEND="

@@ -8,29 +8,42 @@ inherit cmake-utils gnome2-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-chewing"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-unikey"
 fi
 
-DESCRIPTION="Chinese Chewing input method for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-chewing"
+DESCRIPTION="Vietnamese Unikey input methods for Fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-unikey"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
+KEYWORDS=""
+IUSE="+macro-editor"
 
 RDEPEND=">=app-i18n/fcitx-4.2.9:4
-	>=app-i18n/libchewing-0.5.0:=
-	virtual/libintl"
+	virtual/libintl
+	macro-editor? (
+		>=app-i18n/fcitx-4.2.9:4[qt4]
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)"
 DEPEND="${RDEPEND}
+	sys-devel/gettext
 	virtual/pkgconfig"
 
-DOCS=(AUTHORS)
+DOCS=()
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_QT=$(usex macro-editor)
+	)
+
+	cmake-utils_src_configure
+}
 
 pkg_postinst() {
 	gnome2_icon_cache_update

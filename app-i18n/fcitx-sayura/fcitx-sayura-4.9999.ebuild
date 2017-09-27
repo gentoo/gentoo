@@ -3,16 +3,16 @@
 
 EAPI="6"
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-configtool"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-sayura"
 fi
 
-DESCRIPTION="GTK+ GUI configuration tool for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-configtool"
+DESCRIPTION="Sinhala Sayura input method for Fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-sayura"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
@@ -21,23 +21,21 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.9:4
-	app-text/iso-codes
-	dev-libs/glib:2
-	x11-libs/gtk+:3"
+	virtual/libiconv
+	virtual/libintl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=()
 
-src_configure() {
-	local mycmakeargs=(
-		-DENABLE_GTK2=OFF
-		-DENABLE_GTK3=ON
-	)
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
 
-	cmake-utils_src_configure
+pkg_postrm() {
+	gnome2_icon_cache_update
 }

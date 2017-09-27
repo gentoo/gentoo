@@ -7,7 +7,7 @@ media-libs/openimageio field3d ptex
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (22 Aug 2017)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
-app-i18n/fcitx-libpinyin dictmanager
+app-i18n/fcitx-libpinyin dictionary-manager
 
 # Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
 # Requires java
