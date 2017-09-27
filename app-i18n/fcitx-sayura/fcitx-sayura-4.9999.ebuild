@@ -24,7 +24,7 @@ SLOT="4"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.8
+RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/libiconv
 	virtual/libintl"
 DEPEND="${RDEPEND}
