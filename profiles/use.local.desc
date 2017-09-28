@@ -2815,6 +2815,7 @@ dev-tex/biblatex:biber - Install the unicode compatible backend processor
 dev-tex/circuit_macros:script - Install cm2pdf to automatically create a correctly sized PDF from a circuit_macro m4 source
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
+dev-tex/pythontex:highlighting - Syntax highlighting using dev-python/pygments
 dev-texlive/texlive-basic:luajittex - Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.
 dev-util/android-ndk:legacy-toolchains - Install legacy toolchains
 dev-util/android-ndk:target-32 - Support for 32-bit targets

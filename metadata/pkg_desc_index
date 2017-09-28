@@ -10196,6 +10196,7 @@ dev-tex/ppower4 0.9.6: Post-process presentations in PDF format which were prepa
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pstplus 1.6: A PSTricks GUI
+dev-tex/pythontex 0.16: Fast Access to Python from within LaTeX
 dev-tex/qtexengine 0.3: TeX support for Qt
 dev-tex/quotchap 0.9f: LaTeX package used to add quotes to chapters
 dev-tex/rail 1.2_p1: Offers syntax/railroad diagrams
