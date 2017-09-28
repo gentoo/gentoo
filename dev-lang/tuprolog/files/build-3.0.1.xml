@@ -30,7 +30,8 @@
 			destdir="${build.dir}"
 			encoding="ISO-8859-1"
 			srcdir="${src.dir}"
-			target="1.7">
+			source="1.8"
+			target="1.8">
 			<classpath>
 				<path refid="compile.classpath"/>
 			</classpath>
@@ -93,7 +94,8 @@
 			destdir="${test.build.dir}"
 			encoding="ISO-8859-1"
 			srcdir="${test.dir}/unit"
-			target="1.7"/>
+			source="1.8"
+			target="1.8"/>
 		<junit fork="yes" failureproperty="test.failed" printsummary="yes">
 			<classpath>
 				<path refid="dist.classpath"/>
