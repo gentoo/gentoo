@@ -78,7 +78,7 @@ src_prepare() {
 	preparation() {
 		pushd "${BUILD_DIR}" > /dev/null || die
 
-		if [[ "${ABI}" == "x86" ]]; then
+		if full_tarball && [[ "${ABI}" == "x86" ]]; then
 			# Disable tests broken on x86.
 			sed -e "/^for {set i 0} {\$i<1000} {incr i} {$/,/^}$/d" -i test/date.test || die "sed failed"
 		fi
