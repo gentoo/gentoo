@@ -1,0 +1,133 @@
+--- /src/net/jsoncpp.gyp
++++ /src/net/jsoncpp.gyp
+@@ -31,31 +31,25 @@
+   'targets': [
+     {
+       'target_name': 'jsoncpp',
+-      'type': 'static_library',
++      'type': 'none',
+       'variables': {
+-        'jsoncpp_root': '<(third_party_dir)/jsoncpp',
+-        'jsoncpp_srcs': [
+-          '<(jsoncpp_root)/src/lib_json/json_reader.cpp',
+-          '<(jsoncpp_root)/src/lib_json/json_value.cpp',
+-          '<(jsoncpp_root)/src/lib_json/json_writer.cpp',
+-        ],
+-        'jsoncpp_include_dirs': ['<(jsoncpp_root)/include'],
+         'jsoncpp_additional_macros': ['JSON_USE_EXCEPTION=0'],
+       },
+-      'defines': [
+-        '<@(jsoncpp_additional_macros)',
+-      ],
+-      'sources': [
+-        '<@(jsoncpp_srcs)',
+-        'jsoncpp.h',
+-      ],
+-      'include_dirs': [
+-        '<@(jsoncpp_include_dirs)',
+-      ],
+       'all_dependent_settings': {
+         'defines': [
+           '<@(jsoncpp_additional_macros)',
+         ],
++        'cflags': [
++          '<!@(pkg-config --cflags jsoncpp)',
++        ],
++        'link_settings': {
++          'libraries': [
++            '<!@(pkg-config --libs-only-l jsoncpp)',
++          ],
++          'ldflags': [
++            '<!@(pkg-config --libs-only-L jsoncpp)',
++          ],
++        }
+       },
+     },
+   ],
+--- /src/net/jsoncpp.h
++++ /src/net/jsoncpp.h
+@@ -35,7 +35,7 @@
+ // Mozc basically disables C++ exception.
+ #define JSON_USE_EXCEPTION 0
+ #endif  // !JSON_USE_EXCEPTION
+-#include "third_party/jsoncpp/include/json/json.h"
++#include <json/json.h>
+ #define MOZC_JSONCPP_JSON_H_INCLUDED
+ #endif  // !MOZC_JSONCPP_JSON_H_INCLUDED
+ 
+--- /src/testing/testing.gyp
++++ /src/testing/testing.gyp
+@@ -53,14 +53,12 @@
+   'targets': [
+     {
+       'target_name': 'testing',
+-      'type': 'static_library',
++      'type': 'none',
+       'variables': {
+         'gtest_defines': [
+           'GTEST_LANG_CXX11=1',
+           'GTEST_HAS_TR1_TUPLE=0',  # disable tr1 tuple in favor of C++11 tuple.
+         ],
+-        'gtest_dir': '<(third_party_dir)/gtest/googletest',
+-        'gmock_dir': '<(third_party_dir)/gtest/googlemock',
+         'conditions': [
+           ['_toolset=="target" and target_platform=="Android"', {
+             'gtest_defines': [
+@@ -75,53 +73,15 @@
+           }],
+         ],
+       },
+-      'sources': [
+-        '<(gmock_dir)/src/gmock-cardinalities.cc',
+-        '<(gmock_dir)/src/gmock-internal-utils.cc',
+-        '<(gmock_dir)/src/gmock-matchers.cc',
+-        '<(gmock_dir)/src/gmock-spec-builders.cc',
+-        '<(gmock_dir)/src/gmock.cc',
+-        '<(gtest_dir)/src/gtest-death-test.cc',
+-        '<(gtest_dir)/src/gtest-filepath.cc',
+-        '<(gtest_dir)/src/gtest-port.cc',
+-        '<(gtest_dir)/src/gtest-printers.cc',
+-        '<(gtest_dir)/src/gtest-test-part.cc',
+-        '<(gtest_dir)/src/gtest-typed-test.cc',
+-        '<(gtest_dir)/src/gtest.cc',
+-      ],
+-      'include_dirs': [
+-        '<(gmock_dir)',
+-        '<(gmock_dir)/include',
+-        '<(gtest_dir)',
+-        '<(gtest_dir)/include',
+-      ],
+-      'defines': [
+-        '<@(gtest_defines)',
+-      ],
+       'all_dependent_settings': {
+         'defines': [
+           '<@(gtest_defines)',
+         ],
+-        'include_dirs': [
+-          '<(gmock_dir)/include',
+-          '<(gtest_dir)/include',
+-        ],
+-      },
+-      'conditions': [
+-        ['(_toolset=="target" and compiler_target=="clang") or '
+-         '(_toolset=="host" and compiler_host=="clang")', {
+-          'cflags': [
+-            '-Wno-missing-field-initializers',
+-            '-Wno-unused-private-field',
++        'link_settings': {
++          'libraries': [
++            '-lgmock -lgtest',
+           ],
+-        }],
+-      ],
+-      'xcode_settings': {
+-        # Remove the force included file.  This is not necessary for third
+-        # party libraries, and it causes a build error.
+-        'OTHER_CFLAGS!' : [
+-          '-include base/namespace.h',
+-        ],
++        },
+       },
+     },
+     {
