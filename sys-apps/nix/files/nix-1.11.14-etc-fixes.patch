@@ -1,8 +1,0 @@
-diff --git a/scripts/nix-profile.sh.in b/scripts/nix-profile.sh.in
-index 4f09b55..e93ef42 100644
---- a/scripts/nix-profile.sh.in
-+++ b/scripts/nix-profile.sh.in
-@@ -5,3 +5,2 @@ if [ -n "$HOME" ]; then
-     if ! [ -L "$NIX_LINK" ]; then
--        echo "creating $NIX_LINK" >&2
-         _NIX_DEF_LINK=@localstatedir@/nix/profiles/per-user/$USER/profile
