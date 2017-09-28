@@ -16,21 +16,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
-CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-sphinx-4.7.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		>=dev-python/openstackdocstheme-1.11.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
+		<dev-python/sphinx-1.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
-		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
 		>=dev-python/reno-1.8.0[${PYTHON_USEDEP}]
-		!~dev-python/reno-2.3.1[${PYTHON_USEDEP}]
 	)"
 RDEPEND="
 	${CDEPEND}
@@ -40,17 +38,14 @@ RDEPEND="
 	!~dev-python/jinja-2.9.2[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.3[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.4[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-3.14.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-config-3.18.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-context-2.14.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.20.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
-	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]
+	>=dev-python/stevedore-1.17.1[${PYTHON_USEDEP}]
+	>=dev-python/webob-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/statsd-3.2.1[${PYTHON_USEDEP}]
 "
