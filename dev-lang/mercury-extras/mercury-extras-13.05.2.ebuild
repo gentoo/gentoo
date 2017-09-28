@@ -5,7 +5,7 @@ EAPI=2
 
 inherit eutils multilib
 
-PATCHSET_VER="2"
+PATCHSET_VER="3"
 MY_P=mercury-srcdist-${PV}
 
 DESCRIPTION="Additional libraries and tools that are not part of the Mercury standard library"
