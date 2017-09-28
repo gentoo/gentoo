@@ -72,7 +72,7 @@ src_prepare() {
 src_configure() {
 	local myconf=()
 
-	if ! use ffmpeg && ! use libav ; then
+	if ! use ffmpeg ; then
 		myconf+=( DISABLE_INTERNAL_PLAYER=1 )
 	fi
 
