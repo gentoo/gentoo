@@ -6,7 +6,9 @@ inherit autotools eutils libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
 HOMEPAGE="https://lftp.tech/"
-SRC_URI="${HOMEPAGE}ftp/${P}.tar.xz"
+SRC_URI="
+	${HOMEPAGE}ftp/${P}.tar.xz
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,7 +25,7 @@ RDEPEND="
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn2 )
 	socks5? (
 		>=net-proxy/dante-1.1.12
 		virtual/pam
@@ -64,6 +66,7 @@ src_prepare() {
 	default
 
 	eautoreconf
+
 	elibtoolize # for Darwin bundles
 
 	# bug #536036
@@ -74,7 +77,7 @@ src_configure() {
 	econf \
 		$(use_enable ipv6) \
 		$(use_enable nls) \
-		$(use_with idn libidn) \
+		$(use_with idn libidn2) \
 		$(use_with socks5 socksdante "${EPREFIX}"/usr) \
 		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
 		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
