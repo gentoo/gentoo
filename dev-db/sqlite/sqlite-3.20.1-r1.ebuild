@@ -50,6 +50,7 @@ pkg_setup() {
 src_prepare() {
 	if full_tarball; then
 		eapply -p0 "${FILESDIR}/${PN}-3.20.0-full_tarball-build.patch"
+		eapply -p0 "${FILESDIR}/${PN}-3.20.1-full_tarball-csv-unsigned_char.patch"
 
 		eapply_user
 
