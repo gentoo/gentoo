@@ -71,7 +71,12 @@ fi
 # eclass, see that function's description.
 cdrom_get_cds() {
 	unset CDROM_SET
-	export CDROM_CURRENT_CD=0 CDROM_CHECKS=( "${@}" )
+	export CDROM_CURRENT_CD=0
+    export CDROM_NUM_CDS="${#}"
+    local i
+    for i in $(seq ${#}); do
+        export CDROM_CHECK_${i}="${!i}"
+    done
 
 	# If the user has set CD_ROOT or CD_ROOT_1, don't bother informing
 	# them about which discs are needed as they presumably already know.
@@ -190,7 +195,8 @@ cdrom_load_next_cd() {
 		local i cdset
 		: CD_ROOT_${CDROM_CURRENT_CD}
 		export CDROM_ROOT=${CD_ROOT:-${!_}}
-		IFS=: read -r -a cdset -d "" <<< "${CDROM_CHECKS[$((${CDROM_CURRENT_CD} - 1))]}"
+		local var="CDROM_CHECK_${CDROM_CURRENT_CD}"
+		IFS=: read -r -a cdset -d "" <<< "${!var}"
 
 		for i in $(seq ${CDROM_SET:-0} ${CDROM_SET:-$((${#cdset[@]} - 1))}); do
 			local f=${cdset[${i}]} point= node= fs= opts=
@@ -222,7 +228,7 @@ cdrom_load_next_cd() {
 		fi
 
 		if [[ ${showedmsg} -eq 0 ]] ; then
-			if [[ ${#CDROM_CHECKS[@]} -eq 1 ]] ; then
+			if [[ ${CDROM_NUM_CDS} -eq 1 ]] ; then
 				einfo "Please insert+mount the ${CDROM_NAME:-CD for ${PN}} now !"
 			else
 				local var="CDROM_NAME_${CDROM_CURRENT_CD}"
