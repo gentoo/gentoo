@@ -35,6 +35,15 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	default
+	# bug 630370: version string correction 0.7.2 -> 0.8.0
+	# REMOVE THIS FOR toxic != 0.8.0
+	sed -i \
+		-e 's/^\(TOXIC_VERSION =\).*$/\1 0.8.0/' \
+		cfg/global_vars.mk || die "Version string correction failed."
+}
+
 src_configure() {
 	if ! use av; then
 		export DISABLE_AV=1
