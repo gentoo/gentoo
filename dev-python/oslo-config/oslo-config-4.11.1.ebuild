@@ -38,7 +38,7 @@ DEPEND="
 	)
 	doc? (
 		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		>=dev-python/openstackdocstheme-1.11.0[${PYTHON_USEDEP}]
+		>=dev-python/openstackdocstheme-1.16.0[${PYTHON_USEDEP}]
 		>=dev-python/reno-1.8.0[${PYTHON_USEDEP}]
 		!~dev-python/reno-2.3.1[${PYTHON_USEDEP}]
 	)
