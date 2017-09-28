@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit autotools eutils linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
+inherit autotools ltprune linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -15,25 +15,22 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
-RESTRICT="test"
+#RESTRICT="test"
 
-REQUIRED_USE="?? ( elogind systemd )"
+REQUIRED_USE="
+	?? ( elogind systemd )
+	test? ( debug )
+"
 
 CDEPEND="
 	>=dev-libs/expat-2
-	selinux? (
-		sys-libs/libselinux
-		)
+	selinux? ( sys-libs/libselinux )
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:0= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXt
 		)
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r4
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
 DEPEND="${CDEPEND}
 	app-text/xmlto
@@ -55,7 +52,11 @@ DOC_CONTENTS="
 "
 
 # out of sources build dir for make check
-TBD=${WORKDIR}/${P}-tests-build
+TBD="${WORKDIR}/${P}-tests-build"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-enable-elogind.patch"
+)
 
 pkg_setup() {
 	enewgroup messagebus
@@ -76,12 +77,9 @@ src_prepare() {
 		-e '/"dispatch"/d' \
 		bus/test-main.c || die
 
-	eapply "${FILESDIR}/${PN}-enable-elogind.patch"
+	default
 
-	eapply_user
-
-	# required for asneeded patch but also for bug 263909, cross-compile so
-	# don't remove eautoreconf
+	# required for bug 263909, cross-compile so don't remove eautoreconf
 	eautoreconf
 }
 
@@ -191,7 +189,7 @@ multilib_src_compile() {
 }
 
 src_test() {
-	DBUS_VERBOSE=1 Xemake -j1 -C "${TBD}" check
+	DBUS_VERBOSE=1 virtx emake -j1 -C "${TBD}" check
 }
 
 multilib_src_install() {
@@ -237,7 +235,7 @@ pkg_postinst() {
 	# for DBUS_MACHINE_UUID_FILE (see tools/dbus-launch.c) and reverse
 	# dependencies with hardcoded paths (although the known ones got fixed already)
 	dbus-uuidgen --ensure="${EROOT%/}"/etc/machine-id
-	ln -sf "${EPREFIX}"/etc/machine-id "${EROOT%/}"/var/lib/dbus/machine-id
+	ln -sf "${EPREFIX%/}"/etc/machine-id "${EROOT%/}"/var/lib/dbus/machine-id
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		local plist="org.freedesktop.dbus-session.plist"

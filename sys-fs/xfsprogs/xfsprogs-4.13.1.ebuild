@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs multilib
+inherit toolchain-funcs multilib
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.7.0-sharedlibs.patch
+	"${FILESDIR}"/${PN}-4.12.0-sharedlibs.patch
 	"${FILESDIR}"/${PN}-4.7.0-libxcmd-link.patch
 	"${FILESDIR}"/${PN}-4.9.0-underlinking.patch
 )
@@ -41,7 +41,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# LLDFLAGS is used for programs, so apply -all-static when USE=static is enabled.
 	# Clear out -static from all flags since we want to link against dynamic xfs libs.
@@ -66,18 +66,18 @@ src_configure() {
 	export OPTIMIZER=${CFLAGS}
 	unset PLATFORM # if set in user env, this breaks configure
 
-	local myconf
+	local myconf=(
+		$(use_enable nls gettext)
+		$(use_enable readline)
+		$(usex readline --disable-editline $(use_enable libedit editline))
+	)
 	if use static || use static-libs ; then
-		myconf+=" --enable-static"
+		myconf+=( --enable-static )
 	else
-		myconf+=" --disable-static"
+		myconf+=( --disable-static )
 	fi
 
-	econf \
-		$(use_enable nls gettext) \
-		$(use_enable readline) \
-		$(usex readline --disable-editline $(use_enable libedit editline)) \
-		${myconf}
+	econf "${myconf[@]}"
 
 	MAKEOPTS+=" V=1"
 }
