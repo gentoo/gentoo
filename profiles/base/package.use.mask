@@ -280,9 +280,11 @@ sys-devel/gcc vtv
 # invokes it wrong.
 dev-lang/moarvm asan
 
-# Michael Palimaka <kensington@gentoo.org> (05 May 2016)
-# Doesn't work
-media-libs/openimageio python
+# Michael Palimaka (kensington) <kensington@gentoo.org>
+# Merged on behalf of:
+# Jonathan Scruggs <j.scruggs@gmail.com> (28 Sep 2017)
+# Newer versions have a patch to fix the python issues.
+<=media-libs/openimageio-1.6.13 python
 
 # Ian Stakenvicius <axs@gentoo.org> (28 Apr 2016)
 # system-cairo support causes lots of crashing in mozilla pkgs
