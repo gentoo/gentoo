@@ -6,8 +6,8 @@
     leading to privilege escalation.
   </synopsis>
   <product type="ebuild">DokuWiki</product>
-  <announced>January 09, 2013</announced>
-  <revised>January 09, 2013: 1</revised>
+  <announced>2013-01-09</announced>
+  <revised>2013-01-09: 1</revised>
   <bug>301310</bug>
   <bug>386155</bug>
   <bug>412891</bug>
@@ -47,15 +47,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0287">CVE-2010-0287</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0288">CVE-2010-0288</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0289">CVE-2010-0289</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2510">CVE-2011-2510</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3727">CVE-2011-3727</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0283">CVE-2012-0283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0287">CVE-2010-0287</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0288">CVE-2010-0288</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0289">CVE-2010-0289</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2510">CVE-2011-2510</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3727">CVE-2011-3727</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0283">CVE-2012-0283</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:15 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:15Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 09 Jan 2013 00:43:00 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-01-09T00:43:00Z">craig</metadata>
 </glsa>

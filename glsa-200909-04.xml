@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-04">
   <title>Clam AntiVirus: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>September 09, 2009</announced>
-  <revised>September 09, 2009: 01</revised>
+  <announced>2009-09-09</announced>
+  <revised>2009-09-09: 01</revised>
   <bug>264834</bug>
   <bug>265545</bug>
   <access>remote</access>
@@ -67,21 +66,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.95.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.95.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6680">CVE-2008-6680</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1270">CVE-2009-1270</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1371">CVE-2009-1371</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1372">CVE-2009-1372</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6680">CVE-2008-6680</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1270">CVE-2009-1270</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1371">CVE-2009-1371</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1372">CVE-2009-1372</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 01 Jun 2009 22:30:28 +0000">
+  <metadata tag="requester" timestamp="2009-06-01T22:30:28Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 09:13:38 +0000">
+  <metadata tag="submitter" timestamp="2009-08-28T09:13:38Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:38 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-31T03:38:38Z">
     a3li
   </metadata>
 </glsa>

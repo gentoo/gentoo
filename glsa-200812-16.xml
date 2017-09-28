@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-16">
   <title>Dovecot: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities were found in the Dovecot mailserver.
   </synopsis>
   <product type="ebuild">dovecot</product>
-  <announced>December 14, 2008</announced>
-  <revised>December 14, 2008: 01</revised>
+  <announced>2008-12-14</announced>
+  <revised>2008-12-14: 01</revised>
   <bug>240409</bug>
   <bug>244962</bug>
   <bug>245316</bug>
@@ -58,7 +57,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/dovecot-1.1.7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-1.1.7-r1"</code>
     <p>
     Users should be aware that dovecot.conf will still be world-readable
     after the update. If employing ssl_key_password, it should not be used
@@ -67,15 +66,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4577">CVE-2008-4577</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4578">CVE-2008-4578</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4870">CVE-2008-4870</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4907">CVE-2008-4907</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4577">CVE-2008-4577</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4578">CVE-2008-4578</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4870">CVE-2008-4870</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4907">CVE-2008-4907</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 29 Nov 2008 10:07:16 +0000">
+  <metadata tag="submitter" timestamp="2008-11-29T10:07:16Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 06 Dec 2008 18:05:53 +0000">
+  <metadata tag="bugReady" timestamp="2008-12-06T18:05:53Z">
     p-y
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which leading to privilege escalation.
   </synopsis>
   <product type="ebuild">mount-cifs</product>
-  <announced>June 25, 2012</announced>
-  <revised>February 02, 2014: 2</revised>
+  <announced>2012-06-25</announced>
+  <revised>2014-02-02: 2</revised>
   <bug>308067</bug>
   <access>remote</access>
   <affected>
@@ -43,11 +43,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0547">CVE-2010-0547</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0787">CVE-2010-0787</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0547">CVE-2010-0547</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0787">CVE-2010-0787</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:36:28 +0000">
+  <metadata tag="requester" timestamp="2011-10-08T22:36:28Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 02 Feb 2014 18:36:37 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-02-02T18:36:37Z">craig</metadata>
 </glsa>

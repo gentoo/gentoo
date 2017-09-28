@@ -6,8 +6,8 @@
     local Denial of Service.
   </synopsis>
   <product type="ebuild">dbus</product>
-  <announced>March 07, 2015</announced>
-  <revised>March 07, 2015: 1</revised>
+  <announced>2015-03-07</announced>
+  <revised>2015-03-07: 1</revised>
   <bug>539482</bug>
   <access>local</access>
   <affected>
@@ -40,10 +40,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0245">CVE-2015-0245</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0245">CVE-2015-0245</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 25 Feb 2015 04:08:15 +0000">
+  <metadata tag="requester" timestamp="2015-02-25T04:08:15Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Mar 2015 08:59:46 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-03-07T08:59:46Z">Zlogene</metadata>
 </glsa>

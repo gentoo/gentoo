@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-21">
   <title>Kile: Incorrect backup file permission</title>
   <synopsis>
@@ -8,8 +7,8 @@
     information disclosure.
   </synopsis>
   <product type="ebuild">kile</product>
-  <announced>November 27, 2006</announced>
-  <revised>November 27, 2006: 01</revised>
+  <announced>2006-11-27</announced>
+  <revised>2006-11-27: 01</revised>
   <bug>155613</bug>
   <access>local</access>
   <affected>
@@ -45,15 +44,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/kile-1.9.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/kile-1.9.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1920">CVE-2005-1920</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1920">CVE-2005-1920</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 24 Nov 2006 10:25:19 +0000">
+  <metadata tag="submitter" timestamp="2006-11-24T10:25:19Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 27 Nov 2006 07:49:07 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-27T07:49:07Z">
     jaervosz
   </metadata>
 </glsa>

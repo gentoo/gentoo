@@ -7,8 +7,8 @@
     executive arbitrary code.
   </synopsis>
   <product type="ebuild">tcpdump</product>
-  <announced>October 31, 2015</announced>
-  <revised>October 31, 2015: 1</revised>
+  <announced>2015-10-31</announced>
+  <revised>2015-10-31: 1</revised>
   <bug>552632</bug>
   <access>remote</access>
   <affected>
@@ -43,13 +43,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0261">CVE-2015-0261</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2153">CVE-2015-2153</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2154">CVE-2015-2154</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2155">CVE-2015-2155</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0261">CVE-2015-0261</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2153">CVE-2015-2153</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2154">CVE-2015-2154</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2155">CVE-2015-2155</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Aug 2015 15:50:32 +0000">
+  <metadata tag="requester" timestamp="2015-08-04T15:50:32Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:14:21 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-10-31T15:14:21Z">mrueg</metadata>
 </glsa>

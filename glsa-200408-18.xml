@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-18">
   <title>xine-lib: VCD MRL buffer overflow</title>
   <synopsis>
     xine-lib contains an exploitable buffer overflow in the VCD handling code
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>August 17, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-17</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>59948</bug>
   <access>remote</access>
   <affected>
@@ -55,14 +54,14 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=media-libs/xine-lib-1_rc5-r3&quot;
-    # emerge &quot;&gt;=media-libs/xine-lib-1_rc5-r3&quot;</code>
+    # emerge -pv "&gt;=media-libs/xine-lib-1_rc5-r3"
+    # emerge "&gt;=media-libs/xine-lib-1_rc5-r3"</code>
   </resolution>
   <references>
     <uri link="http://www.open-security.org/advisories/6">Open Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1475">CVE-2004-1475</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1475">CVE-2004-1475</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 14 Aug 2004 05:07:02 +0000">
+  <metadata tag="submitter" timestamp="2004-08-14T05:07:02Z">
     jaervosz
   </metadata>
 </glsa>

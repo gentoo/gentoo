@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-05">
   <title>cbrPager: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">cbrpager</product>
-  <announced>June 16, 2008</announced>
-  <revised>June 16, 2008: 01</revised>
+  <announced>2008-06-16</announced>
+  <revised>2008-06-16: 01</revised>
   <bug>223657</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc/cbrpager-0.9.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-misc/cbrpager-0.9.17"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2575">CVE-2008-2575</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2575">CVE-2008-2575</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 28 May 2008 17:48:23 +0000">
+  <metadata tag="requester" timestamp="2008-05-28T17:48:23Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Jun 2008 15:18:59 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-03T15:18:59Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 14 Jun 2008 21:12:52 +0000">
+  <metadata tag="submitter" timestamp="2008-06-14T21:12:52Z">
     p-y
   </metadata>
 </glsa>

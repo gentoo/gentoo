@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-24">
   <title>eGroupWare: XSS and SQL injection vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     (XSS) vulnerabilities.
   </synopsis>
   <product type="ebuild">eGroupWare</product>
-  <announced>April 25, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-04-25</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>89517</bug>
   <access>remote</access>
   <affected>
@@ -50,20 +49,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/egroupware-1.0.0.007&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/egroupware-1.0.0.007"</code>
   </resolution>
   <references>
     <uri link="http://www.gulftech.org/?node=research&amp;article_id=00069-04202005">GulfTech Security Research Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1202">CVE-2005-1202</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1203">CVE-2005-1203</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1202">CVE-2005-1202</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1203">CVE-2005-1203</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Apr 2005 09:15:46 +0000">
+  <metadata tag="requester" timestamp="2005-04-23T09:15:46Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 24 Apr 2005 18:41:06 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-24T18:41:06Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 25 Apr 2005 09:36:49 +0000">
+  <metadata tag="submitter" timestamp="2005-04-25T09:36:49Z">
     vorlon078
   </metadata>
 </glsa>

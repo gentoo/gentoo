@@ -52,7 +52,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9587">CVE-2016-9587</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9587">CVE-2016-9587</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-30T01:33:48Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-01-31T15:20:20Z">whissi</metadata>

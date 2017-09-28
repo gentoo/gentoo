@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-23">
   <title>KDM: Symlink vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     information.
   </synopsis>
   <product type="ebuild">kdebase, KDM</product>
-  <announced>June 22, 2006</announced>
-  <revised>June 24, 2006: 02</revised>
+  <announced>2006-06-22</announced>
+  <revised>2006-06-24: 02</revised>
   <bug>136201</bug>
   <access>local</access>
   <affected>
@@ -66,13 +65,13 @@
     # emerge --ask --oneshot --verbose kde-base/kdm</code>
   </resolution>
   <references>
-    <uri link="http://www.kde.org/info/security/advisory-20060614-1.txt">KDE Security Advisory: KDM symlink attack vulnerability</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2449">CVE-2006-2449</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20060614-1.txt">KDE Security Advisory: KDM symlink attack vulnerability</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2449">CVE-2006-2449</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 14 Jun 2006 19:50:34 +0000">
+  <metadata tag="submitter" timestamp="2006-06-14T19:50:34Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Jun 2006 09:50:44 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-18T09:50:44Z">
     jaervosz
   </metadata>
 </glsa>

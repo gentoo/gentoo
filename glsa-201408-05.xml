@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>August 14, 2014</announced>
-  <revised>August 14, 2014: 1</revised>
+  <announced>2014-08-14</announced>
+  <revised>2014-08-14: 1</revised>
   <bug>519790</bug>
   <access>remote</access>
   <affected>
@@ -46,14 +46,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0538">CVE-2014-0538</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0540">CVE-2014-0540</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0541">CVE-2014-0541</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0542">CVE-2014-0542</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0543">CVE-2014-0543</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0544">CVE-2014-0544</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0545">CVE-2014-0545</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0538">CVE-2014-0538</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0540">CVE-2014-0540</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0541">CVE-2014-0541</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0542">CVE-2014-0542</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0543">CVE-2014-0543</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0544">CVE-2014-0544</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0545">CVE-2014-0545</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 13 Aug 2014 13:32:27 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Thu, 14 Aug 2014 13:09:44 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-08-13T13:32:27Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-08-14T13:09:44Z">Zlogene</metadata>
 </glsa>

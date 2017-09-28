@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200401-01">
   <title>Linux kernel do_mremap() local privilege escalation vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which allows for local privelege escalation.
   </synopsis>
   <product type="ebuild">Kernel</product>
-  <announced>January 08, 2004</announced>
-  <revised>January 08, 2004: 01</revised>
+  <announced>2004-01-08</announced>
+  <revised>2004-01-08: 01</revised>
   <bug>37292</bug>
   <access>local</access>
   <affected>
@@ -212,15 +211,15 @@
     their system:
     </p>
     <code>
-    $> emerge sync
-    $> emerge -pv your-favourite-sources
-    $> emerge your-favourite-sources
-    $> # Follow usual procedure for compiling and installing a kernel.
-    $> # If you use genkernel, run genkernel as you would do normally.
+    $&gt; emerge sync
+    $&gt; emerge -pv your-favourite-sources
+    $&gt; emerge your-favourite-sources
+    $&gt; # Follow usual procedure for compiling and installing a kernel.
+    $&gt; # If you use genkernel, run genkernel as you would do normally.
 
-    $> # IF YOUR KERNEL IS MARKED as "remerge required!" THEN
-    $> # YOU SHOULD UPDATE YOUR KERNEL EVEN IF PORTAGE
-    $> # REPORTS THAT THE SAME VERSION IS INSTALLED.</code>
+    $&gt; # IF YOUR KERNEL IS MARKED as "remerge required!" THEN
+    $&gt; # YOU SHOULD UPDATE YOUR KERNEL EVEN IF PORTAGE
+    $&gt; # REPORTS THAT THE SAME VERSION IS INSTALLED.</code>
   </resolution>
   <references>
     <uri link="http://isec.pl/vulnerabilities/isec-0012-mremap.txt">Vulnerability</uri>

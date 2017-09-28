@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-07">
   <title>OpenMotif: Multiple vulnerabilities in libXpm</title>
   <synopsis>
@@ -8,8 +7,8 @@
     in OpenMotif, that can potentially lead to remote code execution.
   </synopsis>
   <product type="ebuild">openmotif</product>
-  <announced>February 07, 2005</announced>
-  <revised>February 25, 2005: 03</revised>
+  <announced>2005-02-07</announced>
+  <revised>2005-02-25: 03</revised>
   <bug>78111</bug>
   <access>remote</access>
   <affected>
@@ -59,19 +58,19 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0687">CAN-2004-0687</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0688">CAN-2004-0688</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
-    <uri link="/security/en/glsa/glsa-200409-34.xml">GLSA 200409-34</uri>
-    <uri link="/security/en/glsa/glsa-200411-28.xml">GLSA 200411-28</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0687">CAN-2004-0687</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0688">CAN-2004-0688</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200409-34.xml">GLSA 200409-34</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200411-28.xml">GLSA 200411-28</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  2 Feb 2005 18:02:43 +0000">
+  <metadata tag="requester" timestamp="2005-02-02T18:02:43Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 19:11:27 +0000">
+  <metadata tag="submitter" timestamp="2005-02-02T19:11:27Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  6 Feb 2005 17:15:42 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-06T17:15:42Z">
     koon
   </metadata>
 </glsa>

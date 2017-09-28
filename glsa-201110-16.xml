@@ -7,8 +7,8 @@
     Denial of Service. 
   </synopsis>
   <product type="ebuild">Cyrus IMAP Server</product>
-  <announced>October 22, 2011</announced>
-  <revised>October 22, 2011: 1</revised>
+  <announced>2011-10-22</announced>
+  <revised>2011-10-22: 1</revised>
   <bug>283596</bug>
   <bug>382349</bug>
   <bug>385729</bug>
@@ -48,12 +48,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2632">CVE-2009-2632</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3208">CVE-2011-3208</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3481">CVE-2011-3481</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2632">CVE-2009-2632</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3208">CVE-2011-3208</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3481">CVE-2011-3481</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:12 +0000" tag="requester">a3li</metadata>
-  <metadata timestamp="Sat, 22 Oct 2011 04:32:26 +0000" tag="submitter">
+  <metadata timestamp="2011-10-07T23:37:12Z" tag="requester">a3li</metadata>
+  <metadata timestamp="2011-10-22T04:32:26Z" tag="submitter">
     underling
   </metadata>
 </glsa>

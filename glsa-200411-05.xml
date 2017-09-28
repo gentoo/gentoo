@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-05">
   <title>libxml2: Remotely exploitable buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>November 02, 2004</announced>
-  <revised>November 02, 2004: 01</revised>
+  <announced>2004-11-02</announced>
+  <revised>2004-11-02: 01</revised>
   <bug>69154</bug>
   <access>remote</access>
   <affected>
@@ -48,20 +47,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=dev-libs/libxml2-2.6.15"</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.6.15"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/379383">BugTraq Advisory</uri>
     <uri link="http://www.xmlsoft.org/ChangeLog.html">libxml2 ChangeLog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0989">CAN-2004-0989</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0989">CAN-2004-0989</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 30 Oct 2004 16:39:51 +0000">
+  <metadata tag="requester" timestamp="2004-10-30T16:39:51Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 31 Oct 2004 21:35:49 +0000">
+  <metadata tag="submitter" timestamp="2004-10-31T21:35:49Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon,  1 Nov 2004 23:01:51 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-01T23:01:51Z">
     lewk
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code. 
   </synopsis>
   <product type="ebuild">Asterisk</product>
-  <announced>October 24, 2011</announced>
-  <revised>October 24, 2011: 1</revised>
+  <announced>2011-10-24</announced>
+  <revised>2011-10-24: 1</revised>
   <bug>352059</bug>
   <bug>355967</bug>
   <bug>359767</bug>
@@ -55,22 +55,22 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1147">CVE-2011-1147</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1174">CVE-2011-1174</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1175">CVE-2011-1175</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1507">CVE-2011-1507</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1599">CVE-2011-1599</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2529">CVE-2011-2529</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2535">CVE-2011-2535</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2536">CVE-2011-2536</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2665">CVE-2011-2665</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2666">CVE-2011-2666</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4063">CVE-2011-4063</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1147">CVE-2011-1147</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1174">CVE-2011-1174</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1175">CVE-2011-1175</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1507">CVE-2011-1507</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1599">CVE-2011-1599</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2529">CVE-2011-2529</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2535">CVE-2011-2535</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2536">CVE-2011-2536</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2665">CVE-2011-2665</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2666">CVE-2011-2666</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4063">CVE-2011-4063</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:05 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:05Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 24 Oct 2011 18:44:10 +0000" tag="submitter">
+  <metadata timestamp="2011-10-24T18:44:10Z" tag="submitter">
     underling
   </metadata>
 </glsa>

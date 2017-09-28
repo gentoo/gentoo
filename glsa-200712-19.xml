@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-19">
   <title>Syslog-ng: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been discovered in Syslog-ng.
   </synopsis>
   <product type="ebuild">syslog-ng</product>
-  <announced>December 29, 2007</announced>
-  <revised>December 29, 2007: 01</revised>
+  <announced>2007-12-29</announced>
+  <revised>2007-12-29: 01</revised>
   <bug>202718</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/syslog-ng-2.0.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/syslog-ng-2.0.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6437">CVE-2007-6437</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6437">CVE-2007-6437</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 22 Dec 2007 13:17:29 +0000">
+  <metadata tag="requester" timestamp="2007-12-22T13:17:29Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Dec 2007 23:09:28 +0000">
+  <metadata tag="submitter" timestamp="2007-12-28T23:09:28Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 28 Dec 2007 23:09:43 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-28T23:09:43Z">
     p-y
   </metadata>
 </glsa>

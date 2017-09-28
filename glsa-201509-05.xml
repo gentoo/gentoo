@@ -6,8 +6,8 @@
     cause a Denial of Service condition in IPv6 network stacks.
   </synopsis>
   <product type="ebuild">networkmanager</product>
-  <announced>September 24, 2015</announced>
-  <revised>September 24, 2015: 1</revised>
+  <announced>2015-09-24</announced>
+  <revised>2015-09-24: 1</revised>
   <bug>545980</bug>
   <access>remote</access>
   <affected>
@@ -46,10 +46,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2924">CVE-2015-2924</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2924">CVE-2015-2924</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 30 Jun 2015 19:06:18 +0000">
+  <metadata tag="requester" timestamp="2015-06-30T19:06:18Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:58:36 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-09-24T16:58:36Z">mrueg</metadata>
 </glsa>

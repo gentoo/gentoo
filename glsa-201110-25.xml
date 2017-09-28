@@ -6,8 +6,8 @@
     to inject FTP commands or cause a Denial of Service.
   </synopsis>
   <product type="ebuild">Pure-FTPd</product>
-  <announced>October 26, 2011</announced>
-  <revised>October 26, 2011: 1</revised>
+  <announced>2011-10-26</announced>
+  <revised>2011-10-26: 1</revised>
   <bug>358375</bug>
   <bug>365751</bug>
   <access>remote</access>
@@ -49,13 +49,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0418">CVE-2011-0418</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1575">CVE-2011-1575</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0418">CVE-2011-0418</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1575">CVE-2011-1575</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:42 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:42Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Wed, 26 Oct 2011 20:49:23 +0000" tag="submitter">
+  <metadata timestamp="2011-10-26T20:49:23Z" tag="submitter">
     underling
   </metadata>
 </glsa>

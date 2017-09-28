@@ -6,8 +6,8 @@
     arbitrary shell code.
   </synopsis>
   <product type="ebuild">zabbix</product>
-  <announced>January 23, 2014</announced>
-  <revised>June 02, 2014: 2</revised>
+  <announced>2014-01-23</announced>
+  <revised>2014-06-02: 2</revised>
   <bug>493250</bug>
   <access>remote</access>
   <affected>
@@ -49,10 +49,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6824">CVE-2013-6824</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6824">CVE-2013-6824</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 17 Dec 2013 19:46:48 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jun 2014 13:59:58 +0000">
+  <metadata tag="requester" timestamp="2013-12-17T19:46:48Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-06-02T13:59:58Z">
     pinkbyte
   </metadata>
 </glsa>

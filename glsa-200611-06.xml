@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-06">
   <title>OpenSSH: Multiple Denial of Service vulnerabilities</title>
   <synopsis>
     Several Denial of Service vulnerabilities have been identified in OpenSSH.
   </synopsis>
   <product type="ebuild">openssh</product>
-  <announced>November 13, 2006</announced>
-  <revised>November 13, 2006: 01</revised>
+  <announced>2006-11-13</announced>
+  <revised>2006-11-13: 01</revised>
   <bug>149502</bug>
   <access>remote</access>
   <affected>
@@ -52,20 +51,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.4_p1-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-4.4_p1-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5051">CVE-2006-5051</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5052">CVE-2006-5052</uri>
-    <uri link="http://www.openssh.com/txt/release-4.4">OpenSSH Security Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5051">CVE-2006-5051</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5052">CVE-2006-5052</uri>
+    <uri link="https://www.openssh.com/txt/release-4.4">OpenSSH Security Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Nov 2006 00:03:31 +0000">
+  <metadata tag="requester" timestamp="2006-11-06T00:03:31Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 06 Nov 2006 12:18:14 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-06T12:18:14Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Nov 2006 19:31:09 +0000">
+  <metadata tag="submitter" timestamp="2006-11-06T19:31:09Z">
     daxomatic
   </metadata>
 </glsa>

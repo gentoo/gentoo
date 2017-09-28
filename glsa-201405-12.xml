@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ettercap</product>
-  <announced>May 17, 2014</announced>
-  <revised>May 17, 2014: 1</revised>
+  <announced>2014-05-17</announced>
+  <revised>2014-05-17: 1</revised>
   <bug>340897</bug>
   <bug>451198</bug>
   <access>remote</access>
@@ -56,10 +56,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3843">CVE-2010-3843</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3844">CVE-2010-3844</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0722">CVE-2013-0722</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3843">CVE-2010-3843</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3844">CVE-2010-3844</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0722">CVE-2013-0722</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 15 Oct 2012 00:56:47 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:46:36 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-10-15T00:56:47Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-17T17:46:36Z">ackle</metadata>
 </glsa>

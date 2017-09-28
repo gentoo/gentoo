@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-25">
   <title>Ekiga: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">ekiga</product>
-  <announced>March 29, 2007</announced>
-  <revised>May 28, 2009: 02</revised>
+  <announced>2007-03-29</announced>
+  <revised>2009-05-28: 02</revised>
   <bug>167643</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-voip/ekiga-2.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-voip/ekiga-2.0.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1006">CVE-2007-1006</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1006">CVE-2007-1006</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 05 Mar 2007 17:17:52 +0000">
+  <metadata tag="requester" timestamp="2007-03-05T17:17:52Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 05 Mar 2007 18:05:22 +0000">
+  <metadata tag="submitter" timestamp="2007-03-05T18:05:22Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 21:26:33 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-29T21:26:33Z">
     falco
   </metadata>
 </glsa>

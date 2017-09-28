@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-20">
   <title>curl: NTLM response buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">curl</product>
-  <announced>March 16, 2005</announced>
-  <revised>March 16, 2005: 01</revised>
+  <announced>2005-03-16</announced>
+  <revised>2005-03-16: 01</revised>
   <bug>82534</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.13.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.13.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0490">CAN-2005-0490</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0490">CAN-2005-0490</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 12 Mar 2005 16:36:42 +0000">
+  <metadata tag="requester" timestamp="2005-03-12T16:36:42Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Mar 2005 17:56:09 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-12T17:56:09Z">
     lewk
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 14 Mar 2005 05:48:14 +0000">
+  <metadata tag="submitter" timestamp="2005-03-14T05:48:14Z">
     jaervosz
   </metadata>
 </glsa>

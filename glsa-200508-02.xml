@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-02">
   <title>ProFTPD: Format string vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerabilities, potentially resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">proftpd</product>
-  <announced>August 01, 2005</announced>
-  <revised>August 01, 2005: 01</revised>
+  <announced>2005-08-01</announced>
+  <revised>2005-08-01: 01</revised>
   <bug>100364</bug>
   <access>remote</access>
   <affected>
@@ -55,18 +54,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/proftpd-1.2.10-r7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-ftp/proftpd-1.2.10-r7"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2390">CAN-2005-2390</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2390">CAN-2005-2390</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 27 Jul 2005 14:13:46 +0000">
+  <metadata tag="requester" timestamp="2005-07-27T14:13:46Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 30 Jul 2005 00:11:05 +0000">
+  <metadata tag="submitter" timestamp="2005-07-30T00:11:05Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 31 Jul 2005 14:18:50 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-31T14:18:50Z">
     DerCorny
   </metadata>
 </glsa>

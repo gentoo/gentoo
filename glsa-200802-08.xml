@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-08">
   <title>Boost: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in a Denial of Service.
   </synopsis>
   <product type="ebuild">boost</product>
-  <announced>February 14, 2008</announced>
-  <revised>February 14, 2008: 01</revised>
+  <announced>2008-02-14</announced>
+  <revised>2008-02-14: 01</revised>
   <bug>205955</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/boost-1.34.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/boost-1.34.1-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0171">CVE-2008-0171</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0172">CVE-2008-0172</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0171">CVE-2008-0171</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0172">CVE-2008-0172</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 10 Feb 2008 14:26:57 +0000">
+  <metadata tag="requester" timestamp="2008-02-10T14:26:57Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Feb 2008 14:27:09 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-10T14:27:09Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Feb 2008 20:51:31 +0000">
+  <metadata tag="submitter" timestamp="2008-02-13T20:51:31Z">
     p-y
   </metadata>
 </glsa>

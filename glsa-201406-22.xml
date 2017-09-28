@@ -6,8 +6,8 @@
     the worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">nas</product>
-  <announced>June 25, 2014</announced>
-  <revised>June 25, 2014: 1</revised>
+  <announced>2014-06-25</announced>
+  <revised>2014-06-25: 1</revised>
   <bug>484480</bug>
   <access>local, remote</access>
   <affected>
@@ -48,11 +48,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4256">CVE-2013-4256</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4258">CVE-2013-4258</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4256">CVE-2013-4256</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4258">CVE-2013-4258</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:31:39 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T02:31:39Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 20:32:15 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-06-25T20:32:15Z">Zlogene</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-18">
   <title>gzip: Insecure creation of temporary files</title>
   <synopsis>
@@ -8,8 +7,8 @@
     commands.
   </synopsis>
   <product type="ebuild">gzip</product>
-  <announced>June 24, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-06-24</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>54890</bug>
   <access>local</access>
   <affected>
@@ -52,8 +51,8 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-arch/gzip-1.3.3-r4&quot;
-    # emerge &quot;&gt;=app-arch/gzip-1.3.3-r4&quot;</code>
+    # emerge -pv "&gt;=app-arch/gzip-1.3.3-r4"
+    # emerge "&gt;=app-arch/gzip-1.3.3-r4"</code>
     <p>
     Additionally, once the upgrade is complete, all self extracting files
     created with earlier versions gzexe should be recreated, since the
@@ -61,7 +60,7 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0603">CVE-2004-0603</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0603">CVE-2004-0603</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-12">
   <title>Evolution: Format string vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     in remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">evolution</product>
-  <announced>August 23, 2005</announced>
-  <revised>August 23, 2005: 01</revised>
+  <announced>2005-08-23</announced>
+  <revised>2005-08-23: 01</revised>
   <bug>102051</bug>
   <access>remote</access>
   <affected>
@@ -53,20 +52,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/evolution-2.2.3-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/evolution-2.2.3-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2549">CAN-2005-2549</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2550">CAN-2005-2550</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2549">CAN-2005-2549</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2550">CAN-2005-2550</uri>
     <uri link="http://www.sitic.se/eng/advisories_and_recommendations/sa05-001.html">SITIC Vulnerability Advisory SA05-001</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Aug 2005 20:42:02 +0000">
+  <metadata tag="requester" timestamp="2005-08-21T20:42:02Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 22 Aug 2005 11:14:56 +0000">
+  <metadata tag="submitter" timestamp="2005-08-22T11:14:56Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 23 Aug 2005 07:46:15 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-23T07:46:15Z">
     koon
   </metadata>
 </glsa>

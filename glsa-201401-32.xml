@@ -6,8 +6,8 @@
     leading to remote execution of arbitrary code with root privileges.
   </synopsis>
   <product type="ebuild">Exim</product>
-  <announced>January 27, 2014</announced>
-  <revised>January 27, 2014: 3</revised>
+  <announced>2014-01-27</announced>
+  <revised>2014-01-27: 3</revised>
   <bug>322665</bug>
   <bug>348249</bug>
   <bug>353352</bug>
@@ -46,15 +46,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2023">CVE-2010-2023</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2024">CVE-2010-2024</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4344">CVE-2010-4344</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4345">CVE-2010-4345</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0017">CVE-2011-0017</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1407">CVE-2011-1407</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1764">CVE-2011-1764</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5671">CVE-2012-5671</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2023">CVE-2010-2023</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2024">CVE-2010-2024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4344">CVE-2010-4344</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4345">CVE-2010-4345</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0017">CVE-2011-0017</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1407">CVE-2011-1407</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1764">CVE-2011-1764</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5671">CVE-2012-5671</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:21 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Mon, 27 Jan 2014 13:05:26 +0000">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:21Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-01-27T13:05:26Z">craig</metadata>
 </glsa>

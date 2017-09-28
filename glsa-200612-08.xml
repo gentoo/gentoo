@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200612-08">
   <title>SeaMonkey: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been identified in the SeaMonkey project.
   </synopsis>
   <product type="ebuild">seamonkey</product>
-  <announced>December 10, 2006</announced>
-  <revised>December 10, 2006: 01</revised>
+  <announced>2006-12-10</announced>
+  <revised>2006-12-10: 01</revised>
   <bug>154449</bug>
   <access>remote</access>
   <affected>
@@ -50,22 +49,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.0.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/seamonkey-1.0.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5462">CVE-2006-5462</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5463">CVE-2006-5463</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5464">CVE-2006-5464</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5747">CVE-2006-5747</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5748">CVE-2006-5748</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5462">CVE-2006-5462</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5463">CVE-2006-5463</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5464">CVE-2006-5464</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5747">CVE-2006-5747</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5748">CVE-2006-5748</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:08:42 +0000">
+  <metadata tag="requester" timestamp="2006-11-21T06:08:42Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 13:46:12 +0000">
+  <metadata tag="submitter" timestamp="2006-11-21T13:46:12Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Dec 2006 19:01:27 +0000">
+  <metadata tag="bugReady" timestamp="2006-12-10T19:01:27Z">
     falco
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     execution of arbitrary code, a Denial of Service, or privilege escalation.
   </synopsis>
   <product type="ebuild">ebuild OpenTTD</product>
-  <announced>November 11, 2011</announced>
-  <revised>November 11, 2011: 2</revised>
+  <announced>2011-11-11</announced>
+  <revised>2011-11-11: 2</revised>
   <bug>381799</bug>
   <access>local, remote</access>
   <affected>
@@ -47,13 +47,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4168">CVE-2010-4168</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3341">CVE-2011-3341</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3342">CVE-2011-3342</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3343">CVE-2011-3343</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4168">CVE-2010-4168</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3341">CVE-2011-3341</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3342">CVE-2011-3342</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3343">CVE-2011-3343</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:12 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:12Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Fri, 11 Nov 2011 22:08:46 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-11T22:08:46Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -7,8 +7,8 @@
     components.
   </synopsis>
   <product type="ebuild">oracle-jre oracle-jdk</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 11, 2015: 2</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-11: 2</revised>
   <bug>537214</bug>
   <access>local, remote</access>
   <affected>
@@ -74,27 +74,27 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6549">CVE-2014-6549</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6585">CVE-2014-6585</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6587">CVE-2014-6587</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6591">CVE-2014-6591</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6593">CVE-2014-6593</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6601">CVE-2014-6601</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0383">CVE-2015-0383</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0395">CVE-2015-0395</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0400">CVE-2015-0400</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0403">CVE-2015-0403</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0406">CVE-2015-0406</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0407">CVE-2015-0407</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0408">CVE-2015-0408</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0410">CVE-2015-0410</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0412">CVE-2015-0412</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0413">CVE-2015-0413</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0421">CVE-2015-0421</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6549">CVE-2014-6549</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6585">CVE-2014-6585</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6587">CVE-2014-6587</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6591">CVE-2014-6591</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6593">CVE-2014-6593</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6601">CVE-2014-6601</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0383">CVE-2015-0383</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0395">CVE-2015-0395</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0400">CVE-2015-0400</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0403">CVE-2015-0403</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0406">CVE-2015-0406</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0407">CVE-2015-0407</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0408">CVE-2015-0408</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0410">CVE-2015-0410</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0412">CVE-2015-0412</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0413">CVE-2015-0413</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0421">CVE-2015-0421</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 02 Jul 2015 22:00:28 +0000">
+  <metadata tag="requester" timestamp="2015-07-02T22:00:28Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Jul 2015 09:43:01 +0000">stanley</metadata>
+  <metadata tag="submitter" timestamp="2015-07-11T09:43:01Z">stanley</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-20">
   <title>Qt: Image loader overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     crashes or arbitrary code execution.
   </synopsis>
   <product type="ebuild">Qt</product>
-  <announced>August 22, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-22</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>60855</bug>
   <access>local</access>
   <affected>
@@ -53,20 +52,20 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=x11-libs/qt-3.3.3&quot;
-    # emerge &quot;&gt;=x11-libs/qt-3.3.3&quot;</code>
+    # emerge -pv "&gt;=x11-libs/qt-3.3.3"
+    # emerge "&gt;=x11-libs/qt-3.3.3"</code>
   </resolution>
   <references>
     <uri link="http://www.mandrakesoft.com/security/advisories?name=MDKSA-2004:085">Mandrake Advisory</uri>
     <uri link="http://www.trolltech.com/developer/changes/changes-3.3.3.html">Qt 3.3.3 ChangeLog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0691">CVE-2004-0691</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0692">CVE-2004-0692</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0693">CVE-2004-0693</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0691">CVE-2004-0691</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0692">CVE-2004-0692</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0693">CVE-2004-0693</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 20 Aug 2004 22:45:25 +0000">
+  <metadata tag="requester" timestamp="2004-08-20T22:45:25Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 21 Aug 2004 19:29:43 +0000">
+  <metadata tag="submitter" timestamp="2004-08-21T19:29:43Z">
     condordes
   </metadata>
 </glsa>

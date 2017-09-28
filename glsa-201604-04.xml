@@ -7,8 +7,8 @@
     overflows.
   </synopsis>
   <product type="ebuild">libksba</product>
-  <announced>April 26, 2016</announced>
-  <revised>April 26, 2016: 1</revised>
+  <announced>2016-04-26</announced>
+  <revised>2016-04-26: 1</revised>
   <bug>546464</bug>
   <access>remote</access>
   <affected>
@@ -53,8 +53,8 @@
       Integer overflow in the DN decoder src/dn.c
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Jul 2015 04:35:16 +0000">
+  <metadata tag="requester" timestamp="2015-07-06T04:35:16Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 26 Apr 2016 21:22:11 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-04-26T21:22:11Z">b-man</metadata>
 </glsa>

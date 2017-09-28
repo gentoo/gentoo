@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-06">
   <title>SWORD: Shell command injection</title>
   <synopsis>
     Insufficient input checking in SWORD may allow shell command injection.
   </synopsis>
   <product type="ebuild">sword</product>
-  <announced>March 03, 2008</announced>
-  <revised>March 03, 2008: 01</revised>
+  <announced>2008-03-03</announced>
+  <revised>2008-03-03: 01</revised>
   <bug>210754</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/sword-1.5.8-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/sword-1.5.8-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0932">CVE-2008-0932</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0932">CVE-2008-0932</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Feb 2008 19:11:13 +0000">
+  <metadata tag="requester" timestamp="2008-02-23T19:11:13Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Feb 2008 12:41:01 +0000">
+  <metadata tag="submitter" timestamp="2008-02-29T12:41:01Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 29 Feb 2008 12:41:15 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-29T12:41:15Z">
     p-y
   </metadata>
 </glsa>

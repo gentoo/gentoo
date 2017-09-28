@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-02">
   <title>PDFlib: Multiple overflows in the included TIFF library</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">PDFlib</product>
-  <announced>December 05, 2004</announced>
-  <revised>December 05, 2004: 01</revised>
+  <announced>2004-12-05</announced>
+  <revised>2004-12-05: 01</revised>
   <bug>69043</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/pdflib-5.0.4_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/pdflib-5.0.4_p1"</code>
   </resolution>
   <references>
-    <uri link="http://www.pdflib.com/products/pdflib/info/PDFlib-5.0.4p1-changes.txt">PDFlib ChangeLog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0803">CAN-2004-0803</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0804">CAN-2004-0804</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0886">CAN-2004-0886</uri>
-    <uri link="/security/en/glsa/glsa-200410-11.xml">GLSA 200410-11</uri>
+    <uri link="https://www.pdflib.com/products/pdflib/info/PDFlib-5.0.4p1-changes.txt">PDFlib ChangeLog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0803">CAN-2004-0803</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0804">CAN-2004-0804</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0886">CAN-2004-0886</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200410-11.xml">GLSA 200410-11</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed,  1 Dec 2004 14:14:01 +0000">
+  <metadata tag="submitter" timestamp="2004-12-01T14:14:01Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  5 Dec 2004 14:12:37 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-05T14:12:37Z">
     koon
   </metadata>
 </glsa>

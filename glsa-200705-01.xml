@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-01">
   <title>Ktorrent: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code and a Denial of Service.
   </synopsis>
   <product type="ebuild">ktorrent</product>
-  <announced>May 01, 2007</announced>
-  <revised>May 01, 2007: 01</revised>
+  <announced>2007-05-01</announced>
+  <revised>2007-05-01: 01</revised>
   <bug>170303</bug>
   <access>remote</access>
   <affected>
@@ -48,20 +47,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/ktorrent-2.1.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/ktorrent-2.1.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1384">CVE-2007-1384</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1385">CVE-2007-1385</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1799">CVE-2007-1799</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1384">CVE-2007-1384</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1385">CVE-2007-1385</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1799">CVE-2007-1799</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Apr 2007 19:42:10 +0000">
+  <metadata tag="requester" timestamp="2007-04-24T19:42:10Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 26 Apr 2007 07:58:35 +0000">
+  <metadata tag="submitter" timestamp="2007-04-26T07:58:35Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 26 Apr 2007 07:59:01 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-26T07:59:01Z">
     p-y
   </metadata>
 </glsa>

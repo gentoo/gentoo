@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-16">
   <title>Multiple new security vulnerabilities in monit</title>
   <synopsis>
@@ -8,8 +7,8 @@
     possibly leading to denial of service or execution of arbitrary code.
   </synopsis>
   <product type="ebuild">monit</product>
-  <announced>April 19, 2004</announced>
-  <revised>April 19, 2004: 01</revised>
+  <announced>2004-04-19</announced>
+  <revised>2004-04-19: 01</revised>
   <bug>47631</bug>
   <access>remote </access>
   <affected>
@@ -51,8 +50,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-admin/monit-4.2.1"
-    # emerge ">=app-admin/monit-4.2.1"</code>
+    # emerge -pv "&gt;=app-admin/monit-4.2.1"
+    # emerge "&gt;=app-admin/monit-4.2.1"</code>
   </resolution>
   <references>
     <uri link="http://www.tildeslash.com/monit/secadv_20040305.txt">Monit security advisory 20040305</uri>

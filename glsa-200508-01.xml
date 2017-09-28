@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-01">
   <title>Compress::Zlib: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     lead to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Compress-Zlib</product>
-  <announced>August 01, 2005</announced>
-  <revised>May 28, 2009: 02</revised>
+  <announced>2005-08-01</announced>
+  <revised>2009-05-28: 02</revised>
   <bug>100540</bug>
   <access>remote</access>
   <affected>
@@ -49,21 +48,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=perl-core/Compress-Zlib-1.35&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=perl-core/Compress-Zlib-1.35"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
-    <uri link="/security/en/glsa/glsa-200507-05.xml">GLSA 200507-05</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1849">CAN-2005-1849</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200507-05.xml">GLSA 200507-05</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1849">CAN-2005-1849</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 28 Jul 2005 11:43:56 +0000">
+  <metadata tag="requester" timestamp="2005-07-28T11:43:56Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Jul 2005 23:24:17 +0000">
+  <metadata tag="submitter" timestamp="2005-07-29T23:24:17Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 01 Aug 2005 05:55:33 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-01T05:55:33Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-14">
   <title>Mozilla Firefox: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of script code with elevated privileges to information leak.
   </synopsis>
   <product type="ebuild">mozilla</product>
-  <announced>July 15, 2005</announced>
-  <revised>July 15, 2005: 01</revised>
+  <announced>2005-07-15</announced>
+  <revised>2005-07-15: 01</revised>
   <bug>95199</bug>
   <access>remote</access>
   <affected>
@@ -77,22 +76,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.0.5"</code>
     <p>
     All Mozilla Firefox binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.0.5"</code>
   </resolution>
   <references>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Firefox">Mozilla Foundation Security Advisories</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#Firefox">Mozilla Foundation Security Advisories</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 13 Jul 2005 20:26:29 +0000">
+  <metadata tag="submitter" timestamp="2005-07-13T20:26:29Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 15 Jul 2005 05:32:06 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-15T05:32:06Z">
     jaervosz
   </metadata>
 </glsa>

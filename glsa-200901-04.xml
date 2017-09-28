@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-04">
   <title>D-Bus: Denial of Service</title>
   <synopsis>
     An error condition can cause D-Bus to crash.
   </synopsis>
   <product type="ebuild">dbus</product>
-  <announced>January 11, 2009</announced>
-  <revised>January 11, 2009: 01</revised>
+  <announced>2009-01-11</announced>
+  <revised>2009-01-11: 01</revised>
   <bug>240308</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/dbus-1.2.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.2.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3834">CVE-2008-3834</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3834">CVE-2008-3834</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:43:42 +0000">
+  <metadata tag="requester" timestamp="2008-11-26T18:43:42Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 21:51:45 +0000">
+  <metadata tag="submitter" timestamp="2008-11-26T21:51:45Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 21:52:15 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-26T21:52:15Z">
     rbu
   </metadata>
 </glsa>

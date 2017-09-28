@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-33">
   <title>TWiki: Arbitrary command execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     commands with the permissions of the user running TWiki.
   </synopsis>
   <product type="ebuild">www-apps/twiki</product>
-  <announced>November 24, 2004</announced>
-  <revised>September 08, 2006: 02</revised>
+  <announced>2004-11-24</announced>
+  <revised>2006-09-08: 02</revised>
   <bug>71035</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/twiki-20040902&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/twiki-20040902"</code>
   </resolution>
   <references>
     <uri link="http://twiki.org/cgi-bin/view/Codev/SecurityAlertExecuteCommandsWithSearch">TWiki Security Alert</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1037">CAN-2004-1037</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1037">CAN-2004-1037</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Nov 2004 17:14:35 +0000">
+  <metadata tag="requester" timestamp="2004-11-22T17:14:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 22 Nov 2004 23:25:58 +0000">
+  <metadata tag="submitter" timestamp="2004-11-22T23:25:58Z">
     dmargoli
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 24 Nov 2004 08:52:40 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-24T08:52:40Z">
     jaervosz
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     attackers to gain escalated privileges.
   </synopsis>
   <product type="ebuild">virtualbox</product>
-  <announced>April 09, 2012</announced>
-  <revised>April 09, 2012: 1</revised>
+  <announced>2012-04-09</announced>
+  <revised>2012-04-09: 1</revised>
   <bug>386317</bug>
   <bug>399807</bug>
   <access>local</access>
@@ -55,12 +55,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4414">CVE-2010-4414</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2300">CVE-2011-2300</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2305">CVE-2011-2305</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0105">CVE-2012-0105</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0111">CVE-2012-0111</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4414">CVE-2010-4414</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2300">CVE-2011-2300</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2305">CVE-2011-2305</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0105">CVE-2012-0105</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0111">CVE-2012-0111</uri>
   </references>
-  <metadata timestamp="Wed, 07 Dec 2011 22:00:54 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 09 Apr 2012 22:33:28 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-12-07T22:00:54Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-04-09T22:33:28Z" tag="submitter">ackle</metadata>
 </glsa>

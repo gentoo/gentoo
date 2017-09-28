@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-01">
   <title>sharutils: Buffer overflows in shar.c and unshar.c</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code execution.
   </synopsis>
   <product type="ebuild">sharutils</product>
-  <announced>October 01, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-10-01</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>65773</bug>
   <access>remote</access>
   <affected>
@@ -49,20 +48,20 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-arch/sharutils-4.2.1-r10&quot;
-    # emerge &quot;&gt;=app-arch/sharutils-4.2.1-r10&quot;</code>
+    # emerge -pv "&gt;=app-arch/sharutils-4.2.1-r10"
+    # emerge "&gt;=app-arch/sharutils-4.2.1-r10"</code>
   </resolution>
   <references>
-    <uri link="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=265904">Debian Bug #265904</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1773">CVE-2004-1773</uri>
+    <uri link="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=265904">Debian Bug #265904</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1773">CVE-2004-1773</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 30 Sep 2004 04:54:59 +0000">
+  <metadata tag="requester" timestamp="2004-09-30T04:54:59Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 30 Sep 2004 18:01:09 +0000">
+  <metadata tag="submitter" timestamp="2004-09-30T18:01:09Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri,  1 Oct 2004 08:08:15 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-01T08:08:15Z">
     jaervosz
   </metadata>
 </glsa>

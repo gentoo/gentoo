@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-32">
   <title>Feynmf: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overwrite arbitrary files via a symlink attack.
   </synopsis>
   <product type="ebuild">feynmf</product>
-  <announced>November 20, 2007</announced>
-  <revised>November 20, 2007: 01</revised>
+  <announced>2007-11-20</announced>
+  <revised>2007-11-20: 01</revised>
   <bug>198231</bug>
   <access>local</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-tex/feynmf-1.08-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-tex/feynmf-1.08-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5940">CVE-2007-5940</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5940">CVE-2007-5940</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 19 Nov 2007 21:43:28 +0000">
+  <metadata tag="requester" timestamp="2007-11-19T21:43:28Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 19 Nov 2007 21:44:51 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-19T21:44:51Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 20 Nov 2007 00:07:40 +0000">
+  <metadata tag="submitter" timestamp="2007-11-20T00:07:40Z">
     rbu
   </metadata>
 </glsa>

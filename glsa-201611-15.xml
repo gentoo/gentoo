@@ -6,8 +6,8 @@
     which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">poppler</product>
-  <announced>November 22, 2016</announced>
-  <revised>November 22, 2016: 3</revised>
+  <announced>2016-11-22</announced>
+  <revised>2016-11-22: 3</revised>
   <bug>542220</bug>
   <bug>579752</bug>
   <access>remote</access>
@@ -44,12 +44,12 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8868">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8868">
       CVE-2015-8868
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 06 Jun 2015 14:35:30 +0000">
+  <metadata tag="requester" timestamp="2015-06-06T14:35:30Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:58:21 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-22T11:58:21Z">b-man</metadata>
 </glsa>

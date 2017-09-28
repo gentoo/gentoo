@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-14">
   <title>BIND: Incorrect signature verification</title>
   <synopsis>
@@ -8,8 +7,8 @@
     records authenticated using DNSSEC.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>March 09, 2009</announced>
-  <revised>March 09, 2009: 01</revised>
+  <announced>2009-03-09</announced>
+  <revised>2009-03-09: 01</revised>
   <bug>254134</bug>
   <bug>257949</bug>
   <access>remote</access>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.3_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.4.3_p1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0025">CVE-2009-0025</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0265">CVE-2009-0265</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0025">CVE-2009-0025</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0265">CVE-2009-0265</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 17:55:00 +0000">
+  <metadata tag="requester" timestamp="2009-01-11T17:55:00Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Mar 2009 10:41:33 +0000">
+  <metadata tag="submitter" timestamp="2009-03-09T10:41:33Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 09 Mar 2009 10:41:40 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-09T10:41:40Z">
     rbu
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-13">
   <title>Asterisk: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     injection, session hijacking and unauthorized usage.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>April 14, 2008</announced>
-  <revised>April 14, 2008: 01</revised>
+  <announced>2008-04-14</announced>
+  <revised>2008-04-14: 01</revised>
   <bug>200792</bug>
   <bug>202733</bug>
   <bug>213883</bug>
@@ -62,20 +61,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.27&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.2.27"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6170">CVE-2007-6170</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6430">CVE-2007-6430</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1332">CVE-2008-1332</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6170">CVE-2007-6170</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6430">CVE-2007-6430</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1332">CVE-2008-1332</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 20:11:29 +0000">
+  <metadata tag="requester" timestamp="2008-03-29T20:11:29Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:50:06 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-03T14:50:06Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Apr 2008 07:59:17 +0000">
+  <metadata tag="submitter" timestamp="2008-04-07T07:59:17Z">
     rbu
   </metadata>
 </glsa>

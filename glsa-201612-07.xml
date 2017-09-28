@@ -6,8 +6,8 @@
     to arbitrary code execution.
   </synopsis>
   <product type="ebuild">dpkg</product>
-  <announced>December 04, 2016</announced>
-  <revised>December 04, 2016: 1</revised>
+  <announced>2016-12-04</announced>
+  <revised>2016-12-04: 1</revised>
   <bug>567258</bug>
   <access>local, remote</access>
   <affected>
@@ -43,10 +43,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0860">CVE-2015-0860</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0860">CVE-2015-0860</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:05:41 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:05:41Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 11:01:29 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-04T11:01:29Z">whissi</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-12">
   <title>PostgreSQL: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escalation.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>May 10, 2007</announced>
-  <revised>May 28, 2009: 02</revised>
+  <announced>2007-05-10</announced>
+  <revised>2009-05-28: 02</revised>
   <bug>175791</bug>
   <access>remote</access>
   <affected>
@@ -52,24 +51,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-db/postgresql&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-db/postgresql"</code>
     <p>
     In order to fix the SECURITY DEFINER functions, PostgreSQL users are
-    advised to refer to the PostgreSQL documentation: <uri
-    link="http://www.postgresql.org/docs/techdocs.77">http://www.postgresql
+    advised to refer to the PostgreSQL documentation: <uri link="http://www.postgresql.org/docs/techdocs.77">http://www.postgresql
     .org/docs/techdocs.77</uri>
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2138">CVE-2007-2138</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2138">CVE-2007-2138</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 03 May 2007 18:37:29 +0000">
+  <metadata tag="requester" timestamp="2007-05-03T18:37:29Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 May 2007 22:14:19 +0000">
+  <metadata tag="submitter" timestamp="2007-05-06T22:14:19Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 08 May 2007 06:08:11 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-08T06:08:11Z">
     jaervosz
   </metadata>
 </glsa>

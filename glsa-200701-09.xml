@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-09">
   <title>oftpd: Denial of Service</title>
   <synopsis>
     An assertion in oftpd could lead to a denial of service vulnerability.
   </synopsis>
   <product type="ebuild">oftpd</product>
-  <announced>January 15, 2007</announced>
-  <revised>January 15, 2007: 01</revised>
+  <announced>2007-01-15</announced>
+  <revised>2007-01-15: 01</revised>
   <bug>159178</bug>
   <access>remote</access>
   <affected>
@@ -45,15 +44,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/oftpd-0.3.7-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-ftp/oftpd-0.3.7-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6767">CVE-2006-6767</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6767">CVE-2006-6767</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 14 Jan 2007 22:33:02 +0000">
+  <metadata tag="submitter" timestamp="2007-01-14T22:33:02Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 23:05:10 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-14T23:05:10Z">
     falco
   </metadata>
 </glsa>

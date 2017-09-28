@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-19">
   <title>Pavuk: Multiple buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to run arbitrary code.
   </synopsis>
   <product type="ebuild">pavuk</product>
-  <announced>November 10, 2004</announced>
-  <revised>November 10, 2004: 01</revised>
+  <announced>2004-11-10</announced>
+  <revised>2004-11-10: 01</revised>
   <bug>70516</bug>
   <access>remote</access>
   <affected>
@@ -44,20 +43,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=net-misc/pavuk-0.9.31"</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/pavuk-0.9.31"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200407-19.xml">GLSA-200407-19</uri>
-    <uri link="http://secunia.com/advisories/13120/">SA13120</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0456">CAN-2004-0456</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200407-19.xml">GLSA-200407-19</uri>
+    <uri link="https://secunia.com/advisories/13120/">SA13120</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0456">CAN-2004-0456</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 10 Nov 2004 07:00:44 +0000">
+  <metadata tag="requester" timestamp="2004-11-10T07:00:44Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 10 Nov 2004 15:50:02 +0000">
+  <metadata tag="submitter" timestamp="2004-11-10T15:50:02Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 10 Nov 2004 15:51:22 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-10T15:51:22Z">
     lewk
   </metadata>
 </glsa>

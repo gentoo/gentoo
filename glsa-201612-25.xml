@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">cracklib</product>
-  <announced>December 08, 2016</announced>
-  <revised>December 08, 2016: 1</revised>
+  <announced>2016-12-08</announced>
+  <revised>2016-12-08: 1</revised>
   <bug>591456</bug>
   <access>local</access>
   <affected>
@@ -45,10 +45,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6318">CVE-2016-6318</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6318">CVE-2016-6318</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 02:46:03 +0000">
+  <metadata tag="requester" timestamp="2015-12-31T02:46:03Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:55:10 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-08T13:55:10Z">whissi</metadata>
 </glsa>

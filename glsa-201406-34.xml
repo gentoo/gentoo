@@ -6,8 +6,8 @@
     worst of which could lead to man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">kdelibs</product>
-  <announced>June 29, 2014</announced>
-  <revised>June 29, 2014: 1</revised>
+  <announced>2014-06-29</announced>
+  <revised>2014-06-29: 1</revised>
   <bug>358025</bug>
   <bug>384227</bug>
   <bug>469140</bug>
@@ -50,13 +50,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1094">CVE-2011-1094</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3365">CVE-2011-3365</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2074">CVE-2013-2074</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3494">CVE-2014-3494</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1094">CVE-2011-1094</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3365">CVE-2011-3365</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2074">CVE-2013-2074</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3494">CVE-2014-3494</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:43:30 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T02:43:30Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 29 Jun 2014 20:18:59 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-06-29T20:18:59Z">K_F</metadata>
 </glsa>

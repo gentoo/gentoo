@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-16">
   <title>Ethereal: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     run arbitrary code or crash the program.
   </synopsis>
   <product type="ebuild">ethereal</product>
-  <announced>March 12, 2005</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2005-03-12</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>84547</bug>
   <access>remote</access>
   <affected>
@@ -56,21 +55,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ethereal-0.10.10"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0699">CAN-2005-0699</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0704">CAN-2005-0704</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0705">CAN-2005-0705</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0739">CAN-2005-0739</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0765">CVE-2005-0765</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0766">CVE-2005-0766</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0699">CAN-2005-0699</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0704">CAN-2005-0704</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0705">CAN-2005-0705</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0739">CAN-2005-0739</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0765">CVE-2005-0765</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0766">CVE-2005-0766</uri>
     <uri link="http://www.ethereal.com/appnotes/enpa-sa-00018.html">Ethereal enpa-sa-00018</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed,  9 Mar 2005 13:39:26 +0000">
+  <metadata tag="submitter" timestamp="2005-03-09T13:39:26Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Mar 2005 15:50:23 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-12T15:50:23Z">
     lewk
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     information. 
   </synopsis>
   <product type="ebuild">libssh</product>
-  <announced>August 10, 2014</announced>
-  <revised>August 10, 2014: 1</revised>
+  <announced>2014-08-10</announced>
+  <revised>2014-08-10: 1</revised>
   <bug>503504</bug>
   <access>local</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0017">CVE-2014-0017</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0017">CVE-2014-0017</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:25:42 +0000">
+  <metadata tag="requester" timestamp="2014-08-04T19:25:42Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 10 Aug 2014 16:35:47 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-08-10T16:35:47Z">K_F</metadata>
 </glsa>

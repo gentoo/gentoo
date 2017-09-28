@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-01">
   <title>MIT Kerberos 5: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote unauthenticated user to execute arbitrary code with root privileges.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>September 11, 2007</announced>
-  <revised>September 11, 2007: 01</revised>
+  <announced>2007-09-11</announced>
+  <revised>2007-09-11: 01</revised>
   <bug>191301</bug>
   <access>remote</access>
   <affected>
@@ -54,19 +53,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.5.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.5.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3999">CVE-2007-3999</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4000">CVE-2007-4000</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3999">CVE-2007-3999</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4000">CVE-2007-4000</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Sep 2007 22:29:04 +0000">
+  <metadata tag="requester" timestamp="2007-09-08T22:29:04Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 09 Sep 2007 19:22:20 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-09T19:22:20Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Sep 2007 18:34:17 +0000">
+  <metadata tag="submitter" timestamp="2007-09-10T18:34:17Z">
     vorlon
   </metadata>
 </glsa>

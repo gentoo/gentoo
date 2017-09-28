@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200311-08">
   <title>Libnids: remote code execution vulnerability</title>
   <synopsis>
@@ -50,6 +49,6 @@
     # emerge clean</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0850">CAN-2003-0850</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0850">CAN-2003-0850</uri>
   </references>
 </glsa>

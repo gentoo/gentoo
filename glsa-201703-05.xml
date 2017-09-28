@@ -44,7 +44,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4008">CVE-2016-4008</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4008">CVE-2016-4008</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-22T11:00:00Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-03-28T02:54:28Z">whissi</metadata>

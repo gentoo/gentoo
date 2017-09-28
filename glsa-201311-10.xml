@@ -7,8 +7,8 @@
     Service condition.
   </synopsis>
   <product type="ebuild">graphicsmagick</product>
-  <announced>November 19, 2013</announced>
-  <revised>November 19, 2013: 1</revised>
+  <announced>2013-11-19</announced>
+  <revised>2013-11-19: 1</revised>
   <bug>365769</bug>
   <bug>488050</bug>
   <access>remote</access>
@@ -45,11 +45,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1097">CVE-2008-1097</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1882">CVE-2009-1882</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3736">CVE-2009-3736</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4589">CVE-2013-4589</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1097">CVE-2008-1097</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1882">CVE-2009-1882</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3736">CVE-2009-3736</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4589">CVE-2013-4589</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 24 Feb 2013 15:58:45 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 19 Nov 2013 00:09:06 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2013-02-24T15:58:45Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-11-19T00:09:06Z">Zlogene</metadata>
 </glsa>

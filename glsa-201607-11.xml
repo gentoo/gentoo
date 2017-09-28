@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in Bugzilla, the worst of
     which could lead to the escalation of privileges.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 20, 2016</announced>
-  <revised>July 20, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-20</announced>
+  <revised>2016-07-20: 1</revised>
   <bug>524316</bug>
   <bug>537448</bug>
   <bug>560406</bug>
@@ -53,16 +53,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1572">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1572">
       CVE-2014-1572
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1573">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1573">
       CVE-2014-1573
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8630">CVE-2014-8630</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8630">CVE-2014-8630</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 05:32:55 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T05:32:55Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:12:25 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-20T11:12:25Z">b-man</metadata>
 </glsa>

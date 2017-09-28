@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-31">
   <title>MIT Kerberos 5: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     privileges.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>March 24, 2008</announced>
-  <revised>March 24, 2008: 01</revised>
+  <announced>2008-03-24</announced>
+  <revised>2008-03-24: 01</revised>
   <bug>199205</bug>
   <bug>212363</bug>
   <access>remote</access>
@@ -79,22 +78,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.6.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.6.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5894">CVE-2007-5901</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5971">CVE-2007-5971</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0062">CVE-2008-0062</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0063">CVE-2008-0063</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0947">CVE-2008-0947</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5894">CVE-2007-5901</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5971">CVE-2007-5971</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0062">CVE-2008-0062</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0063">CVE-2008-0063</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0947">CVE-2008-0947</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 18 Mar 2008 22:11:44 +0000">
+  <metadata tag="requester" timestamp="2008-03-18T22:11:44Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 20 Mar 2008 23:06:42 +0000">
+  <metadata tag="submitter" timestamp="2008-03-20T23:06:42Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Mar 2008 23:15:12 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-20T23:15:12Z">
     rbu
   </metadata>
 </glsa>

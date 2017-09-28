@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-08">
   <title>libcdio: User-assisted execution of arbitrary code</title>
   <synopsis>
     A buffer overflow vulnerability has been discovered in libcdio.
   </synopsis>
   <product type="ebuild">libcdio</product>
-  <announced>January 20, 2008</announced>
-  <revised>January 20, 2008: 01</revised>
+  <announced>2008-01-20</announced>
+  <revised>2008-01-20: 01</revised>
   <bug>203777</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libcdio-0.78.2-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/libcdio-0.78.2-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6613">CVE-2007-6613</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6613">CVE-2007-6613</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Jan 2008 22:05:45 +0000">
+  <metadata tag="requester" timestamp="2008-01-01T22:05:45Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 08 Jan 2008 21:42:57 +0000">
+  <metadata tag="submitter" timestamp="2008-01-08T21:42:57Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Jan 2008 17:44:04 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-15T17:44:04Z">
     rbu
   </metadata>
 </glsa>

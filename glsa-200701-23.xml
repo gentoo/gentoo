@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-23">
   <title>Cacti: Command execution and SQL injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     SQL injection.
   </synopsis>
   <product type="ebuild">cacti</product>
-  <announced>January 26, 2007</announced>
-  <revised>January 26, 2007: 01</revised>
+  <announced>2007-01-26</announced>
+  <revised>2007-01-26: 01</revised>
   <bug>159278</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.6i-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-0.8.6i-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6799">CVE-2006-6799</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6799">CVE-2006-6799</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Jan 2007 22:58:24 +0000">
+  <metadata tag="requester" timestamp="2007-01-12T22:58:24Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 16 Jan 2007 02:39:11 +0000">
+  <metadata tag="submitter" timestamp="2007-01-16T02:39:11Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 17 Jan 2007 22:17:59 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-17T22:17:59Z">
     falco
   </metadata>
 </glsa>

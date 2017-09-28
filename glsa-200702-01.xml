@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200702-01">
   <title>Samba: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which could result in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">samba</product>
-  <announced>February 13, 2007</announced>
-  <revised>February 13, 2007: 01</revised>
+  <announced>2007-02-13</announced>
+  <revised>2007-02-13: 01</revised>
   <bug>165549</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.24&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-3.0.24"</code>
   </resolution>
   <references>
-    <uri link="http://samba.org/samba/security/CVE-2007-0452.html">CVE-2007-0452</uri>
-    <uri link="http://samba.org/samba/security/CVE-2007-0454.html">CVE-2007-0454</uri>
+    <uri link="https://samba.org/samba/security/CVE-2007-0452.html">CVE-2007-0452</uri>
+    <uri link="https://samba.org/samba/security/CVE-2007-0454.html">CVE-2007-0454</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 09 Feb 2007 15:08:23 +0000">
+  <metadata tag="requester" timestamp="2007-02-09T15:08:23Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Feb 2007 23:53:19 +0000">
+  <metadata tag="bugReady" timestamp="2007-02-10T23:53:19Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 23:21:02 +0000">
+  <metadata tag="submitter" timestamp="2007-02-12T23:21:02Z">
     taviso
   </metadata>
 </glsa>

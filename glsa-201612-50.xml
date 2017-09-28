@@ -6,8 +6,8 @@
     which could lead to privilege escalation.
   </synopsis>
   <product type="ebuild">openfire</product>
-  <announced>December 31, 2016</announced>
-  <revised>December 31, 2016: 1</revised>
+  <announced>2016-12-31</announced>
+  <revised>2016-12-31: 1</revised>
   <bug>603604</bug>
   <access>remote</access>
   <affected>
@@ -45,10 +45,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6972">CVE-2015-6972</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6973">CVE-2015-6973</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7707">CVE-2015-7707</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6972">CVE-2015-6972</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6973">CVE-2015-6973</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7707">CVE-2015-7707</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 31 Dec 2016 00:17:25 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 06:27:02 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-12-31T00:17:25Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-31T06:27:02Z">whissi</metadata>
 </glsa>

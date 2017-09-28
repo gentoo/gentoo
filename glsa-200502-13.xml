@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-13">
   <title>Perl: Vulnerabilities in perl-suid wrapper</title>
   <synopsis>
@@ -8,8 +7,8 @@
     elevated privileges have been discovered in the perl-suid wrapper.
   </synopsis>
   <product type="ebuild">Perl</product>
-  <announced>February 11, 2005</announced>
-  <revised>February 11, 2005: 01</revised>
+  <announced>2005-02-11</announced>
+  <revised>2005-02-11: 01</revised>
   <bug>80460</bug>
   <access>local</access>
   <affected>
@@ -60,16 +59,16 @@
     # emerge --ask --oneshot --verbose dev-lang/perl</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0155">CAN-2005-0155</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0156">CAN-2005-0156</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0155">CAN-2005-0155</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0156">CAN-2005-0156</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri,  4 Feb 2005 14:45:58 +0000">
+  <metadata tag="requester" timestamp="2005-02-04T14:45:58Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 11 Feb 2005 15:34:36 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-11T15:34:36Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 11 Feb 2005 16:11:49 +0000">
+  <metadata tag="submitter" timestamp="2005-02-11T16:11:49Z">
     koon
   </metadata>
 </glsa>

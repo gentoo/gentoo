@@ -6,8 +6,8 @@
     code execution or Denial of Service.
   </synopsis>
   <product type="ebuild">libwebp</product>
-  <announced>December 10, 2013</announced>
-  <revised>December 10, 2013: 1</revised>
+  <announced>2013-12-10</announced>
+  <revised>2013-12-10: 1</revised>
   <bug>442152</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5127">CVE-2012-5127</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5127">CVE-2012-5127</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 26 Nov 2012 01:29:46 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 10 Dec 2013 07:54:19 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-11-26T01:29:46Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-12-10T07:54:19Z">ackle</metadata>
 </glsa>

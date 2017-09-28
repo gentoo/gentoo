@@ -6,8 +6,8 @@
     man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">gnutls</product>
-  <announced>October 10, 2011</announced>
-  <revised>October 10, 2011: 1</revised>
+  <announced>2011-10-10</announced>
+  <revised>2011-10-10: 1</revised>
   <bug>281224</bug>
   <bug>292025</bug>
   <access>remote</access>
@@ -52,13 +52,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2730">CVE-2009-2730</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2730">CVE-2009-2730</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:18 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:18Z" tag="requester">
     keytoaster
   </metadata>
-  <metadata timestamp="Mon, 10 Oct 2011 20:33:39 +0000" tag="submitter">
+  <metadata timestamp="2011-10-10T20:33:39Z" tag="submitter">
     keytoaster
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     Denial of Service or a man-in-the-middle attack.
   </synopsis>
   <product type="ebuild">OpenLDAP</product>
-  <announced>June 30, 2014</announced>
-  <revised>June 30, 2014: 1</revised>
+  <announced>2014-06-30</announced>
+  <revised>2014-06-30: 1</revised>
   <bug>290345</bug>
   <bug>323777</bug>
   <bug>355333</bug>
@@ -48,18 +48,18 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3767">CVE-2009-3767</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0211">CVE-2010-0211</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0212">CVE-2010-0212</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1024">CVE-2011-1024</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1025">CVE-2011-1025</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1081">CVE-2011-1081</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4079">CVE-2011-4079</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1164">CVE-2012-1164</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2668">CVE-2012-2668</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3767">CVE-2009-3767</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0211">CVE-2010-0211</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0212">CVE-2010-0212</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1024">CVE-2011-1024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1025">CVE-2011-1025</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1081">CVE-2011-1081</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4079">CVE-2011-4079</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1164">CVE-2012-1164</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2668">CVE-2012-2668</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:10 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:10Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 30 Jun 2014 19:44:53 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-06-30T19:44:53Z">craig</metadata>
 </glsa>

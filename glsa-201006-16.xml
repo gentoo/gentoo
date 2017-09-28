@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-16">
   <title>GD: User-assisted execution of arbitrary code</title>
   <synopsis>
     The GD library is prone to a buffer overflow vulnerability.
   </synopsis>
   <product type="ebuild">gd</product>
-  <announced>June 03, 2010</announced>
-  <revised>June 03, 2010: 01</revised>
+  <announced>2010-06-03</announced>
+  <revised>2010-06-03: 01</revised>
   <bug>292130</bug>
   <access>remote</access>
   <affected>
@@ -48,7 +47,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gd-2.0.35-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/gd-2.0.35-r1"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since November 21, 2009. It is likely that your system is
@@ -56,15 +55,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3546">CVE-2009-3546</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3546">CVE-2009-3546</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 18 Dec 2009 02:08:27 +0000">
+  <metadata tag="requester" timestamp="2009-12-18T02:08:27Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 31 May 2010 05:59:40 +0000">
+  <metadata tag="submitter" timestamp="2010-05-31T05:59:40Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 05:59:48 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-31T05:59:48Z">
     a3li
   </metadata>
 </glsa>

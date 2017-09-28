@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-07">
   <title>OpenVPN: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code and the OpenVPN server is vulnerable to a Denial of Service issue.
   </synopsis>
   <product type="ebuild">OpenVPN</product>
-  <announced>November 06, 2005</announced>
-  <revised>November 06, 2005: 01</revised>
+  <announced>2005-11-06</announced>
+  <revised>2005-11-06: 01</revised>
   <bug>111116</bug>
   <access>remote</access>
   <affected>
@@ -52,20 +51,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openvpn-2.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/openvpn-2.0.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3393">CVE-2005-3393</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3409">CVE-2005-3409</uri>
-    <uri link="http://openvpn.net/changelog.html">OpenVPN changelog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3393">CVE-2005-3393</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3409">CVE-2005-3409</uri>
+    <uri link="https://openvpn.net/changelog.html">OpenVPN changelog</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 02 Nov 2005 12:34:18 +0000">
+  <metadata tag="requester" timestamp="2005-11-02T12:34:18Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 04 Nov 2005 13:01:51 +0000">
+  <metadata tag="submitter" timestamp="2005-11-04T13:01:51Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 06 Nov 2005 14:23:34 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-06T14:23:34Z">
     koon
   </metadata>
 </glsa>

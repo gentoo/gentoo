@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-11">
   <title>Avahi: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been discovered in Avahi.
   </synopsis>
   <product type="ebuild">avahi</product>
-  <announced>January 14, 2009</announced>
-  <revised>January 14, 2009: 01</revised>
+  <announced>2009-01-14</announced>
+  <revised>2009-01-14: 01</revised>
   <bug>250913</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/avahi-0.6.24&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/avahi-0.6.24"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5081">CVE-2008-5081</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5081">CVE-2008-5081</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 18:41:03 +0000">
+  <metadata tag="requester" timestamp="2009-01-11T18:41:03Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 Jan 2009 22:42:38 +0000">
+  <metadata tag="submitter" timestamp="2009-01-12T22:42:38Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Jan 2009 22:42:49 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-12T22:42:49Z">
     p-y
   </metadata>
 </glsa>

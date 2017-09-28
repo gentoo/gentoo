@@ -6,8 +6,8 @@
     of which might allow remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">libsndfile</product>
-  <announced>December 03, 2016</announced>
-  <revised>December 03, 2016: 1</revised>
+  <announced>2016-12-03</announced>
+  <revised>2016-12-03: 1</revised>
   <bug>533750</bug>
   <bug>566682</bug>
   <access>local, remote</access>
@@ -45,11 +45,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9496">CVE-2014-9496</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7805">CVE-2015-7805</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9496">CVE-2014-9496</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7805">CVE-2015-7805</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:52:16 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:52:16Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 03 Dec 2016 10:28:00 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-03T10:28:00Z">whissi</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">mutt</product>
-  <announced>June 05, 2014</announced>
-  <revised>June 05, 2014: 1</revised>
+  <announced>2014-06-05</announced>
+  <revised>2014-06-05: 1</revised>
   <bug>504462</bug>
   <access>remote</access>
   <affected>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0467">CVE-2014-0467</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0467">CVE-2014-0467</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 20 May 2014 03:40:42 +0000">
+  <metadata tag="requester" timestamp="2014-05-20T03:40:42Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 05 Jun 2014 00:18:36 +0000">
+  <metadata tag="submitter" timestamp="2014-06-05T00:18:36Z">
     creffett
   </metadata>
 </glsa>

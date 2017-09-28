@@ -7,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">DBD-Pg</product>
-  <announced>April 17, 2012</announced>
-  <revised>April 17, 2012: 1</revised>
+  <announced>2012-04-17</announced>
+  <revised>2012-04-17: 1</revised>
   <bug>407549</bug>
   <access>remote</access>
   <affected>
@@ -46,8 +46,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1151">CVE-2012-1151</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1151">CVE-2012-1151</uri>
   </references>
-  <metadata timestamp="Sat, 17 Mar 2012 19:18:38 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 17 Apr 2012 22:44:31 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-17T19:18:38Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-04-17T22:44:31Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libzrtpcpp</product>
-  <announced>September 24, 2013</announced>
-  <revised>September 24, 2013: 1</revised>
+  <announced>2013-09-24</announced>
+  <revised>2013-09-24: 1</revised>
   <bug>481228</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2221">CVE-2013-2221</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2222">CVE-2013-2222</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2223">CVE-2013-2223</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2221">CVE-2013-2221</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2222">CVE-2013-2222</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2223">CVE-2013-2223</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Sep 2013 18:53:56 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 24 Sep 2013 22:01:15 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-01T18:53:56Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-09-24T22:01:15Z">ackle</metadata>
 </glsa>

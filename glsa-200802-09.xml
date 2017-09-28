@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-09">
   <title>ClamAV: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>February 21, 2008</announced>
-  <revised>February 21, 2008: 01</revised>
+  <announced>2008-02-21</announced>
+  <revised>2008-02-21: 01</revised>
   <bug>209915</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.92.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.92.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0318">CVE-2008-0318</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0728">CVE-2008-0728</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0318">CVE-2008-0318</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0728">CVE-2008-0728</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 19 Feb 2008 20:13:32 +0000">
+  <metadata tag="requester" timestamp="2008-02-19T20:13:32Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 19 Feb 2008 20:14:59 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-19T20:14:59Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 19 Feb 2008 21:50:12 +0000">
+  <metadata tag="submitter" timestamp="2008-02-19T21:50:12Z">
     p-y
   </metadata>
 </glsa>

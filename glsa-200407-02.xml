@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-02">
   <title>Linux Kernel: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     released and details are included in this advisory.
   </synopsis>
   <product type="ebuild">Kernel</product>
-  <announced>July 03, 2004</announced>
-  <revised>March 27, 2011: 04</revised>
+  <announced>2004-07-03</announced>
+  <revised>2011-03-27: 04</revised>
   <bug>47881</bug>
   <bug>49637</bug>
   <bug>53804</bug>
@@ -300,19 +299,19 @@
     # # If you use genkernel, run genkernel as you would do normally.</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0109">CVE-2004-0109</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0133">CVE-2004-0133</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0177">CVE-2004-0177</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0178">CVE-2004-0178</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0181">CVE-2004-0181</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0228">CVE-2004-0228</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0229">CVE-2004-0229</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0394">CVE-2004-0394</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0427">CVE-2004-0427</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0495">CVE-2004-0495</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0535">CVE-2004-0535</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0554">CVE-2004-0554</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1983">CVE-2004-1983</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0109">CVE-2004-0109</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0133">CVE-2004-0133</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0177">CVE-2004-0177</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0178">CVE-2004-0178</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0181">CVE-2004-0181</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0228">CVE-2004-0228</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0229">CVE-2004-0229</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0394">CVE-2004-0394</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0427">CVE-2004-0427</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0495">CVE-2004-0495</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0535">CVE-2004-0535</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0554">CVE-2004-0554</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1983">CVE-2004-1983</uri>
   </references>
   <metadata tag="submitter">
     plasmaroo

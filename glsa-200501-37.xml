@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-37">
   <title>GraphicsMagick: PSD decoding heap overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Document (PSD) files, which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">GraphicsMagick</product>
-  <announced>January 26, 2005</announced>
-  <revised>January 26, 2005: 01</revised>
+  <announced>2005-01-26</announced>
+  <revised>2005-01-26: 01</revised>
   <bug>79336</bug>
   <access>remote</access>
   <affected>
@@ -51,16 +50,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/graphicsmagick-1.1.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/graphicsmagick-1.1.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0005">CAN-2005-0005</uri>
-    <uri link="/security/en/glsa/glsa-200501-26.xml">GLSA 200501-26</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0005">CAN-2005-0005</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200501-26.xml">GLSA 200501-26</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 26 Jan 2005 12:20:54 +0000">
+  <metadata tag="submitter" timestamp="2005-01-26T12:20:54Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Jan 2005 12:21:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-26T12:21:35Z">
     koon
   </metadata>
 </glsa>

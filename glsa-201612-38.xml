@@ -6,8 +6,8 @@
     which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">botan</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>574034</bug>
   <access>remote</access>
   <affected>
@@ -41,9 +41,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2194">CVE-2016-2194</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2195">CVE-2016-2195</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2194">CVE-2016-2194</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2195">CVE-2016-2195</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 22:26:17 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:50 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-29T22:26:17Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T06:59:50Z">whissi</metadata>
 </glsa>

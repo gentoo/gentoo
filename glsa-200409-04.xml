@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-04">
   <title>Squid: Denial of service when using NTLM authentication</title>
   <synopsis>
@@ -8,8 +7,8 @@
     NTLM helpers.
   </synopsis>
   <product type="ebuild">squid</product>
-  <announced>September 02, 2004</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2004-09-02</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>61280</bug>
   <access>remote</access>
   <affected>
@@ -53,14 +52,14 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-www/squid-2.5.6-r2&quot;
-    # emerge &quot;&gt;=net-www/squid-2.5.6-r2&quot;</code>
+    # emerge -pv "&gt;=net-www/squid-2.5.6-r2"
+    # emerge "&gt;=net-www/squid-2.5.6-r2"</code>
   </resolution>
   <references>
     <uri link="http://www1.uk.squid-cache.org/squid/Versions/v2/2.5/bugs/#squid-2.5.STABLE6-ntlm_fetch_string">Squid-2.5 Patches</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0832">CVE-2004-0832</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0832">CVE-2004-0832</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu,  2 Sep 2004 10:25:32 +0000">
+  <metadata tag="submitter" timestamp="2004-09-02T10:25:32Z">
     vorlon078
   </metadata>
 </glsa>

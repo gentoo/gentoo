@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>August 14, 2012</announced>
-  <revised>August 14, 2012: 1</revised>
+  <announced>2012-08-14</announced>
+  <revised>2012-08-14: 1</revised>
   <bug>423719</bug>
   <bug>426204</bug>
   <bug>429174</bug>
@@ -46,42 +46,42 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2815">CVE-2012-2815</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2817">CVE-2012-2817</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2818">CVE-2012-2818</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2819">CVE-2012-2819</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2820">CVE-2012-2820</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2821">CVE-2012-2821</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2823">CVE-2012-2823</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2824">CVE-2012-2824</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2825">CVE-2012-2825</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2826">CVE-2012-2826</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2829">CVE-2012-2829</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2830">CVE-2012-2830</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2831">CVE-2012-2831</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2834">CVE-2012-2834</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2842">CVE-2012-2842</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2843">CVE-2012-2843</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2846">CVE-2012-2846</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2847">CVE-2012-2847</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2848">CVE-2012-2848</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2849">CVE-2012-2849</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2853">CVE-2012-2853</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2854">CVE-2012-2854</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2857">CVE-2012-2857</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2858">CVE-2012-2858</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2859">CVE-2012-2859</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2860">CVE-2012-2860</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/06/stable-channel-update_26.html">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2815">CVE-2012-2815</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2817">CVE-2012-2817</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2818">CVE-2012-2818</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2819">CVE-2012-2819</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2820">CVE-2012-2820</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2821">CVE-2012-2821</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2823">CVE-2012-2823</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2824">CVE-2012-2824</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2825">CVE-2012-2825</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2826">CVE-2012-2826</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2829">CVE-2012-2829</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2830">CVE-2012-2830</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2831">CVE-2012-2831</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2834">CVE-2012-2834</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2842">CVE-2012-2842</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2843">CVE-2012-2843</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2846">CVE-2012-2846</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2847">CVE-2012-2847</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2848">CVE-2012-2848</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2849">CVE-2012-2849</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2853">CVE-2012-2853</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2854">CVE-2012-2854</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2857">CVE-2012-2857</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2858">CVE-2012-2858</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2859">CVE-2012-2859</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2860">CVE-2012-2860</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2012/06/stable-channel-update_26.html">
       Release Notes 20.0.1132.43
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/07/stable-channel-update.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/07/stable-channel-update.html">
       Release Notes 20.0.1132.57
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/07/stable-channel-release.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/07/stable-channel-release.html">
       Release Notes 21.0.1180.57
     </uri>
   </references>
-  <metadata timestamp="Wed, 27 Jun 2012 21:59:02 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 14 Aug 2012 20:30:39 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-27T21:59:02Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-08-14T20:30:39Z" tag="submitter">ackle</metadata>
 </glsa>

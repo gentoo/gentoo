@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-17">
   <title>KPdf, KOffice: More vulnerabilities in included Xpdf</title>
   <synopsis>
@@ -9,8 +8,8 @@
     enticed to view a malicious PDF file.
   </synopsis>
   <product type="ebuild">kpdf, koffice</product>
-  <announced>January 11, 2005</announced>
-  <revised>January 12, 2005: 02</revised>
+  <announced>2005-01-11</announced>
+  <revised>2005-01-12: 02</revised>
   <bug>75203</bug>
   <bug>75204</bug>
   <access>remote</access>
@@ -65,15 +64,15 @@
     # emerge --ask --oneshot --verbose app-office/koffice</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200412-24.xml">GLSA 200412-24</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
-    <uri link="http://kde.org/info/security/advisory-20041223-1.txt">KDE Security Advisory: kpdf Buffer Overflow Vulnerability</uri>
-    <uri link="http://koffice.kde.org/security/2004_xpdf_integer_overflow_2.php">KOffice XPDF Integer Overflow 2</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200412-24.xml">GLSA 200412-24</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
+    <uri link="https://kde.org/info/security/advisory-20041223-1.txt">KDE Security Advisory: kpdf Buffer Overflow Vulnerability</uri>
+    <uri link="https://koffice.kde.org/security/2004_xpdf_integer_overflow_2.php">KOffice XPDF Integer Overflow 2</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed,  5 Jan 2005 17:17:02 +0000">
+  <metadata tag="submitter" timestamp="2005-01-05T17:17:02Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 12:37:24 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-11T12:37:24Z">
     jaervosz
   </metadata>
 </glsa>

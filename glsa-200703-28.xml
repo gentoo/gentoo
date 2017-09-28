@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-28">
   <title>CUPS: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a Denial of Service.
   </synopsis>
   <product type="ebuild">cups</product>
-  <announced>March 31, 2007</announced>
-  <revised>March 31, 2007: 01</revised>
+  <announced>2007-03-31</announced>
+  <revised>2007-03-31: 01</revised>
   <bug>170881</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.2.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.2.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0720">CVE-2007-0720</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0720">CVE-2007-0720</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 29 Mar 2007 14:48:39 +0000">
+  <metadata tag="requester" timestamp="2007-03-29T14:48:39Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 29 Mar 2007 20:55:23 +0000">
+  <metadata tag="submitter" timestamp="2007-03-29T20:55:23Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 29 Mar 2007 20:58:50 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-29T20:58:50Z">
     shellsage
   </metadata>
 </glsa>

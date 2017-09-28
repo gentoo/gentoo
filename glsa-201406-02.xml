@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libarchive</product>
-  <announced>June 01, 2014</announced>
-  <revised>June 01, 2014: 1</revised>
+  <announced>2014-06-01</announced>
+  <revised>2014-06-01: 1</revised>
   <bug>366687</bug>
   <bug>463632</bug>
   <access>remote</access>
@@ -51,14 +51,14 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4666">CVE-2010-4666</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1777">CVE-2011-1777</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1778">CVE-2011-1778</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1779">CVE-2011-1779</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0211">CVE-2013-0211</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4666">CVE-2010-4666</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1777">CVE-2011-1777</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1778">CVE-2011-1778</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1779">CVE-2011-1779</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0211">CVE-2013-0211</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Jan 2012 19:10:06 +0000">
+  <metadata tag="requester" timestamp="2012-01-22T19:10:06Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jun 2014 15:10:38 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-06-01T15:10:38Z">ackle</metadata>
 </glsa>

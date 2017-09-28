@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-17">
   <title>Opera: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>August 22, 2007</announced>
-  <revised>August 22, 2007: 01</revised>
+  <announced>2007-08-22</announced>
+  <revised>2007-08-22: 01</revised>
   <bug>185497</bug>
   <bug>188987</bug>
   <access>remote</access>
@@ -59,22 +58,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.23&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/opera-9.23"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3142">CVE-2007-3142</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3819">CVE-2007-3819</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3929">CVE-2007-3929</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4367">CVE-2007-4367</uri>
-    <uri link="http://www.opera.com/support/search/view/861/">Opera Advisory 861</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3142">CVE-2007-3142</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3819">CVE-2007-3819</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3929">CVE-2007-3929</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4367">CVE-2007-4367</uri>
+    <uri link="https://www.opera.com/support/search/view/861/">Opera Advisory 861</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Jul 2007 20:48:46 +0000">
+  <metadata tag="requester" timestamp="2007-07-29T20:48:46Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 29 Jul 2007 20:48:57 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-29T20:48:57Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Aug 2007 09:59:22 +0000">
+  <metadata tag="submitter" timestamp="2007-08-20T09:59:22Z">
     falco
   </metadata>
 </glsa>

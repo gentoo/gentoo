@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200906-01">
   <title>libpng: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>June 27, 2009</announced>
-  <revised>June 27, 2009: 01</revised>
+  <announced>2009-06-27</announced>
+  <revised>2009-06-27: 01</revised>
   <bug>272970</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.37&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.37"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2042">CVE-2009-2042</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2042">CVE-2009-2042</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Jun 2009 18:15:41 +0000">
+  <metadata tag="requester" timestamp="2009-06-21T18:15:41Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 21 Jun 2009 18:23:22 +0000">
+  <metadata tag="submitter" timestamp="2009-06-21T18:23:22Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 27 Jun 2009 23:12:55 +0000">
+  <metadata tag="bugReady" timestamp="2009-06-27T23:12:55Z">
     keytoaster
   </metadata>
 </glsa>

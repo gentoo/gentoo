@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-01">
   <title>vpopmail: Multiple vulnerabilities</title>
   <synopsis>
@@ -10,8 +9,8 @@
     code.
   </synopsis>
   <product type="ebuild">vpopmail</product>
-  <announced>September 01, 2004</announced>
-  <revised>September 01, 2004: 01</revised>
+  <announced>2004-09-01</announced>
+  <revised>2004-09-01: 01</revised>
   <bug>60844</bug>
   <access>remote</access>
   <affected>
@@ -51,14 +50,14 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-mail/vpopmail-5.4.6"
-    # emerge ">=net-mail/vpopmail-5.4.6"</code>
+    # emerge -pv "&gt;=net-mail/vpopmail-5.4.6"
+    # emerge "&gt;=net-mail/vpopmail-5.4.6"</code>
   </resolution>
   <references>
-    <uri link="http://sourceforge.net/forum/forum.php?forum_id=400873">vpopmail Announcement</uri>
+    <uri link="https://sourceforge.net/forum/forum.php?forum_id=400873">vpopmail Announcement</uri>
     <uri link="http://www.securityfocus.com/archive/1/371913/2004-08-15/2004-08-21/0">Bugtraq Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 26 Aug 2004 17:42:34 +0000">
+  <metadata tag="submitter" timestamp="2004-08-26T17:42:34Z">
     jaervosz
   </metadata>
 </glsa>

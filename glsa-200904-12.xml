@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-12">
   <title>Wicd: Information disclosure</title>
   <synopsis>
     A vulnerability in Wicd may allow for disclosure of sensitive information.
   </synopsis>
   <product type="ebuild">wicd</product>
-  <announced>April 10, 2009</announced>
-  <revised>April 10, 2009: 01</revised>
+  <announced>2009-04-10</announced>
+  <revised>2009-04-10: 01</revised>
   <bug>258596</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/wicd-1.5.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/wicd-1.5.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0489">CVE-2009-0489</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0489">CVE-2009-0489</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 08 Apr 2009 22:52:50 +0000">
+  <metadata tag="requester" timestamp="2009-04-08T22:52:50Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 09 Apr 2009 11:29:45 +0000">
+  <metadata tag="submitter" timestamp="2009-04-09T11:29:45Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 09 Apr 2009 21:59:43 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-09T21:59:43Z">
     p-y
   </metadata>
 </glsa>

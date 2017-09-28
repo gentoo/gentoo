@@ -6,8 +6,8 @@
     allowed to specify the font name. 
   </synopsis>
   <product type="ebuild">pygments</product>
-  <announced>December 04, 2016</announced>
-  <revised>December 04, 2016: 1</revised>
+  <announced>2016-12-04</announced>
+  <revised>2016-12-04: 1</revised>
   <bug>564478</bug>
   <access>remote</access>
   <affected>
@@ -44,12 +44,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8557">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8557">
       CVE-2015-8557
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 08 Dec 2015 00:25:56 +0000">
+  <metadata tag="requester" timestamp="2015-12-08T00:25:56Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 06:50:34 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-04T06:50:34Z">whissi</metadata>
 </glsa>

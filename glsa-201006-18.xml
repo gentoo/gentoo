@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-18">
   <title>Oracle JRE/JDK: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerabilities.
   </synopsis>
   <product type="ebuild">sun-jre-bin sun-jdk emul-linux-x86-java</product>
-  <announced>June 04, 2010</announced>
-  <revised>June 04, 2010: 01</revised>
+  <announced>2010-06-04</announced>
+  <revised>2010-06-04: 01</revised>
   <bug>306579</bug>
   <bug>314531</bug>
   <access>remote</access>
@@ -59,20 +58,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.6.0.20&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.6.0.20"</code>
     <p>
     All Oracle JDK 1.6.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.6.0.20&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.6.0.20"</code>
     <p>
     All users of the precompiled 32bit Oracle JRE 1.6.x should upgrade to
     the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.6.0.20&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-java-1.6.0.20"</code>
     <p>
     All Oracle JRE 1.5.x, Oracle JDK 1.5.x, and precompiled 32bit Oracle
     JRE 1.5.x users are strongly advised to unmerge Java 1.5:
@@ -97,45 +96,45 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555">CVE-2009-3555</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0082">CVE-2010-0082</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0084">CVE-2010-0084</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0085">CVE-2010-0085</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0087">CVE-2010-0087</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0088">CVE-2010-0088</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0089">CVE-2010-0089</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0090">CVE-2010-0090</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0091">CVE-2010-0091</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0092">CVE-2010-0092</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0093">CVE-2010-0093</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0094">CVE-2010-0094</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0095">CVE-2010-0095</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0837">CVE-2010-0837</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0838">CVE-2010-0838</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0839">CVE-2010-0839</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0840">CVE-2010-0840</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0841">CVE-2010-0841</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0842">CVE-2010-0842</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0843">CVE-2010-0843</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0844">CVE-2010-0844</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0845">CVE-2010-0845</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0846">CVE-2010-0846</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0847">CVE-2010-0847</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0848">CVE-2010-0848</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0849">CVE-2010-0849</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0850">CVE-2010-0850</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0886">CVE-2010-0886</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0887">CVE-2010-0887</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0082">CVE-2010-0082</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0084">CVE-2010-0084</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0085">CVE-2010-0085</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0087">CVE-2010-0087</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0088">CVE-2010-0088</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0089">CVE-2010-0089</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0090">CVE-2010-0090</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0091">CVE-2010-0091</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0092">CVE-2010-0092</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0093">CVE-2010-0093</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0094">CVE-2010-0094</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0095">CVE-2010-0095</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0837">CVE-2010-0837</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0838">CVE-2010-0838</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0839">CVE-2010-0839</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0840">CVE-2010-0840</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0841">CVE-2010-0841</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0842">CVE-2010-0842</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0843">CVE-2010-0843</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0844">CVE-2010-0844</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0845">CVE-2010-0845</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0846">CVE-2010-0846</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0847">CVE-2010-0847</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0848">CVE-2010-0848</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0849">CVE-2010-0849</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0850">CVE-2010-0850</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0886">CVE-2010-0886</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0887">CVE-2010-0887</uri>
     <uri link="/doc/en/java.xml#doc_chap4">Gentoo Linux Java documentation</uri>
-    <uri link="http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html">Oracle Java SE and Java for Business Critical Patch Update Advisory - March 2010</uri>
+    <uri link="https://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html">Oracle Java SE and Java for Business Critical Patch Update Advisory - March 2010</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 Apr 2010 09:43:04 +0000">
+  <metadata tag="requester" timestamp="2010-04-02T09:43:04Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Apr 2010 09:59:07 +0000">
+  <metadata tag="submitter" timestamp="2010-04-02T09:59:07Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 04 Jun 2010 05:06:52 +0000">
+  <metadata tag="bugReady" timestamp="2010-06-04T05:06:52Z">
     a3li
   </metadata>
 </glsa>

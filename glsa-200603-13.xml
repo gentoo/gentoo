@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-13">
   <title>PEAR-Auth: Potential authentication bypass</title>
   <synopsis>
@@ -9,8 +8,8 @@
     authentication.
   </synopsis>
   <product type="ebuild">pear-auth</product>
-  <announced>March 17, 2006</announced>
-  <revised>March 17, 2006: 01</revised>
+  <announced>2006-03-17</announced>
+  <revised>2006-03-17: 01</revised>
   <bug>123832</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-Auth-1.2.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-Auth-1.2.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0868">CVE-2006-0868</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0868">CVE-2006-0868</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Mar 2006 21:29:18 +0000">
+  <metadata tag="requester" timestamp="2006-03-14T21:29:18Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Mar 2006 21:29:45 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-14T21:29:45Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 14 Mar 2006 23:22:04 +0000">
+  <metadata tag="submitter" timestamp="2006-03-14T23:22:04Z">
     DerCorny
   </metadata>
 </glsa>

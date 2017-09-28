@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200906-05">
   <title>Wireshark: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service or remote code execution.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>June 30, 2009</announced>
-  <revised>June 30, 2009: 02</revised>
+  <announced>2009-06-30</announced>
+  <revised>2009-06-30: 02</revised>
   <bug>242996</bug>
   <bug>248425</bug>
   <bug>258013</bug>
@@ -123,30 +122,30 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.0.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4680">CVE-2008-4680</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4681">CVE-2008-4681</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4682">CVE-2008-4682</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4683">CVE-2008-4683</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4684">CVE-2008-4684</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4685">CVE-2008-4685</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5285">CVE-2008-5285</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6472">CVE-2008-6472</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0599">CVE-2009-0599</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0600">CVE-2009-0600</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0601">CVE-2009-0601</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1210">CVE-2009-1210</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1266">CVE-2009-1266</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1268">CVE-2009-1268</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1269">CVE-2009-1269</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1829">CVE-2009-1829</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4680">CVE-2008-4680</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4681">CVE-2008-4681</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4682">CVE-2008-4682</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4683">CVE-2008-4683</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4684">CVE-2008-4684</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4685">CVE-2008-4685</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5285">CVE-2008-5285</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6472">CVE-2008-6472</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0599">CVE-2009-0599</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0600">CVE-2009-0600</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0601">CVE-2009-0601</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1210">CVE-2009-1210</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1266">CVE-2009-1266</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1268">CVE-2009-1268</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1269">CVE-2009-1269</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1829">CVE-2009-1829</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 22 May 2009 11:33:22 +0000">
+  <metadata tag="submitter" timestamp="2009-05-22T11:33:22Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 29 Jun 2009 22:09:27 +0000">
+  <metadata tag="bugReady" timestamp="2009-06-29T22:09:27Z">
     craig
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-28">
   <title>JRockit: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been identified in BEA JRockit.
   </synopsis>
   <product type="ebuild">jrockit-jdk-bin</product>
-  <announced>April 24, 2008</announced>
-  <revised>April 24, 2008: 01</revised>
+  <announced>2008-04-24</announced>
+  <revised>2008-04-24: 01</revised>
   <bug>218226</bug>
   <access>remote</access>
   <affected>
@@ -52,24 +51,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/jrockit-jdk-bin-1.4.2.16&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/jrockit-jdk-bin-1.4.2.16"</code>
     <p>
     All JRockit 1.5 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/jrockit-jdk-bin-1.5.0.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/jrockit-jdk-bin-1.5.0.14"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200804-20.xml">GLSA 200804-20</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200804-20.xml">GLSA 200804-20</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Apr 2008 16:40:01 +0000">
+  <metadata tag="requester" timestamp="2008-04-23T16:40:01Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 23 Apr 2008 17:27:24 +0000">
+  <metadata tag="submitter" timestamp="2008-04-23T17:27:24Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 23 Apr 2008 17:27:42 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-23T17:27:42Z">
     keytoaster
   </metadata>
 </glsa>

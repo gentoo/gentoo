@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-29">
   <title>ViewVC: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     exploited by malicious people to bypass certain security restrictions.
   </synopsis>
   <product type="ebuild">viewvc</product>
-  <announced>March 19, 2008</announced>
-  <revised>April 01, 2009: 02</revised>
+  <announced>2008-03-19</announced>
+  <revised>2009-04-01: 02</revised>
   <bug>212288</bug>
   <access>remote</access>
   <affected>
@@ -49,20 +48,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/viewvc-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/viewvc-1.0.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1290">CVE-2008-1290</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1291">CVE-2008-1291</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1292">CVE-2008-1292</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1290">CVE-2008-1290</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1291">CVE-2008-1291</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1292">CVE-2008-1292</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 11 Mar 2008 22:06:35 +0000">
+  <metadata tag="requester" timestamp="2008-03-11T22:06:35Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 11 Mar 2008 22:06:42 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-11T22:06:42Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 21:33:23 +0000">
+  <metadata tag="submitter" timestamp="2008-03-15T21:33:23Z">
     mfleming
   </metadata>
 </glsa>

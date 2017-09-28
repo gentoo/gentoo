@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-05">
   <title>Ruby: Security bypass vulnerability</title>
   <synopsis>
     Ruby is vulnerable to a security bypass of the safe level mechanism.
   </synopsis>
   <product type="ebuild">ruby</product>
-  <announced>October 06, 2005</announced>
-  <revised>October 06, 2005: 01</revised>
+  <announced>2005-10-06</announced>
+  <revised>2005-10-06: 01</revised>
   <bug>106996</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.8.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2337">CAN-2005-2337</uri>
-    <uri link="http://www.ruby-lang.org/en/20051003.html">Ruby release announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2337">CAN-2005-2337</uri>
+    <uri link="https://www.ruby-lang.org/en/20051003.html">Ruby release announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Oct 2005 12:55:13 +0000">
+  <metadata tag="requester" timestamp="2005-10-04T12:55:13Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 04 Oct 2005 12:55:25 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-04T12:55:25Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Oct 2005 18:17:21 +0000">
+  <metadata tag="submitter" timestamp="2005-10-04T18:17:21Z">
     jaervosz
   </metadata>
 </glsa>

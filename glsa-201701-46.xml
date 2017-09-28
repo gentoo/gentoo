@@ -46,14 +46,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2721">CVE-2015-2721</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7575">CVE-2015-7575</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1938">CVE-2016-1938</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5285">CVE-2016-5285</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8635">CVE-2016-8635</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9074">CVE-2016-9074</uri>
-    <uri link="http://www.mitls.org/pages/attacks/SLOTH">SLOTH Attack Technical
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2721">CVE-2015-2721</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7575">CVE-2015-7575</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1938">CVE-2016-1938</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5285">CVE-2016-5285</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8635">CVE-2016-8635</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9074">CVE-2016-9074</uri>
+    <uri link="https://www.mitls.org/pages/attacks/SLOTH">SLOTH Attack Technical
       Paper
     </uri>
   </references>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-02">
   <title>ZNC: Privilege escalation</title>
   <synopsis>
     A vulnerability in ZNC allows for privilege escalation.
   </synopsis>
   <product type="ebuild">znc</product>
-  <announced>March 06, 2009</announced>
-  <revised>March 06, 2009: 01</revised>
+  <announced>2009-03-06</announced>
+  <revised>2009-03-06: 01</revised>
   <bug>260148</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/znc-0.066&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/znc-0.066"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0759">CVE-2009-0759</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0759">CVE-2009-0759</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:11:58 +0000">
+  <metadata tag="requester" timestamp="2009-03-05T20:11:58Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 05 Mar 2009 22:51:15 +0000">
+  <metadata tag="submitter" timestamp="2009-03-05T22:51:15Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 Mar 2009 22:00:32 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-06T22:00:32Z">
     p-y
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which could lead to Denial of Service. 
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>November 23, 2014</announced>
-  <revised>November 23, 2014: 1</revised>
+  <announced>2014-11-23</announced>
+  <revised>2014-11-23: 1</revised>
   <bug>523216</bug>
   <bug>526208</bug>
   <access>remote</access>
@@ -43,11 +43,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6610">CVE-2014-6610</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6610">CVE-2014-6610</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Sep 2014 19:18:45 +0000">
+  <metadata tag="requester" timestamp="2014-09-22T19:18:45Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 23 Nov 2014 17:54:08 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-11-23T17:54:08Z">ackle</metadata>
 </glsa>

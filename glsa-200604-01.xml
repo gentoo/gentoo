@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200604-01">
   <title>MediaWiki: Cross-site scripting vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary JavaScript code execution.
   </synopsis>
   <product type="ebuild">mediawiki</product>
-  <announced>April 04, 2006</announced>
-  <revised>April 04, 2006: 01</revised>
+  <announced>2006-04-04</announced>
+  <revised>2006-04-04: 01</revised>
   <bug>127971</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mediawiki-1.4.15&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.4.15"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1498">CVE-2006-1498</uri>
-    <uri link="http://sourceforge.net/project/shownotes.php?release_id=404869">MediaWiki 1.4.15 Release Notes</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1498">CVE-2006-1498</uri>
+    <uri link="https://sourceforge.net/project/shownotes.php?release_id=404869">MediaWiki 1.4.15 Release Notes</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 02 Apr 2006 08:58:31 +0000">
+  <metadata tag="requester" timestamp="2006-04-02T08:58:31Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 02 Apr 2006 08:58:55 +0000">
+  <metadata tag="bugReady" timestamp="2006-04-02T08:58:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 02 Apr 2006 17:15:00 +0000">
+  <metadata tag="submitter" timestamp="2006-04-02T17:15:00Z">
     DerCorny
   </metadata>
 </glsa>

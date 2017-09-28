@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200610-10">
   <title>ClamAV: Multiple Vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code and a Denial of Service.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>October 24, 2006</announced>
-  <revised>October 24, 2006: 01</revised>
+  <announced>2006-10-24</announced>
+  <revised>2006-10-24: 01</revised>
   <bug>151561</bug>
   <access>remote</access>
   <affected>
@@ -50,16 +49,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.88.5"</code>
   </resolution>
   <references>
-    <uri link="http://sourceforge.net/project/shownotes.php?release_id=455799">Original commit log</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4182">CVE-2006-4182</uri>
+    <uri link="https://sourceforge.net/project/shownotes.php?release_id=455799">Original commit log</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4182">CVE-2006-4182</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 16 Oct 2006 11:34:35 +0000">
+  <metadata tag="submitter" timestamp="2006-10-16T11:34:35Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 14:39:53 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-24T14:39:53Z">
     falco
   </metadata>
 </glsa>

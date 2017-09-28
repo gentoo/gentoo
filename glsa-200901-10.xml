@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-10">
   <title>GnuTLS: Certificate validation error</title>
   <synopsis>
     A certificate validation error in GnuTLS might allow for spoofing attacks.
   </synopsis>
   <product type="ebuild">gnutls</product>
-  <announced>January 14, 2009</announced>
-  <revised>January 14, 2009: 01</revised>
+  <announced>2009-01-14</announced>
+  <revised>2009-01-14: 01</revised>
   <bug>245850</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gnutls-2.4.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-2.4.1-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989">CVE-2008-4989</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989">CVE-2008-4989</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 30 Nov 2008 19:06:26 +0000">
+  <metadata tag="requester" timestamp="2008-11-30T19:06:26Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 23:37:58 +0000">
+  <metadata tag="submitter" timestamp="2009-01-10T23:37:58Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 23:38:09 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-10T23:38:09Z">
     p-y
   </metadata>
 </glsa>

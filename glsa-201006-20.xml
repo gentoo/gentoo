@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-20">
   <title>Asterisk: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a Denial of Service condition, or conduct other attacks.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>June 04, 2010</announced>
-  <revised>June 04, 2010: 01</revised>
+  <announced>2010-06-04</announced>
+  <revised>2010-06-04: 01</revised>
   <bug>281107</bug>
   <bug>283624</bug>
   <bug>284892</bug>
@@ -62,7 +61,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.37&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.2.37"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since January 5, 2010. It is likely that your system is
@@ -70,19 +69,19 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2726">CVE-2009-2726</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2346">CVE-2009-2346</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4055">CVE-2009-4055</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3727">CVE-2009-3727</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7220">CVE-2008-7220</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2726">CVE-2009-2726</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2346">CVE-2009-2346</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4055">CVE-2009-4055</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3727">CVE-2009-3727</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7220">CVE-2008-7220</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 06 Nov 2009 13:21:43 +0000">
+  <metadata tag="requester" timestamp="2009-11-06T13:21:43Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 31 May 2010 15:08:16 +0000">
+  <metadata tag="submitter" timestamp="2010-05-31T15:08:16Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 15:08:22 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-31T15:08:22Z">
     a3li
   </metadata>
 </glsa>

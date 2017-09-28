@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-10">
   <title>Fetchmail 6.2.5 fixes a remote DoS</title>
   <synopsis>
@@ -8,8 +7,8 @@
     specially-crafted email to a fetchmail user.
   </synopsis>
   <product type="ebuild">fetchmail</product>
-  <announced>March 30, 2004</announced>
-  <revised>March 30, 2004: 01</revised>
+  <announced>2004-03-30</announced>
+  <revised>2004-03-30: 01</revised>
   <bug>37717</bug>
   <access>remote</access>
   <affected>
@@ -49,11 +48,11 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv ">=net-mail/fetchmail-6.2.5"
-    # emerge ">=net-mail/fetchmail-6.2.5"</code>
+    # emerge -pv "&gt;=net-mail/fetchmail-6.2.5"
+    # emerge "&gt;=net-mail/fetchmail-6.2.5"</code>
   </resolution>
   <references>
     <uri link="http://xforce.iss.net/xforce/xfdb/13450">ISS X-Force Listing</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0792">CVE Candidate (CAN-2003-0792)</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0792">CVE Candidate (CAN-2003-0792)</uri>
   </references>
 </glsa>

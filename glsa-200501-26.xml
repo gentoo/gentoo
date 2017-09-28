@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-26">
   <title>ImageMagick: PSD decoding heap overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Document (PSD) files, which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>January 20, 2005</announced>
-  <revised>January 20, 2005: 01</revised>
+  <announced>2005-01-20</announced>
+  <revised>2005-01-20: 01</revised>
   <bug>77932</bug>
   <access>remote</access>
   <affected>
@@ -48,16 +47,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.1.8.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.1.8.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0005">CAN-2005-0005</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0005">CAN-2005-0005</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=184&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 18 Jan 2005 13:50:38 +0000">
+  <metadata tag="submitter" timestamp="2005-01-18T13:50:38Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Jan 2005 09:15:57 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-20T09:15:57Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-20">
   <title>Zope: File inclusion through RestructuredText</title>
   <synopsis>
@@ -8,8 +7,8 @@
     RestructuredText functionalities to untrusted users.
   </synopsis>
   <product type="ebuild">Zope</product>
-  <announced>October 25, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-10-25</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>109087</bug>
   <access>remote</access>
   <affected>
@@ -55,15 +54,15 @@
   </resolution>
   <references>
     <uri link="http://www.zope.org/Products/Zope/Hotfix_2005-10-09/security_alert">Zope Hotfix 2005-10-09 Alert</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3323">CVE-2005-3323</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3323">CVE-2005-3323</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Oct 2005 15:36:29 +0000">
+  <metadata tag="requester" timestamp="2005-10-20T15:36:29Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 23 Oct 2005 15:31:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-23T15:31:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 23 Oct 2005 16:31:59 +0000">
+  <metadata tag="submitter" timestamp="2005-10-23T16:31:59Z">
     koon
   </metadata>
 </glsa>

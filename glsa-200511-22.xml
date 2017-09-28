@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-22">
   <title>Inkscape: Buffer overflow</title>
   <synopsis>
@@ -9,8 +8,8 @@
     when opened.
   </synopsis>
   <product type="ebuild">Inkscape</product>
-  <announced>November 28, 2005</announced>
-  <revised>November 28, 2005: 01</revised>
+  <announced>2005-11-28</announced>
+  <revised>2005-11-28: 01</revised>
   <bug>109993</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/inkscape-0.43&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/inkscape-0.43"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3737">CVE-2005-3737</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3737">CVE-2005-3737</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Nov 2005 12:36:14 +0000">
+  <metadata tag="requester" timestamp="2005-11-23T12:36:14Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 23 Nov 2005 22:39:24 +0000">
+  <metadata tag="submitter" timestamp="2005-11-23T22:39:24Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 27 Nov 2005 21:35:11 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-27T21:35:11Z">
     jaervosz
   </metadata>
 </glsa>

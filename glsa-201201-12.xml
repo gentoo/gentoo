@@ -6,8 +6,8 @@
     which may allow a remote attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">Tor</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>388769</bug>
   <bug>394969</bug>
   <access>remote</access>
@@ -57,12 +57,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2768">CVE-2011-2768</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2769">CVE-2011-2769</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2778">CVE-2011-2778</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2768">CVE-2011-2768</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2769">CVE-2011-2769</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2778">CVE-2011-2778</uri>
   </references>
-  <metadata timestamp="Sun, 01 Jan 2012 17:49:33 +0000" tag="requester">
+  <metadata timestamp="2012-01-01T17:49:33Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 19:55:45 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-23T19:55:45Z" tag="submitter">ackle</metadata>
 </glsa>

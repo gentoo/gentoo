@@ -46,8 +46,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1513">CVE-2016-1513</uri>
-    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0051/">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1513">CVE-2016-1513</uri>
+    <uri link="https://www.talosintelligence.com/reports/TALOS-2016-0051/">
       TALOS-2016-0051
     </uri>
   </references>

@@ -50,7 +50,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6489">CVE-2016-6489</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6489">CVE-2016-6489</uri>
     <uri link="https://eprint.iacr.org/2016/596.pdf">Cache Attacks Enable Bulk
       Key Recovery on the Cloud
     </uri>

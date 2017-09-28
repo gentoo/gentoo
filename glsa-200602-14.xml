@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200602-14">
   <title>noweb: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">noweb</product>
-  <announced>February 26, 2006</announced>
-  <revised>February 26, 2006: 01</revised>
+  <announced>2006-02-26</announced>
+  <revised>2006-02-26: 01</revised>
   <bug>122705</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/noweb-2.9-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/noweb-2.9-r5"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3342">CVE-2005-3342</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3342">CVE-2005-3342</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 23 Feb 2006 20:08:48 +0000">
+  <metadata tag="requester" timestamp="2006-02-23T20:08:48Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 23 Feb 2006 20:09:04 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-23T20:09:04Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 24 Feb 2006 14:44:04 +0000">
+  <metadata tag="submitter" timestamp="2006-02-24T14:44:04Z">
     formula7
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200707-13">
   <title>Fail2ban: Denial of Service</title>
   <synopsis>
     Fail2ban is vulnerable to a Denial of Service attack.
   </synopsis>
   <product type="ebuild">fail2ban</product>
-  <announced>July 28, 2007</announced>
-  <revised>January 09, 2008: 02</revised>
+  <announced>2007-07-28</announced>
+  <revised>2008-01-09: 02</revised>
   <bug>181214</bug>
   <access>remote</access>
   <affected>
@@ -46,19 +45,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/fail2ban-0.8.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/fail2ban-0.8.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4321">CVE-2007-4321</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4321">CVE-2007-4321</uri>
     <uri link="http://www.ossec.net/en/attacking-loganalysis.html#fail2ban">Original advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 03 Jul 2007 22:02:25 +0000">
+  <metadata tag="requester" timestamp="2007-07-03T22:02:25Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Jul 2007 18:12:05 +0000">
+  <metadata tag="submitter" timestamp="2007-07-15T18:12:05Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 15 Jul 2007 18:13:27 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-15T18:13:27Z">
     p-y
   </metadata>
 </glsa>

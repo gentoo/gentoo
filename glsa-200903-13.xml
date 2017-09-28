@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-13">
   <title>MPFR: Denial of Service</title>
   <synopsis>
     Multiple buffer overflows in MPFR might lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">mpfr</product>
-  <announced>March 09, 2009</announced>
-  <revised>March 09, 2009: 01</revised>
+  <announced>2009-03-09</announced>
+  <revised>2009-03-09: 01</revised>
   <bug>260968</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/mpfr-2.4.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/mpfr-2.4.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0757">CVE-2009-0757</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0757">CVE-2009-0757</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 16:35:53 +0000">
+  <metadata tag="requester" timestamp="2009-03-07T16:35:53Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Mar 2009 18:14:49 +0000">
+  <metadata tag="submitter" timestamp="2009-03-07T18:14:49Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 07 Mar 2009 18:14:57 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-07T18:14:57Z">
     rbu
   </metadata>
 </glsa>

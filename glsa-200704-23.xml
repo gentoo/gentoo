@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-23">
   <title>capi4k-utils: Buffer overflow</title>
   <synopsis>
     capi4k-utils is vulnerable to a buffer overflow in the bufprint() function.
   </synopsis>
   <product type="ebuild">capi4k-utils</product>
-  <announced>April 27, 2007</announced>
-  <revised>April 27, 2007: 01</revised>
+  <announced>2007-04-27</announced>
+  <revised>2007-04-27: 01</revised>
   <bug>170870</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dialup/capi4k-utils-20050718-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dialup/capi4k-utils-20050718-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2007-1217">CVE-2007-1217</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2007-1217">CVE-2007-1217</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 24 Mar 2007 12:42:52 +0000">
+  <metadata tag="requester" timestamp="2007-03-24T12:42:52Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 14:51:21 +0000">
+  <metadata tag="submitter" timestamp="2007-04-02T14:51:21Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:34 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-03T22:29:34Z">
     falco
   </metadata>
 </glsa>

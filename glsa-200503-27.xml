@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-27">
   <title>Xzabite dyndnsupdate: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially resulting in the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">dyndnsupdate</product>
-  <announced>March 21, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-03-21</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>84659</bug>
   <access>remote</access>
   <affected>
@@ -53,12 +52,12 @@
     # emerge --unmerge net-misc/dyndnsupdate</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0830">CVE-2005-0830</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0830">CVE-2005-0830</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 21 Mar 2005 09:32:52 +0000">
+  <metadata tag="submitter" timestamp="2005-03-21T09:32:52Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 21 Mar 2005 14:30:08 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-21T14:30:08Z">
     koon
   </metadata>
 </glsa>

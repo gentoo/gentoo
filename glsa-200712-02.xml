@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-02">
   <title>Cacti: SQL injection</title>
   <synopsis>
     An SQL injection vulnerability has been discovered in Cacti.
   </synopsis>
   <product type="ebuild">cacti</product>
-  <announced>December 05, 2007</announced>
-  <revised>December 05, 2007: 02</revised>
+  <announced>2007-12-05</announced>
+  <revised>2007-12-05: 02</revised>
   <bug>199509</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.6j-r7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-0.8.6j-r7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6035">CVE-2007-6035</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6035">CVE-2007-6035</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 02 Dec 2007 22:34:20 +0000">
+  <metadata tag="requester" timestamp="2007-12-02T22:34:20Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 02 Dec 2007 22:34:29 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-02T22:34:29Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Dec 2007 22:01:32 +0000">
+  <metadata tag="submitter" timestamp="2007-12-04T22:01:32Z">
     p-y
   </metadata>
 </glsa>

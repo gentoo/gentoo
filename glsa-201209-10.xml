@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">calligra</product>
-  <announced>September 25, 2012</announced>
-  <revised>September 25, 2012: 1</revised>
+  <announced>2012-09-25</announced>
+  <revised>2012-09-25: 1</revised>
   <bug>428890</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3456">CVE-2012-3456</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3456">CVE-2012-3456</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 09 Aug 2012 20:25:04 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 25 Sep 2012 10:54:01 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-08-09T20:25:04Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-25T10:54:01Z">ackle</metadata>
 </glsa>

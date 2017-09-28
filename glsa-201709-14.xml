@@ -45,17 +45,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000099">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000099">
       CVE-2017-1000099
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000100">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000100">
       CVE-2017-1000100
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000101">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000101">
       CVE-2017-1000101
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7407">CVE-2017-7407</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7468">CVE-2017-7468</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7407">CVE-2017-7407</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7468">CVE-2017-7468</uri>
   </references>
   <metadata tag="requester" timestamp="2017-09-03T21:18:02Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-09-17T21:18:05Z">b-man</metadata>

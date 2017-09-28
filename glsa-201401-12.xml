@@ -6,8 +6,8 @@
     the worst of which allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gnustep-base</product>
-  <announced>January 20, 2014</announced>
-  <revised>January 20, 2014: 1</revised>
+  <announced>2014-01-20</announced>
+  <revised>2014-01-20: 1</revised>
   <bug>325577</bug>
   <access>local, remote</access>
   <affected>
@@ -53,11 +53,11 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1457">CVE-2010-1457</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1620">CVE-2010-1620</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1457">CVE-2010-1457</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1620">CVE-2010-1620</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:30 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:30Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 08:51:59 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-20T08:51:59Z">Zlogene</metadata>
 </glsa>

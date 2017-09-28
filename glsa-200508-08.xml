@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-08">
   <title>Xpdf, Kpdf, GPdf: Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerability.
   </synopsis>
   <product type="ebuild">xpdf kpdf gpdf</product>
-  <announced>August 16, 2005</announced>
-  <revised>August 16, 2005: 01</revised>
+  <announced>2005-08-16</announced>
+  <revised>2005-08-16: 01</revised>
   <bug>99769</bug>
   <bug>100263</bug>
   <bug>100265</bug>
@@ -65,37 +64,37 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.00-r10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/xpdf-3.00-r10"</code>
     <p>
     All GPdf users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.10.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/gpdf-2.10.0-r1"</code>
     <p>
     All Kpdf users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.3.2-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kdegraphics-3.3.2-r3"</code>
     <p>
     All KDE Split Ebuild Kpdf users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kpdf-3.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kpdf-3.4.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2097">CAN-2005-2097</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2097">CAN-2005-2097</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Aug 2005 15:22:33 +0000">
+  <metadata tag="requester" timestamp="2005-08-12T15:22:33Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 12 Aug 2005 20:47:38 +0000">
+  <metadata tag="submitter" timestamp="2005-08-12T20:47:38Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 13 Aug 2005 08:53:33 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-13T08:53:33Z">
     koon
   </metadata>
 </glsa>

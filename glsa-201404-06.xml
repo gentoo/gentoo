@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">mesa</product>
-  <announced>April 08, 2014</announced>
-  <revised>April 08, 2014: 1</revised>
+  <announced>2014-04-08</announced>
+  <revised>2014-04-08: 1</revised>
   <bug>432400</bug>
   <bug>445916</bug>
   <bug>472280</bug>
@@ -45,10 +45,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2864">CVE-2012-2864</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5129">CVE-2012-5129</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1872">CVE-2013-1872</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2864">CVE-2012-2864</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5129">CVE-2012-5129</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1872">CVE-2013-1872</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 02 Dec 2012 15:24:43 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 08 Apr 2014 08:42:29 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-02T15:24:43Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-04-08T08:42:29Z">ackle</metadata>
 </glsa>

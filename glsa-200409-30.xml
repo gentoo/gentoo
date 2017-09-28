@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-30">
   <title>xine-lib: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>September 22, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-09-22</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>64348</bug>
   <access>remote</access>
   <affected>
@@ -57,23 +56,23 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=media-libs/xine-lib-1_rc6&quot;
-    # emerge &quot;&gt;=media-libs/xine-lib-1_rc6&quot;</code>
+    # emerge -pv "&gt;=media-libs/xine-lib-1_rc6"
+    # emerge "&gt;=media-libs/xine-lib-1_rc6"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/375485/2004-09-02/2004-09-08/0">BugTraq Announcement (XSA-2004-4)</uri>
     <uri link="http://www.securityfocus.com/archive/1/375482/2004-09-02/2004-09-08/0">BugTraq Announcement (XSA-2004-5)</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1379">CVE-2004-1379</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1475">CVE-2004-1475</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1476">CVE-2004-1476</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1379">CVE-2004-1379</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1475">CVE-2004-1475</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1476">CVE-2004-1476</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 20 Sep 2004 06:34:44 +0000">
+  <metadata tag="requester" timestamp="2004-09-20T06:34:44Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Sep 2004 20:55:54 +0000">
+  <metadata tag="submitter" timestamp="2004-09-21T20:55:54Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 22 Sep 2004 11:19:16 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-22T11:19:16Z">
     koon
   </metadata>
 </glsa>

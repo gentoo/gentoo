@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-08">
   <title>KOffice, KWord, KPDF, KDE Graphics Libraries: Stack-based buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overflow.
   </synopsis>
   <product type="ebuild">koffice, kword, kdegraphics, kpdf</product>
-  <announced>October 09, 2007</announced>
-  <revised>October 09, 2007: 01</revised>
+  <announced>2007-10-09</announced>
+  <revised>2007-10-09: 01</revised>
   <bug>187139</bug>
   <access>remote</access>
   <affected>
@@ -63,36 +62,36 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/koffice-1.6.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/koffice-1.6.3-r1"</code>
     <p>
     All KWord users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/kword-1.6.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/kword-1.6.3-r1"</code>
     <p>
     All KDE Graphics Libraries users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdegraphics-3.5.7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kdegraphics-3.5.7-r1"</code>
     <p>
     All KPDF users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kpdf-3.5.7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kpdf-3.5.7-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Sep 2007 22:26:21 +0000">
+  <metadata tag="requester" timestamp="2007-09-08T22:26:21Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 08 Sep 2007 23:59:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-08T23:59:58Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 16:13:55 +0000">
+  <metadata tag="submitter" timestamp="2007-10-07T16:13:55Z">
     aetius
   </metadata>
 </glsa>

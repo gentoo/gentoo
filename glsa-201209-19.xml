@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">nut</product>
-  <announced>September 27, 2012</announced>
-  <revised>September 27, 2012: 1</revised>
+  <announced>2012-09-27</announced>
+  <revised>2012-09-27: 1</revised>
   <bug>419377</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2944">CVE-2012-2944</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2944">CVE-2012-2944</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Sep 2012 13:16:15 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 19:53:02 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-20T13:16:15Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-27T19:53:02Z">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which might allow remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">cURL</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>308645</bug>
   <bug>373235</bug>
   <bug>400799</bug>
@@ -64,17 +64,17 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0734">CVE-2010-0734
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0734">CVE-2010-0734
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2192">CVE-2011-2192
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2192">CVE-2011-2192
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3389">CVE-2011-3389
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3389">CVE-2011-3389
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0036">CVE-2012-0036
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0036">CVE-2012-0036
     </uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:07 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:07Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:02:18 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:02:18Z" tag="submitter">ackle</metadata>
 </glsa>

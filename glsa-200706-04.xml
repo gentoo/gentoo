@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200706-04">
   <title>MadWifi: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     for the execution of arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">madwifi-ng</product>
-  <announced>June 11, 2007</announced>
-  <revised>June 11, 2007: 01</revised>
+  <announced>2007-06-11</announced>
+  <revised>2007-06-11: 01</revised>
   <bug>179532</bug>
   <access>remote</access>
   <affected>
@@ -53,20 +52,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/madwifi-ng-0.9.3.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/madwifi-ng-0.9.3.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2829">CVE-2007-2829</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2830">CVE-2007-2830</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2831">CVE-2007-2831</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2829">CVE-2007-2829</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2830">CVE-2007-2830</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2831">CVE-2007-2831</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 08 Jun 2007 06:19:00 +0000">
+  <metadata tag="requester" timestamp="2007-06-08T06:19:00Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 14:16:00 +0000">
+  <metadata tag="submitter" timestamp="2007-06-10T14:16:00Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 14:16:10 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-10T14:16:10Z">
     p-y
   </metadata>
 </glsa>

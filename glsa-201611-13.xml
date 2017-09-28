@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">mongodb</product>
-  <announced>November 20, 2016</announced>
-  <revised>November 20, 2016: 1</revised>
+  <announced>2016-11-20</announced>
+  <revised>2016-11-20: 1</revised>
   <bug>542880</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1609">CVE-2015-1609</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1609">CVE-2015-1609</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 May 2015 20:38:27 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Nov 2016 22:09:15 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-05-11T20:38:27Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-11-20T22:09:15Z">b-man</metadata>
 </glsa>

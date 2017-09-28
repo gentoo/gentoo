@@ -46,7 +46,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5461">CVE-2014-5461</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5461">CVE-2014-5461</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-19T10:51:05Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-23T03:32:26Z">b-man</metadata>

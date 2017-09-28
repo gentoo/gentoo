@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-07">
   <title>Adobe Flash Player: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code execution on a user's system via a malicious Flash file.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>January 20, 2008</announced>
-  <revised>May 28, 2009: 03</revised>
+  <announced>2008-01-20</announced>
+  <revised>2009-05-28: 03</revised>
   <bug>193519</bug>
   <access>remote</access>
   <affected>
@@ -70,7 +69,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-9.0.115.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-plugins/adobe-flash-9.0.115.0"</code>
     <p>
     Please be advised that unaffected packages of the Adobe Flash Player
     have known problems when used from within the Konqueror and Opera
@@ -78,23 +77,23 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4324">CVE-2007-4324</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4768">CVE-2007-4768</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5275">CVE-2007-5275</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6242">CVE-2007-6242</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6243">CVE-2007-6243</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6244">CVE-2007-6244</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6245">CVE-2007-6245</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6246">CVE-2007-6246</uri>
-    <uri link="/security/en/glsa/glsa-200711-30.xml">GLSA 200711-30</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4324">CVE-2007-4324</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4768">CVE-2007-4768</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5275">CVE-2007-5275</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6242">CVE-2007-6242</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6243">CVE-2007-6243</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6244">CVE-2007-6244</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6245">CVE-2007-6245</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6246">CVE-2007-6246</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-30.xml">GLSA 200711-30</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Jan 2008 22:05:12 +0000">
+  <metadata tag="requester" timestamp="2008-01-01T22:05:12Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Jan 2008 17:34:55 +0000">
+  <metadata tag="submitter" timestamp="2008-01-15T17:34:55Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Jan 2008 17:41:04 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-15T17:41:04Z">
     rbu
   </metadata>
 </glsa>

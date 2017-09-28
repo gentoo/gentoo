@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-16">
   <title>Python: Integer overflows</title>
   <synopsis>
     Multiple integer overflows in Python have an unspecified impact.
   </synopsis>
   <product type="ebuild">python</product>
-  <announced>July 19, 2009</announced>
-  <revised>July 19, 2009: 01</revised>
+  <announced>2009-07-19</announced>
+  <revised>2009-07-19: 01</revised>
   <bug>246991</bug>
   <access>remote</access>
   <affected>
@@ -51,24 +50,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.5.4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.5.4-r2"</code>
     <p>
     All Python 2.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.4.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.4.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5031">CVE-2008-5031</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5031">CVE-2008-5031</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 13:26:22 +0000">
+  <metadata tag="requester" timestamp="2009-07-10T13:26:22Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 19 Jul 2009 15:28:36 +0000">
+  <metadata tag="submitter" timestamp="2009-07-19T15:28:36Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Jul 2009 15:28:41 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-19T15:28:41Z">
     rbu
   </metadata>
 </glsa>

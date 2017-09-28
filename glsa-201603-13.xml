@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in libreSwan possibly
     resulting in Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>March 12, 2016</announced>
-  <revised>March 12, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-03-12</announced>
+  <revised>2016-03-12: 1</revised>
   <bug>550974</bug>
   <bug>558692</bug>
   <access>remote</access>
@@ -47,11 +47,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3204">CVE-2015-3204</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3240">CVE-2015-3240</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3204">CVE-2015-3204</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3240">CVE-2015-3240</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 05:09:11 +0000">
+  <metadata tag="requester" timestamp="2015-12-31T05:09:11Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 23:20:43 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-03-12T23:20:43Z">b-man</metadata>
 </glsa>

@@ -60,7 +60,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8422">CVE-2017-8422</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8422">CVE-2017-8422</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-06T14:01:55Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-06-27T09:58:27Z">whissi</metadata>

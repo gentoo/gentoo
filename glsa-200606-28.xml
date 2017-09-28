@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-28">
   <title>Horde Web Application Framework: XSS vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerability.
   </synopsis>
   <product type="ebuild">horde</product>
-  <announced>June 29, 2006</announced>
-  <revised>June 29, 2006: 01</revised>
+  <announced>2006-06-29</announced>
+  <revised>2006-06-29: 01</revised>
   <bug>136830</bug>
   <access>remote</access>
   <affected>
@@ -49,15 +48,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.1.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-3.1.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2195">CVE-2006-2195</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2195">CVE-2006-2195</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 22 Jun 2006 14:59:32 +0000">
+  <metadata tag="submitter" timestamp="2006-06-22T14:59:32Z">
     dizzutch
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 23 Jun 2006 18:49:08 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-23T18:49:08Z">
     falco
   </metadata>
 </glsa>

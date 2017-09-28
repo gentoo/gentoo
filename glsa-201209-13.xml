@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">libjpeg-turbo</product>
-  <announced>September 26, 2012</announced>
-  <revised>September 26, 2012: 1</revised>
+  <announced>2012-09-26</announced>
+  <revised>2012-09-26: 1</revised>
   <bug>426938</bug>
   <access>remote</access>
   <affected>
@@ -47,8 +47,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2806">CVE-2012-2806</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2806">CVE-2012-2806</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Jul 2012 17:28:52 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Sep 2012 11:11:07 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-07-22T17:28:52Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-26T11:11:07Z">ackle</metadata>
 </glsa>

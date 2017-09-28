@@ -6,9 +6,9 @@
     attackers to affect confidentiality, integrity, and availability through
     various vectors.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 27, 2016</announced>
-  <revised>June 27, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-27</announced>
+  <revised>2016-06-27: 1</revised>
   <bug>578300</bug>
   <bug>578788</bug>
   <bug>581028</bug>
@@ -68,17 +68,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0636">CVE-2016-0636</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0636">CVE-2016-0636</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0686">CVE-2016-0686</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0687">CVE-2016-0687</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0695">CVE-2016-0695</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3422">CVE-2016-3422</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3425">CVE-2016-3425</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3427">CVE-2016-3427</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3443">CVE-2016-3443</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3449">CVE-2016-3449</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0636">CVE-2016-0636</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0636">CVE-2016-0636</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0686">CVE-2016-0686</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0687">CVE-2016-0687</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0695">CVE-2016-0695</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3422">CVE-2016-3422</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3425">CVE-2016-3425</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3427">CVE-2016-3427</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3443">CVE-2016-3443</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3449">CVE-2016-3449</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 25 Jun 2016 12:17:07 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 27 Jun 2016 22:40:49 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-06-25T12:17:07Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-27T22:40:49Z">b-man</metadata>
 </glsa>

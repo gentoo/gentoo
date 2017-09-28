@@ -64,8 +64,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0772">CVE-2016-0772</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5636">CVE-2016-5636</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0772">CVE-2016-0772</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5636">CVE-2016-5636</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-03T06:13:03Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-02-24T10:28:53Z">whissi</metadata>

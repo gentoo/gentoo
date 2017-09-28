@@ -7,8 +7,8 @@
     shell commands.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>June 25, 2014</announced>
-  <revised>June 25, 2014: 2</revised>
+  <announced>2014-06-25</announced>
+  <revised>2014-06-25: 2</revised>
   <bug>513102</bug>
   <access>remote</access>
   <affected>
@@ -52,11 +52,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4046">CVE-2014-4046</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4047">CVE-2014-4047</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4046">CVE-2014-4046</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4047">CVE-2014-4047</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Jun 2014 02:00:18 +0000">
+  <metadata tag="requester" timestamp="2014-06-24T02:00:18Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 21:51:56 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-06-25T21:51:56Z">K_F</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     allowing for the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Pidgin</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>299751</bug>
   <bug>372785</bug>
   <bug>385073</bug>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0013">CVE-2010-0013</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2485">CVE-2011-2485</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3594">CVE-2011-3594</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0013">CVE-2010-0013</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2485">CVE-2011-2485</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3594">CVE-2011-3594</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:06 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:06Z" tag="requester">
     keytoaster
   </metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 18:17:26 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2012-06-21T18:17:26Z" tag="submitter">craig</metadata>
 </glsa>

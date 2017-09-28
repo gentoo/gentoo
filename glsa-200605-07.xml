@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-07">
   <title>Nagios: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">nagios</product>
-  <announced>May 07, 2006</announced>
-  <revised>May 25, 2006: 03</revised>
+  <announced>2006-05-07</announced>
+  <revised>2006-05-25: 03</revised>
   <bug>132159</bug>
   <bug>133487</bug>
   <access>remote</access>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/nagios-core-1.4.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nagios-core-1.4.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2162">CVE-2006-2162</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2489">CVE-2006-2489</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2162">CVE-2006-2162</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2489">CVE-2006-2489</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 04 May 2006 17:10:32 +0000">
+  <metadata tag="requester" timestamp="2006-05-04T17:10:32Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 05 May 2006 19:09:01 +0000">
+  <metadata tag="submitter" timestamp="2006-05-05T19:09:01Z">
     fox2mike
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 06 May 2006 04:21:12 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-06T04:21:12Z">
     jaervosz
   </metadata>
 </glsa>

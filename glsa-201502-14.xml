@@ -4,8 +4,8 @@
   <title>grep: Denial of Service</title>
   <synopsis>A vulnerability in grep could result in Denial of Service. </synopsis>
   <product type="ebuild">grep,dos</product>
-  <announced>February 25, 2015</announced>
-  <revised>February 25, 2015: 1</revised>
+  <announced>2015-02-25</announced>
+  <revised>2015-02-25: 1</revised>
   <bug>537046</bug>
   <access>local</access>
   <affected>
@@ -38,10 +38,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1345">CVE-2015-1345</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1345">CVE-2015-1345</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Feb 2015 06:32:56 +0000">
+  <metadata tag="requester" timestamp="2015-02-24T06:32:56Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Feb 2015 10:22:12 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-02-25T10:22:12Z">K_F</metadata>
 </glsa>

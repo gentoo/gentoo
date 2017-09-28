@@ -6,8 +6,8 @@
     resulting in Denial of Service.
   </synopsis>
   <product type="ebuild">TagLib</product>
-  <announced>June 22, 2012</announced>
-  <revised>June 22, 2012: 1</revised>
+  <announced>2012-06-22</announced>
+  <revised>2012-06-22: 1</revised>
   <bug>407673</bug>
   <bug>410953</bug>
   <access>remote</access>
@@ -58,10 +58,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1107">CVE-2012-1107</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1108">CVE-2012-1108</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1584">CVE-2012-1584</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1107">CVE-2012-1107</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1108">CVE-2012-1108</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1584">CVE-2012-1584</uri>
   </references>
-  <metadata timestamp="Fri, 06 Apr 2012 15:50:48 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 22 Jun 2012 16:29:31 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-06T15:50:48Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-22T16:29:31Z" tag="submitter">ackle</metadata>
 </glsa>

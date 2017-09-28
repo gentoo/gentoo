@@ -42,13 +42,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2642">CVE-2010-2642</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0433">CVE-2011-0433</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0764">CVE-2011-0764</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1552">CVE-2011-1552</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1553">CVE-2011-1553</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1554">CVE-2011-1554</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5244">CVE-2011-5244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2642">CVE-2010-2642</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0433">CVE-2011-0433</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0764">CVE-2011-0764</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1552">CVE-2011-1552</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1553">CVE-2011-1553</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1554">CVE-2011-1554</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5244">CVE-2011-5244</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T03:19:11Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-23T22:39:53Z">b-man</metadata>

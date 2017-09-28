@@ -6,8 +6,8 @@
     attackers to bypass access restrictions.
   </synopsis>
   <product type="ebuild">rssh</product>
-  <announced>November 28, 2013</announced>
-  <revised>November 28, 2013: 1</revised>
+  <announced>2013-11-28</announced>
+  <revised>2013-11-28: 1</revised>
   <bug>415255</bug>
   <bug>445166</bug>
   <access>local</access>
@@ -47,17 +47,17 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2252">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2252">
       CVE-2012-2252
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3478">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3478">
       CVE-2012-3478
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 24 Aug 2012 14:16:31 +0000">
+  <metadata tag="requester" timestamp="2012-08-24T14:16:31Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:18:46 +0000">
+  <metadata tag="submitter" timestamp="2013-11-28T08:18:46Z">
     BlueKnight
   </metadata>
 </glsa>

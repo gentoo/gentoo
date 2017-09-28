@@ -6,8 +6,8 @@
     severe of which may allow the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Clam AntiVirus</product>
-  <announced>October 24, 2011</announced>
-  <revised>October 24, 2011: 2</revised>
+  <announced>2011-10-24</announced>
+  <revised>2011-10-24: 2</revised>
   <bug>338226</bug>
   <bug>347627</bug>
   <bug>354019</bug>
@@ -48,19 +48,19 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0405">CVE-2010-0405</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3434">CVE-2010-3434</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4260">CVE-2010-4260</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4261">CVE-2010-4261</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4479">CVE-2010-4479</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1003">CVE-2011-1003</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2721">CVE-2011-2721</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3627">CVE-2011-3627</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0405">CVE-2010-0405</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3434">CVE-2010-3434</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4260">CVE-2010-4260</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4261">CVE-2010-4261</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4479">CVE-2010-4479</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1003">CVE-2011-1003</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2721">CVE-2011-2721</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3627">CVE-2011-3627</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:20 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:20Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 24 Oct 2011 15:40:45 +0000" tag="submitter">
+  <metadata timestamp="2011-10-24T15:40:45Z" tag="submitter">
     underling
   </metadata>
 </glsa>

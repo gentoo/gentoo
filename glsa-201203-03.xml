@@ -6,8 +6,8 @@
     which might allow local attackers to gain escalated privileges.
   </synopsis>
   <product type="ebuild">puppet</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>303729</bug>
   <bug>308031</bug>
   <bug>384859</bug>
@@ -49,17 +49,17 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3564">CVE-2009-3564</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0156">CVE-2010-0156</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3848">CVE-2011-3848</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3869">CVE-2011-3869</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3870">CVE-2011-3870</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3871">CVE-2011-3871</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3872">CVE-2011-3872</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1053">CVE-2012-1053
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3564">CVE-2009-3564</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0156">CVE-2010-0156</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3848">CVE-2011-3848</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3869">CVE-2011-3869</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3870">CVE-2011-3870</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3871">CVE-2011-3871</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3872">CVE-2011-3872</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1053">CVE-2012-1053
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1054">CVE-2012-1054</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1054">CVE-2012-1054</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:02 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:03:42 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-10-07T23:37:02Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-03-06T01:03:42Z" tag="submitter">ackle</metadata>
 </glsa>

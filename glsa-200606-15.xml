@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-15">
   <title>Asterisk: IAX2 video frame buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>June 14, 2006</announced>
-  <revised>June 14, 2006: 01</revised>
+  <announced>2006-06-14</announced>
+  <revised>2006-06-14: 01</revised>
   <bug>135680</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.0.11_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.0.11_p1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2898">CVE-2006-2898</uri>
-    <uri link="http://www.coresecurity.com/common/showdoc.php?idx=547&amp;idxseccion=10">Corelabs Asterisk PBX truncated video frame vulnerability advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2898">CVE-2006-2898</uri>
+    <uri link="https://www.coresecurity.com/common/showdoc.php?idx=547&amp;idxseccion=10">Corelabs Asterisk PBX truncated video frame vulnerability advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 08 Jun 2006 10:46:16 +0000">
+  <metadata tag="requester" timestamp="2006-06-08T10:46:16Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 Jun 2006 08:21:48 +0000">
+  <metadata tag="submitter" timestamp="2006-06-09T08:21:48Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 14 Jun 2006 09:36:11 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-14T09:36:11Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-16">
   <title>cpio: Directory traversal vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     extract files to an arbitrary directory.
   </synopsis>
   <product type="ebuild">cpio</product>
-  <announced>June 20, 2005</announced>
-  <revised>June 20, 2005: 01</revised>
+  <announced>2005-06-20</announced>
+  <revised>2005-06-20: 01</revised>
   <bug>90619</bug>
   <access>local</access>
   <affected>
@@ -51,19 +50,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/cpio-2.6-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/cpio-2.6-r3"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/396429">Original Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1111">CAN-2005-1111</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1111">CAN-2005-1111</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 03 May 2005 21:22:45 +0000">
+  <metadata tag="requester" timestamp="2005-05-03T21:22:45Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 05 May 2005 15:24:08 +0000">
+  <metadata tag="submitter" timestamp="2005-05-05T15:24:08Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Jun 2005 20:39:43 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-19T20:39:43Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-01">
   <title>Streamripper: Multiple remote buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">streamripper</product>
-  <announced>September 06, 2006</announced>
-  <revised>September 06, 2006: 01</revised>
+  <announced>2006-09-06</announced>
+  <revised>2006-09-06: 01</revised>
   <bug>144861</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/streamripper-1.61.26&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/streamripper-1.61.26"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3124">CVE-2006-3124</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3124">CVE-2006-3124</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Sep 2006 14:37:38 +0000">
+  <metadata tag="requester" timestamp="2006-09-04T14:37:38Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 04 Sep 2006 18:11:08 +0000">
+  <metadata tag="submitter" timestamp="2006-09-04T18:11:08Z">
     daxomatic
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 05 Sep 2006 19:33:58 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-05T19:33:58Z">
     jaervosz
   </metadata>
 </glsa>

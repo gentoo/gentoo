@@ -47,7 +47,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9601">CVE-2016-9601</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9601">CVE-2016-9601</uri>
   </references>
   <metadata tag="requester" timestamp="2017-03-24T05:06:12Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-06-22T18:31:34Z">whissi</metadata>

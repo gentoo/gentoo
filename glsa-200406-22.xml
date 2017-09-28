@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-22">
   <title>Pavuk: Remote buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">Pavuk</product>
-  <announced>June 30, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-06-30</announced>
+  <revised>2006-05-22: 02</revised>
   <access>remote</access>
   <affected>
     <package name="net-misc/pavuk" auto="yes" arch="*">
@@ -48,11 +47,11 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/pavuk-0.9.28-r2&quot;
-    # emerge &quot;&gt;=&quot;net-misc/pavuk-0.9.28-r2</code>
+    # emerge -pv "&gt;=net-misc/pavuk-0.9.28-r2"
+    # emerge "&gt;="net-misc/pavuk-0.9.28-r2</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0456">CVE-2004-0456</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0456">CVE-2004-0456</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

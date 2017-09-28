@@ -6,8 +6,8 @@
     which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">chicken</product>
-  <announced>December 31, 2016</announced>
-  <revised>December 31, 2016: 1</revised>
+  <announced>2016-12-31</announced>
+  <revised>2016-12-31: 1</revised>
   <bug>467966</bug>
   <bug>486350</bug>
   <bug>510712</bug>
@@ -45,14 +45,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2024">CVE-2013-2024</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4385">CVE-2013-4385</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3776">CVE-2014-3776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9651">CVE-2014-9651</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4556">CVE-2015-4556</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2024">CVE-2013-2024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4385">CVE-2013-4385</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3776">CVE-2014-3776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9651">CVE-2014-9651</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4556">CVE-2015-4556</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 21 Dec 2015 14:54:52 +0000">
+  <metadata tag="requester" timestamp="2015-12-21T14:54:52Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 15:19:08 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-31T15:19:08Z">b-man</metadata>
 </glsa>

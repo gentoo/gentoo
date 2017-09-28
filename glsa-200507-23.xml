@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-23">
   <title>Kopete: Vulnerability in included Gadu library</title>
   <synopsis>
@@ -8,8 +7,8 @@
     lead to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">kopete</product>
-  <announced>July 25, 2005</announced>
-  <revised>July 25, 2005: 01</revised>
+  <announced>2005-07-25</announced>
+  <revised>2005-07-25: 01</revised>
   <bug>99754</bug>
   <access>remote</access>
   <affected>
@@ -60,16 +59,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kopete-3.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kopete-3.4.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.kde.org/info/security/advisory-20050721-1.txt">KDE Security Advisory: libgadu vulnerabilities</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1852">CAN-2005-1852</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20050721-1.txt">KDE Security Advisory: libgadu vulnerabilities</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1852">CAN-2005-1852</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 21 Jul 2005 09:34:55 +0000">
+  <metadata tag="submitter" timestamp="2005-07-21T09:34:55Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 Jul 2005 17:39:48 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-25T17:39:48Z">
     jaervosz
   </metadata>
 </glsa>

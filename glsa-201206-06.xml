@@ -6,8 +6,8 @@
     code.
   </synopsis>
   <product type="ebuild">OpenJPEG</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>409203</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1499">CVE-2012-1499</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1499">CVE-2012-1499</uri>
   </references>
-  <metadata timestamp="Thu, 22 Mar 2012 13:07:16 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 00:29:40 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-22T13:07:16Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-21T00:29:40Z" tag="submitter">ackle</metadata>
 </glsa>

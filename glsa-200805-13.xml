@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-13">
   <title>PTeX: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code or overwriting arbitrary files.
   </synopsis>
   <product type="ebuild">ptex</product>
-  <announced>May 12, 2008</announced>
-  <revised>May 12, 2008: 01</revised>
+  <announced>2008-05-12</announced>
+  <revised>2008-05-12: 01</revised>
   <bug>196673</bug>
   <access>remote</access>
   <affected>
@@ -51,23 +50,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ptex-3.1.10_p20071203&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ptex-3.1.10_p20071203"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200708-05.xml">GLSA 200708-05</uri>
-    <uri link="/security/en/glsa/glsa-200709-12.xml">GLSA 200709-12</uri>
-    <uri link="/security/en/glsa/glsa-200709-17.xml">GLSA 200709-17</uri>
-    <uri link="/security/en/glsa/glsa-200710-12.xml">GLSA 200710-12</uri>
-    <uri link="/security/en/glsa/glsa-200711-22.xml">GLSA 200711-22</uri>
-    <uri link="/security/en/glsa/glsa-200711-26.xml">GLSA 200711-26</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200708-05.xml">GLSA 200708-05</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200709-12.xml">GLSA 200709-12</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200709-17.xml">GLSA 200709-17</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200710-12.xml">GLSA 200710-12</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-22.xml">GLSA 200711-22</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-26.xml">GLSA 200711-26</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 May 2008 22:31:38 +0000">
+  <metadata tag="requester" timestamp="2008-05-07T22:31:38Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 07 May 2008 22:32:17 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-07T22:32:17Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 May 2008 11:34:22 +0000">
+  <metadata tag="submitter" timestamp="2008-05-12T11:34:22Z">
     p-y
   </metadata>
 </glsa>

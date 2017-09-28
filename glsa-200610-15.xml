@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200610-15">
   <title>Asterisk: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>October 30, 2006</announced>
-  <revised>January 30, 2007: 02</revised>
+  <announced>2006-10-30</announced>
+  <revised>2007-01-30: 02</revised>
   <bug>144941</bug>
   <bug>151881</bug>
   <access>remote</access>
@@ -62,18 +61,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.13&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.2.13"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4345">CVE-2006-4345</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4346">CVE-2006-4346</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5444">CVE-2006-5444</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5445">CVE-2006-5445</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4345">CVE-2006-4345</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4346">CVE-2006-4346</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5444">CVE-2006-5444</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5445">CVE-2006-5445</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 18 Oct 2006 20:57:57 +0000">
+  <metadata tag="submitter" timestamp="2006-10-18T20:57:57Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 21 Oct 2006 20:37:32 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-21T20:37:32Z">
     falco
   </metadata>
 </glsa>

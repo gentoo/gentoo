@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-01">
   <title>Python: Multiple integer overflows</title>
   <synopsis>
     Multiple integer overflows may allow for Denial of Service.
   </synopsis>
   <product type="ebuild">python</product>
-  <announced>July 01, 2008</announced>
-  <revised>July 01, 2008: 01</revised>
+  <announced>2008-07-01</announced>
+  <revised>2008-07-01: 01</revised>
   <bug>216673</bug>
   <bug>217221</bug>
   <access>remote</access>
@@ -65,23 +64,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.3.6-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.3.6-r6"</code>
     <p>
     All Python 2.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.4.4-r13&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.4.4-r13"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1679">CVE-2008-1679</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1721">CVE-2008-1721</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1887">CVE-2008-1887</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1679">CVE-2008-1679</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1721">CVE-2008-1721</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1887">CVE-2008-1887</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 27 Jun 2008 08:54:25 +0000">
+  <metadata tag="submitter" timestamp="2008-06-27T08:54:25Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 01 Jul 2008 11:46:03 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-01T11:46:03Z">
     keytoaster
   </metadata>
 </glsa>

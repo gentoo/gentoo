@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-04">
   <title>Wordpress: Multiple vulnerabilities</title>
   <synopsis>
     Wordpress contains SQL injection and XSS vulnerabilities.
   </synopsis>
   <product type="ebuild">Wordpress</product>
-  <announced>June 06, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-06-06</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>88926</bug>
   <bug>94512</bug>
   <access>remote</access>
@@ -50,20 +49,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-1.5.1.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/wordpress-1.5.1.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1102">CVE-2005-1102</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1687">CVE-2005-1687</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1810">CVE-2005-1810</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1102">CVE-2005-1102</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1687">CVE-2005-1687</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1810">CVE-2005-1810</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 01 Jun 2005 07:49:47 +0000">
+  <metadata tag="requester" timestamp="2005-06-01T07:49:47Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 01 Jun 2005 07:49:57 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-01T07:49:57Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Jun 2005 05:09:09 +0000">
+  <metadata tag="submitter" timestamp="2005-06-06T05:09:09Z">
     jaervosz
   </metadata>
 </glsa>

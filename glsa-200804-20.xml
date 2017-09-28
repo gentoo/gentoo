@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-20">
   <title>Sun JDK/JRE: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     (JDK) and Java Runtime Environment (JRE).
   </synopsis>
   <product type="ebuild">sun-jdk, sun-jre-bin, emul-linux-x86-java</product>
-  <announced>April 17, 2008</announced>
-  <revised>March 05, 2010: 06</revised>
+  <announced>2008-04-17</announced>
+  <revised>2010-03-05: 06</revised>
   <bug>178851</bug>
   <bug>178962</bug>
   <bug>183580</bug>
@@ -140,93 +139,93 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.6.0.05&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.6.0.05"</code>
     <p>
     All Sun JRE 1.5 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.5.0.15&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.5.0.15"</code>
     <p>
     All Sun JRE 1.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.4.2.17"</code>
     <p>
     All Sun JDK 1.6 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.6.0.05&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.6.0.05"</code>
     <p>
     All Sun JDK 1.5 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.5.0.15&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.5.0.15"</code>
     <p>
     All Sun JDK 1.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.4.2.17"</code>
     <p>
     All emul-linux-x86-java 1.6 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.6.0.05&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-java-1.6.0.05"</code>
     <p>
     All emul-linux-x86-java 1.5 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.5.0.15&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-java-1.5.0.15"</code>
     <p>
     All emul-linux-x86-java 1.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.4.2.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-java-1.4.2.17"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3655">CVE-2007-3655</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5232">CVE-2007-5232</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5237">CVE-2007-5237</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5238">CVE-2007-5238</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5239">CVE-2007-5239</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5240">CVE-2007-5240</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5273">CVE-2007-5273</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5274">CVE-2007-5274</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5689">CVE-2007-5689</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0628">CVE-2008-0628</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0657">CVE-2008-0657</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1185">CVE-2008-1185</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1186">CVE-2008-1186</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1187">CVE-2008-1187</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1188">CVE-2008-1188</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1189">CVE-2008-1189</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1190">CVE-2008-1190</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1191">CVE-2008-1191</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1192">CVE-2008-1192</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1193">CVE-2008-1193</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1194">CVE-2008-1194</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1195">CVE-2008-1195</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1196">CVE-2008-1196</uri>
-    <uri link="/security/en/glsa/glsa-200705-23.xml">GLSA 200705-23</uri>
-    <uri link="/security/en/glsa/glsa-200706-08.xml">GLSA 200706-08</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3655">CVE-2007-3655</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5232">CVE-2007-5232</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5237">CVE-2007-5237</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5238">CVE-2007-5238</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5239">CVE-2007-5239</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5240">CVE-2007-5240</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5273">CVE-2007-5273</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5274">CVE-2007-5274</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5689">CVE-2007-5689</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0628">CVE-2008-0628</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0657">CVE-2008-0657</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1185">CVE-2008-1185</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1186">CVE-2008-1186</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1187">CVE-2008-1187</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1188">CVE-2008-1188</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1189">CVE-2008-1189</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1190">CVE-2008-1190</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1191">CVE-2008-1191</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1192">CVE-2008-1192</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1193">CVE-2008-1193</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1194">CVE-2008-1194</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1195">CVE-2008-1195</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1196">CVE-2008-1196</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-23.xml">GLSA 200705-23</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200706-08.xml">GLSA 200706-08</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 07:23:49 +0000">
+  <metadata tag="requester" timestamp="2007-07-15T07:23:49Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Jul 2007 05:33:06 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-25T05:33:06Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 09 Sep 2007 23:51:30 +0000">
+  <metadata tag="submitter" timestamp="2007-09-09T23:51:30Z">
     rbu
   </metadata>
 </glsa>

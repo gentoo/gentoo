@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-17">
   <title>3proxy: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">3proxy</product>
-  <announced>April 22, 2007</announced>
-  <revised>April 22, 2007: 01</revised>
+  <announced>2007-04-22</announced>
+  <revised>2007-04-22: 01</revised>
   <bug>174429</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/3proxy-0.5.3h&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/3proxy-0.5.3h"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2031">CVE-2007-2031</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2031">CVE-2007-2031</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Apr 2007 05:09:29 +0000">
+  <metadata tag="requester" timestamp="2007-04-18T05:09:29Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 18 Apr 2007 08:45:40 +0000">
+  <metadata tag="submitter" timestamp="2007-04-18T08:45:40Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 18 Apr 2007 20:45:40 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-18T20:45:40Z">
     p-y
   </metadata>
 </glsa>

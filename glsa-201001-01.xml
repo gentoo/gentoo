@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-01">
   <title>NTP: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     consumption.
   </synopsis>
   <product type="ebuild">ntp</product>
-  <announced>January 03, 2010</announced>
-  <revised>January 03, 2010: 01</revised>
+  <announced>2010-01-03</announced>
+  <revised>2010-01-03: 01</revised>
   <bug>290881</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/ntp-4.2.4_p7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/ntp-4.2.4_p7-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3563">CVE-2009-3563</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3563">CVE-2009-3563</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 10 Dec 2009 20:02:44 +0000">
+  <metadata tag="requester" timestamp="2009-12-10T20:02:44Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2009 15:53:37 +0000">
+  <metadata tag="submitter" timestamp="2009-12-30T15:53:37Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 03 Jan 2010 00:05:58 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-03T00:05:58Z">
     craig
   </metadata>
 </glsa>

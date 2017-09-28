@@ -6,8 +6,8 @@
     sensitive information.
   </synopsis>
   <product type="ebuild">sendmail</product>
-  <announced>December 22, 2014</announced>
-  <revised>December 22, 2014: 1</revised>
+  <announced>2014-12-22</announced>
+  <revised>2014-12-22: 1</revised>
   <bug>511760</bug>
   <access>local</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3956">CVE-2014-3956</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3956">CVE-2014-3956</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 Jun 2014 01:42:47 +0000">
+  <metadata tag="requester" timestamp="2014-06-10T01:42:47Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 22 Dec 2014 14:46:39 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-12-22T14:46:39Z">Zlogene</metadata>
 </glsa>

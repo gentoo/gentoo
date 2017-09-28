@@ -7,8 +7,8 @@
     context-dependent attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">perl</product>
-  <announced>January 19, 2014</announced>
-  <revised>January 19, 2014: 1</revised>
+  <announced>2014-01-19</announced>
+  <revised>2014-01-19: 1</revised>
   <bug>384887</bug>
   <bug>448632</bug>
   <bug>460444</bug>
@@ -60,12 +60,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2728">CVE-2011-2728</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2939">CVE-2011-2939</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5195">CVE-2012-5195
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2728">CVE-2011-2728</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2939">CVE-2011-2939</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5195">CVE-2012-5195
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1667">CVE-2013-1667</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1667">CVE-2013-1667</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Dec 2013 14:48:00 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 19 Jan 2014 16:14:53 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2013-12-19T14:48:00Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-19T16:14:53Z">Zlogene</metadata>
 </glsa>

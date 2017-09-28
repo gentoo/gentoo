@@ -6,8 +6,8 @@
     which could lead to a Denial of Service condition.
   </synopsis>
   <product type="ebuild">openfire</product>
-  <announced>June 30, 2014</announced>
-  <revised>June 30, 2014: 1</revised>
+  <announced>2014-06-30</announced>
+  <revised>2014-06-30: 1</revised>
   <bug>266129</bug>
   <bug>507242</bug>
   <access>remote</access>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1595">CVE-2009-1595</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1596">CVE-2009-1596</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2741">CVE-2014-2741</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1595">CVE-2009-1595</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1596">CVE-2009-1596</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2741">CVE-2014-2741</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 Jun 2014 01:12:58 +0000">
+  <metadata tag="requester" timestamp="2014-06-10T01:12:58Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 30 Jun 2014 17:52:11 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-06-30T17:52:11Z">Zlogene</metadata>
 </glsa>

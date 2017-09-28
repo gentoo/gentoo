@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-08">
   <title>Xpdf, GPdf, CUPS, Poppler: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Poppler potentially resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">xpdf, gpdf, poppler,cups</product>
-  <announced>December 16, 2005</announced>
-  <revised>December 17, 2005: 02</revised>
+  <announced>2005-12-16</announced>
+  <revised>2005-12-17: 02</revised>
   <bug>114428</bug>
   <bug>115286</bug>
   <access>remote</access>
@@ -65,13 +64,13 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.01-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/xpdf-3.01-r2"</code>
     <p>
     All GPdf users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.10.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/gpdf-2.10.0-r2"</code>
     <p>
     All Poppler users should upgrade to the latest version:
     </p>
@@ -83,20 +82,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.1.23-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.1.23-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3191">CVE-2005-3191</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3192">CVE-2005-3192</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3193">CVE-2005-3193</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3191">CVE-2005-3191</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3192">CVE-2005-3192</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3193">CVE-2005-3193</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 08 Dec 2005 08:57:56 +0000">
+  <metadata tag="requester" timestamp="2005-12-08T08:57:56Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 14 Dec 2005 12:15:58 +0000">
+  <metadata tag="submitter" timestamp="2005-12-14T12:15:58Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 15 Dec 2005 11:55:50 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-15T11:55:50Z">
     koon
   </metadata>
 </glsa>

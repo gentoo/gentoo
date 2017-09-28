@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-15">
   <title>Net-SNMP: Denial of Service</title>
   <synopsis>
     A vulnerability in Net-SNMP could lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">net-snmp</product>
-  <announced>January 21, 2009</announced>
-  <revised>January 21, 2009: 01</revised>
+  <announced>2009-01-21</announced>
+  <revised>2009-01-21: 01</revised>
   <bug>245306</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/net-snmp-5.4.2.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/net-snmp-5.4.2.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4309">CVE-2008-4309</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4309">CVE-2008-4309</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Jan 2009 17:57:13 +0000">
+  <metadata tag="requester" timestamp="2009-01-11T17:57:13Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 Jan 2009 22:12:01 +0000">
+  <metadata tag="submitter" timestamp="2009-01-12T22:12:01Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Jan 2009 22:12:09 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-12T22:12:09Z">
     p-y
   </metadata>
 </glsa>

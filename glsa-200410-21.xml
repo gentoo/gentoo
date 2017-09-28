@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-21">
   <title>Apache 2, mod_ssl: Bypass of SSLCipherSuite directive</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the "SSLCipherSuite" directive of mod_ssl.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>October 21, 2004</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2004-10-21</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>66807</bug>
   <access>remote</access>
   <affected>
@@ -56,28 +55,28 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-servers/apache-2.0.52"
-    # emerge ">=www-servers/apache-2.0.52"</code>
+    # emerge -pv "&gt;=www-servers/apache-2.0.52"
+    # emerge "&gt;=www-servers/apache-2.0.52"</code>
     <p>
     All mod_ssl users should upgrade to the latest version:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-www/mod_ssl-2.8.20"
-    # emerge ">=net-www/mod_ssl-2.8.20"</code>
+    # emerge -pv "&gt;=net-www/mod_ssl-2.8.20"
+    # emerge "&gt;=net-www/mod_ssl-2.8.20"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0885">CAN-2004-0885</uri>
-    <uri link="http://issues.apache.org/bugzilla/show_bug.cgi?id=31505">Apache HTTPD Bug 31505</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0885">CAN-2004-0885</uri>
+    <uri link="https://issues.apache.org/bugzilla/show_bug.cgi?id=31505">Apache HTTPD Bug 31505</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri,  8 Oct 2004 21:14:18 +0000">
+  <metadata tag="requester" timestamp="2004-10-08T21:14:18Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Oct 2004 20:52:28 +0000">
+  <metadata tag="submitter" timestamp="2004-10-13T20:52:28Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 21 Oct 2004 04:34:44 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-21T04:34:44Z">
     lewk
   </metadata>
 </glsa>

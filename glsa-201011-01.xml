@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201011-01">
   <title>GNU C library: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     local attackers to execute arbitrary code as root.
   </synopsis>
   <product type="ebuild">glibc</product>
-  <announced>November 15, 2010</announced>
-  <revised>November 15, 2010: 01</revised>
+  <announced>2010-11-15</announced>
+  <revised>2010-11-15: 01</revised>
   <bug>285818</bug>
   <bug>325555</bug>
   <bug>330923</bug>
@@ -54,23 +53,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/glibc-2.11.2-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.11.2-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4880">CVE-2009-4880</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4881">CVE-2009-4881</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0296">CVE-2010-0296</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0830">CVE-2010-0830</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3847">CVE-2010-3847</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3856">CVE-2010-3856</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4880">CVE-2009-4880</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4881">CVE-2009-4881</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0296">CVE-2010-0296</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0830">CVE-2010-0830</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3847">CVE-2010-3847</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3856">CVE-2010-3856</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 23 Nov 2009 17:50:04 +0000">
+  <metadata tag="requester" timestamp="2009-11-23T17:50:04Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 14 Nov 2010 19:59:41 +0000">
+  <metadata tag="submitter" timestamp="2010-11-14T19:59:41Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 15 Nov 2010 21:29:42 +0000">
+  <metadata tag="bugReady" timestamp="2010-11-15T21:29:42Z">
     keytoaster
   </metadata>
 </glsa>

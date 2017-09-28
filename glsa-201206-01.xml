@@ -6,8 +6,8 @@
     which allowing to cause remote Denial of Service.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>June 02, 2012</announced>
-  <revised>June 02, 2012: 1</revised>
+  <announced>2012-06-02</announced>
+  <revised>2012-06-02: 1</revised>
   <bug>347621</bug>
   <bug>356223</bug>
   <bug>368863</bug>
@@ -54,16 +54,16 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3613">CVE-2010-3613</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3614">CVE-2010-3614</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3615">CVE-2010-3615</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3762">CVE-2010-3762</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0414">CVE-2011-0414</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1910">CVE-2011-1910</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2464">CVE-2011-2464</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2465">CVE-2011-2465</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4313">CVE-2011-4313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3613">CVE-2010-3613</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3614">CVE-2010-3614</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3615">CVE-2010-3615</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3762">CVE-2010-3762</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0414">CVE-2011-0414</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1910">CVE-2011-1910</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2464">CVE-2011-2464</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2465">CVE-2011-2465</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4313">CVE-2011-4313</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:02 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Sat, 02 Jun 2012 13:53:49 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:02Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-02T13:53:49Z" tag="submitter">craig</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-05">
   <title>OpenSSL, AMD64 x86 emulation base libraries: RSA signature forgery</title>
   <synopsis>
     OpenSSL fails to properly validate PKCS #1 v1.5 signatures.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>September 07, 2006</announced>
-  <revised>September 08, 2006: 02</revised>
+  <announced>2006-09-07</announced>
+  <revised>2006-09-08: 02</revised>
   <bug>146375</bug>
   <bug>146438</bug>
   <access>remote</access>
@@ -53,25 +52,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.7k&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.7k"</code>
     <p>
     All AMD64 x86 emulation base libraries users should upgrade to the
     latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-baselibs-2.5.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-baselibs-2.5.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4339">CVE-2006-4339</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4339">CVE-2006-4339</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 05 Sep 2006 19:16:58 +0000">
+  <metadata tag="requester" timestamp="2006-09-05T19:16:58Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 06 Sep 2006 10:57:51 +0000">
+  <metadata tag="submitter" timestamp="2006-09-06T10:57:51Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 07 Sep 2006 20:02:33 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-07T20:02:33Z">
     jaervosz
   </metadata>
 </glsa>

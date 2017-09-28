@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-10">
   <title>Cscope: Many buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Cscope</product>
-  <announced>June 11, 2006</announced>
-  <revised>June 11, 2006: 01</revised>
+  <announced>2006-06-11</announced>
+  <revised>2006-06-11: 01</revised>
   <bug>133829</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/cscope-15.5-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/cscope-15.5-r6"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2541">CVE-2004-2541</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2541">CVE-2004-2541</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:07:22 +0000">
+  <metadata tag="requester" timestamp="2006-06-01T07:07:22Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:21:43 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-05T17:21:43Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 05 Jun 2006 18:50:34 +0000">
+  <metadata tag="submitter" timestamp="2006-06-05T18:50:34Z">
     dizzutch
   </metadata>
 </glsa>

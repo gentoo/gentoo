@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-05">
   <title>GD: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gd</product>
-  <announced>August 09, 2007</announced>
-  <revised>August 09, 2007: 01</revised>
+  <announced>2007-08-09</announced>
+  <revised>2007-08-09: 01</revised>
   <bug>179154</bug>
   <access>remote</access>
   <affected>
@@ -58,25 +57,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/gd-2.0.35&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/gd-2.0.35"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2756">CVE-2007-2756</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3472">CVE-2007-3472</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3473">CVE-2007-3473</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3474">CVE-2007-3474</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3475">CVE-2007-3475</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3476">CVE-2007-3476</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3477">CVE-2007-3477</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3478">CVE-2007-3478</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2756">CVE-2007-2756</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3472">CVE-2007-3472</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3473">CVE-2007-3473</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3474">CVE-2007-3474</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3475">CVE-2007-3475</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3476">CVE-2007-3476</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3477">CVE-2007-3477</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3478">CVE-2007-3478</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 20 Jul 2007 21:01:20 +0000">
+  <metadata tag="requester" timestamp="2007-07-20T21:01:20Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 31 Jul 2007 09:13:14 +0000">
+  <metadata tag="submitter" timestamp="2007-07-31T09:13:14Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 31 Jul 2007 09:13:30 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-31T09:13:30Z">
     p-y
   </metadata>
 </glsa>

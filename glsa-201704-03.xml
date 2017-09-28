@@ -124,20 +124,20 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5407">CVE-2016-5407</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7942">CVE-2016-7942</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7943">CVE-2016-7943</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7944">CVE-2016-7944</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7945">CVE-2016-7945</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7946">CVE-2016-7946</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7947">CVE-2016-7947</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7948">CVE-2016-7948</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7949">CVE-2016-7949</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7950">CVE-2016-7950</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7953">CVE-2016-7953</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2624">CVE-2017-2624</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2625">CVE-2017-2625</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2626">CVE-2017-2626</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5407">CVE-2016-5407</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7942">CVE-2016-7942</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7943">CVE-2016-7943</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7944">CVE-2016-7944</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7945">CVE-2016-7945</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7946">CVE-2016-7946</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7947">CVE-2016-7947</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7948">CVE-2016-7948</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7949">CVE-2016-7949</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7950">CVE-2016-7950</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7953">CVE-2016-7953</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2624">CVE-2017-2624</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2625">CVE-2017-2625</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2626">CVE-2017-2626</uri>
   </references>
   <metadata tag="requester" timestamp="2017-03-18T13:24:57Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-04-10T21:30:03Z">BlueKnight</metadata>

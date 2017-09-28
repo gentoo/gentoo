@@ -41,10 +41,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5193">CVE-2017-5193</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5194">CVE-2017-5194</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5195">CVE-2017-5195</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5196">CVE-2017-5196</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5193">CVE-2017-5193</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5194">CVE-2017-5194</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5195">CVE-2017-5195</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5196">CVE-2017-5196</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T08:22:08Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-19T19:13:03Z">b-man</metadata>

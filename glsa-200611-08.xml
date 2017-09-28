@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-08">
   <title>RPM: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code when opening specially crafted packages.
   </synopsis>
   <product type="ebuild">rpm</product>
-  <announced>November 13, 2006</announced>
-  <revised>November 13, 2006: 01</revised>
+  <announced>2006-11-13</announced>
+  <revised>2006-11-13: 01</revised>
   <bug>154218</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/rpm-4.4.6-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/rpm-4.4.6-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5466">CVE-2006-5466</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5466">CVE-2006-5466</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Nov 2006 23:03:12 +0000">
+  <metadata tag="requester" timestamp="2006-11-06T23:03:12Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Nov 2006 23:11:11 +0000">
+  <metadata tag="submitter" timestamp="2006-11-06T23:11:11Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 07 Nov 2006 13:44:27 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-07T13:44:27Z">
     falco
   </metadata>
 </glsa>

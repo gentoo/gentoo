@@ -6,8 +6,8 @@
     could result in execution of arbitrary code.
   </synopsis>
   <product type="ebuild">cpio</product>
-  <announced>February 15, 2015</announced>
-  <revised>February 15, 2015: 1</revised>
+  <announced>2015-02-15</announced>
+  <revised>2015-02-15: 1</revised>
   <bug>530512</bug>
   <bug>536010</bug>
   <access>remote</access>
@@ -51,9 +51,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9112">CVE-2014-9112</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1197">CVE-2015-1197</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9112">CVE-2014-9112</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1197">CVE-2015-1197</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 17 Jan 2015 20:25:43 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Feb 2015 14:35:14 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2015-01-17T20:25:43Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-02-15T14:35:14Z">ackle</metadata>
 </glsa>

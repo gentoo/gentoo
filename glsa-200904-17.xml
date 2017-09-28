@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-17">
   <title>Adobe Reader: User-assisted execution of arbitrary code</title>
   <synopsis>
     Adobe Reader is vulnerable to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>April 18, 2009</announced>
-  <revised>April 18, 2009: 01</revised>
+  <announced>2009-04-18</announced>
+  <revised>2009-04-18: 01</revised>
   <bug>259992</bug>
   <access>remote</access>
   <affected>
@@ -78,23 +77,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-8.1.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0193">CVE-2009-0193</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0658">CVE-2009-0658</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0927">CVE-2009-0927</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0928">CVE-2009-0928</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1061">CVE-2009-1061</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1062">CVE-2009-1062</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0193">CVE-2009-0193</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0658">CVE-2009-0658</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0927">CVE-2009-0927</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0928">CVE-2009-0928</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1061">CVE-2009-1061</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1062">CVE-2009-1062</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Apr 2009 12:25:56 +0000">
+  <metadata tag="requester" timestamp="2009-04-14T12:25:56Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 16 Apr 2009 22:30:05 +0000">
+  <metadata tag="submitter" timestamp="2009-04-16T22:30:05Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Apr 2009 22:30:15 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-16T22:30:15Z">
     rbu
   </metadata>
 </glsa>

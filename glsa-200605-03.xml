@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-03">
   <title>ClamAV: Buffer overflow in Freshclam</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>May 02, 2006</announced>
-  <revised>May 02, 2006: 01</revised>
+  <announced>2006-05-02</announced>
+  <revised>2006-05-02: 01</revised>
   <bug>131791</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.88.2"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1989">CVE-2006-1989</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1989">CVE-2006-1989</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 02 May 2006 04:03:38 +0000">
+  <metadata tag="submitter" timestamp="2006-05-02T04:03:38Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 02 May 2006 04:54:25 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-02T04:54:25Z">
     jaervosz
   </metadata>
 </glsa>

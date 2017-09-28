@@ -40,7 +40,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8990">CVE-2014-8990</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8990">CVE-2014-8990</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-01T09:30:15Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-02-10T23:08:07Z">whissi</metadata>

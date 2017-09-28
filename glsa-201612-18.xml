@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in OpenSSH, the worst of
     which allows remote attackers to cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>December 07, 2016</announced>
-  <revised>December 07, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-12-07</announced>
+  <revised>2016-12-07: 1</revised>
   <bug>576954</bug>
   <bug>580410</bug>
   <bug>589088</bug>
@@ -48,14 +48,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8325">CVE-2015-8325</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1908">CVE-2016-1908</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3115">CVE-2016-3115</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6210">CVE-2016-6210</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8858">CVE-2016-8858</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8325">CVE-2015-8325</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1908">CVE-2016-1908</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3115">CVE-2016-3115</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6210">CVE-2016-6210</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8858">CVE-2016-8858</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 17 Sep 2016 05:14:39 +0000">
+  <metadata tag="requester" timestamp="2016-09-17T05:14:39Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 07 Dec 2016 10:31:11 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-07T10:31:11Z">b-man</metadata>
 </glsa>

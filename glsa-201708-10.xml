@@ -46,9 +46,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7885">CVE-2017-7885</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7975">CVE-2017-7975</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7976">CVE-2017-7976</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7885">CVE-2017-7885</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7975">CVE-2017-7975</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7976">CVE-2017-7976</uri>
   </references>
   <metadata tag="requester" timestamp="2017-08-02T02:58:46Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-08-26T14:52:50Z">ackle</metadata>

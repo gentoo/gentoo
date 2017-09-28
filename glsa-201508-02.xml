@@ -6,8 +6,8 @@
     which may result in execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libgadu</product>
-  <announced>August 15, 2015</announced>
-  <revised>August 15, 2015: 1</revised>
+  <announced>2015-08-15</announced>
+  <revised>2015-08-15: 1</revised>
   <bug>490238</bug>
   <bug>505558</bug>
   <bug>510714</bug>
@@ -55,12 +55,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4488">CVE-2013-4488</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6487">CVE-2013-6487</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3775">CVE-2014-3775</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4488">CVE-2013-4488</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6487">CVE-2013-6487</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3775">CVE-2014-3775</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Sep 2014 04:01:34 +0000">
+  <metadata tag="requester" timestamp="2014-09-22T04:01:34Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 15 Aug 2015 12:51:37 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-08-15T12:51:37Z">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-06">
   <title>TCPDump: Decoding routines Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote Denial of Service attack.
   </synopsis>
   <product type="ebuild">tcpdump</product>
-  <announced>May 09, 2005</announced>
-  <revised>June 12, 2005: 02</revised>
+  <announced>2005-05-09</announced>
+  <revised>2005-06-12: 02</revised>
   <bug>90541</bug>
   <bug>95349</bug>
   <access>remote</access>
@@ -50,21 +49,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/tcpdump-3.8.3-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/tcpdump-3.8.3-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1267">CAN-2005-1267</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1278">CAN-2005-1278</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1279">CAN-2005-1279</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1280">CAN-2005-1280</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1267">CAN-2005-1267</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1278">CAN-2005-1278</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1279">CAN-2005-1279</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1280">CAN-2005-1280</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 08 May 2005 15:18:02 +0000">
+  <metadata tag="requester" timestamp="2005-05-08T15:18:02Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 08 May 2005 15:56:20 +0000">
+  <metadata tag="submitter" timestamp="2005-05-08T15:56:20Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 09 May 2005 19:22:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-09T19:22:22Z">
     jaervosz
   </metadata>
 </glsa>

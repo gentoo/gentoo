@@ -6,8 +6,8 @@
     libxslt.
   </synopsis>
   <product type="ebuild">libxslt</product>
-  <announced>January 10, 2014</announced>
-  <revised>January 10, 2014: 1</revised>
+  <announced>2014-01-10</announced>
+  <revised>2014-01-10: 1</revised>
   <bug>433603</bug>
   <bug>436284</bug>
   <bug>463236</bug>
@@ -58,11 +58,11 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2870">CVE-2012-2870</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2893">CVE-2012-2893</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6139">CVE-2012-6139</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4520">CVE-2013-4520</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2870">CVE-2012-2870</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2893">CVE-2012-2893</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6139">CVE-2012-6139</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4520">CVE-2013-4520</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 30 Sep 2012 01:49:44 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jan 2014 14:13:14 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-30T01:49:44Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-01-10T14:13:14Z">ackle</metadata>
 </glsa>

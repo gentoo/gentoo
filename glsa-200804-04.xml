@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-04">
   <title>MySQL: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">mysql</product>
-  <announced>April 06, 2008</announced>
-  <revised>April 06, 2008: 01</revised>
+  <announced>2008-04-06</announced>
+  <revised>2008-04-06: 01</revised>
   <bug>201669</bug>
   <access>remote</access>
   <affected>
@@ -60,20 +59,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-5.0.54&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.0.54"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5969">CVE-2007-5969</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6303">CVE-2007-6303</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6304">CVE-2007-6304</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5969">CVE-2007-5969</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6303">CVE-2007-6303</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6304">CVE-2007-6304</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Jan 2008 18:21:58 +0000">
+  <metadata tag="requester" timestamp="2008-01-28T18:21:58Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 09 Feb 2008 20:29:29 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-09T20:29:29Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 23:20:56 +0000">
+  <metadata tag="submitter" timestamp="2008-04-03T23:20:56Z">
     rbu
   </metadata>
 </glsa>

@@ -7,8 +7,8 @@
     Service.
   </synopsis>
   <product type="ebuild">radvd</product>
-  <announced>November 20, 2011</announced>
-  <revised>November 20, 2011: 1</revised>
+  <announced>2011-11-20</announced>
+  <revised>2011-11-20: 1</revised>
   <bug>385967</bug>
   <access>local, remote</access>
   <affected>
@@ -44,12 +44,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3601">CVE-2011-3601</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3602">CVE-2011-3602</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3603">CVE-2011-3603</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3604">CVE-2011-3604</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3605">CVE-2011-3605</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3601">CVE-2011-3601</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3602">CVE-2011-3602</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3603">CVE-2011-3603</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3604">CVE-2011-3604</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3605">CVE-2011-3605</uri>
   </references>
-  <metadata timestamp="Thu, 10 Nov 2011 10:43:03 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Sun, 20 Nov 2011 17:56:48 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-10T10:43:03Z" tag="requester">ago</metadata>
+  <metadata timestamp="2011-11-20T17:56:48Z" tag="submitter">ackle</metadata>
 </glsa>

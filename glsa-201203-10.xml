@@ -6,8 +6,8 @@
     attacker to execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libmikmod</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>335892</bug>
   <access>remote</access>
   <affected>
@@ -56,9 +56,9 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2546">CVE-2010-2546</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2971">CVE-2010-2971</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2546">CVE-2010-2546</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2971">CVE-2010-2971</uri>
   </references>
-  <metadata timestamp="Fri, 02 Mar 2012 20:38:21 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:42:39 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-02T20:38:21Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:42:39Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-11">
   <title>HAVP: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been reported in HAVP.
   </synopsis>
   <product type="ebuild">havp</product>
-  <announced>September 21, 2008</announced>
-  <revised>September 21, 2008: 01</revised>
+  <announced>2008-09-21</announced>
+  <revised>2008-09-21: 01</revised>
   <bug>234715</bug>
   <access>remote</access>
   <affected>
@@ -45,18 +44,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/havp-0.89&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/havp-0.89"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3688">CVE-2008-3688</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3688">CVE-2008-3688</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 18 Sep 2008 21:30:12 +0000">
+  <metadata tag="requester" timestamp="2008-09-18T21:30:12Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 18 Sep 2008 21:30:30 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-18T21:30:30Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 19 Sep 2008 11:28:47 +0000">
+  <metadata tag="submitter" timestamp="2008-09-19T11:28:47Z">
     p-y
   </metadata>
 </glsa>

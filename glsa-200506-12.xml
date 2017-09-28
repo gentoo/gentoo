@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-12">
   <title>MediaWiki: Cross-site scripting vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary scripting code execution.
   </synopsis>
   <product type="ebuild">mediawiki</product>
-  <announced>June 13, 2005</announced>
-  <revised>June 13, 2005: 01</revised>
+  <announced>2005-06-13</announced>
+  <revised>2005-06-13: 01</revised>
   <bug>95255</bug>
   <access>remote</access>
   <affected>
@@ -53,15 +52,15 @@
     # emerge --ask --oneshot --verbose www-apps/mediawiki</code>
   </resolution>
   <references>
-    <uri link="http://sourceforge.net/project/shownotes.php?release_id=332231">MediaWiki 1.4.5 Release Notes</uri>
+    <uri link="https://sourceforge.net/project/shownotes.php?release_id=332231">MediaWiki 1.4.5 Release Notes</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jun 2005 11:34:01 +0000">
+  <metadata tag="requester" timestamp="2005-06-10T11:34:01Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Jun 2005 11:34:36 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-10T11:34:36Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Jun 2005 12:24:08 +0000">
+  <metadata tag="submitter" timestamp="2005-06-11T12:24:08Z">
     DerCorny
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">patch</product>
-  <announced>December 05, 2016</announced>
-  <revised>December 05, 2016: 1</revised>
+  <announced>2016-12-05</announced>
+  <revised>2016-12-05: 1</revised>
   <bug>538658</bug>
   <access>local</access>
   <affected>
@@ -46,8 +46,8 @@
   </resolution>
   <references>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:47:45 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:47:45Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 05 Dec 2016 01:16:43 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-05T01:16:43Z">whissi</metadata>
 </glsa>

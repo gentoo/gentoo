@@ -6,8 +6,8 @@
     privilege escalation or Denial of Service.
   </synopsis>
   <product type="ebuild">xorg-server</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>412609</bug>
   <access>local</access>
   <affected>
@@ -58,8 +58,8 @@
     <p>X.Org X Server 1.9.x is not affected.</p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2118">CVE-2012-2118</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2118">CVE-2012-2118</uri>
   </references>
-  <metadata timestamp="Sat, 02 Jun 2012 13:03:57 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 22:21:08 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-02T13:03:57Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-07-09T22:21:08Z" tag="submitter">ackle</metadata>
 </glsa>

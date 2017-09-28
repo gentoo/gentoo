@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>November 22, 2016</announced>
-  <revised>November 22, 2016: 2</revised>
+  <announced>2016-11-22</announced>
+  <revised>2016-11-22: 2</revised>
   <bug>599204</bug>
   <access>remote</access>
   <affected>
@@ -53,16 +53,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7857">CVE-2016-7857</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7858">CVE-2016-7858</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7859">CVE-2016-7859</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7860">CVE-2016-7860</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7861">CVE-2016-7861</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7862">CVE-2016-7862</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7863">CVE-2016-7863</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7864">CVE-2016-7864</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7865">CVE-2016-7865</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7857">CVE-2016-7857</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7858">CVE-2016-7858</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7859">CVE-2016-7859</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7860">CVE-2016-7860</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7861">CVE-2016-7861</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7862">CVE-2016-7862</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7863">CVE-2016-7863</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7864">CVE-2016-7864</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7865">CVE-2016-7865</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Nov 2016 06:18:07 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:59:00 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-11T06:18:07Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-22T11:59:00Z">b-man</metadata>
 </glsa>

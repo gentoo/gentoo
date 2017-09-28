@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">openjpeg</product>
-  <announced>October 10, 2013</announced>
-  <revised>October 10, 2013: 1</revised>
+  <announced>2013-10-10</announced>
+  <revised>2013-10-10: 1</revised>
   <bug>412895</bug>
   <bug>425772</bug>
   <bug>433766</bug>
@@ -44,10 +44,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5030">CVE-2009-5030</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3358">CVE-2012-3358</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3535">CVE-2012-3535</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5030">CVE-2009-5030</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3358">CVE-2012-3358</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3535">CVE-2012-3535</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Sep 2013 15:22:41 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 10 Oct 2013 11:18:57 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-29T15:22:41Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-10T11:18:57Z">ackle</metadata>
 </glsa>

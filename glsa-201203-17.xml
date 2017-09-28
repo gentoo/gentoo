@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">hplip</product>
-  <announced>March 16, 2012</announced>
-  <revised>March 16, 2012: 1</revised>
+  <announced>2012-03-16</announced>
+  <revised>2012-03-16: 1</revised>
   <bug>352085</bug>
   <bug>388655</bug>
   <access>local, remote</access>
@@ -54,11 +54,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4267">CVE-2010-4267</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2722">CVE-2011-2722</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4267">CVE-2010-4267</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2722">CVE-2011-2722</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:15 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:15Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Fri, 16 Mar 2012 11:04:44 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-16T11:04:44Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -3,9 +3,9 @@
 <glsa id="201603-02">
   <title>OSC: Shell command injection</title>
   <synopsis>OSC is vulnerable to the remote execution of arbitrary code.</synopsis>
-  <product type="ebuild"></product>
-  <announced>March 06, 2016</announced>
-  <revised>March 06, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-03-06</announced>
+  <revised>2016-03-06: 1</revised>
   <bug>553606</bug>
   <access>remote</access>
   <affected>
@@ -39,10 +39,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0778">CVE-2015-0778</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0778">CVE-2015-0778</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:51:12 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:51:12Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 Mar 2016 20:01:57 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-03-06T20:01:57Z">b-man</metadata>
 </glsa>

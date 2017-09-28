@@ -7,8 +7,8 @@
     arbitrary code and Denial of Service.
   </synopsis>
   <product type="ebuild">postgresql-server postgresql-base</product>
-  <announced>October 25, 2011</announced>
-  <revised>March 05, 2012: 3</revised>
+  <announced>2011-10-25</announced>
+  <revised>2012-03-05: 3</revised>
   <bug>261223</bug>
   <bug>284274</bug>
   <bug>297383</bug>
@@ -156,24 +156,24 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0922">CVE-2009-0922</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3229">CVE-2009-3229</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3230">CVE-2009-3230</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3231">CVE-2009-3231</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4034">CVE-2009-4034</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4136">CVE-2009-4136</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0442">CVE-2010-0442</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0733">CVE-2010-0733</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1169">CVE-2010-1169</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1170">CVE-2010-1170</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1447">CVE-2010-1447</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1975">CVE-2010-1975</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3433">CVE-2010-3433</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4015">CVE-2010-4015</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2483">CVE-2011-2483</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0922">CVE-2009-0922</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3229">CVE-2009-3229</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3230">CVE-2009-3230</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3231">CVE-2009-3231</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4034">CVE-2009-4034</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4136">CVE-2009-4136</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0442">CVE-2010-0442</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0733">CVE-2010-0733</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1169">CVE-2010-1169</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1170">CVE-2010-1170</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1447">CVE-2010-1447</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1975">CVE-2010-1975</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3433">CVE-2010-3433</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4015">CVE-2010-4015</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2483">CVE-2011-2483</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:07 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:07Z" tag="requester">
     keytoaster
   </metadata>
-  <metadata timestamp="Mon, 05 Mar 2012 19:10:41 +0000" tag="submitter">a3li</metadata>
+  <metadata timestamp="2012-03-05T19:10:41Z" tag="submitter">a3li</metadata>
 </glsa>

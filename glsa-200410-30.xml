@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-30">
   <title>GPdf, KPDF, KOffice: Vulnerabilities in included xpdf</title>
   <synopsis>
@@ -9,8 +8,8 @@
     malicious PDF file.
   </synopsis>
   <product type="ebuild">GPdf</product>
-  <announced>October 28, 2004</announced>
-  <revised>November 06, 2004: 02</revised>
+  <announced>2004-10-28</announced>
+  <revised>2004-11-06: 02</revised>
   <bug>68558</bug>
   <bug>68665</bug>
   <bug>68571</bug>
@@ -65,32 +64,32 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=app-text/gpdf-0.132-r2"</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/gpdf-0.132-r2"</code>
     <p>
     All KDE users should upgrade to the latest version of kdegraphics:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=kde-base/kdegraphics-3.3.0-r2"</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kdegraphics-3.3.0-r2"</code>
     <p>
     All KOffice users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=app-office/koffice-1.3.3-r2"</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/koffice-1.3.3-r2"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200410-20.xml">GLSA 200410-20</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200410-20.xml">GLSA 200410-20</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 26 Oct 2004 18:40:10 +0000">
+  <metadata tag="requester" timestamp="2004-10-26T18:40:10Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 27 Oct 2004 10:09:49 +0000">
+  <metadata tag="submitter" timestamp="2004-10-27T10:09:49Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 28 Oct 2004 07:24:07 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-28T07:24:07Z">
     koon
   </metadata>
 </glsa>

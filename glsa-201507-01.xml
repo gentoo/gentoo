@@ -6,8 +6,8 @@
     which can cause arbitrary code execution.
   </synopsis>
   <product type="ebuild">chrony</product>
-  <announced>July 05, 2015</announced>
-  <revised>July 05, 2015: 1</revised>
+  <announced>2015-07-05</announced>
+  <revised>2015-07-05: 1</revised>
   <bug>545918</bug>
   <access>remote</access>
   <affected>
@@ -42,12 +42,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1821">CVE-2015-1821</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1822">CVE-2015-1822</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1853">CVE-2015-1853</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1821">CVE-2015-1821</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1822">CVE-2015-1822</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1853">CVE-2015-1853</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 13 May 2015 23:36:26 +0000">
+  <metadata tag="requester" timestamp="2015-05-13T23:36:26Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Jul 2015 16:16:15 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-05T16:16:15Z">Zlogene</metadata>
 </glsa>

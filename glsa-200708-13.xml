@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-13">
   <title>BIND: Weak random number generation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     easier to guess the next query ID and perform a DNS cache poisoning attack.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>August 18, 2007</announced>
-  <revised>August 18, 2007: 01</revised>
+  <announced>2007-08-18</announced>
+  <revised>2007-08-18: 01</revised>
   <bug>186556</bug>
   <access>remote</access>
   <affected>
@@ -61,19 +60,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.1_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.4.1_p1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2925">CVE-2007-2925</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2926">CVE-2007-2926</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2925">CVE-2007-2925</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2926">CVE-2007-2926</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 05 Aug 2007 10:40:49 +0000">
+  <metadata tag="requester" timestamp="2007-08-05T10:40:49Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 13 Aug 2007 23:06:16 +0000">
+  <metadata tag="submitter" timestamp="2007-08-13T23:06:16Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Aug 2007 23:00:40 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-14T23:00:40Z">
     falco
   </metadata>
 </glsa>

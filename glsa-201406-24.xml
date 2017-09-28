@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">dnsmasq</product>
-  <announced>June 25, 2014</announced>
-  <revised>June 25, 2014: 1</revised>
+  <announced>2014-06-25</announced>
+  <revised>2014-06-25: 1</revised>
   <bug>436894</bug>
   <bug>453170</bug>
   <access>remote</access>
@@ -45,11 +45,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3411">CVE-2012-3411</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0198">CVE-2013-0198</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3411">CVE-2012-3411</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0198">CVE-2013-0198</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 03:08:23 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T03:08:23Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Jun 2014 21:36:31 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-06-25T21:36:31Z">K_F</metadata>
 </glsa>

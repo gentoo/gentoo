@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">freerdp</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 1</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 1</revised>
   <bug>511688</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0250">CVE-2014-0250</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0250">CVE-2014-0250</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Jul 2014 13:32:41 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 17:06:45 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-07-05T13:32:41Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T17:06:45Z">ackle</metadata>
 </glsa>

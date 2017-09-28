@@ -6,8 +6,8 @@
     privileges.
   </synopsis>
   <product type="ebuild">davfs2</product>
-  <announced>December 02, 2016</announced>
-  <revised>December 02, 2016: 1</revised>
+  <announced>2016-12-02</announced>
+  <revised>2016-12-02: 1</revised>
   <bug>485232</bug>
   <access>local</access>
   <affected>
@@ -55,10 +55,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4362">CVE-2013-4362</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4362">CVE-2013-4362</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 07 Dec 2015 21:54:18 +0000">
+  <metadata tag="requester" timestamp="2015-12-07T21:54:18Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Dec 2016 13:32:55 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-02T13:32:55Z">whissi</metadata>
 </glsa>

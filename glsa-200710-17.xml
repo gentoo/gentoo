@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-17">
   <title>Balsa: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">balsa</product>
-  <announced>October 16, 2007</announced>
-  <revised>October 16, 2007: 01</revised>
+  <announced>2007-10-16</announced>
+  <revised>2007-10-16: 01</revised>
   <bug>193179</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/balsa-2.3.20&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/balsa-2.3.20"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5007">CVE-2007-5007</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5007">CVE-2007-5007</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Sep 2007 14:01:38 +0000">
+  <metadata tag="requester" timestamp="2007-09-26T14:01:38Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Sep 2007 14:01:46 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-26T14:01:46Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 08 Oct 2007 00:14:17 +0000">
+  <metadata tag="submitter" timestamp="2007-10-08T00:14:17Z">
     rbu
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">maradns</product>
-  <announced>February 22, 2012</announced>
-  <revised>February 22, 2012: 1</revised>
+  <announced>2012-02-22</announced>
+  <revised>2012-02-22: 1</revised>
   <bug>397431</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0024">CVE-2012-0024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0024">CVE-2012-0024</uri>
   </references>
-  <metadata timestamp="Mon, 20 Feb 2012 21:36:13 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Wed, 22 Feb 2012 19:45:52 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-02-20T21:36:13Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-02-22T19:45:52Z" tag="submitter">ackle</metadata>
 </glsa>

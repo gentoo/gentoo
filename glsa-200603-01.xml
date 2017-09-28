@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-01">
   <title>WordPress: SQL injection vulnerability</title>
   <synopsis>
     WordPress is vulnerable to an SQL injection vulnerability.
   </synopsis>
   <product type="ebuild">WordPress</product>
-  <announced>March 04, 2006</announced>
-  <revised>March 04, 2006: 01</revised>
+  <announced>2006-03-04</announced>
+  <revised>2006-03-04: 01</revised>
   <bug>121661</bug>
   <access>remote</access>
   <affected>
@@ -51,16 +50,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-2.0.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/wordpress-2.0.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1012">CVE-2006-1012</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1012">CVE-2006-1012</uri>
   </references>
   
-  <metadata tag="submitter" timestamp="Sun, 26 Feb 2006 14:42:26 +0000">
+  <metadata tag="submitter" timestamp="2006-02-26T14:42:26Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 26 Feb 2006 14:42:47 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-26T14:42:47Z">
     koon
   </metadata>
 </glsa>

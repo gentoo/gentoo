@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-14">
   <title>mod_python: Publisher Handler vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     leading to information disclosure.
   </synopsis>
   <product type="ebuild">mod_python</product>
-  <announced>February 13, 2005</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2005-02-13</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>80109</bug>
   <access>remote</access>
   <affected>
@@ -51,15 +50,15 @@
     # emerge --ask --oneshot --verbose www-apache/mod_python</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0088">CAN-2005-0088</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0088">CAN-2005-0088</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Feb 2005 20:01:25 +0000">
+  <metadata tag="requester" timestamp="2005-02-11T20:01:25Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 11 Feb 2005 20:10:55 +0000">
+  <metadata tag="submitter" timestamp="2005-02-11T20:10:55Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 11 Feb 2005 20:41:24 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-11T20:41:24Z">
     jaervosz
   </metadata>
 </glsa>

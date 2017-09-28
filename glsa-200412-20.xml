@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-20">
   <title>NASM: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code through the use of a malicious object file.
   </synopsis>
   <product type="ebuild">NASM</product>
-  <announced>December 20, 2004</announced>
-  <revised>December 20, 2004: 01</revised>
+  <announced>2004-12-20</announced>
+  <revised>2004-12-20: 01</revised>
   <bug>74477</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/nasm-0.98.38-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/nasm-0.98.38-r1"</code>
   </resolution>
   <references>
-    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=6166881&amp;forum_id=4978">Original Advisory</uri>
+    <uri link="https://sourceforge.net/mailarchive/forum.php?thread_id=6166881&amp;forum_id=4978">Original Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Dec 2004 22:07:20 +0000">
+  <metadata tag="requester" timestamp="2004-12-16T22:07:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Dec 2004 22:07:54 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-16T22:07:54Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 17 Dec 2004 11:34:13 +0000">
+  <metadata tag="submitter" timestamp="2004-12-17T11:34:13Z">
     SeJo
   </metadata>
 </glsa>

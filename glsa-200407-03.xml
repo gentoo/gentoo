@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-03">
   <title>Apache 2: Remote denial of service attack</title>
   <synopsis>
@@ -9,8 +8,8 @@
     overflow.
   </synopsis>
   <product type="ebuild">Apache</product>
-  <announced>July 04, 2004</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2004-07-04</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>55441</bug>
   <access>remote</access>
   <affected>
@@ -57,12 +56,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-servers/apache-2.0.49-r4"
-    # emerge ">=www-servers/apache-2.0.49-r4"</code>
+    # emerge -pv "&gt;=www-servers/apache-2.0.49-r4"
+    # emerge "&gt;=www-servers/apache-2.0.49-r4"</code>
   </resolution>
   <references>
     <uri link="http://www.guninski.com/httpd1.html">Georgi Guninski security advisory #70, 2004</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0493">CAN-2004-0493</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0493">CAN-2004-0493</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

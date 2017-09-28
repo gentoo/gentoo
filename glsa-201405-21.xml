@@ -6,8 +6,8 @@
     possibly resulting in remote Denial of Service.
   </synopsis>
   <product type="ebuild">shadowircd</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>449544</bug>
   <bug>449790</bug>
   <access>remote</access>
@@ -54,10 +54,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6084">CVE-2012-6084</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6084">CVE-2012-6084</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 03 Jan 2013 17:21:58 +0000">
+  <metadata tag="requester" timestamp="2013-01-03T17:21:58Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:28:17 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T17:28:17Z">ackle</metadata>
 </glsa>

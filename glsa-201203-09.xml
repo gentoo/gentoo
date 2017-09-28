@@ -6,8 +6,8 @@
     to execute arbitrary code.
   </synopsis>
   <product type="ebuild">ImageMagick</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>402999</bug>
   <access>remote</access>
   <affected>
@@ -52,9 +52,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0247">CVE-2012-0247</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0248">CVE-2012-0248</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0247">CVE-2012-0247</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0248">CVE-2012-0248</uri>
   </references>
-  <metadata timestamp="Sat, 03 Mar 2012 14:41:18 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:41:55 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-03T14:41:18Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:41:55Z" tag="submitter">ackle</metadata>
 </glsa>

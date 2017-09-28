@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-09">
   <title>xzgv: Multiple overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">xzgv</product>
-  <announced>January 06, 2005</announced>
-  <revised>January 06, 2005: 01</revised>
+  <announced>2005-01-06</announced>
+  <revised>2005-01-06: 01</revised>
   <bug>74069</bug>
   <access>remote</access>
   <affected>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xzgv-0.8-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/xzgv-0.8-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0994">CAN-2004-0994</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0994">CAN-2004-0994</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=160&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu,  6 Jan 2005 12:54:06 +0000">
+  <metadata tag="submitter" timestamp="2005-01-06T12:54:06Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu,  6 Jan 2005 12:55:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-06T12:55:35Z">
     koon
   </metadata>
 </glsa>

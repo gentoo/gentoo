@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">xpdf</product>
-  <announced>February 17, 2014</announced>
-  <revised>February 17, 2014: 1</revised>
+  <announced>2014-02-17</announced>
+  <revised>2014-02-17: 1</revised>
   <bug>386271</bug>
   <access>local, remote</access>
   <affected>
@@ -41,12 +41,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4035">CVE-2009-4035</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3702">CVE-2010-3702</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3704">CVE-2010-3704</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4035">CVE-2009-4035</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3702">CVE-2010-3702</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3704">CVE-2010-3704</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Feb 2012 22:01:40 +0000">
+  <metadata tag="requester" timestamp="2012-02-29T22:01:40Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 17 Feb 2014 19:53:35 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-02-17T19:53:35Z">ackle</metadata>
 </glsa>

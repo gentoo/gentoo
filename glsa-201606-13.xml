@@ -5,7 +5,7 @@
   <synopsis>sudo is vulnerable to an escalation of privileges via a symlink
     attack.
   </synopsis>
-  <product type="ebuild"></product>
+  <product type="ebuild"/>
   <announced>2016-06-26</announced>
   <revised>2017-04-17: 2</revised>
   <bug>564774</bug>
@@ -45,7 +45,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5602">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5602">
       CVE-2015-5602
     </uri>
   </references>

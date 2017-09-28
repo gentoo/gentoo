@@ -4,8 +4,8 @@
   <title>Ruby OpenID: Denial of Service</title>
   <synopsis>A vulnerability in Ruby OpenID may lead to Denial of Service.</synopsis>
   <product type="ebuild">ruby-openid</product>
-  <announced>May 17, 2014</announced>
-  <revised>May 17, 2014: 1</revised>
+  <announced>2014-05-17</announced>
+  <revised>2014-05-17: 1</revised>
   <bug>460156</bug>
   <access>remote</access>
   <affected>
@@ -39,8 +39,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1812">CVE-2013-1812</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1812">CVE-2013-1812</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 09 Apr 2013 22:41:55 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:48:57 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-04-09T22:41:55Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-17T17:48:57Z">ackle</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-10">
   <title>SKK Tools: Insecure temporary file creation</title>
   <synopsis>
     SKK insecurely creates temporary files.
   </synopsis>
   <product type="ebuild">skktools</product>
-  <announced>October 12, 2007</announced>
-  <revised>October 12, 2007: 01</revised>
+  <announced>2007-10-12</announced>
+  <revised>2007-10-12: 01</revised>
   <bug>193121</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-i18n/skktools-1.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-i18n/skktools-1.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3916">CVE-2007-3916</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3916">CVE-2007-3916</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Sep 2007 19:17:24 +0000">
+  <metadata tag="requester" timestamp="2007-09-20T19:17:24Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Sep 2007 19:18:40 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-20T19:18:40Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 20:45:18 +0000">
+  <metadata tag="submitter" timestamp="2007-10-07T20:45:18Z">
     aetius
   </metadata>
 </glsa>

@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2977">CVE-2014-2977</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2978">CVE-2014-2978</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2977">CVE-2014-2977</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2978">CVE-2014-2978</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T08:12:23Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-23T03:38:25Z">b-man</metadata>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-13">
   <title>3proxy: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">3proxy</product>
-  <announced>November 08, 2007</announced>
-  <revised>November 08, 2007: 01</revised>
+  <announced>2007-11-08</announced>
+  <revised>2007-11-08: 01</revised>
   <bug>196772</bug>
   <access>remote</access>
   <affected>
@@ -27,8 +26,8 @@
   <description>
     <p>
     3proxy contains a double free vulnerability in the ftpprchild()
-    function, which frees param->hostname and calls the parsehostname()
-    function, which in turn attempts to free param->hostname again.
+    function, which frees param-&gt;hostname and calls the parsehostname()
+    function, which in turn attempts to free param-&gt;hostname again.
     </p>
   </description>
   <impact type="normal">
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/3proxy-0.5.3j&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/3proxy-0.5.3j"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5622">CVE-2007-5622</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5622">CVE-2007-5622</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 Nov 2007 23:15:07 +0000">
+  <metadata tag="requester" timestamp="2007-11-02T23:15:07Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 03 Nov 2007 12:02:00 +0000">
+  <metadata tag="submitter" timestamp="2007-11-03T12:02:00Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 04 Nov 2007 14:26:02 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-04T14:26:02Z">
     rbu
   </metadata>
 </glsa>

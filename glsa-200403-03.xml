@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-03">
   <title>Multiple OpenSSL Vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     suite for the TLS protocol developed by Codenomicon Ltd.
   </synopsis>
   <product type="ebuild">OpenSSL</product>
-  <announced>March 17, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-03-17</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>44941</bug>
   <access>remote</access>
   <affected>
@@ -77,15 +76,15 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv &quot;&gt;=dev-libs/openssl-0.9.7d&quot;
-    # emerge &quot;&gt;=dev-libs/openssl-0.9.7d&quot;</code>
+    # emerge -pv "&gt;=dev-libs/openssl-0.9.7d"
+    # emerge "&gt;=dev-libs/openssl-0.9.7d"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0079">CVE-2004-0079</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0081">CVE-2004-0081</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0112">CVE-2004-0112</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0079">CVE-2004-0079</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0081">CVE-2004-0081</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0112">CVE-2004-0112</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:54:03 +0000">
+  <metadata tag="submitter" timestamp="2006-05-22T05:54:03Z">
     DerCorny
   </metadata>
 </glsa>

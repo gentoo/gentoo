@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-07">
   <title>GraphicsMagick: PALM and DCM buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">graphicsmagick</product>
-  <announced>November 13, 2006</announced>
-  <revised>November 13, 2006: 01</revised>
+  <announced>2006-11-13</announced>
+  <revised>2006-11-13: 01</revised>
   <bug>152668</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/graphicsmagick-1.1.7-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/graphicsmagick-1.1.7-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5456">CVE-2006-5456</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5456">CVE-2006-5456</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Nov 2006 14:10:18 +0000">
+  <metadata tag="requester" timestamp="2006-11-06T14:10:18Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Nov 2006 23:27:19 +0000">
+  <metadata tag="submitter" timestamp="2006-11-06T23:27:19Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 07 Nov 2006 12:33:19 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-07T12:33:19Z">
     falco
   </metadata>
 </glsa>

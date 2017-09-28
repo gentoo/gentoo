@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-07">
   <title>NX: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerabilities.
   </synopsis>
   <product type="ebuild">nx, nxnode</product>
-  <announced>July 09, 2008</announced>
-  <revised>July 09, 2008: 01</revised>
+  <announced>2008-07-09</announced>
+  <revised>2008-07-09: 01</revised>
   <bug>230147</bug>
   <access>remote</access>
   <affected>
@@ -55,21 +54,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nxnode-3.2.0-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/nxnode-3.2.0-r3"</code>
     <p>
     All NX users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nx-3.2.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/nx-3.2.0-r2"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200806-07.xml">GLSA 200806-07</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200806-07.xml">GLSA 200806-07</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 07 Jul 2008 00:06:37 +0000">
+  <metadata tag="submitter" timestamp="2008-07-07T00:06:37Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 07 Jul 2008 00:06:48 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-07T00:06:48Z">
     rbu
   </metadata>
 </glsa>

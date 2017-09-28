@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-18">
   <title>xine-ui: Format string vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">xine-ui</product>
-  <announced>January 23, 2007</announced>
-  <revised>January 23, 2007: 01</revised>
+  <announced>2007-01-23</announced>
+  <revised>2007-01-23: 01</revised>
   <bug>161558</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/xine-ui-0.99.5_pre20060716&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/xine-ui-0.99.5_pre20060716"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0254">CVE-2007-0254</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0254">CVE-2007-0254</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 17 Jan 2007 22:36:36 +0000">
+  <metadata tag="requester" timestamp="2007-01-17T22:36:36Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 17 Jan 2007 22:40:52 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-17T22:40:52Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 01:55:17 +0000">
+  <metadata tag="submitter" timestamp="2007-01-18T01:55:17Z">
     shellsage
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-20">
   <title>Macromedia Flash Player: Arbitrary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a user's system via the handling of malicious SWF files.
   </synopsis>
   <product type="ebuild">Flash</product>
-  <announced>March 21, 2006</announced>
-  <revised>May 28, 2009: 02</revised>
+  <announced>2006-03-21</announced>
+  <revised>2009-05-28: 02</revised>
   <bug>102777</bug>
   <access>remote</access>
   <affected>
@@ -50,16 +49,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-7.0.63&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-plugins/adobe-flash-7.0.63"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0024">CVE-2006-0024</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0024">CVE-2006-0024</uri>
     <uri link="http://www.macromedia.com/devnet/security/security_zone/apsb06-03.html">Macromedia Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 21 Mar 2006 19:42:52 +0000">
+  <metadata tag="submitter" timestamp="2006-03-21T19:42:52Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Mar 2006 19:43:49 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-21T19:43:49Z">
     jaervosz
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which could could allow an attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">jasper</product>
-  <announced>March 06, 2015</announced>
-  <revised>March 06, 2015: 1</revised>
+  <announced>2015-03-06</announced>
+  <revised>2015-03-06: 1</revised>
   <bug>531688</bug>
   <bug>533744</bug>
   <bug>537530</bug>
@@ -46,12 +46,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8137">CVE-2014-8137</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8138">CVE-2014-8138</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8157">CVE-2014-8157</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8158">CVE-2014-8158</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9029">CVE-2014-9029</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8137">CVE-2014-8137</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8138">CVE-2014-8138</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8157">CVE-2014-8157</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8158">CVE-2014-8158</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9029">CVE-2014-9029</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Jan 2015 23:22:20 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Fri, 06 Mar 2015 15:11:02 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-01-07T23:22:20Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-03-06T15:11:02Z">Zlogene</metadata>
 </glsa>

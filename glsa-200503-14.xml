@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-14">
   <title>KDE dcopidlng: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a local user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">dcopidlng</product>
-  <announced>March 07, 2005</announced>
-  <revised>March 07, 2005: 01</revised>
+  <announced>2005-03-07</announced>
+  <revised>2005-03-07: 01</revised>
   <bug>81652</bug>
   <access>local</access>
   <affected>
@@ -55,12 +54,12 @@
     # emerge --ask --oneshot --verbose kde-base/kdelibs</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0365">CAN-2005-0365</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0365">CAN-2005-0365</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu,  3 Mar 2005 21:01:57 +0000">
+  <metadata tag="submitter" timestamp="2005-03-03T21:01:57Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  6 Mar 2005 09:59:12 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-06T09:59:12Z">
     koon
   </metadata>
 </glsa>

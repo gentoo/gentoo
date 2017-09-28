@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-09">
   <title>Wine: Windows Metafile SETABORTPROC vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which could possibly result in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">wine</product>
-  <announced>January 13, 2006</announced>
-  <revised>February 26, 2007: 03</revised>
+  <announced>2006-01-13</announced>
+  <revised>2007-02-26: 03</revised>
   <bug>118101</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/wine-0.9.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/wine-0.9.0"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0106">CVE-2006-0106</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0106">CVE-2006-0106</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 08 Jan 2006 16:28:07 +0000">
+  <metadata tag="requester" timestamp="2006-01-08T16:28:07Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 08 Jan 2006 17:43:07 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-08T17:43:07Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Jan 2006 08:25:50 +0000">
+  <metadata tag="submitter" timestamp="2006-01-12T08:25:50Z">
     DerCorny
   </metadata>
 </glsa>

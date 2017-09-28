@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-22">
   <title>poppassd_pam: Unauthorized password changing</title>
   <synopsis>
@@ -8,8 +7,8 @@
     authenticating the user first.
   </synopsis>
   <product type="ebuild">poppassd_pam</product>
-  <announced>January 11, 2005</announced>
-  <revised>January 11, 2005: 01</revised>
+  <announced>2005-01-11</announced>
+  <revised>2005-01-11: 01</revised>
   <bug>75820</bug>
   <access>remote</access>
   <affected>
@@ -56,22 +55,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/poppassd_ceti-1.8.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/poppassd_ceti-1.8.4"</code>
     <p>
     Note: Portage will automatically replace the poppassd_pam
     package by the poppassd_ceti package.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0002">CAN-2005-0002</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0002">CAN-2005-0002</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 11 Jan 2005 08:56:45 +0000">
+  <metadata tag="requester" timestamp="2005-01-11T08:56:45Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Jan 2005 12:12:22 +0000">
+  <metadata tag="submitter" timestamp="2005-01-11T12:12:22Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 11 Jan 2005 19:52:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-11T19:52:14Z">
     koon
   </metadata>
 </glsa>

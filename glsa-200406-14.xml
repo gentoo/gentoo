@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-14">
   <title>aspell: Buffer overflow in word-list-compress</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">aspell</product>
-  <announced>June 17, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-06-17</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>53389</bug>
   <access>local</access>
   <affected>
@@ -51,12 +50,12 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-text/aspell-0.50.5-r4&quot;
-    # emerge &quot;&gt;=app-text/aspell-0.50.5-r4&quot;</code>
+    # emerge -pv "&gt;=app-text/aspell-0.50.5-r4"
+    # emerge "&gt;=app-text/aspell-0.50.5-r4"</code>
   </resolution>
   <references>
     <uri link="http://nettwerked.mg2.org/advisories/wlc">Nettwerked Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0548">CVE-2004-0548</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0548">CVE-2004-0548</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

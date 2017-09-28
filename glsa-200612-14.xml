@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200612-14">
   <title>Trac: Cross-site request forgery</title>
   <synopsis>
@@ -8,8 +7,8 @@
     users.
   </synopsis>
   <product type="ebuild">trac</product>
-  <announced>December 12, 2006</announced>
-  <revised>December 12, 2006: 01</revised>
+  <announced>2006-12-12</announced>
+  <revised>2006-12-12: 01</revised>
   <bug>154574</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/trac-0.10.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/trac-0.10.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5848">CVE-2006-5848</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5878">CVE-2006-5878</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5848">CVE-2006-5848</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5878">CVE-2006-5878</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 06 Dec 2006 06:01:31 +0000">
+  <metadata tag="requester" timestamp="2006-12-06T06:01:31Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 07 Dec 2006 10:06:43 +0000">
+  <metadata tag="bugReady" timestamp="2006-12-07T10:06:43Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 18:17:55 +0000">
+  <metadata tag="submitter" timestamp="2006-12-11T18:17:55Z">
     shellsage
   </metadata>
 </glsa>

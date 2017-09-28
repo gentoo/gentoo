@@ -7,8 +7,8 @@
     escalation.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>July 18, 2015</announced>
-  <revised>January 03, 2017: 3</revised>
+  <announced>2015-07-18</announced>
+  <revised>2017-01-03: 3</revised>
   <bug>539018</bug>
   <bug>550172</bug>
   <access>remote</access>
@@ -93,17 +93,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8161">CVE-2014-8161</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0241">CVE-2015-0241</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0242">CVE-2015-0242</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0243">CVE-2015-0243</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0244">CVE-2015-0244</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3165">CVE-2015-3165</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3166">CVE-2015-3166</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3167">CVE-2015-3167</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8161">CVE-2014-8161</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0241">CVE-2015-0241</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0242">CVE-2015-0242</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0243">CVE-2015-0243</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0244">CVE-2015-0244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3165">CVE-2015-3165</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3166">CVE-2015-3166</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3167">CVE-2015-3167</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Apr 2015 20:30:11 +0000">
+  <metadata tag="requester" timestamp="2015-04-22T20:30:11Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:30:36 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2017-01-03T04:30:36Z">Zlogene</metadata>
 </glsa>

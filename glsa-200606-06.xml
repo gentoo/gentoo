@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-06">
   <title>AWStats: Remote execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     can lead to the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">awstats</product>
-  <announced>June 07, 2006</announced>
-  <revised>May 28, 2009: 02</revised>
+  <announced>2006-06-07</announced>
+  <revised>2009-05-28: 02</revised>
   <bug>130487</bug>
   <access>remote</access>
   <affected>
@@ -55,19 +54,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-misc/awstats-6.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-misc/awstats-6.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1945">CVE-2006-1945</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2237">CVE-2006-2237</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1945">CVE-2006-1945</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2237">CVE-2006-2237</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 20 May 2006 08:51:28 +0000">
+  <metadata tag="requester" timestamp="2006-05-20T08:51:28Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 21 May 2006 19:06:44 +0000">
+  <metadata tag="submitter" timestamp="2006-05-21T19:06:44Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:20:28 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-05T17:20:28Z">
     falco
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-03">
   <title>Dia: Format string vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">dia</product>
-  <announced>June 07, 2006</announced>
-  <revised>June 07, 2006: 01</revised>
+  <announced>2006-06-07</announced>
+  <revised>2006-06-07: 01</revised>
   <bug>133699</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/dia-0.95.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/dia-0.95.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2453">CVE-2006-2453</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2480">CVE-2006-2480</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2453">CVE-2006-2453</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2480">CVE-2006-2480</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 30 May 2006 16:11:11 +0000">
+  <metadata tag="requester" timestamp="2006-05-30T16:11:11Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 30 May 2006 23:25:33 +0000">
+  <metadata tag="submitter" timestamp="2006-05-30T23:25:33Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:20:31 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-05T17:20:31Z">
     falco
   </metadata>
 </glsa>

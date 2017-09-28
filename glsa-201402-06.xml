@@ -6,8 +6,8 @@
     worst of which could result in execution of arbitrary code.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>February 06, 2014</announced>
-  <revised>February 06, 2014: 1</revised>
+  <announced>2014-02-06</announced>
+  <revised>2014-02-06: 1</revised>
   <bug>491148</bug>
   <bug>493894</bug>
   <bug>498170</bug>
@@ -50,18 +50,18 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5329">CVE-2013-5329</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5330">CVE-2013-5330</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5331">CVE-2013-5331</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5332">CVE-2013-5332</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0491">CVE-2014-0491</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0492">CVE-2014-0492</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0497">CVE-2014-0497</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5329">CVE-2013-5329</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5330">CVE-2013-5330</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5331">CVE-2013-5331</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5332">CVE-2013-5332</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0491">CVE-2014-0491</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0492">CVE-2014-0492</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0497">CVE-2014-0497</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 15 Nov 2013 06:52:08 +0000">
+  <metadata tag="requester" timestamp="2013-11-15T06:52:08Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 06 Feb 2014 10:58:54 +0000">
+  <metadata tag="submitter" timestamp="2014-02-06T10:58:54Z">
     pinkbyte
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-13">
   <title>kdebase, kdelibs: Multiple security issues</title>
   <synopsis>
@@ -9,8 +8,8 @@
     injection.
   </synopsis>
   <product type="ebuild">kde, kdebase, kdelibs</product>
-  <announced>August 12, 2004</announced>
-  <revised>August 12, 2004: 01</revised>
+  <announced>2004-08-12</announced>
+  <revised>2004-08-12: 01</revised>
   <bug>60068</bug>
   <access>remote and local</access>
   <affected>
@@ -62,18 +61,18 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=kde-base/kdebase-3.2.3-r1"
-    # emerge ">=kde-base/kdebase-3.2.3-r1"
+    # emerge -pv "&gt;=kde-base/kdebase-3.2.3-r1"
+    # emerge "&gt;=kde-base/kdebase-3.2.3-r1"
 
-    # emerge -pv ">=kde-base/kdelibs-3.2.3-r1"
-    # emerge ">=kde-base/kdelibs-3.2.3-r1"</code>
+    # emerge -pv "&gt;=kde-base/kdelibs-3.2.3-r1"
+    # emerge "&gt;=kde-base/kdelibs-3.2.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.kde.org/info/security/advisory-20040811-1.txt">KDE Advisory: Temporary Directory Vulnerability</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20040811-2.txt">KDE Advisory: DCOPServer Temporary Filename Vulnerability</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20040811-3.txt">KDE Advisory: Konqueror Frame Injection Vulnerability</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20040811-1.txt">KDE Advisory: Temporary Directory Vulnerability</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20040811-2.txt">KDE Advisory: DCOPServer Temporary Filename Vulnerability</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20040811-3.txt">KDE Advisory: Konqueror Frame Injection Vulnerability</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 11 Aug 2004 17:47:27 +0000">
+  <metadata tag="submitter" timestamp="2004-08-11T17:47:27Z">
     jaervosz
   </metadata>
 </glsa>

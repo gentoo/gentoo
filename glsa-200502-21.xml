@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-21">
   <title>lighttpd: Script source disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     should be executed as CGI or FastCGI applications.
   </synopsis>
   <product type="ebuild">lighttpd</product>
-  <announced>February 15, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-02-15</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>81776</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.3.10-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/lighttpd-1.3.10-r1"</code>
   </resolution>
   <references>
-    <uri link="http://article.gmane.org/gmane.comp.web.lighttpd/1171">lighttpd-announce Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0453">CVE-2005-0453</uri>
+    <uri link="https://article.gmane.org/gmane.comp.web.lighttpd/1171">lighttpd-announce Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0453">CVE-2005-0453</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 14 Feb 2005 12:34:31 +0000">
+  <metadata tag="requester" timestamp="2005-02-14T12:34:31Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 14 Feb 2005 20:13:10 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-14T20:13:10Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 14 Feb 2005 20:53:12 +0000">
+  <metadata tag="submitter" timestamp="2005-02-14T20:53:12Z">
     koon
   </metadata>
 </glsa>

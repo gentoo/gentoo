@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-13">
   <title>Smarty: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attackers to execute arbitrary PHP code.
   </synopsis>
   <product type="ebuild">smarty</product>
-  <announced>June 02, 2010</announced>
-  <revised>June 02, 2010: 01</revised>
+  <announced>2010-06-02</announced>
+  <revised>2010-06-02: 01</revised>
   <bug>212147</bug>
   <bug>243856</bug>
   <bug>270494</bug>
@@ -59,7 +58,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/smarty-2.6.23&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/smarty-2.6.23"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since June 2, 2009. It is likely that your system is already
@@ -67,18 +66,18 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1066">CVE-2008-1066</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4810">CVE-2008-4810</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4811">CVE-2008-4811</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1669">CVE-2009-1669</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1066">CVE-2008-1066</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4810">CVE-2008-4810</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4811">CVE-2008-4811</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1669">CVE-2009-1669</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 15 Mar 2008 21:06:13 +0000">
+  <metadata tag="requester" timestamp="2008-03-15T21:06:13Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 19 Sep 2008 19:51:21 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-19T19:51:21Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 30 May 2010 11:16:44 +0000">
+  <metadata tag="submitter" timestamp="2010-05-30T11:16:44Z">
     a3li
   </metadata>
 </glsa>

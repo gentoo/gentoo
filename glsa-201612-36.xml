@@ -7,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">tigervnc</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>534714</bug>
   <access>remote</access>
   <affected>
@@ -44,9 +44,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6051">CVE-2014-6051</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8240">CVE-2014-8240</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6051">CVE-2014-6051</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8240">CVE-2014-8240</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 21:39:43 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:26 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-29T21:39:43Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T06:59:26Z">whissi</metadata>
 </glsa>

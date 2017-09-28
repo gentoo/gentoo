@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-17">
   <title>ZNC: Directory traversal</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary files.
   </synopsis>
   <product type="ebuild">znc</product>
-  <announced>September 13, 2009</announced>
-  <revised>September 13, 2009: 01</revised>
+  <announced>2009-09-13</announced>
+  <revised>2009-09-13: 01</revised>
   <bug>278684</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/znc-0.074&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/znc-0.074"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2658">CVE-2009-2658</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2658">CVE-2009-2658</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 14 Aug 2009 18:19:47 +0000">
+  <metadata tag="requester" timestamp="2009-08-14T18:19:47Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 14 Aug 2009 18:28:31 +0000">
+  <metadata tag="submitter" timestamp="2009-08-14T18:28:31Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 08:50:23 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-31T08:50:23Z">
     keytoaster
   </metadata>
 </glsa>

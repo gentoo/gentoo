@@ -102,7 +102,7 @@
     <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7602">
       CVE-2017-7602
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9403">CVE-2017-9403</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9403">CVE-2017-9403</uri>
   </references>
   <metadata tag="requester" timestamp="2017-09-26T15:05:13Z">chrisadr</metadata>
   <metadata tag="submitter" timestamp="2017-09-26T22:14:50Z">chrisadr</metadata>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-26">
   <title>GNU Gadu, CenterICQ, Kadu, EKG, libgadu: Remote code execution in Gadu library</title>
   <synopsis>
@@ -9,8 +8,8 @@
     a Denial of Service.
   </synopsis>
   <product type="ebuild">gnugadu centericq kadu ekg libgadu</product>
-  <announced>July 27, 2005</announced>
-  <revised>February 26, 2007: 02</revised>
+  <announced>2005-07-27</announced>
+  <revised>2007-02-26: 02</revised>
   <bug>99816</bug>
   <bug>99890</bug>
   <bug>99583</bug>
@@ -67,47 +66,47 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/gnugadu-2.2.6-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/gnugadu-2.2.6-r1"</code>
     <p>
     All Kadu users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/kadu-0.4.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/kadu-0.4.1"</code>
     <p>
     All EKG users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/ekg-1.6_rc3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/ekg-1.6_rc3"</code>
     <p>
     All libgadu users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/libgadu-20050719&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/libgadu-20050719"</code>
     <p>
     All CenterICQ users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/centericq-4.20.0-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/centericq-4.20.0-r3"</code>
     <p>
     CenterICQ is no longer distributed with Gadu Gadu support, affected
     users are encouraged to migrate to an alternative package.
     </p>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1852">CAN-2005-1852</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1852">CAN-2005-1852</uri>
     <uri link="http://www.securityfocus.com/archive/1/406026/30/">BugTraq Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Jul 2005 12:05:13 +0000">
+  <metadata tag="requester" timestamp="2005-07-23T12:05:13Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 23 Jul 2005 12:53:13 +0000">
+  <metadata tag="submitter" timestamp="2005-07-23T12:53:13Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 26 Jul 2005 19:58:40 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-26T19:58:40Z">
     DerCorny
   </metadata>
 </glsa>

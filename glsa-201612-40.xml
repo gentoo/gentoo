@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">squashfs-tools</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 14, 2016: 3</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-14: 3</revised>
   <bug>427356</bug>
   <access>remote</access>
   <affected>
@@ -48,9 +48,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4024">CVE-2012-4024</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4025">CVE-2012-4025</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4024">CVE-2012-4024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4025">CVE-2012-4025</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 23:27:04 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 14 Dec 2016 10:21:21 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-29T23:27:04Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-14T10:21:21Z">whissi</metadata>
 </glsa>

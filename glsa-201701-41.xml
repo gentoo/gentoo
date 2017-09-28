@@ -41,7 +41,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3985">CVE-2014-3985</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3985">CVE-2014-3985</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-15T18:49:39Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-01-17T09:18:54Z">b-man</metadata>

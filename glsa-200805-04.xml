@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-04">
   <title>eGroupWare: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     attacks.
   </synopsis>
   <product type="ebuild">egroupware</product>
-  <announced>May 07, 2008</announced>
-  <revised>May 07, 2008: 01</revised>
+  <announced>2008-05-07</announced>
+  <revised>2008-05-07: 01</revised>
   <bug>214212</bug>
   <bug>218625</bug>
   <access>remote</access>
@@ -57,19 +56,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/egroupware-1.4.004&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/egroupware-1.4.004"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1502">CVE-2008-1502</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2041">CVE-2008-2041</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1502">CVE-2008-1502</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2041">CVE-2008-2041</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 12:58:46 +0000">
+  <metadata tag="requester" timestamp="2008-04-29T12:58:46Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 29 Apr 2008 13:57:44 +0000">
+  <metadata tag="submitter" timestamp="2008-04-29T13:57:44Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 29 Apr 2008 14:01:45 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-29T14:01:45Z">
     vorlon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-05">
   <title>QGit: Insecure temporary file creation</title>
   <synopsis>
@@ -9,8 +8,8 @@
     rights.
   </synopsis>
   <product type="ebuild">qgit</product>
-  <announced>October 07, 2007</announced>
-  <revised>October 07, 2007: 01</revised>
+  <announced>2007-10-07</announced>
+  <revised>2007-10-07: 01</revised>
   <bug>190697</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/qgit-1.5.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/qgit-1.5.7"</code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-4631">CVE-2007-4631</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-4631">CVE-2007-4631</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 24 Sep 2007 08:55:56 +0000">
+  <metadata tag="requester" timestamp="2007-09-24T08:55:56Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 24 Sep 2007 08:56:46 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-24T08:56:46Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 07 Oct 2007 18:55:10 +0000">
+  <metadata tag="submitter" timestamp="2007-10-07T18:55:10Z">
     rbu
   </metadata>
 </glsa>

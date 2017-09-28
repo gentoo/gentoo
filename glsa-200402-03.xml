@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200402-03">
   <title>Monkeyd Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     launched against the webserver.
   </synopsis>
   <product type="ebuild">monkeyd</product>
-  <announced>February 11, 2004</announced>
-  <revised>February 11, 2004: 01</revised>
+  <announced>2004-02-11</announced>
+  <revised>2004-02-11: 01</revised>
   <bug>41156</bug>
   <access>remote</access>
   <affected>
@@ -50,10 +49,10 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv ">=www-servers/monkeyd-0.8.2"
-    # emerge ">=www-servers/monkeyd-0.8.2"</code>
+    # emerge -pv "&gt;=www-servers/monkeyd-0.8.2"
+    # emerge "&gt;=www-servers/monkeyd-0.8.2"</code>
   </resolution>
   <references>
-    <uri link="http://cvs.sourceforge.net/viewcvs.py/monkeyd/monkeyd/src/utils.c?r1=1.3&amp;r2=1.4">CVS Patch</uri>
+    <uri link="https://cvs.sourceforge.net/viewcvs.py/monkeyd/monkeyd/src/utils.c?r1=1.3&amp;r2=1.4">CVS Patch</uri>
   </references>
 </glsa>

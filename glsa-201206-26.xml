@@ -7,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">RPM</product>
-  <announced>June 24, 2012</announced>
-  <revised>June 24, 2012: 1</revised>
+  <announced>2012-06-24</announced>
+  <revised>2012-06-24: 1</revised>
   <bug>335880</bug>
   <bug>384967</bug>
   <bug>410949</bug>
@@ -72,17 +72,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2059">CVE-2010-2059</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2197">CVE-2010-2197</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2198">CVE-2010-2198</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2199">CVE-2010-2199</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3378">CVE-2011-3378</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0060">CVE-2012-0060</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0061">CVE-2012-0061</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0815">CVE-2012-0815</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2059">CVE-2010-2059</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2197">CVE-2010-2197</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2198">CVE-2010-2198</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2199">CVE-2010-2199</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3378">CVE-2011-3378</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0060">CVE-2012-0060</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0061">CVE-2012-0061</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0815">CVE-2012-0815</uri>
   </references>
-  <metadata timestamp="Sun, 25 Mar 2012 14:53:26 +0000" tag="requester">
+  <metadata timestamp="2012-03-25T14:53:26Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 24 Jun 2012 22:36:58 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-24T22:36:58Z" tag="submitter">ackle</metadata>
 </glsa>

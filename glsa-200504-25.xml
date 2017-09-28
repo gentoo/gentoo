@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-25">
   <title>Rootkit Hunter: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     local user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">rkhunter</product>
-  <announced>April 26, 2005</announced>
-  <revised>April 26, 2005: 01</revised>
+  <announced>2005-04-26</announced>
+  <revised>2005-04-26: 01</revised>
   <bug>90007</bug>
   <access>local</access>
   <affected>
@@ -54,15 +53,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-forensics/rkhunter-1.2.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-forensics/rkhunter-1.2.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1270">CAN-2005-1270</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1270">CAN-2005-1270</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 26 Apr 2005 06:10:01 +0000">
+  <metadata tag="submitter" timestamp="2005-04-26T06:10:01Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 26 Apr 2005 18:37:38 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-26T18:37:38Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which may allow an attacker to bypass authentication.
   </synopsis>
   <product type="ebuild">pgbouncer</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>550124</bug>
   <bug>600184</bug>
   <access>remote</access>
@@ -44,9 +44,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4054">CVE-2015-4054</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6817">CVE-2015-6817</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4054">CVE-2015-4054</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6817">CVE-2015-6817</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 13:32:34 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:24:51 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-09T13:32:34Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:24:51Z">whissi</metadata>
 </glsa>

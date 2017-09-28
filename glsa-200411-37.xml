@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-37">
   <title>Open DC Hub: Remote code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote code execution.
   </synopsis>
   <product type="ebuild">opendchub</product>
-  <announced>November 28, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-11-28</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>72371</bug>
   <access>remote</access>
   <affected>
@@ -47,16 +46,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/opendchub-0.7.14-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/opendchub-0.7.14-r2"</code>
   </resolution>
   <references>
     <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2004-11/1115.html">Full-Disclosure Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1127">CVE-2004-1127</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1127">CVE-2004-1127</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 28 Nov 2004 03:48:46 +0000">
+  <metadata tag="submitter" timestamp="2004-11-28T03:48:46Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 28 Nov 2004 03:49:07 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-28T03:49:07Z">
     lewk
   </metadata>
 </glsa>

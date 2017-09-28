@@ -4,8 +4,8 @@
   <title>HAProxy: Arbitrary code execution</title>
   <synopsis>A buffer overflow in HAProxy may allow execution of arbitrary code.</synopsis>
   <product type="ebuild">haproxy</product>
-  <announced>January 08, 2013</announced>
-  <revised>January 08, 2013: 1</revised>
+  <announced>2013-01-08</announced>
+  <revised>2013-01-08: 1</revised>
   <bug>417079</bug>
   <access>remote</access>
   <affected>
@@ -40,10 +40,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2942">CVE-2012-2942</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2942">CVE-2012-2942</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 10 Jun 2012 15:38:17 +0000">
+  <metadata tag="requester" timestamp="2012-06-10T15:38:17Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 08 Jan 2013 23:51:14 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-01-08T23:51:14Z">ackle</metadata>
 </glsa>

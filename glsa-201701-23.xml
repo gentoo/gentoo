@@ -6,8 +6,8 @@
     which might allow remote attackers to obtain ECDSA secret keys.
   </synopsis>
   <product type="ebuild">botan</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>581324</bug>
   <access>remote</access>
   <affected>
@@ -41,9 +41,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2849">CVE-2016-2849</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2850">CVE-2016-2850</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2849">CVE-2016-2849</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2850">CVE-2016-2850</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 17:45:34 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:23:40 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-09T17:45:34Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:23:40Z">whissi</metadata>
 </glsa>

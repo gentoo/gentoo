@@ -6,8 +6,8 @@
     which could result in execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">libXfont</product>
-  <announced>July 22, 2015</announced>
-  <revised>July 22, 2015: 1</revised>
+  <announced>2015-07-22</announced>
+  <revised>2015-07-22: 1</revised>
   <bug>543620</bug>
   <access>remote</access>
   <affected>
@@ -50,12 +50,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1802">CVE-2015-1802</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1803">CVE-2015-1803</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1804">CVE-2015-1804</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1802">CVE-2015-1802</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1803">CVE-2015-1803</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1804">CVE-2015-1804</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 04 Apr 2015 15:23:52 +0000">
+  <metadata tag="requester" timestamp="2015-04-04T15:23:52Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 22 Jul 2015 15:44:59 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-22T15:44:59Z">Zlogene</metadata>
 </glsa>

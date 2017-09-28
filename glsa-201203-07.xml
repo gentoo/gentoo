@@ -6,8 +6,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">foomatic-filters</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>379559</bug>
   <access>remote</access>
   <affected>
@@ -46,9 +46,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2697">CVE-2011-2697</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2964">CVE-2011-2964</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2697">CVE-2011-2697</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2964">CVE-2011-2964</uri>
   </references>
-  <metadata timestamp="Sun, 29 Jan 2012 22:40:52 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:40:15 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-29T22:40:52Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:40:15Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-41">
   <title>gedit: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">gedit</product>
-  <announced>March 30, 2009</announced>
-  <revised>March 30, 2009: 01</revised>
+  <announced>2009-03-30</announced>
+  <revised>2009-03-30: 01</revised>
   <bug>257004</bug>
   <access>local</access>
   <affected>
@@ -48,25 +47,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gedit-2.22.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/gedit-2.22.3-r1"</code>
     <p>
     All gedit 2.24.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gedit-2.24.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/gedit-2.24.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5983">CVE-2008-5983</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0314">CVE-2009-0314</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5983">CVE-2008-5983</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0314">CVE-2009-0314</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 23 Mar 2009 09:17:57 +0000">
+  <metadata tag="requester" timestamp="2009-03-23T09:17:57Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 30 Mar 2009 11:46:10 +0000">
+  <metadata tag="submitter" timestamp="2009-03-30T11:46:10Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 30 Mar 2009 11:46:20 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-30T11:46:20Z">
     p-y
   </metadata>
 </glsa>

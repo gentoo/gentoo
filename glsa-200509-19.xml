@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-19">
   <title>PHP: Vulnerabilities in included PCRE and XML-RPC libraries</title>
   <synopsis>
@@ -9,8 +8,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>September 27, 2005</announced>
-  <revised>September 27, 2005: 01</revised>
+  <announced>2005-09-27</announced>
+  <revised>2005-09-27: 01</revised>
   <bug>102373</bug>
   <access>remote</access>
   <affected>
@@ -81,15 +80,15 @@
     # emerge --ask --oneshot --verbose dev-php/php-cgi</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
-    <uri link="/security/en/glsa/glsa-200508-13.xml">GLSA 200508-13</uri>
-    <uri link="/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200508-13.xml">GLSA 200508-13</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 26 Sep 2005 15:50:10 +0000">
+  <metadata tag="submitter" timestamp="2005-09-26T15:50:10Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 27 Sep 2005 07:58:50 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-27T07:58:50Z">
     koon
   </metadata>
 </glsa>

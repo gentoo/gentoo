@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-15">
   <title>PostgreSQL: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escalation or a Denial of Service.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>January 29, 2008</announced>
-  <revised>January 29, 2008: 01</revised>
+  <announced>2008-01-29</announced>
+  <revised>2008-01-29: 01</revised>
   <bug>204760</bug>
   <access>remote</access>
   <affected>
@@ -60,23 +59,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-db/postgresql&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-db/postgresql"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3278">CVE-2007-3278</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4769">CVE-2007-4769</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4772">CVE-2007-4772</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6067">CVE-2007-6067</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6600">CVE-2007-6600</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6601">CVE-2007-6601</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3278">CVE-2007-3278</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4769">CVE-2007-4769</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4772">CVE-2007-4772</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6067">CVE-2007-6067</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6600">CVE-2007-6600</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6601">CVE-2007-6601</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Jan 2008 00:00:08 +0000">
+  <metadata tag="requester" timestamp="2008-01-20T00:00:08Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 20 Jan 2008 00:56:13 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-20T00:56:13Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Jan 2008 22:38:13 +0000">
+  <metadata tag="submitter" timestamp="2008-01-20T22:38:13Z">
     falco
   </metadata>
 </glsa>

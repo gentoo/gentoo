@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-14">
   <title>acroread: UUDecode filename buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     may lead to execution of arbitrary code or programs.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>August 15, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-08-15</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>60205</bug>
   <access>remote</access>
   <affected>
@@ -52,16 +51,16 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-text/acroread-5.09&quot;
-    # emerge &quot;&gt;=app-text/acroread-5.09&quot;</code>
+    # emerge -pv "&gt;=app-text/acroread-5.09"
+    # emerge "&gt;=app-text/acroread-5.09"</code>
   </resolution>
   <references>
     <uri link="http://idefense.com/application/poi/display?id=124&amp;type=vulnerabilities">iDEFENSE Advisory 124</uri>
     <uri link="http://idefense.com/application/poi/display?id=125&amp;type=vulnerabilities">iDEFENSE Advisory 125</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0630">CVE-2004-0630</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0631">CVE-2004-0631</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0630">CVE-2004-0630</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0631">CVE-2004-0631</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 14 Aug 2004 07:56:36 +0000">
+  <metadata tag="submitter" timestamp="2004-08-14T07:56:36Z">
     jaervosz
   </metadata>
 </glsa>

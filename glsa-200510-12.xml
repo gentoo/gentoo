@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-12">
   <title>KOffice, KWord: RTF import buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">koffice, kword</product>
-  <announced>October 14, 2005</announced>
-  <revised>October 14, 2005: 01</revised>
+  <announced>2005-10-14</announced>
+  <revised>2005-10-14: 01</revised>
   <bug>108411</bug>
   <access>remote</access>
   <affected>
@@ -52,22 +51,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/koffice-1.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/koffice-1.4.1-r1"</code>
     <p>
     All KWord users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/kword-1.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/kword-1.4.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-2971">CAN-2005-2971</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20051011-1.txt">KDE Security Advisory: KWord RTF import buffer overflow</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-2971">CAN-2005-2971</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20051011-1.txt">KDE Security Advisory: KWord RTF import buffer overflow</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 11 Oct 2005 14:40:11 +0000">
+  <metadata tag="submitter" timestamp="2005-10-11T14:40:11Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 14 Oct 2005 05:26:32 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-14T05:26:32Z">
     jaervosz
   </metadata>
 </glsa>

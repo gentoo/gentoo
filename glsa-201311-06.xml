@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause Denial of Service. 
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>November 10, 2013</announced>
-  <revised>November 10, 2013: 1</revised>
+  <announced>2013-11-10</announced>
+  <revised>2013-11-10: 1</revised>
   <bug>434344</bug>
   <bug>444836</bug>
   <bug>458430</bug>
@@ -48,13 +48,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2871">CVE-2012-2871</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5134">CVE-2012-5134</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0338">CVE-2013-0338</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1664">CVE-2013-1664</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1969">CVE-2013-1969</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2877">CVE-2013-2877</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2871">CVE-2012-2871</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5134">CVE-2012-5134</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0338">CVE-2013-0338</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1664">CVE-2013-1664</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1969">CVE-2013-1969</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2877">CVE-2013-2877</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 18 Sep 2012 19:04:07 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 10 Nov 2013 14:54:33 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-18T19:04:07Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-11-10T14:54:33Z">ackle</metadata>
 </glsa>

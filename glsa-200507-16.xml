@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-16">
   <title>dhcpcd: Denial of Service vulnerability</title>
   <synopsis>
     A vulnerability in dhcpcd may cause the dhcpcd daemon to crash.
   </synopsis>
   <product type="ebuild">dhcpcd</product>
-  <announced>July 15, 2005</announced>
-  <revised>July 15, 2005: 01</revised>
+  <announced>2005-07-15</announced>
+  <revised>2005-07-15: 01</revised>
   <bug>98394</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dhcpcd-1.3.22_p4-r11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcpcd-1.3.22_p4-r11"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1848">CAN-2005-1848</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1848">CAN-2005-1848</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 Jul 2005 14:38:55 +0000">
+  <metadata tag="requester" timestamp="2005-07-11T14:38:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 11 Jul 2005 17:42:40 +0000">
+  <metadata tag="submitter" timestamp="2005-07-11T17:42:40Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 12 Jul 2005 08:00:32 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-12T08:00:32Z">
     koon
   </metadata>
 </glsa>

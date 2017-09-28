@@ -6,8 +6,8 @@
     which might allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gif2png</product>
-  <announced>March 16, 2012</announced>
-  <revised>March 16, 2012: 1</revised>
+  <announced>2012-03-16</announced>
+  <revised>2012-03-16: 1</revised>
   <bug>351698</bug>
   <access>remote</access>
   <affected>
@@ -51,9 +51,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4694">CVE-2010-4694</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4695">CVE-2010-4695</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4694">CVE-2010-4694</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4695">CVE-2010-4695</uri>
   </references>
-  <metadata timestamp="Fri, 09 Mar 2012 22:46:15 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 16 Mar 2012 10:58:44 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-09T22:46:15Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-16T10:58:44Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-18">
   <title>Buffer Overflow in Firebird</title>
   <synopsis>
@@ -9,8 +8,8 @@
     binaries.
   </synopsis>
   <product type="ebuild">firebird</product>
-  <announced>May 23, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-05-23</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>20837</bug>
   <access>local</access>
   <affected>
@@ -52,13 +51,13 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=dev-db/firebird-1.5&quot;
-    # emerge &quot;&gt;=dev-db/firebird-1.5&quot;</code>
+    # emerge -pv "&gt;=dev-db/firebird-1.5"
+    # emerge "&gt;=dev-db/firebird-1.5"</code>
   </resolution>
   <references>
     <uri link="http://securityfocus.com/bid/7546/info/">Bugtraq Security Announcement</uri>
-    <uri link=" http://sourceforge.net/tracker/?group_id=9028&amp;atid=109028&amp;func=detail&amp;aid=739480">Sourceforge BugTracker Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0281">CVE-2003-0281</uri>
+    <uri link=" https://sourceforge.net/tracker/?group_id=9028&amp;atid=109028&amp;func=detail&amp;aid=739480">Sourceforge BugTracker Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0281">CVE-2003-0281</uri>
   </references>
   <metadata tag="submitter">
     dmargoli

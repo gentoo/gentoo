@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-22">
   <title>Apache 1.3: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Apache 1.3.
   </synopsis>
   <product type="ebuild">Apache</product>
-  <announced>May 26, 2004</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2004-05-26</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>51815</bug>
   <access>remote </access>
   <affected>
@@ -68,14 +67,14 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-servers/apache-1.3.31"
-    # emerge ">=www-servers/apache-1.3.31"</code>
+    # emerge -pv "&gt;=www-servers/apache-1.3.31"
+    # emerge "&gt;=www-servers/apache-1.3.31"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0993">CAN-2003-0993</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0020">CAN-2003-0020</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0987">CAN-2003-0987</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0174">CAN-2004-0174</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0993">CAN-2003-0993</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0020">CAN-2003-0020</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0987">CAN-2003-0987</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0174">CAN-2004-0174</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

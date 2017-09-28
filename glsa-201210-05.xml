@@ -6,8 +6,8 @@
     allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">bash</product>
-  <announced>October 20, 2012</announced>
-  <revised>October 20, 2012: 1</revised>
+  <announced>2012-10-20</announced>
+  <revised>2012-10-20: 1</revised>
   <bug>251319</bug>
   <bug>431850</bug>
   <access>local</access>
@@ -56,11 +56,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5374">CVE-2008-5374</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3410">CVE-2012-3410</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5374">CVE-2008-5374</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3410">CVE-2012-3410</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Sep 2012 16:02:06 +0000">
+  <metadata tag="requester" timestamp="2012-09-04T16:02:06Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 20 Oct 2012 00:12:47 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-10-20T00:12:47Z">ackle</metadata>
 </glsa>

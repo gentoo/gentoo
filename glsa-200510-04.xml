@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-04">
   <title>Texinfo: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">Texinfo</product>
-  <announced>October 05, 2005</announced>
-  <revised>October 05, 2005: 01</revised>
+  <announced>2005-10-05</announced>
+  <revised>2005-10-05: 01</revised>
   <bug>106105</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/texinfo-4.8-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/texinfo-4.8-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3011">CAN-2005-3011</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3011">CAN-2005-3011</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 29 Sep 2005 14:54:06 +0000">
+  <metadata tag="requester" timestamp="2005-09-29T14:54:06Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 29 Sep 2005 19:15:57 +0000">
+  <metadata tag="submitter" timestamp="2005-09-29T19:15:57Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 01 Oct 2005 09:53:58 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-01T09:53:58Z">
     koon
   </metadata>
 </glsa>

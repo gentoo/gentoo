@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-17">
   <title>scponly: Multiple privilege escalation issues</title>
   <synopsis>
@@ -9,8 +8,8 @@
     restrictions.
   </synopsis>
   <product type="ebuild">scponly</product>
-  <announced>December 29, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-12-29</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>116526</bug>
   <access>local and remote</access>
   <affected>
@@ -54,17 +53,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/scponly-4.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/scponly-4.2"</code>
   </resolution>
   <references>
     <uri link="http://sublimation.org/scponly/index.html#relnotes">scponly release notes</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4532">CVE-2005-4532</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4533">CVE-2005-4533</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4532">CVE-2005-4532</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4533">CVE-2005-4533</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 27 Dec 2005 09:38:39 +0000">
+  <metadata tag="submitter" timestamp="2005-12-27T09:38:39Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 29 Dec 2005 10:10:38 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-29T10:10:38Z">
     koon
   </metadata>
 </glsa>

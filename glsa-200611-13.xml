@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-13">
-  <title>Avahi: &quot;netlink&quot; message vulnerability</title>
+  <title>Avahi: "netlink" message vulnerability</title>
   <synopsis>
     Avahi fails to verify the origin of netlink messages, which could allow
     local users to spoof network changes.
   </synopsis>
   <product type="ebuild">avahi</product>
-  <announced>November 20, 2006</announced>
-  <revised>November 20, 2006: 01</revised>
+  <announced>2006-11-20</announced>
+  <revised>2006-11-20: 01</revised>
   <bug>154322</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/avahi-0.6.15&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/avahi-0.6.15"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5461">CVE-2006-5461</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5461">CVE-2006-5461</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Nov 2006 11:46:25 +0000">
+  <metadata tag="requester" timestamp="2006-11-16T11:46:25Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Nov 2006 11:47:51 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-16T11:47:51Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Nov 2006 08:40:32 +0000">
+  <metadata tag="submitter" timestamp="2006-11-20T08:40:32Z">
     jaervosz
   </metadata>
 </glsa>

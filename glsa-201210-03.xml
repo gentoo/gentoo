@@ -6,8 +6,8 @@
     overwrite arbitrary files has been found in rdesktop.
   </synopsis>
   <product type="ebuild">rdesktop</product>
-  <announced>October 18, 2012</announced>
-  <revised>October 18, 2012: 1</revised>
+  <announced>2012-10-18</announced>
+  <revised>2012-10-18: 1</revised>
   <bug>364191</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1595">CVE-2011-1595</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1595">CVE-2011-1595</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:09 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:09Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:47:56 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2012-10-18T20:47:56Z">craig</metadata>
 </glsa>

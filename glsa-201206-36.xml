@@ -6,8 +6,8 @@
     to arbitrary system command execution.
   </synopsis>
   <product type="ebuild">logrotate</product>
-  <announced>June 25, 2012</announced>
-  <revised>June 25, 2012: 1</revised>
+  <announced>2012-06-25</announced>
+  <revised>2012-06-25: 1</revised>
   <bug>356811</bug>
   <bug>372973</bug>
   <access>local</access>
@@ -48,13 +48,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1098">CVE-2011-1098</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1154">CVE-2011-1154</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1155">CVE-2011-1155</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1549">CVE-2011-1549</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1098">CVE-2011-1098</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1154">CVE-2011-1154</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1155">CVE-2011-1155</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1549">CVE-2011-1549</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:29 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:29Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 25 Jun 2012 19:17:59 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2012-06-25T19:17:59Z" tag="submitter">craig</metadata>
 </glsa>

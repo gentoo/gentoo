@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-04">
   <title>po4a: Insecure temporary file creation</title>
   <synopsis>
     A vulnerability has been discovered in po4a, allowing for a symlink attack.
   </synopsis>
   <product type="ebuild">po4a</product>
-  <announced>September 13, 2007</announced>
-  <revised>September 13, 2007: 01</revised>
+  <announced>2007-09-13</announced>
+  <revised>2007-09-13: 01</revised>
   <bug>189440</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/po4a-0.32-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/po4a-0.32-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4462">CVE-2007-4462</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4462">CVE-2007-4462</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 28 Aug 2007 20:28:00 +0000">
+  <metadata tag="requester" timestamp="2007-08-28T20:28:00Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 28 Aug 2007 20:28:12 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-28T20:28:12Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 08 Sep 2007 16:20:41 +0000">
+  <metadata tag="submitter" timestamp="2007-09-08T16:20:41Z">
     p-y
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-13">
   <title>OpenOffice.Org: DOC document Heap Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     documents, which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">OpenOffice</product>
-  <announced>April 15, 2005</announced>
-  <revised>May 08, 2005: 02</revised>
+  <announced>2005-04-15</announced>
+  <revised>2005-05-08: 02</revised>
   <bug>88863</bug>
   <access>remote</access>
   <affected>
@@ -60,13 +59,13 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-1.1.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-1.1.4-r1"</code>
     <p>
     All OpenOffice.Org binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-1.1.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-1.1.4-r1"</code>
     <p>
     All OpenOffice.Org Ximian users should upgrade to the latest version:
     </p>
@@ -85,16 +84,16 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://www.openoffice.org/issues/show_bug.cgi?id=46388">OpenOffice.Org Issue 46388</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0941">CAN-2005-0941</uri>
+    <uri link="https://www.openoffice.org/issues/show_bug.cgi?id=46388">OpenOffice.Org Issue 46388</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0941">CAN-2005-0941</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 13 Apr 2005 09:08:22 +0000">
+  <metadata tag="requester" timestamp="2005-04-13T09:08:22Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 14 Apr 2005 15:46:07 +0000">
+  <metadata tag="submitter" timestamp="2005-04-14T15:46:07Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 15 Apr 2005 07:51:32 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-15T07:51:32Z">
     koon
   </metadata>
 </glsa>

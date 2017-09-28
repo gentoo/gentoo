@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Asterisk</product>
-  <announced>March 28, 2012</announced>
-  <revised>March 28, 2012: 1</revised>
+  <announced>2012-03-28</announced>
+  <revised>2012-03-28: 1</revised>
   <bug>408431</bug>
   <access>remote</access>
   <affected>
@@ -49,15 +49,15 @@
     
   </resolution>
   <references>
-    <uri link="http://downloads.asterisk.org/pub/security/AST-2012-002.txt">
+    <uri link="https://downloads.asterisk.org/pub/security/AST-2012-002.txt">
       AST-2012-002
     </uri>
-    <uri link="http://downloads.asterisk.org/pub/security/AST-2012-003.txt">
+    <uri link="https://downloads.asterisk.org/pub/security/AST-2012-003.txt">
       AST-2012-003
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1183">CVE-2012-1183</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1184">CVE-2012-1184</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1183">CVE-2012-1183</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1184">CVE-2012-1184</uri>
   </references>
-  <metadata timestamp="Fri, 16 Mar 2012 10:54:51 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Wed, 28 Mar 2012 10:35:00 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-16T10:54:51Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-28T10:35:00Z" tag="submitter">ackle</metadata>
 </glsa>

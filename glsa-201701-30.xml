@@ -6,8 +6,8 @@
     ploop containers.
   </synopsis>
   <product type="ebuild">vzctl</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>560522</bug>
   <access>local, remote</access>
   <affected>
@@ -47,8 +47,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6927">CVE-2015-6927</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6927">CVE-2015-6927</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 Jan 2017 16:32:14 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:39:20 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-10T16:32:14Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:39:20Z">whissi</metadata>
 </glsa>

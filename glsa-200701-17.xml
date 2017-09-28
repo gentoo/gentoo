@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-17">
   <title>libgtop: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">libgtop</product>
-  <announced>January 23, 2007</announced>
-  <revised>January 23, 2007: 01</revised>
+  <announced>2007-01-23</announced>
+  <revised>2007-01-23: 01</revised>
   <bug>162169</bug>
   <access>local</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-base/libgtop-2.14.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=gnome-base/libgtop-2.14.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0235">CVE-2007-0235</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0235">CVE-2007-0235</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 17 Jan 2007 22:40:30 +0000">
+  <metadata tag="requester" timestamp="2007-01-17T22:40:30Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 17:24:28 +0000">
+  <metadata tag="submitter" timestamp="2007-01-18T17:24:28Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 22 Jan 2007 12:14:40 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-22T12:14:40Z">
     falco
   </metadata>
 </glsa>

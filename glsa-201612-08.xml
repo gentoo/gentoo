@@ -6,8 +6,8 @@
     allow remote attackers to have an unspecified impact via unknown vectors.
   </synopsis>
   <product type="ebuild">cifs-utils</product>
-  <announced>December 04, 2016</announced>
-  <revised>December 04, 2016: 1</revised>
+  <announced>2016-12-04</announced>
+  <revised>2016-12-04: 1</revised>
   <bug>552634</bug>
   <access>remote</access>
   <affected>
@@ -46,10 +46,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2830">CVE-2014-2830</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2830">CVE-2014-2830</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:13:41 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:13:41Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 11:02:29 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-04T11:02:29Z">whissi</metadata>
 </glsa>

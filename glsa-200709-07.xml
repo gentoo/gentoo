@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-07">
   <title>Eggdrop: Buffer overflow</title>
   <synopsis>
     A remote stack-based buffer overflow has been discovered in Eggdrop.
   </synopsis>
   <product type="ebuild">eggdrop</product>
-  <announced>September 15, 2007</announced>
-  <revised>September 26, 2007: 02</revised>
+  <announced>2007-09-15</announced>
+  <revised>2007-09-26: 02</revised>
   <bug>179354</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/eggdrop-1.6.18-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/eggdrop-1.6.18-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2807">CVE-2007-2807</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2807">CVE-2007-2807</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 23 Aug 2007 09:04:09 +0000">
+  <metadata tag="requester" timestamp="2007-08-23T09:04:09Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 23 Aug 2007 09:04:22 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-23T09:04:22Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 07 Sep 2007 09:43:27 +0000">
+  <metadata tag="submitter" timestamp="2007-09-07T09:43:27Z">
     p-y
   </metadata>
 </glsa>

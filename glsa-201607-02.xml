@@ -6,9 +6,9 @@
     which could lead to arbitrary code execution, or cause a Denial of Service
     condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 09, 2016</announced>
-  <revised>July 09, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-09</announced>
+  <revised>2016-07-09: 1</revised>
   <bug>529952</bug>
   <bug>551240</bug>
   <bug>553300</bug>
@@ -48,31 +48,31 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8964">CVE-2014-8964</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8964">CVE-2014-8964</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8380">CVE-2015-8380</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8381">CVE-2015-8381</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8383">CVE-2015-8383</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8384">CVE-2015-8384</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8385">CVE-2015-8385</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8386">CVE-2015-8386</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8387">CVE-2015-8387</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8388">CVE-2015-8388</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8389">CVE-2015-8389</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8390">CVE-2015-8390</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8391">CVE-2015-8391</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8392">CVE-2015-8392</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8393">CVE-2015-8393</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8394">CVE-2015-8394</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8395">CVE-2015-8395</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1283">CVE-2016-1283</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1283">CVE-2016-1283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8964">CVE-2014-8964</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8964">CVE-2014-8964</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5073">CVE-2015-5073</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8380">CVE-2015-8380</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8381">CVE-2015-8381</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8383">CVE-2015-8383</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8384">CVE-2015-8384</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8385">CVE-2015-8385</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8386">CVE-2015-8386</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8387">CVE-2015-8387</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8388">CVE-2015-8388</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8389">CVE-2015-8389</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8390">CVE-2015-8390</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8391">CVE-2015-8391</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8392">CVE-2015-8392</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8393">CVE-2015-8393</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8394">CVE-2015-8394</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8395">CVE-2015-8395</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1283">CVE-2016-1283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1283">CVE-2016-1283</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 06:59:58 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T06:59:58Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 09 Jul 2016 02:07:37 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-09T02:07:37Z">b-man</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">pecl_http</product>
-  <announced>December 07, 2016</announced>
-  <revised>December 07, 2016: 1</revised>
+  <announced>2016-12-07</announced>
+  <revised>2016-12-07: 1</revised>
   <bug>587466</bug>
   <access>remote</access>
   <affected>
@@ -44,8 +44,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5873">CVE-2016-5873</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5873">CVE-2016-5873</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 25 Nov 2016 03:43:01 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 07 Dec 2016 10:29:47 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-25T03:43:01Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-07T10:29:47Z">b-man</metadata>
 </glsa>

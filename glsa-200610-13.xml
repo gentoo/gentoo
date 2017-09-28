@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200610-13">
   <title>Cheese Tracker: Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">cheesetracker</product>
-  <announced>October 26, 2006</announced>
-  <revised>October 26, 2006: 01</revised>
+  <announced>2006-10-26</announced>
+  <revised>2006-10-26: 01</revised>
   <bug>142391</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/cheesetracker-0.9.9-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/cheesetracker-0.9.9-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3814">CVE-2006-3814</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3814">CVE-2006-3814</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 20 Oct 2006 07:43:58 +0000">
+  <metadata tag="requester" timestamp="2006-10-20T07:43:58Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 14:33:27 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-24T14:33:27Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 24 Oct 2006 15:18:21 +0000">
+  <metadata tag="submitter" timestamp="2006-10-24T15:18:21Z">
     falco
   </metadata>
 </glsa>

@@ -46,7 +46,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3189">CVE-2016-3189</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3189">CVE-2016-3189</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-04T20:39:15Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-08-21T01:24:45Z">whissi</metadata>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200612-13">
   <title>libgsf: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     possibly the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libgsf</product>
-  <announced>December 12, 2006</announced>
-  <revised>December 12, 2006: 01</revised>
+  <announced>2006-12-12</announced>
+  <revised>2006-12-12: 01</revised>
   <bug>156693</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-extra/libgsf-1.14.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=gnome-extra/libgsf-1.14.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4514">CVE-2006-4514</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4514">CVE-2006-4514</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 10 Dec 2006 19:48:29 +0000">
+  <metadata tag="requester" timestamp="2006-12-10T19:48:29Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Dec 2006 20:34:33 +0000">
+  <metadata tag="bugReady" timestamp="2006-12-10T20:34:33Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 18:08:22 +0000">
+  <metadata tag="submitter" timestamp="2006-12-11T18:08:22Z">
     shellsage
   </metadata>
 </glsa>

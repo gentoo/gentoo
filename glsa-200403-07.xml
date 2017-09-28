@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-07">
   <title>Multiple remote overflows and vulnerabilities in Ethereal</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attacker to crash the program or run arbitrary code.
   </synopsis>
   <product type="ebuild">ethereal</product>
-  <announced>March 28, 2004</announced>
-  <revised>March 28, 2004: 01</revised>
+  <announced>2004-03-28</announced>
+  <revised>2004-03-28: 01</revised>
   <bug>45543</bug>
   <access>remote</access>
   <affected>
@@ -23,13 +22,13 @@
     Quote from http://www.ethereal.com
     </p>
     <p>
-    &quot;Ethereal is used by network professionals around the world for
+    "Ethereal is used by network professionals around the world for
     troubleshooting, analysis, software and protocol development, and
     education. It has all of the standard features you would expect in a
     protocol analyzer, and several features not seen in any other product. Its
     open source license allows talented experts in the networking community to
     add enhancements. It runs on all popular computing platforms, including
-    Unix, Linux, and Windows.&quot;
+    Unix, Linux, and Windows."
     </p>
   </background>
   <description>
@@ -60,13 +59,13 @@
     <code>
     # emerge sync
     
-    # emerge -pv ">=net-analyzer/ethereal-0.10.3"
-    # emerge ">=net-analyzer/ethereal-0.10.3"</code>
+    # emerge -pv "&gt;=net-analyzer/ethereal-0.10.3"
+    # emerge "&gt;=net-analyzer/ethereal-0.10.3"</code>
   </resolution>
   <references>
     <uri link="http://www.ethereal.com/appnotes/enpa-sa-00013.html">Multiple security problems in Ethereal 0.10.2</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0176">CAN-2004-0176</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0365">CAN-2004-0365</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0367">CAN-2004-0367</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0176">CAN-2004-0176</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0365">CAN-2004-0365</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0367">CAN-2004-0367</uri>
   </references>
 </glsa>

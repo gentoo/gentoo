@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-37">
   <title>LimeWire: Disclosure of sensitive information</title>
   <synopsis>
@@ -8,8 +7,8 @@
     information.
   </synopsis>
   <product type="ebuild">LimeWire</product>
-  <announced>March 31, 2005</announced>
-  <revised>March 31, 2005: 01</revised>
+  <announced>2005-03-31</announced>
+  <revised>2005-03-31: 01</revised>
   <bug>85380</bug>
   <access>remote</access>
   <affected>
@@ -48,20 +47,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/limewire-4.8.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/limewire-4.8.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0788">CAN-2005-0788</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0789">CAN-2005-0789</uri>
-    <uri link="http://secunia.com/advisories/14555/">Secunia Advisory SA14555</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0788">CAN-2005-0788</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0789">CAN-2005-0789</uri>
+    <uri link="https://secunia.com/advisories/14555/">Secunia Advisory SA14555</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 30 Mar 2005 14:57:35 +0000">
+  <metadata tag="requester" timestamp="2005-03-30T14:57:35Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 30 Mar 2005 14:58:13 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-30T14:58:13Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Mar 2005 16:12:57 +0000">
+  <metadata tag="submitter" timestamp="2005-03-30T16:12:57Z">
     formula7
   </metadata>
 </glsa>

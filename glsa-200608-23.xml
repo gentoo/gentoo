@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-23">
   <title>Heartbeat: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote attacker without authentication.
   </synopsis>
   <product type="ebuild">heartbeat</product>
-  <announced>August 24, 2006</announced>
-  <revised>September 22, 2006: 02</revised>
+  <announced>2006-08-24</announced>
+  <revised>2006-09-22: 02</revised>
   <bug>141894</bug>
   <access>remote</access>
   <affected>
@@ -56,16 +55,16 @@
     # emerge --ask --oneshot --verbose sys-cluster/heartbeat</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3121">CVE-2006-3121</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3815">CVE-2006-3815</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3121">CVE-2006-3121</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3815">CVE-2006-3815</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 19 Aug 2006 16:22:39 +0000">
+  <metadata tag="requester" timestamp="2006-08-19T16:22:39Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 21 Aug 2006 14:22:38 +0000">
+  <metadata tag="submitter" timestamp="2006-08-21T14:22:38Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 23 Aug 2006 14:19:23 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-23T14:19:23Z">
     falco
   </metadata>
 </glsa>

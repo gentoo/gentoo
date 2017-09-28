@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or conduct various other attacks.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>June 22, 2012</announced>
-  <revised>June 22, 2012: 1</revised>
+  <announced>2012-06-22</announced>
+  <revised>2012-06-22: 1</revised>
   <bug>405949</bug>
   <bug>411499</bug>
   <access>remote</access>
@@ -44,15 +44,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4370">CVE-2011-4370</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4371">CVE-2011-4371</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4372">CVE-2011-4372</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4373">CVE-2011-4373</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0774">CVE-2012-0774</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0775">CVE-2012-0775</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0776">CVE-2012-0776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0777">CVE-2012-0777</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4370">CVE-2011-4370</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4371">CVE-2011-4371</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4372">CVE-2011-4372</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4373">CVE-2011-4373</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0774">CVE-2012-0774</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0775">CVE-2012-0775</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0776">CVE-2012-0776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0777">CVE-2012-0777</uri>
   </references>
-  <metadata timestamp="Thu, 12 Apr 2012 01:22:21 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 22 Jun 2012 10:12:35 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-12T01:22:21Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-22T10:12:35Z" tag="submitter">ackle</metadata>
 </glsa>

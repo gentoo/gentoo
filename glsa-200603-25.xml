@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-25">
   <title>OpenOffice.org: Heap overflow in included libcurl</title>
   <synopsis>
@@ -8,8 +7,8 @@
     heap overflow when parsing URLs.
   </synopsis>
   <product type="ebuild">openoffice openoffice-bin</product>
-  <announced>March 27, 2006</announced>
-  <revised>March 27, 2006: 01</revised>
+  <announced>2006-03-27</announced>
+  <revised>2006-03-27: 01</revised>
   <bug>126433</bug>
   <access>remote</access>
   <affected>
@@ -57,26 +56,26 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.0.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-2.0.2"</code>
     <p>
     All OpenOffice.org users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.0.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-2.0.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4077">CVE-2005-4077</uri>
-    <uri link="http://www.hardened-php.net/advisory_242005.109.html">Hardened-PHP Advisory 24/2005</uri>
-    <uri link="/security/en/glsa/glsa-200512-09.xml">GLSA 200512-09</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4077">CVE-2005-4077</uri>
+    <uri link="https://www.hardened-php.net/advisory_242005.109.html">Hardened-PHP Advisory 24/2005</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200512-09.xml">GLSA 200512-09</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 17 Mar 2006 09:53:36 +0000">
+  <metadata tag="requester" timestamp="2006-03-17T09:53:36Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 17 Mar 2006 18:15:26 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-17T18:15:26Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Mar 2006 01:42:41 +0000">
+  <metadata tag="submitter" timestamp="2006-03-18T01:42:41Z">
     adir
   </metadata>
 </glsa>

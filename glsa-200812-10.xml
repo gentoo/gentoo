@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-10">
   <title>Archive::Tar: Directory traversal vulnerability</title>
   <synopsis>
     A directory traversal vulnerability has been discovered in Archive::Tar.
   </synopsis>
   <product type="ebuild">Archive-Tar</product>
-  <announced>December 10, 2008</announced>
-  <revised>December 10, 2008: 01</revised>
+  <announced>2008-12-10</announced>
+  <revised>2008-12-10: 01</revised>
   <bug>192989</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=perl-core/Archive-Tar-1.40&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=perl-core/Archive-Tar-1.40"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4829">CVE-2007-4829</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4829">CVE-2007-4829</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:55:42 +0000">
+  <metadata tag="requester" timestamp="2008-11-26T18:55:42Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 20:31:02 +0000">
+  <metadata tag="submitter" timestamp="2008-11-26T20:31:02Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 20:31:20 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-26T20:31:20Z">
     rbu
   </metadata>
 </glsa>

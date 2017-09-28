@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-16">
   <title>DokuWiki: PHP code injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     PHP commands, even without proper authentication.
   </synopsis>
   <product type="ebuild">DokuWiki</product>
-  <announced>June 14, 2006</announced>
-  <revised>June 14, 2006: 01</revised>
+  <announced>2006-06-14</announced>
+  <revised>2006-06-14: 01</revised>
   <bug>135623</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/dokuwiki-20060309-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/dokuwiki-20060309-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.hardened-php.net/advisory_042006.119.html">Hardened-PHP advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2878">CVE-2006-2878</uri>
+    <uri link="https://www.hardened-php.net/advisory_042006.119.html">Hardened-PHP advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2878">CVE-2006-2878</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Jun 2006 22:03:16 +0000">
+  <metadata tag="requester" timestamp="2006-06-11T22:03:16Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 Jun 2006 18:33:06 +0000">
+  <metadata tag="submitter" timestamp="2006-06-12T18:33:06Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 13 Jun 2006 21:28:32 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-13T21:28:32Z">
     falco
   </metadata>
 </glsa>

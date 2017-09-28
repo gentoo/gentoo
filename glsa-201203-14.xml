@@ -6,8 +6,8 @@
     execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">audacious-plugins</product>
-  <announced>March 16, 2012</announced>
-  <revised>March 16, 2012: 1</revised>
+  <announced>2012-03-16</announced>
+  <revised>2012-03-16: 1</revised>
   <bug>383991</bug>
   <access>remote</access>
   <affected>
@@ -62,12 +62,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2911">CVE-2011-2911</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2912">CVE-2011-2912</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2913">CVE-2011-2913</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2914">CVE-2011-2914</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2915">CVE-2011-2915</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2911">CVE-2011-2911</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2912">CVE-2011-2912</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2913">CVE-2011-2913</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2914">CVE-2011-2914</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2915">CVE-2011-2915</uri>
   </references>
-  <metadata timestamp="Sun, 11 Mar 2012 14:43:54 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 16 Mar 2012 10:57:34 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-11T14:43:54Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-16T10:57:34Z" tag="submitter">ackle</metadata>
 </glsa>

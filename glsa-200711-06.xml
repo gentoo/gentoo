@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-06">
   <title>Apache: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     in a Denial of Service or the disclosure of sensitive information.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>November 07, 2007</announced>
-  <revised>November 07, 2007: 01</revised>
+  <announced>2007-11-07</announced>
+  <revised>2007-11-07: 01</revised>
   <bug>186219</bug>
   <access>remote</access>
   <affected>
@@ -55,23 +54,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.0.59-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.0.59-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5752">CVE-2006-5752</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1862">CVE-2007-1862</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1863">CVE-2007-1863</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3304">CVE-2007-3304</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3847">CVE-2007-3847</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4465">CVE-2007-4465</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5752">CVE-2006-5752</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1862">CVE-2007-1862</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1863">CVE-2007-1863</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3304">CVE-2007-3304</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3847">CVE-2007-3847</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4465">CVE-2007-4465</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 25 Sep 2007 14:34:09 +0000">
+  <metadata tag="requester" timestamp="2007-09-25T14:34:09Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 25 Sep 2007 14:34:48 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-25T14:34:48Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Oct 2007 20:07:35 +0000">
+  <metadata tag="submitter" timestamp="2007-10-15T20:07:35Z">
     p-y
   </metadata>
 </glsa>

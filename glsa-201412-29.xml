@@ -6,8 +6,8 @@
     worst of which may result in Denial of Service.
   </synopsis>
   <product type="ebuild">tomcat</product>
-  <announced>December 15, 2014</announced>
-  <revised>March 20, 2016: 2</revised>
+  <announced>2014-12-15</announced>
+  <revised>2016-03-20: 2</revised>
   <bug>442014</bug>
   <bug>469434</bug>
   <bug>500600</bug>
@@ -62,26 +62,26 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2733">CVE-2012-2733</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3544">CVE-2012-3544</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3546">CVE-2012-3546</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4431">CVE-2012-4431</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4534">CVE-2012-4534</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5885">CVE-2012-5885</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5886">CVE-2012-5886</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5887">CVE-2012-5887</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2067">CVE-2013-2067</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2071">CVE-2013-2071</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4286">CVE-2013-4286</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4322">CVE-2013-4322</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4590">CVE-2013-4590</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0033">CVE-2014-0033</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0050">CVE-2014-0050</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0075">CVE-2014-0075</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0096">CVE-2014-0096</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0099">CVE-2014-0099</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0119">CVE-2014-0119</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2733">CVE-2012-2733</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3544">CVE-2012-3544</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3546">CVE-2012-3546</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4431">CVE-2012-4431</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4534">CVE-2012-4534</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5885">CVE-2012-5885</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5886">CVE-2012-5886</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5887">CVE-2012-5887</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2067">CVE-2013-2067</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2071">CVE-2013-2071</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4286">CVE-2013-4286</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4322">CVE-2013-4322</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4590">CVE-2013-4590</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0033">CVE-2014-0033</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0050">CVE-2014-0050</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0075">CVE-2014-0075</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0096">CVE-2014-0096</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0099">CVE-2014-0099</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0119">CVE-2014-0119</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 22:03:30 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Mar 2016 14:13:30 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-16T22:03:30Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2016-03-20T14:13:30Z">ackle</metadata>
 </glsa>

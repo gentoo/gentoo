@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-07">
   <title>TkMan: Insecure temporary file usage</title>
   <synopsis>
@@ -8,8 +7,8 @@
     symlink attacks.
   </synopsis>
   <product type="ebuild">tkman</product>
-  <announced>September 09, 2009</announced>
-  <revised>September 09, 2009: 01</revised>
+  <announced>2009-09-09</announced>
+  <revised>2009-09-09: 01</revised>
   <bug>247540</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/tkman-2.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/tkman-2.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5137">CVE-2008-5137</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5137">CVE-2008-5137</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 19 Jul 2009 18:23:29 +0000">
+  <metadata tag="requester" timestamp="2009-07-19T18:23:29Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 07:32:36 +0000">
+  <metadata tag="submitter" timestamp="2009-08-28T07:32:36Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:37:41 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-31T03:37:41Z">
     a3li
   </metadata>
 </glsa>

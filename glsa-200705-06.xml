@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-06">
   <title>X.Org X11 library: Multiple integer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libx11</product>
-  <announced>May 05, 2007</announced>
-  <revised>May 05, 2007: 01</revised>
+  <announced>2007-05-05</announced>
+  <revised>2007-05-05: 01</revised>
   <bug>172752</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libX11-1.0.3-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/libX11-1.0.3-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1667">CVE-2007-1667</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1667">CVE-2007-1667</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Apr 2007 14:52:56 +0000">
+  <metadata tag="requester" timestamp="2007-04-18T14:52:56Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 20 Apr 2007 16:53:31 +0000">
+  <metadata tag="submitter" timestamp="2007-04-20T16:53:31Z">
     dizzutch
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 23 Apr 2007 12:10:37 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-23T12:10:37Z">
     vorlon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200811-03">
   <title>FAAD2: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code via an MP4 file.
   </synopsis>
   <product type="ebuild">faad2</product>
-  <announced>November 09, 2008</announced>
-  <revised>November 09, 2008: 01</revised>
+  <announced>2008-11-09</announced>
+  <revised>2008-11-09: 01</revised>
   <bug>238445</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/faad2-2.6.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/faad2-2.6.1-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4201">CVE-2008-4201</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4201">CVE-2008-4201</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 01 Oct 2008 21:20:46 +0000">
+  <metadata tag="requester" timestamp="2008-10-01T21:20:46Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Oct 2008 20:30:57 +0000">
+  <metadata tag="submitter" timestamp="2008-10-21T20:30:57Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 30 Oct 2008 23:45:59 +0000">
+  <metadata tag="bugReady" timestamp="2008-10-30T23:45:59Z">
     rbu
   </metadata>
 </glsa>

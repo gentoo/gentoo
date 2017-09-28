@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-22">
   <title>sandbox: Insecure temporary file handling</title>
   <synopsis>
     The sandbox utility may create temporary files in an insecure manner.
   </synopsis>
   <product type="ebuild">sandbox</product>
-  <announced>July 25, 2005</announced>
-  <revised>August 11, 2005: 02</revised>
+  <announced>2005-07-25</announced>
+  <revised>2005-08-11: 02</revised>
   <bug>96782</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/sandbox-1.2.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/sandbox-1.2.11"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2449">CAN-2005-2449</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2449">CAN-2005-2449</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Jul 2005 11:46:49 +0000">
+  <metadata tag="requester" timestamp="2005-07-23T11:46:49Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 23 Jul 2005 12:17:37 +0000">
+  <metadata tag="submitter" timestamp="2005-07-23T12:17:37Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 24 Jul 2005 07:49:01 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-24T07:49:01Z">
     adir
   </metadata>
 </glsa>

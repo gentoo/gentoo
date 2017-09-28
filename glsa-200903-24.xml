@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-24">
   <title>Shadow: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     root privileges.
   </synopsis>
   <product type="ebuild">shadow</product>
-  <announced>March 10, 2009</announced>
-  <revised>March 10, 2009: 01</revised>
+  <announced>2009-03-10</announced>
+  <revised>2009-03-10: 01</revised>
   <bug>251320</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/shadow-4.1.2.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/shadow-4.1.2.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5394">CVE-2008-5394</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5394">CVE-2008-5394</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 12 Feb 2009 19:41:17 +0000">
+  <metadata tag="requester" timestamp="2009-02-12T19:41:17Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 08 Mar 2009 19:05:06 +0000">
+  <metadata tag="submitter" timestamp="2009-03-08T19:05:06Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 08 Mar 2009 19:05:15 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-08T19:05:15Z">
     p-y
   </metadata>
 </glsa>

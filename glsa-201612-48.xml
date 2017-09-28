@@ -6,8 +6,8 @@
     worst of which may allow bypassing of sandbox protection.
   </synopsis>
   <product type="ebuild">firejail</product>
-  <announced>December 27, 2016</announced>
-  <revised>December 27, 2016: 1</revised>
+  <announced>2016-12-27</announced>
+  <revised>2016-12-27: 1</revised>
   <bug>601994</bug>
   <access>local, remote</access>
   <affected>
@@ -60,6 +60,6 @@
       Firejail Release Notes
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 05 Dec 2016 02:08:23 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 Dec 2016 00:43:05 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-12-05T02:08:23Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-27T00:43:05Z">whissi</metadata>
 </glsa>

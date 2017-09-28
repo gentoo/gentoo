@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-20">
   <title>o3read: Buffer overflow during file conversion</title>
   <synopsis>
@@ -8,8 +7,8 @@
     way of a specially crafted XML file.
   </synopsis>
   <product type="ebuild">o3read</product>
-  <announced>January 11, 2005</announced>
-  <revised>January 11, 2005: 01</revised>
+  <announced>2005-01-11</announced>
+  <revised>2005-01-11: 01</revised>
   <bug>74478</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/o3read-0.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/o3read-0.0.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1288">CAN-2004-1288</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1288">CAN-2004-1288</uri>
     <uri link="http://tigger.uic.edu/~jlongs2/holes/o3read.txt">Wiktor Kopec advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Jan 2005 22:12:42 +0000">
+  <metadata tag="requester" timestamp="2005-01-10T22:12:42Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 10 Jan 2005 22:13:07 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-10T22:13:07Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Jan 2005 11:55:34 +0000">
+  <metadata tag="submitter" timestamp="2005-01-11T11:55:34Z">
     koon
   </metadata>
 </glsa>

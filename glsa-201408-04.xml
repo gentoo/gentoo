@@ -6,8 +6,8 @@
     attackers to escalate their privileges.
   </synopsis>
   <product type="ebuild">catfish</product>
-  <announced>August 13, 2014</announced>
-  <revised>August 13, 2014: 1</revised>
+  <announced>2014-08-13</announced>
+  <revised>2014-08-13: 1</revised>
   <bug>502536</bug>
   <access>local</access>
   <affected>
@@ -42,13 +42,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2093">CVE-2014-2093</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2094">CVE-2014-2094</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2095">CVE-2014-2095</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2096">CVE-2014-2096</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2093">CVE-2014-2093</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2094">CVE-2014-2094</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2095">CVE-2014-2095</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2096">CVE-2014-2096</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 02 Aug 2014 18:47:34 +0000">
+  <metadata tag="requester" timestamp="2014-08-02T18:47:34Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Aug 2014 18:12:10 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-08-13T18:12:10Z">Zlogene</metadata>
 </glsa>

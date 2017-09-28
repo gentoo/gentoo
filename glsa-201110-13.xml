@@ -6,8 +6,8 @@
     which may allow a remote attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">Tor</product>
-  <announced>October 18, 2011</announced>
-  <revised>October 18, 2011: 1</revised>
+  <announced>2011-10-18</announced>
+  <revised>2011-10-18: 1</revised>
   <bug>351920</bug>
   <bug>359789</bug>
   <access>remote</access>
@@ -49,19 +49,19 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0015">CVE-2011-0015</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0016">CVE-2011-0016</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0427">CVE-2011-0427</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0490">CVE-2011-0490</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0491">CVE-2011-0491</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0492">CVE-2011-0492</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0493">CVE-2011-0493</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1924">CVE-2011-1924</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0015">CVE-2011-0015</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0016">CVE-2011-0016</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0427">CVE-2011-0427</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0490">CVE-2011-0490</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0491">CVE-2011-0491</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0492">CVE-2011-0492</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0493">CVE-2011-0493</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1924">CVE-2011-1924</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:20 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:20Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Tue, 18 Oct 2011 18:25:47 +0000" tag="submitter">
+  <metadata timestamp="2011-10-18T18:25:47Z" tag="submitter">
     underling
   </metadata>
 </glsa>

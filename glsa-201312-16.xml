@@ -6,8 +6,8 @@
     or Denial of Service.
   </synopsis>
   <product type="ebuild">xfig</product>
-  <announced>December 27, 2013</announced>
-  <revised>December 27, 2013: 1</revised>
+  <announced>2013-12-27</announced>
+  <revised>2013-12-27: 1</revised>
   <bug>348344</bug>
   <access>remote</access>
   <affected>
@@ -47,10 +47,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4262">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4262">
       CVE-2010-4262
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:54 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Fri, 27 Dec 2013 17:20:28 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:54Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-12-27T17:20:28Z">Zlogene</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-09">
   <title>NX 2.1: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overflow vulnerability.
   </synopsis>
   <product type="ebuild">nx, nxnode</product>
-  <announced>October 09, 2007</announced>
-  <revised>October 09, 2007: 01</revised>
+  <announced>2007-10-09</announced>
+  <revised>2007-10-09: 01</revised>
   <bug>192712</bug>
   <access>remote</access>
   <affected>
@@ -56,25 +55,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nx-3.0.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/nx-3.0.0"</code>
     <p>
     All NX Node users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/nxnode-3.0.0-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/nxnode-3.0.0-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1861">CVE-2006-1861</uri>
-    <uri link="/security/en/glsa/glsa-200607-02.xml">GLSA 200607-02</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1861">CVE-2006-1861</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200607-02.xml">GLSA 200607-02</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Sep 2007 13:00:55 +0000">
+  <metadata tag="requester" timestamp="2007-09-20T13:00:55Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Sep 2007 13:01:53 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-20T13:01:53Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 16:18:36 +0000">
+  <metadata tag="submitter" timestamp="2007-10-02T16:18:36Z">
     rbu
   </metadata>
 </glsa>

@@ -44,7 +44,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5436">CVE-2017-5436</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5436">CVE-2017-5436</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-21T07:18:42Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-06-22T19:02:00Z">whissi</metadata>

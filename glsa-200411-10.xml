@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-10">
   <title>Gallery: Cross-site scripting vulnerability</title>
   <synopsis>
     Gallery is vulnerable to cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">gallery</product>
-  <announced>November 06, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-11-06</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>69904</bug>
   <access>remote</access>
   <affected>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/gallery-1.4.4_p4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/gallery-1.4.4_p4"</code>
   </resolution>
   <references>
     <uri link="http://gallery.menalto.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=142&amp;mode=thread&amp;order=0&amp;thold=0">Gallery Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1106">CVE-2004-1106</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1106">CVE-2004-1106</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri,  5 Nov 2004 01:49:40 +0000">
+  <metadata tag="submitter" timestamp="2004-11-05T01:49:40Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat,  6 Nov 2004 09:24:41 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-06T09:24:41Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libtar</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>487420</bug>
   <access>remote</access>
   <affected>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4397">CVE-2013-4397</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4397">CVE-2013-4397</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Oct 2013 17:33:28 +0000">
+  <metadata tag="requester" timestamp="2013-10-28T17:33:28Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 07:32:05 +0000">
+  <metadata tag="submitter" timestamp="2014-02-21T07:32:05Z">
     pinkbyte
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     escalation or a Denial of Service.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>October 05, 2010</announced>
-  <revised>January 03, 2017: 9</revised>
+  <announced>2010-10-05</announced>
+  <revised>2017-01-03: 9</revised>
   <bug>307637</bug>
   <bug>324153</bug>
   <bug>335887</bug>
@@ -68,17 +68,17 @@
     
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0205">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0205">
       CVE-2010-0205
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1205">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1205">
       CVE-2010-1205
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2249">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2249">
       CVE-2010-2249
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 22:32:46 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:37:30 +0000">system</metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Jan 2017 04:37:31 +0000">system</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T22:32:46Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2017-01-03T04:37:30Z">system</metadata>
+  <metadata tag="bugReady" timestamp="2017-01-03T04:37:31Z">system</metadata>
 </glsa>

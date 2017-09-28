@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-12">
   <title>PostgreSQL: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unprivileged users to gain administrator rights.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>May 15, 2005</announced>
-  <revised>June 26, 2007: 04</revised>
+  <announced>2005-05-15</announced>
+  <revised>2007-06-26: 04</revised>
   <bug>91231</bug>
   <access>remote</access>
   <affected>
@@ -55,8 +54,7 @@
   <resolution>
     <p>
     All PostgreSQL users should update to the latest available version and
-    follow the guide at <uri
-    link="http://www.postgresql.org/about/news.315">http://www.postgresql.o
+    follow the guide at <uri link="http://www.postgresql.org/about/news.315">http://www.postgresql.o
     rg/about/news.315</uri>
     </p>
     
@@ -65,14 +63,14 @@
     # emerge --ask --oneshot --verbose dev-db/postgresql</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1409">CAN-2005-1409</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1410">CAN-2005-1410</uri>
-    <uri link="http://www.postgresql.org/about/news.315">PostgreSQL Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1409">CAN-2005-1409</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1410">CAN-2005-1410</uri>
+    <uri link="https://www.postgresql.org/about/news.315">PostgreSQL Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 11 May 2005 15:07:25 +0000">
+  <metadata tag="submitter" timestamp="2005-05-11T15:07:25Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 15 May 2005 09:19:16 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-15T09:19:16Z">
     koon
   </metadata>
 </glsa>

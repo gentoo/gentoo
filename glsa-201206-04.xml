@@ -6,8 +6,8 @@
     attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">argyllcms</product>
-  <announced>June 18, 2012</announced>
-  <revised>June 18, 2012: 1</revised>
+  <announced>2012-06-18</announced>
+  <revised>2012-06-18: 1</revised>
   <bug>416781</bug>
   <access>remote</access>
   <affected>
@@ -45,10 +45,10 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1616">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1616">
       CVE-2012-1616
     </uri>
   </references>
-  <metadata timestamp="Tue, 22 May 2012 19:47:51 +0000" tag="requester">n0idx80</metadata>
-  <metadata timestamp="Mon, 18 Jun 2012 22:09:51 +0000" tag="submitter">n0idx80</metadata>
+  <metadata timestamp="2012-05-22T19:47:51Z" tag="requester">n0idx80</metadata>
+  <metadata timestamp="2012-06-18T22:09:51Z" tag="submitter">n0idx80</metadata>
 </glsa>

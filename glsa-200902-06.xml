@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200902-06">
   <title>GNU Emacs, XEmacs: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     XEmacs.
   </synopsis>
   <product type="ebuild">emacs edit-utils</product>
-  <announced>February 23, 2009</announced>
-  <revised>February 23, 2009: 01</revised>
+  <announced>2009-02-23</announced>
+  <revised>2009-02-23: 01</revised>
   <bug>221197</bug>
   <bug>236498</bug>
   <access>remote</access>
@@ -67,25 +66,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/emacs-22.2-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-22.2-r3"</code>
     <p>
     All edit-utils users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-xemacs/edit-utils-2.39&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-xemacs/edit-utils-2.39"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2142">CVE-2008-2142</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3949">CVE-2008-3949</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2142">CVE-2008-2142</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3949">CVE-2008-3949</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jul 2008 22:12:00 +0000">
+  <metadata tag="requester" timestamp="2008-07-06T22:12:00Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Jul 2008 19:44:28 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-12T19:44:28Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Feb 2009 22:47:35 +0000">
+  <metadata tag="submitter" timestamp="2009-02-09T22:47:35Z">
     p-y
   </metadata>
 </glsa>

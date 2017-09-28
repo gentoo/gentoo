@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201101-07">
   <title>Prewikka: password disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     password used by Prewikka.
   </synopsis>
   <product type="ebuild">Prewikka</product>
-  <announced>January 16, 2011</announced>
-  <revised>January 16, 2011: 01</revised>
+  <announced>2011-01-16</announced>
+  <revised>2011-01-16: 01</revised>
   <bug>270056</bug>
   <access>local</access>
   <affected>
@@ -46,7 +45,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/prewikka-0.9.14-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/prewikka-0.9.14-r2"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since May 18, 2009 . It is likely that your system is already
@@ -54,15 +53,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2058">CVE-2010-2058</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2058">CVE-2010-2058</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 23 Jun 2009 20:26:04 +0000">
+  <metadata tag="requester" timestamp="2009-06-23T20:26:04Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 11 Apr 2010 12:57:02 +0000">
+  <metadata tag="submitter" timestamp="2010-04-11T12:57:02Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2010 20:08:51 +0000">
+  <metadata tag="bugReady" timestamp="2010-09-21T20:08:51Z">
     p-y
   </metadata>
 </glsa>

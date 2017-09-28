@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-09">
   <title>Cross-realm trust vulnerability in Heimdal</title>
   <synopsis>
@@ -8,8 +7,8 @@
     over a realm to impersonate anyone in the cross-realm trust path.
   </synopsis>
   <product type="ebuild">heimdal</product>
-  <announced>April 09, 2004</announced>
-  <revised>April 09, 2004: 01</revised>
+  <announced>2004-04-09</announced>
+  <revised>2004-04-09: 01</revised>
   <bug>46590</bug>
   <access>local</access>
   <affected>
@@ -49,11 +48,11 @@
     <code>
     # emerge sync
     
-    # emerge -pv ">=app-crypt/heimdal-0.6.1"
-    # emerge ">=app-crypt/heimdal-0.6.1"</code>
+    # emerge -pv "&gt;=app-crypt/heimdal-0.6.1"
+    # emerge "&gt;=app-crypt/heimdal-0.6.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0371">CVE</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0371">CVE</uri>
   </references>
   <metadata tag="submitter">klieber</metadata>
 </glsa>

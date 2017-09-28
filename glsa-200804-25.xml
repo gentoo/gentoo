@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-25">
   <title>VLC: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">vlc</product>
-  <announced>April 23, 2008</announced>
-  <revised>April 23, 2008: 01</revised>
+  <announced>2008-04-23</announced>
+  <revised>2008-04-23: 01</revised>
   <bug>214277</bug>
   <bug>214627</bug>
   <access>remote</access>
@@ -70,24 +69,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6f&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-0.8.6f"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6681">CVE-2007-6681</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0073">CVE-2008-0073</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1489">CVE-2008-1489</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1768">CVE-2008-1768</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1769">CVE-2008-1769</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1881">CVE-2008-1881</uri>
-    <uri link="/security/en/glsa/glsa-200803-13.xml">GLSA 200803-13</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6681">CVE-2007-6681</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0073">CVE-2008-0073</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1489">CVE-2008-1489</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1768">CVE-2008-1768</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1769">CVE-2008-1769</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1881">CVE-2008-1881</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200803-13.xml">GLSA 200803-13</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 24 Mar 2008 19:42:45 +0000">
+  <metadata tag="requester" timestamp="2008-03-24T19:42:45Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 00:49:24 +0000">
+  <metadata tag="submitter" timestamp="2008-04-14T00:49:24Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 14 Apr 2008 00:56:14 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-14T00:56:14Z">
     rbu
   </metadata>
 </glsa>

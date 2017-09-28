@@ -6,8 +6,8 @@
     allow a remote attacker to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>August 14, 2014</announced>
-  <revised>June 06, 2015: 4</revised>
+  <announced>2014-08-14</announced>
+  <revised>2015-06-06: 4</revised>
   <bug>503014</bug>
   <bug>507378</bug>
   <access>remote</access>
@@ -72,14 +72,14 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7353">CVE-2013-7353</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7354">CVE-2013-7354</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0333">CVE-2014-0333</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7353">CVE-2013-7353</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7354">CVE-2013-7354</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0333">CVE-2014-0333</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 15 May 2014 04:38:43 +0000">
+  <metadata tag="requester" timestamp="2014-05-15T04:38:43Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:44:55 +0000">
+  <metadata tag="submitter" timestamp="2015-06-06T23:44:55Z">
     pinkbyte
   </metadata>
 </glsa>

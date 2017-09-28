@@ -6,9 +6,9 @@
     which could lead to arbitrary code execution, or cause a Denial of Service
     condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 05, 2016</announced>
-  <revised>June 05, 2016: 2</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-05</announced>
+  <revised>2016-06-05: 2</revised>
   <bug>565080</bug>
   <bug>576524</bug>
   <access>remote</access>
@@ -45,11 +45,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5309">CVE-2015-5309</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2563">CVE-2016-2563</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5309">CVE-2015-5309</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2563">CVE-2016-2563</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 05 Apr 2016 03:16:59 +0000">
+  <metadata tag="requester" timestamp="2016-04-05T03:16:59Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 16:25:06 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-05T16:25:06Z">b-man</metadata>
 </glsa>

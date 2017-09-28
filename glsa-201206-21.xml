@@ -6,8 +6,8 @@
     could result in the execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">Adobe Flash Player</product>
-  <announced>June 23, 2012</announced>
-  <revised>June 23, 2012: 1</revised>
+  <announced>2012-06-23</announced>
+  <revised>2012-06-23: 1</revised>
   <bug>414603</bug>
   <bug>420311</bug>
   <access>remote</access>
@@ -46,15 +46,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0779">CVE-2012-0779</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2034">CVE-2012-2034</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2035">CVE-2012-2035</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2036">CVE-2012-2036</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2037">CVE-2012-2037</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2038">CVE-2012-2038</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2039">CVE-2012-2039</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2040">CVE-2012-2040</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0779">CVE-2012-0779</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2034">CVE-2012-2034</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2035">CVE-2012-2035</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2036">CVE-2012-2036</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2037">CVE-2012-2037</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2038">CVE-2012-2038</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2039">CVE-2012-2039</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2040">CVE-2012-2040</uri>
   </references>
-  <metadata timestamp="Sat, 05 May 2012 11:36:09 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Sat, 23 Jun 2012 20:11:51 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-05-05T11:36:09Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-23T20:11:51Z" tag="submitter">ackle</metadata>
 </glsa>

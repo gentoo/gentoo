@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-06">
   <title>AdPlug: Multiple vulnerabilities</title>
   <synopsis>
     Multiple heap and buffer overflows exist in AdPlug.
   </synopsis>
   <product type="ebuild">adplug</product>
-  <announced>September 12, 2006</announced>
-  <revised>September 12, 2006: 01</revised>
+  <announced>2006-09-12</announced>
+  <revised>2006-09-12: 01</revised>
   <bug>139593</bug>
   <access>local</access>
   <affected>
@@ -46,20 +45,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/adplug-2.0.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/adplug-2.0.1"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/439432/30/0/threaded">BugTraq Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3581">CVE-2006-3581</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3582">CVE-2006-3582</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3581">CVE-2006-3581</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3582">CVE-2006-3582</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 06 Sep 2006 14:38:47 +0000">
+  <metadata tag="requester" timestamp="2006-09-06T14:38:47Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 06 Sep 2006 23:03:51 +0000">
+  <metadata tag="submitter" timestamp="2006-09-06T23:03:51Z">
     hlieberman
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 12 Sep 2006 00:51:08 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-12T00:51:08Z">
     hlieberman
   </metadata>
 </glsa>

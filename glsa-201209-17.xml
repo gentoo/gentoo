@@ -6,8 +6,8 @@
     arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">pidgin</product>
-  <announced>September 27, 2012</announced>
-  <revised>September 27, 2012: 1</revised>
+  <announced>2012-09-27</announced>
+  <revised>2012-09-27: 1</revised>
   <bug>425076</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3374">CVE-2012-3374</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3374">CVE-2012-3374</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Sep 2012 13:28:52 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 11:52:16 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-20T13:28:52Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-27T11:52:16Z">ackle</metadata>
 </glsa>

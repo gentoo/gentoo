@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-09">
   <title>SquirrelMail: Cross-site scripting and IMAP command injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     and IMAP command injection.
   </synopsis>
   <product type="ebuild">squirrelmail</product>
-  <announced>March 12, 2006</announced>
-  <revised>March 12, 2006: 01</revised>
+  <announced>2006-03-12</announced>
+  <revised>2006-03-12: 01</revised>
   <bug>123781</bug>
   <access>remote</access>
   <affected>
@@ -58,23 +57,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/squirrelmail-1.4.6"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
     </p>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0188">CVE-2006-0188</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0195">CVE-2006-0195</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0377">CVE-2006-0377</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0188">CVE-2006-0188</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0195">CVE-2006-0195</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0377">CVE-2006-0377</uri>
   </references>
   <metadata tag="">
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Mar 2006 16:55:59 +0000">
+  <metadata tag="submitter" timestamp="2006-03-11T16:55:59Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 11 Mar 2006 21:38:55 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-11T21:38:55Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-31">
   <title>ProZilla: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     of the user running ProZilla.
   </synopsis>
   <product type="ebuild">ProZilla</product>
-  <announced>November 23, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-11-23</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>70090</bug>
   <access>remote</access>
   <affected>
@@ -53,15 +52,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1120">CVE-2004-1120</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1120">CVE-2004-1120</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Nov 2004 17:28:48 +0000">
+  <metadata tag="requester" timestamp="2004-11-22T17:28:48Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 22 Nov 2004 19:27:08 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-22T19:27:08Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 22 Nov 2004 19:46:53 +0000">
+  <metadata tag="submitter" timestamp="2004-11-22T19:46:53Z">
     koon
   </metadata>
 </glsa>

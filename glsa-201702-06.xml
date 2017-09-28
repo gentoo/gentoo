@@ -42,9 +42,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0978">CVE-2014-0978</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1235">CVE-2014-1235</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1236">CVE-2014-1236</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0978">CVE-2014-0978</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1235">CVE-2014-1235</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1236">CVE-2014-1236</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-30T01:53:41Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-02-10T23:14:56Z">b-man</metadata>

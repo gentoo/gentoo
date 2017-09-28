@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-28">
   <title>PHP: Arbitary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">php</product>
-  <announced>August 29, 2006</announced>
-  <revised>March 29, 2008: 05</revised>
+  <announced>2006-08-29</announced>
+  <revised>2008-03-29: 05</revised>
   <bug>143126</bug>
   <access>remote</access>
   <affected>
@@ -55,24 +54,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-4.4.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-4.4.3-r1"</code>
     <p>
     All PHP 5.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-5.1.4-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.1.4-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4020">CVE-2006-4020</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4020">CVE-2006-4020</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Aug 2006 20:16:18 +0000">
+  <metadata tag="requester" timestamp="2006-08-23T20:16:18Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 26 Aug 2006 14:28:36 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-26T14:28:36Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 26 Aug 2006 15:12:31 +0000">
+  <metadata tag="submitter" timestamp="2006-08-26T15:12:31Z">
     falco
   </metadata>
 </glsa>

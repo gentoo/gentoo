@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-26">
   <title>TMSNC: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     when processing an instant message.
   </synopsis>
   <product type="ebuild">tmsnc</product>
-  <announced>March 12, 2009</announced>
-  <revised>March 12, 2009: 01</revised>
+  <announced>2009-03-12</announced>
+  <revised>2009-03-12: 01</revised>
   <bug>229157</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     such as CenterIM or Pebrot:
     </p>
     <code>
-    # emerge --unmerge &quot;net-im/tmsnc&quot;</code>
+    # emerge --unmerge "net-im/tmsnc"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2828">CVE-2008-2828</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2828">CVE-2008-2828</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 Mar 2009 22:52:54 +0000">
+  <metadata tag="requester" timestamp="2009-03-10T22:52:54Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Mar 2009 12:01:45 +0000">
+  <metadata tag="submitter" timestamp="2009-03-11T12:01:45Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 11 Mar 2009 12:02:24 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-11T12:02:24Z">
     rbu
   </metadata>
 </glsa>

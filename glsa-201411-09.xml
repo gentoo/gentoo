@@ -6,8 +6,8 @@
     local privilege escalation.
   </synopsis>
   <product type="ebuild">ansible</product>
-  <announced>November 23, 2014</announced>
-  <revised>November 23, 2014: 1</revised>
+  <announced>2014-11-23</announced>
+  <revised>2014-11-23: 1</revised>
   <bug>516564</bug>
   <bug>517770</bug>
   <access>local</access>
@@ -43,13 +43,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4657">CVE-2014-4657</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4678">CVE-2014-4678</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4966">CVE-2014-4966</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4967">CVE-2014-4967</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4657">CVE-2014-4657</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4678">CVE-2014-4678</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4966">CVE-2014-4966</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4967">CVE-2014-4967</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Jul 2014 06:05:38 +0000">
+  <metadata tag="requester" timestamp="2014-07-31T06:05:38Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 23 Nov 2014 17:50:42 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-11-23T17:50:42Z">ackle</metadata>
 </glsa>

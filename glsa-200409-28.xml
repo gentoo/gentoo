@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-28">
   <title>GTK+ 2, gdk-pixbuf: Multiple image decoding vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">gtk+</product>
-  <announced>September 21, 2004</announced>
-  <revised>September 21, 2004: 01</revised>
+  <announced>2004-09-21</announced>
+  <revised>2004-09-21: 01</revised>
   <bug>64230</bug>
   <access>remote</access>
   <affected>
@@ -62,31 +61,31 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=x11-libs/gtk+-2.4.9-r1"
-    # emerge ">=x11-libs/gtk+-2.4.9-r1"</code>
+    # emerge -pv "&gt;=x11-libs/gtk+-2.4.9-r1"
+    # emerge "&gt;=x11-libs/gtk+-2.4.9-r1"</code>
     <p>
     All GdkPixbuf users should upgrade to the latest version:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=media-libs/gdk-pixbuf-0.22.0-r3"
-    # emerge ">=media-libs/gdk-pixbuf-0.22.0-r3"</code>
+    # emerge -pv "&gt;=media-libs/gdk-pixbuf-0.22.0-r3"
+    # emerge "&gt;=media-libs/gdk-pixbuf-0.22.0-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0753">CAN-2004-0753</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0782">CAN-2004-0782</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0783">CAN-2004-0783</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0788">CAN-2004-0788</uri>
-    <uri link="http://bugzilla.gnome.org/show_bug.cgi?id=150601">GNOME Bug 150601</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0753">CAN-2004-0753</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0782">CAN-2004-0782</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0783">CAN-2004-0783</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0788">CAN-2004-0788</uri>
+    <uri link="https://bugzilla.gnome.org/show_bug.cgi?id=150601">GNOME Bug 150601</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 20 Sep 2004 06:35:32 +0000">
+  <metadata tag="requester" timestamp="2004-09-20T06:35:32Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2004 11:29:51 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-21T11:29:51Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Sep 2004 13:51:30 +0000">
+  <metadata tag="submitter" timestamp="2004-09-21T13:51:30Z">
     vorlon078
   </metadata>
 </glsa>

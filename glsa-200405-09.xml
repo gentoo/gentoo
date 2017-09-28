@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-09">
   <title>ProFTPD Access Control List bypass vulnerability</title>
   <synopsis>
     Version 1.2.9 of ProFTPD introduced a vulnerability that causes CIDR-based
-    Access Control Lists (ACLs) to be treated as &quot;AllowAll&quot;, thereby
+    Access Control Lists (ACLs) to be treated as "AllowAll", thereby
     allowing remote users full access to files available to the FTP daemon.
   </synopsis>
   <product type="ebuild">proftpd</product>
-  <announced>May 19, 2004</announced>
-  <revised>May 19, 2004: 01</revised>
+  <announced>2004-05-19</announced>
+  <revised>2004-05-19: 01</revised>
   <bug>49496</bug>
   <access>remote </access>
   <affected>
@@ -52,11 +51,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-ftp/proftpd-1.2.9-r2"
-    # emerge ">=net-ftp/proftpd-1.2.9-r2"</code>
+    # emerge -pv "&gt;=net-ftp/proftpd-1.2.9-r2"
+    # emerge "&gt;=net-ftp/proftpd-1.2.9-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0432">CAN-2004-0432</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0432">CAN-2004-0432</uri>
   </references>
   <metadata tag="submitter">
     klieber

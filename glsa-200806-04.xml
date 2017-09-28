@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-04">
   <title>rdesktop: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code or a Denial of Service.
   </synopsis>
   <product type="ebuild">rdesktop</product>
-  <announced>June 14, 2008</announced>
-  <revised>June 14, 2008: 01</revised>
+  <announced>2008-06-14</announced>
+  <revised>2008-06-14: 01</revised>
   <bug>220911</bug>
   <access>remote</access>
   <affected>
@@ -61,20 +60,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/rdesktop-1.6.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/rdesktop-1.6.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1801">CVE-2008-1801</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1802">CVE-2008-1802</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1803">CVE-2008-1803</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1801">CVE-2008-1801</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1802">CVE-2008-1802</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1803">CVE-2008-1803</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 19 May 2008 15:23:05 +0000">
+  <metadata tag="requester" timestamp="2008-05-19T15:23:05Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Jun 2008 15:21:36 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-03T15:21:36Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Jun 2008 15:00:31 +0000">
+  <metadata tag="submitter" timestamp="2008-06-07T15:00:31Z">
     mfleming
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-08">
   <title>PostgreSQL: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code, Denial of Service and security bypass.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>February 07, 2005</announced>
-  <revised>June 26, 2007: 06</revised>
+  <announced>2005-02-07</announced>
+  <revised>2007-06-26: 06</revised>
   <bug>80342</bug>
   <access>remote and local</access>
   <affected>
@@ -64,19 +63,19 @@
     # emerge --ask --oneshot --verbose dev-db/postgresql</code>
   </resolution>
   <references>
-    <uri link="http://archives.postgresql.org/pgsql-announce/2005-02/msg00000.php">PostgreSQL Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0227">CAN-2005-0227</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0244">CAN-2005-0244</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0245">CAN-2005-0245</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0246">CAN-2005-0246</uri>
+    <uri link="https://archives.postgresql.org/pgsql-announce/2005-02/msg00000.php">PostgreSQL Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0227">CAN-2005-0227</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0244">CAN-2005-0244</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0245">CAN-2005-0245</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0246">CAN-2005-0246</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  2 Feb 2005 18:15:02 +0000">
+  <metadata tag="requester" timestamp="2005-02-02T18:15:02Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 18:50:22 +0000">
+  <metadata tag="submitter" timestamp="2005-02-02T18:50:22Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  6 Feb 2005 17:27:47 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-06T17:27:47Z">
     koon
   </metadata>
 </glsa>

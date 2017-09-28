@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-09">
   <title>Python: Arbitrary code execution through SimpleXMLRPCServer</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">Python</product>
-  <announced>February 08, 2005</announced>
-  <revised>February 08, 2005: 01</revised>
+  <announced>2005-02-08</announced>
+  <revised>2005-02-08: 01</revised>
   <bug>80592</bug>
   <access>remote</access>
   <affected>
@@ -57,16 +56,16 @@
     # emerge --ask --oneshot --verbose dev-lang/python</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0089">CAN-2005-0089</uri>
-    <uri link="http://www.python.org/security/PSF-2005-001/">Python PSF-2005-001</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0089">CAN-2005-0089</uri>
+    <uri link="https://www.python.org/security/PSF-2005-001/">Python PSF-2005-001</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri,  4 Feb 2005 14:45:11 +0000">
+  <metadata tag="requester" timestamp="2005-02-04T14:45:11Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon,  7 Feb 2005 08:31:41 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-07T08:31:41Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue,  8 Feb 2005 19:35:29 +0000">
+  <metadata tag="submitter" timestamp="2005-02-08T19:35:29Z">
     koon
   </metadata>
 </glsa>

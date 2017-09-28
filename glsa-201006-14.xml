@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-14">
   <title>Newt: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     user-assisted attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">newt</product>
-  <announced>June 02, 2010</announced>
-  <revised>June 02, 2010: 01</revised>
+  <announced>2010-06-02</announced>
+  <revised>2010-06-02: 01</revised>
   <bug>285854</bug>
   <access>remote</access>
   <affected>
@@ -48,7 +47,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/newt-0.52.10-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/newt-0.52.10-r1"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since October 26, 2009. It is likely that your system is
@@ -56,15 +55,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2905">CVE-2009-2905</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2905">CVE-2009-2905</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 06 Nov 2009 09:28:48 +0000">
+  <metadata tag="requester" timestamp="2009-11-06T09:28:48Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 31 May 2010 05:47:34 +0000">
+  <metadata tag="submitter" timestamp="2010-05-31T05:47:34Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 05:47:41 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-31T05:47:41Z">
     a3li
   </metadata>
 </glsa>

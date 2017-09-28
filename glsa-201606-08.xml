@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
     worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 18, 2016</announced>
-  <revised>June 18, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-18</announced>
+  <revised>2016-06-18: 1</revised>
   <bug>579166</bug>
   <bug>582670</bug>
   <bug>586044</bug>
@@ -46,23 +46,23 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1019">CVE-2016-1019</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1019">CVE-2016-1019</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1019">CVE-2016-1019</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4117">CVE-2016-4117</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4117">CVE-2016-4117</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4120">CVE-2016-4120</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4120">CVE-2016-4120</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4120">CVE-2016-4120</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4121">CVE-2016-4121</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4160">CVE-2016-4160</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4161">CVE-2016-4161</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4162">CVE-2016-4162</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4163">CVE-2016-4163</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4171">CVE-2016-4171</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4171">CVE-2016-4171</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4171">CVE-2016-4171</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1019">CVE-2016-1019</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1019">CVE-2016-1019</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1019">CVE-2016-1019</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4117">CVE-2016-4117</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4117">CVE-2016-4117</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4120">CVE-2016-4120</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4120">CVE-2016-4120</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4120">CVE-2016-4120</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4121">CVE-2016-4121</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4160">CVE-2016-4160</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4161">CVE-2016-4161</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4162">CVE-2016-4162</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4163">CVE-2016-4163</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4171">CVE-2016-4171</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4171">CVE-2016-4171</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4171">CVE-2016-4171</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 17 Jun 2016 23:30:46 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 23:47:05 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-06-17T23:30:46Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-18T23:47:05Z">b-man</metadata>
 </glsa>

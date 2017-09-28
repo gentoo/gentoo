@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-14">
   <title>Multiple format string vulnerabilities in cadaver</title>
   <synopsis>
@@ -9,8 +8,8 @@
     to a malicious server.
   </synopsis>
   <product type="ebuild">cadaver</product>
-  <announced>April 19, 2004</announced>
-  <revised>April 19, 2004: 01</revised>
+  <announced>2004-04-19</announced>
+  <revised>2004-04-19: 01</revised>
   <bug>47799</bug>
   <access>remote </access>
   <affected>
@@ -21,8 +20,7 @@
   </affected>
   <background>
     <p>
-    According to <uri
-    link="http://www.webdav.org/cadaver">http://www.webdav.org/cadaver</uri>,
+    According to <uri link="http://www.webdav.org/cadaver">http://www.webdav.org/cadaver</uri>,
     cadaver is a command-line WebDAV client for Unix. It supports file upload,
     download, on-screen display, namespace operations (move/copy), collection
     creation and deletion, and locking operations.
@@ -56,11 +54,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-misc/cadaver-0.22.1"
-    # emerge ">=net-misc/cadaver-0.22.1"</code>
+    # emerge -pv "&gt;=net-misc/cadaver-0.22.1"
+    # emerge "&gt;=net-misc/cadaver-0.22.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CAN-2004-0179</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CAN-2004-0179</uri>
   </references>
   <metadata tag="submitter">
     koon

@@ -48,11 +48,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4796">CVE-2008-4796</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7313">CVE-2008-7313</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8641">CVE-2016-8641</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9565">CVE-2016-9565</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9566">CVE-2016-9566</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4796">CVE-2008-4796</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7313">CVE-2008-7313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8641">CVE-2016-8641</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9565">CVE-2016-9565</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9566">CVE-2016-9566</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-30T01:56:03Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-02-21T00:04:00Z">b-man</metadata>

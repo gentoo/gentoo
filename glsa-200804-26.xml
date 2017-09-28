@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-26">
   <title>Openfire: Denial of Service</title>
   <synopsis>
     A design error in Openfire might lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">openfire</product>
-  <announced>April 23, 2008</announced>
-  <revised>April 23, 2008: 01</revised>
+  <announced>2008-04-23</announced>
+  <revised>2008-04-23: 01</revised>
   <bug>217234</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/openfire-3.5.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/openfire-3.5.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1728">CVE-2008-1728</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1728">CVE-2008-1728</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 17 Apr 2008 20:09:13 +0000">
+  <metadata tag="requester" timestamp="2008-04-17T20:09:13Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 18 Apr 2008 01:33:23 +0000">
+  <metadata tag="submitter" timestamp="2008-04-18T01:33:23Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 18 Apr 2008 01:33:32 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-18T01:33:32Z">
     rbu
   </metadata>
 </glsa>

@@ -5,9 +5,9 @@
   <synopsis>A buffer overflow in CUPS might allow remote attackers to execute
     arbitrary code.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 16, 2016</announced>
-  <revised>July 16, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-16</announced>
+  <revised>2016-07-16: 1</revised>
   <bug>539582</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9679">CVE-2014-9679</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9679">CVE-2014-9679</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 01 Jul 2016 05:48:13 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 16 Jul 2016 13:19:26 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-07-01T05:48:13Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-16T13:19:26Z">b-man</metadata>
 </glsa>

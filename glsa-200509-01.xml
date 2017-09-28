@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-01">
   <title>MPlayer: Heap overflow in ad_pcm.c</title>
   <synopsis>
     A heap overflow in MPlayer might lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">MPlayer</product>
-  <announced>September 01, 2005</announced>
-  <revised>September 01, 2005: 01</revised>
+  <announced>2005-09-01</announced>
+  <revised>2005-09-01: 01</revised>
   <bug>103555</bug>
   <access>remote</access>
   <affected>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_pre7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/mplayer-1.0_pre7-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2718">CAN-2005-2718</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2718">CAN-2005-2718</uri>
     <uri link="http://www.sven-tantau.de/public_files/mplayer/mplayer_20050824.txt">Original Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 28 Aug 2005 16:55:40 +0000">
+  <metadata tag="submitter" timestamp="2005-08-28T16:55:40Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 01 Sep 2005 08:08:19 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-01T08:08:19Z">
     koon
   </metadata>
 </glsa>

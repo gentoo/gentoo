@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-17">
   <title>Perl: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code and a Denial of Service.
   </synopsis>
   <product type="ebuild">perl libperl</product>
-  <announced>May 20, 2008</announced>
-  <revised>May 20, 2008: 01</revised>
+  <announced>2008-05-20</announced>
+  <revised>2008-05-20: 01</revised>
   <bug>219203</bug>
   <access>remote</access>
   <affected>
@@ -51,24 +50,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/perl-5.8.8-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.8.8-r5"</code>
     <p>
     All libperl users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-devel/libperl-5.8.8-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-devel/libperl-5.8.8-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1927">CVE-2008-1927</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1927">CVE-2008-1927</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 17 May 2008 10:42:17 +0000">
+  <metadata tag="requester" timestamp="2008-05-17T10:42:17Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 17 May 2008 10:42:31 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-17T10:42:31Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 May 2008 13:52:28 +0000">
+  <metadata tag="submitter" timestamp="2008-05-17T13:52:28Z">
     keytoaster
   </metadata>
 </glsa>

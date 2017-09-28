@@ -6,8 +6,8 @@
     certain modeline options are treated.
   </synopsis>
   <product type="ebuild">vim, gvim</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>600650</bug>
   <access>remote</access>
   <affected>
@@ -58,8 +58,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1248">CVE-2016-1248</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1248">CVE-2016-1248</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 17:07:43 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:33:33 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-09T17:07:43Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:33:33Z">whissi</metadata>
 </glsa>

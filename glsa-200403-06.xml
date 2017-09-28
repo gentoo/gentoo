@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-06">
   <title>Multiple remote buffer overflow vulnerabilities in Courier</title>
   <synopsis>
@@ -9,8 +8,8 @@
     allowing unauthorized access to a vulnerable system. 
   </synopsis>
   <product type="ebuild">Courier</product>
-  <announced>March 26, 2004</announced>
-  <revised>March 26, 2004: 01</revised>
+  <announced>2004-03-26</announced>
+  <revised>2004-03-26: 01</revised>
   <bug>45584</bug>
   <access>remote</access>
   <affected>
@@ -56,17 +55,17 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-mail/courier-imap-3.0.0"
-    # emerge ">=net-mail/courier-imap-3.0.0"
+    # emerge -pv "&gt;=net-mail/courier-imap-3.0.0"
+    # emerge "&gt;=net-mail/courier-imap-3.0.0"
 
     # ** Or; depending on your installation... **
 
-    # emerge -pv ">=mail-mta/courier-0.45"
-    # emerge ">=mail-mta/courier-0.45"
+    # emerge -pv "&gt;=mail-mta/courier-0.45"
+    # emerge "&gt;=mail-mta/courier-0.45"
     </code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/bid/9845">Courier Multiple Remote Buffer Overflow Vulnerabilities</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0224">CAN-2004-0224</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0224">CAN-2004-0224</uri>
   </references>
 </glsa>

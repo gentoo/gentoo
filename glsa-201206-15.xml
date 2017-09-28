@@ -6,8 +6,8 @@
     execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>June 22, 2012</announced>
-  <revised>January 03, 2017: 5</revised>
+  <announced>2012-06-22</announced>
+  <revised>2017-01-03: 5</revised>
   <bug>373967</bug>
   <bug>386185</bug>
   <bug>401987</bug>
@@ -90,18 +90,18 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5063">CVE-2009-5063</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2501">CVE-2011-2501</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2690">CVE-2011-2690</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2691">CVE-2011-2691</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2692">CVE-2011-2692</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3026">CVE-2011-3026</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3045">CVE-2011-3045</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3048">CVE-2011-3048</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3464">CVE-2011-3464</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5063">CVE-2009-5063</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2501">CVE-2011-2501</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2690">CVE-2011-2690</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2691">CVE-2011-2691</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2692">CVE-2011-2692</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3026">CVE-2011-3026</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3045">CVE-2011-3045</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3048">CVE-2011-3048</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3464">CVE-2011-3464</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:07 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:07Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:38:41 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2017-01-03T04:38:41Z">ackle</metadata>
 </glsa>

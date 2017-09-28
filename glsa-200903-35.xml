@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-35">
   <title>Muttprint: Insecure temporary file usage</title>
   <synopsis>
     An insecure temporary file usage in Muttprint allows for symlink attacks.
   </synopsis>
   <product type="ebuild">muttprint</product>
-  <announced>March 23, 2009</announced>
-  <revised>March 23, 2009: 01</revised>
+  <announced>2009-03-23</announced>
+  <revised>2009-03-23: 01</revised>
   <bug>250554</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc/muttprint-0.72d-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-misc/muttprint-0.72d-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5368">CVE-2008-5368</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5368">CVE-2008-5368</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Mar 2009 20:25:26 +0000">
+  <metadata tag="requester" timestamp="2009-03-22T20:25:26Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Mar 2009 21:59:17 +0000">
+  <metadata tag="submitter" timestamp="2009-03-22T21:59:17Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 22 Mar 2009 21:59:46 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-22T21:59:46Z">
     a3li
   </metadata>
 </glsa>

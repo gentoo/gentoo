@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-11">
   <title>Tor: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service, escalation of privileges and information disclosure.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>April 08, 2009</announced>
-  <revised>April 08, 2009: 01</revised>
+  <announced>2009-04-08</announced>
+  <revised>2009-04-08: 01</revised>
   <bug>250018</bug>
   <bug>256078</bug>
   <bug>258833</bug>
@@ -72,24 +71,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/tor-0.2.0.34&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/tor-0.2.0.34"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5397">CVE-2008-5397</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5398">CVE-2008-5398</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0414">CVE-2009-0414</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0936">CVE-2009-0936</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0937">CVE-2009-0937</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0938">CVE-2009-0938</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0939">CVE-2009-0939</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5397">CVE-2008-5397</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5398">CVE-2008-5398</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0414">CVE-2009-0414</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0936">CVE-2009-0936</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0937">CVE-2009-0937</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0938">CVE-2009-0938</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0939">CVE-2009-0939</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 25 Jan 2009 14:41:40 +0000">
+  <metadata tag="requester" timestamp="2009-01-25T14:41:40Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 16:48:01 +0000">
+  <metadata tag="submitter" timestamp="2009-02-12T16:48:01Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 16:48:17 +0000">
+  <metadata tag="bugReady" timestamp="2009-02-12T16:48:17Z">
     rbu
   </metadata>
 </glsa>

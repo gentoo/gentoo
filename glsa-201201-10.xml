@@ -6,8 +6,8 @@
     execution of arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">JasPer</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>394879</bug>
   <access>remote</access>
   <affected>
@@ -56,11 +56,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4516">CVE-2011-4516</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4517">CVE-2011-4517</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4516">CVE-2011-4516</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4517">CVE-2011-4517</uri>
   </references>
-  <metadata timestamp="Tue, 27 Dec 2011 05:22:50 +0000" tag="requester">
+  <metadata timestamp="2011-12-27T05:22:50Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 19:50:54 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-23T19:50:54Z" tag="submitter">ackle</metadata>
 </glsa>

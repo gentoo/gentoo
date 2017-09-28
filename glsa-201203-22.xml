@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">nginx</product>
-  <announced>March 28, 2012</announced>
-  <revised>March 28, 2012: 1</revised>
+  <announced>2012-03-28</announced>
+  <revised>2012-03-28: 1</revised>
   <bug>293785</bug>
   <bug>293786</bug>
   <bug>293788</bug>
@@ -66,17 +66,17 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3896">CVE-2009-3896
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3896">CVE-2009-3896
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3898">CVE-2009-3898
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3898">CVE-2009-3898
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4315">CVE-2011-4315
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4315">CVE-2011-4315
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1180">CVE-2012-1180
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1180">CVE-2012-1180
     </uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:49 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Wed, 28 Mar 2012 10:35:47 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-10-07T23:37:49Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-03-28T10:35:47Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-10">
   <title>Syslog-ng: Chroot escape</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escape if a separate vulnerability in Syslog-ng is exploited.
   </synopsis>
   <product type="ebuild">syslog-ng</product>
-  <announced>July 12, 2009</announced>
-  <revised>July 12, 2009: 01</revised>
+  <announced>2009-07-12</announced>
+  <revised>2009-07-12: 01</revised>
   <bug>247278</bug>
   <access>local</access>
   <affected>
@@ -48,24 +47,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/syslog-ng-2.0.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/syslog-ng-2.0.10"</code>
     <p>
     All Syslog-ng 2.1 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/syslog-ng-2.1.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/syslog-ng-2.1.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5110">CVE-2008-5110</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5110">CVE-2008-5110</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 11:11:22 +0000">
+  <metadata tag="requester" timestamp="2009-07-10T11:11:22Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2009 11:21:31 +0000">
+  <metadata tag="submitter" timestamp="2009-07-10T11:21:31Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Jul 2009 11:21:44 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-10T11:21:44Z">
     rbu
   </metadata>
 </glsa>

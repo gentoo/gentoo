@@ -49,8 +49,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9941">CVE-2016-9941</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9942">CVE-2016-9942</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9941">CVE-2016-9941</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9942">CVE-2016-9942</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-05T22:55:00Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-02-20T23:45:56Z">whissi</metadata>

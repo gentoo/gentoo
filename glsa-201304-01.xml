@@ -6,8 +6,8 @@
     gain escalated privileges.
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
-  <announced>April 08, 2013</announced>
-  <revised>April 08, 2013: 1</revised>
+  <announced>2013-04-08</announced>
+  <revised>2013-04-08: 1</revised>
   <bug>429614</bug>
   <bug>464248</bug>
   <access>remote</access>
@@ -55,9 +55,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4225">CVE-2012-4225</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0131">CVE-2013-0131</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4225">CVE-2012-4225</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0131">CVE-2013-0131</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 09 Aug 2012 20:47:12 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 08 Apr 2013 22:10:10 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-08-09T20:47:12Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-04-08T22:10:10Z">ackle</metadata>
 </glsa>

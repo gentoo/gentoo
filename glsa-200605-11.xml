@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-11">
   <title>Ruby: Denial of Service</title>
   <synopsis>
     Ruby WEBrick and XMLRPC servers are vulnerable to Denial of Service.
   </synopsis>
   <product type="ebuild">ruby</product>
-  <announced>May 10, 2006</announced>
-  <revised>May 10, 2006: 01</revised>
+  <announced>2006-05-10</announced>
+  <revised>2006-05-10: 01</revised>
   <bug>130657</bug>
   <access>remote</access>
   <affected>
@@ -46,16 +45,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.8.4-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1931">CVE-2006-1931</uri>
-    <uri link="http://www.ruby-lang.org/en/20051224.html">Ruby release announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1931">CVE-2006-1931</uri>
+    <uri link="https://www.ruby-lang.org/en/20051224.html">Ruby release announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 08 May 2006 06:23:42 +0000">
+  <metadata tag="submitter" timestamp="2006-05-08T06:23:42Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 08 May 2006 13:21:34 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-08T13:21:34Z">
     koon
   </metadata>
 </glsa>

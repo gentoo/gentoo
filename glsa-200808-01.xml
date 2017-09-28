@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200808-01">
   <title>xine-lib: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     streams.
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>August 06, 2008</announced>
-  <revised>August 06, 2008: 01</revised>
+  <announced>2008-08-06</announced>
+  <revised>2008-08-06: 01</revised>
   <bug>213039</bug>
   <bug>214270</bug>
   <bug>218059</bug>
@@ -68,20 +67,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.13&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.13"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0073">CVE-2008-0073</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1482">CVE-2008-1482</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1878">CVE-2008-1878</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0073">CVE-2008-0073</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1482">CVE-2008-1482</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1878">CVE-2008-1878</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 24 Mar 2008 19:44:35 +0000">
+  <metadata tag="requester" timestamp="2008-03-24T19:44:35Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 10 Apr 2008 20:23:27 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-10T20:23:27Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 00:56:00 +0000">
+  <metadata tag="submitter" timestamp="2008-04-14T00:56:00Z">
     rbu
   </metadata>
 </glsa>

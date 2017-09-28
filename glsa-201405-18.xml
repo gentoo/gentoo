@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">openconnect</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>457068</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6128">CVE-2012-6128</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6128">CVE-2012-6128</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 08 Apr 2013 22:03:55 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:36:30 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-04-08T22:03:55Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T11:36:30Z">ackle</metadata>
 </glsa>

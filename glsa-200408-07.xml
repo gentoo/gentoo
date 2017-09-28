@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-07">
   <title>Horde-IMP: Input validation vulnerability for Internet Explorer users</title>
   <synopsis>
@@ -8,8 +7,8 @@
     only affects users of Internet Explorer.
   </synopsis>
   <product type="ebuild">horde-imp</product>
-  <announced>August 10, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-10</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>59336</bug>
   <access>remote</access>
   <affected>
@@ -51,15 +50,15 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=www-apps/horde-imp-3.2.5&quot;
-    # emerge &quot;&gt;=www-apps/horde-imp-3.2.5&quot;</code>
+    # emerge -pv "&gt;=www-apps/horde-imp-3.2.5"
+    # emerge "&gt;=www-apps/horde-imp-3.2.5"</code>
   </resolution>
   <references>
-    <uri link="http://cvs.horde.org/diff.php/imp/docs/CHANGES?r1=1.389.2.106&amp;r2=1.389.2.109&amp;ty=h">Horde-IMP Changelog</uri>
-    <uri link="http://secunia.com/advisories/12202/">Secunia Advisory SA12202</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1443">CVE-2004-1443</uri>
+    <uri link="https://cvs.horde.org/diff.php/imp/docs/CHANGES?r1=1.389.2.106&amp;r2=1.389.2.109&amp;ty=h">Horde-IMP Changelog</uri>
+    <uri link="https://secunia.com/advisories/12202/">Secunia Advisory SA12202</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1443">CVE-2004-1443</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun,  8 Aug 2004 18:55:04 +0000">
+  <metadata tag="submitter" timestamp="2004-08-08T18:55:04Z">
     jaervosz
   </metadata>
 </glsa>

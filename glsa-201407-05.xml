@@ -6,8 +6,8 @@
     allowing remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>July 27, 2014</announced>
-  <revised>June 06, 2015: 2</revised>
+  <announced>2014-07-27</announced>
+  <revised>2015-06-06: 2</revised>
   <bug>512506</bug>
   <access>remote</access>
   <affected>
@@ -68,20 +68,20 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5298">CVE-2010-5298</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0195">CVE-2014-0195</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0198">CVE-2014-0198</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0221">CVE-2014-0221</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0224">CVE-2014-0224</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3470">CVE-2014-3470</uri>
-    <uri link="http://www.openssl.org/news/secadv_20140605.txt">OpenSSL
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5298">CVE-2010-5298</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0195">CVE-2014-0195</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0198">CVE-2014-0198</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0221">CVE-2014-0221</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0224">CVE-2014-0224</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3470">CVE-2014-3470</uri>
+    <uri link="https://www.openssl.org/news/secadv_20140605.txt">OpenSSL
       Security Advisory [05 Jun 2014]
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 06 Jun 2014 10:20:51 +0000">
+  <metadata tag="requester" timestamp="2014-06-06T10:20:51Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:12:08 +0000">
+  <metadata tag="submitter" timestamp="2015-06-06T23:12:08Z">
     keytoaster
   </metadata>
 </glsa>

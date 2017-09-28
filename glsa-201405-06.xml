@@ -6,8 +6,8 @@
     which may allow remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">openssh</product>
-  <announced>May 11, 2014</announced>
-  <revised>May 11, 2014: 1</revised>
+  <announced>2014-05-11</announced>
+  <revised>2014-05-11: 1</revised>
   <bug>231292</bug>
   <bug>247466</bug>
   <bug>386307</bug>
@@ -56,30 +56,30 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5161">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5161">
       CVE-2008-5161
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4478">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4478">
       CVE-2010-4478
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755">
       CVE-2010-4755
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5107">CVE-2010-5107</uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-5000">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5107">CVE-2010-5107</uri>
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-5000">
       CVE-2011-5000
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0814">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0814">
       CVE-2012-0814
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2532">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2532">
       CVE-2014-2532
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:16 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:16Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 11 May 2014 13:22:11 +0000">
+  <metadata tag="submitter" timestamp="2014-05-11T13:22:11Z">
     pinkbyte
   </metadata>
 </glsa>

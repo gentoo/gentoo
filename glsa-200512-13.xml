@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-13">
   <title>Dropbear: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code as the root user.
   </synopsis>
   <product type="ebuild">dropbear</product>
-  <announced>December 23, 2005</announced>
-  <revised>December 23, 2005: 01</revised>
+  <announced>2005-12-23</announced>
+  <revised>2005-12-23: 01</revised>
   <bug>116006</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dropbear-0.47&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/dropbear-0.47"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4178">CVE-2005-4178</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4178">CVE-2005-4178</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 20 Dec 2005 11:10:03 +0000">
+  <metadata tag="requester" timestamp="2005-12-20T11:10:03Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 20 Dec 2005 16:40:12 +0000">
+  <metadata tag="submitter" timestamp="2005-12-20T16:40:12Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 21 Dec 2005 10:00:54 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-21T10:00:54Z">
     DerCorny
   </metadata>
 </glsa>

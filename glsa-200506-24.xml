@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-24">
   <title>Heimdal: Buffer overflow vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allow the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">heimdal</product>
-  <announced>June 29, 2005</announced>
-  <revised>June 29, 2005: 01</revised>
+  <announced>2005-06-29</announced>
+  <revised>2005-06-29: 01</revised>
   <bug>96727</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/heimdal-0.6.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/heimdal-0.6.5"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2040">CAN-2005-2040</uri>
-    <uri link="http://www.pdc.kth.se/heimdal/advisory/2005-06-20/">Heimdal Advisory 2005-06-20</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2040">CAN-2005-2040</uri>
+    <uri link="https://www.pdc.kth.se/heimdal/advisory/2005-06-20/">Heimdal Advisory 2005-06-20</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 23 Jun 2005 11:06:31 +0000">
+  <metadata tag="requester" timestamp="2005-06-23T11:06:31Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 23 Jun 2005 12:58:46 +0000">
+  <metadata tag="submitter" timestamp="2005-06-23T12:58:46Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 29 Jun 2005 07:29:29 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-29T07:29:29Z">
     koon
   </metadata>
 </glsa>

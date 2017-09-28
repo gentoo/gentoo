@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-11">
   <title>GDM: Local Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     displays.
   </synopsis>
   <product type="ebuild">gdm</product>
-  <announced>September 18, 2007</announced>
-  <revised>September 18, 2007: 01</revised>
+  <announced>2007-09-18</announced>
+  <revised>2007-09-18: 01</revised>
   <bug>187919</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;gnome-base/gdm&quot;</code>
+    # emerge --ask --oneshot --verbose "gnome-base/gdm"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3381">CVE-2007-3381</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3381">CVE-2007-3381</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 15 Aug 2007 05:40:23 +0000">
+  <metadata tag="requester" timestamp="2007-08-15T05:40:23Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 15 Aug 2007 05:40:36 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-15T05:40:36Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Aug 2007 09:31:53 +0000">
+  <metadata tag="submitter" timestamp="2007-08-20T09:31:53Z">
     falco
   </metadata>
 </glsa>

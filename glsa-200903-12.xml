@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-12">
   <title>OptiPNG: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">optipng</product>
-  <announced>March 09, 2009</announced>
-  <revised>March 09, 2009: 01</revised>
+  <announced>2009-03-09</announced>
+  <revised>2009-03-09: 01</revised>
   <bug>260265</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/optipng-0.6.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/optipng-0.6.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0749">CVE-2009-0749</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0749">CVE-2009-0749</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 16:36:48 +0000">
+  <metadata tag="requester" timestamp="2009-03-07T16:36:48Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Mar 2009 18:09:51 +0000">
+  <metadata tag="submitter" timestamp="2009-03-07T18:09:51Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 07 Mar 2009 18:10:05 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-07T18:10:05Z">
     rbu
   </metadata>
 </glsa>

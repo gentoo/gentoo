@@ -6,8 +6,8 @@
     arbitrary shell commands.
   </synopsis>
   <product type="ebuild">kdirstat</product>
-  <announced>June 15, 2014</announced>
-  <revised>June 15, 2014: 1</revised>
+  <announced>2014-06-15</announced>
+  <revised>2014-06-15: 1</revised>
   <bug>504994</bug>
   <access>local</access>
   <affected>
@@ -42,12 +42,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2527">CVE-2014-2527</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2527">CVE-2014-2527</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 21 Mar 2014 08:40:23 +0000">
+  <metadata tag="requester" timestamp="2014-03-21T08:40:23Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Jun 2014 16:22:38 +0000">
+  <metadata tag="submitter" timestamp="2014-06-15T16:22:38Z">
     pinkbyte
   </metadata>
 </glsa>

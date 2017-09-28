@@ -58,7 +58,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6706">CVE-2012-6706</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6706">CVE-2012-6706</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-21T12:23:53Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-08-21T01:03:02Z">b-man</metadata>

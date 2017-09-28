@@ -6,8 +6,8 @@
     attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">TeX Live</product>
-  <announced>June 25, 2012</announced>
-  <revised>June 25, 2012: 1</revised>
+  <announced>2012-06-25</announced>
+  <revised>2012-06-25: 1</revised>
   <bug>264598</bug>
   <bug>324019</bug>
   <access>remote</access>
@@ -44,13 +44,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1284">CVE-2009-1284</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0739">CVE-2010-0739</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0827">CVE-2010-0827</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1440">CVE-2010-1440</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1284">CVE-2009-1284</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0739">CVE-2010-0739</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0827">CVE-2010-0827</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1440">CVE-2010-1440</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:59 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:59Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 25 Jun 2012 18:50:51 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2012-06-25T18:50:51Z" tag="submitter">craig</metadata>
 </glsa>

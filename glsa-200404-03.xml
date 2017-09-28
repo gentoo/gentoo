@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-03">
   <title>Tcpdump Vulnerabilities in ISAKMP Parsing</title>
   <synopsis>
@@ -8,8 +7,8 @@
     parsing of ISAKMP packets.
   </synopsis>
   <product type="ebuild">tcpdump</product>
-  <announced>March 31, 2004</announced>
-  <revised>March 31, 2004: 01</revised>
+  <announced>2004-03-31</announced>
+  <revised>2004-03-31: 01</revised>
   <bug>38206</bug>
   <bug>46258</bug>
   <access>remote</access>
@@ -59,12 +58,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-libs/libpcap-0.8.3-r1" ">=net-analyzer/tcpdump-3.8.3-r1"
-    # emerge ">=net-libs/libpcap-0.8.3-r1" ">=net-analyzer/tcpdump-3.8.3-r1"</code>
+    # emerge -pv "&gt;=net-libs/libpcap-0.8.3-r1" "&gt;=net-analyzer/tcpdump-3.8.3-r1"
+    # emerge "&gt;=net-libs/libpcap-0.8.3-r1" "&gt;=net-analyzer/tcpdump-3.8.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.rapid7.com/advisories/R7-0017.html">Rapid7 Advisory</uri>
-    <uri link="http://rhn.redhat.com/errata/RHSA-2004-008.html">Red Hat Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0989">CVE Advisory</uri>
+    <uri link="https://www.rapid7.com/advisories/R7-0017.html">Rapid7 Advisory</uri>
+    <uri link="https://rhn.redhat.com/errata/RHSA-2004-008.html">Red Hat Security Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0989">CVE Advisory</uri>
   </references>
 </glsa>

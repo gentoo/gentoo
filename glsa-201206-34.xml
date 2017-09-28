@@ -6,8 +6,8 @@
     attackers to conduct man-in-the-middle attacks.   
   </synopsis>
   <product type="ebuild">msmtp</product>
-  <announced>June 25, 2012</announced>
-  <revised>June 25, 2012: 1</revised>
+  <announced>2012-06-25</announced>
+  <revised>2012-06-25: 1</revised>
   <bug>293647</bug>
   <access>remote</access>
   <affected>
@@ -44,8 +44,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3942">CVE-2009-3942</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3942">CVE-2009-3942</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:28 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 25 Jun 2012 18:51:50 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:28Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-25T18:51:50Z" tag="submitter">craig</metadata>
 </glsa>

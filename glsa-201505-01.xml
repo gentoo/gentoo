@@ -6,8 +6,8 @@
     which allows remote attackers to execute arbitrary code. 
   </synopsis>
   <product type="ebuild">ettercap</product>
-  <announced>May 13, 2015</announced>
-  <revised>May 13, 2015: 1</revised>
+  <announced>2015-05-13</announced>
+  <revised>2015-05-13: 1</revised>
   <bug>532764</bug>
   <access>remote</access>
   <affected>
@@ -42,17 +42,17 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6395">CVE-2014-6395</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6396">CVE-2014-6396</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9376">CVE-2014-9376</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9377">CVE-2014-9377</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9378">CVE-2014-9378</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9379">CVE-2014-9379</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9380">CVE-2014-9380</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9381">CVE-2014-9381</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6395">CVE-2014-6395</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6396">CVE-2014-6396</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9376">CVE-2014-9376</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9377">CVE-2014-9377</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9378">CVE-2014-9378</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9379">CVE-2014-9379</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9380">CVE-2014-9380</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9381">CVE-2014-9381</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Apr 2015 04:38:40 +0000">
+  <metadata tag="requester" timestamp="2015-04-06T04:38:40Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 May 2015 09:24:38 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-05-13T09:24:38Z">Zlogene</metadata>
 </glsa>

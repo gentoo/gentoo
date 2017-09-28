@@ -6,8 +6,8 @@
     execution.
   </synopsis>
   <product type="ebuild">bash</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>594496</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0634">CVE-2016-0634</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0634">CVE-2016-0634</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Sep 2016 02:45:43 +0000">
+  <metadata tag="requester" timestamp="2016-09-23T02:45:43Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 07:00:09 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T07:00:09Z">whissi</metadata>
 </glsa>

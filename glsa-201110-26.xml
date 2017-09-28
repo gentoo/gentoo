@@ -6,8 +6,8 @@
     execution of arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>October 26, 2011</announced>
-  <revised>October 26, 2011: 1</revised>
+  <announced>2011-10-26</announced>
+  <revised>2011-10-26: 1</revised>
   <bug>345555</bug>
   <bug>370715</bug>
   <bug>386985</bug>
@@ -44,16 +44,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4008">CVE-2010-4008</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4494">CVE-2010-4494</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1944">CVE-2011-1944</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2821">CVE-2011-2821</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2834">CVE-2011-2834</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4008">CVE-2010-4008</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4494">CVE-2010-4494</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1944">CVE-2011-1944</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2821">CVE-2011-2821</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2834">CVE-2011-2834</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:45 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:45Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Wed, 26 Oct 2011 20:50:29 +0000" tag="submitter">
+  <metadata timestamp="2011-10-26T20:50:29Z" tag="submitter">
     underling
   </metadata>
 </glsa>

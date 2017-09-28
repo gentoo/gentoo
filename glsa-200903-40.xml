@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-40">
   <title>Analog: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability was discovered in Analog.
   </synopsis>
   <product type="ebuild">analog</product>
-  <announced>March 29, 2009</announced>
-  <revised>March 29, 2009: 01</revised>
+  <announced>2009-03-29</announced>
+  <revised>2009-03-29: 01</revised>
   <bug>249140</bug>
   <access>local</access>
   <affected>
@@ -47,22 +46,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/analog-6.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/analog-6.0-r2"</code>
     <p>
     NOTE: Analog is now linked against the system bzip2 library.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1372">CVE-2008-1372</uri>
-    <uri link="/security/en/glsa/glsa-200804-02.xml">GLSA 200804-02</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1372">CVE-2008-1372</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200804-02.xml">GLSA 200804-02</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Dec 2008 20:13:59 +0000">
+  <metadata tag="requester" timestamp="2008-12-21T20:13:59Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 26 Mar 2009 12:22:59 +0000">
+  <metadata tag="submitter" timestamp="2009-03-26T12:22:59Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 26 Mar 2009 12:23:07 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-26T12:23:07Z">
     p-y
   </metadata>
 </glsa>

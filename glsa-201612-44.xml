@@ -6,8 +6,8 @@
     code execution.
   </synopsis>
   <product type="ebuild">roundcube</product>
-  <announced>December 24, 2016</announced>
-  <revised>December 24, 2016: 1</revised>
+  <announced>2016-12-24</announced>
+  <revised>2016-12-24: 1</revised>
   <bug>601410</bug>
   <access>remote</access>
   <affected>
@@ -46,8 +46,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9920">CVE-2016-9920</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9920">CVE-2016-9920</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Dec 2016 15:26:48 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Sat, 24 Dec 2016 06:42:27 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-12-23T15:26:48Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-24T06:42:27Z">whissi</metadata>
 </glsa>

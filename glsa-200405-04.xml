@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-04">
   <title>OpenOffice.org vulnerability when using DAV servers</title>
   <synopsis>
@@ -9,8 +8,8 @@
     when connected to an untrusted WebDAV server.
   </synopsis>
   <product type="ebuild">openoffice</product>
-  <announced>May 11, 2004</announced>
-  <revised>October 27, 2004: 02</revised>
+  <announced>2004-05-11</announced>
+  <revised>2004-10-27: 02</revised>
   <bug>47926</bug>
   <access>remote</access>
   <affected>
@@ -76,44 +75,44 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-office/openoffice-1.1.1-r1"
-    # emerge ">=app-office/openoffice-1.1.1-r1"</code>
+    # emerge -pv "&gt;=app-office/openoffice-1.1.1-r1"
+    # emerge "&gt;=app-office/openoffice-1.1.1-r1"</code>
     <p>
     openoffice users on the sparc architecture should:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-office/openoffice-1.1.0-r3"
-    # emerge ">=app-office/openoffice-1.1.0-r3"</code>
+    # emerge -pv "&gt;=app-office/openoffice-1.1.0-r3"
+    # emerge "&gt;=app-office/openoffice-1.1.0-r3"</code>
     <p>
     openoffice users on the ppc architecture should:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-office/openoffice-1.0.3-r1"
-    # emerge ">=app-office/openoffice-1.0.3-r1"</code>
+    # emerge -pv "&gt;=app-office/openoffice-1.0.3-r1"
+    # emerge "&gt;=app-office/openoffice-1.0.3-r1"</code>
     <p>
     openoffice-ximian users should:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-office/openoffice-ximian-1.1.51-r1"
-    # emerge ">=app-office/openoffice-ximian-1.1.51-r1"</code>
+    # emerge -pv "&gt;=app-office/openoffice-ximian-1.1.51-r1"
+    # emerge "&gt;=app-office/openoffice-ximian-1.1.51-r1"</code>
     <p>
     openoffice-bin users should:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-office/openoffice-bin-1.1.2"
-    # emerge ">=app-office/openoffice-bin-1.1.2"</code>
+    # emerge -pv "&gt;=app-office/openoffice-bin-1.1.2"
+    # emerge "&gt;=app-office/openoffice-bin-1.1.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CAN-2004-0179</uri>
-    <uri link="/security/en/glsa/glsa-200405-01.xml">Neon vulnerabilities (GLSA 200405-01)</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CAN-2004-0179</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200405-01.xml">Neon vulnerabilities (GLSA 200405-01)</uri>
   </references>
   <metadata tag="submitter">
     koon

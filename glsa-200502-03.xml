@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-03">
   <title>enscript: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">enscript</product>
-  <announced>February 02, 2005</announced>
-  <revised>February 02, 2005: 01</revised>
+  <announced>2005-02-02</announced>
+  <revised>2005-02-02: 01</revised>
   <bug>77408</bug>
   <access>remote</access>
   <affected>
@@ -50,20 +49,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/enscript-1.6.3-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/enscript-1.6.3-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1184">CAN-2004-1184</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1185">CAN-2004-1185</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1186">CAN-2004-1186</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1184">CAN-2004-1184</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1185">CAN-2004-1185</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1186">CAN-2004-1186</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 28 Jan 2005 10:31:54 +0000">
+  <metadata tag="requester" timestamp="2005-01-28T10:31:54Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue,  1 Feb 2005 17:01:52 +0000">
+  <metadata tag="submitter" timestamp="2005-02-01T17:01:52Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  1 Feb 2005 21:40:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-01T21:40:35Z">
     koon
   </metadata>
 </glsa>

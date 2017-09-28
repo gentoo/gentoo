@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-10">
   <title>lighttpd: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been discovered in lighttpd.
   </synopsis>
   <product type="ebuild">lighttpd</product>
-  <announced>March 05, 2008</announced>
-  <revised>March 05, 2008: 01</revised>
+  <announced>2008-03-05</announced>
+  <revised>2008-03-05: 01</revised>
   <bug>211230</bug>
   <bug>211956</bug>
   <access>remote</access>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.18-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/lighttpd-1.4.18-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0983">CVE-2008-0983</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1111">CVE-2008-1111</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0983">CVE-2008-0983</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1111">CVE-2008-1111</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 02 Mar 2008 13:11:03 +0000">
+  <metadata tag="requester" timestamp="2008-03-02T13:11:03Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 02 Mar 2008 22:33:25 +0000">
+  <metadata tag="submitter" timestamp="2008-03-02T22:33:25Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 04 Mar 2008 21:56:43 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-04T21:56:43Z">
     p-y
   </metadata>
 </glsa>

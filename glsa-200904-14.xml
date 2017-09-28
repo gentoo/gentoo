@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-14">
   <title>F-PROT Antivirus: Multiple Denial of Service vulnerabilities</title>
   <synopsis>
     Multiple errors in F-PROT Antivirus may lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">f-prot</product>
-  <announced>April 14, 2009</announced>
-  <revised>April 17, 2009: 04</revised>
+  <announced>2009-04-14</announced>
+  <revised>2009-04-17: 04</revised>
   <bug>232665</bug>
   <bug>253497</bug>
   <access>remote</access>
@@ -57,20 +56,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/f-prot-6.0.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/f-prot-6.0.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3243">CVE-2008-3243</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3244">CVE-2008-3244</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5747">CVE-2008-5747</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3243">CVE-2008-3243</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3244">CVE-2008-3244</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5747">CVE-2008-5747</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 08 Apr 2009 22:38:56 +0000">
+  <metadata tag="requester" timestamp="2009-04-08T22:38:56Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Apr 2009 21:12:22 +0000">
+  <metadata tag="submitter" timestamp="2009-04-10T21:12:22Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Apr 2009 21:13:03 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-10T21:13:03Z">
     p-y
   </metadata>
 </glsa>

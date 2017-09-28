@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>February 18, 2012</announced>
-  <revised>February 18, 2012: 1</revised>
+  <announced>2012-02-18</announced>
+  <revised>2012-02-18: 1</revised>
   <bug>402841</bug>
   <bug>404067</bug>
   <access>remote</access>
@@ -49,110 +49,110 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3016">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3016">
       CVE-2011-3016
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3017">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3017">
       CVE-2011-3017
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3018">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3018">
       CVE-2011-3018
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3019">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3019">
       CVE-2011-3019
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3020">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3020">
       CVE-2011-3020
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3021">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3021">
       CVE-2011-3021
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3022">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3022">
       CVE-2011-3022
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3023">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3023">
       CVE-2011-3023
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3024">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3024">
       CVE-2011-3024
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3025">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3025">
       CVE-2011-3025
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3027">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3027">
       CVE-2011-3027
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3953">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3953">
       CVE-2011-3953
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3954">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3954">
       CVE-2011-3954
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3955">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3955">
       CVE-2011-3955
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3956">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3956">
       CVE-2011-3956
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3957">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3957">
       CVE-2011-3957
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3958">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3958">
       CVE-2011-3958
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3959">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3959">
       CVE-2011-3959
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3960">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3960">
       CVE-2011-3960
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3961">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3961">
       CVE-2011-3961
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3962">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3962">
       CVE-2011-3962
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3963">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3963">
       CVE-2011-3963
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3964">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3964">
       CVE-2011-3964
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3965">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3965">
       CVE-2011-3965
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3966">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3966">
       CVE-2011-3966
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3967">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3967">
       CVE-2011-3967
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3968">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3968">
       CVE-2011-3968
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3969">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3969">
       CVE-2011-3969
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3970">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3970">
       CVE-2011-3970
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3971">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3971">
       CVE-2011-3971
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3972">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3972">
       CVE-2011-3972
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/02/stable-channel-update.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/02/stable-channel-update.html">
       Release Notes 17.0.963.46
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/02/chrome-stable-update.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/02/chrome-stable-update.html">
       Release Notes 17.0.963.56
     </uri>
   </references>
-  <metadata timestamp="Mon, 13 Feb 2012 09:29:19 +0000" tag="requester">
+  <metadata timestamp="2012-02-13T09:29:19Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Sat, 18 Feb 2012 17:34:34 +0000" tag="submitter">
+  <metadata timestamp="2012-02-18T17:34:34Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

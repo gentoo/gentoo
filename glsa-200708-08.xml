@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-08">
   <title>SquirrelMail G/PGP plugin: Arbitrary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">squirrelmail</product>
-  <announced>August 11, 2007</announced>
-  <revised>August 11, 2007: 01</revised>
+  <announced>2007-08-11</announced>
+  <revised>2007-08-11: 01</revised>
   <bug>185010</bug>
   <access>remote</access>
   <affected>
@@ -55,19 +54,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.10a-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/squirrelmail-1.4.10a-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1924">CVE-2005-1924</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4169">CVE-2006-4169</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1924">CVE-2005-1924</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4169">CVE-2006-4169</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 20 Jul 2007 20:59:21 +0000">
+  <metadata tag="requester" timestamp="2007-07-20T20:59:21Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 23 Jul 2007 13:21:57 +0000">
+  <metadata tag="submitter" timestamp="2007-07-23T13:21:57Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 23 Jul 2007 13:22:43 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-23T13:22:43Z">
     p-y
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     allowing remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">opensmtpd</product>
-  <announced>January 27, 2016</announced>
-  <revised>January 27, 2016: 1</revised>
+  <announced>2016-01-27</announced>
+  <revised>2016-01-27: 1</revised>
   <bug>562034</bug>
   <bug>562290</bug>
   <access>remote</access>
@@ -44,6 +44,6 @@
   </resolution>
   <references>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 Oct 2015 13:05:33 +0000">mrueg</metadata>
-  <metadata tag="submitter" timestamp="Wed, 27 Jan 2016 06:43:42 +0000">mrueg</metadata>
+  <metadata tag="requester" timestamp="2015-10-02T13:05:33Z">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2016-01-27T06:43:42Z">mrueg</metadata>
 </glsa>

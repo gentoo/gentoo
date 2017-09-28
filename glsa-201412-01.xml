@@ -6,8 +6,8 @@
     which allows context dependent attackers to cause Denial of Service.
   </synopsis>
   <product type="ebuild">qemu</product>
-  <announced>December 08, 2014</announced>
-  <revised>December 08, 2014: 1</revised>
+  <announced>2014-12-08</announced>
+  <revised>2014-12-08: 1</revised>
   <bug>514680</bug>
   <bug>519506</bug>
   <bug>520688</bug>
@@ -47,15 +47,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3471">CVE-2014-3471</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3615">CVE-2014-3615</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3640">CVE-2014-3640</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5263">CVE-2014-5263</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5388">CVE-2014-5388</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7815">CVE-2014-7815</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3471">CVE-2014-3471</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3615">CVE-2014-3615</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3640">CVE-2014-3640</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5263">CVE-2014-5263</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5388">CVE-2014-5388</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7815">CVE-2014-7815</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 05 Oct 2014 01:51:26 +0000">
+  <metadata tag="requester" timestamp="2014-10-05T01:51:26Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 08 Dec 2014 22:33:07 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-08T22:33:07Z">K_F</metadata>
 </glsa>

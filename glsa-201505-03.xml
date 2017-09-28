@@ -6,8 +6,8 @@
     of which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">phpMyAdmin</product>
-  <announced>May 31, 2015</announced>
-  <revised>May 14, 2016: 2</revised>
+  <announced>2015-05-31</announced>
+  <revised>2016-05-14: 2</revised>
   <bug>517858</bug>
   <bug>522844</bug>
   <bug>530054</bug>
@@ -65,16 +65,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4986">CVE-2014-4986</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4987">CVE-2014-4987</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6300">CVE-2014-6300</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8958">CVE-2014-8958</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8959">CVE-2014-8959</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8960">CVE-2014-8960</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8961">CVE-2014-8961</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4986">CVE-2014-4986</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4987">CVE-2014-4987</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6300">CVE-2014-6300</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8958">CVE-2014-8958</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8959">CVE-2014-8959</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8960">CVE-2014-8960</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8961">CVE-2014-8961</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Mar 2015 15:47:49 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 14 May 2016 20:55:11 +0000">
+  <metadata tag="requester" timestamp="2015-03-14T15:47:49Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-05-14T20:55:11Z">
     BlueKnight
   </metadata>
 </glsa>

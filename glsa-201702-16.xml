@@ -54,9 +54,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4335">CVE-2015-4335</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8080">CVE-2015-8080</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8339">CVE-2016-8339</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4335">CVE-2015-4335</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8080">CVE-2015-8080</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8339">CVE-2016-8339</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-30T02:05:41Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-02-20T23:26:41Z">whissi</metadata>

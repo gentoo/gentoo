@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-27">
   <title>Motor: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">motor</product>
-  <announced>August 29, 2006</announced>
-  <revised>August 29, 2006: 01</revised>
+  <announced>2006-08-29</announced>
+  <revised>2006-08-29: 01</revised>
   <bug>135020</bug>
   <access>remote</access>
   <affected>
@@ -51,24 +50,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/motor-3.3.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/motor-3.3.0-r1"</code>
     <p>
     All motor 3.4.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/motor-3.4.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/motor-3.4.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3863">CVE-2005-3863</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3863">CVE-2005-3863</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Aug 2006 15:20:34 +0000">
+  <metadata tag="requester" timestamp="2006-08-23T15:20:34Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 26 Aug 2006 14:27:17 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-26T14:27:17Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 26 Aug 2006 15:28:41 +0000">
+  <metadata tag="submitter" timestamp="2006-08-26T15:28:41Z">
     falco
   </metadata>
 </glsa>

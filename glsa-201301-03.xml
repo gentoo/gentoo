@@ -6,8 +6,8 @@
     to cause Denial of Service or obtain sensitive information.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>January 08, 2013</announced>
-  <revised>January 08, 2013: 1</revised>
+  <announced>2013-01-08</announced>
+  <revised>2013-01-08: 1</revised>
   <bug>432188</bug>
   <bug>434882</bug>
   <bug>444804</bug>
@@ -45,13 +45,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3517">CVE-2012-3517</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3518">CVE-2012-3518</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3519">CVE-2012-3519</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4419">CVE-2012-4419</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4922">CVE-2012-4922</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5573">CVE-2012-5573</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3517">CVE-2012-3517</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3518">CVE-2012-3518</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3519">CVE-2012-3519</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4419">CVE-2012-4419</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4922">CVE-2012-4922</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5573">CVE-2012-5573</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Sep 2012 10:40:15 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 08 Jan 2013 23:51:55 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-19T10:40:15Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-01-08T23:51:55Z">ackle</metadata>
 </glsa>

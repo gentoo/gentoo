@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-16">
   <title>MaraDNS: CNAME Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resolution.
   </synopsis>
   <product type="ebuild">maradns</product>
-  <announced>January 29, 2008</announced>
-  <revised>January 29, 2008: 01</revised>
+  <announced>2008-01-29</announced>
+  <revised>2008-01-29: 01</revised>
   <bug>204351</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/maradns-1.2.12.09&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/maradns-1.2.12.09"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0061">CVE-2008-0061</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0061">CVE-2008-0061</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 27 Jan 2008 19:19:02 +0000">
+  <metadata tag="requester" timestamp="2008-01-27T19:19:02Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Jan 2008 17:41:20 +0000">
+  <metadata tag="submitter" timestamp="2008-01-28T17:41:20Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 28 Jan 2008 18:03:45 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-28T18:03:45Z">
     falco
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     or Denial of Service.
   </synopsis>
   <product type="ebuild">grep</product>
-  <announced>March 26, 2014</announced>
-  <revised>March 26, 2014: 1</revised>
+  <announced>2014-03-26</announced>
+  <revised>2014-03-26: 1</revised>
   <bug>448246</bug>
   <access>local, remote</access>
   <affected>
@@ -40,8 +40,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5667">CVE-2012-5667</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5667">CVE-2012-5667</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Dec 2012 16:52:28 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Mar 2014 15:39:34 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-26T16:52:28Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-03-26T15:39:34Z">ackle</metadata>
 </glsa>

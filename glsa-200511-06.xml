@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-06">
   <title>fetchmail: Password exposure in fetchmailconf</title>
   <synopsis>
@@ -8,8 +7,8 @@
     exposing sensitive information to other local users.
   </synopsis>
   <product type="ebuild">fetchmail</product>
-  <announced>November 06, 2005</announced>
-  <revised>November 06, 2005: 01</revised>
+  <announced>2005-11-06</announced>
+  <revised>2005-11-06: 01</revised>
   <bug>110366</bug>
   <access>local</access>
   <affected>
@@ -50,16 +49,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/fetchmail-6.2.5.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/fetchmail-6.2.5.2-r1"</code>
   </resolution>
   <references>
     <uri link="http://fetchmail.berlios.de/fetchmail-SA-2005-02.txt">Fetchmail Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3088">CVE-2005-3088</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3088">CVE-2005-3088</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 04 Nov 2005 12:31:43 +0000">
+  <metadata tag="submitter" timestamp="2005-11-04T12:31:43Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 04 Nov 2005 12:31:54 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-04T12:31:54Z">
     koon
   </metadata>
 </glsa>

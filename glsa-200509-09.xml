@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-09">
   <title>Py2Play: Remote execution of arbitrary Python code</title>
   <synopsis>
     A design error in Py2Play allows attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">py2play</product>
-  <announced>September 17, 2005</announced>
-  <revised>September 05, 2006: 02</revised>
+  <announced>2005-09-17</announced>
+  <revised>2006-09-05: 02</revised>
   <bug>103524</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-python/py2play-0.1.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-python/py2play-0.1.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2875">CAN-2005-2875</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2875">CAN-2005-2875</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 Sep 2005 14:02:17 +0000">
+  <metadata tag="requester" timestamp="2005-09-13T14:02:17Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 14 Sep 2005 11:59:59 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-14T11:59:59Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 14 Sep 2005 20:47:34 +0000">
+  <metadata tag="submitter" timestamp="2005-09-14T20:47:34Z">
     koon
   </metadata>
 </glsa>

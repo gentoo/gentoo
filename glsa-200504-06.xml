@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-06">
   <title>sharutils: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     local user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">sharutils</product>
-  <announced>April 06, 2005</announced>
-  <revised>April 06, 2005: 01</revised>
+  <announced>2005-04-06</announced>
+  <revised>2005-04-06: 01</revised>
   <bug>87939</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/sharutils-4.2.1-r11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/sharutils-4.2.1-r11"</code>
   </resolution>
   <references>
-    <uri link="http://www.ubuntulinux.org/support/documentation/usn/usn-104-1">Ubuntu Advisory</uri>
+    <uri link="https://www.ubuntulinux.org/support/documentation/usn/usn-104-1">Ubuntu Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue,  5 Apr 2005 07:42:03 +0000">
+  <metadata tag="requester" timestamp="2005-04-05T07:42:03Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue,  5 Apr 2005 13:07:06 +0000">
+  <metadata tag="submitter" timestamp="2005-04-05T13:07:06Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  6 Apr 2005 20:15:09 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-06T20:15:09Z">
     lewk
   </metadata>
 </glsa>

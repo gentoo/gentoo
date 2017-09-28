@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200311-04">
   <title>FreeRADIUS: heap exploit and NULL pointer dereference vulnerability</title>
   <synopsis>

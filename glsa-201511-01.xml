@@ -5,9 +5,9 @@
   <synopsis>An attacker who already had access to the environment could so
     append values to parameters passed through programs.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>November 02, 2015</announced>
-  <revised>November 02, 2015: 2</revised>
+  <product type="ebuild"/>
+  <announced>2015-11-02</announced>
+  <revised>2015-11-02: 2</revised>
   <bug>524414</bug>
   <access>local</access>
   <affected>
@@ -52,6 +52,6 @@
       mksh R50c released, security fix
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Dec 2014 08:13:43 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Nov 2015 15:33:07 +0000">mrueg</metadata>
+  <metadata tag="requester" timestamp="2014-12-12T08:13:43Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-11-02T15:33:07Z">mrueg</metadata>
 </glsa>

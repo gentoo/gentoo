@@ -6,8 +6,8 @@
     allowing remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">libotr, pidgin-otr</product>
-  <announced>January 02, 2017</announced>
-  <revised>January 02, 2017: 1</revised>
+  <announced>2017-01-02</announced>
+  <revised>2017-01-02: 1</revised>
   <bug>576914</bug>
   <bug>576916</bug>
   <access>remote</access>
@@ -57,9 +57,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8833">CVE-2015-8833</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2851">CVE-2016-2851</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8833">CVE-2015-8833</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2851">CVE-2016-2851</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 11:51:33 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 14:19:57 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-01T11:51:33Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-02T14:19:57Z">b-man</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-18">
   <title>Multiple Vulnerabilities in ssmtp</title>
   <synopsis>
@@ -9,8 +8,8 @@
     (potentially root).
   </synopsis>
   <product type="ebuild">ssmtp</product>
-  <announced>April 26, 2004</announced>
-  <revised>April 26, 2004: 01</revised>
+  <announced>2004-04-26</announced>
+  <revised>2004-04-26: 01</revised>
   <bug>47918</bug>
   <bug>48435</bug>
   <access>remote root </access>
@@ -55,13 +54,13 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=mail-mta/ssmtp-2.60.7"
-    # emerge ">=mail-mta/ssmtp-2.60.7"</code>
+    # emerge -pv "&gt;=mail-mta/ssmtp-2.60.7"
+    # emerge "&gt;=mail-mta/ssmtp-2.60.7"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/11378/">Secunia Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0156">CVE Reference</uri>
-    <uri link="http://lists.debian.org/debian-security-announce/debian-security-announce-2004/msg00084.html">Debian Advisory</uri>
+    <uri link="https://secunia.com/advisories/11378/">Secunia Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0156">CVE Reference</uri>
+    <uri link="https://lists.debian.org/debian-security-announce/debian-security-announce-2004/msg00084.html">Debian Advisory</uri>
   </references>
   <metadata tag="submitter">
     condordes

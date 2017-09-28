@@ -42,7 +42,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5581">CVE-2017-5581</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5581">CVE-2017-5581</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-13T02:16:26Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-02-20T23:29:04Z">whissi</metadata>

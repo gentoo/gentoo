@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200402-06">
   <title>Updated kernel packages fix the AMD64 ptrace vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     elevated priveleges. 
   </synopsis>
   <product type="ebuild">Kernel</product>
-  <announced>February 17, 2004</announced>
-  <revised>February 17, 2004: 01</revised>
+  <announced>2004-02-17</announced>
+  <revised>2004-02-17: 01</revised>
   <access>local</access>
   <affected>
     <package name="sys-kernel/ck-sources" auto="yes" arch="amd64">

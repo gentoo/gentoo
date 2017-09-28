@@ -6,8 +6,8 @@
     arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">lzo</product>
-  <announced>January 02, 2017</announced>
-  <revised>January 02, 2017: 1</revised>
+  <announced>2017-01-02</announced>
+  <revised>2017-01-02: 1</revised>
   <bug>515238</bug>
   <access>remote</access>
   <affected>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4607">CVE-2014-4607</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4607">CVE-2014-4607</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 10 Jul 2014 05:18:15 +0000">
+  <metadata tag="requester" timestamp="2014-07-10T05:18:15Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 15:16:02 +0000">
+  <metadata tag="submitter" timestamp="2017-01-02T15:16:02Z">
     BlueKnight
   </metadata>
 </glsa>

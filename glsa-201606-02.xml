@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in Puppet Server and
     Agent, the worst of which could lead to arbitrary code execution.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 05, 2016</announced>
-  <revised>June 05, 2016: 3</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-05</announced>
+  <revised>2016-06-05: 3</revised>
   <bug>577450</bug>
   <bug>581372</bug>
   <access>remote</access>
@@ -56,9 +56,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2785">CVE-2016-2785</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2786">CVE-2016-2786</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2785">CVE-2016-2785</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2786">CVE-2016-2786</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Mar 2016 09:09:16 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 20:14:52 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-03-15T09:09:16Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-05T20:14:52Z">b-man</metadata>
 </glsa>

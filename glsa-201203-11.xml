@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">usbmuxd</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>399409</bug>
   <access>local</access>
   <affected>
@@ -46,8 +46,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0065">CVE-2012-0065</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0065">CVE-2012-0065</uri>
   </references>
-  <metadata timestamp="Mon, 23 Jan 2012 14:30:43 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:43:19 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-23T14:30:43Z" tag="requester">ago</metadata>
+  <metadata timestamp="2012-03-06T01:43:19Z" tag="submitter">ackle</metadata>
 </glsa>

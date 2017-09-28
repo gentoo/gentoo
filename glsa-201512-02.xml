@@ -6,8 +6,8 @@
     JavaScript.
   </synopsis>
   <product type="ebuild">ipython</product>
-  <announced>December 17, 2015</announced>
-  <revised>December 17, 2015: 1</revised>
+  <announced>2015-12-17</announced>
+  <revised>2015-12-17: 1</revised>
   <bug>560708</bug>
   <access>remote</access>
   <affected>
@@ -40,10 +40,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7337">CVE-2015-7337</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7337">CVE-2015-7337</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 24 Sep 2015 01:14:10 +0000">
+  <metadata tag="requester" timestamp="2015-09-24T01:14:10Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Dec 2015 16:41:41 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-12-17T16:41:41Z">ackle</metadata>
 </glsa>

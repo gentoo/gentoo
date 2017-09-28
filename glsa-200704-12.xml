@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-12">
   <title>OpenOffice.org: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     for remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">OpenOffice.org</product>
-  <announced>April 16, 2007</announced>
-  <revised>April 16, 2007: 01</revised>
+  <announced>2007-04-16</announced>
+  <revised>2007-04-16: 01</revised>
   <bug>170828</bug>
   <access>remote</access>
   <affected>
@@ -56,27 +55,27 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.1.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-2.1.0-r1"</code>
     <p>
     All OpenOffice.org binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.2.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-2.2.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0002">CVE-2007-0002</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0238">CVE-2007-0238</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0239">CVE-2007-0239</uri>
-    <uri link="/security/en/glsa/glsa-200704-07.xml">GLSA-200704-07</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0002">CVE-2007-0002</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0238">CVE-2007-0238</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0239">CVE-2007-0239</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200704-07.xml">GLSA-200704-07</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 11 Apr 2007 10:02:01 +0000">
+  <metadata tag="requester" timestamp="2007-04-11T10:02:01Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Apr 2007 18:10:31 +0000">
+  <metadata tag="submitter" timestamp="2007-04-11T18:10:31Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 11 Apr 2007 18:15:09 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-11T18:15:09Z">
     p-y
   </metadata>
 </glsa>

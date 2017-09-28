@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-35">
   <title>Smarty: Template vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a remote attacker to execute arbitrary PHP code.
   </synopsis>
   <product type="ebuild">smarty</product>
-  <announced>March 30, 2005</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2005-03-30</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>86488</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/smarty-2.6.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/smarty-2.6.9"</code>
   </resolution>
   <references>
-    <uri link="http://smarty.php.net/misc/NEWS">Smarty ChangeLog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0913">CVE-2005-0913</uri>
+    <uri link="https://smarty.php.net/misc/NEWS">Smarty ChangeLog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0913">CVE-2005-0913</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 24 Mar 2005 17:18:18 +0000">
+  <metadata tag="requester" timestamp="2005-03-24T17:18:18Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 28 Mar 2005 13:11:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-28T13:11:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Mar 2005 13:23:33 +0000">
+  <metadata tag="submitter" timestamp="2005-03-28T13:23:33Z">
     lewk
   </metadata>
 </glsa>

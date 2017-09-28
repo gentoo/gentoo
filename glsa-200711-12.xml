@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-12">
   <title>Tomboy: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a local attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">tomboy</product>
-  <announced>November 08, 2007</announced>
-  <revised>November 08, 2007: 01</revised>
+  <announced>2007-11-08</announced>
+  <revised>2007-11-08: 01</revised>
   <bug>189249</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc/tomboy-0.8.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-misc/tomboy-0.8.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4790">CVE-2005-4790</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4790">CVE-2005-4790</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Nov 2007 01:11:29 +0000">
+  <metadata tag="requester" timestamp="2007-11-06T01:11:29Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 06 Nov 2007 04:11:22 +0000">
+  <metadata tag="submitter" timestamp="2007-11-06T04:11:22Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 06 Nov 2007 04:11:35 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-06T04:11:35Z">
     rbu
   </metadata>
 </glsa>

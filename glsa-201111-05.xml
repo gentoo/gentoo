@@ -6,8 +6,8 @@
     some of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium v8</product>
-  <announced>November 19, 2011</announced>
-  <revised>November 19, 2011: 1</revised>
+  <announced>2011-11-19</announced>
+  <revised>2011-11-19: 1</revised>
   <bug>390113</bug>
   <bug>390779</bug>
   <access>remote</access>
@@ -60,41 +60,41 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3892">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3892">
       CVE-2011-3892
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3893">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3893">
       CVE-2011-3893
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3894">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3894">
       CVE-2011-3894
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3895">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3895">
       CVE-2011-3895
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3896">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3896">
       CVE-2011-3896
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3897">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3897">
       CVE-2011-3897
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3898">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3898">
       CVE-2011-3898
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3900">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3900">
       CVE-2011-3900
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2011/11/stable-channel-update.html">
+    <uri link="https://googlechromereleases.blogspot.com/2011/11/stable-channel-update.html">
       Release Notes 15.0.874.120
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2011/11/stable-channel-update_16.html">
+    <uri link="https://googlechromereleases.blogspot.com/2011/11/stable-channel-update_16.html">
       Release Notes 15.0.874.121
     </uri>
   </references>
-  <metadata timestamp="Fri, 11 Nov 2011 12:00:45 +0000" tag="requester">
+  <metadata timestamp="2011-11-11T12:00:45Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Sat, 19 Nov 2011 16:24:27 +0000" tag="submitter">
+  <metadata timestamp="2011-11-19T16:24:27Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

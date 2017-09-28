@@ -6,8 +6,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">e2fsprogs</product>
-  <announced>July 23, 2015</announced>
-  <revised>July 23, 2015: 1</revised>
+  <announced>2015-07-23</announced>
+  <revised>2015-07-23: 1</revised>
   <bug>540536</bug>
   <access>local</access>
   <affected>
@@ -44,8 +44,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1572">CVE-2015-1572</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1572">CVE-2015-1572</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 17 Jul 2015 11:07:25 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Thu, 23 Jul 2015 15:35:12 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-07-17T11:07:25Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-23T15:35:12Z">Zlogene</metadata>
 </glsa>

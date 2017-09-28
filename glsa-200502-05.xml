@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-05">
   <title>Newspost: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially execute arbitrary code.
   </synopsis>
   <product type="ebuild">newspost</product>
-  <announced>February 03, 2005</announced>
-  <revised>February 21, 2005: 02</revised>
+  <announced>2005-02-03</announced>
+  <revised>2005-02-21: 02</revised>
   <bug>78530</bug>
   <access>remote</access>
   <affected>
@@ -50,15 +49,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-nntp/newspost-2.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-nntp/newspost-2.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0101">CAN-2005-0101</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0101">CAN-2005-0101</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 15:47:51 +0000">
+  <metadata tag="submitter" timestamp="2005-02-02T15:47:51Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  2 Feb 2005 17:29:13 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-02T17:29:13Z">
     lewk
   </metadata>
 </glsa>

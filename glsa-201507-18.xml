@@ -6,8 +6,8 @@
     remote attackers to bypass security restrictions.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 1</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-10: 1</revised>
   <bug>552904</bug>
   <access>remote</access>
   <affected>
@@ -41,11 +41,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1266">CVE-2015-1266</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1267">CVE-2015-1267</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1268">CVE-2015-1268</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1269">CVE-2015-1269</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1266">CVE-2015-1266</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1267">CVE-2015-1267</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1268">CVE-2015-1268</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1269">CVE-2015-1269</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Jun 2015 08:59:44 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:19:46 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-06-24T08:59:44Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-07-10T13:19:46Z">Zlogene</metadata>
 </glsa>

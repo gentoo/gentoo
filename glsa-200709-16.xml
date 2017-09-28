@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-16">
   <title>Lighttpd: Buffer overflow</title>
   <synopsis>
     Lighttpd is vulnerable to the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">lighttpd</product>
-  <announced>September 27, 2007</announced>
-  <revised>September 27, 2007: 01</revised>
+  <announced>2007-09-27</announced>
+  <revised>2007-09-27: 01</revised>
   <bug>191912</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.18&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/lighttpd-1.4.18"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4727">CVE-2007-4727</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4727">CVE-2007-4727</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Sep 2007 21:10:23 +0000">
+  <metadata tag="requester" timestamp="2007-09-20T21:10:23Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Sep 2007 21:10:32 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-20T21:10:32Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 22 Sep 2007 16:06:46 +0000">
+  <metadata tag="submitter" timestamp="2007-09-22T16:06:46Z">
     p-y
   </metadata>
 </glsa>

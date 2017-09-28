@@ -6,8 +6,8 @@
     context-dependent attacker to cause Denial of Service.
   </synopsis>
   <product type="ebuild">pixman</product>
-  <announced>February 02, 2014</announced>
-  <revised>February 02, 2014: 1</revised>
+  <announced>2014-02-02</announced>
+  <revised>2014-02-02: 1</revised>
   <bug>493292</bug>
   <access>local, remote</access>
   <affected>
@@ -47,10 +47,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6425">CVE-2013-6425</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6425">CVE-2013-6425</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 26 Dec 2013 20:19:41 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 02 Feb 2014 17:59:34 +0000">
+  <metadata tag="requester" timestamp="2013-12-26T20:19:41Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-02-02T17:59:34Z">
     creffett
   </metadata>
 </glsa>

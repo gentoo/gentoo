@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-06">
   <title>libextractor: Multiple overflow vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">libextractor</product>
-  <announced>June 09, 2005</announced>
-  <revised>June 09, 2005: 01</revised>
+  <announced>2005-06-09</announced>
+  <revised>2005-06-09: 01</revised>
   <bug>79704</bug>
   <access>remote</access>
   <affected>
@@ -51,20 +50,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libextractor-0.5.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libextractor-0.5.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
-    <uri link="/security/en/glsa/glsa-200501-28.xml">GLSA 200501-28</uri>
-    <uri link="http://gnunet.org/libextractor/">libextractor security announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200501-28.xml">GLSA 200501-28</uri>
+    <uri link="https://gnunet.org/libextractor/">libextractor security announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue,  1 Mar 2005 11:13:31 +0000">
+  <metadata tag="requester" timestamp="2005-03-01T11:13:31Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu,  3 Mar 2005 15:44:04 +0000">
+  <metadata tag="submitter" timestamp="2005-03-03T15:44:04Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 08 Jun 2005 11:34:48 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-08T11:34:48Z">
     koon
   </metadata>
 </glsa>

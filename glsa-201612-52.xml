@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">pillow</product>
-  <announced>December 31, 2016</announced>
-  <revised>December 31, 2016: 1</revised>
+  <announced>2016-12-31</announced>
+  <revised>2016-12-31: 1</revised>
   <bug>507982</bug>
   <bug>573958</bug>
   <bug>599608</bug>
@@ -50,17 +50,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1932">CVE-2014-1932</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1933">CVE-2014-1933</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0740">CVE-2016-0740</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0775">CVE-2016-0775</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2533">CVE-2016-2533</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4009">CVE-2016-4009</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9189">CVE-2016-9189</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9190">CVE-2016-9190</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1932">CVE-2014-1932</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1933">CVE-2014-1933</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0740">CVE-2016-0740</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0775">CVE-2016-0775</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2533">CVE-2016-2533</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4009">CVE-2016-4009</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9189">CVE-2016-9189</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9190">CVE-2016-9190</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:10:45 +0000">
+  <metadata tag="requester" timestamp="2014-08-04T19:10:45Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 14:15:38 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-31T14:15:38Z">b-man</metadata>
 </glsa>

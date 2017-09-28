@@ -7,8 +7,8 @@
     condition.
   </synopsis>
   <product type="ebuild">openssh</product>
-  <announced>December 20, 2015</announced>
-  <revised>December 21, 2015: 4</revised>
+  <announced>2015-12-20</announced>
+  <revised>2015-12-21: 4</revised>
   <bug>553724</bug>
   <bug>555518</bug>
   <bug>557340</bug>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5352">CVE-2015-5352</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5600">CVE-2015-5600</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6563">CVE-2015-6563</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6564">CVE-2015-6564</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6565">CVE-2015-6565</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5352">CVE-2015-5352</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5600">CVE-2015-5600</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6563">CVE-2015-6563</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6564">CVE-2015-6564</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6565">CVE-2015-6565</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Jul 2015 17:49:28 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Mon, 21 Dec 2015 15:58:43 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2015-07-22T17:49:28Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-12-21T15:58:43Z">ackle</metadata>
 </glsa>

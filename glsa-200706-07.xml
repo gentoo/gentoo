@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200706-07">
   <title>PHProjekt: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     attacks.
   </synopsis>
   <product type="ebuild">phprojekt</product>
-  <announced>June 19, 2007</announced>
-  <revised>June 19, 2007: 01</revised>
+  <announced>2007-06-19</announced>
+  <revised>2007-06-19: 01</revised>
   <bug>170905</bug>
   <access>remote</access>
   <affected>
@@ -53,21 +52,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phprojekt-5.2.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phprojekt-5.2.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1575">CVE-2007-1575</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1576">CVE-2007-1576</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1638">CVE-2007-1638</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1639">CVE-2007-1639</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1575">CVE-2007-1575</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1576">CVE-2007-1576</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1638">CVE-2007-1638</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1639">CVE-2007-1639</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 07 Jun 2007 21:18:57 +0000">
+  <metadata tag="requester" timestamp="2007-06-07T21:18:57Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 13:59:19 +0000">
+  <metadata tag="submitter" timestamp="2007-06-10T13:59:19Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 13:59:28 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-10T13:59:28Z">
     p-y
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which can allow remote attackers to cause Denial of Service. 
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>September 19, 2014</announced>
-  <revised>September 19, 2014: 1</revised>
+  <announced>2014-09-19</announced>
+  <revised>2014-09-19: 1</revised>
   <bug>522484</bug>
   <access>remote</access>
   <affected>
@@ -44,9 +44,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3178">CVE-2014-3178</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3179">CVE-2014-3179</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3178">CVE-2014-3178</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3179">CVE-2014-3179</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 11 Sep 2014 17:05:58 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 19 Sep 2014 18:50:35 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-09-11T17:05:58Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-09-19T18:50:35Z">K_F</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-03">
   <title>sitecopy: Multiple vulnerabilities in included libneon</title>
   <synopsis>
     sitecopy includes a vulnerable version of the neon library.
   </synopsis>
   <product type="ebuild">sitecopy</product>
-  <announced>June 05, 2004</announced>
-  <revised>August 15, 2004: 04</revised>
+  <announced>2004-06-05</announced>
+  <revised>2004-08-15: 04</revised>
   <bug>51585</bug>
   <access>remote</access>
   <affected>
@@ -51,12 +50,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-misc/sitecopy-0.13.4-r2"
-    # emerge ">=net-misc/sitecopy-0.13.4-r2"</code>
+    # emerge -pv "&gt;=net-misc/sitecopy-0.13.4-r2"
+    # emerge "&gt;=net-misc/sitecopy-0.13.4-r2"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200405-01.xml">GLSA 200405-01</uri>
-    <uri link="/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200405-01.xml">GLSA 200405-01</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

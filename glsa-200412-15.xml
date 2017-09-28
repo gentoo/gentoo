@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-15">
   <title>Ethereal: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     utilization.
   </synopsis>
   <product type="ebuild">Ethereal</product>
-  <announced>December 19, 2004</announced>
-  <revised>December 19, 2004: 01</revised>
+  <announced>2004-12-19</announced>
+  <revised>2004-12-19: 01</revised>
   <bug>74443</bug>
   <access>remote</access>
   <affected>
@@ -52,7 +51,7 @@
   <workaround>
     <p>
     For a temporary workaround you can disable all affected protocol
-    dissectors by selecting Analyze->Enabled Protocols... and deselecting
+    dissectors by selecting Analyze-&gt;Enabled Protocols... and deselecting
     them from the list. However, it is strongly recommended to upgrade to
     the latest stable version.
     </p>
@@ -63,19 +62,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ethereal-0.10.8"</code>
   </resolution>
   <references>
     <uri link="http://www.ethereal.com/appnotes/enpa-sa-00016.html">Ethereal enpa-sa-00016</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1139">CAN 2004-1139</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1140">CAN 2004-1140</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1141">CAN 2004-1141</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1142">CAN 2004-1142</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1139">CAN 2004-1139</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1140">CAN 2004-1140</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1141">CAN 2004-1141</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1142">CAN 2004-1142</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 15 Dec 2004 13:06:28 +0000">
+  <metadata tag="submitter" timestamp="2004-12-15T13:06:28Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 14:01:55 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-19T14:01:55Z">
     koon
   </metadata>
 </glsa>

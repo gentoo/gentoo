@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-30">
   <title>phpMyAdmin: Insecure SQL script installation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially leading to a database compromise.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>April 30, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-04-30</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>88831</bug>
   <access>local</access>
   <affected>
@@ -59,15 +58,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1392">CVE-2005-1392</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1392">CVE-2005-1392</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 29 Apr 2005 08:17:12 +0000">
+  <metadata tag="submitter" timestamp="2005-04-29T08:17:12Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 29 Apr 2005 18:24:53 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-29T18:24:53Z">
     koon
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-11">
   <title>Asterisk: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been found in Asterisk.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>February 26, 2008</announced>
-  <revised>February 26, 2008: 01</revised>
+  <announced>2008-02-26</announced>
+  <revised>2008-02-26: 01</revised>
   <bug>185713</bug>
   <access>remote</access>
   <affected>
@@ -65,21 +64,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/asterisk-1.2.17-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-1.2.17-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3762">CVE-2007-3762</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3763">CVE-2007-3763</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3764">CVE-2007-3764</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4103">CVE-2007-4103</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3762">CVE-2007-3762</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3763">CVE-2007-3763</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3764">CVE-2007-3764</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4103">CVE-2007-4103</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Nov 2007 19:55:16 +0000">
+  <metadata tag="requester" timestamp="2007-11-07T19:55:16Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 22 Nov 2007 23:26:53 +0000">
+  <metadata tag="submitter" timestamp="2007-11-22T23:26:53Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 19:44:52 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-26T19:44:52Z">
     jaervosz
   </metadata>
 </glsa>

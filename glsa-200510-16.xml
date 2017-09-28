@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-16">
   <title>phpMyAdmin: Local file inclusion vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>October 17, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-10-17</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>108939</bug>
   <access>local</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.4_p2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.4_p2"</code>
   </resolution>
   <references>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-4">PMASA-2005-4</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3299">CVE-2005-3299</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-4">PMASA-2005-4</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3299">CVE-2005-3299</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 15 Oct 2005 08:08:40 +0000">
+  <metadata tag="requester" timestamp="2005-10-15T08:08:40Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 16 Oct 2005 19:41:39 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-16T19:41:39Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 17 Oct 2005 03:54:58 +0000">
+  <metadata tag="submitter" timestamp="2005-10-17T03:54:58Z">
     adir
   </metadata>
 </glsa>

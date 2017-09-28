@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-32">
   <title>getmail: Filesystem overwrite vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     can be escalated further and possibly lead to a complete system compromise.
   </synopsis>
   <product type="ebuild">getmail</product>
-  <announced>September 23, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-09-23</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>64643</bug>
   <access>local</access>
   <affected>
@@ -54,19 +53,19 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-mail/getmail-4.2.0&quot;
-    # emerge &quot;&gt;=net-mail/getmail-4.2.0&quot;</code>
+    # emerge -pv "&gt;=net-mail/getmail-4.2.0"
+    # emerge "&gt;=net-mail/getmail-4.2.0"</code>
   </resolution>
   <references>
     <uri link="http://www.qcc.ca/~charlesc/software/getmail-4/CHANGELOG">getmail ChangeLog</uri>
-    <uri link="http://article.gmane.org/gmane.mail.getmail.user/1430">getmail Mailing List</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0880">CVE-2004-0880</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0881">CVE-2004-0881</uri>
+    <uri link="https://article.gmane.org/gmane.mail.getmail.user/1430">getmail Mailing List</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0880">CVE-2004-0880</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0881">CVE-2004-0881</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 21 Sep 2004 21:51:14 +0000">
+  <metadata tag="submitter" timestamp="2004-09-21T21:51:14Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Sep 2004 21:52:24 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-21T21:52:24Z">
     lewk
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-14">
   <title>Rasterbar libtorrent: Directory traversal</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote attacker to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">rb_libtorrent deluge</product>
-  <announced>July 17, 2009</announced>
-  <revised>July 17, 2009: 01</revised>
+  <announced>2009-07-17</announced>
+  <revised>2009-07-17: 01</revised>
   <bug>273156</bug>
   <bug>273961</bug>
   <access>remote</access>
@@ -55,24 +54,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/rb_libtorrent-0.13-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/rb_libtorrent-0.13-r1"</code>
     <p>
     All Deluge users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/deluge-1.1.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/deluge-1.1.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1760">CVE-2009-1760</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1760">CVE-2009-1760</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 10:55:00 +0000">
+  <metadata tag="requester" timestamp="2009-07-10T10:55:00Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 02:02:27 +0000">
+  <metadata tag="submitter" timestamp="2009-07-11T02:02:27Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 17 Jul 2009 06:51:09 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-17T06:51:09Z">
     rbu
   </metadata>
 </glsa>

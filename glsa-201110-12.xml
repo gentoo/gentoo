@@ -4,8 +4,8 @@
   <title>Unbound: Denial of Service</title>
   <synopsis>Multiple Denial of Service vulnerabilities were found in Unbound.</synopsis>
   <product type="ebuild">unbound</product>
-  <announced>October 15, 2011</announced>
-  <revised>October 15, 2011: 1</revised>
+  <announced>2011-10-15</announced>
+  <revised>2011-10-15: 1</revised>
   <bug>309117</bug>
   <bug>368981</bug>
   <access>remote</access>
@@ -39,11 +39,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0969">CVE-2010-0969</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1922">CVE-2011-1922</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0969">CVE-2010-0969</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1922">CVE-2011-1922</uri>
   </references>
-  <metadata timestamp="Sat, 08 Oct 2011 22:09:43 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Sat, 15 Oct 2011 09:21:34 +0000" tag="submitter">
+  <metadata timestamp="2011-10-08T22:09:43Z" tag="requester">craig</metadata>
+  <metadata timestamp="2011-10-15T09:21:34Z" tag="submitter">
     keytoaster
   </metadata>
 </glsa>

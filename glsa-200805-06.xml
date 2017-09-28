@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-06">
   <title>Firebird: Data disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     verifying credentials.
   </synopsis>
   <product type="ebuild">firebird</product>
-  <announced>May 09, 2008</announced>
-  <revised>May 09, 2008: 01</revised>
+  <announced>2008-05-09</announced>
+  <revised>2008-05-09: 01</revised>
   <bug>216158</bug>
   <access>remote</access>
   <affected>
@@ -49,7 +48,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/firebird-2.0.3.12981.0-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/firebird-2.0.3.12981.0-r6"</code>
     <p>
     Note: /etc/conf.d is protected by Portage as a configuration directory.
     Do not forget to use "<i>etc-update</i>" or "<i>dispatch-conf</i>" to
@@ -57,12 +56,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1880">CVE-2008-1880</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1880">CVE-2008-1880</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 14 Apr 2008 02:05:02 +0000">
+  <metadata tag="submitter" timestamp="2008-04-14T02:05:02Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Apr 2008 09:22:33 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-15T09:22:33Z">
     vorlon
   </metadata>
 </glsa>

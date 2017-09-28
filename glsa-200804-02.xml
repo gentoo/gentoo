@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-02">
   <title>bzip2: Denial of Service</title>
   <synopsis>
     A buffer overread vulnerability has been discovered in Bzip2.
   </synopsis>
   <product type="ebuild">bzip2</product>
-  <announced>April 02, 2008</announced>
-  <revised>April 02, 2008: 01</revised>
+  <announced>2008-04-02</announced>
+  <revised>2008-04-02: 01</revised>
   <bug>213820</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/bzip2-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/bzip2-1.0.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1372">CVE-2008-1372</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1372">CVE-2008-1372</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 21 Mar 2008 02:17:50 +0000">
+  <metadata tag="requester" timestamp="2008-03-21T02:17:50Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Mar 2008 23:42:29 +0000">
+  <metadata tag="submitter" timestamp="2008-03-21T23:42:29Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 02 Apr 2008 13:31:45 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-02T13:31:45Z">
     rbu
   </metadata>
 </glsa>

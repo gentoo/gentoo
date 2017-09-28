@@ -6,7 +6,7 @@
     OpenOffice, the worst of which allows for the remote execution of arbitrary
     code.
   </synopsis>
-  <product type="ebuild"></product>
+  <product type="ebuild"/>
   <announced>2016-11-04</announced>
   <revised>2017-04-17: 2</revised>
   <bug>565026</bug>
@@ -70,19 +70,19 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4551">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4551">
       CVE-2015-4551
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5212">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5212">
       CVE-2015-5212
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5213">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5213">
       CVE-2015-5213
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5214">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5214">
       CVE-2015-5214
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4324">CVE-2016-4324</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4324">CVE-2016-4324</uri>
   </references>
   <metadata tag="requester" timestamp="2016-09-10T07:32:58Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-04-17T17:52:18Z">b-man</metadata>

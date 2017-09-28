@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201009-05">
   <title>Adobe Reader: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or other attacks.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>September 07, 2010</announced>
-  <revised>September 07, 2010: 01</revised>
+  <announced>2010-09-07</announced>
+  <revised>2010-09-07: 01</revised>
   <bug>297385</bug>
   <bug>306429</bug>
   <bug>313343</bug>
@@ -54,58 +53,58 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-9.3.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-9.3.4"</code>
   </resolution>
   <references>
-    <uri link="http://www.adobe.com/support/security/advisories/apsa10-01.html">APSA10-01</uri>
-    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-02.html">APSB10-02</uri>
-    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-07.html">APSB10-07</uri>
-    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-09.html">APSB10-09</uri>
-    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-14.html">APSB10-14</uri>
-    <uri link="http://www.adobe.com/support/security/bulletins/apsb10-16.html">APSB10-16</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3953">CVE-2009-3953</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4324">CVE-2009-4324</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0186">CVE-2010-0186</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0188">CVE-2010-0188</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0190">CVE-2010-0190</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0191">CVE-2010-0191</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0192">CVE-2010-0192</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0193">CVE-2010-0193</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0194">CVE-2010-0194</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0195">CVE-2010-0195</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0196">CVE-2010-0196</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0197">CVE-2010-0197</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0198">CVE-2010-0198</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0199">CVE-2010-0199</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0201">CVE-2010-0201</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0202">CVE-2010-0202</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0203">CVE-2010-0203</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0204">CVE-2010-0204</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1241">CVE-2010-1241</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1285">CVE-2010-1285</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1295">CVE-2010-1295</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1297">CVE-2010-1297</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2168">CVE-2010-2168</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2201">CVE-2010-2201</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2202">CVE-2010-2202</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2203">CVE-2010-2203</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2204">CVE-2010-2204</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2205">CVE-2010-2205</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2206">CVE-2010-2206</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2207">CVE-2010-2207</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2208">CVE-2010-2208</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2209">CVE-2010-2209</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2210">CVE-2010-2210</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2211">CVE-2010-2211</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2212">CVE-2010-2212</uri>
+    <uri link="https://www.adobe.com/support/security/advisories/apsa10-01.html">APSA10-01</uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb10-02.html">APSB10-02</uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb10-07.html">APSB10-07</uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb10-09.html">APSB10-09</uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb10-14.html">APSB10-14</uri>
+    <uri link="https://www.adobe.com/support/security/bulletins/apsb10-16.html">APSB10-16</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3953">CVE-2009-3953</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4324">CVE-2009-4324</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0186">CVE-2010-0186</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0188">CVE-2010-0188</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0190">CVE-2010-0190</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0191">CVE-2010-0191</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0192">CVE-2010-0192</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0193">CVE-2010-0193</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0194">CVE-2010-0194</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0195">CVE-2010-0195</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0196">CVE-2010-0196</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0197">CVE-2010-0197</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0198">CVE-2010-0198</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0199">CVE-2010-0199</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0201">CVE-2010-0201</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0202">CVE-2010-0202</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0203">CVE-2010-0203</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0204">CVE-2010-0204</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1241">CVE-2010-1241</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1285">CVE-2010-1285</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1295">CVE-2010-1295</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1297">CVE-2010-1297</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2168">CVE-2010-2168</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2201">CVE-2010-2201</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2202">CVE-2010-2202</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2203">CVE-2010-2203</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2204">CVE-2010-2204</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2205">CVE-2010-2205</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2206">CVE-2010-2206</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2207">CVE-2010-2207</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2208">CVE-2010-2208</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2209">CVE-2010-2209</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2210">CVE-2010-2210</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2211">CVE-2010-2211</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2212">CVE-2010-2212</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 05 Mar 2010 19:31:53 +0000">
+  <metadata tag="requester" timestamp="2010-03-05T19:31:53Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 Apr 2010 16:55:00 +0000">
+  <metadata tag="submitter" timestamp="2010-04-09T16:55:00Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 03 Sep 2010 21:24:06 +0000">
+  <metadata tag="bugReady" timestamp="2010-09-03T21:24:06Z">
     p-y
   </metadata>
 </glsa>

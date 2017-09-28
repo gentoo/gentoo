@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-10">
   <title>phpBB: Cross-Site Scripting Vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary scripting code execution.
   </synopsis>
   <product type="ebuild">phpBB</product>
-  <announced>May 14, 2005</announced>
-  <revised>May 14, 2005: 01</revised>
+  <announced>2005-05-14</announced>
+  <revised>2005-05-14: 01</revised>
   <bug>90213</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     emerge --sync
-    emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpBB-2.0.15&quot;</code>
+    emerge --ask --oneshot --verbose "&gt;=www-apps/phpBB-2.0.15"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/bid/13344/info/">BugTraq ID 13344</uri>
     <uri link="http://securitytracker.com/id?1013918">SecurityTracker ID 1013918</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 13 May 2005 08:29:22 +0000">
+  <metadata tag="requester" timestamp="2005-05-13T08:29:22Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 13 May 2005 08:29:44 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-13T08:29:44Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 13 May 2005 19:13:15 +0000">
+  <metadata tag="submitter" timestamp="2005-05-13T19:13:15Z">
     r2d2
   </metadata>
 </glsa>

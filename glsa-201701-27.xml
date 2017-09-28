@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code. 
   </synopsis>
   <product type="ebuild">7zip</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>582832</bug>
   <access>remote</access>
   <affected>
@@ -45,9 +45,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2334">CVE-2016-2334</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2335">CVE-2016-2335</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2334">CVE-2016-2334</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2335">CVE-2016-2335</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 17:11:43 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:28:26 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-09T17:11:43Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:28:26Z">whissi</metadata>
 </glsa>

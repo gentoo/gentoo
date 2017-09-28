@@ -6,8 +6,8 @@
     which results in predictable output from the random number generator.
   </synopsis>
   <product type="ebuild">libgcrypt</product>
-  <announced>October 10, 2016</announced>
-  <revised>October 10, 2016: 1</revised>
+  <announced>2016-10-10</announced>
+  <revised>2016-10-10: 1</revised>
   <bug>541564</bug>
   <bug>559942</bug>
   <bug>574268</bug>
@@ -49,16 +49,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3591">CVE-2014-3591</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0837">CVE-2015-0837</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7511">CVE-2015-7511</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6313">CVE-2016-6313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3591">CVE-2014-3591</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0837">CVE-2015-0837</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7511">CVE-2015-7511</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6313">CVE-2016-6313</uri>
     <uri link="https://securityblog.redhat.com/2015/09/02/factoring-rsa-keys-with-tls-perfect-forward-secrecy/">
       Factoring RSA Keys With TLS Perfect Forward Secrecy
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 02 Dec 2015 21:25:17 +0000">
+  <metadata tag="requester" timestamp="2015-12-02T21:25:17Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Oct 2016 11:04:11 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-10-10T11:04:11Z">K_F</metadata>
 </glsa>

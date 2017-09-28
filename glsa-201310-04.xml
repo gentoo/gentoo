@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">nginx</product>
-  <announced>October 06, 2013</announced>
-  <revised>October 06, 2013: 1</revised>
+  <announced>2013-10-06</announced>
+  <revised>2013-10-06: 1</revised>
   <bug>458726</bug>
   <bug>468870</bug>
   <access>local, remote</access>
@@ -46,10 +46,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0337">CVE-2013-0337</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2028">CVE-2013-2028</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2070">CVE-2013-2070</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0337">CVE-2013-0337</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2028">CVE-2013-2028</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2070">CVE-2013-2070</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 30 Sep 2013 22:53:05 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 Oct 2013 21:49:01 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-30T22:53:05Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-06T21:49:01Z">ackle</metadata>
 </glsa>

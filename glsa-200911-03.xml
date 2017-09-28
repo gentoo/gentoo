@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200911-03">
   <title>UW IMAP toolkit: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">c-client uw-imap</product>
-  <announced>November 25, 2009</announced>
-  <revised>November 25, 2009: 01</revised>
+  <announced>2009-11-25</announced>
+  <revised>2009-11-25: 01</revised>
   <bug>245425</bug>
   <bug>252567</bug>
   <access>remote</access>
@@ -72,26 +71,26 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/c-client-2007e&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/c-client-2007e"</code>
     <p>
     All UW IMAP toolkit users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/uw-imap-2007e&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/uw-imap-2007e"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5005">CVE-2008-5005</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5006">CVE-2008-5006</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5514">CVE-2008-5514</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5005">CVE-2008-5005</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5006">CVE-2008-5006</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5514">CVE-2008-5514</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:17:18 +0000">
+  <metadata tag="requester" timestamp="2009-01-13T17:17:18Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Jan 2009 17:27:25 +0000">
+  <metadata tag="submitter" timestamp="2009-01-13T17:27:25Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Nov 2009 13:23:47 +0000">
+  <metadata tag="bugReady" timestamp="2009-11-25T13:23:47Z">
     rbu
   </metadata>
 </glsa>

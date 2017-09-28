@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-15">
   <title>Apache 2.0: Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attack.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>August 25, 2005</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2005-08-25</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>102991</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.0.54-r9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.0.54-r9"</code>
   </resolution>
   <references>
-    <uri link="http://issues.apache.org/bugzilla/show_bug.cgi?id=29962">ASF Bugzilla Bug 29962</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2728">CVE-2005-2728</uri>
+    <uri link="https://issues.apache.org/bugzilla/show_bug.cgi?id=29962">ASF Bugzilla Bug 29962</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2728">CVE-2005-2728</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Aug 2005 07:26:08 +0000">
+  <metadata tag="requester" timestamp="2005-08-22T07:26:08Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 22 Aug 2005 07:47:26 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-22T07:47:26Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 24 Aug 2005 00:58:46 +0000">
+  <metadata tag="submitter" timestamp="2005-08-24T00:58:46Z">
     adir
   </metadata>
 </glsa>

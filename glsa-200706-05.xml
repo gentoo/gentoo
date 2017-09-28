@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200706-05">
   <title>ClamAV: Multiple Denials of Service</title>
   <synopsis>
     ClamAV contains several vulnerabilities leading to a Denial of Service.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>June 15, 2007</announced>
-  <revised>June 15, 2007: 01</revised>
+  <announced>2007-06-15</announced>
+  <revised>2007-06-15: 01</revised>
   <bug>178082</bug>
   <access>remote, local</access>
   <affected>
@@ -62,22 +61,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.90.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.90.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2650">CVE-2007-2650</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3023">CVE-2007-3023</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3024">CVE-2007-3024</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3122">CVE-2007-3122</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3123">CVE-2007-3123</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2650">CVE-2007-2650</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3023">CVE-2007-3023</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3024">CVE-2007-3024</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3122">CVE-2007-3122</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3123">CVE-2007-3123</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 08 Jun 2007 06:17:07 +0000">
+  <metadata tag="requester" timestamp="2007-06-08T06:17:07Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 18:13:18 +0000">
+  <metadata tag="submitter" timestamp="2007-06-10T18:13:18Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 18:15:09 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-10T18:15:09Z">
     falco
   </metadata>
 </glsa>

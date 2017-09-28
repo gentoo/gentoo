@@ -58,7 +58,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0381">CVE-2017-0381</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0381">CVE-2017-0381</uri>
     <uri link="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851612#10">
       Debian Bug 851612
     </uri>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200602-08">
   <title>libtasn1, GNU TLS: Security flaw in DER decoding</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">libtasn1</product>
-  <announced>February 16, 2006</announced>
-  <revised>February 16, 2006: 01</revised>
+  <announced>2006-02-16</announced>
+  <revised>2006-02-16: 01</revised>
   <bug>122307</bug>
   <access>remote</access>
   <affected>
@@ -57,24 +56,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libtasn1-0.2.18&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtasn1-0.2.18"</code>
     <p>
     All GNU TLS users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gnutls-1.2.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-1.2.10"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0645">CVE-2006-0645</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0645">CVE-2006-0645</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 13 Feb 2006 20:11:10 +0000">
+  <metadata tag="requester" timestamp="2006-02-13T20:11:10Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 13 Feb 2006 20:11:49 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-13T20:11:49Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 14 Feb 2006 22:53:09 +0000">
+  <metadata tag="submitter" timestamp="2006-02-14T22:53:09Z">
     taviso
   </metadata>
 </glsa>

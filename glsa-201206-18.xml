@@ -6,8 +6,8 @@
     remote attacker to perform man-in-the-middle or Denial of Service attacks.
   </synopsis>
   <product type="ebuild">GnuTLS</product>
-  <announced>June 23, 2012</announced>
-  <revised>June 23, 2012: 1</revised>
+  <announced>2012-06-23</announced>
+  <revised>2012-06-23: 1</revised>
   <bug>281224</bug>
   <bug>292025</bug>
   <bug>389947</bug>
@@ -61,11 +61,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2730">CVE-2009-2730</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4128">CVE-2011-4128</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1573">CVE-2012-1573</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2730">CVE-2009-2730</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4128">CVE-2011-4128</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1573">CVE-2012-1573</uri>
   </references>
-  <metadata timestamp="Tue, 17 Apr 2012 00:40:28 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Sat, 23 Jun 2012 14:21:06 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-17T00:40:28Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-23T14:21:06Z" tag="submitter">ackle</metadata>
 </glsa>

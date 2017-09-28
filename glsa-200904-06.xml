@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-06">
   <title>Eye of GNOME: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">eog</product>
-  <announced>April 06, 2009</announced>
-  <revised>April 06, 2009: 01</revised>
+  <announced>2009-04-06</announced>
+  <revised>2009-04-06: 01</revised>
   <bug>257002</bug>
   <access>local</access>
   <affected>
@@ -50,16 +49,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/eog-2.22.3-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/eog-2.22.3-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5983">CVE-2008-5983</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5987">CVE-2008-5987</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5983">CVE-2008-5983</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5987">CVE-2008-5987</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 06 Apr 2009 11:38:51 +0000">
+  <metadata tag="submitter" timestamp="2009-04-06T11:38:51Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 06 Apr 2009 11:40:09 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-06T11:40:09Z">
     p-y
   </metadata>
 </glsa>

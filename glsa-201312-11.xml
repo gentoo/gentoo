@@ -6,8 +6,8 @@
     allow for user-assisted arbitrary code execution.
   </synopsis>
   <product type="ebuild">win32codecs</product>
-  <announced>December 16, 2013</announced>
-  <revised>December 16, 2013: 1</revised>
+  <announced>2013-12-16</announced>
+  <revised>2013-12-16: 1</revised>
   <bug>232999</bug>
   <access>remote</access>
   <affected>
@@ -41,12 +41,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5400">CVE-2007-5400</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5400">CVE-2007-5400</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 11 Dec 2013 01:23:33 +0000">
+  <metadata tag="requester" timestamp="2013-12-11T01:23:33Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Dec 2013 12:38:30 +0000">
+  <metadata tag="submitter" timestamp="2013-12-16T12:38:30Z">
     creffett
   </metadata>
 </glsa>

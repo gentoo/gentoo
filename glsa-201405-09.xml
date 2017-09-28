@@ -6,8 +6,8 @@
     worst of which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>May 17, 2014</announced>
-  <revised>May 17, 2014: 1</revised>
+  <announced>2014-05-17</announced>
+  <revised>2014-05-17: 1</revised>
   <bug>409431</bug>
   <bug>483032</bug>
   <bug>500988</bug>
@@ -52,16 +52,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1185">CVE-2012-1185</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1186">CVE-2012-1186</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4298">CVE-2013-4298</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1947">CVE-2014-1947</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2030">CVE-2014-2030</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1185">CVE-2012-1185</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1186">CVE-2012-1186</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4298">CVE-2013-4298</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1947">CVE-2014-1947</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2030">CVE-2014-2030</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 07 May 2012 02:54:09 +0000">
+  <metadata tag="requester" timestamp="2012-05-07T02:54:09Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 May 2014 13:31:31 +0000">
+  <metadata tag="submitter" timestamp="2014-05-17T13:31:31Z">
     creffett
   </metadata>
 </glsa>

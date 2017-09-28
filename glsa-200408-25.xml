@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-25">
   <title>MoinMoin: Group ACL bypass</title>
   <synopsis>
@@ -9,8 +8,8 @@
     authorized users.
   </synopsis>
   <product type="ebuild">MoinMoin</product>
-  <announced>August 26, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-26</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>57913</bug>
   <access>remote</access>
   <affected>
@@ -52,17 +51,17 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=www-apps/moinmoin-1.2.3&quot;
-    # emerge &quot;&gt;=www-apps/moinmoin-1.2.3&quot;</code>
+    # emerge -pv "&gt;=www-apps/moinmoin-1.2.3"
+    # emerge "&gt;=www-apps/moinmoin-1.2.3"</code>
   </resolution>
   <references>
     <uri link="https://sourceforge.net/project/shownotes.php?group_id=8482&amp;release_id=254801">MoinMoin Announcement</uri>
     <uri link="http://www.osvdb.org/displayvuln.php?osvdb_id=8194">OSVDB Advisory 8194</uri>
     <uri link="http://www.osvdb.org/displayvuln.php?osvdb_id=8195">OSVDB Advisory 8195</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1462">CVE-2004-1462</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1463">CVE-2004-1463</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1462">CVE-2004-1462</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1463">CVE-2004-1463</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 19 Aug 2004 05:10:31 +0000">
+  <metadata tag="submitter" timestamp="2004-08-19T05:10:31Z">
     dmargoli
   </metadata>
 </glsa>

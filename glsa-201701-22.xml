@@ -6,8 +6,8 @@
     to the way log files are handled.
   </synopsis>
   <product type="ebuild">nginx</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>605008</bug>
   <access>local</access>
   <affected>
@@ -47,12 +47,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1247">CVE-2016-1247</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1247">CVE-2016-1247</uri>
     <uri link="https://www.debian.org/security/2016/dsa-3701">DSA-3701</uri>
     <uri link="https://legalhackers.com/advisories/Nginx-Exploit-Deb-Root-PrivEsc-CVE-2016-1247.html">
       Technical analysis
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 Jan 2017 15:37:19 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:18:42 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-10T15:37:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:18:42Z">whissi</metadata>
 </glsa>

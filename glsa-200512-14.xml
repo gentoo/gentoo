@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-14">
   <title>NBD Tools: Buffer overflow in NBD server</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">NBD</product>
-  <announced>December 23, 2005</announced>
-  <revised>December 23, 2005: 01</revised>
+  <announced>2005-12-23</announced>
+  <revised>2005-12-23: 01</revised>
   <bug>116314</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-block/nbd-2.8.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-block/nbd-2.8.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3534">CVE-2005-3534</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3534">CVE-2005-3534</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 23 Dec 2005 10:21:27 +0000">
+  <metadata tag="submitter" timestamp="2005-12-23T10:21:27Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 23 Dec 2005 10:21:38 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-23T10:21:38Z">
     koon
   </metadata>
 </glsa>

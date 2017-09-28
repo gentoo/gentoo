@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-11">
   <title>MySQL: Two Denial of Service vulnerabilities</title>
   <synopsis>
     Two Denial of Service vulnerabilities have been discovered in MySQL.
   </synopsis>
   <product type="ebuild">MySQL</product>
-  <announced>May 08, 2007</announced>
-  <revised>May 08, 2007: 01</revised>
+  <announced>2007-05-08</announced>
+  <revised>2007-05-08: 01</revised>
   <bug>170126</bug>
   <bug>171934</bug>
   <access>remote</access>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-5.0.38&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.0.38"</code>
   </resolution>
   <references>
-    <uri link="http://bugs.mysql.com/bug.php?id=27513">Original Report</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1420">CVE-2007-1420</uri>
+    <uri link="https://bugs.mysql.com/bug.php?id=27513">Original Report</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1420">CVE-2007-1420</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Apr 2007 19:47:08 +0000">
+  <metadata tag="requester" timestamp="2007-04-24T19:47:08Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Apr 2007 21:17:16 +0000">
+  <metadata tag="submitter" timestamp="2007-04-25T21:17:16Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Apr 2007 21:17:35 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-25T21:17:35Z">
     p-y
   </metadata>
 </glsa>

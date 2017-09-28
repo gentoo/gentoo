@@ -6,8 +6,8 @@
     execution of arbitrary code. 
   </synopsis>
   <product type="ebuild">mednafen</product>
-  <announced>November 04, 2013</announced>
-  <revised>November 04, 2013: 1</revised>
+  <announced>2013-11-04</announced>
+  <revised>2013-11-04: 1</revised>
   <bug>326141</bug>
   <access>remote</access>
   <affected>
@@ -43,10 +43,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3085">CVE-2010-3085</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3085">CVE-2010-3085</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:38 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:38Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 04 Nov 2013 11:26:30 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-11-04T11:26:30Z">ackle</metadata>
 </glsa>

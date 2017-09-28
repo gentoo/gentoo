@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-18">
   <title>Cacti: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities were discovered in Cacti.
   </synopsis>
   <product type="ebuild">cacti</product>
-  <announced>March 10, 2008</announced>
-  <revised>May 28, 2009: 02</revised>
+  <announced>2008-03-10</announced>
+  <revised>2009-05-28: 02</revised>
   <bug>209918</bug>
   <access>remote</access>
   <affected>
@@ -59,21 +58,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.7b&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-0.8.7b"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0783">CVE-2008-0783</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0784">CVE-2008-0784</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0785">CVE-2008-0785</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0786">CVE-2008-0786</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0783">CVE-2008-0783</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0784">CVE-2008-0784</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0785">CVE-2008-0785</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0786">CVE-2008-0786</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 25 Feb 2008 22:16:20 +0000">
+  <metadata tag="requester" timestamp="2008-02-25T22:16:20Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 07 Mar 2008 23:16:40 +0000">
+  <metadata tag="submitter" timestamp="2008-03-07T23:16:40Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 07 Mar 2008 23:16:51 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-07T23:16:51Z">
     p-y
   </metadata>
 </glsa>

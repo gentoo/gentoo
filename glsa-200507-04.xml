@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-04">
   <title>RealPlayer: Heap overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">realplayer</product>
-  <announced>July 06, 2005</announced>
-  <revised>July 06, 2005: 01</revised>
+  <announced>2005-07-06</announced>
+  <revised>2005-07-06: 01</revised>
   <bug>96923</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/realplayer-10.0.5"</code>
   </resolution>
   <references>
     <uri link="http://service.real.com/help/faq/security/050623_player/EN/">RealNetworks Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1766">CAN-2005-1766</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1766">CAN-2005-1766</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 26 Jun 2005 18:08:55 +0000">
+  <metadata tag="requester" timestamp="2005-06-26T18:08:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jun 2005 18:38:32 +0000">
+  <metadata tag="submitter" timestamp="2005-06-26T18:38:32Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 06 Jul 2005 12:36:44 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-06T12:36:44Z">
     koon
   </metadata>
 </glsa>

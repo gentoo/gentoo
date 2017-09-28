@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200902-05">
   <title>KTorrent: Multiple vulnerabilitites</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of code and arbitrary torrent uploads.
   </synopsis>
   <product type="ebuild">ktorrent</product>
-  <announced>February 23, 2009</announced>
-  <revised>February 23, 2009: 01</revised>
+  <announced>2009-02-23</announced>
+  <revised>2009-02-23: 01</revised>
   <bug>244741</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/ktorrent-2.2.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/ktorrent-2.2.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5905">CVE-2008-5905</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5906">CVE-2008-5906</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5905">CVE-2008-5905</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5906">CVE-2008-5906</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Jan 2009 20:05:03 +0000">
+  <metadata tag="requester" timestamp="2009-01-06T20:05:03Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 00:24:20 +0000">
+  <metadata tag="submitter" timestamp="2009-01-10T00:24:20Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 19:16:54 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-10T19:16:54Z">
     p-y
   </metadata>
 </glsa>

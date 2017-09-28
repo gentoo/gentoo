@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-02">
   <title>phpBB: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     rights or expose and manipulate sensitive data.
   </synopsis>
   <product type="ebuild">phpbb</product>
-  <announced>March 01, 2005</announced>
-  <revised>March 01, 2005: 01</revised>
+  <announced>2005-03-01</announced>
+  <revised>2005-03-01: 01</revised>
   <bug>82955</bug>
   <access>local and remote</access>
   <affected>
@@ -58,20 +57,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpBB-2.0.13&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpBB-2.0.13"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0258">CAN-2005-0258</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0259">CAN-2005-0259</uri>
-    <uri link="http://www.phpbb.com/phpBB/viewtopic.php?f=14&amp;t=267563">phpBB announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0258">CAN-2005-0258</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0259">CAN-2005-0259</uri>
+    <uri link="https://www.phpbb.com/phpBB/viewtopic.php?f=14&amp;t=267563">phpBB announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Feb 2005 14:35:23 +0000">
+  <metadata tag="requester" timestamp="2005-02-28T14:35:23Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Feb 2005 15:10:08 +0000">
+  <metadata tag="submitter" timestamp="2005-02-28T15:10:08Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  1 Mar 2005 18:22:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-01T18:22:22Z">
     koon
   </metadata>
 </glsa>

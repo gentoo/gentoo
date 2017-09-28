@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-01">
   <title>RPCSEC_GSS library: Buffer overflow</title>
   <synopsis>
     A buffer overflow vulnerability has been discovered in librpcsecgss.
   </synopsis>
   <product type="ebuild">librcpsecgss</product>
-  <announced>October 04, 2007</announced>
-  <revised>October 04, 2007: 01</revised>
+  <announced>2007-10-04</announced>
+  <revised>2007-10-04: 01</revised>
   <bug>191479</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/librpcsecgss-0.16&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/librpcsecgss-0.16"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3999">CVE-2007-3999</uri>
-    <uri link="/security/en/glsa/glsa-200709-01.xml">GLSA-200709-01</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3999">CVE-2007-3999</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200709-01.xml">GLSA-200709-01</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 09 Sep 2007 19:27:24 +0000">
+  <metadata tag="requester" timestamp="2007-09-09T19:27:24Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 09 Sep 2007 19:29:01 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-09T19:29:01Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Sep 2007 15:36:52 +0000">
+  <metadata tag="submitter" timestamp="2007-09-29T15:36:52Z">
     p-y
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-14">
   <title>TORQUE: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code with elevated privileges.
   </synopsis>
   <product type="ebuild">torque</product>
-  <announced>November 20, 2006</announced>
-  <revised>November 24, 2006: 03</revised>
+  <announced>2006-11-20</announced>
+  <revised>2006-11-24: 03</revised>
   <bug>152104</bug>
   <access>local</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/torque-2.1.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-cluster/torque-2.1.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5677">CVE-2006-5677</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5677">CVE-2006-5677</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 15 Nov 2006 20:45:04 +0000">
+  <metadata tag="requester" timestamp="2006-11-15T20:45:04Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Nov 2006 11:48:29 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-16T11:48:29Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Nov 2006 08:31:55 +0000">
+  <metadata tag="submitter" timestamp="2006-11-20T08:31:55Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-09">
   <title>gedit: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code execution.
   </synopsis>
   <product type="ebuild">gedit</product>
-  <announced>June 11, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-06-11</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>93352</bug>
   <access>remote</access>
   <affected>
@@ -46,20 +45,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gedit-2.10.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/gedit-2.10.3"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/bid/13699">BugTraq ID 13699</uri>
-    <uri link="http://mail.gnome.org/archives/gnome-announce-list/2005-June/msg00006.html">gedit 10.3 Release Notes</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1686">CVE-2005-1686</uri>
+    <uri link="https://mail.gnome.org/archives/gnome-announce-list/2005-June/msg00006.html">gedit 10.3 Release Notes</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1686">CVE-2005-1686</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jun 2005 14:36:10 +0000">
+  <metadata tag="requester" timestamp="2005-06-10T14:36:10Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jun 2005 17:36:40 +0000">
+  <metadata tag="submitter" timestamp="2005-06-10T17:36:40Z">
     r2d2
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 11 Jun 2005 11:59:18 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-11T11:59:18Z">
     koon
   </metadata>
 </glsa>

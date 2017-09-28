@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200610-11">
   <title>OpenSSL: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>October 24, 2006</announced>
-  <revised>October 24, 2006: 01</revised>
+  <announced>2006-10-24</announced>
+  <revised>2006-10-24: 01</revised>
   <bug>145510</bug>
   <access>remote</access>
   <affected>
@@ -58,27 +57,27 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8d&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8d"</code>
     <p>
     All OpenSSL 0.9.7 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.7l&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.7l"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2937">CVE-2006-2937</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2940">CVE-2006-2940</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3738">CVE-2006-3738</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4343">CVE-2006-4343</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2937">CVE-2006-2937</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2940">CVE-2006-2940</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3738">CVE-2006-3738</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4343">CVE-2006-4343</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 28 Sep 2006 15:36:31 +0000">
+  <metadata tag="requester" timestamp="2006-09-28T15:36:31Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 13 Oct 2006 16:05:39 +0000">
+  <metadata tag="submitter" timestamp="2006-10-13T16:05:39Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 10:05:56 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-24T10:05:56Z">
     falco
   </metadata>
 </glsa>

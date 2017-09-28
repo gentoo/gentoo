@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-37">
   <title>Ghostscript: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     user-assisted execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ghostscript-gpl ghostscript-esp ghostscript-gnu</product>
-  <announced>March 23, 2009</announced>
-  <revised>March 23, 2009: 01</revised>
+  <announced>2009-03-23</announced>
+  <revised>2009-03-23: 01</revised>
   <bug>261087</bug>
   <access>remote</access>
   <affected>
@@ -62,34 +61,34 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gpl-8.64-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gpl-8.64-r2"</code>
     <p>
     All GNU Ghostscript users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gnu-8.62.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gnu-8.62.0"</code>
     <p>
     We recommend that users unmerge ESP Ghostscript and use GPL or GNU
     Ghostscript instead:
     </p>
     <code>
-    # emerge --unmerge &quot;app-text/ghostscript-esp&quot;</code>
+    # emerge --unmerge "app-text/ghostscript-esp"</code>
     <p>
     For installation instructions, see above.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0583">CVE-2009-0583</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0584">CVE-2009-0584</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0583">CVE-2009-0583</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0584">CVE-2009-0584</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Mar 2009 20:18:05 +0000">
+  <metadata tag="requester" timestamp="2009-03-22T20:18:05Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Mar 2009 21:04:31 +0000">
+  <metadata tag="submitter" timestamp="2009-03-22T21:04:31Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 23 Mar 2009 13:39:36 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-23T13:39:36Z">
     a3li
   </metadata>
 </glsa>

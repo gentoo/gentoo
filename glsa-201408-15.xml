@@ -6,8 +6,8 @@
     of which may allow remote Denial of Service.
   </synopsis>
   <product type="ebuild">postgresql-server</product>
-  <announced>August 29, 2014</announced>
-  <revised>August 29, 2014: 1</revised>
+  <announced>2014-08-29</announced>
+  <revised>2014-08-29: 1</revised>
   <bug>456080</bug>
   <bug>463884</bug>
   <bug>501946</bug>
@@ -79,19 +79,19 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0255">CVE-2013-0255</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1899">CVE-2013-1899</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1900">CVE-2013-1900</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1901">CVE-2013-1901</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0060">CVE-2014-0060</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0061">CVE-2014-0061</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0062">CVE-2014-0062</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0063">CVE-2014-0063</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0064">CVE-2014-0064</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0065">CVE-2014-0065</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0066">CVE-2014-0066</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2669">CVE-2014-2669</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0255">CVE-2013-0255</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1899">CVE-2013-1899</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1900">CVE-2013-1900</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1901">CVE-2013-1901</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0060">CVE-2014-0060</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0061">CVE-2014-0061</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0062">CVE-2014-0062</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0063">CVE-2014-0063</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0064">CVE-2014-0064</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0065">CVE-2014-0065</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0066">CVE-2014-0066</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2669">CVE-2014-2669</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 10 Apr 2013 20:45:35 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 23:33:40 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-04-10T20:45:35Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-08-29T23:33:40Z">ackle</metadata>
 </glsa>

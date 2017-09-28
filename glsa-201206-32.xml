@@ -6,8 +6,8 @@
     enable remote attackers to conduct man-in-the-middle attacks. 
   </synopsis>
   <product type="ebuild">Links</product>
-  <announced>June 25, 2012</announced>
-  <revised>June 25, 2012: 1</revised>
+  <announced>2012-06-25</announced>
+  <revised>2012-06-25: 1</revised>
   <bug>253847</bug>
   <bug>411493</bug>
   <access>remote</access>
@@ -44,8 +44,8 @@
     
   </resolution>
   <references>
-    <uri link="http://secunia.com/Advisories/33391/">Secunia Advisory SA33391</uri>
+    <uri link="https://secunia.com/Advisories/33391/">Secunia Advisory SA33391</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:18 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 25 Jun 2012 18:51:32 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:18Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-25T18:51:32Z" tag="submitter">craig</metadata>
 </glsa>

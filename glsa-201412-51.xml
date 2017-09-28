@@ -7,8 +7,8 @@
     allow an authenticated user to gain escalated privileges. 
   </synopsis>
   <product type="ebuild">asterisk,dos,escalated,acl</product>
-  <announced>December 28, 2014</announced>
-  <revised>December 28, 2014: 1</revised>
+  <announced>2014-12-28</announced>
+  <revised>2014-12-28: 1</revised>
   <bug>530056</bug>
   <bug>532242</bug>
   <access>remote</access>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8412">CVE-2014-8412</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8414">CVE-2014-8414</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8417">CVE-2014-8417</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8418">CVE-2014-8418</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9374">CVE-2014-9374</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8412">CVE-2014-8412</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8414">CVE-2014-8414</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8417">CVE-2014-8417</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8418">CVE-2014-8418</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9374">CVE-2014-9374</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 28 Dec 2014 15:16:03 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sun, 28 Dec 2014 18:45:10 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-12-28T15:16:03Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-28T18:45:10Z">K_F</metadata>
 </glsa>

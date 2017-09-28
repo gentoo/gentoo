@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">firebird</product>
-  <announced>December 30, 2015</announced>
-  <revised>December 30, 2015: 1</revised>
+  <announced>2015-12-30</announced>
+  <revised>2015-12-30: 1</revised>
   <bug>460780</bug>
   <access>remote</access>
   <affected>
@@ -47,12 +47,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2492">CVE-2013-2492</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2492">CVE-2013-2492</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 13:57:42 +0000">
+  <metadata tag="requester" timestamp="2015-01-15T13:57:42Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 16:24:28 +0000">
+  <metadata tag="submitter" timestamp="2015-12-30T16:24:28Z">
     pinkbyte
   </metadata>
 </glsa>

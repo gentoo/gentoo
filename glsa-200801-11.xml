@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-11">
   <title>CherryPy: Directory traversal vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to read and write arbitrary files.
   </synopsis>
   <product type="ebuild">cherrypy</product>
-  <announced>January 27, 2008</announced>
-  <revised>January 27, 2008: 01</revised>
+  <announced>2008-01-27</announced>
+  <revised>2008-01-27: 01</revised>
   <bug>204829</bug>
   <access>remote</access>
   <affected>
@@ -51,24 +50,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-python/cherrypy-2.2.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-python/cherrypy-2.2.1-r2"</code>
     <p>
     All CherryPy 3.0 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-python/cherrypy-3.0.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-python/cherrypy-3.0.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0252">CVE-2008-0252</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0252">CVE-2008-0252</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 10 Jan 2008 20:11:50 +0000">
+  <metadata tag="requester" timestamp="2008-01-10T20:11:50Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Jan 2008 02:16:18 +0000">
+  <metadata tag="submitter" timestamp="2008-01-20T02:16:18Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 26 Jan 2008 19:16:48 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-26T19:16:48Z">
     p-y
   </metadata>
 </glsa>

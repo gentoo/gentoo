@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-05">
   <title>mod_auth_pgsql: Multiple format string vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">mod_auth_pgsql</product>
-  <announced>January 10, 2006</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2006-01-10</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>118096</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_auth_pgsql-2.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_auth_pgsql-2.0.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3656">CVE-2005-3656</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3656">CVE-2005-3656</uri>
     <uri link="http://www.frsirt.com/english/advisories/2006/0070">FrSIRT ADV-2006-0070</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 08 Jan 2006 17:42:51 +0000">
+  <metadata tag="requester" timestamp="2006-01-08T17:42:51Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 08 Jan 2006 17:43:17 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-08T17:43:17Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Jan 2006 09:56:56 +0000">
+  <metadata tag="submitter" timestamp="2006-01-09T09:56:56Z">
     DerCorny
   </metadata>
 </glsa>

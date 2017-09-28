@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-01">
   <title>LinPopUp: Buffer overflow in message reply</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">Linpopup</product>
-  <announced>January 04, 2005</announced>
-  <revised>January 04, 2005: 01</revised>
+  <announced>2005-01-04</announced>
+  <revised>2005-01-04: 01</revised>
   <bug>74705</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/linpopup-2.0.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/linpopup-2.0.4-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1282">CAN-2004-1282</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1282">CAN-2004-1282</uri>
     <uri link="http://tigger.uic.edu/~jlongs2/holes/linpopup.txt">Stephen Dranger Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 31 Dec 2004 10:20:27 +0000">
+  <metadata tag="requester" timestamp="2004-12-31T10:20:27Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat,  1 Jan 2005 22:08:20 +0000">
+  <metadata tag="submitter" timestamp="2005-01-01T22:08:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat,  1 Jan 2005 22:15:30 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-01T22:15:30Z">
     koon
   </metadata>
 </glsa>

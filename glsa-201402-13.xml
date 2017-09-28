@@ -6,8 +6,8 @@
     or Denial of Service.
   </synopsis>
   <product type="ebuild">djvu</product>
-  <announced>February 09, 2014</announced>
-  <revised>February 09, 2014: 1</revised>
+  <announced>2014-02-09</announced>
+  <revised>2014-02-09: 1</revised>
   <bug>497088</bug>
   <access>remote</access>
   <affected>
@@ -45,8 +45,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6535">CVE-2012-6535</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6535">CVE-2012-6535</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Feb 2014 22:03:24 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 09 Feb 2014 12:15:30 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-02-07T22:03:24Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-02-09T12:15:30Z">Zlogene</metadata>
 </glsa>

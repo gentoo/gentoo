@@ -6,8 +6,8 @@
     resulting in remote code execution or Denial of Service.
   </synopsis>
   <product type="ebuild">mupdf</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-26: 1</revised>
   <bug>358029</bug>
   <bug>498876</bug>
   <access>remote</access>
@@ -43,13 +43,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2013">CVE-2014-2013</uri>
-    <uri link="http://secunia.com/secunia_research/2011-12/">Secunia Research:
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2013">CVE-2014-2013</uri>
+    <uri link="https://secunia.com/secunia_research/2011-12/">Secunia Research:
       MuPDF Two Integer Overflow Vulnerabilities
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:03 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:03Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 17:54:11 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-26T17:54:11Z">ackle</metadata>
 </glsa>

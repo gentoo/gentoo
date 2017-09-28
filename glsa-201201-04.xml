@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">Logsurfer</product>
-  <announced>January 20, 2012</announced>
-  <revised>January 20, 2012: 1</revised>
+  <announced>2012-01-20</announced>
+  <revised>2012-01-20: 1</revised>
   <bug>387397</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3626">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3626">
       CVE-2011-3626
     </uri>
   </references>
-  <metadata timestamp="Sat, 19 Nov 2011 12:42:58 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 20 Jan 2012 18:19:29 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-19T12:42:58Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-01-20T18:19:29Z" tag="submitter">ackle</metadata>
 </glsa>

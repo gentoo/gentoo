@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-05">
   <title>Mozilla Suite: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     supported by the Mozilla project.
   </synopsis>
   <product type="ebuild">mozilla</product>
-  <announced>March 03, 2007</announced>
-  <revised>March 03, 2007: 01</revised>
+  <announced>2007-03-03</announced>
+  <revised>2007-03-03: 01</revised>
   <bug>135257</bug>
   <access>remote</access>
   <affected>
@@ -58,20 +57,20 @@
     </p>
     <code>
     
-    # emerge --unmerge &quot;www-client/mozilla&quot;
+    # emerge --unmerge "www-client/mozilla"
     
-    # emerge --unmerge &quot;www-client/mozilla-bin&quot;</code>
+    # emerge --unmerge "www-client/mozilla-bin"</code>
   </resolution>
   <references>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Mozilla">Official Advisory</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#Mozilla">Official Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Feb 2007 17:38:03 +0000">
+  <metadata tag="requester" timestamp="2007-02-23T17:38:03Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 15:55:16 +0000">
+  <metadata tag="submitter" timestamp="2007-02-27T15:55:16Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 27 Feb 2007 15:58:20 +0000">
+  <metadata tag="bugReady" timestamp="2007-02-27T15:58:20Z">
     falco
   </metadata>
 </glsa>

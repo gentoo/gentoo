@@ -6,8 +6,8 @@
     of Service.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>July 07, 2015</announced>
-  <revised>July 07, 2015: 1</revised>
+  <announced>2015-07-07</announced>
+  <revised>2015-07-07: 1</revised>
   <bug>546720</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1819">CVE-2015-1819</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1819">CVE-2015-1819</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 30 Jun 2015 22:35:37 +0000">
+  <metadata tag="requester" timestamp="2015-06-30T22:35:37Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 07 Jul 2015 07:19:17 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-07T07:19:17Z">Zlogene</metadata>
 </glsa>

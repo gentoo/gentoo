@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">expat</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>458742</bug>
   <bug>555642</bug>
   <bug>577928</bug>
@@ -47,15 +47,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6702">CVE-2012-6702</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0340">CVE-2013-0340</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1283">CVE-2015-1283</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0718">CVE-2016-0718</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4472">CVE-2016-4472</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5300">CVE-2016-5300</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6702">CVE-2012-6702</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0340">CVE-2013-0340</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1283">CVE-2015-1283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0718">CVE-2016-0718</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4472">CVE-2016-4472</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5300">CVE-2016-5300</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 03:24:00 +0000">
+  <metadata tag="requester" timestamp="2015-12-31T03:24:00Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:13:03 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:13:03Z">whissi</metadata>
 </glsa>

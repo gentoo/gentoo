@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in Wget, the worst of
     which could lead to the remote execution of arbitrary code.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>October 29, 2016</announced>
-  <revised>October 29, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-10-29</announced>
+  <revised>2016-10-29: 1</revised>
   <bug>560418</bug>
   <bug>585926</bug>
   <access>remote</access>
@@ -44,8 +44,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4971">CVE-2016-4971</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4971">CVE-2016-4971</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 02 Jul 2016 11:56:24 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Oct 2016 13:29:55 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-07-02T11:56:24Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-10-29T13:29:55Z">b-man</metadata>
 </glsa>

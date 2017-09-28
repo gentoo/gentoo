@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">libupnp</product>
-  <announced>March 26, 2014</announced>
-  <revised>March 26, 2014: 1</revised>
+  <announced>2014-03-26</announced>
+  <revised>2014-03-26: 1</revised>
   <bug>454570</bug>
   <access>remote</access>
   <affected>
@@ -41,10 +41,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5958">CVE-2012-5958</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5959">CVE-2012-5959</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5960">CVE-2012-5960</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5958">CVE-2012-5958</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5959">CVE-2012-5959</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5960">CVE-2012-5960</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 15:38:12 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Mar 2014 10:27:19 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-03-17T15:38:12Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-03-26T10:27:19Z">ackle</metadata>
 </glsa>

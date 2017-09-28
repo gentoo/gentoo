@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-28">
   <title>Xpdf, GPdf: Stack overflow in Decrypt::makeFileKey2</title>
   <synopsis>
@@ -9,8 +8,8 @@
     vulnerable to the same issue.
   </synopsis>
   <product type="ebuild">Xpdf</product>
-  <announced>January 21, 2005</announced>
-  <revised>January 21, 2005: 01</revised>
+  <announced>2005-01-21</announced>
+  <revised>2005-01-21: 01</revised>
   <bug>77888</bug>
   <bug>78128</bug>
   <access>remote</access>
@@ -56,22 +55,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.00-r8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/xpdf-3.00-r8"</code>
     <p>
     All GPdf users should also upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.8.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/gpdf-2.8.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=186&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 18 Jan 2005 13:34:11 +0000">
+  <metadata tag="submitter" timestamp="2005-01-18T13:34:11Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 21 Jan 2005 20:37:01 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-21T20:37:01Z">
     koon
   </metadata>
 </glsa>

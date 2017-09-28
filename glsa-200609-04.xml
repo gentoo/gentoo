@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-04">
   <title>LibXfont: Multiple integer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">LibXfont</product>
-  <announced>September 06, 2006</announced>
-  <revised>September 06, 2006: 01</revised>
+  <announced>2006-09-06</announced>
+  <revised>2006-09-06: 01</revised>
   <bug>144092</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libXfont-1.2.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.2.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3467">CVE-2006-3467</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3467">CVE-2006-3467</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Aug 2006 17:04:06 +0000">
+  <metadata tag="requester" timestamp="2006-08-31T17:04:06Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 03 Sep 2006 12:10:42 +0000">
+  <metadata tag="submitter" timestamp="2006-09-03T12:10:42Z">
     daxomatic
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 05 Sep 2006 19:36:43 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-05T19:36:43Z">
     jaervosz
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which allowing for local file inclusion.
   </synopsis>
   <product type="ebuild">MantisBT</product>
-  <announced>November 08, 2012</announced>
-  <revised>November 08, 2012: 1</revised>
+  <announced>2012-11-08</announced>
+  <revised>2012-11-08: 1</revised>
   <bug>348761</bug>
   <bug>381417</bug>
   <bug>386153</bug>
@@ -49,30 +49,30 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3303">CVE-2010-3303</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3763">CVE-2010-3763</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4348">CVE-2010-4348</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4349">CVE-2010-4349</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4350">CVE-2010-4350</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2938">CVE-2011-2938</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3356">CVE-2011-3356</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3357">CVE-2011-3357</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3358">CVE-2011-3358</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3578">CVE-2011-3578</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3755">CVE-2011-3755</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1118">CVE-2012-1118</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1119">CVE-2012-1119</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1120">CVE-2012-1120</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1121">CVE-2012-1121</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1122">CVE-2012-1122</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1123">CVE-2012-1123</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2691">CVE-2012-2691</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2692">CVE-2012-2692</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3303">CVE-2010-3303</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3763">CVE-2010-3763</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4348">CVE-2010-4348</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4349">CVE-2010-4349</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4350">CVE-2010-4350</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2938">CVE-2011-2938</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3356">CVE-2011-3356</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3357">CVE-2011-3357</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3358">CVE-2011-3358</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3578">CVE-2011-3578</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3755">CVE-2011-3755</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1118">CVE-2012-1118</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1119">CVE-2012-1119</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1120">CVE-2012-1120</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1121">CVE-2012-1121</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1122">CVE-2012-1122</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1123">CVE-2012-1123</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2691">CVE-2012-2691</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2692">CVE-2012-2692</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:13 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:13Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Nov 2012 10:37:33 +0000">
+  <metadata tag="submitter" timestamp="2012-11-08T10:37:33Z">
     keytoaster
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-08">
   <title>Ruby: CGI::Session creates files insecurely</title>
   <synopsis>
@@ -9,8 +8,8 @@
     be able to read sensitive data stored in session files.
   </synopsis>
   <product type="ebuild">dev-lang/ruby</product>
-  <announced>September 03, 2004</announced>
-  <revised>September 03, 2004: 01</revised>
+  <announced>2004-09-03</announced>
+  <revised>2004-09-03: 01</revised>
   <bug>60525</bug>
   <access>local</access>
   <affected>
@@ -57,16 +56,16 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-lang/ruby-your_version"
-    # emerge ">=dev-lang/ruby-your_version"</code>
+    # emerge -pv "&gt;=dev-lang/ruby-your_version"
+    # emerge "&gt;=dev-lang/ruby-your_version"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0755">CAN-2004-0755</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0755">CAN-2004-0755</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 28 Aug 2004 23:01:05 +0000">
+  <metadata tag="requester" timestamp="2004-08-28T23:01:05Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  1 Sep 2004 04:27:07 +0000">
+  <metadata tag="submitter" timestamp="2004-09-01T04:27:07Z">
     dmargoli
   </metadata>
 </glsa>

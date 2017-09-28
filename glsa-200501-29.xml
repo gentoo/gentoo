@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-29">
   <title>Mailman: Cross-site scripting vulnerability</title>
   <synopsis>
     Mailman is vulnerable to cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">mailman</product>
-  <announced>January 22, 2005</announced>
-  <revised>January 22, 2005: 01</revised>
+  <announced>2005-01-22</announced>
+  <revised>2005-01-22: 01</revised>
   <bug>77524</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailman-2.1.5-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/mailman-2.1.5-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1177">CAN-2004-1177</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1177">CAN-2004-1177</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Jan 2005 10:01:17 +0000">
+  <metadata tag="requester" timestamp="2005-01-19T10:01:17Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Jan 2005 09:22:10 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-20T09:22:10Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Jan 2005 16:36:40 +0000">
+  <metadata tag="submitter" timestamp="2005-01-21T16:36:40Z">
     lewk
   </metadata>
 </glsa>

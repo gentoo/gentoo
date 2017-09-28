@@ -6,8 +6,8 @@
     found in abcm2ps.
   </synopsis>
   <product type="ebuild">abcm2ps</product>
-  <announced>November 20, 2011</announced>
-  <revised>November 20, 2011: 1</revised>
+  <announced>2011-11-20</announced>
+  <revised>2011-11-20: 1</revised>
   <bug>322859</bug>
   <access>remote</access>
   <affected>
@@ -56,12 +56,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3441">CVE-2010-3441</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4743">CVE-2010-4743</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4744">CVE-2010-4744</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3441">CVE-2010-3441</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4743">CVE-2010-4743</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4744">CVE-2010-4744</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:36:59 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:36:59Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 20 Nov 2011 17:57:02 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-20T17:57:02Z" tag="submitter">ackle</metadata>
 </glsa>

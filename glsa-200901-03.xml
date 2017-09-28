@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-03">
   <title>pdnsd: Denial of Service and cache poisoning</title>
   <synopsis>
     Two errors in pdnsd allow for Denial of Service and cache poisoning.
   </synopsis>
   <product type="ebuild">pdnsd</product>
-  <announced>January 11, 2009</announced>
-  <revised>January 11, 2009: 01</revised>
+  <announced>2009-01-11</announced>
+  <revised>2009-01-11: 01</revised>
   <bug>231285</bug>
   <access>remote</access>
   <affected>
@@ -61,19 +60,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdnsd-1.2.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/pdnsd-1.2.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4194">CVE-2008-4194</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4194">CVE-2008-4194</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:15:10 +0000">
+  <metadata tag="requester" timestamp="2008-11-26T18:15:10Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 23:10:06 +0000">
+  <metadata tag="submitter" timestamp="2008-11-26T23:10:06Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 23:10:19 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-26T23:10:19Z">
     rbu
   </metadata>
 </glsa>

@@ -4,8 +4,8 @@
   <title>vsftpd: Denial of Service</title>
   <synopsis>A Denial of Service vulnerability was found in vsftpd.</synopsis>
   <product type="ebuild">vsftpd</product>
-  <announced>October 10, 2011</announced>
-  <revised>October 10, 2011: 1</revised>
+  <announced>2011-10-10</announced>
+  <revised>2011-10-10: 1</revised>
   <bug>357001</bug>
   <access>remote</access>
   <affected>
@@ -40,10 +40,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0762">CVE-2011-0762</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0762">CVE-2011-0762</uri>
   </references>
-  <metadata timestamp="Sat, 08 Oct 2011 21:54:37 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 10 Oct 2011 20:41:01 +0000" tag="submitter">
+  <metadata timestamp="2011-10-08T21:54:37Z" tag="requester">craig</metadata>
+  <metadata timestamp="2011-10-10T20:41:01Z" tag="submitter">
     keytoaster
   </metadata>
 </glsa>

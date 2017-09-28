@@ -45,7 +45,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6508">CVE-2017-6508</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6508">CVE-2017-6508</uri>
   </references>
   <metadata tag="requester" timestamp="2017-03-23T20:33:13Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-06-20T17:09:12Z">whissi</metadata>

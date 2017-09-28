@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-24">
   <title>BNC: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service and execution of arbitrary code.
   </synopsis>
   <product type="ebuild">BNC</product>
-  <announced>November 16, 2004</announced>
-  <revised>November 16, 2004: 01</revised>
+  <announced>2004-11-16</announced>
+  <revised>2004-11-16: 01</revised>
   <bug>70674</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=net-irc/bnc-2.9.1"</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/bnc-2.9.1"</code>
   </resolution>
   <references>
     <uri link="http://gotbnc.com/changes.html">BNC ChangeLog</uri>
     <uri link="http://security.lss.hr/en/index.php?page=details&amp;ID=LSS-2004-11-03">LSS-2004-11-03</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 11 Nov 2004 20:17:39 +0000">
+  <metadata tag="requester" timestamp="2004-11-11T20:17:39Z">
     lewk
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 11 Nov 2004 21:49:41 +0000">
+  <metadata tag="submitter" timestamp="2004-11-11T21:49:41Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 12 Nov 2004 23:44:26 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-12T23:44:26Z">
     jaervosz
   </metadata>
 </glsa>

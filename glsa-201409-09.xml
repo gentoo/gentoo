@@ -6,8 +6,8 @@
     allow attackers to inject code.
   </synopsis>
   <product type="ebuild">bash</product>
-  <announced>September 24, 2014</announced>
-  <revised>October 04, 2014: 4</revised>
+  <announced>2014-09-24</announced>
+  <revised>2014-10-04: 4</revised>
   <bug>523592</bug>
   <access>local, remote</access>
   <affected>
@@ -74,8 +74,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6271">CVE-2014-6271</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6271">CVE-2014-6271</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Sep 2014 16:00:19 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Sat, 04 Oct 2014 22:25:14 +0000">a3li</metadata>
+  <metadata tag="requester" timestamp="2014-09-24T16:00:19Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2014-10-04T22:25:14Z">a3li</metadata>
 </glsa>

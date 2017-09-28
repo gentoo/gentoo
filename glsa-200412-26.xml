@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-26">
   <title>ViewCVS: Information leak and XSS vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     (XSS) issues.
   </synopsis>
   <product type="ebuild">ViewCVS</product>
-  <announced>December 28, 2004</announced>
-  <revised>December 28, 2004: 01</revised>
+  <announced>2004-12-28</announced>
+  <revised>2004-12-28: 01</revised>
   <bug>72461</bug>
   <bug>73772</bug>
   <access>remote</access>
@@ -53,16 +52,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/viewcvs-0.9.2_p20041207-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/viewcvs-0.9.2_p20041207-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0915">CAN-2004-0915</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1062">CAN-2004-1062</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0915">CAN-2004-0915</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1062">CAN-2004-1062</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 21 Dec 2004 15:31:38 +0000">
+  <metadata tag="submitter" timestamp="2004-12-21T15:31:38Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 28 Dec 2004 14:23:36 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-28T14:23:36Z">
     koon
   </metadata>
 </glsa>

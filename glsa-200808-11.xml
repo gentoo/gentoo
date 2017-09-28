@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200808-11">
   <title>UUDeview: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attacks.
   </synopsis>
   <product type="ebuild">nzbget uudeview</product>
-  <announced>August 11, 2008</announced>
-  <revised>August 11, 2008: 01</revised>
+  <announced>2008-08-11</announced>
+  <revised>2008-08-11: 01</revised>
   <bug>222275</bug>
   <bug>224193</bug>
   <access>local</access>
@@ -53,24 +52,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/uudeview-0.5.20-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/uudeview-0.5.20-r1"</code>
     <p>
     All NZBget users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=news-nntp/nzbget-0.4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=news-nntp/nzbget-0.4.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2266">CVE-2008-2266</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2266">CVE-2008-2266</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jul 2008 18:30:42 +0000">
+  <metadata tag="requester" timestamp="2008-07-06T18:30:42Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 06 Jul 2008 18:32:00 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-06T18:32:00Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Jul 2008 11:22:12 +0000">
+  <metadata tag="submitter" timestamp="2008-07-22T11:22:12Z">
     p-y
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     could allow remote attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>December 24, 2016</announced>
-  <revised>December 24, 2016: 1</revised>
+  <announced>2016-12-24</announced>
+  <revised>2016-12-24: 1</revised>
   <bug>591008</bug>
   <bug>597394</bug>
   <bug>597524</bug>
@@ -43,11 +43,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8860">CVE-2016-8860</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8860">CVE-2016-8860</uri>
     <uri link="https://raw.githubusercontent.com/torproject/tor/tor-0.2.8.9/ChangeLog">
       Tor 0.2.8.9 Change Log
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Nov 2016 01:21:24 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Sat, 24 Dec 2016 06:50:16 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-28T01:21:24Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-24T06:50:16Z">whissi</metadata>
 </glsa>

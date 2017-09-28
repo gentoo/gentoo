@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-12">
   <title>gnome-screensaver: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     configurations.
   </synopsis>
   <product type="ebuild">gnome-screensaver</product>
-  <announced>April 11, 2008</announced>
-  <revised>April 11, 2008: 01</revised>
+  <announced>2008-04-11</announced>
+  <revised>2008-04-11: 01</revised>
   <bug>213940</bug>
   <access>local</access>
   <affected>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-extra/gnome-screensaver-2.20.0-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=gnome-extra/gnome-screensaver-2.20.0-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0887">CVE-2008-0887</uri>
-    <uri link="/security/en/glsa/glsa-200705-14.xml">GLSA 200705-14</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0887">CVE-2008-0887</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-14.xml">GLSA 200705-14</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 09 Apr 2008 17:28:36 +0000">
+  <metadata tag="submitter" timestamp="2008-04-09T17:28:36Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 10 Apr 2008 13:16:15 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-10T13:16:15Z">
     vorlon
   </metadata>
 </glsa>

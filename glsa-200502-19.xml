@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-19">
   <title>PostgreSQL: Buffer overflows in PL/PgSQL parser</title>
   <synopsis>
@@ -8,8 +7,8 @@
     leading to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>February 14, 2005</announced>
-  <revised>June 26, 2007: 04</revised>
+  <announced>2005-02-14</announced>
+  <revised>2007-06-26: 04</revised>
   <bug>81350</bug>
   <access>remote</access>
   <affected>
@@ -55,15 +54,15 @@
     # emerge --ask --oneshot --verbose dev-db/postgresql</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0247">CAN-2005-0247</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0247">CAN-2005-0247</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Feb 2005 15:37:29 +0000">
+  <metadata tag="requester" timestamp="2005-02-11T15:37:29Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 11 Feb 2005 20:39:12 +0000">
+  <metadata tag="submitter" timestamp="2005-02-11T20:39:12Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 14 Feb 2005 20:03:42 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-14T20:03:42Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-36">
   <title>netkit-telnetd: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     could allow a malicious telnet server operator to execute arbitrary code.
   </synopsis>
   <product type="ebuild">netkit-telnetd</product>
-  <announced>March 31, 2005</announced>
-  <revised>March 31, 2005: 01</revised>
+  <announced>2005-03-31</announced>
+  <revised>2005-03-31: 01</revised>
   <bug>87211</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/netkit-telnetd-0.17-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/netkit-telnetd-0.17-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=220&amp;type=vulnerabilities">iDEFENSE Advisory 03-28-05</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 30 Mar 2005 08:13:45 +0000">
+  <metadata tag="requester" timestamp="2005-03-30T08:13:45Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Mar 2005 13:44:36 +0000">
+  <metadata tag="submitter" timestamp="2005-03-30T13:44:36Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 30 Mar 2005 19:43:01 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-30T19:43:01Z">
     koon
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-24">
   <title>wv2: Integer overflow</title>
   <synopsis>
     An integer overflow could allow an attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">wv2</product>
-  <announced>June 23, 2006</announced>
-  <revised>June 23, 2006: 01</revised>
+  <announced>2006-06-23</announced>
+  <revised>2006-06-23: 01</revised>
   <bug>136759</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/wv2-0.2.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/wv2-0.2.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2197">CVE 2006-2197</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2197">CVE 2006-2197</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 21 Jun 2006 15:46:28 +0000">
+  <metadata tag="requester" timestamp="2006-06-21T15:46:28Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 21 Jun 2006 17:08:02 +0000">
+  <metadata tag="submitter" timestamp="2006-06-21T17:08:02Z">
     hlieberman
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 21 Jun 2006 18:19:37 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-21T18:19:37Z">
     DerCorny
   </metadata>
 </glsa>

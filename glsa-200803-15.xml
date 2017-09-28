@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-15">
   <title>phpMyAdmin: SQL injection vulnerability</title>
   <synopsis>
     A SQL injection vulnerability has been discovered in phpMyAdmin.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>March 09, 2008</announced>
-  <revised>March 09, 2008: 01</revised>
+  <announced>2008-03-09</announced>
+  <revised>2008-03-09: 01</revised>
   <bug>212000</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.11.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.11.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1149">CVE-2008-1149</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1149">CVE-2008-1149</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 05 Mar 2008 09:53:35 +0000">
+  <metadata tag="requester" timestamp="2008-03-05T09:53:35Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 07 Mar 2008 08:44:33 +0000">
+  <metadata tag="submitter" timestamp="2008-03-07T08:44:33Z">
     psychoschlumpf
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 07 Mar 2008 10:05:31 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-07T10:05:31Z">
     p-y
   </metadata>
 </glsa>

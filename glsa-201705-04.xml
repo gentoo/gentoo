@@ -47,8 +47,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5461">CVE-2017-5461</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5462">CVE-2017-5462</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5461">CVE-2017-5461</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5462">CVE-2017-5462</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-30T13:52:41Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-05-07T20:17:08Z">whissi</metadata>

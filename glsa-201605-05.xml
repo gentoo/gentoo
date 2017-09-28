@@ -6,8 +6,8 @@
     remote attackers to bypass the auth process and cause Denial of Service.
   </synopsis>
   <product type="ebuild">pam</product>
-  <announced>May 31, 2016</announced>
-  <revised>May 31, 2016: 1</revised>
+  <announced>2016-05-31</announced>
+  <revised>2016-05-31: 1</revised>
   <bug>493432</bug>
   <bug>505604</bug>
   <bug>553302</bug>
@@ -47,13 +47,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7041">CVE-2013-7041</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2583">CVE-2014-2583</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3238">CVE-2015-3238</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3238">CVE-2015-3238</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7041">CVE-2013-7041</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2583">CVE-2014-2583</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3238">CVE-2015-3238</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3238">CVE-2015-3238</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Aug 2015 14:28:31 +0000">
+  <metadata tag="requester" timestamp="2015-08-10T14:28:31Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 31 May 2016 04:26:13 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-05-31T04:26:13Z">b-man</metadata>
 </glsa>

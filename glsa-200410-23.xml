@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-23">
   <title>Gaim: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attacker to crash the application, or possibly execute arbitrary code.
   </synopsis>
   <product type="ebuild">gaim</product>
-  <announced>October 24, 2004</announced>
-  <revised>October 24, 2004: 01</revised>
+  <announced>2004-10-24</announced>
+  <revised>2004-10-24: 01</revised>
   <bug>68271</bug>
   <access>remote</access>
   <affected>
@@ -53,20 +52,20 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-im/gaim-1.0.2"
-    # emerge ">=net-im/gaim-1.0.2"</code>
+    # emerge -pv "&gt;=net-im/gaim-1.0.2"
+    # emerge "&gt;=net-im/gaim-1.0.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0891">CAN-2004-0891</uri>
-    <uri link="http://gaim.sourceforge.net/security/">Gaim Security Issues</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0891">CAN-2004-0891</uri>
+    <uri link="https://gaim.sourceforge.net/security/">Gaim Security Issues</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 22 Oct 2004 00:52:11 +0000">
+  <metadata tag="requester" timestamp="2004-10-22T00:52:11Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 22 Oct 2004 08:35:43 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-22T08:35:43Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 23 Oct 2004 13:06:09 +0000">
+  <metadata tag="submitter" timestamp="2004-10-23T13:06:09Z">
     vorlon078
   </metadata>
 </glsa>

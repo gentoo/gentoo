@@ -6,8 +6,8 @@
     allowing for the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mono mono-debugger</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>277878</bug>
   <bug>342133</bug>
   <bug>345561</bug>
@@ -69,19 +69,19 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0217">CVE-2009-0217</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3332">CVE-2010-3332</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3369">CVE-2010-3369</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4159">CVE-2010-4159</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4225">CVE-2010-4225</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4254">CVE-2010-4254</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0989">CVE-2011-0989</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0990">CVE-2011-0990</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0991">CVE-2011-0991</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0992">CVE-2011-0992</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0217">CVE-2009-0217</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3332">CVE-2010-3332</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3369">CVE-2010-3369</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4159">CVE-2010-4159</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4225">CVE-2010-4225</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4254">CVE-2010-4254</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0989">CVE-2011-0989</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0990">CVE-2011-0990</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0991">CVE-2011-0991</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0992">CVE-2011-0992</uri>
   </references>
-  <metadata timestamp="Sat, 08 Oct 2011 22:43:20 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 20:40:21 +0000" tag="submitter">
+  <metadata timestamp="2011-10-08T22:43:20Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-21T20:40:21Z" tag="submitter">
     keytoaster
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>October 18, 2015</announced>
-  <revised>October 18, 2015: 1</revised>
+  <announced>2015-10-18</announced>
+  <revised>2015-10-18: 1</revised>
   <bug>540640</bug>
   <bug>553584</bug>
   <bug>556150</bug>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1349">CVE-2015-1349</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4620">CVE-2015-4620</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5477">CVE-2015-5477</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5722">CVE-2015-5722</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5986">CVE-2015-5986</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1349">CVE-2015-1349</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4620">CVE-2015-4620</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5477">CVE-2015-5477</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5722">CVE-2015-5722</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5986">CVE-2015-5986</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 23 Jul 2015 15:16:23 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 Oct 2015 19:47:34 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-07-23T15:16:23Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-10-18T19:47:34Z">Zlogene</metadata>
 </glsa>

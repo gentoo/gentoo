@@ -42,7 +42,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8849">CVE-2017-8849</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8849">CVE-2017-8849</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-12T04:22:20Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-05-26T12:18:57Z">BlueKnight</metadata>

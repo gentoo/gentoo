@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-13">
   <title>E2fsprogs: Multiple buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">e2fsprogs</product>
-  <announced>December 18, 2007</announced>
-  <revised>December 18, 2007: 01</revised>
+  <announced>2007-12-18</announced>
+  <revised>2007-12-18: 01</revised>
   <bug>201546</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-fs/e2fsprogs-1.40.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-fs/e2fsprogs-1.40.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5497">CVE-2007-5497</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5497">CVE-2007-5497</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 12 Dec 2007 09:56:09 +0000">
+  <metadata tag="requester" timestamp="2007-12-12T09:56:09Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 13 Dec 2007 21:11:04 +0000">
+  <metadata tag="submitter" timestamp="2007-12-13T21:11:04Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 13 Dec 2007 23:03:39 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-13T23:03:39Z">
     rbu
   </metadata>
 </glsa>

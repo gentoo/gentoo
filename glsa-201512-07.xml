@@ -6,8 +6,8 @@
     execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">gstreamer</product>
-  <announced>December 30, 2015</announced>
-  <revised>February 09, 2016: 3</revised>
+  <announced>2015-12-30</announced>
+  <revised>2016-02-09: 3</revised>
   <bug>553742</bug>
   <access>remote</access>
   <affected>
@@ -49,10 +49,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0797">CVE-2015-0797</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0797">CVE-2015-0797</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Nov 2015 14:47:48 +0000">
+  <metadata tag="requester" timestamp="2015-11-22T14:47:48Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 09 Feb 2016 20:37:29 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2016-02-09T20:37:29Z">ackle</metadata>
 </glsa>

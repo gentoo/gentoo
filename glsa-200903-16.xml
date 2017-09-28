@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-16">
   <title>Epiphany: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">epiphany</product>
-  <announced>March 09, 2009</announced>
-  <revised>March 09, 2009: 01</revised>
+  <announced>2009-03-09</announced>
+  <revised>2009-03-09: 01</revised>
   <bug>257000</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/epiphany-2.22.3-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/epiphany-2.22.3-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5985">CVE-2008-5985</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5985">CVE-2008-5985</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 07 Mar 2009 16:40:03 +0000">
+  <metadata tag="requester" timestamp="2009-03-07T16:40:03Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Mar 2009 18:06:14 +0000">
+  <metadata tag="submitter" timestamp="2009-03-07T18:06:14Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 07 Mar 2009 18:06:33 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-07T18:06:33Z">
     rbu
   </metadata>
 </glsa>

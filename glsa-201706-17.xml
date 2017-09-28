@@ -51,8 +51,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8314">CVE-2017-8314</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8314">CVE-2017-8314</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-06T16:37:32Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-06-20T17:18:36Z">whissi</metadata>

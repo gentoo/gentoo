@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-22">
   <title>Davfs2, lvm-user: Insecure tempfile handling</title>
   <synopsis>
@@ -9,8 +8,8 @@
     to overwrite arbitrary files with the rights of the user running them.
   </synopsis>
   <product type="ebuild">davfs2</product>
-  <announced>November 11, 2004</announced>
-  <revised>November 11, 2004: 01</revised>
+  <announced>2004-11-11</announced>
+  <revised>2004-11-11: 01</revised>
   <bug>68406</bug>
   <bug>69149</bug>
   <access>local</access>
@@ -60,21 +59,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=net-fs/davfs2-0.2.2-r1"</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-fs/davfs2-0.2.2-r1"</code>
     <p>
     All lvm-user users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=sys-fs/lvm-user-1.0.7-r2"</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-fs/lvm-user-1.0.7-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0972">CAN-2004-0972</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0972">CAN-2004-0972</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 10 Nov 2004 09:15:59 +0000">
+  <metadata tag="submitter" timestamp="2004-11-10T09:15:59Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 11 Nov 2004 20:29:52 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-11T20:29:52Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200911-05">
   <title>Wireshark: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the remote execution of arbitrary code, or Denial of Service.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>November 25, 2009</announced>
-  <revised>November 25, 2009: 01</revised>
+  <announced>2009-11-25</announced>
+  <revised>2009-11-25: 01</revised>
   <bug>285280</bug>
   <bug>290710</bug>
   <access>remote</access>
@@ -62,25 +61,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.2.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.2.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2560">CVE-2009-2560</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3241">CVE-2009-3241</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3242">CVE-2009-3242</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3243">CVE-2009-3243</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3549">CVE-2009-3549</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3550">CVE-2009-3550</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3551">CVE-2009-3551</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3829">CVE-2009-3829</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2560">CVE-2009-2560</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3241">CVE-2009-3241</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3242">CVE-2009-3242</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3243">CVE-2009-3243</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3549">CVE-2009-3549</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3550">CVE-2009-3550</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3551">CVE-2009-3551</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3829">CVE-2009-3829</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 04 Nov 2009 23:06:15 +0000">
+  <metadata tag="requester" timestamp="2009-11-04T23:06:15Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 04 Nov 2009 23:24:04 +0000">
+  <metadata tag="submitter" timestamp="2009-11-04T23:24:04Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Nov 2009 15:36:13 +0000">
+  <metadata tag="bugReady" timestamp="2009-11-25T15:36:13Z">
     a3li
   </metadata>
 </glsa>

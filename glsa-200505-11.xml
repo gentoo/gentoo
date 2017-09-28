@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-11">
   <title>Mozilla Suite, Mozilla Firefox: Remote compromise</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to conduct cross-site scripting attacks or to execute arbitrary code.
   </synopsis>
   <product type="ebuild">mozilla</product>
-  <announced>May 15, 2005</announced>
-  <revised>May 15, 2005: 01</revised>
+  <announced>2005-05-15</announced>
+  <revised>2005-05-15: 01</revised>
   <bug>91859</bug>
   <bug>92393</bug>
   <bug>92394</bug>
@@ -77,40 +76,40 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.0.4"</code>
     <p>
     All Mozilla Firefox binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.0.4"</code>
     <p>
     All Mozilla Suite users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-1.7.8"</code>
     <p>
     All Mozilla Suite binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-bin-1.7.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1476">CAN-2005-1476</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1477">CAN-2005-1477</uri>
-    <uri link="http://www.mozilla.org/security/announce/mfsa2005-43.html">Mozilla Foundation Security Advisory 2005-43</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1476">CAN-2005-1476</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1477">CAN-2005-1477</uri>
+    <uri link="https://www.mozilla.org/security/announce/mfsa2005-43.html">Mozilla Foundation Security Advisory 2005-43</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 12 May 2005 04:49:53 +0000">
+  <metadata tag="requester" timestamp="2005-05-12T04:49:53Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 May 2005 08:27:49 +0000">
+  <metadata tag="submitter" timestamp="2005-05-12T08:27:49Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 15 May 2005 08:10:06 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-15T08:10:06Z">
     koon
   </metadata>
 </glsa>

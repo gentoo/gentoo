@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-33">
   <title>FFmpeg: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">ffmpeg gst-plugins-ffmpeg mplayer</product>
-  <announced>March 19, 2009</announced>
-  <revised>March 19, 2009: 01</revised>
+  <announced>2009-03-19</announced>
+  <revised>2009-03-19: 01</revised>
   <bug>231831</bug>
   <bug>231834</bug>
   <bug>245313</bug>
@@ -76,35 +75,35 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/ffmpeg-0.4.9_p20090201&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-0.4.9_p20090201"</code>
     <p>
     All gst-plugins-ffmpeg users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-plugins/gst-plugins-ffmpeg-0.10.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-plugins/gst-plugins-ffmpeg-0.10.5"</code>
     <p>
     All Mplayer users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc2_p28450&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/mplayer-1.0_rc2_p28450"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3162 ">CVE-2008-3162</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4866">CVE-2008-4866</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4867">CVE-2008-4867</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4868">CVE-2008-4868</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4869">CVE-2008-4869</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0385">CVE-2009-0385</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3162 ">CVE-2008-3162</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4866">CVE-2008-4866</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4867">CVE-2008-4867</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4868">CVE-2008-4868</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4869">CVE-2008-4869</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0385">CVE-2009-0385</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 31 Oct 2008 21:30:59 +0000">
+  <metadata tag="requester" timestamp="2008-10-31T21:30:59Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 Mar 2009 22:05:30 +0000">
+  <metadata tag="submitter" timestamp="2009-03-17T22:05:30Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 17 Mar 2009 22:05:39 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-17T22:05:39Z">
     p-y
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-12">
   <title>Gaim: MSN protocol parsing function buffer overflow</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">gaim</product>
-  <announced>August 12, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-08-12</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>60034</bug>
   <access>remote</access>
   <affected>
@@ -51,14 +50,14 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-im/gaim-0.81-r1&quot;
-    # emerge &quot;&gt;=net-im/gaim-0.81-r1&quot;</code>
+    # emerge -pv "&gt;=net-im/gaim-0.81-r1"
+    # emerge "&gt;=net-im/gaim-0.81-r1"</code>
   </resolution>
   <references>
     <uri link="http://www.osvdb.org/displayvuln.php?osvdb_id=8382">OSVDB ID: 8382</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0500">CVE-2004-0500</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0500">CVE-2004-0500</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 12 Aug 2004 16:07:01 +0000">
+  <metadata tag="submitter" timestamp="2004-08-12T16:07:01Z">
     jaervosz
   </metadata>
 </glsa>

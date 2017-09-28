@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-05">
   <title>Cyrus-SASL: Buffer overflow and SASL_PATH vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     completely compromise the vulnerable system.
   </synopsis>
   <product type="ebuild">Cyrus-SASL</product>
-  <announced>October 07, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-10-07</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>56016</bug>
   <access>remote</access>
   <affected>
@@ -50,17 +49,17 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=dev-libs/cyrus-sasl-2.1.18-r2&quot;
-    # emerge &quot;&gt;=dev-libs/cyrus-sasl-2.1.18-r2&quot;</code>
+    # emerge -pv "&gt;=dev-libs/cyrus-sasl-2.1.18-r2"
+    # emerge "&gt;=dev-libs/cyrus-sasl-2.1.18-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0884">CAN-2004-0884</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0373">CVE-2005-0373</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0884">CAN-2004-0884</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0373">CVE-2005-0373</uri>
   </references>
   <metadata tag="submitter">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat,  2 Oct 2004 04:16:09 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-02T04:16:09Z">
     lewk
   </metadata>
 </glsa>

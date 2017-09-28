@@ -7,8 +7,8 @@
     Service, or the disclosure of private keys.
   </synopsis>
   <product type="ebuild">gnupg libgcrypt</product>
-  <announced>February 21, 2014</announced>
-  <revised>August 24, 2016: 3</revised>
+  <announced>2014-02-21</announced>
+  <revised>2016-08-24: 3</revised>
   <bug>449546</bug>
   <bug>478184</bug>
   <bug>484836</bug>
@@ -78,14 +78,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6085">CVE-2012-6085</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4242">CVE-2013-4242</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4351">CVE-2013-4351</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4402">CVE-2013-4402</uri>
-    <uri link="http://eprint.iacr.org/2013/448">Flush+Reload: a High
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6085">CVE-2012-6085</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4242">CVE-2013-4242</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4351">CVE-2013-4351</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4402">CVE-2013-4402</uri>
+    <uri link="https://eprint.iacr.org/2013/448">Flush+Reload: a High
       Resolution, Low Noise, L3 Cache Side-Channel Attack
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Jan 2013 21:37:26 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 24 Aug 2016 12:08:25 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-01-15T21:37:26Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2016-08-24T12:08:25Z">ackle</metadata>
 </glsa>

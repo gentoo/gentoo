@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-11">
   <title>IBM JDK/JRE: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">ibm-jdk-bin ibm-jre-bin</product>
-  <announced>June 25, 2008</announced>
-  <revised>June 25, 2008: 01</revised>
+  <announced>2008-06-25</announced>
+  <revised>2008-06-25: 01</revised>
   <bug>186277</bug>
   <bug>198644</bug>
   <bug>216112</bug>
@@ -62,36 +61,36 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jdk-bin-1.5.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/ibm-jdk-bin-1.5.0.7"</code>
     <p>
     All IBM JDK 1.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jdk-bin-1.4.2.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/ibm-jdk-bin-1.4.2.11"</code>
     <p>
     All IBM JRE 1.5 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jre-bin-1.5.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/ibm-jre-bin-1.5.0.7"</code>
     <p>
     All IBM JRE 1.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/ibm-jre-bin-1.4.2.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/ibm-jre-bin-1.4.2.11"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200804-20.xml">GLSA 200804-20</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200804-20.xml">GLSA 200804-20</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Apr 2008 22:14:16 +0000">
+  <metadata tag="requester" timestamp="2008-04-05T22:14:16Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 23 Apr 2008 17:16:09 +0000">
+  <metadata tag="submitter" timestamp="2008-04-23T17:16:09Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 24 Jun 2008 01:10:44 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-24T01:10:44Z">
     rbu
   </metadata>
 </glsa>

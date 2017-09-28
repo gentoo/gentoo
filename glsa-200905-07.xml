@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200905-07">
   <title>Pidgin: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">pidgin</product>
-  <announced>May 25, 2009</announced>
-  <revised>May 25, 2009: 01</revised>
+  <announced>2009-05-25</announced>
+  <revised>2009-05-25: 01</revised>
   <bug>270811</bug>
   <access>remote</access>
   <affected>
@@ -61,19 +60,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/pidgin-2.5.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.5.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1373">CVE-2009-1373</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1374">CVE-2009-1374</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1375">CVE-2009-1375</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1376">CVE-2009-1376</uri>
-    <uri link="/security/en/glsa/glsa-200901-13.xml">GLSA 200901-13</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1373">CVE-2009-1373</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1374">CVE-2009-1374</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1375">CVE-2009-1375</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1376">CVE-2009-1376</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200901-13.xml">GLSA 200901-13</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 25 May 2009 17:46:41 +0000">
+  <metadata tag="submitter" timestamp="2009-05-25T17:46:41Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 May 2009 17:46:49 +0000">
+  <metadata tag="bugReady" timestamp="2009-05-25T17:46:49Z">
     a3li
   </metadata>
 </glsa>

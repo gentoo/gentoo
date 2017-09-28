@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-10">
   <title>iproute local Denial of Service vulnerability</title>
   <synopsis>
     The iproute package allows local users to cause a denial of service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>April 09, 2004</announced>
-  <revised>April 09, 2004: 01</revised>
+  <product type="ebuild"/>
+  <announced>2004-04-09</announced>
+  <revised>2004-04-09: 01</revised>
   <bug>34294</bug>
   <access>local</access>
   <affected>
@@ -48,12 +47,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=sys-apps/iproute-20010824-r5";
-    # emerge ">=sys-apps/iproute-20010824-r5";
+    # emerge -pv "&gt;=sys-apps/iproute-20010824-r5";
+    # emerge "&gt;=sys-apps/iproute-20010824-r5";
     </code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0856">CAN-2003-0856</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0856">CAN-2003-0856</uri>
   </references>
   <metadata tag="submitter">
     lcars

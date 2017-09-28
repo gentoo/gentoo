@@ -6,8 +6,8 @@
     which may allow attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">cyassl</product>
-  <announced>December 31, 2016</announced>
-  <revised>December 31, 2016: 1</revised>
+  <announced>2016-12-31</announced>
+  <revised>2016-12-31: 1</revised>
   <bug>507418</bug>
   <access>local, remote</access>
   <affected>
@@ -45,12 +45,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2896">CVE-2014-2896</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2897">CVE-2014-2897</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2898">CVE-2014-2898</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2899">CVE-2014-2899</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2900">CVE-2014-2900</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2896">CVE-2014-2896</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2897">CVE-2014-2897</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2898">CVE-2014-2898</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2899">CVE-2014-2899</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2900">CVE-2014-2900</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 15:11:37 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 14:47:50 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-23T15:11:37Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-31T14:47:50Z">b-man</metadata>
 </glsa>

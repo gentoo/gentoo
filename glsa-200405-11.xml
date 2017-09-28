@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-11">
   <title>KDE URI Handler Vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attacks.
   </synopsis>
   <product type="ebuild">kdelibs</product>
-  <announced>May 19, 2004</announced>
-  <revised>May 19, 2004: 01</revised>
+  <announced>2004-05-19</announced>
+  <revised>2004-05-19: 01</revised>
   <bug>51276</bug>
   <access>remote </access>
   <affected>
@@ -64,11 +63,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=kde-base/kdelibs-3.2.2-r1"
-    # emerge ">=kde-base/kdelibs-3.2.2-r1"</code>
+    # emerge -pv "&gt;=kde-base/kdelibs-3.2.2-r1"
+    # emerge "&gt;=kde-base/kdelibs-3.2.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0411">CAN-2004-0411</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0411">CAN-2004-0411</uri>
   </references>
   <metadata tag="submitter">
     koon

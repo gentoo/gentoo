@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-22">
   <title>MySQL: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially remote arbitrary code execution have been discovered in MySQL.
   </synopsis>
   <product type="ebuild">MySQL</product>
-  <announced>October 24, 2004</announced>
-  <revised>October 24, 2004: 01</revised>
+  <announced>2004-10-24</announced>
+  <revised>2004-10-24: 01</revised>
   <bug>67062</bug>
   <access>remote</access>
   <affected>
@@ -67,23 +66,23 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-db/mysql-4.0.21"
-    # emerge ">=dev-db/mysql-4.0.21"</code>
+    # emerge -pv "&gt;=dev-db/mysql-4.0.21"
+    # emerge "&gt;=dev-db/mysql-4.0.21"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0835">CAN-2004-0835</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0836">CAN-2004-0836</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0837">CAN-2004-0837</uri>
-    <uri link="http://bugs.mysql.com/bug.php?id=3933">Privilege granting bug</uri>
-    <uri link="http://bugs.mysql.com/bug.php?id=3870">MATCH ... AGAINST crash bug</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0835">CAN-2004-0835</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0836">CAN-2004-0836</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0837">CAN-2004-0837</uri>
+    <uri link="https://bugs.mysql.com/bug.php?id=3933">Privilege granting bug</uri>
+    <uri link="https://bugs.mysql.com/bug.php?id=3870">MATCH ... AGAINST crash bug</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 19 Oct 2004 17:45:22 +0000">
+  <metadata tag="requester" timestamp="2004-10-19T17:45:22Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 22 Oct 2004 20:06:53 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-22T20:06:53Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 23 Oct 2004 08:53:17 +0000">
+  <metadata tag="submitter" timestamp="2004-10-23T08:53:17Z">
     koon
   </metadata>
 </glsa>

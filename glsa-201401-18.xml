@@ -6,8 +6,8 @@
     allowing attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">opensc</product>
-  <announced>January 21, 2014</announced>
-  <revised>January 21, 2014: 1</revised>
+  <announced>2014-01-21</announced>
+  <revised>2014-01-21: 1</revised>
   <bug>349567</bug>
   <access>local</access>
   <affected>
@@ -45,10 +45,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4523">CVE-2010-4523</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4523">CVE-2010-4523</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:47 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:47Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 18:48:55 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-21T18:48:55Z">Zlogene</metadata>
 </glsa>

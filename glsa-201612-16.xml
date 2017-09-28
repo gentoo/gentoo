@@ -6,8 +6,8 @@
     which allows attackers to conduct a time based side-channel attack.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>December 07, 2016</announced>
-  <revised>December 07, 2016: 1</revised>
+  <announced>2016-12-07</announced>
+  <revised>2016-12-07: 1</revised>
   <bug>581234</bug>
   <bug>585142</bug>
   <bug>585276</bug>
@@ -55,26 +55,26 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2105">CVE-2016-2105</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2106">CVE-2016-2106</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2107">CVE-2016-2107</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2108">CVE-2016-2108</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2109">CVE-2016-2109</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2176">CVE-2016-2176</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2177">CVE-2016-2177</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2178">CVE-2016-2178</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2180">CVE-2016-2180</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2183">CVE-2016-2183</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6304">CVE-2016-6304</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6305">CVE-2016-6305</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6306">CVE-2016-6306</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7052">CVE-2016-7052</uri>
-    <uri link="http://eprint.iacr.org/2016/594.pdf">Make Sure DSA Signing
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2105">CVE-2016-2105</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2106">CVE-2016-2106</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2107">CVE-2016-2107</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2108">CVE-2016-2108</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2109">CVE-2016-2109</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2176">CVE-2016-2176</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2177">CVE-2016-2177</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2178">CVE-2016-2178</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2180">CVE-2016-2180</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2183">CVE-2016-2183</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6304">CVE-2016-6304</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6305">CVE-2016-6305</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6306">CVE-2016-6306</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7052">CVE-2016-7052</uri>
+    <uri link="https://eprint.iacr.org/2016/594.pdf">Make Sure DSA Signing
       Exponentiations Really are Constant-Time
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Jun 2016 21:30:06 +0000">
+  <metadata tag="requester" timestamp="2016-06-06T21:30:06Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 07 Dec 2016 10:26:27 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-07T10:26:27Z">b-man</metadata>
 </glsa>

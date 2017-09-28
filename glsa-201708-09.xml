@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7392">CVE-2016-7392</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9153">CVE-2017-9153</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7392">CVE-2016-7392</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9153">CVE-2017-9153</uri>
   </references>
   <metadata tag="requester" timestamp="2017-08-22T03:00:50Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-08-26T14:47:40Z">b-man</metadata>

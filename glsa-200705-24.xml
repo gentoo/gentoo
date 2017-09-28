@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-24">
   <title>libpng: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     that handle untrusted images.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>May 31, 2007</announced>
-  <revised>May 31, 2007: 01</revised>
+  <announced>2007-05-31</announced>
+  <revised>2007-05-31: 01</revised>
   <bug>178004</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.18&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.18"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2445">CVE-2007-2445</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2445">CVE-2007-2445</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 27 May 2007 07:35:26 +0000">
+  <metadata tag="requester" timestamp="2007-05-27T07:35:26Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 27 May 2007 13:49:05 +0000">
+  <metadata tag="submitter" timestamp="2007-05-27T13:49:05Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 31 May 2007 08:41:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-31T08:41:58Z">
     p-y
   </metadata>
 </glsa>

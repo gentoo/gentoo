@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-01">
   <title>FireHOL: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">FireHOL</product>
-  <announced>February 01, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-02-01</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>79330</bug>
   <access>local</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-firewall/firehol-1.224&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-firewall/firehol-1.224"</code>
   </resolution>
   <references>
-    <uri link="http://cvs.sourceforge.net/viewcvs.py/firehol/firehol/firehol.sh">FireHOL CVS log</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0225">CVE-2005-0225</uri>
+    <uri link="https://cvs.sourceforge.net/viewcvs.py/firehol/firehol/firehol.sh">FireHOL CVS log</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0225">CVE-2005-0225</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 28 Jan 2005 10:32:33 +0000">
+  <metadata tag="requester" timestamp="2005-01-28T10:32:33Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Jan 2005 16:54:50 +0000">
+  <metadata tag="submitter" timestamp="2005-01-29T16:54:50Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 Jan 2005 23:48:34 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-31T23:48:34Z">
     lewk
   </metadata>
 </glsa>

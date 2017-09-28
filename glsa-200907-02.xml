@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-02">
   <title>ModSecurity: Denial of Service</title>
   <synopsis>
     Two vulnerabilities in ModSecurity might lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">mod_security</product>
-  <announced>July 02, 2009</announced>
-  <revised>July 02, 2009: 01</revised>
+  <announced>2009-07-02</announced>
+  <revised>2009-07-02: 01</revised>
   <bug>262302</bug>
   <access>remote</access>
   <affected>
@@ -55,19 +54,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_security-2.5.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_security-2.5.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1902">CVE-2009-1902</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1903">CVE-2009-1903</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1902">CVE-2009-1902</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1903">CVE-2009-1903</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Jun 2009 22:17:27 +0000">
+  <metadata tag="requester" timestamp="2009-06-12T22:17:27Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 27 Jun 2009 20:29:14 +0000">
+  <metadata tag="submitter" timestamp="2009-06-27T20:29:14Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 02 Jul 2009 11:54:37 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-02T11:54:37Z">
     a3li
   </metadata>
 </glsa>

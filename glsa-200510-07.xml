@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-07">
   <title>RealPlayer, Helix Player: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">realplayer helixplayer</product>
-  <announced>October 07, 2005</announced>
-  <revised>November 22, 2005: 02</revised>
+  <announced>2005-10-07</announced>
+  <revised>2005-11-22: 02</revised>
   <bug>107309</bug>
   <access>remote</access>
   <affected>
@@ -52,7 +51,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/realplayer-10.0.6"</code>
     <p>
     Note to Helix Player users: There is currently no stable secure Helix
     Player package. Affected users should remove the package until an
@@ -60,15 +59,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2710">CAN-2005-2710</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2710">CAN-2005-2710</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 01 Oct 2005 10:35:35 +0000">
+  <metadata tag="requester" timestamp="2005-10-01T10:35:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Oct 2005 19:39:34 +0000">
+  <metadata tag="submitter" timestamp="2005-10-04T19:39:34Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 07 Oct 2005 14:20:23 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-07T14:20:23Z">
     koon
   </metadata>
 </glsa>

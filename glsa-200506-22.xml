@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-22">
   <title>sudo: Arbitrary command execution</title>
   <synopsis>
     A vulnerability in sudo may allow local users to elevate privileges.
   </synopsis>
   <product type="ebuild">sudo</product>
-  <announced>June 23, 2005</announced>
-  <revised>June 23, 2005: 01</revised>
+  <announced>2005-06-23</announced>
+  <revised>2005-06-23: 01</revised>
   <bug>96618</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.6.8_p9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.6.8_p9"</code>
   </resolution>
   <references>
-    <uri link="http://www.sudo.ws/sudo/alerts/path_race.html">Sudo Announcement</uri>
+    <uri link="https://www.sudo.ws/sudo/alerts/path_race.html">Sudo Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Jun 2005 20:05:11 +0000">
+  <metadata tag="requester" timestamp="2005-06-21T20:05:11Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 22 Jun 2005 15:18:20 +0000">
+  <metadata tag="submitter" timestamp="2005-06-22T15:18:20Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 23 Jun 2005 06:48:01 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-23T06:48:01Z">
     jaervosz
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">isync</product>
-  <announced>October 05, 2013</announced>
-  <revised>October 05, 2013: 1</revised>
+  <announced>2013-10-05</announced>
+  <revised>2013-10-05: 1</revised>
   <bug>458420</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0289">CVE-2013-0289</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0289">CVE-2013-0289</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 08 Apr 2013 23:32:51 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sat, 05 Oct 2013 20:45:35 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-04-08T23:32:51Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-05T20:45:35Z">ackle</metadata>
 </glsa>

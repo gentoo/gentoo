@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200401-04">
   <title>GAIM 0.75 Remote overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     GAIM that could lead to a remote compromise of the IM client.
   </synopsis>
   <product type="ebuild">GAIM</product>
-  <announced>January 26, 2004</announced>
-  <revised>January 26, 2004: 01</revised>
+  <announced>2004-01-26</announced>
+  <revised>2004-01-26: 01</revised>
   <bug>39470</bug>
   <access>man-in-the-middle</access>
   <affected>
@@ -68,9 +67,9 @@
     All users are recommended to upgrade GAIM to 0.75-r7.
     </p>
     <code>
-    $> emerge sync
-    $> emerge -pv ">=net-im/gaim-0.75-r7"
-    $> emerge ">=net-im/gaim-0.75-r7"</code>
+    $&gt; emerge sync
+    $&gt; emerge -pv "&gt;=net-im/gaim-0.75-r7"
+    $&gt; emerge "&gt;=net-im/gaim-0.75-r7"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/351235/2004-01-23/2004-01-29/0">Security advisory from Stefan Esser</uri>

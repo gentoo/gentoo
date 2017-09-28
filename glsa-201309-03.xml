@@ -6,8 +6,8 @@
     cause a Denial of Service.
   </synopsis>
   <product type="ebuild">Xlockmore</product>
-  <announced>September 02, 2013</announced>
-  <revised>September 02, 2013: 1</revised>
+  <announced>2013-09-02</announced>
+  <revised>2013-09-02: 1</revised>
   <bug>255229</bug>
   <bug>440776</bug>
   <bug>477328</bug>
@@ -46,11 +46,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4524">CVE-2012-4524</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4143">CVE-2013-4143</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4524">CVE-2012-4524</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4143">CVE-2013-4143</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 22:04:18 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Sep 2013 09:00:54 +0000">
+  <metadata tag="requester" timestamp="2012-12-16T22:04:18Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-09-02T09:00:54Z">
     pinkbyte
   </metadata>
 </glsa>

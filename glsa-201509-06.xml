@@ -6,8 +6,8 @@
     in a case-insensitive or case-normalizing filesystem.
   </synopsis>
   <product type="ebuild">git</product>
-  <announced>September 24, 2015</announced>
-  <revised>September 24, 2015: 1</revised>
+  <announced>2015-09-24</announced>
+  <revised>2015-09-24: 1</revised>
   <bug>532984</bug>
   <access>remote</access>
   <affected>
@@ -63,10 +63,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9390">CVE-2014-9390</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9390">CVE-2014-9390</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 29 Dec 2014 01:59:41 +0000">
+  <metadata tag="requester" timestamp="2014-12-29T01:59:41Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 17:01:53 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-09-24T17:01:53Z">mrueg</metadata>
 </glsa>

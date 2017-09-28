@@ -7,8 +7,8 @@
     condition.
   </synopsis>
   <product type="ebuild">virtualbox</product>
-  <announced>January 20, 2014</announced>
-  <revised>January 20, 2014: 1</revised>
+  <announced>2014-01-20</announced>
+  <revised>2014-01-20: 1</revised>
   <bug>434872</bug>
   <bug>498166</bug>
   <access>local</access>
@@ -56,15 +56,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3221">CVE-2012-3221</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5892">CVE-2013-5892</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0404">CVE-2014-0404</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0405">CVE-2014-0405</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0406">CVE-2014-0406</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0407">CVE-2014-0407</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3221">CVE-2012-3221</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5892">CVE-2013-5892</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0404">CVE-2014-0404</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0405">CVE-2014-0405</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0406">CVE-2014-0406</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0407">CVE-2014-0407</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 20 Sep 2012 23:38:57 +0000">
+  <metadata tag="requester" timestamp="2012-09-20T23:38:57Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 08:52:54 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-01-20T08:52:54Z">ackle</metadata>
 </glsa>

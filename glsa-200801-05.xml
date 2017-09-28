@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-05">
   <title>Squid: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been reported in Squid.
   </synopsis>
   <product type="ebuild">squid</product>
-  <announced>January 09, 2008</announced>
-  <revised>January 09, 2008: 01</revised>
+  <announced>2008-01-09</announced>
+  <revised>2008-01-09: 01</revised>
   <bug>201209</bug>
   <access>remote</access>
   <affected>
@@ -45,18 +44,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.6.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-2.6.17"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6239">CVE-2007-6239</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6239">CVE-2007-6239</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Jan 2008 21:43:38 +0000">
+  <metadata tag="requester" timestamp="2008-01-05T21:43:38Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 05 Jan 2008 21:44:28 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-05T21:44:28Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Jan 2008 21:35:14 +0000">
+  <metadata tag="submitter" timestamp="2008-01-07T21:35:14Z">
     py2
   </metadata>
 </glsa>

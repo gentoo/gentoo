@@ -6,8 +6,8 @@
     privileges.
   </synopsis>
   <product type="ebuild">ntfs3g</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>550970</bug>
   <access>local</access>
   <affected>
@@ -45,11 +45,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3202">CVE-2015-3202</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3202">CVE-2015-3202</uri>
     <uri link="https://security.gentoo.org/glsa/201603-04">GLSA 201603-04</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Sep 2016 01:46:01 +0000">
+  <metadata tag="requester" timestamp="2016-09-07T01:46:01Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:04:09 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:04:09Z">whissi</metadata>
 </glsa>

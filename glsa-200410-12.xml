@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-12">
   <title>WordPress: HTTP response splitting and XSS vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerabilities.
   </synopsis>
   <product type="ebuild">wordpress</product>
-  <announced>October 14, 2004</announced>
-  <revised>May 22, 2006: 04</revised>
+  <announced>2004-10-14</announced>
+  <revised>2006-05-22: 04</revised>
   <bug>65798</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-1.2.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/wordpress-1.2.2"</code>
   </resolution>
   <references>
-    <uri link="http://wordpress.org/development/2004/12/one-point-two-two/">WordPress 1.2.2 Release Notes</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1584">CVE-2004-1584</uri>
+    <uri link="https://wordpress.org/development/2004/12/one-point-two-two/">WordPress 1.2.2 Release Notes</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1584">CVE-2004-1584</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 12 Oct 2004 11:43:21 +0000">
+  <metadata tag="requester" timestamp="2004-10-12T11:43:21Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 12 Oct 2004 11:44:27 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-12T11:44:27Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 12 Oct 2004 21:40:26 +0000">
+  <metadata tag="submitter" timestamp="2004-10-12T21:40:26Z">
     lewk
   </metadata>
 </glsa>

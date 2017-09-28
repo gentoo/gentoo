@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-40">
   <title>ngIRCd: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     daemon and possibly execute arbitrary code.
   </synopsis>
   <product type="ebuild">ngIRCd</product>
-  <announced>January 28, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-01-28</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>79705</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/ngIRCd-0.8.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/ngIRCd-0.8.2"</code>
   </resolution>
   <references>
     <uri link="http://arthur.ath.cx/pipermail/ngircd-ml/2005-January/000228.html">ngIRCd Release Annoucement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0199">CVE-2005-0199</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0199">CVE-2005-0199</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 27 Jan 2005 15:18:35 +0000">
+  <metadata tag="requester" timestamp="2005-01-27T15:18:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Jan 2005 16:04:52 +0000">
+  <metadata tag="submitter" timestamp="2005-01-27T16:04:52Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 27 Jan 2005 16:45:18 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-27T16:45:18Z">
     koon
   </metadata>
 </glsa>

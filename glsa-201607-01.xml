@@ -6,9 +6,9 @@
     which could lead to arbitrary code execution, or cause a Denial of Service
     condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 09, 2016</announced>
-  <revised>July 09, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-09</announced>
+  <revised>2016-07-09: 1</revised>
   <bug>536276</bug>
   <bug>575542</bug>
   <bug>578970</bug>
@@ -50,29 +50,29 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6270">CVE-2014-6270</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6270">CVE-2014-6270</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2569">CVE-2016-2569</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2569">CVE-2016-2569</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2570">CVE-2016-2570</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2570">CVE-2016-2570</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2571">CVE-2016-2571</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2571">CVE-2016-2571</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2572">CVE-2016-2572</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2572">CVE-2016-2572</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3947">CVE-2016-3947</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3948">CVE-2016-3948</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4051">CVE-2016-4051</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4052">CVE-2016-4052</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4053">CVE-2016-4053</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4054">CVE-2016-4054</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4553">CVE-2016-4553</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4554">CVE-2016-4554</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4555">CVE-2016-4555</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4556">CVE-2016-4556</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6270">CVE-2014-6270</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6270">CVE-2014-6270</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2569">CVE-2016-2569</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2569">CVE-2016-2569</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2570">CVE-2016-2570</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2570">CVE-2016-2570</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2571">CVE-2016-2571</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2571">CVE-2016-2571</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2572">CVE-2016-2572</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2572">CVE-2016-2572</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3947">CVE-2016-3947</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3948">CVE-2016-3948</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4051">CVE-2016-4051</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4052">CVE-2016-4052</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4053">CVE-2016-4053</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4054">CVE-2016-4054</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4553">CVE-2016-4553</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4554">CVE-2016-4554</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4555">CVE-2016-4555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4556">CVE-2016-4556</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 05 Apr 2016 04:00:07 +0000">
+  <metadata tag="requester" timestamp="2016-04-05T04:00:07Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 09 Jul 2016 01:46:31 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-09T01:46:31Z">b-man</metadata>
 </glsa>

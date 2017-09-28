@@ -6,8 +6,8 @@
     specified. 
   </synopsis>
   <product type="ebuild">tnftp</product>
-  <announced>November 15, 2016</announced>
-  <revised>November 15, 2016: 1</revised>
+  <announced>2016-11-15</announced>
+  <revised>2016-11-15: 1</revised>
   <bug>527302</bug>
   <access>remote</access>
   <affected>
@@ -41,10 +41,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8517">CVE-2014-8517</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8517">CVE-2014-8517</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 21 Dec 2015 19:31:36 +0000">
+  <metadata tag="requester" timestamp="2015-12-21T19:31:36Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 06:40:01 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-15T06:40:01Z">b-man</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-12">
   <title>Poppler: Two buffer overflow vulnerabilities</title>
   <synopsis>
     Poppler is vulnerable to an integer overflow and a stack overflow.
   </synopsis>
   <product type="ebuild">poppler</product>
-  <announced>September 19, 2007</announced>
-  <revised>September 19, 2007: 01</revised>
+  <announced>2007-09-19</announced>
+  <revised>2007-09-19: 01</revised>
   <bug>188863</bug>
   <access>remote</access>
   <affected>
@@ -53,18 +52,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.5.4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.5.4-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387">CVE-2007-3387</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Aug 2007 12:44:56 +0000">
+  <metadata tag="requester" timestamp="2007-08-29T12:44:56Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 29 Aug 2007 12:45:03 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-29T12:45:03Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 01 Sep 2007 13:10:32 +0000">
+  <metadata tag="submitter" timestamp="2007-09-01T13:10:32Z">
     aetius
   </metadata>
 </glsa>

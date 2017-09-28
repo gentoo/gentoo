@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200612-21">
   <title>Ruby: Denial of Service vulnerability</title>
   <synopsis>
     The Ruby cgi.rb CGI library is vulnerable to a Denial of Service attack.
   </synopsis>
   <product type="ebuild">ruby</product>
-  <announced>December 20, 2006</announced>
-  <revised>December 20, 2006: 01</revised>
+  <announced>2006-12-20</announced>
+  <revised>2006-12-20: 01</revised>
   <bug>157048</bug>
   <access>remote</access>
   <affected>
@@ -49,15 +48,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.5_p2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.8.5_p2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6303">CVE-2006-6303</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6303">CVE-2006-6303</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 19 Dec 2006 16:20:14 +0000">
+  <metadata tag="submitter" timestamp="2006-12-19T16:20:14Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 19 Dec 2006 16:20:29 +0000">
+  <metadata tag="bugReady" timestamp="2006-12-19T16:20:29Z">
     falco
   </metadata>
 </glsa>

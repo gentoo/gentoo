@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">pcsc-lite</product>
-  <announced>January 21, 2014</announced>
-  <revised>January 21, 2014: 1</revised>
+  <announced>2014-01-21</announced>
+  <revised>2014-01-21: 1</revised>
   <bug>349561</bug>
   <access>local</access>
   <affected>
@@ -48,10 +48,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4531">CVE-2010-4531</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4531">CVE-2010-4531</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:57 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:57Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 17:31:07 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-21T17:31:07Z">Zlogene</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     of which allows local users to escalate privileges.
   </synopsis>
   <product type="ebuild">virtualbox</product>
-  <announced>December 11, 2016</announced>
-  <revised>December 11, 2016: 2</revised>
+  <announced>2016-12-11</announced>
+  <revised>2016-12-11: 2</revised>
   <bug>505274</bug>
   <bug>537218</bug>
   <bug>550964</bug>
@@ -55,21 +55,21 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0981">CVE-2014-0981</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0983">CVE-2014-0983</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6588">CVE-2014-6588</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6589">CVE-2014-6589</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6590">CVE-2014-6590</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6595">CVE-2014-6595</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0377">CVE-2015-0377</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0418">CVE-2015-0418</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0427">CVE-2015-0427</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3456">CVE-2015-3456</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5608">CVE-2016-5608</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5610">CVE-2016-5610</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5611">CVE-2016-5611</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5613">CVE-2016-5613</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0981">CVE-2014-0981</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0983">CVE-2014-0983</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6588">CVE-2014-6588</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6589">CVE-2014-6589</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6590">CVE-2014-6590</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6595">CVE-2014-6595</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0377">CVE-2015-0377</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0418">CVE-2015-0418</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0427">CVE-2015-0427</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3456">CVE-2015-3456</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5608">CVE-2016-5608</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5610">CVE-2016-5610</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5611">CVE-2016-5611</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5613">CVE-2016-5613</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 00:13:06 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:42:01 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-23T00:13:06Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-11T23:42:01Z">b-man</metadata>
 </glsa>

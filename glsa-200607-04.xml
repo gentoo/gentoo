@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200607-04">
   <title>PostgreSQL: SQL injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     SQL statements.
   </synopsis>
   <product type="ebuild">postgresql</product>
-  <announced>July 09, 2006</announced>
-  <revised>June 26, 2007: 03</revised>
+  <announced>2006-07-09</announced>
+  <revised>2007-06-26: 03</revised>
   <bug>134168</bug>
   <access>remote</access>
   <affected>
@@ -61,17 +60,17 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://www.postgresql.org/docs/techdocs.50">PostgreSQL technical information</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2313">CVE-2006-2313</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2314">CVE-2006-2314</uri>
+    <uri link="https://www.postgresql.org/docs/techdocs.50">PostgreSQL technical information</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2313">CVE-2006-2313</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2314">CVE-2006-2314</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:08:33 +0000">
+  <metadata tag="requester" timestamp="2006-06-01T07:08:33Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 19:43:38 +0000">
+  <metadata tag="submitter" timestamp="2006-06-07T19:43:38Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 09 Jul 2006 16:30:11 +0000">
+  <metadata tag="bugReady" timestamp="2006-07-09T16:30:11Z">
     jaervosz
   </metadata>
 </glsa>

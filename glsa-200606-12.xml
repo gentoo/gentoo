@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-12">
   <title>Mozilla Firefox: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     possibly the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mozilla-firefox</product>
-  <announced>June 11, 2006</announced>
-  <revised>June 11, 2006: 01</revised>
+  <announced>2006-06-11</announced>
+  <revised>2006-06-11: 01</revised>
   <bug>135254</bug>
   <access>remote</access>
   <affected>
@@ -55,14 +54,14 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.5.0.4"</code>
     <p>
     All Mozilla Firefox binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.5.0.4"</code>
     <p>
     Note: There is no stable fixed version for the Alpha
     architecture yet. Users of Mozilla Firefox on Alpha should consider
@@ -70,24 +69,24 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2775">CVE-2006-2775</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2776">CVE-2006-2776</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2777">CVE-2006-2777</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2778">CVE-2006-2778</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2779">CVE-2006-2779</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2780">CVE-2006-2780</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2782">CVE-2006-2782</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2783">CVE-2006-2783</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2784">CVE-2006-2784</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2785">CVE-2006-2785</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2786">CVE-2006-2786</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2787">CVE-2006-2787</uri>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Firefox">Mozilla Foundation Security Advisories</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2775">CVE-2006-2775</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2776">CVE-2006-2776</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2777">CVE-2006-2777</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2778">CVE-2006-2778</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2779">CVE-2006-2779</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2780">CVE-2006-2780</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2782">CVE-2006-2782</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2783">CVE-2006-2783</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2784">CVE-2006-2784</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2785">CVE-2006-2785</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2786">CVE-2006-2786</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2787">CVE-2006-2787</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#Firefox">Mozilla Foundation Security Advisories</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 17:33:16 +0000">
+  <metadata tag="submitter" timestamp="2006-06-07T17:33:16Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 08 Jun 2006 10:36:32 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-08T10:36:32Z">
     falco
   </metadata>
 </glsa>

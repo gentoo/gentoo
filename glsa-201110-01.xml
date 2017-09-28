@@ -6,8 +6,8 @@
     execution of arbitrary code and other attacks.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>October 09, 2011</announced>
-  <revised>June 06, 2015: 13</revised>
+  <announced>2011-10-09</announced>
+  <revised>2015-06-06: 13</revised>
   <bug>303739</bug>
   <bug>308011</bug>
   <bug>322575</bug>
@@ -82,22 +82,22 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3245">CVE-2009-3245</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4355">CVE-2009-4355</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0433">CVE-2010-0433</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0740">CVE-2010-0740</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0742">CVE-2010-0742</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1633">CVE-2010-1633</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2939">CVE-2010-2939</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3864">CVE-2010-3864</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4180">CVE-2010-4180</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4252">CVE-2010-4252</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0014">CVE-2011-0014</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3207">CVE-2011-3207</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3210">CVE-2011-3210</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3245">CVE-2009-3245</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4355">CVE-2009-4355</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0433">CVE-2010-0433</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0740">CVE-2010-0740</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0742">CVE-2010-0742</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1633">CVE-2010-1633</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2939">CVE-2010-2939</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3864">CVE-2010-3864</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4180">CVE-2010-4180</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4252">CVE-2010-4252</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0014">CVE-2011-0014</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3207">CVE-2011-3207</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3210">CVE-2011-3210</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:03 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:06:31 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:03Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2015-06-06T23:06:31Z">
     keytoaster
   </metadata>
 </glsa>

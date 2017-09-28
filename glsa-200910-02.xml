@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200910-02">
   <title>Pidgin: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">pidgin</product>
-  <announced>October 22, 2009</announced>
-  <revised>October 22, 2009: 01</revised>
+  <announced>2009-10-22</announced>
+  <revised>2009-10-22: 01</revised>
   <bug>276000</bug>
   <bug>281545</bug>
   <bug>283324</bug>
@@ -69,22 +68,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/pidgin-2.5.9-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/pidgin-2.5.9-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1376">CVE-2009-1376</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1889">CVE-2009-1889</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2694">CVE-2009-2694</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3026">CVE-2009-3026</uri>
-    <uri link="/security/en/glsa/glsa-200905-07.xml">GLSA 200905-07</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1376">CVE-2009-1376</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1889">CVE-2009-1889</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2694">CVE-2009-2694</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3026">CVE-2009-3026</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200905-07.xml">GLSA 200905-07</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 31 Aug 2009 02:16:12 +0000">
+  <metadata tag="requester" timestamp="2009-08-31T02:16:12Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 31 Aug 2009 07:10:07 +0000">
+  <metadata tag="submitter" timestamp="2009-08-31T07:10:07Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 22 Oct 2009 19:06:35 +0000">
+  <metadata tag="bugReady" timestamp="2009-10-22T19:06:35Z">
     keytoaster
   </metadata>
 </glsa>

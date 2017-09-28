@@ -6,8 +6,8 @@
     execution, and privilege escalation.
   </synopsis>
   <product type="ebuild">festival</product>
-  <announced>December 09, 2013</announced>
-  <revised>December 09, 2013: 1</revised>
+  <announced>2013-12-09</announced>
+  <revised>2013-12-09: 1</revised>
   <bug>386319</bug>
   <access>remote</access>
   <affected>
@@ -45,10 +45,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3996">CVE-2010-3996</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3996">CVE-2010-3996</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Dec 2012 22:54:17 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Dec 2013 05:41:22 +0000">
+  <metadata tag="requester" timestamp="2012-12-04T22:54:17Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-12-09T05:41:22Z">
     BlueKnight
   </metadata>
 </glsa>

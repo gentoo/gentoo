@@ -7,8 +7,8 @@
     restrictions, cause a Denial of Service or execute arbitrary code. 
   </synopsis>
   <product type="ebuild">samba</product>
-  <announced>February 25, 2015</announced>
-  <revised>February 25, 2015: 1</revised>
+  <announced>2015-02-25</announced>
+  <revised>2015-02-25: 1</revised>
   <bug>479868</bug>
   <bug>491070</bug>
   <bug>493664</bug>
@@ -49,20 +49,20 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6150">CVE-2012-6150</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4124">CVE-2013-4124</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4408">CVE-2013-4408</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4475">CVE-2013-4475</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4476">CVE-2013-4476</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4496">CVE-2013-4496</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0178">CVE-2014-0178</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0239">CVE-2014-0239</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0244">CVE-2014-0244</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3493">CVE-2014-3493</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0240">CVE-2015-0240</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6150">CVE-2012-6150</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4124">CVE-2013-4124</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4408">CVE-2013-4408</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4475">CVE-2013-4475</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4476">CVE-2013-4476</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4496">CVE-2013-4496</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0178">CVE-2014-0178</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0239">CVE-2014-0239</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0244">CVE-2014-0244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3493">CVE-2014-3493</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0240">CVE-2015-0240</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 21 May 2014 04:10:53 +0000">
+  <metadata tag="requester" timestamp="2014-05-21T04:10:53Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Feb 2015 22:04:57 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-02-25T22:04:57Z">K_F</metadata>
 </glsa>

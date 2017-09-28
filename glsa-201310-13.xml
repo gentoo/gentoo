@@ -6,8 +6,8 @@
     FFmpeg, the worst of which may lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">MPlayer</product>
-  <announced>October 25, 2013</announced>
-  <revised>October 25, 2013: 1</revised>
+  <announced>2013-10-25</announced>
+  <revised>2013-10-25: 1</revised>
   <bug>253649</bug>
   <bug>279342</bug>
   <bug>339037</bug>
@@ -48,17 +48,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6718">CVE-2007-6718</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4610">CVE-2008-4610</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2062">CVE-2010-2062</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3429">CVE-2010-3429</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3625">CVE-2011-3625</uri>
-    <uri link="http://security.gentoo.org/glsa/glsa-201310-12.xml">FFmpeg:
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6718">CVE-2007-6718</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4610">CVE-2008-4610</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2062">CVE-2010-2062</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3429">CVE-2010-3429</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3625">CVE-2011-3625</uri>
+    <uri link="https://security.gentoo.org/glsa/glsa-201310-12.xml">FFmpeg:
       Multiple Vulnerabilities
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:04 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Fri, 25 Oct 2013 18:54:56 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:04Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2013-10-25T18:54:56Z">
     underling
   </metadata>
 </glsa>

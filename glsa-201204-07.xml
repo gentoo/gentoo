@@ -6,8 +6,8 @@
     might allow remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">Adobe Flash Player</product>
-  <announced>April 17, 2012</announced>
-  <revised>April 17, 2012: 1</revised>
+  <announced>2012-04-17</announced>
+  <revised>2012-04-17: 1</revised>
   <bug>390149</bug>
   <bug>404101</bug>
   <bug>407023</bug>
@@ -51,28 +51,28 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2445">CVE-2011-2445</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2450">CVE-2011-2450</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2451">CVE-2011-2451</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2452">CVE-2011-2452</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2453">CVE-2011-2453</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2454">CVE-2011-2454</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2455">CVE-2011-2455</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2456">CVE-2011-2456</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2457">CVE-2011-2457</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2458">CVE-2011-2458</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2459">CVE-2011-2459</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2460">CVE-2011-2460</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0752">CVE-2012-0752</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0753">CVE-2012-0753</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0754">CVE-2012-0754</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0755">CVE-2012-0755</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0756">CVE-2012-0756</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0767">CVE-2012-0767</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0768">CVE-2012-0768</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0769">CVE-2012-0769</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0773">CVE-2012-0773</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2445">CVE-2011-2445</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2450">CVE-2011-2450</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2451">CVE-2011-2451</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2452">CVE-2011-2452</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2453">CVE-2011-2453</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2454">CVE-2011-2454</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2455">CVE-2011-2455</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2456">CVE-2011-2456</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2457">CVE-2011-2457</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2458">CVE-2011-2458</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2459">CVE-2011-2459</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2460">CVE-2011-2460</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0752">CVE-2012-0752</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0753">CVE-2012-0753</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0754">CVE-2012-0754</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0755">CVE-2012-0755</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0756">CVE-2012-0756</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0767">CVE-2012-0767</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0768">CVE-2012-0768</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0769">CVE-2012-0769</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0773">CVE-2012-0773</uri>
   </references>
-  <metadata timestamp="Fri, 02 Dec 2011 19:37:21 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Tue, 17 Apr 2012 22:44:16 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-12-02T19:37:21Z" tag="requester">ago</metadata>
+  <metadata timestamp="2012-04-17T22:44:16Z" tag="submitter">ackle</metadata>
 </glsa>

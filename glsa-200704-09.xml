@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-09">
   <title>xine-lib: Heap-based buffer overflow</title>
   <synopsis>
     xine-lib is vulnerable to a heap-based buffer overflow.
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>April 14, 2007</announced>
-  <revised>April 14, 2007: 01</revised>
+  <announced>2007-04-14</announced>
+  <revised>2007-04-14: 01</revised>
   <bug>170208</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.4-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1246">CVE-2007-1246</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1246">CVE-2007-1246</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 22 Mar 2007 17:27:51 +0000">
+  <metadata tag="requester" timestamp="2007-03-22T17:27:51Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 15:54:20 +0000">
+  <metadata tag="submitter" timestamp="2007-04-02T15:54:20Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:28:59 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-03T22:28:59Z">
     falco
   </metadata>
 </glsa>

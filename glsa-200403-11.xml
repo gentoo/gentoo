@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-11">
   <title>Squid ACL [url_regex] bypass vulnerability</title>
   <synopsis>
@@ -11,8 +10,8 @@
     ACL.
   </synopsis>
   <product type="ebuild">Squid</product>
-  <announced>March 30, 2004</announced>
-  <revised>September 02, 2004: 02</revised>
+  <announced>2004-03-30</announced>
+  <revised>2004-09-02: 02</revised>
   <bug>45273</bug>
   <access>remote</access>
   <affected>
@@ -32,13 +31,13 @@
   <description>
     <p>
     A bug in Squid allows users to bypass certain access controls by passing a
-    URL containing &quot;%00&quot; which exploits the Squid decoding function.
+    URL containing "%00" which exploits the Squid decoding function.
     This may insert a NUL character into decoded URLs, which may allow users to
     bypass url_regex access control lists that are enforced upon them.
     </p>
     <p>
     In such a scenario, Squid will insert a NUL character after
-    the&quot;%00&quot; and it will make a comparison between the URL to the end
+    the"%00" and it will make a comparison between the URL to the end
     of the NUL character rather than the contents after it: the comparison does
     not result in a match, and the user's request is not denied.
     </p>
@@ -65,14 +64,14 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-proxy/squid-2.5.5"
-    # emerge ">=net-proxy/squid-2.5.5"</code>
+    # emerge -pv "&gt;=net-proxy/squid-2.5.5"
+    # emerge "&gt;=net-proxy/squid-2.5.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0189">CAN-2004-0189</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0189">CAN-2004-0189</uri>
     <uri link="http://www.squid-cache.org/Advisories/SQUID-2004_1.txt">Squid 2.5.STABLE5 Release Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu,  2 Sep 2004 21:11:59 +0000">
+  <metadata tag="submitter" timestamp="2004-09-02T21:11:59Z">
     vorlon078
   </metadata>
 </glsa>

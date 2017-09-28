@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-06">
   <title>LessTif: Multiple vulnerabilities in libXpm</title>
   <synopsis>
@@ -8,8 +7,8 @@
     in LessTif, that can potentially lead to remote code execution.
   </synopsis>
   <product type="ebuild">lesstif</product>
-  <announced>February 06, 2005</announced>
-  <revised>February 06, 2005: 01</revised>
+  <announced>2005-02-06</announced>
+  <revised>2005-02-06: 01</revised>
   <bug>78483</bug>
   <access>remote</access>
   <affected>
@@ -50,16 +49,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/lesstif-0.94.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/lesstif-0.94.0"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
     <uri link="http://www.lesstif.org/ReleaseNotes.html">LessTif Release Notes</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed,  2 Feb 2005 16:13:30 +0000">
+  <metadata tag="submitter" timestamp="2005-02-02T16:13:30Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  6 Feb 2005 17:18:21 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-06T17:18:21Z">
     koon
   </metadata>
 </glsa>

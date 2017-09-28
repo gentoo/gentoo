@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-05">
   <title>Xmail: Privilege escalation through sendmail</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially resulting in local privilege escalation.
   </synopsis>
   <product type="ebuild">xmail</product>
-  <announced>December 14, 2005</announced>
-  <revised>December 14, 2005: 01</revised>
+  <announced>2005-12-14</announced>
+  <revised>2005-12-14: 01</revised>
   <bug>109381</bug>
   <access>local</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/xmail-1.22&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/xmail-1.22"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2943">CVE-2005-2943</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2943">CVE-2005-2943</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=321&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Security Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Dec 2005 18:01:24 +0000">
+  <metadata tag="requester" timestamp="2005-12-11T18:01:24Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Dec 2005 15:24:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-12T15:24:20Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2005 08:46:36 +0000">
+  <metadata tag="submitter" timestamp="2005-12-13T08:46:36Z">
     adir
   </metadata>
 </glsa>

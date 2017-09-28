@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-22">
   <title>SELinux PAM: Local password guessing attack</title>
   <synopsis>
@@ -8,8 +7,8 @@
     brute-force system passwords.
   </synopsis>
   <product type="ebuild">PAM</product>
-  <announced>October 28, 2005</announced>
-  <revised>October 28, 2005: 01</revised>
+  <announced>2005-10-28</announced>
+  <revised>2005-10-28: 01</revised>
   <bug>109485</bug>
   <access>local</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/pam-0.78-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-libs/pam-0.78-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2977">CVE-2005-2977</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2977">CVE-2005-2977</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Oct 2005 15:44:45 +0000">
+  <metadata tag="requester" timestamp="2005-10-26T15:44:45Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 27 Oct 2005 07:49:03 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-27T07:49:03Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Oct 2005 12:12:27 +0000">
+  <metadata tag="submitter" timestamp="2005-10-27T12:12:27Z">
     koon
   </metadata>
 </glsa>

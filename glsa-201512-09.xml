@@ -7,8 +7,8 @@
     Denial of Service condition.
   </synopsis>
   <product type="ebuild">encfs</product>
-  <announced>December 30, 2015</announced>
-  <revised>December 30, 2015: 1</revised>
+  <announced>2015-12-30</announced>
+  <revised>2015-12-30: 1</revised>
   <bug>510290</bug>
   <access>local</access>
   <affected>
@@ -47,8 +47,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3462">CVE-2014-3462</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3462">CVE-2014-3462</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:35:36 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 14:32:13 +0000">mrueg</metadata>
+  <metadata tag="requester" timestamp="2015-05-11T16:35:36Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-12-30T14:32:13Z">mrueg</metadata>
 </glsa>

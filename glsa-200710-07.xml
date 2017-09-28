@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-07">
   <title>Tk: Buffer overflow</title>
   <synopsis>
     A buffer overflow vulnerability has been discovered in Tk.
   </synopsis>
   <product type="ebuild">tk</product>
-  <announced>October 07, 2007</announced>
-  <revised>October 07, 2007: 01</revised>
+  <announced>2007-10-07</announced>
+  <revised>2007-10-07: 01</revised>
   <bug>192539</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/tk-8.4.15-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/tk-8.4.15-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4851">CVE-2007-4851</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4851">CVE-2007-4851</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 25 Sep 2007 09:49:33 +0000">
+  <metadata tag="requester" timestamp="2007-09-25T09:49:33Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 25 Sep 2007 09:49:45 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-25T09:49:45Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 20:07:14 +0000">
+  <metadata tag="submitter" timestamp="2007-10-02T20:07:14Z">
     p-y
   </metadata>
 </glsa>

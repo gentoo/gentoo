@@ -6,8 +6,8 @@
     which could lead to Denial of Service.
   </synopsis>
   <product type="ebuild">mediawiki</product>
-  <announced>October 28, 2013</announced>
-  <revised>October 28, 2013: 1</revised>
+  <announced>2013-10-28</announced>
+  <revised>2013-10-28: 1</revised>
   <bug>460352</bug>
   <bug>466124</bug>
   <bug>468110</bug>
@@ -62,24 +62,24 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1816">CVE-2013-1816</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1817">CVE-2013-1817</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1818">CVE-2013-1818</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1951">CVE-2013-1951</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2031">CVE-2013-2031</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2032">CVE-2013-2032</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2114">CVE-2013-2114</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4301">CVE-2013-4301</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4302">CVE-2013-4302</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4303">CVE-2013-4303</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4304">CVE-2013-4304</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4305">CVE-2013-4305</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4306">CVE-2013-4306</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4307">CVE-2013-4307</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4308">CVE-2013-4308</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1816">CVE-2013-1816</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1817">CVE-2013-1817</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1818">CVE-2013-1818</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1951">CVE-2013-1951</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2031">CVE-2013-2031</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2032">CVE-2013-2032</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2114">CVE-2013-2114</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4301">CVE-2013-4301</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4302">CVE-2013-4302</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4303">CVE-2013-4303</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4304">CVE-2013-4304</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4305">CVE-2013-4305</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4306">CVE-2013-4306</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4307">CVE-2013-4307</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4308">CVE-2013-4308</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 24 Mar 2013 19:36:35 +0000">
+  <metadata tag="requester" timestamp="2013-03-24T19:36:35Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Oct 2013 16:56:03 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-28T16:56:03Z">ackle</metadata>
 </glsa>

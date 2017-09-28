@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in libssh and libssh2, the
     worst of which allows remote attackers to cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 26, 2016</announced>
-  <revised>June 26, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-26</announced>
+  <revised>2016-06-26: 1</revised>
   <bug>533366</bug>
   <bug>575474</bug>
   <bug>575484</bug>
@@ -67,12 +67,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8132">CVE-2014-8132</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0739">CVE-2016-0739</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0787">CVE-2016-0787</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8132">CVE-2014-8132</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0739">CVE-2016-0739</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0787">CVE-2016-0787</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 30 Jun 2015 22:23:55 +0000">
+  <metadata tag="requester" timestamp="2015-06-30T22:23:55Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 12:56:59 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-26T12:56:59Z">b-man</metadata>
 </glsa>

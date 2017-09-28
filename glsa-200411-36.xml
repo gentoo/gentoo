@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-36">
   <title>phpMyAdmin: Multiple XSS vulnerabilities</title>
   <synopsis>
     phpMyAdmin is vulnerable to cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>November 27, 2004</announced>
-  <revised>November 27, 2004: 01</revised>
+  <announced>2004-11-27</announced>
+  <revised>2004-11-27: 01</revised>
   <bug>71819</bug>
   <access>remote</access>
   <affected>
@@ -50,20 +49,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.0_p3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.0_p3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1055">CAN-2004-1055</uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2004-3">PMASA-2004-3</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1055">CAN-2004-1055</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2004-3">PMASA-2004-3</uri>
     <uri link="http://www.netvigilance.com/html/advisory0005.htm">netVigilance Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Nov 2004 09:03:21 +0000">
+  <metadata tag="requester" timestamp="2004-11-24T09:03:21Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 26 Nov 2004 10:27:24 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-26T10:27:24Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Nov 2004 19:21:36 +0000">
+  <metadata tag="submitter" timestamp="2004-11-26T19:21:36Z">
     lewk
   </metadata>
 </glsa>

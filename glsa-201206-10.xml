@@ -6,8 +6,8 @@
     which allowing for remote Denial of Service.
   </synopsis>
   <product type="ebuild">ejabberd</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>308047</bug>
   <bug>370201</bug>
   <bug>386075</bug>
@@ -44,12 +44,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0305">CVE-2010-0305</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1753">CVE-2011-1753</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4320">CVE-2011-4320</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0305">CVE-2010-0305</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1753">CVE-2011-1753</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4320">CVE-2011-4320</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:20 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:20Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 18:14:54 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2012-06-21T18:14:54Z" tag="submitter">craig</metadata>
 </glsa>

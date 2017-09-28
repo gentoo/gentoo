@@ -6,8 +6,8 @@
     could lead to user-assisted execution of arbitrary code.
   </synopsis>
   <product type="ebuild">VLC</product>
-  <announced>November 05, 2014</announced>
-  <revised>November 05, 2014: 1</revised>
+  <announced>2014-11-05</announced>
+  <revised>2014-11-05: 1</revised>
   <bug>279340</bug>
   <bug>285370</bug>
   <bug>316709</bug>
@@ -66,42 +66,42 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1441">CVE-2010-1441</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1442">CVE-2010-1442</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1443">CVE-2010-1443</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1444">CVE-2010-1444</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1445">CVE-2010-1445</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2062">CVE-2010-2062</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2937">CVE-2010-2937</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3124">CVE-2010-3124</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3275">CVE-2010-3275</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3276">CVE-2010-3276</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3907">CVE-2010-3907</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0021">CVE-2011-0021</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0522">CVE-2011-0522</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0531">CVE-2011-0531</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1087">CVE-2011-1087</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1684">CVE-2011-1684</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2194">CVE-2011-2194</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2587">CVE-2011-2587</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2588">CVE-2011-2588</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3623">CVE-2011-3623</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0023">CVE-2012-0023</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1775">CVE-2012-1775</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1776">CVE-2012-1776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2396">CVE-2012-2396</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3377">CVE-2012-3377</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5470">CVE-2012-5470</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5855">CVE-2012-5855</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1868">CVE-2013-1868</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1954">CVE-2013-1954</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3245">CVE-2013-3245</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4388">CVE-2013-4388</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6283">CVE-2013-6283</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6934">CVE-2013-6934</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1441">CVE-2010-1441</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1442">CVE-2010-1442</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1443">CVE-2010-1443</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1444">CVE-2010-1444</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1445">CVE-2010-1445</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2062">CVE-2010-2062</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2937">CVE-2010-2937</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3124">CVE-2010-3124</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3275">CVE-2010-3275</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3276">CVE-2010-3276</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3907">CVE-2010-3907</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0021">CVE-2011-0021</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0522">CVE-2011-0522</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0531">CVE-2011-0531</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1087">CVE-2011-1087</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1684">CVE-2011-1684</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2194">CVE-2011-2194</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2587">CVE-2011-2587</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2588">CVE-2011-2588</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3623">CVE-2011-3623</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0023">CVE-2012-0023</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1775">CVE-2012-1775</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1776">CVE-2012-1776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2396">CVE-2012-2396</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3377">CVE-2012-3377</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5470">CVE-2012-5470</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5855">CVE-2012-5855</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1868">CVE-2013-1868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1954">CVE-2013-1954</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3245">CVE-2013-3245</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4388">CVE-2013-4388</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6283">CVE-2013-6283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6934">CVE-2013-6934</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:33 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Wed, 05 Nov 2014 21:31:51 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:33Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2014-11-05T21:31:51Z">
     underling
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-34">
   <title>Konversation: Various vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     command execution or information leaks.
   </synopsis>
   <product type="ebuild">konversation</product>
-  <announced>January 24, 2005</announced>
-  <revised>January 24, 2005: 01</revised>
+  <announced>2005-01-24</announced>
+  <revised>2005-01-24: 01</revised>
   <bug>78712</bug>
   <access>remote</access>
   <affected>
@@ -59,21 +58,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/konversation-0.15.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/konversation-0.15.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0129">CAN-2005-0129</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0130">CAN-2005-0130</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0131">CAN-2005-0131</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20050121-1.txt">KDE Security Advisory: Multiple vulnerabilities in Konversation</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0129">CAN-2005-0129</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0130">CAN-2005-0130</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0131">CAN-2005-0131</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20050121-1.txt">KDE Security Advisory: Multiple vulnerabilities in Konversation</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 21 Jan 2005 19:25:33 +0000">
+  <metadata tag="requester" timestamp="2005-01-21T19:25:33Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 21 Jan 2005 21:24:15 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-21T21:24:15Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 22 Jan 2005 00:39:45 +0000">
+  <metadata tag="submitter" timestamp="2005-01-22T00:39:45Z">
     lewk
   </metadata>
 </glsa>

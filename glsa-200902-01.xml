@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200902-01">
   <title>sudo: Privilege escalation</title>
   <synopsis>
     A vulnerability in sudo may allow for privilege escalation.
   </synopsis>
   <product type="ebuild">sudo</product>
-  <announced>February 06, 2009</announced>
-  <revised>February 06, 2009: 01</revised>
+  <announced>2009-02-06</announced>
+  <revised>2009-02-06: 01</revised>
   <bug>256633</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/sudo-1.7.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.7.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0034">CVE-2009-0034</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0034">CVE-2009-0034</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Feb 2009 22:59:48 +0000">
+  <metadata tag="requester" timestamp="2009-02-02T22:59:48Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Feb 2009 23:20:12 +0000">
+  <metadata tag="submitter" timestamp="2009-02-02T23:20:12Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 Feb 2009 22:19:55 +0000">
+  <metadata tag="bugReady" timestamp="2009-02-06T22:19:55Z">
     keytoaster
   </metadata>
 </glsa>

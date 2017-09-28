@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-18">
   <title>Netpbm: Buffer overflow in pnmtopng</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which can potentially result in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Netpbm</product>
-  <announced>October 20, 2005</announced>
-  <revised>May 28, 2009: 06</revised>
+  <announced>2005-10-20</announced>
+  <revised>2009-05-28: 06</revised>
   <bug>109705</bug>
   <access>remote</access>
   <affected>
@@ -62,12 +61,12 @@
     # emerge --ask --oneshot --verbose media-libs/netpbm</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2978">CAN-2005-2978</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2978">CAN-2005-2978</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 15 Oct 2005 09:38:18 +0000">
+  <metadata tag="submitter" timestamp="2005-10-15T09:38:18Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Oct 2005 07:38:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-20T07:38:22Z">
     koon
   </metadata>
 </glsa>

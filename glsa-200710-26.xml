@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-26">
   <title>HPLIP: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     with root privileges.
   </synopsis>
   <product type="ebuild">hplip</product>
-  <announced>October 24, 2007</announced>
-  <revised>October 24, 2007: 01</revised>
+  <announced>2007-10-24</announced>
+  <revised>2007-10-24: 01</revised>
   <bug>195565</bug>
   <access>local</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;net-print/hplip&quot;</code>
+    # emerge --ask --oneshot --verbose "net-print/hplip"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5208">CVE-2007-5208</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5208">CVE-2007-5208</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Oct 2007 20:50:24 +0000">
+  <metadata tag="requester" timestamp="2007-10-21T20:50:24Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 21 Oct 2007 20:51:40 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-21T20:51:40Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 21 Oct 2007 21:46:02 +0000">
+  <metadata tag="submitter" timestamp="2007-10-21T21:46:02Z">
     rbu
   </metadata>
 </glsa>

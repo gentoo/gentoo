@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-02">
   <title>Netpbm: Multiple temporary file issues</title>
   <synopsis>
@@ -9,8 +8,8 @@
     files with the rights of the user running the utility.
   </synopsis>
   <product type="ebuild">Netpbm</product>
-  <announced>October 04, 2004</announced>
-  <revised>October 04, 2004: 01</revised>
+  <announced>2004-10-04</announced>
+  <revised>2004-10-04: 01</revised>
   <bug>65647</bug>
   <access>local</access>
   <affected>
@@ -53,20 +52,20 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=media-libs/netpbm-10.0"
-    # emerge ">=media-libs/netpbm-10.0"</code>
+    # emerge -pv "&gt;=media-libs/netpbm-10.0"
+    # emerge "&gt;=media-libs/netpbm-10.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0924">CVE-2003-0924</uri>
-    <uri link="http://www.kb.cert.org/vuls/id/487102">US-CERT VU#487102</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0924">CVE-2003-0924</uri>
+    <uri link="https://www.kb.cert.org/vuls/id/487102">US-CERT VU#487102</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat,  2 Oct 2004 00:18:31 +0000">
+  <metadata tag="requester" timestamp="2004-10-02T00:18:31Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  3 Oct 2004 10:07:45 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-03T10:07:45Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun,  3 Oct 2004 13:46:27 +0000">
+  <metadata tag="submitter" timestamp="2004-10-03T13:46:27Z">
     koon
   </metadata>
 </glsa>

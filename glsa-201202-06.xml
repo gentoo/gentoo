@@ -6,8 +6,8 @@
     a Denial of Service condition.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>February 22, 2012</announced>
-  <revised>February 22, 2012: 1</revised>
+  <announced>2012-02-22</announced>
+  <revised>2012-02-22: 1</revised>
   <bug>399507</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0885">CVE-2012-0885</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0885">CVE-2012-0885</uri>
   </references>
-  <metadata timestamp="Fri, 27 Jan 2012 14:53:19 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Wed, 22 Feb 2012 19:58:56 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-27T14:53:19Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-02-22T19:58:56Z" tag="submitter">ackle</metadata>
 </glsa>

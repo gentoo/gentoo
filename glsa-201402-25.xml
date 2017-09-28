@@ -6,8 +6,8 @@
     result in a Denial of Service condition.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>497838</bug>
   <access>remote</access>
   <affected>
@@ -45,12 +45,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4353">CVE-2013-4353</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4353">CVE-2013-4353</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 28 Jan 2014 06:18:59 +0000">
+  <metadata tag="requester" timestamp="2014-01-28T06:18:59Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:36:48 +0000">
+  <metadata tag="submitter" timestamp="2014-02-21T15:36:48Z">
     BlueKnight
   </metadata>
 </glsa>

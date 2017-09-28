@@ -6,8 +6,8 @@
     allowing remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">inspircd</product>
-  <announced>December 30, 2015</announced>
-  <revised>December 30, 2015: 1</revised>
+  <announced>2015-12-30</announced>
+  <revised>2015-12-30: 1</revised>
   <bug>545034</bug>
   <bug>570244</bug>
   <access>remote</access>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6697">CVE-2012-6697</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6674">CVE-2015-6674</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8702">CVE-2015-8702</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6697">CVE-2012-6697</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6674">CVE-2015-6674</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8702">CVE-2015-8702</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 27 Sep 2015 05:28:16 +0000">
+  <metadata tag="requester" timestamp="2015-09-27T05:28:16Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 21:15:00 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-12-30T21:15:00Z">mrueg</metadata>
 </glsa>

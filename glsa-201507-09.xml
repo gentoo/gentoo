@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">pypam</product>
-  <announced>July 09, 2015</announced>
-  <revised>July 09, 2015: 1</revised>
+  <announced>2015-07-09</announced>
+  <revised>2015-07-09: 1</revised>
   <bug>407603</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1502">CVE-2012-1502</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1502">CVE-2012-1502</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Jun 2015 03:25:05 +0000">
+  <metadata tag="requester" timestamp="2015-06-21T03:25:05Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 09 Jul 2015 18:51:16 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-09T18:51:16Z">Zlogene</metadata>
 </glsa>

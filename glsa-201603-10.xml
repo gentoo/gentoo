@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in QtGui allowing remote
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>March 12, 2016</announced>
-  <revised>March 12, 2016: 2</revised>
+  <product type="ebuild"/>
+  <announced>2016-03-12</announced>
+  <revised>2016-03-12: 2</revised>
   <bug>546174</bug>
   <access>remote</access>
   <affected>
@@ -53,12 +53,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1858">CVE-2015-1858</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1859">CVE-2015-1859</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1860">CVE-2015-1860</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1858">CVE-2015-1858</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1859">CVE-2015-1859</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1860">CVE-2015-1860</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 05:00:23 +0000">
+  <metadata tag="requester" timestamp="2015-12-31T05:00:23Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 12:25:16 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-03-12T12:25:16Z">b-man</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     to gain escalated privileges.
   </synopsis>
   <product type="ebuild">sudo</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>416281</bug>
   <access>local</access>
   <affected>
@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2337">CVE-2012-2337</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2337">CVE-2012-2337</uri>
   </references>
-  <metadata timestamp="Sat, 26 May 2012 19:07:01 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 22:09:16 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-05-26T19:07:01Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-07-09T22:09:16Z" tag="submitter">ackle</metadata>
 </glsa>

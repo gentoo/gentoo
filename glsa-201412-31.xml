@@ -4,8 +4,8 @@
   <title>ZNC: Denial of Service</title>
   <synopsis>Multiple vulnerabilities in ZNC could lead to Denial of Service.</synopsis>
   <product type="ebuild">znc</product>
-  <announced>December 19, 2014</announced>
-  <revised>December 19, 2014: 1</revised>
+  <announced>2014-12-19</announced>
+  <revised>2014-12-19: 1</revised>
   <bug>471738</bug>
   <bug>507794</bug>
   <access>remote</access>
@@ -39,11 +39,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2130">CVE-2013-2130</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9403">CVE-2014-9403</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2130">CVE-2013-2130</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9403">CVE-2014-9403</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:41:24 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T02:41:24Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 19 Dec 2014 00:46:22 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-19T00:46:22Z">ackle</metadata>
 </glsa>

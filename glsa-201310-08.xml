@@ -6,8 +6,8 @@
     which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">quagga</product>
-  <announced>October 10, 2013</announced>
-  <revised>October 10, 2013: 1</revised>
+  <announced>2013-10-10</announced>
+  <revised>2013-10-10: 1</revised>
   <bug>408507</bug>
   <bug>475706</bug>
   <access>remote</access>
@@ -44,14 +44,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0249">CVE-2012-0249</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0250">CVE-2012-0250</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0255">CVE-2012-0255</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1820">CVE-2012-1820</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2236">CVE-2013-2236</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0249">CVE-2012-0249</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0250">CVE-2012-0250</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0255">CVE-2012-0255</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1820">CVE-2012-1820</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2236">CVE-2013-2236</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 02 Jan 2013 19:08:42 +0000">
+  <metadata tag="requester" timestamp="2013-01-02T19:08:42Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 10 Oct 2013 11:51:02 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-10T11:51:02Z">ackle</metadata>
 </glsa>

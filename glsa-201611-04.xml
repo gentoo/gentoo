@@ -6,9 +6,9 @@
     software suites allowing remote attackers to remotely execute arbitrary
     code, obtain information, and cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>November 04, 2016</announced>
-  <revised>November 04, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-11-04</announced>
+  <revised>2016-11-04: 1</revised>
   <bug>597516</bug>
   <access>remote</access>
   <affected>
@@ -60,14 +60,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5542">CVE-2016-5542</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5554">CVE-2016-5554</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5556">CVE-2016-5556</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5568">CVE-2016-5568</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5573">CVE-2016-5573</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5582">CVE-2016-5582</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5597">CVE-2016-5597</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5542">CVE-2016-5542</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5554">CVE-2016-5554</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5556">CVE-2016-5556</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5568">CVE-2016-5568</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5573">CVE-2016-5573</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5582">CVE-2016-5582</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5597">CVE-2016-5597</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Oct 2016 12:41:06 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Fri, 04 Nov 2016 08:28:05 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-10-19T12:41:06Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-04T08:28:05Z">b-man</metadata>
 </glsa>

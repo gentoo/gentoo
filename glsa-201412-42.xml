@@ -6,8 +6,8 @@
     in Denial of Service.
   </synopsis>
   <product type="ebuild">xen</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 31, 2014: 2</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-31: 2</revised>
   <bug>523524</bug>
   <bug>524200</bug>
   <access>local</access>
@@ -49,13 +49,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7154">CVE-2014-7154</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7155">CVE-2014-7155</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7156">CVE-2014-7156</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7188">CVE-2014-7188</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7154">CVE-2014-7154</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7155">CVE-2014-7155</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7156">CVE-2014-7156</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7188">CVE-2014-7188</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 15 Oct 2014 01:33:19 +0000">
+  <metadata tag="requester" timestamp="2014-10-15T01:33:19Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 31 Dec 2014 14:18:28 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-12-31T14:18:28Z">Zlogene</metadata>
 </glsa>

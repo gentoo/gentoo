@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-23">
   <title>Adobe Flash Player: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code execution on a user's system via a malicious Flash file.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>March 10, 2009</announced>
-  <revised>May 28, 2009: 04</revised>
+  <announced>2009-03-10</announced>
+  <revised>2009-05-28: 04</revised>
   <bug>239543</bug>
   <bug>251496</bug>
   <bug>260264</bug>
@@ -107,31 +106,31 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-10.0.22.87&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-plugins/adobe-flash-10.0.22.87"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3873">CVE-2008-3873</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4401">CVE-2008-4401</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4503">CVE-2008-4503</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4818">CVE-2008-4818</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4819">CVE-2008-4819</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4821">CVE-2008-4821</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4822">CVE-2008-4822</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4823">CVE-2008-4823</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4824">CVE-2008-4824</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5361">CVE-2008-5361</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5362">CVE-2008-5362</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5363">CVE-2008-5363</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5499">CVE-2008-5499</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0114">CVE-2009-0114</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0519">CVE-2009-0519</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0520">CVE-2009-0520</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0521">CVE-2009-0521</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3873">CVE-2008-3873</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4401">CVE-2008-4401</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4503">CVE-2008-4503</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4818">CVE-2008-4818</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4819">CVE-2008-4819</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4821">CVE-2008-4821</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4822">CVE-2008-4822</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4823">CVE-2008-4823</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4824">CVE-2008-4824</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5361">CVE-2008-5361</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5362">CVE-2008-5362</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5363">CVE-2008-5363</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5499">CVE-2008-5499</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0114">CVE-2009-0114</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0519">CVE-2009-0519</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0520">CVE-2009-0520</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0521">CVE-2009-0521</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 09 Mar 2009 11:37:22 +0000">
+  <metadata tag="submitter" timestamp="2009-03-09T11:37:22Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 09 Mar 2009 12:37:48 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-09T12:37:48Z">
     p-y
   </metadata>
 </glsa>

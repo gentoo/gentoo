@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-19">
   <title>Mozilla Firefox: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Firefox, including one that may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Firefox</product>
-  <announced>September 28, 2006</announced>
-  <revised>September 28, 2006: 01</revised>
+  <announced>2006-09-28</announced>
+  <revised>2006-09-28: 01</revised>
   <bug>147652</bug>
   <access>remote</access>
   <affected>
@@ -52,28 +51,28 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.5.0.7"</code>
     <p>
     Users of the binary package should upgrade as well:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.5.0.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4253">CVE-2006-4253</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4340">CVE-2006-4340</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4565">CVE-2006-4565</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4566">CVE-2006-4566</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4567">CVE-2006-4567</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4568">CVE-2006-4568</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4569">CVE-2006-4569</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4571">CVE-2006-4571</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4253">CVE-2006-4253</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4340">CVE-2006-4340</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4565">CVE-2006-4565</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4566">CVE-2006-4566</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4567">CVE-2006-4567</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4568">CVE-2006-4568</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4569">CVE-2006-4569</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4571">CVE-2006-4571</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 25 Sep 2006 12:31:14 +0000">
+  <metadata tag="submitter" timestamp="2006-09-25T12:31:14Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 Sep 2006 12:31:29 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-25T12:31:29Z">
     frilled
   </metadata>
 </glsa>

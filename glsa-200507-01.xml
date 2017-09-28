@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-01">
   <title>PEAR XML-RPC, phpxmlrpc: PHP script injection vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary PHP script commands.
   </synopsis>
   <product type="ebuild">pear-xml_rpc phpxmlrpc</product>
-  <announced>July 03, 2005</announced>
-  <revised>July 03, 2005: 01</revised>
+  <announced>2005-07-03</announced>
+  <revised>2005-07-03: 01</revised>
   <bug>97399</bug>
   <bug>97629</bug>
   <access>remote</access>
@@ -55,26 +54,26 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-XML_RPC-1.3.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-XML_RPC-1.3.1"</code>
     <p>
     All phpxmlrpc users should upgrade to the latest available
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/phpxmlrpc-1.1.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/phpxmlrpc-1.1.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
     <uri link="http://www.gulftech.org/?node=research&amp;article_id=00088-07022005">GulfTech Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 01 Jul 2005 16:53:39 +0000">
+  <metadata tag="requester" timestamp="2005-07-01T16:53:39Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 02 Jul 2005 09:41:01 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-02T09:41:01Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 02 Jul 2005 09:55:08 +0000">
+  <metadata tag="submitter" timestamp="2005-07-02T09:55:08Z">
     DerCorny
   </metadata>
 </glsa>

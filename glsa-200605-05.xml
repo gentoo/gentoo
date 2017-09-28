@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-05">
   <title>rsync: Potential integer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code on an rsync server.
   </synopsis>
   <product type="ebuild">rsync</product>
-  <announced>May 06, 2006</announced>
-  <revised>May 06, 2006: 01</revised>
+  <announced>2006-05-06</announced>
+  <revised>2006-05-06: 01</revised>
   <bug>131631</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/rsync-2.6.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/rsync-2.6.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2083">CVE-2006-2083</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2083">CVE-2006-2083</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 02 May 2006 15:25:29 +0000">
+  <metadata tag="requester" timestamp="2006-05-02T15:25:29Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 02 May 2006 16:18:28 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-02T16:18:28Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 04 May 2006 20:00:28 +0000">
+  <metadata tag="submitter" timestamp="2006-05-04T20:00:28Z">
     koon
   </metadata>
 </glsa>

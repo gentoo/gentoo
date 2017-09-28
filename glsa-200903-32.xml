@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-32">
   <title>phpMyAdmin: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which may allow for remote code execution.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>March 18, 2009</announced>
-  <revised>March 18, 2009: 01</revised>
+  <announced>2009-03-18</announced>
+  <revised>2009-03-18: 01</revised>
   <bug>237781</bug>
   <bug>244914</bug>
   <bug>246831</bug>
@@ -76,23 +75,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.11.9.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.11.9.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6942">CVE-2006-6942</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5977">CVE-2007-5977</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4096">CVE-2008-4096</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4775">CVE-2008-4775</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5621">CVE-2008-5621</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5622">CVE-2008-5622</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6942">CVE-2006-6942</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5977">CVE-2007-5977</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4096">CVE-2008-4096</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4775">CVE-2008-4775</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5621">CVE-2008-5621</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5622">CVE-2008-5622</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 23 Sep 2008 18:59:26 +0000">
+  <metadata tag="requester" timestamp="2008-09-23T18:59:26Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 14 Mar 2009 23:58:57 +0000">
+  <metadata tag="submitter" timestamp="2009-03-14T23:58:57Z">
     mabi
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 16 Mar 2009 21:41:59 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-16T21:41:59Z">
     p-y
   </metadata>
 </glsa>

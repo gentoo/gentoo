@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-11">
   <title>Mozilla Suite, Mozilla Firefox: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     that might be exploited to execute arbitrary code.
   </synopsis>
   <product type="ebuild">mozilla</product>
-  <announced>September 18, 2005</announced>
-  <revised>September 29, 2005: 02</revised>
+  <announced>2005-09-18</announced>
+  <revised>2005-09-29: 02</revised>
   <bug>105396</bug>
   <access>remote</access>
   <affected>
@@ -83,50 +82,50 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.0.7-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.0.7-r2"</code>
     <p>
     All Mozilla Suite users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.12-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-1.7.12-r2"</code>
     <p>
     All Mozilla Firefox binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.0.7"</code>
     <p>
     All Mozilla Suite binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-bin-1.7.12"</code>
     <p>
     All Gecko library users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/gecko-sdk-1.7.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/gecko-sdk-1.7.12"</code>
     <p>
     
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2701">CAN-2005-2701</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2702">CAN-2005-2702</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2703">CAN-2005-2703</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2704">CAN-2005-2704</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2705">CAN-2005-2705</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2706">CAN-2005-2706</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2707">CAN-2005-2707</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2871">CAN-2005-2871</uri>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Foundation Security Advisories</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2701">CAN-2005-2701</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2702">CAN-2005-2702</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2703">CAN-2005-2703</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2704">CAN-2005-2704</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2705">CAN-2005-2705</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2706">CAN-2005-2706</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2707">CAN-2005-2707</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2871">CAN-2005-2871</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Foundation Security Advisories</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 15 Sep 2005 12:38:09 +0000">
+  <metadata tag="submitter" timestamp="2005-09-15T12:38:09Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Sep 2005 09:17:15 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-18T09:17:15Z">
     koon
   </metadata>
 </glsa>

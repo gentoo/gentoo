@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-26">
   <title>Adobe Acrobat Reader: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Adobe Acrobat Reader.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>March 18, 2008</announced>
-  <revised>March 18, 2008: 01</revised>
+  <announced>2008-03-18</announced>
+  <revised>2008-03-18: 01</revised>
   <bug>212367</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-8.1.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0883">CVE-2008-0883</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0883">CVE-2008-0883</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 16 Mar 2008 13:19:39 +0000">
+  <metadata tag="requester" timestamp="2008-03-16T13:19:39Z">
     mfleming
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 17 Mar 2008 11:44:20 +0000">
+  <metadata tag="submitter" timestamp="2008-03-17T11:44:20Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 18 Mar 2008 13:28:58 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-18T13:28:58Z">
     rbu
   </metadata>
 </glsa>

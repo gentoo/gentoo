@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-13">
   <title>VLC: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">vlc</product>
-  <announced>July 31, 2008</announced>
-  <revised>July 31, 2008: 01</revised>
+  <announced>2008-07-31</announced>
+  <revised>2008-07-31: 01</revised>
   <bug>221959</bug>
   <bug>230692</bug>
   <access>local, remote</access>
@@ -52,19 +51,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6i&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-0.8.6i"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2147">CVE-2008-2147</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2430">CVE-2008-2430</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2147">CVE-2008-2147</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2430">CVE-2008-2430</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 22 May 2008 17:39:12 +0000">
+  <metadata tag="requester" timestamp="2008-05-22T17:39:12Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Jun 2008 15:20:33 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-03T15:20:33Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Jul 2008 11:52:52 +0000">
+  <metadata tag="submitter" timestamp="2008-07-22T11:52:52Z">
     p-y
   </metadata>
 </glsa>

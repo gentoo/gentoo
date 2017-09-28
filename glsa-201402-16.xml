@@ -7,8 +7,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">freetype</product>
-  <announced>February 11, 2014</announced>
-  <revised>February 11, 2014: 1</revised>
+  <announced>2014-02-11</announced>
+  <revised>2014-02-11: 1</revised>
   <bug>448550</bug>
   <access>local, remote</access>
   <affected>
@@ -48,10 +48,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5668">CVE-2012-5668</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5669">CVE-2012-5669</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5670">CVE-2012-5670</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5668">CVE-2012-5668</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5669">CVE-2012-5669</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5670">CVE-2012-5670</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 22 Mar 2013 15:21:05 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Feb 2014 18:52:45 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-03-22T15:21:05Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-02-11T18:52:45Z">ackle</metadata>
 </glsa>

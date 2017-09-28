@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-17">
   <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of script code with elevated privileges to information leak.
   </synopsis>
   <product type="ebuild">thunderbird</product>
-  <announced>July 18, 2005</announced>
-  <revised>July 18, 2005: 01</revised>
+  <announced>2005-07-18</announced>
+  <revised>2005-07-18: 01</revised>
   <bug>98855</bug>
   <access>remote</access>
   <affected>
@@ -77,23 +76,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/mozilla-thunderbird-1.0.5"</code>
     <p>
     All Mozilla Thunderbird binary users should upgrade to the
     latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/mozilla-thunderbird-bin-1.0.5"</code>
   </resolution>
   <references>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Thunderbird">Mozilla Foundation Security Advisories</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0989">CAN-2005-0989</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#Thunderbird">Mozilla Foundation Security Advisories</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0989">CAN-2005-0989</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 14 Jul 2005 11:30:45 +0000">
+  <metadata tag="submitter" timestamp="2005-07-14T11:30:45Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 17 Jul 2005 20:53:06 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-17T20:53:06Z">
     koon
   </metadata>
 </glsa>

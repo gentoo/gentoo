@@ -6,8 +6,8 @@
     execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">aircrack-ng</product>
-  <announced>October 07, 2013</announced>
-  <revised>October 07, 2013: 1</revised>
+  <announced>2013-10-07</announced>
+  <revised>2013-10-07: 1</revised>
   <bug>311797</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1159">CVE-2010-1159</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1159">CVE-2010-1159</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 23 Dec 2012 23:18:18 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Oct 2013 08:46:58 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-23T23:18:18Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-07T08:46:58Z">ackle</metadata>
 </glsa>

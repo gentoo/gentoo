@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-13">
   <title>gzip: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     and infinite loops, possibly allowing the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gzip</product>
-  <announced>September 23, 2006</announced>
-  <revised>September 23, 2006: 01</revised>
+  <announced>2006-09-23</announced>
+  <revised>2006-09-23: 01</revised>
   <bug>145511</bug>
   <access>remote</access>
   <affected>
@@ -59,19 +58,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/gzip-1.3.5-r9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/gzip-1.3.5-r9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4334">CVE-2006-4334</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4335">CVE-2006-4335</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4336">CVE-2006-4336</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4337">CVE-2006-4337</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4338">CVE-2006-4338</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4334">CVE-2006-4334</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4335">CVE-2006-4335</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4336">CVE-2006-4336</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4337">CVE-2006-4337</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4338">CVE-2006-4338</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 19 Sep 2006 13:55:56 +0000">
+  <metadata tag="submitter" timestamp="2006-09-19T13:55:56Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 23 Sep 2006 06:36:04 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-23T06:36:04Z">
     jaervosz
   </metadata>
 </glsa>

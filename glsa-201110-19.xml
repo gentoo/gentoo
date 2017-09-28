@@ -6,8 +6,8 @@
     attackers to disclose information.
   </synopsis>
   <product type="ebuild">xorg-server</product>
-  <announced>October 22, 2011</announced>
-  <revised>October 22, 2011: 2</revised>
+  <announced>2011-10-22</announced>
+  <revised>2011-10-22: 2</revised>
   <bug>387069</bug>
   <access>local</access>
   <affected>
@@ -63,9 +63,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4028">CVE-2011-4028</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4029">CVE-2011-4029</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4028">CVE-2011-4028</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4029">CVE-2011-4029</uri>
   </references>
-  <metadata timestamp="Thu, 13 Oct 2011 20:53:51 +0000" tag="requester">a3li</metadata>
-  <metadata timestamp="Sat, 22 Oct 2011 17:19:57 +0000" tag="submitter">a3li</metadata>
+  <metadata timestamp="2011-10-13T20:53:51Z" tag="requester">a3li</metadata>
+  <metadata timestamp="2011-10-22T17:19:57Z" tag="submitter">a3li</metadata>
 </glsa>

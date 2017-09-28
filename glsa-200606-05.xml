@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-05">
   <title>Pound: HTTP request smuggling</title>
   <synopsis>
@@ -8,8 +7,8 @@
     bypass security restrictions or poison web caches.
   </synopsis>
   <product type="ebuild">pound</product>
-  <announced>June 07, 2006</announced>
-  <revised>November 24, 2006: 03</revised>
+  <announced>2006-06-07</announced>
+  <revised>2006-11-24: 03</revised>
   <bug>118541</bug>
   <access>remote</access>
   <affected>
@@ -55,15 +54,15 @@
     # emerge --ask --oneshot --verbose www-servers/pound</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3751">CVE-2005-3751</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3751">CVE-2005-3751</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 May 2006 15:47:49 +0000">
+  <metadata tag="requester" timestamp="2006-05-25T15:47:49Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 25 May 2006 18:03:55 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-25T18:03:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 29 May 2006 16:09:23 +0000">
+  <metadata tag="submitter" timestamp="2006-05-29T16:09:23Z">
     DerCorny
   </metadata>
 </glsa>

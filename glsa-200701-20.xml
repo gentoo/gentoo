@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-20">
   <title>Centericq: Remote buffer overflow in LiveJournal handling</title>
   <synopsis>
@@ -8,8 +7,8 @@
     service, allowing for the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">centericq</product>
-  <announced>January 24, 2007</announced>
-  <revised>January 24, 2007: 01</revised>
+  <announced>2007-01-24</announced>
+  <revised>2007-01-24: 01</revised>
   <bug>160793</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     masked in Portage until it is again maintained.
     </p>
     <code>
-    # emerge --ask --verbose --unmerge &quot;net-im/centericq&quot;</code>
+    # emerge --ask --verbose --unmerge "net-im/centericq"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0160">CVE-2007-0160</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0160">CVE-2007-0160</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 18:03:01 +0000">
+  <metadata tag="requester" timestamp="2007-01-14T18:03:01Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:11 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-14T21:54:11Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 02:19:00 +0000">
+  <metadata tag="submitter" timestamp="2007-01-18T02:19:00Z">
     shellsage
   </metadata>
 </glsa>

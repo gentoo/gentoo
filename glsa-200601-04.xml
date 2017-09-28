@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-04">
   <title>VMware Workstation: Vulnerability in NAT networking</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privileges on the host operating system through a flaw in NAT networking.
   </synopsis>
   <product type="ebuild">VMware</product>
-  <announced>January 07, 2006</announced>
-  <revised>May 25, 2006: 02</revised>
+  <announced>2006-01-07</announced>
+  <revised>2006-05-25: 02</revised>
   <bug>116238</bug>
   <access>remote and local</access>
   <affected>
@@ -42,8 +41,7 @@
   </impact>
   <workaround>
     <p>
-    Disable the NAT service by following the instructions at <uri
-    link="http://www.vmware.com/support/kb">http://www.vmware.com/support/k
+    Disable the NAT service by following the instructions at <uri link="http://www.vmware.com/support/kb">http://www.vmware.com/support/k
     b</uri>, Answer ID 2002.
     </p>
   </workaround>
@@ -56,13 +54,13 @@
     # emerge --ask --oneshot --verbose app-emulation/vmware-workstation</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4459">CVE-2005-4459</uri>
-    <uri link="http://www.vmware.com/support/kb/enduser/std_adp.php?p_faqid=2000">VMware Security Response</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4459">CVE-2005-4459</uri>
+    <uri link="https://www.vmware.com/support/kb/enduser/std_adp.php?p_faqid=2000">VMware Security Response</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 04 Jan 2006 10:03:43 +0000">
+  <metadata tag="submitter" timestamp="2006-01-04T10:03:43Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 05 Jan 2006 15:09:42 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-05T15:09:42Z">
     koon
   </metadata>
 </glsa>

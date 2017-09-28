@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-15">
   <title>Crypt::CBC: Insecure initialization vector</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a weaker encryption.
   </synopsis>
   <product type="ebuild">crypt-cbc</product>
-  <announced>March 17, 2006</announced>
-  <revised>March 17, 2006: 01</revised>
+  <announced>2006-03-17</announced>
+  <revised>2006-03-17: 01</revised>
   <bug>126048</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/crypt-cbc-2.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-perl/crypt-cbc-2.17"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0898">CVE-2006-0898</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0898">CVE-2006-0898</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Mar 2006 21:26:26 +0000">
+  <metadata tag="requester" timestamp="2006-03-14T21:26:26Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Mar 2006 21:26:50 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-14T21:26:50Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 14 Mar 2006 23:04:56 +0000">
+  <metadata tag="submitter" timestamp="2006-03-14T23:04:56Z">
     DerCorny
   </metadata>
 </glsa>

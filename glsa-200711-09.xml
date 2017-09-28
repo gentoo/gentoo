@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-09">
   <title>MadWifi: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remotely triggered Denial of Service.
   </synopsis>
   <product type="ebuild">madwifi-ng</product>
-  <announced>November 07, 2007</announced>
-  <revised>November 07, 2007: 01</revised>
+  <announced>2007-11-07</announced>
+  <revised>2007-11-07: 01</revised>
   <bug>195705</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/madwifi-ng-0.9.3.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/madwifi-ng-0.9.3.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5448">CVE-2007-5448</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5448">CVE-2007-5448</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 Nov 2007 23:16:45 +0000">
+  <metadata tag="requester" timestamp="2007-11-02T23:16:45Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 03 Nov 2007 23:18:04 +0000">
+  <metadata tag="submitter" timestamp="2007-11-03T23:18:04Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 03 Nov 2007 23:18:55 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-03T23:18:55Z">
     rbu
   </metadata>
 </glsa>

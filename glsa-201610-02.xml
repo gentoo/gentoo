@@ -6,9 +6,9 @@
     which could allow HTTP request smuggling attacks or a Denial of Service
     condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>October 06, 2016</announced>
-  <revised>October 13, 2016: 2</revised>
+  <product type="ebuild"/>
+  <announced>2016-10-06</announced>
+  <revised>2016-10-13: 2</revised>
   <bug>524680</bug>
   <bug>536684</bug>
   <bug>554948</bug>
@@ -50,13 +50,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3581">CVE-2014-3581</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3183">CVE-2015-3183</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1546">CVE-2016-1546</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4979">CVE-2016-4979</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3581">CVE-2014-3581</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3183">CVE-2015-3183</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1546">CVE-2016-1546</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4979">CVE-2016-4979</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 13 Sep 2015 13:17:03 +0000">
+  <metadata tag="requester" timestamp="2015-09-13T13:17:03Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 13 Oct 2016 07:21:58 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-10-13T07:21:58Z">b-man</metadata>
 </glsa>

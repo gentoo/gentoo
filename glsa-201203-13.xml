@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">Openswan</product>
-  <announced>March 16, 2012</announced>
-  <revised>March 16, 2012: 1</revised>
+  <announced>2012-03-16</announced>
+  <revised>2012-03-16: 1</revised>
   <bug>372961</bug>
   <bug>389097</bug>
   <access>local, remote</access>
@@ -54,9 +54,9 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2147">CVE-2011-2147</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4073">CVE-2011-4073</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2147">CVE-2011-2147</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4073">CVE-2011-4073</uri>
   </references>
-  <metadata timestamp="Tue, 06 Mar 2012 21:14:35 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 16 Mar 2012 10:56:03 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-06T21:14:35Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-16T10:56:03Z" tag="submitter">ackle</metadata>
 </glsa>

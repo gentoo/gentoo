@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-04">
   <title>IMAP Proxy: Format string vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code when connected to malicious IMAP servers.
   </synopsis>
   <product type="ebuild">up-imapproxy</product>
-  <announced>March 06, 2006</announced>
-  <revised>March 06, 2006: 01</revised>
+  <announced>2006-03-06</announced>
+  <revised>2006-03-06: 01</revised>
   <bug>107679</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/up-imapproxy-1.2.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/up-imapproxy-1.2.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2661">CVE-2005-2661</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2661">CVE-2005-2661</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 05 Mar 2006 09:44:08 +0000">
+  <metadata tag="requester" timestamp="2006-03-05T09:44:08Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 05 Mar 2006 09:44:28 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-05T09:44:28Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Mar 2006 15:59:30 +0000">
+  <metadata tag="submitter" timestamp="2006-03-05T15:59:30Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-03">
   <title>Horde IMP: Security bypass</title>
   <synopsis>
@@ -8,8 +7,8 @@
     restrictions.
   </synopsis>
   <product type="ebuild">horde-imp</product>
-  <announced>February 11, 2008</announced>
-  <revised>February 11, 2008: 01</revised>
+  <announced>2008-02-11</announced>
+  <revised>2008-02-11: 01</revised>
   <bug>205377</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-imp-4.1.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-imp-4.1.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6018">CVE-2007-6018</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6018">CVE-2007-6018</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 05 Feb 2008 12:56:07 +0000">
+  <metadata tag="submitter" timestamp="2008-02-05T12:56:07Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 05 Feb 2008 12:56:20 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-05T12:56:20Z">
     p-y
   </metadata>
 </glsa>

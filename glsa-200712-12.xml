@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-12">
   <title>IRC Services: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been reported in IRC Services.
   </synopsis>
   <product type="ebuild">ircservices</product>
-  <announced>December 13, 2007</announced>
-  <revised>December 13, 2007: 01</revised>
+  <announced>2007-12-13</announced>
+  <revised>2007-12-13: 01</revised>
   <bug>199897</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/ircservices-5.0.63&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/ircservices-5.0.63"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6122">CVE-2007-6122</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6122">CVE-2007-6122</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Dec 2007 21:48:10 +0000">
+  <metadata tag="requester" timestamp="2007-12-10T21:48:10Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 10 Dec 2007 21:51:02 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-10T21:51:02Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Dec 2007 22:44:42 +0000">
+  <metadata tag="submitter" timestamp="2007-12-11T22:44:42Z">
     p-y
   </metadata>
 </glsa>

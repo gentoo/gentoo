@@ -7,8 +7,8 @@
     arbitrary Perl code.
   </synopsis>
   <product type="ebuild">Locale-Maketext</product>
-  <announced>October 12, 2014</announced>
-  <revised>December 29, 2014: 2</revised>
+  <announced>2014-10-12</announced>
+  <revised>2014-12-29: 2</revised>
   <bug>446376</bug>
   <access>remote</access>
   <affected>
@@ -55,10 +55,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6329">CVE-2012-6329</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6329">CVE-2012-6329</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Jan 2013 20:38:14 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 29 Dec 2014 20:02:06 +0000">
+  <metadata tag="requester" timestamp="2013-01-01T20:38:14Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-29T20:02:06Z">
     pinkbyte
   </metadata>
 </glsa>

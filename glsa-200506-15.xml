@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-15">
   <title>PeerCast: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code execution.
   </synopsis>
   <product type="ebuild">peercast</product>
-  <announced>June 19, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-06-19</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>96199</bug>
   <access>remote</access>
   <affected>
@@ -48,20 +47,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1212&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/peercast-0.1212"</code>
   </resolution>
   <references>
     <uri link="http://www.gulftech.org/?node=research&amp;article_id=00077-05282005">GulfTech Advisory</uri>
     <uri link="http://www.peercast.org/forum/viewtopic.php?p=11596">PeerCast Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1806">CVE-2005-1806</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1806">CVE-2005-1806</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 15 Jun 2005 19:02:57 +0000">
+  <metadata tag="requester" timestamp="2005-06-15T19:02:57Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 15 Jun 2005 19:42:18 +0000">
+  <metadata tag="submitter" timestamp="2005-06-15T19:42:18Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Jun 2005 19:09:07 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-19T19:09:07Z">
     koon
   </metadata>
 </glsa>

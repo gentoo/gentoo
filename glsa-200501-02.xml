@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-02">
   <title>a2ps: Multiple vulnerabilities</title>
   <synopsis>
@@ -10,8 +9,8 @@
     arbitrary command execution.
   </synopsis>
   <product type="ebuild">a2ps</product>
-  <announced>January 04, 2005</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2005-01-04</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>75784</bug>
   <bug>61500</bug>
   <access>local and remote</access>
@@ -59,21 +58,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/a2ps-4.13c-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/a2ps-4.13c-r2"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/13641/">Secunia SA13641</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1170">CAN-2004-1170</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1377">CVE-2004-1377</uri>
+    <uri link="https://secunia.com/advisories/13641/">Secunia SA13641</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1170">CAN-2004-1170</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1377">CVE-2004-1377</uri>
     <uri link="http://lists.netsys.com/pipermail/full-disclosure/2004-August/025678.html">Full-Disclosure Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue,  4 Jan 2005 09:44:14 +0000">
+  <metadata tag="requester" timestamp="2005-01-04T09:44:14Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 09:44:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-04T09:44:22Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue,  4 Jan 2005 11:06:21 +0000">
+  <metadata tag="submitter" timestamp="2005-01-04T11:06:21Z">
     SeJo
   </metadata>
 </glsa>

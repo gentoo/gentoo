@@ -3,9 +3,9 @@
 <glsa id="201611-10">
   <title>libuv: Privilege escalation</title>
   <synopsis>A vulnerability in libuv could lead to privilege escalation.</synopsis>
-  <product type="ebuild"></product>
-  <announced>November 17, 2016</announced>
-  <revised>November 17, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-11-17</announced>
+  <revised>2016-11-17: 1</revised>
   <bug>540826</bug>
   <access>local, remote</access>
   <affected>
@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0278">CVE-2015-0278</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0278">CVE-2015-0278</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 17 Nov 2016 08:33:56 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Nov 2016 10:08:59 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-17T08:33:56Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-17T10:08:59Z">b-man</metadata>
 </glsa>

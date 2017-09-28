@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-43">
   <title>f2c: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">f2c</product>
-  <announced>January 30, 2005</announced>
-  <revised>January 30, 2005: 01</revised>
+  <announced>2005-01-30</announced>
+  <revised>2005-01-30: 01</revised>
   <bug>79725</bug>
   <access>local</access>
   <affected>
@@ -51,15 +50,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/f2c-20030320-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/f2c-20030320-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0017">CAN-2005-0017</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0017">CAN-2005-0017</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 29 Jan 2005 12:00:55 +0000">
+  <metadata tag="submitter" timestamp="2005-01-29T12:00:55Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 29 Jan 2005 16:13:04 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-29T16:13:04Z">
     vorlon078
   </metadata>
 </glsa>

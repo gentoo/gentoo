@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-19">
   <title>gxine: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">gxine</product>
-  <announced>May 26, 2005</announced>
-  <revised>May 26, 2005: 01</revised>
+  <announced>2005-05-26</announced>
+  <revised>2005-05-26: 01</revised>
   <bug>93532</bug>
   <access>remote</access>
   <affected>
@@ -51,14 +50,14 @@
     # emerge --ask --oneshot --verbose media-video/gxine</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1692">CAN-2005-1692</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1692">CAN-2005-1692</uri>
     <uri link="http://www.securityfocus.com/bid/13707">Bugtraq ID 13707</uri>
     <uri link="http://www.0xbadexworm.org/adv/gxinefmt.txt">Original Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 24 May 2005 14:37:48 +0000">
+  <metadata tag="submitter" timestamp="2005-05-24T14:37:48Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 26 May 2005 11:13:38 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-26T11:13:38Z">
     koon
   </metadata>
 </glsa>

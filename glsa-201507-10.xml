@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">t1utils</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 1</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-10: 1</revised>
   <bug>548638</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3905">CVE-2015-3905</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3905">CVE-2015-3905</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Jul 2015 04:39:33 +0000">
+  <metadata tag="requester" timestamp="2015-07-06T04:39:33Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 08:01:40 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-07-10T08:01:40Z">mrueg</metadata>
 </glsa>

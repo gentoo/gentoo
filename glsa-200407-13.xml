@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-13">
   <title>PHP: Multiple security vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution, were found and fixed in PHP.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>July 15, 2004</announced>
-  <revised>July 15, 2004: 01</revised>
+  <announced>2004-07-15</announced>
+  <revised>2004-07-15: 01</revised>
   <bug>56985</bug>
   <access>remote</access>
   <affected>
@@ -70,18 +69,18 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-php/php-4.3.8"
-    # emerge ">=dev-php/php-4.3.8"
+    # emerge -pv "&gt;=dev-php/php-4.3.8"
+    # emerge "&gt;=dev-php/php-4.3.8"
 
-    # emerge -pv ">=dev-php/mod_php-4.3.8"
-    # emerge ">=dev-php/mod_php-4.3.8"
+    # emerge -pv "&gt;=dev-php/mod_php-4.3.8"
+    # emerge "&gt;=dev-php/mod_php-4.3.8"
 
-    # emerge -pv ">=dev-php/php-cgi-4.3.8"
-    # emerge ">=dev-php/php-cgi-4.3.8"</code>
+    # emerge -pv "&gt;=dev-php/php-cgi-4.3.8"
+    # emerge "&gt;=dev-php/php-cgi-4.3.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0594">CAN-2004-0594</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0595">CAN-2004-0595</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0594">CAN-2004-0594</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0595">CAN-2004-0595</uri>
     <uri link="http://security.e-matters.de/advisories/112004.html">E-Matters Advisory 11/2004</uri>
     <uri link="http://security.e-matters.de/advisories/122004.html">E-Matters Advisory 12/2004</uri>
   </references>

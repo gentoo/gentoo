@@ -44,9 +44,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8366">CVE-2015-8366</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8367">CVE-2015-8367</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3885">CVE-2015-3885</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8366">CVE-2015-8366</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8367">CVE-2015-8367</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T08:14:05Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-04-30T20:28:16Z">b-man</metadata>

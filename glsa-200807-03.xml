@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-03">
   <title>PCRE: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code and a Denial of Service.
   </synopsis>
   <product type="ebuild">libpcre glib</product>
-  <announced>July 07, 2008</announced>
-  <revised>July 07, 2008: 01</revised>
+  <announced>2008-07-07</announced>
+  <revised>2008-07-07: 01</revised>
   <bug>228091</bug>
   <bug>230039</bug>
   <access>remote</access>
@@ -56,21 +55,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libpcre-7.7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/libpcre-7.7-r1"</code>
     <p>
     All GLib users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/glib-2.16.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/glib-2.16.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2371">CVE-2008-2371</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2371">CVE-2008-2371</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 07 Jul 2008 00:02:02 +0000">
+  <metadata tag="submitter" timestamp="2008-07-07T00:02:02Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 07 Jul 2008 00:02:22 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-07T00:02:22Z">
     rbu
   </metadata>
 </glsa>

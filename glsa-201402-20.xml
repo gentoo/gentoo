@@ -6,8 +6,8 @@
     which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">kvirc</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>326149</bug>
   <bug>330111</bug>
   <access>remote</access>
@@ -48,12 +48,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2451">CVE-2010-2451</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2452">CVE-2010-2452</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2785">CVE-2010-2785</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2451">CVE-2010-2451</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2452">CVE-2010-2452</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2785">CVE-2010-2785</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:28 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:14:41 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:28Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-02-21T15:14:41Z">
     pinkbyte
   </metadata>
 </glsa>

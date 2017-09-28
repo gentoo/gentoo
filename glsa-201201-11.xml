@@ -6,8 +6,8 @@
     attackers to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">fwbuilder</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>235809</bug>
   <bug>285861</bug>
   <access>local</access>
@@ -49,9 +49,9 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4956">CVE-2008-4956</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4664">CVE-2009-4664</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4956">CVE-2008-4956</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4664">CVE-2009-4664</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:46 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 19:53:36 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-10-07T23:37:46Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-01-23T19:53:36Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-11">
   <title>Kronolith: Local file inclusion</title>
   <synopsis>
@@ -8,8 +7,8 @@
     files.
   </synopsis>
   <product type="ebuild">horde-kronolith</product>
-  <announced>January 16, 2007</announced>
-  <revised>January 16, 2007: 01</revised>
+  <announced>2007-01-16</announced>
+  <revised>2007-01-16: 01</revised>
   <bug>156627</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-kronolith-2.1.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-kronolith-2.1.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6175">CVE-2006-6175</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6175">CVE-2006-6175</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 17:58:37 +0000">
+  <metadata tag="requester" timestamp="2007-01-14T17:58:37Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:17 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-14T21:54:17Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 12:41:09 +0000">
+  <metadata tag="submitter" timestamp="2007-01-15T12:41:09Z">
     aetius
   </metadata>
 </glsa>

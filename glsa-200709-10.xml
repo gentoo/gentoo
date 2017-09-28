@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-10">
   <title>PhpWiki: Authentication bypass</title>
   <synopsis>
     A vulnerability has been discovered in PhpWiki authentication mechanism.
   </synopsis>
   <product type="ebuild">phpwiki</product>
-  <announced>September 18, 2007</announced>
-  <revised>September 18, 2007: 01</revised>
+  <announced>2007-09-18</announced>
+  <revised>2007-09-18: 01</revised>
   <bug>181692</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwiki-1.3.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpwiki-1.3.14"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3193">CVE-2007-3193</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3193">CVE-2007-3193</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Sep 2007 23:41:27 +0000">
+  <metadata tag="requester" timestamp="2007-09-04T23:41:27Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 08 Sep 2007 16:22:11 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-08T16:22:11Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 15 Sep 2007 20:54:32 +0000">
+  <metadata tag="submitter" timestamp="2007-09-15T20:54:32Z">
     p-y
   </metadata>
 </glsa>

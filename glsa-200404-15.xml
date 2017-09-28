@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-15">
   <title>XChat 2.0.x SOCKS5 Vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     run arbitrary code.
   </synopsis>
   <product type="ebuild">xchat</product>
-  <announced>April 19, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-04-19</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>46856</bug>
   <access>remote</access>
   <affected>
@@ -50,8 +49,8 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-irc/xchat-2.0.8-r1&quot;
-    # emerge &quot;&gt;=net-irc/xchat-2.0.8-r1&quot;</code>
+    # emerge -pv "&gt;=net-irc/xchat-2.0.8-r1"
+    # emerge "&gt;=net-irc/xchat-2.0.8-r1"</code>
     <p>
     Note that users of the gtk1 version of xchat (1.8.*) should upgrade to
     xchat-1.8.11-r1:
@@ -59,12 +58,12 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;=net-irc/xchat-1.8.11-r1&quot;
-    # emerge &quot;=net-irc/xchat-1.8.11-r1&quot;</code>
+    # emerge -pv "=net-irc/xchat-1.8.11-r1"
+    # emerge "=net-irc/xchat-1.8.11-r1"</code>
   </resolution>
   <references>
-    <uri link="http://mail.nl.linux.org/xchat-announce/2004-04/msg00000.html">XChat 2.0.x SOCKS5 Vulnerability</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0409">CVE-2004-0409</uri>
+    <uri link="https://mail.nl.linux.org/xchat-announce/2004-04/msg00000.html">XChat 2.0.x SOCKS5 Vulnerability</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0409">CVE-2004-0409</uri>
   </references>
   <metadata tag="submitter">
     klieber

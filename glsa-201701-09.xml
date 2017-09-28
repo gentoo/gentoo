@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">xdg-utils</product>
-  <announced>January 01, 2017</announced>
-  <revised>January 01, 2017: 1</revised>
+  <announced>2017-01-01</announced>
+  <revised>2017-01-01: 1</revised>
   <bug>472888</bug>
   <access>local, remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9622">CVE-2014-9622</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9622">CVE-2014-9622</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 12:56:54 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 16:34:46 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-01T12:56:54Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-01T16:34:46Z">b-man</metadata>
 </glsa>

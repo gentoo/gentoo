@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200902-04">
   <title>xterm: User-assisted arbitrary commands execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary commands execution.
   </synopsis>
   <product type="ebuild">xterm</product>
-  <announced>February 12, 2009</announced>
-  <revised>February 12, 2009: 01</revised>
+  <announced>2009-02-12</announced>
+  <revised>2009-02-12: 01</revised>
   <bug>253155</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-terms/xterm-239&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-terms/xterm-239"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2383">CVE-2008-2383</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2383">CVE-2008-2383</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 28 Jan 2009 00:33:40 +0000">
+  <metadata tag="requester" timestamp="2009-01-28T00:33:40Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 10 Feb 2009 10:22:45 +0000">
+  <metadata tag="submitter" timestamp="2009-02-10T10:22:45Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 10 Feb 2009 10:22:57 +0000">
+  <metadata tag="bugReady" timestamp="2009-02-10T10:22:57Z">
     p-y
   </metadata>
 </glsa>

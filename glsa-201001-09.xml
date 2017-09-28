@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-09">
   <title>Ruby: Terminal Control Character Injection</title>
   <synopsis>
@@ -9,8 +8,8 @@
     sessions.
   </synopsis>
   <product type="ebuild">ruby</product>
-  <announced>January 14, 2010</announced>
-  <revised>January 14, 2010: 01</revised>
+  <announced>2010-01-14</announced>
+  <revised>2010-01-14: 01</revised>
   <bug>300468</bug>
   <access>remote</access>
   <affected>
@@ -54,24 +53,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.7_p249&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.8.7_p249"</code>
     <p>
     All Ruby 1.8.6 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/ruby-1.8.6_p388&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.8.6_p388"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4492">CVE-2009-4492</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4492">CVE-2009-4492</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 13 Jan 2010 19:56:42 +0000">
+  <metadata tag="requester" timestamp="2010-01-13T19:56:42Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Jan 2010 20:40:12 +0000">
+  <metadata tag="submitter" timestamp="2010-01-13T20:40:12Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 13 Jan 2010 20:40:18 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-13T20:40:18Z">
     a3li
   </metadata>
 </glsa>

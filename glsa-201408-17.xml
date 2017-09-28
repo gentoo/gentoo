@@ -6,8 +6,8 @@
     allows local attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">qemu</product>
-  <announced>August 30, 2014</announced>
-  <revised>September 02, 2014: 3</revised>
+  <announced>2014-08-30</announced>
+  <revised>2014-09-02: 3</revised>
   <bug>201434</bug>
   <bug>486352</bug>
   <bug>505946</bug>
@@ -50,25 +50,25 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6227">CVE-2007-6227</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4377">CVE-2013-4377</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4544">CVE-2013-4544</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0142">CVE-2014-0142</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0143">CVE-2014-0143</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0144">CVE-2014-0144</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0145">CVE-2014-0145</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0146">CVE-2014-0146</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0147">CVE-2014-0147</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0150">CVE-2014-0150</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0222">CVE-2014-0222</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0223">CVE-2014-0223</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2894">CVE-2014-2894</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3461">CVE-2014-3461</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6227">CVE-2007-6227</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4377">CVE-2013-4377</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4544">CVE-2013-4544</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0142">CVE-2014-0142</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0143">CVE-2014-0143</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0144">CVE-2014-0144</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0145">CVE-2014-0145</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0146">CVE-2014-0146</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0147">CVE-2014-0147</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0150">CVE-2014-0150</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0222">CVE-2014-0222</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0223">CVE-2014-0223</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2894">CVE-2014-2894</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3461">CVE-2014-3461</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Jun 2014 02:33:03 +0000">
+  <metadata tag="requester" timestamp="2014-06-14T02:33:03Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 02 Sep 2014 09:23:53 +0000">
+  <metadata tag="submitter" timestamp="2014-09-02T09:23:53Z">
     pinkbyte
   </metadata>
 </glsa>

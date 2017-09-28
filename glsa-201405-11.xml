@@ -6,8 +6,8 @@
     sensitive information.
   </synopsis>
   <product type="ebuild">bacula</product>
-  <announced>May 17, 2014</announced>
-  <revised>May 17, 2014: 1</revised>
+  <announced>2014-05-17</announced>
+  <revised>2014-05-17: 1</revised>
   <bug>434878</bug>
   <access>remote</access>
   <affected>
@@ -39,8 +39,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4430">CVE-2012-4430</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4430">CVE-2012-4430</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:54:47 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:45:37 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-16T21:54:47Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-05-17T17:45:37Z">ackle</metadata>
 </glsa>

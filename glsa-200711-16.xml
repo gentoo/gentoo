@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-16">
   <title>CUPS: Memory corruption</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">cups</product>
-  <announced>November 12, 2007</announced>
-  <revised>November 12, 2007: 01</revised>
+  <announced>2007-11-12</announced>
+  <revised>2007-11-12: 01</revised>
   <bug>196736</bug>
   <access>remote</access>
   <affected>
@@ -55,15 +54,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.2.12-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.2.12-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4351">CVE-2007-4351</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4351">CVE-2007-4351</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 04 Nov 2007 00:16:24 +0000">
+  <metadata tag="submitter" timestamp="2007-11-04T00:16:24Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 11 Nov 2007 08:38:00 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-11T08:38:00Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200706-01">
   <title>libexif: Integer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     it vulnerable to an integer overflow.
   </synopsis>
   <product type="ebuild">libexif</product>
-  <announced>June 05, 2007</announced>
-  <revised>June 05, 2007: 01</revised>
+  <announced>2007-06-05</announced>
+  <revised>2007-06-05: 01</revised>
   <bug>178081</bug>
   <access>remote</access>
   <affected>
@@ -51,16 +50,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libexif-0.6.15&quot;
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libexif-0.6.15"
     # revdep-rebuild --library=/usr/lib/libexif.so</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2645">CVE-2007-2645</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2645">CVE-2007-2645</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 05 Jun 2007 18:50:35 +0000">
+  <metadata tag="submitter" timestamp="2007-06-05T18:50:35Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 03 Jun 2007 06:19:11 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-03T06:19:11Z">
     falco
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-10">
   <title>Mantis: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been reported in Mantis.
   </synopsis>
   <product type="ebuild">mantisbt</product>
-  <announced>September 21, 2008</announced>
-  <revised>November 26, 2008: 02</revised>
+  <announced>2008-09-21</announced>
+  <revised>2008-11-26: 02</revised>
   <bug>222649</bug>
   <bug>233336</bug>
   <access>remote</access>
@@ -52,21 +51,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-1.1.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/mantisbt-1.1.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2276">CVE-2008-2276</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3331">CVE-2008-3331</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3332">CVE-2008-3332</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3333">CVE-2008-3333</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2276">CVE-2008-2276</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3331">CVE-2008-3331</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3332">CVE-2008-3332</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3333">CVE-2008-3333</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 19 Sep 2008 19:55:47 +0000">
+  <metadata tag="requester" timestamp="2008-09-19T19:55:47Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 19 Sep 2008 19:59:03 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-19T19:59:03Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 20 Sep 2008 21:37:36 +0000">
+  <metadata tag="submitter" timestamp="2008-09-20T21:37:36Z">
     p-y
   </metadata>
 </glsa>

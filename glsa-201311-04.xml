@@ -6,8 +6,8 @@
     attackers to conduct symlink attacks. 
   </synopsis>
   <product type="ebuild">vixie-cron</product>
-  <announced>November 07, 2013</announced>
-  <revised>November 07, 2013: 1</revised>
+  <announced>2013-11-07</announced>
+  <revised>2013-11-07: 1</revised>
   <bug>308055</bug>
   <access>local</access>
   <affected>
@@ -42,12 +42,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0424">CVE-2010-0424</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0424">CVE-2010-0424</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Nov 2013 03:18:24 +0000">
+  <metadata tag="requester" timestamp="2013-11-04T03:18:24Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 07 Nov 2013 01:56:36 +0000">
+  <metadata tag="submitter" timestamp="2013-11-07T01:56:36Z">
     BlueKnight
   </metadata>
 </glsa>

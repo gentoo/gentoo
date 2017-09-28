@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-15">
   <title>cadaver heap-based buffer overflow</title>
   <synopsis>
@@ -9,8 +8,8 @@
     connected to a malicious server.
   </synopsis>
   <product type="ebuild">cadaver</product>
-  <announced>May 20, 2004</announced>
-  <revised>May 20, 2004: 01</revised>
+  <announced>2004-05-20</announced>
+  <revised>2004-05-20: 01</revised>
   <bug>51461</bug>
   <access>remote </access>
   <affected>
@@ -50,12 +49,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-misc/cadaver-0.22.2"
-    # emerge ">=net-misc/cadaver-0.22.2"</code>
+    # emerge -pv "&gt;=net-misc/cadaver-0.22.2"
+    # emerge "&gt;=net-misc/cadaver-0.22.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0398">CAN-2004-0398</uri>
-    <uri link="/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0398">CAN-2004-0398</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
   </references>
   <metadata tag="submitter">
     koon

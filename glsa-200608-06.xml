@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-06">
   <title>Courier MTA: Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     character.
   </synopsis>
   <product type="ebuild">Courier</product>
-  <announced>August 04, 2006</announced>
-  <revised>August 04, 2006: 01</revised>
+  <announced>2006-08-04</announced>
+  <revised>2006-08-04: 01</revised>
   <bug>135005</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/courier-0.53.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/courier-0.53.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2659">CVE-2006-2659</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2659">CVE-2006-2659</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 02 Aug 2006 13:22:29 +0000">
+  <metadata tag="requester" timestamp="2006-08-02T13:22:29Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 02 Aug 2006 13:22:37 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-02T13:22:37Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 02 Aug 2006 13:39:08 +0000">
+  <metadata tag="submitter" timestamp="2006-08-02T13:39:08Z">
     dizzutch
   </metadata>
 </glsa>

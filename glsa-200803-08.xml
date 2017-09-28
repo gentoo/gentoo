@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-08">
   <title>Win32 binary codecs: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">win32codecs</product>
-  <announced>March 04, 2008</announced>
-  <revised>March 04, 2008: 01</revised>
+  <announced>2008-03-04</announced>
+  <revised>2008-03-04: 01</revised>
   <bug>150288</bug>
   <access>remote</access>
   <affected>
@@ -48,7 +47,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/win32codecs-20071007-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/win32codecs-20071007-r2"</code>
     <p>
     Note: Since no updated binary versions have been released, the
     Quicktime libraries have been removed from the package. Please use the
@@ -57,22 +56,22 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4382">CVE-2006-4382</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4384">CVE-2006-4384</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4385">CVE-2006-4385</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4386">CVE-2006-4386</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4388">CVE-2006-4388</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4389">CVE-2006-4389</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4674">CVE-2007-4674</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6166">CVE-2007-6166</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4382">CVE-2006-4382</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4384">CVE-2006-4384</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4385">CVE-2006-4385</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4386">CVE-2006-4386</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4388">CVE-2006-4388</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4389">CVE-2006-4389</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4674">CVE-2007-4674</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6166">CVE-2007-6166</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 Nov 2007 22:48:06 +0000">
+  <metadata tag="requester" timestamp="2007-11-13T22:48:06Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 13 Nov 2007 22:48:15 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-13T22:48:15Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Feb 2008 10:44:06 +0000">
+  <metadata tag="submitter" timestamp="2008-02-29T10:44:06Z">
     p-y
   </metadata>
 </glsa>

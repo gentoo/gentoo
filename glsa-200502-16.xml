@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-16">
   <title>ht://Dig: Cross-site scripting vulnerability</title>
   <synopsis>
     ht://Dig is vulnerable to cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">htdig</product>
-  <announced>February 13, 2005</announced>
-  <revised>February 13, 2005: 01</revised>
+  <announced>2005-02-13</announced>
+  <revised>2005-02-13: 01</revised>
   <bug>80602</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-misc/htdig-3.1.6-r7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-misc/htdig-3.1.6-r7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0085">CAN-2005-0085</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0085">CAN-2005-0085</uri>
     <uri link="http://securitytracker.com/alerts/2005/Feb/1013078.html">SecurityTracker #1013078</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 13 Feb 2005 17:17:57 +0000">
+  <metadata tag="requester" timestamp="2005-02-13T17:17:57Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 13 Feb 2005 17:19:04 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-13T17:19:04Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 13 Feb 2005 20:15:40 +0000">
+  <metadata tag="submitter" timestamp="2005-02-13T20:15:40Z">
     lewk
   </metadata>
 </glsa>

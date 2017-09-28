@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-21">
   <title>MPlayer: Multiple overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in remote executing of arbitrary code.
   </synopsis>
   <product type="ebuild">MPlayer</product>
-  <announced>December 20, 2004</announced>
-  <revised>December 20, 2004: 01</revised>
+  <announced>2004-12-20</announced>
+  <revised>2004-12-20: 01</revised>
   <bug>74473</bug>
   <access>remote</access>
   <affected>
@@ -52,7 +51,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_pre5-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/mplayer-1.0_pre5-r5"</code>
   </resolution>
   <references>
     <uri link="http://www.idefense.com/application/poi/display?id=168&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
@@ -60,13 +59,13 @@
     <uri link="http://www.idefense.com/application/poi/display?id=166&amp;type=vulnerabilities">iDEFENSE Advisory</uri>
     <uri link="http://tigger.uic.edu/~jlongs2/holes/mplayer.txt">Ariel Berkman Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 19 Dec 2004 14:28:01 +0000">
+  <metadata tag="requester" timestamp="2004-12-19T14:28:01Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 22:01:07 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-19T22:01:07Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Dec 2004 09:31:29 +0000">
+  <metadata tag="submitter" timestamp="2004-12-20T09:31:29Z">
     koon
   </metadata>
 </glsa>

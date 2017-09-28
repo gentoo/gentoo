@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201009-02">
   <title>Maildrop: privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     elevate their privileges.
   </synopsis>
   <product type="ebuild">maildrop</product>
-  <announced>September 06, 2010</announced>
-  <revised>September 06, 2010: 01</revised>
+  <announced>2010-09-06</announced>
+  <revised>2010-09-06: 01</revised>
   <bug>308043</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/maildrop-2.4.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-filter/maildrop-2.4.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0301">CVE-2010-0301</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0301">CVE-2010-0301</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Aug 2010 09:32:26 +0000">
+  <metadata tag="requester" timestamp="2010-08-29T09:32:26Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 03 Sep 2010 21:46:47 +0000">
+  <metadata tag="submitter" timestamp="2010-09-03T21:46:47Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 03 Sep 2010 21:46:57 +0000">
+  <metadata tag="bugReady" timestamp="2010-09-03T21:46:57Z">
     p-y
   </metadata>
 </glsa>

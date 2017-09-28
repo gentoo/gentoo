@@ -6,8 +6,8 @@
     of which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">gnutls</product>
-  <announced>June 13, 2014</announced>
-  <revised>June 13, 2014: 1</revised>
+  <announced>2014-06-13</announced>
+  <revised>2014-06-13: 1</revised>
   <bug>501282</bug>
   <bug>503394</bug>
   <bug>511840</bug>
@@ -47,13 +47,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0092">CVE-2014-0092</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1959">CVE-2014-1959</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3465">CVE-2014-3465</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3466">CVE-2014-3466</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0092">CVE-2014-0092</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1959">CVE-2014-1959</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3465">CVE-2014-3465</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3466">CVE-2014-3466</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 24 Mar 2014 21:52:06 +0000">
+  <metadata tag="requester" timestamp="2014-03-24T21:52:06Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 13 Jun 2014 19:35:08 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-06-13T19:35:08Z">Zlogene</metadata>
 </glsa>

@@ -4,8 +4,8 @@
   <title>c-icap: Denial of Service</title>
   <synopsis>A vulnerability in c-icap could result in Denial of Service. </synopsis>
   <product type="ebuild">c-icap,DoS</product>
-  <announced>September 19, 2014</announced>
-  <revised>September 19, 2014: 1</revised>
+  <announced>2014-09-19</announced>
+  <revised>2014-09-19: 1</revised>
   <bug>455324</bug>
   <access>remote</access>
   <affected>
@@ -45,11 +45,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7401">CVE-2013-7401</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7402">CVE-2013-7402</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7401">CVE-2013-7401</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7402">CVE-2013-7402</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:33:11 +0000">
+  <metadata tag="requester" timestamp="2014-08-04T19:33:11Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 19 Sep 2014 18:54:16 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-09-19T18:54:16Z">K_F</metadata>
 </glsa>

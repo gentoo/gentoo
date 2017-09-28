@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-22">
   <title>PeerCast: Buffer overflow</title>
   <synopsis>
     A buffer overflow vulnerability has been discovered in PeerCast.
   </synopsis>
   <product type="ebuild">peercast</product>
-  <announced>January 30, 2008</announced>
-  <revised>January 30, 2008: 02</revised>
+  <announced>2008-01-30</announced>
+  <revised>2008-01-30: 02</revised>
   <bug>202747</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1218&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/peercast-0.1218"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6454">CVE-2007-6454</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6454">CVE-2007-6454</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Jan 2008 08:22:19 +0000">
+  <metadata tag="requester" timestamp="2008-01-11T08:22:19Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 29 Jan 2008 19:51:49 +0000">
+  <metadata tag="submitter" timestamp="2008-01-29T19:51:49Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 29 Jan 2008 23:04:06 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-29T23:04:06Z">
     falco
   </metadata>
 </glsa>

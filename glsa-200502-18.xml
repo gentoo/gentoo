@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-18">
   <title>VMware Workstation: Untrusted library search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     directory, resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">VMware</product>
-  <announced>February 14, 2005</announced>
-  <revised>May 25, 2006: 03</revised>
+  <announced>2005-02-14</announced>
+  <revised>2006-05-25: 03</revised>
   <bug>81344</bug>
   <access>local</access>
   <affected>
@@ -53,18 +52,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/vmware-workstation-3.2.1.2242-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/vmware-workstation-3.2.1.2242-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0444">CVE-2005-0444</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0444">CVE-2005-0444</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 12 Feb 2005 12:53:09 +0000">
+  <metadata tag="requester" timestamp="2005-02-12T12:53:09Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Feb 2005 12:53:31 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-12T12:53:31Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 13 Feb 2005 19:36:17 +0000">
+  <metadata tag="submitter" timestamp="2005-02-13T19:36:17Z">
     taviso
   </metadata>
 </glsa>

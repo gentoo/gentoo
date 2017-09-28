@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-11">
   <title>BIND: Multiple vulnerabilities</title>
   <synopsis>
     Several cache poisoning vulnerabilities have been found in BIND.
   </synopsis>
   <product type="ebuild">BIND</product>
-  <announced>June 01, 2010</announced>
-  <revised>June 01, 2010: 01</revised>
+  <announced>2010-06-01</announced>
+  <revised>2010-06-01: 01</revised>
   <bug>301548</bug>
   <bug>308035</bug>
   <access>remote</access>
@@ -53,22 +52,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.3_p5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.4.3_p5"</code>
   </resolution>
   <references>
     <uri link="https://www.isc.org/advisories/CVE2009-4022">ISC Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4022">CVE-2009-4022</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0097">CVE-2010-0097</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0290">CVE-2010-0290</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0382">CVE-2010-0382</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4022">CVE-2009-4022</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0097">CVE-2010-0097</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0290">CVE-2010-0290</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0382">CVE-2010-0382</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 29 Mar 2010 22:15:31 +0000">
+  <metadata tag="requester" timestamp="2010-03-29T22:15:31Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 Apr 2010 17:11:37 +0000">
+  <metadata tag="submitter" timestamp="2010-04-09T17:11:37Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 18:23:04 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-27T18:23:04Z">
     vorlon
   </metadata>
 </glsa>

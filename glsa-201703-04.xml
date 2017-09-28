@@ -53,7 +53,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2629">CVE-2017-2629</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2629">CVE-2017-2629</uri>
   </references>
   <metadata tag="requester" timestamp="2017-03-07T21:41:04Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-03-28T01:57:09Z">whissi</metadata>

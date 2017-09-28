@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-07">
   <title>flex: Potential insecure code generation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     such scanners vulnerable to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">flex</product>
-  <announced>March 10, 2006</announced>
-  <revised>March 10, 2006: 01</revised>
+  <announced>2006-03-10</announced>
+  <revised>2006-03-10: 01</revised>
   <bug>122940</bug>
   <access>remote and local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-devel/flex-2.5.33-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-devel/flex-2.5.33-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0459">CVE-2006-0459</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0459">CVE-2006-0459</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 03 Mar 2006 18:28:11 +0000">
+  <metadata tag="requester" timestamp="2006-03-03T18:28:11Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 03 Mar 2006 18:29:09 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-03T18:29:09Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 07 Mar 2006 21:06:21 +0000">
+  <metadata tag="submitter" timestamp="2006-03-07T21:06:21Z">
     koon
   </metadata>
 </glsa>

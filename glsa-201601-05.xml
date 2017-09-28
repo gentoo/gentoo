@@ -7,8 +7,8 @@
     handshakes.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>January 29, 2016</announced>
-  <revised>February 26, 2016: 3</revised>
+  <announced>2016-01-29</announced>
+  <revised>2016-02-26: 3</revised>
   <bug>572854</bug>
   <access>remote</access>
   <affected>
@@ -60,21 +60,21 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1794">CVE-2015-1794</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3193">CVE-2015-3193</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3194">CVE-2015-3194</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3195">CVE-2015-3195</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3196">CVE-2015-3196</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3197">CVE-2015-3197</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0701">CVE-2016-0701</uri>
-    <uri link="http://openssl.org/news/secadv/20160128.txt">OpenSSL Security
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1794">CVE-2015-1794</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3193">CVE-2015-3193</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3194">CVE-2015-3194</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3195">CVE-2015-3195</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3196">CVE-2015-3196</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3197">CVE-2015-3197</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0701">CVE-2016-0701</uri>
+    <uri link="https://openssl.org/news/secadv/20160128.txt">OpenSSL Security
       Advisory [28th Jan 2016]
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 29 Jan 2016 23:06:05 +0000">
+  <metadata tag="requester" timestamp="2016-01-29T23:06:05Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Feb 2016 15:29:47 +0000">
+  <metadata tag="submitter" timestamp="2016-02-26T15:29:47Z">
     keytoaster
   </metadata>
 </glsa>

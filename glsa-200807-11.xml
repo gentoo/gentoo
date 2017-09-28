@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-11">
   <title>PeerCast: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">peercast</product>
-  <announced>July 21, 2008</announced>
-  <revised>July 21, 2008: 01</revised>
+  <announced>2008-07-21</announced>
+  <revised>2008-07-21: 01</revised>
   <bug>220281</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/peercast-0.1218-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/peercast-0.1218-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2040">CVE-2008-2040</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2040">CVE-2008-2040</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 08 Jul 2008 00:36:04 +0000">
+  <metadata tag="requester" timestamp="2008-07-08T00:36:04Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Jul 2008 19:41:58 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-12T19:41:58Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Jul 2008 15:19:30 +0000">
+  <metadata tag="submitter" timestamp="2008-07-20T15:19:30Z">
     p-y
   </metadata>
 </glsa>

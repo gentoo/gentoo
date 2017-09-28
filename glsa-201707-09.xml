@@ -46,7 +46,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6590">CVE-2017-6590</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6590">CVE-2017-6590</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-02T12:44:50Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-08-06T11:10:08Z">whissi</metadata>

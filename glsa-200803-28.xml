@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-28">
   <title>OpenLDAP: Denial of Service vulnerabilities</title>
   <synopsis>
     Multiple Denial of Service vulnerabilities have been reported in OpenLDAP.
   </synopsis>
   <product type="ebuild">openldap</product>
-  <announced>March 19, 2008</announced>
-  <revised>March 19, 2008: 01</revised>
+  <announced>2008-03-19</announced>
+  <revised>2008-03-19: 01</revised>
   <bug>197446</bug>
   <bug>209677</bug>
   <access>remote</access>
@@ -61,17 +60,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-nds/openldap-2.3.41&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-nds/openldap-2.3.41"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5707">CVE-2007-5707</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5708">CVE-2007-5708</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0658">CVE-2008-0658</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5707">CVE-2007-5707</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5708">CVE-2007-5708</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0658">CVE-2008-0658</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 17:57:19 +0000">
+  <metadata tag="submitter" timestamp="2008-03-15T17:57:19Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 19 Mar 2008 01:23:44 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-19T01:23:44Z">
     rbu
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">mpfr</product>
-  <announced>December 30, 2015</announced>
-  <revised>December 30, 2015: 1</revised>
+  <announced>2015-12-30</announced>
+  <revised>2015-12-30: 1</revised>
   <bug>532028</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9474">CVE-2014-9474</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9474">CVE-2014-9474</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 03 Nov 2015 03:47:08 +0000">
+  <metadata tag="requester" timestamp="2015-11-03T03:47:08Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 10:56:32 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-12-30T10:56:32Z">ackle</metadata>
 </glsa>

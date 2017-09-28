@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201009-07">
   <title>libxml2: Denial of Service</title>
   <synopsis>
     Multiple Denial of Services vulnerabilities were found in libxml2.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>September 21, 2010</announced>
-  <revised>September 21, 2010: 01</revised>
+  <announced>2010-09-21</announced>
+  <revised>2010-09-21: 01</revised>
   <bug>280617</bug>
   <access>remote</access>
   <affected>
@@ -57,7 +56,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libxml2-2.7.3-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.7.3-r2"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since August 30, 2009. It is likely that your system is
@@ -65,16 +64,16 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2414">CVE-2009-2414</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2416">CVE-2009-2416</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2414">CVE-2009-2414</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2416">CVE-2009-2416</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 31 Aug 2009 02:15:14 +0000">
+  <metadata tag="requester" timestamp="2009-08-31T02:15:14Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 11 Apr 2010 13:13:48 +0000">
+  <metadata tag="submitter" timestamp="2010-04-11T13:13:48Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 18:03:32 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-30T18:03:32Z">
     vorlon
   </metadata>
 </glsa>

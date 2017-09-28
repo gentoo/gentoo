@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-13">
   <title>Sylpheed, Sylpheed-Claws: Buffer overflow in LDIF importer</title>
   <synopsis>
@@ -8,8 +7,8 @@
     may lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">sylpheed sylpheed-claws</product>
-  <announced>November 15, 2005</announced>
-  <revised>November 15, 2005: 01</revised>
+  <announced>2005-11-15</announced>
+  <revised>2005-11-15: 01</revised>
   <bug>111853</bug>
   <access>remote</access>
   <affected>
@@ -57,24 +56,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-2.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/sylpheed-2.0.4"</code>
     <p>
     All Sylpheed-Claws users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/sylpheed-claws-1.0.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/sylpheed-claws-1.0.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3354">CVE-2005-3354</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3354">CVE-2005-3354</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 13 Nov 2005 17:42:22 +0000">
+  <metadata tag="requester" timestamp="2005-11-13T17:42:22Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 13 Nov 2005 18:10:25 +0000">
+  <metadata tag="submitter" timestamp="2005-11-13T18:10:25Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Nov 2005 08:35:12 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-15T08:35:12Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-18">
   <title>Kazehakase: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">kazehakase</product>
-  <announced>January 30, 2008</announced>
-  <revised>January 30, 2008: 01</revised>
+  <announced>2008-01-30</announced>
+  <revised>2008-01-30: 01</revised>
   <bug>198983</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/kazehakase-0.5.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/kazehakase-0.5.0"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200711-30.xml">GLSA-200711-30</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-30.xml">GLSA-200711-30</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jan 2008 23:02:26 +0000">
+  <metadata tag="requester" timestamp="2008-01-06T23:02:26Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 29 Jan 2008 19:33:56 +0000">
+  <metadata tag="submitter" timestamp="2008-01-29T19:33:56Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 29 Jan 2008 19:34:04 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-29T19:34:04Z">
     p-y
   </metadata>
 </glsa>

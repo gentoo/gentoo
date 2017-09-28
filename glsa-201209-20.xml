@@ -4,8 +4,8 @@
   <title>mod_rpaf: Denial of Service</title>
   <synopsis>A vulnerability in mod_rpaf may result in Denial of Service.</synopsis>
   <product type="ebuild">mod_rpaf</product>
-  <announced>September 27, 2012</announced>
-  <revised>September 27, 2012: 1</revised>
+  <announced>2012-09-27</announced>
+  <revised>2012-09-27: 1</revised>
   <bug>432406</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3526">CVE-2012-3526</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3526">CVE-2012-3526</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Sep 2012 10:41:24 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 19:53:08 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-19T10:41:24Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-27T19:53:08Z">ackle</metadata>
 </glsa>

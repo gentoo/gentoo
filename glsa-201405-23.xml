@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">lib3ds</product>
-  <announced>May 18, 2014</announced>
-  <revised>December 10, 2014: 2</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-12-10: 2</revised>
   <bug>308033</bug>
   <bug>519936</bug>
   <access>remote</access>
@@ -54,8 +54,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0280">CVE-2010-0280</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0280">CVE-2010-0280</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 30 Sep 2013 23:22:44 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 10 Dec 2014 00:42:02 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-30T23:22:44Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-10T00:42:02Z">ackle</metadata>
 </glsa>

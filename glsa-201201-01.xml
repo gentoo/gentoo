@@ -6,8 +6,8 @@
     of which allows the execution of arbitrary PHP code.
   </synopsis>
   <product type="ebuild">phpMyAdmin</product>
-  <announced>January 04, 2012</announced>
-  <revised>January 04, 2012: 1</revised>
+  <announced>2012-01-04</announced>
+  <revised>2012-01-04: 1</revised>
   <bug>302745</bug>
   <bug>335490</bug>
   <bug>336462</bug>
@@ -52,99 +52,99 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7251">CVE-2008-7251</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7252">CVE-2008-7252</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2958">CVE-2010-2958</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3055">CVE-2010-3055</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3056">CVE-2010-3056</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3263">CVE-2010-3263</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0986">CVE-2011-0986</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0987">CVE-2011-0987</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2505">CVE-2011-2505</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2506">CVE-2011-2506</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2507">CVE-2011-2507</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2508">CVE-2011-2508</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2642">CVE-2011-2642</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2643">CVE-2011-2643</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2718">CVE-2011-2718</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2719">CVE-2011-2719</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3646">CVE-2011-3646</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4064">CVE-2011-4064</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4107">CVE-2011-4107</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4634">CVE-2011-4634</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4780">CVE-2011-4780</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4782">CVE-2011-4782</uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2010-1.php">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7251">CVE-2008-7251</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7252">CVE-2008-7252</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2958">CVE-2010-2958</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3055">CVE-2010-3055</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3056">CVE-2010-3056</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3263">CVE-2010-3263</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0986">CVE-2011-0986</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0987">CVE-2011-0987</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2505">CVE-2011-2505</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2506">CVE-2011-2506</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2507">CVE-2011-2507</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2508">CVE-2011-2508</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2642">CVE-2011-2642</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2643">CVE-2011-2643</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2718">CVE-2011-2718</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2719">CVE-2011-2719</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3646">CVE-2011-3646</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4064">CVE-2011-4064</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4107">CVE-2011-4107</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4634">CVE-2011-4634</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4780">CVE-2011-4780</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4782">CVE-2011-4782</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2010-1.php">
       PMASA-2010-1
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2010-2.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2010-2.php">
       PMASA-2010-2
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2010-4.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2010-4.php">
       PMASA-2010-4
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2010-5.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2010-5.php">
       PMASA-2010-5
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2010-6.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2010-6.php">
       PMASA-2010-6
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2010-7.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2010-7.php">
       PMASA-2010-7
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-1.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-1.php">
       PMASA-2011-1
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-10.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-10.php">
       PMASA-2011-10
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-11.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-11.php">
       PMASA-2011-11
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-12.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-12.php">
       PMASA-2011-12
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-15.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-15.php">
       PMASA-2011-15
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-16.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-16.php">
       PMASA-2011-16
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-17.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-17.php">
       PMASA-2011-17
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-18.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-18.php">
       PMASA-2011-18
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-19.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-19.php">
       PMASA-2011-19
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-2.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-2.php">
       PMASA-2011-2
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-20.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-20.php">
       PMASA-2011-20
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-5.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-5.php">
       PMASA-2011-5
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-6.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-6.php">
       PMASA-2011-6
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-7.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-7.php">
       PMASA-2011-7
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-8.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-8.php">
       PMASA-2011-8
     </uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security/PMASA-2011-9.php">
+    <uri link="https://www.phpmyadmin.net/home_page/security/PMASA-2011-9.php">
       PMASA-2011-9
     </uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:11 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:11Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Wed, 04 Jan 2012 23:40:25 +0000" tag="submitter">
+  <metadata timestamp="2012-01-04T23:40:25Z" tag="submitter">
     underling
   </metadata>
 </glsa>

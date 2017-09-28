@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200902-03">
   <title>Valgrind: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">valgrind</product>
-  <announced>February 12, 2009</announced>
-  <revised>February 12, 2009: 01</revised>
+  <announced>2009-02-12</announced>
+  <revised>2009-02-12: 01</revised>
   <bug>245317</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/valgrind-3.4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/valgrind-3.4.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4865">CVE-2008-4865</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4865">CVE-2008-4865</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:33:22 +0000">
+  <metadata tag="requester" timestamp="2009-01-13T17:33:22Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Jan 2009 17:46:15 +0000">
+  <metadata tag="submitter" timestamp="2009-01-13T17:46:15Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 13 Jan 2009 17:47:39 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-13T17:47:39Z">
     rbu
   </metadata>
 </glsa>

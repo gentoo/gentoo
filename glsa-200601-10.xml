@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-10">
   <title>Sun and Blackdown Java: Applet privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     their privileges.
   </synopsis>
   <product type="ebuild">sun-jdk sun-jre-bin blackdown-jre blackdown-jdk</product>
-  <announced>January 16, 2006</announced>
-  <revised>January 16, 2006: 01</revised>
+  <announced>2006-01-16</announced>
+  <revised>2006-01-16: 01</revised>
   <bug>118114</bug>
   <access>remote</access>
   <affected>
@@ -62,25 +61,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.09&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.4.2.09"</code>
     <p>
     All Sun JRE users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.09&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.4.2.09"</code>
     <p>
     All Blackdown JDK users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jdk-1.4.2.03&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/blackdown-jdk-1.4.2.03"</code>
     <p>
     All Blackdown JRE users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jre-1.4.2.03&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/blackdown-jre-1.4.2.03"</code>
     <p>
     Note to SPARC and PPC users: There is no stable secure
     Blackdown Java for the SPARC or PPC architectures. Affected users on
@@ -90,15 +89,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3905">CVE-2005-3905</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3906">CVE-2005-3906</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3905">CVE-2005-3905</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3906">CVE-2005-3906</uri>
     <uri link="http://sunsolve.sun.com/searchproxy/document.do?assetkey=1-26-102003-1">Sun Security Alert ID 102003</uri>
     <uri link="http://www.blackdown.org/java-linux/java2-status/security/Blackdown-SA-2005-03.txt">Blackdown Java-Linux Security Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 13 Jan 2006 09:49:14 +0000">
+  <metadata tag="submitter" timestamp="2006-01-13T09:49:14Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 13 Jan 2006 09:55:18 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-13T09:55:18Z">
     koon
   </metadata>
 </glsa>

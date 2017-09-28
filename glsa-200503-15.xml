@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-15">
   <title>X.org: libXpm vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     X.org, that can potentially lead to remote code execution.
   </synopsis>
   <product type="ebuild">X.org</product>
-  <announced>March 12, 2005</announced>
-  <revised>March 12, 2005: 02</revised>
+  <announced>2005-03-12</announced>
+  <revised>2005-03-12: 02</revised>
   <bug>83598</bug>
   <access>remote</access>
   <affected>
@@ -52,16 +51,16 @@
     # emerge --ask --oneshot --verbose x11-base/xorg-x11</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0605">CAN-2005-0605</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0605">CAN-2005-0605</uri>
     <uri link="https://bugs.freedesktop.org/show_bug.cgi?id=1920">Freedesktop bug</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun,  6 Mar 2005 13:19:18 +0000">
+  <metadata tag="requester" timestamp="2005-03-06T13:19:18Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon,  7 Mar 2005 11:11:00 +0000">
+  <metadata tag="submitter" timestamp="2005-03-07T11:11:00Z">
     SeJo
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 11 Mar 2005 13:22:24 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-11T13:22:24Z">
     jaervosz
   </metadata>
 </glsa>

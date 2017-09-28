@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-14">
   <title>Asterisk: SIP Denial of Service</title>
   <synopsis>
     Asterisk is vulnerable to Denial of Service in the SIP channel.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>March 16, 2007</announced>
-  <revised>March 16, 2007: 01</revised>
+  <announced>2007-03-16</announced>
+  <revised>2007-03-16: 01</revised>
   <bug>169616</bug>
   <access>remote</access>
   <affected>
@@ -55,13 +54,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1306">CVE-2007-1306</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1306">CVE-2007-1306</uri>
     <uri link="http://labs.musecurity.com/advisories/MU-200703-01.txt">MU-200703-01</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 16 Mar 2007 07:59:58 +0000">
+  <metadata tag="submitter" timestamp="2007-03-16T07:59:58Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 16 Mar 2007 10:36:56 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-16T10:36:56Z">
     falco
   </metadata>
 </glsa>

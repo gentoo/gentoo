@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-11">
   <title>Dillo: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Dillo</product>
-  <announced>January 09, 2005</announced>
-  <revised>January 09, 2005: 01</revised>
+  <announced>2005-01-09</announced>
+  <revised>2005-01-09: 01</revised>
   <bug>76665</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/dillo-0.8.3-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/dillo-0.8.3-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0012">CAN-2005-0012</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0012">CAN-2005-0012</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri,  7 Jan 2005 15:41:51 +0000">
+  <metadata tag="requester" timestamp="2005-01-07T15:41:51Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  9 Jan 2005 17:56:03 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-09T17:56:03Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun,  9 Jan 2005 18:39:04 +0000">
+  <metadata tag="submitter" timestamp="2005-01-09T18:39:04Z">
     koon
   </metadata>
 </glsa>

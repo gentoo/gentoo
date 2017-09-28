@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-10">
   <title>Avahi: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     consumption.
   </synopsis>
   <product type="ebuild">avahi</product>
-  <announced>April 08, 2009</announced>
-  <revised>April 08, 2009: 01</revised>
+  <announced>2009-04-08</announced>
+  <revised>2009-04-08: 01</revised>
   <bug>260971</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/avahi-0.6.24-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/avahi-0.6.24-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0758">CVE-2009-0758</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0758">CVE-2009-0758</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 04 Apr 2009 13:49:21 +0000">
+  <metadata tag="requester" timestamp="2009-04-04T13:49:21Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 04 Apr 2009 13:56:36 +0000">
+  <metadata tag="submitter" timestamp="2009-04-04T13:56:36Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 04 Apr 2009 13:57:02 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-04T13:57:02Z">
     rbu
   </metadata>
 </glsa>

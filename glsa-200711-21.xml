@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-21">
   <title>Bochs: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     for the execution of arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">bochs</product>
-  <announced>November 17, 2007</announced>
-  <revised>November 17, 2007: 01</revised>
+  <announced>2007-11-17</announced>
+  <revised>2007-11-17: 01</revised>
   <bug>188148</bug>
   <access>local</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/bochs-2.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/bochs-2.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2893">CVE-2007-2893</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2894">CVE-2007-2894</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2893">CVE-2007-2893</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2894">CVE-2007-2894</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 29 Sep 2007 14:10:20 +0000">
+  <metadata tag="requester" timestamp="2007-09-29T14:10:20Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 29 Sep 2007 14:11:15 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-29T14:11:15Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 01 Nov 2007 20:22:24 +0000">
+  <metadata tag="submitter" timestamp="2007-11-01T20:22:24Z">
     p-y
   </metadata>
 </glsa>

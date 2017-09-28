@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-08">
   <title>GNU shtool, ocaml-mysql: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing a local user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">GNU shtool</product>
-  <announced>June 11, 2005</announced>
-  <revised>June 11, 2005: 01</revised>
+  <announced>2005-06-11</announced>
+  <revised>2005-06-11: 01</revised>
   <bug>93782</bug>
   <bug>93784</bug>
   <access>local</access>
@@ -57,25 +56,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/shtool-2.0.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/shtool-2.0.1-r2"</code>
     <p>
     All ocaml-mysql users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ml/ocaml-mysql-1.0.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-ml/ocaml-mysql-1.0.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1751">CAN-2005-1751</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1759">CAN-2005-1759</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1751">CAN-2005-1751</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1759">CAN-2005-1759</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 27 May 2005 16:05:53 +0000">
+  <metadata tag="requester" timestamp="2005-05-27T16:05:53Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 28 May 2005 21:16:10 +0000">
+  <metadata tag="submitter" timestamp="2005-05-28T21:16:10Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Jun 2005 15:51:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-10T15:51:35Z">
     koon
   </metadata>
 </glsa>

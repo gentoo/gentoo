@@ -6,8 +6,8 @@
     possibly allowing remote code execution.
   </synopsis>
   <product type="ebuild">Postfix</product>
-  <announced>June 25, 2012</announced>
-  <revised>June 25, 2012: 1</revised>
+  <announced>2012-06-25</announced>
+  <revised>2012-06-25: 1</revised>
   <bug>358085</bug>
   <bug>366605</bug>
   <access>remote</access>
@@ -47,9 +47,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0411">CVE-2011-0411</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1720">CVE-2011-1720</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0411">CVE-2011-0411</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1720">CVE-2011-1720</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:03 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 25 Jun 2012 18:51:42 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:03Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-25T18:51:42Z" tag="submitter">craig</metadata>
 </glsa>

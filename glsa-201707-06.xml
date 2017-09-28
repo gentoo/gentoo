@@ -53,22 +53,22 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10163">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10163">
       CVE-2016-10163
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10214">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10214">
       CVE-2016-10214
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5580">CVE-2017-5580</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5956">CVE-2017-5956</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5957">CVE-2017-5957</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5993">CVE-2017-5993</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5994">CVE-2017-5994</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6209">CVE-2017-6209</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6210">CVE-2017-6210</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6317">CVE-2017-6317</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6355">CVE-2017-6355</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6386">CVE-2017-6386</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5580">CVE-2017-5580</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5956">CVE-2017-5956</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5957">CVE-2017-5957</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5993">CVE-2017-5993</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5994">CVE-2017-5994</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6209">CVE-2017-6209</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6210">CVE-2017-6210</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6317">CVE-2017-6317</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6355">CVE-2017-6355</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6386">CVE-2017-6386</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-05T00:14:09Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-08-06T11:08:07Z">whissi</metadata>

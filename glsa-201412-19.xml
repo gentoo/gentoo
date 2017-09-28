@@ -6,8 +6,8 @@
     sensitive information.
   </synopsis>
   <product type="ebuild">ppp</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 2</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 2</revised>
   <bug>519650</bug>
   <access>local</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3158">CVE-2014-3158</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3158">CVE-2014-3158</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 21 Aug 2014 10:14:30 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:01:42 +0000">
+  <metadata tag="requester" timestamp="2014-08-21T10:14:30Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T18:01:42Z">
     pinkbyte
   </metadata>
 </glsa>

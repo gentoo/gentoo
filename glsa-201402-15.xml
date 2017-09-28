@@ -6,8 +6,8 @@
     execution, SQL injection, or reading of arbitrary files.
   </synopsis>
   <product type="ebuild">roundcube</product>
-  <announced>February 11, 2014</announced>
-  <revised>February 11, 2014: 1</revised>
+  <announced>2014-02-11</announced>
+  <revised>2014-02-11: 1</revised>
   <bug>488954</bug>
   <access>remote</access>
   <affected>
@@ -52,12 +52,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6172">CVE-2013-6172</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6172">CVE-2013-6172</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 28 Nov 2013 07:52:58 +0000">
+  <metadata tag="requester" timestamp="2013-11-28T07:52:58Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Feb 2014 09:18:22 +0000">
+  <metadata tag="submitter" timestamp="2014-02-11T09:18:22Z">
     pinkbyte
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     may allow attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">arj</product>
-  <announced>December 06, 2016</announced>
-  <revised>December 06, 2016: 1</revised>
+  <announced>2016-12-06</announced>
+  <revised>2016-12-06: 1</revised>
   <bug>535708</bug>
   <bug>541500</bug>
   <access>local, remote</access>
@@ -43,10 +43,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0556">CVE-2015-0556</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0557">CVE-2015-0557</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2782">CVE-2015-2782</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0556">CVE-2015-0556</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0557">CVE-2015-0557</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2782">CVE-2015-2782</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Nov 2016 01:08:04 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 06 Dec 2016 03:45:36 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-28T01:08:04Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-06T03:45:36Z">whissi</metadata>
 </glsa>

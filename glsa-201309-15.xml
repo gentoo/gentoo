@@ -6,8 +6,8 @@
     which leading to remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ProFTPD</product>
-  <announced>September 24, 2013</announced>
-  <revised>September 24, 2013: 1</revised>
+  <announced>2013-09-24</announced>
+  <revised>2013-09-24: 1</revised>
   <bug>305343</bug>
   <bug>343389</bug>
   <bug>348998</bug>
@@ -50,17 +50,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3867">CVE-2010-3867</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4221">CVE-2010-4221</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4652">CVE-2010-4652</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1137">CVE-2011-1137</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4130">CVE-2011-4130</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6095">CVE-2012-6095</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4359">CVE-2013-4359</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3867">CVE-2010-3867</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4221">CVE-2010-4221</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4652">CVE-2010-4652</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1137">CVE-2011-1137</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4130">CVE-2011-4130</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6095">CVE-2012-6095</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4359">CVE-2013-4359</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:05 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:05Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 24 Sep 2013 23:08:08 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-09-24T23:08:08Z">craig</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     (RNG) is predictable.
   </synopsis>
   <product type="ebuild">gnupg</product>
-  <announced>December 02, 2016</announced>
-  <revised>December 02, 2016: 1</revised>
+  <announced>2016-12-02</announced>
+  <revised>2016-12-02: 1</revised>
   <bug>591536</bug>
   <access>local</access>
   <affected>
@@ -59,12 +59,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6313">CVE-2016-6313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6313">CVE-2016-6313</uri>
     <uri link="http://formal.iti.kit.edu/~klebanov/pubs/libgcrypt-cve-2016-6313.pdf">
       Entropy Loss and Output Predictability in the Libgcrypt PRNG
     </uri>
-    <uri link="http://security.gentoo.org/glsa/201610-04">GLSA 201610-04</uri>
+    <uri link="https://security.gentoo.org/glsa/201610-04">GLSA 201610-04</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 30 Nov 2016 18:28:25 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Dec 2016 09:38:37 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-30T18:28:25Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-02T09:38:37Z">whissi</metadata>
 </glsa>

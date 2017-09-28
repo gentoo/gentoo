@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-02">
   <title>phpMyAdmin: Information disclosure</title>
   <synopsis>
     A vulnerability in phpMyAdmin may lead to information disclosure.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>May 05, 2008</announced>
-  <revised>May 05, 2008: 01</revised>
+  <announced>2008-05-05</announced>
+  <revised>2008-05-05: 01</revised>
   <bug>219005</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.11.5.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.11.5.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1924">CVE-2008-1924</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1924">CVE-2008-1924</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 13:00:15 +0000">
+  <metadata tag="requester" timestamp="2008-04-29T13:00:15Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 29 Apr 2008 13:00:26 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-29T13:00:26Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 29 Apr 2008 18:38:43 +0000">
+  <metadata tag="submitter" timestamp="2008-04-29T18:38:43Z">
     mfleming
   </metadata>
 </glsa>

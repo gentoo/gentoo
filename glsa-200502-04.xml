@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-04">
   <title>Squid: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     log poisoning.
   </synopsis>
   <product type="ebuild">squid</product>
-  <announced>February 02, 2005</announced>
-  <revised>February 02, 2005: 02</revised>
+  <announced>2005-02-02</announced>
+  <revised>2005-02-02: 02</revised>
   <bug>79495</bug>
   <bug>78776</bug>
   <bug>80201</bug>
@@ -68,18 +67,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.5.7-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-2.5.7-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0173">CAN-2005-0173</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0174">CAN-2005-0174</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0175">CAN-2005-0175</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0211">CAN-2005-0211</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0173">CAN-2005-0173</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0174">CAN-2005-0174</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0175">CAN-2005-0175</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0211">CAN-2005-0211</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 30 Jan 2005 20:28:30 +0000">
+  <metadata tag="submitter" timestamp="2005-01-30T20:28:30Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  2 Feb 2005 12:30:09 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-02T12:30:09Z">
     jaervosz
   </metadata>
 </glsa>

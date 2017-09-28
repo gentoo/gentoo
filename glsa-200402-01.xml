@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200402-01">
   <title>PHP setting leaks from .htaccess files on virtual hosts</title>
   <synopsis>
-    If the server configuration &quot;php.ini&quot; file has
-    &quot;register_globals = on&quot; and a request is made to one virtual host
-    (which has &quot;php_admin_flag register_globals off&quot;) and the next
+    If the server configuration "php.ini" file has
+    "register_globals = on" and a request is made to one virtual host
+    (which has "php_admin_flag register_globals off") and the next
     request is sent to the another virtual host (which does not have the
     setting) global variables may leak and may be used to exploit the 
     site.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>February 07, 2004</announced>
-  <revised>February 07, 2004: 01</revised>
+  <announced>2004-02-07</announced>
+  <revised>2004-02-07: 01</revised>
   <bug>39952</bug>
   <access>remote</access>
   <affected>
@@ -30,9 +29,9 @@
   </background>
   <description>
     <p>
-    If the server configuration &quot;php.ini&quot; file has
-    &quot;register_globals = on&quot; and a request is made to one virtual host
-    (which has &quot;php_admin_flag register_globals off&quot;) and the next
+    If the server configuration "php.ini" file has
+    "register_globals = on" and a request is made to one virtual host
+    (which has "php_admin_flag register_globals off") and the next
     request is sent to the another virtual host (which does not have the
     setting) through the same apache child, the setting will persist.
     </p>
@@ -45,7 +44,7 @@
     result, users are urged to upgrade their PHP installations.
     </p>
     <p>
-    Gentoo ships PHP with &quot;register_globals&quot; set to &quot;off&quot;
+    Gentoo ships PHP with "register_globals" set to "off"
     by default.
     </p>
     <p>    
@@ -64,10 +63,10 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv ">=dev-php/mod_php-4.3.4-r4"
-    # emerge ">=dev-php/mod_php-4.3.4-r4"</code>
+    # emerge -pv "&gt;=dev-php/mod_php-4.3.4-r4"
+    # emerge "&gt;=dev-php/mod_php-4.3.4-r4"</code>
   </resolution>
   <references>
-    <uri link="http://bugs.php.net/bug.php?id=25753">Corresponding PHP bug</uri>
+    <uri link="https://bugs.php.net/bug.php?id=25753">Corresponding PHP bug</uri>
   </references>
 </glsa>

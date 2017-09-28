@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-01">
   <title>NDISwrapper: Arbitrary remote code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     with root privileges.
   </synopsis>
   <product type="ebuild">ndiswrapper</product>
-  <announced>January 11, 2009</announced>
-  <revised>January 11, 2009: 01</revised>
+  <announced>2009-01-11</announced>
+  <revised>2009-01-11: 01</revised>
   <bug>239371</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/ndiswrapper-1.53-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/ndiswrapper-1.53-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4395">CVE-2008-4395</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4395">CVE-2008-4395</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 06 Nov 2008 16:33:13 +0000">
+  <metadata tag="requester" timestamp="2008-11-06T16:33:13Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 23:45:28 +0000">
+  <metadata tag="submitter" timestamp="2008-11-26T23:45:28Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 23:45:36 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-26T23:45:36Z">
     rbu
   </metadata>
 </glsa>

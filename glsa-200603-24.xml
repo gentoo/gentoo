@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-24">
   <title>RealPlayer: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">RealPlayer</product>
-  <announced>March 26, 2006</announced>
-  <revised>March 26, 2006: 01</revised>
+  <announced>2006-03-26</announced>
+  <revised>2006-03-26: 01</revised>
   <bug>127352</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/realplayer-10.0.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0323">CVE-2006-0323</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0323">CVE-2006-0323</uri>
     <uri link="http://service.real.com/realplayer/security/03162006_player/en/">RealNetworks Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 23 Mar 2006 23:38:12 +0000">
+  <metadata tag="requester" timestamp="2006-03-23T23:38:12Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 24 Mar 2006 13:36:18 +0000">
+  <metadata tag="submitter" timestamp="2006-03-24T13:36:18Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 26 Mar 2006 17:28:15 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-26T17:28:15Z">
     koon
   </metadata>
 </glsa>

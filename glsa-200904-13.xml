@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-13">
   <title>Ventrilo: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service.
   </synopsis>
   <product type="ebuild">ventrilo-server-bin</product>
-  <announced>April 14, 2009</announced>
-  <revised>April 14, 2009: 01</revised>
+  <announced>2009-04-14</announced>
+  <revised>2009-04-14: 01</revised>
   <bug>234819</bug>
   <access>remote</access>
   <affected>
@@ -47,15 +46,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/ventrilo-server-bin-3.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/ventrilo-server-bin-3.0.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3680">CVE-2008-3680</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3680">CVE-2008-3680</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 14 Apr 2009 12:02:23 +0000">
+  <metadata tag="submitter" timestamp="2009-04-14T12:02:23Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Apr 2009 12:03:30 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-14T12:03:30Z">
     p-y
   </metadata>
 </glsa>

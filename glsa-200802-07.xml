@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-07">
   <title>Pulseaudio: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     with escalated privileges.
   </synopsis>
   <product type="ebuild">pulseaudio</product>
-  <announced>February 13, 2008</announced>
-  <revised>February 13, 2008: 01</revised>
+  <announced>2008-02-13</announced>
+  <revised>2008-02-13: 01</revised>
   <bug>207214</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/pulseaudio-0.9.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/pulseaudio-0.9.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0008">CVE-2008-0008</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0008">CVE-2008-0008</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 Feb 2008 18:33:13 +0000">
+  <metadata tag="requester" timestamp="2008-02-11T18:33:13Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 11 Feb 2008 18:33:32 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-11T18:33:32Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Feb 2008 20:35:58 +0000">
+  <metadata tag="submitter" timestamp="2008-02-13T20:35:58Z">
     p-y
   </metadata>
 </glsa>

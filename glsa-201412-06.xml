@@ -4,8 +4,8 @@
   <title>libxml2: Denial of Service</title>
   <synopsis>A vulnerability in libxml2 could result in Denial of Service.</synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>December 10, 2014</announced>
-  <revised>December 10, 2014: 1</revised>
+  <announced>2014-12-10</announced>
+  <revised>2014-12-10: 1</revised>
   <bug>525656</bug>
   <access>local, remote</access>
   <affected>
@@ -44,8 +44,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3660">CVE-2014-3660</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3660">CVE-2014-3660</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 09 Dec 2014 18:18:43 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 10 Dec 2014 08:06:04 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-12-09T18:18:43Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-10T08:06:04Z">K_F</metadata>
 </glsa>

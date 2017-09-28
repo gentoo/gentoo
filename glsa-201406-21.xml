@@ -6,8 +6,8 @@
     which could lead to man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">curl</product>
-  <announced>June 22, 2014</announced>
-  <revised>June 22, 2014: 1</revised>
+  <announced>2014-06-22</announced>
+  <revised>2014-06-22: 1</revised>
   <bug>505864</bug>
   <access>local, remote</access>
   <affected>
@@ -46,11 +46,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0138">CVE-2014-0138</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0139">CVE-2014-0139</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0138">CVE-2014-0138</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0139">CVE-2014-0139</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 Jun 2014 01:49:53 +0000">
+  <metadata tag="requester" timestamp="2014-06-10T01:49:53Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Jun 2014 13:14:51 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-06-22T13:14:51Z">K_F</metadata>
 </glsa>

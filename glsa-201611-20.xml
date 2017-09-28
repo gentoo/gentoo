@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">testdisk</product>
-  <announced>November 22, 2016</announced>
-  <revised>November 22, 2016: 2</revised>
+  <announced>2016-11-22</announced>
+  <revised>2016-11-22: 2</revised>
   <bug>548258</bug>
   <access>local, remote</access>
   <affected>
@@ -52,6 +52,6 @@
       TestDisk check_OS2MB Stack Buffer overflow
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 30 Apr 2015 18:55:08 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:59:23 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-04-30T18:55:08Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-11-22T11:59:23Z">b-man</metadata>
 </glsa>

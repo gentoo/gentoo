@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-24">
   <title>DBmail: Data disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     under certain configurations.
   </synopsis>
   <product type="ebuild">dbmail</product>
-  <announced>April 18, 2008</announced>
-  <revised>April 18, 2008: 01</revised>
+  <announced>2008-04-18</announced>
+  <revised>2008-04-18: 01</revised>
   <bug>218154</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/dbmail-2.2.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/dbmail-2.2.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6714">CVE-2007-6714</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6714">CVE-2007-6714</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 18 Apr 2008 08:54:02 +0000">
+  <metadata tag="requester" timestamp="2008-04-18T08:54:02Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 18 Apr 2008 09:20:04 +0000">
+  <metadata tag="submitter" timestamp="2008-04-18T09:20:04Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 18 Apr 2008 14:01:09 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-18T14:01:09Z">
     rbu
   </metadata>
 </glsa>

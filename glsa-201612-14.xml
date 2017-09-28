@@ -6,8 +6,8 @@
     potentially lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">util-linux</product>
-  <announced>December 06, 2016</announced>
-  <revised>December 06, 2016: 1</revised>
+  <announced>2016-12-06</announced>
+  <revised>2016-12-06: 1</revised>
   <bug>530844</bug>
   <access>local</access>
   <affected>
@@ -48,8 +48,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9114">CVE-2014-9114</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9114">CVE-2014-9114</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 22 Nov 2016 22:56:21 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 06 Dec 2016 03:44:24 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-22T22:56:21Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-06T03:44:24Z">whissi</metadata>
 </glsa>

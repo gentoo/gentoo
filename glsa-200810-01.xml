@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200810-01">
   <title>WordNet: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">wordnet</product>
-  <announced>October 07, 2008</announced>
-  <revised>October 07, 2008: 01</revised>
+  <announced>2008-10-07</announced>
+  <revised>2008-10-07: 01</revised>
   <bug>211491</bug>
   <access>local, remote</access>
   <affected>
@@ -74,19 +73,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-dicts/wordnet-3.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-dicts/wordnet-3.0-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2149">CVE-2008-2149</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3908">CVE-2008-3908</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2149">CVE-2008-2149</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3908">CVE-2008-3908</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Sep 2008 11:08:59 +0000">
+  <metadata tag="requester" timestamp="2008-09-21T11:08:59Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 21 Sep 2008 11:09:31 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-21T11:09:31Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Sep 2008 09:37:40 +0000">
+  <metadata tag="submitter" timestamp="2008-09-26T09:37:40Z">
     keytoaster
   </metadata>
 </glsa>

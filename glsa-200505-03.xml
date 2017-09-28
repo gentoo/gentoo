@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-03">
   <title>Ethereal: Numerous vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code or abnormal termination.
   </synopsis>
   <product type="ebuild">Ethereal</product>
-  <announced>May 06, 2005</announced>
-  <revised>May 06, 2005: 01</revised>
+  <announced>2005-05-06</announced>
+  <revised>2005-05-06: 01</revised>
   <bug>90539</bug>
   <access>remote</access>
   <affected>
@@ -72,30 +71,30 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ethereal-0.10.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ethereal-0.10.11"</code>
   </resolution>
   <references>
     <uri link="http://www.ethereal.com/appnotes/enpa-sa-00019.html">Ethereal enpa-sa-00019</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1456">CAN-2005-1456</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1457">CAN-2005-1457</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1458">CAN-2005-1458</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1459">CAN-2005-1459</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1460">CAN-2005-1460</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1461">CAN-2005-1461</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1462">CAN-2005-1462</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1463">CAN-2005-1463</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1464">CAN-2005-1464</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1465">CAN-2005-1465</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1466">CAN-2005-1466</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1467">CAN-2005-1467</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1468">CAN-2005-1468</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1469">CAN-2005-1469</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1470">CAN-2005-1470</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1456">CAN-2005-1456</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1457">CAN-2005-1457</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1458">CAN-2005-1458</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1459">CAN-2005-1459</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1460">CAN-2005-1460</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1461">CAN-2005-1461</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1462">CAN-2005-1462</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1463">CAN-2005-1463</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1464">CAN-2005-1464</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1465">CAN-2005-1465</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1466">CAN-2005-1466</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1467">CAN-2005-1467</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1468">CAN-2005-1468</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1469">CAN-2005-1469</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1470">CAN-2005-1470</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 05 May 2005 19:56:33 +0000">
+  <metadata tag="submitter" timestamp="2005-05-05T19:56:33Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 May 2005 17:24:39 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-06T17:24:39Z">
     jaervosz
   </metadata>
 </glsa>

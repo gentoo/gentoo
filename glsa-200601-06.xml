@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-06">
   <title>xine-lib, FFmpeg: Heap-based buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     exploited by attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">xine-lib ffmpeg</product>
-  <announced>January 10, 2006</announced>
-  <revised>January 10, 2006: 01</revised>
+  <announced>2006-01-10</announced>
+  <revised>2006-01-10: 01</revised>
   <bug>115849</bug>
   <bug>116181</bug>
   <access>remote</access>
@@ -57,25 +56,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.1-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.1-r3"</code>
     <p>
     All FFmpeg users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/ffmpeg-0.4.9_p20051216&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-0.4.9_p20051216"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4048">CVE-2005-4048</uri>
-    <uri link="http://article.gmane.org/gmane.comp.video.ffmpeg.devel/26558">Original advisory</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4048">CVE-2005-4048</uri>
+    <uri link="https://article.gmane.org/gmane.comp.video.ffmpeg.devel/26558">Original advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 03 Jan 2006 10:30:55 +0000">
+  <metadata tag="requester" timestamp="2006-01-03T10:30:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 06 Jan 2006 00:22:43 +0000">
+  <metadata tag="submitter" timestamp="2006-01-06T00:22:43Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 09 Jan 2006 22:59:16 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-09T22:59:16Z">
     DerCorny
   </metadata>
 </glsa>

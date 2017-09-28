@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-09">
   <title>SpamAssassin: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote attackers to execute arbitrary commands, possibly as the root user.
   </synopsis>
   <product type="ebuild">Spamassassin</product>
-  <announced>June 11, 2006</announced>
-  <revised>June 11, 2006: 01</revised>
+  <announced>2006-06-11</announced>
+  <revised>2006-06-11: 01</revised>
   <bug>135746</bug>
   <access>remote</access>
   <affected>
@@ -53,15 +52,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/spamassassin-3.1.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-filter/spamassassin-3.1.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2447">CVE-2006-2447</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2447">CVE-2006-2447</uri>
   </references>
-  <metadata tag="bugReady" timestamp="Thu, 08 Jun 2006 05:47:21 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-08T05:47:21Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Jun 2006 10:26:06 +0000">
+  <metadata tag="submitter" timestamp="2006-06-08T10:26:06Z">
     falco
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-04">
   <title>phpWebSite: Arbitrary PHP execution and path disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     reveals the full path of scripts.
   </synopsis>
   <product type="ebuild">phpwebsite</product>
-  <announced>March 01, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-03-01</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>83297</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync 
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwebsite-0.10.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpwebsite-0.10.0-r2"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/14399/">Secunia Advisory SA14399</uri>
+    <uri link="https://secunia.com/advisories/14399/">Secunia Advisory SA14399</uri>
     <uri link="http://phpwebsite.appstate.edu/index.php?module=announce&amp;ANN_id=922&amp;ANN_user_op=view">phpWebSite announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0565">CVE-2005-0565</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0572">CVE-2005-0572</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0565">CVE-2005-0565</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0572">CVE-2005-0572</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 25 Feb 2005 21:23:09 +0000">
+  <metadata tag="requester" timestamp="2005-02-25T21:23:09Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 27 Feb 2005 12:09:41 +0000">
+  <metadata tag="submitter" timestamp="2005-02-27T12:09:41Z">
     DerCorny
   </metadata>
 </glsa>

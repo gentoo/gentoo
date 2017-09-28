@@ -6,8 +6,8 @@
     allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">bash</product>
-  <announced>January 01, 2017</announced>
-  <revised>January 01, 2017: 1</revised>
+  <announced>2017-01-01</announced>
+  <revised>2017-01-01: 1</revised>
   <bug>595268</bug>
   <bug>600174</bug>
   <access>local</access>
@@ -42,9 +42,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7543">CVE-2016-7543</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9401">CVE-2016-9401</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7543">CVE-2016-7543</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9401">CVE-2016-9401</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Jun 2016 09:45:02 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 13:44:22 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-06-21T09:45:02Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-01T13:44:22Z">whissi</metadata>
 </glsa>

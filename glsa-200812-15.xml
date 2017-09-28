@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-15">
   <title>POV-Ray: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code when reading a specially crafted PNG file
   </synopsis>
   <product type="ebuild">povray</product>
-  <announced>December 14, 2008</announced>
-  <revised>December 14, 2008: 01</revised>
+  <announced>2008-12-14</announced>
+  <revised>2008-12-14: 01</revised>
   <bug>153538</bug>
   <access>local</access>
   <affected>
@@ -29,7 +28,7 @@
     files. The version shipped with POV-Ray is vulnerable to CVE-2008-3964,
     CVE-2008-1382, CVE-2006-3334, CVE-2006-0481, CVE-2004-0768. A bug in
     POV-Ray's build system caused it to load the old version when your
-    installed copy of libpng was >=media-libs/libpng-1.2.10.
+    installed copy of libpng was &gt;=media-libs/libpng-1.2.10.
     </p>
   </description>
   <impact type="normal">
@@ -50,22 +49,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/povray-3.6.1-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/povray-3.6.1-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0768">CVE-2004-0768</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0481">CVE-2006-0481</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3334">CVE-2006-3334</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1382">CVE-2008-1382</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3964">CVE-2008-3964</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0768">CVE-2004-0768</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0481">CVE-2006-0481</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3334">CVE-2006-3334</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1382">CVE-2008-1382</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3964">CVE-2008-3964</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 04 Dec 2008 23:06:51 +0000">
+  <metadata tag="requester" timestamp="2008-12-04T23:06:51Z">
     mabi
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Dec 2008 15:52:40 +0000">
+  <metadata tag="submitter" timestamp="2008-12-06T15:52:40Z">
     mabi
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 20:06:51 +0000">
+  <metadata tag="bugReady" timestamp="2008-12-11T20:06:51Z">
     p-y
   </metadata>
 </glsa>

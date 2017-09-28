@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-21">
   <title>Cacti: SQL injection vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a SQL injection attack.
   </synopsis>
   <product type="ebuild">cacti</product>
-  <announced>August 23, 2004</announced>
-  <revised>May 22, 2006: 04</revised>
+  <announced>2004-08-23</announced>
+  <revised>2006-05-22: 04</revised>
   <bug>60630</bug>
   <access>remote</access>
   <affected>
@@ -51,17 +50,17 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-analyzer/cacti-0.8.5a-r1&quot;
-    # emerge &quot;&gt;=net-analyzer/cacti-0.8.5a-r1&quot;</code>
+    # emerge -pv "&gt;=net-analyzer/cacti-0.8.5a-r1"
+    # emerge "&gt;=net-analyzer/cacti-0.8.5a-r1"</code>
   </resolution>
   <references>
     <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2004-08/0717.html">Full Disclosure Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1737">CVE-2004-1737</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1737">CVE-2004-1737</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Aug 2004 05:36:15 +0000">
+  <metadata tag="requester" timestamp="2004-08-19T05:36:15Z">
     dmargoli
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 19 Aug 2004 08:02:41 +0000">
+  <metadata tag="submitter" timestamp="2004-08-19T08:02:41Z">
     jaervosz
   </metadata>
 </glsa>

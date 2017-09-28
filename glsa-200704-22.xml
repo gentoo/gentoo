@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-22">
   <title>BEAST: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service.
   </synopsis>
   <product type="ebuild">BEAST</product>
-  <announced>April 27, 2007</announced>
-  <revised>April 27, 2007: 01</revised>
+  <announced>2007-04-27</announced>
+  <revised>2007-04-27: 01</revised>
   <bug>163146</bug>
   <access>local</access>
   <affected>
@@ -51,19 +50,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/beast-0.7.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/beast-0.7.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2916">CVE-2006-2916</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4447">CVE-2006-4447</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2916">CVE-2006-2916</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4447">CVE-2006-4447</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 04 Apr 2007 08:02:22 +0000">
+  <metadata tag="requester" timestamp="2007-04-04T08:02:22Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 04 Apr 2007 18:26:01 +0000">
+  <metadata tag="submitter" timestamp="2007-04-04T18:26:01Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 Apr 2007 18:26:41 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-06T18:26:41Z">
     p-y
   </metadata>
 </glsa>

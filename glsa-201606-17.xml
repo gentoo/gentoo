@@ -7,8 +7,8 @@
     cause Denial of Service.
   </synopsis>
   <product type="ebuild">wpa_supplicant</product>
-  <announced>June 27, 2016</announced>
-  <revised>June 27, 2016: 1</revised>
+  <announced>2016-06-27</announced>
+  <revised>2016-06-27: 1</revised>
   <bug>524928</bug>
   <bug>547492</bug>
   <bug>548742</bug>
@@ -62,16 +62,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3686">CVE-2014-3686</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3686">CVE-2014-3686</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1863">CVE-2015-1863</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4141">CVE-2015-4141</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4142">CVE-2015-4142</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4143">CVE-2015-4143</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4144">CVE-2015-4144</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4145">CVE-2015-4145</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4146">CVE-2015-4146</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3686">CVE-2014-3686</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3686">CVE-2014-3686</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1863">CVE-2015-1863</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4141">CVE-2015-4141</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4142">CVE-2015-4142</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4143">CVE-2015-4143</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4144">CVE-2015-4144</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4145">CVE-2015-4145</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4146">CVE-2015-4146</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 30 Apr 2015 18:59:29 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Mon, 27 Jun 2016 10:31:51 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-04-30T18:59:29Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-06-27T10:31:51Z">b-man</metadata>
 </glsa>

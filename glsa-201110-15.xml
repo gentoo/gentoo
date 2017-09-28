@@ -7,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">GnuPG</product>
-  <announced>October 22, 2011</announced>
-  <revised>October 22, 2011: 1</revised>
+  <announced>2011-10-22</announced>
+  <revised>2011-10-22: 1</revised>
   <bug>329583</bug>
   <access>remote</access>
   <affected>
@@ -50,10 +50,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2547">CVE-2010-2547</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2547">CVE-2010-2547</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:19 +0000" tag="requester">system</metadata>
-  <metadata timestamp="Sat, 22 Oct 2011 04:24:43 +0000" tag="submitter">
+  <metadata timestamp="2011-10-07T23:38:19Z" tag="requester">system</metadata>
+  <metadata timestamp="2011-10-22T04:24:43Z" tag="submitter">
     underling
   </metadata>
 </glsa>

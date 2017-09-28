@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-19">
   <title>courier-imap: Remote Format String Vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     execute arbitrary code as the user running courier-imapd (oftentimes root).
   </synopsis>
   <product type="ebuild">courier-imap</product>
-  <announced>August 19, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-19</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>60865</bug>
   <access>remote</access>
   <affected>
@@ -58,14 +57,14 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-mail/courier-imap-3.0.5&quot;
-    # emerge &quot;&gt;=net-mail/courier-imap-3.0.5&quot;</code>
+    # emerge -pv "&gt;=net-mail/courier-imap-3.0.5"
+    # emerge "&gt;=net-mail/courier-imap-3.0.5"</code>
   </resolution>
   <references>
     <uri link="http://www.idefense.com/application/poi/display?id=131&amp;type=vulnerabilities&amp;flashstatus=true">iDEFENSE Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0777">CVE-2004-0777</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0777">CVE-2004-0777</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 19 Aug 2004 18:47:27 +0000">
+  <metadata tag="submitter" timestamp="2004-08-19T18:47:27Z">
     condordes
   </metadata>
 </glsa>

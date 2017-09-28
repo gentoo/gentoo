@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-16">
   <title>Mantis: XSS and SQL injection vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     (XSS) vulnerabilities.
   </synopsis>
   <product type="ebuild">Mantis</product>
-  <announced>September 24, 2005</announced>
-  <revised>September 24, 2005: 01</revised>
+  <announced>2005-09-24</announced>
+  <revised>2005-09-24: 01</revised>
   <bug>103308</bug>
   <access>remote</access>
   <affected>
@@ -50,17 +49,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-0.19.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/mantisbt-0.19.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2556">CAN-2005-2556</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2557">CAN-2005-2557</uri>
-    <uri link="http://secunia.com/advisories/16506/">Secunia Advisory SA16506</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2556">CAN-2005-2556</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2557">CAN-2005-2557</uri>
+    <uri link="https://secunia.com/advisories/16506/">Secunia Advisory SA16506</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 23 Sep 2005 12:20:33 +0000">
+  <metadata tag="submitter" timestamp="2005-09-23T12:20:33Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 23 Sep 2005 12:21:10 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-23T12:21:10Z">
     koon
   </metadata>
 </glsa>

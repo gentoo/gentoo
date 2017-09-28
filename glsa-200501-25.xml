@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-25">
   <title>Squid: Multiple vulnerabilities</title>
   <synopsis>
@@ -10,8 +9,8 @@
     execution.
   </synopsis>
   <product type="ebuild">squid</product>
-  <announced>January 16, 2005</announced>
-  <revised>February 07, 2005: 03</revised>
+  <announced>2005-01-16</announced>
+  <revised>2005-02-07: 03</revised>
   <bug>77934</bug>
   <bug>77521</bug>
   <access>remote</access>
@@ -61,21 +60,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.5.7-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-2.5.7-r2"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/13825/">Secunia Advisory SA13825</uri>
-    <uri link="http://secunia.com/advisories/13789/">Secunia Advisory SA13789</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0094">CAN-2005-0094</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0095">CAN-2005-0095</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0096">CAN-2005-0096</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0097">CAN-2005-0097</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0194">CAN-2005-0194</uri>
+    <uri link="https://secunia.com/advisories/13825/">Secunia Advisory SA13825</uri>
+    <uri link="https://secunia.com/advisories/13789/">Secunia Advisory SA13789</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0094">CAN-2005-0094</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0095">CAN-2005-0095</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0096">CAN-2005-0096</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0097">CAN-2005-0097</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0194">CAN-2005-0194</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 14 Jan 2005 17:51:35 +0000">
+  <metadata tag="submitter" timestamp="2005-01-14T17:51:35Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 14 Jan 2005 17:55:02 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-14T17:55:02Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-17">
   <title>Real VNC: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     connecting to a malicious server.
   </synopsis>
   <product type="ebuild">vnc</product>
-  <announced>March 09, 2009</announced>
-  <revised>March 09, 2009: 01</revised>
+  <announced>2009-03-09</announced>
+  <revised>2009-03-09: 01</revised>
   <bug>255225</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/vnc-4.1.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/vnc-4.1.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4770">CVE-2008-4770</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4770">CVE-2008-4770</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 28 Jan 2009 00:30:00 +0000">
+  <metadata tag="requester" timestamp="2009-01-28T00:30:00Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 16:35:19 +0000">
+  <metadata tag="submitter" timestamp="2009-02-12T16:35:19Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 16:35:29 +0000">
+  <metadata tag="bugReady" timestamp="2009-02-12T16:35:29Z">
     rbu
   </metadata>
 </glsa>

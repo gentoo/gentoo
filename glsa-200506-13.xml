@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-13">
   <title>webapp-config: Insecure temporary file handling</title>
   <synopsis>
@@ -9,8 +8,8 @@
     commands.
   </synopsis>
   <product type="ebuild">webapp-config</product>
-  <announced>June 17, 2005</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2005-06-17</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>91785</bug>
   <access>local</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/webapp-config-1.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/webapp-config-1.11"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1707">CVE-2005-1707</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1707">CVE-2005-1707</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 10 May 2005 15:08:15 +0000">
+  <metadata tag="requester" timestamp="2005-05-10T15:08:15Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 10 May 2005 15:49:46 +0000">
+  <metadata tag="submitter" timestamp="2005-05-10T15:49:46Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 17 Jun 2005 08:32:12 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-17T08:32:12Z">
     koon
   </metadata>
 </glsa>

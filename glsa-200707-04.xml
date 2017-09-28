@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200707-04">
   <title>GNU C Library: Integer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code with escalated privileges.
   </synopsis>
   <product type="ebuild">glibc</product>
-  <announced>July 03, 2007</announced>
-  <revised>July 03, 2007: 01</revised>
+  <announced>2007-07-03</announced>
+  <revised>2007-07-03: 01</revised>
   <bug>183844</bug>
   <access>local</access>
   <affected>
@@ -55,15 +54,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/glibc-2.5-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.5-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3508">CVE-2007-3508</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3508">CVE-2007-3508</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 01 Jul 2007 18:20:09 +0000">
+  <metadata tag="submitter" timestamp="2007-07-01T18:20:09Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Jul 2007 13:34:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-03T13:34:58Z">
     taviso
   </metadata>
 </glsa>

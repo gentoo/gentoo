@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-06">
   <title>aria2: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">aria2</product>
-  <announced>January 13, 2010</announced>
-  <revised>January 13, 2010: 01</revised>
+  <announced>2010-01-13</announced>
+  <revised>2010-01-13: 01</revised>
   <bug>288291</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/aria2-1.6.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/aria2-1.6.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3575">CVE-2009-3575</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3617">CVE-2009-3617</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3575">CVE-2009-3575</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3617">CVE-2009-3617</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 06 Nov 2009 09:27:41 +0000">
+  <metadata tag="requester" timestamp="2009-11-06T09:27:41Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:05:40 +0000">
+  <metadata tag="submitter" timestamp="2010-01-05T21:05:40Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:40:46 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-10T19:40:46Z">
     craig
   </metadata>
 </glsa>

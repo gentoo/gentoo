@@ -6,8 +6,8 @@
     the worst of which may allow remote attackers to cause Denial of Service.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>November 20, 2016</announced>
-  <revised>November 20, 2016: 1</revised>
+  <announced>2016-11-20</announced>
+  <revised>2016-11-20: 1</revised>
   <bug>564304</bug>
   <access>remote</access>
   <affected>
@@ -41,12 +41,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2695">CVE-2015-2695</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2696">CVE-2015-2696</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2697">CVE-2015-2697</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2695">CVE-2015-2695</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2696">CVE-2015-2696</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2697">CVE-2015-2697</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 22:59:55 +0000">
+  <metadata tag="requester" timestamp="2015-12-23T22:59:55Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Nov 2016 22:10:32 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-20T22:10:32Z">b-man</metadata>
 </glsa>

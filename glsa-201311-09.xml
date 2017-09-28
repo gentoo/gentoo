@@ -6,8 +6,8 @@
     of which allow execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">freeradius</product>
-  <announced>November 13, 2013</announced>
-  <revised>November 13, 2013: 1</revised>
+  <announced>2013-11-13</announced>
+  <revised>2013-11-13: 1</revised>
   <bug>339389</bug>
   <bug>386183</bug>
   <bug>434802</bug>
@@ -43,11 +43,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3696">CVE-2010-3696</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3697">CVE-2010-3697</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2701">CVE-2011-2701</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3547">CVE-2012-3547</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3696">CVE-2010-3696</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3697">CVE-2010-3697</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2701">CVE-2011-2701</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3547">CVE-2012-3547</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 00:59:15 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Nov 2013 11:43:33 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-03-06T00:59:15Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-11-13T11:43:33Z">ackle</metadata>
 </glsa>

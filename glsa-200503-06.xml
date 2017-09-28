@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-06">
   <title>BidWatcher: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing arbitrary code execution.
   </synopsis>
   <product type="ebuild">bidwatcher</product>
-  <announced>March 03, 2005</announced>
-  <revised>March 03, 2005: 01</revised>
+  <announced>2005-03-03</announced>
+  <revised>2005-03-03: 01</revised>
   <bug>82460</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/bidwatcher-1.13.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/bidwatcher-1.13.17"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0158">CAN-2005-0158</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0158">CAN-2005-0158</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue,  1 Mar 2005 08:44:34 +0000">
+  <metadata tag="requester" timestamp="2005-03-01T08:44:34Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  1 Mar 2005 15:30:43 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-01T15:30:43Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  2 Mar 2005 20:11:39 +0000">
+  <metadata tag="submitter" timestamp="2005-03-02T20:11:39Z">
     DerCorny
   </metadata>
 </glsa>

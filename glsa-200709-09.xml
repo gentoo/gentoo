@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-09">
   <title>GNU Tar: Directory traversal vulnerability</title>
   <synopsis>
     A directory traversal vulnerability has been discovered in GNU Tar.
   </synopsis>
   <product type="ebuild">tar</product>
-  <announced>September 15, 2007</announced>
-  <revised>September 15, 2007: 01</revised>
+  <announced>2007-09-15</announced>
+  <revised>2007-09-15: 01</revised>
   <bug>189682</bug>
   <access>remote</access>
   <affected>
@@ -47,15 +46,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/tar-1.18-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/tar-1.18-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4131">CVE-2007-4131</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4131">CVE-2007-4131</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 13 Sep 2007 18:11:35 +0000">
+  <metadata tag="submitter" timestamp="2007-09-13T18:11:35Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 13 Sep 2007 18:49:13 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-13T18:49:13Z">
     mfleming
   </metadata>
 </glsa>

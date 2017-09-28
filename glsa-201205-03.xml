@@ -6,8 +6,8 @@
     some of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium v8</product>
-  <announced>May 21, 2012</announced>
-  <revised>May 21, 2012: 1</revised>
+  <announced>2012-05-21</announced>
+  <revised>2012-05-21: 1</revised>
   <bug>416119</bug>
   <access>remote</access>
   <affected>
@@ -58,62 +58,62 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3083">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3083">
       CVE-2011-3083
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3084">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3084">
       CVE-2011-3084
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3085">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3085">
       CVE-2011-3085
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3086">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3086">
       CVE-2011-3086
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3087">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3087">
       CVE-2011-3087
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3088">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3088">
       CVE-2011-3088
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3089">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3089">
       CVE-2011-3089
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3090">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3090">
       CVE-2011-3090
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3091">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3091">
       CVE-2011-3091
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3092">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3092">
       CVE-2011-3092
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3093">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3093">
       CVE-2011-3093
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3094">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3094">
       CVE-2011-3094
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3095">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3095">
       CVE-2011-3095
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3096">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3096">
       CVE-2011-3096
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3100">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3100">
       CVE-2011-3100
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3101">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3101">
       CVE-2011-3101
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/05/stable-channel-update.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/05/stable-channel-update.html">
       Release Notes 19.0.1084.46
     </uri>
   </references>
-  <metadata timestamp="Wed, 16 May 2012 06:58:58 +0000" tag="requester">
+  <metadata timestamp="2012-05-16T06:58:58Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Mon, 21 May 2012 06:46:40 +0000" tag="submitter">
+  <metadata timestamp="2012-05-21T06:46:40Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

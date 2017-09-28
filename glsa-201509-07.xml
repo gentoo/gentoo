@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">ACE,DoS,flash</product>
-  <announced>September 25, 2015</announced>
-  <revised>September 25, 2015: 1</revised>
+  <announced>2015-09-25</announced>
+  <revised>2015-09-25: 1</revised>
   <bug>561076</bug>
   <access>remote</access>
   <affected>
@@ -45,36 +45,36 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5567">CVE-2015-5567</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5568">CVE-2015-5568</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5570">CVE-2015-5570</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5571">CVE-2015-5571</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5572">CVE-2015-5572</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5573">CVE-2015-5573</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5574">CVE-2015-5574</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5575">CVE-2015-5575</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5576">CVE-2015-5576</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5577">CVE-2015-5577</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5578">CVE-2015-5578</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5579">CVE-2015-5579</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5580">CVE-2015-5580</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5581">CVE-2015-5581</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5582">CVE-2015-5582</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5584">CVE-2015-5584</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5587">CVE-2015-5587</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5588">CVE-2015-5588</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6676">CVE-2015-6676</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6677">CVE-2015-6677</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6678">CVE-2015-6678</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6679">CVE-2015-6679</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6680">CVE-2015-6680</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6681">CVE-2015-6681</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6682">CVE-2015-6682</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5567">CVE-2015-5567</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5568">CVE-2015-5568</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5570">CVE-2015-5570</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5571">CVE-2015-5571</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5572">CVE-2015-5572</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5573">CVE-2015-5573</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5574">CVE-2015-5574</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5575">CVE-2015-5575</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5576">CVE-2015-5576</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5577">CVE-2015-5577</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5578">CVE-2015-5578</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5579">CVE-2015-5579</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5580">CVE-2015-5580</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5581">CVE-2015-5581</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5582">CVE-2015-5582</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5584">CVE-2015-5584</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5587">CVE-2015-5587</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5588">CVE-2015-5588</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6676">CVE-2015-6676</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6677">CVE-2015-6677</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6678">CVE-2015-6678</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6679">CVE-2015-6679</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6680">CVE-2015-6680</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6681">CVE-2015-6681</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6682">CVE-2015-6682</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Sep 2015 23:34:39 +0000">
+  <metadata tag="requester" timestamp="2015-09-23T23:34:39Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 25 Sep 2015 07:25:37 +0000">
+  <metadata tag="submitter" timestamp="2015-09-25T07:25:37Z">
     BlueKnight
   </metadata>
 </glsa>

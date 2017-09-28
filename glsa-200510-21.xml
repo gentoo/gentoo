@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-21">
   <title>phpMyAdmin: Local file inclusion and XSS vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     issues.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>October 25, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-10-25</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>110146</bug>
   <access>local and remote</access>
   <affected>
@@ -56,17 +55,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.4_p3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.4_p3"</code>
   </resolution>
   <references>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-5">PMASA-2005-5</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3300">CVE-2005-3300</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3301">CVE-2005-3301</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-5">PMASA-2005-5</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3300">CVE-2005-3300</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3301">CVE-2005-3301</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 24 Oct 2005 08:28:30 +0000">
+  <metadata tag="submitter" timestamp="2005-10-24T08:28:30Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 25 Oct 2005 08:03:47 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-25T08:03:47Z">
     koon
   </metadata>
 </glsa>

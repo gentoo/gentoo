@@ -6,8 +6,8 @@
     which could result in execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">qemu</product>
-  <announced>December 24, 2014</announced>
-  <revised>December 24, 2014: 1</revised>
+  <announced>2014-12-24</announced>
+  <revised>2014-12-24: 1</revised>
   <bug>528922</bug>
   <bug>529030</bug>
   <bug>531666</bug>
@@ -45,14 +45,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3689">CVE-2014-3689</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7840">CVE-2014-7840</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8106">CVE-2014-8106</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3689">CVE-2014-3689</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7840">CVE-2014-7840</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8106">CVE-2014-8106</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Dec 2014 03:02:15 +0000">
+  <metadata tag="requester" timestamp="2014-12-22T03:02:15Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 20:51:55 +0000">
+  <metadata tag="submitter" timestamp="2014-12-24T20:51:55Z">
     BlueKnight
   </metadata>
 </glsa>

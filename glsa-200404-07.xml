@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-07">
   <title>ClamAV RAR Archive Remote Denial Of Service Vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     RAR archives.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>April 07, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-04-07</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>45357</bug>
   <access>remote</access>
   <affected>
@@ -59,11 +58,11 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-antivirus/clamav-0.68.1&quot;
-    # emerge &quot;&gt;=app-antivirus/clamav-0.68.1&quot;</code>
+    # emerge -pv "&gt;=app-antivirus/clamav-0.68.1"
+    # emerge "&gt;=app-antivirus/clamav-0.68.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1909">CVE-2004-1909</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1909">CVE-2004-1909</uri>
   </references>
   <metadata tag="submitter">
     klieber

@@ -4,8 +4,8 @@
   <title>Apache HTTP Server: Multiple vulnerabilities</title>
   <synopsis>Multiple vulnerabilities were found in Apache HTTP Server.</synopsis>
   <product type="ebuild">apache</product>
-  <announced>June 24, 2012</announced>
-  <revised>June 24, 2012: 1</revised>
+  <announced>2012-06-24</announced>
+  <revised>2012-06-24: 1</revised>
   <bug>308049</bug>
   <bug>330195</bug>
   <bug>380475</bug>
@@ -55,22 +55,22 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0408">CVE-2010-0408</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0434">CVE-2010-0434</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1452">CVE-2010-1452</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2791">CVE-2010-2791</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3192">CVE-2011-3192</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3348">CVE-2011-3348</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3368">CVE-2011-3368</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3607">CVE-2011-3607</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4317">CVE-2011-4317</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0021">CVE-2012-0021</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0031">CVE-2012-0031</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0053">CVE-2012-0053</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0883">CVE-2012-0883</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0408">CVE-2010-0408</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0434">CVE-2010-0434</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1452">CVE-2010-1452</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2791">CVE-2010-2791</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3192">CVE-2011-3192</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3348">CVE-2011-3348</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3368">CVE-2011-3368</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3607">CVE-2011-3607</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4317">CVE-2011-4317</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0021">CVE-2012-0021</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0031">CVE-2012-0031</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0053">CVE-2012-0053</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0883">CVE-2012-0883</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:41 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Sun, 24 Jun 2012 14:28:33 +0000" tag="submitter">
+  <metadata timestamp="2011-10-07T23:37:41Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-24T14:28:33Z" tag="submitter">
     keytoaster
   </metadata>
 </glsa>

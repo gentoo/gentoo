@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-14">
   <title>TikiWiki, eGroupWare: Arbitrary command execution through XML-RPC</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary command execution.
   </synopsis>
   <product type="ebuild">tikiwiki egroupware</product>
-  <announced>August 24, 2005</announced>
-  <revised>August 24, 2005: 01</revised>
+  <announced>2005-08-24</announced>
+  <revised>2005-08-24: 01</revised>
   <bug>102374</bug>
   <bug>102377</bug>
   <access>remote</access>
@@ -55,24 +54,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.8.5-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/tikiwiki-1.8.5-r2"</code>
     <p>
     All eGroupWare users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/egroupware-1.0.0.009&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/egroupware-1.0.0.009"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Aug 2005 20:59:23 +0000">
+  <metadata tag="requester" timestamp="2005-08-22T20:59:23Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 23 Aug 2005 23:39:36 +0000">
+  <metadata tag="submitter" timestamp="2005-08-23T23:39:36Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 24 Aug 2005 19:23:08 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-24T19:23:08Z">
     koon
   </metadata>
 </glsa>

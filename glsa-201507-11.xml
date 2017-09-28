@@ -6,8 +6,8 @@
     Service.
   </synopsis>
   <product type="ebuild">perl</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 1</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-10: 1</revised>
   <bug>216671</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7422">CVE-2013-7422</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7422">CVE-2013-7422</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Mar 2015 15:10:08 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 08:19:35 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-03-29T15:10:08Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-10T08:19:35Z">Zlogene</metadata>
 </glsa>

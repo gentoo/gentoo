@@ -6,8 +6,8 @@
     lead to SQL injection or cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">postfixadmin</product>
-  <announced>September 27, 2012</announced>
-  <revised>September 27, 2012: 1</revised>
+  <announced>2012-09-27</announced>
+  <revised>2012-09-27: 1</revised>
   <bug>400971</bug>
   <access>remote</access>
   <affected>
@@ -44,11 +44,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0811">CVE-2012-0811</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0812">CVE-2012-0812</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0811">CVE-2012-0811</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0812">CVE-2012-0812</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:01:37 +0000">
+  <metadata tag="requester" timestamp="2012-08-14T16:01:37Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Sep 2012 11:52:28 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-27T11:52:28Z">ackle</metadata>
 </glsa>

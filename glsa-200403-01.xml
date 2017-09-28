@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-01">
   <title>Libxml2 URI Parsing Buffer Overflow Vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">libxml</product>
-  <announced>March 05, 2004</announced>
-  <revised>March 05, 2004: 01</revised>
+  <announced>2004-03-05</announced>
+  <revised>2004-03-05: 01</revised>
   <bug>42735</bug>
   <access>local and remote combination</access>
   <affected>
@@ -44,10 +43,10 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv ">=dev-libs/libxml2-2.6.6"
-    # emerge ">=dev-libs/libxml2-2.6.6"</code>
+    # emerge -pv "&gt;=dev-libs/libxml2-2.6.6"
+    # emerge "&gt;=dev-libs/libxml2-2.6.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0110">CVE 2004-0110</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0110">CVE 2004-0110</uri>
   </references>
 </glsa>

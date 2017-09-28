@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200810-02">
   <title>Portage: Untrusted search path local root vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     directories.
   </synopsis>
   <product type="ebuild">portage</product>
-  <announced>October 09, 2008</announced>
-  <revised>October 09, 2008: 01</revised>
+  <announced>2008-10-09</announced>
+  <revised>2008-10-09: 01</revised>
   <bug>239560</bug>
   <access>local</access>
   <affected>
@@ -55,19 +54,19 @@
     <code>
     # cd /root
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/portage-2.1.4.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/portage-2.1.4.5"</code>
     <p>
     NOTE: To upgrade to Portage 2.1.4.5 using 2.1.4.4 or prior, you must
     run emerge from a trusted working directory, such as "/root".
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4394">CVE-2008-4394</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4394">CVE-2008-4394</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 08 Oct 2008 16:50:57 +0000">
+  <metadata tag="submitter" timestamp="2008-10-08T16:50:57Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 08 Oct 2008 16:58:04 +0000">
+  <metadata tag="bugReady" timestamp="2008-10-08T16:58:04Z">
     rbu
   </metadata>
 </glsa>

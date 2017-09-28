@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-25">
   <title>X.Org X server: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     DBE and Render extensions.
   </synopsis>
   <product type="ebuild">X.Org</product>
-  <announced>January 27, 2007</announced>
-  <revised>February 26, 2007: 02</revised>
+  <announced>2007-01-27</announced>
+  <revised>2007-02-26: 02</revised>
   <bug>157421</bug>
   <access>local</access>
   <affected>
@@ -53,17 +52,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.1.1-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.1.1-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6101">CVE-2006-6101</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6102">CVE-2006-6102</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6103">CVE-2006-6103</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6101">CVE-2006-6101</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6102">CVE-2006-6102</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6103">CVE-2006-6103</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 23 Jan 2007 12:31:17 +0000">
+  <metadata tag="submitter" timestamp="2007-01-23T12:31:17Z">
     daxomatic
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 24 Jan 2007 15:54:52 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-24T15:54:52Z">
     vorlon
   </metadata>
 </glsa>

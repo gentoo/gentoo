@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-15">
   <title>Lynx: Buffer overflow in NNTP processing</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">Lynx</product>
-  <announced>October 17, 2005</announced>
-  <revised>October 17, 2005: 01</revised>
+  <announced>2005-10-17</announced>
+  <revised>2005-10-17: 01</revised>
   <bug>108451</bug>
   <access>remote</access>
   <affected>
@@ -52,15 +51,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/lynx-2.8.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/lynx-2.8.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3120">CAN-2005-3120</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3120">CAN-2005-3120</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 15 Oct 2005 09:30:52 +0000">
+  <metadata tag="submitter" timestamp="2005-10-15T09:30:52Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 17 Oct 2005 12:46:58 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-17T12:46:58Z">
     koon
   </metadata>
 </glsa>

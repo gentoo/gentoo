@@ -47,7 +47,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5330">CVE-2017-5330</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5330">CVE-2017-5330</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-20T15:24:35Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-01-29T16:19:07Z">b-man</metadata>

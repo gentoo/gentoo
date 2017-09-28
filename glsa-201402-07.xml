@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">freeciv</product>
-  <announced>February 06, 2014</announced>
-  <revised>February 06, 2014: 1</revised>
+  <announced>2014-02-06</announced>
+  <revised>2014-02-06: 1</revised>
   <bug>329949</bug>
   <access>remote</access>
   <affected>
@@ -47,12 +47,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2445">CVE-2010-2445</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2445">CVE-2010-2445</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 11 Oct 2011 22:27:04 +0000">
+  <metadata tag="requester" timestamp="2011-10-11T22:27:04Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 06 Feb 2014 14:16:02 +0000">
+  <metadata tag="submitter" timestamp="2014-02-06T14:16:02Z">
     creffett
   </metadata>
 </glsa>

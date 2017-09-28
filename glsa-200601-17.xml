@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-17">
   <title>Xpdf, Poppler, GPdf, libextractor, pdftohtml: Heap overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overflows that may be exploited to execute arbitrary code.
   </synopsis>
   <product type="ebuild">xpdf poppler gpdf libextractor pdftohtml</product>
-  <announced>January 30, 2006</announced>
-  <revised>January 30, 2006: 01</revised>
+  <announced>2006-01-30</announced>
+  <revised>2006-01-30: 01</revised>
   <bug>117481</bug>
   <bug>117494</bug>
   <bug>117495</bug>
@@ -73,43 +72,43 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/xpdf-3.01-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/xpdf-3.01-r5"</code>
     <p>
     All Poppler users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/poppler-0.4.3-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.4.3-r4"</code>
     <p>
     All GPdf users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gpdf-2.10.0-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/gpdf-2.10.0-r3"</code>
     <p>
     All libextractor users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libextractor-0.5.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libextractor-0.5.9"</code>
     <p>
     All pdftohtml users should migrate to the latest stable version
     of Poppler.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3627">CVE-2005-3627</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3626">CVE-2005-3626</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3625">CVE-2005-3625</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3624">CVE-2005-3624</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3627">CVE-2005-3627</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3626">CVE-2005-3626</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3625">CVE-2005-3625</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3624">CVE-2005-3624</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Jan 2006 22:04:57 +0000">
+  <metadata tag="requester" timestamp="2006-01-16T22:04:57Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 Jan 2006 03:14:48 +0000">
+  <metadata tag="submitter" timestamp="2006-01-17T03:14:48Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 29 Jan 2006 17:26:11 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-29T17:26:11Z">
     jaervosz
   </metadata>
 </glsa>

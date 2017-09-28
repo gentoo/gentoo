@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-13">
   <title>CVS Server and Client Vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     files on both client and server.
   </synopsis>
   <product type="ebuild">cvs</product>
-  <announced>April 14, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-04-14</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>47800</bug>
   <access>remote</access>
   <affected>
@@ -57,13 +56,13 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=dev-util/cvs-1.11.15&quot;
-    # emerge &quot;&gt;=dev-util/cvs-1.11.15&quot;</code>
+    # emerge -pv "&gt;=dev-util/cvs-1.11.15"
+    # emerge "&gt;=dev-util/cvs-1.11.15"</code>
   </resolution>
   <references>
     <uri link="http://ccvs.cvshome.org/source/browse/ccvs/NEWS?rev=1.116.2.92&amp;content-type=text/x-cvsweb-markup">CVS commit log</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0180">CVE-2004-0180</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0405">CVE-2004-0405</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0180">CVE-2004-0180</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0405">CVE-2004-0405</uri>
   </references>
   <metadata tag="submitter">
     condordes

@@ -7,8 +7,8 @@
     symlink attacks.
   </synopsis>
   <product type="ebuild">pip</product>
-  <announced>September 12, 2013</announced>
-  <revised>September 12, 2013: 1</revised>
+  <announced>2013-09-12</announced>
+  <revised>2013-09-12: 1</revised>
   <bug>462616</bug>
   <bug>480202</bug>
   <access>local, remote</access>
@@ -46,13 +46,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1629">CVE-2013-1629</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1888">CVE-2013-1888</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1629">CVE-2013-1629</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1888">CVE-2013-1888</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 11 Jul 2013 20:41:57 +0000">
+  <metadata tag="requester" timestamp="2013-07-11T20:41:57Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Sep 2013 20:57:59 +0000">
+  <metadata tag="submitter" timestamp="2013-09-12T20:57:59Z">
     creffett
   </metadata>
 </glsa>

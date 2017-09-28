@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-19">
   <title>cURL: NTLM username stack overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">cURL</product>
-  <announced>October 22, 2005</announced>
-  <revised>October 22, 2005: 01</revised>
+  <announced>2005-10-22</announced>
+  <revised>2005-10-22: 01</revised>
   <bug>109097</bug>
   <access>remote</access>
   <affected>
@@ -53,16 +52,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.15.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.15.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3185">CVE-2005-3185</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3185">CVE-2005-3185</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=322&amp;type=vulnerabilities">iDefense Security Advisory 10.13.05</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 21 Oct 2005 09:04:01 +0000">
+  <metadata tag="submitter" timestamp="2005-10-21T09:04:01Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 21 Oct 2005 09:04:50 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-21T09:04:50Z">
     koon
   </metadata>
 </glsa>

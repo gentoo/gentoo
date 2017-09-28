@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-02">
   <title>MIT Kerberos 5: Arbitrary remote code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unauthenticated remote root code execution.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>April 03, 2007</announced>
-  <revised>April 03, 2007: 01</revised>
+  <announced>2007-04-03</announced>
+  <revised>2007-04-03: 01</revised>
   <bug>171889</bug>
   <access>remote</access>
   <affected>
@@ -54,17 +53,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.5.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.5.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0956">CVE-2007-0956</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0957">CVE-2007-0957</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1216">CVE-2007-1216</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0956">CVE-2007-0956</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0957">CVE-2007-0957</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1216">CVE-2007-1216</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 02 Apr 2007 16:29:27 +0000">
+  <metadata tag="submitter" timestamp="2007-04-02T16:29:27Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 20:30:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-03T20:30:58Z">
     vorlon
   </metadata>
 </glsa>

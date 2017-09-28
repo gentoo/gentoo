@@ -6,8 +6,8 @@
     server to execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">cpio</product>
-  <announced>November 28, 2013</announced>
-  <revised>November 28, 2013: 1</revised>
+  <announced>2013-11-28</announced>
+  <revised>2013-11-28: 1</revised>
   <bug>314663</bug>
   <access>remote</access>
   <affected>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0624">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0624">
       CVE-2010-0624
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:31 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:31Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:19:10 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-11-28T08:19:10Z">Zlogene</metadata>
 </glsa>

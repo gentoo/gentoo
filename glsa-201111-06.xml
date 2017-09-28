@@ -6,8 +6,8 @@
     to execute arbitrary code or cause a Denial of Service.
   </synopsis>
   <product type="ebuild">MaraDNS</product>
-  <announced>November 20, 2011</announced>
-  <revised>November 20, 2011: 1</revised>
+  <announced>2011-11-20</announced>
+  <revised>2011-11-20: 1</revised>
   <bug>352569</bug>
   <access>remote</access>
   <affected>
@@ -46,10 +46,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0520">CVE-2011-0520</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0520">CVE-2011-0520</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:03 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:03Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 20 Nov 2011 17:56:41 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-20T17:56:41Z" tag="submitter">ackle</metadata>
 </glsa>

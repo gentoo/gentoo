@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-23">
   <title>Sun JDK/JRE: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     (JDK) and Java Runtime Environment (JRE).
   </synopsis>
   <product type="ebuild">sun-jdk,sun-jre-bin</product>
-  <announced>May 31, 2007</announced>
-  <revised>May 28, 2009: 05</revised>
+  <announced>2007-05-31</announced>
+  <revised>2009-05-28: 05</revised>
   <bug>176675</bug>
   <bug>178851</bug>
   <access>remote</access>
@@ -74,27 +73,27 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-java/sun-jdk&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-java/sun-jdk"</code>
     <p>
     All Sun Java Runtime Environment users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-java/sun-jre-bin&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-java/sun-jre-bin"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 21 May 2007 03:51:23 +0000">
+  <metadata tag="requester" timestamp="2007-05-21T03:51:23Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 27 May 2007 22:03:03 +0000">
+  <metadata tag="submitter" timestamp="2007-05-27T22:03:03Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 31 May 2007 08:44:39 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-31T08:44:39Z">
     p-y
   </metadata>
 </glsa>

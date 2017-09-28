@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-22">
   <title>Squid: Multiple Denial of Service vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service attacks.
   </synopsis>
   <product type="ebuild">squid</product>
-  <announced>January 25, 2007</announced>
-  <revised>January 25, 2007: 01</revised>
+  <announced>2007-01-25</announced>
+  <revised>2007-01-25: 01</revised>
   <bug>162364</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/squid-2.6.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-2.6.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0247">CVE-2007-0247</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0248">CVE-2007-0248</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0247">CVE-2007-0247</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0248">CVE-2007-0248</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Jan 2007 16:59:17 +0000">
+  <metadata tag="requester" timestamp="2007-01-22T16:59:17Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 23 Jan 2007 10:26:06 +0000">
+  <metadata tag="submitter" timestamp="2007-01-23T10:26:06Z">
     hyakuhei
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 24 Jan 2007 12:52:50 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-24T12:52:50Z">
     hyakuhei
   </metadata>
 </glsa>

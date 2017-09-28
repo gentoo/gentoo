@@ -6,8 +6,8 @@
     execution of arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">FontForge</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>386293</bug>
   <access>remote</access>
   <affected>
@@ -49,10 +49,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4259">CVE-2010-4259</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4259">CVE-2010-4259</uri>
   </references>
-  <metadata timestamp="Wed, 12 Oct 2011 15:24:32 +0000" tag="requester">
+  <metadata timestamp="2011-10-12T15:24:32Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 11:57:55 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-23T11:57:55Z" tag="submitter">ackle</metadata>
 </glsa>

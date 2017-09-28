@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">libvirt</product>
-  <announced>September 25, 2013</announced>
-  <revised>September 25, 2013: 1</revised>
+  <announced>2013-09-25</announced>
+  <revised>2013-09-25: 1</revised>
   <bug>454588</bug>
   <bug>470096</bug>
   <access>remote</access>
@@ -49,11 +49,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0170">CVE-2013-0170</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1962">CVE-2013-1962</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0170">CVE-2013-0170</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1962">CVE-2013-1962</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 26 Feb 2013 00:00:24 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Sep 2013 16:52:55 +0000">
+  <metadata tag="requester" timestamp="2013-02-26T00:00:24Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-09-25T16:52:55Z">
     creffett
   </metadata>
 </glsa>

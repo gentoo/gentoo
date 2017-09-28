@@ -7,8 +7,8 @@
     cause Denial of Service.
   </synopsis>
   <product type="ebuild">udisks</product>
-  <announced>May 02, 2014</announced>
-  <revised>May 02, 2014: 1</revised>
+  <announced>2014-05-02</announced>
+  <revised>2014-05-02: 1</revised>
   <bug>504100</bug>
   <access>local</access>
   <affected>
@@ -53,10 +53,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0004">CVE-2014-0004</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0004">CVE-2014-0004</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 24 Mar 2014 22:02:46 +0000">
+  <metadata tag="requester" timestamp="2014-03-24T22:02:46Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 May 2014 06:36:09 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-05-02T06:36:09Z">Zlogene</metadata>
 </glsa>

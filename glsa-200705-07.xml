@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-07">
   <title>Lighttpd: Two Denials of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">lighttpd</product>
-  <announced>May 07, 2007</announced>
-  <revised>May 07, 2007: 01</revised>
+  <announced>2007-05-07</announced>
+  <revised>2007-05-07: 01</revised>
   <bug>174043</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/lighttpd-1.4.14"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1869">CVE-2007-1869</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1870">CVE-2007-1870</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1869">CVE-2007-1869</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1870">CVE-2007-1870</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 30 Apr 2007 09:09:47 +0000">
+  <metadata tag="requester" timestamp="2007-04-30T09:09:47Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 01 May 2007 19:04:44 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-01T19:04:44Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 May 2007 21:36:16 +0000">
+  <metadata tag="submitter" timestamp="2007-05-06T21:36:16Z">
     p-y
   </metadata>
 </glsa>

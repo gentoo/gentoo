@@ -4,8 +4,8 @@
   <title>xinetd: Privilege escalation </title>
   <synopsis>A vulnerability in xinetd could lead to privilege escalation.</synopsis>
   <product type="ebuild">xinetd</product>
-  <announced>November 15, 2016</announced>
-  <revised>November 15, 2016: 1</revised>
+  <announced>2016-11-15</announced>
+  <revised>2016-11-15: 1</revised>
   <bug>488158</bug>
   <access>remote</access>
   <affected>
@@ -37,10 +37,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4342">CVE-2013-4342</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4342">CVE-2013-4342</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:25:51 +0000">
+  <metadata tag="requester" timestamp="2015-12-23T23:25:51Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:16:41 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-15T07:16:41Z">b-man</metadata>
 </glsa>

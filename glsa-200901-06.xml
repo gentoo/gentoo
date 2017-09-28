@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-06">
   <title>Tremulous: User-assisted execution of arbitrary code</title>
   <synopsis>
     A buffer overflow vulnerability has been discovered in Tremulous.
   </synopsis>
   <product type="ebuild">tremulous tremulous-bin</product>
-  <announced>January 11, 2009</announced>
-  <revised>January 11, 2009: 01</revised>
+  <announced>2009-01-11</announced>
+  <revised>2009-01-11: 01</revised>
   <bug>222119</bug>
   <access>remote</access>
   <affected>
@@ -49,23 +48,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/tremulous-1.1.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-fps/tremulous-1.1.0-r2"</code>
     <p>
     Note: The binary version of Tremulous has been removed from the Portage
     tree.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2236">CVE-2006-2236</uri>
-    <uri link="/security/en/glsa/glsa-200605-12.xml">GLSA 200605-12</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2236">CVE-2006-2236</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200605-12.xml">GLSA 200605-12</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 13 Oct 2008 16:40:23 +0000">
+  <metadata tag="requester" timestamp="2008-10-13T16:40:23Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 22:54:22 +0000">
+  <metadata tag="submitter" timestamp="2009-01-10T22:54:22Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 22:54:33 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-10T22:54:33Z">
     p-y
   </metadata>
 </glsa>

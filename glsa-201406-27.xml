@@ -6,8 +6,8 @@
     escalated privileges.
   </synopsis>
   <product type="ebuild">polkit spice-gtk systemd hplip libvirt</product>
-  <announced>June 26, 2014</announced>
-  <revised>June 26, 2014: 1</revised>
+  <announced>2014-06-26</announced>
+  <revised>2014-06-26: 1</revised>
   <bug>484486</bug>
   <bug>484488</bug>
   <bug>485420</bug>
@@ -92,14 +92,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4288">CVE-2013-4288</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4311">CVE-2013-4311</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4324">CVE-2013-4324</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4325">CVE-2013-4325</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4327">CVE-2013-4327</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4288">CVE-2013-4288</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4311">CVE-2013-4311</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4324">CVE-2013-4324</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4325">CVE-2013-4325</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4327">CVE-2013-4327</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Sep 2013 15:18:50 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 26 Jun 2014 22:23:13 +0000">
+  <metadata tag="requester" timestamp="2013-09-29T15:18:50Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-06-26T22:23:13Z">
     creffett
   </metadata>
 </glsa>
