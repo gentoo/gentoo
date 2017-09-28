@@ -5318,7 +5318,7 @@ dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) addres
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-make 6.37.0 6.39.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-migrate-parsetree 1.0.3 1.0.4: Convert OCaml parsetrees between different major versions
-dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
+dev-ml/ocaml-mysql 1.2.1 1.2.2: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.3.5: Redis bindings for OCaml
@@ -7639,7 +7639,7 @@ dev-python/encore 0.5.1: Enthought Tool Suite: collection of core-level utility 
 dev-python/entrypoints 0.2.1 0.2.2 0.2.3: Discover and load entry points from installed packages
 dev-python/enum34 1.1.6: Python 3.4 Enum backported
 dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
-dev-python/envoy 0.0.3: Simple API for running external processes
+dev-python/envoy 0.0.3 0.0.3-r1: Simple API for running external processes
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/epsilon 0.7.0 0.7.1: Epsilon is a Python utilities package, most famous for its Time class
 dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python modules from docstrings
@@ -8685,7 +8685,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3 0.4: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.6.1 0.6.2 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.1.0-r1 1.1.1 1.1.2 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.1.2 1.1.3 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.8.5 2.8.6: Python interface to the R Programming Language
@@ -9331,7 +9331,7 @@ dev-ros/rqt_py_common 0.4.7 0.5.0 9999: Common functionality for rqt plugins wri
 dev-ros/rqt_py_console 0.4.7 0.4.8 9999: Python GUI plugin providing an interactive Python console
 dev-ros/rqt_reconfigure 0.4.7 0.4.8 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
 dev-ros/rqt_robot_dashboard 0.5.6 0.5.7 9999: Infrastructure for building robot dashboard plugins in rqt
-dev-ros/rqt_robot_monitor 0.5.6 0.5.7 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
+dev-ros/rqt_robot_monitor 0.5.6 0.5.7 0.5.8 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
 dev-ros/rqt_robot_steering 0.5.6 0.5.7 9999: GUI plugin for steering a robot using Twist messages
 dev-ros/rqt_runtime_monitor 0.5.6 0.5.7 9999: GUI plugin viewing DiagnosticsArray messages
 dev-ros/rqt_rviz 0.5.6 0.5.7 0.5.8 9999: GUI plugin embedding RViz
@@ -12784,7 +12784,7 @@ media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/opencsg 1.4.2: The Constructive Solid Geometry rendering library
-media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
+media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0 2.2.0-r1: OpenEXR Viewers
 media-gfx/openmesh 4.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2015.03_p2-r1 2015.03_p2-r2 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation software
@@ -12920,7 +12920,7 @@ media-libs/clutter-gtk 1.8.2 1.8.4: Library for embedding a Clutter canvas (stag
 media-libs/cogl 1.22.2: A library for using 3D graphics hardware to draw pretty pictures
 media-libs/coin 3.1.3-r2: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
-media-libs/ctl 1.4.1: AMPAS' Color Transformation Language
+media-libs/ctl 1.4.1 1.5.2: AMPAS' Color Transformation Language
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
@@ -12984,7 +12984,7 @@ media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing
 media-libs/icc-profiles-openicc 1.3.0 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
-media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
+media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 1.4.10 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/jasper 2.0.12 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
@@ -13186,7 +13186,7 @@ media-libs/opencolorio 1.0.9-r2 1.0.9_p20170719: A color management framework fo
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
 media-libs/opencv 2.4.13 2.4.13-r2 3.1.0-r8 3.2.0-r2 3.2.0-r3 3.3.0-r1: A collection of algorithms and sample code for various computer vision problems
-media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: ILM's OpenEXR high dynamic-range image file format libraries
+media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1 2.2.0-r2: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
 media-libs/openh264 1.4.0-r1 1.5.0 1.7.0: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
