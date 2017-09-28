@@ -569,7 +569,7 @@ app-crypt/md4sum 0.02.03-r1: md4 and edonkey hash algorithm tool
 app-crypt/md5deep 4.3 4.4: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
-app-crypt/mit-krb5 1.14.2 1.14.3 1.14.4 1.14.5 1.15 1.15.1: MIT Kerberos V
+app-crypt/mit-krb5 1.14.2 1.14.3 1.14.4 1.14.5 1.15 1.15.1 1.15.2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysign 2.2.3: A user-friendly commandline tool to sign OpenGPG keys
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
@@ -15381,7 +15381,7 @@ net-misc/ps3mediaserver 1.90.1: DLNA compliant UPNP server for streaming media t
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
 net-misc/ptpd 2.3.1 2.3.1-r1: Precision Time Protocol daemon
 net-misc/puf 1.0.0 1.0.0-r1: A download tool for UNIX-like systems
-net-misc/pulseaudio-dlna 0.5.2: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
+net-misc/pulseaudio-dlna 0.5.2 0.5.2-r1: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.68 0.69 0.70 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
