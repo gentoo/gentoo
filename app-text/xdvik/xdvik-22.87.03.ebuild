@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic elisp-common toolchain-funcs multilib
+inherit elisp-common eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="DVI previewer for X Window System"
 HOMEPAGE="http://xdvi.sourceforge.net/"
@@ -92,10 +92,16 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+
 	if use emacs; then
 		elog "Add"
 		elog "	(add-to-list 'load-path \"${EPREFIX}${SITELISP}/tex-utils\")"
 		elog "	(require 'xdvi-search)"
 		elog "to your ~/.emacs file"
 	fi
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
