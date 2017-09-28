@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
-RDEPEND=">=virtual/jdk-1.7:=
+RDEPEND=">=virtual/jdk-1.8:=
 	 dev-java/javassist:3
 	 dev-java/commons-lang:3.1"
 
