@@ -11,7 +11,7 @@ DESCRIPTION="Access the libmagic file type identification library"
 HOMEPAGE="https://github.com/ahupp/python-magic"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="PSF-2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
 IUSE=""
