@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-03">
   <title>Dnsmasq: Poisoning and Denial of Service vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of Service from the local network.
   </synopsis>
   <product type="ebuild">Dnsmasq</product>
-  <announced>April 04, 2005</announced>
-  <revised>April 04, 2005: 01</revised>
+  <announced>2005-04-04</announced>
+  <revised>2005-04-04: 01</revised>
   <bug>86718</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/dnsmasq-2.22&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/dnsmasq-2.22"</code>
   </resolution>
   <references>
     <uri link="http://www.thekelleys.org.uk/dnsmasq/CHANGELOG">Dnsmasq Changelog</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Mar 2005 07:00:46 +0000">
+  <metadata tag="requester" timestamp="2005-03-28T07:00:46Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Mar 2005 13:54:22 +0000">
+  <metadata tag="submitter" timestamp="2005-03-28T13:54:22Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon,  4 Apr 2005 11:10:45 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-04T11:10:45Z">
     koon
   </metadata>
 </glsa>

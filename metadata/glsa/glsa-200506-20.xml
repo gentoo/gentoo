@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-20">
   <title>Cacti: Several vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     file inclusion vulnerabilities.
   </synopsis>
   <product type="ebuild">cacti</product>
-  <announced>June 22, 2005</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2005-06-22</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>96243</bug>
   <bug>97475</bug>
   <access>remote</access>
@@ -52,29 +51,29 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/cacti-0.8.6f&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-0.8.6f"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
     </p>
   </resolution>
   <references>
-    <uri link="http://www.cacti.net/release_notes_0_8_6e.php">Cacti Release Notes - 0.8.6e</uri>
+    <uri link="https://www.cacti.net/release_notes_0_8_6e.php">Cacti Release Notes - 0.8.6e</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=267&amp;type=vulnerabilities&amp;flashstatus=false">iDEFENSE SQL injection advisory</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=266&amp;type=vulnerabilities&amp;flashstatus=false">iDEFENSE config_settings advisory</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=265&amp;type=vulnerabilities&amp;flashstatus=false">iDEFENSE remote file inclusion advisory</uri>
-    <uri link="http://www.cacti.net/release_notes_0_8_6f.php">Cacti  Release Notes - 0.8.6f</uri>
-    <uri link="http://www.hardened-php.net/advisory-032005.php">Hardened - PHP Project Cacti Multiple SQL Injection Vulnerabilities</uri>
-    <uri link="http://www.hardened-php.net/advisory-042005.php">Hardened - PHP Project Cacti Remote Command Execution Vulnerability</uri>
-    <uri link="http://www.hardened-php.net/advisory-052005.php">Hardened - PHP Project Cacti Authentification/Addslashes Bypass Vulnerability</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1524">CVE-2005-1524</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1525">CVE-2005-1525</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1526">CVE-2005-1526</uri>
+    <uri link="https://www.cacti.net/release_notes_0_8_6f.php">Cacti  Release Notes - 0.8.6f</uri>
+    <uri link="https://www.hardened-php.net/advisory-032005.php">Hardened - PHP Project Cacti Multiple SQL Injection Vulnerabilities</uri>
+    <uri link="https://www.hardened-php.net/advisory-042005.php">Hardened - PHP Project Cacti Remote Command Execution Vulnerability</uri>
+    <uri link="https://www.hardened-php.net/advisory-052005.php">Hardened - PHP Project Cacti Authentification/Addslashes Bypass Vulnerability</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1524">CVE-2005-1524</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1525">CVE-2005-1525</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1526">CVE-2005-1526</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 21 Jun 2005 20:41:03 +0000">
+  <metadata tag="submitter" timestamp="2005-06-21T20:41:03Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 22 Jun 2005 08:16:34 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-22T08:16:34Z">
     koon
   </metadata>
 </glsa>

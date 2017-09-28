@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">dhcpcd</product>
-  <announced>September 03, 2014</announced>
-  <revised>September 03, 2014: 1</revised>
+  <announced>2014-09-03</announced>
+  <revised>2014-09-03: 1</revised>
   <bug>518596</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6060">CVE-2014-6060</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6060">CVE-2014-6060</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 01 Aug 2014 20:16:47 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Wed, 03 Sep 2014 15:31:47 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-08-01T20:16:47Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-09-03T15:31:47Z">Zlogene</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which allows remote attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">fail2ban</product>
-  <announced>June 01, 2014</announced>
-  <revised>June 01, 2014: 1</revised>
+  <announced>2014-06-01</announced>
+  <revised>2014-06-01: 1</revised>
   <bug>364883</bug>
   <bug>473118</bug>
   <bug>499802</bug>
@@ -50,12 +50,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5023">CVE-2009-5023</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2178">CVE-2013-2178</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7176">CVE-2013-7176</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5023">CVE-2009-5023</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2178">CVE-2013-2178</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7176">CVE-2013-7176</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:06 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jun 2014 15:17:17 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:06Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-06-01T15:17:17Z">
     pinkbyte
   </metadata>
 </glsa>

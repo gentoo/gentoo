@@ -6,8 +6,8 @@
     of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libexif</product>
-  <announced>January 19, 2014</announced>
-  <revised>January 19, 2014: 1</revised>
+  <announced>2014-01-19</announced>
+  <revised>2014-01-19: 1</revised>
   <bug>426366</bug>
   <access>remote</access>
   <affected>
@@ -61,15 +61,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2812">CVE-2012-2812</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2813">CVE-2012-2813</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2814">CVE-2012-2814</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2836">CVE-2012-2836</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2837">CVE-2012-2837</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2840">CVE-2012-2840</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2841">CVE-2012-2841</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2845">CVE-2012-2845</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2812">CVE-2012-2812</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2813">CVE-2012-2813</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2814">CVE-2012-2814</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2836">CVE-2012-2836</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2837">CVE-2012-2837</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2840">CVE-2012-2840</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2841">CVE-2012-2841</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2845">CVE-2012-2845</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Jul 2012 17:42:17 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 19 Jan 2014 15:10:21 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-07-22T17:42:17Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-01-19T15:10:21Z">ackle</metadata>
 </glsa>

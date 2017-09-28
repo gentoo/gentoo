@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-30">
   <title>ssl-cert eclass: Certificate disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allow for disclosure of generated SSL private keys.
   </synopsis>
   <product type="ebuild">ssl-cert.eclass</product>
-  <announced>March 20, 2008</announced>
-  <revised>March 20, 2008: 01</revised>
+  <announced>2008-03-20</announced>
+  <revised>2008-03-20: 01</revised>
   <bug>174759</bug>
   <access>remote</access>
   <affected>
@@ -94,75 +93,75 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/conserver-8.1.16&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/conserver-8.1.16"</code>
     <p>
     All Postfix 2.4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.4.6-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/postfix-2.4.6-r2"</code>
     <p>
     All Postfix 2.3 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.3.8-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/postfix-2.3.8-r1"</code>
     <p>
     All Postfix 2.2 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.2.11-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/postfix-2.2.11-r1"</code>
     <p>
     All Netkit FTP Server users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/netkit-ftpd-0.17-r7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-ftp/netkit-ftpd-0.17-r7"</code>
     <p>
     All ejabberd users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/ejabberd-1.1.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/ejabberd-1.1.3"</code>
     <p>
     All UnrealIRCd users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/unrealircd-3.2.7-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/unrealircd-3.2.7-r2"</code>
     <p>
     All Cyrus IMAP Server users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/cyrus-imapd-2.3.9-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/cyrus-imapd-2.3.9-r1"</code>
     <p>
     All Dovecot users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/dovecot-1.0.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-1.0.10"</code>
     <p>
     All stunnel 4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/stunnel-4.21&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/stunnel-4.21"</code>
     <p>
     All InterNetNews users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-nntp/inn-2.4.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-nntp/inn-2.4.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1383">CVE-2008-1383</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1383">CVE-2008-1383</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 14 Mar 2008 23:17:10 +0000">
+  <metadata tag="submitter" timestamp="2008-03-14T23:17:10Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 15 Mar 2008 00:11:06 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-15T00:11:06Z">
     rbu
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code with root privileges.
   </synopsis>
   <product type="ebuild">Samba</product>
-  <announced>June 24, 2012</announced>
-  <revised>June 24, 2012: 1</revised>
+  <announced>2012-06-24</announced>
+  <revised>2012-06-24: 1</revised>
   <bug>290633</bug>
   <bug>310105</bug>
   <bug>323785</bug>
@@ -55,22 +55,22 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2906">CVE-2009-2906</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2948">CVE-2009-2948</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0728">CVE-2010-0728</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1635">CVE-2010-1635</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1642">CVE-2010-1642</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2063">CVE-2010-2063</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3069">CVE-2010-3069</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0719">CVE-2011-0719</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1678">CVE-2011-1678</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2724">CVE-2011-2724</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0870">CVE-2012-0870</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1182">CVE-2012-1182</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2111">CVE-2012-2111</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2906">CVE-2009-2906</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2948">CVE-2009-2948</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0728">CVE-2010-0728</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1635">CVE-2010-1635</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1642">CVE-2010-1642</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2063">CVE-2010-2063</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3069">CVE-2010-3069</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0719">CVE-2011-0719</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1678">CVE-2011-1678</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2724">CVE-2011-2724</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0870">CVE-2012-0870</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1182">CVE-2012-1182</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2111">CVE-2012-2111</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:36:59 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:36:59Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 24 Jun 2012 12:38:35 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-24T12:38:35Z" tag="submitter">ackle</metadata>
 </glsa>

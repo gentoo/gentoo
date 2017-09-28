@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-20">
   <title>libxml2: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been reported in libxml2.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>January 30, 2008</announced>
-  <revised>January 30, 2008: 01</revised>
+  <announced>2008-01-30</announced>
+  <revised>2008-01-30: 01</revised>
   <bug>202628</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/libxml2-2.6.30-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.6.30-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6284">CVE-2007-6284</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6284">CVE-2007-6284</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 12 Jan 2008 01:14:43 +0000">
+  <metadata tag="requester" timestamp="2008-01-12T01:14:43Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Jan 2008 19:48:32 +0000">
+  <metadata tag="submitter" timestamp="2008-01-28T19:48:32Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 28 Jan 2008 19:48:45 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-28T19:48:45Z">
     p-y
   </metadata>
 </glsa>

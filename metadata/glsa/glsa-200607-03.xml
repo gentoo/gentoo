@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200607-03">
   <title>libTIFF: Multiple buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution.
   </synopsis>
   <product type="ebuild">tiff</product>
-  <announced>July 09, 2006</announced>
-  <revised>July 09, 2006: 01</revised>
+  <announced>2006-07-09</announced>
+  <revised>2006-07-09: 01</revised>
   <bug>135881</bug>
   <access>remote</access>
   <affected>
@@ -48,16 +47,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.8.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/tiff-3.8.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2193">CVE-2006-2193</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2656">CVE-2006-2656</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2193">CVE-2006-2193</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2656">CVE-2006-2656</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 05 Jul 2006 16:38:15 +0000">
+  <metadata tag="submitter" timestamp="2006-07-05T16:38:15Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 05 Jul 2006 16:38:38 +0000">
+  <metadata tag="bugReady" timestamp="2006-07-05T16:38:38Z">
     falco
   </metadata>
 </glsa>

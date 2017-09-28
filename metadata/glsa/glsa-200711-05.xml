@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-05">
   <title>SiteBar: Multiple issues</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code and arbitrary file disclosure.
   </synopsis>
   <product type="ebuild">sitebar</product>
-  <announced>November 06, 2007</announced>
-  <revised>November 06, 2007: 01</revised>
+  <announced>2007-11-06</announced>
+  <revised>2007-11-06: 01</revised>
   <bug>195810</bug>
   <access>remote</access>
   <affected>
@@ -59,20 +58,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/sitebar-3.3.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/sitebar-3.3.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5491">CVE-2007-5491</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5492">CVE-2007-5492</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5692">CVE-2007-5692</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5693">CVE-2007-5693</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5694">CVE-2007-5694</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5695">CVE-2007-5695</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5491">CVE-2007-5491</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5492">CVE-2007-5492</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5692">CVE-2007-5692</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5693">CVE-2007-5693</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5694">CVE-2007-5694</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5695">CVE-2007-5695</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 18 Oct 2007 20:00:51 +0000">
+  <metadata tag="submitter" timestamp="2007-10-18T20:00:51Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 18 Oct 2007 20:01:07 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-18T20:01:07Z">
     rbu
   </metadata>
 </glsa>

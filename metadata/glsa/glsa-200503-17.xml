@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-17">
   <title>libexif: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overflows.
   </synopsis>
   <product type="ebuild">libexif</product>
-  <announced>March 12, 2005</announced>
-  <revised>March 12, 2005: 01</revised>
+  <announced>2005-03-12</announced>
+  <revised>2005-03-12: 01</revised>
   <bug>84076</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libexif-0.5.12-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libexif-0.5.12-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0664">CAN-2005-0664</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0664">CAN-2005-0664</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 12 Mar 2005 16:28:06 +0000">
+  <metadata tag="requester" timestamp="2005-03-12T16:28:06Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Mar 2005 17:56:45 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-12T17:56:45Z">
     lewk
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 12 Mar 2005 18:48:27 +0000">
+  <metadata tag="submitter" timestamp="2005-03-12T18:48:27Z">
     lewk
   </metadata>
 </glsa>

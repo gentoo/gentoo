@@ -6,8 +6,8 @@
     causes a Denial of Service condition.
   </synopsis>
   <product type="ebuild">icecast</product>
-  <announced>August 15, 2015</announced>
-  <revised>August 15, 2015: 1</revised>
+  <announced>2015-08-15</announced>
+  <revised>2015-08-15: 1</revised>
   <bug>545968</bug>
   <access>remote</access>
   <affected>
@@ -46,8 +46,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3026">CVE-2015-3026</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3026">CVE-2015-3026</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:10:32 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 15 Aug 2015 13:08:56 +0000">mrueg</metadata>
+  <metadata tag="requester" timestamp="2015-05-11T16:10:32Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-08-15T13:08:56Z">mrueg</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     overflows and possible Denials of Service.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>June 26, 2016</announced>
-  <revised>June 26, 2016: 1</revised>
+  <announced>2016-06-26</announced>
+  <revised>2016-06-26: 1</revised>
   <bug>534106</bug>
   <bug>562892</bug>
   <access>remote</access>
@@ -60,8 +60,8 @@
       Integer and Buffer overflow in coders/icon.c
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 17 Jan 2015 17:37:18 +0000">
+  <metadata tag="requester" timestamp="2015-01-17T17:37:18Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 13:53:19 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-26T13:53:19Z">b-man</metadata>
 </glsa>

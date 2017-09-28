@@ -3,9 +3,9 @@
 <glsa id="201401-08">
   <title>NTP: Traffic amplification</title>
   <synopsis>NTP can be abused to amplify Denial of Service attack traffic.</synopsis>
-  <product type="ebuild"></product>
-  <announced>January 16, 2014</announced>
-  <revised>January 16, 2014: 1</revised>
+  <product type="ebuild"/>
+  <announced>2014-01-16</announced>
+  <revised>2014-01-16: 1</revised>
   <bug>496776</bug>
   <access>remote</access>
   <affected>
@@ -59,13 +59,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5211">CVE-2013-5211</uri>
-    <uri link="http://www.kb.cert.org/vuls/id/348126">VU#348126</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5211">CVE-2013-5211</uri>
+    <uri link="https://www.kb.cert.org/vuls/id/348126">VU#348126</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Jan 2014 20:55:36 +0000">
+  <metadata tag="requester" timestamp="2014-01-16T20:55:36Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 16 Jan 2014 22:31:29 +0000">
+  <metadata tag="submitter" timestamp="2014-01-16T22:31:29Z">
     keytoaster
   </metadata>
 </glsa>

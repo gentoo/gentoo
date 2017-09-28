@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-21">
   <title>Heimdal: Multiple local privilege escalation vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privilege escalation.
   </synopsis>
   <product type="ebuild">Heimdal</product>
-  <announced>August 23, 2006</announced>
-  <revised>August 23, 2006: 01</revised>
+  <announced>2006-08-23</announced>
+  <revised>2006-08-23: 01</revised>
   <bug>143371</bug>
   <access>local</access>
   <affected>
@@ -46,20 +45,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/heimdal-0.7.2-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/heimdal-0.7.2-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.pdc.kth.se/heimdal/advisory/2006-08-08/">Official advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3083">CVE-2006-3083</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3084">CVE-2006-3084</uri>
+    <uri link="https://www.pdc.kth.se/heimdal/advisory/2006-08-08/">Official advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3083">CVE-2006-3083</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3084">CVE-2006-3084</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 12 Aug 2006 15:34:55 +0000">
+  <metadata tag="requester" timestamp="2006-08-12T15:34:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 13 Aug 2006 22:34:21 +0000">
+  <metadata tag="submitter" timestamp="2006-08-13T22:34:21Z">
     daxomatic
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 14 Aug 2006 15:19:23 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-14T15:19:23Z">
     falco
   </metadata>
 </glsa>

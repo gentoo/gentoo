@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-23">
   <title>Zwiki: XSS vulnerability</title>
   <synopsis>
     Zwiki is vulnerable to cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">zwiki</product>
-  <announced>December 21, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-12-21</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>72315</bug>
   <access>remote</access>
   <affected>
@@ -46,19 +45,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-zope/zwiki-0.36.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-zope/zwiki-0.36.2-r1"</code>
   </resolution>
   <references>
     <uri link="http://zwiki.org/925ZwikiXSSVulnerability">Zwiki Bug Report</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1075">CVE-2004-1075</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1075">CVE-2004-1075</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Dec 2004 16:09:23 +0000">
+  <metadata tag="requester" timestamp="2004-12-21T16:09:23Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Dec 2004 16:33:56 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-21T16:33:56Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Dec 2004 21:14:05 +0000">
+  <metadata tag="submitter" timestamp="2004-12-21T21:14:05Z">
     lewk
   </metadata>
 </glsa>

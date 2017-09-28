@@ -6,8 +6,8 @@
     context-dependent attackers to conduct symlink attacks. 
   </synopsis>
   <product type="ebuild">groff</product>
-  <announced>October 25, 2013</announced>
-  <revised>October 25, 2013: 1</revised>
+  <announced>2013-10-25</announced>
+  <revised>2013-10-25: 1</revised>
   <bug>386335</bug>
   <access>local, remote</access>
   <affected>
@@ -41,17 +41,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5044">CVE-2009-5044</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5078">CVE-2009-5078</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5079">CVE-2009-5079</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5080">CVE-2009-5080</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5081">CVE-2009-5081</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5082">CVE-2009-5082</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5044">CVE-2009-5044</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5078">CVE-2009-5078</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5079">CVE-2009-5079</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5080">CVE-2009-5080</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5081">CVE-2009-5081</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5082">CVE-2009-5082</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 10 Oct 2013 02:36:54 +0000">
+  <metadata tag="requester" timestamp="2013-10-10T02:36:54Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 25 Oct 2013 22:46:33 +0000">
+  <metadata tag="submitter" timestamp="2013-10-25T22:46:33Z">
     BlueKnight
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     access the GPU inappropriately, allowing for privilege escalation.
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
-  <announced>February 02, 2014</announced>
-  <revised>March 13, 2014: 3</revised>
+  <announced>2014-02-02</announced>
+  <revised>2014-03-13: 3</revised>
   <bug>493448</bug>
   <access>local</access>
   <affected>
@@ -68,13 +68,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5986">CVE-2013-5986</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5987">CVE-2013-5987</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5986">CVE-2013-5986</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5987">CVE-2013-5987</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Dec 2013 04:12:07 +0000">
+  <metadata tag="requester" timestamp="2013-12-14T04:12:07Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 13 Mar 2014 06:49:59 +0000">
+  <metadata tag="submitter" timestamp="2014-03-13T06:49:59Z">
     BlueKnight
   </metadata>
 </glsa>

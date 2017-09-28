@@ -43,7 +43,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7692">CVE-2017-7692</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7692">CVE-2017-7692</uri>
   </references>
   <metadata tag="requester" timestamp="2017-09-08T23:47:24Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-09-17T20:28:22Z">b-man</metadata>

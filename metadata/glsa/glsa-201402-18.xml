@@ -7,8 +7,8 @@
     Service.
   </synopsis>
   <product type="ebuild">mc</product>
-  <announced>February 20, 2014</announced>
-  <revised>February 20, 2014: 1</revised>
+  <announced>2014-02-20</announced>
+  <revised>2014-02-20: 1</revised>
   <bug>436518</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4463">CVE-2012-4463</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4463">CVE-2012-4463</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Jan 2013 21:11:02 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 20 Feb 2014 10:53:52 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-01-15T21:11:02Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-02-20T10:53:52Z">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which could allow attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">blender</product>
-  <announced>November 13, 2013</announced>
-  <revised>November 13, 2013: 1</revised>
+  <announced>2013-11-13</announced>
+  <revised>2013-11-13: 1</revised>
   <bug>219008</bug>
   <bug>293130</bug>
   <access>local, remote</access>
@@ -43,14 +43,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1102">CVE-2008-1102</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1103">CVE-2008-1103</uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3850">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1102">CVE-2008-1102</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1103">CVE-2008-1103</uri>
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3850">
       CVE-2009-3850
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:20 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:20Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Nov 2013 11:12:41 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-11-13T11:12:41Z">Zlogene</metadata>
 </glsa>

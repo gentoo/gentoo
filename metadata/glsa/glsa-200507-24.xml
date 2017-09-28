@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-24">
   <title>Mozilla Suite: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     leakage.
   </synopsis>
   <product type="ebuild">mozilla</product>
-  <announced>July 26, 2005</announced>
-  <revised>July 26, 2005: 01</revised>
+  <announced>2005-07-26</announced>
+  <revised>2005-07-26: 01</revised>
   <bug>98846</bug>
   <access>remote</access>
   <affected>
@@ -86,25 +85,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-1.7.10"</code>
     <p>
     All Mozilla Suite binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-bin-1.7.10"</code>
   </resolution>
   <references>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Mozilla">Mozilla Foundation Security Advisories</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#Mozilla">Mozilla Foundation Security Advisories</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Jul 2005 18:08:05 +0000">
+  <metadata tag="requester" timestamp="2005-07-23T18:08:05Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 23 Jul 2005 18:09:18 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-23T18:09:18Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 24 Jul 2005 07:24:03 +0000">
+  <metadata tag="submitter" timestamp="2005-07-24T07:24:03Z">
     adir
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-09">
   <title>Buffer overflow in Midnight Commander</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code to be run on a user's computer
   </synopsis>
   <product type="ebuild">mc</product>
-  <announced>March 29, 2004</announced>
-  <revised>March 29, 2004: 01</revised>
+  <announced>2004-03-29</announced>
+  <revised>2004-03-29: 01</revised>
   <bug>45957</bug>
   <access>remote</access>
   <affected>
@@ -48,10 +47,10 @@
     <code>
     # emerge sync
     
-    # emerge -pv ">=app-misc/mc-4.6.0-r5"
-    # emerge ">=app-misc/mc-4.6.0-r5"</code>
+    # emerge -pv "&gt;=app-misc/mc-4.6.0-r5"
+    # emerge "&gt;=app-misc/mc-4.6.0-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-1023">CAN-2003-1023</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-1023">CAN-2003-1023</uri>
   </references>
 </glsa>

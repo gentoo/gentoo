@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200808-07">
   <title>ClamAV: Multiple Denials of Service</title>
   <synopsis>
     Multiple vulnerabilities in ClamAV may result in a Denial of Service.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>August 08, 2008</announced>
-  <revised>August 08, 2008: 01</revised>
+  <announced>2008-08-08</announced>
+  <revised>2008-08-08: 01</revised>
   <bug>204340</bug>
   <bug>227351</bug>
   <access>remote</access>
@@ -53,20 +52,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.93.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.93.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6595">CVE-2007-6595</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2713">CVE-2008-2713</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3215">CVE-2008-3215</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6595">CVE-2007-6595</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2713">CVE-2008-2713</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3215">CVE-2008-3215</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 03 Aug 2008 21:50:46 +0000">
+  <metadata tag="requester" timestamp="2008-08-03T21:50:46Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 05 Aug 2008 21:44:31 +0000">
+  <metadata tag="submitter" timestamp="2008-08-05T21:44:31Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 05 Aug 2008 21:46:23 +0000">
+  <metadata tag="bugReady" timestamp="2008-08-05T21:46:23Z">
     falco
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-21">
   <title>fetchmail: Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service or arbitrary code execution.
   </synopsis>
   <product type="ebuild">fetchmail</product>
-  <announced>July 25, 2005</announced>
-  <revised>July 25, 2005: 01</revised>
+  <announced>2005-07-25</announced>
+  <revised>2005-07-25: 01</revised>
   <bug>99865</bug>
   <access>remote</access>
   <affected>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/fetchmail-6.2.5.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/fetchmail-6.2.5.2"</code>
   </resolution>
   <references>
     <uri link="http://fetchmail.berlios.de/fetchmail-SA-2005-01.txt">Fetchmail Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2335">CAN-2005-2335</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2335">CAN-2005-2335</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 22 Jul 2005 05:37:13 +0000">
+  <metadata tag="submitter" timestamp="2005-07-22T05:37:13Z">
     r2d2
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 24 Jul 2005 07:43:36 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-24T07:43:36Z">
     adir
   </metadata>
 </glsa>

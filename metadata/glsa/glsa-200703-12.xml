@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-12">
   <title>SILC Server: Denial of Service</title>
   <synopsis>
     SILC Server is affected by a Denial of Service vulnerability.
   </synopsis>
   <product type="ebuild">silc-server</product>
-  <announced>March 14, 2007</announced>
-  <revised>March 14, 2007: 01</revised>
+  <announced>2007-03-14</announced>
+  <revised>2007-03-14: 01</revised>
   <bug>169599</bug>
   <access>remote</access>
   <affected>
@@ -47,16 +46,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-server-1.0.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/silc-server-1.0.2-r1"</code>
   </resolution>
   <references/>
-  <metadata tag="requester" timestamp="Wed, 07 Mar 2007 14:35:02 +0000">
+  <metadata tag="requester" timestamp="2007-03-07T14:35:02Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 07 Mar 2007 14:57:46 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-07T14:57:46Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 07 Mar 2007 15:20:03 +0000">
+  <metadata tag="submitter" timestamp="2007-03-07T15:20:03Z">
     vorlon
   </metadata>
 </glsa>

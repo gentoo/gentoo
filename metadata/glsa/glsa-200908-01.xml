@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200908-01">
   <title>OpenSC: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities were found in OpenSC.
   </synopsis>
   <product type="ebuild">opensc</product>
-  <announced>August 01, 2009</announced>
-  <revised>August 01, 2009: 01</revised>
+  <announced>2009-08-01</announced>
+  <revised>2009-08-01: 01</revised>
   <bug>260514</bug>
   <bug>269920</bug>
   <access>local</access>
@@ -60,20 +59,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/opensc-0.11.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/opensc-0.11.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0368">CVE-2009-0368</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1603">CVE-2009-1603</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0368">CVE-2009-0368</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1603">CVE-2009-1603</uri>
     <uri link="http://www.opensc-project.org/pipermail/opensc-announce/2009-February/000023.html">OpenSC Security Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Jun 2009 16:49:20 +0000">
+  <metadata tag="requester" timestamp="2009-06-24T16:49:20Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 29 Jul 2009 17:15:19 +0000">
+  <metadata tag="submitter" timestamp="2009-07-29T17:15:19Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 01 Aug 2009 12:35:17 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-01T12:35:17Z">
     keytoaster
   </metadata>
 </glsa>

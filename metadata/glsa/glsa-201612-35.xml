@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">xstream</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>497652</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7285">CVE-2013-7285</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7285">CVE-2013-7285</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 21:29:45 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:12 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-29T21:29:45Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T06:59:12Z">whissi</metadata>
 </glsa>

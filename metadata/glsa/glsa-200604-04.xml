@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200604-04">
   <title>Kaffeine: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">kaffeine</product>
-  <announced>April 05, 2006</announced>
-  <revised>April 05, 2006: 01</revised>
+  <announced>2006-04-05</announced>
+  <revised>2006-04-05: 01</revised>
   <bug>127326</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/kaffeine-0.7.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/kaffeine-0.7.1-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0051">CVE-2006-0051</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20060404-1.txt">KDE Security Advisory: Kaffeine buffer overflow</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0051">CVE-2006-0051</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20060404-1.txt">KDE Security Advisory: Kaffeine buffer overflow</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Apr 2006 13:17:18 +0000">
+  <metadata tag="requester" timestamp="2006-04-04T13:17:18Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Apr 2006 19:29:42 +0000">
+  <metadata tag="submitter" timestamp="2006-04-04T19:29:42Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 05 Apr 2006 21:13:35 +0000">
+  <metadata tag="bugReady" timestamp="2006-04-05T21:13:35Z">
     jaervosz
   </metadata>
 </glsa>

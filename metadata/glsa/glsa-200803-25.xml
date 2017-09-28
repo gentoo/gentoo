@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-25">
   <title>Dovecot: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     argument injection.
   </synopsis>
   <product type="ebuild">dovecot</product>
-  <announced>March 18, 2008</announced>
-  <revised>March 18, 2008: 01</revised>
+  <announced>2008-03-18</announced>
+  <revised>2008-03-18: 01</revised>
   <bug>212336</bug>
   <bug>213030</bug>
   <access>remote</access>
@@ -60,23 +59,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/dovecot-1.0.13-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-1.0.13-r1"</code>
     <p>
     This version removes the "mail_extra_groups" option and introduces a
     "mail_privileged_group" setting which is handled safely.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1199">CVE-2008-1199</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1218">CVE-2008-1218</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1199">CVE-2008-1199</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1218">CVE-2008-1218</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 11 Mar 2008 18:35:36 +0000">
+  <metadata tag="requester" timestamp="2008-03-11T18:35:36Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 12 Mar 2008 01:34:31 +0000">
+  <metadata tag="submitter" timestamp="2008-03-12T01:34:31Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 18 Mar 2008 11:19:55 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-18T11:19:55Z">
     rbu
   </metadata>
 </glsa>

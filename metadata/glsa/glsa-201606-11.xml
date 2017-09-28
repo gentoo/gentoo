@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in claws-mail,
     particularly in the default SSL implementation.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 26, 2016</announced>
-  <revised>June 26, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-26</announced>
+  <revised>2016-06-26: 1</revised>
   <bug>525588</bug>
   <bug>569010</bug>
   <bug>570692</bug>
@@ -43,14 +43,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8614">CVE-2015-8614</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8614">CVE-2015-8614</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8708">CVE-2015-8708</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8708">CVE-2015-8708</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3566">CVE-2014-3566</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8614">CVE-2015-8614</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8614">CVE-2015-8614</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8708">CVE-2015-8708</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8708">CVE-2015-8708</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 26 Apr 2016 06:27:10 +0000">
+  <metadata tag="requester" timestamp="2016-04-26T06:27:10Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 12:30:09 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-26T12:30:09Z">b-man</metadata>
 </glsa>

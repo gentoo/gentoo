@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-19">
   <title>glibc: Insecure tempfile handling in catchsegv script</title>
   <synopsis>
@@ -9,8 +8,8 @@
     rights of the user running the script.
   </synopsis>
   <product type="ebuild">glibc</product>
-  <announced>October 21, 2004</announced>
-  <revised>October 21, 2004: 01</revised>
+  <announced>2004-10-21</announced>
+  <revised>2004-10-21: 01</revised>
   <bug>66358</bug>
   <access>local</access>
   <affected>
@@ -59,15 +58,15 @@
     # emerge sys-libs/glibc</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0968">CAN-2004-0968</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0968">CAN-2004-0968</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 20 Oct 2004 14:29:16 +0000">
+  <metadata tag="requester" timestamp="2004-10-20T14:29:16Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 20 Oct 2004 14:29:39 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-20T14:29:39Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Oct 2004 16:11:58 +0000">
+  <metadata tag="submitter" timestamp="2004-10-20T16:11:58Z">
     lewk
   </metadata>
 </glsa>

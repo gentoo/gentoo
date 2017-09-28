@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">libmodplug</product>
-  <announced>March 16, 2012</announced>
-  <revised>March 16, 2012: 2</revised>
+  <announced>2012-03-16</announced>
+  <revised>2012-03-16: 2</revised>
   <bug>362503</bug>
   <bug>379557</bug>
   <access>remote</access>
@@ -70,15 +70,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1574">CVE-2011-1574</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2911">CVE-2011-2911</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2912">CVE-2011-2912</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2913">CVE-2011-2913</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2914">CVE-2011-2914</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2915">CVE-2011-2915</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1574">CVE-2011-1574</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2911">CVE-2011-2911</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2912">CVE-2011-2912</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2913">CVE-2011-2913</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2914">CVE-2011-2914</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2915">CVE-2011-2915</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:18 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:18Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Fri, 16 Mar 2012 11:02:28 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-16T11:02:28Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     attackers to conduct man-in-the-middle attacks. 
   </synopsis>
   <product type="ebuild">w3m</product>
-  <announced>October 18, 2012</announced>
-  <revised>October 18, 2012: 1</revised>
+  <announced>2012-10-18</announced>
+  <revised>2012-10-18: 1</revised>
   <bug>325431</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2074">CVE-2010-2074</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2074">CVE-2010-2074</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:00 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:42:33 +0000">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:00Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2012-10-18T20:42:33Z">craig</metadata>
 </glsa>

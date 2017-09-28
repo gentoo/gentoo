@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-33">
   <title>IPsec-Tools: racoon Denial of Service</title>
   <synopsis>
     IPsec-Tools' racoon is affected by a remote Denial of Service vulnerability.
   </synopsis>
   <product type="ebuild">IPsec-Tools</product>
-  <announced>March 25, 2005</announced>
-  <revised>March 25, 2005: 01</revised>
+  <announced>2005-03-25</announced>
+  <revised>2005-03-25: 01</revised>
   <bug>84479</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-firewall/ipsec-tools-0.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-firewall/ipsec-tools-0.4-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0398">CAN-2005-0398</uri>
-    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=6787713&amp;forum_id=32000">ipsec-tools-devel posting</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0398">CAN-2005-0398</uri>
+    <uri link="https://sourceforge.net/mailarchive/forum.php?thread_id=6787713&amp;forum_id=32000">ipsec-tools-devel posting</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Mar 2005 16:03:41 +0000">
+  <metadata tag="requester" timestamp="2005-03-23T16:03:41Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 24 Mar 2005 09:50:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-24T09:50:17Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Mar 2005 21:24:17 +0000">
+  <metadata tag="submitter" timestamp="2005-03-24T21:24:17Z">
     vorlon078
   </metadata>
 </glsa>

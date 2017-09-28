@@ -6,8 +6,8 @@
     may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">weechat</product>
-  <announced>May 03, 2014</announced>
-  <revised>May 03, 2014: 1</revised>
+  <announced>2014-05-03</announced>
+  <revised>2014-05-03: 1</revised>
   <bug>442600</bug>
   <access>remote</access>
   <affected>
@@ -52,9 +52,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5534">CVE-2012-5534</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5854">CVE-2012-5854</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5534">CVE-2012-5534</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5854">CVE-2012-5854</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 21 Nov 2012 20:56:00 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sat, 03 May 2014 13:54:42 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-11-21T20:56:00Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-03T13:54:42Z">ackle</metadata>
 </glsa>

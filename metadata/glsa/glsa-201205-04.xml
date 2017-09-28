@@ -6,8 +6,8 @@
     some of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium v8</product>
-  <announced>May 27, 2012</announced>
-  <revised>May 27, 2012: 1</revised>
+  <announced>2012-05-27</announced>
+  <revised>2012-05-27: 1</revised>
   <bug>417321</bug>
   <access>remote</access>
   <affected>
@@ -59,41 +59,41 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3103">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3103">
       CVE-2011-3103
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3104">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3104">
       CVE-2011-3104
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3105">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3105">
       CVE-2011-3105
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3106">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3106">
       CVE-2011-3106
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3107">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3107">
       CVE-2011-3107
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3108">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3108">
       CVE-2011-3108
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3109">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3109">
       CVE-2011-3109
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3111">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3111">
       CVE-2011-3111
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3115">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3115">
       CVE-2011-3115
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/05/stable-channel-update_23.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/05/stable-channel-update_23.html">
       Release Notes 19.0.1084.52
     </uri>
   </references>
-  <metadata timestamp="Sat, 26 May 2012 16:55:13 +0000" tag="requester">
+  <metadata timestamp="2012-05-26T16:55:13Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Sun, 27 May 2012 22:45:29 +0000" tag="submitter">
+  <metadata timestamp="2012-05-27T22:45:29Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

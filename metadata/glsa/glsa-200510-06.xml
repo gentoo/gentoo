@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-06">
   <title>Dia: Arbitrary code execution through SVG import</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">dia</product>
-  <announced>October 06, 2005</announced>
-  <revised>October 06, 2005: 01</revised>
+  <announced>2005-10-06</announced>
+  <revised>2005-10-06: 01</revised>
   <bug>107916</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/dia-0.94-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/dia-0.94-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2966">CAN-2005-2966</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2966">CAN-2005-2966</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Oct 2005 12:58:56 +0000">
+  <metadata tag="requester" timestamp="2005-10-04T12:58:56Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Oct 2005 18:51:11 +0000">
+  <metadata tag="submitter" timestamp="2005-10-04T18:51:11Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 05 Oct 2005 07:39:21 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-05T07:39:21Z">
     koon
   </metadata>
 </glsa>

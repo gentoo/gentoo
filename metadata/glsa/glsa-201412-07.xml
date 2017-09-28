@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code. 
   </synopsis>
   <product type="ebuild">flash,ACE</product>
-  <announced>December 11, 2014</announced>
-  <revised>December 11, 2014: 1</revised>
+  <announced>2014-12-11</announced>
+  <revised>2014-12-11: 1</revised>
   <bug>530692</bug>
   <bug>532074</bug>
   <access>remote</access>
@@ -46,14 +46,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0580">CVE-2014-0580</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0587">CVE-2014-0587</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8439">CVE-2014-8439</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8443">CVE-2014-8443</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9162">CVE-2014-9162</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9163">CVE-2014-9163</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9164">CVE-2014-9164</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0580">CVE-2014-0580</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0587">CVE-2014-0587</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8439">CVE-2014-8439</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8443">CVE-2014-8443</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9162">CVE-2014-9162</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9163">CVE-2014-9163</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9164">CVE-2014-9164</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 09 Dec 2014 20:43:22 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Thu, 11 Dec 2014 06:58:45 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-12-09T20:43:22Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-11T06:58:45Z">K_F</metadata>
 </glsa>

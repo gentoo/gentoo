@@ -56,15 +56,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5373">CVE-2017-5373</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5375">CVE-2017-5375</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5376">CVE-2017-5376</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5378">CVE-2017-5378</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5380">CVE-2017-5380</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5383">CVE-2017-5383</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5386">CVE-2017-5386</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5390">CVE-2017-5390</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5396">CVE-2017-5396</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5373">CVE-2017-5373</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5375">CVE-2017-5375</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5376">CVE-2017-5376</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5378">CVE-2017-5378</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5380">CVE-2017-5380</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5383">CVE-2017-5383</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5386">CVE-2017-5386</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5390">CVE-2017-5390</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5396">CVE-2017-5396</uri>
     <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2017-02/">
       Mozilla Foundation Security Advisory 2017-02
     </uri>

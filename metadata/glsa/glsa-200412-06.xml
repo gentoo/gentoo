@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-06">
   <title>PHProjekt: setup.php vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     users without admin rights to change the configuration.
   </synopsis>
   <product type="ebuild">PHProjekt</product>
-  <announced>December 10, 2004</announced>
-  <revised>December 10, 2004: 01</revised>
+  <announced>2004-12-10</announced>
+  <revised>2004-12-10: 01</revised>
   <bug>73021</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phprojekt-4.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phprojekt-4.2-r1"</code>
   </resolution>
   <references>
     <uri link="http://www.phprojekt.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=189&amp;mode=thread&amp;order=0">PHProjekt Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu,  9 Dec 2004 14:30:29 +0000">
+  <metadata tag="requester" timestamp="2004-12-09T14:30:29Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Thu,  9 Dec 2004 16:24:20 +0000">
+  <metadata tag="submitter" timestamp="2004-12-09T16:24:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Dec 2004 17:26:05 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-10T17:26:05Z">
     vorlon078
   </metadata>
 </glsa>

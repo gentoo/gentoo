@@ -6,8 +6,8 @@
     could result in local privilege escalation.
   </synopsis>
   <product type="ebuild">mod_wsgi</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 1</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 1</revised>
   <bug>510938</bug>
   <access>local, remote</access>
   <affected>
@@ -48,11 +48,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0240">CVE-2014-0240</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0242">CVE-2014-0242</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0240">CVE-2014-0240</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0242">CVE-2014-0242</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Jun 2014 02:20:25 +0000">
+  <metadata tag="requester" timestamp="2014-06-14T02:20:25Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:03:56 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T18:03:56Z">ackle</metadata>
 </glsa>

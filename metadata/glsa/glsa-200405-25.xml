@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-25">
   <title>tla: Multiple vulnerabilities in included libneon</title>
   <synopsis>
     tla includes a vulnerable version of the neon library.
   </synopsis>
   <product type="ebuild">tla</product>
-  <announced>May 30, 2004</announced>
-  <revised>June 02, 2004: 02</revised>
+  <announced>2004-05-30</announced>
+  <revised>2004-06-02: 02</revised>
   <bug>51586</bug>
   <access>remote</access>
   <affected>
@@ -50,12 +49,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-util/tla-1.2-r2"
-    # emerge ">=dev-util/tla-1.2-r2"</code>
+    # emerge -pv "&gt;=dev-util/tla-1.2-r2"
+    # emerge "&gt;=dev-util/tla-1.2-r2"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200405-01.xml">GLSA 200405-01</uri>
-    <uri link="/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200405-01.xml">GLSA 200405-01</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200405-13.xml">GLSA 200405-13</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

@@ -6,8 +6,8 @@
     attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">tcptrack</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>377917</bug>
   <access>local</access>
   <affected>
@@ -51,12 +51,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2903">CVE-2011-2903</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2903">CVE-2011-2903</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:14 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:14Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:21:47 +0000">
+  <metadata tag="submitter" timestamp="2014-02-21T15:21:47Z">
     creffett
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     Utility Library could result in Denial of Service.
   </synopsis>
   <product type="ebuild">apr apr-util</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>339527</bug>
   <bug>366903</bug>
   <bug>368651</bug>
@@ -65,13 +65,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1623">CVE-2010-1623</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0419">CVE-2011-0419</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1928">CVE-2011-1928</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0840">CVE-2012-0840</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1623">CVE-2010-1623</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0419">CVE-2011-0419</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1928">CVE-2011-1928</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0840">CVE-2012-0840</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:24 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:24Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:30:44 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T17:30:44Z">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-27">
   <title>PHProjekt: Remote code execution vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary PHP code.
   </synopsis>
   <product type="ebuild">PHProjekt</product>
-  <announced>December 30, 2004</announced>
-  <revised>December 30, 2004: 01</revised>
+  <announced>2004-12-30</announced>
+  <revised>2004-12-30: 01</revised>
   <bug>75858</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phprojekt-4.2-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phprojekt-4.2-r2"</code>
   </resolution>
   <references>
     <uri link="http://www.phprojekt.com/modules.php?op=modload&amp;name=News&amp;file=article&amp;sid=193&amp;mode=thread&amp;order=0">PHProjekt Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 29 Dec 2004 16:45:27 +0000">
+  <metadata tag="submitter" timestamp="2004-12-29T16:45:27Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 29 Dec 2004 16:45:35 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-29T16:45:35Z">
     koon
   </metadata>
 </glsa>

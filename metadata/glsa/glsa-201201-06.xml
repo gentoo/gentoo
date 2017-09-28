@@ -6,8 +6,8 @@
     result in execution of arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">iscsitarget</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>314187</bug>
   <access>remote</access>
   <affected>
@@ -49,8 +49,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0743">CVE-2010-0743</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0743">CVE-2010-0743</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:07 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 11:50:37 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-10-07T23:37:07Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-01-23T11:50:37Z" tag="submitter">ackle</metadata>
 </glsa>

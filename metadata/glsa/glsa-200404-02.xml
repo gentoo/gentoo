@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-02">
   <title>KDE Personal Information Management Suite Remote Buffer Overflow Vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unauthorized access to an affected system. 
   </synopsis>
   <product type="ebuild">kde-base/kde</product>
-  <announced>April 06, 2004</announced>
-  <revised>April 06, 2004: 01</revised>
+  <announced>2004-04-06</announced>
+  <revised>2004-04-06: 01</revised>
   <bug>38256</bug>
   <access>remote</access>
   <affected>
@@ -49,11 +48,11 @@
     <code>
     # emerge sync
     
-    # emerge -pv ">=kde-base/kde-3.1.5"
-    # emerge ">=kde-base/kde-3.1.5"</code>
+    # emerge -pv "&gt;=kde-base/kde-3.1.5"
+    # emerge "&gt;=kde-base/kde-3.1.5"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0988">CAN-2003-0988</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0988">CAN-2003-0988</uri>
   </references>
   <metadata tag="submitter">aescriva</metadata>
 </glsa>

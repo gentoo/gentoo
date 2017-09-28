@@ -46,11 +46,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10221">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10221">
       CVE-2016-10221
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5991">CVE-2017-5991</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6060">CVE-2017-6060</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5991">CVE-2017-5991</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6060">CVE-2017-6060</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-21T07:28:46Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-06-06T08:34:32Z">whissi</metadata>

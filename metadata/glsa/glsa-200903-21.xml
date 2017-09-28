@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-21">
   <title>cURL: Arbitrary file access</title>
   <synopsis>
     A vulnerability in cURL may allow for arbitrary file access.
   </synopsis>
   <product type="ebuild">curl</product>
-  <announced>March 09, 2009</announced>
-  <revised>March 09, 2009: 01</revised>
+  <announced>2009-03-09</announced>
+  <revised>2009-03-09: 01</revised>
   <bug>260361</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.19.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.19.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0037">CVE-2009-0037</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0037">CVE-2009-0037</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:06:34 +0000">
+  <metadata tag="requester" timestamp="2009-03-05T20:06:34Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 05 Mar 2009 23:20:10 +0000">
+  <metadata tag="submitter" timestamp="2009-03-05T23:20:10Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 Mar 2009 22:09:58 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-06T22:09:58Z">
     p-y
   </metadata>
 </glsa>

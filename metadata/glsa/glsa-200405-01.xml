@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-01">
   <title>Multiple format string vulnerabilities in neon 0.24.4 and earlier</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a malicious WebDAV server to execute arbitrary code.
   </synopsis>
   <product type="ebuild">neon</product>
-  <announced>May 09, 2004</announced>
-  <revised>May 09, 2004: 01</revised>
+  <announced>2004-05-09</announced>
+  <revised>2004-05-09: 01</revised>
   <bug>48448</bug>
   <access>remote </access>
   <affected>
@@ -49,11 +48,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-misc/neon-0.24.5"
-    # emerge ">=net-misc/neon-0.24.5"</code>
+    # emerge -pv "&gt;=net-misc/neon-0.24.5"
+    # emerge "&gt;=net-misc/neon-0.24.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CVE</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0179">CVE</uri>
   </references>
   <metadata tag="submitter">
     klieber

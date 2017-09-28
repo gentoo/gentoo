@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">dnsmasq</product>
-  <announced>December 17, 2015</announced>
-  <revised>December 17, 2015: 1</revised>
+  <announced>2015-12-17</announced>
+  <revised>2015-12-17: 1</revised>
   <bug>547966</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3294">CVE-2015-3294</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3294">CVE-2015-3294</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Aug 2015 14:11:32 +0000">
+  <metadata tag="requester" timestamp="2015-08-04T14:11:32Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Dec 2015 15:30:29 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-12-17T15:30:29Z">ackle</metadata>
 </glsa>

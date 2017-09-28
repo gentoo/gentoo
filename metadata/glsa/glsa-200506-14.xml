@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-14">
   <title>Sun and Blackdown Java: Applet privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     their privileges.
   </synopsis>
   <product type="ebuild">sun-jdk sun-jre-bin blackdown-jre blackdown-jdk</product>
-  <announced>June 19, 2005</announced>
-  <revised>June 19, 2005: 01</revised>
+  <announced>2005-06-19</announced>
+  <revised>2005-06-19: 01</revised>
   <bug>96092</bug>
   <bug>96229</bug>
   <access>remote</access>
@@ -62,25 +61,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.08&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.4.2.08"</code>
     <p>
     All Sun JRE users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.08&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.4.2.08"</code>
     <p>
     All Blackdown JDK users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jdk-1.4.2.02&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/blackdown-jdk-1.4.2.02"</code>
     <p>
     All Blackdown JRE users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/blackdown-jre-1.4.2.02&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/blackdown-jre-1.4.2.02"</code>
     <p>
     Note to SPARC users: There is no stable secure Blackdown Java
     for the SPARC architecture. Affected users should remove the package
@@ -91,13 +90,13 @@
     <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-101749-1">Sun Security Alert ID 101749</uri>
     <uri link="http://www.blackdown.org/java-linux/java2-status/security/Blackdown-SA-2005-02.txt">Blackdown Java Security Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Jun 2005 16:05:50 +0000">
+  <metadata tag="requester" timestamp="2005-06-16T16:05:50Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 16 Jun 2005 17:03:44 +0000">
+  <metadata tag="submitter" timestamp="2005-06-16T17:03:44Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 17 Jun 2005 10:34:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-17T10:34:14Z">
     koon
   </metadata>
 </glsa>

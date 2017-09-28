@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200707-08">
   <title>NVClock: Insecure file usage</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">nvclock</product>
-  <announced>July 24, 2007</announced>
-  <revised>July 24, 2007: 01</revised>
+  <announced>2007-07-24</announced>
+  <revised>2007-07-24: 01</revised>
   <bug>184071</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/nvclock-0.7-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/nvclock-0.7-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3531">CVE-2007-3531</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3531">CVE-2007-3531</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 15 Jul 2007 09:48:09 +0000">
+  <metadata tag="requester" timestamp="2007-07-15T09:48:09Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 Jul 2007 18:59:19 +0000">
+  <metadata tag="submitter" timestamp="2007-07-17T18:59:19Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 17 Jul 2007 18:59:32 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-17T18:59:32Z">
     p-y
   </metadata>
 </glsa>

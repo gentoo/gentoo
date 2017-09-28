@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-20">
   <title>Emacs, XEmacs: Format string vulnerabilities in movemail</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">Emacs</product>
-  <announced>February 15, 2005</announced>
-  <revised>July 23, 2006: 02</revised>
+  <announced>2005-02-15</announced>
+  <revised>2006-07-23: 02</revised>
   <bug>79686</bug>
   <access>remote</access>
   <affected>
@@ -55,24 +54,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/emacs-21.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-21.4"</code>
     <p>
     All XEmacs users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/xemacs-21.4.15-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/xemacs-21.4.15-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0100">CAN-2005-0100</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0100">CAN-2005-0100</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Feb 2005 15:36:27 +0000">
+  <metadata tag="requester" timestamp="2005-02-11T15:36:27Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Feb 2005 16:06:08 +0000">
+  <metadata tag="submitter" timestamp="2005-02-15T16:06:08Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Feb 2005 16:06:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-15T16:06:17Z">
     koon
   </metadata>
 </glsa>

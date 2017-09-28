@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-04">
   <title>OpenAFS: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability has been discovered in OpenAFS.
   </synopsis>
   <product type="ebuild">openafs</product>
-  <announced>January 09, 2008</announced>
-  <revised>January 09, 2008: 01</revised>
+  <announced>2008-01-09</announced>
+  <revised>2008-01-09: 01</revised>
   <bug>203573</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/openafs-1.4.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-fs/openafs-1.4.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6599">CVE-2007-6599</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6599">CVE-2007-6599</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Jan 2008 00:13:45 +0000">
+  <metadata tag="requester" timestamp="2008-01-05T00:13:45Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 08 Jan 2008 21:35:12 +0000">
+  <metadata tag="submitter" timestamp="2008-01-08T21:35:12Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 08 Jan 2008 21:35:21 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-08T21:35:21Z">
     p-y
   </metadata>
 </glsa>

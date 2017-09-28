@@ -6,8 +6,8 @@
     Control Lists (ACL).
   </synopsis>
   <product type="ebuild">libvirt</product>
-  <announced>December 04, 2016</announced>
-  <revised>December 04, 2016: 1</revised>
+  <announced>2016-12-04</announced>
+  <revised>2016-12-04: 1</revised>
   <bug>568870</bug>
   <access>local</access>
   <affected>
@@ -53,10 +53,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5313">CVE-2015-5313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5313">CVE-2015-5313</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 24 Dec 2015 05:15:17 +0000">
+  <metadata tag="requester" timestamp="2015-12-24T05:15:17Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 11:17:48 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-04T11:17:48Z">whissi</metadata>
 </glsa>

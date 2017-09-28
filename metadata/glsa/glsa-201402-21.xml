@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">tiff</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>440154</bug>
   <bug>440944</bug>
   <bug>468334</bug>
@@ -61,18 +61,18 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4447">CVE-2012-4447</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4564">CVE-2012-4564</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1960">CVE-2013-1960</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1961">CVE-2013-1961</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4231">CVE-2013-4231</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4232">CVE-2013-4232</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4244">CVE-2013-4244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4447">CVE-2012-4447</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4564">CVE-2012-4564</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1960">CVE-2013-1960</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1961">CVE-2013-1961</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4231">CVE-2013-4231</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4232">CVE-2013-4232</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4244">CVE-2013-4244</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Sep 2013 10:35:33 +0000">
+  <metadata tag="requester" timestamp="2013-09-02T10:35:33Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:18:04 +0000">
+  <metadata tag="submitter" timestamp="2014-02-21T15:18:04Z">
     pinkbyte
   </metadata>
 </glsa>

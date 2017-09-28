@@ -6,8 +6,8 @@
     flaw, allowing attackers to call arbitrary PHP functions. 
   </synopsis>
   <product type="ebuild">PhpDocumentor</product>
-  <announced>November 11, 2011</announced>
-  <revised>November 11, 2011: 1</revised>
+  <announced>2011-11-11</announced>
+  <revised>2011-11-11: 1</revised>
   <bug>213318</bug>
   <access>remote</access>
   <affected>
@@ -48,12 +48,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1066">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1066">
       CVE-2008-1066
     </uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:01 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:01Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Fri, 11 Nov 2011 22:11:04 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-11T22:11:04Z" tag="submitter">ackle</metadata>
 </glsa>

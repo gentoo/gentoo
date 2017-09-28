@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-19">
   <title>imlib2: Buffer overflows in image decoding</title>
   <synopsis>
@@ -8,8 +7,8 @@
     routines, potentially allowing the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">imlib2</product>
-  <announced>January 11, 2005</announced>
-  <revised>January 11, 2005: 01</revised>
+  <announced>2005-01-11</announced>
+  <revised>2005-01-11: 01</revised>
   <bug>77002</bug>
   <access>remote</access>
   <affected>
@@ -52,19 +51,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/imlib2-1.2.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/imlib2-1.2.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1026">CAN-2004-1026</uri>
-    <uri link="http://security.gentoo.org/glsa/glsa-200412-03.xml">GLSA 200412-03</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1026">CAN-2004-1026</uri>
+    <uri link="https://security.gentoo.org/glsa/glsa-200412-03.xml">GLSA 200412-03</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat,  8 Jan 2005 09:59:17 +0000">
+  <metadata tag="requester" timestamp="2005-01-08T09:59:17Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun,  9 Jan 2005 05:41:55 +0000">
+  <metadata tag="submitter" timestamp="2005-01-09T05:41:55Z">
     dmargoli
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 10 Jan 2005 22:14:19 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-10T22:14:19Z">
     koon
   </metadata>
 </glsa>

@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in libwmf allowing remote
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>February 27, 2016</announced>
-  <revised>February 27, 2016: 3</revised>
+  <product type="ebuild"/>
+  <announced>2016-02-27</announced>
+  <revised>2016-02-27: 3</revised>
   <bug>551144</bug>
   <bug>553818</bug>
   <access>remote</access>
@@ -41,21 +41,21 @@
       </code>
     </resolution>
     <references>
-      <uri link="http://nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0848">
+      <uri link="https://nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0848">
         CVE-2015-0848
       </uri>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4588">
+      <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4588">
         CVE-2015-4588
       </uri>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4695">
+      <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4695">
         CVE-2015-4695
       </uri>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4696">
+      <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4696">
         CVE-2015-4696
       </uri>
     </references>
-    <metadata tag="requester" timestamp="Thu, 25 Feb 2016 06:44:07 +0000">
+    <metadata tag="requester" timestamp="2016-02-25T06:44:07Z">
       BlueKnight
     </metadata>
-    <metadata tag="submitter" timestamp="Sat, 27 Feb 2016 02:04:39 +0000">b-man</metadata>
+    <metadata tag="submitter" timestamp="2016-02-27T02:04:39Z">b-man</metadata>
   </glsa>

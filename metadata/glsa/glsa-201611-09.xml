@@ -6,8 +6,8 @@
     allows gaining of privileges on the host system.
   </synopsis>
   <product type="ebuild">xen</product>
-  <announced>November 15, 2016</announced>
-  <revised>November 15, 2016: 1</revised>
+  <announced>2016-11-15</announced>
+  <revised>2016-11-15: 1</revised>
   <bug>588780</bug>
   <bug>593198</bug>
   <bug>594850</bug>
@@ -57,14 +57,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6258">CVE-2016-6258</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7092">CVE-2016-7092</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7093">CVE-2016-7093</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7094">CVE-2016-7094</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7777">CVE-2016-7777</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6258">CVE-2016-6258</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7092">CVE-2016-7092</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7093">CVE-2016-7093</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7094">CVE-2016-7094</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7777">CVE-2016-7777</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 10 Sep 2016 06:59:48 +0000">
+  <metadata tag="requester" timestamp="2016-09-10T06:59:48Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:42:10 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-15T07:42:10Z">b-man</metadata>
 </glsa>

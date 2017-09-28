@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-21">
   <title>ClamAV: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ClamAV</product>
-  <announced>April 24, 2007</announced>
-  <revised>April 24, 2007: 01</revised>
+  <announced>2007-04-24</announced>
+  <revised>2007-04-24: 01</revised>
   <bug>174375</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.90.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.90.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1745">CVE-2007-1745</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1997">CVE-2007-1997</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1745">CVE-2007-1745</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1997">CVE-2007-1997</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Apr 2007 22:33:19 +0000">
+  <metadata tag="requester" timestamp="2007-04-14T22:33:19Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 19 Apr 2007 10:34:20 +0000">
+  <metadata tag="submitter" timestamp="2007-04-19T10:34:20Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 22 Apr 2007 20:58:42 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-22T20:58:42Z">
     falco
   </metadata>
 </glsa>

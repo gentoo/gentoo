@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-02">
   <title>Firebird: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">firebird</product>
-  <announced>March 02, 2008</announced>
-  <revised>March 02, 2008: 01</revised>
+  <announced>2008-03-02</announced>
+  <revised>2008-03-02: 01</revised>
   <bug>208034</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/firebird-2.0.3.12981.0-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/firebird-2.0.3.12981.0-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0387">CVE-2008-0387</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0467">CVE-2008-0467</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0387">CVE-2008-0387</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0467">CVE-2008-0467</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 25 Feb 2008 20:05:19 +0000">
+  <metadata tag="requester" timestamp="2008-02-25T20:05:19Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 Feb 2008 20:05:28 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-25T20:05:28Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Feb 2008 12:57:14 +0000">
+  <metadata tag="submitter" timestamp="2008-02-28T12:57:14Z">
     p-y
   </metadata>
 </glsa>

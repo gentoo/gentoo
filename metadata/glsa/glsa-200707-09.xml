@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200707-09">
   <title>GIMP: Multiple integer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gimp</product>
-  <announced>July 25, 2007</announced>
-  <revised>July 25, 2007: 01</revised>
+  <announced>2007-07-25</announced>
+  <revised>2007-07-25: 01</revised>
   <bug>182047</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/gimp-2.2.16&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.2.16"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4519">CVE-2006-4519</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2949">CVE-2007-2949</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4519">CVE-2006-4519</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2949">CVE-2007-2949</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 11 Jul 2007 20:14:16 +0000">
+  <metadata tag="requester" timestamp="2007-07-11T20:14:16Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Jul 2007 18:21:17 +0000">
+  <metadata tag="submitter" timestamp="2007-07-15T18:21:17Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 15 Jul 2007 18:21:44 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-15T18:21:44Z">
     p-y
   </metadata>
 </glsa>

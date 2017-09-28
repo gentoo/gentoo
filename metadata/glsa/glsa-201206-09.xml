@@ -6,8 +6,8 @@
     which leading to remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">MediaWiki</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>366685</bug>
   <bug>409513</bug>
   <access>remote</access>
@@ -47,22 +47,22 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2787">CVE-2010-2787</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2788">CVE-2010-2788</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2789">CVE-2010-2789</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0003">CVE-2011-0003</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0047">CVE-2011-0047</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0537">CVE-2011-0537</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1579">CVE-2011-1579</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1580">CVE-2011-1580</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1766">CVE-2011-1766</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1766">CVE-2011-1766</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1578">CVE-2012-1578</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1579">CVE-2012-1579</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1580">CVE-2012-1580</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1581">CVE-2012-1581</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1582">CVE-2012-1582</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2787">CVE-2010-2787</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2788">CVE-2010-2788</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2789">CVE-2010-2789</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0003">CVE-2011-0003</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0047">CVE-2011-0047</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0537">CVE-2011-0537</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1579">CVE-2011-1579</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1580">CVE-2011-1580</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1766">CVE-2011-1766</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1766">CVE-2011-1766</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1578">CVE-2012-1578</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1579">CVE-2012-1579</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1580">CVE-2012-1580</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1581">CVE-2012-1581</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1582">CVE-2012-1582</uri>
   </references>
-  <metadata timestamp="Sat, 08 Oct 2011 12:42:24 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 18:10:28 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-08T12:42:24Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-06-21T18:10:28Z" tag="submitter">craig</metadata>
 </glsa>

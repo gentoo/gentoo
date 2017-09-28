@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
     which could cause a Denial of Service condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>October 11, 2016</announced>
-  <revised>October 11, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-10-11</announced>
+  <revised>2016-10-11: 1</revised>
   <bug>572414</bug>
   <bug>576902</bug>
   <bug>588652</bug>
@@ -45,15 +45,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8704">CVE-2015-8704</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8705">CVE-2015-8705</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1285">CVE-2016-1285</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1286">CVE-2016-1286</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2088">CVE-2016-2088</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2775">CVE-2016-2775</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2776">CVE-2016-2776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6170">CVE-2016-6170</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8704">CVE-2015-8704</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8705">CVE-2015-8705</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1285">CVE-2016-1285</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1286">CVE-2016-1286</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2088">CVE-2016-2088</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2775">CVE-2016-2775</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2776">CVE-2016-2776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6170">CVE-2016-6170</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 Jul 2016 10:56:46 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Oct 2016 18:53:41 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2016-07-11T10:56:46Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-10-11T18:53:41Z">Zlogene</metadata>
 </glsa>

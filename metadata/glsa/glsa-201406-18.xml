@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">rxvt-unicode</product>
-  <announced>June 19, 2014</announced>
-  <revised>June 19, 2014: 1</revised>
+  <announced>2014-06-19</announced>
+  <revised>2014-06-19: 1</revised>
   <bug>509174</bug>
   <access>remote</access>
   <affected>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3121">CVE-2014-3121</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3121">CVE-2014-3121</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 20 May 2014 04:08:05 +0000">
+  <metadata tag="requester" timestamp="2014-05-20T04:08:05Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 19 Jun 2014 11:53:01 +0000">
+  <metadata tag="submitter" timestamp="2014-06-19T11:53:01Z">
     creffett
   </metadata>
 </glsa>

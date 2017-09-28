@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-03">
   <title>RealPlayer: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">realplayer</product>
-  <announced>September 04, 2008</announced>
-  <revised>September 04, 2008: 01</revised>
+  <announced>2008-09-04</announced>
+  <revised>2008-09-04: 01</revised>
   <bug>232997</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-11.0.0.4028-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/realplayer-11.0.0.4028-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5400">CVE-2007-5400</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5400">CVE-2007-5400</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 19 Aug 2008 23:23:04 +0000">
+  <metadata tag="submitter" timestamp="2008-08-19T23:23:04Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 19 Aug 2008 23:23:18 +0000">
+  <metadata tag="bugReady" timestamp="2008-08-19T23:23:18Z">
     rbu
   </metadata>
 </glsa>

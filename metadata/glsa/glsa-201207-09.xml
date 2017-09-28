@@ -6,8 +6,8 @@
     execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">mod_fcgid</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>344685</bug>
   <bug>409373</bug>
   <access>local, remote</access>
@@ -55,11 +55,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3872">CVE-2010-3872</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1181">CVE-2012-1181</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3872">CVE-2010-3872</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1181">CVE-2012-1181</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:12 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:12Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 23:33:49 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-07-09T23:33:49Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     context-dependent attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">sqlite</product>
-  <announced>July 07, 2015</announced>
-  <revised>July 07, 2015: 1</revised>
+  <announced>2015-07-07</announced>
+  <revised>2015-07-07: 1</revised>
   <bug>546626</bug>
   <access>local, remote</access>
   <affected>
@@ -42,12 +42,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3414">CVE-2015-3414</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3415">CVE-2015-3415</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3416">CVE-2015-3416</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3414">CVE-2015-3414</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3415">CVE-2015-3415</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3416">CVE-2015-3416</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 28 May 2015 22:11:40 +0000">
+  <metadata tag="requester" timestamp="2015-05-28T22:11:40Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 07 Jul 2015 06:59:20 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-07T06:59:20Z">Zlogene</metadata>
 </glsa>

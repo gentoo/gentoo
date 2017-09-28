@@ -6,8 +6,8 @@
     which might allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libzip</product>
-  <announced>March 29, 2012</announced>
-  <revised>March 29, 2012: 1</revised>
+  <announced>2012-03-29</announced>
+  <revised>2012-03-29: 1</revised>
   <bug>409117</bug>
   <access>remote</access>
   <affected>
@@ -53,9 +53,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1162">CVE-2012-1162</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1163">CVE-2012-1163</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1162">CVE-2012-1162</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1163">CVE-2012-1163</uri>
   </references>
-  <metadata timestamp="Fri, 23 Mar 2012 11:20:26 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Thu, 29 Mar 2012 11:18:55 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-23T11:20:26Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-29T11:18:55Z" tag="submitter">ackle</metadata>
 </glsa>

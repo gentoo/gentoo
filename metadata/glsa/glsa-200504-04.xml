@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-04">
   <title>mit-krb5: Multiple buffer overflows in telnet client</title>
   <synopsis>
@@ -8,8 +7,8 @@
     could allow a malicious telnet server operator to execute arbitrary code.
   </synopsis>
   <product type="ebuild">telnet</product>
-  <announced>April 06, 2005</announced>
-  <revised>April 06, 2005: 01</revised>
+  <announced>2005-04-06</announced>
+  <revised>2005-04-06: 01</revised>
   <bug>87145</bug>
   <access>remote</access>
   <affected>
@@ -51,17 +50,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.3.6-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.3.6-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0468">CAN-2005-0468</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0468">CAN-2005-0468</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0469">CAN-2005-0469</uri>
     <uri link="http://web.mit.edu/kerberos/www/advisories/MITKRB5-SA-2005-001-telnet.txt">MITKRB5-SA-2005-001</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri,  1 Apr 2005 09:42:26 +0000">
+  <metadata tag="submitter" timestamp="2005-04-01T09:42:26Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  6 Apr 2005 09:05:02 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-06T09:05:02Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-08">
   <title>InspIRCd: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service.
   </synopsis>
   <product type="ebuild">inspircd</product>
-  <announced>May 09, 2008</announced>
-  <revised>May 09, 2008: 01</revised>
+  <announced>2008-05-09</announced>
+  <revised>2008-05-09: 01</revised>
   <bug>215704</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/inspircd-1.1.19&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/inspircd-1.1.19"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1925">CVE-2008-1925</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1925">CVE-2008-1925</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 May 2008 14:50:35 +0000">
+  <metadata tag="requester" timestamp="2008-05-06T14:50:35Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 06 May 2008 19:30:15 +0000">
+  <metadata tag="submitter" timestamp="2008-05-06T19:30:15Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 06 May 2008 19:30:22 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-06T19:30:22Z">
     rbu
   </metadata>
 </glsa>

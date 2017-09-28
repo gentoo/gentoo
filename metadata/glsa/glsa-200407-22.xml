@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-22">
   <title>phpMyAdmin: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     PHP code.
   </synopsis>
   <product type="ebuild">dev-db/phpmyadmin</product>
-  <announced>July 29, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-07-29</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>57890</bug>
   <access>remote</access>
   <affected>
@@ -60,13 +59,13 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=dev-db/phpmyadmin-2.5.7_p1&quot;
-    # emerge &quot;&gt;=dev-db/phpmyadmin-2.5.7_p1&quot;</code>
+    # emerge -pv "&gt;=dev-db/phpmyadmin-2.5.7_p1"
+    # emerge "&gt;=dev-db/phpmyadmin-2.5.7_p1"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/367486">BugTraq Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2631">CVE-2004-2631</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2632">CVE-2004-2632</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2631">CVE-2004-2631</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2632">CVE-2004-2632</uri>
   </references>
   <metadata tag="requester">
     koon

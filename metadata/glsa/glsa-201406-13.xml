@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">memcached</product>
-  <announced>June 15, 2014</announced>
-  <revised>June 15, 2014: 1</revised>
+  <announced>2014-06-15</announced>
+  <revised>2014-06-15: 1</revised>
   <bug>279386</bug>
   <bug>452098</bug>
   <bug>467962</bug>
@@ -52,17 +52,17 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2415">CVE-2009-2415</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7239">CVE-2013-7239</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4971">CVE-2011-4971</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0179">CVE-2013-0179</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7290">CVE-2013-7290</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7291">CVE-2013-7291</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2415">CVE-2009-2415</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7239">CVE-2013-7239</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4971">CVE-2011-4971</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0179">CVE-2013-0179</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7290">CVE-2013-7290</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7291">CVE-2013-7291</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 28 Jan 2014 06:07:00 +0000">
+  <metadata tag="requester" timestamp="2014-01-28T06:07:00Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Jun 2014 00:21:52 +0000">
+  <metadata tag="submitter" timestamp="2014-06-15T00:21:52Z">
     BlueKnight
   </metadata>
 </glsa>

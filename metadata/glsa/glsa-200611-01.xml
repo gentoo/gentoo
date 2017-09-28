@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-01">
   <title>Screen: UTF-8 character handling vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">screen</product>
-  <announced>November 03, 2006</announced>
-  <revised>November 03, 2006: 01</revised>
+  <announced>2006-11-03</announced>
+  <revised>2006-11-03: 01</revised>
   <bug>152770</bug>
   <access>remote</access>
   <affected>
@@ -51,15 +50,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc/screen-4.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-misc/screen-4.0.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4573">CVE-2006-4573</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4573">CVE-2006-4573</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 27 Oct 2006 12:01:54 +0000">
+  <metadata tag="submitter" timestamp="2006-10-27T12:01:54Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 30 Oct 2006 11:11:00 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-30T11:11:00Z">
     falco
   </metadata>
 </glsa>

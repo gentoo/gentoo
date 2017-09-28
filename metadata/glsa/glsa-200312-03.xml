@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200312-03">
   <title>rsync: exploitable heap overflow</title>
   <synopsis>
@@ -67,9 +66,9 @@
     # /etc/init.d/rsyncd restart</code>
   </resolution>
   <references>
-    <uri link="http://rsync.samba.org/#security_dec03">Rsync Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0962">CAN-2003-0962</uri>
-    <uri link="http://security.gentoo.org/glsa/glsa-200312-02.xml">GLSA-200312-02</uri>
-    <uri link="http://security.gentoo.org/glsa/glsa-200312-01.xml">GLSA-200312-01</uri>
+    <uri link="https://rsync.samba.org/#security_dec03">Rsync Security Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0962">CAN-2003-0962</uri>
+    <uri link="https://security.gentoo.org/glsa/glsa-200312-02.xml">GLSA-200312-02</uri>
+    <uri link="https://security.gentoo.org/glsa/glsa-200312-01.xml">GLSA-200312-01</uri>
   </references>
 </glsa>

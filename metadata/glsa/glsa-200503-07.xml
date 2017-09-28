@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-07">
   <title>phpMyAdmin: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution, XSS issues and bypass of security restrictions.
   </synopsis>
   <product type="ebuild">phpMyAdmin</product>
-  <announced>March 03, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-03-03</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>83190</bug>
   <bug>83792</bug>
   <access>remote</access>
@@ -59,23 +58,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.1_p2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.1_p2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-1">PMASA-2005-1</uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-2">PMASA-2005-2</uri>
-    <uri link="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1113788&amp;group_id=23067&amp;atid=377408">phpMyAdmin bug 1113788</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0543">CVE-2005-0543</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0544">CVE-2005-0544</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0653">CVE-2005-0653</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-1">PMASA-2005-1</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-2">PMASA-2005-2</uri>
+    <uri link="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1113788&amp;group_id=23067&amp;atid=377408">phpMyAdmin bug 1113788</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0543">CVE-2005-0543</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0544">CVE-2005-0544</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0653">CVE-2005-0653</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  2 Mar 2005 21:38:30 +0000">
+  <metadata tag="requester" timestamp="2005-03-02T21:38:30Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  2 Mar 2005 22:39:01 +0000">
+  <metadata tag="submitter" timestamp="2005-03-02T22:39:01Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu,  3 Mar 2005 15:44:32 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-03T15:44:32Z">
     koon
   </metadata>
 </glsa>

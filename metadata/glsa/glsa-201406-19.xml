@@ -6,8 +6,8 @@
     Security Service, the worst of which could lead to Denial of Service. 
   </synopsis>
   <product type="ebuild">nss</product>
-  <announced>June 21, 2014</announced>
-  <revised>June 21, 2014: 1</revised>
+  <announced>2014-06-21</announced>
+  <revised>2014-06-21: 1</revised>
   <bug>455558</bug>
   <bug>486114</bug>
   <bug>491234</bug>
@@ -51,16 +51,16 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1620">CVE-2013-1620</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1739">CVE-2013-1739</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1741">CVE-2013-1741</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2566">CVE-2013-2566</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5605">CVE-2013-5605</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5606">CVE-2013-5606</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5607">CVE-2013-5607</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1620">CVE-2013-1620</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1739">CVE-2013-1739</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1741">CVE-2013-1741</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2566">CVE-2013-2566</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5605">CVE-2013-5605</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5606">CVE-2013-5606</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5607">CVE-2013-5607</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 01:57:31 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T01:57:31Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 21 Jun 2014 21:43:15 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-06-21T21:43:15Z">K_F</metadata>
 </glsa>

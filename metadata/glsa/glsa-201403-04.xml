@@ -6,8 +6,8 @@
     Denial of Service condition.
   </synopsis>
   <product type="ebuild">qt-core</product>
-  <announced>March 13, 2014</announced>
-  <revised>March 13, 2014: 1</revised>
+  <announced>2014-03-13</announced>
+  <revised>2014-03-13: 1</revised>
   <bug>494728</bug>
   <access>remote</access>
   <affected>
@@ -46,10 +46,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4549">CVE-2013-4549</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4549">CVE-2013-4549</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Feb 2014 14:50:40 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Thu, 13 Mar 2014 16:57:59 +0000">
+  <metadata tag="requester" timestamp="2014-02-19T14:50:40Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-03-13T16:57:59Z">
     pinkbyte
   </metadata>
 </glsa>

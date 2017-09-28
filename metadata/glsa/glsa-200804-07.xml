@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-07">
   <title>PECL APC: Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">pecl-apc</product>
-  <announced>April 09, 2008</announced>
-  <revised>April 09, 2008: 01</revised>
+  <announced>2008-04-09</announced>
+  <revised>2008-04-09: 01</revised>
   <bug>214576</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php5/pecl-apc-3.0.16-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php5/pecl-apc-3.0.16-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1488">CVE-2008-1488</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1488">CVE-2008-1488</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 03 Apr 2008 14:46:37 +0000">
+  <metadata tag="requester" timestamp="2008-04-03T14:46:37Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:16 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-03T14:49:16Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 23:31:29 +0000">
+  <metadata tag="submitter" timestamp="2008-04-03T23:31:29Z">
     rbu
   </metadata>
 </glsa>

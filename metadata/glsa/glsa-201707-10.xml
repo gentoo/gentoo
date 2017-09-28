@@ -42,10 +42,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8310">CVE-2017-8310</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8311">CVE-2017-8311</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8312">CVE-2017-8312</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8313">CVE-2017-8313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8310">CVE-2017-8310</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8311">CVE-2017-8311</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8312">CVE-2017-8312</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8313">CVE-2017-8313</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-28T11:50:57Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-07-08T20:11:58Z">b-man</metadata>

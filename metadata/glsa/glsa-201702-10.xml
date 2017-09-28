@@ -49,7 +49,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0358">CVE-2017-0358</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0358">CVE-2017-0358</uri>
     <uri link="https://security.gentoo.org/glsa/201603-04">GLSA-201603-04</uri>
     <uri link="https://security.gentoo.org/glsa/201701-19">GLSA-201701-19</uri>
   </references>

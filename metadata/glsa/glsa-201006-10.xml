@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-10">
   <title>multipath-tools: World-writeable socket</title>
   <synopsis>
@@ -9,8 +8,8 @@
     users.
   </synopsis>
   <product type="ebuild">multipath-tools</product>
-  <announced>June 01, 2010</announced>
-  <revised>June 01, 2010: 01</revised>
+  <announced>2010-06-01</announced>
+  <revised>2010-06-01: 01</revised>
   <bug>264564</bug>
   <access>local</access>
   <affected>
@@ -48,7 +47,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-fs/multipath-tools-0.4.8-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-fs/multipath-tools-0.4.8-r1"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since November 13, 2009. It is likely that your system is
@@ -56,15 +55,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0115">CVE-2009-0115</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0115">CVE-2009-0115</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 29 Jan 2010 23:30:44 +0000">
+  <metadata tag="requester" timestamp="2010-01-29T23:30:44Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 Apr 2010 17:36:36 +0000">
+  <metadata tag="submitter" timestamp="2010-04-09T17:36:36Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 01 Jun 2010 12:41:09 +0000">
+  <metadata tag="bugReady" timestamp="2010-06-01T12:41:09Z">
     keytoaster
   </metadata>
 </glsa>

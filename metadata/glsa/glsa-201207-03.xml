@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ChaSen</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>390769</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4000">CVE-2011-4000</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4000">CVE-2011-4000</uri>
   </references>
-  <metadata timestamp="Sun, 15 Apr 2012 23:16:56 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 22:20:31 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-15T23:16:56Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-07-09T22:20:31Z" tag="submitter">ackle</metadata>
 </glsa>

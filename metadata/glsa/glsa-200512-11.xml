@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-11">
   <title>CenterICQ: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     library.
   </synopsis>
   <product type="ebuild">CenterICQ</product>
-  <announced>December 20, 2005</announced>
-  <revised>December 20, 2005: 01</revised>
+  <announced>2005-12-20</announced>
+  <revised>2005-12-20: 01</revised>
   <bug>100519</bug>
   <bug>114038</bug>
   <access>remote</access>
@@ -54,20 +53,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/centericq-4.21.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/centericq-4.21.0-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3694">CVE-2005-3694</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3863">CVE-2005-3863</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3694">CVE-2005-3694</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3863">CVE-2005-3863</uri>
     <uri link="http://www.zone-h.org/en/advisories/read/id=8480/">Zone-H Research ZRCSA 200503</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 16 Dec 2005 12:39:29 +0000">
+  <metadata tag="requester" timestamp="2005-12-16T12:39:29Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 17 Dec 2005 10:48:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-17T10:48:20Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 Dec 2005 11:38:58 +0000">
+  <metadata tag="submitter" timestamp="2005-12-18T11:38:58Z">
     koon
   </metadata>
 </glsa>

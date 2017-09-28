@@ -46,9 +46,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6424">CVE-2013-6424</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3164">CVE-2015-3164</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3418">CVE-2015-3418</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6424">CVE-2013-6424</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3164">CVE-2015-3164</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3418">CVE-2015-3418</uri>
     <uri link="https://lists.x.org/archives/xorg-announce/2015-June/002611.html">
       X.Org/Wayland Security Advisory: Missing authentication in XWayland
     </uri>

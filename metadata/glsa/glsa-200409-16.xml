@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-16">
   <title>Samba: Denial of Service vulnerabilities</title>
   <synopsis>
     Two Denial of Service vulnerabilities have been found and fixed in Samba.
   </synopsis>
   <product type="ebuild">Samba</product>
-  <announced>September 13, 2004</announced>
-  <revised>September 13, 2004: 01</revised>
+  <announced>2004-09-13</announced>
+  <revised>2004-09-13: 01</revised>
   <access>remote</access>
   <affected>
     <package name="net-fs/samba" auto="yes" arch="*">
@@ -54,17 +53,17 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-fs/samba-3.0.7"
-    # emerge ">=net-fs/samba-3.0.7"</code>
+    # emerge -pv "&gt;=net-fs/samba-3.0.7"
+    # emerge "&gt;=net-fs/samba-3.0.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0807">CAN-2004-0807</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0808">CAN-2004-0808</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0807">CAN-2004-0807</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0808">CAN-2004-0808</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 11 Sep 2004 15:16:21 +0000">
+  <metadata tag="submitter" timestamp="2004-09-11T15:16:21Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 13 Sep 2004 12:15:40 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-13T12:15:40Z">
     jaervosz
   </metadata>
 </glsa>

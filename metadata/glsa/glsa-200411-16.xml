@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-16">
   <title>zip: Path name buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     very long path names. This could lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">zip</product>
-  <announced>November 09, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-11-09</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>70227</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/zip-2.3-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/zip-2.3-r4"</code>
   </resolution>
   <references>
     <uri link="http://www.hexview.com/docs/20041103-1.txt">HexView zip Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1010">CVE-2004-1010</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1010">CVE-2004-1010</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun,  7 Nov 2004 18:59:20 +0000">
+  <metadata tag="requester" timestamp="2004-11-07T18:59:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon,  8 Nov 2004 15:14:42 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-08T15:14:42Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon,  8 Nov 2004 20:46:08 +0000">
+  <metadata tag="submitter" timestamp="2004-11-08T20:46:08Z">
     jaervosz
   </metadata>
 </glsa>

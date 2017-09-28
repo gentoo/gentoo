@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-29">
   <title>BlueZ: Arbitrary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     or a Denial of Service.
   </synopsis>
   <product type="ebuild">bluez-utils bluez-libs</product>
-  <announced>March 16, 2009</announced>
-  <revised>March 16, 2009: 01</revised>
+  <announced>2009-03-16</announced>
+  <revised>2009-03-16: 01</revised>
   <bug>230591</bug>
   <access>local, remote</access>
   <affected>
@@ -53,24 +52,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/bluez-utils-3.36&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/bluez-utils-3.36"</code>
     <p>
     All bluez-libs users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/bluez-libs-3.36&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/bluez-libs-3.36"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2374">CVE-2008-2374</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2374">CVE-2008-2374</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 11 Mar 2009 19:03:24 +0000">
+  <metadata tag="requester" timestamp="2009-03-11T19:03:24Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 11 Mar 2009 19:04:53 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-11T19:04:53Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 13 Mar 2009 12:49:09 +0000">
+  <metadata tag="submitter" timestamp="2009-03-13T12:49:09Z">
     p-y
   </metadata>
 </glsa>

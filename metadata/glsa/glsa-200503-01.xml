@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-01">
   <title>Qt: Untrusted library search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">qt</product>
-  <announced>March 01, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-03-01</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>75181</bug>
   <access>local</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/qt-3.3.4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/qt-3.3.4-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0627">CVE-2005-0627</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0627">CVE-2005-0627</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 15 Feb 2005 06:13:07 +0000">
+  <metadata tag="submitter" timestamp="2005-02-15T06:13:07Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  1 Mar 2005 12:59:58 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-01T12:59:58Z">
     jaervosz
   </metadata>
 </glsa>

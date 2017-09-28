@@ -6,8 +6,8 @@
     could lead to execution of arbitrary code with root privileges.
   </synopsis>
   <product type="ebuild">mDNSResponder</product>
-  <announced>January 22, 2012</announced>
-  <revised>January 22, 2012: 1</revised>
+  <announced>2012-01-22</announced>
+  <revised>2012-01-22: 1</revised>
   <bug>290822</bug>
   <access>local, remote</access>
   <affected>
@@ -48,15 +48,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2386">CVE-2007-2386</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3744">CVE-2007-3744</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3828">CVE-2007-3828</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0989">CVE-2008-0989</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2326">CVE-2008-2326</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-3630">CVE-2008-3630</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-2386">CVE-2007-2386</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3744">CVE-2007-3744</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-3828">CVE-2007-3828</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0989">CVE-2008-0989</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2326">CVE-2008-2326</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-3630">CVE-2008-3630</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:04 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:04Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 22 Jan 2012 13:43:13 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-22T13:43:13Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-02">
   <title>shadow: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     with escalated privileges.
   </synopsis>
   <product type="ebuild">shadow</product>
-  <announced>June 07, 2006</announced>
-  <revised>June 07, 2006: 01</revised>
+  <announced>2006-06-07</announced>
+  <revised>2006-06-07: 01</revised>
   <bug>133615</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/shadow-4.0.15-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/shadow-4.0.15-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1174">CVE-2006-1174</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1174">CVE-2006-1174</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:06:38 +0000">
+  <metadata tag="requester" timestamp="2006-06-01T07:06:38Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 01 Jun 2006 15:23:57 +0000">
+  <metadata tag="submitter" timestamp="2006-06-01T15:23:57Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:20:29 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-05T17:20:29Z">
     falco
   </metadata>
 </glsa>

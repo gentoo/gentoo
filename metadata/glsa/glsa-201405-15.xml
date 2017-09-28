@@ -6,8 +6,8 @@
     of which may lead to Denial of Service.
   </synopsis>
   <product type="ebuild">util-linux</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>359759</bug>
   <bug>450740</bug>
   <access>local</access>
@@ -45,13 +45,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1675">CVE-2011-1675</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1676">CVE-2011-1676</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1677">CVE-2011-1677</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0157">CVE-2013-0157</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1675">CVE-2011-1675</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1676">CVE-2011-1676</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1677">CVE-2011-1677</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0157">CVE-2013-0157</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:08 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:08Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:27:32 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T11:27:32Z">ackle</metadata>
 </glsa>

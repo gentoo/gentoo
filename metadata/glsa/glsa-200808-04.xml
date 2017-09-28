@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200808-04">
   <title>Wireshark: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Wireshark.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>August 06, 2008</announced>
-  <revised>August 06, 2008: 01</revised>
+  <announced>2008-08-06</announced>
+  <revised>2008-08-06: 01</revised>
   <bug>230411</bug>
   <bug>231587</bug>
   <access>remote</access>
@@ -52,23 +51,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.0.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3137">CVE-2008-3137</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3138">CVE-2008-3138</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3139">CVE-2008-3139</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3140">CVE-2008-3140</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3141">CVE-2008-3141</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3145">CVE-2008-3145</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3137">CVE-2008-3137</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3138">CVE-2008-3138</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3139">CVE-2008-3139</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3140">CVE-2008-3140</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3141">CVE-2008-3141</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3145">CVE-2008-3145</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Jul 2008 10:40:07 +0000">
+  <metadata tag="requester" timestamp="2008-07-15T10:40:07Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Jul 2008 18:25:58 +0000">
+  <metadata tag="submitter" timestamp="2008-07-30T18:25:58Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 30 Jul 2008 18:26:07 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-30T18:26:07Z">
     rbu
   </metadata>
 </glsa>

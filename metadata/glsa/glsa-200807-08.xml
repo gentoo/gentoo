@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-08">
   <title>BIND: Cache poisoning</title>
   <synopsis>
@@ -8,8 +7,8 @@
     poisoning on recursive resolvers.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>July 11, 2008</announced>
-  <revised>July 11, 2008: 01</revised>
+  <announced>2008-07-11</announced>
+  <revised>2008-07-11: 01</revised>
   <bug>231201</bug>
   <access>remote</access>
   <affected>
@@ -49,7 +48,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.2_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.4.2_p1"</code>
     <p>
     Note: In order to utilize the query port randomization to mitigate the
     weakness, you need to make sure that your network setup allows the DNS
@@ -59,15 +58,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1447">CVE-2008-1447</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 09 Jul 2008 08:55:27 +0000">
+  <metadata tag="requester" timestamp="2008-07-09T08:55:27Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 09 Jul 2008 14:42:45 +0000">
+  <metadata tag="submitter" timestamp="2008-07-09T14:42:45Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 11 Jul 2008 17:35:39 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-11T17:35:39Z">
     rbu
   </metadata>
 </glsa>

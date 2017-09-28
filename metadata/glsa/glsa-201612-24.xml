@@ -6,8 +6,8 @@
     may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">binutils</product>
-  <announced>December 08, 2016</announced>
-  <revised>December 08, 2016: 1</revised>
+  <announced>2016-12-08</announced>
+  <revised>2016-12-08: 1</revised>
   <bug>526626</bug>
   <access>local, remote</access>
   <affected>
@@ -46,15 +46,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8484">CVE-2014-8484</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8485">CVE-2014-8485</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8501">CVE-2014-8501</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8502">CVE-2014-8502</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8503">CVE-2014-8503</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8504">CVE-2014-8504</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8737">CVE-2014-8737</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8738">CVE-2014-8738</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8484">CVE-2014-8484</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8485">CVE-2014-8485</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8501">CVE-2014-8501</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8502">CVE-2014-8502</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8503">CVE-2014-8503</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8504">CVE-2014-8504</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8737">CVE-2014-8737</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8738">CVE-2014-8738</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 25 Nov 2016 00:21:44 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:14:11 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-25T00:21:44Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-08T13:14:11Z">whissi</metadata>
 </glsa>

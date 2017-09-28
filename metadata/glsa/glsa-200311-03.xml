@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200311-03">
   <title>HylaFAX: Remote code exploit in hylafax</title>
   <synopsis>
@@ -54,7 +53,7 @@
     # emerge clean</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0886">CAN-2003-0886</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0886">CAN-2003-0886</uri>
     <uri link="http://www.novell.com/linux/security/advisories/2003_045_hylafax.html">SuSE Security Announcment</uri>
   </references>
 </glsa>

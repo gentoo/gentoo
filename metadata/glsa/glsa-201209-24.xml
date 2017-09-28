@@ -7,8 +7,8 @@
     
   </synopsis>
   <product type="ebuild">PostgreSQL</product>
-  <announced>September 28, 2012</announced>
-  <revised>January 20, 2014: 2</revised>
+  <announced>2012-09-28</announced>
+  <revised>2014-01-20: 2</revised>
   <bug>406037</bug>
   <bug>419727</bug>
   <bug>431766</bug>
@@ -87,16 +87,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0866">CVE-2012-0866</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0867">CVE-2012-0867</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0868">CVE-2012-0868</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2143">CVE-2012-2143</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2655">CVE-2012-2655</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3488">CVE-2012-3488</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3489">CVE-2012-3489</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0866">CVE-2012-0866</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0867">CVE-2012-0867</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0868">CVE-2012-0868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2143">CVE-2012-2143</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2655">CVE-2012-2655</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3488">CVE-2012-3488</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3489">CVE-2012-3489</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 08 Apr 2012 15:26:13 +0000">
+  <metadata tag="requester" timestamp="2012-04-08T15:26:13Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 09:36:28 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-01-20T09:36:28Z">ackle</metadata>
 </glsa>

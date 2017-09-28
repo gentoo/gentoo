@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">qemu</product>
-  <announced>October 31, 2015</announced>
-  <revised>October 31, 2015: 1</revised>
+  <announced>2015-10-31</announced>
+  <revised>2015-10-31: 1</revised>
   <bug>551752</bug>
   <bug>555680</bug>
   <bug>556050</bug>
@@ -43,13 +43,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3209">CVE-2015-3209</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3214">CVE-2015-3214</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5154">CVE-2015-5154</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5158">CVE-2015-5158</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3209">CVE-2015-3209</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3214">CVE-2015-3214</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5154">CVE-2015-5154</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5158">CVE-2015-5158</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Jul 2015 12:11:27 +0000">
+  <metadata tag="requester" timestamp="2015-07-16T12:11:27Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:00:35 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-10-31T15:00:35Z">Zlogene</metadata>
 </glsa>

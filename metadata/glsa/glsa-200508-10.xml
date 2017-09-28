@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-10">
   <title>Kismet: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Kismet</product>
-  <announced>August 19, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-08-19</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>102702</bug>
   <access>remote</access>
   <affected>
@@ -47,20 +46,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/kismet-2005.08.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/kismet-2005.08.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.kismetwireless.net/blog/?entry=/kismet/entry-1124158146.txt">Kismet Release Notes</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2626">CVE-2005-2626</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2627">CVE-2005-2627</uri>
+    <uri link="https://www.kismetwireless.net/blog/?entry=/kismet/entry-1124158146.txt">Kismet Release Notes</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2626">CVE-2005-2626</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2627">CVE-2005-2627</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 17 Aug 2005 05:08:47 +0000">
+  <metadata tag="requester" timestamp="2005-08-17T05:08:47Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Aug 2005 05:16:35 +0000">
+  <metadata tag="submitter" timestamp="2005-08-18T05:16:35Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 18 Aug 2005 07:53:07 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-18T07:53:07Z">
     adir
   </metadata>
 </glsa>

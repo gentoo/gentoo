@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-08">
   <title>WordPress: Arbitrary command execution</title>
   <synopsis>
     WordPress fails to sufficiently check the format of cached username data.
   </synopsis>
   <product type="ebuild">wordpress</product>
-  <announced>June 09, 2006</announced>
-  <revised>June 10, 2006: 02</revised>
+  <announced>2006-06-09</announced>
+  <revised>2006-06-10: 02</revised>
   <bug>134397</bug>
   <access>remote</access>
   <affected>
@@ -47,16 +46,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-2.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/wordpress-2.0.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2667">CVE-2006-2667</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2702">CVE-2006-2702</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2667">CVE-2006-2667</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2702">CVE-2006-2702</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 06 Jun 2006 16:40:51 +0000">
+  <metadata tag="submitter" timestamp="2006-06-06T16:40:51Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 06 Jun 2006 17:50:23 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-06T17:50:23Z">
     jaervosz
   </metadata>
 </glsa>

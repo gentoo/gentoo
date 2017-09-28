@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200604-06">
   <title>ClamAV: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code or cause an application crash.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>April 07, 2006</announced>
-  <revised>April 07, 2006: 01</revised>
+  <announced>2006-04-07</announced>
+  <revised>2006-04-07: 01</revised>
   <bug>128963</bug>
   <access>remote</access>
   <affected>
@@ -51,17 +50,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.88.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1614">CVE-2006-1614</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1615">CVE-2006-1615</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1630">CVE-2006-1630</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1614">CVE-2006-1614</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1615">CVE-2006-1615</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1630">CVE-2006-1630</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 06 Apr 2006 18:09:01 +0000">
+  <metadata tag="submitter" timestamp="2006-04-06T18:09:01Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 07 Apr 2006 19:35:00 +0000">
+  <metadata tag="bugReady" timestamp="2006-04-07T19:35:00Z">
     vorlon078
   </metadata>
 </glsa>

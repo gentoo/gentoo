@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-33">
   <title>nss_ldap: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure in services using nss_ldap.
   </synopsis>
   <product type="ebuild">nss_ldap</product>
-  <announced>November 25, 2007</announced>
-  <revised>November 25, 2007: 01</revised>
+  <announced>2007-11-25</announced>
+  <revised>2007-11-25: 01</revised>
   <bug>198390</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/nss_ldap-258&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-auth/nss_ldap-258"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5794">CVE-2007-5794</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5794">CVE-2007-5794</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 15:50:09 +0000">
+  <metadata tag="requester" timestamp="2007-11-18T15:50:09Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 15:50:16 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-18T15:50:16Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 21 Nov 2007 00:25:43 +0000">
+  <metadata tag="submitter" timestamp="2007-11-21T00:25:43Z">
     rbu
   </metadata>
 </glsa>

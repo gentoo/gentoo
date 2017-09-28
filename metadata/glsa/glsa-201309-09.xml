@@ -6,8 +6,8 @@
     the worst of which may lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">libraw</product>
-  <announced>September 15, 2013</announced>
-  <revised>September 15, 2013: 1</revised>
+  <announced>2013-09-15</announced>
+  <revised>2013-09-15: 1</revised>
   <bug>471694</bug>
   <bug>482926</bug>
   <access>remote</access>
@@ -56,15 +56,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1438">CVE-2013-1438</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1439">CVE-2013-1439</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2126">CVE-2013-2126</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2127">CVE-2013-2127</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1438">CVE-2013-1438</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1439">CVE-2013-1439</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2126">CVE-2013-2126</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2127">CVE-2013-2127</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 21 Aug 2013 06:34:07 +0000">
+  <metadata tag="requester" timestamp="2013-08-21T06:34:07Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:41:15 +0000">
+  <metadata tag="submitter" timestamp="2013-09-15T04:41:15Z">
     creffett
   </metadata>
 </glsa>

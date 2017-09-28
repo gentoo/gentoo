@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6252">CVE-2016-6252</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2616">CVE-2017-2616</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6252">CVE-2016-6252</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2616">CVE-2017-2616</uri>
   </references>
   <metadata tag="requester" timestamp="2017-03-07T23:12:11Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-06-06T06:29:12Z">whissi</metadata>

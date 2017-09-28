@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-22">
   <title>PHP: Format string and XSS vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">php</product>
-  <announced>March 22, 2006</announced>
-  <revised>March 22, 2006: 01</revised>
+  <announced>2006-03-22</announced>
+  <revised>2006-03-22: 01</revised>
   <bug>125878</bug>
   <access>remote</access>
   <affected>
@@ -63,27 +62,27 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-5.1.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.1.2"</code>
     <p>
     All PHP 4.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/php-4.4.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-4.4.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0207">CVE-2006-0207</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0208">CVE-2006-0208</uri>
-    <uri link="http://www.hardened-php.net/advisory_022006.112.html">Hardened-PHP Advisory 01/2006</uri>
-    <uri link="http://www.hardened-php.net/advisory_012006.113.html">Hardened-PHP Advisory 02/2006</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0207">CVE-2006-0207</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0208">CVE-2006-0208</uri>
+    <uri link="https://www.hardened-php.net/advisory_022006.112.html">Hardened-PHP Advisory 01/2006</uri>
+    <uri link="https://www.hardened-php.net/advisory_012006.113.html">Hardened-PHP Advisory 02/2006</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Mar 2006 21:28:04 +0000">
+  <metadata tag="requester" timestamp="2006-03-14T21:28:04Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Mar 2006 21:28:11 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-14T21:28:11Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Mar 2006 03:27:49 +0000">
+  <metadata tag="submitter" timestamp="2006-03-18T03:27:49Z">
     adir
   </metadata>
 </glsa>

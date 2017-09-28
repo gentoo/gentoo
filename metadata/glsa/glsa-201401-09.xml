@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">openswan</product>
-  <announced>January 18, 2014</announced>
-  <revised>January 18, 2014: 1</revised>
+  <announced>2014-01-18</announced>
+  <revised>2014-01-18: 1</revised>
   <bug>483204</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2053">CVE-2013-2053</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2053">CVE-2013-2053</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Sep 2013 18:39:23 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Jan 2014 20:05:02 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-01T18:39:23Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-01-18T20:05:02Z">ackle</metadata>
 </glsa>

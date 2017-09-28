@@ -6,8 +6,8 @@
     to execute arbitrary code.
   </synopsis>
   <product type="ebuild">libjpeg-turbo</product>
-  <announced>December 31, 2016</announced>
-  <revised>December 31, 2016: 1</revised>
+  <announced>2016-12-31</announced>
+  <revised>2016-12-31: 1</revised>
   <bug>585782</bug>
   <access>remote</access>
   <affected>
@@ -54,6 +54,6 @@
       Prevent overread when decoding malformed JPEG
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Nov 2016 06:32:59 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 15:38:15 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-20T06:32:59Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-31T15:38:15Z">b-man</metadata>
 </glsa>

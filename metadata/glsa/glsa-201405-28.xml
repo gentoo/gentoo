@@ -6,8 +6,8 @@
     xmonad-contrib.
   </synopsis>
   <product type="ebuild">xmonad-contrib</product>
-  <announced>May 28, 2014</announced>
-  <revised>May 28, 2014: 1</revised>
+  <announced>2014-05-28</announced>
+  <revised>2014-05-28: 1</revised>
   <bug>478288</bug>
   <access>remote</access>
   <affected>
@@ -46,12 +46,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1436">CVE-2013-1436</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1436">CVE-2013-1436</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 27 Feb 2014 13:53:05 +0000">
+  <metadata tag="requester" timestamp="2014-02-27T13:53:05Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 28 May 2014 06:50:25 +0000">
+  <metadata tag="submitter" timestamp="2014-05-28T06:50:25Z">
     pinkbyte
   </metadata>
 </glsa>

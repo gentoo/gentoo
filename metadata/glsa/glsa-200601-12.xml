@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-12">
   <title>Trac: Cross-site scripting vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary JavaScript code execution.
   </synopsis>
   <product type="ebuild">trac</product>
-  <announced>January 26, 2006</announced>
-  <revised>January 26, 2006: 01</revised>
+  <announced>2006-01-26</announced>
+  <revised>2006-01-26: 01</revised>
   <bug>118302</bug>
   <access>remote</access>
   <affected>
@@ -48,23 +47,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/trac-0.9.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/trac-0.9.3"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4305">CVE-2005-4305</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4305">CVE-2005-4305</uri>
     <uri link="http://projects.edgewall.com/trac/wiki/ChangeLog#a0.9.3">Trac Changelog</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Jan 2006 15:05:49 +0000">
+  <metadata tag="requester" timestamp="2006-01-18T15:05:49Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 18 Jan 2006 15:05:57 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-18T15:05:57Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Jan 2006 19:44:58 +0000">
+  <metadata tag="submitter" timestamp="2006-01-22T19:44:58Z">
     DerCorny
   </metadata>
 </glsa>

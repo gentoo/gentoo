@@ -6,8 +6,8 @@
     a Denial of Service condition.
   </synopsis>
   <product type="ebuild">echoping</product>
-  <announced>June 06, 2014</announced>
-  <revised>June 06, 2014: 1</revised>
+  <announced>2014-06-06</announced>
+  <revised>2014-06-06: 1</revised>
   <bug>349569</bug>
   <access>remote</access>
   <affected>
@@ -48,12 +48,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5111">CVE-2010-5111</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-5111">CVE-2010-5111</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 17 Oct 2013 11:46:53 +0000">
+  <metadata tag="requester" timestamp="2013-10-17T11:46:53Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 06 Jun 2014 12:23:36 +0000">
+  <metadata tag="submitter" timestamp="2014-06-06T12:23:36Z">
     pinkbyte
   </metadata>
 </glsa>

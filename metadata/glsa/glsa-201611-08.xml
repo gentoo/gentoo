@@ -6,8 +6,8 @@
     which may allow remote attackers to cause Denial of Service.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>November 15, 2016</announced>
-  <revised>November 15, 2016: 1</revised>
+  <announced>2016-11-15</announced>
+  <revised>2016-11-15: 1</revised>
   <bug>564244</bug>
   <bug>565678</bug>
   <bug>568216</bug>
@@ -62,14 +62,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7981">CVE-2015-7981</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8126">CVE-2015-8126</uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8540">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7981">CVE-2015-7981</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8126">CVE-2015-8126</uri>
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8540">
       CVE-2015-8540
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:42:59 +0000">
+  <metadata tag="requester" timestamp="2015-12-23T23:42:59Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:39:40 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-15T07:39:40Z">b-man</metadata>
 </glsa>

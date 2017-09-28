@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">musl</product>
-  <announced>January 02, 2017</announced>
-  <revised>January 02, 2017: 1</revised>
+  <announced>2017-01-02</announced>
+  <revised>2017-01-02: 1</revised>
   <bug>597498</bug>
   <access>local, remote</access>
   <affected>
@@ -46,8 +46,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8859">CVE-2016-8859</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8859">CVE-2016-8859</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Jan 2017 07:23:08 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 14:34:33 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-02T07:23:08Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-02T14:34:33Z">b-man</metadata>
 </glsa>

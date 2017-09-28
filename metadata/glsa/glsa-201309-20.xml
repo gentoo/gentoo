@@ -6,8 +6,8 @@
     which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">dropbear</product>
-  <announced>September 26, 2013</announced>
-  <revised>September 26, 2013: 1</revised>
+  <announced>2013-09-26</announced>
+  <revised>2013-09-26: 1</revised>
   <bug>328409</bug>
   <bug>405607</bug>
   <access>remote</access>
@@ -48,15 +48,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0920">CVE-2012-0920</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0920">CVE-2012-0920</uri>
     <uri link="https://bugs.gentoo.org/show_bug.cgi?id=328383">libtommath
       Gentoo bug
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 03 Mar 2012 20:26:25 +0000">
+  <metadata tag="requester" timestamp="2012-03-03T20:26:25Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 26 Sep 2013 23:47:21 +0000">
+  <metadata tag="submitter" timestamp="2013-09-26T23:47:21Z">
     creffett
   </metadata>
 </glsa>

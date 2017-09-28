@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-05">
   <title>net-snmp: Authorization bypass</title>
   <synopsis>
@@ -8,8 +7,8 @@
     net-snmp.
   </synopsis>
   <product type="ebuild">net-snmp</product>
-  <announced>January 13, 2010</announced>
-  <revised>January 13, 2010: 01</revised>
+  <announced>2010-01-13</announced>
+  <revised>2010-01-13: 01</revised>
   <bug>250429</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/net-snmp-5.4.2.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/net-snmp-5.4.2.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6123">CVE-2008-6123</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6123">CVE-2008-6123</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 28 Sep 2009 18:16:15 +0000">
+  <metadata tag="requester" timestamp="2009-09-28T18:16:15Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:17:32 +0000">
+  <metadata tag="submitter" timestamp="2010-01-05T21:17:32Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:40:57 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-10T19:40:57Z">
     craig
   </metadata>
 </glsa>

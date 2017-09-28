@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-10">
   <title>Mailutils: Format string vulnerability in imap4d</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to execute arbitrary code with the privileges of the imap4d process.
   </synopsis>
   <product type="ebuild">mailutils</product>
-  <announced>September 17, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-09-17</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>105458</bug>
   <access>remote</access>
   <affected>
@@ -48,16 +47,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailutils-0.6-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/mailutils-0.6-r2"</code>
   </resolution>
   <references>
     <uri link="http://www.idefense.com/application/poi/display?id=303&amp;type=vulnerabilities">iDEFENSE 09.09.05 advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2878">CVE-2005-2878</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2878">CVE-2005-2878</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 15 Sep 2005 13:42:03 +0000">
+  <metadata tag="submitter" timestamp="2005-09-15T13:42:03Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 15 Sep 2005 13:42:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-15T13:42:17Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200311-02">
   <title>Opera: buffer overflows in 7.11 and 7.20</title>
   <synopsis>
@@ -58,7 +57,7 @@
     # emerge clean</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0870">CAN-2003-0870</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0870">CAN-2003-0870</uri>
     <uri link="http://www.atstake.com/research/advisories/2003/a102003-1.txt">@stake Security Advisory</uri>
   </references>
 </glsa>

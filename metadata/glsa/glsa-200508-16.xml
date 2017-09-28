@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-16">
   <title>Tor: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     anonymity, integrity and confidentiality.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>August 25, 2005</announced>
-  <revised>August 25, 2005: 01</revised>
+  <announced>2005-08-25</announced>
+  <revised>2005-08-25: 01</revised>
   <bug>102245</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/tor-0.1.0.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/tor-0.1.0.14"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2643">CAN-2005-2643</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2643">CAN-2005-2643</uri>
     <uri link="http://archives.seul.org/or/announce/Aug-2005/msg00002.html">Tor Security Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 23 Aug 2005 08:23:08 +0000">
+  <metadata tag="requester" timestamp="2005-08-23T08:23:08Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 23 Aug 2005 09:42:34 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-23T09:42:34Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 23 Aug 2005 16:08:44 +0000">
+  <metadata tag="submitter" timestamp="2005-08-23T16:08:44Z">
     DerCorny
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which may allow remote Denial of Service.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>September 24, 2012</announced>
-  <revised>September 24, 2012: 1</revised>
+  <announced>2012-09-24</announced>
+  <revised>2012-09-24: 1</revised>
   <bug>402661</bug>
   <bug>419637</bug>
   <bug>427966</bug>
@@ -56,12 +56,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1033">CVE-2012-1033</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1667">CVE-2012-1667</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3817">CVE-2012-3817</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3868">CVE-2012-3868</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4244">CVE-2012-4244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1033">CVE-2012-1033</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1667">CVE-2012-1667</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3817">CVE-2012-3817</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3868">CVE-2012-3868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4244">CVE-2012-4244</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 01:12:32 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 00:04:59 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-03-06T01:12:32Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2012-09-24T00:04:59Z">ackle</metadata>
 </glsa>

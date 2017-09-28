@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-19">
   <title>LTSP: Authentication bypass in included LibVNCServer code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     authentication bypass.
   </synopsis>
   <product type="ebuild">ltsp</product>
-  <announced>March 18, 2007</announced>
-  <revised>March 18, 2007: 01</revised>
+  <announced>2007-03-18</announced>
+  <revised>2007-03-18: 01</revised>
   <bug>142661</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/ltsp-4.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/ltsp-4.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2450">CVE-2006-2450</uri>
-    <uri link="/security/en/glsa/glsa-200608-05.xml">GLSA 200608-05</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2450">CVE-2006-2450</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200608-05.xml">GLSA 200608-05</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 10 Feb 2007 19:11:34 +0000">
+  <metadata tag="requester" timestamp="2007-02-10T19:11:34Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Feb 2007 23:53:14 +0000">
+  <metadata tag="bugReady" timestamp="2007-02-10T23:53:14Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 02:25:26 +0000">
+  <metadata tag="submitter" timestamp="2007-02-27T02:25:26Z">
     aetius
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-18">
   <title>Pngcrush: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">pngcrush</product>
-  <announced>March 21, 2006</announced>
-  <revised>March 21, 2006: 01</revised>
+  <announced>2006-03-21</announced>
+  <revised>2006-03-21: 01</revised>
   <bug>123286</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/pngcrush-1.6.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/pngcrush-1.6.2"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1849">CVE-2005-1849</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200507-19.xml">GLSA 200507-19</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1849">CVE-2005-1849</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Feb 2006 18:06:23 +0000">
+  <metadata tag="requester" timestamp="2006-02-22T18:06:23Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 03 Mar 2006 17:03:15 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-03T17:03:15Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Mar 2006 02:00:13 +0000">
+  <metadata tag="submitter" timestamp="2006-03-18T02:00:13Z">
     adir
   </metadata>
 </glsa>

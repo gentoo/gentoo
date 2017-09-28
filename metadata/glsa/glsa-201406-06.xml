@@ -6,8 +6,8 @@
     which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">mumble</product>
-  <announced>June 06, 2014</announced>
-  <revised>June 06, 2014: 1</revised>
+  <announced>2014-06-06</announced>
+  <revised>2014-06-06: 1</revised>
   <bug>500486</bug>
   <bug>510380</bug>
   <access>remote</access>
@@ -57,15 +57,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0044">CVE-2014-0044</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0045">CVE-2014-0045</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3755">CVE-2014-3755</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3756">CVE-2014-3756</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0044">CVE-2014-0044</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0045">CVE-2014-0045</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3755">CVE-2014-3755</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3756">CVE-2014-3756</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 21 May 2014 03:01:45 +0000">
+  <metadata tag="requester" timestamp="2014-05-21T03:01:45Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 06 Jun 2014 12:14:42 +0000">
+  <metadata tag="submitter" timestamp="2014-06-06T12:14:42Z">
     creffett
   </metadata>
 </glsa>

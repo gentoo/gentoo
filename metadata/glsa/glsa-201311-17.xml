@@ -6,8 +6,8 @@
     could allow a local attacker to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">perl</product>
-  <announced>November 28, 2013</announced>
-  <revised>November 28, 2013: 1</revised>
+  <announced>2013-11-28</announced>
+  <revised>2013-11-28: 1</revised>
   <bug>249629</bug>
   <bug>313565</bug>
   <bug>362025</bug>
@@ -47,14 +47,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5302">CVE-2008-5302</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5303">CVE-2008-5303</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1158">CVE-2010-1158</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0761">CVE-2011-0761</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1487">CVE-2011-1487</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5302">CVE-2008-5302</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-5303">CVE-2008-5303</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1158">CVE-2010-1158</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0761">CVE-2011-0761</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1487">CVE-2011-1487</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:30 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:30Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:18:07 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-11-28T08:18:07Z">craig</metadata>
 </glsa>

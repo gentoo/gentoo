@@ -4,8 +4,8 @@
   <title>OpenSSL: Alternate chains certificate forgery</title>
   <synopsis>Certain checks on untrusted certificates can be bypassed.</synopsis>
   <product type="ebuild">openssl</product>
-  <announced>July 10, 2015</announced>
-  <revised>February 26, 2016: 3</revised>
+  <announced>2015-07-10</announced>
+  <revised>2016-02-26: 3</revised>
   <bug>554172</bug>
   <access>remote</access>
   <affected>
@@ -55,12 +55,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1793">CVE-2015-1793</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1793">CVE-2015-1793</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 08 Jul 2015 09:20:30 +0000">
+  <metadata tag="requester" timestamp="2015-07-08T09:20:30Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Feb 2016 14:46:50 +0000">
+  <metadata tag="submitter" timestamp="2016-02-26T14:46:50Z">
     keytoaster
   </metadata>
 </glsa>

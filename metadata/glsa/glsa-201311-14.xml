@@ -7,8 +7,8 @@
     man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">qt-core qt-gui</product>
-  <announced>November 22, 2013</announced>
-  <revised>November 22, 2013: 1</revised>
+  <announced>2013-11-22</announced>
+  <revised>2013-11-22: 1</revised>
   <bug>361401</bug>
   <bug>382171</bug>
   <bug>384103</bug>
@@ -64,8 +64,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3193">CVE-2011-3193</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0254">CVE-2013-0254</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3193">CVE-2011-3193</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0254">CVE-2013-0254</uri>
     <uri link="http://labs.qt.nokia.com/2011/03/29/security-advisory-fraudulent-certificates/">
       Security advisory: Fraudulent certificates
     </uri>
@@ -73,8 +73,8 @@
       What the DigiNotar security breach means for Qt users
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 May 2012 06:36:48 +0000">
+  <metadata tag="requester" timestamp="2012-05-15T06:36:48Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 22 Nov 2013 10:54:16 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-11-22T10:54:16Z">ackle</metadata>
 </glsa>

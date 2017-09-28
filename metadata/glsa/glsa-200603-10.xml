@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-10">
   <title>Cube: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     execution.
   </synopsis>
   <product type="ebuild">cube</product>
-  <announced>March 13, 2006</announced>
-  <revised>March 13, 2006: 01</revised>
+  <announced>2006-03-13</announced>
+  <revised>2006-03-13: 01</revised>
   <bug>125289</bug>
   <access>remote</access>
   <affected>
@@ -58,14 +57,14 @@
     # emerge --ask --unmerge games-fps/cube</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1100">CVE-2006-1100</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1101">CVE-2006-1101</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1102">CVE-2006-1102</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1100">CVE-2006-1100</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1101">CVE-2006-1101</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1102">CVE-2006-1102</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 11 Mar 2006 12:37:07 +0000">
+  <metadata tag="submitter" timestamp="2006-03-11T12:37:07Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 11 Mar 2006 16:16:08 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-11T16:16:08Z">
     koon
   </metadata>
 </glsa>

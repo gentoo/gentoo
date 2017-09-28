@@ -6,8 +6,8 @@
     of which may allow remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">xerces-c</product>
-  <announced>December 24, 2016</announced>
-  <revised>December 24, 2016: 1</revised>
+  <announced>2016-12-24</announced>
+  <revised>2016-12-24: 1</revised>
   <bug>575700</bug>
   <bug>584506</bug>
   <access>local, remote</access>
@@ -45,9 +45,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0729">CVE-2016-0729</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2099">CVE-2016-2099</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0729">CVE-2016-0729</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2099">CVE-2016-2099</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 15 Oct 2016 11:41:27 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 24 Dec 2016 07:11:18 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-10-15T11:41:27Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-24T07:11:18Z">whissi</metadata>
 </glsa>

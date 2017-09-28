@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">libproxy</product>
-  <announced>April 07, 2014</announced>
-  <revised>April 07, 2014: 1</revised>
+  <announced>2014-04-07</announced>
+  <revised>2014-04-07: 1</revised>
   <bug>438146</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4504">CVE-2012-4504</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4504">CVE-2012-4504</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 26 Nov 2012 01:36:57 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Apr 2014 18:48:48 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-11-26T01:36:57Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-04-07T18:48:48Z">ackle</metadata>
 </glsa>

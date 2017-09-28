@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-16">
   <title>PhpWiki: Remote execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">phpwiki</product>
-  <announced>May 17, 2007</announced>
-  <revised>May 17, 2007: 01</revised>
+  <announced>2007-05-17</announced>
+  <revised>2007-05-17: 01</revised>
   <bug>174451</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwiki-1.3.10-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpwiki-1.3.10-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2024">CVE-2007-2024</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2025">CVE-2007-2025</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2024">CVE-2007-2024</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2025">CVE-2007-2025</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 10 May 2007 13:26:06 +0000">
+  <metadata tag="requester" timestamp="2007-05-10T13:26:06Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 11 May 2007 14:10:41 +0000">
+  <metadata tag="submitter" timestamp="2007-05-11T14:10:41Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 14 May 2007 18:47:51 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-14T18:47:51Z">
     p-y
   </metadata>
 </glsa>

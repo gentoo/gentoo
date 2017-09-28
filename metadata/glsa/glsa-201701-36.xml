@@ -52,12 +52,12 @@
     <uri link="https://www.apache.org/security/asf-httpoxy-response.txt">Apache
       Software Foundation Projects and "httpoxy" CERT VU #797896
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3583">CVE-2014-3583</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0736">CVE-2016-0736</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2161">CVE-2016-2161</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5387">CVE-2016-5387</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8740">CVE-2016-8740</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8743">CVE-2016-8743</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3583">CVE-2014-3583</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0736">CVE-2016-0736</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2161">CVE-2016-2161</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5387">CVE-2016-5387</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8740">CVE-2016-8740</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8743">CVE-2016-8743</uri>
     <uri link="https://httpoxy.org/">HTTPoxy Website</uri>
   </references>
   <metadata tag="requester" timestamp="2016-11-01T05:14:20Z">BlueKnight</metadata>

@@ -6,8 +6,8 @@
     attackers to possibly gain escalated privileges.
   </synopsis>
   <product type="ebuild">sudo</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>351490</bug>
   <bug>401533</bug>
   <access>local</access>
@@ -53,11 +53,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0010">CVE-2011-0010</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0809">CVE-2012-0809</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0010">CVE-2011-0010</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0809">CVE-2012-0809</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:40 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:40Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:39:33 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:39:33Z" tag="submitter">ackle</metadata>
 </glsa>

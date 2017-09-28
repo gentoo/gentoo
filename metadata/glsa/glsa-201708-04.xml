@@ -42,7 +42,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8296">CVE-2017-8296</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8296">CVE-2017-8296</uri>
   </references>
   <metadata tag="requester" timestamp="2017-08-14T23:18:50Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-08-26T14:46:29Z">b-man</metadata>

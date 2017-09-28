@@ -6,8 +6,8 @@
     lead to the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">memcached</product>
-  <announced>January 02, 2017</announced>
-  <revised>January 02, 2017: 1</revised>
+  <announced>2017-01-02</announced>
+  <revised>2017-01-02: 1</revised>
   <bug>598836</bug>
   <access>remote</access>
   <affected>
@@ -44,19 +44,19 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8704">CVE-2016-8704</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8705">CVE-2016-8705</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8706">CVE-2016-8706</uri>
-    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0219/">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8704">CVE-2016-8704</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8705">CVE-2016-8705</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8706">CVE-2016-8706</uri>
+    <uri link="https://www.talosintelligence.com/reports/TALOS-2016-0219/">
       TALOS-2016-0219
     </uri>
-    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0220/">
+    <uri link="https://www.talosintelligence.com/reports/TALOS-2016-0220/">
       TALOS-2016-0220
     </uri>
-    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0221/">
+    <uri link="https://www.talosintelligence.com/reports/TALOS-2016-0221/">
       TALOS-2016-0221
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Jan 2017 07:31:20 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 14:42:05 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-02T07:31:20Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-02T14:42:05Z">b-man</metadata>
 </glsa>

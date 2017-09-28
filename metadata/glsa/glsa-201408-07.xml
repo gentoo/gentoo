@@ -8,8 +8,8 @@
     which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">modplug</product>
-  <announced>August 16, 2014</announced>
-  <revised>August 16, 2014: 1</revised>
+  <announced>2014-08-16</announced>
+  <revised>2014-08-16: 1</revised>
   <bug>480388</bug>
   <access>remote</access>
   <affected>
@@ -44,11 +44,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4233">CVE-2013-4233</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4234">CVE-2013-4234</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4233">CVE-2013-4233</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4234">CVE-2013-4234</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 15 Aug 2014 23:38:01 +0000">
+  <metadata tag="requester" timestamp="2014-08-15T23:38:01Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 16 Aug 2014 17:57:57 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-08-16T17:57:57Z">Zlogene</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-24">
   <title>AlsaPlayer: Multiple buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">AlsaPlayer</product>
-  <announced>August 26, 2006</announced>
-  <revised>August 26, 2006: 01</revised>
+  <announced>2006-08-26</announced>
+  <revised>2006-08-26: 01</revised>
   <bug>143402</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     further notice:
     </p>
     <code>
-    # emerge --ask --unmerge &quot;media-sound/alsaplayer&quot;</code>
+    # emerge --ask --unmerge "media-sound/alsaplayer"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-4089">CVE-2006-4089</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-4089">CVE-2006-4089</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 18 Aug 2006 15:04:43 +0000">
+  <metadata tag="requester" timestamp="2006-08-18T15:04:43Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 18 Aug 2006 21:34:55 +0000">
+  <metadata tag="submitter" timestamp="2006-08-18T21:34:55Z">
     hlieberman
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 18 Aug 2006 21:40:51 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-18T21:40:51Z">
     hlieberman
   </metadata>
 </glsa>

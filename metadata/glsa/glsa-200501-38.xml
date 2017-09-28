@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-38">
   <title>Perl: rmtree and DBI tmpfile vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     symlink attacks.
   </synopsis>
   <product type="ebuild">Perl</product>
-  <announced>January 26, 2005</announced>
-  <revised>March 15, 2005: 03</revised>
+  <announced>2005-01-26</announced>
+  <revised>2005-03-15: 03</revised>
   <bug>75696</bug>
   <bug>78634</bug>
   <bug>79685</bug>
@@ -71,14 +70,14 @@
     # emerge --ask --oneshot --verbose dev-perl/DBI</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0452">CAN-2004-0452</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0077">CAN-2005-0077</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0448">CAN-2005-0448</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0452">CAN-2004-0452</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0077">CAN-2005-0077</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0448">CAN-2005-0448</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 26 Jan 2005 15:06:53 +0000">
+  <metadata tag="submitter" timestamp="2005-01-26T15:06:53Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Jan 2005 20:14:36 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-26T20:14:36Z">
     koon
   </metadata>
 </glsa>

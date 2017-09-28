@@ -57,10 +57,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10327">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10327">
       CVE-2016-10327
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7870">CVE-2017-7870</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7870">CVE-2017-7870</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-08T18:53:54Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-06-27T09:57:51Z">whissi</metadata>

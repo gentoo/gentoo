@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-25">
   <title>MySQL: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability was found in MySQL.
   </synopsis>
   <product type="ebuild">mysql</product>
-  <announced>November 18, 2007</announced>
-  <revised>November 18, 2007: 01</revised>
+  <announced>2007-11-18</announced>
+  <revised>2007-11-18: 01</revised>
   <bug>198988</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-5.0.44-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.0.44-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5925">CVE-2007-5925</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5925">CVE-2007-5925</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 14:18:51 +0000">
+  <metadata tag="requester" timestamp="2007-11-18T14:18:51Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 Nov 2007 20:09:52 +0000">
+  <metadata tag="submitter" timestamp="2007-11-18T20:09:52Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 20:10:13 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-18T20:10:13Z">
     rbu
   </metadata>
 </glsa>

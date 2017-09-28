@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code. 
   </synopsis>
   <product type="ebuild">flash,ACE,DoS</product>
-  <announced>March 16, 2015</announced>
-  <revised>March 16, 2015: 1</revised>
+  <announced>2015-03-16</announced>
+  <revised>2015-03-16: 1</revised>
   <bug>543112</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +46,18 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0332">CVE-2015-0332</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0333">CVE-2015-0333</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0334">CVE-2015-0334</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0335">CVE-2015-0335</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0336">CVE-2015-0336</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0337">CVE-2015-0337</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0338">CVE-2015-0338</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0339">CVE-2015-0339</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0340">CVE-2015-0340</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0341">CVE-2015-0341</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0342">CVE-2015-0342</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0332">CVE-2015-0332</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0333">CVE-2015-0333</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0334">CVE-2015-0334</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0335">CVE-2015-0335</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0336">CVE-2015-0336</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0337">CVE-2015-0337</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0338">CVE-2015-0338</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0339">CVE-2015-0339</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0340">CVE-2015-0340</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0341">CVE-2015-0341</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0342">CVE-2015-0342</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Mar 2015 00:47:30 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Mar 2015 21:01:07 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2015-03-14T00:47:30Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-03-16T21:01:07Z">K_F</metadata>
 </glsa>

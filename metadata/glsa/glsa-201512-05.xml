@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">gdk-pixbuf</product>
-  <announced>December 21, 2015</announced>
-  <revised>December 21, 2015: 1</revised>
+  <announced>2015-12-21</announced>
+  <revised>2015-12-21: 1</revised>
   <bug>556314</bug>
   <bug>562878</bug>
   <bug>562880</bug>
@@ -50,12 +50,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4491">CVE-2015-4491</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7673">CVE-2015-7673</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7674">CVE-2015-7674</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4491">CVE-2015-4491</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7673">CVE-2015-7673</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7674">CVE-2015-7674</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 Oct 2015 00:53:43 +0000">
+  <metadata tag="requester" timestamp="2015-10-13T00:53:43Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 21 Dec 2015 14:06:18 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-12-21T14:06:18Z">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">Netpbm</product>
-  <announced>November 13, 2013</announced>
-  <revised>November 13, 2013: 1</revised>
+  <announced>2013-11-13</announced>
+  <revised>2013-11-13: 1</revised>
   <bug>308025</bug>
   <access>remote</access>
   <affected>
@@ -48,10 +48,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4274">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4274">
       CVE-2009-4274
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:16 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Wed, 13 Nov 2013 11:13:34 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:16Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-11-13T11:13:34Z">Zlogene</metadata>
 </glsa>

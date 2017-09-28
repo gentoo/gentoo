@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-07">
   <title>Ettercap: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">ettercap</product>
-  <announced>June 11, 2005</announced>
-  <revised>June 11, 2005: 01</revised>
+  <announced>2005-06-11</announced>
+  <revised>2005-06-11: 01</revised>
   <bug>94474</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/ettercap-0.7.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/ettercap-0.7.3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1796">CAN-2005-1796</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1796">CAN-2005-1796</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 08 Jun 2005 08:05:23 +0000">
+  <metadata tag="requester" timestamp="2005-06-08T08:05:23Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 08 Jun 2005 16:01:35 +0000">
+  <metadata tag="submitter" timestamp="2005-06-08T16:01:35Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 11 Jun 2005 08:22:41 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-11T08:22:41Z">
     koon
   </metadata>
 </glsa>

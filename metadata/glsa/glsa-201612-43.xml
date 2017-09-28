@@ -6,8 +6,8 @@
     which can allow remote attackers to cause Denial of Service conditions.
   </synopsis>
   <product type="ebuild">nodejs</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 1</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 1</revised>
   <bug>568900</bug>
   <bug>586084</bug>
   <bug>595256</bug>
@@ -53,13 +53,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8027">CVE-2015-8027</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2086">CVE-2016-2086</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2216">CVE-2016-2216</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5325">CVE-2016-5325</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8027">CVE-2015-8027</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2086">CVE-2016-2086</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2216">CVE-2016-2216</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5325">CVE-2016-5325</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Sep 2016 07:02:17 +0000">
+  <metadata tag="requester" timestamp="2016-09-07T07:02:17Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 14:35:08 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T14:35:08Z">whissi</metadata>
 </glsa>

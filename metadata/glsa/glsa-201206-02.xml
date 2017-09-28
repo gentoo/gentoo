@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">qt-gui</product>
-  <announced>June 03, 2012</announced>
-  <revised>June 03, 2012: 1</revised>
+  <announced>2012-06-03</announced>
+  <revised>2012-06-03: 1</revised>
   <bug>384089</bug>
   <access>remote</access>
   <affected>
@@ -45,10 +45,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3194">CVE-2011-3194</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3194">CVE-2011-3194</uri>
   </references>
-  <metadata timestamp="Tue, 15 May 2012 06:37:52 +0000" tag="requester">
+  <metadata timestamp="2012-05-15T06:37:52Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 03 Jun 2012 11:37:52 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-03T11:37:52Z" tag="submitter">ackle</metadata>
 </glsa>

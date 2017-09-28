@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-08">
   <title>Online-Bookmarks: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been reported in Online-Bookmarks.
   </synopsis>
   <product type="ebuild">online-bookmarks</product>
-  <announced>January 12, 2009</announced>
-  <revised>January 12, 2009: 01</revised>
+  <announced>2009-01-12</announced>
+  <revised>2009-01-12: 01</revised>
   <bug>235053</bug>
   <access>remote</access>
   <affected>
@@ -53,20 +52,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/online-bookmarks-0.6.28&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/online-bookmarks-0.6.28"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2155">CVE-2004-2155</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6358">CVE-2006-6358</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6359">CVE-2006-6359</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2155">CVE-2004-2155</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6358">CVE-2006-6358</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6359">CVE-2006-6359</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:41:34 +0000">
+  <metadata tag="requester" timestamp="2008-09-22T12:41:34Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 10 Jan 2009 23:26:51 +0000">
+  <metadata tag="submitter" timestamp="2009-01-10T23:26:51Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Jan 2009 23:27:06 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-10T23:27:06Z">
     p-y
   </metadata>
 </glsa>

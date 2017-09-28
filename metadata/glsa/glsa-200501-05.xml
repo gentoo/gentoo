@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-05">
   <title>mit-krb5: Heap overflow in libkadm5srv</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overflow that could lead to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>January 05, 2005</announced>
-  <revised>January 05, 2005: 01</revised>
+  <announced>2005-01-05</announced>
+  <revised>2005-01-05: 01</revised>
   <bug>75143</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.3.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.3.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1189">CAN 2004-1189</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1189">CAN 2004-1189</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 30 Dec 2004 15:16:36 +0000">
+  <metadata tag="requester" timestamp="2004-12-30T15:16:36Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 30 Dec 2004 19:47:37 +0000">
+  <metadata tag="submitter" timestamp="2004-12-30T19:47:37Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  5 Jan 2005 19:34:46 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-05T19:34:46Z">
     koon
   </metadata>
 </glsa>

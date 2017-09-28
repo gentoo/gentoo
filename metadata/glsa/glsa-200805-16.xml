@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-16">
   <title>OpenOffice.org: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing for user-assisted execution of arbitrary code.
   </synopsis>
   <product type="ebuild">openoffice openoffice-bin</product>
-  <announced>May 14, 2008</announced>
-  <revised>May 14, 2008: 02</revised>
+  <announced>2008-05-14</announced>
+  <revised>2008-05-14: 02</revised>
   <bug>218080</bug>
   <access>remote</access>
   <affected>
@@ -79,30 +78,30 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-2.4.0"</code>
     <p>
     All OpenOffice.org binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-2.4.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4770">CVE-2007-4770</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4771">CVE-2007-4771</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5745">CVE-2007-5745</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5746">CVE-2007-5746</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5747">CVE-2007-5747</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0320">CVE-2008-0320</uri>
-    <uri link="/security/en/glsa/glsa-200803-20.xml">GLSA 200803-20</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4770">CVE-2007-4770</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4771">CVE-2007-4771</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5745">CVE-2007-5745</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5746">CVE-2007-5746</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5747">CVE-2007-5747</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0320">CVE-2008-0320</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200803-20.xml">GLSA 200803-20</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 12:59:56 +0000">
+  <metadata tag="requester" timestamp="2008-04-29T12:59:56Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 May 2008 17:40:20 +0000">
+  <metadata tag="submitter" timestamp="2008-05-08T17:40:20Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 08 May 2008 17:40:49 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-08T17:40:49Z">
     rbu
   </metadata>
 </glsa>

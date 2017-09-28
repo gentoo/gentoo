@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-10">
   <title>Vim, gVim: Vulnerable options in modelines</title>
   <synopsis>
@@ -9,8 +8,8 @@
     escalating privileges.
   </synopsis>
   <product type="ebuild">vim</product>
-  <announced>December 15, 2004</announced>
-  <revised>December 15, 2004: 01</revised>
+  <announced>2004-12-15</announced>
+  <revised>2004-12-15: 01</revised>
   <bug>73715</bug>
   <access>local</access>
   <affected>
@@ -57,24 +56,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/vim-6.3-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/vim-6.3-r2"</code>
     <p>
     All gVim users should also upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/gvim-6.3-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/gvim-6.3-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1138">CAN-2004-1138</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1138">CAN-2004-1138</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Dec 2004 22:32:12 +0000">
+  <metadata tag="requester" timestamp="2004-12-10T22:32:12Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 13 Dec 2004 17:03:31 +0000">
+  <metadata tag="submitter" timestamp="2004-12-13T17:03:31Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 15 Dec 2004 14:00:28 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-15T14:00:28Z">
     koon
   </metadata>
 </glsa>

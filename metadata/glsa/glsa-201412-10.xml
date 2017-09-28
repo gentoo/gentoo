@@ -8,9 +8,9 @@
     remote code execution. Please see the package list and CVE identifiers
     below for more information.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>December 11, 2014</announced>
-  <revised>December 11, 2014: 1</revised>
+  <product type="ebuild"/>
+  <announced>2014-12-11</announced>
+  <revised>2014-12-11: 1</revised>
   <bug>284536</bug>
   <bug>300903</bug>
   <bug>334475</bug>
@@ -149,18 +149,18 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4776">CVE-2008-4776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2713">CVE-2010-2713</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3313">CVE-2010-3313</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3314">CVE-2010-3314</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0765">CVE-2011-0765</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2198">CVE-2011-2198</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0807">CVE-2012-0807</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0808">CVE-2012-0808</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1620">CVE-2012-1620</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2738">CVE-2012-2738</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3448">CVE-2012-3448</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4776">CVE-2008-4776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2713">CVE-2010-2713</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3313">CVE-2010-3313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3314">CVE-2010-3314</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0765">CVE-2011-0765</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2198">CVE-2011-2198</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0807">CVE-2012-0807</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0808">CVE-2012-0808</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1620">CVE-2012-1620</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2738">CVE-2012-2738</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3448">CVE-2012-3448</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 05 Aug 2014 19:34:43 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 11 Dec 2014 23:30:44 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-08-05T19:34:43Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-11T23:30:44Z">ackle</metadata>
 </glsa>

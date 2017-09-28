@@ -6,8 +6,8 @@
     worst of which allowing arbitrary code execution and privilege escalation.
   </synopsis>
   <product type="ebuild">glibc</product>
-  <announced>December 03, 2013</announced>
-  <revised>December 03, 2013: 1</revised>
+  <announced>2013-12-03</announced>
+  <revised>2013-12-03: 1</revised>
   <bug>350744</bug>
   <bug>356567</bug>
   <bug>386323</bug>
@@ -58,20 +58,20 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5029">CVE-2009-5029</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3847">CVE-2010-3847</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0536">CVE-2011-0536</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1071">CVE-2011-1071</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1089">CVE-2011-1089</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1095">CVE-2011-1095</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1658">CVE-2011-1658</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1659">CVE-2011-1659</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0864">CVE-2012-0864</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-5029">CVE-2009-5029</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3847">CVE-2010-3847</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0536">CVE-2011-0536</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1071">CVE-2011-1071</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1089">CVE-2011-1089</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1095">CVE-2011-1095</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1658">CVE-2011-1658</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1659">CVE-2011-1659</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0864">CVE-2012-0864</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Aug 2012 04:55:03 +0000">
+  <metadata tag="requester" timestamp="2012-08-16T04:55:03Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Dec 2013 03:49:15 +0000">
+  <metadata tag="submitter" timestamp="2013-12-03T03:49:15Z">
     phajdan.jr
   </metadata>
 </glsa>

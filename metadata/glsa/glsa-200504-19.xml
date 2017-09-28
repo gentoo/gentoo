@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-19">
   <title>MPlayer: Two heap overflow vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">MPlayer</product>
-  <announced>April 20, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-04-20</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>89277</bug>
   <access>remote</access>
   <affected>
@@ -49,20 +48,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_pre6-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/mplayer-1.0_pre6-r4"</code>
   </resolution>
   <references>
     <uri link="http://www.mplayerhq.hu/homepage/design7/news.html#vuln10">MPlayer News: Real RTSP heap overflow</uri>
     <uri link="http://www.mplayerhq.hu/homepage/design7/news.html#vuln11">MPlayer News: MMST heap overflow</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1195">CVE-2005-1195</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1195">CVE-2005-1195</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 16 Apr 2005 16:59:51 +0000">
+  <metadata tag="requester" timestamp="2005-04-16T16:59:51Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 18 Apr 2005 09:17:55 +0000">
+  <metadata tag="submitter" timestamp="2005-04-18T09:17:55Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 19 Apr 2005 07:28:03 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-19T07:28:03Z">
     koon
   </metadata>
 </glsa>

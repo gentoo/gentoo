@@ -6,9 +6,9 @@
     which could lead to the remote execution of arbitrary code, or cause a
     Denial of Service condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>August 11, 2016</announced>
-  <revised>August 11, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-08-11</announced>
+  <revised>2016-08-11: 1</revised>
   <bug>561882</bug>
   <bug>579030</bug>
   <access>remote</access>
@@ -46,10 +46,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2191">CVE-2016-2191</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3981">CVE-2016-3981</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3982">CVE-2016-3982</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2191">CVE-2016-2191</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3981">CVE-2016-3981</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3982">CVE-2016-3982</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 26 Jun 2016 12:03:00 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Thu, 11 Aug 2016 06:06:28 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-06-26T12:03:00Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-08-11T06:06:28Z">b-man</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-19">
   <title>Bugzilla: Multiple vulnerabilities</title>
   <synopsis>
     Bugzilla is prone to multiple medium severity vulnerabilities.
   </synopsis>
   <product type="ebuild">bugzilla</product>
-  <announced>June 04, 2010</announced>
-  <revised>June 04, 2010: 02</revised>
+  <announced>2010-06-04</announced>
+  <revised>2010-06-04: 02</revised>
   <bug>239564</bug>
   <bug>258592</bug>
   <bug>264572</bug>
@@ -53,7 +52,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/bugzilla-3.2.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/bugzilla-3.2.6"</code>
     <p>
     Bugzilla 2.x and 3.0 have reached their end of life. There will be no
     more security updates. All Bugzilla 2.x and 3.0 users should update to
@@ -61,25 +60,25 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4437">CVE-2008-4437</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6098">CVE-2008-6098</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0481">CVE-2009-0481</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0482">CVE-2009-0482</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0483">CVE-2009-0483</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0484">CVE-2009-0484</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0485">CVE-2009-0485</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0486">CVE-2009-0486</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1213">CVE-2009-1213</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3125">CVE-2009-3125</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3165">CVE-2009-3165</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3166">CVE-2009-3166</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3387">CVE-2009-3387</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3989">CVE-2009-3989</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4437">CVE-2008-4437</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-6098">CVE-2008-6098</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0481">CVE-2009-0481</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0482">CVE-2009-0482</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0483">CVE-2009-0483</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0484">CVE-2009-0484</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0485">CVE-2009-0485</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0486">CVE-2009-0486</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1213">CVE-2009-1213</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3125">CVE-2009-3125</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3165">CVE-2009-3165</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3166">CVE-2009-3166</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3387">CVE-2009-3387</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3989">CVE-2009-3989</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 14 Feb 2009 18:17:01 +0000">
+  <metadata tag="submitter" timestamp="2009-02-14T18:17:01Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 10 Oct 2009 16:01:17 +0000">
+  <metadata tag="bugReady" timestamp="2009-10-10T16:01:17Z">
     jaervosz
   </metadata>
 </glsa>

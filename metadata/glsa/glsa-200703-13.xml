@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-13">
   <title>SSH Communications Security's Secure Shell Server: SFTP privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escalation.
   </synopsis>
   <product type="ebuild">net-misc/ssh</product>
-  <announced>March 14, 2007</announced>
-  <revised>March 14, 2007: 01</revised>
+  <announced>2007-03-14</announced>
+  <revised>2007-03-14: 01</revised>
   <bug>168584</bug>
   <access>remote</access>
   <affected>
@@ -55,15 +54,15 @@
     # emerge --ask --verbose --unmerge net-misc/ssh</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0705">CVE-2006-0705</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0705">CVE-2006-0705</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 05 Mar 2007 21:03:07 +0000">
+  <metadata tag="requester" timestamp="2007-03-05T21:03:07Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 07 Mar 2007 14:57:32 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-07T14:57:32Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 Mar 2007 13:16:30 +0000">
+  <metadata tag="submitter" timestamp="2007-03-09T13:16:30Z">
     aetius
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200311-07">
   <title>phpSysInfo: arbitrary code execution and directory traversal</title>
   <synopsis>
@@ -9,7 +8,7 @@
   </synopsis>
   <product type="ebuild">phpSysInfo</product>
   <announced>2003-11-22</announced>
-  <revised>December 30, 2007: 02</revised>
+  <revised>2007-12-30: 02</revised>
   <bug>26782</bug>
   <access>local</access>
   <affected>
@@ -53,6 +52,6 @@
     # emerge clean</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0536">CAN-2003-0536</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0536">CAN-2003-0536</uri>
   </references>
 </glsa>

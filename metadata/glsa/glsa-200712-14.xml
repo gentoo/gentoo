@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-14">
   <title>CUPS: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code and a Denial of Service.
   </synopsis>
   <product type="ebuild">cups</product>
-  <announced>December 18, 2007</announced>
-  <revised>December 18, 2007: 01</revised>
+  <announced>2007-12-18</announced>
+  <revised>2007-12-18: 01</revised>
   <bug>199195</bug>
   <bug>201042</bug>
   <bug>201570</bug>
@@ -70,21 +69,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.2.12-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.2.12-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4045">CVE-2007-4045</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5849">CVE-2007-5849</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6358">CVE-2007-6358</uri>
-    <uri link="/security/en/glsa/glsa-200703-28.xml">GLSA 200703-28</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4045">CVE-2007-4045</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5849">CVE-2007-5849</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6358">CVE-2007-6358</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200703-28.xml">GLSA 200703-28</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 14 Dec 2007 15:44:48 +0000">
+  <metadata tag="requester" timestamp="2007-12-14T15:44:48Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 14 Dec 2007 15:45:00 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-14T15:45:00Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 15 Dec 2007 13:31:00 +0000">
+  <metadata tag="submitter" timestamp="2007-12-15T13:31:00Z">
     rbu
   </metadata>
 </glsa>

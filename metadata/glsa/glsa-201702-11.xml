@@ -49,14 +49,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9761">CVE-2014-9761</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5277">CVE-2015-5277</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8776">CVE-2015-8776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8777">CVE-2015-8777</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8778">CVE-2015-8778</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8779">CVE-2015-8779</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1234">CVE-2016-1234</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3075">CVE-2016-3075</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9761">CVE-2014-9761</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5277">CVE-2015-5277</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8776">CVE-2015-8776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8777">CVE-2015-8777</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8778">CVE-2015-8778</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8779">CVE-2015-8779</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1234">CVE-2016-1234</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3075">CVE-2016-3075</uri>
   </references>
   <metadata tag="requester" timestamp="2016-11-29T21:44:07Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-02-19T12:31:09Z">whissi</metadata>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-20">
   <title>Horde Application Framework: XSS vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     content.
   </synopsis>
   <product type="ebuild">horde</product>
-  <announced>November 22, 2005</announced>
-  <revised>November 22, 2005: 01</revised>
+  <announced>2005-11-22</announced>
+  <revised>2005-11-22: 01</revised>
   <bug>112491</bug>
   <access>remote</access>
   <affected>
@@ -54,19 +53,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-2.2.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-2.2.9"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3570">CVE-2005-3570</uri>
-    <uri link="http://lists.horde.org/archives/announce/2005/000231.html">Horde Announcement</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3570">CVE-2005-3570</uri>
+    <uri link="https://lists.horde.org/archives/announce/2005/000231.html">Horde Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Nov 2005 18:32:42 +0000">
+  <metadata tag="requester" timestamp="2005-11-20T18:32:42Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Nov 2005 19:23:12 +0000">
+  <metadata tag="submitter" timestamp="2005-11-20T19:23:12Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 21 Nov 2005 09:22:48 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-21T09:22:48Z">
     koon
   </metadata>
 </glsa>

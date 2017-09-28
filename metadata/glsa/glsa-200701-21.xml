@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-21">
   <title>MIT Kerberos 5: Arbitrary Remote Code Execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>January 24, 2007</announced>
-  <revised>January 24, 2007: 01</revised>
+  <announced>2007-01-24</announced>
+  <revised>2007-01-24: 01</revised>
   <bug>158810</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.5.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.5.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6143">CVE-2006-6143</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6144">CVE-2006-6144</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6143">CVE-2006-6143</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6144">CVE-2006-6144</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Jan 2007 22:46:59 +0000">
+  <metadata tag="requester" timestamp="2007-01-12T22:46:59Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 14 Jan 2007 23:13:19 +0000">
+  <metadata tag="submitter" timestamp="2007-01-14T23:13:19Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 22 Jan 2007 12:38:46 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-22T12:38:46Z">
     falco
   </metadata>
 </glsa>

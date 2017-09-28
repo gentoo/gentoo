@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in spice, the worst of
     which may result in the remote execution of arbitrary code.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 16, 2016</announced>
-  <revised>June 16, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-16</announced>
+  <revised>2016-06-16: 1</revised>
   <bug>560006</bug>
   <bug>562890</bug>
   <bug>584126</bug>
@@ -46,15 +46,15 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5260">CVE-2015-5260</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5260">CVE-2015-5260</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5261">CVE-2015-5261</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5261">CVE-2015-5261</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0749">CVE-2016-0749</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2150">CVE-2016-2150</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5260">CVE-2015-5260</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5260">CVE-2015-5260</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5261">CVE-2015-5261</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5261">CVE-2015-5261</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0749">CVE-2016-0749</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2150">CVE-2016-2150</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Nov 2015 21:15:42 +0000">
+  <metadata tag="requester" timestamp="2015-11-18T21:15:42Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 16 Jun 2016 18:45:10 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-16T18:45:10Z">b-man</metadata>
 </glsa>

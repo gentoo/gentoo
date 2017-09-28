@@ -6,8 +6,8 @@
     which may lead to Denial of Service.
   </synopsis>
   <product type="ebuild">django</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 1</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 1</revised>
   <bug>521324</bug>
   <access>remote</access>
   <affected>
@@ -57,11 +57,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0480">CVE-2014-0480</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0481">CVE-2014-0481</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0482">CVE-2014-0482</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0483">CVE-2014-0483</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0480">CVE-2014-0480</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0481">CVE-2014-0481</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0482">CVE-2014-0482</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0483">CVE-2014-0483</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 04 Sep 2014 18:15:07 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:08:48 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-09-04T18:15:07Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T18:08:48Z">ackle</metadata>
 </glsa>

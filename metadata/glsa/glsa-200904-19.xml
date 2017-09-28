@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-19">
   <title>LittleCMS: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">littlecms</product>
-  <announced>April 19, 2009</announced>
-  <revised>April 19, 2009: 01</revised>
+  <announced>2009-04-19</announced>
+  <revised>2009-04-19: 01</revised>
   <bug>260269</bug>
   <bug>264604</bug>
   <access>remote</access>
@@ -64,21 +63,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/lcms-1.18-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/lcms-1.18-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0581">CVE-2009-0581</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0723">CVE-2009-0723</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0733">CVE-2009-0733</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0793">CVE-2009-0793</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0581">CVE-2009-0581</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0723">CVE-2009-0723</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0733">CVE-2009-0733</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0793">CVE-2009-0793</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 12 Apr 2009 15:32:46 +0000">
+  <metadata tag="requester" timestamp="2009-04-12T15:32:46Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Apr 2009 22:41:26 +0000">
+  <metadata tag="submitter" timestamp="2009-04-18T22:41:26Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Apr 2009 12:36:20 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-19T12:36:20Z">
     a3li
   </metadata>
 </glsa>

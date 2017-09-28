@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-23">
   <title>Star: Directory traversal vulnerability</title>
   <synopsis>
     A directory traversal vulnerability has been discovered in Star.
   </synopsis>
   <product type="ebuild">star</product>
-  <announced>October 22, 2007</announced>
-  <revised>October 22, 2007: 01</revised>
+  <announced>2007-10-22</announced>
+  <revised>2007-10-22: 01</revised>
   <bug>189690</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/star-1.5_alpha84&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/star-1.5_alpha84"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4134">CVE-2007-4134</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4134">CVE-2007-4134</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 11 Oct 2007 21:17:08 +0000">
+  <metadata tag="requester" timestamp="2007-10-11T21:17:08Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Oct 2007 01:04:21 +0000">
+  <metadata tag="submitter" timestamp="2007-10-15T01:04:21Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 15 Oct 2007 17:56:09 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-15T17:56:09Z">
     rbu
   </metadata>
 </glsa>

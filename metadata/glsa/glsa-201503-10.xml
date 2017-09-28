@@ -6,8 +6,8 @@
     which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">python</product>
-  <announced>March 18, 2015</announced>
-  <revised>June 17, 2015: 2</revised>
+  <announced>2015-03-18</announced>
+  <revised>2015-06-17: 2</revised>
   <bug>495224</bug>
   <bug>500518</bug>
   <bug>505068</bug>
@@ -63,16 +63,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1752">CVE-2013-1752</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7338">CVE-2013-7338</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1912">CVE-2014-1912</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2667">CVE-2014-2667</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4616">CVE-2014-4616</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7185">CVE-2014-7185</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9365">CVE-2014-9365</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1752">CVE-2013-1752</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7338">CVE-2013-7338</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1912">CVE-2014-1912</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2667">CVE-2014-2667</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4616">CVE-2014-4616</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7185">CVE-2014-7185</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9365">CVE-2014-9365</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 18 Aug 2014 20:14:36 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 17 Jun 2015 19:35:55 +0000">
+  <metadata tag="requester" timestamp="2014-08-18T20:14:36Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-06-17T19:35:55Z">
     BlueKnight
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">stunnel</product>
-  <announced>February 06, 2014</announced>
-  <revised>February 07, 2014: 4</revised>
+  <announced>2014-02-06</announced>
+  <revised>2014-02-07: 4</revised>
   <bug>460278</bug>
   <access>remote</access>
   <affected>
@@ -47,15 +47,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1762">CVE-2013-1762</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1762">CVE-2013-1762</uri>
     <uri link="https://www.stunnel.org/CVE-2013-1762.html">stunnel:
       CVE-2013-1762
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:54:34 +0000">
+  <metadata tag="requester" timestamp="2013-08-23T14:54:34Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 07 Feb 2014 09:46:24 +0000">
+  <metadata tag="submitter" timestamp="2014-02-07T09:46:24Z">
     pinkbyte
   </metadata>
 </glsa>

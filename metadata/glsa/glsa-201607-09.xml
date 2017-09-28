@@ -6,8 +6,8 @@
     property, which could lead to the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">commons-beanutils</product>
-  <announced>July 20, 2016</announced>
-  <revised>July 20, 2016: 1</revised>
+  <announced>2016-07-20</announced>
+  <revised>2016-07-20: 1</revised>
   <bug>534498</bug>
   <access>remote</access>
   <affected>
@@ -45,8 +45,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0114">CVE-2014-0114</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0114">CVE-2014-0114</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Sep 2015 19:30:11 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 08:50:29 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-09-05T19:30:11Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2016-07-20T08:50:29Z">b-man</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">pixman</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>561526</bug>
   <access>remote</access>
   <affected>
@@ -41,12 +41,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://lists.x.org/archives/xorg-announce/2015-September/002637.html">
+    <uri link="https://lists.x.org/archives/xorg-announce/2015-September/002637.html">
       Pixman 0.32.8 Release Notes
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 08:11:30 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T08:11:30Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:37 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T06:59:37Z">whissi</metadata>
 </glsa>

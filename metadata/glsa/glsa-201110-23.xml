@@ -6,8 +6,8 @@
     attacker to conduct SQL injection.
   </synopsis>
   <product type="ebuild">mod_authnz_external</product>
-  <announced>October 25, 2011</announced>
-  <revised>October 25, 2011: 1</revised>
+  <announced>2011-10-25</announced>
+  <revised>2011-10-25: 1</revised>
   <bug>386165</bug>
   <access>remote</access>
   <affected>
@@ -48,10 +48,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2688">CVE-2011-2688</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2688">CVE-2011-2688</uri>
   </references>
-  <metadata timestamp="Tue, 18 Oct 2011 14:42:12 +0000" tag="requester">
+  <metadata timestamp="2011-10-18T14:42:12Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Tue, 25 Oct 2011 17:13:58 +0000" tag="submitter">a3li</metadata>
+  <metadata timestamp="2011-10-25T17:13:58Z" tag="submitter">a3li</metadata>
 </glsa>

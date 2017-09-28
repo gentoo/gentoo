@@ -6,8 +6,8 @@
     lead to symlink attacks, file creation, or bypass of security restrictions.
   </synopsis>
   <product type="ebuild">munin</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>412881</bug>
   <bug>445250</bug>
   <access>local, remote</access>
@@ -46,10 +46,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2103">CVE-2012-2103</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3512">CVE-2012-3512</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3513">CVE-2012-3513</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2103">CVE-2012-2103</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3512">CVE-2012-3512</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3513">CVE-2012-3513</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 23 Dec 2012 00:14:15 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:35:16 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-23T00:14:15Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T11:35:16Z">ackle</metadata>
 </glsa>

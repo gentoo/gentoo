@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-03">
   <title>ClamAV: Denial of Service</title>
   <synopsis>
     ClamAV contains two vulnerabilities allowing a Denial of Service.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>March 02, 2007</announced>
-  <revised>March 02, 2007: 01</revised>
+  <announced>2007-03-02</announced>
+  <revised>2007-03-02: 01</revised>
   <bug>167201</bug>
   <access>remote</access>
   <affected>
@@ -52,19 +51,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.90&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.90"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0897">CVE-2007-0897</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0898">CVE-2007-0898</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0897">CVE-2007-0897</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0898">CVE-2007-0898</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 26 Feb 2007 22:43:01 +0000">
+  <metadata tag="requester" timestamp="2007-02-26T22:43:01Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 13:49:10 +0000">
+  <metadata tag="submitter" timestamp="2007-02-27T13:49:10Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 02 Mar 2007 00:24:54 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-02T00:24:54Z">
     falco
   </metadata>
 </glsa>

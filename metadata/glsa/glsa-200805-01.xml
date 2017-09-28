@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-01">
   <title>Horde Application Framework: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     attacker to bypass security restrictions.
   </synopsis>
   <product type="ebuild">horde</product>
-  <announced>May 05, 2008</announced>
-  <revised>May 05, 2008: 01</revised>
+  <announced>2008-05-05</announced>
+  <revised>2008-05-05: 01</revised>
   <bug>212635</bug>
   <bug>213493</bug>
   <access>remote</access>
@@ -82,48 +81,48 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.1.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-3.1.7"</code>
     <p>
     All horde-groupware users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-groupware-1.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-groupware-1.0.5"</code>
     <p>
     All horde-kronolith users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-kronolith-2.1.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-kronolith-2.1.7"</code>
     <p>
     All horde-mnemo users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-mnemo-2.1.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-mnemo-2.1.2"</code>
     <p>
     All horde-nag users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-nag-2.1.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-nag-2.1.4"</code>
     <p>
     All horde-webmail users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-webmail-1.0.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-webmail-1.0.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1284">CVE-2008-1284</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1284">CVE-2008-1284</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 20:23:06 +0000">
+  <metadata tag="requester" timestamp="2008-03-29T20:23:06Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:55 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-03T14:49:55Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 26 Apr 2008 11:40:54 +0000">
+  <metadata tag="submitter" timestamp="2008-04-26T11:40:54Z">
     mfleming
   </metadata>
 </glsa>

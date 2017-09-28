@@ -7,8 +7,8 @@
     security restrictions. 
   </synopsis>
   <product type="ebuild">chromimu</product>
-  <announced>March 22, 2015</announced>
-  <revised>March 22, 2015: 1</revised>
+  <announced>2015-03-22</announced>
+  <revised>2015-03-22: 1</revised>
   <bug>542090</bug>
   <access>remote</access>
   <affected>
@@ -44,27 +44,27 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1213">CVE-2015-1213</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1214">CVE-2015-1214</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1215">CVE-2015-1215</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1216">CVE-2015-1216</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1217">CVE-2015-1217</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1218">CVE-2015-1218</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1219">CVE-2015-1219</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1220">CVE-2015-1220</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1221">CVE-2015-1221</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1222">CVE-2015-1222</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1223">CVE-2015-1223</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1224">CVE-2015-1224</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1225">CVE-2015-1225</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1226">CVE-2015-1226</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1227">CVE-2015-1227</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1228">CVE-2015-1228</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1229">CVE-2015-1229</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1230">CVE-2015-1230</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1231">CVE-2015-1231</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1232">CVE-2015-1232</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1213">CVE-2015-1213</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1214">CVE-2015-1214</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1215">CVE-2015-1215</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1216">CVE-2015-1216</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1217">CVE-2015-1217</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1218">CVE-2015-1218</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1219">CVE-2015-1219</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1220">CVE-2015-1220</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1221">CVE-2015-1221</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1222">CVE-2015-1222</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1223">CVE-2015-1223</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1224">CVE-2015-1224</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1225">CVE-2015-1225</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1226">CVE-2015-1226</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1227">CVE-2015-1227</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1228">CVE-2015-1228</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1229">CVE-2015-1229</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1230">CVE-2015-1230</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1231">CVE-2015-1231</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1232">CVE-2015-1232</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 21 Mar 2015 14:01:08 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Mar 2015 22:04:32 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-03-21T14:01:08Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-03-22T22:04:32Z">Zlogene</metadata>
 </glsa>

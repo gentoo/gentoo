@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-03">
   <title>NVIDIA binary graphics driver: Privilege escalation vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escalation through an X session.
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
-  <announced>November 07, 2006</announced>
-  <revised>November 10, 2006: 02</revised>
+  <announced>2006-11-07</announced>
+  <revised>2006-11-10: 02</revised>
   <bug>151635</bug>
   <access>remote, local</access>
   <affected>
@@ -48,7 +47,7 @@
     Disable the accelerated rendering functionality in the Device section
     of xorg.conf :
     </p>
-    <code>Option      &quot;RenderAccel&quot; &quot;false&quot;</code>
+    <code>Option      "RenderAccel" "false"</code>
   </workaround>
   <resolution>
     <p>
@@ -57,18 +56,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-drivers/nvidia-drivers-1.0.8776&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-drivers/nvidia-drivers-1.0.8776"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5379">CVE-2006-5379</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5379">CVE-2006-5379</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Oct 2006 09:12:20 +0000">
+  <metadata tag="requester" timestamp="2006-10-24T09:12:20Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 24 Oct 2006 14:25:34 +0000">
+  <metadata tag="submitter" timestamp="2006-10-24T14:25:34Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 24 Oct 2006 14:27:05 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-24T14:27:05Z">
     falco
   </metadata>
 </glsa>

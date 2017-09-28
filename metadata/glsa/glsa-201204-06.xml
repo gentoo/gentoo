@@ -6,8 +6,8 @@
     which may allow a local attacker to gain root privileges.
   </synopsis>
   <product type="ebuild">polkit</product>
-  <announced>April 17, 2012</announced>
-  <revised>April 17, 2012: 1</revised>
+  <announced>2012-04-17</announced>
+  <revised>2012-04-17: 1</revised>
   <bug>314535</bug>
   <bug>364973</bug>
   <bug>401513</bug>
@@ -57,12 +57,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0750">CVE-2010-0750</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1485">CVE-2011-1485</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4945">CVE-2011-4945</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0750">CVE-2010-0750</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1485">CVE-2011-1485</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4945">CVE-2011-4945</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:57 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:57Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Tue, 17 Apr 2012 22:43:48 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-17T22:43:48Z" tag="submitter">ackle</metadata>
 </glsa>

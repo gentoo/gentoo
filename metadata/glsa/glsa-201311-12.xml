@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">opendchub</product>
-  <announced>November 20, 2013</announced>
-  <revised>November 20, 2013: 1</revised>
+  <announced>2013-11-20</announced>
+  <revised>2013-11-20: 1</revised>
   <bug>314551</bug>
   <access>remote</access>
   <affected>
@@ -44,12 +44,12 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1147">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1147">
       CVE-2010-1147
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:01 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:01Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Nov 2013 10:00:54 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-11-20T10:00:54Z">Zlogene</metadata>
 </glsa>

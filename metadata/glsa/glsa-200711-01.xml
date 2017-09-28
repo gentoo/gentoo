@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-01">
   <title>gFTP: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     used in gFTP.
   </synopsis>
   <product type="ebuild">gftp</product>
-  <announced>November 01, 2007</announced>
-  <revised>November 01, 2007: 01</revised>
+  <announced>2007-11-01</announced>
+  <revised>2007-11-01: 01</revised>
   <bug>188252</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/gftp-2.0.18-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-ftp/gftp-2.0.18-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3961">CVE-2007-3961</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3962">CVE-2007-3962</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3961">CVE-2007-3961</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3962">CVE-2007-3962</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Sep 2007 07:30:16 +0000">
+  <metadata tag="requester" timestamp="2007-09-26T07:30:16Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Sep 2007 07:30:24 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-26T07:30:24Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 10 Oct 2007 19:23:34 +0000">
+  <metadata tag="submitter" timestamp="2007-10-10T19:23:34Z">
     p-y
   </metadata>
 </glsa>

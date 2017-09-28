@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-04">
   <title>PuTTY: Pre-authentication arbitrary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code on the connecting client.
   </synopsis>
   <product type="ebuild">PuTTY</product>
-  <announced>August 05, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-08-05</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>59383</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/putty-0.55&quot;
-    # emerge &quot;&gt;=net-misc/putty-0.55&quot;</code>
+    # emerge -pv "&gt;=net-misc/putty-0.55"
+    # emerge "&gt;=net-misc/putty-0.55"</code>
   </resolution>
   <references>
-    <uri link="http://www.coresecurity.com/common/showdoc.php?idx=417&amp;idxseccion=10">Corelabs Advisory</uri>
-    <uri link="http://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">PuTTY ChangeLog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1440">CVE-2004-1440</uri>
+    <uri link="https://www.coresecurity.com/common/showdoc.php?idx=417&amp;idxseccion=10">Corelabs Advisory</uri>
+    <uri link="https://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">PuTTY ChangeLog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1440">CVE-2004-1440</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  4 Aug 2004 17:20:53 +0000">
+  <metadata tag="requester" timestamp="2004-08-04T17:20:53Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 09:03:08 +0000">
+  <metadata tag="submitter" timestamp="2004-08-05T09:03:08Z">
     jaervosz
   </metadata>
 </glsa>

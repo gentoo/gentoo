@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-14">
   <title>Linux Audit: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">audit</product>
-  <announced>July 31, 2008</announced>
-  <revised>July 31, 2008: 01</revised>
+  <announced>2008-07-31</announced>
+  <revised>2008-07-31: 01</revised>
   <bug>215705</bug>
   <access>local</access>
   <affected>
@@ -49,15 +48,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-process/audit-1.7.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-process/audit-1.7.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1628">CVE-2008-1628</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1628">CVE-2008-1628</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 21 Jul 2008 20:07:20 +0000">
+  <metadata tag="submitter" timestamp="2008-07-21T20:07:20Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 21 Jul 2008 20:07:28 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-21T20:07:28Z">
     p-y
   </metadata>
 </glsa>

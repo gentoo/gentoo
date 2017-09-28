@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-17">
   <title>libTIFF: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">libtiff</product>
-  <announced>May 30, 2006</announced>
-  <revised>May 30, 2006: 01</revised>
+  <announced>2006-05-30</announced>
+  <revised>2006-05-30: 01</revised>
   <bug>129675</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/tiff-3.8.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/tiff-3.8.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0405">CVE-2006-0405</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2024">CVE-2006-2024</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2025">CVE-2006-2025</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2026">CVE-2006-2026</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0405">CVE-2006-0405</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2024">CVE-2006-2024</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2025">CVE-2006-2025</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2026">CVE-2006-2026</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 28 May 2006 21:42:59 +0000">
+  <metadata tag="submitter" timestamp="2006-05-28T21:42:59Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 28 May 2006 21:43:06 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-28T21:43:06Z">
     DerCorny
   </metadata>
 </glsa>

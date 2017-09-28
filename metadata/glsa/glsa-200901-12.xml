@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200901-12">
   <title>noip-updater: Execution of arbitrary code</title>
   <synopsis>
     A buffer overflow in noip-updater can lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">noip-updater</product>
-  <announced>January 18, 2009</announced>
-  <revised>January 18, 2009: 01</revised>
+  <announced>2009-01-18</announced>
+  <revised>2009-01-18: 01</revised>
   <bug>248709</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/noip-updater-2.1.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/noip-updater-2.1.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5297">CVE-2008-5297</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5297">CVE-2008-5297</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 29 Dec 2008 20:15:03 +0000">
+  <metadata tag="requester" timestamp="2008-12-29T20:15:03Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Jan 2009 11:49:22 +0000">
+  <metadata tag="submitter" timestamp="2009-01-02T11:49:22Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 11 Jan 2009 18:28:39 +0000">
+  <metadata tag="bugReady" timestamp="2009-01-11T18:28:39Z">
     p-y
   </metadata>
 </glsa>

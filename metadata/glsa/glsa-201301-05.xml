@@ -6,8 +6,8 @@
     result in execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">bzip2</product>
-  <announced>January 09, 2013</announced>
-  <revised>January 09, 2013: 1</revised>
+  <announced>2013-01-09</announced>
+  <revised>2013-01-09: 1</revised>
   <bug>338215</bug>
   <access>local</access>
   <affected>
@@ -45,8 +45,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0405">CVE-2010-0405</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0405">CVE-2010-0405</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:01 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Wed, 09 Jan 2013 00:39:55 +0000">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:01Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-01-09T00:39:55Z">craig</metadata>
 </glsa>

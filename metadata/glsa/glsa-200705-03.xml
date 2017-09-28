@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-03">
   <title>Tomcat: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure of sensitive information.
   </synopsis>
   <product type="ebuild">tomcat</product>
-  <announced>May 01, 2007</announced>
-  <revised>May 01, 2007: 01</revised>
+  <announced>2007-05-01</announced>
+  <revised>2007-05-01: 01</revised>
   <bug>173122</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/tomcat-5.5.22&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-5.5.22"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0450">CVE-2007-0450</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0450">CVE-2007-0450</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Apr 2007 19:49:54 +0000">
+  <metadata tag="requester" timestamp="2007-04-24T19:49:54Z">
     aetius
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Apr 2007 20:54:19 +0000">
+  <metadata tag="submitter" timestamp="2007-04-25T20:54:19Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Apr 2007 20:54:45 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-25T20:54:45Z">
     p-y
   </metadata>
 </glsa>

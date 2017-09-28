@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">openvswitch</product>
-  <announced>January 01, 2017</announced>
-  <revised>January 01, 2017: 2</revised>
+  <announced>2017-01-01</announced>
+  <revised>2017-01-01: 2</revised>
   <bug>577568</bug>
   <access>remote</access>
   <affected>
@@ -39,10 +39,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2074">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2074">
       CVE-2016-2074
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 12:31:09 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 16:00:54 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-01T12:31:09Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-01T16:00:54Z">b-man</metadata>
 </glsa>

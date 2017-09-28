@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-10">
   <title>KHTML: Cross-site scripting (XSS) vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     scripting (XSS) vulnerability.
   </synopsis>
   <product type="ebuild">kdelibs</product>
-  <announced>March 10, 2007</announced>
-  <revised>March 10, 2007: 01</revised>
+  <announced>2007-03-10</announced>
+  <revised>2007-03-10: 01</revised>
   <bug>165606</bug>
   <access>remote</access>
   <affected>
@@ -51,16 +50,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdelibs-3.5.5-r8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kdelibs-3.5.5-r8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0537">CVE-2007-0537</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0478">CVE-2007-0478</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0537">CVE-2007-0537</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0478">CVE-2007-0478</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 16:04:07 +0000">
+  <metadata tag="submitter" timestamp="2007-02-27T16:04:07Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 27 Feb 2007 16:19:36 +0000">
+  <metadata tag="bugReady" timestamp="2007-02-27T16:19:36Z">
     falco
   </metadata>
 </glsa>

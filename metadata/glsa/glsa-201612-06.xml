@@ -6,8 +6,8 @@
     handling code.
   </synopsis>
   <product type="ebuild">nghttp2</product>
-  <announced>December 04, 2016</announced>
-  <revised>December 04, 2016: 1</revised>
+  <announced>2016-12-04</announced>
+  <revised>2016-12-04: 1</revised>
   <bug>569518</bug>
   <access>remote</access>
   <affected>
@@ -41,10 +41,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8659">CVE-2015-8659</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8659">CVE-2015-8659</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:09:46 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:09:46Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 10:59:07 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-04T10:59:07Z">whissi</metadata>
 </glsa>

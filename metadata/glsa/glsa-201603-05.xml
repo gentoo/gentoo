@@ -6,9 +6,9 @@
     OpenOffice allowing remote attackers to execute arbitrary code or cause
     Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>March 09, 2016</announced>
-  <revised>March 09, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-03-09</announced>
+  <revised>2016-03-09: 1</revised>
   <bug>521136</bug>
   <bug>522060</bug>
   <bug>528438</bug>
@@ -85,16 +85,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3524">CVE-2014-3524</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3575">CVE-2014-3575</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3693">CVE-2014-3693</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9093">CVE-2014-9093</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1774">CVE-2015-1774</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4551">CVE-2015-4551</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5212">CVE-2015-5212</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5213">CVE-2015-5213</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5214">CVE-2015-5214</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3524">CVE-2014-3524</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3575">CVE-2014-3575</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3693">CVE-2014-3693</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9093">CVE-2014-9093</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1774">CVE-2015-1774</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4551">CVE-2015-4551</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5212">CVE-2015-5212</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5213">CVE-2015-5213</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5214">CVE-2015-5214</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 15 Feb 2015 17:50:17 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 09 Mar 2016 18:08:54 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-02-15T17:50:17Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-03-09T18:08:54Z">b-man</metadata>
 </glsa>

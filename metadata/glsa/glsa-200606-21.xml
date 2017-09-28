@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-21">
   <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     JavaScript privilege escalation and possibly execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mozilla-thunderbird</product>
-  <announced>June 19, 2006</announced>
-  <revised>June 19, 2006: 01</revised>
+  <announced>2006-06-19</announced>
+  <revised>2006-06-19: 01</revised>
   <bug>135256</bug>
   <access>remote</access>
   <affected>
@@ -53,14 +52,14 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-1.5.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/mozilla-thunderbird-1.5.0.4"</code>
     <p>
     All Mozilla Thunderbird binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mozilla-thunderbird-bin-1.5.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/mozilla-thunderbird-bin-1.5.0.4"</code>
     <p>
     Note: There is no stable fixed version for the Alpha architecture yet.
     Users of Mozilla Thunderbird on Alpha should consider unmerging it
@@ -68,21 +67,21 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2775">CVE-2006-2775</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2776">CVE-2006-2776</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2778">CVE-2006-2778</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2779">CVE-2006-2779</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2780">CVE-2006-2780</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2781">CVE-2006-2781</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2783">CVE-2006-2783</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2786">CVE-2006-2786</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2787">CVE-2006-2787</uri>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#Thunderbird">Mozilla Foundation Security Advisories</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2775">CVE-2006-2775</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2776">CVE-2006-2776</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2778">CVE-2006-2778</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2779">CVE-2006-2779</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2780">CVE-2006-2780</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2781">CVE-2006-2781</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2783">CVE-2006-2783</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2786">CVE-2006-2786</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2787">CVE-2006-2787</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#Thunderbird">Mozilla Foundation Security Advisories</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 07 Jun 2006 17:49:37 +0000">
+  <metadata tag="submitter" timestamp="2006-06-07T17:49:37Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Jun 2006 10:01:22 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-18T10:01:22Z">
     falco
   </metadata>
 </glsa>

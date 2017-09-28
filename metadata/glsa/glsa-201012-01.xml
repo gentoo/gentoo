@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201012-01">
   <title>Chromium: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allow user-assisted execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>December 17, 2010</announced>
-  <revised>December 17, 2010: 01</revised>
+  <announced>2010-12-17</announced>
+  <revised>2010-12-17: 01</revised>
   <bug>325451</bug>
   <bug>326717</bug>
   <bug>330003</bug>
@@ -73,27 +72,27 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/chromium-8.0.552.224&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/chromium-8.0.552.224"</code>
   </resolution>
   <references>
-    <uri link="http://googlechromereleases.blogspot.com/2010/06/stable-channel-update_24.html">Release Notes 5.0.375.86</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/07/stable-channel-update.html">Release Notes 5.0.375.99</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/07/stable-channel-update_26.html">Release Notes 5.0.375.125</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/08/stable-channel-update_19.html">Release Notes 5.0.375.127</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/09/stable-beta-channel-updates_14.html">Release Notes 6.0.472.59</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/09/stable-beta-channel-updates_17.html">Release Notes 6.0.472.62</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/10/stable-channel-update.html">Release Notes 7.0.517.41</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/11/stable-channel-update.html">Release Notes 7.0.517.44</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/12/stable-beta-channel-updates.html">Release Notes 8.0.552.215</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2010/12/stable-beta-channel-updates_13.html">Release Notes 8.0.552.224</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/06/stable-channel-update_24.html">Release Notes 5.0.375.86</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/07/stable-channel-update.html">Release Notes 5.0.375.99</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/07/stable-channel-update_26.html">Release Notes 5.0.375.125</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/08/stable-channel-update_19.html">Release Notes 5.0.375.127</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/09/stable-beta-channel-updates_14.html">Release Notes 6.0.472.59</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/09/stable-beta-channel-updates_17.html">Release Notes 6.0.472.62</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/10/stable-channel-update.html">Release Notes 7.0.517.41</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/11/stable-channel-update.html">Release Notes 7.0.517.44</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/12/stable-beta-channel-updates.html">Release Notes 8.0.552.215</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2010/12/stable-beta-channel-updates_13.html">Release Notes 8.0.552.224</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Jul 2010 21:33:07 +0000">
+  <metadata tag="requester" timestamp="2010-07-06T21:33:07Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 20 Nov 2010 20:16:17 +0000">
+  <metadata tag="submitter" timestamp="2010-11-20T20:16:17Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 17 Dec 2010 14:59:00 +0000">
+  <metadata tag="bugReady" timestamp="2010-12-17T14:59:00Z">
     keytoaster
   </metadata>
 </glsa>

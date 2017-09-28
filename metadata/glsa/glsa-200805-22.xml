@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-22">
   <title>MPlayer: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">mplayer</product>
-  <announced>May 29, 2008</announced>
-  <revised>May 29, 2008: 01</revised>
+  <announced>2008-05-29</announced>
+  <revised>2008-05-29: 01</revised>
   <bug>215006</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mplayer-1.0_rc2_p26753&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/mplayer-1.0_rc2_p26753"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1558">CVE-2008-1558</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1558">CVE-2008-1558</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 22 May 2008 17:37:55 +0000">
+  <metadata tag="requester" timestamp="2008-05-22T17:37:55Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 May 2008 21:32:21 +0000">
+  <metadata tag="submitter" timestamp="2008-05-27T21:32:21Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 28 May 2008 13:57:42 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-28T13:57:42Z">
     p-y
   </metadata>
 </glsa>

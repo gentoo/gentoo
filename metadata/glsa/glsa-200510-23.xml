@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-23">
   <title>TikiWiki: XSS vulnerability</title>
   <synopsis>
     TikiWiki is vulnerable to cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">tikiwiki</product>
-  <announced>October 28, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-10-28</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>109858</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.9.1.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/tikiwiki-1.9.1.1"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3283">CVE-2005-3283</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3283">CVE-2005-3283</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 26 Oct 2005 19:43:33 +0000">
+  <metadata tag="submitter" timestamp="2005-10-26T19:43:33Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 27 Oct 2005 18:43:45 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-27T18:43:45Z">
     koon
   </metadata>
 </glsa>

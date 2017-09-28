@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-02">
   <title>KVIrc: Remote arbitrary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">kvirc</product>
-  <announced>September 13, 2007</announced>
-  <revised>September 13, 2007: 01</revised>
+  <announced>2007-09-13</announced>
+  <revised>2007-09-13: 01</revised>
   <bug>183174</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/kvirc-3.2.6_pre20070714&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/kvirc-3.2.6_pre20070714"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2951">CVE-2007-2951</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2951">CVE-2007-2951</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Aug 2007 14:12:16 +0000">
+  <metadata tag="requester" timestamp="2007-08-06T14:12:16Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Aug 2007 18:59:16 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-19T18:59:16Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Aug 2007 11:26:17 +0000">
+  <metadata tag="submitter" timestamp="2007-08-20T11:26:17Z">
     p-y
   </metadata>
 </glsa>

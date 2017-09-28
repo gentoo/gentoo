@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-06">
   <title>Adobe Reader: User-assisted execution of arbitrary code</title>
   <synopsis>
     Adobe Reader is vulnerable to remote code execution via crafted PDF files.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>July 12, 2009</announced>
-  <revised>July 12, 2009: 01</revised>
+  <announced>2009-07-12</announced>
+  <revised>2009-07-12: 01</revised>
   <bug>267846</bug>
   <bug>273908</bug>
   <access>remote</access>
@@ -91,33 +90,33 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-8.1.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-8.1.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0198">CVE-2009-0198</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0509">CVE-2009-0509</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0510">CVE-2009-0510</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0511">CVE-2009-0511</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0512">CVE-2009-0512</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0888">CVE-2009-0888</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0889">CVE-2009-0889</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1492">CVE-2009-1492</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1493">CVE-2009-1493</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1855">CVE-2009-1855</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1856">CVE-2009-1856</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1857">CVE-2009-1857</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1858">CVE-2009-1858</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1859">CVE-2009-1859</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1861">CVE-2009-1861</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2028">CVE-2009-2028</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0198">CVE-2009-0198</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0509">CVE-2009-0509</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0510">CVE-2009-0510</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0511">CVE-2009-0511</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0512">CVE-2009-0512</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0888">CVE-2009-0888</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0889">CVE-2009-0889</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1492">CVE-2009-1492</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1493">CVE-2009-1493</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1855">CVE-2009-1855</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1856">CVE-2009-1856</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1857">CVE-2009-1857</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1858">CVE-2009-1858</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1859">CVE-2009-1859</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1861">CVE-2009-1861</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2028">CVE-2009-2028</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Jun 2009 19:11:36 +0000">
+  <metadata tag="requester" timestamp="2009-06-21T19:11:36Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 09 Jul 2009 17:45:58 +0000">
+  <metadata tag="submitter" timestamp="2009-07-09T17:45:58Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 09 Jul 2009 17:47:39 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-09T17:47:39Z">
     rbu
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">MySQL</product>
-  <announced>January 05, 2012</announced>
-  <revised>January 05, 2012: 1</revised>
+  <announced>2012-01-05</announced>
+  <revised>2012-01-05: 1</revised>
   <bug>220813</bug>
   <bug>229329</bug>
   <bug>237166</bug>
@@ -62,40 +62,40 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-3963">CVE-2008-3963</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4097">CVE-2008-4097</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4098">CVE-2008-4098</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4456">CVE-2008-4456</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7247">CVE-2008-7247</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2446">CVE-2009-2446</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4019">CVE-2009-4019</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4028">CVE-2009-4028</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4484">CVE-2009-4484</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1621">CVE-2010-1621</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1626">CVE-2010-1626</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1848">CVE-2010-1848</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1849">CVE-2010-1849</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1850">CVE-2010-1850</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2008">CVE-2010-2008</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3676">CVE-2010-3676</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3677">CVE-2010-3677</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3678">CVE-2010-3678</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3679">CVE-2010-3679</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3680">CVE-2010-3680</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3681">CVE-2010-3681</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3682">CVE-2010-3682</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3683">CVE-2010-3683</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3833">CVE-2010-3833</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3834">CVE-2010-3834</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3835">CVE-2010-3835</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3836">CVE-2010-3836</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3837">CVE-2010-3837</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3838">CVE-2010-3838</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3839">CVE-2010-3839</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3840">CVE-2010-3840</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-3963">CVE-2008-3963</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4097">CVE-2008-4097</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4098">CVE-2008-4098</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4456">CVE-2008-4456</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-7247">CVE-2008-7247</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2446">CVE-2009-2446</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4019">CVE-2009-4019</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4028">CVE-2009-4028</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4484">CVE-2009-4484</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1621">CVE-2010-1621</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1626">CVE-2010-1626</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1848">CVE-2010-1848</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1849">CVE-2010-1849</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1850">CVE-2010-1850</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2008">CVE-2010-2008</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3676">CVE-2010-3676</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3677">CVE-2010-3677</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3678">CVE-2010-3678</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3679">CVE-2010-3679</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3680">CVE-2010-3680</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3681">CVE-2010-3681</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3682">CVE-2010-3682</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3683">CVE-2010-3683</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3833">CVE-2010-3833</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3834">CVE-2010-3834</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3835">CVE-2010-3835</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3836">CVE-2010-3836</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3837">CVE-2010-3837</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3838">CVE-2010-3838</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3839">CVE-2010-3839</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3840">CVE-2010-3840</uri>
   </references>
-  <metadata timestamp="Wed, 26 Oct 2011 21:42:54 +0000" tag="requester">a3li</metadata>
-  <metadata timestamp="Thu, 05 Jan 2012 22:45:51 +0000" tag="submitter">
+  <metadata timestamp="2011-10-26T21:42:54Z" tag="requester">a3li</metadata>
+  <metadata timestamp="2012-01-05T22:45:51Z" tag="submitter">
     underling
   </metadata>
 </glsa>

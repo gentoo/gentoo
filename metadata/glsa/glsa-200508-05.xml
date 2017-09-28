@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-05">
   <title>Heartbeat: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">Heartbeat</product>
-  <announced>August 07, 2005</announced>
-  <revised>August 07, 2005: 01</revised>
+  <announced>2005-08-07</announced>
+  <revised>2005-08-07: 01</revised>
   <bug>97175</bug>
   <access>local</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/heartbeat-1.2.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-cluster/heartbeat-1.2.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2231">CAN-2005-2231</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2231">CAN-2005-2231</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 05 Aug 2005 07:37:14 +0000">
+  <metadata tag="requester" timestamp="2005-08-05T07:37:14Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 05 Aug 2005 14:33:59 +0000">
+  <metadata tag="submitter" timestamp="2005-08-05T14:33:59Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 05 Aug 2005 14:54:26 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-05T14:54:26Z">
     formula7
   </metadata>
 </glsa>

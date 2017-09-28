@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-23">
   <title>NetHack, Slash'EM, Falcon's Eye: Local privilege escalation</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code as other users.
   </synopsis>
   <product type="ebuild">nethack slashem falconseye</product>
-  <announced>March 23, 2006</announced>
-  <revised>March 30, 2006: 01</revised>
+  <announced>2006-03-23</announced>
+  <revised>2006-03-30: 01</revised>
   <bug>125902</bug>
   <bug>122376</bug>
   <bug>127167</bug>
@@ -62,32 +61,32 @@
     until further notice.
     </p>
     <code>
-    # emerge --ask --verbose --unmerge &quot;games-roguelike/nethack&quot;</code>
+    # emerge --ask --verbose --unmerge "games-roguelike/nethack"</code>
     <p>
     Slash'EM has been masked in Portage pending the resolution of these
     issues. Vulnerable Slash'EM users are advised to uninstall the package
     until further notice.
     </p>
     <code>
-    # emerge --ask --verbose --unmerge &quot;games-roguelike/slashem&quot;</code>
+    # emerge --ask --verbose --unmerge "games-roguelike/slashem"</code>
     <p>
     Falcon's Eye has been masked in Portage pending the resolution of these
     issues. Vulnerable Falcon's Eye users are advised to uninstall the
     package until further notice.
     </p>
     <code>
-    # emerge --ask --verbose --unmerge &quot;games-roguelike/falconseye&quot;</code>
+    # emerge --ask --verbose --unmerge "games-roguelike/falconseye"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1390">CVE-2006-1390</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1390">CVE-2006-1390</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Mar 2006 22:13:28 +0000">
+  <metadata tag="requester" timestamp="2006-03-22T22:13:28Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 22 Mar 2006 22:57:23 +0000">
+  <metadata tag="submitter" timestamp="2006-03-22T22:57:23Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 23 Mar 2006 22:05:55 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-23T22:05:55Z">
     jaervosz
   </metadata>
 </glsa>

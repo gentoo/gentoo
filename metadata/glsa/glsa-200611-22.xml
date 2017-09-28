@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-22">
   <title>Ingo H3: Folder name shell command injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     procmail rules.
   </synopsis>
   <product type="ebuild">horde-ingo</product>
-  <announced>November 27, 2006</announced>
-  <revised>November 27, 2006: 01</revised>
+  <announced>2006-11-27</announced>
+  <revised>2006-11-27: 01</revised>
   <bug>153927</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-ingo-1.1.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-ingo-1.1.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5449">CVE-2006-5449</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5449">CVE-2006-5449</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:42:39 +0000">
+  <metadata tag="requester" timestamp="2006-11-21T06:42:39Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 24 Nov 2006 19:04:29 +0000">
+  <metadata tag="submitter" timestamp="2006-11-24T19:04:29Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 19:46:46 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-24T19:46:46Z">
     jaervosz
   </metadata>
 </glsa>

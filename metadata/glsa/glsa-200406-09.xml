@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-09">
   <title>Horde-Chora: Remote code execution</title>
   <synopsis>
     A vulnerability in Chora allows remote code execution and file upload.
   </synopsis>
   <product type="ebuild">www-apps/horde-chora</product>
-  <announced>June 15, 2004</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2004-06-15</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>53800</bug>
   <access>remote</access>
   <affected>
@@ -49,8 +48,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-apps/horde-chora-1.2.2"
-    # emerge ">=www-apps/horde-chora-1.2.2"</code>
+    # emerge -pv "&gt;=www-apps/horde-chora-1.2.2"
+    # emerge "&gt;=www-apps/horde-chora-1.2.2"</code>
   </resolution>
   <references>
     <uri link="http://security.e-matters.de/advisories/102004.html">e-matters Advisory</uri>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200911-06">
   <title>PEAR Net_Traceroute: Command injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attackers to execute arbitrary commands.
   </synopsis>
   <product type="ebuild">PEAR-Net_Traceroute</product>
-  <announced>November 26, 2009</announced>
-  <revised>November 26, 2009: 01</revised>
+  <announced>2009-11-26</announced>
+  <revised>2009-11-26: 01</revised>
   <bug>294264</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-Net_Traceroute-0.21.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-Net_Traceroute-0.21.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4025">CVE-2009-4025</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4025">CVE-2009-4025</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 26 Nov 2009 07:38:17 +0000">
+  <metadata tag="requester" timestamp="2009-11-26T07:38:17Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 26 Nov 2009 07:53:00 +0000">
+  <metadata tag="submitter" timestamp="2009-11-26T07:53:00Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 26 Nov 2009 19:14:35 +0000">
+  <metadata tag="bugReady" timestamp="2009-11-26T19:14:35Z">
     a3li
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-09">
   <title>libvorbis: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">libvorbis</product>
-  <announced>June 23, 2008</announced>
-  <revised>June 23, 2008: 02</revised>
+  <announced>2008-06-23</announced>
+  <revised>2008-06-23: 02</revised>
   <bug>222085</bug>
   <access>remote</access>
   <affected>
@@ -67,20 +66,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libvorbis-1.2.1_rc1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libvorbis-1.2.1_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1419">CVE-2008-1419</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1420">CVE-2008-1420</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1423">CVE-2008-1423</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1419">CVE-2008-1419</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1420">CVE-2008-1420</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1423">CVE-2008-1423</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Jun 2008 22:45:51 +0000">
+  <metadata tag="requester" timestamp="2008-06-16T22:45:51Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Jun 2008 23:30:07 +0000">
+  <metadata tag="submitter" timestamp="2008-06-16T23:30:07Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 23:30:17 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-16T23:30:17Z">
     rbu
   </metadata>
 </glsa>

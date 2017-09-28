@@ -7,8 +7,8 @@
     escalation.
   </synopsis>
   <product type="ebuild">postgres</product>
-  <announced>January 12, 2017</announced>
-  <revised>January 12, 2017: 4</revised>
+  <announced>2017-01-12</announced>
+  <revised>2017-01-12: 4</revised>
   <bug>562586</bug>
   <bug>574456</bug>
   <bug>602130</bug>
@@ -79,13 +79,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5288">CVE-2015-5288</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5289">CVE-2015-5289</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0766">CVE-2016-0766</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0773">CVE-2016-0773</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5423">CVE-2016-5423</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5424">CVE-2016-5424</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5288">CVE-2015-5288</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5289">CVE-2015-5289</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0766">CVE-2016-0766</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0773">CVE-2016-0773</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5423">CVE-2016-5423</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5424">CVE-2016-5424</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 12 Jan 2017 10:16:19 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Jan 2017 16:06:39 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-12T10:16:19Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-12T16:06:39Z">b-man</metadata>
 </glsa>

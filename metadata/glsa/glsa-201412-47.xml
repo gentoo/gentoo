@@ -7,8 +7,8 @@
     execution.
   </synopsis>
   <product type="ebuild">torque</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-26: 1</revised>
   <bug>372959</bug>
   <bug>378805</bug>
   <bug>390167</bug>
@@ -65,15 +65,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2193">CVE-2011-2193</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2907">CVE-2011-2907</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4925">CVE-2011-4925</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4319">CVE-2013-4319</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4495">CVE-2013-4495</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0749">CVE-2014-0749</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2193">CVE-2011-2193</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2907">CVE-2011-2907</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4925">CVE-2011-4925</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4319">CVE-2013-4319</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4495">CVE-2013-4495</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0749">CVE-2014-0749</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:08 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:08Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 19:24:57 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-26T19:24:57Z">ackle</metadata>
 </glsa>

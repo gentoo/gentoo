@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-09">
   <title>cURL: Off-by-one errors in URL handling</title>
   <synopsis>
@@ -8,8 +7,8 @@
     due to the insecure parsing of URLs.
   </synopsis>
   <product type="ebuild">cURL</product>
-  <announced>December 16, 2005</announced>
-  <revised>December 16, 2005: 01</revised>
+  <announced>2005-12-16</announced>
+  <revised>2005-12-16: 01</revised>
   <bug>114710</bug>
   <access>local</access>
   <affected>
@@ -57,19 +56,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.15.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.15.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4077">CVE-2005-4077</uri>
-    <uri link="http://www.hardened-php.net/advisory_242005.109.html">Hardened-PHP Advisory</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4077">CVE-2005-4077</uri>
+    <uri link="https://www.hardened-php.net/advisory_242005.109.html">Hardened-PHP Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 14 Dec 2005 13:39:33 +0000">
+  <metadata tag="requester" timestamp="2005-12-14T13:39:33Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 14 Dec 2005 17:20:45 +0000">
+  <metadata tag="submitter" timestamp="2005-12-14T17:20:45Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 15 Dec 2005 11:37:18 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-15T11:37:18Z">
     koon
   </metadata>
 </glsa>

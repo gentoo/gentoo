@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-08">
   <title>phpGroupWare: Various vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     lead to information disclosure or remote compromise.
   </synopsis>
   <product type="ebuild">phpgroupware</product>
-  <announced>January 06, 2005</announced>
-  <revised>May 22, 2006: 04</revised>
+  <announced>2005-01-06</announced>
+  <revised>2006-05-22: 04</revised>
   <bug>74487</bug>
   <access>remote</access>
   <affected>
@@ -49,7 +48,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpgroupware-0.9.16.004&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpgroupware-0.9.16.004"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
@@ -57,17 +56,17 @@
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/384492">BugTraq Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1383">CVE-2004-1383</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1384">CVE-2004-1384</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1385">CVE-2004-1385</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1383">CVE-2004-1383</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1384">CVE-2004-1384</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1385">CVE-2004-1385</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu,  6 Jan 2005 08:52:11 +0000">
+  <metadata tag="requester" timestamp="2005-01-06T08:52:11Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu,  6 Jan 2005 08:52:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-06T08:52:20Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu,  6 Jan 2005 13:44:43 +0000">
+  <metadata tag="submitter" timestamp="2005-01-06T13:44:43Z">
     lewk
   </metadata>
 </glsa>

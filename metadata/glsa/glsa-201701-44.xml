@@ -45,7 +45,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0804">CVE-2012-0804</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0804">CVE-2012-0804</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T08:43:18Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-19T19:06:48Z">b-man</metadata>

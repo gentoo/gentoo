@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-39">
   <title>pam_krb5: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privileges or overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">pam_krb5</product>
-  <announced>March 25, 2009</announced>
-  <revised>March 25, 2009: 01</revised>
+  <announced>2009-03-25</announced>
+  <revised>2009-03-25: 01</revised>
   <bug>257075</bug>
   <access>local</access>
   <affected>
@@ -54,19 +53,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/pam_krb5-3.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-auth/pam_krb5-3.12"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0360">CVE-2009-0360</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0361">CVE-2009-0361</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0360">CVE-2009-0360</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0361">CVE-2009-0361</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:23:59 +0000">
+  <metadata tag="requester" timestamp="2009-03-05T20:23:59Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Mar 2009 12:57:24 +0000">
+  <metadata tag="submitter" timestamp="2009-03-09T12:57:24Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 09 Mar 2009 12:57:36 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-09T12:57:36Z">
     p-y
   </metadata>
 </glsa>

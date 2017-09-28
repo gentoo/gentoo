@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-14">
   <title>libextractor: Two heap-based buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libextractor</product>
-  <announced>May 21, 2006</announced>
-  <revised>May 21, 2006: 01</revised>
+  <announced>2006-05-21</announced>
+  <revised>2006-05-21: 01</revised>
   <bug>133570</bug>
   <access>remote</access>
   <affected>
@@ -51,19 +50,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libextractor-0.5.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libextractor-0.5.14"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2458">CVE-2006-2458</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2458">CVE-2006-2458</uri>
     <uri link="http://aluigi.altervista.org/adv/libextho-adv.txt">Original advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 19 May 2006 13:49:39 +0000">
+  <metadata tag="requester" timestamp="2006-05-19T13:49:39Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 19 May 2006 13:49:51 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-19T13:49:51Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 19 May 2006 16:16:14 +0000">
+  <metadata tag="submitter" timestamp="2006-05-19T16:16:14Z">
     falco
   </metadata>
 </glsa>

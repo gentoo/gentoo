@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-08">
   <title>DokuWiki: Cross-site scripting vulnerability</title>
   <synopsis>
     DokuWiki is vulnerable to a cross-site scripting attack.
   </synopsis>
   <product type="ebuild">dokuwiki</product>
-  <announced>April 12, 2007</announced>
-  <revised>April 12, 2007: 01</revised>
+  <announced>2007-04-12</announced>
+  <revised>2007-04-12: 01</revised>
   <bug>163781</bug>
   <access>remote</access>
   <affected>
@@ -53,18 +52,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/dokuwiki-20061106&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/dokuwiki-20061106"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6965">CVE-2006-6965</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6965">CVE-2006-6965</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Apr 2007 22:16:33 +0000">
+  <metadata tag="requester" timestamp="2007-04-02T22:16:33Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Apr 2007 13:45:23 +0000">
+  <metadata tag="submitter" timestamp="2007-04-03T13:45:23Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:45 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-03T22:29:45Z">
     falco
   </metadata>
 </glsa>

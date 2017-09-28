@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-01">
   <title>pinentry: Local privilege escalation</title>
   <synopsis>
     pinentry is vulnerable to privilege escalation.
   </synopsis>
   <product type="ebuild">pinentry</product>
-  <announced>January 03, 2006</announced>
-  <revised>January 03, 2006: 01</revised>
+  <announced>2006-01-03</announced>
+  <revised>2006-01-03: 01</revised>
   <bug>116822</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/pinentry-0.7.2-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/pinentry-0.7.2-r2"</code>
   </resolution>
   <references>
-        <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0071">CVE-2006-0071</uri>
+        <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0071">CVE-2006-0071</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 31 Dec 2005 13:13:15 +0000">
+  <metadata tag="requester" timestamp="2005-12-31T13:13:15Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 31 Dec 2005 13:13:43 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-31T13:13:43Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2006 22:02:30 +0000">
+  <metadata tag="submitter" timestamp="2006-01-02T22:02:30Z">
     shellsage
   </metadata>
 </glsa>

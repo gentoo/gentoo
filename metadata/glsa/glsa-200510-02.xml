@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-02">
   <title>Berkeley MPEG Tools: Multiple insecure temporary files</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially allowing a local user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">MPEG Tools</product>
-  <announced>October 03, 2005</announced>
-  <revised>October 03, 2005: 01</revised>
+  <announced>2005-10-03</announced>
+  <revised>2005-10-03: 01</revised>
   <bug>107344</bug>
   <access>local</access>
   <affected>
@@ -54,18 +53,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/mpeg-tools-1.5b-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/mpeg-tools-1.5b-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3115">CAN-2005-3115</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3115">CAN-2005-3115</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 30 Sep 2005 07:41:47 +0000">
+  <metadata tag="requester" timestamp="2005-09-30T07:41:47Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 01 Oct 2005 09:55:55 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-01T09:55:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 02 Oct 2005 13:13:54 +0000">
+  <metadata tag="submitter" timestamp="2005-10-02T13:13:54Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">webkit-gtk</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 3</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 3</revised>
   <bug>570034</bug>
   <access>remote</access>
   <affected>
@@ -50,10 +50,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4412">CVE-2014-4412</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4413">CVE-2014-4413</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4414">CVE-2014-4414</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4412">CVE-2014-4412</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4413">CVE-2014-4413</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4414">CVE-2014-4414</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 12 Mar 2016 11:54:30 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 13:01:16 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-03-12T11:54:30Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T13:01:16Z">whissi</metadata>
 </glsa>

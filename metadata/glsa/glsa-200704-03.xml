@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-03">
   <title>OpenAFS: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     on the client.
   </synopsis>
   <product type="ebuild">openafs</product>
-  <announced>April 03, 2007</announced>
-  <revised>April 03, 2007: 01</revised>
+  <announced>2007-04-03</announced>
+  <revised>2007-04-03: 01</revised>
   <bug>171662</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/openafs-1.4.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-fs/openafs-1.4.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1507">CVE-2007-1507</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1507">CVE-2007-1507</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 25 Mar 2007 06:35:01 +0000">
+  <metadata tag="requester" timestamp="2007-03-25T06:35:01Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 28 Mar 2007 13:53:51 +0000">
+  <metadata tag="submitter" timestamp="2007-03-28T13:53:51Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:30 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-03T22:29:30Z">
     falco
   </metadata>
 </glsa>

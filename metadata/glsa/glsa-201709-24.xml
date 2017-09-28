@@ -57,7 +57,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6706">CVE-2012-6706</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6706">CVE-2012-6706</uri>
     <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12940">
       CVE-2017-12940
     </uri>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-04">
   <title>VirtualBox: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing for privilege escalation.
   </synopsis>
   <product type="ebuild">virtualbox-bin virtualbox-ose virtualbox-guest-additions virtualbox-ose-additions</product>
-  <announced>January 13, 2010</announced>
-  <revised>January 13, 2010: 01</revised>
+  <announced>2010-01-13</announced>
+  <revised>2010-01-13: 01</revised>
   <bug>288836</bug>
   <bug>294678</bug>
   <access>local</access>
@@ -66,40 +65,40 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-bin-3.0.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-bin-3.0.12"</code>
     <p>
     All users of the Open Source version of VirtualBox should upgrade to
     the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-ose-3.0.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-ose-3.0.12"</code>
     <p>
     All users of the binary VirtualBox Guest Additions should upgrade to
     the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-guest-additions-3.0.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-guest-additions-3.0.12"</code>
     <p>
     All users of the Open Source VirtualBox Guest Additions should upgrade
     to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/virtualbox-ose-additions-3.0.12&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-ose-additions-3.0.12"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3692">CVE-2009-3692</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3940">CVE-2009-3940</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3692">CVE-2009-3692</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3940">CVE-2009-3940</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 09 Nov 2009 23:19:24 +0000">
+  <metadata tag="requester" timestamp="2009-11-09T23:19:24Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 20:50:17 +0000">
+  <metadata tag="submitter" timestamp="2010-01-05T20:50:17Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:41:20 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-10T19:41:20Z">
     craig
   </metadata>
 </glsa>

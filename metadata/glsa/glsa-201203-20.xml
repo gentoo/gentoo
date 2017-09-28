@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">Logwatch</product>
-  <announced>March 28, 2012</announced>
-  <revised>March 28, 2012: 1</revised>
+  <announced>2012-03-28</announced>
+  <revised>2012-03-28: 1</revised>
   <bug>356387</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1018">CVE-2011-1018</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1018">CVE-2011-1018</uri>
   </references>
-  <metadata timestamp="Fri, 16 Mar 2012 19:51:03 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Wed, 28 Mar 2012 10:30:33 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-16T19:51:03Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-28T10:30:33Z" tag="submitter">ackle</metadata>
 </glsa>

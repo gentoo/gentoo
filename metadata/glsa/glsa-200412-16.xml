@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-16">
   <title>kdelibs, kdebase: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     window injection.
   </synopsis>
   <product type="ebuild">KDE</product>
-  <announced>December 19, 2004</announced>
-  <revised>December 19, 2004: 01</revised>
+  <announced>2004-12-19</announced>
+  <revised>2004-12-19: 01</revised>
   <bug>72804</bug>
   <bug>73869</bug>
   <access>remote and local</access>
@@ -68,24 +67,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdelibs-3.2.3-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kdelibs-3.2.3-r4"</code>
     <p>
     All kdebase users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/kdebase-3.2.3-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/kdebase-3.2.3-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.kde.org/info/security/advisory-20041209-1.txt">KDE Security Advisory: plain text password exposure</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1171">CAN 2004-1171</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20041213-1.txt">KDE Security Advisory: Konqueror Window Injection Vulnerability</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1158">CAN 2004-1158</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20041209-1.txt">KDE Security Advisory: plain text password exposure</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1171">CAN 2004-1171</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20041213-1.txt">KDE Security Advisory: Konqueror Window Injection Vulnerability</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1158">CAN 2004-1158</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu,  9 Dec 2004 20:24:54 +0000">
+  <metadata tag="submitter" timestamp="2004-12-09T20:24:54Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 19 Dec 2004 14:04:36 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-19T14:04:36Z">
     koon
   </metadata>
 </glsa>

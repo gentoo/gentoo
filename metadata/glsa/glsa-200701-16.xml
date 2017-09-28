@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-16">
   <title>Adobe Acrobat Reader: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service, and cross-site scripting attacks.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>January 22, 2007</announced>
-  <revised>January 22, 2007: 01</revised>
+  <announced>2007-01-22</announced>
+  <revised>2007-01-22: 01</revised>
   <bug>159874</bug>
   <access>remote</access>
   <affected>
@@ -63,22 +62,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-7.0.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-7.0.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5857">CVE-2006-5857</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0044">CVE-2007-0044</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0045">CVE-2007-0045</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0046">CVE-2007-0046</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0048">CVE-2007-0048</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5857">CVE-2006-5857</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0044">CVE-2007-0044</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0045">CVE-2007-0045</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0046">CVE-2007-0046</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0048">CVE-2007-0048</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 12:10:48 +0000">
+  <metadata tag="requester" timestamp="2007-01-14T12:10:48Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 00:45:48 +0000">
+  <metadata tag="submitter" timestamp="2007-01-15T00:45:48Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 22 Jan 2007 12:38:29 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-22T12:38:29Z">
     falco
   </metadata>
 </glsa>

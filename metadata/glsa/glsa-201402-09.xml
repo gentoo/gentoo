@@ -6,8 +6,8 @@
     to execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">mod_fcgid</product>
-  <announced>February 07, 2014</announced>
-  <revised>February 07, 2014: 1</revised>
+  <announced>2014-02-07</announced>
+  <revised>2014-02-07: 1</revised>
   <bug>487314</bug>
   <access>remote</access>
   <affected>
@@ -44,12 +44,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4365">CVE-2013-4365</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4365">CVE-2013-4365</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Jan 2014 21:08:50 +0000">
+  <metadata tag="requester" timestamp="2014-01-22T21:08:50Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 07 Feb 2014 20:03:11 +0000">
+  <metadata tag="submitter" timestamp="2014-02-07T20:03:11Z">
     BlueKnight
   </metadata>
 </glsa>

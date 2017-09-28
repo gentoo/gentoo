@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-06">
   <title>w3m: Format string vulnerability</title>
   <synopsis>
     w3m does not correctly handle format string specifiers in SSL certificates.
   </synopsis>
   <product type="ebuild">w3m</product>
-  <announced>January 12, 2007</announced>
-  <revised>January 12, 2007: 01</revised>
+  <announced>2007-01-12</announced>
+  <revised>2007-01-12: 01</revised>
   <bug>159145</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/w3m-0.5.1-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/w3m-0.5.1-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6772">CVE-2006-6772</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6772">CVE-2006-6772</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 11 Jan 2007 00:57:23 +0000">
+  <metadata tag="submitter" timestamp="2007-01-11T00:57:23Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 11 Jan 2007 11:00:25 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-11T11:00:25Z">
     DerCorny
   </metadata>
 </glsa>

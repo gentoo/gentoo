@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-17">
   <title>Qpopper: Multiple Vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary files and create files with insecure permissions.
   </synopsis>
   <product type="ebuild">qpopper</product>
-  <announced>May 23, 2005</announced>
-  <revised>May 23, 2005: 01</revised>
+  <announced>2005-05-23</announced>
+  <revised>2005-05-23: 01</revised>
   <bug>90622</bug>
   <access>local</access>
   <affected>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/qpopper-4.0.5-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/qpopper-4.0.5-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1151">CAN-2005-1151</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1152">CAN-2005-1152</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1151">CAN-2005-1151</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1152">CAN-2005-1152</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 10 May 2005 16:31:30 +0000">
+  <metadata tag="submitter" timestamp="2005-05-10T16:31:30Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 23 May 2005 19:25:37 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-23T19:25:37Z">
     jaervosz
   </metadata>
 </glsa>

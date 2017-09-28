@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-04">
   <title>lighttpd: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a Denial of Service.
   </synopsis>
   <product type="ebuild">lighttpd</product>
-  <announced>December 02, 2008</announced>
-  <revised>December 02, 2008: 01</revised>
+  <announced>2008-12-02</announced>
+  <revised>2008-12-02: 01</revised>
   <bug>238180</bug>
   <access>remote</access>
   <affected>
@@ -61,20 +60,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.20&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/lighttpd-1.4.20"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4298">CVE-2008-4298</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4359">CVE-2008-4359</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4360">CVE-2008-4360</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4298">CVE-2008-4298</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4359">CVE-2008-4359</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4360">CVE-2008-4360</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:41:57 +0000">
+  <metadata tag="requester" timestamp="2008-11-26T18:41:57Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 22:38:27 +0000">
+  <metadata tag="submitter" timestamp="2008-11-26T22:38:27Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 22:39:43 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-26T22:39:43Z">
     rbu
   </metadata>
 </glsa>

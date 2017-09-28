@@ -6,8 +6,8 @@
     of Service or a bypass of security restrictions.
   </synopsis>
   <product type="ebuild">atheme</product>
-  <announced>September 25, 2012</announced>
-  <revised>September 25, 2012: 1</revised>
+  <announced>2012-09-25</announced>
+  <revised>2012-09-25: 1</revised>
   <bug>409103</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1576">CVE-2012-1576</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1576">CVE-2012-1576</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:09:52 +0000">
+  <metadata tag="requester" timestamp="2012-08-14T16:09:52Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 25 Sep 2012 10:53:52 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-25T10:53:52Z">ackle</metadata>
 </glsa>

@@ -7,8 +7,8 @@
     Service, corrupt data, or obtain sensitive information.
   </synopsis>
   <product type="ebuild">pam</product>
-  <announced>June 25, 2012</announced>
-  <revised>June 25, 2012: 1</revised>
+  <announced>2012-06-25</announced>
+  <revised>2012-06-25: 1</revised>
   <bug>343399</bug>
   <bug>386273</bug>
   <bug>388431</bug>
@@ -55,19 +55,19 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3316">CVE-2010-3316</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3430">CVE-2010-3430</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3431">CVE-2010-3431</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3435">CVE-2010-3435</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3853">CVE-2010-3853</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4706">CVE-2010-4706</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4707">CVE-2010-4707</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4708">CVE-2010-4708</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3148">CVE-2011-3148</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3149">CVE-2011-3149</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3316">CVE-2010-3316</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3430">CVE-2010-3430</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3431">CVE-2010-3431</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3435">CVE-2010-3435</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3853">CVE-2010-3853</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4706">CVE-2010-4706</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4707">CVE-2010-4707</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4708">CVE-2010-4708</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3148">CVE-2011-3148</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3149">CVE-2011-3149</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:20 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:20Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 25 Jun 2012 18:51:25 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2012-06-25T18:51:25Z" tag="submitter">craig</metadata>
 </glsa>

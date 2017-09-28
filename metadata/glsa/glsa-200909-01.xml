@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-01">
   <title>Linux-PAM: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attackers to cause a Denial of Service or escalate privileges.
   </synopsis>
   <product type="ebuild">pam</product>
-  <announced>September 07, 2009</announced>
-  <revised>September 07, 2009: 01</revised>
+  <announced>2009-09-07</announced>
+  <revised>2009-09-07: 01</revised>
   <bug>261512</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/pam-1.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-libs/pam-1.0.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0887">CVE-2009-0887</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0887">CVE-2009-0887</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 18:01:34 +0000">
+  <metadata tag="requester" timestamp="2009-07-10T18:01:34Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 16:33:27 +0000">
+  <metadata tag="submitter" timestamp="2009-08-28T16:33:27Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:46 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-31T03:38:46Z">
     a3li
   </metadata>
 </glsa>

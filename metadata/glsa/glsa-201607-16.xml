@@ -3,9 +3,9 @@
 <glsa id="201607-16">
   <title>arpwatch: Privilege escalation</title>
   <synopsis>arpwatch is vulnerable to the escalation of privileges.</synopsis>
-  <product type="ebuild"></product>
-  <announced>July 20, 2016</announced>
-  <revised>July 20, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-20</announced>
+  <revised>2016-07-20: 1</revised>
   <bug>419375</bug>
   <access>local, remote</access>
   <affected>
@@ -39,10 +39,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2653">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2653">
       CVE-2012-2653
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 19 Mar 2016 12:49:20 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 12:02:59 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-03-19T12:49:20Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-20T12:02:59Z">b-man</metadata>
 </glsa>

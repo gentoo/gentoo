@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-11">
   <title>Webmin, Usermin: File Disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     specially crafted URL.
   </synopsis>
   <product type="ebuild">webmin/usermin</product>
-  <announced>August 06, 2006</announced>
-  <revised>August 06, 2006: 01</revised>
+  <announced>2006-08-06</announced>
+  <revised>2006-08-06: 01</revised>
   <bug>138552</bug>
   <access>remote</access>
   <affected>
@@ -53,23 +52,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --verbose --oneshot &quot;&gt;=app-admin/webmin-1.290&quot;</code>
+    # emerge --ask --verbose --oneshot "&gt;=app-admin/webmin-1.290"</code>
     <p>
     All Usermin users should update to the latest stable version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --verbose --oneshot &quot;&gt;=app-admin/usermin-1.220&quot;</code>
+    # emerge --ask --verbose --oneshot "&gt;=app-admin/usermin-1.220"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3392">CVE-2006-3392</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3392">CVE-2006-3392</uri>
   </references>
   <metadata tag="">
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 06 Aug 2006 17:23:21 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-06T17:23:21Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 Aug 2006 18:24:45 +0000">
+  <metadata tag="submitter" timestamp="2006-08-06T18:24:45Z">
     hlieberman
   </metadata>
 </glsa>

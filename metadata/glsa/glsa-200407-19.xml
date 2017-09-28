@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-19">
   <title>Pavuk: Digest authentication helper buffer overflow</title>
   <synopsis>
     Pavuk contains a bug that can allow an attacker to run arbitrary code.
   </synopsis>
   <product type="ebuild">Pavuk</product>
-  <announced>July 26, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-07-26</announced>
+  <revised>2006-05-22: 02</revised>
   <access>remote</access>
   <affected>
     <package name="net-misc/pavuk" auto="yes" arch="*">
@@ -46,11 +45,11 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/pavuk-0.9.28-r3&quot;
-    # emerge &quot;&gt;=net-misc/pavuk-0.9.28-r3&quot;</code>
+    # emerge -pv "&gt;=net-misc/pavuk-0.9.28-r3"
+    # emerge "&gt;=net-misc/pavuk-0.9.28-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1437">CVE-2004-1437</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1437">CVE-2004-1437</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

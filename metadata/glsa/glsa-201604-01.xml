@@ -7,8 +7,8 @@
     condition.
   </synopsis>
   <product type="ebuild">QEMU</product>
-  <announced>April 02, 2016</announced>
-  <revised>April 02, 2016: 1</revised>
+  <announced>2016-04-02</announced>
+  <revised>2016-04-02: 1</revised>
   <bug>569118</bug>
   <bug>569300</bug>
   <bug>571560</bug>
@@ -53,17 +53,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8613">CVE-2015-8613</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8619">CVE-2015-8619</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1714">CVE-2016-1714</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1922">CVE-2016-1922</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1981">CVE-2016-1981</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2197">CVE-2016-2197</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2198">CVE-2016-2198</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2392">CVE-2016-2392</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2538">CVE-2016-2538</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2858">CVE-2016-2858</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8613">CVE-2015-8613</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8619">CVE-2015-8619</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1714">CVE-2016-1714</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1922">CVE-2016-1922</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1981">CVE-2016-1981</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2197">CVE-2016-2197</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2198">CVE-2016-2198</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2392">CVE-2016-2392</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2538">CVE-2016-2538</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2858">CVE-2016-2858</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Mar 2016 06:05:49 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 02 Apr 2016 17:57:26 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-03-23T06:05:49Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-04-02T17:57:26Z">b-man</metadata>
 </glsa>

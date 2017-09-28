@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-18">
   <title>util-linux: Local privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privileges.
   </synopsis>
   <product type="ebuild">util-linux</product>
-  <announced>October 18, 2007</announced>
-  <revised>October 18, 2007: 01</revised>
+  <announced>2007-10-18</announced>
+  <revised>2007-10-18: 01</revised>
   <bug>195390</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/util-linux-2.12r-r8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/util-linux-2.12r-r8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5191">CVE-2007-5191</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5191">CVE-2007-5191</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Oct 2007 17:17:12 +0000">
+  <metadata tag="requester" timestamp="2007-10-12T17:17:12Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 12 Oct 2007 17:18:23 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-12T17:18:23Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Oct 2007 00:47:53 +0000">
+  <metadata tag="submitter" timestamp="2007-10-15T00:47:53Z">
     rbu
   </metadata>
 </glsa>

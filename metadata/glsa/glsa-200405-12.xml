@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-12">
   <title>CVS heap overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     compromise.
   </synopsis>
   <product type="ebuild">cvs</product>
-  <announced>May 20, 2004</announced>
-  <revised>May 20, 2004: 01</revised>
+  <announced>2004-05-20</announced>
+  <revised>2004-05-20: 01</revised>
   <bug>51460</bug>
   <access>remote </access>
   <affected>
@@ -53,12 +52,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-util/cvs-1.11.16"
-    # emerge ">=dev-util/cvs-1.11.16"</code>
+    # emerge -pv "&gt;=dev-util/cvs-1.11.16"
+    # emerge "&gt;=dev-util/cvs-1.11.16"</code>
   </resolution>
   <references>
     <uri link="http://security.e-matters.de/advisories/072004.html">E-matters advisory 07/2004</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0396">CAN-2004-0396</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0396">CAN-2004-0396</uri>
   </references>
   <metadata tag="submitter">
     koon

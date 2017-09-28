@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-05">
   <title>Utempter symlink vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary files via a symlink attack.
   </synopsis>
   <product type="ebuild">utempter</product>
-  <announced>May 13, 2004</announced>
-  <revised>May 13, 2004: 01</revised>
+  <announced>2004-05-13</announced>
+  <revised>2004-05-13: 01</revised>
   <bug>49536</bug>
   <access>local </access>
   <affected>
@@ -49,11 +48,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=sys-apps/utempter-0.5.5.4"
-    # emerge ">=sys-apps/utempter-0.5.5.4"</code>
+    # emerge -pv "&gt;=sys-apps/utempter-0.5.5.4"
+    # emerge "&gt;=sys-apps/utempter-0.5.5.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0233">CAN-2004-0233</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0233">CAN-2004-0233</uri>
   </references>
   <metadata tag="submitter">
     klieber

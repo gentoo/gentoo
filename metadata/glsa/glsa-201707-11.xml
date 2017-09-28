@@ -42,7 +42,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8114">CVE-2017-8114</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8114">CVE-2017-8114</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-19T11:26:16Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-07-08T20:12:11Z">b-man</metadata>

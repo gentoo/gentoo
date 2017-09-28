@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-04">
   <title>DevIL: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">devil</product>
-  <announced>March 06, 2009</announced>
-  <revised>March 06, 2009: 01</revised>
+  <announced>2009-03-06</announced>
+  <revised>2009-03-06: 01</revised>
   <bug>255217</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/devil-1.7.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/devil-1.7.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5262">CVE-2008-5262</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5262">CVE-2008-5262</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 05 Mar 2009 20:17:56 +0000">
+  <metadata tag="requester" timestamp="2009-03-05T20:17:56Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 05 Mar 2009 23:09:26 +0000">
+  <metadata tag="submitter" timestamp="2009-03-05T23:09:26Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 Mar 2009 22:07:22 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-06T22:07:22Z">
     p-y
   </metadata>
 </glsa>

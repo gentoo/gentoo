@@ -47,9 +47,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5180">CVE-2015-5180</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6323">CVE-2016-6323</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000366">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5180">CVE-2015-5180</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6323">CVE-2016-6323</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000366">
       CVE-2017-1000366
     </uri>
     <uri link="https://www.qualys.com/2017/06/19/stack-clash/stack-clash.txt">

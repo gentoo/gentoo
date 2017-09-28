@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>February 29, 2012</announced>
-  <revised>February 29, 2012: 2</revised>
+  <announced>2012-02-29</announced>
+  <revised>2012-02-29: 2</revised>
   <bug>398361</bug>
   <access>remote</access>
   <affected>
@@ -47,8 +47,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3919">CVE-2011-3919</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3919">CVE-2011-3919</uri>
   </references>
-  <metadata timestamp="Mon, 16 Jan 2012 09:34:21 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Wed, 29 Feb 2012 20:10:19 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-16T09:34:21Z" tag="requester">ago</metadata>
+  <metadata timestamp="2012-02-29T20:10:19Z" tag="submitter">ackle</metadata>
 </glsa>

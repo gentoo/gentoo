@@ -6,8 +6,8 @@
     SQL injection.
   </synopsis>
   <product type="ebuild">quassel</product>
-  <announced>November 07, 2013</announced>
-  <revised>November 07, 2013: 1</revised>
+  <announced>2013-11-07</announced>
+  <revised>2013-11-07: 1</revised>
   <bug>338879</bug>
   <bug>487632</bug>
   <access>remote</access>
@@ -52,11 +52,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3443">CVE-2010-3443</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4422">CVE-2013-4422</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3443">CVE-2010-3443</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4422">CVE-2013-4422</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:21 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:21Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 07 Nov 2013 01:26:59 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-11-07T01:26:59Z">ackle</metadata>
 </glsa>

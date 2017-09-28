@@ -6,8 +6,8 @@
     code.
   </synopsis>
   <product type="ebuild">heimdal</product>
-  <announced>February 22, 2012</announced>
-  <revised>February 22, 2012: 1</revised>
+  <announced>2012-02-22</announced>
+  <revised>2012-02-22: 1</revised>
   <bug>396105</bug>
   <access>remote</access>
   <affected>
@@ -44,8 +44,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4862">CVE-2011-4862</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4862">CVE-2011-4862</uri>
   </references>
-  <metadata timestamp="Tue, 17 Jan 2012 19:55:41 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Wed, 22 Feb 2012 19:56:26 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-17T19:55:41Z" tag="requester">ago</metadata>
+  <metadata timestamp="2012-02-22T19:56:26Z" tag="submitter">ackle</metadata>
 </glsa>

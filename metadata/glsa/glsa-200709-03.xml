@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-03">
   <title>Streamripper: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing for user-assisted execution of arbitrary code.
   </synopsis>
   <product type="ebuild">streamripper</product>
-  <announced>September 13, 2007</announced>
-  <revised>September 13, 2007: 01</revised>
+  <announced>2007-09-13</announced>
+  <revised>2007-09-13: 01</revised>
   <bug>188698</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/streamripper-1.62.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/streamripper-1.62.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4337">CVE-2007-4337</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4337">CVE-2007-4337</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 24 Aug 2007 09:30:52 +0000">
+  <metadata tag="requester" timestamp="2007-08-24T09:30:52Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 24 Aug 2007 09:31:49 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-24T09:31:49Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 08 Sep 2007 15:35:27 +0000">
+  <metadata tag="submitter" timestamp="2007-09-08T15:35:27Z">
     p-y
   </metadata>
 </glsa>

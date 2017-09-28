@@ -6,8 +6,8 @@
     context-dependent attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">Ruby</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 1</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 1</revised>
   <bug>355439</bug>
   <bug>369141</bug>
   <bug>396301</bug>
@@ -59,20 +59,20 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0188">CVE-2011-0188</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1004">CVE-2011-1004</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1005">CVE-2011-1005</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4815">CVE-2011-4815</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4481">CVE-2012-4481</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5371">CVE-2012-5371</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0269">CVE-2013-0269</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1821">CVE-2013-1821</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4164">CVE-2013-4164</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8080">CVE-2014-8080</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8090">CVE-2014-8090</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0188">CVE-2011-0188</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1004">CVE-2011-1004</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1005">CVE-2011-1005</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4815">CVE-2011-4815</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4481">CVE-2012-4481</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5371">CVE-2012-5371</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0269">CVE-2013-0269</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1821">CVE-2013-1821</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4164">CVE-2013-4164</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8080">CVE-2014-8080</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8090">CVE-2014-8090</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:04 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:04Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:56:30 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T18:56:30Z">craig</metadata>
 </glsa>

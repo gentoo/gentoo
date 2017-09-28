@@ -6,8 +6,8 @@
     in either Denial of Service or information disclosure.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>March 19, 2015</announced>
-  <revised>June 06, 2015: 2</revised>
+  <announced>2015-03-19</announced>
+  <revised>2015-06-06: 2</revised>
   <bug>543552</bug>
   <access>remote</access>
   <affected>
@@ -94,23 +94,23 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0204">CVE-2015-0204</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0207">CVE-2015-0207</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0208">CVE-2015-0208</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0209">CVE-2015-0209</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0285">CVE-2015-0285</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0287">CVE-2015-0287</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0288">CVE-2015-0288</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0289">CVE-2015-0289</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0290">CVE-2015-0290</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0291">CVE-2015-0291</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0292">CVE-2015-0292</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0293">CVE-2015-0293</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1787">CVE-2015-1787</uri>
-    <uri link="http://openssl.org/news/secadv_20150319.txt">OpenSSL Security
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0204">CVE-2015-0204</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0207">CVE-2015-0207</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0208">CVE-2015-0208</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0209">CVE-2015-0209</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0285">CVE-2015-0285</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0287">CVE-2015-0287</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0288">CVE-2015-0288</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0289">CVE-2015-0289</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0290">CVE-2015-0290</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0291">CVE-2015-0291</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0292">CVE-2015-0292</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0293">CVE-2015-0293</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1787">CVE-2015-1787</uri>
+    <uri link="https://openssl.org/news/secadv_20150319.txt">OpenSSL Security
       Advisory [19 Mar 2015]
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Mar 2015 09:52:36 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:16:23 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2015-03-19T09:52:36Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2015-06-06T23:16:23Z">K_F</metadata>
 </glsa>

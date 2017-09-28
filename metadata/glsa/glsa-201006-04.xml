@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-04">
   <title>xine-lib: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>June 01, 2010</announced>
-  <revised>June 01, 2010: 01</revised>
+  <announced>2010-06-01</announced>
+  <revised>2010-06-01: 01</revised>
   <bug>234777</bug>
   <bug>249041</bug>
   <bug>260069</bug>
@@ -52,7 +51,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.16.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.16.3"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since April 10, 2009. It is likely that your system is
@@ -60,33 +59,33 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3231">CVE-2008-3231</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5233">CVE-2008-5233</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5234">CVE-2008-5234</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5235">CVE-2008-5235</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5236">CVE-2008-5236</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5237">CVE-2008-5237</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5238">CVE-2008-5238</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5239">CVE-2008-5239</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5240">CVE-2008-5240</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5241">CVE-2008-5241</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5242">CVE-2008-5242</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5243">CVE-2008-5243</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5244">CVE-2008-5244</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5245">CVE-2008-5245</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5246">CVE-2008-5246</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5247">CVE-2008-5247</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5248">CVE-2008-5248</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0698">CVE-2009-0698</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1274">CVE-2009-1274</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3231">CVE-2008-3231</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5233">CVE-2008-5233</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5234">CVE-2008-5234</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5235">CVE-2008-5235</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5236">CVE-2008-5236</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5237">CVE-2008-5237</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5238">CVE-2008-5238</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5239">CVE-2008-5239</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5240">CVE-2008-5240</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5241">CVE-2008-5241</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5242">CVE-2008-5242</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5243">CVE-2008-5243</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5244">CVE-2008-5244</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5245">CVE-2008-5245</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5246">CVE-2008-5246</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5247">CVE-2008-5247</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5248">CVE-2008-5248</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0698">CVE-2009-0698</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1274">CVE-2009-1274</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 03 Sep 2008 18:16:02 +0000">
+  <metadata tag="requester" timestamp="2008-09-03T18:16:02Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 30 May 2010 10:31:16 +0000">
+  <metadata tag="submitter" timestamp="2010-05-30T10:31:16Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 15:39:41 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-30T15:39:41Z">
     a3li
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-05">
   <title>zlib: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">zlib</product>
-  <announced>July 06, 2005</announced>
-  <revised>July 06, 2005: 01</revised>
+  <announced>2005-07-06</announced>
+  <revised>2005-07-06: 01</revised>
   <bug>98121</bug>
   <access>remote</access>
   <affected>
@@ -51,15 +50,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-libs/zlib-1.2.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-libs/zlib-1.2.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2096">CAN-2005-2096</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 04 Jul 2005 06:51:26 +0000">
+  <metadata tag="submitter" timestamp="2005-07-04T06:51:26Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 06 Jul 2005 14:21:00 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-06T14:21:00Z">
     koon
   </metadata>
 </glsa>

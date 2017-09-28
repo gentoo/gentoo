@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-06">
   <title>aMule: Parameter injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary parameters to a victim's media player.
   </synopsis>
   <product type="ebuild">amule</product>
-  <announced>September 09, 2009</announced>
-  <revised>September 09, 2009: 01</revised>
+  <announced>2009-09-09</announced>
+  <revised>2009-09-09: 01</revised>
   <bug>268163</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/amule-2.2.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/amule-2.2.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1440">CVE-2009-1440</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1440">CVE-2009-1440</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 28 Jul 2009 16:58:04 +0000">
+  <metadata tag="requester" timestamp="2009-07-28T16:58:04Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Aug 2009 08:22:54 +0000">
+  <metadata tag="submitter" timestamp="2009-08-28T08:22:54Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 Aug 2009 03:38:32 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-31T03:38:32Z">
     a3li
   </metadata>
 </glsa>

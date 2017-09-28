@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-08">
   <title>OpenSSL: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     certificate details.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>April 07, 2009</announced>
-  <revised>April 07, 2009: 01</revised>
+  <announced>2009-04-07</announced>
+  <revised>2009-04-07: 01</revised>
   <bug>263751</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8k&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8k"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0590">CVE-2009-0590</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0590">CVE-2009-0590</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 04 Apr 2009 13:16:21 +0000">
+  <metadata tag="requester" timestamp="2009-04-04T13:16:21Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 04 Apr 2009 13:41:11 +0000">
+  <metadata tag="submitter" timestamp="2009-04-04T13:41:11Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 04 Apr 2009 13:41:45 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-04T13:41:45Z">
     rbu
   </metadata>
 </glsa>

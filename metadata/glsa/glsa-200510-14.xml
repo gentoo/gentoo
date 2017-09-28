@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-14">
   <title>Perl, Qt-UnixODBC, CMake: RUNPATH issues</title>
   <synopsis>
@@ -8,8 +7,8 @@
     "portage" group to escalate privileges.
   </synopsis>
   <product type="ebuild">Perl Qt-UnixODBC CMake</product>
-  <announced>October 17, 2005</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2005-10-17</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>105719</bug>
   <bug>105721</bug>
   <bug>106678</bug>
@@ -70,7 +69,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/qt-unixODBC-3.3.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/qt-unixODBC-3.3.4-r1"</code>
     <p>
     All CMake users should upgrade to the latest version:
     </p>
@@ -79,17 +78,17 @@
     # emerge --ask --oneshot --verbose dev-util/cmake</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4278">CVE-2005-4278</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4279">CVE-2005-4279</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4280">CVE-2005-4280</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4278">CVE-2005-4278</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4279">CVE-2005-4279</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4280">CVE-2005-4280</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 27 Sep 2005 08:00:50 +0000">
+  <metadata tag="requester" timestamp="2005-09-27T08:00:50Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Oct 2005 08:34:31 +0000">
+  <metadata tag="submitter" timestamp="2005-10-10T08:34:31Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 15 Oct 2005 10:08:27 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-15T10:08:27Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which could result in Denial of Service or Man-in-the-Middle attacks.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>December 26, 2014</announced>
-  <revised>June 06, 2015: 2</revised>
+  <announced>2014-12-26</announced>
+  <revised>2015-06-06: 2</revised>
   <bug>494816</bug>
   <bug>519264</bug>
   <bug>525468</bug>
@@ -72,20 +72,20 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6449">CVE-2013-6449</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6450">CVE-2013-6450</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3505">CVE-2014-3505</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3506">CVE-2014-3506</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3507">CVE-2014-3507</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3509">CVE-2014-3509</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3510">CVE-2014-3510</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3511">CVE-2014-3511</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3512">CVE-2014-3512</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3513">CVE-2014-3513</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3567">CVE-2014-3567</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3568">CVE-2014-3568</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5139">CVE-2014-5139</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6449">CVE-2013-6449</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6450">CVE-2013-6450</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3505">CVE-2014-3505</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3506">CVE-2014-3506</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3507">CVE-2014-3507</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3509">CVE-2014-3509</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3510">CVE-2014-3510</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3511">CVE-2014-3511</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3512">CVE-2014-3512</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3513">CVE-2014-3513</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3567">CVE-2014-3567</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3568">CVE-2014-3568</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5139">CVE-2014-5139</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 04 Sep 2014 10:53:11 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:14:38 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-09-04T10:53:11Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-06-06T23:14:38Z">K_F</metadata>
 </glsa>

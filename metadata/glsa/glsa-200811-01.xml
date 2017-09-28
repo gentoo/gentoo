@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200811-01">
   <title>Opera: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>November 03, 2008</announced>
-  <revised>November 03, 2008: 01</revised>
+  <announced>2008-11-03</announced>
+  <revised>2008-11-03: 01</revised>
   <bug>235298</bug>
   <bug>240500</bug>
   <bug>243060</bug>
@@ -100,28 +99,28 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.62&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/opera-9.62"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4195">CVE-2008-4195</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4196">CVE-2008-4196</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4197">CVE-2008-4197</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4198">CVE-2008-4198</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4199">CVE-2008-4199</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4200">CVE-2008-4200</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4292">CVE-2008-4292</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4694">CVE-2008-4694</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4695">CVE-2008-4695</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4696">CVE-2008-4696</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4697">CVE-2008-4697</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4698">CVE-2008-4698</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4794">CVE-2008-4794</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4795">CVE-2008-4795</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4195">CVE-2008-4195</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4196">CVE-2008-4196</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4197">CVE-2008-4197</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4198">CVE-2008-4198</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4199">CVE-2008-4199</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4200">CVE-2008-4200</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4292">CVE-2008-4292</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4694">CVE-2008-4694</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4695">CVE-2008-4695</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4696">CVE-2008-4696</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4697">CVE-2008-4697</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4698">CVE-2008-4698</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4794">CVE-2008-4794</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4795">CVE-2008-4795</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 13 Oct 2008 21:25:07 +0000">
+  <metadata tag="submitter" timestamp="2008-10-13T21:25:07Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 03 Nov 2008 18:39:54 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-03T18:39:54Z">
     keytoaster
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-02">
   <title>Gnumeric: Heap overflow in the included PCRE library</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Gnumeric</product>
-  <announced>September 03, 2005</announced>
-  <revised>September 03, 2005: 01</revised>
+  <announced>2005-09-03</announced>
+  <revised>2005-09-03: 01</revised>
   <bug>104010</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/gnumeric-1.4.3-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/gnumeric-1.4.3-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
-    <uri link="/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200508-17.xml">GLSA 200508-17</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 Sep 2005 07:34:06 +0000">
+  <metadata tag="requester" timestamp="2005-09-02T07:34:06Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 02 Sep 2005 08:27:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-02T08:27:17Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Sep 2005 15:23:09 +0000">
+  <metadata tag="submitter" timestamp="2005-09-02T15:23:09Z">
     formula7
   </metadata>
 </glsa>

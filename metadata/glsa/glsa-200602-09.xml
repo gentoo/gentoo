@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200602-09">
   <title>BomberClone: Remote execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">games-action/bomberclone</product>
-  <announced>February 16, 2006</announced>
-  <revised>February 16, 2006: 01</revised>
+  <announced>2006-02-16</announced>
+  <revised>2006-02-16: 01</revised>
   <bug>121605</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-action/bomberclone-0.11.6.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-action/bomberclone-0.11.6.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0460">CVE-2006-0460</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0460">CVE-2006-0460</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Feb 2006 17:56:10 +0000">
+  <metadata tag="requester" timestamp="2006-02-14T17:56:10Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Feb 2006 17:58:09 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-14T17:58:09Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 15 Feb 2006 11:54:36 +0000">
+  <metadata tag="submitter" timestamp="2006-02-15T11:54:36Z">
     frilled
   </metadata>
 </glsa>

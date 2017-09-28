@@ -7,8 +7,8 @@
     information.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>March 06, 2012</announced>
-  <revised>June 06, 2015: 9</revised>
+  <announced>2012-03-06</announced>
+  <revised>2015-06-06: 9</revised>
   <bug>397695</bug>
   <bug>399365</bug>
   <access>remote</access>
@@ -93,16 +93,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4108">CVE-2011-4108</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4109">CVE-2011-4109</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4576">CVE-2011-4576</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4577">CVE-2011-4577</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4619">CVE-2011-4619</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0027">CVE-2012-0027</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0050 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4108">CVE-2011-4108</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4109">CVE-2011-4109</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4576">CVE-2011-4576</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4577">CVE-2011-4577</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4619">CVE-2011-4619</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0027">CVE-2012-0027</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0050 ">
       CVE-2012-0050 
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Jan 2012 19:58:37 +0000">ago</metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:08:28 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-01-16T19:58:37Z">ago</metadata>
+  <metadata tag="submitter" timestamp="2015-06-06T23:08:28Z">ackle</metadata>
 </glsa>

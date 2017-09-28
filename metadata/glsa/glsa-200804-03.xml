@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-03">
   <title>OpenSSH: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to escalate their privileges.
   </synopsis>
   <product type="ebuild">openssh</product>
-  <announced>April 05, 2008</announced>
-  <revised>April 05, 2008: 01</revised>
+  <announced>2008-04-05</announced>
+  <revised>2008-04-05: 01</revised>
   <bug>214985</bug>
   <bug>215702</bug>
   <access>local</access>
@@ -61,19 +60,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.7_p1-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-4.7_p1-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1483">CVE-2008-1483</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1657">CVE-2008-1657</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1483">CVE-2008-1483</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1657">CVE-2008-1657</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 31 Mar 2008 15:53:04 +0000">
+  <metadata tag="requester" timestamp="2008-03-31T15:53:04Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 21:55:34 +0000">
+  <metadata tag="submitter" timestamp="2008-04-03T21:55:34Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 22:39:55 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-03T22:39:55Z">
     rbu
   </metadata>
 </glsa>

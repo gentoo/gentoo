@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-08">
   <title>nano: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of ownerships of important files.
   </synopsis>
   <product type="ebuild">nano</product>
-  <announced>June 01, 2010</announced>
-  <revised>June 01, 2010: 01</revised>
+  <announced>2010-06-01</announced>
+  <revised>2010-06-01: 01</revised>
   <bug>315355</bug>
   <access>local</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-editors/nano-2.2.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-editors/nano-2.2.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1160">CVE-2010-1160</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1161">CVE-2010-1161</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1160">CVE-2010-1160</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1161">CVE-2010-1161</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 30 Apr 2010 14:22:38 +0000">
+  <metadata tag="requester" timestamp="2010-04-30T14:22:38Z">
     chiiph
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 May 2010 14:24:42 +0000">
+  <metadata tag="submitter" timestamp="2010-05-27T14:24:42Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 17:43:51 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-27T17:43:51Z">
     vorlon
   </metadata>
 </glsa>

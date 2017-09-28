@@ -6,8 +6,8 @@
     in execution of arbitrary code.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>February 15, 2015</announced>
-  <revised>January 03, 2017: 3</revised>
+  <announced>2015-02-15</announced>
+  <revised>2017-01-03: 3</revised>
   <bug>531264</bug>
   <bug>533358</bug>
   <access>local, remote</access>
@@ -62,13 +62,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9495">CVE-2014-9495</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9495">CVE-2014-9495</uri>
     <uri link="http://www.libpng.org/pub/png/src/libpng-1.6.15-README.txt">
       libpng 1.6.15 Release Notes
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 22:55:48 +0000">
+  <metadata tag="requester" timestamp="2015-01-15T22:55:48Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:39:38 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2017-01-03T04:39:38Z">ackle</metadata>
 </glsa>

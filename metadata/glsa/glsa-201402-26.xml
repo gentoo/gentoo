@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">libssh</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>444147</bug>
   <access>remote</access>
   <affected>
@@ -41,12 +41,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4559">CVE-2012-4559</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4560">CVE-2012-4560</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4561">CVE-2012-4561</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4562">CVE-2012-4562</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6063">CVE-2012-6063</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4559">CVE-2012-4559</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4560">CVE-2012-4560</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4561">CVE-2012-4561</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4562">CVE-2012-4562</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6063">CVE-2012-6063</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 03 Dec 2012 11:55:23 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:44:25 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-03T11:55:23Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-02-21T15:44:25Z">ackle</metadata>
 </glsa>

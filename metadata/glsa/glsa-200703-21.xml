@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-21">
   <title>PHP: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     conditions.
   </synopsis>
   <product type="ebuild">php</product>
-  <announced>March 20, 2007</announced>
-  <revised>March 29, 2008: 03</revised>
+  <announced>2007-03-20</announced>
+  <revised>2008-03-29: 03</revised>
   <bug>153911</bug>
   <access>remote</access>
   <affected>
@@ -60,32 +59,32 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-lang/php&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-lang/php"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5465">CVE-2006-5465</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0906">CVE-2007-0906</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0907">CVE-2007-0907</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0908">CVE-2007-0908</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0909">CVE-2007-0909</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0910">CVE-2007-0910</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0911">CVE-2007-0911</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0988">CVE-2007-0988</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1286">CVE-2007-1286</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1375">CVE-2007-1375</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1376">CVE-2007-1376</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1380">CVE-2007-1380</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1383">CVE-2007-1383</uri>
-    <uri link="http://www.php.net/releases/4_4_5.php">PHP 4.4.5 Release Announcement</uri>
-    <uri link="http://www.php.net/releases/5_2_1.php">PHP 5.2.1 Release Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5465">CVE-2006-5465</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0906">CVE-2007-0906</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0907">CVE-2007-0907</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0908">CVE-2007-0908</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0909">CVE-2007-0909</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0910">CVE-2007-0910</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0911">CVE-2007-0911</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0988">CVE-2007-0988</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1286">CVE-2007-1286</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1375">CVE-2007-1375</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1376">CVE-2007-1376</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1380">CVE-2007-1380</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1383">CVE-2007-1383</uri>
+    <uri link="https://www.php.net/releases/4_4_5.php">PHP 4.4.5 Release Announcement</uri>
+    <uri link="https://www.php.net/releases/5_2_1.php">PHP 5.2.1 Release Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 14 Mar 2007 13:36:33 +0000">
+  <metadata tag="requester" timestamp="2007-03-14T13:36:33Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 16 Mar 2007 10:54:22 +0000">
+  <metadata tag="submitter" timestamp="2007-03-16T10:54:22Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 16 Mar 2007 11:47:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-03-16T11:47:58Z">
     vorlon
   </metadata>
 </glsa>

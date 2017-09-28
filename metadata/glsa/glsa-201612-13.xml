@@ -4,8 +4,8 @@
   <title>nghttp2: Denial of Service</title>
   <synopsis>Nghttp2 is vulnerable to a Denial of Service attack.</synopsis>
   <product type="ebuild">nghttp2</product>
-  <announced>December 05, 2016</announced>
-  <revised>December 05, 2016: 1</revised>
+  <announced>2016-12-05</announced>
+  <revised>2016-12-05: 1</revised>
   <bug>574780</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1544">CVE-2016-1544</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1544">CVE-2016-1544</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 22 Nov 2016 13:39:02 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Mon, 05 Dec 2016 01:23:37 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-22T13:39:02Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-05T01:23:37Z">whissi</metadata>
 </glsa>

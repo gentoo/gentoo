@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-06">
   <title>Xfce: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">xfce4-panel libxfcegui4</product>
-  <announced>January 09, 2008</announced>
-  <revised>January 10, 2008: 03</revised>
+  <announced>2008-01-09</announced>
+  <revised>2008-01-10: 03</revised>
   <bug>201292</bug>
   <bug>201293</bug>
   <access>remote</access>
@@ -58,25 +57,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=xfce-base/xfce4-panel-4.4.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=xfce-base/xfce4-panel-4.4.2"</code>
     <p>
     All libxfcegui4 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=xfce-base/libxfcegui4-4.4.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=xfce-base/libxfcegui4-4.4.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6531">CVE-2007-6531</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6532">CVE-2007-6532</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6531">CVE-2007-6531</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6532">CVE-2007-6532</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Dec 2007 23:45:36 +0000">
+  <metadata tag="requester" timestamp="2007-12-08T23:45:36Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 22 Dec 2007 13:22:06 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-22T13:22:06Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 22 Dec 2007 16:37:18 +0000">
+  <metadata tag="submitter" timestamp="2007-12-22T16:37:18Z">
     rbu
   </metadata>
 </glsa>

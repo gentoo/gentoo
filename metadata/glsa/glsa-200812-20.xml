@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-20">
   <title>phpCollab: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote injection of shell commands, PHP code and SQL statements.
   </synopsis>
   <product type="ebuild">phpcollab</product>
-  <announced>December 21, 2008</announced>
-  <revised>December 21, 2008: 01</revised>
+  <announced>2008-12-21</announced>
+  <revised>2008-12-21: 01</revised>
   <bug>235052</bug>
   <access>remote</access>
   <affected>
@@ -66,21 +65,21 @@
     users unmerge phpCollab:
     </p>
     <code>
-    # emerge --unmerge &quot;www-apps/phpcollab&quot;</code>
+    # emerge --unmerge "www-apps/phpcollab"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1495">CVE-2006-1495</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4303">CVE-2008-4303</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4304">CVE-2008-4304</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4305">CVE-2008-4305</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1495">CVE-2006-1495</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4303">CVE-2008-4303</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4304">CVE-2008-4304</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4305">CVE-2008-4305</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 19 Oct 2008 20:05:40 +0000">
+  <metadata tag="requester" timestamp="2008-10-19T20:05:40Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 07 Dec 2008 13:16:45 +0000">
+  <metadata tag="submitter" timestamp="2008-12-07T13:16:45Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 10 Dec 2008 16:51:12 +0000">
+  <metadata tag="bugReady" timestamp="2008-12-10T16:51:12Z">
     a3li
   </metadata>
 </glsa>

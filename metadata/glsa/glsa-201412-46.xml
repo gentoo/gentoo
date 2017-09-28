@@ -6,8 +6,8 @@
     could cause Denial of Service.
   </synopsis>
   <product type="ebuild">lcms</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-26: 1</revised>
   <bug>479874</bug>
   <bug>507788</bug>
   <access>remote</access>
@@ -51,9 +51,9 @@
     <p>NOTE: Gentoo has discontinued support for the LittleCMS 1.9 branch. </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4276">CVE-2013-4276</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0459">CVE-2014-0459</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4276">CVE-2013-4276</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0459">CVE-2014-0459</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Nov 2014 21:58:45 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 19:04:58 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-11-10T21:58:45Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-26T19:04:58Z">ackle</metadata>
 </glsa>

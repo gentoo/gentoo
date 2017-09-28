@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-08">
   <title>GnuPG: Integer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">gnupg</product>
-  <announced>August 05, 2006</announced>
-  <revised>August 08, 2006: 02</revised>
+  <announced>2006-08-05</announced>
+  <revised>2006-08-08: 02</revised>
   <bug>142248</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;=app-crypt/gnupg-1.4*&quot;</code>
+    # emerge --ask --oneshot --verbose "=app-crypt/gnupg-1.4*"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3746">CVE-2006-3746</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3746">CVE-2006-3746</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 02 Aug 2006 13:24:55 +0000">
+  <metadata tag="requester" timestamp="2006-08-02T13:24:55Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 02 Aug 2006 13:48:08 +0000">
+  <metadata tag="submitter" timestamp="2006-08-02T13:48:08Z">
     dizzutch
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 05 Aug 2006 11:09:20 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-05T11:09:20Z">
     jaervosz
   </metadata>
 </glsa>

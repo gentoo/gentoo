@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-14">
   <title>BitlBee: Security bypass</title>
   <synopsis>
@@ -8,8 +7,8 @@
     restrictions and hijack accounts.
   </synopsis>
   <product type="ebuild">bitlbee</product>
-  <announced>September 23, 2008</announced>
-  <revised>September 23, 2008: 01</revised>
+  <announced>2008-09-23</announced>
+  <revised>2008-09-23: 01</revised>
   <bug>236160</bug>
   <access>remote</access>
   <affected>
@@ -46,19 +45,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/bitlbee-1.2.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/bitlbee-1.2.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3920">CVE-2008-3920</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3969">CVE-2008-3969</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3920">CVE-2008-3920</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3969">CVE-2008-3969</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 05 Sep 2008 20:44:15 +0000">
+  <metadata tag="requester" timestamp="2008-09-05T20:44:15Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 19 Sep 2008 20:00:27 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-19T20:00:27Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 20 Sep 2008 21:14:39 +0000">
+  <metadata tag="submitter" timestamp="2008-09-20T21:14:39Z">
     p-y
   </metadata>
 </glsa>

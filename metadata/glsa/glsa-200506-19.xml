@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-19">
   <title>SquirrelMail: Several XSS vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which could lead to a compromise of webmail accounts.
   </synopsis>
   <product type="ebuild">SquirrelMail</product>
-  <announced>June 21, 2005</announced>
-  <revised>June 21, 2005: 01</revised>
+  <announced>2005-06-21</announced>
+  <revised>2005-06-21: 01</revised>
   <bug>95937</bug>
   <access>remote</access>
   <affected>
@@ -50,20 +49,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/squirrelmail-1.4.4"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
     </p>
   </resolution>
   <references>
-    <uri link="http://www.squirrelmail.org/security/issue/2005-06-15">SquirrelMail Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1769">CAN-2005-1769</uri>
+    <uri link="https://www.squirrelmail.org/security/issue/2005-06-15">SquirrelMail Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1769">CAN-2005-1769</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 19 Jun 2005 19:26:13 +0000">
+  <metadata tag="submitter" timestamp="2005-06-19T19:26:13Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 20 Jun 2005 17:48:27 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-20T17:48:27Z">
     koon
   </metadata>
 </glsa>

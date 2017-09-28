@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>May 15, 2012</announced>
-  <revised>May 15, 2012: 1</revised>
+  <announced>2012-05-15</announced>
+  <revised>2012-05-15: 1</revised>
   <bug>414199</bug>
   <access>remote</access>
   <affected>
@@ -44,17 +44,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3078">CVE-2011-3078</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3081">CVE-2011-3081</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1521">CVE-2012-1521</uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/04/stable-channel-update_30.html">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3078">CVE-2011-3078</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3081">CVE-2011-3081</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1521">CVE-2012-1521</uri>
+    <uri link="https://googlechromereleases.blogspot.com/2012/04/stable-channel-update_30.html">
       Release Notes 18.0.1025.168
     </uri>
   </references>
-  <metadata timestamp="Wed, 02 May 2012 15:49:58 +0000" tag="requester">
+  <metadata timestamp="2012-05-02T15:49:58Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Tue, 15 May 2012 06:57:17 +0000" tag="submitter">
+  <metadata timestamp="2012-05-15T06:57:17Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

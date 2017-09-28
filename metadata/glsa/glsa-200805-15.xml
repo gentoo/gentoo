@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-15">
   <title>libid3tag: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability was found in libid3tag.
   </synopsis>
   <product type="ebuild">libid3tag</product>
-  <announced>May 14, 2008</announced>
-  <revised>May 14, 2008: 01</revised>
+  <announced>2008-05-14</announced>
+  <revised>2008-05-14: 01</revised>
   <bug>210564</bug>
   <access>remote</access>
   <affected>
@@ -45,18 +44,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libid3tag-0.15.1b-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libid3tag-0.15.1b-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2109">CVE-2008-2109</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2109">CVE-2008-2109</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 May 2008 20:49:10 +0000">
+  <metadata tag="requester" timestamp="2008-05-13T20:49:10Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 13 May 2008 20:57:48 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-13T20:57:48Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 May 2008 21:27:22 +0000">
+  <metadata tag="submitter" timestamp="2008-05-13T21:27:22Z">
     keytoaster
   </metadata>
 </glsa>

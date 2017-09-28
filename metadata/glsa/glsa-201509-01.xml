@@ -6,8 +6,8 @@
     could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">ntp</product>
-  <announced>September 24, 2015</announced>
-  <revised>September 24, 2015: 1</revised>
+  <announced>2015-09-24</announced>
+  <revised>2015-09-24: 1</revised>
   <bug>545836</bug>
   <bug>553682</bug>
   <access>remote</access>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1798">CVE-2015-1798</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1799">CVE-2015-1799</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5146">CVE-2015-5146</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1798">CVE-2015-1798</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1799">CVE-2015-1799</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5146">CVE-2015-5146</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 05 Aug 2015 06:31:39 +0000">
+  <metadata tag="requester" timestamp="2015-08-05T06:31:39Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:30:37 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-09-24T16:30:37Z">mrueg</metadata>
 </glsa>

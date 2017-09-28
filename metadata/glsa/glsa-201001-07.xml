@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-07">
   <title>Blender: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">blender</product>
-  <announced>January 13, 2010</announced>
-  <revised>January 13, 2010: 01</revised>
+  <announced>2010-01-13</announced>
+  <revised>2010-01-13: 01</revised>
   <bug>245310</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/blender-2.48a-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/blender-2.48a-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4863">CVE-2008-4863</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4863">CVE-2008-4863</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 30 Nov 2008 19:04:32 +0000">
+  <metadata tag="requester" timestamp="2008-11-30T19:04:32Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:25:09 +0000">
+  <metadata tag="submitter" timestamp="2010-01-05T21:25:09Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jan 2010 19:40:27 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-10T19:40:27Z">
     craig
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">systemd</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>486904</bug>
   <access>local, remote</access>
   <affected>
@@ -42,10 +42,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4391">CVE-2013-4391</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4393">CVE-2013-4393</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4394">CVE-2013-4394</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4391">CVE-2013-4391</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4393">CVE-2013-4393</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4394">CVE-2013-4394</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 20:50:18 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:01 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-23T20:50:18Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T06:59:01Z">whissi</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-12">
   <title>Scorched 3D server chat box format string vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">scorched3d</product>
-  <announced>April 09, 2004</announced>
-  <revised>April 09, 2004: 08</revised>
+  <announced>2004-04-09</announced>
+  <revised>2004-04-09: 08</revised>
   <bug>39302</bug>
   <access>remote</access>
   <affected>
@@ -21,8 +20,8 @@
   </affected>
   <background>
     <p>
-    Scorched 3D is a game based loosely on the classic DOS game &quot;Scorched
-    Earth&quot;. Scorched 3D adds amongst other new features a 3D island
+    Scorched 3D is a game based loosely on the classic DOS game "Scorched
+    Earth". Scorched 3D adds amongst other new features a 3D island
     environment and LAN and internet play. Scorched 3D is totally free and is
     available for multiple operating systems.
     </p>
@@ -56,8 +55,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=games-strategy/scorched3d-37"
-    # emerge ">=games-strategy/scorched3d-37"</code>
+    # emerge -pv "&gt;=games-strategy/scorched3d-37"
+    # emerge "&gt;=games-strategy/scorched3d-37"</code>
   </resolution>
   <references>
   </references>

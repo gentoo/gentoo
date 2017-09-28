@@ -6,8 +6,8 @@
     perform man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">setuptools</product>
-  <announced>October 10, 2013</announced>
-  <revised>October 10, 2013: 1</revised>
+  <announced>2013-10-10</announced>
+  <revised>2013-10-10: 1</revised>
   <bug>479964</bug>
   <access>remote</access>
   <affected>
@@ -39,8 +39,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1633">CVE-2013-1633</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1633">CVE-2013-1633</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Sep 2013 15:36:44 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Thu, 10 Oct 2013 12:13:55 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-29T15:36:44Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-10T12:13:55Z">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-04">
   <title>Openswan, IPsec-Tools: Vulnerabilities in ISAKMP Protocol implementation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a Denial of Service attack.
   </synopsis>
   <product type="ebuild">openswan ipsec-tools</product>
-  <announced>December 12, 2005</announced>
-  <revised>December 14, 2005: 02</revised>
+  <announced>2005-12-12</announced>
+  <revised>2005-12-14: 02</revised>
   <bug>112568</bug>
   <bug>113201</bug>
   <access>remote</access>
@@ -62,7 +61,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openswan-2.4.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/openswan-2.4.4"</code>
     <p>
     All IPsec-Tools users should upgrade to the latest version:
     </p>
@@ -71,17 +70,17 @@
     # emerge --ask --oneshot --verbose net-firewall/ipsec-tools</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3671">CVE-2005-3671</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3732">CVE-2005-3732</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3671">CVE-2005-3671</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3732">CVE-2005-3732</uri>
     <uri link="http://www.ee.oulu.fi/research/ouspg/protos/testing/c09/isakmp/">Original Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 Dec 2005 12:39:46 +0000">
+  <metadata tag="requester" timestamp="2005-12-02T12:39:46Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Dec 2005 03:24:10 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-05T03:24:10Z">
     adir
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 05 Dec 2005 03:54:41 +0000">
+  <metadata tag="submitter" timestamp="2005-12-05T03:54:41Z">
     adir
   </metadata>
 </glsa>

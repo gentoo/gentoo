@@ -6,8 +6,8 @@
     which may result in execution of arbitrary code.
   </synopsis>
   <product type="ebuild">unrtf</product>
-  <announced>July 07, 2015</announced>
-  <revised>July 07, 2015: 1</revised>
+  <announced>2015-07-07</announced>
+  <revised>2015-07-07: 1</revised>
   <bug>531544</bug>
   <access>remote</access>
   <affected>
@@ -44,11 +44,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9274">CVE-2014-9274</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9275">CVE-2014-9275</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9274">CVE-2014-9274</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9275">CVE-2014-9275</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Apr 2015 20:55:17 +0000">
+  <metadata tag="requester" timestamp="2015-04-22T20:55:17Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 07 Jul 2015 07:06:22 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-07-07T07:06:22Z">Zlogene</metadata>
 </glsa>

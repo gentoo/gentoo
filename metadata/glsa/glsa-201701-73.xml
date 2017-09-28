@@ -47,8 +47,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4645">CVE-2015-4645</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4646">CVE-2015-4646</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4645">CVE-2015-4645</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4646">CVE-2015-4646</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-19T10:43:44Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-29T16:58:33Z">b-man</metadata>

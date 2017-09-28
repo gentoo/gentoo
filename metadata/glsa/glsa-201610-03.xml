@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">quagga</product>
-  <announced>October 10, 2016</announced>
-  <revised>October 10, 2016: 1</revised>
+  <announced>2016-10-10</announced>
+  <revised>2016-10-10: 1</revised>
   <bug>577156</bug>
   <access>remote</access>
   <affected>
@@ -46,12 +46,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2342">CVE-2016-2342</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2342">CVE-2016-2342</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 06 Oct 2016 14:23:47 +0000">
+  <metadata tag="requester" timestamp="2016-10-06T14:23:47Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Oct 2016 08:11:56 +0000">
+  <metadata tag="submitter" timestamp="2016-10-10T08:11:56Z">
     pinkbyte
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-31">
   <title>uim: Privilege escalation vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privilege escalation vulnerability.
   </synopsis>
   <product type="ebuild">uim</product>
-  <announced>February 28, 2005</announced>
-  <revised>February 28, 2005: 01</revised>
+  <announced>2005-02-28</announced>
+  <revised>2005-02-28: 01</revised>
   <bug>82678</bug>
   <access>local</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-i18n/uim-0.4.5.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-i18n/uim-0.4.5.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0503">CAN-2005-0503</uri>
-    <uri link="http://lists.freedesktop.org/archives/uim/2005-February/000996.html">uim announcement</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0503">CAN-2005-0503</uri>
+    <uri link="https://lists.freedesktop.org/archives/uim/2005-February/000996.html">uim announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 25 Feb 2005 09:53:35 +0000">
+  <metadata tag="requester" timestamp="2005-02-25T09:53:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 27 Feb 2005 12:40:49 +0000">
+  <metadata tag="submitter" timestamp="2005-02-27T12:40:49Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 28 Feb 2005 08:59:25 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-28T08:59:25Z">
     koon
   </metadata>
 </glsa>

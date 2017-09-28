@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-19">
   <title>Sendmail: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     crash.
   </synopsis>
   <product type="ebuild">sendmail</product>
-  <announced>June 15, 2006</announced>
-  <revised>June 15, 2006: 01</revised>
+  <announced>2006-06-15</announced>
+  <revised>2006-06-15: 01</revised>
   <bug>135141</bug>
   <access>remote</access>
   <affected>
@@ -55,19 +54,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/sendmail-8.13.6-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/sendmail-8.13.6-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1173">CVE-2006-1173</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1173">CVE-2006-1173</uri>
     <uri link="http://www.sendmail.org/releases/8.13.7.html">Sendmail 8.13.7 release information</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 14 Jun 2006 18:47:59 +0000">
+  <metadata tag="requester" timestamp="2006-06-14T18:47:59Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 14 Jun 2006 19:21:03 +0000">
+  <metadata tag="submitter" timestamp="2006-06-14T19:21:03Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 15 Jun 2006 16:00:46 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-15T16:00:46Z">
     jaervosz
   </metadata>
 </glsa>

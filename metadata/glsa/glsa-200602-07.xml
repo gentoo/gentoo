@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200602-07">
   <title>Sun JDK/JRE: Applet privilege escalation</title>
   <synopsis>
@@ -9,8 +8,8 @@
     execution.
   </synopsis>
   <product type="ebuild">Sun JDK, applet</product>
-  <announced>February 15, 2006</announced>
-  <revised>February 15, 2006: 01</revised>
+  <announced>2006-02-15</announced>
+  <revised>2006-02-15: 01</revised>
   <bug>122156</bug>
   <access>remote</access>
   <affected>
@@ -60,26 +59,26 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jdk-1.4.2.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jdk-1.4.2.10"</code>
     <p>
     All Sun JRE users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/sun-jre-bin-1.4.2.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/sun-jre-bin-1.4.2.10"</code>
   </resolution>
   <references>
     <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-102170-1">Sun Security Alert ID 102170</uri>
     <uri link="http://sunsolve.sun.com/search/document.do?assetkey=1-26-102171-1">Sun Security Alert ID 102171</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0614">CVE-2006-0614</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0615">CVE-2006-0615</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0616">CVE-2006-0616</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0617">CVE-2006-0617</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0614">CVE-2006-0614</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0615">CVE-2006-0615</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0616">CVE-2006-0616</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0617">CVE-2006-0617</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 09 Feb 2006 20:48:45 +0000">
+  <metadata tag="submitter" timestamp="2006-02-09T20:48:45Z">
     dragonheart
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 12 Feb 2006 13:04:50 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-12T13:04:50Z">
     koon
   </metadata>
 </glsa>

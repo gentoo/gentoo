@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-07">
   <title>libwpd: Multiple vulnerabilities</title>
   <synopsis>
     libwpd is vulnerable to several heap overflows and an integer overflow.
   </synopsis>
   <product type="ebuild">libwpd</product>
-  <announced>April 06, 2007</announced>
-  <revised>April 06, 2007: 01</revised>
+  <announced>2007-04-06</announced>
+  <revised>2007-04-06: 01</revised>
   <bug>169675</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/libwpd-0.8.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/libwpd-0.8.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0002">CVE-2007-0002</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1466">CVE-2007-1466</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0002">CVE-2007-0002</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1466">CVE-2007-1466</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Apr 2007 22:18:42 +0000">
+  <metadata tag="requester" timestamp="2007-04-02T22:18:42Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Apr 2007 12:29:29 +0000">
+  <metadata tag="submitter" timestamp="2007-04-03T12:29:29Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 03 Apr 2007 22:29:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-03T22:29:58Z">
     falco
   </metadata>
 </glsa>

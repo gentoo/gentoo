@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-08">
   <title>gEDA: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     symlink attacks.
   </synopsis>
   <product type="ebuild">geda</product>
-  <announced>March 07, 2009</announced>
-  <revised>March 07, 2009: 01</revised>
+  <announced>2009-03-07</announced>
+  <revised>2009-03-07: 01</revised>
   <bug>247538</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sci-electronics/geda-1.4.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sci-electronics/geda-1.4.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5148">CVE-2008-5148</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5148">CVE-2008-5148</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 13 Jan 2009 17:58:50 +0000">
+  <metadata tag="requester" timestamp="2009-01-13T17:58:50Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Feb 2009 18:01:59 +0000">
+  <metadata tag="submitter" timestamp="2009-02-12T18:01:59Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 12 Feb 2009 18:02:15 +0000">
+  <metadata tag="bugReady" timestamp="2009-02-12T18:02:15Z">
     rbu
   </metadata>
 </glsa>

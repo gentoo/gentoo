@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-21">
   <title>Midnight Commander: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     including several buffer overflows and string format vulnerabilities.
   </synopsis>
   <product type="ebuild">MC</product>
-  <announced>May 26, 2004</announced>
-  <revised>May 26, 2004: 01</revised>
+  <announced>2004-05-26</announced>
+  <revised>2004-05-26: 01</revised>
   <bug>49990</bug>
   <access>local </access>
   <affected>
@@ -53,13 +52,13 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-misc/mc-4.6.0-r7
-    # emerge ">=app-misc/mc-4.6.0-r7"</code>
+    # emerge -pv "&gt;=app-misc/mc-4.6.0-r7
+    # emerge "&gt;=app-misc/mc-4.6.0-r7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0226">CAN-2004-0226</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0231">CAN-2004-0231</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0232">CAN-2004-0232</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0226">CAN-2004-0226</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0231">CAN-2004-0231</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0232">CAN-2004-0232</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

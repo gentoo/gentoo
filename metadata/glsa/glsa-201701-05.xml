@@ -6,8 +6,8 @@
     Denial of Service condition.
   </synopsis>
   <product type="ebuild">busybox</product>
-  <announced>January 01, 2017</announced>
-  <revised>January 01, 2017: 1</revised>
+  <announced>2017-01-01</announced>
+  <revised>2017-01-01: 1</revised>
   <bug>590478</bug>
   <access>remote</access>
   <affected>
@@ -46,8 +46,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6301">CVE-2016-6301</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6301">CVE-2016-6301</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 12:19:19 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 15:33:56 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-01T12:19:19Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-01T15:33:56Z">b-man</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">nginx</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>411751</bug>
   <access>remote</access>
   <affected>
@@ -47,8 +47,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2089">CVE-2012-2089</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2089">CVE-2012-2089</uri>
   </references>
-  <metadata timestamp="Sun, 15 Apr 2012 17:34:10 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 10:10:12 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-15T17:34:10Z" tag="requester">ago</metadata>
+  <metadata timestamp="2012-06-21T10:10:12Z" tag="submitter">ackle</metadata>
 </glsa>

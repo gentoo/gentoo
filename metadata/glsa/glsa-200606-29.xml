@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-29">
   <title>Tikiwiki: SQL injection and multiple XSS vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     discovered.
   </synopsis>
   <product type="ebuild">tikiwiki</product>
-  <announced>June 29, 2006</announced>
-  <revised>June 29, 2006: 01</revised>
+  <announced>2006-06-29</announced>
+  <revised>2006-06-29: 01</revised>
   <bug>136723</bug>
   <bug>134483</bug>
   <access>remote</access>
@@ -49,16 +48,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.9.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/tikiwiki-1.9.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3048">CVE-2006-3048</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3047">CVE-2006-3047</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3048">CVE-2006-3048</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3047">CVE-2006-3047</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 26 Jun 2006 00:18:20 +0000">
+  <metadata tag="submitter" timestamp="2006-06-26T00:18:20Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 26 Jun 2006 20:19:12 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-26T20:19:12Z">
     koon
   </metadata>
 </glsa>

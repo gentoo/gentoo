@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200908-07">
   <title>Perl Compress::Raw modules: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">Compress-Raw-Zlib Compress-Raw-Bzip2</product>
-  <announced>August 18, 2009</announced>
-  <revised>August 18, 2009: 01</revised>
+  <announced>2009-08-18</announced>
+  <revised>2009-08-18: 01</revised>
   <bug>273141</bug>
   <bug>281955</bug>
   <access>remote</access>
@@ -58,25 +57,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=perl-core/Compress-Raw-Zlib-2.020&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=perl-core/Compress-Raw-Zlib-2.020"</code>
     <p>
     All Compress::Raw::Bzip2 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=perl-core/Compress-Raw-Bzip2-2.020&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=perl-core/Compress-Raw-Bzip2-2.020"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1391">CVE-2009-1391</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1884">CVE-2009-1884</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1391">CVE-2009-1391</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1884">CVE-2009-1884</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 19 Jul 2009 17:33:05 +0000">
+  <metadata tag="requester" timestamp="2009-07-19T17:33:05Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Aug 2009 18:43:38 +0000">
+  <metadata tag="submitter" timestamp="2009-08-04T18:43:38Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 05 Aug 2009 13:32:50 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-05T13:32:50Z">
     a3li
   </metadata>
 </glsa>

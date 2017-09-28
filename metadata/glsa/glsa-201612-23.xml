@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">socat</product>
-  <announced>December 08, 2016</announced>
-  <revised>December 08, 2016: 1</revised>
+  <announced>2016-12-08</announced>
+  <revised>2016-12-08: 1</revised>
   <bug>573602</bug>
   <access>remote</access>
   <affected>
@@ -51,6 +51,6 @@
       Socat security advisory 8
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 20:50:25 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:12:54 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-29T20:50:25Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-08T13:12:54Z">whissi</metadata>
 </glsa>

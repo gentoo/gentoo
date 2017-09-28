@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-11">
   <title>Multiple Vulnerabilities in pwlib</title>
   <synopsis>
@@ -8,8 +7,8 @@
     denial of service or buffer overflow attack. 
   </synopsis>
   <product type="ebuild">dev-libs/pwlib</product>
-  <announced>April 09, 2004</announced>
-  <revised>April 09, 2004: 01</revised>
+  <announced>2004-04-09</announced>
+  <revised>2004-04-09: 01</revised>
   <bug>45846</bug>
   <access>remote</access>
   <affected>
@@ -51,11 +50,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-libs/pwlib-1.5.2-r3"
-    # emerge ">=dev-libs/pwlib-1.5.2-r3"</code>
+    # emerge -pv "&gt;=dev-libs/pwlib-1.5.2-r3"
+    # emerge "&gt;=dev-libs/pwlib-1.5.2-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0097">CAN-2004-0097</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0097">CAN-2004-0097</uri>
     <uri link="http://www.uniras.gov.uk/vuls/2004/006489/h323.htm">NISCC Vulnerability Advisory 006489/H323</uri>
   </references>
   <metadata tag="submitter">

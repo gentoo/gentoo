@@ -56,7 +56,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5940">CVE-2017-5940</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5940">CVE-2017-5940</uri>
     <uri link="https://firejail.wordpress.com/download-2/release-notes/">
       Firejail Release Notes
     </uri>

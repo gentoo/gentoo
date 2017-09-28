@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-06">
   <title>Mozilla Firefox: Potential remote code execution</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">mozilla-firefox</product>
-  <announced>May 06, 2006</announced>
-  <revised>May 06, 2006: 01</revised>
+  <announced>2006-05-06</announced>
+  <revised>2006-05-06: 01</revised>
   <bug>131138</bug>
   <access>remote</access>
   <affected>
@@ -60,25 +59,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.5.0.3"</code>
     <p>
     All Mozilla Firefox 1.5 binary users should upgrade to the
     latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.5.0.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1993">CVE-2006-1993</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1993">CVE-2006-1993</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 04 May 2006 16:54:02 +0000">
+  <metadata tag="requester" timestamp="2006-05-04T16:54:02Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 05 May 2006 18:30:27 +0000">
+  <metadata tag="submitter" timestamp="2006-05-05T18:30:27Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 06 May 2006 13:15:08 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-06T13:15:08Z">
     falco
   </metadata>
 </glsa>

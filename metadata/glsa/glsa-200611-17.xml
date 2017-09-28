@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-17">
   <title>fvwm: fvwm-menu-directory fvwm command injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary commands with the privileges of another user.
   </synopsis>
   <product type="ebuild">fvwm</product>
-  <announced>November 23, 2006</announced>
-  <revised>November 23, 2006: 01</revised>
+  <announced>2006-11-23</announced>
+  <revised>2006-11-23: 01</revised>
   <bug>155078</bug>
   <access>local</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-wm/fvwm-2.5.18-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-wm/fvwm-2.5.18-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5969">CVE-2006-5969</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5969">CVE-2006-5969</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 05:59:03 +0000">
+  <metadata tag="requester" timestamp="2006-11-21T05:59:03Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Nov 2006 05:59:31 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-21T05:59:31Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 11:10:22 +0000">
+  <metadata tag="submitter" timestamp="2006-11-21T11:10:22Z">
     taviso
   </metadata>
 </glsa>

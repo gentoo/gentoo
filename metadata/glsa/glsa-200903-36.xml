@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200903-36">
   <title>MLDonkey: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclose arbitrary files.
   </synopsis>
   <product type="ebuild">mldonkey</product>
-  <announced>March 23, 2009</announced>
-  <revised>March 23, 2009: 01</revised>
+  <announced>2009-03-23</announced>
+  <revised>2009-03-23: 01</revised>
   <bug>260072</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/mldonkey-3.0.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/mldonkey-3.0.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0753">CVE-2009-0753</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0753">CVE-2009-0753</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Mar 2009 20:26:47 +0000">
+  <metadata tag="requester" timestamp="2009-03-22T20:26:47Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Mar 2009 20:38:08 +0000">
+  <metadata tag="submitter" timestamp="2009-03-22T20:38:08Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 22 Mar 2009 22:00:11 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-22T22:00:11Z">
     a3li
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-09">
   <title>OpenSC: Insufficient protection of smart card PIN</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing attackers to reset it.
   </synopsis>
   <product type="ebuild">opensc</product>
-  <announced>December 10, 2008</announced>
-  <revised>December 10, 2008: 01</revised>
+  <announced>2008-12-10</announced>
+  <revised>2008-12-10: 01</revised>
   <bug>233543</bug>
   <access>local</access>
   <affected>
@@ -50,20 +49,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/opensc-0.11.6&quot;
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/opensc-0.11.6"
     # pkcs15-tool --test-update
     # pkcs15-tool --test-update --update</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2235">CVE-2008-2235</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2235">CVE-2008-2235</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Nov 2008 18:58:19 +0000">
+  <metadata tag="requester" timestamp="2008-11-26T18:58:19Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Nov 2008 19:57:21 +0000">
+  <metadata tag="submitter" timestamp="2008-11-26T19:57:21Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 26 Nov 2008 19:57:53 +0000">
+  <metadata tag="bugReady" timestamp="2008-11-26T19:57:53Z">
     rbu
   </metadata>
 </glsa>

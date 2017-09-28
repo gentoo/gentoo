@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-12">
   <title>Adobe Acrobat Reader: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>December 16, 2004</announced>
-  <revised>December 16, 2004: 01</revised>
+  <announced>2004-12-16</announced>
+  <revised>2004-12-16: 01</revised>
   <bug>74406</bug>
   <access>remote</access>
   <affected>
@@ -51,19 +50,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-5.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-5.10"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1152">CAN-2004-1152</uri>
-    <uri link="http://www.adobe.com/support/techdocs/331153.html">Adobe Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1152">CAN-2004-1152</uri>
+    <uri link="https://www.adobe.com/support/techdocs/331153.html">Adobe Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 15 Dec 2004 17:22:59 +0000">
+  <metadata tag="requester" timestamp="2004-12-15T17:22:59Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Dec 2004 15:18:04 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-16T15:18:04Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 16 Dec 2004 17:02:05 +0000">
+  <metadata tag="submitter" timestamp="2004-12-16T17:02:05Z">
     lewk
   </metadata>
 </glsa>

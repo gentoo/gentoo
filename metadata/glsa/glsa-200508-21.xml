@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-21">
   <title>phpWebSite: Arbitrary command execution through XML-RPC and SQL injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code and SQL injection.
   </synopsis>
   <product type="ebuild">phpwebsite</product>
-  <announced>August 31, 2005</announced>
-  <revised>August 31, 2005: 01</revised>
+  <announced>2005-08-31</announced>
+  <revised>2005-08-31: 01</revised>
   <bug>102785</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwebsite-0.10.2_rc2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpwebsite-0.10.2_rc2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
     <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2005-08/0497.html">Original Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Aug 2005 18:35:22 +0000">
+  <metadata tag="requester" timestamp="2005-08-25T18:35:22Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 29 Aug 2005 11:14:08 +0000">
+  <metadata tag="submitter" timestamp="2005-08-29T11:14:08Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 31 Aug 2005 02:40:59 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-31T02:40:59Z">
     DerCorny
   </metadata>
 </glsa>

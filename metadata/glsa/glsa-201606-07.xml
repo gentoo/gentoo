@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in dhcpcd allowing remote
     attackers to possibly execute arbitrary code or cause a Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 18, 2016</announced>
-  <revised>June 18, 2016: 2</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-18</announced>
+  <revised>2016-06-18: 2</revised>
   <bug>571152</bug>
   <access>remote</access>
   <affected>
@@ -43,9 +43,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1503">CVE-2016-1503</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1504">CVE-2016-1504</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1503">CVE-2016-1503</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1504">CVE-2016-1504</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 08 Feb 2016 20:32:46 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 19:11:50 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-02-08T20:32:46Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-06-18T19:11:50Z">b-man</metadata>
 </glsa>

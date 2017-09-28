@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>January 10, 2017</announced>
-  <revised>January 10, 2017: 1</revised>
+  <announced>2017-01-10</announced>
+  <revised>2017-01-10: 1</revised>
   <bug>602546</bug>
   <access>remote</access>
   <affected>
@@ -48,24 +48,24 @@
     <uri link="https://helpx.adobe.com/security/products/flash-player/apsb16-39.html">
       APSB16-39
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7867">CVE-2016-7867</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7868">CVE-2016-7868</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7869">CVE-2016-7869</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7870">CVE-2016-7870</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7871">CVE-2016-7871</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7872">CVE-2016-7872</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7873">CVE-2016-7873</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7874">CVE-2016-7874</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7875">CVE-2016-7875</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7876">CVE-2016-7876</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7877">CVE-2016-7877</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7878">CVE-2016-7878</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7879">CVE-2016-7879</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7880">CVE-2016-7880</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7881">CVE-2016-7881</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7890">CVE-2016-7890</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7892">CVE-2016-7892</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7867">CVE-2016-7867</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7868">CVE-2016-7868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7869">CVE-2016-7869</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7870">CVE-2016-7870</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7871">CVE-2016-7871</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7872">CVE-2016-7872</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7873">CVE-2016-7873</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7874">CVE-2016-7874</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7875">CVE-2016-7875</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7876">CVE-2016-7876</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7877">CVE-2016-7877</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7878">CVE-2016-7878</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7879">CVE-2016-7879</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7880">CVE-2016-7880</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7881">CVE-2016-7881</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7890">CVE-2016-7890</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7892">CVE-2016-7892</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 08 Jan 2017 17:46:19 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 10 Jan 2017 13:49:58 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-08T17:46:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-10T13:49:58Z">whissi</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-14">
   <title>PHP: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>December 19, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-12-19</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>74547</bug>
   <access>remote</access>
   <affected>
@@ -76,37 +75,37 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-4.3.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/php-4.3.10"</code>
     <p>
     All mod_php users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/mod_php-4.3.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/mod_php-4.3.10"</code>
     <p>
     All php-cgi users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-cgi-4.3.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/php-cgi-4.3.10"</code>
   </resolution>
   <references>
-    <uri link="http://www.php.net/release_4_3_10.php">PHP 4.3.10 Release Announcement</uri>
-    <uri link="http://www.hardened-php.net/advisories/012004.txt">Hardened-PHP Security Advisory</uri>
+    <uri link="https://www.php.net/release_4_3_10.php">PHP 4.3.10 Release Announcement</uri>
+    <uri link="https://www.hardened-php.net/advisories/012004.txt">Hardened-PHP Security Advisory</uri>
     <uri link="http://www.securityfocus.com/archive/1/384663/2004-12-15/2004-12-21/0">SEC Consult Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1019">CAN-2004-1019</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1020">CAN-2004-1020</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1063">CVE-2004-1063</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1064">CVE-2004-1064</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1065">CVE-2004-1065</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1019">CAN-2004-1019</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1020">CAN-2004-1020</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1063">CVE-2004-1063</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1064">CVE-2004-1064</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1065">CVE-2004-1065</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Dec 2004 10:35:06 +0000">
+  <metadata tag="requester" timestamp="2004-12-16T10:35:06Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 16 Dec 2004 11:09:01 +0000">
+  <metadata tag="submitter" timestamp="2004-12-16T11:09:01Z">
     Koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 18 Dec 2004 14:09:43 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-18T14:09:43Z">
     koon
   </metadata>
 </glsa>

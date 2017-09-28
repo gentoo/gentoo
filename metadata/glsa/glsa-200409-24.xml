@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-24">
   <title>Foomatic: Arbitrary command execution in foomatic-rip filter</title>
   <synopsis>
@@ -8,8 +7,8 @@
     may allow arbitrary command execution on the print server.
   </synopsis>
   <product type="ebuild">foomatic</product>
-  <announced>September 20, 2004</announced>
-  <revised>September 20, 2004: 01</revised>
+  <announced>2004-09-20</announced>
+  <revised>2004-09-20: 01</revised>
   <bug>64166</bug>
   <access>remote</access>
   <affected>
@@ -40,7 +39,7 @@
     <p>
     This vulnerability may allow both local and remote attackers to execute
     arbitrary commands on the print server with the permissions of the spooler
-    (oftentimes the &quot;lp&quot; user).
+    (oftentimes the "lp" user).
     </p>
   </impact>
   <workaround>
@@ -55,8 +54,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-print/foomatic-3.0.2"
-    # emerge ">=net-print/foomatic-3.0.2"</code>
+    # emerge -pv "&gt;=net-print/foomatic-3.0.2"
+    # emerge "&gt;=net-print/foomatic-3.0.2"</code>
     <p>
     PLEASE NOTE: You should update foomatic, instead of foomatic-filters. This
     will help to ensure that all other foomatic components remain functional.
@@ -65,12 +64,12 @@
   <references>
     <uri link="http://www.linuxprinting.org/pipermail/foomatic-devel/2004q3/001996.html">Foomatic Announcement</uri>
     <uri link="http://www.mandrakesoft.com/security/advisories?name=MDKSA-2004:094">Mandrakesoft Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0801">CAN 2004-0801</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0801">CAN 2004-0801</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 16 Sep 2004 17:39:12 +0000">
+  <metadata tag="submitter" timestamp="2004-09-16T17:39:12Z">
     condordes
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 20 Sep 2004 01:02:29 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-20T01:02:29Z">
     lewk
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">spamdyke</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>399157</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0802">CVE-2012-0802</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0802">CVE-2012-0802</uri>
   </references>
-  <metadata timestamp="Tue, 17 Jan 2012 23:00:49 +0000" tag="requester">ago</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:01:06 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-17T23:00:49Z" tag="requester">ago</metadata>
+  <metadata timestamp="2012-03-06T01:01:06Z" tag="submitter">ackle</metadata>
 </glsa>

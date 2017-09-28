@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">tptest</product>
-  <announced>October 26, 2013</announced>
-  <revised>October 26, 2013: 1</revised>
+  <announced>2013-10-26</announced>
+  <revised>2013-10-26: 1</revised>
   <bug>261191</bug>
   <access>remote</access>
   <affected>
@@ -42,13 +42,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0650">CVE-2009-0650</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0659">CVE-2009-0659</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0650">CVE-2009-0650</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0659">CVE-2009-0659</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 10 Oct 2013 10:39:46 +0000">
+  <metadata tag="requester" timestamp="2013-10-10T10:39:46Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 26 Oct 2013 20:08:51 +0000">
+  <metadata tag="submitter" timestamp="2013-10-26T20:08:51Z">
     creffett
   </metadata>
 </glsa>

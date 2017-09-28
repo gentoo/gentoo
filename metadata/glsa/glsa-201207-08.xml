@@ -7,8 +7,8 @@
     disclosure.
   </synopsis>
   <product type="ebuild">Gnash</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>391283</bug>
   <bug>408209</bug>
   <access>local, remote</access>
@@ -53,9 +53,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4328">CVE-2011-4328</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1175">CVE-2012-1175</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4328">CVE-2011-4328</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1175">CVE-2012-1175</uri>
   </references>
-  <metadata timestamp="Sat, 17 Mar 2012 23:44:44 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 23:29:06 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-17T23:44:44Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-07-09T23:29:06Z" tag="submitter">ackle</metadata>
 </glsa>

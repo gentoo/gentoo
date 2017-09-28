@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-14">
   <title>DUMB: Heap buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">dumb</product>
-  <announced>August 08, 2006</announced>
-  <revised>August 08, 2006: 01</revised>
+  <announced>2006-08-08</announced>
+  <revised>2006-08-08: 01</revised>
   <bug>142387</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/dumb-0.9.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/dumb-0.9.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3668">CVE-2006-3668</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3668">CVE-2006-3668</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Aug 2006 16:58:21 +0000">
+  <metadata tag="requester" timestamp="2006-08-05T16:58:21Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 05 Aug 2006 17:55:25 +0000">
+  <metadata tag="submitter" timestamp="2006-08-05T17:55:25Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 08 Aug 2006 09:58:20 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-08T09:58:20Z">
     vorlon078
   </metadata>
 </glsa>

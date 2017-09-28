@@ -6,8 +6,8 @@
     resulting in Denial of Service.
   </synopsis>
   <product type="ebuild">expat</product>
-  <announced>September 24, 2012</announced>
-  <revised>September 24, 2012: 1</revised>
+  <announced>2012-09-24</announced>
+  <revised>2012-09-24: 1</revised>
   <bug>280615</bug>
   <bug>303727</bug>
   <bug>407519</bug>
@@ -48,14 +48,14 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3560">CVE-2009-3560</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3720">CVE-2009-3720</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0876">CVE-2012-0876</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1147">CVE-2012-1147</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1148">CVE-2012-1148</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3560">CVE-2009-3560</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3720">CVE-2009-3720</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0876">CVE-2012-0876</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1147">CVE-2012-1147</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1148">CVE-2012-1148</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:05:51 +0000">
+  <metadata tag="requester" timestamp="2012-08-14T16:05:51Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 10:37:12 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-24T10:37:12Z">ackle</metadata>
 </glsa>

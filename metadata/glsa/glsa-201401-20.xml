@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or perform XSS attacks.
   </synopsis>
   <product type="ebuild">cacti</product>
-  <announced>January 21, 2014</announced>
-  <revised>January 21, 2014: 1</revised>
+  <announced>2014-01-21</announced>
+  <revised>2014-01-21: 1</revised>
   <bug>324031</bug>
   <bug>480196</bug>
   <access>remote</access>
@@ -45,29 +45,29 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1644">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1644">
       CVE-2010-1644
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1645">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1645">
       CVE-2010-1645
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2092">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2092">
       CVE-2010-2092
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2543">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2543">
       CVE-2010-2543
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2544">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2544">
       CVE-2010-2544
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2545">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2545">
       CVE-2010-2545
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1434">CVE-2013-1434</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1435">CVE-2013-1435</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1434">CVE-2013-1434</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1435">CVE-2013-1435</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:37 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:37Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 19:02:25 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-21T19:02:25Z">Zlogene</metadata>
 </glsa>

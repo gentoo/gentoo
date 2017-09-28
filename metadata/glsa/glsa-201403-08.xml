@@ -6,8 +6,8 @@
     Authentication
   </synopsis>
   <product type="ebuild">PlRPC</product>
-  <announced>March 27, 2014</announced>
-  <revised>March 27, 2014: 1</revised>
+  <announced>2014-03-27</announced>
+  <revised>2014-03-27: 1</revised>
   <bug>497692</bug>
   <access>remote</access>
   <affected>
@@ -46,12 +46,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7284">CVE-2013-7284</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7284">CVE-2013-7284</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 28 Jan 2014 06:14:53 +0000">
+  <metadata tag="requester" timestamp="2014-01-28T06:14:53Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Mar 2014 10:25:44 +0000">
+  <metadata tag="submitter" timestamp="2014-03-27T10:25:44Z">
     BlueKnight
   </metadata>
 </glsa>

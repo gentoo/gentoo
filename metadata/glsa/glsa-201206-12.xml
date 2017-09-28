@@ -42,7 +42,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2199">CVE-2011-2199</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2199">CVE-2011-2199</uri>
   </references>
   <metadata tag="requester" timestamp="2011-10-07T23:37:00Z">underling</metadata>
   <metadata tag="submitter" timestamp="2017-04-17T18:08:16Z">craig</metadata>

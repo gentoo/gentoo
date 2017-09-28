@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-17">
   <title>OpenSSH: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     cause a Denial of Service.
   </synopsis>
   <product type="ebuild">openssh</product>
-  <announced>September 27, 2006</announced>
-  <revised>September 27, 2006: 02</revised>
+  <announced>2006-09-27</announced>
+  <revised>2006-09-27: 02</revised>
   <bug>148228</bug>
   <access>remote</access>
   <affected>
@@ -50,15 +49,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/openssh-4.3_p2-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-4.3_p2-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4924">CVE-2006-4924</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4924">CVE-2006-4924</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 21 Sep 2006 22:24:46 +0000">
+  <metadata tag="submitter" timestamp="2006-09-21T22:24:46Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 27 Sep 2006 16:06:09 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-27T16:06:09Z">
     vorlon078
   </metadata>
 </glsa>

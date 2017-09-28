@@ -6,8 +6,8 @@
     remote attackers to obtain sensitive information.
   </synopsis>
   <product type="ebuild">getmail</product>
-  <announced>December 28, 2014</announced>
-  <revised>December 28, 2014: 1</revised>
+  <announced>2014-12-28</announced>
+  <revised>2014-12-28: 1</revised>
   <bug>524684</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7273">CVE-2014-7273</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7274">CVE-2014-7274</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7275">CVE-2014-7275</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7273">CVE-2014-7273</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7274">CVE-2014-7274</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7275">CVE-2014-7275</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 28 Dec 2014 09:32:32 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 28 Dec 2014 17:37:18 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-12-28T09:32:32Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-12-28T17:37:18Z">Zlogene</metadata>
 </glsa>

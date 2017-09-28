@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-15">
   <title>OpenSSL, Groff: Insecure tempfile handling</title>
   <synopsis>
@@ -10,8 +9,8 @@
     user running the utility.
   </synopsis>
   <product type="ebuild">OpenSSL</product>
-  <announced>November 08, 2004</announced>
-  <revised>August 23, 2006: 02</revised>
+  <announced>2004-11-08</announced>
+  <revised>2006-08-23: 02</revised>
   <bug>68404</bug>
   <bug>68407</bug>
   <access>local</access>
@@ -69,7 +68,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.7d-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.7d-r2"</code>
     <p>
     Note: /etc/ssl/misc/der_chop is protected by Portage as a configuration
     file. Don't forget to use etc-update and overwrite the old version with
@@ -77,13 +76,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0969">CAN-2004-0969</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0975">CAN-2004-0975</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0969">CAN-2004-0969</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0975">CAN-2004-0975</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun,  7 Nov 2004 18:43:48 +0000">
+  <metadata tag="submitter" timestamp="2004-11-07T18:43:48Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  7 Nov 2004 18:44:31 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-07T18:44:31Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     in Denial of Service.
   </synopsis>
   <product type="ebuild">icu</product>
-  <announced>March 14, 2015</announced>
-  <revised>March 14, 2015: 1</revised>
+  <announced>2015-03-14</announced>
+  <revised>2015-03-14: 1</revised>
   <bug>537560</bug>
   <bug>539108</bug>
   <access>remote</access>
@@ -43,13 +43,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7923">CVE-2014-7923</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7926">CVE-2014-7926</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7940">CVE-2014-7940</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9654">CVE-2014-9654</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7923">CVE-2014-7923</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7926">CVE-2014-7926</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7940">CVE-2014-7940</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9654">CVE-2014-9654</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 25 Feb 2015 04:20:24 +0000">
+  <metadata tag="requester" timestamp="2015-02-25T04:20:24Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 14 Mar 2015 18:20:46 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-03-14T18:20:46Z">Zlogene</metadata>
 </glsa>

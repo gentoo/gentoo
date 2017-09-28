@@ -49,7 +49,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4579">CVE-2016-4579</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4579">CVE-2016-4579</uri>
     <uri link="http://seclists.org/oss-sec/2016/q3/343">Upstream report</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-19T05:51:10Z">BlueKnight</metadata>

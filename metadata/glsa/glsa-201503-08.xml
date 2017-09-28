@@ -6,8 +6,8 @@
     create a Denial of Service condition. 
   </synopsis>
   <product type="ebuild">file,Dos</product>
-  <announced>March 16, 2015</announced>
-  <revised>March 16, 2015: 1</revised>
+  <announced>2015-03-16</announced>
+  <revised>2015-03-16: 1</revised>
   <bug>503582</bug>
   <bug>532768</bug>
   <access>local, remote</access>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2270">CVE-2014-2270</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9620">CVE-2014-9620</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9621">CVE-2014-9621</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2270">CVE-2014-2270</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9620">CVE-2014-9620</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9621">CVE-2014-9621</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 18 Jan 2015 02:25:52 +0000">
+  <metadata tag="requester" timestamp="2015-01-18T02:25:52Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Mar 2015 19:34:27 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-03-16T19:34:27Z">K_F</metadata>
 </glsa>

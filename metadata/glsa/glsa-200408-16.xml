@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-16">
   <title>glibc: Information leak with LD_DEBUG</title>
   <synopsis>
@@ -8,8 +7,8 @@
     SUID binaries.
   </synopsis>
   <product type="ebuild">glibc</product>
-  <announced>August 16, 2004</announced>
-  <revised>May 28, 2006: 04</revised>
+  <announced>2004-08-16</announced>
+  <revised>2006-05-28: 04</revised>
   <bug>59526</bug>
   <access>local</access>
   <affected>
@@ -73,9 +72,9 @@
     # emerge your_version</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1453">CVE-2004-1453</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1453">CVE-2004-1453</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 17:16:41 +0000">
+  <metadata tag="submitter" timestamp="2004-08-05T17:16:41Z">
     jaervosz
   </metadata>
 </glsa>

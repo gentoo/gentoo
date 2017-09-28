@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-08">
   <title>id3lib: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     overwrite arbitrary files via a symlink attack.
   </synopsis>
   <product type="ebuild">id3lib</product>
-  <announced>September 15, 2007</announced>
-  <revised>September 15, 2007: 01</revised>
+  <announced>2007-09-15</announced>
+  <revised>2007-09-15: 01</revised>
   <bug>189610</bug>
   <access>local</access>
   <affected>
@@ -47,15 +46,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/id3lib-3.8.3-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/id3lib-3.8.3-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4460">CVE-2007-4460</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4460">CVE-2007-4460</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 13 Sep 2007 20:50:09 +0000">
+  <metadata tag="submitter" timestamp="2007-09-13T20:50:09Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 14 Sep 2007 08:35:20 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-14T08:35:20Z">
     falco
   </metadata>
 </glsa>

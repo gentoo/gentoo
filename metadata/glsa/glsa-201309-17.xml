@@ -6,8 +6,8 @@
     Daemon, the worst of which could result in arbitrary code execution.
   </synopsis>
   <product type="ebuild">monkeyd</product>
-  <announced>September 25, 2013</announced>
-  <revised>September 25, 2013: 1</revised>
+  <announced>2013-09-25</announced>
+  <revised>2013-09-25: 1</revised>
   <bug>471906</bug>
   <bug>472400</bug>
   <bug>472644</bug>
@@ -45,14 +45,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2163">CVE-2013-2163</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3724">CVE-2013-3724</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3843">CVE-2013-3843</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2163">CVE-2013-2163</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3724">CVE-2013-3724</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3843">CVE-2013-3843</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 09:57:28 +0000">
+  <metadata tag="requester" timestamp="2013-08-23T09:57:28Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Sep 2013 16:51:51 +0000">
+  <metadata tag="submitter" timestamp="2013-09-25T16:51:51Z">
     creffett
   </metadata>
 </glsa>

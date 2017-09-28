@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-02">
   <title>Qt: Integer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service or the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">qt</product>
-  <announced>November 06, 2006</announced>
-  <revised>January 09, 2009: 03</revised>
+  <announced>2006-11-06</announced>
+  <revised>2009-01-09: 03</revised>
   <bug>151838</bug>
   <access>remote</access>
   <affected>
@@ -50,24 +49,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/qt-3.3.6-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/qt-3.3.6-r4"</code>
     <p>
     All Qt 4.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/qt-4.1.4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/qt-4.1.4-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4811">CVE-2006-4811</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4811">CVE-2006-4811</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 01 Nov 2006 16:27:07 +0000">
+  <metadata tag="requester" timestamp="2006-11-01T16:27:07Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 02 Nov 2006 14:09:09 +0000">
+  <metadata tag="submitter" timestamp="2006-11-02T14:09:09Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 06 Nov 2006 11:05:20 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-06T11:05:20Z">
     vorlon078
   </metadata>
 </glsa>

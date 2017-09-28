@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-05">
   <title>Apache: Buffer overflow in mod_ssl</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Apache is configured a certain way.
   </synopsis>
   <product type="ebuild">Apache</product>
-  <announced>June 09, 2004</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2004-06-09</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>51368</bug>
   <access>remote</access>
   <affected>
@@ -42,7 +41,7 @@
     <p>
     Given the right server configuration, an attacker could cause a Denial of
     Service or execute code as the user running Apache, usually
-    &quot;apache&quot;. It is thought to be impossible to exploit this to
+    "apache". It is thought to be impossible to exploit this to
     execute code on the x86 platform, but the possibility for other platforms
     is unknown. This does not preclude a DoS on x86 systems.
     </p>
@@ -60,19 +59,19 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-www/mod_ssl-2.8.18"
-    # emerge ">=net-www/mod_ssl-2.8.18"</code>
+    # emerge -pv "&gt;=net-www/mod_ssl-2.8.18"
+    # emerge "&gt;=net-www/mod_ssl-2.8.18"</code>
     <p>
     Apache 2.x users should upgrade to the latest version of Apache:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-servers/apache-2.0.49-r3"
-    # emerge ">=www-servers/apache-2.0.49-r3"</code>
+    # emerge -pv "&gt;=www-servers/apache-2.0.49-r3"
+    # emerge "&gt;=www-servers/apache-2.0.49-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0488">CAN-2004-0488</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0488">CAN-2004-0488</uri>
   </references>
   <metadata tag="submitter">
     dmargoli

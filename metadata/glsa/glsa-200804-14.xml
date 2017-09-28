@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-14">
   <title>Opera: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>April 14, 2008</announced>
-  <revised>April 14, 2008: 01</revised>
+  <announced>2008-04-14</announced>
+  <revised>2008-04-14: 01</revised>
   <bug>216022</bug>
   <access>remote</access>
   <affected>
@@ -50,17 +49,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.27&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/opera-9.27"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1761">CVE-2008-1761</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1762">CVE-2008-1762</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1764">CVE-2008-1764</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1761">CVE-2008-1761</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1762">CVE-2008-1762</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1764">CVE-2008-1764</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 13 Apr 2008 00:02:37 +0000">
+  <metadata tag="submitter" timestamp="2008-04-13T00:02:37Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 13 Apr 2008 00:02:49 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-13T00:02:49Z">
     rbu
   </metadata>
 </glsa>

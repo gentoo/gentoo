@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200703-09">
   <title>Smb4K: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been identified in Smb4K.
   </synopsis>
   <product type="ebuild">smb4k</product>
-  <announced>March 09, 2007</announced>
-  <revised>March 09, 2007: 01</revised>
+  <announced>2007-03-09</announced>
+  <revised>2007-03-09: 01</revised>
   <bug>156152</bug>
   <access>local</access>
   <affected>
@@ -62,21 +61,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/smb4k-0.6.10a&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/smb4k-0.6.10a"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0472">CVE-2007-0472</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0473">CVE-2007-0473</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0474">CVE-2007-0474</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0475">CVE-2007-0475</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0472">CVE-2007-0472</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0473">CVE-2007-0473</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0474">CVE-2007-0474</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0475">CVE-2007-0475</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 22:36:28 +0000">
+  <metadata tag="requester" timestamp="2007-02-12T22:36:28Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Feb 2007 22:42:10 +0000">
+  <metadata tag="bugReady" timestamp="2007-02-12T22:42:10Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 Feb 2007 15:26:26 +0000">
+  <metadata tag="submitter" timestamp="2007-02-27T15:26:26Z">
     shellsage
   </metadata>
 </glsa>

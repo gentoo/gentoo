@@ -4,8 +4,8 @@
   <title>SquidClamav: Denial of Service</title>
   <synopsis>A vulnerability in SquidClamav may result in Denial of Service.</synopsis>
   <product type="ebuild">squidclamav</product>
-  <announced>September 24, 2012</announced>
-  <revised>September 24, 2012: 1</revised>
+  <announced>2012-09-24</announced>
+  <revised>2012-09-24: 1</revised>
   <bug>428778</bug>
   <access>remote</access>
   <affected>
@@ -39,11 +39,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3501">CVE-2012-3501</uri>
-    <uri link="http://squidclamav.darold.net/news.html">SquidClamav News</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3501">CVE-2012-3501</uri>
+    <uri link="https://squidclamav.darold.net/news.html">SquidClamav News</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 16:12:43 +0000">
+  <metadata tag="requester" timestamp="2012-08-14T16:12:43Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 23:23:20 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-24T23:23:20Z">ackle</metadata>
 </glsa>

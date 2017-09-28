@@ -6,8 +6,8 @@
     possibly allowing attackers to cause unspecified impact.
   </synopsis>
   <product type="ebuild">mysql mariadb</product>
-  <announced>November 05, 2014</announced>
-  <revised>November 05, 2014: 1</revised>
+  <announced>2014-11-05</announced>
+  <revised>2014-11-05: 1</revised>
   <bug>525504</bug>
   <access>remote</access>
   <affected>
@@ -56,16 +56,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6464">CVE-2014-6464</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6469">CVE-2014-6469</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6491">CVE-2014-6491</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6494">CVE-2014-6494</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6496">CVE-2014-6496</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6500">CVE-2014-6500</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6507">CVE-2014-6507</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6555">CVE-2014-6555</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6559">CVE-2014-6559</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6464">CVE-2014-6464</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6469">CVE-2014-6469</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6491">CVE-2014-6491</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6494">CVE-2014-6494</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6496">CVE-2014-6496</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6500">CVE-2014-6500</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6507">CVE-2014-6507</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6555">CVE-2014-6555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6559">CVE-2014-6559</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Oct 2014 22:45:02 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 05 Nov 2014 23:49:01 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-10-22T22:45:02Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-11-05T23:49:01Z">ackle</metadata>
 </glsa>

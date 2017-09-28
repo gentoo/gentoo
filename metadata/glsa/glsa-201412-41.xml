@@ -4,8 +4,8 @@
   <title>OpenVPN: Denial of Service</title>
   <synopsis>A vulnerability in OpenVPN could lead to Denial of Service.</synopsis>
   <product type="ebuild">openvpn</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-26: 1</revised>
   <bug>531308</bug>
   <access>remote</access>
   <affected>
@@ -39,8 +39,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8104">CVE-2014-8104</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8104">CVE-2014-8104</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 04 Dec 2014 00:38:51 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 17:10:38 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-12-04T00:38:51Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-26T17:10:38Z">ackle</metadata>
 </glsa>

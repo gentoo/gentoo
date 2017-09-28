@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-26">
   <title>GProFTPD: gprostats format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerability, potentially leading to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">GProFTPD</product>
-  <announced>February 18, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-02-18</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>81894</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/gproftpd-8.1.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-ftp/gproftpd-8.1.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0484">CVE-2005-0484</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0484">CVE-2005-0484</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 16 Feb 2005 19:27:51 +0000">
+  <metadata tag="requester" timestamp="2005-02-16T19:27:51Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Feb 2005 00:01:48 +0000">
+  <metadata tag="submitter" timestamp="2005-02-17T00:01:48Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 18 Feb 2005 09:37:53 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-18T09:37:53Z">
     koon
   </metadata>
 </glsa>

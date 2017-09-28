@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-18">
   <title>Tor: Information disclosure</title>
   <synopsis>
     A flaw in Tor may allow the disclosure of arbitrary memory portions.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>June 21, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-06-21</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>96320</bug>
   <access>remote</access>
   <affected>
@@ -46,19 +45,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/tor-0.0.9.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/tor-0.0.9.10"</code>
   </resolution>
   <references>
     <uri link="http://archives.seul.org/or/announce/Jun-2005/msg00001.html">Tor Security Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2050">CVE-2005-2050</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2050">CVE-2005-2050</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 20 Jun 2005 07:51:28 +0000">
+  <metadata tag="requester" timestamp="2005-06-20T07:51:28Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Jun 2005 13:31:02 +0000">
+  <metadata tag="submitter" timestamp="2005-06-20T13:31:02Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 21 Jun 2005 08:50:44 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-21T08:50:44Z">
     koon
   </metadata>
 </glsa>

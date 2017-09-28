@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-20">
   <title>Shorewall: Security policy bypass</title>
   <synopsis>
@@ -8,8 +7,8 @@
     filtering to bypass all other security rules.
   </synopsis>
   <product type="ebuild">shorewall</product>
-  <announced>July 22, 2005</announced>
-  <revised>September 14, 2005: 02</revised>
+  <announced>2005-07-22</announced>
+  <revised>2005-09-14: 02</revised>
   <bug>99398</bug>
   <access>remote</access>
   <affected>
@@ -55,16 +54,16 @@
     # emerge --ask --oneshot --verbose net-firewall/shorewall</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2317">CAN-2005-2317</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2317">CAN-2005-2317</uri>
     <uri link="http://www.shorewall.net/News.htm#20050717">Shorewall Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 20 Jul 2005 08:32:24 +0000">
+  <metadata tag="requester" timestamp="2005-07-20T08:32:24Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2005 09:04:23 +0000">
+  <metadata tag="submitter" timestamp="2005-07-20T09:04:23Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 21 Jul 2005 21:07:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-21T21:07:14Z">
     DerCorny
   </metadata>
 </glsa>

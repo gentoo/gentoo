@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-09">
   <title>MoinMoin: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privileges.
   </synopsis>
   <product type="ebuild">moinmoin</product>
-  <announced>May 11, 2008</announced>
-  <revised>May 11, 2008: 01</revised>
+  <announced>2008-05-11</announced>
+  <revised>2008-05-11: 01</revised>
   <bug>218752</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/moinmoin-1.6.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/moinmoin-1.6.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1937">CVE-2008-1937</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1937">CVE-2008-1937</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 May 2008 22:43:27 +0000">
+  <metadata tag="requester" timestamp="2008-05-07T22:43:27Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 07 May 2008 22:49:11 +0000">
+  <metadata tag="bugReady" timestamp="2008-05-07T22:49:11Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 May 2008 14:03:55 +0000">
+  <metadata tag="submitter" timestamp="2008-05-09T14:03:55Z">
     p-y
   </metadata>
 </glsa>

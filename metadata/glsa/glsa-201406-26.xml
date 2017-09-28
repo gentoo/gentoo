@@ -6,8 +6,8 @@
     may allow a remote attacker to execute code.
   </synopsis>
   <product type="ebuild">django</product>
-  <announced>June 26, 2014</announced>
-  <revised>December 03, 2014: 2</revised>
+  <announced>2014-06-26</announced>
+  <revised>2014-12-03: 2</revised>
   <bug>508514</bug>
   <bug>510382</bug>
   <access>remote</access>
@@ -61,15 +61,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0472">CVE-2014-0472</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0473">CVE-2014-0473</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0474">CVE-2014-0474</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1418">CVE-2014-1418</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0472">CVE-2014-0472</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0473">CVE-2014-0473</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0474">CVE-2014-0474</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1418">CVE-2014-1418</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 02 May 2014 18:37:13 +0000">
+  <metadata tag="requester" timestamp="2014-05-02T18:37:13Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 03 Dec 2014 01:03:38 +0000">
+  <metadata tag="submitter" timestamp="2014-12-03T01:03:38Z">
     creffett
   </metadata>
 </glsa>

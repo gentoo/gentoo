@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-15">
   <title>UnRTF: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     way of a specially crafted RTF file.
   </synopsis>
   <product type="ebuild">app-text/unrtf</product>
-  <announced>January 10, 2005</announced>
-  <revised>January 10, 2005: 01</revised>
+  <announced>2005-01-10</announced>
+  <revised>2005-01-10: 01</revised>
   <bug>74480</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/unrtf-0.19.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/unrtf-0.19.3-r1"</code>
   </resolution>
   <references>
     <uri link="http://tigger.uic.edu/~jlongs2/holes/unrtf.txt">Original Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat,  8 Jan 2005 19:54:59 +0000">
+  <metadata tag="requester" timestamp="2005-01-08T19:54:59Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat,  8 Jan 2005 19:55:37 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-08T19:55:37Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Sun,  9 Jan 2005 05:15:13 +0000">
+  <metadata tag="submitter" timestamp="2005-01-09T05:15:13Z">
     dmargoli
   </metadata>
 </glsa>

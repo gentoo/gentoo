@@ -6,8 +6,8 @@
     might allow guest OS users to read arbitrary files on the host OS.
   </synopsis>
   <product type="ebuild">libvirt</product>
-  <announced>February 27, 2012</announced>
-  <revised>February 27, 2012: 1</revised>
+  <announced>2012-02-27</announced>
+  <revised>2012-02-27: 1</revised>
   <bug>358877</bug>
   <bug>372963</bug>
   <bug>373991</bug>
@@ -46,11 +46,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1146">CVE-2011-1146</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1486">CVE-2011-1486</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2178">CVE-2011-2178</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2511">CVE-2011-2511</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1146">CVE-2011-1146</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1486">CVE-2011-1486</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2178">CVE-2011-2178</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2511">CVE-2011-2511</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:16 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 27 Feb 2012 22:20:05 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:16Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-02-27T22:20:05Z" tag="submitter">craig</metadata>
 </glsa>

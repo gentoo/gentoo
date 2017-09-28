@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-14">
   <title>Horde: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     Cross-Site Scripting.
   </synopsis>
   <product type="ebuild">horde horde-imp horde-passwd</product>
-  <announced>September 12, 2009</announced>
-  <revised>September 12, 2009: 01</revised>
+  <announced>2009-09-12</announced>
+  <revised>2009-09-12: 01</revised>
   <bug>256125</bug>
   <bug>262976</bug>
   <bug>262978</bug>
@@ -83,31 +82,31 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-3.3.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-3.3.4"</code>
     <p>
     All Horde IMP users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-imp-4.3.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-imp-4.3.4"</code>
     <p>
     All Horde Passwd users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/horde-passwd-3.1.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/horde-passwd-3.1.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5917">CVE-2008-5917</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0930">CVE-2009-0930</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0931">CVE-2009-0931</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0932">CVE-2009-0932</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2360">CVE-2009-2360</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5917">CVE-2008-5917</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0930">CVE-2009-0930</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0931">CVE-2009-0931</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0932">CVE-2009-0932</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2360">CVE-2009-2360</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 02 Sep 2009 04:40:46 +0000">
+  <metadata tag="submitter" timestamp="2009-09-02T04:40:46Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 02 Sep 2009 04:40:52 +0000">
+  <metadata tag="bugReady" timestamp="2009-09-02T04:40:52Z">
     a3li
   </metadata>
 </glsa>

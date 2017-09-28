@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-11">
   <title>Nessus: "adduser" race condition vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escalation attack.
   </synopsis>
   <product type="ebuild">Nessus</product>
-  <announced>August 12, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-12</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>58014</bug>
   <access>local</access>
   <affected>
@@ -48,12 +47,12 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-analyzer/nessus-2.0.12&quot;
-    # emerge &quot;&gt;=net-analyzer/nessus-2.0.12&quot;</code>
+    # emerge -pv "&gt;=net-analyzer/nessus-2.0.12"
+    # emerge "&gt;=net-analyzer/nessus-2.0.12"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/12127/">Secunia Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1445">CVE-2004-1445</uri>
+    <uri link="https://secunia.com/advisories/12127/">Secunia Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1445">CVE-2004-1445</uri>
   </references>
   <metadata tag="requester">
     koon

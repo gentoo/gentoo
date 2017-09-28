@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-05">
   <title>OpenOffice.org: User-assisted execution of arbitrary code</title>
   <synopsis>
     An integer overflow vulnerability has been reported in OpenOffice.org.
   </synopsis>
   <product type="ebuild">openoffice openoffice-bin</product>
-  <announced>July 09, 2008</announced>
-  <revised>July 09, 2008: 01</revised>
+  <announced>2008-07-09</announced>
+  <revised>2008-07-09: 01</revised>
   <bug>225723</bug>
   <access>remote</access>
   <affected>
@@ -53,24 +52,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.4.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-2.4.1"</code>
     <p>
     All OpenOffice.org binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.4.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-2.4.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2152">CVE-2008-2152</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2152">CVE-2008-2152</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 07 Jul 2008 07:24:43 +0000">
+  <metadata tag="requester" timestamp="2008-07-07T07:24:43Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 07 Jul 2008 07:24:50 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-07T07:24:50Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Jul 2008 11:42:11 +0000">
+  <metadata tag="submitter" timestamp="2008-07-07T11:42:11Z">
     p-y
   </metadata>
 </glsa>

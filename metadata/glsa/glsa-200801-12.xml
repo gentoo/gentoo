@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-12">
   <title>xine-lib: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     processing RTSP streams.
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>January 27, 2008</announced>
-  <revised>January 27, 2008: 01</revised>
+  <announced>2008-01-27</announced>
+  <revised>2008-01-27: 01</revised>
   <bug>205197</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.9.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.9.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0225">CVE-2008-0225</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0238">CVE-2008-0238</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0225">CVE-2008-0225</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0238">CVE-2008-0238</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 16 Jan 2008 19:08:20 +0000">
+  <metadata tag="requester" timestamp="2008-01-16T19:08:20Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Jan 2008 01:56:19 +0000">
+  <metadata tag="submitter" timestamp="2008-01-20T01:56:19Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 26 Jan 2008 21:39:28 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-26T21:39:28Z">
     p-y
   </metadata>
 </glsa>

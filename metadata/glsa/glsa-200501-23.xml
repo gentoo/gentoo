@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-23">
   <title>Exim: Two buffer overflows</title>
   <synopsis>
@@ -9,8 +8,8 @@
     the SPA authentication mechanism in Exim.
   </synopsis>
   <product type="ebuild">exim</product>
-  <announced>January 12, 2005</announced>
-  <revised>January 12, 2005: 01</revised>
+  <announced>2005-01-12</announced>
+  <revised>2005-01-12: 01</revised>
   <bug>76893</bug>
   <access>remote</access>
   <affected>
@@ -53,20 +52,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/exim-4.43-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/exim-4.43-r2"</code>
   </resolution>
   <references>
-    <uri link="http://www.exim.org/mail-archives/exim-announce/2005/msg00000.html">Exim Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0021">CAN-2005-0021</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0022">CAN-2005-0022</uri>
+    <uri link="https://www.exim.org/mail-archives/exim-announce/2005/msg00000.html">Exim Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0021">CAN-2005-0021</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0022">CAN-2005-0022</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Jan 2005 09:24:16 +0000">
+  <metadata tag="requester" timestamp="2005-01-10T09:24:16Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Jan 2005 10:01:20 +0000">
+  <metadata tag="submitter" timestamp="2005-01-10T10:01:20Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 12 Jan 2005 21:52:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-12T21:52:22Z">
     koon
   </metadata>
 </glsa>

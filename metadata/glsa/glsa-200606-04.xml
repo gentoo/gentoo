@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-04">
   <title>Tor: Several vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     information disclosure and information leak.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>June 07, 2006</announced>
-  <revised>September 05, 2006: 02</revised>
+  <announced>2006-06-07</announced>
+  <revised>2006-09-05: 02</revised>
   <bug>134329</bug>
   <access>remote</access>
   <affected>
@@ -55,16 +54,16 @@
     # emerge --ask --oneshot --verbose net-misc/tor</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0414">CVE-2006-0414</uri>
-    <uri link="http://tor.eff.org/cvs/tor/ChangeLog">Tor ChangeLog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0414">CVE-2006-0414</uri>
+    <uri link="https://tor.eff.org/cvs/tor/ChangeLog">Tor ChangeLog</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 01 Jun 2006 07:05:28 +0000">
+  <metadata tag="requester" timestamp="2006-06-01T07:05:28Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 01 Jun 2006 17:37:03 +0000">
+  <metadata tag="submitter" timestamp="2006-06-01T17:37:03Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 17:15:10 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-05T17:15:10Z">
     falco
   </metadata>
 </glsa>

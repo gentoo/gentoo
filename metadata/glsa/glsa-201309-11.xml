@@ -7,8 +7,8 @@
     sensitive information.
   </synopsis>
   <product type="ebuild">subversion</product>
-  <announced>September 23, 2013</announced>
-  <revised>September 23, 2013: 1</revised>
+  <announced>2013-09-23</announced>
+  <revised>2013-09-23: 1</revised>
   <bug>350166</bug>
   <bug>356741</bug>
   <bug>369065</bug>
@@ -49,25 +49,25 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4539">CVE-2010-4539</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4644">CVE-2010-4644</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0715">CVE-2011-0715</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1752">CVE-2011-1752</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1783">CVE-2011-1783</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1921">CVE-2011-1921</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1845">CVE-2013-1845</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1846">CVE-2013-1846</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1847">CVE-2013-1847</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1849">CVE-2013-1849</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1884">CVE-2013-1884</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1968">CVE-2013-1968</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2088">CVE-2013-2088</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2112">CVE-2013-2112</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4131">CVE-2013-4131</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4277">CVE-2013-4277</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4539">CVE-2010-4539</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4644">CVE-2010-4644</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0715">CVE-2011-0715</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1752">CVE-2011-1752</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1783">CVE-2011-1783</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1921">CVE-2011-1921</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1845">CVE-2013-1845</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1846">CVE-2013-1846</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1847">CVE-2013-1847</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1849">CVE-2013-1849</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1884">CVE-2013-1884</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1968">CVE-2013-1968</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2088">CVE-2013-2088</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2112">CVE-2013-2112</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4131">CVE-2013-4131</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4277">CVE-2013-4277</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:25 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:25Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 23 Sep 2013 22:53:51 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-09-23T22:53:51Z">ackle</metadata>
 </glsa>

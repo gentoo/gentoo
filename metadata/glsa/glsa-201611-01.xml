@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in UnZip allowing remote
     attackers to execute arbitrary code and cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>November 01, 2016</announced>
-  <revised>November 01, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-11-01</announced>
+  <revised>2016-11-01: 1</revised>
   <bug>528082</bug>
   <bug>533748</bug>
   <bug>537424</bug>
@@ -46,11 +46,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8139">CVE-2014-8139</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8140">CVE-2014-8140</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8141">CVE-2014-8141</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9636">CVE-2014-9636</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8139">CVE-2014-8139</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8140">CVE-2014-8140</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8141">CVE-2014-8141</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9636">CVE-2014-9636</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 09 Jul 2016 02:22:34 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 01 Nov 2016 13:18:35 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-07-09T02:22:34Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-01T13:18:35Z">b-man</metadata>
 </glsa>

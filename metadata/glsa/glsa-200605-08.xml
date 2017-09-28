@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-08">
   <title>PHP: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     wordwrap() which may lead to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">php</product>
-  <announced>May 08, 2006</announced>
-  <revised>May 15, 2007: 09</revised>
+  <announced>2006-05-08</announced>
+  <revised>2007-05-15: 09</revised>
   <bug>127939</bug>
   <bug>128883</bug>
   <bug>131135</bug>
@@ -74,18 +73,18 @@
     # emerge --ask --oneshot --verbose dev-lang/php</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0996">CVE-2006-0996</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1490">CVE-2006-1490</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1990">CVE-2006-1990</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1991">CVE-2006-1991</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0996">CVE-2006-0996</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1490">CVE-2006-1490</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1990">CVE-2006-1990</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1991">CVE-2006-1991</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 05 May 2006 20:33:13 +0000">
+  <metadata tag="requester" timestamp="2006-05-05T20:33:13Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 May 2006 09:55:35 +0000">
+  <metadata tag="submitter" timestamp="2006-05-06T09:55:35Z">
     fox2mike
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 08 May 2006 13:38:05 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-08T13:38:05Z">
     koon
   </metadata>
 </glsa>

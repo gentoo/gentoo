@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-16">
   <title>CVS: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attacker to remotely compromise a CVS server or cause a DoS.
   </synopsis>
   <product type="ebuild">CVS</product>
-  <announced>April 18, 2005</announced>
-  <revised>April 22, 2005: 03</revised>
+  <announced>2005-04-18</announced>
+  <revised>2005-04-22: 03</revised>
   <bug>86476</bug>
   <bug>89579</bug>
   <access>remote</access>
@@ -52,15 +51,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/cvs-1.11.20&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/cvs-1.11.20"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0753">CAN-2005-0753</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0753">CAN-2005-0753</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 12 Apr 2005 18:45:36 +0000">
+  <metadata tag="submitter" timestamp="2005-04-12T18:45:36Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 18 Apr 2005 20:37:28 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-18T20:37:28Z">
     jaervosz
   </metadata>
 </glsa>

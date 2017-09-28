@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-18">
   <title>MediaWiki: Cross-site scripting vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary JavaScript code execution.
   </synopsis>
   <product type="ebuild">mediawiki</product>
-  <announced>July 20, 2005</announced>
-  <revised>August 11, 2005: 03</revised>
+  <announced>2005-07-20</announced>
+  <revised>2005-08-11: 03</revised>
   <bug>99132</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mediawiki-1.4.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.4.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2396">CAN-2005-2396</uri>
-    <uri link="http://sourceforge.net/project/shownotes.php?release_id=342530">MediaWiki Release Notes</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2396">CAN-2005-2396</uri>
+    <uri link="https://sourceforge.net/project/shownotes.php?release_id=342530">MediaWiki Release Notes</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 18 Jul 2005 07:34:17 +0000">
+  <metadata tag="requester" timestamp="2005-07-18T07:34:17Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 18 Jul 2005 07:34:40 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-18T07:34:40Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 18 Jul 2005 07:59:14 +0000">
+  <metadata tag="submitter" timestamp="2005-07-18T07:59:14Z">
     DerCorny
   </metadata>
 </glsa>

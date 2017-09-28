@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-03">
   <title>HylaFAX: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerabilities.
   </synopsis>
   <product type="ebuild">hylafax</product>
-  <announced>January 06, 2006</announced>
-  <revised>January 06, 2006: 01</revised>
+  <announced>2006-01-06</announced>
+  <revised>2006-01-06: 01</revised>
   <bug>116389</bug>
   <access>remote</access>
   <affected>
@@ -50,17 +49,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/hylafax-4.2.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/hylafax-4.2.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3538">CVE-2005-3538</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3539">CVE-2005-3539</uri>
-    <uri link="http://www.hylafax.org/content/HylaFAX_4.2.4_release">HylaFAX release announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3538">CVE-2005-3538</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3539">CVE-2005-3539</uri>
+    <uri link="https://www.hylafax.org/content/HylaFAX_4.2.4_release">HylaFAX release announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2006 21:40:30 +0000">
+  <metadata tag="submitter" timestamp="2006-01-02T21:40:30Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 06 Jan 2006 13:37:21 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-06T13:37:21Z">
     jaervosz
   </metadata>
 </glsa>

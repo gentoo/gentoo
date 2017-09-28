@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">flac</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-26: 1</revised>
   <bug>530288</bug>
   <access>remote</access>
   <affected>
@@ -47,8 +47,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8962">CVE-2014-8962</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8962">CVE-2014-8962</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 03 Dec 2014 00:54:43 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 00:40:42 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-12-03T00:54:43Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-26T00:40:42Z">ackle</metadata>
 </glsa>

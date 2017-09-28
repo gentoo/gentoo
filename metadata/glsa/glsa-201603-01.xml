@@ -6,8 +6,8 @@
     in the execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">gimp</product>
-  <announced>March 06, 2016</announced>
-  <revised>May 04, 2016: 2</revised>
+  <announced>2016-03-06</announced>
+  <revised>2016-05-04: 2</revised>
   <bug>434582</bug>
   <bug>493372</bug>
   <access>remote</access>
@@ -49,14 +49,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4245">CVE-2012-4245</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1913">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4245">CVE-2012-4245</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1913">
       CVE-2013-1913
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1978">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1978">
       CVE-2013-1978
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 02 Mar 2016 11:01:16 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 04 May 2016 00:41:21 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-03-02T11:01:16Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-05-04T00:41:21Z">b-man</metadata>
 </glsa>

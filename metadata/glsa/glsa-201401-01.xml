@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">libgdiplus</product>
-  <announced>January 05, 2014</announced>
-  <revised>January 05, 2014: 1</revised>
+  <announced>2014-01-05</announced>
+  <revised>2014-01-05: 1</revised>
   <bug>334101</bug>
   <access>remote</access>
   <affected>
@@ -50,10 +50,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1526">CVE-2010-1526</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1526">CVE-2010-1526</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:09 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:09Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Jan 2014 00:05:05 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-05T00:05:05Z">Zlogene</metadata>
 </glsa>

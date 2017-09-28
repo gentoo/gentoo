@@ -6,8 +6,8 @@
     a Denial of Service condition.
   </synopsis>
   <product type="ebuild">links</product>
-  <announced>February 07, 2014</announced>
-  <revised>February 07, 2014: 1</revised>
+  <announced>2014-02-07</announced>
+  <revised>2014-02-07: 1</revised>
   <bug>493138</bug>
   <access>remote</access>
   <affected>
@@ -40,12 +40,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6050">CVE-2013-6050</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6050">CVE-2013-6050</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 20 Jan 2014 10:12:18 +0000">
+  <metadata tag="requester" timestamp="2014-01-20T10:12:18Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 07 Feb 2014 21:23:11 +0000">
+  <metadata tag="submitter" timestamp="2014-02-07T21:23:11Z">
     pinkbyte
   </metadata>
 </glsa>

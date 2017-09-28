@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-10">
   <title>MySQL: Denial of Service and information leakage</title>
   <synopsis>
@@ -8,8 +7,8 @@
     vulnerability were found in MySQL.
   </synopsis>
   <product type="ebuild">mysql</product>
-  <announced>August 16, 2007</announced>
-  <revised>August 16, 2007: 01</revised>
+  <announced>2007-08-16</announced>
+  <revised>2007-08-16: 01</revised>
   <bug>185333</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-5.0.44&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.0.44"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3780">CVE-2007-3780</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3781">CVE-2007-3781</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3780">CVE-2007-3780</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3781">CVE-2007-3781</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 29 Jul 2007 22:18:26 +0000">
+  <metadata tag="requester" timestamp="2007-07-29T22:18:26Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 12 Aug 2007 20:12:02 +0000">
+  <metadata tag="submitter" timestamp="2007-08-12T20:12:02Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 12 Aug 2007 20:13:00 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-12T20:13:00Z">
     falco
   </metadata>
 </glsa>

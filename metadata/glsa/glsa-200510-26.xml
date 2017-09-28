@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-26">
   <title>XLI, Xloadimage: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">xli xloadimage</product>
-  <announced>October 30, 2005</announced>
-  <revised>October 30, 2005: 01</revised>
+  <announced>2005-10-30</announced>
+  <revised>2005-10-30: 01</revised>
   <bug>108365</bug>
   <access>remote</access>
   <affected>
@@ -56,24 +55,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xli-1.17.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/xli-1.17.0-r2"</code>
     <p>
     All Xloadimage users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xloadimage-4.1-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/xloadimage-4.1-r4"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3178">CAN-2005-3178</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3178">CAN-2005-3178</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Oct 2005 15:18:40 +0000">
+  <metadata tag="requester" timestamp="2005-10-26T15:18:40Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Oct 2005 03:10:06 +0000">
+  <metadata tag="submitter" timestamp="2005-10-28T03:10:06Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 30 Oct 2005 15:11:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-30T15:11:22Z">
     koon
   </metadata>
 </glsa>

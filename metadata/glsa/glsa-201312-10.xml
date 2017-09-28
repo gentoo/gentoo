@@ -6,8 +6,8 @@
     attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">libsmi</product>
-  <announced>December 14, 2013</announced>
-  <revised>December 14, 2013: 1</revised>
+  <announced>2013-12-14</announced>
+  <revised>2013-12-14: 1</revised>
   <bug>342127</bug>
   <access>local, remote</access>
   <affected>
@@ -52,10 +52,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2891">CVE-2010-2891</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2891">CVE-2010-2891</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:09 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:09Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 14 Dec 2013 22:33:15 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-12-14T22:33:15Z">Zlogene</metadata>
 </glsa>

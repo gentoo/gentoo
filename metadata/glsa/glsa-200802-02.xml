@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-02">
   <title>Doomsday: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or a Denial of Service.
   </synopsis>
   <product type="ebuild">doomsday</product>
-  <announced>February 06, 2008</announced>
-  <revised>February 10, 2008: 02</revised>
+  <announced>2008-02-06</announced>
+  <revised>2008-02-10: 02</revised>
   <bug>190835</bug>
   <access>remote</access>
   <affected>
@@ -59,17 +58,17 @@
     # emerge --unmerge games-fps/doomsday</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4642">CVE-2007-4642</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4643">CVE-2007-4643</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4644">CVE-2007-4644</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4642">CVE-2007-4642</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4643">CVE-2007-4643</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4644">CVE-2007-4644</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 06 Dec 2007 00:50:29 +0000">
+  <metadata tag="requester" timestamp="2007-12-06T00:50:29Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 12 Dec 2007 01:08:23 +0000">
+  <metadata tag="submitter" timestamp="2007-12-12T01:08:23Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 20 Jan 2008 00:41:43 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-20T00:41:43Z">
     rbu
   </metadata>
 </glsa>

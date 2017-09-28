@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-09">
   <title>Axel: Vulnerability in HTTP redirection handling</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Axel</product>
-  <announced>April 12, 2005</announced>
-  <revised>April 12, 2005: 01</revised>
+  <announced>2005-04-12</announced>
+  <revised>2005-04-12: 01</revised>
   <bug>88264</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/axel-1.0b&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/axel-1.0b"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0390">CAN-2005-0390</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0390">CAN-2005-0390</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 Apr 2005 18:36:13 +0000">
+  <metadata tag="requester" timestamp="2005-04-11T18:36:13Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 11 Apr 2005 19:29:05 +0000">
+  <metadata tag="submitter" timestamp="2005-04-11T19:29:05Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 12 Apr 2005 11:48:11 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-12T11:48:11Z">
     vorlon078
   </metadata>
 </glsa>

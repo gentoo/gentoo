@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-15">
   <title>Quagga Routing Suite: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     routing information. The BGP daemon is vulnerable to a Denial of Service.
   </synopsis>
   <product type="ebuild">quagga</product>
-  <announced>May 21, 2006</announced>
-  <revised>May 21, 2006: 01</revised>
+  <announced>2006-05-21</announced>
+  <revised>2006-05-21: 01</revised>
   <bug>132353</bug>
   <access>remote</access>
   <affected>
@@ -55,21 +54,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/quagga-0.98.6-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/quagga-0.98.6-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2223">CVE-2006-2223</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2224">CVE-2006-2224</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2276">CVE-2006-2276</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2223">CVE-2006-2223</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2224">CVE-2006-2224</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2276">CVE-2006-2276</uri>
     <uri link="http://www.quagga.net/news2.php?y=2006&amp;m=5&amp;d=8#id1147115280">Official release information</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 15 May 2006 05:35:52 +0000">
+  <metadata tag="requester" timestamp="2006-05-15T05:35:52Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 15 May 2006 16:38:23 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-15T16:38:23Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 16 May 2006 05:49:19 +0000">
+  <metadata tag="submitter" timestamp="2006-05-16T05:49:19Z">
     frilled
   </metadata>
 </glsa>

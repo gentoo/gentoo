@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-09">
   <title>xv: Filename handling vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">xv</product>
-  <announced>March 04, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-03-04</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>83686</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/xv-3.10a-r10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/xv-3.10a-r10"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0665">CVE-2005-0665</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0665">CVE-2005-0665</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  2 Mar 2005 21:42:57 +0000">
+  <metadata tag="requester" timestamp="2005-03-02T21:42:57Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  2 Mar 2005 22:55:00 +0000">
+  <metadata tag="submitter" timestamp="2005-03-02T22:55:00Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu,  3 Mar 2005 21:51:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-03T21:51:14Z">
     koon
   </metadata>
 </glsa>

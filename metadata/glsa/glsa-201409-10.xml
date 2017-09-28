@@ -7,8 +7,8 @@
     201409-09 had an incomplete fix.
   </synopsis>
   <product type="ebuild">bash</product>
-  <announced>September 25, 2014</announced>
-  <revised>October 04, 2014: 2</revised>
+  <announced>2014-09-25</announced>
+  <revised>2014-10-04: 2</revised>
   <bug>523592</bug>
   <access>local, remote</access>
   <affected>
@@ -80,12 +80,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7169">CVE-2014-7169</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7169">CVE-2014-7169</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Sep 2014 12:49:54 +0000">
+  <metadata tag="requester" timestamp="2014-09-25T12:49:54Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 04 Oct 2014 22:27:37 +0000">
+  <metadata tag="submitter" timestamp="2014-10-04T22:27:37Z">
     keytoaster
   </metadata>
 </glsa>

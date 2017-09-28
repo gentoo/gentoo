@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-13">
   <title>MySQL: Information leakage</title>
   <synopsis>
     A MySQL server may leak information to unauthorized users.
   </synopsis>
   <product type="ebuild">MySQL</product>
-  <announced>May 11, 2006</announced>
-  <revised>May 15, 2006: 04</revised>
+  <announced>2006-05-11</announced>
+  <revised>2006-05-15: 04</revised>
   <bug>132146</bug>
   <access>remote</access>
   <affected>
@@ -56,20 +55,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-4.0.27&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-4.0.27"</code>
   </resolution>
   <references>
     <uri link="http://www.derkeiler.com/Mailing-Lists/securityfocus/bugtraq/2006-05/msg00041.html">Original advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1516">CVE-2006-1516</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1517">CVE-2006-1517</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1516">CVE-2006-1516</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1517">CVE-2006-1517</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 06 May 2006 16:33:38 +0000">
+  <metadata tag="requester" timestamp="2006-05-06T16:33:38Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 08 May 2006 07:03:06 +0000">
+  <metadata tag="submitter" timestamp="2006-05-08T07:03:06Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 08 May 2006 13:21:08 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-08T13:21:08Z">
     koon
   </metadata>
 </glsa>

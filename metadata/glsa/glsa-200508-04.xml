@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-04">
   <title>Netpbm: Arbitrary code execution in pstopnm</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which can potentially result in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Netpbm</product>
-  <announced>August 05, 2005</announced>
-  <revised>May 28, 2009: 06</revised>
+  <announced>2005-08-05</announced>
+  <revised>2009-05-28: 06</revised>
   <bug>100398</bug>
   <access>remote</access>
   <affected>
@@ -62,16 +61,16 @@
     # emerge --ask --oneshot --verbose media-libs/netpbm</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2471">CAN-2005-2471</uri>
-    <uri link="http://secunia.com/advisories/16184/">Secunia Advisory SA16184</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2471">CAN-2005-2471</uri>
+    <uri link="https://secunia.com/advisories/16184/">Secunia Advisory SA16184</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 02 Aug 2005 10:10:20 +0000">
+  <metadata tag="requester" timestamp="2005-08-02T10:10:20Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 02 Aug 2005 11:24:11 +0000">
+  <metadata tag="submitter" timestamp="2005-08-02T11:24:11Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 05 Aug 2005 10:42:23 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-05T10:42:23Z">
     koon
   </metadata>
 </glsa>

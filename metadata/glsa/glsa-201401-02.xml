@@ -6,8 +6,8 @@
     accepted as valid.
   </synopsis>
   <product type="ebuild">gajim</product>
-  <announced>January 06, 2014</announced>
-  <revised>January 06, 2014: 1</revised>
+  <announced>2014-01-06</announced>
+  <revised>2014-01-06: 1</revised>
   <bug>442860</bug>
   <access>remote</access>
   <affected>
@@ -44,12 +44,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5524">CVE-2012-5524</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5524">CVE-2012-5524</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 11 Dec 2013 01:48:29 +0000">
+  <metadata tag="requester" timestamp="2013-12-11T01:48:29Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Jan 2014 19:16:07 +0000">
+  <metadata tag="submitter" timestamp="2014-01-06T19:16:07Z">
     creffett
   </metadata>
 </glsa>

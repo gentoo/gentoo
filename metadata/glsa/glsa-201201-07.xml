@@ -6,8 +6,8 @@
     could allow local attackers to gain root privileges.
   </synopsis>
   <product type="ebuild">NX Server NX Node</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>378345</bug>
   <access>local</access>
   <affected>
@@ -58,12 +58,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3977">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3977">
       CVE-2011-3977
     </uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:19 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:19Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 11:55:50 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-23T11:55:50Z" tag="submitter">ackle</metadata>
 </glsa>

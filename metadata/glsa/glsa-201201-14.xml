@@ -7,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">mit-krb5-appl</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>374229</bug>
   <bug>396137</bug>
   <access>remote</access>
@@ -62,9 +62,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1526">CVE-2011-1526</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4862">CVE-2011-4862</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1526">CVE-2011-1526</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4862">CVE-2011-4862</uri>
   </references>
-  <metadata timestamp="Sun, 08 Jan 2012 17:28:51 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 20:02:13 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-01-08T17:28:51Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-01-23T20:02:13Z" tag="submitter">ackle</metadata>
 </glsa>

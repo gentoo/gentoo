@@ -6,8 +6,8 @@
     extract ElGamal private key information. 
   </synopsis>
   <product type="ebuild">libgcrypt,side-channel,elgamal</product>
-  <announced>August 29, 2014</announced>
-  <revised>August 29, 2014: 1</revised>
+  <announced>2014-08-29</announced>
+  <revised>2014-08-29: 1</revised>
   <bug>519396</bug>
   <access>remote</access>
   <affected>
@@ -44,8 +44,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5270">CVE-2014-5270</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5270">CVE-2014-5270</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 24 Aug 2014 09:53:40 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 10:08:01 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-08-24T09:53:40Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-08-29T10:08:01Z">K_F</metadata>
 </glsa>

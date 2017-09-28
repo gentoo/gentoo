@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-16">
   <title>MyDNS: Denial of Service</title>
   <synopsis>
     MyDNS contains a vulnerability that may lead to a Denial of Service attack.
   </synopsis>
   <product type="ebuild">MyDNS</product>
-  <announced>January 30, 2006</announced>
-  <revised>January 30, 2006: 01</revised>
+  <announced>2006-01-30</announced>
+  <revised>2006-01-30: 01</revised>
   <bug>119548</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/mydns-1.1.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/mydns-1.1.0"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0351">CVE-2006-0351</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0351">CVE-2006-0351</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 25 Jan 2006 19:31:44 +0000">
+  <metadata tag="requester" timestamp="2006-01-25T19:31:44Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 27 Jan 2006 05:37:45 +0000">
+  <metadata tag="submitter" timestamp="2006-01-27T05:37:45Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 27 Jan 2006 21:29:58 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-27T21:29:58Z">
     adir
   </metadata>
 </glsa>

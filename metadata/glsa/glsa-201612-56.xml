@@ -6,8 +6,8 @@
     could lead to the execution of arbitrary code on the host system.
   </synopsis>
   <product type="ebuild">xen</product>
-  <announced>December 31, 2016</announced>
-  <revised>January 03, 2017: 2</revised>
+  <announced>2016-12-31</announced>
+  <revised>2017-01-03: 2</revised>
   <bug>600382</bug>
   <bug>600662</bug>
   <bug>601248</bug>
@@ -71,26 +71,26 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10024">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10024">
       CVE-2016-10024
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9377">CVE-2016-9377</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9378">CVE-2016-9378</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9379">CVE-2016-9379</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9380">CVE-2016-9380</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9381">CVE-2016-9381</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9382">CVE-2016-9382</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9383">CVE-2016-9383</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9384">CVE-2016-9384</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9385">CVE-2016-9385</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9386">CVE-2016-9386</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9637">CVE-2016-9637</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9815">CVE-2016-9815</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9816">CVE-2016-9816</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9817">CVE-2016-9817</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9818">CVE-2016-9818</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9932">CVE-2016-9932</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9377">CVE-2016-9377</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9378">CVE-2016-9378</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9379">CVE-2016-9379</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9380">CVE-2016-9380</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9381">CVE-2016-9381</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9382">CVE-2016-9382</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9383">CVE-2016-9383</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9384">CVE-2016-9384</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9385">CVE-2016-9385</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9386">CVE-2016-9386</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9637">CVE-2016-9637</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9815">CVE-2016-9815</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9816">CVE-2016-9816</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9817">CVE-2016-9817</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9818">CVE-2016-9818</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9932">CVE-2016-9932</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 26 Nov 2016 10:47:37 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 05:55:18 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-26T10:47:37Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-03T05:55:18Z">b-man</metadata>
 </glsa>

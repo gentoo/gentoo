@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-10">
   <title>FreeType: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">freetype</product>
-  <announced>June 23, 2008</announced>
-  <revised>May 28, 2009: 03</revised>
+  <announced>2008-06-23</announced>
+  <revised>2009-05-28: 03</revised>
   <bug>225851</bug>
   <access>remote</access>
   <affected>
@@ -64,20 +63,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/freetype-2.3.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/freetype-2.3.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1806">CVE-2008-1806</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1807">CVE-2008-1807</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1808">CVE-2008-1808</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1806">CVE-2008-1806</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1807">CVE-2008-1807</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1808">CVE-2008-1808</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 12 Jun 2008 09:20:25 +0000">
+  <metadata tag="requester" timestamp="2008-06-12T09:20:25Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 Jun 2008 00:04:48 +0000">
+  <metadata tag="submitter" timestamp="2008-06-17T00:04:48Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 17 Jun 2008 00:04:59 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-17T00:04:59Z">
     rbu
   </metadata>
 </glsa>

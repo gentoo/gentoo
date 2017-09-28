@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-04">
   <title>PHP: Memory disclosure and arbitrary location file upload</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote attackers to upload files to arbitrary locations.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>October 06, 2004</announced>
-  <revised>October 06, 2004: 01</revised>
+  <announced>2004-10-06</announced>
+  <revised>2004-10-06: 01</revised>
   <bug>64223</bug>
   <access>remote</access>
   <affected>
@@ -65,27 +64,27 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-php/php-4.3.9"
-    # emerge ">=dev-php/php-4.3.9"
+    # emerge -pv "&gt;=dev-php/php-4.3.9"
+    # emerge "&gt;=dev-php/php-4.3.9"
 
-    # emerge -pv ">=dev-php/mod_php-4.3.9"
-    # emerge ">=dev-php/mod_php-4.3.9"
+    # emerge -pv "&gt;=dev-php/mod_php-4.3.9"
+    # emerge "&gt;=dev-php/mod_php-4.3.9"
 
-    # emerge -pv ">=dev-php/php-cgi-4.3.9"
-    # emerge ">=dev-php/php-cgi-4.3.9"</code>
+    # emerge -pv "&gt;=dev-php/php-cgi-4.3.9"
+    # emerge "&gt;=dev-php/php-cgi-4.3.9"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/12560/">Secunia Advisory</uri>
+    <uri link="https://secunia.com/advisories/12560/">Secunia Advisory</uri>
     <uri link="http://www.securityfocus.com/archive/1/375294">BugTraq post regarding the php_variables.c issue</uri>
     <uri link="http://www.securityfocus.com/archive/1/375370">BugTraq post regarding the rfc1867.c issue</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Sep 2004 20:40:17 +0000">
+  <metadata tag="requester" timestamp="2004-09-29T20:40:17Z">
     dmargoli
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 30 Sep 2004 20:25:12 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-30T20:25:12Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun,  3 Oct 2004 18:04:56 +0000">
+  <metadata tag="submitter" timestamp="2004-10-03T18:04:56Z">
     dmargoli
   </metadata>
 </glsa>

@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in rsync, the worst of
     which could allow remote attackers to write arbitrary files.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>May 30, 2016</announced>
-  <revised>May 30, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-05-30</announced>
+  <revised>2016-05-30: 1</revised>
   <bug>519108</bug>
   <bug>540000</bug>
   <bug>569140</bug>
@@ -41,11 +41,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8242">CVE-2014-8242</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9512">CVE-2014-9512</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8242">CVE-2014-8242</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9512">CVE-2014-9512</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:39:41 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:39:41Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 30 May 2016 19:55:19 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-05-30T19:55:19Z">b-man</metadata>
 </glsa>

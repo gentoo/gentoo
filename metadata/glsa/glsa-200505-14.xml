@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-14">
   <title>Cheetah: Untrusted module search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allow a local user to gain escalated privileges.
   </synopsis>
   <product type="ebuild">Cheetah</product>
-  <announced>May 19, 2005</announced>
-  <revised>May 17, 2006: 02</revised>
+  <announced>2005-05-19</announced>
+  <revised>2006-05-17: 02</revised>
   <bug>92926</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-python/cheetah-0.9.17_rc1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-python/cheetah-0.9.17_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/15386/">Secunia Advisory SA15386</uri>
+    <uri link="https://secunia.com/advisories/15386/">Secunia Advisory SA15386</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 17 May 2005 21:18:59 +0000">
+  <metadata tag="requester" timestamp="2005-05-17T21:18:59Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 May 2005 21:38:15 +0000">
+  <metadata tag="submitter" timestamp="2005-05-17T21:38:15Z">
     r2d2
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 18 May 2005 11:47:34 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-18T11:47:34Z">
     koon
   </metadata>
 </glsa>

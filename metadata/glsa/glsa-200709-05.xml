@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-05">
   <title>RealPlayer: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">realplayer</product>
-  <announced>September 14, 2007</announced>
-  <revised>September 14, 2007: 01</revised>
+  <announced>2007-09-14</announced>
+  <revised>2007-09-14: 01</revised>
   <bug>183421</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/realplayer-10.0.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/realplayer-10.0.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3410">CVE-2007-3410</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3410">CVE-2007-3410</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Aug 2007 10:19:49 +0000">
+  <metadata tag="requester" timestamp="2007-08-29T10:19:49Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 29 Aug 2007 10:19:58 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-29T10:19:58Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 09 Sep 2007 20:21:51 +0000">
+  <metadata tag="submitter" timestamp="2007-09-09T20:21:51Z">
     vorlon
   </metadata>
 </glsa>

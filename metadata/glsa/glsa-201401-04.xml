@@ -6,8 +6,8 @@
     which allow remote attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">python</product>
-  <announced>January 06, 2014</announced>
-  <revised>June 17, 2015: 5</revised>
+  <announced>2014-01-06</announced>
+  <revised>2015-06-17: 5</revised>
   <bug>325593</bug>
   <bug>355927</bug>
   <bug>358663</bug>
@@ -85,19 +85,19 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1634">CVE-2010-1634</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2089">CVE-2010-2089</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3492">CVE-2010-3492</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3493">CVE-2010-3493</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1015">CVE-2011-1015</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0845">CVE-2012-0845</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1150">CVE-2012-1150</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2099">CVE-2013-2099</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1634">CVE-2010-1634</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2089">CVE-2010-2089</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3492">CVE-2010-3492</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3493">CVE-2010-3493</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1015">CVE-2011-1015</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0845">CVE-2012-0845</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1150">CVE-2012-1150</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2099">CVE-2013-2099</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Sep 2013 03:32:23 +0000">
+  <metadata tag="requester" timestamp="2013-09-18T03:32:23Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 17 Jun 2015 19:34:44 +0000">
+  <metadata tag="submitter" timestamp="2015-06-17T19:34:44Z">
     creffett
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-13">
   <title>irssi: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     found in irssi which might result in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">irssi</product>
-  <announced>September 12, 2009</announced>
-  <revised>September 12, 2009: 01</revised>
+  <announced>2009-09-12</announced>
+  <revised>2009-09-12: 01</revised>
   <bug>271875</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/irssi-0.8.13-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/irssi-0.8.13-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1959">CVE-2009-1959</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1959">CVE-2009-1959</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 10 Jun 2009 19:45:21 +0000">
+  <metadata tag="requester" timestamp="2009-06-10T19:45:21Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 02 Jul 2009 19:15:53 +0000">
+  <metadata tag="submitter" timestamp="2009-07-02T19:15:53Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Sep 2009 16:10:35 +0000">
+  <metadata tag="bugReady" timestamp="2009-09-12T16:10:35Z">
     craig
   </metadata>
 </glsa>

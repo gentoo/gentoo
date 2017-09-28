@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-24">
   <title>OpenOffice.org: Heap-based buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     OpenOffice.org, allowing for the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">openoffice</product>
-  <announced>October 23, 2007</announced>
-  <revised>October 23, 2007: 01</revised>
+  <announced>2007-10-23</announced>
+  <revised>2007-10-23: 01</revised>
   <bug>192818</bug>
   <access>remote</access>
   <affected>
@@ -54,24 +53,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.3.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-2.3.0"</code>
     <p>
     All OpenOffice.org binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.3.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-2.3.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2834">CVE-2007-2834</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2834">CVE-2007-2834</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 20 Oct 2007 21:31:00 +0000">
+  <metadata tag="requester" timestamp="2007-10-20T21:31:00Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 20 Oct 2007 21:31:08 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-20T21:31:08Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 21 Oct 2007 10:52:39 +0000">
+  <metadata tag="submitter" timestamp="2007-10-21T10:52:39Z">
     rbu
   </metadata>
 </glsa>

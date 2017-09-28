@@ -6,8 +6,8 @@
     allowing remote attackers to decrypt TLS sessions.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>March 20, 2016</announced>
-  <revised>March 20, 2016: 1</revised>
+  <announced>2016-03-20</announced>
+  <revised>2016-03-20: 1</revised>
   <bug>575548</bug>
   <access>remote</access>
   <affected>
@@ -63,19 +63,19 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0702">CVE-2016-0702</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0703">CVE-2016-0703</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0704">CVE-2016-0704</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0705">CVE-2016-0705</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0797">CVE-2016-0797</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0798">CVE-2016-0798</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0799">CVE-2016-0799</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0800">CVE-2016-0800</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0702">CVE-2016-0702</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0703">CVE-2016-0703</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0704">CVE-2016-0704</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0705">CVE-2016-0705</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0797">CVE-2016-0797</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0798">CVE-2016-0798</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0799">CVE-2016-0799</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0800">CVE-2016-0800</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Mar 2016 14:45:13 +0000">
+  <metadata tag="requester" timestamp="2016-03-01T14:45:13Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Mar 2016 13:46:37 +0000">
+  <metadata tag="submitter" timestamp="2016-03-20T13:46:37Z">
     keytoaster
   </metadata>
 </glsa>

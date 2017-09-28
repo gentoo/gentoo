@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">jq</product>
-  <announced>December 08, 2016</announced>
-  <revised>December 08, 2016: 1</revised>
+  <announced>2016-12-08</announced>
+  <revised>2016-12-08: 1</revised>
   <bug>580606</bug>
   <access>remote</access>
   <affected>
@@ -43,10 +43,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8863">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8863">
       CVE-2015-8863
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 20:07:39 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:09:23 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-29T20:07:39Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-08T13:09:23Z">whissi</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">gmime</product>
-  <announced>January 21, 2014</announced>
-  <revised>January 21, 2014: 1</revised>
+  <announced>2014-01-21</announced>
+  <revised>2014-01-21: 1</revised>
   <bug>308051</bug>
   <access>local, remote</access>
   <affected>
@@ -67,12 +67,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0409">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0409">
       CVE-2010-0409
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:54 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:54Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 19:00:40 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-21T19:00:40Z">Zlogene</metadata>
 </glsa>

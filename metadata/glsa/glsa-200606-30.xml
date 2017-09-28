@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-30">
   <title>Kiax: Arbitrary code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code by a remote attacker.
   </synopsis>
   <product type="ebuild">kiax</product>
-  <announced>June 30, 2006</announced>
-  <revised>June 30, 2006: 01</revised>
+  <announced>2006-06-30</announced>
+  <revised>2006-06-30: 01</revised>
   <bug>136099</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/kiax-0.8.5_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/kiax-0.8.5_p1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2923">CVE-2006-2923</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2923">CVE-2006-2923</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 22 Jun 2006 11:02:44 +0000">
+  <metadata tag="requester" timestamp="2006-06-22T11:02:44Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 22 Jun 2006 11:16:37 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-22T11:16:37Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 22 Jun 2006 15:23:48 +0000">
+  <metadata tag="submitter" timestamp="2006-06-22T15:23:48Z">
     dizzutch
   </metadata>
 </glsa>

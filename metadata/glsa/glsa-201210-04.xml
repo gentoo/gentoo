@@ -6,8 +6,8 @@
     to execute arbitrary code.
   </synopsis>
   <product type="ebuild">ebuild</product>
-  <announced>October 18, 2012</announced>
-  <revised>October 18, 2012: 1</revised>
+  <announced>2012-10-18</announced>
+  <revised>2012-10-18: 1</revised>
   <bug>364889</bug>
   <bug>365259</bug>
   <bug>372411</bug>
@@ -49,13 +49,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1750">CVE-2011-1750</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1751">CVE-2011-1751</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2212">CVE-2011-2212</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2512">CVE-2011-2512</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0029">CVE-2012-0029</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2652">CVE-2012-2652</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1750">CVE-2011-1750</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1751">CVE-2011-1751</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2212">CVE-2011-2212</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2512">CVE-2011-2512</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0029">CVE-2012-0029</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2652">CVE-2012-2652</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:53 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:48:30 +0000">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:53Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2012-10-18T20:48:30Z">craig</metadata>
 </glsa>

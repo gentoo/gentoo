@@ -55,9 +55,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5180">CVE-2017-5180</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5206">CVE-2017-5206</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5207">CVE-2017-5207</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5180">CVE-2017-5180</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5206">CVE-2017-5206</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5207">CVE-2017-5207</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-13T15:06:51Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-31T03:41:42Z">whissi</metadata>

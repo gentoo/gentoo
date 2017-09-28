@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-35">
   <title>Subversion: Metadata information leak</title>
   <synopsis>
@@ -8,8 +7,8 @@
     protected areas to be leaked to unauthorized users.
   </synopsis>
   <product type="ebuild">Subversion</product>
-  <announced>September 29, 2004</announced>
-  <revised>September 29, 2004: 01</revised>
+  <announced>2004-09-29</announced>
+  <revised>2004-09-29: 01</revised>
   <bug>65085</bug>
   <access>remote</access>
   <affected>
@@ -52,20 +51,20 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-util/subversion-1.0.8"
-    # emerge ">=dev-util/subversion-1.0.8"</code>
+    # emerge -pv "&gt;=dev-util/subversion-1.0.8"
+    # emerge "&gt;=dev-util/subversion-1.0.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0749">CAN-2004-0749</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0749">CAN-2004-0749</uri>
     <uri link="http://subversion.tigris.org/security/CAN-2004-0749-advisory.txt">Subversion Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 27 Sep 2004 08:34:50 +0000">
+  <metadata tag="requester" timestamp="2004-09-27T08:34:50Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 27 Sep 2004 23:33:38 +0000">
+  <metadata tag="submitter" timestamp="2004-09-27T23:33:38Z">
     dmargoli
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 29 Sep 2004 19:12:44 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-29T19:12:44Z">
     koon
   </metadata>
 </glsa>

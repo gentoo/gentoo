@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-03">
   <title>Claws Mail: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     symlink attack.
   </synopsis>
   <product type="ebuild">claws-mail</product>
-  <announced>January 09, 2008</announced>
-  <revised>January 09, 2008: 01</revised>
+  <announced>2008-01-09</announced>
+  <revised>2008-01-09: 01</revised>
   <bug>201244</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/claws-mail-3.0.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/claws-mail-3.0.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6208">CVE-2007-6208</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6208">CVE-2007-6208</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jan 2008 23:01:06 +0000">
+  <metadata tag="requester" timestamp="2008-01-06T23:01:06Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 08 Jan 2008 23:07:07 +0000">
+  <metadata tag="submitter" timestamp="2008-01-08T23:07:07Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 08 Jan 2008 23:07:18 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-08T23:07:18Z">
     p-y
   </metadata>
 </glsa>

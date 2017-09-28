@@ -44,24 +44,24 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8318">CVE-2016-8318</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8327">CVE-2016-8327</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3238">CVE-2017-3238</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3243">CVE-2017-3243</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3244">CVE-2017-3244</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3251">CVE-2017-3251</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3256">CVE-2017-3256</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3257">CVE-2017-3257</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3258">CVE-2017-3258</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3265">CVE-2017-3265</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3273">CVE-2017-3273</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3291">CVE-2017-3291</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3312">CVE-2017-3312</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3313">CVE-2017-3313</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3317">CVE-2017-3317</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3318">CVE-2017-3318</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3319">CVE-2017-3319</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3320">CVE-2017-3320</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8318">CVE-2016-8318</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8327">CVE-2016-8327</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3238">CVE-2017-3238</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3243">CVE-2017-3243</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3244">CVE-2017-3244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3251">CVE-2017-3251</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3256">CVE-2017-3256</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3257">CVE-2017-3257</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3258">CVE-2017-3258</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3265">CVE-2017-3265</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3273">CVE-2017-3273</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3291">CVE-2017-3291</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3312">CVE-2017-3312</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3313">CVE-2017-3313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3317">CVE-2017-3317</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3318">CVE-2017-3318</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3319">CVE-2017-3319</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3320">CVE-2017-3320</uri>
     <uri link="https://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html#AppendixMSQL">
       Oracle Critical Patch Update Advisory - January 2017
     </uri>

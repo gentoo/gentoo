@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-02">
   <title>WordPress: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure vulnerabilities.
   </synopsis>
   <product type="ebuild">wordpress</product>
-  <announced>July 04, 2005</announced>
-  <revised>July 04, 2005: 01</revised>
+  <announced>2005-07-04</announced>
+  <revised>2005-07-04: 01</revised>
   <bug>97374</bug>
   <access>remote</access>
   <affected>
@@ -53,19 +52,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/wordpress-1.5.1.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/wordpress-1.5.1.3"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
     <uri link="http://www.gulftech.org/?node=research&amp;article_id=00085-06282005">GulfTech Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 30 Jun 2005 16:03:34 +0000">
+  <metadata tag="requester" timestamp="2005-06-30T16:03:34Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 30 Jun 2005 17:49:02 +0000">
+  <metadata tag="submitter" timestamp="2005-06-30T17:49:02Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 04 Jul 2005 09:45:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-04T09:45:20Z">
     koon
   </metadata>
 </glsa>

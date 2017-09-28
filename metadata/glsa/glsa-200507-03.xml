@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-03">
   <title>phpBB: Arbitrary command execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     commands with the rights of the web server.
   </synopsis>
   <product type="ebuild">phpBB</product>
-  <announced>July 04, 2005</announced>
-  <revised>September 03, 2005: 03</revised>
+  <announced>2005-07-04</announced>
+  <revised>2005-09-03: 03</revised>
   <bug>97278</bug>
   <access>remote</access>
   <affected>
@@ -54,16 +53,16 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2086">CAN-2005-2086</uri>
-    <uri link="http://www.phpbb.com/phpBB/viewtopic.php?f=14&amp;t=302011">phpBB Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2086">CAN-2005-2086</uri>
+    <uri link="https://www.phpbb.com/phpBB/viewtopic.php?f=14&amp;t=302011">phpBB Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Jun 2005 13:31:49 +0000">
+  <metadata tag="requester" timestamp="2005-06-29T13:31:49Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 29 Jun 2005 14:18:11 +0000">
+  <metadata tag="submitter" timestamp="2005-06-29T14:18:11Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 02 Jul 2005 09:31:28 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-02T09:31:28Z">
     koon
   </metadata>
 </glsa>

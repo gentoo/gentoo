@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-17">
   <title>lighttpd: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     condition.
   </synopsis>
   <product type="ebuild">lighttpd</product>
-  <announced>June 03, 2010</announced>
-  <revised>June 03, 2010: 01</revised>
+  <announced>2010-06-03</announced>
+  <revised>2010-06-03: 01</revised>
   <bug>303213</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/lighttpd-1.4.25-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/lighttpd-1.4.25-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0295">CVE-2010-0295</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0295">CVE-2010-0295</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 15 Mar 2010 14:19:51 +0000">
+  <metadata tag="requester" timestamp="2010-03-15T14:19:51Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 31 May 2010 15:20:53 +0000">
+  <metadata tag="submitter" timestamp="2010-05-31T15:20:53Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 15:20:59 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-31T15:20:59Z">
     a3li
   </metadata>
 </glsa>

@@ -4,8 +4,8 @@
   <title>mod_wsgi: Privilege escalation</title>
   <synopsis>A vulnerability in mod_wsgi could lead to privilege escalation.</synopsis>
   <product type="ebuild">mod_wsgi</product>
-  <announced>December 30, 2016</announced>
-  <revised>December 30, 2016: 1</revised>
+  <announced>2016-12-30</announced>
+  <revised>2016-12-30: 1</revised>
   <bug>536270</bug>
   <access>local, remote</access>
   <affected>
@@ -40,8 +40,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8583">CVE-2014-8583</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8583">CVE-2014-8583</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 00:29:47 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Fri, 30 Dec 2016 00:41:42 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-23T00:29:47Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-30T00:41:42Z">b-man</metadata>
 </glsa>

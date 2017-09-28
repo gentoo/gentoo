@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-19">
   <title>ImageMagick: PALM and DCM buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>November 24, 2006</announced>
-  <revised>November 24, 2006: 01</revised>
+  <announced>2006-11-24</announced>
+  <revised>2006-11-24: 01</revised>
   <bug>152672</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.3.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.3.0.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5456">CVE-2006-5456</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5456">CVE-2006-5456</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 07:20:25 +0000">
+  <metadata tag="requester" timestamp="2006-11-21T07:20:25Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 22 Nov 2006 15:07:36 +0000">
+  <metadata tag="submitter" timestamp="2006-11-22T15:07:36Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 19:28:35 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-24T19:28:35Z">
     jaervosz
   </metadata>
 </glsa>

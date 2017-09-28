@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-05">
   <title>Courier Authentication Library: SQL injection vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Authentication Library.
   </synopsis>
   <product type="ebuild">courier-authlib</product>
-  <announced>September 05, 2008</announced>
-  <revised>September 05, 2008: 01</revised>
+  <announced>2008-09-05</announced>
+  <revised>2008-09-05: 01</revised>
   <bug>225407</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/courier-authlib-0.60.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/courier-authlib-0.60.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2667">CVE-2008-2667</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2667">CVE-2008-2667</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 Aug 2008 18:54:58 +0000">
+  <metadata tag="requester" timestamp="2008-08-11T18:54:58Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 11 Aug 2008 18:56:59 +0000">
+  <metadata tag="bugReady" timestamp="2008-08-11T18:56:59Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Aug 2008 21:07:13 +0000">
+  <metadata tag="submitter" timestamp="2008-08-28T21:07:13Z">
     p-y
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-11">
   <title>star: Suid root vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unauthorized root access to an attacker.
   </synopsis>
   <product type="ebuild">star</product>
-  <announced>September 07, 2004</announced>
-  <revised>May 30, 2006: 03</revised>
+  <announced>2004-09-07</announced>
+  <revised>2006-05-30: 03</revised>
   <bug>61797</bug>
   <access>local</access>
   <affected>
@@ -48,20 +47,20 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-arch/star-1.5_alpha46&quot;
-    # emerge &quot;&gt;=app-arch/star-1.5_alpha46&quot;</code>
+    # emerge -pv "&gt;=app-arch/star-1.5_alpha46"
+    # emerge "&gt;=app-arch/star-1.5_alpha46"</code>
   </resolution>
   <references>
     <uri link="https://lists.berlios.de/pipermail/star-users/2004-August/000239.html">Star Mailing List Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0850">CVE-2004-0850</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0850">CVE-2004-0850</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri,  3 Sep 2004 20:05:50 +0000">
+  <metadata tag="requester" timestamp="2004-09-03T20:05:50Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sat,  4 Sep 2004 19:37:00 +0000">
+  <metadata tag="submitter" timestamp="2004-09-04T19:37:00Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  7 Sep 2004 20:59:47 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-07T20:59:47Z">
     koon
   </metadata>
 </glsa>

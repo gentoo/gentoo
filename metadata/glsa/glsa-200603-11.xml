@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-11">
   <title>Freeciv: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service attack.
   </synopsis>
   <product type="ebuild">freeciv</product>
-  <announced>March 16, 2006</announced>
-  <revised>March 16, 2006: 01</revised>
+  <announced>2006-03-16</announced>
+  <revised>2006-03-16: 01</revised>
   <bug>125304</bug>
   <access>remote</access>
   <affected>
@@ -51,16 +50,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-strategy/freeciv-2.0.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-strategy/freeciv-2.0.8"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0047">CVE-2006-0047</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0047">CVE-2006-0047</uri>
     <uri link="http://aluigi.altervista.org/adv/freecivdos-adv.txt">Original advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 12 Mar 2006 20:13:19 +0000">
+  <metadata tag="submitter" timestamp="2006-03-12T20:13:19Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 12 Mar 2006 20:29:12 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-12T20:29:12Z">
     DerCorny
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200608-03">
   <title>Mozilla Firefox: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     related to Mozilla Firefox.
   </synopsis>
   <product type="ebuild">Firefox</product>
-  <announced>August 03, 2006</announced>
-  <revised>August 03, 2006: 01</revised>
+  <announced>2006-08-03</announced>
+  <revised>2006-08-03: 01</revised>
   <bug>141842</bug>
   <access>remote</access>
   <affected>
@@ -101,33 +100,33 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-1.5.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-1.5.0.5"</code>
     <p>
     Users of the binary package should upgrade as well:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-1.5.0.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-1.5.0.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3113">CVE-2006-3113</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3677">CVE-2006-3677</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3801">CVE-2006-3801</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3802">CVE-2006-3802</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3803">CVE-2006-3803</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3805">CVE-2006-3805</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3806">CVE-2006-3806</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3807">CVE-2006-3807</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3808">CVE-2006-3808</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3809">CVE-2006-3809</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3810">CVE-2006-3810</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3811">CVE-2006-3811</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3812">CVE-2006-3812</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3113">CVE-2006-3113</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3677">CVE-2006-3677</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3801">CVE-2006-3801</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3802">CVE-2006-3802</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3803">CVE-2006-3803</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3805">CVE-2006-3805</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3806">CVE-2006-3806</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3807">CVE-2006-3807</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3808">CVE-2006-3808</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3809">CVE-2006-3809</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3810">CVE-2006-3810</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3811">CVE-2006-3811</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3812">CVE-2006-3812</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 28 Jul 2006 18:10:10 +0000">
+  <metadata tag="submitter" timestamp="2006-07-28T18:10:10Z">
     dizzutch
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Aug 2006 16:55:03 +0000">
+  <metadata tag="bugReady" timestamp="2006-08-03T16:55:03Z">
     DerCorny
   </metadata>
 </glsa>

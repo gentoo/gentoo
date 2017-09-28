@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-02">
   <title>teTeX, pTeX, CSTeX: Multiple overflows in included XPdf code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     making them vulnerable to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">tetex</product>
-  <announced>March 04, 2006</announced>
-  <revised>March 04, 2006: 01</revised>
+  <announced>2006-03-04</announced>
+  <revised>2006-03-04: 01</revised>
   <bug>115775</bug>
   <access>remote</access>
   <affected>
@@ -60,32 +59,32 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/tetex-2.0.2-r8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/tetex-2.0.2-r8"</code>
     <p>
     All CSTeX users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/cstetex-2.0.2-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/cstetex-2.0.2-r2"</code>
     <p>
     All pTeX users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ptex-3.1.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ptex-3.1.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3193">CVE-2005-3193</uri>
-    <uri link="/security/en/glsa/glsa-200512-08.xml">GLSA 200512-08</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-3193">CVE-2005-3193</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200512-08.xml">GLSA 200512-08</uri>
     <uri link="http://scary.beasts.org/security/CESA-2005-003.txt">CESA-2005-003</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Feb 2006 20:57:52 +0000">
+  <metadata tag="requester" timestamp="2006-02-16T20:57:52Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 17 Feb 2006 12:11:23 +0000">
+  <metadata tag="submitter" timestamp="2006-02-17T12:11:23Z">
     dragonheart
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 04 Mar 2006 16:30:04 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-04T16:30:04Z">
     koon
   </metadata>
 </glsa>

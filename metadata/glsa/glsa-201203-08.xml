@@ -4,8 +4,8 @@
   <title>libxslt: Denial of Service</title>
   <synopsis>A vulnerability in libxslt could result in Denial of Service.</synopsis>
   <product type="ebuild">libxslt</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>402861</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3970">CVE-2011-3970</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3970">CVE-2011-3970</uri>
   </references>
-  <metadata timestamp="Sat, 03 Mar 2012 04:30:56 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:41:06 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-03T04:30:56Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:41:06Z" tag="submitter">ackle</metadata>
 </glsa>

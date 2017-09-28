@@ -6,8 +6,8 @@
     code or Denial of Service.
   </synopsis>
   <product type="ebuild">freetype</product>
-  <announced>August 09, 2014</announced>
-  <revised>August 09, 2014: 1</revised>
+  <announced>2014-08-09</announced>
+  <revised>2014-08-09: 1</revised>
   <bug>504088</bug>
   <access>remote</access>
   <affected>
@@ -45,8 +45,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2240">CVE-2014-2240</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2240">CVE-2014-2240</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Jul 2014 20:29:39 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sat, 09 Aug 2014 19:09:10 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-07-15T20:29:39Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-08-09T19:09:10Z">Zlogene</metadata>
 </glsa>

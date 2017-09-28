@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-23">
   <title>Wireshark: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the remote execution of arbitrary code and a Denial of Service.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>December 30, 2007</announced>
-  <revised>December 30, 2007: 01</revised>
+  <announced>2007-12-30</announced>
+  <revised>2007-12-30: 01</revised>
   <bug>199958</bug>
   <access>remote</access>
   <affected>
@@ -58,33 +57,33 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-0.99.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-0.99.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6111">CVE-2007-6111</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6112">CVE-2007-6112</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6113">CVE-2007-6113</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6114">CVE-2007-6114</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6115">CVE-2007-6115</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6116">CVE-2007-6116</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6117">CVE-2007-6117</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6118">CVE-2007-6118</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6119">CVE-2007-6119</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6120">CVE-2007-6120</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6121">CVE-2007-6121</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6438">CVE-2007-6438</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6439">CVE-2007-6439</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6441">CVE-2007-6441</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6450">CVE-2007-6450</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6451">CVE-2007-6451</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6111">CVE-2007-6111</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6112">CVE-2007-6112</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6113">CVE-2007-6113</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6114">CVE-2007-6114</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6115">CVE-2007-6115</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6116">CVE-2007-6116</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6117">CVE-2007-6117</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6118">CVE-2007-6118</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6119">CVE-2007-6119</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6120">CVE-2007-6120</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6121">CVE-2007-6121</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6438">CVE-2007-6438</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6439">CVE-2007-6439</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6441">CVE-2007-6441</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6450">CVE-2007-6450</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6451">CVE-2007-6451</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 26 Dec 2007 11:44:15 +0000">
+  <metadata tag="requester" timestamp="2007-12-26T11:44:15Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Dec 2007 21:41:40 +0000">
+  <metadata tag="submitter" timestamp="2007-12-29T21:41:40Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 29 Dec 2007 22:00:22 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-29T22:00:22Z">
     rbu
   </metadata>
 </glsa>

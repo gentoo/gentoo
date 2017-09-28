@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-15">
   <title>Sun JDK/JRE: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Development Kit (JDK) and Java Runtime Environment (JRE).
   </synopsis>
   <product type="ebuild">java</product>
-  <announced>January 22, 2007</announced>
-  <revised>July 16, 2008: 04</revised>
+  <announced>2007-01-22</announced>
+  <revised>2008-07-16: 04</revised>
   <bug>158659</bug>
   <access>remote</access>
   <affected>
@@ -70,28 +69,28 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-java/sun-jdk&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-java/sun-jdk"</code>
     <p>
     All Sun Java Runtime Environment users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-java/sun-jre-bin&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-java/sun-jre-bin"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6731">CVE-2006-6731</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6736">CVE-2006-6736</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6737">CVE-2006-6737</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6745">CVE-2006-6745</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6731">CVE-2006-6731</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6736">CVE-2006-6736</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6737">CVE-2006-6737</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6745">CVE-2006-6745</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Jan 2007 22:36:56 +0000">
+  <metadata tag="requester" timestamp="2007-01-12T22:36:56Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:21 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-14T21:54:21Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 01:12:01 +0000">
+  <metadata tag="submitter" timestamp="2007-01-15T01:12:01Z">
     shellsage
   </metadata>
 </glsa>

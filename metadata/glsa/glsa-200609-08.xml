@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-08">
   <title>xine-lib: Buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to execute arbitrary code.
   </synopsis>
   <product type="ebuild">xine-lib</product>
-  <announced>September 13, 2006</announced>
-  <revised>September 13, 2006: 01</revised>
+  <announced>2006-09-13</announced>
+  <revised>2006-09-13: 01</revised>
   <bug>133520</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/xine-lib-1.1.2-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/xine-lib-1.1.2-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2802">CVE-2006-2802</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2802">CVE-2006-2802</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Aug 2006 17:11:30 +0000">
+  <metadata tag="requester" timestamp="2006-08-31T17:11:30Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 07 Sep 2006 12:33:52 +0000">
+  <metadata tag="submitter" timestamp="2006-09-07T12:33:52Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 12 Sep 2006 15:13:19 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-12T15:13:19Z">
     falco
   </metadata>
 </glsa>

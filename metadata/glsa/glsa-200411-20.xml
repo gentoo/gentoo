@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-20">
   <title>ez-ipupdate: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ez-ipupdate</product>
-  <announced>November 11, 2004</announced>
-  <revised>November 11, 2004: 01</revised>
+  <announced>2004-11-11</announced>
+  <revised>2004-11-11: 01</revised>
   <bug>69658</bug>
   <access>remote</access>
   <affected>
@@ -44,16 +43,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=net-dns/ez-ipupdate-3.0.11_beta8-r1"</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/ez-ipupdate-3.0.11_beta8-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0980">CAN-2004-0980</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0980">CAN-2004-0980</uri>
     <uri link="http://lists.netsys.com/pipermail/full-disclosure/2004-November/028590.html">Full Disclosure Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue,  9 Nov 2004 20:12:06 +0000">
+  <metadata tag="submitter" timestamp="2004-11-09T20:12:06Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 11 Nov 2004 14:43:17 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-11T14:43:17Z">
     jaervosz
   </metadata>
 </glsa>

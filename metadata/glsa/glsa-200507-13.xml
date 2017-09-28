@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-13">
   <title>pam_ldap and nss_ldap: Plain text authentication leak</title>
   <synopsis>
@@ -8,8 +7,8 @@
     possibly leading to credentials being sent in plain text.
   </synopsis>
   <product type="ebuild">pam_ldap nss_ldap</product>
-  <announced>July 14, 2005</announced>
-  <revised>July 14, 2005: 01</revised>
+  <announced>2005-07-14</announced>
+  <revised>2005-07-14: 01</revised>
   <bug>96767</bug>
   <access>remote</access>
   <affected>
@@ -58,7 +57,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-auth/pam_ldap-178-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-auth/pam_ldap-178-r1"</code>
     <p>
     All nss_ldap users should upgrade to the latest version:
     </p>
@@ -67,15 +66,15 @@
     # emerge --ask --oneshot --verbose sys-auth/nss_ldap</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2069">CAN-2005-2069</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2069">CAN-2005-2069</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Jul 2005 08:55:26 +0000">
+  <metadata tag="requester" timestamp="2005-07-04T08:55:26Z">
     tigger
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 04 Jul 2005 14:18:57 +0000">
+  <metadata tag="submitter" timestamp="2005-07-04T14:18:57Z">
     tigger
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 14 Jul 2005 09:08:58 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-14T09:08:58Z">
     koon
   </metadata>
 </glsa>

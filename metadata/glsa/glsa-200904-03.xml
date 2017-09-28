@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-03">
   <title>Gnumeric: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gnumeric</product>
-  <announced>April 03, 2009</announced>
-  <revised>April 03, 2009: 01</revised>
+  <announced>2009-04-03</announced>
+  <revised>2009-04-03: 01</revised>
   <bug>257012</bug>
   <access>local</access>
   <affected>
@@ -49,15 +48,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/gnumeric-1.8.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/gnumeric-1.8.4-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0318">CVE-2009-0318</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0318">CVE-2009-0318</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 02 Apr 2009 12:39:58 +0000">
+  <metadata tag="submitter" timestamp="2009-04-02T12:39:58Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 02 Apr 2009 12:40:05 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-02T12:40:05Z">
     rbu
   </metadata>
 </glsa>

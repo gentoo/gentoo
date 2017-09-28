@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-20">
   <title>FreeS/WAN, Openswan, strongSwan: Vulnerabilities in certificate handling</title>
   <synopsis>
@@ -9,8 +8,8 @@
     authenticate with a fake certificate.
   </synopsis>
   <product type="ebuild">Openswan</product>
-  <announced>June 25, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-06-25</announced>
+  <revised>2006-05-22: 02</revised>
   <access>remote</access>
   <affected>
     <package name="net-misc/freeswan" auto="yes" arch="*">
@@ -65,40 +64,40 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;=net-misc/freeswan-1.99-r1&quot;
-    # emerge &quot;=net-misc/freeswan-1.99-r1&quot;</code>
+    # emerge -pv "=net-misc/freeswan-1.99-r1"
+    # emerge "=net-misc/freeswan-1.99-r1"</code>
     <p>
     All FreeS/WAN 2.x users should upgrade to the latest stable version:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/freeswan-2.04-r1&quot;
-    # emerge &quot;&gt;=net-misc/freeswan-2.04-r1&quot;</code>
+    # emerge -pv "&gt;=net-misc/freeswan-2.04-r1"
+    # emerge "&gt;=net-misc/freeswan-2.04-r1"</code>
     <p>
     All Openswan 1.x users should upgrade to the latest stable version:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;=net-misc/openswan-1.0.6_rc1&quot;
-    # emerge &quot;=net-misc/openswan-1.0.6_rc1&quot;</code>
+    # emerge -pv "=net-misc/openswan-1.0.6_rc1"
+    # emerge "=net-misc/openswan-1.0.6_rc1"</code>
     <p>
     All Openswan 2.x users should upgrade to the latest stable version:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/openswan-2.1.4&quot;
-    # emerge &quot;&gt;=net-misc/openswan-2.1.4&quot;</code>
+    # emerge -pv "&gt;=net-misc/openswan-2.1.4"
+    # emerge "&gt;=net-misc/openswan-2.1.4"</code>
     <p>
     All strongSwan users should upgrade to the latest stable version:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/strongswan-2.1.3&quot;
-    # emerge &quot;&gt;=net-misc/strongswan-2.1.3&quot;</code>
+    # emerge -pv "&gt;=net-misc/strongswan-2.1.3"
+    # emerge "&gt;=net-misc/strongswan-2.1.3"</code>
     <p>
     All Super-FreeS/WAN users should migrate to the latest stable version
     of Openswan. Note that Portage will force a move for Super-FreeS/WAN
@@ -107,12 +106,12 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;=net-misc/openswan-1.0.6_rc1&quot;
-    # emerge &quot;=net-misc/openswan-1.0.6_rc1&quot;</code>
+    # emerge -pv "=net-misc/openswan-1.0.6_rc1"
+    # emerge "=net-misc/openswan-1.0.6_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://lists.openswan.org/pipermail/dev/2004-June/000370.html">Openswan/strongSwan Authentication Bug</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0590">CVE-2004-0590</uri>
+    <uri link="https://lists.openswan.org/pipermail/dev/2004-June/000370.html">Openswan/strongSwan Authentication Bug</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0590">CVE-2004-0590</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

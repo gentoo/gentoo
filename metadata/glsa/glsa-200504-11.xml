@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-11">
   <title>JunkBuster: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     certain configurations may allow an attacker to modify settings.
   </synopsis>
   <product type="ebuild">junkbuster</product>
-  <announced>April 13, 2005</announced>
-  <revised>April 21, 2005: 02</revised>
+  <announced>2005-04-13</announced>
+  <revised>2005-04-21: 02</revised>
   <bug>88537</bug>
   <access>remote</access>
   <affected>
@@ -54,19 +53,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-proxy/junkbuster-2.0.2-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-proxy/junkbuster-2.0.2-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1108">CAN-2005-1108</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1109">CAN-2005-1109</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1108">CAN-2005-1108</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1109">CAN-2005-1109</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 12 Apr 2005 20:24:12 +0000">
+  <metadata tag="requester" timestamp="2005-04-12T20:24:12Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 12 Apr 2005 21:28:36 +0000">
+  <metadata tag="submitter" timestamp="2005-04-12T21:28:36Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 13 Apr 2005 08:43:25 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-13T08:43:25Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">libxml2</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>416209</bug>
   <access>remote</access>
   <affected>
@@ -43,10 +43,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3102">CVE-2011-3102</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3102">CVE-2011-3102</uri>
   </references>
-  <metadata timestamp="Tue, 29 May 2012 22:42:30 +0000" tag="requester">
+  <metadata timestamp="2012-05-29T22:42:30Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 22:09:24 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-07-09T22:09:24Z" tag="submitter">ackle</metadata>
 </glsa>

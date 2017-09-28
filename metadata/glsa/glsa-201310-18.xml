@@ -6,8 +6,8 @@
     of which could lead to Denial of Service.
   </synopsis>
   <product type="ebuild">gnutls</product>
-  <announced>October 28, 2013</announced>
-  <revised>October 28, 2013: 1</revised>
+  <announced>2013-10-28</announced>
+  <revised>2013-10-28: 1</revised>
   <bug>455560</bug>
   <bug>471788</bug>
   <access>remote</access>
@@ -47,14 +47,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1619">CVE-2013-1619</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2116">CVE-2013-2116</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1619">CVE-2013-1619</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2116">CVE-2013-2116</uri>
     <uri link="http://www.isg.rhul.ac.uk/tls/TLStiming.pdf">Lucky Thirteen:
       Breaking the TLS and DTLS Record Protocols
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 24 Mar 2013 19:32:51 +0000">
+  <metadata tag="requester" timestamp="2013-03-24T19:32:51Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 28 Oct 2013 11:33:22 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-10-28T11:33:22Z">ackle</metadata>
 </glsa>

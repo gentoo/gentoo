@@ -6,8 +6,8 @@
     worst allowing for remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">glibc</product>
-  <announced>February 17, 2016</announced>
-  <revised>February 17, 2016: 1</revised>
+  <announced>2016-02-17</announced>
+  <revised>2016-02-17: 1</revised>
   <bug>516884</bug>
   <bug>517082</bug>
   <bug>521932</bug>
@@ -88,29 +88,29 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7423">CVE-2013-7423</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0475">CVE-2014-0475</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0475">CVE-2014-0475</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5119">CVE-2014-5119</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6040">CVE-2014-6040</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7817">CVE-2014-7817</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8121">CVE-2014-8121</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9402">CVE-2014-9402</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1472">CVE-2015-1472</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1781">CVE-2015-1781</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7547">CVE-2015-7547</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8776">CVE-2015-8776</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8778">CVE-2015-8778</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8779">CVE-2015-8779</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7423">CVE-2013-7423</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0475">CVE-2014-0475</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0475">CVE-2014-0475</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5119">CVE-2014-5119</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6040">CVE-2014-6040</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7817">CVE-2014-7817</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8121">CVE-2014-8121</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9402">CVE-2014-9402</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1472">CVE-2015-1472</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1781">CVE-2015-1781</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7547">CVE-2015-7547</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8776">CVE-2015-8776</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8778">CVE-2015-8778</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8779">CVE-2015-8779</uri>
     <uri link="https://googleonlinesecurity.blogspot.de/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html">
       Google Online Security Blog: "CVE-2015-7547: glibc getaddrinfo
       stack-based buffer overflow"
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 16 Feb 2016 18:27:02 +0000">
+  <metadata tag="requester" timestamp="2016-02-16T18:27:02Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 17 Feb 2016 15:37:09 +0000">
+  <metadata tag="submitter" timestamp="2016-02-17T15:37:09Z">
     keytoaster
   </metadata>
 </glsa>

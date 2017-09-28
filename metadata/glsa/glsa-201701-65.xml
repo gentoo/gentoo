@@ -61,24 +61,24 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2183">CVE-2016-2183</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5546">CVE-2016-5546</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5547">CVE-2016-5547</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5548">CVE-2016-5548</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5549">CVE-2016-5549</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5552">CVE-2016-5552</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8328">CVE-2016-8328</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3231">CVE-2017-3231</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3241">CVE-2017-3241</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3252">CVE-2017-3252</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3253">CVE-2017-3253</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3259">CVE-2017-3259</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3260">CVE-2017-3260</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3261">CVE-2017-3261</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3262">CVE-2017-3262</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3272">CVE-2017-3272</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3289">CVE-2017-3289</uri>
-    <uri link="http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html#AppendixJAVA">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2183">CVE-2016-2183</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5546">CVE-2016-5546</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5547">CVE-2016-5547</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5548">CVE-2016-5548</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5549">CVE-2016-5549</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5552">CVE-2016-5552</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8328">CVE-2016-8328</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3231">CVE-2017-3231</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3241">CVE-2017-3241</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3252">CVE-2017-3252</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3253">CVE-2017-3253</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3259">CVE-2017-3259</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3260">CVE-2017-3260</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3261">CVE-2017-3261</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3262">CVE-2017-3262</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3272">CVE-2017-3272</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3289">CVE-2017-3289</uri>
+    <uri link="https://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html#AppendixJAVA">
       Oracle Critical Patch Update Advisory - January 2017
     </uri>
   </references>

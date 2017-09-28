@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-18">
   <title>XnView: Privilege escalation</title>
   <synopsis>
@@ -9,8 +8,8 @@
     privileges of another user.
   </synopsis>
   <product type="ebuild">xnview</product>
-  <announced>December 30, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-12-30</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>117063</bug>
   <access>local</access>
   <affected>
@@ -57,15 +56,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-misc/xnview-1.70-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-misc/xnview-1.70-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4595">CVE-2005-4595</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-4595">CVE-2005-4595</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 29 Dec 2005 17:05:23 +0000">
+  <metadata tag="submitter" timestamp="2005-12-29T17:05:23Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 30 Dec 2005 12:33:06 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-30T12:33:06Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-15">
   <title>Opera: Multiple spoofing vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     injection.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>July 20, 2004</announced>
-  <revised>July 20, 2004: 01</revised>
+  <announced>2004-07-20</announced>
+  <revised>2004-07-20: 01</revised>
   <bug>56311</bug>
   <bug>56109</bug>
   <access>remote</access>
@@ -54,14 +53,14 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-client/opera-7.53"
-    # emerge ">=www-client/opera-7.53"</code>
+    # emerge -pv "&gt;=www-client/opera-7.53"
+    # emerge "&gt;=www-client/opera-7.53"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/bid/10517">Bugtraq Announcement</uri>
-    <uri link="http://secunia.com/advisories/11978/">Secunia Advisory SA11978</uri>
-    <uri link="http://secunia.com/advisories/12028/">Secunia Advisory SA12028</uri>
-    <uri link="http://www.opera.com/linux/changelogs/753/">Opera Changelog</uri>
+    <uri link="https://secunia.com/advisories/11978/">Secunia Advisory SA11978</uri>
+    <uri link="https://secunia.com/advisories/12028/">Secunia Advisory SA12028</uri>
+    <uri link="https://www.opera.com/linux/changelogs/753/">Opera Changelog</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

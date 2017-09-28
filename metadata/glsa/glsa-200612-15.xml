@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200612-15">
   <title>McAfee VirusScan: Insecure DT_RPATH</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially allowing a remote attacker to execute arbitrary code.
   </synopsis>
   <product type="ebuild">vlnx</product>
-  <announced>December 14, 2006</announced>
-  <revised>December 14, 2006: 01</revised>
+  <announced>2006-12-14</announced>
+  <revised>2006-12-14: 01</revised>
   <bug>156989</bug>
   <access>remote</access>
   <affected>
@@ -54,15 +53,15 @@
     of this issue.
     </p>
     <code>
-    # emerge --ask --verbose --unmerge &quot;app-antivirus/vlnx&quot;</code>
+    # emerge --ask --verbose --unmerge "app-antivirus/vlnx"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6474">CVE-2006-6474</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6474">CVE-2006-6474</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 11 Dec 2006 18:55:04 +0000">
+  <metadata tag="submitter" timestamp="2006-12-11T18:55:04Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 11 Dec 2006 21:23:39 +0000">
+  <metadata tag="bugReady" timestamp="2006-12-11T21:23:39Z">
     falco
   </metadata>
 </glsa>

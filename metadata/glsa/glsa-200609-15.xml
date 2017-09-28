@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-15">
   <title>GnuTLS: RSA Signature Forgery</title>
   <synopsis>
@@ -8,8 +7,8 @@
     PKCS #1 v1.5 signature.
   </synopsis>
   <product type="ebuild">gnutls</product>
-  <announced>September 26, 2006</announced>
-  <revised>September 26, 2006: 01</revised>
+  <announced>2006-09-26</announced>
+  <revised>2006-09-26: 01</revised>
   <bug>147682</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --update --ask --verbose &quot;&gt;=net-libs/gnutls-1.4.4&quot;</code>
+    # emerge --update --ask --verbose "&gt;=net-libs/gnutls-1.4.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4790">CVE-2006-4790</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4790">CVE-2006-4790</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Sep 2006 06:35:02 +0000">
+  <metadata tag="requester" timestamp="2006-09-23T06:35:02Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 25 Sep 2006 13:07:32 +0000">
+  <metadata tag="submitter" timestamp="2006-09-25T13:07:32Z">
     hlieberman
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 Sep 2006 18:24:37 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-25T18:24:37Z">
     falco
   </metadata>
 </glsa>

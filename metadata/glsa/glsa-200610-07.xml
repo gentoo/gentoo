@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200610-07">
   <title>Python: Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service and potentially allows the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">python</product>
-  <announced>October 17, 2006</announced>
-  <revised>February 26, 2007: 03</revised>
+  <announced>2006-10-17</announced>
+  <revised>2007-02-26: 03</revised>
   <bug>149065</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.4.3-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.4.3-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4980">CVE-2006-4980</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4980">CVE-2006-4980</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 27 Sep 2006 19:59:22 +0000">
+  <metadata tag="requester" timestamp="2006-09-27T19:59:22Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 13 Oct 2006 14:44:47 +0000">
+  <metadata tag="submitter" timestamp="2006-10-13T14:44:47Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 16 Oct 2006 09:21:34 +0000">
+  <metadata tag="bugReady" timestamp="2006-10-16T09:21:34Z">
     falco
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-19">
   <title>PHP Toolkit: Data disclosure and Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure on Apache, and a Denial of Service.
   </synopsis>
   <product type="ebuild">php-toolkit</product>
-  <announced>April 17, 2008</announced>
-  <revised>April 17, 2008: 01</revised>
+  <announced>2008-04-17</announced>
+  <revised>2008-04-17: 01</revised>
   <bug>209535</bug>
   <access>local</access>
   <affected>
@@ -53,18 +52,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/php-toolkit-1.0.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/php-toolkit-1.0.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1734">CVE-2008-1734</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1734">CVE-2008-1734</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 07 Apr 2008 23:54:47 +0000">
+  <metadata tag="requester" timestamp="2008-04-07T23:54:47Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 10 Apr 2008 13:22:11 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-10T13:22:11Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 11 Apr 2008 19:26:49 +0000">
+  <metadata tag="submitter" timestamp="2008-04-11T19:26:49Z">
     rbu
   </metadata>
 </glsa>

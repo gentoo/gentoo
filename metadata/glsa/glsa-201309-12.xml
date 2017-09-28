@@ -7,8 +7,8 @@
     a Denial of Service condition or perform man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>September 23, 2013</announced>
-  <revised>September 23, 2013: 1</revised>
+  <announced>2013-09-23</announced>
+  <revised>2013-09-23: 1</revised>
   <bug>275645</bug>
   <bug>438680</bug>
   <bug>466502</bug>
@@ -49,14 +49,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6750">CVE-2007-6750</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4929">CVE-2012-4929</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1862">CVE-2013-1862</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1896">CVE-2013-1896</uri>
-    <uri link="http://www.iacr.org/cryptodb/archive/2002/FSE/3091/3091.pdf">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-6750">CVE-2007-6750</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4929">CVE-2012-4929</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1862">CVE-2013-1862</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1896">CVE-2013-1896</uri>
+    <uri link="https://www.iacr.org/cryptodb/archive/2002/FSE/3091/3091.pdf">
       Compression and Information Leakage of Plaintext
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 01:03:17 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Mon, 23 Sep 2013 23:22:02 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-03-06T01:03:17Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-09-23T23:22:02Z">ackle</metadata>
 </glsa>

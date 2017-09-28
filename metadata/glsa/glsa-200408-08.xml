@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-08">
   <title>Cfengine: RSA Authentication Heap Corruption</title>
   <synopsis>
@@ -8,8 +7,8 @@
     AllowConnectionsFrom.
   </synopsis>
   <product type="ebuild">Cfengine</product>
-  <announced>August 10, 2004</announced>
-  <revised>May 22, 2006: 05</revised>
+  <announced>2004-08-10</announced>
+  <revised>2006-05-22: 05</revised>
   <bug>59895</bug>
   <access>remote</access>
   <affected>
@@ -59,15 +58,15 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/cfengine-2.1.8&quot;
-    # emerge &quot;&gt;=net-misc/cfengine-2.1.8&quot;</code>
+    # emerge -pv "&gt;=net-misc/cfengine-2.1.8"
+    # emerge "&gt;=net-misc/cfengine-2.1.8"</code>
   </resolution>
   <references>
-    <uri link="http://www.coresecurity.com/common/showdoc.php?idx=387&amp;idxseccion=10">Corelabs Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1701">CVE-2004-1701</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1702">CVE-2004-1702</uri>
+    <uri link="https://www.coresecurity.com/common/showdoc.php?idx=387&amp;idxseccion=10">Corelabs Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1701">CVE-2004-1701</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1702">CVE-2004-1702</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon,  9 Aug 2004 21:29:04 +0000">
+  <metadata tag="submitter" timestamp="2004-08-09T21:29:04Z">
     jaervosz
   </metadata>
 </glsa>

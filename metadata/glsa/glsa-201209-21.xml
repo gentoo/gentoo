@@ -6,8 +6,8 @@
     allowing remote attackers to create or overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">fastjar</product>
-  <announced>September 28, 2012</announced>
-  <revised>September 28, 2012: 1</revised>
+  <announced>2012-09-28</announced>
+  <revised>2012-09-28: 1</revised>
   <bug>325557</bug>
   <access>remote</access>
   <affected>
@@ -42,9 +42,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0831">CVE-2010-0831</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2322">CVE-2010-2322</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0831">CVE-2010-0831</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2322">CVE-2010-2322</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:29 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Sep 2012 00:34:46 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:29Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2012-09-28T00:34:46Z">ackle</metadata>
 </glsa>

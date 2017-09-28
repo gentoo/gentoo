@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-13">
   <title>PulseAudio: Local privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     escalated privileges.
   </synopsis>
   <product type="ebuild">pulseaudio</product>
-  <announced>July 16, 2009</announced>
-  <revised>July 16, 2009: 01</revised>
+  <announced>2009-07-16</announced>
+  <revised>2009-07-16: 01</revised>
   <bug>276986</bug>
   <access>local</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/pulseaudio-0.9.9-r54&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/pulseaudio-0.9.9-r54"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1894">CVE-2009-1894</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1894">CVE-2009-1894</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 09 Jul 2009 16:33:42 +0000">
+  <metadata tag="requester" timestamp="2009-07-09T16:33:42Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 09 Jul 2009 16:51:52 +0000">
+  <metadata tag="submitter" timestamp="2009-07-09T16:51:52Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Jul 2009 14:13:15 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-16T14:13:15Z">
     rbu
   </metadata>
 </glsa>

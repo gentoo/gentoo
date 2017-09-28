@@ -6,8 +6,8 @@
     attackers to cause a Denial of Service or possibly execute arbitrary code.
   </synopsis>
   <product type="ebuild">bip</product>
-  <announced>January 30, 2012</announced>
-  <revised>January 30, 2012: 1</revised>
+  <announced>2012-01-30</announced>
+  <revised>2012-01-30: 1</revised>
   <bug>336321</bug>
   <bug>400599</bug>
   <access>remote</access>
@@ -56,11 +56,11 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3071">CVE-2010-3071</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0806">CVE-2012-0806</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3071">CVE-2010-3071</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0806">CVE-2012-0806</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:17 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:17Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 30 Jan 2012 12:28:13 +0000" tag="submitter">a3li</metadata>
+  <metadata timestamp="2012-01-30T12:28:13Z" tag="submitter">a3li</metadata>
 </glsa>

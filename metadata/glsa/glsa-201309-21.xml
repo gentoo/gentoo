@@ -6,8 +6,8 @@
     arbitrary shell code.
   </synopsis>
   <product type="ebuild">klibc</product>
-  <announced>September 26, 2013</announced>
-  <revised>September 26, 2013: 1</revised>
+  <announced>2013-09-26</announced>
+  <revised>2013-09-26: 1</revised>
   <bug>369075</bug>
   <access>remote</access>
   <affected>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1930">CVE-2011-1930</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1930">CVE-2011-1930</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 30 Aug 2013 11:18:21 +0000">
+  <metadata tag="requester" timestamp="2013-08-30T11:18:21Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 26 Sep 2013 23:52:30 +0000">
+  <metadata tag="submitter" timestamp="2013-09-26T23:52:30Z">
     creffett
   </metadata>
 </glsa>

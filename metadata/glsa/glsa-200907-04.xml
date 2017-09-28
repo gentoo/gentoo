@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-04">
   <title>Apache: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     privilege escalation, information disclosure or Denial of Service attacks.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>July 12, 2009</announced>
-  <revised>July 12, 2009: 01</revised>
+  <announced>2009-07-12</announced>
+  <revised>2009-07-12: 01</revised>
   <bug>268154</bug>
   <bug>271470</bug>
   <bug>276426</bug>
@@ -74,21 +73,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.2.11-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.11-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1195">CVE-2009-1195</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1191">CVE-2009-1191</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1890">CVE-2009-1890</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1891">CVE-2009-1891</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1195">CVE-2009-1195</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1191">CVE-2009-1191</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1890">CVE-2009-1890</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1891">CVE-2009-1891</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 11 Jul 2009 20:22:24 +0000">
+  <metadata tag="requester" timestamp="2009-07-11T20:22:24Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Jul 2009 21:34:40 +0000">
+  <metadata tag="submitter" timestamp="2009-07-11T21:34:40Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 12 Jul 2009 15:17:06 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-12T15:17:06Z">
     a3li
   </metadata>
 </glsa>

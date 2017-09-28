@@ -46,9 +46,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6265">CVE-2016-6265</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6525">CVE-2016-6525</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5896">CVE-2017-5896</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6265">CVE-2016-6265</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6525">CVE-2016-6525</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5896">CVE-2017-5896</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-05T22:42:31Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-02-19T12:47:00Z">whissi</metadata>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-23">
   <title>Ruby: Denial of Service issue</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service condition.
   </synopsis>
   <product type="ebuild">Ruby</product>
-  <announced>November 16, 2004</announced>
-  <revised>November 16, 2004: 01</revised>
+  <announced>2004-11-16</announced>
+  <revised>2004-11-16: 01</revised>
   <bug>69985</bug>
   <access>remote</access>
   <affected>
@@ -50,24 +49,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=dev-lang/ruby-1.6.8-r12"</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.6.8-r12"</code>
     <p>
     All Ruby 1.8.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=dev-lang/ruby-1.8.2_pre3"</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-1.8.2_pre3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0983">CAN-2004-0983</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0983">CAN-2004-0983</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 15 Nov 2004 10:02:12 +0000">
+  <metadata tag="requester" timestamp="2004-11-15T10:02:12Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 15 Nov 2004 10:02:22 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-15T10:02:22Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Nov 2004 20:10:34 +0000">
+  <metadata tag="submitter" timestamp="2004-11-15T20:10:34Z">
     koon
   </metadata>
 </glsa>

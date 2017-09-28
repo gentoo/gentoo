@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>January 28, 2012</announced>
-  <revised>January 28, 2012: 1</revised>
+  <announced>2012-01-28</announced>
+  <revised>2012-01-28: 1</revised>
   <bug>400551</bug>
   <access>remote</access>
   <affected>
@@ -44,29 +44,29 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3924">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3924">
       CVE-2011-3924
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3925">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3925">
       CVE-2011-3925
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3926">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3926">
       CVE-2011-3926
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3927">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3927">
       CVE-2011-3927
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3928">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3928">
       CVE-2011-3928
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/01/stable-channel-update_23.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/01/stable-channel-update_23.html">
       Release Notes 16.0.912.77
     </uri>
   </references>
-  <metadata timestamp="Tue, 24 Jan 2012 07:47:36 +0000" tag="requester">
+  <metadata timestamp="2012-01-24T07:47:36Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Sat, 28 Jan 2012 03:36:47 +0000" tag="submitter">
+  <metadata timestamp="2012-01-28T03:36:47Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201009-08">
   <title>python-updater: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">python-updater</product>
-  <announced>September 21, 2010</announced>
-  <revised>September 21, 2010: 01</revised>
+  <announced>2010-09-21</announced>
+  <revised>2010-09-21: 01</revised>
   <bug>288361</bug>
   <access>local</access>
   <affected>
@@ -50,16 +49,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/python-updater-0.7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/python-updater-0.7-r1"</code>
   </resolution>
   <references/>
-  <metadata tag="requester" timestamp="Thu, 18 Mar 2010 00:20:22 +0000">
+  <metadata tag="requester" timestamp="2010-03-18T00:20:22Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 09 Apr 2010 16:48:48 +0000">
+  <metadata tag="submitter" timestamp="2010-04-09T16:48:48Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 03 Sep 2010 20:36:47 +0000">
+  <metadata tag="bugReady" timestamp="2010-09-03T20:36:47Z">
     craig
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">socat</product>
-  <announced>August 14, 2012</announced>
-  <revised>August 14, 2012: 1</revised>
+  <announced>2012-08-14</announced>
+  <revised>2012-08-14: 1</revised>
   <bug>415977</bug>
   <access>local, remote</access>
   <affected>
@@ -41,11 +41,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0219">CVE-2012-0219</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0219">CVE-2012-0219</uri>
     <uri link="http://www.dest-unreach.org/socat/contrib/socat-secadv3.html">
       Socat security advisory 3
     </uri>
   </references>
-  <metadata timestamp="Wed, 11 Jul 2012 21:57:34 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 14 Aug 2012 20:30:08 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-07-11T21:57:34Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-08-14T20:30:08Z" tag="submitter">ackle</metadata>
 </glsa>

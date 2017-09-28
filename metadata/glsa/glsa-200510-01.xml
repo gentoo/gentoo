@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-01">
   <title>gtkdiskfree: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">gtkdiskfree</product>
-  <announced>October 03, 2005</announced>
-  <revised>October 03, 2005: 01</revised>
+  <announced>2005-10-03</announced>
+  <revised>2005-10-03: 01</revised>
   <bug>104565</bug>
   <access>local</access>
   <affected>
@@ -48,16 +47,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-admin/gtkdiskfree-1.9.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-admin/gtkdiskfree-1.9.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2918">CAN-2005-2918</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2918">CAN-2005-2918</uri>
     <uri link="http://www.zataz.net/adviso/gtkdiskfree-09052005.txt">Original Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 03 Oct 2005 07:42:10 +0000">
+  <metadata tag="submitter" timestamp="2005-10-03T07:42:10Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 03 Oct 2005 07:42:18 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-03T07:42:18Z">
     koon
   </metadata>
 </glsa>

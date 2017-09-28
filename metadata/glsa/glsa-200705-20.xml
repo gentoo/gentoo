@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-20">
   <title>Blackdown Java: Applet privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unspecified vulnerabilities that already affected the Sun JDK and JRE.
   </synopsis>
   <product type="ebuild">blackdown-jdk,blackdown-jre</product>
-  <announced>May 26, 2007</announced>
-  <revised>May 26, 2007: 01</revised>
+  <announced>2007-05-26</announced>
+  <revised>2007-05-26: 01</revised>
   <bug>161835</bug>
   <access>remote</access>
   <affected>
@@ -67,22 +66,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;dev-java/blackdown-jdk&quot;
-    # emerge --ask --oneshot --verbose &quot;dev-java/blackdown-jre&quot;</code>
+    # emerge --ask --oneshot --verbose "dev-java/blackdown-jdk"
+    # emerge --ask --oneshot --verbose "dev-java/blackdown-jre"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6731">CVE-2006-6731</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6736">CVE-2006-6736</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6737">CVE-2006-6737</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6745">CVE-2006-6745</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6731">CVE-2006-6731</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6736">CVE-2006-6736</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6737">CVE-2006-6737</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6745">CVE-2006-6745</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 03 May 2007 18:56:59 +0000">
+  <metadata tag="requester" timestamp="2007-05-03T18:56:59Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 May 2007 22:34:22 +0000">
+  <metadata tag="submitter" timestamp="2007-05-06T22:34:22Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 21 May 2007 21:16:03 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-21T21:16:03Z">
     falco
   </metadata>
 </glsa>

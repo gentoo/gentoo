@@ -6,8 +6,8 @@
     cause a Denial of Service condition. 
   </synopsis>
   <product type="ebuild">mono</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>433768</bug>
   <access>remote</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3543">CVE-2012-3543</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3543">CVE-2012-3543</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:55:51 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:28:30 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-16T21:55:51Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T11:28:30Z">ackle</metadata>
 </glsa>

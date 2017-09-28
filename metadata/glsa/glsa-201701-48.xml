@@ -46,8 +46,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1245">CVE-2016-1245</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4049">CVE-2016-4049</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1245">CVE-2016-1245</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4049">CVE-2016-4049</uri>
   </references>
   <metadata tag="requester" timestamp="2016-12-15T10:32:23Z">pinkbyte</metadata>
   <metadata tag="submitter" timestamp="2017-01-21T05:46:06Z">whissi</metadata>

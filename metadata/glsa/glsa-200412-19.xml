@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-19">
   <title>phpMyAdmin: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure or command execution.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>December 19, 2004</announced>
-  <revised>December 19, 2004: 01</revised>
+  <announced>2004-12-19</announced>
+  <revised>2004-12-19: 01</revised>
   <bug>74303</bug>
   <access>remote</access>
   <affected>
@@ -53,18 +52,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.1_rc1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.1_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1147">CAN-2004-1147</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1148">CAN-2004-1148</uri>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2004-4">PHPMyAdmin advisory: PMASA-2004-4</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1147">CAN-2004-1147</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1148">CAN-2004-1148</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2004-4">PHPMyAdmin advisory: PMASA-2004-4</uri>
     <uri link="http://www.exaprobe.com/labs/advisories/esa-2004-1213.html">Exaprobe.com advisory: esa-2004-1213</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 16 Dec 2004 13:35:32 +0000">
+  <metadata tag="submitter" timestamp="2004-12-16T13:35:32Z">
     SeJo
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 18 Dec 2004 14:47:08 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-18T14:47:08Z">
     koon
   </metadata>
 </glsa>

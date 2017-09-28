@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-08">
   <title>Opera: Two remote code execution vulnerabilities</title>
   <synopsis>
     Two vulnerabilities may allow the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>January 12, 2007</announced>
-  <revised>January 12, 2007: 01</revised>
+  <announced>2007-01-12</announced>
+  <revised>2007-01-12: 01</revised>
   <bug>160369</bug>
   <access>remote</access>
   <affected>
@@ -51,21 +50,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/opera-9.10"</code>
   </resolution>
   <references>
-    <uri link="http://www.opera.com/support/search/supsearch.dml?index=851">Opera Advisory (createSVGTransformFromMatrix)</uri>
-    <uri link="http://www.opera.com/support/search/supsearch.dml?index=852">Opera Advisory (JPEG)</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0126">CVE-2007-0126</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0127">CVE-2007-0127</uri>
+    <uri link="https://www.opera.com/support/search/supsearch.dml?index=851">Opera Advisory (createSVGTransformFromMatrix)</uri>
+    <uri link="https://www.opera.com/support/search/supsearch.dml?index=852">Opera Advisory (JPEG)</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0126">CVE-2007-0126</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0127">CVE-2007-0127</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 09 Jan 2007 12:37:33 +0000">
+  <metadata tag="requester" timestamp="2007-01-09T12:37:33Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 09 Jan 2007 12:37:44 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-09T12:37:44Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 09 Jan 2007 18:43:10 +0000">
+  <metadata tag="submitter" timestamp="2007-01-09T18:43:10Z">
     DerCorny
   </metadata>
 </glsa>

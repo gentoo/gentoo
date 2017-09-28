@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-09">
   <title>Postfix: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service.
   </synopsis>
   <product type="ebuild">postfix</product>
-  <announced>September 19, 2008</announced>
-  <revised>September 19, 2008: 01</revised>
+  <announced>2008-09-19</announced>
+  <revised>2008-09-19: 01</revised>
   <bug>236453</bug>
   <access>local</access>
   <affected>
@@ -53,24 +52,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.4.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/postfix-2.4.9"</code>
     <p>
     All Postfix 2.5 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-mta/postfix-2.5.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-mta/postfix-2.5.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3889">CVE-2008-3889</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3889">CVE-2008-3889</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 03 Sep 2008 20:58:07 +0000">
+  <metadata tag="requester" timestamp="2008-09-03T20:58:07Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 08 Sep 2008 18:33:40 +0000">
+  <metadata tag="submitter" timestamp="2008-09-08T18:33:40Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 08 Sep 2008 18:33:49 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-08T18:33:49Z">
     p-y
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which might allow a remote attacker to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">PolarSSL</product>
-  <announced>October 17, 2013</announced>
-  <revised>October 17, 2013: 1</revised>
+  <announced>2013-10-17</announced>
+  <revised>2013-10-17: 1</revised>
   <bug>358783</bug>
   <bug>416399</bug>
   <bug>455562</bug>
@@ -47,13 +47,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1923">CVE-2011-1923</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2130">CVE-2012-2130</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0169">CVE-2013-0169</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1621">CVE-2013-1621</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4623">CVE-2013-4623</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5915">CVE-2013-5915</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1923">CVE-2011-1923</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2130">CVE-2012-2130</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0169">CVE-2013-0169</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1621">CVE-2013-1621</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4623">CVE-2013-4623</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5915">CVE-2013-5915</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:30:33 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Oct 2013 08:18:11 +0000">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-08T22:30:33Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-10-17T08:18:11Z">craig</metadata>
 </glsa>

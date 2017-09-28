@@ -6,8 +6,8 @@
     inject SQL commands. 
   </synopsis>
   <product type="ebuild">ZendFramework</product>
-  <announced>August 04, 2014</announced>
-  <revised>August 04, 2014: 1</revised>
+  <announced>2014-08-04</announced>
+  <revised>2014-08-04: 1</revised>
   <bug>369139</bug>
   <access>remote</access>
   <affected>
@@ -50,8 +50,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1939">CVE-2011-1939</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1939">CVE-2011-1939</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 21:42:50 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Mon, 04 Aug 2014 09:08:18 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2011-10-08T21:42:50Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-08-04T09:08:18Z">K_F</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200908-02">
   <title>BIND: Denial of Service</title>
   <synopsis>
     Dynamic Update packets can cause a Denial of Service in the BIND daemon.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>August 01, 2009</announced>
-  <revised>August 01, 2009: 01</revised>
+  <announced>2009-08-01</announced>
+  <revised>2009-08-01: 01</revised>
   <bug>279508</bug>
   <access>remote</access>
   <affected>
@@ -53,16 +52,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/bind-9.4.3_p3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.4.3_p3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0696">CVE-2009-0696</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0696">CVE-2009-0696</uri>
     <uri link="https://www.isc.org/node/474">ISC advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 28 Jul 2009 21:43:47 +0000">
+  <metadata tag="submitter" timestamp="2009-07-28T21:43:47Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 01 Aug 2009 20:00:21 +0000">
+  <metadata tag="bugReady" timestamp="2009-08-01T20:00:21Z">
     a3li
   </metadata>
 </glsa>

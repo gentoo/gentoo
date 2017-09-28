@@ -6,8 +6,8 @@
     allow remote attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">icu</product>
-  <announced>February 10, 2014</announced>
-  <revised>February 10, 2014: 1</revised>
+  <announced>2014-02-10</announced>
+  <revised>2014-02-10: 1</revised>
   <bug>460426</bug>
   <bug>486948</bug>
   <access>remote</access>
@@ -50,13 +50,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0900">CVE-2013-0900</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2924">CVE-2013-2924</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0900">CVE-2013-0900</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2924">CVE-2013-2924</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 15 Nov 2013 07:06:44 +0000">
+  <metadata tag="requester" timestamp="2013-11-15T07:06:44Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Feb 2014 10:38:54 +0000">
+  <metadata tag="submitter" timestamp="2014-02-10T10:38:54Z">
     pinkbyte
   </metadata>
 </glsa>

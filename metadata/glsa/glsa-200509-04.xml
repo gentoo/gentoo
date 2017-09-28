@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-04">
   <title>phpLDAPadmin: Authentication bypass</title>
   <synopsis>
@@ -8,8 +7,8 @@
     and connect anonymously.
   </synopsis>
   <product type="ebuild">phpLDAPadmin</product>
-  <announced>September 06, 2005</announced>
-  <revised>September 06, 2005: 01</revised>
+  <announced>2005-09-06</announced>
+  <revised>2005-09-06: 01</revised>
   <bug>104293</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-nds/phpldapadmin-0.9.7_alpha6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-nds/phpldapadmin-0.9.7_alpha6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2654">CAN-2005-2654</uri>
-    <uri link="http://secunia.com/advisories/16611/">Secunia Advisory SA16611</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2654">CAN-2005-2654</uri>
+    <uri link="https://secunia.com/advisories/16611/">Secunia Advisory SA16611</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 31 Aug 2005 17:15:50 +0000">
+  <metadata tag="requester" timestamp="2005-08-31T17:15:50Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 31 Aug 2005 17:15:59 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-31T17:15:59Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Sep 2005 18:39:01 +0000">
+  <metadata tag="submitter" timestamp="2005-09-02T18:39:01Z">
     koon
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     to execute arbitrary code.
   </synopsis>
   <product type="ebuild">Asterisk</product>
-  <announced>June 21, 2012</announced>
-  <revised>June 21, 2012: 1</revised>
+  <announced>2012-06-21</announced>
+  <revised>2012-06-21: 1</revised>
   <bug>413353</bug>
   <bug>418189</bug>
   <bug>418191</bug>
@@ -57,12 +57,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2414">CVE-2012-2414</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2415">CVE-2012-2415</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2416">CVE-2012-2416</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2947">CVE-2012-2947</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2948">CVE-2012-2948</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2414">CVE-2012-2414</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2415">CVE-2012-2415</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2416">CVE-2012-2416</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2947">CVE-2012-2947</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2948">CVE-2012-2948</uri>
   </references>
-  <metadata timestamp="Tue, 24 Apr 2012 21:44:51 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Thu, 21 Jun 2012 00:28:33 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-24T21:44:51Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-21T00:28:33Z" tag="submitter">ackle</metadata>
 </glsa>

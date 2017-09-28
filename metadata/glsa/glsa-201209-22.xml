@@ -6,8 +6,8 @@
     escalated privileges.
   </synopsis>
   <product type="ebuild">libgssglue</product>
-  <announced>September 28, 2012</announced>
-  <revised>September 28, 2012: 1</revised>
+  <announced>2012-09-28</announced>
+  <revised>2012-09-28: 1</revised>
   <bug>385321</bug>
   <access>local</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2709">CVE-2011-2709</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2709">CVE-2011-2709</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 09 Sep 2012 12:06:10 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Sep 2012 00:34:59 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-09-09T12:06:10Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-28T00:34:59Z">ackle</metadata>
 </glsa>

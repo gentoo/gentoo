@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-01">
   <title>Ethereal: Multiple security problems</title>
   <synopsis>
@@ -8,8 +7,8 @@
     which may allow an attacker to run arbitrary code or crash the program.
   </synopsis>
   <product type="ebuild">Ethereal</product>
-  <announced>June 04, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-06-04</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>51022</bug>
   <access>remote</access>
   <affected>
@@ -48,7 +47,7 @@
   <workaround>
     <p>
     For a temporary workaround you can disable all affected protocol
-    dissectors by selecting Analyze->Enabled Protocols... and deselecting
+    dissectors by selecting Analyze-&gt;Enabled Protocols... and deselecting
     them from the list. However, it is strongly recommended to upgrade to
     the latest stable release.
     </p>
@@ -60,15 +59,15 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-analyzer/ethereal-0.10.4&quot;
-    # emerge &quot;&gt;=net-analyzer/ethereal-0.10.4&quot;</code>
+    # emerge -pv "&gt;=net-analyzer/ethereal-0.10.4"
+    # emerge "&gt;=net-analyzer/ethereal-0.10.4"</code>
   </resolution>
   <references>
     <uri link="http://www.ethereal.com/appnotes/enpa-sa-00014.html">Ethereal enpa-sa-00014</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0504">CVE-2004-0504</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0505">CVE-2004-0505</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0506">CVE-2004-0506</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0507">CVE-2004-0507</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0504">CVE-2004-0504</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0505">CVE-2004-0505</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0506">CVE-2004-0506</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0507">CVE-2004-0507</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

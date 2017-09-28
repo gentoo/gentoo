@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-22">
   <title>KDE: Local Denial of Service</title>
   <synopsis>
     KDE is vulnerable to a local Denial of Service attack.
   </synopsis>
   <product type="ebuild">kde, dcopserver</product>
-  <announced>March 19, 2005</announced>
-  <revised>March 19, 2005: 01</revised>
+  <announced>2005-03-19</announced>
+  <revised>2005-03-19: 01</revised>
   <bug>83814</bug>
   <access>local</access>
   <affected>
@@ -51,12 +50,12 @@
     # emerge --ask --oneshot --verbose kde-base/kdelibs</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0396">CAN-2005-0396</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0396">CAN-2005-0396</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 14 Mar 2005 06:00:10 +0000">
+  <metadata tag="submitter" timestamp="2005-03-14T06:00:10Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 19 Mar 2005 07:23:43 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-19T07:23:43Z">
     jaervosz
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     attackers to cause Denial of Service.
   </synopsis>
   <product type="ebuild">rsyslog</product>
-  <announced>December 24, 2014</announced>
-  <revised>December 24, 2014: 1</revised>
+  <announced>2014-12-24</announced>
+  <revised>2014-12-24: 1</revised>
   <bug>395709</bug>
   <bug>491856</bug>
   <bug>524058</bug>
@@ -46,10 +46,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4623">CVE-2011-4623</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3634">CVE-2014-3634</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3683">CVE-2014-3683</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4623">CVE-2011-4623</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3634">CVE-2014-3634</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3683">CVE-2014-3683</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 05 Aug 2014 19:34:54 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 20:04:37 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-08-05T19:34:54Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-24T20:04:37Z">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-13">
   <title>Clam AntiVirus: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to execution of arbitrary code when handling compressed executables.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>September 19, 2005</announced>
-  <revised>September 19, 2005: 01</revised>
+  <announced>2005-09-19</announced>
+  <revised>2005-09-19: 01</revised>
   <bug>106279</bug>
   <access>remote</access>
   <affected>
@@ -52,17 +51,17 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.87&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.87"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2919">CAN-2005-2919</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2920">CAN-2005-2920</uri>
-    <uri link="http://sourceforge.net/project/shownotes.php?release_id=356974">Clam AntiVirus: Release Notes</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2919">CAN-2005-2919</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2920">CAN-2005-2920</uri>
+    <uri link="https://sourceforge.net/project/shownotes.php?release_id=356974">Clam AntiVirus: Release Notes</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 18 Sep 2005 16:20:33 +0000">
+  <metadata tag="submitter" timestamp="2005-09-18T16:20:33Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Sep 2005 16:20:41 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-18T16:20:41Z">
     koon
   </metadata>
 </glsa>

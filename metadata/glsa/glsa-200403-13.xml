@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-13">
   <title>Remote buffer overflow in MPlayer</title>
   <synopsis>
@@ -8,8 +7,8 @@
     that may allow attackers to run arbitrary code on a user's computer.
   </synopsis>
   <product type="ebuild">mplayer</product>
-  <announced>March 31, 2004</announced>
-  <revised>October 11, 2006: 03</revised>
+  <announced>2004-03-31</announced>
+  <revised>2006-10-11: 03</revised>
   <bug>46246</bug>
   <access>remote</access>
   <affected>
@@ -69,30 +68,30 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=media-video/mplayer-0.92-r1&quot;
-    # emerge &quot;&gt;=media-video/mplayer-0.92-r1&quot;</code>
+    # emerge -pv "&gt;=media-video/mplayer-0.92-r1"
+    # emerge "&gt;=media-video/mplayer-0.92-r1"</code>
     <p>
     AMD64 users should:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=media-video/mplayer-1.0_pre2-r1&quot;
-    # emerge &quot;&gt;=media-video/mplayer-1.0_pre2-r1&quot;</code>
+    # emerge -pv "&gt;=media-video/mplayer-1.0_pre2-r1"
+    # emerge "&gt;=media-video/mplayer-1.0_pre2-r1"</code>
     <p>
     PPC users should:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=media-video/mplayer-1.0_pre3-r2&quot;
-    # emerge &quot;&gt;=media-video/mplayer-1.0_pre3-r2&quot;</code>
+    # emerge -pv "&gt;=media-video/mplayer-1.0_pre3-r2"
+    # emerge "&gt;=media-video/mplayer-1.0_pre3-r2"</code>
   </resolution>
   <references>
     <uri link="http://www.mplayerhq.hu/homepage/design6/news.html">MPlayerHQ News</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0386">CVE-2004-0386</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0386">CVE-2004-0386</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:45:24 +0000">
+  <metadata tag="submitter" timestamp="2006-05-22T05:45:24Z">
     DerCorny
   </metadata>
 </glsa>

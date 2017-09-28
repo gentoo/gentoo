@@ -6,8 +6,8 @@
     code.
   </synopsis>
   <product type="ebuild">pidgin</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>457580</bug>
   <bug>499596</bug>
   <access>remote</access>
@@ -58,24 +58,24 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6152">CVE-2012-6152</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0271">CVE-2013-0271</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0272">CVE-2013-0272</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0273">CVE-2013-0273</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0274">CVE-2013-0274</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6477">CVE-2013-6477</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6478">CVE-2013-6478</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6479">CVE-2013-6479</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6481">CVE-2013-6481</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6482">CVE-2013-6482</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6483">CVE-2013-6483</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6484">CVE-2013-6484</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6485">CVE-2013-6485</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6487">CVE-2013-6487</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6489">CVE-2013-6489</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6490">CVE-2013-6490</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0020">CVE-2014-0020</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6152">CVE-2012-6152</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0271">CVE-2013-0271</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0272">CVE-2013-0272</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0273">CVE-2013-0273</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0274">CVE-2013-0274</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6477">CVE-2013-6477</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6478">CVE-2013-6478</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6479">CVE-2013-6479</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6481">CVE-2013-6481</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6482">CVE-2013-6482</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6483">CVE-2013-6483</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6484">CVE-2013-6484</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6485">CVE-2013-6485</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6487">CVE-2013-6487</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6489">CVE-2013-6489</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6490">CVE-2013-6490</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0020">CVE-2014-0020</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 15:51:12 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:28:53 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-03-17T15:51:12Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T17:28:53Z">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-05">
   <title>XFree86, X.org: XDM ignores requestPort setting</title>
   <synopsis>
@@ -10,8 +9,8 @@
     configured XDM to refuse such connections.
   </synopsis>
   <product type="ebuild">xdm</product>
-  <announced>July 05, 2004</announced>
-  <revised>July 05, 2004: 01</revised>
+  <announced>2004-07-05</announced>
+  <revised>2004-07-05: 01</revised>
   <bug>53226</bug>
   <access>remote</access>
   <affected>
@@ -60,19 +59,19 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=x11-base/xfree-4.3.0-r6"
-    # emerge ">=x11-base/xfree-4.3.0-r6"</code>
+    # emerge -pv "&gt;=x11-base/xfree-4.3.0-r6"
+    # emerge "&gt;=x11-base/xfree-4.3.0-r6"</code>
     <p>
     If you are using X.org's X11 server, you should run the following:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=x11-base/xorg-x11-6.7.0-r1"
-    # emerge ">=x11-base/xorg-x11-6.7.0-r1"</code>
+    # emerge -pv "&gt;=x11-base/xorg-x11-6.7.0-r1"
+    # emerge "&gt;=x11-base/xorg-x11-6.7.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0419">CAN 2004-0419</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0419">CAN 2004-0419</uri>
     <uri link="http://bugs.xfree86.org/show_bug.cgi?id=1376">XFree86 Bug</uri>
   </references>
   <metadata tag="submitter">

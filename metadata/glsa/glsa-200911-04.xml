@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200911-04">
   <title>dstat: Untrusted search path</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">dstat</product>
-  <announced>November 25, 2009</announced>
-  <revised>November 25, 2009: 01</revised>
+  <announced>2009-11-25</announced>
+  <revised>2009-11-25: 01</revised>
   <bug>293497</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/dstat-0.6.9-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/dstat-0.6.9-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3894">CVE-2009-3894</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3894">CVE-2009-3894</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 17 Nov 2009 12:30:20 +0000">
+  <metadata tag="requester" timestamp="2009-11-17T12:30:20Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 Nov 2009 12:35:21 +0000">
+  <metadata tag="submitter" timestamp="2009-11-17T12:35:21Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Nov 2009 13:40:09 +0000">
+  <metadata tag="bugReady" timestamp="2009-11-25T13:40:09Z">
     rbu
   </metadata>
 </glsa>

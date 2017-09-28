@@ -6,8 +6,8 @@
     to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">mutt</product>
-  <announced>January 01, 2017</announced>
-  <revised>January 01, 2017: 1</revised>
+  <announced>2017-01-01</announced>
+  <revised>2017-01-01: 1</revised>
   <bug>530842</bug>
   <access>remote</access>
   <affected>
@@ -39,8 +39,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9116">CVE-2014-9116</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9116">CVE-2014-9116</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 11:02:45 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 15:05:18 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-01T11:02:45Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-01T15:05:18Z">b-man</metadata>
 </glsa>

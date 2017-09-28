@@ -6,8 +6,8 @@
     resulting in Denial of Service.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>January 29, 2014</announced>
-  <revised>January 29, 2014: 1</revised>
+  <announced>2014-01-29</announced>
+  <revised>2014-01-29: 1</revised>
   <bug>437828</bug>
   <bug>446094</bug>
   <bug>453974</bug>
@@ -46,14 +46,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5166">CVE-2012-5166</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5688">CVE-2012-5688</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5689">CVE-2012-5689</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2266">CVE-2013-2266</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3919">CVE-2013-3919</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4854">CVE-2013-4854</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0591">CVE-2014-0591</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5166">CVE-2012-5166</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5688">CVE-2012-5688</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5689">CVE-2012-5689</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2266">CVE-2013-2266</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3919">CVE-2013-3919</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4854">CVE-2013-4854</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0591">CVE-2014-0591</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 16 Dec 2012 21:52:11 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Wed, 29 Jan 2014 22:28:10 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-12-16T21:52:11Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-01-29T22:28:10Z">ackle</metadata>
 </glsa>

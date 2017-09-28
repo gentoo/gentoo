@@ -6,8 +6,8 @@
     which could result in arbitrary code execution.
   </synopsis>
   <product type="ebuild">filezilla</product>
-  <announced>September 15, 2013</announced>
-  <revised>September 15, 2013: 1</revised>
+  <announced>2013-09-15</announced>
+  <revised>2013-09-15: 1</revised>
   <bug>479880</bug>
   <bug>482672</bug>
   <access>local, remote</access>
@@ -45,21 +45,21 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4206">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4206">
       CVE-2013-4206
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4207">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4207">
       CVE-2013-4207
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4208">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4208">
       CVE-2013-4208
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4852">CVE-2013-4852</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4852">CVE-2013-4852</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:35:29 +0000">
+  <metadata tag="requester" timestamp="2013-08-23T14:35:29Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:36:50 +0000">
+  <metadata tag="submitter" timestamp="2013-09-15T04:36:50Z">
     creffett
   </metadata>
 </glsa>

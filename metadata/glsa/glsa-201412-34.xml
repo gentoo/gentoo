@@ -6,8 +6,8 @@
     could result in remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ntp</product>
-  <announced>December 24, 2014</announced>
-  <revised>December 24, 2014: 2</revised>
+  <announced>2014-12-24</announced>
+  <revised>2014-12-24: 2</revised>
   <bug>533076</bug>
   <access>remote</access>
   <affected>
@@ -45,11 +45,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9293">CVE-2014-9293</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9294">CVE-2014-9294</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9295">CVE-2014-9295</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9296">CVE-2014-9296</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9293">CVE-2014-9293</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9294">CVE-2014-9294</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9295">CVE-2014-9295</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9296">CVE-2014-9296</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 23 Dec 2014 23:07:31 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 24 Dec 2014 19:20:24 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-12-23T23:07:31Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-24T19:20:24Z">ackle</metadata>
 </glsa>

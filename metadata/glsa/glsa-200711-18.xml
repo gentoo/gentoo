@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-18">
   <title>Cpio: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service.
   </synopsis>
   <product type="ebuild">cpio</product>
-  <announced>November 14, 2007</announced>
-  <revised>November 14, 2007: 01</revised>
+  <announced>2007-11-14</announced>
+  <revised>2007-11-14: 01</revised>
   <bug>196978</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/cpio-2.9-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/cpio-2.9-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4476">CVE-2007-4476</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4476">CVE-2007-4476</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Nov 2007 19:52:13 +0000">
+  <metadata tag="requester" timestamp="2007-11-07T19:52:13Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 07 Nov 2007 20:48:37 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-07T20:48:37Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Nov 2007 18:58:10 +0000">
+  <metadata tag="submitter" timestamp="2007-11-08T18:58:10Z">
     keytoaster
   </metadata>
 </glsa>

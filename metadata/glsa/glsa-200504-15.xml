@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-15">
   <title>PHP: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>April 18, 2005</announced>
-  <revised>April 18, 2005: 01</revised>
+  <announced>2005-04-18</announced>
+  <revised>2005-04-18: 01</revised>
   <bug>87517</bug>
   <access>remote</access>
   <affected>
@@ -65,31 +64,31 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-4.3.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/php-4.3.11"</code>
     <p>
     All mod_php users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/mod_php-4.3.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/mod_php-4.3.11"</code>
     <p>
     All php-cgi users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-cgi-4.3.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/php-cgi-4.3.11"</code>
   </resolution>
   <references>
-    <uri link="http://www.php.net/release_4_3_11.php">PHP 4.3.11 Release Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0524">CAN-2005-0524</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0525">CAN-2005-0525</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1042">CAN-2005-1042</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1043">CAN-2005-1043</uri>
+    <uri link="https://www.php.net/release_4_3_11.php">PHP 4.3.11 Release Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0524">CAN-2005-0524</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0525">CAN-2005-0525</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1042">CAN-2005-1042</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1043">CAN-2005-1043</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 17 Apr 2005 16:51:49 +0000">
+  <metadata tag="submitter" timestamp="2005-04-17T16:51:49Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 17 Apr 2005 16:51:59 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-17T16:51:59Z">
     koon
   </metadata>
 </glsa>

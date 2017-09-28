@@ -6,8 +6,8 @@
     resulting in arbitrary code execution or a Denial of Service condition.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>December 31, 2014</announced>
-  <revised>December 31, 2014: 1</revised>
+  <announced>2014-12-31</announced>
+  <revised>2014-12-31: 1</revised>
   <bug>516334</bug>
   <bug>517936</bug>
   <bug>519518</bug>
@@ -47,11 +47,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4341">CVE-2014-4341</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4343">CVE-2014-4343</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4345">CVE-2014-4345</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5351">CVE-2014-5351</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4341">CVE-2014-4341</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4343">CVE-2014-4343</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4345">CVE-2014-4345</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5351">CVE-2014-5351</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 28 Dec 2014 07:58:32 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Wed, 31 Dec 2014 14:20:08 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-12-28T07:58:32Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-12-31T14:20:08Z">Zlogene</metadata>
 </glsa>

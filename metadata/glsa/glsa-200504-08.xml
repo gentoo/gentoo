@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-08">
   <title>phpMyAdmin: Cross-site scripting vulnerability</title>
   <synopsis>
     phpMyAdmin is vulnerable to a cross-site scripting attack.
   </synopsis>
   <product type="ebuild">phpMyAdmin</product>
-  <announced>April 11, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-04-11</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>87952</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/phpmyadmin-2.6.2_rc1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-2.6.2_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-3">PMASA-2005-3</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0992">CVE-2005-0992</uri>
+    <uri link="https://www.phpmyadmin.net/home_page/security.php?issue=PMASA-2005-3">PMASA-2005-3</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0992">CVE-2005-0992</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 10 Apr 2005 23:16:29 +0000">
+  <metadata tag="requester" timestamp="2005-04-10T23:16:29Z">
     lewk
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 11 Apr 2005 00:34:48 +0000">
+  <metadata tag="submitter" timestamp="2005-04-11T00:34:48Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 11 Apr 2005 00:35:39 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-11T00:35:39Z">
     lewk
   </metadata>
 </glsa>

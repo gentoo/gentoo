@@ -6,8 +6,8 @@
     to kill arbitrary processes.
   </synopsis>
   <product type="ebuild">keepalived</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>371469</bug>
   <access>local</access>
   <affected>
@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1784">CVE-2011-1784</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1784">CVE-2011-1784</uri>
   </references>
-  <metadata timestamp="Mon, 11 Jun 2012 19:50:31 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 23:28:51 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-11T19:50:31Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-07-09T23:28:51Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-34">
   <title>X.org, XFree86: Integer and stack overflows in libXpm</title>
   <synopsis>
@@ -10,8 +9,8 @@
     potentially allowing the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">X</product>
-  <announced>September 27, 2004</announced>
-  <revised>May 27, 2006: 02</revised>
+  <announced>2004-09-27</announced>
+  <revised>2006-05-27: 02</revised>
   <bug>64152</bug>
   <access>remote</access>
   <affected>
@@ -62,16 +61,16 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=x11-base/xorg-x11-6.7.0-r2&quot;
-    # emerge &quot;&gt;=x11-base/xorg-x11-6.7.0-r2&quot;</code>
+    # emerge -pv "&gt;=x11-base/xorg-x11-6.7.0-r2"
+    # emerge "&gt;=x11-base/xorg-x11-6.7.0-r2"</code>
     <p>
     All XFree86 users should upgrade to the latest version:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=x11-base/xfree-4.3.0-r7&quot;
-    # emerge &quot;&gt;=x11-base/xfree-4.3.0-r7&quot;</code>
+    # emerge -pv "&gt;=x11-base/xfree-4.3.0-r7"
+    # emerge "&gt;=x11-base/xfree-4.3.0-r7"</code>
     <p>
     Note: Usage of XFree86 is deprecated on the AMD64, HPPA, IA64, MIPS,
     PPC and SPARC architectures: XFree86 users on those architectures
@@ -79,18 +78,18 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://freedesktop.org/pipermail/xorg/2004-September/003196.html">X.org Security Advisory</uri>
-    <uri link="http://freedesktop.org/pipermail/xorg/2004-September/003172.html">X11R6.8.1 Release Notes</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0687">CAN-2004-0687</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0688">CAN-2004-0688</uri>
+    <uri link="https://freedesktop.org/pipermail/xorg/2004-September/003196.html">X.org Security Advisory</uri>
+    <uri link="https://freedesktop.org/pipermail/xorg/2004-September/003172.html">X11R6.8.1 Release Notes</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0687">CAN-2004-0687</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0688">CAN-2004-0688</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 18 Sep 2004 17:10:48 +0000">
+  <metadata tag="requester" timestamp="2004-09-18T17:10:48Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 20 Sep 2004 05:29:54 +0000">
+  <metadata tag="submitter" timestamp="2004-09-20T05:29:54Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 26 Sep 2004 20:54:15 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-26T20:54:15Z">
     koon
   </metadata>
 </glsa>

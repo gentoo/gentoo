@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">crack</product>
-  <announced>April 07, 2014</announced>
-  <revised>April 07, 2014: 1</revised>
+  <announced>2014-04-07</announced>
+  <revised>2014-04-07: 1</revised>
   <bug>460164</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1800">CVE-2013-1800</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1800">CVE-2013-1800</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 17 Mar 2013 18:59:21 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Apr 2014 20:37:34 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-03-17T18:59:21Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-04-07T20:37:34Z">ackle</metadata>
 </glsa>

@@ -7,8 +7,8 @@
     of Service condition.
   </synopsis>
   <product type="ebuild">strongswan</product>
-  <announced>September 01, 2013</announced>
-  <revised>September 01, 2013: 1</revised>
+  <announced>2013-09-01</announced>
+  <revised>2013-09-01: 1</revised>
   <bug>468504</bug>
   <bug>479396</bug>
   <bug>483202</bug>
@@ -46,14 +46,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2054">CVE-2013-2054</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2944">CVE-2013-2944</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5018">CVE-2013-5018</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2054">CVE-2013-2054</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2944">CVE-2013-2944</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5018">CVE-2013-5018</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 13:39:48 +0000">
+  <metadata tag="requester" timestamp="2013-08-23T13:39:48Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 01 Sep 2013 23:59:13 +0000">
+  <metadata tag="submitter" timestamp="2013-09-01T23:59:13Z">
     creffett
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libcapsinetwork</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 11, 2015: 2</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-11: 2</revised>
   <bug>544324</bug>
   <access>remote</access>
   <affected>
@@ -44,12 +44,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0841">CVE-2015-0841</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0841">CVE-2015-0841</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 29 May 2015 09:38:01 +0000">
+  <metadata tag="requester" timestamp="2015-05-29T09:38:01Z">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Jul 2015 09:32:23 +0000">
+  <metadata tag="submitter" timestamp="2015-07-11T09:32:23Z">
     pinkbyte
   </metadata>
 </glsa>

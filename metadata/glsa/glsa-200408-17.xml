@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-17">
   <title>rsync: Potential information leakage</title>
   <synopsis>
@@ -9,8 +8,8 @@
     on rsync server configurations that allow uploading.
   </synopsis>
   <product type="ebuild">rsync</product>
-  <announced>August 17, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-08-17</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>60309</bug>
   <access>remote</access>
   <affected>
@@ -57,15 +56,15 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-misc/rsync-2.6.0-r3&quot;
-    # emerge &quot;&gt;=net-misc/rsync-2.6.0-r3&quot;</code>
+    # emerge -pv "&gt;=net-misc/rsync-2.6.0-r3"
+    # emerge "&gt;=net-misc/rsync-2.6.0-r3"</code>
   </resolution>
   <references>
-    <uri link="http://samba.org/rsync/#security_aug04">rsync Advisory</uri>
-    <uri link="http://lists.samba.org/archive/rsync-announce/2004/000017.html">rsync 2.6.2 announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0792">CVE-2004-0792</uri>
+    <uri link="https://samba.org/rsync/#security_aug04">rsync Advisory</uri>
+    <uri link="https://lists.samba.org/archive/rsync-announce/2004/000017.html">rsync 2.6.2 announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0792">CVE-2004-0792</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 14 Aug 2004 19:22:18 +0000">
+  <metadata tag="submitter" timestamp="2004-08-14T19:22:18Z">
     jaervosz
   </metadata>
 </glsa>

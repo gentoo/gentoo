@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-18">
   <title>nginx: Remote execution of arbitrary code</title>
   <synopsis>
@@ -9,8 +8,8 @@
     of Service.
   </synopsis>
   <product type="ebuild">nginx</product>
-  <announced>September 18, 2009</announced>
-  <revised>September 18, 2009: 01</revised>
+  <announced>2009-09-18</announced>
+  <revised>2009-09-18: 01</revised>
   <bug>285162</bug>
   <access>remote</access>
   <affected>
@@ -53,30 +52,30 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/nginx-0.5.38&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-0.5.38"</code>
     <p>
     All nginx 0.6.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/nginx-0.6.39&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-0.6.39"</code>
     <p>
     All nginx 0.7.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/nginx-0.7.62&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-0.7.62"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2629">CVE-2009-2629</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2629">CVE-2009-2629</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 14 Sep 2009 19:21:09 +0000">
+  <metadata tag="requester" timestamp="2009-09-14T19:21:09Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 14 Sep 2009 19:51:52 +0000">
+  <metadata tag="submitter" timestamp="2009-09-14T19:51:52Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 18 Sep 2009 19:40:49 +0000">
+  <metadata tag="bugReady" timestamp="2009-09-18T19:40:49Z">
     a3li
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which allowing for execution of arbitrary code.
   </synopsis>
   <product type="ebuild">rails</product>
-  <announced>December 14, 2014</announced>
-  <revised>December 14, 2014: 1</revised>
+  <announced>2014-12-14</announced>
+  <revised>2014-12-14: 1</revised>
   <bug>354249</bug>
   <bug>379511</bug>
   <bug>386377</bug>
@@ -62,28 +62,28 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3933">CVE-2010-3933</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0446">CVE-2011-0446</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0447">CVE-2011-0447</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0448">CVE-2011-0448</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0449">CVE-2011-0449</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2929">CVE-2011-2929</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2930">CVE-2011-2930</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2931">CVE-2011-2931</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2932">CVE-2011-2932</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3186">CVE-2011-3186</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0155">CVE-2013-0155</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0156">CVE-2013-0156</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0276">CVE-2013-0276</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0277">CVE-2013-0277</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0333">CVE-2013-0333</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1854">CVE-2013-1854</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1855">CVE-2013-1855</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1856">CVE-2013-1856</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1857">CVE-2013-1857</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3933">CVE-2010-3933</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0446">CVE-2011-0446</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0447">CVE-2011-0447</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0448">CVE-2011-0448</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0449">CVE-2011-0449</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2929">CVE-2011-2929</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2930">CVE-2011-2930</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2931">CVE-2011-2931</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2932">CVE-2011-2932</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3186">CVE-2011-3186</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0155">CVE-2013-0155</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0156">CVE-2013-0156</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0276">CVE-2013-0276</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0277">CVE-2013-0277</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0333">CVE-2013-0333</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1854">CVE-2013-1854</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1855">CVE-2013-1855</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1856">CVE-2013-1856</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-1857">CVE-2013-1857</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:28:02 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sun, 14 Dec 2014 20:13:16 +0000">
+  <metadata tag="requester" timestamp="2011-10-08T22:28:02Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2014-12-14T20:13:16Z">
     keytoaster
   </metadata>
 </glsa>

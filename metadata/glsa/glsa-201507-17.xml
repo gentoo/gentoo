@@ -6,8 +6,8 @@
     condition.
   </synopsis>
   <product type="ebuild">net-snmp</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 2</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-10: 2</revised>
   <bug>522062</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3565">CVE-2014-3565</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3565">CVE-2014-3565</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:23:12 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 14:05:46 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-05-11T16:23:12Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-07-10T14:05:46Z">Zlogene</metadata>
 </glsa>

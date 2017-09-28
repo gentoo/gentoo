@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-01">
   <title>yelp: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     opening a URI, for example through Firefox.
   </synopsis>
   <product type="ebuild">yelp</product>
-  <announced>September 04, 2008</announced>
-  <revised>September 04, 2008: 01</revised>
+  <announced>2008-09-04</announced>
+  <revised>2008-09-04: 01</revised>
   <bug>234079</bug>
   <access>remote</access>
   <affected>
@@ -48,24 +47,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-extra/yelp-2.22.1-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=gnome-extra/yelp-2.22.1-r2"</code>
     <p>
     All yelp users running GNOME 2.20 should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=gnome-extra/yelp-2.20.0-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=gnome-extra/yelp-2.20.0-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3533">CVE-2008-3533</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3533">CVE-2008-3533</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 15 Aug 2008 14:25:26 +0000">
+  <metadata tag="requester" timestamp="2008-08-15T14:25:26Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 19 Aug 2008 23:34:23 +0000">
+  <metadata tag="submitter" timestamp="2008-08-19T23:34:23Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 19 Aug 2008 23:34:31 +0000">
+  <metadata tag="bugReady" timestamp="2008-08-19T23:34:31Z">
     rbu
   </metadata>
 </glsa>

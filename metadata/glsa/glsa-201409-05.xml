@@ -6,8 +6,8 @@
     worst of which allows remote attackers to execute arbitrary code. 
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>September 19, 2014</announced>
-  <revised>September 19, 2014: 1</revised>
+  <announced>2014-09-19</announced>
+  <revised>2014-09-19: 1</revised>
   <bug>522448</bug>
   <access>remote</access>
   <affected>
@@ -45,19 +45,19 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0547">CVE-2014-0547</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0548">CVE-2014-0548</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0549">CVE-2014-0549</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0550">CVE-2014-0550</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0551">CVE-2014-0551</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0552">CVE-2014-0552</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0553">CVE-2014-0553</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0554">CVE-2014-0554</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0555">CVE-2014-0555</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0556">CVE-2014-0556</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0557">CVE-2014-0557</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0559">CVE-2014-0559</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0547">CVE-2014-0547</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0548">CVE-2014-0548</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0549">CVE-2014-0549</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0550">CVE-2014-0550</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0551">CVE-2014-0551</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0552">CVE-2014-0552</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0553">CVE-2014-0553</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0554">CVE-2014-0554</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0555">CVE-2014-0555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0556">CVE-2014-0556</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0557">CVE-2014-0557</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0559">CVE-2014-0559</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 10 Sep 2014 21:41:02 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 19 Sep 2014 18:29:47 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-09-10T21:41:02Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-09-19T18:29:47Z">K_F</metadata>
 </glsa>

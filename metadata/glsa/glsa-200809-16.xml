@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-16">
   <title>Git: User-assisted execution of arbitrary code</title>
   <synopsis>
     Multiple buffer overflow vulnerabilities have been discovered in Git.
   </synopsis>
   <product type="ebuild">git</product>
-  <announced>September 25, 2008</announced>
-  <revised>September 25, 2008: 01</revised>
+  <announced>2008-09-25</announced>
+  <revised>2008-09-25: 01</revised>
   <bug>234075</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/git-1.5.6.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/git-1.5.6.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3546">CVE-2008-3546</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3546">CVE-2008-3546</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 21 Sep 2008 11:13:42 +0000">
+  <metadata tag="requester" timestamp="2008-09-21T11:13:42Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 21 Sep 2008 11:16:38 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-21T11:16:38Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 22 Sep 2008 11:39:05 +0000">
+  <metadata tag="submitter" timestamp="2008-09-22T11:39:05Z">
     p-y
   </metadata>
 </glsa>

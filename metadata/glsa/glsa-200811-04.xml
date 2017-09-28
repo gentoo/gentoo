@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200811-04">
   <title>Graphviz: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code via a DOT file.
   </synopsis>
   <product type="ebuild">graphviz</product>
-  <announced>November 09, 2008</announced>
-  <revised>November 09, 2008: 01</revised>
+  <announced>2008-11-09</announced>
+  <revised>2008-11-09: 01</revised>
   <bug>240636</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/graphviz-2.20.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/graphviz-2.20.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4555">CVE-2008-4555</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4555">CVE-2008-4555</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 16 Oct 2008 18:49:15 +0000">
+  <metadata tag="requester" timestamp="2008-10-16T18:49:15Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Oct 2008 20:26:38 +0000">
+  <metadata tag="submitter" timestamp="2008-10-21T20:26:38Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 31 Oct 2008 00:00:32 +0000">
+  <metadata tag="bugReady" timestamp="2008-10-31T00:00:32Z">
     rbu
   </metadata>
 </glsa>

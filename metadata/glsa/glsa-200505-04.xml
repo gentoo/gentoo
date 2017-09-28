@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-04">
   <title>GnuTLS: Denial of Service vulnerability</title>
   <synopsis>
     The GnuTLS library is vulnerable to Denial of Service attacks.
   </synopsis>
   <product type="ebuild">GnuTLS</product>
-  <announced>May 09, 2005</announced>
-  <revised>May 09, 2005: 01</revised>
+  <announced>2005-05-09</announced>
+  <revised>2005-05-09: 01</revised>
   <bug>90726</bug>
   <access>remote</access>
   <affected>
@@ -67,15 +66,15 @@
   </resolution>
   <references>
     <uri link="http://lists.gnupg.org/pipermail/gnutls-dev/2005-April/000858.html">GnuTLS Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1431">CAN-2005-1431</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1431">CAN-2005-1431</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 29 Apr 2005 18:20:03 +0000">
+  <metadata tag="requester" timestamp="2005-04-29T18:20:03Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 30 Apr 2005 14:44:07 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-30T14:44:07Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 30 Apr 2005 16:35:11 +0000">
+  <metadata tag="submitter" timestamp="2005-04-30T16:35:11Z">
     lewk
   </metadata>
 </glsa>

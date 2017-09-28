@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-11">
   <title>Adobe Reader: Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     lead to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">acroread</product>
-  <announced>August 19, 2005</announced>
-  <revised>August 19, 2005: 01</revised>
+  <announced>2005-08-19</announced>
+  <revised>2005-08-19: 01</revised>
   <bug>102730</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/acroread-7.0.1.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/acroread-7.0.1.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2470">CAN-2005-2470</uri>
-    <uri link="http://www.adobe.com/support/techdocs/321644.html">Adobe Document 321644</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2470">CAN-2005-2470</uri>
+    <uri link="https://www.adobe.com/support/techdocs/321644.html">Adobe Document 321644</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 16 Aug 2005 23:13:16 +0000">
+  <metadata tag="requester" timestamp="2005-08-16T23:13:16Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 17 Aug 2005 16:19:50 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-17T16:19:50Z">
     adir
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 17 Aug 2005 16:52:49 +0000">
+  <metadata tag="submitter" timestamp="2005-08-17T16:52:49Z">
     adir
   </metadata>
 </glsa>

@@ -4,8 +4,8 @@
   <title>GnuPG: Denial of Service</title>
   <synopsis>A vulnerability in GnuPG can lead to a Denial of Service condition.</synopsis>
   <product type="ebuild">GnuPG. </product>
-  <announced>July 16, 2014</announced>
-  <revised>July 16, 2014: 1</revised>
+  <announced>2014-07-16</announced>
+  <revised>2014-07-16: 1</revised>
   <bug>514718</bug>
   <access>local, remote</access>
   <affected>
@@ -51,8 +51,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4617">CVE-2014-4617</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4617">CVE-2014-4617</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 05 Jul 2014 11:31:33 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 16 Jul 2014 16:57:44 +0000">K_F</metadata>
+  <metadata tag="requester" timestamp="2014-07-05T11:31:33Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-07-16T16:57:44Z">K_F</metadata>
 </glsa>

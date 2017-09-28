@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-13">
   <title>ImageMagick: Multiple buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>May 10, 2007</announced>
-  <revised>June 07, 2007: 02</revised>
+  <announced>2007-05-10</announced>
+  <revised>2007-06-07: 02</revised>
   <bug>152672</bug>
   <bug>159567</bug>
   <bug>173186</bug>
@@ -54,18 +53,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.3.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.3.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1797">CVE-2007-1797</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1797">CVE-2007-1797</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 30 Apr 2007 13:08:15 +0000">
+  <metadata tag="requester" timestamp="2007-04-30T13:08:15Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 01 May 2007 19:04:55 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-01T19:04:55Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 May 2007 21:19:41 +0000">
+  <metadata tag="submitter" timestamp="2007-05-06T21:19:41Z">
     p-y
   </metadata>
 </glsa>

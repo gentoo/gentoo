@@ -6,8 +6,8 @@
     which may allow remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>September 25, 2012</announced>
-  <revised>September 25, 2012: 1</revised>
+  <announced>2012-09-25</announced>
+  <revised>2012-09-25: 1</revised>
   <bug>429478</bug>
   <bug>434584</bug>
   <access>remote</access>
@@ -47,16 +47,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4010">CVE-2012-4010</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4142">CVE-2012-4142</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4143">CVE-2012-4143</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4144">CVE-2012-4144</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4145">CVE-2012-4145</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4146">CVE-2012-4146</uri>
-    <uri link="http://www.opera.com/docs/changelogs/unix/1201/">Opera 12.01 for
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4010">CVE-2012-4010</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4142">CVE-2012-4142</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4143">CVE-2012-4143</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4144">CVE-2012-4144</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4145">CVE-2012-4145</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4146">CVE-2012-4146</uri>
+    <uri link="https://www.opera.com/docs/changelogs/unix/1201/">Opera 12.01 for
       UNIX changelog
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 03 Aug 2012 11:42:44 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 25 Sep 2012 21:25:23 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-08-03T11:42:44Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-25T21:25:23Z">ackle</metadata>
 </glsa>

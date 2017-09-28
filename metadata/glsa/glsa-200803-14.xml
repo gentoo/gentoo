@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-14">
   <title>Ghostscript: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code execution.
   </synopsis>
   <product type="ebuild">ghostscript</product>
-  <announced>March 08, 2008</announced>
-  <revised>March 08, 2008: 01</revised>
+  <announced>2008-03-08</announced>
+  <revised>2008-03-08: 01</revised>
   <bug>208999</bug>
   <access>remote</access>
   <affected>
@@ -58,30 +57,30 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-esp-8.15.4-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-esp-8.15.4-r1"</code>
     <p>
     All Ghostscript GPL users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gpl-8.61-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gpl-8.61-r3"</code>
     <p>
     All Ghostscript GNU users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ghostscript-gnu-8.60.0-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gnu-8.60.0-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0411">CVE-2008-0411</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0411">CVE-2008-0411</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 02 Mar 2008 15:25:45 +0000">
+  <metadata tag="requester" timestamp="2008-03-02T15:25:45Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 02 Mar 2008 15:25:54 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-02T15:25:54Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 05 Mar 2008 20:06:31 +0000">
+  <metadata tag="submitter" timestamp="2008-03-05T20:06:31Z">
     psychoschlumpf
   </metadata>
 </glsa>

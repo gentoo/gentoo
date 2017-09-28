@@ -6,8 +6,8 @@
     which may allow remote attackers to inject arbitrary web script or HTML.
   </synopsis>
   <product type="ebuild">phpBB</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>538360</bug>
   <access>remote</access>
   <affected>
@@ -46,9 +46,9 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1431">CVE-2015-1431</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1432">CVE-2015-1432</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1431">CVE-2015-1431</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1432">CVE-2015-1432</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 08 Jan 2017 20:58:16 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:26:07 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-08T20:58:16Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:26:07Z">whissi</metadata>
 </glsa>

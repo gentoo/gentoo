@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-06">
   <title>CUPS: Leakage of sensitive information</title>
   <synopsis>
@@ -8,8 +7,8 @@
     printing to SMB-shared printers which require authentication.
   </synopsis>
   <product type="ebuild">cups</product>
-  <announced>October 09, 2004</announced>
-  <revised>October 09, 2004: 01</revised>
+  <announced>2004-10-09</announced>
+  <revised>2004-10-09: 01</revised>
   <bug>66501</bug>
   <access>local</access>
   <affected>
@@ -48,16 +47,16 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-print/cups-1.1.20-r3"
-    # emerge ">=net-print/cups-1.1.20-r3"</code>
+    # emerge -pv "&gt;=net-print/cups-1.1.20-r3"
+    # emerge "&gt;=net-print/cups-1.1.20-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0923">CAN-2004-0923</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0923">CAN-2004-0923</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri,  8 Oct 2004 18:27:07 +0000">
+  <metadata tag="submitter" timestamp="2004-10-08T18:27:07Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri,  8 Oct 2004 21:07:38 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-08T21:07:38Z">
     koon
   </metadata>
 </glsa>

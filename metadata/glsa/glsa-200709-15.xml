@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-15">
   <title>BEA JRockit: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">jrockit-jdk-bin</product>
-  <announced>September 23, 2007</announced>
-  <revised>September 23, 2007: 01</revised>
+  <announced>2007-09-23</announced>
+  <revised>2007-09-23: 01</revised>
   <bug>190686</bug>
   <access>remote</access>
   <affected>
@@ -58,23 +57,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-java/jrockit-jdk-bin-1.5.0.11_p1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-java/jrockit-jdk-bin-1.5.0.11_p1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3004">CVE-2007-3004</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3005">CVE-2007-3005</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3503">CVE-2007-3503</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3698">CVE-2007-3698</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3716">CVE-2007-3716</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3922">CVE-2007-3922</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4381">CVE-2007-4381</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3004">CVE-2007-3004</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3005">CVE-2007-3005</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3503">CVE-2007-3503</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3698">CVE-2007-3698</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3716">CVE-2007-3716</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3922">CVE-2007-3922</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4381">CVE-2007-4381</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 15 Sep 2007 21:57:11 +0000">
+  <metadata tag="submitter" timestamp="2007-09-15T21:57:11Z">
     mfleming
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 17 Sep 2007 12:51:05 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-17T12:51:05Z">
     vorlon
   </metadata>
 </glsa>

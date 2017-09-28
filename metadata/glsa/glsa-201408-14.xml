@@ -6,8 +6,8 @@
     access to private key information.
   </synopsis>
   <product type="ebuild">stunnel</product>
-  <announced>August 29, 2014</announced>
-  <revised>August 29, 2014: 1</revised>
+  <announced>2014-08-29</announced>
+  <revised>2014-08-29: 1</revised>
   <bug>503506</bug>
   <access>remote</access>
   <affected>
@@ -47,10 +47,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0016">CVE-2014-0016</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0016">CVE-2014-0016</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jul 2014 22:44:37 +0000">
+  <metadata tag="requester" timestamp="2014-07-06T22:44:37Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 18:54:29 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-08-29T18:54:29Z">K_F</metadata>
 </glsa>

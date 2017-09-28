@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-27">
   <title>MoinMoin: Multiple vulnerabilities</title>
   <synopsis>
     Several vulnerabilities have been reported in MoinMoin Wiki Engine.
   </synopsis>
   <product type="ebuild">moinmoin</product>
-  <announced>March 18, 2008</announced>
-  <revised>March 18, 2008: 01</revised>
+  <announced>2008-03-18</announced>
+  <revised>2008-03-18: 01</revised>
   <bug>209133</bug>
   <access>remote</access>
   <affected>
@@ -67,22 +66,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/moinmoin-1.6.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/moinmoin-1.6.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0780">CVE-2008-0780</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0781">CVE-2008-0781</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0782">CVE-2008-0782</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1098">CVE-2008-1098</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1099">CVE-2008-1099</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0780">CVE-2008-0780</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0781">CVE-2008-0781</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0782">CVE-2008-0782</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1098">CVE-2008-1098</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1099">CVE-2008-1099</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 26 Feb 2008 09:02:13 +0000">
+  <metadata tag="requester" timestamp="2008-02-26T09:02:13Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 26 Feb 2008 09:03:06 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-26T09:03:06Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 15 Mar 2008 19:53:09 +0000">
+  <metadata tag="submitter" timestamp="2008-03-15T19:53:09Z">
     mfleming
   </metadata>
 </glsa>

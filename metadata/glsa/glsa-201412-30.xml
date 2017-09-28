@@ -7,8 +7,8 @@
     condition.
   </synopsis>
   <product type="ebuild">varnish</product>
-  <announced>December 15, 2014</announced>
-  <revised>December 15, 2014: 1</revised>
+  <announced>2014-12-15</announced>
+  <revised>2014-12-15: 1</revised>
   <bug>458888</bug>
   <bug>489944</bug>
   <access>local, remote</access>
@@ -45,11 +45,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0345">CVE-2013-0345</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4484">CVE-2013-4484</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0345">CVE-2013-0345</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4484">CVE-2013-4484</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:10:40 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T02:10:40Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Dec 2014 11:43:22 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-12-15T11:43:22Z">Zlogene</metadata>
 </glsa>

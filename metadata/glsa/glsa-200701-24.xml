@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-24">
   <title>VLC media player: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">vlc</product>
-  <announced>January 26, 2007</announced>
-  <revised>January 26, 2007: 01</revised>
+  <announced>2007-01-26</announced>
+  <revised>2007-01-26: 01</revised>
   <bug>159845</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/vlc-0.8.6-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-0.8.6-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0017">CVE-2007-0017</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0017">CVE-2007-0017</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 15 Jan 2007 23:30:46 +0000">
+  <metadata tag="requester" timestamp="2007-01-15T23:30:46Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 16 Jan 2007 17:08:55 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-16T17:08:55Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 02:10:51 +0000">
+  <metadata tag="submitter" timestamp="2007-01-18T02:10:51Z">
     shellsage
   </metadata>
 </glsa>

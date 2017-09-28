@@ -6,8 +6,8 @@
     which allow execution of arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">pango</product>
-  <announced>May 17, 2014</announced>
-  <revised>May 17, 2014: 1</revised>
+  <announced>2014-05-17</announced>
+  <revised>2014-05-17: 1</revised>
   <bug>268976</bug>
   <bug>352087</bug>
   <bug>357067</bug>
@@ -54,13 +54,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1194">CVE-2009-1194</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2468">CVE-2009-2468</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0020">CVE-2011-0020</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0064">CVE-2011-0064</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1194">CVE-2009-1194</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2468">CVE-2009-2468</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0020">CVE-2011-0020</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0064">CVE-2011-0064</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:43 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:43Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 May 2014 17:48:11 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-17T17:48:11Z">ackle</metadata>
 </glsa>

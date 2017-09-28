@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in Cacti, the worst of
     which could lead to the remote execution of arbitrary code.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 16, 2016</announced>
-  <revised>July 16, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-16</announced>
+  <revised>2016-07-16: 1</revised>
   <bug>519900</bug>
   <bug>568400</bug>
   <bug>570984</bug>
@@ -46,17 +46,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5261">CVE-2014-5261</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5262">CVE-2014-5262</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8369">CVE-2015-8369</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8377">CVE-2015-8377</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8604">CVE-2015-8604</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2313">CVE-2016-2313</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3172">CVE-2016-3172</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3659">CVE-2016-3659</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5261">CVE-2014-5261</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5262">CVE-2014-5262</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8369">CVE-2015-8369</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8377">CVE-2015-8377</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8604">CVE-2015-8604</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2313">CVE-2016-2313</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3172">CVE-2016-3172</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3659">CVE-2016-3659</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 26 Apr 2016 06:10:39 +0000">
+  <metadata tag="requester" timestamp="2016-04-26T06:10:39Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 16 Jul 2016 13:14:38 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-16T13:14:38Z">b-man</metadata>
 </glsa>

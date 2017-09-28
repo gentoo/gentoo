@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-26">
   <title>bsd-games: Local privilege escalation in tetris-bsd</title>
   <synopsis>
     tetris-bsd is prone to local privilege escalation vulnerabilities.
   </synopsis>
   <product type="ebuild">bsd-games</product>
-  <announced>March 29, 2006</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2006-03-29</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>122399</bug>
   <access>local</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-misc/bsd-games-2.17-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-misc/bsd-games-2.17-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1539">CVE-2006-1539</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1539">CVE-2006-1539</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Mar 2006 19:50:34 +0000">
+  <metadata tag="requester" timestamp="2006-03-21T19:50:34Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 27 Mar 2006 15:36:51 +0000">
+  <metadata tag="submitter" timestamp="2006-03-27T15:36:51Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 28 Mar 2006 18:00:28 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-28T18:00:28Z">
     DerCorny
   </metadata>
 </glsa>

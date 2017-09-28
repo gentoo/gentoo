@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-08">
   <title>libpng: Multiple Denials of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     applications that handle untrusted images.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>November 07, 2007</announced>
-  <revised>November 07, 2007: 01</revised>
+  <announced>2007-11-07</announced>
+  <revised>2007-11-07: 01</revised>
   <bug>195261</bug>
   <access>remote</access>
   <affected>
@@ -52,20 +51,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.21-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.21-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5266">CVE-2007-5266</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5268">CVE-2007-5268</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5269">CVE-2007-5269</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5266">CVE-2007-5266</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5268">CVE-2007-5268</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5269">CVE-2007-5269</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 20 Oct 2007 09:57:33 +0000">
+  <metadata tag="requester" timestamp="2007-10-20T09:57:33Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 20 Oct 2007 09:57:41 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-20T09:57:41Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Oct 2007 00:26:03 +0000">
+  <metadata tag="submitter" timestamp="2007-10-26T00:26:03Z">
     rbu
   </metadata>
 </glsa>

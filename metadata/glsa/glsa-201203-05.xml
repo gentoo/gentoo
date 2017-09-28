@@ -6,8 +6,8 @@
     cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">rack</product>
-  <announced>March 06, 2012</announced>
-  <revised>March 06, 2012: 1</revised>
+  <announced>2012-03-06</announced>
+  <revised>2012-03-06: 1</revised>
   <bug>396455</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5036">CVE-2011-5036</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5036">CVE-2011-5036</uri>
   </references>
-  <metadata timestamp="Sun, 04 Mar 2012 21:22:25 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 06 Mar 2012 01:05:34 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-04T21:22:25Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-03-06T01:05:34Z" tag="submitter">ackle</metadata>
 </glsa>

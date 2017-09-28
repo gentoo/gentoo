@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code. 
   </synopsis>
   <product type="ebuild">elfutils</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 2</revised>
   <bug>507246</bug>
   <access>remote</access>
   <affected>
@@ -44,8 +44,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0172">CVE-2014-0172</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0172">CVE-2014-0172</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 22 Nov 2016 14:55:36 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:58:39 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-22T14:55:36Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T06:58:39Z">whissi</metadata>
 </glsa>

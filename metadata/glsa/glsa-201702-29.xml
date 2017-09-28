@@ -45,19 +45,19 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10158">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10158">
       CVE-2016-10158
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10159">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10159">
       CVE-2016-10159
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10160">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10160">
       CVE-2016-10160
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10161">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10161">
       CVE-2016-10161
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9935">CVE-2016-9935</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9935">CVE-2016-9935</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-18T23:06:15Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-02-21T00:05:07Z">whissi</metadata>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200709-06">
   <title>flac123: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     for the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">flac123</product>
-  <announced>September 14, 2007</announced>
-  <revised>September 14, 2007: 01</revised>
+  <announced>2007-09-14</announced>
+  <revised>2007-09-14: 01</revised>
   <bug>186220</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/flac123-0.0.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/flac123-0.0.11"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3507">CVE-2007-3507</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3507">CVE-2007-3507</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Aug 2007 10:21:26 +0000">
+  <metadata tag="requester" timestamp="2007-08-29T10:21:26Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 29 Aug 2007 11:36:53 +0000">
+  <metadata tag="bugReady" timestamp="2007-08-29T11:36:53Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 11 Sep 2007 15:39:45 +0000">
+  <metadata tag="submitter" timestamp="2007-09-11T15:39:45Z">
     vorlon
   </metadata>
 </glsa>

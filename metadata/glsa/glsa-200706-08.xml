@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200706-08">
   <title>emul-linux-x86-java: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     Service.
   </synopsis>
   <product type="ebuild">emul-linux-x86-java</product>
-  <announced>June 26, 2007</announced>
-  <revised>May 28, 2009: 03</revised>
+  <announced>2007-06-26</announced>
+  <revised>2009-05-28: 03</revised>
   <bug>178962</bug>
   <access>remote</access>
   <affected>
@@ -57,20 +56,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-java-1.5.0.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-java-1.5.0.11"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2435">CVE-2007-2435</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2788">CVE-2007-2788</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2789">CVE-2007-2789</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 07 Jun 2007 21:24:22 +0000">
+  <metadata tag="requester" timestamp="2007-06-07T21:24:22Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 10 Jun 2007 14:32:58 +0000">
+  <metadata tag="submitter" timestamp="2007-06-10T14:32:58Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jun 2007 14:33:07 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-10T14:33:07Z">
     p-y
   </metadata>
 </glsa>

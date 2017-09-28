@@ -6,8 +6,8 @@
     which could lead to the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mercurial</product>
-  <announced>December 07, 2016</announced>
-  <revised>December 07, 2016: 1</revised>
+  <announced>2016-12-07</announced>
+  <revised>2016-12-07: 1</revised>
   <bug>533008</bug>
   <bug>544332</bug>
   <bug>578546</bug>
@@ -45,15 +45,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9390">CVE-2014-9390</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9462">CVE-2014-9462</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3068">CVE-2016-3068</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3069">CVE-2016-3069</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3105">CVE-2016-3105</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3630">CVE-2016-3630</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9390">CVE-2014-9390</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9462">CVE-2014-9462</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3068">CVE-2016-3068</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3069">CVE-2016-3069</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3105">CVE-2016-3105</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3630">CVE-2016-3630</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 22:49:35 +0000">
+  <metadata tag="requester" timestamp="2015-01-15T22:49:35Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 07 Dec 2016 10:35:02 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-07T10:35:02Z">b-man</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     of Service.
   </synopsis>
   <product type="ebuild">avahi</product>
-  <announced>October 22, 2011</announced>
-  <revised>October 22, 2011: 1</revised>
+  <announced>2011-10-22</announced>
+  <revised>2011-10-22: 1</revised>
   <bug>335885</bug>
   <bug>355583</bug>
   <access>remote</access>
@@ -43,11 +43,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2244">CVE-2010-2244</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1002">CVE-2011-1002</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2244">CVE-2010-2244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1002">CVE-2011-1002</uri>
   </references>
-  <metadata timestamp="Sat, 08 Oct 2011 22:46:40 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Sat, 22 Oct 2011 16:30:30 +0000" tag="submitter">
+  <metadata timestamp="2011-10-08T22:46:40Z" tag="requester">craig</metadata>
+  <metadata timestamp="2011-10-22T16:30:30Z" tag="submitter">
     keytoaster
   </metadata>
 </glsa>

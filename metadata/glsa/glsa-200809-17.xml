@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200809-17">
   <title>Wireshark: Multiple Denials of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Wireshark.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>September 25, 2008</announced>
-  <revised>September 25, 2008: 01</revised>
+  <announced>2008-09-25</announced>
+  <revised>2008-09-25: 01</revised>
   <bug>236515</bug>
   <access>remote</access>
   <affected>
@@ -62,21 +61,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.0.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3146">CVE-2008-3146</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3932">CVE-2008-3932</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3933">CVE-2008-3933</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3934">CVE-2008-3934</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3146">CVE-2008-3146</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3932">CVE-2008-3932</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3933">CVE-2008-3933</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3934">CVE-2008-3934</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:39:05 +0000">
+  <metadata tag="requester" timestamp="2008-09-22T12:39:05Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 24 Sep 2008 19:29:18 +0000">
+  <metadata tag="submitter" timestamp="2008-09-24T19:29:18Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 24 Sep 2008 19:30:10 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-24T19:30:10Z">
     p-y
   </metadata>
 </glsa>

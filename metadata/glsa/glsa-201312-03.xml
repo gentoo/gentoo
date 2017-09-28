@@ -6,8 +6,8 @@
     attackers to determine private keys or cause a Denial of Service.
   </synopsis>
   <product type="ebuild">OpenSSL</product>
-  <announced>December 03, 2013</announced>
-  <revised>June 06, 2015: 5</revised>
+  <announced>2013-12-03</announced>
+  <revised>2015-06-06: 5</revised>
   <bug>369753</bug>
   <bug>406199</bug>
   <bug>412643</bug>
@@ -72,18 +72,18 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-7250">CVE-2006-7250</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1945">CVE-2011-1945</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0884">CVE-2012-0884</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1165">CVE-2012-1165</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2110">CVE-2012-2110</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2333">CVE-2012-2333</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2686">CVE-2012-2686</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0166">CVE-2013-0166</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0169">CVE-2013-0169</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-7250">CVE-2006-7250</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1945">CVE-2011-1945</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0884">CVE-2012-0884</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1165">CVE-2012-1165</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2110">CVE-2012-2110</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2333">CVE-2012-2333</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2686">CVE-2012-2686</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0166">CVE-2013-0166</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0169">CVE-2013-0169</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 15 Mar 2012 02:30:07 +0000">
+  <metadata tag="requester" timestamp="2012-03-15T02:30:07Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:09:51 +0000">n0idx80</metadata>
+  <metadata tag="submitter" timestamp="2015-06-06T23:09:51Z">n0idx80</metadata>
 </glsa>

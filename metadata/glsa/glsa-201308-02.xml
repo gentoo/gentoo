@@ -6,8 +6,8 @@
     to cause a Denial of Service.
   </synopsis>
   <product type="ebuild">d-bus</product>
-  <announced>August 22, 2013</announced>
-  <revised>August 22, 2013: 1</revised>
+  <announced>2013-08-22</announced>
+  <revised>2013-08-22: 1</revised>
   <bug>473190</bug>
   <access>local</access>
   <affected>
@@ -45,14 +45,14 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2168">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2168">
       CVE-2013-2168
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 12 Jul 2013 01:19:11 +0000">
+  <metadata tag="requester" timestamp="2013-07-12T01:19:11Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 22 Aug 2013 15:34:55 +0000">
+  <metadata tag="submitter" timestamp="2013-08-22T15:34:55Z">
     creffett
   </metadata>
 </glsa>

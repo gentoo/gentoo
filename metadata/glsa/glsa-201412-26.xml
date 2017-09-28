@@ -6,8 +6,8 @@
     resulting in Denial of Service or a bypass in authentication restrictions. 
   </synopsis>
   <product type="ebuild">strongswan</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 1</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 1</revised>
   <bug>507722</bug>
   <bug>509832</bug>
   <access>remote</access>
@@ -43,11 +43,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2338">CVE-2014-2338</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2891">CVE-2014-2891</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2338">CVE-2014-2338</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2891">CVE-2014-2891</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:27:51 +0000">
+  <metadata tag="requester" timestamp="2014-08-04T19:27:51Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 18:56:21 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T18:56:21Z">ackle</metadata>
 </glsa>

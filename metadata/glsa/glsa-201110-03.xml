@@ -6,8 +6,8 @@
     leading to privilege escalation.
   </synopsis>
   <product type="ebuild">bugzilla</product>
-  <announced>October 10, 2011</announced>
-  <revised>October 10, 2011: 1</revised>
+  <announced>2011-10-10</announced>
+  <revised>2011-10-10: 1</revised>
   <bug>352781</bug>
   <bug>380255</bug>
   <bug>386203</bug>
@@ -55,27 +55,27 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2761">CVE-2010-2761</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3172">CVE-2010-3172</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3764">CVE-2010-3764</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4411">CVE-2010-4411</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4567">CVE-2010-4567</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4568">CVE-2010-4568</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4569">CVE-2010-4569</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4570">CVE-2010-4570</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4572">CVE-2010-4572</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0046">CVE-2011-0046</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0048">CVE-2011-0048</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2379">CVE-2011-2379</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2380">CVE-2011-2380</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2381">CVE-2011-2381</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2976">CVE-2011-2976</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2977">CVE-2011-2977</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2978">CVE-2011-2978</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2979">CVE-2011-2979</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2761">CVE-2010-2761</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3172">CVE-2010-3172</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3764">CVE-2010-3764</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4411">CVE-2010-4411</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4567">CVE-2010-4567</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4568">CVE-2010-4568</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4569">CVE-2010-4569</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4570">CVE-2010-4570</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4572">CVE-2010-4572</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0046">CVE-2011-0046</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0048">CVE-2011-0048</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2379">CVE-2011-2379</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2380">CVE-2011-2380</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2381">CVE-2011-2381</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2976">CVE-2011-2976</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2977">CVE-2011-2977</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2978">CVE-2011-2978</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2979">CVE-2011-2979</uri>
   </references>
-  <metadata timestamp="Sat, 08 Oct 2011 21:15:32 +0000" tag="requester">
+  <metadata timestamp="2011-10-08T21:15:32Z" tag="requester">
     keytoaster
   </metadata>
-  <metadata timestamp="Mon, 10 Oct 2011 19:51:47 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-10T19:51:47Z" tag="submitter">craig</metadata>
 </glsa>

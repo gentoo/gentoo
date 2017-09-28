@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>September 26, 2012</announced>
-  <revised>September 26, 2012: 1</revised>
+  <announced>2012-09-26</announced>
+  <revised>2012-09-26: 1</revised>
   <bug>425050</bug>
   <bug>433750</bug>
   <access>remote</access>
@@ -54,13 +54,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2186">CVE-2012-2186</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3812">CVE-2012-3812</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3863">CVE-2012-3863</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4737">CVE-2012-4737</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2186">CVE-2012-2186</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3812">CVE-2012-3812</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3863">CVE-2012-3863</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4737">CVE-2012-4737</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 14 Aug 2012 15:47:40 +0000">
+  <metadata tag="requester" timestamp="2012-08-14T15:47:40Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 26 Sep 2012 21:43:31 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-26T21:43:31Z">ackle</metadata>
 </glsa>

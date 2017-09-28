@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-09">
   <title>X.Org X server and Xfont library: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     execution.
   </synopsis>
   <product type="ebuild">xorg-server libXfont</product>
-  <announced>January 20, 2008</announced>
-  <revised>March 05, 2008: 03</revised>
+  <announced>2008-01-20</announced>
+  <revised>2008-03-05: 03</revised>
   <bug>204362</bug>
   <bug>208343</bug>
   <access>remote, local</access>
@@ -78,27 +77,27 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.3.0.0-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.3.0.0-r5"</code>
     <p>
     All X.Org Xfont library users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-libs/libXfont-1.3.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.3.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5760">CVE-2007-5760</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5958">CVE-2007-5958</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6427">CVE-2007-6427</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6428">CVE-2007-6428</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6429">CVE-2007-6429</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0006">CVE-2008-0006</uri>
-    <uri link="http://lists.freedesktop.org/archives/xorg/2008-January/031918.html">X.Org security advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5760">CVE-2007-5760</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5958">CVE-2007-5958</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6427">CVE-2007-6427</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6428">CVE-2007-6428</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6429">CVE-2007-6429</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0006">CVE-2008-0006</uri>
+    <uri link="https://lists.freedesktop.org/archives/xorg/2008-January/031918.html">X.Org security advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 05 Jan 2008 02:03:56 +0000">
+  <metadata tag="submitter" timestamp="2008-01-05T02:03:56Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 17 Jan 2008 15:57:38 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-17T15:57:38Z">
     p-y
   </metadata>
 </glsa>

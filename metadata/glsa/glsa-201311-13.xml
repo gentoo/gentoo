@@ -6,8 +6,8 @@
     remote attackers to read encrypted traffic.
   </synopsis>
   <product type="ebuild">openvpn</product>
-  <announced>November 20, 2013</announced>
-  <revised>November 20, 2013: 1</revised>
+  <announced>2013-11-20</announced>
+  <revised>2013-11-20: 1</revised>
   <bug>293894</bug>
   <bug>468756</bug>
   <access>remote</access>
@@ -44,13 +44,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2061">CVE-2013-2061</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3555">CVE-2009-3555</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2061">CVE-2013-2061</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:49:37 +0000">
+  <metadata tag="requester" timestamp="2013-08-23T14:49:37Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Nov 2013 10:13:40 +0000">
+  <metadata tag="submitter" timestamp="2013-11-20T10:13:40Z">
     creffett
   </metadata>
 </glsa>

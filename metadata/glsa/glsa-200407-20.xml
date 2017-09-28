@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-20">
   <title>Subversion: Vulnerability in mod_authz_svn</title>
   <synopsis>
@@ -9,8 +8,8 @@
     wish.
   </synopsis>
   <product type="ebuild">subversion</product>
-  <announced>July 26, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-07-26</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>57747</bug>
   <access>remote</access>
   <affected>
@@ -64,12 +63,12 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=dev-util/subversion-1.0.6&quot;
-    # emerve &quot;&gt;=dev-util/subversion-1.0.6&quot;</code>
+    # emerge -pv "&gt;=dev-util/subversion-1.0.6"
+    # emerve "&gt;=dev-util/subversion-1.0.6"</code>
   </resolution>
   <references>
     <uri link="http://svn.collab.net/repos/svn/tags/1.0.6/CHANGES">ChangeLog for Subversion 1.0.6</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1438">CVE-2004-1438</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1438">CVE-2004-1438</uri>
   </references>
   <metadata tag="requester">
     koon

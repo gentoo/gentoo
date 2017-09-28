@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200912-02">
   <title>Ruby on Rails: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     leading to the execution of arbitrary SQL statements.
   </synopsis>
   <product type="ebuild">rails</product>
-  <announced>December 20, 2009</announced>
-  <revised>December 20, 2009: 01</revised>
+  <announced>2009-12-20</announced>
+  <revised>2009-12-20: 01</revised>
   <bug>200159</bug>
   <bug>237385</bug>
   <bug>247549</bug>
@@ -80,13 +79,13 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-ruby/rails-2.3.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rails-2.3.5"</code>
     <p>
     All Ruby on Rails 2.2.x users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;=dev-ruby/rails-2.2.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "=dev-ruby/rails-2.2.3-r1"</code>
     <p>
     NOTE: All applications using Ruby on Rails should also be configured to
     use the latest version available by running "rake rails:update" inside
@@ -94,23 +93,23 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5380">CVE-2007-5380</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6077">CVE-2007-6077</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4094">CVE-2008-4094</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7248">CVE-2008-7248</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2422">CVE-2009-2422</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3009">CVE-2009-3009</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3086">CVE-2009-3086</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4214">CVE-2009-4214</uri>
-    <uri link="/security/en/glsa/glsa-200711-17.xml">GLSA 200711-17</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5380">CVE-2007-5380</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6077">CVE-2007-6077</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4094">CVE-2008-4094</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7248">CVE-2008-7248</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2422">CVE-2009-2422</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3009">CVE-2009-3009</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3086">CVE-2009-3086</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4214">CVE-2009-4214</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-17.xml">GLSA 200711-17</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 30 Nov 2008 18:11:48 +0000">
+  <metadata tag="requester" timestamp="2008-11-30T18:11:48Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 11 Mar 2009 19:07:59 +0000">
+  <metadata tag="bugReady" timestamp="2009-03-11T19:07:59Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 19 Mar 2009 12:17:35 +0000">
+  <metadata tag="submitter" timestamp="2009-03-19T12:17:35Z">
     p-y
   </metadata>
 </glsa>

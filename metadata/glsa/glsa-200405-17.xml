@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-17">
   <title>Multiple vulnerabilities in metamail</title>
   <synopsis>
@@ -8,8 +7,8 @@
     metamail, potentially allowing execution of arbitrary code remotely.
   </synopsis>
   <product type="ebuild">metamail</product>
-  <announced>May 21, 2004</announced>
-  <revised>May 21, 2004: 01</revised>
+  <announced>2004-05-21</announced>
+  <revised>2004-05-21: 01</revised>
   <bug>42133</bug>
   <access>remote </access>
   <affected>
@@ -48,12 +47,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-mail/metamail-2.7.45.3"
-    # emerge ">=net-mail/metamail-2.7.45.3"</code>
+    # emerge -pv "&gt;=net-mail/metamail-2.7.45.3"
+    # emerge "&gt;=net-mail/metamail-2.7.45.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0104">CAN-2004-0104</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0105">CAN-2004-0105</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0104">CAN-2004-0104</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0105">CAN-2004-0105</uri>
   </references>
   <metadata tag="submitter">
     koon

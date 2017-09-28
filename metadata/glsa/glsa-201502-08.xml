@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">libav</product>
-  <announced>February 07, 2015</announced>
-  <revised>February 07, 2015: 1</revised>
+  <announced>2015-02-07</announced>
+  <revised>2015-02-07: 1</revised>
   <bug>492582</bug>
   <bug>515234</bug>
   <bug>531832</bug>
@@ -47,21 +47,21 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3934">CVE-2011-3934</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3935">CVE-2011-3935</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3946">CVE-2011-3946</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0848">CVE-2013-0848</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0851">CVE-2013-0851</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0852">CVE-2013-0852</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0860">CVE-2013-0860</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0868">CVE-2013-0868</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3672">CVE-2013-3672</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3674">CVE-2013-3674</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4609">CVE-2014-4609</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3934">CVE-2011-3934</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3935">CVE-2011-3935</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3946">CVE-2011-3946</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0848">CVE-2013-0848</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0851">CVE-2013-0851</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0852">CVE-2013-0852</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0860">CVE-2013-0860</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0868">CVE-2013-0868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3672">CVE-2013-3672</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3674">CVE-2013-3674</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4609">CVE-2014-4609</uri>
     <uri link="https://libav.org/news.html#0.8.9">Libav News November 2, 2013</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Jan 2015 02:04:44 +0000">
+  <metadata tag="requester" timestamp="2015-01-07T02:04:44Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 20:33:22 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-02-07T20:33:22Z">ackle</metadata>
 </glsa>

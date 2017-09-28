@@ -6,8 +6,8 @@
     attackers to obtain sensitive information.
   </synopsis>
   <product type="ebuild">nginx</product>
-  <announced>February 07, 2015</announced>
-  <revised>February 07, 2015: 1</revised>
+  <announced>2015-02-07</announced>
+  <revised>2015-02-07: 1</revised>
   <bug>522994</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3616">CVE-2014-3616</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3616">CVE-2014-3616</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 05 Jan 2015 00:39:58 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 20:30:19 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2015-01-05T00:39:58Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-02-07T20:30:19Z">ackle</metadata>
 </glsa>

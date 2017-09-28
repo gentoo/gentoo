@@ -66,9 +66,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8903">CVE-2017-8903</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8904">CVE-2017-8904</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8905">CVE-2017-8905</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8903">CVE-2017-8903</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8904">CVE-2017-8904</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8905">CVE-2017-8905</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-11T07:53:09Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-05-26T06:07:35Z">BlueKnight</metadata>

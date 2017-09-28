@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-27">
   <title>SILC: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing for Denial of Service and execution of arbitrary code.
   </synopsis>
   <product type="ebuild">silc-toolkit silc-client silc-server</product>
-  <announced>April 24, 2008</announced>
-  <revised>April 24, 2008: 01</revised>
+  <announced>2008-04-24</announced>
+  <revised>2008-04-24: 01</revised>
   <bug>212362</bug>
   <bug>214116</bug>
   <bug>214812</bug>
@@ -71,32 +70,32 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-toolkit-1.1.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/silc-toolkit-1.1.7"</code>
     <p>
     All SILC Client users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-client-1.1.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/silc-client-1.1.4"</code>
     <p>
     All SILC Server users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-im/silc-server-1.1.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-im/silc-server-1.1.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1227">CVE-2008-1227</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1429">CVE-2008-1429</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1552">CVE-2008-1552</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1227">CVE-2008-1227</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1429">CVE-2008-1429</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1552">CVE-2008-1552</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 21 Mar 2008 02:19:53 +0000">
+  <metadata tag="requester" timestamp="2008-03-21T02:19:53Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:27 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-03T14:49:27Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 23 Apr 2008 16:41:55 +0000">
+  <metadata tag="submitter" timestamp="2008-04-23T16:41:55Z">
     keytoaster
   </metadata>
 </glsa>

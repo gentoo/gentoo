@@ -56,7 +56,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2615">CVE-2017-2615</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2615">CVE-2017-2615</uri>
     <uri link="https://xenbits.xen.org/xsa/advisory-207.html">XSA-207</uri>
     <uri link="https://xenbits.xen.org/xsa/advisory-208.html">XSA-208</uri>
   </references>

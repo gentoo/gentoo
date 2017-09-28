@@ -4,8 +4,8 @@
   <title>file: Denial of Service</title>
   <synopsis>A vulnerability in file could result in Denial of Service. </synopsis>
   <product type="ebuild">file</product>
-  <announced>August 26, 2014</announced>
-  <revised>August 29, 2014: 6</revised>
+  <announced>2014-08-26</announced>
+  <revised>2014-08-29: 6</revised>
   <bug>505534</bug>
   <access>local, remote</access>
   <affected>
@@ -43,10 +43,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7345">CVE-2013-7345</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7345">CVE-2013-7345</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jul 2014 21:48:15 +0000">
+  <metadata tag="requester" timestamp="2014-07-06T21:48:15Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Aug 2014 12:33:10 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-08-29T12:33:10Z">Zlogene</metadata>
 </glsa>

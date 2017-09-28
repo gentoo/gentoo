@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-11">
   <title>KDE kjs: URI heap overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">KDE</product>
-  <announced>January 22, 2006</announced>
-  <revised>January 22, 2006: 01</revised>
+  <announced>2006-01-22</announced>
+  <revised>2006-01-22: 01</revised>
   <bug>118550</bug>
   <access>remote</access>
   <affected>
@@ -52,13 +51,13 @@
     # emerge --ask --oneshot --verbose kde-base/kdelibs-3.4.3-r1</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0019">CVE-2006-0019</uri>
-    <uri link="http://www.kde.org/info/security/advisory-20060119-1.txt">KDE Security Advisory: kjs encodeuri/decodeuri heap overflow vulnerability</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0019">CVE-2006-0019</uri>
+    <uri link="https://www.kde.org/info/security/advisory-20060119-1.txt">KDE Security Advisory: kjs encodeuri/decodeuri heap overflow vulnerability</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 20 Jan 2006 06:30:56 +0000">
+  <metadata tag="submitter" timestamp="2006-01-20T06:30:56Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 21 Jan 2006 13:57:57 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-21T13:57:57Z">
     DerCorny
   </metadata>
 </glsa>

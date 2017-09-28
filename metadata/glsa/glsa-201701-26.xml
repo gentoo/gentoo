@@ -6,8 +6,8 @@
     Denial of Service condition.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>January 11, 2017</announced>
-  <revised>January 11, 2017: 1</revised>
+  <announced>2017-01-11</announced>
+  <revised>2017-01-11: 1</revised>
   <bug>598750</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8864">CVE-2016-8864</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8864">CVE-2016-8864</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 04 Jan 2017 02:59:06 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:27:02 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2017-01-04T02:59:06Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-11T12:27:02Z">whissi</metadata>
 </glsa>

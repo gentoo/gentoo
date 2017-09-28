@@ -6,8 +6,8 @@
     attackers to execute arbitrary code and load arbitrary classes.
   </synopsis>
   <product type="ebuild">xalan-java</product>
-  <announced>April 02, 2016</announced>
-  <revised>April 02, 2016: 1</revised>
+  <announced>2016-04-02</announced>
+  <revised>2016-04-02: 1</revised>
   <bug>505602</bug>
   <access>remote</access>
   <affected>
@@ -47,8 +47,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0107">CVE-2014-0107</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0107">CVE-2014-0107</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 04 Mar 2016 11:55:40 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 02 Apr 2016 19:42:25 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-03-04T11:55:40Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-04-02T19:42:25Z">b-man</metadata>
 </glsa>

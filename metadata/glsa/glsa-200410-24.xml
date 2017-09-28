@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-24">
   <title>MIT krb5: Insecure temporary file use in send-pr.sh</title>
   <synopsis>
@@ -9,8 +8,8 @@
     files with the rights of the user running the utility.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>October 25, 2004</announced>
-  <revised>January 30, 2005: 02</revised>
+  <announced>2004-10-25</announced>
+  <revised>2005-01-30: 02</revised>
   <bug>66359</bug>
   <access>local</access>
   <affected>
@@ -54,16 +53,16 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-crypt/mit-krb5-1.3.4-r1&quot;
-    # emerge &quot;&gt;=app-crypt/mit-krb5-1.3.4-r1&quot;</code>
+    # emerge -pv "&gt;=app-crypt/mit-krb5-1.3.4-r1"
+    # emerge "&gt;=app-crypt/mit-krb5-1.3.4-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0971">CAN-2004-0971</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0971">CAN-2004-0971</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 19 Oct 2004 17:38:41 +0000">
+  <metadata tag="submitter" timestamp="2004-10-19T17:38:41Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 Oct 2004 13:03:38 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-25T13:03:38Z">
     koon
   </metadata>
 </glsa>

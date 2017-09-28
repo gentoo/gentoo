@@ -7,8 +7,8 @@
     information.
   </synopsis>
   <product type="ebuild">gnupg</product>
-  <announced>June 05, 2016</announced>
-  <revised>June 10, 2016: 2</revised>
+  <announced>2016-06-05</announced>
+  <revised>2016-06-10: 2</revised>
   <bug>534110</bug>
   <bug>541564</bug>
   <bug>541568</bug>
@@ -69,11 +69,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3591">CVE-2014-3591</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0837">CVE-2015-0837</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3591">CVE-2014-3591</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0837">CVE-2015-0837</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Feb 2015 14:53:59 +0000">
+  <metadata tag="requester" timestamp="2015-02-16T14:53:59Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jun 2016 18:09:58 +0000">stanley</metadata>
+  <metadata tag="submitter" timestamp="2016-06-10T18:09:58Z">stanley</metadata>
 </glsa>

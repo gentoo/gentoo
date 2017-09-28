@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200802-10">
   <title>Python: PCRE Integer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">python</product>
-  <announced>February 23, 2008</announced>
-  <revised>February 23, 2008: 01</revised>
+  <announced>2008-02-23</announced>
+  <revised>2008-02-23: 01</revised>
   <bug>198373</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/python-2.3.6-r4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.3.6-r4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7228">CVE-2006-7228</uri>
-    <uri link="/security/en/glsa/glsa-200711-30.xml">GLSA 200711-30</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7228">CVE-2006-7228</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-30.xml">GLSA 200711-30</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 07 Jan 2008 19:00:53 +0000">
+  <metadata tag="requester" timestamp="2008-01-07T19:00:53Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 28 Jan 2008 18:01:42 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-28T18:01:42Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 18 Feb 2008 22:37:11 +0000">
+  <metadata tag="submitter" timestamp="2008-02-18T22:37:11Z">
     rbu
   </metadata>
 </glsa>

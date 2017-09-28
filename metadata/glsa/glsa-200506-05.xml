@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-05">
   <title>SilverCity: Insecure file permissions</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unsuspecting user to run arbitrary code.
   </synopsis>
   <product type="ebuild">silvercity</product>
-  <announced>June 08, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-06-08</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>93558</bug>
   <access>local</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/silvercity-0.9.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/silvercity-0.9.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1941">CVE-2005-1941</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1941">CVE-2005-1941</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 06 Jun 2005 18:24:23 +0000">
+  <metadata tag="requester" timestamp="2005-06-06T18:24:23Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 06 Jun 2005 18:24:47 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-06T18:24:47Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 07 Jun 2005 01:08:04 +0000">
+  <metadata tag="submitter" timestamp="2005-06-07T01:08:04Z">
     r2d2
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-17">
   <title>FUSE: mtab corruption through fusermount</title>
   <synopsis>
@@ -9,8 +8,8 @@
     mount options.
   </synopsis>
   <product type="ebuild">FUSE</product>
-  <announced>November 22, 2005</announced>
-  <revised>November 22, 2005: 01</revised>
+  <announced>2005-11-22</announced>
+  <revised>2005-11-22: 01</revised>
   <bug>112902</bug>
   <access>local</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-fs/fuse-2.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-fs/fuse-2.4.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3531">CVE-2005-3531</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3531">CVE-2005-3531</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Nov 2005 12:06:35 +0000">
+  <metadata tag="requester" timestamp="2005-11-20T12:06:35Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 21 Nov 2005 13:30:54 +0000">
+  <metadata tag="submitter" timestamp="2005-11-21T13:30:54Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 22 Nov 2005 16:07:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-22T16:07:17Z">
     koon
   </metadata>
 </glsa>

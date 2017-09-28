@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-06">
   <title>Transmission: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code.
   </synopsis>
   <product type="ebuild">transmission</product>
-  <announced>June 01, 2010</announced>
-  <revised>June 01, 2010: 01</revised>
+  <announced>2010-06-01</announced>
+  <revised>2010-06-01: 01</revised>
   <bug>309831</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-p2p/transmission-1.92&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-p2p/transmission-1.92"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1853">CVE-2010-1853</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1853">CVE-2010-1853</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 22 May 2010 11:12:44 +0000">
+  <metadata tag="requester" timestamp="2010-05-22T11:12:44Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 May 2010 13:42:12 +0000">
+  <metadata tag="submitter" timestamp="2010-05-27T13:42:12Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 27 May 2010 17:53:20 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-27T17:53:20Z">
     vorlon
   </metadata>
 </glsa>

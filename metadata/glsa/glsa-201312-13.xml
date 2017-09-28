@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>December 16, 2013</announced>
-  <revised>December 16, 2013: 1</revised>
+  <announced>2013-12-16</announced>
+  <revised>2013-12-16: 1</revised>
   <bug>484582</bug>
   <bug>490434</bug>
   <access>remote</access>
@@ -50,18 +50,18 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5717">CVE-2013-5717</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5718">CVE-2013-5718</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5719">CVE-2013-5719</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5720">CVE-2013-5720</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5721">CVE-2013-5721</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5722">CVE-2013-5722</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6336">CVE-2013-6336</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6337">CVE-2013-6337</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6338">CVE-2013-6338</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6339">CVE-2013-6339</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6340">CVE-2013-6340</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5717">CVE-2013-5717</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5718">CVE-2013-5718</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5719">CVE-2013-5719</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5720">CVE-2013-5720</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5721">CVE-2013-5721</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5722">CVE-2013-5722</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6336">CVE-2013-6336</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6337">CVE-2013-6337</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6338">CVE-2013-6338</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6339">CVE-2013-6339</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6340">CVE-2013-6340</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 30 Sep 2013 23:34:56 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Dec 2013 18:13:16 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-09-30T23:34:56Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-12-16T18:13:16Z">ackle</metadata>
 </glsa>

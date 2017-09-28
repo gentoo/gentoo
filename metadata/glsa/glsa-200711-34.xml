@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-34">
   <title>CSTeX: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary code or overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">cstetex</product>
-  <announced>November 25, 2007</announced>
-  <revised>November 25, 2007: 01</revised>
+  <announced>2007-11-25</announced>
+  <revised>2007-11-25: 01</revised>
   <bug>196673</bug>
   <access>remote</access>
   <affected>
@@ -56,17 +55,17 @@
     </p>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200708-05.xml">GLSA 200708-05</uri>
-    <uri link="/security/en/glsa/glsa-200709-12.xml">GLSA 200709-12</uri>
-    <uri link="/security/en/glsa/glsa-200709-17.xml">GLSA 200709-17</uri>
-    <uri link="/security/en/glsa/glsa-200710-12.xml">GLSA 200710-12</uri>
-    <uri link="/security/en/glsa/glsa-200711-22.xml">GLSA 200711-22</uri>
-    <uri link="/security/en/glsa/glsa-200711-26.xml">GLSA 200711-26</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200708-05.xml">GLSA 200708-05</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200709-12.xml">GLSA 200709-12</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200709-17.xml">GLSA 200709-17</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200710-12.xml">GLSA 200710-12</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-22.xml">GLSA 200711-22</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-26.xml">GLSA 200711-26</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 00:12:34 +0000">
+  <metadata tag="submitter" timestamp="2007-11-13T00:12:34Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 19 Nov 2007 21:14:43 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-19T21:14:43Z">
     rbu
   </metadata>
 </glsa>

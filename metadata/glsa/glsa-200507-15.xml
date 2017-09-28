@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-15">
   <title>PHP: Script injection through XML-RPC</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execute arbitrary PHP script commands.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>July 15, 2005</announced>
-  <revised>July 15, 2005: 01</revised>
+  <announced>2005-07-15</announced>
+  <revised>2005-07-15: 01</revised>
   <bug>97655</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/php-4.4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/php-4.4.0"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 12 Jul 2005 20:30:47 +0000">
+  <metadata tag="requester" timestamp="2005-07-12T20:30:47Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 12 Jul 2005 22:51:12 +0000">
+  <metadata tag="submitter" timestamp="2005-07-12T22:51:12Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 15 Jul 2005 13:35:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-15T13:35:35Z">
     koon
   </metadata>
 </glsa>

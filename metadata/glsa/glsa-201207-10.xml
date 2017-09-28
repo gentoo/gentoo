@@ -6,8 +6,8 @@
     allow execution of arbitrary code or local privilege escalation.
   </synopsis>
   <product type="ebuild">cups</product>
-  <announced>July 09, 2012</announced>
-  <revised>July 09, 2012: 1</revised>
+  <announced>2012-07-09</announced>
+  <revised>2012-07-09: 1</revised>
   <bug>295256</bug>
   <bug>308045</bug>
   <bug>325551</bug>
@@ -53,39 +53,39 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3553">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3553">
       CVE-2009-3553
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0302">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0302">
       CVE-2010-0302
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0393">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0393">
       CVE-2010-0393
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0540">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0540">
       CVE-2010-0540
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0542">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0542">
       CVE-2010-0542
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1748">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1748">
       CVE-2010-1748
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2431">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2431">
       CVE-2010-2431
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2432">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2432">
       CVE-2010-2432
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2941">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2941">
       CVE-2010-2941
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3170">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3170">
       CVE-2011-3170
     </uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:16 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:16Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Mon, 09 Jul 2012 23:33:59 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2012-07-09T23:33:59Z" tag="submitter">craig</metadata>
 </glsa>

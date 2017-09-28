@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-13">
   <title>Samba: Integer overflow</title>
   <synopsis>
     Samba contains a bug that could lead to remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Samba</product>
-  <announced>December 17, 2004</announced>
-  <revised>December 17, 2004: 01</revised>
+  <announced>2004-12-17</announced>
+  <revised>2004-12-17: 01</revised>
   <bug>73943</bug>
   <access>remote</access>
   <affected>
@@ -47,16 +46,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/samba-3.0.9-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-3.0.9-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1154">CAN 2004-1154</uri>
-    <uri link="http://www.samba.org/samba/security/CAN-2004-1154.html">Samba Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1154">CAN 2004-1154</uri>
+    <uri link="https://www.samba.org/samba/security/CAN-2004-1154.html">Samba Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 15 Dec 2004 20:27:23 +0000">
+  <metadata tag="submitter" timestamp="2004-12-15T20:27:23Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 17 Dec 2004 19:53:44 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-17T19:53:44Z">
     jaervosz
   </metadata>
 </glsa>

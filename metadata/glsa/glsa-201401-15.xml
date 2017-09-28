@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>January 21, 2014</announced>
-  <revised>January 21, 2014: 1</revised>
+  <announced>2014-01-21</announced>
+  <revised>2014-01-21: 1</revised>
   <bug>449828</bug>
   <bug>463622</bug>
   <bug>482776</bug>
@@ -54,17 +54,17 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5976">CVE-2012-5976</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5977">CVE-2012-5977</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2264">CVE-2013-2264</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2685">CVE-2013-2685</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2686">CVE-2013-2686</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5641">CVE-2013-5641</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5642">CVE-2013-5642</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7100">CVE-2013-7100</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5976">CVE-2012-5976</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5977">CVE-2012-5977</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2264">CVE-2013-2264</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2685">CVE-2013-2685</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2686">CVE-2013-2686</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5641">CVE-2013-5641</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5642">CVE-2013-5642</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7100">CVE-2013-7100</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 03 Jan 2013 17:20:14 +0000">
+  <metadata tag="requester" timestamp="2013-01-03T17:20:14Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Jan 2014 04:17:25 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-01-21T04:17:25Z">ackle</metadata>
 </glsa>

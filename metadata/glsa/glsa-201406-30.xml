@@ -6,8 +6,8 @@
     gain elevated privileges. 
   </synopsis>
   <product type="ebuild">sudo</product>
-  <announced>June 27, 2014</announced>
-  <revised>June 27, 2014: 1</revised>
+  <announced>2014-06-27</announced>
+  <revised>2014-06-27: 1</revised>
   <bug>503586</bug>
   <access>local</access>
   <affected>
@@ -45,10 +45,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0106">CVE-2014-0106</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0106">CVE-2014-0106</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Jun 2014 23:56:18 +0000">
+  <metadata tag="requester" timestamp="2014-06-18T23:56:18Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 27 Jun 2014 08:30:38 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="2014-06-27T08:30:38Z">K_F</metadata>
 </glsa>

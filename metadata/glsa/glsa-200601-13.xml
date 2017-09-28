@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200601-13">
   <title>Gallery: Cross-site scripting vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allow arbitrary JavaScript code execution.
   </synopsis>
   <product type="ebuild">gallery</product>
-  <announced>January 26, 2006</announced>
-  <revised>January 26, 2006: 01</revised>
+  <announced>2006-01-26</announced>
+  <revised>2006-01-26: 01</revised>
   <bug>119590</bug>
   <access>remote</access>
   <affected>
@@ -51,7 +50,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/gallery-1.5.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/gallery-1.5.2"</code>
     <p>
     Note: Users with the vhosts USE flag set should manually use
     webapp-config to finalize the update.
@@ -59,15 +58,15 @@
   </resolution>
   <references>
     <uri link="http://gallery.menalto.com/page/gallery_1_5_2_release">Gallery Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0330">CVE-2006-0330</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0330">CVE-2006-0330</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 22 Jan 2006 19:16:38 +0000">
+  <metadata tag="requester" timestamp="2006-01-22T19:16:38Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 22 Jan 2006 19:17:06 +0000">
+  <metadata tag="bugReady" timestamp="2006-01-22T19:17:06Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 22 Jan 2006 19:28:37 +0000">
+  <metadata tag="submitter" timestamp="2006-01-22T19:28:37Z">
     DerCorny
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-21">
   <title>Apache 2, mod_dav: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     local user to get escalated privileges.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>September 16, 2004</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2004-09-16</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>62626</bug>
   <bug>63948</bug>
   <bug>64145</bug>
@@ -69,31 +68,31 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=www-servers/apache-2.0.51"
-    # emerge ">=www-servers/apache-2.0.51"</code>
+    # emerge -pv "&gt;=www-servers/apache-2.0.51"
+    # emerge "&gt;=www-servers/apache-2.0.51"</code>
     <p>
     All mod_dav users should upgrade to the latest version:
     </p>
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-www/mod_dav-1.0.3-r2"
-    # emerge ">=net-www/mod_dav-1.0.3-r2"</code>
+    # emerge -pv "&gt;=net-www/mod_dav-1.0.3-r2"
+    # emerge "&gt;=net-www/mod_dav-1.0.3-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0747">CAN-2004-0747</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0748">CAN-2004-0748</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0751">CAN-2004-0751</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0786">CAN-2004-0786</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0809">CAN-2004-0809</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0747">CAN-2004-0747</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0748">CAN-2004-0748</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0751">CAN-2004-0751</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0786">CAN-2004-0786</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0809">CAN-2004-0809</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu,  9 Sep 2004 04:54:03 +0000">
+  <metadata tag="requester" timestamp="2004-09-09T04:54:03Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Sep 2004 18:02:25 +0000">
+  <metadata tag="submitter" timestamp="2004-09-10T18:02:25Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Sep 2004 20:45:09 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-16T20:45:09Z">
     koon
   </metadata>
 </glsa>

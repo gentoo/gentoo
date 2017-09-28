@@ -6,8 +6,8 @@
     of which could allow attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">libwww-perl</product>
-  <announced>February 04, 2014</announced>
-  <revised>February 04, 2014: 1</revised>
+  <announced>2014-02-04</announced>
+  <revised>2014-02-04: 1</revised>
   <bug>329943</bug>
   <bug>386309</bug>
   <access>remote</access>
@@ -53,13 +53,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2253">CVE-2010-2253</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0633">CVE-2011-0633</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2253">CVE-2010-2253</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0633">CVE-2011-0633</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:06 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:06Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 04 Feb 2014 15:57:46 +0000">
+  <metadata tag="submitter" timestamp="2014-02-04T15:57:46Z">
     pinkbyte
   </metadata>
 </glsa>

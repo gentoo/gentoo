@@ -6,8 +6,8 @@
     of which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">cups-filters</product>
-  <announced>October 31, 2015</announced>
-  <revised>October 31, 2015: 1</revised>
+  <announced>2015-10-31</announced>
+  <revised>2015-10-31: 1</revised>
   <bug>553644</bug>
   <bug>553836</bug>
   <access>remote</access>
@@ -44,11 +44,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3258">CVE-2015-3258</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3279">CVE-2015-3279</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3258">CVE-2015-3258</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3279">CVE-2015-3279</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Aug 2015 22:36:13 +0000">
+  <metadata tag="requester" timestamp="2015-08-10T22:36:13Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:30:50 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="2015-10-31T15:30:50Z">mrueg</metadata>
 </glsa>

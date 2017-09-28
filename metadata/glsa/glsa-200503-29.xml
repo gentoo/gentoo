@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-29">
   <title>GnuPG: OpenPGP protocol attack</title>
   <synopsis>
@@ -8,8 +7,8 @@
     message.
   </synopsis>
   <product type="ebuild">GnuPG</product>
-  <announced>March 24, 2005</announced>
-  <revised>March 24, 2005: 01</revised>
+  <announced>2005-03-24</announced>
+  <revised>2005-03-24: 01</revised>
   <bug>85547</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/gnupg-1.4.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-1.4.1"</code>
   </resolution>
   <references>
-    <uri link="http://www.kb.cert.org/vuls/id/303094">CERT VU#303094</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0366">CAN-2005-0366</uri>
+    <uri link="https://www.kb.cert.org/vuls/id/303094">CERT VU#303094</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0366">CAN-2005-0366</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Mar 2005 17:12:46 +0000">
+  <metadata tag="requester" timestamp="2005-03-23T17:12:46Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Mar 2005 12:34:11 +0000">
+  <metadata tag="submitter" timestamp="2005-03-24T12:34:11Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 24 Mar 2005 21:44:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-24T21:44:14Z">
     koon
   </metadata>
 </glsa>

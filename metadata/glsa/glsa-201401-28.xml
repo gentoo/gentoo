@@ -4,8 +4,8 @@
   <title>Tomboy: Privilege escalation</title>
   <synopsis>A vulnerability in Tomboy could result in privilege escalation.</synopsis>
   <product type="ebuild">tomboy</product>
-  <announced>January 26, 2014</announced>
-  <revised>January 26, 2014: 1</revised>
+  <announced>2014-01-26</announced>
+  <revised>2014-01-26: 1</revised>
   <bug>356583</bug>
   <access>local</access>
   <affected>
@@ -50,13 +50,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4005">CVE-2010-4005</uri>
-    <uri link="http://www.gentoo.org/security/en/glsa/glsa-200711-12.xml">GLSA
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4005">CVE-2010-4005</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-12.xml">GLSA
       200711-12
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:58 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:58Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jan 2014 01:22:06 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-26T01:22:06Z">Zlogene</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200408-22">
   <title>Mozilla, Firefox, Thunderbird, Galeon, Epiphany: New releases fix vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     overflows.
   </synopsis>
   <product type="ebuild">www-client/mozilla, www-client/mozilla-firefox, mail-client/mozilla-thunderbird, www-client/galeon, www-client/epiphany</product>
-  <announced>August 23, 2004</announced>
-  <revised>December 30, 2007: 06</revised>
+  <announced>2004-08-23</announced>
+  <revised>2007-12-30: 06</revised>
   <bug>57380</bug>
   <bug>59419</bug>
   <access>remote</access>
@@ -102,16 +101,16 @@
     # emerge your-version</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0763">CAN-2004-0763</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0758">CAN-2004-0758</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0597">CAN-2004-0597</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0598">CAN-2004-0598</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0599">CAN-2004-0599</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0763">CAN-2004-0763</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0758">CAN-2004-0758</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0597">CAN-2004-0597</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0598">CAN-2004-0598</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0599">CAN-2004-0599</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu,  5 Aug 2004 18:21:36 +0000">
+  <metadata tag="requester" timestamp="2004-08-05T18:21:36Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu,  5 Aug 2004 19:57:21 +0000">
+  <metadata tag="submitter" timestamp="2004-08-05T19:57:21Z">
     dmargoli
   </metadata>
 </glsa>

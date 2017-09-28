@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200504-20">
   <title>openMosixview: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attacks, potentially allowing a local user to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">openMosixview</product>
-  <announced>April 21, 2005</announced>
-  <revised>April 21, 2005: 01</revised>
+  <announced>2005-04-21</announced>
+  <revised>2005-04-21: 01</revised>
   <bug>86686</bug>
   <access>local</access>
   <affected>
@@ -52,15 +51,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-cluster/openmosixview-1.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-cluster/openmosixview-1.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0894">CAN-2005-0894</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0894">CAN-2005-0894</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 20 Apr 2005 11:45:51 +0000">
+  <metadata tag="submitter" timestamp="2005-04-20T11:45:51Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 20 Apr 2005 11:46:46 +0000">
+  <metadata tag="bugReady" timestamp="2005-04-20T11:46:46Z">
     koon
   </metadata>
 </glsa>

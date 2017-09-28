@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-26">
   <title>KSirc: Denial of Service vulnerability</title>
   <synopsis>
     KSirc is vulnerable to a Denial of Service attack.
   </synopsis>
   <product type="ebuild">ksirc</product>
-  <announced>January 29, 2007</announced>
-  <revised>January 30, 2007: 01</revised>
+  <announced>2007-01-29</announced>
+  <revised>2007-01-30: 01</revised>
   <bug>159658</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=kde-base/ksirc-3.5.5-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=kde-base/ksirc-3.5.5-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6811">CVE-2006-6811</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6811">CVE-2006-6811</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Jan 2007 20:03:08 +0000">
+  <metadata tag="requester" timestamp="2007-01-24T20:03:08Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 24 Jan 2007 20:03:22 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-24T20:03:22Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 25 Jan 2007 11:44:16 +0000">
+  <metadata tag="submitter" timestamp="2007-01-25T11:44:16Z">
     hyakuhei
   </metadata>
 </glsa>

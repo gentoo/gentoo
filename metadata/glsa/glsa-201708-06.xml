@@ -48,16 +48,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10219">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10219">
       CVE-2016-10219
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10220">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10220">
       CVE-2016-10220
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5951">CVE-2017-5951</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6196">CVE-2017-6196</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7207">CVE-2017-7207</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8291">CVE-2017-8291</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5951">CVE-2017-5951</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6196">CVE-2017-6196</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7207">CVE-2017-7207</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8291">CVE-2017-8291</uri>
   </references>
   <metadata tag="requester" timestamp="2017-07-17T22:58:42Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-08-21T01:03:33Z">b-man</metadata>

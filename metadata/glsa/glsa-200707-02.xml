@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200707-02">
   <title>OpenOffice.org: Two buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     for the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">openoffice</product>
-  <announced>July 02, 2007</announced>
-  <revised>July 02, 2007: 01</revised>
+  <announced>2007-07-02</announced>
+  <revised>2007-07-02: 01</revised>
   <bug>181773</bug>
   <access>remote</access>
   <affected>
@@ -58,23 +57,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-2.2.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-2.2.1"</code>
     <p>
     All OpenOffice.org binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/openoffice-bin-2.2.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-2.2.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0245">CVE-2007-0245</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2754">CVE-2007-2754</uri>
-    <uri link="/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0245">CVE-2007-0245</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2754">CVE-2007-2754</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 25 Jun 2007 15:57:23 +0000">
+  <metadata tag="submitter" timestamp="2007-06-25T15:57:23Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 25 Jun 2007 15:57:59 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-25T15:57:59Z">
     falco
   </metadata>
 </glsa>

@@ -7,8 +7,8 @@
     scripts, and perform cross-site scripting (XSS).
   </synopsis>
   <product type="ebuild">roundcube</product>
-  <announced>March 09, 2016</announced>
-  <revised>March 09, 2016: 1</revised>
+  <announced>2016-03-09</announced>
+  <revised>2016-03-09: 1</revised>
   <bug>554866</bug>
   <bug>564476</bug>
   <bug>570336</bug>
@@ -48,13 +48,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8105">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8105">
       CVE-2015-8105
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8770">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8770">
       CVE-2015-8770
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 08 Feb 2016 20:35:16 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Wed, 09 Mar 2016 09:28:53 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-02-08T20:35:16Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2016-03-09T09:28:53Z">b-man</metadata>
 </glsa>

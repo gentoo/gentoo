@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-28">
   <title>X.Org, XFree86: libXpm vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Service and arbitrary code execution.
   </synopsis>
   <product type="ebuild">X.Org, XFree86</product>
-  <announced>November 19, 2004</announced>
-  <revised>November 19, 2004: 01</revised>
+  <announced>2004-11-19</announced>
+  <revised>2004-11-19: 01</revised>
   <bug>68544</bug>
   <access>remote</access>
   <affected>
@@ -54,24 +53,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-x11-6.7.0-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-x11-6.7.0-r3"</code>
     <p>
     All XFree86 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xfree-x11-4.3.0-r8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-base/xfree-x11-4.3.0-r8"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0914">CAN-2004-0914</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 17 Nov 2004 20:14:27 +0000">
+  <metadata tag="requester" timestamp="2004-11-17T20:14:27Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 17 Nov 2004 20:53:59 +0000">
+  <metadata tag="submitter" timestamp="2004-11-17T20:53:59Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 18 Nov 2004 10:05:15 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-18T10:05:15Z">
     koon
   </metadata>
 </glsa>

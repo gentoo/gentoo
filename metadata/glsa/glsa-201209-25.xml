@@ -8,8 +8,8 @@
     code, and a Denial of Service.
   </synopsis>
   <product type="ebuild">vmware-server vmware-player vmware-workstation</product>
-  <announced>September 29, 2012</announced>
-  <revised>September 29, 2012: 2</revised>
+  <announced>2012-09-29</announced>
+  <revised>2012-09-29: 2</revised>
   <bug>213548</bug>
   <bug>224637</bug>
   <bug>236167</bug>
@@ -98,112 +98,112 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5269">CVE-2007-5269</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5503 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5269">CVE-2007-5269</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5503 ">
       CVE-2007-5503 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5671 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2007-5671 ">
       CVE-2007-5671 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0967 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0967 ">
       CVE-2008-0967 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1340 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1340 ">
       CVE-2008-1340 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1361 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1361 ">
       CVE-2008-1361 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1362 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1362 ">
       CVE-2008-1362 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1363 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1363 ">
       CVE-2008-1363 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1364 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1364 ">
       CVE-2008-1364 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1392 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1392 ">
       CVE-2008-1392 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1447 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1447 ">
       CVE-2008-1447 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1806 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1806 ">
       CVE-2008-1806 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1807 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1807 ">
       CVE-2008-1807 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1808 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-1808 ">
       CVE-2008-1808 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2098 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2098 ">
       CVE-2008-2098 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2100 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2100 ">
       CVE-2008-2100 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2101 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-2101 ">
       CVE-2008-2101 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4915 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4915 ">
       CVE-2008-4915 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4916 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4916 ">
       CVE-2008-4916 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4917 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-4917 ">
       CVE-2008-4917 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0040 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0040 ">
       CVE-2009-0040 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0909 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0909 ">
       CVE-2009-0909 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0910 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0910 ">
       CVE-2009-0910 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1244">CVE-2009-1244</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2267 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-1244">CVE-2009-1244</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2267 ">
       CVE-2009-2267 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3707 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3707 ">
       CVE-2009-3707 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3732 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3732 ">
       CVE-2009-3732 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3733 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3733 ">
       CVE-2009-3733 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4811 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4811 ">
       CVE-2009-4811 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1137 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1137 ">
       CVE-2010-1137 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1138 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1138 ">
       CVE-2010-1138 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1139 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1139 ">
       CVE-2010-1139 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1140 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1140 ">
       CVE-2010-1140 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1141 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1141 ">
       CVE-2010-1141 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1142 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1142 ">
       CVE-2010-1142 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1143 ">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1143 ">
       CVE-2010-1143 
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3868">CVE-2011-3868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3868">CVE-2011-3868</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:01 +0000">system</metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Sep 2012 13:12:45 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:37:01Z">system</metadata>
+  <metadata tag="submitter" timestamp="2012-09-29T13:12:45Z">ackle</metadata>
 </glsa>

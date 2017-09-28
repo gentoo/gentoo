@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-01">
   <title>unp: Arbitrary command execution</title>
   <synopsis>
     unp allows execution of arbitrary code via malicious file names.
   </synopsis>
   <product type="ebuild">remote</product>
-  <announced>January 09, 2008</announced>
-  <revised>January 09, 2008: 01</revised>
+  <announced>2008-01-09</announced>
+  <revised>2008-01-09: 01</revised>
   <bug>203106</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/unp-1.0.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/unp-1.0.14"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6610">CVE-2007-6610</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6610">CVE-2007-6610</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 28 Dec 2007 00:23:45 +0000">
+  <metadata tag="requester" timestamp="2007-12-28T00:23:45Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Dec 2007 11:27:28 +0000">
+  <metadata tag="submitter" timestamp="2007-12-28T11:27:28Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 28 Dec 2007 22:57:04 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-28T22:57:04Z">
     p-y
   </metadata>
 </glsa>

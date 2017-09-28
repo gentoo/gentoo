@@ -6,8 +6,8 @@
     leading to remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Quagga</product>
-  <announced>February 21, 2012</announced>
-  <revised>February 21, 2012: 2</revised>
+  <announced>2012-02-21</announced>
+  <revised>2012-02-21: 2</revised>
   <bug>334303</bug>
   <bug>359903</bug>
   <bug>384651</bug>
@@ -55,18 +55,18 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1674">CVE-2010-1674</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1675">CVE-2010-1675</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2948">CVE-2010-2948</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2949">CVE-2010-2949</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3323">CVE-2011-3323</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3324">CVE-2011-3324</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3325">CVE-2011-3325</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3326">CVE-2011-3326</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3327">CVE-2011-3327</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1674">CVE-2010-1674</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1675">CVE-2010-1675</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2948">CVE-2010-2948</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2949">CVE-2010-2949</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3323">CVE-2011-3323</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3324">CVE-2011-3324</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3325">CVE-2011-3325</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3326">CVE-2011-3326</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3327">CVE-2011-3327</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:14 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:38:14Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Tue, 21 Feb 2012 19:14:56 +0000" tag="submitter">a3li</metadata>
+  <metadata timestamp="2012-02-21T19:14:56Z" tag="submitter">a3li</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     create a Denial of Service condition.
   </synopsis>
   <product type="ebuild">file</product>
-  <announced>December 27, 2014</announced>
-  <revised>December 27, 2014: 1</revised>
+  <announced>2014-12-27</announced>
+  <revised>2014-12-27: 1</revised>
   <bug>532686</bug>
   <access>local, remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8117">CVE-2014-8117</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8117">CVE-2014-8117</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 26 Dec 2014 19:35:05 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sat, 27 Dec 2014 11:11:58 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2014-12-26T19:35:05Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-12-27T11:11:58Z">Zlogene</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-13">
   <title>Portage, Gentoolkit: Temporary file vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     overwrite arbitrary files with the rights of the user running the script.
   </synopsis>
   <product type="ebuild">portage gentoolkit</product>
-  <announced>November 07, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-11-07</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>68846</bug>
   <bug>69147</bug>
   <access>local</access>
@@ -59,25 +58,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=sys-apps/portage-2.0.51-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/portage-2.0.51-r3"</code>
     <p>
     All Gentoolkit users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-portage/gentoolkit-0.2.0_pre8-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-portage/gentoolkit-0.2.0_pre8-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1107">CVE-2004-1107</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1108">CVE-2004-1108</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1107">CVE-2004-1107</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1108">CVE-2004-1108</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue,  2 Nov 2004 14:02:06 +0000">
+  <metadata tag="requester" timestamp="2004-11-02T14:02:06Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue,  2 Nov 2004 17:41:31 +0000">
+  <metadata tag="submitter" timestamp="2004-11-02T17:41:31Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  7 Nov 2004 11:16:08 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-07T11:16:08Z">
     jaervosz
   </metadata>
 </glsa>

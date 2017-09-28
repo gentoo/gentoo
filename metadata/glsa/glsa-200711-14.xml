@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-14">
   <title>Mozilla Firefox, SeaMonkey, XULRunner: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     and XULRunner, potentially allowing to compromise a user's system.
   </synopsis>
   <product type="ebuild">firefox seamonkey xulrunner</product>
-  <announced>November 12, 2007</announced>
-  <revised>November 12, 2007: 01</revised>
+  <announced>2007-11-12</announced>
+  <revised>2007-11-12: 01</revised>
   <bug>196480</bug>
   <access>remote</access>
   <affected>
@@ -77,49 +76,49 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-2.0.0.9"</code>
     <p>
     All Mozilla Firefox binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-2.0.0.9"</code>
     <p>
     All SeaMonkey users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/seamonkey-1.1.6"</code>
     <p>
     All SeaMonkey binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/seamonkey-bin-1.1.6"</code>
     <p>
     All XULRunner users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-libs/xulrunner-1.8.1.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-libs/xulrunner-1.8.1.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1095">CVE-2007-1095</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2292">CVE-2007-2292</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5334">CVE-2007-5334</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5335">CVE-2007-5335</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5337">CVE-2007-5337</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5338">CVE-2007-5338</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5339">CVE-2007-5339</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5340">CVE-2007-5340</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1095">CVE-2007-1095</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2292">CVE-2007-2292</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5334">CVE-2007-5334</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5335">CVE-2007-5335</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5337">CVE-2007-5337</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5338">CVE-2007-5338</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5339">CVE-2007-5339</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5340">CVE-2007-5340</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Oct 2007 22:27:12 +0000">
+  <metadata tag="requester" timestamp="2007-10-24T22:27:12Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 25 Oct 2007 23:05:04 +0000">
+  <metadata tag="submitter" timestamp="2007-10-25T23:05:04Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Nov 2007 21:08:46 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-12T21:08:46Z">
     p-y
   </metadata>
 </glsa>

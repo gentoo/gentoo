@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-18">
   <title>Ringtone Tools: Buffer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     potentially leading to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ringtonetools</product>
-  <announced>March 15, 2005</announced>
-  <revised>March 15, 2005: 01</revised>
+  <announced>2005-03-15</announced>
+  <revised>2005-03-15: 01</revised>
   <bug>74700</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-mobilephone/ringtonetools-2.23&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-mobilephone/ringtonetools-2.23"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1292">CAN-2004-1292</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1292">CAN-2004-1292</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Mar 2005 02:28:50 +0000">
+  <metadata tag="requester" timestamp="2005-03-15T02:28:50Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Mar 2005 09:56:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-15T09:56:20Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Mar 2005 14:11:25 +0000">
+  <metadata tag="submitter" timestamp="2005-03-15T14:11:25Z">
     lewk
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200801-10">
   <title>TikiWiki: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     having unknown impact.
   </synopsis>
   <product type="ebuild">tikiwiki</product>
-  <announced>January 23, 2008</announced>
-  <revised>January 23, 2008: 01</revised>
+  <announced>2008-01-23</announced>
+  <revised>2008-01-23: 01</revised>
   <bug>203265</bug>
   <access>remote</access>
   <affected>
@@ -60,20 +59,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/tikiwiki-1.9.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/tikiwiki-1.9.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6526">CVE-2007-6526</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6528">CVE-2007-6528</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6529">CVE-2007-6529</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6526">CVE-2007-6526</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6528">CVE-2007-6528</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6529">CVE-2007-6529</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Jan 2008 18:58:53 +0000">
+  <metadata tag="requester" timestamp="2008-01-20T18:58:53Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Jan 2008 21:50:20 +0000">
+  <metadata tag="submitter" timestamp="2008-01-20T21:50:20Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 20 Jan 2008 22:40:20 +0000">
+  <metadata tag="bugReady" timestamp="2008-01-20T22:40:20Z">
     falco
   </metadata>
 </glsa>

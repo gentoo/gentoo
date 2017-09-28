@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-14">
   <title>Mod_auth_kerb: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of Service.
   </synopsis>
   <product type="ebuild">mod_auth_kerb</product>
-  <announced>January 22, 2007</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2007-01-22</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>155782</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_auth_kerb-5.0_rc7-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_auth_kerb-5.0_rc7-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5989">CVE-2006-5989</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5989">CVE-2006-5989</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 17 Jan 2007 22:33:24 +0000">
+  <metadata tag="requester" timestamp="2007-01-17T22:33:24Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 17 Jan 2007 22:40:53 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-17T22:40:53Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Jan 2007 01:47:32 +0000">
+  <metadata tag="submitter" timestamp="2007-01-18T01:47:32Z">
     shellsage
   </metadata>
 </glsa>

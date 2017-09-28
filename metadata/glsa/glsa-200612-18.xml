@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200612-18">
   <title>ClamAV: Denial of Service</title>
   <synopsis>
     ClamAV is vulnerable to Denial of Service.
   </synopsis>
   <product type="ebuild">clamav</product>
-  <announced>December 18, 2006</announced>
-  <revised>December 18, 2006: 01</revised>
+  <announced>2006-12-18</announced>
+  <revised>2006-12-18: 01</revised>
   <bug>157698</bug>
   <access>remote</access>
   <affected>
@@ -45,15 +44,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/clamav-0.88.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.88.7"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6481">CVE-2006-6481</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6481">CVE-2006-6481</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sat, 16 Dec 2006 18:27:28 +0000">
+  <metadata tag="submitter" timestamp="2006-12-16T18:27:28Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 18 Dec 2006 19:01:42 +0000">
+  <metadata tag="bugReady" timestamp="2006-12-18T19:01:42Z">
     vorlon
   </metadata>
 </glsa>

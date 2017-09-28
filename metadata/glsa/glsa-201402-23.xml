@@ -6,8 +6,8 @@
     which allow for local privilege escalation.
   </synopsis>
   <product type="ebuild">libxfont</product>
-  <announced>February 21, 2014</announced>
-  <revised>February 21, 2014: 1</revised>
+  <announced>2014-02-21</announced>
+  <revised>2014-02-21: 1</revised>
   <bug>378797</bug>
   <bug>497416</bug>
   <access>local</access>
@@ -43,11 +43,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2895">CVE-2011-2895</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6462">CVE-2013-6462</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2895">CVE-2011-2895</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6462">CVE-2013-6462</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:46 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:46Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Feb 2014 15:29:10 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-02-21T15:29:10Z">Zlogene</metadata>
 </glsa>

@@ -45,7 +45,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6004">CVE-2017-6004</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6004">CVE-2017-6004</uri>
   </references>
   <metadata tag="requester" timestamp="2017-04-26T00:55:28Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-06-06T19:43:31Z">whissi</metadata>

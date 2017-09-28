@@ -41,10 +41,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9840">CVE-2016-9840</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9841">CVE-2016-9841</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9842">CVE-2016-9842</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9843">CVE-2016-9843</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9840">CVE-2016-9840</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9841">CVE-2016-9841</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9842">CVE-2016-9842</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9843">CVE-2016-9843</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-16T18:59:28Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-01-23T03:40:28Z">b-man</metadata>

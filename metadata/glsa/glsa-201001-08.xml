@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-08">
   <title>SquirrelMail: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     results in remote code execution.
   </synopsis>
   <product type="ebuild">squirrelmail</product>
-  <announced>January 13, 2010</announced>
-  <revised>January 13, 2010: 01</revised>
+  <announced>2010-01-13</announced>
+  <revised>2010-01-13: 01</revised>
   <bug>269567</bug>
   <bug>270671</bug>
   <access>remote</access>
@@ -67,19 +66,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/squirrelmail-1.4.19&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/squirrelmail-1.4.19"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1381">CVE-2009-1381</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1578">CVE-2009-1578</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1579">CVE-2009-1579</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1580">CVE-2009-1580</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1581">CVE-2009-1581</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1381">CVE-2009-1381</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1578">CVE-2009-1578</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1579">CVE-2009-1579</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1580">CVE-2009-1580</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1581">CVE-2009-1581</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 05 Jan 2010 21:49:10 +0000">
+  <metadata tag="submitter" timestamp="2010-01-05T21:49:10Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 13 Jan 2010 21:54:28 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-13T21:54:28Z">
     craig
   </metadata>
 </glsa>

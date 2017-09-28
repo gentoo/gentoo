@@ -7,8 +7,8 @@
     compartment.
   </synopsis>
   <product type="ebuild">Safe</product>
-  <announced>November 20, 2011</announced>
-  <revised>November 20, 2011: 1</revised>
+  <announced>2011-11-20</announced>
+  <revised>2011-11-20: 1</revised>
   <bug>325563</bug>
   <access>remote</access>
   <affected>
@@ -66,10 +66,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1168">CVE-2010-1168</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1168">CVE-2010-1168</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:03 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:03Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 20 Nov 2011 17:56:51 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-11-20T17:56:51Z" tag="submitter">ackle</metadata>
 </glsa>

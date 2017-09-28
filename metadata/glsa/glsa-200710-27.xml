@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-27">
   <title>ImageMagick: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     resulting in arbitrary code execution or a Denial of Service.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>October 24, 2007</announced>
-  <revised>October 24, 2007: 01</revised>
+  <announced>2007-10-24</announced>
+  <revised>2007-10-24: 01</revised>
   <bug>186030</bug>
   <access>remote</access>
   <affected>
@@ -52,21 +51,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.3.5.10&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.3.5.10"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4985">CVE-2007-4985</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4986">CVE-2007-4986</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4987">CVE-2007-4987</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4988">CVE-2007-4988</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4985">CVE-2007-4985</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4986">CVE-2007-4986</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4987">CVE-2007-4987</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4988">CVE-2007-4988</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 30 Sep 2007 09:56:31 +0000">
+  <metadata tag="requester" timestamp="2007-09-30T09:56:31Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Oct 2007 12:45:56 +0000">
+  <metadata tag="submitter" timestamp="2007-10-06T12:45:56Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 23 Oct 2007 14:53:02 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-23T14:53:02Z">
     keytoaster
   </metadata>
 </glsa>

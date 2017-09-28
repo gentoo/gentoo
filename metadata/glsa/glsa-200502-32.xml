@@ -6,8 +6,8 @@
     traversal attacks.
   </synopsis>
   <product type="ebuild">unace</product>
-  <announced>February 28, 2005</announced>
-  <revised>May 19, 2014: 2</revised>
+  <announced>2005-02-28</announced>
+  <revised>2014-05-19: 2</revised>
   <bug>81958</bug>
   <access>remote</access>
   <affected>
@@ -47,14 +47,14 @@
     
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0160">
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0160">
       CAN-2005-0160
     </uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0161">
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0161">
       CAN-2005-0161
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 22:18:40 +0000">system</metadata>
-  <metadata tag="submitter" timestamp="Mon, 19 May 2014 00:38:42 +0000">system</metadata>
-  <metadata tag="bugReady" timestamp="Mon, 19 May 2014 02:38:44 +0200">system</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T22:18:40Z">system</metadata>
+  <metadata tag="submitter" timestamp="2014-05-19T00:38:42Z">system</metadata>
+  <metadata tag="bugReady" timestamp="2014-05-19T00:38:44Z">system</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code. 
   </synopsis>
   <product type="ebuild">zabbix</product>
-  <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 1</revised>
+  <announced>2016-12-13</announced>
+  <revised>2016-12-13: 1</revised>
   <bug>582536</bug>
   <bug>598762</bug>
   <access>remote</access>
@@ -42,11 +42,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4338">CVE-2016-4338</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9140">CVE-2016-9140</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4338">CVE-2016-4338</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9140">CVE-2016-9140</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Jul 2015 02:35:28 +0000">
+  <metadata tag="requester" timestamp="2015-07-21T02:35:28Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 11:41:09 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-13T11:41:09Z">whissi</metadata>
 </glsa>

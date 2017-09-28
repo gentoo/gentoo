@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-19">
   <title>OpenLDAP: Insecure usage of /tmp during installation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     files in /tmp during the emerge process.
   </synopsis>
   <product type="ebuild">openldap</product>
-  <announced>January 23, 2007</announced>
-  <revised>March 11, 2007: 02</revised>
+  <announced>2007-01-23</announced>
+  <revised>2007-03-11: 02</revised>
   <bug>159508</bug>
   <access>local</access>
   <affected>
@@ -54,18 +53,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;net-nds/openldap&quot;</code>
+    # emerge --ask --oneshot --verbose "net-nds/openldap"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0476">CVE-2007-0476</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0476">CVE-2007-0476</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 13 Jan 2007 21:20:49 +0000">
+  <metadata tag="requester" timestamp="2007-01-13T21:20:49Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:19 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-14T21:54:19Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 00:28:23 +0000">
+  <metadata tag="submitter" timestamp="2007-01-15T00:28:23Z">
     shellsage
   </metadata>
 </glsa>

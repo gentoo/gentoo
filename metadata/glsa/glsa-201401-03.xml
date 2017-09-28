@@ -6,8 +6,8 @@
     remote attacker.
   </synopsis>
   <product type="ebuild">nagstamon</product>
-  <announced>January 06, 2014</announced>
-  <revised>January 06, 2014: 2</revised>
+  <announced>2014-01-06</announced>
+  <revised>2014-01-06: 2</revised>
   <bug>476538</bug>
   <access>remote</access>
   <affected>
@@ -44,12 +44,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4114">CVE-2013-4114</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4114">CVE-2013-4114</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:16 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:16Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Jan 2014 22:22:38 +0000">
+  <metadata tag="submitter" timestamp="2014-01-06T22:22:38Z">
     creffett
   </metadata>
 </glsa>

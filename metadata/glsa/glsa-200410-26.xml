@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-26">
   <title>socat: Format string vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     socat process.
   </synopsis>
   <product type="ebuild">socat</product>
-  <announced>October 25, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-10-25</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>68547</bug>
   <access>remote</access>
   <affected>
@@ -53,19 +52,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/socat-1.4.0.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/socat-1.4.0.3"</code>
   </resolution>
   <references>
     <uri link="http://www.dest-unreach.org/socat/advisory/socat-adv-1.html">socat Security Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1484">CVE-2004-1484</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1484">CVE-2004-1484</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 23 Oct 2004 13:12:08 +0000">
+  <metadata tag="requester" timestamp="2004-10-23T13:12:08Z">
     vorlon078
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 23 Oct 2004 13:30:23 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-23T13:30:23Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 24 Oct 2004 21:38:40 +0000">
+  <metadata tag="submitter" timestamp="2004-10-24T21:38:40Z">
     lewk
   </metadata>
 </glsa>

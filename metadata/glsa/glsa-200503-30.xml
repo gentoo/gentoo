@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-30">
   <title>Mozilla Suite: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     into trusting fake web sites or interacting with privileged content.
   </synopsis>
   <product type="ebuild">Mozilla</product>
-  <announced>March 25, 2005</announced>
-  <revised>March 25, 2005: 01</revised>
+  <announced>2005-03-25</announced>
+  <revised>2005-03-25: 01</revised>
   <bug>84074</bug>
   <access>remote and local</access>
   <affected>
@@ -100,39 +99,39 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-1.7.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-1.7.6"</code>
     <p>
     All Mozilla Suite binary users should upgrade to the latest
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-bin-1.7.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-bin-1.7.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1156">CAN-2004-1156</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0230">CAN-2005-0230</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0231">CAN-2005-0231</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0232">CAN-2005-0232</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0233">CAN-2005-0233</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0255">CAN-2005-0255</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0399">CAN-2005-0399</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0401">CAN-2005-0401</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0527">CAN-2005-0527</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0578">CAN-2005-0578</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0584">CAN-2005-0584</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0585">CAN-2005-0585</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0588">CAN-2005-0588</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0590">CAN-2005-0590</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0591">CAN-2005-0591</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0592">CAN-2005-0592</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0593">CAN-2005-0593</uri>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Security Advisories</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1156">CAN-2004-1156</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0230">CAN-2005-0230</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0231">CAN-2005-0231</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0232">CAN-2005-0232</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0233">CAN-2005-0233</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0255">CAN-2005-0255</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0399">CAN-2005-0399</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0401">CAN-2005-0401</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0527">CAN-2005-0527</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0578">CAN-2005-0578</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0584">CAN-2005-0584</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0585">CAN-2005-0585</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0588">CAN-2005-0588</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0590">CAN-2005-0590</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0591">CAN-2005-0591</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0592">CAN-2005-0592</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0593">CAN-2005-0593</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html">Mozilla Security Advisories</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 22 Mar 2005 09:19:22 +0000">
+  <metadata tag="submitter" timestamp="2005-03-22T09:19:22Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 25 Mar 2005 12:49:52 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-25T12:49:52Z">
     koon
   </metadata>
 </glsa>

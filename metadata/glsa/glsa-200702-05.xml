@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200702-05">
   <title>Fail2ban: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     hosts.
   </synopsis>
   <product type="ebuild">fail2ban</product>
-  <announced>February 16, 2007</announced>
-  <revised>February 16, 2007: 01</revised>
+  <announced>2007-02-16</announced>
+  <revised>2007-02-16: 01</revised>
   <bug>157166</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/fail2ban-0.6.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/fail2ban-0.6.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6302">CVE-2006-6302</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6302">CVE-2006-6302</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 12 Feb 2007 22:35:11 +0000">
+  <metadata tag="requester" timestamp="2007-02-12T22:35:11Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Feb 2007 22:42:08 +0000">
+  <metadata tag="bugReady" timestamp="2007-02-12T22:42:08Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 Feb 2007 22:56:35 +0000">
+  <metadata tag="submitter" timestamp="2007-02-12T22:56:35Z">
     taviso
   </metadata>
 </glsa>

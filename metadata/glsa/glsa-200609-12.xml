@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-12">
   <title>Mailman: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     file injection and XSS.
   </synopsis>
   <product type="ebuild">mailman</product>
-  <announced>September 19, 2006</announced>
-  <revised>September 19, 2006: 01</revised>
+  <announced>2006-09-19</announced>
+  <revised>2006-09-19: 01</revised>
   <bug>139976</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailman-2.1.9_rc1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/mailman-2.1.9_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2941">CVE-2006-2941</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2006-3636">CVE-2006-3636</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2941">CVE-2006-2941</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2006-3636">CVE-2006-3636</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 14 Sep 2006 10:21:53 +0000">
+  <metadata tag="requester" timestamp="2006-09-14T10:21:53Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 14 Sep 2006 16:20:16 +0000">
+  <metadata tag="submitter" timestamp="2006-09-14T16:20:16Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 19 Sep 2006 07:26:33 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-19T07:26:33Z">
     jaervosz
   </metadata>
 </glsa>

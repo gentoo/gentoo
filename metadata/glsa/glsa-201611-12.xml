@@ -6,8 +6,8 @@
     which allows for the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">imlib2</product>
-  <announced>November 20, 2016</announced>
-  <revised>November 20, 2016: 1</revised>
+  <announced>2016-11-20</announced>
+  <revised>2016-11-20: 1</revised>
   <bug>572884</bug>
   <bug>578810</bug>
   <bug>580038</bug>
@@ -48,11 +48,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9762">CVE-2014-9762</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9763">CVE-2014-9763</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9764">CVE-2014-9764</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4024">CVE-2016-4024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9762">CVE-2014-9762</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9763">CVE-2014-9763</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9764">CVE-2014-9764</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4024">CVE-2016-4024</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Nov 2016 06:16:27 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Nov 2016 22:06:30 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-20T06:16:27Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-20T22:06:30Z">b-man</metadata>
 </glsa>

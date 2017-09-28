@@ -6,8 +6,8 @@
     remote attackers to obtain sensitive information via various vectors.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>April 08, 2014</announced>
-  <revised>June 06, 2015: 4</revised>
+  <announced>2014-04-08</announced>
+  <revised>2015-06-06: 4</revised>
   <bug>505278</bug>
   <bug>507074</bug>
   <access>remote</access>
@@ -82,10 +82,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0076">CVE-2014-0076</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0160">CVE-2014-0160</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0076">CVE-2014-0076</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0160">CVE-2014-0160</uri>
     <uri link="http://heartbleed.com/">Heartbleed bug website</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 08 Apr 2014 09:37:45 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:11:05 +0000">a3li</metadata>
+  <metadata tag="requester" timestamp="2014-04-08T09:37:45Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2015-06-06T23:11:05Z">a3li</metadata>
 </glsa>

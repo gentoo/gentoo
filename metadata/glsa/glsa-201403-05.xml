@@ -6,8 +6,8 @@
     to user-assisted execution of arbitrary code.
   </synopsis>
   <product type="ebuild">emacs</product>
-  <announced>March 20, 2014</announced>
-  <revised>March 20, 2014: 1</revised>
+  <announced>2014-03-20</announced>
+  <revised>2014-03-20: 1</revised>
   <bug>398239</bug>
   <bug>431178</bug>
   <access>remote</access>
@@ -59,9 +59,9 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0035">CVE-2012-0035</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3479">CVE-2012-3479</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0035">CVE-2012-0035</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3479">CVE-2012-3479</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Jan 2012 09:37:15 +0000">ago</metadata>
-  <metadata tag="submitter" timestamp="Thu, 20 Mar 2014 10:30:13 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2012-01-16T09:37:15Z">ago</metadata>
+  <metadata tag="submitter" timestamp="2014-03-20T10:30:13Z">ackle</metadata>
 </glsa>

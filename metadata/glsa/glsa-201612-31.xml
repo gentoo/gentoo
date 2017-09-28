@@ -5,9 +5,9 @@
   <synopsis>Two vulnerabilities have been found in exFAT allowing remote
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>December 12, 2016</announced>
-  <revised>December 12, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-12-12</announced>
+  <revised>2016-12-12: 1</revised>
   <bug>563936</bug>
   <access>remote</access>
   <affected>
@@ -41,13 +41,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8026">CVE-2015-8026</uri>
-    <uri link="http://blog.fuzzing-project.org/25-Heap-overflow-and-endless-loop-in-exfatfsck-exfat-utils.html">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8026">CVE-2015-8026</uri>
+    <uri link="https://blog.fuzzing-project.org/25-Heap-overflow-and-endless-loop-in-exfatfsck-exfat-utils.html">
       Heap overflow and endless loop in exfatfsck / exfat-utils
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 02:26:18 +0000">
+  <metadata tag="requester" timestamp="2015-12-31T02:26:18Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 12 Dec 2016 00:14:52 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-12T00:14:52Z">b-man</metadata>
 </glsa>

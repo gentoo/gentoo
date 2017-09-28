@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">openjpeg</product>
-  <announced>December 08, 2016</announced>
-  <revised>December 08, 2016: 1</revised>
+  <announced>2016-12-08</announced>
+  <revised>2016-12-08: 1</revised>
   <bug>560632</bug>
   <bug>572430</bug>
   <bug>577608</bug>
@@ -48,14 +48,14 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8871">CVE-2015-8871</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1923">CVE-2016-1923</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1924">CVE-2016-1924</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3181">CVE-2016-3181</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3182">CVE-2016-3182</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3183">CVE-2016-3183</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7445">CVE-2016-7445</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8871">CVE-2015-8871</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1923">CVE-2016-1923</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1924">CVE-2016-1924</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3181">CVE-2016-3181</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3182">CVE-2016-3182</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3183">CVE-2016-3183</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7445">CVE-2016-7445</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 07 Dec 2016 23:52:17 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:55:57 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-12-07T23:52:17Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2016-12-08T13:55:57Z">whissi</metadata>
 </glsa>

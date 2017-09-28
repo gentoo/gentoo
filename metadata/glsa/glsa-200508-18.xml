@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-18">
   <title>PhpWiki: Arbitrary command execution through XML-RPC</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution.
   </synopsis>
   <product type="ebuild">phpwiki</product>
-  <announced>August 26, 2005</announced>
-  <revised>August 26, 2005: 01</revised>
+  <announced>2005-08-26</announced>
+  <revised>2005-08-26: 01</revised>
   <bug>102380</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwiki-1.3.10-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpwiki-1.3.10-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Aug 2005 08:45:11 +0000">
+  <metadata tag="requester" timestamp="2005-08-25T08:45:11Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 25 Aug 2005 11:46:47 +0000">
+  <metadata tag="submitter" timestamp="2005-08-25T11:46:47Z">
     adir
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 25 Aug 2005 20:44:22 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-25T20:44:22Z">
     koon
   </metadata>
 </glsa>

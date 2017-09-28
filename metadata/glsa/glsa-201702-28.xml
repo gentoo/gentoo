@@ -53,19 +53,19 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10155">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10155">
       CVE-2016-10155
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2615">CVE-2017-2615</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5525">CVE-2017-5525</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5552">CVE-2017-5552</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5578">CVE-2017-5578</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5579">CVE-2017-5579</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5667">CVE-2017-5667</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5856">CVE-2017-5856</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5857">CVE-2017-5857</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5898">CVE-2017-5898</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5931">CVE-2017-5931</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2615">CVE-2017-2615</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5525">CVE-2017-5525</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5552">CVE-2017-5552</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5578">CVE-2017-5578</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5579">CVE-2017-5579</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5667">CVE-2017-5667</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5856">CVE-2017-5856</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5857">CVE-2017-5857</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5898">CVE-2017-5898</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5931">CVE-2017-5931</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-16T18:41:09Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-02-21T00:04:45Z">whissi</metadata>

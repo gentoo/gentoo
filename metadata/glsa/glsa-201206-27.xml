@@ -6,8 +6,8 @@
     execute arbitrary code.
   </synopsis>
   <product type="ebuild">mini_httpd</product>
-  <announced>June 24, 2012</announced>
-  <revised>June 24, 2012: 1</revised>
+  <announced>2012-06-24</announced>
+  <revised>2012-06-24: 1</revised>
   <bug>303755</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4490">CVE-2009-4490</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4490">CVE-2009-4490</uri>
   </references>
-  <metadata timestamp="Fri, 11 May 2012 17:25:55 +0000" tag="requester">
+  <metadata timestamp="2012-05-11T17:25:55Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sun, 24 Jun 2012 22:37:57 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-24T22:37:57Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-29">
   <title>pstotext: Remote execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">pstotext</product>
-  <announced>July 31, 2005</announced>
-  <revised>August 11, 2005: 02</revised>
+  <announced>2005-07-31</announced>
+  <revised>2005-08-11: 02</revised>
   <bug>100245</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/pstotext-1.8g-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/pstotext-1.8g-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2536">CAN-2005-2536</uri>
-    <uri link="http://secunia.com/advisories/16183/">Secunia Advisory SA16183</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2536">CAN-2005-2536</uri>
+    <uri link="https://secunia.com/advisories/16183/">Secunia Advisory SA16183</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 30 Jul 2005 18:50:03 +0000">
+  <metadata tag="requester" timestamp="2005-07-30T18:50:03Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 30 Jul 2005 18:53:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-30T18:53:14Z">
     adir
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 30 Jul 2005 19:15:41 +0000">
+  <metadata tag="submitter" timestamp="2005-07-30T19:15:41Z">
     adir
   </metadata>
 </glsa>

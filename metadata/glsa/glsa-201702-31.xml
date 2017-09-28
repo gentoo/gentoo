@@ -50,11 +50,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7976">CVE-2016-7976</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7977">CVE-2016-7977</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7978">CVE-2016-7978</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7979">CVE-2016-7979</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8602">CVE-2016-8602</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7976">CVE-2016-7976</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7977">CVE-2016-7977</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7978">CVE-2016-7978</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7979">CVE-2016-7979</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8602">CVE-2016-8602</uri>
     <uri link="https://security.gentoo.org/glsa/201612-26">GLSA-201612-26</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-21T18:24:37Z">whissi</metadata>

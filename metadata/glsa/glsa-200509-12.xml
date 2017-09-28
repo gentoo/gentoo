@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-12">
   <title>Apache, mod_ssl: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     local privilege escalation.
   </synopsis>
   <product type="ebuild">Apache</product>
-  <announced>September 19, 2005</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2005-09-19</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>103554</bug>
   <bug>104807</bug>
   <access>remote and local</access>
@@ -61,25 +60,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-www/mod_ssl-2.8.24&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-www/mod_ssl-2.8.24"</code>
     <p>
     All Apache 2 users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.0.54-r15&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.0.54-r15"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2700">CAN-2005-2700</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2491">CAN-2005-2491</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2700">CAN-2005-2700</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Sep 2005 10:15:26 +0000">
+  <metadata tag="requester" timestamp="2005-09-11T10:15:26Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 16 Sep 2005 16:41:43 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-16T16:41:43Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 Sep 2005 14:36:28 +0000">
+  <metadata tag="submitter" timestamp="2005-09-17T14:36:28Z">
     formula7
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     allow remote attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">tor</product>
-  <announced>July 06, 2015</announced>
-  <revised>July 06, 2015: 1</revised>
+  <announced>2015-07-06</announced>
+  <revised>2015-07-06: 1</revised>
   <bug>545940</bug>
   <access>remote</access>
   <affected>
@@ -45,14 +45,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2928">CVE-2015-2928</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2929">CVE-2015-2929</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2928">CVE-2015-2928</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2929">CVE-2015-2929</uri>
     <uri link="https://blog.torproject.org/blog/tor-02512-and-0267-are-released">
       Upstream announcement
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 30 Jun 2015 22:21:11 +0000">
+  <metadata tag="requester" timestamp="2015-06-30T22:21:11Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Jul 2015 19:00:59 +0000">stanley</metadata>
+  <metadata tag="submitter" timestamp="2015-07-06T19:00:59Z">stanley</metadata>
 </glsa>

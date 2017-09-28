@@ -6,8 +6,8 @@
     which can allow remote attackers to cause Denial of Service condition.
   </synopsis>
   <product type="ebuild">curl</product>
-  <announced>September 24, 2015</announced>
-  <revised>September 24, 2015: 1</revised>
+  <announced>2015-09-24</announced>
+  <revised>2015-09-24: 1</revised>
   <bug>547376</bug>
   <bug>552618</bug>
   <access>remote</access>
@@ -45,13 +45,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3143">CVE-2015-3143</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3144">CVE-2015-3144</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3145">CVE-2015-3145</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3148">CVE-2015-3148</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3236">CVE-2015-3236</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3237">CVE-2015-3237</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3143">CVE-2015-3143</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3144">CVE-2015-3144</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3145">CVE-2015-3145</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3148">CVE-2015-3148</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3236">CVE-2015-3236</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3237">CVE-2015-3237</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 22 Apr 2015 12:07:04 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:47:50 +0000">mrueg</metadata>
+  <metadata tag="requester" timestamp="2015-04-22T12:07:04Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2015-09-24T16:47:50Z">mrueg</metadata>
 </glsa>

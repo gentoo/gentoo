@@ -4,8 +4,8 @@
   <title>runC: Privilege escalation</title>
   <synopsis>A vulnerability in runC could lead to privilege escalation.</synopsis>
   <product type="ebuild">runc</product>
-  <announced>January 12, 2017</announced>
-  <revised>January 12, 2017: 1</revised>
+  <announced>2017-01-12</announced>
+  <revised>2017-01-12: 1</revised>
   <bug>605378</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9962">CVE-2016-9962</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9962">CVE-2016-9962</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 12 Jan 2017 13:07:29 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Thu, 12 Jan 2017 22:52:16 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-12T13:07:29Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-12T22:52:16Z">b-man</metadata>
 </glsa>

@@ -5,9 +5,9 @@
   <synopsis>Improper input validation in Varnish allows remote attackers to
     conduct HTTP smuggling attacks, and possibly trigger a buffer overflow.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 20, 2016</announced>
-  <revised>July 20, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-20</announced>
+  <revised>2016-07-20: 1</revised>
   <bug>542886</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8852">CVE-2015-8852</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8852">CVE-2015-8852</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 02 Jul 2016 01:59:09 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 09:01:06 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-07-02T01:59:09Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-20T09:01:06Z">b-man</metadata>
 </glsa>

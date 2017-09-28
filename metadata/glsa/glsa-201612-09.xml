@@ -6,8 +6,8 @@
     allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">gd</product>
-  <announced>December 04, 2016</announced>
-  <revised>December 04, 2016: 1</revised>
+  <announced>2016-12-04</announced>
+  <revised>2016-12-04: 1</revised>
   <bug>587662</bug>
   <bug>587968</bug>
   <bug>592720</bug>
@@ -44,12 +44,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5766">CVE-2016-5766</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6128">CVE-2016-6128</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6132">CVE-2016-6132</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6207">CVE-2016-6207</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7568">CVE-2016-7568</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5766">CVE-2016-5766</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6128">CVE-2016-6128</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6132">CVE-2016-6132</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6207">CVE-2016-6207</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7568">CVE-2016-7568</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Nov 2016 06:53:45 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 11:07:34 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-11T06:53:45Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-04T11:07:34Z">whissi</metadata>
 </glsa>

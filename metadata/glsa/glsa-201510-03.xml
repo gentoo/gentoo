@@ -6,8 +6,8 @@
     attackers to cause Denial of Service condition.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>October 31, 2015</announced>
-  <revised>October 31, 2015: 1</revised>
+  <announced>2015-10-31</announced>
+  <revised>2015-10-31: 1</revised>
   <bug>536034</bug>
   <bug>542206</bug>
   <bug>548898</bug>
@@ -45,25 +45,25 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2187">CVE-2015-2187</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2188">CVE-2015-2188</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2189">CVE-2015-2189</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2190">CVE-2015-2190</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2191">CVE-2015-2191</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2192">CVE-2015-2192</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3182">CVE-2015-3182</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3808">CVE-2015-3808</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3809">CVE-2015-3809</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3810">CVE-2015-3810</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3811">CVE-2015-3811</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3812">CVE-2015-3812</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3813">CVE-2015-3813</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3814">CVE-2015-3814</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3815">CVE-2015-3815</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3906">CVE-2015-3906</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4651">CVE-2015-4651</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4652">CVE-2015-4652</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2187">CVE-2015-2187</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2188">CVE-2015-2188</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2189">CVE-2015-2189</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2190">CVE-2015-2190</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2191">CVE-2015-2191</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2192">CVE-2015-2192</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3182">CVE-2015-3182</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3808">CVE-2015-3808</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3809">CVE-2015-3809</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3810">CVE-2015-3810</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3811">CVE-2015-3811</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3812">CVE-2015-3812</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3813">CVE-2015-3813</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3814">CVE-2015-3814</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3815">CVE-2015-3815</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3906">CVE-2015-3906</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4651">CVE-2015-4651</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4652">CVE-2015-4652</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 May 2015 20:47:36 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:09:09 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-05-11T20:47:36Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-10-31T15:09:09Z">Zlogene</metadata>
 </glsa>

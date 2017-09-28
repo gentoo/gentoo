@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200602-02">
   <title>ADOdb: PostgresSQL command injection</title>
   <synopsis>
@@ -8,8 +7,8 @@
     PostgreSQL database.
   </synopsis>
   <product type="ebuild">ADOdb</product>
-  <announced>February 06, 2006</announced>
-  <revised>February 06, 2006: 01</revised>
+  <announced>2006-02-06</announced>
+  <revised>2006-02-06: 01</revised>
   <bug>120215</bug>
   <access>remote</access>
   <affected>
@@ -48,15 +47,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/adodb-4.71&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/adodb-4.71"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0410">CVE-2006-0410</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0410">CVE-2006-0410</uri>
   </references>
-  <metadata tag="bugReady" timestamp="Sat, 04 Feb 2006 17:34:56 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-04T17:34:56Z">
     DerCorny
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 06 Feb 2006 08:23:05 +0000">
+  <metadata tag="submitter" timestamp="2006-02-06T08:23:05Z">
     frilled
   </metadata>
 </glsa>

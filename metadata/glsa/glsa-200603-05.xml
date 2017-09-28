@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-05">
   <title>zoo: Stack-based buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code through malicious ZOO archives.
   </synopsis>
   <product type="ebuild">zoo</product>
-  <announced>March 06, 2006</announced>
-  <revised>March 06, 2006: 01</revised>
+  <announced>2006-03-06</announced>
+  <revised>2006-03-06: 01</revised>
   <bug>123782</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-arch/zoo-2.10-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-arch/zoo-2.10-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0855">CVE-2006-0855</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0855">CVE-2006-0855</uri>
     <uri link="http://www.guay-leroux.com/projects/zoo-advisory.txt">Original Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 26 Feb 2006 17:26:29 +0000">
+  <metadata tag="requester" timestamp="2006-02-26T17:26:29Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 03 Mar 2006 17:54:01 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-03T17:54:01Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 04 Mar 2006 16:06:52 +0000">
+  <metadata tag="submitter" timestamp="2006-03-04T16:06:52Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-12">
   <title>Mono: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure.
   </synopsis>
   <product type="ebuild">mono</product>
-  <announced>January 16, 2007</announced>
-  <revised>January 17, 2007: 02</revised>
+  <announced>2007-01-16</announced>
+  <revised>2007-01-17: 02</revised>
   <bug>159886</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-lang/mono-1.2.2.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-lang/mono-1.2.2.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6104">CVE-2006-6104</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6104">CVE-2006-6104</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 14 Jan 2007 18:42:16 +0000">
+  <metadata tag="requester" timestamp="2007-01-14T18:42:16Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 14 Jan 2007 21:54:13 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-14T21:54:13Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Jan 2007 00:17:42 +0000">
+  <metadata tag="submitter" timestamp="2007-01-15T00:17:42Z">
     shellsage
   </metadata>
 </glsa>

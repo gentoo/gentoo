@@ -6,8 +6,8 @@
     which could lead to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Puppet</product>
-  <announced>August 14, 2012</announced>
-  <revised>August 14, 2012: 1</revised>
+  <announced>2012-08-14</announced>
+  <revised>2012-08-14: 1</revised>
   <bug>410857</bug>
   <access>local</access>
   <affected>
@@ -61,12 +61,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1906">CVE-2012-1906</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1986">CVE-2012-1986</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1987">CVE-2012-1987</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1988">CVE-2012-1988</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1989">CVE-2012-1989</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1906">CVE-2012-1906</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1986">CVE-2012-1986</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1987">CVE-2012-1987</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1988">CVE-2012-1988</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1989">CVE-2012-1989</uri>
   </references>
-  <metadata timestamp="Thu, 12 Apr 2012 20:04:53 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 14 Aug 2012 20:30:25 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-12T20:04:53Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-08-14T20:30:25Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     most severe of which may allow remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>January 23, 2012</announced>
-  <revised>January 23, 2012: 1</revised>
+  <announced>2012-01-23</announced>
+  <revised>2012-01-23: 1</revised>
   <bug>303723</bug>
   <bug>308021</bug>
   <bug>321935</bug>
@@ -58,29 +58,29 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3295">CVE-2009-3295</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4212">CVE-2009-4212</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0283">CVE-2010-0283</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0629">CVE-2010-0629</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1320">CVE-2010-1320</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1321">CVE-2010-1321</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1322">CVE-2010-1322</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1323">CVE-2010-1323</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1324">CVE-2010-1324</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4020">CVE-2010-4020</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4021">CVE-2010-4021</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4022">CVE-2010-4022</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0281">CVE-2011-0281</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0282">CVE-2011-0282</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0283">CVE-2011-0283</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0284">CVE-2011-0284</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0285">CVE-2011-0285</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1527">CVE-2011-1527</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1528">CVE-2011-1528</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1529">CVE-2011-1529</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1530">CVE-2011-1530</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4151">CVE-2011-4151</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3295">CVE-2009-3295</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4212">CVE-2009-4212</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0283">CVE-2010-0283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0629">CVE-2010-0629</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1320">CVE-2010-1320</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1321">CVE-2010-1321</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1322">CVE-2010-1322</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1323">CVE-2010-1323</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1324">CVE-2010-1324</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4020">CVE-2010-4020</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4021">CVE-2010-4021</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4022">CVE-2010-4022</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0281">CVE-2011-0281</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0282">CVE-2011-0282</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0283">CVE-2011-0283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0284">CVE-2011-0284</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0285">CVE-2011-0285</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1527">CVE-2011-1527</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1528">CVE-2011-1528</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1529">CVE-2011-1529</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1530">CVE-2011-1530</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4151">CVE-2011-4151</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:18 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 23 Jan 2012 20:00:30 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:38:18Z" tag="requester">craig</metadata>
+  <metadata timestamp="2012-01-23T20:00:30Z" tag="submitter">craig</metadata>
 </glsa>

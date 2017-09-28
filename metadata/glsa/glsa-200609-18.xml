@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-18">
   <title>Opera: RSA signature forgery</title>
   <synopsis>
     Opera fails to correctly verify certain signatures.
   </synopsis>
   <product type="ebuild">opera</product>
-  <announced>September 28, 2006</announced>
-  <revised>September 28, 2006: 02</revised>
+  <announced>2006-09-28</announced>
+  <revised>2006-09-28: 02</revised>
   <bug>147838</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-9.02&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/opera-9.02"</code>
   </resolution>
   <references>
-    <uri link="http://www.opera.com/support/search/supsearch.dml?index=845">Opera Advisory</uri>
-    <uri link="/security/en/glsa/glsa-200609-05.xml">GLSA 200609-05</uri>
+    <uri link="https://www.opera.com/support/search/supsearch.dml?index=845">Opera Advisory</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200609-05.xml">GLSA 200609-05</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 27 Sep 2006 07:51:04 +0000">
+  <metadata tag="requester" timestamp="2006-09-27T07:51:04Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 27 Sep 2006 14:08:17 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-27T14:08:17Z">
     vorlon078
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 27 Sep 2006 14:32:20 +0000">
+  <metadata tag="submitter" timestamp="2006-09-27T14:32:20Z">
     vorlon078
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-19">
   <title>PowerDNS: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Denial of Service and easing cache poisoning attacks.
   </synopsis>
   <product type="ebuild">pdns</product>
-  <announced>December 19, 2008</announced>
-  <revised>December 19, 2008: 01</revised>
+  <announced>2008-12-19</announced>
+  <revised>2008-12-19: 01</revised>
   <bug>234032</bug>
   <bug>247079</bug>
   <access>remote</access>
@@ -55,19 +54,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-dns/pdns-2.9.21.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-dns/pdns-2.9.21.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3337">CVE-2008-3337</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5277">CVE-2008-5277</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3337">CVE-2008-3337</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5277">CVE-2008-5277</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 06 Sep 2008 21:05:59 +0000">
+  <metadata tag="requester" timestamp="2008-09-06T21:05:59Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 06 Sep 2008 21:06:12 +0000">
+  <metadata tag="bugReady" timestamp="2008-09-06T21:06:12Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 10 Sep 2008 17:38:51 +0000">
+  <metadata tag="submitter" timestamp="2008-09-10T17:38:51Z">
     jaervosz
   </metadata>
 </glsa>

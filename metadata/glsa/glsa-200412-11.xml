@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-11">
   <title>Cscope: Insecure creation of temporary files</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">cscope</product>
-  <announced>December 16, 2004</announced>
-  <revised>December 16, 2004: 01</revised>
+  <announced>2004-12-16</announced>
+  <revised>2004-12-16: 01</revised>
   <bug>71595</bug>
   <access>local</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-util/cscope-15.5-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-util/cscope-15.5-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0996">CAN-2004-0996</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0996">CAN-2004-0996</uri>
     <uri link="http://www.securityfocus.com/archive/1/381443">BugTraq Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 29 Nov 2004 16:19:40 +0000">
+  <metadata tag="requester" timestamp="2004-11-29T16:19:40Z">
     lewk
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 29 Nov 2004 17:43:04 +0000">
+  <metadata tag="submitter" timestamp="2004-11-29T17:43:04Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Dec 2004 20:27:56 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-16T20:27:56Z">
     lewk
   </metadata>
 </glsa>

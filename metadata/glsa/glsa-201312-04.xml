@@ -6,8 +6,8 @@
     execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libtheora</product>
-  <announced>December 03, 2013</announced>
-  <revised>December 03, 2013: 1</revised>
+  <announced>2013-12-03</announced>
+  <revised>2013-12-03: 1</revised>
   <bug>298039</bug>
   <access>remote</access>
   <affected>
@@ -45,12 +45,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3389">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3389">
       CVE-2009-3389
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:01 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:01Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 03 Dec 2013 04:32:42 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-12-03T04:32:42Z">Zlogene</metadata>
 </glsa>

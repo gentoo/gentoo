@@ -7,8 +7,8 @@
     of arbitrary code and Denial of Service.
   </synopsis>
   <product type="ebuild">TinTin++</product>
-  <announced>November 20, 2011</announced>
-  <revised>November 20, 2011: 1</revised>
+  <announced>2011-11-20</announced>
+  <revised>2011-11-20: 1</revised>
   <bug>209903</bug>
   <access>remote</access>
   <affected>
@@ -49,10 +49,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0671">CVE-2008-0671</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0672">CVE-2008-0672</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0673">CVE-2008-0673</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0671">CVE-2008-0671</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0672">CVE-2008-0672</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2008-0673">CVE-2008-0673</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:02 +0000" tag="requester">system</metadata>
-  <metadata timestamp="Sun, 20 Nov 2011 17:56:45 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2011-10-07T23:37:02Z" tag="requester">system</metadata>
+  <metadata timestamp="2011-11-20T17:56:45Z" tag="submitter">ackle</metadata>
 </glsa>

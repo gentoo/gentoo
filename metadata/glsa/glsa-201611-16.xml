@@ -7,8 +7,8 @@
     code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>November 22, 2016</announced>
-  <revised>November 22, 2016: 3</revised>
+  <announced>2016-11-22</announced>
+  <revised>2016-11-22: 3</revised>
   <bug>599416</bug>
   <access>remote</access>
   <affected>
@@ -46,11 +46,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5199">CVE-2016-5199</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5200">CVE-2016-5200</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5201">CVE-2016-5201</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5202">CVE-2016-5202</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5199">CVE-2016-5199</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5200">CVE-2016-5200</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5201">CVE-2016-5201</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5202">CVE-2016-5202</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 17 Nov 2016 09:25:06 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:58:33 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-17T09:25:06Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-22T11:58:33Z">b-man</metadata>
 </glsa>

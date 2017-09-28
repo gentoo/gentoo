@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200705-08">
   <title>GIMP: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">gimp</product>
-  <announced>May 07, 2007</announced>
-  <revised>May 07, 2007: 01</revised>
+  <announced>2007-05-07</announced>
+  <revised>2007-05-07: 01</revised>
   <bug>176226</bug>
   <access>remote</access>
   <affected>
@@ -47,15 +46,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/gimp-2.2.14&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.2.14"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2356">CVE-2007-2356</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2356">CVE-2007-2356</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 06 May 2007 21:00:37 +0000">
+  <metadata tag="submitter" timestamp="2007-05-06T21:00:37Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 06 May 2007 21:03:26 +0000">
+  <metadata tag="bugReady" timestamp="2007-05-06T21:03:26Z">
     p-y
   </metadata>
 </glsa>

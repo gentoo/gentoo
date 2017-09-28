@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-04">
   <title>Mantis: Cross-Site Scripting</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Mantis.
   </synopsis>
   <product type="ebuild">mantis</product>
-  <announced>March 03, 2008</announced>
-  <revised>March 03, 2008: 01</revised>
+  <announced>2008-03-03</announced>
+  <revised>2008-03-03: 01</revised>
   <bug>203791</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/mantisbt-1.0.8-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/mantisbt-1.0.8-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6611">CVE-2007-6611</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6611">CVE-2007-6611</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 10 Feb 2008 18:16:34 +0000">
+  <metadata tag="requester" timestamp="2008-02-10T18:16:34Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Feb 2008 18:16:43 +0000">
+  <metadata tag="bugReady" timestamp="2008-02-10T18:16:43Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Feb 2008 12:32:54 +0000">
+  <metadata tag="submitter" timestamp="2008-02-28T12:32:54Z">
     p-y
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200505-20">
   <title>Mailutils: Multiple vulnerabilities in imap4d and mail</title>
   <synopsis>
@@ -9,8 +8,8 @@
     arbitrary code with root privileges.
   </synopsis>
   <product type="ebuild">mailutils</product>
-  <announced>May 27, 2005</announced>
-  <revised>May 27, 2005: 01</revised>
+  <announced>2005-05-27</announced>
+  <revised>2005-05-27: 01</revised>
   <bug>94053</bug>
   <access>remote</access>
   <affected>
@@ -59,19 +58,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/mailutils-0.6-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/mailutils-0.6-r1"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1520">CAN-2005-1520</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1521">CAN-2005-1521</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1522">CAN-2005-1522</uri>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1523">CAN-2005-1523</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1520">CAN-2005-1520</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1521">CAN-2005-1521</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1522">CAN-2005-1522</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1523">CAN-2005-1523</uri>
     <uri link="http://www.idefense.com/application/poi/display?type=vulnerabilities&amp;showYear=2005">iDEFENSE 05.25.05 advisories</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 26 May 2005 13:21:14 +0000">
+  <metadata tag="submitter" timestamp="2005-05-26T13:21:14Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 27 May 2005 07:50:06 +0000">
+  <metadata tag="bugReady" timestamp="2005-05-27T07:50:06Z">
     koon
   </metadata>
 </glsa>

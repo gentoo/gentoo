@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-13">
   <title>Ampache: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     discovered in Ampache.
   </synopsis>
   <product type="ebuild">ampache</product>
-  <announced>October 13, 2007</announced>
-  <revised>October 13, 2007: 01</revised>
+  <announced>2007-10-13</announced>
+  <revised>2007-10-13: 01</revised>
   <bug>189607</bug>
   <access>remote</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/ampache-3.3.3.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/ampache-3.3.3.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4437">CVE-2007-4437</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4438">CVE-2007-4438</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4437">CVE-2007-4437</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4438">CVE-2007-4438</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 17 Sep 2007 21:08:28 +0000">
+  <metadata tag="requester" timestamp="2007-09-17T21:08:28Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 17 Sep 2007 21:08:38 +0000">
+  <metadata tag="bugReady" timestamp="2007-09-17T21:08:38Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 02 Oct 2007 19:57:29 +0000">
+  <metadata tag="submitter" timestamp="2007-10-02T19:57:29Z">
     p-y
   </metadata>
 </glsa>

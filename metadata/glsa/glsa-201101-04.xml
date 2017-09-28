@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201101-04">
   <title>aria2: Directory traversal</title>
   <synopsis>
     A directory traversal vulnerability has been found in aria2.
   </synopsis>
   <product type="ebuild">aria2</product>
-  <announced>January 15, 2011</announced>
-  <revised>January 15, 2011: 01</revised>
+  <announced>2011-01-15</announced>
+  <revised>2011-01-15: 01</revised>
   <bug>320975</bug>
   <access>remote</access>
   <affected>
@@ -45,18 +44,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/aria2-1.9.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/aria2-1.9.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1512">CVE-2010-1512</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1512">CVE-2010-1512</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 23 May 2010 20:17:09 +0000">
+  <metadata tag="requester" timestamp="2010-05-23T20:17:09Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 May 2010 13:19:55 +0000">
+  <metadata tag="submitter" timestamp="2010-05-27T13:19:55Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 18:46:48 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-30T18:46:48Z">
     vorlon
   </metadata>
 </glsa>

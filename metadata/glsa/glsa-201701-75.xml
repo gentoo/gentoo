@@ -51,11 +51,11 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8607">CVE-2015-8607</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8853">CVE-2015-8853</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1238">CVE-2016-1238</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2381">CVE-2016-2381</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6185">CVE-2016-6185</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8607">CVE-2015-8607</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8853">CVE-2015-8853</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1238">CVE-2016-1238</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2381">CVE-2016-2381</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6185">CVE-2016-6185</uri>
     <uri link="https://wiki.gentoo.org/wiki/Perl#Upgrading_.28major_version.29">
       Gentoo Wiki: How to upgrade Perl
     </uri>

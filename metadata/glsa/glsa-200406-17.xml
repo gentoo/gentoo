@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-17">
   <title>IPsec-Tools: authentication bug in racoon</title>
   <synopsis>
     racoon provided as part of IPsec-Tools fails do proper authentication.
   </synopsis>
   <product type="ebuild">IPsec-Tools</product>
-  <announced>June 22, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-06-22</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>53915</bug>
   <access>remote</access>
   <affected>
@@ -52,13 +51,13 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-firewall/ipsec-tools-0.3.3&quot;
-    # emerge &quot;&gt;=net-firewall/ipsec-tools-0.3.3&quot;</code>
+    # emerge -pv "&gt;=net-firewall/ipsec-tools-0.3.3"
+    # emerge "&gt;=net-firewall/ipsec-tools-0.3.3"</code>
   </resolution>
   <references>
-    <uri link="http://ipsec-tools.sourceforge.net/x509sig.html">IPsec-Tools Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0155">CVE-2004-0155</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0607">CVE-2004-0607</uri>
+    <uri link="https://ipsec-tools.sourceforge.net/x509sig.html">IPsec-Tools Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0155">CVE-2004-0155</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0607">CVE-2004-0607</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

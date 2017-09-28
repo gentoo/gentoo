@@ -5,9 +5,9 @@
   <synopsis>A vulnerability has been found in Dropbear, which allows remote
     authenticated users to bypass intended shell-command restrictions.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 20, 2016</announced>
-  <revised>July 20, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-20</announced>
+  <revised>2016-07-20: 1</revised>
   <bug>577050</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3116">CVE-2016-3116</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3116">CVE-2016-3116</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Jun 2016 05:13:38 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 08:45:10 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-06-21T05:13:38Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-20T08:45:10Z">b-man</metadata>
 </glsa>

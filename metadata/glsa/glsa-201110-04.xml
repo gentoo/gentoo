@@ -6,8 +6,8 @@
     allowing for remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Dovecot</product>
-  <announced>October 10, 2011</announced>
-  <revised>October 10, 2011: 2</revised>
+  <announced>2011-10-10</announced>
+  <revised>2011-10-10: 2</revised>
   <bug>286844</bug>
   <bug>293954</bug>
   <bug>314533</bug>
@@ -61,18 +61,18 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3235">CVE-2009-3235</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3897">CVE-2009-3897</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0745">CVE-2010-0745</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3304">CVE-2010-3304</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3706">CVE-2010-3706</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3707">CVE-2010-3707</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3779">CVE-2010-3779</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3780">CVE-2010-3780</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1929">CVE-2011-1929</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2166">CVE-2011-2166</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2167">CVE-2011-2167</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3235">CVE-2009-3235</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3897">CVE-2009-3897</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0745">CVE-2010-0745</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3304">CVE-2010-3304</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3706">CVE-2010-3706</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3707">CVE-2010-3707</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3779">CVE-2010-3779</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3780">CVE-2010-3780</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1929">CVE-2011-1929</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2166">CVE-2011-2166</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2167">CVE-2011-2167</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:19 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Mon, 10 Oct 2011 20:22:02 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:19Z" tag="requester">craig</metadata>
+  <metadata timestamp="2011-10-10T20:22:02Z" tag="submitter">craig</metadata>
 </glsa>

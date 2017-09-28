@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-11">
   <title>linux-ftpd-ssl: Remote buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to execute arbitrary code with escalated privileges on the local system.
   </synopsis>
   <product type="ebuild">linux-ftpd-ssl</product>
-  <announced>November 13, 2005</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2005-11-13</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>111573</bug>
   <access>remote</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-ftp/netkit-ftpd-0.17-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-ftp/netkit-ftpd-0.17-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3524">CVE-2005-3524</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3524">CVE-2005-3524</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Nov 2005 18:51:48 +0000">
+  <metadata tag="requester" timestamp="2005-11-06T18:51:48Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 06 Nov 2005 21:31:18 +0000">
+  <metadata tag="submitter" timestamp="2005-11-06T21:31:18Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 12 Nov 2005 21:51:01 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-12T21:51:01Z">
     adir
   </metadata>
 </glsa>

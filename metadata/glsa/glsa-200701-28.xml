@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-28">
   <title>thttpd: Unauthenticated remote file access</title>
   <synopsis>
@@ -9,8 +8,8 @@
     baselayout.
   </synopsis>
   <product type="ebuild">thttpd</product>
-  <announced>January 31, 2007</announced>
-  <revised>March 11, 2007: 02</revised>
+  <announced>2007-01-31</announced>
+  <revised>2007-03-11: 02</revised>
   <bug>142047</bug>
   <access>remote</access>
   <affected>
@@ -56,18 +55,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/thttpd-2.25b-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/thttpd-2.25b-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0664">CVE-2007-0664</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0664">CVE-2007-0664</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 26 Jan 2007 12:41:44 +0000">
+  <metadata tag="requester" timestamp="2007-01-26T12:41:44Z">
     shellsage
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 27 Jan 2007 17:49:26 +0000">
+  <metadata tag="submitter" timestamp="2007-01-27T17:49:26Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 31 Jan 2007 21:45:13 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-31T21:45:13Z">
     falco
   </metadata>
 </glsa>

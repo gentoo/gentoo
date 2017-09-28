@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-09">
   <title>ncpfs: Buffer overflow in ncplogin and ncpmap</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of arbitrary code with elevated privileges.
   </synopsis>
   <product type="ebuild">ncpfs</product>
-  <announced>December 15, 2004</announced>
-  <revised>December 15, 2004: 01</revised>
+  <announced>2004-12-15</announced>
+  <revised>2004-12-15: 01</revised>
   <bug>72820</bug>
   <access>local</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-fs/ncpfs-2.2.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-fs/ncpfs-2.2.5"</code>
   </resolution>
   <references>
     <uri link="http://lists.netsys.com/pipermail/full-disclosure/2004-November/029563.html">Full Disclosure Advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1079">CAN-2004-1079</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1079">CAN-2004-1079</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu,  9 Dec 2004 07:35:34 +0000">
+  <metadata tag="requester" timestamp="2004-12-09T07:35:34Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 14 Dec 2004 14:41:20 +0000">
+  <metadata tag="submitter" timestamp="2004-12-14T14:41:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 14 Dec 2004 16:10:38 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-14T16:10:38Z">
     koon
   </metadata>
 </glsa>

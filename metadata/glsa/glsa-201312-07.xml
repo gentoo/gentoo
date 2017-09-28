@@ -7,8 +7,8 @@
     condition.
   </synopsis>
   <product type="ebuild">openexr</product>
-  <announced>December 09, 2013</announced>
-  <revised>December 09, 2013: 1</revised>
+  <announced>2013-12-09</announced>
+  <revised>2013-12-09: 1</revised>
   <bug>277202</bug>
   <access>local, remote</access>
   <affected>
@@ -53,15 +53,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1720">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1720">
       CVE-2009-1720
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1721">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1721">
       CVE-2009-1721
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:13 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:13Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Dec 2013 05:43:34 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-12-09T05:43:34Z">Zlogene</metadata>
 </glsa>

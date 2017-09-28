@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-10">
   <title>uw-imap: Remote buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     leading to execution of arbitrary code.
   </synopsis>
   <product type="ebuild">uw-imap</product>
-  <announced>October 11, 2005</announced>
-  <revised>October 11, 2005: 01</revised>
+  <announced>2005-10-11</announced>
+  <revised>2005-10-11: 01</revised>
   <bug>108206</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-mail/uw-imap-2004g&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-mail/uw-imap-2004g"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2933">CAN-2005-2933</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2933">CAN-2005-2933</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=313&amp;type=vulnerabilities&amp;flashstatus=false">iDEFENSE Security Advisory</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2005 11:49:05 +0000">
+  <metadata tag="requester" timestamp="2005-10-07T11:49:05Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 07 Oct 2005 15:06:14 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-07T15:06:14Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 08 Oct 2005 06:13:24 +0000">
+  <metadata tag="submitter" timestamp="2005-10-08T06:13:24Z">
     r2d2
   </metadata>
 </glsa>

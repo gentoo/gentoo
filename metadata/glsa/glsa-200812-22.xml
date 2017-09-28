@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-22">
   <title>Ampache: Insecure temporary file usage</title>
   <synopsis>
@@ -8,8 +7,8 @@
     symlink attacks.
   </synopsis>
   <product type="ebuild">ampache</product>
-  <announced>December 23, 2008</announced>
-  <revised>December 23, 2008: 01</revised>
+  <announced>2008-12-23</announced>
+  <revised>2008-12-23: 01</revised>
   <bug>237483</bug>
   <access>local</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/ampache-3.4.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/ampache-3.4.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3929">CVE-2008-3929</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3929">CVE-2008-3929</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 22 Sep 2008 12:37:47 +0000">
+  <metadata tag="requester" timestamp="2008-09-22T12:37:47Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 11 Dec 2008 21:03:24 +0000">
+  <metadata tag="submitter" timestamp="2008-12-11T21:03:24Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 21:03:37 +0000">
+  <metadata tag="bugReady" timestamp="2008-12-11T21:03:37Z">
     p-y
   </metadata>
 </glsa>

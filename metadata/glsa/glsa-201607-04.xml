@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in GD, the worst of which
     allows remote attackers to execute arbitrary code.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>July 16, 2016</announced>
-  <revised>July 16, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-07-16</announced>
+  <revised>2016-07-16: 1</revised>
   <bug>504872</bug>
   <bug>538686</bug>
   <bug>581942</bug>
@@ -43,16 +43,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2497">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2497">
       CVE-2014-2497
     </uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9709">
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9709">
       CVE-2014-9709
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3074">CVE-2016-3074</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3074">CVE-2016-3074</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:19:37 +0000">
+  <metadata tag="requester" timestamp="2016-02-25T07:19:37Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 16 Jul 2016 13:08:00 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-07-16T13:08:00Z">b-man</metadata>
 </glsa>

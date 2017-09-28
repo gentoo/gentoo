@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-23">
   <title>CUPS: Integer overflow vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a Denial of Service.
   </synopsis>
   <product type="ebuild">cups</product>
-  <announced>April 18, 2008</announced>
-  <revised>April 18, 2008: 01</revised>
+  <announced>2008-04-18</announced>
+  <revised>2008-04-18: 01</revised>
   <bug>217232</bug>
   <access>remote, local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-print/cups-1.2.12-r8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.2.12-r8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1722">CVE-2008-1722</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1722">CVE-2008-1722</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 17 Apr 2008 10:26:38 +0000">
+  <metadata tag="requester" timestamp="2008-04-17T10:26:38Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 17 Apr 2008 10:26:47 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-17T10:26:47Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Apr 2008 11:05:44 +0000">
+  <metadata tag="submitter" timestamp="2008-04-17T11:05:44Z">
     vorlon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200407-18">
   <title>mod_ssl: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Apache is configured to use mod_ssl and mod_proxy.
   </synopsis>
   <product type="ebuild">mod_ssl</product>
-  <announced>July 22, 2004</announced>
-  <revised>July 22, 2004: 01</revised>
+  <announced>2004-07-22</announced>
+  <revised>2004-07-22: 01</revised>
   <bug>57379</bug>
   <access>remote</access>
   <affected>
@@ -33,7 +32,7 @@
   <impact type="normal">
     <p>
     Given the right server configuration, an attacker could execute code as the
-    user running Apache, usually &quot;apache&quot;.
+    user running Apache, usually "apache".
     </p>
   </impact>
   <workaround>
@@ -49,8 +48,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-www/mod_ssl-2.8.19"
-    # emerge ">=net-www/mod_ssl-2.8.19"</code>
+    # emerge -pv "&gt;=net-www/mod_ssl-2.8.19"
+    # emerge "&gt;=net-www/mod_ssl-2.8.19"</code>
   </resolution>
   <references>
     <uri link="http://marc.theaimsgroup.com/?l=apache-modssl&amp;m=109001100906749&amp;w=2">mod_ssl Announcement</uri>

@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">squid</product>
-  <announced>November 27, 2014</announced>
-  <revised>November 27, 2014: 1</revised>
+  <announced>2014-11-27</announced>
+  <revised>2014-11-27: 1</revised>
   <bug>504176</bug>
   <bug>522498</bug>
   <access>remote</access>
@@ -45,12 +45,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0128">CVE-2014-0128</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7141">CVE-2014-7141</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7142">CVE-2014-7142</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0128">CVE-2014-0128</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7141">CVE-2014-7141</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-7142">CVE-2014-7142</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 04 Aug 2014 19:12:15 +0000">
+  <metadata tag="requester" timestamp="2014-08-04T19:12:15Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 27 Nov 2014 14:39:02 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-11-27T14:39:02Z">Zlogene</metadata>
 </glsa>

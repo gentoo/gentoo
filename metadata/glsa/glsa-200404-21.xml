@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-21">
   <title>Multiple Vulnerabilities in Samba</title>
   <synopsis>
@@ -9,8 +8,8 @@
     vulnerability in the smbprint script distributed with Samba.
   </synopsis>
   <product type="ebuild">samba</product>
-  <announced>April 29, 2004</announced>
-  <revised>April 29, 2004: 01</revised>
+  <announced>2004-04-29</announced>
+  <revised>2004-04-29: 01</revised>
   <bug>41800</bug>
   <bug>45965</bug>
   <access>local </access>
@@ -74,8 +73,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-fs/samba-3.0.2a-r2"
-    # emerge ">=net-fs/samba-3.0.2a-r2"</code>
+    # emerge -pv "&gt;=net-fs/samba-3.0.2a-r2"
+    # emerge "&gt;=net-fs/samba-3.0.2a-r2"</code>
     <p>
     Those who are using Samba's password database also need to run the
     following command:

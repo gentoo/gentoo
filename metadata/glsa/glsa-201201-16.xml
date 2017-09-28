@@ -7,8 +7,8 @@
     locking utilities.
   </synopsis>
   <product type="ebuild">xkeyboard-config xorg-server</product>
-  <announced>January 27, 2012</announced>
-  <revised>January 27, 2012: 1</revised>
+  <announced>2012-01-27</announced>
+  <revised>2012-01-27: 1</revised>
   <bug>399347</bug>
   <access>local</access>
   <affected>
@@ -63,8 +63,8 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0064">CVE-2012-0064</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0064">CVE-2012-0064</uri>
   </references>
-  <metadata timestamp="Thu, 19 Jan 2012 17:45:40 +0000" tag="requester">a3li</metadata>
-  <metadata timestamp="Fri, 27 Jan 2012 20:35:28 +0000" tag="submitter">a3li</metadata>
+  <metadata timestamp="2012-01-19T17:45:40Z" tag="requester">a3li</metadata>
+  <metadata timestamp="2012-01-27T20:35:28Z" tag="submitter">a3li</metadata>
 </glsa>

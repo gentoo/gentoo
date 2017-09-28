@@ -6,8 +6,8 @@
     or overwriting of local files.
   </synopsis>
   <product type="ebuild">Wget</product>
-  <announced>October 13, 2011</announced>
-  <revised>October 13, 2011: 1</revised>
+  <announced>2011-10-13</announced>
+  <revised>2011-10-13: 1</revised>
   <bug>329941</bug>
   <access>remote</access>
   <affected>
@@ -51,12 +51,12 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2252">CVE-2010-2252</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2252">CVE-2010-2252</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:55 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:55Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Thu, 13 Oct 2011 23:47:06 +0000" tag="submitter">
+  <metadata timestamp="2011-10-13T23:47:06Z" tag="submitter">
     underling
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-20">
   <title>GNU gv: Stack overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gv</product>
-  <announced>November 24, 2006</announced>
-  <revised>November 24, 2006: 01</revised>
+  <announced>2006-11-24</announced>
+  <revised>2006-11-24: 01</revised>
   <bug>154573</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/gv-3.6.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/gv-3.6.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5864">CVE-2006-5864</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5864">CVE-2006-5864</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 21 Nov 2006 06:07:37 +0000">
+  <metadata tag="requester" timestamp="2006-11-21T06:07:37Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Nov 2006 14:27:05 +0000">
+  <metadata tag="submitter" timestamp="2006-11-21T14:27:05Z">
     shellsage
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 24 Nov 2006 20:18:52 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-24T20:18:52Z">
     jaervosz
   </metadata>
 </glsa>

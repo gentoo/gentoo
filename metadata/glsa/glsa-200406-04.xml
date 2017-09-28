@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-04">
   <title>Mailman: Member password disclosure vulnerability</title>
   <synopsis>
     Mailman contains a bug allowing 3rd parties to retrieve member passwords.
   </synopsis>
   <product type="ebuild">mailman</product>
-  <announced>June 09, 2004</announced>
-  <revised>June 09, 2004: 01</revised>
+  <announced>2004-06-09</announced>
+  <revised>2004-06-09: 01</revised>
   <bug>51671</bug>
   <access>remote  </access>
   <affected>
@@ -47,12 +46,12 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=net-mail/mailman-2.1.5"
-    # emerge ">=net-mail/mailman-2.1.5"</code>
+    # emerge -pv "&gt;=net-mail/mailman-2.1.5"
+    # emerge "&gt;=net-mail/mailman-2.1.5"</code>
   </resolution>
   <references>
-    <uri link="http://mail.python.org/pipermail/mailman-announce/2004-May/000072.html">Mailman 2.1.5 Release Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0412">CAN-2004-0412</uri>
+    <uri link="https://mail.python.org/pipermail/mailman-announce/2004-May/000072.html">Mailman 2.1.5 Release Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0412">CAN-2004-0412</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

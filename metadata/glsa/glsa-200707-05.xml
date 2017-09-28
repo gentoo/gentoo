@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200707-05">
   <title>Webmin, Usermin: Cross-site scripting vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     (XSS).
   </synopsis>
   <product type="ebuild">webmin/usermin</product>
-  <announced>July 05, 2007</announced>
-  <revised>July 05, 2007: 01</revised>
+  <announced>2007-07-05</announced>
+  <revised>2007-07-05: 01</revised>
   <bug>181385</bug>
   <access>remote</access>
   <affected>
@@ -55,21 +54,21 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --verbose --oneshot &quot;&gt;=app-admin/webmin-1.350&quot;</code>
+    # emerge --ask --verbose --oneshot "&gt;=app-admin/webmin-1.350"</code>
     <p>
     All Usermin users should update to the latest stable version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --verbose --oneshot &quot;&gt;=app-admin/usermin-1.280&quot;</code>
+    # emerge --ask --verbose --oneshot "&gt;=app-admin/usermin-1.280"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3156">CVE-2007-3156</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3156">CVE-2007-3156</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 25 Jun 2007 19:12:36 +0000">
+  <metadata tag="submitter" timestamp="2007-06-25T19:12:36Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 29 Jun 2007 13:33:55 +0000">
+  <metadata tag="bugReady" timestamp="2007-06-29T13:33:55Z">
     p-y
   </metadata>
 </glsa>

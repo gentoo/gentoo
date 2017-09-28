@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-08">
   <title>PHP: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     local Denial of service, cross-site scripting or PHP variables overwrite.
   </synopsis>
   <product type="ebuild">PHP</product>
-  <announced>November 13, 2005</announced>
-  <revised>November 13, 2005: 01</revised>
+  <announced>2005-11-13</announced>
+  <revised>2005-11-13: 01</revised>
   <bug>107602</bug>
   <bug>111032</bug>
   <access>remote and local</access>
@@ -99,18 +98,18 @@
     # emerge --ask --oneshot --verbose dev-php/php-cgi</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3054">CVE-2005-3054</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3319">CVE-2005-3319</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3388">CVE-2005-3388</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3389">CVE-2005-3389</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3390">CVE-2005-3390</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3391">CVE-2005-3391</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3392">CVE-2005-3392</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3054">CVE-2005-3054</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3319">CVE-2005-3319</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3388">CVE-2005-3388</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3389">CVE-2005-3389</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3390">CVE-2005-3390</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3391">CVE-2005-3391</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3392">CVE-2005-3392</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 07 Nov 2005 14:11:50 +0000">
+  <metadata tag="submitter" timestamp="2005-11-07T14:11:50Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 13 Nov 2005 14:44:31 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-13T14:44:31Z">
     vorlon078
   </metadata>
 </glsa>

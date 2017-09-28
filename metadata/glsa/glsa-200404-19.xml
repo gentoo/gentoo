@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200404-19">
   <title>Buffer overflows and format string vulnerabilities in LCDproc</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing execution of arbitrary code with the rights of the LCDd user.
   </synopsis>
   <product type="ebuild">lcdproc</product>
-  <announced>April 27, 2004</announced>
-  <revised>April 27, 2004: 01</revised>
+  <announced>2004-04-27</announced>
+  <revised>2004-04-27: 01</revised>
   <bug>47340</bug>
   <access>remote </access>
   <affected>
@@ -53,8 +52,8 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-misc/lcdproc-0.4.5"
-    # emerge ">=app-misc/lcdproc-0.4.5"</code>
+    # emerge -pv "&gt;=app-misc/lcdproc-0.4.5"
+    # emerge "&gt;=app-misc/lcdproc-0.4.5"</code>
   </resolution>
   <references>
     <uri link="http://lists.omnipotent.net/pipermail/lcdproc/2004-April/008884.html">LCDproc advisory</uri>

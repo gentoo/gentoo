@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200701-27">
   <title>ELinks: Arbitrary Samba command execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary Samba commands.
   </synopsis>
   <product type="ebuild">elinks</product>
-  <announced>January 30, 2007</announced>
-  <revised>January 30, 2007: 01</revised>
+  <announced>2007-01-30</announced>
+  <revised>2007-01-30: 01</revised>
   <bug>155358</bug>
   <access>remote</access>
   <affected>
@@ -51,15 +50,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/elinks-0.11.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/elinks-0.11.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5925">CVE-2006-5925</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5925">CVE-2006-5925</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 30 Jan 2007 10:52:21 +0000">
+  <metadata tag="submitter" timestamp="2007-01-30T10:52:21Z">
     hyakuhei
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 30 Jan 2007 11:02:26 +0000">
+  <metadata tag="bugReady" timestamp="2007-01-30T11:02:26Z">
     falco
   </metadata>
 </glsa>

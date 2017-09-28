@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-14">
   <title>Zebedee: Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attack.
   </synopsis>
   <product type="ebuild">zebedee</product>
-  <announced>September 20, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-09-20</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>105115</bug>
   <access>remote</access>
   <affected>
@@ -52,15 +51,15 @@
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/bid/14796">BugTraq ID 14796</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2904">CVE-2005-2904</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2904">CVE-2005-2904</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 14 Sep 2005 10:16:59 +0000">
+  <metadata tag="requester" timestamp="2005-09-14T10:16:59Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 16 Sep 2005 08:11:57 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-16T08:11:57Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 17 Sep 2005 12:52:52 +0000">
+  <metadata tag="submitter" timestamp="2005-09-17T12:52:52Z">
     adir
   </metadata>
 </glsa>

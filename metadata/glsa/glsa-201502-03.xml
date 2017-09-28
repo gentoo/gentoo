@@ -7,8 +7,8 @@
     denial of service condition.
   </synopsis>
   <product type="ebuild">bind</product>
-  <announced>February 07, 2015</announced>
-  <revised>February 07, 2015: 1</revised>
+  <announced>2015-02-07</announced>
+  <revised>2015-02-07: 1</revised>
   <bug>531998</bug>
   <access>remote</access>
   <affected>
@@ -43,14 +43,14 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3214">CVE-2014-3214</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8500">CVE-2014-8500</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8680">CVE-2014-8680</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3214">CVE-2014-3214</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8500">CVE-2014-8500</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8680">CVE-2014-8680</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 29 Dec 2014 00:38:51 +0000">
+  <metadata tag="requester" timestamp="2014-12-29T00:38:51Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 07 Feb 2015 16:05:19 +0000">
+  <metadata tag="submitter" timestamp="2015-02-07T16:05:19Z">
     BlueKnight
   </metadata>
 </glsa>

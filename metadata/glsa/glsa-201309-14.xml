@@ -6,8 +6,8 @@
     of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">moinmoin</product>
-  <announced>September 24, 2013</announced>
-  <revised>September 24, 2013: 1</revised>
+  <announced>2013-09-24</announced>
+  <revised>2013-09-24: 1</revised>
   <bug>449314</bug>
   <access>remote</access>
   <affected>
@@ -42,11 +42,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6080">CVE-2012-6080</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6081">CVE-2012-6081</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6082">CVE-2012-6082</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6495">CVE-2012-6495</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6080">CVE-2012-6080</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6081">CVE-2012-6081</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6082">CVE-2012-6082</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6495">CVE-2012-6495</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 06 Jan 2013 17:22:55 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Tue, 24 Sep 2013 22:32:39 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-01-06T17:22:55Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-09-24T22:32:39Z">ackle</metadata>
 </glsa>

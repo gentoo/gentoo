@@ -6,8 +6,8 @@
     X2Go Server.
   </synopsis>
   <product type="ebuild">x2go</product>
-  <announced>May 19, 2014</announced>
-  <revised>May 19, 2014: 1</revised>
+  <announced>2014-05-19</announced>
+  <revised>2014-05-19: 1</revised>
   <bug>497260</bug>
   <access>local</access>
   <affected>
@@ -38,12 +38,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7383">CVE-2013-7383</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-7383">CVE-2013-7383</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 04 Mar 2014 17:00:01 +0000">
+  <metadata tag="requester" timestamp="2014-03-04T17:00:01Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 19 May 2014 07:13:54 +0000">
+  <metadata tag="submitter" timestamp="2014-05-19T07:13:54Z">
     BlueKnight
   </metadata>
 </glsa>

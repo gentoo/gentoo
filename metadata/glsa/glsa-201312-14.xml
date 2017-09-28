@@ -6,8 +6,8 @@
     execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libsndfile</product>
-  <announced>December 17, 2013</announced>
-  <revised>December 17, 2013: 1</revised>
+  <announced>2013-12-17</announced>
+  <revised>2013-12-17: 1</revised>
   <bug>375125</bug>
   <access>remote</access>
   <affected>
@@ -51,10 +51,10 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2696">CVE-2011-2696</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2696">CVE-2011-2696</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:34 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:34Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 17 Dec 2013 11:38:44 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-12-17T11:38:44Z">Zlogene</metadata>
 </glsa>

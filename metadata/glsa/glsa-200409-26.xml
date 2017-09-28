@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-26">
   <title>Mozilla, Firefox, Thunderbird, Epiphany: New releases fix vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     code.
   </synopsis>
   <product type="ebuild">Mozilla</product>
-  <announced>September 20, 2004</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2004-09-20</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>63996</bug>
   <access>remote</access>
   <affected>
@@ -99,21 +98,21 @@
     # emerge your-version</code>
   </resolution>
   <references>
-    <uri link="http://www.mozilla.org/projects/security/known-vulnerabilities.html#mozilla1.7.3">Mozilla Security Advisory</uri>
-    <uri link="http://www.us-cert.gov/cas/techalerts/TA04-261A.html">US-CERT Security Alert TA04-261A</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0902">CVE-2004-0902</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0903">CVE-2004-0903</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0904">CVE-2004-0904</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0905">CVE-2004-0905</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0906">CVE-2004-0906</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0907">CVE-2004-0907</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0908">CVE-2004-0908</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0909">CVE-2004-0909</uri>
+    <uri link="https://www.mozilla.org/projects/security/known-vulnerabilities.html#mozilla1.7.3">Mozilla Security Advisory</uri>
+    <uri link="https://www.us-cert.gov/cas/techalerts/TA04-261A.html">US-CERT Security Alert TA04-261A</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0902">CVE-2004-0902</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0903">CVE-2004-0903</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0904">CVE-2004-0904</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0905">CVE-2004-0905</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0906">CVE-2004-0906</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0907">CVE-2004-0907</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0908">CVE-2004-0908</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0909">CVE-2004-0909</uri>
   </references>
-  <metadata tag="submitter" timestamp="Sun, 19 Sep 2004 12:09:02 +0000">
+  <metadata tag="submitter" timestamp="2004-09-19T12:09:02Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 20 Sep 2004 15:58:46 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-20T15:58:46Z">
     koon
   </metadata>
 </glsa>

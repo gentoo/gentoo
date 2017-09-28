@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-03">
   <title>Python 2.2: Buffer overflow in getaddrinfo()</title>
   <synopsis>
@@ -8,8 +7,8 @@
     malformed IPV6 address is encountered by getaddrinfo().
   </synopsis>
   <product type="ebuild">Python</product>
-  <announced>September 02, 2004</announced>
-  <revised>September 02, 2004: 01</revised>
+  <announced>2004-09-02</announced>
+  <revised>2004-09-02: 01</revised>
   <bug>62440</bug>
   <access>remote</access>
   <affected>
@@ -48,14 +47,14 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-lang/python-2.2.2"
-    # emerge ">=dev-lang/python-2.2.2"</code>
+    # emerge -pv "&gt;=dev-lang/python-2.2.2"
+    # emerge "&gt;=dev-lang/python-2.2.2"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0150">CVE-2004-0150</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0150">CVE-2004-0150</uri>
     <uri link="http://www.osvdb.org/4172">OSVDB:4172</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 31 Aug 2004 22:51:44 +0000">
+  <metadata tag="submitter" timestamp="2004-08-31T22:51:44Z">
     chriswhite
   </metadata>
 </glsa>

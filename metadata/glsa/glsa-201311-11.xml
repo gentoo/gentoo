@@ -6,8 +6,8 @@
     attacker to execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">ctorrent</product>
-  <announced>November 20, 2013</announced>
-  <revised>November 22, 2013: 2</revised>
+  <announced>2013-11-20</announced>
+  <revised>2013-11-22: 2</revised>
   <bug>266953</bug>
   <access>remote</access>
   <affected>
@@ -45,12 +45,12 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1759">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-1759">
       CVE-2009-1759
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:37:38 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:37:38Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 22 Nov 2013 10:00:47 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2013-11-22T10:00:47Z">Zlogene</metadata>
 </glsa>

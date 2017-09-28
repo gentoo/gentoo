@@ -51,10 +51,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7406">CVE-2016-7406</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7407">CVE-2016-7407</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7408">CVE-2016-7408</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7409">CVE-2016-7409</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7406">CVE-2016-7406</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7407">CVE-2016-7407</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7408">CVE-2016-7408</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7409">CVE-2016-7409</uri>
   </references>
   <metadata tag="requester" timestamp="2017-02-05T22:53:36Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-02-20T23:45:39Z">whissi</metadata>

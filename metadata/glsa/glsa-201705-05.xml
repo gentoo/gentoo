@@ -62,8 +62,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5024">CVE-2017-5024</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5025">CVE-2017-5025</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5024">CVE-2017-5024</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5025">CVE-2017-5025</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-07T18:51:14Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-05-09T19:30:37Z">whissi</metadata>

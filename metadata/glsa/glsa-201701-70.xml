@@ -47,7 +47,7 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5410">CVE-2016-5410</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5410">CVE-2016-5410</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-04T03:14:04Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-01-29T16:21:27Z">b-man</metadata>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-17">
   <title>PDFlib: Multiple buffer overflows</title>
   <synopsis>
     Multiple stack-based buffer overflows have been reported in PDFlib.
   </synopsis>
   <product type="ebuild">pdflib</product>
-  <announced>March 10, 2008</announced>
-  <revised>March 10, 2008: 01</revised>
+  <announced>2008-03-10</announced>
+  <revised>2008-03-10: 01</revised>
   <bug>203287</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/pdflib-7.0.2_p8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/pdflib-7.0.2_p8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6561">CVE-2007-6561</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6561">CVE-2007-6561</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Mar 2008 16:26:44 +0000">
+  <metadata tag="requester" timestamp="2008-03-08T16:26:44Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Mar 2008 12:46:32 +0000">
+  <metadata tag="submitter" timestamp="2008-03-10T12:46:32Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 10 Mar 2008 12:46:45 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-10T12:46:45Z">
     p-y
   </metadata>
 </glsa>

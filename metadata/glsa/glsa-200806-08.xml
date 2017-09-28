@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-08">
   <title>OpenSSL: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     OpenSSL.
   </synopsis>
   <product type="ebuild">openssl</product>
-  <announced>June 23, 2008</announced>
-  <revised>June 23, 2008: 01</revised>
+  <announced>2008-06-23</announced>
+  <revised>2008-06-23: 01</revised>
   <bug>223429</bug>
   <access>remote</access>
   <affected>
@@ -59,19 +58,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/openssl-0.9.8g-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8g-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0891">CVE-2008-0891</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1672">CVE-2008-1672</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0891">CVE-2008-0891</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1672">CVE-2008-1672</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Jun 2008 22:48:49 +0000">
+  <metadata tag="requester" timestamp="2008-06-16T22:48:49Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Jun 2008 23:22:26 +0000">
+  <metadata tag="submitter" timestamp="2008-06-16T23:22:26Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 23:22:36 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-16T23:22:36Z">
     rbu
   </metadata>
 </glsa>

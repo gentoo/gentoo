@@ -4,8 +4,8 @@
   <title>polkit: Heap-corruption on duplicate IDs </title>
   <synopsis>polkit is vulnerable to local privilege escalation.</synopsis>
   <product type="ebuild">polkit</product>
-  <announced>November 15, 2016</announced>
-  <revised>November 15, 2016: 1</revised>
+  <announced>2016-11-15</announced>
+  <revised>2016-11-15: 1</revised>
   <bug>555666</bug>
   <access>local</access>
   <affected>
@@ -40,10 +40,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3255">CVE-2015-3255</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3255">CVE-2015-3255</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 25 Dec 2015 00:47:50 +0000">
+  <metadata tag="requester" timestamp="2015-12-25T00:47:50Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:23:23 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-15T07:23:23Z">b-man</metadata>
 </glsa>

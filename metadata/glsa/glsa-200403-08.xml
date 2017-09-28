@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200403-08">
   <title>oftpd DoS vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     crash the oftpd daemon.
   </synopsis>
   <product type="ebuild">oftpd</product>
-  <announced>March 29, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-03-29</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>45738</bug>
   <access>remote</access>
   <affected>
@@ -20,8 +19,7 @@
   </affected>
   <background>
     <p>
-    Quote from <uri
-    link="http://www.time-travellers.org/oftpd/">http://www.time-travellers
+    Quote from <uri link="http://www.time-travellers.org/oftpd/">http://www.time-travellers
     .org/oftpd/</uri>
     </p>
     <p>
@@ -62,14 +60,14 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=net-ftp/oftpd-0.3.7&quot;
-    # emerge &quot;&gt;=net-ftp/oftpd-0.3.7&quot;</code>
+    # emerge -pv "&gt;=net-ftp/oftpd-0.3.7"
+    # emerge "&gt;=net-ftp/oftpd-0.3.7"</code>
   </resolution>
   <references>
-    <uri link="http://www.time-travellers.org/oftpd/oftpd-dos.html">osftpd DoS Vulnerability</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0376">CVE-2004-0376</uri>
+    <uri link="https://www.time-travellers.org/oftpd/oftpd-dos.html">osftpd DoS Vulnerability</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0376">CVE-2004-0376</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 22 May 2006 05:52:22 +0000">
+  <metadata tag="submitter" timestamp="2006-05-22T05:52:22Z">
     DerCorny
   </metadata>
 </glsa>

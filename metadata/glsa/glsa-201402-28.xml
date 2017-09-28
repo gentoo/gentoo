@@ -6,8 +6,8 @@
     allowing remote attackers to cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">chrony</product>
-  <announced>February 28, 2014</announced>
-  <revised>February 28, 2014: 1</revised>
+  <announced>2014-02-28</announced>
+  <revised>2014-02-28: 1</revised>
   <bug>480364</bug>
   <access>remote</access>
   <affected>
@@ -44,13 +44,13 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4502">CVE-2012-4502</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4503">CVE-2012-4503</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4502">CVE-2012-4502</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4503">CVE-2012-4503</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Oct 2011 13:39:51 +0000">
+  <metadata tag="requester" timestamp="2011-10-19T13:39:51Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 28 Feb 2014 10:05:17 +0000">
+  <metadata tag="submitter" timestamp="2014-02-28T10:05:17Z">
     pinkbyte
   </metadata>
 </glsa>

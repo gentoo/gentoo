@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200611-09">
   <title>libpng: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     that handle untrusted images.
   </synopsis>
   <product type="ebuild">libpng</product>
-  <announced>November 17, 2006</announced>
-  <revised>November 17, 2006: 01</revised>
+  <announced>2006-11-17</announced>
+  <revised>2006-11-17: 01</revised>
   <bug>154380</bug>
   <access>remote</access>
   <affected>
@@ -49,15 +48,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/libpng-1.2.13&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.13"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5793">CVE-2006-5793</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-5793">CVE-2006-5793</uri>
   </references>
-  <metadata tag="submitter" timestamp="Fri, 10 Nov 2006 11:17:04 +0000">
+  <metadata tag="submitter" timestamp="2006-11-10T11:17:04Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 16 Nov 2006 15:07:26 +0000">
+  <metadata tag="bugReady" timestamp="2006-11-16T15:07:26Z">
     vorlon
   </metadata>
 </glsa>

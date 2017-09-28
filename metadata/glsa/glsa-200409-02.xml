@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-02">
   <title>MySQL: Insecure temporary file creation in mysqlhotcopy</title>
   <synopsis>
@@ -9,8 +8,8 @@
     important data.
   </synopsis>
   <product type="ebuild">MySQL</product>
-  <announced>September 01, 2004</announced>
-  <revised>September 01, 2004: 01</revised>
+  <announced>2004-09-01</announced>
+  <revised>2004-09-01: 01</revised>
   <bug>60744</bug>
   <access>local</access>
   <affected>
@@ -55,16 +54,16 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-db/mysql-4.0.20-r1"
-    # emerge ">=dev-db/mysql-4.0.20-r1"</code>
+    # emerge -pv "&gt;=dev-db/mysql-4.0.20-r1"
+    # emerge "&gt;=dev-db/mysql-4.0.20-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0457">CAN-2004-0457</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0457">CAN-2004-0457</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 31 Aug 2004 08:03:33 +0000">
+  <metadata tag="requester" timestamp="2004-08-31T08:03:33Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 31 Aug 2004 15:42:33 +0000">
+  <metadata tag="submitter" timestamp="2004-08-31T15:42:33Z">
     koon
   </metadata>
 </glsa>

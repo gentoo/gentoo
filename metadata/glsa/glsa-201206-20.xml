@@ -6,8 +6,8 @@
     Service condition.
   </synopsis>
   <product type="ebuild">gdk-pixbuf</product>
-  <announced>June 23, 2012</announced>
-  <revised>June 23, 2012: 1</revised>
+  <announced>2012-06-23</announced>
+  <revised>2012-06-23: 1</revised>
   <bug>373999</bug>
   <bug>412033</bug>
   <access>remote</access>
@@ -54,11 +54,11 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2485">CVE-2011-2485</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2370">CVE-2012-2370</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2485">CVE-2011-2485</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2370">CVE-2012-2370</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:08 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:08Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Sat, 23 Jun 2012 20:11:46 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-06-23T20:11:46Z" tag="submitter">ackle</metadata>
 </glsa>

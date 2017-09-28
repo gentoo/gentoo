@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">tar</product>
-  <announced>November 22, 2016</announced>
-  <revised>November 22, 2016: 2</revised>
+  <announced>2016-11-22</announced>
+  <revised>2016-11-22: 2</revised>
   <bug>598334</bug>
   <access>remote</access>
   <affected>
@@ -47,8 +47,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6321">CVE-2016-6321</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6321">CVE-2016-6321</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 11 Nov 2016 06:05:11 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:59:11 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-11T06:05:11Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-22T11:59:11Z">b-man</metadata>
 </glsa>

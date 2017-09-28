@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">gajim</product>
-  <announced>August 14, 2012</announced>
-  <revised>August 14, 2012: 1</revised>
+  <announced>2012-08-14</announced>
+  <revised>2012-08-14: 1</revised>
   <bug>411269</bug>
   <bug>412215</bug>
   <access>local, remote</access>
@@ -49,10 +49,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2085">CVE-2012-2085</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2086">CVE-2012-2086</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2093">CVE-2012-2093</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2085">CVE-2012-2085</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2086">CVE-2012-2086</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2093">CVE-2012-2093</uri>
   </references>
-  <metadata timestamp="Tue, 10 Jul 2012 21:42:30 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 14 Aug 2012 20:30:50 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-07-10T21:42:30Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-08-14T20:30:50Z" tag="submitter">ackle</metadata>
 </glsa>

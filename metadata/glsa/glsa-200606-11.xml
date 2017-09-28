@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-11">
   <title>JPEG library: Denial of Service</title>
   <synopsis>
     The JPEG library is vulnerable to a Denial of Service.
   </synopsis>
   <product type="ebuild">jpeg</product>
-  <announced>June 11, 2006</announced>
-  <revised>July 29, 2006: 02</revised>
+  <announced>2006-06-11</announced>
+  <revised>2006-07-29: 02</revised>
   <bug>130889</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-libs/jpeg-6b-r7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-libs/jpeg-6b-r7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3005">CVE-2006-3005</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3005">CVE-2006-3005</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 05 Jun 2006 22:15:44 +0000">
+  <metadata tag="requester" timestamp="2006-06-05T22:15:44Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 05 Jun 2006 22:17:08 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-05T22:17:08Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 06 Jun 2006 08:58:39 +0000">
+  <metadata tag="submitter" timestamp="2006-06-06T08:58:39Z">
     daxomatic
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     local attackers to gain access to cleartext credentials.
   </synopsis>
   <product type="ebuild">pam_skey</product>
-  <announced>February 09, 2014</announced>
-  <revised>February 09, 2014: 1</revised>
+  <announced>2014-02-09</announced>
+  <revised>2014-02-09: 1</revised>
   <bug>482588</bug>
   <access>local</access>
   <affected>
@@ -44,8 +44,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4285">CVE-2013-4285</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4285">CVE-2013-4285</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 28 Aug 2013 10:10:48 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Sun, 09 Feb 2014 10:46:24 +0000">a3li</metadata>
+  <metadata tag="requester" timestamp="2013-08-28T10:10:48Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2014-02-09T10:46:24Z">a3li</metadata>
 </glsa>

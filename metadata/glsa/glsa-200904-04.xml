@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-04">
   <title>WeeChat: Denial of Service</title>
   <synopsis>
     A processing error in WeeChat might lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">weechat</product>
-  <announced>April 04, 2009</announced>
-  <revised>April 04, 2009: 01</revised>
+  <announced>2009-04-04</announced>
+  <revised>2009-04-04: 01</revised>
   <bug>262997</bug>
   <access>remote</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-irc/weechat-0.2.6.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-irc/weechat-0.2.6.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0661">CVE-2009-0661</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0661">CVE-2009-0661</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 04 Apr 2009 15:10:01 +0000">
+  <metadata tag="requester" timestamp="2009-04-04T15:10:01Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 04 Apr 2009 15:21:46 +0000">
+  <metadata tag="submitter" timestamp="2009-04-04T15:21:46Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 04 Apr 2009 17:18:54 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-04T17:18:54Z">
     keytoaster
   </metadata>
 </glsa>

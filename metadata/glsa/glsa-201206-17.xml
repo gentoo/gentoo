@@ -6,8 +6,8 @@
     possibly allowing symlink attacks.
   </synopsis>
   <product type="ebuild">virtualenv</product>
-  <announced>June 22, 2012</announced>
-  <revised>June 22, 2012: 1</revised>
+  <announced>2012-06-22</announced>
+  <revised>2012-06-22: 1</revised>
   <bug>395285</bug>
   <access>local</access>
   <affected>
@@ -41,8 +41,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4617">CVE-2011-4617</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4617">CVE-2011-4617</uri>
   </references>
-  <metadata timestamp="Tue, 06 Mar 2012 21:31:00 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Fri, 22 Jun 2012 16:31:54 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-06T21:31:00Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-22T16:31:54Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200603-08">
   <title>GnuPG: Incorrect signature verification</title>
   <synopsis>
@@ -8,8 +7,8 @@
     digital signature.
   </synopsis>
   <product type="ebuild">gnupg</product>
-  <announced>March 10, 2006</announced>
-  <revised>March 10, 2006: 01</revised>
+  <announced>2006-03-10</announced>
+  <revised>2006-03-10: 01</revised>
   <bug>125217</bug>
   <access>remote</access>
   <affected>
@@ -56,16 +55,16 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/gnupg-1.4.2.2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-1.4.2.2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0049">CVE-2006-0049</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0049">CVE-2006-0049</uri>
     <uri link="http://lists.gnupg.org/pipermail/gnupg-announce/2006q1/000216.html">GnuPG Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 08 Mar 2006 22:34:09 +0000">
+  <metadata tag="submitter" timestamp="2006-03-08T22:34:09Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Mar 2006 21:32:19 +0000">
+  <metadata tag="bugReady" timestamp="2006-03-10T21:32:19Z">
     koon
   </metadata>
 </glsa>

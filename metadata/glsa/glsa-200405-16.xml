@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-16">
   <title>Multiple XSS Vulnerabilities in SquirrelMail</title>
   <synopsis>
     SquirrelMail is subject to several XSS and one SQL injection vulnerability.
   </synopsis>
   <product type="ebuild">SquirrelMail</product>
-  <announced>May 25, 2004</announced>
-  <revised>May 27, 2006: 04</revised>
+  <announced>2004-05-25</announced>
+  <revised>2006-05-27: 04</revised>
   <bug>49675</bug>
   <access>remote</access>
   <affected>
@@ -54,15 +53,15 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=mail-client/squirrelmail-1.4.3_rc1&quot;
-    # emerge &quot;&gt;=mail-client/squirrelmail-1.4.3_rc1&quot;</code>
+    # emerge -pv "&gt;=mail-client/squirrelmail-1.4.3_rc1"
+    # emerge "&gt;=mail-client/squirrelmail-1.4.3_rc1"</code>
   </resolution>
   <references>
-    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=4199060&amp;forum_id=1988">SquirrelMail 1.4.3_rc1 release annoucement</uri>
+    <uri link="https://sourceforge.net/mailarchive/forum.php?thread_id=4199060&amp;forum_id=1988">SquirrelMail 1.4.3_rc1 release annoucement</uri>
     <uri link="http://www.securityfocus.com/bid/10246/">Bugtraq security annoucement</uri>
-    <uri link="http://www.cert.org/advisories/CA-2000-02.html">CERT description of XSS</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0519">CVE-2004-0519</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0521">CVE-2004-0521</uri>
+    <uri link="https://www.cert.org/advisories/CA-2000-02.html">CERT description of XSS</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0519">CVE-2004-0519</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0521">CVE-2004-0521</uri>
   </references>
   <metadata tag="submitter">
     jaervosz

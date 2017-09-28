@@ -6,8 +6,8 @@
     worst of which could lead to arbitrary code execution.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>April 11, 2015</announced>
-  <revised>April 19, 2015: 2</revised>
+  <announced>2015-04-11</announced>
+  <revised>2015-04-19: 2</revised>
   <bug>535948</bug>
   <access>remote</access>
   <affected>
@@ -44,15 +44,15 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5704">CVE-2013-5704</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0118">CVE-2014-0118</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0226">CVE-2014-0226</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0231">CVE-2014-0231</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5704">CVE-2013-5704</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0118">CVE-2014-0118</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0226">CVE-2014-0226</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0231">CVE-2014-0231</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 25 Feb 2015 02:07:45 +0000">
+  <metadata tag="requester" timestamp="2015-02-25T02:07:45Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 19 Apr 2015 00:06:25 +0000">
+  <metadata tag="submitter" timestamp="2015-04-19T00:06:25Z">
     BlueKnight
   </metadata>
 </glsa>

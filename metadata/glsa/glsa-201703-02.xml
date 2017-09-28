@@ -48,13 +48,13 @@
     <uri link="https://helpx.adobe.com/security/products/flash-player/apsb17-07.html">
       APSB17-07
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2997">CVE-2017-2997</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2998">CVE-2017-2998</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2999">CVE-2017-2999</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3000">CVE-2017-3000</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3001">CVE-2017-3001</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3002">CVE-2017-3002</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3003">CVE-2017-3003</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2997">CVE-2017-2997</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2998">CVE-2017-2998</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2999">CVE-2017-2999</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3000">CVE-2017-3000</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3001">CVE-2017-3001</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3002">CVE-2017-3002</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3003">CVE-2017-3003</uri>
   </references>
   <metadata tag="requester" timestamp="2017-03-16T08:44:22Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-03-19T18:32:52Z">whissi</metadata>

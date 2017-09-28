@@ -6,8 +6,8 @@
     to the arbitrary execution of code.
   </synopsis>
   <product type="ebuild">hdf5</product>
-  <announced>January 02, 2017</announced>
-  <revised>January 02, 2017: 1</revised>
+  <announced>2017-01-02</announced>
+  <revised>2017-01-02: 1</revised>
   <bug>601404</bug>
   <bug>601408</bug>
   <bug>601414</bug>
@@ -46,11 +46,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4330">CVE-2016-4330</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4331">CVE-2016-4331</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4332">CVE-2016-4332</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4333">CVE-2016-4333</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4330">CVE-2016-4330</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4331">CVE-2016-4331</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4332">CVE-2016-4332</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4333">CVE-2016-4333</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 02 Jan 2017 07:36:29 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 14:52:28 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2017-01-02T07:36:29Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-02T14:52:28Z">b-man</metadata>
 </glsa>

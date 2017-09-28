@@ -6,8 +6,8 @@
     leading to remote passive code execution.
   </synopsis>
   <product type="ebuild">feh</product>
-  <announced>October 13, 2011</announced>
-  <revised>October 13, 2011: 2</revised>
+  <announced>2011-10-13</announced>
+  <revised>2011-10-13: 2</revised>
   <bug>325531</bug>
   <bug>354063</bug>
   <access>local, remote</access>
@@ -45,10 +45,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2246">CVE-2010-2246</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0702">CVE-2011-0702</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1031">CVE-2011-1031</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2246">CVE-2010-2246</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0702">CVE-2011-0702</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1031">CVE-2011-1031</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:47 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Thu, 13 Oct 2011 21:10:09 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-07T23:37:47Z" tag="requester">craig</metadata>
+  <metadata timestamp="2011-10-13T21:10:09Z" tag="submitter">craig</metadata>
 </glsa>

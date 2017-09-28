@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-14">
   <title>NVIDIA drivers: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     for a Denial of Service.
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
-  <announced>August 19, 2007</announced>
-  <revised>October 11, 2007: 03</revised>
+  <announced>2007-08-19</announced>
+  <revised>2007-10-11: 03</revised>
   <bug>183567</bug>
   <access>local</access>
   <affected>
@@ -49,18 +48,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;x11-drivers/nvidia-drivers&quot;</code>
+    # emerge --ask --oneshot --verbose "x11-drivers/nvidia-drivers"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3532">CVE-2007-3532</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3532">CVE-2007-3532</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 28 Jul 2007 07:38:56 +0000">
+  <metadata tag="requester" timestamp="2007-07-28T07:38:56Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 28 Jul 2007 07:39:35 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-28T07:39:35Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 12 Aug 2007 20:41:51 +0000">
+  <metadata tag="submitter" timestamp="2007-08-12T20:41:51Z">
     p-y
   </metadata>
 </glsa>

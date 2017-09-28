@@ -6,9 +6,9 @@
     which could lead to arbitrary code execution or Denial of Service
     condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>June 18, 2016</announced>
-  <revised>June 18, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-06-18</announced>
+  <revised>2016-06-18: 1</revised>
   <bug>528554</bug>
   <bug>553732</bug>
   <bug>571868</bug>
@@ -47,16 +47,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9676">CVE-2014-9676</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1897">CVE-2016-1897</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1898">CVE-2016-1898</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2213">CVE-2016-2213</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2326">CVE-2016-2326</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2327">CVE-2016-2327</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2328">CVE-2016-2328</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2329">CVE-2016-2329</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2330">CVE-2016-2330</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9676">CVE-2014-9676</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1897">CVE-2016-1897</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1898">CVE-2016-1898</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2213">CVE-2016-2213</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2326">CVE-2016-2326</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2327">CVE-2016-2327</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2328">CVE-2016-2328</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2329">CVE-2016-2329</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2330">CVE-2016-2330</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 20 Mar 2016 12:22:08 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 23:58:49 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-03-20T12:22:08Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-06-18T23:58:49Z">b-man</metadata>
 </glsa>

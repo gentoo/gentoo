@@ -6,8 +6,8 @@
     which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">chromium</product>
-  <announced>April 10, 2012</announced>
-  <revised>April 10, 2012: 1</revised>
+  <announced>2012-04-10</announced>
+  <revised>2012-04-10: 1</revised>
   <bug>410963</bug>
   <access>remote</access>
   <affected>
@@ -45,50 +45,50 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3066">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3066">
       CVE-2011-3066
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3067">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3067">
       CVE-2011-3067
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3068">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3068">
       CVE-2011-3068
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3069">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3069">
       CVE-2011-3069
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3070">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3070">
       CVE-2011-3070
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3071">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3071">
       CVE-2011-3071
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3072">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3072">
       CVE-2011-3072
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3073">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3073">
       CVE-2011-3073
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3074">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3074">
       CVE-2011-3074
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3075">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3075">
       CVE-2011-3075
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3076">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3076">
       CVE-2011-3076
     </uri>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3077">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3077">
       CVE-2011-3077
     </uri>
-    <uri link="http://googlechromereleases.blogspot.com/2012/04/stable-and-beta-channel-updates.html">
+    <uri link="https://googlechromereleases.blogspot.com/2012/04/stable-and-beta-channel-updates.html">
       Release Notes 18.0.1025.151
     </uri>
   </references>
-  <metadata timestamp="Tue, 10 Apr 2012 08:53:22 +0000" tag="requester">
+  <metadata timestamp="2012-04-10T08:53:22Z" tag="requester">
     phajdan.jr
   </metadata>
-  <metadata timestamp="Tue, 10 Apr 2012 21:54:33 +0000" tag="submitter">
+  <metadata timestamp="2012-04-10T21:54:33Z" tag="submitter">
     phajdan.jr
   </metadata>
 </glsa>

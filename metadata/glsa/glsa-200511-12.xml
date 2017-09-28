@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-12">
   <title>Scorched 3D: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     service or execute arbitrary code on game servers.
   </synopsis>
   <product type="ebuild">scorched3d</product>
-  <announced>November 15, 2005</announced>
-  <revised>August 10, 2006: 03</revised>
+  <announced>2005-11-15</announced>
+  <revised>2006-08-10: 03</revised>
   <bug>111421</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-strategy/scorched3d-40&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-strategy/scorched3d-40"</code>
   </resolution>
   <references>
     <uri link="http://seclists.org/lists/fulldisclosure/2005/Nov/0079.html">Original advisory</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3486">CVE-2005-3486</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3487">CVE-2005-3487</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3488">CVE-2005-3488</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3486">CVE-2005-3486</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3487">CVE-2005-3487</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3488">CVE-2005-3488</uri>
   </references>
-  <metadata tag="submitter" timestamp="Mon, 14 Nov 2005 13:02:43 +0000">
+  <metadata tag="submitter" timestamp="2005-11-14T13:02:43Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 14 Nov 2005 13:04:09 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-14T13:04:09Z">
     koon
   </metadata>
 </glsa>

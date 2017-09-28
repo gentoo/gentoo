@@ -6,8 +6,8 @@
     remote attackers to execute arbitrary code or cause a Denial of Service.
   </synopsis>
   <product type="ebuild">libreoffice</product>
-  <announced>September 24, 2012</announced>
-  <revised>September 24, 2012: 1</revised>
+  <announced>2012-09-24</announced>
+  <revised>2012-09-24: 1</revised>
   <bug>386081</bug>
   <bug>409455</bug>
   <bug>416457</bug>
@@ -73,13 +73,13 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2713">CVE-2011-2713</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0037">CVE-2012-0037</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1149">CVE-2012-1149</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2665">CVE-2012-2665</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2713">CVE-2011-2713</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0037">CVE-2012-0037</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1149">CVE-2012-1149</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2665">CVE-2012-2665</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 25 May 2012 03:12:45 +0000">
+  <metadata tag="requester" timestamp="2012-05-25T03:12:45Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 24 Sep 2012 10:36:10 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2012-09-24T10:36:10Z">ackle</metadata>
 </glsa>

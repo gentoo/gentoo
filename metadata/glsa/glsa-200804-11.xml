@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200804-11">
   <title>policyd-weight: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     symlink attack.
   </synopsis>
   <product type="ebuild">policyd-weight</product>
-  <announced>April 11, 2008</announced>
-  <revised>April 11, 2008: 01</revised>
+  <announced>2008-04-11</announced>
+  <revised>2008-04-11: 01</revised>
   <bug>214403</bug>
   <access>local</access>
   <affected>
@@ -48,7 +47,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/policyd-weight-0.1.14.17&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-filter/policyd-weight-0.1.14.17"</code>
     <p>
     This version changes the default path for sockets to
     "/var/run/policyd-weight", which is only writable by a privileged user.
@@ -57,15 +56,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1569">CVE-2008-1569</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1569">CVE-2008-1569</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 29 Mar 2008 20:06:42 +0000">
+  <metadata tag="requester" timestamp="2008-03-29T20:06:42Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Apr 2008 07:47:13 +0000">
+  <metadata tag="submitter" timestamp="2008-04-07T07:47:13Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 07 Apr 2008 07:47:40 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-07T07:47:40Z">
     rbu
   </metadata>
 </glsa>

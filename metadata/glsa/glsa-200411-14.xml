@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-14">
   <title>Kaffeine, gxine: Remotely exploitable buffer overflow</title>
   <synopsis>
@@ -9,8 +8,8 @@
     headers.
   </synopsis>
   <product type="ebuild">kaffeine gxine</product>
-  <announced>November 07, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-11-07</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>69663</bug>
   <bug>70055</bug>
   <access>remote</access>
@@ -56,26 +55,26 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/kaffeine-0.4.3b-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/kaffeine-0.4.3b-r1"</code>
     <p>
     All gxine users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/gxine-0.3.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/gxine-0.3.3-r1"</code>
   </resolution>
   <references>
     <uri link="http://securitytracker.com/alerts/2004/Oct/1011936.html">SecurityTracker Advisory</uri>
-    <uri link="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1060299&amp;group_id=9655&amp;atid=109655">gxine Bug Report</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1034">CVE-2004-1034</uri>
+    <uri link="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1060299&amp;group_id=9655&amp;atid=109655">gxine Bug Report</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1034">CVE-2004-1034</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  3 Nov 2004 13:13:11 +0000">
+  <metadata tag="requester" timestamp="2004-11-03T13:13:11Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri,  5 Nov 2004 01:34:00 +0000">
+  <metadata tag="submitter" timestamp="2004-11-05T01:34:00Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun,  7 Nov 2004 19:19:00 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-07T19:19:00Z">
     jaervosz
   </metadata>
 </glsa>

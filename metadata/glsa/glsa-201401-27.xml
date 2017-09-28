@@ -6,8 +6,8 @@
     escalation.
   </synopsis>
   <product type="ebuild">texmacs</product>
-  <announced>January 26, 2014</announced>
-  <revised>January 26, 2014: 2</revised>
+  <announced>2014-01-26</announced>
+  <revised>2014-01-26: 2</revised>
   <bug>337532</bug>
   <access>local</access>
   <affected>
@@ -51,12 +51,12 @@
     
   </resolution>
   <references>
-    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3394">
+    <uri link="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-3394">
       CVE-2010-3394
     </uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:13 +0000">
+  <metadata tag="requester" timestamp="2011-10-07T23:38:13Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 26 Jan 2014 00:54:29 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-01-26T00:54:29Z">Zlogene</metadata>
 </glsa>

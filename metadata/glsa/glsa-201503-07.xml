@@ -6,8 +6,8 @@
     arbitrary code or Denial of Service.
   </synopsis>
   <product type="ebuild">hivex</product>
-  <announced>March 14, 2015</announced>
-  <revised>March 14, 2015: 1</revised>
+  <announced>2015-03-14</announced>
+  <revised>2015-03-14: 1</revised>
   <bug>490990</bug>
   <access>local, remote</access>
   <affected>
@@ -45,10 +45,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9273">CVE-2014-9273</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9273">CVE-2014-9273</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 23:12:47 +0000">
+  <metadata tag="requester" timestamp="2015-01-15T23:12:47Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 14 Mar 2015 18:22:22 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-03-14T18:22:22Z">ackle</metadata>
 </glsa>

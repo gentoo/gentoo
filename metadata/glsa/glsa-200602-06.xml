@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200602-06">
   <title>ImageMagick: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     and potentially execute arbitrary code.
   </synopsis>
   <product type="ebuild">ImageMagick</product>
-  <announced>February 13, 2006</announced>
-  <revised>February 13, 2006: 01</revised>
+  <announced>2006-02-13</announced>
+  <revised>2006-02-13: 01</revised>
   <bug>83542</bug>
   <access>remote</access>
   <affected>
@@ -51,19 +50,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.2.5.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.2.5.5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0082">CVE-2006-0082</uri>
-    <uri link="/security/en/glsa/glsa-200503-11.xml">GLSA 200503-11</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0082">CVE-2006-0082</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200503-11.xml">GLSA 200503-11</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 01 Feb 2006 19:11:00 +0000">
+  <metadata tag="requester" timestamp="2006-02-01T19:11:00Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 02 Feb 2006 08:22:50 +0000">
+  <metadata tag="submitter" timestamp="2006-02-02T08:22:50Z">
     frilled
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 09 Feb 2006 18:59:37 +0000">
+  <metadata tag="bugReady" timestamp="2006-02-09T18:59:37Z">
     koon
   </metadata>
 </glsa>

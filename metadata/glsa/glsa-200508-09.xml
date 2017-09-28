@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-09">
   <title>bluez-utils: Bluetooth device name validation vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution.
   </synopsis>
   <product type="ebuild">bluez-utils</product>
-  <announced>August 17, 2005</announced>
-  <revised>August 17, 2005: 01</revised>
+  <announced>2005-08-17</announced>
+  <revised>2005-08-17: 01</revised>
   <bug>101557</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-wireless/bluez-utils-2.19&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-wireless/bluez-utils-2.19"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2547">CAN-2005-2547</uri>
-    <uri link="http://cvs.sourceforge.net/viewcvs.py/bluez/utils/ChangeLog?rev=1.28&amp;view=markup">bluez-utils ChangeLog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2547">CAN-2005-2547</uri>
+    <uri link="https://cvs.sourceforge.net/viewcvs.py/bluez/utils/ChangeLog?rev=1.28&amp;view=markup">bluez-utils ChangeLog</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 09 Aug 2005 20:35:32 +0000">
+  <metadata tag="requester" timestamp="2005-08-09T20:35:32Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 10 Aug 2005 02:45:23 +0000">
+  <metadata tag="submitter" timestamp="2005-08-10T02:45:23Z">
     r2d2
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 17 Aug 2005 13:18:39 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-17T13:18:39Z">
     jaervosz
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200409-15">
   <title>Webmin, Usermin: Multiple vulnerabilities in Usermin</title>
   <synopsis>
@@ -10,8 +9,8 @@
     execute a symlink attack at installation time.
   </synopsis>
   <product type="ebuild">Usermin</product>
-  <announced>September 12, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-09-12</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>63167</bug>
   <access>remote</access>
   <affected>
@@ -68,30 +67,30 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-admin/usermin-1.090&quot;
-    # emerge &quot;&gt;=app-admin/usermin-1.090&quot;</code>
+    # emerge -pv "&gt;=app-admin/usermin-1.090"
+    # emerge "&gt;=app-admin/usermin-1.090"</code>
     <p>
     All Webmin users should upgrade to the latest version:
     </p>
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-admin/webmin-1.160&quot;
-    # emerge &quot;&gt;=app-admin/webmin-1.160&quot;</code>
+    # emerge -pv "&gt;=app-admin/webmin-1.160"
+    # emerge "&gt;=app-admin/webmin-1.160"</code>
   </resolution>
   <references>
-    <uri link="http://secunia.com/advisories/12488/">Secunia Advisory SA12488</uri>
+    <uri link="https://secunia.com/advisories/12488/">Secunia Advisory SA12488</uri>
     <uri link="http://www.webmin.com/uchanges.html">Usermin Changelog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0559">CVE-2004-0559</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1468">CVE-2004-1468</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0559">CVE-2004-0559</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1468">CVE-2004-1468</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Sep 2004 12:32:20 +0000">
+  <metadata tag="requester" timestamp="2004-09-10T12:32:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 11 Sep 2004 10:07:56 +0000">
+  <metadata tag="bugReady" timestamp="2004-09-11T10:07:56Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 11 Sep 2004 16:34:02 +0000">
+  <metadata tag="submitter" timestamp="2004-09-11T16:34:02Z">
     dmargoli
   </metadata>
 </glsa>

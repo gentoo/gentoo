@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200506-17">
   <title>SpamAssassin 3, Vipul's Razor: Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     when handling certain malformed messages.
   </synopsis>
   <product type="ebuild">SpamAssassin, Vipul's Razor</product>
-  <announced>June 21, 2005</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2005-06-21</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>94722</bug>
   <bug>95492</bug>
   <bug>96776</bug>
@@ -55,24 +54,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/spamassassin-3.0.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-filter/spamassassin-3.0.4"</code>
     <p>
     All Vipul's Razor users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-filter/razor-2.74&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-filter/razor-2.74"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1266">CAN-2005-1266</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2024">CVE-2005-2024</uri>
-    <uri link="http://mail-archives.apache.org/mod_mbox/spamassassin-announce/200506.mbox/%3c17072.35054.586017.822288@proton.pathname.com%3e">SpamAssassin Announcement</uri>
-    <uri link="http://sourceforge.net/mailarchive/forum.php?thread_id=7520323&amp;forum_id=4259">Vipul's Razor Announcement</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1266">CAN-2005-1266</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2024">CVE-2005-2024</uri>
+    <uri link="https://mail-archives.apache.org/mod_mbox/spamassassin-announce/200506.mbox/%3c17072.35054.586017.822288@proton.pathname.com%3e">SpamAssassin Announcement</uri>
+    <uri link="https://sourceforge.net/mailarchive/forum.php?thread_id=7520323&amp;forum_id=4259">Vipul's Razor Announcement</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 08 Jun 2005 05:05:05 +0000">
+  <metadata tag="submitter" timestamp="2005-06-08T05:05:05Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 20 Jun 2005 04:49:42 +0000">
+  <metadata tag="bugReady" timestamp="2005-06-20T04:49:42Z">
     jaervosz
   </metadata>
 </glsa>

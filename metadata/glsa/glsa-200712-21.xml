@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-21">
   <title>Mozilla Firefox, SeaMonkey: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Mozilla Seamonkey.
   </synopsis>
   <product type="ebuild">firefox seamonkey</product>
-  <announced>December 29, 2007</announced>
-  <revised>December 29, 2007: 01</revised>
+  <announced>2007-12-29</announced>
+  <revised>2007-12-29: 01</revised>
   <bug>198965</bug>
   <bug>200909</bug>
   <access>remote</access>
@@ -65,38 +64,38 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-2.0.0.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-2.0.0.11"</code>
     <p>
     All Mozilla Firefox binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/mozilla-firefox-bin-2.0.0.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/mozilla-firefox-bin-2.0.0.11"</code>
     <p>
     All SeaMonkey users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-1.1.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/seamonkey-1.1.7"</code>
     <p>
     All SeaMonkey binary users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/seamonkey-bin-1.1.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/seamonkey-bin-1.1.7"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5947">CVE-2007-5947</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5959">CVE-2007-5959</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5960">CVE-2007-5960</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5947">CVE-2007-5947</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5959">CVE-2007-5959</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5960">CVE-2007-5960</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 08 Dec 2007 23:32:55 +0000">
+  <metadata tag="requester" timestamp="2007-12-08T23:32:55Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 12 Dec 2007 16:56:13 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-12T16:56:13Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 24 Dec 2007 11:43:38 +0000">
+  <metadata tag="submitter" timestamp="2007-12-24T11:43:38Z">
     p-y
   </metadata>
 </glsa>

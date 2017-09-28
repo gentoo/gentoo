@@ -6,8 +6,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">InspIRCd</product>
-  <announced>April 10, 2012</announced>
-  <revised>April 10, 2012: 1</revised>
+  <announced>2012-04-10</announced>
+  <revised>2012-04-10: 1</revised>
   <bug>409159</bug>
   <access>remote</access>
   <affected>
@@ -43,8 +43,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1836">CVE-2012-1836</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1836">CVE-2012-1836</uri>
   </references>
-  <metadata timestamp="Fri, 23 Mar 2012 11:55:36 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Tue, 10 Apr 2012 11:06:33 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-03-23T11:55:36Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-04-10T11:06:33Z" tag="submitter">ackle</metadata>
 </glsa>

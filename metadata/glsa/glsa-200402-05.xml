@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200402-05">
   <title>phpMyAdmin &lt; 2.5.6-rc1: possible attack against export.php</title>
   <synopsis>
@@ -8,8 +7,8 @@
     generated input could lead to a directory traversal attack.
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
-  <announced>February 17, 2004</announced>
-  <revised>February 17, 2004: 01</revised>
+  <announced>2004-02-17</announced>
+  <revised>2004-02-17: 01</revised>
   <bug>40268</bug>
   <access>remote</access>
   <affected>
@@ -55,11 +54,11 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv ">=dev-db/phpmyadmin-2.5.6_rc1"
-    # emerge ">=dev-db/phpmyadmin-2.5.6_rc1"
+    # emerge -pv "&gt;=dev-db/phpmyadmin-2.5.6_rc1"
+    # emerge "&gt;=dev-db/phpmyadmin-2.5.6_rc1"
     # emerge clean</code>
   </resolution>
   <references>
-    <uri link="http://cvs.sourceforge.net/viewcvs.py/phpmyadmin/phpMyAdmin/export.php?r1=2.3&amp;r2=2.3.2.1">CVS Patch</uri>
+    <uri link="https://cvs.sourceforge.net/viewcvs.py/phpmyadmin/phpMyAdmin/export.php?r1=2.3&amp;r2=2.3.2.1">CVS Patch</uri>
   </references>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200510-17">
   <title>AbiWord: New RTF import buffer overflows</title>
   <synopsis>
@@ -8,8 +7,8 @@
     import, making it vulnerable to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">AbiWord</product>
-  <announced>October 20, 2005</announced>
-  <revised>October 20, 2005: 01</revised>
+  <announced>2005-10-20</announced>
+  <revised>2005-10-20: 01</revised>
   <bug>109157</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-office/abiword-2.2.11&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-office/abiword-2.2.11"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200509-20.xml">GLSA-200509-20</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2972">CAN-2005-2972</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200509-20.xml">GLSA-200509-20</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2972">CAN-2005-2972</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 18 Oct 2005 07:36:44 +0000">
+  <metadata tag="requester" timestamp="2005-10-18T07:36:44Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 18 Oct 2005 14:22:32 +0000">
+  <metadata tag="submitter" timestamp="2005-10-18T14:22:32Z">
     formula7
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 20 Oct 2005 05:41:16 +0000">
+  <metadata tag="bugReady" timestamp="2005-10-20T05:41:16Z">
     jaervosz
   </metadata>
 </glsa>

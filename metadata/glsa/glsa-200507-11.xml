@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-11">
   <title>MIT Kerberos 5: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     entire Kerberos realm.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>July 12, 2005</announced>
-  <revised>July 12, 2005: 01</revised>
+  <announced>2005-07-12</announced>
+  <revised>2005-07-12: 01</revised>
   <bug>98799</bug>
   <access>remote</access>
   <affected>
@@ -56,22 +55,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.4.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1174">CAN-2005-1174</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1175">CAN-2005-1175</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1689">CAN-2005-1689</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1174">CAN-2005-1174</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1175">CAN-2005-1175</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1689">CAN-2005-1689</uri>
     <uri link="http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2005-002-kdc.txt">MITKRB5-SA-2005-002</uri>
     <uri link="http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2005-003-recvauth.txt">MITKRB5-SA-2005-003</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 08 Jul 2005 08:49:39 +0000">
+  <metadata tag="requester" timestamp="2005-07-08T08:49:39Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 08 Jul 2005 14:57:37 +0000">
+  <metadata tag="submitter" timestamp="2005-07-08T14:57:37Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 12 Jul 2005 19:05:46 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-12T19:05:46Z">
     jaervosz
   </metadata>
 </glsa>

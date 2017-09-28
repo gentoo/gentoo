@@ -6,8 +6,8 @@
     escalation.
   </synopsis>
   <product type="ebuild">policycoreutils</product>
-  <announced>December 26, 2014</announced>
-  <revised>December 26, 2014: 1</revised>
+  <announced>2014-12-26</announced>
+  <revised>2014-12-26: 1</revised>
   <bug>509896</bug>
   <access>local</access>
   <affected>
@@ -40,10 +40,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3215">CVE-2014-3215</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3215">CVE-2014-3215</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 19 Aug 2014 04:53:45 +0000">
+  <metadata tag="requester" timestamp="2014-08-19T04:53:45Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Dec 2014 18:53:38 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-12-26T18:53:38Z">ackle</metadata>
 </glsa>

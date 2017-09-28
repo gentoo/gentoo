@@ -6,8 +6,8 @@
     of which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>November 30, 2016</announced>
-  <revised>November 30, 2016: 1</revised>
+  <announced>2016-11-30</announced>
+  <revised>2016-11-30: 1</revised>
   <bug>581990</bug>
   <bug>593526</bug>
   <bug>593530</bug>
@@ -49,17 +49,17 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3714">CVE-2016-3714</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3715">CVE-2016-3715</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3716">CVE-2016-3716</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3717">CVE-2016-3717</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3718">CVE-2016-3718</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5010">CVE-2016-5010</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5842">CVE-2016-5842</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6491">CVE-2016-6491</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7799">CVE-2016-7799</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7906">CVE-2016-7906</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3714">CVE-2016-3714</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3715">CVE-2016-3715</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3716">CVE-2016-3716</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3717">CVE-2016-3717</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3718">CVE-2016-3718</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5010">CVE-2016-5010</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5842">CVE-2016-5842</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6491">CVE-2016-6491</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7799">CVE-2016-7799</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7906">CVE-2016-7906</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 11 Oct 2016 12:32:33 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Nov 2016 21:42:34 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-10-11T12:32:33Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-11-30T21:42:34Z">b-man</metadata>
 </glsa>

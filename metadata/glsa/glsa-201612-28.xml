@@ -5,9 +5,9 @@
   <synopsis>A vulnerability in Docker could lead to the escalation of
     privileges.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>December 11, 2016</announced>
-  <revised>December 11, 2016: 1</revised>
+  <product type="ebuild"/>
+  <announced>2016-12-11</announced>
+  <revised>2016-12-11: 1</revised>
   <bug>581236</bug>
   <access>remote</access>
   <affected>
@@ -39,8 +39,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3697">CVE-2016-3697</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3697">CVE-2016-3697</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 26 Nov 2016 00:31:47 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:40:37 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-26T00:31:47Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-11T23:40:37Z">b-man</metadata>
 </glsa>

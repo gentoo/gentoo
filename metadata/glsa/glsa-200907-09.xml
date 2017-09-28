@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200907-09">
   <title>Cyrus-SASL: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code in applications or daemons that authenticate using SASL.
   </synopsis>
   <product type="ebuild">cyrus-sasl</product>
-  <announced>July 12, 2009</announced>
-  <revised>July 12, 2009: 01</revised>
+  <announced>2009-07-12</announced>
+  <revised>2009-07-12: 01</revised>
   <bug>270261</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/cyrus-sasl-2.1.23&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-libs/cyrus-sasl-2.1.23"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0688">CVE-2009-0688</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0688">CVE-2009-0688</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 09 Jul 2009 18:32:29 +0000">
+  <metadata tag="requester" timestamp="2009-07-09T18:32:29Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 09 Jul 2009 21:10:28 +0000">
+  <metadata tag="submitter" timestamp="2009-07-09T21:10:28Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 10 Jul 2009 10:41:22 +0000">
+  <metadata tag="bugReady" timestamp="2009-07-10T10:41:22Z">
     rbu
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200704-01">
   <title>Asterisk: Two SIP Denial of Service vulnerabilities</title>
   <synopsis>
     Asterisk is vulnerable to two Denial of Service issues in the SIP channel.
   </synopsis>
   <product type="ebuild">asterisk</product>
-  <announced>April 02, 2007</announced>
-  <revised>April 02, 2007: 01</revised>
+  <announced>2007-04-02</announced>
+  <revised>2007-04-02: 01</revised>
   <bug>171467</bug>
   <access>remote</access>
   <affected>
@@ -58,13 +57,13 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1561">CVE-2007-1561</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1594">CVE-2007-1594</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1561">CVE-2007-1561</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1594">CVE-2007-1594</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 20 Mar 2007 20:55:47 +0000">
+  <metadata tag="submitter" timestamp="2007-03-20T20:55:47Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 02 Apr 2007 16:33:39 +0000">
+  <metadata tag="bugReady" timestamp="2007-04-02T16:33:39Z">
     jaervosz
   </metadata>
 </glsa>

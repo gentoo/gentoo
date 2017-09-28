@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200904-09">
   <title>MIT Kerberos 5: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     unauthenticated users to execute arbitrary code with root privileges.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>April 08, 2009</announced>
-  <revised>April 08, 2009: 01</revised>
+  <announced>2009-04-08</announced>
+  <revised>2009-04-08: 01</revised>
   <bug>262736</bug>
   <bug>263398</bug>
   <access>remote</access>
@@ -65,18 +64,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-crypt/mit-krb5-1.6.3-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-crypt/mit-krb5-1.6.3-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0844">CVE-2009-0844</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0845">CVE-2009-0845</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0846">CVE-2009-0846</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0847">CVE-2009-0847</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0844">CVE-2009-0844</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0845">CVE-2009-0845</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0846">CVE-2009-0846</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0847">CVE-2009-0847</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 08 Apr 2009 01:07:26 +0000">
+  <metadata tag="submitter" timestamp="2009-04-08T01:07:26Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 08 Apr 2009 18:19:31 +0000">
+  <metadata tag="bugReady" timestamp="2009-04-08T18:19:31Z">
     p-y
   </metadata>
 </glsa>

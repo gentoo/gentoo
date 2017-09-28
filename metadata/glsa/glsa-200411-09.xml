@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-09">
   <title>shadow: Unauthorized modification of account information</title>
   <synopsis>
@@ -8,8 +7,8 @@
     properties by unauthorized users.
   </synopsis>
   <product type="ebuild">shadow</product>
-  <announced>November 04, 2004</announced>
-  <revised>November 05, 2004: 02</revised>
+  <announced>2004-11-04</announced>
+  <revised>2004-11-05: 02</revised>
   <bug>69212</bug>
   <access>local</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=sys-apps/shadow-4.0.5-r1"</code>
+    # emerge --ask --oneshot --verbose "&gt;=sys-apps/shadow-4.0.5-r1"</code>
   </resolution>
   <references>
     <uri link="http://ftp.pld.org.pl/software/shadow/NEWS">shadow NEWS file</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1001">CAN-2004-1001</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1001">CAN-2004-1001</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  3 Nov 2004 20:36:10 +0000">
+  <metadata tag="requester" timestamp="2004-11-03T20:36:10Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  3 Nov 2004 20:36:17 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-03T20:36:17Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  3 Nov 2004 21:01:01 +0000">
+  <metadata tag="submitter" timestamp="2004-11-03T21:01:01Z">
     vorlon078
   </metadata>
 </glsa>

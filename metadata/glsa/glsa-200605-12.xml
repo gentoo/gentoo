@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200605-12">
   <title>Quake 3 engine based games: Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">quake</product>
-  <announced>May 10, 2006</announced>
-  <revised>May 10, 2006: 01</revised>
+  <announced>2006-05-10</announced>
+  <revised>2006-05-10: 01</revised>
   <bug>132377</bug>
   <access>remote</access>
   <affected>
@@ -56,30 +55,30 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/quake3-bin-1.32c&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-fps/quake3-bin-1.32c"</code>
     <p>
     All RTCW users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/rtcw-1.41b&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-fps/rtcw-1.41b"</code>
     <p>
     All Enemy Territory users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-fps/enemy-territory-2.60b&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-fps/enemy-territory-2.60b"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2236">CVE-2006-2236</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2236">CVE-2006-2236</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 09 May 2006 16:37:35 +0000">
+  <metadata tag="requester" timestamp="2006-05-09T16:37:35Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 09 May 2006 16:37:43 +0000">
+  <metadata tag="bugReady" timestamp="2006-05-09T16:37:43Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 09 May 2006 17:21:13 +0000">
+  <metadata tag="submitter" timestamp="2006-05-09T17:21:13Z">
     fox2mike
   </metadata>
 </glsa>

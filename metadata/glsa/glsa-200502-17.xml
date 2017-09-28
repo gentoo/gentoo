@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200502-17">
   <title>Opera: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     information disclosure and facilitate execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Opera</product>
-  <announced>February 14, 2005</announced>
-  <revised>December 30, 2007: 03</revised>
+  <announced>2005-02-14</announced>
+  <revised>2007-12-30: 03</revised>
   <bug>73871</bug>
   <bug>74076</bug>
   <bug>74321</bug>
@@ -62,22 +61,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-client/opera-7.54-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-client/opera-7.54-r3"</code>
   </resolution>
   <references>
-    <uri link="http://www.opera.com/linux/changelogs/754u1/">Opera Changelog for 7.54u1</uri>
-    <uri link="http://www.opera.com/linux/changelogs/754u2/">Opera Changelog for 7.54u2</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1157">CVE-2004-1157</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1489">CVE-2004-1489</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1490">CVE-2004-1490</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1491">CVE-2004-1491</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0456">CVE-2005-0456</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0457">CVE-2005-0457</uri>
+    <uri link="https://www.opera.com/linux/changelogs/754u1/">Opera Changelog for 7.54u1</uri>
+    <uri link="https://www.opera.com/linux/changelogs/754u2/">Opera Changelog for 7.54u2</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1157">CVE-2004-1157</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1489">CVE-2004-1489</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1490">CVE-2004-1490</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1491">CVE-2004-1491</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0456">CVE-2005-0456</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-0457">CVE-2005-0457</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 10 Feb 2005 15:51:32 +0000">
+  <metadata tag="submitter" timestamp="2005-02-10T15:51:32Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 11 Feb 2005 11:21:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-02-11T11:21:17Z">
     koon
   </metadata>
 </glsa>

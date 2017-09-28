@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200808-05">
   <title>ISC DHCP: Denial of Service</title>
   <synopsis>
     A Denial of Service vulnerability was discovered in ISC DHCP.
   </synopsis>
   <product type="ebuild">dhcp</product>
-  <announced>August 06, 2008</announced>
-  <revised>August 06, 2008: 01</revised>
+  <announced>2008-08-06</announced>
+  <revised>2008-08-06: 01</revised>
   <bug>227135</bug>
   <access>remote</access>
   <affected>
@@ -47,18 +46,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/dhcp-3.1.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcp-3.1.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0062">CVE-2007-0062</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0062">CVE-2007-0062</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Jul 2008 08:33:40 +0000">
+  <metadata tag="requester" timestamp="2008-07-01T08:33:40Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 04 Jul 2008 13:11:49 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-04T13:11:49Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 01 Aug 2008 23:00:13 +0000">
+  <metadata tag="submitter" timestamp="2008-08-01T23:00:13Z">
     keytoaster
   </metadata>
 </glsa>

@@ -6,8 +6,8 @@
     attacker to execute arbitrary code or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">libotr</product>
-  <announced>September 15, 2013</announced>
-  <revised>September 15, 2013: 1</revised>
+  <announced>2013-09-15</announced>
+  <revised>2013-09-15: 1</revised>
   <bug>430486</bug>
   <access>remote</access>
   <affected>
@@ -43,12 +43,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3461">CVE-2012-3461</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3461">CVE-2012-3461</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 11 Sep 2013 14:50:36 +0000">
+  <metadata tag="requester" timestamp="2013-09-11T14:50:36Z">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 15 Sep 2013 04:34:43 +0000">
+  <metadata tag="submitter" timestamp="2013-09-15T04:34:43Z">
     creffett
   </metadata>
 </glsa>

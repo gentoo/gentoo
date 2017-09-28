@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200405-03">
   <title>ClamAV VirusEvent parameter vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     commands.
   </synopsis>
   <product type="ebuild">ClamAV</product>
-  <announced>May 11, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-05-11</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>46264</bug>
   <access>remote</access>
   <affected>
@@ -64,11 +63,11 @@
     <code>
     # emerge sync
     
-    # emerge -pv &quot;&gt;=app-antivirus/clamav-0.70&quot;
-    # emerge &quot;&gt;=app-antivirus/clamav-0.70&quot;</code>
+    # emerge -pv "&gt;=app-antivirus/clamav-0.70"
+    # emerge "&gt;=app-antivirus/clamav-0.70"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1876">CVE-2004-1876</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1876">CVE-2004-1876</uri>
   </references>
   <metadata tag="submitter">
     koon

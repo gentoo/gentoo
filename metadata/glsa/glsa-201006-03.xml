@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201006-03">
   <title>ImageMagick: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">imagemagick</product>
-  <announced>June 01, 2010</announced>
-  <revised>June 01, 2010: 01</revised>
+  <announced>2010-06-01</announced>
+  <revised>2010-06-01: 01</revised>
   <bug>271502</bug>
   <access>remote</access>
   <affected>
@@ -50,7 +49,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-gfx/imagemagick-6.5.2.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.5.2.9"</code>
     <p>
     NOTE: This is a legacy GLSA. Updates for all affected architectures are
     available since June 4, 2009. It is likely that your system is already
@@ -58,15 +57,15 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1882">CVE-2009-1882</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1882">CVE-2009-1882</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 03 Jun 2009 18:15:07 +0000">
+  <metadata tag="requester" timestamp="2009-06-03T18:15:07Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 30 May 2010 11:23:27 +0000">
+  <metadata tag="submitter" timestamp="2010-05-30T11:23:27Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 30 May 2010 15:32:51 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-30T15:32:51Z">
     a3li
   </metadata>
 </glsa>

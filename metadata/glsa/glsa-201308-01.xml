@@ -6,8 +6,8 @@
     attackers to compromise user system
   </synopsis>
   <product type="ebuild">putty</product>
-  <announced>August 21, 2013</announced>
-  <revised>August 21, 2013: 2</revised>
+  <announced>2013-08-21</announced>
+  <revised>2013-08-21: 2</revised>
   <bug>394429</bug>
   <bug>479872</bug>
   <access>local, remote</access>
@@ -43,11 +43,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4607">CVE-2011-4607</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4852">CVE-2013-4852</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4607">CVE-2011-4607</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4852">CVE-2013-4852</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 21:22:42 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Wed, 21 Aug 2013 11:27:53 +0000">
+  <metadata tag="requester" timestamp="2012-03-06T21:22:42Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2013-08-21T11:27:53Z">
     creffett
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201001-02">
   <title>Adobe Flash Player: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to execute arbitrary code or cause a Denial of Service.
   </synopsis>
   <product type="ebuild">adobe-flash</product>
-  <announced>January 03, 2010</announced>
-  <revised>January 03, 2010: 01</revised>
+  <announced>2010-01-03</announced>
+  <revised>2010-01-03: 01</revised>
   <bug>296407</bug>
   <access>remote</access>
   <affected>
@@ -61,23 +60,23 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-10.0.42.34&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-plugins/adobe-flash-10.0.42.34"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3794">CVE-2009-3794</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3796">CVE-2009-3796</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3797">CVE-2009-3797</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3798">CVE-2009-3798</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3799">CVE-2009-3799</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3800">CVE-2009-3800</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3794">CVE-2009-3794</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3796">CVE-2009-3796</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3797">CVE-2009-3797</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3798">CVE-2009-3798</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3799">CVE-2009-3799</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3800">CVE-2009-3800</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 18 Dec 2009 01:11:11 +0000">
+  <metadata tag="requester" timestamp="2009-12-18T01:11:11Z">
     craig
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 31 Dec 2009 14:21:28 +0000">
+  <metadata tag="submitter" timestamp="2009-12-31T14:21:28Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 03 Jan 2010 17:18:41 +0000">
+  <metadata tag="bugReady" timestamp="2010-01-03T17:18:41Z">
     a3li
   </metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200803-19">
   <title>Apache: Multiple vulnerabilities</title>
   <synopsis>
     Multiple vulnerabilities have been discovered in Apache.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>March 11, 2008</announced>
-  <revised>March 12, 2008: 02</revised>
+  <announced>2008-03-11</announced>
+  <revised>2008-03-12: 02</revised>
   <bug>201163</bug>
   <bug>204410</bug>
   <bug>205195</bug>
@@ -57,22 +56,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.2.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6203">CVE-2007-6203</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6422">CVE-2007-6422</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0005">CVE-2008-0005</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0455">CVE-2008-0455</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0456">CVE-2008-0456</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6203">CVE-2007-6203</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6422">CVE-2007-6422</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0005">CVE-2008-0005</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0455">CVE-2008-0455</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0456">CVE-2008-0456</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 13 Jan 2008 14:04:58 +0000">
+  <metadata tag="requester" timestamp="2008-01-13T14:04:58Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 10 Mar 2008 12:30:36 +0000">
+  <metadata tag="submitter" timestamp="2008-03-10T12:30:36Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 10 Mar 2008 12:31:50 +0000">
+  <metadata tag="bugReady" timestamp="2008-03-10T12:31:50Z">
     p-y
   </metadata>
 </glsa>

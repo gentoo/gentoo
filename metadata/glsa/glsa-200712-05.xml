@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-05">
   <title>PEAR::MDB2: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attackers to obtain sensitive information.
   </synopsis>
   <product type="ebuild">PEAR-MDB2</product>
-  <announced>December 09, 2007</announced>
-  <revised>December 09, 2007: 01</revised>
+  <announced>2007-12-09</announced>
+  <revised>2007-12-09: 01</revised>
   <bug>198446</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-MDB2-2.5.0_alpha1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-MDB2-2.5.0_alpha1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5934">CVE-2007-5934</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5934">CVE-2007-5934</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 02 Dec 2007 12:32:27 +0000">
+  <metadata tag="requester" timestamp="2007-12-02T12:32:27Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 05 Dec 2007 01:58:28 +0000">
+  <metadata tag="submitter" timestamp="2007-12-05T01:58:28Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 05 Dec 2007 01:59:26 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-05T01:59:26Z">
     rbu
   </metadata>
 </glsa>

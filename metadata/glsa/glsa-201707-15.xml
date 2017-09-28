@@ -45,18 +45,18 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3075">CVE-2017-3075</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3076">CVE-2017-3076</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3077">CVE-2017-3077</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3078">CVE-2017-3078</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3079">CVE-2017-3079</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3080">CVE-2017-3080</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3081">CVE-2017-3081</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3082">CVE-2017-3082</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3083">CVE-2017-3083</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3084">CVE-2017-3084</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3099">CVE-2017-3099</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3100">CVE-2017-3100</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3075">CVE-2017-3075</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3076">CVE-2017-3076</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3077">CVE-2017-3077</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3078">CVE-2017-3078</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3079">CVE-2017-3079</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3080">CVE-2017-3080</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3081">CVE-2017-3081</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3082">CVE-2017-3082</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3083">CVE-2017-3083</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3084">CVE-2017-3084</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3099">CVE-2017-3099</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3100">CVE-2017-3100</uri>
   </references>
   <metadata tag="requester" timestamp="2017-07-16T01:48:22Z">b-man</metadata>
   <metadata tag="submitter" timestamp="2017-07-21T23:12:54Z">b-man</metadata>

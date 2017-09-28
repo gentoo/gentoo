@@ -44,7 +44,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9400">CVE-2016-9400</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9400">CVE-2016-9400</uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-09T06:08:59Z">BlueKnight</metadata>
   <metadata tag="submitter" timestamp="2017-05-26T06:22:30Z">BlueKnight</metadata>

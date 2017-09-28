@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200710-22">
   <title>TRAMP: Insecure temporary file creation</title>
   <synopsis>
     The TRAMP package for GNU Emacs insecurely creates temporary files.
   </synopsis>
   <product type="ebuild">tramp</product>
-  <announced>October 20, 2007</announced>
-  <revised>December 30, 2007: 02</revised>
+  <announced>2007-10-20</announced>
+  <revised>2007-12-30: 02</revised>
   <bug>194713</bug>
   <access>local</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emacs/tramp-2.1.10-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emacs/tramp-2.1.10-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5377">CVE-2007-5377</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5377">CVE-2007-5377</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 11 Oct 2007 21:37:14 +0000">
+  <metadata tag="requester" timestamp="2007-10-11T21:37:14Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Oct 2007 20:15:33 +0000">
+  <metadata tag="submitter" timestamp="2007-10-18T20:15:33Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 18 Oct 2007 20:17:00 +0000">
+  <metadata tag="bugReady" timestamp="2007-10-18T20:17:00Z">
     rbu
   </metadata>
 </glsa>

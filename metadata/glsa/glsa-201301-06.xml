@@ -6,8 +6,8 @@
     which may allow remote Denial of Service.
   </synopsis>
   <product type="ebuild">ISC DHCP Server</product>
-  <announced>January 09, 2013</announced>
-  <revised>January 09, 2013: 1</revised>
+  <announced>2013-01-09</announced>
+  <revised>2013-01-09: 1</revised>
   <bug>362453</bug>
   <bug>378799</bug>
   <bug>393617</bug>
@@ -46,18 +46,18 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0997">CVE-2011-0997</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2748">CVE-2011-2748</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2749">CVE-2011-2749</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4539">CVE-2011-4539</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4868">CVE-2011-4868</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3570">CVE-2012-3570</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3571">CVE-2012-3571</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3954">CVE-2012-3954</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3955">CVE-2012-3955</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-0997">CVE-2011-0997</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2748">CVE-2011-2748</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2749">CVE-2011-2749</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4539">CVE-2011-4539</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4868">CVE-2011-4868</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3570">CVE-2012-3570</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3571">CVE-2012-3571</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3954">CVE-2012-3954</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3955">CVE-2012-3955</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 11 Oct 2011 16:33:23 +0000">
+  <metadata tag="requester" timestamp="2011-10-11T16:33:23Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 09 Jan 2013 00:42:17 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-01-09T00:42:17Z">craig</metadata>
 </glsa>

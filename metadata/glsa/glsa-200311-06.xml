@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200311-06">
   <title>glibc: getgrouplist buffer overflow vulnerability</title>
   <synopsis>
@@ -53,6 +52,6 @@
     # emerge clean</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0689">CAN-2003-0689</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2003-0689">CAN-2003-0689</uri>
   </references>
 </glsa>

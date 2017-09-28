@@ -6,8 +6,8 @@
     attackers to execute arbitrary code or cause Denial of Service.
   </synopsis>
   <product type="ebuild">mcrypt</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>434112</bug>
   <bug>440778</bug>
   <access>remote</access>
@@ -51,10 +51,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4409">CVE-2012-4409</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4426">CVE-2012-4426</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4527">CVE-2012-4527</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4409">CVE-2012-4409</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4426">CVE-2012-4426</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4527">CVE-2012-4527</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Jan 2013 21:30:40 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 11:39:31 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2013-01-01T21:30:40Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T11:39:31Z">ackle</metadata>
 </glsa>

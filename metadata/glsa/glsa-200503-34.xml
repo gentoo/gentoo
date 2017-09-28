@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200503-34">
   <title>mpg321: Format string vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">mpg321</product>
-  <announced>March 28, 2005</announced>
-  <revised>March 28, 2005: 01</revised>
+  <announced>2005-03-28</announced>
+  <revised>2005-03-28: 01</revised>
   <bug>86033</bug>
   <access>remote</access>
   <affected>
@@ -50,18 +49,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/mpg321-0.2.10-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/mpg321-0.2.10-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0969">CVE-2003-0969</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0969">CVE-2003-0969</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 23 Mar 2005 14:50:18 +0000">
+  <metadata tag="requester" timestamp="2005-03-23T14:50:18Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 24 Mar 2005 12:50:11 +0000">
+  <metadata tag="submitter" timestamp="2005-03-24T12:50:11Z">
     taviso
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 27 Mar 2005 10:18:10 +0000">
+  <metadata tag="bugReady" timestamp="2005-03-27T10:18:10Z">
     jaervosz
   </metadata>
 </glsa>

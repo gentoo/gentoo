@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-35">
   <title>phpWebSite: HTTP response splitting vulnerability</title>
   <synopsis>
     phpWebSite is vulnerable to possible HTTP response splitting attacks.
   </synopsis>
   <product type="ebuild">phpwebsite</product>
-  <announced>November 26, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-11-26</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>71502</bug>
   <access>remote</access>
   <affected>
@@ -47,20 +46,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apps/phpwebsite-0.9.3_p4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apps/phpwebsite-0.9.3_p4-r2"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/380894">BugTraq Posting</uri>
     <uri link="http://phpwebsite.appstate.edu/index.php?module=announce&amp;ANN_user_op=view&amp;ANN_id=863">phpWebSite Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1516">CVE-2004-1516</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1516">CVE-2004-1516</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Nov 2004 19:21:49 +0000">
+  <metadata tag="requester" timestamp="2004-11-24T19:21:49Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 25 Nov 2004 09:49:35 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-25T09:49:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 26 Nov 2004 09:12:53 +0000">
+  <metadata tag="submitter" timestamp="2004-11-26T09:12:53Z">
     vorlon078
   </metadata>
 </glsa>

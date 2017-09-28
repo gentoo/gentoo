@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-29">
   <title>PuTTY: Pre-authentication buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     code on the connecting client.
   </synopsis>
   <product type="ebuild">putty</product>
-  <announced>October 27, 2004</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2004-10-27</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>69123</bug>
   <access>remote</access>
   <affected>
@@ -52,20 +51,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/putty-0.56&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/putty-0.56"</code>
   </resolution>
   <references>
     <uri link="http://www.idefense.com/application/poi/display?id=155">iDEFENSE Security Advisory 10.27.04</uri>
-    <uri link="http://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">PuTTY ChangeLog</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1008">CVE-2004-1008</uri>
+    <uri link="https://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">PuTTY ChangeLog</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1008">CVE-2004-1008</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 27 Oct 2004 15:40:45 +0000">
+  <metadata tag="requester" timestamp="2004-10-27T15:40:45Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 27 Oct 2004 15:40:58 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-27T15:40:58Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 27 Oct 2004 16:43:51 +0000">
+  <metadata tag="submitter" timestamp="2004-10-27T16:43:51Z">
     jaervosz
   </metadata>
 </glsa>

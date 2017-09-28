@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200412-01">
   <title>rssh, scponly: Unrestricted command execution</title>
   <synopsis>
@@ -9,8 +8,8 @@
     the restricted shell.
   </synopsis>
   <product type="ebuild">scponly</product>
-  <announced>December 03, 2004</announced>
-  <revised>May 22, 2006: 03</revised>
+  <announced>2004-12-03</announced>
+  <revised>2006-05-22: 03</revised>
   <bug>72815</bug>
   <bug>72816</bug>
   <access>remote</access>
@@ -58,26 +57,26 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/scponly-4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/scponly-4.0"</code>
     <p>
     All rssh users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-shells/rssh/rssh-2.2.3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-shells/rssh/rssh-2.2.3"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/383046/2004-11-30/2004-12-06/0">BugTraq Posting</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1161">CVE-2004-1161</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1162">CVE-2004-1162</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1161">CVE-2004-1161</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1162">CVE-2004-1162</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed,  1 Dec 2004 09:03:59 +0000">
+  <metadata tag="requester" timestamp="2004-12-01T09:03:59Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu,  2 Dec 2004 13:01:44 +0000">
+  <metadata tag="submitter" timestamp="2004-12-02T13:01:44Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri,  3 Dec 2004 13:57:43 +0000">
+  <metadata tag="bugReady" timestamp="2004-12-03T13:57:43Z">
     koon
   </metadata>
 </glsa>

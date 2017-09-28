@@ -6,8 +6,8 @@
     attacker to conduct a man-in-the-middle attack. 
   </synopsis>
   <product type="ebuild">portage</product>
-  <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 2</revised>
+  <announced>2015-07-10</announced>
+  <revised>2015-07-10: 2</revised>
   <bug>469888</bug>
   <access>remote</access>
   <affected>
@@ -42,8 +42,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2100">CVE-2013-2100</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2100">CVE-2013-2100</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:42:59 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:59:39 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2015-05-11T16:42:59Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-07-10T13:59:39Z">Zlogene</metadata>
 </glsa>

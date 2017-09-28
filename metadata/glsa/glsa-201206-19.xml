@@ -6,8 +6,8 @@
     gain escalated privileges.
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
-  <announced>June 23, 2012</announced>
-  <revised>June 23, 2012: 1</revised>
+  <announced>2012-06-23</announced>
+  <revised>2012-06-23: 1</revised>
   <bug>411617</bug>
   <access>local</access>
   <affected>
@@ -47,8 +47,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0946">CVE-2012-0946</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0946">CVE-2012-0946</uri>
   </references>
-  <metadata timestamp="Wed, 18 Apr 2012 00:15:12 +0000" tag="requester">ackle</metadata>
-  <metadata timestamp="Sat, 23 Jun 2012 14:21:13 +0000" tag="submitter">ackle</metadata>
+  <metadata timestamp="2012-04-18T00:15:12Z" tag="requester">ackle</metadata>
+  <metadata timestamp="2012-06-23T14:21:13Z" tag="submitter">ackle</metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200410-20">
   <title>Xpdf, CUPS: Multiple integer overflows</title>
   <synopsis>
@@ -9,8 +8,8 @@
     includes Xpdf code and therefore is vulnerable to the same issues.
   </synopsis>
   <product type="ebuild">Xpdf</product>
-  <announced>October 21, 2004</announced>
-  <revised>November 06, 2004: 02</revised>
+  <announced>2004-10-21</announced>
+  <revised>2004-11-06: 02</revised>
   <bug>69662</bug>
   <access>remote</access>
   <affected>
@@ -56,22 +55,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=app-text/xpdf-3.00-r5"</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/xpdf-3.00-r5"</code>
     <p>
     All CUPS users should also upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=net-print/cups-1.1.20-r5"</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-print/cups-1.1.20-r5"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
   </references>
-  <metadata tag="submitter" timestamp="Thu, 21 Oct 2004 10:10:18 +0000">
+  <metadata tag="submitter" timestamp="2004-10-21T10:10:18Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 21 Oct 2004 14:18:53 +0000">
+  <metadata tag="bugReady" timestamp="2004-10-21T14:18:53Z">
     koon
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-15">
   <title>rssh: Privilege escalation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     directories.
   </synopsis>
   <product type="ebuild">rssh</product>
-  <announced>December 27, 2005</announced>
-  <revised>December 27, 2005: 01</revised>
+  <announced>2005-12-27</announced>
+  <revised>2005-12-27: 01</revised>
   <bug>115082</bug>
   <access>local</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-shells/rssh-2.3.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-shells/rssh-2.3.0"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3345">CVE-2005-3345</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3345">CVE-2005-3345</uri>
     <uri link="http://www.pizzashack.org/rssh/security.shtml">rssh security announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 23 Dec 2005 10:25:35 +0000">
+  <metadata tag="requester" timestamp="2005-12-23T10:25:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 25 Dec 2005 13:06:13 +0000">
+  <metadata tag="submitter" timestamp="2005-12-25T13:06:13Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 26 Dec 2005 13:28:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-26T13:28:20Z">
     DerCorny
   </metadata>
 </glsa>

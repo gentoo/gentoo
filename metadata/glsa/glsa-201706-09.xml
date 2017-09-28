@@ -44,7 +44,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6542">CVE-2017-6542</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6542">CVE-2017-6542</uri>
     <uri link="https://security.gentoo.org/glsa/201703-03">GLSA 201703-03</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-04T11:05:52Z">whissi</metadata>

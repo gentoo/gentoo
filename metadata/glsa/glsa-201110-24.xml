@@ -6,8 +6,8 @@
     execute arbitrary code or cause a Denial of Service.
   </synopsis>
   <product type="ebuild">Squid</product>
-  <announced>October 26, 2011</announced>
-  <revised>October 26, 2011: 1</revised>
+  <announced>2011-10-26</announced>
+  <revised>2011-10-26: 1</revised>
   <bug>279379</bug>
   <bug>279380</bug>
   <bug>301828</bug>
@@ -51,17 +51,17 @@
     </p>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2621">CVE-2009-2621</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2622">CVE-2009-2622</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2855">CVE-2009-2855</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0308">CVE-2010-0308</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0639">CVE-2010-0639</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2951">CVE-2010-2951</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3072">CVE-2010-3072</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3205">CVE-2011-3205</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2621">CVE-2009-2621</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2622">CVE-2009-2622</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-2855">CVE-2009-2855</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0308">CVE-2010-0308</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0639">CVE-2010-0639</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2951">CVE-2010-2951</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3072">CVE-2010-3072</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3205">CVE-2011-3205</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:54 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Wed, 26 Oct 2011 20:47:18 +0000" tag="submitter">
+  <metadata timestamp="2011-10-07T23:37:54Z" tag="requester">craig</metadata>
+  <metadata timestamp="2011-10-26T20:47:18Z" tag="submitter">
     underling
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-33">
   <title>MySQL: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     to overwrite arbitrary files.
   </synopsis>
   <product type="ebuild">mysql</product>
-  <announced>January 23, 2005</announced>
-  <revised>January 23, 2005: 01</revised>
+  <announced>2005-01-23</announced>
+  <revised>2005-01-23: 01</revised>
   <bug>77805</bug>
   <access>local</access>
   <affected>
@@ -50,19 +49,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-db/mysql-4.0.22-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-4.0.22-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0004">CAN-2005-0004</uri>
-    <uri link="http://secunia.com/advisories/13867/">Secunia Advisory SA13867</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0004">CAN-2005-0004</uri>
+    <uri link="https://secunia.com/advisories/13867/">Secunia Advisory SA13867</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 19 Jan 2005 10:01:33 +0000">
+  <metadata tag="requester" timestamp="2005-01-19T10:01:33Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 21 Jan 2005 22:17:35 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-21T22:17:35Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 22 Jan 2005 01:00:40 +0000">
+  <metadata tag="submitter" timestamp="2005-01-22T01:00:40Z">
     lewk
   </metadata>
 </glsa>

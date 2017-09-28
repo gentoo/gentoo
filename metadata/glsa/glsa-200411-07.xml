@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200411-07">
   <title>Proxytunnel: Format string vulnerability</title>
   <synopsis>
@@ -9,8 +8,8 @@
     Proxytunnel process.
   </synopsis>
   <product type="ebuild">Proxytunnel</product>
-  <announced>November 03, 2004</announced>
-  <revised>November 03, 2004: 01</revised>
+  <announced>2004-11-03</announced>
+  <revised>2004-11-03: 01</revised>
   <bug>69379</bug>
   <access>remote</access>
   <affected>
@@ -53,19 +52,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose ">=net-misc/proxytunnel-1.2.3"</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/proxytunnel-1.2.3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0992">CAN-2004-0992</uri>
-    <uri link="http://proxytunnel.sourceforge.net/news.html">Proxytunnel News</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0992">CAN-2004-0992</uri>
+    <uri link="https://proxytunnel.sourceforge.net/news.html">Proxytunnel News</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue,  2 Nov 2004 21:56:56 +0000">
+  <metadata tag="requester" timestamp="2004-11-02T21:56:56Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed,  3 Nov 2004 09:32:39 +0000">
+  <metadata tag="submitter" timestamp="2004-11-03T09:32:39Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed,  3 Nov 2004 14:02:21 +0000">
+  <metadata tag="bugReady" timestamp="2004-11-03T14:02:21Z">
     koon
   </metadata>
 </glsa>

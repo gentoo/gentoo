@@ -7,8 +7,8 @@
     arbitrary files, or cause a Denial of Service condition.
   </synopsis>
   <product type="ebuild">busybox</product>
-  <announced>March 29, 2015</announced>
-  <revised>March 29, 2015: 1</revised>
+  <announced>2015-03-29</announced>
+  <revised>2015-03-29: 1</revised>
   <bug>515254</bug>
   <bug>537978</bug>
   <access>local, remote</access>
@@ -48,11 +48,11 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4607">CVE-2014-4607</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9645">CVE-2014-9645</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4607">CVE-2014-4607</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9645">CVE-2014-9645</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 18 Mar 2015 18:23:03 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sun, 29 Mar 2015 17:08:00 +0000">
+  <metadata tag="requester" timestamp="2015-03-18T18:23:03Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2015-03-29T17:08:00Z">
     BlueKnight
   </metadata>
 </glsa>

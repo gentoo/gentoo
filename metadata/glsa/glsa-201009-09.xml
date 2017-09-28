@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="201009-09">
   <title>fence: Multiple symlink vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     local users to overwrite arbitrary files via a symlink attack.
   </synopsis>
   <product type="ebuild">fence</product>
-  <announced>September 29, 2010</announced>
-  <revised>September 29, 2010: 01</revised>
+  <announced>2010-09-29</announced>
+  <revised>2010-09-29: 01</revised>
   <bug>240576</bug>
   <access>local</access>
   <affected>
@@ -48,16 +47,16 @@
     # emerge --unmerge sys-cluster/fence</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4579">CVE-2008-4579</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4580">CVE-2008-4580</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4579">CVE-2008-4579</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4580">CVE-2008-4580</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 10 Jul 2009 11:03:13 +0000">
+  <metadata tag="requester" timestamp="2009-07-10T11:03:13Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 10 Apr 2010 02:06:28 +0000">
+  <metadata tag="submitter" timestamp="2010-04-10T02:06:28Z">
     craig
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 31 May 2010 15:37:24 +0000">
+  <metadata tag="bugReady" timestamp="2010-05-31T15:37:24Z">
     a3li
   </metadata>
 </glsa>

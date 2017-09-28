@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200606-27">
   <title>Mutt: Buffer overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution.
   </synopsis>
   <product type="ebuild">mutt</product>
-  <announced>June 28, 2006</announced>
-  <revised>June 28, 2006: 01</revised>
+  <announced>2006-06-28</announced>
+  <revised>2006-06-28: 01</revised>
   <bug>138125</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=mail-client/mutt-1.5.11-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=mail-client/mutt-1.5.11-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3242">CVE-2006-3242</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3242">CVE-2006-3242</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 27 Jun 2006 19:49:38 +0000">
+  <metadata tag="requester" timestamp="2006-06-27T19:49:38Z">
     falco
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 27 Jun 2006 20:02:54 +0000">
+  <metadata tag="submitter" timestamp="2006-06-27T20:02:54Z">
     falco
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 28 Jun 2006 10:14:15 +0000">
+  <metadata tag="bugReady" timestamp="2006-06-28T10:14:15Z">
     falco
   </metadata>
 </glsa>

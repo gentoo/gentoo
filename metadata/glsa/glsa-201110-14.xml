@@ -6,8 +6,8 @@
     allowing for a symlink attack.
   </synopsis>
   <product type="ebuild">D-Bus</product>
-  <announced>October 21, 2011</announced>
-  <revised>October 21, 2011: 1</revised>
+  <announced>2011-10-21</announced>
+  <revised>2011-10-21: 1</revised>
   <bug>348766</bug>
   <bug>371261</bug>
   <bug>372743</bug>
@@ -45,12 +45,12 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4352">CVE-2010-4352</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2200">CVE-2011-2200</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2533">CVE-2011-2533</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4352">CVE-2010-4352</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2200">CVE-2011-2200</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2533">CVE-2011-2533</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:37:28 +0000" tag="requester">
+  <metadata timestamp="2011-10-07T23:37:28Z" tag="requester">
     underling
   </metadata>
-  <metadata timestamp="Fri, 21 Oct 2011 21:15:45 +0000" tag="submitter">craig</metadata>
+  <metadata timestamp="2011-10-21T21:15:45Z" tag="submitter">craig</metadata>
 </glsa>

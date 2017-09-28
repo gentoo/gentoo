@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-02">
   <title>Motion: Execution of arbitrary code</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code.
   </synopsis>
   <product type="ebuild">motion</product>
-  <announced>July 01, 2008</announced>
-  <revised>July 01, 2008: 01</revised>
+  <announced>2008-07-01</announced>
+  <revised>2008-07-01: 01</revised>
   <bug>227053</bug>
   <access>remote</access>
   <affected>
@@ -53,18 +52,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-video/motion-3.2.10.1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-video/motion-3.2.10.1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2654">CVE-2008-2654</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2654">CVE-2008-2654</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 24 Jun 2008 00:58:06 +0000">
+  <metadata tag="requester" timestamp="2008-06-24T00:58:06Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 25 Jun 2008 11:12:50 +0000">
+  <metadata tag="submitter" timestamp="2008-06-25T11:12:50Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 01 Jul 2008 11:55:40 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-01T11:55:40Z">
     keytoaster
   </metadata>
 </glsa>

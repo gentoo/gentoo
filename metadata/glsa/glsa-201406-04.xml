@@ -6,8 +6,8 @@
     a Denial of Service condition.
   </synopsis>
   <product type="ebuild">systemtap</product>
-  <announced>June 05, 2014</announced>
-  <revised>June 05, 2014: 1</revised>
+  <announced>2014-06-05</announced>
+  <revised>2014-06-05: 1</revised>
   <bug>405345</bug>
   <access>local</access>
   <affected>
@@ -44,12 +44,12 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0875">CVE-2012-0875</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0875">CVE-2012-0875</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 30 May 2014 22:59:45 +0000">
+  <metadata tag="requester" timestamp="2014-05-30T22:59:45Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 05 Jun 2014 00:18:26 +0000">
+  <metadata tag="submitter" timestamp="2014-06-05T00:18:26Z">
     creffett
   </metadata>
 </glsa>

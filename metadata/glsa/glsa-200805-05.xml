@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-05">
   <title>Wireshark: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Wireshark.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>May 07, 2008</announced>
-  <revised>May 07, 2008: 01</revised>
+  <announced>2008-05-07</announced>
+  <revised>2008-05-07: 01</revised>
   <bug>215276</bug>
   <access>remote</access>
   <affected>
@@ -58,20 +57,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/wireshark-1.0.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-1.0.0"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1561">CVE-2008-1561</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1562">CVE-2008-1562</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1563">CVE-2008-1563</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1561">CVE-2008-1561</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1562">CVE-2008-1562</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1563">CVE-2008-1563</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 29 Apr 2008 13:11:47 +0000">
+  <metadata tag="requester" timestamp="2008-04-29T13:11:47Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 29 Apr 2008 13:12:26 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-29T13:12:26Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 29 Apr 2008 15:31:30 +0000">
+  <metadata tag="submitter" timestamp="2008-04-29T15:31:30Z">
     mfleming
   </metadata>
 </glsa>

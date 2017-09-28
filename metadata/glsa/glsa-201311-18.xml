@@ -6,8 +6,8 @@
     Unbound.
   </synopsis>
   <product type="ebuild">unbound</product>
-  <announced>November 28, 2013</announced>
-  <revised>November 28, 2013: 1</revised>
+  <announced>2013-11-28</announced>
+  <revised>2013-11-28: 1</revised>
   <bug>395287</bug>
   <access>remote</access>
   <affected>
@@ -42,9 +42,9 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4528">CVE-2011-4528</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4869">CVE-2011-4869</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4528">CVE-2011-4528</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4869">CVE-2011-4869</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 06 Mar 2012 01:21:57 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Thu, 28 Nov 2013 08:18:29 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2012-03-06T01:21:57Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2013-11-28T08:18:29Z">Zlogene</metadata>
 </glsa>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200609-03">
   <title>OpenTTD: Remote Denial of Service</title>
   <synopsis>
     The OpenTTD server is vulnerable to a remote Denial of Service.
   </synopsis>
   <product type="ebuild">openttd</product>
-  <announced>September 06, 2006</announced>
-  <revised>September 06, 2006: 01</revised>
+  <announced>2006-09-06</announced>
+  <revised>2006-09-06: 01</revised>
   <bug>131010</bug>
   <access>remote</access>
   <affected>
@@ -45,19 +44,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-simulation/openttd-0.4.8&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-simulation/openttd-0.4.8"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1998">CVE-2006-1998</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1999">CVE-2006-1999</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1998">CVE-2006-1998</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1999">CVE-2006-1999</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 05 Sep 2006 13:05:28 +0000">
+  <metadata tag="requester" timestamp="2006-09-05T13:05:28Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 05 Sep 2006 18:04:07 +0000">
+  <metadata tag="submitter" timestamp="2006-09-05T18:04:07Z">
     daxomatic
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 06 Sep 2006 14:54:55 +0000">
+  <metadata tag="bugReady" timestamp="2006-09-06T14:54:55Z">
     jaervosz
   </metadata>
 </glsa>

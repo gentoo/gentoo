@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-04">
   <title>Shoutcast Server: Remote code execution</title>
   <synopsis>
@@ -8,8 +7,8 @@
     execution of arbitrary code.
   </synopsis>
   <product type="ebuild">Shoutcast-server-bin</product>
-  <announced>January 05, 2005</announced>
-  <revised>May 22, 2006: 02</revised>
+  <announced>2005-01-05</announced>
+  <revised>2006-05-22: 02</revised>
   <bug>75482</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/shoutcast-server-bin-1.9.5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/shoutcast-server-bin-1.9.5"</code>
   </resolution>
   <references>
     <uri link="http://www.securityfocus.com/archive/1/385350">BugTraq Announcement</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1373">CVE-2004-1373</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-1373">CVE-2004-1373</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 29 Dec 2004 14:31:08 +0000">
+  <metadata tag="requester" timestamp="2004-12-29T14:31:08Z">
     lewk
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue,  4 Jan 2005 19:23:19 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-04T19:23:19Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Tue,  4 Jan 2005 20:51:10 +0000">
+  <metadata tag="submitter" timestamp="2005-01-04T20:51:10Z">
     chriswhite
   </metadata>
 </glsa>

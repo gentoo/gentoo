@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200906-04">
   <title>Apache Tomcat JK Connector: Information disclosure</title>
   <synopsis>
@@ -8,8 +7,8 @@
     disclosure flaw.
   </synopsis>
   <product type="ebuild">mod_jk</product>
-  <announced>June 29, 2009</announced>
-  <revised>June 29, 2009: 01</revised>
+  <announced>2009-06-29</announced>
+  <revised>2009-06-29: 01</revised>
   <bug>265455</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/mod_jk-1.2.27&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apache/mod_jk-1.2.27"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5519">CVE-2008-5519</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5519">CVE-2008-5519</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 24 Jun 2009 16:46:40 +0000">
+  <metadata tag="requester" timestamp="2009-06-24T16:46:40Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 28 Jun 2009 12:27:09 +0000">
+  <metadata tag="submitter" timestamp="2009-06-28T12:27:09Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 29 Jun 2009 22:42:43 +0000">
+  <metadata tag="bugReady" timestamp="2009-06-29T22:42:43Z">
     a3li
   </metadata>
 </glsa>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200805-07">
   <title>Linux Terminal Server Project: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     LTSP which allow remote attackers to compromise terminal clients.
   </synopsis>
   <product type="ebuild">ltsp</product>
-  <announced>May 09, 2008</announced>
-  <revised>May 09, 2008: 01</revised>
+  <announced>2008-05-09</announced>
+  <revised>2008-05-09: 01</revised>
   <bug>215699</bug>
   <access>remote</access>
   <affected>
@@ -63,24 +62,24 @@
     </p>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200705-02.xml">GLSA 200705-02</uri>
-    <uri link="/security/en/glsa/glsa-200705-06.xml">GLSA 200705-06</uri>
-    <uri link="/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
-    <uri link="/security/en/glsa/glsa-200705-24.xml">GLSA 200705-24</uri>
-    <uri link="/security/en/glsa/glsa-200710-06.xml">GLSA 200710-06</uri>
-    <uri link="/security/en/glsa/glsa-200710-16.xml">GLSA 200710-16</uri>
-    <uri link="/security/en/glsa/glsa-200710-30.xml">GLSA 200710-30</uri>
-    <uri link="/security/en/glsa/glsa-200711-08.xml">GLSA 200711-08</uri>
-    <uri link="/security/en/glsa/glsa-200801-09.xml">GLSA 200801-09</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-02.xml">GLSA 200705-02</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-06.xml">GLSA 200705-06</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-22.xml">GLSA 200705-22</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200705-24.xml">GLSA 200705-24</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200710-06.xml">GLSA 200710-06</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200710-16.xml">GLSA 200710-16</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200710-30.xml">GLSA 200710-30</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200711-08.xml">GLSA 200711-08</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200801-09.xml">GLSA 200801-09</uri>
     <uri link="https://bugs.gentoo.org/177580">Gentoo bug 177580: Port LTSP 5 to Gentoo</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 01 Apr 2008 19:23:11 +0000">
+  <metadata tag="requester" timestamp="2008-04-01T19:23:11Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 03 Apr 2008 14:49:37 +0000">
+  <metadata tag="bugReady" timestamp="2008-04-03T14:49:37Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 03 Apr 2008 22:27:26 +0000">
+  <metadata tag="submitter" timestamp="2008-04-03T22:27:26Z">
     rbu
   </metadata>
 </glsa>

@@ -5,9 +5,9 @@
   <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
     which could cause a Denial of Service condition.
   </synopsis>
-  <product type="ebuild"></product>
-  <announced>November 18, 2016</announced>
-  <revised>January 02, 2017: 2</revised>
+  <product type="ebuild"/>
+  <announced>2016-11-18</announced>
+  <revised>2017-01-02: 2</revised>
   <bug>594368</bug>
   <bug>594520</bug>
   <bug>595192</bug>
@@ -54,28 +54,28 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10029">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10029">
       CVE-2016-10029
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7161">CVE-2016-7161</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7423">CVE-2016-7423</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7466">CVE-2016-7466</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7907">CVE-2016-7907</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7908">CVE-2016-7908</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7909">CVE-2016-7909</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7994">CVE-2016-7994</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8576">CVE-2016-8576</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8577">CVE-2016-8577</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8578">CVE-2016-8578</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8668">CVE-2016-8668</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8669">CVE-2016-8669</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8909">CVE-2016-8909</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8910">CVE-2016-8910</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9102">CVE-2016-9102</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9103">CVE-2016-9103</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9104">CVE-2016-9104</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9105">CVE-2016-9105</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7161">CVE-2016-7161</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7423">CVE-2016-7423</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7466">CVE-2016-7466</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7907">CVE-2016-7907</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7908">CVE-2016-7908</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7909">CVE-2016-7909</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7994">CVE-2016-7994</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8576">CVE-2016-8576</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8577">CVE-2016-8577</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8578">CVE-2016-8578</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8668">CVE-2016-8668</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8669">CVE-2016-8669</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8909">CVE-2016-8909</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8910">CVE-2016-8910</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9102">CVE-2016-9102</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9103">CVE-2016-9103</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9104">CVE-2016-9104</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9105">CVE-2016-9105</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 17 Nov 2016 07:04:59 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 10:33:37 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2016-11-17T07:04:59Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-02T10:33:37Z">b-man</metadata>
 </glsa>

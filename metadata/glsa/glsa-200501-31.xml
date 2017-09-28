@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200501-31">
   <title>teTeX, pTeX, CSTeX: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     vulnerable to temporary file handling issues.
   </synopsis>
   <product type="ebuild">teTeX</product>
-  <announced>January 23, 2005</announced>
-  <revised>January 23, 2005: 01</revised>
+  <announced>2005-01-23</announced>
+  <revised>2005-01-23: 01</revised>
   <bug>75801</bug>
   <access>remote and local</access>
   <affected>
@@ -67,33 +66,33 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/tetex-2.0.2-r5&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/tetex-2.0.2-r5"</code>
     <p>
     All CSTeX users should also upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/cstetex-2.0.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/cstetex-2.0.2-r1"</code>
     <p>
     Finally, all pTeX users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/ptex-3.1.4-r2&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-text/ptex-3.1.4-r2"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0888">CAN-2004-0888</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0889">CAN-2004-0889</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-1125">CAN-2004-1125</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0064">CAN-2005-0064</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 21 Jan 2005 10:36:38 +0000">
+  <metadata tag="requester" timestamp="2005-01-21T10:36:38Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 21 Jan 2005 22:41:12 +0000">
+  <metadata tag="submitter" timestamp="2005-01-21T22:41:12Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 23 Jan 2005 12:09:17 +0000">
+  <metadata tag="bugReady" timestamp="2005-01-23T12:09:17Z">
     koon
   </metadata>
 </glsa>

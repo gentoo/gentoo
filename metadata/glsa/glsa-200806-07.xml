@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200806-07">
   <title>X.Org X server: Multiple vulnerabilities</title>
   <synopsis>
@@ -9,8 +8,8 @@
     privileges.
   </synopsis>
   <product type="ebuild">xorg-server</product>
-  <announced>June 19, 2008</announced>
-  <revised>June 19, 2008: 01</revised>
+  <announced>2008-06-19</announced>
+  <revised>2008-06-19: 01</revised>
   <bug>225419</bug>
   <access>remote, local</access>
   <affected>
@@ -63,14 +62,14 @@
     places:
     </p>
     <code>
-      Section &quot;Extensions&quot;   
-    	Option &quot;MIT-SHM&quot; &quot;disable&quot;
-    	Option &quot;RENDER&quot; &quot;disable&quot; 
-    	Option &quot;SECURITY&quot; &quot;disable&quot;
+      Section "Extensions"   
+    	Option "MIT-SHM" "disable"
+    	Option "RENDER" "disable" 
+    	Option "SECURITY" "disable"
       EndSection
     
-      Section &quot;Module&quot;
-       Disable &quot;record&quot;
+      Section "Module"
+       Disable "record"
       EndSection</code>
   </workaround>
   <resolution>
@@ -79,19 +78,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-server-1.3.0.0-r6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.3.0.0-r6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1377">CVE-2008-1377</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1379">CVE-2008-1379</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2360">CVE-2008-2360</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2361">CVE-2008-2361</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2362">CVE-2008-2362</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1377">CVE-2008-1377</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1379">CVE-2008-1379</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2360">CVE-2008-2360</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2361">CVE-2008-2361</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2362">CVE-2008-2362</uri>
   </references>
-  <metadata tag="submitter" timestamp="Wed, 11 Jun 2008 10:16:02 +0000">
+  <metadata tag="submitter" timestamp="2008-06-11T10:16:02Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 08:09:32 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-16T08:09:32Z">
     vorlon
   </metadata>
 </glsa>

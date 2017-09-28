@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200507-08">
   <title>phpGroupWare, eGroupWare: PHP script injection vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     remote attackers to execute arbitrary PHP script commands.
   </synopsis>
   <product type="ebuild">phpgroupware egroupware</product>
-  <announced>July 10, 2005</announced>
-  <revised>July 10, 2005: 01</revised>
+  <announced>2005-07-10</announced>
+  <revised>2005-07-10: 01</revised>
   <bug>97460</bug>
   <bug>97651</bug>
   <access>remote</access>
@@ -54,25 +53,25 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-app/phpgroupware-0.9.16.006&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-app/phpgroupware-0.9.16.006"</code>
     <p>
     All eGroupWare users should upgrade to the latest available
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-app/egroupware-1.0.0.008&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-app/egroupware-1.0.0.008"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-1921">CAN-2005-1921</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 06 Jul 2005 12:50:50 +0000">
+  <metadata tag="requester" timestamp="2005-07-06T12:50:50Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 06 Jul 2005 15:06:09 +0000">
+  <metadata tag="submitter" timestamp="2005-07-06T15:06:09Z">
     DerCorny
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 10 Jul 2005 19:07:48 +0000">
+  <metadata tag="bugReady" timestamp="2005-07-10T19:07:48Z">
     DerCorny
   </metadata>
 </glsa>

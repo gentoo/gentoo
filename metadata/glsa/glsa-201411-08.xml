@@ -7,8 +7,8 @@
     of Service.
   </synopsis>
   <product type="ebuild">aircrack-ng</product>
-  <announced>November 23, 2014</announced>
-  <revised>November 23, 2014: 1</revised>
+  <announced>2014-11-23</announced>
+  <revised>2014-11-23: 1</revised>
   <bug>528132</bug>
   <access>local, remote</access>
   <affected>
@@ -46,11 +46,11 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8321">CVE-2014-8321</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8322">CVE-2014-8322</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8323">CVE-2014-8323</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8324">CVE-2014-8324</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8321">CVE-2014-8321</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8322">CVE-2014-8322</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8323">CVE-2014-8323</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8324">CVE-2014-8324</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 10 Nov 2014 22:39:08 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Sun, 23 Nov 2014 17:49:06 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2014-11-10T22:39:08Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-11-23T17:49:06Z">ackle</metadata>
 </glsa>

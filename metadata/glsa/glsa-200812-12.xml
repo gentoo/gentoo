@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200812-12">
   <title>Honeyd: Insecure temporary file creation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     leading to symlink attacks.
   </synopsis>
   <product type="ebuild">honeyd</product>
-  <announced>December 12, 2008</announced>
-  <revised>December 12, 2008: 01</revised>
+  <announced>2008-12-12</announced>
+  <revised>2008-12-12: 01</revised>
   <bug>237481</bug>
   <access>local</access>
   <affected>
@@ -46,18 +45,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/honeyd-1.5c-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/honeyd-1.5c-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3928">CVE-2008-3928</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3928">CVE-2008-3928</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 18 Oct 2008 20:32:05 +0000">
+  <metadata tag="requester" timestamp="2008-10-18T20:32:05Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 21 Oct 2008 20:17:52 +0000">
+  <metadata tag="submitter" timestamp="2008-10-21T20:17:52Z">
     keytoaster
   </metadata>
-  <metadata tag="bugReady" timestamp="Thu, 11 Dec 2008 20:14:32 +0000">
+  <metadata tag="bugReady" timestamp="2008-12-11T20:14:32Z">
     p-y
   </metadata>
 </glsa>

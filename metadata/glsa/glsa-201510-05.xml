@@ -6,8 +6,8 @@
     which may allow remote attackers to cause a Denial of Service.
   </synopsis>
   <product type="ebuild">mediawiki</product>
-  <announced>October 31, 2015</announced>
-  <revised>October 31, 2015: 1</revised>
+  <announced>2015-10-31</announced>
+  <revised>2015-10-31: 1</revised>
   <bug>545944</bug>
   <bug>557844</bug>
   <access>remote</access>
@@ -61,31 +61,31 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2931">CVE-2015-2931</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2932">CVE-2015-2932</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2933">CVE-2015-2933</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2934">CVE-2015-2934</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2935">CVE-2015-2935</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2936">CVE-2015-2936</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2937">CVE-2015-2937</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2938">CVE-2015-2938</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2939">CVE-2015-2939</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2940">CVE-2015-2940</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2941">CVE-2015-2941</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2942">CVE-2015-2942</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6728">CVE-2015-6728</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6729">CVE-2015-6729</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6730">CVE-2015-6730</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6731">CVE-2015-6731</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6732">CVE-2015-6732</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6733">CVE-2015-6733</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6734">CVE-2015-6734</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6735">CVE-2015-6735</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6736">CVE-2015-6736</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6737">CVE-2015-6737</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2931">CVE-2015-2931</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2932">CVE-2015-2932</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2933">CVE-2015-2933</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2934">CVE-2015-2934</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2935">CVE-2015-2935</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2936">CVE-2015-2936</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2937">CVE-2015-2937</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2938">CVE-2015-2938</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2939">CVE-2015-2939</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2940">CVE-2015-2940</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2941">CVE-2015-2941</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2942">CVE-2015-2942</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6728">CVE-2015-6728</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6729">CVE-2015-6729</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6730">CVE-2015-6730</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6731">CVE-2015-6731</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6732">CVE-2015-6732</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6733">CVE-2015-6733</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6734">CVE-2015-6734</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6735">CVE-2015-6735</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6736">CVE-2015-6736</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6737">CVE-2015-6737</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 10 Oct 2015 02:28:01 +0000">
+  <metadata tag="requester" timestamp="2015-10-10T02:28:01Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:16:38 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2015-10-31T15:16:38Z">ackle</metadata>
 </glsa>

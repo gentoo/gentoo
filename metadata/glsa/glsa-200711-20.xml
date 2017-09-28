@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-20">
   <title>Pioneers: Multiple Denials of Service</title>
   <synopsis>
     Two Denial of Service vulnerabilities were discovered in Pioneers.
   </synopsis>
   <product type="ebuild">pioneers</product>
-  <announced>November 14, 2007</announced>
-  <revised>November 29, 2007: 04</revised>
+  <announced>2007-11-14</announced>
+  <revised>2007-11-29: 04</revised>
   <bug>198807</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=games-board/pioneers-0.11.3-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=games-board/pioneers-0.11.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5933">CVE-2007-5933</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6010">CVE-2007-6010</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5933">CVE-2007-5933</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6010">CVE-2007-6010</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 11 Nov 2007 15:28:52 +0000">
+  <metadata tag="requester" timestamp="2007-11-11T15:28:52Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 13 Nov 2007 22:49:53 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-13T22:49:53Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Nov 2007 23:00:46 +0000">
+  <metadata tag="submitter" timestamp="2007-11-13T23:00:46Z">
     p-y
   </metadata>
 </glsa>

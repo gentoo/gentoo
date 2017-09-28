@@ -6,8 +6,8 @@
     worst of which may allow execution of arbitrary code.
   </synopsis>
   <product type="ebuild">ghostscript-gpl</product>
-  <announced>December 13, 2014</announced>
-  <revised>December 13, 2014: 1</revised>
+  <announced>2014-12-13</announced>
+  <revised>2014-12-13: 1</revised>
   <bug>264594</bug>
   <bug>300192</bug>
   <bug>332061</bug>
@@ -47,16 +47,16 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0196">CVE-2009-0196</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0792">CVE-2009-0792</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3743">CVE-2009-3743</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4270">CVE-2009-4270</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4897">CVE-2009-4897</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1628">CVE-2010-1628</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2055">CVE-2010-2055</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4054">CVE-2010-4054</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4405">CVE-2012-4405</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0196">CVE-2009-0196</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-0792">CVE-2009-0792</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-3743">CVE-2009-3743</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4270">CVE-2009-4270</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2009-4897">CVE-2009-4897</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1628">CVE-2010-1628</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2055">CVE-2010-2055</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-4054">CVE-2010-4054</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4405">CVE-2012-4405</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:17 +0000">a3li</metadata>
-  <metadata tag="submitter" timestamp="Sat, 13 Dec 2014 17:06:42 +0000">ackle</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:38:17Z">a3li</metadata>
+  <metadata tag="submitter" timestamp="2014-12-13T17:06:42Z">ackle</metadata>
 </glsa>

@@ -6,8 +6,8 @@
     which allows remote attackers to execute arbitrary code.
   </synopsis>
   <product type="ebuild">wireshark</product>
-  <announced>June 29, 2014</announced>
-  <revised>June 29, 2014: 1</revised>
+  <announced>2014-06-29</announced>
+  <revised>2014-06-29: 1</revised>
   <bug>503792</bug>
   <bug>507298</bug>
   <bug>508506</bug>
@@ -53,18 +53,18 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2281">CVE-2014-2281</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2282">CVE-2014-2282</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2283">CVE-2014-2283</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2299">CVE-2014-2299</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2907">CVE-2014-2907</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4020">CVE-2014-4020</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4174">CVE-2014-4174</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2281">CVE-2014-2281</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2282">CVE-2014-2282</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2283">CVE-2014-2283</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2299">CVE-2014-2299</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2907">CVE-2014-2907</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4020">CVE-2014-4020</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4174">CVE-2014-4174</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 24 Mar 2014 22:48:06 +0000">
+  <metadata tag="requester" timestamp="2014-03-24T22:48:06Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 29 Jun 2014 15:53:26 +0000">
+  <metadata tag="submitter" timestamp="2014-06-29T15:53:26Z">
     BlueKnight
   </metadata>
 </glsa>

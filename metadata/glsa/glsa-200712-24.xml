@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200712-24">
   <title>AMD64 x86 emulation GTK+ library: User-assisted execution of arbitrary code</title>
   <synopsis>
@@ -9,8 +8,8 @@
     using Cairo.
   </synopsis>
   <product type="ebuild">emul-linux-x86-gtklibs</product>
-  <announced>December 30, 2007</announced>
-  <revised>December 30, 2007: 01</revised>
+  <announced>2007-12-30</announced>
+  <revised>2007-12-30: 01</revised>
   <bug>201860</bug>
   <access>remote</access>
   <affected>
@@ -52,18 +51,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-emulation/emul-linux-x86-gtklibs-20071214&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=app-emulation/emul-linux-x86-gtklibs-20071214"</code>
   </resolution>
   <references>
-    <uri link="/security/en/glsa/glsa-200712-04.xml">GLSA 200712-04</uri>
+    <uri link="https://www.gentoo.org/security/en/glsa/glsa-200712-04.xml">GLSA 200712-04</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 22 Dec 2007 13:50:24 +0000">
+  <metadata tag="requester" timestamp="2007-12-22T13:50:24Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Sat, 29 Dec 2007 22:02:45 +0000">
+  <metadata tag="bugReady" timestamp="2007-12-29T22:02:45Z">
     rbu
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Dec 2007 22:14:56 +0000">
+  <metadata tag="submitter" timestamp="2007-12-29T22:14:56Z">
     rbu
   </metadata>
 </glsa>

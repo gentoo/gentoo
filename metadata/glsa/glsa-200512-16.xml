@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200512-16">
   <title>OpenMotif, AMD64 x86 emulation X libraries: Buffer overflows in libUil library</title>
   <synopsis>
@@ -8,8 +7,8 @@
     toolkit, that can potentially lead to the execution of arbitrary code.
   </synopsis>
   <product type="ebuild">openmotif</product>
-  <announced>December 28, 2005</announced>
-  <revised>January 29, 2006: 03</revised>
+  <announced>2005-12-28</announced>
+  <revised>2006-01-29: 03</revised>
   <bug>114234</bug>
   <bug>116481</bug>
   <access>remote</access>
@@ -67,13 +66,13 @@
     # emerge --ask --oneshot --verbose app-emulation/emul-linux-x86-xlibs</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3964">CVE-2005-3964</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3964">CVE-2005-3964</uri>
     <uri link="http://archives.neohapsis.com/archives/fulldisclosure/2005-12/0047.html">xfocus SD-051202 Original Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 27 Dec 2005 10:06:00 +0000">
+  <metadata tag="submitter" timestamp="2005-12-27T10:06:00Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 27 Dec 2005 10:07:13 +0000">
+  <metadata tag="bugReady" timestamp="2005-12-27T10:07:13Z">
     koon
   </metadata>
 </glsa>

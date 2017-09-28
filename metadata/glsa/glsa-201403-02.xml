@@ -6,8 +6,8 @@
     code.
   </synopsis>
   <product type="ebuild">libyaml</product>
-  <announced>March 08, 2014</announced>
-  <revised>March 08, 2014: 1</revised>
+  <announced>2014-03-08</announced>
+  <revised>2014-03-08: 1</revised>
   <bug>499920</bug>
   <access>remote</access>
   <affected>
@@ -44,10 +44,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6393">CVE-2013-6393</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6393">CVE-2013-6393</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 18 Feb 2014 09:37:47 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sat, 08 Mar 2014 18:35:33 +0000">
+  <metadata tag="requester" timestamp="2014-02-18T09:37:47Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-03-08T18:35:33Z">
     BlueKnight
   </metadata>
 </glsa>

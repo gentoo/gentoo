@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200607-05">
   <title>SHOUTcast server: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     multiple XSS vulnerabilities.
   </synopsis>
   <product type="ebuild">shoutcast</product>
-  <announced>July 09, 2006</announced>
-  <revised>July 29, 2006: 03</revised>
+  <announced>2006-07-09</announced>
+  <revised>2006-07-29: 03</revised>
   <bug>136721</bug>
   <bug>136221</bug>
   <access>remote</access>
@@ -52,22 +51,22 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=media-sound/shoutcast-server-bin-1.9.7&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=media-sound/shoutcast-server-bin-1.9.7"</code>
   </resolution>
   <references>
     <uri link="http://people.ksp.sk/~goober/advisory/001-shoutcast.html">Original advisory</uri>
-    <uri link="http://secunia.com/advisories/20524/">SA20524</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3007">CVE-2006-3007</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3534">CVE-2006-3534</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3535">CVE-2006-3535</uri>
+    <uri link="https://secunia.com/advisories/20524/">SA20524</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3007">CVE-2006-3007</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3534">CVE-2006-3534</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3535">CVE-2006-3535</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 30 Jun 2006 16:19:23 +0000">
+  <metadata tag="requester" timestamp="2006-06-30T16:19:23Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 30 Jun 2006 17:31:32 +0000">
+  <metadata tag="submitter" timestamp="2006-06-30T17:31:32Z">
     daxomatic
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 02 Jul 2006 14:51:02 +0000">
+  <metadata tag="bugReady" timestamp="2006-07-02T14:51:02Z">
     koon
   </metadata>
 </glsa>

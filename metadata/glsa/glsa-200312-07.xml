@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200312-07">
   <title>Two buffer overflows in lftp</title>
   <synopsis>
@@ -8,8 +7,8 @@
     a malicious ftp server, could lead to malicious code being executed.
   </synopsis>
   <product type="ebuild">lftp</product>
-  <announced>December 13, 2003</announced>
-  <revised>200312-07: 2</revised>
+  <announced>2003-12-13</announced>
+  <revised>2003-12-07: 2</revised>
   <bug>35866</bug>
   <access>remote</access>
   <affected>
@@ -64,8 +63,8 @@
     </p>
     <code>
     # emerge sync
-    # emerge -pv '>=net-ftp/lftp-2.6.10'
-    # emerge '>=net-ftp/lftp-2.6.10'
+    # emerge -pv '&gt;=net-ftp/lftp-2.6.10'
+    # emerge '&gt;=net-ftp/lftp-2.6.10'
     # emerge clean</code>
   </resolution>
   <references>

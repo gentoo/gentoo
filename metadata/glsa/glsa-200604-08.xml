@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200604-08">
   <title>libapreq2: Denial of Service vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     of Service.
   </synopsis>
   <product type="ebuild">libapreq2</product>
-  <announced>April 17, 2006</announced>
-  <revised>April 17, 2006: 01</revised>
+  <announced>2006-04-17</announced>
+  <revised>2006-04-17: 01</revised>
   <bug>128610</bug>
   <access>remote</access>
   <affected>
@@ -47,19 +46,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-apache/libapreq2-2.07&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-apache/libapreq2-2.07"</code>
   </resolution>
   <references>
-    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0042">CVE-2006-0042</uri>
-    <uri link="http://svn.apache.org/viewcvs.cgi/httpd/apreq/tags/v2_07/CHANGES?rev=376998&amp;view=markup">libapreq2 Changes</uri>
+    <uri link="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0042">CVE-2006-0042</uri>
+    <uri link="https://svn.apache.org/viewcvs.cgi/httpd/apreq/tags/v2_07/CHANGES?rev=376998&amp;view=markup">libapreq2 Changes</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 09 Apr 2006 19:33:11 +0000">
+  <metadata tag="requester" timestamp="2006-04-09T19:33:11Z">
     jaervosz
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 11 Apr 2006 17:20:17 +0000">
+  <metadata tag="bugReady" timestamp="2006-04-11T17:20:17Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 13 Apr 2006 19:11:49 +0000">
+  <metadata tag="submitter" timestamp="2006-04-13T19:11:49Z">
     vorlon078
   </metadata>
 </glsa>

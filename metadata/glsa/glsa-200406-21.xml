@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-21">
   <title>mit-krb5: Multiple buffer overflows in krb5_aname_to_localname</title>
   <synopsis>
@@ -9,8 +8,8 @@
     system compromise.
   </synopsis>
   <product type="ebuild">mit-krb5</product>
-  <announced>June 29, 2004</announced>
-  <revised>June 29, 2004: 01</revised>
+  <announced>2004-06-29</announced>
+  <revised>2004-06-29: 01</revised>
   <bug>52744</bug>
   <access>remote</access>
   <affected>
@@ -61,11 +60,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=app-crypt/mit-krb5-1.3.3-r1"
-    # emerge ">=app-crypt/mit-krb5-1.3.3-r1"</code>
+    # emerge -pv "&gt;=app-crypt/mit-krb5-1.3.3-r1"
+    # emerge "&gt;=app-crypt/mit-krb5-1.3.3-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0523">CAN-2004-0523</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0523">CAN-2004-0523</uri>
     <uri link="http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2004-001-an_to_ln.txt">MIT krb5 Security Advisory</uri>
   </references>
   <metadata tag="submitter">

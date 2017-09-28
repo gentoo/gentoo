@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200708-06">
   <title>Net::DNS: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     allowing for a Denial of Service and a cache poisoning attack.
   </synopsis>
   <product type="ebuild">net-dns</product>
-  <announced>August 11, 2007</announced>
-  <revised>August 11, 2007: 01</revised>
+  <announced>2007-08-11</announced>
+  <revised>2007-08-11: 01</revised>
   <bug>184029</bug>
   <access>remote</access>
   <affected>
@@ -48,19 +47,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-perl/Net-DNS-0.60&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-perl/Net-DNS-0.60"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3377">CVE-2007-3377</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3409">CVE-2007-3409</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3377">CVE-2007-3377</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3409">CVE-2007-3409</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 16 Jul 2007 13:12:37 +0000">
+  <metadata tag="requester" timestamp="2007-07-16T13:12:37Z">
     aetius
   </metadata>
-  <metadata tag="bugReady" timestamp="Wed, 25 Jul 2007 05:32:52 +0000">
+  <metadata tag="bugReady" timestamp="2007-07-25T05:32:52Z">
     jaervosz
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 30 Jul 2007 09:51:53 +0000">
+  <metadata tag="submitter" timestamp="2007-07-30T09:51:53Z">
     p-y
   </metadata>
 </glsa>

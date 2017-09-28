@@ -6,8 +6,8 @@
     arbitrary files.
   </synopsis>
   <product type="ebuild">symfony</product>
-  <announced>May 18, 2014</announced>
-  <revised>May 18, 2014: 1</revised>
+  <announced>2014-05-18</announced>
+  <revised>2014-05-18: 1</revised>
   <bug>444696</bug>
   <access>remote</access>
   <affected>
@@ -39,10 +39,10 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5574">CVE-2012-5574</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-5574">CVE-2012-5574</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 17 Dec 2012 03:37:50 +0000">
+  <metadata tag="requester" timestamp="2012-12-17T03:37:50Z">
     underling
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 18 May 2014 17:31:18 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="2014-05-18T17:31:18Z">ackle</metadata>
 </glsa>

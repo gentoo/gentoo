@@ -6,8 +6,8 @@
     arbitrary code or a Denial of Service condition.
   </synopsis>
   <product type="ebuild">coreutils</product>
-  <announced>December 08, 2016</announced>
-  <revised>December 08, 2016: 1</revised>
+  <announced>2016-12-08</announced>
+  <revised>2016-12-08: 1</revised>
   <bug>530514</bug>
   <access>local, remote</access>
   <affected>
@@ -44,8 +44,8 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9471">CVE-2014-9471</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9471">CVE-2014-9471</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 27 Nov 2016 06:48:53 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:11:59 +0000">whissi</metadata>
+  <metadata tag="requester" timestamp="2016-11-27T06:48:53Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2016-12-08T13:11:59Z">whissi</metadata>
 </glsa>

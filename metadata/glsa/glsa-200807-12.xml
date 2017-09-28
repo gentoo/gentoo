@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-12">
   <title>BitchX: Multiple vulnerabilities</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary code or symlink attacks.
   </synopsis>
   <product type="ebuild">bitchx</product>
-  <announced>July 21, 2008</announced>
-  <revised>July 21, 2008: 01</revised>
+  <announced>2008-07-21</announced>
+  <revised>2008-07-21: 01</revised>
   <bug>190667</bug>
   <access>remote</access>
   <affected>
@@ -49,19 +48,19 @@
     the vulnerable package and switch to another IRC client:
     </p>
     <code>
-    # emerge --unmerge &quot;net-irc/bitchx&quot;</code>
+    # emerge --unmerge "net-irc/bitchx"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4584">CVE-2007-4584</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5839">CVE-2007-5839</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4584">CVE-2007-4584</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5839">CVE-2007-5839</uri>
   </references>
-  <metadata tag="requester" timestamp="Mon, 07 Jul 2008 22:27:23 +0000">
+  <metadata tag="requester" timestamp="2008-07-07T22:27:23Z">
     vorlon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 07 Jul 2008 22:27:35 +0000">
+  <metadata tag="bugReady" timestamp="2008-07-07T22:27:35Z">
     vorlon
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 17 Jul 2008 11:41:45 +0000">
+  <metadata tag="submitter" timestamp="2008-07-17T11:41:45Z">
     p-y
   </metadata>
 </glsa>

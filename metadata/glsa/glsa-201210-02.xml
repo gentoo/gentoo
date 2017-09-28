@@ -6,8 +6,8 @@
     which allowing for injection of arbitrary web script or HTML.
   </synopsis>
   <product type="ebuild">MoinMoin</product>
-  <announced>October 18, 2012</announced>
-  <revised>October 18, 2012: 1</revised>
+  <announced>2012-10-18</announced>
+  <revised>2012-10-18: 1</revised>
   <bug>305663</bug>
   <bug>339295</bug>
   <access>remote</access>
@@ -46,16 +46,16 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0668">CVE-2010-0668</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0669">CVE-2010-0669</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0717">CVE-2010-0717</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0828">CVE-2010-0828</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1238">CVE-2010-1238</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2487">CVE-2010-2487</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2969">CVE-2010-2969</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2970">CVE-2010-2970</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1058">CVE-2011-1058</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0668">CVE-2010-0668</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0669">CVE-2010-0669</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0717">CVE-2010-0717</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0828">CVE-2010-0828</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1238">CVE-2010-1238</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2487">CVE-2010-2487</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2969">CVE-2010-2969</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2970">CVE-2010-2970</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1058">CVE-2011-1058</uri>
   </references>
-  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:36:59 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Thu, 18 Oct 2012 20:46:53 +0000">craig</metadata>
+  <metadata tag="requester" timestamp="2011-10-07T23:36:59Z">craig</metadata>
+  <metadata tag="submitter" timestamp="2012-10-18T20:46:53Z">craig</metadata>
 </glsa>

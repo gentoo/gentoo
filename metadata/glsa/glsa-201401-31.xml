@@ -4,8 +4,8 @@
   <title>CEDET: Privilege escalation</title>
   <synopsis>A vulnerability in CEDET could result in privilege escalation.</synopsis>
   <product type="ebuild">cedet</product>
-  <announced>January 27, 2014</announced>
-  <revised>January 27, 2014: 2</revised>
+  <announced>2014-01-27</announced>
+  <revised>2014-01-27: 2</revised>
   <bug>398227</bug>
   <access>local</access>
   <affected>
@@ -47,8 +47,8 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0035">CVE-2012-0035</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0035">CVE-2012-0035</uri>
   </references>
-  <metadata tag="requester" timestamp="Wed, 01 Feb 2012 17:22:27 +0000">ago</metadata>
-  <metadata tag="submitter" timestamp="Mon, 27 Jan 2014 09:57:54 +0000">Zlogene</metadata>
+  <metadata tag="requester" timestamp="2012-02-01T17:22:27Z">ago</metadata>
+  <metadata tag="submitter" timestamp="2014-01-27T09:57:54Z">Zlogene</metadata>
 </glsa>

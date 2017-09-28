@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200406-07">
   <title>Subversion: Remote heap overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     exploitable to execute arbitrary code on the server running svnserve.
   </synopsis>
   <product type="ebuild">dev-util/subversion</product>
-  <announced>June 10, 2004</announced>
-  <revised>June 10, 2004: 01</revised>
+  <announced>2004-06-10</announced>
+  <revised>2004-06-10: 01</revised>
   <access>remote</access>
   <affected>
     <package name="dev-util/subversion" auto="yes" arch="*">
@@ -19,8 +18,8 @@
   </affected>
   <background>
     <p>
-    Subversion is a revision control system that aims to be a &quot;compelling
-    replacement for CVS&quot;. It enjoys wide use in the open source community.
+    Subversion is a revision control system that aims to be a "compelling
+    replacement for CVS". It enjoys wide use in the open source community.
     svnserve allows access to Subversion repositories using URIs with the
     svn://, svn+ssh://, and other tunelled svn+*:// protocols.
     </p>
@@ -58,11 +57,11 @@
     <code>
     # emerge sync
 
-    # emerge -pv ">=dev-util/subversion-1.0.4-r1"
-    # emerge ">=dev-util/subversion-1.0.4-r1"</code>
+    # emerge -pv "&gt;=dev-util/subversion-1.0.4-r1"
+    # emerge "&gt;=dev-util/subversion-1.0.4-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0413">CAN-2004-0413</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0413">CAN-2004-0413</uri>
   </references>
   <metadata tag="submitter">
     dmargoli

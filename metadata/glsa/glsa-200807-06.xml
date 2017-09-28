@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200807-06">
   <title>Apache: Denial of Service</title>
   <synopsis>
     Multiple vulnerabilities in Apache might lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">apache</product>
-  <announced>July 09, 2008</announced>
-  <revised>July 09, 2008: 01</revised>
+  <announced>2008-07-09</announced>
+  <revised>2008-07-09: 01</revised>
   <bug>222643</bug>
   <bug>227111</bug>
   <access>remote</access>
@@ -65,20 +64,20 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=www-servers/apache-2.2.9&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.2.9"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6420">CVE-2007-6420</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1678">CVE-2008-1678</uri>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2364">CVE-2008-2364</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6420">CVE-2007-6420</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1678">CVE-2008-1678</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2364">CVE-2008-2364</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 14 Jun 2008 10:47:39 +0000">
+  <metadata tag="requester" timestamp="2008-06-14T10:47:39Z">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 16 Jun 2008 23:51:04 +0000">
+  <metadata tag="submitter" timestamp="2008-06-16T23:51:04Z">
     rbu
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 16 Jun 2008 23:51:13 +0000">
+  <metadata tag="bugReady" timestamp="2008-06-16T23:51:13Z">
     rbu
   </metadata>
 </glsa>

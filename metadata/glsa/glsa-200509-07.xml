@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200509-07">
   <title>X.Org: Heap overflow in pixmap allocation</title>
   <synopsis>
@@ -8,8 +7,8 @@
     X.Org user to execute arbitrary code with elevated privileges.
   </synopsis>
   <product type="ebuild">X.Org</product>
-  <announced>September 12, 2005</announced>
-  <revised>September 12, 2005: 01</revised>
+  <announced>2005-09-12</announced>
+  <revised>2005-09-12: 01</revised>
   <bug>105688</bug>
   <access>local</access>
   <affected>
@@ -47,15 +46,15 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=x11-base/xorg-x11-6.8.2-r3&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-x11-6.8.2-r3"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2495">CAN-2005-2495</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2495">CAN-2005-2495</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 06 Sep 2005 08:58:25 +0000">
+  <metadata tag="submitter" timestamp="2005-09-06T08:58:25Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Mon, 12 Sep 2005 15:28:20 +0000">
+  <metadata tag="bugReady" timestamp="2005-09-12T15:28:20Z">
     koon
   </metadata>
 </glsa>

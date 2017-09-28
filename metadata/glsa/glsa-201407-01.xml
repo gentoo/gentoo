@@ -6,8 +6,8 @@
     Denial of Service condition.
   </synopsis>
   <product type="ebuild">openttd</product>
-  <announced>July 07, 2014</announced>
-  <revised>July 07, 2014: 1</revised>
+  <announced>2014-07-07</announced>
+  <revised>2014-07-07: 1</revised>
   <bug>492876</bug>
   <access>remote</access>
   <affected>
@@ -40,10 +40,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6411">CVE-2013-6411</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6411">CVE-2013-6411</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 01:41:36 +0000">
+  <metadata tag="requester" timestamp="2014-06-19T01:41:36Z">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 07 Jul 2014 16:03:44 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-07-07T16:03:44Z">Zlogene</metadata>
 </glsa>

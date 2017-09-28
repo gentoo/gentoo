@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200511-15">
   <title>Smb4k: Local unauthorized file access</title>
   <synopsis>
@@ -8,8 +7,8 @@
     contents of /etc/sudoers and /etc/super.tab files.
   </synopsis>
   <product type="ebuild">Smb4k</product>
-  <announced>November 18, 2005</announced>
-  <revised>November 18, 2005: 01</revised>
+  <announced>2005-11-18</announced>
+  <revised>2005-11-18: 01</revised>
   <bug>111089</bug>
   <access>local</access>
   <affected>
@@ -49,19 +48,19 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/smb4k-0.6.4&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/smb4k-0.6.4"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2851">CVE-2005-2851</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-2851">CVE-2005-2851</uri>
     <uri link="http://smb4k.berlios.de/">Smb4k Announcement</uri>
   </references>
-  <metadata tag="requester" timestamp="Tue, 15 Nov 2005 09:03:00 +0000">
+  <metadata tag="requester" timestamp="2005-11-15T09:03:00Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 15 Nov 2005 09:04:04 +0000">
+  <metadata tag="bugReady" timestamp="2005-11-15T09:04:04Z">
     koon
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 16 Nov 2005 02:48:46 +0000">
+  <metadata tag="submitter" timestamp="2005-11-16T02:48:46Z">
     shellsage
   </metadata>
 </glsa>

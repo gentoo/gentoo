@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200402-02">
   <title>XFree86 Font Information File Buffer Overflow</title>
   <synopsis>
@@ -8,8 +7,8 @@
     Window System allows local attackers to gain root privileges.
   </synopsis>
   <product type="ebuild">200402-02</product>
-  <announced>February 11, 2004</announced>
-  <revised>February 11, 2004: 01</revised>
+  <announced>2004-02-11</announced>
+  <revised>2004-02-11: 01</revised>
   <access>local</access>
   <affected>
     <package name="x11-base/xfree" auto="yes" arch="*">
@@ -44,11 +43,11 @@
     To reproduce the overflow on the command line one can run:
     </p>
     <code>
-    # cat > fonts.dir &lt;&lt;EOF 
+    # cat &gt; fonts.dir &lt;&lt;EOF 
     1
     word.bdf -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
     EOF
-    # perl -e 'print "0" x 1024 . "A" x 96 . "\n"' > fonts.alias
+    # perl -e 'print "0" x 1024 . "A" x 96 . "\n"' &gt; fonts.alias
     # X :0 -fp $PWD</code>
     <p>
     {Some output removed}... Server aborting... Segmentation fault (core dumped)
@@ -84,8 +83,7 @@
     # emerge x11-base/xfree</code>
   </resolution>
   <references>
-    <uri
-    link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0083">CVE: CAN-2004-0083</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0083">CVE: CAN-2004-0083</uri>
     <uri link="http://www.idefense.com/application/poi/display?id=72&amp;type=vulnerabilities">Vulnerability:
     XFree86 Font Information File Buffer Overflow</uri>
   </references>

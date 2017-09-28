@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200711-31">
   <title>Net-SNMP: Denial of Service</title>
   <synopsis>
@@ -8,8 +7,8 @@
     processing GETBULK requests.
   </synopsis>
   <product type="ebuild">net-snmp</product>
-  <announced>November 20, 2007</announced>
-  <revised>November 20, 2007: 01</revised>
+  <announced>2007-11-20</announced>
+  <revised>2007-11-20: 01</revised>
   <bug>198346</bug>
   <access>remote</access>
   <affected>
@@ -48,18 +47,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-analyzer/net-snmp-5.4.1-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-analyzer/net-snmp-5.4.1-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5846">CVE-2007-5846</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5846">CVE-2007-5846</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 18 Nov 2007 22:35:11 +0000">
+  <metadata tag="requester" timestamp="2007-11-18T22:35:11Z">
     p-y
   </metadata>
-  <metadata tag="bugReady" timestamp="Sun, 18 Nov 2007 22:35:17 +0000">
+  <metadata tag="bugReady" timestamp="2007-11-18T22:35:17Z">
     p-y
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 19 Nov 2007 21:51:55 +0000">
+  <metadata tag="submitter" timestamp="2007-11-19T21:51:55Z">
     p-y
   </metadata>
 </glsa>

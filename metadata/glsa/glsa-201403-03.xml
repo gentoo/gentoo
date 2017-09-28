@@ -4,8 +4,8 @@
   <title>file: Denial of Service</title>
   <synopsis>A vulnerability in file could result in Denial of Service.</synopsis>
   <product type="ebuild">file</product>
-  <announced>March 13, 2014</announced>
-  <revised>March 13, 2014: 1</revised>
+  <announced>2014-03-13</announced>
+  <revised>2014-03-13: 1</revised>
   <bug>501574</bug>
   <access>remote</access>
   <affected>
@@ -42,10 +42,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1943">CVE-2014-1943</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1943">CVE-2014-1943</uri>
   </references>
-  <metadata tag="requester" timestamp="Sat, 22 Feb 2014 08:49:09 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Thu, 13 Mar 2014 16:36:21 +0000">
+  <metadata tag="requester" timestamp="2014-02-22T08:49:09Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2014-03-13T16:36:21Z">
     pinkbyte
   </metadata>
 </glsa>

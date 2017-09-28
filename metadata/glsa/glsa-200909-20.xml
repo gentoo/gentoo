@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200909-20">
   <title>cURL: Certificate validation error</title>
   <synopsis>
@@ -8,8 +7,8 @@
     attackers to conduct man-in-the-middle attacks.
   </synopsis>
   <product type="ebuild">curl</product>
-  <announced>September 25, 2009</announced>
-  <revised>September 25, 2009: 01</revised>
+  <announced>2009-09-25</announced>
+  <revised>2009-09-25: 01</revised>
   <bug>281515</bug>
   <access>remote</access>
   <affected>
@@ -51,18 +50,18 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-misc/curl-7.19.6&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.19.6"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2417">CVE-2009-2417</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2417">CVE-2009-2417</uri>
   </references>
-  <metadata tag="requester" timestamp="Sun, 13 Sep 2009 18:08:24 +0000">
+  <metadata tag="requester" timestamp="2009-09-13T18:08:24Z">
     a3li
   </metadata>
-  <metadata tag="submitter" timestamp="Mon, 14 Sep 2009 12:08:01 +0000">
+  <metadata tag="submitter" timestamp="2009-09-14T12:08:01Z">
     a3li
   </metadata>
-  <metadata tag="bugReady" timestamp="Fri, 25 Sep 2009 18:22:08 +0000">
+  <metadata tag="bugReady" timestamp="2009-09-25T18:22:08Z">
     a3li
   </metadata>
 </glsa>

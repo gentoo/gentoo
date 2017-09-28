@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
-
 <glsa id="200508-13">
   <title>PEAR XML-RPC, phpxmlrpc: New PHP script injection vulnerability</title>
   <synopsis>
@@ -8,8 +7,8 @@
     arbitrary PHP script commands.
   </synopsis>
   <product type="ebuild">pear-xml_rpc phpxmlrpc</product>
-  <announced>August 24, 2005</announced>
-  <revised>August 24, 2005: 01</revised>
+  <announced>2005-08-24</announced>
+  <revised>2005-08-24: 01</revised>
   <bug>102378</bug>
   <bug>102576</bug>
   <access>remote</access>
@@ -55,24 +54,24 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/PEAR-XML_RPC-1.4.0&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-XML_RPC-1.4.0"</code>
     <p>
     All phpxmlrpc users should upgrade to the latest available
     version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=dev-php/phpxmlrpc-1.2-r1&quot;</code>
+    # emerge --ask --oneshot --verbose "&gt;=dev-php/phpxmlrpc-1.2-r1"</code>
   </resolution>
   <references>
-    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
-    <uri link="http://www.hardened-php.net/advisory_142005.66.html">Hardened-PHP 14/2005 Advisory</uri>
-    <uri link="http://www.hardened-php.net/advisory_152005.67.html">Hardened-PHP 15/2005 Advisory</uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-2498">CAN-2005-2498</uri>
+    <uri link="https://www.hardened-php.net/advisory_142005.66.html">Hardened-PHP 14/2005 Advisory</uri>
+    <uri link="https://www.hardened-php.net/advisory_152005.67.html">Hardened-PHP 15/2005 Advisory</uri>
   </references>
-  <metadata tag="submitter" timestamp="Tue, 23 Aug 2005 08:36:20 +0000">
+  <metadata tag="submitter" timestamp="2005-08-23T08:36:20Z">
     koon
   </metadata>
-  <metadata tag="bugReady" timestamp="Tue, 23 Aug 2005 20:48:36 +0000">
+  <metadata tag="bugReady" timestamp="2005-08-23T20:48:36Z">
     koon
   </metadata>
 </glsa>

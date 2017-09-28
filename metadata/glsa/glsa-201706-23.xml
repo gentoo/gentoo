@@ -46,10 +46,10 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1412">CVE-2011-1412</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2764">CVE-2011-2764</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3012">CVE-2011-3012</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3345">CVE-2012-3345</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1412">CVE-2011-1412</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-2764">CVE-2011-2764</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-3012">CVE-2011-3012</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3345">CVE-2012-3345</uri>
   </references>
   <metadata tag="requester" timestamp="2017-06-09T11:09:47Z">whissi</metadata>
   <metadata tag="submitter" timestamp="2017-06-22T17:57:40Z">whissi</metadata>
