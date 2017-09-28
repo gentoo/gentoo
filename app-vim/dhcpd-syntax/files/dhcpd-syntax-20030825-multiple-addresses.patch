@@ -1,5 +1,5 @@
---- syntax/dhcpd.vim.orig	2005-03-24 16:41:59.755564944 +0000
-+++ syntax/dhcpd.vim	2005-03-24 16:42:15.894111512 +0000
+--- a/syntax/dhcpd.vim	2005-03-24 16:41:59.755564944 +0000
++++ b/syntax/dhcpd.vim	2005-03-24 16:42:15.894111512 +0000
 @@ -33,7 +33,7 @@
  " Base constructs {{{
  syn match dhcpdString +"[^"]*"+
