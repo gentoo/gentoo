@@ -11,7 +11,7 @@ SRC_URI="http://markusfisch.de/downloads/${P}.tar.bz2
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk kde"
+IUSE="gtk"
 
 RDEPEND="
 	media-libs/libpng:0=
@@ -24,11 +24,6 @@ RDEPEND="
 		dev-libs/glib
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
-	)
-	kde? (
-		kde-frameworks/kdelibs:4
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
 	)
 "
 DEPEND="${RDEPEND}"
@@ -43,7 +38,7 @@ PATCHES=(
 src_configure() {
 	econf \
 		$(use_enable gtk) \
-		$(use_enable kde) \
+		--disable-kde \
 		--bindir="${EPREFIX}"/usr/bin \
 		--enable-xft \
 		--enable-xmu \
