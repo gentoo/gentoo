@@ -44,7 +44,7 @@ src_prepare() {
 }
 
 src_compile() {
-	declare -a myconf
+	local myconf=()
 
 	if use sasl; then
 	  myconf+=(sasl)
