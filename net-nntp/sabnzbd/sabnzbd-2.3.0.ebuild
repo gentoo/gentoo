@@ -46,7 +46,7 @@ RDEPEND="
 	dev-python/feedparser
 	dev-python/gntp
 	dev-python/pythonutils
-	dev-python/sabyenc
+	>=dev-python/sabyenc-3.3.1
 	net-misc/wget
 	7za? ( app-arch/p7zip )
 	rar? ( || ( app-arch/unrar app-arch/rar ) )
