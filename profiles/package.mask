@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (29 Sep 2017)
+# Various regressions compared to previous release.
+# Masked pending more information from upstream.
+>=x11-misc/albert-0.13.0
+
 # Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
