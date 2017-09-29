@@ -1,11 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 USE_RUBY="ruby22 ruby23 ruby24"
-
-RUBY_FAKEGEM_TASK_TEST=""
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc THANKS.txt"
@@ -31,8 +29,4 @@ all_ruby_prepare() {
 
 	# Avoid bundler dependency
 	sed -i -e '/\(bundler\|:release\)/ s:^:#:' Rakefile || die
-}
-
-each_ruby_test() {
-	${RUBY} -Ilib:test test/test_all.rb || die "Tests failed."
 }

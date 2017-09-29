@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+EAPI=6
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
 
@@ -22,8 +22,8 @@ SLOT="0"
 IUSE=""
 
 ruby_add_rdepend "
-	>=dev-ruby/rack-1.0:* <dev-ruby/rack-3:*
-	>=dev-ruby/hashie-1.2:* <dev-ruby/hashie-4:*"
+	>=dev-ruby/rack-1.6.2:* <dev-ruby/rack-3:*
+	>=dev-ruby/hashie-3.4.6:3 <dev-ruby/hashie-3.6.0:3"
 ruby_add_bdepend "doc? ( dev-ruby/yard )
 	test? ( dev-ruby/rack-test )"
 
