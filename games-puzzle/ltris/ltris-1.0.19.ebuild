@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools flag-o-matic eutils games
 
 DESCRIPTION="very polished Tetris clone"
-HOMEPAGE="http://lgames.sourceforge.net/index.php?project=LTris"
+HOMEPAGE="http://lgames.sourceforge.net/LTris/"
 SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2+"
