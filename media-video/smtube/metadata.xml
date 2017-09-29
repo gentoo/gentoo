@@ -16,7 +16,4 @@
 		</maintainer>
 		<remote-id type="sourceforge">smtube</remote-id>
 	</upstream>
-	<use>
-		<flag name="qt5">Build using Qt 5 instead of Qt 4</flag>
-	</use>
 </pkgmetadata>
