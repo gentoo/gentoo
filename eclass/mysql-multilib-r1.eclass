@@ -342,11 +342,7 @@ mysql-multilib-r1_src_prepare() {
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
-	if [[ "${EAPI}x" == "5x" ]] ; then
-		epatch_user
-	else
-		default
-	fi
+	cmake-utils_src_prepare
 }
 
 # @FUNCTION: mysql-multilib-r1_src_configure
@@ -608,14 +604,14 @@ multilib_src_install() {
 			if [[ ${PREVIOUS_DATADIR} != "yes" ]] ; then
 				dodir "${MY_DATADIR#${EPREFIX}}"
 				keepdir "${MY_DATADIR#${EPREFIX}}"
-				chown -R mysql:mysql "${D}/${MY_DATADIR}"
+				nonfatal fowners -R mysql:mysql "${D}/${MY_DATADIR}"
 			fi
 
 			diropts "-m0755"
 			for folder in "${MY_LOGDIR#${EPREFIX}}" ; do
 				dodir "${folder}"
 				keepdir "${folder}"
-				chown -R mysql:mysql "${ED}/${folder}"
+				nonfatal fowners -R mysql:mysql "${ED}/${folder}"
 			done
 
 			einfo "Including support files and sample configurations"
@@ -684,15 +680,9 @@ mysql-multilib-r1_pkg_postinst() {
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
-	# Check FEATURES="collision-protect" before removing this
+	# Create log directory securely if it does not exist
 	[[ -d "${ROOT}${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}${MY_LOGDIR}"
 
-	# Secure the logfiles
-	touch "${ROOT}${MY_LOGDIR}"/mysql.{log,err}
-	chown mysql:mysql "${ROOT}${MY_LOGDIR}"/mysql*
-	chmod 0660 "${ROOT}${MY_LOGDIR}"/mysql*
-
-	# Minimal builds don't have the MySQL server
 	if use server ; then
 		docinto "support-files"
 		for script in \
@@ -929,12 +919,14 @@ mysql-multilib-r1_pkg_config() {
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
 	PID_DIR="${EROOT}/var/run/mysqld"
 	if [[ ! -d "${PID_DIR}" ]]; then
-		mkdir -p "${PID_DIR}" || die "Could not create pid directory"
-		chown mysql:mysql "${PID_DIR}" || die "Could not set ownership on pid directory"
-		chmod 755 "${PID_DIR}" || die "Could not set permissions on pid directory"
+		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
 	fi
 
-	pushd "${TMPDIR}" &>/dev/null
+	if [[ ! -d "${MY_DATADIR}" ]]; then
+		install -d -m 750 -o mysql -g mysql "${MY_DATADIR}" || die "Could not create data directory"
+	fi
+
+	pushd "${TMPDIR}" &>/dev/null || die
 
 	# Filling timezones, see
 	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
@@ -957,17 +949,15 @@ mysql-multilib-r1_pkg_config() {
 	fi
 	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}/${MY_DATADIR}" "--tmpdir=${ROOT}/${MYSQL_TMPDIR}" ${initialize_options} )
 	einfo "Command: ${cmd[*]}"
-	"${cmd[@]}" \
+	su -s /bin/sh -c "${cmd[*]}" mysql \
 		>"${TMPDIR}"/mysql_install_db.log 2>&1
 	if [ $? -ne 0 ]; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
 		die "Failed to initialize mysqld. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR}/mysql_install_db.log"
 	fi
-	popd &>/dev/null
+	popd &>/dev/null || die
 	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
 	|| die "MySQL databases not installed"
-	chown -R mysql:mysql "${ROOT}/${MY_DATADIR}" 2>/dev/null
-	chmod 0750 "${ROOT}/${MY_DATADIR}" 2>/dev/null
 
 	local socket="${EROOT}/var/run/mysqld/mysqld${RANDOM}.sock"
 	local pidfile="${EROOT}/var/run/mysqld/mysqld${RANDOM}.pid"
