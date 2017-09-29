@@ -13,7 +13,7 @@ HOMEPAGE="https://www.kde.org/applications/internet/ktorrent/"
 SRC_URI="mirror://kde/stable/${PN}/${PV/%.0}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bwscheduler +downloadorder +infowidget +ipfilter +kross +logviewer +magnetgenerator
 +mediaplayer rss +scanfolder +search +shutdown +stats +upnp +zeroconf"
 
