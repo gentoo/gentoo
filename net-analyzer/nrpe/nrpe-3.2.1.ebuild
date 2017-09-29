@@ -49,7 +49,8 @@ src_install() {
 	fowners root:nagios /etc/nagios/nrpe.cfg
 	fperms 0640 /etc/nagios/nrpe.cfg
 
-	newinitd "${FILESDIR}/nrpe-${PV}.init" nrpe
+	newinitd "startup/openrc-init" nrpe
+	newconfd "startup/openrc-conf" nrpe
 	systemd_newunit "startup/default-service" "${PN}.service"
 
 	insinto /etc/xinetd.d/
