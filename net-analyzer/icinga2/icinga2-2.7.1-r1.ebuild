@@ -48,6 +48,7 @@ REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
 
 PATCHES=(
 	"${FILESDIR}/fix-missing-include-2.7.1.patch"
+	"${FILESDIR}/fix-missing-include-2.7.1-2.patch"
 )
 
 want_apache2
