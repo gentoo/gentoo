@@ -5504,6 +5504,7 @@ net-firewall/fwknop:iptables - Use net-firewall/iptables as the default server b
 net-firewall/fwknop:nfqueue - Enable UDP-only NFQUEUE server mode (no net-libs/libpcap dependency)
 net-firewall/fwknop:server - Build fwknopd server
 net-firewall/fwknop:udp-server - Enable UDP-only server mode (no net-libs/libpcap dependency)
+net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
 net-firewall/iptables:conntrack - Build against net-libs/libnetfilter_conntrack when enables the connlabel matcher
 net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfnl_osf util
 net-firewall/iptables:nftables - Support nftables kernel interface

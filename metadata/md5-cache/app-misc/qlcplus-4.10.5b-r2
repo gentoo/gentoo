@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm preinst prepare test unpack
+DEPEND=|| ( dev-embedded/libftdi:1 dev-embedded/libftdi:0 ) dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=QLC+ - Q Light Controller Plus to control DMX interfaces
+EAPI=6
+HOMEPAGE=http://www.qlcplus.org/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=|| ( dev-embedded/libftdi:1 dev-embedded/libftdi:0 ) dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev
+SLOT=0
+SRC_URI=https://github.com/mcallegari/qlcplus/archive/QLC+_4.10.5b.tar.gz -> qlcplus-4.10.5b.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=929048cbff9dc44d7030b1f54c0fc649

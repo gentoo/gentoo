@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-cpp/libxmlpp:2.6 dev-libs/boost dev-libs/locked_sstream || ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) dev-util/waf virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=small C++ library which makes it marginally neater to parse XML using libxml++
+EAPI=6
+HOMEPAGE=http://carlh.net/libcxml
+LICENSE=GPL-2
+RDEPEND=dev-cpp/libxmlpp:2.6 dev-libs/boost dev-libs/locked_sstream
+SLOT=0
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=be99cd1efdad97dc15c007cfd1d7980e
