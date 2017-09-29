@@ -47,3 +47,12 @@ src_prepare() {
 	sed -i -e "/^find_dependency/ s/ \"@LibGMP_MIN_VERSION@\"//" \
 		KF5TorrentConfig.cmake.in || die
 }
+
+src_test() {
+	# failing network tests
+	local myctestargs=(
+		-E "(fin|packetloss|send|transmit)"
+	)
+
+	kde5_src_test
+}
