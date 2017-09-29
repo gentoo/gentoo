@@ -19,6 +19,7 @@ IUSE="test"
 
 RDEPEND=""
 DEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
