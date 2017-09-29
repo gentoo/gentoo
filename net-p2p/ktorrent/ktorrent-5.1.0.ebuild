@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="optional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Powerful BitTorrent client based on KDE Frameworks"
