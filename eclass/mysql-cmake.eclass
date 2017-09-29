@@ -338,7 +338,7 @@ mysql-cmake_src_prepare() {
 		rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
 	fi
 
-	epatch_user
+	cmake-utils_src_prepare
 }
 
 # @FUNCTION: mysql-cmake_src_configure
@@ -511,14 +511,14 @@ mysql-cmake_src_install() {
 		if [[ ${PREVIOUS_DATADIR} != "yes" ]] ; then
 			dodir "${MY_DATADIR#${EPREFIX}}"
 			keepdir "${MY_DATADIR#${EPREFIX}}"
-			chown -R mysql:mysql "${D}/${MY_DATADIR}"
+			nonfatal fowners -R mysql:mysql "${D}/${MY_DATADIR}"
 		fi
 
 		diropts "-m0755"
 		for folder in "${MY_LOGDIR#${EPREFIX}}" ; do
 			dodir "${folder}"
 			keepdir "${folder}"
-			chown -R mysql:mysql "${ED}/${folder}"
+			nonfatal fowners -R mysql:mysql "${ED}/${folder}"
 		done
 	fi
 
