@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>DomainKeys Identified Mail library from Alt-N Inc.</longdescription>
-  <use>
-</use>
   <upstream>
     <remote-id type="sourceforge">libdkim</remote-id>
   </upstream>
