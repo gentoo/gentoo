@@ -11,7 +11,7 @@ inherit eutils l10n qmake-utils
 DESCRIPTION="YouTube Browser for SMPlayer"
 HOMEPAGE="http://smplayer.sourceforge.net/smtube"
 SRC_URI="mirror://sourceforge/smtube/${P}.tar.bz2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
