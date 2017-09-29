@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
 DESCRIPTION="A violent point-and-click shooting game"
-HOMEPAGE="http://lgames.sourceforge.net"
+HOMEPAGE="http://lgames.sourceforge.net/Barrage/"
 SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2"
