@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs user
+inherit toolchain-funcs user versionator
 
 DESCRIPTION="Inspire IRCd - The Stable, High-Performance Modular IRCd"
 HOMEPAGE="https://inspircd.github.com/"
@@ -27,6 +27,7 @@ RDEPEND="
 	tre? ( dev-libs/tre )"
 DEPEND="${RDEPEND}"
 
+DOCS=( docs/. )
 PATCHES=( "${FILESDIR}"/${P}-fix-path-builds.patch )
 
 pkg_setup() {
@@ -83,16 +84,17 @@ src_install() {
 	insinto "/usr/include/${PN}"
 	doins -r include/.
 
+	einstalldocs
+
 	diropts -o"${PN}" -g"${PN}" -m0700
 	dodir "/var/lib/${PN}"
 	dodir "/var/lib/${PN}/data"
 
-	newinitd "${FILESDIR}/${PN}-r2.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}-r3.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}-r3.confd" "${PN}"
 
 	keepdir "/var/log/${PN}"
 
-	dodoc -r docs/*
 	rm -r "${D%/}/etc/${PN}" || die
 	dodir "/etc/${PN}"
 	dodir "/etc/${PN}/aliases"
@@ -108,6 +110,14 @@ pkg_postinst() {
 		elog "/usr/share/doc/${PN}"
 		elog "Read the ${PN}.conf.example file carefully before "
 		elog "starting the service."
-		elog
 	fi
+	local pv=""
+	for pv in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least "2.0.24-r1" "${pv}"; then
+			elog "Starting with 2.0.24-r1 the daemon is no longer started"
+			elog "with the --logfile option and you are thus expected to define"
+			elog "logging in the InspIRCd configuration file if you want it."
+			break
+		fi
+	done
 }
