@@ -1,8 +1,0 @@
---- src/Makefile.old	2010-09-30 06:24:36.000000000 +0200
-+++ src/Makefile	2010-09-30 06:25:02.000000000 +0200
-@@ -1,4 +1,4 @@
- all:
--	g++ main.cpp $(E_CXXFLAGS) `/usr/bin/sdl-config --libs --cflags` -lSDL_ttf  -o ../tuxdash
-+	$(CXX) main.cpp $(LDFLAGS) $(E_CXXFLAGS) `/usr/bin/sdl-config --libs --cflags` -lSDL_ttf  -o ../tuxdash
- static:
- 	g++ -static main.cpp $(E_CXXFLAGS) `/usr/bin/sdl-config --cflags --static-libs` -lSDL_ttf -lfreetype -lz -o ../tuxdash
