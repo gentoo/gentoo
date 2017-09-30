@@ -15232,7 +15232,7 @@ net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 2.0.0_
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 2.4.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
-net-misc/gerbera 1.1.0 9999: UPnP Media Server (Based on MediaTomb)
+net-misc/gerbera 1.1.0-r1 9999: UPnP Media Server (Based on MediaTomb)
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.22.0 3.24.0: Crawls through your online content
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
@@ -19167,7 +19167,7 @@ x11-plugins/pidgin-opensteamworks 1.4 1.6.1: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
-x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1 1.21.1 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
+x11-plugins/pidgin-sipe 1.21.1 1.22.0 1.22.1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin

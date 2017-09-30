@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=!!net-misc/mediatomb net-libs/libupnp:1.8[ipv6,reuseaddr] >=dev-db/sqlite-3 dev-libs/expat mysql? ( virtual/mysql ) javascript? ( dev-lang/duktape ) taglib? ( >=media-libs/taglib-1.11 ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) ffmpeg? ( libav? ( >=media-video/libav-10:0= ) !libav? ( >=media-video/ffmpeg-2.2:0= ) ) ffmpegthumbnailer? ( media-video/ffmpegthumbnailer ) curl? ( net-misc/curl net-misc/youtube-dl ) magic? ( sys-apps/file ) sys-apps/util-linux sys-libs/zlib virtual/libiconv sys-devel/make >=dev-util/cmake-3.7.2 virtual/pkgconfig
+DESCRIPTION=UPnP Media Server (Based on MediaTomb)
+EAPI=6
+HOMEPAGE=https://github.com/gerbera/gerbera
+IUSE=curl debug +exif +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic mysql protocol-extensions systemd +taglib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!!net-misc/mediatomb net-libs/libupnp:1.8[ipv6,reuseaddr] >=dev-db/sqlite-3 dev-libs/expat mysql? ( virtual/mysql ) javascript? ( dev-lang/duktape ) taglib? ( >=media-libs/taglib-1.11 ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) ffmpeg? ( libav? ( >=media-video/libav-10:0= ) !libav? ( >=media-video/ffmpeg-2.2:0= ) ) ffmpegthumbnailer? ( media-video/ffmpegthumbnailer ) curl? ( net-misc/curl net-misc/youtube-dl ) magic? ( sys-apps/file ) sys-apps/util-linux sys-libs/zlib virtual/libiconv kernel_linux? ( virtual/tmpfiles )
+SLOT=0
+SRC_URI=https://github.com/gerbera/gerbera/archive/v1.1.0.tar.gz -> gerbera-1.1.0.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	systemd	34815d3b76e745c5ca33eec9f95074c2	tmpfiles	1e504fdcf4f24aeded1ce42600307f76	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=19469d65a9e2d8c35a8f9f38af7b6616

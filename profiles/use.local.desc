@@ -6326,9 +6326,11 @@ net-misc/freerdp:client - Build client binaries
 net-misc/freerdp:openh264 - Enable H.264 support using media-libs/openh264
 net-misc/freerdp:server - Build server binaries
 net-misc/gerbera:curl - Support YouTube and external media sources (e.g. internet radio)
+net-misc/gerbera:ffmpegthumbnailer - Enable video thumbnail support with media-video/ffmpegthumbnailer
 net-misc/gerbera:lastfm - Enable last.fm support
 net-misc/gerbera:magic - Use libmagic to determine file types
 net-misc/gerbera:mysql - Use dev-db/mysql as backend rather than SQLite3
+net-misc/gerbera:protocol-extensions - Enable partial DLNA support
 net-misc/gerbera:taglib - Use media-libs/taglib for reading files' metadata rather than id3lib
 net-misc/gnome-online-miners:flickr - Enable Flickr support
 net-misc/gsasl:gcrypt - Use dev-libs/libgcrypt for low-level crypto
