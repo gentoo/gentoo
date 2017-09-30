@@ -7603,7 +7603,7 @@ dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials stor
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r1 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
-dev-python/docutils 0.11 0.12 0.13.1: Python Documentation Utilities
+dev-python/docutils 0.11 0.12 0.13.1 0.14: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.6.1 0.6.2 0.6.4: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
@@ -7854,7 +7854,7 @@ dev-python/ipywidgets 4.1.1 5.1.5 5.2.2 6.0.0 7.0.0: IPython HTML widgets for Ju
 dev-python/irc 11.0.1 15.0.2 15.0.6: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso3166 0.8: Self-contained ISO 3166-1 country definitions.
-dev-python/iso8601 0.1.10 0.1.11: Simple module to parse ISO 8601 dates
+dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/iso_639 0.4.5: Python library for ISO 639 standard
 dev-python/isodate 0.5.4: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.2.5: A python utility/library to sort imports
@@ -7959,8 +7959,8 @@ dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming l
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.7.3 3.8.0 4.0.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.9.0 0.10.0 0.10.1: LZ4 Bindings for Python
-dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0: M2Crypto: A Python crypto and SSL toolkit
-dev-python/m2r 0.1.5 0.1.6: Markdown to reStructuredText converter
+dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0 0.26.4: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2r 0.1.5 0.1.6 0.1.12: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.3 1.0.6: A Python templating language
@@ -8052,7 +8052,7 @@ dev-python/netlib 0.10 0.10.1 0.11.1 0.11.2 0.12.0: Collection of network utilit
 dev-python/netmiko 1.4.2: Multi-vendor library to simplify Paramiko SSH connections to network devices
 dev-python/networkx 1.10-r1 1.11: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 0.0.2 0.4.0 1.1.0 1.9.1: Neutron shared routines and utilities.
-dev-python/nevow 0.11.1 0.14.2: A web templating framework that provides LivePage, an automatic AJAX toolkit
+dev-python/nevow 0.11.1 0.14.2 0.14.3: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r1: A Python framework for creating text-based applications
 dev-python/nltk 3.0.3 3.2.2 3.2.3 3.2.5: Natural Language Toolkit
 dev-python/nnpy 1.2-r1 1.3 1.4.1: cffi-based Python bindings for nanomsg
@@ -8246,8 +8246,8 @@ dev-python/pyamazon 0.65-r1: A Python wrapper for the Amazon web API
 dev-python/pyamf 0.8.0: Action Message Format (AMF) support for Python
 dev-python/pyamg 2.1.0 2.2.1 3.0.2 3.2.1: Algebraic multigrid solvers in Python
 dev-python/pyao 0.82-r3: Python bindings for the libao library
-dev-python/pyasn1 0.1.8 0.2.3: ASN.1 library for Python
-dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10: pyasn1 modules
+dev-python/pyasn1 0.1.8 0.2.3 0.3.6: ASN.1 library for Python
+dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4: pyasn1 modules
 dev-python/pyatspi 2.20.3 2.24.0: Python binding to at-spi library
 dev-python/pyaudio 0.2.8 0.2.11: Python bindings for PortAudio
 dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
@@ -8418,7 +8418,7 @@ dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyroute2 0.4.12 0.4.21: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
-dev-python/pyrsistent 0.12.0 0.12.1: Persistent/Functional/Immutable data structures
+dev-python/pyrsistent 0.12.0 0.12.1 0.13.0: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r2: Python library to produce RTF documents
 dev-python/pysaml2 4.0.2-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.4: Tool for easily putting up the scaffold of a Python project
@@ -13622,7 +13622,7 @@ media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative to
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/dxcc 20080225-r1: A ham radio callsign DXCC lookup utility
 media-radio/fldigi 4.0.4 4.0.4-r1 4.0.5 4.0.6 4.0.7 4.0.8 4.0.9 4.0.10: Sound card based multimode software modem for Amateur Radio use
-media-radio/flrig 1.3.27 1.3.28 1.3.30 1.3.31 1.3.32 1.3.33 1.3.34: Transceiver control program for Amateur Radio use
+media-radio/flrig 1.3.27 1.3.28 1.3.30 1.3.31 1.3.32 1.3.33 1.3.34 1.3.35: Transceiver control program for Amateur Radio use
 media-radio/gpredict 1.3 1.3-r1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
@@ -15232,7 +15232,7 @@ net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 2.0.0_
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 2.4.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
-net-misc/gerbera 1.0.0-r2 9999: UPnP Media Server (Based on MediaTomb)
+net-misc/gerbera 1.1.0 9999: UPnP Media Server (Based on MediaTomb)
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.22.0 3.24.0: Crawls through your online content
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
@@ -17102,7 +17102,7 @@ sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.32 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.44.8 0.9.44.10 0.9.46 0.9.48: Security sandbox for any type of processes
+sys-apps/firejail 0.9.44.8 0.9.44.10 0.9.46 0.9.48 0.9.50: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS branch
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 9999: Utility for reading, writing, erasing and verifying flash ROM chips
