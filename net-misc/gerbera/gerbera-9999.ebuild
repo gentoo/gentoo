@@ -17,11 +17,11 @@ else
 fi
 
 DESCRIPTION="UPnP Media Server (Based on MediaTomb)"
-HOMEPAGE="https://github.com/v00d00/gerbera"
+HOMEPAGE="https://github.com/gerbera/gerbera"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif +ffmpeg +javascript lastfm libav +magic mysql systemd +taglib"
+IUSE="curl debug +exif +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic mysql protocol-extensions systemd +taglib"
 
 DEPEND="
 	!!net-misc/mediatomb
@@ -37,6 +37,7 @@ DEPEND="
 		libav? ( >=media-video/libav-10:0= )
 		!libav? ( >=media-video/ffmpeg-2.2:0= )
 	)
+	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	curl? ( net-misc/curl net-misc/youtube-dl )
 	magic? ( sys-apps/file )
 	sys-apps/util-linux
@@ -61,12 +62,15 @@ src_configure() {
 		-DWITH_DEBUG_LOGGING="$(usex debug)" \
 		-DWITH_EXIF="$(usex exif)" \
 		-DWITH_AVCODEC="$(usex ffmpeg)" \
+		-DWITH_FFMPEGTHUMBNAILER="$(usex ffmpegthumbnailer)" \
 		-DWITH_JS="$(usex javascript)" \
 		-DWITH_LASTFM="$(usex lastfm)" \
 		-DWITH_MAGIC="$(usex magic)" \
 		-DWITH_MYSQL="$(usex mysql)"
+		-DWITH_PROTOCOL_EXTENSIONS="$(usex protocol-extensions)" \
 		-DWITH_SYSTEMD="$(usex systemd)" \
-		-DWITH_TAGLIB="$(usex taglib)"
+		-DWITH_TAGLIB="$(usex taglib)" \
+		-DWITH_INOTIFY=1
 	)
 
 	cmake-utils_src_configure
