@@ -89,7 +89,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/unsandbox"
-			-DLLVM_LIT_ARGS="lit;-sv"
+			-DLLVM_LIT_ARGS="lit;-vv"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang"
