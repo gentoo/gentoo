@@ -30,6 +30,16 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Depends on dead qt4. Dead upstream.
+# Masked for removal in 30 days.
+net-misc/dnetstats
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Depends on dead qt4. Dead upstream.
+# Masked for removal in 30 days.
+app-office/qcharselect
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Blocks cleanup of dead and vulnerable qtwebkit4.
 # Depends on dead qt4. Dead upstream.
 # Masked for removal in 30 days. Bug #624244.
