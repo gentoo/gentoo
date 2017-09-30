@@ -135,9 +135,6 @@ multilib_src_configure() {
 
 	if use test; then
 		mycmakeargs+=(
-			# this can be any directory, it just needs to exist...
-			# FIXME: remove this once https://reviews.llvm.org/D25093 is merged
-			-DLLVM_MAIN_SRC_DIR="${T}"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="-vv"
 		)
