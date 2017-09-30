@@ -1393,9 +1393,9 @@ app-emulation/winetricks 20170823 99999999: Easy way to install DLLs needed to w
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.7.2-r1 4.7.3 4.8.1-r1 4.8.1-r2 4.8.1-r3: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.7.2 4.7.3 4.8.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.7.2 4.7.3 4.8.1 4.8.1-r1: Xen tools including QEMU and xl
+app-emulation/xen 4.7.2-r1 4.7.3 4.8.2: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.7.2 4.7.3 4.8.2: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.7.2 4.7.3 4.8.2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -10810,7 +10810,7 @@ games-action/spacearyarya-kxl 1.0.2-r1 1.0.2-r2: A 2D/3D shooting game
 games-action/spacetripper-demo 1 1-r1: Hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
-games-action/supertuxkart 0.9.1 0.9.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
+games-action/supertuxkart 0.9.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.6.4: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
