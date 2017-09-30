@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
+# Qt4 build depends on old and vulnerable qtwebkit, bug #620730
+# Qt5 build depends on masked net-libs/libtorrent-rasterbar-1.1
+# bugs #580760, #630364
+net-misc/fatrat bittorrent
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Depends on >=icu-59, still masked.
