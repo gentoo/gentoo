@@ -10,5 +10,5 @@ RDEPEND=sys-libs/pam php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0
 REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 )
 SLOT=0
 SRC_URI=http://pecl.php.net/get/pam-1.0.3.tgz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	php-ext-pecl-r3	f0b4914f85a3c676561454b15a910dc6	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	php-ext-pecl-r3	f0b4914f85a3c676561454b15a910dc6	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=5e1039972e6c1197a036f7fccf692a20

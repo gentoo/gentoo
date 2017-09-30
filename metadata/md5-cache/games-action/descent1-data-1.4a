@@ -11,5 +11,5 @@ RDEPEND=!games-action/descent1-demodata
 RESTRICT=bindist !cdinstall? ( fetch )
 SLOT=0
 SRC_URI=cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/descent-game-content-10to14a-patch.zip ) !cdinstall? ( setup_descent_2.1.0.8.exe )
-_eclasses_=cdrom	593beee21fc1247ccf32244f399982a7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=cdrom	593beee21fc1247ccf32244f399982a7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=f6f5ea6af60958e7a1be2b3f94808d81

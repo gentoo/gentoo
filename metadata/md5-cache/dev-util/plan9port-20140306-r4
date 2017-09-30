@@ -10,5 +10,5 @@ RDEPEND=X? ( x11-apps/xauth ) truetype? ( media-libs/freetype media-libs/fontcon
 REQUIRED_USE=?? ( X aqua )
 SLOT=0
 SRC_URI=https://github.com/9fans/plan9port/archive/e78ed7a67bbaa37dc57dfb37219f505c48755e14.tar.gz -> plan9port-e78ed7a67bbaa37dc57dfb37219f505c48755e14.tar.gz
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=5ad1a023ddce2c6a71678ddb0d8037bd

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18:2 gtk? ( >=x11-libs/gtk+-2.16:2 ) >=lxde-base/menu-cache-0.3.2:= x11-libs/libfm-extra !lxde-base/lxshortcut x11-misc/shared-mime-info automount? ( udisks? ( gnome-base/gvfs[udev,udisks] ) !udisks? ( gnome-base/gvfs[udev] ) ) exif? ( media-libs/libexif )
 REQUIRED_USE=udisks? ( automount ) doc? ( gtk )
 SLOT=0/4.4.0
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	git-r3	52a888802d25387c2c74cb845d1219bc	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vala	103e6885c83965507391cdc5b6fa0e67
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	git-r3	52a888802d25387c2c74cb845d1219bc	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vala	103e6885c83965507391cdc5b6fa0e67
 _md5_=64cc27c79359bc3e3e65cb5ccab327d2

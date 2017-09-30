@@ -8,5 +8,5 @@ LICENSE=qeradiant
 RDEPEND==media-libs/libpng-1.2* sys-libs/zlib app-crypt/mhash =dev-libs/glib-2* x11-libs/gtk+:2 dev-libs/atk x11-libs/pango x11-libs/gtkglext dev-libs/libxml2 sys-libs/glibc virtual/opengl games-misc/games-envd
 SLOT=0
 SRC_URI=http://zerowing.idsoftware.com/files/radiant/nightly/1.5/gtkradiant-1.5.0-2006-03-02.i386.rpm
-_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
 _md5_=456a6e8d02940975a4948638ae7d8ec8

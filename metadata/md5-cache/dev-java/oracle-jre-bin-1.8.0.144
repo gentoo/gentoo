@@ -10,5 +10,5 @@ RDEPEND=!x64-macos? ( !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs
 RESTRICT=fetch preserve-libs strip
 SLOT=1.8
 SRC_URI=amd64? ( jre-8u144-linux-x64.tar.gz ) x86? ( jre-8u144-linux-i586.tar.gz ) jce? ( jce_policy-8.zip )
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	java-vm-2	477ca23a49dfcd57017ee7f3bed47564	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	prefix	7b6fb2fc216b101b5d97d171925a847c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	java-vm-2	477ca23a49dfcd57017ee7f3bed47564	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	prefix	7b6fb2fc216b101b5d97d171925a847c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=026269d9667a5abe9c5e6c0822800afc

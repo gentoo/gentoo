@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/R:0= dev-libs/double-conversion:0= dev-libs/gmp:0= dev-libs/libgit2:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= >=sys-devel/llvm-4.0.0:= >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack
 RESTRICT=test
 SLOT=0
-_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	52a888802d25387c2c74cb845d1219bc	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	git-r3	52a888802d25387c2c74cb845d1219bc	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=4a9632d380f10e641b9d4beeb3f3f723

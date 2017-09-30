@@ -10,5 +10,5 @@ RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.11:0= media-libs/openjpeg:2 
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=http://repo.or.cz/llpp.git/snapshot/606ca0f5b7d9c1f031e558c17d66591daa04e3a4.tar.gz -> llpp-26b.tar.gz
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=2586e3b9bcf889c63e17806182a149bd

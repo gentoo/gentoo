@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~m68k-mint
 LICENSE=MIT
 SLOT=0/0.4.0
 SRC_URI=http://download.netsurf-browser.org/libs/releases/libwapcaplet-0.4.0-src.tar.gz http://download.netsurf-browser.org/libs/releases/buildsystem-1.5.tar.gz -> netsurf-buildsystem-1.5.tar.gz
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	netsurf	c2229c05fe0f790aa06fb07331bda829	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	netsurf	c2229c05fe0f790aa06fb07331bda829	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=15080457345841d1bb8df96fc063f467

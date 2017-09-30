@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] camlp4? ( dev-ml/camlp4:= ) dev-ml/cmdliner:= dev-ml/cppo:= lwt? ( >=dev-ml/lwt-2.4.4:= ) dev-ml/ocamlbuild:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_tools_versioned:= dev-ml/uchar:= ppx? ( dev-ml/ppx_tools:= dev-ml/ppx_deriving:= ) xml? ( >=dev-ml/tyxml-4:= dev-ml/reactiveData:= )
 REQUIRED_USE=xml? ( ppx )
 SLOT=0/9999
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	findlib	45d6030075064a68da8d7143726a1150	git-r3	52a888802d25387c2c74cb845d1219bc	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	findlib	45d6030075064a68da8d7143726a1150	git-r3	52a888802d25387c2c74cb845d1219bc	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=1409ef1c5ac0ae0ade05e3662d0ce652

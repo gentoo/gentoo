@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/php[json,simplexml,zlib,xml,filter] >=dev-lang/php-5.3 >=net-analyzer/rrdtool-1.2[graph,perl] || ( net-analyzer/nagios-core net-analyzer/icinga net-analyzer/icinga2 ) virtual/perl-Getopt-Long virtual/perl-Time-HiRes media-fonts/dejavu apache2? ( www-servers/apache[apache2_modules_rewrite] ) apache2? ( =www-servers/apache-2* )
 SLOT=0
 SRC_URI=mirror://sourceforge/pnp4nagios/PNP-0.6/pnp4nagios-0.6.24.tar.gz
-_eclasses_=depend.apache	0917334d570e07f9743a04ff85b3bf1b	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=depend.apache	0917334d570e07f9743a04ff85b3bf1b	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=c20051c36cc9c4ed943dfde395f12832
