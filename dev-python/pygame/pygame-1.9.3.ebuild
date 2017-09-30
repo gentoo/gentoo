@@ -31,7 +31,7 @@ DOCS=( WHATSNEW )
 RESTRICT=test
 
 python_configure() {
-	PORTMIDI_INC_PORTTIME=1 "${EPYTHON}" config.py -auto
+	PORTMIDI_INC_PORTTIME=1 LOCALBASE="${EPREFIX}/usr" "${EPYTHON}" config.py -auto
 
 	if ! use X; then
 		sed -e "s:^scrap :#&:" -i Setup || die "sed failed"
