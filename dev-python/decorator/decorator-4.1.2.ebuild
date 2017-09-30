@@ -25,6 +25,5 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && dodoc documentation.pdf
 	distutils-r1_python_install_all
 }
