@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,8 +44,12 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-kill-on-sigterm \
+	local myeconfargs=(
+		--enable-kill-on-sigterm
+		--enable-at-spi-command="${EPREFIX}/usr/libexec/at-spi-bus-launcher --launch-immediately"
 		$(use_enable ayatana libindicator)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

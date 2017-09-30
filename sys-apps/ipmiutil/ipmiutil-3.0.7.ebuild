@@ -10,9 +10,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 
-RDEPEND=">=dev-libs/openssl-1:0"
+RDEPEND=">=dev-libs/openssl-1:0="
 DEPEND="${RDEPEND}
 	virtual/os-headers"
 
@@ -41,7 +41,7 @@ src_compile() {
 	pushd lib/lanplus &>/dev/null || die
 	emake || die "emake lanplus failed"
 	cp libipmi_lanplus.a .. || die
-	popd &>/dev/null  || die
+	popd &>/dev/null || die
 
 	emake
 }
@@ -51,5 +51,5 @@ src_install() {
 	dodoc -r AUTHORS ChangeLog NEWS README TODO doc/UserGuide
 
 	# Init scripts are only for Fedora
-	rm -r "${ED}"/etc/init.d || die 'remove initscripts failed'
+	rm -r "${ED%/}"/etc/init.d || die 'remove initscripts failed'
 }

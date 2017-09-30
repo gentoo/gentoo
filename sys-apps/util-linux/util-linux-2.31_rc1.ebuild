@@ -1,18 +1,18 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
+inherit ltprune toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	pam python-single-r1 multilib-minimal systemd
 
-MY_PV=${PV/_/-}
-MY_P=${PN}-${MY_PV}
+MY_PV="${PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == 9999 ]] ; then
-	inherit git-2 autotools
+	inherit git-r3 autotools
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
@@ -49,6 +49,7 @@ RDEPEND+="
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
 	)
+	!net-wireless/rfkill
 	!sys-process/schedutils
 	!sys-apps/setarch
 	!<sys-apps/sysvinit-2.88-r7
@@ -61,16 +62,12 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.30-pylibmount_segfault.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
@@ -82,8 +79,6 @@ src_prepare() {
 		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
 		configure || die
 	elibtoolize
-
-	epatch_user
 }
 
 lfs_fallocate_test() {
@@ -122,9 +117,10 @@ multilib_src_configure() {
 		--enable-partx
 		--enable-raw
 		--enable-rename
+		--enable-rfkill
 		--enable-schedutils
 		--with-bashcompletiondir="$(get_bashcompdir)"
-		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no")
+		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_systemunitdir)" "no")
 		$(multilib_native_use_enable caps setpriv)
 		$(multilib_native_use_enable cramfs)
 		$(multilib_native_use_enable fdformat)
@@ -148,8 +144,7 @@ multilib_src_configure() {
 		$(use_with selinux)
 		$(usex ncurses '' '--without-tinfo')
 	)
-	ECONF_SOURCE=${S} \
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
