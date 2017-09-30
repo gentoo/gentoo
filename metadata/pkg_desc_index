@@ -12190,7 +12190,7 @@ kde-misc/kio-gdrive 1.2.0.1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-stash 1.0: KIO Slave and daemon to stash discontinuous file selections
-kde-misc/kmarkdownwebview 0.1.0: KPart for rendering Markdown content
+kde-misc/kmarkdownwebview 0.2.0: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/konstruktor 0.9_beta1: LEGO CAD
 kde-misc/kookie 0.1.1: Manage recipes and shopping lists
@@ -17426,7 +17426,7 @@ sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873
 sys-block/open-isns 0.97: iSNS server and client for Linux
 sys-block/parted 2.4 2.4-r1 3.1-r1 3.1-r2 3.2 3.2-r1 3.2-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 3.1.0 3.1.2: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 3.1.0 3.1.2 3.2.0: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
@@ -17886,7 +17886,7 @@ sys-libs/gdbm 1.11 1.12 1.13: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r4 2.25-r5 2.26-r1 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
-sys-libs/kpmcore 3.1.2: Library for managing partitions
+sys-libs/kpmcore 3.1.2 3.2.0: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.2: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
