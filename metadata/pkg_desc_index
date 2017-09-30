@@ -216,7 +216,7 @@ app-admin/sysstat 11.4.0 11.4.5 11.4.6 11.6.0: System performance tools for Linu
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3 5.0.4 5.1.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6 5.0.0 5.0.1 5.0.2 5.0.3 5.0.4 5.1.0 5.1.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15 0.16-r1: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -1057,13 +1057,13 @@ app-editors/padre 1.0.0 1.0.0-r1: Perl Application Development and Refactoring E
 app-editors/pluma 1.12.2-r1 1.14.1 1.16.0-r1 1.18.2: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r2: Advanced text editor with syntax highlighting
-app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
+app-editors/qxmledit 0.9.7 0.9.8: Simple Qt-based XML editor
 app-editors/retext 7.0.0 7.0.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/sublime-text 2.0.2-r2 3_pre3126-r3 3_p3143: Sophisticated text editor for code, markup and prose
-app-editors/tea 43.1.0 44.0.0 44.1.0: Small, lightweight Qt text editor
+app-editors/tea 44.1.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
@@ -1336,7 +1336,7 @@ app-emulation/open-vm-tools 10.1.10: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39.1_p20170227: Unix Guest Agent for OpenStack
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3 5.0.5: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12: Set of scripts to easily install and use Windows games and software
-app-emulation/q4wine 1.3.4 1.3.5: Qt GUI configuration tool for Wine
+app-emulation/q4wine 1.3.5: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.9.0-r56 2.10.0 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.6.0 2.8.1 2.9.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
@@ -10421,7 +10421,7 @@ dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C progra
 dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1 1.6.11: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
-dev-util/eric 17.07 17.08: A full featured Python IDE using PyQt and QScintilla
+dev-util/eric 17.08 17.09: A full featured Python IDE using PyQt and QScintilla
 dev-util/fatrace 0.11 0.12: report file access events from all running processes
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
@@ -15545,7 +15545,7 @@ net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12_rc3 1.12_rc3-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r3 9999: A RSS/Atom feed reader for the text console
 net-news/newsboat 2.10 9999: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.18.4 0.18.5 0.18.6 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.4 0.18.5 0.18.6 0.18.8 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5 3.4.1 9999: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
@@ -19603,7 +19603,7 @@ xfce-extra/xfce4-notifyd 0.2.4 0.3.6: Notification daemon for the Xfce desktop e
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.6.0 1.6.0-r1: Power manager for the Xfce desktop environment
-xfce-extra/xfce4-pulseaudio-plugin 0.2.4 0.2.5: A panel plug-in for PulseAudio volume control
+xfce-extra/xfce4-pulseaudio-plugin 0.2.4 0.2.5 0.3.1: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
 xfce-extra/xfce4-screenshooter 1.8.2 1.9.1: Xfce4 screenshooter application and panel plugin
