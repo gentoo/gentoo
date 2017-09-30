@@ -50,6 +50,7 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -117,7 +118,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.0 )
+	mono? ( app-emulation/wine-mono:4.7.1 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -304,11 +305,8 @@ src_prepare() {
 		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
 		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
 		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
-		"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
-		"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
 	)
 	local PATCHES_BIN=(
-		"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
 	)
 
 	default
@@ -389,6 +387,7 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
+		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
