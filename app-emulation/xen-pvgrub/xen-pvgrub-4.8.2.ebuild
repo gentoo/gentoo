@@ -17,7 +17,7 @@ UPSTREAM_VER=
 	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
 SRC_URI="
-		http://bits.xensource.com/oss-xen/release/${PV}/xen-${PV}.tar.gz
+		https://downloads.xenproject.org/release/xen/${PV}/xen-${PV}.tar.gz
 		$GRUB_URL/grub-0.97.tar.gz
 		$XEN_EXTFILES_URL/zlib-1.2.3.tar.gz
 		$LIBPCI_URL/pciutils-2.2.9.tar.bz2
