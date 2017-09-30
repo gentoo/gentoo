@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sa
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+mysql +memcached postgres sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
