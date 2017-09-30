@@ -37,15 +37,17 @@ src_install() {
 	insinto "/usr/share/${MY_PN}"
 	newins "${FILESDIR}/agent.conf.sample" agent.conf
 
+	rm -v config/startup.options
+	insinto /etc/${MY_PN}
+	doins config/*
+	rm -rv config data || die
+
 	insinto "/opt/${MY_PN}"
 	doins -r .
 	fperms 0755 "/opt/${MY_PN}/bin/${MY_PN}" "/opt/${MY_PN}/vendor/jruby/bin/jruby" "/opt/${MY_PN}/bin/logstash-plugin"
 
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
-
-	newconfd "${FILESDIR}/${MY_PN}.confd" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd" "${MY_PN}"
+	newconfd "${FILESDIR}/${MY_PN}.confd-r1" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.initd-r1" "${MY_PN}"
 
 	insinto /usr/share/eselect/modules
 	doins "${FILESDIR}"/logstash-plugin.eselect
