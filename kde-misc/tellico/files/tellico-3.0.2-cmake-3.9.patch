@@ -1,0 +1,788 @@
+Combination of:
+
+7f4840bb8eb6ee53c875cc6d6748701efcd5a915
+f1c9c315caed8c7d5d05424c07dd7562e430eba8
+cdd7e6d55584972c8e221a1d6e4f2731423deb60
+cb9847a09a834bf3334caae9c912870c66bd593b
+5b0822930907b1e0aa88e666f60c3428a77f011e
+024ef21d36201a2baa51b56409002bb91a07d4f9
+b5b78ab9dc6b1f5c0c34b546bf580d9de3c9e042
+
+to fix build with cmake-3.9.
+Gentoo-bug: 632172
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 67c9d3c6..943da821 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -247,7 +247,7 @@ remove_definitions(-DQT_NO_STL)
+ include_directories(${LIBXML2_INCLUDE_DIR}
+                     ${LIBXSLT_INCLUDE_DIR}
+                     ${CMAKE_CURRENT_BINARY_DIR}
+-                    ${Tellico_SOURCE_DIR}/src/core
++                    ${Tellico_SOURCE_DIR}/src/config
+                     ${Tellico_SOURCE_DIR}/src/3rdparty)
+ 
+ set(TELLICO_DATA_INSTALL_DIR ${KDE_INSTALL_DATADIR}/tellico)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7af65e02..e3393fd8 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ ADD_SUBDIRECTORY( core )
++ADD_SUBDIRECTORY(config )
+ ADD_SUBDIRECTORY( gui )
+ ADD_SUBDIRECTORY( collections )
+ ADD_SUBDIRECTORY( images )
+diff --git a/src/cite/CMakeLists.txt b/src/cite/CMakeLists.txt
+index c90ed142..3192a2d8 100644
+--- a/src/cite/CMakeLists.txt
++++ b/src/cite/CMakeLists.txt
+@@ -9,6 +9,7 @@ add_library(cite STATIC ${cite_STAT_SRCS})
+ target_link_libraries(cite
+     core
+     utils
++    config
+     Qt5::Core
+     Qt5::Widgets
+ )
+diff --git a/src/cite/lyxpipe.cpp b/src/cite/lyxpipe.cpp
+index 860cb506..da5d5fe4 100644
+--- a/src/cite/lyxpipe.cpp
++++ b/src/cite/lyxpipe.cpp
+@@ -25,7 +25,7 @@
+ #include "lyxpipe.h"
+ #include "../collection.h"
+ #include "../utils/bibtexhandler.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ #include "../tellico_debug.h"
+ 
+ #include <KLocalizedString>
+diff --git a/src/config/CMakeLists.txt b/src/config/CMakeLists.txt
+new file mode 100644
+index 00000000..2b48e871
+--- /dev/null
++++ b/src/config/CMakeLists.txt
+@@ -0,0 +1,30 @@
++########### next target ###############
++
++SET(config_STAT_SRCS
++   tellico_config_addons.cpp
++   )
++
++SET(config_KCFG_SRCS
++   tellico_config.kcfgc
++   )
++
++kconfig_add_kcfg_files(config_STAT_SRCS ${config_KCFG_SRCS})
++
++ADD_CUSTOM_TARGET(tellico_config DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/tellico_config.h)
++
++add_library(config STATIC ${config_STAT_SRCS})
++
++TARGET_LINK_LIBRARIES(config
++    Qt5::Core
++    KF5::I18n
++    KF5::ConfigCore
++    KF5::ConfigGui
++    KF5::ConfigWidgets
++    )
++
++########### install files ###############
++
++INSTALL(FILES   tellico_config.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR} )
++INSTALL(FILES   tellico-rename.upd tellico.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR} )
++
++INSTALL(PROGRAMS   tellico-1-3-update.pl DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR} )
+diff --git a/src/core/tellico-1-3-update.pl b/src/config/tellico-1-3-update.pl
+similarity index 100%
+rename from src/core/tellico-1-3-update.pl
+rename to src/config/tellico-1-3-update.pl
+diff --git a/src/core/tellico-rename.upd b/src/config/tellico-rename.upd
+similarity index 100%
+rename from src/core/tellico-rename.upd
+rename to src/config/tellico-rename.upd
+diff --git a/src/core/tellico.upd b/src/config/tellico.upd
+similarity index 100%
+rename from src/core/tellico.upd
+rename to src/config/tellico.upd
+diff --git a/src/core/tellico_config.kcfg b/src/config/tellico_config.kcfg
+similarity index 100%
+rename from src/core/tellico_config.kcfg
+rename to src/config/tellico_config.kcfg
+diff --git a/src/core/tellico_config.kcfgc b/src/config/tellico_config.kcfgc
+similarity index 100%
+rename from src/core/tellico_config.kcfgc
+rename to src/config/tellico_config.kcfgc
+diff --git a/src/core/tellico_config_addons.cpp b/src/config/tellico_config_addons.cpp
+similarity index 100%
+rename from src/core/tellico_config_addons.cpp
+rename to src/config/tellico_config_addons.cpp
+diff --git a/src/core/tellico_config_addons.h b/src/config/tellico_config_addons.h
+similarity index 100%
+rename from src/core/tellico_config_addons.h
+rename to src/config/tellico_config_addons.h
+diff --git a/src/configdialog.cpp b/src/configdialog.cpp
+index 66d8148a..8fd23478 100644
+--- a/src/configdialog.cpp
++++ b/src/configdialog.cpp
+@@ -36,7 +36,7 @@
+ #include "tellico_kernel.h"
+ #include "utils/tellico_utils.h"
+ #include "utils/string_utils.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ #include "images/imagefactory.h"
+ #include "gui/combobox.h"
+ #include "gui/collectiontypecombo.h"
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index d8d6477e..9e6c6c14 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -3,34 +3,16 @@
+ SET(core_STAT_SRCS
+    filehandler.cpp
+    netaccess.cpp
+-   tellico_config_addons.cpp
+    tellico_strings.cpp
+    )
+ 
+-SET(core_KCFG_SRCS
+-   tellico_config.kcfgc
+-   )
+-
+-kconfig_add_kcfg_files(core_STAT_SRCS ${core_KCFG_SRCS})
+-
+-ADD_CUSTOM_TARGET(tellico_config DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/tellico_config.h)
+-
+ add_library(core STATIC ${core_STAT_SRCS})
+ 
+ TARGET_LINK_LIBRARIES(core
+-    images
+     utils
+     Qt5::Core
+-    KF5::ConfigCore
+-    KF5::ConfigGui
+-    KF5::ConfigWidgets
++    Qt5::Xml
++    KF5::I18n
+     KF5::JobWidgets
+     KF5::KIOWidgets
+     )
+-
+-########### install files ###############
+-
+-INSTALL(FILES   tellico_config.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR} )
+-INSTALL(FILES   tellico-rename.upd tellico.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR} )
+-
+-INSTALL(PROGRAMS   tellico-1-3-update.pl DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR} )
+diff --git a/src/detailedlistview.cpp b/src/detailedlistview.cpp
+index 33f18e16..ac0ed2b3 100644
+--- a/src/detailedlistview.cpp
++++ b/src/detailedlistview.cpp
+@@ -30,7 +30,7 @@
+ #include "entry.h"
+ #include "tellico_debug.h"
+ #include "tellico_kernel.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ #include "models/entrymodel.h"
+ #include "models/entrysortmodel.h"
+ #include "models/modelmanager.h"
+diff --git a/src/document.cpp b/src/document.cpp
+index 1462806c..bb66f7a1 100644
+--- a/src/document.cpp
++++ b/src/document.cpp
+@@ -28,17 +28,17 @@
+ #include "translators/tellicozipexporter.h"
+ #include "translators/tellicoxmlexporter.h"
+ #include "collection.h"
+-#include "filehandler.h"
++#include "core/filehandler.h"
+ #include "borrower.h"
+ #include "fieldformat.h"
+-#include "tellico_strings.h"
++#include "core/tellico_strings.h"
+ #include "images/imagefactory.h"
+ #include "images/imagedirectory.h"
+ #include "images/image.h"
+ #include "images/imageinfo.h"
+ #include "utils/stringset.h"
+ #include "progressmanager.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ #include "entrycomparison.h"
+ #include "utils/guiproxy.h"
+ #include "tellico_debug.h"
+diff --git a/src/entryiconview.cpp b/src/entryiconview.cpp
+index 8ba044d1..d1a0eb60 100644
+--- a/src/entryiconview.cpp
++++ b/src/entryiconview.cpp
+@@ -49,7 +49,7 @@ namespace {
+ 
+ using Tellico::EntryIconView;
+ 
+-EntryIconView::EntryIconView(QAbstractItemModel* model_, QWidget* parent_)
++EntryIconView::EntryIconView(QWidget* parent_)
+     : QListView(parent_), m_maxAllowedIconWidth(MAX_ENTRY_ICON_SIZE) {
+   setViewMode(QListView::IconMode);
+   setMovement(QListView::Static);
+@@ -60,12 +60,6 @@ EntryIconView::EntryIconView(QAbstractItemModel* model_, QWidget* parent_)
+   setWordWrap(true);
+   setSpacing(ENTRY_ICON_SIZE_PAD);
+ 
+-  Q_ASSERT(::qobject_cast<EntryModel*>(model_));
+-  EntrySortModel* sortModel = new EntrySortModel(this);
+-  sortModel->setSortRole(EntryPtrRole);
+-  sortModel->setSourceModel(model_);
+-  setModel(sortModel);
+-
+   connect(this, SIGNAL(doubleClicked(const QModelIndex&)), SLOT(slotDoubleClicked(const QModelIndex&)));
+ 
+   setWhatsThis(i18n("<qt>The <i>Icon View</i> shows each entry in the collection or group using "
+diff --git a/src/entryiconview.h b/src/entryiconview.h
+index 1dd41eb1..42c1a8e3 100644
+--- a/src/entryiconview.h
++++ b/src/entryiconview.h
+@@ -46,7 +46,7 @@ class EntryIconView : public QListView, public Observer {
+ Q_OBJECT
+ 
+ public:
+-  EntryIconView(QAbstractItemModel* model, QWidget* parent);
++  EntryIconView(QWidget* parent);
+   ~EntryIconView();
+ 
+   int maxAllowedIconWidth() const { return m_maxAllowedIconWidth; }
+diff --git a/src/entryview.cpp b/src/entryview.cpp
+index 32810113..8d5de40f 100644
+--- a/src/entryview.cpp
++++ b/src/entryview.cpp
+@@ -33,7 +33,7 @@
+ #include "tellico_kernel.h"
+ #include "utils/tellico_utils.h"
+ #include "core/filehandler.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ #include "gui/drophandler.h"
+ #include "document.h"
+ #include "../utils/datafileregistry.h"
+diff --git a/src/exportdialog.cpp b/src/exportdialog.cpp
+index 59ba8596..66b67689 100644
+--- a/src/exportdialog.cpp
++++ b/src/exportdialog.cpp
+@@ -24,7 +24,7 @@
+ 
+ #include "exportdialog.h"
+ #include "collection.h"
+-#include "filehandler.h"
++#include "core/filehandler.h"
+ #include "controller.h"
+ #include "document.h"
+ #include "tellico_debug.h"
+diff --git a/src/fetch/CMakeLists.txt b/src/fetch/CMakeLists.txt
+index 63d496c4..331c6def 100644
+--- a/src/fetch/CMakeLists.txt
++++ b/src/fetch/CMakeLists.txt
+@@ -69,6 +69,7 @@ TARGET_LINK_LIBRARIES(fetch
+     KF5::Archive
+     KF5::IconThemes
+     KF5::JobWidgets
++    KF5::KIOWidgets
+     )
+ 
+ IF(${KF5KIO_VERSION} VERSION_GREATER "5.18.0")
+diff --git a/src/fetchdialog.cpp b/src/fetchdialog.cpp
+index 91f2587f..006d9eae 100644
+--- a/src/fetchdialog.cpp
++++ b/src/fetchdialog.cpp
+@@ -28,12 +28,12 @@
+ #include "fetch/fetchmanager.h"
+ #include "fetch/fetcher.h"
+ #include "fetch/fetchresult.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ #include "entryview.h"
+ #include "utils/isbnvalidator.h"
+ #include "utils/upcvalidator.h"
+ #include "tellico_kernel.h"
+-#include "filehandler.h"
++#include "core/filehandler.h"
+ #include "collection.h"
+ #include "entry.h"
+ #include "document.h"
+diff --git a/src/fieldformat.cpp b/src/fieldformat.cpp
+index e21ec7a8..b35f9781 100644
+--- a/src/fieldformat.cpp
++++ b/src/fieldformat.cpp
+@@ -23,7 +23,7 @@
+  ***************************************************************************/
+ 
+ #include "fieldformat.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ 
+ using Tellico::FieldFormat;
+ 
+diff --git a/src/images/CMakeLists.txt b/src/images/CMakeLists.txt
+index cfc8bfe4..d058a23f 100644
+--- a/src/images/CMakeLists.txt
++++ b/src/images/CMakeLists.txt
+@@ -9,6 +9,7 @@ add_library(images STATIC ${images_STAT_SRCS})
+ 
+ TARGET_LINK_LIBRARIES(images
+     core
++    config
+     utils
+     KF5::KIOCore
+     KF5::Archive
+diff --git a/src/images/imagedirectory.cpp b/src/images/imagedirectory.cpp
+index 4dc5be67..fc371c52 100644
+--- a/src/images/imagedirectory.cpp
++++ b/src/images/imagedirectory.cpp
+@@ -24,7 +24,7 @@
+ 
+ #include "imagedirectory.h"
+ #include "image.h"
+-#include "filehandler.h"
++#include "../core/filehandler.h"
+ #include "../tellico_debug.h"
+ 
+ #include <KZip>
+diff --git a/src/images/imagefactory.cpp b/src/images/imagefactory.cpp
+index 499ad19e..7c7fd2b4 100644
+--- a/src/images/imagefactory.cpp
++++ b/src/images/imagefactory.cpp
+@@ -29,7 +29,7 @@
+ #include "imageinfo.h"
+ #include "imagedirectory.h"
+ #include "../core/filehandler.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ #include "../utils/tellico_utils.h"
+ #include "../tellico_debug.h"
+ 
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 8eefa772..00dda6fd 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -40,7 +40,7 @@
+ #include "controller.h"
+ #include "importdialog.h"
+ #include "exportdialog.h"
+-#include "filehandler.h" // needed so static mainWindow variable can be set
++#include "core/filehandler.h" // needed so static mainWindow variable can be set
+ #include "translators/htmlexporter.h" // for printing
+ #include "entryview.h"
+ #include "entryiconview.h"
+@@ -52,13 +52,13 @@
+ #include "fetchdialog.h"
+ #include "reportdialog.h"
+ #include "bibtexkeydialog.h"
+-#include "tellico_strings.h"
++#include "core/tellico_strings.h"
+ #include "filterview.h"
+ #include "loanview.h"
+ #include "fetch/fetchmanager.h"
+ #include "fetch/fetcherinitializer.h"
+ #include "cite/actionmanager.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ #include "core/netaccess.h"
+ #include "dbusinterface.h"
+ #include "models/models.h"
+@@ -745,6 +745,7 @@ void MainWindow::initView() {
+           m_detailedView, SLOT(slotRefreshImages()));
+ 
+   m_iconView = m_viewStack->iconView();
++  // use the same model in both views so they are sync'ed
+   m_iconView->setModel(m_detailedView->model());
+   Controller::self()->addObserver(m_iconView);
+   m_detailedView->setWhatsThis(i18n("<qt>The <i>Column View</i> shows the value of multiple fields "
+diff --git a/src/models/CMakeLists.txt b/src/models/CMakeLists.txt
+index 58c695b5..8faa5554 100644
+--- a/src/models/CMakeLists.txt
++++ b/src/models/CMakeLists.txt
+@@ -7,18 +7,18 @@ SET(models_STAT_SRCS
+    entrymodel.cpp
+    entryselectionmodel.cpp
+    entrysortmodel.cpp
++   fieldcomparison.cpp
+    filtermodel.cpp
+    groupsortmodel.cpp
+    modeliterator.cpp
+    modelmanager.cpp
+-   modeltest.cpp
+-   )
++   stringcomparison.cpp
++)
+ 
+ add_library(tellicomodels STATIC ${models_STAT_SRCS})
+ 
+ target_link_libraries(tellicomodels
+     core
+-    utils
+     images
+     Qt5::Core
+     Qt5::Gui
+diff --git a/src/models/entrymodel.cpp b/src/models/entrymodel.cpp
+index 8db78f47..bb50836b 100644
+--- a/src/models/entrymodel.cpp
++++ b/src/models/entrymodel.cpp
+@@ -31,7 +31,7 @@
+ #include "../document.h"
+ #include "../images/image.h"
+ #include "../images/imagefactory.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ #include "../tellico_debug.h"
+ 
+ namespace {
+diff --git a/src/models/entrysortmodel.cpp b/src/models/entrysortmodel.cpp
+index 792ae81d..f11ffeb6 100644
+--- a/src/models/entrysortmodel.cpp
++++ b/src/models/entrysortmodel.cpp
+@@ -24,7 +24,7 @@
+ 
+ #include "entrysortmodel.h"
+ #include "models.h"
+-#include "../utils/fieldcomparison.h"
++#include "fieldcomparison.h"
+ #include "../field.h"
+ #include "../entry.h"
+ 
+diff --git a/src/utils/fieldcomparison.cpp b/src/models/fieldcomparison.cpp
+similarity index 100%
+rename from src/utils/fieldcomparison.cpp
+rename to src/models/fieldcomparison.cpp
+diff --git a/src/utils/fieldcomparison.h b/src/models/fieldcomparison.h
+similarity index 100%
+rename from src/utils/fieldcomparison.h
+rename to src/models/fieldcomparison.h
+diff --git a/src/models/groupsortmodel.cpp b/src/models/groupsortmodel.cpp
+index 0326a755..483a0e2f 100644
+--- a/src/models/groupsortmodel.cpp
++++ b/src/models/groupsortmodel.cpp
+@@ -24,9 +24,9 @@
+ 
+ #include "groupsortmodel.h"
+ #include "models.h"
++#include "stringcomparison.h"
+ #include "../field.h"
+ #include "../entrygroup.h"
+-#include "../utils/stringcomparison.h"
+ #include "../document.h"
+ #include "../tellico_debug.h"
+ 
+diff --git a/src/utils/stringcomparison.cpp b/src/models/stringcomparison.cpp
+similarity index 100%
+rename from src/utils/stringcomparison.cpp
+rename to src/models/stringcomparison.cpp
+diff --git a/src/utils/stringcomparison.h b/src/models/stringcomparison.h
+similarity index 100%
+rename from src/utils/stringcomparison.h
+rename to src/models/stringcomparison.h
+diff --git a/src/newstuff/CMakeLists.txt b/src/newstuff/CMakeLists.txt
+index 5a7f6963..db29b82b 100644
+--- a/src/newstuff/CMakeLists.txt
++++ b/src/newstuff/CMakeLists.txt
+@@ -14,6 +14,7 @@ TARGET_LINK_LIBRARIES(newstuff
+     Qt5::Gui
+     KF5::ConfigCore
+     KF5::KIOCore
++    KF5::Archive
+     )
+ 
+ INSTALL(FILES tellico-template.knsrc tellico-script.knsrc DESTINATION ${KDE_INSTALL_CONFDIR})
+diff --git a/src/reportdialog.cpp b/src/reportdialog.cpp
+index 77dc6ab9..198a461e 100644
+--- a/src/reportdialog.cpp
++++ b/src/reportdialog.cpp
+@@ -35,7 +35,7 @@
+ #include "utils/cursorsaver.h"
+ #include "utils/datafileregistry.h"
+ #include "utils/tellico_utils.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ 
+ #include <KLocalizedString>
+ #include <KHTMLPart>
+diff --git a/src/tests/CMakeLists.txt b/src/tests/CMakeLists.txt
+index b3f8330a..0e1c0677 100644
+--- a/src/tests/CMakeLists.txt
++++ b/src/tests/CMakeLists.txt
+@@ -11,7 +11,7 @@ add_executable(entitytest entitytest.cpp)
+ ecm_mark_nongui_executable(entitytest)
+ add_test(entitytest entitytest)
+ ecm_mark_as_test(entitytest)
+-TARGET_LINK_LIBRARIES(entitytest utils Qt5::Test )
++TARGET_LINK_LIBRARIES(entitytest utils config Qt5::Test )
+ 
+ add_executable(cuecattest cuecattest.cpp)
+ ecm_mark_nongui_executable(cuecattest)
+@@ -35,25 +35,25 @@ add_executable(lcctest lcctest.cpp ../field.cpp ../fieldformat.cpp)
+ ecm_mark_nongui_executable(lcctest)
+ add_test(lcctest lcctest)
+ ecm_mark_as_test(lcctest)
+-TARGET_LINK_LIBRARIES(lcctest utils core Qt5::Test)
++TARGET_LINK_LIBRARIES(lcctest tellicomodels Qt5::Test)
+ 
+ add_executable(formattest formattest.cpp ../fieldformat.cpp)
+ ecm_mark_nongui_executable(formattest)
+ add_test(formattest formattest)
+ ecm_mark_as_test(formattest)
+-TARGET_LINK_LIBRARIES(formattest core Qt5::Test)
++TARGET_LINK_LIBRARIES(formattest config Qt5::Test)
+ 
+ add_executable(fieldtest fieldtest.cpp ../field.cpp ../fieldformat.cpp)
+ ecm_mark_nongui_executable(fieldtest)
+ add_test(fieldtest fieldtest)
+ ecm_mark_as_test(fieldtest)
+-TARGET_LINK_LIBRARIES(fieldtest core Qt5::Test)
++TARGET_LINK_LIBRARIES(fieldtest config utils Qt5::Test)
+ 
+ add_executable(comparisontest comparisontest.cpp ../field.cpp ../fieldformat.cpp)
+ ecm_mark_nongui_executable(comparisontest)
+ add_test(comparisontest comparisontest)
+ ecm_mark_as_test(comparisontest)
+-TARGET_LINK_LIBRARIES(comparisontest utils core Qt5::Test)
++TARGET_LINK_LIBRARIES(comparisontest tellicomodels Qt5::Test)
+ 
+ add_executable(imagetest imagetest.cpp ../utils/tellico_utils.cpp ../utils/guiproxy.cpp ../utils/cursorsaver.cpp)
+ ecm_mark_nongui_executable(imagetest)
+@@ -101,6 +101,7 @@ TARGET_LINK_LIBRARIES(translatorstest
+   KF5::I18n
+   KF5::Archive
+   KF5::KIOWidgets
++  KF5::ConfigWidgets
+   ${LIBXML2_LIBRARIES}
+   ${LIBXSLT_LIBRARIES}
+   ${LIBXSLT_EXSLT_LIBRARIES}
+@@ -111,6 +112,7 @@ set(TELLICO_TEST_LIBS
+    collections
+    utils
+    images
++   core
+    tellicomodels
+    Qt5::Test
+    KF5::KIOCore
+@@ -197,15 +199,16 @@ add_executable(bibtexmltest bibtexmltest.cpp
+ ecm_mark_nongui_executable(bibtexmltest)
+ add_test(bibtexmltest bibtexmltest)
+ ecm_mark_as_test(bibtexmltest)
+-TARGET_LINK_LIBRARIES(bibtexmltest translatorstest ${TELLICO_TEST_LIBS})
++TARGET_LINK_LIBRARIES(bibtexmltest translatorstest core ${TELLICO_TEST_LIBS})
+ 
+ add_executable(citetest citetest.cpp
+   ../collections/bibtexcollection.cpp
++  ../core/filehandler.cpp
+ )
+ ecm_mark_nongui_executable(citetest)
+ add_test(citetest citetest)
+ ecm_mark_as_test(citetest)
+-TARGET_LINK_LIBRARIES(citetest cite tellicotest Qt5::Test)
++TARGET_LINK_LIBRARIES(citetest cite tellicotest config images Qt5::Test)
+ ADD_DEPENDENCIES(citetest tellico_config)
+ 
+ add_executable(ciwtest ciwtest.cpp
+diff --git a/src/tests/citetest.cpp b/src/tests/citetest.cpp
+index b51bf7a6..b34a7929 100644
+--- a/src/tests/citetest.cpp
++++ b/src/tests/citetest.cpp
+@@ -27,7 +27,7 @@
+ #include "citetest.h"
+ #include "../cite/lyxpipe.h"
+ #include "../cite/clipboard.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ #include "../collections/bibtexcollection.h"
+ 
+ #include <QTest>
+diff --git a/src/tests/comparisontest.cpp b/src/tests/comparisontest.cpp
+index 89a8d19b..f65ca197 100644
+--- a/src/tests/comparisontest.cpp
++++ b/src/tests/comparisontest.cpp
+@@ -25,8 +25,7 @@
+ #undef QT_NO_CAST_FROM_ASCII
+ 
+ #include "comparisontest.h"
+-
+-#include "../utils/stringcomparison.h"
++#include "../models/stringcomparison.h"
+ 
+ #include <QTest>
+ 
+diff --git a/src/tests/documenttest.cpp b/src/tests/documenttest.cpp
+index 1f0ba8b6..9c1b18bc 100644
+--- a/src/tests/documenttest.cpp
++++ b/src/tests/documenttest.cpp
+@@ -28,7 +28,7 @@
+ #include "../document.h"
+ #include "../images/imagefactory.h"
+ #include "../images/image.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ #include "../collections/bookcollection.h"
+ #include "../collectionfactory.h"
+ 
+diff --git a/src/tests/formattest.cpp b/src/tests/formattest.cpp
+index a92b7380..962680cb 100644
+--- a/src/tests/formattest.cpp
++++ b/src/tests/formattest.cpp
+@@ -27,7 +27,7 @@
+ #include "formattest.h"
+ 
+ #include "../fieldformat.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ 
+ #include <QTest>
+ 
+diff --git a/src/tests/htmlexportertest.cpp b/src/tests/htmlexportertest.cpp
+index 42d8a9a8..c09e62d2 100644
+--- a/src/tests/htmlexportertest.cpp
++++ b/src/tests/htmlexportertest.cpp
+@@ -33,7 +33,7 @@
+ #include "../document.h"
+ #include "../images/imagefactory.h"
+ #include "../utils/datafileregistry.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ 
+ #include <QTest>
+ #include <QRegExp>
+diff --git a/src/tests/lcctest.cpp b/src/tests/lcctest.cpp
+index 08da8e06..a653bd25 100644
+--- a/src/tests/lcctest.cpp
++++ b/src/tests/lcctest.cpp
+@@ -25,8 +25,7 @@
+ #undef QT_NO_CAST_FROM_ASCII
+ 
+ #include "lcctest.h"
+-
+-#include "../utils/stringcomparison.h"
++#include "../models/stringcomparison.h"
+ 
+ #include <QTest>
+ 
+diff --git a/src/models/modeltest.cpp b/src/tests/modeltest.cpp
+similarity index 99%
+rename from src/models/modeltest.cpp
+rename to src/tests/modeltest.cpp
+index 12f41f33..80a39f57 100644
+--- a/src/models/modeltest.cpp
++++ b/src/tests/modeltest.cpp
+@@ -499,6 +499,7 @@ void ModelTest::layoutChanged()
+  */
+ void ModelTest::rowsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
+ {
++//    qDebug() << "ratbr" << parent << start << end;
+     Changing c;
+     c.parent = parent;
+     c.oldSize = model->rowCount(parent);
+@@ -514,6 +515,7 @@ void ModelTest::rowsAboutToBeRemoved(const QModelIndex &parent, int start, int e
+  */
+ void ModelTest::rowsRemoved(const QModelIndex & parent, int start, int end)
+ {
++//    qDebug() << "rr" << parent << start << end;
+     Changing c = remove.pop();
+     Q_ASSERT(c.parent == parent);
+     Q_ASSERT(c.oldSize - (end - start + 1) == model->rowCount(parent));
+diff --git a/src/models/modeltest.h b/src/tests/modeltest.h
+similarity index 100%
+rename from src/models/modeltest.h
+rename to src/tests/modeltest.h
+diff --git a/src/translators/boardgamegeekimporter.cpp b/src/translators/boardgamegeekimporter.cpp
+index 2bb35f0c..1ac70cbe 100644
+--- a/src/translators/boardgamegeekimporter.cpp
++++ b/src/translators/boardgamegeekimporter.cpp
+@@ -26,7 +26,7 @@
+ #include "../collections/boardgamecollection.h"
+ #include "xslthandler.h"
+ #include "tellicoimporter.h"
+-#include "filehandler.h"
++#include "../core/filehandler.h"
+ #include "../utils/datafileregistry.h"
+ #include "../tellico_debug.h"
+ 
+diff --git a/src/translators/goodreadsimporter.cpp b/src/translators/goodreadsimporter.cpp
+index eecb7e65..d03d05b0 100644
+--- a/src/translators/goodreadsimporter.cpp
++++ b/src/translators/goodreadsimporter.cpp
+@@ -25,7 +25,7 @@
+ #include "goodreadsimporter.h"
+ #include "xslthandler.h"
+ #include "tellicoimporter.h"
+-#include "filehandler.h"
++#include "../core/filehandler.h"
+ #include "../utils/datafileregistry.h"
+ #include "../tellico_debug.h"
+ 
+diff --git a/src/translators/htmlexporter.cpp b/src/translators/htmlexporter.cpp
+index acc712b0..79ef0039 100644
+--- a/src/translators/htmlexporter.cpp
++++ b/src/translators/htmlexporter.cpp
+@@ -29,7 +29,7 @@
+ #include "../document.h"
+ #include "../core/filehandler.h"
+ #include "../core/netaccess.h"
+-#include "../core/tellico_config.h"
++#include "../config/tellico_config.h"
+ #include "../core/tellico_strings.h"
+ #include "../images/image.h"
+ #include "../images/imagefactory.h"
+diff --git a/src/utils/CMakeLists.txt b/src/utils/CMakeLists.txt
+index a5851007..e5fa2b24 100644
+--- a/src/utils/CMakeLists.txt
++++ b/src/utils/CMakeLists.txt
+@@ -4,13 +4,11 @@ SET(utils_STAT_SRCS
+    bibtexhandler.cpp
+    cursorsaver.cpp
+    datafileregistry.cpp
+-   fieldcomparison.cpp
+    guiproxy.cpp
+    iso5426converter.cpp
+    iso6937converter.cpp
+    isbnvalidator.cpp
+    lccnvalidator.cpp
+-   stringcomparison.cpp
+    string_utils.cpp
+    tellico_utils.cpp
+    upcvalidator.cpp
+@@ -21,7 +19,6 @@ SET(utils_STAT_SRCS
+ add_library(utils STATIC ${utils_STAT_SRCS})
+ 
+ TARGET_LINK_LIBRARIES(utils
+-    images # for FieldComparison
+     Qt5::Core
+     Qt5::Widgets
+     Qt5::Xml
+@@ -30,4 +27,5 @@ TARGET_LINK_LIBRARIES(utils
+     KF5::I18n
+     KF5::WidgetsAddons
+     KF5::Codecs
++    KF5::KIOCore
+ )
+diff --git a/src/viewstack.cpp b/src/viewstack.cpp
+index 0d25d274..3f292414 100644
+--- a/src/viewstack.cpp
++++ b/src/viewstack.cpp
+@@ -25,8 +25,7 @@
+ #include "viewstack.h"
+ #include "detailedlistview.h"
+ #include "entryiconview.h"
+-#include "models/entrymodel.h"
+-#include "core/tellico_config.h"
++#include "config/tellico_config.h"
+ 
+ #include <KLocalizedString>
+ 
+@@ -42,7 +41,7 @@ using Tellico::ViewStack;
+ 
+ ViewStack::ViewStack(QWidget* parent_) : QWidget(parent_)
+     , m_listView(new DetailedListView(this))
+-    , m_iconView(new EntryIconView(m_listView->sourceModel(), this)) {
++    , m_iconView(new EntryIconView(this)) {
+   QBoxLayout* lay = new QVBoxLayout();
+   lay->setMargin(0);
+   lay->setSpacing(0);
