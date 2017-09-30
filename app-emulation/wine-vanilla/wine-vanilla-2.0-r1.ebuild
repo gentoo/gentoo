@@ -20,7 +20,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.bz2"
-	KEYWORDS="-* amd64 x86 ~x86-fbsd"
+	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -131,6 +131,7 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
+	dev-util/patchbin
 	sys-devel/flex
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
@@ -303,8 +304,11 @@ src_prepare() {
 		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
 		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
 		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+		"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
+		"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
 	)
 	local PATCHES_BIN=(
+		"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
 	)
 
 	default
