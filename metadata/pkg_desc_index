@@ -2538,7 +2538,7 @@ app-vim/bash-support 4.2.1: vim plugin: write and run bash scripts using menus a
 app-vim/bnf-syntax 1.2-r2: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0-r1: vim plugin: sets vim breakpoints visually
-app-vim/bufexplorer 7.4.18 9999: vim plugin: easily browse vim buffers
+app-vim/bufexplorer 7.4.18 7.4.19 9999: vim plugin: easily browse vim buffers
 app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
 app-vim/calendar 2.9: vim plugin: calendar window
 app-vim/cctree 1.61-r1: vim plugin: Cscope based source-code browser and code flow analysis tool
@@ -2563,7 +2563,7 @@ app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
 app-vim/dbext 25.0: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825 20030825-r1: vim plugin: syntax highlighting for dhcpd.conf
-app-vim/diffchar 6.4 6.8 6.9: vim plugin: highlight the exact differences, based on characters and words
+app-vim/diffchar 6.9 7.01: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
@@ -8076,7 +8076,7 @@ dev-python/ntplib 0.3.3: Python NTP library
 dev-python/numba 0.27.0 0.34.0 0.35.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.1 2.6.2: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.8.2 1.9.2 1.10.4 1.12.1 1.13.1 9999: Fast array and numerical python library
+dev-python/numpy 1.8.2 1.9.2 1.10.4 1.12.1 1.13.1 1.13.3 9999: Fast array and numerical python library
 dev-python/numpydoc 0.6.0 0.7.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1 1.9.0_p1-r1: Library for OAuth version 1.0
