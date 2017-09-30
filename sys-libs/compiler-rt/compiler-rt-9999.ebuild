@@ -82,6 +82,7 @@ src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			-DLLVM_LIT_ARGS="-vv"
 
 			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang"
 			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang++"
