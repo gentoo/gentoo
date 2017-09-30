@@ -9025,8 +9025,8 @@ dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0 4.2.0-r1 4.3.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.1.0: General purpose exceptions for Zope packages
 dev-python/zope-interface 4.1.1 4.3.2 4.4.0 4.4.0-r1 4.4.1 4.4.2 4.4.3: Interfaces for Python
-dev-python/zope-testing 4.6.1: Zope testing helpers
-dev-python/zope-testrunner 4.6.0: Zope testrunner script
+dev-python/zope-testing 4.6.1 4.6.2: Zope testing helpers
+dev-python/zope-testrunner 4.6.0 4.7.0: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-python/zstandard 0.8.1: Zstandard Bindings for Python
 dev-qt/assistant 4.8.6-r1 4.8.7 5.6.2 5.7.1: Tool for viewing on-line documentation in Qt help file format
