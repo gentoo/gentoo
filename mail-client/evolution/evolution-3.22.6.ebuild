@@ -15,7 +15,7 @@ SLOT="2.0"
 
 IUSE="archive +bogofilter crypt geolocation highlight ldap spamassassin spell ssl +weather"
 
-KEYWORDS="~alpha amd64 ~ia64 ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 x86"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
