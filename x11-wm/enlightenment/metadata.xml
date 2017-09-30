@@ -69,7 +69,7 @@
 	<flag name="enlightenment_modules_conf-window-remembers">Delete existing window remembers</flag>
 </use>
 <longdescription>
-Enlightenment is a completely themeable, highly configurable Window Manager for 
+Enlightenment is a completely themeable, highly configurable Window Manager for
 the X Window System, traditionally used in Unix environments.
 
 Enlightenment Features:
