@@ -1,0 +1,104 @@
+diff --git a/build.sh b/build.sh
+index ad9ac30..6a61904 100755
+--- a/build.sh
++++ b/build.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ # 
+ # KLayout Layout Viewer
+@@ -44,6 +44,7 @@ RPATH=""
+ MAKE_OPT=""
+ 
+ CONFIG="release"
++BUILD_EXPERT=0
+ 
+ # Check, whether build.sh is run from the top level folder
+ if ! [ -e src ] || ! [ -e src/klayout.pro ]; then
+@@ -75,6 +76,9 @@ while [ "$*" != "" ]; do
+   -debug)
+     CONFIG="debug"
+     ;;
++  -expert)
++    BUILD_EXPERT=1
++    ;;
+   -python)
+     PYTHON="$1"
+     shift
+@@ -500,28 +504,53 @@ $QMAKE -v
+ # Force a minimum rebuild because of version info
+ touch $CURR_DIR/src/version/version.h
+ 
+-qmake_cmd="$QMAKE $CURR_DIR/src/klayout.pro -recursive \
+-  CONFIG+=$CONFIG \
+-  RUBYLIBFILE=$RUBYLIBFILE \
+-  RUBYINCLUDE=$RUBYINCLUDE \
+-  RUBYINCLUDE2=$RUBYINCLUDE2 \
+-  RUBYVERSIONCODE=$RUBYVERSIONCODE \
+-  HAVE_RUBY=$HAVE_RUBY \
+-  PYTHONLIBFILE=$PYTHONLIBFILE \
+-  PYTHONINCLUDE=$PYTHONINCLUDE \
+-  HAVE_PYTHON=$HAVE_PYTHON \
+-  HAVE_QTBINDINGS=$HAVE_QTBINDINGS \
+-  HAVE_64BIT_COORD=$HAVE_64BIT_COORD \
+-  HAVE_QT5=$HAVE_QT5 \
+-  PREFIX='$BIN' \
+-  RPATH='$RPATH' \
+-  KLAYOUT_VERSION=$KLAYOUT_VERSION \
+-  KLAYOUT_VERSION_DATE=$KLAYOUT_VERSION_DATE \
+-  KLAYOUT_VERSION_REV=$KLAYOUT_VERSION_REV \
+-"
+-
+-echo $qmake_cmd
+-$qmake_cmd
++qmake_options=(
++  -recursive
++  CONFIG+="$CONFIG"
++  RUBYLIBFILE="$RUBYLIBFILE"
++  RUBYINCLUDE="$RUBYINCLUDE"
++  RUBYINCLUDE2="$RUBYINCLUDE2"
++  RUBYVERSIONCODE="$RUBYVERSIONCODE"
++  HAVE_RUBY="$HAVE_RUBY"
++  PYTHONLIBFILE="$PYTHONLIBFILE"
++  PYTHONINCLUDE="$PYTHONINCLUDE"
++  HAVE_PYTHON="$HAVE_PYTHON"
++  HAVE_QTBINDINGS="$HAVE_QTBINDINGS"
++  HAVE_64BIT_COORD="$HAVE_64BIT_COORD"
++  HAVE_QT5="$HAVE_QT5"
++  PREFIX="$BIN"
++  RPATH="$RPATH"
++  KLAYOUT_VERSION="$KLAYOUT_VERSION"
++  KLAYOUT_VERSION_DATE="$KLAYOUT_VERSION_DATE"
++  KLAYOUT_VERSION_REV="$KLAYOUT_VERSION_REV"
++)
++
++if [ $BUILD_EXPERT = 1 ]; then
++  qmake_options+=(
++    QMAKE_AR="$AR cqs"
++    QMAKE_LINK_C="$CC"
++    QMAKE_LINK_C_SHLIB="$CC"
++    QMAKE_LINK="$CXX"
++    QMAKE_LINK_SHLIB="$CXX"
++    QMAKE_OBJCOPY="$OBJCOPY"
++    QMAKE_RANLIB=
++    QMAKE_STRIP=
++    QMAKE_CC="$CC"
++    QMAKE_CXX="$CXX"
++    QMAKE_CFLAGS="$CFLAGS"
++    QMAKE_CFLAGS_RELEASE=
++    QMAKE_CFLAGS_DEBUG=
++    QMAKE_CXXFLAGS="$CXXFLAGS"
++    QMAKE_CXXFLAGS_RELEASE=
++    QMAKE_CXXFLAGS_DEBUG=
++    QMAKE_LFLAGS="$LDFLAGS"
++    QMAKE_LFLAGS_RELEASE=
++    QMAKE_LFLAGS_DEBUG=
++  )
++fi
++
++echo $QMAKE "$CURR_DIR/src/klayout.pro" "${qmake_options[@]}"
++$QMAKE "$CURR_DIR/src/klayout.pro" "${qmake_options[@]}"
+ 
+ cd $CURR_DIR
+ echo ""
