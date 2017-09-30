@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-RDEPEND="$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*')"
+RDEPEND="
+	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/coverage[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*' pypy)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
