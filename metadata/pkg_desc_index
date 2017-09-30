@@ -15656,7 +15656,7 @@ net-print/lm1100 1.0.2a-r1: The Tim Engler's Lexmark 1100 driver
 net-print/lprng 3.8.35-r3: Extended implementation of the Berkeley LPR print spooler
 net-print/magicfilter 2.3h: Customizable, extensible automatic printer filter
 net-print/mtink 1.0.16-r1 1.0.16-r2: mtink is a status monitor and inkjet cartridge changer for some Epson printers
-net-print/npadmin 0.8.7 0.8.7-r1: Network printer command-line adminstration tool
+net-print/npadmin 0.8.7-r1: Network printer command-line adminstration tool
 net-print/pkpgcounter 3.50-r2: Generic PDL (Page Description Language) parser in Python
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
 net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
@@ -16434,7 +16434,7 @@ sci-libs/fftw 2.1.5-r8 2.1.5-r9 3.3.4 3.3.5-r1 3.3.5-r2 3.3.6_p1 3.3.6_p2 9999: 
 sci-libs/flann 1.8.4-r1 1.9.1 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduction algorithm
 sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
-sci-libs/galib 2.4.6 2.4.7 2.4.7-r1: Library for genetic algorithms in C++ programs
+sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r1 0.1849-r2: Genetic Algorithm Utility Library
 sci-libs/gdal 2.0.2-r3 2.0.3: Translator library for raster geospatial data formats (includes OGR support)
