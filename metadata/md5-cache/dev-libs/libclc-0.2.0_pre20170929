@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure setup unpack
+DEPEND=|| ( sys-devel/clang:5 sys-devel/clang:4 >=sys-devel/clang-3.9:0 ) || ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 )
+DESCRIPTION=OpenCL C library
+EAPI=6
+HOMEPAGE=http://libclc.llvm.org/
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=|| ( MIT BSD )
+RDEPEND=|| ( sys-devel/clang:5 sys-devel/clang:4 >=sys-devel/clang-3.9:0 )
+SLOT=0
+SRC_URI=https://github.com/llvm-mirror/libclc/archive/0c31bd5e8d277bee26f34162c246a321f086ad55.tar.gz -> libclc-0.2.0_pre20170929.tar.gz
+_eclasses_=llvm	fe231a791db197943447fdeadafa7e08	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=61f4a2bf20788b380c1b792d90d4379d
