@@ -1,0 +1,137 @@
+From dc9437c949a4f44ca8b36bbf974d6a49337c67b4 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 1 Oct 2017 04:10:33 +1300
+Subject: Fix tests failure on Perl 5.26+ with PERL_USE_UNSAFE_INC=0
+
+Bug: https://github.com/miyagawa/CGI-Compile/issues/21
+Bug: https://bugs.gentoo.org/614352
+---
+ t/Capture.pm      | 3 ++-
+ t/coderef_args.t  | 3 ++-
+ t/compile.t       | 3 ++-
+ t/data_end.t      | 4 +++-
+ t/exit.t          | 2 +-
+ t/local-SIG.t     | 3 ++-
+ t/source.t        | 3 ++-
+ t/source_filter.t | 3 ++-
+ t/warnings.t      | 3 ++-
+ 9 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/t/Capture.pm b/t/Capture.pm
+index 476f80d..2331b33 100644
+--- a/t/Capture.pm
++++ b/t/Capture.pm
+@@ -1,4 +1,5 @@
+-package t::Capture;
++package # Hide from PAUSE
++  Capture;
+ use base qw(Exporter);
+ our @EXPORT = qw(capture_out);
+ 
+diff --git a/t/coderef_args.t b/t/coderef_args.t
+index 8d9c1b4..89720dd 100644
+--- a/t/coderef_args.t
++++ b/t/coderef_args.t
+@@ -1,5 +1,6 @@
+ use Test::More;
+-use t::Capture;
++use lib 't';
++use Capture;
+ use CGI::Compile;
+ 
+ my $sub = CGI::Compile->compile("t/args.cgi");
+diff --git a/t/compile.t b/t/compile.t
+index db42283..f302f9b 100644
+--- a/t/compile.t
++++ b/t/compile.t
+@@ -1,6 +1,7 @@
+ use Test::More;
+ use Test::Requires qw(CGI);
+-use t::Capture;
++use lib 't';
++use Capture;
+ use CGI::Compile;
+ #no warnings 'signal'; # for MSWin32
+ 
+diff --git a/t/data_end.t b/t/data_end.t
+index af468f7..175641f 100644
+--- a/t/data_end.t
++++ b/t/data_end.t
+@@ -1,6 +1,8 @@
+ use Test::More;
+ use CGI::Compile;
+-use t::Capture;
++
++use lib 't';
++use Capture;
+ 
+ {
+     my $sub = CGI::Compile->compile("t/data.cgi");
+diff --git a/t/exit.t b/t/exit.t
+index b98b28a..2167b1c 100644
+--- a/t/exit.t
++++ b/t/exit.t
+@@ -1,8 +1,8 @@
+ use strict;
+ use Test::More tests => 2;
+ use CGI::Compile;
+-use t::Capture;
+ use lib "t";
++use Capture;
+ use Exit;
+ 
+ my $sub = CGI::Compile->compile("t/exit.cgi");
+diff --git a/t/local-SIG.t b/t/local-SIG.t
+index b781c05..68f733e 100644
+--- a/t/local-SIG.t
++++ b/t/local-SIG.t
+@@ -1,6 +1,7 @@
+ #!perl
+ 
+-use t::Capture;
++use lib 't';
++use Capture;
+ use CGI::Compile;
+ use POSIX qw(:signal_h);
+ 
+diff --git a/t/source.t b/t/source.t
+index e212244..b101632 100644
+--- a/t/source.t
++++ b/t/source.t
+@@ -1,6 +1,7 @@
+ use Test::More;
+ use CGI::Compile;
+-use t::Capture;
++use lib 't';
++use Capture;
+ 
+ {
+     my $str =<<EOL;
+diff --git a/t/source_filter.t b/t/source_filter.t
+index 8b84e0c..51b11b2 100644
+--- a/t/source_filter.t
++++ b/t/source_filter.t
+@@ -1,6 +1,7 @@
+ use Test::More;
+ use Test::Requires qw(Switch);
+-use t::Capture;
++use lib 't';
++use Capture;
+ use CGI::Compile;
+ 
+ my $sub = eval {
+diff --git a/t/warnings.t b/t/warnings.t
+index 5962aae..0d044cb 100644
+--- a/t/warnings.t
++++ b/t/warnings.t
+@@ -1,5 +1,6 @@
+ use Test::More;
+-use t::Capture;
++use lib 't';
++use Capture;
+ use CGI::Compile;
+ 
+ my $sub = CGI::Compile->compile("t/warnings.cgi");
+-- 
+2.14.1
+
