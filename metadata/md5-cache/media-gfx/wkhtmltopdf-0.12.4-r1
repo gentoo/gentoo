@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxmlpatterns:5
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5[printsupport] dev-qt/qtwidgets:5 dev-qt/qtxmlpatterns:5
 DESCRIPTION=Convert html to pdf (and various image formats) using webkit
 EAPI=6
-HOMEPAGE=http://wkhtmltopdf.org/ https://github.com/wkhtmltopdf/wkhtmltopdf/
+HOMEPAGE=https://wkhtmltopdf.org/ https://github.com/wkhtmltopdf/wkhtmltopdf/
 IUSE=examples
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5[printsupport] dev-qt/qtwidgets:5
 SLOT=0
 SRC_URI=https://github.com/wkhtmltopdf/wkhtmltopdf/archive/0.12.4.tar.gz -> wkhtmltopdf-0.12.4.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=3ff7fc3cb5388aa1d06882e2d8163b4d
+_md5_=1f5bf5cb936a40b5ee644fea085d3b90
