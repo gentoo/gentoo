@@ -139,7 +139,7 @@ multilib_src_configure() {
 #	fi
 
 	use test && mycmakeargs+=(
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 	)
 
 	if multilib_is_native_abi; then
