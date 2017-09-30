@@ -33,6 +33,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/libintl
 	x11-libs/libxkbcommon"
 DEPEND="${RDEPEND}
+	dev-qt/qtconcurrent:5
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig"
 
