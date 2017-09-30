@@ -62,6 +62,9 @@ multilib_src_configure() {
 		-DLIBOMP_COPY_EXPORTS=OFF
 		-DLIBOMP_TEST_COMPILER="$(type -P "${CHOST}-clang")"
 	)
+	use test && mycmakeargs+=(
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+	)
 	cmake-utils_src_configure
 }
 
