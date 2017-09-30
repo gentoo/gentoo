@@ -35,14 +35,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-all_ruby_prepare() {
-	default
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-9999-expert.patch"
+)
 
 each_ruby_configure() {
 	tc-export CC CXX AR LD RANLIB
 	export CFLAGS CXXFLAGS
 	./build.sh \
+		-expert \
 		-dry-run \
 		-qmake /usr/lib64/qt5/bin/qmake \
 		-ruby "${RUBY}" \
