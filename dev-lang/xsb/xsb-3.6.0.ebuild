@@ -5,7 +5,7 @@ EAPI=5
 
 MY_P="XSB${PV//./}"
 
-PATCHSET_VER="2"
+PATCHSET_VER="3"
 
 inherit eutils autotools java-pkg-opt-2
 
