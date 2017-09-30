@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
+# Mask pdf support so net-print/cups-filters stabilisation
+# can go ahead (bug 627392)
+net-print/cups-filters pdf
+
 # David Seifert <soap@gentoo.org> (23 Sep 2017)
 # MPI does not have stable keywords on hppa
 sci-libs/fftw mpi
