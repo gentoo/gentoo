@@ -15093,7 +15093,7 @@ net-mail/mpack 1.6-r3 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.2.4 1.2.5 1.2.6: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
-net-mail/muchsync 3: Synchronizes mail messages and notmuch tags across machines
+net-mail/muchsync 3 4: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.23.7 0.24.2 0.25 0.25.1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.14 7.1.0 7.1.1 7.1.2: Powerful IMAP/Maildir synchronization and reader support
@@ -15225,7 +15225,7 @@ net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic too
 net-misc/eventd 0.21.0 0.23.0: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
-net-misc/fatrat 1.2.0_beta2_p20150803: Qt4-based download/upload manager
+net-misc/fatrat 1.2.0_beta2_p20150803 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 2.5.0 2.5.1: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 2.0.0_rc0 9999: Free implementation of the Remote Desktop Protocol

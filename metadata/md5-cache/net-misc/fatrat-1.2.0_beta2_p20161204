@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 bittorrent? ( dev-qt/qtwebengine:5[widgets] >=net-libs/libtorrent-rasterbar-1.1.1 ) curl? ( >=net-misc/curl-7.18.2 ) doc? ( dev-qt/qthelp:5 ) xmpp? ( net-libs/gloox ) dev-libs/boost dev-qt/linguist-tools:5 virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Qt5-based download/upload manager
+EAPI=6
+HOMEPAGE=http://fatrat.dolezel.info/
+IUSE=bittorrent +curl doc nls xmpp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 bittorrent? ( dev-qt/qtwebengine:5[widgets] >=net-libs/libtorrent-rasterbar-1.1.1 ) curl? ( >=net-misc/curl-7.18.2 ) doc? ( dev-qt/qthelp:5 ) xmpp? ( net-libs/gloox )
+SLOT=0
+SRC_URI=https://github.com/LubosD/fatrat/tarball/14a1a146df76d70c44dcc38363848a5b41a364d5 -> fatrat-1.2.0_beta2_p20161204.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=408bad2969d388d6a00baf912e62df07
