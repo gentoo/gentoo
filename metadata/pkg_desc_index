@@ -16255,7 +16255,7 @@ sci-electronics/gwave 20090213-r1 20120229: Analog waveform viewer for SPICE-lik
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.4 4.0.5-r1 4.0.6: Electronic Schematic and PCB design tools.
-sci-electronics/klayout 0.24.10: Viewer and editor for GDS and OASIS integrated circuit layouts
+sci-electronics/klayout 0.24.10 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
