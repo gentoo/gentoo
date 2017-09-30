@@ -64,6 +64,7 @@ src_configure() {
 		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 
 	cmake-utils_src_configure
