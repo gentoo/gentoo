@@ -6,7 +6,7 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="Convert html to pdf (and various image formats) using webkit"
-HOMEPAGE="http://wkhtmltopdf.org/ https://github.com/wkhtmltopdf/wkhtmltopdf/"
+HOMEPAGE="https://wkhtmltopdf.org/ https://github.com/wkhtmltopdf/wkhtmltopdf/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
-	dev-qt/qtwebkit:5
+	dev-qt/qtwebkit:5[printsupport]
 	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}
@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS CHANGELOG.md README.md )
 
-PATCHES=( "${FILESDIR}"/${P}-build.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-gcc6-warn.patch
+)
 
 src_prepare() {
 	default
