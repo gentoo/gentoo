@@ -142,7 +142,8 @@ src_test() {
 src_install() {
 	emake \
 		PARALLEL=${MAKEOPTS} \
-		MMAKEFLAGS="EXTRA_LDFLAGS='${LDFLAGS}' \
+		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
+			    EXTRA_LDFLAGS='${LDFLAGS}' \
 			    EXTRA_LD_LIBFLAGS='${LDFLAGS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		INSTALL_PREFIX="${D}"/usr \
