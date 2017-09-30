@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils
 
@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="debug kerberos ocs2005-message-hack openssl telepathy voice"
 
-RDEPEND=">=dev-libs/gmime-2.4.16
+RDEPEND="
+	dev-libs/gmime:2.6
 	dev-libs/libxml2
 	openssl? ( dev-libs/openssl:= )
 	!openssl? ( dev-libs/nss )
@@ -23,8 +24,9 @@ RDEPEND=">=dev-libs/gmime-2.4.16
 	voice? (
 		>=dev-libs/glib-2.28.0
 		>=net-libs/libnice-0.1.0
-		media-libs/gstreamer:0.10
+		media-libs/gstreamer:1.0
 		>=net-im/pidgin-2.8.0
+		net-libs/farstream:0.2
 	)
 	!voice? (
 		>=dev-libs/glib-2.12.0:2
@@ -44,7 +46,7 @@ DEPEND="dev-util/intltool
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-configure-srtp-check.patch"
+	default
 	eautoreconf
 }
 
