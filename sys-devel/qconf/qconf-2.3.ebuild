@@ -27,7 +27,7 @@ src_configure() {
 	econf \
 		--qtdir="$(qt5_get_libdir)/qt5" \
 		--extraconf=QMAKE_STRIP= \
-		--verbose || die
+		--verbose
 
 	# just to set all the Gentoo toolchain flags
 	eqmake5
