@@ -1219,7 +1219,7 @@ app-emacs/proofgeneral 4.2: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
 app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded documents
 app-emacs/puppet-mode 0.3-r1: Emacs major mode for editing Puppet manifests
-app-emacs/pymacs 0.25-r1 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
+app-emacs/pymacs 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 6.1.2 6.2.0 6.2.3: An Emacs major mode for editing Python source
 app-emacs/quack 0.47: Enhances Emacs support for Scheme
 app-emacs/quilt-el 0.48.0: Quilt mode for Emacs
