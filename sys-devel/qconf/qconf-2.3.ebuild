@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
-		--qtselect="5" \
+		--qtdir="$(qt5_get_libdir)/qt5" \
 		--extraconf=QMAKE_STRIP= \
 		--verbose || die
 
