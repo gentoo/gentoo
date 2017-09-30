@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependencies are not keyworded.
+x11-themes/qtcurve plasma
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2017)
 # Systemtap has no hppa keywords
 sys-libs/glibc systemtap
