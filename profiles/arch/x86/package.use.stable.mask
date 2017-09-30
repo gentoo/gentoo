@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal oracle
+
 # NP-Hardass <NP-Hardass@gentoo.org> (27 Sep 2017)
 # patchset variants are not stable
 virtual/wine d3d9 staging
