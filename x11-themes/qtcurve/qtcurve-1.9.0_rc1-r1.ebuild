@@ -15,7 +15,7 @@ IUSE="+X gtk nls plasma qt4 +qt5 test"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="https://github.com/KDE/qtcurve/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${P/_/-}"
 fi
 
