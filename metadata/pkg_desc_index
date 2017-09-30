@@ -10937,7 +10937,7 @@ games-arcade/tomatoes 1.55-r2: How many tomatoes can you smash in ten short minu
 games-arcade/trailblazer 0.9: Guide a ball through a succession of levels while avoiding holes
 games-arcade/triplexinvaders 1.08: An Alien Invaders style game with 3d graphics
 games-arcade/tuxanci 20110429-r1 99999999: Tuxanci is first tux shooter inspired by game Bulanci
-games-arcade/tuxdash 0.8 0.8-r1: A simple BoulderDash clone
+games-arcade/tuxdash 0.8-r1: A simple BoulderDash clone
 games-arcade/tuxpuck 0.8.2-r1: Hover hockey
 games-arcade/vor 0.5.5 0.5.7: Variations on Rockdodger: Dodge the rocks until you die
 games-arcade/watermelons 1.1.1-r1: A thrilling watermelon bouncing game
@@ -11451,7 +11451,7 @@ games-puzzle/xlogical 1.0.7: SDL logical clone
 games-puzzle/xpired 1.22: A Sokoban-styled puzzle game with lots more action
 games-puzzle/xtris 1.15: a networked Tetris-like game
 games-puzzle/xwelltris 1.0.1: 2.5D tetris like game
-games-puzzle/xye 0.12.1 0.12.2: Free version of the classic game Kye
+games-puzzle/xye 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
