@@ -49,6 +49,7 @@ RDEPEND+="
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
 	)
+	!net-wireless/rfkill
 	!sys-process/schedutils
 	!sys-apps/setarch
 	!<sys-apps/sysvinit-2.88-r7
@@ -116,6 +117,7 @@ multilib_src_configure() {
 		--enable-partx
 		--enable-raw
 		--enable-rename
+		--enable-rfkill
 		--enable-schedutils
 		--with-bashcompletiondir="$(get_bashcompdir)"
 		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_systemunitdir)" "no")
