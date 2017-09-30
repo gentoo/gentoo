@@ -12,7 +12,7 @@ MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://source.winehq.org/git/wine.git http://source.winehq.org/git/wine.git"
+	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
@@ -28,13 +28,13 @@ STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
 D3D9_P="wine-d3d9-${PV}"
 D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
-WDC_V="20150204"
-WINE_DESKTOP_COMMON_P="wine-desktop-common-${WDC_V}"
+GWP_V="20170830"
+PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with optional external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
-	https://github.com/NP-Hardass/wine-desktop-common/archive/${WDC_V}.tar.gz -> ${WINE_DESKTOP_COMMON_P}.tar.gz
+	https://dev.gentoo.org/~np-hardass/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
 "
 
 if [[ ${PV} == "9999" ]] ; then
@@ -163,6 +163,7 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
+	dev-util/patchbin
 	sys-devel/flex
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
@@ -194,7 +195,7 @@ wine_compiler_check() {
 		# bug #549768
 		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
 			ebegin "Checking for gcc-5 ms_abi compiler bug"
-			$(tc-getCC) -O2 "${FILESDIR}"/pr66838.c -o "${T}"/pr66838 || die
+			$(tc-getCC) -O2 "${PATCHDIR}/files/pr66838.c" -o "${T}"/pr66838 || die
 			# Run in subshell to prevent "Aborted" message
 			( "${T}"/pr66838 || false ) >/dev/null 2>&1
 			if ! eend $?; then
@@ -210,7 +211,7 @@ wine_compiler_check() {
 		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
 			ebegin "Checking for gcc-5-3 stack realignment compiler bug"
 			# Compile in subshell to prevent "Aborted" message
-			( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 ) >/dev/null 2>&1
+			( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${PATCHDIR}/files/pr69140.c" -o "${T}"/pr69140 ) >/dev/null 2>&1
 			if ! eend $?; then
 				eerror "Wine cannot be built with this version of gcc-5.3"
 				eerror "due to compiler bugs; please re-emerge the latest gcc-5.3.x ebuild,"
@@ -226,7 +227,7 @@ wine_compiler_check() {
 	if use abi_x86_64; then
 		ebegin "Checking for 64-bit compiler with builtin_ms_va_list support"
 		# Compile in subshell to prevent "Aborted" message
-		( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1)
+		( $(tc-getCC) -O2 "${PATCHDIR}/files/builtin_ms_va_list.c" -o "${T}"/builtin_ms_va_list >/dev/null 2>&1)
 		if ! eend $?; then
 			eerror "This version of $(tc-getCC) does not support builtin_ms_va_list, can't enable 64-bit wine"
 			eerror
@@ -352,12 +353,25 @@ src_unpack() {
 }
 
 src_prepare() {
+
+	eapply_bin(){
+		local patch
+		for patch in ${PATCHES_BIN[@]}; do
+			patchbin --nogit < "${patch}" || die
+		done
+	}
+
 	local md5="$(md5sum server/protocol.def)"
 	local PATCHES=(
-		"${FILESDIR}"/${MY_PN}-1.5.26-winegcc.patch #260726
-		"${FILESDIR}"/${MY_PN}-1.9.5-multilib-portage.patch #395615
-		"${FILESDIR}"/${MY_PN}-1.6-memset-O3.patch #480508
-		"${FILESDIR}"/${MY_PN}-2.0-multislot-apploader.patch
+		"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
+		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+		"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
+		"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
+	)
+	local PATCHES_BIN=(
+		"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
@@ -386,6 +400,7 @@ src_prepare() {
 	fi
 
 	default
+	eapply_bin
 	eautoreconf
 
 	# Modification of the server protocol requires regenerating the server requests
@@ -402,7 +417,7 @@ src_prepare() {
 	sed -e "/^Exec=/s/wine /wine-${WINE_VARIANT} /" -i loader/wine.desktop || die
 
 	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
-	cp "${WORKDIR}/${WINE_DESKTOP_COMMON_P}/icons/oic_winlogo.ico" dlls/user32/resources/ || die
+	cp "${PATCHDIR}/files/oic_winlogo.ico" dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 }
