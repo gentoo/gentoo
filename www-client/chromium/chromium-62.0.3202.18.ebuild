@@ -144,7 +144,7 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-	"${FILESDIR}/${PN}-gcc5-r2.patch"
+	"${FILESDIR}/${PN}-gcc5-r3.patch"
 	"${FILESDIR}/${PN}-gn-bootstrap-r17.patch"
 	"${FILESDIR}/${PN}-glibc2.26-r1.patch"
 )
