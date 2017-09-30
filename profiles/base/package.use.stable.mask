@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal mdb
+
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
