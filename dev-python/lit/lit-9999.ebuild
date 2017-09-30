@@ -29,5 +29,5 @@ DEPEND="
 # TODO: move the manpage generation here (from sys-devel/llvm)
 
 python_test() {
-	./lit.py -sv tests || die
+	./lit.py -vv tests || die
 }
