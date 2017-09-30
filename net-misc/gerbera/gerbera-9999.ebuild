@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/v00d00/gerbera"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif +ffmpeg +javascript lastfm libav +magic mysql +taglib"
+IUSE="curl debug +exif +ffmpeg +javascript lastfm libav +magic mysql systemd +taglib"
 
 DEPEND="
 	!!net-misc/mediatomb
@@ -65,6 +65,7 @@ src_configure() {
 		-DWITH_LASTFM="$(usex lastfm)" \
 		-DWITH_MAGIC="$(usex magic)" \
 		-DWITH_MYSQL="$(usex mysql)"
+		-DWITH_SYSTEMD="$(usex systemd)" \
 		-DWITH_TAGLIB="$(usex taglib)"
 	)
 
@@ -73,9 +74,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-
-	systemd_dounit "${S}/scripts/systemd/${PN}.service"
-	use mysql && systemd_dounit "${S}/scripts/systemd/${PN}-mysql.service"
 
 	newinitd "${FILESDIR}/${PN}-1.0.0.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}-1.0.0.confd" "${PN}"

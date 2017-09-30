@@ -23,3 +23,4 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+PATCHES=("${FILESDIR}/${PN}-0.210.0-perl-526.patch")
