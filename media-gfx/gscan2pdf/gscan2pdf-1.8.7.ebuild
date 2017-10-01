@@ -29,13 +29,13 @@ RDEPEND="
 	dev-perl/Gtk2-ImageView
 	dev-perl/Gtk2
 	dev-perl/HTML-Parser
+	dev-perl/Image-Sane
 	dev-perl/Locale-gettext
 	dev-perl/List-MoreUtils
 	dev-perl/Log-Log4perl
 	dev-perl/PDF-API2
 	dev-perl/Proc-ProcessTable
 	dev-perl/Readonly
-	dev-perl/Sane
 	dev-perl/Set-IntSpan
 	dev-perl/Try-Tiny
 	virtual/perl-Archive-Tar
@@ -54,6 +54,8 @@ mydoc="History"
 
 pkg_postinst() {
 	optfeature "DjVu file support" "app-text/djvu[tiff] media-gfx/imagemagick[djvu]"
+	optfeature "creating PostScript files from PDFs" app-text/poppler[utils]
+	optfeature "adding to an existing PDF" app-text/poppler[utils]
 	optfeature "Optical Character Recognition" app-text/tesseract[osd,tiff]
 	optfeature "scan post-processing" app-text/unpaper
 	optfeature "automatic document feeder support" media-gfx/sane-frontends
