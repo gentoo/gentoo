@@ -2478,7 +2478,7 @@ developers and volunteer mentors.</description>
       <name>Christian Ruppert</name>
       <role>Git, Infra liaison</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Merging GitHub PRs, api.g.o updates</role>
