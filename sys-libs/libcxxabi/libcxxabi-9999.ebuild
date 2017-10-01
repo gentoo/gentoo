@@ -74,7 +74,8 @@ multilib_src_configure() {
 	)
 	if use test; then
 		mycmakeargs+=(
-			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			-DLLVM_LIT_ARGS="-vv"
 		)
 	fi
 	cmake-utils_src_configure
