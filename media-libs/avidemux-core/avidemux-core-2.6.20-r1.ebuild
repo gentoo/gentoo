@@ -54,6 +54,8 @@ DEPEND="
 S="${WORKDIR}/${MY_P}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
 
+PATCHES=("${FILESDIR}"/${P}-fix-cmake.patch  )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
