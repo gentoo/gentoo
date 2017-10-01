@@ -18,4 +18,7 @@
 <upstream>
 	<remote-id type="github">gentoo/gentoo-functions</remote-id>
 </upstream>
+<use>
+	<flag name="prefix-chaining">install in a chained Prefix environment</flag>
+</use>
 </pkgmetadata>

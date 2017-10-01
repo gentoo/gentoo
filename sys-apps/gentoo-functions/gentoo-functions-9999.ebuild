@@ -18,9 +18,10 @@ HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="prefix-chaining"
 
 src_prepare() {
+	use prefix-chaining && export PROGRAM_consoletype=
 	tc-export CC
 	append-lfs-flags
 }
