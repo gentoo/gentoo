@@ -3,12 +3,13 @@
 
 EAPI=6
 
+RUBY_OPTIONAL=no
 USE_RUBY="ruby22"
 # note: define maximally ONE implementation here
 
-RUBY_OPTIONAL=no
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit eutils multilib toolchain-funcs ruby-ng
+inherit eutils multilib toolchain-funcs python-single-r1 ruby-ng
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/klayoutmatthias/${PN}.git"
@@ -31,6 +32,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	sys-libs/zlib
+	${PYTHON_DEPS}
 	$(ruby_implementations_depend)
 "
 DEPEND="${RDEPEND}"
@@ -38,6 +40,11 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-expert.patch"
 )
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ruby-ng_pkg_setup
+}
 
 each_ruby_configure() {
 	tc-export CC CXX AR LD RANLIB
@@ -47,7 +54,7 @@ each_ruby_configure() {
 		-dry-run \
 		-qmake /usr/lib64/qt5/bin/qmake \
 		-ruby "${RUBY}" \
-		-nopython \
+		-python "${PYTHON}" \
 		-build . \
 		-bin "${T}/bin" \
 		-rpath "/usr/$(get_libdir)/klayout" \
