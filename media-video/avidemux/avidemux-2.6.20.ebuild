@@ -81,6 +81,10 @@ src_configure() {
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
 
+	# The build relies on an avidemux-core header that uses 'nullptr'
+	# which is from >=C++11.  Let's use the GCC-6 default C++ dialect.
+	append-cxxflags -std=c++14
+
 	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		-DGETTEXT="$(usex nls)"
