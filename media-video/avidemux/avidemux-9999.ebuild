@@ -13,7 +13,7 @@ HOMEPAGE="http://fixounet.free.fr/${PN}"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau video_cards_fglrx xv"
+IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau xv"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P="${P}"
@@ -27,16 +27,13 @@ else
 fi
 
 DEPEND="
-	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?,nvenc?]
+	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	opengl? ( virtual/opengl:0 )
 	qt4? ( >=dev-qt/qtgui-4.8.3:4 )
 	qt5? ( dev-qt/qtgui:5 )
 	vaapi? ( x11-libs/libva:0 )
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
-	video_cards_fglrx? (
-		|| ( >=x11-drivers/ati-drivers-14.12-r3
-			x11-libs/xvba-video:0 )
-		)"
+"
 RDEPEND="
 	$DEPEND
 	nls? ( virtual/libintl:0 )
@@ -88,7 +85,6 @@ src_configure() {
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
-		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
 
