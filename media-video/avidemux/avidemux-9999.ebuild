@@ -5,7 +5,7 @@ EAPI="6"
 
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
-inherit cmake-utils l10n
+inherit cmake-utils l10n xdg-utils
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/${PN}"
@@ -152,4 +152,12 @@ src_install() {
 	if use qt4 || use qt5 ; then
 		domenu ${PN}-2.6.desktop
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
