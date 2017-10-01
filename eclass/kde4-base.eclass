@@ -33,7 +33,7 @@ _KDE4_BASE_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit kde4-functions toolchain-funcs fdo-mime flag-o-matic gnome2-utils virtualx versionator eutils multilib
+inherit kde4-functions toolchain-funcs flag-o-matic gnome2-utils virtualx versionator eutils multilib xdg-utils
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
@@ -929,8 +929,8 @@ kde4-base_pkg_postinst() {
 	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	buildsycoca
 
 	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
@@ -953,8 +953,8 @@ kde4-base_pkg_postrm() {
 	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	buildsycoca
 }
 
