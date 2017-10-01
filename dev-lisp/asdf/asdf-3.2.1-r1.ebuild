@@ -34,7 +34,10 @@ find-lisp-impl() {
 }
 
 install_docs() {
-	(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf ; doinfo "${PN}.info" )
+	(cd doc ; dodoc *.{html,css,ico,png} "${PN}.pdf" ; dodoc -r asdf )
+	if has_version ">=dev-lisp/sbcl-1.4.0" ; then
+		(cd doc ; doinfo "${PN}.info" )
+	fi
 }
 
 src_compile() {
