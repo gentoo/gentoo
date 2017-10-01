@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (01 Oct 2017)
+# Fails to build (bug #622632). Requires dead and vulnerable qtwebkit4
+# (bug #620710). Masked for removal in 30 days.
+media-sound/lastfm-desktop
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Depends on dead qt4. Dead upstream.
 # Masked for removal in 30 days.
