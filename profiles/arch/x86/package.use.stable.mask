@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Oct 2017)
+# Stable mask dev-ruby/haml test till rails is stabilized.
+dev-ruby/haml test
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal oracle
