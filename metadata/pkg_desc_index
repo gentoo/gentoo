@@ -3007,7 +3007,7 @@ dev-db/pgtap 0.93.0 0.97.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
-dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 2.4.0_rc2 2.4.0_rc3 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 2.4.0 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.21 9.2.21-r2 9.2.22 9.2.23 9.3.15 9.3.17 9.3.17-r2 9.3.18 9.3.19 9.4.10 9.4.12 9.4.12-r2 9.4.13 9.4.14 9.5.5 9.5.7 9.5.7-r1 9.5.8 9.5.9 9.6.3-r1 9.6.3-r2 9.6.4 9.6.5 10_rc1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -7327,7 +7327,7 @@ dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.19.3_p1 3.20.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 1.4.1 1.6.0 1.8.2: Bash tab completion for argparse
+dev-python/argcomplete 1.4.1 1.6.0 1.8.2 1.9.2: Bash tab completion for argparse
 dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arpeggio 1.5: Parser interpreter based on PEG grammars

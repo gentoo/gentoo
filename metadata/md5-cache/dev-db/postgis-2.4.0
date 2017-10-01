@@ -4,11 +4,12 @@ DESCRIPTION=Geographic Objects for PostgreSQL
 EAPI=6
 HOMEPAGE=http://postgis.net
 IUSE=doc gtk static-libs test postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 postgres_targets_postgres9_2
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server] ) postgres_targets_postgres9_2? ( dev-db/postgresql:9.2=[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.5.0 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0 gtk? ( x11-libs/gtk+:2 )
 REQUIRED_USE=test? ( doc ) || ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 postgres_targets_postgres9_2 )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://download.osgeo.org/postgis/source/postgis-2.4.0rc3.tar.gz
+SRC_URI=http://download.osgeo.org/postgis/source/postgis-2.4.0.tar.gz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=e990dcb5eaf41d1e7829a874964d34c9
+_md5_=aecbadc4075a8ec4493ffc8432b0b018
