@@ -5,7 +5,7 @@ EAPI=5
 
 inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib xdg-utils
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
@@ -69,12 +69,14 @@ src_configure() {
 }
 
 src_compile() {
+	# Prepare mmake flags
+	echo "EXTRA_CFLAGS  = ${CFLAGS}"  >> Mmake.params
+	echo "EXTRA_LDFLAGS = ${LDFLAGS}" >> Mmake.params
+	echo "EXTRA_MLFLAGS = --no-strip" >> Mmake.params
+
 	# Build Mercury using bootstrap grade
 	emake \
 		PARALLEL="${MAKEOPTS}" \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		EXTRA_MLFLAGS="--no-strip" \
 		|| die "emake failed"
 
 	# We can now patch .m Mercury compiler files since we
@@ -93,9 +95,6 @@ src_compile() {
 	# Rebuild Mercury compiler using the just built mercury_compiler
 	emake \
 		PARALLEL="${MAKEOPTS}" \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		EXTRA_MLFLAGS="--no-strip" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		compiler || die "emake compiler failed"
 
@@ -104,9 +103,6 @@ src_compile() {
 	# the default grade now
 	emake \
 		PARALLEL="${MAKEOPTS}" \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		EXTRA_MLFLAGS="--no-strip" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		default_grade || die "emake default_grade failed"
 }
@@ -123,8 +119,16 @@ src_test() {
 	fi
 
 	cd "${S}"/tests || die
-	sed -e "s:@WORKSPACE@:${TWS}:" < WS_FLAGS.ws > WS_FLAGS \
+	sed -e "s:@WORKSPACE@:${TWS}:" \
+		< WS_FLAGS.ws \
+		> WS_FLAGS \
 		|| die "sed WORKSPACE failed"
+	sed -e "s:@WORKSPACE@:${TWS}:" \
+		< .mgnuc_copts.ws \
+		> .mgnuc_copts \
+		|| die "sed WORKSPACE failed"
+	find . -mindepth 1 -type d -exec cp .mgnuc_opts  {} \;
+	find . -mindepth 1 -type d -exec cp .mgnuc_copts {} \;
 
 	# Mercury tests must be run in C locale since Mercury output is
 	# compared to hard-coded warnings/errors
@@ -137,18 +141,12 @@ src_test() {
 	MMAKE_DIR="${TWS}"/scripts \
 	MERCURY_SUPPRESS_STACK_TRACE=yes \
 	GRADE=${TEST_GRADE} \
-	MERCURY_ALL_LOCAL_C_INCL_DIRS=" -I${TWS}/boehm_gc/include \
-					-I${TWS}/runtime \
-					-I${TWS}/library" \
 		mmake || die "mmake test failed"
 }
 
 src_install() {
 	emake \
 		PARALLEL="${MAKEOPTS}" \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		EXTRA_MLFLAGS="--no-strip" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		DESTDIR="${D}" \
 		INSTALL_PREFIX="${D}"/usr \
