@@ -86,10 +86,15 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_XRAY=ON
 	)
 	if use test; then
+		cat > "${T}"/unsandbox-lit.py <<-EOF || die
+			import os, sys
+			os.execlp("unsandbox", sys.argv[0], "lit", *sys.argv[1:])
+		EOF
+
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/unsandbox"
-			-DLLVM_LIT_ARGS="lit;-vv"
+			-DLLVM_EXTERNAL_LIT="${T}/unsandbox-lit.py"
+			-DLLVM_LIT_ARGS="-vv"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang"
