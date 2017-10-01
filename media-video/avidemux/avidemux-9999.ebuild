@@ -46,7 +46,9 @@ src_prepare() {
 	default
 
 	processes="buildCli:avidemux/cli"
-	use qt4 && processes+=" buildQt4:avidemux/qt4"
+	if use qt4 || use qt5 ; then
+		processes+=" buildQt4:avidemux/qt4"
+	fi
 
 	for process in ${processes} ; do
 		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
