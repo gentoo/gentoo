@@ -7546,7 +7546,6 @@ sys-apps/nix:gc - Enable garbage collection in the Nix expression evaluator (use
 sys-apps/nix:sodium - Use dev-libs/libsodium for cryptography
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
-sys-apps/openrc:tools - build optional tools
 sys-apps/pacman:doc - Install extended documentation using app-doc/doxygen. (Man pages are included by default.)
 sys-apps/pacman:gpg - Enable GPG signature verification using app-crypt/gpgme
 sys-apps/paludis:pbins - Enable binary package support. Adds dependency upon app-arch/libarchive
