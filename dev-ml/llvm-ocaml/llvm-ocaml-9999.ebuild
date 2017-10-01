@@ -116,7 +116,7 @@ src_configure() {
 		local llvm_bindir=$(llvm-config --bindir)
 		# Force using system-installed tools.
 		sed -i -e "/llvm_tools_dir/s@\".*\"@\"${llvm_bindir}\"@" \
-			"${BUILD_DIR}"/test/lit.site.cfg || die
+			"${BUILD_DIR}"/test/lit.site.cfg.py || die
 	fi
 }
 
