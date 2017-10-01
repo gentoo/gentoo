@@ -113,6 +113,13 @@ src_compile() {
 	done
 }
 
+src_test() {
+	for process in ${processes} ; do
+		local build="${WORKDIR}/${P}_build/${process%%:*}"
+		BUILD_DIR="${build}" cmake-utils_src_test
+	done
+}
+
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
