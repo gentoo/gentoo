@@ -9790,7 +9790,7 @@ dev-ruby/prawn 2.1.0 2.2.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
-dev-ruby/pry 0.10.4 0.11.0: Pry is a powerful alternative to the standard IRB shell for Ruby
+dev-ruby/pry 0.10.4 0.11.0 0.11.1: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.2.4: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 2.0.5 3.0.0-r1: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0: Object oriented authorization for Rails applications
@@ -17862,7 +17862,7 @@ sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8 4.9 4.10 4
 sys-kernel/mips-sources 4.4.79 4.8.17 4.9.40 4.10.17 4.11.12 4.12.4: Linux-Mips GIT sources for MIPS-based machines, dated 20170703
 sys-kernel/pf-sources 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4 4.13_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
-sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999: Raspberry PI kernel sources
+sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.59_p65 3.18.69_p75 4.1.40_p48 4.1.42_p49 4.1.42_p50 4.4.75_p88 4.4.79_p92 4.4.86_p99 4.9.35_p25 4.9.40_p30 4.9.47_p37 4.11.9_p7 4.11.12_p9 4.11.12_p13: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
