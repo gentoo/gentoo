@@ -4,11 +4,11 @@ DESCRIPTION=Executable feature scenarios
 EAPI=5
 HOMEPAGE=https://github.com/aslakhellesoy/cucumber/wikis
 IUSE=test elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 doc test test
-KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=Ruby
 RDEPEND=ruby_targets_ruby22? ( >=dev-ruby/gherkin-4.0:4[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/gherkin-4.0:4[ruby_targets_ruby23] ) ruby_targets_ruby24? ( >=dev-ruby/gherkin-4.0:4[ruby_targets_ruby24] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
 REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
 SLOT=0
 SRC_URI=mirror://rubygems/cucumber-core-1.5.0.gem
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-fakegem	bafb56b9a7b7e84fd091508783628e78	ruby-ng	dbd648644c9f5bec523dc17dc34d8671	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=6790bb4954eb1069bc101993da69f6ca
+_md5_=0c3d9e466f79cd68fcb71721da6f7a89
