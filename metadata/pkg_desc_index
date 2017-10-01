@@ -4796,7 +4796,7 @@ dev-libs/libbsd 0.8.3 0.8.5 0.8.6: An library to provide useful functions common
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6: Open-source library for reading, mastering and writing optical discs
-dev-libs/libbytesize 0.11 1.1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
+dev-libs/libbytesize 0.11 1.1 1.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
 dev-libs/libcdio 0.92 0.93 0.94-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1 0.94_p1-r1: an advanced CDDA reader with error correction
@@ -10338,7 +10338,7 @@ dev-util/cdiff 0.9.8 9999: Term based view of colored, incremental diff in a Git
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 0.7.0 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.17.8 2.17.9: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.17.8 2.17.9 2.17.10: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.1: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
@@ -10499,7 +10499,7 @@ dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0: Linux Trace Toolkit - next generat
 dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.2.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
-dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1: GNU make replacement
+dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1 2.0.99.1: GNU make replacement
 dev-util/massif-visualizer 0.7.0: Tool visualising massif data
 dev-util/mdds 1.2.2 1.2.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4 3.17.4: A graphical diff and merge tool
@@ -13127,7 +13127,7 @@ media-libs/libopenshot-audio 0.1.2-r1 0.1.4: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.3-r1 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libpng 1.2.57 1.5.28 1.6.27 1.6.29 1.6.31 1.6.32: Portable Network Graphics library
+media-libs/libpng 1.2.57 1.5.28 1.6.27 1.6.29 1.6.31 1.6.32 1.6.34: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
@@ -17590,7 +17590,7 @@ sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd
 sys-cluster/zookeeper-bin 3.4.10: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeeper
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r4 9999: Used to create autoconfiguration files
-sys-devel/autoconf-archive 2016.03.20-r1 2016.09.16 2017.03.21: GNU Autoconf Macro Archive
+sys-devel/autoconf-archive 2016.03.20-r1 2016.09.16 2017.03.21 2017.09.28: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.10 5.18.12: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r4 1.10.3-r1 1.10.3-r2 1.11.6-r1 1.11.6-r2 1.12.6 1.12.6-r1 1.13.4 1.13.4-r1 1.14.1 1.14.1-r1 1.15 1.15-r1 1.15-r2 1.15.1 1.15.1-r1 9999: Used to generate Makefile.in from Makefile.am
