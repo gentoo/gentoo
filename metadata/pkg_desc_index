@@ -2926,7 +2926,7 @@ dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database ind
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.8 3.0.17 3.1.10 3.2.6 3.2.7: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.8 3.0.17 3.1.10 3.2.7: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 1.00.41 1.00.54-r1 9999: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -15216,7 +15216,7 @@ net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
-net-misc/drive 0.3.9 0.3.9.1: Google Drive client for the commandline
+net-misc/drive 0.3.9.1: Google Drive client for the commandline
 net-misc/dropbear 2016.74: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 26.3.21 34.3.19: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
