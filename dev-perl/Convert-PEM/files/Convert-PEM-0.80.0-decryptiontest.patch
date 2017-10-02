@@ -1,0 +1,70 @@
+From 9b8f76ece49348cfdc50c5e3b4098694e07184d6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 5 Sep 2014 11:04:30 +0200
+Subject: Do not test the reason for decryption failure on bad key
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Tests checking error message after using bad decryption key fails
+randomly.
+
+Some bad keys can fool the "Bad key/passphrase" heuristic in the
+Convert::PEM::CBC::decode() because it's a feature a stream cipher to
+spit out bad output on bad key. So the heuristic is just a kind
+service to point to the cause of the decoding failure (i.e. bad key).
+By probabilistic nature of the heuristic, we cannot rely on the
+/^Decryption failed/ error message.
+
+This patch removes these tests.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=27574
+Bug: https://bugs.gentoo.org/625652
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ t/01-readwrite.t | 3 +--
+ t/02-encode.t    | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/t/01-readwrite.t b/t/01-readwrite.t
+index 42a4416..208eba1 100644
+--- a/t/01-readwrite.t
++++ b/t/01-readwrite.t
+@@ -1,5 +1,5 @@
+ use strict;
+-use Test::More tests => 16;
++use Test::More tests => 15;
+ use Test::Exception;
+ 
+ use Convert::PEM;
+@@ -29,7 +29,6 @@ lives_ok { $pem->write( Filename => $objfile, Content => $obj, Password => 'xx'
+ ok -e $objfile, 'output file exists';
+ lives_ok { $obj2 = $pem->read( Filename => $objfile ) } 'can read';
+ ok !defined $obj2, 'cannot read encrypted file';
+-like $pem->errstr, qr/^Decryption failed/, 'errstr matches decryption failed';
+ lives_ok { $obj2 = $pem->read( Filename => $objfile, Password => 'xx') } 'can read';
+ is $obj->{TestObject}{int}, $obj2->{TestObject}{int}, 'input matches output';
+ unlink $objfile;
+diff --git a/t/02-encode.t b/t/02-encode.t
+index 37aa987..9c6ab4c 100644
+--- a/t/02-encode.t
++++ b/t/02-encode.t
+@@ -1,5 +1,5 @@
+ use strict;
+-use Test::More tests => 9;
++use Test::More tests => 8;
+ 
+ use Convert::PEM;
+ use Math::BigInt;
+@@ -25,7 +25,6 @@ $blob = $pem->encode( Content => $obj, Password => 'xx' );
+ ok $blob, 'encode gave us something';
+ $obj2 = $pem->decode( Content => $blob );
+ ok !defined $obj2, 'decode fails on encrypted input';
+-like $pem->errstr, qr/^Decryption failed/, 'errstr matches decrypt failed';
+ $obj2 = $pem->decode( Content => $blob, Password => 'xx' );
+ is $obj->{TestObject}{int}, $obj2->{TestObject}{int}, 'input matches output';
+ 
+-- 
+2.14.1
+
