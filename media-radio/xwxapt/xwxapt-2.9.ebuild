@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools
+inherit autotools eutils
 
 DESCRIPTION="GTK+ linux weather satellite APT image decoder software"
 HOMEPAGE="http://www.qsl.net/5b4az/pages/apt.html"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	epatch "${FILESDIR}"/xwxapt-2.9_missing_po_files.patch
 	# create missing mkinstalldir and prepare package
 	glib-gettextize --force --copy || die "gettextize failed"
 	eautoreconf
