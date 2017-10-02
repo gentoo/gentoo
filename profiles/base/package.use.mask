@@ -8,8 +8,7 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
-# Qt4 build depends on old and vulnerable qtwebkit, bug #620730
-# Qt5 build depends on masked net-libs/libtorrent-rasterbar-1.1
+# Depends on masked net-libs/libtorrent-rasterbar-1.1
 # bugs #580760, #630364
 net-misc/fatrat bittorrent
 
