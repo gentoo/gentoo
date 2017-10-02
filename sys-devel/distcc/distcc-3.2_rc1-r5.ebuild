@@ -148,7 +148,7 @@ src_install() {
 	fi
 
 	insinto /usr/share/shadowman/tools
-	newins - distcc <<<"${DCCC_PATH}"
+	newins - distcc <<<"${EPREFIX}${DCCC_PATH}"
 
 	rm -r "${ED}/etc/default" || die
 	rm "${ED}/etc/distcc/clients.allow" || die
