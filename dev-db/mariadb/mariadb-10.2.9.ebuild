@@ -929,8 +929,6 @@ pkg_config() {
 		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"
 	done
 
-	use prefix || options="${options} --user=mysql"
-
 	einfo "Creating the mysql database and setting proper permissions on it ..."
 
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
@@ -962,6 +960,8 @@ pkg_config() {
 	popd &>/dev/null || die
 	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
 	|| die "MySQL databases not installed"
+
+	use prefix || options="${options} --user=mysql"
 
 	local socket="${EROOT}/var/run/mysqld/mysqld${RANDOM}.sock"
 	local pidfile="${EROOT}/var/run/mysqld/mysqld${RANDOM}.pid"
