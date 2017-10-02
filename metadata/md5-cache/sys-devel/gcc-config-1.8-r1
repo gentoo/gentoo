@@ -8,4 +8,4 @@ RDEPEND=>=sys-apps/gentoo-functions-0.10
 SLOT=0
 SRC_URI=mirror://gentoo/gcc-config-1.8.tar.xz https://dev.gentoo.org/~vapier/dist/gcc-config-1.8.tar.xz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=2746467ddf8745d02450a707d79ae0f4
+_md5_=ac034a3370e13594fd83fdb0f1abf693
