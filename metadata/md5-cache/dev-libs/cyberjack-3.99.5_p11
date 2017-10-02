@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=sys-apps/pcsc-lite usb? ( virtual/libusb:1 ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=REINER SCT cyberJack pinpad/e-com USB user space driver library
+EAPI=5
+HOMEPAGE=http://www.reiner-sct.de/
+IUSE=static-libs threads +udev +usb
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=sys-apps/pcsc-lite usb? ( virtual/libusb:1 ) udev? ( virtual/udev )
+SLOT=0
+SRC_URI=http://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP11/pcsc-cyberjack-3.99.5final.SP11.tar.bz2
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=09d17465522890d801e5357782316a9b
