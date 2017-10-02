@@ -9,7 +9,7 @@ LICENSE=GPL-2 freedist
 PDEPEND==sys-fs/aufs-util-4*
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
-SLOT=4.10.17
-SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.10.tar.xz https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.10_p20170612.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.10-18.base.tar.xz mirror://gentoo/genpatches-4.10-18.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.10-18.experimental.tar.xz ) )
+SLOT=4.12.12
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.12.tar.xz https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.12_p20170925.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.12-13.base.tar.xz mirror://gentoo/genpatches-4.12-13.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.12-13.experimental.tar.xz ) )
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	kernel-2	880361b861490d9503f47d4f16e05f2c	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=da049f6aa852b20b8383b5bef36103ee
+_md5_=04c7c4294c8c6cb838de983797a78023
