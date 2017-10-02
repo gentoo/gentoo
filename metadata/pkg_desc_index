@@ -1995,7 +1995,7 @@ app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
-app-mobilephone/dfu-util 0.7 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
+app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/gammu 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
@@ -3130,7 +3130,7 @@ dev-embedded/stlink 1.4.0 9999: stm32 discovery line linux programmer
 dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
 dev-embedded/tavrasm 1.22-r1: Compiles code written for Atmels AVR DOS assembler
 dev-embedded/tigcc 0.96_beta7 0.96_beta8-r1: Cross compiler for Texas Instruments TI-89, TI-92(+) and V200 calculators
-dev-embedded/u-boot-tools 2016.03 2016.07 2016.09.01 2016.09.01-r1 2016.11 2017.05: utilities for working with Das U-Boot
+dev-embedded/u-boot-tools 2016.03 2016.07 2016.09.01 2016.09.01-r1 2016.11 2017.05 2017.09: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10 0.10-r1 9999: Tool for communicating over JTAG with flash chips, CPUs, and many more
@@ -12823,7 +12823,7 @@ media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.13 1.14 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.8.5 2.9 9999: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.9 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20150310-r1 20150310-r2 99999999: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0: Propaganda Volume 1-14 + E. Tiling images for your desktop
