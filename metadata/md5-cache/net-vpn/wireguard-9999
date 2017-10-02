@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install postinst postrm preinst setup unpack
-DEPEND=tools? ( net-libs/libmnl ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) >=dev-vcs/git-1.8.2.1
+DEPEND=tools? ( net-libs/libmnl ) module? ( kernel_linux? ( virtual/modutils ) ) module? ( sys-apps/sed kernel_linux? ( virtual/linux-sources ) ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 EAPI=6
 HOMEPAGE=https://www.wireguard.com/
-IUSE=debug +module +tools module-src kernel_linux
+IUSE=debug +module +tools module-src kernel_linux module
 LICENSE=GPL-2
-RDEPEND=tools? ( net-libs/libmnl ) kernel_linux? ( virtual/modutils )
+RDEPEND=tools? ( net-libs/libmnl ) module? ( kernel_linux? ( virtual/modutils ) )
 SLOT=0
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	git-r3	52a888802d25387c2c74cb845d1219bc	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=c3dfe91555f5adb22a46306710a1ddd0
+_md5_=fe062d2d3335c7ec93a0262f6c9826b8
