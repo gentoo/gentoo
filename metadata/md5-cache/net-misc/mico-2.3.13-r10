@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) qt4? ( dev-qt/qtgui:4[qt3support] ) ssl? ( dev-libs/openssl:* ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt ) >=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A freely available and fully compliant implementation of the CORBA standard
+EAPI=6
+HOMEPAGE=http://www.mico.org/
+IUSE=gtk postgres qt4 ssl tcl threads X
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt
+LICENSE=GPL-2 LGPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) qt4? ( dev-qt/qtgui:4[qt3support] ) ssl? ( dev-libs/openssl:* ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.mico.org/mico-2.3.13.tar.gz https://dev.gentoo.org/~haubi/distfiles/mico-2.3.13-gentoo-patches-20170529.tar.xz
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=fe73a57d49de3b1d132813b35e90d412
