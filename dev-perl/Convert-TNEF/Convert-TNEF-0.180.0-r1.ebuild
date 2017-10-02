@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="dev-perl/MIME-tools"
+RDEPEND="dev-perl/MIME-tools
+	dev-perl/IO-stringy
+"
 DEPEND="${RDEPEND}"
 
 SRC_TEST=do
