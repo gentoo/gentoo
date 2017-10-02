@@ -109,4 +109,12 @@ pkg_postinst() {
 		elog "/etc/procmailrc, for example:"
 		elog "\tDEFAULT=\$HOME/.maildir/"
 	fi
+	if has sfperms ${FEATURES}; then
+		ewarn "FEATURES=sfperms removes the read-bit for others from"
+		ewarn "  /usr/bin/procmail"
+		ewarn "  /usr/bin/lockfile"
+		ewarn "If you use procmail from an MTA like Exim, you need to"
+		ewarn "re-add the read-bit or avoid the MTA checking the binary"
+		ewarn "exists."
+	fi
 }
