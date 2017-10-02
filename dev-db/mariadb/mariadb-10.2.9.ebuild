@@ -568,22 +568,6 @@ multilib_src_install_all() {
 		fi
 		eprefixify "${TMPDIR}/my.cnf.ok"
 		newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
-		einfo "Creating initial directories"
-		# Empty directories ...
-		diropts "-m0750"
-		if [[ "${PREVIOUS_DATADIR}" != "yes" ]] ; then
-			dodir "${MY_DATADIR#${EPREFIX}}"
-			keepdir "${MY_DATADIR#${EPREFIX}}"
-			nonfatal fowners -R mysql:mysql "${MY_DATADIR}"
-		fi
-
-		diropts "-m0755"
-		local folder
-		for folder in "${MY_LOGDIR#${EPREFIX}}" ; do
-			dodir "${folder}"
-			keepdir "${folder}"
-			nonfatal fowners -R mysql:mysql "${folder}"
-		done
 
 		einfo "Including support files and sample configurations"
 		docinto "support-files"
