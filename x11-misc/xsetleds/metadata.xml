@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>jss2k2@chello.no</email>
-		<name>Unknown</name>
-		<description>seemant@gentoo.org as a proxy maintainer.  Please refer to jss2k2</description>
+		<name>John S. Skogtvedt</name>
+		<description>Proxied maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>desktop-misc@gentoo.org</email>
