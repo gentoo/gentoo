@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-perl/MIME-tools dev-lang/perl:=[-build(-)]
+DEPEND=dev-perl/MIME-tools dev-perl/IO-stringy dev-lang/perl:=[-build(-)]
 DESCRIPTION=A Perl module for reading TNEF files
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Convert-TNEF/
 KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/MIME-tools dev-lang/perl:=[-build(-)]
+RDEPEND=dev-perl/MIME-tools dev-perl/IO-stringy dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DO/DOUGW/Convert-TNEF-0.18.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=4fc3c8ec2536bb816983a2e6d8a5780a
+_md5_=7456c542bcecf7fb0d9bb1d3af4ad5a3
