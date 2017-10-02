@@ -115,7 +115,7 @@ pkg_preinst() {
 	fi
 }
 
-pkg_config() {
+configure_tz_data() {
 	# make sure the /etc/localtime file does not get stale #127899
 	local tz src="${EROOT}etc/timezone" etc_lt="${EROOT}etc/localtime"
 
@@ -151,6 +151,10 @@ pkg_config() {
 	cp -f "${EROOT}"/usr/share/zoneinfo/"${tz}" "${etc_lt}"
 }
 
+pkg_config() {
+	configure_tz_data
+}
+
 pkg_postinst() {
-	pkg_config
+	configure_tz_data
 }
