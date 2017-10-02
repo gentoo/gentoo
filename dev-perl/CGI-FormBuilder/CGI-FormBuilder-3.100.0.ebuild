@@ -26,10 +26,16 @@ DEPEND="${RDEPEND}
 "
 
 optdep_notice() {
-	elog "This package has support for optionally using the following template"
-	elog "engines which you may want to install separately:"
-
-	local i="$(if has_version '>=dev-perl/CGI-FastTemplate-1.90.0'; then echo '[I]'; else echo '[ ]'; fi)"
+	local i;
+	elog "This package has support for optional features via the following packages"
+	elog "which you may want to install separately:"
+	elog
+	i="$(if has_version '>=dev-perl/CGI-Session-3.950.0'; then echo '[I]'; else echo '[ ]'; fi)"
+	elog " $i >=dev-perl/CGI-Session-3.950.0"
+	elog "     - Multi-page form persistence with CGI::FormBuilder::Multi";
+	elog
+	elog " Alternative Template Engines:"
+	i="$(if has_version '>=dev-perl/CGI-FastTemplate-1.90.0'; then echo '[I]'; else echo '[ ]'; fi)"
 	elog " $i >=dev-perl/CGI-FastTemplate-1.90.0"
 	elog "     - CGI::FastTemplate via CGI::FormBuilder::Template::Fast";
 
@@ -47,8 +53,8 @@ optdep_notice() {
 
 	if use test; then
 		elog
-		elog "Additional tests exist in this module which will perform relevant tests"
-		elog "when any of the aforementioned optional dependencies are installed"
+		elog "This module will perform additonal tests if these dependencies are"
+		elog "pre-installed"
 	fi
 }
 
