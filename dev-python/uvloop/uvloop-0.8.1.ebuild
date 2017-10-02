@@ -1,12 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_5 )
+PYTHON_COMPAT=( python{3_5,3_6} )
 inherit distutils-r1
 
-DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv."
+DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv"
 HOMEPAGE="https://github.com/magicstack/uvloop"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
@@ -15,27 +16,27 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="doc examples test"
 
-RDEPEND=">=dev-libs/libuv-1.8.0:="
+RDEPEND=">=dev-libs/libuv-1.11.0:="
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
-		>=dev-python/cython-0.23.4[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 "
 
-src_prepare() {
-	cat <<EOF >> setup.cfg || die
+python_prepare_all() {
+	cat <<EOF >> setup.cfg
 [build_ext]
 use-system-libuv=1
 EOF
-	distutils-r1_src_prepare
+
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
-	use doc && emake docs
+	use doc && esetup.py build_ext --inplace build_sphinx
 }
 
 python_test() {
@@ -43,12 +44,7 @@ python_test() {
 }
 
 python_install_all() {
-	if use examples; then
-		insinto "/usr/share/doc/${PF}"
-		docompress -x "/usr/share/doc/${PF}/examples"
-		doins -r examples
-	fi
-
-	use doc && local HTML_DOCS=( docs/_build/html/. )
+	use examples && dodoc -r examples
+	use doc && local HTML_DOCS=( "${BUILD_DIR}/sphinx/html/." )
 	distutils-r1_python_install_all
 }
