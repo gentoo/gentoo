@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/406899
 
---- src/ri/rib.l
-+++ src/ri/rib.l
+--- a/src/ri/rib.l
++++ b/src/ri/rib.l
 @@ -17,7 +17,7 @@
  
  // Overwrite the YYinput so that it uses libz
@@ -29,8 +29,8 @@ http://bugs.gentoo.org/406899
  #else
  															fclose(ribin);
  #endif
---- src/ri/ribOut.cpp
-+++ src/ri/ribOut.cpp
+--- a/src/ri/ribOut.cpp
++++ b/src/ri/ribOut.cpp
 @@ -162,7 +162,7 @@
  
  #ifdef HAVE_ZLIB
@@ -40,8 +40,8 @@ http://bugs.gentoo.org/406899
  			} else {
  				fclose(outFile);
  			}
---- src/ri/ribOut.h
-+++ src/ri/ribOut.h
+--- a/src/ri/ribOut.h
++++ b/src/ri/ribOut.h
 @@ -237,7 +237,7 @@
  												const int	l	=	vsprintf(scratch,mes,args);
  
@@ -60,8 +60,8 @@ http://bugs.gentoo.org/406899
  													else					fwrite(scratch,1,l,outFile);
  												#else
  													fwrite(scratch,1,l,outFile);
---- src/ri/rib.y
-+++ src/ri/rib.y
+--- a/src/ri/rib.y
++++ b/src/ri/rib.y
 @@ -2940,7 +2940,7 @@
  		
  		if (ribin != NULL) {
