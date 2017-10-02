@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND=">=sys-fs/fuse-2.8.0
+CDEPEND=">=sys-fs/fuse-2.8.0:0
 	>=net-misc/curl-7.22.0
 	dev-libs/boost:=
 	>=net-libs/libtorrent-rasterbar-0.16.0:="
