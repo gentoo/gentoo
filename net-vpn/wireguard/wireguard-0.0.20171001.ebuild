@@ -3,6 +3,7 @@
 
 EAPI=6
 
+MODULES_OPTIONAL_USE="module"
 inherit linux-mod bash-completion-r1
 
 DESCRIPTION="Simple yet fast and modern VPN that utilizes state-of-the-art cryptography."
