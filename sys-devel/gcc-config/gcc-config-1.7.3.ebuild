@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit unpacker toolchain-funcs multilib
@@ -28,9 +28,6 @@ src_install() {
 pkg_postinst() {
 	# Scrub eselect-compiler remains
 	rm -f "${ROOT}"/etc/env.d/05compiler &
-
-	# Make sure old versions dont exist #79062
-	rm -f "${ROOT}"/usr/sbin/gcc-config &
 
 	# We not longer use the /usr/include/g++-v3 hacks, as
 	# it is not needed ...
