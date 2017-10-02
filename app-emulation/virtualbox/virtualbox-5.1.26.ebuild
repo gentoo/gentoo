@@ -188,7 +188,7 @@ src_prepare() {
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
-		epatch "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch || die
+		eapply "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch
 	fi
 
 	eapply "${WORKDIR}/patches"
