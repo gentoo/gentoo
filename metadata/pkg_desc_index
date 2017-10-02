@@ -2926,7 +2926,7 @@ dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database ind
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/etcd 2.3.8 3.0.17 3.1.10 3.2.7: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 2.3.8 3.0.17 3.1.10 3.2.7 3.2.8: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.7.27050.0 3.0.2.32703.0-r2: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 0.91 1.00.41 1.00.54-r1 9999: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
