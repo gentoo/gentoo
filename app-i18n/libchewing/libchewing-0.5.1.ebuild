@@ -19,7 +19,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0/3"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE="static-libs test"
 
 RDEPEND="dev-db/sqlite:3"
