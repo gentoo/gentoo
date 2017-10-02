@@ -14,7 +14,7 @@ SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="7"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="debug debug-frame doc libatomic lzma static-libs"
+IUSE="debug debug-frame doc libatomic lzma +static-libs"
 
 RESTRICT="test" #461958 -- re-enable tests with >1.1 again for retesting, this is here for #461394
 
