@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <elvis@magic.io> (01 Oct 2017)
+# Mask Atom betas for testing.
+app-editors/atom:beta
+
 # Michael Palimaka <kensington@gentoo.org> (01 Oct 2017)
 # Fails to build (bug #622632). Requires dead and vulnerable qtwebkit4
 # (bug #620710). Masked for removal in 30 days.
