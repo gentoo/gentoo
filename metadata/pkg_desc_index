@@ -247,7 +247,7 @@ app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/bloscpack 0.5.0 0.6.0 0.11.0: Command line interface for Blosc compression
 app-arch/brotli 0.6.0: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
-app-arch/bzip2 1.0.6-r7 1.0.6-r8: A high-quality data compressor used extensively by Gentoo Linux
+app-arch/bzip2 1.0.6-r8: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14: SFV checksum utility (simple file verification)
@@ -1366,12 +1366,12 @@ app-emulation/virt-manager 1.4.0-r3 1.4.1 1.4.2 1.4.3 9999: A graphical tool for
 app-emulation/virt-viewer 4.0 5.0 6.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12 1.15 1.18: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118 0.1.126: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 5.0.16-r1 5.0.40 5.1.24 5.1.26: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.0.16 5.0.40 5.1.24 5.1.26: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 5.0.16.105871-r1 5.0.40.115130 5.1.24.117012 5.1.26.117224: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-extpack-oracle 5.0.40.115130 5.1.24.117012 5.1.26.117224: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.0.16 5.0.40 5.1.24 5.1.26: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.0.16 5.0.40 5.1.24 5.1.26: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.0.16-r1 5.0.40 5.1.26 5.1.28: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.0.16 5.0.40 5.1.26 5.1.28: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 5.0.16.105871-r1 5.0.40.115130 5.1.26.117224 5.1.28.117968: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-extpack-oracle 5.0.40.115130 5.1.26.117224 5.1.28.117968: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.0.16 5.0.40 5.1.26 5.1.28: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.0.16 5.0.40 5.1.26 5.1.28: Kernel Modules for Virtualbox
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
 app-emulation/vmware-modules 271.3-r1 279.6 304.2 304.3-r1 308.1.0: VMware kernel modules
@@ -10718,7 +10718,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 2.2.9: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
-dev-vcs/mercurial 3.8.4 4.1.3 4.3 4.3.1 4.3.2 9999: Scalable distributed SCM
+dev-vcs/mercurial 3.8.4 4.1.3 4.3 4.3.2 4.3.3 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20170129 1.99999999: Multiple Repository management tool
@@ -13855,7 +13855,7 @@ media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8 0.20.9 0.20.10: 
 media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.24.0 1.25.2 1.25.5 1.25.6: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.24.0 1.25.2 1.25.6 1.25.7: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1 9999: Terminal-based YouTube player and downloader
@@ -15257,7 +15257,7 @@ net-misc/hlfl 0.60.1: High Level Firewall Language
 net-misc/hotot 0.9.8.15_p20150812-r2 9999: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
-net-misc/htpdate 1.0.7 1.1.2 1.1.3: Synchronize local workstation with time offered by remote webservers
+net-misc/htpdate 1.0.7 1.1.3 1.2.0: Synchronize local workstation with time offered by remote webservers
 net-misc/httpie 0.9.2 0.9.3 0.9.4 0.9.9: A CLI, cURL-like tool for humans
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
@@ -15634,7 +15634,7 @@ net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
 net-print/cndrvcups-lb 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4 2.2.3 2.2.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.13.5 1.16.4 1.17.6 1.17.7 9999: Cups filters
+net-print/cups-filters 1.5.0 1.13.5 1.16.4 1.17.7 1.17.8 9999: Cups filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -17698,21 +17698,21 @@ sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-64
 sys-firmware/vgabios 0.6c-r1 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.4 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
-sys-freebsd/boot0 8.2 9.1 10.3 11.0-r1: FreeBSD's bootloader
-sys-freebsd/freebsd-bin 8.2 9.1 10.3 11.0: FreeBSD /bin tools
-sys-freebsd/freebsd-cddl 8.2 9.1 10.3 11.0: FreeBSD CDDL (opensolaris/zfs) extra software
+sys-freebsd/boot0 8.2 9.1 10.3 11.0-r1 11.1: FreeBSD's bootloader
+sys-freebsd/freebsd-bin 8.2 9.1 10.3 11.0 11.1: FreeBSD /bin tools
+sys-freebsd/freebsd-cddl 8.2 9.1 10.3 11.0 11.1: FreeBSD CDDL (opensolaris/zfs) extra software
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
-sys-freebsd/freebsd-lib 8.2-r1 9.1-r11 10.3-r3 11.0-r1: FreeBSD's base system libraries
+sys-freebsd/freebsd-lib 8.2-r1 9.1-r11 10.3-r3 11.0-r1 11.1: FreeBSD's base system libraries
 sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.3 11.0: FreeBSD libexec things
-sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3 11.0: Makefiles definitions used for building and installing libraries and system files
-sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.3 11.0: FreeBSD's PAM authentication modules
-sys-freebsd/freebsd-pf 8.2 9.1 10.3 11.0: FreeBSD's base system libraries
-sys-freebsd/freebsd-rescue 8.2 9.1 10.3 11.0: FreeBSD's rescue binaries
-sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.3 11.0: FreeBSD sbin utils
-sys-freebsd/freebsd-share 8.2 9.1 10.3 11.0: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r6 11.0-r1: FreeBSD kernel sources
-sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r2 11.0-r1: FreeBSD's base system source for /usr/bin
-sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3-r1 11.0-r1: FreeBSD /usr/sbin tools
+sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3 11.0 11.1: Makefiles definitions used for building and installing libraries and system files
+sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.3 11.0 11.1: FreeBSD's PAM authentication modules
+sys-freebsd/freebsd-pf 8.2 9.1 10.3 11.0 11.1: FreeBSD's base system libraries
+sys-freebsd/freebsd-rescue 8.2 9.1 10.3 11.0 11.1: FreeBSD's rescue binaries
+sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.3 11.0 11.1: FreeBSD sbin utils
+sys-freebsd/freebsd-share 8.2 9.1 10.3 11.0 11.1: FreeBSD shared tools/files
+sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r6 11.0-r1 11.1_p1: FreeBSD kernel sources
+sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r2 11.0-r1 11.1: FreeBSD's base system source for /usr/bin
+sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3-r1 11.0-r1 11.1: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE
@@ -18655,7 +18655,7 @@ x11-drivers/xf86-video-tga 1.2.2 1.2.2-r1: X.Org driver for tga cards
 x11-drivers/xf86-video-trident 1.3.8: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
-x11-drivers/xf86-video-virtualbox 5.0.16 5.0.40 5.1.24 5.1.26: VirtualBox X11 video driver for Gentoo guest
+x11-drivers/xf86-video-virtualbox 5.0.16 5.0.40 5.1.26 5.1.28: VirtualBox X11 video driver for Gentoo guest
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0 13.2.1: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++

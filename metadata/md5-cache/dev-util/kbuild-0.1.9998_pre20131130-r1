@@ -3,9 +3,9 @@ DEPEND=sys-apps/texinfo sys-devel/flex sys-devel/gettext virtual/yacc >=app-port
 DESCRIPTION=A makefile framework for writing simple makefiles for complex tasks
 EAPI=6
 HOMEPAGE=http://svn.netlabs.org/kbuild/wiki
-KEYWORDS=~amd64 ~x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=amd64 x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~polynomial-c/kBuild-0.1.9998-pre20131130-src.tar.xz https://dev.gentoo.org/~polynomial-c/kbuild-0.1.9998_pre20131130-tools_and_units_updates.patch.xz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=47b0ed09d2bfd92273ec250c0ff09bce
+_md5_=569571b9d3704ea7cfe8aca480ee8fb2

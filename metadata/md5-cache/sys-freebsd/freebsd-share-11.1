@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND==sys-freebsd/freebsd-mk-defs-11.1* =sys-freebsd/freebsd-sources-11.1* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD shared tools/files
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=doc usb zfs profile
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD zfs? ( CDDL )
+RDEPEND=sys-apps/miscfiles
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/11.1-RELEASE/src.txz -> freebsd-src-11.1.tar.xz
+_eclasses_=bsdmk	f76f6fc364f04987bc60c4ea3cad594c	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	freebsd	11f01cb2f2075a8c7bd1add8a60013a1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=554063da47d21b4b8390908b5c0be826

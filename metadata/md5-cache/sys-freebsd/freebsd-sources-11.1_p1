@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup unpack
+DEPEND=build-kernel? ( dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 ) >=sys-freebsd/freebsd-usbin-9.1 =sys-freebsd/freebsd-mk-defs-11.1* ) virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD kernel sources
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=+build-kernel debug dtrace zfs profile
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD dtrace? ( CDDL ) zfs? ( CDDL )
+RDEPEND=dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 ) =sys-freebsd/freebsd-mk-defs-11.1* !sys-freebsd/virtio-kmod !sys-fs/fuse4bsd !<sys-freebsd/freebsd-sources-9.2_beta1
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/11.1-RELEASE/src.txz -> freebsd-src-11.1.tar.xz https://security.freebsd.org/patches/EN-17:07/vnet.patch -> freebsd-sources-EN-1707-vnet.patch https://security.freebsd.org/patches/EN-17:08/pf.patch -> freebsd-sources-EN-1708-pf.patch
+_eclasses_=bsdmk	f76f6fc364f04987bc60c4ea3cad594c	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	freebsd	11f01cb2f2075a8c7bd1add8a60013a1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d9b7721ddba742e4fcb4cb5a64e6d083

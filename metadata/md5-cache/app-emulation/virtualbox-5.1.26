@@ -4,11 +4,11 @@ DESCRIPTION=Family of powerful x86 virtualization products for enterprise and ho
 EAPI=6
 HOMEPAGE=http://www.virtualbox.org/
 IUSE=alsa debug doc headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc elibc_FreeBSD java python_targets_python2_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-5.1.26 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 net-misc/curl dev-libs/libxml2 media-libs/libpng:0= media-libs/libvpx:0= sys-libs/zlib !headless? ( media-libs/libsdl:0[X,video] x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXmu x11-libs/libXt opengl? ( virtual/opengl media-libs/freeglut ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 opengl? ( dev-qt/qtopengl:5 ) x11-libs/libXinerama ) ) java? ( >=virtual/jre-1.6:= ) libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) lvm? ( sys-fs/lvm2 ) udev? ( >=virtual/udev-171 ) vnc? ( >=net-libs/libvncserver-0.9.9 ) java? ( >=dev-java/java-config-2.2.0-r3 )
 REQUIRED_USE=java? ( sdk ) python? ( sdk ) vboxwebsrv? ( java ) python_targets_python2_7
 SLOT=0
 SRC_URI=http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1.26.tar.bz2 https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.1.24-patches-01.tar.xz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=95efcda3236b3eb657042780231505de
+_md5_=d1dd4d1b73c04e2fba950f9adaf64b6f
