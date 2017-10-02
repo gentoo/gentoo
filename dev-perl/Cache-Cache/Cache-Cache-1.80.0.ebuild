@@ -26,3 +26,9 @@ DEPEND="${RDEPEND}
 # https://rt.cpan.org/Ticket/Display.html?id=92600
 # Parallel testing causes failure
 DIST_TEST="do"
+
+src_test() {
+	# https://bugs.gentoo.org/625736
+	perl_rm_files t/6_test_size_aware_memory_cache.t
+	perl-module_src_test
+}
