@@ -912,8 +912,6 @@ mysql-multilib-r1_pkg_config() {
 	egrep -sq external-locking "${helpfile}" && \
 	options="${options/skip-locking/skip-external-locking}"
 
-	use prefix || options="${options} --user=mysql"
-
 	einfo "Creating the mysql database and setting proper permissions on it ..."
 
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it

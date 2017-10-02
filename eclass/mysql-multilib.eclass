@@ -1053,8 +1053,6 @@ mysql-multilib_pkg_config() {
 	egrep -sq external-locking "${helpfile}" && \
 	options="${options/skip-locking/skip-external-locking}"
 
-	use prefix || options="${options} --user=mysql"
-
 	# MySQL 5.6+ needs InnoDB
 	if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] ; then
 		mysql_version_is_at_least "5.6" || options="${options} --loose-skip-innodb"
