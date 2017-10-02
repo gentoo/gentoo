@@ -12202,7 +12202,7 @@ kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krename 4.0.9_p20170610: Powerful batch file renamer
 kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
-kde-misc/kshutdown 4.0 4.1.1_beta: Shutdown manager for desktop environmenmts like KDE Plasma
+kde-misc/kshutdown 4.0 4.1.1_beta: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktexteditorpreviewplugin 0.1.0: Plugin for previewing content using the KTextEditor Framework
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20170128: WebKit KPart for Konqueror
@@ -15227,7 +15227,7 @@ net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic too
 net-misc/eventd 0.21.0 0.23.0: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
-net-misc/fatrat 1.2.0_beta2_p20150803 1.2.0_beta2_p20161204: Qt5-based download/upload manager
+net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 2.5.0 2.5.1: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 2.0.0_rc0 9999: Free implementation of the Remote Desktop Protocol
