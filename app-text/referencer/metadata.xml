@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dominik.kriegner+gentoo@gmail.com</email>
+		<email>dominik.kriegner@gmail.com</email>
 		<name>Dominik Kriegner</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
