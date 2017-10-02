@@ -11214,7 +11214,7 @@ games-fps/unreal-tournament 451: Futuristic FPS
 games-fps/unreal-tournament-bonuspacks 436: Futuristic FPS (bonus packs)
 games-fps/unreal-tournament-goty 436 451: Futuristic FPS (Game Of The Year edition)
 games-fps/unreal-tournament-strikeforce 1.81: A UT addon where you fight terrorists as part of an elite strikeforce
-games-fps/urbanterror 4.3.2_p20170426 4.3.2_p20170713: Hollywood tactical shooter based on the ioquake3 engine
+games-fps/urbanterror 4.3.2_p20170426 4.3.2_p20170713 4.3.2_p20170915: Hollywood tactical shooter based on the ioquake3 engine
 games-fps/urbanterror-data 4.3.2 4.3.2-r1: Data files for UrbanTerror
 games-fps/ut2003 2225-r4: Sequel to the 1999 Game of the Year multi-player first-person shooter
 games-fps/ut2003-bonuspack-cm 1: Community Bonus Pack for UT2003
@@ -18361,7 +18361,7 @@ www-apps/nextcloud 11.0.4 11.0.5 12.0.2 12.0.3: Personal cloud that runs on your
 www-apps/nikola 7.2.0 7.6.3-r1 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
-www-apps/otrs 5.0.21 5.0.22: OTRS is an Open source Ticket Request System
+www-apps/otrs 5.0.21 5.0.22 5.0.23: OTRS is an Open source Ticket Request System
 www-apps/owncloud 9.0.10 9.1.6 10.0.2 10.0.3: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
