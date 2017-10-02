@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 usage() {
@@ -39,6 +39,7 @@ ARGV3=$3
 . /etc/profile || exit 1
 
 if [ ${EUID:-0} -ne 0 ] ; then
+if [ ${EUID:-0} -ne 0   -a   "${EPREFIX}" == '' ] ; then
 	echo "${0##*/}: Must be root."
 	exit 1
 fi
