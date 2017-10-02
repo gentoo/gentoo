@@ -1,0 +1,6 @@
+default/bsd/fbsd/x86/11.1
+# emerge -au freebsd-sources
+# shutdown -r now (reboot your machine to boot the new kernel.)
+# emerge -auDN @world --exclude sys-devel/binutils
+# emerge -a freebsd-share (don't forget to rebuild this package.)
+# emerge -au sys-devel/binutils
