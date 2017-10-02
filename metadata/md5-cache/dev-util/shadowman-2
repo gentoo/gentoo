@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=app-admin/eselect
 SLOT=0
 SRC_URI=https://github.com/mgorny/shadowman/archive/v2.tar.gz -> shadowman-2.tar.gz
-_md5_=beaeee9ab71c8cc274fb0037548b3ac6
+_md5_=5a9cfac834a3c8ab8df599a0abcfb4db
