@@ -14668,7 +14668,7 @@ net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter fi
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.1-r1 5.1.2 5.1.3: Kernel based automounter
-net-fs/btfs 2.13 2.15 2.16: a bittorrent filesystem based on FUSE
+net-fs/btfs 2.16 2.17: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.4 6.6-r2 6.7: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.20.0_p05 2.3.5-r1: HTTP read-only file system for distributing software
@@ -15546,7 +15546,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12_rc3 1.12_rc3-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r3 9999: A RSS/Atom feed reader for the text console
-net-news/newsboat 2.10 9999: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.10 2.10.1 9999: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.4 0.18.5 0.18.6 0.18.8 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5 3.4.1 9999: A tiny RSS and Atom feed reader
