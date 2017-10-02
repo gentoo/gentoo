@@ -42,14 +42,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	export GPERF=$(type -P true)  # avoid dependency on gperf, #631980
 	eautoreconf
-
-	# this should be ok for everyone, but for safety I only apply it to
-	# the platform I need this for sure
-	if [[ ${CHOST} == *-darwin* ]] ; then
-		# https://bugs.freedesktop.org/show_bug.cgi?id=101280
-		rm src/fcobjshash.h src/fcobjshash.gperf
-	fi
 }
 
 multilib_src_configure() {
