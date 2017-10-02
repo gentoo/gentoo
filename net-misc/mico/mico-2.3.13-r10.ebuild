@@ -26,7 +26,7 @@ DESCRIPTION="A freely available and fully compliant implementation of the CORBA 
 HOMEPAGE="http://www.mico.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt"
 IUSE="gtk postgres qt4 ssl tcl threads X"
 RESTRICT="test" #298101
 
@@ -58,7 +58,6 @@ fi
 src_prepare() {
 	default
 
-	mv configure.in configure.ac || die #426262
 	eautoreconf
 
 	# cannot use big TOC (AIX only), gdb doesn't like it.
@@ -74,6 +73,11 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC CXX
+
+	if use gtk && [[ -n ${PATCH_VER} ]]; then
+		# need gtk-1 wrapper for gtk-2
+		export PATH="${WORKDIR}"/helpers:${PATH}
+	fi
 
 	# Don't know which version of JavaCUP would suffice, but there is no
 	# configure argument to disable checking for JavaCUP.
@@ -97,7 +101,8 @@ src_configure() {
 
 	# '--without-*' or '--with-*=no' does not disable some features,
 	# the value needs to be empty instead.
-	# This applies to: pgsql, qt, tcl, bluetooth.
+	# This applies to: gtk, pgsql, qt, tcl, bluetooth.
+	myconf --with-gtk=$(  use gtk      && echo "${EPREFIX}"/usr)
 	myconf --with-pgsql=$(use postgres && echo "${EPREFIX}"/usr)
 	myconf --with-qt=$(   use qt4      && echo "${EPREFIX}"/usr)
 	myconf --with-tcl=$(  use tcl      && echo "${EPREFIX}"/usr)
@@ -106,8 +111,6 @@ src_configure() {
 	myconf --disable-wireless
 	# But --without-x works.
 	myconf $(use_with X x "${EPREFIX}"/usr)
-	# Same for gtk after patch 013, searches for gtk release.
-	myconf $(use_with gtk gtk 2)
 
 	# http://www.mico.org/pipermail/mico-devel/2009-April/010285.html
 	[[ ${CHOST} == *-hpux* ]] && append-cppflags -D_XOPEN_SOURCE_EXTENDED
@@ -142,7 +145,7 @@ src_install() {
 	dodir /usr/share/doc/${PF}
 	mv "${ED}"usr/doc "${ED}"usr/share/doc/${PF} || die
 
-	dodoc BUGS CHANGES* CONVERT README* ROADMAP TODO VERSION WTODO
+	dodoc BUGS CHANGES* CONVERT FAQ README* ROADMAP TODO VERSION WTODO
 }
 
 pkg_postinst() {
