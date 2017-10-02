@@ -6321,7 +6321,6 @@ net-misc/eventd:purple - Enable plugin for IM notifications via libpurple
 net-misc/eventd:speech - Enable plugin for Text-To-Speech support
 net-misc/eventd:websocket - Enable support for WebSocket protocol
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/libtorrent-rasterbar.
-net-misc/fatrat:webinterface - Enable builtin webinterface.
 net-misc/freerdp:client - Build client binaries
 net-misc/freerdp:openh264 - Enable H.264 support using media-libs/openh264
 net-misc/freerdp:server - Build server binaries
