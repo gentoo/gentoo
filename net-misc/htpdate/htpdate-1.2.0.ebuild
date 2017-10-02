@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit readme.gentoo toolchain-funcs unpacker
+inherit readme.gentoo-r1 toolchain-funcs unpacker
 
 DESCRIPTION="Synchronize local workstation with time offered by remote webservers"
 HOMEPAGE="http://www.vervest.org/fiki/bin/view/HTP/DownloadC"
@@ -20,6 +20,8 @@ DOC_CONTENTS="If you would like to run htpdate as a daemon, set
 appropriate http servers in /etc/conf.d/htpdate!"
 
 src_prepare() {
+	default
+
 	# Use more standard adjtimex() to fix uClibc builds.
 	sed -i 's:ntp_adjtime:adjtimex:g' htpdate.[8c] || die
 }

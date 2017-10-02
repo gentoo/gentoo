@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998_pre20131130
 	sys-power/iasl
 	x11-proto/fontsproto
-	x11-proto/presentproto
 	x11-proto/randrproto
 	x11-proto/renderproto
 	x11-proto/resourceproto
@@ -41,12 +40,8 @@ DEPEND="${RDEPEND}
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXext
-	dri? (
-		x11-proto/dri3proto
-		x11-proto/xf86driproto
-		>=x11-libs/libdrm-2.4.5
-	)"
-
+	dri? (  x11-proto/xf86driproto
+		>=x11-libs/libdrm-2.4.5 )"
 PDEPEND="dri? ( ~app-emulation/virtualbox-guest-additions-${PV} )"
 
 BUILD_TARGETS="all"

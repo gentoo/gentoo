@@ -182,7 +182,7 @@ src_prepare() {
 	fi
 
 	# Only add nopie patch when we're on hardened
-	if gcc-specs-pie ; then
+	if  gcc-specs-pie ; then
 		eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
 	fi
 

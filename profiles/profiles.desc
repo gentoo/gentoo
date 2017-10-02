@@ -151,13 +151,16 @@ x86		default/linux/x86/13.0/systemd			stable
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
 amd64-fbsd	default/bsd/fbsd/amd64/10.3			dev
 amd64-fbsd	default/bsd/fbsd/amd64/11.0			dev
+amd64-fbsd	default/bsd/fbsd/amd64/11.1			dev
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/10.3/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.0/clang		exp
+amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
 sparc-fbsd      default/bsd/fbsd/sparc/8.2                      exp
 x86-fbsd	default/bsd/fbsd/x86/9.1			dev
 x86-fbsd	default/bsd/fbsd/x86/10.3			dev
 x86-fbsd	default/bsd/fbsd/x86/11.0			dev
+x86-fbsd	default/bsd/fbsd/x86/11.1			dev
 
 # Hardened Profiles
 amd64		hardened/linux/amd64					stable
