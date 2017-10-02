@@ -4,6 +4,7 @@ from __future__ import print_function
 
 
 import argparse
+import pprint
 import sys
 
 
@@ -19,7 +20,7 @@ def do_unbundle(gypdata, targets):
     def _unbundle_in_block(gypblock):
         gypdeps = gypblock.get('dependencies') or {}
 
-        for dep, libs in unbundlings.items():
+        for dep, (libs, defines) in unbundlings.items():
             if dep not in gypdeps:
                 continue
 
@@ -36,6 +37,14 @@ def do_unbundle(gypdata, targets):
                 gyplibs = ls['libraries'] = []
 
             gyplibs.extend('-l{}'.format(lib) for lib in libs)
+
+            if defines:
+                try:
+                    dd = gyptarget['defines']
+                except KeyError:
+                    dd = gyptarget['defines'] = []
+
+                dd.extend(defines)
 
             dropped_deps.add(dep)
 
@@ -84,7 +93,8 @@ def main():
     parser.add_argument('gypfile', type=str, help='input gyp file')
     parser.add_argument(
         '--unbundle', type=str, action='append',
-        help='unbundle rule in the format <target>;<dep>;<lib>[;lib]')
+        help='unbundle rule in the format '
+             '<target>;<dep>;<lib>[;lib][;-DMACRO]')
     parser.add_argument(
         '-i', '--inplace', action='store_true',
         help='modify gyp file in-place')
@@ -94,18 +104,26 @@ def main():
     targets = {}
 
     for unbundle in args.unbundle:
-        rule = unbundle.split(';')
+        rule = list(filter(None, (i.strip() for i in unbundle.split(';'))))
         if len(rule) < 3:
             die('Invalid unbundle rule: {!r}'.format(unbundle))
         target, dep = rule[:2]
-        libs = rule[2:]
+
+        defines = []
+        libs = []
+
+        for item in rule[2:]:
+            if item.startswith('-D'):
+                defines.append(item[2:])
+            else:
+                libs.append(item)
 
         try:
             target_unbundlings = targets[target]
         except KeyError:
             target_unbundlings = targets[target] = {}
 
-        target_unbundlings[dep] = libs
+        target_unbundlings[dep] = libs, defines
 
     with open(args.gypfile, 'rt') as f:
         gypdata = eval(f.read())
@@ -114,9 +132,9 @@ def main():
 
     if args.inplace:
         with open(args.gypfile, 'wt') as f:
-            f.write(repr(gypdata) + "\n")
+            pprint.pprint(gypdata, stream=f)
     else:
-        print(repr(gypdata))
+        pprint.pprint(gypdata)
 
 
 if __name__ == '__main__':
