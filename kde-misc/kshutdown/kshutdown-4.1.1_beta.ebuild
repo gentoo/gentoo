@@ -7,7 +7,7 @@ KDE_TEST="false"
 KDE_AUTODEPS="false"
 inherit kde5
 
-DESCRIPTION="Shutdown manager for desktop environmenmts like KDE Plasma"
+DESCRIPTION="Shutdown manager for desktop environments like KDE Plasma"
 HOMEPAGE="https://kshutdown.sourceforge.io"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV/_}.zip"
 
