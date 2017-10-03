@@ -252,12 +252,6 @@ java-virtuals/javamail
 # infrastructure. It may return one day. Removal in 30 days.
 app-benchmarks/jmeter
 
-# Jonas Stein <jstein@gentoo.org> (29 Aug 2017)
-# SRC_URI and HOMEPAGE are dead and the ebuild is in a very bad 
-# state. 
-# Removal in 30 days. #629112.
-app-text/adiff
-
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
