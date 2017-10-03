@@ -228,11 +228,6 @@ dev-perl/XML-AutoWriter
 # See also our tracker bug: https://bugs.gentoo.org/629836
 >=app-text/poppler-0.58.0
 
-# Michael Palimaka <kensington@gentoo.org> (03 Sep 2017)
-# Dead upstream. Use media-libs/phonon instead.
-# Masked for removal in 30 days. Bug #629144.
-dev-qt/qtphonon
-
 # Gilles Dartiguelongue <eva@gentoo.org> (2 Sep 1017)
 # Gnome 3.26 package mask
 >=app-text/libgepub-0.5
