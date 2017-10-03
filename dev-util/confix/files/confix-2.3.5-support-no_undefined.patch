@@ -1,0 +1,213 @@
+------------------------------------------------------------------------
+r960 | mhaubi | 2017-09-26 14:51:18 +0200 (Tue, 26 Sep 2017) | 10 lines
+
+add 'has_undefined_symbols' property for libraries
+
+Windows does not support undefined symbols in shared libraries,
+so libtool refuses to create DLLs without the -no-undefined flag.
+
+Adding explicit HAS_UNDEFINED_SYMBOLS(False) api call per library,
+and the optional (has_undefined_symbols=False) argument to AutoC().
+
+For backwards compatibility, default is (has_undefined_symbols=True).
+
+------------------------------------------------------------------------
+Index: libconfix/plugins/automake/c/out_c.py
+===================================================================
+--- libconfix/plugins/automake/c/out_c.py	(revision 959)
++++ libconfix/plugins/automake/c/out_c.py	(revision 960)
+@@ -487,6 +487,9 @@
+                 elif b.default_version() is not None:
+                     automake_output_builder.makefile_am().add_compound_ldflags(automakelibname, '-release '+b.default_version())
+                     pass
++                if b.has_undefined_symbols() is False:
++                    automake_output_builder.makefile_am().add_compound_ldflags(automakelibname, '-no-undefined')
++                    pass
+                 pass
+             else:
+                 automake_output_builder.configure_ac().add_paragraph(
+Index: libconfix/plugins/c/clusterer.py
+===================================================================
+--- libconfix/plugins/c/clusterer.py	(revision 959)
++++ libconfix/plugins/c/clusterer.py	(revision 960)
+@@ -33,7 +33,7 @@
+ import types
+ 
+ class CClustererSetup(Setup):
+-    def __init__(self, linkednamefinder=None):
++    def __init__(self, linkednamefinder=None, has_undefined_symbols=True):
+         assert linkednamefinder is None or isinstance(linkednamefinder, NameFinder)
+         Setup.__init__(self)
+         if linkednamefinder is None:
+@@ -41,10 +41,11 @@
+         else:
+             self.__namefinder = linkednamefinder
+             pass
++        self.__has_undefined_symbols = has_undefined_symbols
+         pass
+ 
+     def setup(self, dirbuilder):
+-        clusterer = CClusterer(namefinder=self.__namefinder)
++        clusterer = CClusterer(namefinder=self.__namefinder, has_undefined_symbols=self.__has_undefined_symbols)
+         dirbuilder.add_builder(clusterer)
+         dirbuilder.add_interface(CClustererInterfaceProxy(clusterer=clusterer))
+         pass
+@@ -51,11 +52,12 @@
+     pass
+ 
+ class CClusterer(Builder):
+-    def __init__(self, namefinder):
++    def __init__(self, namefinder, has_undefined_symbols=True):
+         Builder.__init__(self)
+         self.__namefinder = namefinder
+         self.__libname = None
+         self.__libtool_version_info = None
++        self.__has_undefined_symbols = has_undefined_symbols
+         pass
+ 
+     def shortname(self):
+@@ -85,6 +87,15 @@
+             pass
+         pass
+ 
++    def set_has_undefined_symbols(self, has_undefined_symbols):
++        self.__has_undefined_symbols = has_undefined_symbols
++        for builder in self.parentbuilder().iter_builders():
++            if isinstance(builder, LibraryBuilder):
++                builder.set_has_undefined_symbols(has_undefined_symbols)
++                break
++            pass
++        pass
++
+     def enlarge(self):
+         super(CClusterer, self).enlarge()
+ 
+@@ -163,7 +174,8 @@
+             LibraryBuilder(
+                 basename=libname,
+                 version=self.__libtool_version_info,
+-                default_version=self.package().version()))
++                default_version=self.package().version(),
++                has_undefined_symbols=self.__has_undefined_symbols))
+         for b in itertools.chain(nomain_builders, header_builders):
+             library.add_member(b)
+             pass
+@@ -229,6 +241,13 @@
+             pass
+         self.__clusterer.set_libtool_version_info(version)
+         pass
++
++    def HAS_UNDEFINED_SYMBOLS(self, has_undefined_symbols):
++        if type(has_undefined_symbols) is not types.BooleanType:
++            raise Error("HAS_UNDEFINED_SYMBOLS(): 'has_undefined_symbols' argument must be a boolean")
++        self.__clusterer.set_has_undefined_symbols(has_undefined_symbols)
++        pass
++
+     pass
+ 
+ class NameFinder:
+Index: libconfix/plugins/c/explicit_iface.py
+===================================================================
+--- libconfix/plugins/c/explicit_iface.py	(revision 959)
++++ libconfix/plugins/c/explicit_iface.py	(revision 960)
+@@ -104,7 +104,7 @@
+         self.__dirbuilder.add_builder(yacc)
+         return yacc
+ 
+-    def LIBRARY(self, members, basename=None, version=None):
++    def LIBRARY(self, members, basename=None, version=None, undefined_symbols=True):
+         the_basename = basename
+         if the_basename is None:
+             the_basename=LongNameFinder().find_libname(
+@@ -113,7 +113,8 @@
+             pass
+         library = LibraryBuilder(basename=the_basename,
+                                  version=version,
+-                                 default_version=self.__dirbuilder.package().version())
++                                 default_version=self.__dirbuilder.package().version(),
++                                 has_undefined_symbols=undefined_symbols)
+         for m in members:
+             library.add_member(m)
+             pass
+Index: libconfix/plugins/c/library.py
+===================================================================
+--- libconfix/plugins/c/library.py	(revision 959)
++++ libconfix/plugins/c/library.py	(revision 960)
+@@ -25,7 +25,8 @@
+     def __init__(self,
+                  basename,
+                  version,
+-                 default_version):
++                 default_version,
++                 has_undefined_symbols):
+ 
+         # library version. passed to libtool as "-version-info
+         # <current>:<revision>:<age>", for example.
+@@ -40,6 +41,7 @@
+         self.__basename = basename
+         self.__version = version
+         self.__default_version = default_version
++        self.__has_undefined_symbols = has_undefined_symbols
+ 
+         self.__buildinfo_added = False
+         
+@@ -82,6 +84,10 @@
+         super(LibraryBuilder, self).force_enlarge()
+         pass
+ 
++    def set_has_undefined_symbols(self, has_undefined_symbols):
++        self.__has_undefined_symbols = has_undefined_symbols
++        pass
++
+     def version(self):
+         return self.__version
+ 
+@@ -88,4 +94,7 @@
+     def default_version(self):
+         return self.__default_version
+ 
++    def has_undefined_symbols(self):
++        return self.__has_undefined_symbols
++
+     pass
+Index: libconfix/plugins/c/setups/default_setup.py
+===================================================================
+--- libconfix/plugins/c/setups/default_setup.py	(revision 959)
++++ libconfix/plugins/c/setups/default_setup.py	(revision 960)
+@@ -25,8 +25,8 @@
+ 
+ from libconfix.core.machinery.setup import CompositeSetup
+ 
+-def make_core_setups(linkednamefinder):
+-    return [CClustererSetup(linkednamefinder=linkednamefinder),
++def make_core_setups(linkednamefinder, has_undefined_symbols):
++    return [CClustererSetup(linkednamefinder=linkednamefinder, has_undefined_symbols=has_undefined_symbols),
+             CCreatorSetup(),
+             CommonInterfaceSetup(),
+             RelocatedHeadersSetup(),
+@@ -34,8 +34,9 @@
+ 
+ class DefaultCSetup(CompositeSetup):
+     def __init__(self,
+-                 linkednamefinder=None):
+-        setups = make_core_setups(linkednamefinder=linkednamefinder)
++                 linkednamefinder=None,
++                 has_undefined_symbols=True):
++        setups = make_core_setups(linkednamefinder=linkednamefinder, has_undefined_symbols=has_undefined_symbols)
+         setups.append(ImplicitInterfaceSetup())
+         CompositeSetup.__init__(
+             self,
+Index: libconfix/setups/c.py
+===================================================================
+--- libconfix/setups/c.py	(revision 959)
++++ libconfix/setups/c.py	(revision 960)
+@@ -26,7 +26,7 @@
+     pass
+ 
+ class AutoC(CompositeSetup):
+-    def __init__(self, libnamefinder=None):
+-        CompositeSetup.__init__(self, [DefaultCSetup(libnamefinder)])
++    def __init__(self, libnamefinder=None, has_undefined_symbols=True):
++        CompositeSetup.__init__(self, [DefaultCSetup(libnamefinder, has_undefined_symbols=has_undefined_symbols)])
+         pass
+     pass

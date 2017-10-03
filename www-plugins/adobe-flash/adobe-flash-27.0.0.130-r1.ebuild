@@ -6,8 +6,8 @@ inherit gnome2-utils nsplugins multilib multilib-minimal
 
 DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="
-	http://www.adobe.com/products/flashplayer.html
-	http://get.adobe.com/flashplayer/
+	https://www.adobe.com/products/flashplayer.html
+	https://get.adobe.com/flashplayer/
 	https://helpx.adobe.com/security/products/flash-player.html
 "
 

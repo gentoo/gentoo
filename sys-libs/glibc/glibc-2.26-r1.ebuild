@@ -28,7 +28,7 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER="4.7.3-r1"
 
 # Gentoo patchset
-PATCH_VER="0"
+PATCH_VER="1"
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
@@ -568,6 +568,12 @@ glibc_do_src_install() {
 	cd "${builddir}"
 
 	emake install_root="${D}$(alt_prefix)" install || die
+
+	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
+	# which come without headers etc. Only needed for binary packages since the
+	# external net-libs/libnsl has increased soversion. Keep only versioned libraries.
+	find "${D}" -name "libnsl.a" -delete
+	find "${D}" -name "libnsl.so" -delete
 
 	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
 	# to infer upstream version:

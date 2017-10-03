@@ -20,7 +20,6 @@ move kde-base/calendarjanitor kde-apps/calendarjanitor
 move kde-base/kabcclient kde-apps/kabcclient
 move kde-base/kaddressbook kde-apps/kaddressbook
 move kde-base/kalarm kde-apps/kalarm
-move kde-base/kdepim-common-libs kde-apps/kdepim-common-libs
 move kde-base/kdepim-kresources kde-apps/kdepim-kresources
 move kde-base/kdepim-l10n kde-apps/kdepim-l10n
 move kde-base/kdepim-meta kde-apps/kdepim-meta
@@ -36,7 +35,6 @@ move kde-base/konsolekalendar kde-apps/konsolekalendar
 move kde-base/kontact kde-apps/kontact
 move kde-base/korganizer kde-apps/korganizer
 move kde-base/ktimetracker kde-apps/ktimetracker
-move kde-base/ktnef kde-apps/ktnef
 move kde-base/libkdepim kde-apps/libkdepim
 move kde-base/libkleo kde-apps/libkleo
 move kde-base/libkpgp kde-apps/libkpgp

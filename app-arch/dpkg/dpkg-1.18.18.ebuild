@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils multilib autotools toolchain-funcs
 
 DESCRIPTION="Package maintenance system for Debian"
-HOMEPAGE="http://packages.qa.debian.org/dpkg"
+HOMEPAGE="https://packages.qa.debian.org/dpkg"
 SRC_URI="mirror://debian/pool/main/d/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2+"

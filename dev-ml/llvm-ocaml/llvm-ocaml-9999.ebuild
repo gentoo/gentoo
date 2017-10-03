@@ -98,7 +98,8 @@ src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
@@ -115,7 +116,7 @@ src_configure() {
 		local llvm_bindir=$(llvm-config --bindir)
 		# Force using system-installed tools.
 		sed -i -e "/llvm_tools_dir/s@\".*\"@\"${llvm_bindir}\"@" \
-			"${BUILD_DIR}"/test/lit.site.cfg || die
+			"${BUILD_DIR}"/test/lit.site.cfg.py || die
 	fi
 }
 

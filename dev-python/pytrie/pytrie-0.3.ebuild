@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm"
+KEYWORDS="amd64 arm x86"
 IUSE=""
 
 DEPEND="dev-python/sortedcontainers[${PYTHON_USEDEP}]"

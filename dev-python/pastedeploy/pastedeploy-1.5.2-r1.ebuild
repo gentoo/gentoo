@@ -16,7 +16,7 @@ SRC_URI="https://bitbucket.org/ianb/pastedeploy/get/${PV}.tar.gz -> ${P}-r1.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="doc test"
 
 RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]

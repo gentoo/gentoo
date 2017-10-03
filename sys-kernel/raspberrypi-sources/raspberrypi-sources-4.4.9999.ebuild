@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit kernel-2
 detect_version
 detect_arch
 
-inherit git-2 versionator
+inherit git-r3 versionator
 EGIT_REPO_URI=https://github.com/raspberrypi/linux.git
 EGIT_PROJECT="raspberrypi-linux.git"
 EGIT_BRANCH="rpi-$(get_version_component_range 1-2).y"
@@ -22,6 +22,6 @@ HOMEPAGE="https://github.com/raspberrypi/linux"
 KEYWORDS=""
 
 src_unpack() {
-	git-2_src_unpack
+	git-r3_src_unpack
 	unpack_set_extraversion
 }

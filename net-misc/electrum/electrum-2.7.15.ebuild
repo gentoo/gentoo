@@ -46,7 +46,10 @@ RDEPEND="
 	dev-python/slowaes[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
-	dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	|| (
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	)
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[python,v4l,${PYTHON_USEDEP}] )
 	qt4? (

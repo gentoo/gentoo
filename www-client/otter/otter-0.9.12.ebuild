@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils cmake-utils
+inherit eutils cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
 HOMEPAGE="http://otter-browser.org/"
@@ -11,7 +10,7 @@ SRC_URI="https://github.com/Emdek/${PN}/archive/v${PV/_p/-dev}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="spell"
 
 DEPEND="
@@ -59,4 +58,14 @@ src_prepare() {
 src_install() {
 	cmake-utils_src_install
 	domenu ${PN}-browser.desktop
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

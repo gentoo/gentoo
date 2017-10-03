@@ -1,0 +1,85 @@
+From eeb3da6eb717ed6a1a1069a7611eb37503e8672d Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 19 Sep 2017 12:28:43 +0900
+Subject: [PATCH 2/3] common: Fix gnupg_wait_processes.
+
+* common/exechelp-posix.c (gnupg_wait_processes): Loop for r_exitcodes
+even if we already see an error.
+
+--
+
+The value stored by waitpid for exit code is encoded;  It requires
+decoded by WEXITSTATUS macro, regardless of an error.
+
+For example, when one of processes is already exited and another is
+still running, it resulted wrong value of in r_exitcodes[n].
+
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ common/exechelp-posix.c | 50 +++++++++++++++++++++++++------------------------
+ 1 file changed, 26 insertions(+), 24 deletions(-)
+
+diff --git a/common/exechelp-posix.c b/common/exechelp-posix.c
+index 7237993a2..3acf74ad6 100644
+--- a/common/exechelp-posix.c
++++ b/common/exechelp-posix.c
+@@ -784,30 +784,32 @@ gnupg_wait_processes (const char **pgmnames, pid_t *pids, size_t count,
+         }
+     }
+ 
+-  if (ec == 0)
+-    for (i = 0; i < count; i++)
+-      {
+-        if (WIFEXITED (r_exitcodes[i]) && WEXITSTATUS (r_exitcodes[i]) == 127)
+-          {
+-            log_error (_("error running '%s': probably not installed\n"),
+-                       pgmnames[i]);
+-            ec = GPG_ERR_CONFIGURATION;
+-          }
+-        else if (WIFEXITED (r_exitcodes[i]) && WEXITSTATUS (r_exitcodes[i]))
+-          {
+-            if (dummy)
+-              log_error (_("error running '%s': exit status %d\n"),
+-                         pgmnames[i], WEXITSTATUS (r_exitcodes[i]));
+-            else
+-              r_exitcodes[i] = WEXITSTATUS (r_exitcodes[i]);
+-            ec = GPG_ERR_GENERAL;
+-          }
+-        else if (!WIFEXITED (r_exitcodes[i]))
+-          {
+-            log_error (_("error running '%s': terminated\n"), pgmnames[i]);
+-            ec = GPG_ERR_GENERAL;
+-          }
+-      }
++  for (i = 0; i < count; i++)
++    {
++      if (r_exitcodes[i] == -1)
++        continue;
++
++      if (WIFEXITED (r_exitcodes[i]) && WEXITSTATUS (r_exitcodes[i]) == 127)
++        {
++          log_error (_("error running '%s': probably not installed\n"),
++                     pgmnames[i]);
++          ec = GPG_ERR_CONFIGURATION;
++        }
++      else if (WIFEXITED (r_exitcodes[i]) && WEXITSTATUS (r_exitcodes[i]))
++        {
++          if (dummy)
++            log_error (_("error running '%s': exit status %d\n"),
++                       pgmnames[i], WEXITSTATUS (r_exitcodes[i]));
++          else
++            r_exitcodes[i] = WEXITSTATUS (r_exitcodes[i]);
++          ec = GPG_ERR_GENERAL;
++        }
++      else if (!WIFEXITED (r_exitcodes[i]))
++        {
++          log_error (_("error running '%s': terminated\n"), pgmnames[i]);
++          ec = GPG_ERR_GENERAL;
++        }
++    }
+ 
+   xfree (dummy);
+   return gpg_err_make (GPG_ERR_SOURCE_DEFAULT, ec);
+-- 
+2.13.5
+

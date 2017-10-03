@@ -43,6 +43,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
 		dev-python/sphinx
+		dev-tex/latexmk
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)

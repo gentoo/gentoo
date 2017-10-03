@@ -21,7 +21,7 @@ DEPEND=">=dev-libs/libsodium-1.0.11:=
 	>=dev-qt/qtnetwork-5.7.1:5=[ssl]
 	>=dev-qt/qtsql-5.7.1:5=[sqlite]
 	>=dev-qt/qtwidgets-5.7.1:5=
-	>=media-gfx/qrencode-3.4.4-r1"
+	>=media-gfx/qrencode-3.4.4-r1:="
 RDEPEND="${DEPEND}"
 
 DOCS=(

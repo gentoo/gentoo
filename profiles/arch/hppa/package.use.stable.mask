@@ -17,10 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (13 Sep 2017)
-# Mask test for Qt 5.7.1 stabilization timeout
-# (bug 620334)
-kde-frameworks/extra-cmake-modules test
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
+# Mask pdf support so net-print/cups-filters stabilisation
+# can go ahead (bug 627392)
+net-print/cups-filters pdf
+
+# David Seifert <soap@gentoo.org> (23 Sep 2017)
+# MPI does not have stable keywords on hppa
+sci-libs/fftw mpi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
 # Mask mpi support so Boost stabilization can go ahead

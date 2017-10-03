@@ -1,0 +1,47 @@
+--- a/simgear/scene/material/Effect.cxx
++++ b/simgear/scene/material/Effect.cxx
+@@ -32,7 +32,7 @@
+ #include <map>
+ #include <queue>
+ #include <utility>
+-#include <boost/tr1/unordered_map.hpp>
++#include <boost/unordered_map.hpp>
+ 
+ #include <boost/bind.hpp>
+ #include <boost/foreach.hpp>
+@@ -832,13 +832,13 @@
+ 
+ // XXX Should these be protected by a mutex? Probably
+ 
+-typedef tr1::unordered_map<ProgramKey, ref_ptr<Program>,
++typedef boost::unordered_map<ProgramKey, ref_ptr<Program>,
+                            boost::hash<ProgramKey>, ProgramKey::EqualTo>
+ ProgramMap;
+ ProgramMap programMap;
+ ProgramMap resolvedProgramMap;  // map with resolved shader file names
+ 
+-typedef tr1::unordered_map<ShaderKey, ref_ptr<Shader>, boost::hash<ShaderKey> >
++typedef boost::unordered_map<ShaderKey, ref_ptr<Shader>, boost::hash<ShaderKey> >
+ ShaderMap;
+ ShaderMap shaderMap;
+ 
+--- a/simgear/scene/material/Effect.hxx
++++ b/simgear/scene/material/Effect.hxx
+@@ -19,7 +19,7 @@
+ 
+ #include <vector>
+ #include <string>
+-#include <boost/tr1/unordered_map.hpp>
++#include <boost/unordered_map.hpp>
+ 
+ #include <boost/functional/hash.hpp>
+ 
+@@ -127,7 +127,7 @@
+             bool operator()(const Key& lhs, const Key& rhs) const;
+         };
+     };
+-    typedef std::tr1::unordered_map<Key, osg::observer_ptr<Effect>,
++    typedef boost::unordered_map<Key, osg::observer_ptr<Effect>,
+                                     boost::hash<Key>, Key::EqualTo> Cache;
+     Cache* getCache()
+     {

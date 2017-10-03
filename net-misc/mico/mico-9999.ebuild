@@ -134,6 +134,9 @@ src_install() {
 	mv "${ED}"usr/bin/{,mico-}nsd || die
 	mv "${ED}"usr/man/man8/{,mico-}nsd.8 || die
 
+	# avoid conflict with net-misc/eventd, bug#632170
+	mv "${ED}"usr/bin/{,mico-}eventd || die
+
 	dodir /usr/share
 	mv "${ED}"usr/man "${ED}"usr/share || die
 	dodir /usr/share/doc/${PF}
@@ -146,4 +149,8 @@ pkg_postinst() {
 	einfo "The MICO Name Service daemon 'nsd' is named 'mico-nsd'"
 	einfo "due to a name conflict with net-dns/nsd. For details"
 	einfo "please refer to https://bugs.gentoo.org/544488."
+	einfo
+	einfo "The MICO Event daemon 'eventd' is named 'mico-eventd'"
+	einfo "due to a name conflict with net-misc/eventd. For details"
+	einfo "please refer to https://bugs.gentoo.org/632170."
 }

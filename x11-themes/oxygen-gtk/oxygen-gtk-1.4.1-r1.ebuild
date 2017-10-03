@@ -13,7 +13,7 @@ HOMEPAGE="https://store.kde.org/content/show.php/?content=136216"
 SRC_URI="mirror://kde/stable/${MY_PN}/${PV}/src/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="3"
 IUSE="debug doc"
 

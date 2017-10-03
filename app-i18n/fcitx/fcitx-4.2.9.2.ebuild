@@ -24,7 +24,7 @@ else
 fi
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
-SLOT="0"
+SLOT="4"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
@@ -39,7 +39,10 @@ RDEPEND="dev-libs/glib:2
 		x11-libs/libXfixes
 		x11-libs/libXinerama
 		x11-libs/libXrender
-		xml? ( x11-libs/libxkbfile )
+		xml? (
+			x11-libs/libxkbfile
+			x11-misc/xkeyboard-config
+		)
 	)
 	cairo? (
 		x11-libs/cairo[X]

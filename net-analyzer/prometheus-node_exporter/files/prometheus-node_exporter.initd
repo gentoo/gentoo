@@ -3,22 +3,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 description="Prometheus machine metrics exporter"
-pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
-user=${user:-${SVCNAME}}
-group=${group:-${SVCNAME}}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
 
 command="/usr/bin/node_exporter"
 command_args="${command_args:--collector.textfile.directory=/var/lib/node_exporter/}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
-	--stdout /var/log/node_exporter/${SVCNAME}.log \
-	--stderr /var/log/node_exporter/${SVCNAME}.log"
+	--stdout /var/log/node_exporter/${RC_SVCNAME}.log \
+	--stderr /var/log/node_exporter/${RC_SVCNAME}.log"
 
 depend() {
-	need net
 	after net
-}
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
 }

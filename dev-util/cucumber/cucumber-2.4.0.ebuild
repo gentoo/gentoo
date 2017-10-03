@@ -17,7 +17,7 @@ DESCRIPTION="Executable feature scenarios"
 HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 SLOT="0"
 IUSE="examples test"
 

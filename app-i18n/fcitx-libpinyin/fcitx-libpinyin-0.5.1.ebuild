@@ -14,22 +14,22 @@ fi
 DESCRIPTION="Chinese LibPinyin input methods for Fcitx"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-libpinyin"
 if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+	SRC_URI="https://download.fcitx-im.org/data/model.text.20161206.tar.gz -> fcitx-data-model.text.20161206.tar.gz"
 else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
-SLOT="0"
+SLOT="4"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="dictmanager"
+IUSE="dictionary-manager"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
 	>=app-i18n/libpinyin-1.9.91:=
 	dev-libs/glib:2
 	sys-apps/dbus
 	virtual/libintl
-	dictmanager? (
+	dictionary-manager? (
 		>=app-i18n/fcitx-qt5-1.1
 		>=dev-qt/qtcore-5.7:5
 		>=dev-qt/qtdbus-5.7:5
@@ -41,9 +41,17 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+src_prepare() {
+	if [[ "${PV}" == "9999" ]]; then
+		ln -s "${DISTDIR}/fcitx-data-model.text.20161206.tar.gz" data/model.text.20161206.tar.gz || die
+	fi
+
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_QT=$(usex dictmanager)
+		-DENABLE_QT=$(usex dictionary-manager)
 	)
 
 	cmake-utils_src_configure

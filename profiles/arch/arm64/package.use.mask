@@ -222,10 +222,6 @@ media-sound/rhythmbox visualizer
 # Unkeyworded deps, bug #481462
 dev-python/ipython nbconvert
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL	hdf
@@ -317,7 +313,7 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-apps/okular ebook chm
+kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp

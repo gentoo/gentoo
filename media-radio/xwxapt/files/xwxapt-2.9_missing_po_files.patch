@@ -1,0 +1,11 @@
+# add missing po-files bug #631268
+--- po/POTFILES.in.orig	2013-12-02 08:01:31.000000000 +0100
++++ po/POTFILES.in	2017-10-02 16:58:22.048524697 +0200
+@@ -7,4 +7,7 @@
+ src/sound.c
+ src/support.c
+ src/utils.c
++src/aptsignal.c
++src/callback_func.c
++src/rtlsdr.c
+ xwxapt.glade

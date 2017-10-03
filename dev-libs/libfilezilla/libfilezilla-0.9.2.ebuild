@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="C++ library offering some basic functionality for platform-independent programs"
 HOMEPAGE="https://lib.filezilla-project.org/"
@@ -11,12 +11,14 @@ SRC_URI="mirror://sourceforge/filezilla/${P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
+
+PATCHES=("${FILESDIR}"/${PN}-0.9.2-cppunit-pkgconfig.patch)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -27,4 +29,11 @@ pkg_pretend() {
 			die "Currently active compiler does not support -std=c++14"
 		fi
 	fi
+}
+
+src_prepare() {
+	default
+
+	# cppunit patch changes .m4
+	eautoreconf
 }

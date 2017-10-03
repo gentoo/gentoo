@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 DESCRIPTION="Advanced IRC client based on ircII"
-HOMEPAGE="http://packages.qa.debian.org/s/scrollz.html"
+HOMEPAGE="https://packages.qa.debian.org/s/scrollz.html"
 SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="BSD"
