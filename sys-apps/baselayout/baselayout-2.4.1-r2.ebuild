@@ -224,7 +224,7 @@ pkg_postinst() {
 	if use kernel_linux; then
 		mkdir -p "${EROOT}"run
 
-		local found
+		local found fstype mountpoint
 		while read -r _ mountpoint fstype _; do
 		[[ ${mountpoint} = /run ]] && [[ ${fstype} = tmpfs ]] && found=1
 		done < "${ROOT}"proc/mounts
