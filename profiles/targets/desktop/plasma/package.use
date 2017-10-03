@@ -1,23 +1,26 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Required by kde-plasma/plasma-pa
-media-sound/pulseaudio gnome
-
 # Avoid circular dependency when installing from scratch
 dev-util/cmake -qt5
 
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec
 
-# Required by kde-apps/akonadi
-dev-qt/qtsql mysql
-
 # Required by dev-qt/qtcore
 dev-libs/libpcre pcre16
 
-# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
-media-libs/gd fontconfig
+# Required by kde-frameworks/kcoreaddons
+dev-qt/qtcore:5 icu
+
+# Required by kde-frameworks/kwayland
+dev-qt/qtgui:5 egl
+
+# Required by kde-apps/okteta
+dev-qt/qtscript:5 scripttools
+
+# Required by kde-apps/akonadi
+dev-qt/qtsql:5 mysql
 
 # Required by kde-apps/kate[addons]
 dev-libs/libgit2 threads
@@ -28,23 +31,17 @@ kde-apps/ktp-common-internals otr
 # Required by kde-apps/libkexiv2
 media-gfx/exiv2 xmp
 
-# Required by kde-apps/okteta
-dev-qt/qtscript scripttools
-
-# Required by kde-frameworks/kactivities
-sys-libs/zlib minizip
-
 # Required by kde-frameworks/kapidox
 media-gfx/graphviz python
 
-# Required by kde-frameworks/kcoreaddons
-dev-qt/qtcore icu
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
+
+# Required by dev-qt/qtwebengine
+media-libs/libvpx svc
 
 # Required by kde-plasma/kwin
 media-libs/mesa egl wayland
-
-# Required by kde-frameworks/kwayland
-dev-qt/qtgui:5 egl
 
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
@@ -52,8 +49,11 @@ dev-qt/qtgui:5 egl
 # Required by app-office/libreoffice
 media-libs/phonon designer
 
-# Required by dev-qt/qtwebengine
-media-libs/libvpx svc
+# Required by kde-plasma/plasma-pa
+media-sound/pulseaudio gnome
+
+# Required by kde-frameworks/kactivities
+sys-libs/zlib minizip
 
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
 <dev-python/qscintilla-python-2.10 -qt4
