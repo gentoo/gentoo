@@ -4,9 +4,9 @@ DESCRIPTION=fish is the Friendly Interactive SHell
 EAPI=6
 HOMEPAGE=http://fishshell.com/
 IUSE=nls
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~amd64 ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libpcre2-10.21[pcre32] sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/fish-shell/fish-shell/releases/download/2.6.0/fish-2.6.0.tar.gz
-_md5_=c13aabe4d31d7691f71db52e53017a41
+_md5_=8d3a4f2e979f2c5791f5686cdf8c963b
