@@ -4602,7 +4602,7 @@ dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.2.8 2.3.5 2.4.2: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
-dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1 2.12.2: The Scala Programming Language
+dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.11.11 2.12.1 2.12.2: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
@@ -10476,7 +10476,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.57 2.60.3 2.67 2.71 2.73.1 2.78 2.80: Extensible continuous integration server
+dev-util/jenkins-bin 2.57 2.60.3 2.67 2.71 2.73.1 2.78 2.80 2.81: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.0 2.9.1: Graphical debugger interface
@@ -17180,7 +17180,7 @@ sys-apps/less 487 497 520: Excellent text file viewer
 sys-apps/likwid 4.1.1 4.1.2: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
-sys-apps/lm_sensors 3.3.4-r1 3.3.5 3.4.0 3.4.0_p20160725: Hardware Monitoring user-space utilities
+sys-apps/lm_sensors 3.4.0_p20160725: Hardware Monitoring user-space utilities
 sys-apps/lmctfy 0.2.0 0.3.0 0.3.1 0.5.0 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
