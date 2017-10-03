@@ -404,7 +404,6 @@ dev-util/mutrace
 # Multiple unresolved bugs (#600680), need major version bumps and a
 # maintainer, removal in 2 months.
 dev-libs/libRocket
-games-fps/warsow
 
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
