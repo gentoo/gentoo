@@ -33,6 +33,5 @@ src_compile() {
 }
 
 src_install() {
-	emake PKG_CONFIG="$(tc-getPKG_CONFIG)" \
-		DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 }
