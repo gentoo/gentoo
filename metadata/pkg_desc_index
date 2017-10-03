@@ -4532,7 +4532,7 @@ dev-lang/elixir 1.3.0-r1 1.4.4 1.4.5 1.5.0 1.5.1: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 18.3 19.1 19.3 20.0: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
-dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0 2.2.0.0 2.3.0.0 2.3.0.1: a non-interactive scripting language
+dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0 2.2.0.0 2.3.0.0 2.3.0.1 2.3.0.2: a non-interactive scripting language
 dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1: Free Pascal Compiler
@@ -4607,7 +4607,7 @@ dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.2.0_pre20170719: Stand-alone JavaScript C++ library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.4.0_pre20171003: Stand-alone JavaScript C++ library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15: free, small, and standard compliant Prolog compiler
@@ -5073,7 +5073,7 @@ dev-libs/serd 0.26.0 0.28.0: Library for RDF syntax which supports reading and w
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/sink 0.3.0-r1: A data access layer handling synchronization, caching and indexing
-dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2 2.5.0.0 2.5.1.1: skarnet.org general-purpose libraries
+dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2 2.5.0.0 2.5.1.1 2.6.0.0: skarnet.org general-purpose libraries
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
@@ -14629,7 +14629,7 @@ net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
-net-dns/s6-dns 2.1.0.0 2.2.0.0: suite of DNS client programs and libraries for Unix systems
+net-dns/s6-dns 2.1.0.0 2.2.0.0 2.2.0.1: suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
@@ -15421,7 +15421,7 @@ net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r3 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.32.1 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1 2.0.0: Command line client for Amazon S3
-net-misc/s6-networking 2.2.1.0 2.3.0.0 2.3.0.1: suite of small networking utilities for Unix systems
+net-misc/s6-networking 2.2.1.0 2.3.0.0 2.3.0.1 2.3.0.2: suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/seafile 6.0.7 6.1.0: File syncing and sharing software with file encryption and group sharing
@@ -17268,11 +17268,11 @@ sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
-sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0 2.5.0.0 2.5.1.0: skarnet.org's small and secure supervision software suite
-sys-apps/s6-linux-init 0.0.1.4 0.1.0.0 0.2.0.0 0.3.0.0: Generates an init binary for s6-based init systems
-sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0 2.2.0.0 2.3.0.0 2.4.0.0: set of tiny linux utilities
-sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0 2.1.0.0 2.2.0.0 2.2.1.0: set of tiny portable unix utilities
-sys-apps/s6-rc 0.0.2.1 0.0.3.0 0.1.0.0 0.2.0.0 0.2.0.1: service manager for the s6 supervision suite
+sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0 2.5.0.0 2.5.1.0 2.6.1.0: skarnet.org's small and secure supervision software suite
+sys-apps/s6-linux-init 0.0.1.4 0.1.0.0 0.2.0.0 0.3.0.0 0.3.1.0: Generates an init binary for s6-based init systems
+sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0 2.2.0.0 2.3.0.0 2.4.0.0 2.4.0.1: set of tiny linux utilities
+sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0 2.1.0.0 2.2.0.0 2.2.1.0 2.2.1.1: set of tiny portable unix utilities
+sys-apps/s6-rc 0.0.2.1 0.0.3.0 0.1.0.0 0.2.0.0 0.2.0.1 0.2.1.2: service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.10-r3 2.10-r4 2.11-r3 2.11-r4 2.11-r5: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm

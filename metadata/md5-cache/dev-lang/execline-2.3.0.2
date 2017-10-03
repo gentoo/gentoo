@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-devel/make-3.81 static? ( >=dev-libs/skalibs-2.6.0.0[static-libs] ) !static? ( >=dev-libs/skalibs-2.6.0.0 )
+DESCRIPTION=a non-interactive scripting language
+EAPI=6
+HOMEPAGE=https://www.skarnet.org/software/execline/
+IUSE=static static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ISC
+RDEPEND=!static? ( >=dev-libs/skalibs-2.6.0.0:= )
+SLOT=0/2.3
+SRC_URI=https://www.skarnet.org/software/execline/execline-2.3.0.2.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=7ba7a3ce26bcd3fc7e09c4453e3d4ca9

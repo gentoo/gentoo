@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-devel/make-3.81 static? ( >=dev-libs/skalibs-2.6.0.0[static-libs] ) !static? ( >=dev-libs/skalibs-2.6.0.0 )
+DESCRIPTION=set of tiny linux utilities
+EAPI=6
+HOMEPAGE=https://www.skarnet.org/software/s6-linux-utils/
+IUSE=static
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=!static? ( >=dev-libs/skalibs-2.6.0.0:= )
+SLOT=0
+SRC_URI=https://www.skarnet.org/software/s6-linux-utils/s6-linux-utils-2.4.0.1.tar.gz
+_md5_=e2bc2265fb1ebf4f0d004d7a3e057273

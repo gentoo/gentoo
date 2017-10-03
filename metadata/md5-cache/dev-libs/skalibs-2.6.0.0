@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-devel/make-3.81
+DESCRIPTION=skarnet.org general-purpose libraries
+EAPI=6
+HOMEPAGE=https://www.skarnet.org/software/skalibs/
+IUSE=doc ipv6 static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ISC
+SLOT=0/2.6
+SRC_URI=https://www.skarnet.org/software/skalibs/skalibs-2.6.0.0.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=37a08308db82131a938325c26252d9a1

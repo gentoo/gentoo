@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-devel/make-3.81 static? ( >=dev-lang/execline-2.3.0.2[static-libs] >=dev-libs/skalibs-2.6.0.0[static-libs] >=net-dns/s6-dns-2.2.0.1[static-libs] >=sys-apps/s6-2.6.1.0[static-libs] ssl? ( >=dev-libs/libressl-2.4.5[static-libs] ) ) !static? ( >=dev-lang/execline-2.3.0.2[static=] >=dev-libs/skalibs-2.6.0.0 >=net-dns/s6-dns-2.2.0.1[static=] >=sys-apps/s6-2.6.1.0[static=] ssl? ( >=dev-libs/libressl-2.4.5 ) )
+DESCRIPTION=suite of small networking utilities for Unix systems
+EAPI=6
+HOMEPAGE=https://www.skarnet.org/software/s6-networking/
+IUSE=ssl static static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=>=dev-lang/execline-2.3.0.2:=[!static?] >=sys-apps/s6-2.6.1.0:=[!static?] !static? ( >=dev-libs/skalibs-2.6.0.0:= >=net-dns/s6-dns-2.2.0.1:= ssl? ( >=dev-libs/libressl-2.4.5:= ) )
+SLOT=0/2.3
+SRC_URI=https://www.skarnet.org/software/s6-networking/s6-networking-2.3.0.2.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=418f08c22eba8310db5ce2dfbd81a8a4
