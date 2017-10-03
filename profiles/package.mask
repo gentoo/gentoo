@@ -211,13 +211,6 @@ games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
 
-# Kent Fredric <kentnl@gentoo.org> (05 Sep 2017)
-# Broken since Perl 5.16 circa 2012, no longer maintained upstream
-# Bug: https://bugs.gentoo.org/623900
-# Bug: https://rt.cpan.org/Public/Bug/Display.html?id=85991
-# Removal in 30 days
-dev-perl/XML-AutoWriter
-
 # Gilles Dartiguelongue <eva@gentoo.org> (04 Sep 2017)
 # Incompatible changes in API in Enchant 2. Bug #629838.
 >=app-text/enchant-2
