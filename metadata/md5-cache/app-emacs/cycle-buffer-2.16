@@ -7,6 +7,6 @@ KEYWORDS=~amd64
 LICENSE=public-domain
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=https://enise.org/users/victor/share/distfiles/cycle-buffer-2.16.el.xz
+SRC_URI=https://github.com/gavv/distfiles/raw/master/cycle-buffer-2.16.el.xz
 _eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=a068064bb54cd3e6689db18482be3419
+_md5_=72d457acf3e4bd192ce764344e2d1dcf
