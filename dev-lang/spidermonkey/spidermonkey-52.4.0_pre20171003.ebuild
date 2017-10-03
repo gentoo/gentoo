@@ -37,6 +37,12 @@ pkg_setup(){
 }
 
 src_prepare() {
+	# remove patches integrated by upstream
+	rm -f	"${WORKDIR}"/${PN}/0002-build-Add-major-version-to-make-parallel-installable.patch \
+		"${WORKDIR}"/${PN}/0005-headers-Fix-symbols-visibility.patch \
+		"${WORKDIR}"/${PN}/0007-build-Remove-unnecessary-NSPR-dependency.patch \
+		|| die
+
 	eapply "${WORKDIR}/${PN}"
 
 	eapply_user
