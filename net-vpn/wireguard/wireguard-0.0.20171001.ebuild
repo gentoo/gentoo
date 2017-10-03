@@ -38,7 +38,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR} V=1"
+	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	use module && linux-mod_src_compile
 	use tools && emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
