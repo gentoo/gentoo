@@ -1,19 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-#
-# don't monkey with this ebuild unless contacting portage devs.
-# period.
-#
-
-EAPI="5"
+EAPI="6"
 
 inherit eutils flag-o-matic multilib-minimal multiprocessing pax-utils
 
 DESCRIPTION="sandbox'd LD_PRELOAD hack"
 HOMEPAGE="https://www.gentoo.org/proj/en/portage/sandbox/"
-SRC_URI="mirror://gentoo/${P}.tar.xz
-	https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,14 +23,6 @@ has sandbox_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS="${EBUILD_D
 sandbox_death_notice() {
 	ewarn "If configure failed with a 'cannot run C compiled programs' error, try this:"
 	ewarn "FEATURES='-sandbox -usersandbox' emerge sandbox"
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-execvpe.patch #578516
-	epatch "${FILESDIR}"/${P}-exec-hash.patch #578524
-	epatch "${FILESDIR}"/${P}-exec-prelink.patch #599894
-	epatch "${FILESDIR}"/${PN}-2.10-fix-opendir.patch #553092
-	epatch_user
 }
 
 multilib_src_configure() {
@@ -61,7 +47,6 @@ multilib_src_install_all() {
 	fowners root:portage /var/log/sandbox
 	fperms 0770 /var/log/sandbox
 
-	cd "${S}"
 	dodoc AUTHORS ChangeLog* NEWS README
 }
 
@@ -69,17 +54,23 @@ pkg_preinst() {
 	chown root:portage "${ED}"/var/log/sandbox
 	chmod 0770 "${ED}"/var/log/sandbox
 
-	if [[ ${REPLACING_VERSIONS} == 1.* ]] ; then
-		local old=$(find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*')
-		if [[ -n ${old} ]] ; then
-			elog "Removing old sandbox libraries for you:"
-			find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*' -print -delete
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ ${v} == 1.* ]] ; then
+			local old=$(find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*')
+			if [[ -n ${old} ]] ; then
+				elog "Removing old sandbox libraries for you:"
+				find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*' -print -delete
+			fi
 		fi
-	fi
+	done
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} == 1.* ]] ; then
-		chmod 0755 "${EROOT}"/etc/sandbox.d #265376
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ ${v} == 1.* ]] ; then
+			chmod 0755 "${EROOT}"/etc/sandbox.d #265376
+		fi
+	done
 }
