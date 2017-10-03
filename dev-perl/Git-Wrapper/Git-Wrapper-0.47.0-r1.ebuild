@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
+	dev-vcs/git
 	virtual/perl-File-Temp
 	dev-perl/File-chdir
 	virtual/perl-IPC-Cmd
@@ -34,3 +35,13 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+src_compile() {
+	perl-module_src_compile
+	local MODULES=(
+		"Git::Wrapper ${DIST_VERSION}"
+	)
+	for dep in "${MODULES[@]}"; do
+		perl -Mblib="${S}" -M"${dep} ()" -e1 ||
+			die "Could not load ${dep}"
+	done
+}
