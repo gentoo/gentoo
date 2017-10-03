@@ -13,7 +13,7 @@ HOMEPAGE="http://www.list.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
