@@ -17,7 +17,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 # We need to keyword app-arch/zstd
 #KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 x86 ~ppc-macos"
 IUSE="libressl lzma scrypt seccomp selinux systemd tor-hardening test web zstd"
 
 DEPEND="
