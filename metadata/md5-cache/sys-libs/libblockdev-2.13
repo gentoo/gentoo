@@ -3,12 +3,12 @@ DEPEND=>=dev-libs/glib-2.42.2 dev-libs/libbytesize >=sys-apps/util-linux-2.27 >=
 DESCRIPTION=A library for manipulating block devices
 EAPI=6
 HOMEPAGE=https://github.com/rhinstaller/libblockdev
-IUSE=bcache crypt dmraid doc lvm kbd test python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
+IUSE=bcache +crypt dmraid doc lvm kbd test python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2+
 RDEPEND=>=dev-libs/glib-2.42.2 dev-libs/libbytesize >=sys-apps/util-linux-2.27 >=sys-block/parted-3.1 crypt? ( >=dev-libs/nss-3.18.0 dev-libs/volume_key >=sys-fs/cryptsetup-1.6.7 ) dmraid? ( sys-fs/dmraid sys-fs/lvm2 ) lvm? ( sys-fs/lvm2 virtual/udev ) kbd? ( >=sys-apps/kmod-19 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?]
 REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
 SLOT=0
-SRC_URI=https://github.com/rhinstaller/libblockdev/archive/2.11-1.tar.gz -> libblockdev-2.11-1.tar.gz
+SRC_URI=https://github.com/rhinstaller/libblockdev/archive/2.13-1.tar.gz -> libblockdev-2.13-1.tar.gz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=41c4087ea4de2a768a65b16b8b0a12d9
+_md5_=feca8ab8d11115c8e13f2f9caab414ff
