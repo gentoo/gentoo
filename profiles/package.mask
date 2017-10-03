@@ -397,7 +397,8 @@ dev-lang/spidermonkey:52
 net-vpn/kvpnc
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't compile, upstream dead, removal in 2 months (#584296).
+# Randomly broken due to sys-devel/binutils-config bug (#584296).
+# Unmask when it is finally fixed, so people can build the package.
 dev-util/mutrace
 
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
