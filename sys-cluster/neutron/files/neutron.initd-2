@@ -6,10 +6,10 @@ description="Starts ${SVCNAME} service for OpenStack"
 
 command=/usr/bin/"${SVCNAME}"
 command_background=yes
-command_args="${required_files[@]/#/--config-file } --log-file ${NEUTRON_LOGDIR:-/var/log/neutron}/${SVCNAME#*-}.log"
 command_user="${NEUTRON_USER:-neutron}"
 pidfile=/run/"${SVCNAME}".pid
 required_files=(${NEUTRON_CONFS[@]:-/etc/neutron/neutron.conf})
+command_args="${required_files[@]/#/--config-file } --log-file ${NEUTRON_LOGDIR:-/var/log/neutron}/${SVCNAME#*-}.log"
 retry="SIGTERM/15"
 
 depend() {
