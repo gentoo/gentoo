@@ -3654,6 +3654,12 @@ mail-client/mutt:tokyocabinet - Enable dev-db/tokyocabinet database backend for 
 mail-client/nail:kerberos - If network is enabled, this adds support for GSSAPI login on IMAP through virtual/krb5.
 mail-client/nail:net - Enable support for network protocols (POP, IMAP and SMTP). If you only need to send mail with the local Transport Agent, disabling this will get you support for only /usr/sbin/sendmail call.
 mail-client/nail:ssl - If network is enabled, this adds support for S/MIME and SSL/TLS-powered protocols through dev-libs/openssl.
+mail-client/neomutt:gpg - Enable support for app-crypt/gpgme
+mail-client/neomutt:kyotocabinet - Enable kyotocabinet database backend for header caching
+mail-client/neomutt:lmdb - Enable LMDB backend for header caching
+mail-client/neomutt:notmuch - Enable support for net-mail/notmuch
+mail-client/neomutt:smime - Enable support for smime
+mail-client/neomutt:tokyocabinet - Enable tokyocabinet database backend for header caching
 mail-client/roundcube:enigma - Add dependencies to support server-side GnuPG signing and/or encryption through the enigma plugin
 mail-client/roundcube:ldap - Add dependencies to support connecting to an LDAP address book server
 mail-client/roundcube:managesieve - Add dependencies to support the sieverules plugin
