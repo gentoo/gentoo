@@ -5572,7 +5572,7 @@ dev-perl/Canary-Stability 2006 2011.0.0 2012.0.0: Canary to check perl compatibi
 dev-perl/Capture-Tiny 0.360.0 0.420.0 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
-dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
+dev-perl/Carp-Assert-More 1.140.0 1.160.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2: Implements an algorithm to find good values for chart axis
@@ -6857,7 +6857,7 @@ dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
 dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
-dev-perl/WWW-Dict-Leo-Org 1.400.0 2.0.0: Commandline interface to http://dict.leo.org/
+dev-perl/WWW-Dict-Leo-Org 1.400.0 2.0.0 2.20.0: Commandline interface to http://dict.leo.org/
 dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
 dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
 dev-perl/WWW-Mechanize 1.750.0 1.790.0 1.840.0: Handy web browsing in a Perl object
