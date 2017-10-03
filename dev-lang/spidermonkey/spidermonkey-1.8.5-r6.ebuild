@@ -13,7 +13,9 @@ MY_P="${MY_PN}-${PV}"
 TARBALL_P="${MY_PN}${TARBALL_PV}-1.0.0"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/js/${TARBALL_P}.tar.gz"
+SRC_URI="https://archive.mozilla.org/pub/js/${TARBALL_P}.tar.gz
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot0-patches-01.tar.xz
+	"
 
 LICENSE="NPL-1.1"
 SLOT="0/mozjs185"
@@ -39,29 +41,29 @@ pkg_setup(){
 
 src_prepare() {
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=628723#c43
-	epatch "${FILESDIR}/${P}-fix-install-symlinks.patch"
+	epatch "${WORKDIR}"/sm0/${P}-fix-install-symlinks.patch
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=638056#c9
-	epatch "${FILESDIR}/${P}-fix-ppc64.patch"
+	epatch "${WORKDIR}"/sm0/${P}-fix-ppc64.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=400727
 	# https://bugs.gentoo.org/show_bug.cgi?id=420471
-	epatch "${FILESDIR}/${P}-arm_respect_cflags-3.patch"
+	epatch "${WORKDIR}"/sm0/${P}-arm_respect_cflags-3.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=438746
-	epatch "${FILESDIR}"/${PN}-1.8.7-freebsd-pthreads.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.7-freebsd-pthreads.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=441928
-	epatch "${FILESDIR}"/${PN}-1.8.5-perf_event-check.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.5-perf_event-check.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=439260
-	epatch "${FILESDIR}"/${P}-symbol-versions.patch
+	epatch "${WORKDIR}"/sm0/${P}-symbol-versions.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=441934
-	epatch "${FILESDIR}"/${PN}-1.8.5-ia64-fix.patch
-	epatch "${FILESDIR}"/${PN}-1.8.5-ia64-static-strings.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.5-ia64-fix.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.5-ia64-static-strings.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=431560
-	epatch "${FILESDIR}"/${PN}-1.8.5-isfinite.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.5-isfinite.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=552786
 	epatch "${FILESDIR}"/${PN}-perl-defined-array-check.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=439558
-	epatch "${FILESDIR}"/${PN}-1.8.7-x32.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.7-x32.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=582478
-	epatch "${FILESDIR}"/${PN}-1.8.5-gcc6.patch
+	epatch "${WORKDIR}"/sm0/${PN}-1.8.5-gcc6.patch
 
 	epatch_user
 
