@@ -121,7 +121,7 @@ app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/keepass 2.36: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
-app-admin/keepassxc 2.1.4 2.2.0 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.1.4 2.2.0 2.2.1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.44: Binary component required by the LastPass Password Manager browser extension
@@ -18419,7 +18419,7 @@ www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser 
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 48.0.2685.32: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 48.0.2685.32 48.0.2685.35: A fast and secure web browser
 www-client/opera-beta 48.0.2685.26: A fast and secure web browser
 www-client/opera-developer 49.0.2723.0 50.0.2729.0: A fast and secure web browser
 www-client/otter 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
