@@ -28,7 +28,6 @@ move x11-libs/qt-meta dev-qt/qt-meta
 move x11-libs/qt-mobility dev-qt/qt-mobility
 move x11-libs/qt-multimedia dev-qt/qtmultimedia
 move x11-libs/qt-opengl dev-qt/qtopengl
-move x11-libs/qt-phonon dev-qt/qtphonon
 move x11-libs/qt-qt3support dev-qt/qt3support
 move x11-libs/qt-script dev-qt/qtscript
 move x11-libs/qt-sql dev-qt/qtsql
