@@ -13,7 +13,7 @@ SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/xmlgraphics/${PN}/sou
 
 LICENSE="Apache-2.0"
 SLOT="1.9"
-KEYWORDS="~amd64 ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc python tcl"
 
 CDEPEND="
