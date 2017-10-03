@@ -411,10 +411,6 @@ games-fps/warsow
 # minicom. Removal in 2 months.
 net-dialup/gtkterm
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#623562). Removal in 2 months.
-media-plugins/vdr-skinnopacity
-
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
