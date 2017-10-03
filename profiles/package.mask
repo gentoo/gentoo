@@ -277,12 +277,6 @@ xfce-extra/xfce4-volumed
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
 
-# Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
-# Masked for removal in 30 days.
-# No major keywords,  old EAPI, no maintainer.
-# Use sys-apps/less instead.
-sys-apps/more
-
 # Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
 # Packages depending on this library need to be tested first before
 # it is unmasked. Possibly some slotting is still needed.
