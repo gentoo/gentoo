@@ -42,4 +42,3 @@ src_install() {
 		doins misc/__khal
 	fi
 }
-
