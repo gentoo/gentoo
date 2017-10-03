@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Basic edit toolkit"
 HOMEPAGE="https://www.emacswiki.org/emacs/basic-toolkit.el"
 # taken from https://www.emacswiki.org/emacs/download/basic-toolkit.el
-SRC_URI="https://enise.org/users/victor/share/distfiles/${P}.el.xz"
+SRC_URI="https://github.com/gavv/distfiles/raw/master/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
