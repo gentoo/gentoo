@@ -1,13 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils linux-info multilib systemd toolchain-funcs
+inherit eutils linux-info multilib systemd toolchain-funcs versionator
+
+MY_PV=$(replace_all_version_separators '-')
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
-HOMEPAGE="http://www.lm-sensors.org/"
-SRC_URI="http://dl.lm-sensors.org/lm-sensors/releases/${P}.tar.bz2"
+HOMEPAGE="https://github.com/groeck/lm-sensors"
+SRC_URI="https://github.com/groeck/${PN/_/-}/archive/V${MY_PV}.tar.gz -> ${PN/_/-}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -28,6 +30,8 @@ CONFIG_CHECK="~HWMON ~I2C_CHARDEV ~I2C"
 WARNING_HWMON="${PN} requires CONFIG_HWMON to be enabled for use."
 WARNING_I2C_CHARDEV="sensors-detect requires CONFIG_I2C_CHARDEV to be enabled."
 WARNING_I2C="${PN} requires CONFIG_I2C to be enabled for most sensors."
+
+S="${WORKDIR}/${PN/_/-}-${MY_PV}/"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-sensors-detect-gentoo.patch
