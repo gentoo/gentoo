@@ -130,6 +130,9 @@ src_install() {
 	cd "${BUILDDIR}" || die
 	emake DESTDIR="${D}" install
 
+	#work around bad header installation
+	mv "${ED}"usr/include/mozjs{,-52} || die
+
 	if ! use minimal; then
 		if use jit; then
 			pax-mark m "${ED}"usr/bin/js${SLOT}
