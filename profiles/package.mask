@@ -241,7 +241,6 @@ net-analyzer/ntop
 # The FOSS-friendly oracle-javamail has rendered other implementations
 # and the virtual obsolete. Removal in 30 days. See bug #553186.
 dev-java/gnu-classpath-inetlib
-dev-java/gnu-javamail
 java-virtuals/javamail
 
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
