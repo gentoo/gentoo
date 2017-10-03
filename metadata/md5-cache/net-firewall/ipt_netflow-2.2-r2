@@ -10,4 +10,4 @@ RDEPEND=net-firewall/iptables snmp? ( net-analyzer/net-snmp ) kernel_linux? ( vi
 SLOT=0
 SRC_URI=mirror://sourceforge/ipt-netflow/ipt-netflow-2.2.tgz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=fa8a2eea43da574981b53e2a6afa998e
+_md5_=1934ef93dc1df21b49b047140f85aa7d
