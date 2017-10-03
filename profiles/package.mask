@@ -289,14 +289,6 @@ sys-apps/more
 # Package testing tracked in bug #611022.
 >=dev-libs/msgpack-1.4.2
 
-# Michał Górny <mgorny@gentoo.org> (21 Aug 2017)
-# xfce4-mixer is discontinued upstream and no longer considered part
-# of the DE since 4.12. It requires vulnerable gstreamer:0.10, and no
-# longer builds with the development versions of core Xfce4 components.
-# The suggested replacement is xfce-extra/xfce4-pulseaudio-plugin.
-# Removal in 30 days. Bug #628424.
-xfce-extra/xfce4-mixer
-
 # Hanno Boeck <hanno@gentoo.org> (21 Aug 2017)
 # Open security bugs, no upstream, bug 628432
 # Alternatives: app-arch/libarchive, app-arch/unar
