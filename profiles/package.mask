@@ -242,7 +242,6 @@ net-analyzer/ntop
 # and the virtual obsolete. Removal in 30 days. See bug #553186.
 dev-java/gnu-classpath-inetlib
 dev-java/gnu-javamail
-dev-java/javax-mail
 java-virtuals/javamail
 
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
