@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm test unpack
 DEPEND=>=sys-apps/sed-4 app-arch/unzip
 DESCRIPTION=Adobe Flash Player
 EAPI=6
-HOMEPAGE=http://www.adobe.com/products/flashplayer.html http://get.adobe.com/flashplayer/ https://helpx.adobe.com/security/products/flash-player.html
+HOMEPAGE=https://www.adobe.com/products/flashplayer.html https://get.adobe.com/flashplayer/ https://helpx.adobe.com/security/products/flash-player.html
 IUSE=+nsplugin +ppapi abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 KEYWORDS=-* amd64 x86
 LICENSE=AdobeFlash-11.x
@@ -12,4 +12,4 @@ RESTRICT=strip mirror
 SLOT=22
 SRC_URI=nsplugin? ( abi_x86_32? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/27.0.0.130/flash_player_npapi_linux.i386.tar.gz -> adobe-flash-27.0.0.130-npapi.i386.tar.gz ) abi_x86_64? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/27.0.0.130/flash_player_npapi_linux.x86_64.tar.gz -> adobe-flash-27.0.0.130-npapi.x86_64.tar.gz ) ) ppapi? ( abi_x86_32? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/27.0.0.130/flash_player_ppapi_linux.i386.tar.gz -> adobe-flash-27.0.0.130-ppapi.i386.tar.gz ) abi_x86_64? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/27.0.0.130/flash_player_ppapi_linux.x86_64.tar.gz -> adobe-flash-27.0.0.130-ppapi.x86_64.tar.gz ) )
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	mozextension	e5d920147bfccf4930062e462e2a417d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	nsplugins	2049586e425364a1c5bdb004205d1758	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=e9ce8cda7676d4daa5947168e927b559
+_md5_=599c09e5a8b798188eaea58d9068f453

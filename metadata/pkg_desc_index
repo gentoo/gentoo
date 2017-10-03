@@ -4607,7 +4607,7 @@ dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.2.0_pre20170719: Stand-alone JavaScript C++ library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.2.0_pre20170719: Stand-alone JavaScript C++ library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15: free, small, and standard compliant Prolog compiler
@@ -17051,7 +17051,7 @@ sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.22.1 3.24.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
-sys-apps/baselayout 2.3 2.4.1-r1 2.4.1-r2: Filesystem baselayout and init scripts
+sys-apps/baselayout 2.3 2.4.1-r2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 2.2-r5: Minimal baselayout for Gentoo Prefix installs
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names

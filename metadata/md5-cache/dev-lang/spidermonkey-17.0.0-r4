@@ -10,6 +10,6 @@ RDEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi sys-libs/readline:0= >=sys-libs/zli
 REQUIRED_USE=debug? ( jit )
 RESTRICT=ia64? ( test )
 SLOT=17
-SRC_URI=http://ftp.mozilla.org/pub/mozilla.org/js/mozjs17.0.0.tar.gz
+SRC_URI=http://archive.mozilla.org/pub/js/mozjs17.0.0.tar.gz https://dev.gentoo.org/~axs/distfiles/spidermonkey-slot17-patches-01.tar.xz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=bb7e4c11663dd1be756ffaaf1f4b0d3a
+_md5_=c53cff6c9f34de4db9d6cf14a6190bc2
