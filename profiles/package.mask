@@ -237,11 +237,6 @@ dev-perl/XML-AutoWriter
 # net-analyzer/ntopng is available
 net-analyzer/ntop
 
-# James Le Cuirot <chewi@gentoo.org> (29 Aug 2017)
-# The FOSS-friendly oracle-javamail has rendered other implementations
-# and the virtual obsolete. Removal in 30 days. See bug #553186.
-java-virtuals/javamail
-
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
