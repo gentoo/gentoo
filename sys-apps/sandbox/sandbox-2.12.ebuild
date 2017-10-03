@@ -54,17 +54,23 @@ pkg_preinst() {
 	chown root:portage "${ED}"/var/log/sandbox
 	chmod 0770 "${ED}"/var/log/sandbox
 
-	if [[ ${REPLACING_VERSIONS} == 1.* ]] ; then
-		local old=$(find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*')
-		if [[ -n ${old} ]] ; then
-			elog "Removing old sandbox libraries for you:"
-			find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*' -print -delete
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ ${v} == 1.* ]] ; then
+			local old=$(find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*')
+			if [[ -n ${old} ]] ; then
+				elog "Removing old sandbox libraries for you:"
+				find "${EROOT}"/lib* -maxdepth 1 -name 'libsandbox*' -print -delete
+			fi
 		fi
-	fi
+	done
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} == 1.* ]] ; then
-		chmod 0755 "${EROOT}"/etc/sandbox.d #265376
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ ${v} == 1.* ]] ; then
+			chmod 0755 "${EROOT}"/etc/sandbox.d #265376
+		fi
+	done
 }
