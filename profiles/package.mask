@@ -265,14 +265,6 @@ app-text/adiff
 # patches if necessary.
 =xfce-base/xfwm4-4.13.0_p20170825
 
-# Michał Górny <mgorny@gentoo.org> (28 Aug 2017)
-# Alike xfce4-mixer, relies on gstreamer:0.10 (gstreamer:1.0 removed
-# mixer wrappers). Last commit upstream in 2014. PulseAudio users
-# can switch to xfce-extra/xfce4-pulseaudio-plugin
-# or xfce-extra/xfce4-volumed-pulse.
-# Removal in 30 days. Bug #629212.
-xfce-extra/xfce4-volumed
-
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
