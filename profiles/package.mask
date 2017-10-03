@@ -400,11 +400,6 @@ net-vpn/kvpnc
 # Doesn't compile, upstream dead, removal in 2 months (#584296).
 dev-util/mutrace
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Multiple unresolved bugs (#600680), need major version bumps and a
-# maintainer, removal in 2 months.
-dev-libs/libRocket
-
 # Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
 # Masked until >=net-fs/samba-4.7 is in the tree and 
 # unmasked. (bug #624106)
