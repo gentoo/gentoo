@@ -17,6 +17,7 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
+	dev-python/pbr[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 RDEPEND="
