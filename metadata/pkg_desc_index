@@ -3192,7 +3192,7 @@ dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input han
 dev-games/openscenegraph 3.5.1-r2 3.5.5: Open source high performance 3D graphics toolkit
 dev-games/openscenegraph-qt 3.5.5: Qt support for OpenSceneGraph
 dev-games/paklib 0.3: library for accessing Quake pak files
-dev-games/physfs 2.0.3-r2 9999: Abstraction layer for filesystem and archive access
+dev-games/physfs 2.0.3-r2 3.0.0 9999: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
@@ -4607,7 +4607,7 @@ dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.4.0_pre20171003: Stand-alone JavaScript C++ library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.4.0_pre20171003-r1: Stand-alone JavaScript C++ library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15: free, small, and standard compliant Prolog compiler
@@ -5140,7 +5140,7 @@ dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files 
 dev-lisp/abcl 0.0.9-r1 0.20.0 0.20.0-r1: Common Lisp implementation for the JVM
 dev-lisp/asdf 1.89 3.0.3 3.1.5 3.1.6 3.1.7 3.2.0 3.2.0-r1 3.2.1 3.2.1-r1: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: ASDF-Extension to specify where Common Lisp binaries (FASL files) should go
-dev-lisp/cl-ppcre 1.2.16 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
+dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
 dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r100: A portable, bytecode-compiled implementation of Common Lisp
@@ -11073,7 +11073,7 @@ games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.41 0.9.45 0.9.45.1 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.5.2 0.6.0: A new Game Boy Advance emulator written in C.
+games-emulation/mgba 0.5.2 0.6.0 0.6.1: A new Game Boy Advance emulator written in C.
 games-emulation/mupen64plus 1.5-r1 1.5-r2 2.0 2.5: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.5-r1: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -11508,7 +11508,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1 1.1-r1: Lure of the Temptress
-games-rpg/manaplus 1.7.8.19 1.7.9.2 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.9.2 1.7.9.30 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -12940,8 +12940,8 @@ media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.61 10.62: Read and write meta information in image, audio and video files
-media-libs/faac 1.28-r4 1.29.7.3 1.29.7.4: Free MPEG-4 audio codecs by AudioCoding.com
-media-libs/faad2 2.7-r3 2.8.1-r1: AAC audio decoding library
+media-libs/faac 1.28-r4 1.29.7.4 1.29.7.7: Free MPEG-4 audio codecs by AudioCoding.com
+media-libs/faad2 2.7-r3 2.8.1-r1 2.8.5: AAC audio decoding library
 media-libs/fdk-aac 0.1.3 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
@@ -13111,7 +13111,7 @@ media-libs/libmpdclient 2.9 2.10 2.11 2.13: A library for interfacing Music Play
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0: An library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.11 1.1.12 1.1.13 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.12 1.1.13 1.1.14 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.7 1.0.7-r1 1.0.8 1.0.9 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libmypaint 1.3.0_beta1 1.3.0: Library for making brushstrokes
 media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
@@ -17120,7 +17120,7 @@ sys-apps/fwupdate 8 9: Tools for using the ESRT and UpdateCapsule() to apply fir
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
-sys-apps/gentoo-functions 0.10 0.11 0.12 9999: base functions required by all Gentoo systems
+sys-apps/gentoo-functions 0.12 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.22.1 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
@@ -17296,7 +17296,7 @@ sys-apps/systemd 233-r3 233-r4 234-r4 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
-sys-apps/texinfo 4.13-r2 6.1 6.3 6.4 6.5: The GNU info program and utilities
+sys-apps/texinfo 6.1 6.3 6.4 6.5: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0 2.1.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
