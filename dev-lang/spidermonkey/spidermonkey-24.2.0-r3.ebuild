@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,8 @@ MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.tar.bz2"
+SRC_URI="https://archive.mozilla.org/pub/js/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot24-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="24"
@@ -41,9 +42,9 @@ pkg_setup(){
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-${SLOT}-system-icu.patch
-	epatch "${FILESDIR}"/${PN}-24.2.0-fix-file-permissions.patch
-	epatch "${FILESDIR}"/${PN}-${SLOT}-upward-growing-stack.patch
+	epatch "${WORKDIR}"/sm24/${PN}-${SLOT}-system-icu.patch
+	epatch "${WORKDIR}"/sm24/${PN}-24.2.0-fix-file-permissions.patch
+	epatch "${WORKDIR}"/sm24/${PN}-${SLOT}-upward-growing-stack.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=552786
 	epatch "${FILESDIR}"/${PN}-perl-defined-array-check.patch
 	epatch_user
