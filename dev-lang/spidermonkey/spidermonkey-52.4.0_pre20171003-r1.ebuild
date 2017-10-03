@@ -44,6 +44,7 @@ src_prepare() {
 		|| die
 
 	eapply "${WORKDIR}/${PN}"
+	eapply "${FILESDIR}"/${PN}-52-baseconfig.patch
 
 	eapply_user
 
