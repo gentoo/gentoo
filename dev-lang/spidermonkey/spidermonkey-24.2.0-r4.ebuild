@@ -11,7 +11,8 @@ MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.tar.bz2"
+SRC_URI="https://archive.mozilla.org/pub/js/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot24-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="24"
@@ -34,11 +35,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-${SLOT}-system-icu.patch
-	"${FILESDIR}"/${PN}-24.2.0-fix-file-permissions.patch
-	"${FILESDIR}"/${PN}-${SLOT}-upward-growing-stack.patch
+	"${WORKDIR}"/sm24/${PN}-${SLOT}-system-icu.patch
+	"${WORKDIR}"/sm24/${PN}-24.2.0-fix-file-permissions.patch
+	"${WORKDIR}"/sm24/${PN}-${SLOT}-upward-growing-stack.patch
 	"${FILESDIR}"/${PN}-perl-defined-array-check.patch
-	"${FILESDIR}"/${PN}-17-fix_pointer_dereference.patch
+	"${WORKDIR}"/sm24/${PN}-17-fix_pointer_dereference.patch
 )
 
 pkg_setup(){
