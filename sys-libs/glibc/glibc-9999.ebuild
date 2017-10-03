@@ -223,7 +223,8 @@ src_unpack() {
 src_prepare() {
 	if ! use vanilla ; then
 		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER} ..."
-		eapply "${WORKDIR}"/patches/*.patch
+		eapply "${WORKDIR}"/patches
+		elog "Done."
 	fi
 
 	if just_headers ; then
