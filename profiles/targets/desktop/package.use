@@ -20,10 +20,6 @@ media-video/mpv lua luajit -sdl
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
 
-# Serget Popov <pinkbyte@gentoo.org> (09 Feb 2016)
-# Do not force Qt4 implemenation of RetroShare
-net-p2p/retroshare -qt4
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
 # Set reasonable default toolkit for all desktops to prevent emerge error
 # when USE=tools
