@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
 EAPI=6
+
 inherit eutils versionator
 
 DESCRIPTION="JavaScript IDE for client- and server-side development with Node.js"
@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/jdk-1.7"
+
 S="${WORKDIR}/WebStorm-$(get_version_component_range 4-6)"
 
 src_install() {
