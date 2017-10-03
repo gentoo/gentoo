@@ -15,7 +15,7 @@ SRC_URI="http://search.maven.org/remotecontent?filepath=org/python/${PN}/${MY_PV
 
 LICENSE="PSF-2"
 SLOT="2.7"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="examples test"
 
 CP_DEPEND="dev-java/antlr:3
