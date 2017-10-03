@@ -243,7 +243,6 @@ net-analyzer/ntop
 dev-java/gnu-classpath-inetlib
 dev-java/gnu-javamail
 dev-java/javax-mail
-dev-java/sun-javamail
 java-virtuals/javamail
 
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
