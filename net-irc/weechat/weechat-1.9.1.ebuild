@@ -96,10 +96,13 @@ src_prepare() {
 	# install docs in correct directory
 	sed -i "s#\${SHAREDIR}/doc/\${PROJECT_NAME}#\0-${PV}/html#" doc/*/CMakeLists.txt || die
 
-	# fix linking error on Darwin
 	if [[ ${CHOST} == *-darwin* ]]; then
+		# fix linking error on Darwin
 		sed -i "s/+ get_config_var('LINKFORSHARED')//" \
 			cmake/FindPython.cmake || die
+		# allow to find the plugins by default
+		sed -i 's/".so,.dll"/".bundle,.so,.dll"/' \
+			src/core/wee-config.c || die
 	fi
 }
 
