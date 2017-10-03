@@ -95,6 +95,12 @@ src_prepare() {
 
 	# install docs in correct directory
 	sed -i "s#\${SHAREDIR}/doc/\${PROJECT_NAME}#\0-${PV}/html#" doc/*/CMakeLists.txt || die
+
+	# fix linking error on Darwin
+	if [[ ${CHOST} == *-darwin* ]]; then
+		sed -i "s/+ get_config_var('LINKFORSHARED')//" \
+			cmake/FindPython.cmake || die
+	fi
 }
 
 src_configure() {
