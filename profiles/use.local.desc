@@ -264,7 +264,6 @@ app-backup/tsm:tsm_hw - Difference snapshot support for NetApp and N-Series file
 app-backup/zbackup:tartool - Install tartool utility
 app-benchmarks/filebench:auto-completion - Enable command-line autocompletion using dev-libs/libtecla.
 app-benchmarks/httperf:idleconn - Build with the idleconn program
-app-benchmarks/jmeter:beanshell - Enable BeanShell scripting support
 app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
 app-benchmarks/sysbench:aio - Enable libaio support
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
@@ -2071,7 +2070,6 @@ dev-libs/jemalloc:xmalloc - Add support for xmalloc (abort-on-out-of-memory)
 dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
 dev-libs/kreport:scripting - Support Qml scripting using dev-qt/qtdeclarative
 dev-libs/leveldb:snappy - support the snappy compression library
-dev-libs/libRocket:samples - Build samples
 dev-libs/libbase58:tools - Build command line base58 tool
 dev-libs/libburn:cdio - Enable EXPERIMENTAL use of libcdio as system adapter
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
@@ -3204,8 +3202,6 @@ games-fps/urbanterror:mumble - Use Mumble for ingame VoIP (experimental)
 games-fps/urbanterror:opus - Use opus as sound codec
 games-fps/urbanterror:server - Build binary for dedicated server
 games-fps/urbanterror:voip - Use ioq3 ingame VoIP (experimental)
-games-fps/warsow:irc - Enable IRC support
-games-fps/warsow:server - Build server binaries additionally
 games-fps/worldofpadman:maps - Install extra maps (PadPack)
 games-fps/xonotic:ode - Enable support for physics engine from dev-games/ode
 games-kids/crayon-physics:bundled-libs - Use the upstream provided bundled libraries.
@@ -8823,7 +8819,6 @@ xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launc
 xfce-base/xfwm4:xpresent - Enable the XPresent extension for sync to vblank
 xfce-extra/tumbler:odf - Enable support for .odf thumbnailers by using gnome-extra/libgsf
 xfce-extra/xfce4-clipman-plugin:qrcode - Enable support for media-gfx/qrencode
-xfce-extra/xfce4-mixer:keybinder - Enable shortcut support using dev-libs/keybinder
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support

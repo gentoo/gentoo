@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-db/sqlite:3 >=dev-lang/lua-5:0 dev-lua/toluapp media-libs/libpng:0 virtual/opengl x11-libs/libX11 media-libs/libsdl[sound,opengl,video] sys-libs/zlib bzip2? ( app-arch/bzip2 ) fluidsynth? ( media-sound/fluidsynth ) mikmod? ( media-libs/libmikmod ) mng? ( media-libs/libmng ) vorbis? ( media-libs/libogg media-libs/libvorbis theora? ( media-libs/libtheora ) ) doc? ( app-doc/doxygen ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=A realtime strategy game engine
+EAPI=6
+HOMEPAGE=https://launchpad.net/stratagus/
+IUSE=bzip2 debug doc fluidsynth mikmod mng theora vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 >=dev-lang/lua-5:0 dev-lua/toluapp media-libs/libpng:0 virtual/opengl x11-libs/libX11 media-libs/libsdl[sound,opengl,video] sys-libs/zlib bzip2? ( app-arch/bzip2 ) fluidsynth? ( media-sound/fluidsynth ) mikmod? ( media-libs/libmikmod ) mng? ( media-libs/libmng ) vorbis? ( media-libs/libogg media-libs/libvorbis theora? ( media-libs/libtheora ) )
+REQUIRED_USE=theora? ( vorbis )
+SLOT=0
+SRC_URI=https://github.com/Wargus/stratagus/archive/v2.4.1.tar.gz -> stratagus-2.4.1.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=04773915a035b2a6f8d55bf768c1f129

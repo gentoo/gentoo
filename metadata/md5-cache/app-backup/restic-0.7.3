@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-lang/go test? ( sys-fs/fuse:0 ) >=dev-lang/go-1.8
+DESCRIPTION=A backup program that is fast, efficient and secure
+EAPI=6
+HOMEPAGE=https://restic.github.io/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD-2
+RDEPEND=sys-fs/fuse:0
+SLOT=0
+SRC_URI=https://github.com/restic/restic/archive/v0.7.3.tar.gz -> restic-0.7.3.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=61abbd0c6a178433496f7290451be3f0
