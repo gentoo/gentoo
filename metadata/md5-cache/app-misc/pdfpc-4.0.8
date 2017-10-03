@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8 gnome-base/librsvg gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) sys-apps/dbus x11-libs/gtk+:3 || ( dev-lang/vala:0.36 dev-lang/vala:0.34 dev-lang/vala:0.32 ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Presenter console with multi-monitor support for PDF files
+EAPI=6
+HOMEPAGE=http://pdfpc.github.io
+IUSE=gstreamer
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8 gnome-base/librsvg gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) sys-apps/dbus x11-libs/gtk+:3
+SLOT=0
+SRC_URI=https://github.com/pdfpc/pdfpc/archive/v4.0.8.tar.gz -> pdfpc-4.0.8.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	vala	103e6885c83965507391cdc5b6fa0e67	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=a17a25db77429152df705e21d9db9ab9
