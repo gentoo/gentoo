@@ -5718,7 +5718,7 @@ net-im/qutim:hunspell - Enable spellchecking using app-text/hunspell
 net-im/qutim:irc - Enable IRC protocol support
 net-im/qutim:mrim - Enable mail.ru protocol support
 net-im/qutim:otr - Enable plugin for encrypted conversations (Off-The-Record messaging)
-net-im/qutim:phonon - Add sound support via media-libs/phonon or dev-qt/qtphonon
+net-im/qutim:phonon - Add sound support via media-libs/phonon
 net-im/qutim:plugman - Enable downloadable content management with dev-libs/libattica
 net-im/qutim:purple - Enable libpurple-based protocol support
 net-im/qutim:qml - Enable QtQuick-based chat plugin
