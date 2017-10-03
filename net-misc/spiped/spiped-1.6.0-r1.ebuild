@@ -9,7 +9,7 @@ SRC_URI="http://www.tarsnap.com/${PN}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="libressl"
 
 MY_PN="${PN/d/}"
