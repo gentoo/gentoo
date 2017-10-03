@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=sensord? ( net-analyzer/rrdtool virtual/logger ) sys-devel/bison sys-devel/flex virtual/pkgconfig
+DESCRIPTION=Hardware Monitoring user-space utilities
+EAPI=6
+HOMEPAGE=https://hwmon.wiki.kernel.org/ https://github.com/groeck/lm-sensors
+IUSE=contrib sensord static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2+ LGPL-2.1
+RDEPEND=sensord? ( net-analyzer/rrdtool virtual/logger ) dev-lang/perl !<sys-apps/openrc-0.21.7
+SLOT=0/4.4.0
+SRC_URI=https://github.com/groeck/lm-sensors/archive/83cafd29f28d463573750d897014ec7143217ae5.tar.gz -> lm_sensors-3.4.0_p20170901.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=6336406f5c85ac3b29d9b80859e0aaf4
