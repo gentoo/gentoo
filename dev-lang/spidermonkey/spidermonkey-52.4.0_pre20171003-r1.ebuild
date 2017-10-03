@@ -44,6 +44,7 @@ src_prepare() {
 		|| die
 
 	eapply "${WORKDIR}/${PN}"
+	eapply "${FILESDIR}"/${PN}-52-baseconfig.patch
 
 	eapply_user
 
@@ -129,9 +130,6 @@ src_test() {
 src_install() {
 	cd "${BUILDDIR}" || die
 	emake DESTDIR="${D}" install
-
-	#work around bad header installation
-	mv "${ED}"usr/include/mozjs{,-52} || die
 
 	if ! use minimal; then
 		if use jit; then
