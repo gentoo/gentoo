@@ -30,6 +30,7 @@ RDEPEND="
 	>=dev-python/pyqtgraph-0.10.0[${PYTHON_USEDEP}]
 	dev-python/PyQt5[webkit,svg,${PYTHON_USEDEP}]
 	dev-python/radon[${PYTHON_USEDEP}]
+	dev-python/typing[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-0.9.2[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11.0[${PYTHON_USEDEP}]
 	>=sci-libs/scikits_learn-0.18.1[${PYTHON_USEDEP}]"
