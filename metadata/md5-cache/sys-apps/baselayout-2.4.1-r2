@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/baselayout.git/snapshot/baselayout-2.4.1.tar.bz2
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	7b6fb2fc216b101b5d97d171925a847c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=6de7c53df4a48c8f56b338cc781f4832
+_md5_=ac5951f7b6e5ce6a6a6a2ea2b42f2d16
