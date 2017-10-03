@@ -11,7 +11,8 @@ MY_PN="mozjs"
 MY_P="${MY_PN}${PV}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/js/${MY_PN}${PV}.tar.gz"
+SRC_URI="http://archive.mozilla.org/pub/js/${MY_PN}${PV}.tar.gz
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot17-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="17"
@@ -42,12 +43,12 @@ pkg_setup(){
 }
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-${SLOT}-js-config-shebang.patch
-	"${FILESDIR}"/${PN}-${SLOT}-ia64-mmap.patch
-	"${FILESDIR}"/${PN}-17.0.0-fix-file-permissions.patch
-	"${FILESDIR}"/${PN}-17-clang.patch
+	"${WORKDIR}"/sm17/${PN}-${SLOT}-js-config-shebang.patch
+	"${WORKDIR}"/sm17/${PN}-${SLOT}-ia64-mmap.patch
+	"${WORKDIR}"/sm17/${PN}-17.0.0-fix-file-permissions.patch
+	"${WORKDIR}"/sm17/${PN}-17-clang.patch
 	"${FILESDIR}"/${PN}-perl-defined-array-check.patch
-	"${FILESDIR}"/${PN}-17-fix_pointer_dereference.patch
+	"${WORKDIR}"/sm17/${PN}-17-fix_pointer_dereference.patch
 )
 
 src_prepare() {
