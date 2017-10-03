@@ -84,7 +84,7 @@ src_configure() {
 		--kdir="${KV_DIR}" \
 		--kver="${KV_FULL}" \
 		$(use debug && echo '--enable-debugfs') \
-		$(use_enable natevents) \
+		$(use natevents && echo '--enable-natevents') \
 		$(use snmp && echo '--enable-snmp-rules' || echo '--disable-snmp-agent')
 }
 
