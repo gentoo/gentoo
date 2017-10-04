@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=sys-libs/zlib elibc_musl? ( sys-libs/fts-standalone )
 SLOT=0/5
 SRC_URI=https://www.nih.at/libzip/libzip-1.2.0.tar.xz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=9227fcc2af019cab6a14b6825a896e30

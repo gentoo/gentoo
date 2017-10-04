@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/fontconfig media-libs/freetype:2 gpm? ( sys-libs/gpm ) video_cards_vesa? ( dev-libs/libx86 )
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/fbterm/fbterm-1.7.0.tar.gz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	fcaps	e80204189039ecc03f24151c518375f0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	fcaps	e80204189039ecc03f24151c518375f0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=f4a5a5dc4a5593c263c1aabcaebb8092

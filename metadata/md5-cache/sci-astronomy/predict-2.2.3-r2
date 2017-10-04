@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= gtk? ( x11-libs/gtk+:2 ) xforms? ( x11-libs/xforms ) xplanet? ( x11-misc/xplanet[truetype] )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/predict/predict_2.2.3.orig.tar.gz mirror://debian/pool/main/p/predict/predict_2.2.3-3.1.diff.gz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=941459ae5670aab6b0b6406c27f5913f

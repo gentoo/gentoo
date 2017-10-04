@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=~dev-db/m17n-db-1.7.0 X? ( x11-libs/libX11 athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( dev-libs/libotf ) xft? ( media-libs/freetype x11-libs/libXft ) ) anthy? ( app-i18n/anthy ) libxml2? ( dev-libs/libxml2 ) spell? ( app-text/aspell )
 SLOT=0
 SRC_URI=mirror://nongnu/m17n/m17n-lib-1.7.0.tar.gz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=ef32fefee783106ff0dfd0cc30b07850

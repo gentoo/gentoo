@@ -10,5 +10,5 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-libs/alsa-lib media-sound/ja
 REQUIRED_USE=|| ( alsa jack pulseaudio )
 SLOT=0/6
 SRC_URI=https://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.0.0.tar.gz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=322b6b78809ced51dafeca80d283bbd7

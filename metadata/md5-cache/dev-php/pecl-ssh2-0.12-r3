@@ -10,5 +10,5 @@ RDEPEND=>=net-libs/libssh2-1.2 php_targets_php5-4? ( dev-lang/php:5.4 ) php_targ
 REQUIRED_USE=|| ( php_targets_php5-4 php_targets_php5-5 php_targets_php5-6 )
 SLOT=0
 SRC_URI=http://pecl.php.net/get/ssh2-0.12.tgz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-pecl-r2	dff079f0a889226d72912d502a00321c	php-ext-source-r2	f89db15e993f2a909a1baea2031e409d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-pecl-r2	dff079f0a889226d72912d502a00321c	php-ext-source-r2	f89db15e993f2a909a1baea2031e409d	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=2cdd41e3239edd74aac986dfadae5cb5

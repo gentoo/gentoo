@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 sys-libs/zlib media-libs/libpng:0= virtual/jpeg:0 sci-libs/fftw:2.1 media-libs/netpbm
 SLOT=0
 SRC_URI=mirror://sourceforge/comparametric/videorbits-2.205.tgz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=aa6ea473fb469a8f4838a21573acf2a7

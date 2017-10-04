@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-im/pidgin-2.0.0[gtk] >=dev-libs/dbus-glib-0.73 dev-libs/libpcre >=sys-devel/gettext-0.17
 SLOT=0
 SRC_URI=https://pidgin-musictracker.googlecode.com/files/pidgin-musictracker-0.4.22.tar.bz2
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=6650983669f315ec028278c941ce3c2a

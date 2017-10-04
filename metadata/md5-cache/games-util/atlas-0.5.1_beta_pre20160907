@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/opengl >=games-simulation/flightgear-3.0.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~reavertm/atlas-hgcode-e183e3b3a0412b504edcb3664445b3e04fd484a2.zip
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=c76d23f06d35b5cb87c2805934cd7140

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 app-accessibility/at-spi2-atk dev-libs/atk sys-devel/gettext x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/gtksourceview:3.0 x11-libs/libICE x11-libs/libSM x11-libs/pango
 SLOT=0
 SRC_URI=https://launchpad.net/xpad/trunk/5.0.0/+download/xpad-5.0.0.tar.bz2
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=6f1b380f73b1e329fad596432d2fcee6

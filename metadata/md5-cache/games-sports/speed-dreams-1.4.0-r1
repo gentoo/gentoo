@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/opengl virtual/glu media-libs/freealut media-libs/freeglut >=media-libs/libpng-1.2.40:0 media-libs/openal sys-libs/zlib x11-libs/libX11 x11-libs/libXxf86vm xrandr? ( x11-libs/libXrandr )
 SLOT=0
 SRC_URI=mirror://sourceforge/speed-dreams/speed-dreams-1.4.0-r2307-src.tar.bz2
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=3385a232249d4aca89e364712faaeda6

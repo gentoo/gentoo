@@ -10,5 +10,5 @@ RDEPEND=>=net-libs/gnutls-3.3.0:= =www-servers/apache-2.4*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://mod.gnutls.org/downloads/mod_gnutls-0.8.2.tar.bz2
-_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	7027963e8e8cc12c91117bdb9225dc26	depend.apache	0917334d570e07f9743a04ff85b3bf1b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	dc412f38566b91012efd58b9c203e6c3	depend.apache	0917334d570e07f9743a04ff85b3bf1b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=c7ef08d0e9f7d1577d004770fb738135

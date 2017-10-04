@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=~media-libs/libmp3splt-0.9.2 x11-libs/gtk+:3 audacious? ( >=media-sound/audacious-3.0 ) !audacious? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer:1.0 media-plugins/gst-plugins-meta:1.0[mp3] )
 SLOT=0
 SRC_URI=mirror://sourceforge/mp3splt/mp3splt-gtk-0.9.2.tar.gz
-_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=4cef774c2925038a07194efe56bd0cc7
