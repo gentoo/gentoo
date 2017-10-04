@@ -192,17 +192,6 @@ x11-apps/python-whiteboard
 # time being.
 >=dev-java/javatoolkit-0.6.0
 
-# Alon Bar-Lev <alonbl@gentoo.org> (08 Sep 2017)
-# Complex build system, hard to maintain, no dependencies in tree, upstream
-# does not cooperate (Bug#630420).
-# Removal in 30 days.
-dev-libs/cryptlib
-
-# Alon Bar-Lev <alonbl@gentoo.org> (08 Sep 2017)
-# Upstream no longer maintain (Bug#628908).
-# Removal in 30 days.
-sys-auth/pam_pkcs11
-
 # Austin English <wizardedit@gentoo.org> (05 Sep 2017)
 # Download has been broken for nearly a year, no alternative found
 # Bug: https://bugs.gentoo.org/599390
