@@ -5,8 +5,6 @@
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
   </maintainer>
-  <longdescription lang="en">
-  </longdescription>
   <upstream>
     <remote-id type="github">gsteele13/spyview</remote-id>
   </upstream>
