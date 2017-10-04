@@ -9,8 +9,6 @@
 	<email>radio@gentoo.org</email>
 	<name>Radio</name>
 </maintainer>
-<longdescription lang="en">
-</longdescription>
 <use>
 	<flag name="radioreference">support downloading data from radioreference.com (premium users only)</flag>
 </use>
