@@ -5,8 +5,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="github">mrpdaemon/gnome-integration-spotify</remote-id>
 	</upstream>
