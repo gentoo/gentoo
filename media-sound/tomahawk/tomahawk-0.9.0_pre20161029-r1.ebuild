@@ -57,7 +57,10 @@ RDEPEND="${CDEPEND}
 
 DOCS=( AUTHORS ChangeLog README.md )
 
-PATCHES=( "${FILESDIR}/${PN}-liblastfm-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-liblastfm-cmake.patch"
+	"${FILESDIR}/${PN}-qtkeychain-cmake.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
