@@ -23,10 +23,10 @@ CDEPEND="sys-libs/zlib:0=
 	bittorrent? (
 		ssl? (
 			gnutls? (
-				nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= )
+				nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= )
 				!nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) )
 		!ssl? (
-			nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= )
+			nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= )
 			!nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) )
 	jemalloc? ( dev-libs/jemalloc )
 	libuv? ( dev-libs/libuv:0= )
