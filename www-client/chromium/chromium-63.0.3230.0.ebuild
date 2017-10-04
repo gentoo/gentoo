@@ -144,10 +144,9 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-	"${FILESDIR}/${PN}-gcc5-r2.patch"
-	"${FILESDIR}/${PN}-glibc2.26-r1.patch"
-	"${FILESDIR}/${PN}-gn-bootstrap-r19.patch"
-	"${FILESDIR}/${PN}-sysroot-r1.patch"
+	"${FILESDIR}/${PN}-gcc5-r4.patch"
+	"${FILESDIR}/${PN}-gn-bootstrap-r21.patch"
+	"${FILESDIR}/${PN}-clang-r1.patch"
 )
 
 pre_build_checks() {
@@ -157,10 +156,13 @@ pre_build_checks() {
 			# bugs: #601654
 			die "At least clang 3.9.1 is required"
 		fi
-		if tc-is-gcc && ! version_is_at_least 5.0 "$(gcc-version)"; then
-			# bugs: #535730, #525374, #518668, #600288, #627356
-			die "At least gcc 5.0 is required"
+		if tc-is-gcc; then
+			die "Known build break with gcc, see https://bugs.gentoo.org/633452 . Use clang as workaround."
 		fi
+		#if tc-is-gcc && ! version_is_at_least 5.0 "$(gcc-version)"; then
+		#	# bugs: #535730, #525374, #518668, #600288, #627356
+		#	die "At least gcc 5.0 is required"
+		#fi
 	fi
 
 	# Check build requirements, bug #541816 and bug #471810 .
@@ -206,7 +208,6 @@ src_prepare() {
 		base/third_party/valgrind
 		base/third_party/xdg_mime
 		base/third_party/xdg_user_dirs
-		breakpad/src/third_party/curl
 		chrome/third_party/mozilla_security_manager
 		courgette/third_party
 		net/third_party/mozilla_security_manager
@@ -221,6 +222,8 @@ src_prepare() {
 		third_party/angle/src/third_party/trace_event
 		third_party/blink
 		third_party/boringssl
+		third_party/breakpad
+		third_party/breakpad/breakpad/src/third_party/curl
 		third_party/brotli
 		third_party/cacheinvalidation
 		third_party/catapult
@@ -605,9 +608,6 @@ src_install() {
 
 	insinto "${CHROMIUM_HOME}/swiftshader"
 	doins out/Release/swiftshader/*.so
-
-	newman out/Release/chrome.1 chromium.1
-	newman out/Release/chrome.1 chromium-browser.1
 
 	# Install icons and desktop entry.
 	local branding size
