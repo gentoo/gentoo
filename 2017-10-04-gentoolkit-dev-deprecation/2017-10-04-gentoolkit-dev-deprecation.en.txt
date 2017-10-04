@@ -1,0 +1,22 @@
+Title: app-portage/gentoolkit-dev deprecation and removal
+Author: Paul Varner <fuzzyray@gentoo.org>
+Posted: 2017-09-19
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: app-portage/gentoolkit-dev
+
+The app-portage/gentoolkit-dev package has been deprecated and the ebump,
+ekeyword and imlate have been moved to the app-portage/gentoolkit-0.4.0
+package. With the upcoming marking of >=app-portage/gentoolkit-0.4.0 stable,
+users will need to take action since gentoolkit-dev and those versions of
+gentoolkit block each other.
+
+In order to upgrade to the new version of gentoolkit, you will need to resolve
+the blocks. The following command will remove gentoolkit-dev from your world
+set and uninstall gentoolkit-dev. This will then allow the installation of 
+>=app-portage/gentoolkit-0.4.0.
+
+emerge --depclean app-portage/gentoolkit-dev
+
+Once >=app-portage/gentoolkit-0.4.0 is stabilized, the remaining gentoolkit-dev
+releases will be masked for removal and subsequent tree-cleaning.
