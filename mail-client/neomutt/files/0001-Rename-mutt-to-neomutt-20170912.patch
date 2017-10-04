@@ -1,17 +1,20 @@
-From 3a44a22841c2d5861c8fc79391f8615d22bcd08f Mon Sep 17 00:00:00 2001
+From 457e54623ce8c5ef40647ebbc4a304417e353230 Mon Sep 17 00:00:00 2001
 From: Nicolas Bock <nicolasbock@gmail.com>
 Date: Mon, 2 Oct 2017 14:04:34 -0600
 Subject: [PATCH] Rename mutt to neomutt
 
 ---
- Makefile.am     | 28 +++++++++++++++-------------
- configure.ac    |  6 +++---
- contrib/pgp2.rc |  4 ++--
- contrib/pgp5.rc |  4 ++--
- contrib/pgp6.rc |  4 ++--
- doc/Makefile.am | 30 +++++++++++++++---------------
- lib/Makefile.am |  4 ++--
- 7 files changed, 41 insertions(+), 39 deletions(-)
+ Makefile.am                                | 28 +++++++++++++++-------------
+ configure.ac                               |  8 ++++----
+ contrib/{smime_keys => neomutt_smime_keys} |  0
+ contrib/pgp2.rc                            |  4 ++--
+ contrib/pgp5.rc                            |  4 ++--
+ contrib/pgp6.rc                            |  4 ++--
+ contrib/smime.rc                           |  2 +-
+ doc/Makefile.am                            | 30 +++++++++++++++---------------
+ lib/Makefile.am                            |  4 ++--
+ 9 files changed, 43 insertions(+), 41 deletions(-)
+ rename contrib/{smime_keys => neomutt_smime_keys} (100%)
 
 diff --git a/Makefile.am b/Makefile.am
 index 97218b8f..859b2bcd 100644
@@ -98,7 +101,7 @@ index 97218b8f..859b2bcd 100644
  	echo 'const char *GitVer = "'$$version'";' > git_ver.h.tmp; \
  	cmp -s git_ver.h.tmp git_ver.h || mv git_ver.h.tmp git_ver.h; \
 diff --git a/configure.ac b/configure.ac
-index 1e888e86..471100b1 100644
+index 1e888e86..7898fa1b 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -4,7 +4,7 @@ dnl     autoreconf -i
@@ -119,7 +122,7 @@ index 1e888e86..471100b1 100644
  
  AC_ARG_WITH(domain,
  	AS_HELP_STRING([--with-domain=DOMAIN],[Specify your DNS domain name]),
-@@ -213,7 +213,7 @@ AS_IF([test x$use_gpgme = xyes && test x$gpgme_found = xno], [
+@@ -213,14 +213,14 @@ AS_IF([test x$use_gpgme = xyes && test x$gpgme_found = xno], [
  dnl --enable-pgp
  AS_IF([test x$use_pgp != "xno"], [
  	AC_DEFINE(CRYPT_BACKEND_CLASSIC_PGP, 1, [Define if you want classic PGP Support.])
@@ -128,6 +131,18 @@ index 1e888e86..471100b1 100644
  	build_ncrypt_pgp="yes"
  ])
  
+ dnl --enable-smime
+ AS_IF([test x$use_smime != "xno"], [
+ 	AC_DEFINE(CRYPT_BACKEND_CLASSIC_SMIME, 1, [Define if you want classic S/MIME support.])
+-	SMIMEAUX_TARGET='$(top_srcdir)/contrib/smime_keys'
++	SMIMEAUX_TARGET='$(top_srcdir)/contrib/neomutt_smime_keys'
+ 	build_ncrypt_smime="yes"
+ ])
+ 
+diff --git a/contrib/smime_keys b/contrib/neomutt_smime_keys
+similarity index 100%
+rename from contrib/smime_keys
+rename to contrib/neomutt_smime_keys
 diff --git a/contrib/pgp2.rc b/contrib/pgp2.rc
 index bd01e2d2..08b592dd 100644
 --- a/contrib/pgp2.rc
@@ -178,6 +193,19 @@ index a8708042..6b1ef985 100644
  
  # create a clearsigned message
  set pgp_clearsign_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | pgp6 +compatible   +verbose=0 +batchmode +clearsig -afst %?a? -u %a?"
+diff --git a/contrib/smime.rc b/contrib/smime.rc
+index 532ac9ec..aa9897fb 100644
+--- a/contrib/smime.rc
++++ b/contrib/smime.rc
+@@ -52,7 +52,7 @@ set smime_get_signer_cert_command="openssl smime -verify -in %f -noverify -signe
+ set smime_get_cert_email_command="openssl x509 -in %f -noout -email"
+ 
+ # Add a certificate to the database using smime_keys.
+-set smime_import_cert_command="smime_keys add_cert %f"
++set smime_import_cert_command="neomutt_smime_keys add_cert %f"
+ 
+ 
+ 
 diff --git a/doc/Makefile.am b/doc/Makefile.am
 index 9bfe7ea6..dffbe5f6 100644
 --- a/doc/Makefile.am
