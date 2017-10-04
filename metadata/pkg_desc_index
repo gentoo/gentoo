@@ -4673,7 +4673,6 @@ dev-libs/confuse 3.0 3.2: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/cryptlib 3.4.3.1-r2 3.4.4_beta: Powerful security toolkit for adding encryption to software
 dev-libs/crypto++ 5.6.5 5.6.5-r1: C++ class library of cryptographic schemes
 dev-libs/cudnn 6.0: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
@@ -17354,7 +17353,6 @@ sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a use
 sys-auth/pam_mysql 0.7_rc1-r4 0.7_rc1-r5: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.1.6: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.4 1.0.5 1.3.0: Stub ebuild to help migrate to newer package name
-sys-auth/pam_pkcs11 0.6.9: PKCS#11 PAM library
 sys-auth/pam_radius 1.3.17-r1: PAM RADIUS authentication module
 sys-auth/pam_require 0.7: Allows you to require a special group or user to access a service
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
