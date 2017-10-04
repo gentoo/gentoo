@@ -5,8 +5,6 @@
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">md6sum</remote-id>
 	</upstream>
