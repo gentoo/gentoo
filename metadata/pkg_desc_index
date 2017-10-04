@@ -9487,7 +9487,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r2 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 1.1.4 2.13.0 2.14.4 2.14.4-r1 2.15.1 2.15.2: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 1.1.4 2.13.0 2.14.4 2.14.4-r1 2.15.1 2.15.2 2.15.3: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
@@ -9613,7 +9613,7 @@ dev-ruby/hashicorp-checkpoint 0.1.4-r1: Internal HashiCorp service to check vers
 dev-ruby/hashie 2.1.2-r1 3.4.6 3.5.1 3.5.5 3.5.6: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4-r1 2.0.0 3.2.2 3.3.0 3.3.1 3.4.0 3.4.1: A simple pluggable Hierarchical Database
+dev-ruby/hiera 1.3.4-r1 2.0.0 3.2.2 3.3.0 3.3.1 3.4.0 3.4.1 3.4.2: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.1.0 2.1.0-r1: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
