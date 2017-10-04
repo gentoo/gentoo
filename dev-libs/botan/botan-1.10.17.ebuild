@@ -25,15 +25,15 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 	python? ( ${PYTHON_DEPS} >=dev-libs/boost-1.48[python,${PYTHON_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-4.2.2:* )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[bindist=] )
+		!libressl? ( <dev-libs/openssl-1.1:0=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.10.15-c++11.patch"
 	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 src_prepare() {
