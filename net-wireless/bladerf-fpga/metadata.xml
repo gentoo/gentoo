@@ -9,8 +9,6 @@
 <email>radio@gentoo.org</email>
 <name>Radio</name>
 </maintainer>
-<longdescription lang="en">
-</longdescription>
 <use>
 <flag name="x40">bitstream for the x40KLE Cyclone IV FPGA bladerf model"</flag>
 <flag name="x115">bitstream for the x115KLE Cyclone IV FPGA bladerf model"</flag>
