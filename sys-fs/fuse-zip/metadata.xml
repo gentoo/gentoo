@@ -5,8 +5,6 @@
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="google-code">fuse-zip</remote-id>
 		<remote-id type="bitbucket">agalanin/fuse-zip</remote-id>
