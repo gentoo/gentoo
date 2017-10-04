@@ -5,8 +5,6 @@
 		<email>net-mail@gentoo.org</email>
 		<name>Net-Mail</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">amavisd-milter</remote-id>
 	</upstream>
