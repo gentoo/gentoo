@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
 DOCS=(
-    README.rst CONTRIBUTING.md doc/design.rst
+	README.rst CONTRIBUTING.md doc/design.rst
 	doc/faq.rst doc/index.rst doc/manual.rst
 	doc/rest_backend.rst doc/development.rst
 	doc/talks.rst doc/tutorial_aws_s3.rst doc/installation.rst
