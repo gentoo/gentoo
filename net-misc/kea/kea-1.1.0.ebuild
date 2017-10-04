@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ IUSE=""
 DEPEND="
 	dev-cpp/gtest
 	dev-libs/boost
-	dev-libs/botan
+	dev-libs/botan:0
 	dev-libs/log4cplus
 "
 RDEPEND="${DEPEND}"
