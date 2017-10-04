@@ -8543,7 +8543,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3 0.5.6: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 6.1.1 6.5.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 6.0.1 7.1.2 9.1.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 6.0.1 7.1.2 9.1.0 9.1.1: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
