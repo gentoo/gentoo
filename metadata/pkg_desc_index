@@ -5571,14 +5571,14 @@ dev-perl/Chart 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.60.0 1.70.0 1.80.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
-dev-perl/Cisco-Reconfig 0.911.0: Parse and generate Cisco configuration files
+dev-perl/Cisco-Reconfig 0.911.0 0.912.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.50.0-r1 0.80.0: A minimalistic variant of Class::Accessor
 dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
 dev-perl/Class-Autouse 2.10.0-r2: Runtime aspect loading of one or more classes
-dev-perl/Class-Base 0.50.0-r1 0.60.0: Useful base class for deriving other modules
+dev-perl/Class-Base 0.50.0-r1 0.60.0 0.80.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.310.0 0.330.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
@@ -5593,9 +5593,9 @@ dev-perl/Class-Data-Inheritable 0.80.0-r1: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r1: Provide utility methods for factory classes
-dev-perl/Class-ISA 0.36-r1: Report the search path thru an ISA tree
+dev-perl/Class-ISA 0.36-r1 0.360.0: Report the search path thru an ISA tree
 dev-perl/Class-InsideOut 1.140.0: A safe, simple inside-out object construction kit
-dev-perl/Class-Inspector 1.310.0: Provides information about Classes
+dev-perl/Class-Inspector 1.310.0 1.320.0: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.60.0-r1 0.90.0 0.100.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
@@ -17118,7 +17118,7 @@ sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
-sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.2 1.1.0: Hard disk drive health inspection tool
+sys-apps/gsmartcontrol 0.8.7 0.9.0 1.0.2 1.1.0 1.1.1: Hard disk drive health inspection tool
 sys-apps/guix 0.12.0-r3 0.13.0: GNU package manager (nix sibling)
 sys-apps/habitat 0.28.0: Application automation framework
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
@@ -17437,7 +17437,7 @@ sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1 2.1.45: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.71 1.0.72: Linux SCSI target framework (tgt)
-sys-block/thin-provisioning-tools 0.4.1 0.6.3 0.7.0 0.7.1 9999: A suite of tools for thin provisioning on Linux
+sys-block/thin-provisioning-tools 0.4.1 0.6.3 0.7.0 0.7.1 0.7.2 9999: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 23: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
@@ -17827,7 +17827,7 @@ sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
-sys-fs/xfsdump 3.1.6: xfs dump/restore utilities
+sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.5.0 4.9.0 4.12.0 4.13.1: xfs filesystem utilities
 sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
