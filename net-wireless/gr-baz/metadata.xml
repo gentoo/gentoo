@@ -9,8 +9,6 @@
 	<email>radio@gentoo.org</email>
 	<name>Radio</name>
 </maintainer>
-<longdescription lang="en">
-</longdescription>
 <use>
 	<flag name="armadillo">install MUSIC DOA estimator block</flag>
 	<flag name="rtlsdr">install rtlsdr source block</flag>
