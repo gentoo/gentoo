@@ -12,7 +12,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="gstreamer010 nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
