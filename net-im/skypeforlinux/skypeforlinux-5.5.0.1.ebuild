@@ -7,7 +7,7 @@ MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit pax-utils rpm multilib-build xdg-utils
 
-DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
+DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
 SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
 
