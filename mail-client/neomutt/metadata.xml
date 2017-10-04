@@ -5,8 +5,6 @@
 		<email>nicolasbock@gentoo.org</email>
 		<name>Nicolas Bock</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
   <use>
 	  <flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
 	  <flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
