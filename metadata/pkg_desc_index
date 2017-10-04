@@ -131,7 +131,7 @@ app-admin/lnav 0.8.1 0.8.2: A curses-based tool for viewing and analyzing log fi
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
 app-admin/logcheck 1.3.15-r2 1.3.17 1.3.18: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
-app-admin/logrotate 3.9.1 3.11.0 3.12.2 3.12.3 3.12.3-r1: Rotates, compresses, and mails system logs
+app-admin/logrotate 3.9.1 3.11.0 3.12.2 3.12.3 3.12.3-r1 3.12.3-r2: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.7: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 5.5.3 5.6.2: Tool for managing events and logs
