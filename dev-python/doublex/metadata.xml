@@ -5,8 +5,6 @@
 		<email>alunduil@gentoo.org</email>
 		<name>Alex Brandt</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">doublex</remote-id>
 		<remote-id type="bitbucket">DavidVilla/python-doublex</remote-id>
