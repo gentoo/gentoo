@@ -8,8 +8,6 @@
 		<email>alunduil@gentoo.org</email>
 		<name>Alex Brandt</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="github">shin-/dockerpy-creds</remote-id>
 		<remote-id type="pypi">docker-pycreds</remote-id>
