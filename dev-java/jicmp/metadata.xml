@@ -5,8 +5,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription>
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">opennms</remote-id>
 	</upstream>
