@@ -38,6 +38,16 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
+if [[ ${__MESON_AUTO_DEPEND+set} == "set" ]] ; then
+	# See if we were included already, but someone changed the value
+	# of MESON_AUTO_DEPEND on us.  We could reload the entire
+	# eclass at that point, but that adds overhead, and it's trivial
+	# to re-order inherit in eclasses/ebuilds instead.  #409611
+	if [[ ${__MESON_AUTO_DEPEND} != ${MESON_AUTO_DEPEND} ]] ; then
+		die "MESON_AUTO_DEPEND changed value between inherits; please inherit meson.eclass first! ${__MESON_AUTO_DEPEND} -> ${MESON_AUTO_DEPEND}"
+	fi
+fi
+
 if [[ -z ${_MESON_ECLASS} ]]; then
 
 inherit ninja-utils python-utils-r1 toolchain-funcs
@@ -49,8 +59,19 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-DEPEND=">=dev-util/meson-0.40.0
+MESON_DEPEND=">=dev-util/meson-0.40.0
 	>=dev-util/ninja-1.7.2"
+
+# @ECLASS-VARIABLE: MESON_AUTO_DEPEND
+# @DESCRIPTION:
+# Set to 'no' to disable automatically adding to DEPEND.  This lets
+# ebuilds form conditional depends by using ${MESON_DEPEND} in
+# their own DEPEND string.
+: ${MESON_AUTO_DEPEND:=yes}
+if [[ ${MESON_AUTO_DEPEND} != "no" ]] ; then
+	DEPEND=${MESON_DEPEND}
+fi
+__MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 
 # @ECLASS-VARIABLE: BUILD_DIR
 # @DEFAULT_UNSET
