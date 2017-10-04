@@ -4,8 +4,6 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<use>
 		<flag name="tools">Install addtional tools, require USE=qt4 or qt5</flag>
 	</use>
