@@ -58,7 +58,6 @@ src_prepare() {
 
 	sed \
 		-e 's:^MainDir=.*:MainDir=/var/lib/nzbget:' \
-		-e 's:^LockFile=.*:LockFile=/run/nzbget/nzbget.pid:' \
 		-e 's:^LogFile=.*:LogFile=/var/log/nzbget/nzbget.log:' \
 		-e 's:^WebDir=.*:WebDir=/usr/share/nzbget/webui:' \
 		-e 's:^ConfigTemplate=.*:ConfigTemplate=/usr/share/nzbget/nzbget.conf:' \
@@ -91,7 +90,7 @@ src_install() {
 	keepdir /var/lib/nzbget/{dst,nzb,queue,tmp}
 	keepdir /var/log/nzbget
 
-	newinitd "${FILESDIR}"/nzbget.initd nzbget
+	newinitd "${FILESDIR}"/nzbget.initd-r1 nzbget
 	newconfd "${FILESDIR}"/nzbget.confd nzbget
 }
 
