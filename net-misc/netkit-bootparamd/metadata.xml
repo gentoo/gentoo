@@ -5,4 +5,7 @@
 <email>xmw@gentoo.org</email>
 <name>Michael Weber</name>
 </maintainer>
+<use>
+<flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
+</use>
 </pkgmetadata>
