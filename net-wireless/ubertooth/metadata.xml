@@ -5,8 +5,6 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<use>
 		<flag name="bluez">use bluez to support clock following and scanning</flag>
 		<flag name="pcap">Use libpcap for packet capture and read/write</flag>
