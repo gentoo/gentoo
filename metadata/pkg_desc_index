@@ -17607,7 +17607,7 @@ sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.4 4.9.4-r1 5.4.0 5.4.0-r3 6.3.0 6.4.0 7.1.0-r1 7.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1 1.9.0: Utility to manage compilers
-sys-devel/gdb 7.9.1 7.10.1 7.12.1 8.0 9999: GNU debugger
+sys-devel/gdb 7.9.1 7.10.1 7.12.1 8.0 8.0.1 9999: GNU debugger
 sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
@@ -18385,7 +18385,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8 4.8.1 4.8.2: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 61.0.3163.100 62.0.3202.9 62.0.3202.18 63.0.3218.0 63.0.3223.8: Open-source version of Google Chrome web browser
+www-client/chromium 61.0.3163.100 62.0.3202.9 62.0.3202.18 63.0.3223.8 63.0.3230.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
