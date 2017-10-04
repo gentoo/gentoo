@@ -2,8 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-	</longdescription>
 	<use>
 		<flag name="lvm">Install Holland LVM Plugin</flag>
 		<flag name="mysqldump">Install Holland mysqldump Plugin</flag>
