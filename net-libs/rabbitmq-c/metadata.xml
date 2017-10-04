@@ -5,8 +5,6 @@
 	<use>
 		<flag name="tools">Builds cli tools to interact with brokers</flag>
 	</use>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="github">alanxz/rabbitmq-c</remote-id>
 	</upstream>
