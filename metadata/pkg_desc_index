@@ -2178,8 +2178,8 @@ app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.1: Simplistic interactive filtering tool
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
-app-shells/push 1.6 2.0 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 3.0_p2 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/push 1.6 2.0 2.0-r1 3.0: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/quoter 3.0_p2 3.0_p2-r1 4.0: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r1 1.70-r2: Reverse Remote Shell
 app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
