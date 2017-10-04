@@ -8,8 +8,6 @@
 	<use>
 		<flag name="scripts">Install additional gaffitter scripts for external programs</flag>
 	</use>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gaffitter</remote-id>
 	</upstream>
