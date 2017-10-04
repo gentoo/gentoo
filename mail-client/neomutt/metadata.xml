@@ -5,14 +5,14 @@
 		<email>nicolasbock@gentoo.org</email>
 		<name>Nicolas Bock</name>
 	</maintainer>
-  <use>
-	  <flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
-	  <flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
-	  <flag name="smime">Enable support for smime</flag>
-	  <flag name="tokyocabinet">Enable tokyocabinet database backend for header
-		  caching</flag>
-	  <flag name="kyotocabinet">Enable kyotocabinet database backend for header
-		  caching</flag>
-	  <flag name="lmdb">Enable LMDB backend for header caching</flag>
-  </use>
+	<use>
+		<flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
+		<flag name="smime">Enable support for smime</flag>
+		<flag name="tokyocabinet">Enable tokyocabinet database backend for header
+			caching</flag>
+		<flag name="kyotocabinet">Enable kyotocabinet database backend for header
+			caching</flag>
+		<flag name="lmdb">Enable LMDB backend for header caching</flag>
+	</use>
 </pkgmetadata>
