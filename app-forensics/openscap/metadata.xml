@@ -16,8 +16,6 @@
 		<flag name="sce">Enables Script Check Engine (SCE) support</flag>
 		<flag name="sql">Build the sql independant probes</flag>
 	</use>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="github">OpenSCAP/openscap</remote-id>
 	</upstream>
