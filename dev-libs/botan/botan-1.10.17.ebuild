@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.10.15-c++11.patch"
 	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 src_prepare() {
