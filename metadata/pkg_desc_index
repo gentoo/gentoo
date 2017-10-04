@@ -17582,7 +17582,7 @@ sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeep
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r4 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2016.03.20-r1 2016.09.16 2017.03.21 2017.09.28: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
-sys-devel/autogen 5.18.4 5.18.10 5.18.12: Program and text file generation
+sys-devel/autogen 5.18.4 5.18.4-r1 5.18.10 5.18.12: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r4 1.10.3-r1 1.10.3-r2 1.11.6-r1 1.11.6-r2 1.12.6 1.12.6-r1 1.13.4 1.13.4-r1 1.14.1 1.14.1-r1 1.15 1.15-r1 1.15-r2 1.15.1 1.15.1-r1 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r1 1.06.95-r2 1.07.1: Handy console-based calculator utility
