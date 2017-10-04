@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 	dev-lang/python:*
 	doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_prepare() {
 	default
 	use doc || sed \
