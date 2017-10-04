@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Oct 2017)
+# Unmaintained KCM for a kcmshell that does not exist anymore.
+# Depends on dead Qt4. Masked for removal in 30 days. Bug #629236
+x11-libs/compizconfig-backend-kconfig4
+
 # Patrice Clement <elvis@magic.io> (01 Oct 2017)
 # Mask Atom betas for testing.
 app-editors/atom:beta
