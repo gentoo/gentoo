@@ -341,7 +341,7 @@ app-arch/zopfli 1.0.0_p20140705 1.0.1-r2: Very good, but slow, deflate or zlib c
 app-arch/zpaq 7.13-r1 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zstd 1.1.0 1.1.3 1.2.0 1.3.0: zstd fast compression library
-app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5: The Advanced Maryland Automatic Network Disk Archiver
+app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.13 0.7.13-r1: Backup Manager is a command line backup tool for GNU/Linux
@@ -5008,7 +5008,7 @@ dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0 1.4.2 2.0.0 2.1.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.3-r2: Low-level cryptographic library
-dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
+dev-libs/newt 0.52.15 0.52.18 0.52.20: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.13.1 4.16 4.17: Netscape Portable Runtime
@@ -14784,7 +14784,7 @@ net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r1 2.12.4-r2 9999: Graphical IRC client based on XChat
 net-irc/ii 1.7-r1 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 2.0.23 2.0.24: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.23 2.0.24-r1: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
