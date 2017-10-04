@@ -13,7 +13,7 @@ HOMEPAGE="http://botan.randombit.net/"
 SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-SLOT="2/0"
+SLOT="2/3" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
 REQUIRED_USE="python? ( boost ) boost? ( ${PYTHON_REQUIRED_USE} )"
@@ -71,14 +71,13 @@ src_configure() {
 
 	./configure.py \
 		--prefix="${EPREFIX}/usr" \
-		--destdir="${D}/${EPREFIX}/usr" \
 		--libdir=$(get_libdir) \
 		--docdir=share/doc \
 		--cc=gcc \
 		--os=${myos} \
 		--cpu=${CHOSTARCH} \
 		--with-endian="$(tc-endian)" \
-		--without-sphinx \
+		--without-doxygen \
 		$(use_with doc sphinx) \
 		$(use_with bzip2) \
 		$(use_with lzma) \
@@ -92,7 +91,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CXX="$(tc-getCXX) -pthread" AR="$(tc-getAR) crs" LIB_OPT="-c ${CXXFLAGS}"
+	emake CXX="$(tc-getCXX) -pthread" AR="$(tc-getAR) crs" CXXFLAGS="-std=c++11 -D_REENTRANT ${CXXFLAGS}"
 }
 
 src_test() {
@@ -100,7 +99,7 @@ src_test() {
 }
 
 src_install() {
-	emake install
+	default
 
 	if ! use static-libs; then
 		rm "${ED}usr/$(get_libdir)/libbotan"*.a || die 'remove of static libs failed'
