@@ -8260,7 +8260,7 @@ dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychef 0.2.3: A Python API for interacting with a Chef server
 dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
-dev-python/pychroot 0.9.16 0.9.17 0.9.18 9999: a python library and cli tool that simplify chroot handling
+dev-python/pychroot 0.9.18 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
 dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
@@ -8755,7 +8755,7 @@ dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.1-r1 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakefood 1.3.1-r1: Generate dependency graphs from Python code
-dev-python/snakeoil 0.7.1 0.7.3 0.7.4 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.7.4 9999: misc common functionality and useful optimizations
 dev-python/snappy 0.5-r2 0.5-r3 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.22: SOAP Services for Python
