@@ -5,8 +5,6 @@
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
   </maintainer>
-  <longdescription lang="en">
-</longdescription>
   <use>
     <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto backend</flag>
     <flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as crypto backend</flag>
