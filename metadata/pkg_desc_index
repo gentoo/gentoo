@@ -8122,7 +8122,7 @@ dev-python/oslo-versionedobjects 1.21.1 1.26.0: A library that provides a generi
 dev-python/oslo-vmware 2.17.1 2.23.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.4.0: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
-dev-python/ovs 2.4.0 2.6.1 2.7.0: OVS bindings for python.
+dev-python/ovs 2.4.0 2.6.1 2.7.0 2.7.2: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0: A library for creating OVSDB applications
 dev-python/pSQL 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 16.8: Core utilities for Python packages
@@ -15361,7 +15361,7 @@ net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another m
 net-misc/openssh 7.3_p1-r7 7.3_p1-r8 7.4_p1 7.5_p1 7.5_p1-r1 7.5_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
-net-misc/openvswitch 2.6.1 2.7.2 2.7.2-r1: Production quality, multilayer virtual switch
+net-misc/openvswitch 2.6.1 2.7.2 2.7.2-r1 2.8.1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.3.1 2.3.2-r1 2.3.3: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8 1.8.1: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
