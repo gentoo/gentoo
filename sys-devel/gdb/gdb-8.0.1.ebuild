@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit flag-o-matic eutils python-single-r1
 
@@ -178,22 +178,26 @@ src_test() {
 }
 
 src_install() {
-	use server && ! use client && cd gdb/gdbserver
+	if use server && ! use client; then 
+		cd gdb/gdbserver || die
+	fi
 	default
-	use client && find "${ED}"/usr -name libiberty.a -delete
-	cd "${S}"
+	if use client; then
+		find "${ED}"/usr -name libiberty.a -delete || die
+	fi
+	cd "${S}" || die
 
 	# Delete translations that conflict with binutils-libs. #528088
 	# Note: Should figure out how to store these in an internal gdb dir.
 	if use nls ; then
 		find "${ED}" \
 			-regextype posix-extended -regex '.*/(bfd|opcodes)[.]g?mo$' \
-			-delete
+			-delete || die
 	fi
 
 	# Don't install docs when building a cross-gdb
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
-		rm -r "${ED}"/usr/share/{doc,info,locale}
+		rm -r "${ED}"/usr/share/{doc,info,locale} || die
 		local f
 		for f in "${ED}"/usr/share/man/*/* ; do
 			if [[ ${f##*/} != ${CTARGET}-* ]] ; then
