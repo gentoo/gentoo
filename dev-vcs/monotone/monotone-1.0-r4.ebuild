@@ -16,7 +16,7 @@ IUSE="doc ipv6 nls test"
 
 RDEPEND="sys-libs/zlib
 	>=dev-libs/libpcre-7.6
-	>=dev-libs/botan-1.8.0
+	>=dev-libs/botan-1.8.0:0
 	>=dev-db/sqlite-3.3.8
 	>=dev-lang/lua-5.1
 	net-dns/libidn"
