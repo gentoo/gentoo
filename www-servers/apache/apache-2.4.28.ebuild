@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # latest gentoo apache files
 GENTOO_PATCHSTAMP="20160303"
@@ -40,7 +40,7 @@ lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiati
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
 slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
-unixd version vhost_alias"
+unixd version vhost_alias xml2enc"
 # The following are also in the source as of this version, but are not available
 # for user selection:
 # bucketeer case_filter case_filter_in echo http isapi optional_fn_export
@@ -71,6 +71,7 @@ MODULE_DEPENDS="
 	proxy_connect:proxy
 	proxy_ftp:proxy
 	proxy_html:proxy
+	proxy_html:xml2enc
 	proxy_http:proxy
 	proxy_scgi:proxy
 	proxy_fcgi:proxy
@@ -126,7 +127,7 @@ HOMEPAGE="https://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
 
 DEPEND+="apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )"
 
@@ -180,12 +181,12 @@ src_install() {
 	# old location until all ebuilds and eclasses have been modified to
 	# use the new location.
 	local apxs="/usr/bin/apxs"
-	cp "${S}"/support/apxs "${ED}"${apxs} || die "Failed to install apxs"
-	ln -s ../bin/apxs "${ED}"/usr/sbin/apxs || die
-	chmod 0755 "${ED}"${apxs} || die
+	cp "${S}"/support/apxs "${ED%/}/${apxs}" || die "Failed to install apxs"
+	ln -s ../bin/apxs "${ED%/}/usr/sbin/apxs" || die
+	chmod 0755 "${ED%/}${apxs}" || die
 
-	# Note: wait for mod_systemd to be included in the next release,
-	# then apache2.4.service can be used and systemd support controlled
+	# Note: wait for mod_systemd to be included in some forthcoming release,
+	# Then apache2.4.service can be used and systemd support controlled
 	# through --enable-systemd
 	systemd_newunit "${FILESDIR}/apache2.2-hardened.service" "apache2.service"
 	systemd_dotmpfilesd "${FILESDIR}/apache.conf"
@@ -197,8 +198,7 @@ src_install() {
 	doins "${FILESDIR}"/41_mod_http2.conf
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	apache-2_pkg_postinst || die "apache-2_pkg_postinst failed"
 	# warnings that default config might not work out of the box
 	for mod in $MODULE_CRITICAL; do
@@ -225,7 +225,7 @@ pkg_postinst()
 				lbset=1 && break
 			fi
 		done
-		if [ ! $lbset ]; then
+		if [ ! ${lbset} ] ; then
 			echo
 			ewarn "Info: Missing load balancing scheduler algorithm module"
 			ewarn "(They were split off from proxy_balancer in 2.3)"
