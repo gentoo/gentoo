@@ -306,7 +306,7 @@ src_install() {
 	source ${TMPENVFILE}
 
 	einfo "Doing stock install"
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# Build the envdir file
 	# Don't forget this..
@@ -341,8 +341,8 @@ src_install() {
 	fi
 
 	einfo "Installing systemd service and socket files for Amanda"
-	systemd_dounit "${FILESDIR}"/amanda.socket || die
-	systemd_newunit "${FILESDIR}"/amanda.service 'amanda@.service' || die
+	systemd_dounit "${FILESDIR}"/amanda.socket
+	systemd_newunit "${FILESDIR}"/amanda.service 'amanda@.service'
 
 	insinto /etc/amanda
 	einfo "Installing .amandahosts File for ${AMANDA_USER_NAME} user"
@@ -402,8 +402,8 @@ src_install() {
 	newdoc "${MYFILESDIR}/amanda-inetd.amanda.sample-2.6.0_p2-r2" amanda-inetd.amanda.sample
 	# Amanda example configs
 	einfo "Installing example configurations"
-	rm "${D}"/usr/share/amanda/{COPYRIGHT,ChangeLog,NEWS,ReleaseNotes}
-	mv "${D}/usr/share/amanda/example" "${D}/usr/share/doc/${PF}/"
+	rm "${D}"/usr/share/amanda/{COPYRIGHT,ChangeLog,NEWS,ReleaseNotes} || die
+	mv "${D}/usr/share/amanda/example" "${D}/usr/share/doc/${PF}/" || die
 	docinto example1
 	newdoc "${FILESDIR}/example_amanda.conf" amanda.conf
 	newdoc "${FILESDIR}/example_disklist-2.5.1_p3-r1" disklist
@@ -411,7 +411,7 @@ src_install() {
 
 	einfo "Cleaning up dud .la files"
 	perl_set_version
-	find "${D}"/"${VENDOR_LIB}" -name '*.la' -print0 |xargs -0 rm -f
+	find "${D}"/"${VENDOR_LIB}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
@@ -425,9 +425,9 @@ pkg_postinst() {
 		! -f "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/amandates" ]; then
 		einfo "Migrating amandates from /etc/ to ${AMANDA_USER_HOMEDIR}/amanda"
 		einfo "A backup is also placed at /etc/amandates.orig"
-		cp -dp "${ROOT}/etc/amandates" "${ROOT}/etc/amandates.orig"
-		mkdir -p "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/"
-		cp -dp "${ROOT}/etc/amandates" "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/amandates"
+		cp -dp "${ROOT}/etc/amandates" "${ROOT}/etc/amandates.orig" || die
+		mkdir -p "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/" || die
+		cp -dp "${ROOT}/etc/amandates" "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/amandates" || die
 	fi
 	if [ -f "${ROOT}/etc/amandates" ]; then
 		einfo "If you have migrated safely, please delete /etc/amandates"
@@ -470,10 +470,11 @@ amanda_permissions_fix() {
 	local root="$1"
 	[ -z "${root}" ] && die "Failed to pass root argument to amanda_permissions_fix!"
 	local le="/usr/libexec/amanda"
+	local i
 	for i in /usr/sbin/amcheck "${le}"/calcsize "${le}"/killpgrp \
 		"${le}"/rundump "${le}"/runtar "${le}"/dumper \
 		"${le}"/planner ; do
-		chown root:${AMANDA_GROUP_NAME} "${root}"/${i}
-		chmod u=srwx,g=rx,o= "${root}"/${i}
+		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
+		chmod u=srwx,g=rx,o= "${root}"/${i} || die
 	done
 }
