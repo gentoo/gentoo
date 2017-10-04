@@ -15194,7 +15194,7 @@ net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/crossbar 17.6.1_p3-r1 17.8.1 17.9.1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.55.1: A Client that groks URLs
+net-misc/curl 7.55.1 7.56.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
