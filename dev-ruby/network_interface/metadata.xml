@@ -5,8 +5,6 @@
     <email>zerochaos@gentoo.org</email>
     <name>Rick Farina</name>
   </maintainer>
-  <longdescription lang="en">
-</longdescription>
   <upstream>
     <remote-id type="github">rapid7/network_interface</remote-id>
   </upstream>
