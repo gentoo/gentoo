@@ -16,6 +16,7 @@ fi
 
 DESCRIPTION="Linux real time system monitoring, done right!"
 HOMEPAGE="https://github.com/firehol/netdata https://my-netdata.io/"
+PATCHES=( "${FILESDIR}/${P}-openrc-fixes.patch" )
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
