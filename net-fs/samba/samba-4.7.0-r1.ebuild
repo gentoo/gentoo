@@ -13,8 +13,7 @@ MY_P="${PN}-${MY_PV}"
 SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
-SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~axs/samba-4.6.7-disable-python-patches.tar.xz"
+SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
 [[ ${PV} = *_rc* ]] || \
 KEYWORDS="~amd64 ~arm64 ~x86"
 
@@ -47,15 +46,15 @@ CDEPEND="
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=dev-util/cmocka-1.0.0[${MULTILIB_USEDEP}]
+	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.1.29[ldap(+)?,python(+),${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.2.2[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
 	>=sys-libs/talloc-2.1.9[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.12[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.31-r1[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.14[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.33[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( virtual/pam )
@@ -76,7 +75,7 @@ CDEPEND="
 	gpg? ( app-crypt/gpgme )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
-	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
+	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
@@ -98,7 +97,7 @@ RDEPEND="${CDEPEND}
 	!dev-perl/Parse-Yapp
 "
 
-REQUIRED_USE="addc? ( python gnutls !system-mitkrb5 )
+REQUIRED_USE="addc? ( python gnutls )
 	test? ( python )
 	addns? ( python )
 	ads? ( acl gnutls ldap )
@@ -117,6 +116,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
+	"${FILESDIR}"/talloc-disable-python.patch
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -137,9 +137,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# install the patches from tarball(s)
-	eapply "${WORKDIR}/patches"
 
 	# un-bundle dnspython
 	sed -i -e '/"dns.resolver":/d' "${S}"/third_party/wscript || die
