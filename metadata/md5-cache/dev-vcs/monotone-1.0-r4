@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test
-DEPEND=sys-libs/zlib >=dev-libs/libpcre-7.6 >=dev-libs/botan-1.8.0 >=dev-db/sqlite-3.3.8 >=dev-lang/lua-5.1 net-dns/libidn >=dev-libs/boost-1.33.1 nls? ( >=sys-devel/gettext-0.11.5 ) doc? ( sys-apps/texinfo ) test? ( dev-tcltk/expect app-shells/bash-completion )
+DEPEND=sys-libs/zlib >=dev-libs/libpcre-7.6 >=dev-libs/botan-1.8.0:0 >=dev-db/sqlite-3.3.8 >=dev-lang/lua-5.1 net-dns/libidn >=dev-libs/boost-1.33.1 nls? ( >=sys-devel/gettext-0.11.5 ) doc? ( sys-apps/texinfo ) test? ( dev-tcltk/expect app-shells/bash-completion )
 DESCRIPTION=Monotone Distributed Version Control System
 EAPI=4
 HOMEPAGE=http://monotone.ca
 IUSE=doc ipv6 nls test
 KEYWORDS=amd64 ~ia64 x86
 LICENSE=GPL-2
-RDEPEND=sys-libs/zlib >=dev-libs/libpcre-7.6 >=dev-libs/botan-1.8.0 >=dev-db/sqlite-3.3.8 >=dev-lang/lua-5.1 net-dns/libidn
+RDEPEND=sys-libs/zlib >=dev-libs/libpcre-7.6 >=dev-libs/botan-1.8.0:0 >=dev-db/sqlite-3.3.8 >=dev-lang/lua-5.1 net-dns/libidn
 SLOT=1
 SRC_URI=http://monotone.ca/downloads/1.0/monotone-1.0.tar.bz2
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=8c1a51e2394027f99bc5af8aa4d533ea
+_md5_=5374342d3825b578f533fa3d27b76e8d
