@@ -5602,16 +5602,16 @@ dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r1: Class::Member - A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.120.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0: Create generic methods for OO Perl
-dev-perl/Class-Mix 0.5.0-r1: dynamic class mixing
+dev-perl/Class-Mix 0.5.0-r1 0.6.0: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r1: Spiffy Perl Interface Framework For You
 dev-perl/Class-Std 0.11.0-r1 0.13.0: Support for creating standard "inside-out" classes
 dev-perl/Class-Std-Fast 0.0.8-r1: Faster but less secure than Class::Std
-dev-perl/Class-Tiny 1.0.0 1.4.0: Minimalist class construction
+dev-perl/Class-Tiny 1.0.0 1.4.0 1.6.0: Minimalist class construction
 dev-perl/Class-Trigger 0.140.0-r1: Mixin to add / call inheritable triggers
-dev-perl/Class-Unload 0.70.0-r1 0.90.0: Unload a class
-dev-perl/Class-Virtual 0.60.0-r1 0.70.0: Base class for virtual base classes
+dev-perl/Class-Unload 0.70.0-r1 0.90.0 0.110.0: Unload a class
+dev-perl/Class-Virtual 0.60.0-r1 0.70.0 0.80.0: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
@@ -5623,12 +5623,12 @@ dev-perl/Compress-Bzip2 2.260.0: Interface to Bzip2 compression library
 dev-perl/Config-Any 0.290.0 0.300.0 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
-dev-perl/Config-AutoConf 0.311.0 0.313.0 0.314.0: A module to implement some of AutoConf macros in pure perl
+dev-perl/Config-AutoConf 0.311.0 0.313.0 0.314.0 0.315.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.600.0 2.620.0 2.630.0: Config file parser module
-dev-perl/Config-Grammar 1.100.0-r1 1.110.0: A grammar-based, user-friendly config parser
+dev-perl/Config-Grammar 1.100.0-r1 1.110.0 1.120.0: A grammar-based, user-friendly config parser
 dev-perl/Config-INI 0.25.0: simple .ini-file format
-dev-perl/Config-IniFiles 2.880.0 2.920.0: A module for reading .ini-style configuration files
+dev-perl/Config-IniFiles 2.880.0 2.920.0 2.940.0: A module for reading .ini-style configuration files
 dev-perl/Config-JSON 1.520.200: A JSON based config file system
 dev-perl/Config-MVP 2.200.10: multivalue-property package-oriented configuration
 dev-perl/Config-MVP-Reader-INI 2.101.463: an MVP config reader for .ini files
@@ -5648,8 +5648,8 @@ dev-perl/Convert-Color 0.80.0-r1 0.110.0: Color space conversions and named look
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1: A Perl interface to the uulib library
-dev-perl/Cookie-Baker 0.60.0 0.70.0: Cookie string generator / parser
-dev-perl/Cookie-Baker-XS 0.70.0: Accelerate Cookie::Baker's crush_cookie
+dev-perl/Cookie-Baker 0.60.0 0.70.0 0.80.0: Cookie string generator / parser
+dev-perl/Cookie-Baker-XS 0.70.0 0.80.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.511.0: The only real threads in perl
 dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100 3.23.300: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
@@ -15583,7 +15583,7 @@ net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network 
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10 0.4.11: go-ipfs is the main implementation of IPFS.
-net-p2p/gtk-gnutella 1.1.11 1.1.11-r1: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.12: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks

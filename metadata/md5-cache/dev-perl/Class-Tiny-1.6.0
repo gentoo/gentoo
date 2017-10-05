@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( !minimal? ( >=virtual/perl-CPAN-Meta-2.120.900 dev-perl/Test-FailWarnings ) virtual/perl-Exporter virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Minimalist class construction
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Class-Tiny/
+IUSE=test minimal
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=Apache-2.0
+RDEPEND=virtual/perl-Carp dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Class-Tiny-1.006.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=70759f3b6df62d29ff1eb7325aa0cf76
