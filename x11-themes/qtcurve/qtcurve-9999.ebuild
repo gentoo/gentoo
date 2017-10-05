@@ -40,6 +40,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtx11extras)
 	)
 	plasma? (
+		$(add_frameworks_dep frameworkintegration)
 		$(add_frameworks_dep karchive)
 		$(add_frameworks_dep kcompletion)
 		$(add_frameworks_dep kconfig)
