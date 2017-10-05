@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=dev-java/ant-core:0 >=virtual/jdk-1.7:* >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=A utility that converts ascii-art diagrams to bitmap diagrams
+EAPI=6
+HOMEPAGE=https://github.com/stathissideris/ditaa
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3+
+RDEPEND=>=virtual/jdk-1.7:* >=dev-java/java-config-2.2.0-r3
+SLOT=0
+SRC_URI=https://github.com/stathissideris/ditaa/archive/v0.10.tar.gz -> ditaa-0.10.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=390952c838084c2d3751104d17ee2b8b

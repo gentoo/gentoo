@@ -602,7 +602,7 @@ app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntool 0.6-r1 0.8: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.4.0 1.5.0: A PKCS #11 module for OpenPGP smartcards
-app-crypt/seahorse 3.20.0: A GNOME application for managing encryption keys
+app-crypt/seahorse 3.20.0 3.20.0-r1: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
@@ -12660,6 +12660,7 @@ media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.5.0 5.7.0: Digital photo management application
 media-gfx/displaycal 3.3.3.0 3.3.4.1: Display calibration and characterization powered by Argyll CMS
+media-gfx/ditaa 0.10: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
