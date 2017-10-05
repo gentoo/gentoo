@@ -16113,7 +16113,7 @@ sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.13 2.14 2.14-r1: Unit conversion program
+sci-calculators/units 2.14-r1: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/ParmEd 2.7.3: Parameter/topology editor and molecular simulator
@@ -17858,7 +17858,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4
 sys-kernel/rt-sources 3.18.59_p65 3.18.69_p75 4.1.40_p48 4.1.42_p49 4.1.42_p50 4.4.75_p88 4.4.79_p92 4.4.86_p99 4.9.35_p25 4.9.40_p30 4.9.47_p37 4.11.9_p7 4.11.12_p9 4.11.12_p13: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.93 3.10.107 3.16.48 4.1.44 4.4.89 4.9.52 4.12.14 4.13.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.93 3.10.107 3.16.48 4.1.44 4.4.90 4.9.53 4.12.14 4.13.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
