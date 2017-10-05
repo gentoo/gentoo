@@ -3006,7 +3006,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.8-r1 2.2.0-r1 2.2.1-r1 2.2.2-r1 2.2.5-r1 2.3.2-r1 2.3.3 2.4.0 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.2.19 9.2.21 9.2.21-r2 9.2.22 9.2.23 9.3.15 9.3.17 9.3.17-r2 9.3.18 9.3.19 9.4.10 9.4.12 9.4.12-r2 9.4.13 9.4.14 9.5.5 9.5.7 9.5.7-r1 9.5.8 9.5.9 9.6.3-r1 9.6.3-r2 9.6.4 9.6.5 10_rc1 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.2.19 9.2.21 9.2.21-r2 9.2.22 9.2.23 9.3.15 9.3.17 9.3.17-r2 9.3.18 9.3.19 9.4.10 9.4.12 9.4.12-r2 9.4.13 9.4.14 9.5.5 9.5.7 9.5.7-r1 9.5.8 9.5.9 9.6.3-r1 9.6.3-r2 9.6.4 9.6.5 10.0 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.5-r1 3.2.5-r4 3.2.5-r5 3.2.6 3.2.6-r1 3.2.6-r4 3.2.6-r5 3.2.8 3.2.8-r1 3.2.8-r2 3.2.8-r3 4.0.1 4.0.1-r1: A persistent caching system, key-value and data structures database
