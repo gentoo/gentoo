@@ -1,0 +1,73 @@
+--- a/gcc/Makefile.in	2017-09-17 22:56:56.683809150 -0700
++++ b/gcc/Makefile.in	2017-09-17 15:58:59.917007229 -0700
+@@ -145,9 +145,6 @@
+ CXXFLAGS = @CXXFLAGS@
+ LDFLAGS = @LDFLAGS@
+
+-# Should we build position-independent host code?
+-PICFLAG = @PICFLAG@
+-
+ # Flags to determine code coverage. When coverage is disabled, this will
+ # contain the optimization flags, as you normally want code coverage
+ # without optimization.
+@@ -263,8 +260,10 @@
+ enable_esp = @enable_esp@
+ ifeq ($(enable_esp),yes)
+ ESP_NOPIE_CFLAGS = -fno-PIE
++PICFLAG = -fpic
+ else
+-ESP_NOPIE_CFLAGS=
++PICFLAG = @PICFLAG@
++ESP_NOPIE_CFLAGS =
+ endif
+
+ # -------------------------------------------
+@@ -980,12 +979,12 @@
+
+ # This is the variable actually used when we compile. If you change this,
+ # you probably want to update BUILD_CFLAGS in configure.ac
+-HARD_CFLAGS =  -DEFAULT_PIE_SSP
++HARD_CFLAGS =  -DEFAULT_PIE_SSP
+ ALL_CFLAGS = $(HARD_CFLAGS) $(ESP_NOPIE_CFLAGS) $(T_CFLAGS) $(CFLAGS-$@) \
+   $(CFLAGS) $(INTERNAL_CFLAGS) $(COVERAGE_FLAGS) $(WARN_CFLAGS) @DEFS@
+
+ # The C++ version.
+-HARD_CFLAGS =  -DEFAULT_PIE_SSP
++HARD_CFLAGS =  -DEFAULT_PIE_SSP
+ ALL_CXXFLAGS = $(HARD_CFLAGS) $(ESP_NOPIE_CFLAGS) $(T_CFLAGS) $(CFLAGS-$@) $(CXXFLAGS) \
+   $(INTERNAL_CFLAGS) $(COVERAGE_FLAGS) $(NOEXCEPTION_FLAGS) \
+   $(WARN_CXXFLAGS) @DEFS@
+--- a/libgcc/Makefile.in	2017-09-17 22:56:59.303783557 -0700
++++ b/libgcc/Makefile.in	2017-09-17 15:59:58.896486977 -0700
+@@ -228,7 +228,9 @@
+
+ ifeq ($(enable_esp),yes)
+ ESP_NOPIE_CFLAGS = -fno-PIE
++PICFLAG = -fpic
+ else
++PICFLAG = @PICFLAG@
+ ESP_NOPIE_CFLAGS=
+ endif
+
+@@ -252,8 +254,6 @@
+ # Additional target-dependent options for compiling libgcc2.a.
+ HOST_LIBGCC2_CFLAGS =
+
+-PICFLAG = @PICFLAG@
+-
+ # Defined in libgcc2.c, included only in the static library.
+ LIB2FUNCS_ST = _eprintf __gcc_bcmp
+
+@@ -295,10 +295,10 @@
+
+ # Options to use when compiling crtbegin/end.
+ CRTSTUFF_CFLAGS = -O2 $(GCC_CFLAGS) $(INCLUDES) $(MULTILIB_CFLAGS) -g0 \
+-  -finhibit-size-directive -fno-inline -fno-exceptions \
++  $(ESP_NOPIE_CFLAGS) -finhibit-size-directive -fno-inline -fno-exceptions \
+   -fno-zero-initialized-in-bss -fno-toplevel-reorder -fno-tree-vectorize \
+   -fbuilding-libgcc -fno-stack-protector $(FORCE_EXPLICIT_EH_REGISTRY) \
+-  $(ESP_NOPIE_CFLAGS) -fstack-check=no $(INHIBIT_LIBC_CFLAGS)
++  -fstack-check=no $(INHIBIT_LIBC_CFLAGS)
+
+ # Extra flags to use when compiling crt{begin,end}.o.
+ CRTSTUFF_T_CFLAGS =

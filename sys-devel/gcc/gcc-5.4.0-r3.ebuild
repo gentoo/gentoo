@@ -41,4 +41,6 @@ src_prepare() {
 	is_crosscompile && EPATCH_EXCLUDE+=" 05_all_gcc-spec-env.patch"
 
 	toolchain_src_prepare
+
+	use hardened && epatch "${FILESDIR}"/${PV}/${P}-hardened-adabuild.patch
 }
