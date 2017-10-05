@@ -79,10 +79,14 @@ src_install() {
 }
 
 pkg_postinst() {
+	elog
 	elog "The ${PN} binary is now installed under /usr/bin. Please"
 	elog "update your links"
 	elog
 	move_old_state_file
+	elog "If you are running systemd you might need to run:"
+	elog "systemd-tmpfiles --create /usr/lib/tmpfiles.d/logrotate.conf"
+	elog "in order to create the new location of the logrotate state file"
 	elog
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "If you wish to have logrotate e-mail you updates, please"
