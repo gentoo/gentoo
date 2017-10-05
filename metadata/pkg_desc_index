@@ -5650,7 +5650,7 @@ dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.60.0 0.70.0 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.70.0 0.80.0: Accelerate Cookie::Baker's crush_cookie
-dev-perl/Coro 6.511.0: The only real threads in perl
+dev-perl/Coro 6.511.0 6.514.0: The only real threads in perl
 dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100 3.23.300: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
