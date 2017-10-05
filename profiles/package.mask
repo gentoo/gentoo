@@ -391,7 +391,6 @@ dev-ruby/poltergeist
 >=dev-perl/Math-BigInt-GMP-1.600.0
 =perl-core/Test-Simple-1.302.96
 =virtual/perl-Test-Simple-1.302.96
-dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-Locale-1.60.0
 >=dev-perl/DateTime-TimeZone-2.20.0
 >=dev-perl/DateTime-1.370.0
