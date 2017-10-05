@@ -14,7 +14,6 @@
 		<flag name="autotools">Enable autotools project manager plugin</flag>
 		<flag name="baremetal">Build plugin for bare metal devices</flag>
 		<flag name="bazaar">Add support for <pkg>dev-vcs/bzr</pkg> version control system</flag>
-		<flag name="clang">Build clang-based code model plugin</flag>
 		<flag name="clangcodemodel">Build clang-based code model and refactoring plugins</flag>
 		<flag name="clangstaticanalyzer">Build clang-based static analyzer plugin</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
@@ -33,7 +32,6 @@
 		<flag name="systemd">Add support for retrieving application output from journald</flag>
 		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> to view documentation</flag>
-		<flag name="webkit">Use <pkg>dev-qt/qtwebkit</pkg> to view documentation</flag>
 		<flag name="winrt">Build plugin for WinRT devices</flag>
 	</use>
 	<upstream>
