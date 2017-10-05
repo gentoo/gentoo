@@ -4,10 +4,10 @@ DESCRIPTION=Linux quota tools
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/linuxquota/
 IUSE=ldap netlink nls rpc tcpd
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sparc x86
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=ldap? ( >=net-nds/openldap-2.3.35 ) netlink? ( sys-apps/dbus dev-libs/libnl:3 ) rpc? ( net-nds/rpcbind ) tcpd? ( sys-apps/tcp-wrappers )
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxquota/quota-4.03.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=4f3e8efd59512ccf82793935cc849342
+_md5_=ceac9cb64a55cd721b1ddafddeffa0df
