@@ -5651,7 +5651,7 @@ dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1: A Perl interface to the uulib libr
 dev-perl/Cookie-Baker 0.60.0 0.70.0 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.70.0 0.80.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.511.0 6.514.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100 3.23.300: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 3.23.0 3.23.100 3.23.300 3.23.900: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
@@ -5685,7 +5685,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.47.0 0.48.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.47.0 0.48.0 0.53.0: Self-contained crypto toolkit
 dev-perl/Curses 1.320.0 1.330.0 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
@@ -11073,7 +11073,7 @@ games-emulation/mupen64plus-rsp-hle 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 em
 games-emulation/mupen64plus-ui-console 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, console UI
 games-emulation/mupen64plus-video-glide64mk2 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin
 games-emulation/mupen64plus-video-rice 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
-games-emulation/nestopia 1.46.2 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
+games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r2: NES emulation for Linux/x86
 games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
