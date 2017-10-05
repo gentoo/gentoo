@@ -387,7 +387,6 @@ dev-ruby/poltergeist
 # removed:
 #
 >=perl-core/ExtUtils-MakeMaker-7.180.0
->=dev-perl/Net-Twitter-4.10.420
 >=perl-core/Math-BigInt-1.999.726
 >=dev-perl/Math-BigInt-GMP-1.600.0
 =perl-core/Test-Simple-1.302.96
