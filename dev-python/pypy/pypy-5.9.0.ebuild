@@ -4,8 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs pax-utils python-any-r1 toolchain-funcs versionator
 
 # note: remember to update this to newest dev-lang/python:2.7 on bump
 CPY_PATCHSET_VERSION="2.7.14-0"
@@ -13,13 +12,13 @@ MY_P=pypy2-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI="
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
 
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/41"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 doc gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
@@ -85,11 +84,6 @@ pkg_setup() {
 
 		python-any-r1_pkg_setup
 	fi
-}
-
-src_unpack() {
-	default
-	mercurial_src_unpack
 }
 
 src_prepare() {
