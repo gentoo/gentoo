@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ HOMEPAGE="http://mate-desktop.org/"
 LICENSE="GPL-2 LGPL-2 FDL-1.1"
 SLOT="0"
 
-IUSE="debug elibc_FreeBSD gnome-keyring ipv6 systemd upower"
+IUSE="debug elibc_FreeBSD gnome-keyring ipv6 systemd upower +xtrans"
 
 # x11-misc/xdg-user-dirs{,-gtk} are needed to create the various XDG_*_DIRs, and
 # create .config/user-dirs.dirs which is read by glib to get G_USER_DIRECTORY_*
@@ -34,12 +34,12 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.76
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
-	x11-libs/xtrans
 	virtual/libintl
 	elibc_FreeBSD? ( dev-libs/libexecinfo )
 	>=x11-libs/gtk+-3.14:3
 	systemd? ( sys-apps/systemd )
-	upower? ( || ( >=sys-power/upower-0.9.23 >=sys-power/upower-pm-utils-0.9.23 ) )"
+	upower? ( || ( >=sys-power/upower-0.9.23 >=sys-power/upower-pm-utils-0.9.23 ) )
+	xtrans? ( x11-libs/xtrans )"
 
 RDEPEND="${COMMON_DEPEND}
 	x11-apps/xdpyinfo
@@ -60,6 +60,7 @@ src_configure() {
 	mate_src_configure \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_with systemd) \
+		$(use_with xtrans) \
 		$(use_enable debug) \
 		$(use_enable ipv6) \
 		$(use_enable upower)
