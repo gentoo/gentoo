@@ -44,7 +44,7 @@ pkg_setup() {
 	if use modules ; then
 		CONFIG_CHECK+=" ~!OPENVSWITCH"
 		kernel_is ge 3 10 0 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
-		kernel_is le 4 9 999 || die "Linux >= 3.10.0 and <= 4.8 required for userspace modules"
+		kernel_is le 4 12 999 || die "Linux >= 3.10.0 and <= 4.12 required for userspace modules"
 		linux-mod_pkg_setup
 	else
 		CONFIG_CHECK+=" ~OPENVSWITCH"
