@@ -4,10 +4,10 @@ DESCRIPTION=A library of curses widgets
 EAPI=6
 HOMEPAGE=http://dickey.his.com/cdk/cdk.html
 IUSE=examples static-libs unicode
-KEYWORDS=alpha ~amd64 hppa ia64 ~ppc ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=alpha ~amd64 hppa ia64 ppc ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=BSD
 RDEPEND=>=sys-libs/ncurses-5.2:0=[unicode?]
 SLOT=0/6
 SRC_URI=ftp://invisible-island.net/cdk/cdk-5.0-20160131.tgz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=10986059bc2b490649bbef4fcf60b597
+_md5_=ecb1737626cc943aa14320beaee5ae9f

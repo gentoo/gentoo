@@ -6807,7 +6807,7 @@ net-vpn/ipsec-tools:idea - Enable support for the IDEA algorithm
 net-vpn/ipsec-tools:nat - Enable NAT-Traversal
 net-vpn/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
 net-vpn/ipsec-tools:stats - Enable statistics reporting
-net-vpn/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound
+net-vpn/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound)
 net-vpn/openconnect:gssapi - Build GSSAPI support
 net-vpn/openconnect:java - Build JNI bindings using jni.h
 net-vpn/openconnect:libproxy - Enable proxy support
