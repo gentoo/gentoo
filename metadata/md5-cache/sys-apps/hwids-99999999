@@ -8,4 +8,4 @@ LICENSE=|| ( GPL-2 BSD ) public-domain
 RDEPEND=udev? ( virtual/udev ) !<sys-apps/pciutils-3.1.9-r2 !<sys-apps/usbutils-005-r1
 SLOT=0
 _eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
-_md5_=8afbacc1e43fb59cfdd468366077e7be
+_md5_=1ca59e3ace5beef66b1bdba43c8f5758
