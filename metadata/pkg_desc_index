@@ -11085,7 +11085,7 @@ games-emulation/snes9x 1.53 1.54.1: Super Nintendo Entertainment System (SNES) e
 games-emulation/stella 4.0 4.7.2: Stella Atari 2600 VCS Emulator
 games-emulation/vbam 2.0.0_beta2_pre1507-r1 2.0.0_beta2_p20161211-r1 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-emulation/vgba 4.8: Gameboy Advance (GBA) emulator for Linux
-games-emulation/virtualjaguar 2.1.2-r1 2.1.2-r2: an Atari Jaguar emulator
+games-emulation/virtualjaguar 2.1.2-r2: an Atari Jaguar emulator
 games-emulation/xe 2.16.2: a multi system emulator for many console and handheld video game systems
 games-emulation/yabause 0.9.14: A Sega Saturn emulator
 games-emulation/zinc 1.1: An x86 binary-only emulator for the Sony ZN-1, ZN-2, and Namco System 11 arcade systems
@@ -11462,7 +11462,7 @@ games-roguelike/moria 5.5.2: Rogue-like D&D curses game similar to nethack (BUT 
 games-roguelike/nethack 3.6.0-r3: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned an entire genre
-games-roguelike/scourge 0.21.1 0.21.1-r1: A graphical rogue-like adventure game
+games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
 games-roguelike/stone-soup 0.16.2 0.16.2-r1: Role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
@@ -16171,7 +16171,7 @@ sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
 sci-chemistry/openbabel 2.3.2-r1 2.4.1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.3.2 2.4.1: Perl bindings for OpenBabel
-sci-chemistry/openbabel-python 2.3.2 2.4.1: Python bindings for OpenBabel (including Pybel)
+sci-chemistry/openbabel-python 2.3.2 2.4.1-r1: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
 sci-chemistry/p3d 0.4.3-r1 9999: Python module for structural bioinformatics
 sci-chemistry/parassign 20130522: Assign protein nuclei solely on the basis of pseudocontact shifts (PCS)
@@ -17840,7 +17840,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 65 66 68: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.4.88 4.4.89 4.9.49-r1 4.9.50 4.9.51 4.9.52 4.12.12 4.12.13 4.12.14 4.13.1-r1 4.13.2 4.13.3 4.13.4: Full sources including the Gentoo patchset for the 4.13 kernel tree
+sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.4.88 4.4.89 4.4.90 4.9.49-r1 4.9.50 4.9.51 4.9.52 4.12.12 4.12.13 4.12.14 4.13.1-r1 4.13.2 4.13.3 4.13.4: Full sources including the Gentoo patchset for the 4.13 kernel tree
 sys-kernel/git-sources 4.14_rc1 4.14_rc2 4.14_rc3: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
