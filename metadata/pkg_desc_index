@@ -384,7 +384,7 @@ app-backup/holland-lib-mysql 1.0.10: Holland MySQL Library
 app-backup/kbackup 1.0: Program that lets you back up any directories or files
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
-app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
+app-backup/mirdir 2.1-r2: Synchronize two directory trees in a fast way
 app-backup/mylvmbackup 0.14: Tool for creating backups of MySQL server's data files using LVM snapshots
 app-backup/obnam 1.19.1 1.21 1.22: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: A daily backup system similar to Plan9's dumpfs
