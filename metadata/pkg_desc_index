@@ -1806,7 +1806,7 @@ app-misc/gcalcli 3.2 3.3.2 3.4.0 4.0.0_alpha3 4.0.0_alpha3-r1: Google Calendar C
 app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.07 6.08-r1: Genealogy software program with a Web interface
-app-misc/gentoo 0.20.6 0.20.7: Graphical file manager for Unix-like systems, using GTK+
+app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/geoclue 0.12.99 2.4.7: A geoinformation D-Bus service
 app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
@@ -14944,7 +14944,7 @@ net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations 
 net-libs/libpcap 1.8.1 1.8.1-r1 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15 1.5.0 1.6.0: Primary Rate ISDN (PRI) library
-net-libs/libprotoident 2.0.10 2.0.11 9999: A library that performs application layer protocol identification for flows
+net-libs/libprotoident 2.0.11 2.0.12 9999: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.13-r2: Library for automatic proxy configuration management
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.18.0 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
