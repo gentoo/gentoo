@@ -39,7 +39,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
 
-RDEPEND="dev-libs/protobuf:=
+RDEPEND=">=dev-libs/protobuf-3.0.0:=
 	emacs? ( virtual/emacs )
 	fcitx4? ( app-i18n/fcitx:4 )
 	gui? (
