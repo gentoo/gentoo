@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/popt-1.5 selinux? ( sys-libs/libselinux ) acl? ( virtual/acl 
 SLOT=0
 SRC_URI=https://github.com/logrotate/logrotate/releases/download/3.12.3/logrotate-3.12.3.tar.gz -> logrotate-3.12.3.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=4355c37c7a7bc89a1e19b9ec6cfbe282
+_md5_=6d5d8f6025a11af424cc23fd56ce1c3d
