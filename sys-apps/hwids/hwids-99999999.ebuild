@@ -70,7 +70,10 @@ _emake() {
 }
 
 src_compile() {
-	[[ ${PV} == 99999999 ]] && use udev && python_setup
+	if [[ ${PV} == 99999999 ]] && use udev; then
+		python_setup
+		_emake udev-hwdb
+	fi
 	_emake
 }
 
