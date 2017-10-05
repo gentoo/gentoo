@@ -608,7 +608,7 @@ app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1 20: Cryptographically sign and verify files
-app-crypt/signing-party 2.4 2.5 2.6: A collection of several tools related to OpenPGP
+app-crypt/signing-party 2.5 2.6: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
