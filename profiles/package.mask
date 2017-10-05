@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (05 Oct 2017)
+# (on behalf of QA)
+# Rogue version bumps that reintroduce QA violations that were fixed
+# in #598527 and #598529, breaking the current verison
+# of app-portage/eix as a result, #633424. Do not reintroduce without
+# prior review from QA.
+=app-shells/push-3.0
+=app-shells/quoter-4.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Oct 2017)
 # Unmaintained KCM for a kcmshell that does not exist anymore.
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #629236
