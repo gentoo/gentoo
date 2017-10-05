@@ -1,0 +1,28 @@
+From 3b5e7a64132c242f82f51013b468d06b2164ce94 Mon Sep 17 00:00:00 2001
+From: "Luke A. Guest" <laguest@archeia.com>
+Date: Sat, 19 Aug 2017 17:25:06 +0100
+Subject: [PATCH] Remove P macro.
+
+---
+ gcc/ada/gcc-interface/Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gcc/ada/gcc-interface/Makefile.in b/gcc/ada/gcc-interface/Makefile.in
+index a722a77..396ec60 100644
+--- a/gcc/ada/gcc-interface/Makefile.in
++++ b/gcc/ada/gcc-interface/Makefile.in
+@@ -2637,10 +2637,10 @@ gnatlink-re: ../stamp-tools gnatmake-re
+ #  stamp target in the parent directory whenever gnat1 is rebuilt
+
+ # Likewise for the tools
+-../../gnatmake$(exeext): $(P) b_gnatm.o $(GNATMAKE_OBJS)
++../../gnatmake$(exeext): b_gnatm.o $(GNATMAKE_OBJS)
+	+$(GCC_LINK) $(ALL_CFLAGS) -o $@ b_gnatm.o $(GNATMAKE_OBJS) $(TOOLS_LIBS) $(TOOLS1_LIBS)
+
+-../../gnatlink$(exeext): $(P) b_gnatl.o $(GNATLINK_OBJS)
++../../gnatlink$(exeext): b_gnatl.o $(GNATLINK_OBJS)
+	+$(GCC_LINK) $(ALL_CFLAGS) -o $@ b_gnatl.o $(GNATLINK_OBJS) $(TOOLS_LIBS) $(TOOLS1_LIBS)
+
+ ../stamp-gnatlib-$(RTSDIR):
+--
+2.14.1
