@@ -5,20 +5,19 @@ EAPI=6
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_PROJECT="pypy"
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3k"
-inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs pax-utils python-any-r1 toolchain-funcs versionator
+
+MY_P=pypy3-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI=""
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2"
 
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/59"
-KEYWORDS=""
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -40,8 +39,7 @@ DEPEND="${RDEPEND}
 	!low-memory? ( ${PYTHON_DEPS} )"
 #	doc? ( dev-python/sphinx )
 
-# Who would care about predictable directory names?
-S="${WORKDIR}/pypy3-v${PV%_*}-src"
+S="${WORKDIR}/${MY_P}-src"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -76,11 +74,6 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	default
-	mercurial_src_unpack
-}
-
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
@@ -102,32 +95,12 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 
-	local jit_backend
-	if use jit; then
-		jit_backend='--jit-backend='
-
-		# We only need the explicit sse2 switch for x86.
-		# On other arches we can rely on autodetection which uses
-		# compiler macros. Plus, --jit-backend= doesn't accept all
-		# the modern values...
-
-		if use x86; then
-			if use cpu_flags_x86_sse2; then
-				jit_backend+=x86
-			else
-				jit_backend+=x86-without-sse2
-			fi
-		else
-			jit_backend+=auto
-		fi
-	fi
-
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
 		$(usex sandbox --sandbox '')
 
-		${jit_backend}
+		--jit-backend=auto
 
 		pypy/goal/targetpypystandalone
 	)
@@ -193,12 +166,11 @@ src_install() {
 	dodoc README.rst
 
 	if ! use gdbm; then
-		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
-			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
+		rm -r "${ED%/}${dest}"/lib_pypy/_gdbm* || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
-			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3* \
 			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
