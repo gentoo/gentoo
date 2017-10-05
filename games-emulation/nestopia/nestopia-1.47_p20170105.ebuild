@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	inherit vcs-snapshot
 	SRC_URI="https://github.com/rdanbrook/${PN}/archive/d7fae2aff1a93eac997d2b480652a1d068a2b6cf.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2+"
