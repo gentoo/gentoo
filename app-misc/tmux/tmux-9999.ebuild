@@ -38,11 +38,12 @@ RDEPEND="
 		)
 	)"
 
-DOCS=( CHANGES README TODO example_tmux.conf )
+DOCS=( CHANGES README TODO )
 
 PATCHES=(
-	# usptream fixes (can be removed with next version bump)
 	"${FILESDIR}/${PN}-2.4-flags.patch"
+
+	# usptream fixes (can be removed with next version bump)
 )
 
 S="${WORKDIR}/${P/_/-}"
@@ -51,6 +52,9 @@ src_prepare() {
 	# bug 438558
 	# 1.7 segfaults when entering copy mode if compiled with -Os
 	replace-flags -Os -O2
+
+	# regenerate aclocal.m4 to support earlier automake versions
+	rm aclocal.m4 || die
 
 	default
 	eautoreconf
@@ -69,10 +73,10 @@ src_configure() {
 src_install() {
 	default
 
-	if use vim-syntax; then
-		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${FILESDIR}"/tmux.vim
-	fi
+	einstalldocs
+
+	dodoc example_tmux.conf
+	docompress -x /usr/share/doc/${PF}/example_tmux.conf
 }
 
 pkg_postinst() {
