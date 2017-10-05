@@ -10554,7 +10554,7 @@ dev-util/promu 0.1.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2016.3.2-r1 2017.1.5 2017.2.1 2017.2.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.3.2 2017.1.5 2017.2.3: Intelligent Python IDE with unique code assistance and analysis
-dev-util/qbs 1.8.1-r1: Modern build tool for software projects
+dev-util/qbs 1.8.1-r1 1.9.1: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
