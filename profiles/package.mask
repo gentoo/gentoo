@@ -395,7 +395,6 @@ dev-perl/Test2-Suite
 >=dev-perl/Data-Validate-Domain-0.120.0
 dev-perl/Test2-Plugin-NoWarnings
 dev-perl/Params-ValidationCompiler
-dev-perl/Sub-Info
 dev-perl/Term-Table
 >=dev-perl/DateTime-Locale-1.60.0
 >=dev-perl/DateTime-TimeZone-2.20.0
