@@ -18576,7 +18576,7 @@ x11-apps/xwd 1.0.6: dump an image of an X window
 x11-apps/xwininfo 1.1.3: window information utility for X
 x11-apps/xwud 1.0.4: image displayer for X
 x11-base/xorg-drivers 1.12 1.15 1.18-r1 1.19 9999: Meta package containing deps on all xorg drivers
-x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.18.4 1.19.2 1.19.3 9999: X.Org X servers
+x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.18.4 1.19.2 1.19.3 1.19.4 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.137 340.104 375.82 378.13 378.13-r1 381.22 381.22-r1 384.90: NVIDIA Accelerated Graphics Driver
