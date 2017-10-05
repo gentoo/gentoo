@@ -2178,8 +2178,8 @@ app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.1: Simplistic interactive filtering tool
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
-app-shells/push 1.6 2.0 2.0-r1 3.0: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 3.0_p2 3.0_p2-r1 4.0: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/push 1.6 2.0 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/quoter 3.0_p2 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r1 1.70-r2: Reverse Remote Shell
 app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
@@ -10606,7 +10606,7 @@ dev-util/stressapptest 1.0.7_p1 1.0.8: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
-dev-util/sysdig 0.17.0-r1 0.18.0: A system exploration and troubleshooting tool
+dev-util/sysdig 0.17.0-r1 0.18.0 0.19.1: A system exploration and troubleshooting tool
 dev-util/sysprof 3.22.2 3.24.1: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.9 3.1 3.1-r1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
@@ -16638,7 +16638,7 @@ sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2-r1: A function plotter program written in PyGTK
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 15.8.5 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.37.3-r4 5.38.1 5.39.0 5.40.0: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.37.3-r4 5.38.1 5.39.0 5.40.0 5.41.0: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
