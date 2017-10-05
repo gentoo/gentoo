@@ -7,7 +7,7 @@ inherit autotools flag-o-matic versionator
 
 DESCRIPTION="Terminal multiplexer"
 HOMEPAGE="http://tmux.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV/_*}/${P/_/-}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
@@ -15,12 +15,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 
 CDEPEND="
-	>=dev-libs/libevent-2.1.5-r4
+	dev-libs/libevent:0=
+	sys-libs/ncurses:0=
 	utempter? (
 		kernel_linux? ( sys-libs/libutempter )
 		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
 	)
-	sys-libs/ncurses:0="
+"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
@@ -32,7 +33,9 @@ RDEPEND="${CDEPEND}
 		)
 	)"
 
-DOCS=( CHANGES FAQ README TODO )
+DOCS=( CHANGES README TODO )
+
+S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-flags.patch
@@ -69,11 +72,6 @@ src_install() {
 
 	dodoc example_tmux.conf
 	docompress -x /usr/share/doc/${PF}/example_tmux.conf
-
-	if use vim-syntax; then
-		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${FILESDIR}"/tmux.vim
-	fi
 }
 
 pkg_postinst() {
