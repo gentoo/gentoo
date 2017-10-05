@@ -14,13 +14,20 @@ KEYWORDS="~amd64 ~x86"
 IUSE="static-libs tools"
 
 DEPEND="
-	>=net-libs/libtrace-3.0.9
-	net-libs/libflowmanager
-	tools? ( <net-libs/libflowmanager-3 )
+	>=net-libs/libtrace-4.0.1
+	>=net-libs/libflowmanager-3.0.0
 "
 RDEPEND="
 	${DEPEND}
 "
+
+src_prepare() {
+	default
+
+	sed -i \
+		-e '/-Werror/d' \
+		lib/Makefile{.am,.in} || die
+}
 
 src_configure() {
 	econf \
