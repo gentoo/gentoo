@@ -8781,6 +8781,7 @@ dev-python/sphinx_rtd_theme 0.1.9 0.2.4: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-asyncio 0.2.0 0.2.0-r1: sphinx extension to support coroutines in markup
 dev-python/sphinxcontrib-blockdiag 1.5.5 1.5.5-r1: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-cheeseshop 0.2 0.2-r1 0.2-r2: Sphinx extension cheeseshop
+dev-python/sphinxcontrib-ditaa 0.2: Ditaa Sphinx extension
 dev-python/sphinxcontrib-doxylink 1.3 1.3-r1: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-googleanalytics 0.1-r1 0.1-r2: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-httpdomain 1.4.0 1.5.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
