@@ -391,7 +391,6 @@ dev-ruby/poltergeist
 >=dev-perl/Math-BigInt-GMP-1.600.0
 =perl-core/Test-Simple-1.302.96
 =virtual/perl-Test-Simple-1.302.96
->=dev-perl/DateTime-1.370.0
 >=dev-perl/DateTime-Format-Strptime-1.710.0
 >=dev-perl/Log-Dispatch-2.590.0
 >=dev-perl/App-pwhich-1.150.0
