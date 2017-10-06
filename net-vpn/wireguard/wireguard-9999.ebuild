@@ -26,7 +26,7 @@ IUSE="debug +module +tools module-src"
 DEPEND="tools? ( net-libs/libmnl )"
 RDEPEND="${DEPEND}"
 
-MODULE_NAMES="wireguard(net:src)"
+MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
 CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER"
 
