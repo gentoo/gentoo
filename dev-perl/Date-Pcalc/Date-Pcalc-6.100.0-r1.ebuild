@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,4 +19,8 @@ RDEPEND="${DEPEND}"
 
 SRC_TEST="do"
 mydoc="ToDo"
-PATCHES=( "${FILESDIR}"/6.100.0_identifier_before_numeric_constant.patch )
+PATCHES=(
+	"${FILESDIR}"/6.100.0_identifier_before_numeric_constant.patch
+	"${FILESDIR}/${P}-unescaped-left-brace-5.26.patch"
+	"${FILESDIR}/${P}-datestamp-window-move.patch"
+)
