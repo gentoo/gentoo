@@ -4332,7 +4332,7 @@ dev-java/netbeans-ergonomics 8.0.2 8.1 8.2: Netbeans Ergonomics Cluster
 dev-java/netbeans-extide 8.0.2 8.1 8.2: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1 8.2: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.0.2 8.1 8.2: Netbeans Harness
-dev-java/netbeans-ide 8.0.2-r2 8.0.2-r3 8.1-r2 8.2: Netbeans IDE Cluster
+dev-java/netbeans-ide 8.0.2-r2 8.0.2-r3 8.1-r2 8.1-r3 8.2 8.2-r1: Netbeans IDE Cluster
 dev-java/netbeans-java 8.0.2-r5 8.0.2-r6 8.1-r2 8.1-r3 8.2 8.2-r1: Netbeans Java Cluster
 dev-java/netbeans-javacard 8.0.2 8.1 8.2: Netbeans JavaCard Cluster
 dev-java/netbeans-javadoc 8.0.2 8.1 8.2: Netbeans JavaDocs
@@ -5140,7 +5140,7 @@ dev-lisp/clozurecl 1.10 1.11-r1 1.11-r2: Common Lisp implementation, derived fro
 dev-lisp/clx 0.7.4-r1 9999: A fork of crhodes' fork of danb's fork of CLX, an X11 client for Common Lisp
 dev-lisp/cmucl 20e 21a: CMU Common Lisp is an implementation of ANSI Common Lisp
 dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
-dev-lisp/ecls 12.12.1 13.5.1-r1 15.3.7 16.0.0 16.0.0-r1 16.1.2 16.1.2-r1 16.1.3: ECL is an embeddable Common Lisp implementation
+dev-lisp/ecls 13.5.1-r1 15.3.7 16.0.0 16.0.0-r1 16.1.2 16.1.2-r1 16.1.3: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
