@@ -11,7 +11,7 @@ HOMEPAGE="http://spacenav.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${MY_PN}/${MY_PN}%20daemon/${PN}%20${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc64 ~x86"
 IUSE="X"
 
 RDEPEND="X? ( x11-apps/xdpyinfo )"
