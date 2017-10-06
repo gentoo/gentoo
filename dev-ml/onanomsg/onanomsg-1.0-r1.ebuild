@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib eutils
+inherit opam eutils
 
 DESCRIPTION="nanomsg bindings for OCaml"
 HOMEPAGE="https://github.com/rgrinberg/onanomsg"
@@ -45,10 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	opam-installer \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		|| die
+	opam_src_install nanomsg
 	dodoc CHANGES README.md
 }
