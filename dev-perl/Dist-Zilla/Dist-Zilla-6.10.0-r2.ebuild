@@ -152,3 +152,6 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
+src_test() {
+	TZ=UTC perl-module_src_test
+}
