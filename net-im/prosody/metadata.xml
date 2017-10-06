@@ -14,5 +14,6 @@
     <flag name="libevent">Use libevent for event handling</flag>
     <flag name="zlib">Support for compressing XMPP streams with mod_compression</flag>
     <flag name="jit">Use LuaJIT instead of vanilla Lua</flag>
+    <flag name="websocket">Add websocket support</flag>
   </use>
 </pkgmetadata>
