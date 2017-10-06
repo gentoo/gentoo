@@ -38,7 +38,6 @@ ARGV3=$3
 
 . /etc/profile || exit 1
 
-if [ ${EUID:-0} -ne 0 ] ; then
 if [ ${EUID:-0} -ne 0   -a   "${EPREFIX}" == '' ] ; then
 	echo "${0##*/}: Must be root."
 	exit 1
