@@ -13,7 +13,7 @@ HOMEPAGE="https://www.mercurial-scm.org/"
 EHG_REPO_URI="http://selenic.com/repo/hg"
 EHG_REVISION="@"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="bugzilla emacs gpg test tk zsh-completion"
