@@ -1,0 +1,41 @@
+--- prosody-0.10.0/prosody.cfg.lua.dist	2017-10-05 11:27:20.852452270 +0200
++++ prosody-0.10.0-gentoo/prosody.cfg.lua.dist	2017-10-05 11:29:07.151997654 +0200
+@@ -1,5 +1,3 @@
+--- Prosody Example Configuration File
+---
+ -- Information on configuring Prosody can be found on our
+ -- website at https://prosody.im/doc/configure
+ --
+@@ -9,8 +7,6 @@
+ -- If there are any errors, it will let you know what and where
+ -- they are, otherwise it will keep quiet.
+ --
+--- The only thing left to do is rename this file to remove the .dist ending, and fill in the
+--- blanks. Good luck, and happy Jabbering!
+ 
+ 
+ ---------- Server-wide settings ----------
+@@ -80,6 +76,12 @@
+ 		--"proxy65"; -- Enables a file transfer proxy service which clients behind NAT can use
+ }
+ 
++-- Settings for Gentoo init script and net-im/jabber-base permissions system:
++daemonize = true;
++prosody_user = "jabber";
++prosody_group = "jabber";
++pidfile = "/var/run/jabber/prosody.pid";
++
+ -- These modules are auto-loaded, but should you want
+ -- to disable them then uncomment them here:
+ modules_disabled = {
+@@ -161,8 +163,8 @@
+ -- Logging configuration
+ -- For advanced logging see https://prosody.im/doc/logging
+ log = {
+-	info = "prosody.log"; -- Change 'info' to 'debug' for verbose logging
+-	error = "prosody.err";
++	info = "/var/log/jabber/prosody.log"; -- Change 'info' to 'debug' for verbose logging
++	error = "/var/log/jabber/prosody.err";
+ 	-- "*syslog"; -- Uncomment this for logging to syslog
+ 	-- "*console"; -- Log to the console, useful for debugging with daemonize=false
+ }
