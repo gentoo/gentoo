@@ -1,30 +1,12 @@
-From ac4562d86f6d920044a30b196cdab7a94e44d46a Mon Sep 17 00:00:00 2001
+From dd318718302850408319e36766329bed29b2c1c1 Mon Sep 17 00:00:00 2001
 From: Nicolas Bock <nicolasbock@gmail.com>
 Date: Mon, 2 Oct 2017 14:04:34 -0600
 Subject: [PATCH] Rename mutt to neomutt
 
 ---
- Makefile.am     | 4 ++--
- configure.ac    | 2 +-
- doc/Makefile.am | 6 +++---
- lib/Makefile.am | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Makefile.am b/Makefile.am
-index d3e125b4..ea9ff58c 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -62,8 +62,8 @@ nodist_neomutt_SOURCES = $(BUILT_SOURCES)
- LIBIMAP = -Limap -limap
- LIBIMAPDEPS = $(top_srcdir)/imap/imap.h imap/libimap.a
- 
--LIBMUTT = -Llib -lmutt
--LIBMUTTDEPS = $(top_srcdir)/lib/lib.h lib/libmutt.a
-+LIBMUTT = -Llib -lneomutt
-+LIBMUTTDEPS = $(top_srcdir)/lib/lib.h lib/libneomutt.a
- 
- neomutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(HCACHE_LIBS) $(NCRYPT_LIBS) \
- 	$(LIBIMAP) $(LIBMUTT) $(LIBICONV) $(GPGME_LIBS) $(INTLLIBS)
 diff --git a/configure.ac b/configure.ac
 index 7a3cfad9..4e2968fd 100644
 --- a/configure.ac
@@ -38,44 +20,6 @@ index 7a3cfad9..4e2968fd 100644
  
  AC_ARG_WITH(domain,
  	AS_HELP_STRING([--with-domain=DOMAIN],[Specify your DNS domain name]),
-diff --git a/doc/Makefile.am b/doc/Makefile.am
-index cbb5efec..96bae35a 100644
---- a/doc/Makefile.am
-+++ b/doc/Makefile.am
-@@ -43,8 +43,8 @@ install-data-local: makedoc-all
- 	$(INSTALL) -m 644 neomutt.1 $(DESTDIR)$(mandir)/man1/neomutt.1
- 	$(INSTALL) -m 644 neomuttrc.man $(DESTDIR)$(mandir)/man5/neomuttrc.5
- 	$(INSTALL) -m 644 $(srcdir)/smime_keys.1 $(DESTDIR)$(mandir)/man1/smime_keys_$(PACKAGE).1
--	$(INSTALL) -m 644 $(srcdir)/pgpewrap.1 $(DESTDIR)$(mandir)/man1/pgpewrap_$(PACKAGE).1
--	$(INSTALL) -m 644 $(srcdir)/pgpring.1 $(DESTDIR)$(mandir)/man1/pgpring_$(PACKAGE).1
-+	$(INSTALL) -m 644 $(srcdir)/pgpewrap.1 $(DESTDIR)$(mandir)/man1/neomutt_pgpewrap_$(PACKAGE).1
-+	$(INSTALL) -m 644 $(srcdir)/pgpring.1 $(DESTDIR)$(mandir)/man1/neomutt_pgpring_$(PACKAGE).1
- 	$(INSTALL) -m 644 $(srcdir)/mbox.5 $(DESTDIR)$(mandir)/man5/mbox_$(PACKAGE).5
- 	$(INSTALL) -m 644 $(srcdir)/mmdf.5 $(DESTDIR)$(mandir)/man5/mmdf_$(PACKAGE).5
- 	$(MKDIR_P) $(DESTDIR)$(docdir)
-@@ -63,7 +63,7 @@ install-data-local: makedoc-all
- 	-$(INSTALL) -m 644 $(srcdir)/mime.types $(DESTDIR)$(docdir)/mime.types
- 
- uninstall-local:
--	for f in neomutt.1 smime_keys_$(PACKAGE).1 pgpewrap_$(PACKAGE).1 pgpring_$(PACKAGE).1; do \
-+	for f in neomutt.1 smime_keys_$(PACKAGE).1 neomutt_pgpewrap_$(PACKAGE).1 neomutt_pgpring_$(PACKAGE).1; do \
- 		rm -f $(DESTDIR)$(mandir)/man1/$$f; \
- 	done
- 	for f in neomuttrc.5 mbox_$(PACKAGE).5 mmdf_$(PACKAGE).5; do \
-diff --git a/lib/Makefile.am b/lib/Makefile.am
-index ac7658a9..222cbc68 100644
---- a/lib/Makefile.am
-+++ b/lib/Makefile.am
-@@ -7,7 +7,7 @@ EXTRA_DIST = lib.h base64.h buffer.h date.h debug.h exit.h file.h hash.h mapping
- 
- AM_CPPFLAGS = -I$(top_srcdir)
- 
--noinst_LIBRARIES = libmutt.a
-+noinst_LIBRARIES = libneomutt.a
- 
--libmutt_a_SOURCES = base64.c buffer.c date.c debug.c exit.c file.c hash.c mapping.c md5.c memory.c message.c sha1.c string.c
-+libneomutt_a_SOURCES = base64.c buffer.c date.c debug.c exit.c file.c hash.c mapping.c md5.c memory.c message.c sha1.c string.c
- 
 -- 
 2.13.6
 
