@@ -12903,7 +12903,7 @@ media-libs/alure 1.2-r1: The OpenAL Utility Toolkit
 media-libs/ampache_browser 1.0.0: Ampache desktop client library
 media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3 3.3.1 4.0.0: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
-media-libs/aubio 0.4.1-r1 0.4.2-r1 0.4.3-r1 0.4.4-r1 0.4.5-r1: Library for audio labelling
+media-libs/aubio 0.4.1-r1 0.4.2-r1 0.4.5-r1 0.4.6: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.8 2.6.20 2.6.20-r1 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.8 2.6.20 9999: Plugins for the video editor media-video/avidemux
@@ -12989,7 +12989,7 @@ media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1: OpenEXR ILM Base librari
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 1.4.10 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/jasper 2.0.12 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
-media-libs/jbig2dec 0.13-r1 0.13-r2 0.13-r4: A decoder implementation of the JBIG2 image compression format
+media-libs/jbig2dec 0.13-r4 0.14: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
@@ -13752,7 +13752,7 @@ media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116
 media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.3.1-r3 3.4.3 3.5.1 3.5.2: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.3.1-r3 3.4.3 3.5.2 3.6.1: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.4: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
@@ -19049,7 +19049,7 @@ x11-misc/xiccd 0.2.3 0.2.4: A desktop environment-independent bridge between col
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5_p5_p1 0.5_p6: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.20 2.21: X keyboard configuration database
+x11-misc/xkeyboard-config 2.20 2.21 2.22: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.47 5.50 5.54 5.55_alpha: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar

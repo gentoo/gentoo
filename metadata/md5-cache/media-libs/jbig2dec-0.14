@@ -9,5 +9,5 @@ LICENSE=AGPL-3
 RDEPEND=png? ( media-libs/libpng:0= )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://downloads.ghostscript.com/public/jbig2dec/jbig2dec-0.13.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
-_md5_=53ef9ab97386ad456e9461c298abac79
+SRC_URI=http://downloads.ghostscript.com/public/jbig2dec/jbig2dec-0.14.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
+_md5_=2a48a1dbcdff04cb90ff325c0120831f
