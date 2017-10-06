@@ -5221,7 +5221,7 @@ dev-ml/camlp5 6.17 7.00 7.01: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
-dev-ml/capnp-ocaml 3.0.0: OCaml code generator plugin for the Cap'n Proto serialization framework
+dev-ml/capnp-ocaml 3.0.0 3.1.0: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 1.0.0 1.0.1 1.0.2: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.0 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.9.1-r1: Jane Street's alternative to the standard library
@@ -5292,13 +5292,13 @@ dev-ml/ocaml-bigstring 0.1.1: Overlay over bigarrays of chars
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-compiler-libs 0.9.0: Repackage the OCaml compiler libs so they do not expose everything at toplevel
-dev-ml/ocaml-conduit 0.15.3 0.15.4: Dereference URIs into communication channels for Async or Lwt
+dev-ml/ocaml-conduit 0.15.4: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-containers 1.2 1.3: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 3.1.1: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3 0.11.3-r1 0.11.4 0.12.0 0.12.1: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.11.2 0.11.3 0.12.1 0.13.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: Use type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0 0.4.0: Path-based dispatching for client- and server-side applications
-dev-ml/ocaml-dns 0.20.1 1.0.0: A pure OCaml implementation of the DNS protocol
+dev-ml/ocaml-dns 1.0.0: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing

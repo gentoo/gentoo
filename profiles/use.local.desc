@@ -2317,8 +2317,6 @@ dev-ml/ocaml-cohttp:lwt - Enables support for the dev-ml/lwt cooperative light-w
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
 dev-ml/ocaml-cstruct:ppx - Enable the ppx syntax extension
-dev-ml/ocaml-dns:async - support for asynchronous execution
-dev-ml/ocaml-dns:lwt - enable threads via lwt
 dev-ml/ocaml-websocket:async - Enables support for the dev-ml/async asynchronous execution library.
 dev-ml/ocaml-websocket:lwt - Enables support for the dev-ml/lwt cooperative light-weight thread library.
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component

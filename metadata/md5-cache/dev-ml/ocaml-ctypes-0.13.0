@@ -7,7 +7,7 @@ IUSE=test
 KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt] virtual/libffi dev-ml/integers:=
-SLOT=0/0.12.0
-SRC_URI=https://github.com/ocamllabs/ocaml-ctypes/archive/0.12.0.tar.gz -> ocaml-ctypes-0.12.0.tar.gz
+SLOT=0/0.13.0
+SRC_URI=https://github.com/ocamllabs/ocaml-ctypes/archive/0.13.0.tar.gz -> ocaml-ctypes-0.13.0.tar.gz
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
 _md5_=c990252540e48e10c21d681a0a28f772
