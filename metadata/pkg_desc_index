@@ -12306,7 +12306,7 @@ mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, wh
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.7.2 1.9.0-r2 1.9.1: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
-mail-client/neomutt 9999 20170714 20170912: A small but very powerful text-based mail client
+mail-client/neomutt 9999 20170714 20170912 20171006: A small but very powerful text-based mail client
 mail-client/nmh 1.3-r4: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
@@ -17817,7 +17817,7 @@ sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/tmsu 0.6.1: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 216 225-r1 233 234-r1 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 216 225-r1 233 234-r1 235 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 30 31 32 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1 1.2 1.3: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
