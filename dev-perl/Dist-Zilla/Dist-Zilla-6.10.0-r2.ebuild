@@ -13,6 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal test"
 
+PATCHES=(
+	"${FILESDIR}/${P}-perl526.patch"
+)
 ## CPAN->Gentoo resolution map for grepping in case upstream split a dep
 # breaks: Dist::Zilla::App::Command::stale -> Dist-Zilla-Plugin-PromptIfStale
 # DZA:Command::xtest -> DZP:CheckExtraTests
