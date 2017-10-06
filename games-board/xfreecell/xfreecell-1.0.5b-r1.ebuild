@@ -12,7 +12,7 @@ SRC_URI="http://www2.giganet.net/~nakayama/${P}.tgz
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 RDEPEND="media-fonts/font-misc-misc

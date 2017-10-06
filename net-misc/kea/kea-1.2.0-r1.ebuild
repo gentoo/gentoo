@@ -24,7 +24,7 @@ DEPEND="
 	dev-libs/boost
 	dev-cpp/gtest
 	dev-libs/log4cplus
-	!openssl? ( dev-libs/botan:= )
+	!openssl? ( dev-libs/botan:0= )
 	openssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"

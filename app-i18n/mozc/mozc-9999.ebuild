@@ -39,7 +39,7 @@ KEYWORDS=""
 IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
 
-RDEPEND="dev-libs/protobuf:=
+RDEPEND=">=dev-libs/protobuf-3.0.0:=
 	emacs? ( virtual/emacs )
 	fcitx4? ( app-i18n/fcitx:4 )
 	gui? (
@@ -156,9 +156,11 @@ src_configure() {
 		gyp_arguments+=(-D compiler_host=unknown -D compiler_target=unknown)
 	fi
 
+	gyp_arguments+=(-D use_libgtest=$(usex test 1 0))
 	gyp_arguments+=(-D use_libibus=$(usex ibus 1 0))
+	gyp_arguments+=(-D use_libjsoncpp=$(usex test 1 0))
 	gyp_arguments+=(-D use_libprotobuf=1)
-	gyp_arguments+=(-D use_libzinnia=1)
+	gyp_arguments+=(-D use_libzinnia=$(usex gui 1 0))
 	gyp_arguments+=(-D enable_gtk_renderer=$(usex renderer 1 0))
 
 	gyp_arguments+=(-D server_dir="${EPREFIX}/usr/libexec/mozc")

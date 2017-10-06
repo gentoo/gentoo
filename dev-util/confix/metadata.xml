@@ -5,8 +5,6 @@
 		<email>haubi@gentoo.org</email>
 		<name>Michael Haubenwallner</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">confix</remote-id>
 	</upstream>

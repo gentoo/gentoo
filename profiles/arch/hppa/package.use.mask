@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (4 Oct 2017)
+# -fstack-protector is not supported for hppa, bug 630702
+>=sys-devel/gcc-6.0 ssp
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma

@@ -5,6 +5,10 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="ev">Build support for using <pkg>dev-perl/EV</pkg> as an event-loop via Coro::EV</flag>
+    <flag name="event">Build support for using <pkg>dev-perl/Event</pkg> as an event-loop via Coro::Event</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">Coro</remote-id>
     <remote-id type="cpan-module">Coro</remote-id>

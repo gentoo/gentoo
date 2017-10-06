@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz -> $
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="acl +cron selinux"
 
 CDEPEND="
@@ -78,10 +78,15 @@ src_install() {
 }
 
 pkg_postinst() {
+	elog
 	elog "The ${PN} binary is now installed under /usr/bin. Please"
 	elog "update your links"
 	elog
 	move_old_state_file
+	elog
+	elog "If you are running systemd you might need to run:"
+	elog "systemd-tmpfiles --create /usr/lib/tmpfiles.d/logrotate.conf"
+	elog "in order to create the new location of the logrotate state file"
 	elog
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "If you wish to have logrotate e-mail you updates, please"

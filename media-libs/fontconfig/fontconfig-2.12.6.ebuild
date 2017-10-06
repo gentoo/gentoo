@@ -43,6 +43,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	export GPERF=$(type -P true)  # avoid dependency on gperf, #631980
+	sed -i -e 's/FC_GPERF_SIZE_T="unsigned int"/FC_GPERF_SIZE_T=size_t/' \
+		configure.ac || die # rest of gperf dependency fix, #631920
 	eautoreconf
 }
 

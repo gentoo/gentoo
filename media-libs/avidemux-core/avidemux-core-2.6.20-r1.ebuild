@@ -11,7 +11,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau video_cards_fglrx xv"
+IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
@@ -35,10 +35,6 @@ DEPEND="
 	vaapi? ( x11-libs/libva:0 )
 	vdpau? ( x11-libs/libvdpau:0 )
 	nvenc? ( media-video/nvidia_video_sdk )
-	video_cards_fglrx? (
-		|| ( >=x11-drivers/ati-drivers-14.12-r3
-			x11-libs/xvba-video:0 )
-		)
 "
 RDEPEND="
 	$DEPEND
@@ -53,6 +49,8 @@ DEPEND="
 
 S="${WORKDIR}/${MY_P}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
+
+PATCHES=("${FILESDIR}"/${P}-fix-cmake.patch  )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -83,7 +81,6 @@ src_configure() {
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
-		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 		-DNVENC="$(usex nvenc)"
 	)

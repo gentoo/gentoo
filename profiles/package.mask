@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (05 Oct 2017)
+# (on behalf of QA)
+# Rogue version bumps that reintroduce QA violations that were fixed
+# in #598527 and #598529, breaking the current verison
+# of app-portage/eix as a result, #633424. Do not reintroduce without
+# prior review from QA.
+=app-shells/push-3.0
+=app-shells/quoter-4.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Oct 2017)
+# Unmaintained KCM for a kcmshell that does not exist anymore.
+# Depends on dead Qt4. Masked for removal in 30 days. Bug #629236
+x11-libs/compizconfig-backend-kconfig4
+
 # Patrice Clement <elvis@magic.io> (01 Oct 2017)
 # Mask Atom betas for testing.
 app-editors/atom:beta
@@ -187,17 +201,6 @@ x11-apps/python-whiteboard
 # time being.
 >=dev-java/javatoolkit-0.6.0
 
-# Alon Bar-Lev <alonbl@gentoo.org> (08 Sep 2017)
-# Complex build system, hard to maintain, no dependencies in tree, upstream
-# does not cooperate (Bug#630420).
-# Removal in 30 days.
-dev-libs/cryptlib
-
-# Alon Bar-Lev <alonbl@gentoo.org> (08 Sep 2017)
-# Upstream no longer maintain (Bug#628908).
-# Removal in 30 days.
-sys-auth/pam_pkcs11
-
 # Austin English <wizardedit@gentoo.org> (05 Sep 2017)
 # Download has been broken for nearly a year, no alternative found
 # Bug: https://bugs.gentoo.org/599390
@@ -210,13 +213,6 @@ games-rpg/nwn-data
 games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
-
-# Kent Fredric <kentnl@gentoo.org> (05 Sep 2017)
-# Broken since Perl 5.16 circa 2012, no longer maintained upstream
-# Bug: https://bugs.gentoo.org/623900
-# Bug: https://rt.cpan.org/Public/Bug/Display.html?id=85991
-# Removal in 30 days
-dev-perl/XML-AutoWriter
 
 # Gilles Dartiguelongue <eva@gentoo.org> (04 Sep 2017)
 # Incompatible changes in API in Enchant 2. Bug #629838.
@@ -237,65 +233,15 @@ dev-perl/XML-AutoWriter
 # net-analyzer/ntopng is available
 net-analyzer/ntop
 
-# James Le Cuirot <chewi@gentoo.org> (29 Aug 2017)
-# The FOSS-friendly oracle-javamail has rendered other implementations
-# and the virtual obsolete. Removal in 30 days. See bug #553186.
-dev-java/gnu-classpath-inetlib
-dev-java/gnu-javamail
-dev-java/javax-mail
-dev-java/sun-javamail
-java-virtuals/javamail
-
-# James Le Cuirot <chewi@gentoo.org> (29 Aug 2017)
-# Old and holding up the removal of Java 7. Still alive upstream but
-# new versions have proven too tricky to package under our current
-# infrastructure. It may return one day. Removal in 30 days.
-app-benchmarks/jmeter
-
-# Jonas Stein <jstein@gentoo.org> (29 Aug 2017)
-# SRC_URI and HOMEPAGE are dead and the ebuild is in a very bad 
-# state. 
-# Removal in 30 days. #629112.
-app-text/adiff
-
-# Michał Górny <mgorny@gentoo.org> (29 Aug 2017)
-# The new snapshot introduces more issues than it fixes, even after
-# reverting one of the most breaking commits. Downgrade to 4.13.0
-# is suggested, I will probably add a new revision with some specific
-# patches if necessary.
-=xfce-base/xfwm4-4.13.0_p20170825
-
-# Michał Górny <mgorny@gentoo.org> (28 Aug 2017)
-# Alike xfce4-mixer, relies on gstreamer:0.10 (gstreamer:1.0 removed
-# mixer wrappers). Last commit upstream in 2014. PulseAudio users
-# can switch to xfce-extra/xfce4-pulseaudio-plugin
-# or xfce-extra/xfce4-volumed-pulse.
-# Removal in 30 days. Bug #629212.
-xfce-extra/xfce4-volumed
-
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
-
-# Mikle Kolyada <zlogene@gentoo.org> (26 Aug 2017)
-# Masked for removal in 30 days.
-# No major keywords,  old EAPI, no maintainer.
-# Use sys-apps/less instead.
-sys-apps/more
 
 # Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
 # Packages depending on this library need to be tested first before
 # it is unmasked. Possibly some slotting is still needed.
 # Package testing tracked in bug #611022.
 >=dev-libs/msgpack-1.4.2
-
-# Michał Górny <mgorny@gentoo.org> (21 Aug 2017)
-# xfce4-mixer is discontinued upstream and no longer considered part
-# of the DE since 4.12. It requires vulnerable gstreamer:0.10, and no
-# longer builds with the development versions of core Xfce4 components.
-# The suggested replacement is xfce-extra/xfce4-pulseaudio-plugin.
-# Removal in 30 days. Bug #628424.
-xfce-extra/xfce4-mixer
 
 # Hanno Boeck <hanno@gentoo.org> (21 Aug 2017)
 # Open security bugs, no upstream, bug 628432
@@ -397,30 +343,9 @@ dev-lang/spidermonkey:52
 net-vpn/kvpnc
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't compile, upstream dead, removal in 2 months (#584296).
+# Randomly broken due to sys-devel/binutils-config bug (#584296).
+# Unmask when it is finally fixed, so people can build the package.
 dev-util/mutrace
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Multiple unresolved bugs (#600680), need major version bumps and a
-# maintainer, removal in 2 months.
-dev-libs/libRocket
-games-fps/warsow
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Dead for ages, relies on dead libs (#622010), you can move to moserial, cutecom or
-# minicom. Removal in 2 months.
-net-dialup/gtkterm
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't build (#623562). Removal in 2 months.
-media-plugins/vdr-skinnopacity
-
-# Lars Wendler <polynomial-c@gentoo.org> (07 Jul 2017)
-# Masked until >=net-fs/samba-4.7 is in the tree and 
-# unmasked. (bug #624106)
-# See also https://bugzilla.samba.org/show_bug.cgi?id=12859
->=sys-libs/ldb-1.1.30
->=net-fs/samba-4.7.0_rc1
 
 # Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
 # The snapshots got a wrong version number assigned.
@@ -696,13 +621,6 @@ x11-libs/gtk+:1
 =dev-db/redis-3.2.8-r1
 =dev-db/redis-3.2.8-r3
 
-# Ian Stakenvicius (17 Nov 2016)
-# Does not honour LD_LIBRARY_PATH set in the environment, causing
-# all mozilla packages to fail in src_install() when xpcshell is
-# called in ${WORKDIR}, #580726
-# Segfaults when creating directories #578582
-=sys-apps/sandbox-2.11*
-
 # Michał Górny <mgorny@gentoo.org> (17 Nov 2016)
 # New version masked for testing. It supports source-window buffer size
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
@@ -876,13 +794,6 @@ www-plugins/chrome-binary-plugins:unstable
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
-
-# Sergey Popov <pinkbyte@gentoo.org> (18 Sep 2013)
-# Mask development releases of botan:
-# - causes many API breakages
-# - do not compile in some USE-flag combinations
-# - requires at least gcc 4.7(and possibly even 4.8 for some features)
->=dev-libs/botan-1.11.0
 
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions

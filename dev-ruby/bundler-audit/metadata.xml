@@ -5,8 +5,6 @@
 		<email>ruby@gentoo.org</email>
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="github">rubysec/bundler-audit</remote-id>
 	</upstream>

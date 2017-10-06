@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="emerald gnome kde unsupported"
+IUSE="emerald gnome unsupported"
 
 RDEPEND="
 	>=x11-wm/compiz-${PV}
@@ -19,7 +19,6 @@ RDEPEND="
 	>=x11-misc/ccsm-0.8.4
 	emerald? ( >=x11-wm/emerald-${PV} )
 	gnome? ( >=x11-libs/compizconfig-backend-gconf-${PV} )
-	kde? ( >=x11-libs/compizconfig-backend-kconfig4-${PV} )
 	unsupported? ( >=x11-plugins/compiz-plugins-unsupported-${PV} )"
 
 pkg_postinst() {
