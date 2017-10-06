@@ -359,7 +359,7 @@ app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists 
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.4.20 2.4.24 2.5.11 2.5.12: A full featured backup tool, aimed for disks
+app-backup/dar 2.5.11 2.5.12: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.7.10 0.7.11 0.7.12 0.7.13.1 0.7.14: Secure backup system using gnupg to encrypt data
@@ -14748,7 +14748,7 @@ net-im/openfire 4.1.0 4.1.4 4.1.5: Openfire (formerly wildfire) real time collab
 net-im/openmittsu 0.9.2.109: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.12.0: GTK Instant Messenger client
 net-im/pork 0.99.8.1-r1: Console based AIM client that looks like ircII
-net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
+net-im/prosody 0.9.10 0.9.11 0.9.12 0.10.0: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 1.2 1.3 9999: Qt XMPP client
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
@@ -17798,7 +17798,7 @@ sys-fs/owfs 3.1_p4: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/pytagsfs 0.9.2: File system that arranges media files based their tags
-sys-fs/quota 4.02 4.03 4.04 4.04-r1: Linux quota tools
+sys-fs/quota 4.03 4.04 4.04-r1: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.25.2: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives

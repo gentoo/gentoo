@@ -5695,6 +5695,7 @@ net-im/pidgin:xscreensaver - Use X screensaver protocol extension to monitor idl
 net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/prosody:jit - Use LuaJIT instead of vanilla Lua
 net-im/prosody:libevent - Use libevent for event handling
+net-im/prosody:websocket - Add websocket support
 net-im/prosody:zlib - Support for compressing XMPP streams with mod_compression
 net-im/psi:aspell - Enable spellchecking using app-text/aspell
 net-im/psi:enchant - Enable spellchecking using app-text/enchant
