@@ -4332,7 +4332,7 @@ dev-java/netbeans-ergonomics 8.0.2 8.1 8.2: Netbeans Ergonomics Cluster
 dev-java/netbeans-extide 8.0.2 8.1 8.2: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1 8.2: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.0.2 8.1 8.2: Netbeans Harness
-dev-java/netbeans-ide 8.0.2-r2 8.1-r2 8.2: Netbeans IDE Cluster
+dev-java/netbeans-ide 8.0.2-r2 8.0.2-r3 8.1-r2 8.2: Netbeans IDE Cluster
 dev-java/netbeans-java 8.0.2-r5 8.0.2-r6 8.1-r2 8.1-r3 8.2 8.2-r1: Netbeans Java Cluster
 dev-java/netbeans-javacard 8.0.2 8.1 8.2: Netbeans JavaCard Cluster
 dev-java/netbeans-javadoc 8.0.2 8.1 8.2: Netbeans JavaDocs
