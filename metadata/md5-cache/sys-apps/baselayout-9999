@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst preinst prepare setup unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Filesystem baselayout and init scripts
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/
+IUSE=build kernel_linux
+LICENSE=GPL-2
+SLOT=0
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	git-r3	52a888802d25387c2c74cb845d1219bc	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	7b6fb2fc216b101b5d97d171925a847c	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=91591f4172ddcf1ecef7831b7ef60f5b
