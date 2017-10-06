@@ -5816,7 +5816,7 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
-dev-perl/Dist-Zilla 6.8.0 6.9.0 6.10.0: distribution builder; installer not included!
+dev-perl/Dist-Zilla 6.8.0 6.9.0 6.10.0 6.10.0-r2: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.5.0 0.6.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
