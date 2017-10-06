@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib opam
 
 MY_P=ocaml-dns-${PV}
 
@@ -26,7 +26,6 @@ RDEPEND="
 "
 DEPEND="
 	dev-ml/jbuilder
-	dev-ml/opam
 	test? (
 		dev-ml/ounit
 	)
@@ -43,12 +42,4 @@ src_compile() {
 
 src_test() {
 	jbuilder runtest -p ${PN} || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
 }
