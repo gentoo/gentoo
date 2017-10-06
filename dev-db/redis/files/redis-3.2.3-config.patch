@@ -34,7 +34,7 @@ index 22e00bc..b09de57 100644
  # output buffers (but this is not needed if the policy is 'noeviction').
  #
 -# maxmemory <bytes>
-+maxmemory 67108864
++maxmemory 64MB
  
  # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
  # is reached. You can select among five behaviors:
