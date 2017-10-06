@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/jbuilder >=dev-ml/ocaml-base64-2.0.0:= >=dev-ml/ocaml-cstruct-3.0.2:=[ppx] dev-ml/ocaml-hashcons:= >=dev-ml/ocaml-ipaddr-2.6.0:= dev-ml/ocaml-re:= >=dev-ml/ocaml-uri-1.7.0:= dev-ml/result:= !dev-ml/odns >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=A pure OCaml implementation of the DNS protocol
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-dns https://mirage.io
+KEYWORDS=~amd64
+LICENSE=LGPL-2 LGPL-2.1-with-linking-exception ISC
+RDEPEND=>=dev-ml/ocaml-base64-2.0.0:= >=dev-ml/ocaml-cstruct-3.0.2:=[ppx] dev-ml/ocaml-hashcons:= >=dev-ml/ocaml-ipaddr-2.6.0:= dev-ml/ocaml-re:= >=dev-ml/ocaml-uri-1.7.0:= dev-ml/result:= !dev-ml/odns >=dev-lang/ocaml-4:=
+RESTRICT=test
+SLOT=0/1.0.0
+SRC_URI=https://github.com/mirage/dns/archive/v1.0.0.tar.gz -> ocaml-dns-1.0.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=6ce03d8214e5fe840ad2c595ed1061f5

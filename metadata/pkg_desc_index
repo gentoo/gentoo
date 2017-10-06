@@ -5234,6 +5234,7 @@ dev-ml/cryptokit 1.10 1.11 1.12: Cryptographic primitives library for Objective 
 dev-ml/csv 1.5 1.6 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
+dev-ml/dns 1.0.0: A pure OCaml implementation of the DNS protocol
 dev-ml/dns-async 1.0.0: Async support of OCaml DNS
 dev-ml/dns-lwt 1.0.0: Lwt support of OCaml DNS
 dev-ml/dns-lwt-unix 1.0.0: Lwt support of OCaml DNS
@@ -5298,7 +5299,6 @@ dev-ml/ocaml-cstruct 3.1.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.11.2 0.11.3 0.12.1 0.13.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: Use type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.3.0 0.4.0: Path-based dispatching for client- and server-side applications
-dev-ml/ocaml-dns 1.0.0: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
