@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2017)
+# media-gfx/graphite2 security stabilisation timeout.
+# bug #621724
+app-doc/doxygen doc latex
+app-text/texlive-core xetex
+dev-python/sphinx latex
+dev-util/cmocka doc
+media-libs/harfbuzz graphite
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
 # Mask pdf support so net-print/cups-filters stabilisation
 # can go ahead (bug 627392)
