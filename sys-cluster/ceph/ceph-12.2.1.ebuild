@@ -135,7 +135,7 @@ check-reqs_export_vars() {
 }
 
 user_setup() {
-	enewgroup ceph ${CEPH_GID:--1}
+	enewgroup ceph ${CEPH_GID}
 	enewuser ceph "${CEPH_UID:--1}" -1 /var/lib/ceph ceph
 }
 
