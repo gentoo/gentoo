@@ -19,7 +19,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-lang/ocaml-4:=
 	dev-ml/lwt:=
-	dev-ml/ocaml-dns:=
+	dev-ml/dns:=
 	dev-ml/mirage-profile:=
 "
 DEPEND="
