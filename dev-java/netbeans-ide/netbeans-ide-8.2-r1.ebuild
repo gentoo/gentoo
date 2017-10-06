@@ -82,7 +82,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/8FA16AD28B5E79A7CD52B8B72985B0AE8CCD6ADF-xmlrpc-common-3.0.jar
 	http://hg.netbeans.org/binaries/D6917BF718583002CBE44E773EE21E2DF08ADC71-xmlrpc-server-3.0.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
@@ -106,7 +106,7 @@ CDEPEND="virtual/jdk:1.8
 	dev-java/rhino:1.6
 	dev-java/saxon:9
 	dev-java/smack:2.2
-	<=dev-java/sun-jaf-1.1.1:0
+	>=dev-java/sun-jaf-1.1.1-r1:0
 	dev-java/tomcat-servlet-api:2.2
 	dev-java/ws-commons-util:0
 	dev-java/xerces:2"
@@ -256,7 +256,7 @@ src_prepare() {
 	java-pkg_jar-from --into o.apache.commons.logging/external commons-logging commons-logging.jar commons-logging-1.1.1.jar
 	java-pkg_jar-from --into o.apache.ws.commons.util/external ws-commons-util ws-commons-util.jar ws-commons-util-1.0.1.jar
 	java-pkg_jar-from --into servletapi/external tomcat-servlet-api-2.2 servlet.jar servlet-2.2.jar
-	java-pkg_jar-from --into xml.jaxb.api/external sun-jaf activation.jar activation.jar
+	java-pkg_jar-from --into xml.jaxb.api/external sun-jaf sun-jaf.jar activation.jar
 	java-pkg_jar-from --into xml.jaxb.api/external jsr173 jsr173.jar jsr173_1.0_api.jar
 
 	einfo "Linking in other clusters..."
@@ -348,7 +348,7 @@ src_install() {
 
 	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jaxb
 	pushd "${instdir}" >/dev/null || die
-	rm activation.jar && java-pkg_jar-from --into "${instdir}" sun-jaf activation.jar
+	rm activation.jar && java-pkg_jar-from --into "${instdir}" sun-jaf sun-jaf.jar activation.jar
 	popd >/dev/null || die
 
 	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jaxb/api
