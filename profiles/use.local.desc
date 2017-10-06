@@ -3987,7 +3987,6 @@ media-gfx/imagemagick:lqr - Enable experimental liquid rescale support using med
 media-gfx/imagemagick:opencl - Enable OpenCL support
 media-gfx/imagemagick:pango - Enable Pango support using x11-libs/pango
 media-gfx/imagemagick:q32 - Set quantum depth value to 32
-media-gfx/imagemagick:q64 - Set quantum depth value to 64
 media-gfx/imagemagick:q8 - Set quantum depth value to 8
 media-gfx/imagemagick:webp - Enable webp image format support using media-libs/libwebp
 media-gfx/imageworsener:webp - enable webp image format support
