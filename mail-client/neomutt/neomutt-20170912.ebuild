@@ -98,7 +98,7 @@ src_install() {
 	rm "${ED}"/etc/${PN}/mime.types || die
 	dosym "${EPREFIX}/etc/mime.types" /etc/${PN}/mime.types
 
-	## A man-page is always handy, so fake one
+	# A man-page is always handy, so fake one
 	if use !doc; then
 		emake -C doc muttrc.man
 		# make the fake slightly better, bug #413405
