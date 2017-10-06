@@ -1,0 +1,3 @@
+# Anthony G. Basile <blueness@gentoo.org> (15 Apr 2012)
+# Pulls in net-libs/axtls which is not keyworded for arch
+curl_ssl_axtls
