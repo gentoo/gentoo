@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 dev-qt/qtsingleapplication[X,qt5] dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib autoshutdown? ( dev-qt/qtdbus:5 ) mpris? ( dev-qt/qtdbus:5 ) dev-qt/linguist-tools:5
+DESCRIPTION=Great Qt GUI front-end for mplayer/mpv
+EAPI=6
+HOMEPAGE=http://www.smplayer.eu/
+IUSE=autoshutdown bidi debug mpris linguas_am linguas_ar_SY linguas_ar linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_en linguas_en_US linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fr linguas_gl linguas_he_IL linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_ka linguas_ko linguas_ku linguas_lt linguas_mk linguas_ms_MY linguas_nl linguas_nn_NO linguas_pl linguas_pt_BR linguas_pt linguas_ro_RO linguas_ru_RU linguas_sk linguas_sl_SI linguas_sq_AL linguas_sr linguas_sv linguas_th linguas_tr linguas_uk_UA linguas_uz linguas_vi_VN linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux
+LICENSE=GPL-2+ BSD-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 dev-qt/qtsingleapplication[X,qt5] dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib autoshutdown? ( dev-qt/qtdbus:5 ) mpris? ( dev-qt/qtdbus:5 ) || ( media-video/mplayer[bidi?,libass,png,X] ( >=media-video/mpv-0.15.0[libass,X] >=net-misc/youtube-dl-2014.11.26 ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/smplayer/smplayer-17.10.0.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=d265882c387f5a2b2904567edc6d195a
