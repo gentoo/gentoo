@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		media-video/mplayer[bidi?,libass,png,X]
 		(
-			>=media-video/mpv-0.10.0[libass,X]
+			>=media-video/mpv-0.15.0[libass,X]
 			>=net-misc/youtube-dl-2014.11.26
 		)
 	)
