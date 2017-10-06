@@ -19,7 +19,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-lang/ocaml-4:=
 	dev-ml/async:=
-	dev-ml/ocaml-dns:=
+	dev-ml/dns:=
 "
 DEPEND="
 	dev-ml/jbuilder
