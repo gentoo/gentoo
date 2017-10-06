@@ -5,10 +5,6 @@
         <email>ml@gentoo.org</email>
         <name>Gentoo ML Project</name>
     </maintainer>
-   <use>
-        <flag name="async">support for asynchronous execution</flag>
-        <flag name="lwt">enable threads via lwt</flag>
-    </use>
     <upstream>
         <remote-id type="github">mirage/ocaml-dns</remote-id>
     </upstream>
