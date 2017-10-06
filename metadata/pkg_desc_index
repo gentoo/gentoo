@@ -15778,7 +15778,7 @@ net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 0.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3 4.7 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/kismet 2013.03.1-r2 2016.07.1-r1 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2016.07.1-r1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
