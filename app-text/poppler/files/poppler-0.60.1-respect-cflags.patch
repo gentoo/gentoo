@@ -1,0 +1,53 @@
+--- poppler-0.60.1/cmake/modules/PopplerMacros.cmake
++++ poppler-0.60.1/cmake/modules/PopplerMacros.cmake
+@@ -98,8 +98,6 @@
+   set(CMAKE_BUILD_TYPE RelWithDebInfo)
+ endif(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+ 
+-if(CMAKE_COMPILER_IS_GNUCXX)
+-  # set the default compile warnings
+   set(_warn "-Wall -Wextra -Wpedantic")
+   set(_warn "${_warn} -Wno-unused-parameter -Wno-missing-field-initializers")
+   set(_warn "${_warn} -Wcast-align")
+@@ -124,39 +122,6 @@
+   set(DEFAULT_COMPILE_WARNINGS "${_warn}")
+   set(DEFAULT_COMPILE_WARNINGS_EXTRA "${_warn} ${_warnx}")
+ 
+-  set(_save_cxxflags "${CMAKE_CXX_FLAGS}")
+-  set(CMAKE_CXX_FLAGS                "-fno-exceptions -fno-check-new -fno-common -D_DEFAULT_SOURCE")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_RELEASE        "-O2 -DNDEBUG ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_DEBUG          "-g -O2 -fno-reorder-blocks -fno-schedule-insns -fno-inline ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_DEBUGFULL      "-g3 -fno-inline ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_PROFILE        "-g3 -fno-inline -ftest-coverage -fprofile-arcs ${_save_cxxflags}")
+-  set(_save_cflags "${CMAKE_C_FLAGS}")
+-  set(CMAKE_C_FLAGS                  "-std=c99")
+-  set(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_RELEASE          "-O2 -DNDEBUG ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_DEBUG            "-g -O2 -fno-reorder-blocks -fno-schedule-insns -fno-inline ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_DEBUGFULL        "-g3 -fno-inline ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs ${_save_cflags}")
+-
+-  poppler_check_link_flag("-Wl,--as-needed" GCC_HAS_AS_NEEDED)
+-  if(GCC_HAS_AS_NEEDED)
+-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--as-needed")
+-    set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,--as-needed")
+-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--as-needed")
+-  endif(GCC_HAS_AS_NEEDED)
+-endif (CMAKE_COMPILER_IS_GNUCXX)
+-
+-if(CMAKE_C_COMPILER MATCHES "icc")
+-  set(_save_cxxflags "${CMAKE_CXX_FLAGS}")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_RELEASE        "-O2 -DNDEBUG ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_DEBUG          "-O2 -g -0b0 -noalign ${_save_cxxflags}")
+-  set(CMAKE_CXX_FLAGS_DEBUGFULL      "-g -Ob0 -noalign ${_save_cxxflags}")
+-  set(_save_cflags "${CMAKE_C_FLAGS}")
+-  set(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_RELEASE          "-O2 -DNDEBUG ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_DEBUG            "-O2 -g -Ob0 -noalign ${_save_cflags}")
+-  set(CMAKE_C_FLAGS_DEBUGFULL        "-g -Ob0 -noalign ${_save_cflags}")
+-endif(CMAKE_C_COMPILER MATCHES "icc")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Woverloaded-virtual")
+ 
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
