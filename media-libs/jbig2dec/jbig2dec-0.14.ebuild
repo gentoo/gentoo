@@ -20,12 +20,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 # bug 324275
 
-DOCS="CHANGES README"
-
-PATCHES=(
-	"${FILESDIR}/${P}-CVE-2016-9601.patch"
-	"${FILESDIR}/${P}-CVE-2017-9216.patch"
-)
+DOCS=( CHANGES README )
 
 src_prepare() {
 	default

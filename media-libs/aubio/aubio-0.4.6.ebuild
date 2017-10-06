@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
@@ -27,18 +27,22 @@ RDEPEND="
 	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
-	sndfile? ( media-libs/libsndfile )"
-DEPEND="${RDEPEND}
+	sndfile? ( media-libs/libsndfile )
+"
+DEPEND="
+	${RDEPEND}
 	${PYTHON_DEPS}
-	virtual/pkgconfig
 	app-text/txt2man
-	doc? ( app-doc/doxygen )"
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS ChangeLog README.md )
 PYTHON_SRC_DIR="${S}"
 
 src_prepare() {
+	default
 	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
 }
 
@@ -66,7 +70,7 @@ src_compile() {
 
 	if use doc; then
 		cd "${S}"/doc || die
-		doxygen full.cfg || die
+		emake dirhtml
 	fi
 
 	if use python ; then
@@ -87,11 +91,6 @@ src_test() {
 src_install() {
 	waf-utils_src_install
 
-	if use doc; then
-		dohtml -r doc/full/html/.
-		dodoc doc/*.txt
-	fi
-
 	if use examples; then
 		# install dist_noinst_SCRIPTS from Makefile.am
 		dodoc -r examples
@@ -101,5 +100,11 @@ src_install() {
 		cd "${PYTHON_SRC_DIR}" || die
 		DOCS="" distutils-r1_src_install
 		newdoc python/README.md README.python
+	fi
+
+	if use doc; then
+		dodoc doc/*.txt
+		docinto html
+		dodoc -r doc/_build/dirhtml/.
 	fi
 }
