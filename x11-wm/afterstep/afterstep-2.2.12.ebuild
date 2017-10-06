@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.afterstep.org/stable/AfterStep-${PV}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ia64 ~mips ~ppc ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="alsa debug dbus gif gtk jpeg cpu_flags_x86_mmx nls png svg tiff xinerama"
 
 RDEPEND="media-libs/freetype
