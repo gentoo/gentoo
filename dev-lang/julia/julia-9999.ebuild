@@ -18,7 +18,6 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
-	dev-lang/R:0=
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
 	dev-libs/libgit2:0=
