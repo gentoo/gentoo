@@ -995,7 +995,7 @@ app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
 app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/atom 1.15.0-r1 1.16.0 1.18.0 1.20.1 1.21.0_beta2: A hackable text editor for the 21st Century
+app-editors/atom 1.15.0-r1 1.16.0 1.18.0 1.20.1 1.21.0: A hackable text editor for the 21st Century
 app-editors/beaver 0.4.1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.6 2.2.8 2.2.9 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.3.2-r2 1.4.0_alpha: display-oriented editor for binary files, based on the vi texteditor
@@ -14759,7 +14759,7 @@ net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 5.4.0.1 5.5.0.1: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0: Team collaboration tool
 net-im/telegram-desktop-bin 1.1.19 1.1.23: Official desktop client for Telegram (binary package)
