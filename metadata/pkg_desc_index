@@ -18820,7 +18820,7 @@ x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11v
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
-x11-misc/cbatticon 1.6.5 1.6.6: A lightweight and fast battery icon that sits in your system tray
+x11-misc/cbatticon 1.6.5 1.6.6 1.6.7: A lightweight and fast battery icon that sits in your system tray
 x11-misc/ccsm 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
