@@ -11,4 +11,5 @@ RDEPEND="|| ( dev-lisp/sbcl
 	dev-lisp/clisp
 	dev-lisp/clozurecl
 	dev-lisp/cmucl
-	dev-lisp/ecls )"
+	dev-lisp/ecls
+	dev-lisp/gcl )"
