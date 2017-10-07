@@ -12,6 +12,7 @@ dev-qt/qtgui gles2
 dev-qt/qtmultimedia gles2
 dev-qt/qtopengl gles2
 dev-qt/qtprintsupport gles2
+dev-qt/qtwebkit gles2
 dev-qt/qtwidgets gles2
 kde-apps/kdenlive gles2
 kde-frameworks/plasma gles2
