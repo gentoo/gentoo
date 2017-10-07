@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 		>=dev-perl/Test-Differences-0.60.0
 	)
 "
-
+PATCHES=( "${FILESDIR}/${P}-perl526.patch" )
 src_test() {
 	perl_rm_files t/90-pod.t t/91-pod_coverage.t t/92-file_port.t \
 		t/71-moose.t t/72-autodie.t t/68-hashline.t
