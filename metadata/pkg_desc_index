@@ -494,7 +494,7 @@ app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-tiny 9999 20170207: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
-app-crypt/aespipe 2.4d: Encrypts data from stdin to stdout
+app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/af_alg 0_pre20120229 0.0.1: af_alg is an openssl crypto engine kernel interface thing
 app-crypt/argon2 20160821 20161029 20161029-r1: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
@@ -4673,7 +4673,7 @@ dev-libs/confuse 3.0 3.2: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 5.6.5 5.6.5-r1: C++ class library of cryptographic schemes
+dev-libs/crypto++ 5.6.5-r1: C++ class library of cryptographic schemes
 dev-libs/cudnn 6.0: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
@@ -4943,7 +4943,7 @@ dev-libs/libsqlora8 2.3.3-r1: Simple C-library to access Oracle databases via th
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
-dev-libs/libtasn1 4.10-r1 4.10-r2 4.12 4.12-r1: ASN.1 library
+dev-libs/libtasn1 4.12-r1: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.19 0.20: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
@@ -5070,7 +5070,7 @@ dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compress
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
-dev-libs/softhsm 2.2.0-r3 2.3.0: A software PKCS#11 implementation
+dev-libs/softhsm 2.3.0: A software PKCS#11 implementation
 dev-libs/sord 0.12.0 0.12.2 0.14.0 0.16.0: Library for storing RDF data in memory
 dev-libs/spdlog 0.13.0 0.14.0 0.14.0-r1 9999: Very fast, header only, C++ logging library.
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
@@ -17776,7 +17776,7 @@ sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 65 82 82-r1 105-r1: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
-sys-fs/loop-aes 3.7j 3.7k: Linux kernel module to encrypt disk partitions with AES cipher
+sys-fs/loop-aes 3.7j 3.7k 3.7l: Linux kernel module to encrypt disk partitions with AES cipher
 sys-fs/lsscsi 0.28: SCSI sysfs query tool
 sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
