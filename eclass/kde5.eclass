@@ -100,7 +100,7 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # If set to "false", do nothing.
 # Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
 # and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
-if [[ ${CATEGORY} = kde-frameworks && ( $(get_version_component_range 2) -ge 36 || ${KDE_BUILD_TYPE} = live ) ]]; then
+if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_QTHELP:=true}
 else
 	: ${KDE_QTHELP:=false}
