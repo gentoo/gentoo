@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=UIOP is a portability layer spun off ASDF3
+EAPI=6
+HOMEPAGE=http://common-lisp.net/project/asdf/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=MIT
+PDEPEND=virtual/commonlisp
+RDEPEND=~dev-lisp/asdf-3.3.0
+SLOT=0
+SRC_URI=http://common-lisp.net/project/asdf/archives/asdf-3.3.0.tar.gz
+_eclasses_=common-lisp-3	8c4aaa6d66cd2daed8572bb60bf6fe07	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=e60ca8c4e219a801504cdef51fc2d8ca
