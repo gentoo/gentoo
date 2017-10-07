@@ -37,10 +37,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-9999-expert.patch"
-)
-
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ruby-ng_pkg_setup
@@ -61,10 +57,7 @@ each_ruby_configure() {
 		-option "${MAKEOPTS}" \
 		-with-qtbinding \
 		-without-64bit-coord \
-		-qt5 \
-		-qtbin /usr/lib64/qt5/bin \
-		-qtinc /usr/include/qt5 \
-		-qtlib "/usr/$(get_libdir)/qt5" || die "Configuration failed"
+		-qt5 || die "Configuration failed"
 }
 
 each_ruby_compile() {
