@@ -10,4 +10,4 @@ RDEPEND=dev-perl/B-Utils virtual/perl-Data-Dumper virtual/perl-Exporter virtual/
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.40.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=1d4f085705ea1ba00c79ae5701b8437e
+_md5_=061bc29d38185a93b140047331cb6ab8
