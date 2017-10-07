@@ -1,0 +1,15 @@
+# Copyright 1999-2017 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# We need newer then glibc 2.24
+<sys-libs/glibc-2.25
+
+# broken on hardened, use sys-apps/elfix to fix gnustack
+sys-devel/prelink
+# depends on prelink
+app-crypt/hmaccalc
+
+# OpenAFS kernel module is not compatible with hardened kernels
+# due to C99 struct init requirement by hardened kernels,
+# see bug 540196 comment 9.
+net-fs/openafs-kernel
