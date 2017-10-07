@@ -45,7 +45,7 @@ app-admin/ansible 2.3.2.0-r2 2.4.0.0 9999: Model-driven deployment, config manag
 app-admin/apache-tools 2.2.31 2.2.34 2.4.27 2.4.28: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
-app-admin/augeas 1.7.0 1.7.0-r1 1.8.0 1.8.0-r1 1.8.1: A library for changing configuration files
+app-admin/augeas 1.7.0 1.7.0-r1 1.8.0 1.8.0-r1 1.8.1 1.9.0: A library for changing configuration files
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-as-tools 1.0.49.1: The API tools serve as the client interface to the Auto Scaling web service
 app-admin/aws-cw-tools 1.0.12.1: The API tools serve as the client interface to the Amazon CloudWatch web service
@@ -15295,7 +15295,7 @@ net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Contro
 net-misc/lldpd 0.9.3-r1 0.9.7 0.9.8: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.4.33 1.4.33-r1 1.4.34 1.4.35 1.4.36 1.4.37 1.4.38 1.4.39 1.5.0 1.5.1 1.5.2: High-performance, distributed memory object caching system
+net-misc/memcached 1.4.33 1.4.39 1.5.1 1.5.2: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r8 2.3.13-r9 2.3.13-r10 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.4.2-r1 3.5.4-r1 9999: Simple, powerful and moeful twitter client
