@@ -4685,7 +4685,7 @@ dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
 dev-libs/dclog 1.1.1-r2: A logging library for C/C++ programs
-dev-libs/device-atlas-api-c 2.1 2.1.2_p1: API to detect devices based on the User-Agent HTTP header
+dev-libs/device-atlas-api-c 2.1 2.1.2_p1 2.1.2_p2: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.3.3 3.3.4: The ultimate disassembler library (X86-32, X86-64)
