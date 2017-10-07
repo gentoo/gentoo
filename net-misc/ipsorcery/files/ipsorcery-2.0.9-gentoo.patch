@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,15 +12,15 @@
+ all:    con gtk
+ 
+ con:
+-	$(CC) -g -O2 -Wall -ansi -D_VERSION_=\"2.0.9\" -D_CON_ $(CON) -o ipmagic
++	$(CC) $(LDFLAGS) $(CFLAGS) -Wall -ansi -D_VERSION_=\"2.0.9\" -D_CON_ $(CON) -o ipmagic
+ 	
+ 
+ gtk:
+-	$(CC) -g -O2 -Wall -ansi -D_GTK_ -DGTK_ENABLE_BROKEN $(SRC) -o $(SPELL) `pkg-config --libs gtk+-2.0` `pkg-config --cflags gtk+-2.0` 
++	$(CC) $(LDFLAGS) $(CFLAGS) $(shell $(PKG_CONFIG) --cflags gtk+-2.0) -Wall -ansi -D_GTK_ -DGTK_ENABLE_BROKEN $(SRC) -o $(SPELL) $(shell $(PKG_CONFIG) --libs gtk+-2.0)
+ 
+ 
+ solaris:     
+-	$(CC) -g -O2 -Wall -ansi  -D_CON_  $(CON) -o $(SPELL)  -lsocket -lnsl
++	$(CC) $(LDFLAGS) $(CFLAGS) -Wall -ansi  -D_CON_  $(CON) -o $(SPELL)  -lsocket -lnsl
+ 
+ 
+ install: con-install
