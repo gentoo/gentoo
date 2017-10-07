@@ -22,8 +22,7 @@ RDEPEND="dev-python/beautifulsoup
 	net-misc/curl
 	dev-util/dialog"
 
-src_install()
-{
+src_install() {
 	default
 	doman ${PN}.1
 	dobin ${PN}
@@ -31,8 +30,7 @@ src_install()
 	doexe ${PN}-parse
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	optfeature "pdf support" media-gfx/imagemagick
 	optfeature "cbz support" app-arch/zip
 }
