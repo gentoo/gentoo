@@ -6332,7 +6332,7 @@ dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0 1.100.0: Perl Net::DNS - Perl DNS R
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
 dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
-dev-perl/Net-Daemon 0.480.0-r1: Abstract base class for portable servers
+dev-perl/Net-Daemon 0.480.0-r1 0.480.0-r2: Abstract base class for portable servers
 dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
