@@ -72,7 +72,7 @@ BINMODS=(
 )
 
 LICENSE="MIT"
-SLOT="beta"
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -140,8 +140,8 @@ src_prepare() {
 
 	eapply "${FILESDIR}/atom-python.patch"
 	eapply "${FILESDIR}/apm-python.patch"
-	eapply "${FILESDIR}/atom-unbundle-electron.patch"
-	eapply "${FILESDIR}/atom-apm-path-r1.patch"
+	eapply "${FILESDIR}/atom-unbundle-electron-r1.patch"
+	eapply "${FILESDIR}/atom-apm-path-r2.patch"
 	eapply "${FILESDIR}/atom-license-path-r1.patch"
 	eapply "${FILESDIR}/atom-fix-app-restart-r1.patch"
 	eapply "${FILESDIR}/atom-marker-layer-r1.patch"
@@ -154,7 +154,15 @@ src_prepare() {
 		./atom.sh \
 		|| die
 
-	sed -i -e "s|{{ATOM_RESOURCE_PATH}}|${install_dir}/app.asar|g" \
+	sed -i -e "s|{{ATOM_RESOURCE_PATH}}|${EROOT%/}${install_dir}/app.asar|g" \
+		./atom.sh \
+		|| die
+
+	sed -i -e "s|{{ATOM_PREFIX}}|${EROOT%/}|g" \
+		./atom.sh \
+		|| die
+
+	sed -i -e "s|^#!/bin/bash|#!${EROOT%/}/bin/bash|g" \
 		./atom.sh \
 		|| die
 
@@ -169,12 +177,12 @@ src_prepare() {
 			apm/node_modules/npm/bin/node-gyp-bin/node-gyp || die
 
 	sed -i -e \
-		"s|atomCommand = 'atom';|atomCommand = '/usr/bin/atom${suffix}'|g" \
+		"s|atomCommand = 'atom';|atomCommand = '${EROOT%/}/usr/bin/atom${suffix}'|g" \
 			apm/lib/test.js || die
 
 	rm apm/bin/node || die
 
-	sed -i -e "s|/$(get_atom_rpmdir)/atom|/usr/bin/atom${suffix}|g" \
+	sed -i -e "s|/$(get_atom_rpmdir)/atom|${EROOT%/}/usr/bin/atom${suffix}|g" \
 		"${BIN_S}/usr/share/applications/$(get_atom_appname).desktop" || die
 
 	for binmod in ${BINMODS[@]}; do
@@ -218,6 +226,9 @@ src_prepare() {
 		mkdir -p "${_s}/node_modules" || die
 		ln -s "${nan_s}" "${_s}/node_modules/nan" || die
 	done
+
+	sed -i -e "s|{{ATOM_PREFIX}}|${EROOT%/}|g" \
+		"${BUILD_DIR}/app/src/config-schema.js" || die
 
 	sed -i -e "s|{{ATOM_SUFFIX}}|${suffix}|g" \
 		"${BUILD_DIR}/app/src/config-schema.js" || die
@@ -281,7 +292,7 @@ src_compile() {
 
 	# Replace vendored ctags with a symlink to system ctags
 	rm "${BUILD_DIR}/app.asar.unpacked/${ctags_d}/ctags-linux" || die
-	ln -s "/usr/bin/ctags" \
+	ln -s "${EROOT%/}/usr/bin/ctags" \
 		"${BUILD_DIR}/app.asar.unpacked/${ctags_d}/ctags-linux" || die
 }
 
@@ -364,13 +375,13 @@ get_install_dir() {
 
 # Return the Electron installation directory.
 get_electron_dir() {
-	echo -n "/usr/$(get_libdir)/electron-${ELECTRON_SLOT}"
+	echo -n "${EROOT%/}/usr/$(get_libdir)/electron-${ELECTRON_SLOT}"
 }
 
 # Return the directory containing appropriate Node headers
 # for the required version of Electron.
 get_electron_nodedir() {
-	echo -n "/usr/include/electron-${ELECTRON_SLOT}/node/"
+	echo -n "${EROOT%/}/usr/include/electron-${ELECTRON_SLOT}/node/"
 }
 
 # Run JavaScript using Electron's version of Node.
