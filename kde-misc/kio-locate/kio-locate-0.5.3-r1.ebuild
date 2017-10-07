@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KDE_HANDBOOK="optional"
+KDE_HANDBOOK="forceoptional" # not optional until !kdelibs4support
 inherit kde5
 
 DESCRIPTION="Locate KIO slave"
