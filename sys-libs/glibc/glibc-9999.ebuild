@@ -689,7 +689,7 @@ glibc_do_src_install() {
 	keepdir /usr/$(get_libdir)/locale
 	for a in $(get_install_abis) ; do
 		if [[ ! -e ${ED}/usr/$(get_abi_LIBDIR ${a})/locale ]] ; then
-			dosym /usr/$(get_libdir)/locale /usr/$(get_abi_LIBDIR ${a})/locale
+			dosym ../$(get_libdir)/locale /usr/$(get_abi_LIBDIR ${a})/locale
 		fi
 	done
 
