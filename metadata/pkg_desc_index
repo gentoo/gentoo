@@ -1898,7 +1898,7 @@ app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2 1.2.2-r1 1.2.2-r2: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.7 4.0.8: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
-app-misc/pet 0.2.3: Simple command-line snippet manager
+app-misc/pet 0.2.3 0.2.3-r1: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.5 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
@@ -15348,7 +15348,7 @@ net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup conten
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p9 4.2.8_p10-r1: Network Time Protocol suite/programs
-net-misc/ntpclient 2010.365 2015.365: A NTP (RFC-1305) client for unix-alike computers
+net-misc/ntpclient 2010.365 2015.365 2017.217: A NTP (RFC-1305) client for unix-alike computers
 net-misc/nx 3.5.0.30 3.5.0.32: NX compression technology core libraries
 net-misc/nxplayer 5.0.63.3 5.1.7.6 5.1.24.1: Client for NoMachine remote servers
 net-misc/ocsync 0.90.4: A file synchronizer especially designed for you, the normal user
@@ -19032,7 +19032,7 @@ x11-misc/xdaliclock 2.43: Dali Clock is a digital clock. When a digit changes, i
 x11-misc/xdesktopwaves 1.3-r2: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.15 0.16: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10 0.10-r1: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.1-r1 1.1.2: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.1-r1 1.1.2-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.51: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5 0.5.6 0.5.7: Small X utility to perform elementary actions on windows
