@@ -5798,7 +5798,7 @@ dev-perl/Devel-REPL 1.3.27: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
 dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
-dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
+dev-perl/Devel-SmallProf 2.20.0-r2 2.20.0-r3: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
