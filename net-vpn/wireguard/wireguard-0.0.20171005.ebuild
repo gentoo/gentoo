@@ -81,7 +81,7 @@ pkg_postinst() {
 	einfo "As such, it may contain significant issues. Please do not file"
 	einfo "bug reports with Gentoo, but rather direct them upstream to:"
 	einfo
-	einfo "    team@wireguard.io    security@wireguard.io"
+	einfo "    team@wireguard.com    security@wireguard.com"
 	einfo
 
 	if use tools; then
@@ -103,7 +103,7 @@ pkg_postinst() {
 		einfo "\"default-route\" argument. You may not use this server for any abusive or illegal"
 		einfo "purposes. It is for quick testing only."
 		einfo
-		einfo "More info on getting started can be found at: https://www.wireguard.io/quickstart/"
+		einfo "More info on getting started can be found at: https://www.wireguard.com/quickstart/"
 		einfo
 	fi
 	if use module; then
