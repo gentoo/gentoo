@@ -1,0 +1,174 @@
+--- ./gcc/ada/gcc-interface/Make-lang.in.orig	2016-11-22 09:33:07.227775000 -0800
++++ ./gcc/ada/gcc-interface/Make-lang.in	2017-09-28 11:56:24.780334882 -0700
+@@ -367,6 +367,7 @@
+  ada/s-sopco5.o	\
+  ada/s-stache.o	\
+  ada/s-stalib.o	\
++ ada/s-stchop.o \
+  ada/s-stoele.o	\
+  ada/s-strcom.o	\
+  ada/s-strhas.o	\
+@@ -550,6 +551,7 @@
+  ada/s-sopco5.o   \
+  ada/s-stache.o   \
+  ada/s-stalib.o   \
++ ada/s-stchop.o \
+  ada/s-stoele.o   \
+  ada/s-strhas.o   \
+  ada/s-string.o   \
+@@ -968,8 +970,8 @@
+    ada/a-uncdea.ads ada/alloc.ads ada/debug.ads ada/hostparm.ads ada/namet.ads \
+    ada/opt.ads ada/osint.ads ada/output.ads ada/sdefault.ads ada/sdefault.adb \
+    ada/s-exctab.ads ada/s-memory.ads ada/s-os_lib.ads ada/s-parame.ads \
+-   ada/s-stalib.ads ada/s-strops.ads ada/s-sopco3.ads ada/s-sopco4.ads \
+-   ada/s-sopco5.ads ada/s-string.ads ada/s-traent.ads ada/s-unstyp.ads \
++   ada/s-stalib.ads ada/s-strops.ads ada/s-sopco3.ads ada/s-sopco4.ads ada/s-sopco5.ads \
++   ada/s-stchop.ads ada/s-stchop.adb ada/s-string.ads ada/s-traent.ads ada/s-unstyp.ads \
+    ada/s-wchcon.ads ada/system.ads ada/table.adb ada/table.ads ada/tree_io.ads \
+    ada/types.ads ada/unchdeal.ads ada/unchconv.ads
+
+--- ./gcc/ada/gcc-interface/Makefile.in.orig	2017-09-28 11:56:24.707001546 -0700
++++ ./gcc/ada/gcc-interface/Makefile.in	2017-09-28 12:03:29.583686017 -0700
+@@ -1603,6 +1603,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -1864,6 +1866,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -1888,6 +1892,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -1933,6 +1939,8 @@
+   s-intman.adb<s-intman-posix.adb \
+   s-linux.ads<s-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-tpopsp.adb<s-tpopsp-tls.adb \
+   g-sercom.adb<g-sercom-linux.adb \
+   $(ATOMICS_TARGET_PAIRS) \
+@@ -1971,7 +1979,7 @@
+ endif
+
+ # ARM linux, GNU eabi
+-ifeq ($(strip $(filter-out arm% linux-gnueabi%,$(target_cpu) $(target_os))),)
++ifeq ($(strip $(filter-out arm% linux%,$(target_cpu) $(target_os))),)
+   LIBGNAT_TARGET_PAIRS = \
+   a-intnam.ads<a-intnam-linux.ads \
+   s-inmaop.adb<s-inmaop-posix.adb \
+@@ -1980,11 +1988,15 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+   s-taspri.ads<s-taspri-posix-noaltstack.ads \
+-  s-tpopsp.adb<s-tpopsp-posix-foreign.adb
++  s-tpopsp.adb<s-tpopsp-posix-foreign.adb \
++  $(ATOMICS_TARGET_PAIRS) \
++  $(ATOMICS_BUILTINS_TARGET_PAIRS) \
+
+   ifeq ($(strip $(filter-out arm%b,$(target_cpu))),)
+     EH_MECHANISM=
+@@ -1996,6 +2008,8 @@
+     system.ads<system-linux-armel.ads \
+     a-exexpr.adb<a-exexpr-gcc.adb \
+     s-excmac.ads<s-excmac-arm.ads
++    EXTRA_LIBGNAT_OBJS+=raise-gcc.o
++    EXTRA_GNATRTL_NONTASKING_OBJS+=g-cppexc.o s-excmac.o
+   endif
+
+   TOOLS_TARGET_PAIRS =  \
+@@ -2003,8 +2017,6 @@
+     indepsw.adb<indepsw-gnu.adb
+
+   EXTRA_GNATRTL_TASKING_OBJS=s-linux.o
+-  EXTRA_LIBGNAT_OBJS+=raise-gcc.o
+-  EXTRA_GNATRTL_NONTASKING_OBJS+=g-cppexc.o s-excmac.o
+   THREADSLIB = -lpthread
+   GNATLIB_SHARED = gnatlib-shared-dual
+   GMEM_LIB = gmemlib
+@@ -2026,6 +2038,8 @@
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2072,6 +2086,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2114,6 +2130,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2143,6 +2161,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2179,6 +2199,8 @@
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2241,6 +2263,8 @@
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2526,7 +2550,7 @@
+   s-memcom.adb s-memcom.ads s-memmov.adb s-memmov.ads s-memset.adb \
+   s-memset.ads s-mufalo.adb s-mufalo.ads s-musplo.adb s-musplo.ads \
+   s-sopco3.adb s-sopco3.ads s-sopco4.adb s-sopco4.ads \
+-  s-sopco5.adb s-sopco5.ads s-stache.adb s-stache.ads \
++  s-sopco5.adb s-sopco5.ads s-stchop.ads s-stchop.adb \
+   s-strcom.adb s-strcom.ads s-thread.ads \
+   s-vxwexc.adb s-vxwexc.ads s-vxwext.adb s-vxwext.ads \
+   s-win32.ads  s-winext.ads

@@ -1,0 +1,180 @@
+--- ./gcc/ada/gcc-interface/Make-lang.in.orig	2016-11-22 08:33:43.211764000 -0800
++++ ./gcc/ada/gcc-interface/Make-lang.in	2017-09-28 18:03:48.187925013 -0700
+@@ -367,6 +367,7 @@
+  ada/s-sopco5.o	\
+  ada/s-stache.o	\
+  ada/s-stalib.o	\
++ ada/s-stchop.o \
+  ada/s-stoele.o	\
+  ada/s-strcom.o	\
+  ada/s-strhas.o	\
+@@ -550,6 +551,7 @@
+  ada/s-sopco5.o   \
+  ada/s-stache.o   \
+  ada/s-stalib.o   \
++ ada/s-stchop.o   \
+  ada/s-stoele.o   \
+  ada/s-strhas.o   \
+  ada/s-string.o   \
+@@ -969,8 +971,8 @@
+    ada/a-uncdea.ads ada/alloc.ads ada/debug.ads ada/hostparm.ads ada/namet.ads \
+    ada/opt.ads ada/osint.ads ada/output.ads ada/sdefault.ads ada/sdefault.adb \
+    ada/s-exctab.ads ada/s-memory.ads ada/s-os_lib.ads ada/s-parame.ads \
+-   ada/s-stalib.ads ada/s-strops.ads ada/s-sopco3.ads ada/s-sopco4.ads \
+-   ada/s-sopco5.ads ada/s-string.ads ada/s-traent.ads ada/s-unstyp.ads \
++   ada/s-stalib.ads ada/s-strops.ads ada/s-sopco3.ads ada/s-sopco4.ads ada/s-sopco5.ads \
++   ada/s-stchop.ads ada/s-stchop.adb ada/s-string.ads ada/s-traent.ads ada/s-unstyp.ads \
+    ada/s-wchcon.ads ada/system.ads ada/table.adb ada/table.ads ada/tree_io.ads \
+    ada/types.ads ada/unchdeal.ads ada/unchconv.ads
+
+--- ./gcc/ada/gcc-interface/Makefile.in.orig	2017-09-28 18:03:48.124591678 -0700
++++ ./gcc/ada/gcc-interface/Makefile.in	2017-09-28 18:22:35.304638898 -0700
+@@ -1238,7 +1238,9 @@
+   s-tpopsp.adb<s-tpopsp-posix-foreign.adb \
+   $(ATOMICS_TARGET_PAIRS) \
+   $(ATOMICS_BUILTINS_TARGET_PAIRS) \
+-  system.ads<system-linux-arm.ads
++  system.ads<system-linux-arm.ads \
++  a-exexpr.adb<a-exexpr-gcc.adb \
++  s-excmac.ads<s-excmac-arm.ads
+
+   TOOLS_TARGET_PAIRS =  \
+     mlib-tgt-specific.adb<mlib-tgt-specific-linux.adb \
+@@ -1247,6 +1249,7 @@
+   EXTRA_GNATRTL_TASKING_OBJS=s-linux.o
+   EXTRA_LIBGNAT_OBJS+=sigtramp-armdroid.o
+   EXTRA_LIBGNAT_SRCS+=sigtramp.h
++  EXTRA_GNATRTL_NONTASKING_OBJS+=g-cppexc.o s-excmac.o
+   EH_MECHANISM=-arm
+   THREADSLIB =
+   GNATLIB_SHARED = gnatlib-shared-dual
+@@ -1865,6 +1868,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -1897,6 +1902,8 @@
+   s-intman.adb<s-intman-posix.adb \
+   s-linux.ads<s-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-tpopsp.adb<s-tpopsp-tls.adb \
+   g-sercom.adb<g-sercom-linux.adb \
+   $(ATOMICS_TARGET_PAIRS) \
+@@ -1936,13 +1943,15 @@
+ endif
+
+ # ARM linux, GNU eabi
+-ifeq ($(strip $(filter-out arm% linux-gnueabi%,$(target_cpu) $(target_os))),)
++ifeq ($(strip $(filter-out arm% linux%,$(target_cpu) $(target_os))),)
+   LIBGNAT_TARGET_PAIRS = \
+   a-intnam.ads<a-intnam-linux.ads \
+   s-inmaop.adb<s-inmaop-posix.adb \
+   s-intman.adb<s-intman-posix.adb \
+   s-linux.ads<s-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
+   s-taprop.adb<s-taprop-linux.adb \
+@@ -1956,8 +1965,16 @@
+
+   ifeq ($(strip $(filter-out arm%b,$(target_cpu))),)
+     EH_MECHANISM=
++    LIBGNAT_TARGET_PAIRS += \
++    system.ads<system-linux-armel.ads
+   else
+     EH_MECHANISM=-arm
++    LIBGNAT_TARGET_PAIRS += \
++    system.ads<system-linux-armel.ads \
++    a-exexpr.adb<a-exexpr-gcc.adb \
++    s-excmac.ads<s-excmac-arm.ads
++    EXTRA_LIBGNAT_OBJS+=raise-gcc.o
++    EXTRA_GNATRTL_NONTASKING_OBJS+=g-cppexc.o s-excmac.o
+   endif
+
+   TOOLS_TARGET_PAIRS =  \
+@@ -1986,6 +2003,8 @@
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2018,6 +2037,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2047,6 +2068,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2076,6 +2099,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2105,6 +2130,8 @@
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2141,6 +2168,8 @@
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2203,6 +2232,8 @@
+   s-osinte.ads<s-osinte-linux.ads \
+   s-osinte.adb<s-osinte-posix.adb \
+   s-osprim.adb<s-osprim-posix.adb \
++  s-stchop.adb<s-stchop.adb \
++  s-stchop.ads<s-stchop.ads \
+   s-taprop.adb<s-taprop-linux.adb \
+   s-tasinf.ads<s-tasinf-linux.ads \
+   s-tasinf.adb<s-tasinf-linux.adb \
+@@ -2408,14 +2439,6 @@
+   EXTRA_LIBGNAT_OBJS+=raise-gcc.o
+   EXTRA_GNATRTL_NONTASKING_OBJS+=g-cppexc.o s-excmac.o
+ endif
+-
+-ifeq ($(EH_MECHANISM),-arm)
+-  LIBGNAT_TARGET_PAIRS += \
+-    a-exexpr.adb<a-exexpr-gcc.adb \
+-    s-excmac.ads<s-excmac-arm.ads
+-  EXTRA_LIBGNAT_OBJS+=raise-gcc.o
+-  EXTRA_GNATRTL_NONTASKING_OBJS+=g-cppexc.o s-excmac.o
+-endif
+
+ # Use the Ada 2005 version of Ada.Exceptions by default, unless specified
+ # explicitly already. The base files (a-except.ad?) are used only for building
