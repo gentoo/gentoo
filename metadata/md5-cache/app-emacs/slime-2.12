@@ -11,5 +11,5 @@ RDEPEND=virtual/commonlisp dev-lisp/asdf >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/slime/slime/archive/v2.12.tar.gz -> slime-2.12.tar.gz
-_eclasses_=common-lisp-3	b451d02fe9e6d10bf682c647dcedc9a1	elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=common-lisp-3	8c4aaa6d66cd2daed8572bb60bf6fe07	elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=e8ded1bebce5ec61a0cdcea8e25c0d57
