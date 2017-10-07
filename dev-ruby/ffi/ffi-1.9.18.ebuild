@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -25,6 +25,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x
 
 RDEPEND+=" virtual/libffi"
 DEPEND+=" virtual/libffi"
+
+ruby_add_bdepend "dev-ruby/rake"
 
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
