@@ -4604,7 +4604,7 @@ dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.4.0_pre20171003-r1: Stand-alone JavaScript C++ library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15 7.7.0 7.7.1: free, small, and standard compliant Prolog compiler
 dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.5 3.0.8 3.0.10 3.0.11 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6 8.6.7: Tool Command Language
@@ -8425,7 +8425,7 @@ dev-python/pyshark 0.3.7.2: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysmi 0.1.3: Python Lex & Yacc
-dev-python/pysnmp 4.3.3 4.3.8 4.3.9: Python SNMP library
+dev-python/pysnmp 4.3.3 4.3.9 4.3.10: Python SNMP library
 dev-python/pysnmp-apps 0.4.1 0.4.2: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.2 3.5.0 3.6.0: Lightweight python wrapper for Apache Solr
@@ -18581,7 +18581,7 @@ x11-base/xorg-drivers 1.12 1.15 1.18-r1 1.19 9999: Meta package containing deps 
 x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.18.4 1.19.2 1.19.3 1.19.4 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.137 340.104 375.82 378.13 378.13-r1 381.22 381.22-r1 384.90: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.137 340.104 375.82 378.13 378.13-r1 381.22 381.22-r1 384.90 387.12: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
