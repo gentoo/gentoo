@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,12 +16,9 @@ IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
 
-SRC_TEST=do
+SRC_TEST="do parallel"
 
-src_test() {
-	# When version bumping the package next time,
-	# please comment out the line below to see if this test passes.
-	# bug 403881
-	perl_rm_files t/list-wrap.t
-	perl-module_src_test
-}
+PATCHES=(
+	"${FILESDIR}/${P}-perl526.patch"
+	"${FILESDIR}/${P}-parallel.patch"
+)
