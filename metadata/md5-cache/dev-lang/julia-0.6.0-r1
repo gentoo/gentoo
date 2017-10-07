@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-lang/R:0= dev-libs/double-conversion:0= dev-libs/gmp:0= <dev-libs/libgit2-0.25:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= sys-devel/llvm:4= >=sys-libs/libunwind-1.1:7= <sys-libs/libunwind-1.2.1 sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack dev-vcs/git dev-util/patchelf virtual/pkgconfig
+DEPEND=dev-libs/double-conversion:0= dev-libs/gmp:0= <dev-libs/libgit2-0.25:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= sys-devel/llvm:4= >=sys-libs/libunwind-1.1:7= <sys-libs/libunwind-1.2.1 sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack dev-vcs/git dev-util/patchelf virtual/pkgconfig
 DESCRIPTION=High-performance programming language for technical computing
 EAPI=6
 HOMEPAGE=https://julialang.org/
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
-RDEPEND=dev-lang/R:0= dev-libs/double-conversion:0= dev-libs/gmp:0= <dev-libs/libgit2-0.25:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= sys-devel/llvm:4= >=sys-libs/libunwind-1.1:7= <sys-libs/libunwind-1.2.1 sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack
+RDEPEND=dev-libs/double-conversion:0= dev-libs/gmp:0= <dev-libs/libgit2-0.25:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= sys-devel/llvm:4= >=sys-libs/libunwind-1.1:7= <sys-libs/libunwind-1.2.1 sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/JuliaLang/julia/releases/download/v0.6.0/julia-0.6.0.tar.gz https://dev.gentoo.org/~tamiko/distfiles/julia-0.6.0-bundled.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=6c53176005ab2310025a6da2309e133e
+_md5_=e490c985597d2f1a54c8d84105c78b4e
