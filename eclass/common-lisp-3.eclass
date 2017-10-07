@@ -11,9 +11,10 @@
 
 inherit eutils
 
-# CL packages in the overlay don't have their tarballs on the mirrors
-# so it's useless to mirror them
-RESTRICT="mirror"
+# @ECLASS-VARIABLE: CLIMPLEMENTATIONS
+# @DESCRIPTION:
+# Common Lisp implementations
+CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl"
 
 # @ECLASS-VARIABLE: CLSOURCEROOT
 # @DESCRIPTION:
@@ -165,11 +166,23 @@ common-lisp-3_src_install() {
 	done
 }
 
+# @FUNCTION: common-lisp-find-lisp-impl
+# @USAGE: common-lisp-find-lisp-impl
+# @DESCRIPTION:
+# Outputs an installed Common Lisp implementation. Transverses
+# CLIMPLEMENTATIONS to find it.
+common-lisp-find-lisp-impl() {
+	for lisp in ${CLIMPLEMENTATIONS} ; do
+		[[ "$(best_version dev-lisp/${lisp})" ]] && echo "${lisp}" && return
+	done
+	die "No CommonLisp implementation found"
+}
+
 # @FUNCTION: common-lisp-export-impl-args
 # @USAGE: common-lisp-export-impl-args <lisp-implementation>
 # @DESCRIPTION:
-#   Export a few variables containing the switches necessary
-#   to make the CL implementation perform basic functions:
+# Export a few variables containing the switches necessary
+# to make the CL implementation perform basic functions:
 #   * CL_BINARY: Common Lisp implementation
 #   * CL_NORC: don't load syste-wide or user-specific initfiles
 #   * CL_LOAD: load a certain file
