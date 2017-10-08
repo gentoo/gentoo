@@ -4834,7 +4834,6 @@ media-video/dvdrip:fping - Enables fping support for cluster rendering
 media-video/dvdrip:subtitles - Enables support for subtitle ripping
 media-video/ffdiaporama:openclipart - Support openslipart database
 media-video/ffdiaporama:texturemate - Install extra backgrounds
-media-video/ffmpeg:aacplus - AAC+ encoding via media-libs/libaacplus.
 media-video/ffmpeg:amr - Enables Adaptive Multi-Rate Audio support
 media-video/ffmpeg:amrenc - Enables Adaptive Multi-Rate Audio encoding support with media-libs/vo-amrwbenc.
 media-video/ffmpeg:armv5te - Enables optimizations for armv5te processors.
@@ -4849,7 +4848,6 @@ media-video/ffmpeg:chromaprint - Enables audio fingerprinting support with media
 media-video/ffmpeg:chromium - Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.
 media-video/ffmpeg:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
 media-video/ffmpeg:ebur128 - Enables EBU R128 loudness normalization filter via media-libs/libebur128
-media-video/ffmpeg:faac - Use external faac library for AAC encoding
 media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
 media-video/ffmpeg:flite - Adds a text-to-speech filter based on app-accessibility/flite.
 media-video/ffmpeg:frei0r - Enable frei0r wrapping in libavfilter
@@ -4875,7 +4873,6 @@ media-video/ffmpeg:openssl - Enables dev-libs/openssl support. Adds support for 
 media-video/ffmpeg:opus - Adds (decoding) support for the Opus codec via media-libs/opus.
 media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slower)
 media-video/ffmpeg:postproc - Build and install libpostproc.
-media-video/ffmpeg:quvi - Adds support for playing media from Internet services using the quvi project.
 media-video/ffmpeg:rubberband - Adds time-stretching and pitch-shifting audio filter based on media-libs/rubberband.
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:snappy - Enable app-arch/snappy support. Required for e.g. Vidvox Hap encoder.
