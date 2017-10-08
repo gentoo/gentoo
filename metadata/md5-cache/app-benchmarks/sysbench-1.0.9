@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure prepare test
+DEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) app-editors/vim-core dev-lang/luajit:= dev-libs/concurrencykit dev-libs/libxslt sys-devel/libtool:= virtual/pkgconfig test? ( dev-util/cram )
+DESCRIPTION=System performance benchmark
+EAPI=6
+HOMEPAGE=https://github.com/akopytov/sysbench
+IUSE=aio mysql postgres test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= )
+SLOT=0
+SRC_URI=https://github.com/akopytov/sysbench/archive/1.0.9.tar.gz -> sysbench-1.0.9.tar.gz
+_eclasses_=pax-utils	4f95120230a315c8caaabeb2307b7eee
+_md5_=6e1af1fc5f6ea8f3185eb3e1816c6e5a
