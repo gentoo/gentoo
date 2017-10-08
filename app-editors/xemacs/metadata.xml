@@ -5,7 +5,6 @@
     <email>xemacs@gentoo.org</email>
     <description>Primary Maintainer</description>
   </maintainer>
-  <longdescription/>
   <use>
     <flag name="athena">Chooses the MIT Athena widget set</flag>
     <flag name="dnd">Enables support for the <pkg>x11-libs/dnd</pkg>
