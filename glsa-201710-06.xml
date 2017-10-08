@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-06">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PostgreSQL, the worst
+    of which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>618462</bug>
+  <bug>627462</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge" slot="9.6">9.6.4</unaffected>
+      <unaffected range="ge" slot="9.5">9.5.8</unaffected>
+      <unaffected range="ge" slot="9.4">9.4.13</unaffected>
+      <unaffected range="ge" slot="9.3">9.3.18</unaffected>
+      <unaffected range="ge" slot="9.2">9.2.22</unaffected>
+      <vulnerable range="lt">9.6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could escalate privileges, cause a Denial of Service
+      condition, obtain passwords, cause a loss in information, or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 9.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.4"
+    </code>
+    
+    <p>All PostgreSQL 9.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.8"
+    </code>
+    
+    <p>All PostgreSQL 9.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.4.13"
+    </code>
+    
+    <p>All PostgreSQL 9.3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.3.18"
+    </code>
+    
+    <p>All PostgreSQL 9.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.2.22"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7484">
+      CVE-2017-7484
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7485">
+      CVE-2017-7485
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7486">
+      CVE-2017-7486
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7546">
+      CVE-2017-7546
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7547">
+      CVE-2017-7547
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7548">
+      CVE-2017-7548
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-02T06:12:53Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T13:55:26Z">chrisadr</metadata>
+</glsa>
