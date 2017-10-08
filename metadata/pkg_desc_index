@@ -2963,7 +2963,7 @@ dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 2.6.12 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.3 3.4.4 3.4.6 3.4.7: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 1.10.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
-dev-db/mydumper 0.6.2: A high-performance multi-threaded backup toolset for MySQL and Drizzle
+dev-db/mydumper 0.6.2 0.9.3: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.2.7-r1 5.2.7-r2 5.3.8 5.3.8-r1: ODBC driver for MySQL
 dev-db/mysql 5.5.57 5.6.35 5.6.36 5.6.37: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2 3.2.3: C++ API interface to the MySQL database
@@ -9281,7 +9281,7 @@ dev-ros/roslang 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 9
 dev-ros/roslaunch 1.13.0 1.13.1 1.13.2 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.14.0-r1 1.14.1 9999: Base dependencies and support libraries for ROS
 dev-ros/roslint 0.11.0 0.11.1 9999: Performs static checking of Python or C++ source code for errors and standards compliance
-dev-ros/roslisp 1.9.19 1.9.20 1.9.21 9999: Lisp client library for ROS
+dev-ros/roslisp 1.9.21 9999: Lisp client library for ROS
 dev-ros/roslz4 1.13.0 1.13.1 1.13.2 9999: Python and C++ implementation of the LZ4 streaming format
 dev-ros/rosmake 1.14.0 1.14.1 9999: ROS dependency aware build tool
 dev-ros/rosmaster 1.13.0 1.13.1 1.13.2 9999: ROS Master implementation
