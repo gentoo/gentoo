@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-04">
+  <title>sudo: Privilege escalation</title>
+  <synopsis>A vulnerability in sudo allows local users to gain root privileges.</synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>620482</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.20_p2</unaffected>
+      <vulnerable range="lt">1.8.20_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo (su “do”) allows a system administrator to delegate authority
+      to give certain users (or groups of users) the ability to run some (or
+      all) commands as root or another user while providing an audit trail of
+      the commands and their arguments.
+    </p>
+  </background>
+  <description>
+    <p>The fix present in app-admin/sudo-1.8.20_p1 (GLSA 201705-15) was
+      incomplete as it did not address the problem of a command with a newline
+      in the name.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could execute arbitrary code with root privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.20_p2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000368">
+      CVE-2017-1000368
+    </uri>
+    <uri link="https://security.gentoo.org/glsa/201705-15">GLSA 201705-15</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-05T18:00:01Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T13:34:25Z">chrisadr</metadata>
+</glsa>
