@@ -1,0 +1,26 @@
+From 9fb29d16514530245965b932040bb4fc37ffa9bf Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 8 Oct 2017 13:11:29 +1300
+Subject: Fix no_chrdir warning
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123215
+---
+ lib/DBI/Shell/FindSqlFile.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/DBI/Shell/FindSqlFile.pm b/lib/DBI/Shell/FindSqlFile.pm
+index e604290..2b56ccc 100644
+--- a/lib/DBI/Shell/FindSqlFile.pm
++++ b/lib/DBI/Shell/FindSqlFile.pm
+@@ -62,7 +62,7 @@ sub look_for_file {
+ 	File::Find::find(
+ 		{
+ 			  wanted 	=> \&wanted
+-			, no_chrdir 	=> 1
++			, no_chdir 	=> 1
+ 			, bydepth	=> 0
+ 		}, 
+ 		@search_path);
+-- 
+2.14.1
+
