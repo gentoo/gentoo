@@ -3,14 +3,11 @@
 
 EAPI=6
 
-MY_PV="${PV/_beta/.b}"
-MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="Command-line tool for structural, content-preserving transformation of PDF files"
 HOMEPAGE="http://qpdf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/qpdf/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/qpdf/${P}.tar.gz"
 
-LICENSE="Artistic-2"
+LICENSE="|| ( Apache-2.0 Artistic-2 )"
 
 # subslot = libqpdf soname version
 SLOT="0/18"
@@ -35,8 +32,6 @@ RDEPEND="${CDEPEND}
 "
 
 DOCS=( ChangeLog README.md TODO )
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	CONFIG_SHELL=/bin/bash econf \
