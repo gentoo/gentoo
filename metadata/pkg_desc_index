@@ -3074,7 +3074,7 @@ dev-embedded/avrdude 6.3 9999: AVR Downloader/UploaDEr
 dev-embedded/bitbake 1.17.0 9999: package management tool for OpenEmbedded
 dev-embedded/cpik 0.7.2_p4: C compiler for PIC18 devices
 dev-embedded/dc-tool-ip 1.0.4: ethernet program loader for the Dreamcast
-dev-embedded/dfu-programmer 0.5.4-r1 0.6.1 0.6.2 0.7.2: A Device Firmware Update based USB programmer for Atmel chips
+dev-embedded/dfu-programmer 0.7.2 0.7.2-r1: A Device Firmware Update based USB programmer for Atmel chips
 dev-embedded/esptool 2.0.1 2.1: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/ftdi_eeprom 0.3-r1 1.0: Utility to program external EEPROM for FTDI USB chips
 dev-embedded/gnap 2.0: Gentoo-based Network Appliance building system
@@ -7408,7 +7408,7 @@ dev-python/brython 3.3.2 3.3.2-r1 3.3.3: A Python 3 implementation for client-si
 dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
-dev-python/cached-property 0.1.5 1.0.0 1.2.0 1.3.0: A cached-property for decorating methods in classes
+dev-python/cached-property 0.1.5 1.0.0 1.2.0 1.3.1: A cached-property for decorating methods in classes
 dev-python/cachetools 1.1.5 2.0.0 2.0.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
@@ -8564,7 +8564,7 @@ dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism
 dev-python/python-socketio 1.7.4 1.8.0: Python implementation of the Socket.IO realtime server.
 dev-python/python-spidermonkey 0.0.10: JavaScript / Python bridge
 dev-python/python-sqlparse 0.2.1 0.2.2 0.2.3: A non-validating SQL parser module for Python
-dev-python/python-stdnum 1.5 1.6: A module to handle standardized numbers and codes
+dev-python/python-stdnum 1.5 1.6 1.7: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.0.0 3.1.0 3.3.0 3.4.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 230 233: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=virtual/libusb:1 virtual/udev virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=A Device Firmware Update based USB programmer for Atmel chips
+EAPI=6
+HOMEPAGE=http://dfu-programmer.sourceforge.net
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:1 virtual/udev
+SLOT=0
+SRC_URI=mirror://sourceforge/dfu-programmer/dfu-programmer-0.7.2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=e3cde7490c3c065d3141b7d635e66535
