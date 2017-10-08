@@ -92,9 +92,8 @@ esac
 readonly QT5_BUILD_TYPE
 
 EGIT_REPO_URI=(
-	"git://code.qt.io/qt/${QT5_MODULE}.git"
-	"https://code.qt.io/git/qt/${QT5_MODULE}.git"
-	"https://github.com/qtproject/${QT5_MODULE}.git"
+	"https://code.qt.io/qt/${QT5_MODULE}.git"
+	"https://github.com/qt/${QT5_MODULE}.git"
 )
 [[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
 
