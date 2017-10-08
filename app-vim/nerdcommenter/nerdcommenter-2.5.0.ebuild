@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/scrooloose/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-macos ~sparc64-solaris"
+	KEYWORDS="amd64 x86 ~x86-linux ~x86-macos ~sparc64-solaris"
 fi
 
 DESCRIPTION="vim plugin: easy commenting of code for many filetypes"
