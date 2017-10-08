@@ -9,12 +9,13 @@ app-arch/unzip natspec
 
 # Required by dev-qt/qtcore
 dev-libs/libpcre pcre16
+dev-libs/libpcre2 pcre16
 
 # Required by kde-frameworks/kcoreaddons
 dev-qt/qtcore:5 icu
 
 # Required by kde-frameworks/kwayland
-dev-qt/qtgui:5 egl
+dev-qt/qtgui:5 egl libinput
 
 # Required by kde-apps/okteta
 dev-qt/qtscript:5 scripttools
