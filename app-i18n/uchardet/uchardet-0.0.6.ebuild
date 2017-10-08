@@ -17,6 +17,10 @@ IUSE="static-libs test"
 src_prepare() {
 	cmake-utils_src_prepare
 	use test || cmake_comment_add_subdirectory test
+
+	# Remove flaky test. See Gentoo bug 631852.
+	# Track https://bugs.freedesktop.org/show_bug.cgi?id=101033
+	rm test/th/tis-620.txt || die
 }
 
 src_configure() {
