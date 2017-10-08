@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
-RDEPEND=">=virtual/jdk-1.7:=
+RDEPEND=">=virtual/jdk-1.8:=
 	 dev-java/javassist:3
 	 dev-java/commons-lang:3.1"
 
@@ -32,8 +32,6 @@ EANT_GENTOO_CLASSPATH="javassist:3,commons-lang-3.1"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-ikvm.patch
-	epatch "${FILESDIR}"/${P}-no-dynamic-object-test.patch
-	epatch "${FILESDIR}"/${P}-oolibrary-unit-test.patch
 
 	cp "${FILESDIR}"/build-${PV}.xml "${S}"/build.xml || die
 }
