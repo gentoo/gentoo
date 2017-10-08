@@ -11,6 +11,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+DEPEND="app-arch/unzip"
+
 S="${WORKDIR}"
 
 src_install() {
