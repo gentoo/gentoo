@@ -9444,7 +9444,7 @@ dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all t
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.6.1 0.6.1-r1: Provides POSIX tarchive management from Ruby programs
 dev-ruby/arel 5.0.1.20140414130214 6.0.3 6.0.4 7.1.4 8.0.0: Arel is a Relational Algebra for Ruby
-dev-ruby/arel-helpers 2.3.0 2.4.0: Tools to help construct database queries
+dev-ruby/arel-helpers 2.3.0 2.4.0 2.5.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.5-r1 1.5.6 1.5.6.1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciidoctor-diagram 1.5.4 1.5.5: A set of Asciidoctor extensions that enable you to add diagrams
@@ -9490,7 +9490,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r2 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 1.1.4 2.13.0 2.14.4 2.14.4-r1 2.15.1 2.15.2 2.15.3: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 1.1.4 2.14.4 2.14.4-r1 2.15.2 2.15.3 2.15.4: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
