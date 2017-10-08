@@ -5,7 +5,6 @@
     <email>media-video@gentoo.org</email>
   </maintainer>
   <use>
-	<flag name="aacplus">AAC+ encoding via <pkg>media-libs/libaacplus</pkg>.</flag>
 	<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
 	<flag name="amrenc">Enables Adaptive Multi-Rate Audio encoding support with <pkg>media-libs/vo-amrwbenc</pkg>.</flag>
 	<flag name="armv5te">Enables optimizations for armv5te processors.</flag>
@@ -20,7 +19,6 @@
 	<flag name="chromium">Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.</flag>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
 	<flag name="ebur128">Enables EBU R128 loudness normalization filter via <pkg>media-libs/libebur128</pkg></flag>
-	<flag name="faac">Use external faac library for AAC encoding</flag>
 	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
 	<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
 	<flag name="frei0r">Enable frei0r wrapping in libavfilter</flag>
@@ -46,7 +44,6 @@
 	<flag name="opus">Adds (decoding) support for the Opus codec via <pkg>media-libs/opus</pkg>.</flag>
 	<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
 	<flag name="postproc">Build and install libpostproc.</flag>
-	<flag name="quvi">Adds support for playing media from Internet services using the quvi project.</flag>
 	<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
 	<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
 	<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
