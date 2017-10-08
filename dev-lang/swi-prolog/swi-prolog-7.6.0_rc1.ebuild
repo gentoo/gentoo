@@ -3,25 +3,27 @@
 
 EAPI=5
 
+MY_PV=${PV/_/-}
+
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="3"
+PATCHSET_VER="0"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
-SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
-	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
+SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${MY_PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="archive berkdb debug doc +gmp hardened java +libedit libressl minimal odbc readline ssl static-libs test uuid zlib X"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+IUSE="archive berkdb debug doc +gmp hardened java +libedit libressl minimal odbc pcre readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
 	archive? ( app-arch/libarchive )
 	berkdb? ( >=sys-libs/db-4:= )
 	zlib? ( sys-libs/zlib )
 	odbc? ( dev-db/unixODBC )
+	pcre? ( dev-libs/libpcre )
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
@@ -29,7 +31,7 @@ RDEPEND="sys-libs/ncurses:=
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)
-	java? ( >=virtual/jdk-1.5:= )
+	java? ( >=virtual/jdk-1.7:= )
 	uuid? ( dev-libs/ossp-uuid )
 	X? (
 		virtual/jpeg:0
@@ -44,7 +46,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/xproto )
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
-S="${WORKDIR}/swipl-${PV}"
+S="${WORKDIR}/swipl-${MY_PV}"
 
 src_prepare() {
 	EPATCH_FORCE=yes
@@ -95,6 +97,7 @@ src_configure() {
 			$(use_with java jpl) \
 			${jpltestconf} \
 			$(use_with libedit) \
+			$(use_with pcre) \
 			$(use_with odbc) \
 			$(use_with readline) \
 			$(use_with ssl) \
