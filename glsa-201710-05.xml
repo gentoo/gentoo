@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-05">
+  <title>Munin: Arbitrary file write</title>
+  <synopsis>A vulnerability in Munin allows local attackers to overwrite any
+    file accessible to the www-data user.
+  </synopsis>
+  <product type="ebuild">munin</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>610602</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/munin" auto="yes" arch="*">
+      <unaffected range="ge">2.0.33</unaffected>
+      <vulnerable range="lt">2.0.33</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Munin is an open source server monitoring tool.</p>
+  </background>
+  <description>
+    <p>When Munin is compiled with CGI graphics enabled then the files
+      accessible to the www-data user can be overwritten.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker, by setting multiple upper_limit GET parameters, could
+      overwrite files accessible to the www-user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Munin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/munin-2.0.33"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6188">
+      CVE-2017-6188
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-01T22:42:42Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T13:43:10Z">chrisadr</metadata>
+</glsa>
