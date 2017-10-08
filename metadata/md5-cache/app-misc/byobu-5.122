@@ -3,11 +3,11 @@ DESCRIPTION=A set of profiles for the GNU Screen console window manager (app-mis
 EAPI=6
 HOMEPAGE=http://byobu.co
 IUSE=screen python_targets_python2_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-libs/newt[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] screen? ( app-misc/screen ) !screen? ( app-misc/tmux )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://launchpad.net/byobu/trunk/5.122/+download/byobu_5.122.orig.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=a0eb2ed40d1e92060ed79cc820e32e12
+_md5_=7e0a42a01b049c46d91155c5ec6273b5
