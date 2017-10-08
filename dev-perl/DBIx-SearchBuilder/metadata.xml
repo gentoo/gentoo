@@ -22,5 +22,6 @@
     <remote-id type="cpan-module">DBIx::SearchBuilder::SchemaGenerator</remote-id>
     <remote-id type="cpan-module">DBIx::SearchBuilder::Union</remote-id>
     <remote-id type="cpan-module">DBIx::SearchBuilder::Unique</remote-id>
+    <remote-id type="cpan-module">DBIx::SearchBuilder::Util</remote-id>
   </upstream>
 </pkgmetadata>
