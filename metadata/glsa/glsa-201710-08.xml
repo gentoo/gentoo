@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-08">
+  <title>Pacemaker: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Pacemaker, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">pacemaker</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>546550</bug>
+  <bug>599194</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-cluster/pacemaker" auto="yes" arch="*">
+      <unaffected range="ge">1.1.16 </unaffected>
+      <vulnerable range="lt">1.1.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pacemaker is an Open Source, High Availability resource manager suitable
+      for both small and large clusters.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pacemaker. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code or a local attacker could
+      escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pacemaker users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-cluster/pacemaker-1.1.16 "
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1867">
+      CVE-2015-1867
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7035">
+      CVE-2016-7035
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-03T21:27:22Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T14:14:41Z">chrisadr</metadata>
+</glsa>

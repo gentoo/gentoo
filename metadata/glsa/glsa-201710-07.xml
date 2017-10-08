@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-07">
+  <title>OCaml: Privilege escalation</title>
+  <synopsis>A vulnerability in OCaml may allow local users to gain root
+    privileges.
+    
+  </synopsis>
+  <product type="ebuild">ocaml</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>622544</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ocaml" auto="yes" arch="*">
+      <unaffected range="ge">4.04.2</unaffected>
+      <vulnerable range="lt">4.04.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OCaml is a high-level, strongly-typed, functional, and object-oriented
+      programming language from the ML family of languages.
+    </p>
+  </background>
+  <description>
+    <p>A bad sanitization of environment variables: CAML_CPLUGINS,
+      CAML_NATIVE_CPLUGINS and CAML_BYTE_CPLUGINS in the OCaml compiler allows
+      the execution of raised privileges via external code.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker, by using specially crafted environment variables,
+      could possibly escalate privileges to the root group.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OCaml users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ocaml-4.04.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9772">
+      CVE-2017-9772
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-27T11:54:27Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T14:04:43Z">chrisadr</metadata>
+</glsa>
