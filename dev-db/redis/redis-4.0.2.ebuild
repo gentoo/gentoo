@@ -14,8 +14,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86
 IUSE="+jemalloc tcmalloc luajit test"
 SLOT="0"
 
+# Redis does NOT build with Lua 5.2 or newer at this time.
+# This should link correctly with both unslotted & slotted Lua, without
+# changes.
 RDEPEND="luajit? ( dev-lang/luajit:2 )
-	!luajit? ( >=dev-lang/lua-5.1:* )
+	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
 	tcmalloc? ( dev-util/google-perftools )
 	jemalloc? ( >=dev-libs/jemalloc-3.2 )"
 DEPEND="virtual/pkgconfig
@@ -61,10 +64,15 @@ src_prepare() {
 	done
 	# autodetection of compiler and settings; generates the modified Makefiles
 	cp "${FILESDIR}"/configure.ac-3.2 configure.ac
+
+	# Use the correct pkgconfig name for Lua
+	has_version 'dev-lang/lua:5.1' \
+		&& LUAPKGCONFIG=lua5.1 \
+		|| LUAPKGCONFIG=lua
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
-		-e "/PKG_CHECK_MODULES.*\<LUA\>/s,lua5.1,lua,g" \
+		-e "/PKG_CHECK_MODULES.*\<LUA\>/s,lua5.1,${LUAPKGCONFIG},g" \
 		configure.ac || die "Sed failed for configure.ac"
 	eautoreconf
 }
