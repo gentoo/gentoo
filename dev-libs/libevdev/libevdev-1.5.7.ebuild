@@ -10,6 +10,7 @@ inherit python-any-r1 xorg-2
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/libevdev.git"
 
 DESCRIPTION="Handler library for evdev events"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libevdev/"
 
 if [[ ${PV} == 9999* ]] ; then
 	SRC_URI=""
