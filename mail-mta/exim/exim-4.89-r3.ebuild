@@ -96,6 +96,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	epatch "${FILESDIR}"/exim-4.89-CVE-2017-1000369.patch # 622212
 	epatch "${FILESDIR}"/${P}-transport-crash.patch # from git/in next release
+	epatch "${FILESDIR}"/${P}-address-expando-crash.patch # from git/in next release
 
 	if use maildir ; then
 		epatch "${FILESDIR}"/exim-4.20-maildir.patch
