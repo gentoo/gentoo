@@ -504,9 +504,9 @@ src_compile() {
 		local path="${WORKDIR}/helpcontent2/source/auxiliary/"
 		mkdir -p "${path}" || die
 
-		echo "perl \"${S}/helpcontent2/helpers/create_ilst.pl\" -dir=icon-themes/galaxy/res/helpimg > \"${path}/helpimg.ilst\""
+		echo "perl \"${S}/helpcontent2/helpers/create_ilst.pl\" -dir=helpcontent2/source/media/helpimg > \"${path}/helpimg.ilst\""
 		perl "${S}/helpcontent2/helpers/create_ilst.pl" \
-			-dir=icon-themes/galaxy/res/helpimg \
+			-dir=helpcontent2/source/media/helpimg \
 			> "${path}/helpimg.ilst"
 		[[ -s "${path}/helpimg.ilst" ]] || \
 			ewarn "The help images list is empty, something is fishy, report a bug."
