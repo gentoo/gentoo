@@ -255,7 +255,7 @@ DEPEND="${RDEPEND}
 	doc? ( sys-apps/texinfo )
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	cpu_flags_x86_mmx? ( >=dev-lang/yasm-1.2 )
+	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	test? ( net-misc/wget sys-devel/bc )
 	v4l? ( sys-kernel/linux-headers )
 "
