@@ -5,6 +5,10 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<use>
+		<flag name="network">Report network information</flag>
+		<flag name="widgets">Report widget style information</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
