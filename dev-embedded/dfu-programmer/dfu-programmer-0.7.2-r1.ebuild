@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit udev
+inherit udev user
 
 DESCRIPTION="A Device Firmware Update based USB programmer for Atmel chips"
 HOMEPAGE="http://dfu-programmer.sourceforge.net"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 RDEPEND="virtual/libusb:1
@@ -19,7 +19,13 @@ RDEPEND="virtual/libusb:1
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+pkg_setup() {
+	enewgroup plugdev
+}
+
 src_prepare() {
+	default
+
 	# Upstream has fixed this in their configure already.
 	tc-export CPP PKG_CONFIG
 	sed -i \
@@ -40,4 +46,10 @@ src_install() {
 		2ff{a,b,9,7,4,3} >> 70-dfu-programmer.rules
 
 	udev_dorules 70-dfu-programmer.rules
+}
+
+pkg_postinst() {
+	elog "To update device firmware as user you must be in the plugdev group:"
+	elog
+	elog "usermod -aG plugdev <user>"
 }
