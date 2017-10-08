@@ -2347,7 +2347,7 @@ app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for 
 app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libetonyek 0.1.6 9999: Library parsing Apple Keynote presentations
-app-text/libexttextcat 3.4.4: Library implementing N-gram-based text categorization
+app-text/libexttextcat 3.4.4 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4 0.5.2: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.2.5 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
@@ -2357,8 +2357,8 @@ app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.3 0.0.4 9999: Import filter for old StarOffice documents
-app-text/libwpd 0.10.1-r1: WordPerfect Document import/export library
-app-text/libwpg 0.3.1: C++ library to read and parse graphics in WPG
+app-text/libwpd 0.10.1-r1 0.10.2: WordPerfect Document import/export library
+app-text/libwpg 0.3.1 0.3.2: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.6 0.4.7: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
@@ -13024,7 +13024,7 @@ media-libs/libcaca 0.99_beta18-r2 0.99_beta19: A library that creates colored AS
 media-libs/libcanberra 0.30-r4 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
-media-libs/libcdr 0.1.3 9999: Library parsing the Corel cdr documents
+media-libs/libcdr 0.1.3 0.1.4 9999: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.15 0.12.16: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
@@ -13056,7 +13056,7 @@ media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libffado 2.3.0: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface for decoding and encoding audio data using vorbis or speex
 media-libs/libfpx 1.3.1_p6: A library for manipulating FlashPIX images
-media-libs/libfreehand 0.1.1 9999: Library for import of FreeHand drawings
+media-libs/libfreehand 0.1.1 0.1.2 9999: Library for import of FreeHand drawings
 media-libs/libggi 2.2.2: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libggigcp 1.0.2: Library for General Graphics Interface
 media-libs/libggimisc 2.2.2: Library for General Graphics Interface
@@ -13171,7 +13171,7 @@ media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.0.1 1.1.0 1.2.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.36 0.4.37: Shared library for libmediainfo and mediainfo
-media-libs/libzmf 0.0.1 9999: Library for parsing Zoner Callisto/Draw documents
+media-libs/libzmf 0.0.1 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.20.0 0.24.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
