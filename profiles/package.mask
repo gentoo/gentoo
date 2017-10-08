@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (8 October 2017)
+# severely vulnerable and unmaintained sources.
+# Masked for removal in 30 days. Bug #627924
+sys-kernel/tuxonice-sources
+
 # Mike Gilbert <floppym@gentoo.org> (08 Oct 2017)
 # systemd-networkd fails with older kernel versions.
 # https://github.com/systemd/systemd/issues/7027
