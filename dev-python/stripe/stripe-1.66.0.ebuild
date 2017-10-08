@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 		dev-python/pycurl
 		)"
 
-DOCS="CHANGELOG LONG_DESCRIPTION.rst README.md"
+DOCS="LONG_DESCRIPTION.rst"
 
 python_test() {
 	${PYTHON:-python} -Wall setup.py test || die
