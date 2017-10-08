@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-02">
+  <title>file: Stack-based buffer overflow</title>
+  <synopsis>A stack-based buffer overflow was found in file, possibly resulting
+    in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">file</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>629872</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">5.32</unaffected>
+      <vulnerable range="lt">5.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>file is a utility that guesses a file format by scanning binary data for
+      patterns.
+    </p>
+  </background>
+  <description>
+    <p>An issue discovered in file allows attackers to write 20 bytes to the
+      stack buffer via a specially crafted .notes section.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by using a specially crafted .notes section in an ELF
+      binary, could execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All file users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/file-5.32"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000249">
+      CVE-2017-1000249
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-29T23:38:45Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T13:26:24Z">chrisadr</metadata>
+</glsa>
