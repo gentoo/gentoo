@@ -309,6 +309,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/openjpeg22.patch
+	"${FILESDIR}"/openjpeg23.patch
 	"${FILESDIR}"/chromium.patch
 )
 
