@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-01">
+  <title>RubyGems: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in RubyGems, the worst of which
+    allows execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">rubygems</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>629230</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/rubygems" auto="yes" arch="*">
+      <unaffected range="ge">2.6.13</unaffected>
+      <vulnerable range="lt">2.6.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>RubyGems is a sophisticated package manager for Ruby.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in RubyGems. Please review
+      the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to install a specially crafted
+      gem, could possibly execute arbitrary code with the privileges of the
+      process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RubyGems users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/rubygems-2.6.13"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0899">
+      CVE-2017-0899
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0900">
+      CVE-2017-0900
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0901">
+      CVE-2017-0901
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0902">
+      CVE-2017-0902
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-03T14:54:42Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T12:53:26Z">chrisadr</metadata>
+</glsa>
