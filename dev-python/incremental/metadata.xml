@@ -17,5 +17,4 @@
 		<remote-id type="pypi">incremental</remote-id>
 		<remote-id type="github">hawkowl/incremental</remote-id>
 	</upstream>
-	<longdescription/>
 </pkgmetadata>
