@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-03">
+  <title>ICU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ICU, the worst of which
+    could allow remote code execution.
+  </synopsis>
+  <product type="ebuild">icu</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>616468</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">58.2-r1</unaffected>
+      <vulnerable range="lt">58.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ICU is a mature, widely used set of C/C++ and Java libraries providing
+      Unicode and Globalization support for software applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ICU. Please review the
+      referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ICU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/icu-58.2-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7867">
+      CVE-2017-7867
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7868">
+      CVE-2017-7868
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-03T15:56:43Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T13:30:01Z">chrisadr</metadata>
+</glsa>
