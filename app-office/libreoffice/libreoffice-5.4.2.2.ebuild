@@ -49,7 +49,6 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/libepubgen-0.0.1.tar.bz2"
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -70,13 +69,13 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -454,7 +453,6 @@ src_configure() {
 		--without-help \
 		--with-helppack-integration \
 		--with-system-gpgmepp \
-		--without-system-libepubgen \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
@@ -475,6 +473,7 @@ src_configure() {
 		$(use_enable odk) \
 		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
+		$(use_enable quickstarter systray) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
@@ -552,6 +551,9 @@ src_install() {
 	# https://bugs.freedesktop.org/show_bug.cgi?id=46506
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
+
+	# Remove desktop files to support old installs that can't parse mime
+	rm -r "${ED}"usr/share/mimelnk/ || die
 
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin
