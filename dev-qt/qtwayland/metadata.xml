@@ -6,6 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings</flag>
 		<flag name="wayland-compositor">Build Qt compositor for wayland</flag>
 	</use>
