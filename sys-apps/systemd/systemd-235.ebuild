@@ -149,6 +149,7 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/235-0001-test-skip-hwdb-and-sysv-generator-if-the-features-ar.patch
+		"${FILESDIR}"/235-0002-networkd-Don-t-stop-networkd-if-CONFIG_FIB_RULES-n-i.patch
 	)
 
 	if ! use vanilla; then
