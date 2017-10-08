@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-09">
+  <title>PCRE2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PCRE2, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpcre2</product>
+  <announced>2017-10-08</announced>
+  <revised>2017-10-08: 1</revised>
+  <bug>614050</bug>
+  <bug>617942</bug>
+  <bug>617944</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libpcre2" auto="yes" arch="*">
+      <unaffected range="ge">10.30</unaffected>
+      <vulnerable range="lt">10.30</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PCRE2 is a project based on PCRE (Perl Compatible Regular Expressions)
+      which has a new and revised API.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PCRE2. Please review
+      the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or have
+      other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PCRE2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libpcre2-10.30"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7186">
+      CVE-2017-7186
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8399">
+      CVE-2017-8399
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-8786">
+      CVE-2017-8786
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-19T01:23:39Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-08T14:42:50Z">chrisadr</metadata>
+</glsa>
