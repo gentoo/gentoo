@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Raymond Jennings <shentino@gmail.com> (08 Jun 2017)
+# Depends on qt4 which is being removed.
+# Upstream announced EOL effective July 2017.
+# Possible alternative is skypeforlinux,
+# which uses the same account information but has different features.
+# See bug #620722 and bug #608174.
+# Masked for removal in 30 days
+dev-python/skype4py
+media-sound/skype-call-recorder
+net-im/skype
+net-im/skypetab-ng
+
 # Aaron Bauman <bman@gentoo.org> (8 October 2017)
 # severely vulnerable and unmaintained sources.
 # Masked for removal in 30 days. Bug #627924
@@ -377,17 +389,6 @@ app-emulation/vmware-workstation
 app-emulation/vmware-player
 app-emulation/vmware-modules
 app-emulation/vmware-tools
-
-# Raymond Jennings <shentino@gmail.com> (11 Jun 2017)
-# Upstream announced EOL effective July 2017.
-# Depends on qt4 which is being deprecated.
-# Possible alternative is skypeforlinux,
-# which uses the same account information but has different features.
-# See bug #620722 and bug #608174.
-dev-python/skype4py
-media-sound/skype-call-recorder
-net-im/skype
-net-im/skypetab-ng
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
