@@ -2357,7 +2357,7 @@ app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.3 0.0.4 9999: Import filter for old StarOffice documents
-app-text/libwpd 0.10.1 0.10.1-r1: WordPerfect Document import/export library
+app-text/libwpd 0.10.1-r1: WordPerfect Document import/export library
 app-text/libwpg 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.6 0.4.7: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
