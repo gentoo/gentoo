@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/p7zip
+DESCRIPTION=Documentation for Qt5, for use with Qt Creator and other tools
+EAPI=6
+HOMEPAGE=https://www.qt.io/
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=FDL-1.3
+SLOT=5
+SRC_URI=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_592_src_doc_examples/qt.592.doc/5.9.2-0-201710050733qt-everywhere-documentation.7z
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=18972b0c065f1de261e0b5c4f3a33a26
