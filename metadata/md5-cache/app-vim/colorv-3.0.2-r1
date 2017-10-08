@@ -4,11 +4,11 @@ DESCRIPTION=vim plugin: a color tool for vim
 EAPI=6
 HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3597 https://github.com/Rykka/colorv.vim/
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] || ( app-editors/vim[python,python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ( app-editors/gvim[python,python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://gentoo/colorv-3.0.2.tar.bz2 https://dev.gentoo.org/~radhermit/vim/colorv-3.0.2.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	6f0171b0a2f2fce005c13b4c0685a0d8
-_md5_=30e2ff614c1f663d46dd1ea03b5e3667
+_md5_=143edb834a7b1ce4e9081578b61a0ae2
