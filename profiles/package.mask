@@ -34,11 +34,6 @@
 # Masked for removal in 30 days. Bug #627924
 sys-kernel/tuxonice-sources
 
-# Mike Gilbert <floppym@gentoo.org> (08 Oct 2017)
-# systemd-networkd fails with older kernel versions.
-# https://github.com/systemd/systemd/issues/7027
-=sys-apps/systemd-235
-
 # Michał Górny <mgorny@gentoo.org> (05 Oct 2017)
 # (on behalf of QA)
 # Rogue version bumps that reintroduce QA violations that were fixed
