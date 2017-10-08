@@ -453,9 +453,9 @@ src_install () {
 	dosym exim /usr/sbin/sendmail
 	dosym exim /usr/sbin/rsmtp
 	dosym exim /usr/sbin/rmail
-	dosym /usr/sbin/exim /usr/bin/mailq
-	dosym /usr/sbin/exim /usr/bin/newaliases
-	dosym /usr/sbin/sendmail /usr/lib/sendmail
+	dosym ../sbin/exim /usr/bin/mailq
+	dosym ../sbin/exim /usr/bin/newaliases
+	dosym ../sbin/sendmail /usr/lib/sendmail
 
 	for i in exicyclog exim_dbmbuild exim_dumpdb exim_fixdb exim_lock \
 		exim_tidydb exinext exiwhat exigrep eximstats exiqsumm exiqgrep \
