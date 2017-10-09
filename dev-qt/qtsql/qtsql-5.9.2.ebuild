@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="freetds mysql oci8 odbc postgres +sqlite"
+IUSE="examples freetds mysql oci8 odbc postgres +sqlite"
 
 REQUIRED_USE="
 	|| ( freetds mysql oci8 odbc postgres sqlite )
@@ -27,6 +27,12 @@ DEPEND="
 	sqlite? ( >=dev-db/sqlite-3.8.10.2:3 )
 "
 RDEPEND="${DEPEND}"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}
+	)
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/sql
