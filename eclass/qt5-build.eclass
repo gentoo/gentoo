@@ -32,6 +32,13 @@ esac
 # Array variable containing the source directories that should be built.
 # All paths must be relative to ${S}.
 
+# @ECLASS-VARIABLE: QT5_EXAMPLES_SUBDIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array variable containing source directories of examples that should be built.
+# Value of this variable is ignored unless ebuild has USE-flag "examples" and this USE-flag is enabled.
+# All paths must be relative to ${S}.
+
 # @ECLASS-VARIABLE: QT5_GENTOO_CONFIG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -465,10 +472,12 @@ qt5_prepare_env() {
 # Executes the command given as argument from inside each directory
 # listed in QT5_TARGET_SUBDIRS. Handles autotests subdirs automatically.
 qt5_foreach_target_subdir() {
-	[[ -z ${QT5_TARGET_SUBDIRS[@]} ]] && QT5_TARGET_SUBDIRS=("")
+	local QT5_FOREACH_DIRS=("")
+	[[ -n ${QT5_TARGET_SUBDIRS[@]} ]] && QT5_FOREACH_DIRS=("${QT5_TARGET_SUBDIRS[@]}")
+	in_iuse examples && use examples && [[ -n ${QT5_EXAMPLES_SUBDIRS[@]} ]] && QT5_FOREACH_DIRS+=("${QT5_EXAMPLES_SUBDIRS[@]}")
 
 	local subdir=
-	for subdir in "${QT5_TARGET_SUBDIRS[@]}"; do
+	for subdir in "${QT5_FOREACH_DIRS[@]}"; do
 		if [[ ${EBUILD_PHASE} == test ]]; then
 			subdir=tests/auto${subdir#src}
 			[[ -d ${S}/${subdir} ]] || continue
@@ -609,7 +618,6 @@ qt5_base_configure() {
 		# exclude examples and tests from default build
 		-nomake examples
 		-nomake tests
-		-no-compile-examples
 
 		# disable rpath on non-prefix (bugs 380415 and 417169)
 		$(usex prefix '' -no-rpath)
