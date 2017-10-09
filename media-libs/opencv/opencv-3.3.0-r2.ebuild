@@ -41,6 +41,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
+	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	contrib_hdf? ( sci-libs/hdf5 )
@@ -276,6 +277,11 @@ multilib_src_configure() {
 	# things we want to be hard off or not yet figured out
 	# ===================================================
 		-DBUILD_PACKAGE=OFF
+	# ===================================================
+	# Not building protobuf but update files bug #631418
+	# ===================================================
+		-DBUILD_PROTOBUF=OFF
+		-DPROTOBUF_UPDATE_FILES=ON
 	# ===================================================
 	# things we want to be hard enabled not worth useflag
 	# ===================================================
