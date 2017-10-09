@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
-IUSE=""
+IUSE="examples"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -27,4 +27,9 @@ QT5_TARGET_SUBDIRS=(
 	src/assistant/qcollectiongenerator
 	src/assistant/qhelpconverter
 	src/assistant/qhelpgenerator
+)
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples/help
+	examples/uitools
 )
