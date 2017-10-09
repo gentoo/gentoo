@@ -12,7 +12,7 @@ inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
-FFMPEG_VERSION="3.3.3"
+FFMPEG_VERSION="3.3.4"
 CODENAME="Leia"
 FFMPEG_KODI_VERSION="Alpha-1"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
