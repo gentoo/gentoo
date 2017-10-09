@@ -5722,7 +5722,7 @@ dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub depa
 dev-perl/Data-Float 0.12.0 0.13.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0 4.860.0-r1 4.880.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
-dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
+dev-perl/Data-HexDump 0.02-r1 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
@@ -5732,12 +5732,12 @@ dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0 0.120.0: A module used to generate random data
-dev-perl/Data-Section 0.200.6: read multiple hunks of data out of your DATA section
+dev-perl/Data-Section 0.200.6 0.200.7: read multiple hunks of data out of your DATA section
 dev-perl/Data-Serializer 0.600.0: Modules that serialize data structures
 dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
-dev-perl/Data-Structure-Util 0.150.0: Change nature of data within a structure
+dev-perl/Data-Structure-Util 0.150.0 0.160.0: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0: Validate and convert data types.
 dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded using flat URIs
 dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
@@ -9826,6 +9826,7 @@ dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C libra
 dev-ruby/rbnacl 4.0.2 5.0.0: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rbpdf 1.19.2 1.19.3: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0-r1 1.19.1: Font files for the Ruby on Rails RBPDF plugin
+dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
 dev-ruby/rcairo 1.14.3 1.15.9-r1: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown

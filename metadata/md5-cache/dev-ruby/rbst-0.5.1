@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( dev-python/docutils >=dev-ruby/mocha-1.1.0:1.0 >=dev-ruby/shoulda-3.5.0:3 >=dev-ruby/test-unit-3.0.9:2 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( doc? ( dev-ruby/rake[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( doc? ( dev-ruby/rake[ruby_targets_ruby23] ) ) ruby_targets_ruby24? ( doc? ( dev-ruby/rake[ruby_targets_ruby24] ) ) ruby_targets_ruby22? ( test? ( dev-ruby/rake[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( test? ( dev-ruby/rake[ruby_targets_ruby23] ) ) ruby_targets_ruby24? ( test? ( dev-ruby/rake[ruby_targets_ruby24] ) ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) test? ( ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) )
+DESCRIPTION=A simple Ruby wrapper for processing rST via docutils
+EAPI=6
+HOMEPAGE=https://github.com/alphabetum/rbst
+IUSE=test python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 doc test test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-python/docutils ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
+REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/alphabetum/rbst/archive/0.5.1.tar.gz -> rbst-0.5.1.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	ruby-fakegem	bafb56b9a7b7e84fd091508783628e78	ruby-ng	dbd648644c9f5bec523dc17dc34d8671	ruby-utils	453e0fe0dd06baac93b584c91528cc62	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=fc4d9d61f3d7fbc57048ca2e46c1c2f2
