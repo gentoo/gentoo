@@ -17853,7 +17853,7 @@ sys-kernel/kpatch 0.4.0-r1: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.1 4.4 4.9: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20160331 20161205 20170113 20170314 20170519 20170622 20170906 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8 4.9 4.10 4.11 4.12 4.13: Linux system headers
-sys-kernel/mips-sources 4.4.79 4.8.17 4.9.40 4.10.17 4.11.12 4.12.4: Linux-Mips GIT sources for MIPS-based machines, dated 20170703
+sys-kernel/mips-sources 4.4.91 4.9.54 4.11.12 4.12.14: Linux-Mips GIT sources for MIPS-based machines, dated 20170703
 sys-kernel/pf-sources 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4 4.13_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999: Raspberry PI kernel sources
