@@ -20,8 +20,7 @@ CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # and it's missing ripemd160 support so it can't provide full backward compatibility
 IUSE="${CRYPTO_BACKENDS} libressl nls pwquality python reencrypt static static-libs udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	static? ( !gcrypt )" #496612
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
