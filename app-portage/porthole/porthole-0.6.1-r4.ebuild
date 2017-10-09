@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/porthole/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls"
 LANGS="de pl ru vi it fr tr"
 for X in $LANGS; do IUSE="${IUSE} linguas_${X}"; done
