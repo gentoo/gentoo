@@ -12,7 +12,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="gles2"
+IUSE="examples gles2"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -21,6 +21,12 @@ DEPEND="
 	virtual/opengl
 "
 RDEPEND="${DEPEND}"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}[gles2=]
+	)
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/opengl
