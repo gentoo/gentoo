@@ -17466,7 +17466,7 @@ sys-boot/mbr-gpt 0.0.1: An MBR that can handle BIOS-based boot on GPT
 sys-boot/milo 2.4.18: The Alpha MIniLOader, for Alpha Machines without SRM
 sys-boot/netboot 0.10.2: netbooting utility
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
-sys-boot/os-prober 1.71 1.73 1.74: Utility to detect other OSs on a set of drives
+sys-boot/os-prober 1.71 1.74 1.76: Utility to detect other OSs on a set of drives
 sys-boot/palo 1.99 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.2-r1 0.9.3 0.9.3-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2: Plymouth plugin for OpenRC
@@ -18329,8 +18329,8 @@ www-apps/icingaweb2-module-director 1.1.0 9999: Icinga Web 2 plugin for configur
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111: A wiki compiler
-www-apps/jekyll 3.2.1-r2: A simple, blog aware, static site generator
-www-apps/jekyll-coffeescript 1.0.1 1.0.2: A CoffeeScript Converter for Jekyll
+www-apps/jekyll 3.2.1-r2 3.6.0: A simple, blog aware, static site generator
+www-apps/jekyll-coffeescript 1.0.1 1.0.2-r1: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.4.0: Liquid tag for displaying GitHub Gists in Jekyll sites
 www-apps/jekyll-sass-converter 1.4.0 1.5.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Jekyll site
