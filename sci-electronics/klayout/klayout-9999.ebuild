@@ -48,7 +48,7 @@ each_ruby_configure() {
 	./build.sh \
 		-expert \
 		-dry-run \
-		-qmake /usr/lib64/qt5/bin/qmake \
+		-qmake "/usr/$(get_libdir)/qt5/bin/qmake" \
 		-ruby "${RUBY}" \
 		-python "${PYTHON}" \
 		-build . \
