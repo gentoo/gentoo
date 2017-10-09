@@ -11,7 +11,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # TODO: gamepad, tools
-IUSE="gles2 qml"
+IUSE="examples gles2 qml"
+REQUIRED_USE="examples? ( qml )"
 
 DEPEND="
 	~dev-qt/qtconcurrent-${PV}
@@ -22,6 +23,10 @@ DEPEND="
 	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2=] )
 "
 RDEPEND="${DEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	rm -r src/3rdparty/assimp/{code,contrib,include} || die
