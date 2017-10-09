@@ -11,18 +11,24 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # TODO: simulator
-IUSE="qml"
+IUSE="examples qml"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtdbus-${PV}
 	qml? ( ~dev-qt/qtdeclarative-${PV} )
+	examples? ( ~dev-qt/qtwidgets-${PV} )
 "
 DEPEND="${RDEPEND}"
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
+
 src_prepare() {
 	qt_use_disable_mod qml quick \
-		src/src.pro
+		src/src.pro \
+		examples/sensors/sensors.pro
 
 	qt5-build_src_prepare
 }
