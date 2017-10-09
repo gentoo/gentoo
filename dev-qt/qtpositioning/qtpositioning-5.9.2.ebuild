@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
-IUSE="geoclue qml"
+IUSE="examples geoclue qml"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
@@ -31,7 +31,16 @@ QT5_TARGET_SUBDIRS=(
 	src/plugins/position/positionpoll
 )
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples/positioning
+)
+
 pkg_setup() {
 	use geoclue && QT5_TARGET_SUBDIRS+=(src/plugins/position/geoclue)
 	use qml && QT5_TARGET_SUBDIRS+=(src/imports/positioning)
+}
+
+src_prepare() {
+	qt_use_disable_mod qml quick \
+		examples/positioning/positioning.pro
 }
