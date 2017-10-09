@@ -11,13 +11,19 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE=""
+IUSE="examples"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
 "
 DEPEND="${RDEPEND}
 	test? ( ~dev-qt/qtnetwork-${PV} )
+"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}
+	)
 "
 
 QT5_TARGET_SUBDIRS=(
