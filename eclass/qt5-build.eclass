@@ -519,6 +519,11 @@ qt5_base_configure() {
 	tc-export AR CC CXX OBJDUMP RANLIB STRIP
 	export LD="$(tc-getCXX)"
 
+	# bug 633838
+	if [[ ${QT5_MINOR_VERSION} -ge 9 ]]; then
+		unset QMAKESPEC XQMAKESPEC QMAKEPATH QMAKEFEATURES
+	fi
+
 	# configure arguments
 	local conf=(
 		# installation paths
