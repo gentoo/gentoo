@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_EXTRADOC="README.md History.markdown"
@@ -28,7 +28,5 @@ all_ruby_prepare() {
 }
 
 ruby_add_rdepend ">=dev-ruby/coffee-script-2.2
-	<dev-ruby/coffee-script-3
-	>=dev-ruby/coffee-script-source-1.11.1
-	<dev-ruby/coffee-script-source-1.12"
+	>=dev-ruby/coffee-script-source-1.11.1"
 ruby_add_bdepend "test? ( www-apps/jekyll )"
