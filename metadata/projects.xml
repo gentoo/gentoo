@@ -1191,6 +1191,11 @@
       <name>Tiziano Müller</name>
       <role>GLEP Editor</role>
     </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Helper for git migration</role>
+    </member>
   </project>
   <project>
     <email>gnome@gentoo.org</email>
