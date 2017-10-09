@@ -15,7 +15,7 @@ DESCRIPTION="PHP bindings for the libssh2 library"
 LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 # Upstream notes say there are errors with gcrypt backend
 DEPEND="net-libs/libssh2[-gcrypt]"
 RDEPEND="${DEPEND}"
