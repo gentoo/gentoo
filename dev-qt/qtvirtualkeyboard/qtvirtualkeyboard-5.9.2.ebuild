@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # TODO: unbudle libraries for more layouts
-IUSE="handwriting +spell +xcb"
+IUSE="examples handwriting +spell +xcb"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -22,6 +22,10 @@ DEPEND="
 	xcb? ( x11-libs/libxcb:= )
 "
 RDEPEND="${DEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_configure() {
 	local myqmakeargs=(
