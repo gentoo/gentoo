@@ -1196,6 +1196,11 @@
       <name>Michał Górny</name>
       <role>Helper for git migration</role>
     </member>
+    <member>
+      <email>ulm@gentoo.org</email>
+      <name>Ulrich Müller</name>
+      <role>Helper for git migration</role>
+    </member>
   </project>
   <project>
     <email>gnome@gentoo.org</email>
