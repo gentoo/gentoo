@@ -6,6 +6,7 @@
 # fail to build or run if set.
 dev-python/PyQt5 gles2
 dev-qt/qt3d gles2
+dev-qt/qtbase-examples gles2
 dev-qt/qtdatavis3d gles2
 dev-qt/qtdeclarative gles2
 dev-qt/qtgui gles2
