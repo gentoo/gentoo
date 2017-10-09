@@ -10,7 +10,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="+libinput xcomposite"
+IUSE="examples +libinput xcomposite"
 
 DEPEND="
 	>=dev-libs/wayland-1.6.0
@@ -25,6 +25,10 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	qt_use_disable_config libinput xkbcommon-evdev \
