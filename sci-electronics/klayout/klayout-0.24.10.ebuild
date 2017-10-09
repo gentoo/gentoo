@@ -41,9 +41,9 @@ each_ruby_configure() {
 		-platform linux-gentoo \
 		-bin bin \
 		-ruby ${RUBY} \
-		-qtbin /usr/lib64/qt4/bin \
+		-qtbin "/usr/$(get_libdir)/qt4/bin" \
 		-qtinc /usr/include/qt4 \
-		-qtlib /usr/$(get_libdir)/qt4 || die "Configuration failed"
+		-qtlib "/usr/$(get_libdir)/qt4" || die "Configuration failed"
 }
 
 each_ruby_compile() {
