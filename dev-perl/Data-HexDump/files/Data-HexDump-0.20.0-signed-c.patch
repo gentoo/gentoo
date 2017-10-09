@@ -1,0 +1,28 @@
+From 1eec10393fbf1123327858d127e1f6d9e50f5a85 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 10 Oct 2017 08:17:59 +1300
+Subject: Don't use signed characters for 0-255
+
+'c' == -127 to 127
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123226
+---
+ t/compare.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/compare.t b/t/compare.t
+index f03d73d..3c25803 100644
+--- a/t/compare.t
++++ b/t/compare.t
+@@ -11,7 +11,7 @@ print "1..2\n";
+ # data
+ my $org = "";
+ for (my $i = 0; $i <= 255; $i++) {
+-  $org .= pack 'c', $i;
++  $org .= pack 'C', $i;
+ }
+ $org = $org x 17 . "more data";
+ 
+-- 
+2.14.1
+
