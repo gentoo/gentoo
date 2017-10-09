@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~x86"
 fi
 
-IUSE="gles2 qml"
+IUSE="examples gles2 qml"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -20,12 +20,17 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples/datavisualization
+)
+
 src_prepare() {
 	# eliminate bogus dependency on qtwidgets
 	sed -i -e '/requires.*widgets/d' qtdatavis3d.pro || die
 
 	qt_use_disable_mod qml quick \
-		src/src.pro
+		src/src.pro \
+		examples/datavisualization/datavisualization.pro
 
 	qt5-build_src_prepare
 }
