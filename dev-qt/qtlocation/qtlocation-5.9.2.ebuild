@@ -10,7 +10,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-IUSE=""
+IUSE="examples"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
@@ -33,6 +33,10 @@ QT5_TARGET_SUBDIRS=(
 	src/location
 	src/imports/location
 	src/plugins/geoservices
+)
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples/location
 )
 
 src_configure() {
