@@ -8934,7 +8934,7 @@ dev-python/vatnumber 1.1: Module to validate VAT numbers
 dev-python/vcrpy 1.10.3 1.11.1: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.38 0.1.39 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
-dev-python/vdirsyncer 0.14.0 0.16.0: Synchronize calendars and contacts
+dev-python/vdirsyncer 0.14.0 0.16.0-r1: Synchronize calendars and contacts
 dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
 dev-python/verboselogs 1.6: Verbose logging for Python's logging module
 dev-python/versioneer 0.16: Easy VCS-based management of project version strings
@@ -12181,7 +12181,6 @@ kde-misc/kdeconnect 1.0.3 1.2: Adds communication between KDE Plasma and your sm
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
-kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-gdrive 1.2.0.1 1.2.1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
@@ -14129,7 +14128,6 @@ media-video/kamerka 0.12_p20161002: Simple photo taking application with fancy a
 media-video/kamoso 3.2.4: Application to take pictures and videos from your webcam by KDE
 media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
-media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 12.1 12.2 9999: Complete solution to record, convert and stream audio and video
 media-video/libva-utils 1.8.0 1.8.1 1.8.2 1.8.3 9999: Collection of utilities and tests for VA-API
 media-video/loopy 0.5.3: Simple video player for KDE
