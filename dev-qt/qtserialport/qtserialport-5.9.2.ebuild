@@ -10,13 +10,18 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
-IUSE=""
+IUSE="examples"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
+	examples? ( ~dev-qt/qtwidgets-${PV} )
 	virtual/libudev:=
 "
 RDEPEND="${DEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	# make sure we link against libudev
