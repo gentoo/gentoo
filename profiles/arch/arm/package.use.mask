@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Oct 2017)
+# kde-plasma/plasma-vault is not keyworded, which depends on also
+# not yet keyworded sys-fs/cryfs, bugs #633880 and #633882
+kde-plasma/plasma-meta crypt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (09 Oct 2017)
 # app-misc/ddcutil is not keyworded, bug #627932
 kde-plasma/plasma-workspace brightness-control
 
