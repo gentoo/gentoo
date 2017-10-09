@@ -12198,7 +12198,7 @@ kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krename 4.0.9_p20170610: Powerful batch file renamer
 kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.0 4.1.1_beta: Shutdown manager for desktop environments like KDE Plasma
-kde-misc/ktexteditorpreviewplugin 0.1.0: Plugin for previewing content using the KTextEditor Framework
+kde-misc/ktexteditorpreviewplugin 0.1.0 0.2.0: Plugin for previewing content using the KTextEditor Framework
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20170128: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.6.2 0.7.1 9999: Elegant dock, based on KDE Frameworks
@@ -14765,7 +14765,7 @@ net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0: Team collaboration tool
-net-im/telegram-desktop-bin 1.1.19 1.1.23: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.1.19 1.1.23-r1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
