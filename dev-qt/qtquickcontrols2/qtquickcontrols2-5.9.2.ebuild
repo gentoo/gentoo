@@ -10,7 +10,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="widgets"
+IUSE="examples widgets"
+REQUIRED_USE="examples? ( widgets )"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -21,6 +22,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	~dev-qt/qtgraphicaleffects-${PV}
 "
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	qt_use_disable_mod widgets widgets \
