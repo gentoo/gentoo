@@ -11,7 +11,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="gles2 +jit localstorage +widgets xml"
+IUSE="examples gles2 +jit localstorage +widgets xml"
+REQUIRED_USE="examples? ( widgets )"
 
 # qtgui[gles2=] is needed because of bug 504322
 COMMON_DEPEND="
@@ -25,6 +26,9 @@ COMMON_DEPEND="
 		~dev-qt/qtnetwork-${PV}
 		~dev-qt/qtxmlpatterns-${PV}
 	)
+	examples? (
+		~dev-qt/qtnetwork-${PV}
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
@@ -32,6 +36,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!<dev-qt/qtquickcontrols-5.7:5
 "
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	use jit || PATCHES+=("${FILESDIR}/${PN}-5.4.2-disable-jit.patch")
@@ -45,7 +53,8 @@ src_prepare() {
 		tests/auto/auto.pro \
 		tools/tools.pro \
 		tools/qmlscene/qmlscene.pro \
-		tools/qml/qml.pro
+		tools/qml/qml.pro \
+		examples/quick/quick.pro
 
 	qt_use_disable_mod xml xmlpatterns \
 		src/imports/imports.pro \
