@@ -11,10 +11,17 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # TODO: flite plugin - needs 2.0.0 (not yet in tree)
-IUSE=""
+IUSE="examples"
 
 RDEPEND="
 	app-accessibility/speech-dispatcher
 	~dev-qt/qtcore-${PV}
+	examples? (
+		~dev-qt/qtwidgets-${PV}
+	)
 "
 DEPEND="${RDEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
