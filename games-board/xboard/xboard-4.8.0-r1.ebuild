@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,18 +50,18 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-update-mimedb \
-		--datadir=/usr/share \
+		--datadir="${EPREFIX}"/usr/share \
 		$(use_enable nls) \
 		$(use_enable zippy) \
 		--disable-update-mimedb \
 		$(use_with gtk) \
 		$(use_with Xaw3d) \
 		$(usex gtk "--without-Xaw" "$(use_with !Xaw3d Xaw)") \
-		--with-gamedatadir="/usr/share/games/${PN}"
+		--with-gamedatadir="${EPREFIX}/usr/share/games/${PN}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	dodoc AUTHORS COPYRIGHT ChangeLog FAQ.html NEWS README TODO ics-parsing.txt
 	use zippy && dodoc zippy.README
 }
