@@ -24,7 +24,7 @@ HOMEPAGE="https://btrfs.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0/${libbtrfs_soname}"
-IUSE="+convert static static-libs"
+IUSE="+convert reiserfs static static-libs"
 
 RESTRICT=test # tries to mount repared filesystems
 
@@ -35,6 +35,9 @@ RDEPEND="
 	convert? (
 		sys-fs/e2fsprogs:0=
 		sys-libs/e2fsprogs-libs:0=
+		reiserfs? (
+			sys-fs/reiserfsprogs
+		)
 	)
 "
 DEPEND="${RDEPEND}
@@ -49,6 +52,9 @@ DEPEND="${RDEPEND}
 		convert? (
 			sys-fs/e2fsprogs:0[static-libs(+)]
 			sys-libs/e2fsprogs-libs:0[static-libs(+)]
+			reiserfs? (
+				sys-fs/reiserfsprogs[static-libs(+)]
+			)
 		)
 	)
 "
@@ -60,7 +66,7 @@ fi
 src_prepare() {
 	default
 	if [[ ${PV} == 9999 ]]; then
-		eautoreconf
+		AT_M4DIR=m4 eautoreconf
 		mkdir config || die
 		local automakedir="$(autotools_run_tool --at-output automake --print-libdir)"
 		[[ -e ${automakedir} ]] || die "Could not locate automake directory"
@@ -75,6 +81,9 @@ src_configure() {
 		--bindir="${EPREFIX}"/sbin
 		$(use_enable convert)
 		$(use_enable elibc_glibc backtrace)
+		# No whitespace due to 'ext2,reiserfs' being invalid
+		# for configure. TODO: Why it's not valid?
+		--with-convert=ext2$(usex reiserfs 'reiserfs' '')
 	)
 	econf "${myeconfargs[@]}"
 }
