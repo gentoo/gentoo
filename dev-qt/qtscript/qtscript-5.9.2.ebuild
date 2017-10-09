@@ -10,7 +10,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="+jit scripttools"
+IUSE="examples +jit scripttools"
+REQUIRED_USE="examples? ( scripttools )"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -21,9 +22,14 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
+
 src_prepare() {
 	qt_use_disable_mod scripttools widgets \
-		src/src.pro
+		src/src.pro \
+		examples/script/script.pro
 
 	qt5-build_src_prepare
 }
