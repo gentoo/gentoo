@@ -6,7 +6,7 @@ EAPI=6
 inherit systemd user
 
 DESCRIPTION="High-performance authoritative-only DNS server"
-HOMEPAGE="http://www.knot-dns.cz/"
+HOMEPAGE="https://www.knot-dns.cz/"
 SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3"
@@ -27,10 +27,11 @@ KNOT_MODULES=(
 IUSE="doc caps +fastparser idn libidn2 systemd +utils ${KNOT_MODULES[@]}"
 
 RDEPEND="
-	>=net-libs/gnutls-3.3:=
 	>=dev-db/lmdb-0.9.15
-	dev-python/lmdb
+	dev-libs/libedit
 	>=dev-libs/userspace-rcu-0.5.4
+	dev-python/lmdb
+	>=net-libs/gnutls-3.3:=
 	caps? ( >=sys-libs/libcap-ng-0.6.4 )
 	dnstap? (
 		dev-libs/fstrm
@@ -40,7 +41,6 @@ RDEPEND="
 		!libidn2? ( net-dns/libidn )
 		libidn2? ( >=net-dns/libidn2-2.0.0 )
 	)
-	dev-libs/libedit
 	systemd? ( >=sys-apps/systemd-229 )
 "
 DEPEND="${RDEPEND}
@@ -50,11 +50,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P/_/-}"
 
-PATCHES=(
-	"${FILESDIR}/${PV}-link-with-libatomic.patch"
-)
-
 src_configure() {
+	local u
 	local my_conf=()
 	for u in "${KNOT_MODULES[@]#+}"; do
 		my_conf+=("$(use_with $u module-$u)")

@@ -3,29 +3,45 @@
 
 EAPI=6
 
-inherit bash-completion-r1 eutils systemd user
+inherit systemd user
 
 DESCRIPTION="High-performance authoritative-only DNS server"
-HOMEPAGE="http://www.knot-dns.cz/"
+HOMEPAGE="https://www.knot-dns.cz/"
 SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dnstap doc caps +fastparser idn systemd"
+
+KNOT_MODULES=(
+	"+dnsproxy"
+	"dnstap"
+	"+noudp"
+	"+onlinesign"
+	"rosedb"
+	"+rrl"
+	"+stats"
+	"+synthrecord"
+	"+whoami"
+)
+IUSE="doc caps +fastparser idn libidn2 systemd +utils ${KNOT_MODULES[@]}"
 
 RDEPEND="
-	>=net-libs/gnutls-3.3:=
 	>=dev-db/lmdb-0.9.15
+	dev-libs/libedit
 	>=dev-libs/userspace-rcu-0.5.4
+	dev-python/lmdb
+	>=net-libs/gnutls-3.3:=
 	caps? ( >=sys-libs/libcap-ng-0.6.4 )
 	dnstap? (
 		dev-libs/fstrm
 		dev-libs/protobuf-c
 	)
-	idn? ( || ( net-dns/libidn >=net-dns/libidn2-2.0.0 ) )
-	dev-libs/libedit
-	systemd? ( sys-apps/systemd )
+	idn? (
+		!libidn2? ( net-dns/libidn )
+		libidn2? ( >=net-dns/libidn2-2.0.0 )
+	)
+	systemd? ( >=sys-apps/systemd-229 )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -35,16 +51,22 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P/_/-}"
 
 src_configure() {
+	local u
+	local my_conf=()
+	for u in "${KNOT_MODULES[@]#+}"; do
+		my_conf+=("$(use_with $u module-$u)")
+	done
+
 	econf \
 		--with-storage="${EPREFIX}/var/lib/${PN}" \
 		--with-rundir="${EPREFIX}/var/run/${PN}" \
-		--with-lmdb \
-		--with-bash-completions="$(get_bashcompdir)" \
 		$(use_enable fastparser) \
 		$(use_enable dnstap) \
 		$(use_enable doc documentation) \
+		$(use_enable utils utilities) \
+		--enable-systemd=$(usex systemd) \
 		$(use_with idn libidn) \
-		--enable-systemd=$(usex systemd)
+		"${my_conf[@]}"
 }
 
 src_compile() {
@@ -63,12 +85,15 @@ src_test() {
 src_install() {
 	default
 
+	rmdir "${D}var/run/${PN}" "${D}var/run/" || die
 	keepdir /var/lib/${PN}
 
 	newinitd "${FILESDIR}/knot.init" knot
-	systemd_dounit "${FILESDIR}/knot.service"
+	if use systemd; then
+		systemd_newunit "${FILESDIR}/knot-1.service" knot
+	fi
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
