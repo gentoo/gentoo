@@ -10,13 +10,22 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
-IUSE="qml"
+IUSE="examples qml"
+REQUIRED_USE="examples? ( qml )"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	qml? ( ~dev-qt/qtdeclarative-${PV} )
+	examples? (
+		~dev-qt/qtwidgets-${PV}
+		~dev-qt/qtwebsockets-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	qt_use_disable_mod qml quick src/src.pro
