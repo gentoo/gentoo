@@ -3,10 +3,10 @@ DESCRIPTION=Element for HTML_QuickForm that emulate a multi-select
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/HTML_QuickForm_advmultiselect
 IUSE=examples
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-HTML_QuickForm-3.2.10 >=dev-php/PEAR-HTML_Common-1.2.5 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_QuickForm_advmultiselect-1.5.1.tgz
 _eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
-_md5_=a5fc1b93de5fdebce388c3a7007811e1
+_md5_=cc3bf098c0e648b01848681e191e3713

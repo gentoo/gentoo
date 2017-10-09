@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Base class for other HTML classes
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/HTML_Common
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=PHP-3.01
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_Common-1.2.5.tgz
 _eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
-_md5_=7f9efd2b57923bed44b83de109691fcc
+_md5_=47ca07ded5897370fb70d8aa368fa5b9

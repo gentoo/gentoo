@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=PEAR MDB combines the PEAR DB and Metabase php database abstraction layers
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/MDB
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=dev-php/PEAR-XML_Parser >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/MDB-1.3.0.tgz
 _eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
-_md5_=5e4b731ca80332e5103267c403f0e767
+_md5_=d5f1bff8207ca903906edce089ee7709
