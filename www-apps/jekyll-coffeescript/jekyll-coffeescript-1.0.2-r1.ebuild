@@ -28,7 +28,5 @@ all_ruby_prepare() {
 }
 
 ruby_add_rdepend ">=dev-ruby/coffee-script-2.2
-	<dev-ruby/coffee-script-3
-	>=dev-ruby/coffee-script-source-1.11.1
-	<dev-ruby/coffee-script-source-1.12"
+	>=dev-ruby/coffee-script-source-1.11.1"
 ruby_add_bdepend "test? ( www-apps/jekyll )"
