@@ -5709,7 +5709,7 @@ dev-perl/DBIx-Safe 1.2.5: Safer access to your database through a DBI database h
 dev-perl/DBIx-SearchBuilder 1.660.0-r1 1.670.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/DBIx-Simple 1.350.0-r1: Very complete easy-to-use OO interface to DBI
 dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
-dev-perl/Daemon-Generic 0.840.0: Framework to provide start/stop/reload for a daemon
+dev-perl/Daemon-Generic 0.840.0 0.850.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
@@ -5719,7 +5719,7 @@ dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.390.0 2.400.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
-dev-perl/Data-Float 0.12.0: details of the floating point data type
+dev-perl/Data-Float 0.12.0 0.13.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0 4.860.0-r1: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
