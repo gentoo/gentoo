@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="bindist connman libproxy networkmanager +ssl"
+IUSE="bindist connman examples libproxy networkmanager +ssl"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -24,6 +24,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	connman? ( net-misc/connman )
 	networkmanager? ( net-misc/networkmanager )
+"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}
+	)
 "
 
 QT5_TARGET_SUBDIRS=(
