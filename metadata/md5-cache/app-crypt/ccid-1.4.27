@@ -4,10 +4,10 @@ DESCRIPTION=CCID free software driver
 EAPI=6
 HOMEPAGE=http://pcsclite.alioth.debian.org/ccid.html
 IUSE=twinserial kobil-midentity +usb
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 )
 SLOT=0
 SRC_URI=http://alioth.debian.org/frs/download.php/file/4218/ccid-1.4.27.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
-_md5_=045787320d1d9d07b71f2c3f65c631d7
+_md5_=63d6ac1e7438787898e6fbbea62e24c2

@@ -4,10 +4,10 @@ DESCRIPTION=Linux kernel laptop_mode user-space utilities
 EAPI=6
 HOMEPAGE=https://github.com/rickysarraf/laptop-mode-tools/wiki
 IUSE=+acpi apm bluetooth scsi
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=net-wireless/wireless-tools sys-apps/iproute2 sys-apps/ethtool sys-apps/hdparm sys-apps/which acpi? ( sys-power/acpid ) apm? ( sys-apps/apmd ) bluetooth? ( net-wireless/bluez:= ) scsi? ( sys-apps/sdparm )
 SLOT=0
 SRC_URI=https://github.com/rickysarraf/laptop-mode-tools/releases/download/1.71/laptop-mode-tools_1.71.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182
-_md5_=09478d2a9ff953f0d1c6d0fbd4f3ed31
+_md5_=97d9ad04232760c5f0c84a77cfb83504
