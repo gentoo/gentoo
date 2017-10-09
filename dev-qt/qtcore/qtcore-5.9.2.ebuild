@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="icu systemd"
+IUSE="examples icu systemd"
 
 DEPEND="
 	dev-libs/double-conversion:=
@@ -23,6 +23,14 @@ DEPEND="
 	systemd? ( sys-apps/systemd:= )
 "
 RDEPEND="${DEPEND}"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}
+	)
+"
+
+PATCHES=( "${FILESDIR}/${PN}-5.9.2-examples.patch" )
 
 QT5_TARGET_SUBDIRS=(
 	src/tools/bootstrap
