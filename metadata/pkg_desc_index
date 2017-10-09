@@ -14601,7 +14601,7 @@ net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records l
 net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that changes infrequently
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.4.5 2.5.3 2.5.3-r1 2.5.4: High-performance authoritative-only DNS server
+net-dns/knot 2.4.5 2.5.5 2.6.0: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33 1.33-r1: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.16-r1 2.0.2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
