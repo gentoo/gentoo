@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-IUSE="qml"
+IUSE="examples qml"
 
 RDEPEND="
 	~dev-qt/qtconcurrent-${PV}
@@ -24,10 +24,16 @@ DEPEND="${RDEPEND}
 	~dev-qt/qtnetwork-${PV}
 "
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples/bluetooth
+)
+
 src_prepare() {
 	sed -i -e 's/nfc//' src/src.pro || die
 
-	qt_use_disable_mod qml quick src/src.pro
+	qt_use_disable_mod qml quick \
+		src/src.pro \
+		examples/bluetooth/bluetooth.pro
 
 	qt5-build_src_prepare
 }
