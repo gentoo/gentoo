@@ -11,13 +11,19 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE=""
+IUSE="examples"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	>=sys-apps/dbus-1.4.20
 "
 RDEPEND="${DEPEND}"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}
+	)
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/dbus
