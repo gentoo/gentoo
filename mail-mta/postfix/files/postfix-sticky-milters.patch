@@ -1,0 +1,11 @@
+--- src/smtpd/smtpd.c	2017-02-19 02:58:21.000000000 +0100
++++ src/smtpd/smtpd.c.new	2017-04-04 14:39:45.788135146 +0200
+@@ -5396,6 +5396,8 @@
+ 	milter_free(state->milters);
+ 	state->milters = 0;
+     }
++    smtpd_input_transp_mask = 
++	input_transp_mask(VAR_INPUT_TRANSP, var_input_transp); 
+ }
+ 
+ 
