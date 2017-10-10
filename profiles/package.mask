@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (10 Oct 2017)
+# This plugin's functions now collide with most Vim 8.0 functions.
+# Masked for removal in 30 days. See bug 589194.
+app-vim/html5
+
 # Jonas Stein <jstein@gentoo.org> (10 Oct 2017)
 # Depends on the AIM service which will be discontinued on 2017-12-15.
 # See also bug #633914. Masked for removal on 2017-12-20
