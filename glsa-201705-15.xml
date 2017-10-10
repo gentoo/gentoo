@@ -5,13 +5,13 @@
   <synopsis>A vulnerability in sudo allows local users to gain root privileges.</synopsis>
   <product type="ebuild">sudo,privilege</product>
   <announced>2017-05-30</announced>
-  <revised>2017-10-07: 3</revised>
+  <revised>2017-10-10: 4</revised>
   <bug>620182</bug>
   <access>local</access>
   <affected>
     <package name="app-admin/sudo" auto="yes" arch="*">
-      <unaffected range="ge">1.8.20_p2</unaffected>
-      <vulnerable range="lt">1.8.20_p2</vulnerable>
+      <unaffected range="ge">1.8.20_p1</unaffected>
+      <vulnerable range="lt">1.8.20_p1</vulnerable>
     </package>
   </affected>
   <background>
@@ -45,7 +45,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.20_p2"
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.20_p1"
     </code>
     
   </resolution>
@@ -58,5 +58,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2017-05-30T07:27:08Z">K_F</metadata>
-  <metadata tag="submitter" timestamp="2017-10-07T14:23:55Z">K_F</metadata>
+  <metadata tag="submitter" timestamp="2017-10-10T00:11:49Z">K_F</metadata>
 </glsa>
