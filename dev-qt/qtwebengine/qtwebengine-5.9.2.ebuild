@@ -22,6 +22,7 @@ RDEPEND="
 	~dev-qt/qtdeclarative-${PV}
 	~dev-qt/qtgui-${PV}
 	~dev-qt/qtnetwork-${PV}
+	~dev-qt/qtprintsupport-${PV}
 	~dev-qt/qtwebchannel-${PV}[qml]
 	dev-libs/expat
 	dev-libs/libevent:=
