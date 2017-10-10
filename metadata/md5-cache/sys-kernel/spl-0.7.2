@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND=dev-lang/perl virtual/awk kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) >=app-portage/elt-patches-20170422
+DESCRIPTION=The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
+EAPI=5
+HOMEPAGE=http://zfsonlinux.org/
+IUSE=custom-cflags debug kernel_linux
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl virtual/awk !sys-devel/spl kernel_linux? ( virtual/modutils )
+RESTRICT=debug? ( strip ) test
+SLOT=0
+SRC_URI=https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.2/spl-0.7.2.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	linux-mod	e77cdec133261f6bfa67560748277269	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=b6e83b4dfff84c2e7dad97ec84ba9b9a
