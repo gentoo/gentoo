@@ -34,3 +34,11 @@ QT5_TARGET_SUBDIRS=(
 	src/imports/location
 	src/plugins/geoservices
 )
+
+src_configure() {
+	# src/plugins/geoservices requires files that are only generated when
+	# qmake is run in the root directory. Bug 633776.
+	mkdir -p "${QT5_BUILD_DIR}" || die
+	qt5_qmake "${QT_BUILD_DIR}"
+	qt5-build_src_configure
+}
