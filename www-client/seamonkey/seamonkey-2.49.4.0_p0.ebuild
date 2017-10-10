@@ -92,24 +92,13 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 RDEPEND="
 	>=dev-libs/nss-3.28.1
 	>=dev-libs/nspr-4.13
-	crypt? ( || (
-		( >=app-crypt/gnupg-2.0
-			|| (
-				app-crypt/pinentry[gtk]
-				app-crypt/pinentry[qt5]
-				app-crypt/pinentry[qt4]
-			)
-		)
-		=app-crypt/gnupg-1.4* )
-		x11-plugins/enigmail
-	)
+	crypt? ( x11-plugins/enigmail )
 	jack? ( virtual/jack )
 "
 
 DEPEND="
 	${RDEPEND}
 	!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( dev-libs/libexecinfo ) ) )
-	crypt? ( dev-lang/perl )
 	amd64? ( ${ASM_DEPEND}
 		virtual/opengl )
 	x86? ( ${ASM_DEPEND}
