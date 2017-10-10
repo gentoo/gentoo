@@ -50,6 +50,6 @@ pkg_postinst() {
 	einfo ' mv "$1.axel" "$1"'
 	einfo
 	einfo 'and then add the following to your make.conf:'
-	einfo ' FETCHCOMMAND='\''/usr/local/bin/fetchwrapper.sh "\${DISTDIR}/\${FILE}.axel" "\${URI}"'\'
+	einfo ' FETCHCOMMAND='\''/usr/local/bin/fetchwrapper.sh "\${DISTDIR}/\${FILE}" "\${URI}"'\'
 	einfo ' RESUMECOMMAND="${FETCHCOMMAND}"'
 }
