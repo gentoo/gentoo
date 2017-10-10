@@ -39,13 +39,18 @@ elif [[ ${PV} == *_p[0-9] ]]; then
 	SMPV="${PV%.[0-9].*}"
 	MOZ_P="${PN}-${MOZ_PV}"
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/thunderbird/releases/${MOZ_PV/${SMPV}/${TB_MAJOR}}"
-	MOZ_GENERATE_LANGPACKS=1
+# the following is for self-rolling localizations
+	#MOZ_GENERATE_LANGPACKS=1
+	#SRC_URI="${SRC_URI}
+	#https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170727.tar.xz"
+# for this one use the localizations pre-rolled upstream for 2.49.1-candidate build 2
+	MOZ_LANGPACK_PREFIX="../../../seamonkey/candidates/2.49.1-candidates/build2/linux-i686/xpi/"
+	MOZ_LANGPACK_SUFFIX=".xpi"
 	S="${WORKDIR}/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}"
 	CHATZILLA_VER="SEA2_48_RELBRANCH"
 	INSPECTOR_VER="DOMI_2_0_17"
 	SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/source/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}.source.tar.xz
-	https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170727.tar.xz
 	https://hg.mozilla.org/chatzilla/archive/${CHATZILLA_VER}.tar.bz2 -> chatzilla-${CHATZILLA_VER}.tar.bz2
 	https://hg.mozilla.org/dom-inspector/archive/${INSPECTOR_VER}.tar.bz2 -> dom-inspector-${INSPECTOR_VER}.tar.bz2
 	"
