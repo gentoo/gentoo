@@ -380,11 +380,6 @@ net-im/skypetab-ng
 www-client/phantomjs
 dev-ruby/poltergeist
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
-# Masked for initial testing.
-=perl-core/Test-Simple-1.302.96
-=virtual/perl-Test-Simple-1.302.96
-
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
 # on boot. Bug #617578
