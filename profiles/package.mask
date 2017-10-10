@@ -33,6 +33,8 @@
 # Depends on the AIM service which will be discontinued on 2017-12-15.
 # See also bug #633914. Masked for removal on 2017-12-20
 net-im/pyaim-t
+net-im/pork
+net-im/reaim
 
 # Aaron Bauman <bman@gentoo.org> (8 October 2017)
 # severely vulnerable and unmaintained sources.
