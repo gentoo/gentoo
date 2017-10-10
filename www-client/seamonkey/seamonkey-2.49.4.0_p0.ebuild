@@ -39,13 +39,18 @@ elif [[ ${PV} == *_p[0-9] ]]; then
 	SMPV="${PV%.[0-9].*}"
 	MOZ_P="${PN}-${MOZ_PV}"
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/thunderbird/releases/${MOZ_PV/${SMPV}/${TB_MAJOR}}"
-	MOZ_GENERATE_LANGPACKS=1
+# the following is for self-rolling localizations
+	#MOZ_GENERATE_LANGPACKS=1
+	#SRC_URI="${SRC_URI}
+	#https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170727.tar.xz"
+# for this one use the localizations pre-rolled upstream for 2.49.1-candidate build 2
+	MOZ_LANGPACK_PREFIX="../../../seamonkey/candidates/2.49.1-candidates/build2/linux-i686/xpi/"
+	MOZ_LANGPACK_SUFFIX=".xpi"
 	S="${WORKDIR}/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}"
 	CHATZILLA_VER="SEA2_48_RELBRANCH"
 	INSPECTOR_VER="DOMI_2_0_17"
 	SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/source/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}.source.tar.xz
-	https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170727.tar.xz
 	https://hg.mozilla.org/chatzilla/archive/${CHATZILLA_VER}.tar.bz2 -> chatzilla-${CHATZILLA_VER}.tar.bz2
 	https://hg.mozilla.org/dom-inspector/archive/${INSPECTOR_VER}.tar.bz2 -> dom-inspector-${INSPECTOR_VER}.tar.bz2
 	"
@@ -87,24 +92,13 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 RDEPEND="
 	>=dev-libs/nss-3.28.1
 	>=dev-libs/nspr-4.13
-	crypt? ( || (
-		( >=app-crypt/gnupg-2.0
-			|| (
-				app-crypt/pinentry[gtk]
-				app-crypt/pinentry[qt5]
-				app-crypt/pinentry[qt4]
-			)
-		)
-		=app-crypt/gnupg-1.4* )
-		x11-plugins/enigmail
-	)
+	crypt? ( x11-plugins/enigmail )
 	jack? ( virtual/jack )
 "
 
 DEPEND="
 	${RDEPEND}
 	!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( dev-libs/libexecinfo ) ) )
-	crypt? ( dev-lang/perl )
 	amd64? ( ${ASM_DEPEND}
 		virtual/opengl )
 	x86? ( ${ASM_DEPEND}
