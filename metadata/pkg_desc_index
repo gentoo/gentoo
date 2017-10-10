@@ -18418,7 +18418,7 @@ www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.1.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit / QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.2.0_p0 2.49.3.0_p0: Seamonkey Web Browser
+www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.4.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
@@ -18472,7 +18472,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performa
 www-servers/mongoose 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.12.1 1.13.3 1.13.4 1.13.5: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.12.1 1.13.3 1.13.4 1.13.5 1.13.6: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
