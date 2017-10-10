@@ -1,10 +1,10 @@
 DEFINED_PHASES=install postinst
 DESCRIPTION=vim spell files: German (de)
 EAPI=6
-HOMEPAGE=https://www.vim.org
-KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~arm ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=amd64 ppc sparc x86 ~arm ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/vim-spell-de-20080213.tar.bz2
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-spell	dcc9ab75ad0c33e288e5feb39a55d2f9
-_md5_=2fefd21dc40bf717b08f95b763865bdf
+_md5_=cddb55e740a589751db97d7d41df22a6

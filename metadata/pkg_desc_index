@@ -2679,11 +2679,11 @@ app-vim/vim-misc 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-multiple-cursors 2.2-r1: vim plugin: Sublime Text's awesome multiple selection feature for Vim
 app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
 app-vim/vim-rest-console 2.3.0 2.4.0 2.5.0 2.6.0: a REST console for vim
-app-vim/vim-spell-cs 20061021: vim spell files: Czech (cs)
+app-vim/vim-spell-cs 20061021 20061021-r1: vim spell files: Czech (cs)
 app-vim/vim-spell-da 20060116: vim spell files: Danish (da)
-app-vim/vim-spell-de 20051008 20080213 20080213-r1: vim spell files: German (de)
+app-vim/vim-spell-de 20080213-r1: vim spell files: German (de)
 app-vim/vim-spell-el 20080402: vim spell files: Greek (el)
-app-vim/vim-spell-en 20060123: vim spell files: English (en)
+app-vim/vim-spell-en 20060123 20060123-r1: vim spell files: English (en)
 app-vim/vim-spell-es 20060208: vim spell files: Spanish (es)
 app-vim/vim-spell-fr 20060121: vim spell files: French (fr)
 app-vim/vim-spell-he 20100312: vim spell files: Hebrew (he)
