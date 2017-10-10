@@ -3,10 +3,10 @@
 
 EAPI=6
 
-VIM_SPELL_LANGUAGE="German"
+VIM_SPELL_LANGUAGE="Czech"
 
 inherit vim-spell
 
-LICENSE="GPL-2"
-KEYWORDS="amd64 ppc sparc x86 ~arm ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+KEYWORDS="~amd64 ~sparc ~x86"
+LICENSE="GPL-2"
