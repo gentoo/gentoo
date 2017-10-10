@@ -21,7 +21,7 @@ SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="bindist strip"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
