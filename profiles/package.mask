@@ -382,7 +382,6 @@ dev-ruby/poltergeist
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
 # Masked for initial testing.
->=dev-perl/Math-BigInt-GMP-1.600.0
 =perl-core/Test-Simple-1.302.96
 =virtual/perl-Test-Simple-1.302.96
 
