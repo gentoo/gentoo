@@ -12,17 +12,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="cpu_flags_x86_aes i2p-hardening libressl static +upnp websocket"
 
-RDEPEND="!static? ( >=dev-libs/boost-1.49[threads]
+# if using libressl, require >=boost-1.65, see #597798
+RDEPEND="!static? ( dev-libs/boost[threads]
 			!libressl? ( dev-libs/openssl:0[-bindist] )
-			libressl? ( dev-libs/libressl )
+			libressl? ( dev-libs/libressl:0
+						>=dev-libs/boost-1.65 )
+			sys-libs/zlib
 			upnp? ( net-libs/miniupnpc )
-			websocket? ( dev-cpp/websocketpp )
 		)"
 DEPEND="${RDEPEND}
-	static? ( >=dev-libs/boost-1.49[static-libs,threads]
+	static? ( dev-libs/boost[static-libs,threads]
 		!libressl? ( dev-libs/openssl:0[static-libs] )
-		libressl? ( dev-libs/libressl[static-libs] )
+		libressl? ( dev-libs/libressl:0[static-libs]
+					>=dev-libs/boost-1.65 )
+		sys-libs/zlib[static-libs]
 		upnp? ( net-libs/miniupnpc[static-libs] ) )
+	websocket? ( dev-cpp/websocketpp )
 	i2p-hardening? ( >=sys-devel/gcc-4.7 )
 	|| ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 )"
 
