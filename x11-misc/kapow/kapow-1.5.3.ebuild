@@ -5,8 +5,8 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="A punch clock program designed to easily keep track of your hours"
-HOMEPAGE="http://gottcode.org/kapow/"
-SRC_URI="http://gottcode.org/${PN}/${P}-src.tar.bz2"
+HOMEPAGE="https://gottcode.org/kapow/"
+SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
