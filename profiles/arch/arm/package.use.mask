@@ -8,7 +8,7 @@ kde-plasma/plasma-meta crypt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Oct 2017)
 # app-misc/ddcutil is not keyworded, bug #627932
-kde-plasma/plasma-workspace brightness-control
+kde-plasma/powerdevil brightness-control
 
 # Patrice Clement <monsieurp@gentoo.org> (24 Sep 2017)
 # Unmask Raspberry Pi support on arm.
