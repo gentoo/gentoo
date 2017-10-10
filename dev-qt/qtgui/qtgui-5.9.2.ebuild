@@ -14,7 +14,7 @@ fi
 # TODO: linuxfb
 
 IUSE="accessibility dbus egl eglfs evdev +gif gles2 ibus
-	jpeg libinput +png tslib tuio +udev vnc +xcb"
+	jpeg +libinput +png tslib tuio +udev vnc +xcb"
 REQUIRED_USE="
 	|| ( eglfs xcb )
 	accessibility? ( dbus xcb )
