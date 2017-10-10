@@ -1,0 +1,41 @@
+From ca407201886875966db91d55c403fe0be3f0f4ca Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Fri, 28 Jul 2017 00:32:42 +0000
+Subject: [PATCH] Fix GTK2 build
+
+R=erg@chromium.org
+
+BUG=749770
+
+Change-Id: If30b1d7e64998d78fb4e2635540ddfe922661391
+Reviewed-on: https://chromium-review.googlesource.com/589826
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Reviewed-by: Elliot Glaysher <erg@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#490162}
+---
+
+diff --git a/chrome/browser/ui/libgtkui/gtk_ui.cc b/chrome/browser/ui/libgtkui/gtk_ui.cc
+index a38c6b8..23f63b6 100644
+--- a/chrome/browser/ui/libgtkui/gtk_ui.cc
++++ b/chrome/browser/ui/libgtkui/gtk_ui.cc
+@@ -1052,11 +1052,20 @@
+   if (display::Display::HasForceDeviceScaleFactor())
+     return display::Display::GetForcedDeviceScaleFactor();
+ 
++#if GTK_MAJOR_VERSION == 2
++  GtkSettings* gtk_settings = gtk_settings_get_default();
++  gint gtk_dpi = -1;
++  g_object_get(gtk_settings, "gtk-xft-dpi", &gtk_dpi, nullptr);
++  const float scale_factor = gtk_dpi / (1024 * kDefaultDPI);
++#else
+   GdkScreen* screen = gdk_screen_get_default();
+   gint scale = gtk_widget_get_scale_factor(fake_window_);
++  DCHECK_GT(scale, 0);
+   gdouble resolution = gdk_screen_get_resolution(screen);
+   const float scale_factor =
+       resolution <= 0 ? scale : resolution * scale / kDefaultDPI;
++#endif
++
+   // Blacklist scaling factors <120% (crbug.com/484400) and round
+   // to 1 decimal to prevent rendering problems (crbug.com/485183).
+   return scale_factor < 1.2f ? 1.0f : roundf(scale_factor * 10) / 10;

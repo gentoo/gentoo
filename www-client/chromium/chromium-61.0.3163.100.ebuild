@@ -17,7 +17,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~x86"
-IUSE="component-build cups gnome-keyring +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
+IUSE="component-build cups gnome-keyring +gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -61,7 +61,6 @@ COMMON_DEPEND="
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3[X]
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
 	x11-libs/libXcursor:=
@@ -87,6 +86,8 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-utils
 	virtual/opengl
 	virtual/ttf-fonts
+	!gtk3? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3[X] )
 	selinux? ( sec-policy/selinux-chromium )
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
 	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
@@ -155,6 +156,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-atk-r1.patch"
 	"${FILESDIR}/${PN}-mojo-dep.patch"
 	"${FILESDIR}/${PN}-gcc5-r1.patch"
+	"${FILESDIR}/${PN}-gtk2.patch"
 )
 
 pre_build_checks() {
@@ -417,6 +419,7 @@ src_configure() {
 	myconf_gn+=" use_cups=$(usex cups true false)"
 	myconf_gn+=" use_gconf=false"
 	myconf_gn+=" use_gnome_keyring=$(usex gnome-keyring true false)"
+	myconf_gn+=" use_gtk3=$(usex gtk3 true false)"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
 
