@@ -19,7 +19,7 @@ IUSE="usb-monitor user-permissions video_cards_nvidia"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="x11-libs/libXrandr
 	 x11-libs/libX11
