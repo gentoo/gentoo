@@ -382,12 +382,6 @@ dev-ruby/poltergeist
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 June 2017)
 # Masked for initial testing.
-# The following masks are technically not part of the Perl 5.26 block,
-# but with the unmasking of Perl 5.26 they become obsolete and can be
-# removed:
-#
->=perl-core/ExtUtils-MakeMaker-7.180.0
->=perl-core/Math-BigInt-1.999.726
 >=dev-perl/Math-BigInt-GMP-1.600.0
 =perl-core/Test-Simple-1.302.96
 =virtual/perl-Test-Simple-1.302.96
