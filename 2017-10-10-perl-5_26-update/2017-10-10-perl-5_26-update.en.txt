@@ -1,0 +1,32 @@
+Title: Perl 5.26 update: possible breakage
+Author: Andreas K. Hüttel <dilfridge@gentoo.org>
+Posted: 2017-10-10
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: >=dev-lang/perl-5.26.0
+
+You have just upgraded to Perl 5.26. This release brings several 
+incompatible changes, as a result of deprecations coming to term
+and of changes in default settings to mitigate a potential
+security issue [1].
+
+While we have made sure that all resulting build failures within 
+Gentoo are fixed, this may not be the case for runtime issues, 
+and certainly can affect third-party code (e.g., "hand-installed" 
+server applications).
+
+Typical errors are:
+* Can't locate inc/... in @INC (you may need to install the inc::... module)
+* error: ... has no member named ‘op_sibling’
+* Unescaped left brace in regex is illegal in ...
+
+Please see the pages [2,3] for details and report bugs if you run
+into problems during or after the Perl update.
+
+General purpose advice on updating Perl can be found on page [4].
+
+[1] https://rt.perl.org/Ticket/Display.html?id=127834
+    https://bugs.gentoo.org/show_bug.cgi?id=589680
+[2] https://wiki.gentoo.org/wiki/Project:Perl/Dot-In-INC-Removal
+[3] https://wiki.gentoo.org/wiki/Project:Perl/5.26_Known_Issues
+[4] https://wiki.gentoo.org/wiki/Perl
