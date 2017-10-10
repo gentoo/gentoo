@@ -29,6 +29,7 @@ src_compile() {
 
 	./bin/nim c koch || die "csources nim failed"
 	./koch boot -d:release $(nim_use_enable readline useGnuReadline) || die "koch boot failed"
+	# build nimble and friends
 	PATH="./bin:$PATH" ./koch tools || die "koch tools failed"
 
 	if use doc; then
@@ -41,13 +42,18 @@ src_test() {
 }
 
 src_install() {
-	./koch install "${ED}/usr" || die "koch install failed"
+	PATH="./bin:$PATH" ./koch install "${ED}/usr" || die "koch install failed"
 	rm -r "${ED}/usr/nim/doc" || die "failed to remove 'doc'"
 
 	dodir /usr/bin
-	local exe
+	exeinto /usr/nim/bin
+
+	local bin_exe
 	for bin_exe in bin/*; do
-		dosym ../nim/${bin_exe} /usr/${bin_exe}
+		# './koch install' installs only 'nim' binary
+		# but not the rest
+		doexe "${bin_exe}"
+		dosym ../nim/"${bin_exe}" /usr/"${bin_exe}"
 	done
 
 	if use doc; then
