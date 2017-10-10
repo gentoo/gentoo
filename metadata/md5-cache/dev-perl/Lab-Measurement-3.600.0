@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Carp dev-perl/Class-ISA >=dev-perl/Class-Method-Modifiers-2.110.0 >=dev-perl/Clone-0.310.0 virtual/perl-Data-Dumper virtual/perl-Encode >=dev-perl/Exception-Class-1.0.0 virtual/perl-Exporter virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/Hook-LexWrap virtual/perl-IO >=dev-perl/IO-Socket-Timeout-0.320.0 dev-perl/List-MoreUtils virtual/perl-Scalar-List-Utils virtual/perl-Math-Complex >=virtual/perl-Module-Load-0.260.0 >=dev-perl/Moose-2.121.300 >=dev-perl/MooseX-Params-Validate-0.180.0 >=dev-perl/PDL-2.7.0 dev-perl/PDL-Graphics-Gnuplot >=dev-perl/Role-Tiny-1.3.4 virtual/perl-Socket dev-perl/Statistics-Descriptive virtual/perl-Storable >=dev-perl/TermReadKey-2.300.0 virtual/perl-Thread-Semaphore virtual/perl-Time-HiRes >=dev-perl/Try-Tiny-0.220.0 >=dev-perl/YAML-LibYAML-0.410.0 virtual/perl-autodie >=dev-perl/namespace-autoclean-0.200.0 virtual/perl-parent sci-visualization/gnuplot virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/File-Slurper virtual/perl-File-Temp dev-perl/Test-Fatal dev-perl/Test-File virtual/perl-Test-Simple dev-perl/Text-Diff dev-perl/aliased ) dev-lang/perl:=
+DESCRIPTION=Measurement control and automation with Perl
+EAPI=6
+HOMEPAGE=http://www.labmeasurement.de/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Class-ISA >=dev-perl/Class-Method-Modifiers-2.110.0 >=dev-perl/Clone-0.310.0 virtual/perl-Data-Dumper virtual/perl-Encode >=dev-perl/Exception-Class-1.0.0 virtual/perl-Exporter virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/Hook-LexWrap virtual/perl-IO >=dev-perl/IO-Socket-Timeout-0.320.0 dev-perl/List-MoreUtils virtual/perl-Scalar-List-Utils virtual/perl-Math-Complex >=virtual/perl-Module-Load-0.260.0 >=dev-perl/Moose-2.121.300 >=dev-perl/MooseX-Params-Validate-0.180.0 >=dev-perl/PDL-2.7.0 dev-perl/PDL-Graphics-Gnuplot >=dev-perl/Role-Tiny-1.3.4 virtual/perl-Socket dev-perl/Statistics-Descriptive virtual/perl-Storable >=dev-perl/TermReadKey-2.300.0 virtual/perl-Thread-Semaphore virtual/perl-Time-HiRes >=dev-perl/Try-Tiny-0.220.0 >=dev-perl/YAML-LibYAML-0.410.0 virtual/perl-autodie >=dev-perl/namespace-autoclean-0.200.0 virtual/perl-parent sci-visualization/gnuplot dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AK/AKHUETTEL/Lab-Measurement-3.600.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=951cfd94f733f5a577ddc6f85fe379a4
