@@ -17159,7 +17159,7 @@ sys-apps/ipmiutil 3.0.6 3.0.7: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 4.9.0 4.10.0 4.11.0 4.12.0 4.13.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.0.9-r1 1.1.0 1.2.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
-sys-apps/iucode_tool 2.1.1 2.1.2: tool to manipulate Intel X86 and X86-64 processor microcode update collections
+sys-apps/iucode_tool 2.1.1 2.1.2 2.2: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 1.15.5-r1 2.0.3 2.0.4 9999: Keyboard and console utilities
 sys-apps/kcheck 0.0.2 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.4-r2 2.0.14 2.0.15 9999: Load another kernel from the currently executing Linux kernel
@@ -17406,7 +17406,7 @@ sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20150412 20160228 20170515: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20150412 20160228 20170515 20170921: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10 8.07.14 8.07.14-r1: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r1 0.4.1-r2: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
