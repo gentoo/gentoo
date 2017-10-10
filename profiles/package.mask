@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (10 Oct 2017)
+# Depends on the AIM service which will be discontinued on 2017-12-15.
+# See also bug #633914. Masked for removal on 2017-12-20
+net-im/pyaim-t
+
 # Aaron Bauman <bman@gentoo.org> (8 October 2017)
 # severely vulnerable and unmaintained sources.
 # Masked for removal in 30 days. Bug #627924
