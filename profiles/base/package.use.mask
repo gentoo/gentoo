@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (10 Oct 2017)
+# Depends on old ffmpeg-2, which no longer exists in the repo.
+<=media-tv/tvheadend-4.0.9 ffmpeg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
 # Depends on masked net-libs/libtorrent-rasterbar-1.1
 # bugs #580760, #630364
