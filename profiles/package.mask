@@ -60,7 +60,7 @@ sys-kernel/tuxonice-sources
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #629236
 x11-libs/compizconfig-backend-kconfig4
 
-# Patrice Clement <elvis@magic.io> (01 Oct 2017)
+# Patrice Clement <monsieurp@gentoo.org> (01 Oct 2017)
 # Mask Atom betas for testing.
 app-editors/atom:beta
 
