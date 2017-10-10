@@ -1,0 +1,39 @@
+From f0a874f9bd86504840a7bdbf0a0c07bcd0ea8c29 Mon Sep 17 00:00:00 2001
+From: Michael Lass <bevan@bi-co.net>
+Date: Wed, 20 Sep 2017 21:54:32 +0200
+Subject: [PATCH] multipathd: fix build without systemd
+
+do_sd_notify contains a call to sd_notify which is unknown if USE_SYSTEMD is
+undefined. In this case, do_sd_notify is never called anyway, so embed the
+entire function into an #ifdef USE_SYSTEMD.
+
+This fixes a regression introduced in 88ddca5.
+
+Signed-off-by: Michael Lass <bevan@bi-co.net>
+---
+ multipathd/main.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/multipathd/main.c b/multipathd/main.c
+index 8049da22..bbe14771 100644
+--- a/multipathd/main.c
++++ b/multipathd/main.c
+@@ -169,6 +169,7 @@ sd_notify_status(void)
+ 	return NULL;
+ }
+ 
++#ifdef USE_SYSTEMD
+ static void do_sd_notify(enum daemon_status old_state)
+ {
+ 	/*
+@@ -181,6 +182,7 @@ static void do_sd_notify(enum daemon_status old_state)
+ 		return;
+ 	sd_notify(0, sd_notify_status());
+ }
++#endif
+ 
+ static void config_cleanup(void *arg)
+ {
+-- 
+2.14.1
+
