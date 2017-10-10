@@ -20,7 +20,10 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="app-arch/unzip"
 
-RDEPEND=">=virtual/jre-1.8"
+RDEPEND="
+	|| ( dev-java/oracle-jre-bin:1.8[javafx]
+		 dev-java/oracle-jdk-bin:1.8[javafx] )
+"
 
 S="${WORKDIR}"
 
