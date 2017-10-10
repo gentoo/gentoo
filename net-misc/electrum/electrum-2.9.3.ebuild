@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 LINGUAS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR vi_VN zh_CN"
 
-IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt4 sync trustedcoin_com vkb"
+IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt4 sync trezor trustedcoin_com vkb"
 
 for lingua in ${LINGUAS}; do
 	IUSE+=" linguas_${lingua}"
@@ -58,6 +58,7 @@ RDEPEND="
 		dev-python/PyQt4[X,${PYTHON_USEDEP}]
 	)
 	ncurses? ( dev-lang/python )
+	trezor? ( app-crypt/trezorctl[${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -121,7 +122,6 @@ src_prepare() {
 	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' electrum || die
 
 	local plugin
-	# trezor requires python trezorlib module
 	# keepkey requires trezor
 	for plugin in  \
 		$(usex audio_modem     '' audio_modem          ) \
@@ -129,11 +129,10 @@ src_prepare() {
 		$(usex digitalbitbox   '' digitalbitbox        ) \
 		$(usex email           '' email_requests       ) \
 		$(usex greenaddress_it '' greenaddress_instant ) \
-		hw_wallet \
 		ledger \
 		keepkey \
 		$(usex sync            '' labels               ) \
-		trezor  \
+		$(usex trezor          '' trezor               ) \
 		$(usex trustedcoin_com '' trustedcoin          ) \
 		$(usex vkb             '' virtualkeyboard      ) \
 	; do

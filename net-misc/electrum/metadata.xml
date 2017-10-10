@@ -22,6 +22,7 @@
 		<flag name="greenaddress_it">Enable plugin to verify GreenAddress.it instant transactions</flag>
 		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
 		<flag name="sync">Enable plugin to sync wallet metadata across multiple Electrum clients</flag>
+		<flag name="trezor">Enable plugin to use trezor harware wallet</flag>
 		<flag name="trustedcoin_com">Enable plugin to use two-factor service by TrustedCoin.com</flag>
 		<flag name="vkb">Enable plugin for virtual keyboard</flag>
 	</use>
