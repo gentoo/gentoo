@@ -7573,6 +7573,7 @@ sys-apps/qingy:consolekit - Enable native consolekit support
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
 sys-apps/razercfg:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
 sys-apps/razercfg:qt4 - Installs a qt UI. Requires dev-python/pyside
+sys-apps/rng-tools:nistbeacon - Enable NIST beacon entropy support
 sys-apps/roccat-tools:input_devices_roccat_ryosmkfx - Enable support for Ryos Mk FX keyboard.
 sys-apps/roccat-tools:input_devices_roccat_skeltr - Enable support for Skeltr keyboard.
 sys-apps/roccat-tools:input_devices_roccat_sova - Enable support for Sova keyboard.

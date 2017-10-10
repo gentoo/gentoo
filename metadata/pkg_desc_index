@@ -17256,7 +17256,7 @@ sys-apps/restartd 0.2.2: A daemon for checking your running and not running proc
 sys-apps/restorecond 2.7 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 0.5.2 0.6.0-r1: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
-sys-apps/rng-tools 5-r2 6: Daemon to use hardware random number generators
+sys-apps/rng-tools 5-r2 6 6.1: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0 2.5.0.0 2.5.1.0 2.6.1.0: skarnet.org's small and secure supervision software suite
@@ -17792,7 +17792,7 @@ sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio 
 sys-fs/mtd-utils 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15 4.0.17 4.0.18 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1-r3: A FUSE filesystem providing access to MTP devices
-sys-fs/multipath-tools 0.5.0-r1 0.6.4-r1 0.7.1 0.7.2: Device mapper target autoconfig
+sys-fs/multipath-tools 0.5.0-r1 0.6.4-r1 0.7.1 0.7.2 0.7.3: Device mapper target autoconfig
 sys-fs/ncdu 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23: Open source read-write NTFS driver that runs under FUSE

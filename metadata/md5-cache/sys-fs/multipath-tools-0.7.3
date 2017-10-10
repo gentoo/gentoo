@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare pretend setup unpack
+DEPEND=dev-libs/json-c dev-libs/libaio dev-libs/userspace-rcu >=sys-fs/lvm2-2.02.45 >=virtual/udev-171 sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd ) virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Device mapper target autoconfig
+EAPI=6
+HOMEPAGE=http://christophe.varoqui.free.fr/
+IUSE=systemd rbd
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/json-c dev-libs/libaio dev-libs/userspace-rcu >=sys-fs/lvm2-2.02.45 >=virtual/udev-171 sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=http://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=0.7.3;sf=tgz -> multipath-tools-0.7.3.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=fb81f8651b8dc728c97dc979f980762b
