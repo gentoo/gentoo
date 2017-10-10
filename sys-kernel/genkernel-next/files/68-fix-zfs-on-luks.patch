@@ -1,0 +1,20 @@
+diff --git a/defaults/linuxrc b/defaults/linuxrc
+index 1fd6155..d6da2c4 100755
+--- a/defaults/linuxrc
++++ b/defaults/linuxrc
+@@ -295,13 +295,14 @@ start_iscsi
+ sdelay
+ 
+ start_volumes
+-zfs_start_volumes
+ 
+ setup_keymap
+ 
+ # Initialize LUKS root device except for livecd's
+ is_livecd || start_luks
+ 
++zfs_start_volumes
++
+ # Initialize resume from hibernation
+ is_livecd || resume_init
+
