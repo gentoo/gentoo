@@ -11,7 +11,7 @@ PARCH=${P/_}
 
 #HPN_PATCH="${PARCH}-hpnssh14v12.tar.xz"
 SCTP_PATCH="${PN}-7.6_p1-sctp.patch.xz"
-LDAP_PATCH="${PN}-lpk-7.5p1-0.3.14.patch.xz"
+LDAP_PATCH="${PN}-lpk-7.6p1-0.3.14.patch.xz"
 X509_VER="11.0" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.openssh.org/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+https://dev.gentoo.org/~polynomial-c/${SCTP_PATCH}}
 	${HPN_PATCH:+hpn? ( mirror://gentoo/${HPN_PATCH} )}
-	${LDAP_PATCH:+ldap? ( mirror://gentoo/${LDAP_PATCH} )}
+	${LDAP_PATCH:+ldap? ( https://dev.gentoo.org/~polynomial-c/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( http://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
 	"
 
