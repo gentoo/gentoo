@@ -45,11 +45,3 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 	prune_libtool_files
 }
-
-multilib_src_install_all() {
-	einstalldocs
-	docinto html
-	dodoc docs/*.html
-	insinto /usr/share/doc/${PF}/pdf
-	doins docs/libfaac.pdf
-}
