@@ -4,6 +4,15 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
+# Requires unstable dependency dev-qt/qtspeech.
+kde-apps/konqueror speech
+kde-apps/kpimtextedit speech
+kde-apps/ktp-text-ui speech
+kde-apps/okular speech
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal mdb
