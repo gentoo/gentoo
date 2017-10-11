@@ -13264,7 +13264,7 @@ media-libs/sratom 0.4.4 0.4.6 0.6.0: Library for serialising LV2 atoms to/from R
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.4.4-r1 4.5.0 4.5.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
-media-libs/suil 0.8.2 0.8.4: Lightweight C library for loading and wrapping LV2 plugin UIs
+media-libs/suil 0.8.2 0.8.4 0.10.0: Lightweight C library for loading and wrapping LV2 plugin UIs
 media-libs/svgalib 1.9.25-r4 1.9.25-r5: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2-r1: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.9.1-r2 1.11.1 1.11.1-r1: A library for reading and editing audio meta data

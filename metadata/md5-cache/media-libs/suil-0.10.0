@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=>=media-libs/lv2-1.12.0 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 ) || ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DESCRIPTION=Lightweight C library for loading and wrapping LV2 plugin UIs
+EAPI=6
+HOMEPAGE=http://drobilla.net/software/suil/
+IUSE=doc gtk qt5
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=>=media-libs/lv2-1.12.0 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 )
+SLOT=0
+SRC_URI=http://download.drobilla.net/suil-0.10.0.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=66840644042f5fa1fb94b89e19ac35b0
