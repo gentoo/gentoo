@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-<!-- maintainer-needed -->	
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+  </maintainer>
 	<use>
 		<flag name="desktop-utils">Build and install lumina's desktop-utils</flag>
 	</use>
