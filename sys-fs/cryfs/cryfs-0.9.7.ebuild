@@ -10,7 +10,7 @@ DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
 SLOT=0
-IUSE="test update-check"
+IUSE="libressl test update-check"
 
 LICENSE="LGPL-3 BSD-2 MIT"
 # cryfs - LGPL-3
@@ -31,7 +31,8 @@ RDEPEND=">=dev-libs/boost-1.56:=
 	>=dev-libs/crypto++-5.6.3:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:=
-	dev-libs/openssl:0="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
