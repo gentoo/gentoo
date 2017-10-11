@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (11 Oct 2017)
+# This package should now be provided entirely by dev-lang/perl,
+# stable perl 5.24 provides Unicode-Collate-1.140.0
+# testing perl 5.26 provides Unicode-Collate-1.190.0
+# This should only be unmasked if you're locking to perl-5.24 and need
+# a newer version of virtual/perl-Unicode-Collate
+# If you're upgrading to perl-5.26, please do:
+#   emerge -C perl-core/Unicode-Collate
+# See bug #634040
+<perl-core/Unicode-Collate-1.190.0-r99
+
 # Patrice Clement <monsieurp@gentoo.org> (10 Oct 2017)
 # This plugin's functions now collide with most Vim 8.0 functions.
 # Masked for removal in 30 days. See bug 589194.
