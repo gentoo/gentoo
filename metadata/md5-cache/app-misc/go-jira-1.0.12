@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=A simple JIRA commandline client in Go
+EAPI=6
+HOMEPAGE=https://github.com/Netflix-Skunkworks/go-jira
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/Netflix-Skunkworks/go-jira/archive/v1.0.12.tar.gz -> go-jira-1.0.12.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=f7ca157b8c8195d04db08cf22153352c
