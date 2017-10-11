@@ -178,7 +178,7 @@ src_test() {
 }
 
 src_install() {
-	if use server && ! use client; then 
+	if use server && ! use client; then
 		cd gdb/gdbserver || die
 	fi
 	default
@@ -197,7 +197,7 @@ src_install() {
 
 	# Don't install docs when building a cross-gdb
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
-		rm -r "${ED}"/usr/share/{doc,info,locale} || die
+		rm -rf "${ED}"/usr/share/{doc,info,locale} || die
 		local f
 		for f in "${ED}"/usr/share/man/*/* ; do
 			if [[ ${f##*/} != ${CTARGET}-* ]] ; then
