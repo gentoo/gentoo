@@ -1,0 +1,12 @@
+DEFINED_PHASES=pretend
+DEPEND=test? ( dev-util/cppunit )
+DESCRIPTION=C++ library offering some basic functionality for platform-independent programs
+EAPI=6
+HOMEPAGE=https://lib.filezilla-project.org/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=mirror://sourceforge/filezilla/libfilezilla-0.11.0.tar.bz2 http://download.filezilla-project.org/libfilezilla/libfilezilla-0.11.0.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=bff18b33f07ad75f5f436d5396bc2432
