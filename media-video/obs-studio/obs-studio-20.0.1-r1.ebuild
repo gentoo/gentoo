@@ -62,6 +62,11 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-20.0.1-fix-curl-crash.patch"
+	"${FILESDIR}/${PN}-ImageMagick-header-path.patch"
+)
+
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
 src_configure() {
@@ -75,6 +80,7 @@ src_configure() {
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
+		-DOBS_VERSION_OVERRIDE=${PV}
 		-DUNIX_STRUCTURE=1
 	)
 	cmake-utils_src_configure

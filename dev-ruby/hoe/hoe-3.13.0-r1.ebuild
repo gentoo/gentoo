@@ -23,6 +23,7 @@ IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.3:5 )"
 
+ruby_add_bdepend ">=dev-ruby/rdoc-4.0" # Needed for rdoc call in compile, RDEPEND could have it merged too late.
 ruby_add_rdepend ">=dev-ruby/rake-0.8.7 >=dev-ruby/rdoc-4.0"
 
 all_ruby_prepare() {
