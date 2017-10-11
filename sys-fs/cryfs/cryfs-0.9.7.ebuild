@@ -20,8 +20,6 @@ LICENSE="LGPL-3 BSD-2 MIT"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~johu/distfiles/${P}-spdlog.patch.xz"
