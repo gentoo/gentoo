@@ -13084,7 +13084,7 @@ media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysti
 media-libs/libkate 0.3.7-r1 0.4.1-r1 0.4.1-r2 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.0.9-r1: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
-media-libs/liblo 0.26 0.28 0.29: Lightweight OSC (Open Sound Control) implementation
+media-libs/liblo 0.29: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.5.0 0.5.0-r1: A library for the manipulation of RDF file in LADSPA plugins
 media-libs/liblscp 0.5.5 0.5.6 0.5.7 0.5.8: C++ library for the Linux Sampler control protocol
