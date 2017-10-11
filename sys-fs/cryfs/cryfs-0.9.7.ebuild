@@ -23,7 +23,8 @@ if [[ "${PV}" == 9999 ]] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
+	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~johu/distfiles/${P}-spdlog.patch.xz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}"
 fi
@@ -36,14 +37,16 @@ RDEPEND=">=dev-libs/boost-1.56:=
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
+PATCHES=( "${WORKDIR}/${P}-spdlog.patch" )
+
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# remove tests that require internet access to comply with Gentoo policy
 	sed -i -e '/CurlHttpClientTest.cpp/d' -e '/FakeHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
 
 	# remove non-applicable warning
 	sed -i -e '/WARNING! This is a debug build. Performance might be slow./d' src/cryfs-cli/Cli.cpp || die
-
-	cmake-utils_src_prepare
 }
 
 src_configure() {
