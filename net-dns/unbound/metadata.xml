@@ -5,15 +5,6 @@
     <email>mschiff@gentoo.org</email>
     <name>Marc Schiffbauer</name>
   </maintainer>
-  <maintainer type="person">
-    <email>nabeken@tknetworks.org</email>
-    <description>Proxied developer. Please CC on bugs.</description>
-    <name>TANABE Ken-ichi</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <longdescription lang="en">
   Unbound is a validating, recursive, and caching DNS resolver.
 
