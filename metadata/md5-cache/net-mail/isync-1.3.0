@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=sys-libs/db-4.2:* zlib? ( sys-libs/zlib ) sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6:* ) libressl? ( dev-libs/libressl ) )
+DESCRIPTION=MailDir mailbox synchronizer
+EAPI=6
+HOMEPAGE=http://isync.sourceforge.net/
+IUSE=compat sasl libressl ssl zlib
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/db-4.2:* zlib? ( sys-libs/zlib ) sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6:* ) libressl? ( dev-libs/libressl ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/isync/isync/1.3.0/isync-1.3.0.tar.gz
+_md5_=358914d898b858abb1e30860729397c6
