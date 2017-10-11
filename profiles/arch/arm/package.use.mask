@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (09 Oct 2017)
-# kde-plasma/plasma-vault is not keyworded, which depends on also
-# not yet keyworded sys-fs/cryfs, bugs #633880 and #633882
-kde-plasma/plasma-meta crypt
-
-# Andreas Sturmlechner <asturm@gentoo.org> (09 Oct 2017)
-# app-misc/ddcutil is not keyworded, bug #627932
-kde-plasma/powerdevil brightness-control
+# Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
+# Required dependency dev-qt/qtspeech is not keyworded.
+kde-apps/konqueror speech
+kde-apps/kpimtextedit speech
+kde-apps/ktp-text-ui speech
+kde-apps/okular speech
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
 
 # Patrice Clement <monsieurp@gentoo.org> (24 Sep 2017)
 # Unmask Raspberry Pi support on arm.
