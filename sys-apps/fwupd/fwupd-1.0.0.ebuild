@@ -16,7 +16,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="colorhug dell doc elf +man systemd test uefi uefi_labels"
-REQUIRED_USE="uefi_labels? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	uefi_labels? ( ${PYTHON_REQUIRED_USE} )
+"
 
 RDEPEND="
 	app-crypt/gpgme
@@ -76,6 +78,7 @@ src_configure() {
 		-Denable-doc="$(usex doc true false)"
 		-Denable-man="$(usex man true false)"
 		-Denable-libelf="$(usex elf true false)"
+		-Denable-synaptics="$(usex dell true false)"
 		-Denable-systemd="$(usex systemd true false)"
 		# requires libtbtfwu which is not packaged yet
 		-Denable-thunderbolt=false
