@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -40,6 +40,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-gcc44.patch \
 		"${FILESDIR}"/${P}-gcc47.patch \
+		"${FILESDIR}"/${P}-gcc6.patch \
 		"${FILESDIR}"/${P}-libpng15.patch
 }
 
