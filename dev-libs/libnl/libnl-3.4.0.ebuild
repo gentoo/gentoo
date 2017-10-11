@@ -14,7 +14,6 @@ DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel int
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 SRC_URI="
 	https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz
-	https://dev.gentoo.org/~jer/${P}.tar.xz
 "
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
