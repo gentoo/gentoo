@@ -1,0 +1,64 @@
+--- a/app/src/processing/app/Base.java	2016-03-13 22:15:01.741451380 -0400
++++ b/app/src/processing/app/Base.java	2016-03-14 19:18:48.020801765 -0400
+@@ -747,6 +747,8 @@
+     } catch (IOException e) {
+       if (activeEditor != null) {
+         activeEditor.statusError(e);
++      } else {
++        e.printStackTrace();
+       }
+     }
+   }
+--- a/arduino-core/src/processing/app/Platform.java	2016-03-17 00:29:33.841099694 -0400
++++ b/arduino-core/src/processing/app/Platform.java	2016-03-17 00:29:56.909802119 -0400
+@@ -145,7 +145,7 @@
+   }
+ 
+   static {
+-    loadLib(new File(BaseNoGui.getContentFile("lib"), System.mapLibraryName("listSerialsj")));
++    System.loadLibrary("listSerialsj");
+   }
+ 
+   private static void loadLib(File lib) {
+--- a/app/src/cc/arduino/packages/formatter/AStyleInterface.java	2016-03-17 23:58:11.616069086 -0400
++++ b/app/src/cc/arduino/packages/formatter/AStyleInterface.java	2016-03-17 23:58:27.564864023 -0400
+@@ -41,7 +41,7 @@
+       loadLib(Base.getContentFile(System.mapLibraryName("msvcp100")));
+       loadLib(Base.getContentFile(System.mapLibraryName("msvcr100")));
+     }
+-    loadLib(new File(Base.getContentFile("lib"), System.mapLibraryName("astylej")));
++    System.loadLibrary("astylej");
+   }
+ 
+   private static void loadLib(File lib) {
+--- a/arduino-core/src/processing/app/linux/Platform.java	2016-03-18 00:34:37.179690507 -0400
++++ b/arduino-core/src/processing/app/linux/Platform.java	2016-03-18 00:34:38.536672987 -0400
+@@ -37,7 +37,6 @@
+   // TODO Need to be smarter here since KDE people ain't gonna like that GTK.
+   //      It may even throw a weird exception at 'em for their trouble.
+   public void setLookAndFeel() throws Exception {
+-    GTKLookAndFeelFixer.installGtkPopupBugWorkaround();
+   }
+ 
+ 
+--- a/arduino-core/src/processing/app/BaseNoGui.java	2016-03-26 19:12:50.769791536 -0400
++++ b/arduino-core/src/processing/app/BaseNoGui.java	2016-03-26 19:17:57.352927746 -0400
+@@ -161,8 +161,17 @@
+     return prefs;
+   }
+ 
++  static public boolean isAppDir(String name) {
++    String dirs[] = name.split("//*", 3);
++    if (dirs.length == 0) {
++       return false;
++    }
++    int index = dirs.length >= 2 && dirs[0].equals("") ? 1 : 0;
++    return dirs[index].equals("lib") || dirs[index].equals("dist");
++  }
++
+   static public File getContentFile(String name) {
+-    String appDir = System.getProperty("APP_DIR");
++    String appDir = System.getProperty(isAppDir(name) ? "APP_DIR" : "CORE_DIR");
+     if (appDir == null || appDir.length() == 0) {
+       appDir = currentDirectory;
+     }

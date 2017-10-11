@@ -1,0 +1,32 @@
+--- src/arduino.cc/builder/hardware/platform.keys.rewrite.txt	2017-03-20 12:00:43.000000000 +0200
++++ src/arduino.cc/builder/hardware/platform.keys.rewrite.txt	2017-04-28 12:26:43.871057235 +0300
+@@ -2,10 +2,10 @@
+ new.0.compiler.path={runtime.tools.avr-gcc.path}/bin/
+ 
+ old.1.tools.avrdude.cmd.path={runtime.ide.path}/hardware/tools/avr/bin/avrdude
+-new.1.tools.avrdude.cmd.path={path}/bin/avrdude
++new.1.tools.avrdude.cmd.path=avrdude
+ 
+ old.2.tools.avrdude.config.path={runtime.ide.path}/hardware/tools/avr/etc/avrdude.conf
+-new.2.tools.avrdude.config.path={path}/etc/avrdude.conf
++new.2.tools.avrdude.config.path=/etc/avrdude.conf
+ 
+ old.3.compiler.path={runtime.ide.path}/hardware/tools/gcc-arm-none-eabi-4.8.3-2014q1/bin/
+ new.3.compiler.path={runtime.tools.arm-none-eabi-gcc.path}/bin/
+--- src/arduino.cc/builder/hardware/platform.txt	2017-03-20 12:00:43.000000000 +0200
++++ src/arduino.cc/builder/hardware/platform.txt	2017-04-28 12:26:01.930523559 +0300
+@@ -1,11 +1,11 @@
+ # ctags
+ # ------------------------------
+-tools.ctags.path={runtime.tools.ctags.path}
+-tools.ctags.cmd.path={path}/ctags
++tools.ctags.path=
++tools.ctags.cmd.path=ctags
+ tools.ctags.pattern="{cmd.path}" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives "{source_file}"
+ 
+ # additional entries
+-tools.avrdude.path={runtime.tools.avrdude.path}
++tools.avrdude.path=
+ 
+ preproc.macros.flags=-w -x c++ -E -CC
+ #preproc.macros.compatibility_flags={build.mbed_api_include} {build.nRF51822_api_include} {build.ble_api_include} {compiler.libsam.c.flags} {compiler.arm.cmsis.path} {build.variant_system_include}
