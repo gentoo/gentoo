@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 MY_P="${PN}5-${PV/_}"
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE="debug nls"
 
-DEPEND=">=sys-libs/ncurses-5.2
+DEPEND=">=sys-libs/ncurses-5.2:=
 	>=net-im/pidgin-2.7.0
 	>=dev-libs/glib-2.16.0
 	>=dev-libs/libsigc++-2.2.0"
