@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Helper scripts useful for both OpenRC and systemd
+EAPI=6
+HOMEPAGE=https://packages.debian.org/sid/init-system-helpers
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD GPL-2+
+RDEPEND=!<sys-apps/openrc-0.33
+SLOT=0
+SRC_URI=http://http.debian.net/debian/pool/main/i/init-system-helpers/init-system-helpers_1.49.tar.xz
+_md5_=bfcd32d375fe5de9e097185ad4366bd0
