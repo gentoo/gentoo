@@ -293,7 +293,7 @@ app-xemacs/xemacs-packages-all
 # Bernard Cafarelli <voyageur@gentoo.org> (04 Aug 2017)
 # Temporary mask as current net-ftp/filezilla does not compile
 # with it, bug #626292
-=dev-libs/libfilezilla-0.10.0
+>=dev-libs/libfilezilla-0.10.0
 
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jul 2017)
 # Its pre release so better to mask it
