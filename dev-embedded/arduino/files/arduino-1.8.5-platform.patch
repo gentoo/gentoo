@@ -1,0 +1,30 @@
+--- a/hardware/arduino/avr/platform.txt	2017-04-27 18:06:26.137846661 +0300
++++ b/hardware/arduino/avr/platform.txt	2017-04-28 12:25:13.179663295 +0300
+@@ -18,14 +18,14 @@
+ compiler.warning_flags.all=-Wall -Wextra
+ 
+ # Default "compiler.path" is correct, change only if you want to override the initial value
+-compiler.path={runtime.tools.avr-gcc.path}/bin/
++compiler.path=
+ compiler.c.cmd=avr-gcc
+ compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -flto -fno-fat-lto-objects
+ compiler.c.elf.flags={compiler.warning_flags} -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections
+ compiler.c.elf.cmd=avr-gcc
+ compiler.S.flags=-c -g -x assembler-with-cpp -flto -MMD
+ compiler.cpp.cmd=avr-g++
+-compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto
++compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -fno-devirtualize -fno-use-cxa-atexit
+ compiler.ar.cmd=avr-gcc-ar
+ compiler.ar.flags=rcs
+ compiler.objcopy.cmd=avr-objcopy
+@@ -91,8 +91,8 @@
+ # AVR Uploader/Programmers tools
+ # ------------------------------
+ 
+-tools.avrdude.path={runtime.tools.avrdude.path}
+-tools.avrdude.cmd.path={path}/bin/avrdude
++tools.avrdude.path=
++tools.avrdude.cmd.path=avrdude
+ tools.avrdude.config.path={path}/etc/avrdude.conf
+ 
+ tools.avrdude.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
