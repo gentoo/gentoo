@@ -12394,7 +12394,7 @@ mail-mta/msmtp 1.6.6: An SMTP client and SMTP plugin for mail user agents such a
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4 1.06-r5: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.2_p1 6.0.2_p1-r1 6.0.2_p1-r2: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.1.2-r2 3.1.6 3.2.2 3.2.3 3.3_pre20171009: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.1.6 3.2.2 3.2.3 3.3_pre20171009: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
@@ -15735,7 +15735,7 @@ net-vpn/tor 0.3.0.10 0.3.0.11 0.3.1.7 0.3.2.2_alpha: Anonymizing overlay network
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20171005 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard 0.0.20171011 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
