@@ -25,12 +25,13 @@ pulseaudio qsui qtmedia scrobbler sid sndfile soxr stereo tray udisks +vorbis wa
 
 REQUIRED_USE="gnome? ( dbus ) udisks? ( dbus )"
 
+# remove qt-5 subslot when minimum qt-5 version >= 5.9
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtcore:5=
+	dev-qt/qtgui:5=
+	dev-qt/qtnetwork:5=
+	dev-qt/qtwidgets:5=
+	dev-qt/qtx11extras:5=
 	media-libs/taglib
 	x11-libs/libX11
 	aac? ( media-libs/faad2 )
@@ -42,7 +43,7 @@ RDEPEND="
 	)
 	cue? ( media-libs/libcue )
 	curl? ( net-misc/curl )
-	dbus? ( dev-qt/qtdbus:5 )
+	dbus? ( dev-qt/qtdbus:5= )
 	enca? ( app-i18n/enca )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:= )
@@ -63,12 +64,12 @@ RDEPEND="
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
 	projectm? (
-		dev-qt/qtgui:5[-gles2]
-		dev-qt/qtopengl:5
+		dev-qt/qtgui:5=[-gles2]
+		dev-qt/qtopengl:5=
 		media-libs/libprojectm
 	)
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
-	qtmedia? ( dev-qt/qtmultimedia:5 )
+	qtmedia? ( dev-qt/qtmultimedia:5= )
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
 	sid? ( >=media-libs/libsidplayfp-1.1.0 )
@@ -81,7 +82,7 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
+	dev-qt/linguist-tools:5=
 "
 
 DOCS=( AUTHORS ChangeLog README )
