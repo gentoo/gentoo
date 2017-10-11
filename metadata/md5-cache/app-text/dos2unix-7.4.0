@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!app-text/hd2u virtual/libintl nls? ( sys-devel/gettext ) test? ( virtual/perl-Test-Simple ) dev-lang/perl
+DESCRIPTION=Convert DOS or MAC text files to UNIX format or vice versa
+EAPI=6
+HOMEPAGE=http://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/
+IUSE=debug nls test linguas_da linguas_de linguas_eo linguas_es linguas_fr linguas_hu linguas_ja linguas_nb linguas_nl linguas_pl linguas_pt_BR linguas_ru linguas_sr linguas_sv linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris
+LICENSE=BSD-2
+RDEPEND=!app-text/hd2u virtual/libintl
+SLOT=0
+SRC_URI=http://www.xs4all.nl/~waterlan/dos2unix/dos2unix-7.4.0.tar.gz mirror://sourceforge/dos2unix/dos2unix-7.4.0.tar.gz
+_eclasses_=l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=86cc43083509070faffe0aff2cf1c995
