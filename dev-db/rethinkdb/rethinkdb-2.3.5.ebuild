@@ -34,6 +34,7 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.5-gcc6.patch
+	"${FILESDIR}"/${PN}-2.3.5-libressl.patch
 )
 
 src_prepare() {
