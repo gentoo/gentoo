@@ -1,28 +1,25 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite?"
 
 inherit bash-completion-r1 distutils-r1 eutils multilib
 
-MY_PN="${PN/linkchecker/LinkChecker}"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="Check websites for broken links"
-HOMEPAGE="https://wummel.github.com/linkchecker/ https://pypi.python.org/pypi/linkchecker/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/linkcheck/linkchecker"
+SRC_URI="https://github.com/linkcheck/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~ppc-macos ~x64-solaris"
+KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-solaris"
 IUSE="gnome sqlite X"
 
 RDEPEND="
 	virtual/python-dnspython[${PYTHON_USEDEP}]
-	<dev-python/requests-2.15[${PYTHON_USEDEP}]
+	<dev-python/requests-2.15.0[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]
@@ -36,17 +33,13 @@ DEPEND="
 
 RESTRICT="test"
 
-S="${WORKDIR}/${MY_P}"
-
 python_prepare_all() {
 	local PATCHES=(
-		"${FILESDIR}"/${PN}-9.2-unbundle.patch
-		"${FILESDIR}"/${P}-bash-completion.patch
-		"${FILESDIR}"/${P}-desktop.patch
-		"${FILESDIR}"/${P}-requests-check.patch
-		)
-
-	emake -C doc/html
+		"${FILESDIR}/${PN}-9.2-unbundle.patch"
+		"${FILESDIR}/${PN}-9.3-bash-completion.patch"
+		"${FILESDIR}/${PN}-9.3-desktop.patch"
+		"${FILESDIR}/${PN}-9.3.1-build-fix.patch"
+	)
 
 	distutils-r1_python_prepare_all
 }
