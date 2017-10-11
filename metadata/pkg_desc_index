@@ -4895,7 +4895,7 @@ dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libmspack 0.5_alpha 0.5_alpha-r1: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.1-r1 1.7.1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 3.2.28 3.2.29 3.3.0 3.4.0_rc1 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 3.2.28 3.2.29 3.3.0 3.4.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.5: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.3: base64 and time library, written in C
 dev-libs/libntru 0.4.1 0.4.1-r1: C Implementation of NTRUEncrypt
@@ -14524,7 +14524,7 @@ net-analyzer/vnstat 1.17 1.17-r1: Console-based network traffic monitor that kee
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.7 2.4.1-r3 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.7 2.4.1-r3 2.4.2 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
@@ -17716,7 +17716,7 @@ sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p
 sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815 3_p20160822: An entirely re-designed and re-implemented Unionfs
 sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010 0_pre20161219 0_pre20170130 0_pre20170220 0_pre20170313 0_pre20170612: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
-sys-fs/avfs 1.0.1 1.0.2 1.0.3 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
+sys-fs/avfs 1.0.4 1.0.5: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
@@ -18713,7 +18713,7 @@ x11-libs/libXpm 3.5.12: X.Org Xpm library
 x11-libs/libXpresent 1.0.0: X Present Extension C Library
 x11-libs/libXrandr 1.5.1: X.Org Xrandr library
 x11-libs/libXrender 0.9.10: X.Org Xrender library
-x11-libs/libXres 1.0.7: X.Org XRes library
+x11-libs/libXres 1.0.7 1.2.0: X.Org XRes library
 x11-libs/libXt 1.1.4 1.1.5: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11: X.Org Xv library
