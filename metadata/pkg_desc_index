@@ -5478,7 +5478,7 @@ dev-perl/AtExit 2.10.0-r1 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r1: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r1: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r1: Perl extension for Sound Mixer control
+dev-perl/Audio-Mixer 0.700.0-r1 0.700.0-r2: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 0.930.0-r1 0.980.0: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
@@ -12209,7 +12209,7 @@ kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.0.2 3.0.2-r1: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
-kde-misc/yakuake 3.0.4: Quake-style terminal emulator based on konsole
+kde-misc/yakuake 3.0.4 3.0.4-r1: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.4.1_p20170701: Getting things done application by KDE
 kde-plasma/bluedevil 5.10.5 5.11.0: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.10.5 5.11.0: Breeze visual style for the Plasma desktop
@@ -13054,7 +13054,7 @@ media-libs/libextractor 1.3-r1: Library to extract metadata from files of arbitr
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libffado 2.3.0: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface for decoding and encoding audio data using vorbis or speex
-media-libs/libfpx 1.3.1_p6: A library for manipulating FlashPIX images
+media-libs/libfpx 1.3.1_p6 1.3.1_p10: A library for manipulating FlashPIX images
 media-libs/libfreehand 0.1.1 0.1.2 9999: Library for import of FreeHand drawings
 media-libs/libggi 2.2.2: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libggigcp 1.0.2: Library for General Graphics Interface
@@ -14801,7 +14801,7 @@ net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
-net-irc/konversation 1.7.2: A user friendly IRC Client
+net-irc/konversation 1.7.2 1.7.2-r1: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20170801214745 5.0_pre20171001143427 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
@@ -17590,7 +17590,7 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r4 1.10.3-r
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r1 1.06.95-r2 1.07.1: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.25.1-r1 2.26.1 2.27-r1 2.28.1 2.29 2.29.1 9999: Tools necessary to build programs
+sys-devel/binutils 2.25.1-r1 2.26.1 2.27-r1 2.28.1 2.29 2.29.1 2.29.1-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7.2-r1 7.3 7.3.1 8.1 8.2.1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r3: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27 2.28 2.28.1 2.29 2.29.1: binutils package for building 64bit kernels on HPPA
