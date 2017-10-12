@@ -1,0 +1,27 @@
+From 6390829e5e60019b464d1fe83fb448ea54604170 Mon Sep 17 00:00:00 2001
+From: gregor herrmann <gregoa@debian.org>
+Date: Wed, 26 Mar 2014 05:44:25 +1300
+Subject: Fix building with clang
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=94186
+Bug: https://bugs.debian.org/742537
+---
+ Mix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Mix.c b/Mix.c
+index 108153e..8b4284b 100644
+--- a/Mix.c
++++ b/Mix.c
+@@ -78,7 +78,7 @@ close_mixer() {
+ #ifdef DEBUG
+   fprintf(stderr, "close_mixer()\n");
+ #endif
+-  if (mixer_fd < 0) return;
++  if (mixer_fd < 0) return(0);
+   close(mixer_fd);
+   init_flag = 0;
+   mixer_fd = -1;
+-- 
+2.14.2
+
