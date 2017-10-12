@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools
+inherit autotools
 
 STUPID_NUM="3977"
 DESCRIPTION="Serial Communication Program"
