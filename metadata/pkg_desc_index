@@ -1979,7 +1979,7 @@ app-misc/vlock 2.2.3 2.2.3-r1: A console screen locker
 app-misc/vzstats 0.3.2 0.4 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 5.2.7 5.3.4 6.0.0 6.0.1: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
-app-misc/when 1.1.36: Minimalistic personal calendar program
+app-misc/when 1.1.36 1.1.37: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.16: Helpful utility to attack Repetitive Strain Injury (RSI)
@@ -8487,7 +8487,7 @@ dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects int
 dev-python/python-ctags 1.2.3 1.2.4: Exuberant Ctags indexing python bindings
 dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, based on PyTunes
 dev-python/python-daemon 1.6-r1 2.1.1: Library to implement a well-behaved Unix daemon process
-dev-python/python-dateutil 2.2 2.4.2-r1 2.6.0 2.6.1: Extensions to the standard Python datetime module
+dev-python/python-dateutil 2.6.1: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.28: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.0.0 2.3.0 2.6.0 2.7.0: Python bindings to the Designate API.
@@ -8723,7 +8723,7 @@ dev-python/sepolgen 1.2.3 2.6 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.12 1.19: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0 17.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10: Allow customization of the process title
-dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 36.0.1 36.5.0 9999: Collection of extensions to Distutils
+dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 36.0.1 36.5.0 36.6.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.1-r1 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.15.0 1.15.5 1.15.6: package to manage versions by scm tags via setuptools
@@ -13637,7 +13637,7 @@ media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files usi
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.9 8.13.10 8.13.11 8.13.12: A program to convert abc files to Postscript files
-media-sound/abcmidi 2017.09.12 2017.09.19: Programs for processing ABC music notation files
+media-sound/abcmidi 2017.09.12 2017.09.19 2017.10.11: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -14543,7 +14543,7 @@ net-dialup/linux-atm 2.5.0 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
-net-dialup/minicom 2.6 2.7 2.7-r1 2.7.1: Serial Communication Program
+net-dialup/minicom 2.7.1: Serial Communication Program
 net-dialup/moserial 3.0.10 3.0.11: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
@@ -18344,7 +18344,7 @@ www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browse
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.6.4 4.7.14 4.8.1 4.8.5 4.8.9: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nextcloud 11.0.4 11.0.5 12.0.2 12.0.3: Personal cloud that runs on your own server
-www-apps/nikola 7.2.0 7.6.3-r1 7.8.8: A static website and blog generator
+www-apps/nikola 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 5.0.23: OTRS is an Open source Ticket Request System
