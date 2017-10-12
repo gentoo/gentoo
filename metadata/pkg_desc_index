@@ -602,7 +602,7 @@ app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntool 0.6-r1 0.8: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.4.0 1.5.0: A PKCS #11 module for OpenPGP smartcards
-app-crypt/seahorse 3.20.0 3.20.0-r1: A GNOME application for managing encryption keys
+app-crypt/seahorse 3.20.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
