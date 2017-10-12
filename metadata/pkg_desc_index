@@ -19614,7 +19614,7 @@ xfce-extra/xfce4-vala 4.10.3-r3: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 1.1.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.2: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.5.12 0.6.0: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.8.8 0.8.9: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-weather-plugin 0.8.8 0.8.9 0.8.10: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.3 2.1.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
