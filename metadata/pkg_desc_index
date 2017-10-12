@@ -10473,7 +10473,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.57 2.60.3 2.67 2.71 2.73.1 2.78 2.80 2.81: Extensible continuous integration server
+dev-util/jenkins-bin 2.73.1 2.73.2 2.81 2.84: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.0 2.9.1: Graphical debugger interface
@@ -14625,7 +14625,7 @@ net-dns/s6-dns 2.1.0.0 2.2.0.0 2.2.0.1: suite of DNS client programs and librari
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.5.1-r2 1.5.10 1.6.3 1.6.4 1.6.6: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.5.1-r2 1.5.10 1.6.3 1.6.4 1.6.6 1.6.7: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
