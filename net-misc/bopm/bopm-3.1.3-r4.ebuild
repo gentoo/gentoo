@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-remove-njabl.patch
 	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-quarantine-bad-pid-file.patch
 )
 
 pkg_setup() {
@@ -52,7 +53,7 @@ src_install() {
 	# If anybody wants libopm, please install net-libs/libopm
 	rm -r "${ED}"usr/$(get_libdir) "${ED}"usr/include || die
 
-	newinitd "${FILESDIR}"/bopm.init.d-r1 ${PN}
+	newinitd "${FILESDIR}"/bopm.init.d-r2 ${PN}
 	newconfd "${FILESDIR}"/bopm.conf.d-r1 ${PN}
 
 	dodir /var/log/bopm
