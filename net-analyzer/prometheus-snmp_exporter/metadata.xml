@@ -6,6 +6,6 @@
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">prometheus/prometheus-snmp_exporter</remote-id>
+		<remote-id type="github">prometheus/snmp_exporter</remote-id>
 	</upstream>
 </pkgmetadata>
