@@ -1,11 +1,11 @@
-DEFINED_PHASES=configure unpack
+DEFINED_PHASES=configure install unpack
 DEPEND=ssl? ( dev-libs/openssl:0= ) system-capstone? ( dev-libs/capstone:0= ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
-DESCRIPTION=Advanced command line hexadecimal editor and more
+DESCRIPTION=unix-like reverse engineering framework and commandline tools
 EAPI=6
 HOMEPAGE=http://www.radare.org
-IUSE=ssl +system-capstone
+IUSE=ssl +system-capstone zsh-completion
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= ) system-capstone? ( dev-libs/capstone:0= )
 SLOT=0
-_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
-_md5_=ad3fbcc4fa9dd414a7abdd6e1c960c24
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	git-r3	52a888802d25387c2c74cb845d1219bc	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=7f0bd4c0ba99f87db2d72c2a168780f7
