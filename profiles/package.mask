@@ -167,11 +167,6 @@ dev-perl/PerlIO-via-symlink
 # Unfortunately broken esp. with USE=python. Bugs #623780, #631064
 =sci-geosciences/qgis-2.18.12-r100
 
-# Michael Palimaka <kensington@gentoo.org> (11 Sep 2017)
-# Requires dead Qt 4. Dead upstream. Fails to build with new x11-libs/qscintilla.
-# Masked for removal in 30 days. Bug #628224.
-app-editors/qwriter
-
 # Patrice Clement <monsieurp@gentoo.org> (09 Sep 2017)
 # Python 3 port is almost complete with version 0.6.0. Users might run into
 # minor bumps here and there which is why the mask is still in place for the
