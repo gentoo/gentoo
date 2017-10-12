@@ -250,10 +250,6 @@ sci-libs/linux-gpib firmware
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
 
-# Markus Meier <maekke@gentoo.org> (09 May 2013)
-# unkeyworded deps for x11-misc/lightdm
-x11-misc/lightdm kde
-
 # Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
 # dev-util/google-perftools is not keyworded for arm
 >=dev-libs/libmemcached-0.50 tcmalloc
@@ -378,8 +374,8 @@ net-libs/libproxy kde
 net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-4 stable
-dev-vcs/subversion kde
+# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+dev-vcs/subversion kwallet
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
