@@ -114,7 +114,7 @@ DEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
-if [[ ${PN} != qttest && (${PN} != qtwebkit && ${QT5_MINOR_VERSION} -ge 9) ]]; then
+if [[ (${PN} != qttest && ${PN} != qtwebkit) || (${PN} == qtwebkit && ${QT5_MINOR_VERSION} -lt 9) ]]; then
 	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 fi
 RDEPEND="
