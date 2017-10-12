@@ -1,0 +1,25 @@
+From 3263b47db2d0aab78d6a6fbc99682ac9b5ef2f2e Mon Sep 17 00:00:00 2001
+From: Eike Hein <hein@kde.org>
+Date: Wed, 21 Jun 2017 06:36:26 +0900
+Subject: Don't commit on focus loss.
+
+---
+ src/irc/channel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/irc/channel.cpp b/src/irc/channel.cpp
+index a431c80..a5c313e 100644
+--- a/src/irc/channel.cpp
++++ b/src/irc/channel.cpp
+@@ -292,7 +292,7 @@ Channel::Channel(QWidget* parent, const QString& _name) : ChatWindow(parent)
+     connect(nicknameCombobox,SIGNAL (activated(int)),this,SLOT(nicknameComboboxChanged()));
+ 
+     if(nicknameCombobox->lineEdit())
+-        connect(nicknameCombobox->lineEdit(), SIGNAL (editingFinished()),this,SLOT(nicknameComboboxChanged()));
++        connect(nicknameCombobox->lineEdit(), SIGNAL (returnPressed()),this,SLOT(nicknameComboboxChanged()));
+ 
+ 
+     connect(&userhostTimer,SIGNAL (timeout()),this,SLOT (autoUserhost()));
+-- 
+cgit v0.11.2
+
