@@ -33,7 +33,7 @@ media-plugins/gst-plugins-meta modplug vaapi
 
 # Lars Wendler <polynomial-c@gentoo.org> (09 May 2014)
 # Masked kde USE flag until bug #509892 is fixed
-dev-vcs/subversion kde
+dev-vcs/subversion kwallet
 
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156
