@@ -80,11 +80,9 @@ games-arcade/jumpnbump kde
 kde-apps/katepart handbook
 kde-frameworks/kdelibs handbook policykit
 net-libs/libproxy kde
-net-voip/ekiga kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-x11-misc/lightdm kde
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-python/PyQt5
