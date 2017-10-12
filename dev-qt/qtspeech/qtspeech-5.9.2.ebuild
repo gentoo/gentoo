@@ -14,7 +14,7 @@ fi
 IUSE=""
 
 RDEPEND="
-	app-accessibility/speech-dispatcher
+	>=app-accessibility/speech-dispatcher-0.8.7
 	~dev-qt/qtcore-${PV}
 "
 DEPEND="${RDEPEND}"
