@@ -1319,7 +1319,7 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
-app-emulation/kompose 1.1.0 1.2.0: Tool to move from docker-compose to Kubernetes
+app-emulation/kompose 1.1.0 1.2.0 1.3.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r3 1.36.5: Tools for accessing, inspect and modifying virtual machine (VM) disk images
@@ -10569,7 +10569,7 @@ dev-util/quilt 0.50 0.63 0.65 9999: quilt patch manager
 dev-util/radare2 1.1.0 1.2.0 1.3.0 1.4.0 1.4.0-r1 1.6.0 2.0.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.4: RATS - Rough Auditing Tool for Security
-dev-util/rbtools 0.7.9 0.7.10: Command line tools for use with Review Board
+dev-util/rbtools 0.7.10: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.16 1.0.1 1.0.2: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.1 2.6.2 2.6.3 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
@@ -16667,7 +16667,7 @@ sci-mathematics/pymc3 3.1: Bayesian Modeling and Probabilistic Machine Learning 
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.5: Educational tool for relational algebra
-sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
+sci-mathematics/rkward 0.6.1 0.6.5 0.6.5_p20170420: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143 1.0.153: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
