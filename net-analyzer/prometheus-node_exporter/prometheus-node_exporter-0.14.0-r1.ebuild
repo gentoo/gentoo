@@ -38,7 +38,7 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin node_exporter
+	dobin node_exporter/node_exporter
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
 	popd || die
 	keepdir /var/lib/node_exporter /var/log/node_exporter
