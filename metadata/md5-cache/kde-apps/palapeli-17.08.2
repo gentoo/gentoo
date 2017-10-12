@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=kde-apps/libkdegames-4.14.3:4 >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-3.7.2 dev-util/automoc virtual/pkgconfig >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto handbook? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets ) dev-lang/perl >=dev-qt/designer-4.8.5:4 >=dev-qt/qtcore-4.8.5:4[ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 kde-frameworks/kdelibs:4
+DESCRIPTION=KDE jigsaw puzzle game
+EAPI=6
+HOMEPAGE=https://www.kde.org/applications/games/palapeli/
+IUSE=debug +handbook
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=kde-apps/libkdegames-4.14.3:4 kde-frameworks/oxygen-icons handbook? ( kde-frameworks/kdelibs:4[handbook] ) dev-lang/perl >=dev-qt/designer-4.8.5:4 >=dev-qt/qtcore-4.8.5:4[ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 kde-frameworks/kdelibs:4
+SLOT=4/17.08
+SRC_URI=mirror://kde/stable/applications/17.08.2/src/palapeli-17.08.2.tar.xz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	4d211d7614f303710fca59db6ec12c88	kde4-base	4dd1bbb7aed9ca9a21e3dc940cbd2ce7	kde4-functions	5d5c723ca3cbd3a92b826a68c3729969	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=233f0eace1f82276ecb2be8d2cfbf455
