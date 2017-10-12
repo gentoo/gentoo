@@ -109,8 +109,8 @@ media-libs/gegl umfpack
 net-misc/connman l2tp pptp
 
 # Michael Palimaka <kensington@gentoo.org> (11 May 2015)
-# KDE is not stable on arm
-www-client/qupzilla kde
+# kde-frameworks/kwallet is not stable on arm
+www-client/qupzilla kwallet
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch

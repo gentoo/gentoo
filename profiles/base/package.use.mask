@@ -216,15 +216,6 @@ mate-base/mate bluetooth
 app-editors/emacs cairo
 app-editors/emacs-vcs cairo
 
-# Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
-# Requires unreleased dependency dev-qt/qtspeech.
-kde-apps/konqueror speech
-kde-apps/kpimtextedit speech
-kde-apps/ktp-text-ui speech
-kde-apps/okular speech
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
-
 # Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
 # lldb fails to build in the current RC, and needs a lot of minor fixes.
 # It's no longer available in -9999 line, and it won't be in 3.9.0
