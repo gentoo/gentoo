@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Tool for creating snapshots and remote backups of btrfs subvolumes
+EAPI=6
+HOMEPAGE=https://digint.ch/btrbk/
+IUSE=+pv
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-lang/perl net-misc/openssh pv? ( sys-apps/pv ) >=sys-fs/btrfs-progs-3.18.2 <sys-fs/btrfs-progs-4.13.2
+SLOT=0
+SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.25.1.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=7a18dc07b7e2af5d7f180e00a6222976
