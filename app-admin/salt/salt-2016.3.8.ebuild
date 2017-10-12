@@ -37,7 +37,6 @@ RDEPEND="sys-apps/pciutils
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
-
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
 	openssl? (
 		dev-libs/openssl:*[-bindist]
@@ -85,16 +84,28 @@ DOCS=( README.rst AUTHORS )
 REQUIRED_USE="|| ( raet zeromq )"
 RESTRICT="x86? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2016.3.5-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.3.1-dont-realpath-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.3.4-test-nonexist-dirs.patch"
+	"${FILESDIR}/${PN}-2016.3.4-dont-test-ordering.patch"
+)
+
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network}_test.py || die
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py || die
 
 	# apparently libcloud does not know about this?
 	rm tests/unit/cloud/clouds/dimensiondata_test.py || die
 
 	# seriously? "ValueError: Missing (or not readable) key file: '/home/dany/PRIVKEY.pem'"
 	rm tests/unit/cloud/clouds/gce_test.py || die
+
+	# needs network access
+	rm tests/unit/modules/boto_{vpc,elb,secgroup}_test.py || die
+	rm tests/unit/states/boto_vpc_test.py || die
+	rm tests/unit/transport/{zeromq,tcp,req}_test.py || die
 }
 
 python_install_all() {
