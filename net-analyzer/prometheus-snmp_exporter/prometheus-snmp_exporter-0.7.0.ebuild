@@ -41,7 +41,7 @@ src_install() {
 	dobin snmp_exporter/snmp_exporter
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
 	insinto /etc/snmp_exporter
-	doins snmp.yml
+	newins snmp.yml snmp.yml.example
 	popd || die
 	keepdir /var/lib/snmp_exporter /var/log/snmp_exporter
 	fowners ${PN}:${PN} /var/lib/snmp_exporter /var/log/snmp_exporter
