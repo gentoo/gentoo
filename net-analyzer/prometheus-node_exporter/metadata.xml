@@ -6,6 +6,6 @@
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">prometheus/prometheus-node_exporter</remote-id>
+		<remote-id type="github">prometheus/node_exporter</remote-id>
 	</upstream>
 </pkgmetadata>
