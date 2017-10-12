@@ -6,7 +6,7 @@ EAPI=6
 inherit systemd
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/digint/btrbk.git"
+	EGIT_REPO_URI="git://dev.tty0.ch/btrbk.git"
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""

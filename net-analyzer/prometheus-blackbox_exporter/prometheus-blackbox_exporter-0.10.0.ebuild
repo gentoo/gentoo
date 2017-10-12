@@ -4,14 +4,14 @@
 EAPI=6
 inherit user golang-build golang-vcs-snapshot
 
-EGO_PN="github.com/prometheus/snmp_exporter"
+EGO_PN="github.com/prometheus/blackbox_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-SNMP_EXPORTER_COMMIT="9147920"
+BLACKBOX_EXPORTER_COMMIT="75681e3"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Prometheus exporter for snmp metrics"
-HOMEPAGE="https://github.com/prometheus/snmp_exporter"
+DESCRIPTION="Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP"
+HOMEPAGE="https://github.com/prometheus/blackbox_exporter"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -26,25 +26,25 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "s/{{.Revision}}/${SNMP_EXPORTER_COMMIT}/" src/${EGO_PN}/.promu.yml || die
+	sed -i -e "s/{{.Revision}}/${BLACBOX_EXPORTER_COMMIT}/" src/${EGO_PN}/.promu.yml || die
 }
 
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix snmp_exporter || die
+	GOPATH="${S}" promu build -v --prefix blackbox_exporter || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin snmp_exporter/snmp_exporter
-	dodoc {README,CHANGELOG,CONTRIBUTING}.md
-	insinto /etc/snmp_exporter
-	newins snmp.yml snmp.yml.example
+	dobin blackbox_exporter/blackbox_exporter
+	dodoc {README,CONFIGURATION}.md blackbox.yml
+	insinto /etc/blackbox_exporter
+	newins example.yml blackbox.yml.example
 	popd || die
-	keepdir /var/lib/snmp_exporter /var/log/snmp_exporter
-	fowners ${PN}:${PN} /var/lib/snmp_exporter /var/log/snmp_exporter
+	keepdir /var/lib/blackbox_exporter /var/log/blackbox_exporter
+	fowners ${PN}:${PN} /var/lib/blackbox_exporter /var/log/blackbox_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
