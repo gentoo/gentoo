@@ -418,7 +418,7 @@ src_install() {
 	newconfd "${FILESDIR}"/xenstored.confd xenstored
 	newconfd "${FILESDIR}"/xenconsoled.confd xenconsoled
 	newinitd "${FILESDIR}"/xendomains.initd-r2 xendomains
-	newinitd "${FILESDIR}"/xenstored.initd xenstored
+	newinitd "${FILESDIR}"/xenstored.initd-r1 xenstored
 	newinitd "${FILESDIR}"/xenconsoled.initd xenconsoled
 	newinitd "${FILESDIR}"/xencommons.initd xencommons
 	newconfd "${FILESDIR}"/xencommons.confd xencommons
