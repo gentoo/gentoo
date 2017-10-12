@@ -1055,7 +1055,6 @@ app-editors/nvi 1.81.6-r4 1.81.6-r6 1.81.6-r7: Vi clone
 app-editors/padre 1.0.0 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.12.2-r1 1.14.1 1.16.0-r1 1.18.2: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
-app-editors/qwriter 0.1.9 0.1.9-r2: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.9.7 0.9.8: Simple Qt-based XML editor
 app-editors/retext 7.0.0 7.0.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
@@ -2336,7 +2335,6 @@ app-text/jo 1.1: JSON output from a shell
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.6.2: BibTeX editor by KDE to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
-app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.11 0.4.13: A tool to crop PDF files
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
@@ -3196,7 +3194,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 2016.4.4 2017.1.2 2017.1.3 2017.2.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.0.2 1.0.3: A general purpose tile map editor
+dev-games/tiled 1.0.3: A general purpose tile map editor
 dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
@@ -5349,7 +5347,7 @@ dev-ml/onanomsg 1.0-r1: nanomsg bindings for OCaml
 dev-ml/opam 1.3.1-r1: A source-based package manager for OCaml
 dev-ml/opam-file-format 2.0.0_beta3: Parser and printer for the opam file syntax
 dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
-dev-ml/ounit 2.0.0: Unit testing framework for OCaml
+dev-ml/ounit 2.0.0 2.0.5: Unit testing framework for OCaml
 dev-ml/pa_bench 112.06.00: Syntax extension writing inline benchmarks
 dev-ml/pa_ounit 113.00.00: Syntax extension that helps writing in-line test in ocaml
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
@@ -9036,7 +9034,6 @@ dev-qt/qdoc 5.6.2 5.7.1 5.9.2: Qt documentation generator
 dev-qt/qt-creator 4.3.1 4.4.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.6.2_p0-r1 5.7.1_p0 5.9.2_p201710050733: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
-dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
 dev-qt/qt3d 5.7.1-r1 5.9.2: The 3D module for the Qt5 framework
 dev-qt/qt3support 4.8.6-r1 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.6-r1 4.8.7: The network bearer plugins for the Qt toolkit
@@ -10483,7 +10480,6 @@ dev-util/kdevelop-php 5.1.1 5.1.2: PHP plugin for KDevelop
 dev-util/kdevelop-python 5.1.1 5.1.2: Python plugin for KDevelop
 dev-util/kdevplatform 5.1.1 5.1.2: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
-dev-util/kscope 1.9.4-r2: Source Editing Environment based on Qt
 dev-util/kup 0.3.4-r1: kernel.org uploader tool
 dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11 1.13-r1: A graphical front-end for GCC's coverage testing tool gcov
@@ -10510,7 +10506,6 @@ dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2 5.0.
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2-r1: A set of base plugins for Molecule
-dev-util/monkeystudio 1.9.0.4-r2: A cross platform Qt 4 IDE
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
@@ -10627,7 +10622,6 @@ dev-util/txt2regex 0.8-r3: A Regular Expression wizard that converts human sente
 dev-util/umockdev 0.8.11: Mock hardware devices for creating unit tests
 dev-util/uncrustify 0.59 0.64 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10 2.11: remove #ifdef'ed lines from a file while otherwise leaving the file alone
-dev-util/universalindentgui 1.2.0-r3: Cross platform GUI for several code formatters, beautifiers and indenters
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0 9999: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
@@ -15002,7 +14996,6 @@ net-libs/phodav 2.1 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.5.1 2.6: Open source SIP, Media, and NAT Traversal Library
 net-libs/polarssl 1.3.9 1.3.9-r1: Cryptographic library for embedded systems
 net-libs/ptlib 2.10.11: Network focused portable C++ class library providing high level functions
-net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
 net-libs/qxmpp 0.8.0 0.9.3-r1 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
@@ -18022,7 +18015,6 @@ sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.49: command-line utility to show process environment
-sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.12 3.3.12-r1: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.21-r3 23.0 23.1: A set of tools that use the proc filesystem
@@ -18510,7 +18502,6 @@ x11-apps/mesa-progs 8.2.0 8.3.0 9999: Mesa's OpenGL utility and demo programs (g
 x11-apps/mkfontdir 1.0.7: create an index of X font files in a directory
 x11-apps/mkfontscale 1.1.1 1.1.2: create an index of scalable font files for X
 x11-apps/oclock 1.0.3: round X clock
-x11-apps/python-whiteboard 20101012-r1: Build and operate a electronic whiteboard Wiimote and IR Pen
 x11-apps/radeontop 1.0-r1 9999: Utility to view Radeon GPU utilization
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5: X.Org rstart application

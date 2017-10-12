@@ -2642,24 +2642,6 @@ dev-qt/qt-creator:valgrind - Add support for memory debugging using dev-util/val
 dev-qt/qt-creator:webengine - Use dev-qt/qtwebengine to view documentation
 dev-qt/qt-creator:winrt - Build plugin for WinRT devices
 dev-qt/qt-meta:qt3support - Enable the Qt3Support library for Qt4
-dev-qt/qt-mobility:bluetooth - Enable Bluetooth support in QtConnectivity and QtSystemInfo modules
-dev-qt/qt-mobility:connectivity - Build the QtConnectivity module
-dev-qt/qt-mobility:contacts - Build the QtContacts module
-dev-qt/qt-mobility:feedback - Build the QtFeedback module
-dev-qt/qt-mobility:gallery - Build the QtGallery module
-dev-qt/qt-mobility:location - Build the QtLocation module
-dev-qt/qt-mobility:messaging - Build the QtMessaging module
-dev-qt/qt-mobility:multimedia - Build the QtMultimediaKit module
-dev-qt/qt-mobility:networkmanager - Enable NetworkManager support in QtBearer and QtSystemInfo modules
-dev-qt/qt-mobility:organizer - Build the QtOrganizer module
-dev-qt/qt-mobility:publishsubscribe - Build the QtPublishSubscribe module
-dev-qt/qt-mobility:pulseaudio - Enable PulseAudio support in QtMultimediaKit module
-dev-qt/qt-mobility:qml - Build QML bindings
-dev-qt/qt-mobility:sensors - Build the QtSensors module
-dev-qt/qt-mobility:serviceframework - Build the QtServiceFramework module
-dev-qt/qt-mobility:systeminfo - Build the QtSystemInfo module
-dev-qt/qt-mobility:tools - Build various useful tools (e.g.: qcrmlgen, servicexmlgen, vsexplorer, ...)
-dev-qt/qt-mobility:versit - Build the QtVersit module
 dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qt3support:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
@@ -2945,7 +2927,6 @@ dev-util/sysdig:modules - Build kernel modules needed for tracing local events. 
 dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-apps/systemd running as the init system.
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
-dev-util/universalindentgui:html - Add support for HTML files
 dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/bzr-gtk:gpg - Support signing with GnuPG.
 dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
