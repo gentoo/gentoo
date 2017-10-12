@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex exif "" NO_LIBEXIF=1) $(usex gif "" NO_GIFLIB=1)
+	emake V=1 HAVE_LIBEXIF=$(usex exif 1 0) HAVE_GIFLIB=$(usex gif 1 0)
 }
 
 src_install() {
