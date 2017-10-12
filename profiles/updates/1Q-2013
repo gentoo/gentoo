@@ -25,7 +25,6 @@ move x11-libs/qt-declarative dev-qt/qtdeclarative
 move x11-libs/qt-demo dev-qt/qtdemo
 move x11-libs/qt-gui dev-qt/qtgui
 move x11-libs/qt-meta dev-qt/qt-meta
-move x11-libs/qt-mobility dev-qt/qt-mobility
 move x11-libs/qt-multimedia dev-qt/qtmultimedia
 move x11-libs/qt-opengl dev-qt/qtopengl
 move x11-libs/qt-qt3support dev-qt/qt3support
