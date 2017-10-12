@@ -425,13 +425,6 @@ net-wireless/cpyrit-cuda
 # Mask experimental software
 =mail-mta/postfix-3.3*
 
-# Davide Pesavento <pesa@gentoo.org> (25 Feb 2017)
-# Library name changed in 2.10, breaking many consumers.
-# Needs full revdep testing.
->=dev-python/qscintilla-python-2.10
->=x11-libs/qscintilla-2.10
-=app-editors/juffed-0.10_p20160323
-
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
 # Use gstreamer:1.0 with media-plugins/gst-plugins-libav
