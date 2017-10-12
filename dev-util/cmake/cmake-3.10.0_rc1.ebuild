@@ -23,6 +23,7 @@ RDEPEND="
 	app-crypt/rhash
 	>=app-arch/libarchive-3.0.0:=
 	>=dev-libs/expat-2.0.1
+	>=dev-libs/libuv-1.0.0:=
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
@@ -33,7 +34,6 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	server? ( >=dev-libs/libuv-1.0.0:= )
 	system-jsoncpp? ( >=dev-libs/jsoncpp-0.6.0_rc2:0= )
 "
 DEPEND="${RDEPEND}
@@ -151,7 +151,6 @@ src_configure() {
 		-DSPHINX_HTML=$(usex doc)
 		-DBUILD_CursesDialog="$(usex ncurses)"
 		-DCMake_ENABLE_SERVER_MODE="$(usex server)"
-		-DCMAKE_USE_LIBUV="$(usex server)"
 	)
 
 	if use qt5 ; then
