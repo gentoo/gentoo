@@ -1,0 +1,120 @@
+From 7534df21025b10fd236dd5a8f92d0dff7889e0ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Fl=C3=B6ser?= <mgraesslin@kde.org>
+Date: Wed, 6 Sep 2017 18:42:01 +0200
+Subject: Make Yakuake work on Wayland with Qt 5.9
+
+Summary:
+Yakuake is also affected by the common problem that the integration
+breaks once a window gets hidden, which is a very common feature of
+Yakuake.
+
+This change tracks the PlasmaShellSurface, destroys it on hide and
+recreates on show. Thus it's alwyas positioned as expected.
+
+Test Plan:
+This commit was created using a yakuake which is positioned
+correctly, although I pressed F12 a few times.
+
+Differential Revision: https://phabricator.kde.org/D7709
+---
+ app/mainwindow.cpp | 33 ++++++++++++++++++++++++++-------
+ app/mainwindow.h   |  3 +++
+ 2 files changed, 29 insertions(+), 7 deletions(-)
+
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index a7b0d89..6fa9160 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -95,6 +95,7 @@ MainWindow::MainWindow(QWidget* parent)
+     m_isWayland = QGuiApplication::platformName().startsWith(QLatin1String("wayland"));
+ #if HAVE_KWAYLAND
+     m_plasmaShell = Q_NULLPTR;
++    m_plasmaShellSurface = Q_NULLPTR;
+     initWayland();
+ #endif
+ 
+@@ -176,6 +177,21 @@ void MainWindow::initWayland()
+     registry->setup();
+     connection->roundtrip();
+ }
++
++void MainWindow::initWaylandSurface()
++{
++    if (m_plasmaShellSurface) {
++        return;
++    }
++    if (!m_plasmaShell) {
++        return;
++    }
++    if (auto surface = KWayland::Client::Surface::fromWindow(windowHandle())) {
++        m_plasmaShellSurface = m_plasmaShell->createSurface(surface, this);
++        m_plasmaShellSurface->setPosition(pos());
++    }
++}
++
+ #endif
+ 
+ bool MainWindow::queryClose()
+@@ -861,13 +877,7 @@ void MainWindow::setWindowGeometry(int newWidth, int newHeight, int newPosition)
+     setGeometry(workArea.x() + workArea.width() * newPosition * (100 - newWidth) / 10000,
+                 workArea.y(), targetWidth, maxHeight);
+ #if HAVE_KWAYLAND
+-    if (m_plasmaShell) {
+-        if (auto surface = KWayland::Client::Surface::fromWindow(windowHandle())) {
+-            if (auto plasmaSurface = m_plasmaShell->createSurface(surface, this)) {
+-                plasmaSurface->setPosition(pos());
+-            }
+-        }
+-    }
++    initWaylandSurface();
+ #endif
+ 
+     maxHeight -= m_titleBar->height();
+@@ -1303,6 +1313,10 @@ void MainWindow::sharedAfterOpenWindow()
+ 
+     applyWindowProperties();
+ 
++#if HAVE_KWAYLAND
++    initWaylandSurface();
++#endif
++
+     emit windowOpened();
+ }
+ 
+@@ -1316,6 +1330,11 @@ void MainWindow::sharedAfterHideWindow()
+ {
+     if (Settings::pollMouse()) toggleMousePoll(true);
+ 
++#if HAVE_KWAYLAND
++    delete m_plasmaShellSurface;
++    m_plasmaShellSurface = Q_NULLPTR;
++#endif
++
+     emit windowClosed();
+ }
+ 
+diff --git a/app/mainwindow.h b/app/mainwindow.h
+index 8a46c89..bb6404e 100644
+--- a/app/mainwindow.h
++++ b/app/mainwindow.h
+@@ -44,6 +44,7 @@ class KActionCollection;
+ namespace KWayland {
+     namespace Client {
+         class PlasmaShell;
++        class PlasmaShellSurface;
+     }
+ }
+ #endif
+@@ -203,7 +204,9 @@ class MainWindow : public QMainWindow
+ 
+ #if HAVE_KWAYLAND
+         void initWayland();
++        void initWaylandSurface();
+         KWayland::Client::PlasmaShell *m_plasmaShell;
++        KWayland::Client::PlasmaShellSurface *m_plasmaShellSurface;
+ #endif
+ };
+ 
+-- 
+cgit v0.11.2
+
