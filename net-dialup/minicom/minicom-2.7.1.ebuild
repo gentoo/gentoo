@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools
+inherit autotools
 
 STUPID_NUM="3977"
 DESCRIPTION="Serial Communication Program"
-HOMEPAGE="http://alioth.debian.org/projects/minicom"
+HOMEPAGE="https://alioth.debian.org/projects/minicom"
 SRC_URI="https://alioth.debian.org/frs/download.php/file/${STUPID_NUM}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 COMMON_DEPEND="sys-libs/ncurses:="
