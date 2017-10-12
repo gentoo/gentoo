@@ -15,7 +15,7 @@ if [[ ${PV} != 9999 ]]; then
 else
 	WANT_LIBTOOL=none
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://repo.or.cz/btrfs-progs-unstable/devel.git"
+	EGIT_REPO_URI="https://github.com/kdave/btrfs-progs.git"
 	EGIT_BRANCH="devel"
 fi
 
@@ -81,9 +81,7 @@ src_configure() {
 		--bindir="${EPREFIX}"/sbin
 		$(use_enable convert)
 		$(use_enable elibc_glibc backtrace)
-		# No whitespace due to 'ext2,reiserfs' being invalid
-		# for configure. TODO: Why it's not valid?
-		--with-convert=ext2$(usex reiserfs 'reiserfs' '')
+		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 	)
 	econf "${myeconfargs[@]}"
 }
