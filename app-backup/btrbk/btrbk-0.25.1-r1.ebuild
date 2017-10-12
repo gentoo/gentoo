@@ -25,7 +25,7 @@ DEPEND=""
 RDEPEND="dev-lang/perl
 	net-misc/openssh
 	pv? ( sys-apps/pv )
-	>=sys-fs/btrfs-progs-3.18.2"
+	>=sys-fs/btrfs-progs-3.18.2 <sys-fs/btrfs-progs-4.13.2"
 
 src_install() {
 	emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" SYSTEMDDIR="$(systemd_get_systemunitdir)" install
