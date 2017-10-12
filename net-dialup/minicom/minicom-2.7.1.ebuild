@@ -6,7 +6,7 @@ inherit autotools
 
 STUPID_NUM="3977"
 DESCRIPTION="Serial Communication Program"
-HOMEPAGE="http://alioth.debian.org/projects/minicom"
+HOMEPAGE="https://alioth.debian.org/projects/minicom"
 SRC_URI="https://alioth.debian.org/frs/download.php/file/${STUPID_NUM}/${P}.tar.gz"
 
 LICENSE="GPL-2"
