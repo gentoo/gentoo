@@ -9,7 +9,7 @@ inherit cmake-utils ${SCM}
 unset SCM
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
-HOMEPAGE="https://github.com/keepassxreboot/keepassxc"
+HOMEPAGE="https://keepassxc.org"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
