@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit systemd toolchain-funcs user
+EAPI=6
+inherit systemd user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="http://humdi.net/vnstat/"
@@ -25,29 +25,13 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-vnstatd )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.17-limit.patch
+	"${FILESDIR}"/${PN}-1.17-conf.patch
+	"${FILESDIR}"/${PN}-1.17-run.patch
 )
 
 pkg_setup() {
 	enewgroup vnstat
 	enewuser vnstat -1 -1 /var/lib/vnstat vnstat
-}
-
-src_prepare() {
-	default
-
-	tc-export CC
-
-	sed -i \
-		-e 's|^\(MaxBWethnone.*\)$|#\1|' \
-		-e 's|^Daemon\(.*\) ""$|Daemon\1 "vnstat"|' \
-		-e 's|vnstat[.]log|vnstatd.log|' \
-		-e 's|vnstat[.]pid|vnstatd.pid|' \
-		-e 's|/var/run|/run|' \
-		cfg/${PN}.conf || die
-	sed -i \
-		-e '/PIDFILE/s|/var/run|/run|' \
-		src/common.h || die
 }
 
 src_compile() {
