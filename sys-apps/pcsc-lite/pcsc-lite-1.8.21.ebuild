@@ -7,11 +7,11 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit python-single-r1 systemd udev user multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
-HOMEPAGE="http://pcsclite.alioth.debian.org/"
+HOMEPAGE="https://pcsclite.alioth.debian.org/"
 
 STUPID_NUM="4216"
 MY_P="${PN}-${PV/_/-}"
-SRC_URI="http://alioth.debian.org/download.php/file/${STUPID_NUM}/${MY_P}.tar.bz2"
+SRC_URI="https://alioth.debian.org/download.php/file/${STUPID_NUM}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 # GPL-2 is there for the init script; everything else comes from

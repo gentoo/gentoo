@@ -7,18 +7,18 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit python-single-r1 systemd udev user multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
-HOMEPAGE="http://pcsclite.alioth.debian.org/"
+HOMEPAGE="https://pcsclite.alioth.debian.org/"
 
 STUPID_NUM="4225"
 MY_P="${PN}-${PV/_/-}"
-SRC_URI="http://alioth.debian.org/download.php/file/${STUPID_NUM}/${MY_P}.tar.bz2"
+SRC_URI="https://alioth.debian.org/download.php/file/${STUPID_NUM}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 # GPL-2 is there for the init script; everything else comes from
 # upstream.
 LICENSE="BSD ISC MIT GPL-3+ GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
