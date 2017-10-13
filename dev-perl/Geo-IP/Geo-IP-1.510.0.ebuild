@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MODULE_AUTHOR=MAXMIND
-MODULE_VERSION=1.45
+MODULE_VERSION=1.51
 inherit perl-module multilib
 
 DESCRIPTION="Look up country by IP Address"
