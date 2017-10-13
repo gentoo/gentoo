@@ -1,0 +1,11 @@
+--- a/tests/config_tests.c
++++ b/tests/config_tests.c
+@@ -99,7 +99,7 @@
+ 	cfg.maxbw = 10;
+ 	ret  = ibwget("ethnone", &limit);
+ 	ck_assert_int_eq(ret, 1);
+-	ck_assert_int_eq(limit, 8);
++	ck_assert_int_eq(limit, 10);
+ }
+ END_TEST
+ 
