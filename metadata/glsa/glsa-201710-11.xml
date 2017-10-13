@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-11">
+  <title>GNU Libtasn1: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNU Libtasn1, the worst
+    of which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libtasn1</product>
+  <announced>2017-10-13</announced>
+  <revised>2017-10-13: 1</revised>
+  <bug>619686</bug>
+  <bug>627014</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libtasn1" auto="yes" arch="*">
+      <unaffected range="ge">4.12-r1</unaffected>
+      <vulnerable range="lt">4.12-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library that provides Abstract Syntax Notation One (ASN.1, as
+      specified by the X.680 ITU-T recommendation) parsing and structures
+      management, and Distinguished Encoding Rules (DER, as per X.690) encoding
+      and decoding functions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU Libtasn1. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or have
+      other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Libtasn1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libtasn1-4.12-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10790">
+      CVE-2017-10790
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6891">
+      CVE-2017-6891
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-08T19:04:08Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-13T22:47:29Z">chrisadr</metadata>
+</glsa>
