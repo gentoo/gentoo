@@ -13628,6 +13628,7 @@ media-radio/qrq 0.3.1 0.3.1-r1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.4: Amateur radio SSTV software
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.0: Console-mode amateur radio contest logger
+media-radio/tucnak 4.11: Amateur Radio VHF Contest Logbook
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 1.7.0: Weak signal ham radio communication
@@ -15379,7 +15380,7 @@ net-misc/pmsvn 1.0.5 1.0.6 1.0.7: Server's configuration management and monitori
 net-misc/polly 0.93.11 0.93.12: twitter client designed for multiple columns of multiple accounts
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
 net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attempt
-net-misc/pps-tools 0.0.20120407: User-space tools for LinuxPPS
+net-misc/pps-tools 0.0.20120407 1.0.1: User-space tools for LinuxPPS
 net-misc/proxychains 4.11 4.12-r1: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/proxytunnel 1.9.1-r1: Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
 net-misc/ps3mediaserver 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
@@ -19072,7 +19073,7 @@ x11-misc/xscreensaver 5.36 5.37: A modular screen saver and locker for the X Win
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm-sensors
-x11-misc/xsetleds 0.1.3-r1: small tool to report and change the keyboard LED states of an X display
+x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsnap 1.5.15-r1: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r2: let it snow on your desktop and windows
 x11-misc/xsri 2.1.0-r3: The xsri wallpaper setter from RedHat
