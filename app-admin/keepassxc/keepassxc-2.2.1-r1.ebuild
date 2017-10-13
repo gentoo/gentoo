@@ -5,7 +5,7 @@ EAPI=6
 
 SCM=""
 [[ "${PV}" == 9999 ]] && SCM="git-r3"
-inherit cmake-utils ${SCM}
+inherit cmake-utils gnome2-utils xdg-utils ${SCM}
 unset SCM
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
@@ -62,4 +62,16 @@ src_configure() {
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
