@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-12">
+  <title>Puppet Agent: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Puppet Agent, the worst
+    of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">puppetagent</product>
+  <announced>2017-10-13</announced>
+  <revised>2017-10-13: 1</revised>
+  <bug>597684</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/puppet-agent" auto="yes" arch="*">
+      <unaffected range="ge">1.7.1</unaffected>
+      <vulnerable range="lt">1.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Puppet Agent contains Puppet’s main code and all of the dependencies
+      needed to run it, including Facter, Hiera, and bundled versions of Ruby
+      and OpenSSL.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Puppet Agent. Please
+      review the references for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Puppet Agent users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/puppet-agent-1.7.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5714">
+      CVE-2016-5714
+    </uri>
+    <uri link="https://puppet.com/security/cve/pxp-agent-oct-2016">Puppet
+      Security Advise Oct 2016
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-08T20:07:35Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-13T23:32:46Z">chrisadr</metadata>
+</glsa>
