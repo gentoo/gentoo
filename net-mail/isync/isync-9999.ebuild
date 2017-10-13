@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 
-IUSE="compat libressl sasl ssl zlib"
+IUSE="libressl sasl ssl zlib"
 
 RDEPEND="
 	>=sys-libs/db-4.2:=
@@ -36,7 +36,6 @@ src_prepare () {
 
 src_configure () {
 	econf \
-		$(use_enable compat) \
 		$(use_with ssl) \
 		$(use_with sasl) \
 		$(use_with zlib)
