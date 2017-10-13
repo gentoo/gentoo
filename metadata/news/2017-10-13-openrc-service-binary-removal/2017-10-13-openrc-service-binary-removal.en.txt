@@ -1,0 +1,14 @@
+Title: OpenRC "service" binary removal
+Author: William Hubbs <williamh@gentoo.org>
+Display-If-Installed: <=sys-apps/openrc-0.33
+Content-Type: text/plain
+Posted: 2017-10-13
+Revision: 1
+News-Item-Format: 1.0
+
+OpenRC 0.33 will remove the "service" binary, which was just a copy of
+the "rc-service" binary.
+
+If you only use rc-service this will not affect you. However, if you
+still need the "service" command, you should install
+sys-apps/init-system-helpers.
