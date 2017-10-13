@@ -2158,6 +2158,7 @@ dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
 dev-libs/libverto:libevent - Support event loops using dev-libs/libevent
 dev-libs/libverto:tevent - Support event loops using sys-libs/tevent
+dev-libs/libzia:ftdi - Enable support for FTDI USB chips
 dev-libs/link-grammar:aspell - Adds support for app-text/aspell spell checker
 dev-libs/link-grammar:hunspell - Adds support for app-text/hunspell spell checker
 dev-libs/log4cplus:iconv - Use inconv for wchar_t <-> char conversions. See also log4cplus's unicode.txt documentation

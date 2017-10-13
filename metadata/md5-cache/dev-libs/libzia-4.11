@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/glib:2 x11-libs/gtk+:2 media-libs/libsdl media-libs/libpng:0 ftdi? ( dev-embedded/libftdi:0 ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=platform abstraction code for tucnak package
+EAPI=6
+HOMEPAGE=http://tucnak.nagano.cz
+IUSE=ftdi
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 media-libs/libsdl media-libs/libpng:0 ftdi? ( dev-embedded/libftdi:0 )
+SLOT=0
+SRC_URI=http://tucnak.nagano.cz/libzia-4.11.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=253b9ff2c8eaa96b311dc3eef15d3a0b
