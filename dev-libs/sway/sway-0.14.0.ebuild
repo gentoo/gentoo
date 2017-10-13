@@ -8,7 +8,7 @@ inherit eutils cmake-utils
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
 
-SRC_URI="https://github.com/SirCmpwn/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/swaywm/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
