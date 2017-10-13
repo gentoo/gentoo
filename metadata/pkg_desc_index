@@ -121,7 +121,7 @@ app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/keepass 2.36: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
-app-admin/keepassxc 2.1.4 2.2.0 2.2.1 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.1.4-r1 2.2.1-r1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.44: Binary component required by the LastPass Password Manager browser extension
@@ -16352,7 +16352,7 @@ sci-libs/ViSP 3.0.1: Visual Servoing Platform: visual tracking and visual servoi
 sci-libs/adolc 2.4.1 2.5.0 2.5.2 2.6.2 2.6.3 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 6.200.3 7.800.2-r1 7.950.0 7.950.1: Streamlined C++ linear algebra library
+sci-libs/armadillo 6.200.3 7.800.2-r1 7.950.0 7.950.1 8.200.0: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0 3.5.0: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
@@ -19501,7 +19501,7 @@ x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 1.3.7-r3 1.3.7-r4 9999: Fluxbox is an X11 windo
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.0 9999: A manual tiling window manager for X
-x11-wm/i3 4.13-r1 4.14 9999: An improved dynamic tiling window manager
+x11-wm/i3 4.13-r1 4.14 4.14.1 9999: An improved dynamic tiling window manager
 x11-wm/icewm 1.3.8 1.3.12-r1 1.4.0 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan

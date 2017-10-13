@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost arpack? ( sci-libs/arpack ) blas? ( virtual/blas ) lapack? ( virtual/lapack ) superlu? ( >=sci-libs/superlu-5.2 ) arpack? ( virtual/pkgconfig ) blas? ( virtual/pkgconfig ) hdf5? ( sci-libs/hdf5 ) lapack? ( virtual/pkgconfig ) mkl? ( sci-libs/mkl ) tbb? ( dev-cpp/tbb ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Streamlined C++ linear algebra library
+EAPI=6
+HOMEPAGE=http://arma.sourceforge.net/
+IUSE=arpack blas debug doc examples hdf5 lapack mkl superlu tbb test
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Apache-2.0
+PDEPEND=dev-libs/boost arpack? ( sci-libs/arpack ) blas? ( virtual/blas ) lapack? ( virtual/lapack ) superlu? ( >=sci-libs/superlu-5.2 ) hdf5? ( sci-libs/hdf5 ) mkl? ( sci-libs/mkl ) tbb? ( dev-cpp/tbb )
+RDEPEND=dev-libs/boost arpack? ( sci-libs/arpack ) blas? ( virtual/blas ) lapack? ( virtual/lapack ) superlu? ( >=sci-libs/superlu-5.2 )
+REQUIRED_USE=test? ( lapack )
+SLOT=0/8
+SRC_URI=mirror://sourceforge/arma/armadillo-8.200.0.tar.xz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=c2f77380377861f385b14ed9aabc695c
