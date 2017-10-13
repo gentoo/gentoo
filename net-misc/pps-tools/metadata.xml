@@ -6,6 +6,6 @@
     <name>Gentoo Base System</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ago/pps-tools</remote-id>
+    <remote-id type="github">redlab-i/pps-tools</remote-id>
   </upstream>
 </pkgmetadata>
