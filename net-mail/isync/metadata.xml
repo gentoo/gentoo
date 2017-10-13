@@ -5,6 +5,9 @@
 		<email>net-mail@gentoo.org</email>
 		<name>Net-Mail</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">isync</remote-id>
 	</upstream>
