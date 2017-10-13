@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-14">
+  <title>WebKitGTK+: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebkitGTK+, the worst
+    of which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">webkit-gtk</product>
+  <announced>2017-10-13</announced>
+  <revised>2017-10-13: 1</revised>
+  <bug>626142</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge" slot="4">2.16.6</unaffected>
+      <vulnerable range="lt" slot="4">2.16.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, offers
+      Webkit’s full functionality and is used on a wide range of systems.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebkitGTK+. Please
+      review the references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, cause a Denial of
+      Service condition, bypass intended memory-read restrictions, conduct a
+      timing side-channel attack to bypass the Same Origin Policy, obtain
+      sensitive information, or spoof the address bar.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebKitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.16.6"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7006">CVE-2017-7006</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7011">CVE-2017-7011</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7012">CVE-2017-7012</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7018">CVE-2017-7018</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7019">CVE-2017-7019</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7020">CVE-2017-7020</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7030">CVE-2017-7030</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7034">CVE-2017-7034</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7037">CVE-2017-7037</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7038">CVE-2017-7038</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7039">CVE-2017-7039</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7040">CVE-2017-7040</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7041">CVE-2017-7041</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7042">CVE-2017-7042</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7043">CVE-2017-7043</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-30T20:06:21Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-10-13T23:53:44Z">chrisadr</metadata>
+</glsa>
