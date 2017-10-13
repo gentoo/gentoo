@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-10">
+  <title>elfutils: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in elfutils, the worst of
+    which may allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">elfutils</product>
+  <announced>2017-10-13</announced>
+  <revised>2017-10-13: 1</revised>
+  <bug>614002</bug>
+  <bug>614004</bug>
+  <bug>618004</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/elfutils" auto="yes" arch="*">
+      <unaffected range="ge">0.169-r1</unaffected>
+      <vulnerable range="lt">0.169-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Elfutils provides a library and utilities to access, modify and analyse
+      ELF objects.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in elfutils. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition via
+      specially crafted ELF files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All elfutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/elfutils-0.169-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10254">
+      CVE-2016-10254
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10255">
+      CVE-2016-10255
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7607">
+      CVE-2017-7607
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7608">
+      CVE-2017-7608
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7609">
+      CVE-2017-7609
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7610">
+      CVE-2017-7610
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7611">
+      CVE-2017-7611
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7612">
+      CVE-2017-7612
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7613">
+      CVE-2017-7613
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-08T18:46:38Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-13T22:31:20Z">chrisadr</metadata>
+</glsa>
