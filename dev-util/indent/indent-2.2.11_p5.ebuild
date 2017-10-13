@@ -1,16 +1,19 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Indent program source files"
 HOMEPAGE="https://www.gentoo.org/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="
+	https://dev.gentoo.org/~jer/${P/_p*/}.tar.gz
+	http://http.debian.net/debian/pool/main/i/${PN}/${PN}_${PV/_p*/}-${PV/*_p/}.debian.tar.xz
+"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="nls"
 
 DEPEND="
@@ -20,32 +23,30 @@ DEPEND="
 RDEPEND="
 	nls? ( virtual/libintl )
 "
-
-INDENT_LINGUAS="
-	ca da de eo et fi fr gl hu it ja ko nl pl pt_BR ru sk sv tr zh_TW
-"
-
-for indent_lingua in ${INDENT_LINGUAS}; do
-	IUSE+=" linguas_${indent_lingua}"
-done
+PATCHES=(
+	"${FILESDIR}"/${P/_p*/}-segfault.patch
+	"${FILESDIR}"/${P/_p*/}-texi2html-5.patch
+	"${FILESDIR}"/${P/_p*/}-ac_config_headers.patch
+	"${FILESDIR}"/${P/_p*/}-linguas.patch
+)
+S=${WORKDIR}/${P/_p*/}
 
 src_prepare() {
-	# Fix bug #94837
+	default
+
+	eapply "${WORKDIR}"/debian/patches/*.patch
+
 	local pofile
 	for pofile in po/zh_TW*; do
 		mv ${pofile} ${pofile/.Big5} || die
 	done
-	sed -i po/LINGUAS -e 's|zh_TW\.Big5|zh_TW|g' || die
-
-	epatch \
-		"${FILESDIR}"/${P}-segfault.patch \
-		"${FILESDIR}"/${P}-texi2html-5.patch
-	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 
 	eautoreconf
 }
 
 src_configure() {
+	strip-linguas -i po/
+
 	econf $(use_enable nls)
 }
 
