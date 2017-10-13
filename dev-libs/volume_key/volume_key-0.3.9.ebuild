@@ -18,21 +18,19 @@ IUSE="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="
+RDEPEND="
+	app-crypt/gpgme
 	dev-libs/glib:2
+	dev-libs/nspr
 	dev-libs/nss
 	sys-apps/util-linux
-	sys-devel/gettext
+	sys-fs/cryptsetup:=
 "
 DEPEND="
-	${COMMON_DEPEND}
-	app-crypt/gpgme
-	sys-fs/cryptsetup
+	${RDEPEND}
+	sys-devel/gettext
 	test? ( dev-libs/nss[utils] )
 	"
-RDEPEND="
-	${COMMON_DEPEND}
-"
 
 RESTRICT="test" # possible gpgme issue
 
