@@ -17,10 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="sasl ssl"
 
-# Maintainer note:
-# openssl DEPEND constraint, see:
-# https://github.com/mongodb/mongo-tools/issues/11
-
 RDEPEND="!<dev-db/mongodb-3.0.0"
 DEPEND="${RDEPEND}
 	dev-lang/go:=
@@ -36,7 +32,10 @@ src_prepare() {
 	sed -i '/^mv/d' build.sh || die
 
 	# build pie to avoid text relocations wrt #582854
-	sed -i 's/go build/go build -buildmode=pie/g' build.sh || die
+	# skip on ppc64 wrt #610984
+	if ! use ppc64; then
+		sed -i 's/\(go build\)/\1 -buildmode=pie/g' build.sh || die
+	fi
 
 	# ensure we use bash wrt #582906
 	sed -i 's@/bin/sh@/bin/bash@g' build.sh || die
@@ -45,7 +44,7 @@ src_prepare() {
 }
 
 src_compile() {
-	declare -a myconf
+	local myconf=()
 
 	if use sasl; then
 	  myconf+=(sasl)
