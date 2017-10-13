@@ -3,11 +3,10 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic git-r3
+inherit autotools eutils flag-o-matic
 
-EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
-KEYWORDS=""
+SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="https://www.neomutt.org/"
@@ -93,6 +92,8 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
+	# A newer file is provided by app-misc/mime-types. So we link it.
 
 	# A man-page is always handy, so fake one
 	if use !doc; then
