@@ -5450,7 +5450,7 @@ dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS clien
 dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0 3.250.0 3.260.0 3.270.0: Perl Authentication and Authorization via cookies
-dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
+dev-perl/Apache-CGI-Builder 1.300.0-r1 1.300.0-r2: CGI::Builder and Apache2/mod_perl2 integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
 dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
