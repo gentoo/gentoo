@@ -149,7 +149,7 @@ app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tri
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.3 3.4.4 3.4.6 3.4.7 3.4.9: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.20.0 5.23.0 5.24.0: Monitoring and managing daemons or similar programs running on a Unix system
-app-admin/mtail 0_pre20161108 3.0.0_rc2: A tool for extracting metrics from application logs
+app-admin/mtail 0_pre20161108 3.0.0_rc2 3.0.0_rc4: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 2.8-r1 2.9-r1 2.10 2.11 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
@@ -17877,7 +17877,7 @@ sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.6 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
-sys-libs/gdbm 1.11 1.12 1.13: Standard GNU database libraries
+sys-libs/gdbm 1.11 1.12 1.13 1.13-r1: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r4 2.25-r5 2.25-r7 2.26-r1 2.26-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
