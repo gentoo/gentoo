@@ -12,13 +12,12 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="digitalradio static-libs"
-DOCS=( AUTHORS ChangeLog NEWS README README.linux TODO )
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
 RDEPEND=""
 DEPEND=""
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.8.1-libmp4ff-shared-lib.patch
-	"${FILESDIR}"/${P}-dummy_version_macro.patch
+	"${FILESDIR}"/${PN}-2.8.5-libmp4ff-shared-lib.patch
 )
 
 src_prepare() {
