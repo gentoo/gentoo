@@ -24,6 +24,9 @@ RDEPEND="
 	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-vnstatd )
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.17-limit.patch
+)
 
 pkg_setup() {
 	enewgroup vnstat
@@ -76,48 +79,4 @@ src_install() {
 
 	newdoc INSTALL README.setup
 	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
-}
-
-pkg_postinst() {
-	local _v
-	for _v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 1.17-r1 ${_v}; then
-			# This is an upgrade
-			elog ""
-			elog "Beginning with ${PN}-1.17-r1, we no longer install and use the cron job"
-			elog "per default to update vnStat databases because you will lose some traffic"
-			elog "if your interface transfers more than ~4GB in the time between two cron"
-			elog "runs".
-			elog ""
-			elog "Please make sure that the vnstatd service is enabled if you want to"
-			elog "continue monitoring your traffic."
-
-			# Show this elog only once
-			break
-		fi
-	done
-
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		# This is a new installation
-
-		elog
-		elog "Repeat the following command for every interface you"
-		elog "wish to monitor (replace eth0):"
-		elog "   vnstat -u -i eth0"
-		elog "and set correct permissions after that, e.g."
-		elog "   chown -R vnstat:vnstat /var/lib/vnstat"
-		elog
-		elog "It is highly recommended to use the included vnstatd to update your"
-		elog "vnStat databases."
-		elog
-		elog "If you want to use the old cron way to update your vnStat databases,"
-		elog "you have to install the cron job manually:"
-		elog ""
-		elog "   cp /usr/share/${PN}/vnstat.cron /etc/cron.hourly/vnstat"
-		elog ""
-		elog "Note: if an interface transfers more than ~4GB in"
-		elog "the time between cron runs, you may miss traffic."
-		elog "That's why using vnstatd instead of the cronjob is"
-		elog "the recommended way to update your vnStat databases."
-	fi
 }
