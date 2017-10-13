@@ -5967,7 +5967,7 @@ dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-App-Pram 0.4.0 0.4.0-r1: Readily merge Pull Requests from the Gentoo Github repository
 dev-perl/Gentoo-PerlMod-Version 0.8.1: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
-dev-perl/Geo-IP 1.450.0 1.500.0: Look up country by IP Address
+dev-perl/Geo-IP 1.450.0 1.500.0-r1 1.510.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
 dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
@@ -19323,7 +19323,7 @@ x11-proto/xproto 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.22.2 3.24.2: The Gnome Terminal
-x11-terms/guake 0.8.8 0.8.9 0.8.10 9999: Drop-down terminal for GTK+ desktops
+x11-terms/guake 0.8.8 0.8.10 0.8.11 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
