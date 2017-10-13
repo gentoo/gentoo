@@ -32,8 +32,13 @@ pkg_setup() {
 	enewuser rethinkdb -1 -1 /var/lib/${PN} rethinkdb
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.5-gcc6.patch
+	"${FILESDIR}"/${PN}-2.3.5-libressl.patch
+)
+
 src_prepare() {
-	eapply_user
+	default
 
 	# don't use predefined configuration
 	rm configure.default
