@@ -1,0 +1,86 @@
+From 6a8e67b0c62349c57da492c19490f1a03e3c7d37 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Thu, 12 Oct 2017 12:36:19 +0200
+Subject: [PATCH] use the non installed service files
+
+---
+ autotests/CMakeLists.txt                                            | 1 +
+ src/kpackage/CMakeLists.txt                                         | 6 +++---
+ .../data/{servicetypes => kservicetypes5}/kpackage-generic.desktop  | 0
+ .../{servicetypes => kservicetypes5}/kpackage-genericqml.desktop    | 0
+ .../kpackage-packagestructure.desktop                               | 0
+ src/kpackage/kpackage.qrc                                           | 2 +-
+ src/kpackagetool/kpackagetool.qrc                                   | 2 +-
+ 7 files changed, 6 insertions(+), 5 deletions(-)
+ rename src/kpackage/data/{servicetypes => kservicetypes5}/kpackage-generic.desktop (100%)
+ rename src/kpackage/data/{servicetypes => kservicetypes5}/kpackage-genericqml.desktop (100%)
+ rename src/kpackage/data/{servicetypes => kservicetypes5}/kpackage-packagestructure.desktop (100%)
+
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index 6126463..6d9767a 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -32,6 +32,7 @@ function(kpackagetool5test testname)
+                                                       -Doutput=${CMAKE_CURRENT_SOURCE_DIR}/data/${testname}/${testname}.testappdataxml
+                                                       -P ${CMAKE_CURRENT_SOURCE_DIR}/kpackagetoolappstreamtest.cmake
+     )
++    set_property(TEST ${testname}-appstream PROPERTY ENVIRONMENT "XDG_DATA_DIRS=${CMAKE_SOURCE_DIR}/src/kpackage/data:$XDG_DATA_DIRS")
+ endfunction()
+ 
+ foreach(var "testfallbackpackage" "testpackage" "testpackage-nodisplay" "testjsonmetadatapackage" "testpackagesdep" "testpackagesdepinvalid") # "customcontent" "simplecontent"
+diff --git a/src/kpackage/CMakeLists.txt b/src/kpackage/CMakeLists.txt
+index c5e0cb3..95d7bc5 100644
+--- a/src/kpackage/CMakeLists.txt
++++ b/src/kpackage/CMakeLists.txt
+@@ -82,9 +82,9 @@ install(FILES
+         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KPackage/KPackage COMPONENT Devel)
+ 
+ install(FILES
+-   data/servicetypes/kpackage-packagestructure.desktop
+-   data/servicetypes/kpackage-generic.desktop
+-   data/servicetypes/kpackage-genericqml.desktop
++   data/kservicetypes5/kpackage-packagestructure.desktop
++   data/kservicetypes5/kpackage-generic.desktop
++   data/kservicetypes5/kpackage-genericqml.desktop
+    DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
+ 
+ 
+diff --git a/src/kpackage/data/servicetypes/kpackage-generic.desktop b/src/kpackage/data/kservicetypes5/kpackage-generic.desktop
+similarity index 100%
+rename from src/kpackage/data/servicetypes/kpackage-generic.desktop
+rename to src/kpackage/data/kservicetypes5/kpackage-generic.desktop
+diff --git a/src/kpackage/data/servicetypes/kpackage-genericqml.desktop b/src/kpackage/data/kservicetypes5/kpackage-genericqml.desktop
+similarity index 100%
+rename from src/kpackage/data/servicetypes/kpackage-genericqml.desktop
+rename to src/kpackage/data/kservicetypes5/kpackage-genericqml.desktop
+diff --git a/src/kpackage/data/servicetypes/kpackage-packagestructure.desktop b/src/kpackage/data/kservicetypes5/kpackage-packagestructure.desktop
+similarity index 100%
+rename from src/kpackage/data/servicetypes/kpackage-packagestructure.desktop
+rename to src/kpackage/data/kservicetypes5/kpackage-packagestructure.desktop
+diff --git a/src/kpackage/kpackage.qrc b/src/kpackage/kpackage.qrc
+index 5d4d077..6368c00 100644
+--- a/src/kpackage/kpackage.qrc
++++ b/src/kpackage/kpackage.qrc
+@@ -1,6 +1,6 @@
+ <!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+-<file alias="/kservicetypes5/kpackage-generic.desktop">../kpackage/data/servicetypes/kpackage-generic.desktop</file>
++<file alias="/kservicetypes5/kpackage-generic.desktop">../kpackage/data/kservicetypes5/kpackage-generic.desktop</file>
+ </qresource>
+ </RCC>
+ 
+diff --git a/src/kpackagetool/kpackagetool.qrc b/src/kpackagetool/kpackagetool.qrc
+index 5d4d077..6368c00 100644
+--- a/src/kpackagetool/kpackagetool.qrc
++++ b/src/kpackagetool/kpackagetool.qrc
+@@ -1,6 +1,6 @@
+ <!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+-<file alias="/kservicetypes5/kpackage-generic.desktop">../kpackage/data/servicetypes/kpackage-generic.desktop</file>
++<file alias="/kservicetypes5/kpackage-generic.desktop">../kpackage/data/kservicetypes5/kpackage-generic.desktop</file>
+ </qresource>
+ </RCC>
+ 
+-- 
+2.14.2
+
