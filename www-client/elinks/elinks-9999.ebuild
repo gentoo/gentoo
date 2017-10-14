@@ -16,12 +16,13 @@ SRC_URI="https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bittorrent bzip2 debug finger ftp gopher gpm guile idn ipv6
+IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
 	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 RESTRICT="test"
 
 DEPEND="
 	${PYTHON_DEPS}
+	brotli? ( app-arch/brotli )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -94,6 +95,7 @@ src_configure() {
 		--enable-html-highlight \
 		$(use_with gpm) \
 		$(use_with zlib) \
+		$(use_with brotli) \
 		$(use_with bzip2 bzlib) \
 		$(use_with X x) \
 		$(use_with lua) \
