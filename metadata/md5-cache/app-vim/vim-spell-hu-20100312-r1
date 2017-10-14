@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=vim spell files: Hungarian (hu)
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/vim-spell-hu-20100312.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-spell	dcc9ab75ad0c33e288e5feb39a55d2f9
+_md5_=e58891cf00b809a0b4d12108eaf49915
