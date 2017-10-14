@@ -10285,7 +10285,7 @@ dev-util/android-studio 2.3.2.0.162.3934792 2.3.3.0.162.4069837: A new Android d
 dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
-dev-util/apitrace 4.0 5.0 6.0 6.1 7.1: A tool for tracing, analyzing, and debugging graphics APIs
+dev-util/apitrace 7.1: A tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards compliance and to the style guide
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
