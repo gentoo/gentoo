@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-arch/bzip2 dev-db/postgresql:= dev-libs/expat sci-libs/proj sys-libs/zlib lua? ( dev-lang/lua:= ) dev-libs/boost sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Converts OSM data to SQL and insert into PostgreSQL db
+EAPI=6
+HOMEPAGE=https://wiki.openstreetmap.org/wiki/Osm2pgsql https://github.com/openstreetmap/osm2pgsql
+IUSE=+lua
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 dev-db/postgresql:= dev-libs/expat sci-libs/proj sys-libs/zlib lua? ( dev-lang/lua:= ) dev-db/postgis
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/openstreetmap/osm2pgsql/archive/0.94.0.tar.gz -> osm2pgsql-0.94.0.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=b05c823ff9b86b6f5b7b484ab7e31833
